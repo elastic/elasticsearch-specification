@@ -46928,6 +46928,28 @@
           }
         },
         {
+          "availability": {
+            "serverless": {
+              "stability": "experimental"
+            },
+            "stack": {
+              "stability": "experimental"
+            }
+          },
+          "description": "The time series aggregation queries data created using a time series index.\nThis is typically data such as metrics or other data streams with a time component, and requires creating an index using the time series mode.",
+          "docId": "search-aggregations-bucket-time-series-aggregation",
+          "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/search-aggregations-bucket-time-series-aggregation.html",
+          "name": "time_series",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "TimeSeriesAggregation",
+              "namespace": "_types.aggregations"
+            }
+          }
+        },
+        {
           "description": "A metric aggregation that returns the top matching documents per bucket.",
           "docId": "search-aggregations-metrics-top-hits-aggregation",
           "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/search-aggregations-metrics-top-hits-aggregation.html",
@@ -47012,7 +47034,7 @@
           }
         }
       ],
-      "specLocation": "_types/aggregations/AggregationContainer.ts#L105-L514",
+      "specLocation": "_types/aggregations/AggregationContainer.ts#L106-L523",
       "variants": {
         "kind": "container",
         "nonExhaustive": true
@@ -52222,7 +52244,7 @@
         "name": "Missing",
         "namespace": "_types.aggregations"
       },
-      "specLocation": "_types/aggregations/AggregationContainer.ts#L516-L516",
+      "specLocation": "_types/aggregations/AggregationContainer.ts#L525-L525",
       "type": {
         "items": [
           {
@@ -59424,7 +59446,7 @@
           }
         }
       ],
-      "specLocation": "_types/aggregations/bucket.ts#L1050-L1114"
+      "specLocation": "_types/aggregations/bucket.ts#L1062-L1126"
     },
     {
       "codegenNames": [
@@ -59436,7 +59458,7 @@
         "name": "CategorizeTextAnalyzer",
         "namespace": "_types.aggregations"
       },
-      "specLocation": "_types/aggregations/bucket.ts#L1116-L1119",
+      "specLocation": "_types/aggregations/bucket.ts#L1128-L1131",
       "type": {
         "items": [
           {
@@ -59504,7 +59526,7 @@
           }
         }
       ],
-      "specLocation": "_types/aggregations/bucket.ts#L1121-L1125"
+      "specLocation": "_types/aggregations/bucket.ts#L1133-L1137"
     },
     {
       "inherits": {
@@ -59795,7 +59817,7 @@
         "name": "MissingOrder",
         "namespace": "_types.aggregations"
       },
-      "specLocation": "_types/aggregations/AggregationContainer.ts#L517-L521"
+      "specLocation": "_types/aggregations/AggregationContainer.ts#L526-L530"
     },
     {
       "kind": "enum",
@@ -60378,7 +60400,7 @@
         "name": "AggregateOrder",
         "namespace": "_types.aggregations"
       },
-      "specLocation": "_types/aggregations/bucket.ts#L988-L990",
+      "specLocation": "_types/aggregations/bucket.ts#L1000-L1002",
       "type": {
         "items": [
           {
@@ -60853,7 +60875,7 @@
           }
         }
       ],
-      "specLocation": "_types/aggregations/bucket.ts#L1172-L1196"
+      "specLocation": "_types/aggregations/bucket.ts#L1184-L1208"
     },
     {
       "kind": "interface",
@@ -60898,7 +60920,7 @@
           }
         }
       ],
-      "specLocation": "_types/aggregations/bucket.ts#L1158-L1170"
+      "specLocation": "_types/aggregations/bucket.ts#L1170-L1182"
     },
     {
       "codegenNames": [
@@ -60910,7 +60932,7 @@
         "name": "TermsExclude",
         "namespace": "_types.aggregations"
       },
-      "specLocation": "_types/aggregations/bucket.ts#L1013-L1014",
+      "specLocation": "_types/aggregations/bucket.ts#L1025-L1026",
       "type": {
         "items": [
           {
@@ -60945,7 +60967,7 @@
         "name": "TermsInclude",
         "namespace": "_types.aggregations"
       },
-      "specLocation": "_types/aggregations/bucket.ts#L1010-L1011",
+      "specLocation": "_types/aggregations/bucket.ts#L1022-L1023",
       "type": {
         "items": [
           {
@@ -61008,7 +61030,7 @@
           }
         }
       ],
-      "specLocation": "_types/aggregations/bucket.ts#L1016-L1025"
+      "specLocation": "_types/aggregations/bucket.ts#L1028-L1037"
     },
     {
       "inherits": {
@@ -61102,7 +61124,7 @@
         "name": "Buckets",
         "namespace": "_types.aggregations"
       },
-      "specLocation": "_types/aggregations/Aggregate.ts#L316-L325",
+      "specLocation": "_types/aggregations/Aggregate.ts#L317-L326",
       "type": {
         "items": [
           {
@@ -62110,7 +62132,7 @@
           }
         }
       ],
-      "specLocation": "_types/aggregations/bucket.ts#L1127-L1156"
+      "specLocation": "_types/aggregations/bucket.ts#L1139-L1168"
     },
     {
       "inherits": {
@@ -63181,7 +63203,7 @@
         "name": "TermsAggregationCollectMode",
         "namespace": "_types.aggregations"
       },
-      "specLocation": "_types/aggregations/bucket.ts#L992-L1001"
+      "specLocation": "_types/aggregations/bucket.ts#L1004-L1013"
     },
     {
       "kind": "interface",
@@ -64227,7 +64249,7 @@
         "name": "TermsAggregationExecutionHint",
         "namespace": "_types.aggregations"
       },
-      "specLocation": "_types/aggregations/bucket.ts#L1003-L1008"
+      "specLocation": "_types/aggregations/bucket.ts#L1015-L1020"
     },
     {
       "kind": "interface",
@@ -64842,6 +64864,47 @@
         }
       ],
       "specLocation": "_types/aggregations/bucket.ts#L917-L982"
+    },
+    {
+      "inherits": {
+        "type": {
+          "name": "BucketAggregationBase",
+          "namespace": "_types.aggregations"
+        }
+      },
+      "kind": "interface",
+      "name": {
+        "name": "TimeSeriesAggregation",
+        "namespace": "_types.aggregations"
+      },
+      "properties": [
+        {
+          "description": "The maximum number of results to return.",
+          "name": "size",
+          "required": false,
+          "serverDefault": 10000,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "Set to `true` to associate a unique string key with each bucket and returns the ranges as a hash rather than an array.",
+          "name": "keyed",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "_builtins"
+            }
+          }
+        }
+      ],
+      "specLocation": "_types/aggregations/bucket.ts#L984-L994"
     },
     {
       "inherits": {
@@ -65465,7 +65528,7 @@
           }
         }
       ],
-      "specLocation": "_types/aggregations/bucket.ts#L1027-L1048"
+      "specLocation": "_types/aggregations/bucket.ts#L1039-L1060"
     },
     {
       "kind": "interface",
@@ -68542,7 +68605,7 @@
         "name": "Aggregate",
         "namespace": "_types.aggregations"
       },
-      "specLocation": "_types/aggregations/Aggregate.ts#L38-L123",
+      "specLocation": "_types/aggregations/Aggregate.ts#L38-L124",
       "type": {
         "items": [
           {
@@ -68954,6 +69017,13 @@
           {
             "kind": "instance_of",
             "type": {
+              "name": "TimeSeriesAggregate",
+              "namespace": "_types.aggregations"
+            }
+          },
+          {
+            "kind": "instance_of",
+            "type": {
               "name": "ScriptedMetricAggregate",
               "namespace": "_types.aggregations"
             }
@@ -69061,7 +69131,7 @@
           }
         }
       ],
-      "specLocation": "_types/aggregations/Aggregate.ts#L138-L141",
+      "specLocation": "_types/aggregations/Aggregate.ts#L139-L142",
       "variantName": "cardinality"
     },
     {
@@ -69083,7 +69153,7 @@
           }
         }
       ],
-      "specLocation": "_types/aggregations/Aggregate.ts#L134-L136"
+      "specLocation": "_types/aggregations/Aggregate.ts#L135-L137"
     },
     {
       "inherits": {
@@ -69098,7 +69168,7 @@
         "namespace": "_types.aggregations"
       },
       "properties": [],
-      "specLocation": "_types/aggregations/Aggregate.ts#L166-L167",
+      "specLocation": "_types/aggregations/Aggregate.ts#L167-L168",
       "variantName": "hdr_percentiles"
     },
     {
@@ -69126,7 +69196,7 @@
           }
         }
       ],
-      "specLocation": "_types/aggregations/Aggregate.ts#L146-L148"
+      "specLocation": "_types/aggregations/Aggregate.ts#L147-L149"
     },
     {
       "codegenNames": [
@@ -69138,7 +69208,7 @@
         "name": "Percentiles",
         "namespace": "_types.aggregations"
       },
-      "specLocation": "_types/aggregations/Aggregate.ts#L150-L151",
+      "specLocation": "_types/aggregations/Aggregate.ts#L151-L152",
       "type": {
         "items": [
           {
@@ -69168,7 +69238,7 @@
         "name": "KeyedPercentiles",
         "namespace": "_types.aggregations"
       },
-      "specLocation": "_types/aggregations/Aggregate.ts#L158-L158",
+      "specLocation": "_types/aggregations/Aggregate.ts#L159-L159",
       "type": {
         "key": {
           "kind": "instance_of",
@@ -69260,7 +69330,7 @@
           }
         }
       ],
-      "specLocation": "_types/aggregations/Aggregate.ts#L160-L164"
+      "specLocation": "_types/aggregations/Aggregate.ts#L161-L165"
     },
     {
       "inherits": {
@@ -69275,7 +69345,7 @@
         "namespace": "_types.aggregations"
       },
       "properties": [],
-      "specLocation": "_types/aggregations/Aggregate.ts#L169-L170",
+      "specLocation": "_types/aggregations/Aggregate.ts#L170-L171",
       "variantName": "hdr_percentile_ranks"
     },
     {
@@ -69291,7 +69361,7 @@
         "namespace": "_types.aggregations"
       },
       "properties": [],
-      "specLocation": "_types/aggregations/Aggregate.ts#L172-L173",
+      "specLocation": "_types/aggregations/Aggregate.ts#L173-L174",
       "variantName": "tdigest_percentiles"
     },
     {
@@ -69307,7 +69377,7 @@
         "namespace": "_types.aggregations"
       },
       "properties": [],
-      "specLocation": "_types/aggregations/Aggregate.ts#L175-L176",
+      "specLocation": "_types/aggregations/Aggregate.ts#L176-L177",
       "variantName": "tdigest_percentile_ranks"
     },
     {
@@ -69323,7 +69393,7 @@
         "namespace": "_types.aggregations"
       },
       "properties": [],
-      "specLocation": "_types/aggregations/Aggregate.ts#L178-L179",
+      "specLocation": "_types/aggregations/Aggregate.ts#L179-L180",
       "variantName": "percentiles_bucket"
     },
     {
@@ -69339,7 +69409,7 @@
         "namespace": "_types.aggregations"
       },
       "properties": [],
-      "specLocation": "_types/aggregations/Aggregate.ts#L194-L195",
+      "specLocation": "_types/aggregations/Aggregate.ts#L195-L196",
       "variantName": "median_absolute_deviation"
     },
     {
@@ -69391,7 +69461,7 @@
           }
         }
       ],
-      "specLocation": "_types/aggregations/Aggregate.ts#L183-L192"
+      "specLocation": "_types/aggregations/Aggregate.ts#L184-L193"
     },
     {
       "inherits": {
@@ -69406,7 +69476,7 @@
         "namespace": "_types.aggregations"
       },
       "properties": [],
-      "specLocation": "_types/aggregations/Aggregate.ts#L197-L198",
+      "specLocation": "_types/aggregations/Aggregate.ts#L198-L199",
       "variantName": "min"
     },
     {
@@ -69422,7 +69492,7 @@
         "namespace": "_types.aggregations"
       },
       "properties": [],
-      "specLocation": "_types/aggregations/Aggregate.ts#L200-L201",
+      "specLocation": "_types/aggregations/Aggregate.ts#L201-L202",
       "variantName": "max"
     },
     {
@@ -69439,7 +69509,7 @@
         "namespace": "_types.aggregations"
       },
       "properties": [],
-      "specLocation": "_types/aggregations/Aggregate.ts#L203-L207",
+      "specLocation": "_types/aggregations/Aggregate.ts#L204-L208",
       "variantName": "sum"
     },
     {
@@ -69455,7 +69525,7 @@
         "namespace": "_types.aggregations"
       },
       "properties": [],
-      "specLocation": "_types/aggregations/Aggregate.ts#L209-L210",
+      "specLocation": "_types/aggregations/Aggregate.ts#L210-L211",
       "variantName": "avg"
     },
     {
@@ -69472,7 +69542,7 @@
         "namespace": "_types.aggregations"
       },
       "properties": [],
-      "specLocation": "_types/aggregations/Aggregate.ts#L212-L216",
+      "specLocation": "_types/aggregations/Aggregate.ts#L213-L217",
       "variantName": "weighted_avg"
     },
     {
@@ -69489,7 +69559,7 @@
         "namespace": "_types.aggregations"
       },
       "properties": [],
-      "specLocation": "_types/aggregations/Aggregate.ts#L218-L222",
+      "specLocation": "_types/aggregations/Aggregate.ts#L219-L223",
       "variantName": "value_count"
     },
     {
@@ -69505,7 +69575,7 @@
         "namespace": "_types.aggregations"
       },
       "properties": [],
-      "specLocation": "_types/aggregations/Aggregate.ts#L224-L225",
+      "specLocation": "_types/aggregations/Aggregate.ts#L225-L226",
       "variantName": "simple_value"
     },
     {
@@ -69544,7 +69614,7 @@
           }
         }
       ],
-      "specLocation": "_types/aggregations/Aggregate.ts#L227-L231",
+      "specLocation": "_types/aggregations/Aggregate.ts#L228-L232",
       "variantName": "derivative"
     },
     {
@@ -69575,7 +69645,7 @@
           }
         }
       ],
-      "specLocation": "_types/aggregations/Aggregate.ts#L233-L236",
+      "specLocation": "_types/aggregations/Aggregate.ts#L234-L237",
       "variantName": "bucket_metric_value"
     },
     {
@@ -69728,7 +69798,7 @@
           }
         }
       ],
-      "specLocation": "_types/aggregations/Aggregate.ts#L240-L255",
+      "specLocation": "_types/aggregations/Aggregate.ts#L241-L256",
       "variantName": "stats"
     },
     {
@@ -69744,7 +69814,7 @@
         "namespace": "_types.aggregations"
       },
       "properties": [],
-      "specLocation": "_types/aggregations/Aggregate.ts#L257-L258",
+      "specLocation": "_types/aggregations/Aggregate.ts#L258-L259",
       "variantName": "stats_bucket"
     },
     {
@@ -69999,7 +70069,7 @@
           }
         }
       ],
-      "specLocation": "_types/aggregations/Aggregate.ts#L278-L296",
+      "specLocation": "_types/aggregations/Aggregate.ts#L279-L297",
       "variantName": "extended_stats"
     },
     {
@@ -70148,7 +70218,7 @@
           }
         }
       ],
-      "specLocation": "_types/aggregations/Aggregate.ts#L260-L267"
+      "specLocation": "_types/aggregations/Aggregate.ts#L261-L268"
     },
     {
       "kind": "interface",
@@ -70224,7 +70294,7 @@
           }
         }
       ],
-      "specLocation": "_types/aggregations/Aggregate.ts#L269-L276"
+      "specLocation": "_types/aggregations/Aggregate.ts#L270-L277"
     },
     {
       "inherits": {
@@ -70239,7 +70309,7 @@
         "namespace": "_types.aggregations"
       },
       "properties": [],
-      "specLocation": "_types/aggregations/Aggregate.ts#L298-L299",
+      "specLocation": "_types/aggregations/Aggregate.ts#L299-L300",
       "variantName": "extended_stats_bucket"
     },
     {
@@ -70267,7 +70337,7 @@
           }
         }
       ],
-      "specLocation": "_types/aggregations/Aggregate.ts#L303-L306",
+      "specLocation": "_types/aggregations/Aggregate.ts#L304-L307",
       "variantName": "geo_bounds"
     },
     {
@@ -70306,7 +70376,7 @@
           }
         }
       ],
-      "specLocation": "_types/aggregations/Aggregate.ts#L308-L312",
+      "specLocation": "_types/aggregations/Aggregate.ts#L309-L313",
       "variantName": "geo_centroid"
     },
     {
@@ -70331,7 +70401,7 @@
         "namespace": "_types.aggregations"
       },
       "properties": [],
-      "specLocation": "_types/aggregations/Aggregate.ts#L342-L343",
+      "specLocation": "_types/aggregations/Aggregate.ts#L343-L344",
       "variantName": "histogram"
     },
     {
@@ -70374,7 +70444,7 @@
           }
         }
       ],
-      "specLocation": "_types/aggregations/Aggregate.ts#L327-L329"
+      "specLocation": "_types/aggregations/Aggregate.ts#L328-L330"
     },
     {
       "inherits": {
@@ -70398,7 +70468,7 @@
         "namespace": "_types.aggregations"
       },
       "properties": [],
-      "specLocation": "_types/aggregations/Aggregate.ts#L350-L351",
+      "specLocation": "_types/aggregations/Aggregate.ts#L351-L352",
       "variantName": "date_histogram"
     },
     {
@@ -70435,7 +70505,7 @@
           }
         }
       ],
-      "specLocation": "_types/aggregations/Aggregate.ts#L358-L362",
+      "specLocation": "_types/aggregations/Aggregate.ts#L359-L363",
       "variantName": "auto_date_histogram"
     },
     {
@@ -70460,7 +70530,7 @@
         "namespace": "_types.aggregations"
       },
       "properties": [],
-      "specLocation": "_types/aggregations/Aggregate.ts#L364-L366",
+      "specLocation": "_types/aggregations/Aggregate.ts#L365-L367",
       "variantName": "variable_width_histogram"
     },
     {
@@ -70486,7 +70556,7 @@
         "namespace": "_types.aggregations"
       },
       "properties": [],
-      "specLocation": "_types/aggregations/Aggregate.ts#L386-L391",
+      "specLocation": "_types/aggregations/Aggregate.ts#L387-L392",
       "variantName": "sterms"
     },
     {
@@ -70540,7 +70610,7 @@
           }
         }
       ],
-      "specLocation": "_types/aggregations/Aggregate.ts#L379-L384"
+      "specLocation": "_types/aggregations/Aggregate.ts#L380-L385"
     },
     {
       "description": "Result of a `terms` aggregation when the field is some kind of whole number like a integer, long, or a date.",
@@ -70565,7 +70635,7 @@
         "namespace": "_types.aggregations"
       },
       "properties": [],
-      "specLocation": "_types/aggregations/Aggregate.ts#L401-L406",
+      "specLocation": "_types/aggregations/Aggregate.ts#L402-L407",
       "variantName": "lterms"
     },
     {
@@ -70591,7 +70661,7 @@
         "namespace": "_types.aggregations"
       },
       "properties": [],
-      "specLocation": "_types/aggregations/Aggregate.ts#L413-L418",
+      "specLocation": "_types/aggregations/Aggregate.ts#L414-L419",
       "variantName": "dterms"
     },
     {
@@ -70617,7 +70687,7 @@
         "namespace": "_types.aggregations"
       },
       "properties": [],
-      "specLocation": "_types/aggregations/Aggregate.ts#L425-L431",
+      "specLocation": "_types/aggregations/Aggregate.ts#L426-L432",
       "variantName": "umterms"
     },
     {
@@ -70643,7 +70713,7 @@
         "namespace": "_types.aggregations"
       },
       "properties": [],
-      "specLocation": "_types/aggregations/Aggregate.ts#L433-L438",
+      "specLocation": "_types/aggregations/Aggregate.ts#L434-L439",
       "variantName": "lrareterms"
     },
     {
@@ -70669,7 +70739,7 @@
         "namespace": "_types.aggregations"
       },
       "properties": [],
-      "specLocation": "_types/aggregations/Aggregate.ts#L445-L449",
+      "specLocation": "_types/aggregations/Aggregate.ts#L446-L450",
       "variantName": "srareterms"
     },
     {
@@ -70695,7 +70765,7 @@
         "namespace": "_types.aggregations"
       },
       "properties": [],
-      "specLocation": "_types/aggregations/Aggregate.ts#L455-L461",
+      "specLocation": "_types/aggregations/Aggregate.ts#L456-L462",
       "variantName": "umrareterms"
     },
     {
@@ -70720,7 +70790,7 @@
         "namespace": "_types.aggregations"
       },
       "properties": [],
-      "specLocation": "_types/aggregations/Aggregate.ts#L463-L465",
+      "specLocation": "_types/aggregations/Aggregate.ts#L464-L466",
       "variantName": "multi_terms"
     },
     {
@@ -70739,7 +70809,7 @@
         "namespace": "_types.aggregations"
       },
       "properties": [],
-      "specLocation": "_types/aggregations/Aggregate.ts#L487-L488",
+      "specLocation": "_types/aggregations/Aggregate.ts#L488-L489",
       "variantName": "missing"
     },
     {
@@ -70799,7 +70869,7 @@
           }
         }
       ],
-      "specLocation": "_types/aggregations/Aggregate.ts#L475-L485"
+      "specLocation": "_types/aggregations/Aggregate.ts#L476-L486"
     },
     {
       "attachedBehaviors": [
@@ -70817,7 +70887,7 @@
         "namespace": "_types.aggregations"
       },
       "properties": [],
-      "specLocation": "_types/aggregations/Aggregate.ts#L490-L491",
+      "specLocation": "_types/aggregations/Aggregate.ts#L491-L492",
       "variantName": "nested"
     },
     {
@@ -70836,7 +70906,7 @@
         "namespace": "_types.aggregations"
       },
       "properties": [],
-      "specLocation": "_types/aggregations/Aggregate.ts#L493-L494",
+      "specLocation": "_types/aggregations/Aggregate.ts#L494-L495",
       "variantName": "reverse_nested"
     },
     {
@@ -70855,7 +70925,7 @@
         "namespace": "_types.aggregations"
       },
       "properties": [],
-      "specLocation": "_types/aggregations/Aggregate.ts#L496-L497",
+      "specLocation": "_types/aggregations/Aggregate.ts#L497-L498",
       "variantName": "global"
     },
     {
@@ -70874,7 +70944,7 @@
         "namespace": "_types.aggregations"
       },
       "properties": [],
-      "specLocation": "_types/aggregations/Aggregate.ts#L499-L500",
+      "specLocation": "_types/aggregations/Aggregate.ts#L500-L501",
       "variantName": "filter"
     },
     {
@@ -70893,7 +70963,7 @@
         "namespace": "_types.aggregations"
       },
       "properties": [],
-      "specLocation": "_types/aggregations/Aggregate.ts#L783-L784",
+      "specLocation": "_types/aggregations/Aggregate.ts#L792-L793",
       "variantName": "children"
     },
     {
@@ -70912,7 +70982,7 @@
         "namespace": "_types.aggregations"
       },
       "properties": [],
-      "specLocation": "_types/aggregations/Aggregate.ts#L786-L787",
+      "specLocation": "_types/aggregations/Aggregate.ts#L795-L796",
       "variantName": "parent"
     },
     {
@@ -70931,7 +71001,7 @@
         "namespace": "_types.aggregations"
       },
       "properties": [],
-      "specLocation": "_types/aggregations/Aggregate.ts#L502-L503",
+      "specLocation": "_types/aggregations/Aggregate.ts#L503-L504",
       "variantName": "sampler"
     },
     {
@@ -70950,7 +71020,7 @@
         "namespace": "_types.aggregations"
       },
       "properties": [],
-      "specLocation": "_types/aggregations/Aggregate.ts#L505-L506",
+      "specLocation": "_types/aggregations/Aggregate.ts#L506-L507",
       "variantName": "unmapped_sampler"
     },
     {
@@ -70975,7 +71045,7 @@
         "namespace": "_types.aggregations"
       },
       "properties": [],
-      "specLocation": "_types/aggregations/Aggregate.ts#L510-L512",
+      "specLocation": "_types/aggregations/Aggregate.ts#L511-L513",
       "variantName": "geohash_grid"
     },
     {
@@ -71000,7 +71070,7 @@
         "namespace": "_types.aggregations"
       },
       "properties": [],
-      "specLocation": "_types/aggregations/Aggregate.ts#L518-L520",
+      "specLocation": "_types/aggregations/Aggregate.ts#L519-L521",
       "variantName": "geotile_grid"
     },
     {
@@ -71025,7 +71095,7 @@
         "namespace": "_types.aggregations"
       },
       "properties": [],
-      "specLocation": "_types/aggregations/Aggregate.ts#L526-L527",
+      "specLocation": "_types/aggregations/Aggregate.ts#L527-L528",
       "variantName": "geohex_grid"
     },
     {
@@ -71050,7 +71120,7 @@
         "namespace": "_types.aggregations"
       },
       "properties": [],
-      "specLocation": "_types/aggregations/Aggregate.ts#L535-L536",
+      "specLocation": "_types/aggregations/Aggregate.ts#L536-L537",
       "variantName": "range"
     },
     {
@@ -71067,7 +71137,7 @@
         "namespace": "_types.aggregations"
       },
       "properties": [],
-      "specLocation": "_types/aggregations/Aggregate.ts#L547-L552",
+      "specLocation": "_types/aggregations/Aggregate.ts#L548-L553",
       "variantName": "date_range"
     },
     {
@@ -71084,7 +71154,7 @@
         "namespace": "_types.aggregations"
       },
       "properties": [],
-      "specLocation": "_types/aggregations/Aggregate.ts#L554-L558",
+      "specLocation": "_types/aggregations/Aggregate.ts#L555-L559",
       "variantName": "geo_distance"
     },
     {
@@ -71109,7 +71179,7 @@
         "namespace": "_types.aggregations"
       },
       "properties": [],
-      "specLocation": "_types/aggregations/Aggregate.ts#L560-L562",
+      "specLocation": "_types/aggregations/Aggregate.ts#L561-L563",
       "variantName": "ip_range"
     },
     {
@@ -71134,7 +71204,7 @@
         "namespace": "_types.aggregations"
       },
       "properties": [],
-      "specLocation": "_types/aggregations/Aggregate.ts#L633-L634",
+      "specLocation": "_types/aggregations/Aggregate.ts#L634-L635",
       "variantName": "ip_prefix"
     },
     {
@@ -71159,7 +71229,7 @@
         "namespace": "_types.aggregations"
       },
       "properties": [],
-      "specLocation": "_types/aggregations/Aggregate.ts#L572-L573",
+      "specLocation": "_types/aggregations/Aggregate.ts#L573-L574",
       "variantName": "filters"
     },
     {
@@ -71184,7 +71254,7 @@
         "namespace": "_types.aggregations"
       },
       "properties": [],
-      "specLocation": "_types/aggregations/Aggregate.ts#L577-L579",
+      "specLocation": "_types/aggregations/Aggregate.ts#L578-L580",
       "variantName": "adjacency_matrix"
     },
     {
@@ -71209,7 +71279,7 @@
         "namespace": "_types.aggregations"
       },
       "properties": [],
-      "specLocation": "_types/aggregations/Aggregate.ts#L592-L594",
+      "specLocation": "_types/aggregations/Aggregate.ts#L593-L595",
       "variantName": "siglterms"
     },
     {
@@ -71263,7 +71333,7 @@
           }
         }
       ],
-      "specLocation": "_types/aggregations/Aggregate.ts#L585-L590"
+      "specLocation": "_types/aggregations/Aggregate.ts#L586-L591"
     },
     {
       "inherits": {
@@ -71287,7 +71357,7 @@
         "namespace": "_types.aggregations"
       },
       "properties": [],
-      "specLocation": "_types/aggregations/Aggregate.ts#L606-L608",
+      "specLocation": "_types/aggregations/Aggregate.ts#L607-L609",
       "variantName": "sigsterms"
     },
     {
@@ -71313,7 +71383,7 @@
         "namespace": "_types.aggregations"
       },
       "properties": [],
-      "specLocation": "_types/aggregations/Aggregate.ts#L614-L620",
+      "specLocation": "_types/aggregations/Aggregate.ts#L615-L621",
       "variantName": "umsigterms"
     },
     {
@@ -71350,7 +71420,7 @@
           }
         }
       ],
-      "specLocation": "_types/aggregations/Aggregate.ts#L622-L627",
+      "specLocation": "_types/aggregations/Aggregate.ts#L623-L628",
       "variantName": "composite"
     },
     {
@@ -71375,8 +71445,33 @@
         "namespace": "_types.aggregations"
       },
       "properties": [],
-      "specLocation": "_types/aggregations/Aggregate.ts#L643-L644",
+      "specLocation": "_types/aggregations/Aggregate.ts#L644-L645",
       "variantName": "frequent_item_sets"
+    },
+    {
+      "inherits": {
+        "generics": [
+          {
+            "kind": "instance_of",
+            "type": {
+              "name": "TimeSeriesBucket",
+              "namespace": "_types.aggregations"
+            }
+          }
+        ],
+        "type": {
+          "name": "MultiBucketAggregateBase",
+          "namespace": "_types.aggregations"
+        }
+      },
+      "kind": "interface",
+      "name": {
+        "name": "TimeSeriesAggregate",
+        "namespace": "_types.aggregations"
+      },
+      "properties": [],
+      "specLocation": "_types/aggregations/Aggregate.ts#L652-L653",
+      "variantName": "time_series"
     },
     {
       "inherits": {
@@ -71399,7 +71494,7 @@
           }
         }
       ],
-      "specLocation": "_types/aggregations/Aggregate.ts#L653-L656",
+      "specLocation": "_types/aggregations/Aggregate.ts#L662-L665",
       "variantName": "scripted_metric"
     },
     {
@@ -71432,7 +71527,7 @@
           }
         }
       ],
-      "specLocation": "_types/aggregations/Aggregate.ts#L658-L661",
+      "specLocation": "_types/aggregations/Aggregate.ts#L667-L670",
       "variantName": "top_hits"
     },
     {
@@ -71526,7 +71621,7 @@
           }
         }
       ],
-      "specLocation": "_types/aggregations/Aggregate.ts#L663-L677",
+      "specLocation": "_types/aggregations/Aggregate.ts#L672-L686",
       "variantName": "inference"
     },
     {
@@ -71573,7 +71668,7 @@
           }
         }
       ],
-      "specLocation": "_types/aggregations/Aggregate.ts#L685-L689"
+      "specLocation": "_types/aggregations/Aggregate.ts#L694-L698"
     },
     {
       "kind": "interface",
@@ -71605,7 +71700,7 @@
           }
         }
       ],
-      "specLocation": "_types/aggregations/Aggregate.ts#L691-L694"
+      "specLocation": "_types/aggregations/Aggregate.ts#L700-L703"
     },
     {
       "kind": "interface",
@@ -71648,7 +71743,7 @@
           }
         }
       ],
-      "specLocation": "_types/aggregations/Aggregate.ts#L679-L683"
+      "specLocation": "_types/aggregations/Aggregate.ts#L688-L692"
     },
     {
       "inherits": {
@@ -71834,7 +71929,7 @@
           }
         }
       ],
-      "specLocation": "_types/aggregations/Aggregate.ts#L700-L711",
+      "specLocation": "_types/aggregations/Aggregate.ts#L709-L720",
       "variantName": "string_stats"
     },
     {
@@ -72005,7 +72100,7 @@
           }
         }
       ],
-      "specLocation": "_types/aggregations/Aggregate.ts#L713-L729",
+      "specLocation": "_types/aggregations/Aggregate.ts#L722-L738",
       "variantName": "boxplot"
     },
     {
@@ -72036,7 +72131,7 @@
           }
         }
       ],
-      "specLocation": "_types/aggregations/Aggregate.ts#L731-L734",
+      "specLocation": "_types/aggregations/Aggregate.ts#L740-L743",
       "variantName": "top_metrics"
     },
     {
@@ -72107,7 +72202,7 @@
           }
         }
       ],
-      "specLocation": "_types/aggregations/Aggregate.ts#L736-L740"
+      "specLocation": "_types/aggregations/Aggregate.ts#L745-L749"
     },
     {
       "inherits": {
@@ -72157,7 +72252,7 @@
           }
         }
       ],
-      "specLocation": "_types/aggregations/Aggregate.ts#L742-L746",
+      "specLocation": "_types/aggregations/Aggregate.ts#L751-L755",
       "variantName": "t_test"
     },
     {
@@ -72196,7 +72291,7 @@
           }
         }
       ],
-      "specLocation": "_types/aggregations/Aggregate.ts#L748-L752",
+      "specLocation": "_types/aggregations/Aggregate.ts#L757-L761",
       "variantName": "rate"
     },
     {
@@ -72236,7 +72331,7 @@
           }
         }
       ],
-      "specLocation": "_types/aggregations/Aggregate.ts#L754-L762",
+      "specLocation": "_types/aggregations/Aggregate.ts#L763-L771",
       "variantName": "simple_long_value"
     },
     {
@@ -72278,7 +72373,7 @@
           }
         }
       ],
-      "specLocation": "_types/aggregations/Aggregate.ts#L764-L768",
+      "specLocation": "_types/aggregations/Aggregate.ts#L773-L777",
       "variantName": "matrix_stats"
     },
     {
@@ -72399,7 +72494,7 @@
           }
         }
       ],
-      "specLocation": "_types/aggregations/Aggregate.ts#L770-L779"
+      "specLocation": "_types/aggregations/Aggregate.ts#L779-L788"
     },
     {
       "inherits": {
@@ -72444,7 +72539,7 @@
           }
         }
       ],
-      "specLocation": "_types/aggregations/Aggregate.ts#L791-L798",
+      "specLocation": "_types/aggregations/Aggregate.ts#L800-L807",
       "variantName": "geo_line"
     },
     {

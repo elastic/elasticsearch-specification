@@ -981,6 +981,18 @@ export class TermsAggregation extends BucketAggregationBase {
   format?: string
 }
 
+export class TimeSeriesAggregation extends BucketAggregationBase {
+  /**
+   * The maximum number of results to return.
+   * @server_default 10000
+   */
+  size?: integer
+  /**
+   * Set to `true` to associate a unique string key with each bucket and returns the ranges as a hash rather than an array.
+   */
+  keyed?: boolean
+}
+
 // Note: ES is very lazy when parsing this data type: it accepts any number of properties in the objects below,
 // but will only keep the *last* property in JSON document order and ignore others.
 // This means that something like `"order": { "downloads": "desc", "_key": "asc" }` will actually be interpreted
