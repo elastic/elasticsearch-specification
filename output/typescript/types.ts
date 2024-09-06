@@ -4225,7 +4225,6 @@ export interface AggregationsTimeSeriesAggregation extends AggregationsBucketAgg
 
 export interface AggregationsTimeSeriesBucketKeys extends AggregationsMultiBucketBase {
   key: Record<Field, FieldValue>
-  doc_count: long
 }
 export type AggregationsTimeSeriesBucket = AggregationsTimeSeriesBucketKeys
   & { [property: string]: AggregationsAggregate | Record<Field, FieldValue> | long }
