@@ -495,6 +495,7 @@ search-aggregations-metrics-string-stats-aggregation,https://www.elastic.co/guid
 search-aggregations-metrics-sum-aggregation,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/search-aggregations-metrics-sum-aggregation.html
 search-aggregations-pipeline-sum-bucket-aggregation,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/search-aggregations-pipeline-sum-bucket-aggregation.html
 search-aggregations-bucket-terms-aggregation,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/search-aggregations-bucket-terms-aggregation.html
+search-aggregations-bucket-time-series-aggregation,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/search-aggregations-bucket-time-series-aggregation.html
 search-aggregations-metrics-top-hits-aggregation,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/search-aggregations-metrics-top-hits-aggregation.html
 search-aggregations-metrics-ttest-aggregation,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/search-aggregations-metrics-ttest-aggregation.html
 search-aggregations-metrics-top-metrics,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/search-aggregations-metrics-top-metrics.html
