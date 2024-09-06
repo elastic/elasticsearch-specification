@@ -404,6 +404,7 @@ query-dsl-wildcard-query,https://www.elastic.co/guide/en/elasticsearch/reference
 query-dsl-wrapper-query,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/query-dsl-wrapper-query.html
 query-dsl,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/query-dsl.html
 realtime,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/docs-get.html#realtime
+redact-processor,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/redact-processor.html
 regexp-syntax,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/regexp-syntax.html
 remove-processor,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/remove-processor.html
 rename-processor,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/rename-processor.html
