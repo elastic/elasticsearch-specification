@@ -8853,6 +8853,7 @@ export interface ClusterAllocationExplainClusterInfo {
 export interface ClusterAllocationExplainCurrentNode {
   id: Id
   name: Name
+  roles: NodeRole[]
   attributes: Record<string, string>
   transport_address: TransportAddress
   weight_ranking: integer
@@ -8875,6 +8876,7 @@ export interface ClusterAllocationExplainNodeAllocationExplanation {
   node_decision: ClusterAllocationExplainDecision
   node_id: Id
   node_name: Name
+  roles: NodeRole[]
   store?: ClusterAllocationExplainAllocationStore
   transport_address: TransportAddress
   weight_ranking: integer

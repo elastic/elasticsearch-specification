@@ -90257,7 +90257,7 @@
         "name": "AllocationExplainDecision",
         "namespace": "cluster.allocation_explain"
       },
-      "specLocation": "cluster/allocation_explain/types.ts#L32-L37"
+      "specLocation": "cluster/allocation_explain/types.ts#L33-L38"
     },
     {
       "kind": "enum",
@@ -90291,7 +90291,7 @@
         "name": "Decision",
         "namespace": "cluster.allocation_explain"
       },
-      "specLocation": "cluster/allocation_explain/types.ts#L86-L95"
+      "specLocation": "cluster/allocation_explain/types.ts#L92-L101"
     },
     {
       "kind": "enum",
@@ -90346,7 +90346,7 @@
         "name": "UnassignedInformationReason",
         "namespace": "cluster.allocation_explain"
       },
-      "specLocation": "cluster/allocation_explain/types.ts#L127-L146"
+      "specLocation": "cluster/allocation_explain/types.ts#L138-L157"
     },
     {
       "kind": "type_alias",
