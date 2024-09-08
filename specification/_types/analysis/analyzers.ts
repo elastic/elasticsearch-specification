@@ -22,8 +22,8 @@ import { integer } from '@_types/Numeric'
 import { IcuAnalyzer } from './icu-plugin'
 import { KuromojiAnalyzer } from './kuromoji-plugin'
 import { Language, SnowballLanguage } from './languages'
+import { NoriDecompoundMode } from './nori-plugin'
 import { StopWords } from './StopWords'
-import { NoriDecompoundMode } from './tokenizers'
 
 export class CustomAnalyzer {
   type: 'custom'

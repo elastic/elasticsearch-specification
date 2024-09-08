@@ -48667,6 +48667,9 @@
             "$ref": "#/components/schemas/_types.analysis:CharGroupTokenizer"
           },
           {
+            "$ref": "#/components/schemas/_types.analysis:ClassicTokenizer"
+          },
+          {
             "$ref": "#/components/schemas/_types.analysis:EdgeNGramTokenizer"
           },
           {
@@ -48682,13 +48685,25 @@
             "$ref": "#/components/schemas/_types.analysis:NGramTokenizer"
           },
           {
-            "$ref": "#/components/schemas/_types.analysis:NoriTokenizer"
-          },
-          {
             "$ref": "#/components/schemas/_types.analysis:PathHierarchyTokenizer"
           },
           {
+            "$ref": "#/components/schemas/_types.analysis:PathHierarchyPascalCaseTokenizer"
+          },
+          {
+            "$ref": "#/components/schemas/_types.analysis:PatternTokenizer"
+          },
+          {
+            "$ref": "#/components/schemas/_types.analysis:SimplePatternTokenizer"
+          },
+          {
+            "$ref": "#/components/schemas/_types.analysis:SimplePatternSplitTokenizer"
+          },
+          {
             "$ref": "#/components/schemas/_types.analysis:StandardTokenizer"
+          },
+          {
+            "$ref": "#/components/schemas/_types.analysis:ThaiTokenizer"
           },
           {
             "$ref": "#/components/schemas/_types.analysis:UaxEmailUrlTokenizer"
@@ -48697,13 +48712,13 @@
             "$ref": "#/components/schemas/_types.analysis:WhitespaceTokenizer"
           },
           {
+            "$ref": "#/components/schemas/_types.analysis:IcuTokenizer"
+          },
+          {
             "$ref": "#/components/schemas/_types.analysis:KuromojiTokenizer"
           },
           {
-            "$ref": "#/components/schemas/_types.analysis:PatternTokenizer"
-          },
-          {
-            "$ref": "#/components/schemas/_types.analysis:IcuTokenizer"
+            "$ref": "#/components/schemas/_types.analysis:NoriTokenizer"
           }
         ]
       },
@@ -48746,6 +48761,30 @@
           }
         }
       },
+      "_types.analysis:ClassicTokenizer": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/_types.analysis:TokenizerBase"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "type": {
+                "type": "string",
+                "enum": [
+                  "classic"
+                ]
+              },
+              "max_token_length": {
+                "type": "number"
+              }
+            },
+            "required": [
+              "type"
+            ]
+          }
+        ]
+      },
       "_types.analysis:EdgeNGramTokenizer": {
         "allOf": [
           {
@@ -48779,8 +48818,7 @@
             "required": [
               "type",
               "max_gram",
-              "min_gram",
-              "token_chars"
+              "min_gram"
             ]
           }
         ]
@@ -48896,44 +48934,7 @@
             "required": [
               "type",
               "max_gram",
-              "min_gram",
-              "token_chars"
-            ]
-          }
-        ]
-      },
-      "_types.analysis:NoriTokenizer": {
-        "allOf": [
-          {
-            "$ref": "#/components/schemas/_types.analysis:TokenizerBase"
-          },
-          {
-            "type": "object",
-            "properties": {
-              "type": {
-                "type": "string",
-                "enum": [
-                  "nori_tokenizer"
-                ]
-              },
-              "decompound_mode": {
-                "$ref": "#/components/schemas/_types.analysis:NoriDecompoundMode"
-              },
-              "discard_punctuation": {
-                "type": "boolean"
-              },
-              "user_dictionary": {
-                "type": "string"
-              },
-              "user_dictionary_rules": {
-                "type": "array",
-                "items": {
-                  "type": "string"
-                }
-              }
-            },
-            "required": [
-              "type"
+              "min_gram"
             ]
           }
         ]
@@ -48974,6 +48975,120 @@
           }
         ]
       },
+      "_types.analysis:PathHierarchyPascalCaseTokenizer": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/_types.analysis:TokenizerBase"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "type": {
+                "type": "string",
+                "enum": [
+                  "PathHierarchy"
+                ]
+              },
+              "buffer_size": {
+                "$ref": "#/components/schemas/_spec_utils:Stringifiedinteger"
+              },
+              "delimiter": {
+                "type": "string"
+              },
+              "replacement": {
+                "type": "string"
+              },
+              "reverse": {
+                "$ref": "#/components/schemas/_spec_utils:Stringifiedboolean"
+              },
+              "skip": {
+                "$ref": "#/components/schemas/_spec_utils:Stringifiedinteger"
+              }
+            },
+            "required": [
+              "type"
+            ]
+          }
+        ]
+      },
+      "_types.analysis:PatternTokenizer": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/_types.analysis:TokenizerBase"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "type": {
+                "type": "string",
+                "enum": [
+                  "pattern"
+                ]
+              },
+              "flags": {
+                "type": "string"
+              },
+              "group": {
+                "type": "number"
+              },
+              "pattern": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "type"
+            ]
+          }
+        ]
+      },
+      "_types.analysis:SimplePatternTokenizer": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/_types.analysis:TokenizerBase"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "type": {
+                "type": "string",
+                "enum": [
+                  "simple_pattern"
+                ]
+              },
+              "pattern": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "type"
+            ]
+          }
+        ]
+      },
+      "_types.analysis:SimplePatternSplitTokenizer": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/_types.analysis:TokenizerBase"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "type": {
+                "type": "string",
+                "enum": [
+                  "simple_pattern_split"
+                ]
+              },
+              "pattern": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "type"
+            ]
+          }
+        ]
+      },
       "_types.analysis:StandardTokenizer": {
         "allOf": [
           {
@@ -48990,6 +49105,27 @@
               },
               "max_token_length": {
                 "type": "number"
+              }
+            },
+            "required": [
+              "type"
+            ]
+          }
+        ]
+      },
+      "_types.analysis:ThaiTokenizer": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/_types.analysis:TokenizerBase"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "type": {
+                "type": "string",
+                "enum": [
+                  "thai"
+                ]
               }
             },
             "required": [
@@ -49046,6 +49182,31 @@
           }
         ]
       },
+      "_types.analysis:IcuTokenizer": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/_types.analysis:TokenizerBase"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "type": {
+                "type": "string",
+                "enum": [
+                  "icu_tokenizer"
+                ]
+              },
+              "rule_files": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "type",
+              "rule_files"
+            ]
+          }
+        ]
+      },
       "_types.analysis:KuromojiTokenizer": {
         "allOf": [
           {
@@ -49092,7 +49253,7 @@
           }
         ]
       },
-      "_types.analysis:PatternTokenizer": {
+      "_types.analysis:NoriTokenizer": {
         "allOf": [
           {
             "$ref": "#/components/schemas/_types.analysis:TokenizerBase"
@@ -49103,46 +49264,27 @@
               "type": {
                 "type": "string",
                 "enum": [
-                  "pattern"
+                  "nori_tokenizer"
                 ]
               },
-              "flags": {
+              "decompound_mode": {
+                "$ref": "#/components/schemas/_types.analysis:NoriDecompoundMode"
+              },
+              "discard_punctuation": {
+                "type": "boolean"
+              },
+              "user_dictionary": {
                 "type": "string"
               },
-              "group": {
-                "type": "number"
-              },
-              "pattern": {
-                "type": "string"
+              "user_dictionary_rules": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
               }
             },
             "required": [
               "type"
-            ]
-          }
-        ]
-      },
-      "_types.analysis:IcuTokenizer": {
-        "allOf": [
-          {
-            "$ref": "#/components/schemas/_types.analysis:TokenizerBase"
-          },
-          {
-            "type": "object",
-            "properties": {
-              "type": {
-                "type": "string",
-                "enum": [
-                  "icu_tokenizer"
-                ]
-              },
-              "rule_files": {
-                "type": "string"
-              }
-            },
-            "required": [
-              "type",
-              "rule_files"
             ]
           }
         ]

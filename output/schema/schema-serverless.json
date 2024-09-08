@@ -77343,7 +77343,7 @@
         "name": "NoriDecompoundMode",
         "namespace": "_types.analysis"
       },
-      "specLocation": "_types/analysis/tokenizers.ts#L74-L78"
+      "specLocation": "_types/analysis/nori-plugin.ts#L22-L26"
     },
     {
       "kind": "interface",
@@ -80462,7 +80462,7 @@
         "name": "TokenChar",
         "namespace": "_types.analysis"
       },
-      "specLocation": "_types/analysis/tokenizers.ts#L46-L53"
+      "specLocation": "_types/analysis/tokenizers.ts#L59-L66"
     },
     {
       "codegenNames": [
@@ -83745,7 +83745,7 @@
         "name": "Tokenizer",
         "namespace": "_types.analysis"
       },
-      "specLocation": "_types/analysis/tokenizers.ts#L119-L121",
+      "specLocation": "_types/analysis/tokenizers.ts#L146-L148",
       "type": {
         "items": [
           {
@@ -83772,13 +83772,20 @@
         "name": "TokenizerDefinition",
         "namespace": "_types.analysis"
       },
-      "specLocation": "_types/analysis/tokenizers.ts#L123-L141",
+      "specLocation": "_types/analysis/tokenizers.ts#L150-L174",
       "type": {
         "items": [
           {
             "kind": "instance_of",
             "type": {
               "name": "CharGroupTokenizer",
+              "namespace": "_types.analysis"
+            }
+          },
+          {
+            "kind": "instance_of",
+            "type": {
+              "name": "ClassicTokenizer",
               "namespace": "_types.analysis"
             }
           },
@@ -83820,13 +83827,6 @@
           {
             "kind": "instance_of",
             "type": {
-              "name": "NoriTokenizer",
-              "namespace": "_types.analysis"
-            }
-          },
-          {
-            "kind": "instance_of",
-            "type": {
               "name": "PathHierarchyTokenizer",
               "namespace": "_types.analysis"
             }
@@ -83834,7 +83834,42 @@
           {
             "kind": "instance_of",
             "type": {
+              "name": "PathHierarchyPascalCaseTokenizer",
+              "namespace": "_types.analysis"
+            }
+          },
+          {
+            "kind": "instance_of",
+            "type": {
+              "name": "PatternTokenizer",
+              "namespace": "_types.analysis"
+            }
+          },
+          {
+            "kind": "instance_of",
+            "type": {
+              "name": "SimplePatternTokenizer",
+              "namespace": "_types.analysis"
+            }
+          },
+          {
+            "kind": "instance_of",
+            "type": {
+              "name": "SimplePatternSplitTokenizer",
+              "namespace": "_types.analysis"
+            }
+          },
+          {
+            "kind": "instance_of",
+            "type": {
               "name": "StandardTokenizer",
+              "namespace": "_types.analysis"
+            }
+          },
+          {
+            "kind": "instance_of",
+            "type": {
+              "name": "ThaiTokenizer",
               "namespace": "_types.analysis"
             }
           },
@@ -83855,6 +83890,13 @@
           {
             "kind": "instance_of",
             "type": {
+              "name": "IcuTokenizer",
+              "namespace": "_types.analysis"
+            }
+          },
+          {
+            "kind": "instance_of",
+            "type": {
               "name": "KuromojiTokenizer",
               "namespace": "_types.analysis"
             }
@@ -83862,14 +83904,7 @@
           {
             "kind": "instance_of",
             "type": {
-              "name": "PatternTokenizer",
-              "namespace": "_types.analysis"
-            }
-          },
-          {
-            "kind": "instance_of",
-            "type": {
-              "name": "IcuTokenizer",
+              "name": "NoriTokenizer",
               "namespace": "_types.analysis"
             }
           }
@@ -83929,7 +83964,7 @@
           }
         }
       ],
-      "specLocation": "_types/analysis/tokenizers.ts#L55-L59"
+      "specLocation": "_types/analysis/tokenizers.ts#L31-L38"
     },
     {
       "kind": "interface",
@@ -83950,7 +83985,42 @@
           }
         }
       ],
-      "specLocation": "_types/analysis/tokenizers.ts#L26-L28"
+      "specLocation": "_types/analysis/tokenizers.ts#L27-L29"
+    },
+    {
+      "inherits": {
+        "type": {
+          "name": "TokenizerBase",
+          "namespace": "_types.analysis"
+        }
+      },
+      "kind": "interface",
+      "name": {
+        "name": "ClassicTokenizer",
+        "namespace": "_types.analysis"
+      },
+      "properties": [
+        {
+          "name": "type",
+          "required": true,
+          "type": {
+            "kind": "literal_value",
+            "value": "classic"
+          }
+        },
+        {
+          "name": "max_token_length",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "_types"
+            }
+          }
+        }
+      ],
+      "specLocation": "_types/analysis/tokenizers.ts#L40-L46"
     },
     {
       "inherits": {
@@ -84008,7 +84078,8 @@
         },
         {
           "name": "token_chars",
-          "required": true,
+          "required": false,
+          "serverDefault": [],
           "type": {
             "kind": "array_of",
             "value": {
@@ -84021,7 +84092,7 @@
           }
         }
       ],
-      "specLocation": "_types/analysis/tokenizers.ts#L30-L36"
+      "specLocation": "_types/analysis/tokenizers.ts#L48-L57"
     },
     {
       "inherits": {
@@ -84056,7 +84127,7 @@
           }
         }
       ],
-      "specLocation": "_types/analysis/tokenizers.ts#L61-L64"
+      "specLocation": "_types/analysis/tokenizers.ts#L68-L71"
     },
     {
       "inherits": {
@@ -84080,7 +84151,7 @@
           }
         }
       ],
-      "specLocation": "_types/analysis/tokenizers.ts#L66-L68"
+      "specLocation": "_types/analysis/tokenizers.ts#L73-L75"
     },
     {
       "inherits": {
@@ -84104,7 +84175,7 @@
           }
         }
       ],
-      "specLocation": "_types/analysis/tokenizers.ts#L70-L72"
+      "specLocation": "_types/analysis/tokenizers.ts#L77-L79"
     },
     {
       "inherits": {
@@ -84162,7 +84233,8 @@
         },
         {
           "name": "token_chars",
-          "required": true,
+          "required": false,
+          "serverDefault": [],
           "type": {
             "kind": "array_of",
             "value": {
@@ -84175,78 +84247,7 @@
           }
         }
       ],
-      "specLocation": "_types/analysis/tokenizers.ts#L38-L44"
-    },
-    {
-      "inherits": {
-        "type": {
-          "name": "TokenizerBase",
-          "namespace": "_types.analysis"
-        }
-      },
-      "kind": "interface",
-      "name": {
-        "name": "NoriTokenizer",
-        "namespace": "_types.analysis"
-      },
-      "properties": [
-        {
-          "name": "type",
-          "required": true,
-          "type": {
-            "kind": "literal_value",
-            "value": "nori_tokenizer"
-          }
-        },
-        {
-          "name": "decompound_mode",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "NoriDecompoundMode",
-              "namespace": "_types.analysis"
-            }
-          }
-        },
-        {
-          "name": "discard_punctuation",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "boolean",
-              "namespace": "_builtins"
-            }
-          }
-        },
-        {
-          "name": "user_dictionary",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "_builtins"
-            }
-          }
-        },
-        {
-          "name": "user_dictionary_rules",
-          "required": false,
-          "type": {
-            "kind": "array_of",
-            "value": {
-              "kind": "instance_of",
-              "type": {
-                "name": "string",
-                "namespace": "_builtins"
-              }
-            }
-          }
-        }
-      ],
-      "specLocation": "_types/analysis/tokenizers.ts#L80-L86"
+      "specLocation": "_types/analysis/tokenizers.ts#L81-L90"
     },
     {
       "inherits": {
@@ -84352,7 +84353,240 @@
           }
         }
       ],
-      "specLocation": "_types/analysis/tokenizers.ts#L88-L95"
+      "specLocation": "_types/analysis/tokenizers.ts#L92-L99"
+    },
+    {
+      "inherits": {
+        "type": {
+          "name": "TokenizerBase",
+          "namespace": "_types.analysis"
+        }
+      },
+      "kind": "interface",
+      "name": {
+        "name": "PathHierarchyPascalCaseTokenizer",
+        "namespace": "_types.analysis"
+      },
+      "properties": [
+        {
+          "name": "type",
+          "required": true,
+          "type": {
+            "kind": "literal_value",
+            "value": "PathHierarchy"
+          }
+        },
+        {
+          "name": "buffer_size",
+          "required": false,
+          "type": {
+            "generics": [
+              {
+                "kind": "instance_of",
+                "type": {
+                  "name": "integer",
+                  "namespace": "_types"
+                }
+              }
+            ],
+            "kind": "instance_of",
+            "type": {
+              "name": "Stringified",
+              "namespace": "_spec_utils"
+            }
+          }
+        },
+        {
+          "name": "delimiter",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "_builtins"
+            }
+          }
+        },
+        {
+          "name": "replacement",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "_builtins"
+            }
+          }
+        },
+        {
+          "name": "reverse",
+          "required": false,
+          "type": {
+            "generics": [
+              {
+                "kind": "instance_of",
+                "type": {
+                  "name": "boolean",
+                  "namespace": "_builtins"
+                }
+              }
+            ],
+            "kind": "instance_of",
+            "type": {
+              "name": "Stringified",
+              "namespace": "_spec_utils"
+            }
+          }
+        },
+        {
+          "name": "skip",
+          "required": false,
+          "type": {
+            "generics": [
+              {
+                "kind": "instance_of",
+                "type": {
+                  "name": "integer",
+                  "namespace": "_types"
+                }
+              }
+            ],
+            "kind": "instance_of",
+            "type": {
+              "name": "Stringified",
+              "namespace": "_spec_utils"
+            }
+          }
+        }
+      ],
+      "specLocation": "_types/analysis/tokenizers.ts#L101-L108"
+    },
+    {
+      "inherits": {
+        "type": {
+          "name": "TokenizerBase",
+          "namespace": "_types.analysis"
+        }
+      },
+      "kind": "interface",
+      "name": {
+        "name": "PatternTokenizer",
+        "namespace": "_types.analysis"
+      },
+      "properties": [
+        {
+          "name": "type",
+          "required": true,
+          "type": {
+            "kind": "literal_value",
+            "value": "pattern"
+          }
+        },
+        {
+          "name": "flags",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "_builtins"
+            }
+          }
+        },
+        {
+          "name": "group",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "pattern",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "_builtins"
+            }
+          }
+        }
+      ],
+      "specLocation": "_types/analysis/tokenizers.ts#L110-L115"
+    },
+    {
+      "inherits": {
+        "type": {
+          "name": "TokenizerBase",
+          "namespace": "_types.analysis"
+        }
+      },
+      "kind": "interface",
+      "name": {
+        "name": "SimplePatternTokenizer",
+        "namespace": "_types.analysis"
+      },
+      "properties": [
+        {
+          "name": "type",
+          "required": true,
+          "type": {
+            "kind": "literal_value",
+            "value": "simple_pattern"
+          }
+        },
+        {
+          "name": "pattern",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "_builtins"
+            }
+          }
+        }
+      ],
+      "specLocation": "_types/analysis/tokenizers.ts#L117-L120"
+    },
+    {
+      "inherits": {
+        "type": {
+          "name": "TokenizerBase",
+          "namespace": "_types.analysis"
+        }
+      },
+      "kind": "interface",
+      "name": {
+        "name": "SimplePatternSplitTokenizer",
+        "namespace": "_types.analysis"
+      },
+      "properties": [
+        {
+          "name": "type",
+          "required": true,
+          "type": {
+            "kind": "literal_value",
+            "value": "simple_pattern_split"
+          }
+        },
+        {
+          "name": "pattern",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "_builtins"
+            }
+          }
+        }
+      ],
+      "specLocation": "_types/analysis/tokenizers.ts#L122-L125"
     },
     {
       "inherits": {
@@ -84387,7 +84621,31 @@
           }
         }
       ],
-      "specLocation": "_types/analysis/tokenizers.ts#L104-L107"
+      "specLocation": "_types/analysis/tokenizers.ts#L127-L130"
+    },
+    {
+      "inherits": {
+        "type": {
+          "name": "TokenizerBase",
+          "namespace": "_types.analysis"
+        }
+      },
+      "kind": "interface",
+      "name": {
+        "name": "ThaiTokenizer",
+        "namespace": "_types.analysis"
+      },
+      "properties": [
+        {
+          "name": "type",
+          "required": true,
+          "type": {
+            "kind": "literal_value",
+            "value": "thai"
+          }
+        }
+      ],
+      "specLocation": "_types/analysis/tokenizers.ts#L132-L134"
     },
     {
       "inherits": {
@@ -84422,7 +84680,7 @@
           }
         }
       ],
-      "specLocation": "_types/analysis/tokenizers.ts#L109-L112"
+      "specLocation": "_types/analysis/tokenizers.ts#L136-L139"
     },
     {
       "inherits": {
@@ -84457,7 +84715,42 @@
           }
         }
       ],
-      "specLocation": "_types/analysis/tokenizers.ts#L114-L117"
+      "specLocation": "_types/analysis/tokenizers.ts#L141-L144"
+    },
+    {
+      "inherits": {
+        "type": {
+          "name": "TokenizerBase",
+          "namespace": "_types.analysis"
+        }
+      },
+      "kind": "interface",
+      "name": {
+        "name": "IcuTokenizer",
+        "namespace": "_types.analysis"
+      },
+      "properties": [
+        {
+          "name": "type",
+          "required": true,
+          "type": {
+            "kind": "literal_value",
+            "value": "icu_tokenizer"
+          }
+        },
+        {
+          "name": "rule_files",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "_builtins"
+            }
+          }
+        }
+      ],
+      "specLocation": "_types/analysis/icu-plugin.ts#L30-L33"
     },
     {
       "inherits": {
@@ -84572,7 +84865,7 @@
       },
       "kind": "interface",
       "name": {
-        "name": "PatternTokenizer",
+        "name": "NoriTokenizer",
         "namespace": "_types.analysis"
       },
       "properties": [
@@ -84581,11 +84874,33 @@
           "required": true,
           "type": {
             "kind": "literal_value",
-            "value": "pattern"
+            "value": "nori_tokenizer"
           }
         },
         {
-          "name": "flags",
+          "name": "decompound_mode",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "NoriDecompoundMode",
+              "namespace": "_types.analysis"
+            }
+          }
+        },
+        {
+          "name": "discard_punctuation",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "_builtins"
+            }
+          }
+        },
+        {
+          "name": "user_dictionary",
           "required": false,
           "type": {
             "kind": "instance_of",
@@ -84596,64 +84911,21 @@
           }
         },
         {
-          "name": "group",
+          "name": "user_dictionary_rules",
           "required": false,
           "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "integer",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "name": "pattern",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "_builtins"
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "_builtins"
+              }
             }
           }
         }
       ],
-      "specLocation": "_types/analysis/tokenizers.ts#L97-L102"
-    },
-    {
-      "inherits": {
-        "type": {
-          "name": "TokenizerBase",
-          "namespace": "_types.analysis"
-        }
-      },
-      "kind": "interface",
-      "name": {
-        "name": "IcuTokenizer",
-        "namespace": "_types.analysis"
-      },
-      "properties": [
-        {
-          "name": "type",
-          "required": true,
-          "type": {
-            "kind": "literal_value",
-            "value": "icu_tokenizer"
-          }
-        },
-        {
-          "name": "rule_files",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "_builtins"
-            }
-          }
-        }
-      ],
-      "specLocation": "_types/analysis/icu-plugin.ts#L30-L33"
+      "specLocation": "_types/analysis/nori-plugin.ts#L28-L34"
     },
     {
       "esQuirk": "This is a boolean that evolved into an enum. Boolean values should be accepted on reading, and\ntrue and false must be serialized as JSON booleans, or it may break Kibana (see elasticsearch-java#139)",

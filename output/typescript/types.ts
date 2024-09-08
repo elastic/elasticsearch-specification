@@ -4409,6 +4409,11 @@ export interface AnalysisCjkAnalyzer {
   stopwords_path?: string
 }
 
+export interface AnalysisClassicTokenizer extends AnalysisTokenizerBase {
+  type: 'classic'
+  max_token_length?: integer
+}
+
 export interface AnalysisCommonGramsTokenFilter extends AnalysisTokenFilterBase {
   type: 'common_grams'
   common_words?: string[]
@@ -4495,7 +4500,7 @@ export interface AnalysisEdgeNGramTokenizer extends AnalysisTokenizerBase {
   custom_token_chars?: string
   max_gram: integer
   min_gram: integer
-  token_chars: AnalysisTokenChar[]
+  token_chars?: AnalysisTokenChar[]
 }
 
 export interface AnalysisElisionTokenFilter extends AnalysisTokenFilterBase {
@@ -4838,7 +4843,7 @@ export interface AnalysisNGramTokenizer extends AnalysisTokenizerBase {
   custom_token_chars?: string
   max_gram: integer
   min_gram: integer
-  token_chars: AnalysisTokenChar[]
+  token_chars?: AnalysisTokenChar[]
 }
 
 export interface AnalysisNoriAnalyzer {
@@ -4871,6 +4876,15 @@ export interface AnalysisNorwegianAnalyzer {
   stopwords?: AnalysisStopWords
   stopwords_path?: string
   stem_exclusion?: string[]
+}
+
+export interface AnalysisPathHierarchyPascalCaseTokenizer extends AnalysisTokenizerBase {
+  type: 'PathHierarchy'
+  buffer_size?: SpecUtilsStringified<integer>
+  delimiter?: string
+  replacement?: string
+  reverse?: SpecUtilsStringified<boolean>
+  skip?: SpecUtilsStringified<integer>
 }
 
 export interface AnalysisPathHierarchyTokenizer extends AnalysisTokenizerBase {
@@ -5003,6 +5017,16 @@ export interface AnalysisSimpleAnalyzer {
   version?: VersionString
 }
 
+export interface AnalysisSimplePatternSplitTokenizer extends AnalysisTokenizerBase {
+  type: 'simple_pattern_split'
+  pattern?: string
+}
+
+export interface AnalysisSimplePatternTokenizer extends AnalysisTokenizerBase {
+  type: 'simple_pattern'
+  pattern?: string
+}
+
 export interface AnalysisSnowballAnalyzer {
   type: 'snowball'
   version?: VersionString
@@ -5110,6 +5134,10 @@ export interface AnalysisThaiAnalyzer {
   stopwords_path?: string
 }
 
+export interface AnalysisThaiTokenizer extends AnalysisTokenizerBase {
+  type: 'thai'
+}
+
 export type AnalysisTokenChar = 'letter' | 'digit' | 'whitespace' | 'punctuation' | 'symbol' | 'custom'
 
 export type AnalysisTokenFilter = string | AnalysisTokenFilterDefinition
@@ -5126,7 +5154,7 @@ export interface AnalysisTokenizerBase {
   version?: VersionString
 }
 
-export type AnalysisTokenizerDefinition = AnalysisCharGroupTokenizer | AnalysisEdgeNGramTokenizer | AnalysisKeywordTokenizer | AnalysisLetterTokenizer | AnalysisLowercaseTokenizer | AnalysisNGramTokenizer | AnalysisNoriTokenizer | AnalysisPathHierarchyTokenizer | AnalysisStandardTokenizer | AnalysisUaxEmailUrlTokenizer | AnalysisWhitespaceTokenizer | AnalysisKuromojiTokenizer | AnalysisPatternTokenizer | AnalysisIcuTokenizer
+export type AnalysisTokenizerDefinition = AnalysisCharGroupTokenizer | AnalysisClassicTokenizer | AnalysisEdgeNGramTokenizer | AnalysisKeywordTokenizer | AnalysisLetterTokenizer | AnalysisLowercaseTokenizer | AnalysisNGramTokenizer | AnalysisPathHierarchyTokenizer | AnalysisPathHierarchyPascalCaseTokenizer | AnalysisPatternTokenizer | AnalysisSimplePatternTokenizer | AnalysisSimplePatternSplitTokenizer | AnalysisStandardTokenizer | AnalysisThaiTokenizer | AnalysisUaxEmailUrlTokenizer | AnalysisWhitespaceTokenizer | AnalysisIcuTokenizer | AnalysisKuromojiTokenizer | AnalysisNoriTokenizer
 
 export interface AnalysisTrimTokenFilter extends AnalysisTokenFilterBase {
   type: 'trim'
