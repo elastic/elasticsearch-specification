@@ -20,8 +20,11 @@ use std::fmt::{Debug, Display, Formatter};
 use anyhow::anyhow;
 use derive_more::From;
 use indexmap::IndexMap;
+
 // Re-export crates whose types we expose publicly
-pub use once_cell;
+pub use ::once_cell;
+pub use ::indexmap;
+pub use ::anyhow;
 
 // Child modules
 pub mod builtins;
@@ -50,7 +53,6 @@ pub trait Documented {
     fn doc_url(&self) -> Option<&str>;
     fn doc_id(&self) -> Option<&str>;
     fn description(&self) -> Option<&str>;
-    fn since(&self) -> Option<&str>;
 }
 
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Eq, PartialOrd, Ord, Hash)]
@@ -241,7 +243,7 @@ pub struct Deprecation {
 }
 
 /// An API flavor
-#[derive(Debug, Clone, Serialize, Deserialize, Hash, PartialEq, Eq)]
+#[derive(Debug, Clone, Serialize, Deserialize, Hash, PartialEq, Eq, clap::ValueEnum)]
 #[serde(rename_all = "snake_case")]
 pub enum Flavor {
     Stack,
@@ -252,9 +254,9 @@ pub enum Flavor {
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(rename_all = "camelCase")]
 pub struct Availability {
-    since: Option<String>,
-    stability: Option<Stability>,
-    visibility: Option<Visibility>,
+    pub since: Option<String>,
+    pub stability: Option<Stability>,
+    pub visibility: Option<Visibility>,
 }
 
 /// The availability of an
@@ -313,9 +315,6 @@ pub struct Property {
     pub doc_id: Option<String>,
 
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub since: Option<String>,
-
-    #[serde(skip_serializing_if = "Option::is_none")]
     pub server_default: Option<ServerDefault>,
 
     #[serde(skip_serializing_if = "Option::is_none")]
@@ -323,9 +322,6 @@ pub struct Property {
 
     #[serde(skip_serializing_if = "Option::is_none")]
     pub availability: Option<Availabilities>,
-
-    #[serde(skip_serializing_if = "Option::is_none")]
-    pub stability: Option<Stability>,
 
     /// If specified takes precedence over `name` when generating code. `name` is always the value
     /// to be sent over the wire
@@ -356,10 +352,6 @@ impl Documented for Property {
 
     fn description(&self) -> Option<&str> {
         self.description.as_deref()
-    }
-
-    fn since(&self) -> Option<&str> {
-        self.since.as_deref()
     }
 }
 
@@ -536,10 +528,6 @@ impl Documented for BaseType {
     fn description(&self) -> Option<&str> {
         self.description.as_deref()
     }
-
-    fn since(&self) -> Option<&str> {
-        None
-    }
 }
 
 trait WithBaseType {
@@ -557,10 +545,6 @@ impl<T: WithBaseType> Documented for T {
 
     fn description(&self) -> Option<&str> {
         self.base().description()
-    }
-
-    fn since(&self) -> Option<&str> {
-        self.base().since()
     }
 }
 
@@ -843,20 +827,6 @@ pub struct Endpoint {
 
     pub urls: Vec<UrlTemplate>,
 
-    /// The version when this endpoint reached its current stability level.
-    /// Missing data means "forever", i.e. before any of the target client versions produced from this spec.
-    #[serde(skip_serializing_if = "Option::is_none")]
-    pub since: Option<String>,
-
-    #[serde(skip_serializing_if = "Option::is_none")]
-    pub stability: Option<Stability>,
-
-    #[serde(skip_serializing_if = "Option::is_none")]
-    pub visibility: Option<Visibility>,
-
-    #[serde(skip_serializing_if = "Option::is_none")]
-    pub feature_flag: Option<String>,
-
     #[serde(default, skip_serializing_if = "Vec::is_empty")]
     pub request_media_type: Vec<String>,
 
@@ -878,10 +848,6 @@ impl Documented for Endpoint {
 
     fn description(&self) -> Option<&str> {
         Some(self.description.as_str())
-    }
-
-    fn since(&self) -> Option<&str> {
-        self.since.as_deref()
     }
 }
 
