@@ -20,8 +20,11 @@ use std::fmt::{Debug, Display, Formatter};
 use anyhow::anyhow;
 use derive_more::From;
 use indexmap::IndexMap;
+
 // Re-export crates whose types we expose publicly
-pub use once_cell;
+pub use ::once_cell;
+pub use ::indexmap;
+pub use ::anyhow;
 
 // Child modules
 pub mod builtins;
