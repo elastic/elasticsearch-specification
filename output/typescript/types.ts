@@ -9931,8 +9931,10 @@ export type EqlSearchResponse<TEvent = unknown> = EqlEqlSearchResponseBase<TEven
 
 export type EqlSearchResultPosition = 'tail' | 'head'
 
+export type EsqlQueryEsqlFormat = 'csv' | 'json' | 'tsv' | 'txt' | 'yaml' | 'cbor' | 'smile' | 'arrow'
+
 export interface EsqlQueryRequest extends RequestBase {
-  format?: string
+  format?: EsqlQueryEsqlFormat
   delimiter?: string
   body?: {
     columnar?: boolean

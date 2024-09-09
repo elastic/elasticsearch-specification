@@ -18345,8 +18345,8 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
-              "namespace": "_builtins"
+              "name": "EsqlFormat",
+              "namespace": "esql.query"
             }
           }
         },
@@ -89905,6 +89905,40 @@
         "namespace": "eql.search"
       },
       "specLocation": "eql/search/types.ts#L20-L32"
+    },
+    {
+      "kind": "enum",
+      "members": [
+        {
+          "name": "csv"
+        },
+        {
+          "name": "json"
+        },
+        {
+          "name": "tsv"
+        },
+        {
+          "name": "txt"
+        },
+        {
+          "name": "yaml"
+        },
+        {
+          "name": "cbor"
+        },
+        {
+          "name": "smile"
+        },
+        {
+          "name": "arrow"
+        }
+      ],
+      "name": {
+        "name": "EsqlFormat",
+        "namespace": "esql.query"
+      },
+      "specLocation": "esql/query/QueryRequest.ts#L67-L76"
     },
     {
       "kind": "type_alias",
