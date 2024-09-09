@@ -9,15 +9,12 @@ publish = false
 [dependencies]
 clients_schema = {path="../clients_schema"}
 
-serde = { workspace = true, features = ["derive"] }
 serde_json = { workspace = true }
-serde_path_to_error = { workspace = true }
 serde_ignored = { workspace = true }
 openapiv3 = { workspace = true }
 anyhow = { workspace = true }
 indexmap = { workspace = true }
 convert_case = { workspace = true }
-either_n = { workspace = true }
 
 tracing = { workspace = true }
 tracing-subscriber = { workspace = true }

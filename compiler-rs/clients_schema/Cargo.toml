@@ -8,7 +8,6 @@ publish = false
 derive_more = { workspace = true, features = ["from"] }
 serde = { workspace = true, features = ["derive", "rc"] }
 serde_json = { workspace = true }
-typed-builder = { workspace = true }
 once_cell = { workspace = true }
 anyhow = { workspace = true }
 indexmap = { workspace = true, features = ["serde"] }

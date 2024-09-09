@@ -142,7 +142,6 @@ dependencies = [
  "serde_json",
  "serde_path_to_error",
  "testresult",
- "typed-builder",
 ]
 
 [[package]]
@@ -152,17 +151,11 @@ dependencies = [
  "anyhow",
  "clap",
  "clients_schema",
- "convert_case",
- "either_n",
  "icu_segmenter",
  "indexmap",
- "maplit",
  "openapiv3",
- "quantiles",
- "serde",
  "serde_ignored",
  "serde_json",
- "serde_path_to_error",
  "tracing",
  "tracing-subscriber",
 ]
@@ -184,7 +177,6 @@ dependencies = [
  "serde_json",
  "wasm-bindgen",
  "wasm-bindgen-test",
- "web-sys",
 ]
 
 [[package]]
@@ -245,12 +237,6 @@ dependencies = [
  "quote",
  "syn",
 ]
-
-[[package]]
-name = "either_n"
-version = "0.2.0"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "4c91ae510829160d5cfb19eb4ae7b6e01d44b767ca8f727c6cee936e53cc9ae5"
 
 [[package]]
 name = "equivalent"
@@ -401,12 +387,6 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "a7a70ba024b9dc04c27ea2f0c0548feb474ec5c54bba33a7f72f873a39d07b24"
 
 [[package]]
-name = "maplit"
-version = "1.0.2"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "3e2e65a1a2e43cfcb47a895c4c8b10d1f4a61097f9f254f183aee60cad9c651d"
-
-[[package]]
 name = "memchr"
 version = "2.7.4"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -445,13 +425,10 @@ dependencies = [
  "anyhow",
  "clients_schema",
  "convert_case",
- "either_n",
  "indexmap",
  "openapiv3",
- "serde",
  "serde_ignored",
  "serde_json",
- "serde_path_to_error",
  "tracing",
  "tracing-subscriber",
 ]
@@ -487,12 +464,6 @@ checksum = "5e719e8df665df0d1c8fbfd238015744736151d4445ec0836b8e628aae103b77"
 dependencies = [
  "unicode-ident",
 ]
-
-[[package]]
-name = "quantiles"
-version = "0.7.1"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "c10fa813fb26fb6c321a6f3085b5ade4cb4730d08d0b9e70a3759136940957f2"
 
 [[package]]
 name = "quote"
@@ -710,26 +681,6 @@ dependencies = [
  "thread_local",
  "tracing-core",
  "tracing-log",
-]
-
-[[package]]
-name = "typed-builder"
-version = "0.20.0"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "7e14ed59dc8b7b26cacb2a92bad2e8b1f098806063898ab42a3bd121d7d45e75"
-dependencies = [
- "typed-builder-macro",
-]
-
-[[package]]
-name = "typed-builder-macro"
-version = "0.20.0"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "560b82d656506509d43abe30e0ba64c56b1953ab3d4fe7ba5902747a7a3cedd5"
-dependencies = [
- "proc-macro2",
- "quote",
- "syn",
 ]
 
 [[package]]

@@ -19,7 +19,6 @@ serde_json = { workspace = true }
 anyhow = { workspace = true }
 
 console_error_panic_hook = { workspace = true, optional = true }
-web-sys = { workspace = true, features = ["console"] }
 
 [dev-dependencies]
 wasm-bindgen-test = { workspace = true }
