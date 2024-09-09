@@ -70267,6 +70267,9 @@
           "name": {
             "$ref": "#/components/schemas/_types:Name"
           },
+          "roles": {
+            "$ref": "#/components/schemas/_types:NodeRoles"
+          },
           "attributes": {
             "type": "object",
             "additionalProperties": {
@@ -70283,9 +70286,36 @@
         "required": [
           "id",
           "name",
+          "roles",
           "attributes",
           "transport_address",
           "weight_ranking"
+        ]
+      },
+      "_types:NodeRoles": {
+        "description": "* @doc_id node-roles",
+        "type": "array",
+        "items": {
+          "$ref": "#/components/schemas/_types:NodeRole"
+        }
+      },
+      "_types:NodeRole": {
+        "type": "string",
+        "enum": [
+          "master",
+          "data",
+          "data_cold",
+          "data_content",
+          "data_frozen",
+          "data_hot",
+          "data_warm",
+          "client",
+          "ingest",
+          "ml",
+          "voting_only",
+          "transform",
+          "remote_cluster_client",
+          "coordinating_only"
         ]
       },
       "_types:TransportAddress": {
@@ -70315,6 +70345,9 @@
           "node_name": {
             "$ref": "#/components/schemas/_types:Name"
           },
+          "roles": {
+            "$ref": "#/components/schemas/_types:NodeRoles"
+          },
           "store": {
             "$ref": "#/components/schemas/cluster.allocation_explain:AllocationStore"
           },
@@ -70331,6 +70364,7 @@
           "node_decision",
           "node_id",
           "node_name",
+          "roles",
           "transport_address",
           "weight_ranking"
         ]
@@ -94717,32 +94751,6 @@
           "id",
           "mlockall",
           "refresh_interval_in_millis"
-        ]
-      },
-      "_types:NodeRoles": {
-        "description": "* @doc_id node-roles",
-        "type": "array",
-        "items": {
-          "$ref": "#/components/schemas/_types:NodeRole"
-        }
-      },
-      "_types:NodeRole": {
-        "type": "string",
-        "enum": [
-          "master",
-          "data",
-          "data_cold",
-          "data_content",
-          "data_frozen",
-          "data_hot",
-          "data_warm",
-          "client",
-          "ingest",
-          "ml",
-          "voting_only",
-          "transform",
-          "remote_cluster_client",
-          "coordinating_only"
         ]
       },
       "nodes.info:NodeInfoSettings": {
