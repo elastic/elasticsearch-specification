@@ -208,11 +208,13 @@ pub fn add_endpoint(
                 responses: responses.clone(),
                 extensions: Default::default(),
             },
+            callbacks: Default::default(),
             deprecated: endpoint.deprecation.is_some(),
             security: None,
             servers: vec![],
-            extensions: Default::default(), // FIXME: translate availability?
+            extensions: crate::availability_as_extensions(&endpoint.availability),
         };
+
 
         let mut operation_path = url_template.path.clone();
 
@@ -316,14 +318,12 @@ fn get_path_parameters(template: &str) -> Vec<&str> {
 
 // Splits the original endpoint description into OpenAPI summary and description, where summary
 // is the first sentence of the original description with no trailing `.`, and description contains
-// the remaining sentences, if there are any left. 
+// the remaining sentences, if there are any left.
 fn split_summary_desc(desc: &str) -> SplitDesc{
     let segmenter = SentenceSegmenter::new();
 
-    let desc_no_newlines = desc.replace("\n\n",".\n").replace('\n'," ");
-
     let breakpoints: Vec<usize> = segmenter
-        .segment_str(&desc_no_newlines)
+        .segment_str(&desc)
         .collect();
 
     if breakpoints.len()<2{
@@ -332,8 +332,8 @@ fn split_summary_desc(desc: &str) -> SplitDesc{
             description: None
         }
     }
-    let first_line = &desc_no_newlines[breakpoints[0]..breakpoints[1]];
-    let rest = &desc_no_newlines[breakpoints[1]..breakpoints[breakpoints.len()-1]];
+    let first_line = &desc[breakpoints[0]..breakpoints[1]];
+    let rest = &desc[breakpoints[1]..breakpoints[breakpoints.len()-1]];
 
     SplitDesc {
         summary:  Some(String::from(first_line.trim().strip_suffix('.').unwrap_or(first_line))),
@@ -369,9 +369,9 @@ mod tests {
                        summary: Some(String::from("One sentence")),
                        description: None
                    });
-        assert_eq!(split_summary_desc("This is\nstill one. sentence: all; together"),
+        assert_eq!(split_summary_desc("This is - still one. sentence: all; together"),
                    SplitDesc{
-                       summary: Some(String::from("This is still one. sentence: all; together")),
+                       summary: Some(String::from("This is - still one. sentence: all; together")),
                        description: None
                    });
         assert_eq!(split_summary_desc("These are two totally. Separate sentences!"),
@@ -379,10 +379,10 @@ mod tests {
                        summary: Some(String::from("These are two totally")),
                        description: Some(String::from("Separate sentences!"))
                    });
-        assert_eq!(split_summary_desc("Such a weird way to separate sentences\n\nRight?"),
+        assert_eq!(split_summary_desc("These -> \n are allowed \n because they're needed \n\n for \n\n\n formatting"),
                    SplitDesc{
-                       summary: Some(String::from("Such a weird way to separate sentences")),
-                       description: Some(String::from("Right?"))
+                       summary: Some(String::from("These -> \n")),
+                       description: Some(String::from("are allowed \n because they're needed \n\n for \n\n\n formatting"))
                    });
         assert_eq!(split_summary_desc(""),
                    SplitDesc{
