@@ -10247,8 +10247,10 @@ export type EsqlTableValuesLongDouble = double | double[]
 
 export type EsqlTableValuesLongValue = long | long[]
 
+export type EsqlQueryEsqlFormat = 'csv' | 'json' | 'tsv' | 'txt' | 'yaml' | 'cbor' | 'smile' | 'arrow'
+
 export interface EsqlQueryRequest extends RequestBase {
-  format?: string
+  format?: EsqlQueryEsqlFormat
   delimiter?: string
   drop_null_columns?: boolean
   body?: {
