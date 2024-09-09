@@ -20,9 +20,6 @@ use clients_schema::{Availabilities, Visibility};
 use wasm_bindgen::prelude::*;
 use clients_schema::transform::ExpandConfig;
 
-#[cfg(all(not(target_arch = "wasm32"), not(feature = "cargo-clippy")))]
-compile_error!("To build this crate use `make compiler-wasm-lib`");
-
 #[wasm_bindgen]
 pub fn convert_schema_to_openapi(json: &str, flavor: &str) -> Result<String, String> {
     set_panic_hook();

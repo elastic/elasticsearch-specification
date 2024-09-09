@@ -225,7 +225,7 @@ fn generate_schema_kind_type(
         String(_) => types.add(id, alias(base, builtins::STRING.clone())),
 
         //---------------------------------------------------------------------
-        Boolean {} => types.add(id, alias(base, builtins::BOOLEAN.clone())),
+        Boolean(_) => types.add(id, alias(base, builtins::BOOLEAN.clone())),
 
         //---------------------------------------------------------------------
         Integer(_) =>
@@ -323,7 +323,7 @@ fn generate_schema_kind_one_of(
     let mut variants: Option<TypeAliasVariants> = None;
 
     // TODO: do we want to allow untagged unions (those that are disambiguated by inspecting property names)?
-    
+
     if let Some(discriminator) = discriminator {
         variants = Some(TypeAliasVariants::InternalTag(InternalTag {
             default_tag: None,
@@ -406,8 +406,6 @@ fn generate_interface_def(
             description: None,
             aliases: Vec::default(),
             deprecation: None,
-            stability: None,
-            since: None,
             container_property: false,
             es_quirk: None,
             server_default: None,

@@ -3,6 +3,7 @@ name = "compiler-wasm-lib"
 version = "0.1.0"
 edition = "2021"
 description = "WASM library to manipulate and convert schema.json files"
+publish = false
 
 [lib]
 crate-type = ["cdylib", "rlib"]
