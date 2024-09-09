@@ -20,7 +20,7 @@
 import { Dictionary } from '@spec_utils/Dictionary'
 import { Id, Name } from '@_types/common'
 import { TransportAddress } from '@_types/Networking'
-import { NodeRole } from '@_types/Node'
+import { NodeRoles } from '@_types/Node'
 import { double, integer, long } from '@_types/Numeric'
 import { DateTime } from '@_types/Time'
 
@@ -83,7 +83,7 @@ export class CurrentNode {
    * @availability stack since=8.11.0 stability=stable
    * @availability serverless
    */
-  roles: NodeRole[]
+  roles: NodeRoles
   attributes: Dictionary<string, string>
   transport_address: TransportAddress
   weight_ranking: integer
@@ -110,7 +110,7 @@ export class NodeAllocationExplanation {
    * @availability stack since=8.11.0 stability=stable
    * @availability serverless
    */
-  roles: NodeRole[]
+  roles: NodeRoles
   store?: AllocationStore
   transport_address: TransportAddress
   weight_ranking: integer

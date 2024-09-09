@@ -70268,11 +70268,7 @@
             "$ref": "#/components/schemas/_types:Name"
           },
           "roles": {
-            "x-available-since": "8.11.0",
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/_types:NodeRole"
-            }
+            "$ref": "#/components/schemas/_types:NodeRoles"
           },
           "attributes": {
             "type": "object",
@@ -70295,6 +70291,13 @@
           "transport_address",
           "weight_ranking"
         ]
+      },
+      "_types:NodeRoles": {
+        "description": "* @doc_id node-roles",
+        "type": "array",
+        "items": {
+          "$ref": "#/components/schemas/_types:NodeRole"
+        }
       },
       "_types:NodeRole": {
         "type": "string",
@@ -70343,11 +70346,7 @@
             "$ref": "#/components/schemas/_types:Name"
           },
           "roles": {
-            "x-available-since": "8.11.0",
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/_types:NodeRole"
-            }
+            "$ref": "#/components/schemas/_types:NodeRoles"
           },
           "store": {
             "$ref": "#/components/schemas/cluster.allocation_explain:AllocationStore"
@@ -94650,13 +94649,6 @@
           "mlockall",
           "refresh_interval_in_millis"
         ]
-      },
-      "_types:NodeRoles": {
-        "description": "* @doc_id node-roles",
-        "type": "array",
-        "items": {
-          "$ref": "#/components/schemas/_types:NodeRole"
-        }
       },
       "nodes.info:NodeInfoSettings": {
         "type": "object",
