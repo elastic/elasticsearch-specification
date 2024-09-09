@@ -83745,7 +83745,7 @@
         "name": "Tokenizer",
         "namespace": "_types.analysis"
       },
-      "specLocation": "_types/analysis/tokenizers.ts#L146-L148",
+      "specLocation": "_types/analysis/tokenizers.ts#L137-L139",
       "type": {
         "items": [
           {
@@ -83772,7 +83772,7 @@
         "name": "TokenizerDefinition",
         "namespace": "_types.analysis"
       },
-      "specLocation": "_types/analysis/tokenizers.ts#L150-L174",
+      "specLocation": "_types/analysis/tokenizers.ts#L141-L164",
       "type": {
         "items": [
           {
@@ -83828,13 +83828,6 @@
             "kind": "instance_of",
             "type": {
               "name": "PathHierarchyTokenizer",
-              "namespace": "_types.analysis"
-            }
-          },
-          {
-            "kind": "instance_of",
-            "type": {
-              "name": "PathHierarchyPascalCaseTokenizer",
               "namespace": "_types.analysis"
             }
           },
@@ -84364,112 +84357,6 @@
       },
       "kind": "interface",
       "name": {
-        "name": "PathHierarchyPascalCaseTokenizer",
-        "namespace": "_types.analysis"
-      },
-      "properties": [
-        {
-          "name": "type",
-          "required": true,
-          "type": {
-            "kind": "literal_value",
-            "value": "PathHierarchy"
-          }
-        },
-        {
-          "name": "buffer_size",
-          "required": false,
-          "type": {
-            "generics": [
-              {
-                "kind": "instance_of",
-                "type": {
-                  "name": "integer",
-                  "namespace": "_types"
-                }
-              }
-            ],
-            "kind": "instance_of",
-            "type": {
-              "name": "Stringified",
-              "namespace": "_spec_utils"
-            }
-          }
-        },
-        {
-          "name": "delimiter",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "_builtins"
-            }
-          }
-        },
-        {
-          "name": "replacement",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "_builtins"
-            }
-          }
-        },
-        {
-          "name": "reverse",
-          "required": false,
-          "type": {
-            "generics": [
-              {
-                "kind": "instance_of",
-                "type": {
-                  "name": "boolean",
-                  "namespace": "_builtins"
-                }
-              }
-            ],
-            "kind": "instance_of",
-            "type": {
-              "name": "Stringified",
-              "namespace": "_spec_utils"
-            }
-          }
-        },
-        {
-          "name": "skip",
-          "required": false,
-          "type": {
-            "generics": [
-              {
-                "kind": "instance_of",
-                "type": {
-                  "name": "integer",
-                  "namespace": "_types"
-                }
-              }
-            ],
-            "kind": "instance_of",
-            "type": {
-              "name": "Stringified",
-              "namespace": "_spec_utils"
-            }
-          }
-        }
-      ],
-      "specLocation": "_types/analysis/tokenizers.ts#L101-L108"
-    },
-    {
-      "inherits": {
-        "type": {
-          "name": "TokenizerBase",
-          "namespace": "_types.analysis"
-        }
-      },
-      "kind": "interface",
-      "name": {
         "name": "PatternTokenizer",
         "namespace": "_types.analysis"
       },
@@ -84516,7 +84403,7 @@
           }
         }
       ],
-      "specLocation": "_types/analysis/tokenizers.ts#L110-L115"
+      "specLocation": "_types/analysis/tokenizers.ts#L101-L106"
     },
     {
       "inherits": {
@@ -84551,7 +84438,7 @@
           }
         }
       ],
-      "specLocation": "_types/analysis/tokenizers.ts#L117-L120"
+      "specLocation": "_types/analysis/tokenizers.ts#L108-L111"
     },
     {
       "inherits": {
@@ -84586,7 +84473,7 @@
           }
         }
       ],
-      "specLocation": "_types/analysis/tokenizers.ts#L122-L125"
+      "specLocation": "_types/analysis/tokenizers.ts#L113-L116"
     },
     {
       "inherits": {
@@ -84621,7 +84508,7 @@
           }
         }
       ],
-      "specLocation": "_types/analysis/tokenizers.ts#L127-L130"
+      "specLocation": "_types/analysis/tokenizers.ts#L118-L121"
     },
     {
       "inherits": {
@@ -84645,7 +84532,7 @@
           }
         }
       ],
-      "specLocation": "_types/analysis/tokenizers.ts#L132-L134"
+      "specLocation": "_types/analysis/tokenizers.ts#L123-L125"
     },
     {
       "inherits": {
@@ -84680,7 +84567,7 @@
           }
         }
       ],
-      "specLocation": "_types/analysis/tokenizers.ts#L136-L139"
+      "specLocation": "_types/analysis/tokenizers.ts#L127-L130"
     },
     {
       "inherits": {
@@ -84715,7 +84602,7 @@
           }
         }
       ],
-      "specLocation": "_types/analysis/tokenizers.ts#L141-L144"
+      "specLocation": "_types/analysis/tokenizers.ts#L132-L135"
     },
     {
       "inherits": {

@@ -4878,15 +4878,6 @@ export interface AnalysisNorwegianAnalyzer {
   stem_exclusion?: string[]
 }
 
-export interface AnalysisPathHierarchyPascalCaseTokenizer extends AnalysisTokenizerBase {
-  type: 'PathHierarchy'
-  buffer_size?: SpecUtilsStringified<integer>
-  delimiter?: string
-  replacement?: string
-  reverse?: SpecUtilsStringified<boolean>
-  skip?: SpecUtilsStringified<integer>
-}
-
 export interface AnalysisPathHierarchyTokenizer extends AnalysisTokenizerBase {
   type: 'path_hierarchy'
   buffer_size?: SpecUtilsStringified<integer>
@@ -5154,7 +5145,7 @@ export interface AnalysisTokenizerBase {
   version?: VersionString
 }
 
-export type AnalysisTokenizerDefinition = AnalysisCharGroupTokenizer | AnalysisClassicTokenizer | AnalysisEdgeNGramTokenizer | AnalysisKeywordTokenizer | AnalysisLetterTokenizer | AnalysisLowercaseTokenizer | AnalysisNGramTokenizer | AnalysisPathHierarchyTokenizer | AnalysisPathHierarchyPascalCaseTokenizer | AnalysisPatternTokenizer | AnalysisSimplePatternTokenizer | AnalysisSimplePatternSplitTokenizer | AnalysisStandardTokenizer | AnalysisThaiTokenizer | AnalysisUaxEmailUrlTokenizer | AnalysisWhitespaceTokenizer | AnalysisIcuTokenizer | AnalysisKuromojiTokenizer | AnalysisNoriTokenizer
+export type AnalysisTokenizerDefinition = AnalysisCharGroupTokenizer | AnalysisClassicTokenizer | AnalysisEdgeNGramTokenizer | AnalysisKeywordTokenizer | AnalysisLetterTokenizer | AnalysisLowercaseTokenizer | AnalysisNGramTokenizer | AnalysisPathHierarchyTokenizer | AnalysisPatternTokenizer | AnalysisSimplePatternTokenizer | AnalysisSimplePatternSplitTokenizer | AnalysisStandardTokenizer | AnalysisThaiTokenizer | AnalysisUaxEmailUrlTokenizer | AnalysisWhitespaceTokenizer | AnalysisIcuTokenizer | AnalysisKuromojiTokenizer | AnalysisNoriTokenizer
 
 export interface AnalysisTrimTokenFilter extends AnalysisTokenFilterBase {
   type: 'trim'

@@ -48688,9 +48688,6 @@
             "$ref": "#/components/schemas/_types.analysis:PathHierarchyTokenizer"
           },
           {
-            "$ref": "#/components/schemas/_types.analysis:PathHierarchyPascalCaseTokenizer"
-          },
-          {
             "$ref": "#/components/schemas/_types.analysis:PatternTokenizer"
           },
           {
@@ -48951,42 +48948,6 @@
                 "type": "string",
                 "enum": [
                   "path_hierarchy"
-                ]
-              },
-              "buffer_size": {
-                "$ref": "#/components/schemas/_spec_utils:Stringifiedinteger"
-              },
-              "delimiter": {
-                "type": "string"
-              },
-              "replacement": {
-                "type": "string"
-              },
-              "reverse": {
-                "$ref": "#/components/schemas/_spec_utils:Stringifiedboolean"
-              },
-              "skip": {
-                "$ref": "#/components/schemas/_spec_utils:Stringifiedinteger"
-              }
-            },
-            "required": [
-              "type"
-            ]
-          }
-        ]
-      },
-      "_types.analysis:PathHierarchyPascalCaseTokenizer": {
-        "allOf": [
-          {
-            "$ref": "#/components/schemas/_types.analysis:TokenizerBase"
-          },
-          {
-            "type": "object",
-            "properties": {
-              "type": {
-                "type": "string",
-                "enum": [
-                  "PathHierarchy"
                 ]
               },
               "buffer_size": {

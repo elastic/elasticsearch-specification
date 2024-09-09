@@ -98,15 +98,6 @@ export class PathHierarchyTokenizer extends TokenizerBase {
   skip?: Stringified<integer>
 }
 
-export class PathHierarchyPascalCaseTokenizer extends TokenizerBase {
-  type: 'PathHierarchy'
-  buffer_size?: Stringified<integer>
-  delimiter?: string
-  replacement?: string
-  reverse?: Stringified<boolean>
-  skip?: Stringified<integer>
-}
-
 export class PatternTokenizer extends TokenizerBase {
   type: 'pattern'
   flags?: string
@@ -160,7 +151,6 @@ export type TokenizerDefinition =
   | LowercaseTokenizer
   | NGramTokenizer
   | PathHierarchyTokenizer
-  | PathHierarchyPascalCaseTokenizer
   | PatternTokenizer
   | SimplePatternTokenizer
   | SimplePatternSplitTokenizer
