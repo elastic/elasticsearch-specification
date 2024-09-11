@@ -16182,16 +16182,25 @@ export interface NodesIndexingPressureMemory {
 }
 
 export interface NodesIngest {
-  pipelines?: Record<string, NodesIngestTotal>
+  pipelines?: Record<string, NodesIngestStats>
   total?: NodesIngestTotal
 }
 
+export interface NodesIngestStats {
+  count: long
+  current: long
+  failed: long
+  processors: Record<string, NodesKeyedProcessor>[]
+  time_in_millis: DurationValue<UnitMillis>
+  ingested_as_first_pipeline_in_bytes: long
+  produced_as_first_pipeline_in_bytes: long
+}
+
 export interface NodesIngestTotal {
-  count?: long
-  current?: long
-  failed?: long
-  processors?: Record<string, NodesKeyedProcessor>[]
-  time_in_millis?: DurationValue<UnitMillis>
+  count: long
+  current: long
+  failed: long
+  time_in_millis: DurationValue<UnitMillis>
 }
 
 export interface NodesIoStatDevice {
