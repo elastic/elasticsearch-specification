@@ -8155,7 +8155,7 @@
             "description": "A short version of the Accept header, e.g. json, yaml.",
             "deprecated": false,
             "schema": {
-              "type": "string"
+              "$ref": "#/components/schemas/esql.query:EsqlFormat"
             },
             "style": "form"
           },
@@ -65004,6 +65004,19 @@
         "enum": [
           "tail",
           "head"
+        ]
+      },
+      "esql.query:EsqlFormat": {
+        "type": "string",
+        "enum": [
+          "csv",
+          "json",
+          "tsv",
+          "txt",
+          "yaml",
+          "cbor",
+          "smile",
+          "arrow"
         ]
       },
       "_types:EsqlColumns": {
