@@ -42270,7 +42270,7 @@
             "description": "Contains statistics about ingest pipelines for the node.",
             "type": "object",
             "additionalProperties": {
-              "$ref": "#/components/schemas/nodes._types:IngestTotal"
+              "$ref": "#/components/schemas/nodes._types:IngestStats"
             }
           },
           "total": {
@@ -42278,7 +42278,7 @@
           }
         }
       },
-      "nodes._types:IngestTotal": {
+      "nodes._types:IngestStats": {
         "type": "object",
         "properties": {
           "count": {
@@ -42305,8 +42305,27 @@
           },
           "time_in_millis": {
             "$ref": "#/components/schemas/_types:DurationValueUnitMillis"
+          },
+          "ingested_as_first_pipeline_in_bytes": {
+            "description": "Total number of bytes of all documents ingested by the pipeline.\nThis field is only present on pipelines which are the first to process a document.\nThus, it is not present on pipelines which only serve as a final pipeline after a default pipeline, a pipeline run after a reroute processor, or pipelines in pipeline processors.",
+            "x-available-since": "8.15.0",
+            "type": "number"
+          },
+          "produced_as_first_pipeline_in_bytes": {
+            "description": "Total number of bytes of all documents produced by the pipeline.\nThis field is only present on pipelines which are the first to process a document.\nThus, it is not present on pipelines which only serve as a final pipeline after a default pipeline, a pipeline run after a reroute processor, or pipelines in pipeline processors.\nIn situations where there are subsequent pipelines, the value represents the size of the document after all pipelines have run.",
+            "x-available-since": "8.15.0",
+            "type": "number"
           }
-        }
+        },
+        "required": [
+          "count",
+          "current",
+          "failed",
+          "processors",
+          "time_in_millis",
+          "ingested_as_first_pipeline_in_bytes",
+          "produced_as_first_pipeline_in_bytes"
+        ]
       },
       "nodes._types:KeyedProcessor": {
         "type": "object",
@@ -42338,6 +42357,32 @@
             "$ref": "#/components/schemas/_types:DurationValueUnitMillis"
           }
         }
+      },
+      "nodes._types:IngestTotal": {
+        "type": "object",
+        "properties": {
+          "count": {
+            "description": "Total number of documents ingested during the lifetime of this node.",
+            "type": "number"
+          },
+          "current": {
+            "description": "Total number of documents currently being ingested.",
+            "type": "number"
+          },
+          "failed": {
+            "description": "Total number of failed ingest operations during the lifetime of this node.",
+            "type": "number"
+          },
+          "time_in_millis": {
+            "$ref": "#/components/schemas/_types:DurationValueUnitMillis"
+          }
+        },
+        "required": [
+          "count",
+          "current",
+          "failed",
+          "time_in_millis"
+        ]
       },
       "nodes._types:ThreadCount": {
         "type": "object",

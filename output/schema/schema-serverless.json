@@ -92558,7 +92558,7 @@
           }
         }
       ],
-      "specLocation": "nodes/_types/Stats.ts#L403-L432"
+      "specLocation": "nodes/_types/Stats.ts#L439-L468"
     },
     {
       "kind": "interface",
@@ -92640,7 +92640,7 @@
           }
         }
       ],
-      "specLocation": "nodes/_types/Stats.ts#L434-L459"
+      "specLocation": "nodes/_types/Stats.ts#L470-L495"
     },
     {
       "kind": "interface",
@@ -92701,7 +92701,7 @@
           }
         }
       ],
-      "specLocation": "nodes/_types/Stats.ts#L698-L716"
+      "specLocation": "nodes/_types/Stats.ts#L734-L752"
     },
     {
       "kind": "interface",
@@ -92896,7 +92896,7 @@
           }
         }
       ],
-      "specLocation": "nodes/_types/Stats.ts#L550-L594"
+      "specLocation": "nodes/_types/Stats.ts#L586-L630"
     },
     {
       "kind": "interface",
@@ -92978,7 +92978,7 @@
           }
         }
       ],
-      "specLocation": "nodes/_types/Stats.ts#L757-L786"
+      "specLocation": "nodes/_types/Stats.ts#L793-L822"
     },
     {
       "kind": "interface",
@@ -93015,7 +93015,7 @@
           }
         }
       ],
-      "specLocation": "nodes/_types/Stats.ts#L718-L728"
+      "specLocation": "nodes/_types/Stats.ts#L754-L764"
     },
     {
       "kind": "interface",
@@ -93097,7 +93097,7 @@
           }
         }
       ],
-      "specLocation": "nodes/_types/Stats.ts#L730-L755"
+      "specLocation": "nodes/_types/Stats.ts#L766-L791"
     },
     {
       "kind": "interface",
@@ -93146,7 +93146,7 @@
           }
         }
       ],
-      "specLocation": "nodes/_types/Stats.ts#L633-L647"
+      "specLocation": "nodes/_types/Stats.ts#L669-L683"
     },
     {
       "kind": "interface",
@@ -93288,7 +93288,7 @@
           }
         }
       ],
-      "specLocation": "nodes/_types/Stats.ts#L649-L696"
+      "specLocation": "nodes/_types/Stats.ts#L685-L732"
     },
     {
       "kind": "interface",
@@ -93314,7 +93314,7 @@
             "value": {
               "kind": "instance_of",
               "type": {
-                "name": "IngestTotal",
+                "name": "IngestStats",
                 "namespace": "nodes._types"
               }
             }
@@ -93338,14 +93338,14 @@
     {
       "kind": "interface",
       "name": {
-        "name": "IngestTotal",
+        "name": "IngestStats",
         "namespace": "nodes._types"
       },
       "properties": [
         {
           "description": "Total number of documents ingested during the lifetime of this node.",
           "name": "count",
-          "required": false,
+          "required": true,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -93357,7 +93357,7 @@
         {
           "description": "Total number of documents currently being ingested.",
           "name": "current",
-          "required": false,
+          "required": true,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -93369,7 +93369,7 @@
         {
           "description": "Total number of failed ingest operations during the lifetime of this node.",
           "name": "failed",
-          "required": false,
+          "required": true,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -93381,7 +93381,7 @@
         {
           "description": "Total number of ingest processors.",
           "name": "processors",
-          "required": false,
+          "required": true,
           "type": {
             "kind": "array_of",
             "value": {
@@ -93407,7 +93407,7 @@
         {
           "description": "Total time, in milliseconds, spent preprocessing ingest documents during the lifetime of this node.",
           "name": "time_in_millis",
-          "required": false,
+          "required": true,
           "type": {
             "generics": [
               {
@@ -93424,9 +93424,47 @@
               "namespace": "_types"
             }
           }
+        },
+        {
+          "availability": {
+            "serverless": {},
+            "stack": {
+              "since": "8.15.0",
+              "stability": "stable"
+            }
+          },
+          "description": "Total number of bytes of all documents ingested by the pipeline.\nThis field is only present on pipelines which are the first to process a document.\nThus, it is not present on pipelines which only serve as a final pipeline after a default pipeline, a pipeline run after a reroute processor, or pipelines in pipeline processors.",
+          "name": "ingested_as_first_pipeline_in_bytes",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "long",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "availability": {
+            "serverless": {},
+            "stack": {
+              "since": "8.15.0",
+              "stability": "stable"
+            }
+          },
+          "description": "Total number of bytes of all documents produced by the pipeline.\nThis field is only present on pipelines which are the first to process a document.\nThus, it is not present on pipelines which only serve as a final pipeline after a default pipeline, a pipeline run after a reroute processor, or pipelines in pipeline processors.\nIn situations where there are subsequent pipelines, the value represents the size of the document after all pipelines have run.",
+          "name": "produced_as_first_pipeline_in_bytes",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "long",
+              "namespace": "_types"
+            }
+          }
         }
       ],
-      "specLocation": "nodes/_types/Stats.ts#L356-L377"
+      "specLocation": "nodes/_types/Stats.ts#L356-L394"
     },
     {
       "kind": "interface",
@@ -93458,7 +93496,7 @@
           }
         }
       ],
-      "specLocation": "nodes/_types/Stats.ts#L379-L382"
+      "specLocation": "nodes/_types/Stats.ts#L415-L418"
     },
     {
       "kind": "interface",
@@ -93525,7 +93563,74 @@
           }
         }
       ],
-      "specLocation": "nodes/_types/Stats.ts#L384-L401"
+      "specLocation": "nodes/_types/Stats.ts#L420-L437"
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "IngestTotal",
+        "namespace": "nodes._types"
+      },
+      "properties": [
+        {
+          "description": "Total number of documents ingested during the lifetime of this node.",
+          "name": "count",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "long",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "Total number of documents currently being ingested.",
+          "name": "current",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "long",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "Total number of failed ingest operations during the lifetime of this node.",
+          "name": "failed",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "long",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "Total time, in milliseconds, spent preprocessing ingest documents during the lifetime of this node.",
+          "name": "time_in_millis",
+          "required": true,
+          "type": {
+            "generics": [
+              {
+                "kind": "instance_of",
+                "type": {
+                  "name": "UnitMillis",
+                  "namespace": "_types"
+                }
+              }
+            ],
+            "kind": "instance_of",
+            "type": {
+              "name": "DurationValue",
+              "namespace": "_types"
+            }
+          }
+        }
+      ],
+      "specLocation": "nodes/_types/Stats.ts#L396-L413"
     },
     {
       "kind": "interface",
@@ -93642,7 +93747,7 @@
           }
         }
       ],
-      "specLocation": "nodes/_types/Stats.ts#L811-L845"
+      "specLocation": "nodes/_types/Stats.ts#L847-L881"
     },
     {
       "kind": "interface",
@@ -93712,7 +93817,7 @@
           }
         }
       ],
-      "specLocation": "nodes/_types/Stats.ts#L788-L809"
+      "specLocation": "nodes/_types/Stats.ts#L824-L845"
     },
     {
       "kind": "interface",
@@ -93758,7 +93863,7 @@
           }
         }
       ],
-      "specLocation": "nodes/_types/Stats.ts#L908-L921"
+      "specLocation": "nodes/_types/Stats.ts#L944-L957"
     },
     {
       "kind": "interface",
@@ -93791,7 +93896,7 @@
           }
         }
       ],
-      "specLocation": "nodes/_types/Stats.ts#L923-L928"
+      "specLocation": "nodes/_types/Stats.ts#L959-L964"
     },
     {
       "kind": "interface",
@@ -93837,7 +93942,7 @@
           }
         }
       ],
-      "specLocation": "nodes/_types/Stats.ts#L930-L943"
+      "specLocation": "nodes/_types/Stats.ts#L966-L979"
     },
     {
       "kind": "interface",
@@ -93942,7 +94047,7 @@
           }
         }
       ],
-      "specLocation": "nodes/_types/Stats.ts#L847-L876"
+      "specLocation": "nodes/_types/Stats.ts#L883-L912"
     },
     {
       "kind": "interface",
@@ -94000,7 +94105,7 @@
           }
         }
       ],
-      "specLocation": "nodes/_types/Stats.ts#L878-L895"
+      "specLocation": "nodes/_types/Stats.ts#L914-L931"
     },
     {
       "kind": "interface",
@@ -94034,7 +94139,7 @@
           }
         }
       ],
-      "specLocation": "nodes/_types/Stats.ts#L897-L906"
+      "specLocation": "nodes/_types/Stats.ts#L933-L942"
     },
     {
       "kind": "interface",
@@ -94099,7 +94204,7 @@
           }
         }
       ],
-      "specLocation": "nodes/_types/Stats.ts#L945-L951"
+      "specLocation": "nodes/_types/Stats.ts#L981-L987"
     },
     {
       "kind": "interface",
@@ -94235,7 +94340,7 @@
           }
         }
       ],
-      "specLocation": "nodes/_types/Stats.ts#L539-L548"
+      "specLocation": "nodes/_types/Stats.ts#L575-L584"
     },
     {
       "inherits": {
@@ -94275,7 +94380,7 @@
           }
         }
       ],
-      "specLocation": "nodes/_types/Stats.ts#L622-L631"
+      "specLocation": "nodes/_types/Stats.ts#L658-L667"
     },
     {
       "kind": "interface",
@@ -94399,7 +94504,7 @@
           }
         }
       ],
-      "specLocation": "nodes/_types/Stats.ts#L596-L620"
+      "specLocation": "nodes/_types/Stats.ts#L632-L656"
     },
     {
       "kind": "interface",
@@ -94445,7 +94550,7 @@
           }
         }
       ],
-      "specLocation": "nodes/_types/Stats.ts#L461-L474"
+      "specLocation": "nodes/_types/Stats.ts#L497-L510"
     },
     {
       "kind": "interface",
@@ -94488,7 +94593,7 @@
           }
         }
       ],
-      "specLocation": "nodes/_types/Stats.ts#L476-L485"
+      "specLocation": "nodes/_types/Stats.ts#L512-L521"
     },
     {
       "kind": "interface",
@@ -94546,7 +94651,7 @@
           }
         }
       ],
-      "specLocation": "nodes/_types/Stats.ts#L487-L504"
+      "specLocation": "nodes/_types/Stats.ts#L523-L540"
     },
     {
       "kind": "interface",
@@ -94601,7 +94706,7 @@
           }
         }
       ],
-      "specLocation": "nodes/_types/Stats.ts#L506-L519"
+      "specLocation": "nodes/_types/Stats.ts#L542-L555"
     },
     {
       "kind": "interface",
@@ -94647,7 +94752,7 @@
           }
         }
       ],
-      "specLocation": "nodes/_types/Stats.ts#L521-L537"
+      "specLocation": "nodes/_types/Stats.ts#L557-L573"
     },
     {
       "kind": "interface",
@@ -94717,7 +94822,7 @@
           }
         }
       ],
-      "specLocation": "nodes/_types/Stats.ts#L953-L975"
+      "specLocation": "nodes/_types/Stats.ts#L989-L1011"
     },
     {
       "kind": "interface",
@@ -94800,7 +94905,7 @@
           }
         }
       ],
-      "specLocation": "nodes/_types/Stats.ts#L977-L995"
+      "specLocation": "nodes/_types/Stats.ts#L1013-L1031"
     },
     {
       "kind": "interface",
@@ -94854,7 +94959,7 @@
           }
         }
       ],
-      "specLocation": "nodes/_types/Stats.ts#L997-L1002"
+      "specLocation": "nodes/_types/Stats.ts#L1033-L1038"
     },
     {
       "kind": "interface",
@@ -94911,7 +95016,7 @@
           }
         }
       ],
-      "specLocation": "nodes/_types/Stats.ts#L1031-L1045"
+      "specLocation": "nodes/_types/Stats.ts#L1067-L1081"
     },
     {
       "kind": "interface",
@@ -94993,7 +95098,7 @@
           }
         }
       ],
-      "specLocation": "nodes/_types/Stats.ts#L1004-L1029"
+      "specLocation": "nodes/_types/Stats.ts#L1040-L1065"
     },
     {
       "kind": "interface",
@@ -95129,7 +95234,7 @@
           }
         }
       ],
-      "specLocation": "nodes/_types/Stats.ts#L1047-L1090"
+      "specLocation": "nodes/_types/Stats.ts#L1083-L1126"
     },
     {
       "kind": "interface",
@@ -95175,7 +95280,7 @@
           }
         }
       ],
-      "specLocation": "nodes/_types/Stats.ts#L1092-L1106"
+      "specLocation": "nodes/_types/Stats.ts#L1128-L1142"
     },
     {
       "kind": "interface",
