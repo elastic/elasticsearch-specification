@@ -346,34 +346,70 @@ export class Ingest {
   /**
    * Contains statistics about ingest pipelines for the node.
    */
-  pipelines?: Dictionary<string, IngestTotal>
+  pipelines?: Dictionary<string, IngestStats>
   /**
    * Contains statistics about ingest operations for the node.
    */
   total?: IngestTotal
 }
 
+export class IngestStats {
+  /**
+   * Total number of documents ingested during the lifetime of this node.
+   */
+  count: long
+  /**
+   * Total number of documents currently being ingested.
+   */
+  current: long
+  /**
+   * Total number of failed ingest operations during the lifetime of this node.
+   */
+  failed: long
+  /**
+   * Total number of ingest processors.
+   */
+  processors: Dictionary<string, KeyedProcessor>[]
+  /**
+   * Total time, in milliseconds, spent preprocessing ingest documents during the lifetime of this node.
+   */
+  time_in_millis: DurationValue<UnitMillis>
+  /**
+   * Total number of bytes of all documents ingested by the pipeline.
+   * This field is only present on pipelines which are the first to process a document.
+   * Thus, it is not present on pipelines which only serve as a final pipeline after a default pipeline, a pipeline run after a reroute processor, or pipelines in pipeline processors.
+   * @availability stack since=8.15.0 stability=stable
+   * @availability serverless
+   */
+  ingested_as_first_pipeline_in_bytes: long
+  /**
+   * Total number of bytes of all documents produced by the pipeline.
+   * This field is only present on pipelines which are the first to process a document.
+   * Thus, it is not present on pipelines which only serve as a final pipeline after a default pipeline, a pipeline run after a reroute processor, or pipelines in pipeline processors.
+   * In situations where there are subsequent pipelines, the value represents the size of the document after all pipelines have run.
+   * @availability stack since=8.15.0 stability=stable
+   * @availability serverless
+   */
+  produced_as_first_pipeline_in_bytes: long
+}
+
 export class IngestTotal {
   /**
    * Total number of documents ingested during the lifetime of this node.
    */
-  count?: long
+  count: long
   /**
    * Total number of documents currently being ingested.
    */
-  current?: long
+  current: long
   /**
    * Total number of failed ingest operations during the lifetime of this node.
    */
-  failed?: long
-  /**
-   * Total number of ingest processors.
-   */
-  processors?: Dictionary<string, KeyedProcessor>[]
+  failed: long
   /**
    * Total time, in milliseconds, spent preprocessing ingest documents during the lifetime of this node.
    */
-  time_in_millis?: DurationValue<UnitMillis>
+  time_in_millis: DurationValue<UnitMillis>
 }
 
 export class KeyedProcessor {
