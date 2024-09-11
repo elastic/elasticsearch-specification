@@ -93436,6 +93436,8 @@
           "description": "Total number of bytes of all documents ingested by the pipeline.\nThis field is only present on pipelines which are the first to process a document.\nThus, it is not present on pipelines which only serve as a final pipeline after a default pipeline, a pipeline run after a reroute processor, or pipelines in pipeline processors.",
           "name": "ingested_as_first_pipeline_in_bytes",
           "required": true,
+          "since": "8.15.0",
+          "stability": "stable",
           "type": {
             "kind": "instance_of",
             "type": {
@@ -93455,6 +93457,8 @@
           "description": "Total number of bytes of all documents produced by the pipeline.\nThis field is only present on pipelines which are the first to process a document.\nThus, it is not present on pipelines which only serve as a final pipeline after a default pipeline, a pipeline run after a reroute processor, or pipelines in pipeline processors.\nIn situations where there are subsequent pipelines, the value represents the size of the document after all pipelines have run.",
           "name": "produced_as_first_pipeline_in_bytes",
           "required": true,
+          "since": "8.15.0",
+          "stability": "stable",
           "type": {
             "kind": "instance_of",
             "type": {
