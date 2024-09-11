@@ -1,0 +1,72 @@
+# overlays.yaml
+overlay: 1.0.0
+info:
+  title: Overlays for examples that apply to both Elasticsearcb and Elasticsearch Serverless OpenAPI documents
+  version: 0.0.1
+actions:
+  - target: "$.components['requestBodies']['async_search.submit']"
+    description: "Add example for asynch search submit request"
+    update: 
+      content:
+        application/json:
+          examples:
+            asyncSearchSubmitResponseExample1:
+              $ref: "../../specification/async_search/submit/AsyncSearchSubmitRequestExample1.json"
+  - target: "$.components['responses']['async_search.submit#200']"
+    description: "Add example for asynch search submit response"
+    update: 
+      content:
+        application/json:
+          examples:
+            asyncSearchSubmitResponseExample1:
+              $ref: "../../specification/async_search/submit/AsyncSearchSubmitResponseExample1.json"
+  - target: "$.paths['/_transform/{transform_id}']['put']"
+    description: "Add examples for create transform operation"
+    update: 
+      requestBody: 
+        content: 
+          application/json: 
+            examples: 
+              createTransformRequestExample1: 
+                $ref: "../../specification/transform/put_transform/PutTransformRequestExample1.json"
+              createTransformRequestExample2:
+                $ref: "../../specification/transform/put_transform/PutTransformRequestExample2.json"
+      responses:
+        200:
+          content:
+            application/json:
+              examples:
+                createTransformResponseExample1:
+                  $ref: "../../specification/transform/put_transform/PutTransformResponseExample1.json"
+  - target: "$.components['requestBodies']['transform.preview_transform']"
+    description: "Add examples for preview transform operation"
+    update: 
+      content: 
+        application/json: 
+          examples: 
+            previewTransformRequestExample1: 
+              $ref: "../../specification/transform/preview_transform/PreviewTransformRequestExample1.json"
+  - target: "$.components['reponses']['transform.preview_transform#200']"
+    description: "Add examples for preview transform operation"
+    update: 
+      content:
+        application/json:
+          examples:
+            previewTransformResponseExample1:
+              $ref: "../../specification/transform/preview_transform/PreviewTransformResponseExample1.json"
+  - target: "$.paths['/_transform/{transform_id}/_update']['post']"
+    description: "Add examples for update transform operation"
+    update: 
+      requestBody: 
+        content: 
+          application/json: 
+            examples: 
+              updateTransformRequestExample1: 
+                $ref: "../../specification/transform/update_transform/UpdateTransformRequestExample1.json"
+      responses:
+        200:
+          content:
+            application/json:
+              examples:
+                updateTransformResponseExample1:
+                  $ref: "../../specification/transform/update_transform/UpdateTransformResponseExample1.json"
