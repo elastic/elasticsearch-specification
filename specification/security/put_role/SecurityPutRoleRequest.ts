@@ -38,7 +38,7 @@ import { Metadata, Name, Refresh } from '@_types/common'
 export interface Request extends RequestBase {
   path_parts: {
     /**
-     * The name of the role.
+     * The name of the role that is being created or updated. The role name must begin with a letter or digit and can only contain letters, digits and the characters '_', '-', and '.'. Each role must have a unique name, as this will serve as the identifier for that role.
      */
     name: Name
   }
