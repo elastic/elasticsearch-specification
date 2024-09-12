@@ -16168,6 +16168,25 @@ export interface NodesHttp {
   current_open?: integer
   total_opened?: long
   clients?: NodesClient[]
+  routes: Record<string, NodesHttpRoute>
+}
+
+export interface NodesHttpRoute {
+  requests: NodesHttpRouteRequests
+  responses: NodesHttpRouteResponses
+}
+
+export interface NodesHttpRouteRequests {
+  count: long
+  total_size_in_bytes: long
+  size_histogram: NodesSizeHttpHistogram[]
+}
+
+export interface NodesHttpRouteResponses {
+  count: long
+  total_size_in_bytes: long
+  handling_time_histogram: NodesTimeHttpHistogram[]
+  size_histogram: NodesSizeHttpHistogram[]
 }
 
 export interface NodesIndexingPressure {
@@ -16405,6 +16424,12 @@ export interface NodesSerializedClusterStateDetail {
   compressed_size_in_bytes?: long
 }
 
+export interface NodesSizeHttpHistogram {
+  count: long
+  ge_bytes?: long
+  lt_bytes?: long
+}
+
 export interface NodesStats {
   adaptive_selection?: Record<string, NodesAdaptiveSelection>
   breakers?: Record<string, NodesBreaker>
@@ -16437,6 +16462,12 @@ export interface NodesThreadCount {
   queue?: long
   rejected?: long
   threads?: long
+}
+
+export interface NodesTimeHttpHistogram {
+  count: long
+  ge_millis?: long
+  lt_millis?: long
 }
 
 export interface NodesTransport {
