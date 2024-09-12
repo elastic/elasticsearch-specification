@@ -90,3 +90,13 @@ actions:
           examples:
             clusterNodesReloadSecureSettingsResponseExample1:
               $ref: "../../specification/nodes/reload_secure_settings/clusterNodesReloadSecureSettingsResponseExample1.json"
+  - target: "$.paths['/_tasks']['get']"
+    description: "Add examples for task management operation"
+    update:
+      responses:
+        200:
+          content:
+            application/json:
+              examples:
+                getTasksResponseExample1:
+                  $ref: "../../specification/tasks/get/getTasksResponseExample1.json"
