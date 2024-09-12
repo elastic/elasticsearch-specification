@@ -61596,8 +61596,19 @@
             "items": {
               "$ref": "#/components/schemas/nodes._types:Client"
             }
+          },
+          "routes": {
+            "description": "Detailed HTTP stats broken down by route",
+            "x-available-since": "8.12.0",
+            "type": "object",
+            "additionalProperties": {
+              "$ref": "#/components/schemas/nodes._types:HttpRoute"
+            }
           }
-        }
+        },
+        "required": [
+          "routes"
+        ]
       },
       "nodes._types:Client": {
         "type": "object",
@@ -61647,6 +61658,106 @@
             "type": "string"
           }
         }
+      },
+      "nodes._types:HttpRoute": {
+        "type": "object",
+        "properties": {
+          "requests": {
+            "$ref": "#/components/schemas/nodes._types:HttpRouteRequests"
+          },
+          "responses": {
+            "$ref": "#/components/schemas/nodes._types:HttpRouteResponses"
+          }
+        },
+        "required": [
+          "requests",
+          "responses"
+        ]
+      },
+      "nodes._types:HttpRouteRequests": {
+        "type": "object",
+        "properties": {
+          "count": {
+            "type": "number"
+          },
+          "total_size_in_bytes": {
+            "type": "number"
+          },
+          "size_histogram": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/nodes._types:SizeHttpHistogram"
+            }
+          }
+        },
+        "required": [
+          "count",
+          "total_size_in_bytes",
+          "size_histogram"
+        ]
+      },
+      "nodes._types:SizeHttpHistogram": {
+        "type": "object",
+        "properties": {
+          "count": {
+            "type": "number"
+          },
+          "ge_bytes": {
+            "type": "number"
+          },
+          "lt_bytes": {
+            "type": "number"
+          }
+        },
+        "required": [
+          "count"
+        ]
+      },
+      "nodes._types:HttpRouteResponses": {
+        "type": "object",
+        "properties": {
+          "count": {
+            "type": "number"
+          },
+          "total_size_in_bytes": {
+            "type": "number"
+          },
+          "handling_time_histogram": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/nodes._types:TimeHttpHistogram"
+            }
+          },
+          "size_histogram": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/nodes._types:SizeHttpHistogram"
+            }
+          }
+        },
+        "required": [
+          "count",
+          "total_size_in_bytes",
+          "handling_time_histogram",
+          "size_histogram"
+        ]
+      },
+      "nodes._types:TimeHttpHistogram": {
+        "type": "object",
+        "properties": {
+          "count": {
+            "type": "number"
+          },
+          "ge_millis": {
+            "type": "number"
+          },
+          "lt_millis": {
+            "type": "number"
+          }
+        },
+        "required": [
+          "count"
+        ]
       },
       "nodes._types:Ingest": {
         "type": "object",

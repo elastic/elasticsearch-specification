@@ -680,6 +680,41 @@ export class Http {
    * Clients that have been closed longer than the `http.client_stats.closed_channels.max_age` setting will not be represented here.
    */
   clients?: Client[]
+  /**
+   * Detailed HTTP stats broken down by route
+   * @availability stack since=8.12.0 stability=stable
+   */
+  routes: Dictionary<string, HttpRoute>
+}
+
+export class HttpRoute {
+  requests: HttpRouteRequests
+  responses: HttpRouteResponses
+}
+
+export class HttpRouteRequests {
+  count: long
+  total_size_in_bytes: long
+  size_histogram: SizeHttpHistogram[]
+}
+
+export class HttpRouteResponses {
+  count: long
+  total_size_in_bytes: long
+  handling_time_histogram: TimeHttpHistogram[]
+  size_histogram: SizeHttpHistogram[]
+}
+
+export class TimeHttpHistogram {
+  count: long
+  ge_millis?: long
+  lt_millis?: long
+}
+
+export class SizeHttpHistogram {
+  count: long
+  ge_bytes?: long
+  lt_bytes?: long
 }
 
 export class Client {
