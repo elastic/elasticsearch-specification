@@ -196,7 +196,7 @@ pub fn add_endpoint(
 
         // Create the operation, it will be repeated if we have several methods
         let operation = openapiv3::Operation {
-            tags: vec![endpoint.name.clone()],
+            tags: vec![endpoint.name.splitn(1, '.')],
             summary: sum_desc.summary,
             description: sum_desc.description,
             external_docs: tac.convert_external_docs(endpoint),
