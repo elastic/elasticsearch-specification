@@ -4590,8 +4590,8 @@ export interface AnalysisEdgeNGramTokenFilter extends AnalysisTokenFilterBase {
 export interface AnalysisEdgeNGramTokenizer extends AnalysisTokenizerBase {
   type: 'edge_ngram'
   custom_token_chars?: string
-  max_gram: integer
-  min_gram: integer
+  max_gram?: integer
+  min_gram?: integer
   token_chars?: AnalysisTokenChar[]
 }
 
@@ -4933,8 +4933,8 @@ export interface AnalysisNGramTokenFilter extends AnalysisTokenFilterBase {
 export interface AnalysisNGramTokenizer extends AnalysisTokenizerBase {
   type: 'ngram'
   custom_token_chars?: string
-  max_gram: integer
-  min_gram: integer
+  max_gram?: integer
+  min_gram?: integer
   token_chars?: AnalysisTokenChar[]
 }
 

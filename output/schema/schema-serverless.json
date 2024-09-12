@@ -84773,7 +84773,7 @@
         },
         {
           "name": "max_gram",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -84784,7 +84784,7 @@
         },
         {
           "name": "min_gram",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -84929,7 +84929,7 @@
         },
         {
           "name": "max_gram",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -84940,7 +84940,7 @@
         },
         {
           "name": "min_gram",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {

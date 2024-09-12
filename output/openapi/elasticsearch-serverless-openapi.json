@@ -39244,9 +39244,7 @@
               }
             },
             "required": [
-              "type",
-              "max_gram",
-              "min_gram"
+              "type"
             ]
           }
         ]
@@ -39359,9 +39357,7 @@
               }
             },
             "required": [
-              "type",
-              "max_gram",
-              "min_gram"
+              "type"
             ]
           }
         ]
