@@ -92701,7 +92701,7 @@
           }
         }
       ],
-      "specLocation": "nodes/_types/Stats.ts#L734-L752"
+      "specLocation": "nodes/_types/Stats.ts#L770-L788"
     },
     {
       "kind": "interface",
@@ -92978,7 +92978,7 @@
           }
         }
       ],
-      "specLocation": "nodes/_types/Stats.ts#L793-L822"
+      "specLocation": "nodes/_types/Stats.ts#L829-L858"
     },
     {
       "kind": "interface",
@@ -93015,7 +93015,7 @@
           }
         }
       ],
-      "specLocation": "nodes/_types/Stats.ts#L754-L764"
+      "specLocation": "nodes/_types/Stats.ts#L790-L800"
     },
     {
       "kind": "interface",
@@ -93097,7 +93097,7 @@
           }
         }
       ],
-      "specLocation": "nodes/_types/Stats.ts#L766-L791"
+      "specLocation": "nodes/_types/Stats.ts#L802-L827"
     },
     {
       "kind": "interface",
@@ -93146,7 +93146,7 @@
           }
         }
       ],
-      "specLocation": "nodes/_types/Stats.ts#L669-L683"
+      "specLocation": "nodes/_types/Stats.ts#L669-L688"
     },
     {
       "kind": "interface",
@@ -93288,7 +93288,7 @@
           }
         }
       ],
-      "specLocation": "nodes/_types/Stats.ts#L685-L732"
+      "specLocation": "nodes/_types/Stats.ts#L721-L768"
     },
     {
       "kind": "interface",
@@ -93751,7 +93751,7 @@
           }
         }
       ],
-      "specLocation": "nodes/_types/Stats.ts#L847-L881"
+      "specLocation": "nodes/_types/Stats.ts#L883-L917"
     },
     {
       "kind": "interface",
@@ -93821,7 +93821,7 @@
           }
         }
       ],
-      "specLocation": "nodes/_types/Stats.ts#L824-L845"
+      "specLocation": "nodes/_types/Stats.ts#L860-L881"
     },
     {
       "kind": "interface",
@@ -93867,7 +93867,7 @@
           }
         }
       ],
-      "specLocation": "nodes/_types/Stats.ts#L944-L957"
+      "specLocation": "nodes/_types/Stats.ts#L980-L993"
     },
     {
       "kind": "interface",
@@ -93900,7 +93900,7 @@
           }
         }
       ],
-      "specLocation": "nodes/_types/Stats.ts#L959-L964"
+      "specLocation": "nodes/_types/Stats.ts#L995-L1000"
     },
     {
       "kind": "interface",
@@ -93946,7 +93946,7 @@
           }
         }
       ],
-      "specLocation": "nodes/_types/Stats.ts#L966-L979"
+      "specLocation": "nodes/_types/Stats.ts#L1002-L1015"
     },
     {
       "kind": "interface",
@@ -94051,7 +94051,7 @@
           }
         }
       ],
-      "specLocation": "nodes/_types/Stats.ts#L883-L912"
+      "specLocation": "nodes/_types/Stats.ts#L919-L948"
     },
     {
       "kind": "interface",
@@ -94109,7 +94109,7 @@
           }
         }
       ],
-      "specLocation": "nodes/_types/Stats.ts#L914-L931"
+      "specLocation": "nodes/_types/Stats.ts#L950-L967"
     },
     {
       "kind": "interface",
@@ -94143,7 +94143,7 @@
           }
         }
       ],
-      "specLocation": "nodes/_types/Stats.ts#L933-L942"
+      "specLocation": "nodes/_types/Stats.ts#L969-L978"
     },
     {
       "kind": "interface",
@@ -94208,7 +94208,7 @@
           }
         }
       ],
-      "specLocation": "nodes/_types/Stats.ts#L981-L987"
+      "specLocation": "nodes/_types/Stats.ts#L1017-L1023"
     },
     {
       "kind": "interface",
@@ -94826,7 +94826,7 @@
           }
         }
       ],
-      "specLocation": "nodes/_types/Stats.ts#L989-L1011"
+      "specLocation": "nodes/_types/Stats.ts#L1025-L1047"
     },
     {
       "kind": "interface",
@@ -94909,7 +94909,7 @@
           }
         }
       ],
-      "specLocation": "nodes/_types/Stats.ts#L1013-L1031"
+      "specLocation": "nodes/_types/Stats.ts#L1049-L1067"
     },
     {
       "kind": "interface",
@@ -94963,7 +94963,7 @@
           }
         }
       ],
-      "specLocation": "nodes/_types/Stats.ts#L1033-L1038"
+      "specLocation": "nodes/_types/Stats.ts#L1069-L1074"
     },
     {
       "kind": "interface",
@@ -95020,7 +95020,7 @@
           }
         }
       ],
-      "specLocation": "nodes/_types/Stats.ts#L1067-L1081"
+      "specLocation": "nodes/_types/Stats.ts#L1103-L1117"
     },
     {
       "kind": "interface",
@@ -95102,7 +95102,7 @@
           }
         }
       ],
-      "specLocation": "nodes/_types/Stats.ts#L1040-L1065"
+      "specLocation": "nodes/_types/Stats.ts#L1076-L1101"
     },
     {
       "kind": "interface",
@@ -95238,7 +95238,7 @@
           }
         }
       ],
-      "specLocation": "nodes/_types/Stats.ts#L1083-L1126"
+      "specLocation": "nodes/_types/Stats.ts#L1119-L1162"
     },
     {
       "kind": "interface",
@@ -95284,7 +95284,7 @@
           }
         }
       ],
-      "specLocation": "nodes/_types/Stats.ts#L1128-L1142"
+      "specLocation": "nodes/_types/Stats.ts#L1164-L1178"
     },
     {
       "kind": "interface",
