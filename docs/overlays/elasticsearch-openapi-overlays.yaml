@@ -40,4 +40,38 @@ actions:
               examples:
                 resetFeaturesResponseExample1:
                   $ref: "../../specification/features/reset_features/ResetFeaturesResponseExample1.json"
-    
+  - target: "$.components['requestBodies']['cluster.allocation_explain']"
+    description: "Add examples for cluster allocation explain operation"
+    update: 
+      content: 
+        application/json: 
+          examples: 
+            clusterAllocationExplainRequestExample1: 
+              $ref: "../../specification/cluster/allocation_explain/clusterAllocationExplainRequestExample1.json"
+  - target: "$.components['responses']['cluster.health#200']"
+    description: "Add examples for cluster health operation"
+    update: 
+      content:
+        application/json:
+          examples:
+            clusterHealthResponseExample1:
+              $ref: "../../specification/cluster/health/clusterHealthResponseExample1.json"
+  - target: "$.paths['/_cluster/settings']['put']"
+    description: "Add examples for cluster update settings operation"
+    update: 
+      requestBody: 
+        content: 
+          application/json: 
+            examples: 
+              clusterPutSettingsRequestExample1: 
+                $ref: "../../specification/cluster/put_settings/clusterPutSettingsRequestExample1.json"
+  - target: "$.paths['/_cluster/reroute']['post']"
+    description: "Add examples for cluster reroute operation"
+    update: 
+      requestBody: 
+        content: 
+          application/json: 
+            examples: 
+              clusterRerouteRequestExample1: 
+                $ref: "../../specification/cluster/reroute/clusterRerouteRequestExample1.json"
+      
