@@ -28,3 +28,72 @@ actions:
     description: Add x-beta
     update:
       x-beta: true
+  # Add list of tags
+  - target: '$'
+    description: Add document-level tags sorted by display name
+    update:
+      tags:
+        - name: asynch_search
+          # description: 
+        - name: bulk
+          # description: 
+        - name: cat
+          # x-displayName: 
+          # description:
+        - name: close_point_in_time
+          # x-displayName: 
+          # description:
+        - name: cluster
+        - name: connector
+        - name: count
+        - name: create
+        - name: delete
+        - name: delete_by_query
+        - name: delete_script
+        - name: enrich
+        - name: eql
+        - name: esql
+        - name: exists
+        - name: exists_source
+        - name: explain
+        - name: field_caps
+        - name: get
+        - name: get_script
+        - name: get_source
+        - name: graph
+        - name: index
+        - name: indices
+        - name: inference
+        - name: ingest
+        - name: license
+        - name: logstash
+        - name: mget
+        - name: ml
+          x-displayName: Machine learning
+        - name: msearch
+        - name: msearch_template
+        - name: mtermvectors
+        - name: open_point_in_time  
+        - name: put_script
+        - name: query_rules
+        - name: rank_eval
+        - name: reindex
+        - name: render_search_template
+        - name: scripts_painless_execute
+        - name: scroll
+          # description:
+        - name: search
+        - name: search_application
+        - name: search_mvt
+        - name: search_template
+        - name: security
+        - name: sql
+        - name: synonyms
+        - name: tasks
+        - name: terms_enum
+        - name: termvectors
+        - name: transform
+        - name: update
+        - name: update_by_query
+
+        
