@@ -1,4 +1,4 @@
-# overlays.yaml
+# Overlays that are applicable to both Elasticsearch and Elasticsearch Serverless OpenAPI documents
 overlay: 1.0.0
 info:
   title: Overlays for examples that apply to both Elasticsearcb and Elasticsearch Serverless OpenAPI documents
@@ -70,3 +70,40 @@ actions:
               examples:
                 updateTransformResponseExample1:
                   $ref: "../../specification/transform/update_transform/UpdateTransformResponseExample1.json"
+  - target: "$.paths['/_eql/search/status/{id}']['get']"
+    description: "Add examples for get async EQL status operation"
+    update: 
+      responses:
+        200:
+          content:
+            application/json:
+              examples:
+                eqlGetStatusResponseExample1:
+                  $ref: "../../specification/eql/get_status/EqlGetStatusResponseExample1.json"
+  - target: "$.components['requestBodies']['eql.search']"
+    description: "Add examples for EQL search operation"
+    update: 
+      content: 
+        application/json: 
+          examples: 
+            eqlSearchRequestExample1: 
+              $ref: "../../specification/eql/search/EqlSearchRequestExample1.json"
+            eqlSearchRequestExample2: 
+              $ref: "../../specification/eql/search/EqlSearchRequestExample2.json"
+  - target: "$.components['reponses']['eql.search#200']"
+    description: "Add examples for EQL search operation"
+    update: 
+      content:
+        application/json:
+          examples:
+            eqlSearchResponseExample2:
+              $ref: "../../specification/eql/search/EqlSearchResponseExample2.json"
+  - target: "$.paths['/_query']['post']"
+    description: "Add examples for ES|QL query operation"
+    update: 
+      requestBody: 
+        content: 
+          application/json: 
+            examples: 
+              esqlQueryRequestExample1: 
+                $ref: "../../specification/esql/query/EsqlQueryApiRequestExample1.json"

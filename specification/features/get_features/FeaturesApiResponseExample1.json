@@ -1,0 +1,7 @@
+{
+  "summary": "A successful response for retrieving a list of feature states that can be included when taking a snapshot.",
+  "description": "",
+  "type": "response",
+  "response_code": 200,
+  "value": "{\n    \"features\": [\n        {\n            \"name\": \"tasks\",\n            \"description\": \"Manages task results\"\n        },\n        {\n            \"name\": \"kibana\",\n            \"description\": \"Manages Kibana configuration and reports\"\n        }\n    ]\n}"
+}
