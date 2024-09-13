@@ -12,7 +12,7 @@
     "/_async_search/{id}": {
       "get": {
         "tags": [
-          "async_search.get"
+          "async_search"
         ],
         "summary": "Retrieves the results of a previously submitted async search request given its identifier",
         "description": "If the Elasticsearch security features are enabled, access to the results of a specific async search is restricted to the user or API key that submitted it.",
@@ -79,7 +79,7 @@
       },
       "delete": {
         "tags": [
-          "async_search.delete"
+          "async_search"
         ],
         "summary": "Deletes an async search by identifier",
         "description": "If the search is still running, the search request will be cancelled.\nOtherwise, the saved search results are deleted.\nIf the Elasticsearch security features are enabled, the deletion of a specific async search is restricted to: the authenticated user that submitted the original search request; users that have the `cancel_task` cluster privilege.",
@@ -118,7 +118,7 @@
     "/_async_search/status/{id}": {
       "get": {
         "tags": [
-          "async_search.status"
+          "async_search"
         ],
         "summary": "Get async search status\n",
         "description": "Retrieves the status of a previously submitted async search request given its identifier, without retrieving search results.\nIf the Elasticsearch security features are enabled, use of this API is restricted to the `monitoring_user` role.",
@@ -157,7 +157,7 @@
     "/_async_search": {
       "post": {
         "tags": [
-          "async_search.submit"
+          "async_search"
         ],
         "summary": "Runs a search request asynchronously",
         "description": "When the primary sort of the results is an indexed field, shards get sorted based on minimum and maximum value that they hold for that field, hence partial results become available following the sort criteria that was requested.\nWarning: Async search does not support scroll nor search requests that only include the suggest section.\nBy default, Elasticsearch doesn’t allow you to store an async search response larger than 10Mb and an attempt to do this results in an error.\nThe maximum allowed size for a stored async search response can be set by changing the `search.max_async_search_response_size` cluster level setting.",
@@ -319,7 +319,7 @@
     "/{index}/_async_search": {
       "post": {
         "tags": [
-          "async_search.submit"
+          "async_search"
         ],
         "summary": "Runs a search request asynchronously",
         "description": "When the primary sort of the results is an indexed field, shards get sorted based on minimum and maximum value that they hold for that field, hence partial results become available following the sort criteria that was requested.\nWarning: Async search does not support scroll nor search requests that only include the suggest section.\nBy default, Elasticsearch doesn’t allow you to store an async search response larger than 10Mb and an attempt to do this results in an error.\nThe maximum allowed size for a stored async search response can be set by changing the `search.max_async_search_response_size` cluster level setting.",
@@ -686,7 +686,7 @@
     "/_cat/aliases": {
       "get": {
         "tags": [
-          "cat.aliases"
+          "cat"
         ],
         "summary": "Get aliases",
         "description": "Retrieves the cluster’s index aliases, including filter and routing information.\nThe API does not return data stream aliases.\n\nCAT APIs are only intended for human consumption using the command line or the Kibana console. They are not intended for use by applications. For application consumption, use the aliases API.",
@@ -709,7 +709,7 @@
     "/_cat/aliases/{name}": {
       "get": {
         "tags": [
-          "cat.aliases"
+          "cat"
         ],
         "summary": "Get aliases",
         "description": "Retrieves the cluster’s index aliases, including filter and routing information.\nThe API does not return data stream aliases.\n\nCAT APIs are only intended for human consumption using the command line or the Kibana console. They are not intended for use by applications. For application consumption, use the aliases API.",
@@ -735,7 +735,7 @@
     "/_cat/component_templates": {
       "get": {
         "tags": [
-          "cat.component_templates"
+          "cat"
         ],
         "summary": "Get component templates",
         "description": "Returns information about component templates in a cluster.\nComponent templates are building blocks for constructing index templates that specify index mappings, settings, and aliases.\n\nCAT APIs are only intended for human consumption using the command line or Kibana console.\nThey are not intended for use by applications. For application consumption, use the get component template API.",
@@ -754,7 +754,7 @@
     "/_cat/component_templates/{name}": {
       "get": {
         "tags": [
-          "cat.component_templates"
+          "cat"
         ],
         "summary": "Get component templates",
         "description": "Returns information about component templates in a cluster.\nComponent templates are building blocks for constructing index templates that specify index mappings, settings, and aliases.\n\nCAT APIs are only intended for human consumption using the command line or Kibana console.\nThey are not intended for use by applications. For application consumption, use the get component template API.",
@@ -778,7 +778,7 @@
     "/_cat/count": {
       "get": {
         "tags": [
-          "cat.count"
+          "cat"
         ],
         "summary": "Get a document count",
         "description": "Provides quick access to a document count for a data stream, an index, or an entire cluster.\nThe document count only includes live documents, not deleted documents which have not yet been removed by the merge process.\n\nCAT APIs are only intended for human consumption using the command line or Kibana console.\nThey are not intended for use by applications. For application consumption, use the count API.",
@@ -796,7 +796,7 @@
     "/_cat/count/{index}": {
       "get": {
         "tags": [
-          "cat.count"
+          "cat"
         ],
         "summary": "Get a document count",
         "description": "Provides quick access to a document count for a data stream, an index, or an entire cluster.\nThe document count only includes live documents, not deleted documents which have not yet been removed by the merge process.\n\nCAT APIs are only intended for human consumption using the command line or Kibana console.\nThey are not intended for use by applications. For application consumption, use the count API.",
@@ -819,7 +819,7 @@
     "/_cat": {
       "get": {
         "tags": [
-          "cat.help"
+          "cat"
         ],
         "summary": "Get CAT help",
         "description": "Returns help for the CAT APIs.",
@@ -847,7 +847,7 @@
     "/_cat/indices": {
       "get": {
         "tags": [
-          "cat.indices"
+          "cat"
         ],
         "summary": "Get index information",
         "description": "Returns high-level information about indices in a cluster, including backing indices for data streams.\n\nUse this request to get the following information for each index in a cluster:\n- shard count\n- document count\n- deleted document count\n- primary store size\n- total store size of all shards, including shard replicas\n\nThese metrics are retrieved directly from Lucene, which Elasticsearch uses internally to power indexing and search. As a result, all document counts include hidden nested documents.\nTo get an accurate count of Elasticsearch documents, use the cat count or count APIs.\n\nCAT APIs are only intended for human consumption using the command line or Kibana console.\nThey are not intended for use by applications. For application consumption, use an index endpoint.",
@@ -885,7 +885,7 @@
     "/_cat/indices/{index}": {
       "get": {
         "tags": [
-          "cat.indices"
+          "cat"
         ],
         "summary": "Get index information",
         "description": "Returns high-level information about indices in a cluster, including backing indices for data streams.\n\nUse this request to get the following information for each index in a cluster:\n- shard count\n- document count\n- deleted document count\n- primary store size\n- total store size of all shards, including shard replicas\n\nThese metrics are retrieved directly from Lucene, which Elasticsearch uses internally to power indexing and search. As a result, all document counts include hidden nested documents.\nTo get an accurate count of Elasticsearch documents, use the cat count or count APIs.\n\nCAT APIs are only intended for human consumption using the command line or Kibana console.\nThey are not intended for use by applications. For application consumption, use an index endpoint.",
@@ -926,7 +926,7 @@
     "/_cat/ml/data_frame/analytics": {
       "get": {
         "tags": [
-          "cat.ml_data_frame_analytics"
+          "cat"
         ],
         "summary": "Get data frame analytics jobs",
         "description": "Returns configuration and usage information about data frame analytics jobs.\n\nCAT APIs are only intended for human consumption using the Kibana\nconsole or command line. They are not intended for use by applications. For\napplication consumption, use the get data frame analytics jobs statistics API.",
@@ -962,7 +962,7 @@
     "/_cat/ml/data_frame/analytics/{id}": {
       "get": {
         "tags": [
-          "cat.ml_data_frame_analytics"
+          "cat"
         ],
         "summary": "Get data frame analytics jobs",
         "description": "Returns configuration and usage information about data frame analytics jobs.\n\nCAT APIs are only intended for human consumption using the Kibana\nconsole or command line. They are not intended for use by applications. For\napplication consumption, use the get data frame analytics jobs statistics API.",
@@ -1001,7 +1001,7 @@
     "/_cat/ml/datafeeds": {
       "get": {
         "tags": [
-          "cat.ml_datafeeds"
+          "cat"
         ],
         "summary": "Get datafeeds",
         "description": "Returns configuration and usage information about datafeeds.\nThis API returns a maximum of 10,000 datafeeds.\nIf the Elasticsearch security features are enabled, you must have `monitor_ml`, `monitor`, `manage_ml`, or `manage`\ncluster privileges to use this API.\n\nCAT APIs are only intended for human consumption using the Kibana\nconsole or command line. They are not intended for use by applications. For\napplication consumption, use the get datafeed statistics API.",
@@ -1034,7 +1034,7 @@
     "/_cat/ml/datafeeds/{datafeed_id}": {
       "get": {
         "tags": [
-          "cat.ml_datafeeds"
+          "cat"
         ],
         "summary": "Get datafeeds",
         "description": "Returns configuration and usage information about datafeeds.\nThis API returns a maximum of 10,000 datafeeds.\nIf the Elasticsearch security features are enabled, you must have `monitor_ml`, `monitor`, `manage_ml`, or `manage`\ncluster privileges to use this API.\n\nCAT APIs are only intended for human consumption using the Kibana\nconsole or command line. They are not intended for use by applications. For\napplication consumption, use the get datafeed statistics API.",
@@ -1070,7 +1070,7 @@
     "/_cat/ml/anomaly_detectors": {
       "get": {
         "tags": [
-          "cat.ml_jobs"
+          "cat"
         ],
         "summary": "Get anomaly detection jobs",
         "description": "Returns configuration and usage information for anomaly detection jobs.\nThis API returns a maximum of 10,000 jobs.\nIf the Elasticsearch security features are enabled, you must have `monitor_ml`,\n`monitor`, `manage_ml`, or `manage` cluster privileges to use this API.\n\nCAT APIs are only intended for human consumption using the Kibana\nconsole or command line. They are not intended for use by applications. For\napplication consumption, use the get anomaly detection job statistics API.",
@@ -1106,7 +1106,7 @@
     "/_cat/ml/anomaly_detectors/{job_id}": {
       "get": {
         "tags": [
-          "cat.ml_jobs"
+          "cat"
         ],
         "summary": "Get anomaly detection jobs",
         "description": "Returns configuration and usage information for anomaly detection jobs.\nThis API returns a maximum of 10,000 jobs.\nIf the Elasticsearch security features are enabled, you must have `monitor_ml`,\n`monitor`, `manage_ml`, or `manage` cluster privileges to use this API.\n\nCAT APIs are only intended for human consumption using the Kibana\nconsole or command line. They are not intended for use by applications. For\napplication consumption, use the get anomaly detection job statistics API.",
@@ -1145,7 +1145,7 @@
     "/_cat/ml/trained_models": {
       "get": {
         "tags": [
-          "cat.ml_trained_models"
+          "cat"
         ],
         "summary": "Get trained models",
         "description": "Returns configuration and usage information about inference trained models.\n\nCAT APIs are only intended for human consumption using the Kibana\nconsole or command line. They are not intended for use by applications. For\napplication consumption, use the get trained models statistics API.",
@@ -1184,7 +1184,7 @@
     "/_cat/ml/trained_models/{model_id}": {
       "get": {
         "tags": [
-          "cat.ml_trained_models"
+          "cat"
         ],
         "summary": "Get trained models",
         "description": "Returns configuration and usage information about inference trained models.\n\nCAT APIs are only intended for human consumption using the Kibana\nconsole or command line. They are not intended for use by applications. For\napplication consumption, use the get trained models statistics API.",
@@ -1226,7 +1226,7 @@
     "/_cat/transforms": {
       "get": {
         "tags": [
-          "cat.transforms"
+          "cat"
         ],
         "summary": "Get transforms",
         "description": "Returns configuration and usage information about transforms.\n\nCAT APIs are only intended for human consumption using the Kibana\nconsole or command line. They are not intended for use by applications. For\napplication consumption, use the get transform statistics API.",
@@ -1265,7 +1265,7 @@
     "/_cat/transforms/{transform_id}": {
       "get": {
         "tags": [
-          "cat.transforms"
+          "cat"
         ],
         "summary": "Get transforms",
         "description": "Returns configuration and usage information about transforms.\n\nCAT APIs are only intended for human consumption using the Kibana\nconsole or command line. They are not intended for use by applications. For\napplication consumption, use the get transform statistics API.",
@@ -1528,7 +1528,7 @@
     "/_component_template/{name}": {
       "get": {
         "tags": [
-          "cluster.get_component_template"
+          "cluster"
         ],
         "summary": "Get component templates",
         "description": "Retrieves information about component templates.",
@@ -1562,7 +1562,7 @@
       },
       "put": {
         "tags": [
-          "cluster.put_component_template"
+          "cluster"
         ],
         "summary": "Create or update a component template",
         "description": "Creates or updates a component template.\nComponent templates are building blocks for constructing index templates that specify index mappings, settings, and aliases.\n\nAn index template can be composed of multiple component templates.\nTo use a component template, specify it in an index template’s `composed_of` list.\nComponent templates are only applied to new data streams and indices as part of a matching index template.\n\nSettings and mappings specified directly in the index template or the create index request override any settings or mappings specified in a component template.\n\nComponent templates are only used during index creation.\nFor data streams, this includes data stream creation and the creation of a stream’s backing indices.\nChanges to component templates do not affect existing indices, including a stream’s backing indices.\n\nYou can use C-style `/* *\\/` block comments in component templates.\nYou can include comments anywhere in the request body except before the opening curly bracket.",
@@ -1593,7 +1593,7 @@
       },
       "post": {
         "tags": [
-          "cluster.put_component_template"
+          "cluster"
         ],
         "summary": "Create or update a component template",
         "description": "Creates or updates a component template.\nComponent templates are building blocks for constructing index templates that specify index mappings, settings, and aliases.\n\nAn index template can be composed of multiple component templates.\nTo use a component template, specify it in an index template’s `composed_of` list.\nComponent templates are only applied to new data streams and indices as part of a matching index template.\n\nSettings and mappings specified directly in the index template or the create index request override any settings or mappings specified in a component template.\n\nComponent templates are only used during index creation.\nFor data streams, this includes data stream creation and the creation of a stream’s backing indices.\nChanges to component templates do not affect existing indices, including a stream’s backing indices.\n\nYou can use C-style `/* *\\/` block comments in component templates.\nYou can include comments anywhere in the request body except before the opening curly bracket.",
@@ -1624,7 +1624,7 @@
       },
       "delete": {
         "tags": [
-          "cluster.delete_component_template"
+          "cluster"
         ],
         "summary": "Delete component templates",
         "description": "Deletes component templates.\nComponent templates are building blocks for constructing index templates that specify index mappings, settings, and aliases.",
@@ -1681,7 +1681,7 @@
       },
       "head": {
         "tags": [
-          "cluster.exists_component_template"
+          "cluster"
         ],
         "summary": "Check component templates",
         "description": "Returns information about whether a particular component template exists.",
@@ -1736,7 +1736,7 @@
     "/_component_template": {
       "get": {
         "tags": [
-          "cluster.get_component_template"
+          "cluster"
         ],
         "summary": "Get component templates",
         "description": "Retrieves information about component templates.",
@@ -1769,7 +1769,7 @@
     "/_info/{target}": {
       "get": {
         "tags": [
-          "cluster.info"
+          "cluster"
         ],
         "summary": "Get cluster info",
         "description": "Returns basic information about the cluster.",
@@ -1831,7 +1831,7 @@
     "/_connector/{connector_id}/_check_in": {
       "put": {
         "tags": [
-          "connector.check_in"
+          "connector"
         ],
         "summary": "Updates the last_seen field in the connector, and sets it to current timestamp",
         "externalDocs": {
@@ -1878,7 +1878,7 @@
     "/_connector/{connector_id}": {
       "get": {
         "tags": [
-          "connector.get"
+          "connector"
         ],
         "summary": "Retrieves a connector",
         "externalDocs": {
@@ -1915,7 +1915,7 @@
       },
       "put": {
         "tags": [
-          "connector.put"
+          "connector"
         ],
         "summary": "Creates or updates a connector",
         "externalDocs": {
@@ -1940,7 +1940,7 @@
       },
       "delete": {
         "tags": [
-          "connector.delete"
+          "connector"
         ],
         "summary": "Deletes a connector",
         "externalDocs": {
@@ -1989,7 +1989,7 @@
     "/_connector": {
       "get": {
         "tags": [
-          "connector.list"
+          "connector"
         ],
         "summary": "Returns existing connectors",
         "externalDocs": {
@@ -2090,7 +2090,7 @@
       },
       "put": {
         "tags": [
-          "connector.put"
+          "connector"
         ],
         "summary": "Creates or updates a connector",
         "externalDocs": {
@@ -2110,7 +2110,7 @@
       },
       "post": {
         "tags": [
-          "connector.post"
+          "connector"
         ],
         "summary": "Creates a connector",
         "externalDocs": {
@@ -2177,7 +2177,7 @@
     "/_connector/_sync_job/{connector_sync_job_id}/_cancel": {
       "put": {
         "tags": [
-          "connector.sync_job_cancel"
+          "connector"
         ],
         "summary": "Cancels a connector sync job",
         "externalDocs": {
@@ -2224,7 +2224,7 @@
     "/_connector/_sync_job/{connector_sync_job_id}": {
       "get": {
         "tags": [
-          "connector.sync_job_get"
+          "connector"
         ],
         "summary": "Retrieves a connector sync job",
         "externalDocs": {
@@ -2261,7 +2261,7 @@
       },
       "delete": {
         "tags": [
-          "connector.sync_job_delete"
+          "connector"
         ],
         "summary": "Deletes a connector sync job",
         "externalDocs": {
@@ -2300,7 +2300,7 @@
     "/_connector/_sync_job": {
       "get": {
         "tags": [
-          "connector.sync_job_list"
+          "connector"
         ],
         "summary": "Lists connector sync jobs",
         "externalDocs": {
@@ -2401,7 +2401,7 @@
       },
       "post": {
         "tags": [
-          "connector.sync_job_post"
+          "connector"
         ],
         "summary": "Creates a connector sync job",
         "externalDocs": {
@@ -2459,7 +2459,7 @@
     "/_connector/{connector_id}/_filtering/_activate": {
       "put": {
         "tags": [
-          "connector.update_active_filtering"
+          "connector"
         ],
         "summary": "Activates the valid draft filtering for a connector",
         "externalDocs": {
@@ -2506,7 +2506,7 @@
     "/_connector/{connector_id}/_api_key_id": {
       "put": {
         "tags": [
-          "connector.update_api_key_id"
+          "connector"
         ],
         "summary": "Updates the API key id in the connector document",
         "externalDocs": {
@@ -2571,7 +2571,7 @@
     "/_connector/{connector_id}/_configuration": {
       "put": {
         "tags": [
-          "connector.update_configuration"
+          "connector"
         ],
         "summary": "Updates the configuration field in the connector document",
         "externalDocs": {
@@ -2639,7 +2639,7 @@
     "/_connector/{connector_id}/_error": {
       "put": {
         "tags": [
-          "connector.update_error"
+          "connector"
         ],
         "summary": "Updates the filtering field in the connector document",
         "externalDocs": {
@@ -2711,7 +2711,7 @@
     "/_connector/{connector_id}/_filtering": {
       "put": {
         "tags": [
-          "connector.update_filtering"
+          "connector"
         ],
         "summary": "Updates the filtering field in the connector document",
         "externalDocs": {
@@ -2785,7 +2785,7 @@
     "/_connector/{connector_id}/_filtering/_validation": {
       "put": {
         "tags": [
-          "connector.update_filtering_validation"
+          "connector"
         ],
         "summary": "Updates the draft filtering validation info for a connector",
         "externalDocs": {
@@ -2850,7 +2850,7 @@
     "/_connector/{connector_id}/_index_name": {
       "put": {
         "tags": [
-          "connector.update_index_name"
+          "connector"
         ],
         "summary": "Updates the index_name in the connector document",
         "externalDocs": {
@@ -2922,7 +2922,7 @@
     "/_connector/{connector_id}/_name": {
       "put": {
         "tags": [
-          "connector.update_name"
+          "connector"
         ],
         "summary": "Updates the name and description fields in the connector document",
         "externalDocs": {
@@ -2987,7 +2987,7 @@
     "/_connector/{connector_id}/_native": {
       "put": {
         "tags": [
-          "connector.update_native"
+          "connector"
         ],
         "summary": "Updates the is_native flag in the connector document",
         "externalDocs": {
@@ -3052,7 +3052,7 @@
     "/_connector/{connector_id}/_pipeline": {
       "put": {
         "tags": [
-          "connector.update_pipeline"
+          "connector"
         ],
         "summary": "Updates the pipeline field in the connector document",
         "externalDocs": {
@@ -3117,7 +3117,7 @@
     "/_connector/{connector_id}/_scheduling": {
       "put": {
         "tags": [
-          "connector.update_scheduling"
+          "connector"
         ],
         "summary": "Updates the scheduling field in the connector document",
         "externalDocs": {
@@ -3182,7 +3182,7 @@
     "/_connector/{connector_id}/_service_type": {
       "put": {
         "tags": [
-          "connector.update_service_type"
+          "connector"
         ],
         "summary": "Updates the service type of the connector",
         "externalDocs": {
@@ -3247,7 +3247,7 @@
     "/_connector/{connector_id}/_status": {
       "put": {
         "tags": [
-          "connector.update_status"
+          "connector"
         ],
         "summary": "Updates the status of the connector",
         "externalDocs": {
@@ -4798,7 +4798,7 @@
     "/_enrich/policy/{name}": {
       "get": {
         "tags": [
-          "enrich.get_policy"
+          "enrich"
         ],
         "summary": "Get an enrich policy",
         "description": "Returns information about an enrich policy.",
@@ -4820,7 +4820,7 @@
       },
       "put": {
         "tags": [
-          "enrich.put_policy"
+          "enrich"
         ],
         "summary": "Create an enrich policy",
         "description": "Creates an enrich policy.",
@@ -4878,7 +4878,7 @@
       },
       "delete": {
         "tags": [
-          "enrich.delete_policy"
+          "enrich"
         ],
         "summary": "Delete an enrich policy",
         "description": "Deletes an existing enrich policy and its enrich index.",
@@ -4917,7 +4917,7 @@
     "/_enrich/policy/{name}/_execute": {
       "put": {
         "tags": [
-          "enrich.execute_policy"
+          "enrich"
         ],
         "summary": "Creates the enrich index for an existing enrich policy",
         "externalDocs": {
@@ -4973,7 +4973,7 @@
     "/_enrich/policy": {
       "get": {
         "tags": [
-          "enrich.get_policy"
+          "enrich"
         ],
         "summary": "Get an enrich policy",
         "description": "Returns information about an enrich policy.",
@@ -4992,7 +4992,7 @@
     "/_enrich/_stats": {
       "get": {
         "tags": [
-          "enrich.stats"
+          "enrich"
         ],
         "summary": "Get enrich stats",
         "description": "Returns enrich coordinator statistics and information about enrich policies that are currently executing.",
@@ -5046,7 +5046,7 @@
     "/_eql/search/{id}": {
       "get": {
         "tags": [
-          "eql.get"
+          "eql"
         ],
         "summary": "Returns the current status and available results for an async EQL search or a stored synchronous EQL search",
         "externalDocs": {
@@ -5102,7 +5102,7 @@
       },
       "delete": {
         "tags": [
-          "eql.delete"
+          "eql"
         ],
         "summary": "Deletes an async EQL search or a stored synchronous EQL search",
         "description": "The API also deletes results for the search.",
@@ -5141,7 +5141,7 @@
     "/_eql/search/status/{id}": {
       "get": {
         "tags": [
-          "eql.get_status"
+          "eql"
         ],
         "summary": "Returns the current status for an async EQL search or a stored synchronous EQL search without returning results",
         "externalDocs": {
@@ -5207,7 +5207,7 @@
     "/{index}/_eql/search": {
       "get": {
         "tags": [
-          "eql.search"
+          "eql"
         ],
         "summary": "Returns results matching a query expressed in Event Query Language (EQL)",
         "externalDocs": {
@@ -5249,7 +5249,7 @@
       },
       "post": {
         "tags": [
-          "eql.search"
+          "eql"
         ],
         "summary": "Returns results matching a query expressed in Event Query Language (EQL)",
         "externalDocs": {
@@ -5293,7 +5293,7 @@
     "/_query": {
       "post": {
         "tags": [
-          "esql.query"
+          "esql"
         ],
         "summary": "Executes an ES|QL request",
         "externalDocs": {
@@ -6007,7 +6007,7 @@
     "/{index}/_graph/explore": {
       "get": {
         "tags": [
-          "graph.explore"
+          "graph"
         ],
         "summary": "Extracts and summarizes information about the documents and terms in an Elasticsearch data stream or index",
         "externalDocs": {
@@ -6036,7 +6036,7 @@
       },
       "post": {
         "tags": [
-          "graph.explore"
+          "graph"
         ],
         "summary": "Extracts and summarizes information about the documents and terms in an Elasticsearch data stream or index",
         "externalDocs": {
@@ -6126,7 +6126,7 @@
     "/{index}/_block/{block}": {
       "put": {
         "tags": [
-          "indices.add_block"
+          "indices"
         ],
         "summary": "Add an index block",
         "description": "Limits the operations allowed on an index by blocking specific operation types.",
@@ -6245,7 +6245,7 @@
     "/_analyze": {
       "get": {
         "tags": [
-          "indices.analyze"
+          "indices"
         ],
         "summary": "Performs analysis on a text string and returns the resulting tokens",
         "externalDocs": {
@@ -6263,7 +6263,7 @@
       },
       "post": {
         "tags": [
-          "indices.analyze"
+          "indices"
         ],
         "summary": "Performs analysis on a text string and returns the resulting tokens",
         "externalDocs": {
@@ -6283,7 +6283,7 @@
     "/{index}/_analyze": {
       "get": {
         "tags": [
-          "indices.analyze"
+          "indices"
         ],
         "summary": "Performs analysis on a text string and returns the resulting tokens",
         "externalDocs": {
@@ -6306,7 +6306,7 @@
       },
       "post": {
         "tags": [
-          "indices.analyze"
+          "indices"
         ],
         "summary": "Performs analysis on a text string and returns the resulting tokens",
         "externalDocs": {
@@ -6331,7 +6331,7 @@
     "/{index}": {
       "get": {
         "tags": [
-          "indices.get"
+          "indices"
         ],
         "summary": "Get index information",
         "description": "Returns information about one or more indices. For data streams, the API returns information about the\nstream’s backing indices.",
@@ -6450,7 +6450,7 @@
       },
       "put": {
         "tags": [
-          "indices.create"
+          "indices"
         ],
         "summary": "Create an index",
         "description": "Creates a new index.",
@@ -6556,7 +6556,7 @@
       },
       "delete": {
         "tags": [
-          "indices.delete"
+          "indices"
         ],
         "summary": "Delete indices",
         "description": "Deletes one or more indices.",
@@ -6642,7 +6642,7 @@
       },
       "head": {
         "tags": [
-          "indices.exists"
+          "indices"
         ],
         "summary": "Check indices",
         "description": "Checks if one or more indices, index aliases, or data streams exist.",
@@ -6736,7 +6736,7 @@
     "/_data_stream/{name}": {
       "get": {
         "tags": [
-          "indices.get_data_stream"
+          "indices"
         ],
         "summary": "Get data streams",
         "description": "Retrieves information about one or more data streams.",
@@ -6770,7 +6770,7 @@
       },
       "put": {
         "tags": [
-          "indices.create_data_stream"
+          "indices"
         ],
         "summary": "Create a data stream",
         "description": "Creates a data stream.\nYou must have a matching index template with data stream enabled.",
@@ -6827,7 +6827,7 @@
       },
       "delete": {
         "tags": [
-          "indices.delete_data_stream"
+          "indices"
         ],
         "summary": "Delete data streams",
         "description": "Deletes one or more data streams and their backing indices.",
@@ -6886,7 +6886,7 @@
     "/{index}/_alias/{name}": {
       "get": {
         "tags": [
-          "indices.get_alias"
+          "indices"
         ],
         "summary": "Get aliases",
         "description": "Retrieves information for one or more data stream or index aliases.",
@@ -6922,7 +6922,7 @@
       },
       "put": {
         "tags": [
-          "indices.put_alias"
+          "indices"
         ],
         "summary": "Create or update an alias",
         "description": "Adds a data stream or index to an alias.",
@@ -6955,7 +6955,7 @@
       },
       "post": {
         "tags": [
-          "indices.put_alias"
+          "indices"
         ],
         "summary": "Create or update an alias",
         "description": "Adds a data stream or index to an alias.",
@@ -6988,7 +6988,7 @@
       },
       "delete": {
         "tags": [
-          "indices.delete_alias"
+          "indices"
         ],
         "summary": "Delete an alias",
         "description": "Removes a data stream or index from an alias.",
@@ -7018,7 +7018,7 @@
       },
       "head": {
         "tags": [
-          "indices.exists_alias"
+          "indices"
         ],
         "summary": "Check aliases",
         "description": "Checks if one or more data stream or index aliases exist.",
@@ -7056,7 +7056,7 @@
     "/{index}/_aliases/{name}": {
       "put": {
         "tags": [
-          "indices.put_alias"
+          "indices"
         ],
         "summary": "Create or update an alias",
         "description": "Adds a data stream or index to an alias.",
@@ -7089,7 +7089,7 @@
       },
       "post": {
         "tags": [
-          "indices.put_alias"
+          "indices"
         ],
         "summary": "Create or update an alias",
         "description": "Adds a data stream or index to an alias.",
@@ -7122,7 +7122,7 @@
       },
       "delete": {
         "tags": [
-          "indices.delete_alias"
+          "indices"
         ],
         "summary": "Delete an alias",
         "description": "Removes a data stream or index from an alias.",
@@ -7154,7 +7154,7 @@
     "/_data_stream/{name}/_lifecycle": {
       "get": {
         "tags": [
-          "indices.get_data_lifecycle"
+          "indices"
         ],
         "summary": "Get data stream lifecycles",
         "description": "Retrieves the data stream lifecycle configuration of one or more data streams.",
@@ -7232,7 +7232,7 @@
       },
       "put": {
         "tags": [
-          "indices.put_data_lifecycle"
+          "indices"
         ],
         "summary": "Update data stream lifecycles",
         "description": "Update the data stream lifecycle of the specified data streams.",
@@ -7316,7 +7316,7 @@
       },
       "delete": {
         "tags": [
-          "indices.delete_data_lifecycle"
+          "indices"
         ],
         "summary": "Delete data stream lifecycles",
         "description": "Removes the data stream lifecycle from a data stream, rendering it not managed by the data stream lifecycle.",
@@ -7385,7 +7385,7 @@
     "/_index_template/{name}": {
       "get": {
         "tags": [
-          "indices.get_index_template"
+          "indices"
         ],
         "summary": "Get index templates",
         "description": "Returns information about one or more index templates.",
@@ -7419,7 +7419,7 @@
       },
       "put": {
         "tags": [
-          "indices.put_index_template"
+          "indices"
         ],
         "summary": "Create or update an index template",
         "description": "Index templates define settings, mappings, and aliases that can be applied automatically to new indices.",
@@ -7453,7 +7453,7 @@
       },
       "post": {
         "tags": [
-          "indices.put_index_template"
+          "indices"
         ],
         "summary": "Create or update an index template",
         "description": "Index templates define settings, mappings, and aliases that can be applied automatically to new indices.",
@@ -7487,7 +7487,7 @@
       },
       "delete": {
         "tags": [
-          "indices.delete_index_template"
+          "indices"
         ],
         "summary": "Delete an index template",
         "description": "The provided <index-template> may contain multiple template names separated by a comma. If multiple template\nnames are specified then there is no wildcard support and the provided names should match completely with\nexisting templates.",
@@ -7544,7 +7544,7 @@
       },
       "head": {
         "tags": [
-          "indices.exists_index_template"
+          "indices"
         ],
         "summary": "Returns information about whether a particular index template exists",
         "externalDocs": {
@@ -7587,7 +7587,7 @@
     "/_alias/{name}": {
       "get": {
         "tags": [
-          "indices.get_alias"
+          "indices"
         ],
         "summary": "Get aliases",
         "description": "Retrieves information for one or more data stream or index aliases.",
@@ -7620,7 +7620,7 @@
       },
       "head": {
         "tags": [
-          "indices.exists_alias"
+          "indices"
         ],
         "summary": "Check aliases",
         "description": "Checks if one or more data stream or index aliases exist.",
@@ -7655,7 +7655,7 @@
     "/{index}/_lifecycle/explain": {
       "get": {
         "tags": [
-          "indices.explain_data_lifecycle"
+          "indices"
         ],
         "summary": "Get the status for a data stream lifecycle",
         "description": "Retrieves information about an index or data stream’s current data stream lifecycle status, such as time since index creation, time since rollover, the lifecycle configuration managing the index, or any errors encountered during lifecycle execution.",
@@ -7725,7 +7725,7 @@
     "/_alias": {
       "get": {
         "tags": [
-          "indices.get_alias"
+          "indices"
         ],
         "summary": "Get aliases",
         "description": "Retrieves information for one or more data stream or index aliases.",
@@ -7757,7 +7757,7 @@
     "/{index}/_alias": {
       "get": {
         "tags": [
-          "indices.get_alias"
+          "indices"
         ],
         "summary": "Get aliases",
         "description": "Retrieves information for one or more data stream or index aliases.",
@@ -7792,7 +7792,7 @@
     "/_data_stream": {
       "get": {
         "tags": [
-          "indices.get_data_stream"
+          "indices"
         ],
         "summary": "Get data streams",
         "description": "Retrieves information about one or more data streams.",
@@ -7825,7 +7825,7 @@
     "/_index_template": {
       "get": {
         "tags": [
-          "indices.get_index_template"
+          "indices"
         ],
         "summary": "Get index templates",
         "description": "Returns information about one or more index templates.",
@@ -7858,7 +7858,7 @@
     "/_mapping": {
       "get": {
         "tags": [
-          "indices.get_mapping"
+          "indices"
         ],
         "summary": "Get mapping definitions",
         "description": "Retrieves mapping definitions for one or more indices.\nFor data streams, the API retrieves mappings for the stream’s backing indices.",
@@ -7893,7 +7893,7 @@
     "/{index}/_mapping": {
       "get": {
         "tags": [
-          "indices.get_mapping"
+          "indices"
         ],
         "summary": "Get mapping definitions",
         "description": "Retrieves mapping definitions for one or more indices.\nFor data streams, the API retrieves mappings for the stream’s backing indices.",
@@ -7929,7 +7929,7 @@
       },
       "put": {
         "tags": [
-          "indices.put_mapping"
+          "indices"
         ],
         "summary": "Update field mappings",
         "description": "Adds new fields to an existing data stream or index.\nYou can also use this API to change the search settings of existing fields.\nFor data streams, these changes are applied to all backing indices by default.",
@@ -7971,7 +7971,7 @@
       },
       "post": {
         "tags": [
-          "indices.put_mapping"
+          "indices"
         ],
         "summary": "Update field mappings",
         "description": "Adds new fields to an existing data stream or index.\nYou can also use this API to change the search settings of existing fields.\nFor data streams, these changes are applied to all backing indices by default.",
@@ -8015,7 +8015,7 @@
     "/_settings": {
       "get": {
         "tags": [
-          "indices.get_settings"
+          "indices"
         ],
         "summary": "Get index settings",
         "description": "Returns setting information for one or more indices. For data streams,\nreturns setting information for the stream’s backing indices.",
@@ -8054,7 +8054,7 @@
       },
       "put": {
         "tags": [
-          "indices.put_settings"
+          "indices"
         ],
         "summary": "Update index settings",
         "description": "Changes dynamic index settings in real time. For data streams, index setting\nchanges are applied to all backing indices by default.",
@@ -8098,7 +8098,7 @@
     "/{index}/_settings": {
       "get": {
         "tags": [
-          "indices.get_settings"
+          "indices"
         ],
         "summary": "Get index settings",
         "description": "Returns setting information for one or more indices. For data streams,\nreturns setting information for the stream’s backing indices.",
@@ -8140,7 +8140,7 @@
       },
       "put": {
         "tags": [
-          "indices.put_settings"
+          "indices"
         ],
         "summary": "Update index settings",
         "description": "Changes dynamic index settings in real time. For data streams, index setting\nchanges are applied to all backing indices by default.",
@@ -8187,7 +8187,7 @@
     "/{index}/_settings/{name}": {
       "get": {
         "tags": [
-          "indices.get_settings"
+          "indices"
         ],
         "summary": "Get index settings",
         "description": "Returns setting information for one or more indices. For data streams,\nreturns setting information for the stream’s backing indices.",
@@ -8234,7 +8234,7 @@
     "/_settings/{name}": {
       "get": {
         "tags": [
-          "indices.get_settings"
+          "indices"
         ],
         "summary": "Get index settings",
         "description": "Returns setting information for one or more indices. For data streams,\nreturns setting information for the stream’s backing indices.",
@@ -8278,7 +8278,7 @@
     "/_data_stream/_migrate/{name}": {
       "post": {
         "tags": [
-          "indices.migrate_to_data_stream"
+          "indices"
         ],
         "summary": "Convert an index alias to a data stream",
         "description": "Converts an index alias to a data stream.\nYou must have a matching index template that is data stream enabled.\nThe alias must meet the following criteria:\nThe alias must have a write index;\nAll indices for the alias must have a `@timestamp` field mapping of a `date` or `date_nanos` field type;\nThe alias must not have any filters;\nThe alias must not use custom routing.\nIf successful, the request removes the alias and creates a data stream with the same name.\nThe indices for the alias become hidden backing indices for the stream.\nThe write index for the alias becomes the write index for the stream.",
@@ -8337,7 +8337,7 @@
     "/_data_stream/_modify": {
       "post": {
         "tags": [
-          "indices.modify_data_stream"
+          "indices"
         ],
         "summary": "Update data streams",
         "description": "Performs one or more data stream modification actions in a single atomic operation.",
@@ -8385,7 +8385,7 @@
     "/_template/{name}": {
       "put": {
         "tags": [
-          "indices.put_template"
+          "indices"
         ],
         "summary": "Create or update an index template",
         "description": "Index templates define settings, mappings, and aliases that can be applied automatically to new indices.",
@@ -8421,7 +8421,7 @@
       },
       "post": {
         "tags": [
-          "indices.put_template"
+          "indices"
         ],
         "summary": "Create or update an index template",
         "description": "Index templates define settings, mappings, and aliases that can be applied automatically to new indices.",
@@ -8459,7 +8459,7 @@
     "/_refresh": {
       "get": {
         "tags": [
-          "indices.refresh"
+          "indices"
         ],
         "summary": "Refresh an index",
         "description": "A refresh makes recent operations performed on one or more indices available for search.\nFor data streams, the API runs the refresh operation on the stream’s backing indices.",
@@ -8486,7 +8486,7 @@
       },
       "post": {
         "tags": [
-          "indices.refresh"
+          "indices"
         ],
         "summary": "Refresh an index",
         "description": "A refresh makes recent operations performed on one or more indices available for search.\nFor data streams, the API runs the refresh operation on the stream’s backing indices.",
@@ -8515,7 +8515,7 @@
     "/{index}/_refresh": {
       "get": {
         "tags": [
-          "indices.refresh"
+          "indices"
         ],
         "summary": "Refresh an index",
         "description": "A refresh makes recent operations performed on one or more indices available for search.\nFor data streams, the API runs the refresh operation on the stream’s backing indices.",
@@ -8545,7 +8545,7 @@
       },
       "post": {
         "tags": [
-          "indices.refresh"
+          "indices"
         ],
         "summary": "Refresh an index",
         "description": "A refresh makes recent operations performed on one or more indices available for search.\nFor data streams, the API runs the refresh operation on the stream’s backing indices.",
@@ -8577,7 +8577,7 @@
     "/_resolve/index/{name}": {
       "get": {
         "tags": [
-          "indices.resolve_index"
+          "indices"
         ],
         "summary": "Resolves the specified name(s) and/or index patterns for indices, aliases, and data streams",
         "description": "Multiple patterns and remote clusters are supported.",
@@ -8671,7 +8671,7 @@
     "/{alias}/_rollover": {
       "post": {
         "tags": [
-          "indices.rollover"
+          "indices"
         ],
         "summary": "Roll over to a new index",
         "description": "Creates a new index for a data stream or index alias.",
@@ -8710,7 +8710,7 @@
     "/{alias}/_rollover/{new_index}": {
       "post": {
         "tags": [
-          "indices.rollover"
+          "indices"
         ],
         "summary": "Roll over to a new index",
         "description": "Creates a new index for a data stream or index alias.",
@@ -8752,7 +8752,7 @@
     "/_index_template/_simulate_index/{name}": {
       "post": {
         "tags": [
-          "indices.simulate_index_template"
+          "indices"
         ],
         "summary": "Simulate an index",
         "description": "Returns the index configuration that would be applied to the specified index from an existing index template.",
@@ -8825,7 +8825,7 @@
     "/_index_template/_simulate": {
       "post": {
         "tags": [
-          "indices.simulate_template"
+          "indices"
         ],
         "summary": "Simulate an index template",
         "description": "Returns the index configuration that would be applied by a particular index template.",
@@ -8857,7 +8857,7 @@
     "/_index_template/_simulate/{name}": {
       "post": {
         "tags": [
-          "indices.simulate_template"
+          "indices"
         ],
         "summary": "Simulate an index template",
         "description": "Returns the index configuration that would be applied by a particular index template.",
@@ -8892,7 +8892,7 @@
     "/_aliases": {
       "post": {
         "tags": [
-          "indices.update_aliases"
+          "indices"
         ],
         "summary": "Create or update an alias",
         "description": "Adds a data stream or index to an alias.",
@@ -8959,7 +8959,7 @@
     "/_validate/query": {
       "get": {
         "tags": [
-          "indices.validate_query"
+          "indices"
         ],
         "summary": "Validate a query",
         "description": "Validates a query without running it.",
@@ -9017,7 +9017,7 @@
       },
       "post": {
         "tags": [
-          "indices.validate_query"
+          "indices"
         ],
         "summary": "Validate a query",
         "description": "Validates a query without running it.",
@@ -9077,7 +9077,7 @@
     "/{index}/_validate/query": {
       "get": {
         "tags": [
-          "indices.validate_query"
+          "indices"
         ],
         "summary": "Validate a query",
         "description": "Validates a query without running it.",
@@ -9138,7 +9138,7 @@
       },
       "post": {
         "tags": [
-          "indices.validate_query"
+          "indices"
         ],
         "summary": "Validate a query",
         "description": "Validates a query without running it.",
@@ -9201,7 +9201,7 @@
     "/_inference/{inference_id}": {
       "get": {
         "tags": [
-          "inference.get"
+          "inference"
         ],
         "summary": "Get an inference endpoint",
         "externalDocs": {
@@ -9223,7 +9223,7 @@
       },
       "put": {
         "tags": [
-          "inference.put"
+          "inference"
         ],
         "summary": "Create an inference endpoint",
         "externalDocs": {
@@ -9248,7 +9248,7 @@
       },
       "post": {
         "tags": [
-          "inference.inference"
+          "inference"
         ],
         "summary": "Perform inference on the service",
         "externalDocs": {
@@ -9276,7 +9276,7 @@
       },
       "delete": {
         "tags": [
-          "inference.delete"
+          "inference"
         ],
         "summary": "Delete an inference endpoint",
         "externalDocs": {
@@ -9306,7 +9306,7 @@
     "/_inference/{task_type}/{inference_id}": {
       "get": {
         "tags": [
-          "inference.get"
+          "inference"
         ],
         "summary": "Get an inference endpoint",
         "externalDocs": {
@@ -9331,7 +9331,7 @@
       },
       "put": {
         "tags": [
-          "inference.put"
+          "inference"
         ],
         "summary": "Create an inference endpoint",
         "externalDocs": {
@@ -9359,7 +9359,7 @@
       },
       "post": {
         "tags": [
-          "inference.inference"
+          "inference"
         ],
         "summary": "Perform inference on the service",
         "externalDocs": {
@@ -9390,7 +9390,7 @@
       },
       "delete": {
         "tags": [
-          "inference.delete"
+          "inference"
         ],
         "summary": "Delete an inference endpoint",
         "externalDocs": {
@@ -9423,7 +9423,7 @@
     "/_inference": {
       "get": {
         "tags": [
-          "inference.get"
+          "inference"
         ],
         "summary": "Get an inference endpoint",
         "externalDocs": {
@@ -9510,7 +9510,7 @@
     "/_ingest/pipeline/{id}": {
       "get": {
         "tags": [
-          "ingest.get_pipeline"
+          "ingest"
         ],
         "summary": "Returns information about one or more ingest pipelines",
         "description": "This API returns a local reference of the pipeline.",
@@ -9538,7 +9538,7 @@
       },
       "put": {
         "tags": [
-          "ingest.put_pipeline"
+          "ingest"
         ],
         "summary": "Creates or updates an ingest pipeline",
         "description": "Changes made using this API take effect immediately.",
@@ -9645,7 +9645,7 @@
       },
       "delete": {
         "tags": [
-          "ingest.delete_pipeline"
+          "ingest"
         ],
         "summary": "Deletes one or more existing ingest pipeline",
         "externalDocs": {
@@ -9703,7 +9703,7 @@
     "/_ingest/pipeline": {
       "get": {
         "tags": [
-          "ingest.get_pipeline"
+          "ingest"
         ],
         "summary": "Returns information about one or more ingest pipelines",
         "description": "This API returns a local reference of the pipeline.",
@@ -9730,7 +9730,7 @@
     "/_ingest/processor/grok": {
       "get": {
         "tags": [
-          "ingest.processor_grok"
+          "ingest"
         ],
         "summary": "Extracts structured fields out of a single text field within a document",
         "description": "You choose which field to extract matched fields from, as well as the grok pattern you expect will match.\nA grok pattern is like a regular expression that supports aliased expressions that can be reused.",
@@ -9767,7 +9767,7 @@
     "/_ingest/pipeline/_simulate": {
       "get": {
         "tags": [
-          "ingest.simulate"
+          "ingest"
         ],
         "summary": "Executes an ingest pipeline against a set of provided documents",
         "externalDocs": {
@@ -9791,7 +9791,7 @@
       },
       "post": {
         "tags": [
-          "ingest.simulate"
+          "ingest"
         ],
         "summary": "Executes an ingest pipeline against a set of provided documents",
         "externalDocs": {
@@ -9817,7 +9817,7 @@
     "/_ingest/pipeline/{id}/_simulate": {
       "get": {
         "tags": [
-          "ingest.simulate"
+          "ingest"
         ],
         "summary": "Executes an ingest pipeline against a set of provided documents",
         "externalDocs": {
@@ -9844,7 +9844,7 @@
       },
       "post": {
         "tags": [
-          "ingest.simulate"
+          "ingest"
         ],
         "summary": "Executes an ingest pipeline against a set of provided documents",
         "externalDocs": {
@@ -9873,7 +9873,7 @@
     "/_license": {
       "get": {
         "tags": [
-          "license.get"
+          "license"
         ],
         "summary": "Get license information",
         "description": "Returns information about your Elastic license, including its type, its status, when it was issued, and when it expires.\nFor more information about the different types of licenses, refer to [Elastic Stack subscriptions](https://www.elastic.co/subscriptions).",
@@ -9928,7 +9928,7 @@
     "/_logstash/pipeline/{id}": {
       "get": {
         "tags": [
-          "logstash.get_pipeline"
+          "logstash"
         ],
         "summary": "Retrieves pipelines used for Logstash Central Management",
         "externalDocs": {
@@ -9949,7 +9949,7 @@
       },
       "put": {
         "tags": [
-          "logstash.put_pipeline"
+          "logstash"
         ],
         "summary": "Creates or updates a pipeline used for Logstash Central Management",
         "externalDocs": {
@@ -9991,7 +9991,7 @@
       },
       "delete": {
         "tags": [
-          "logstash.delete_pipeline"
+          "logstash"
         ],
         "summary": "Deletes a pipeline used for Logstash Central Management",
         "externalDocs": {
@@ -10025,7 +10025,7 @@
     "/_logstash/pipeline": {
       "get": {
         "tags": [
-          "logstash.get_pipeline"
+          "logstash"
         ],
         "summary": "Retrieves pipelines used for Logstash Central Management",
         "externalDocs": {
@@ -10233,7 +10233,7 @@
     "/_ml/anomaly_detectors/{job_id}/_close": {
       "post": {
         "tags": [
-          "ml.close_job"
+          "ml"
         ],
         "summary": "Close anomaly detection jobs",
         "description": "A job can be opened and closed multiple times throughout its lifecycle. A closed job cannot receive data or perform analysis operations, but you can still explore and navigate results.\nWhen you close a job, it runs housekeeping tasks such as pruning the model history, flushing buffers, calculating final results and persisting the model snapshots. Depending upon the size of the job, it could take several minutes to close and the equivalent time to re-open. After it is closed, the job has a minimal overhead on the cluster except for maintaining its meta data. Therefore it is a best practice to close jobs that are no longer required to process data.\nIf you close an anomaly detection job whose datafeed is running, the request first tries to stop the datafeed. This behavior is equivalent to calling stop datafeed API with the same timeout and force parameters as the close job request.\nWhen a datafeed that has a specified end date stops, it automatically closes its associated job.",
@@ -10332,7 +10332,7 @@
     "/_ml/calendars/{calendar_id}": {
       "get": {
         "tags": [
-          "ml.get_calendars"
+          "ml"
         ],
         "summary": "Get calendar configuration info",
         "externalDocs": {
@@ -10362,7 +10362,7 @@
       },
       "put": {
         "tags": [
-          "ml.put_calendar"
+          "ml"
         ],
         "summary": "Create a calendar",
         "externalDocs": {
@@ -10436,7 +10436,7 @@
       },
       "post": {
         "tags": [
-          "ml.get_calendars"
+          "ml"
         ],
         "summary": "Get calendar configuration info",
         "externalDocs": {
@@ -10466,7 +10466,7 @@
       },
       "delete": {
         "tags": [
-          "ml.delete_calendar"
+          "ml"
         ],
         "summary": "Delete a calendar",
         "description": "Removes all scheduled events from a calendar, then deletes it.",
@@ -10505,7 +10505,7 @@
     "/_ml/calendars/{calendar_id}/events/{event_id}": {
       "delete": {
         "tags": [
-          "ml.delete_calendar_event"
+          "ml"
         ],
         "summary": "Delete events from a calendar",
         "externalDocs": {
@@ -10554,7 +10554,7 @@
     "/_ml/calendars/{calendar_id}/jobs/{job_id}": {
       "put": {
         "tags": [
-          "ml.put_calendar_job"
+          "ml"
         ],
         "summary": "Add anomaly detection job to calendar",
         "externalDocs": {
@@ -10617,7 +10617,7 @@
       },
       "delete": {
         "tags": [
-          "ml.delete_calendar_job"
+          "ml"
         ],
         "summary": "Delete anomaly jobs from a calendar",
         "externalDocs": {
@@ -10682,7 +10682,7 @@
     "/_ml/data_frame/analytics/{id}": {
       "get": {
         "tags": [
-          "ml.get_data_frame_analytics"
+          "ml"
         ],
         "summary": "Get data frame analytics job configuration info",
         "description": "You can get information for multiple data frame analytics jobs in a single\nAPI request by using a comma-separated list of data frame analytics jobs or a\nwildcard expression.",
@@ -10716,7 +10716,7 @@
       },
       "put": {
         "tags": [
-          "ml.put_data_frame_analytics"
+          "ml"
         ],
         "summary": "Create a data frame analytics job",
         "description": "This API creates a data frame analytics job that performs an analysis on the\nsource indices and stores the outcome in a destination index.",
@@ -10856,7 +10856,7 @@
       },
       "delete": {
         "tags": [
-          "ml.delete_data_frame_analytics"
+          "ml"
         ],
         "summary": "Delete a data frame analytics job",
         "externalDocs": {
@@ -10914,7 +10914,7 @@
     "/_ml/datafeeds/{datafeed_id}": {
       "get": {
         "tags": [
-          "ml.get_datafeeds"
+          "ml"
         ],
         "summary": "Get datafeeds configuration info",
         "description": "You can get information for multiple datafeeds in a single API request by\nusing a comma-separated list of datafeeds or a wildcard expression. You can\nget information for all datafeeds by using `_all`, by specifying `*` as the\n`<feed_id>`, or by omitting the `<feed_id>`.\nThis API returns a maximum of 10,000 datafeeds.",
@@ -10942,7 +10942,7 @@
       },
       "put": {
         "tags": [
-          "ml.put_datafeed"
+          "ml"
         ],
         "summary": "Create a datafeed",
         "description": "Datafeeds retrieve data from Elasticsearch for analysis by an anomaly detection job.\nYou can associate only one datafeed with each anomaly detection job.\nThe datafeed contains a query that runs at a defined interval (`frequency`).\nIf you are concerned about delayed data, you can add a delay (`query_delay') at each interval.\nWhen Elasticsearch security features are enabled, your datafeed remembers which roles the user who created it had\nat the time of creation and runs the query using those same roles. If you provide secondary authorization headers,\nthose credentials are used instead.\nYou must use Kibana, this API, or the create anomaly detection jobs API to create a datafeed. Do not add a datafeed\ndirectly to the `.ml-config` index. Do not give users `write` privileges on the `.ml-config` index.",
@@ -11148,7 +11148,7 @@
       },
       "delete": {
         "tags": [
-          "ml.delete_datafeed"
+          "ml"
         ],
         "summary": "Delete a datafeed",
         "externalDocs": {
@@ -11196,7 +11196,7 @@
     "/_ml/filters/{filter_id}": {
       "get": {
         "tags": [
-          "ml.get_filters"
+          "ml"
         ],
         "summary": "Get filters",
         "description": "You can get a single filter or all filters.",
@@ -11224,7 +11224,7 @@
       },
       "put": {
         "tags": [
-          "ml.put_filter"
+          "ml"
         ],
         "summary": "Create a filter",
         "description": "A filter contains a list of strings. It can be used by one or more anomaly detection jobs.\nSpecifically, filters are referenced in the `custom_rules` property of detector configuration objects.",
@@ -11303,7 +11303,7 @@
       },
       "delete": {
         "tags": [
-          "ml.delete_filter"
+          "ml"
         ],
         "summary": "Delete a filter",
         "description": "If an anomaly detection job references the filter, you cannot delete the\nfilter. You must update or delete the job before you can delete the filter.",
@@ -11342,7 +11342,7 @@
     "/_ml/anomaly_detectors/{job_id}": {
       "get": {
         "tags": [
-          "ml.get_jobs"
+          "ml"
         ],
         "summary": "Get anomaly detection jobs configuration info",
         "description": "You can get information for multiple anomaly detection jobs in a single API\nrequest by using a group name, a comma-separated list of jobs, or a wildcard\nexpression. You can get information for all anomaly detection jobs by using\n`_all`, by specifying `*` as the `<job_id>`, or by omitting the `<job_id>`.",
@@ -11370,7 +11370,7 @@
       },
       "put": {
         "tags": [
-          "ml.put_job"
+          "ml"
         ],
         "summary": "Create an anomaly detection job",
         "description": "If you include a `datafeed_config`, you must have read index privileges on the source index.",
@@ -11556,7 +11556,7 @@
       },
       "delete": {
         "tags": [
-          "ml.delete_job"
+          "ml"
         ],
         "summary": "Delete an anomaly detection job",
         "description": "All job configuration, model state and results are deleted.\nIt is not currently possible to delete multiple jobs using wildcards or a\ncomma separated list. If you delete a job that has a datafeed, the request\nfirst tries to delete the datafeed. This behavior is equivalent to calling\nthe delete datafeed API with the same timeout and force parameters as the\ndelete job request.",
@@ -11625,7 +11625,7 @@
     "/_ml/trained_models/{model_id}": {
       "get": {
         "tags": [
-          "ml.get_trained_models"
+          "ml"
         ],
         "summary": "Get trained model configuration info",
         "externalDocs": {
@@ -11667,7 +11667,7 @@
       },
       "put": {
         "tags": [
-          "ml.put_trained_model"
+          "ml"
         ],
         "summary": "Create a trained model",
         "description": "Enable you to supply a trained model that is not created by data frame analytics.",
@@ -11778,7 +11778,7 @@
       },
       "delete": {
         "tags": [
-          "ml.delete_trained_model"
+          "ml"
         ],
         "summary": "Delete an unreferenced trained model",
         "description": "The request deletes a trained inference model that is not referenced by an ingest pipeline.",
@@ -11827,7 +11827,7 @@
     "/_ml/trained_models/{model_id}/model_aliases/{model_alias}": {
       "put": {
         "tags": [
-          "ml.put_trained_model_alias"
+          "ml"
         ],
         "summary": "Create or update a trained model alias",
         "description": "A trained model alias is a logical name used to reference a single trained\nmodel.\nYou can use aliases instead of trained model identifiers to make it easier to\nreference your models. For example, you can use aliases in inference\naggregations and processors.\nAn alias must be unique and refer to only a single trained model. However,\nyou can have multiple aliases for each trained model.\nIf you use this API to update an alias such that it references a different\ntrained model ID and the model uses a different type of data frame analytics,\nan error occurs. For example, this situation occurs if you have a trained\nmodel for regression analysis and a trained model for classification\nanalysis; you cannot reassign an alias from one type of trained model to\nanother.\nIf you use this API to update an alias and there are very few input fields in\ncommon between the old and new trained models for the model alias, the API\nreturns a warning.",
@@ -11885,7 +11885,7 @@
       },
       "delete": {
         "tags": [
-          "ml.delete_trained_model_alias"
+          "ml"
         ],
         "summary": "Delete a trained model alias",
         "description": "This API deletes an existing model alias that refers to a trained model. If\nthe model alias is missing or refers to a model other than the one identified\nby the `model_id`, this API returns an error.",
@@ -11935,7 +11935,7 @@
     "/_ml/anomaly_detectors/_estimate_model_memory": {
       "post": {
         "tags": [
-          "ml.estimate_model_memory"
+          "ml"
         ],
         "summary": "Estimate job model memory usage",
         "description": "Makes an estimation of the memory usage for an anomaly detection job model.\nIt is based on analysis configuration details for the job and cardinality\nestimates for the fields it references.",
@@ -11998,7 +11998,7 @@
     "/_ml/data_frame/_evaluate": {
       "post": {
         "tags": [
-          "ml.evaluate_data_frame"
+          "ml"
         ],
         "summary": "Evaluate data frame analytics",
         "description": "The API packages together commonly used evaluation metrics for various types\nof machine learning features. This has been designed for use on indexes\ncreated by data frame analytics. Evaluation requires both a ground truth\nfield and an analytics result field to be present.",
@@ -12060,7 +12060,7 @@
     "/_ml/anomaly_detectors/{job_id}/_flush": {
       "post": {
         "tags": [
-          "ml.flush_job"
+          "ml"
         ],
         "summary": "Force buffered data to be processed",
         "description": "The flush jobs API is only applicable when sending data for analysis using\nthe post data API. Depending on the content of the buffer, then it might\nadditionally calculate new results. Both flush and close operations are\nsimilar, however the flush is more efficient if you are expecting to send\nmore data for analysis. When flushing, the job remains open and is available\nto continue analyzing data. A close operation additionally prunes and\npersists the model state to disk and the job must be opened again before\nanalyzing further data.",
@@ -12188,7 +12188,7 @@
     "/_ml/calendars/{calendar_id}/events": {
       "get": {
         "tags": [
-          "ml.get_calendar_events"
+          "ml"
         ],
         "summary": "Get info about events in calendars",
         "externalDocs": {
@@ -12289,7 +12289,7 @@
       },
       "post": {
         "tags": [
-          "ml.post_calendar_events"
+          "ml"
         ],
         "summary": "Add scheduled events to the calendar",
         "externalDocs": {
@@ -12360,7 +12360,7 @@
     "/_ml/calendars": {
       "get": {
         "tags": [
-          "ml.get_calendars"
+          "ml"
         ],
         "summary": "Get calendar configuration info",
         "externalDocs": {
@@ -12387,7 +12387,7 @@
       },
       "post": {
         "tags": [
-          "ml.get_calendars"
+          "ml"
         ],
         "summary": "Get calendar configuration info",
         "externalDocs": {
@@ -12416,7 +12416,7 @@
     "/_ml/data_frame/analytics": {
       "get": {
         "tags": [
-          "ml.get_data_frame_analytics"
+          "ml"
         ],
         "summary": "Get data frame analytics job configuration info",
         "description": "You can get information for multiple data frame analytics jobs in a single\nAPI request by using a comma-separated list of data frame analytics jobs or a\nwildcard expression.",
@@ -12449,7 +12449,7 @@
     "/_ml/data_frame/analytics/_stats": {
       "get": {
         "tags": [
-          "ml.get_data_frame_analytics_stats"
+          "ml"
         ],
         "summary": "Get data frame analytics jobs usage info",
         "externalDocs": {
@@ -12481,7 +12481,7 @@
     "/_ml/data_frame/analytics/{id}/_stats": {
       "get": {
         "tags": [
-          "ml.get_data_frame_analytics_stats"
+          "ml"
         ],
         "summary": "Get data frame analytics jobs usage info",
         "externalDocs": {
@@ -12516,7 +12516,7 @@
     "/_ml/datafeeds/{datafeed_id}/_stats": {
       "get": {
         "tags": [
-          "ml.get_datafeed_stats"
+          "ml"
         ],
         "summary": "Get datafeeds usage info",
         "description": "You can get statistics for multiple datafeeds in a single API request by\nusing a comma-separated list of datafeeds or a wildcard expression. You can\nget statistics for all datafeeds by using `_all`, by specifying `*` as the\n`<feed_id>`, or by omitting the `<feed_id>`. If the datafeed is stopped, the\nonly information you receive is the `datafeed_id` and the `state`.\nThis API returns a maximum of 10,000 datafeeds.",
@@ -12543,7 +12543,7 @@
     "/_ml/datafeeds/_stats": {
       "get": {
         "tags": [
-          "ml.get_datafeed_stats"
+          "ml"
         ],
         "summary": "Get datafeeds usage info",
         "description": "You can get statistics for multiple datafeeds in a single API request by\nusing a comma-separated list of datafeeds or a wildcard expression. You can\nget statistics for all datafeeds by using `_all`, by specifying `*` as the\n`<feed_id>`, or by omitting the `<feed_id>`. If the datafeed is stopped, the\nonly information you receive is the `datafeed_id` and the `state`.\nThis API returns a maximum of 10,000 datafeeds.",
@@ -12567,7 +12567,7 @@
     "/_ml/datafeeds": {
       "get": {
         "tags": [
-          "ml.get_datafeeds"
+          "ml"
         ],
         "summary": "Get datafeeds configuration info",
         "description": "You can get information for multiple datafeeds in a single API request by\nusing a comma-separated list of datafeeds or a wildcard expression. You can\nget information for all datafeeds by using `_all`, by specifying `*` as the\n`<feed_id>`, or by omitting the `<feed_id>`.\nThis API returns a maximum of 10,000 datafeeds.",
@@ -12594,7 +12594,7 @@
     "/_ml/filters": {
       "get": {
         "tags": [
-          "ml.get_filters"
+          "ml"
         ],
         "summary": "Get filters",
         "description": "You can get a single filter or all filters.",
@@ -12621,7 +12621,7 @@
     "/_ml/anomaly_detectors/_stats": {
       "get": {
         "tags": [
-          "ml.get_job_stats"
+          "ml"
         ],
         "summary": "Get anomaly detection jobs usage info",
         "externalDocs": {
@@ -12644,7 +12644,7 @@
     "/_ml/anomaly_detectors/{job_id}/_stats": {
       "get": {
         "tags": [
-          "ml.get_job_stats"
+          "ml"
         ],
         "summary": "Get anomaly detection jobs usage info",
         "externalDocs": {
@@ -12670,7 +12670,7 @@
     "/_ml/anomaly_detectors": {
       "get": {
         "tags": [
-          "ml.get_jobs"
+          "ml"
         ],
         "summary": "Get anomaly detection jobs configuration info",
         "description": "You can get information for multiple anomaly detection jobs in a single API\nrequest by using a group name, a comma-separated list of jobs, or a wildcard\nexpression. You can get information for all anomaly detection jobs by using\n`_all`, by specifying `*` as the `<job_id>`, or by omitting the `<job_id>`.",
@@ -12697,7 +12697,7 @@
     "/_ml/anomaly_detectors/{job_id}/results/overall_buckets": {
       "get": {
         "tags": [
-          "ml.get_overall_buckets"
+          "ml"
         ],
         "summary": "Get overall bucket results",
         "description": "Retrievs overall bucket results that summarize the bucket results of\nmultiple anomaly detection jobs.\n\nThe `overall_score` is calculated by combining the scores of all the\nbuckets within the overall bucket span. First, the maximum\n`anomaly_score` per anomaly detection job in the overall bucket is\ncalculated. Then the `top_n` of those scores are averaged to result in\nthe `overall_score`. This means that you can fine-tune the\n`overall_score` so that it is more or less sensitive to the number of\njobs that detect an anomaly at the same time. For example, if you set\n`top_n` to `1`, the `overall_score` is the maximum bucket score in the\noverall bucket. Alternatively, if you set `top_n` to the number of jobs,\nthe `overall_score` is high only when all jobs detect anomalies in that\noverall bucket. If you set the `bucket_span` parameter (to a value\ngreater than its default), the `overall_score` is the maximum\n`overall_score` of the overall buckets that have a span equal to the\njobs' largest bucket span.",
@@ -12743,7 +12743,7 @@
       },
       "post": {
         "tags": [
-          "ml.get_overall_buckets"
+          "ml"
         ],
         "summary": "Get overall bucket results",
         "description": "Retrievs overall bucket results that summarize the bucket results of\nmultiple anomaly detection jobs.\n\nThe `overall_score` is calculated by combining the scores of all the\nbuckets within the overall bucket span. First, the maximum\n`anomaly_score` per anomaly detection job in the overall bucket is\ncalculated. Then the `top_n` of those scores are averaged to result in\nthe `overall_score`. This means that you can fine-tune the\n`overall_score` so that it is more or less sensitive to the number of\njobs that detect an anomaly at the same time. For example, if you set\n`top_n` to `1`, the `overall_score` is the maximum bucket score in the\noverall bucket. Alternatively, if you set `top_n` to the number of jobs,\nthe `overall_score` is high only when all jobs detect anomalies in that\noverall bucket. If you set the `bucket_span` parameter (to a value\ngreater than its default), the `overall_score` is the maximum\n`overall_score` of the overall buckets that have a span equal to the\njobs' largest bucket span.",
@@ -12791,7 +12791,7 @@
     "/_ml/trained_models": {
       "get": {
         "tags": [
-          "ml.get_trained_models"
+          "ml"
         ],
         "summary": "Get trained model configuration info",
         "externalDocs": {
@@ -12832,7 +12832,7 @@
     "/_ml/trained_models/{model_id}/_stats": {
       "get": {
         "tags": [
-          "ml.get_trained_models_stats"
+          "ml"
         ],
         "summary": "Get trained models usage info",
         "description": "You can get usage information for multiple trained\nmodels in a single API request by using a comma-separated list of model IDs or a wildcard expression.",
@@ -12865,7 +12865,7 @@
     "/_ml/trained_models/_stats": {
       "get": {
         "tags": [
-          "ml.get_trained_models_stats"
+          "ml"
         ],
         "summary": "Get trained models usage info",
         "description": "You can get usage information for multiple trained\nmodels in a single API request by using a comma-separated list of model IDs or a wildcard expression.",
@@ -12895,7 +12895,7 @@
     "/_ml/trained_models/{model_id}/_infer": {
       "post": {
         "tags": [
-          "ml.infer_trained_model"
+          "ml"
         ],
         "summary": "Evaluate a trained model",
         "externalDocs": {
@@ -12924,7 +12924,7 @@
     "/_ml/trained_models/{model_id}/deployment/_infer": {
       "post": {
         "tags": [
-          "ml.infer_trained_model"
+          "ml"
         ],
         "summary": "Evaluate a trained model",
         "externalDocs": {
@@ -12953,7 +12953,7 @@
     "/_ml/anomaly_detectors/{job_id}/_open": {
       "post": {
         "tags": [
-          "ml.open_job"
+          "ml"
         ],
         "summary": "Open anomaly detection jobs",
         "description": "An anomaly detection job must be opened to be ready to receive and analyze\ndata. It can be opened and closed multiple times throughout its lifecycle.\nWhen you open a new job, it starts with an empty model.\nWhen you open an existing job, the most recent model state is automatically\nloaded. The job is ready to resume its analysis from where it left off, once\nnew data is received.",
@@ -13028,7 +13028,7 @@
     "/_ml/data_frame/analytics/_preview": {
       "get": {
         "tags": [
-          "ml.preview_data_frame_analytics"
+          "ml"
         ],
         "summary": "Preview features used by data frame analytics",
         "description": "Previews the extracted features used by a data frame analytics config.",
@@ -13048,7 +13048,7 @@
       },
       "post": {
         "tags": [
-          "ml.preview_data_frame_analytics"
+          "ml"
         ],
         "summary": "Preview features used by data frame analytics",
         "description": "Previews the extracted features used by a data frame analytics config.",
@@ -13070,7 +13070,7 @@
     "/_ml/data_frame/analytics/{id}/_preview": {
       "get": {
         "tags": [
-          "ml.preview_data_frame_analytics"
+          "ml"
         ],
         "summary": "Preview features used by data frame analytics",
         "description": "Previews the extracted features used by a data frame analytics config.",
@@ -13095,7 +13095,7 @@
       },
       "post": {
         "tags": [
-          "ml.preview_data_frame_analytics"
+          "ml"
         ],
         "summary": "Preview features used by data frame analytics",
         "description": "Previews the extracted features used by a data frame analytics config.",
@@ -13122,7 +13122,7 @@
     "/_ml/datafeeds/{datafeed_id}/_preview": {
       "get": {
         "tags": [
-          "ml.preview_datafeed"
+          "ml"
         ],
         "summary": "Preview a datafeed",
         "description": "This API returns the first \"page\" of search results from a datafeed.\nYou can preview an existing datafeed or provide configuration details for a datafeed\nand anomaly detection job in the API. The preview shows the structure of the data\nthat will be passed to the anomaly detection engine.\nIMPORTANT: When Elasticsearch security features are enabled, the preview uses the credentials of the user that\ncalled the API. However, when the datafeed starts it uses the roles of the last user that created or updated the\ndatafeed. To get a preview that accurately reflects the behavior of the datafeed, use the appropriate credentials.\nYou can also use secondary authorization headers to supply the credentials.",
@@ -13153,7 +13153,7 @@
       },
       "post": {
         "tags": [
-          "ml.preview_datafeed"
+          "ml"
         ],
         "summary": "Preview a datafeed",
         "description": "This API returns the first \"page\" of search results from a datafeed.\nYou can preview an existing datafeed or provide configuration details for a datafeed\nand anomaly detection job in the API. The preview shows the structure of the data\nthat will be passed to the anomaly detection engine.\nIMPORTANT: When Elasticsearch security features are enabled, the preview uses the credentials of the user that\ncalled the API. However, when the datafeed starts it uses the roles of the last user that created or updated the\ndatafeed. To get a preview that accurately reflects the behavior of the datafeed, use the appropriate credentials.\nYou can also use secondary authorization headers to supply the credentials.",
@@ -13186,7 +13186,7 @@
     "/_ml/datafeeds/_preview": {
       "get": {
         "tags": [
-          "ml.preview_datafeed"
+          "ml"
         ],
         "summary": "Preview a datafeed",
         "description": "This API returns the first \"page\" of search results from a datafeed.\nYou can preview an existing datafeed or provide configuration details for a datafeed\nand anomaly detection job in the API. The preview shows the structure of the data\nthat will be passed to the anomaly detection engine.\nIMPORTANT: When Elasticsearch security features are enabled, the preview uses the credentials of the user that\ncalled the API. However, when the datafeed starts it uses the roles of the last user that created or updated the\ndatafeed. To get a preview that accurately reflects the behavior of the datafeed, use the appropriate credentials.\nYou can also use secondary authorization headers to supply the credentials.",
@@ -13214,7 +13214,7 @@
       },
       "post": {
         "tags": [
-          "ml.preview_datafeed"
+          "ml"
         ],
         "summary": "Preview a datafeed",
         "description": "This API returns the first \"page\" of search results from a datafeed.\nYou can preview an existing datafeed or provide configuration details for a datafeed\nand anomaly detection job in the API. The preview shows the structure of the data\nthat will be passed to the anomaly detection engine.\nIMPORTANT: When Elasticsearch security features are enabled, the preview uses the credentials of the user that\ncalled the API. However, when the datafeed starts it uses the roles of the last user that created or updated the\ndatafeed. To get a preview that accurately reflects the behavior of the datafeed, use the appropriate credentials.\nYou can also use secondary authorization headers to supply the credentials.",
@@ -13244,7 +13244,7 @@
     "/_ml/trained_models/{model_id}/definition/{part}": {
       "put": {
         "tags": [
-          "ml.put_trained_model_definition_part"
+          "ml"
         ],
         "summary": "Create part of a trained model definition",
         "externalDocs": {
@@ -13322,7 +13322,7 @@
     "/_ml/trained_models/{model_id}/vocabulary": {
       "put": {
         "tags": [
-          "ml.put_trained_model_vocabulary"
+          "ml"
         ],
         "summary": "Create a trained model vocabulary",
         "description": "This API is supported only for natural language processing (NLP) models.\nThe vocabulary is stored in the index as described in `inference_config.*.vocabulary` of the trained model definition.",
@@ -13399,7 +13399,7 @@
     "/_ml/anomaly_detectors/{job_id}/_reset": {
       "post": {
         "tags": [
-          "ml.reset_job"
+          "ml"
         ],
         "summary": "Reset an anomaly detection job",
         "description": "All model state and results are deleted. The job is ready to start over as if\nit had just been created.\nIt is not currently possible to reset multiple jobs using wildcards or a\ncomma separated list.",
@@ -13458,7 +13458,7 @@
     "/_ml/data_frame/analytics/{id}/_start": {
       "post": {
         "tags": [
-          "ml.start_data_frame_analytics"
+          "ml"
         ],
         "summary": "Start a data frame analytics job",
         "description": "A data frame analytics job can be started and stopped multiple times\nthroughout its lifecycle.\nIf the destination index does not exist, it is created automatically the\nfirst time you start the data frame analytics job. The\n`index.number_of_shards` and `index.number_of_replicas` settings for the\ndestination index are copied from the source index. If there are multiple\nsource indices, the destination index copies the highest setting values. The\nmappings for the destination index are also copied from the source indices.\nIf there are any mapping conflicts, the job fails to start.\nIf the destination index exists, it is used as is. You can therefore set up\nthe destination index in advance with custom settings and mappings.",
@@ -13519,7 +13519,7 @@
     "/_ml/datafeeds/{datafeed_id}/_start": {
       "post": {
         "tags": [
-          "ml.start_datafeed"
+          "ml"
         ],
         "summary": "Start datafeeds",
         "description": "A datafeed must be started in order to retrieve data from Elasticsearch. A datafeed can be started and stopped\nmultiple times throughout its lifecycle.\n\nBefore you can start a datafeed, the anomaly detection job must be open. Otherwise, an error occurs.\n\nIf you restart a stopped datafeed, it continues processing input data from the next millisecond after it was stopped.\nIf new data was indexed for that exact millisecond between stopping and starting, it will be ignored.\n\nWhen Elasticsearch security features are enabled, your datafeed remembers which roles the last user to create or\nupdate it had at the time of creation or update and runs the query using those same roles. If you provided secondary\nauthorization headers when you created or updated the datafeed, those credentials are used instead.",
@@ -13621,7 +13621,7 @@
     "/_ml/trained_models/{model_id}/deployment/_start": {
       "post": {
         "tags": [
-          "ml.start_trained_model_deployment"
+          "ml"
         ],
         "summary": "Start a trained model deployment",
         "description": "It allocates the model to every machine learning node.",
@@ -13738,7 +13738,7 @@
     "/_ml/data_frame/analytics/{id}/_stop": {
       "post": {
         "tags": [
-          "ml.stop_data_frame_analytics"
+          "ml"
         ],
         "summary": "Stop data frame analytics jobs",
         "description": "A data frame analytics job can be started and stopped multiple times\nthroughout its lifecycle.",
@@ -13815,7 +13815,7 @@
     "/_ml/datafeeds/{datafeed_id}/_stop": {
       "post": {
         "tags": [
-          "ml.stop_datafeed"
+          "ml"
         ],
         "summary": "Stop datafeeds",
         "description": "A datafeed that is stopped ceases to retrieve data from Elasticsearch. A datafeed can be started and stopped\nmultiple times throughout its lifecycle.",
@@ -13914,7 +13914,7 @@
     "/_ml/trained_models/{model_id}/deployment/_stop": {
       "post": {
         "tags": [
-          "ml.stop_trained_model_deployment"
+          "ml"
         ],
         "summary": "Stop a trained model deployment",
         "externalDocs": {
@@ -13980,7 +13980,7 @@
     "/_ml/data_frame/analytics/{id}/_update": {
       "post": {
         "tags": [
-          "ml.update_data_frame_analytics"
+          "ml"
         ],
         "summary": "Update a data frame analytics job",
         "externalDocs": {
@@ -14101,7 +14101,7 @@
     "/_ml/datafeeds/{datafeed_id}/_update": {
       "post": {
         "tags": [
-          "ml.update_datafeed"
+          "ml"
         ],
         "summary": "Update a datafeed",
         "description": "You must stop and start the datafeed for the changes to be applied.\nWhen Elasticsearch security features are enabled, your datafeed remembers which roles the user who updated it had at\nthe time of the update and runs the query using those same roles. If you provide secondary authorization headers,\nthose credentials are used instead.",
@@ -14310,7 +14310,7 @@
     "/_ml/filters/{filter_id}/_update": {
       "post": {
         "tags": [
-          "ml.update_filter"
+          "ml"
         ],
         "summary": "Update a filter",
         "description": "Updates the description of a filter, adds items, or removes items from the list.",
@@ -14398,7 +14398,7 @@
     "/_ml/anomaly_detectors/{job_id}/_update": {
       "post": {
         "tags": [
-          "ml.update_job"
+          "ml"
         ],
         "summary": "Update an anomaly detection job",
         "description": "Updates certain properties of an anomaly detection job.",
@@ -14608,7 +14608,7 @@
     "/_ml/trained_models/{model_id}/deployment/_update": {
       "post": {
         "tags": [
-          "ml.update_trained_model_deployment"
+          "ml"
         ],
         "summary": "Update a trained model deployment",
         "externalDocs": {
@@ -15502,7 +15502,7 @@
     "/_query_rules/{ruleset_id}/_rule/{rule_id}": {
       "get": {
         "tags": [
-          "query_rules.get_rule"
+          "query_rules"
         ],
         "summary": "Returns the details about a query rule within a query ruleset",
         "externalDocs": {
@@ -15549,7 +15549,7 @@
       },
       "put": {
         "tags": [
-          "query_rules.put_rule"
+          "query_rules"
         ],
         "summary": "Creates or updates a query rule within a query ruleset",
         "externalDocs": {
@@ -15643,7 +15643,7 @@
       },
       "delete": {
         "tags": [
-          "query_rules.delete_rule"
+          "query_rules"
         ],
         "summary": "Deletes a query rule within a query ruleset",
         "externalDocs": {
@@ -15692,7 +15692,7 @@
     "/_query_rules/{ruleset_id}": {
       "get": {
         "tags": [
-          "query_rules.get_ruleset"
+          "query_rules"
         ],
         "summary": "Returns the details about a query ruleset",
         "externalDocs": {
@@ -15728,7 +15728,7 @@
       },
       "put": {
         "tags": [
-          "query_rules.put_ruleset"
+          "query_rules"
         ],
         "summary": "Creates or updates a query ruleset",
         "externalDocs": {
@@ -15800,7 +15800,7 @@
       },
       "delete": {
         "tags": [
-          "query_rules.delete_ruleset"
+          "query_rules"
         ],
         "summary": "Deletes a query ruleset",
         "externalDocs": {
@@ -15838,7 +15838,7 @@
     "/_query_rules": {
       "get": {
         "tags": [
-          "query_rules.list_rulesets"
+          "query_rules"
         ],
         "summary": "Returns summarized information about existing query rulesets",
         "externalDocs": {
@@ -16990,7 +16990,7 @@
     "/_application/search_application/{name}": {
       "get": {
         "tags": [
-          "search_application.get"
+          "search_application"
         ],
         "summary": "Returns the details about a search application",
         "externalDocs": {
@@ -17027,7 +17027,7 @@
       },
       "put": {
         "tags": [
-          "search_application.put"
+          "search_application"
         ],
         "summary": "Creates or updates a search application",
         "externalDocs": {
@@ -17092,7 +17092,7 @@
       },
       "delete": {
         "tags": [
-          "search_application.delete"
+          "search_application"
         ],
         "summary": "Deletes a search application",
         "externalDocs": {
@@ -17131,7 +17131,7 @@
     "/_application/analytics/{name}": {
       "get": {
         "tags": [
-          "search_application.get_behavioral_analytics"
+          "search_application"
         ],
         "summary": "Returns the existing behavioral analytics collections",
         "externalDocs": {
@@ -17153,7 +17153,7 @@
       },
       "put": {
         "tags": [
-          "search_application.put_behavioral_analytics"
+          "search_application"
         ],
         "summary": "Creates a behavioral analytics collection",
         "externalDocs": {
@@ -17190,7 +17190,7 @@
       },
       "delete": {
         "tags": [
-          "search_application.delete_behavioral_analytics"
+          "search_application"
         ],
         "summary": "Delete a behavioral analytics collection",
         "externalDocs": {
@@ -17229,7 +17229,7 @@
     "/_application/analytics": {
       "get": {
         "tags": [
-          "search_application.get_behavioral_analytics"
+          "search_application"
         ],
         "summary": "Returns the existing behavioral analytics collections",
         "externalDocs": {
@@ -17248,7 +17248,7 @@
     "/_application/search_application": {
       "get": {
         "tags": [
-          "search_application.list"
+          "search_application"
         ],
         "summary": "Returns the existing search applications",
         "externalDocs": {
@@ -17321,7 +17321,7 @@
     "/_application/search_application/{name}/_search": {
       "get": {
         "tags": [
-          "search_application.search"
+          "search_application"
         ],
         "summary": "Perform a search against a search application",
         "externalDocs": {
@@ -17349,7 +17349,7 @@
       },
       "post": {
         "tags": [
-          "search_application.search"
+          "search_application"
         ],
         "summary": "Perform a search against a search application",
         "externalDocs": {
@@ -17747,7 +17747,7 @@
     "/_security/_authenticate": {
       "get": {
         "tags": [
-          "security.authenticate"
+          "security"
         ],
         "summary": "Authenticate a user",
         "description": "Authenticates a user and returns information about the authenticated user.\nInclude the user information in a [basic auth header](https://en.wikipedia.org/wiki/Basic_access_authentication).\nA successful call returns a JSON structure that shows user information such as their username, the roles that are assigned to the user, any assigned metadata, and information about the realms that authenticated and authorized the user.\nIf the user cannot be authenticated, this API returns a 401 status code.",
@@ -17836,7 +17836,7 @@
     "/_security/api_key": {
       "get": {
         "tags": [
-          "security.get_api_key"
+          "security"
         ],
         "summary": "Get API key information",
         "description": "Retrieves information for one or more API keys.\nNOTE: If you have only the `manage_own_api_key` privilege, this API returns only the API keys that you own.\nIf you have `read_security`, `manage_api_key` or greater privileges (including `manage_security`), this API returns all API keys regardless of ownership.",
@@ -17953,7 +17953,7 @@
       },
       "put": {
         "tags": [
-          "security.create_api_key"
+          "security"
         ],
         "summary": "Create an API key",
         "description": "Creates an API key for access without requiring basic authentication.\nA successful request returns a JSON structure that contains the API key, its unique id, and its name.\nIf applicable, it also returns expiration information for the API key in milliseconds.\nNOTE: By default, API keys never expire. You can specify expiration information when you create the API keys.",
@@ -17978,7 +17978,7 @@
       },
       "post": {
         "tags": [
-          "security.create_api_key"
+          "security"
         ],
         "summary": "Create an API key",
         "description": "Creates an API key for access without requiring basic authentication.\nA successful request returns a JSON structure that contains the API key, its unique id, and its name.\nIf applicable, it also returns expiration information for the API key in milliseconds.\nNOTE: By default, API keys never expire. You can specify expiration information when you create the API keys.",
@@ -18003,7 +18003,7 @@
       },
       "delete": {
         "tags": [
-          "security.invalidate_api_key"
+          "security"
         ],
         "summary": "Invalidate API keys",
         "description": "Invalidates one or more API keys.\nThe `manage_api_key` privilege allows deleting any API keys.\nThe `manage_own_api_key` only allows deleting API keys that are owned by the user.\nIn addition, with the `manage_own_api_key` privilege, an invalidation request must be issued in one of the three formats:\n- Set the parameter `owner=true`.\n- Or, set both `username` and `realm_name` to match the user’s identity.\n- Or, if the request is issued by an API key, i.e. an API key invalidates itself, specify its ID in the `ids` field.",
@@ -18093,7 +18093,7 @@
     "/_security/user/_has_privileges": {
       "get": {
         "tags": [
-          "security.has_privileges"
+          "security"
         ],
         "summary": "Check user privileges",
         "description": "Determines whether the specified user has a specified list of privileges.",
@@ -18113,7 +18113,7 @@
       },
       "post": {
         "tags": [
-          "security.has_privileges"
+          "security"
         ],
         "summary": "Check user privileges",
         "description": "Determines whether the specified user has a specified list of privileges.",
@@ -18135,7 +18135,7 @@
     "/_security/user/{user}/_has_privileges": {
       "get": {
         "tags": [
-          "security.has_privileges"
+          "security"
         ],
         "summary": "Check user privileges",
         "description": "Determines whether the specified user has a specified list of privileges.",
@@ -18160,7 +18160,7 @@
       },
       "post": {
         "tags": [
-          "security.has_privileges"
+          "security"
         ],
         "summary": "Check user privileges",
         "description": "Determines whether the specified user has a specified list of privileges.",
@@ -18187,7 +18187,7 @@
     "/_security/_query/api_key": {
       "get": {
         "tags": [
-          "security.query_api_keys"
+          "security"
         ],
         "summary": "Query API keys",
         "description": "Retrieves a paginated list of API keys and their information. You can optionally filter the results with a query.",
@@ -18218,7 +18218,7 @@
       },
       "post": {
         "tags": [
-          "security.query_api_keys"
+          "security"
         ],
         "summary": "Query API keys",
         "description": "Retrieves a paginated list of API keys and their information. You can optionally filter the results with a query.",
@@ -18251,7 +18251,7 @@
     "/_security/api_key/{id}": {
       "put": {
         "tags": [
-          "security.update_api_key"
+          "security"
         ],
         "summary": "Update an API key",
         "description": "Updates attributes of an existing API key.\nUsers can only update API keys that they created or that were granted to them.\nUse this API to update API keys created by the create API Key or grant API Key APIs.\nIf you need to apply the same update to many API keys, you can use bulk update API Keys to reduce overhead.\nIt’s not possible to update expired API keys, or API keys that have been invalidated by invalidate API Key.\nThis API supports updates to an API key’s access scope and metadata.\nThe access scope of an API key is derived from the `role_descriptors` you specify in the request, and a snapshot of the owner user’s permissions at the time of the request.\nThe snapshot of the owner’s permissions is updated automatically on every call.\nIf you don’t specify `role_descriptors` in the request, a call to this API might still change the API key’s access scope.\nThis change can occur if the owner user’s permissions have changed since the API key was created or last modified.\nTo update another user’s API key, use the `run_as` feature to submit a request on behalf of another user.\nIMPORTANT: It’s not possible to use an API key as the authentication credential for this API.\nTo update an API key, the owner user’s credentials are required.",
@@ -18326,7 +18326,7 @@
     "/_sql/close": {
       "post": {
         "tags": [
-          "sql.clear_cursor"
+          "sql"
         ],
         "summary": "Clears the SQL cursor",
         "externalDocs": {
@@ -18378,7 +18378,7 @@
     "/_sql/async/delete/{id}": {
       "delete": {
         "tags": [
-          "sql.delete_async"
+          "sql"
         ],
         "summary": "Deletes an async SQL search or a stored synchronous SQL search",
         "description": "If the search is still running, the API cancels it.",
@@ -18417,7 +18417,7 @@
     "/_sql/async/{id}": {
       "get": {
         "tags": [
-          "sql.get_async"
+          "sql"
         ],
         "summary": "Returns the current status and available results for an async SQL search or stored synchronous SQL search",
         "externalDocs": {
@@ -18532,7 +18532,7 @@
     "/_sql/async/status/{id}": {
       "get": {
         "tags": [
-          "sql.get_async_status"
+          "sql"
         ],
         "summary": "Returns the current status of an async SQL search or a stored synchronous SQL search",
         "externalDocs": {
@@ -18600,7 +18600,7 @@
     "/_sql": {
       "get": {
         "tags": [
-          "sql.query"
+          "sql"
         ],
         "summary": "Executes a SQL request",
         "externalDocs": {
@@ -18624,7 +18624,7 @@
       },
       "post": {
         "tags": [
-          "sql.query"
+          "sql"
         ],
         "summary": "Executes a SQL request",
         "externalDocs": {
@@ -18650,7 +18650,7 @@
     "/_sql/translate": {
       "get": {
         "tags": [
-          "sql.translate"
+          "sql"
         ],
         "summary": "Translates SQL into Elasticsearch queries",
         "externalDocs": {
@@ -18669,7 +18669,7 @@
       },
       "post": {
         "tags": [
-          "sql.translate"
+          "sql"
         ],
         "summary": "Translates SQL into Elasticsearch queries",
         "externalDocs": {
@@ -18690,7 +18690,7 @@
     "/_synonyms/{id}": {
       "get": {
         "tags": [
-          "synonyms.get_synonym"
+          "synonyms"
         ],
         "summary": "Retrieves a synonym set",
         "externalDocs": {
@@ -18761,7 +18761,7 @@
       },
       "put": {
         "tags": [
-          "synonyms.put_synonym"
+          "synonyms"
         ],
         "summary": "Creates or updates a synonym set",
         "externalDocs": {
@@ -18838,7 +18838,7 @@
       },
       "delete": {
         "tags": [
-          "synonyms.delete_synonym"
+          "synonyms"
         ],
         "summary": "Deletes a synonym set",
         "externalDocs": {
@@ -18876,7 +18876,7 @@
     "/_synonyms/{set_id}/{rule_id}": {
       "get": {
         "tags": [
-          "synonyms.get_synonym_rule"
+          "synonyms"
         ],
         "summary": "Retrieves a synonym rule from a synonym set",
         "externalDocs": {
@@ -18923,7 +18923,7 @@
       },
       "put": {
         "tags": [
-          "synonyms.put_synonym_rule"
+          "synonyms"
         ],
         "summary": "Creates or updates a synonym rule in a synonym set",
         "externalDocs": {
@@ -18988,7 +18988,7 @@
       },
       "delete": {
         "tags": [
-          "synonyms.delete_synonym_rule"
+          "synonyms"
         ],
         "summary": "Deletes a synonym rule in a synonym set",
         "externalDocs": {
@@ -19037,7 +19037,7 @@
     "/_synonyms": {
       "get": {
         "tags": [
-          "synonyms.get_synonyms_sets"
+          "synonyms"
         ],
         "summary": "Retrieves a summary of all defined synonym sets",
         "externalDocs": {
@@ -19099,7 +19099,7 @@
     "/_tasks/{task_id}": {
       "get": {
         "tags": [
-          "tasks.get"
+          "tasks"
         ],
         "summary": "Get task information",
         "description": "Returns information about the tasks currently executing in the cluster.",
@@ -19467,7 +19467,7 @@
     "/_transform/{transform_id}": {
       "get": {
         "tags": [
-          "transform.get_transform"
+          "transform"
         ],
         "summary": "Get transforms",
         "description": "Retrieves configuration information for transforms.",
@@ -19501,7 +19501,7 @@
       },
       "put": {
         "tags": [
-          "transform.put_transform"
+          "transform"
         ],
         "summary": "Create a transform",
         "description": "Creates a transform.\n\nA transform copies data from source indices, transforms it, and persists it into an entity-centric destination index. You can also think of the destination index as a two-dimensional tabular data structure (known as\na data frame). The ID for each document in the data frame is generated from a hash of the entity, so there is a\nunique row per entity.\n\nYou must choose either the latest or pivot method for your transform; you cannot use both in a single transform. If\nyou choose to use the pivot method for your transform, the entities are defined by the set of `group_by` fields in\nthe pivot object. If you choose to use the latest method, the entities are defined by the `unique_key` field values\nin the latest object.\n\nYou must have `create_index`, `index`, and `read` privileges on the destination index and `read` and\n`view_index_metadata` privileges on the source indices. When Elasticsearch security features are enabled, the\ntransform remembers which roles the user that created it had at the time of creation and uses those same roles. If\nthose roles do not have the required privileges on the source and destination indices, the transform fails when it\nattempts unauthorized operations.\n\nNOTE: You must use Kibana or this API to create a transform. Do not add a transform directly into any\n`.transform-internal*` indices using the Elasticsearch index API. If Elasticsearch security features are enabled, do\nnot give users any privileges on `.transform-internal*` indices. If you used transforms prior to 7.5, also do not\ngive users any privileges on `.data-frame-internal*` indices.",
@@ -19605,7 +19605,7 @@
       },
       "delete": {
         "tags": [
-          "transform.delete_transform"
+          "transform"
         ],
         "summary": "Delete a transform",
         "description": "Deletes a transform.",
@@ -19674,7 +19674,7 @@
     "/_transform": {
       "get": {
         "tags": [
-          "transform.get_transform"
+          "transform"
         ],
         "summary": "Get transforms",
         "description": "Retrieves configuration information for transforms.",
@@ -19707,7 +19707,7 @@
     "/_transform/{transform_id}/_stats": {
       "get": {
         "tags": [
-          "transform.get_transform_stats"
+          "transform"
         ],
         "summary": "Get transform stats",
         "description": "Retrieves usage information for transforms.",
@@ -19801,7 +19801,7 @@
     "/_transform/{transform_id}/_preview": {
       "get": {
         "tags": [
-          "transform.preview_transform"
+          "transform"
         ],
         "summary": "Preview a transform",
         "description": "Generates a preview of the results that you will get when you create a transform with the same configuration.\n\nIt returns a maximum of 100 results. The calculations are based on all the current data in the source index. It also\ngenerates a list of mappings and settings for the destination index. These values are determined based on the field\ntypes of the source index and the transform aggregations.",
@@ -19829,7 +19829,7 @@
       },
       "post": {
         "tags": [
-          "transform.preview_transform"
+          "transform"
         ],
         "summary": "Preview a transform",
         "description": "Generates a preview of the results that you will get when you create a transform with the same configuration.\n\nIt returns a maximum of 100 results. The calculations are based on all the current data in the source index. It also\ngenerates a list of mappings and settings for the destination index. These values are determined based on the field\ntypes of the source index and the transform aggregations.",
@@ -19859,7 +19859,7 @@
     "/_transform/_preview": {
       "get": {
         "tags": [
-          "transform.preview_transform"
+          "transform"
         ],
         "summary": "Preview a transform",
         "description": "Generates a preview of the results that you will get when you create a transform with the same configuration.\n\nIt returns a maximum of 100 results. The calculations are based on all the current data in the source index. It also\ngenerates a list of mappings and settings for the destination index. These values are determined based on the field\ntypes of the source index and the transform aggregations.",
@@ -19884,7 +19884,7 @@
       },
       "post": {
         "tags": [
-          "transform.preview_transform"
+          "transform"
         ],
         "summary": "Preview a transform",
         "description": "Generates a preview of the results that you will get when you create a transform with the same configuration.\n\nIt returns a maximum of 100 results. The calculations are based on all the current data in the source index. It also\ngenerates a list of mappings and settings for the destination index. These values are determined based on the field\ntypes of the source index and the transform aggregations.",
@@ -19911,7 +19911,7 @@
     "/_transform/{transform_id}/_reset": {
       "post": {
         "tags": [
-          "transform.reset_transform"
+          "transform"
         ],
         "summary": "Reset a transform",
         "description": "Resets a transform.\nBefore you can reset it, you must stop it; alternatively, use the `force` query parameter.\nIf the destination index was created by the transform, it is deleted.",
@@ -19960,7 +19960,7 @@
     "/_transform/{transform_id}/_schedule_now": {
       "post": {
         "tags": [
-          "transform.schedule_now_transform"
+          "transform"
         ],
         "summary": "Schedule a transform to start now",
         "description": "Instantly runs a transform to process data.\n\nIf you _schedule_now a transform, it will process the new data instantly,\nwithout waiting for the configured frequency interval. After _schedule_now API is called,\nthe transform will be processed again at now + frequency unless _schedule_now API\nis called again in the meantime.",
@@ -20009,7 +20009,7 @@
     "/_transform/{transform_id}/_start": {
       "post": {
         "tags": [
-          "transform.start_transform"
+          "transform"
         ],
         "summary": "Start a transform",
         "description": "Starts a transform.\n\nWhen you start a transform, it creates the destination index if it does not already exist. The `number_of_shards` is\nset to `1` and the `auto_expand_replicas` is set to `0-1`. If it is a pivot transform, it deduces the mapping\ndefinitions for the destination index from the source indices and the transform aggregations. If fields in the\ndestination index are derived from scripts (as in the case of `scripted_metric` or `bucket_script` aggregations),\nthe transform uses dynamic mappings unless an index template exists. If it is a latest transform, it does not deduce\nmapping definitions; it uses dynamic mappings. To use explicit mappings, create the destination index before you\nstart the transform. Alternatively, you can create an index template, though it does not affect the deduced mappings\nin a pivot transform.\n\nWhen the transform starts, a series of validations occur to ensure its success. If you deferred validation when you\ncreated the transform, they occur when you start the transform—​with the exception of privilege checks. When\nElasticsearch security features are enabled, the transform remembers which roles the user that created it had at the\ntime of creation and uses those same roles. If those roles do not have the required privileges on the source and\ndestination indices, the transform fails when it attempts unauthorized operations.",
@@ -20068,7 +20068,7 @@
     "/_transform/{transform_id}/_stop": {
       "post": {
         "tags": [
-          "transform.stop_transform"
+          "transform"
         ],
         "summary": "Stop transforms",
         "description": "Stops one or more transforms.",
@@ -20157,7 +20157,7 @@
     "/_transform/{transform_id}/_update": {
       "post": {
         "tags": [
-          "transform.update_transform"
+          "transform"
         ],
         "summary": "Update a transform",
         "description": "Updates certain properties of a transform.\n\nAll updated properties except `description` do not take effect until after the transform starts the next checkpoint,\nthus there is data consistency in each checkpoint. To use this API, you must have `read` and `view_index_metadata`\nprivileges for the source indices. You must also have `index` and `read` privileges for the destination index. When\nElasticsearch security features are enabled, the transform remembers which roles the user who updated it had at the\ntime of update and runs with those privileges.",
