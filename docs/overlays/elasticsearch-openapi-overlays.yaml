@@ -1,4 +1,4 @@
-# overlays.yaml
+# Overlays that are specific to the Elasticsearch OpenAPI document
 overlay: 1.0.0
 info:
   title: Overlays for the Elasticsearch OpenAPI document
@@ -19,3 +19,25 @@ actions:
       x-feedbackLink:
         label: Feedback
         url: https://github.com/elastic/docs-content/issues/new?assignees=&labels=feedback%2Ccommunity&projects=&template=api-feedback.yaml&title=%5BFeedback%5D%3A+
+# Examples that apply only to the Elasticsearch OpenAPI document
+  - target: "$.paths['/_features']['get']"
+    description: "Add examples for get features operation"
+    update:
+      responses:
+        200:
+          content:
+            application/json:
+              examples:
+                getFeaturesResponseExample1:
+                  $ref: "../../specification/features/get_features/FeaturesApiResponseExample1.json"
+  - target: "$.paths['/_features/_reset']['post']"
+    description: "Add examples for reset features operation"
+    update:
+      responses:
+        200:
+          content:
+            application/json:
+              examples:
+                resetFeaturesResponseExample1:
+                  $ref: "../../specification/features/reset_features/ResetFeaturesResponseExample1.json"
+    
