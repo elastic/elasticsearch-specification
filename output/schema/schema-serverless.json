@@ -68280,13 +68280,10 @@
                 "kind": "dictionary_of",
                 "singleKey": false,
                 "value": {
-                  "kind": "array_of",
-                  "value": {
-                    "kind": "instance_of",
-                    "type": {
-                      "name": "double",
-                      "namespace": "_types"
-                    }
+                  "kind": "instance_of",
+                  "type": {
+                    "name": "double",
+                    "namespace": "_types"
                   }
                 }
               }
@@ -72876,7 +72873,7 @@
           }
         }
       ],
-      "specLocation": "_global/search/_types/profile.ts#L93-L95"
+      "specLocation": "_global/search/_types/profile.ts#L101-L103"
     },
     {
       "kind": "interface",
@@ -72900,6 +72897,39 @@
           }
         },
         {
+          "name": "cluster",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "_builtins"
+            }
+          }
+        },
+        {
+          "name": "dfs",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "DfsProfile",
+              "namespace": "_global.search._types"
+            }
+          }
+        },
+        {
+          "name": "fetch",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "FetchProfile",
+              "namespace": "_global.search._types"
+            }
+          }
+        },
+        {
           "name": "id",
           "required": true,
           "type": {
@@ -72907,6 +72937,28 @@
             "type": {
               "name": "string",
               "namespace": "_builtins"
+            }
+          }
+        },
+        {
+          "name": "index",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "IndexName",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "node_id",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "NodeId",
+              "namespace": "_types"
             }
           }
         },
@@ -72925,18 +72977,18 @@
           }
         },
         {
-          "name": "fetch",
-          "required": false,
+          "name": "shard_id",
+          "required": true,
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "FetchProfile",
-              "namespace": "_global.search._types"
+              "name": "long",
+              "namespace": "_types"
             }
           }
         }
       ],
-      "specLocation": "_global/search/_types/profile.ts#L132-L137"
+      "specLocation": "_global/search/_types/profile.ts#L142-L152"
     },
     {
       "kind": "interface",
@@ -73024,7 +73076,7 @@
           }
         }
       ],
-      "specLocation": "_global/search/_types/profile.ts#L77-L84"
+      "specLocation": "_global/search/_types/profile.ts#L85-L92"
     },
     {
       "kind": "interface",
@@ -73166,7 +73218,7 @@
           }
         }
       ],
-      "specLocation": "_global/search/_types/profile.ts#L23-L36"
+      "specLocation": "_global/search/_types/profile.ts#L26-L39"
     },
     {
       "kind": "interface",
@@ -73488,9 +73540,53 @@
               "namespace": "_builtins"
             }
           }
+        },
+        {
+          "name": "brute_force_used",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "dynamic_pruning_attempted",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "dynamic_pruning_used",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "skipped_due_to_no_data",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "_types"
+            }
+          }
         }
       ],
-      "specLocation": "_global/search/_types/profile.ts#L39-L68"
+      "specLocation": "_global/search/_types/profile.ts#L42-L76"
     },
     {
       "kind": "interface",
@@ -73544,7 +73640,955 @@
           }
         }
       ],
-      "specLocation": "_global/search/_types/profile.ts#L70-L75"
+      "specLocation": "_global/search/_types/profile.ts#L78-L83"
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "DfsProfile",
+        "namespace": "_global.search._types"
+      },
+      "properties": [
+        {
+          "name": "statistics",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "DfsStatisticsProfile",
+              "namespace": "_global.search._types"
+            }
+          }
+        },
+        {
+          "name": "knn",
+          "required": false,
+          "type": {
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "DfsKnnProfile",
+                "namespace": "_global.search._types"
+              }
+            }
+          }
+        }
+      ],
+      "specLocation": "_global/search/_types/profile.ts#L154-L157"
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "DfsStatisticsProfile",
+        "namespace": "_global.search._types"
+      },
+      "properties": [
+        {
+          "name": "type",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "_builtins"
+            }
+          }
+        },
+        {
+          "name": "description",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "_builtins"
+            }
+          }
+        },
+        {
+          "name": "time",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Duration",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "time_in_nanos",
+          "required": true,
+          "type": {
+            "generics": [
+              {
+                "kind": "instance_of",
+                "type": {
+                  "name": "UnitNanos",
+                  "namespace": "_types"
+                }
+              }
+            ],
+            "kind": "instance_of",
+            "type": {
+              "name": "DurationValue",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "breakdown",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "DfsStatisticsBreakdown",
+              "namespace": "_global.search._types"
+            }
+          }
+        },
+        {
+          "name": "debug",
+          "required": false,
+          "type": {
+            "key": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "_builtins"
+              }
+            },
+            "kind": "dictionary_of",
+            "singleKey": false,
+            "value": {
+              "kind": "user_defined_value"
+            }
+          }
+        },
+        {
+          "name": "children",
+          "required": false,
+          "type": {
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "DfsStatisticsProfile",
+                "namespace": "_global.search._types"
+              }
+            }
+          }
+        }
+      ],
+      "specLocation": "_global/search/_types/profile.ts#L159-L167"
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "DfsStatisticsBreakdown",
+        "namespace": "_global.search._types"
+      },
+      "properties": [
+        {
+          "name": "collection_statistics",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "long",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "collection_statistics_count",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "long",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "create_weight",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "long",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "create_weight_count",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "long",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "rewrite",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "long",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "rewrite_count",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "long",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "term_statistics",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "long",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "term_statistics_count",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "long",
+              "namespace": "_types"
+            }
+          }
+        }
+      ],
+      "specLocation": "_global/search/_types/profile.ts#L170-L179"
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "DfsKnnProfile",
+        "namespace": "_global.search._types"
+      },
+      "properties": [
+        {
+          "name": "vector_operations_count",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "long",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "query",
+          "required": true,
+          "type": {
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "KnnQueryProfileResult",
+                "namespace": "_global.search._types"
+              }
+            }
+          }
+        },
+        {
+          "name": "rewrite_time",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "long",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "collector",
+          "required": true,
+          "type": {
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "KnnCollectorResult",
+                "namespace": "_global.search._types"
+              }
+            }
+          }
+        }
+      ],
+      "specLocation": "_global/search/_types/profile.ts#L181-L186"
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "KnnQueryProfileResult",
+        "namespace": "_global.search._types"
+      },
+      "properties": [
+        {
+          "name": "type",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "_builtins"
+            }
+          }
+        },
+        {
+          "name": "description",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "_builtins"
+            }
+          }
+        },
+        {
+          "name": "time",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Duration",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "time_in_nanos",
+          "required": true,
+          "type": {
+            "generics": [
+              {
+                "kind": "instance_of",
+                "type": {
+                  "name": "UnitNanos",
+                  "namespace": "_types"
+                }
+              }
+            ],
+            "kind": "instance_of",
+            "type": {
+              "name": "DurationValue",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "breakdown",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "KnnQueryProfileBreakdown",
+              "namespace": "_global.search._types"
+            }
+          }
+        },
+        {
+          "name": "debug",
+          "required": false,
+          "type": {
+            "key": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "_builtins"
+              }
+            },
+            "kind": "dictionary_of",
+            "singleKey": false,
+            "value": {
+              "kind": "user_defined_value"
+            }
+          }
+        },
+        {
+          "name": "children",
+          "required": false,
+          "type": {
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "KnnQueryProfileResult",
+                "namespace": "_global.search._types"
+              }
+            }
+          }
+        }
+      ],
+      "specLocation": "_global/search/_types/profile.ts#L188-L196"
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "KnnQueryProfileBreakdown",
+        "namespace": "_global.search._types"
+      },
+      "properties": [
+        {
+          "name": "advance",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "long",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "advance_count",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "long",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "build_scorer",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "long",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "build_scorer_count",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "long",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "compute_max_score",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "long",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "compute_max_score_count",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "long",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "count_weight",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "long",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "count_weight_count",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "long",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "create_weight",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "long",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "create_weight_count",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "long",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "match",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "long",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "match_count",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "long",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "next_doc",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "long",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "next_doc_count",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "long",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "score",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "long",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "score_count",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "long",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "set_min_competitive_score",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "long",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "set_min_competitive_score_count",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "long",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "shallow_advance",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "long",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "shallow_advance_count",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "long",
+              "namespace": "_types"
+            }
+          }
+        }
+      ],
+      "specLocation": "_global/search/_types/profile.ts#L199-L220"
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "KnnCollectorResult",
+        "namespace": "_global.search._types"
+      },
+      "properties": [
+        {
+          "name": "name",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "_builtins"
+            }
+          }
+        },
+        {
+          "name": "reason",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "_builtins"
+            }
+          }
+        },
+        {
+          "name": "time",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Duration",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "time_in_nanos",
+          "required": true,
+          "type": {
+            "generics": [
+              {
+                "kind": "instance_of",
+                "type": {
+                  "name": "UnitNanos",
+                  "namespace": "_types"
+                }
+              }
+            ],
+            "kind": "instance_of",
+            "type": {
+              "name": "DurationValue",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "children",
+          "required": false,
+          "type": {
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "KnnCollectorResult",
+                "namespace": "_global.search._types"
+              }
+            }
+          }
+        }
+      ],
+      "specLocation": "_global/search/_types/profile.ts#L222-L228"
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "FetchProfile",
+        "namespace": "_global.search._types"
+      },
+      "properties": [
+        {
+          "name": "type",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "_builtins"
+            }
+          }
+        },
+        {
+          "name": "description",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "_builtins"
+            }
+          }
+        },
+        {
+          "name": "time_in_nanos",
+          "required": true,
+          "type": {
+            "generics": [
+              {
+                "kind": "instance_of",
+                "type": {
+                  "name": "UnitNanos",
+                  "namespace": "_types"
+                }
+              }
+            ],
+            "kind": "instance_of",
+            "type": {
+              "name": "DurationValue",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "breakdown",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "FetchProfileBreakdown",
+              "namespace": "_global.search._types"
+            }
+          }
+        },
+        {
+          "name": "debug",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "FetchProfileDebug",
+              "namespace": "_global.search._types"
+            }
+          }
+        },
+        {
+          "name": "children",
+          "required": false,
+          "type": {
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "FetchProfile",
+                "namespace": "_global.search._types"
+              }
+            }
+          }
+        }
+      ],
+      "specLocation": "_global/search/_types/profile.ts#L230-L237"
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "FetchProfileBreakdown",
+        "namespace": "_global.search._types"
+      },
+      "properties": [
+        {
+          "name": "load_source",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "load_source_count",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "load_stored_fields",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "load_stored_fields_count",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "next_reader",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "next_reader_count",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "process_count",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "process",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "_types"
+            }
+          }
+        }
+      ],
+      "specLocation": "_global/search/_types/profile.ts#L239-L248"
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "FetchProfileDebug",
+        "namespace": "_global.search._types"
+      },
+      "properties": [
+        {
+          "name": "stored_fields",
+          "required": false,
+          "type": {
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "_builtins"
+              }
+            }
+          }
+        },
+        {
+          "name": "fast_path",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "_types"
+            }
+          }
+        }
+      ],
+      "specLocation": "_global/search/_types/profile.ts#L250-L253"
+    },
+    {
+      "kind": "type_alias",
+      "name": {
+        "name": "NodeId",
+        "namespace": "_types"
+      },
+      "specLocation": "_types/common.ts#L63-L63",
+      "type": {
+        "kind": "instance_of",
+        "type": {
+          "name": "string",
+          "namespace": "_builtins"
+        }
+      }
     },
     {
       "kind": "interface",
@@ -73593,7 +74637,7 @@
           }
         }
       ],
-      "specLocation": "_global/search/_types/profile.ts#L126-L130"
+      "specLocation": "_global/search/_types/profile.ts#L136-L140"
     },
     {
       "kind": "interface",
@@ -73659,7 +74703,7 @@
           }
         }
       ],
-      "specLocation": "_global/search/_types/profile.ts#L86-L91"
+      "specLocation": "_global/search/_types/profile.ts#L94-L99"
     },
     {
       "kind": "interface",
@@ -73736,7 +74780,7 @@
           }
         }
       ],
-      "specLocation": "_global/search/_types/profile.ts#L118-L124"
+      "specLocation": "_global/search/_types/profile.ts#L128-L134"
     },
     {
       "kind": "interface",
@@ -73922,6 +74966,28 @@
           }
         },
         {
+          "name": "count_weight",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "long",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "count_weight_count",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "long",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
           "name": "set_min_competitive_score",
           "required": true,
           "type": {
@@ -73944,228 +75010,7 @@
           }
         }
       ],
-      "specLocation": "_global/search/_types/profile.ts#L97-L116"
-    },
-    {
-      "kind": "interface",
-      "name": {
-        "name": "FetchProfile",
-        "namespace": "_global.search._types"
-      },
-      "properties": [
-        {
-          "name": "type",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "_builtins"
-            }
-          }
-        },
-        {
-          "name": "description",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "_builtins"
-            }
-          }
-        },
-        {
-          "name": "time_in_nanos",
-          "required": true,
-          "type": {
-            "generics": [
-              {
-                "kind": "instance_of",
-                "type": {
-                  "name": "UnitNanos",
-                  "namespace": "_types"
-                }
-              }
-            ],
-            "kind": "instance_of",
-            "type": {
-              "name": "DurationValue",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "name": "breakdown",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "FetchProfileBreakdown",
-              "namespace": "_global.search._types"
-            }
-          }
-        },
-        {
-          "name": "debug",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "FetchProfileDebug",
-              "namespace": "_global.search._types"
-            }
-          }
-        },
-        {
-          "name": "children",
-          "required": false,
-          "type": {
-            "kind": "array_of",
-            "value": {
-              "kind": "instance_of",
-              "type": {
-                "name": "FetchProfile",
-                "namespace": "_global.search._types"
-              }
-            }
-          }
-        }
-      ],
-      "specLocation": "_global/search/_types/profile.ts#L139-L146"
-    },
-    {
-      "kind": "interface",
-      "name": {
-        "name": "FetchProfileBreakdown",
-        "namespace": "_global.search._types"
-      },
-      "properties": [
-        {
-          "name": "load_source",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "integer",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "name": "load_source_count",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "integer",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "name": "load_stored_fields",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "integer",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "name": "load_stored_fields_count",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "integer",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "name": "next_reader",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "integer",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "name": "next_reader_count",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "integer",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "name": "process_count",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "integer",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "name": "process",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "integer",
-              "namespace": "_types"
-            }
-          }
-        }
-      ],
-      "specLocation": "_global/search/_types/profile.ts#L148-L157"
-    },
-    {
-      "kind": "interface",
-      "name": {
-        "name": "FetchProfileDebug",
-        "namespace": "_global.search._types"
-      },
-      "properties": [
-        {
-          "name": "stored_fields",
-          "required": false,
-          "type": {
-            "kind": "array_of",
-            "value": {
-              "kind": "instance_of",
-              "type": {
-                "name": "string",
-                "namespace": "_builtins"
-              }
-            }
-          }
-        },
-        {
-          "name": "fast_path",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "integer",
-              "namespace": "_types"
-            }
-          }
-        }
-      ],
-      "specLocation": "_global/search/_types/profile.ts#L159-L162"
+      "specLocation": "_global/search/_types/profile.ts#L105-L126"
     },
     {
       "kind": "type_alias",
@@ -75689,21 +76534,6 @@
         "namespace": "_types"
       },
       "specLocation": "_types/common.ts#L83-L83",
-      "type": {
-        "kind": "instance_of",
-        "type": {
-          "name": "string",
-          "namespace": "_builtins"
-        }
-      }
-    },
-    {
-      "kind": "type_alias",
-      "name": {
-        "name": "NodeId",
-        "namespace": "_types"
-      },
-      "specLocation": "_types/common.ts#L63-L63",
       "type": {
         "kind": "instance_of",
         "type": {

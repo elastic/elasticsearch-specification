@@ -24210,10 +24210,7 @@
               {
                 "type": "object",
                 "additionalProperties": {
-                  "type": "array",
-                  "items": {
-                    "type": "number"
-                  }
+                  "type": "number"
                 }
               }
             ]
@@ -25040,8 +25037,23 @@
               "$ref": "#/components/schemas/_global.search._types:AggregationProfile"
             }
           },
+          "cluster": {
+            "type": "string"
+          },
+          "dfs": {
+            "$ref": "#/components/schemas/_global.search._types:DfsProfile"
+          },
+          "fetch": {
+            "$ref": "#/components/schemas/_global.search._types:FetchProfile"
+          },
           "id": {
             "type": "string"
+          },
+          "index": {
+            "$ref": "#/components/schemas/_types:IndexName"
+          },
+          "node_id": {
+            "$ref": "#/components/schemas/_types:NodeId"
           },
           "searches": {
             "type": "array",
@@ -25049,14 +25061,18 @@
               "$ref": "#/components/schemas/_global.search._types:SearchProfile"
             }
           },
-          "fetch": {
-            "$ref": "#/components/schemas/_global.search._types:FetchProfile"
+          "shard_id": {
+            "type": "number"
           }
         },
         "required": [
           "aggregations",
+          "cluster",
           "id",
-          "searches"
+          "index",
+          "node_id",
+          "searches",
+          "shard_id"
         ]
       },
       "_global.search._types:AggregationProfile": {
@@ -25247,6 +25263,18 @@
           },
           "map_reducer": {
             "type": "string"
+          },
+          "brute_force_used": {
+            "type": "number"
+          },
+          "dynamic_pruning_attempted": {
+            "type": "number"
+          },
+          "dynamic_pruning_used": {
+            "type": "number"
+          },
+          "skipped_due_to_no_data": {
+            "type": "number"
           }
         }
       },
@@ -25266,6 +25294,356 @@
             "type": "number"
           }
         }
+      },
+      "_global.search._types:DfsProfile": {
+        "type": "object",
+        "properties": {
+          "statistics": {
+            "$ref": "#/components/schemas/_global.search._types:DfsStatisticsProfile"
+          },
+          "knn": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/_global.search._types:DfsKnnProfile"
+            }
+          }
+        }
+      },
+      "_global.search._types:DfsStatisticsProfile": {
+        "type": "object",
+        "properties": {
+          "type": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          },
+          "time": {
+            "$ref": "#/components/schemas/_types:Duration"
+          },
+          "time_in_nanos": {
+            "$ref": "#/components/schemas/_types:DurationValueUnitNanos"
+          },
+          "breakdown": {
+            "$ref": "#/components/schemas/_global.search._types:DfsStatisticsBreakdown"
+          },
+          "debug": {
+            "type": "object",
+            "additionalProperties": {
+              "type": "object"
+            }
+          },
+          "children": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/_global.search._types:DfsStatisticsProfile"
+            }
+          }
+        },
+        "required": [
+          "type",
+          "description",
+          "time_in_nanos",
+          "breakdown"
+        ]
+      },
+      "_global.search._types:DfsStatisticsBreakdown": {
+        "type": "object",
+        "properties": {
+          "collection_statistics": {
+            "type": "number"
+          },
+          "collection_statistics_count": {
+            "type": "number"
+          },
+          "create_weight": {
+            "type": "number"
+          },
+          "create_weight_count": {
+            "type": "number"
+          },
+          "rewrite": {
+            "type": "number"
+          },
+          "rewrite_count": {
+            "type": "number"
+          },
+          "term_statistics": {
+            "type": "number"
+          },
+          "term_statistics_count": {
+            "type": "number"
+          }
+        },
+        "required": [
+          "collection_statistics",
+          "collection_statistics_count",
+          "create_weight",
+          "create_weight_count",
+          "rewrite",
+          "rewrite_count",
+          "term_statistics",
+          "term_statistics_count"
+        ]
+      },
+      "_global.search._types:DfsKnnProfile": {
+        "type": "object",
+        "properties": {
+          "vector_operations_count": {
+            "type": "number"
+          },
+          "query": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/_global.search._types:KnnQueryProfileResult"
+            }
+          },
+          "rewrite_time": {
+            "type": "number"
+          },
+          "collector": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/_global.search._types:KnnCollectorResult"
+            }
+          }
+        },
+        "required": [
+          "query",
+          "rewrite_time",
+          "collector"
+        ]
+      },
+      "_global.search._types:KnnQueryProfileResult": {
+        "type": "object",
+        "properties": {
+          "type": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          },
+          "time": {
+            "$ref": "#/components/schemas/_types:Duration"
+          },
+          "time_in_nanos": {
+            "$ref": "#/components/schemas/_types:DurationValueUnitNanos"
+          },
+          "breakdown": {
+            "$ref": "#/components/schemas/_global.search._types:KnnQueryProfileBreakdown"
+          },
+          "debug": {
+            "type": "object",
+            "additionalProperties": {
+              "type": "object"
+            }
+          },
+          "children": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/_global.search._types:KnnQueryProfileResult"
+            }
+          }
+        },
+        "required": [
+          "type",
+          "description",
+          "time_in_nanos",
+          "breakdown"
+        ]
+      },
+      "_global.search._types:KnnQueryProfileBreakdown": {
+        "type": "object",
+        "properties": {
+          "advance": {
+            "type": "number"
+          },
+          "advance_count": {
+            "type": "number"
+          },
+          "build_scorer": {
+            "type": "number"
+          },
+          "build_scorer_count": {
+            "type": "number"
+          },
+          "compute_max_score": {
+            "type": "number"
+          },
+          "compute_max_score_count": {
+            "type": "number"
+          },
+          "count_weight": {
+            "type": "number"
+          },
+          "count_weight_count": {
+            "type": "number"
+          },
+          "create_weight": {
+            "type": "number"
+          },
+          "create_weight_count": {
+            "type": "number"
+          },
+          "match": {
+            "type": "number"
+          },
+          "match_count": {
+            "type": "number"
+          },
+          "next_doc": {
+            "type": "number"
+          },
+          "next_doc_count": {
+            "type": "number"
+          },
+          "score": {
+            "type": "number"
+          },
+          "score_count": {
+            "type": "number"
+          },
+          "set_min_competitive_score": {
+            "type": "number"
+          },
+          "set_min_competitive_score_count": {
+            "type": "number"
+          },
+          "shallow_advance": {
+            "type": "number"
+          },
+          "shallow_advance_count": {
+            "type": "number"
+          }
+        },
+        "required": [
+          "advance",
+          "advance_count",
+          "build_scorer",
+          "build_scorer_count",
+          "compute_max_score",
+          "compute_max_score_count",
+          "count_weight",
+          "count_weight_count",
+          "create_weight",
+          "create_weight_count",
+          "match",
+          "match_count",
+          "next_doc",
+          "next_doc_count",
+          "score",
+          "score_count",
+          "set_min_competitive_score",
+          "set_min_competitive_score_count",
+          "shallow_advance",
+          "shallow_advance_count"
+        ]
+      },
+      "_global.search._types:KnnCollectorResult": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "reason": {
+            "type": "string"
+          },
+          "time": {
+            "$ref": "#/components/schemas/_types:Duration"
+          },
+          "time_in_nanos": {
+            "$ref": "#/components/schemas/_types:DurationValueUnitNanos"
+          },
+          "children": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/_global.search._types:KnnCollectorResult"
+            }
+          }
+        },
+        "required": [
+          "name",
+          "reason",
+          "time_in_nanos"
+        ]
+      },
+      "_global.search._types:FetchProfile": {
+        "type": "object",
+        "properties": {
+          "type": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          },
+          "time_in_nanos": {
+            "$ref": "#/components/schemas/_types:DurationValueUnitNanos"
+          },
+          "breakdown": {
+            "$ref": "#/components/schemas/_global.search._types:FetchProfileBreakdown"
+          },
+          "debug": {
+            "$ref": "#/components/schemas/_global.search._types:FetchProfileDebug"
+          },
+          "children": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/_global.search._types:FetchProfile"
+            }
+          }
+        },
+        "required": [
+          "type",
+          "description",
+          "time_in_nanos",
+          "breakdown"
+        ]
+      },
+      "_global.search._types:FetchProfileBreakdown": {
+        "type": "object",
+        "properties": {
+          "load_source": {
+            "type": "number"
+          },
+          "load_source_count": {
+            "type": "number"
+          },
+          "load_stored_fields": {
+            "type": "number"
+          },
+          "load_stored_fields_count": {
+            "type": "number"
+          },
+          "next_reader": {
+            "type": "number"
+          },
+          "next_reader_count": {
+            "type": "number"
+          },
+          "process_count": {
+            "type": "number"
+          },
+          "process": {
+            "type": "number"
+          }
+        }
+      },
+      "_global.search._types:FetchProfileDebug": {
+        "type": "object",
+        "properties": {
+          "stored_fields": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "fast_path": {
+            "type": "number"
+          }
+        }
+      },
+      "_types:NodeId": {
+        "type": "string"
       },
       "_global.search._types:SearchProfile": {
         "type": "object",
@@ -25397,6 +25775,12 @@
           "compute_max_score_count": {
             "type": "number"
           },
+          "count_weight": {
+            "type": "number"
+          },
+          "count_weight_count": {
+            "type": "number"
+          },
           "set_min_competitive_score": {
             "type": "number"
           },
@@ -25421,84 +25805,11 @@
           "score_count",
           "compute_max_score",
           "compute_max_score_count",
+          "count_weight",
+          "count_weight_count",
           "set_min_competitive_score",
           "set_min_competitive_score_count"
         ]
-      },
-      "_global.search._types:FetchProfile": {
-        "type": "object",
-        "properties": {
-          "type": {
-            "type": "string"
-          },
-          "description": {
-            "type": "string"
-          },
-          "time_in_nanos": {
-            "$ref": "#/components/schemas/_types:DurationValueUnitNanos"
-          },
-          "breakdown": {
-            "$ref": "#/components/schemas/_global.search._types:FetchProfileBreakdown"
-          },
-          "debug": {
-            "$ref": "#/components/schemas/_global.search._types:FetchProfileDebug"
-          },
-          "children": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/_global.search._types:FetchProfile"
-            }
-          }
-        },
-        "required": [
-          "type",
-          "description",
-          "time_in_nanos",
-          "breakdown"
-        ]
-      },
-      "_global.search._types:FetchProfileBreakdown": {
-        "type": "object",
-        "properties": {
-          "load_source": {
-            "type": "number"
-          },
-          "load_source_count": {
-            "type": "number"
-          },
-          "load_stored_fields": {
-            "type": "number"
-          },
-          "load_stored_fields_count": {
-            "type": "number"
-          },
-          "next_reader": {
-            "type": "number"
-          },
-          "next_reader_count": {
-            "type": "number"
-          },
-          "process_count": {
-            "type": "number"
-          },
-          "process": {
-            "type": "number"
-          }
-        }
-      },
-      "_global.search._types:FetchProfileDebug": {
-        "type": "object",
-        "properties": {
-          "stored_fields": {
-            "type": "array",
-            "items": {
-              "type": "string"
-            }
-          },
-          "fast_path": {
-            "type": "number"
-          }
-        }
       },
       "_types:ScrollId": {
         "type": "string"
@@ -35216,9 +35527,6 @@
           "ok",
           "warn"
         ]
-      },
-      "_types:NodeId": {
-        "type": "string"
       },
       "cat._types:CatTrainedModelsColumns": {
         "oneOf": [
