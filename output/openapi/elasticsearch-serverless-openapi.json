@@ -41393,9 +41393,6 @@
               "copy_to": {
                 "$ref": "#/components/schemas/_types:Fields"
               },
-              "similarity": {
-                "type": "string"
-              },
               "store": {
                 "type": "boolean"
               }
@@ -41541,7 +41538,15 @@
                 "type": "boolean"
               },
               "index_prefixes": {
-                "$ref": "#/components/schemas/_types.mapping:TextIndexPrefixes"
+                "oneOf": [
+                  {
+                    "$ref": "#/components/schemas/_types.mapping:TextIndexPrefixes"
+                  },
+                  {
+                    "nullable": true,
+                    "type": "string"
+                  }
+                ]
               },
               "norms": {
                 "type": "boolean"
@@ -41702,6 +41707,17 @@
               "null_value": {
                 "type": "string"
               },
+              "similarity": {
+                "oneOf": [
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "nullable": true,
+                    "type": "string"
+                  }
+                ]
+              },
               "split_queries_on_whitespace": {
                 "type": "boolean"
               },
@@ -41858,6 +41874,17 @@
               "search_quote_analyzer": {
                 "type": "string"
               },
+              "similarity": {
+                "oneOf": [
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "nullable": true,
+                    "type": "string"
+                  }
+                ]
+              },
               "term_vector": {
                 "$ref": "#/components/schemas/_types.mapping:TermVectorOption"
               },
@@ -41907,7 +41934,15 @@
                 "type": "boolean"
               },
               "index_prefixes": {
-                "$ref": "#/components/schemas/_types.mapping:TextIndexPrefixes"
+                "oneOf": [
+                  {
+                    "$ref": "#/components/schemas/_types.mapping:TextIndexPrefixes"
+                  },
+                  {
+                    "nullable": true,
+                    "type": "string"
+                  }
+                ]
               },
               "norms": {
                 "type": "boolean"
@@ -41920,6 +41955,17 @@
               },
               "search_quote_analyzer": {
                 "type": "string"
+              },
+              "similarity": {
+                "oneOf": [
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "nullable": true,
+                    "type": "string"
+                  }
+                ]
               },
               "term_vector": {
                 "$ref": "#/components/schemas/_types.mapping:TermVectorOption"
