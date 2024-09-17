@@ -1,0 +1,7 @@
+{
+  "summary": "A successful response when retrieving the current ILM status for an index.",
+  "description": "",
+  "type": "response",
+  "response_code": 200,
+  "value": "{\n  \"indices\": {\n    \"my-index-000001\": {\n      \"index\": \"my-index-000001\",\n      \"index_creation_date_millis\": 1538475653281,\n      \"index_creation_date\": \"2018-10-15T13:45:21.981Z\",\n      \"time_since_index_creation\": \"15s\",\n      \"managed\": true,\n      \"policy\": \"my_policy\",\n      \"lifecycle_date_millis\": 1538475653281,\n      \"lifecycle_date\": \"2018-10-15T13:45:21.981Z\",\n      \"age\": \"15s\",\n      \"phase\": \"new\",\n      \"phase_time_millis\": 1538475653317,\n      \"phase_time\": \"2018-10-15T13:45:22.577Z\",\n      \"action\": \"complete\"\n      \"action_time_millis\": 1538475653317,\n      \"action_time\": \"2018-10-15T13:45:22.577Z\",\n      \"step\": \"complete\",\n      \"step_time_millis\": 1538475653317,\n      \"step_time\": \"2018-10-15T13:45:22.577Z\"\n    }\n  }\n}"
+}
