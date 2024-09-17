@@ -28,3 +28,21 @@ actions:
     description: Add x-beta
     update:
       x-beta: true
+  # Remove and annotate items that are not shown in Bump.sh due to depth limits
+  - target: "$.components['schemas']['ml._types:Datafeed'].properties.query"
+    remove: true
+  - target: "$.components['schemas']['ml._types:Datafeed'].properties"
+    description: Re-add a simplified query object
+    update:
+      query:
+        x-abbreviated: true
+        type: object
+        description: >
+          The Elasticsearch query domain-specific language (DSL).
+          This value corresponds to the query object in an Elasticsearch search POST body.
+          All the options that are supported by Elasticsearch can be used, as this object is passed verbatim to Elasticsearch.
+          By default, this property has the following value: {"match_all": {"boost": 1}}.
+        externalDocs:
+          url: https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl.html
+          description: Query DSL
+        
