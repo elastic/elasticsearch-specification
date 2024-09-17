@@ -49,7 +49,7 @@ const uploadRecordingsPath = path.join(__dirname, '..', '..', 'clients-flight-re
 const tsValidationPath = path.join(__dirname, '..', '..', 'clients-flight-recorder', 'scripts', 'types-validator')
 const DAY = 1000 * 60 * 60 * 24
 const specPath = path.join(__dirname, '..', 'specification')
-const outputPath = path.join(__dirname, '..', 'output/schema')
+const outputPath = path.join(__dirname, '..', 'output')
 
 const apis = require('../output/schema/schema.json')
   .endpoints
