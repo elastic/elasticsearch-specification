@@ -6224,6 +6224,7 @@ export type QueryDslTermsQuery = QueryDslTermsQueryKeys
 export type QueryDslTermsQueryField = FieldValue[] | QueryDslTermsLookup
 
 export interface QueryDslTermsSetQuery extends QueryDslQueryBase {
+  minimum_should_match?: MinimumShouldMatch
   minimum_should_match_field?: Field
   minimum_should_match_script?: Script | string
   terms: string[]
