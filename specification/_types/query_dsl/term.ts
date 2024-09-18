@@ -255,6 +255,8 @@ export class TermsLookup {
 export class TermsSetQuery extends QueryBase {
   /**
    * Specification describing number of matching terms required to return a document.
+   * @availability stack since=8.10.0
+   * @availability serverless
    */
   minimum_should_match?: MinimumShouldMatch
   /**
