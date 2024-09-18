@@ -33,9 +33,11 @@ actions:
     description: Add document-level tags sorted by display name
     update:
       tags:
+      # A
         - name: asynch_search
           description: The async search API enables you to asynchronously run a search request, monitor its progress, and retrieve partial results as they become available.
           x-displayName: Async search
+      # C 
         - name: cat
           x-displayName: Compact and aligned text (CAT)
           description: >
@@ -46,6 +48,8 @@ actions:
             All the cat commands accept a query string parameter `help` to see all the headers and info they provide, and the `/_cat` command alone lists all the available commands.
         - name: cluster
           x-displayName: Cluster
+        - name: ping
+          x-displayName: Cluster - Ping
         - name: connector
           x-displayName: Connector
           description: >
@@ -60,6 +64,7 @@ actions:
           externalDocs:
             url: https://www.elastic.co/guide/en/enterprise-search/current/connectors-tutorial-api.html
             description: To get started with Connector APIs, check out the tutorial.
+      # D  
         - name: bulk
           description: The bulk API performs multiple indexing or delete operations in a single API call. This reduces overhead and can greatly increase indexing speed.
           x-displayName: Document - Bulk
@@ -91,6 +96,7 @@ actions:
           x-displayName: Document - Update
         - name: update_by_query
           x-displayName: Document - Update by query
+      # E  
         - name: enrich
           x-displayName: Enrich
         - name: eql
@@ -107,6 +113,7 @@ actions:
           externalDocs:
             url: https://www.elastic.co/guide/en/elasticsearch/reference/current/esql.html
             description: ES|QL overview and tutorials
+      # G
         - name: graph
           x-displayName: Graph explore
           description: >
@@ -114,6 +121,7 @@ actions:
           externalDocs:
             url: https://www.elastic.co/guide/en/kibana/current/xpack-graph.html
             description: Getting started with Graph
+      # I
         - name: indices
           x-displayName: Index
           description: >
@@ -124,9 +132,12 @@ actions:
             Inference APIs enable you to use certain services, such as built-in machine learning models (ELSER, E5), models uploaded through Eland, Cohere, OpenAI, Azure, Google AI Studio or Hugging Face.
             For built-in models and models uploaded through Eland, the inference APIs offer an alternative way to use and manage trained models.
             However, if you do not plan to use the inference APIs to use these models or if you want to use non-NLP models, use the machine learning trained model APIs.
+        - name: info
+          x-displayName: Info
         - name: ingest
           x-displayName: Ingest
           description: Ingest APIs enable you to manage tasks and resources related to ingest pipelines and processors.
+      # L  
         - name: license
           x-displayName: Licensing
           description: Licensing APIs enable you to manage your licenses.
@@ -137,8 +148,10 @@ actions:
           externalDocs:
             url: https://www.elastic.co/guide/en/logstash/current/logstash-centralized-pipeline-management.html
             description: Centralized pipeline management
+      # M
         - name: ml
           x-displayName: Machine learning
+      # Q
         - name: query_rules
           x-displayName: Query rules
           description: >
@@ -151,6 +164,7 @@ actions:
           externalDocs:
             url: https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-rule-query.html
             description: Rule query
+      # S  
         - name: put_script
           x-displayName: Script - Create or update
         - name: delete_script
@@ -161,6 +175,8 @@ actions:
           x-displayName: Script - Run painless
         - name: search
           x-displayName: Search
+        - name: clear_scroll
+          x-displayName: Search - Clear scroll
         - name: close_point_in_time
           x-displayName: Search - Close point in time
         - name: count
@@ -204,6 +220,7 @@ actions:
             The synonyms management API provides a convenient way to define and manage synonyms in an internal system index.
             Related synonyms can be grouped in a "synonyms set".
             Create as many synonym sets as you need.
+      # T  
         - name: tasks
           x-displayName: Task management
         - name: transform
