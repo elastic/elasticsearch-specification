@@ -263,7 +263,7 @@ export class TermsSetQuery extends QueryBase {
   /**
    *  Array of terms you wish to find in the provided field.
    */
-  terms: string[]
+  terms: FieldValue[]
 }
 
 export class TypeQuery extends QueryBase {
