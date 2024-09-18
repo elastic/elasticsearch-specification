@@ -43,6 +43,23 @@ actions:
         externalDocs:
           url: https://www.elastic.co/guide/en/elasticsearch/reference/current/analysis-tokenizers.html
           description: Tokenizer reference
+  - target: "$.components['schemas']['ml._types:DataframeAnalyticsSource'].properties.query"
+    description: Remove query object from ML data frame analytics source
+    remove: true
+  - target: "$.components['schemas']['ml._types:DataframeAnalyticsSource'].properties"
+    description: Re-add a simplified query object in ML data frame analytics source
+    update:
+      query:
+        x-abbreviated: true
+        type: object
+        description: >
+          The Elasticsearch query domain-specific language (DSL).
+          This value corresponds to the query object in an Elasticsearch search POST body.
+          All the options that are supported by Elasticsearch can be used, as this object is passed verbatim to Elasticsearch.
+          By default, this property has the following value: `{"match_all": {}}`.
+        externalDocs:
+          url: https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl.html
+          description: Query DSL
 # Examples
   - target: "$.components['requestBodies']['async_search.submit']"
     description: "Add example for asynch search submit request"
