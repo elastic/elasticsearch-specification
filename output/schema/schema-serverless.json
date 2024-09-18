@@ -49651,7 +49651,7 @@
           }
         }
       ],
-      "specLocation": "_types/query_dsl/term.ts#L37-L42"
+      "specLocation": "_types/query_dsl/term.ts#L38-L43"
     },
     {
       "inherits": {
@@ -50707,7 +50707,7 @@
         }
       ],
       "shortcutProperty": "value",
-      "specLocation": "_types/query_dsl/term.ts#L44-L79"
+      "specLocation": "_types/query_dsl/term.ts#L45-L80"
     },
     {
       "docId": "query-dsl-multi-term-rewrite",
@@ -54790,7 +54790,7 @@
           }
         }
       ],
-      "specLocation": "_types/query_dsl/term.ts#L81-L86"
+      "specLocation": "_types/query_dsl/term.ts#L82-L87"
     },
     {
       "kind": "type_alias",
@@ -57354,7 +57354,7 @@
         }
       ],
       "shortcutProperty": "value",
-      "specLocation": "_types/query_dsl/term.ts#L88-L107"
+      "specLocation": "_types/query_dsl/term.ts#L89-L108"
     },
     {
       "inherits": {
@@ -57724,7 +57724,7 @@
         "name": "RangeQuery",
         "namespace": "_types.query_dsl"
       },
-      "specLocation": "_types/query_dsl/term.ts#L161-L170",
+      "specLocation": "_types/query_dsl/term.ts#L162-L171",
       "type": {
         "items": [
           {
@@ -57809,7 +57809,7 @@
           }
         }
       ],
-      "specLocation": "_types/query_dsl/term.ts#L135-L144"
+      "specLocation": "_types/query_dsl/term.ts#L136-L145"
     },
     {
       "generics": [
@@ -57938,7 +57938,7 @@
           }
         }
       ],
-      "specLocation": "_types/query_dsl/term.ts#L109-L133"
+      "specLocation": "_types/query_dsl/term.ts#L110-L134"
     },
     {
       "kind": "enum",
@@ -57960,7 +57960,7 @@
         "name": "RangeRelation",
         "namespace": "_types.query_dsl"
       },
-      "specLocation": "_types/query_dsl/term.ts#L172-L185"
+      "specLocation": "_types/query_dsl/term.ts#L173-L186"
     },
     {
       "docId": "mapping-date-format",
@@ -58026,7 +58026,7 @@
           }
         }
       ],
-      "specLocation": "_types/query_dsl/term.ts#L146-L155"
+      "specLocation": "_types/query_dsl/term.ts#L147-L156"
     },
     {
       "inherits": {
@@ -58050,7 +58050,7 @@
         "namespace": "_types.query_dsl"
       },
       "properties": [],
-      "specLocation": "_types/query_dsl/term.ts#L157-L157"
+      "specLocation": "_types/query_dsl/term.ts#L158-L158"
     },
     {
       "inherits": {
@@ -58074,7 +58074,7 @@
         "namespace": "_types.query_dsl"
       },
       "properties": [],
-      "specLocation": "_types/query_dsl/term.ts#L159-L159"
+      "specLocation": "_types/query_dsl/term.ts#L160-L160"
     },
     {
       "inherits": {
@@ -58362,7 +58362,7 @@
         }
       ],
       "shortcutProperty": "value",
-      "specLocation": "_types/query_dsl/term.ts#L187-L217"
+      "specLocation": "_types/query_dsl/term.ts#L188-L218"
     },
     {
       "inherits": {
@@ -59657,7 +59657,7 @@
         }
       ],
       "shortcutProperty": "value",
-      "specLocation": "_types/query_dsl/term.ts#L219-L233"
+      "specLocation": "_types/query_dsl/term.ts#L220-L234"
     },
     {
       "codegenNames": [
@@ -59763,7 +59763,7 @@
         "namespace": "_types.query_dsl"
       },
       "properties": [],
-      "specLocation": "_types/query_dsl/term.ts#L235-L240"
+      "specLocation": "_types/query_dsl/term.ts#L236-L241"
     },
     {
       "codegenNames": [
@@ -59775,7 +59775,7 @@
         "name": "TermsQueryField",
         "namespace": "_types.query_dsl"
       },
-      "specLocation": "_types/query_dsl/term.ts#L242-L245",
+      "specLocation": "_types/query_dsl/term.ts#L243-L246",
       "type": {
         "items": [
           {
@@ -59851,7 +59851,7 @@
           }
         }
       ],
-      "specLocation": "_types/query_dsl/term.ts#L247-L252"
+      "specLocation": "_types/query_dsl/term.ts#L248-L253"
     },
     {
       "inherits": {
@@ -59866,6 +59866,24 @@
         "namespace": "_types.query_dsl"
       },
       "properties": [
+        {
+          "availability": {
+            "serverless": {},
+            "stack": {
+              "since": "8.10.0"
+            }
+          },
+          "description": "Specification describing number of matching terms required to return a document.",
+          "name": "minimum_should_match",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "MinimumShouldMatch",
+              "namespace": "_types"
+            }
+          }
+        },
         {
           "description": "Numeric field containing the number of matching terms required to return a document.",
           "name": "minimum_should_match_field",
@@ -59906,7 +59924,7 @@
           }
         }
       ],
-      "specLocation": "_types/query_dsl/term.ts#L254-L267"
+      "specLocation": "_types/query_dsl/term.ts#L255-L274"
     },
     {
       "inherits": {
@@ -60094,7 +60112,7 @@
         }
       ],
       "shortcutProperty": "value",
-      "specLocation": "_types/query_dsl/term.ts#L273-L290"
+      "specLocation": "_types/query_dsl/term.ts#L280-L297"
     },
     {
       "inherits": {
@@ -60149,7 +60167,7 @@
           }
         }
       ],
-      "specLocation": "_types/query_dsl/term.ts#L269-L271"
+      "specLocation": "_types/query_dsl/term.ts#L276-L278"
     },
     {
       "inherits": {
