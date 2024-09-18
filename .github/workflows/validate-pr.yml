@@ -59,7 +59,7 @@ jobs:
           else
             branch=$GITHUB_REF_NAME
           fi
-          node scripts/upload-recording/download.js --branch latest
+          node scripts/upload-recording/download.js --branch $branch
           node scripts/clone-elasticsearch/index.js --branch $branch
         env:
           GCS_CREDENTIALS: ${{ secrets.GCS_CREDENTIALS }}
