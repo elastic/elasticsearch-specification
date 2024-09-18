@@ -40703,8 +40703,8 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
-              "namespace": "_builtins"
+              "name": "SqlFormat",
+              "namespace": "sql.query"
             }
           }
         }
@@ -102934,6 +102934,37 @@
       }
     },
     {
+      "kind": "enum",
+      "members": [
+        {
+          "name": "csv"
+        },
+        {
+          "name": "json"
+        },
+        {
+          "name": "tsv"
+        },
+        {
+          "name": "txt"
+        },
+        {
+          "name": "yaml"
+        },
+        {
+          "name": "cbor"
+        },
+        {
+          "name": "smile"
+        }
+      ],
+      "name": {
+        "name": "SqlFormat",
+        "namespace": "sql.query"
+      },
+      "specLocation": "sql/query/QuerySqlRequest.ts#L124-L132"
+    },
+    {
       "kind": "type_alias",
       "name": {
         "name": "SynonymString",
@@ -104012,6 +104043,25 @@
         "namespace": "watcher.stats"
       },
       "specLocation": "watcher/stats/types.ts#L26-L31"
+    },
+    {
+      "kind": "enum",
+      "members": [
+        {
+          "name": "build"
+        },
+        {
+          "name": "features"
+        },
+        {
+          "name": "license"
+        }
+      ],
+      "name": {
+        "name": "XPackCategory",
+        "namespace": "xpack.info"
+      },
+      "specLocation": "xpack/info/XPackInfoRequest.ts#L44-L48"
     },
     {
       "attachedBehaviors": [

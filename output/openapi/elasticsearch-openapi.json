@@ -37517,7 +37517,7 @@
             "schema": {
               "type": "array",
               "items": {
-                "type": "string"
+                "$ref": "#/components/schemas/xpack.info:XPackCategory"
               }
             },
             "style": "form"
@@ -85562,6 +85562,18 @@
           "type": "object"
         }
       },
+      "sql.query:SqlFormat": {
+        "type": "string",
+        "enum": [
+          "csv",
+          "json",
+          "tsv",
+          "txt",
+          "yaml",
+          "cbor",
+          "smile"
+        ]
+      },
       "ssl.certificates:CertificateInformation": {
         "type": "object",
         "properties": {
@@ -88088,6 +88100,14 @@
           "starting",
           "started",
           "stopping"
+        ]
+      },
+      "xpack.info:XPackCategory": {
+        "type": "string",
+        "enum": [
+          "build",
+          "features",
+          "license"
         ]
       },
       "xpack.info:BuildInformation": {
@@ -102085,7 +102105,7 @@
         "description": "Format for the response.",
         "deprecated": false,
         "schema": {
-          "type": "string"
+          "$ref": "#/components/schemas/sql.query:SqlFormat"
         },
         "style": "form"
       },
