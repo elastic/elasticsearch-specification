@@ -59876,6 +59876,7 @@
           "description": "Specification describing number of matching terms required to return a document.",
           "name": "minimum_should_match",
           "required": false,
+          "since": "8.10.0",
           "type": {
             "kind": "instance_of",
             "type": {
