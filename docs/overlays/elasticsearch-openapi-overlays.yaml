@@ -40,4 +40,4 @@ actions:
               examples:
                 resetFeaturesResponseExample1:
                   $ref: "../../specification/features/reset_features/ResetFeaturesResponseExample1.json"
- 
+    
