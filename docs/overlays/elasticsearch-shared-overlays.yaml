@@ -60,6 +60,20 @@ actions:
         externalDocs:
           url: https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl.html
           description: Query DSL
+  - target: "$.components['schemas']['transform._types:Source'].properties.query"
+    description: Remove query object from transform source
+    remove: true
+  - target: "$.components['schemas']['transform._types:Source'].properties"
+    description: Re-add a simplified query object in transform source
+    update:
+      query:
+        x-abbreviated: true
+        type: object
+        description: >
+          A query clause that retrieves a subset of data from the source index.
+        externalDocs:
+          url: https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl.html
+          description: Query DSL
 # Examples
   - target: "$.components['requestBodies']['async_search.submit']"
     description: "Add example for asynch search submit request"
