@@ -9,7 +9,7 @@ actions:
     description: Remove query object from anomaly detection datafeed
     remove: true
   - target: "$.components['schemas']['ml._types:Datafeed'].properties"
-    description: Re-add a simplified query object in ML anomaly detection datafeed
+    description: Re-add a simplified query object in anomaly detection datafeed
     update:
       query:
         x-abbreviated: true
