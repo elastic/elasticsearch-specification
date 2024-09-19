@@ -178,3 +178,11 @@ actions:
             examples: 
               esqlQueryRequestExample1: 
                 $ref: "../../specification/esql/query/EsqlQueryApiRequestExample1.json"
+  - target: "$.components['requestBodies']['graph.explore']"
+    description: "Add example for graph explore request"
+    update: 
+      content:
+        application/json:
+          examples:
+            graphExploreRequestExample1:
+              $ref: "../../specification/graph/explore/graphExploreRequestExample1.json"
