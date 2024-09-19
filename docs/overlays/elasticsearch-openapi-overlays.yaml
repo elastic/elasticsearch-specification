@@ -40,4 +40,14 @@ actions:
               examples:
                 resetFeaturesResponseExample1:
                   $ref: "../../specification/features/reset_features/ResetFeaturesResponseExample1.json"
+  - target: "$.paths['/_ilm/policy/{policy}']['delete']"
+    description: "Add examples for delete lifecycle policy operation"
+    update:
+      responses:
+        200:
+          content:
+            application/json:
+              examples:
+                deleteLifecycleResponseExample1:
+                  $ref: "../../specification/ilm/delete_lifecycle/DeleteLifecycleResponseExample1.json"
     
