@@ -78,3 +78,21 @@ actions:
               examples:
                 getLifecycleStatusResponseExample1:
                   $ref: "../../specification/ilm/get_status/GetStatusResponseExample1.json"
+  - target: "$.paths['/_ilm/migrate_to_data_tiers']['post']"
+    description: "Add examples for migrate to data tiers routing operation"
+    update:
+      update: 
+      requestBody: 
+        content: 
+          application/json: 
+            examples: 
+              migrateToDataTiersRequestExample1: 
+                $ref: "../../specification/ilm/migrate_to_data_tiers/MigrateToDataTiersRequestExample1.json"
+      responses:
+        200:
+          content:
+            application/json:
+              examples:
+                migrateToDataTiersResponseExample1:
+                  $ref: "../../specification/ilm/migrate_to_data_tiers/MigrateToDataTiersResponseExample1.json"
+                  
