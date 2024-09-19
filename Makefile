@@ -61,10 +61,10 @@ contrib: | generate license-check spec-format-fix transform-to-openapi filter-fo
 
 overlay-docs: ## Apply overlays to OpenAPI documents
 	@npx bump overlay "output/openapi/elasticsearch-serverless-openapi.json" "docs/overlays/elasticsearch-serverless-openapi-overlays.yaml" > "output/openapi/elasticsearch-serverless-openapi.tmp1.json"
-	@npx bump overlay "output/openapi/elasticsearch-serverless-openapi.tmp1.json" "docs/overlays/elasticsearch-shared-example-overlays.yaml" > "output/openapi/elasticsearch-serverless-openapi.tmp2.json"
+	@npx bump overlay "output/openapi/elasticsearch-serverless-openapi.tmp1.json" "docs/overlays/elasticsearch-shared-overlays.yaml" > "output/openapi/elasticsearch-serverless-openapi.tmp2.json"
 	@npx @redocly/cli bundle output/openapi/elasticsearch-serverless-openapi.tmp2.json --ext json -o output/openapi/elasticsearch-serverless-openapi.examples.json
 	@npx bump overlay "output/openapi/elasticsearch-openapi.json" "docs/overlays/elasticsearch-openapi-overlays.yaml" > "output/openapi/elasticsearch-openapi.tmp1.json"
-	@npx bump overlay "output/openapi/elasticsearch-openapi.tmp1.json" "docs/overlays/elasticsearch-shared-example-overlays.yaml" > "output/openapi/elasticsearch-openapi.tmp2.json"
+	@npx bump overlay "output/openapi/elasticsearch-openapi.tmp1.json" "docs/overlays/elasticsearch-shared-overlays.yaml" > "output/openapi/elasticsearch-openapi.tmp2.json"
 	@npx @redocly/cli bundle output/openapi/elasticsearch-openapi.tmp2.json --ext json -o output/openapi/elasticsearch-openapi.examples.json
 	rm output/openapi/elasticsearch-serverless-openapi.tmp*.json
 	rm output/openapi/elasticsearch-openapi.tmp*.json
