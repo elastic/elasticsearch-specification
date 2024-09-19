@@ -6,7 +6,7 @@ info:
 actions:
 # Abbreviate and annotate items that are not shown in Bump.sh due to depth limits
   - target: "$.components['schemas']['ml._types:Datafeed'].properties.query"
-    description: Remove query object from ML anomaly detection datafeed
+    description: Remove query object from anomaly detection datafeed
     remove: true
   - target: "$.components['schemas']['ml._types:Datafeed'].properties"
     description: Re-add a simplified query object in ML anomaly detection datafeed
