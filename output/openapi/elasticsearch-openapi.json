@@ -46869,6 +46869,9 @@
           {
             "type": "object",
             "properties": {
+              "minimum_should_match": {
+                "$ref": "#/components/schemas/_types:MinimumShouldMatch"
+              },
               "minimum_should_match_field": {
                 "$ref": "#/components/schemas/_types:Field"
               },
