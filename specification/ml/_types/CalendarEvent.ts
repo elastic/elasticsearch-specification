@@ -31,10 +31,14 @@ export class CalendarEvent {
   end_time: DateTime
   /** The timestamp for the beginning of the scheduled event in milliseconds since the epoch or ISO 8601 format. */
   start_time: DateTime
-  /** When true the model will not create results for this calendar period. */
-  skip_result: boolean
-  /** When true the model will not be updated for this calendar period. */
-  skip_model_update: boolean
+  /** When true the model will not create results for this calendar period.
+   * @server_default true
+   */
+  skip_result?: boolean
+  /** When true the model will not be updated for this calendar period.
+   * @server_default true
+   */
+  skip_model_update?: boolean
   /** Shift time by this many hours. For example adjust time for daylight savings changes */
-  force_time_shift: integer
+  force_time_shift?: integer
 }
