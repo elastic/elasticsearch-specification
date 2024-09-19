@@ -47,7 +47,7 @@ actions:
     description: Remove query object from data frame analytics source
     remove: true
   - target: "$.components['schemas']['ml._types:DataframeAnalyticsSource'].properties"
-    description: Re-add a simplified query object in ML data frame analytics source
+    description: Re-add a simplified query object in data frame analytics source
     update:
       query:
         x-abbreviated: true
