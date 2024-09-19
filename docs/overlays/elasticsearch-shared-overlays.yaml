@@ -4,7 +4,30 @@ info:
   title: Overlays for changes that apply to both Elasticsearch and Elasticsearch Serverless OpenAPI documents
   version: 0.0.1
 actions:
-# Abbreviate and annotate items that are not shown in Bump.sh due to depth limits
+# Annotate items that are not shown in Bump.sh due to depth limits
+  # These hopefully can be fixed by adding branch levels in Bump.sh since the info doesn't exist elsewhere
+  - target: "$.components['schemas']['ml._types:TrainedModelConfigMetadata'].properties"
+    description: Add x-abbrebreviated to trained_model_configs > metadata > total_feature_importance
+    update:
+      total_feature_importance:
+        x-abbreviated: true
+  - target: "$.components['schemas']['ml._types:Detector'].properties"
+    description: Add x-abbrebreviated to anomaly detection job > analysis_config > detectors > custom_rules
+    update:
+      custom_rules:
+        x-abbreviated: true
+  - target: "$.components['schemas']['ml._types:DetectorRead'].properties"
+    description: Add x-abbrebreviated to anomaly detection jobs > analysis_config > detectors > custom_rules
+    update:
+      custom_rules:
+        x-abbreviated: true
+  - target: "$.components['schemas']['ml.put_trained_model:TargetMeanEncodingPreprocessor'].properties"
+    description: Add x-abbrebreviated to data frame analytics job > analysis> classification > feature_processors > target_mean_encoding > target_map
+    update:
+      target_map:
+        x-abbreviated: true
+# Annotate and abbreviate items that are not shown in Bump.sh due to depth limits
+  # These are likely long-term and should refer to query language reference etc
   - target: "$.paths['/_ml/datafeeds/{datafeed_id}']['put']['requestBody'].content['application/json'].schema.properties.query"
     description: "Remove query object from create datafeeds operation"
     remove: true
