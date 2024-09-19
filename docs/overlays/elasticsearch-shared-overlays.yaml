@@ -989,9 +989,43 @@ actions:
     description: Add x-model to LikeDocument schema
     update:
       x-model: true
+  - target: "$.paths['/_ml/datafeeds/{datafeed_id}']['put']['requestBody'].content['application/json'].schema.properties.query"
+    description: "Remove query object from create datafeeds operation"
+    remove: true
+  - target: "$.paths['/_ml/datafeeds/{datafeed_id}']['put']['requestBody'].content['application/json'].schema.properties"
+    description: "Re-add a simplified query object in create datafeeds operation"
+    update:
+      query:
+        x-abbreviated: true
+        type: object
+        description: >
+          The Elasticsearch query domain-specific language (DSL).
+          This value corresponds to the query object in an Elasticsearch search POST body.
+          All the options that are supported by Elasticsearch can be used, as this object is passed verbatim to Elasticsearch.
+          By default, this property has the following value: `{"match_all": {"boost": 1}}`.
+        externalDocs:
+          url: https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl.html
+          description: Query DSL
   - target: "$.components['schemas']['ml._types:Datafeed'].properties.query"
     description: Remove query object from anomaly detection datafeed
     remove: true
+  - target: "$.components['schemas']['ml._types:DatafeedConfig'].properties.query"
+    description: Remove query object from anomaly detection datafeed configuration
+    remove: true
+  - target: "$.components['schemas']['ml._types:DatafeedConfig'].properties"
+    description: Re-add a simplified query object in anomaly detection datafeed configuration
+    update:
+      query:
+        x-abbreviated: true
+        type: object
+        description: >
+          The Elasticsearch query domain-specific language (DSL).
+          This value corresponds to the query object in an Elasticsearch search POST body.
+          All the options that are supported by Elasticsearch can be used, as this object is passed verbatim to Elasticsearch.
+          By default, this property has the following value: `{"match_all": {"boost": 1}}`.
+        externalDocs:
+          url: https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl.html
+          description: Query DSL
   - target: "$.components['schemas']['ml._types:Datafeed'].properties"
     description: Re-add a simplified query object in anomaly detection datafeed
     update:
