@@ -107,4 +107,4 @@ actions:
         application/json:
           examples:
             nodesInfoResponseExample1:
-              $ref: "../../specification/nodes/info/nodesInfoResponseExample1.json"
+              $ref: "../../specification/nodes/info/nodesInfoResponseExample1.yaml"
