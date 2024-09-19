@@ -95,4 +95,20 @@ actions:
               examples:
                 migrateToDataTiersResponseExample1:
                   $ref: "../../specification/ilm/migrate_to_data_tiers/MigrateToDataTiersResponseExample1.json"
-                  
+  - target: "$.paths['/_ilm/move/{index}']['post']"
+    description: "Add examples for move to lifecycle step operation"
+    update:
+      update: 
+      requestBody: 
+        content: 
+          application/json: 
+            examples: 
+              moveToStepRequestExample1: 
+                $ref: "../../specification/ilm/move_to_step/MoveToStepRequestExample1.json"
+      responses:
+        200:
+          content:
+            application/json:
+              examples:
+                moveToStepResponseExample1:
+                  $ref: "../../specification/ilm/move_to_step/MoveToStepResponseExample1.json"
