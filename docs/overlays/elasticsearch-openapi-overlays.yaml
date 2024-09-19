@@ -49,17 +49,24 @@ actions:
             application/json:
               examples:
                 deleteLifecycleResponseExample1:
-                  $ref: "../../specification/ilm/delete_lifecycle/DeleteLifecycleResponseExample1.json"
-  - target: "$.paths['/{index}/_ilm/explain']['get']"
-    description: "Add examples for explain lifecycle operation"
+                  $ref: "../../specification/ilm/delete_lifecycle/DeleteLifecycleResponseExample1.json" 
+  - target: "$.paths['/_ilm/policy/{policy}']['put']"
+    description: "Add examples for create a lifecycle operation"
     update:
+      update: 
+      requestBody: 
+        content: 
+          application/json: 
+            examples:
+              putLifecycleRequestExample1: 
+                $ref: "../../specification/ilm/put_lifecycle/PutLifecycleRequestExample1.json"
       responses:
         200:
           content:
             application/json:
               examples:
-                explainLifecycleResponseExample1:
-                  $ref: "../../specification/ilm/explain_lifecycle/ExplainResponseExample1.json"
+                putLifecycleResponseExample1:
+                  $ref: "../../specification/ilm/put_lifecycle/PutLifecycleResponseExample1.json"  
   - target: "$.components['responses']['ilm.get_lifecycle#200']"
     description: "Add examples for get lifecycle policy operation"
     update: 
@@ -102,7 +109,7 @@ actions:
       requestBody: 
         content: 
           application/json: 
-            examples: 
+            examples:
               moveToStepRequestExample1: 
                 $ref: "../../specification/ilm/move_to_step/MoveToStepRequestExample1.json"
       responses:
@@ -112,3 +119,24 @@ actions:
               examples:
                 moveToStepResponseExample1:
                   $ref: "../../specification/ilm/move_to_step/MoveToStepResponseExample1.json"
+  - target: "$.paths['/{index}/_ilm/explain']['get']"
+    description: "Add examples for explain lifecycle operation"
+    update:
+      responses:
+        200:
+          content:
+            application/json:
+              examples:
+                explainLifecycleResponseExample1:
+                  $ref: "../../specification/ilm/explain_lifecycle/ExplainResponseExample1.json"
+  
+  - target: "$.paths['/{index}/_ilm/remove']['post']"
+    description: "Add examples for remove policy from index operation"
+    update:
+      responses:
+        200:
+          content:
+            application/json:
+              examples:
+                removePolicyResponseExample1:
+                  $ref: "../../specification/ilm/remove_policy/RemovePolicyResponseExample1.json" 
