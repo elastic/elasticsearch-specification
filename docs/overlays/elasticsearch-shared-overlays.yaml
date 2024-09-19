@@ -44,7 +44,7 @@ actions:
           url: https://www.elastic.co/guide/en/elasticsearch/reference/current/analysis-tokenizers.html
           description: Tokenizer reference
   - target: "$.components['schemas']['ml._types:DataframeAnalyticsSource'].properties.query"
-    description: Remove query object from ML data frame analytics source
+    description: Remove query object from data frame analytics source
     remove: true
   - target: "$.components['schemas']['ml._types:DataframeAnalyticsSource'].properties"
     description: Re-add a simplified query object in ML data frame analytics source
