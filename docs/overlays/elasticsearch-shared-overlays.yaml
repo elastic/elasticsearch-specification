@@ -281,6 +281,7 @@ actions:
         url: https://www.elastic.co/guide/en/elasticsearch/reference/master/analysis-tokenfilters.html
         description: Token filter reference
 # Abbreviate and annotate items that are not shown in Bump.sh due to depth limits
+<<<<<<< HEAD:docs/overlays/elasticsearch-shared-overlays.yaml
   - target: "$.components['schemas']['ml._types:Datafeed'].properties.query"
     description: Remove query object from anomaly detection datafeed
     remove: true
@@ -350,6 +351,18 @@ actions:
         externalDocs:
           url: https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl.html
           description: Query DSL
+=======
+  - target: "$.components['schemas']['security._types:IndicesPrivilegesQuery'].oneOf"
+    description: Remove types from security role descriptors indices query
+    remove: true
+  - target: "$.components['schemas']['security._types:IndicesPrivilegesQuery']"
+    description: Re-add simplified types for security role descriptors indices query
+    update:
+      x-abbreviated: true
+      oneOf:
+        - type: string
+        - type: object
+>>>>>>> 295ccb76c (Add overlay for deep objects in security APIs):docs/overlays/elasticsearch-shared-example-overlays.yaml
 # Examples
   - target: "$.components['requestBodies']['async_search.submit']"
     description: "Add example for asynch search submit request"
