@@ -75,16 +75,6 @@ actions:
           examples:
             getLifecycleResponseExample1:
               $ref: "../../specification/ilm/get_lifecycle/GetLifecycleResponseExample1.json"
-  - target: "$.paths['/_ilm/status']['get']"
-    description: "Add examples for get index lifecycle management status operation"
-    update:
-      responses:
-        200:
-          content:
-            application/json:
-              examples:
-                getLifecycleStatusResponseExample1:
-                  $ref: "../../specification/ilm/get_status/GetStatusResponseExample1.json"
   - target: "$.paths['/_ilm/migrate_to_data_tiers']['post']"
     description: "Add examples for migrate to data tiers routing operation"
     update:
@@ -119,6 +109,36 @@ actions:
               examples:
                 moveToStepResponseExample1:
                   $ref: "../../specification/ilm/move_to_step/MoveToStepResponseExample1.json"
+  - target: "$.paths['/_ilm/start']['post']"
+    description: "Add examples for start index lifecycle management operation"
+    update:
+      responses:
+        200:
+          content:
+            application/json:
+              examples:
+                startILMResponseExample1:
+                  $ref: "../../specification/ilm/start/StartILMResponseExample1.json"
+  - target: "$.paths['/_ilm/stop']['post']"
+    description: "Add examples for stop index lifecycle management operation"
+    update:
+      responses:
+        200:
+          content:
+            application/json:
+              examples:
+                stopILMResponseExample1:
+                  $ref: "../../specification/ilm/stop/stopILMResponseExample1.json"
+  - target: "$.paths['/_ilm/status']['get']"
+    description: "Add examples for get index lifecycle management status operation"
+    update:
+      responses:
+        200:
+          content:
+            application/json:
+              examples:
+                getILMStatusResponseExample1:
+                  $ref: "../../specification/ilm/get_status/GetILMStatusResponseExample1.json"
   - target: "$.paths['/{index}/_ilm/explain']['get']"
     description: "Add examples for explain lifecycle operation"
     update:
@@ -128,8 +148,7 @@ actions:
             application/json:
               examples:
                 explainLifecycleResponseExample1:
-                  $ref: "../../specification/ilm/explain_lifecycle/ExplainResponseExample1.json"
-  
+                  $ref: "../../specification/ilm/explain_lifecycle/ExplainLifecycleResponseExample1.json"
   - target: "$.paths['/{index}/_ilm/remove']['post']"
     description: "Add examples for remove policy from index operation"
     update:
