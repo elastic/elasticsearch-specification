@@ -39,6 +39,6 @@ export class CalendarEvent {
    * @server_default true
    */
   skip_model_update?: boolean
-  /** Shift time by this many hours. For example adjust time for daylight savings changes */
+  /** Shift time by this many seconds. For example adjust time for daylight savings changes */
   force_time_shift?: integer
 }
