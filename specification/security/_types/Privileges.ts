@@ -19,7 +19,7 @@
 
 import { Dictionary } from '@spec_utils/Dictionary'
 import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
-import { Id, Indices } from '@_types/common'
+import { Id, Indices, Names } from '@_types/common'
 import { QueryContainer } from '@_types/query_dsl/abstractions'
 import { ScriptLanguage } from '@_types/Scripting'
 import { FieldSecurity } from './FieldSecurity'
@@ -194,7 +194,39 @@ export enum ClusterPrivilege {
   write_fleet_secrets
 }
 
+// Keep in sync with RemoteIndicesPrivileges
 export class IndicesPrivileges {
+  /**
+   * The document fields that the owners of the role have read access to.
+   * @doc_id field-and-document-access-control
+   */
+  field_security?: FieldSecurity
+  /**
+   * A list of indices (or index name patterns) to which the permissions in this entry apply.
+   */
+  names: Indices
+  /**
+   * The index level privileges that owners of the role have on the specified indices.
+   */
+  privileges: IndexPrivilege[]
+  /**
+   * A search query that defines the documents the owners of the role have access to. A document within the specified indices must match this query for it to be accessible by the owners of the role.
+   */
+  query?: IndicesPrivilegesQuery
+  /**
+   * Set to `true` if using wildcard or regular expressions for patterns that cover restricted indices. Implicitly, restricted indices have limited privileges that can cause pattern tests to fail. If restricted indices are explicitly included in the `names` list, Elasticsearch checks privileges against these indices regardless of the value set for `allow_restricted_indices`.
+   * @server_default false
+   * @availability stack
+   */
+  allow_restricted_indices?: boolean
+}
+
+// Keep in sync with IndicesPrivileges
+export class RemoteIndicesPrivileges {
+  /**
+   *  A list of cluster aliases to which the permissions in this entry apply.
+   */
+  clusters: Names
   /**
    * The document fields that the owners of the role have read access to.
    * @doc_id field-and-document-access-control
