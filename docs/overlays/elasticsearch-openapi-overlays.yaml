@@ -100,3 +100,11 @@ actions:
               examples:
                 getTasksResponseExample1:
                   $ref: "../../specification/tasks/get/getTasksResponseExample1.json"
+  - target: "$.components['responses']['nodes.info#200']"
+    description: "Add response examples for nodes info"
+    update: 
+      content:
+        application/json:
+          examples:
+            nodesInfoResponseExample1:
+              $ref: "../../specification/nodes/info/nodesInfoResponseExample1.json"
