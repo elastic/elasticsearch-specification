@@ -10090,7 +10090,7 @@
           "ml data frame"
         ],
         "summary": "Create a data frame analytics job",
-        "description": "This API creates a data frame analytics job that performs an analysis on the\nsource indices and stores the outcome in a destination index.",
+        "description": "This API creates a data frame analytics job that performs an analysis on the\nsource indices and stores the outcome in a destination index.\nBy default, the query used in the source configuration is `{\"match_all\": {}}`.\n\nIf the destination index does not exist, it is created automatically when you start the job.\n\nIf you supply only a subset of the regression or classification parameters, hyperparameter optimization occurs. It determines a value for each of the undefined parameters.",
         "operationId": "ml-put-data-frame-analytics",
         "parameters": [
           {
@@ -10720,7 +10720,7 @@
           "ml anomaly"
         ],
         "summary": "Create an anomaly detection job",
-        "description": "If you include a `datafeed_config`, you must have read index privileges on the source index.",
+        "description": "If you include a `datafeed_config`, you must have read index privileges on the source index.\nIf you include a `datafeed_config` but do not provide a query, the datafeed uses `{\"match_all\": {\"boost\": 1}}`.",
         "operationId": "ml-put-job",
         "parameters": [
           {
