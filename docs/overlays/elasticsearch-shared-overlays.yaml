@@ -310,9 +310,6 @@ actions:
         x-abbreviated: true
 # Annotate and abbreviate items that are not shown in Bump.sh due to depth limits
   # These are likely long-term and should refer to query language reference etc
-  - target: "$.paths['/_ml/datafeeds/{datafeed_id}']['put']['requestBody'].content['application/json'].schema.properties.query"
-    description: "Remove query object from create datafeeds operation"
-    remove: true
   - target: "$.paths['/_ml/datafeeds/{datafeed_id}']['put']['requestBody'].content['application/json'].schema.properties"
     description: "Re-add a simplified query object in create datafeeds operation"
     update:
