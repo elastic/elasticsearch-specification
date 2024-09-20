@@ -131,6 +131,28 @@ actions:
         externalDocs:
           url: https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl.html
           description: Query DSL
+  - target: "$.components['requestBodies']['graph.explore'].content['application/json'].schema.properties.query"
+    description: Remove query object from graph explore operation
+  - target: "$.components['requestBodies']['graph.explore'].content['application/json'].schema.properties"
+    description: "Re-add simplified query object in graph explore operation"
+    update: 
+      query:
+        x-abbreviated: true
+        type: object
+        description: >
+          A seed query that identifies the documents of interest.
+          Can be any valid Elasticsearch query.
+  - target: "$.components['schemas']['graph._types:Hop'].properties.query"
+    description: Remove query object from graph explore connections schema
+  - target: "$.components['schemas']['graph._types:Hop'].properties"
+    description: "Re-add simplified query object in graph explore connections schema"
+    update: 
+      query:
+        x-abbreviated: true
+        type: object
+        description: >
+          An optional guiding query that constrains the Graph API as it explores connected terms.
+          For example, you might want to direct the Graph API to ignore older data by specifying a query that identifies recent documents.
 # Examples
   - target: "$.components['requestBodies']['async_search.submit']"
     description: "Add example for asynch search submit request"
