@@ -125902,9 +125902,47 @@
               "namespace": "_types"
             }
           }
+        },
+        {
+          "description": "When true the model will not create results for this calendar period.",
+          "name": "skip_result",
+          "required": false,
+          "serverDefault": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "_builtins"
+            }
+          }
+        },
+        {
+          "description": "When true the model will not be updated for this calendar period.",
+          "name": "skip_model_update",
+          "required": false,
+          "serverDefault": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "_builtins"
+            }
+          }
+        },
+        {
+          "description": "Shift time by this many seconds. For example adjust time for daylight savings changes",
+          "name": "force_time_shift",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "_types"
+            }
+          }
         }
       ],
-      "specLocation": "ml/_types/CalendarEvent.ts#L23-L33"
+      "specLocation": "ml/_types/CalendarEvent.ts#L24-L44"
     },
     {
       "kind": "interface",
