@@ -74544,6 +74544,18 @@
           },
           "start_time": {
             "$ref": "#/components/schemas/_types:DateTime"
+          },
+          "skip_result": {
+            "description": "When true the model will not create results for this calendar period.",
+            "type": "boolean"
+          },
+          "skip_model_update": {
+            "description": "When true the model will not be updated for this calendar period.",
+            "type": "boolean"
+          },
+          "force_time_shift": {
+            "description": "Shift time by this many seconds. For example adjust time for daylight savings changes",
+            "type": "number"
           }
         },
         "required": [

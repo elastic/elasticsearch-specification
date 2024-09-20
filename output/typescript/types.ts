@@ -13553,6 +13553,9 @@ export interface MlCalendarEvent {
   description: string
   end_time: DateTime
   start_time: DateTime
+  skip_result?: boolean
+  skip_model_update?: boolean
+  force_time_shift?: integer
 }
 
 export type MlCategorizationAnalyzer = string | MlCategorizationAnalyzerDefinition
