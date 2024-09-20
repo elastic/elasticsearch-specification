@@ -31,6 +31,10 @@ actions:
   - target: "$.components['schemas']['_types.query_dsl:QueryContainer'].properties"
     description: Remove properties from the QueryContainer object
     remove: true
+  - target: "$.components['schemas']['_types.query_dsl:QueryContainer']"
+    description: Add x-abbreviated to the QueryContainer object
+    update:
+      x-abbreviated: true
   - target: "$.components['schemas']['ml._types:CategorizationAnalyzerDefinition'].properties.tokenizer"
     description: Remove tokenizer object from ML anomaly detection analysis config
     remove: true
