@@ -330,11 +330,8 @@ actions:
   - target: "$.components['schemas']['ml._types:Datafeed'].properties.query"
     description: Remove query object from anomaly detection datafeed
     remove: true
-  - target: "$.components['schemas']['ml._types:DatafeedConfig'].properties.query"
-    description: Remove query object from anomaly detection datafeed configuration
-    remove: true
-  - target: "$.components['schemas']['ml._types:DatafeedConfig'].properties"
-    description: Re-add a simplified query object in anomaly detection datafeed configuration
+  - target: "$.components['schemas']['ml._types:Datafeed'].properties"
+    description: Re-add a simplified query object in anomaly detection datafeed
     update:
       query:
         x-abbreviated: true
@@ -347,8 +344,11 @@ actions:
         externalDocs:
           url: https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl.html
           description: Query DSL
-  - target: "$.components['schemas']['ml._types:Datafeed'].properties"
-    description: Re-add a simplified query object in anomaly detection datafeed
+  - target: "$.components['schemas']['ml._types:DatafeedConfig'].properties.query"
+    description: Remove query object from anomaly detection datafeed configuration
+    remove: true
+  - target: "$.components['schemas']['ml._types:DatafeedConfig'].properties"
+    description: Re-add a simplified query object in anomaly detection datafeed configuration
     update:
       query:
         x-model: true
@@ -415,6 +415,7 @@ actions:
           description: Query DSL
   - target: "$.components['requestBodies']['graph.explore'].content['application/json'].schema.properties.query"
     description: Remove query object from graph explore operation
+    remove: true
   - target: "$.components['requestBodies']['graph.explore'].content['application/json'].schema.properties"
     description: "Re-add simplified query object in graph explore operation"
     update: 
@@ -424,8 +425,12 @@ actions:
         description: >
           A seed query that identifies the documents of interest.
           Can be any valid Elasticsearch query.
+        externalDocs:
+          url: https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl.html
+          description: Query DSL
   - target: "$.components['schemas']['graph._types:Hop'].properties.query"
     description: Remove query object from graph explore connections schema
+    remove: true
   - target: "$.components['schemas']['graph._types:Hop'].properties"
     description: "Re-add simplified query object in graph explore connections schema"
     update: 
@@ -435,8 +440,12 @@ actions:
         description: >
           An optional guiding query that constrains the Graph API as it explores connected terms.
           For example, you might want to direct the Graph API to ignore older data by specifying a query that identifies recent documents.
+        externalDocs:
+          url: https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl.html
+          description: Query DSL
   - target: "$.components['schemas']['_global.scripts_painless_execute:PainlessContextSetup'].properties.query"
     description: Remove query object from painless script context setup schema
+    remove: true
   - target: "$.components['schemas']['_global.scripts_painless_execute:PainlessContextSetup'].properties"
     description: "Re-add simplified query object in painless script context setup schema"
     update: 
@@ -447,6 +456,37 @@ actions:
           This property applies only when `score` is specified as the script `context`.
           Use this property to specify a query for computing a score.
           Besides deciding whether or not the document matches, the query clause also calculates a relevance score in the `_score` metadata field.
+        externalDocs:
+          url: https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl.html
+          description: Query DSL
+  - target: "$.components['requestBodies']['async_search.submit'].content['application/json'].schema.properties.query"
+    description: Remove query object from asynch search request
+    remove: true
+  - target: "$.components['requestBodies']['async_search.submit'].content['application/json'].schema.properties"
+    description: "Re-add simplified query object in asynch search request"
+    update: 
+      query:
+        x-abbreviated: true
+        type: object
+        description: >
+          Defines the search definition using the Query DSL.
+        externalDocs:
+          url: https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl.html
+          description: Query DSL
+  - target: "$.components['requestBodies']['search'].content['application/json'].schema.properties.query"
+    description: Remove query object from search request
+    remove: true
+  - target: "$.components['requestBodies']['search'].content['application/json'].schema.properties"
+    description: "Re-add simplified query object in search request"
+    update: 
+      query:
+        x-abbreviated: true
+        type: object
+        description: >
+          Defines the search definition using the Query DSL.
+        externalDocs:
+          url: https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl.html
+          description: Query DSL
 # Examples
   - target: "$.components['requestBodies']['async_search.submit']"
     description: "Add example for asynch search submit request"
