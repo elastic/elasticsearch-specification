@@ -435,6 +435,18 @@ actions:
         description: >
           An optional guiding query that constrains the Graph API as it explores connected terms.
           For example, you might want to direct the Graph API to ignore older data by specifying a query that identifies recent documents.
+  - target: "$.components['schemas']['_global.scripts_painless_execute:PainlessContextSetup'].properties.query"
+    description: Remove query object from painless script context setup schema
+  - target: "$.components['schemas']['_global.scripts_painless_execute:PainlessContextSetup'].properties"
+    description: "Re-add simplified query object in painless script context setup schema"
+    update: 
+      query:
+        x-abbreviated: true
+        type: object
+        description: >
+          This property applies only when `score` is specified as the script `context`.
+          Use this property to specify a query for computing a score.
+          Besides deciding whether or not the document matches, the query clause also calculates a relevance score in the `_score` metadata field.
 # Examples
   - target: "$.components['requestBodies']['async_search.submit']"
     description: "Add example for asynch search submit request"
