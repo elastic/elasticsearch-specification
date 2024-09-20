@@ -1,0 +1,7 @@
+{
+  "summary": "Reloads the keystore on nodes in the cluster.",
+  "method_request": "POST _nodes/reload_secure_settings",
+  "description": "",
+  "type": "request",
+  "value": "{\n  \"secure_settings_password\":\"keystore-password\"\n}"
+}

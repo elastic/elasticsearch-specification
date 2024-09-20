@@ -226,4 +226,4 @@ actions:
             application/json:
               examples:
                 removePolicyResponseExample1:
-                  $ref: "../../specification/ilm/remove_policy/RemovePolicyResponseExample1.json" 
+                  $ref: "../../specification/ilm/remove_policy/RemovePolicyResponseExample1.json"
