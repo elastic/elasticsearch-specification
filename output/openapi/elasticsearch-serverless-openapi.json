@@ -54872,6 +54872,18 @@
           "type": "object"
         }
       },
+      "sql.query:SqlFormat": {
+        "type": "string",
+        "enum": [
+          "csv",
+          "json",
+          "tsv",
+          "txt",
+          "yaml",
+          "cbor",
+          "smile"
+        ]
+      },
       "synonyms._types:SynonymsUpdateResult": {
         "type": "object",
         "properties": {
@@ -62157,7 +62169,7 @@
         "description": "Format for the response.",
         "deprecated": false,
         "schema": {
-          "type": "string"
+          "$ref": "#/components/schemas/sql.query:SqlFormat"
         },
         "style": "form"
       },
