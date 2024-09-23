@@ -10009,7 +10009,8 @@
         "tags": [
           "indices"
         ],
-        "summary": "Performs analysis on a text string and returns the resulting tokens",
+        "summary": "Get tokens from text analysis",
+        "description": "The analyze API performs [analysis](https://www.elastic.co/guide/en/elasticsearch/reference/current/analysis.html) on a text string and returns the resulting tokens.",
         "operationId": "indices-analyze",
         "requestBody": {
           "$ref": "#/components/requestBodies/indices.analyze"
@@ -10024,7 +10025,8 @@
         "tags": [
           "indices"
         ],
-        "summary": "Performs analysis on a text string and returns the resulting tokens",
+        "summary": "Get tokens from text analysis",
+        "description": "The analyze API performs [analysis](https://www.elastic.co/guide/en/elasticsearch/reference/current/analysis.html) on a text string and returns the resulting tokens.",
         "operationId": "indices-analyze-1",
         "requestBody": {
           "$ref": "#/components/requestBodies/indices.analyze"
@@ -10041,7 +10043,8 @@
         "tags": [
           "indices"
         ],
-        "summary": "Performs analysis on a text string and returns the resulting tokens",
+        "summary": "Get tokens from text analysis",
+        "description": "The analyze API performs [analysis](https://www.elastic.co/guide/en/elasticsearch/reference/current/analysis.html) on a text string and returns the resulting tokens.",
         "operationId": "indices-analyze-2",
         "parameters": [
           {
@@ -10061,7 +10064,8 @@
         "tags": [
           "indices"
         ],
-        "summary": "Performs analysis on a text string and returns the resulting tokens",
+        "summary": "Get tokens from text analysis",
+        "description": "The analyze API performs [analysis](https://www.elastic.co/guide/en/elasticsearch/reference/current/analysis.html) on a text string and returns the resulting tokens.",
         "operationId": "indices-analyze-3",
         "parameters": [
           {
