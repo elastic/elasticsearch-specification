@@ -84917,7 +84917,7 @@
         "name": "IndexOptions",
         "namespace": "_types.mapping"
       },
-      "specLocation": "_types/mapping/core.ts#L257-L262"
+      "specLocation": "_types/mapping/core.ts#L258-L263"
     },
     {
       "kind": "enum",
@@ -85335,7 +85335,7 @@
           }
         }
       ],
-      "specLocation": "_types/mapping/core.ts#L55-L57"
+      "specLocation": "_types/mapping/core.ts#L54-L56"
     },
     {
       "inherits": {
@@ -85362,7 +85362,7 @@
           }
         }
       ],
-      "specLocation": "_types/mapping/core.ts#L51-L53"
+      "specLocation": "_types/mapping/core.ts#L50-L52"
     },
     {
       "inherits": {
@@ -85389,17 +85389,6 @@
           }
         },
         {
-          "name": "similarity",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "_builtins"
-            }
-          }
-        },
-        {
           "name": "store",
           "required": false,
           "type": {
@@ -85411,7 +85400,7 @@
           }
         }
       ],
-      "specLocation": "_types/mapping/core.ts#L45-L49"
+      "specLocation": "_types/mapping/core.ts#L45-L48"
     },
     {
       "kind": "interface",
@@ -85580,7 +85569,7 @@
           }
         }
       ],
-      "specLocation": "_types/mapping/core.ts#L59-L65"
+      "specLocation": "_types/mapping/core.ts#L58-L64"
     },
     {
       "kind": "interface",
@@ -85787,11 +85776,23 @@
           "name": "index_prefixes",
           "required": false,
           "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "TextIndexPrefixes",
-              "namespace": "_types.mapping"
-            }
+            "items": [
+              {
+                "kind": "instance_of",
+                "type": {
+                  "name": "TextIndexPrefixes",
+                  "namespace": "_types.mapping"
+                }
+              },
+              {
+                "kind": "instance_of",
+                "type": {
+                  "name": "null",
+                  "namespace": "_builtins"
+                }
+              }
+            ],
+            "kind": "union_of"
           }
         },
         {
@@ -85883,7 +85884,7 @@
           }
         }
       ],
-      "specLocation": "_types/mapping/core.ts#L300-L331"
+      "specLocation": "_types/mapping/core.ts#L302-L333"
     },
     {
       "kind": "enum",
@@ -85940,7 +85941,7 @@
           }
         }
       ],
-      "specLocation": "_types/mapping/core.ts#L264-L267"
+      "specLocation": "_types/mapping/core.ts#L265-L268"
     },
     {
       "kind": "enum",
@@ -86043,7 +86044,7 @@
           }
         }
       ],
-      "specLocation": "_types/mapping/core.ts#L89-L93"
+      "specLocation": "_types/mapping/core.ts#L88-L92"
     },
     {
       "inherits": {
@@ -86158,6 +86159,29 @@
           }
         },
         {
+          "name": "similarity",
+          "required": false,
+          "type": {
+            "items": [
+              {
+                "kind": "instance_of",
+                "type": {
+                  "name": "string",
+                  "namespace": "_builtins"
+                }
+              },
+              {
+                "kind": "instance_of",
+                "type": {
+                  "name": "null",
+                  "namespace": "_builtins"
+                }
+              }
+            ],
+            "kind": "union_of"
+          }
+        },
+        {
           "name": "split_queries_on_whitespace",
           "required": false,
           "type": {
@@ -86197,7 +86221,7 @@
           }
         }
       ],
-      "specLocation": "_types/mapping/core.ts#L95-L113"
+      "specLocation": "_types/mapping/core.ts#L94-L113"
     },
     {
       "description": "A variant of text that trades scoring and efficiency of positional queries for space efficiency. This field\neffectively stores data the same way as a text field that only indexes documents (index_options: docs) and\ndisables norms (norms: false). Term queries perform as fast if not faster as on text fields, however queries\nthat need positions such as the match_phrase query perform slower as they need to look at the _source document\nto verify whether a phrase matches. All queries return constant scores that are equal to 1.0.",
@@ -86278,7 +86302,7 @@
           }
         }
       ],
-      "specLocation": "_types/mapping/core.ts#L230-L255"
+      "specLocation": "_types/mapping/core.ts#L231-L256"
     },
     {
       "inherits": {
@@ -86465,6 +86489,29 @@
           }
         },
         {
+          "name": "similarity",
+          "required": false,
+          "type": {
+            "items": [
+              {
+                "kind": "instance_of",
+                "type": {
+                  "name": "string",
+                  "namespace": "_builtins"
+                }
+              },
+              {
+                "kind": "instance_of",
+                "type": {
+                  "name": "null",
+                  "namespace": "_builtins"
+                }
+              }
+            ],
+            "kind": "union_of"
+          }
+        },
+        {
           "name": "term_vector",
           "required": false,
           "type": {
@@ -86484,7 +86531,7 @@
           }
         }
       ],
-      "specLocation": "_types/mapping/core.ts#L212-L222"
+      "specLocation": "_types/mapping/core.ts#L212-L223"
     },
     {
       "inherits": {
@@ -86591,11 +86638,23 @@
           "name": "index_prefixes",
           "required": false,
           "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "TextIndexPrefixes",
-              "namespace": "_types.mapping"
-            }
+            "items": [
+              {
+                "kind": "instance_of",
+                "type": {
+                  "name": "TextIndexPrefixes",
+                  "namespace": "_types.mapping"
+                }
+              },
+              {
+                "kind": "instance_of",
+                "type": {
+                  "name": "null",
+                  "namespace": "_builtins"
+                }
+              }
+            ],
+            "kind": "union_of"
           }
         },
         {
@@ -86643,6 +86702,29 @@
           }
         },
         {
+          "name": "similarity",
+          "required": false,
+          "type": {
+            "items": [
+              {
+                "kind": "instance_of",
+                "type": {
+                  "name": "string",
+                  "namespace": "_builtins"
+                }
+              },
+              {
+                "kind": "instance_of",
+                "type": {
+                  "name": "null",
+                  "namespace": "_builtins"
+                }
+              }
+            ],
+            "kind": "union_of"
+          }
+        },
+        {
           "name": "term_vector",
           "required": false,
           "type": {
@@ -86662,7 +86744,7 @@
           }
         }
       ],
-      "specLocation": "_types/mapping/core.ts#L269-L285"
+      "specLocation": "_types/mapping/core.ts#L270-L287"
     },
     {
       "kind": "interface",
@@ -86729,7 +86811,7 @@
           }
         }
       ],
-      "specLocation": "_types/mapping/core.ts#L287-L289"
+      "specLocation": "_types/mapping/core.ts#L289-L291"
     },
     {
       "inherits": {
@@ -86770,7 +86852,7 @@
           }
         }
       ],
-      "specLocation": "_types/mapping/core.ts#L291-L298"
+      "specLocation": "_types/mapping/core.ts#L293-L300"
     },
     {
       "inherits": {
@@ -86860,7 +86942,7 @@
           }
         }
       ],
-      "specLocation": "_types/mapping/core.ts#L79-L87"
+      "specLocation": "_types/mapping/core.ts#L78-L86"
     },
     {
       "inherits": {
@@ -86972,7 +87054,7 @@
           }
         }
       ],
-      "specLocation": "_types/mapping/core.ts#L67-L77"
+      "specLocation": "_types/mapping/core.ts#L66-L76"
     },
     {
       "inherits": {
