@@ -1,0 +1,7 @@
+{
+  "summary": "Configures dynamic cluster settings.",
+  "method_request": "PUT /_cluster/settings",
+  "description": "An example of a persistent update.",
+  "type": "request",
+  "value": "{\n  \"persistent\" : {\n    \"indices.recovery.max_bytes_per_sec\" : \"50mb\"\n  }\n}"
+}

@@ -1,0 +1,7 @@
+{
+  "summary": "A successful response when requesting information about the tasks currently executing in the cluster.",
+  "description": "",
+  "type": "response",
+  "response_code": "",
+  "value": "{\n  \"nodes\" : {\n    \"oTUltX4IQMOUUVeiohTt8A\" : {\n      \"name\" : \"H5dfFeA\",\n      \"transport_address\" : \"127.0.0.1:9300\",\n      \"host\" : \"127.0.0.1\",\n      \"ip\" : \"127.0.0.1:9300\",\n      \"tasks\" : {\n        \"oTUltX4IQMOUUVeiohTt8A:124\" : {\n          \"node\" : \"oTUltX4IQMOUUVeiohTt8A\",\n          \"id\" : 124,\n          \"type\" : \"direct\",\n          \"action\" : \"cluster:monitor/tasks/lists[n]\",\n          \"start_time_in_millis\" : 1458585884904,\n          \"running_time_in_nanos\" : 47402,\n          \"cancellable\" : false,\n          \"parent_task_id\" : \"oTUltX4IQMOUUVeiohTt8A:123\"\n        },\n        \"oTUltX4IQMOUUVeiohTt8A:123\" : {\n          \"node\" : \"oTUltX4IQMOUUVeiohTt8A\",\n          \"id\" : 123,\n          \"type\" : \"transport\",\n          \"action\" : \"cluster:monitor/tasks/lists\",\n          \"start_time_in_millis\" : 1458585884904,\n          \"running_time_in_nanos\" : 236042,\n          \"cancellable\" : false\n        }\n      }\n    }\n  }\n}"
+}

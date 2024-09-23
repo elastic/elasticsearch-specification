@@ -5281,7 +5281,6 @@ export interface MappingConstantKeywordProperty extends MappingPropertyBase {
 
 export interface MappingCorePropertyBase extends MappingPropertyBase {
   copy_to?: Fields
-  similarity?: string
   store?: boolean
 }
 
@@ -5362,7 +5361,7 @@ export interface MappingDynamicProperty extends MappingDocValuesPropertyBase {
   index?: boolean
   index_options?: MappingIndexOptions
   index_phrases?: boolean
-  index_prefixes?: MappingTextIndexPrefixes
+  index_prefixes?: MappingTextIndexPrefixes | null
   norms?: boolean
   position_increment_gap?: integer
   search_analyzer?: string
@@ -5522,6 +5521,7 @@ export interface MappingKeywordProperty extends MappingDocValuesPropertyBase {
   normalizer?: string
   norms?: boolean
   null_value?: string
+  similarity?: string | null
   split_queries_on_whitespace?: boolean
   time_series_dimension?: boolean
   type: 'keyword'
@@ -5650,6 +5650,7 @@ export interface MappingSearchAsYouTypeProperty extends MappingCorePropertyBase 
   norms?: boolean
   search_analyzer?: string
   search_quote_analyzer?: string
+  similarity?: string | null
   term_vector?: MappingTermVectorOption
   type: 'search_as_you_type'
 }
@@ -5715,11 +5716,12 @@ export interface MappingTextProperty extends MappingCorePropertyBase {
   index?: boolean
   index_options?: MappingIndexOptions
   index_phrases?: boolean
-  index_prefixes?: MappingTextIndexPrefixes
+  index_prefixes?: MappingTextIndexPrefixes | null
   norms?: boolean
   position_increment_gap?: integer
   search_analyzer?: string
   search_quote_analyzer?: string
+  similarity?: string | null
   term_vector?: MappingTermVectorOption
   type: 'text'
 }
@@ -13553,6 +13555,9 @@ export interface MlCalendarEvent {
   description: string
   end_time: DateTime
   start_time: DateTime
+  skip_result?: boolean
+  skip_model_update?: boolean
+  force_time_shift?: integer
 }
 
 export type MlCategorizationAnalyzer = string | MlCategorizationAnalyzerDefinition
@@ -17472,6 +17477,15 @@ export interface SecurityRealmInfo {
   type: string
 }
 
+export interface SecurityRemoteIndicesPrivileges {
+  clusters: Names
+  field_security?: SecurityFieldSecurity
+  names: Indices
+  privileges: SecurityIndexPrivilege[]
+  query?: SecurityIndicesPrivilegesQuery
+  allow_restricted_indices?: boolean
+}
+
 export interface SecurityRoleDescriptor {
   cluster?: SecurityClusterPrivilege[]
   indices?: SecurityIndicesPrivileges[]
@@ -18147,6 +18161,7 @@ export interface SecurityPutRoleRequest extends RequestBase {
     cluster?: SecurityClusterPrivilege[]
     global?: Record<string, any>
     indices?: SecurityIndicesPrivileges[]
+    remote_indices?: SecurityRemoteIndicesPrivileges[]
     metadata?: Metadata
     run_as?: string[]
     description?: string
@@ -19066,7 +19081,7 @@ export interface SqlGetAsyncStatusResponse {
 }
 
 export interface SqlQueryRequest extends RequestBase {
-  format?: string
+  format?: SqlQuerySqlFormat
   body?: {
     catalog?: string
     columnar?: boolean
@@ -19095,6 +19110,8 @@ export interface SqlQueryResponse {
   cursor?: string
   rows: SqlRow[]
 }
+
+export type SqlQuerySqlFormat = 'csv' | 'json' | 'tsv' | 'txt' | 'yaml' | 'cbor' | 'smile'
 
 export interface SqlTranslateRequest extends RequestBase {
   body?: {
@@ -20405,7 +20422,7 @@ export interface XpackInfoNativeCodeInformation {
 }
 
 export interface XpackInfoRequest extends RequestBase {
-  categories?: string[]
+  categories?: XpackInfoXPackCategory[]
   accept_enterprise?: boolean
   human?: boolean
 }
@@ -20416,6 +20433,8 @@ export interface XpackInfoResponse {
   license: XpackInfoMinimalLicenseInformation
   tagline: string
 }
+
+export type XpackInfoXPackCategory = 'build' | 'features' | 'license'
 
 export interface XpackUsageAnalytics extends XpackUsageBase {
   stats: XpackUsageAnalyticsStatistics

@@ -36,7 +36,7 @@ export interface Request extends RequestBase {
      * Format for the response.
      * @doc_id sql-rest-format
      */
-    format?: string
+    format?: SqlFormat
   }
   body: {
     /**
@@ -119,4 +119,14 @@ export interface Request extends RequestBase {
      */
     index_using_frozen?: boolean
   }
+}
+
+export enum SqlFormat {
+  csv,
+  json,
+  tsv,
+  txt,
+  yaml,
+  cbor,
+  smile
 }

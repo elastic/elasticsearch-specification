@@ -1,0 +1,7 @@
+{
+  "summary": "A successful response when requesting the health status of a cluster.",
+  "description": "This is the API response in case of a quiet single node cluster with a single index with one shard and one replica.",
+  "type": "response",
+  "response_code": 200,
+  "value": "{\n  \"cluster_name\" : \"testcluster\",\n  \"status\" : \"yellow\",\n  \"timed_out\" : false,\n  \"number_of_nodes\" : 1,\n  \"number_of_data_nodes\" : 1,\n  \"active_primary_shards\" : 1,\n  \"active_shards\" : 1,\n  \"relocating_shards\" : 0,\n  \"initializing_shards\" : 0,\n  \"unassigned_shards\" : 1,\n  \"delayed_unassigned_shards\": 0,\n  \"number_of_pending_tasks\" : 0,\n  \"number_of_in_flight_fetch\": 0,\n  \"task_max_waiting_in_queue_millis\": 0,\n  \"active_shards_percent_as_number\": 50.0\n}"
+}

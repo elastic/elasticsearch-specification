@@ -1,0 +1,7 @@
+{
+  "summary": "Provides an explanation for a shard’s current allocation.",
+  "method_request": "GET _cluster/allocation/explain",
+  "description": "",
+  "type": "request",
+  "value": "{\n  \"index\": \"my-index-000001\",\n  \"shard\": 0,\n  \"primary\": false,\n  \"current_node\": \"my-node\"\n}"
+}

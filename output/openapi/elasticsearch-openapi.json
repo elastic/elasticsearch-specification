@@ -37517,7 +37517,7 @@
             "schema": {
               "type": "array",
               "items": {
-                "type": "string"
+                "$ref": "#/components/schemas/xpack.info:XPackCategory"
               }
             },
             "style": "form"
@@ -60542,9 +60542,6 @@
               "copy_to": {
                 "$ref": "#/components/schemas/_types:Fields"
               },
-              "similarity": {
-                "type": "string"
-              },
               "store": {
                 "type": "boolean"
               }
@@ -60690,7 +60687,15 @@
                 "type": "boolean"
               },
               "index_prefixes": {
-                "$ref": "#/components/schemas/_types.mapping:TextIndexPrefixes"
+                "oneOf": [
+                  {
+                    "$ref": "#/components/schemas/_types.mapping:TextIndexPrefixes"
+                  },
+                  {
+                    "nullable": true,
+                    "type": "string"
+                  }
+                ]
               },
               "norms": {
                 "type": "boolean"
@@ -60851,6 +60856,17 @@
               "null_value": {
                 "type": "string"
               },
+              "similarity": {
+                "oneOf": [
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "nullable": true,
+                    "type": "string"
+                  }
+                ]
+              },
               "split_queries_on_whitespace": {
                 "type": "boolean"
               },
@@ -61007,6 +61023,17 @@
               "search_quote_analyzer": {
                 "type": "string"
               },
+              "similarity": {
+                "oneOf": [
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "nullable": true,
+                    "type": "string"
+                  }
+                ]
+              },
               "term_vector": {
                 "$ref": "#/components/schemas/_types.mapping:TermVectorOption"
               },
@@ -61056,7 +61083,15 @@
                 "type": "boolean"
               },
               "index_prefixes": {
-                "$ref": "#/components/schemas/_types.mapping:TextIndexPrefixes"
+                "oneOf": [
+                  {
+                    "$ref": "#/components/schemas/_types.mapping:TextIndexPrefixes"
+                  },
+                  {
+                    "nullable": true,
+                    "type": "string"
+                  }
+                ]
               },
               "norms": {
                 "type": "boolean"
@@ -61069,6 +61104,17 @@
               },
               "search_quote_analyzer": {
                 "type": "string"
+              },
+              "similarity": {
+                "oneOf": [
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "nullable": true,
+                    "type": "string"
+                  }
+                ]
               },
               "term_vector": {
                 "$ref": "#/components/schemas/_types.mapping:TermVectorOption"
@@ -74544,6 +74590,18 @@
           },
           "start_time": {
             "$ref": "#/components/schemas/_types:DateTime"
+          },
+          "skip_result": {
+            "description": "When true the model will not create results for this calendar period.",
+            "type": "boolean"
+          },
+          "skip_model_update": {
+            "description": "When true the model will not be updated for this calendar period.",
+            "type": "boolean"
+          },
+          "force_time_shift": {
+            "description": "Shift time by this many seconds. For example adjust time for daylight savings changes",
+            "type": "number"
           }
         },
         "required": [
@@ -83971,6 +84029,39 @@
           "created"
         ]
       },
+      "security._types:RemoteIndicesPrivileges": {
+        "type": "object",
+        "properties": {
+          "clusters": {
+            "$ref": "#/components/schemas/_types:Names"
+          },
+          "field_security": {
+            "$ref": "#/components/schemas/security._types:FieldSecurity"
+          },
+          "names": {
+            "$ref": "#/components/schemas/_types:Indices"
+          },
+          "privileges": {
+            "description": "The index level privileges that owners of the role have on the specified indices.",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/security._types:IndexPrivilege"
+            }
+          },
+          "query": {
+            "$ref": "#/components/schemas/security._types:IndicesPrivilegesQuery"
+          },
+          "allow_restricted_indices": {
+            "description": "Set to `true` if using wildcard or regular expressions for patterns that cover restricted indices. Implicitly, restricted indices have limited privileges that can cause pattern tests to fail. If restricted indices are explicitly included in the `names` list, Elasticsearch checks privileges against these indices regardless of the value set for `allow_restricted_indices`.",
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "clusters",
+          "names",
+          "privileges"
+        ]
+      },
       "security.query_api_keys:ApiKeyAggregationContainer": {
         "allOf": [
           {
@@ -85564,6 +85655,18 @@
         "items": {
           "type": "object"
         }
+      },
+      "sql.query:SqlFormat": {
+        "type": "string",
+        "enum": [
+          "csv",
+          "json",
+          "tsv",
+          "txt",
+          "yaml",
+          "cbor",
+          "smile"
+        ]
       },
       "ssl.certificates:CertificateInformation": {
         "type": "object",
@@ -88091,6 +88194,14 @@
           "starting",
           "started",
           "stopping"
+        ]
+      },
+      "xpack.info:XPackCategory": {
+        "type": "string",
+        "enum": [
+          "build",
+          "features",
+          "license"
         ]
       },
       "xpack.info:BuildInformation": {
@@ -102088,7 +102199,7 @@
         "description": "Format for the response.",
         "deprecated": false,
         "schema": {
-          "type": "string"
+          "$ref": "#/components/schemas/sql.query:SqlFormat"
         },
         "style": "form"
       },
@@ -104769,6 +104880,14 @@
                   "type": "array",
                   "items": {
                     "$ref": "#/components/schemas/security._types:IndicesPrivileges"
+                  }
+                },
+                "remote_indices": {
+                  "description": "A list of remote indices permissions entries.",
+                  "x-available-since": "8.14.0",
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/security._types:RemoteIndicesPrivileges"
                   }
                 },
                 "metadata": {
