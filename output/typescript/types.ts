@@ -19069,7 +19069,7 @@ export interface SqlGetAsyncStatusResponse {
 }
 
 export interface SqlQueryRequest extends RequestBase {
-  format?: string
+  format?: SqlQuerySqlFormat
   body?: {
     catalog?: string
     columnar?: boolean
@@ -19098,6 +19098,8 @@ export interface SqlQueryResponse {
   cursor?: string
   rows: SqlRow[]
 }
+
+export type SqlQuerySqlFormat = 'csv' | 'json' | 'tsv' | 'txt' | 'yaml' | 'cbor' | 'smile'
 
 export interface SqlTranslateRequest extends RequestBase {
   body?: {
@@ -20408,7 +20410,7 @@ export interface XpackInfoNativeCodeInformation {
 }
 
 export interface XpackInfoRequest extends RequestBase {
-  categories?: string[]
+  categories?: XpackInfoXPackCategory[]
   accept_enterprise?: boolean
   human?: boolean
 }
@@ -20419,6 +20421,8 @@ export interface XpackInfoResponse {
   license: XpackInfoMinimalLicenseInformation
   tagline: string
 }
+
+export type XpackInfoXPackCategory = 'build' | 'features' | 'license'
 
 export interface XpackUsageAnalytics extends XpackUsageBase {
   stats: XpackUsageAnalyticsStatistics
