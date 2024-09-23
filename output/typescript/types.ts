@@ -5281,7 +5281,6 @@ export interface MappingConstantKeywordProperty extends MappingPropertyBase {
 
 export interface MappingCorePropertyBase extends MappingPropertyBase {
   copy_to?: Fields
-  similarity?: string
   store?: boolean
 }
 
@@ -5362,7 +5361,7 @@ export interface MappingDynamicProperty extends MappingDocValuesPropertyBase {
   index?: boolean
   index_options?: MappingIndexOptions
   index_phrases?: boolean
-  index_prefixes?: MappingTextIndexPrefixes
+  index_prefixes?: MappingTextIndexPrefixes | null
   norms?: boolean
   position_increment_gap?: integer
   search_analyzer?: string
@@ -5522,6 +5521,7 @@ export interface MappingKeywordProperty extends MappingDocValuesPropertyBase {
   normalizer?: string
   norms?: boolean
   null_value?: string
+  similarity?: string | null
   split_queries_on_whitespace?: boolean
   time_series_dimension?: boolean
   type: 'keyword'
@@ -5650,6 +5650,7 @@ export interface MappingSearchAsYouTypeProperty extends MappingCorePropertyBase 
   norms?: boolean
   search_analyzer?: string
   search_quote_analyzer?: string
+  similarity?: string | null
   term_vector?: MappingTermVectorOption
   type: 'search_as_you_type'
 }
@@ -5715,11 +5716,12 @@ export interface MappingTextProperty extends MappingCorePropertyBase {
   index?: boolean
   index_options?: MappingIndexOptions
   index_phrases?: boolean
-  index_prefixes?: MappingTextIndexPrefixes
+  index_prefixes?: MappingTextIndexPrefixes | null
   norms?: boolean
   position_increment_gap?: integer
   search_analyzer?: string
   search_quote_analyzer?: string
+  similarity?: string | null
   term_vector?: MappingTermVectorOption
   type: 'text'
 }
