@@ -84017,6 +84017,39 @@
           "created"
         ]
       },
+      "security._types:RemoteIndicesPrivileges": {
+        "type": "object",
+        "properties": {
+          "clusters": {
+            "$ref": "#/components/schemas/_types:Names"
+          },
+          "field_security": {
+            "$ref": "#/components/schemas/security._types:FieldSecurity"
+          },
+          "names": {
+            "$ref": "#/components/schemas/_types:Indices"
+          },
+          "privileges": {
+            "description": "The index level privileges that owners of the role have on the specified indices.",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/security._types:IndexPrivilege"
+            }
+          },
+          "query": {
+            "$ref": "#/components/schemas/security._types:IndicesPrivilegesQuery"
+          },
+          "allow_restricted_indices": {
+            "description": "Set to `true` if using wildcard or regular expressions for patterns that cover restricted indices. Implicitly, restricted indices have limited privileges that can cause pattern tests to fail. If restricted indices are explicitly included in the `names` list, Elasticsearch checks privileges against these indices regardless of the value set for `allow_restricted_indices`.",
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "clusters",
+          "names",
+          "privileges"
+        ]
+      },
       "security.query_api_keys:ApiKeyAggregationContainer": {
         "allOf": [
           {
@@ -104835,6 +104868,13 @@
                   "type": "array",
                   "items": {
                     "$ref": "#/components/schemas/security._types:IndicesPrivileges"
+                  }
+                },
+                "remote_indices": {
+                  "description": "A list of remote indices permissions entries.",
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/security._types:RemoteIndicesPrivileges"
                   }
                 },
                 "metadata": {
