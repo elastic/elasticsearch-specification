@@ -31,7 +31,7 @@ export interface Request extends RequestBase {
     /**
      * A comma-separated list of the information categories to include in the response. For example, `build,license,features`.
      */
-    categories?: string[]
+    categories?: XPackCategory[]
     accept_enterprise?: boolean
     /**
      * Defines whether additional human-readable information is included in the response. In particular, it adds descriptions and a tag line.
@@ -39,4 +39,10 @@ export interface Request extends RequestBase {
      */
     human?: boolean
   }
+}
+
+export enum XPackCategory {
+  build,
+  features,
+  license
 }
