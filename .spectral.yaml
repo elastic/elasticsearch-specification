@@ -19,6 +19,8 @@ rules:
   operation-operationId-valid-in-url: warn
   operation-tag-defined: warn
   operation-tags: warn
+  # Parameters
+  path-params: warn
   # Responses
   operation-success-response: warn
   # Schema

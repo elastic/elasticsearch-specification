@@ -105180,6 +105180,7 @@
                 },
                 "remote_indices": {
                   "description": "A list of remote indices permissions entries.",
+                  "x-available-since": "8.14.0",
                   "type": "array",
                   "items": {
                     "$ref": "#/components/schemas/security._types:RemoteIndicesPrivileges"
