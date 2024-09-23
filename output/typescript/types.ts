@@ -17474,6 +17474,15 @@ export interface SecurityRealmInfo {
   type: string
 }
 
+export interface SecurityRemoteIndicesPrivileges {
+  clusters: Names
+  field_security?: SecurityFieldSecurity
+  names: Indices
+  privileges: SecurityIndexPrivilege[]
+  query?: SecurityIndicesPrivilegesQuery
+  allow_restricted_indices?: boolean
+}
+
 export interface SecurityRoleDescriptor {
   cluster?: SecurityClusterPrivilege[]
   indices?: SecurityIndicesPrivileges[]
@@ -18149,6 +18158,7 @@ export interface SecurityPutRoleRequest extends RequestBase {
     cluster?: SecurityClusterPrivilege[]
     global?: Record<string, any>
     indices?: SecurityIndicesPrivileges[]
+    remote_indices?: SecurityRemoteIndicesPrivileges[]
     metadata?: Metadata
     run_as?: string[]
     description?: string

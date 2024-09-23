@@ -101691,7 +101691,7 @@
         "name": "IndexPrivilege",
         "namespace": "security._types"
       },
-      "specLocation": "security/_types/Privileges.ts#L292-L334"
+      "specLocation": "security/_types/Privileges.ts#L325-L367"
     },
     {
       "codegenNames": [
@@ -101705,7 +101705,7 @@
         "name": "IndicesPrivilegesQuery",
         "namespace": "security._types"
       },
-      "specLocation": "security/_types/Privileges.ts#L247-L255",
+      "specLocation": "security/_types/Privileges.ts#L280-L288",
       "type": {
         "items": [
           {
@@ -101755,7 +101755,7 @@
           }
         }
       ],
-      "specLocation": "security/_types/Privileges.ts#L257-L267"
+      "specLocation": "security/_types/Privileges.ts#L290-L300"
     },
     {
       "kind": "interface",
@@ -101843,7 +101843,7 @@
         }
       ],
       "shortcutProperty": "source",
-      "specLocation": "security/_types/Privileges.ts#L269-L287"
+      "specLocation": "security/_types/Privileges.ts#L302-L320"
     },
     {
       "codegenNames": [
@@ -101855,7 +101855,7 @@
         "name": "RoleTemplateInlineQuery",
         "namespace": "security._types"
       },
-      "specLocation": "security/_types/Privileges.ts#L289-L290",
+      "specLocation": "security/_types/Privileges.ts#L322-L323",
       "type": {
         "items": [
           {
@@ -137789,7 +137789,7 @@
           }
         }
       ],
-      "specLocation": "security/_types/Privileges.ts#L197-L221"
+      "specLocation": "security/_types/Privileges.ts#L198-L222"
     },
     {
       "kind": "interface",
