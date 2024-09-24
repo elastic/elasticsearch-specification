@@ -1,0 +1,7 @@
+{
+  "summary": "Creates a lifecycle policy.",
+  "method_request": "PUT _ilm/policy/my_policy",
+  "description": "",
+  "type": "request",
+  "value": "{\n  \"policy\": {\n    \"_meta\": {\n      \"description\": \"used for nginx log\",\n      \"project\": {\n        \"name\": \"myProject\",\n        \"department\": \"myDepartment\"\n      }\n    },\n    \"phases\": {\n      \"warm\": {\n        \"min_age\": \"10d\",\n        \"actions\": {\n          \"forcemerge\": {\n            \"max_num_segments\": 1\n          }\n        }\n      },\n      \"delete\": {\n        \"min_age\": \"30d\",\n        \"actions\": {\n          \"delete\": {}\n        }\n      }\n    }\n  }\n}"
+}
