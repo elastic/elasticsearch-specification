@@ -58187,8 +58187,8 @@
             "value": {
               "kind": "instance_of",
               "type": {
-                "name": "string",
-                "namespace": "_builtins"
+                "name": "FieldValue",
+                "namespace": "_types"
               }
             }
           }

@@ -30473,7 +30473,7 @@
                 "description": "Array of terms you wish to find in the provided field.",
                 "type": "array",
                 "items": {
-                  "type": "string"
+                  "$ref": "#/components/schemas/_types:FieldValue"
                 }
               }
             },
