@@ -1,0 +1,7 @@
+{
+  "summary": "Changes the allocation of shards in a cluster.",
+  "method_request": "POST /_cluster/reroute?metric=none",
+  "description": "",
+  "type": "request",
+  "value": "{\n  \"commands\": [\n    {\n      \"move\": {\n        \"index\": \"test\", \"shard\": 0,\n        \"from_node\": \"node1\", \"to_node\": \"node2\"\n      }\n    },\n    {\n      \"allocate_replica\": {\n        \"index\": \"test\", \"shard\": 1,\n        \"node\": \"node3\"\n      }\n    }\n  ]\n}"
+}
