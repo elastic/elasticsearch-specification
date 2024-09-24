@@ -85260,6 +85260,9 @@
           "shard_id": {
             "$ref": "#/components/schemas/_types:Id"
           },
+          "index_uuid": {
+            "$ref": "#/components/schemas/_types:Id"
+          },
           "status": {
             "type": "string"
           }
@@ -85268,6 +85271,7 @@
           "index",
           "reason",
           "shard_id",
+          "index_uuid",
           "status"
         ]
       },

@@ -18904,6 +18904,7 @@ export interface SnapshotSnapshotShardFailure {
   node_id?: Id
   reason: string
   shard_id: Id
+  index_uuid: Id
   status: string
 }
 
