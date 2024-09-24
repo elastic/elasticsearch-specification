@@ -1303,6 +1303,10 @@ export interface SearchAggregationProfileDebug {
   segments_counted?: integer
   segments_collected?: integer
   map_reducer?: string
+  brute_force_used?: integer
+  dynamic_pruning_attempted?: integer
+  dynamic_pruning_used?: integer
+  skipped_due_to_no_data?: integer
 }
 
 export interface SearchAggregationProfileDelegateDebugFilter {
@@ -1354,6 +1358,39 @@ export interface SearchCompletionSuggester extends SearchSuggesterBase {
 }
 
 export type SearchContext = string | GeoLocation
+
+export interface SearchDfsKnnProfile {
+  vector_operations_count?: long
+  query: SearchKnnQueryProfileResult[]
+  rewrite_time: long
+  collector: SearchKnnCollectorResult[]
+}
+
+export interface SearchDfsProfile {
+  statistics?: SearchDfsStatisticsProfile
+  knn?: SearchDfsKnnProfile[]
+}
+
+export interface SearchDfsStatisticsBreakdown {
+  collection_statistics: long
+  collection_statistics_count: long
+  create_weight: long
+  create_weight_count: long
+  rewrite: long
+  rewrite_count: long
+  term_statistics: long
+  term_statistics_count: long
+}
+
+export interface SearchDfsStatisticsProfile {
+  type: string
+  description: string
+  time?: Duration
+  time_in_nanos: DurationValue<UnitNanos>
+  breakdown: SearchDfsStatisticsBreakdown
+  debug?: Record<string, any>
+  children?: SearchDfsStatisticsProfile[]
+}
 
 export interface SearchDirectGenerator {
   field: Field
@@ -1463,7 +1500,7 @@ export interface SearchHit<TDocument = unknown> {
   fields?: Record<string, any>
   highlight?: Record<string, string[]>
   inner_hits?: Record<string, SearchInnerHitsResult>
-  matched_queries?: string[] | Record<string, double[]>
+  matched_queries?: string[] | Record<string, double>
   _nested?: SearchNestedIdentity
   _ignored?: string[]
   ignored_field_values?: Record<string, string[]>
@@ -1505,6 +1542,47 @@ export interface SearchInnerHits {
 
 export interface SearchInnerHitsResult {
   hits: SearchHitsMetadata<any>
+}
+
+export interface SearchKnnCollectorResult {
+  name: string
+  reason: string
+  time?: Duration
+  time_in_nanos: DurationValue<UnitNanos>
+  children?: SearchKnnCollectorResult[]
+}
+
+export interface SearchKnnQueryProfileBreakdown {
+  advance: long
+  advance_count: long
+  build_scorer: long
+  build_scorer_count: long
+  compute_max_score: long
+  compute_max_score_count: long
+  count_weight: long
+  count_weight_count: long
+  create_weight: long
+  create_weight_count: long
+  match: long
+  match_count: long
+  next_doc: long
+  next_doc_count: long
+  score: long
+  score_count: long
+  set_min_competitive_score: long
+  set_min_competitive_score_count: long
+  shallow_advance: long
+  shallow_advance_count: long
+}
+
+export interface SearchKnnQueryProfileResult {
+  type: string
+  description: string
+  time?: Duration
+  time_in_nanos: DurationValue<UnitNanos>
+  breakdown: SearchKnnQueryProfileBreakdown
+  debug?: Record<string, any>
+  children?: SearchKnnQueryProfileResult[]
 }
 
 export interface SearchLaplaceSmoothingModel {
@@ -1597,6 +1675,8 @@ export interface SearchQueryBreakdown {
   score_count: long
   compute_max_score: long
   compute_max_score_count: long
+  count_weight: long
+  count_weight_count: long
   set_min_competitive_score: long
   set_min_competitive_score_count: long
 }
@@ -1637,9 +1717,14 @@ export interface SearchSearchProfile {
 
 export interface SearchShardProfile {
   aggregations: SearchAggregationProfile[]
-  id: string
-  searches: SearchSearchProfile[]
+  cluster: string
+  dfs?: SearchDfsProfile
   fetch?: SearchFetchProfile
+  id: string
+  index: IndexName
+  node_id: NodeId
+  searches: SearchSearchProfile[]
+  shard_id: long
 }
 
 export interface SearchSmoothingModelContainer {

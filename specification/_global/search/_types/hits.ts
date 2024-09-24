@@ -49,7 +49,7 @@ export class Hit<TDocument> {
   fields?: Dictionary<string, UserDefinedValue>
   highlight?: Dictionary<string, string[]>
   inner_hits?: Dictionary<string, InnerHitsResult>
-  matched_queries?: string[] | Dictionary<string, double[]>
+  matched_queries?: string[] | Dictionary<string, double>
   _nested?: NestedIdentity
   _ignored?: string[]
   ignored_field_values?: Dictionary<string, string[]>
