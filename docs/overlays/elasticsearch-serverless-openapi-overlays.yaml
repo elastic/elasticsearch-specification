@@ -1,4 +1,4 @@
-# overlays.yaml
+# Overlays that are specific to the Elasticsearch Serverless OpenAPI document
 overlay: 1.0.0
 info:
   title: Overlays for the Elasticsearch Serverless OpenAPI document

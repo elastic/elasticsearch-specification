@@ -44,7 +44,6 @@ import { TimeSeriesMetricType } from './TimeSeriesMetricType'
 
 export class CorePropertyBase extends PropertyBase {
   copy_to?: Fields
-  similarity?: string
   store?: boolean
 }
 
@@ -102,6 +101,7 @@ export class KeywordProperty extends DocValuesPropertyBase {
   normalizer?: string
   norms?: boolean
   null_value?: string
+  similarity?: string | null
   split_queries_on_whitespace?: boolean
   /**
    * For internal use by Elastic only. Marks the field as a time series dimension. Defaults to false.
@@ -217,6 +217,7 @@ export class SearchAsYouTypeProperty extends CorePropertyBase {
   norms?: boolean
   search_analyzer?: string
   search_quote_analyzer?: string
+  similarity?: string | null
   term_vector?: TermVectorOption
   type: 'search_as_you_type'
 }
@@ -275,11 +276,12 @@ export class TextProperty extends CorePropertyBase {
   index?: boolean
   index_options?: IndexOptions
   index_phrases?: boolean
-  index_prefixes?: TextIndexPrefixes
+  index_prefixes?: TextIndexPrefixes | null
   norms?: boolean
   position_increment_gap?: integer
   search_analyzer?: string
   search_quote_analyzer?: string
+  similarity?: string | null
   term_vector?: TermVectorOption
   type: 'text'
 }
@@ -317,7 +319,7 @@ export class DynamicProperty extends DocValuesPropertyBase {
   index?: boolean
   index_options?: IndexOptions
   index_phrases?: boolean
-  index_prefixes?: TextIndexPrefixes
+  index_prefixes?: TextIndexPrefixes | null
   norms?: boolean
   position_increment_gap?: integer
   search_analyzer?: string

@@ -26,6 +26,7 @@ import {
   Id,
   Ids,
   IndexName,
+  MinimumShouldMatch,
   MultiTermQueryRewrite,
   Routing
 } from '@_types/common'
@@ -252,6 +253,12 @@ export class TermsLookup {
 }
 
 export class TermsSetQuery extends QueryBase {
+  /**
+   * Specification describing number of matching terms required to return a document.
+   * @availability stack since=8.10.0
+   * @availability serverless
+   */
+  minimum_should_match?: MinimumShouldMatch
   /**
    * Numeric field containing the number of matching terms required to return a document.
    */

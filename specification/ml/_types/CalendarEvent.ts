@@ -18,6 +18,7 @@
  */
 
 import { Id } from '@_types/common'
+import { integer } from '@_types/Numeric'
 import { DateTime } from '@_types/Time'
 
 export class CalendarEvent {
@@ -30,4 +31,14 @@ export class CalendarEvent {
   end_time: DateTime
   /** The timestamp for the beginning of the scheduled event in milliseconds since the epoch or ISO 8601 format. */
   start_time: DateTime
+  /** When true the model will not create results for this calendar period.
+   * @server_default true
+   */
+  skip_result?: boolean
+  /** When true the model will not be updated for this calendar period.
+   * @server_default true
+   */
+  skip_model_update?: boolean
+  /** Shift time by this many seconds. For example adjust time for daylight savings changes */
+  force_time_shift?: integer
 }

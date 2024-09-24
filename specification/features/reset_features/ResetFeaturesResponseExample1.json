@@ -1,0 +1,7 @@
+{
+  "summary": "A successful response for clearing state information stored in system indices by Elasticsearch features.",
+  "description": "",
+  "type": "response",
+  "response_code": 200,
+  "value": "{\n  \"features\" : [\n    {\n      \"feature_name\" : \"security\",\n      \"status\" : \"SUCCESS\"\n    },\n    {\n      \"feature_name\" : \"tasks\",\n      \"status\" : \"SUCCESS\"\n    }\n  ]\n}"
+}

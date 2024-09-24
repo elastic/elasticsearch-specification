@@ -1,4 +1,4 @@
-# overlays.yaml
+# Overlays that are specific to the Elasticsearch OpenAPI document
 overlay: 1.0.0
 info:
   title: Overlays for the Elasticsearch OpenAPI document
@@ -19,3 +19,92 @@ actions:
       x-feedbackLink:
         label: Feedback
         url: https://github.com/elastic/docs-content/issues/new?assignees=&labels=feedback%2Ccommunity&projects=&template=api-feedback.yaml&title=%5BFeedback%5D%3A+
+# Examples that apply only to the Elasticsearch OpenAPI document
+  - target: "$.paths['/_features']['get']"
+    description: "Add examples for get features operation"
+    update:
+      responses:
+        200:
+          content:
+            application/json:
+              examples:
+                getFeaturesResponseExample1:
+                  $ref: "../../specification/features/get_features/FeaturesApiResponseExample1.json"
+  - target: "$.paths['/_features/_reset']['post']"
+    description: "Add examples for reset features operation"
+    update:
+      responses:
+        200:
+          content:
+            application/json:
+              examples:
+                resetFeaturesResponseExample1:
+                  $ref: "../../specification/features/reset_features/ResetFeaturesResponseExample1.json"
+  - target: "$.components['requestBodies']['cluster.allocation_explain']"
+    description: "Add examples for cluster allocation explain operation"
+    update: 
+      content: 
+        application/json: 
+          examples: 
+            clusterAllocationExplainRequestExample1: 
+              $ref: "../../specification/cluster/allocation_explain/clusterAllocationExplainRequestExample1.json"
+  - target: "$.components['responses']['cluster.health#200']"
+    description: "Add examples for cluster health operation"
+    update: 
+      content:
+        application/json:
+          examples:
+            clusterHealthResponseExample1:
+              $ref: "../../specification/cluster/health/clusterHealthResponseExample1.json"
+  - target: "$.paths['/_cluster/settings']['put']"
+    description: "Add examples for cluster update settings operation"
+    update: 
+      requestBody: 
+        content: 
+          application/json: 
+            examples: 
+              clusterPutSettingsRequestExample1: 
+                $ref: "../../specification/cluster/put_settings/clusterPutSettingsRequestExample1.json"
+  - target: "$.paths['/_cluster/reroute']['post']"
+    description: "Add examples for cluster reroute operation"
+    update: 
+      requestBody: 
+        content: 
+          application/json: 
+            examples: 
+              clusterRerouteRequestExample1: 
+                $ref: "../../specification/cluster/reroute/clusterRerouteRequestExample1.json"
+  - target: "$.components['requestBodies']['nodes.reload_secure_settings']"
+    description: "Add examples for nodes reload secure settings operation"
+    update: 
+      content: 
+        application/json: 
+          examples: 
+            clusterNodesReloadSecureSettingsRequestExample1: 
+              $ref: "../../specification/nodes/reload_secure_settings/clusterNodesReloadSecureSettingsRequestExample1.json"
+  - target: "$.components['responses']['nodes.reload_secure_settings#200']"
+    description: "Add response examples for nodes reload secure settings operation"
+    update: 
+      content:
+        application/json:
+          examples:
+            clusterNodesReloadSecureSettingsResponseExample1:
+              $ref: "../../specification/nodes/reload_secure_settings/clusterNodesReloadSecureSettingsResponseExample1.json"
+  - target: "$.paths['/_tasks']['get']"
+    description: "Add examples for task management operation"
+    update:
+      responses:
+        200:
+          content:
+            application/json:
+              examples:
+                getTasksResponseExample1:
+                  $ref: "../../specification/tasks/get/getTasksResponseExample1.json"
+  - target: "$.components['responses']['nodes.info#200']"
+    description: "Add response examples for nodes info"
+    update: 
+      content:
+        application/json:
+          examples:
+            nodesInfoResponseExample1:
+              $ref: "../../specification/nodes/info/nodesInfoResponseExample1.yaml"

@@ -37517,7 +37517,7 @@
             "schema": {
               "type": "array",
               "items": {
-                "type": "string"
+                "$ref": "#/components/schemas/xpack.info:XPackCategory"
               }
             },
             "style": "form"
@@ -40930,10 +40930,7 @@
               {
                 "type": "object",
                 "additionalProperties": {
-                  "type": "array",
-                  "items": {
-                    "type": "number"
-                  }
+                  "type": "number"
                 }
               }
             ]
@@ -41760,8 +41757,23 @@
               "$ref": "#/components/schemas/_global.search._types:AggregationProfile"
             }
           },
+          "cluster": {
+            "type": "string"
+          },
+          "dfs": {
+            "$ref": "#/components/schemas/_global.search._types:DfsProfile"
+          },
+          "fetch": {
+            "$ref": "#/components/schemas/_global.search._types:FetchProfile"
+          },
           "id": {
             "type": "string"
+          },
+          "index": {
+            "$ref": "#/components/schemas/_types:IndexName"
+          },
+          "node_id": {
+            "$ref": "#/components/schemas/_types:NodeId"
           },
           "searches": {
             "type": "array",
@@ -41769,14 +41781,18 @@
               "$ref": "#/components/schemas/_global.search._types:SearchProfile"
             }
           },
-          "fetch": {
-            "$ref": "#/components/schemas/_global.search._types:FetchProfile"
+          "shard_id": {
+            "type": "number"
           }
         },
         "required": [
           "aggregations",
+          "cluster",
           "id",
-          "searches"
+          "index",
+          "node_id",
+          "searches",
+          "shard_id"
         ]
       },
       "_global.search._types:AggregationProfile": {
@@ -41967,6 +41983,18 @@
           },
           "map_reducer": {
             "type": "string"
+          },
+          "brute_force_used": {
+            "type": "number"
+          },
+          "dynamic_pruning_attempted": {
+            "type": "number"
+          },
+          "dynamic_pruning_used": {
+            "type": "number"
+          },
+          "skipped_due_to_no_data": {
+            "type": "number"
           }
         }
       },
@@ -41986,6 +42014,356 @@
             "type": "number"
           }
         }
+      },
+      "_global.search._types:DfsProfile": {
+        "type": "object",
+        "properties": {
+          "statistics": {
+            "$ref": "#/components/schemas/_global.search._types:DfsStatisticsProfile"
+          },
+          "knn": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/_global.search._types:DfsKnnProfile"
+            }
+          }
+        }
+      },
+      "_global.search._types:DfsStatisticsProfile": {
+        "type": "object",
+        "properties": {
+          "type": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          },
+          "time": {
+            "$ref": "#/components/schemas/_types:Duration"
+          },
+          "time_in_nanos": {
+            "$ref": "#/components/schemas/_types:DurationValueUnitNanos"
+          },
+          "breakdown": {
+            "$ref": "#/components/schemas/_global.search._types:DfsStatisticsBreakdown"
+          },
+          "debug": {
+            "type": "object",
+            "additionalProperties": {
+              "type": "object"
+            }
+          },
+          "children": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/_global.search._types:DfsStatisticsProfile"
+            }
+          }
+        },
+        "required": [
+          "type",
+          "description",
+          "time_in_nanos",
+          "breakdown"
+        ]
+      },
+      "_global.search._types:DfsStatisticsBreakdown": {
+        "type": "object",
+        "properties": {
+          "collection_statistics": {
+            "type": "number"
+          },
+          "collection_statistics_count": {
+            "type": "number"
+          },
+          "create_weight": {
+            "type": "number"
+          },
+          "create_weight_count": {
+            "type": "number"
+          },
+          "rewrite": {
+            "type": "number"
+          },
+          "rewrite_count": {
+            "type": "number"
+          },
+          "term_statistics": {
+            "type": "number"
+          },
+          "term_statistics_count": {
+            "type": "number"
+          }
+        },
+        "required": [
+          "collection_statistics",
+          "collection_statistics_count",
+          "create_weight",
+          "create_weight_count",
+          "rewrite",
+          "rewrite_count",
+          "term_statistics",
+          "term_statistics_count"
+        ]
+      },
+      "_global.search._types:DfsKnnProfile": {
+        "type": "object",
+        "properties": {
+          "vector_operations_count": {
+            "type": "number"
+          },
+          "query": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/_global.search._types:KnnQueryProfileResult"
+            }
+          },
+          "rewrite_time": {
+            "type": "number"
+          },
+          "collector": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/_global.search._types:KnnCollectorResult"
+            }
+          }
+        },
+        "required": [
+          "query",
+          "rewrite_time",
+          "collector"
+        ]
+      },
+      "_global.search._types:KnnQueryProfileResult": {
+        "type": "object",
+        "properties": {
+          "type": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          },
+          "time": {
+            "$ref": "#/components/schemas/_types:Duration"
+          },
+          "time_in_nanos": {
+            "$ref": "#/components/schemas/_types:DurationValueUnitNanos"
+          },
+          "breakdown": {
+            "$ref": "#/components/schemas/_global.search._types:KnnQueryProfileBreakdown"
+          },
+          "debug": {
+            "type": "object",
+            "additionalProperties": {
+              "type": "object"
+            }
+          },
+          "children": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/_global.search._types:KnnQueryProfileResult"
+            }
+          }
+        },
+        "required": [
+          "type",
+          "description",
+          "time_in_nanos",
+          "breakdown"
+        ]
+      },
+      "_global.search._types:KnnQueryProfileBreakdown": {
+        "type": "object",
+        "properties": {
+          "advance": {
+            "type": "number"
+          },
+          "advance_count": {
+            "type": "number"
+          },
+          "build_scorer": {
+            "type": "number"
+          },
+          "build_scorer_count": {
+            "type": "number"
+          },
+          "compute_max_score": {
+            "type": "number"
+          },
+          "compute_max_score_count": {
+            "type": "number"
+          },
+          "count_weight": {
+            "type": "number"
+          },
+          "count_weight_count": {
+            "type": "number"
+          },
+          "create_weight": {
+            "type": "number"
+          },
+          "create_weight_count": {
+            "type": "number"
+          },
+          "match": {
+            "type": "number"
+          },
+          "match_count": {
+            "type": "number"
+          },
+          "next_doc": {
+            "type": "number"
+          },
+          "next_doc_count": {
+            "type": "number"
+          },
+          "score": {
+            "type": "number"
+          },
+          "score_count": {
+            "type": "number"
+          },
+          "set_min_competitive_score": {
+            "type": "number"
+          },
+          "set_min_competitive_score_count": {
+            "type": "number"
+          },
+          "shallow_advance": {
+            "type": "number"
+          },
+          "shallow_advance_count": {
+            "type": "number"
+          }
+        },
+        "required": [
+          "advance",
+          "advance_count",
+          "build_scorer",
+          "build_scorer_count",
+          "compute_max_score",
+          "compute_max_score_count",
+          "count_weight",
+          "count_weight_count",
+          "create_weight",
+          "create_weight_count",
+          "match",
+          "match_count",
+          "next_doc",
+          "next_doc_count",
+          "score",
+          "score_count",
+          "set_min_competitive_score",
+          "set_min_competitive_score_count",
+          "shallow_advance",
+          "shallow_advance_count"
+        ]
+      },
+      "_global.search._types:KnnCollectorResult": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "reason": {
+            "type": "string"
+          },
+          "time": {
+            "$ref": "#/components/schemas/_types:Duration"
+          },
+          "time_in_nanos": {
+            "$ref": "#/components/schemas/_types:DurationValueUnitNanos"
+          },
+          "children": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/_global.search._types:KnnCollectorResult"
+            }
+          }
+        },
+        "required": [
+          "name",
+          "reason",
+          "time_in_nanos"
+        ]
+      },
+      "_global.search._types:FetchProfile": {
+        "type": "object",
+        "properties": {
+          "type": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          },
+          "time_in_nanos": {
+            "$ref": "#/components/schemas/_types:DurationValueUnitNanos"
+          },
+          "breakdown": {
+            "$ref": "#/components/schemas/_global.search._types:FetchProfileBreakdown"
+          },
+          "debug": {
+            "$ref": "#/components/schemas/_global.search._types:FetchProfileDebug"
+          },
+          "children": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/_global.search._types:FetchProfile"
+            }
+          }
+        },
+        "required": [
+          "type",
+          "description",
+          "time_in_nanos",
+          "breakdown"
+        ]
+      },
+      "_global.search._types:FetchProfileBreakdown": {
+        "type": "object",
+        "properties": {
+          "load_source": {
+            "type": "number"
+          },
+          "load_source_count": {
+            "type": "number"
+          },
+          "load_stored_fields": {
+            "type": "number"
+          },
+          "load_stored_fields_count": {
+            "type": "number"
+          },
+          "next_reader": {
+            "type": "number"
+          },
+          "next_reader_count": {
+            "type": "number"
+          },
+          "process_count": {
+            "type": "number"
+          },
+          "process": {
+            "type": "number"
+          }
+        }
+      },
+      "_global.search._types:FetchProfileDebug": {
+        "type": "object",
+        "properties": {
+          "stored_fields": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "fast_path": {
+            "type": "number"
+          }
+        }
+      },
+      "_types:NodeId": {
+        "type": "string"
       },
       "_global.search._types:SearchProfile": {
         "type": "object",
@@ -42117,6 +42495,12 @@
           "compute_max_score_count": {
             "type": "number"
           },
+          "count_weight": {
+            "type": "number"
+          },
+          "count_weight_count": {
+            "type": "number"
+          },
           "set_min_competitive_score": {
             "type": "number"
           },
@@ -42141,84 +42525,11 @@
           "score_count",
           "compute_max_score",
           "compute_max_score_count",
+          "count_weight",
+          "count_weight_count",
           "set_min_competitive_score",
           "set_min_competitive_score_count"
         ]
-      },
-      "_global.search._types:FetchProfile": {
-        "type": "object",
-        "properties": {
-          "type": {
-            "type": "string"
-          },
-          "description": {
-            "type": "string"
-          },
-          "time_in_nanos": {
-            "$ref": "#/components/schemas/_types:DurationValueUnitNanos"
-          },
-          "breakdown": {
-            "$ref": "#/components/schemas/_global.search._types:FetchProfileBreakdown"
-          },
-          "debug": {
-            "$ref": "#/components/schemas/_global.search._types:FetchProfileDebug"
-          },
-          "children": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/_global.search._types:FetchProfile"
-            }
-          }
-        },
-        "required": [
-          "type",
-          "description",
-          "time_in_nanos",
-          "breakdown"
-        ]
-      },
-      "_global.search._types:FetchProfileBreakdown": {
-        "type": "object",
-        "properties": {
-          "load_source": {
-            "type": "number"
-          },
-          "load_source_count": {
-            "type": "number"
-          },
-          "load_stored_fields": {
-            "type": "number"
-          },
-          "load_stored_fields_count": {
-            "type": "number"
-          },
-          "next_reader": {
-            "type": "number"
-          },
-          "next_reader_count": {
-            "type": "number"
-          },
-          "process_count": {
-            "type": "number"
-          },
-          "process": {
-            "type": "number"
-          }
-        }
-      },
-      "_global.search._types:FetchProfileDebug": {
-        "type": "object",
-        "properties": {
-          "stored_fields": {
-            "type": "array",
-            "items": {
-              "type": "string"
-            }
-          },
-          "fast_path": {
-            "type": "number"
-          }
-        }
       },
       "_types:ScrollId": {
         "type": "string"
@@ -46869,6 +47180,9 @@
           {
             "type": "object",
             "properties": {
+              "minimum_should_match": {
+                "$ref": "#/components/schemas/_types:MinimumShouldMatch"
+              },
               "minimum_should_match_field": {
                 "$ref": "#/components/schemas/_types:Field"
               },
@@ -50631,9 +50945,6 @@
             }
           }
         ]
-      },
-      "_types:NodeId": {
-        "type": "string"
       },
       "_types:Bytes": {
         "type": "string",
@@ -60539,9 +60850,6 @@
               "copy_to": {
                 "$ref": "#/components/schemas/_types:Fields"
               },
-              "similarity": {
-                "type": "string"
-              },
               "store": {
                 "type": "boolean"
               }
@@ -60687,7 +60995,15 @@
                 "type": "boolean"
               },
               "index_prefixes": {
-                "$ref": "#/components/schemas/_types.mapping:TextIndexPrefixes"
+                "oneOf": [
+                  {
+                    "$ref": "#/components/schemas/_types.mapping:TextIndexPrefixes"
+                  },
+                  {
+                    "nullable": true,
+                    "type": "string"
+                  }
+                ]
               },
               "norms": {
                 "type": "boolean"
@@ -60848,6 +61164,17 @@
               "null_value": {
                 "type": "string"
               },
+              "similarity": {
+                "oneOf": [
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "nullable": true,
+                    "type": "string"
+                  }
+                ]
+              },
               "split_queries_on_whitespace": {
                 "type": "boolean"
               },
@@ -61004,6 +61331,17 @@
               "search_quote_analyzer": {
                 "type": "string"
               },
+              "similarity": {
+                "oneOf": [
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "nullable": true,
+                    "type": "string"
+                  }
+                ]
+              },
               "term_vector": {
                 "$ref": "#/components/schemas/_types.mapping:TermVectorOption"
               },
@@ -61053,7 +61391,15 @@
                 "type": "boolean"
               },
               "index_prefixes": {
-                "$ref": "#/components/schemas/_types.mapping:TextIndexPrefixes"
+                "oneOf": [
+                  {
+                    "$ref": "#/components/schemas/_types.mapping:TextIndexPrefixes"
+                  },
+                  {
+                    "nullable": true,
+                    "type": "string"
+                  }
+                ]
               },
               "norms": {
                 "type": "boolean"
@@ -61066,6 +61412,17 @@
               },
               "search_quote_analyzer": {
                 "type": "string"
+              },
+              "similarity": {
+                "oneOf": [
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "nullable": true,
+                    "type": "string"
+                  }
+                ]
               },
               "term_vector": {
                 "$ref": "#/components/schemas/_types.mapping:TermVectorOption"
@@ -74541,6 +74898,18 @@
           },
           "start_time": {
             "$ref": "#/components/schemas/_types:DateTime"
+          },
+          "skip_result": {
+            "description": "When true the model will not create results for this calendar period.",
+            "type": "boolean"
+          },
+          "skip_model_update": {
+            "description": "When true the model will not be updated for this calendar period.",
+            "type": "boolean"
+          },
+          "force_time_shift": {
+            "description": "Shift time by this many seconds. For example adjust time for daylight savings changes",
+            "type": "number"
           }
         },
         "required": [
@@ -83968,6 +84337,39 @@
           "created"
         ]
       },
+      "security._types:RemoteIndicesPrivileges": {
+        "type": "object",
+        "properties": {
+          "clusters": {
+            "$ref": "#/components/schemas/_types:Names"
+          },
+          "field_security": {
+            "$ref": "#/components/schemas/security._types:FieldSecurity"
+          },
+          "names": {
+            "$ref": "#/components/schemas/_types:Indices"
+          },
+          "privileges": {
+            "description": "The index level privileges that owners of the role have on the specified indices.",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/security._types:IndexPrivilege"
+            }
+          },
+          "query": {
+            "$ref": "#/components/schemas/security._types:IndicesPrivilegesQuery"
+          },
+          "allow_restricted_indices": {
+            "description": "Set to `true` if using wildcard or regular expressions for patterns that cover restricted indices. Implicitly, restricted indices have limited privileges that can cause pattern tests to fail. If restricted indices are explicitly included in the `names` list, Elasticsearch checks privileges against these indices regardless of the value set for `allow_restricted_indices`.",
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "clusters",
+          "names",
+          "privileges"
+        ]
+      },
       "security.query_api_keys:ApiKeyAggregationContainer": {
         "allOf": [
           {
@@ -85561,6 +85963,18 @@
         "items": {
           "type": "object"
         }
+      },
+      "sql.query:SqlFormat": {
+        "type": "string",
+        "enum": [
+          "csv",
+          "json",
+          "tsv",
+          "txt",
+          "yaml",
+          "cbor",
+          "smile"
+        ]
       },
       "ssl.certificates:CertificateInformation": {
         "type": "object",
@@ -88088,6 +88502,14 @@
           "starting",
           "started",
           "stopping"
+        ]
+      },
+      "xpack.info:XPackCategory": {
+        "type": "string",
+        "enum": [
+          "build",
+          "features",
+          "license"
         ]
       },
       "xpack.info:BuildInformation": {
@@ -102085,7 +102507,7 @@
         "description": "Format for the response.",
         "deprecated": false,
         "schema": {
-          "type": "string"
+          "$ref": "#/components/schemas/sql.query:SqlFormat"
         },
         "style": "form"
       },
@@ -104766,6 +105188,14 @@
                   "type": "array",
                   "items": {
                     "$ref": "#/components/schemas/security._types:IndicesPrivileges"
+                  }
+                },
+                "remote_indices": {
+                  "description": "A list of remote indices permissions entries.",
+                  "x-available-since": "8.14.0",
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/security._types:RemoteIndicesPrivileges"
                   }
                 },
                 "metadata": {

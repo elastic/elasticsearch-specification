@@ -1,0 +1,7 @@
+{
+  "summary": "Returns search results for an EQL query",
+  "method_request": "GET /my-data-stream/_eql/search",
+  "description": "",
+  "type": "request",
+  "value": "{\n  \"query\": \"\"\"\n    process where (process.name == \"cmd.exe\" and process.pid != 2013)\n  \"\"\"\n}"
+}
