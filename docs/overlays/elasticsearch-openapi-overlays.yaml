@@ -11,7 +11,7 @@ actions:
       description: >
         ## Documentation source and versions
         
-        This documentation is derived from the `main` branch of the [elasticsearch-specification](https://github.com/elastic/elasticsearch-specification) repository.
+        This documentation is derived from the `8.x` branch of the [elasticsearch-specification](https://github.com/elastic/elasticsearch-specification) repository.
         It is provided under license [Attribution-NonCommercial-NoDerivatives 4.0 International](https://creativecommons.org/licenses/by-nc-nd/4.0/).
       x-doc-license:
         name: Attribution-NonCommercial-NoDerivatives 4.0 International
