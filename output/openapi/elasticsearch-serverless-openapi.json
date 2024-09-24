@@ -30460,6 +30460,9 @@
           {
             "type": "object",
             "properties": {
+              "minimum_should_match": {
+                "$ref": "#/components/schemas/_types:MinimumShouldMatch"
+              },
               "minimum_should_match_field": {
                 "$ref": "#/components/schemas/_types:Field"
               },
@@ -41701,9 +41704,6 @@
               "copy_to": {
                 "$ref": "#/components/schemas/_types:Fields"
               },
-              "similarity": {
-                "type": "string"
-              },
               "store": {
                 "type": "boolean"
               }
@@ -41849,7 +41849,15 @@
                 "type": "boolean"
               },
               "index_prefixes": {
-                "$ref": "#/components/schemas/_types.mapping:TextIndexPrefixes"
+                "oneOf": [
+                  {
+                    "$ref": "#/components/schemas/_types.mapping:TextIndexPrefixes"
+                  },
+                  {
+                    "nullable": true,
+                    "type": "string"
+                  }
+                ]
               },
               "norms": {
                 "type": "boolean"
@@ -42010,6 +42018,17 @@
               "null_value": {
                 "type": "string"
               },
+              "similarity": {
+                "oneOf": [
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "nullable": true,
+                    "type": "string"
+                  }
+                ]
+              },
               "split_queries_on_whitespace": {
                 "type": "boolean"
               },
@@ -42166,6 +42185,17 @@
               "search_quote_analyzer": {
                 "type": "string"
               },
+              "similarity": {
+                "oneOf": [
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "nullable": true,
+                    "type": "string"
+                  }
+                ]
+              },
               "term_vector": {
                 "$ref": "#/components/schemas/_types.mapping:TermVectorOption"
               },
@@ -42215,7 +42245,15 @@
                 "type": "boolean"
               },
               "index_prefixes": {
-                "$ref": "#/components/schemas/_types.mapping:TextIndexPrefixes"
+                "oneOf": [
+                  {
+                    "$ref": "#/components/schemas/_types.mapping:TextIndexPrefixes"
+                  },
+                  {
+                    "nullable": true,
+                    "type": "string"
+                  }
+                ]
               },
               "norms": {
                 "type": "boolean"
@@ -42228,6 +42266,17 @@
               },
               "search_quote_analyzer": {
                 "type": "string"
+              },
+              "similarity": {
+                "oneOf": [
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "nullable": true,
+                    "type": "string"
+                  }
+                ]
               },
               "term_vector": {
                 "$ref": "#/components/schemas/_types.mapping:TermVectorOption"
@@ -49712,6 +49761,18 @@
           },
           "start_time": {
             "$ref": "#/components/schemas/_types:DateTime"
+          },
+          "skip_result": {
+            "description": "When true the model will not create results for this calendar period.",
+            "type": "boolean"
+          },
+          "skip_model_update": {
+            "description": "When true the model will not be updated for this calendar period.",
+            "type": "boolean"
+          },
+          "force_time_shift": {
+            "description": "Shift time by this many seconds. For example adjust time for daylight savings changes",
+            "type": "number"
           }
         },
         "required": [
@@ -55176,6 +55237,18 @@
         "items": {
           "type": "object"
         }
+      },
+      "sql.query:SqlFormat": {
+        "type": "string",
+        "enum": [
+          "csv",
+          "json",
+          "tsv",
+          "txt",
+          "yaml",
+          "cbor",
+          "smile"
+        ]
       },
       "synonyms._types:SynonymsUpdateResult": {
         "type": "object",
@@ -62462,7 +62535,7 @@
         "description": "Format for the response.",
         "deprecated": false,
         "schema": {
-          "type": "string"
+          "$ref": "#/components/schemas/sql.query:SqlFormat"
         },
         "style": "form"
       },
