@@ -1,0 +1,7 @@
+{
+  "summary": "A successful response when retrieving a lifecycle policy.",
+  "description": "",
+  "type": "response",
+  "response_code": 200,
+  "value": "{\n  \"my_policy\": {\n    \"version\": 1,\n    \"modified_date\": 82392349,\n    \"policy\": {\n      \"phases\": {\n        \"warm\": {\n          \"min_age\": \"10d\",\n          \"actions\": {\n            \"forcemerge\": {\n              \"max_num_segments\": 1\n            }\n          }\n        },\n        \"delete\": {\n          \"min_age\": \"30d\",\n          \"actions\": {\n            \"delete\": {\n              \"delete_searchable_snapshot\": true\n            }\n          }\n        }\n      }\n    },\n    \"in_use_by\" : {\n      \"indices\" : [],\n      \"data_streams\" : [],\n      \"composable_templates\" : []\n    }\n  }\n}"
+}

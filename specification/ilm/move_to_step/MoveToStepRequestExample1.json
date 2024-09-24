@@ -1,0 +1,7 @@
+{
+  "summary": "Triggers execution of a specific step in a lifecycle policy.",
+  "method_request": "POST _ilm/move/my-index-000001",
+  "description": "",
+  "type": "request",
+  "value": "{\n  \"current_step\": {\n    \"phase\": \"new\",\n    \"action\": \"complete\",\n    \"name\": \"complete\"\n  },\n  \"next_step\": {\n    \"phase\": \"warm\",\n    \"action\": \"forcemerge\",\n    \"name\": \"forcemerge\"\n  }\n}"
+}

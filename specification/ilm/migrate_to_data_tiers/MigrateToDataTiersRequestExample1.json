@@ -1,0 +1,7 @@
+{
+  "summary": "Migrates indices, ILM policies, and templates from using custom node attributes to using data tiers.",
+  "method_request": "POST /_ilm/migrate_to_data_tiers",
+  "description": "The example migrates the indices, ILM policies, legacy templates, composable, and component templates away from defining custom allocation filtering using the custom_attribute_name node attribute, and deletes the legacy template with name global-template if it exists in the system.",
+  "type": "request",
+  "value": "{\n  \"legacy_template_to_delete\": \"global-template\",\n  \"node_attribute\": \"custom_attribute_name\"\n}"
+}
