@@ -1503,7 +1503,7 @@ export interface SearchHit<TDocument = unknown> {
   matched_queries?: string[] | Record<string, double>
   _nested?: SearchNestedIdentity
   _ignored?: string[]
-  ignored_field_values?: Record<string, string[]>
+  ignored_field_values?: Record<string, FieldValue[]>
   _shard?: string
   _node?: string
   _routing?: string
