@@ -28,7 +28,7 @@ import { integer } from '@_types/Numeric'
 export interface Request extends RequestBase {
   path_parts: {
     /** @codegen_name name */
-    repository?: Names
+    repository: Names
   }
   query_parameters: {
     meta_thread_pool_concurrency?: integer
