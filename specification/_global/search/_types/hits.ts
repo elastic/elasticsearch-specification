@@ -23,6 +23,7 @@ import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 import {
   Field,
   Fields,
+  FieldValue,
   Id,
   IndexName,
   Name,
@@ -52,7 +53,7 @@ export class Hit<TDocument> {
   matched_queries?: string[] | Dictionary<string, double>
   _nested?: NestedIdentity
   _ignored?: string[]
-  ignored_field_values?: Dictionary<string, string[]>
+  ignored_field_values?: Dictionary<string, FieldValue[]>
   _shard?: string
   _node?: string
   _routing?: string
