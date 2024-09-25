@@ -19060,7 +19060,7 @@ export interface SnapshotGetRepositoryRequest extends RequestBase {
 export type SnapshotGetRepositoryResponse = Record<string, SnapshotRepository>
 
 export interface SnapshotRepositoryVerifyIntegrityRequest extends RequestBase {
-  name?: Names
+  name: Names
   meta_thread_pool_concurrency?: integer
   blob_thread_pool_concurrency?: integer
   snapshot_verification_concurrency?: integer
