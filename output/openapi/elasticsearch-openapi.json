@@ -40949,7 +40949,7 @@
             "additionalProperties": {
               "type": "array",
               "items": {
-                "type": "string"
+                "$ref": "#/components/schemas/_types:FieldValue"
               }
             }
           },
