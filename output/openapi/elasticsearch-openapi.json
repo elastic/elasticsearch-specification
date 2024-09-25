@@ -33298,6 +33298,125 @@
         "x-available-since": "0.0.0"
       }
     },
+    "/_snapshot/{repository}/_verify_integrity": {
+      "post": {
+        "tags": [
+          "snapshot.repository_verify_integrity"
+        ],
+        "summary": "Verifies the integrity of the contents of a snapshot repository",
+        "externalDocs": {
+          "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/modules-snapshots.html"
+        },
+        "operationId": "snapshot-repository-verify-integrity",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "repository",
+            "description": "A repository name",
+            "required": true,
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/_types:Names"
+            },
+            "style": "simple"
+          },
+          {
+            "in": "query",
+            "name": "meta_thread_pool_concurrency",
+            "description": "Number of threads to use for reading metadata",
+            "deprecated": false,
+            "schema": {
+              "type": "number"
+            },
+            "style": "form"
+          },
+          {
+            "in": "query",
+            "name": "blob_thread_pool_concurrency",
+            "description": "Number of threads to use for reading blob contents",
+            "deprecated": false,
+            "schema": {
+              "type": "number"
+            },
+            "style": "form"
+          },
+          {
+            "in": "query",
+            "name": "snapshot_verification_concurrency",
+            "description": "Number of snapshots to verify concurrently",
+            "deprecated": false,
+            "schema": {
+              "type": "number"
+            },
+            "style": "form"
+          },
+          {
+            "in": "query",
+            "name": "index_verification_concurrency",
+            "description": "Number of indices to verify concurrently",
+            "deprecated": false,
+            "schema": {
+              "type": "number"
+            },
+            "style": "form"
+          },
+          {
+            "in": "query",
+            "name": "index_snapshot_verification_concurrency",
+            "description": "Number of snapshots to verify concurrently within each index",
+            "deprecated": false,
+            "schema": {
+              "type": "number"
+            },
+            "style": "form"
+          },
+          {
+            "in": "query",
+            "name": "max_failed_shard_snapshots",
+            "description": "Maximum permitted number of failed shard snapshots",
+            "deprecated": false,
+            "schema": {
+              "type": "number"
+            },
+            "style": "form"
+          },
+          {
+            "in": "query",
+            "name": "verify_blob_contents",
+            "description": "Whether to verify the contents of individual blobs",
+            "deprecated": false,
+            "schema": {
+              "type": "boolean"
+            },
+            "style": "form"
+          },
+          {
+            "in": "query",
+            "name": "max_bytes_per_sec",
+            "description": "Rate limit for individual blob verification",
+            "deprecated": false,
+            "schema": {
+              "type": "string"
+            },
+            "style": "form"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                }
+              }
+            }
+          }
+        },
+        "x-available-since": "8.16.0",
+        "x-technical-preview": true
+      }
+    },
     "/_snapshot/{repository}/{snapshot}/_restore": {
       "post": {
         "tags": [
