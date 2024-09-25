@@ -1,0 +1,6 @@
+summary: A successful response for adding an index block to an index.
+description: ''
+type: response
+response_code: 200
+value: "{\n  \"acknowledged\" : true,\n  \"shards_acknowledged\" : true,\n  \"indices\"\
+  \ : [ {\n    \"name\" : \"my-index-000001\",\n    \"blocked\" : true\n  } ]\n}"
