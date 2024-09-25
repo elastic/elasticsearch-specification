@@ -1196,7 +1196,11 @@
     },
     "snapshot.repository_verify_integrity": {
       "request": [
+<<<<<<< HEAD
         "Request: path parameter 'repository' is required in the json spec"
+=======
+        "Missing request & response"
+>>>>>>> 3e52b860d (Update rest-api-spec)
       ],
       "response": []
     },
