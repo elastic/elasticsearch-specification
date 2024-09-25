@@ -51930,7 +51930,7 @@
           }
         }
       ],
-      "specLocation": "_global/search/_types/hits.ts#L107-L141"
+      "specLocation": "_global/search/_types/hits.ts#L108-L142"
     },
     {
       "kind": "type_alias",
@@ -67627,7 +67627,7 @@
         "name": "TrackHits",
         "namespace": "_global.search._types"
       },
-      "specLocation": "_global/search/_types/hits.ts#L143-L151",
+      "specLocation": "_global/search/_types/hits.ts#L144-L152",
       "type": {
         "items": [
           {
@@ -69751,7 +69751,7 @@
           }
         }
       ],
-      "specLocation": "_global/search/_types/hits.ts#L67-L73"
+      "specLocation": "_global/search/_types/hits.ts#L68-L74"
     },
     {
       "kind": "interface",
@@ -69783,7 +69783,7 @@
           }
         }
       ],
-      "specLocation": "_global/search/_types/hits.ts#L95-L98"
+      "specLocation": "_global/search/_types/hits.ts#L96-L99"
     },
     {
       "kind": "enum",
@@ -69801,7 +69801,7 @@
         "name": "TotalHitsRelation",
         "namespace": "_global.search._types"
       },
-      "specLocation": "_global/search/_types/hits.ts#L100-L105"
+      "specLocation": "_global/search/_types/hits.ts#L101-L106"
     },
     {
       "generics": [
@@ -70018,8 +70018,8 @@
               "value": {
                 "kind": "instance_of",
                 "type": {
-                  "name": "string",
-                  "namespace": "_builtins"
+                  "name": "FieldValue",
+                  "namespace": "_types"
                 }
               }
             }
@@ -70125,7 +70125,7 @@
           }
         }
       ],
-      "specLocation": "_global/search/_types/hits.ts#L40-L65"
+      "specLocation": "_global/search/_types/hits.ts#L41-L66"
     },
     {
       "kind": "interface",
@@ -70243,7 +70243,7 @@
           }
         }
       ],
-      "specLocation": "_global/search/_types/hits.ts#L85-L87"
+      "specLocation": "_global/search/_types/hits.ts#L86-L88"
     },
     {
       "kind": "interface",
@@ -70286,7 +70286,7 @@
           }
         }
       ],
-      "specLocation": "_global/search/_types/hits.ts#L89-L93"
+      "specLocation": "_global/search/_types/hits.ts#L90-L94"
     },
     {
       "description": "The aggregation name as returned from the server. Depending whether typed_keys is specified this could come back\nin the form of `name#type` instead of simply `name`",
