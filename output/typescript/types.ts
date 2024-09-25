@@ -19056,6 +19056,20 @@ export interface SnapshotGetRepositoryRequest extends RequestBase {
 
 export type SnapshotGetRepositoryResponse = Record<string, SnapshotRepository>
 
+export interface SnapshotRepositoryVerifyIntegrityRequest extends RequestBase {
+  name?: Names
+  meta_thread_pool_concurrency?: integer
+  blob_thread_pool_concurrency?: integer
+  snapshot_verification_concurrency?: integer
+  index_verification_concurrency?: integer
+  index_snapshot_verification_concurrency?: integer
+  max_failed_shard_snapshots?: integer
+  verify_blob_contents?: boolean
+  max_bytes_per_sec?: string
+}
+
+export type SnapshotRepositoryVerifyIntegrityResponse = any
+
 export interface SnapshotRestoreRequest extends RequestBase {
   repository: Name
   snapshot: Name
