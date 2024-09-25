@@ -6883,57 +6883,6 @@
         "x-available-since": "7.9.0"
       }
     },
-    "/_data_stream/_stats": {
-      "get": {
-        "tags": [
-          "indices.data_streams_stats"
-        ],
-        "summary": "Get data stream stats",
-        "description": "Retrieves statistics for one or more data streams.",
-        "externalDocs": {
-          "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/data-streams.html"
-        },
-        "operationId": "indices-data-streams-stats",
-        "parameters": [
-          {
-            "$ref": "#/components/parameters/indices.data_streams_stats#expand_wildcards"
-          }
-        ],
-        "responses": {
-          "200": {
-            "$ref": "#/components/responses/indices.data_streams_stats#200"
-          }
-        },
-        "x-available-since": "7.9.0"
-      }
-    },
-    "/_data_stream/{name}/_stats": {
-      "get": {
-        "tags": [
-          "indices.data_streams_stats"
-        ],
-        "summary": "Get data stream stats",
-        "description": "Retrieves statistics for one or more data streams.",
-        "externalDocs": {
-          "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/data-streams.html"
-        },
-        "operationId": "indices-data-streams-stats-1",
-        "parameters": [
-          {
-            "$ref": "#/components/parameters/indices.data_streams_stats#name"
-          },
-          {
-            "$ref": "#/components/parameters/indices.data_streams_stats#expand_wildcards"
-          }
-        ],
-        "responses": {
-          "200": {
-            "$ref": "#/components/responses/indices.data_streams_stats#200"
-          }
-        },
-        "x-available-since": "7.9.0"
-      }
-    },
     "/{index}/_alias/{name}": {
       "get": {
         "tags": [
@@ -46076,34 +46025,6 @@
           "type"
         ]
       },
-      "indices.data_streams_stats:DataStreamsStatsItem": {
-        "type": "object",
-        "properties": {
-          "backing_indices": {
-            "description": "Current number of backing indices for the data stream.",
-            "type": "number"
-          },
-          "data_stream": {
-            "$ref": "#/components/schemas/_types:Name"
-          },
-          "maximum_timestamp": {
-            "$ref": "#/components/schemas/_types:EpochTimeUnitMillis"
-          },
-          "store_size": {
-            "$ref": "#/components/schemas/_types:ByteSize"
-          },
-          "store_size_bytes": {
-            "description": "Total size, in bytes, of all shards for the data stream’s backing indices.",
-            "type": "number"
-          }
-        },
-        "required": [
-          "backing_indices",
-          "data_stream",
-          "maximum_timestamp",
-          "store_size_bytes"
-        ]
-      },
       "_types:IndicesResponseBase": {
         "allOf": [
           {
@@ -56235,50 +56156,6 @@
           }
         }
       },
-      "indices.data_streams_stats#200": {
-        "description": "",
-        "content": {
-          "application/json": {
-            "schema": {
-              "type": "object",
-              "properties": {
-                "_shards": {
-                  "$ref": "#/components/schemas/_types:ShardStatistics"
-                },
-                "backing_indices": {
-                  "description": "Total number of backing indices for the selected data streams.",
-                  "type": "number"
-                },
-                "data_stream_count": {
-                  "description": "Total number of selected data streams.",
-                  "type": "number"
-                },
-                "data_streams": {
-                  "description": "Contains statistics for the selected data streams.",
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/indices.data_streams_stats:DataStreamsStatsItem"
-                  }
-                },
-                "total_store_sizes": {
-                  "$ref": "#/components/schemas/_types:ByteSize"
-                },
-                "total_store_size_bytes": {
-                  "description": "Total size, in bytes, of all shards for the selected data streams.",
-                  "type": "number"
-                }
-              },
-              "required": [
-                "_shards",
-                "backing_indices",
-                "data_stream_count",
-                "data_streams",
-                "total_store_size_bytes"
-              ]
-            }
-          }
-        }
-      },
       "indices.delete_alias#200": {
         "description": "",
         "content": {
@@ -59406,27 +59283,6 @@
           "$ref": "#/components/schemas/_types:IndexName"
         },
         "style": "simple"
-      },
-      "indices.data_streams_stats#name": {
-        "in": "path",
-        "name": "name",
-        "description": "Comma-separated list of data streams used to limit the request.\nWildcard expressions (`*`) are supported.\nTo target all data streams in a cluster, omit this parameter or use `*`.",
-        "required": true,
-        "deprecated": false,
-        "schema": {
-          "$ref": "#/components/schemas/_types:IndexName"
-        },
-        "style": "simple"
-      },
-      "indices.data_streams_stats#expand_wildcards": {
-        "in": "query",
-        "name": "expand_wildcards",
-        "description": "Type of data stream that wildcard patterns can match.\nSupports comma-separated values, such as `open,hidden`.",
-        "deprecated": false,
-        "schema": {
-          "$ref": "#/components/schemas/_types:ExpandWildcards"
-        },
-        "style": "form"
       },
       "indices.delete_alias#index": {
         "in": "path",
