@@ -20,7 +20,8 @@ import { RequestBase } from '@_types/Base'
 import { Name } from '@_types/common'
 
 /**
- * Deletes a search application.
+ * Delete a search application.
+ * Remove a search application and its associated alias. Indices attached to the search application are not removed.
  * @rest_spec_name search_application.delete
  * @availability stack since=8.8.0 stability=beta
  * @availability serverless stability=beta visibility=public

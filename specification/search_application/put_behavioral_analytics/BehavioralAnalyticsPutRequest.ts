@@ -20,7 +20,7 @@ import { RequestBase } from '@_types/Base'
 import { Name } from '@_types/common'
 
 /**
- * Creates a behavioral analytics collection.
+ * Create a behavioral analytics collection.
  * @rest_spec_name search_application.put_behavioral_analytics
  * @availability stack since=8.8.0 stability=experimental
  * @availability serverless stability=experimental visibility=public

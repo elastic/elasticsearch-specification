@@ -17043,7 +17043,7 @@
         "tags": [
           "search_application.get"
         ],
-        "summary": "Returns the details about a search application",
+        "summary": "Get search application details",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/get-search-application.html"
         },
@@ -17080,7 +17080,7 @@
         "tags": [
           "search_application.put"
         ],
-        "summary": "Creates or updates a search application",
+        "summary": "Create or update a search application",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/put-search-application.html"
         },
@@ -17145,7 +17145,8 @@
         "tags": [
           "search_application.delete"
         ],
-        "summary": "Deletes a search application",
+        "summary": "Delete a search application",
+        "description": "Remove a search application and its associated alias. Indices attached to the search application are not removed.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/delete-search-application.html"
         },
@@ -17184,7 +17185,7 @@
         "tags": [
           "search_application.get_behavioral_analytics"
         ],
-        "summary": "Returns the existing behavioral analytics collections",
+        "summary": "Get behavioral analytics collections",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/list-analytics-collection.html"
         },
@@ -17206,7 +17207,7 @@
         "tags": [
           "search_application.put_behavioral_analytics"
         ],
-        "summary": "Creates a behavioral analytics collection",
+        "summary": "Create a behavioral analytics collection",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/put-analytics-collection.html"
         },
@@ -17244,6 +17245,7 @@
           "search_application.delete_behavioral_analytics"
         ],
         "summary": "Delete a behavioral analytics collection",
+        "description": "The associated data stream is also deleted.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/delete-analytics-collection.html"
         },
@@ -17282,7 +17284,7 @@
         "tags": [
           "search_application.get_behavioral_analytics"
         ],
-        "summary": "Returns the existing behavioral analytics collections",
+        "summary": "Get behavioral analytics collections",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/list-analytics-collection.html"
         },
@@ -17374,7 +17376,8 @@
         "tags": [
           "search_application.search"
         ],
-        "summary": "Perform a search against a search application",
+        "summary": "Run a search application search",
+        "description": "Generate and run an Elasticsearch query that uses the specified query parameteter and the search template associated with the search application or default template.\nUnspecified template parameters are assigned their default values if applicable.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/search-application-search.html"
         },
@@ -17402,7 +17405,8 @@
         "tags": [
           "search_application.search"
         ],
-        "summary": "Perform a search against a search application",
+        "summary": "Run a search application search",
+        "description": "Generate and run an Elasticsearch query that uses the specified query parameteter and the search template associated with the search application or default template.\nUnspecified template parameters are assigned their default values if applicable.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/search-application-search.html"
         },
