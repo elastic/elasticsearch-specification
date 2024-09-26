@@ -56000,7 +56000,7 @@
         "name": "RangeQuery",
         "namespace": "_types.query_dsl"
       },
-      "specLocation": "_types/query_dsl/term.ts#L162-L171",
+      "specLocation": "_types/query_dsl/term.ts#L164-L173",
       "type": {
         "items": [
           {
@@ -56085,7 +56085,7 @@
           }
         }
       ],
-      "specLocation": "_types/query_dsl/term.ts#L136-L145"
+      "specLocation": "_types/query_dsl/term.ts#L138-L147"
     },
     {
       "generics": [
@@ -56168,6 +56168,10 @@
           }
         },
         {
+          "deprecation": {
+            "description": "Use gte or gt instead",
+            "version": "8.16.0"
+          },
           "name": "from",
           "required": false,
           "type": {
@@ -56191,6 +56195,10 @@
           }
         },
         {
+          "deprecation": {
+            "description": "Use lte or lt instead",
+            "version": "8.16.0"
+          },
           "name": "to",
           "required": false,
           "type": {
@@ -56214,7 +56222,7 @@
           }
         }
       ],
-      "specLocation": "_types/query_dsl/term.ts#L110-L134"
+      "specLocation": "_types/query_dsl/term.ts#L110-L136"
     },
     {
       "kind": "enum",
@@ -56236,7 +56244,7 @@
         "name": "RangeRelation",
         "namespace": "_types.query_dsl"
       },
-      "specLocation": "_types/query_dsl/term.ts#L173-L186"
+      "specLocation": "_types/query_dsl/term.ts#L175-L188"
     },
     {
       "docId": "mapping-date-format",
@@ -56302,7 +56310,7 @@
           }
         }
       ],
-      "specLocation": "_types/query_dsl/term.ts#L147-L156"
+      "specLocation": "_types/query_dsl/term.ts#L149-L158"
     },
     {
       "inherits": {
@@ -56326,7 +56334,7 @@
         "namespace": "_types.query_dsl"
       },
       "properties": [],
-      "specLocation": "_types/query_dsl/term.ts#L158-L158"
+      "specLocation": "_types/query_dsl/term.ts#L160-L160"
     },
     {
       "inherits": {
@@ -56350,7 +56358,7 @@
         "namespace": "_types.query_dsl"
       },
       "properties": [],
-      "specLocation": "_types/query_dsl/term.ts#L160-L160"
+      "specLocation": "_types/query_dsl/term.ts#L162-L162"
     },
     {
       "inherits": {
@@ -56637,7 +56645,7 @@
         }
       ],
       "shortcutProperty": "value",
-      "specLocation": "_types/query_dsl/term.ts#L188-L218"
+      "specLocation": "_types/query_dsl/term.ts#L190-L220"
     },
     {
       "inherits": {
@@ -57927,7 +57935,7 @@
         }
       ],
       "shortcutProperty": "value",
-      "specLocation": "_types/query_dsl/term.ts#L220-L234"
+      "specLocation": "_types/query_dsl/term.ts#L222-L236"
     },
     {
       "codegenNames": [
@@ -58033,7 +58041,7 @@
         "namespace": "_types.query_dsl"
       },
       "properties": [],
-      "specLocation": "_types/query_dsl/term.ts#L236-L241"
+      "specLocation": "_types/query_dsl/term.ts#L238-L243"
     },
     {
       "codegenNames": [
@@ -58045,7 +58053,7 @@
         "name": "TermsQueryField",
         "namespace": "_types.query_dsl"
       },
-      "specLocation": "_types/query_dsl/term.ts#L243-L246",
+      "specLocation": "_types/query_dsl/term.ts#L245-L248",
       "type": {
         "items": [
           {
@@ -58121,7 +58129,7 @@
           }
         }
       ],
-      "specLocation": "_types/query_dsl/term.ts#L248-L253"
+      "specLocation": "_types/query_dsl/term.ts#L250-L255"
     },
     {
       "inherits": {
@@ -58194,7 +58202,7 @@
           }
         }
       ],
-      "specLocation": "_types/query_dsl/term.ts#L255-L274"
+      "specLocation": "_types/query_dsl/term.ts#L257-L276"
     },
     {
       "inherits": {
@@ -58379,7 +58387,7 @@
         }
       ],
       "shortcutProperty": "value",
-      "specLocation": "_types/query_dsl/term.ts#L280-L297"
+      "specLocation": "_types/query_dsl/term.ts#L282-L299"
     },
     {
       "inherits": {
@@ -58434,7 +58442,7 @@
           }
         }
       ],
-      "specLocation": "_types/query_dsl/term.ts#L276-L278"
+      "specLocation": "_types/query_dsl/term.ts#L278-L280"
     },
     {
       "inherits": {
