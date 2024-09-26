@@ -34,7 +34,7 @@ actions:
     update:
       tags:
       # A
-        - name: asynch_search
+        - name: async_search
           description: The async search API enables you to asynchronously run a search request, monitor its progress, and retrieve partial results as they become available.
           x-displayName: Async search
       # C 

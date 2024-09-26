@@ -25,7 +25,7 @@ actions:
     update:
       tags:
       # A
-        - name: asynch_search
+        - name: async_search
           description: The async search API enables you to asynchronously run a search request, monitor its progress, and retrieve partial results as they become available.
           x-displayName: Async search
         - name: autoscaling
@@ -89,7 +89,7 @@ actions:
           x-displayName: Document - Reindex
         - name: delete_by_query_rethrottle
           x-displayName: Document - Rethrottle delete by query
-        - name: reindex_throttle
+        - name: reindex_rethrottle
           x-displayName: Document - Rethrottle reindex
         - name: update_by_query_rethrottle
           x-displayName: Document - Rethrottle update by query
@@ -217,6 +217,8 @@ actions:
           x-displayName: Search - Explain
         - name: field_caps
           x-displayName: Search - Field capabilities
+        - name: knn_search
+          x-displayName: Search - kNN
         - name: msearch
           x-displayName: Search - Multi search
         - name: msearch_template
@@ -243,6 +245,8 @@ actions:
           x-displayName: Searchable snapshots
         - name: security
           x-displayName: Security
+        - name: ssl
+          x-displayName: Security - SSL
         - name: snapshot
           x-displayName: Snapshot and restore
           description: >
