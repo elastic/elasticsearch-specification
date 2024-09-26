@@ -46334,6 +46334,7 @@
                 "type": "object"
               },
               "from": {
+                "deprecated": true,
                 "oneOf": [
                   {
                     "type": "object"
@@ -46345,6 +46346,7 @@
                 ]
               },
               "to": {
+                "deprecated": true,
                 "oneOf": [
                   {
                     "type": "object"
@@ -46409,6 +46411,7 @@
                 "$ref": "#/components/schemas/_types:DateMath"
               },
               "from": {
+                "deprecated": true,
                 "oneOf": [
                   {
                     "$ref": "#/components/schemas/_types:DateMath"
@@ -46420,6 +46423,7 @@
                 ]
               },
               "to": {
+                "deprecated": true,
                 "oneOf": [
                   {
                     "$ref": "#/components/schemas/_types:DateMath"
@@ -46472,6 +46476,7 @@
                 "type": "number"
               },
               "from": {
+                "deprecated": true,
                 "oneOf": [
                   {
                     "type": "number"
@@ -46483,6 +46488,7 @@
                 ]
               },
               "to": {
+                "deprecated": true,
                 "oneOf": [
                   {
                     "type": "number"
@@ -46535,6 +46541,7 @@
                 "type": "string"
               },
               "from": {
+                "deprecated": true,
                 "oneOf": [
                   {
                     "type": "string"
@@ -46546,6 +46553,7 @@
                 ]
               },
               "to": {
+                "deprecated": true,
                 "oneOf": [
                   {
                     "type": "string"
