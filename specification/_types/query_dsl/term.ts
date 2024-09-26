@@ -129,7 +129,9 @@ export class RangeQueryBase<T> extends QueryBase {
    * Less than or equal to.
    */
   lte?: T
+  /** @deprecated 8.16.0 Use gte or gt instead */
   from?: T | null
+  /** @deprecated 8.16.0 Use lte or lt instead */
   to?: T | null
 }
 
