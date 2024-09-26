@@ -69,14 +69,14 @@ overlay-docs: ## Apply overlays to OpenAPI documents
 	rm output/openapi/elasticsearch-serverless-openapi.tmp*.json
 	rm output/openapi/elasticsearch-openapi.tmp*.json
 
-lint-docs: ## Lint the OpenAPI documents
-	@npx @stoplight/spectral-cli lint output/openapi/*.json --ruleset .spectral.yaml
+lint-docs: ## Lint the OpenAPI documents after overlays
+	@npx @stoplight/spectral-cli lint output/openapi/elasticsearch-*.examples.json --ruleset .spectral.yaml
 
-lint-docs-errs: ## Lint the OpenAPI documents and return only errors
-	@npx @stoplight/spectral-cli lint output/openapi/*.json --ruleset .spectral.yaml -D
+lint-docs-errs: ## Lint the OpenAPI documents after overlays and return only errors
+	@npx @stoplight/spectral-cli lint output/openapi/elasticsearch-*.examples.json --ruleset .spectral.yaml -D
 
-lint-docs-serverless: ## Lint only the serverless OpenAPI document
-	@npx @stoplight/spectral-cli lint output/openapi/elasticsearch-serverless-openapi.json --ruleset .spectral.yaml
+lint-docs-serverless: ## Lint only the serverless OpenAPI document after overlays
+	@npx @stoplight/spectral-cli lint output/openapi/elasticsearch-serverless-openapi.examples.json --ruleset .spectral.yaml
 
 help:  ## Display help
 	@awk 'BEGIN {FS = ":.*##"; printf "Usage:\n  make \033[36m<target>\033[0m\n"} /^[a-zA-Z_-]+:.*?##/ { printf "  \033[36m%-15s\033[0m %s\n", $$1, $$2 } /^##@/ { printf "\n\033[1m%s\033[0m\n", substr($$0, 5) } ' $(MAKEFILE_LIST)
