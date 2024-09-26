@@ -28,6 +28,3 @@ actions:
     description: Add x-beta
     update:
       x-beta: true
-
-
-        
