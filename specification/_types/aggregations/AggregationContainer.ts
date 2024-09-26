@@ -44,6 +44,7 @@ import {
   MultiTermsAggregation,
   NestedAggregation,
   ParentAggregation,
+  RandomSamplerAggregation,
   RangeAggregation,
   RareTermsAggregation,
   ReverseNestedAggregation,
@@ -427,6 +428,15 @@ export class AggregationContainer {
    * @doc_id search-aggregations-bucket-reverse-nested-aggregation
    */
   reverse_nested?: ReverseNestedAggregation
+  /**
+   *
+   * A single bucket aggregation that randomly includes documents in the aggregated results.
+   * Sampling provides significant speed improvement at the cost of accuracy.
+   * @doc_id search-aggregations-pipeline-random-sampler-aggregation
+   * @availability stack since=8.1.0 stability=experimental
+
+   */
+  random_sampler?: RandomSamplerAggregation
   /**
    * A filtering aggregation used to limit any sub aggregations' processing to a sample of the top-scoring documents.
    * @doc_id search-aggregations-bucket-sampler-aggregation

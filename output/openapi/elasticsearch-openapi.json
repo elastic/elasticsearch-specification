@@ -43250,6 +43250,9 @@
               "reverse_nested": {
                 "$ref": "#/components/schemas/_types.aggregations:ReverseNestedAggregation"
               },
+              "random_sampler": {
+                "$ref": "#/components/schemas/_types.aggregations:RandomSamplerAggregation"
+              },
               "sampler": {
                 "$ref": "#/components/schemas/_types.aggregations:SamplerAggregation"
               },
@@ -49735,6 +49738,34 @@
                 "$ref": "#/components/schemas/_types:Field"
               }
             }
+          }
+        ]
+      },
+      "_types.aggregations:RandomSamplerAggregation": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/_types.aggregations:BucketAggregationBase"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "probability": {
+                "description": "The probability that a document will be included in the aggregated data.\nMust be greater than 0, less than 0.5, or exactly 1.\nThe lower the probability, the fewer documents are matched.",
+                "type": "number"
+              },
+              "seed": {
+                "description": "The seed to generate the random sampling of documents.\nWhen a seed is provided, the random subset of documents is the same between calls.",
+                "type": "number"
+              },
+              "shard_seed": {
+                "description": "When combined with seed, setting shard_seed ensures 100% consistent sampling over shards where data is exactly the same.",
+                "x-available-since": "8.14.0",
+                "type": "number"
+              }
+            },
+            "required": [
+              "probability"
+            ]
           }
         ]
       },

@@ -35,7 +35,7 @@ import {
   GeoLocation,
   GeoTilePrecision
 } from '@_types/Geo'
-import { double, integer, long } from '@_types/Numeric'
+import { double, float, integer, long } from '@_types/Numeric'
 import { QueryContainer } from '@_types/query_dsl/abstractions'
 import { Script } from '@_types/Scripting'
 import { SortOrder } from '@_types/sort'
@@ -729,6 +729,25 @@ export class ReverseNestedAggregation extends BucketAggregationBase {
    * The default is empty, which means that it joins back to the root/main document level.
    */
   path?: Field
+}
+
+export class RandomSamplerAggregation extends BucketAggregationBase {
+  /**
+   * The probability that a document will be included in the aggregated data.
+   * Must be greater than 0, less than 0.5, or exactly 1.
+   * The lower the probability, the fewer documents are matched.
+   */
+  probability: float
+  /**
+   * The seed to generate the random sampling of documents.
+   * When a seed is provided, the random subset of documents is the same between calls.
+   */
+  seed?: integer
+  /**
+   * When combined with seed, setting shard_seed ensures 100% consistent sampling over shards where data is exactly the same.
+   * @availability stack since=8.14.0
+   */
+  shard_seed?: integer
 }
 
 export class SamplerAggregation extends BucketAggregationBase {
