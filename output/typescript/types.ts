@@ -14047,9 +14047,7 @@ export interface MlDelayedDataCheckConfig {
 
 export type MlDeploymentAllocationState = 'started' | 'starting' | 'fully_allocated'
 
-export type MlDeploymentAssignmentState = 'starting' | 'started' | 'stopping' | 'failed'
-
-export type MlDeploymentState = 'started' | 'starting' | 'stopping'
+export type MlDeploymentAssignmentState = 'started' | 'starting' | 'stopping' | 'failed'
 
 export interface MlDetectionRule {
   actions?: MlRuleAction[]
@@ -14639,7 +14637,7 @@ export interface MlTrainedModelDeploymentStats {
   rejected_execution_count: integer
   reason: string
   start_time: EpochTime<UnitMillis>
-  state: MlDeploymentState
+  state: MlDeploymentAssignmentState
   threads_per_allocation: integer
   timeout_count: integer
 }
