@@ -40,7 +40,7 @@ actions:
               examples:
                 resetFeaturesResponseExample1:
                   $ref: "../../specification/features/reset_features/ResetFeaturesResponseExample1.json"
-    - target: "$.components['requestBodies']['cluster.allocation_explain']"
+  - target: "$.components['requestBodies']['cluster.allocation_explain']"
     description: "Add examples for cluster allocation explain operation"
     update: 
       content: 
