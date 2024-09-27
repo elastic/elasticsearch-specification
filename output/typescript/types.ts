@@ -3091,6 +3091,7 @@ export interface AggregationsAggregationContainer {
   rare_terms?: AggregationsRareTermsAggregation
   rate?: AggregationsRateAggregation
   reverse_nested?: AggregationsReverseNestedAggregation
+  random_sampler?: AggregationsRandomSamplerAggregation
   sampler?: AggregationsSamplerAggregation
   scripted_metric?: AggregationsScriptedMetricAggregation
   serial_diff?: AggregationsSerialDifferencingAggregation
@@ -3977,6 +3978,12 @@ export interface AggregationsPercentilesBucketAggregation extends AggregationsPi
 export interface AggregationsPipelineAggregationBase extends AggregationsBucketPathAggregation {
   format?: string
   gap_policy?: AggregationsGapPolicy
+}
+
+export interface AggregationsRandomSamplerAggregation extends AggregationsBucketAggregationBase {
+  probability: double
+  seed?: integer
+  shard_seed?: integer
 }
 
 export interface AggregationsRangeAggregate extends AggregationsMultiBucketAggregateBase<AggregationsRangeBucket> {
