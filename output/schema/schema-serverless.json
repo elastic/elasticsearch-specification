@@ -119116,7 +119116,7 @@
       "properties": [
         {
           "name": "_shards",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -119126,7 +119126,7 @@
           }
         }
       ],
-      "specLocation": "_types/Base.ts#L91-L93"
+      "specLocation": "_types/Base.ts#L91-L94"
     },
     {
       "kind": "interface",

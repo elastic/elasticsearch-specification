@@ -45340,10 +45340,7 @@
           "_shards": {
             "$ref": "#/components/schemas/_types:ShardStatistics"
           }
-        },
-        "required": [
-          "_shards"
-        ]
+        }
       },
       "indices.resolve_index:ResolveIndexItem": {
         "type": "object",

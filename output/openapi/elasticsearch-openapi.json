@@ -66738,10 +66738,7 @@
           "_shards": {
             "$ref": "#/components/schemas/_types:ShardStatistics"
           }
-        },
-        "required": [
-          "_shards"
-        ]
+        }
       },
       "indices.close:CloseIndexResult": {
         "type": "object",

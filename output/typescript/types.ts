@@ -2830,7 +2830,7 @@ export interface ShardStatistics {
 }
 
 export interface ShardsOperationResponseBase {
-  _shards: ShardStatistics
+  _shards?: ShardStatistics
 }
 
 export interface SlicedScroll {
