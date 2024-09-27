@@ -158,4 +158,5 @@ export class DataStreamIndex {
 
 export class DataStreamVisibility {
   hidden?: boolean
+  allow_custom_routing?: boolean
 }

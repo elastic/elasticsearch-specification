@@ -119103,9 +119103,20 @@
               "namespace": "_builtins"
             }
           }
+        },
+        {
+          "name": "allow_custom_routing",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "_builtins"
+            }
+          }
         }
       ],
-      "specLocation": "indices/_types/DataStream.ts#L159-L161"
+      "specLocation": "indices/_types/DataStream.ts#L159-L162"
     },
     {
       "kind": "interface",

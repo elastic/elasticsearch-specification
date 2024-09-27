@@ -67313,6 +67313,9 @@
         "properties": {
           "hidden": {
             "type": "boolean"
+          },
+          "allow_custom_routing": {
+            "type": "boolean"
           }
         }
       },

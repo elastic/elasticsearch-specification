@@ -10912,6 +10912,7 @@ export interface IndicesDataStreamTimestampField {
 
 export interface IndicesDataStreamVisibility {
   hidden?: boolean
+  allow_custom_routing?: boolean
 }
 
 export interface IndicesDownsampleConfig {
