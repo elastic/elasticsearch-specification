@@ -196,7 +196,7 @@ pub fn add_endpoint(
 
         // Create the operation, it will be repeated if we have several methods
         let operation = openapiv3::Operation {
-            tags: vec![namespace.to_string()],
+            tags: if endpoint.doc_tag.is_some() {vec![endpoint.doc_tag.clone().expect("TODO: panic message")]} else {vec![namespace.to_string()]},
             summary: sum_desc.summary,
             description: sum_desc.description,
             // external_docs: tac.convert_external_docs(endpoint),

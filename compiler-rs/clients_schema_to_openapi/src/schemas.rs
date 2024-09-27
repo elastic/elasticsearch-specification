@@ -38,7 +38,7 @@ const SCHEMA_PLACEHOLDER: ReferenceOr<Schema> = ReferenceOr::Reference {
 /// Convert `schema.json` type and value definitions to OpenAPI schemas:
 ///
 /// The `convert_*` functions return a concrete schema and not a reference and do not store them in
-/// the OpenAPI `components.schema`. This is the role of `for_type_name` hat creates and stores the
+/// the OpenAPI `components.schema`. This is the role of `for_type_name` that creates and stores the
 /// schema and returns a reference.
 impl<'a> TypesAndComponents<'a> {
     /// Convert a value. Returns a schema reference and not a concrete schema, as values can
