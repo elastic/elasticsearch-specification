@@ -2164,6 +2164,7 @@ export type SpecUtilsWithNullValue<T = unknown> = T | SpecUtilsNullValue
 
 export interface AcknowledgedResponseBase {
   acknowledged: boolean
+  errors?: boolean
 }
 
 export type AggregateName = string
