@@ -93,7 +93,7 @@ export class TrainedModelDeploymentStats {
   /** The epoch timestamp when the deployment started. */
   start_time: EpochTime<UnitMillis>
   /** The overall state of the deployment. */
-  state: DeploymentState
+  state: DeploymentAssignmentState
   /** The number of threads used be each allocation during inference. */
   threads_per_allocation: integer
   /** The sum of `timeout_count` for all nodes in the deployment. */
@@ -270,21 +270,6 @@ export enum TrainedModelType {
   pytorch
 }
 
-export enum DeploymentState {
-  /**
-   * The deployment is usable; at least one node has the model allocated.
-   */
-  started,
-  /**
-   * The deployment has recently started but is not yet usable; the model is not allocated on any nodes.
-   */
-  starting,
-  /**
-   * The deployment is preparing to stop and deallocate the model from the relevant nodes.
-   */
-  stopping
-}
-
 export enum DeploymentAllocationState {
   /**
    * The trained model is started on at least one node.
@@ -301,9 +286,21 @@ export enum DeploymentAllocationState {
 }
 
 export enum DeploymentAssignmentState {
-  starting,
+  /**
+   * The deployment is usable; at least one node has the model allocated.
+   */
   started,
+  /**
+   * The deployment has recently started but is not yet usable; the model is not allocated on any nodes.
+   */
+  starting,
+  /**
+   * The deployment is preparing to stop and deallocate the model from the relevant nodes.
+   */
   stopping,
+  /**
+   * The deployment is on a failed state and must be re-deployed.
+   */
   failed
 }
 
