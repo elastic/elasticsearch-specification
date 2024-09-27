@@ -10765,7 +10765,7 @@
       },
       "put": {
         "tags": [
-          "indices"
+          "data stream"
         ],
         "summary": "Create a data stream",
         "description": "Creates a data stream.\nYou must have a matching index template with data stream enabled.",
