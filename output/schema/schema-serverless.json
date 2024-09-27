@@ -7983,7 +7983,7 @@
           "stability": "beta"
         }
       },
-      "description": "Deletes a search application.",
+      "description": "Delete a search application.\nRemove a search application and its associated alias. Indices attached to the search application are not removed.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/delete-search-application.html",
       "name": "search_application.delete",
       "request": {
@@ -8018,7 +8018,7 @@
           "stability": "experimental"
         }
       },
-      "description": "Delete a behavioral analytics collection.",
+      "description": "Delete a behavioral analytics collection.\nThe associated data stream is also deleted.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/delete-analytics-collection.html",
       "name": "search_application.delete_behavioral_analytics",
       "request": {
@@ -8053,7 +8053,7 @@
           "stability": "beta"
         }
       },
-      "description": "Returns the details about a search application",
+      "description": "Get search application details.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/get-search-application.html",
       "name": "search_application.get",
       "request": {
@@ -8088,7 +8088,7 @@
           "stability": "experimental"
         }
       },
-      "description": "Returns the existing behavioral analytics collections.",
+      "description": "Get behavioral analytics collections.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/list-analytics-collection.html",
       "name": "search_application.get_behavioral_analytics",
       "request": {
@@ -8164,7 +8164,7 @@
           "stability": "beta"
         }
       },
-      "description": "Creates or updates a search application.",
+      "description": "Create or update a search application.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/put-search-application.html",
       "name": "search_application.put",
       "request": {
@@ -8202,7 +8202,7 @@
           "stability": "experimental"
         }
       },
-      "description": "Creates a behavioral analytics collection.",
+      "description": "Create a behavioral analytics collection.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/put-analytics-collection.html",
       "name": "search_application.put_behavioral_analytics",
       "request": {
@@ -8237,7 +8237,7 @@
           "stability": "beta"
         }
       },
-      "description": "Perform a search against a search application.",
+      "description": "Run a search application search.\nGenerate and run an Elasticsearch query that uses the specified query parameteter and the search template associated with the search application or default template.\nUnspecified template parameters are assigned their default values if applicable.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/search-application-search.html",
       "name": "search_application.search",
       "request": {
@@ -37340,7 +37340,7 @@
       "body": {
         "kind": "no_body"
       },
-      "description": "Deletes a search application.",
+      "description": "Delete a search application.\nRemove a search application and its associated alias. Indices attached to the search application are not removed.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -37367,7 +37367,7 @@
         }
       ],
       "query": [],
-      "specLocation": "search_application/delete/SearchApplicationsDeleteRequest.ts#L22-L35"
+      "specLocation": "search_application/delete/SearchApplicationsDeleteRequest.ts#L22-L36"
     },
     {
       "body": {
@@ -37394,7 +37394,7 @@
       "body": {
         "kind": "no_body"
       },
-      "description": "Delete a behavioral analytics collection.",
+      "description": "Delete a behavioral analytics collection.\nThe associated data stream is also deleted.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -37421,7 +37421,7 @@
         }
       ],
       "query": [],
-      "specLocation": "search_application/delete_behavioral_analytics/BehavioralAnalyticsDeleteRequest.ts#L22-L35"
+      "specLocation": "search_application/delete_behavioral_analytics/BehavioralAnalyticsDeleteRequest.ts#L22-L36"
     },
     {
       "body": {
@@ -37448,7 +37448,7 @@
       "body": {
         "kind": "no_body"
       },
-      "description": "Returns the details about a search application",
+      "description": "Get search application details.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -37502,7 +37502,7 @@
       "body": {
         "kind": "no_body"
       },
-      "description": "Returns the existing behavioral analytics collections.",
+      "description": "Get behavioral analytics collections.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -37677,7 +37677,7 @@
           }
         }
       },
-      "description": "Creates or updates a search application.",
+      "description": "Create or update a search application.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -37751,7 +37751,7 @@
       "body": {
         "kind": "no_body"
       },
-      "description": "Creates a behavioral analytics collection.",
+      "description": "Create a behavioral analytics collection.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -37826,7 +37826,7 @@
           }
         ]
       },
-      "description": "Perform a search against a search application.",
+      "description": "Run a search application search.\nGenerate and run an Elasticsearch query that uses the specified query parameteter and the search template associated with the search application or default template.\nUnspecified template parameters are assigned their default values if applicable.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -37873,7 +37873,7 @@
           }
         }
       ],
-      "specLocation": "search_application/search/SearchApplicationsSearchRequest.ts#L24-L52"
+      "specLocation": "search_application/search/SearchApplicationsSearchRequest.ts#L24-L54"
     },
     {
       "body": {
