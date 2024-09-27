@@ -126,6 +126,7 @@ export class Property {
   description?: string
   docUrl?: string
   docId?: string
+  docTag?: string
   serverDefault?: boolean | string | number | string[] | number[]
   deprecation?: Deprecation
   availability?: Availabilities
