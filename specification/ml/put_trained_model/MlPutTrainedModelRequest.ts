@@ -35,6 +35,7 @@ import { Definition, Input } from './types'
  * @availability stack since=7.10.0 stability=stable
  * @availability serverless stability=stable visibility=public
  * @cluster_privileges manage_ml
+ * @doc_tag Machine learning trained model
  */
 export interface Request extends RequestBase {
   path_parts: {
