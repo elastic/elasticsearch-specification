@@ -17,14 +17,14 @@
  * under the License.
  */
 
+import { OverloadOf } from '@spec_utils/behaviors'
+import { CharFilter } from '@_types/analysis/char_filters'
+import { Tokenizer } from '@_types/analysis/tokenizers'
+import { TokenFilter } from '@_types/analysis/token_filters'
 import { Field } from '@_types/common'
 import { long } from '@_types/Numeric'
 import { Duration } from '@_types/Time'
 import { Detector, DetectorRead } from './Detector'
-import { CharFilter } from '@_types/analysis/char_filters'
-import { Tokenizer, TokenizerDefinition } from '@_types/analysis/tokenizers'
-import { TokenFilter } from '@_types/analysis/token_filters'
-import { OverloadOf } from '@spec_utils/behaviors'
 
 export class AnalysisConfig {
   /**

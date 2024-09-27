@@ -17,20 +17,8 @@
  * under the License.
  */
 
-import { ProcessorContainer } from '@ingest/_types/Processors'
-import { Id, VersionNumber } from '@_types/common'
+import { AcknowledgedResponseBase } from '@_types/Base'
 
-export class ClusterStateIngest {
-  pipeline: ClusterStateIngestPipeline[]
-}
-
-export class ClusterStateIngestPipeline {
-  id: Id
-  config: ClusterStateIngestPipelineConfig
-}
-
-export class ClusterStateIngestPipelineConfig {
-  description?: string
-  version?: VersionNumber
-  processors: ProcessorContainer[]
+export class Response {
+  body: AcknowledgedResponseBase
 }

@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { Field } from '@_types/common'
+import { Field, GrokPattern } from '@_types/common'
 import { uint } from '@_types/Numeric'
 import { Duration } from '@_types/Time'
 
@@ -44,7 +44,7 @@ export interface Request<TJsonDocument> {
     /** The high level structure of the text. Valid values are ndjson, xml, delimited, and semi_structured_text. By default, the API chooses the format. In this default scenario, all rows must have the same number of fields for a delimited format to be detected. If the format is set to delimited and the delimiter is not set, however, the API tolerates up to 5% of rows that have a different number of columns than the first row. */
     format?: string
     /** If you have set format to semi_structured_text, you can specify a Grok pattern that is used to extract fields from every message in the text. The name of the timestamp field in the Grok pattern must match what is specified in the timestamp_field parameter. If that parameter is not specified, the name of the timestamp field in the Grok pattern must match "timestamp". If grok_pattern is not specified, the structure finder creates a Grok pattern. */
-    grok_pattern?: string
+    grok_pattern?: GrokPattern
     /** If you have set format to delimited, you can use this parameter to indicate whether the column names are in the first row of the text. If this parameter is not specified, the structure finder guesses based on the similarity of the first row of the text to other rows. */
     has_header_row?: boolean
     /**

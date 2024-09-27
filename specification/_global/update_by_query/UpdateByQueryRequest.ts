@@ -29,10 +29,10 @@ import {
 } from '@_types/common'
 import { float, long } from '@_types/Numeric'
 import { QueryContainer } from '@_types/query_dsl/abstractions'
+import { Operator } from '@_types/query_dsl/Operator'
 import { Script } from '@_types/Scripting'
 import { SlicedScroll } from '@_types/SlicedScroll'
 import { Duration } from '@_types/Time'
-import { Operator } from '@_types/query_dsl/Operator'
 
 /**
  * Update documents.
@@ -116,6 +116,10 @@ export interface Request extends RequestBase {
      * Random by default.
      */
     preference?: string
+    /**
+     * Query in the Lucene query string syntax.
+     */
+    q?: string
     /**
      * If `true`, Elasticsearch refreshes affected shards to make the operation visible to search.
      * @server_default false

@@ -18,7 +18,7 @@
  */
 
 import { Dictionary } from '@spec_utils/Dictionary'
-import { EmptyObject, Metadata, Name } from '@_types/common'
+import { Metadata } from '@_types/common'
 import { integer } from '@_types/Numeric'
 import { NodesCredentials } from './types'
 

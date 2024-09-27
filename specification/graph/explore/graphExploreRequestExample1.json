@@ -1,0 +1,7 @@
+{
+  "summary": "An initial graph explore query to identify strongly related terms.",
+  "method_request": "POST clicklogs/_graph/explore",
+  "description": "",
+  "type": "request",
+  "value": "{\n  \"query\": {\n    \"match\": {\n      \"query.raw\": \"midi\"\n    }\n  },\n  \"vertices\": [\n    {\n      \"field\": \"product\"\n    }\n  ],\n  \"connections\": {\n    \"vertices\": [\n      {\n        \"field\": \"query.raw\"\n      }\n    ]\n  }\n}"
+}

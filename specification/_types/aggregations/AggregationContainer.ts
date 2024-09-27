@@ -19,7 +19,7 @@
 
 import { Dictionary } from '@spec_utils/Dictionary'
 import { Metadata } from '@_types/common'
-import { integer, double } from '@_types/Numeric'
+import { double, integer } from '@_types/Numeric'
 import { QueryContainer } from '@_types/query_dsl/abstractions'
 import {
   AdjacencyMatrixAggregation,
@@ -31,12 +31,14 @@ import {
   DateRangeAggregation,
   DiversifiedSamplerAggregation,
   FiltersAggregation,
+  FrequentItemSetsAggregation,
   GeoDistanceAggregation,
   GeoHashGridAggregation,
-  GeoTileGridAggregation,
   GeohexGridAggregation,
+  GeoTileGridAggregation,
   GlobalAggregation,
   HistogramAggregation,
+  IpPrefixAggregation,
   IpRangeAggregation,
   MissingAggregation,
   MultiTermsAggregation,
@@ -49,9 +51,8 @@ import {
   SignificantTermsAggregation,
   SignificantTextAggregation,
   TermsAggregation,
-  VariableWidthHistogramAggregation,
-  IpPrefixAggregation,
-  FrequentItemSetsAggregation
+  TimeSeriesAggregation,
+  VariableWidthHistogramAggregation
 } from './bucket'
 import { MatrixStatsAggregation } from './matrix'
 import {
@@ -73,13 +74,15 @@ import {
   StringStatsAggregation,
   SumAggregation,
   TopHitsAggregation,
-  TTestAggregation,
   TopMetricsAggregation,
+  TTestAggregation,
   ValueCountAggregation,
   WeightedAverageAggregation
 } from './metric'
 import {
   AverageBucketAggregation,
+  BucketCorrelationAggregation,
+  BucketKsAggregation,
   BucketScriptAggregation,
   BucketSelectorAggregation,
   BucketSortAggregation,
@@ -91,15 +94,13 @@ import {
   MaxBucketAggregation,
   MinBucketAggregation,
   MovingAverageAggregation,
-  MovingPercentilesAggregation,
   MovingFunctionAggregation,
+  MovingPercentilesAggregation,
   NormalizeAggregation,
   PercentilesBucketAggregation,
   SerialDifferencingAggregation,
   StatsBucketAggregation,
-  SumBucketAggregation,
-  BucketCorrelationAggregation,
-  BucketKsAggregation
+  SumBucketAggregation
 } from './pipeline'
 
 /**
@@ -481,6 +482,14 @@ export class AggregationContainer {
    * @doc_id search-aggregations-bucket-terms-aggregation
    */
   terms?: TermsAggregation
+  /**
+   * The time series aggregation queries data created using a time series index.
+   * This is typically data such as metrics or other data streams with a time component, and requires creating an index using the time series mode.
+   * @doc_id search-aggregations-bucket-time-series-aggregation
+   * @availability stack stability=experimental
+   * @availability serverless stability=experimental
+   */
+  time_series?: TimeSeriesAggregation
   /**
    * A metric aggregation that returns the top matching documents per bucket.
    * @doc_id search-aggregations-metrics-top-hits-aggregation

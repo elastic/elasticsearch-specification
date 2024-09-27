@@ -17,33 +17,38 @@
  * under the License.
  */
 
-import { SortOrder } from '@_types/sort'
 import { Dictionary, SingleKeyDictionary } from '@spec_utils/Dictionary'
 import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
-import { EmptyObject, FieldValue } from '@_types/common'
-import { Field, RelationName, Fields } from '@_types/common'
+import { ValueType } from '@_types/aggregations/metric'
 import {
-  GeoDistanceType,
+  EmptyObject,
+  Field,
+  Fields,
+  FieldValue,
+  RelationName
+} from '@_types/common'
+import {
   DistanceUnit,
+  GeoBounds,
+  GeoDistanceType,
   GeoHashPrecision,
-  GeoTilePrecision,
   GeoLocation,
-  GeoBounds
+  GeoTilePrecision
 } from '@_types/Geo'
-import { integer, long, double } from '@_types/Numeric'
+import { double, integer, long } from '@_types/Numeric'
 import { QueryContainer } from '@_types/query_dsl/abstractions'
 import { Script } from '@_types/Scripting'
+import { SortOrder } from '@_types/sort'
 import {
+  DateMath,
   DateTime,
   Duration,
-  DateMath,
-  TimeZone,
-  DurationLarge
+  DurationLarge,
+  TimeZone
 } from '@_types/Time'
 import { Buckets } from './Aggregate'
 import { Aggregation } from './Aggregation'
 import { Missing, MissingOrder } from './AggregationContainer'
-import { ValueType } from '@_types/aggregations/metric'
 
 /**
  * Base type for bucket aggregations. These aggregations also accept sub-aggregations.
@@ -675,7 +680,7 @@ export class AggregationRange {
   /**
    * Start of the range (inclusive).
    */
-  from?: double
+  from?: double | null
   /**
    * Custom key to return the range with.
    */
@@ -683,7 +688,7 @@ export class AggregationRange {
   /**
    * End of the range (exclusive).
    */
-  to?: double
+  to?: double | null
 }
 
 export class RareTermsAggregation extends BucketAggregationBase {
@@ -974,6 +979,18 @@ export class TermsAggregation extends BucketAggregationBase {
    */
   size?: integer
   format?: string
+}
+
+export class TimeSeriesAggregation extends BucketAggregationBase {
+  /**
+   * The maximum number of results to return.
+   * @server_default 10000
+   */
+  size?: integer
+  /**
+   * Set to `true` to associate a unique string key with each bucket and returns the ranges as a hash rather than an array.
+   */
+  keyed?: boolean
 }
 
 // Note: ES is very lazy when parsing this data type: it accepts any number of properties in the objects below,

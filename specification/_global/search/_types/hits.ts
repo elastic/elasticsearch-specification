@@ -23,6 +23,7 @@ import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 import {
   Field,
   Fields,
+  FieldValue,
   Id,
   IndexName,
   Name,
@@ -30,12 +31,12 @@ import {
   VersionNumber
 } from '@_types/common'
 import { double, integer, long } from '@_types/Numeric'
+import { FieldAndFormat } from '@_types/query_dsl/abstractions'
 import { ScriptField } from '@_types/Scripting'
+import { Sort, SortResults } from '@_types/sort'
 import { FieldCollapse } from './FieldCollapse'
 import { Highlight } from './highlighting'
 import { SourceConfig } from './SourceFilter'
-import { FieldAndFormat } from '@_types/query_dsl/abstractions'
-import { Sort, SortResults } from '@_types/sort'
 
 export class Hit<TDocument> {
   _index: IndexName
@@ -49,10 +50,10 @@ export class Hit<TDocument> {
   fields?: Dictionary<string, UserDefinedValue>
   highlight?: Dictionary<string, string[]>
   inner_hits?: Dictionary<string, InnerHitsResult>
-  matched_queries?: string[] | Dictionary<string, double[]>
+  matched_queries?: string[] | Dictionary<string, double>
   _nested?: NestedIdentity
   _ignored?: string[]
-  ignored_field_values?: Dictionary<string, string[]>
+  ignored_field_values?: Dictionary<string, FieldValue[]>
   _shard?: string
   _node?: string
   _routing?: string

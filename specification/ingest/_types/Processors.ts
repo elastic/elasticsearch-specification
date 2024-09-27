@@ -17,12 +17,12 @@
  * under the License.
  */
 
-import { SortOrder } from '@_types/sort'
 import { Dictionary } from '@spec_utils/Dictionary'
 import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
-import { Field, Fields, Id, Name } from '@_types/common'
+import { Field, Fields, GrokPattern, Id, Name } from '@_types/common'
 import { GeoShapeRelation } from '@_types/Geo'
 import { double, integer, long } from '@_types/Numeric'
+import { SortOrder } from '@_types/sort'
 
 /**
  * @variants container
@@ -112,6 +112,12 @@ export class ProcessorContainer {
    */
   foreach?: ForeachProcessor
   /**
+   * Converts geo-grid definitions of grid tiles or cells to regular bounding boxes or polygons which describe their shape.
+   * This is useful if there is a need to interact with the tile shapes as spatially indexable fields.
+   * @doc_id geo-grid-processor
+   */
+  geo_grid?: GeoGridProcessor
+  /**
    * The `geoip` processor adds information about the geographical location of an IPv4 or IPv6 address.
    * @doc_id geoip-processor
    */
@@ -130,6 +136,12 @@ export class ProcessorContainer {
    * @doc_id gsub-processor
    */
   gsub?: GsubProcessor
+  /**
+   * Removes HTML tags from the field.
+   * If the field is an array of strings, HTML tags will be removed from all members of the array.
+   * @doc_id htmlstrip-processor
+   */
+  html_strip?: HtmlStripProcessor
   /**
    * Uses a pre-trained data frame analytics model or a model deployed for natural language processing tasks to infer against the data that is being ingested in the pipeline.
    * @doc_id inference-processor
@@ -162,6 +174,13 @@ export class ProcessorContainer {
    * @doc_id pipeline-processor
    */
   pipeline?: PipelineProcessor
+  /**
+   * The Redact processor uses the Grok rules engine to obscure text in the input document matching the given Grok patterns.
+   * The processor can be used to obscure Personal Identifying Information (PII) by configuring it to detect known patterns such as email or IP addresses.
+   * Text that matches a Grok pattern is replaced with a configurable string such as `<EMAIL>` where an email address is matched or simply replace all matches with the text `<REDACTED>` if preferred.
+   * @doc_id redact-processor
+   */
+  redact?: RedactProcessor
   /**
    * Removes existing fields.
    * If one field doesn’t exist, an exception will be thrown.
@@ -231,6 +250,12 @@ export class ProcessorContainer {
    */
   urldecode?: UrlDecodeProcessor
   /**
+   * Parses a Uniform Resource Identifier (URI) string and extracts its components as an object.
+   * This URI object includes properties for the URI’s domain, path, fragment, port, query, scheme, user info, username, and password.
+   * @doc_id uri-parts-processor
+   */
+  uri_parts?: UriPartsProcessor
+  /**
    * The `user_agent` processor extracts details from the user agent string a browser sends with its web requests.
    * This processor adds this information by default under the `user_agent` field.
    * @doc_id user-agent-processor
@@ -263,19 +288,6 @@ export class ProcessorBase {
   tag?: string
 }
 
-export enum UserAgentProperty {
-  NAME,
-  MAJOR,
-  MINOR,
-  PATCH,
-  OS,
-  OS_NAME,
-  OS_MAJOR,
-  OS_MINOR,
-  DEVICE,
-  BUILD
-}
-
 export class AppendProcessor extends ProcessorBase {
   /**
    * The field to be appended to.
@@ -285,7 +297,7 @@ export class AppendProcessor extends ProcessorBase {
   /**
    * The value to be appended. Supports template snippets.
    */
-  value: UserDefinedValue[]
+  value: UserDefinedValue | UserDefinedValue[]
   /**
    * If `false`, the processor does not append values already present in the field.
    * @server_default true
@@ -336,6 +348,60 @@ export class AttachmentProcessor extends ProcessorBase {
   resource_name?: string
 }
 
+export class GeoGridProcessor extends ProcessorBase {
+  /**
+   * The field to interpret as a geo-tile.=
+   * The field format is determined by the `tile_type`.
+   */
+  field: string
+  /**
+   * Three tile formats are understood: geohash, geotile and geohex.
+   */
+  tile_type: GeoGridTileType
+  /**
+   * The field to assign the polygon shape to, by default, the `field` is updated in-place.
+   * @server_default field
+   */
+  target_field?: Field
+  /**
+   * If specified and a parent tile exists, save that tile address to this field.
+   */
+  parent_field?: Field
+  /**
+   * If specified and children tiles exist, save those tile addresses to this field as an array of strings.
+   */
+  children_field?: Field
+  /**
+   * If specified and intersecting non-child tiles exist, save their addresses to this field as an array of strings.
+   */
+  non_children_field?: Field
+  /**
+   * If specified, save the tile precision (zoom) as an integer to this field.
+   */
+  precision_field?: Field
+  /**
+   * If `true` and `field` does not exist, the processor quietly exits without modifying the document.
+   * @server_default false
+   */
+  ignore_missing?: boolean
+  /**
+   * Which format to save the generated polygon in.
+   * @server_default geojson
+   */
+  target_format?: GeoGridTargetFormat
+}
+
+export enum GeoGridTileType {
+  geotile,
+  geohex,
+  geohash
+}
+
+export enum GeoGridTargetFormat {
+  geojson,
+  wkt
+}
+
 export class GeoIpProcessor extends ProcessorBase {
   /**
    * The database filename referring to a database the module ships with (GeoLite2-City.mmdb, GeoLite2-Country.mmdb, or GeoLite2-ASN.mmdb) or a custom database in the ingest-geoip config directory.
@@ -365,6 +431,11 @@ export class GeoIpProcessor extends ProcessorBase {
    * @server_default geoip
    */
   target_field?: Field
+  /**
+   * If `true` (and if `ingest.geoip.downloader.eager.download` is `false`), the missing database is downloaded when the pipeline is created.
+   * Else, the download is triggered by when the pipeline is used as the `default_pipeline` or `final_pipeline` in an index.
+   */
+  download_database_on_pipeline_creation?: boolean
 }
 
 export class UserAgentProcessor extends ProcessorBase {
@@ -377,7 +448,6 @@ export class UserAgentProcessor extends ProcessorBase {
    * @server_default false
    */
   ignore_missing?: boolean
-  options?: UserAgentProperty[]
   /**
    * The name of the file in the `config/ingest-user-agent` directory containing the regular expressions for parsing the user agent string. Both the directory and the file have to be created before starting Elasticsearch. If not specified, ingest-user-agent will use the `regexes.yaml` from uap-core it ships with.
    */
@@ -387,6 +457,26 @@ export class UserAgentProcessor extends ProcessorBase {
    * @server_default user_agent
    */
   target_field?: Field
+  /**
+   * Controls what properties are added to `target_field`.
+   * @server_default ['name', 'major', 'minor', 'patch', 'build', 'os', 'os_name', 'os_major', 'os_minor', 'device']
+   */
+  properties?: UserAgentProperty[]
+  /**
+   * Extracts device type from the user agent string on a best-effort basis.
+   * @server_default false
+   * @availability stack since=8.9.0 stability=beta
+   * @availability serverless
+   */
+  extract_device_type?: boolean
+}
+
+export enum UserAgentProperty {
+  name,
+  os,
+  device,
+  original,
+  version
 }
 
 export class BytesProcessor extends ProcessorBase {
@@ -596,6 +686,13 @@ export class DotExpanderProcessor extends ProcessorBase {
    */
   field: Field
   /**
+   * Controls the behavior when there is already an existing nested object that conflicts with the expanded field.
+   * When `false`, the processor will merge conflicts by combining the old and the new values into an array.
+   * When `true`, the value from the expanded field will overwrite the existing value.
+   * @server_default false
+   */
+  override?: boolean
+  /**
    * The field that contains the field to expand.
    * Only required if the field to expand is part another object field, because the `field` option can only understand leaf fields.
    */
@@ -688,7 +785,7 @@ export class GrokProcessor extends ProcessorBase {
    * An ordered list of grok expression to match and extract named captures with.
    * Returns on the first expression in the list that matches.
    */
-  patterns: string[]
+  patterns: GrokPattern[]
   /**
    * When `true`, `_ingest._grok_match_index` will be inserted into your matched document’s metadata with the index into the pattern found in `patterns` that matched.
    * @server_default false
@@ -714,6 +811,24 @@ export class GsubProcessor extends ProcessorBase {
    * The string to replace the matching patterns with.
    */
   replacement: string
+  /**
+   * The field to assign the converted value to
+   * By default, the `field` is updated in-place.
+   * @server_default field
+   */
+  target_field?: Field
+}
+
+export class HtmlStripProcessor extends ProcessorBase {
+  /**
+   * The string-valued field to remove HTML tags from.
+   */
+  field: Field
+  /**
+   * If `true` and `field` does not exist or is `null`, the processor quietly exits without modifying the document,
+   * @server_default false
+   */
+  ignore_missing?: boolean
   /**
    * The field to assign the converted value to
    * By default, the `field` is updated in-place.
@@ -936,6 +1051,42 @@ export class PipelineProcessor extends ProcessorBase {
    * @server_default false
    */
   ignore_missing_pipeline?: boolean
+}
+
+export class RedactProcessor extends ProcessorBase {
+  /**
+   * The field to be redacted
+   */
+  field: Field
+  /**
+   * A list of grok expressions to match and redact named captures with
+   */
+  patterns: GrokPattern[]
+  /*
+   * A map of pattern-name and pattern tuples defining custom patterns to be used by the processor.
+   * Patterns matching existing names will override the pre-existing definition
+   */
+  pattern_definitions?: Dictionary<string, string>
+  /**
+   * Start a redacted section with this token
+   * @server_default <
+   */
+  prefix?: string
+  /**
+   * End a redacted section with this token
+   * @server_default >
+   */
+  suffix?: string
+  /**
+   * If `true` and `field` does not exist or is `null`, the processor quietly exits without modifying the document.
+   * @server_default false
+   */
+  ignore_missing?: boolean
+  /**
+   * If `true` and the current license does not support running redact processors, then the processor quietly exits without modifying the document
+   * @server_default false
+   */
+  skip_if_unlicensed?: boolean
 }
 
 export class RemoveProcessor extends ProcessorBase {
@@ -1171,6 +1322,34 @@ export class UrlDecodeProcessor extends ProcessorBase {
    * The field to assign the converted value to.
    * By default, the field is updated in-place.
    * @server_default field
+   */
+  target_field?: Field
+}
+
+export class UriPartsProcessor extends ProcessorBase {
+  /**
+   * Field containing the URI string.
+   */
+  field: Field
+  /**
+   * If `true` and `field` does not exist, the processor quietly exits without modifying the document.
+   * @server_default false
+   */
+  ignore_missing?: boolean
+  /**
+   * If `true`, the processor copies the unparsed URI to `<target_field>.original`.
+   * @server_default true
+   */
+  keep_original?: boolean
+  /**
+   * If `true`, the processor removes the `field` after parsing the URI string.
+   * If parsing fails, the processor does not remove the `field`.
+   * @server_default false
+   */
+  remove_if_successful?: boolean
+  /**
+   * Output field for the URI object.
+   * @server_default url
    */
   target_field?: Field
 }

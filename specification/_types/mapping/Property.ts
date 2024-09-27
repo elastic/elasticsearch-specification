@@ -18,7 +18,21 @@
  */
 
 import { Dictionary } from '@spec_utils/Dictionary'
-import { Metadata, PropertyName } from '@_types/common'
+import { PropertyName } from '@_types/common'
+import {
+  GeoPointProperty,
+  GeoShapeProperty,
+  PointProperty,
+  ShapeProperty
+} from '@_types/mapping/geo'
+import {
+  DateRangeProperty,
+  DoubleRangeProperty,
+  FloatRangeProperty,
+  IntegerRangeProperty,
+  IpRangeProperty,
+  LongRangeProperty
+} from '@_types/mapping/range'
 import { integer } from '@_types/Numeric'
 import {
   AggregateMetricDoubleProperty,
@@ -47,8 +61,8 @@ import {
   RankFeaturesProperty,
   ScaledFloatNumberProperty,
   SearchAsYouTypeProperty,
-  ShortNumberProperty,
   SemanticTextProperty,
+  ShortNumberProperty,
   SparseVectorProperty,
   TextProperty,
   UnsignedLongNumberProperty,
@@ -66,20 +80,6 @@ import {
   Murmur3HashProperty,
   TokenCountProperty
 } from './specialized'
-import {
-  DateRangeProperty,
-  DoubleRangeProperty,
-  FloatRangeProperty,
-  IntegerRangeProperty,
-  IpRangeProperty,
-  LongRangeProperty
-} from '@_types/mapping/range'
-import {
-  GeoPointProperty,
-  GeoShapeProperty,
-  PointProperty,
-  ShapeProperty
-} from '@_types/mapping/geo'
 
 export class PropertyBase {
   /**

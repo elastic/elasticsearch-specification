@@ -18,14 +18,14 @@
  */
 
 import { HitsMetadata } from '@global/search/_types/hits'
-import { double, integer, long } from '@_types/Numeric'
-import { ClusterStatistics, ShardStatistics } from '@_types/Stats'
-import { Dictionary } from '@spec_utils/Dictionary'
-import { AggregateName, Id, ScrollId, SuggestionName } from '@_types/common'
-import { Aggregate } from '@_types/aggregations/Aggregate'
-import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 import { Profile } from '@global/search/_types/profile'
 import { Suggest } from '@global/search/_types/suggester'
+import { Dictionary } from '@spec_utils/Dictionary'
+import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
+import { Aggregate } from '@_types/aggregations/Aggregate'
+import { AggregateName, Id, ScrollId, SuggestionName } from '@_types/common'
+import { double, long } from '@_types/Numeric'
+import { ClusterStatistics, ShardStatistics } from '@_types/Stats'
 
 export class Response<TDocument> {
   body: {

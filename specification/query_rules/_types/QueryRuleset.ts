@@ -17,9 +17,9 @@
  * under the License.
  */
 
+import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 import { Id } from '@_types/common'
 import { integer } from '@_types/Numeric'
-import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 import { PinnedDoc } from '../../_types/query_dsl/specialized'
 
 export class QueryRuleset {
@@ -42,7 +42,8 @@ export class QueryRule {
 }
 
 export enum QueryRuleType {
-  pinned
+  pinned,
+  exclude
 }
 
 export class QueryRuleCriteria {

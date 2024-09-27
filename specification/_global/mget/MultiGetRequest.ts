@@ -17,10 +17,10 @@
  * under the License.
  */
 
+import { SourceConfigParam } from '@global/search/_types/SourceFilter'
 import { RequestBase } from '@_types/Base'
 import { Fields, Ids, IndexName, Routing } from '@_types/common'
 import { Operation } from './types'
-import { SourceConfigParam } from '@global/search/_types/SourceFilter'
 
 /**
  * @rest_spec_name mget

@@ -46,7 +46,7 @@ export interface Request extends RequestBase {
     /**
      * Sample documents to test in the pipeline.
      */
-    docs?: Document[]
+    docs: Document[]
     /**
      * Pipeline to test.
      * If you don’t specify the `pipeline` request path parameter, this parameter is required.

@@ -18,7 +18,7 @@
  */
 
 import { Name } from '@_types/common'
-import { integer, long } from '@_types/Numeric'
+import { integer } from '@_types/Numeric'
 import { DurationValue, UnitMillis } from '@_types/Time'
 
 export class GeoIpDownloadStatistics {
@@ -29,9 +29,11 @@ export class GeoIpDownloadStatistics {
   /** Total milliseconds spent downloading databases. */
   total_download_time: DurationValue<UnitMillis>
   /** Current number of databases available for use. */
-  database_count: integer
+  databases_count: integer
   /** Total number of database updates skipped. */
   skipped_updates: integer
+  /** Total number of databases not updated after 30 days */
+  expired_databases: integer
 }
 
 /** Downloaded databases for the node. The field key is the node ID. */

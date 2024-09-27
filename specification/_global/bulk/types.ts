@@ -17,12 +17,13 @@
  * under the License.
  */
 
-import { InlineGet } from '@_types/common'
+import { SourceConfig } from '@global/search/_types/SourceFilter'
 import { Dictionary } from '@spec_utils/Dictionary'
 import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 import {
   Id,
   IndexName,
+  InlineGet,
   Routing,
   SequenceNumber,
   VersionNumber,
@@ -30,9 +31,8 @@ import {
 } from '@_types/common'
 import { ErrorCause } from '@_types/Errors'
 import { integer, long } from '@_types/Numeric'
-import { ShardStatistics } from '@_types/Stats'
 import { Script } from '@_types/Scripting'
-import { SourceConfig } from '@global/search/_types/SourceFilter'
+import { ShardStatistics } from '@_types/Stats'
 
 export class ResponseItem {
   /**

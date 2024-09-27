@@ -17,8 +17,6 @@
  * under the License.
  */
 
-import { HotThread } from './types'
-
 export class Response {
-  body: { hot_threads: HotThread[] }
+  body: string
 }

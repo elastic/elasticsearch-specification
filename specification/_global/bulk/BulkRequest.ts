@@ -17,6 +17,7 @@
  * under the License.
  */
 
+import { SourceConfigParam } from '@global/search/_types/SourceFilter'
 import { RequestBase } from '@_types/Base'
 import {
   Fields,
@@ -27,7 +28,6 @@ import {
 } from '@_types/common'
 import { Duration } from '@_types/Time'
 import { OperationContainer, UpdateAction } from './types'
-import { SourceConfigParam } from '@global/search/_types/SourceFilter'
 
 /**
  * Bulk index or delete documents.

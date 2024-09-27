@@ -17,10 +17,27 @@
  * under the License.
  */
 
-import { Dictionary } from '@spec_utils/Dictionary'
-import { NodeShard } from '@_types/Node'
+import { RequestBase } from '@_types/Base'
+import { Names } from '@_types/common'
+import { integer } from '@_types/Numeric'
 
-export class ClusterStateRoutingNodes {
-  unassigned: NodeShard[]
-  nodes: Dictionary<string, NodeShard[]>
+/**
+ * @rest_spec_name snapshot.repository_verify_integrity
+ * @availability stack since=8.16.0 stability=experimental visibility=private
+ */
+export interface Request extends RequestBase {
+  path_parts: {
+    /** @codegen_name name */
+    repository: Names
+  }
+  query_parameters: {
+    meta_thread_pool_concurrency?: integer
+    blob_thread_pool_concurrency?: integer
+    snapshot_verification_concurrency?: integer
+    index_verification_concurrency?: integer
+    index_snapshot_verification_concurrency?: integer
+    max_failed_shard_snapshots?: integer
+    verify_blob_contents?: boolean
+    max_bytes_per_sec?: string
+  }
 }

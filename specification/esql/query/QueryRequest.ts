@@ -17,11 +17,11 @@
  * under the License.
  */
 
+import { TableValuesContainer } from '@esql/_types/TableValuesContainer'
 import { Dictionary } from '@spec_utils/Dictionary'
 import { RequestBase } from '@_types/Base'
-import { QueryContainer } from '@_types/query_dsl/abstractions'
 import { FieldValue } from '@_types/common'
-import { TableValuesContainer } from '@esql/_types/TableValuesContainer'
+import { QueryContainer } from '@_types/query_dsl/abstractions'
 
 /**
  * Executes an ES|QL request
@@ -35,7 +35,7 @@ export interface Request extends RequestBase {
     /**
      * A short version of the Accept header, e.g. json, yaml.
      */
-    format?: string
+    format?: EsqlFormat
     /**
      * The character to use between values within a CSV row. Only valid for the CSV format.
      */
@@ -86,4 +86,15 @@ export interface Request extends RequestBase {
      */
     tables?: Dictionary<string, Dictionary<string, TableValuesContainer>>
   }
+}
+
+export enum EsqlFormat {
+  csv,
+  json,
+  tsv,
+  txt,
+  yaml,
+  cbor,
+  smile,
+  arrow
 }

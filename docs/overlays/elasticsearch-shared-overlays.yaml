@@ -1,0 +1,188 @@
+# Overlays that are applicable to both Elasticsearch and Elasticsearch Serverless OpenAPI documents
+overlay: 1.0.0
+info:
+  title: Overlays for changes that apply to both Elasticsearch and Elasticsearch Serverless OpenAPI documents
+  version: 0.0.1
+actions:
+# Abbreviate and annotate items that are not shown in Bump.sh due to depth limits
+  - target: "$.components['schemas']['ml._types:Datafeed'].properties.query"
+    description: Remove query object from anomaly detection datafeed
+    remove: true
+  - target: "$.components['schemas']['ml._types:Datafeed'].properties"
+    description: Re-add a simplified query object in anomaly detection datafeed
+    update:
+      query:
+        x-abbreviated: true
+        type: object
+        description: >
+          The Elasticsearch query domain-specific language (DSL).
+          This value corresponds to the query object in an Elasticsearch search POST body.
+          All the options that are supported by Elasticsearch can be used, as this object is passed verbatim to Elasticsearch.
+          By default, this property has the following value: `{"match_all": {"boost": 1}}`.
+        externalDocs:
+          url: https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl.html
+          description: Query DSL
+  - target: "$.components['schemas']['ml._types:CategorizationAnalyzerDefinition'].properties.tokenizer"
+    description: Remove tokenizer object from ML anomaly detection analysis config
+    remove: true
+  - target: "$.components['schemas']['ml._types:CategorizationAnalyzerDefinition'].properties"
+    description: Re-add a simplified tokenizer object in anomaly detection analysis config
+    update:
+      tokenizer:
+        x-abbreviated: true
+        oneOf:
+          - type: object
+          - type: string
+        description: >
+          The name or definition of the tokenizer to use after character filters are applied.
+          This property is compulsory if `categorization_analyzer` is specified as an object.
+          Machine learning provides a tokenizer called `ml_standard` that tokenizes in a way that has been determined to produce good categorization results on a variety of log file formats for logs in English.
+          If you want to use that tokenizer but change the character or token filters, specify `"tokenizer": "ml_standard"` in your `categorization_analyzer`.
+          Additionally, the `ml_classic` tokenizer is available, which tokenizes in the same way as the non-customizable tokenizer in old versions of the product (before 6.2).
+          `ml_classic` was the default categorization tokenizer in versions 6.2 to 7.13, so if you need categorization identical to the default for jobs created in these versions, specify `"tokenizer": "ml_classic"` in your `categorization_analyzer`.
+        externalDocs:
+          url: https://www.elastic.co/guide/en/elasticsearch/reference/current/analysis-tokenizers.html
+          description: Tokenizer reference
+  - target: "$.components['schemas']['ml._types:DataframeAnalyticsSource'].properties.query"
+    description: Remove query object from data frame analytics source
+    remove: true
+  - target: "$.components['schemas']['ml._types:DataframeAnalyticsSource'].properties"
+    description: Re-add a simplified query object in data frame analytics source
+    update:
+      query:
+        x-abbreviated: true
+        type: object
+        description: >
+          The Elasticsearch query domain-specific language (DSL).
+          This value corresponds to the query object in an Elasticsearch search POST body.
+          All the options that are supported by Elasticsearch can be used, as this object is passed verbatim to Elasticsearch.
+          By default, this property has the following value: `{"match_all": {}}`.
+        externalDocs:
+          url: https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl.html
+          description: Query DSL
+  - target: "$.components['schemas']['transform._types:Source'].properties.query"
+    description: Remove query object from transform source
+    remove: true
+  - target: "$.components['schemas']['transform._types:Source'].properties"
+    description: Re-add a simplified query object in transform source
+    update:
+      query:
+        x-abbreviated: true
+        type: object
+        description: >
+          A query clause that retrieves a subset of data from the source index.
+        externalDocs:
+          url: https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl.html
+          description: Query DSL
+# Examples
+  - target: "$.components['requestBodies']['async_search.submit']"
+    description: "Add example for asynch search submit request"
+    update: 
+      content:
+        application/json:
+          examples:
+            asyncSearchSubmitResponseExample1:
+              $ref: "../../specification/async_search/submit/AsyncSearchSubmitRequestExample1.json"
+  - target: "$.components['responses']['async_search.submit#200']"
+    description: "Add example for asynch search submit response"
+    update: 
+      content:
+        application/json:
+          examples:
+            asyncSearchSubmitResponseExample1:
+              $ref: "../../specification/async_search/submit/AsyncSearchSubmitResponseExample1.json"
+  - target: "$.paths['/_transform/{transform_id}']['put']"
+    description: "Add examples for create transform operation"
+    update: 
+      requestBody: 
+        content: 
+          application/json: 
+            examples: 
+              createTransformRequestExample1: 
+                $ref: "../../specification/transform/put_transform/PutTransformRequestExample1.json"
+              createTransformRequestExample2:
+                $ref: "../../specification/transform/put_transform/PutTransformRequestExample2.json"
+      responses:
+        200:
+          content:
+            application/json:
+              examples:
+                createTransformResponseExample1:
+                  $ref: "../../specification/transform/put_transform/PutTransformResponseExample1.json"
+  - target: "$.components['requestBodies']['transform.preview_transform']"
+    description: "Add examples for preview transform operation"
+    update: 
+      content: 
+        application/json: 
+          examples: 
+            previewTransformRequestExample1: 
+              $ref: "../../specification/transform/preview_transform/PreviewTransformRequestExample1.json"
+  - target: "$.components['reponses']['transform.preview_transform#200']"
+    description: "Add examples for preview transform operation"
+    update: 
+      content:
+        application/json:
+          examples:
+            previewTransformResponseExample1:
+              $ref: "../../specification/transform/preview_transform/PreviewTransformResponseExample1.json"
+  - target: "$.paths['/_transform/{transform_id}/_update']['post']"
+    description: "Add examples for update transform operation"
+    update: 
+      requestBody: 
+        content: 
+          application/json: 
+            examples: 
+              updateTransformRequestExample1: 
+                $ref: "../../specification/transform/update_transform/UpdateTransformRequestExample1.json"
+      responses:
+        200:
+          content:
+            application/json:
+              examples:
+                updateTransformResponseExample1:
+                  $ref: "../../specification/transform/update_transform/UpdateTransformResponseExample1.json"
+  - target: "$.paths['/_eql/search/status/{id}']['get']"
+    description: "Add examples for get async EQL status operation"
+    update: 
+      responses:
+        200:
+          content:
+            application/json:
+              examples:
+                eqlGetStatusResponseExample1:
+                  $ref: "../../specification/eql/get_status/EqlGetStatusResponseExample1.json"
+  - target: "$.components['requestBodies']['eql.search']"
+    description: "Add examples for EQL search operation"
+    update: 
+      content: 
+        application/json: 
+          examples: 
+            eqlSearchRequestExample1: 
+              $ref: "../../specification/eql/search/EqlSearchRequestExample1.json"
+            eqlSearchRequestExample2: 
+              $ref: "../../specification/eql/search/EqlSearchRequestExample2.json"
+  - target: "$.components['reponses']['eql.search#200']"
+    description: "Add examples for EQL search operation"
+    update: 
+      content:
+        application/json:
+          examples:
+            eqlSearchResponseExample2:
+              $ref: "../../specification/eql/search/EqlSearchResponseExample2.json"
+  - target: "$.paths['/_query']['post']"
+    description: "Add examples for ES|QL query operation"
+    update: 
+      requestBody: 
+        content: 
+          application/json: 
+            examples: 
+              esqlQueryRequestExample1: 
+                $ref: "../../specification/esql/query/EsqlQueryApiRequestExample1.json"
+  - target: "$.components['requestBodies']['graph.explore']"
+    description: "Add example for graph explore request"
+    update: 
+      content:
+        application/json:
+          examples:
+            graphExploreRequestExample1:
+              $ref: "../../specification/graph/explore/graphExploreRequestExample1.json"
