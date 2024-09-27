@@ -25761,14 +25761,7 @@
         "tags": [
           "search_application"
         ],
-<<<<<<< HEAD
         "summary": "Get search application details",
-        "externalDocs": {
-          "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/get-search-application.html"
-        },
-=======
-        "summary": "Returns the details about a search application",
->>>>>>> cd597fd13 ([OpenAPI] Remove self-referential externalDocs (#2925))
         "operationId": "search-application-get",
         "parameters": [
           {
@@ -25802,14 +25795,7 @@
         "tags": [
           "search_application"
         ],
-<<<<<<< HEAD
         "summary": "Create or update a search application",
-        "externalDocs": {
-          "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/put-search-application.html"
-        },
-=======
-        "summary": "Creates or updates a search application",
->>>>>>> cd597fd13 ([OpenAPI] Remove self-referential externalDocs (#2925))
         "operationId": "search-application-put",
         "parameters": [
           {
@@ -25871,15 +25857,8 @@
         "tags": [
           "search_application"
         ],
-<<<<<<< HEAD
         "summary": "Delete a search application",
         "description": "Remove a search application and its associated alias. Indices attached to the search application are not removed.",
-        "externalDocs": {
-          "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/delete-search-application.html"
-        },
-=======
-        "summary": "Deletes a search application",
->>>>>>> cd597fd13 ([OpenAPI] Remove self-referential externalDocs (#2925))
         "operationId": "search-application-delete",
         "parameters": [
           {
@@ -25915,14 +25894,7 @@
         "tags": [
           "search_application"
         ],
-<<<<<<< HEAD
         "summary": "Get behavioral analytics collections",
-        "externalDocs": {
-          "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/list-analytics-collection.html"
-        },
-=======
-        "summary": "Returns the existing behavioral analytics collections",
->>>>>>> cd597fd13 ([OpenAPI] Remove self-referential externalDocs (#2925))
         "operationId": "search-application-get-behavioral-analytics-1",
         "parameters": [
           {
@@ -25941,14 +25913,7 @@
         "tags": [
           "search_application"
         ],
-<<<<<<< HEAD
         "summary": "Create a behavioral analytics collection",
-        "externalDocs": {
-          "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/put-analytics-collection.html"
-        },
-=======
-        "summary": "Creates a behavioral analytics collection",
->>>>>>> cd597fd13 ([OpenAPI] Remove self-referential externalDocs (#2925))
         "operationId": "search-application-put-behavioral-analytics",
         "parameters": [
           {
@@ -25983,13 +25948,7 @@
           "search_application"
         ],
         "summary": "Delete a behavioral analytics collection",
-<<<<<<< HEAD
         "description": "The associated data stream is also deleted.",
-        "externalDocs": {
-          "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/delete-analytics-collection.html"
-        },
-=======
->>>>>>> cd597fd13 ([OpenAPI] Remove self-referential externalDocs (#2925))
         "operationId": "search-application-delete-behavioral-analytics",
         "parameters": [
           {
@@ -26025,14 +25984,7 @@
         "tags": [
           "search_application"
         ],
-<<<<<<< HEAD
         "summary": "Get behavioral analytics collections",
-        "externalDocs": {
-          "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/list-analytics-collection.html"
-        },
-=======
-        "summary": "Returns the existing behavioral analytics collections",
->>>>>>> cd597fd13 ([OpenAPI] Remove self-referential externalDocs (#2925))
         "operationId": "search-application-get-behavioral-analytics",
         "responses": {
           "200": {
@@ -26118,15 +26070,8 @@
         "tags": [
           "search_application"
         ],
-<<<<<<< HEAD
         "summary": "Run a search application search",
         "description": "Generate and run an Elasticsearch query that uses the specified query parameteter and the search template associated with the search application or default template.\nUnspecified template parameters are assigned their default values if applicable.",
-        "externalDocs": {
-          "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/search-application-search.html"
-        },
-=======
-        "summary": "Perform a search against a search application",
->>>>>>> cd597fd13 ([OpenAPI] Remove self-referential externalDocs (#2925))
         "operationId": "search-application-search",
         "parameters": [
           {
@@ -26151,15 +26096,8 @@
         "tags": [
           "search_application"
         ],
-<<<<<<< HEAD
         "summary": "Run a search application search",
         "description": "Generate and run an Elasticsearch query that uses the specified query parameteter and the search template associated with the search application or default template.\nUnspecified template parameters are assigned their default values if applicable.",
-        "externalDocs": {
-          "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/search-application-search.html"
-        },
-=======
-        "summary": "Perform a search against a search application",
->>>>>>> cd597fd13 ([OpenAPI] Remove self-referential externalDocs (#2925))
         "operationId": "search-application-search-1",
         "parameters": [
           {
