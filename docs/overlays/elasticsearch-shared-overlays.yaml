@@ -18,9 +18,6 @@ actions:
     update:
       tags:
       # A
-        - name: async_search
-          description: The async search API enables you to asynchronously run a search request, monitor its progress, and retrieve partial results as they become available.
-          x-displayName: Async search
         - name: autoscaling
           x-displayName: Autoscaling
       # C 
@@ -200,6 +197,9 @@ actions:
           x-displayName: Script - Run painless
         - name: search
           x-displayName: Search
+        - name: async_search
+          description: The async search API enables you to asynchronously run a search request, monitor its progress, and retrieve partial results as they become available.
+          x-displayName: Search - Async
         - name: clear_scroll
           x-displayName: Search - Clear scroll
         - name: close_point_in_time
