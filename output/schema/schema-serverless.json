@@ -82270,14 +82270,26 @@
           "name": "keywords",
           "required": false,
           "type": {
-            "kind": "array_of",
-            "value": {
-              "kind": "instance_of",
-              "type": {
-                "name": "string",
-                "namespace": "_builtins"
+            "items": [
+              {
+                "kind": "instance_of",
+                "type": {
+                  "name": "string",
+                  "namespace": "_builtins"
+                }
+              },
+              {
+                "kind": "array_of",
+                "value": {
+                  "kind": "instance_of",
+                  "type": {
+                    "name": "string",
+                    "namespace": "_builtins"
+                  }
+                }
               }
-            }
+            ],
+            "kind": "union_of"
           }
         },
         {
@@ -84417,7 +84429,7 @@
         "name": "Tokenizer",
         "namespace": "_types.analysis"
       },
-      "specLocation": "_types/analysis/tokenizers.ts#L137-L139",
+      "specLocation": "_types/analysis/tokenizers.ts#L140-L142",
       "type": {
         "items": [
           {
@@ -84444,7 +84456,7 @@
         "name": "TokenizerDefinition",
         "namespace": "_types.analysis"
       },
-      "specLocation": "_types/analysis/tokenizers.ts#L141-L164",
+      "specLocation": "_types/analysis/tokenizers.ts#L144-L167",
       "type": {
         "items": [
           {
@@ -84782,7 +84794,8 @@
         },
         {
           "name": "buffer_size",
-          "required": true,
+          "required": false,
+          "serverDefault": 256,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -84792,7 +84805,7 @@
           }
         }
       ],
-      "specLocation": "_types/analysis/tokenizers.ts#L68-L71"
+      "specLocation": "_types/analysis/tokenizers.ts#L68-L74"
     },
     {
       "inherits": {
@@ -84816,7 +84829,7 @@
           }
         }
       ],
-      "specLocation": "_types/analysis/tokenizers.ts#L73-L75"
+      "specLocation": "_types/analysis/tokenizers.ts#L76-L78"
     },
     {
       "inherits": {
@@ -84840,7 +84853,7 @@
           }
         }
       ],
-      "specLocation": "_types/analysis/tokenizers.ts#L77-L79"
+      "specLocation": "_types/analysis/tokenizers.ts#L80-L82"
     },
     {
       "inherits": {
@@ -84912,7 +84925,7 @@
           }
         }
       ],
-      "specLocation": "_types/analysis/tokenizers.ts#L81-L90"
+      "specLocation": "_types/analysis/tokenizers.ts#L84-L93"
     },
     {
       "inherits": {
@@ -85018,7 +85031,7 @@
           }
         }
       ],
-      "specLocation": "_types/analysis/tokenizers.ts#L92-L99"
+      "specLocation": "_types/analysis/tokenizers.ts#L95-L102"
     },
     {
       "inherits": {
@@ -85075,7 +85088,7 @@
           }
         }
       ],
-      "specLocation": "_types/analysis/tokenizers.ts#L101-L106"
+      "specLocation": "_types/analysis/tokenizers.ts#L104-L109"
     },
     {
       "inherits": {
@@ -85110,7 +85123,7 @@
           }
         }
       ],
-      "specLocation": "_types/analysis/tokenizers.ts#L108-L111"
+      "specLocation": "_types/analysis/tokenizers.ts#L111-L114"
     },
     {
       "inherits": {
@@ -85145,7 +85158,7 @@
           }
         }
       ],
-      "specLocation": "_types/analysis/tokenizers.ts#L113-L116"
+      "specLocation": "_types/analysis/tokenizers.ts#L116-L119"
     },
     {
       "inherits": {
@@ -85180,7 +85193,7 @@
           }
         }
       ],
-      "specLocation": "_types/analysis/tokenizers.ts#L118-L121"
+      "specLocation": "_types/analysis/tokenizers.ts#L121-L124"
     },
     {
       "inherits": {
@@ -85204,7 +85217,7 @@
           }
         }
       ],
-      "specLocation": "_types/analysis/tokenizers.ts#L123-L125"
+      "specLocation": "_types/analysis/tokenizers.ts#L126-L128"
     },
     {
       "inherits": {
@@ -85239,7 +85252,7 @@
           }
         }
       ],
-      "specLocation": "_types/analysis/tokenizers.ts#L127-L130"
+      "specLocation": "_types/analysis/tokenizers.ts#L130-L133"
     },
     {
       "inherits": {
@@ -85274,7 +85287,7 @@
           }
         }
       ],
-      "specLocation": "_types/analysis/tokenizers.ts#L132-L135"
+      "specLocation": "_types/analysis/tokenizers.ts#L135-L138"
     },
     {
       "inherits": {
