@@ -4800,14 +4800,14 @@ export interface AnalysisKeywordAnalyzer {
 export interface AnalysisKeywordMarkerTokenFilter extends AnalysisTokenFilterBase {
   type: 'keyword_marker'
   ignore_case?: boolean
-  keywords?: string[]
+  keywords?: string | string[]
   keywords_path?: string
   keywords_pattern?: string
 }
 
 export interface AnalysisKeywordTokenizer extends AnalysisTokenizerBase {
   type: 'keyword'
-  buffer_size: integer
+  buffer_size?: integer
 }
 
 export interface AnalysisKuromojiAnalyzer {
