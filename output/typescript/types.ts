@@ -10783,8 +10783,8 @@ export interface IlmMoveToStepRequest extends RequestBase {
 export type IlmMoveToStepResponse = AcknowledgedResponseBase
 
 export interface IlmMoveToStepStepKey {
-  action: string
-  name: string
+  action?: string
+  name?: string
   phase: string
 }
 

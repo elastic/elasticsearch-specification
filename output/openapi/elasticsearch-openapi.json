@@ -66528,8 +66528,6 @@
           }
         },
         "required": [
-          "action",
-          "name",
           "phase"
         ]
       },
