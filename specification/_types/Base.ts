@@ -80,7 +80,7 @@ export class ErrorResponseBase {
   // In some edge cases `error` can be a string that is a shortcut to `error.reason`, for example if you call `GET _cat/foo`.
   // If the error is a string, it means that it was not caused by an exception on ES side, but on the HTTP routing layer.
   // This should never happen in clients, because we assume we will never send malformed request.
-  error: ErrorCause
+  error: ErrorCause | string
   status: integer
 }
 

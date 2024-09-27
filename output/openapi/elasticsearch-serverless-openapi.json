@@ -52351,7 +52351,14 @@
         "type": "object",
         "properties": {
           "error": {
-            "$ref": "#/components/schemas/_types:ErrorCause"
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/_types:ErrorCause"
+              },
+              {
+                "type": "string"
+              }
+            ]
           },
           "status": {
             "type": "number"

@@ -2304,7 +2304,7 @@ export type ErrorCause = ErrorCauseKeys
   & { [property: string]: any }
 
 export interface ErrorResponseBase {
-  error: ErrorCause
+  error: ErrorCause | string
   status: integer
 }
 

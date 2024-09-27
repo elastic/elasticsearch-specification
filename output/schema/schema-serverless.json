@@ -21281,41 +21281,12 @@
           }
         }
       },
-      "exceptions": [
-        {
-          "body": {
-            "kind": "value",
-            "value": {
-              "items": [
-                {
-                  "kind": "instance_of",
-                  "type": {
-                    "name": "NotFoundAliases",
-                    "namespace": "indices.get_alias"
-                  }
-                },
-                {
-                  "kind": "instance_of",
-                  "type": {
-                    "name": "ErrorResponseBase",
-                    "namespace": "_types"
-                  }
-                }
-              ],
-              "kind": "union_of"
-            }
-          },
-          "statusCodes": [
-            404
-          ]
-        }
-      ],
       "kind": "response",
       "name": {
         "name": "Response",
         "namespace": "indices.get_alias"
       },
-      "specLocation": "indices/get_alias/IndicesGetAliasResponse.ts#L26-L35"
+      "specLocation": "indices/get_alias/IndicesGetAliasResponse.ts#L24-L27"
     },
     {
       "attachedBehaviors": [
@@ -75411,11 +75382,23 @@
           "name": "error",
           "required": true,
           "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "ErrorCause",
-              "namespace": "_types"
-            }
+            "items": [
+              {
+                "kind": "instance_of",
+                "type": {
+                  "name": "ErrorCause",
+                  "namespace": "_types"
+                }
+              },
+              {
+                "kind": "instance_of",
+                "type": {
+                  "name": "string",
+                  "namespace": "_builtins"
+                }
+              }
+            ],
+            "kind": "union_of"
           }
         },
         {
@@ -118210,7 +118193,7 @@
           }
         }
       ],
-      "specLocation": "indices/get_alias/IndicesGetAliasResponse.ts#L37-L39"
+      "specLocation": "indices/get_alias/IndicesGetAliasResponse.ts#L29-L31"
     },
     {
       "kind": "interface",
