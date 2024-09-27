@@ -737,7 +737,7 @@ export class RandomSamplerAggregation extends BucketAggregationBase {
    * Must be greater than 0, less than 0.5, or exactly 1.
    * The lower the probability, the fewer documents are matched.
    */
-  probability: float
+  probability: double
   /**
    * The seed to generate the random sampling of documents.
    * When a seed is provided, the random subset of documents is the same between calls.

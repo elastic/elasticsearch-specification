@@ -486,7 +486,7 @@ search-aggregations-bucket-rare-terms-aggregation,https://www.elastic.co/guide/e
 search-aggregations-metrics-rate-aggregation,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/search-aggregations-metrics-rate-aggregation.html
 search-aggregations-bucket-reverse-nested-aggregation,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/search-aggregations-bucket-reverse-nested-aggregation.html
 search-aggregations-bucket-sampler-aggregation,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/search-aggregations-bucket-sampler-aggregation.html
-search-aggregations-bucket-random-sampler-aggregation,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/search-aggregations-random-sampler-aggregation.html
+search-aggregations-random-sampler-aggregation,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/search-aggregations-random-sampler-aggregation.html
 search-aggregations-metrics-scripted-metric-aggregation,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/search-aggregations-metrics-scripted-metric-aggregation.html
 search-aggregations-pipeline-serialdiff-aggregation,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/search-aggregations-pipeline-serialdiff-aggregation.html
 search-aggregations-bucket-significantterms-aggregation,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/search-aggregations-bucket-significantterms-aggregation.html

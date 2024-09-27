@@ -432,7 +432,7 @@ export class AggregationContainer {
    *
    * A single bucket aggregation that randomly includes documents in the aggregated results.
    * Sampling provides significant speed improvement at the cost of accuracy.
-   * @doc_id search-aggregations-pipeline-random-sampler-aggregation
+   * @doc_id search-aggregations-random-sampler-aggregation
    * @availability stack since=8.1.0 stability=experimental
 
    */
