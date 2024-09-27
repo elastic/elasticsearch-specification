@@ -3981,7 +3981,7 @@ export interface AggregationsPipelineAggregationBase extends AggregationsBucketP
 }
 
 export interface AggregationsRandomSamplerAggregation extends AggregationsBucketAggregationBase {
-  probability: float
+  probability: double
   seed?: integer
   shard_seed?: integer
 }

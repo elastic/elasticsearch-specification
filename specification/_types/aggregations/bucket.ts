@@ -35,7 +35,7 @@ import {
   GeoLocation,
   GeoTilePrecision
 } from '@_types/Geo'
-import { double, float, integer, long } from '@_types/Numeric'
+import { double, integer, long } from '@_types/Numeric'
 import { QueryContainer } from '@_types/query_dsl/abstractions'
 import { Script } from '@_types/Scripting'
 import { SortOrder } from '@_types/sort'

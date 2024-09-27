@@ -63744,7 +63744,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "float",
+              "name": "double",
               "namespace": "_types"
             }
           }
