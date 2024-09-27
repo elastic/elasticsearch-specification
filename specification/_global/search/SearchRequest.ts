@@ -354,6 +354,11 @@ export interface Request extends RequestBase {
      */
     collapse?: FieldCollapse
     /**
+     * Array of wildcard (`*`) patterns.
+     * The request returns doc values for field names matching these patterns in the `hits.fields` property of the response.
+     */
+    docvalue_fields?: FieldAndFormat[]
+    /**
      * If true, returns detailed information about score computation as part of a hit.
      * @server_default false
      */
@@ -362,6 +367,11 @@ export interface Request extends RequestBase {
      * Configuration of search extensions defined by Elasticsearch plugins.
      */
     ext?: Dictionary<string, UserDefinedValue>
+    /**
+     * Array of wildcard (`*`) patterns.
+     * The request returns values for field names matching these patterns in the `hits.fields` property of the response.
+     */
+    fields?: Array<FieldAndFormat>
     /**
      * Starting document offset.
      * Needs to be non-negative.
@@ -375,21 +385,9 @@ export interface Request extends RequestBase {
      */
     highlight?: Highlight
     /**
-     * Number of hits matching the query to count accurately.
-     * If `true`, the exact number of hits is returned at the cost of some performance.
-     * If `false`, the  response does not include the total number of hits matching the query.
-     * @server_default 10000
-     */
-    track_total_hits?: TrackHits
-    /**
      * Boosts the _score of documents from specified indices.
      */
     indices_boost?: Array<Dictionary<IndexName, double>>
-    /**
-     * Array of wildcard (`*`) patterns.
-     * The request returns doc values for field names matching these patterns in the `hits.fields` property of the response.
-     */
-    docvalue_fields?: FieldAndFormat[]
     /**
      * Defines the approximate kNN search to run.
      * @availability stack since=8.4.0
@@ -397,15 +395,15 @@ export interface Request extends RequestBase {
      */
     knn?: KnnSearch | KnnSearch[]
     /**
-     * Defines the Reciprocal Rank Fusion (RRF) to use.
-     * @availability stack since=8.8.0
-     */
-    rank?: RankContainer
-    /**
      * Minimum `_score` for matching documents.
      * Documents with a lower `_score` are not included in the search results.
      */
     min_score?: double
+    /**
+     * Limits the search to a point in time (PIT).
+     * If you provide a PIT, you cannot specify an `<index>` in the request path.
+     */
+    pit?: PointInTimeReference
     /**
      * Use the `post_filter` parameter to filter search results.
      * The search hits are filtered after the aggregations are calculated.
@@ -423,6 +421,11 @@ export interface Request extends RequestBase {
      */
     query?: QueryContainer
     /**
+     * Defines the Reciprocal Rank Fusion (RRF) to use.
+     * @availability stack since=8.8.0
+     */
+    rank?: RankContainer
+    /**
      * Can be used to improve precision by reordering just the top (for example 100 - 500) documents returned by the `query` and `post_filter` phases.
      */
     rescore?: Rescore | Rescore[]
@@ -433,6 +436,11 @@ export interface Request extends RequestBase {
      */
     retriever?: RetrieverContainer
     /**
+     * Defines one or more runtime fields in the search request.
+     * These fields take precedence over mapped fields with the same name.
+     */
+    runtime_mappings?: RuntimeFields
+    /**
      * Retrieve a script evaluation (based on different fields) for each hit.
      */
     script_fields?: Dictionary<string, ScriptField>
@@ -440,6 +448,10 @@ export interface Request extends RequestBase {
      * Used to retrieve the next page of hits using a set of sort values from the previous page.
      */
     search_after?: SortResults
+    /**
+     * If `true`, returns sequence number and primary term of the last modification of each hit.
+     */
+    seq_no_primary_term?: boolean
     /**
      * The number of hits to return.
      * By default, you cannot page through more than 10,000 hits using the `from` and `size` parameters.
@@ -462,10 +474,18 @@ export interface Request extends RequestBase {
      */
     _source?: SourceConfig
     /**
-     * Array of wildcard (`*`) patterns.
-     * The request returns values for field names matching these patterns in the `hits.fields` property of the response.
+     * Stats groups to associate with the search.
+     * Each group maintains a statistics aggregation for its associated searches.
+     * You can retrieve these stats using the indices stats API.
      */
-    fields?: Array<FieldAndFormat>
+    stats?: string[]
+    /**
+     * List of stored fields to return as part of a hit.
+     * If no fields are specified, no stored fields are included in the response.
+     * If this field is specified, the `_source` parameter defaults to `false`.
+     * You can pass `_source: true` to return both source fields and stored fields in the search response.
+     */
+    stored_fields?: Fields
     /**
      * Defines a suggester that provides similar looking terms based on a provided text.
      */
@@ -494,36 +514,16 @@ export interface Request extends RequestBase {
      */
     track_scores?: boolean
     /**
+     * Number of hits matching the query to count accurately.
+     * If `true`, the exact number of hits is returned at the cost of some performance.
+     * If `false`, the  response does not include the total number of hits matching the query.
+     * @server_default 10000
+     */
+    track_total_hits?: TrackHits
+    /**
      * If true, returns document version as part of a hit.
      * @server_default false
      */
     version?: boolean
-    /**
-     * If `true`, returns sequence number and primary term of the last modification of each hit.
-     */
-    seq_no_primary_term?: boolean
-    /**
-     * List of stored fields to return as part of a hit.
-     * If no fields are specified, no stored fields are included in the response.
-     * If this field is specified, the `_source` parameter defaults to `false`.
-     * You can pass `_source: true` to return both source fields and stored fields in the search response.
-     */
-    stored_fields?: Fields
-    /**
-     * Limits the search to a point in time (PIT).
-     * If you provide a PIT, you cannot specify an `<index>` in the request path.
-     */
-    pit?: PointInTimeReference
-    /**
-     * Defines one or more runtime fields in the search request.
-     * These fields take precedence over mapped fields with the same name.
-     */
-    runtime_mappings?: RuntimeFields
-    /**
-     * Stats groups to associate with the search.
-     * Each group maintains a statistics aggregation for its associated searches.
-     * You can retrieve these stats using the indices stats API.
-     */
-    stats?: string[]
   }
 }

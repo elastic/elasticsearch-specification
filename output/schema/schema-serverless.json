@@ -36046,6 +36046,21 @@
             }
           },
           {
+            "description": "Array of wildcard (`*`) patterns.\nThe request returns doc values for field names matching these patterns in the `hits.fields` property of the response.",
+            "name": "docvalue_fields",
+            "required": false,
+            "type": {
+              "kind": "array_of",
+              "value": {
+                "kind": "instance_of",
+                "type": {
+                  "name": "FieldAndFormat",
+                  "namespace": "_types.query_dsl"
+                }
+              }
+            }
+          },
+          {
             "description": "If true, returns detailed information about score computation as part of a hit.",
             "name": "explain",
             "required": false,
@@ -36078,6 +36093,21 @@
             }
           },
           {
+            "description": "Array of wildcard (`*`) patterns.\nThe request returns values for field names matching these patterns in the `hits.fields` property of the response.",
+            "name": "fields",
+            "required": false,
+            "type": {
+              "kind": "array_of",
+              "value": {
+                "kind": "instance_of",
+                "type": {
+                  "name": "FieldAndFormat",
+                  "namespace": "_types.query_dsl"
+                }
+              }
+            }
+          },
+          {
             "description": "Starting document offset.\nNeeds to be non-negative.\nBy default, you cannot page through more than 10,000 hits using the `from` and `size` parameters.\nTo page through more hits, use the `search_after` parameter.",
             "name": "from",
             "required": false,
@@ -36098,19 +36128,6 @@
               "kind": "instance_of",
               "type": {
                 "name": "Highlight",
-                "namespace": "_global.search._types"
-              }
-            }
-          },
-          {
-            "description": "Number of hits matching the query to count accurately.\nIf `true`, the exact number of hits is returned at the cost of some performance.\nIf `false`, the  response does not include the total number of hits matching the query.",
-            "name": "track_total_hits",
-            "required": false,
-            "serverDefault": "10000",
-            "type": {
-              "kind": "instance_of",
-              "type": {
-                "name": "TrackHits",
                 "namespace": "_global.search._types"
               }
             }
@@ -36137,21 +36154,6 @@
                     "name": "double",
                     "namespace": "_types"
                   }
-                }
-              }
-            }
-          },
-          {
-            "description": "Array of wildcard (`*`) patterns.\nThe request returns doc values for field names matching these patterns in the `hits.fields` property of the response.",
-            "name": "docvalue_fields",
-            "required": false,
-            "type": {
-              "kind": "array_of",
-              "value": {
-                "kind": "instance_of",
-                "type": {
-                  "name": "FieldAndFormat",
-                  "namespace": "_types.query_dsl"
                 }
               }
             }
@@ -36198,6 +36200,18 @@
               "type": {
                 "name": "double",
                 "namespace": "_types"
+              }
+            }
+          },
+          {
+            "description": "Limits the search to a point in time (PIT).\nIf you provide a PIT, you cannot specify an `<index>` in the request path.",
+            "name": "pit",
+            "required": false,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "PointInTimeReference",
+                "namespace": "_global.search._types"
               }
             }
           },
@@ -36284,6 +36298,18 @@
             }
           },
           {
+            "description": "Defines one or more runtime fields in the search request.\nThese fields take precedence over mapped fields with the same name.",
+            "name": "runtime_mappings",
+            "required": false,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "RuntimeFields",
+                "namespace": "_types.mapping"
+              }
+            }
+          },
+          {
             "description": "Retrieve a script evaluation (based on different fields) for each hit.",
             "name": "script_fields",
             "required": false,
@@ -36315,6 +36341,18 @@
               "type": {
                 "name": "SortResults",
                 "namespace": "_types"
+              }
+            }
+          },
+          {
+            "description": "If `true`, returns sequence number and primary term of the last modification of each hit.",
+            "name": "seq_no_primary_term",
+            "required": false,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "boolean",
+                "namespace": "_builtins"
               }
             }
           },
@@ -36370,17 +36408,29 @@
             }
           },
           {
-            "description": "Array of wildcard (`*`) patterns.\nThe request returns values for field names matching these patterns in the `hits.fields` property of the response.",
-            "name": "fields",
+            "description": "Stats groups to associate with the search.\nEach group maintains a statistics aggregation for its associated searches.\nYou can retrieve these stats using the indices stats API.",
+            "name": "stats",
             "required": false,
             "type": {
               "kind": "array_of",
               "value": {
                 "kind": "instance_of",
                 "type": {
-                  "name": "FieldAndFormat",
-                  "namespace": "_types.query_dsl"
+                  "name": "string",
+                  "namespace": "_builtins"
                 }
+              }
+            }
+          },
+          {
+            "description": "List of stored fields to return as part of a hit.\nIf no fields are specified, no stored fields are included in the response.\nIf this field is specified, the `_source` parameter defaults to `false`.\nYou can pass `_source: true` to return both source fields and stored fields in the search response.",
+            "name": "stored_fields",
+            "required": false,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "Fields",
+                "namespace": "_types"
               }
             }
           },
@@ -36435,6 +36485,19 @@
             }
           },
           {
+            "description": "Number of hits matching the query to count accurately.\nIf `true`, the exact number of hits is returned at the cost of some performance.\nIf `false`, the  response does not include the total number of hits matching the query.",
+            "name": "track_total_hits",
+            "required": false,
+            "serverDefault": "10000",
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "TrackHits",
+                "namespace": "_global.search._types"
+              }
+            }
+          },
+          {
             "description": "If true, returns document version as part of a hit.",
             "name": "version",
             "required": false,
@@ -36444,69 +36507,6 @@
               "type": {
                 "name": "boolean",
                 "namespace": "_builtins"
-              }
-            }
-          },
-          {
-            "description": "If `true`, returns sequence number and primary term of the last modification of each hit.",
-            "name": "seq_no_primary_term",
-            "required": false,
-            "type": {
-              "kind": "instance_of",
-              "type": {
-                "name": "boolean",
-                "namespace": "_builtins"
-              }
-            }
-          },
-          {
-            "description": "List of stored fields to return as part of a hit.\nIf no fields are specified, no stored fields are included in the response.\nIf this field is specified, the `_source` parameter defaults to `false`.\nYou can pass `_source: true` to return both source fields and stored fields in the search response.",
-            "name": "stored_fields",
-            "required": false,
-            "type": {
-              "kind": "instance_of",
-              "type": {
-                "name": "Fields",
-                "namespace": "_types"
-              }
-            }
-          },
-          {
-            "description": "Limits the search to a point in time (PIT).\nIf you provide a PIT, you cannot specify an `<index>` in the request path.",
-            "name": "pit",
-            "required": false,
-            "type": {
-              "kind": "instance_of",
-              "type": {
-                "name": "PointInTimeReference",
-                "namespace": "_global.search._types"
-              }
-            }
-          },
-          {
-            "description": "Defines one or more runtime fields in the search request.\nThese fields take precedence over mapped fields with the same name.",
-            "name": "runtime_mappings",
-            "required": false,
-            "type": {
-              "kind": "instance_of",
-              "type": {
-                "name": "RuntimeFields",
-                "namespace": "_types.mapping"
-              }
-            }
-          },
-          {
-            "description": "Stats groups to associate with the search.\nEach group maintains a statistics aggregation for its associated searches.\nYou can retrieve these stats using the indices stats API.",
-            "name": "stats",
-            "required": false,
-            "type": {
-              "kind": "array_of",
-              "value": {
-                "kind": "instance_of",
-                "type": {
-                  "name": "string",
-                  "namespace": "_builtins"
-                }
               }
             }
           }
@@ -44944,302 +44944,32 @@
       "specLocation": "_spec_utils/behaviors.ts#L29-L37"
     },
     {
-      "codegenNames": [
-        "header",
-        "body"
-      ],
       "kind": "type_alias",
-      "name": {
-        "name": "RequestItem",
-        "namespace": "_global.msearch"
-      },
-      "specLocation": "_global/msearch/types.ts#L47-L50",
-      "type": {
-        "items": [
-          {
-            "kind": "instance_of",
-            "type": {
-              "name": "MultisearchHeader",
-              "namespace": "_global.msearch"
-            }
-          },
-          {
-            "kind": "instance_of",
-            "type": {
-              "name": "MultisearchBody",
-              "namespace": "_global.msearch"
-            }
-          }
-        ],
-        "kind": "union_of"
-      }
-    },
-    {
-      "description": "Contains parameters used to limit or change the subsequent search body request.",
-      "kind": "interface",
-      "name": {
-        "name": "MultisearchHeader",
-        "namespace": "_global.msearch"
-      },
-      "properties": [
-        {
-          "name": "allow_no_indices",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "boolean",
-              "namespace": "_builtins"
-            }
-          }
-        },
-        {
-          "name": "expand_wildcards",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "ExpandWildcards",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "name": "ignore_unavailable",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "boolean",
-              "namespace": "_builtins"
-            }
-          }
-        },
-        {
-          "name": "index",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "Indices",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "name": "preference",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "_builtins"
-            }
-          }
-        },
-        {
-          "name": "request_cache",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "boolean",
-              "namespace": "_builtins"
-            }
-          }
-        },
-        {
-          "name": "routing",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "Routing",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "name": "search_type",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "SearchType",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "name": "ccs_minimize_roundtrips",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "boolean",
-              "namespace": "_builtins"
-            }
-          }
-        },
-        {
-          "name": "allow_partial_search_results",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "boolean",
-              "namespace": "_builtins"
-            }
-          }
-        },
-        {
-          "name": "ignore_throttled",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "boolean",
-              "namespace": "_builtins"
-            }
-          }
-        }
-      ],
-      "specLocation": "_global/msearch/types.ts#L52-L67"
-    },
-    {
-      "kind": "type_alias",
-      "name": {
-        "name": "ExpandWildcards",
-        "namespace": "_types"
-      },
-      "specLocation": "_types/common.ts#L218-L218",
-      "type": {
-        "items": [
-          {
-            "kind": "instance_of",
-            "type": {
-              "name": "ExpandWildcard",
-              "namespace": "_types"
-            }
-          },
-          {
-            "kind": "array_of",
-            "value": {
-              "kind": "instance_of",
-              "type": {
-                "name": "ExpandWildcard",
-                "namespace": "_types"
-              }
-            }
-          }
-        ],
-        "kind": "union_of"
-      }
-    },
-    {
-      "kind": "enum",
-      "members": [
-        {
-          "description": "Match any data stream or index, including hidden ones.",
-          "name": "all"
-        },
-        {
-          "description": "Match open, non-hidden indices. Also matches any non-hidden data stream.",
-          "name": "open"
-        },
-        {
-          "description": "Match closed, non-hidden indices. Also matches any non-hidden data stream. Data streams cannot be closed.",
-          "name": "closed"
-        },
-        {
-          "description": "Match hidden data streams and hidden indices. Must be combined with open, closed, or both.",
-          "name": "hidden"
-        },
-        {
-          "description": "Wildcard expressions are not accepted.",
-          "name": "none"
-        }
-      ],
-      "name": {
-        "name": "ExpandWildcard",
-        "namespace": "_types"
-      },
-      "specLocation": "_types/common.ts#L202-L216"
-    },
-    {
-      "kind": "type_alias",
-      "name": {
-        "name": "Indices",
-        "namespace": "_types"
-      },
-      "specLocation": "_types/common.ts#L67-L67",
-      "type": {
-        "items": [
-          {
-            "kind": "instance_of",
-            "type": {
-              "name": "IndexName",
-              "namespace": "_types"
-            }
-          },
-          {
-            "kind": "array_of",
-            "value": {
-              "kind": "instance_of",
-              "type": {
-                "name": "IndexName",
-                "namespace": "_types"
-              }
-            }
-          }
-        ],
-        "kind": "union_of"
-      }
-    },
-    {
-      "kind": "type_alias",
-      "name": {
-        "name": "Routing",
-        "namespace": "_types"
-      },
-      "specLocation": "_types/common.ts#L72-L72",
-      "type": {
-        "kind": "instance_of",
-        "type": {
-          "name": "string",
-          "namespace": "_builtins"
-        }
-      }
-    },
-    {
-      "kind": "enum",
-      "members": [
-        {
-          "description": "Documents are scored using local term and document frequencies for the shard. This is usually faster but less accurate.",
-          "name": "query_then_fetch"
-        },
-        {
-          "description": "Documents are scored using global term and document frequencies across all shards. This is usually slower but more accurate.",
-          "name": "dfs_query_then_fetch"
-        }
-      ],
-      "name": {
-        "name": "SearchType",
-        "namespace": "_types"
-      },
-      "specLocation": "_types/common.ts#L276-L281"
-    },
-    {
-      "kind": "interface",
       "name": {
         "name": "MultisearchBody",
         "namespace": "_global.msearch"
+      },
+      "specLocation": "_global/msearch/types.ts#L48-L48",
+      "type": {
+        "kind": "instance_of",
+        "type": {
+          "name": "SearchRequestBody",
+          "namespace": "_global.search._types"
+        }
+      }
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "SearchRequestBody",
+        "namespace": "_global.search._types"
       },
       "properties": [
         {
           "aliases": [
             "aggs"
           ],
+          "description": "Defines the aggregations that are run as part of the search request.",
           "name": "aggregations",
           "required": false,
           "type": {
@@ -45262,6 +44992,7 @@
           }
         },
         {
+          "description": "Collapses search results the values of the specified field.",
           "name": "collapse",
           "required": false,
           "type": {
@@ -45273,14 +45004,17 @@
           }
         },
         {
-          "description": "Defines the search definition using the Query DSL.",
-          "name": "query",
+          "description": "Array of wildcard (`*`) patterns.\nThe request returns doc values for field names matching these patterns in the `hits.fields` property of the response.",
+          "name": "docvalue_fields",
           "required": false,
           "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "QueryContainer",
-              "namespace": "_types.query_dsl"
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "FieldAndFormat",
+                "namespace": "_types.query_dsl"
+              }
             }
           }
         },
@@ -45317,20 +45051,8 @@
           }
         },
         {
-          "description": "List of stored fields to return as part of a hit. If no fields are specified,\nno stored fields are included in the response. If this field is specified, the _source\nparameter defaults to false. You can pass _source: true to return both source fields\nand stored fields in the search response.",
-          "name": "stored_fields",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "Fields",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "description": "Array of wildcard (*) patterns. The request returns doc values for field\nnames matching these patterns in the hits.fields property of the response.",
-          "name": "docvalue_fields",
+          "description": "Array of wildcard (`*`) patterns.\nThe request returns values for field names matching these patterns in the `hits.fields` property of the response.",
+          "name": "fields",
           "required": false,
           "type": {
             "kind": "array_of",
@@ -45339,6 +45061,57 @@
               "type": {
                 "name": "FieldAndFormat",
                 "namespace": "_types.query_dsl"
+              }
+            }
+          }
+        },
+        {
+          "description": "Starting document offset.\nNeeds to be non-negative.\nBy default, you cannot page through more than 10,000 hits using the `from` and `size` parameters.\nTo page through more hits, use the `search_after` parameter.",
+          "name": "from",
+          "required": false,
+          "serverDefault": 0,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "Specifies the highlighter to use for retrieving highlighted snippets from one or more fields in your search results.",
+          "name": "highlight",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Highlight",
+              "namespace": "_global.search._types"
+            }
+          }
+        },
+        {
+          "description": "Boosts the _score of documents from specified indices.",
+          "name": "indices_boost",
+          "required": false,
+          "type": {
+            "kind": "array_of",
+            "value": {
+              "key": {
+                "kind": "instance_of",
+                "type": {
+                  "name": "IndexName",
+                  "namespace": "_types"
+                }
+              },
+              "kind": "dictionary_of",
+              "singleKey": false,
+              "value": {
+                "kind": "instance_of",
+                "type": {
+                  "name": "double",
+                  "namespace": "_types"
+                }
               }
             }
           }
@@ -45377,57 +45150,7 @@
           }
         },
         {
-          "description": "Starting document offset. By default, you cannot page through more than 10,000\nhits using the from and size parameters. To page through more hits, use the\nsearch_after parameter.",
-          "name": "from",
-          "required": false,
-          "serverDefault": 0,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "integer",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "name": "highlight",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "Highlight",
-              "namespace": "_global.search._types"
-            }
-          }
-        },
-        {
-          "description": "Boosts the _score of documents from specified indices.",
-          "name": "indices_boost",
-          "required": false,
-          "type": {
-            "kind": "array_of",
-            "value": {
-              "key": {
-                "kind": "instance_of",
-                "type": {
-                  "name": "IndexName",
-                  "namespace": "_types"
-                }
-              },
-              "kind": "dictionary_of",
-              "singleKey": false,
-              "value": {
-                "kind": "instance_of",
-                "type": {
-                  "name": "double",
-                  "namespace": "_types"
-                }
-              }
-            }
-          }
-        },
-        {
-          "description": "Minimum _score for matching documents. Documents with a lower _score are\nnot included in the search results.",
+          "description": "Minimum `_score` for matching documents.\nDocuments with a lower `_score` are not included in the search results.",
           "name": "min_score",
           "required": false,
           "type": {
@@ -45439,6 +45162,19 @@
           }
         },
         {
+          "description": "Limits the search to a point in time (PIT).\nIf you provide a PIT, you cannot specify an `<index>` in the request path.",
+          "name": "pit",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "PointInTimeReference",
+              "namespace": "_global.search._types"
+            }
+          }
+        },
+        {
+          "description": "Use the `post_filter` parameter to filter search results.\nThe search hits are filtered after the aggregations are calculated.\nA post filter has no impact on the aggregation results.",
           "name": "post_filter",
           "required": false,
           "type": {
@@ -45450,8 +45186,10 @@
           }
         },
         {
+          "description": "Set to `true` to return detailed timing information about the execution of individual components in a search request.\nNOTE: This is a debugging tool and adds significant overhead to search execution.",
           "name": "profile",
           "required": false,
+          "serverDefault": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -45461,6 +45199,19 @@
           }
         },
         {
+          "description": "Defines the search definition using the Query DSL.",
+          "name": "query",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "QueryContainer",
+              "namespace": "_types.query_dsl"
+            }
+          }
+        },
+        {
+          "description": "Can be used to improve precision by reordering just the top (for example 100 - 500) documents returned by the `query` and `post_filter` phases.",
           "name": "rescore",
           "required": false,
           "type": {
@@ -45487,6 +45238,36 @@
           }
         },
         {
+          "availability": {
+            "serverless": {},
+            "stack": {
+              "since": "8.14.0"
+            }
+          },
+          "description": "A retriever is a specification to describe top documents returned from a search. A retriever replaces other elements of the search API that also return top documents such as query and knn.",
+          "name": "retriever",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "RetrieverContainer",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "Defines one or more runtime fields in the search request.\nThese fields take precedence over mapped fields with the same name.",
+          "name": "runtime_mappings",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "RuntimeFields",
+              "namespace": "_types.mapping"
+            }
+          }
+        },
+        {
           "description": "Retrieve a script evaluation (based on different fields) for each hit.",
           "name": "script_fields",
           "required": false,
@@ -45510,6 +45291,7 @@
           }
         },
         {
+          "description": "Used to retrieve the next page of hits using a set of sort values from the previous page.",
           "name": "search_after",
           "required": false,
           "type": {
@@ -45521,7 +45303,19 @@
           }
         },
         {
-          "description": "The number of hits to return. By default, you cannot page through more\nthan 10,000 hits using the from and size parameters. To page through more\nhits, use the search_after parameter.",
+          "description": "If `true`, returns sequence number and primary term of the last modification of each hit.",
+          "name": "seq_no_primary_term",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "_builtins"
+            }
+          }
+        },
+        {
+          "description": "The number of hits to return.\nBy default, you cannot page through more than 10,000 hits using the `from` and `size` parameters.\nTo page through more hits, use the `search_after` parameter.",
           "name": "size",
           "required": false,
           "serverDefault": 10,
@@ -45534,6 +45328,19 @@
           }
         },
         {
+          "description": "Can be used to split a scrolled search into multiple slices that can be consumed independently.",
+          "name": "slice",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "SlicedScroll",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "A comma-separated list of <field>:<direction> pairs.",
           "docId": "sort-search-results",
           "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/sort-search-results.html",
           "name": "sort",
@@ -45547,7 +45354,7 @@
           }
         },
         {
-          "description": "Indicates which source fields are returned for matching documents. These\nfields are returned in the hits._source property of the search response.",
+          "description": "Indicates which source fields are returned for matching documents.\nThese fields are returned in the hits._source property of the search response.",
           "name": "_source",
           "required": false,
           "type": {
@@ -45559,35 +45366,7 @@
           }
         },
         {
-          "description": "Array of wildcard (*) patterns. The request returns values for field names\nmatching these patterns in the hits.fields property of the response.",
-          "name": "fields",
-          "required": false,
-          "type": {
-            "kind": "array_of",
-            "value": {
-              "kind": "instance_of",
-              "type": {
-                "name": "FieldAndFormat",
-                "namespace": "_types.query_dsl"
-              }
-            }
-          }
-        },
-        {
-          "description": "Maximum number of documents to collect for each shard. If a query reaches this\nlimit, Elasticsearch terminates the query early. Elasticsearch collects documents\nbefore sorting. Defaults to 0, which does not terminate query execution early.",
-          "name": "terminate_after",
-          "required": false,
-          "serverDefault": 0,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "long",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "description": "Stats groups to associate with the search. Each group maintains a statistics\naggregation for its associated searches. You can retrieve these stats using\nthe indices stats API.",
+          "description": "Stats groups to associate with the search.\nEach group maintains a statistics aggregation for its associated searches.\nYou can retrieve these stats using the indices stats API.",
           "name": "stats",
           "required": false,
           "type": {
@@ -45602,7 +45381,44 @@
           }
         },
         {
-          "description": "Specifies the period of time to wait for a response from each shard. If no response\nis received before the timeout expires, the request fails and returns an error.\nDefaults to no timeout.",
+          "description": "List of stored fields to return as part of a hit.\nIf no fields are specified, no stored fields are included in the response.\nIf this field is specified, the `_source` parameter defaults to `false`.\nYou can pass `_source: true` to return both source fields and stored fields in the search response.",
+          "name": "stored_fields",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Fields",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "Defines a suggester that provides similar looking terms based on a provided text.",
+          "name": "suggest",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Suggester",
+              "namespace": "_global.search._types"
+            }
+          }
+        },
+        {
+          "description": "Maximum number of documents to collect for each shard.\nIf a query reaches this limit, Elasticsearch terminates the query early.\nElasticsearch collects documents before sorting.\nUse with caution.\nElasticsearch applies this parameter to each shard handling the request.\nWhen possible, let Elasticsearch perform early termination automatically.\nAvoid specifying this parameter for requests that target data streams with backing indices across multiple data tiers.\nIf set to `0` (default), the query does not terminate early.",
+          "name": "terminate_after",
+          "required": false,
+          "serverDefault": 0,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "long",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "Specifies the period of time to wait for a response from each shard.\nIf no response is received before the timeout expires, the request fails and returns an error.\nDefaults to no timeout.",
           "name": "timeout",
           "required": false,
           "type": {
@@ -45627,9 +45443,10 @@
           }
         },
         {
-          "description": "Number of hits matching the query to count accurately. If true, the exact\nnumber of hits is returned at the cost of some performance. If false, the\nresponse does not include the total number of hits matching the query.\nDefaults to 10,000 hits.",
+          "description": "Number of hits matching the query to count accurately.\nIf `true`, the exact number of hits is returned at the cost of some performance.\nIf `false`, the  response does not include the total number of hits matching the query.",
           "name": "track_total_hits",
           "required": false,
+          "serverDefault": "10000",
           "type": {
             "kind": "instance_of",
             "type": {
@@ -45650,56 +45467,9 @@
               "namespace": "_builtins"
             }
           }
-        },
-        {
-          "description": "Defines one or more runtime fields in the search request. These fields take\nprecedence over mapped fields with the same name.",
-          "name": "runtime_mappings",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "RuntimeFields",
-              "namespace": "_types.mapping"
-            }
-          }
-        },
-        {
-          "description": "If true, returns sequence number and primary term of the last modification\nof each hit. See Optimistic concurrency control.",
-          "name": "seq_no_primary_term",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "boolean",
-              "namespace": "_builtins"
-            }
-          }
-        },
-        {
-          "description": "Limits the search to a point in time (PIT). If you provide a PIT, you\ncannot specify an <index> in the request path.",
-          "name": "pit",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "PointInTimeReference",
-              "namespace": "_global.search._types"
-            }
-          }
-        },
-        {
-          "name": "suggest",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "Suggester",
-              "namespace": "_global.search._types"
-            }
-          }
         }
       ],
-      "specLocation": "_global/msearch/types.ts#L70-L201"
+      "specLocation": "_global/search/_types/SearchRequestBody.ts#L43-L224"
     },
     {
       "kind": "interface",
@@ -49742,7 +49512,7 @@
         }
       ],
       "shortcutProperty": "source",
-      "specLocation": "_types/Scripting.ts#L73-L97"
+      "specLocation": "_types/Scripting.ts#L63-L87"
     },
     {
       "isOpen": true,
@@ -49769,7 +49539,7 @@
         "name": "ScriptLanguage",
         "namespace": "_types"
       },
-      "specLocation": "_types/Scripting.ts#L24-L45"
+      "specLocation": "_types/Scripting.ts#L25-L46"
     },
     {
       "kind": "enum",
@@ -50808,6 +50578,21 @@
       "specLocation": "_types/query_dsl/abstractions.ts#L429-L446"
     },
     {
+      "kind": "type_alias",
+      "name": {
+        "name": "Routing",
+        "namespace": "_types"
+      },
+      "specLocation": "_types/common.ts#L72-L72",
+      "type": {
+        "kind": "instance_of",
+        "type": {
+          "name": "string",
+          "namespace": "_builtins"
+        }
+      }
+    },
+    {
       "kind": "enum",
       "members": [
         {
@@ -51813,7 +51598,7 @@
           }
         }
       ],
-      "specLocation": "_types/Scripting.ts#L99-L102"
+      "specLocation": "_types/Scripting.ts#L89-L92"
     },
     {
       "kind": "type_alias",
@@ -65574,6 +65359,112 @@
     {
       "kind": "interface",
       "name": {
+        "name": "PointInTimeReference",
+        "namespace": "_global.search._types"
+      },
+      "properties": [
+        {
+          "name": "id",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Id",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "keep_alive",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Duration",
+              "namespace": "_types"
+            }
+          }
+        }
+      ],
+      "specLocation": "_global/search/_types/PointInTimeReference.ts#L23-L26"
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "RankContainer",
+        "namespace": "_types"
+      },
+      "properties": [
+        {
+          "description": "The reciprocal rank fusion parameters",
+          "name": "rrf",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "RrfRank",
+              "namespace": "_types"
+            }
+          }
+        }
+      ],
+      "specLocation": "_types/Rank.ts#L22-L28",
+      "variants": {
+        "kind": "container"
+      }
+    },
+    {
+      "inherits": {
+        "type": {
+          "name": "RankBase",
+          "namespace": "_types"
+        }
+      },
+      "kind": "interface",
+      "name": {
+        "name": "RrfRank",
+        "namespace": "_types"
+      },
+      "properties": [
+        {
+          "description": "How much influence documents in individual result sets per query have over the final ranked result set",
+          "name": "rank_constant",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "long",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "Size of the individual result sets per query",
+          "name": "rank_window_size",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "long",
+              "namespace": "_types"
+            }
+          }
+        }
+      ],
+      "specLocation": "_types/Rank.ts#L32-L37"
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "RankBase",
+        "namespace": "_types"
+      },
+      "properties": [],
+      "specLocation": "_types/Rank.ts#L30-L30"
+    },
+    {
+      "kind": "interface",
+      "name": {
         "name": "Rescore",
         "namespace": "_global.search._types"
       },
@@ -65753,6 +65644,180 @@
       "specLocation": "_global/search/_types/rescoring.ts#L88-L97"
     },
     {
+      "kind": "interface",
+      "name": {
+        "name": "RetrieverContainer",
+        "namespace": "_types"
+      },
+      "properties": [
+        {
+          "description": "A retriever that replaces the functionality of a traditional query.",
+          "name": "standard",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "StandardRetriever",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "A retriever that replaces the functionality  of a knn search.",
+          "name": "knn",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "KnnRetriever",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "A retriever that produces top documents from reciprocal rank fusion (RRF).",
+          "name": "rrf",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "RRFRetriever",
+              "namespace": "_types"
+            }
+          }
+        }
+      ],
+      "specLocation": "_types/Retriever.ts#L26-L36",
+      "variants": {
+        "kind": "container"
+      }
+    },
+    {
+      "inherits": {
+        "type": {
+          "name": "RetrieverBase",
+          "namespace": "_types"
+        }
+      },
+      "kind": "interface",
+      "name": {
+        "name": "StandardRetriever",
+        "namespace": "_types"
+      },
+      "properties": [
+        {
+          "description": "Defines a query to retrieve a set of top documents.",
+          "name": "query",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "QueryContainer",
+              "namespace": "_types.query_dsl"
+            }
+          }
+        },
+        {
+          "description": "Defines a search after object parameter used for pagination.",
+          "name": "search_after",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "SortResults",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "Maximum number of documents to collect for each shard.",
+          "name": "terminate_after",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "A sort object that that specifies the order of matching documents.",
+          "name": "sort",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Sort",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "Minimum _score for matching documents. Documents with a lower _score are not included in the top documents.",
+          "name": "min_score",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "float",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "Collapses the top documents by a specified key into a single top document per key.",
+          "name": "collapse",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "FieldCollapse",
+              "namespace": "_global.search._types"
+            }
+          }
+        }
+      ],
+      "specLocation": "_types/Retriever.ts#L43-L56"
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "RetrieverBase",
+        "namespace": "_types"
+      },
+      "properties": [
+        {
+          "description": "Query to filter the documents that can match.",
+          "name": "filter",
+          "required": false,
+          "type": {
+            "items": [
+              {
+                "kind": "instance_of",
+                "type": {
+                  "name": "QueryContainer",
+                  "namespace": "_types.query_dsl"
+                }
+              },
+              {
+                "kind": "array_of",
+                "value": {
+                  "kind": "instance_of",
+                  "type": {
+                    "name": "QueryContainer",
+                    "namespace": "_types.query_dsl"
+                  }
+                }
+              }
+            ],
+            "kind": "union_of"
+          }
+        }
+      ],
+      "specLocation": "_types/Retriever.ts#L38-L41"
+    },
+    {
       "kind": "type_alias",
       "name": {
         "name": "SortResults",
@@ -65771,36 +65836,147 @@
       }
     },
     {
-      "codegenNames": [
-        "enabled",
-        "count"
-      ],
-      "description": "Number of hits matching the query to count accurately. If true, the exact\nnumber of hits is returned at the cost of some performance. If false, the\nresponse does not include the total number of hits matching the query.\nDefaults to 10,000 hits.",
-      "kind": "type_alias",
-      "name": {
-        "name": "TrackHits",
-        "namespace": "_global.search._types"
+      "inherits": {
+        "type": {
+          "name": "RetrieverBase",
+          "namespace": "_types"
+        }
       },
-      "specLocation": "_global/search/_types/hits.ts#L144-L152",
-      "type": {
-        "items": [
-          {
+      "kind": "interface",
+      "name": {
+        "name": "KnnRetriever",
+        "namespace": "_types"
+      },
+      "properties": [
+        {
+          "description": "The name of the vector field to search against.",
+          "name": "field",
+          "required": true,
+          "type": {
             "kind": "instance_of",
             "type": {
-              "name": "boolean",
+              "name": "string",
               "namespace": "_builtins"
             }
-          },
-          {
+          }
+        },
+        {
+          "description": "Query vector. Must have the same number of dimensions as the vector field you are searching against. You must provide a query_vector_builder or query_vector, but not both.",
+          "name": "query_vector",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "QueryVector",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "Defines a model to build a query vector.",
+          "name": "query_vector_builder",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "QueryVectorBuilder",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "Number of nearest neighbors to return as top hits.",
+          "name": "k",
+          "required": true,
+          "type": {
             "kind": "instance_of",
             "type": {
               "name": "integer",
               "namespace": "_types"
             }
           }
-        ],
-        "kind": "union_of"
-      }
+        },
+        {
+          "description": "Number of nearest neighbor candidates to consider per shard.",
+          "name": "num_candidates",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "The minimum similarity required for a document to be considered a match.",
+          "name": "similarity",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "float",
+              "namespace": "_types"
+            }
+          }
+        }
+      ],
+      "specLocation": "_types/Retriever.ts#L58-L71"
+    },
+    {
+      "inherits": {
+        "type": {
+          "name": "RetrieverBase",
+          "namespace": "_types"
+        }
+      },
+      "kind": "interface",
+      "name": {
+        "name": "RRFRetriever",
+        "namespace": "_types"
+      },
+      "properties": [
+        {
+          "description": "A list of child retrievers to specify which sets of returned top documents will have the RRF formula applied to them.",
+          "name": "retrievers",
+          "required": true,
+          "type": {
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "RetrieverContainer",
+                "namespace": "_types"
+              }
+            }
+          }
+        },
+        {
+          "description": "This value determines how much influence documents in individual result sets per query have over the final ranked result set.",
+          "name": "rank_constant",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "This value determines the size of the individual result sets per query.",
+          "name": "rank_window_size",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "_types"
+            }
+          }
+        }
+      ],
+      "specLocation": "_types/Retriever.ts#L73-L80"
     },
     {
       "kind": "type_alias",
@@ -66044,10 +66220,21 @@
     {
       "kind": "interface",
       "name": {
-        "name": "PointInTimeReference",
-        "namespace": "_global.search._types"
+        "name": "SlicedScroll",
+        "namespace": "_types"
       },
       "properties": [
+        {
+          "name": "field",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Field",
+              "namespace": "_types"
+            }
+          }
+        },
         {
           "name": "id",
           "required": true,
@@ -66060,18 +66247,18 @@
           }
         },
         {
-          "name": "keep_alive",
-          "required": false,
+          "name": "max",
+          "required": true,
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "Duration",
+              "name": "integer",
               "namespace": "_types"
             }
           }
         }
       ],
-      "specLocation": "_global/search/_types/PointInTimeReference.ts#L23-L26"
+      "specLocation": "_types/SlicedScroll.ts#L23-L27"
     },
     {
       "attachedBehaviors": [
@@ -67409,6 +67596,309 @@
     },
     {
       "codegenNames": [
+        "enabled",
+        "count"
+      ],
+      "description": "Number of hits matching the query to count accurately. If true, the exact\nnumber of hits is returned at the cost of some performance. If false, the\nresponse does not include the total number of hits matching the query.\nDefaults to 10,000 hits.",
+      "kind": "type_alias",
+      "name": {
+        "name": "TrackHits",
+        "namespace": "_global.search._types"
+      },
+      "specLocation": "_global/search/_types/hits.ts#L144-L152",
+      "type": {
+        "items": [
+          {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "_builtins"
+            }
+          },
+          {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "_types"
+            }
+          }
+        ],
+        "kind": "union_of"
+      }
+    },
+    {
+      "codegenNames": [
+        "header",
+        "body"
+      ],
+      "kind": "type_alias",
+      "name": {
+        "name": "RequestItem",
+        "namespace": "_global.msearch"
+      },
+      "specLocation": "_global/msearch/types.ts#L26-L29",
+      "type": {
+        "items": [
+          {
+            "kind": "instance_of",
+            "type": {
+              "name": "MultisearchHeader",
+              "namespace": "_global.msearch"
+            }
+          },
+          {
+            "kind": "instance_of",
+            "type": {
+              "name": "MultisearchBody",
+              "namespace": "_global.msearch"
+            }
+          }
+        ],
+        "kind": "union_of"
+      }
+    },
+    {
+      "description": "Contains parameters used to limit or change the subsequent search body request.",
+      "kind": "interface",
+      "name": {
+        "name": "MultisearchHeader",
+        "namespace": "_global.msearch"
+      },
+      "properties": [
+        {
+          "name": "allow_no_indices",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "_builtins"
+            }
+          }
+        },
+        {
+          "name": "expand_wildcards",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "ExpandWildcards",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "ignore_unavailable",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "_builtins"
+            }
+          }
+        },
+        {
+          "name": "index",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Indices",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "preference",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "_builtins"
+            }
+          }
+        },
+        {
+          "name": "request_cache",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "_builtins"
+            }
+          }
+        },
+        {
+          "name": "routing",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Routing",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "search_type",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "SearchType",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "ccs_minimize_roundtrips",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "_builtins"
+            }
+          }
+        },
+        {
+          "name": "allow_partial_search_results",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "_builtins"
+            }
+          }
+        },
+        {
+          "name": "ignore_throttled",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "_builtins"
+            }
+          }
+        }
+      ],
+      "specLocation": "_global/msearch/types.ts#L31-L46"
+    },
+    {
+      "kind": "type_alias",
+      "name": {
+        "name": "ExpandWildcards",
+        "namespace": "_types"
+      },
+      "specLocation": "_types/common.ts#L218-L218",
+      "type": {
+        "items": [
+          {
+            "kind": "instance_of",
+            "type": {
+              "name": "ExpandWildcard",
+              "namespace": "_types"
+            }
+          },
+          {
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "ExpandWildcard",
+                "namespace": "_types"
+              }
+            }
+          }
+        ],
+        "kind": "union_of"
+      }
+    },
+    {
+      "kind": "enum",
+      "members": [
+        {
+          "description": "Match any data stream or index, including hidden ones.",
+          "name": "all"
+        },
+        {
+          "description": "Match open, non-hidden indices. Also matches any non-hidden data stream.",
+          "name": "open"
+        },
+        {
+          "description": "Match closed, non-hidden indices. Also matches any non-hidden data stream. Data streams cannot be closed.",
+          "name": "closed"
+        },
+        {
+          "description": "Match hidden data streams and hidden indices. Must be combined with open, closed, or both.",
+          "name": "hidden"
+        },
+        {
+          "description": "Wildcard expressions are not accepted.",
+          "name": "none"
+        }
+      ],
+      "name": {
+        "name": "ExpandWildcard",
+        "namespace": "_types"
+      },
+      "specLocation": "_types/common.ts#L202-L216"
+    },
+    {
+      "kind": "type_alias",
+      "name": {
+        "name": "Indices",
+        "namespace": "_types"
+      },
+      "specLocation": "_types/common.ts#L67-L67",
+      "type": {
+        "items": [
+          {
+            "kind": "instance_of",
+            "type": {
+              "name": "IndexName",
+              "namespace": "_types"
+            }
+          },
+          {
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "IndexName",
+                "namespace": "_types"
+              }
+            }
+          }
+        ],
+        "kind": "union_of"
+      }
+    },
+    {
+      "kind": "enum",
+      "members": [
+        {
+          "description": "Documents are scored using local term and document frequencies for the shard. This is usually faster but less accurate.",
+          "name": "query_then_fetch"
+        },
+        {
+          "description": "Documents are scored using global term and document frequencies across all shards. This is usually slower but more accurate.",
+          "name": "dfs_query_then_fetch"
+        }
+      ],
+      "name": {
+        "name": "SearchType",
+        "namespace": "_types"
+      },
+      "specLocation": "_types/common.ts#L276-L281"
+    },
+    {
+      "codegenNames": [
         "result",
         "failure"
       ],
@@ -67423,7 +67913,7 @@
         "name": "ResponseItem",
         "namespace": "_global.msearch"
       },
-      "specLocation": "_global/msearch/types.ts#L208-L211",
+      "specLocation": "_global/msearch/types.ts#L55-L58",
       "type": {
         "items": [
           {
@@ -67493,7 +67983,7 @@
           }
         }
       ],
-      "specLocation": "_global/msearch/types.ts#L213-L216"
+      "specLocation": "_global/msearch/types.ts#L60-L63"
     },
     {
       "generics": [
@@ -76753,6 +77243,37 @@
             "type": {
               "name": "null",
               "namespace": "_builtins"
+            }
+          }
+        ],
+        "kind": "union_of"
+      }
+    },
+    {
+      "codegenNames": [
+        "script_string",
+        "script_template"
+      ],
+      "kind": "type_alias",
+      "name": {
+        "name": "ScriptSource",
+        "namespace": "_types"
+      },
+      "specLocation": "_types/Scripting.ts#L48-L49",
+      "type": {
+        "items": [
+          {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "_builtins"
+            }
+          },
+          {
+            "kind": "instance_of",
+            "type": {
+              "name": "SearchRequestBody",
+              "namespace": "_global.search._types"
             }
           }
         ],
@@ -105431,49 +105952,6 @@
     {
       "kind": "interface",
       "name": {
-        "name": "SlicedScroll",
-        "namespace": "_types"
-      },
-      "properties": [
-        {
-          "name": "field",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "Field",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "name": "id",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "Id",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "name": "max",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "integer",
-              "namespace": "_types"
-            }
-          }
-        }
-      ],
-      "specLocation": "_types/SlicedScroll.ts#L23-L27"
-    },
-    {
-      "kind": "interface",
-      "name": {
         "name": "OperationContainer",
         "namespace": "_global.bulk"
       },
@@ -117260,13 +117738,13 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
-              "namespace": "_builtins"
+              "name": "ScriptSource",
+              "namespace": "_types"
             }
           }
         }
       ],
-      "specLocation": "_types/Scripting.ts#L47-L57"
+      "specLocation": "_types/Scripting.ts#L51-L61"
     },
     {
       "kind": "interface",
@@ -135733,7 +136211,7 @@
           }
         }
       ],
-      "specLocation": "_global/msearch/types.ts#L203-L206"
+      "specLocation": "_global/msearch/types.ts#L50-L53"
     },
     {
       "kind": "interface",
@@ -137482,323 +137960,6 @@
         }
       ],
       "specLocation": "_global/scripts_painless_execute/types.ts#L25-L39"
-    },
-    {
-      "kind": "interface",
-      "name": {
-        "name": "RetrieverContainer",
-        "namespace": "_types"
-      },
-      "properties": [
-        {
-          "description": "A retriever that replaces the functionality of a traditional query.",
-          "name": "standard",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "StandardRetriever",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "description": "A retriever that replaces the functionality  of a knn search.",
-          "name": "knn",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "KnnRetriever",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "description": "A retriever that produces top documents from reciprocal rank fusion (RRF).",
-          "name": "rrf",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "RRFRetriever",
-              "namespace": "_types"
-            }
-          }
-        }
-      ],
-      "specLocation": "_types/Retriever.ts#L26-L36",
-      "variants": {
-        "kind": "container"
-      }
-    },
-    {
-      "inherits": {
-        "type": {
-          "name": "RetrieverBase",
-          "namespace": "_types"
-        }
-      },
-      "kind": "interface",
-      "name": {
-        "name": "StandardRetriever",
-        "namespace": "_types"
-      },
-      "properties": [
-        {
-          "description": "Defines a query to retrieve a set of top documents.",
-          "name": "query",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "QueryContainer",
-              "namespace": "_types.query_dsl"
-            }
-          }
-        },
-        {
-          "description": "Defines a search after object parameter used for pagination.",
-          "name": "search_after",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "SortResults",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "description": "Maximum number of documents to collect for each shard.",
-          "name": "terminate_after",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "integer",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "description": "A sort object that that specifies the order of matching documents.",
-          "name": "sort",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "Sort",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "description": "Minimum _score for matching documents. Documents with a lower _score are not included in the top documents.",
-          "name": "min_score",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "float",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "description": "Collapses the top documents by a specified key into a single top document per key.",
-          "name": "collapse",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "FieldCollapse",
-              "namespace": "_global.search._types"
-            }
-          }
-        }
-      ],
-      "specLocation": "_types/Retriever.ts#L43-L56"
-    },
-    {
-      "kind": "interface",
-      "name": {
-        "name": "RetrieverBase",
-        "namespace": "_types"
-      },
-      "properties": [
-        {
-          "description": "Query to filter the documents that can match.",
-          "name": "filter",
-          "required": false,
-          "type": {
-            "items": [
-              {
-                "kind": "instance_of",
-                "type": {
-                  "name": "QueryContainer",
-                  "namespace": "_types.query_dsl"
-                }
-              },
-              {
-                "kind": "array_of",
-                "value": {
-                  "kind": "instance_of",
-                  "type": {
-                    "name": "QueryContainer",
-                    "namespace": "_types.query_dsl"
-                  }
-                }
-              }
-            ],
-            "kind": "union_of"
-          }
-        }
-      ],
-      "specLocation": "_types/Retriever.ts#L38-L41"
-    },
-    {
-      "inherits": {
-        "type": {
-          "name": "RetrieverBase",
-          "namespace": "_types"
-        }
-      },
-      "kind": "interface",
-      "name": {
-        "name": "KnnRetriever",
-        "namespace": "_types"
-      },
-      "properties": [
-        {
-          "description": "The name of the vector field to search against.",
-          "name": "field",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "_builtins"
-            }
-          }
-        },
-        {
-          "description": "Query vector. Must have the same number of dimensions as the vector field you are searching against. You must provide a query_vector_builder or query_vector, but not both.",
-          "name": "query_vector",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "QueryVector",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "description": "Defines a model to build a query vector.",
-          "name": "query_vector_builder",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "QueryVectorBuilder",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "description": "Number of nearest neighbors to return as top hits.",
-          "name": "k",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "integer",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "description": "Number of nearest neighbor candidates to consider per shard.",
-          "name": "num_candidates",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "integer",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "description": "The minimum similarity required for a document to be considered a match.",
-          "name": "similarity",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "float",
-              "namespace": "_types"
-            }
-          }
-        }
-      ],
-      "specLocation": "_types/Retriever.ts#L58-L71"
-    },
-    {
-      "inherits": {
-        "type": {
-          "name": "RetrieverBase",
-          "namespace": "_types"
-        }
-      },
-      "kind": "interface",
-      "name": {
-        "name": "RRFRetriever",
-        "namespace": "_types"
-      },
-      "properties": [
-        {
-          "description": "A list of child retrievers to specify which sets of returned top documents will have the RRF formula applied to them.",
-          "name": "retrievers",
-          "required": true,
-          "type": {
-            "kind": "array_of",
-            "value": {
-              "kind": "instance_of",
-              "type": {
-                "name": "RetrieverContainer",
-                "namespace": "_types"
-              }
-            }
-          }
-        },
-        {
-          "description": "This value determines how much influence documents in individual result sets per query have over the final ranked result set.",
-          "name": "rank_constant",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "integer",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "description": "This value determines the size of the individual result sets per query.",
-          "name": "rank_window_size",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "integer",
-              "namespace": "_types"
-            }
-          }
-        }
-      ],
-      "specLocation": "_types/Retriever.ts#L73-L80"
     },
     {
       "kind": "interface",
