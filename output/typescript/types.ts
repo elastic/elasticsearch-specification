@@ -20483,13 +20483,12 @@ export interface XpackInfoFeatures {
   aggregate_metric: XpackInfoFeature
   analytics: XpackInfoFeature
   ccr: XpackInfoFeature
-  data_frame?: XpackInfoFeature
-  data_science?: XpackInfoFeature
   data_streams: XpackInfoFeature
   data_tiers: XpackInfoFeature
   enrich: XpackInfoFeature
+  enterprise_search: XpackInfoFeature
   eql: XpackInfoFeature
-  flattened?: XpackInfoFeature
+  esql: XpackInfoFeature
   frozen_indices: XpackInfoFeature
   graph: XpackInfoFeature
   ilm: XpackInfoFeature
@@ -20504,7 +20503,7 @@ export interface XpackInfoFeatures {
   spatial: XpackInfoFeature
   sql: XpackInfoFeature
   transform: XpackInfoFeature
-  vectors?: XpackInfoFeature
+  universal_profiling: XpackInfoFeature
   voting_only: XpackInfoFeature
   watcher: XpackInfoFeature
   archive: XpackInfoFeature
