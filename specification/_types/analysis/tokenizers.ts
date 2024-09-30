@@ -67,7 +67,10 @@ export enum TokenChar {
 
 export class KeywordTokenizer extends TokenizerBase {
   type: 'keyword'
-  buffer_size: integer
+  /**
+   * @server_default 256
+   */
+  buffer_size?: integer
 }
 
 export class LetterTokenizer extends TokenizerBase {

@@ -56047,10 +56047,17 @@
                 "type": "boolean"
               },
               "keywords": {
-                "type": "array",
-                "items": {
-                  "type": "string"
-                }
+                "oneOf": [
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    }
+                  }
+                ]
               },
               "keywords_path": {
                 "type": "string"
@@ -57529,8 +57536,7 @@
               }
             },
             "required": [
-              "type",
-              "buffer_size"
+              "type"
             ]
           }
         ]
