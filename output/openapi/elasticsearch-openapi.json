@@ -86485,12 +86485,6 @@
           "ccr": {
             "$ref": "#/components/schemas/xpack.info:Feature"
           },
-          "data_frame": {
-            "$ref": "#/components/schemas/xpack.info:Feature"
-          },
-          "data_science": {
-            "$ref": "#/components/schemas/xpack.info:Feature"
-          },
           "data_streams": {
             "$ref": "#/components/schemas/xpack.info:Feature"
           },
@@ -86500,10 +86494,13 @@
           "enrich": {
             "$ref": "#/components/schemas/xpack.info:Feature"
           },
+          "enterprise_search": {
+            "$ref": "#/components/schemas/xpack.info:Feature"
+          },
           "eql": {
             "$ref": "#/components/schemas/xpack.info:Feature"
           },
-          "flattened": {
+          "esql": {
             "$ref": "#/components/schemas/xpack.info:Feature"
           },
           "frozen_indices": {
@@ -86548,7 +86545,7 @@
           "transform": {
             "$ref": "#/components/schemas/xpack.info:Feature"
           },
-          "vectors": {
+          "universal_profiling": {
             "$ref": "#/components/schemas/xpack.info:Feature"
           },
           "voting_only": {
@@ -86568,7 +86565,9 @@
           "data_streams",
           "data_tiers",
           "enrich",
+          "enterprise_search",
           "eql",
+          "esql",
           "frozen_indices",
           "graph",
           "ilm",
@@ -86582,6 +86581,7 @@
           "spatial",
           "sql",
           "transform",
+          "universal_profiling",
           "voting_only",
           "watcher",
           "archive"
