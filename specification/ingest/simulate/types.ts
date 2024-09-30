@@ -27,8 +27,18 @@ import { ErrorCause } from '@_types/Errors'
 import { DateTime } from '@_types/Time'
 
 export class Ingest {
+  _redact?: Redact
   timestamp: DateTime
   pipeline?: Name
+}
+
+export class Redact {
+  /**
+   * indicates if document has been redacted
+   * @availability stack since=8.16.0
+   * @availability serverless
+   */
+  _is_redacted: boolean
 }
 
 export class SimulateDocumentResult {

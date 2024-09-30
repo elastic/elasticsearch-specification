@@ -93996,7 +93996,7 @@
         "name": "ShapeType",
         "namespace": "ingest._types"
       },
-      "specLocation": "ingest/_types/Processors.ts#L1225-L1228"
+      "specLocation": "ingest/_types/Processors.ts#L1232-L1235"
     },
     {
       "kind": "enum",
@@ -123250,9 +123250,28 @@
               "namespace": "_builtins"
             }
           }
+        },
+        {
+          "availability": {
+            "serverless": {},
+            "stack": {
+              "since": "8.16.0"
+            }
+          },
+          "description": "If `true` then ingest metadata `_ingest._redact._is_redacted` is set to `true` if the document has been redacted",
+          "name": "trace_redact",
+          "required": false,
+          "serverDefault": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "_builtins"
+            }
+          }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L1056-L1090"
+      "specLocation": "ingest/_types/Processors.ts#L1056-L1097"
     },
     {
       "inherits": {
@@ -123305,7 +123324,7 @@
           }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L1092-L1106"
+      "specLocation": "ingest/_types/Processors.ts#L1099-L1113"
     },
     {
       "inherits": {
@@ -123358,7 +123377,7 @@
           }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L1108-L1124"
+      "specLocation": "ingest/_types/Processors.ts#L1115-L1131"
     },
     {
       "inherits": {
@@ -123440,7 +123459,7 @@
           }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L1126-L1154"
+      "specLocation": "ingest/_types/Processors.ts#L1133-L1161"
     },
     {
       "inherits": {
@@ -123512,7 +123531,7 @@
           }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L1156-L1176"
+      "specLocation": "ingest/_types/Processors.ts#L1163-L1183"
     },
     {
       "inherits": {
@@ -123598,7 +123617,7 @@
           }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L1178-L1212"
+      "specLocation": "ingest/_types/Processors.ts#L1185-L1219"
     },
     {
       "inherits": {
@@ -123641,7 +123660,7 @@
           }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L1214-L1223"
+      "specLocation": "ingest/_types/Processors.ts#L1221-L1230"
     },
     {
       "inherits": {
@@ -123694,7 +123713,7 @@
           }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L1230-L1246"
+      "specLocation": "ingest/_types/Processors.ts#L1237-L1253"
     },
     {
       "inherits": {
@@ -123773,7 +123792,7 @@
           }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L1248-L1273"
+      "specLocation": "ingest/_types/Processors.ts#L1255-L1280"
     },
     {
       "inherits": {
@@ -123827,7 +123846,7 @@
           }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L1275-L1291"
+      "specLocation": "ingest/_types/Processors.ts#L1282-L1298"
     },
     {
       "inherits": {
@@ -123881,7 +123900,7 @@
           }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L1293-L1309"
+      "specLocation": "ingest/_types/Processors.ts#L1300-L1316"
     },
     {
       "inherits": {
@@ -123935,7 +123954,7 @@
           }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L1311-L1327"
+      "specLocation": "ingest/_types/Processors.ts#L1318-L1334"
     },
     {
       "inherits": {
@@ -124015,7 +124034,7 @@
           }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L1329-L1355"
+      "specLocation": "ingest/_types/Processors.ts#L1336-L1362"
     },
     {
       "inherits": {
@@ -124170,7 +124189,7 @@
           }
         }
       ],
-      "specLocation": "ingest/simulate/types.ts#L50-L64"
+      "specLocation": "ingest/simulate/types.ts#L60-L74"
     },
     {
       "kind": "interface",
@@ -124216,7 +124235,7 @@
           }
         }
       ],
-      "specLocation": "ingest/simulate/types.ts#L34-L38"
+      "specLocation": "ingest/simulate/types.ts#L44-L48"
     },
     {
       "attachedBehaviors": [
@@ -124356,7 +124375,7 @@
           }
         }
       ],
-      "specLocation": "ingest/simulate/types.ts#L66-L96"
+      "specLocation": "ingest/simulate/types.ts#L76-L106"
     },
     {
       "kind": "interface",
@@ -124365,6 +124384,17 @@
         "namespace": "ingest.simulate"
       },
       "properties": [
+        {
+          "name": "_redact",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Redact",
+              "namespace": "ingest.simulate"
+            }
+          }
+        },
         {
           "name": "timestamp",
           "required": true,
@@ -124388,7 +124418,35 @@
           }
         }
       ],
-      "specLocation": "ingest/simulate/types.ts#L29-L32"
+      "specLocation": "ingest/simulate/types.ts#L29-L33"
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "Redact",
+        "namespace": "ingest.simulate"
+      },
+      "properties": [
+        {
+          "availability": {
+            "serverless": {},
+            "stack": {
+              "since": "8.16.0"
+            }
+          },
+          "description": "indicates if document has been redacted",
+          "name": "_is_redacted",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "_builtins"
+            }
+          }
+        }
+      ],
+      "specLocation": "ingest/simulate/types.ts#L35-L42"
     },
     {
       "kind": "interface",
@@ -124475,7 +124533,7 @@
           }
         }
       ],
-      "specLocation": "ingest/simulate/types.ts#L40-L48"
+      "specLocation": "ingest/simulate/types.ts#L50-L58"
     },
     {
       "kind": "interface",
