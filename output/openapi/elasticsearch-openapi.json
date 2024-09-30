@@ -70579,6 +70579,11 @@
               "skip_if_unlicensed": {
                 "description": "If `true` and the current license does not support running redact processors, then the processor quietly exits without modifying the document",
                 "type": "boolean"
+              },
+              "trace_redact": {
+                "description": "If `true` then ingest metadata `_ingest._redact._is_redacted` is set to `true` if the document has been redacted",
+                "x-available-since": "8.16.0",
+                "type": "boolean"
               }
             },
             "required": [
@@ -71068,6 +71073,9 @@
       "ingest.simulate:Ingest": {
         "type": "object",
         "properties": {
+          "_redact": {
+            "$ref": "#/components/schemas/ingest.simulate:Redact"
+          },
           "timestamp": {
             "$ref": "#/components/schemas/_types:DateTime"
           },
@@ -71077,6 +71085,18 @@
         },
         "required": [
           "timestamp"
+        ]
+      },
+      "ingest.simulate:Redact": {
+        "type": "object",
+        "properties": {
+          "_is_redacted": {
+            "description": "indicates if document has been redacted",
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "_is_redacted"
         ]
       },
       "_spec_utils:StringifiedVersionNumber": {
