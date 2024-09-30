@@ -124189,7 +124189,7 @@
           }
         }
       ],
-      "specLocation": "ingest/simulate/types.ts#L60-L74"
+      "specLocation": "ingest/simulate/types.ts#L62-L76"
     },
     {
       "kind": "interface",
@@ -124235,7 +124235,7 @@
           }
         }
       ],
-      "specLocation": "ingest/simulate/types.ts#L44-L48"
+      "specLocation": "ingest/simulate/types.ts#L46-L50"
     },
     {
       "attachedBehaviors": [
@@ -124375,7 +124375,7 @@
           }
         }
       ],
-      "specLocation": "ingest/simulate/types.ts#L76-L106"
+      "specLocation": "ingest/simulate/types.ts#L78-L108"
     },
     {
       "kind": "interface",
@@ -124385,6 +124385,12 @@
       },
       "properties": [
         {
+          "availability": {
+            "serverless": {},
+            "stack": {
+              "since": "8.16.0"
+            }
+          },
           "name": "_redact",
           "required": false,
           "type": {
@@ -124418,7 +124424,7 @@
           }
         }
       ],
-      "specLocation": "ingest/simulate/types.ts#L29-L33"
+      "specLocation": "ingest/simulate/types.ts#L29-L37"
     },
     {
       "kind": "interface",
@@ -124428,12 +124434,6 @@
       },
       "properties": [
         {
-          "availability": {
-            "serverless": {},
-            "stack": {
-              "since": "8.16.0"
-            }
-          },
           "description": "indicates if document has been redacted",
           "name": "_is_redacted",
           "required": true,
@@ -124446,7 +124446,7 @@
           }
         }
       ],
-      "specLocation": "ingest/simulate/types.ts#L35-L42"
+      "specLocation": "ingest/simulate/types.ts#L39-L44"
     },
     {
       "kind": "interface",
@@ -124533,7 +124533,7 @@
           }
         }
       ],
-      "specLocation": "ingest/simulate/types.ts#L50-L58"
+      "specLocation": "ingest/simulate/types.ts#L52-L60"
     },
     {
       "kind": "interface",

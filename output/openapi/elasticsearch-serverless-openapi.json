@@ -47563,7 +47563,6 @@
         "properties": {
           "_is_redacted": {
             "description": "indicates if document has been redacted",
-            "x-available-since": "8.16.0",
             "type": "boolean"
           }
         },
