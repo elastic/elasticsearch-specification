@@ -4,24 +4,37 @@ info:
   title: Overlays for changes that apply to both Elasticsearch and Elasticsearch Serverless OpenAPI documents
   version: 0.0.1
 actions:
-# Abbreviate and annotate items that are not shown in Bump.sh due to depth limits
-  - target: "$.components['schemas']['ml._types:Datafeed'].properties.query"
-    description: Remove query object from anomaly detection datafeed
-    remove: true
-  - target: "$.components['schemas']['ml._types:Datafeed'].properties"
-    description: Re-add a simplified query object in anomaly detection datafeed
+# Annotate items that are not shown in Bump.sh due to depth limits
+  # These hopefully can be fixed by adding branch levels in Bump.sh since the info doesn't exist elsewhere
+  - target: "$.components['schemas']['ml._types:TrainedModelConfigMetadata'].properties"
+    description: Add x-abbrebreviated to trained_model_configs > metadata > total_feature_importance
     update:
-      query:
+      total_feature_importance:
         x-abbreviated: true
-        type: object
-        description: >
-          The Elasticsearch query domain-specific language (DSL).
-          This value corresponds to the query object in an Elasticsearch search POST body.
-          All the options that are supported by Elasticsearch can be used, as this object is passed verbatim to Elasticsearch.
-          By default, this property has the following value: `{"match_all": {"boost": 1}}`.
-        externalDocs:
-          url: https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl.html
-          description: Query DSL
+  - target: "$.components['schemas']['ml._types:Detector'].properties"
+    description: Add x-abbrebreviated to anomaly detection job > analysis_config > detectors > custom_rules
+    update:
+      custom_rules:
+        x-abbreviated: true
+  - target: "$.components['schemas']['ml._types:DetectorRead'].properties"
+    description: Add x-abbrebreviated to anomaly detection jobs > analysis_config > detectors > custom_rules
+    update:
+      custom_rules:
+        x-abbreviated: true
+  - target: "$.components['schemas']['ml.put_trained_model:TargetMeanEncodingPreprocessor'].properties"
+    description: Add x-abbrebreviated to data frame analytics job > analysis> classification > feature_processors > target_mean_encoding > target_map
+    update:
+      target_map:
+        x-abbreviated: true
+# Annotate and abbreviate items that are not shown in Bump.sh due to depth limits
+  # These are likely long-term and should refer to query language reference etc
+  - target: "$.components['schemas']['_types.query_dsl:QueryContainer'].properties"
+    description: Remove properties from the QueryContainer object
+    remove: true
+  - target: "$.components['schemas']['_types.query_dsl:QueryContainer']"
+    description: Add x-abbreviated to the QueryContainer object
+    update:
+      x-abbreviated: true
   - target: "$.components['schemas']['ml._types:CategorizationAnalyzerDefinition'].properties.tokenizer"
     description: Remove tokenizer object from ML anomaly detection analysis config
     remove: true
@@ -43,37 +56,6 @@ actions:
         externalDocs:
           url: https://www.elastic.co/guide/en/elasticsearch/reference/current/analysis-tokenizers.html
           description: Tokenizer reference
-  - target: "$.components['schemas']['ml._types:DataframeAnalyticsSource'].properties.query"
-    description: Remove query object from data frame analytics source
-    remove: true
-  - target: "$.components['schemas']['ml._types:DataframeAnalyticsSource'].properties"
-    description: Re-add a simplified query object in data frame analytics source
-    update:
-      query:
-        x-abbreviated: true
-        type: object
-        description: >
-          The Elasticsearch query domain-specific language (DSL).
-          This value corresponds to the query object in an Elasticsearch search POST body.
-          All the options that are supported by Elasticsearch can be used, as this object is passed verbatim to Elasticsearch.
-          By default, this property has the following value: `{"match_all": {}}`.
-        externalDocs:
-          url: https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl.html
-          description: Query DSL
-  - target: "$.components['schemas']['transform._types:Source'].properties.query"
-    description: Remove query object from transform source
-    remove: true
-  - target: "$.components['schemas']['transform._types:Source'].properties"
-    description: Re-add a simplified query object in transform source
-    update:
-      query:
-        x-abbreviated: true
-        type: object
-        description: >
-          A query clause that retrieves a subset of data from the source index.
-        externalDocs:
-          url: https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl.html
-          description: Query DSL
 # Examples
   - target: "$.components['requestBodies']['async_search.submit']"
     description: "Add example for asynch search submit request"
