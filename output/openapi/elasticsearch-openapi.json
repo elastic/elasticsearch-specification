@@ -9643,7 +9643,11 @@
                   "next_step": {
                     "$ref": "#/components/schemas/ilm.move_to_step:StepKey"
                   }
-                }
+                },
+                "required": [
+                  "current_step",
+                  "next_step"
+                ]
               }
             }
           }
@@ -57499,9 +57503,7 @@
               }
             },
             "required": [
-              "type",
-              "max_gram",
-              "min_gram"
+              "type"
             ]
           }
         ]
@@ -57614,9 +57616,7 @@
               }
             },
             "required": [
-              "type",
-              "max_gram",
-              "min_gram"
+              "type"
             ]
           }
         ]
@@ -66532,8 +66532,6 @@
           }
         },
         "required": [
-          "action",
-          "name",
           "phase"
         ]
       },
@@ -66742,10 +66740,7 @@
           "_shards": {
             "$ref": "#/components/schemas/_types:ShardStatistics"
           }
-        },
-        "required": [
-          "_shards"
-        ]
+        }
       },
       "indices.close:CloseIndexResult": {
         "type": "object",
@@ -67319,6 +67314,9 @@
         "type": "object",
         "properties": {
           "hidden": {
+            "type": "boolean"
+          },
+          "allow_custom_routing": {
             "type": "boolean"
           }
         }
