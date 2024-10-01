@@ -37,7 +37,6 @@ import { integer } from '@_types/Numeric'
  * @cluster_privileges manage_ml
  * @index_privileges create_index, index, manage, read, view_index_metadata
  * @doc_id put-dfanalytics
- * @doc_tag Machine learning data frame analytics
  */
 export interface Request extends RequestBase {
   path_parts: {

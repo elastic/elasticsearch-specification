@@ -10765,7 +10765,7 @@
       },
       "put": {
         "tags": [
-          "Data stream"
+          "data stream"
         ],
         "summary": "Create a data stream",
         "description": "Creates a data stream.\nYou must have a matching index template with data stream enabled.",
@@ -10819,7 +10819,7 @@
       },
       "delete": {
         "tags": [
-          "Data stream"
+          "indices"
         ],
         "summary": "Delete data streams",
         "description": "Deletes one or more data streams and their backing indices.",
@@ -10875,7 +10875,7 @@
     "/_data_stream/_stats": {
       "get": {
         "tags": [
-          "Data stream"
+          "indices"
         ],
         "summary": "Get data stream stats",
         "description": "Retrieves statistics for one or more data streams.",
@@ -10896,7 +10896,7 @@
     "/_data_stream/{name}/_stats": {
       "get": {
         "tags": [
-          "Data stream"
+          "indices"
         ],
         "summary": "Get data stream stats",
         "description": "Retrieves statistics for one or more data streams.",
@@ -12972,7 +12972,7 @@
     "/_data_stream/_migrate/{name}": {
       "post": {
         "tags": [
-          "Data stream"
+          "indices"
         ],
         "summary": "Convert an index alias to a data stream",
         "description": "Converts an index alias to a data stream.\nYou must have a matching index template that is data stream enabled.\nThe alias must meet the following criteria:\nThe alias must have a write index;\nAll indices for the alias must have a `@timestamp` field mapping of a `date` or `date_nanos` field type;\nThe alias must not have any filters;\nThe alias must not use custom routing.\nIf successful, the request removes the alias and creates a data stream with the same name.\nThe indices for the alias become hidden backing indices for the stream.\nThe write index for the alias becomes the write index for the stream.",
@@ -16739,7 +16739,7 @@
       },
       "put": {
         "tags": [
-          "Machine learning data frame analytics"
+          "ml"
         ],
         "summary": "Create a data frame analytics job",
         "description": "This API creates a data frame analytics job that performs an analysis on the\nsource indices and stores the outcome in a destination index.",
@@ -17577,7 +17577,7 @@
       },
       "put": {
         "tags": [
-          "Machine learning anomaly detection"
+          "ml"
         ],
         "summary": "Create an anomaly detection job",
         "description": "If you include a `datafeed_config`, you must have read index privileges on the source index.",
@@ -17996,7 +17996,7 @@
       },
       "put": {
         "tags": [
-          "Machine learning trained model"
+          "ml"
         ],
         "summary": "Create a trained model",
         "description": "Enable you to supply a trained model that is not created by data frame analytics.",
@@ -25911,7 +25911,7 @@
       },
       "put": {
         "tags": [
-          "Behavioral analytics"
+          "search_application"
         ],
         "summary": "Create a behavioral analytics collection",
         "operationId": "search-application-put-behavioral-analytics",

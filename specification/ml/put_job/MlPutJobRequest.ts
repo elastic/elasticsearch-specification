@@ -35,7 +35,6 @@ import { Duration } from '@_types/Time'
  * @availability serverless stability=stable visibility=public
  * @index_privileges read
  * @cluster_privileges manage_ml
- * @doc_tag Machine learning anomaly detection
  */
 export interface Request extends RequestBase {
   path_parts: {
