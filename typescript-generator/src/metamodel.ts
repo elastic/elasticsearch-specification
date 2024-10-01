@@ -126,7 +126,6 @@ export class Property {
   description?: string
   docUrl?: string
   docId?: string
-  docTag?: string
   serverDefault?: boolean | string | number | string[] | number[]
   deprecation?: Deprecation
   availability?: Availabilities
@@ -409,7 +408,7 @@ export class Endpoint {
   docId?: string
   deprecation?: Deprecation
   availability: Availabilities
-
+  docTag?: string
   /**
    * If the request value is `null` it means that there is not yet a
    * request type definition for this endpoint.
