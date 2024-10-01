@@ -13063,6 +13063,7 @@ export interface IngestRedactProcessor extends IngestProcessorBase {
   suffix?: string
   ignore_missing?: boolean
   skip_if_unlicensed?: boolean
+  trace_redact?: boolean
 }
 
 export interface IngestRemoveProcessor extends IngestProcessorBase {
@@ -13278,6 +13279,7 @@ export type IngestSimulateDocumentSimulation = IngestSimulateDocumentSimulationK
   & { [property: string]: string | Id | IndexName | IngestSimulateIngest | Record<string, any> | SpecUtilsStringified<VersionNumber> | VersionType }
 
 export interface IngestSimulateIngest {
+  _redact?: IngestSimulateRedact
   timestamp: DateTime
   pipeline?: Name
 }
@@ -13290,6 +13292,10 @@ export interface IngestSimulatePipelineSimulation {
   description?: string
   ignored_error?: ErrorCause
   error?: ErrorCause
+}
+
+export interface IngestSimulateRedact {
+  _is_redacted: boolean
 }
 
 export interface IngestSimulateRequest extends RequestBase {
@@ -20486,13 +20492,12 @@ export interface XpackInfoFeatures {
   aggregate_metric: XpackInfoFeature
   analytics: XpackInfoFeature
   ccr: XpackInfoFeature
-  data_frame?: XpackInfoFeature
-  data_science?: XpackInfoFeature
   data_streams: XpackInfoFeature
   data_tiers: XpackInfoFeature
   enrich: XpackInfoFeature
+  enterprise_search: XpackInfoFeature
   eql: XpackInfoFeature
-  flattened?: XpackInfoFeature
+  esql: XpackInfoFeature
   frozen_indices: XpackInfoFeature
   graph: XpackInfoFeature
   ilm: XpackInfoFeature
@@ -20507,7 +20512,7 @@ export interface XpackInfoFeatures {
   spatial: XpackInfoFeature
   sql: XpackInfoFeature
   transform: XpackInfoFeature
-  vectors?: XpackInfoFeature
+  universal_profiling: XpackInfoFeature
   voting_only: XpackInfoFeature
   watcher: XpackInfoFeature
   archive: XpackInfoFeature

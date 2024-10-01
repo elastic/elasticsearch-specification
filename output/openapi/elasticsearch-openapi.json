@@ -70585,6 +70585,11 @@
               "skip_if_unlicensed": {
                 "description": "If `true` and the current license does not support running redact processors, then the processor quietly exits without modifying the document",
                 "type": "boolean"
+              },
+              "trace_redact": {
+                "description": "If `true` then ingest metadata `_ingest._redact._is_redacted` is set to `true` if the document has been redacted",
+                "x-available-since": "8.16.0",
+                "type": "boolean"
               }
             },
             "required": [
@@ -71074,6 +71079,9 @@
       "ingest.simulate:Ingest": {
         "type": "object",
         "properties": {
+          "_redact": {
+            "$ref": "#/components/schemas/ingest.simulate:Redact"
+          },
           "timestamp": {
             "$ref": "#/components/schemas/_types:DateTime"
           },
@@ -71083,6 +71091,18 @@
         },
         "required": [
           "timestamp"
+        ]
+      },
+      "ingest.simulate:Redact": {
+        "type": "object",
+        "properties": {
+          "_is_redacted": {
+            "description": "indicates if document has been redacted",
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "_is_redacted"
         ]
       },
       "_spec_utils:StringifiedVersionNumber": {
@@ -86489,12 +86509,6 @@
           "ccr": {
             "$ref": "#/components/schemas/xpack.info:Feature"
           },
-          "data_frame": {
-            "$ref": "#/components/schemas/xpack.info:Feature"
-          },
-          "data_science": {
-            "$ref": "#/components/schemas/xpack.info:Feature"
-          },
           "data_streams": {
             "$ref": "#/components/schemas/xpack.info:Feature"
           },
@@ -86504,10 +86518,13 @@
           "enrich": {
             "$ref": "#/components/schemas/xpack.info:Feature"
           },
+          "enterprise_search": {
+            "$ref": "#/components/schemas/xpack.info:Feature"
+          },
           "eql": {
             "$ref": "#/components/schemas/xpack.info:Feature"
           },
-          "flattened": {
+          "esql": {
             "$ref": "#/components/schemas/xpack.info:Feature"
           },
           "frozen_indices": {
@@ -86552,7 +86569,7 @@
           "transform": {
             "$ref": "#/components/schemas/xpack.info:Feature"
           },
-          "vectors": {
+          "universal_profiling": {
             "$ref": "#/components/schemas/xpack.info:Feature"
           },
           "voting_only": {
@@ -86572,7 +86589,9 @@
           "data_streams",
           "data_tiers",
           "enrich",
+          "enterprise_search",
           "eql",
+          "esql",
           "frozen_indices",
           "graph",
           "ilm",
@@ -86586,6 +86605,7 @@
           "spatial",
           "sql",
           "transform",
+          "universal_profiling",
           "voting_only",
           "watcher",
           "archive"
