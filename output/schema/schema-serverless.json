@@ -84773,7 +84773,7 @@
         },
         {
           "name": "max_gram",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -84784,7 +84784,7 @@
         },
         {
           "name": "min_gram",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -84929,7 +84929,7 @@
         },
         {
           "name": "max_gram",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -84940,7 +84940,7 @@
         },
         {
           "name": "min_gram",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -119103,9 +119103,20 @@
               "namespace": "_builtins"
             }
           }
+        },
+        {
+          "name": "allow_custom_routing",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "_builtins"
+            }
+          }
         }
       ],
-      "specLocation": "indices/_types/DataStream.ts#L159-L161"
+      "specLocation": "indices/_types/DataStream.ts#L159-L162"
     },
     {
       "kind": "interface",
@@ -119116,7 +119127,7 @@
       "properties": [
         {
           "name": "_shards",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -119126,7 +119137,7 @@
           }
         }
       ],
-      "specLocation": "_types/Base.ts#L91-L93"
+      "specLocation": "_types/Base.ts#L91-L94"
     },
     {
       "kind": "interface",

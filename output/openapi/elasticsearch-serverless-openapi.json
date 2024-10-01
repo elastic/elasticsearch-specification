@@ -39244,9 +39244,7 @@
               }
             },
             "required": [
-              "type",
-              "max_gram",
-              "min_gram"
+              "type"
             ]
           }
         ]
@@ -39359,9 +39357,7 @@
               }
             },
             "required": [
-              "type",
-              "max_gram",
-              "min_gram"
+              "type"
             ]
           }
         ]
@@ -45335,6 +45331,9 @@
         "properties": {
           "hidden": {
             "type": "boolean"
+          },
+          "allow_custom_routing": {
+            "type": "boolean"
           }
         }
       },
@@ -45344,10 +45343,7 @@
           "_shards": {
             "$ref": "#/components/schemas/_types:ShardStatistics"
           }
-        },
-        "required": [
-          "_shards"
-        ]
+        }
       },
       "indices.resolve_index:ResolveIndexItem": {
         "type": "object",
