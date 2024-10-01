@@ -48,8 +48,8 @@ export class ClassicTokenizer extends TokenizerBase {
 export class EdgeNGramTokenizer extends TokenizerBase {
   type: 'edge_ngram'
   custom_token_chars?: string
-  max_gram: integer
-  min_gram: integer
+  max_gram?: integer
+  min_gram?: integer
   /**
    * @server_default []
    */
@@ -84,8 +84,8 @@ export class LowercaseTokenizer extends TokenizerBase {
 export class NGramTokenizer extends TokenizerBase {
   type: 'ngram'
   custom_token_chars?: string
-  max_gram: integer
-  min_gram: integer
+  max_gram?: integer
+  min_gram?: integer
   /**
    * @server_default []
    */

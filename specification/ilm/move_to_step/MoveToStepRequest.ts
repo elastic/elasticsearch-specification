@@ -30,7 +30,7 @@ export interface Request extends RequestBase {
     index: IndexName
   }
   body: {
-    current_step?: StepKey
-    next_step?: StepKey
+    current_step: StepKey
+    next_step: StepKey
   }
 }
