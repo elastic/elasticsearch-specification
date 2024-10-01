@@ -117251,9 +117251,20 @@
               "namespace": "_builtins"
             }
           }
+        },
+        {
+          "name": "allow_custom_routing",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "_builtins"
+            }
+          }
         }
       ],
-      "specLocation": "indices/_types/DataStream.ts#L144-L146"
+      "specLocation": "indices/_types/DataStream.ts#L144-L147"
     },
     {
       "kind": "interface",
@@ -117264,7 +117275,7 @@
       "properties": [
         {
           "name": "_shards",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -117274,7 +117285,7 @@
           }
         }
       ],
-      "specLocation": "_types/Base.ts#L91-L93"
+      "specLocation": "_types/Base.ts#L91-L94"
     },
     {
       "kind": "interface",

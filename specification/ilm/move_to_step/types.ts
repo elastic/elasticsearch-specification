@@ -18,7 +18,8 @@
  */
 
 export class StepKey {
-  action: string
-  name: string
+  // action and name are optional in case they are used in next_step
+  action?: string
+  name?: string
   phase: string
 }
