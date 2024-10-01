@@ -9643,7 +9643,11 @@
                   "next_step": {
                     "$ref": "#/components/schemas/ilm.move_to_step:StepKey"
                   }
-                }
+                },
+                "required": [
+                  "current_step",
+                  "next_step"
+                ]
               }
             }
           }

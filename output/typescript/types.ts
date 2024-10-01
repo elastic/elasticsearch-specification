@@ -10775,8 +10775,8 @@ export interface IlmMigrateToDataTiersResponse {
 export interface IlmMoveToStepRequest extends RequestBase {
   index: IndexName
   body?: {
-    current_step?: IlmMoveToStepStepKey
-    next_step?: IlmMoveToStepStepKey
+    current_step: IlmMoveToStepStepKey
+    next_step: IlmMoveToStepStepKey
   }
 }
 
