@@ -3,7 +3,7 @@ name: Update rest-api-spec
 on:
   workflow_dispatch:
   schedule:
-    - cron: '0 */3 * * *'  # At minute 0 past every 3rd hour.
+    - cron: '0 4 * * *'  # At 04:00.
 
 jobs:
   update-rest-api:
@@ -11,11 +11,12 @@ jobs:
     runs-on: ubuntu-latest
 
     strategy:
+      fail-fast: false
       matrix:
-        branch: ['main', '8.1', '8.0', '7.17']
+        branch: ['main', '8.x', '8.15', '7.17']
 
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v4
         with:
           ref: ${{ matrix.branch }}
 
@@ -29,31 +30,36 @@ jobs:
           npm install --prefix .github/download-artifacts
           npm install --prefix compiler
           npm install --prefix typescript-generator
+
       - name: Download artifacts
         run: |
           node .github/download-artifacts/index.js --branch ${{ matrix.branch }}
+
       - name: Generate output
         run: |
-          SKIP_VERSION_UPDATE=true make contrib
+          make contrib
+
       - name: Debug git status
         run: |
           git status --porcelain
+
       - name: Create Pull Request
-        uses: peter-evans/create-pull-request@v3
+        uses: peter-evans/create-pull-request@v6
         with:
           title: Update rest-api-spec ${{ matrix.branch }}
           body: 'As titled.'
           commit-message: 'Update rest-api-spec'
           labels: specification
           delete-branch: true
-          team-reviewers: elastic/clients-team
+          reviewers: Anaethelion,ezimuel,flobernd,JoshMock,l-trotta,miguelgrinberg,picandocodigo,pquentin,srikanthmanvi,swallez,technige
           branch: automated/rest-api-spec-update-${{ matrix.branch }}
 
       - name: Open an issue if the action fails
         if: ${{ failure() }}
-        uses: nashmaniac/create-issue-action@v1.1
+        uses: nashmaniac/create-issue-action@v1.2
         with:
           title: rest-api-spec update failed
           token: ${{ secrets.GITHUB_TOKEN }}
           labels: bug
           body: The rest-api-spec action is currently failing, see [here](https://github.com/elastic/elasticsearch-specification/actions/workflows/update-rest-api-json.yml).
+
