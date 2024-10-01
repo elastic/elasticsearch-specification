@@ -89,7 +89,8 @@ export class IndicesResponseBase extends AcknowledgedResponseBase {
 }
 
 export class ShardsOperationResponseBase {
-  _shards: ShardStatistics
+  // _shards is always returned, but not when wait_for_completion is false in the request
+  _shards?: ShardStatistics
 }
 
 export class CustomResponseBuilderBase {}

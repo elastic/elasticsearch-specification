@@ -2830,7 +2830,7 @@ export interface ShardStatistics {
 }
 
 export interface ShardsOperationResponseBase {
-  _shards: ShardStatistics
+  _shards?: ShardStatistics
 }
 
 export interface SlicedScroll {
@@ -4590,8 +4590,8 @@ export interface AnalysisEdgeNGramTokenFilter extends AnalysisTokenFilterBase {
 export interface AnalysisEdgeNGramTokenizer extends AnalysisTokenizerBase {
   type: 'edge_ngram'
   custom_token_chars?: string
-  max_gram: integer
-  min_gram: integer
+  max_gram?: integer
+  min_gram?: integer
   token_chars?: AnalysisTokenChar[]
 }
 
@@ -4933,8 +4933,8 @@ export interface AnalysisNGramTokenFilter extends AnalysisTokenFilterBase {
 export interface AnalysisNGramTokenizer extends AnalysisTokenizerBase {
   type: 'ngram'
   custom_token_chars?: string
-  max_gram: integer
-  min_gram: integer
+  max_gram?: integer
+  min_gram?: integer
   token_chars?: AnalysisTokenChar[]
 }
 
@@ -10775,16 +10775,16 @@ export interface IlmMigrateToDataTiersResponse {
 export interface IlmMoveToStepRequest extends RequestBase {
   index: IndexName
   body?: {
-    current_step?: IlmMoveToStepStepKey
-    next_step?: IlmMoveToStepStepKey
+    current_step: IlmMoveToStepStepKey
+    next_step: IlmMoveToStepStepKey
   }
 }
 
 export type IlmMoveToStepResponse = AcknowledgedResponseBase
 
 export interface IlmMoveToStepStepKey {
-  action: string
-  name: string
+  action?: string
+  name?: string
   phase: string
 }
 
@@ -10912,6 +10912,7 @@ export interface IndicesDataStreamTimestampField {
 
 export interface IndicesDataStreamVisibility {
   hidden?: boolean
+  allow_custom_routing?: boolean
 }
 
 export interface IndicesDownsampleConfig {
