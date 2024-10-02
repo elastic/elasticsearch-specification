@@ -2957,52 +2957,6 @@
           "visibility": "public"
         },
         "stack": {
-          "since": "7.9.0",
-          "stability": "stable"
-        }
-      },
-      "description": "Get data stream stats.\nRetrieves statistics for one or more data streams.",
-      "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/data-streams.html",
-      "name": "indices.data_streams_stats",
-      "privileges": {
-        "index": [
-          "monitor"
-        ]
-      },
-      "request": {
-        "name": "Request",
-        "namespace": "indices.data_streams_stats"
-      },
-      "requestBodyRequired": false,
-      "response": {
-        "name": "Response",
-        "namespace": "indices.data_streams_stats"
-      },
-      "responseMediaType": [
-        "application/json"
-      ],
-      "urls": [
-        {
-          "methods": [
-            "GET"
-          ],
-          "path": "/_data_stream/_stats"
-        },
-        {
-          "methods": [
-            "GET"
-          ],
-          "path": "/_data_stream/{name}/_stats"
-        }
-      ]
-    },
-    {
-      "availability": {
-        "serverless": {
-          "stability": "stable",
-          "visibility": "public"
-        },
-        "stack": {
           "stability": "stable"
         }
       },
@@ -7983,7 +7937,7 @@
           "stability": "beta"
         }
       },
-      "description": "Deletes a search application.",
+      "description": "Delete a search application.\nRemove a search application and its associated alias. Indices attached to the search application are not removed.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/delete-search-application.html",
       "name": "search_application.delete",
       "request": {
@@ -8018,7 +7972,7 @@
           "stability": "experimental"
         }
       },
-      "description": "Delete a behavioral analytics collection.",
+      "description": "Delete a behavioral analytics collection.\nThe associated data stream is also deleted.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/delete-analytics-collection.html",
       "name": "search_application.delete_behavioral_analytics",
       "request": {
@@ -8053,7 +8007,7 @@
           "stability": "beta"
         }
       },
-      "description": "Returns the details about a search application",
+      "description": "Get search application details.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/get-search-application.html",
       "name": "search_application.get",
       "request": {
@@ -8088,7 +8042,7 @@
           "stability": "experimental"
         }
       },
-      "description": "Returns the existing behavioral analytics collections.",
+      "description": "Get behavioral analytics collections.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/list-analytics-collection.html",
       "name": "search_application.get_behavioral_analytics",
       "request": {
@@ -8164,7 +8118,7 @@
           "stability": "beta"
         }
       },
-      "description": "Creates or updates a search application.",
+      "description": "Create or update a search application.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/put-search-application.html",
       "name": "search_application.put",
       "request": {
@@ -8202,7 +8156,7 @@
           "stability": "experimental"
         }
       },
-      "description": "Creates a behavioral analytics collection.",
+      "description": "Create a behavioral analytics collection.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/put-analytics-collection.html",
       "name": "search_application.put_behavioral_analytics",
       "request": {
@@ -8237,7 +8191,7 @@
           "stability": "beta"
         }
       },
-      "description": "Perform a search against a search application.",
+      "description": "Run a search application search.\nGenerate and run an Elasticsearch query that uses the specified query parameteter and the search template associated with the search application or default template.\nUnspecified template parameters are assigned their default values if applicable.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/search-application-search.html",
       "name": "search_application.search",
       "request": {
@@ -20166,144 +20120,6 @@
         "namespace": "indices.create_data_stream"
       },
       "specLocation": "indices/create_data_stream/IndicesCreateDataStreamResponse.ts#L22-L24"
-    },
-    {
-      "attachedBehaviors": [
-        "CommonQueryParameters"
-      ],
-      "body": {
-        "kind": "no_body"
-      },
-      "description": "Get data stream stats.\nRetrieves statistics for one or more data streams.",
-      "inherits": {
-        "type": {
-          "name": "RequestBase",
-          "namespace": "_types"
-        }
-      },
-      "kind": "request",
-      "name": {
-        "name": "Request",
-        "namespace": "indices.data_streams_stats"
-      },
-      "path": [
-        {
-          "description": "Comma-separated list of data streams used to limit the request.\nWildcard expressions (`*`) are supported.\nTo target all data streams in a cluster, omit this parameter or use `*`.",
-          "name": "name",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "IndexName",
-              "namespace": "_types"
-            }
-          }
-        }
-      ],
-      "query": [
-        {
-          "description": "Type of data stream that wildcard patterns can match.\nSupports comma-separated values, such as `open,hidden`.",
-          "name": "expand_wildcards",
-          "required": false,
-          "serverDefault": "open",
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "ExpandWildcards",
-              "namespace": "_types"
-            }
-          }
-        }
-      ],
-      "specLocation": "indices/data_streams_stats/IndicesDataStreamsStatsRequest.ts#L23-L48"
-    },
-    {
-      "body": {
-        "kind": "properties",
-        "properties": [
-          {
-            "description": "Contains information about shards that attempted to execute the request.",
-            "name": "_shards",
-            "required": true,
-            "type": {
-              "kind": "instance_of",
-              "type": {
-                "name": "ShardStatistics",
-                "namespace": "_types"
-              }
-            }
-          },
-          {
-            "description": "Total number of backing indices for the selected data streams.",
-            "name": "backing_indices",
-            "required": true,
-            "type": {
-              "kind": "instance_of",
-              "type": {
-                "name": "integer",
-                "namespace": "_types"
-              }
-            }
-          },
-          {
-            "description": "Total number of selected data streams.",
-            "name": "data_stream_count",
-            "required": true,
-            "type": {
-              "kind": "instance_of",
-              "type": {
-                "name": "integer",
-                "namespace": "_types"
-              }
-            }
-          },
-          {
-            "description": "Contains statistics for the selected data streams.",
-            "name": "data_streams",
-            "required": true,
-            "type": {
-              "kind": "array_of",
-              "value": {
-                "kind": "instance_of",
-                "type": {
-                  "name": "DataStreamsStatsItem",
-                  "namespace": "indices.data_streams_stats"
-                }
-              }
-            }
-          },
-          {
-            "description": "Total size of all shards for the selected data streams.\nThis property is included only if the `human` query parameter is `true`",
-            "name": "total_store_sizes",
-            "required": false,
-            "type": {
-              "kind": "instance_of",
-              "type": {
-                "name": "ByteSize",
-                "namespace": "_types"
-              }
-            }
-          },
-          {
-            "description": "Total size, in bytes, of all shards for the selected data streams.",
-            "name": "total_store_size_bytes",
-            "required": true,
-            "type": {
-              "kind": "instance_of",
-              "type": {
-                "name": "long",
-                "namespace": "_types"
-              }
-            }
-          }
-        ]
-      },
-      "kind": "response",
-      "name": {
-        "name": "Response",
-        "namespace": "indices.data_streams_stats"
-      },
-      "specLocation": "indices/data_streams_stats/IndicesDataStreamsStatsResponse.ts#L25-L43"
     },
     {
       "attachedBehaviors": [
@@ -37340,7 +37156,7 @@
       "body": {
         "kind": "no_body"
       },
-      "description": "Deletes a search application.",
+      "description": "Delete a search application.\nRemove a search application and its associated alias. Indices attached to the search application are not removed.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -37367,7 +37183,7 @@
         }
       ],
       "query": [],
-      "specLocation": "search_application/delete/SearchApplicationsDeleteRequest.ts#L22-L35"
+      "specLocation": "search_application/delete/SearchApplicationsDeleteRequest.ts#L22-L36"
     },
     {
       "body": {
@@ -37394,7 +37210,7 @@
       "body": {
         "kind": "no_body"
       },
-      "description": "Delete a behavioral analytics collection.",
+      "description": "Delete a behavioral analytics collection.\nThe associated data stream is also deleted.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -37421,7 +37237,7 @@
         }
       ],
       "query": [],
-      "specLocation": "search_application/delete_behavioral_analytics/BehavioralAnalyticsDeleteRequest.ts#L22-L35"
+      "specLocation": "search_application/delete_behavioral_analytics/BehavioralAnalyticsDeleteRequest.ts#L22-L36"
     },
     {
       "body": {
@@ -37448,7 +37264,7 @@
       "body": {
         "kind": "no_body"
       },
-      "description": "Returns the details about a search application",
+      "description": "Get search application details.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -37502,7 +37318,7 @@
       "body": {
         "kind": "no_body"
       },
-      "description": "Returns the existing behavioral analytics collections.",
+      "description": "Get behavioral analytics collections.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -37677,7 +37493,7 @@
           }
         }
       },
-      "description": "Creates or updates a search application.",
+      "description": "Create or update a search application.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -37751,7 +37567,7 @@
       "body": {
         "kind": "no_body"
       },
-      "description": "Creates a behavioral analytics collection.",
+      "description": "Create a behavioral analytics collection.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -37826,7 +37642,7 @@
           }
         ]
       },
-      "description": "Perform a search against a search application.",
+      "description": "Run a search application search.\nGenerate and run an Elasticsearch query that uses the specified query parameteter and the search template associated with the search application or default template.\nUnspecified template parameters are assigned their default values if applicable.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -37873,7 +37689,7 @@
           }
         }
       ],
-      "specLocation": "search_application/search/SearchApplicationsSearchRequest.ts#L24-L52"
+      "specLocation": "search_application/search/SearchApplicationsSearchRequest.ts#L24-L54"
     },
     {
       "body": {
@@ -47034,7 +46850,7 @@
           }
         }
       ],
-      "specLocation": "_types/aggregations/AggregationContainer.ts#L106-L523",
+      "specLocation": "_types/aggregations/AggregationContainer.ts#L107-L533",
       "variants": {
         "kind": "container",
         "nonExhaustive": true
@@ -52244,7 +52060,7 @@
         "name": "Missing",
         "namespace": "_types.aggregations"
       },
-      "specLocation": "_types/aggregations/AggregationContainer.ts#L525-L525",
+      "specLocation": "_types/aggregations/AggregationContainer.ts#L535-L535",
       "type": {
         "items": [
           {
@@ -56000,7 +55816,7 @@
         "name": "RangeQuery",
         "namespace": "_types.query_dsl"
       },
-      "specLocation": "_types/query_dsl/term.ts#L162-L171",
+      "specLocation": "_types/query_dsl/term.ts#L164-L173",
       "type": {
         "items": [
           {
@@ -56085,7 +55901,7 @@
           }
         }
       ],
-      "specLocation": "_types/query_dsl/term.ts#L136-L145"
+      "specLocation": "_types/query_dsl/term.ts#L138-L147"
     },
     {
       "generics": [
@@ -56168,6 +55984,10 @@
           }
         },
         {
+          "deprecation": {
+            "description": "Use gte or gt instead",
+            "version": "8.16.0"
+          },
           "name": "from",
           "required": false,
           "type": {
@@ -56191,6 +56011,10 @@
           }
         },
         {
+          "deprecation": {
+            "description": "Use lte or lt instead",
+            "version": "8.16.0"
+          },
           "name": "to",
           "required": false,
           "type": {
@@ -56214,7 +56038,7 @@
           }
         }
       ],
-      "specLocation": "_types/query_dsl/term.ts#L110-L134"
+      "specLocation": "_types/query_dsl/term.ts#L110-L136"
     },
     {
       "kind": "enum",
@@ -56236,7 +56060,7 @@
         "name": "RangeRelation",
         "namespace": "_types.query_dsl"
       },
-      "specLocation": "_types/query_dsl/term.ts#L173-L186"
+      "specLocation": "_types/query_dsl/term.ts#L175-L188"
     },
     {
       "docId": "mapping-date-format",
@@ -56302,7 +56126,7 @@
           }
         }
       ],
-      "specLocation": "_types/query_dsl/term.ts#L147-L156"
+      "specLocation": "_types/query_dsl/term.ts#L149-L158"
     },
     {
       "inherits": {
@@ -56326,7 +56150,7 @@
         "namespace": "_types.query_dsl"
       },
       "properties": [],
-      "specLocation": "_types/query_dsl/term.ts#L158-L158"
+      "specLocation": "_types/query_dsl/term.ts#L160-L160"
     },
     {
       "inherits": {
@@ -56350,7 +56174,7 @@
         "namespace": "_types.query_dsl"
       },
       "properties": [],
-      "specLocation": "_types/query_dsl/term.ts#L160-L160"
+      "specLocation": "_types/query_dsl/term.ts#L162-L162"
     },
     {
       "inherits": {
@@ -56637,7 +56461,7 @@
         }
       ],
       "shortcutProperty": "value",
-      "specLocation": "_types/query_dsl/term.ts#L188-L218"
+      "specLocation": "_types/query_dsl/term.ts#L190-L220"
     },
     {
       "inherits": {
@@ -57927,7 +57751,7 @@
         }
       ],
       "shortcutProperty": "value",
-      "specLocation": "_types/query_dsl/term.ts#L220-L234"
+      "specLocation": "_types/query_dsl/term.ts#L222-L236"
     },
     {
       "codegenNames": [
@@ -58033,7 +57857,7 @@
         "namespace": "_types.query_dsl"
       },
       "properties": [],
-      "specLocation": "_types/query_dsl/term.ts#L236-L241"
+      "specLocation": "_types/query_dsl/term.ts#L238-L243"
     },
     {
       "codegenNames": [
@@ -58045,7 +57869,7 @@
         "name": "TermsQueryField",
         "namespace": "_types.query_dsl"
       },
-      "specLocation": "_types/query_dsl/term.ts#L243-L246",
+      "specLocation": "_types/query_dsl/term.ts#L245-L248",
       "type": {
         "items": [
           {
@@ -58121,7 +57945,7 @@
           }
         }
       ],
-      "specLocation": "_types/query_dsl/term.ts#L248-L253"
+      "specLocation": "_types/query_dsl/term.ts#L250-L255"
     },
     {
       "inherits": {
@@ -58194,7 +58018,7 @@
           }
         }
       ],
-      "specLocation": "_types/query_dsl/term.ts#L255-L274"
+      "specLocation": "_types/query_dsl/term.ts#L257-L276"
     },
     {
       "inherits": {
@@ -58379,7 +58203,7 @@
         }
       ],
       "shortcutProperty": "value",
-      "specLocation": "_types/query_dsl/term.ts#L280-L297"
+      "specLocation": "_types/query_dsl/term.ts#L282-L299"
     },
     {
       "inherits": {
@@ -58434,7 +58258,7 @@
           }
         }
       ],
-      "specLocation": "_types/query_dsl/term.ts#L276-L278"
+      "specLocation": "_types/query_dsl/term.ts#L278-L280"
     },
     {
       "inherits": {
@@ -59464,7 +59288,7 @@
           }
         }
       ],
-      "specLocation": "_types/aggregations/bucket.ts#L1062-L1126"
+      "specLocation": "_types/aggregations/bucket.ts#L1081-L1145"
     },
     {
       "codegenNames": [
@@ -59476,7 +59300,7 @@
         "name": "CategorizeTextAnalyzer",
         "namespace": "_types.aggregations"
       },
-      "specLocation": "_types/aggregations/bucket.ts#L1128-L1131",
+      "specLocation": "_types/aggregations/bucket.ts#L1147-L1150",
       "type": {
         "items": [
           {
@@ -59544,7 +59368,7 @@
           }
         }
       ],
-      "specLocation": "_types/aggregations/bucket.ts#L1133-L1137"
+      "specLocation": "_types/aggregations/bucket.ts#L1152-L1156"
     },
     {
       "inherits": {
@@ -59835,7 +59659,7 @@
         "name": "MissingOrder",
         "namespace": "_types.aggregations"
       },
-      "specLocation": "_types/aggregations/AggregationContainer.ts#L526-L530"
+      "specLocation": "_types/aggregations/AggregationContainer.ts#L536-L540"
     },
     {
       "kind": "enum",
@@ -60418,7 +60242,7 @@
         "name": "AggregateOrder",
         "namespace": "_types.aggregations"
       },
-      "specLocation": "_types/aggregations/bucket.ts#L1000-L1002",
+      "specLocation": "_types/aggregations/bucket.ts#L1019-L1021",
       "type": {
         "items": [
           {
@@ -60893,7 +60717,7 @@
           }
         }
       ],
-      "specLocation": "_types/aggregations/bucket.ts#L1184-L1208"
+      "specLocation": "_types/aggregations/bucket.ts#L1203-L1227"
     },
     {
       "kind": "interface",
@@ -60938,7 +60762,7 @@
           }
         }
       ],
-      "specLocation": "_types/aggregations/bucket.ts#L1170-L1182"
+      "specLocation": "_types/aggregations/bucket.ts#L1189-L1201"
     },
     {
       "codegenNames": [
@@ -60950,7 +60774,7 @@
         "name": "TermsExclude",
         "namespace": "_types.aggregations"
       },
-      "specLocation": "_types/aggregations/bucket.ts#L1025-L1026",
+      "specLocation": "_types/aggregations/bucket.ts#L1044-L1045",
       "type": {
         "items": [
           {
@@ -60985,7 +60809,7 @@
         "name": "TermsInclude",
         "namespace": "_types.aggregations"
       },
-      "specLocation": "_types/aggregations/bucket.ts#L1022-L1023",
+      "specLocation": "_types/aggregations/bucket.ts#L1041-L1042",
       "type": {
         "items": [
           {
@@ -61048,7 +60872,7 @@
           }
         }
       ],
-      "specLocation": "_types/aggregations/bucket.ts#L1028-L1037"
+      "specLocation": "_types/aggregations/bucket.ts#L1047-L1056"
     },
     {
       "inherits": {
@@ -62174,7 +61998,7 @@
           }
         }
       ],
-      "specLocation": "_types/aggregations/bucket.ts#L1139-L1168"
+      "specLocation": "_types/aggregations/bucket.ts#L1158-L1187"
     },
     {
       "inherits": {
@@ -63245,7 +63069,7 @@
         "name": "TermsAggregationCollectMode",
         "namespace": "_types.aggregations"
       },
-      "specLocation": "_types/aggregations/bucket.ts#L1004-L1013"
+      "specLocation": "_types/aggregations/bucket.ts#L1023-L1032"
     },
     {
       "kind": "interface",
@@ -63909,6 +63733,46 @@
       },
       "kind": "interface",
       "name": {
+        "name": "RandomSamplerAggregation",
+        "namespace": "_types.aggregations"
+      },
+      "properties": [
+        {
+          "description": "The probability that a document will be included in the aggregated data.\nMust be greater than 0, less than 0.5, or exactly 1.\nThe lower the probability, the fewer documents are matched.",
+          "name": "probability",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "double",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "The seed to generate the random sampling of documents.\nWhen a seed is provided, the random subset of documents is the same between calls.",
+          "name": "seed",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "_types"
+            }
+          }
+        }
+      ],
+      "specLocation": "_types/aggregations/bucket.ts#L734-L751"
+    },
+    {
+      "inherits": {
+        "type": {
+          "name": "BucketAggregationBase",
+          "namespace": "_types.aggregations"
+        }
+      },
+      "kind": "interface",
+      "name": {
         "name": "SamplerAggregation",
         "namespace": "_types.aggregations"
       },
@@ -63927,7 +63791,7 @@
           }
         }
       ],
-      "specLocation": "_types/aggregations/bucket.ts#L734-L740"
+      "specLocation": "_types/aggregations/bucket.ts#L753-L759"
     },
     {
       "inherits": {
@@ -64235,7 +64099,7 @@
           }
         }
       ],
-      "specLocation": "_types/aggregations/bucket.ts#L777-L841"
+      "specLocation": "_types/aggregations/bucket.ts#L796-L860"
     },
     {
       "kind": "interface",
@@ -64269,7 +64133,7 @@
           }
         }
       ],
-      "specLocation": "_types/aggregations/bucket.ts#L742-L751"
+      "specLocation": "_types/aggregations/bucket.ts#L761-L770"
     },
     {
       "kind": "enum",
@@ -64291,7 +64155,7 @@
         "name": "TermsAggregationExecutionHint",
         "namespace": "_types.aggregations"
       },
-      "specLocation": "_types/aggregations/bucket.ts#L1015-L1020"
+      "specLocation": "_types/aggregations/bucket.ts#L1034-L1039"
     },
     {
       "kind": "interface",
@@ -64313,7 +64177,7 @@
           }
         }
       ],
-      "specLocation": "_types/aggregations/bucket.ts#L753-L758"
+      "specLocation": "_types/aggregations/bucket.ts#L772-L777"
     },
     {
       "kind": "interface",
@@ -64347,7 +64211,7 @@
           }
         }
       ],
-      "specLocation": "_types/aggregations/bucket.ts#L760-L769"
+      "specLocation": "_types/aggregations/bucket.ts#L779-L788"
     },
     {
       "kind": "interface",
@@ -64356,7 +64220,7 @@
         "namespace": "_types.aggregations"
       },
       "properties": [],
-      "specLocation": "_types/aggregations/bucket.ts#L771-L771"
+      "specLocation": "_types/aggregations/bucket.ts#L790-L790"
     },
     {
       "kind": "interface",
@@ -64377,7 +64241,7 @@
           }
         }
       ],
-      "specLocation": "_types/aggregations/bucket.ts#L773-L775"
+      "specLocation": "_types/aggregations/bucket.ts#L792-L794"
     },
     {
       "inherits": {
@@ -64598,7 +64462,7 @@
           }
         }
       ],
-      "specLocation": "_types/aggregations/bucket.ts#L843-L915"
+      "specLocation": "_types/aggregations/bucket.ts#L862-L934"
     },
     {
       "inherits": {
@@ -64905,7 +64769,7 @@
           }
         }
       ],
-      "specLocation": "_types/aggregations/bucket.ts#L917-L982"
+      "specLocation": "_types/aggregations/bucket.ts#L936-L1001"
     },
     {
       "inherits": {
@@ -64946,7 +64810,7 @@
           }
         }
       ],
-      "specLocation": "_types/aggregations/bucket.ts#L984-L994"
+      "specLocation": "_types/aggregations/bucket.ts#L1003-L1013"
     },
     {
       "inherits": {
@@ -65570,7 +65434,7 @@
           }
         }
       ],
-      "specLocation": "_types/aggregations/bucket.ts#L1039-L1060"
+      "specLocation": "_types/aggregations/bucket.ts#L1058-L1079"
     },
     {
       "kind": "interface",
@@ -82446,14 +82310,26 @@
           "name": "keywords",
           "required": false,
           "type": {
-            "kind": "array_of",
-            "value": {
-              "kind": "instance_of",
-              "type": {
-                "name": "string",
-                "namespace": "_builtins"
+            "items": [
+              {
+                "kind": "instance_of",
+                "type": {
+                  "name": "string",
+                  "namespace": "_builtins"
+                }
+              },
+              {
+                "kind": "array_of",
+                "value": {
+                  "kind": "instance_of",
+                  "type": {
+                    "name": "string",
+                    "namespace": "_builtins"
+                  }
+                }
               }
-            }
+            ],
+            "kind": "union_of"
           }
         },
         {
@@ -84593,7 +84469,7 @@
         "name": "Tokenizer",
         "namespace": "_types.analysis"
       },
-      "specLocation": "_types/analysis/tokenizers.ts#L137-L139",
+      "specLocation": "_types/analysis/tokenizers.ts#L140-L142",
       "type": {
         "items": [
           {
@@ -84620,7 +84496,7 @@
         "name": "TokenizerDefinition",
         "namespace": "_types.analysis"
       },
-      "specLocation": "_types/analysis/tokenizers.ts#L141-L164",
+      "specLocation": "_types/analysis/tokenizers.ts#L144-L167",
       "type": {
         "items": [
           {
@@ -84897,7 +84773,7 @@
         },
         {
           "name": "max_gram",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -84908,7 +84784,7 @@
         },
         {
           "name": "min_gram",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -84958,7 +84834,8 @@
         },
         {
           "name": "buffer_size",
-          "required": true,
+          "required": false,
+          "serverDefault": 256,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -84968,7 +84845,7 @@
           }
         }
       ],
-      "specLocation": "_types/analysis/tokenizers.ts#L68-L71"
+      "specLocation": "_types/analysis/tokenizers.ts#L68-L74"
     },
     {
       "inherits": {
@@ -84992,7 +84869,7 @@
           }
         }
       ],
-      "specLocation": "_types/analysis/tokenizers.ts#L73-L75"
+      "specLocation": "_types/analysis/tokenizers.ts#L76-L78"
     },
     {
       "inherits": {
@@ -85016,7 +84893,7 @@
           }
         }
       ],
-      "specLocation": "_types/analysis/tokenizers.ts#L77-L79"
+      "specLocation": "_types/analysis/tokenizers.ts#L80-L82"
     },
     {
       "inherits": {
@@ -85052,7 +84929,7 @@
         },
         {
           "name": "max_gram",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -85063,7 +84940,7 @@
         },
         {
           "name": "min_gram",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -85088,7 +84965,7 @@
           }
         }
       ],
-      "specLocation": "_types/analysis/tokenizers.ts#L81-L90"
+      "specLocation": "_types/analysis/tokenizers.ts#L84-L93"
     },
     {
       "inherits": {
@@ -85194,7 +85071,7 @@
           }
         }
       ],
-      "specLocation": "_types/analysis/tokenizers.ts#L92-L99"
+      "specLocation": "_types/analysis/tokenizers.ts#L95-L102"
     },
     {
       "inherits": {
@@ -85251,7 +85128,7 @@
           }
         }
       ],
-      "specLocation": "_types/analysis/tokenizers.ts#L101-L106"
+      "specLocation": "_types/analysis/tokenizers.ts#L104-L109"
     },
     {
       "inherits": {
@@ -85286,7 +85163,7 @@
           }
         }
       ],
-      "specLocation": "_types/analysis/tokenizers.ts#L108-L111"
+      "specLocation": "_types/analysis/tokenizers.ts#L111-L114"
     },
     {
       "inherits": {
@@ -85321,7 +85198,7 @@
           }
         }
       ],
-      "specLocation": "_types/analysis/tokenizers.ts#L113-L116"
+      "specLocation": "_types/analysis/tokenizers.ts#L116-L119"
     },
     {
       "inherits": {
@@ -85356,7 +85233,7 @@
           }
         }
       ],
-      "specLocation": "_types/analysis/tokenizers.ts#L118-L121"
+      "specLocation": "_types/analysis/tokenizers.ts#L121-L124"
     },
     {
       "inherits": {
@@ -85380,7 +85257,7 @@
           }
         }
       ],
-      "specLocation": "_types/analysis/tokenizers.ts#L123-L125"
+      "specLocation": "_types/analysis/tokenizers.ts#L126-L128"
     },
     {
       "inherits": {
@@ -85415,7 +85292,7 @@
           }
         }
       ],
-      "specLocation": "_types/analysis/tokenizers.ts#L127-L130"
+      "specLocation": "_types/analysis/tokenizers.ts#L130-L133"
     },
     {
       "inherits": {
@@ -85450,7 +85327,7 @@
           }
         }
       ],
-      "specLocation": "_types/analysis/tokenizers.ts#L132-L135"
+      "specLocation": "_types/analysis/tokenizers.ts#L135-L138"
     },
     {
       "inherits": {
@@ -94119,7 +93996,7 @@
         "name": "ShapeType",
         "namespace": "ingest._types"
       },
-      "specLocation": "ingest/_types/Processors.ts#L1225-L1228"
+      "specLocation": "ingest/_types/Processors.ts#L1232-L1235"
     },
     {
       "kind": "enum",
@@ -94492,29 +94369,7 @@
         "name": "DeploymentAllocationState",
         "namespace": "ml._types"
       },
-      "specLocation": "ml/_types/TrainedModel.ts#L288-L301"
-    },
-    {
-      "kind": "enum",
-      "members": [
-        {
-          "name": "starting"
-        },
-        {
-          "name": "started"
-        },
-        {
-          "name": "stopping"
-        },
-        {
-          "name": "failed"
-        }
-      ],
-      "name": {
-        "name": "DeploymentAssignmentState",
-        "namespace": "ml._types"
-      },
-      "specLocation": "ml/_types/TrainedModel.ts#L303-L308"
+      "specLocation": "ml/_types/TrainedModel.ts#L273-L286"
     },
     {
       "kind": "enum",
@@ -94530,13 +94385,17 @@
         {
           "description": "The deployment is preparing to stop and deallocate the model from the relevant nodes.",
           "name": "stopping"
+        },
+        {
+          "description": "The deployment is on a failed state and must be re-deployed.",
+          "name": "failed"
         }
       ],
       "name": {
-        "name": "DeploymentState",
+        "name": "DeploymentAssignmentState",
         "namespace": "ml._types"
       },
-      "specLocation": "ml/_types/TrainedModel.ts#L273-L286"
+      "specLocation": "ml/_types/TrainedModel.ts#L288-L305"
     },
     {
       "kind": "enum",
@@ -94732,7 +94591,7 @@
         "name": "RoutingState",
         "namespace": "ml._types"
       },
-      "specLocation": "ml/_types/TrainedModel.ts#L350-L371"
+      "specLocation": "ml/_types/TrainedModel.ts#L347-L368"
     },
     {
       "kind": "enum",
@@ -94829,7 +94688,7 @@
         "name": "TrainingPriority",
         "namespace": "ml._types"
       },
-      "specLocation": "ml/_types/TrainedModel.ts#L310-L313"
+      "specLocation": "ml/_types/TrainedModel.ts#L307-L310"
     },
     {
       "codegenNames": [
@@ -118203,85 +118062,6 @@
       "specLocation": "indices/analyze/types.ts#L37-L44"
     },
     {
-      "kind": "interface",
-      "name": {
-        "name": "DataStreamsStatsItem",
-        "namespace": "indices.data_streams_stats"
-      },
-      "properties": [
-        {
-          "description": "Current number of backing indices for the data stream.",
-          "name": "backing_indices",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "integer",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "description": "Name of the data stream.",
-          "name": "data_stream",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "Name",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "description": "The data stream’s highest `@timestamp` value, converted to milliseconds since the Unix epoch.\nNOTE: This timestamp is provided as a best effort.\nThe data stream may contain `@timestamp` values higher than this if one or more of the following conditions are met:\nThe stream contains closed backing indices;\nBacking indices with a lower generation contain higher `@timestamp` values.",
-          "name": "maximum_timestamp",
-          "required": true,
-          "type": {
-            "generics": [
-              {
-                "kind": "instance_of",
-                "type": {
-                  "name": "UnitMillis",
-                  "namespace": "_types"
-                }
-              }
-            ],
-            "kind": "instance_of",
-            "type": {
-              "name": "EpochTime",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "description": "Total size of all shards for the data stream’s backing indices.\nThis parameter is only returned if the `human` query parameter is `true`.",
-          "name": "store_size",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "ByteSize",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "description": "Total size, in bytes, of all shards for the data stream’s backing indices.",
-          "name": "store_size_bytes",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "long",
-              "namespace": "_types"
-            }
-          }
-        }
-      ],
-      "specLocation": "indices/data_streams_stats/IndicesDataStreamsStatsResponse.ts#L45-L65"
-    },
-    {
       "inherits": {
         "type": {
           "name": "AcknowledgedResponseBase",
@@ -119323,9 +119103,20 @@
               "namespace": "_builtins"
             }
           }
+        },
+        {
+          "name": "allow_custom_routing",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "_builtins"
+            }
+          }
         }
       ],
-      "specLocation": "indices/_types/DataStream.ts#L159-L161"
+      "specLocation": "indices/_types/DataStream.ts#L159-L162"
     },
     {
       "kind": "interface",
@@ -119336,7 +119127,7 @@
       "properties": [
         {
           "name": "_shards",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -119346,7 +119137,7 @@
           }
         }
       ],
-      "specLocation": "_types/Base.ts#L91-L93"
+      "specLocation": "_types/Base.ts#L91-L94"
     },
     {
       "kind": "interface",
@@ -123470,9 +123261,28 @@
               "namespace": "_builtins"
             }
           }
+        },
+        {
+          "availability": {
+            "serverless": {},
+            "stack": {
+              "since": "8.16.0"
+            }
+          },
+          "description": "If `true` then ingest metadata `_ingest._redact._is_redacted` is set to `true` if the document has been redacted",
+          "name": "trace_redact",
+          "required": false,
+          "serverDefault": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "_builtins"
+            }
+          }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L1056-L1090"
+      "specLocation": "ingest/_types/Processors.ts#L1056-L1097"
     },
     {
       "inherits": {
@@ -123525,7 +123335,7 @@
           }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L1092-L1106"
+      "specLocation": "ingest/_types/Processors.ts#L1099-L1113"
     },
     {
       "inherits": {
@@ -123578,7 +123388,7 @@
           }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L1108-L1124"
+      "specLocation": "ingest/_types/Processors.ts#L1115-L1131"
     },
     {
       "inherits": {
@@ -123660,7 +123470,7 @@
           }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L1126-L1154"
+      "specLocation": "ingest/_types/Processors.ts#L1133-L1161"
     },
     {
       "inherits": {
@@ -123732,7 +123542,7 @@
           }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L1156-L1176"
+      "specLocation": "ingest/_types/Processors.ts#L1163-L1183"
     },
     {
       "inherits": {
@@ -123818,7 +123628,7 @@
           }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L1178-L1212"
+      "specLocation": "ingest/_types/Processors.ts#L1185-L1219"
     },
     {
       "inherits": {
@@ -123861,7 +123671,7 @@
           }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L1214-L1223"
+      "specLocation": "ingest/_types/Processors.ts#L1221-L1230"
     },
     {
       "inherits": {
@@ -123914,7 +123724,7 @@
           }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L1230-L1246"
+      "specLocation": "ingest/_types/Processors.ts#L1237-L1253"
     },
     {
       "inherits": {
@@ -123993,7 +123803,7 @@
           }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L1248-L1273"
+      "specLocation": "ingest/_types/Processors.ts#L1255-L1280"
     },
     {
       "inherits": {
@@ -124047,7 +123857,7 @@
           }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L1275-L1291"
+      "specLocation": "ingest/_types/Processors.ts#L1282-L1298"
     },
     {
       "inherits": {
@@ -124101,7 +123911,7 @@
           }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L1293-L1309"
+      "specLocation": "ingest/_types/Processors.ts#L1300-L1316"
     },
     {
       "inherits": {
@@ -124155,7 +123965,7 @@
           }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L1311-L1327"
+      "specLocation": "ingest/_types/Processors.ts#L1318-L1334"
     },
     {
       "inherits": {
@@ -124235,7 +124045,7 @@
           }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L1329-L1355"
+      "specLocation": "ingest/_types/Processors.ts#L1336-L1362"
     },
     {
       "inherits": {
@@ -124390,7 +124200,7 @@
           }
         }
       ],
-      "specLocation": "ingest/simulate/types.ts#L50-L64"
+      "specLocation": "ingest/simulate/types.ts#L62-L76"
     },
     {
       "kind": "interface",
@@ -124436,7 +124246,7 @@
           }
         }
       ],
-      "specLocation": "ingest/simulate/types.ts#L34-L38"
+      "specLocation": "ingest/simulate/types.ts#L46-L50"
     },
     {
       "attachedBehaviors": [
@@ -124576,7 +124386,7 @@
           }
         }
       ],
-      "specLocation": "ingest/simulate/types.ts#L66-L96"
+      "specLocation": "ingest/simulate/types.ts#L78-L108"
     },
     {
       "kind": "interface",
@@ -124585,6 +124395,23 @@
         "namespace": "ingest.simulate"
       },
       "properties": [
+        {
+          "availability": {
+            "serverless": {},
+            "stack": {
+              "since": "8.16.0"
+            }
+          },
+          "name": "_redact",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Redact",
+              "namespace": "ingest.simulate"
+            }
+          }
+        },
         {
           "name": "timestamp",
           "required": true,
@@ -124608,7 +124435,29 @@
           }
         }
       ],
-      "specLocation": "ingest/simulate/types.ts#L29-L32"
+      "specLocation": "ingest/simulate/types.ts#L29-L37"
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "Redact",
+        "namespace": "ingest.simulate"
+      },
+      "properties": [
+        {
+          "description": "indicates if document has been redacted",
+          "name": "_is_redacted",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "_builtins"
+            }
+          }
+        }
+      ],
+      "specLocation": "ingest/simulate/types.ts#L39-L44"
     },
     {
       "kind": "interface",
@@ -124695,7 +124544,7 @@
           }
         }
       ],
-      "specLocation": "ingest/simulate/types.ts#L40-L48"
+      "specLocation": "ingest/simulate/types.ts#L52-L60"
     },
     {
       "kind": "interface",
@@ -132626,7 +132475,7 @@
           }
         }
       ],
-      "specLocation": "ml/_types/TrainedModel.ts#L419-L421"
+      "specLocation": "ml/_types/TrainedModel.ts#L416-L418"
     },
     {
       "kind": "interface",
@@ -132647,7 +132496,7 @@
           }
         }
       ],
-      "specLocation": "ml/_types/TrainedModel.ts#L423-L425"
+      "specLocation": "ml/_types/TrainedModel.ts#L420-L422"
     },
     {
       "kind": "interface",
@@ -132681,7 +132530,7 @@
           }
         }
       ],
-      "specLocation": "ml/_types/TrainedModel.ts#L427-L436"
+      "specLocation": "ml/_types/TrainedModel.ts#L424-L433"
     },
     {
       "kind": "interface",
@@ -132943,7 +132792,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "DeploymentState",
+              "name": "DeploymentAssignmentState",
               "namespace": "ml._types"
             }
           }
@@ -133019,7 +132868,7 @@
           }
         }
       ],
-      "specLocation": "ml/_types/TrainedModel.ts#L393-L400"
+      "specLocation": "ml/_types/TrainedModel.ts#L390-L397"
     },
     {
       "kind": "interface",
@@ -133237,7 +133086,7 @@
           }
         }
       ],
-      "specLocation": "ml/_types/TrainedModel.ts#L373-L391"
+      "specLocation": "ml/_types/TrainedModel.ts#L370-L388"
     },
     {
       "kind": "interface",
@@ -135770,7 +135619,7 @@
           }
         }
       ],
-      "specLocation": "ml/_types/TrainedModel.ts#L402-L417"
+      "specLocation": "ml/_types/TrainedModel.ts#L399-L414"
     },
     {
       "kind": "interface",
@@ -135881,7 +135730,7 @@
           }
         }
       ],
-      "specLocation": "ml/_types/TrainedModel.ts#L315-L348"
+      "specLocation": "ml/_types/TrainedModel.ts#L312-L345"
     },
     {
       "kind": "interface",

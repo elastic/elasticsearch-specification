@@ -232,7 +232,7 @@ export class KeepWordsTokenFilter extends TokenFilterBase {
 export class KeywordMarkerTokenFilter extends TokenFilterBase {
   type: 'keyword_marker'
   ignore_case?: boolean
-  keywords?: string[]
+  keywords?: string | string[]
   keywords_path?: string
   keywords_pattern?: string
 }

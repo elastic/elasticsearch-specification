@@ -2830,7 +2830,7 @@ export interface ShardStatistics {
 }
 
 export interface ShardsOperationResponseBase {
-  _shards: ShardStatistics
+  _shards?: ShardStatistics
 }
 
 export interface SlicedScroll {
@@ -3091,6 +3091,7 @@ export interface AggregationsAggregationContainer {
   rare_terms?: AggregationsRareTermsAggregation
   rate?: AggregationsRateAggregation
   reverse_nested?: AggregationsReverseNestedAggregation
+  random_sampler?: AggregationsRandomSamplerAggregation
   sampler?: AggregationsSamplerAggregation
   scripted_metric?: AggregationsScriptedMetricAggregation
   serial_diff?: AggregationsSerialDifferencingAggregation
@@ -3979,6 +3980,12 @@ export interface AggregationsPipelineAggregationBase extends AggregationsBucketP
   gap_policy?: AggregationsGapPolicy
 }
 
+export interface AggregationsRandomSamplerAggregation extends AggregationsBucketAggregationBase {
+  probability: double
+  seed?: integer
+  shard_seed?: integer
+}
+
 export interface AggregationsRangeAggregate extends AggregationsMultiBucketAggregateBase<AggregationsRangeBucket> {
 }
 
@@ -4583,8 +4590,8 @@ export interface AnalysisEdgeNGramTokenFilter extends AnalysisTokenFilterBase {
 export interface AnalysisEdgeNGramTokenizer extends AnalysisTokenizerBase {
   type: 'edge_ngram'
   custom_token_chars?: string
-  max_gram: integer
-  min_gram: integer
+  max_gram?: integer
+  min_gram?: integer
   token_chars?: AnalysisTokenChar[]
 }
 
@@ -4800,14 +4807,14 @@ export interface AnalysisKeywordAnalyzer {
 export interface AnalysisKeywordMarkerTokenFilter extends AnalysisTokenFilterBase {
   type: 'keyword_marker'
   ignore_case?: boolean
-  keywords?: string[]
+  keywords?: string | string[]
   keywords_path?: string
   keywords_pattern?: string
 }
 
 export interface AnalysisKeywordTokenizer extends AnalysisTokenizerBase {
   type: 'keyword'
-  buffer_size: integer
+  buffer_size?: integer
 }
 
 export interface AnalysisKuromojiAnalyzer {
@@ -4926,8 +4933,8 @@ export interface AnalysisNGramTokenFilter extends AnalysisTokenFilterBase {
 export interface AnalysisNGramTokenizer extends AnalysisTokenizerBase {
   type: 'ngram'
   custom_token_chars?: string
-  max_gram: integer
-  min_gram: integer
+  max_gram?: integer
+  min_gram?: integer
   token_chars?: AnalysisTokenChar[]
 }
 
@@ -9571,7 +9578,7 @@ export interface ClusterStatsOperatingSystemMemoryInfo {
 
 export interface ClusterStatsRequest extends RequestBase {
   node_id?: NodeIds
-  flat_settings?: boolean
+  include_remotes?: boolean
   timeout?: Duration
 }
 
@@ -10768,16 +10775,16 @@ export interface IlmMigrateToDataTiersResponse {
 export interface IlmMoveToStepRequest extends RequestBase {
   index: IndexName
   body?: {
-    current_step?: IlmMoveToStepStepKey
-    next_step?: IlmMoveToStepStepKey
+    current_step: IlmMoveToStepStepKey
+    next_step: IlmMoveToStepStepKey
   }
 }
 
 export type IlmMoveToStepResponse = AcknowledgedResponseBase
 
 export interface IlmMoveToStepStepKey {
-  action: string
-  name: string
+  action?: string
+  name?: string
   phase: string
 }
 
@@ -10905,6 +10912,7 @@ export interface IndicesDataStreamTimestampField {
 
 export interface IndicesDataStreamVisibility {
   hidden?: boolean
+  allow_custom_routing?: boolean
 }
 
 export interface IndicesDownsampleConfig {
@@ -13056,6 +13064,7 @@ export interface IngestRedactProcessor extends IngestProcessorBase {
   suffix?: string
   ignore_missing?: boolean
   skip_if_unlicensed?: boolean
+  trace_redact?: boolean
 }
 
 export interface IngestRemoveProcessor extends IngestProcessorBase {
@@ -13271,6 +13280,7 @@ export type IngestSimulateDocumentSimulation = IngestSimulateDocumentSimulationK
   & { [property: string]: string | Id | IndexName | IngestSimulateIngest | Record<string, any> | SpecUtilsStringified<VersionNumber> | VersionType }
 
 export interface IngestSimulateIngest {
+  _redact?: IngestSimulateRedact
   timestamp: DateTime
   pipeline?: Name
 }
@@ -13283,6 +13293,10 @@ export interface IngestSimulatePipelineSimulation {
   description?: string
   ignored_error?: ErrorCause
   error?: ErrorCause
+}
+
+export interface IngestSimulateRedact {
+  _is_redacted: boolean
 }
 
 export interface IngestSimulateRequest extends RequestBase {
@@ -14047,9 +14061,7 @@ export interface MlDelayedDataCheckConfig {
 
 export type MlDeploymentAllocationState = 'started' | 'starting' | 'fully_allocated'
 
-export type MlDeploymentAssignmentState = 'starting' | 'started' | 'stopping' | 'failed'
-
-export type MlDeploymentState = 'started' | 'starting' | 'stopping'
+export type MlDeploymentAssignmentState = 'started' | 'starting' | 'stopping' | 'failed'
 
 export interface MlDetectionRule {
   actions?: MlRuleAction[]
@@ -14639,7 +14651,7 @@ export interface MlTrainedModelDeploymentStats {
   rejected_execution_count: integer
   reason: string
   start_time: EpochTime<UnitMillis>
-  state: MlDeploymentState
+  state: MlDeploymentAssignmentState
   threads_per_allocation: integer
   timeout_count: integer
 }
@@ -20481,13 +20493,12 @@ export interface XpackInfoFeatures {
   aggregate_metric: XpackInfoFeature
   analytics: XpackInfoFeature
   ccr: XpackInfoFeature
-  data_frame?: XpackInfoFeature
-  data_science?: XpackInfoFeature
   data_streams: XpackInfoFeature
   data_tiers: XpackInfoFeature
   enrich: XpackInfoFeature
+  enterprise_search: XpackInfoFeature
   eql: XpackInfoFeature
-  flattened?: XpackInfoFeature
+  esql: XpackInfoFeature
   frozen_indices: XpackInfoFeature
   graph: XpackInfoFeature
   ilm: XpackInfoFeature
@@ -20502,7 +20513,7 @@ export interface XpackInfoFeatures {
   spatial: XpackInfoFeature
   sql: XpackInfoFeature
   transform: XpackInfoFeature
-  vectors?: XpackInfoFeature
+  universal_profiling: XpackInfoFeature
   voting_only: XpackInfoFeature
   watcher: XpackInfoFeature
   archive: XpackInfoFeature

@@ -13,7 +13,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        branch: ['main', '8.14', '8.15', '7.17']
+        branch: ['main', '8.x', '8.15', '7.17']
 
     steps:
       - uses: actions/checkout@v4
@@ -37,7 +37,7 @@ jobs:
 
       - name: Generate output
         run: |
-          SKIP_VERSION_UPDATE=true make contrib
+          make contrib
 
       - name: Debug git status
         run: |

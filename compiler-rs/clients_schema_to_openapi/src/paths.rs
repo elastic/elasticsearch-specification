@@ -47,10 +47,10 @@ pub fn add_endpoint(
     }
 
     // Namespace
-    // let namespace = match endpoint.name.split_once('.') {
-    //    Some((ns, _)) => ns,
-    //    None => "core",
-    //};
+    let namespace = match endpoint.name.split_once('.') {
+       Some((ns, _)) => ns,
+       None => &endpoint.name,
+    };
 
     // Will we produce multiple paths? If true, we will register components for reuse across paths
     let is_multipath = endpoint.urls.len() > 1 || endpoint.urls.iter().any(|u| u.methods.len() > 1);
@@ -196,10 +196,11 @@ pub fn add_endpoint(
 
         // Create the operation, it will be repeated if we have several methods
         let operation = openapiv3::Operation {
-            tags: vec![endpoint.name.clone()],
+            tags: vec![namespace.to_string()],
             summary: sum_desc.summary,
             description: sum_desc.description,
-            external_docs: tac.convert_external_docs(endpoint),
+            // external_docs: tac.convert_external_docs(endpoint),
+            external_docs: None, // Need values that differ from client purposes
             operation_id: None, // set in clone_operation below with operation_counter
             parameters,
             request_body: request_body.clone(),
