@@ -75439,7 +75439,7 @@
             "$ref": "#/components/schemas/_types:EpochTimeUnitMillis"
           },
           "state": {
-            "$ref": "#/components/schemas/ml._types:DeploymentState"
+            "$ref": "#/components/schemas/ml._types:DeploymentAssignmentState"
           },
           "threads_per_allocation": {
             "description": "The number of threads used be each allocation during inference.",
@@ -75595,12 +75595,13 @@
           "stopping"
         ]
       },
-      "ml._types:DeploymentState": {
+      "ml._types:DeploymentAssignmentState": {
         "type": "string",
         "enum": [
           "started",
           "starting",
-          "stopping"
+          "stopping",
+          "failed"
         ]
       },
       "ml._types:TrainedModelInferenceStats": {
@@ -76642,15 +76643,6 @@
           "routing_table",
           "start_time",
           "task_parameters"
-        ]
-      },
-      "ml._types:DeploymentAssignmentState": {
-        "type": "string",
-        "enum": [
-          "starting",
-          "started",
-          "stopping",
-          "failed"
         ]
       },
       "ml._types:TrainedModelAssignmentTaskParameters": {
