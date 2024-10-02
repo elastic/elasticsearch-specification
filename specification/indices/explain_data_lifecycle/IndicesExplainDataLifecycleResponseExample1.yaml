@@ -2,7 +2,8 @@ summary: A successful response for retrieving data stream lifecycle status for a
 description: ''
 type: response
 response_code: 200
-value: "{\n  \"indices\": {\n    \".ds-metrics-2023.03.22-000001\": {\n      \"index\"\
+value:
+  "{\n  \"indices\": {\n    \".ds-metrics-2023.03.22-000001\": {\n      \"index\"\
   \ : \".ds-metrics-2023.03.22-000001\",\n      \"managed_by_lifecycle\" : true,\n\
   \      \"index_creation_date_millis\" : 1679475563571,\n      \"time_since_index_creation\"\
   \ : \"843ms\",\n      \"rollover_date_millis\" : 1679475564293,\n      \"time_since_rollover\"\

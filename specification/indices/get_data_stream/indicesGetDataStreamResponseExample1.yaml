@@ -2,7 +2,8 @@ summary: A successful response for retrieving information about a data stream.
 description: ''
 type: response
 response_code: 200
-value: "{\n  \"data_streams\": [\n    {\n      \"name\": \"my-data-stream\",\n   \
+value:
+  "{\n  \"data_streams\": [\n    {\n      \"name\": \"my-data-stream\",\n   \
   \   \"timestamp_field\": {\n        \"name\": \"@timestamp\"\n      },\n      \"\
   indices\": [\n        {\n          \"index_name\": \".ds-my-data-stream-2099.03.07-000001\"\
   ,\n          \"index_uuid\": \"xCEhwsp8Tey0-FLNFYVwSg\",\n          \"prefer_ilm\"\
