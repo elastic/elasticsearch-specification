@@ -4,6 +4,52 @@ info:
   title: Overlays for changes that apply to both Elasticsearch and Elasticsearch Serverless OpenAPI documents
   version: 0.0.1
 actions:
+# Add x-model and/or abbreviate schemas that should point to other references
+  # - target: "$.components['schemas']['_types.analysis:CharFilter'].oneOf"
+  #   description: Remove existing oneOf definition for CharFilter
+  #   remove: true
+  - target: "$.components['schemas']['_types.analysis:CharFilter']"
+    description: Simplify CharFilter definition
+    update:
+      x-model: true
+      # oneOf:
+      #   - type: array
+      #   - type: string
+      description: >
+        Character filters that are used to preprocess characters before they are passed to the tokenizer.
+      externalDocs:
+        url: https://www.elastic.co/guide/en/elasticsearch/reference/master/analysis-charfilters.html
+        description: Character filters reference
+  # - target: "$.components['schemas']['_types.analysis:Tokenizer'].oneOf"
+  #   description: Remove existing oneOf definition for tokenizer
+  #   remove: true
+  - target: "$.components['schemas']['_types.analysis:Tokenizer']"
+    description: Simplify tokenizer definition
+    update:
+      x-model: true
+      # oneOf:
+      #   - type: array
+      #   - type: string
+      description: >
+        A tokenizer to use to convert text into tokens.
+      externalDocs:
+        url: https://www.elastic.co/guide/en/elasticsearch/reference/master/analysis-tokenizers.html
+        description: Tokenizer reference
+  # - target: "$.components['schemas']['_types.analysis:TokenFilter'].oneOf"
+  #   description: Remove existing oneOf definition for tokenfilter
+  #   remove: true
+  - target: "$.components['schemas']['_types.analysis:TokenFilter']"
+    description: Simplify tokenfilter definition
+    update:
+      x-model: true
+      # oneOf:
+      #   - type: array
+      #   - type: string
+      description: >
+        Token filters that are applied after the tokenizer.
+      externalDocs:
+        url: https://www.elastic.co/guide/en/elasticsearch/reference/master/analysis-tokenfilters.html
+        description: Token filter reference
 # Abbreviate and annotate items that are not shown in Bump.sh due to depth limits
   - target: "$.components['schemas']['ml._types:Datafeed'].properties.query"
     description: Remove query object from anomaly detection datafeed
@@ -12,7 +58,7 @@ actions:
     description: Re-add a simplified query object in anomaly detection datafeed
     update:
       query:
-        x-abbreviated: true
+        x-model: true
         type: object
         description: >
           The Elasticsearch query domain-specific language (DSL).
@@ -29,7 +75,7 @@ actions:
     description: Re-add a simplified tokenizer object in anomaly detection analysis config
     update:
       tokenizer:
-        x-abbreviated: true
+        x-model: true
         oneOf:
           - type: object
           - type: string
@@ -50,7 +96,7 @@ actions:
     description: Re-add a simplified query object in data frame analytics source
     update:
       query:
-        x-abbreviated: true
+        x-model: true
         type: object
         description: >
           The Elasticsearch query domain-specific language (DSL).
@@ -67,7 +113,7 @@ actions:
     description: Re-add a simplified query object in transform source
     update:
       query:
-        x-abbreviated: true
+        x-model: true
         type: object
         description: >
           A query clause that retrieves a subset of data from the source index.
