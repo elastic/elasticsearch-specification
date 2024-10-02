@@ -3977,7 +3977,7 @@
         "operationId": "cluster-stats",
         "parameters": [
           {
-            "$ref": "#/components/parameters/cluster.stats#flat_settings"
+            "$ref": "#/components/parameters/cluster.stats#include_remotes"
           },
           {
             "$ref": "#/components/parameters/cluster.stats#timeout"
@@ -4004,7 +4004,7 @@
             "$ref": "#/components/parameters/cluster.stats#node_id"
           },
           {
-            "$ref": "#/components/parameters/cluster.stats#flat_settings"
+            "$ref": "#/components/parameters/cluster.stats#include_remotes"
           },
           {
             "$ref": "#/components/parameters/cluster.stats#timeout"
@@ -93283,10 +93283,10 @@
         },
         "style": "simple"
       },
-      "cluster.stats#flat_settings": {
+      "cluster.stats#include_remotes": {
         "in": "query",
-        "name": "flat_settings",
-        "description": "If `true`, returns settings in flat format.",
+        "name": "include_remotes",
+        "description": "Include remote cluster data into the response",
         "deprecated": false,
         "schema": {
           "type": "boolean"
