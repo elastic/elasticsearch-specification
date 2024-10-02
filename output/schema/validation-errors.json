@@ -535,6 +535,13 @@
       ],
       "response": []
     },
+    "cluster.stats": {
+      "request": [
+        "Request: query parameter 'flat_settings' does not exist in the json spec",
+        "Request: missing json spec query parameter 'include_remotes'"
+      ],
+      "response": []
+    },
     "connector.secret_delete": {
       "request": [
         "Missing request & response"
