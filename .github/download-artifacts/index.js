@@ -95,6 +95,9 @@ async function downloadArtifacts (opts) {
 }
 
 async function resolve (branch) {
+  if (branch == 'main') {
+    branch = 'master'
+  }
   const url = `https://artifacts-snapshot.elastic.co/elasticsearch/latest/${branch}.json`
   const response = await fetch(url)
   if (!response.ok) {
