@@ -1,5 +1,8 @@
 {
   "dependencies": {
     "@stoplight/spectral-cli": "^6.13.0"
+  },
+  "devDependencies": {
+    "bump-cli": "^2.8.2"
   }
 }
