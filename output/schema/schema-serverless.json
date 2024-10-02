@@ -94553,29 +94553,7 @@
         "name": "DeploymentAllocationState",
         "namespace": "ml._types"
       },
-      "specLocation": "ml/_types/TrainedModel.ts#L288-L301"
-    },
-    {
-      "kind": "enum",
-      "members": [
-        {
-          "name": "starting"
-        },
-        {
-          "name": "started"
-        },
-        {
-          "name": "stopping"
-        },
-        {
-          "name": "failed"
-        }
-      ],
-      "name": {
-        "name": "DeploymentAssignmentState",
-        "namespace": "ml._types"
-      },
-      "specLocation": "ml/_types/TrainedModel.ts#L303-L308"
+      "specLocation": "ml/_types/TrainedModel.ts#L273-L286"
     },
     {
       "kind": "enum",
@@ -94591,13 +94569,17 @@
         {
           "description": "The deployment is preparing to stop and deallocate the model from the relevant nodes.",
           "name": "stopping"
+        },
+        {
+          "description": "The deployment is on a failed state and must be re-deployed.",
+          "name": "failed"
         }
       ],
       "name": {
-        "name": "DeploymentState",
+        "name": "DeploymentAssignmentState",
         "namespace": "ml._types"
       },
-      "specLocation": "ml/_types/TrainedModel.ts#L273-L286"
+      "specLocation": "ml/_types/TrainedModel.ts#L288-L305"
     },
     {
       "kind": "enum",
@@ -94793,7 +94775,7 @@
         "name": "RoutingState",
         "namespace": "ml._types"
       },
-      "specLocation": "ml/_types/TrainedModel.ts#L350-L371"
+      "specLocation": "ml/_types/TrainedModel.ts#L347-L368"
     },
     {
       "kind": "enum",
@@ -94890,7 +94872,7 @@
         "name": "TrainingPriority",
         "namespace": "ml._types"
       },
-      "specLocation": "ml/_types/TrainedModel.ts#L310-L313"
+      "specLocation": "ml/_types/TrainedModel.ts#L307-L310"
     },
     {
       "codegenNames": [
@@ -132718,7 +132700,7 @@
           }
         }
       ],
-      "specLocation": "ml/_types/TrainedModel.ts#L419-L421"
+      "specLocation": "ml/_types/TrainedModel.ts#L416-L418"
     },
     {
       "kind": "interface",
@@ -132739,7 +132721,7 @@
           }
         }
       ],
-      "specLocation": "ml/_types/TrainedModel.ts#L423-L425"
+      "specLocation": "ml/_types/TrainedModel.ts#L420-L422"
     },
     {
       "kind": "interface",
@@ -132773,7 +132755,7 @@
           }
         }
       ],
-      "specLocation": "ml/_types/TrainedModel.ts#L427-L436"
+      "specLocation": "ml/_types/TrainedModel.ts#L424-L433"
     },
     {
       "kind": "interface",
@@ -133035,7 +133017,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "DeploymentState",
+              "name": "DeploymentAssignmentState",
               "namespace": "ml._types"
             }
           }
@@ -133111,7 +133093,7 @@
           }
         }
       ],
-      "specLocation": "ml/_types/TrainedModel.ts#L393-L400"
+      "specLocation": "ml/_types/TrainedModel.ts#L390-L397"
     },
     {
       "kind": "interface",
@@ -133329,7 +133311,7 @@
           }
         }
       ],
-      "specLocation": "ml/_types/TrainedModel.ts#L373-L391"
+      "specLocation": "ml/_types/TrainedModel.ts#L370-L388"
     },
     {
       "kind": "interface",
@@ -135862,7 +135844,7 @@
           }
         }
       ],
-      "specLocation": "ml/_types/TrainedModel.ts#L402-L417"
+      "specLocation": "ml/_types/TrainedModel.ts#L399-L414"
     },
     {
       "kind": "interface",
@@ -135973,7 +135955,7 @@
           }
         }
       ],
-      "specLocation": "ml/_types/TrainedModel.ts#L315-L348"
+      "specLocation": "ml/_types/TrainedModel.ts#L312-L345"
     },
     {
       "kind": "interface",
