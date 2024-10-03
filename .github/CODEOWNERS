@@ -2,9 +2,9 @@
 /specification/ml/** @elastic/ml-core @elastic/ml-ui
 
 # Specification tooling owners
-/.github/                   @elastic/clients-team
-/compiler/                  @elastic/clients-team
-/compiler-rs/               @elastic/clients-team
-/typescript-generator/      @elastic/clients-team
-/specification/_json_spec/  @elastic/clients-team
-/specification/_spec_utils/ @elastic/clients-team
+/.github/                   @elastic/devtools-team
+/compiler/                  @elastic/devtools-team
+/compiler-rs/               @elastic/devtools-team
+/typescript-generator/      @elastic/devtools-team
+/specification/_json_spec/  @elastic/devtools-team
+/specification/_spec_utils/ @elastic/devtools-team
