@@ -243,3 +243,21 @@ actions:
           examples:
             indicesGetDataStreamResponseExample:
               $ref: "../../specification/indices/get_data_stream/indicesGetDataStreamResponseExample1.yaml"
+  - target: "$.paths['/_data_stream/{name}/_lifecycle']['put']"
+    description: "Add examples update data stream lifecycle request and response"
+    update: 
+      requestBody: 
+        content: 
+          application/json: 
+            examples: 
+              indicesPutDataLifecycleRequestExample1: 
+                $ref: "../../specification/indices/put_data_lifecycle/IndicesPutDataLifecycleRequestExample1.yaml"
+              indicesPutLifecycleRequestExample2:
+                $ref: "../../specification/indices/put_data_lifecycle/IndicesPutDataLifecycleRequestExample2.yaml"
+      responses:
+        200:
+          content:
+            application/json:
+              examples:
+                indicesPutDataLifecycleResponseExample1:
+                  $ref: "../../specification/indices/put_data_lifecycle/IndicesPutDataLifecycleResponseExample1.yaml"
