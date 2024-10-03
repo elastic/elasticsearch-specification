@@ -20,6 +20,7 @@
       },
       "description": "Deletes an async search by identifier.\nIf the search is still running, the search request will be cancelled.\nOtherwise, the saved search results are deleted.\nIf the Elasticsearch security features are enabled, the deletion of a specific async search is restricted to: the authenticated user that submitted the original search request; users that have the `cancel_task` cluster privilege.",
       "docId": "async-search",
+      "docTag": "search",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/async-search.html",
       "name": "async_search.delete",
       "request": {
@@ -56,6 +57,7 @@
       },
       "description": "Retrieves the results of a previously submitted async search request given its identifier.\nIf the Elasticsearch security features are enabled, access to the results of a specific async search is restricted to the user or API key that submitted it.",
       "docId": "async-search",
+      "docTag": "search",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/async-search.html",
       "name": "async_search.get",
       "request": {
@@ -92,6 +94,7 @@
       },
       "description": "Get async search status\nRetrieves the status of a previously submitted async search request given its identifier, without retrieving search results.\nIf the Elasticsearch security features are enabled, use of this API is restricted to the `monitoring_user` role.",
       "docId": "async-search",
+      "docTag": "search",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/async-search.html",
       "name": "async_search.status",
       "request": {
@@ -128,6 +131,7 @@
       },
       "description": "Runs a search request asynchronously.\nWhen the primary sort of the results is an indexed field, shards get sorted based on minimum and maximum value that they hold for that field, hence partial results become available following the sort criteria that was requested.\nWarning: Async search does not support scroll nor search requests that only include the suggest section.\nBy default, Elasticsearch doesn’t allow you to store an async search response larger than 10Mb and an attempt to do this results in an error.\nThe maximum allowed size for a stored async search response can be set by changing the `search.max_async_search_response_size` cluster level setting.",
       "docId": "async-search",
+      "docTag": "search",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/async-search.html",
       "name": "async_search.submit",
       "request": {
@@ -172,6 +176,7 @@
       },
       "description": "Bulk index or delete documents.\nPerforms multiple indexing or delete operations in a single API call.\nThis reduces overhead and can greatly increase indexing speed.",
       "docId": "docs-bulk",
+      "docTag": "document",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/docs-bulk.html",
       "name": "bulk",
       "request": {
@@ -684,6 +689,7 @@
       },
       "description": "Clears the search context and results for a scrolling search.",
       "docId": "clear-scroll-api",
+      "docTag": "search",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/clear-scroll-api.html",
       "name": "clear_scroll",
       "request": {
@@ -734,6 +740,7 @@
       },
       "description": "Closes a point-in-time.",
       "docId": "point-in-time-api",
+      "docTag": "search",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/point-in-time-api.html",
       "name": "close_point_in_time",
       "request": {
@@ -773,6 +780,7 @@
       },
       "description": "Delete component templates.\nDeletes component templates.\nComponent templates are building blocks for constructing index templates that specify index mappings, settings, and aliases.",
       "docId": "indices-component-template",
+      "docTag": "indices",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/indices-component-template.html",
       "name": "cluster.delete_component_template",
       "privileges": {
@@ -814,6 +822,7 @@
       },
       "description": "Check component templates.\nReturns information about whether a particular component template exists.",
       "docId": "indices-component-template",
+      "docTag": "indices",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/indices-component-template.html",
       "name": "cluster.exists_component_template",
       "request": {
@@ -850,6 +859,7 @@
       },
       "description": "Get component templates.\nRetrieves information about component templates.",
       "docId": "indices-component-template",
+      "docTag": "indices",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/indices-component-template.html",
       "name": "cluster.get_component_template",
       "privileges": {
@@ -933,6 +943,7 @@
       },
       "description": "Create or update a component template.\nCreates or updates a component template.\nComponent templates are building blocks for constructing index templates that specify index mappings, settings, and aliases.\n\nAn index template can be composed of multiple component templates.\nTo use a component template, specify it in an index template’s `composed_of` list.\nComponent templates are only applied to new data streams and indices as part of a matching index template.\n\nSettings and mappings specified directly in the index template or the create index request override any settings or mappings specified in a component template.\n\nComponent templates are only used during index creation.\nFor data streams, this includes data stream creation and the creation of a stream’s backing indices.\nChanges to component templates do not affect existing indices, including a stream’s backing indices.\n\nYou can use C-style `/* *\\/` block comments in component templates.\nYou can include comments anywhere in the request body except before the opening curly bracket.",
       "docId": "indices-component-template",
+      "docTag": "indices",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/indices-component-template.html",
       "name": "cluster.put_component_template",
       "privileges": {
@@ -1894,6 +1905,7 @@
         }
       },
       "description": "Returns number of documents matching a query.",
+      "docTag": "search",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/search-count.html",
       "name": "count",
       "request": {
@@ -1940,6 +1952,7 @@
         }
       },
       "description": "Index a document.\nAdds a JSON document to the specified data stream or index and makes it searchable.\nIf the target is an index and the document already exists, the request updates the document and increments its version.",
+      "docTag": "document",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/docs-index_.html",
       "name": "create",
       "request": {
@@ -1978,6 +1991,7 @@
         }
       },
       "description": "Delete a document.\nRemoves a JSON document from the specified index.",
+      "docTag": "document",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/docs-delete.html",
       "name": "delete",
       "request": {
@@ -2013,6 +2027,7 @@
         }
       },
       "description": "Delete documents.\nDeletes documents that match the specified query.",
+      "docTag": "document",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/docs-delete-by-query.html",
       "name": "delete_by_query",
       "request": {
@@ -2050,6 +2065,7 @@
         }
       },
       "description": "Delete a script or search template.\nDeletes a stored script or search template.",
+      "docTag": "script",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/modules-scripting.html",
       "name": "delete_script",
       "request": {
@@ -2451,6 +2467,7 @@
         }
       },
       "description": "Check a document.\nChecks if a specified document exists.",
+      "docTag": "document",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/docs-get.html",
       "name": "exists",
       "request": {
@@ -2486,6 +2503,7 @@
         }
       },
       "description": "Check for a document source.\nChecks if a document's `_source` is stored.",
+      "docTag": "document",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/docs-get.html",
       "name": "exists_source",
       "request": {
@@ -2520,6 +2538,7 @@
         }
       },
       "description": "Explain a document match result.\nReturns information about why a specific document matches, or doesn’t match, a query.",
+      "docTag": "search",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/search-explain.html",
       "name": "explain",
       "request": {
@@ -2559,6 +2578,7 @@
         }
       },
       "description": "The field capabilities API returns the information about the capabilities of fields among multiple indices.\nThe field capabilities API returns runtime fields like any other field. For example, a runtime field with a type\nof keyword is returned as any other field that belongs to the `keyword` family.",
+      "docTag": "search",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/search-field-caps.html",
       "name": "field_caps",
       "privileges": {
@@ -2611,6 +2631,7 @@
         }
       },
       "description": "Get a document by its ID.\nRetrieves the document with the specified ID from an index.",
+      "docTag": "document",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/docs-get.html",
       "name": "get",
       "request": {
@@ -2645,6 +2666,7 @@
         }
       },
       "description": "Get a script or search template.\nRetrieves a stored script or search template.",
+      "docTag": "script",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/modules-scripting.html",
       "name": "get_script",
       "request": {
@@ -2679,6 +2701,7 @@
         }
       },
       "description": "Get a document's source.\nReturns the source of a document.",
+      "docTag": "document",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/docs-get.html",
       "name": "get_source",
       "request": {
@@ -2752,6 +2775,7 @@
         }
       },
       "description": "Index a document.\nAdds a JSON document to the specified data stream or index and makes it searchable.\nIf the target is an index and the document already exists, the request updates the document and increments its version.",
+      "docTag": "document",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/docs-index_.html",
       "name": "index",
       "request": {
@@ -3388,6 +3412,7 @@
         }
       },
       "description": "Get data stream lifecycles.\nRetrieves the data stream lifecycle configuration of one or more data streams.",
+      "docTag": "data stream",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/data-streams-get-lifecycle.html",
       "name": "indices.get_data_lifecycle",
       "request": {
@@ -3423,6 +3448,7 @@
         }
       },
       "description": "Get data streams.\nRetrieves information about one or more data streams.",
+      "docTag": "data stream",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/data-streams.html",
       "name": "indices.get_data_stream",
       "privileges": {
@@ -3615,6 +3641,7 @@
         }
       },
       "description": "Convert an index alias to a data stream.\nConverts an index alias to a data stream.\nYou must have a matching index template that is data stream enabled.\nThe alias must meet the following criteria:\nThe alias must have a write index;\nAll indices for the alias must have a `@timestamp` field mapping of a `date` or `date_nanos` field type;\nThe alias must not have any filters;\nThe alias must not use custom routing.\nIf successful, the request removes the alias and creates a data stream with the same name.\nThe indices for the alias become hidden backing indices for the stream.\nThe write index for the alias becomes the write index for the stream.",
+      "docTag": "data stream",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/data-streams.html",
       "name": "indices.migrate_to_data_stream",
       "privileges": {
@@ -3655,6 +3682,7 @@
         }
       },
       "description": "Update data streams.\nPerforms one or more data stream modification actions in a single atomic operation.",
+      "docTag": "data stream",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/data-streams.html",
       "name": "indices.modify_data_stream",
       "request": {
@@ -7197,6 +7225,7 @@
         }
       },
       "description": "Runs multiple templated searches with a single request.",
+      "docTag": "search",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/search-multi-search.html",
       "name": "msearch_template",
       "privileges": {
@@ -7294,6 +7323,7 @@
       },
       "description": "A search request by default executes against the most recent visible data of the target indices,\nwhich is called point in time. Elasticsearch pit (point in time) is a lightweight view into the\nstate of the data as it existed when initiated. In some cases, it’s preferred to perform multiple\nsearch requests using the same point in time. For example, if refreshes happen between\n`search_after` requests, then the results of those requests might not be consistent as changes happening\nbetween searches are only visible to the more recent point in time.",
       "docId": "point-in-time-api",
+      "docTag": "search",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/point-in-time-api.html",
       "name": "open_point_in_time",
       "privileges": {
@@ -7336,6 +7366,7 @@
         }
       },
       "description": "Ping the cluster.\nReturns whether the cluster is running.",
+      "docTag": "cluster",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/index.html",
       "name": "ping",
       "request": {
@@ -7370,6 +7401,7 @@
         }
       },
       "description": "Create or update a script or search template.\nCreates or updates a stored script or search template.",
+      "docTag": "script",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/modules-scripting.html",
       "name": "put_script",
       "request": {
@@ -7667,6 +7699,7 @@
         }
       },
       "description": "Enables you to evaluate the quality of ranked search results over a set of typical search queries.",
+      "docTag": "search",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/search-rank-eval.html",
       "name": "rank_eval",
       "privileges": {
@@ -7718,6 +7751,7 @@
         }
       },
       "description": "Reindex documents.\nCopies documents from a source to a destination. The source can be any existing index, alias, or data stream. The destination must differ from the source. For example, you cannot reindex a data stream into itself.",
+      "docTag": "document",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/docs-reindex.html",
       "name": "reindex",
       "request": {
@@ -7755,6 +7789,7 @@
         }
       },
       "description": "Renders a search template as a search request body.",
+      "docTag": "search",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/render-search-template-api.html",
       "name": "render_search_template",
       "request": {
@@ -7801,6 +7836,7 @@
         }
       },
       "description": "Run a script.\nRuns a script and returns a result.",
+      "docTag": "script",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/painless/master/painless-execute-api.html",
       "name": "scripts_painless_execute",
       "request": {
@@ -7974,6 +8010,7 @@
         }
       },
       "description": "Delete a behavioral analytics collection.\nThe associated data stream is also deleted.",
+      "docTag": "analytics",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/delete-analytics-collection.html",
       "name": "search_application.delete_behavioral_analytics",
       "request": {
@@ -8044,6 +8081,7 @@
         }
       },
       "description": "Get behavioral analytics collections.",
+      "docTag": "analytics",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/list-analytics-collection.html",
       "name": "search_application.get_behavioral_analytics",
       "request": {
@@ -8158,6 +8196,7 @@
         }
       },
       "description": "Create a behavioral analytics collection.",
+      "docTag": "analytics",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/put-analytics-collection.html",
       "name": "search_application.put_behavioral_analytics",
       "request": {
@@ -8232,6 +8271,7 @@
         }
       },
       "description": "Search a vector tile.\nSearches a vector tile for geospatial values.",
+      "docTag": "search",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/search-vector-tile-api.html",
       "name": "search_mvt",
       "request": {
@@ -8271,6 +8311,7 @@
         }
       },
       "description": "Runs a search with a search template.",
+      "docTag": "search",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/search-template.html",
       "name": "search_template",
       "request": {
@@ -9167,6 +9208,7 @@
         }
       },
       "description": "Get term vector information.\nReturns information and statistics about terms in the fields of a particular document.",
+      "docTag": "document",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/docs-termvectors.html",
       "name": "termvectors",
       "request": {
@@ -9661,6 +9703,7 @@
         }
       },
       "description": "Update a document.\nUpdates a document by running a script or passing a partial document.",
+      "docTag": "document",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/docs-update.html",
       "name": "update",
       "request": {
@@ -9699,6 +9742,7 @@
         }
       },
       "description": "Update documents.\nUpdates documents that match the specified query.\nIf no query is specified, performs an update on every document in the data stream or index without modifying the source, which is useful for picking up mapping changes.",
+      "docTag": "document",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/docs-update-by-query.html",
       "name": "update_by_query",
       "request": {
@@ -9761,7 +9805,7 @@
         }
       ],
       "query": [],
-      "specLocation": "async_search/delete/AsyncSearchDeleteRequest.ts#L23-L38"
+      "specLocation": "async_search/delete/AsyncSearchDeleteRequest.ts#L23-L39"
     },
     {
       "body": {
@@ -9852,7 +9896,7 @@
           }
         }
       ],
-      "specLocation": "async_search/get/AsyncSearchGetRequest.ts#L24-L54"
+      "specLocation": "async_search/get/AsyncSearchGetRequest.ts#L24-L55"
     },
     {
       "body": {
@@ -9921,7 +9965,7 @@
         }
       ],
       "query": [],
-      "specLocation": "async_search/status/AsyncSearchStatusRequest.ts#L23-L37"
+      "specLocation": "async_search/status/AsyncSearchStatusRequest.ts#L23-L38"
     },
     {
       "body": {
@@ -11025,7 +11069,7 @@
           }
         }
       ],
-      "specLocation": "async_search/submit/AsyncSearchSubmitRequest.ts#L55-L286"
+      "specLocation": "async_search/submit/AsyncSearchSubmitRequest.ts#L55-L287"
     },
     {
       "body": {
@@ -11263,7 +11307,7 @@
           }
         }
       ],
-      "specLocation": "_global/bulk/BulkRequest.ts#L32-L104"
+      "specLocation": "_global/bulk/BulkRequest.ts#L32-L105"
     },
     {
       "body": {
@@ -12366,7 +12410,7 @@
         }
       ],
       "query": [],
-      "specLocation": "_global/clear_scroll/ClearScrollRequest.ts#L23-L45"
+      "specLocation": "_global/clear_scroll/ClearScrollRequest.ts#L23-L46"
     },
     {
       "body": {
@@ -12472,7 +12516,7 @@
       },
       "path": [],
       "query": [],
-      "specLocation": "_global/close_point_in_time/ClosePointInTimeRequest.ts#L23-L37"
+      "specLocation": "_global/close_point_in_time/ClosePointInTimeRequest.ts#L23-L38"
     },
     {
       "body": {
@@ -12604,7 +12648,7 @@
           }
         }
       ],
-      "specLocation": "cluster/delete_component_template/ClusterDeleteComponentTemplateRequest.ts#L24-L55"
+      "specLocation": "cluster/delete_component_template/ClusterDeleteComponentTemplateRequest.ts#L24-L56"
     },
     {
       "body": {
@@ -12685,7 +12729,7 @@
           }
         }
       ],
-      "specLocation": "cluster/exists_component_template/ClusterComponentTemplateExistsRequest.ts#L24-L55"
+      "specLocation": "cluster/exists_component_template/ClusterComponentTemplateExistsRequest.ts#L24-L56"
     },
     {
       "body": {
@@ -12794,7 +12838,7 @@
           }
         }
       ],
-      "specLocation": "cluster/get_component_template/ClusterGetComponentTemplateRequest.ts#L24-L66"
+      "specLocation": "cluster/get_component_template/ClusterGetComponentTemplateRequest.ts#L24-L67"
     },
     {
       "body": {
@@ -13049,7 +13093,7 @@
           }
         }
       ],
-      "specLocation": "cluster/put_component_template/ClusterPutComponentTemplateRequest.ts#L25-L94"
+      "specLocation": "cluster/put_component_template/ClusterPutComponentTemplateRequest.ts#L25-L95"
     },
     {
       "body": {
@@ -15282,7 +15326,7 @@
           }
         }
       ],
-      "specLocation": "_global/count/CountRequest.ts#L26-L120"
+      "specLocation": "_global/count/CountRequest.ts#L26-L121"
     },
     {
       "body": {
@@ -15633,7 +15677,7 @@
           }
         }
       ],
-      "specLocation": "_global/delete/DeleteRequest.ts#L34-L92"
+      "specLocation": "_global/delete/DeleteRequest.ts#L34-L93"
     },
     {
       "body": {
@@ -16123,7 +16167,7 @@
           }
         }
       ],
-      "specLocation": "_global/delete_by_query/DeleteByQueryRequest.ts#L36-L210"
+      "specLocation": "_global/delete_by_query/DeleteByQueryRequest.ts#L36-L211"
     },
     {
       "body": {
@@ -16405,7 +16449,7 @@
           }
         }
       ],
-      "specLocation": "_global/delete_script/DeleteScriptRequest.ts#L24-L52"
+      "specLocation": "_global/delete_script/DeleteScriptRequest.ts#L24-L53"
     },
     {
       "body": {
@@ -17811,7 +17855,7 @@
           }
         }
       ],
-      "specLocation": "_global/exists/DocumentExistsRequest.ts#L31-L100"
+      "specLocation": "_global/exists/DocumentExistsRequest.ts#L31-L101"
     },
     {
       "body": {
@@ -17985,7 +18029,7 @@
           }
         }
       ],
-      "specLocation": "_global/exists_source/SourceExistsRequest.ts#L31-L94"
+      "specLocation": "_global/exists_source/SourceExistsRequest.ts#L31-L95"
     },
     {
       "body": {
@@ -18206,7 +18250,7 @@
           }
         }
       ],
-      "specLocation": "_global/explain/ExplainRequest.ts#L26-L106"
+      "specLocation": "_global/explain/ExplainRequest.ts#L26-L107"
     },
     {
       "body": {
@@ -18500,7 +18544,7 @@
           }
         }
       ],
-      "specLocation": "_global/field_caps/FieldCapabilitiesRequest.ts#L25-L106"
+      "specLocation": "_global/field_caps/FieldCapabilitiesRequest.ts#L25-L107"
     },
     {
       "body": {
@@ -18732,7 +18776,7 @@
           }
         }
       ],
-      "specLocation": "_global/get/GetRequest.ts#L31-L100"
+      "specLocation": "_global/get/GetRequest.ts#L31-L101"
     },
     {
       "body": {
@@ -18852,7 +18896,7 @@
           }
         }
       ],
-      "specLocation": "_global/get_script/GetScriptRequest.ts#L24-L42"
+      "specLocation": "_global/get_script/GetScriptRequest.ts#L24-L43"
     },
     {
       "body": {
@@ -19071,7 +19115,7 @@
           }
         }
       ],
-      "specLocation": "_global/get_source/SourceRequest.ts#L31-L88"
+      "specLocation": "_global/get_source/SourceRequest.ts#L31-L89"
     },
     {
       "body": {
@@ -19484,7 +19528,7 @@
           }
         }
       ],
-      "specLocation": "_global/index/IndexRequest.ts#L35-L118"
+      "specLocation": "_global/index/IndexRequest.ts#L35-L119"
     },
     {
       "body": {
@@ -21392,7 +21436,7 @@
           }
         }
       ],
-      "specLocation": "indices/get_data_lifecycle/IndicesGetDataLifecycleRequest.ts#L24-L59"
+      "specLocation": "indices/get_data_lifecycle/IndicesGetDataLifecycleRequest.ts#L24-L60"
     },
     {
       "body": {
@@ -21517,7 +21561,7 @@
           }
         }
       ],
-      "specLocation": "indices/get_data_stream/IndicesGetDataStreamRequest.ts#L24-L65"
+      "specLocation": "indices/get_data_stream/IndicesGetDataStreamRequest.ts#L24-L66"
     },
     {
       "body": {
@@ -22032,7 +22076,7 @@
           }
         }
       ],
-      "specLocation": "indices/migrate_to_data_stream/IndicesMigrateToDataStreamRequest.ts#L24-L58"
+      "specLocation": "indices/migrate_to_data_stream/IndicesMigrateToDataStreamRequest.ts#L24-L59"
     },
     {
       "body": {
@@ -22090,7 +22134,7 @@
       },
       "path": [],
       "query": [],
-      "specLocation": "indices/modify_data_stream/IndicesModifyDataStreamRequest.ts#L23-L37"
+      "specLocation": "indices/modify_data_stream/IndicesModifyDataStreamRequest.ts#L23-L38"
     },
     {
       "body": {
@@ -33926,7 +33970,7 @@
           }
         }
       ],
-      "specLocation": "_global/msearch_template/MultiSearchTemplateRequest.ts#L25-L70"
+      "specLocation": "_global/msearch_template/MultiSearchTemplateRequest.ts#L25-L71"
     },
     {
       "body": {
@@ -34323,7 +34367,7 @@
           }
         }
       ],
-      "specLocation": "_global/open_point_in_time/OpenPointInTimeRequest.ts#L25-L75"
+      "specLocation": "_global/open_point_in_time/OpenPointInTimeRequest.ts#L25-L76"
     },
     {
       "body": {
@@ -34382,7 +34426,7 @@
       },
       "path": [],
       "query": [],
-      "specLocation": "_global/ping/PingRequest.ts#L22-L29"
+      "specLocation": "_global/ping/PingRequest.ts#L22-L30"
     },
     {
       "body": {
@@ -34482,7 +34526,7 @@
           }
         }
       ],
-      "specLocation": "_global/put_script/PutScriptRequest.ts#L25-L65"
+      "specLocation": "_global/put_script/PutScriptRequest.ts#L25-L66"
     },
     {
       "body": {
@@ -35163,7 +35207,7 @@
           }
         }
       ],
-      "specLocation": "_global/rank_eval/RankEvalRequest.ts#L24-L61"
+      "specLocation": "_global/rank_eval/RankEvalRequest.ts#L24-L62"
     },
     {
       "body": {
@@ -35430,7 +35474,7 @@
           }
         }
       ],
-      "specLocation": "_global/reindex/ReindexRequest.ts#L27-L103"
+      "specLocation": "_global/reindex/ReindexRequest.ts#L27-L104"
     },
     {
       "body": {
@@ -35729,7 +35773,7 @@
         }
       ],
       "query": [],
-      "specLocation": "_global/render_search_template/RenderSearchTemplateRequest.ts#L25-L55"
+      "specLocation": "_global/render_search_template/RenderSearchTemplateRequest.ts#L25-L56"
     },
     {
       "body": {
@@ -35822,7 +35866,7 @@
       },
       "path": [],
       "query": [],
-      "specLocation": "_global/scripts_painless_execute/ExecutePainlessScriptRequest.ts#L24-L47"
+      "specLocation": "_global/scripts_painless_execute/ExecutePainlessScriptRequest.ts#L24-L48"
     },
     {
       "body": {
@@ -37238,7 +37282,7 @@
         }
       ],
       "query": [],
-      "specLocation": "search_application/delete_behavioral_analytics/BehavioralAnalyticsDeleteRequest.ts#L22-L36"
+      "specLocation": "search_application/delete_behavioral_analytics/BehavioralAnalyticsDeleteRequest.ts#L22-L37"
     },
     {
       "body": {
@@ -37349,7 +37393,7 @@
         }
       ],
       "query": [],
-      "specLocation": "search_application/get_behavioral_analytics/BehavioralAnalyticsGetRequest.ts#L22-L35"
+      "specLocation": "search_application/get_behavioral_analytics/BehavioralAnalyticsGetRequest.ts#L22-L36"
     },
     {
       "body": {
@@ -37595,7 +37639,7 @@
         }
       ],
       "query": [],
-      "specLocation": "search_application/put_behavioral_analytics/BehavioralAnalyticsPutRequest.ts#L22-L35"
+      "specLocation": "search_application/put_behavioral_analytics/BehavioralAnalyticsPutRequest.ts#L22-L36"
     },
     {
       "body": {
@@ -38085,7 +38129,7 @@
           }
         }
       ],
-      "specLocation": "_global/search_mvt/SearchMvtRequest.ts#L33-L190"
+      "specLocation": "_global/search_mvt/SearchMvtRequest.ts#L33-L192"
     },
     {
       "body": {
@@ -38381,7 +38425,7 @@
           }
         }
       ],
-      "specLocation": "_global/search_template/SearchTemplateRequest.ts#L32-L134"
+      "specLocation": "_global/search_template/SearchTemplateRequest.ts#L32-L135"
     },
     {
       "body": {
@@ -41878,7 +41922,7 @@
           }
         }
       ],
-      "specLocation": "_global/termvectors/TermVectorsRequest.ts#L33-L120"
+      "specLocation": "_global/termvectors/TermVectorsRequest.ts#L33-L121"
     },
     {
       "body": {
@@ -43700,7 +43744,7 @@
           }
         }
       ],
-      "specLocation": "_global/update/UpdateRequest.ts#L38-L153"
+      "specLocation": "_global/update/UpdateRequest.ts#L38-L154"
     },
     {
       "body": {
@@ -44224,7 +44268,7 @@
           }
         }
       ],
-      "specLocation": "_global/update_by_query/UpdateByQueryRequest.ts#L37-L226"
+      "specLocation": "_global/update_by_query/UpdateByQueryRequest.ts#L37-L227"
     },
     {
       "body": {
