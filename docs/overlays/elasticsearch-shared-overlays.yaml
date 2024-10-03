@@ -204,3 +204,14 @@ actions:
           examples:
             indicesAnalyzeRequestExample1:
               $ref: "../../specification/indices/analyze/indicesAnalyzeRequestExample1.yaml"
+  - target: "$.paths['/{index}']['put']"
+    description: "Add examples for create index request"
+    update: 
+      requestBody:
+        content:
+          application/json:
+            examples:
+              indicesCreateRequestExample1:
+                $ref: "../../specification/indices/create/indicesCreateRequestExample1.yaml"
+              indicesCreateRequestExample2:
+                $ref: "../../specification/indices/create/indicesCreateRequestExample2.yaml"
