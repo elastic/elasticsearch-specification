@@ -17,8 +17,8 @@
  * under the License.
  */
 
-import { RequestBase } from '@_types/Base'
 import { AutoscalingPolicy } from '@autoscaling/_types/AutoscalingPolicy'
+import { RequestBase } from '@_types/Base'
 import { Name } from '@_types/common'
 
 /**

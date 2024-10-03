@@ -130,7 +130,9 @@
         "Request: missing json spec query parameter 'v'",
         "request definition cat.allocation:Request / body - A request with inherited properties must have a PropertyBody"
       ],
-      "response": []
+      "response": [
+        "type_alias definition _spec_utils:Stringified / union_of / instance_of - No type definition for '_spec_utils.Stringified:T'"
+      ]
     },
     "cat.component_templates": {
       "request": [
@@ -154,9 +156,7 @@
         "Request: missing json spec query parameter 'v'",
         "request definition cat.count:Request / body - A request with inherited properties must have a PropertyBody"
       ],
-      "response": [
-        "type_alias definition _spec_utils:Stringified / union_of / instance_of - No type definition for '_spec_utils.Stringified:T'"
-      ]
+      "response": []
     },
     "cat.fielddata": {
       "request": [
@@ -870,19 +870,21 @@
     },
     "ingest.delete_geoip_database": {
       "request": [
-        "Missing request & response"
+        "Request: query parameter 'master_timeout' does not exist in the json spec",
+        "Request: query parameter 'timeout' does not exist in the json spec"
       ],
       "response": []
     },
     "ingest.get_geoip_database": {
       "request": [
-        "Missing request & response"
+        "Request: query parameter 'master_timeout' does not exist in the json spec"
       ],
       "response": []
     },
     "ingest.put_geoip_database": {
       "request": [
-        "Missing request & response"
+        "Request: query parameter 'master_timeout' does not exist in the json spec",
+        "Request: query parameter 'timeout' does not exist in the json spec"
       ],
       "response": []
     },
@@ -1228,12 +1230,6 @@
     "transform.reset_transform": {
       "request": [
         "Request: missing json spec query parameter 'timeout'"
-      ],
-      "response": []
-    },
-    "update_by_query": {
-      "request": [
-        "Request: missing json spec query parameter 'q'"
       ],
       "response": []
     },

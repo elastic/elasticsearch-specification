@@ -28,11 +28,11 @@ import {
 } from '@_types/common'
 import { integer, long } from '@_types/Numeric'
 import {
-  Duration,
   DateTime,
-  UnitMillis,
+  Duration,
+  DurationValue,
   EpochTime,
-  DurationValue
+  UnitMillis
 } from '@_types/Time'
 
 export class SnapshotLifecycle {

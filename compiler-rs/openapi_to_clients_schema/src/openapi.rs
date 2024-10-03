@@ -326,7 +326,7 @@ pub fn any_to_schema(any: AnySchema) -> anyhow::Result<SchemaKind> {
             enumeration: vec![], // TODO: not supported in schema.json
         }))),
 
-        "boolean" => Ok(SchemaKind::Type(Type::Boolean {})),
+        "boolean" => Ok(SchemaKind::Type(Type::Boolean(Default::default()))),
 
         "array" => Ok(SchemaKind::Type(Type::Array(ArrayType {
             items: any.items,

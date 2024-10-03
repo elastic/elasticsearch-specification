@@ -17,10 +17,10 @@
  * under the License.
  */
 
+import { SourceConfigParam } from '@global/search/_types/SourceFilter'
 import { RequestBase } from '@_types/Base'
 import { Fields, Id, IndexName, Routing } from '@_types/common'
 import { QueryContainer } from '@_types/query_dsl/abstractions'
-import { SourceConfigParam } from '@global/search/_types/SourceFilter'
 import { Operator } from '@_types/query_dsl/Operator'
 
 /**

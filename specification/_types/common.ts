@@ -17,10 +17,10 @@
  * under the License.
  */
 
+import { AdditionalProperties } from '@spec_utils/behaviors'
 import { Dictionary } from '@spec_utils/Dictionary'
 import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 import { double, integer, long } from './Numeric'
-import { AdditionalProperties } from '@spec_utils/behaviors'
 
 /**
  * A field value.
@@ -84,6 +84,7 @@ export type Namespace = string
 export type Service = string
 
 export type PipelineName = string
+export type GrokPattern = string
 
 /** @doc_id modules-node */
 export type NodeName = string

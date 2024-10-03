@@ -18,7 +18,7 @@
  */
 import { RequestBase } from '@_types/Base'
 import { Id } from '@_types/common'
-import { SyncJobType, SyncJobTriggerMethod } from '../_types/SyncJob'
+import { SyncJobTriggerMethod, SyncJobType } from '../_types/SyncJob'
 
 /**
  * Creates a connector sync job.

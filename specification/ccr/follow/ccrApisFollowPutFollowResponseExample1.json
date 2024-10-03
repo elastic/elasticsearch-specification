@@ -1,0 +1,7 @@
+{
+  "summary": "A successful response for creating a follower index.",
+  "description": "",
+  "type": "response",
+  "response_code": 200,
+  "value": "{\n  \"follow_index_created\" : true,\n  \"follow_index_shards_acked\" : true,\n  \"index_following_started\" : true\n}"
+}

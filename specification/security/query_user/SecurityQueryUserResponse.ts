@@ -17,8 +17,8 @@
  * under the License.
  */
 
-import { integer } from '@_types/Numeric'
 import { QueryUser } from '@security/query_user/types'
+import { integer } from '@_types/Numeric'
 
 export class Response {
   body: {

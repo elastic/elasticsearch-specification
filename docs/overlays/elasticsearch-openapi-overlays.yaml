@@ -1,0 +1,229 @@
+# Overlays that are specific to the Elasticsearch OpenAPI document
+overlay: 1.0.0
+info:
+  title: Overlays for the Elasticsearch OpenAPI document
+  version: 0.0.1
+actions:
+  - target: '$.info'
+    description: Add a document description and feedback link
+    update:
+      title: Elasticsearch API
+      description: >
+        ## Documentation source and versions
+        
+        This documentation is derived from the `main` branch of the [elasticsearch-specification](https://github.com/elastic/elasticsearch-specification) repository.
+        It is provided under license [Attribution-NonCommercial-NoDerivatives 4.0 International](https://creativecommons.org/licenses/by-nc-nd/4.0/).
+      x-doc-license:
+        name: Attribution-NonCommercial-NoDerivatives 4.0 International
+        url: 'https://creativecommons.org/licenses/by-nc-nd/4.0/'
+      x-feedbackLink:
+        label: Feedback
+        url: https://github.com/elastic/docs-content/issues/new?assignees=&labels=feedback%2Ccommunity&projects=&template=api-feedback.yaml&title=%5BFeedback%5D%3A+
+# Examples that apply only to the Elasticsearch OpenAPI document
+  - target: "$.paths['/_features']['get']"
+    description: "Add examples for get features operation"
+    update:
+      responses:
+        200:
+          content:
+            application/json:
+              examples:
+                getFeaturesResponseExample1:
+                  $ref: "../../specification/features/get_features/FeaturesApiResponseExample1.json"
+  - target: "$.paths['/_features/_reset']['post']"
+    description: "Add examples for reset features operation"
+    update:
+      responses:
+        200:
+          content:
+            application/json:
+              examples:
+                resetFeaturesResponseExample1:
+                  $ref: "../../specification/features/reset_features/ResetFeaturesResponseExample1.json"
+  - target: "$.components['requestBodies']['cluster.allocation_explain']"
+    description: "Add examples for cluster allocation explain operation"
+    update: 
+      content: 
+        application/json: 
+          examples: 
+            clusterAllocationExplainRequestExample1: 
+              $ref: "../../specification/cluster/allocation_explain/clusterAllocationExplainRequestExample1.json"
+  - target: "$.components['responses']['cluster.health#200']"
+    description: "Add examples for cluster health operation"
+    update: 
+      content:
+        application/json:
+          examples:
+            clusterHealthResponseExample1:
+              $ref: "../../specification/cluster/health/clusterHealthResponseExample1.json"
+  - target: "$.paths['/_cluster/settings']['put']"
+    description: "Add examples for cluster update settings operation"
+    update: 
+      requestBody: 
+        content: 
+          application/json: 
+            examples: 
+              clusterPutSettingsRequestExample1: 
+                $ref: "../../specification/cluster/put_settings/clusterPutSettingsRequestExample1.json"
+  - target: "$.paths['/_cluster/reroute']['post']"
+    description: "Add examples for cluster reroute operation"
+    update: 
+      requestBody: 
+        content: 
+          application/json: 
+            examples: 
+              clusterRerouteRequestExample1: 
+                $ref: "../../specification/cluster/reroute/clusterRerouteRequestExample1.json"
+  - target: "$.components['requestBodies']['nodes.reload_secure_settings']"
+    description: "Add examples for nodes reload secure settings operation"
+    update: 
+      content: 
+        application/json: 
+          examples: 
+            clusterNodesReloadSecureSettingsRequestExample1: 
+              $ref: "../../specification/nodes/reload_secure_settings/clusterNodesReloadSecureSettingsRequestExample1.json"
+  - target: "$.components['responses']['nodes.reload_secure_settings#200']"
+    description: "Add response examples for nodes reload secure settings operation"
+    update: 
+      content:
+        application/json:
+          examples:
+            clusterNodesReloadSecureSettingsResponseExample1:
+              $ref: "../../specification/nodes/reload_secure_settings/clusterNodesReloadSecureSettingsResponseExample1.json"
+  - target: "$.paths['/_tasks']['get']"
+    description: "Add examples for task management operation"
+    update:
+      responses:
+        200:
+          content:
+            application/json:
+              examples:
+                getTasksResponseExample1:
+                  $ref: "../../specification/tasks/get/getTasksResponseExample1.json"
+  - target: "$.components['responses']['nodes.info#200']"
+    description: "Add response examples for nodes info"
+    update: 
+      content:
+        application/json:
+          examples:
+            nodesInfoResponseExample1:
+              $ref: "../../specification/nodes/info/nodesInfoResponseExample1.yaml"
+  - target: "$.paths['/_ilm/policy/{policy}']['delete']"
+    description: "Add examples for delete lifecycle policy operation"
+    update:
+      responses:
+        200:
+          content:
+            application/json:
+              examples:
+                deleteLifecycleResponseExample1:
+                  $ref: "../../specification/ilm/delete_lifecycle/DeleteLifecycleResponseExample1.json" 
+  - target: "$.paths['/_ilm/policy/{policy}']['put']"
+    description: "Add examples for create a lifecycle operation"
+    update:
+      update: 
+      requestBody: 
+        content: 
+          application/json: 
+            examples:
+              putLifecycleRequestExample1: 
+                $ref: "../../specification/ilm/put_lifecycle/PutLifecycleRequestExample1.json"
+      responses:
+        200:
+          content:
+            application/json:
+              examples:
+                putLifecycleResponseExample1:
+                  $ref: "../../specification/ilm/put_lifecycle/PutLifecycleResponseExample1.json"  
+  - target: "$.components['responses']['ilm.get_lifecycle#200']"
+    description: "Add examples for get lifecycle policy operation"
+    update: 
+      content:
+        application/json:
+          examples:
+            getLifecycleResponseExample1:
+              $ref: "../../specification/ilm/get_lifecycle/GetLifecycleResponseExample1.json"
+  - target: "$.paths['/_ilm/migrate_to_data_tiers']['post']"
+    description: "Add examples for migrate to data tiers routing operation"
+    update:
+      update: 
+      requestBody: 
+        content: 
+          application/json: 
+            examples: 
+              migrateToDataTiersRequestExample1: 
+                $ref: "../../specification/ilm/migrate_to_data_tiers/MigrateToDataTiersRequestExample1.json"
+      responses:
+        200:
+          content:
+            application/json:
+              examples:
+                migrateToDataTiersResponseExample1:
+                  $ref: "../../specification/ilm/migrate_to_data_tiers/MigrateToDataTiersResponseExample1.json"
+  - target: "$.paths['/_ilm/move/{index}']['post']"
+    description: "Add examples for move to lifecycle step operation"
+    update:
+      update: 
+      requestBody: 
+        content: 
+          application/json: 
+            examples:
+              moveToStepRequestExample1: 
+                $ref: "../../specification/ilm/move_to_step/MoveToStepRequestExample1.json"
+      responses:
+        200:
+          content:
+            application/json:
+              examples:
+                moveToStepResponseExample1:
+                  $ref: "../../specification/ilm/move_to_step/MoveToStepResponseExample1.json"
+  - target: "$.paths['/_ilm/start']['post']"
+    description: "Add examples for start index lifecycle management operation"
+    update:
+      responses:
+        200:
+          content:
+            application/json:
+              examples:
+                startILMResponseExample1:
+                  $ref: "../../specification/ilm/start/StartILMResponseExample1.json"
+  - target: "$.paths['/_ilm/stop']['post']"
+    description: "Add examples for stop index lifecycle management operation"
+    update:
+      responses:
+        200:
+          content:
+            application/json:
+              examples:
+                stopILMResponseExample1:
+                  $ref: "../../specification/ilm/stop/stopILMResponseExample1.json"
+  - target: "$.paths['/_ilm/status']['get']"
+    description: "Add examples for get index lifecycle management status operation"
+    update:
+      responses:
+        200:
+          content:
+            application/json:
+              examples:
+                getILMStatusResponseExample1:
+                  $ref: "../../specification/ilm/get_status/GetILMStatusResponseExample1.json"
+  - target: "$.paths['/{index}/_ilm/explain']['get']"
+    description: "Add examples for explain lifecycle operation"
+    update:
+      responses:
+        200:
+          content:
+            application/json:
+              examples:
+                explainLifecycleResponseExample1:
+                  $ref: "../../specification/ilm/explain_lifecycle/ExplainLifecycleResponseExample1.json"
+  - target: "$.paths['/{index}/_ilm/remove']['post']"
+    description: "Add examples for remove policy from index operation"
+    update:
+      responses:
+        200:
+          content:
+            application/json:
+              examples:
+                removePolicyResponseExample1:
+                  $ref: "../../specification/ilm/remove_policy/RemovePolicyResponseExample1.json" 

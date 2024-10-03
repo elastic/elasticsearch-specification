@@ -18,6 +18,7 @@
  */
 
 import { RequestBase } from '@_types/Base'
+import { GrokPattern } from '@_types/common'
 
 /**
  * @rest_spec_name text_structure.test_grok_pattern
@@ -33,7 +34,7 @@ export interface Request extends RequestBase {
     /**
      * Grok pattern to run on the text.
      */
-    grok_pattern: string
+    grok_pattern: GrokPattern
 
     /**
      * Lines of text to run the Grok pattern on.

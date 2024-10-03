@@ -17,9 +17,9 @@
  * under the License.
  */
 
-import { Duration } from '@_types/Time'
 import { RequestBase } from '@_types/Base'
 import { Id } from '@_types/common'
+import { Duration } from '@_types/Time'
 
 /**
  * @rest_spec_name sql.get_async

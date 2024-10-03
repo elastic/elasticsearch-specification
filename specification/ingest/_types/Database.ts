@@ -17,12 +17,17 @@
  * under the License.
  */
 
-import { Status } from '@snapshot/_types/SnapshotStatus'
+import { Id, Name } from '@_types/common'
 
-export class ClusterStateSnapshots {
-  snapshots: Status[] // TODO: just a guess, but the tests are not exhaustive enough
+export class DatabaseConfiguration {
+  /** The provider-assigned name of the IP geolocation database to download. */
+  name: Name
+  /** The configuration necessary to identify which IP geolocation provider to use to download the database, as well as any provider-specific configuration necessary for such downloading.
+   * At present, the only supported provider is maxmind, and the maxmind provider requires that an account_id (string) is configured.
+   */
+  maxmind: Maxmind
 }
 
-export class ClusterStateDeletedSnapshots {
-  snapshot_deletions: string[] // TODO: just a guess, but the tests are not exhaustive enough
+export class Maxmind {
+  account_id: Id
 }

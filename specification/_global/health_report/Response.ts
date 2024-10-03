@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { Indicators, IndicatorHealthStatus } from './types'
+import { IndicatorHealthStatus, Indicators } from './types'
 
 export class Response {
   body: {

@@ -17,12 +17,11 @@
  * under the License.
  */
 
+import { SourceConfig } from '@global/search/_types/SourceFilter'
 import { RequestBase } from '@_types/Base'
 import { Fields, Indices, Routing } from '@_types/common'
+import { FieldAndFormat, QueryContainer } from '@_types/query_dsl/abstractions'
 import { Query } from './_types/Knn'
-import { QueryContainer } from '@_types/query_dsl/abstractions'
-import { SourceConfig } from '@global/search/_types/SourceFilter'
-import { FieldAndFormat } from '@_types/query_dsl/abstractions'
 
 /**
  * @rest_spec_name knn_search

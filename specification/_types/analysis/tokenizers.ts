@@ -17,15 +17,32 @@
  * under the License.
  */
 
+import { Stringified } from '@spec_utils/Stringified'
 import { VersionString } from '@_types/common'
 import { integer } from '@_types/Numeric'
 import { IcuTokenizer } from './icu-plugin'
 import { KuromojiTokenizer } from './kuromoji-plugin'
-import { TokenFilterDefinition } from '@_types/analysis/token_filters'
-import { Stringified } from '@spec_utils/Stringified'
+import { NoriTokenizer } from './nori-plugin'
 
 export class TokenizerBase {
   version?: VersionString
+}
+
+export class CharGroupTokenizer extends TokenizerBase {
+  type: 'char_group'
+  tokenize_on_chars: string[]
+  /*
+   * @server_default 255
+   */
+  max_token_length?: integer
+}
+
+export class ClassicTokenizer extends TokenizerBase {
+  type: 'classic'
+  /*
+   * @server_default 255
+   */
+  max_token_length?: integer
 }
 
 export class EdgeNGramTokenizer extends TokenizerBase {
@@ -33,15 +50,10 @@ export class EdgeNGramTokenizer extends TokenizerBase {
   custom_token_chars?: string
   max_gram: integer
   min_gram: integer
-  token_chars: TokenChar[]
-}
-
-export class NGramTokenizer extends TokenizerBase {
-  type: 'ngram'
-  custom_token_chars?: string
-  max_gram: integer
-  min_gram: integer
-  token_chars: TokenChar[]
+  /**
+   * @server_default []
+   */
+  token_chars?: TokenChar[]
 }
 
 export enum TokenChar {
@@ -51,12 +63,6 @@ export enum TokenChar {
   punctuation,
   symbol,
   custom
-}
-
-export class CharGroupTokenizer extends TokenizerBase {
-  type: 'char_group'
-  tokenize_on_chars: string[]
-  max_token_length?: integer
 }
 
 export class KeywordTokenizer extends TokenizerBase {
@@ -72,18 +78,15 @@ export class LowercaseTokenizer extends TokenizerBase {
   type: 'lowercase'
 }
 
-export enum NoriDecompoundMode {
-  discard,
-  none,
-  mixed
-}
-
-export class NoriTokenizer extends TokenizerBase {
-  type: 'nori_tokenizer'
-  decompound_mode?: NoriDecompoundMode
-  discard_punctuation?: boolean
-  user_dictionary?: string
-  user_dictionary_rules?: string[]
+export class NGramTokenizer extends TokenizerBase {
+  type: 'ngram'
+  custom_token_chars?: string
+  max_gram: integer
+  min_gram: integer
+  /**
+   * @server_default []
+   */
+  token_chars?: TokenChar[]
 }
 
 export class PathHierarchyTokenizer extends TokenizerBase {
@@ -102,9 +105,23 @@ export class PatternTokenizer extends TokenizerBase {
   pattern?: string
 }
 
+export class SimplePatternTokenizer extends TokenizerBase {
+  type: 'simple_pattern'
+  pattern?: string
+}
+
+export class SimplePatternSplitTokenizer extends TokenizerBase {
+  type: 'simple_pattern_split'
+  pattern?: string
+}
+
 export class StandardTokenizer extends TokenizerBase {
   type: 'standard'
   max_token_length?: integer
+}
+
+export class ThaiTokenizer extends TokenizerBase {
+  type: 'thai'
 }
 
 export class UaxEmailUrlTokenizer extends TokenizerBase {
@@ -127,16 +144,21 @@ export type Tokenizer = string | TokenizerDefinition
  */
 export type TokenizerDefinition =
   | CharGroupTokenizer
+  | ClassicTokenizer
   | EdgeNGramTokenizer
   | KeywordTokenizer
   | LetterTokenizer
   | LowercaseTokenizer
   | NGramTokenizer
-  | NoriTokenizer
   | PathHierarchyTokenizer
+  | PatternTokenizer
+  | SimplePatternTokenizer
+  | SimplePatternSplitTokenizer
   | StandardTokenizer
+  | ThaiTokenizer
   | UaxEmailUrlTokenizer
   | WhitespaceTokenizer
-  | KuromojiTokenizer
-  | PatternTokenizer
+  // plugins
   | IcuTokenizer
+  | KuromojiTokenizer
+  | NoriTokenizer

@@ -19,9 +19,9 @@
 
 import {
   ByteSize,
+  IndexName,
   SequenceNumber,
-  VersionNumber,
-  IndexName
+  VersionNumber
 } from '@_types/common'
 import { ErrorCause } from '@_types/Errors'
 import { integer, long } from '@_types/Numeric'

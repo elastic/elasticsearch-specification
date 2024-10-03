@@ -18,11 +18,10 @@
  */
 
 import { Dictionary } from '@spec_utils/Dictionary'
+import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 import { Field, Fields } from '@_types/common'
 import { integer } from '@_types/Numeric'
 import { QueryContainer } from '@_types/query_dsl/abstractions'
-import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
-import { Analyzer } from '@_types/analysis/analyzers'
 
 export enum BoundaryScanner {
   /**
@@ -193,5 +192,4 @@ export enum HighlighterType {
 export class HighlightField extends HighlightBase {
   fragment_offset?: integer
   matched_fields?: Fields
-  analyzer?: Analyzer
 }

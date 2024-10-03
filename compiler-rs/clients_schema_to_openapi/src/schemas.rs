@@ -143,7 +143,7 @@ impl<'a> TypesAndComponents<'a> {
                     max_length: None,
                 })
                 .into_schema_ref()),
-                "boolean" => Ok(Type::Boolean {}.into_schema_ref()),
+                "boolean" => Ok(Type::Boolean(Default::default()).into_schema_ref()),
                 "number" => Ok(Type::Number(NumberType::default()).into_schema_ref()),
                 "void" => {
                     // Empty object

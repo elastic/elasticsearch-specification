@@ -1,47 +1,30 @@
-# overlays.yaml
+# Overlays that are specific to the Elasticsearch Serverless OpenAPI document
 overlay: 1.0.0
 info:
   title: Overlays for the Elasticsearch Serverless OpenAPI document
   version: 0.0.1
 actions:
   - target: '$.info'
-    description: Add a document description
+    description: Add a document description and feedback link
     update:
+      title: Elasticsearch Serverless API
       description: >
         **Technical preview**  
         This functionality is in technical preview and may be changed or removed in a future release.
         Elastic will work to fix any issues, but features in technical preview are not subject to the support SLA of official GA features.
-  - target: "$.components['requestBodies']['async_search.submit']"
-    description: "Add example for asynch search submit request"
-    update: 
-      content:
-        application/json:
-          examples:
-            asyncSearchSubmitResponseExample1:
-              $ref: "../../specification/async_search/submit/AsyncSearchSubmitRequestExample1.json"
-  - target: "$.components['responses']['async_search.submit#200']"
-    description: "Add example for asynch search submit response"
-    update: 
-      content:
-        application/json:
-          examples:
-            asyncSearchSubmitResponseExample1:
-              $ref: "../../specification/async_search/submit/AsyncSearchSubmitResponseExample1.json"
-  - target: "$.paths['/_transform/{transform_id}']['put']"
-    description: "Add examples for create transform operation"
-    update: 
-      requestBody: 
-        content: 
-          application/json: 
-            examples: 
-              createTransformRequestExample1: 
-                $ref: "../../specification/transform/put_transform/examples/request/PutTransformRequestExample1.json"
-              createTransformRequestExample2:
-                $ref: "../../specification/transform/put_transform/examples/request/PutTransformRequestExample2.json"
-      responses:
-        200:
-          content:
-            application/json:
-              examples:
-                createTransformResponseExample1:
-                  $ref: "../../specification/transform/put_transform/examples/200_response/PutTransformResponseExample1.json"
+
+        ## Documentation source and versions
+        
+        This documentation is derived from the `main` branch of the [elasticsearch-specification](https://github.com/elastic/elasticsearch-specification) repository.
+        It is provided under license [Attribution-NonCommercial-NoDerivatives 4.0 International](https://creativecommons.org/licenses/by-nc-nd/4.0/).
+      x-doc-license:
+        name: Attribution-NonCommercial-NoDerivatives 4.0 International
+        url: 'https://creativecommons.org/licenses/by-nc-nd/4.0/'
+      x-feedbackLink:
+        label: Feedback
+        url: https://github.com/elastic/docs-content/issues/new?assignees=&labels=feedback%2Ccommunity&projects=&template=api-feedback.yaml&title=%5BFeedback%5D%3A+
+  # Temporarily mark all operations as beta
+  - target: "$.paths[*]['get','put','post','delete','options','head','patch','trace']"
+    description: Add x-beta
+    update:
+      x-beta: true

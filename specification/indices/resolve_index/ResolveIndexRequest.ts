@@ -44,5 +44,17 @@ export interface Request extends RequestBase {
      * @server_default open
      */
     expand_wildcards?: ExpandWildcards
+    /**
+     * If `false`, the request returns an error if it targets a missing or closed index.
+     * @server_default false
+     */
+    ignore_unavailable?: boolean
+    /**
+     * If `false`, the request returns an error if any wildcard expression, index alias, or `_all` value targets only missing or closed indices.
+     * This behavior applies even if the request targets other open indices.
+     * For example, a request targeting `foo*,bar*` returns an error if an index starts with `foo` but no index starts with `bar`.
+     * @server_default true
+     */
+    allow_no_indices?: boolean
   }
 }

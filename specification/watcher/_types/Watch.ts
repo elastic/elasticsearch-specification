@@ -25,7 +25,7 @@ import {
   SequenceNumber,
   VersionNumber
 } from '@_types/common'
-import { integer, long } from '@_types/Numeric'
+import { integer } from '@_types/Numeric'
 import { DateTime, Duration, DurationValue, UnitMillis } from '@_types/Time'
 import { TransformContainer } from '@_types/Transform'
 import { Action, Actions } from './Action'

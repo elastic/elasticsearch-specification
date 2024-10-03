@@ -17,9 +17,9 @@
  * under the License.
  */
 
+import { Stats } from '@nodes/_types/Stats'
 import { Name } from '@_types/common'
 import { ErrorCause } from '@_types/Errors'
-import { Stats } from '@nodes/_types/Stats'
 
 export class NodeReloadError {
   name: Name

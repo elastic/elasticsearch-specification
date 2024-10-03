@@ -49,12 +49,6 @@ export class NodeAttributes {
   name: NodeName
   /** The host and port where transport HTTP connections are accepted. */
   transport_address: TransportAddress
-  roles?: NodeRoles
-  /**
-   * @availability stack since=8.3.0
-   * @availability serverless
-   */
-  external_id?: string
 }
 
 export class NodeShard {

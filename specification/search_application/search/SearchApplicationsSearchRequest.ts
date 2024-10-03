@@ -16,13 +16,15 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-import { RequestBase } from '@_types/Base'
-import { Name } from '@_types/common'
 import { Dictionary } from '@spec_utils/Dictionary'
 import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
+import { RequestBase } from '@_types/Base'
+import { Name } from '@_types/common'
 
 /**
- * Perform a search against a search application.
+ * Run a search application search.
+ * Generate and run an Elasticsearch query that uses the specified query parameteter and the search template associated with the search application or default template.
+ * Unspecified template parameters are assigned their default values if applicable.
  * @rest_spec_name search_application.search
  * @availability stack since=8.8.0 stability=beta
  * @availability serverless stability=beta visibility=public

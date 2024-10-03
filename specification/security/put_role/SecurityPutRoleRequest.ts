@@ -18,9 +18,10 @@
  */
 
 import {
-  IndicesPrivileges,
+  ApplicationPrivileges,
   ClusterPrivilege,
-  ApplicationPrivileges
+  IndicesPrivileges,
+  RemoteIndicesPrivileges
 } from '@security/_types/Privileges'
 import { Dictionary } from '@spec_utils/Dictionary'
 import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
@@ -63,6 +64,12 @@ export interface Request extends RequestBase {
      * A list of indices permissions entries.
      */
     indices?: IndicesPrivileges[]
+    /**
+     * A list of remote indices permissions entries.
+     * @availability stack since=8.14.0
+     *
+     */
+    remote_indices?: RemoteIndicesPrivileges[]
     /**
      * Optional metadata. Within the metadata object, keys that begin with an underscore (`_`) are reserved for system use.
      */

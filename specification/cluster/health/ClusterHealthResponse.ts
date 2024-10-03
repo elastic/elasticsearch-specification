@@ -19,7 +19,7 @@
 
 import { Dictionary } from '@spec_utils/Dictionary'
 import { HealthStatus, IndexName, Name } from '@_types/common'
-import { double, integer, Percentage } from '@_types/Numeric'
+import { integer, Percentage } from '@_types/Numeric'
 import { Duration, DurationValue, UnitMillis } from '@_types/Time'
 import { IndexHealthStats } from './types'
 
@@ -67,6 +67,8 @@ export class HealthResponseBody {
   task_max_waiting_in_queue_millis: DurationValue<UnitMillis>
   /** If false the response returned within the period of time that is specified by the timeout parameter (30s by default) */
   timed_out: boolean
+  /** The number of primary shards that are not allocated. */
+  unassigned_primary_shards: integer
   /** The number of shards that are not allocated. */
   unassigned_shards: integer
 }

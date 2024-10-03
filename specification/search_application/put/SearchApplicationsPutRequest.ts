@@ -21,7 +21,7 @@ import { Name } from '@_types/common'
 import { SearchApplication } from '../_types/SearchApplication'
 
 /**
- * Creates or updates a search application.
+ * Create or update a search application.
  * @rest_spec_name search_application.put
  * @availability stack since=8.8.0 stability=beta
  * @availability serverless stability=beta visibility=public

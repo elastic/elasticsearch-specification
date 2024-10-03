@@ -17,10 +17,10 @@
  * under the License.
  */
 
+import { InnerHits } from '@global/search/_types/hits'
 import { Field } from '@_types/common'
 import { float, integer } from '@_types/Numeric'
 import { QueryBase, QueryContainer } from './query_dsl/abstractions'
-import { InnerHits } from '@global/search/_types/hits'
 
 export type QueryVector = float[]
 

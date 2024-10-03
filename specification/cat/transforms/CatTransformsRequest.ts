@@ -20,7 +20,7 @@
 import { CatRequestBase, CatTransformColumns } from '@cat/_types/CatBase'
 import { Id } from '@_types/common'
 import { integer } from '@_types/Numeric'
-import { Duration, TimeUnit } from '@_types/Time'
+import { TimeUnit } from '@_types/Time'
 
 /**
  * Get transforms.

@@ -1,0 +1,7 @@
+{
+  "summary": "A successful response for retrieving information about all follower indices",
+  "description": "This may be a response to `GET /follower_index/_ccr/info`.",
+  "type": "response",
+  "response_code": 200,
+  "value": "{\n  \"follower_indices\": [\n    {\n      \"follower_index\": \"follower_index\",\n      \"remote_cluster\": \"remote_cluster\",\n      \"leader_index\": \"leader_index\",\n      \"status\": \"active\",\n      \"parameters\": {\n        \"max_read_request_operation_count\": 5120,\n        \"max_read_request_size\": \"32mb\",\n        \"max_outstanding_read_requests\": 12,\n        \"max_write_request_operation_count\": 5120,\n        \"max_write_request_size\": \"9223372036854775807b\",\n        \"max_outstanding_write_requests\": 9,\n        \"max_write_buffer_count\": 2147483647,\n        \"max_write_buffer_size\": \"512mb\",\n        \"max_retry_delay\": \"500ms\",\n        \"read_poll_timeout\": \"1m\"\n      }\n    }\n  ]\n}"
+}

@@ -24,10 +24,10 @@ import {
   CompletionStats,
   DocStats,
   FielddataStats,
+  PluginStats,
   QueryCacheStats,
   SegmentsStats,
-  StoreStats,
-  PluginStats
+  StoreStats
 } from '@_types/Stats'
 import { Duration, DurationValue, UnitMillis } from '@_types/Time'
 

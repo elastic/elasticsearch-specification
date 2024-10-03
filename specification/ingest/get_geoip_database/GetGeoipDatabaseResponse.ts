@@ -17,12 +17,18 @@
  * under the License.
  */
 
-import { Id, Name } from '@_types/common'
-import { Host } from '@_types/Networking'
+import { DatabaseConfiguration } from '@ingest/_types/Database'
+import { Id } from '@_types/common'
+import { long } from '@_types/Numeric'
+import { EpochTime, UnitMillis } from '@_types/Time'
 
-export class HotThread {
-  hosts: Host[]
-  node_id: Id
-  node_name: Name
-  threads: string[]
+export class Response {
+  body: { databases: DatabaseConfigurationMetadata[] }
+}
+
+class DatabaseConfigurationMetadata {
+  id: Id
+  version: long
+  modified_date_millis: EpochTime<UnitMillis>
+  database: DatabaseConfiguration
 }

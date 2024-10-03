@@ -17,8 +17,8 @@
  * under the License.
  */
 
-import { EpochTime, TimeOfDay, UnitSeconds } from '@_types/Time'
 import { Stringified } from '@spec_utils/Stringified'
+import { EpochTime, TimeOfDay, UnitSeconds } from '@_types/Time'
 
 export class HealthRecord {
   /**
@@ -71,6 +71,11 @@ export class HealthRecord {
    * @aliases i,shards.initializing,shardsInitializing
    */
   'init'?: string
+  /**
+   * number of unassigned primary shards
+   * @aliases up,shards.unassigned.primary,shardsUnassignedPrimary
+   */
+  'unassign.pri'?: string
   /**
    * number of unassigned shards
    * @aliases u,shards.unassigned,shardsUnassigned

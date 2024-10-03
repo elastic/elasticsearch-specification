@@ -1,0 +1,7 @@
+{
+  "summary": "A successful response for resuming a folower index.",
+  "description": "",
+  "type": "response",
+  "response_code": 200,
+  "value": "{\n  \"acknowledged\" : true\n}"
+}
