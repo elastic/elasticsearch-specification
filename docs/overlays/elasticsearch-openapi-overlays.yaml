@@ -226,4 +226,12 @@ actions:
             application/json:
               examples:
                 removePolicyResponseExample1:
-                  $ref: "../../specification/ilm/remove_policy/RemovePolicyResponseExample1.json" 
+                  $ref: "../../specification/ilm/remove_policy/RemovePolicyResponseExample1.json"
+  - target: "$.components['requestBodies']['indices.clone']"
+    description: "Add examples for clone index request"
+    update: 
+      content: 
+        application/json: 
+          examples: 
+            indicesCloneRequestExample1: 
+              $ref: "../../specification/indices/clone/indicesCloneRequestExample1.yaml"
