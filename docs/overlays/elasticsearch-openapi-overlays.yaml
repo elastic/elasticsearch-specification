@@ -245,3 +245,11 @@ actions:
               examples:
                 indicesCloseResponseExample1:
                   $ref: "../../specification/indices/close/indicesCloseResponseExample1.yaml"
+  - target: "$.components['responses']['indices.data_streams_stats#200']"
+    description: "Add example for data stream stats response"
+    update: 
+      content:
+        application/json:
+          examples:
+            indicesDataStreamStatsResponseExample1:
+              $ref: "../../specification/indices/data_streams_stats/indicesDataStreamStatsResponseExample1.yaml"

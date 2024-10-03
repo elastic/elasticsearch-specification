@@ -215,3 +215,13 @@ actions:
                 $ref: "../../specification/indices/create/indicesCreateRequestExample1.yaml"
               indicesCreateRequestExample2:
                 $ref: "../../specification/indices/create/indicesCreateRequestExample2.yaml"
+  - target: "$.paths['/_data_stream/{name}/_lifecycle']['delete']"
+    description: "Add example for delete data stream lifecycle response"
+    update: 
+      responses:
+        200:
+          content:
+            application/json:
+              examples:
+                indicesDeleteDataLifecycleResponseExample1:
+                  $ref: "../../specification/indices/delete_data_lifecycle/IndicesDeleteDataLifecycleResponseExample1.yaml"
