@@ -26,6 +26,7 @@ import { ScrollIds } from '@_types/common'
  * @availability stack stability=stable
  * @availability serverless stability=stable visibility=public
  * @doc_id clear-scroll-api
+ * @doc_tag search
  */
 export interface Request extends RequestBase {
   path_parts: {

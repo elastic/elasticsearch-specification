@@ -36,6 +36,7 @@ import { Filter } from './types'
  * @rest_spec_name termvectors
  * @availability stack stability=stable
  * @availability serverless stability=stable visibility=public
+ * @doc_tag document
  */
 export interface Request<TDocument> extends RequestBase {
   path_parts: {

@@ -29,6 +29,7 @@ import { NodeIds } from '@_types/common'
  * @availability stack since=7.16.0 stability=experimental
  * @availability serverless stability=experimental visibility=private
  * @cluster_privileges monitor, manage
+ * @doc_tag cluster
  */
 export interface Request extends RequestBase {
   path_parts: {

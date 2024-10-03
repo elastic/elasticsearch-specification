@@ -30,6 +30,7 @@ import { Duration } from '@_types/Time'
  * @availability serverless stability=stable visibility=private
  * @cluster_privileges monitor,manage
  * @doc_id cluster-nodes-hot-threads
+ * @doc_tag cluster
  */
 export interface Request extends RequestBase {
   path_parts: {

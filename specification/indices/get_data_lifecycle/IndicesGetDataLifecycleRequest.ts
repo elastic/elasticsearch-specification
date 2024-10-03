@@ -27,6 +27,7 @@ import { Duration } from '@_types/Time'
  * @rest_spec_name indices.get_data_lifecycle
  * @availability stack since=8.11.0 stability=stable
  * @availability serverless stability=stable visibility=public
+ * @doc_tag data stream
  */
 export interface Request extends RequestBase {
   path_parts: {
