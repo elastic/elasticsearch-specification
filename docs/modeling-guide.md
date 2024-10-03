@@ -631,6 +631,24 @@ class Request {
 foobar,/guide/en/example
 ```
 
+#### `@doc_tag`
+
+An OpenAPI tag that is used to group similar endpoints in the API documentation.
+If it is absent, by default the tag is derived from the first part of the namespace.
+
+```ts
+/**
+ * @rest_spec_name api
+ * @doc_tag my tag
+ */
+class Request {
+  ...
+}
+```
+
+NOTE: In the OpenAPI specification, operations can have multiple tags. However, we currently support only a single tag.
+
+
 #### `@codegen_name`
 
 A custom name that can be used to display the property. Useful in Enums and
