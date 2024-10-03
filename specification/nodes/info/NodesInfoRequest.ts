@@ -27,6 +27,7 @@ import { Duration } from '@_types/Time'
  * @availability stack since=1.3.0 stability=stable
  * @availability serverless stability=stable visibility=private
  * @doc_id cluster-nodes-info
+ * @doc_tag cluster
  */
 export interface Request extends RequestBase {
   path_parts: {

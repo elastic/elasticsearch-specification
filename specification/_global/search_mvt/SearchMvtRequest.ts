@@ -36,6 +36,8 @@ import { ZoomLevel } from './_types/ZoomLevel'
  * @rest_spec_name search_mvt
  * @availability stack since=7.15.0 stability=stable
  * @availability serverless stability=stable visibility=public
+ * @doc_tag search
+ * 
  */
 export interface Request extends RequestBase {
   path_parts: {

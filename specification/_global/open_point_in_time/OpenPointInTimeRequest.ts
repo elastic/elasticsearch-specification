@@ -34,6 +34,7 @@ import { Duration } from '@_types/Time'
  * @availability serverless stability=stable visibility=public
  * @doc_id point-in-time-api
  * @index_privileges read
+ * @doc_tag search
  */
 export interface Request extends RequestBase {
   path_parts: {

@@ -20,6 +20,9 @@ actions:
       # A
         - name: autoscaling
           x-displayName: Autoscaling
+      # B
+        - name: analytics
+          x-displayName: Behavioral analytics
       # C 
         - name: cat
           x-displayName: Compact and aligned text (CAT)
@@ -33,8 +36,8 @@ actions:
           x-displayName: Cluster
         - name: health_report
           x-displayName: Cluster - Health
-        - name: nodes
-          x-displayName: Cluster - Nodes
+        # - name: nodes
+        #   x-displayName: Cluster - Nodes
         - name: ping
           x-displayName: Cluster - Ping
         - name: connector
@@ -53,44 +56,25 @@ actions:
             description: To get started with Connector APIs, check out the tutorial.
         - name: ccr
           x-displayName: Cross-cluster replication
-      # D  
-        - name: bulk
-          description: The bulk API performs multiple indexing or delete operations in a single API call. This reduces overhead and can greatly increase indexing speed.
-          x-displayName: Document - Bulk
-        - name: create
-          x-displayName: Document - Create
-        - name: delete
-          x-displayName: Document - Delete
-        - name: delete_by_query
-          x-displayName: Document - Delete by query
-        - name: exists
-          x-displayName: Document - Exists
-        - name: get
-          x-displayName: Document - Get
-        - name: get_source
-          x-displayName: Document - Get source
-        - name: index
-          x-displayName: Document - Index
+      # D
+        - name: data stream
+          x-displayName: Data stream
+          externalDocs:
+            description: Data stream overview 
+            url: https://www.elastic.co/guide/en/elasticsearch/reference/master/data-streams.html
+        - name: document
+          x-displayName: Document
+          externalDocs:
+            description: Reading and writing documents
+            url: https://www.elastic.co/guide/en/elasticsearch/reference/master/docs-replication.html
         - name: mget
           x-displayName: Document - Multi get
         - name: mtermvectors
           x-displayName: Document - Multi term vectors
-        - name: reindex
-          x-displayName: Document - Reindex
         - name: delete_by_query_rethrottle
           x-displayName: Document - Rethrottle delete by query
-        - name: reindex_rethrottle
-          x-displayName: Document - Rethrottle reindex
         - name: update_by_query_rethrottle
           x-displayName: Document - Rethrottle update by query
-        - name: exists_source
-          x-displayName: Document - Source exists
-        - name: termvectors
-          x-displayName: Document - Term vectors
-        - name: update
-          x-displayName: Document - Update
-        - name: update_by_query
-          x-displayName: Document - Update by query
       # E  
         - name: enrich
           x-displayName: Enrich
@@ -157,10 +141,10 @@ actions:
             url: https://www.elastic.co/guide/en/logstash/current/logstash-centralized-pipeline-management.html
             description: Centralized pipeline management
       # M
-        - name: migration
-          x-displayName: Migration
         - name: ml
           x-displayName: Machine learning
+        - name: migration
+          x-displayName: Migration
         - name: monitoring
           x-displayName: Monitoring
       # N
@@ -182,56 +166,25 @@ actions:
       # R
         - name: rollup
           x-displayName: Rollup
-      # S  
-        - name: put_script
-          x-displayName: Script - Create or update
+      # S
+        - name: script
+          x-displayName: Script
         - name: delete_script
           x-displayName: Script - Delete
-        - name: get_script
-          x-displayName: Script - Get
         - name: get_script_context
           x-displayName: Script - Get contexts
         - name: get_script_languages
           x-displayName: Script - Get languages
-        - name: scripts_painless_execute
-          x-displayName: Script - Run painless
         - name: search
           x-displayName: Search
-        - name: async_search
-          description: The async search API enables you to asynchronously run a search request, monitor its progress, and retrieve partial results as they become available.
-          x-displayName: Search - Async
-        - name: clear_scroll
-          x-displayName: Search - Clear scroll
-        - name: close_point_in_time
-          x-displayName: Search - Close point in time
-        - name: count
-          x-displayName: Search - Count
-        - name: explain
-          x-displayName: Search - Explain
-        - name: field_caps
-          x-displayName: Search - Field capabilities
         - name: knn_search
           x-displayName: Search - kNN
         - name: msearch
           x-displayName: Search - Multi search
-        - name: msearch_template
-          x-displayName: Search - Multi search template
-        - name: open_point_in_time
-          x-displayName:  Search - Open point in time
-        - name: rank_eval
-          x-displayName: Search - Ranking evaluation
-        - name: render_search_template
-          x-displayName: Search - Render search template
         - name: scroll
           x-displayName: Search - Scroll
-        - name: search_shards
-          x-displayName: Search - Shards
-        - name: search_template
-          x-displayName: Search - Search template
         - name: terms_enum
           x-displayName: Search - Terms enum
-        - name: search_mvt
-          x-displayName: Search - Vector tile search
         - name: search_application
           x-displayName: Search application
         - name: searchable_snapshots
