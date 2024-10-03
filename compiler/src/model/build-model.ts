@@ -67,6 +67,7 @@ export function compileEndpoints (): Record<string, model.Endpoint> {
       name: api,
       description: spec.documentation.description,
       docUrl: spec.documentation.url,
+      docTag: spec.docTag,
       // Setting these values by default should be removed
       // when we no longer use rest-api-spec stubs as the
       // source of truth for stability/visibility.
