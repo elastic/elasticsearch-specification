@@ -253,3 +253,14 @@ actions:
           examples:
             indicesDataStreamStatsResponseExample1:
               $ref: "../../specification/indices/data_streams_stats/indicesDataStreamStatsResponseExample1.yaml"
+  - target: "$.paths['/{index}/_open']['post']"
+    description: "Add examples for open index response"
+    update:
+      responses:
+        200:
+          content:
+            application/json:
+              examples:
+                indicesOpenResponseExample1:
+                  $ref: "../../specification/indices/open/indicesOpenResponseExample1.yaml"
+

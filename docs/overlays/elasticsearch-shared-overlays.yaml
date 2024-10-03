@@ -117,7 +117,7 @@ actions:
           examples: 
             previewTransformRequestExample1: 
               $ref: "../../specification/transform/preview_transform/PreviewTransformRequestExample1.json"
-  - target: "$.components['reponses']['transform.preview_transform#200']"
+  - target: "$.components['responses']['transform.preview_transform#200']"
     description: "Add examples for preview transform operation"
     update: 
       content:
@@ -225,3 +225,21 @@ actions:
               examples:
                 indicesDeleteDataLifecycleResponseExample1:
                   $ref: "../../specification/indices/delete_data_lifecycle/IndicesDeleteDataLifecycleResponseExample1.yaml"
+  - target: "$.paths['/_data_stream/{name}/_lifecycle']['get']"
+    description: "Add example for get data stream lifecycle response"
+    update: 
+      responses:
+        200:
+          content:
+            application/json:
+              examples:
+                indicesGetDataLifecycleResponseExample1:
+                  $ref: "../../specification/indices/get_data_lifecycle/IndicesGetDataLifecycleResponseExample1.yaml"
+  - target: "$.components['responses']['indices.get_data_stream#200']"
+    description: "Add example for get data stream response"
+    update: 
+      content:
+        application/json:
+          examples:
+            indicesGetDataStreamResponseExample:
+              $ref: "../../specification/indices/get_data_stream/indicesGetDataStreamResponseExample1.yaml"
