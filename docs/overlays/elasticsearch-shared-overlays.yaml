@@ -81,7 +81,7 @@ actions:
       content:
         application/json:
           examples:
-            asyncSearchSubmitResponseExample1:
+            asyncSearchSubmitRequestExample1:
               $ref: "../../specification/async_search/submit/AsyncSearchSubmitRequestExample1.json"
   - target: "$.components['responses']['async_search.submit#200']"
     description: "Add example for asynch search submit response"
@@ -196,3 +196,11 @@ actions:
               examples:
                 indicesAddBlockResponseExample1:
                   $ref: "../../specification/indices/add_block/IndicesAddBlockResponseExample1.yaml"
+  - target: "$.components['requestBodies']['indices.analyze']"
+    description: "Add example for analyze API request"
+    update: 
+      content:
+        application/json:
+          examples:
+            indicesAnalyzeRequestExample1:
+              $ref: "../../specification/indices/analyze/indicesAnalyzeRequestExample1.yaml"
