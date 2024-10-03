@@ -25,7 +25,7 @@ import { Name } from '@_types/common'
  * @availability stack since=8.8.0 stability=experimental
  * @availability serverless stability=experimental visibility=public
  * @doc_tag analytics
-*/
+ */
 export interface Request extends RequestBase {
   path_parts: {
     /**
