@@ -186,3 +186,13 @@ actions:
           examples:
             graphExploreRequestExample1:
               $ref: "../../specification/graph/explore/graphExploreRequestExample1.json"
+  - target: "$.paths['/{index}/_block/{block}']['put']"
+    description: "Add examples for add index block operation"
+    update: 
+      responses:
+        200:
+          content:
+            application/json:
+              examples:
+                indicesAddBlockResponseExample1:
+                  $ref: "../../specification/indices/add_block/IndicesAddBlockResponseExample1.yaml"
