@@ -235,3 +235,13 @@ actions:
           examples: 
             indicesCloneRequestExample1: 
               $ref: "../../specification/indices/clone/indicesCloneRequestExample1.yaml"
+  - target: "$.paths['/{index}/_close']['post']"
+    description: "Add examples for close index response"
+    update:
+      responses:
+        200:
+          content:
+            application/json:
+              examples:
+                indicesCloseResponseExample1:
+                  $ref: "../../specification/indices/close/indicesCloseResponseExample1.yaml"
