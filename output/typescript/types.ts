@@ -9578,7 +9578,7 @@ export interface ClusterStatsOperatingSystemMemoryInfo {
 
 export interface ClusterStatsRequest extends RequestBase {
   node_id?: NodeIds
-  flat_settings?: boolean
+  include_remotes?: boolean
   timeout?: Duration
 }
 
