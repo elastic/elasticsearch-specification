@@ -1,5 +1,5 @@
 summary: Perform analysis on a text string and returns the resulting tokens.
 method_request: GET /_analyze
-description: ''
-type: request
+# description: ''
+# type: request
 value: "{\n  \"analyzer\" : \"standard\",\n  \"text\" : \"Quick Brown Foxes!\"\n}"

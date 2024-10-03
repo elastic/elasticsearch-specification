@@ -1,7 +1,7 @@
 summary: Creates an index with mapping.
-method_request: PUT /test
+# method_request: PUT /test
 description: You can provide mapping definitions in the create index API requests.
-type: request
+# type: request
 value:
   "{\n  \"settings\": {\n    \"number_of_shards\": 1\n  },\n  \"mappings\": {\n\
   \    \"properties\": {\n      \"field1\": { \"type\": \"text\" }\n    }\n  }\n}"

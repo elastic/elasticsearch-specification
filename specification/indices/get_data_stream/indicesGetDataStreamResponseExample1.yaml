@@ -1,7 +1,7 @@
-summary: A successful response for retrieving information about a data stream.
-description: ''
-type: response
-response_code: 200
+# summary: 
+description: A successful response for retrieving information about a data stream.
+# type: response
+# response_code: 200
 value:
   "{\n  \"data_streams\": [\n    {\n      \"name\": \"my-data-stream\",\n   \
   \   \"timestamp_field\": {\n        \"name\": \"@timestamp\"\n      },\n      \"\
