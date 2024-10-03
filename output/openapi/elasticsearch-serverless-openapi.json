@@ -1423,7 +1423,7 @@
     "/_component_template/{name}": {
       "get": {
         "tags": [
-          "cluster"
+          "indices"
         ],
         "summary": "Get component templates",
         "description": "Retrieves information about component templates.",
@@ -1454,7 +1454,7 @@
       },
       "put": {
         "tags": [
-          "cluster"
+          "indices"
         ],
         "summary": "Create or update a component template",
         "description": "Creates or updates a component template.\nComponent templates are building blocks for constructing index templates that specify index mappings, settings, and aliases.\n\nAn index template can be composed of multiple component templates.\nTo use a component template, specify it in an index template’s `composed_of` list.\nComponent templates are only applied to new data streams and indices as part of a matching index template.\n\nSettings and mappings specified directly in the index template or the create index request override any settings or mappings specified in a component template.\n\nComponent templates are only used during index creation.\nFor data streams, this includes data stream creation and the creation of a stream’s backing indices.\nChanges to component templates do not affect existing indices, including a stream’s backing indices.\n\nYou can use C-style `/* *\\/` block comments in component templates.\nYou can include comments anywhere in the request body except before the opening curly bracket.",
@@ -1482,7 +1482,7 @@
       },
       "post": {
         "tags": [
-          "cluster"
+          "indices"
         ],
         "summary": "Create or update a component template",
         "description": "Creates or updates a component template.\nComponent templates are building blocks for constructing index templates that specify index mappings, settings, and aliases.\n\nAn index template can be composed of multiple component templates.\nTo use a component template, specify it in an index template’s `composed_of` list.\nComponent templates are only applied to new data streams and indices as part of a matching index template.\n\nSettings and mappings specified directly in the index template or the create index request override any settings or mappings specified in a component template.\n\nComponent templates are only used during index creation.\nFor data streams, this includes data stream creation and the creation of a stream’s backing indices.\nChanges to component templates do not affect existing indices, including a stream’s backing indices.\n\nYou can use C-style `/* *\\/` block comments in component templates.\nYou can include comments anywhere in the request body except before the opening curly bracket.",
@@ -1510,7 +1510,7 @@
       },
       "delete": {
         "tags": [
-          "cluster"
+          "indices"
         ],
         "summary": "Delete component templates",
         "description": "Deletes component templates.\nComponent templates are building blocks for constructing index templates that specify index mappings, settings, and aliases.",
@@ -1564,7 +1564,7 @@
       },
       "head": {
         "tags": [
-          "cluster"
+          "indices"
         ],
         "summary": "Check component templates",
         "description": "Returns information about whether a particular component template exists.",
@@ -1616,7 +1616,7 @@
     "/_component_template": {
       "get": {
         "tags": [
-          "cluster"
+          "indices"
         ],
         "summary": "Get component templates",
         "description": "Retrieves information about component templates.",
