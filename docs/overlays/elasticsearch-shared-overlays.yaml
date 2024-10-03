@@ -36,10 +36,6 @@ actions:
           x-displayName: Cluster
         - name: health_report
           x-displayName: Cluster - Health
-        # - name: nodes
-        #   x-displayName: Cluster - Nodes
-        - name: ping
-          x-displayName: Cluster - Ping
         - name: connector
           x-displayName: Connector
           description: >
@@ -169,16 +165,12 @@ actions:
       # S
         - name: script
           x-displayName: Script
-        - name: delete_script
-          x-displayName: Script - Delete
         - name: get_script_context
           x-displayName: Script - Get contexts
         - name: get_script_languages
           x-displayName: Script - Get languages
         - name: search
           x-displayName: Search
-        - name: knn_search
-          x-displayName: Search - kNN
         - name: msearch
           x-displayName: Search - Multi search
         - name: scroll

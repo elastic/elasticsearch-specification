@@ -25,5 +25,6 @@ import { RequestBase } from '@_types/Base'
  * @rest_spec_name ping
  * @availability stack stability=stable
  * @availability serverless stability=stable visibility=public
+ * @doc_tag cluster
  */
 export interface Request extends RequestBase {}
