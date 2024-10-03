@@ -27,6 +27,7 @@ import { Id } from '@_types/common'
  * @rest_spec_name render_search_template
  * @availability stack stability=stable
  * @availability serverless stability=stable visibility=public
+ * @doc_tag search
  */
 export interface Request extends RequestBase {
   path_parts: {

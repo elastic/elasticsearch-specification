@@ -37,6 +37,7 @@ import { Duration } from '@_types/Time'
  * @rest_spec_name delete
  * @availability stack stability=stable
  * @availability serverless stability=stable visibility=public
+ * @doc_tag document
  */
 export interface Request extends RequestBase {
   path_parts: {

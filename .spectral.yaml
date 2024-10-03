@@ -17,7 +17,7 @@ rules:
   operation-operationId: warn
   operation-operationId-unique: warn
   operation-operationId-valid-in-url: warn
-  operation-tag-defined: warn
+  operation-tag-defined: error
   operation-tags: warn
   # Responses
   operation-success-response: warn

@@ -26,6 +26,7 @@ import { Id } from '@_types/common'
  * @availability stack since=7.10.0 stability=stable
  * @availability serverless stability=stable visibility=public
  * @doc_id point-in-time-api
+ * @doc_tag search
  */
 export interface Request extends RequestBase {
   body: {

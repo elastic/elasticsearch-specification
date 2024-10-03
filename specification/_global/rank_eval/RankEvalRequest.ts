@@ -27,6 +27,7 @@ import { RankEvalMetric, RankEvalRequestItem } from './types'
  * @availability stack since=6.2.0 stability=stable
  * @availability serverless stability=stable visibility=public
  * @index_privileges read
+ * @doc_tag search
  */
 export interface Request extends RequestBase {
   path_parts: {
