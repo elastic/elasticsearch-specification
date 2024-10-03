@@ -261,3 +261,13 @@ actions:
               examples:
                 indicesPutDataLifecycleResponseExample1:
                   $ref: "../../specification/indices/put_data_lifecycle/IndicesPutDataLifecycleResponseExample1.yaml"
+  - target: "$.paths['/{index}/_lifecycle/explain']['get']"
+    description: "Add example for explain data stream lifecycle response"
+    update: 
+      responses:
+        200:
+          content:
+            application/json:
+              examples:
+                indicesExplainDataLifecycleResponseExample:
+                  $ref: "../../specification/indices/explain_data_lifecycle/IndicesExplainDataLifecycleResponseExample1.yaml"
