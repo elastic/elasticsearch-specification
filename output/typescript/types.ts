@@ -12673,7 +12673,7 @@ export type InferenceAmazonBedrockProvider = 'amazontitan' | 'anthropic' | 'ai21
 export interface InferenceAmazonBedrockService {
   service: 'amazon_bedrock'
   service_settings: InferenceAmazonBedrockServiceSettings
-  task_settings: InferenceAmazonBedrockTaskSettings
+  task_settings?: InferenceAmazonBedrockTaskSettings
 }
 
 export interface InferenceAmazonBedrockServiceSettings {
@@ -12711,7 +12711,7 @@ export type InferenceDenseVector = float[]
 export interface InferenceElserService {
   service: 'elser'
   service_settings: InferenceElserServiceSettings
-  task_settings: void
+  task_settings?: EmptyObject
 }
 
 export interface InferenceElserServiceSettings {

@@ -18,6 +18,7 @@
  */
 
 import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
+import { EmptyObject } from '@_types/common'
 import { double, integer, long } from '@_types/Numeric'
 import { TaskType } from '../_types/TaskType'
 
@@ -77,9 +78,7 @@ export class ElserServiceSettings {
 export class ElserService {
   service: 'elser'
   service_settings: ElserServiceSettings
-  // temp solution, task_settings returns as an empty object for Elser
-  // needs to be checked with generators, can be changed to UDF.
-  task_settings: void
+  task_settings?: EmptyObject
 }
 
 export enum AmazonBedrockProvider {
@@ -118,7 +117,7 @@ export class AmazonBedrockTaskSettings {
 export class AmazonBedrockService {
   service: 'amazon_bedrock'
   service_settings: AmazonBedrockServiceSettings
-  task_settings: AmazonBedrockTaskSettings
+  task_settings?: AmazonBedrockTaskSettings
 }
 
 /**

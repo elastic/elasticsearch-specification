@@ -45862,13 +45862,12 @@
             "$ref": "#/components/schemas/inference._types:ElserServiceSettings"
           },
           "task_settings": {
-            "type": "object"
+            "$ref": "#/components/schemas/_types:EmptyObject"
           }
         },
         "required": [
           "service",
-          "service_settings",
-          "task_settings"
+          "service_settings"
         ]
       },
       "inference._types:ElserServiceSettings": {
@@ -45910,8 +45909,7 @@
         },
         "required": [
           "service",
-          "service_settings",
-          "task_settings"
+          "service_settings"
         ]
       },
       "inference._types:AmazonBedrockServiceSettings": {

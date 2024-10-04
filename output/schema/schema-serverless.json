@@ -93860,7 +93860,7 @@
         "name": "AmazonBedrockProvider",
         "namespace": "inference._types"
       },
-      "specLocation": "inference/_types/Services.ts#L85-L92"
+      "specLocation": "inference/_types/Services.ts#L84-L91"
     },
     {
       "description": "Text Embedding results containing bytes are represented as Dense\nVectors of bytes.",
@@ -93906,7 +93906,7 @@
         "name": "InferenceService",
         "namespace": "inference._types"
       },
-      "specLocation": "inference/_types/Services.ts#L124-L127",
+      "specLocation": "inference/_types/Services.ts#L123-L126",
       "type": {
         "items": [
           {
@@ -93959,17 +93959,17 @@
         },
         {
           "name": "task_settings",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "void",
-              "namespace": "_builtins"
+              "name": "EmptyObject",
+              "namespace": "_types"
             }
           }
         }
       ],
-      "specLocation": "inference/_types/Services.ts#L77-L83"
+      "specLocation": "inference/_types/Services.ts#L78-L82"
     },
     {
       "kind": "interface",
@@ -94019,7 +94019,7 @@
           }
         }
       ],
-      "specLocation": "inference/_types/Services.ts#L70-L75"
+      "specLocation": "inference/_types/Services.ts#L71-L76"
     },
     {
       "kind": "interface",
@@ -94049,7 +94049,7 @@
         },
         {
           "name": "task_settings",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -94059,7 +94059,7 @@
           }
         }
       ],
-      "specLocation": "inference/_types/Services.ts#L118-L122"
+      "specLocation": "inference/_types/Services.ts#L117-L121"
     },
     {
       "kind": "interface",
@@ -94179,7 +94179,7 @@
           }
         }
       ],
-      "specLocation": "inference/_types/Services.ts#L94-L108"
+      "specLocation": "inference/_types/Services.ts#L93-L107"
     },
     {
       "kind": "interface",
@@ -94200,7 +94200,7 @@
           }
         }
       ],
-      "specLocation": "inference/_types/Services.ts#L66-L68"
+      "specLocation": "inference/_types/Services.ts#L67-L69"
     },
     {
       "kind": "enum",
@@ -94219,7 +94219,7 @@
         "name": "SimilarityMeasure",
         "namespace": "inference._types"
       },
-      "specLocation": "inference/_types/Services.ts#L60-L64"
+      "specLocation": "inference/_types/Services.ts#L61-L65"
     },
     {
       "kind": "interface",
@@ -94273,7 +94273,7 @@
           }
         }
       ],
-      "specLocation": "inference/_types/Services.ts#L110-L116"
+      "specLocation": "inference/_types/Services.ts#L109-L115"
     },
     {
       "kind": "type_alias",
@@ -94281,7 +94281,7 @@
         "name": "ServiceSettings",
         "namespace": "inference._types"
       },
-      "specLocation": "inference/_types/Services.ts#L56-L56",
+      "specLocation": "inference/_types/Services.ts#L57-L57",
       "type": {
         "kind": "user_defined_value"
       }
@@ -94319,7 +94319,7 @@
         "name": "TaskSettings",
         "namespace": "inference._types"
       },
-      "specLocation": "inference/_types/Services.ts#L58-L58",
+      "specLocation": "inference/_types/Services.ts#L59-L59",
       "type": {
         "kind": "user_defined_value"
       }
@@ -120463,7 +120463,7 @@
           }
         }
       ],
-      "specLocation": "inference/_types/Services.ts#L42-L54"
+      "specLocation": "inference/_types/Services.ts#L43-L55"
     },
     {
       "description": "Configuration options when storing the inference endpoint",
@@ -120510,7 +120510,7 @@
           }
         }
       ],
-      "specLocation": "inference/_types/Services.ts#L24-L40"
+      "specLocation": "inference/_types/Services.ts#L25-L41"
     },
     {
       "description": "InferenceResult is an aggregation of mutually exclusive variants",
