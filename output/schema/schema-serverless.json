@@ -24851,7 +24851,7 @@
         "value": {
           "kind": "instance_of",
           "type": {
-            "name": "InferenceEndpoint",
+            "name": "InferenceService",
             "namespace": "inference._types"
           }
         }
@@ -93835,6 +93835,34 @@
       "specLocation": "indices/stats/types.ts#L169-L174"
     },
     {
+      "kind": "enum",
+      "members": [
+        {
+          "name": "amazontitan"
+        },
+        {
+          "name": "anthropic"
+        },
+        {
+          "name": "ai21labs"
+        },
+        {
+          "name": "cohere"
+        },
+        {
+          "name": "meta"
+        },
+        {
+          "name": "mistral"
+        }
+      ],
+      "name": {
+        "name": "AmazonBedrockProvider",
+        "namespace": "inference._types"
+      },
+      "specLocation": "inference/_types/Services.ts#L85-L92"
+    },
+    {
       "description": "Text Embedding results containing bytes are represented as Dense\nVectors of bytes.",
       "kind": "type_alias",
       "name": {
@@ -93875,10 +93903,385 @@
     {
       "kind": "type_alias",
       "name": {
+        "name": "InferenceService",
+        "namespace": "inference._types"
+      },
+      "specLocation": "inference/_types/Services.ts#L124-L127",
+      "type": {
+        "items": [
+          {
+            "kind": "instance_of",
+            "type": {
+              "name": "ElserService",
+              "namespace": "inference._types"
+            }
+          },
+          {
+            "kind": "instance_of",
+            "type": {
+              "name": "AmazonBedrockService",
+              "namespace": "inference._types"
+            }
+          }
+        ],
+        "kind": "union_of"
+      },
+      "variants": {
+        "kind": "internal_tag",
+        "tag": "service"
+      }
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "ElserService",
+        "namespace": "inference._types"
+      },
+      "properties": [
+        {
+          "name": "service",
+          "required": true,
+          "type": {
+            "kind": "literal_value",
+            "value": "elser"
+          }
+        },
+        {
+          "name": "service_settings",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "ElserServiceSettings",
+              "namespace": "inference._types"
+            }
+          }
+        },
+        {
+          "name": "task_settings",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "void",
+              "namespace": "_builtins"
+            }
+          }
+        }
+      ],
+      "specLocation": "inference/_types/Services.ts#L77-L83"
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "ElserServiceSettings",
+        "namespace": "inference._types"
+      },
+      "properties": [
+        {
+          "name": "num_allocations",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "num_threads",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "model_id",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "_builtins"
+            }
+          }
+        },
+        {
+          "name": "adaptive_allocations",
+          "required": false,
+          "type": {
+            "kind": "user_defined_value"
+          }
+        }
+      ],
+      "specLocation": "inference/_types/Services.ts#L70-L75"
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "AmazonBedrockService",
+        "namespace": "inference._types"
+      },
+      "properties": [
+        {
+          "name": "service",
+          "required": true,
+          "type": {
+            "kind": "literal_value",
+            "value": "amazon_bedrock"
+          }
+        },
+        {
+          "name": "service_settings",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "AmazonBedrockServiceSettings",
+              "namespace": "inference._types"
+            }
+          }
+        },
+        {
+          "name": "task_settings",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "AmazonBedrockTaskSettings",
+              "namespace": "inference._types"
+            }
+          }
+        }
+      ],
+      "specLocation": "inference/_types/Services.ts#L118-L122"
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "AmazonBedrockServiceSettings",
+        "namespace": "inference._types"
+      },
+      "properties": [
+        {
+          "name": "access_key",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "_builtins"
+            }
+          }
+        },
+        {
+          "name": "secret_key",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "_builtins"
+            }
+          }
+        },
+        {
+          "name": "region",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "_builtins"
+            }
+          }
+        },
+        {
+          "name": "model",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "_builtins"
+            }
+          }
+        },
+        {
+          "name": "provider",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "AmazonBedrockProvider",
+              "namespace": "inference._types"
+            }
+          }
+        },
+        {
+          "name": "rate_limit",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "RateLimitSettings",
+              "namespace": "inference._types"
+            }
+          }
+        },
+        {
+          "name": "dimensions",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "dimensions_set_by_user",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "_builtins"
+            }
+          }
+        },
+        {
+          "name": "max_input_tokens",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "similarity",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "SimilarityMeasure",
+              "namespace": "inference._types"
+            }
+          }
+        }
+      ],
+      "specLocation": "inference/_types/Services.ts#L94-L108"
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "RateLimitSettings",
+        "namespace": "inference._types"
+      },
+      "properties": [
+        {
+          "name": "requests_per_minute",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "long",
+              "namespace": "_types"
+            }
+          }
+        }
+      ],
+      "specLocation": "inference/_types/Services.ts#L66-L68"
+    },
+    {
+      "kind": "enum",
+      "members": [
+        {
+          "name": "cosine"
+        },
+        {
+          "name": "dot_product"
+        },
+        {
+          "name": "l2_norm"
+        }
+      ],
+      "name": {
+        "name": "SimilarityMeasure",
+        "namespace": "inference._types"
+      },
+      "specLocation": "inference/_types/Services.ts#L60-L64"
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "AmazonBedrockTaskSettings",
+        "namespace": "inference._types"
+      },
+      "properties": [
+        {
+          "name": "temperature",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "double",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "top_p",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "double",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "top_k",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "double",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "max_new_tokens",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "_types"
+            }
+          }
+        }
+      ],
+      "specLocation": "inference/_types/Services.ts#L110-L116"
+    },
+    {
+      "kind": "type_alias",
+      "name": {
         "name": "ServiceSettings",
         "namespace": "inference._types"
       },
-      "specLocation": "inference/_types/Services.ts#L55-L55",
+      "specLocation": "inference/_types/Services.ts#L56-L56",
       "type": {
         "kind": "user_defined_value"
       }
@@ -93916,7 +94319,7 @@
         "name": "TaskSettings",
         "namespace": "inference._types"
       },
-      "specLocation": "inference/_types/Services.ts#L57-L57",
+      "specLocation": "inference/_types/Services.ts#L58-L58",
       "type": {
         "kind": "user_defined_value"
       }
@@ -93935,13 +94338,16 @@
         },
         {
           "name": "completion"
+        },
+        {
+          "name": "any"
         }
       ],
       "name": {
         "name": "TaskType",
         "namespace": "inference._types"
       },
-      "specLocation": "inference/_types/TaskType.ts#L20-L28"
+      "specLocation": "inference/_types/TaskType.ts#L20-L29"
     },
     {
       "kind": "enum",
@@ -120057,7 +120463,7 @@
           }
         }
       ],
-      "specLocation": "inference/_types/Services.ts#L41-L53"
+      "specLocation": "inference/_types/Services.ts#L42-L54"
     },
     {
       "description": "Configuration options when storing the inference endpoint",
@@ -120104,7 +120510,7 @@
           }
         }
       ],
-      "specLocation": "inference/_types/Services.ts#L23-L39"
+      "specLocation": "inference/_types/Services.ts#L24-L40"
     },
     {
       "description": "InferenceResult is an aggregation of mutually exclusive variants",

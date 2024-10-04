@@ -18,8 +18,8 @@
  */
 
 import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
+import { double, integer, long } from '@_types/Numeric'
 import { TaskType } from '../_types/TaskType'
-import {double, integer, long} from "@_types/Numeric";
 
 /**
  * Configuration options when storing the inference endpoint
@@ -57,11 +57,10 @@ export type ServiceSettings = UserDefinedValue
 
 export type TaskSettings = UserDefinedValue
 
-
 export enum SimilarityMeasure {
   cosine,
   dot_product,
-  l2_norm,
+  l2_norm
 }
 
 export class RateLimitSettings {
@@ -76,7 +75,7 @@ export class ElserServiceSettings {
 }
 
 export class ElserService {
-  service= 'elser'
+  service: 'elser'
   service_settings: ElserServiceSettings
   // temp solution, task_settings returns as an empty object for Elser
   // needs to be checked with generators, can be changed to UDF.
@@ -125,6 +124,4 @@ export class AmazonBedrockService {
 /**
  * @variants internal tag='service'
  */
-export type InferenceService =
-    | ElserService
-    | AmazonBedrockService
+export type InferenceService = ElserService | AmazonBedrockService

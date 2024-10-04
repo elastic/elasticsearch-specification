@@ -868,6 +868,12 @@
       ],
       "response": []
     },
+    "inference.put": {
+      "request": [
+        "interface definition inference._types:ElserService / Property 'task_settings' / instance_of - No type definition for '_builtins:void'"
+      ],
+      "response": []
+    },
     "ingest.delete_geoip_database": {
       "request": [
         "Request: query parameter 'master_timeout' does not exist in the json spec",

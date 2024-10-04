@@ -45641,7 +45641,8 @@
           "sparse_embedding",
           "text_embedding",
           "rerank",
-          "completion"
+          "completion",
+          "any"
         ]
       },
       "inference._types:DeleteInferenceEndpointResult": {
@@ -45834,6 +45835,173 @@
           "index",
           "score"
         ]
+      },
+      "inference._types:InferenceService": {
+        "discriminator": {
+          "propertyName": "service"
+        },
+        "oneOf": [
+          {
+            "$ref": "#/components/schemas/inference._types:ElserService"
+          },
+          {
+            "$ref": "#/components/schemas/inference._types:AmazonBedrockService"
+          }
+        ]
+      },
+      "inference._types:ElserService": {
+        "type": "object",
+        "properties": {
+          "service": {
+            "type": "string",
+            "enum": [
+              "elser"
+            ]
+          },
+          "service_settings": {
+            "$ref": "#/components/schemas/inference._types:ElserServiceSettings"
+          },
+          "task_settings": {
+            "type": "object"
+          }
+        },
+        "required": [
+          "service",
+          "service_settings",
+          "task_settings"
+        ]
+      },
+      "inference._types:ElserServiceSettings": {
+        "type": "object",
+        "properties": {
+          "num_allocations": {
+            "type": "number"
+          },
+          "num_threads": {
+            "type": "number"
+          },
+          "model_id": {
+            "type": "string"
+          },
+          "adaptive_allocations": {
+            "type": "object"
+          }
+        },
+        "required": [
+          "num_allocations",
+          "num_threads"
+        ]
+      },
+      "inference._types:AmazonBedrockService": {
+        "type": "object",
+        "properties": {
+          "service": {
+            "type": "string",
+            "enum": [
+              "amazon_bedrock"
+            ]
+          },
+          "service_settings": {
+            "$ref": "#/components/schemas/inference._types:AmazonBedrockServiceSettings"
+          },
+          "task_settings": {
+            "$ref": "#/components/schemas/inference._types:AmazonBedrockTaskSettings"
+          }
+        },
+        "required": [
+          "service",
+          "service_settings",
+          "task_settings"
+        ]
+      },
+      "inference._types:AmazonBedrockServiceSettings": {
+        "type": "object",
+        "properties": {
+          "access_key": {
+            "type": "string"
+          },
+          "secret_key": {
+            "type": "string"
+          },
+          "region": {
+            "type": "string"
+          },
+          "model": {
+            "type": "string"
+          },
+          "provider": {
+            "$ref": "#/components/schemas/inference._types:AmazonBedrockProvider"
+          },
+          "rate_limit": {
+            "$ref": "#/components/schemas/inference._types:RateLimitSettings"
+          },
+          "dimensions": {
+            "type": "number"
+          },
+          "dimensions_set_by_user": {
+            "type": "boolean"
+          },
+          "max_input_tokens": {
+            "type": "number"
+          },
+          "similarity": {
+            "$ref": "#/components/schemas/inference._types:SimilarityMeasure"
+          }
+        },
+        "required": [
+          "access_key",
+          "secret_key",
+          "region",
+          "model",
+          "provider"
+        ]
+      },
+      "inference._types:AmazonBedrockProvider": {
+        "type": "string",
+        "enum": [
+          "amazontitan",
+          "anthropic",
+          "ai21labs",
+          "cohere",
+          "meta",
+          "mistral"
+        ]
+      },
+      "inference._types:RateLimitSettings": {
+        "type": "object",
+        "properties": {
+          "requests_per_minute": {
+            "type": "number"
+          }
+        },
+        "required": [
+          "requests_per_minute"
+        ]
+      },
+      "inference._types:SimilarityMeasure": {
+        "type": "string",
+        "enum": [
+          "cosine",
+          "dot_product",
+          "l2_norm"
+        ]
+      },
+      "inference._types:AmazonBedrockTaskSettings": {
+        "type": "object",
+        "properties": {
+          "temperature": {
+            "type": "number"
+          },
+          "top_p": {
+            "type": "number"
+          },
+          "top_k": {
+            "type": "number"
+          },
+          "max_new_tokens": {
+            "type": "number"
+          }
+        }
       },
       "_types:ElasticsearchVersionInfo": {
         "type": "object",
@@ -62365,7 +62533,7 @@
         "content": {
           "application/json": {
             "schema": {
-              "$ref": "#/components/schemas/inference._types:InferenceEndpoint"
+              "$ref": "#/components/schemas/inference._types:InferenceService"
             }
           }
         },

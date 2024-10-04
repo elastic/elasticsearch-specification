@@ -25,5 +25,5 @@ export enum TaskType {
   text_embedding,
   rerank,
   completion,
-  any,
+  any
 }

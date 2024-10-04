@@ -12668,6 +12668,34 @@ export interface IndicesValidateQueryResponse {
   error?: string
 }
 
+export type InferenceAmazonBedrockProvider = 'amazontitan' | 'anthropic' | 'ai21labs' | 'cohere' | 'meta' | 'mistral'
+
+export interface InferenceAmazonBedrockService {
+  service: 'amazon_bedrock'
+  service_settings: InferenceAmazonBedrockServiceSettings
+  task_settings: InferenceAmazonBedrockTaskSettings
+}
+
+export interface InferenceAmazonBedrockServiceSettings {
+  access_key: string
+  secret_key: string
+  region: string
+  model: string
+  provider: InferenceAmazonBedrockProvider
+  rate_limit?: InferenceRateLimitSettings
+  dimensions?: integer
+  dimensions_set_by_user?: boolean
+  max_input_tokens?: integer
+  similarity?: InferenceSimilarityMeasure
+}
+
+export interface InferenceAmazonBedrockTaskSettings {
+  temperature?: double
+  top_p?: double
+  top_k?: double
+  max_new_tokens?: integer
+}
+
 export interface InferenceCompletionResult {
   result: string
 }
@@ -12679,6 +12707,19 @@ export interface InferenceDeleteInferenceEndpointResult extends AcknowledgedResp
 export type InferenceDenseByteVector = byte[]
 
 export type InferenceDenseVector = float[]
+
+export interface InferenceElserService {
+  service: 'elser'
+  service_settings: InferenceElserServiceSettings
+  task_settings: void
+}
+
+export interface InferenceElserServiceSettings {
+  num_allocations: integer
+  num_threads: integer
+  model_id?: string
+  adaptive_allocations?: any
+}
 
 export interface InferenceInferenceEndpoint {
   service: string
@@ -12699,13 +12740,21 @@ export interface InferenceInferenceResult {
   rerank?: InferenceRankedDocument[]
 }
 
+export type InferenceInferenceService = InferenceElserService | InferenceAmazonBedrockService
+
 export interface InferenceRankedDocument {
   index: integer
   score: float
   text?: string
 }
 
+export interface InferenceRateLimitSettings {
+  requests_per_minute: long
+}
+
 export type InferenceServiceSettings = any
+
+export type InferenceSimilarityMeasure = 'cosine' | 'dot_product' | 'l2_norm'
 
 export interface InferenceSparseEmbeddingResult {
   embedding: InferenceSparseVector
@@ -12715,7 +12764,7 @@ export type InferenceSparseVector = Record<string, float>
 
 export type InferenceTaskSettings = any
 
-export type InferenceTaskType = 'sparse_embedding' | 'text_embedding' | 'rerank' | 'completion'
+export type InferenceTaskType = 'sparse_embedding' | 'text_embedding' | 'rerank' | 'completion' | 'any'
 
 export interface InferenceTextEmbeddingByteResult {
   embedding: InferenceDenseByteVector
@@ -12759,7 +12808,7 @@ export type InferenceInferenceResponse = InferenceInferenceResult
 export interface InferencePutRequest extends RequestBase {
   task_type?: InferenceTaskType
   inference_id: Id
-  body?: InferenceInferenceEndpoint
+  body?: InferenceInferenceService
 }
 
 export type InferencePutResponse = InferenceInferenceEndpointInfo
