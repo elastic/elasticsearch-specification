@@ -29,6 +29,7 @@ import { Duration } from '@_types/Time'
  * @rest_spec_name ml.infer_trained_model
  * @availability stack since=8.3.0 stability=stable
  * @availability serverless stability=stable visibility=public
+ * @doc_tag ml trained model
  */
 export interface Request extends RequestBase {
   path_parts: {

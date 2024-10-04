@@ -39,6 +39,7 @@ import { DateTime, Duration } from '@_types/Time'
  * @availability stack since=5.5.0 stability=stable
  * @availability serverless stability=stable visibility=public
  * @cluster_privileges manage_ml
+ * @doc_tag ml anomaly
  */
 export interface Request extends RequestBase {
   path_parts: {

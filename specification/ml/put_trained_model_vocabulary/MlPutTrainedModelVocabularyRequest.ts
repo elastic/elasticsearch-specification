@@ -29,6 +29,7 @@ import { double } from '@_types/Numeric'
  * @availability stack since=8.0.0 stability=stable
  * @availability serverless stability=stable visibility=public
  * @cluster_privileges manage_ml
+ * @doc_tag ml trained model
  */
 export interface Request extends RequestBase {
   path_parts: {

@@ -139,6 +139,24 @@ actions:
       # M
         - name: ml
           x-displayName: Machine learning
+        - name: ml anomaly
+          x-displayName: Machine learning anomaly detection
+          # description:
+          externalDocs:
+            url: https://www.elastic.co/guide/en/machine-learning/master/ml-ad-finding-anomalies.html
+            description: Finding anomalies
+        - name: ml data frame
+          x-displayName: Machine learning data frame analytics
+          # description:
+          externalDocs:
+            url: https://www.elastic.co/guide/en/machine-learning/master/ml-dfa-overview.html
+            description: Data frame analytics overview
+        - name: ml trained model
+          x-displayName: Machine learning trained model
+          description:
+          externalDocs:
+            url: https://www.elastic.co/guide/en/machine-learning/master/ml-nlp-overview.html
+            description: Natural language processing overview
         - name: migration
           x-displayName: Migration
         - name: monitoring

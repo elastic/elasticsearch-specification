@@ -28,6 +28,7 @@ import { DataframePreviewConfig } from './types'
  * @availability stack since=7.13.0 stability=stable
  * @availability serverless stability=stable visibility=public
  * @cluster_privileges monitor_ml
+ * @doc_tag ml data frame
  */
 export interface Request extends RequestBase {
   path_parts: {

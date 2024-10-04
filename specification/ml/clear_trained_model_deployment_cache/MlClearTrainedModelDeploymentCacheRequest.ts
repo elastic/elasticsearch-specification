@@ -30,6 +30,7 @@ import { Id } from '@_types/common'
  * @availability stack since=8.5.0 stability=stable
  * @availability serverless stability=stable visibility=private
  * @cluster_privileges manage_ml
+ * @doc_tag ml trained model
  */
 export interface Request extends RequestBase {
   path_parts: {
