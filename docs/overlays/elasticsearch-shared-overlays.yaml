@@ -4,6 +4,14 @@ info:
   title: Overlays for changes that apply to both Elasticsearch and Elasticsearch Serverless OpenAPI documents
   version: 0.0.1
 actions:
+# Add x-model to hide children of schema objects that are defined elsewhere
+  - target: "$.components['schemas']['_types.query_dsl:QueryContainer']"
+    description: Add x-model and updated externalDocs for the QueryContainer object
+    update:
+      x-model: true
+      externalDocs:
+        url: https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl.html
+        description: Query domain specific language (DSL) reference
 # Abbreviate and annotate items that are not shown in Bump.sh due to depth limits
   - target: "$.components['schemas']['ml._types:Datafeed'].properties.query"
     description: Remove query object from anomaly detection datafeed
@@ -12,7 +20,7 @@ actions:
     description: Re-add a simplified query object in anomaly detection datafeed
     update:
       query:
-        x-abbreviated: true
+        x-model: true
         type: object
         description: >
           The Elasticsearch query domain-specific language (DSL).
@@ -29,7 +37,7 @@ actions:
     description: Re-add a simplified tokenizer object in anomaly detection analysis config
     update:
       tokenizer:
-        x-abbreviated: true
+        x-model: true
         oneOf:
           - type: object
           - type: string
@@ -50,7 +58,7 @@ actions:
     description: Re-add a simplified query object in data frame analytics source
     update:
       query:
-        x-abbreviated: true
+        x-model: true
         type: object
         description: >
           The Elasticsearch query domain-specific language (DSL).
@@ -67,7 +75,7 @@ actions:
     description: Re-add a simplified query object in transform source
     update:
       query:
-        x-abbreviated: true
+        x-model: true
         type: object
         description: >
           A query clause that retrieves a subset of data from the source index.
