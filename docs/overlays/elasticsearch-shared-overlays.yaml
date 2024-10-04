@@ -153,7 +153,7 @@ actions:
             description: Data frame analytics overview
         - name: ml trained model
           x-displayName: Machine learning trained model
-          description:
+          # description:
           externalDocs:
             url: https://www.elastic.co/guide/en/machine-learning/master/ml-nlp-overview.html
             description: Natural language processing overview
