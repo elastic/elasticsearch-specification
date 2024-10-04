@@ -28,6 +28,7 @@ import { Duration } from '@_types/Time'
  * @availability stack since=7.8.0 stability=stable
  * @availability serverless stability=stable visibility=public
  * @doc_id indices-component-template
+ * @doc_tag indices
  */
 export interface Request extends RequestBase {
   path_parts: {

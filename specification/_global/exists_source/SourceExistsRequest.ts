@@ -34,6 +34,7 @@ import {
  * @rest_spec_name exists_source
  * @availability stack since=5.4.0 stability=stable
  * @availability serverless stability=stable visibility=public
+ * @doc_tag document
  */
 export interface Request extends RequestBase {
   path_parts: {

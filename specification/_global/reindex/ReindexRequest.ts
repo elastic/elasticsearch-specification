@@ -30,6 +30,7 @@ import { Destination, Source } from './types'
  * @rest_spec_name reindex
  * @availability stack since=2.3.0 stability=stable
  * @availability serverless stability=stable visibility=public
+ * @doc_tag document
  */
 export interface Request extends RequestBase {
   query_parameters: {

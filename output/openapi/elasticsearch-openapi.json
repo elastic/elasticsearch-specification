@@ -12,7 +12,7 @@
     "/_async_search/{id}": {
       "get": {
         "tags": [
-          "async_search"
+          "search"
         ],
         "summary": "Retrieves the results of a previously submitted async search request given its identifier",
         "description": "If the Elasticsearch security features are enabled, access to the results of a specific async search is restricted to the user or API key that submitted it.",
@@ -76,7 +76,7 @@
       },
       "delete": {
         "tags": [
-          "async_search"
+          "search"
         ],
         "summary": "Deletes an async search by identifier",
         "description": "If the search is still running, the search request will be cancelled.\nOtherwise, the saved search results are deleted.\nIf the Elasticsearch security features are enabled, the deletion of a specific async search is restricted to: the authenticated user that submitted the original search request; users that have the `cancel_task` cluster privilege.",
@@ -112,7 +112,7 @@
     "/_async_search/status/{id}": {
       "get": {
         "tags": [
-          "async_search"
+          "search"
         ],
         "summary": "Get async search status\n",
         "description": "Retrieves the status of a previously submitted async search request given its identifier, without retrieving search results.\nIf the Elasticsearch security features are enabled, use of this API is restricted to the `monitoring_user` role.",
@@ -148,7 +148,7 @@
     "/_async_search": {
       "post": {
         "tags": [
-          "async_search"
+          "search"
         ],
         "summary": "Runs a search request asynchronously",
         "description": "When the primary sort of the results is an indexed field, shards get sorted based on minimum and maximum value that they hold for that field, hence partial results become available following the sort criteria that was requested.\nWarning: Async search does not support scroll nor search requests that only include the suggest section.\nBy default, Elasticsearch doesn’t allow you to store an async search response larger than 10Mb and an attempt to do this results in an error.\nThe maximum allowed size for a stored async search response can be set by changing the `search.max_async_search_response_size` cluster level setting.",
@@ -307,7 +307,7 @@
     "/{index}/_async_search": {
       "post": {
         "tags": [
-          "async_search"
+          "search"
         ],
         "summary": "Runs a search request asynchronously",
         "description": "When the primary sort of the results is an indexed field, shards get sorted based on minimum and maximum value that they hold for that field, hence partial results become available following the sort criteria that was requested.\nWarning: Async search does not support scroll nor search requests that only include the suggest section.\nBy default, Elasticsearch doesn’t allow you to store an async search response larger than 10Mb and an attempt to do this results in an error.\nThe maximum allowed size for a stored async search response can be set by changing the `search.max_async_search_response_size` cluster level setting.",
@@ -617,7 +617,7 @@
     "/_bulk": {
       "put": {
         "tags": [
-          "bulk"
+          "document"
         ],
         "summary": "Bulk index or delete documents",
         "description": "Performs multiple indexing or delete operations in a single API call.\nThis reduces overhead and can greatly increase indexing speed.",
@@ -662,7 +662,7 @@
       },
       "post": {
         "tags": [
-          "bulk"
+          "document"
         ],
         "summary": "Bulk index or delete documents",
         "description": "Performs multiple indexing or delete operations in a single API call.\nThis reduces overhead and can greatly increase indexing speed.",
@@ -709,7 +709,7 @@
     "/{index}/_bulk": {
       "put": {
         "tags": [
-          "bulk"
+          "document"
         ],
         "summary": "Bulk index or delete documents",
         "description": "Performs multiple indexing or delete operations in a single API call.\nThis reduces overhead and can greatly increase indexing speed.",
@@ -757,7 +757,7 @@
       },
       "post": {
         "tags": [
-          "bulk"
+          "document"
         ],
         "summary": "Bulk index or delete documents",
         "description": "Performs multiple indexing or delete operations in a single API call.\nThis reduces overhead and can greatly increase indexing speed.",
@@ -2789,7 +2789,7 @@
       },
       "delete": {
         "tags": [
-          "clear_scroll"
+          "search"
         ],
         "summary": "Clears the search context and results for a scrolling search",
         "operationId": "clear-scroll",
@@ -2864,7 +2864,7 @@
       },
       "delete": {
         "tags": [
-          "clear_scroll"
+          "search"
         ],
         "summary": "Clears the search context and results for a scrolling search",
         "operationId": "clear-scroll-1",
@@ -2886,7 +2886,7 @@
     "/_pit": {
       "delete": {
         "tags": [
-          "close_point_in_time"
+          "search"
         ],
         "summary": "Closes a point-in-time",
         "operationId": "close-point-in-time",
@@ -2987,7 +2987,7 @@
     "/_component_template/{name}": {
       "get": {
         "tags": [
-          "cluster"
+          "indices"
         ],
         "summary": "Get component templates",
         "description": "Retrieves information about component templates.",
@@ -3018,7 +3018,7 @@
       },
       "put": {
         "tags": [
-          "cluster"
+          "indices"
         ],
         "summary": "Create or update a component template",
         "description": "Creates or updates a component template.\nComponent templates are building blocks for constructing index templates that specify index mappings, settings, and aliases.\n\nAn index template can be composed of multiple component templates.\nTo use a component template, specify it in an index template’s `composed_of` list.\nComponent templates are only applied to new data streams and indices as part of a matching index template.\n\nSettings and mappings specified directly in the index template or the create index request override any settings or mappings specified in a component template.\n\nComponent templates are only used during index creation.\nFor data streams, this includes data stream creation and the creation of a stream’s backing indices.\nChanges to component templates do not affect existing indices, including a stream’s backing indices.\n\nYou can use C-style `/* *\\/` block comments in component templates.\nYou can include comments anywhere in the request body except before the opening curly bracket.",
@@ -3046,7 +3046,7 @@
       },
       "post": {
         "tags": [
-          "cluster"
+          "indices"
         ],
         "summary": "Create or update a component template",
         "description": "Creates or updates a component template.\nComponent templates are building blocks for constructing index templates that specify index mappings, settings, and aliases.\n\nAn index template can be composed of multiple component templates.\nTo use a component template, specify it in an index template’s `composed_of` list.\nComponent templates are only applied to new data streams and indices as part of a matching index template.\n\nSettings and mappings specified directly in the index template or the create index request override any settings or mappings specified in a component template.\n\nComponent templates are only used during index creation.\nFor data streams, this includes data stream creation and the creation of a stream’s backing indices.\nChanges to component templates do not affect existing indices, including a stream’s backing indices.\n\nYou can use C-style `/* *\\/` block comments in component templates.\nYou can include comments anywhere in the request body except before the opening curly bracket.",
@@ -3074,7 +3074,7 @@
       },
       "delete": {
         "tags": [
-          "cluster"
+          "indices"
         ],
         "summary": "Delete component templates",
         "description": "Deletes component templates.\nComponent templates are building blocks for constructing index templates that specify index mappings, settings, and aliases.",
@@ -3128,7 +3128,7 @@
       },
       "head": {
         "tags": [
-          "cluster"
+          "indices"
         ],
         "summary": "Check component templates",
         "description": "Returns information about whether a particular component template exists.",
@@ -3258,7 +3258,7 @@
     "/_component_template": {
       "get": {
         "tags": [
-          "cluster"
+          "indices"
         ],
         "summary": "Get component templates",
         "description": "Retrieves information about component templates.",
@@ -5519,7 +5519,7 @@
     "/_count": {
       "get": {
         "tags": [
-          "count"
+          "search"
         ],
         "summary": "Returns number of documents matching a query",
         "operationId": "count-1",
@@ -5578,7 +5578,7 @@
       },
       "post": {
         "tags": [
-          "count"
+          "search"
         ],
         "summary": "Returns number of documents matching a query",
         "operationId": "count",
@@ -5639,7 +5639,7 @@
     "/{index}/_count": {
       "get": {
         "tags": [
-          "count"
+          "search"
         ],
         "summary": "Returns number of documents matching a query",
         "operationId": "count-3",
@@ -5701,7 +5701,7 @@
       },
       "post": {
         "tags": [
-          "count"
+          "search"
         ],
         "summary": "Returns number of documents matching a query",
         "operationId": "count-2",
@@ -5765,7 +5765,7 @@
     "/{index}/_create/{id}": {
       "put": {
         "tags": [
-          "create"
+          "document"
         ],
         "summary": "Index a document",
         "description": "Adds a JSON document to the specified data stream or index and makes it searchable.\nIf the target is an index and the document already exists, the request updates the document and increments its version.",
@@ -5811,7 +5811,7 @@
       },
       "post": {
         "tags": [
-          "create"
+          "document"
         ],
         "summary": "Index a document",
         "description": "Adds a JSON document to the specified data stream or index and makes it searchable.\nIf the target is an index and the document already exists, the request updates the document and increments its version.",
@@ -6022,7 +6022,7 @@
     "/{index}/_doc/{id}": {
       "get": {
         "tags": [
-          "get"
+          "document"
         ],
         "summary": "Get a document by its ID",
         "description": "Retrieves the document with the specified ID from an index.",
@@ -6176,7 +6176,7 @@
       },
       "put": {
         "tags": [
-          "index"
+          "document"
         ],
         "summary": "Index a document",
         "description": "Adds a JSON document to the specified data stream or index and makes it searchable.\nIf the target is an index and the document already exists, the request updates the document and increments its version.",
@@ -6233,7 +6233,7 @@
       },
       "post": {
         "tags": [
-          "index"
+          "document"
         ],
         "summary": "Index a document",
         "description": "Adds a JSON document to the specified data stream or index and makes it searchable.\nIf the target is an index and the document already exists, the request updates the document and increments its version.",
@@ -6290,7 +6290,7 @@
       },
       "delete": {
         "tags": [
-          "delete"
+          "document"
         ],
         "summary": "Delete a document",
         "description": "Removes a JSON document from the specified index.",
@@ -6414,7 +6414,7 @@
       },
       "head": {
         "tags": [
-          "exists"
+          "document"
         ],
         "summary": "Check a document",
         "description": "Checks if a specified document exists.",
@@ -6556,7 +6556,7 @@
     "/{index}/_delete_by_query": {
       "post": {
         "tags": [
-          "delete_by_query"
+          "document"
         ],
         "summary": "Delete documents",
         "description": "Deletes documents that match the specified query.",
@@ -7008,7 +7008,7 @@
     "/_scripts/{id}": {
       "get": {
         "tags": [
-          "get_script"
+          "script"
         ],
         "summary": "Get a script or search template",
         "description": "Retrieves a stored script or search template.",
@@ -7066,7 +7066,7 @@
       },
       "put": {
         "tags": [
-          "put_script"
+          "script"
         ],
         "summary": "Create or update a script or search template",
         "description": "Creates or updates a stored script or search template.",
@@ -7093,7 +7093,7 @@
       },
       "post": {
         "tags": [
-          "put_script"
+          "script"
         ],
         "summary": "Create or update a script or search template",
         "description": "Creates or updates a stored script or search template.",
@@ -7120,7 +7120,7 @@
       },
       "delete": {
         "tags": [
-          "delete_script"
+          "script"
         ],
         "summary": "Delete a script or search template",
         "description": "Deletes a stored script or search template.",
@@ -7744,7 +7744,7 @@
     "/{index}/_source/{id}": {
       "get": {
         "tags": [
-          "get_source"
+          "document"
         ],
         "summary": "Get a document's source",
         "description": "Returns the source of a document.",
@@ -7887,7 +7887,7 @@
       },
       "head": {
         "tags": [
-          "exists_source"
+          "document"
         ],
         "summary": "Check for a document source",
         "description": "Checks if a document's `_source` is stored.",
@@ -8020,7 +8020,7 @@
     "/{index}/_explain/{id}": {
       "get": {
         "tags": [
-          "explain"
+          "search"
         ],
         "summary": "Explain a document match result",
         "description": "Returns information about why a specific document matches, or doesn’t match, a query.",
@@ -8080,7 +8080,7 @@
       },
       "post": {
         "tags": [
-          "explain"
+          "search"
         ],
         "summary": "Explain a document match result",
         "description": "Returns information about why a specific document matches, or doesn’t match, a query.",
@@ -8209,7 +8209,7 @@
     "/_field_caps": {
       "get": {
         "tags": [
-          "field_caps"
+          "search"
         ],
         "summary": "The field capabilities API returns the information about the capabilities of fields among multiple indices",
         "description": "The field capabilities API returns runtime fields like any other field. For example, a runtime field with a type\nof keyword is returned as any other field that belongs to the `keyword` family.",
@@ -8252,7 +8252,7 @@
       },
       "post": {
         "tags": [
-          "field_caps"
+          "search"
         ],
         "summary": "The field capabilities API returns the information about the capabilities of fields among multiple indices",
         "description": "The field capabilities API returns runtime fields like any other field. For example, a runtime field with a type\nof keyword is returned as any other field that belongs to the `keyword` family.",
@@ -8297,7 +8297,7 @@
     "/{index}/_field_caps": {
       "get": {
         "tags": [
-          "field_caps"
+          "search"
         ],
         "summary": "The field capabilities API returns the information about the capabilities of fields among multiple indices",
         "description": "The field capabilities API returns runtime fields like any other field. For example, a runtime field with a type\nof keyword is returned as any other field that belongs to the `keyword` family.",
@@ -8343,7 +8343,7 @@
       },
       "post": {
         "tags": [
-          "field_caps"
+          "search"
         ],
         "summary": "The field capabilities API returns the information about the capabilities of fields among multiple indices",
         "description": "The field capabilities API returns runtime fields like any other field. For example, a runtime field with a type\nof keyword is returned as any other field that belongs to the `keyword` family.",
@@ -9839,7 +9839,7 @@
     "/{index}/_doc": {
       "post": {
         "tags": [
-          "index"
+          "document"
         ],
         "summary": "Index a document",
         "description": "Adds a JSON document to the specified data stream or index and makes it searchable.\nIf the target is an index and the document already exists, the request updates the document and increments its version.",
@@ -10738,7 +10738,7 @@
     "/_data_stream/{name}": {
       "get": {
         "tags": [
-          "indices"
+          "data stream"
         ],
         "summary": "Get data streams",
         "description": "Retrieves information about one or more data streams.",
@@ -10879,7 +10879,7 @@
     "/_data_stream/_stats": {
       "get": {
         "tags": [
-          "indices"
+          "data stream"
         ],
         "summary": "Get data stream stats",
         "description": "Retrieves statistics for one or more data streams.",
@@ -10900,7 +10900,7 @@
     "/_data_stream/{name}/_stats": {
       "get": {
         "tags": [
-          "indices"
+          "data stream"
         ],
         "summary": "Get data stream stats",
         "description": "Retrieves statistics for one or more data streams.",
@@ -11168,7 +11168,7 @@
     "/_data_stream/{name}/_lifecycle": {
       "get": {
         "tags": [
-          "indices"
+          "data stream"
         ],
         "summary": "Get data stream lifecycles",
         "description": "Retrieves the data stream lifecycle configuration of one or more data streams.",
@@ -12427,7 +12427,7 @@
     "/_data_stream": {
       "get": {
         "tags": [
-          "indices"
+          "data stream"
         ],
         "summary": "Get data streams",
         "description": "Retrieves information about one or more data streams.",
@@ -12976,7 +12976,7 @@
     "/_data_stream/_migrate/{name}": {
       "post": {
         "tags": [
-          "indices"
+          "data stream"
         ],
         "summary": "Convert an index alias to a data stream",
         "description": "Converts an index alias to a data stream.\nYou must have a matching index template that is data stream enabled.\nThe alias must meet the following criteria:\nThe alias must have a write index;\nAll indices for the alias must have a `@timestamp` field mapping of a `date` or `date_nanos` field type;\nThe alias must not have any filters;\nThe alias must not use custom routing.\nIf successful, the request removes the alias and creates a data stream with the same name.\nThe indices for the alias become hidden backing indices for the stream.\nThe write index for the alias becomes the write index for the stream.",
@@ -13032,7 +13032,7 @@
     "/_data_stream/_modify": {
       "post": {
         "tags": [
-          "indices"
+          "data stream"
         ],
         "summary": "Update data streams",
         "description": "Performs one or more data stream modification actions in a single atomic operation.",
@@ -14925,7 +14925,7 @@
       },
       "head": {
         "tags": [
-          "ping"
+          "cluster"
         ],
         "summary": "Ping the cluster",
         "description": "Returns whether the cluster is running.",
@@ -15488,7 +15488,7 @@
     "/{index}/_knn_search": {
       "get": {
         "tags": [
-          "knn_search"
+          "search"
         ],
         "summary": "Performs a kNN search",
         "operationId": "knn-search",
@@ -15514,7 +15514,7 @@
       },
       "post": {
         "tags": [
-          "knn_search"
+          "search"
         ],
         "summary": "Performs a kNN search",
         "operationId": "knn-search-1",
@@ -22594,7 +22594,7 @@
     "/_msearch/template": {
       "get": {
         "tags": [
-          "msearch_template"
+          "search"
         ],
         "summary": "Runs multiple templated searches with a single request",
         "operationId": "msearch-template",
@@ -22627,7 +22627,7 @@
       },
       "post": {
         "tags": [
-          "msearch_template"
+          "search"
         ],
         "summary": "Runs multiple templated searches with a single request",
         "operationId": "msearch-template-1",
@@ -22662,7 +22662,7 @@
     "/{index}/_msearch/template": {
       "get": {
         "tags": [
-          "msearch_template"
+          "search"
         ],
         "summary": "Runs multiple templated searches with a single request",
         "operationId": "msearch-template-2",
@@ -22698,7 +22698,7 @@
       },
       "post": {
         "tags": [
-          "msearch_template"
+          "search"
         ],
         "summary": "Runs multiple templated searches with a single request",
         "operationId": "msearch-template-3",
@@ -22958,7 +22958,7 @@
     "/_nodes/{node_id}/_repositories_metering/{max_archive_version}": {
       "delete": {
         "tags": [
-          "nodes"
+          "cluster"
         ],
         "summary": "You can use this API to clear the archived repositories metering information in the cluster",
         "operationId": "nodes-clear-repositories-metering-archive",
@@ -23005,7 +23005,7 @@
     "/_nodes/{node_id}/_repositories_metering": {
       "get": {
         "tags": [
-          "nodes"
+          "cluster"
         ],
         "summary": "You can use the cluster repositories metering API to retrieve repositories metering information in a cluster",
         "description": "This API exposes monotonically non-decreasing counters and it’s expected that clients would durably store the\ninformation needed to compute aggregations over a period of time. Additionally, the information exposed by this\nAPI is volatile, meaning that it won’t be present after node restarts.",
@@ -23042,7 +23042,7 @@
     "/_nodes/hot_threads": {
       "get": {
         "tags": [
-          "nodes"
+          "cluster"
         ],
         "summary": "This API yields a breakdown of the hot threads on each selected node in the cluster",
         "description": "The output is plain text with a breakdown of each node’s top hot threads.",
@@ -23083,7 +23083,7 @@
     "/_nodes/{node_id}/hot_threads": {
       "get": {
         "tags": [
-          "nodes"
+          "cluster"
         ],
         "summary": "This API yields a breakdown of the hot threads on each selected node in the cluster",
         "description": "The output is plain text with a breakdown of each node’s top hot threads.",
@@ -23127,7 +23127,7 @@
     "/_nodes": {
       "get": {
         "tags": [
-          "nodes"
+          "cluster"
         ],
         "summary": "Returns cluster nodes information",
         "operationId": "nodes-info",
@@ -23153,7 +23153,7 @@
     "/_nodes/{node_id}": {
       "get": {
         "tags": [
-          "nodes"
+          "cluster"
         ],
         "summary": "Returns cluster nodes information",
         "operationId": "nodes-info-1",
@@ -23182,7 +23182,7 @@
     "/_nodes/{metric}": {
       "get": {
         "tags": [
-          "nodes"
+          "cluster"
         ],
         "summary": "Returns cluster nodes information",
         "operationId": "nodes-info-2",
@@ -23211,7 +23211,7 @@
     "/_nodes/{node_id}/{metric}": {
       "get": {
         "tags": [
-          "nodes"
+          "cluster"
         ],
         "summary": "Returns cluster nodes information",
         "operationId": "nodes-info-3",
@@ -23243,7 +23243,7 @@
     "/_nodes/reload_secure_settings": {
       "post": {
         "tags": [
-          "nodes"
+          "cluster"
         ],
         "summary": "Reloads the keystore on nodes in the cluster",
         "operationId": "nodes-reload-secure-settings",
@@ -23266,7 +23266,7 @@
     "/_nodes/{node_id}/reload_secure_settings": {
       "post": {
         "tags": [
-          "nodes"
+          "cluster"
         ],
         "summary": "Reloads the keystore on nodes in the cluster",
         "operationId": "nodes-reload-secure-settings-1",
@@ -23292,7 +23292,7 @@
     "/_nodes/stats": {
       "get": {
         "tags": [
-          "nodes"
+          "cluster"
         ],
         "summary": "Returns cluster nodes statistics",
         "operationId": "nodes-stats",
@@ -23338,7 +23338,7 @@
     "/_nodes/{node_id}/stats": {
       "get": {
         "tags": [
-          "nodes"
+          "cluster"
         ],
         "summary": "Returns cluster nodes statistics",
         "operationId": "nodes-stats-1",
@@ -23387,7 +23387,7 @@
     "/_nodes/stats/{metric}": {
       "get": {
         "tags": [
-          "nodes"
+          "cluster"
         ],
         "summary": "Returns cluster nodes statistics",
         "operationId": "nodes-stats-2",
@@ -23436,7 +23436,7 @@
     "/_nodes/{node_id}/stats/{metric}": {
       "get": {
         "tags": [
-          "nodes"
+          "cluster"
         ],
         "summary": "Returns cluster nodes statistics",
         "operationId": "nodes-stats-3",
@@ -23488,7 +23488,7 @@
     "/_nodes/stats/{metric}/{index_metric}": {
       "get": {
         "tags": [
-          "nodes"
+          "cluster"
         ],
         "summary": "Returns cluster nodes statistics",
         "operationId": "nodes-stats-4",
@@ -23540,7 +23540,7 @@
     "/_nodes/{node_id}/stats/{metric}/{index_metric}": {
       "get": {
         "tags": [
-          "nodes"
+          "cluster"
         ],
         "summary": "Returns cluster nodes statistics",
         "operationId": "nodes-stats-5",
@@ -23595,7 +23595,7 @@
     "/_nodes/usage": {
       "get": {
         "tags": [
-          "nodes"
+          "cluster"
         ],
         "summary": "Returns information on the usage of features",
         "operationId": "nodes-usage",
@@ -23615,7 +23615,7 @@
     "/_nodes/{node_id}/usage": {
       "get": {
         "tags": [
-          "nodes"
+          "cluster"
         ],
         "summary": "Returns information on the usage of features",
         "operationId": "nodes-usage-1",
@@ -23638,7 +23638,7 @@
     "/_nodes/usage/{metric}": {
       "get": {
         "tags": [
-          "nodes"
+          "cluster"
         ],
         "summary": "Returns information on the usage of features",
         "operationId": "nodes-usage-2",
@@ -23661,7 +23661,7 @@
     "/_nodes/{node_id}/usage/{metric}": {
       "get": {
         "tags": [
-          "nodes"
+          "cluster"
         ],
         "summary": "Returns information on the usage of features",
         "operationId": "nodes-usage-3",
@@ -23687,7 +23687,7 @@
     "/{index}/_pit": {
       "post": {
         "tags": [
-          "open_point_in_time"
+          "search"
         ],
         "summary": "A search request by default executes against the most recent visible data of the target indices,\n",
         "description": "which is called point in time. Elasticsearch pit (point in time) is a lightweight view into the\nstate of the data as it existed when initiated. In some cases, it’s preferred to perform multiple\nsearch requests using the same point in time. For example, if refreshes happen between\n`search_after` requests, then the results of those requests might not be consistent as changes happening\nbetween searches are only visible to the more recent point in time.",
@@ -23800,7 +23800,7 @@
     "/_scripts/{id}/{context}": {
       "put": {
         "tags": [
-          "put_script"
+          "script"
         ],
         "summary": "Create or update a script or search template",
         "description": "Creates or updates a stored script or search template.",
@@ -23830,7 +23830,7 @@
       },
       "post": {
         "tags": [
-          "put_script"
+          "script"
         ],
         "summary": "Create or update a script or search template",
         "description": "Creates or updates a stored script or search template.",
@@ -24239,7 +24239,7 @@
     "/_rank_eval": {
       "get": {
         "tags": [
-          "rank_eval"
+          "search"
         ],
         "summary": "Enables you to evaluate the quality of ranked search results over a set of typical search queries",
         "operationId": "rank-eval",
@@ -24269,7 +24269,7 @@
       },
       "post": {
         "tags": [
-          "rank_eval"
+          "search"
         ],
         "summary": "Enables you to evaluate the quality of ranked search results over a set of typical search queries",
         "operationId": "rank-eval-1",
@@ -24301,7 +24301,7 @@
     "/{index}/_rank_eval": {
       "get": {
         "tags": [
-          "rank_eval"
+          "search"
         ],
         "summary": "Enables you to evaluate the quality of ranked search results over a set of typical search queries",
         "operationId": "rank-eval-2",
@@ -24334,7 +24334,7 @@
       },
       "post": {
         "tags": [
-          "rank_eval"
+          "search"
         ],
         "summary": "Enables you to evaluate the quality of ranked search results over a set of typical search queries",
         "operationId": "rank-eval-3",
@@ -24369,7 +24369,7 @@
     "/_reindex": {
       "post": {
         "tags": [
-          "reindex"
+          "document"
         ],
         "summary": "Reindex documents",
         "description": "Copies documents from a source to a destination. The source can be any existing index, alias, or data stream. The destination must differ from the source. For example, you cannot reindex a data stream into itself.",
@@ -24562,7 +24562,7 @@
     "/_reindex/{task_id}/_rethrottle": {
       "post": {
         "tags": [
-          "reindex_rethrottle"
+          "document"
         ],
         "summary": "Copies documents from a source to a destination",
         "operationId": "reindex-rethrottle",
@@ -24618,7 +24618,7 @@
     "/_render/template": {
       "get": {
         "tags": [
-          "render_search_template"
+          "search"
         ],
         "summary": "Renders a search template as a search request body",
         "operationId": "render-search-template",
@@ -24633,7 +24633,7 @@
       },
       "post": {
         "tags": [
-          "render_search_template"
+          "search"
         ],
         "summary": "Renders a search template as a search request body",
         "operationId": "render-search-template-1",
@@ -24650,7 +24650,7 @@
     "/_render/template/{id}": {
       "get": {
         "tags": [
-          "render_search_template"
+          "search"
         ],
         "summary": "Renders a search template as a search request body",
         "operationId": "render-search-template-2",
@@ -24670,7 +24670,7 @@
       },
       "post": {
         "tags": [
-          "render_search_template"
+          "search"
         ],
         "summary": "Renders a search template as a search request body",
         "operationId": "render-search-template-3",
@@ -25103,7 +25103,7 @@
     "/_scripts/painless/_execute": {
       "get": {
         "tags": [
-          "scripts_painless_execute"
+          "script"
         ],
         "summary": "Run a script",
         "description": "Runs a script and returns a result.",
@@ -25121,7 +25121,7 @@
       },
       "post": {
         "tags": [
-          "scripts_painless_execute"
+          "script"
         ],
         "summary": "Run a script",
         "description": "Runs a script and returns a result.",
@@ -25896,7 +25896,7 @@
     "/_application/analytics/{name}": {
       "get": {
         "tags": [
-          "search_application"
+          "analytics"
         ],
         "summary": "Get behavioral analytics collections",
         "operationId": "search-application-get-behavioral-analytics-1",
@@ -25915,7 +25915,7 @@
       },
       "put": {
         "tags": [
-          "search_application"
+          "analytics"
         ],
         "summary": "Create a behavioral analytics collection",
         "operationId": "search-application-put-behavioral-analytics",
@@ -25949,7 +25949,7 @@
       },
       "delete": {
         "tags": [
-          "search_application"
+          "analytics"
         ],
         "summary": "Delete a behavioral analytics collection",
         "description": "The associated data stream is also deleted.",
@@ -25986,7 +25986,7 @@
     "/_application/analytics": {
       "get": {
         "tags": [
-          "search_application"
+          "analytics"
         ],
         "summary": "Get behavioral analytics collections",
         "operationId": "search-application-get-behavioral-analytics",
@@ -26126,7 +26126,7 @@
     "/{index}/_mvt/{field}/{zoom}/{x}/{y}": {
       "get": {
         "tags": [
-          "search_mvt"
+          "search"
         ],
         "summary": "Search a vector tile",
         "description": "Searches a vector tile for geospatial values.",
@@ -26181,7 +26181,7 @@
       },
       "post": {
         "tags": [
-          "search_mvt"
+          "search"
         ],
         "summary": "Search a vector tile",
         "description": "Searches a vector tile for geospatial values.",
@@ -26238,7 +26238,7 @@
     "/_search_shards": {
       "get": {
         "tags": [
-          "search_shards"
+          "search"
         ],
         "summary": "Returns information about the indices and shards that a search request would be executed against",
         "operationId": "search-shards",
@@ -26270,7 +26270,7 @@
       },
       "post": {
         "tags": [
-          "search_shards"
+          "search"
         ],
         "summary": "Returns information about the indices and shards that a search request would be executed against",
         "operationId": "search-shards-1",
@@ -26304,7 +26304,7 @@
     "/{index}/_search_shards": {
       "get": {
         "tags": [
-          "search_shards"
+          "search"
         ],
         "summary": "Returns information about the indices and shards that a search request would be executed against",
         "operationId": "search-shards-2",
@@ -26339,7 +26339,7 @@
       },
       "post": {
         "tags": [
-          "search_shards"
+          "search"
         ],
         "summary": "Returns information about the indices and shards that a search request would be executed against",
         "operationId": "search-shards-3",
@@ -26376,7 +26376,7 @@
     "/_search/template": {
       "get": {
         "tags": [
-          "search_template"
+          "search"
         ],
         "summary": "Runs a search with a search template",
         "operationId": "search-template",
@@ -26433,7 +26433,7 @@
       },
       "post": {
         "tags": [
-          "search_template"
+          "search"
         ],
         "summary": "Runs a search with a search template",
         "operationId": "search-template-1",
@@ -26492,7 +26492,7 @@
     "/{index}/_search/template": {
       "get": {
         "tags": [
-          "search_template"
+          "search"
         ],
         "summary": "Runs a search with a search template",
         "operationId": "search-template-2",
@@ -26552,7 +26552,7 @@
       },
       "post": {
         "tags": [
-          "search_template"
+          "search"
         ],
         "summary": "Runs a search with a search template",
         "operationId": "search-template-3",
@@ -32762,7 +32762,7 @@
     "/{index}/_termvectors/{id}": {
       "get": {
         "tags": [
-          "termvectors"
+          "document"
         ],
         "summary": "Get term vector information",
         "description": "Returns information and statistics about terms in the fields of a particular document.",
@@ -32819,7 +32819,7 @@
       },
       "post": {
         "tags": [
-          "termvectors"
+          "document"
         ],
         "summary": "Get term vector information",
         "description": "Returns information and statistics about terms in the fields of a particular document.",
@@ -32878,7 +32878,7 @@
     "/{index}/_termvectors": {
       "get": {
         "tags": [
-          "termvectors"
+          "document"
         ],
         "summary": "Get term vector information",
         "description": "Returns information and statistics about terms in the fields of a particular document.",
@@ -32932,7 +32932,7 @@
       },
       "post": {
         "tags": [
-          "termvectors"
+          "document"
         ],
         "summary": "Get term vector information",
         "description": "Returns information and statistics about terms in the fields of a particular document.",
@@ -34185,7 +34185,7 @@
     "/{index}/_update/{id}": {
       "post": {
         "tags": [
-          "update"
+          "document"
         ],
         "summary": "Update a document",
         "description": "Updates a document by running a script or passing a partial document.",
@@ -34389,7 +34389,7 @@
     "/{index}/_update_by_query": {
       "post": {
         "tags": [
-          "update_by_query"
+          "document"
         ],
         "summary": "Update documents",
         "description": "Updates documents that match the specified query.\nIf no query is specified, performs an update on every document in the data stream or index without modifying the source, which is useful for picking up mapping changes.",

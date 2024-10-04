@@ -60,23 +60,16 @@ dump-routes: ## Create a new schema with all generics expanded
 contrib: | generate license-check spec-format-fix transform-to-openapi filter-for-serverless ## Pre contribution target
 
 overlay-docs: ## Apply overlays to OpenAPI documents
-	@npx bump overlay "output/openapi/elasticsearch-serverless-openapi.json" "docs/overlays/elasticsearch-serverless-openapi-overlays.yaml" > "output/openapi/elasticsearch-serverless-openapi.tmp1.json"
-	@npx bump overlay "output/openapi/elasticsearch-serverless-openapi.tmp1.json" "docs/overlays/elasticsearch-shared-overlays.yaml" > "output/openapi/elasticsearch-serverless-openapi.tmp2.json"
-	@npx @redocly/cli bundle output/openapi/elasticsearch-serverless-openapi.tmp2.json --ext json -o output/openapi/elasticsearch-serverless-openapi.examples.json
 	@npx bump overlay "output/openapi/elasticsearch-openapi.json" "docs/overlays/elasticsearch-openapi-overlays.yaml" > "output/openapi/elasticsearch-openapi.tmp1.json"
 	@npx bump overlay "output/openapi/elasticsearch-openapi.tmp1.json" "docs/overlays/elasticsearch-shared-overlays.yaml" > "output/openapi/elasticsearch-openapi.tmp2.json"
 	@npx @redocly/cli bundle output/openapi/elasticsearch-openapi.tmp2.json --ext json -o output/openapi/elasticsearch-openapi.examples.json
-	rm output/openapi/elasticsearch-serverless-openapi.tmp*.json
 	rm output/openapi/elasticsearch-openapi.tmp*.json
 
-lint-docs: ## Lint the OpenAPI documents
-	@npx @stoplight/spectral-cli lint output/openapi/*.json --ruleset .spectral.yaml
+lint-docs: ## Lint the OpenAPI documents after overlays
+	@npx @stoplight/spectral-cli lint output/openapi/elasticsearch-*.examples.json --ruleset .spectral.yaml
 
-lint-docs-errs: ## Lint the OpenAPI documents and return only errors
-	@npx @stoplight/spectral-cli lint output/openapi/*.json --ruleset .spectral.yaml -D
-
-lint-docs-serverless: ## Lint only the serverless OpenAPI document
-	@npx @stoplight/spectral-cli lint output/openapi/elasticsearch-serverless-openapi.json --ruleset .spectral.yaml
+lint-docs-errs: ## Lint the OpenAPI documents after overlays and return only errors
+	@npx @stoplight/spectral-cli lint output/openapi/elasticsearch-*.examples.json --ruleset .spectral.yaml -D
 
 help:  ## Display help
 	@awk 'BEGIN {FS = ":.*##"; printf "Usage:\n  make \033[36m<target>\033[0m\n"} /^[a-zA-Z_-]+:.*?##/ { printf "  \033[36m%-15s\033[0m %s\n", $$1, $$2 } /^##@/ { printf "\n\033[1m%s\033[0m\n", substr($$0, 5) } ' $(MAKEFILE_LIST)

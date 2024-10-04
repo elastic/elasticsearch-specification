@@ -37,6 +37,7 @@ import { OperationContainer, UpdateAction } from './types'
  * @availability stack stability=stable
  * @availability serverless stability=stable visibility=public
  * @doc_id docs-bulk
+ * @doc_tag document
  *
  */
 export interface Request<TDocument, TPartialDocument> extends RequestBase {

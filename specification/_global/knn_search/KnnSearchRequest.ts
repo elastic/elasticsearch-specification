@@ -27,6 +27,7 @@ import { Query } from './_types/Knn'
  * @rest_spec_name knn_search
  * @availability stack since=8.0.0 stability=experimental
  * @deprecated 8.4.0
+ * @doc_tag search
  */
 export interface Request extends RequestBase {
   path_parts: {
