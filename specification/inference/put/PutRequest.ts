@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { InferenceEndpoint } from '@inference/_types/Services'
+import {InferenceEndpoint, InferenceService} from '@inference/_types/Services'
 import { TaskType } from '@inference/_types/TaskType'
 import { RequestBase } from '@_types/Base'
 import { Id } from '@_types/common'
@@ -39,6 +39,5 @@ export interface Request extends RequestBase {
      */
     inference_id: Id
   }
-  /** @codegen_name inference_config */
-  body: InferenceEndpoint
+  body: InferenceService
 }
