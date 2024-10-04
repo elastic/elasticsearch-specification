@@ -2922,6 +2922,7 @@
         }
       },
       "description": "Create a data stream.\nCreates a data stream.\nYou must have a matching index template with data stream enabled.",
+      "docTag": "data stream",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/data-streams.html",
       "name": "indices.create_data_stream",
       "privileges": {
@@ -20147,7 +20148,7 @@
           }
         }
       ],
-      "specLocation": "indices/create_data_stream/IndicesCreateDataStreamRequest.ts#L24-L57"
+      "specLocation": "indices/create_data_stream/IndicesCreateDataStreamRequest.ts#L24-L58"
     },
     {
       "body": {
