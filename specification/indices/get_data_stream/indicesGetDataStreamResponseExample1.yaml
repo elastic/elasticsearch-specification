@@ -1,0 +1,32 @@
+# summary:
+description: A successful response for retrieving information about a data stream.
+# type: response
+# response_code: 200
+value:
+  "{\n  \"data_streams\": [\n    {\n      \"name\": \"my-data-stream\",\n   \
+  \   \"timestamp_field\": {\n        \"name\": \"@timestamp\"\n      },\n      \"\
+  indices\": [\n        {\n          \"index_name\": \".ds-my-data-stream-2099.03.07-000001\"\
+  ,\n          \"index_uuid\": \"xCEhwsp8Tey0-FLNFYVwSg\",\n          \"prefer_ilm\"\
+  : true,\n          \"ilm_policy\": \"my-lifecycle-policy\",\n          \"managed_by\"\
+  : \"Index Lifecycle Management\"\n        },\n        {\n          \"index_name\"\
+  : \".ds-my-data-stream-2099.03.08-000002\",\n          \"index_uuid\": \"PA_JquKGSiKcAKBA8DJ5gw\"\
+  ,\n          \"prefer_ilm\": true,\n          \"ilm_policy\": \"my-lifecycle-policy\"\
+  ,\n          \"managed_by\": \"Index Lifecycle Management\"\n        }\n      ],\n\
+  \      \"generation\": 2,\n      \"_meta\": {\n        \"my-meta-field\": \"foo\"\
+  \n      },\n      \"status\": \"GREEN\",\n      \"next_generation_managed_by\":\
+  \ \"Index Lifecycle Management\",\n      \"prefer_ilm\": true,\n      \"template\"\
+  : \"my-index-template\",\n      \"ilm_policy\": \"my-lifecycle-policy\",\n     \
+  \ \"hidden\": false,\n      \"system\": false,\n      \"allow_custom_routing\":\
+  \ false,\n      \"replicated\": false,\n      \"rollover_on_write\": false\n   \
+  \ },\n    {\n      \"name\": \"my-data-stream-two\",\n      \"timestamp_field\"\
+  : {\n        \"name\": \"@timestamp\"\n      },\n      \"indices\": [\n        {\n\
+  \          \"index_name\": \".ds-my-data-stream-two-2099.03.08-000001\",\n     \
+  \     \"index_uuid\": \"3liBu2SYS5axasRt6fUIpA\",\n          \"prefer_ilm\": true,\n\
+  \          \"ilm_policy\": \"my-lifecycle-policy\",\n          \"managed_by\": \"\
+  Index Lifecycle Management\"\n        }\n      ],\n      \"generation\": 1,\n  \
+  \    \"_meta\": {\n        \"my-meta-field\": \"foo\"\n      },\n      \"status\"\
+  : \"YELLOW\",\n      \"next_generation_managed_by\": \"Index Lifecycle Management\"\
+  ,\n      \"prefer_ilm\": true,\n      \"template\": \"my-index-template\",\n   \
+  \   \"ilm_policy\": \"my-lifecycle-policy\",\n      \"hidden\": false,\n      \"\
+  system\": false,\n      \"allow_custom_routing\": false,\n      \"replicated\":\
+  \ false,\n      \"rollover_on_write\": false\n    }\n  ]\n}"

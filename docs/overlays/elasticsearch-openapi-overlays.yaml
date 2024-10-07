@@ -226,4 +226,41 @@ actions:
             application/json:
               examples:
                 removePolicyResponseExample1:
-                  $ref: "../../specification/ilm/remove_policy/RemovePolicyResponseExample1.json" 
+                  $ref: "../../specification/ilm/remove_policy/RemovePolicyResponseExample1.json"
+  - target: "$.components['requestBodies']['indices.clone']"
+    description: "Add examples for clone index request"
+    update: 
+      content: 
+        application/json: 
+          examples: 
+            indicesCloneRequestExample1: 
+              $ref: "../../specification/indices/clone/indicesCloneRequestExample1.yaml"
+  - target: "$.paths['/{index}/_close']['post']"
+    description: "Add examples for close index response"
+    update:
+      responses:
+        200:
+          content:
+            application/json:
+              examples:
+                indicesCloseResponseExample1:
+                  $ref: "../../specification/indices/close/indicesCloseResponseExample1.yaml"
+  - target: "$.components['responses']['indices.data_streams_stats#200']"
+    description: "Add example for data stream stats response"
+    update: 
+      content:
+        application/json:
+          examples:
+            indicesDataStreamStatsResponseExample1:
+              $ref: "../../specification/indices/data_streams_stats/indicesDataStreamStatsResponseExample1.yaml"
+  - target: "$.paths['/{index}/_open']['post']"
+    description: "Add examples for open index response"
+    update:
+      responses:
+        200:
+          content:
+            application/json:
+              examples:
+                indicesOpenResponseExample1:
+                  $ref: "../../specification/indices/open/indicesOpenResponseExample1.yaml"
+
