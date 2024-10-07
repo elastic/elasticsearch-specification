@@ -32,6 +32,7 @@ import { QueryContainer } from '@_types/query_dsl/abstractions'
  * @availability stack since=7.3.0 stability=stable
  * @availability serverless stability=stable visibility=public
  * @cluster_privileges monitor_ml
+ * @doc_tag ml data frame
  */
 export interface Request extends RequestBase {
   body: {
