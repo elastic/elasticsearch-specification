@@ -16243,7 +16243,7 @@
     "/_ml/trained_models/{model_id}/deployment/cache/_clear": {
       "post": {
         "tags": [
-          "ml"
+          "ml trained model"
         ],
         "summary": "Clear trained model deployment cache",
         "description": "Cache will be cleared on all nodes where the trained model is assigned.\nA trained model deployment may have an inference cache enabled.\nAs requests are handled by each allocated node, their responses may be cached on that individual node.\nCalling this API clears the caches without restarting the deployment.",
@@ -16287,7 +16287,7 @@
     "/_ml/anomaly_detectors/{job_id}/_close": {
       "post": {
         "tags": [
-          "ml"
+          "ml anomaly"
         ],
         "summary": "Close anomaly detection jobs",
         "description": "A job can be opened and closed multiple times throughout its lifecycle. A closed job cannot receive data or perform analysis operations, but you can still explore and navigate results.\nWhen you close a job, it runs housekeeping tasks such as pruning the model history, flushing buffers, calculating final results and persisting the model snapshots. Depending upon the size of the job, it could take several minutes to close and the equivalent time to re-open. After it is closed, the job has a minimal overhead on the cluster except for maintaining its meta data. Therefore it is a best practice to close jobs that are no longer required to process data.\nIf you close an anomaly detection job whose datafeed is running, the request first tries to stop the datafeed. This behavior is equivalent to calling stop datafeed API with the same timeout and force parameters as the close job request.\nWhen a datafeed that has a specified end date stops, it automatically closes its associated job.",
@@ -16383,7 +16383,7 @@
     "/_ml/calendars/{calendar_id}": {
       "get": {
         "tags": [
-          "ml"
+          "ml anomaly"
         ],
         "summary": "Get calendar configuration info",
         "operationId": "ml-get-calendars-2",
@@ -16410,7 +16410,7 @@
       },
       "put": {
         "tags": [
-          "ml"
+          "ml anomaly"
         ],
         "summary": "Create a calendar",
         "operationId": "ml-put-calendar",
@@ -16481,7 +16481,7 @@
       },
       "post": {
         "tags": [
-          "ml"
+          "ml anomaly"
         ],
         "summary": "Get calendar configuration info",
         "operationId": "ml-get-calendars-3",
@@ -16508,7 +16508,7 @@
       },
       "delete": {
         "tags": [
-          "ml"
+          "ml anomaly"
         ],
         "summary": "Delete a calendar",
         "description": "Removes all scheduled events from a calendar, then deletes it.",
@@ -16544,7 +16544,7 @@
     "/_ml/calendars/{calendar_id}/events/{event_id}": {
       "delete": {
         "tags": [
-          "ml"
+          "ml anomaly"
         ],
         "summary": "Delete events from a calendar",
         "operationId": "ml-delete-calendar-event",
@@ -16590,7 +16590,7 @@
     "/_ml/calendars/{calendar_id}/jobs/{job_id}": {
       "put": {
         "tags": [
-          "ml"
+          "ml anomaly"
         ],
         "summary": "Add anomaly detection job to calendar",
         "operationId": "ml-put-calendar-job",
@@ -16650,7 +16650,7 @@
       },
       "delete": {
         "tags": [
-          "ml"
+          "ml anomaly"
         ],
         "summary": "Delete anomaly jobs from a calendar",
         "operationId": "ml-delete-calendar-job",
@@ -16712,7 +16712,7 @@
     "/_ml/data_frame/analytics/{id}": {
       "get": {
         "tags": [
-          "ml"
+          "ml data frame"
         ],
         "summary": "Get data frame analytics job configuration info",
         "description": "You can get information for multiple data frame analytics jobs in a single\nAPI request by using a comma-separated list of data frame analytics jobs or a\nwildcard expression.",
@@ -16743,7 +16743,7 @@
       },
       "put": {
         "tags": [
-          "ml"
+          "ml data frame"
         ],
         "summary": "Create a data frame analytics job",
         "description": "This API creates a data frame analytics job that performs an analysis on the\nsource indices and stores the outcome in a destination index.",
@@ -16880,7 +16880,7 @@
       },
       "delete": {
         "tags": [
-          "ml"
+          "ml data frame"
         ],
         "summary": "Delete a data frame analytics job",
         "operationId": "ml-delete-data-frame-analytics",
@@ -16935,7 +16935,7 @@
     "/_ml/datafeeds/{datafeed_id}": {
       "get": {
         "tags": [
-          "ml"
+          "ml anomaly"
         ],
         "summary": "Get datafeeds configuration info",
         "description": "You can get information for multiple datafeeds in a single API request by\nusing a comma-separated list of datafeeds or a wildcard expression. You can\nget information for all datafeeds by using `_all`, by specifying `*` as the\n`<feed_id>`, or by omitting the `<feed_id>`.\nThis API returns a maximum of 10,000 datafeeds.",
@@ -16960,7 +16960,7 @@
       },
       "put": {
         "tags": [
-          "ml"
+          "ml anomaly"
         ],
         "summary": "Create a datafeed",
         "description": "Datafeeds retrieve data from Elasticsearch for analysis by an anomaly detection job.\nYou can associate only one datafeed with each anomaly detection job.\nThe datafeed contains a query that runs at a defined interval (`frequency`).\nIf you are concerned about delayed data, you can add a delay (`query_delay') at each interval.\nWhen Elasticsearch security features are enabled, your datafeed remembers which roles the user who created it had\nat the time of creation and runs the query using those same roles. If you provide secondary authorization headers,\nthose credentials are used instead.\nYou must use Kibana, this API, or the create anomaly detection jobs API to create a datafeed. Do not add a datafeed\ndirectly to the `.ml-config` index. Do not give users `write` privileges on the `.ml-config` index.",
@@ -17163,7 +17163,7 @@
       },
       "delete": {
         "tags": [
-          "ml"
+          "ml anomaly"
         ],
         "summary": "Delete a datafeed",
         "operationId": "ml-delete-datafeed",
@@ -17208,7 +17208,7 @@
     "/_ml/_delete_expired_data/{job_id}": {
       "delete": {
         "tags": [
-          "ml"
+          "ml anomaly"
         ],
         "summary": "Delete expired ML data",
         "description": "Deletes all job results, model snapshots and forecast data that have exceeded\ntheir retention days period. Machine learning state documents that are not\nassociated with any job are also deleted.\nYou can limit the request to a single or set of anomaly detection jobs by\nusing a job identifier, a group name, a comma-separated list of jobs, or a\nwildcard expression. You can delete expired data for all anomaly detection\njobs by using _all, by specifying * as the <job_id>, or by omitting the\n<job_id>.",
@@ -17238,7 +17238,7 @@
     "/_ml/_delete_expired_data": {
       "delete": {
         "tags": [
-          "ml"
+          "ml anomaly"
         ],
         "summary": "Delete expired ML data",
         "description": "Deletes all job results, model snapshots and forecast data that have exceeded\ntheir retention days period. Machine learning state documents that are not\nassociated with any job are also deleted.\nYou can limit the request to a single or set of anomaly detection jobs by\nusing a job identifier, a group name, a comma-separated list of jobs, or a\nwildcard expression. You can delete expired data for all anomaly detection\njobs by using _all, by specifying * as the <job_id>, or by omitting the\n<job_id>.",
@@ -17265,7 +17265,7 @@
     "/_ml/filters/{filter_id}": {
       "get": {
         "tags": [
-          "ml"
+          "ml anomaly"
         ],
         "summary": "Get filters",
         "description": "You can get a single filter or all filters.",
@@ -17290,7 +17290,7 @@
       },
       "put": {
         "tags": [
-          "ml"
+          "ml anomaly"
         ],
         "summary": "Create a filter",
         "description": "A filter contains a list of strings. It can be used by one or more anomaly detection jobs.\nSpecifically, filters are referenced in the `custom_rules` property of detector configuration objects.",
@@ -17366,7 +17366,7 @@
       },
       "delete": {
         "tags": [
-          "ml"
+          "ml anomaly"
         ],
         "summary": "Delete a filter",
         "description": "If an anomaly detection job references the filter, you cannot delete the\nfilter. You must update or delete the job before you can delete the filter.",
@@ -17402,7 +17402,7 @@
     "/_ml/anomaly_detectors/{job_id}/_forecast": {
       "post": {
         "tags": [
-          "ml"
+          "ml anomaly"
         ],
         "summary": "Predict future behavior of a time series",
         "description": "Forecasts are not supported for jobs that perform population analysis; an\nerror occurs if you try to create a forecast for a job that has an\n`over_field_name` in its configuration. Forcasts predict future behavior\nbased on historical data.",
@@ -17499,7 +17499,7 @@
       },
       "delete": {
         "tags": [
-          "ml"
+          "ml anomaly"
         ],
         "summary": "Delete forecasts from a job",
         "description": "By default, forecasts are retained for 14 days. You can specify a\ndifferent retention period with the `expires_in` parameter in the forecast\njobs API. The delete forecast API enables you to delete one or more\nforecasts before they expire.",
@@ -17526,7 +17526,7 @@
     "/_ml/anomaly_detectors/{job_id}/_forecast/{forecast_id}": {
       "delete": {
         "tags": [
-          "ml"
+          "ml anomaly"
         ],
         "summary": "Delete forecasts from a job",
         "description": "By default, forecasts are retained for 14 days. You can specify a\ndifferent retention period with the `expires_in` parameter in the forecast\njobs API. The delete forecast API enables you to delete one or more\nforecasts before they expire.",
@@ -17556,7 +17556,7 @@
     "/_ml/anomaly_detectors/{job_id}": {
       "get": {
         "tags": [
-          "ml"
+          "ml anomaly"
         ],
         "summary": "Get anomaly detection jobs configuration info",
         "description": "You can get information for multiple anomaly detection jobs in a single API\nrequest by using a group name, a comma-separated list of jobs, or a wildcard\nexpression. You can get information for all anomaly detection jobs by using\n`_all`, by specifying `*` as the `<job_id>`, or by omitting the `<job_id>`.",
@@ -17581,7 +17581,7 @@
       },
       "put": {
         "tags": [
-          "ml"
+          "ml anomaly"
         ],
         "summary": "Create an anomaly detection job",
         "description": "If you include a `datafeed_config`, you must have read index privileges on the source index.",
@@ -17764,7 +17764,7 @@
       },
       "delete": {
         "tags": [
-          "ml"
+          "ml anomaly"
         ],
         "summary": "Delete an anomaly detection job",
         "description": "All job configuration, model state and results are deleted.\nIt is not currently possible to delete multiple jobs using wildcards or a\ncomma separated list. If you delete a job that has a datafeed, the request\nfirst tries to delete the datafeed. This behavior is equivalent to calling\nthe delete datafeed API with the same timeout and force parameters as the\ndelete job request.",
@@ -17830,7 +17830,7 @@
     "/_ml/anomaly_detectors/{job_id}/model_snapshots/{snapshot_id}": {
       "get": {
         "tags": [
-          "ml"
+          "ml anomaly"
         ],
         "summary": "Get model snapshots info",
         "operationId": "ml-get-model-snapshots",
@@ -17872,7 +17872,7 @@
       },
       "post": {
         "tags": [
-          "ml"
+          "ml anomaly"
         ],
         "summary": "Get model snapshots info",
         "operationId": "ml-get-model-snapshots-1",
@@ -17914,7 +17914,7 @@
       },
       "delete": {
         "tags": [
-          "ml"
+          "ml anomaly"
         ],
         "summary": "Delete a model snapshot",
         "description": "You cannot delete the active model snapshot. To delete that snapshot, first\nrevert to a different one. To identify the active model snapshot, refer to\nthe `model_snapshot_id` in the results from the get jobs API.",
@@ -17961,7 +17961,7 @@
     "/_ml/trained_models/{model_id}": {
       "get": {
         "tags": [
-          "ml"
+          "ml trained model"
         ],
         "summary": "Get trained model configuration info",
         "operationId": "ml-get-trained-models",
@@ -18000,7 +18000,7 @@
       },
       "put": {
         "tags": [
-          "ml"
+          "ml trained model"
         ],
         "summary": "Create a trained model",
         "description": "Enable you to supply a trained model that is not created by data frame analytics.",
@@ -18108,7 +18108,7 @@
       },
       "delete": {
         "tags": [
-          "ml"
+          "ml trained model"
         ],
         "summary": "Delete an unreferenced trained model",
         "description": "The request deletes a trained inference model that is not referenced by an ingest pipeline.",
@@ -18154,7 +18154,7 @@
     "/_ml/trained_models/{model_id}/model_aliases/{model_alias}": {
       "put": {
         "tags": [
-          "ml"
+          "ml trained model"
         ],
         "summary": "Create or update a trained model alias",
         "description": "A trained model alias is a logical name used to reference a single trained\nmodel.\nYou can use aliases instead of trained model identifiers to make it easier to\nreference your models. For example, you can use aliases in inference\naggregations and processors.\nAn alias must be unique and refer to only a single trained model. However,\nyou can have multiple aliases for each trained model.\nIf you use this API to update an alias such that it references a different\ntrained model ID and the model uses a different type of data frame analytics,\nan error occurs. For example, this situation occurs if you have a trained\nmodel for regression analysis and a trained model for classification\nanalysis; you cannot reassign an alias from one type of trained model to\nanother.\nIf you use this API to update an alias and there are very few input fields in\ncommon between the old and new trained models for the model alias, the API\nreturns a warning.",
@@ -18209,7 +18209,7 @@
       },
       "delete": {
         "tags": [
-          "ml"
+          "ml trained model"
         ],
         "summary": "Delete a trained model alias",
         "description": "This API deletes an existing model alias that refers to a trained model. If\nthe model alias is missing or refers to a model other than the one identified\nby the `model_id`, this API returns an error.",
@@ -18256,7 +18256,7 @@
     "/_ml/anomaly_detectors/_estimate_model_memory": {
       "post": {
         "tags": [
-          "ml"
+          "ml anomaly"
         ],
         "summary": "Estimate job model memory usage",
         "description": "Makes an estimation of the memory usage for an anomaly detection job model.\nIt is based on analysis configuration details for the job and cardinality\nestimates for the fields it references.",
@@ -18316,7 +18316,7 @@
     "/_ml/data_frame/_evaluate": {
       "post": {
         "tags": [
-          "ml"
+          "ml data frame"
         ],
         "summary": "Evaluate data frame analytics",
         "description": "The API packages together commonly used evaluation metrics for various types\nof machine learning features. This has been designed for use on indexes\ncreated by data frame analytics. Evaluation requires both a ground truth\nfield and an analytics result field to be present.",
@@ -18375,7 +18375,7 @@
     "/_ml/data_frame/analytics/_explain": {
       "get": {
         "tags": [
-          "ml"
+          "ml data frame"
         ],
         "summary": "Explain data frame analytics config",
         "description": "This API provides explanations for a data frame analytics config that either\nexists already or one that has not been created yet. The following\nexplanations are provided:\n* which fields are included or not in the analysis and why,\n* how much memory is estimated to be required. The estimate can be used when deciding the appropriate value for model_memory_limit setting later on.\nIf you have object fields or fields that are excluded via source filtering, they are not included in the explanation.",
@@ -18392,7 +18392,7 @@
       },
       "post": {
         "tags": [
-          "ml"
+          "ml data frame"
         ],
         "summary": "Explain data frame analytics config",
         "description": "This API provides explanations for a data frame analytics config that either\nexists already or one that has not been created yet. The following\nexplanations are provided:\n* which fields are included or not in the analysis and why,\n* how much memory is estimated to be required. The estimate can be used when deciding the appropriate value for model_memory_limit setting later on.\nIf you have object fields or fields that are excluded via source filtering, they are not included in the explanation.",
@@ -18411,7 +18411,7 @@
     "/_ml/data_frame/analytics/{id}/_explain": {
       "get": {
         "tags": [
-          "ml"
+          "ml data frame"
         ],
         "summary": "Explain data frame analytics config",
         "description": "This API provides explanations for a data frame analytics config that either\nexists already or one that has not been created yet. The following\nexplanations are provided:\n* which fields are included or not in the analysis and why,\n* how much memory is estimated to be required. The estimate can be used when deciding the appropriate value for model_memory_limit setting later on.\nIf you have object fields or fields that are excluded via source filtering, they are not included in the explanation.",
@@ -18433,7 +18433,7 @@
       },
       "post": {
         "tags": [
-          "ml"
+          "ml data frame"
         ],
         "summary": "Explain data frame analytics config",
         "description": "This API provides explanations for a data frame analytics config that either\nexists already or one that has not been created yet. The following\nexplanations are provided:\n* which fields are included or not in the analysis and why,\n* how much memory is estimated to be required. The estimate can be used when deciding the appropriate value for model_memory_limit setting later on.\nIf you have object fields or fields that are excluded via source filtering, they are not included in the explanation.",
@@ -18457,7 +18457,7 @@
     "/_ml/anomaly_detectors/{job_id}/_flush": {
       "post": {
         "tags": [
-          "ml"
+          "ml anomaly"
         ],
         "summary": "Force buffered data to be processed",
         "description": "The flush jobs API is only applicable when sending data for analysis using\nthe post data API. Depending on the content of the buffer, then it might\nadditionally calculate new results. Both flush and close operations are\nsimilar, however the flush is more efficient if you are expecting to send\nmore data for analysis. When flushing, the job remains open and is available\nto continue analyzing data. A close operation additionally prunes and\npersists the model state to disk and the job must be opened again before\nanalyzing further data.",
@@ -18582,7 +18582,7 @@
     "/_ml/anomaly_detectors/{job_id}/results/buckets/{timestamp}": {
       "get": {
         "tags": [
-          "ml"
+          "ml anomaly"
         ],
         "summary": "Get anomaly detection job results for buckets",
         "description": "The API presents a chronological view of the records, grouped by bucket.",
@@ -18634,7 +18634,7 @@
       },
       "post": {
         "tags": [
-          "ml"
+          "ml anomaly"
         ],
         "summary": "Get anomaly detection job results for buckets",
         "description": "The API presents a chronological view of the records, grouped by bucket.",
@@ -18688,7 +18688,7 @@
     "/_ml/anomaly_detectors/{job_id}/results/buckets": {
       "get": {
         "tags": [
-          "ml"
+          "ml anomaly"
         ],
         "summary": "Get anomaly detection job results for buckets",
         "description": "The API presents a chronological view of the records, grouped by bucket.",
@@ -18737,7 +18737,7 @@
       },
       "post": {
         "tags": [
-          "ml"
+          "ml anomaly"
         ],
         "summary": "Get anomaly detection job results for buckets",
         "description": "The API presents a chronological view of the records, grouped by bucket.",
@@ -18788,7 +18788,7 @@
     "/_ml/calendars/{calendar_id}/events": {
       "get": {
         "tags": [
-          "ml"
+          "ml anomaly"
         ],
         "summary": "Get info about events in calendars",
         "operationId": "ml-get-calendar-events",
@@ -18886,7 +18886,7 @@
       },
       "post": {
         "tags": [
-          "ml"
+          "ml anomaly"
         ],
         "summary": "Add scheduled events to the calendar",
         "operationId": "ml-post-calendar-events",
@@ -18954,7 +18954,7 @@
     "/_ml/calendars": {
       "get": {
         "tags": [
-          "ml"
+          "ml anomaly"
         ],
         "summary": "Get calendar configuration info",
         "operationId": "ml-get-calendars",
@@ -18978,7 +18978,7 @@
       },
       "post": {
         "tags": [
-          "ml"
+          "ml anomaly"
         ],
         "summary": "Get calendar configuration info",
         "operationId": "ml-get-calendars-1",
@@ -19004,7 +19004,7 @@
     "/_ml/anomaly_detectors/{job_id}/results/categories/{category_id}": {
       "get": {
         "tags": [
-          "ml"
+          "ml anomaly"
         ],
         "summary": "Get anomaly detection job results for categories",
         "operationId": "ml-get-categories",
@@ -19037,7 +19037,7 @@
       },
       "post": {
         "tags": [
-          "ml"
+          "ml anomaly"
         ],
         "summary": "Get anomaly detection job results for categories",
         "operationId": "ml-get-categories-1",
@@ -19072,7 +19072,7 @@
     "/_ml/anomaly_detectors/{job_id}/results/categories": {
       "get": {
         "tags": [
-          "ml"
+          "ml anomaly"
         ],
         "summary": "Get anomaly detection job results for categories",
         "operationId": "ml-get-categories-2",
@@ -19102,7 +19102,7 @@
       },
       "post": {
         "tags": [
-          "ml"
+          "ml anomaly"
         ],
         "summary": "Get anomaly detection job results for categories",
         "operationId": "ml-get-categories-3",
@@ -19134,7 +19134,7 @@
     "/_ml/data_frame/analytics": {
       "get": {
         "tags": [
-          "ml"
+          "ml data frame"
         ],
         "summary": "Get data frame analytics job configuration info",
         "description": "You can get information for multiple data frame analytics jobs in a single\nAPI request by using a comma-separated list of data frame analytics jobs or a\nwildcard expression.",
@@ -19164,7 +19164,7 @@
     "/_ml/data_frame/analytics/_stats": {
       "get": {
         "tags": [
-          "ml"
+          "ml data frame"
         ],
         "summary": "Get data frame analytics jobs usage info",
         "operationId": "ml-get-data-frame-analytics-stats",
@@ -19193,7 +19193,7 @@
     "/_ml/data_frame/analytics/{id}/_stats": {
       "get": {
         "tags": [
-          "ml"
+          "ml data frame"
         ],
         "summary": "Get data frame analytics jobs usage info",
         "operationId": "ml-get-data-frame-analytics-stats-1",
@@ -19225,7 +19225,7 @@
     "/_ml/datafeeds/{datafeed_id}/_stats": {
       "get": {
         "tags": [
-          "ml"
+          "ml anomaly"
         ],
         "summary": "Get datafeeds usage info",
         "description": "You can get statistics for multiple datafeeds in a single API request by\nusing a comma-separated list of datafeeds or a wildcard expression. You can\nget statistics for all datafeeds by using `_all`, by specifying `*` as the\n`<feed_id>`, or by omitting the `<feed_id>`. If the datafeed is stopped, the\nonly information you receive is the `datafeed_id` and the `state`.\nThis API returns a maximum of 10,000 datafeeds.",
@@ -19249,7 +19249,7 @@
     "/_ml/datafeeds/_stats": {
       "get": {
         "tags": [
-          "ml"
+          "ml anomaly"
         ],
         "summary": "Get datafeeds usage info",
         "description": "You can get statistics for multiple datafeeds in a single API request by\nusing a comma-separated list of datafeeds or a wildcard expression. You can\nget statistics for all datafeeds by using `_all`, by specifying `*` as the\n`<feed_id>`, or by omitting the `<feed_id>`. If the datafeed is stopped, the\nonly information you receive is the `datafeed_id` and the `state`.\nThis API returns a maximum of 10,000 datafeeds.",
@@ -19270,7 +19270,7 @@
     "/_ml/datafeeds": {
       "get": {
         "tags": [
-          "ml"
+          "ml anomaly"
         ],
         "summary": "Get datafeeds configuration info",
         "description": "You can get information for multiple datafeeds in a single API request by\nusing a comma-separated list of datafeeds or a wildcard expression. You can\nget information for all datafeeds by using `_all`, by specifying `*` as the\n`<feed_id>`, or by omitting the `<feed_id>`.\nThis API returns a maximum of 10,000 datafeeds.",
@@ -19294,7 +19294,7 @@
     "/_ml/filters": {
       "get": {
         "tags": [
-          "ml"
+          "ml anomaly"
         ],
         "summary": "Get filters",
         "description": "You can get a single filter or all filters.",
@@ -19318,7 +19318,7 @@
     "/_ml/anomaly_detectors/{job_id}/results/influencers": {
       "get": {
         "tags": [
-          "ml"
+          "ml anomaly"
         ],
         "summary": "Get anomaly detection job results for influencers",
         "description": "Influencers are the entities that have contributed to, or are to blame for,\nthe anomalies. Influencer results are available only if an\n`influencer_field_name` is specified in the job configuration.",
@@ -19364,7 +19364,7 @@
       },
       "post": {
         "tags": [
-          "ml"
+          "ml anomaly"
         ],
         "summary": "Get anomaly detection job results for influencers",
         "description": "Influencers are the entities that have contributed to, or are to blame for,\nthe anomalies. Influencer results are available only if an\n`influencer_field_name` is specified in the job configuration.",
@@ -19412,7 +19412,7 @@
     "/_ml/anomaly_detectors/_stats": {
       "get": {
         "tags": [
-          "ml"
+          "ml anomaly"
         ],
         "summary": "Get anomaly detection jobs usage info",
         "operationId": "ml-get-job-stats",
@@ -19432,7 +19432,7 @@
     "/_ml/anomaly_detectors/{job_id}/_stats": {
       "get": {
         "tags": [
-          "ml"
+          "ml anomaly"
         ],
         "summary": "Get anomaly detection jobs usage info",
         "operationId": "ml-get-job-stats-1",
@@ -19455,7 +19455,7 @@
     "/_ml/anomaly_detectors": {
       "get": {
         "tags": [
-          "ml"
+          "ml anomaly"
         ],
         "summary": "Get anomaly detection jobs configuration info",
         "description": "You can get information for multiple anomaly detection jobs in a single API\nrequest by using a group name, a comma-separated list of jobs, or a wildcard\nexpression. You can get information for all anomaly detection jobs by using\n`_all`, by specifying `*` as the `<job_id>`, or by omitting the `<job_id>`.",
@@ -19536,7 +19536,7 @@
     "/_ml/anomaly_detectors/{job_id}/model_snapshots/{snapshot_id}/_upgrade/_stats": {
       "get": {
         "tags": [
-          "ml"
+          "ml anomaly"
         ],
         "summary": "Get anomaly detection job model snapshot upgrade usage info",
         "operationId": "ml-get-model-snapshot-upgrade-stats",
@@ -19607,7 +19607,7 @@
     "/_ml/anomaly_detectors/{job_id}/model_snapshots": {
       "get": {
         "tags": [
-          "ml"
+          "ml anomaly"
         ],
         "summary": "Get model snapshots info",
         "operationId": "ml-get-model-snapshots-2",
@@ -19646,7 +19646,7 @@
       },
       "post": {
         "tags": [
-          "ml"
+          "ml anomaly"
         ],
         "summary": "Get model snapshots info",
         "operationId": "ml-get-model-snapshots-3",
@@ -19687,7 +19687,7 @@
     "/_ml/anomaly_detectors/{job_id}/results/overall_buckets": {
       "get": {
         "tags": [
-          "ml"
+          "ml anomaly"
         ],
         "summary": "Get overall bucket results",
         "description": "Retrievs overall bucket results that summarize the bucket results of\nmultiple anomaly detection jobs.\n\nThe `overall_score` is calculated by combining the scores of all the\nbuckets within the overall bucket span. First, the maximum\n`anomaly_score` per anomaly detection job in the overall bucket is\ncalculated. Then the `top_n` of those scores are averaged to result in\nthe `overall_score`. This means that you can fine-tune the\n`overall_score` so that it is more or less sensitive to the number of\njobs that detect an anomaly at the same time. For example, if you set\n`top_n` to `1`, the `overall_score` is the maximum bucket score in the\noverall bucket. Alternatively, if you set `top_n` to the number of jobs,\nthe `overall_score` is high only when all jobs detect anomalies in that\noverall bucket. If you set the `bucket_span` parameter (to a value\ngreater than its default), the `overall_score` is the maximum\n`overall_score` of the overall buckets that have a span equal to the\njobs' largest bucket span.",
@@ -19730,7 +19730,7 @@
       },
       "post": {
         "tags": [
-          "ml"
+          "ml anomaly"
         ],
         "summary": "Get overall bucket results",
         "description": "Retrievs overall bucket results that summarize the bucket results of\nmultiple anomaly detection jobs.\n\nThe `overall_score` is calculated by combining the scores of all the\nbuckets within the overall bucket span. First, the maximum\n`anomaly_score` per anomaly detection job in the overall bucket is\ncalculated. Then the `top_n` of those scores are averaged to result in\nthe `overall_score`. This means that you can fine-tune the\n`overall_score` so that it is more or less sensitive to the number of\njobs that detect an anomaly at the same time. For example, if you set\n`top_n` to `1`, the `overall_score` is the maximum bucket score in the\noverall bucket. Alternatively, if you set `top_n` to the number of jobs,\nthe `overall_score` is high only when all jobs detect anomalies in that\noverall bucket. If you set the `bucket_span` parameter (to a value\ngreater than its default), the `overall_score` is the maximum\n`overall_score` of the overall buckets that have a span equal to the\njobs' largest bucket span.",
@@ -19775,7 +19775,7 @@
     "/_ml/anomaly_detectors/{job_id}/results/records": {
       "get": {
         "tags": [
-          "ml"
+          "ml anomaly"
         ],
         "summary": "Get anomaly records for an anomaly detection job",
         "description": "Records contain the detailed analytical results. They describe the anomalous\nactivity that has been identified in the input data based on the detector\nconfiguration.\nThere can be many anomaly records depending on the characteristics and size\nof the input data. In practice, there are often too many to be able to\nmanually process them. The machine learning features therefore perform a\nsophisticated aggregation of the anomaly records into buckets.\nThe number of record results depends on the number of anomalies found in each\nbucket, which relates to the number of time series being modeled and the\nnumber of detectors.",
@@ -19821,7 +19821,7 @@
       },
       "post": {
         "tags": [
-          "ml"
+          "ml anomaly"
         ],
         "summary": "Get anomaly records for an anomaly detection job",
         "description": "Records contain the detailed analytical results. They describe the anomalous\nactivity that has been identified in the input data based on the detector\nconfiguration.\nThere can be many anomaly records depending on the characteristics and size\nof the input data. In practice, there are often too many to be able to\nmanually process them. The machine learning features therefore perform a\nsophisticated aggregation of the anomaly records into buckets.\nThe number of record results depends on the number of anomalies found in each\nbucket, which relates to the number of time series being modeled and the\nnumber of detectors.",
@@ -19869,7 +19869,7 @@
     "/_ml/trained_models": {
       "get": {
         "tags": [
-          "ml"
+          "ml trained model"
         ],
         "summary": "Get trained model configuration info",
         "operationId": "ml-get-trained-models-1",
@@ -19907,7 +19907,7 @@
     "/_ml/trained_models/{model_id}/_stats": {
       "get": {
         "tags": [
-          "ml"
+          "ml trained model"
         ],
         "summary": "Get trained models usage info",
         "description": "You can get usage information for multiple trained\nmodels in a single API request by using a comma-separated list of model IDs or a wildcard expression.",
@@ -19937,7 +19937,7 @@
     "/_ml/trained_models/_stats": {
       "get": {
         "tags": [
-          "ml"
+          "ml trained model"
         ],
         "summary": "Get trained models usage info",
         "description": "You can get usage information for multiple trained\nmodels in a single API request by using a comma-separated list of model IDs or a wildcard expression.",
@@ -19964,7 +19964,7 @@
     "/_ml/trained_models/{model_id}/_infer": {
       "post": {
         "tags": [
-          "ml"
+          "ml trained model"
         ],
         "summary": "Evaluate a trained model",
         "operationId": "ml-infer-trained-model",
@@ -19990,7 +19990,7 @@
     "/_ml/trained_models/{model_id}/deployment/_infer": {
       "post": {
         "tags": [
-          "ml"
+          "ml trained model"
         ],
         "summary": "Evaluate a trained model",
         "operationId": "ml-infer-trained-model-1",
@@ -20059,7 +20059,7 @@
     "/_ml/anomaly_detectors/{job_id}/_open": {
       "post": {
         "tags": [
-          "ml"
+          "ml anomaly"
         ],
         "summary": "Open anomaly detection jobs",
         "description": "An anomaly detection job must be opened to be ready to receive and analyze\ndata. It can be opened and closed multiple times throughout its lifecycle.\nWhen you open a new job, it starts with an empty model.\nWhen you open an existing job, the most recent model state is automatically\nloaded. The job is ready to resume its analysis from where it left off, once\nnew data is received.",
@@ -20131,7 +20131,7 @@
     "/_ml/anomaly_detectors/{job_id}/_data": {
       "post": {
         "tags": [
-          "ml"
+          "ml anomaly"
         ],
         "summary": "Send data to an anomaly detection job for analysis",
         "description": "IMPORTANT: For each job, data can be accepted from only a single connection at a time.\nIt is not currently possible to post data to multiple jobs using wildcards or a comma-separated list.",
@@ -20265,7 +20265,7 @@
     "/_ml/data_frame/analytics/_preview": {
       "get": {
         "tags": [
-          "ml"
+          "ml data frame"
         ],
         "summary": "Preview features used by data frame analytics",
         "description": "Previews the extracted features used by a data frame analytics config.",
@@ -20282,7 +20282,7 @@
       },
       "post": {
         "tags": [
-          "ml"
+          "ml data frame"
         ],
         "summary": "Preview features used by data frame analytics",
         "description": "Previews the extracted features used by a data frame analytics config.",
@@ -20301,7 +20301,7 @@
     "/_ml/data_frame/analytics/{id}/_preview": {
       "get": {
         "tags": [
-          "ml"
+          "ml data frame"
         ],
         "summary": "Preview features used by data frame analytics",
         "description": "Previews the extracted features used by a data frame analytics config.",
@@ -20323,7 +20323,7 @@
       },
       "post": {
         "tags": [
-          "ml"
+          "ml data frame"
         ],
         "summary": "Preview features used by data frame analytics",
         "description": "Previews the extracted features used by a data frame analytics config.",
@@ -20347,7 +20347,7 @@
     "/_ml/datafeeds/{datafeed_id}/_preview": {
       "get": {
         "tags": [
-          "ml"
+          "ml anomaly"
         ],
         "summary": "Preview a datafeed",
         "description": "This API returns the first \"page\" of search results from a datafeed.\nYou can preview an existing datafeed or provide configuration details for a datafeed\nand anomaly detection job in the API. The preview shows the structure of the data\nthat will be passed to the anomaly detection engine.\nIMPORTANT: When Elasticsearch security features are enabled, the preview uses the credentials of the user that\ncalled the API. However, when the datafeed starts it uses the roles of the last user that created or updated the\ndatafeed. To get a preview that accurately reflects the behavior of the datafeed, use the appropriate credentials.\nYou can also use secondary authorization headers to supply the credentials.",
@@ -20375,7 +20375,7 @@
       },
       "post": {
         "tags": [
-          "ml"
+          "ml anomaly"
         ],
         "summary": "Preview a datafeed",
         "description": "This API returns the first \"page\" of search results from a datafeed.\nYou can preview an existing datafeed or provide configuration details for a datafeed\nand anomaly detection job in the API. The preview shows the structure of the data\nthat will be passed to the anomaly detection engine.\nIMPORTANT: When Elasticsearch security features are enabled, the preview uses the credentials of the user that\ncalled the API. However, when the datafeed starts it uses the roles of the last user that created or updated the\ndatafeed. To get a preview that accurately reflects the behavior of the datafeed, use the appropriate credentials.\nYou can also use secondary authorization headers to supply the credentials.",
@@ -20405,7 +20405,7 @@
     "/_ml/datafeeds/_preview": {
       "get": {
         "tags": [
-          "ml"
+          "ml anomaly"
         ],
         "summary": "Preview a datafeed",
         "description": "This API returns the first \"page\" of search results from a datafeed.\nYou can preview an existing datafeed or provide configuration details for a datafeed\nand anomaly detection job in the API. The preview shows the structure of the data\nthat will be passed to the anomaly detection engine.\nIMPORTANT: When Elasticsearch security features are enabled, the preview uses the credentials of the user that\ncalled the API. However, when the datafeed starts it uses the roles of the last user that created or updated the\ndatafeed. To get a preview that accurately reflects the behavior of the datafeed, use the appropriate credentials.\nYou can also use secondary authorization headers to supply the credentials.",
@@ -20430,7 +20430,7 @@
       },
       "post": {
         "tags": [
-          "ml"
+          "ml anomaly"
         ],
         "summary": "Preview a datafeed",
         "description": "This API returns the first \"page\" of search results from a datafeed.\nYou can preview an existing datafeed or provide configuration details for a datafeed\nand anomaly detection job in the API. The preview shows the structure of the data\nthat will be passed to the anomaly detection engine.\nIMPORTANT: When Elasticsearch security features are enabled, the preview uses the credentials of the user that\ncalled the API. However, when the datafeed starts it uses the roles of the last user that created or updated the\ndatafeed. To get a preview that accurately reflects the behavior of the datafeed, use the appropriate credentials.\nYou can also use secondary authorization headers to supply the credentials.",
@@ -20457,7 +20457,7 @@
     "/_ml/trained_models/{model_id}/definition/{part}": {
       "put": {
         "tags": [
-          "ml"
+          "ml trained model"
         ],
         "summary": "Create part of a trained model definition",
         "operationId": "ml-put-trained-model-definition-part",
@@ -20532,7 +20532,7 @@
     "/_ml/trained_models/{model_id}/vocabulary": {
       "put": {
         "tags": [
-          "ml"
+          "ml trained model"
         ],
         "summary": "Create a trained model vocabulary",
         "description": "This API is supported only for natural language processing (NLP) models.\nThe vocabulary is stored in the index as described in `inference_config.*.vocabulary` of the trained model definition.",
@@ -20606,7 +20606,7 @@
     "/_ml/anomaly_detectors/{job_id}/_reset": {
       "post": {
         "tags": [
-          "ml"
+          "ml anomaly"
         ],
         "summary": "Reset an anomaly detection job",
         "description": "All model state and results are deleted. The job is ready to start over as if\nit had just been created.\nIt is not currently possible to reset multiple jobs using wildcards or a\ncomma separated list.",
@@ -20662,7 +20662,7 @@
     "/_ml/anomaly_detectors/{job_id}/model_snapshots/{snapshot_id}/_revert": {
       "post": {
         "tags": [
-          "ml"
+          "ml anomaly"
         ],
         "summary": "Revert to a snapshot",
         "description": "The machine learning features react quickly to anomalous input, learning new\nbehaviors in data. Highly anomalous input increases the variance in the\nmodels whilst the system learns whether this is a new step-change in behavior\nor a one-off event. In the case where this anomalous input is known to be a\none-off, then it might be appropriate to reset the model state to a time\nbefore this event. For example, you might consider reverting to a saved\nsnapshot after Black Friday or a critical system failure.",
@@ -20787,7 +20787,7 @@
     "/_ml/data_frame/analytics/{id}/_start": {
       "post": {
         "tags": [
-          "ml"
+          "ml data frame"
         ],
         "summary": "Start a data frame analytics job",
         "description": "A data frame analytics job can be started and stopped multiple times\nthroughout its lifecycle.\nIf the destination index does not exist, it is created automatically the\nfirst time you start the data frame analytics job. The\n`index.number_of_shards` and `index.number_of_replicas` settings for the\ndestination index are copied from the source index. If there are multiple\nsource indices, the destination index copies the highest setting values. The\nmappings for the destination index are also copied from the source indices.\nIf there are any mapping conflicts, the job fails to start.\nIf the destination index exists, it is used as is. You can therefore set up\nthe destination index in advance with custom settings and mappings.",
@@ -20845,7 +20845,7 @@
     "/_ml/datafeeds/{datafeed_id}/_start": {
       "post": {
         "tags": [
-          "ml"
+          "ml anomaly"
         ],
         "summary": "Start datafeeds",
         "description": "A datafeed must be started in order to retrieve data from Elasticsearch. A datafeed can be started and stopped\nmultiple times throughout its lifecycle.\n\nBefore you can start a datafeed, the anomaly detection job must be open. Otherwise, an error occurs.\n\nIf you restart a stopped datafeed, it continues processing input data from the next millisecond after it was stopped.\nIf new data was indexed for that exact millisecond between stopping and starting, it will be ignored.\n\nWhen Elasticsearch security features are enabled, your datafeed remembers which roles the last user to create or\nupdate it had at the time of creation or update and runs the query using those same roles. If you provided secondary\nauthorization headers when you created or updated the datafeed, those credentials are used instead.",
@@ -20944,7 +20944,7 @@
     "/_ml/trained_models/{model_id}/deployment/_start": {
       "post": {
         "tags": [
-          "ml"
+          "ml trained model"
         ],
         "summary": "Start a trained model deployment",
         "description": "It allocates the model to every machine learning node.",
@@ -21068,7 +21068,7 @@
     "/_ml/data_frame/analytics/{id}/_stop": {
       "post": {
         "tags": [
-          "ml"
+          "ml data frame"
         ],
         "summary": "Stop data frame analytics jobs",
         "description": "A data frame analytics job can be started and stopped multiple times\nthroughout its lifecycle.",
@@ -21142,7 +21142,7 @@
     "/_ml/datafeeds/{datafeed_id}/_stop": {
       "post": {
         "tags": [
-          "ml"
+          "ml anomaly"
         ],
         "summary": "Stop datafeeds",
         "description": "A datafeed that is stopped ceases to retrieve data from Elasticsearch. A datafeed can be started and stopped\nmultiple times throughout its lifecycle.",
@@ -21238,7 +21238,7 @@
     "/_ml/trained_models/{model_id}/deployment/_stop": {
       "post": {
         "tags": [
-          "ml"
+          "ml trained model"
         ],
         "summary": "Stop a trained model deployment",
         "operationId": "ml-stop-trained-model-deployment",
@@ -21301,7 +21301,7 @@
     "/_ml/data_frame/analytics/{id}/_update": {
       "post": {
         "tags": [
-          "ml"
+          "ml data frame"
         ],
         "summary": "Update a data frame analytics job",
         "operationId": "ml-update-data-frame-analytics",
@@ -21419,7 +21419,7 @@
     "/_ml/datafeeds/{datafeed_id}/_update": {
       "post": {
         "tags": [
-          "ml"
+          "ml anomaly"
         ],
         "summary": "Update a datafeed",
         "description": "You must stop and start the datafeed for the changes to be applied.\nWhen Elasticsearch security features are enabled, your datafeed remembers which roles the user who updated it had at\nthe time of the update and runs the query using those same roles. If you provide secondary authorization headers,\nthose credentials are used instead.",
@@ -21625,7 +21625,7 @@
     "/_ml/filters/{filter_id}/_update": {
       "post": {
         "tags": [
-          "ml"
+          "ml anomaly"
         ],
         "summary": "Update a filter",
         "description": "Updates the description of a filter, adds items, or removes items from the list.",
@@ -21710,7 +21710,7 @@
     "/_ml/anomaly_detectors/{job_id}/_update": {
       "post": {
         "tags": [
-          "ml"
+          "ml anomaly"
         ],
         "summary": "Update an anomaly detection job",
         "description": "Updates certain properties of an anomaly detection job.",
@@ -21917,7 +21917,7 @@
     "/_ml/anomaly_detectors/{job_id}/model_snapshots/{snapshot_id}/_update": {
       "post": {
         "tags": [
-          "ml"
+          "ml anomaly"
         ],
         "summary": "Update a snapshot",
         "description": "Updates certain properties of a snapshot.",
@@ -21996,7 +21996,7 @@
     "/_ml/trained_models/{model_id}/deployment/_update": {
       "post": {
         "tags": [
-          "ml"
+          "ml trained model"
         ],
         "summary": "Update a trained model deployment",
         "operationId": "ml-update-trained-model-deployment",
@@ -22065,7 +22065,7 @@
     "/_ml/anomaly_detectors/{job_id}/model_snapshots/{snapshot_id}/_upgrade": {
       "post": {
         "tags": [
-          "ml"
+          "ml anomaly"
         ],
         "summary": "Upgrade a snapshot",
         "description": "Upgrades an anomaly detection model snapshot to the latest major version.\nOver time, older snapshot formats are deprecated and removed. Anomaly\ndetection jobs support only snapshots that are from the current or previous\nmajor version.\nThis API provides a means to upgrade a snapshot to the current major version.\nThis aids in preparing the cluster for an upgrade to the next major version.\nOnly one snapshot per anomaly detection job can be upgraded at a time and the\nupgraded snapshot cannot be the current snapshot of the anomaly detection\njob.",

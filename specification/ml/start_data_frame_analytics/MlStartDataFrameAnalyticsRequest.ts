@@ -39,6 +39,7 @@ import { Duration } from '@_types/Time'
  * @availability serverless stability=stable visibility=public
  * @cluster_privileges manage_ml
  * @index_privileges create_index, index, manage, read, view_index_metadata
+ * @doc_tag ml data frame
  */
 export interface Request extends RequestBase {
   path_parts: {

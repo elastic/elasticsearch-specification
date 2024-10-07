@@ -28,7 +28,7 @@ rules:
   oas2-schema: warn
   # Tags
   openapi-tags: warn
-  openapi-tags-alphabetical: info
+  openapi-tags-alphabetical: false
   # Turn off some built-in rules
   operation-description: false
   operation-singular-tag: false

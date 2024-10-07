@@ -26,6 +26,7 @@ import { Id } from '@_types/common'
  * @availability stack since=6.2.0 stability=stable
  * @availability serverless stability=stable visibility=public
  * @doc_id ml-delete-calendar-event
+ * @doc_tag ml anomaly
  */
 export interface Request extends RequestBase {
   path_parts: {
