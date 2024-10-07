@@ -26,6 +26,7 @@ import { Id } from '@_types/common'
  * @availability stack since=5.5.0 stability=stable
  * @availability serverless stability=stable visibility=public
  * @cluster_privileges monitor_ml
+ * @doc_tag ml anomaly
  */
 export interface Request extends RequestBase {
   path_parts: {
