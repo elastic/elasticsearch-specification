@@ -165,10 +165,10 @@ pub fn availability_as_extensions(availabilities: &Option<Availabilities>) -> In
                     }
                     Stability::Stable => {
                         if let Some(since) = &availability.since {
-                            result.insert("x-state".to_string(), serde_json::Value::String(since.clone()));
+                            let stable_since = "Added in ".to_string() + since;
+                            result.insert("x-state".to_string(), serde_json::Value::String(stable_since));
                         }
                     }
-                    _ => {}
                 }
             }
         }

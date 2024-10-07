@@ -72,7 +72,7 @@
             }
           }
         },
-        "x-state": "7.7.0"
+        "x-state": "Added in 7.7.0"
       },
       "delete": {
         "tags": [
@@ -106,7 +106,7 @@
             }
           }
         },
-        "x-state": "7.7.0"
+        "x-state": "Added in 7.7.0"
       }
     },
     "/_async_search/status/{id}": {
@@ -142,7 +142,7 @@
             }
           }
         },
-        "x-state": "7.11.0"
+        "x-state": "Added in 7.11.0"
       }
     },
     "/_async_search": {
@@ -301,7 +301,7 @@
             "$ref": "#/components/responses/async_search.submit#200"
           }
         },
-        "x-state": "7.7.0"
+        "x-state": "Added in 7.7.0"
       }
     },
     "/{index}/_async_search": {
@@ -463,7 +463,7 @@
             "$ref": "#/components/responses/async_search.submit#200"
           }
         },
-        "x-state": "7.7.0"
+        "x-state": "Added in 7.7.0"
       }
     },
     "/_autoscaling/policy/{name}": {
@@ -499,7 +499,7 @@
             }
           }
         },
-        "x-state": "7.11.0"
+        "x-state": "Added in 7.11.0"
       },
       "put": {
         "tags": [
@@ -543,7 +543,7 @@
             }
           }
         },
-        "x-state": "7.11.0"
+        "x-state": "Added in 7.11.0"
       },
       "delete": {
         "tags": [
@@ -577,7 +577,7 @@
             }
           }
         },
-        "x-state": "7.11.0"
+        "x-state": "Added in 7.11.0"
       }
     },
     "/_autoscaling/capacity": {
@@ -611,7 +611,7 @@
             }
           }
         },
-        "x-state": "7.11.0"
+        "x-state": "Added in 7.11.0"
       }
     },
     "/_bulk": {
@@ -903,7 +903,7 @@
             "$ref": "#/components/responses/cat.component_templates#200"
           }
         },
-        "x-state": "5.1.0"
+        "x-state": "Added in 5.1.0"
       }
     },
     "/_cat/component_templates/{name}": {
@@ -924,7 +924,7 @@
             "$ref": "#/components/responses/cat.component_templates#200"
           }
         },
-        "x-state": "5.1.0"
+        "x-state": "Added in 5.1.0"
       }
     },
     "/_cat/count": {
@@ -1211,7 +1211,7 @@
             "$ref": "#/components/responses/cat.ml_data_frame_analytics#200"
           }
         },
-        "x-state": "7.7.0"
+        "x-state": "Added in 7.7.0"
       }
     },
     "/_cat/ml/data_frame/analytics/{id}": {
@@ -1247,7 +1247,7 @@
             "$ref": "#/components/responses/cat.ml_data_frame_analytics#200"
           }
         },
-        "x-state": "7.7.0"
+        "x-state": "Added in 7.7.0"
       }
     },
     "/_cat/ml/datafeeds": {
@@ -1277,7 +1277,7 @@
             "$ref": "#/components/responses/cat.ml_datafeeds#200"
           }
         },
-        "x-state": "7.7.0"
+        "x-state": "Added in 7.7.0"
       }
     },
     "/_cat/ml/datafeeds/{datafeed_id}": {
@@ -1310,7 +1310,7 @@
             "$ref": "#/components/responses/cat.ml_datafeeds#200"
           }
         },
-        "x-state": "7.7.0"
+        "x-state": "Added in 7.7.0"
       }
     },
     "/_cat/ml/anomaly_detectors": {
@@ -1343,7 +1343,7 @@
             "$ref": "#/components/responses/cat.ml_jobs#200"
           }
         },
-        "x-state": "7.7.0"
+        "x-state": "Added in 7.7.0"
       }
     },
     "/_cat/ml/anomaly_detectors/{job_id}": {
@@ -1379,7 +1379,7 @@
             "$ref": "#/components/responses/cat.ml_jobs#200"
           }
         },
-        "x-state": "7.7.0"
+        "x-state": "Added in 7.7.0"
       }
     },
     "/_cat/ml/trained_models": {
@@ -1415,7 +1415,7 @@
             "$ref": "#/components/responses/cat.ml_trained_models#200"
           }
         },
-        "x-state": "7.7.0"
+        "x-state": "Added in 7.7.0"
       }
     },
     "/_cat/ml/trained_models/{model_id}": {
@@ -1454,7 +1454,7 @@
             "$ref": "#/components/responses/cat.ml_trained_models#200"
           }
         },
-        "x-state": "7.7.0"
+        "x-state": "Added in 7.7.0"
       }
     },
     "/_cat/nodeattrs": {
@@ -1674,7 +1674,7 @@
             }
           }
         },
-        "x-state": "2.1.0"
+        "x-state": "Added in 2.1.0"
       }
     },
     "/_cat/segments": {
@@ -1781,7 +1781,7 @@
             "$ref": "#/components/responses/cat.snapshots#200"
           }
         },
-        "x-state": "2.1.0"
+        "x-state": "Added in 2.1.0"
       }
     },
     "/_cat/snapshots/{repository}": {
@@ -1805,7 +1805,7 @@
             "$ref": "#/components/responses/cat.snapshots#200"
           }
         },
-        "x-state": "2.1.0"
+        "x-state": "Added in 2.1.0"
       }
     },
     "/_cat/tasks": {
@@ -1895,7 +1895,7 @@
             "$ref": "#/components/responses/cat.templates#200"
           }
         },
-        "x-state": "5.2.0"
+        "x-state": "Added in 5.2.0"
       }
     },
     "/_cat/templates/{name}": {
@@ -1916,7 +1916,7 @@
             "$ref": "#/components/responses/cat.templates#200"
           }
         },
-        "x-state": "5.2.0"
+        "x-state": "Added in 5.2.0"
       }
     },
     "/_cat/thread_pool": {
@@ -1995,7 +1995,7 @@
             "$ref": "#/components/responses/cat.transforms#200"
           }
         },
-        "x-state": "7.7.0"
+        "x-state": "Added in 7.7.0"
       }
     },
     "/_cat/transforms/{transform_id}": {
@@ -2034,7 +2034,7 @@
             "$ref": "#/components/responses/cat.transforms#200"
           }
         },
-        "x-state": "7.7.0"
+        "x-state": "Added in 7.7.0"
       }
     },
     "/_ccr/auto_follow/{name}": {
@@ -2055,7 +2055,7 @@
             "$ref": "#/components/responses/ccr.get_auto_follow_pattern#200"
           }
         },
-        "x-state": "6.5.0"
+        "x-state": "Added in 6.5.0"
       },
       "put": {
         "tags": [
@@ -2162,7 +2162,7 @@
             }
           }
         },
-        "x-state": "6.5.0"
+        "x-state": "Added in 6.5.0"
       },
       "delete": {
         "tags": [
@@ -2195,7 +2195,7 @@
             }
           }
         },
-        "x-state": "6.5.0"
+        "x-state": "Added in 6.5.0"
       }
     },
     "/{index}/_ccr/follow": {
@@ -2304,7 +2304,7 @@
             }
           }
         },
-        "x-state": "6.5.0"
+        "x-state": "Added in 6.5.0"
       }
     },
     "/{index}/_ccr/info": {
@@ -2350,7 +2350,7 @@
             }
           }
         },
-        "x-state": "6.7.0"
+        "x-state": "Added in 6.7.0"
       }
     },
     "/{index}/_ccr/stats": {
@@ -2396,7 +2396,7 @@
             }
           }
         },
-        "x-state": "6.5.0"
+        "x-state": "Added in 6.5.0"
       }
     },
     "/{index}/_ccr/forget_follower": {
@@ -2463,7 +2463,7 @@
             }
           }
         },
-        "x-state": "6.7.0"
+        "x-state": "Added in 6.7.0"
       }
     },
     "/_ccr/auto_follow": {
@@ -2479,7 +2479,7 @@
             "$ref": "#/components/responses/ccr.get_auto_follow_pattern#200"
           }
         },
-        "x-state": "6.5.0"
+        "x-state": "Added in 6.5.0"
       }
     },
     "/_ccr/auto_follow/{name}/pause": {
@@ -2514,7 +2514,7 @@
             }
           }
         },
-        "x-state": "7.5.0"
+        "x-state": "Added in 7.5.0"
       }
     },
     "/{index}/_ccr/pause_follow": {
@@ -2550,7 +2550,7 @@
             }
           }
         },
-        "x-state": "6.5.0"
+        "x-state": "Added in 6.5.0"
       }
     },
     "/_ccr/auto_follow/{name}/resume": {
@@ -2585,7 +2585,7 @@
             }
           }
         },
-        "x-state": "7.5.0"
+        "x-state": "Added in 7.5.0"
       }
     },
     "/{index}/_ccr/resume_follow": {
@@ -2661,7 +2661,7 @@
             }
           }
         },
-        "x-state": "6.5.0"
+        "x-state": "Added in 6.5.0"
       }
     },
     "/_ccr/stats": {
@@ -2695,7 +2695,7 @@
             }
           }
         },
-        "x-state": "6.5.0"
+        "x-state": "Added in 6.5.0"
       }
     },
     "/{index}/_ccr/unfollow": {
@@ -2730,7 +2730,7 @@
             }
           }
         },
-        "x-state": "6.5.0"
+        "x-state": "Added in 6.5.0"
       }
     },
     "/_search/scroll": {
@@ -2930,7 +2930,7 @@
             }
           }
         },
-        "x-state": "7.10.0"
+        "x-state": "Added in 7.10.0"
       }
     },
     "/_cluster/allocation/explain": {
@@ -2956,7 +2956,7 @@
             "$ref": "#/components/responses/cluster.allocation_explain#200"
           }
         },
-        "x-state": "5.0.0"
+        "x-state": "Added in 5.0.0"
       },
       "post": {
         "tags": [
@@ -2980,7 +2980,7 @@
             "$ref": "#/components/responses/cluster.allocation_explain#200"
           }
         },
-        "x-state": "5.0.0"
+        "x-state": "Added in 5.0.0"
       }
     },
     "/_component_template/{name}": {
@@ -3013,7 +3013,7 @@
             "$ref": "#/components/responses/cluster.get_component_template#200"
           }
         },
-        "x-state": "7.8.0"
+        "x-state": "Added in 7.8.0"
       },
       "put": {
         "tags": [
@@ -3041,7 +3041,7 @@
             "$ref": "#/components/responses/cluster.put_component_template#200"
           }
         },
-        "x-state": "7.8.0"
+        "x-state": "Added in 7.8.0"
       },
       "post": {
         "tags": [
@@ -3069,7 +3069,7 @@
             "$ref": "#/components/responses/cluster.put_component_template#200"
           }
         },
-        "x-state": "7.8.0"
+        "x-state": "Added in 7.8.0"
       },
       "delete": {
         "tags": [
@@ -3123,7 +3123,7 @@
             }
           }
         },
-        "x-state": "7.8.0"
+        "x-state": "Added in 7.8.0"
       },
       "head": {
         "tags": [
@@ -3173,7 +3173,7 @@
             }
           }
         },
-        "x-state": "7.8.0"
+        "x-state": "Added in 7.8.0"
       }
     },
     "/_cluster/voting_config_exclusions": {
@@ -3223,7 +3223,7 @@
             }
           }
         },
-        "x-state": "7.0.0"
+        "x-state": "Added in 7.0.0"
       },
       "delete": {
         "tags": [
@@ -3251,7 +3251,7 @@
             }
           }
         },
-        "x-state": "7.0.0"
+        "x-state": "Added in 7.0.0"
       }
     },
     "/_component_template": {
@@ -3281,7 +3281,7 @@
             "$ref": "#/components/responses/cluster.get_component_template#200"
           }
         },
-        "x-state": "7.8.0"
+        "x-state": "Added in 7.8.0"
       }
     },
     "/_cluster/settings": {
@@ -3517,7 +3517,7 @@
             "$ref": "#/components/responses/cluster.health#200"
           }
         },
-        "x-state": "1.3.0"
+        "x-state": "Added in 1.3.0"
       }
     },
     "/_cluster/health/{index}": {
@@ -3571,7 +3571,7 @@
             "$ref": "#/components/responses/cluster.health#200"
           }
         },
-        "x-state": "1.3.0"
+        "x-state": "Added in 1.3.0"
       }
     },
     "/_info/{target}": {
@@ -3630,7 +3630,7 @@
             }
           }
         },
-        "x-state": "8.9.0"
+        "x-state": "Added in 8.9.0"
       }
     },
     "/_cluster/pending_tasks": {
@@ -3711,7 +3711,7 @@
             }
           }
         },
-        "x-state": "6.1.0"
+        "x-state": "Added in 6.1.0"
       }
     },
     "/_cluster/reroute": {
@@ -3831,7 +3831,7 @@
             }
           }
         },
-        "x-state": "5.0.0"
+        "x-state": "Added in 5.0.0"
       }
     },
     "/_cluster/state": {
@@ -3872,7 +3872,7 @@
             "$ref": "#/components/responses/cluster.state#200"
           }
         },
-        "x-state": "1.3.0"
+        "x-state": "Added in 1.3.0"
       }
     },
     "/_cluster/state/{metric}": {
@@ -3916,7 +3916,7 @@
             "$ref": "#/components/responses/cluster.state#200"
           }
         },
-        "x-state": "1.3.0"
+        "x-state": "Added in 1.3.0"
       }
     },
     "/_cluster/state/{metric}/{index}": {
@@ -3963,7 +3963,7 @@
             "$ref": "#/components/responses/cluster.state#200"
           }
         },
-        "x-state": "1.3.0"
+        "x-state": "Added in 1.3.0"
       }
     },
     "/_cluster/stats": {
@@ -3987,7 +3987,7 @@
             "$ref": "#/components/responses/cluster.stats#200"
           }
         },
-        "x-state": "1.3.0"
+        "x-state": "Added in 1.3.0"
       }
     },
     "/_cluster/stats/nodes/{node_id}": {
@@ -4014,7 +4014,7 @@
             "$ref": "#/components/responses/cluster.stats#200"
           }
         },
-        "x-state": "1.3.0"
+        "x-state": "Added in 1.3.0"
       }
     },
     "/_connector/{connector_id}/_check_in": {
@@ -5780,7 +5780,7 @@
             "$ref": "#/components/responses/create#200"
           }
         },
-        "x-state": "5.0.0"
+        "x-state": "Added in 5.0.0"
       },
       "post": {
         "tags": [
@@ -5826,7 +5826,7 @@
             "$ref": "#/components/responses/create#200"
           }
         },
-        "x-state": "5.0.0"
+        "x-state": "Added in 5.0.0"
       }
     },
     "/_dangling/{index_uuid}": {
@@ -5892,7 +5892,7 @@
             }
           }
         },
-        "x-state": "7.9.0"
+        "x-state": "Added in 7.9.0"
       },
       "delete": {
         "tags": [
@@ -5956,7 +5956,7 @@
             }
           }
         },
-        "x-state": "7.9.0"
+        "x-state": "Added in 7.9.0"
       }
     },
     "/_dangling": {
@@ -5989,7 +5989,7 @@
             }
           }
         },
-        "x-state": "7.9.0"
+        "x-state": "Added in 7.9.0"
       }
     },
     "/{index}/_doc/{id}": {
@@ -6930,7 +6930,7 @@
             }
           }
         },
-        "x-state": "5.0.0"
+        "x-state": "Added in 5.0.0"
       }
     },
     "/_delete_by_query/{task_id}/_rethrottle": {
@@ -6975,7 +6975,7 @@
             }
           }
         },
-        "x-state": "6.5.0"
+        "x-state": "Added in 6.5.0"
       }
     },
     "/_scripts/{id}": {
@@ -7163,7 +7163,7 @@
             "$ref": "#/components/responses/enrich.get_policy#200"
           }
         },
-        "x-state": "7.5.0"
+        "x-state": "Added in 7.5.0"
       },
       "put": {
         "tags": [
@@ -7218,7 +7218,7 @@
             }
           }
         },
-        "x-state": "7.5.0"
+        "x-state": "Added in 7.5.0"
       },
       "delete": {
         "tags": [
@@ -7252,7 +7252,7 @@
             }
           }
         },
-        "x-state": "7.5.0"
+        "x-state": "Added in 7.5.0"
       }
     },
     "/_enrich/policy/{name}/_execute": {
@@ -7305,7 +7305,7 @@
             }
           }
         },
-        "x-state": "7.5.0"
+        "x-state": "Added in 7.5.0"
       }
     },
     "/_enrich/policy": {
@@ -7321,7 +7321,7 @@
             "$ref": "#/components/responses/enrich.get_policy#200"
           }
         },
-        "x-state": "7.5.0"
+        "x-state": "Added in 7.5.0"
       }
     },
     "/_enrich/_stats": {
@@ -7371,7 +7371,7 @@
             }
           }
         },
-        "x-state": "7.5.0"
+        "x-state": "Added in 7.5.0"
       }
     },
     "/_eql/search/{id}": {
@@ -7426,7 +7426,7 @@
             }
           }
         },
-        "x-state": "7.9.0"
+        "x-state": "Added in 7.9.0"
       },
       "delete": {
         "tags": [
@@ -7460,7 +7460,7 @@
             }
           }
         },
-        "x-state": "7.9.0"
+        "x-state": "Added in 7.9.0"
       }
     },
     "/_eql/search/status/{id}": {
@@ -7523,7 +7523,7 @@
             }
           }
         },
-        "x-state": "7.9.0"
+        "x-state": "Added in 7.9.0"
       }
     },
     "/{index}/_eql/search": {
@@ -7564,7 +7564,7 @@
             "$ref": "#/components/responses/eql.search#200"
           }
         },
-        "x-state": "7.9.0"
+        "x-state": "Added in 7.9.0"
       },
       "post": {
         "tags": [
@@ -7603,7 +7603,7 @@
             "$ref": "#/components/responses/eql.search#200"
           }
         },
-        "x-state": "7.9.0"
+        "x-state": "Added in 7.9.0"
       }
     },
     "/_query": {
@@ -7985,7 +7985,7 @@
             }
           }
         },
-        "x-state": "5.4.0"
+        "x-state": "Added in 5.4.0"
       }
     },
     "/{index}/_explain/{id}": {
@@ -8140,7 +8140,7 @@
             }
           }
         },
-        "x-state": "7.12.0"
+        "x-state": "Added in 7.12.0"
       }
     },
     "/_features/_reset": {
@@ -8218,7 +8218,7 @@
             "$ref": "#/components/responses/field_caps#200"
           }
         },
-        "x-state": "5.4.0"
+        "x-state": "Added in 5.4.0"
       },
       "post": {
         "tags": [
@@ -8261,7 +8261,7 @@
             "$ref": "#/components/responses/field_caps#200"
           }
         },
-        "x-state": "5.4.0"
+        "x-state": "Added in 5.4.0"
       }
     },
     "/{index}/_field_caps": {
@@ -8309,7 +8309,7 @@
             "$ref": "#/components/responses/field_caps#200"
           }
         },
-        "x-state": "5.4.0"
+        "x-state": "Added in 5.4.0"
       },
       "post": {
         "tags": [
@@ -8355,7 +8355,7 @@
             "$ref": "#/components/responses/field_caps#200"
           }
         },
-        "x-state": "5.4.0"
+        "x-state": "Added in 5.4.0"
       }
     },
     "/{index}/_fleet/global_checkpoints": {
@@ -8456,7 +8456,7 @@
             }
           }
         },
-        "x-state": "7.13.0"
+        "x-state": "Added in 7.13.0"
       }
     },
     "/_fleet/_fleet_msearch": {
@@ -9159,7 +9159,7 @@
             "$ref": "#/components/responses/health_report#200"
           }
         },
-        "x-state": "8.7.0"
+        "x-state": "Added in 8.7.0"
       }
     },
     "/_health_report/{feature}": {
@@ -9188,7 +9188,7 @@
             "$ref": "#/components/responses/health_report#200"
           }
         },
-        "x-state": "8.7.0"
+        "x-state": "Added in 8.7.0"
       }
     },
     "/_ilm/policy/{policy}": {
@@ -9214,7 +9214,7 @@
             "$ref": "#/components/responses/ilm.get_lifecycle#200"
           }
         },
-        "x-state": "6.6.0"
+        "x-state": "Added in 6.6.0"
       },
       "put": {
         "tags": [
@@ -9282,7 +9282,7 @@
             }
           }
         },
-        "x-state": "6.6.0"
+        "x-state": "Added in 6.6.0"
       },
       "delete": {
         "tags": [
@@ -9336,7 +9336,7 @@
             }
           }
         },
-        "x-state": "6.6.0"
+        "x-state": "Added in 6.6.0"
       }
     },
     "/{index}/_ilm/explain": {
@@ -9423,7 +9423,7 @@
             }
           }
         },
-        "x-state": "6.6.0"
+        "x-state": "Added in 6.6.0"
       }
     },
     "/_ilm/policy": {
@@ -9446,7 +9446,7 @@
             "$ref": "#/components/responses/ilm.get_lifecycle#200"
           }
         },
-        "x-state": "6.6.0"
+        "x-state": "Added in 6.6.0"
       }
     },
     "/_ilm/status": {
@@ -9476,7 +9476,7 @@
             }
           }
         },
-        "x-state": "6.6.0"
+        "x-state": "Added in 6.6.0"
       }
     },
     "/_ilm/migrate_to_data_tiers": {
@@ -9572,7 +9572,7 @@
             }
           }
         },
-        "x-state": "7.14.0"
+        "x-state": "Added in 7.14.0"
       }
     },
     "/_ilm/move/{index}": {
@@ -9628,7 +9628,7 @@
             }
           }
         },
-        "x-state": "6.6.0"
+        "x-state": "Added in 6.6.0"
       }
     },
     "/{index}/_ilm/remove": {
@@ -9678,7 +9678,7 @@
             }
           }
         },
-        "x-state": "6.6.0"
+        "x-state": "Added in 6.6.0"
       }
     },
     "/{index}/_ilm/retry": {
@@ -9713,7 +9713,7 @@
             }
           }
         },
-        "x-state": "6.6.0"
+        "x-state": "Added in 6.6.0"
       }
     },
     "/_ilm/start": {
@@ -9755,7 +9755,7 @@
             }
           }
         },
-        "x-state": "6.6.0"
+        "x-state": "Added in 6.6.0"
       }
     },
     "/_ilm/stop": {
@@ -9797,7 +9797,7 @@
             }
           }
         },
-        "x-state": "6.6.0"
+        "x-state": "Added in 6.6.0"
       }
     },
     "/{index}/_doc": {
@@ -9969,7 +9969,7 @@
             }
           }
         },
-        "x-state": "7.9.0"
+        "x-state": "Added in 7.9.0"
       }
     },
     "/_analyze": {
@@ -10157,7 +10157,7 @@
             "$ref": "#/components/responses/indices.clone#200"
           }
         },
-        "x-state": "7.4.0"
+        "x-state": "Added in 7.4.0"
       },
       "post": {
         "tags": [
@@ -10190,7 +10190,7 @@
             "$ref": "#/components/responses/indices.clone#200"
           }
         },
-        "x-state": "7.4.0"
+        "x-state": "Added in 7.4.0"
       }
     },
     "/{index}/_close": {
@@ -10729,7 +10729,7 @@
             "$ref": "#/components/responses/indices.get_data_stream#200"
           }
         },
-        "x-state": "7.9.0"
+        "x-state": "Added in 7.9.0"
       },
       "put": {
         "tags": [
@@ -10783,7 +10783,7 @@
             }
           }
         },
-        "x-state": "7.9.0"
+        "x-state": "Added in 7.9.0"
       },
       "delete": {
         "tags": [
@@ -10837,7 +10837,7 @@
             }
           }
         },
-        "x-state": "7.9.0"
+        "x-state": "Added in 7.9.0"
       }
     },
     "/_data_stream/_stats": {
@@ -10858,7 +10858,7 @@
             "$ref": "#/components/responses/indices.data_streams_stats#200"
           }
         },
-        "x-state": "7.9.0"
+        "x-state": "Added in 7.9.0"
       }
     },
     "/_data_stream/{name}/_stats": {
@@ -10882,7 +10882,7 @@
             "$ref": "#/components/responses/indices.data_streams_stats#200"
           }
         },
-        "x-state": "7.9.0"
+        "x-state": "Added in 7.9.0"
       }
     },
     "/{index}/_alias/{name}": {
@@ -11203,7 +11203,7 @@
             }
           }
         },
-        "x-state": "8.11.0"
+        "x-state": "Added in 8.11.0"
       },
       "put": {
         "tags": [
@@ -11284,7 +11284,7 @@
             }
           }
         },
-        "x-state": "8.11.0"
+        "x-state": "Added in 8.11.0"
       },
       "delete": {
         "tags": [
@@ -11348,7 +11348,7 @@
             }
           }
         },
-        "x-state": "8.11.0"
+        "x-state": "Added in 8.11.0"
       }
     },
     "/_index_template/{name}": {
@@ -11381,7 +11381,7 @@
             "$ref": "#/components/responses/indices.get_index_template#200"
           }
         },
-        "x-state": "7.9.0"
+        "x-state": "Added in 7.9.0"
       },
       "put": {
         "tags": [
@@ -11412,7 +11412,7 @@
             "$ref": "#/components/responses/indices.put_index_template#200"
           }
         },
-        "x-state": "7.9.0"
+        "x-state": "Added in 7.9.0"
       },
       "post": {
         "tags": [
@@ -11443,7 +11443,7 @@
             "$ref": "#/components/responses/indices.put_index_template#200"
           }
         },
-        "x-state": "7.9.0"
+        "x-state": "Added in 7.9.0"
       },
       "delete": {
         "tags": [
@@ -11497,7 +11497,7 @@
             }
           }
         },
-        "x-state": "7.8.0"
+        "x-state": "Added in 7.8.0"
       },
       "head": {
         "tags": [
@@ -12011,7 +12011,7 @@
             }
           }
         },
-        "x-state": "8.11.0"
+        "x-state": "Added in 8.11.0"
       }
     },
     "/{index}/_field_usage_stats": {
@@ -12280,7 +12280,7 @@
             "$ref": "#/components/responses/indices.forcemerge#200"
           }
         },
-        "x-state": "2.1.0"
+        "x-state": "Added in 2.1.0"
       }
     },
     "/{index}/_forcemerge": {
@@ -12321,7 +12321,7 @@
             "$ref": "#/components/responses/indices.forcemerge#200"
           }
         },
-        "x-state": "2.1.0"
+        "x-state": "Added in 2.1.0"
       }
     },
     "/_alias": {
@@ -12412,7 +12412,7 @@
             "$ref": "#/components/responses/indices.get_data_stream#200"
           }
         },
-        "x-state": "7.9.0"
+        "x-state": "Added in 7.9.0"
       }
     },
     "/_mapping/field/{fields}": {
@@ -12515,7 +12515,7 @@
             "$ref": "#/components/responses/indices.get_index_template#200"
           }
         },
-        "x-state": "7.9.0"
+        "x-state": "Added in 7.9.0"
       }
     },
     "/_mapping": {
@@ -12987,7 +12987,7 @@
             }
           }
         },
-        "x-state": "7.9.0"
+        "x-state": "Added in 7.9.0"
       }
     },
     "/_data_stream/_modify": {
@@ -13032,7 +13032,7 @@
             }
           }
         },
-        "x-state": "7.16.0"
+        "x-state": "Added in 7.16.0"
       }
     },
     "/{index}/_open": {
@@ -13184,7 +13184,7 @@
             }
           }
         },
-        "x-state": "7.9.0"
+        "x-state": "Added in 7.9.0"
       }
     },
     "/_recovery": {
@@ -13368,7 +13368,7 @@
             "$ref": "#/components/responses/indices.reload_search_analyzers#200"
           }
         },
-        "x-state": "7.3.0"
+        "x-state": "Added in 7.3.0"
       },
       "post": {
         "tags": [
@@ -13395,7 +13395,7 @@
             "$ref": "#/components/responses/indices.reload_search_analyzers#200"
           }
         },
-        "x-state": "7.3.0"
+        "x-state": "Added in 7.3.0"
       }
     },
     "/_resolve/cluster/{name}": {
@@ -13474,7 +13474,7 @@
             }
           }
         },
-        "x-state": "8.13.0"
+        "x-state": "Added in 8.13.0"
       }
     },
     "/_resolve/index/{name}": {
@@ -13565,7 +13565,7 @@
             }
           }
         },
-        "x-state": "7.9.0"
+        "x-state": "Added in 7.9.0"
       }
     },
     "/{alias}/_rollover": {
@@ -13601,7 +13601,7 @@
             "$ref": "#/components/responses/indices.rollover#200"
           }
         },
-        "x-state": "5.0.0"
+        "x-state": "Added in 5.0.0"
       }
     },
     "/{alias}/_rollover/{new_index}": {
@@ -13640,7 +13640,7 @@
             "$ref": "#/components/responses/indices.rollover#200"
           }
         },
-        "x-state": "5.0.0"
+        "x-state": "Added in 5.0.0"
       }
     },
     "/_segments": {
@@ -13797,7 +13797,7 @@
             "$ref": "#/components/responses/indices.shrink#200"
           }
         },
-        "x-state": "5.0.0"
+        "x-state": "Added in 5.0.0"
       },
       "post": {
         "tags": [
@@ -13830,7 +13830,7 @@
             "$ref": "#/components/responses/indices.shrink#200"
           }
         },
-        "x-state": "5.0.0"
+        "x-state": "Added in 5.0.0"
       }
     },
     "/_index_template/_simulate_index/{name}": {
@@ -13900,7 +13900,7 @@
             }
           }
         },
-        "x-state": "7.9.0"
+        "x-state": "Added in 7.9.0"
       }
     },
     "/_index_template/_simulate": {
@@ -13996,7 +13996,7 @@
             "$ref": "#/components/responses/indices.split#200"
           }
         },
-        "x-state": "6.1.0"
+        "x-state": "Added in 6.1.0"
       },
       "post": {
         "tags": [
@@ -14029,7 +14029,7 @@
             "$ref": "#/components/responses/indices.split#200"
           }
         },
-        "x-state": "6.1.0"
+        "x-state": "Added in 6.1.0"
       }
     },
     "/_stats": {
@@ -14074,7 +14074,7 @@
             "$ref": "#/components/responses/indices.stats#200"
           }
         },
-        "x-state": "1.3.0"
+        "x-state": "Added in 1.3.0"
       }
     },
     "/_stats/{metric}": {
@@ -14122,7 +14122,7 @@
             "$ref": "#/components/responses/indices.stats#200"
           }
         },
-        "x-state": "1.3.0"
+        "x-state": "Added in 1.3.0"
       }
     },
     "/{index}/_stats": {
@@ -14170,7 +14170,7 @@
             "$ref": "#/components/responses/indices.stats#200"
           }
         },
-        "x-state": "1.3.0"
+        "x-state": "Added in 1.3.0"
       }
     },
     "/{index}/_stats/{metric}": {
@@ -14221,7 +14221,7 @@
             "$ref": "#/components/responses/indices.stats#200"
           }
         },
-        "x-state": "1.3.0"
+        "x-state": "Added in 1.3.0"
       }
     },
     "/{index}/_unfreeze": {
@@ -14328,7 +14328,7 @@
             }
           }
         },
-        "x-state": "6.6.0"
+        "x-state": "Added in 6.6.0"
       }
     },
     "/_aliases": {
@@ -14392,7 +14392,7 @@
             }
           }
         },
-        "x-state": "1.3.0"
+        "x-state": "Added in 1.3.0"
       }
     },
     "/_validate/query": {
@@ -14449,7 +14449,7 @@
             "$ref": "#/components/responses/indices.validate_query#200"
           }
         },
-        "x-state": "1.3.0"
+        "x-state": "Added in 1.3.0"
       },
       "post": {
         "tags": [
@@ -14504,7 +14504,7 @@
             "$ref": "#/components/responses/indices.validate_query#200"
           }
         },
-        "x-state": "1.3.0"
+        "x-state": "Added in 1.3.0"
       }
     },
     "/{index}/_validate/query": {
@@ -14564,7 +14564,7 @@
             "$ref": "#/components/responses/indices.validate_query#200"
           }
         },
-        "x-state": "1.3.0"
+        "x-state": "Added in 1.3.0"
       },
       "post": {
         "tags": [
@@ -14622,7 +14622,7 @@
             "$ref": "#/components/responses/indices.validate_query#200"
           }
         },
-        "x-state": "1.3.0"
+        "x-state": "Added in 1.3.0"
       }
     },
     "/_inference/{inference_id}": {
@@ -14912,7 +14912,7 @@
             "$ref": "#/components/responses/ingest.get_geoip_database#200"
           }
         },
-        "x-state": "8.15.0"
+        "x-state": "Added in 8.15.0"
       },
       "put": {
         "tags": [
@@ -14987,7 +14987,7 @@
             }
           }
         },
-        "x-state": "8.15.0"
+        "x-state": "Added in 8.15.0"
       },
       "delete": {
         "tags": [
@@ -15040,7 +15040,7 @@
             }
           }
         },
-        "x-state": "8.15.0"
+        "x-state": "Added in 8.15.0"
       }
     },
     "/_ingest/pipeline/{id}": {
@@ -15067,7 +15067,7 @@
             "$ref": "#/components/responses/ingest.get_pipeline#200"
           }
         },
-        "x-state": "5.0.0"
+        "x-state": "Added in 5.0.0"
       },
       "put": {
         "tags": [
@@ -15171,7 +15171,7 @@
             }
           }
         },
-        "x-state": "5.0.0"
+        "x-state": "Added in 5.0.0"
       },
       "delete": {
         "tags": [
@@ -15224,7 +15224,7 @@
             }
           }
         },
-        "x-state": "5.0.0"
+        "x-state": "Added in 5.0.0"
       }
     },
     "/_ingest/geoip/stats": {
@@ -15262,7 +15262,7 @@
             }
           }
         },
-        "x-state": "7.13.0"
+        "x-state": "Added in 7.13.0"
       }
     },
     "/_ingest/geoip/database": {
@@ -15282,7 +15282,7 @@
             "$ref": "#/components/responses/ingest.get_geoip_database#200"
           }
         },
-        "x-state": "8.15.0"
+        "x-state": "Added in 8.15.0"
       }
     },
     "/_ingest/pipeline": {
@@ -15306,7 +15306,7 @@
             "$ref": "#/components/responses/ingest.get_pipeline#200"
           }
         },
-        "x-state": "5.0.0"
+        "x-state": "Added in 5.0.0"
       }
     },
     "/_ingest/processor/grok": {
@@ -15340,7 +15340,7 @@
             }
           }
         },
-        "x-state": "6.1.0"
+        "x-state": "Added in 6.1.0"
       }
     },
     "/_ingest/pipeline/_simulate": {
@@ -15363,7 +15363,7 @@
             "$ref": "#/components/responses/ingest.simulate#200"
           }
         },
-        "x-state": "5.0.0"
+        "x-state": "Added in 5.0.0"
       },
       "post": {
         "tags": [
@@ -15384,7 +15384,7 @@
             "$ref": "#/components/responses/ingest.simulate#200"
           }
         },
-        "x-state": "5.0.0"
+        "x-state": "Added in 5.0.0"
       }
     },
     "/_ingest/pipeline/{id}/_simulate": {
@@ -15410,7 +15410,7 @@
             "$ref": "#/components/responses/ingest.simulate#200"
           }
         },
-        "x-state": "5.0.0"
+        "x-state": "Added in 5.0.0"
       },
       "post": {
         "tags": [
@@ -15434,7 +15434,7 @@
             "$ref": "#/components/responses/ingest.simulate#200"
           }
         },
-        "x-state": "5.0.0"
+        "x-state": "Added in 5.0.0"
       }
     },
     "/{index}/_knn_search": {
@@ -15627,7 +15627,7 @@
             }
           }
         },
-        "x-state": "6.3.0"
+        "x-state": "Added in 6.3.0"
       }
     },
     "/_license/trial_status": {
@@ -15657,7 +15657,7 @@
             }
           }
         },
-        "x-state": "6.1.0"
+        "x-state": "Added in 6.1.0"
       }
     },
     "/_license/start_basic": {
@@ -15726,7 +15726,7 @@
             }
           }
         },
-        "x-state": "6.3.0"
+        "x-state": "Added in 6.3.0"
       }
     },
     "/_license/start_trial": {
@@ -15787,7 +15787,7 @@
             }
           }
         },
-        "x-state": "6.1.0"
+        "x-state": "Added in 6.1.0"
       }
     },
     "/_logstash/pipeline/{id}": {
@@ -15807,7 +15807,7 @@
             "$ref": "#/components/responses/logstash.get_pipeline#200"
           }
         },
-        "x-state": "7.12.0"
+        "x-state": "Added in 7.12.0"
       },
       "put": {
         "tags": [
@@ -15846,7 +15846,7 @@
             }
           }
         },
-        "x-state": "7.12.0"
+        "x-state": "Added in 7.12.0"
       },
       "delete": {
         "tags": [
@@ -15875,7 +15875,7 @@
             }
           }
         },
-        "x-state": "7.12.0"
+        "x-state": "Added in 7.12.0"
       }
     },
     "/_logstash/pipeline": {
@@ -15890,7 +15890,7 @@
             "$ref": "#/components/responses/logstash.get_pipeline#200"
           }
         },
-        "x-state": "7.12.0"
+        "x-state": "Added in 7.12.0"
       }
     },
     "/_mget": {
@@ -15937,7 +15937,7 @@
             "$ref": "#/components/responses/mget#200"
           }
         },
-        "x-state": "1.3.0"
+        "x-state": "Added in 1.3.0"
       },
       "post": {
         "tags": [
@@ -15982,7 +15982,7 @@
             "$ref": "#/components/responses/mget#200"
           }
         },
-        "x-state": "1.3.0"
+        "x-state": "Added in 1.3.0"
       }
     },
     "/{index}/_mget": {
@@ -16032,7 +16032,7 @@
             "$ref": "#/components/responses/mget#200"
           }
         },
-        "x-state": "1.3.0"
+        "x-state": "Added in 1.3.0"
       },
       "post": {
         "tags": [
@@ -16080,7 +16080,7 @@
             "$ref": "#/components/responses/mget#200"
           }
         },
-        "x-state": "1.3.0"
+        "x-state": "Added in 1.3.0"
       }
     },
     "/_migration/deprecations": {
@@ -16095,7 +16095,7 @@
             "$ref": "#/components/responses/migration.deprecations#200"
           }
         },
-        "x-state": "6.1.0"
+        "x-state": "Added in 6.1.0"
       }
     },
     "/{index}/_migration/deprecations": {
@@ -16115,7 +16115,7 @@
             "$ref": "#/components/responses/migration.deprecations#200"
           }
         },
-        "x-state": "6.1.0"
+        "x-state": "Added in 6.1.0"
       }
     },
     "/_migration/system_features": {
@@ -16152,7 +16152,7 @@
             }
           }
         },
-        "x-state": "7.16.0"
+        "x-state": "Added in 7.16.0"
       },
       "post": {
         "tags": [
@@ -16187,7 +16187,7 @@
             }
           }
         },
-        "x-state": "7.16.0"
+        "x-state": "Added in 7.16.0"
       }
     },
     "/_ml/trained_models/{model_id}/deployment/cache/_clear": {
@@ -16231,7 +16231,7 @@
             }
           }
         },
-        "x-state": "8.5.0"
+        "x-state": "Added in 8.5.0"
       }
     },
     "/_ml/anomaly_detectors/{job_id}/_close": {
@@ -16327,7 +16327,7 @@
             }
           }
         },
-        "x-state": "5.4.0"
+        "x-state": "Added in 5.4.0"
       }
     },
     "/_ml/calendars/{calendar_id}": {
@@ -16356,7 +16356,7 @@
             "$ref": "#/components/responses/ml.get_calendars#200"
           }
         },
-        "x-state": "6.2.0"
+        "x-state": "Added in 6.2.0"
       },
       "put": {
         "tags": [
@@ -16427,7 +16427,7 @@
             }
           }
         },
-        "x-state": "6.2.0"
+        "x-state": "Added in 6.2.0"
       },
       "post": {
         "tags": [
@@ -16454,7 +16454,7 @@
             "$ref": "#/components/responses/ml.get_calendars#200"
           }
         },
-        "x-state": "6.2.0"
+        "x-state": "Added in 6.2.0"
       },
       "delete": {
         "tags": [
@@ -16488,7 +16488,7 @@
             }
           }
         },
-        "x-state": "6.2.0"
+        "x-state": "Added in 6.2.0"
       }
     },
     "/_ml/calendars/{calendar_id}/events/{event_id}": {
@@ -16534,7 +16534,7 @@
             }
           }
         },
-        "x-state": "6.2.0"
+        "x-state": "Added in 6.2.0"
       }
     },
     "/_ml/calendars/{calendar_id}/jobs/{job_id}": {
@@ -16596,7 +16596,7 @@
             }
           }
         },
-        "x-state": "6.2.0"
+        "x-state": "Added in 6.2.0"
       },
       "delete": {
         "tags": [
@@ -16656,7 +16656,7 @@
             }
           }
         },
-        "x-state": "6.2.0"
+        "x-state": "Added in 6.2.0"
       }
     },
     "/_ml/data_frame/analytics/{id}": {
@@ -16689,7 +16689,7 @@
             "$ref": "#/components/responses/ml.get_data_frame_analytics#200"
           }
         },
-        "x-state": "7.3.0"
+        "x-state": "Added in 7.3.0"
       },
       "put": {
         "tags": [
@@ -16826,7 +16826,7 @@
             }
           }
         },
-        "x-state": "7.3.0"
+        "x-state": "Added in 7.3.0"
       },
       "delete": {
         "tags": [
@@ -16879,7 +16879,7 @@
             }
           }
         },
-        "x-state": "7.3.0"
+        "x-state": "Added in 7.3.0"
       }
     },
     "/_ml/datafeeds/{datafeed_id}": {
@@ -16906,7 +16906,7 @@
             "$ref": "#/components/responses/ml.get_datafeeds#200"
           }
         },
-        "x-state": "5.5.0"
+        "x-state": "Added in 5.5.0"
       },
       "put": {
         "tags": [
@@ -17109,7 +17109,7 @@
             }
           }
         },
-        "x-state": "5.4.0"
+        "x-state": "Added in 5.4.0"
       },
       "delete": {
         "tags": [
@@ -17152,7 +17152,7 @@
             }
           }
         },
-        "x-state": "5.4.0"
+        "x-state": "Added in 5.4.0"
       }
     },
     "/_ml/_delete_expired_data/{job_id}": {
@@ -17182,7 +17182,7 @@
             "$ref": "#/components/responses/ml.delete_expired_data#200"
           }
         },
-        "x-state": "5.4.0"
+        "x-state": "Added in 5.4.0"
       }
     },
     "/_ml/_delete_expired_data": {
@@ -17209,7 +17209,7 @@
             "$ref": "#/components/responses/ml.delete_expired_data#200"
           }
         },
-        "x-state": "5.4.0"
+        "x-state": "Added in 5.4.0"
       }
     },
     "/_ml/filters/{filter_id}": {
@@ -17236,7 +17236,7 @@
             "$ref": "#/components/responses/ml.get_filters#200"
           }
         },
-        "x-state": "5.5.0"
+        "x-state": "Added in 5.5.0"
       },
       "put": {
         "tags": [
@@ -17312,7 +17312,7 @@
             }
           }
         },
-        "x-state": "5.4.0"
+        "x-state": "Added in 5.4.0"
       },
       "delete": {
         "tags": [
@@ -17346,7 +17346,7 @@
             }
           }
         },
-        "x-state": "5.4.0"
+        "x-state": "Added in 5.4.0"
       }
     },
     "/_ml/anomaly_detectors/{job_id}/_forecast": {
@@ -17445,7 +17445,7 @@
             }
           }
         },
-        "x-state": "6.1.0"
+        "x-state": "Added in 6.1.0"
       },
       "delete": {
         "tags": [
@@ -17470,7 +17470,7 @@
             "$ref": "#/components/responses/ml.delete_forecast#200"
           }
         },
-        "x-state": "6.5.0"
+        "x-state": "Added in 6.5.0"
       }
     },
     "/_ml/anomaly_detectors/{job_id}/_forecast/{forecast_id}": {
@@ -17500,7 +17500,7 @@
             "$ref": "#/components/responses/ml.delete_forecast#200"
           }
         },
-        "x-state": "6.5.0"
+        "x-state": "Added in 6.5.0"
       }
     },
     "/_ml/anomaly_detectors/{job_id}": {
@@ -17527,7 +17527,7 @@
             "$ref": "#/components/responses/ml.get_jobs#200"
           }
         },
-        "x-state": "5.5.0"
+        "x-state": "Added in 5.5.0"
       },
       "put": {
         "tags": [
@@ -17710,7 +17710,7 @@
             }
           }
         },
-        "x-state": "5.4.0"
+        "x-state": "Added in 5.4.0"
       },
       "delete": {
         "tags": [
@@ -17774,7 +17774,7 @@
             }
           }
         },
-        "x-state": "5.4.0"
+        "x-state": "Added in 5.4.0"
       }
     },
     "/_ml/anomaly_detectors/{job_id}/model_snapshots/{snapshot_id}": {
@@ -17818,7 +17818,7 @@
             "$ref": "#/components/responses/ml.get_model_snapshots#200"
           }
         },
-        "x-state": "5.4.0"
+        "x-state": "Added in 5.4.0"
       },
       "post": {
         "tags": [
@@ -17860,7 +17860,7 @@
             "$ref": "#/components/responses/ml.get_model_snapshots#200"
           }
         },
-        "x-state": "5.4.0"
+        "x-state": "Added in 5.4.0"
       },
       "delete": {
         "tags": [
@@ -17905,7 +17905,7 @@
             }
           }
         },
-        "x-state": "5.4.0"
+        "x-state": "Added in 5.4.0"
       }
     },
     "/_ml/trained_models/{model_id}": {
@@ -17946,7 +17946,7 @@
             "$ref": "#/components/responses/ml.get_trained_models#200"
           }
         },
-        "x-state": "7.10.0"
+        "x-state": "Added in 7.10.0"
       },
       "put": {
         "tags": [
@@ -18054,7 +18054,7 @@
             }
           }
         },
-        "x-state": "7.10.0"
+        "x-state": "Added in 7.10.0"
       },
       "delete": {
         "tags": [
@@ -18098,7 +18098,7 @@
             }
           }
         },
-        "x-state": "7.10.0"
+        "x-state": "Added in 7.10.0"
       }
     },
     "/_ml/trained_models/{model_id}/model_aliases/{model_alias}": {
@@ -18155,7 +18155,7 @@
             }
           }
         },
-        "x-state": "7.13.0"
+        "x-state": "Added in 7.13.0"
       },
       "delete": {
         "tags": [
@@ -18200,7 +18200,7 @@
             }
           }
         },
-        "x-state": "7.13.0"
+        "x-state": "Added in 7.13.0"
       }
     },
     "/_ml/anomaly_detectors/_estimate_model_memory": {
@@ -18260,7 +18260,7 @@
             }
           }
         },
-        "x-state": "7.7.0"
+        "x-state": "Added in 7.7.0"
       }
     },
     "/_ml/data_frame/_evaluate": {
@@ -18319,7 +18319,7 @@
             }
           }
         },
-        "x-state": "7.3.0"
+        "x-state": "Added in 7.3.0"
       }
     },
     "/_ml/data_frame/analytics/_explain": {
@@ -18338,7 +18338,7 @@
             "$ref": "#/components/responses/ml.explain_data_frame_analytics#200"
           }
         },
-        "x-state": "7.3.0"
+        "x-state": "Added in 7.3.0"
       },
       "post": {
         "tags": [
@@ -18355,7 +18355,7 @@
             "$ref": "#/components/responses/ml.explain_data_frame_analytics#200"
           }
         },
-        "x-state": "7.3.0"
+        "x-state": "Added in 7.3.0"
       }
     },
     "/_ml/data_frame/analytics/{id}/_explain": {
@@ -18379,7 +18379,7 @@
             "$ref": "#/components/responses/ml.explain_data_frame_analytics#200"
           }
         },
-        "x-state": "7.3.0"
+        "x-state": "Added in 7.3.0"
       },
       "post": {
         "tags": [
@@ -18401,7 +18401,7 @@
             "$ref": "#/components/responses/ml.explain_data_frame_analytics#200"
           }
         },
-        "x-state": "7.3.0"
+        "x-state": "Added in 7.3.0"
       }
     },
     "/_ml/anomaly_detectors/{job_id}/_flush": {
@@ -18526,7 +18526,7 @@
             }
           }
         },
-        "x-state": "5.4.0"
+        "x-state": "Added in 5.4.0"
       }
     },
     "/_ml/anomaly_detectors/{job_id}/results/buckets/{timestamp}": {
@@ -18580,7 +18580,7 @@
             "$ref": "#/components/responses/ml.get_buckets#200"
           }
         },
-        "x-state": "5.4.0"
+        "x-state": "Added in 5.4.0"
       },
       "post": {
         "tags": [
@@ -18632,7 +18632,7 @@
             "$ref": "#/components/responses/ml.get_buckets#200"
           }
         },
-        "x-state": "5.4.0"
+        "x-state": "Added in 5.4.0"
       }
     },
     "/_ml/anomaly_detectors/{job_id}/results/buckets": {
@@ -18683,7 +18683,7 @@
             "$ref": "#/components/responses/ml.get_buckets#200"
           }
         },
-        "x-state": "5.4.0"
+        "x-state": "Added in 5.4.0"
       },
       "post": {
         "tags": [
@@ -18732,7 +18732,7 @@
             "$ref": "#/components/responses/ml.get_buckets#200"
           }
         },
-        "x-state": "5.4.0"
+        "x-state": "Added in 5.4.0"
       }
     },
     "/_ml/calendars/{calendar_id}/events": {
@@ -18832,7 +18832,7 @@
             }
           }
         },
-        "x-state": "6.2.0"
+        "x-state": "Added in 6.2.0"
       },
       "post": {
         "tags": [
@@ -18898,7 +18898,7 @@
             }
           }
         },
-        "x-state": "6.2.0"
+        "x-state": "Added in 6.2.0"
       }
     },
     "/_ml/calendars": {
@@ -18924,7 +18924,7 @@
             "$ref": "#/components/responses/ml.get_calendars#200"
           }
         },
-        "x-state": "6.2.0"
+        "x-state": "Added in 6.2.0"
       },
       "post": {
         "tags": [
@@ -18948,7 +18948,7 @@
             "$ref": "#/components/responses/ml.get_calendars#200"
           }
         },
-        "x-state": "6.2.0"
+        "x-state": "Added in 6.2.0"
       }
     },
     "/_ml/anomaly_detectors/{job_id}/results/categories/{category_id}": {
@@ -18983,7 +18983,7 @@
             "$ref": "#/components/responses/ml.get_categories#200"
           }
         },
-        "x-state": "5.4.0"
+        "x-state": "Added in 5.4.0"
       },
       "post": {
         "tags": [
@@ -19016,7 +19016,7 @@
             "$ref": "#/components/responses/ml.get_categories#200"
           }
         },
-        "x-state": "5.4.0"
+        "x-state": "Added in 5.4.0"
       }
     },
     "/_ml/anomaly_detectors/{job_id}/results/categories": {
@@ -19048,7 +19048,7 @@
             "$ref": "#/components/responses/ml.get_categories#200"
           }
         },
-        "x-state": "5.4.0"
+        "x-state": "Added in 5.4.0"
       },
       "post": {
         "tags": [
@@ -19078,7 +19078,7 @@
             "$ref": "#/components/responses/ml.get_categories#200"
           }
         },
-        "x-state": "5.4.0"
+        "x-state": "Added in 5.4.0"
       }
     },
     "/_ml/data_frame/analytics": {
@@ -19108,7 +19108,7 @@
             "$ref": "#/components/responses/ml.get_data_frame_analytics#200"
           }
         },
-        "x-state": "7.3.0"
+        "x-state": "Added in 7.3.0"
       }
     },
     "/_ml/data_frame/analytics/_stats": {
@@ -19137,7 +19137,7 @@
             "$ref": "#/components/responses/ml.get_data_frame_analytics_stats#200"
           }
         },
-        "x-state": "7.3.0"
+        "x-state": "Added in 7.3.0"
       }
     },
     "/_ml/data_frame/analytics/{id}/_stats": {
@@ -19169,7 +19169,7 @@
             "$ref": "#/components/responses/ml.get_data_frame_analytics_stats#200"
           }
         },
-        "x-state": "7.3.0"
+        "x-state": "Added in 7.3.0"
       }
     },
     "/_ml/datafeeds/{datafeed_id}/_stats": {
@@ -19193,7 +19193,7 @@
             "$ref": "#/components/responses/ml.get_datafeed_stats#200"
           }
         },
-        "x-state": "5.5.0"
+        "x-state": "Added in 5.5.0"
       }
     },
     "/_ml/datafeeds/_stats": {
@@ -19214,7 +19214,7 @@
             "$ref": "#/components/responses/ml.get_datafeed_stats#200"
           }
         },
-        "x-state": "5.5.0"
+        "x-state": "Added in 5.5.0"
       }
     },
     "/_ml/datafeeds": {
@@ -19238,7 +19238,7 @@
             "$ref": "#/components/responses/ml.get_datafeeds#200"
           }
         },
-        "x-state": "5.5.0"
+        "x-state": "Added in 5.5.0"
       }
     },
     "/_ml/filters": {
@@ -19262,7 +19262,7 @@
             "$ref": "#/components/responses/ml.get_filters#200"
           }
         },
-        "x-state": "5.5.0"
+        "x-state": "Added in 5.5.0"
       }
     },
     "/_ml/anomaly_detectors/{job_id}/results/influencers": {
@@ -19310,7 +19310,7 @@
             "$ref": "#/components/responses/ml.get_influencers#200"
           }
         },
-        "x-state": "5.4.0"
+        "x-state": "Added in 5.4.0"
       },
       "post": {
         "tags": [
@@ -19356,7 +19356,7 @@
             "$ref": "#/components/responses/ml.get_influencers#200"
           }
         },
-        "x-state": "5.4.0"
+        "x-state": "Added in 5.4.0"
       }
     },
     "/_ml/anomaly_detectors/_stats": {
@@ -19376,7 +19376,7 @@
             "$ref": "#/components/responses/ml.get_job_stats#200"
           }
         },
-        "x-state": "5.5.0"
+        "x-state": "Added in 5.5.0"
       }
     },
     "/_ml/anomaly_detectors/{job_id}/_stats": {
@@ -19399,7 +19399,7 @@
             "$ref": "#/components/responses/ml.get_job_stats#200"
           }
         },
-        "x-state": "5.5.0"
+        "x-state": "Added in 5.5.0"
       }
     },
     "/_ml/anomaly_detectors": {
@@ -19423,7 +19423,7 @@
             "$ref": "#/components/responses/ml.get_jobs#200"
           }
         },
-        "x-state": "5.5.0"
+        "x-state": "Added in 5.5.0"
       }
     },
     "/_ml/memory/_stats": {
@@ -19450,7 +19450,7 @@
             "$ref": "#/components/responses/ml.get_memory_stats#200"
           }
         },
-        "x-state": "8.2.0"
+        "x-state": "Added in 8.2.0"
       }
     },
     "/_ml/memory/{node_id}/_stats": {
@@ -19480,7 +19480,7 @@
             "$ref": "#/components/responses/ml.get_memory_stats#200"
           }
         },
-        "x-state": "8.2.0"
+        "x-state": "Added in 8.2.0"
       }
     },
     "/_ml/anomaly_detectors/{job_id}/model_snapshots/{snapshot_id}/_upgrade/_stats": {
@@ -19551,7 +19551,7 @@
             }
           }
         },
-        "x-state": "7.16.0"
+        "x-state": "Added in 7.16.0"
       }
     },
     "/_ml/anomaly_detectors/{job_id}/model_snapshots": {
@@ -19592,7 +19592,7 @@
             "$ref": "#/components/responses/ml.get_model_snapshots#200"
           }
         },
-        "x-state": "5.4.0"
+        "x-state": "Added in 5.4.0"
       },
       "post": {
         "tags": [
@@ -19631,7 +19631,7 @@
             "$ref": "#/components/responses/ml.get_model_snapshots#200"
           }
         },
-        "x-state": "5.4.0"
+        "x-state": "Added in 5.4.0"
       }
     },
     "/_ml/anomaly_detectors/{job_id}/results/overall_buckets": {
@@ -19676,7 +19676,7 @@
             "$ref": "#/components/responses/ml.get_overall_buckets#200"
           }
         },
-        "x-state": "6.1.0"
+        "x-state": "Added in 6.1.0"
       },
       "post": {
         "tags": [
@@ -19719,7 +19719,7 @@
             "$ref": "#/components/responses/ml.get_overall_buckets#200"
           }
         },
-        "x-state": "6.1.0"
+        "x-state": "Added in 6.1.0"
       }
     },
     "/_ml/anomaly_detectors/{job_id}/results/records": {
@@ -19767,7 +19767,7 @@
             "$ref": "#/components/responses/ml.get_records#200"
           }
         },
-        "x-state": "5.4.0"
+        "x-state": "Added in 5.4.0"
       },
       "post": {
         "tags": [
@@ -19813,7 +19813,7 @@
             "$ref": "#/components/responses/ml.get_records#200"
           }
         },
-        "x-state": "5.4.0"
+        "x-state": "Added in 5.4.0"
       }
     },
     "/_ml/trained_models": {
@@ -19851,7 +19851,7 @@
             "$ref": "#/components/responses/ml.get_trained_models#200"
           }
         },
-        "x-state": "7.10.0"
+        "x-state": "Added in 7.10.0"
       }
     },
     "/_ml/trained_models/{model_id}/_stats": {
@@ -19881,7 +19881,7 @@
             "$ref": "#/components/responses/ml.get_trained_models_stats#200"
           }
         },
-        "x-state": "7.10.0"
+        "x-state": "Added in 7.10.0"
       }
     },
     "/_ml/trained_models/_stats": {
@@ -19908,7 +19908,7 @@
             "$ref": "#/components/responses/ml.get_trained_models_stats#200"
           }
         },
-        "x-state": "7.10.0"
+        "x-state": "Added in 7.10.0"
       }
     },
     "/_ml/trained_models/{model_id}/_infer": {
@@ -19934,7 +19934,7 @@
             "$ref": "#/components/responses/ml.infer_trained_model#200"
           }
         },
-        "x-state": "8.3.0"
+        "x-state": "Added in 8.3.0"
       }
     },
     "/_ml/trained_models/{model_id}/deployment/_infer": {
@@ -19960,7 +19960,7 @@
             "$ref": "#/components/responses/ml.infer_trained_model#200"
           }
         },
-        "x-state": "8.3.0"
+        "x-state": "Added in 8.3.0"
       }
     },
     "/_ml/info": {
@@ -20003,7 +20003,7 @@
             }
           }
         },
-        "x-state": "6.3.0"
+        "x-state": "Added in 6.3.0"
       }
     },
     "/_ml/anomaly_detectors/{job_id}/_open": {
@@ -20075,7 +20075,7 @@
             }
           }
         },
-        "x-state": "5.4.0"
+        "x-state": "Added in 5.4.0"
       }
     },
     "/_ml/anomaly_detectors/{job_id}/_data": {
@@ -20209,7 +20209,7 @@
           }
         },
         "deprecated": true,
-        "x-state": "5.4.0"
+        "x-state": "Added in 5.4.0"
       }
     },
     "/_ml/data_frame/analytics/_preview": {
@@ -20228,7 +20228,7 @@
             "$ref": "#/components/responses/ml.preview_data_frame_analytics#200"
           }
         },
-        "x-state": "7.13.0"
+        "x-state": "Added in 7.13.0"
       },
       "post": {
         "tags": [
@@ -20245,7 +20245,7 @@
             "$ref": "#/components/responses/ml.preview_data_frame_analytics#200"
           }
         },
-        "x-state": "7.13.0"
+        "x-state": "Added in 7.13.0"
       }
     },
     "/_ml/data_frame/analytics/{id}/_preview": {
@@ -20269,7 +20269,7 @@
             "$ref": "#/components/responses/ml.preview_data_frame_analytics#200"
           }
         },
-        "x-state": "7.13.0"
+        "x-state": "Added in 7.13.0"
       },
       "post": {
         "tags": [
@@ -20291,7 +20291,7 @@
             "$ref": "#/components/responses/ml.preview_data_frame_analytics#200"
           }
         },
-        "x-state": "7.13.0"
+        "x-state": "Added in 7.13.0"
       }
     },
     "/_ml/datafeeds/{datafeed_id}/_preview": {
@@ -20321,7 +20321,7 @@
             "$ref": "#/components/responses/ml.preview_datafeed#200"
           }
         },
-        "x-state": "5.4.0"
+        "x-state": "Added in 5.4.0"
       },
       "post": {
         "tags": [
@@ -20349,7 +20349,7 @@
             "$ref": "#/components/responses/ml.preview_datafeed#200"
           }
         },
-        "x-state": "5.4.0"
+        "x-state": "Added in 5.4.0"
       }
     },
     "/_ml/datafeeds/_preview": {
@@ -20376,7 +20376,7 @@
             "$ref": "#/components/responses/ml.preview_datafeed#200"
           }
         },
-        "x-state": "5.4.0"
+        "x-state": "Added in 5.4.0"
       },
       "post": {
         "tags": [
@@ -20401,7 +20401,7 @@
             "$ref": "#/components/responses/ml.preview_datafeed#200"
           }
         },
-        "x-state": "5.4.0"
+        "x-state": "Added in 5.4.0"
       }
     },
     "/_ml/trained_models/{model_id}/definition/{part}": {
@@ -20476,7 +20476,7 @@
             }
           }
         },
-        "x-state": "8.0.0"
+        "x-state": "Added in 8.0.0"
       }
     },
     "/_ml/trained_models/{model_id}/vocabulary": {
@@ -20548,7 +20548,7 @@
             }
           }
         },
-        "x-state": "8.0.0"
+        "x-state": "Added in 8.0.0"
       }
     },
     "/_ml/anomaly_detectors/{job_id}/_reset": {
@@ -20604,7 +20604,7 @@
             }
           }
         },
-        "x-state": "7.14.0"
+        "x-state": "Added in 7.14.0"
       }
     },
     "/_ml/anomaly_detectors/{job_id}/model_snapshots/{snapshot_id}/_revert": {
@@ -20684,7 +20684,7 @@
             }
           }
         },
-        "x-state": "5.4.0"
+        "x-state": "Added in 5.4.0"
       }
     },
     "/_ml/set_upgrade_mode": {
@@ -20729,7 +20729,7 @@
             }
           }
         },
-        "x-state": "6.7.0"
+        "x-state": "Added in 6.7.0"
       }
     },
     "/_ml/data_frame/analytics/{id}/_start": {
@@ -20787,7 +20787,7 @@
             }
           }
         },
-        "x-state": "7.3.0"
+        "x-state": "Added in 7.3.0"
       }
     },
     "/_ml/datafeeds/{datafeed_id}/_start": {
@@ -20886,7 +20886,7 @@
             }
           }
         },
-        "x-state": "5.5.0"
+        "x-state": "Added in 5.5.0"
       }
     },
     "/_ml/trained_models/{model_id}/deployment/_start": {
@@ -21010,7 +21010,7 @@
             }
           }
         },
-        "x-state": "8.0.0"
+        "x-state": "Added in 8.0.0"
       }
     },
     "/_ml/data_frame/analytics/{id}/_stop": {
@@ -21084,7 +21084,7 @@
             }
           }
         },
-        "x-state": "7.3.0"
+        "x-state": "Added in 7.3.0"
       }
     },
     "/_ml/datafeeds/{datafeed_id}/_stop": {
@@ -21180,7 +21180,7 @@
             }
           }
         },
-        "x-state": "5.4.0"
+        "x-state": "Added in 5.4.0"
       }
     },
     "/_ml/trained_models/{model_id}/deployment/_stop": {
@@ -21243,7 +21243,7 @@
             }
           }
         },
-        "x-state": "8.0.0"
+        "x-state": "Added in 8.0.0"
       }
     },
     "/_ml/data_frame/analytics/{id}/_update": {
@@ -21361,7 +21361,7 @@
             }
           }
         },
-        "x-state": "7.3.0"
+        "x-state": "Added in 7.3.0"
       }
     },
     "/_ml/datafeeds/{datafeed_id}/_update": {
@@ -21567,7 +21567,7 @@
             }
           }
         },
-        "x-state": "6.4.0"
+        "x-state": "Added in 6.4.0"
       }
     },
     "/_ml/filters/{filter_id}/_update": {
@@ -21652,7 +21652,7 @@
             }
           }
         },
-        "x-state": "6.4.0"
+        "x-state": "Added in 6.4.0"
       }
     },
     "/_ml/anomaly_detectors/{job_id}/_update": {
@@ -21859,7 +21859,7 @@
             }
           }
         },
-        "x-state": "5.5.0"
+        "x-state": "Added in 5.5.0"
       }
     },
     "/_ml/anomaly_detectors/{job_id}/model_snapshots/{snapshot_id}/_update": {
@@ -21938,7 +21938,7 @@
             }
           }
         },
-        "x-state": "5.4.0"
+        "x-state": "Added in 5.4.0"
       }
     },
     "/_ml/trained_models/{model_id}/deployment/_update": {
@@ -22007,7 +22007,7 @@
           }
         },
         "x-beta": true,
-        "x-state": "8.6.0"
+        "x-state": "Added in 8.6.0"
       }
     },
     "/_ml/anomaly_detectors/{job_id}/model_snapshots/{snapshot_id}/_upgrade": {
@@ -22087,7 +22087,7 @@
             }
           }
         },
-        "x-state": "5.4.0"
+        "x-state": "Added in 5.4.0"
       }
     },
     "/_ml/anomaly_detectors/_validate": {
@@ -22148,7 +22148,7 @@
             }
           }
         },
-        "x-state": "6.3.0"
+        "x-state": "Added in 6.3.0"
       }
     },
     "/_ml/anomaly_detectors/_validate/detector": {
@@ -22180,7 +22180,7 @@
             }
           }
         },
-        "x-state": "5.4.0"
+        "x-state": "Added in 5.4.0"
       }
     },
     "/_monitoring/bulk": {
@@ -22209,7 +22209,7 @@
             "$ref": "#/components/responses/monitoring.bulk#200"
           }
         },
-        "x-state": "6.3.0"
+        "x-state": "Added in 6.3.0"
       },
       "post": {
         "tags": [
@@ -22236,7 +22236,7 @@
             "$ref": "#/components/responses/monitoring.bulk#200"
           }
         },
-        "x-state": "6.3.0"
+        "x-state": "Added in 6.3.0"
       }
     },
     "/_monitoring/{type}/bulk": {
@@ -22268,7 +22268,7 @@
             "$ref": "#/components/responses/monitoring.bulk#200"
           }
         },
-        "x-state": "6.3.0"
+        "x-state": "Added in 6.3.0"
       },
       "post": {
         "tags": [
@@ -22298,7 +22298,7 @@
             "$ref": "#/components/responses/monitoring.bulk#200"
           }
         },
-        "x-state": "6.3.0"
+        "x-state": "Added in 6.3.0"
       }
     },
     "/_msearch": {
@@ -22357,7 +22357,7 @@
             "$ref": "#/components/responses/msearch#200"
           }
         },
-        "x-state": "1.3.0"
+        "x-state": "Added in 1.3.0"
       },
       "post": {
         "tags": [
@@ -22414,7 +22414,7 @@
             "$ref": "#/components/responses/msearch#200"
           }
         },
-        "x-state": "1.3.0"
+        "x-state": "Added in 1.3.0"
       }
     },
     "/{index}/_msearch": {
@@ -22476,7 +22476,7 @@
             "$ref": "#/components/responses/msearch#200"
           }
         },
-        "x-state": "1.3.0"
+        "x-state": "Added in 1.3.0"
       },
       "post": {
         "tags": [
@@ -22536,7 +22536,7 @@
             "$ref": "#/components/responses/msearch#200"
           }
         },
-        "x-state": "1.3.0"
+        "x-state": "Added in 1.3.0"
       }
     },
     "/_msearch/template": {
@@ -22571,7 +22571,7 @@
             "$ref": "#/components/responses/msearch_template#200"
           }
         },
-        "x-state": "5.0.0"
+        "x-state": "Added in 5.0.0"
       },
       "post": {
         "tags": [
@@ -22604,7 +22604,7 @@
             "$ref": "#/components/responses/msearch_template#200"
           }
         },
-        "x-state": "5.0.0"
+        "x-state": "Added in 5.0.0"
       }
     },
     "/{index}/_msearch/template": {
@@ -22642,7 +22642,7 @@
             "$ref": "#/components/responses/msearch_template#200"
           }
         },
-        "x-state": "5.0.0"
+        "x-state": "Added in 5.0.0"
       },
       "post": {
         "tags": [
@@ -22678,7 +22678,7 @@
             "$ref": "#/components/responses/msearch_template#200"
           }
         },
-        "x-state": "5.0.0"
+        "x-state": "Added in 5.0.0"
       }
     },
     "/_mtermvectors": {
@@ -23093,7 +23093,7 @@
             "$ref": "#/components/responses/nodes.info#200"
           }
         },
-        "x-state": "1.3.0"
+        "x-state": "Added in 1.3.0"
       }
     },
     "/_nodes/{node_id}": {
@@ -23122,7 +23122,7 @@
             "$ref": "#/components/responses/nodes.info#200"
           }
         },
-        "x-state": "1.3.0"
+        "x-state": "Added in 1.3.0"
       }
     },
     "/_nodes/{metric}": {
@@ -23151,7 +23151,7 @@
             "$ref": "#/components/responses/nodes.info#200"
           }
         },
-        "x-state": "1.3.0"
+        "x-state": "Added in 1.3.0"
       }
     },
     "/_nodes/{node_id}/{metric}": {
@@ -23183,7 +23183,7 @@
             "$ref": "#/components/responses/nodes.info#200"
           }
         },
-        "x-state": "1.3.0"
+        "x-state": "Added in 1.3.0"
       }
     },
     "/_nodes/reload_secure_settings": {
@@ -23206,7 +23206,7 @@
             "$ref": "#/components/responses/nodes.reload_secure_settings#200"
           }
         },
-        "x-state": "6.5.0"
+        "x-state": "Added in 6.5.0"
       }
     },
     "/_nodes/{node_id}/reload_secure_settings": {
@@ -23232,7 +23232,7 @@
             "$ref": "#/components/responses/nodes.reload_secure_settings#200"
           }
         },
-        "x-state": "6.5.0"
+        "x-state": "Added in 6.5.0"
       }
     },
     "/_nodes/stats": {
@@ -23555,7 +23555,7 @@
             "$ref": "#/components/responses/nodes.usage#200"
           }
         },
-        "x-state": "6.0.0"
+        "x-state": "Added in 6.0.0"
       }
     },
     "/_nodes/{node_id}/usage": {
@@ -23578,7 +23578,7 @@
             "$ref": "#/components/responses/nodes.usage#200"
           }
         },
-        "x-state": "6.0.0"
+        "x-state": "Added in 6.0.0"
       }
     },
     "/_nodes/usage/{metric}": {
@@ -23601,7 +23601,7 @@
             "$ref": "#/components/responses/nodes.usage#200"
           }
         },
-        "x-state": "6.0.0"
+        "x-state": "Added in 6.0.0"
       }
     },
     "/_nodes/{node_id}/usage/{metric}": {
@@ -23627,7 +23627,7 @@
             "$ref": "#/components/responses/nodes.usage#200"
           }
         },
-        "x-state": "6.0.0"
+        "x-state": "Added in 6.0.0"
       }
     },
     "/{index}/_pit": {
@@ -23740,7 +23740,7 @@
             }
           }
         },
-        "x-state": "7.10.0"
+        "x-state": "Added in 7.10.0"
       }
     },
     "/_scripts/{id}/{context}": {
@@ -23848,7 +23848,7 @@
             }
           }
         },
-        "x-state": "8.15.0"
+        "x-state": "Added in 8.15.0"
       },
       "put": {
         "tags": [
@@ -23939,7 +23939,7 @@
             }
           }
         },
-        "x-state": "8.15.0"
+        "x-state": "Added in 8.15.0"
       },
       "delete": {
         "tags": [
@@ -23983,7 +23983,7 @@
             }
           }
         },
-        "x-state": "8.15.0"
+        "x-state": "Added in 8.15.0"
       }
     },
     "/_query_rules/{ruleset_id}": {
@@ -24018,7 +24018,7 @@
             }
           }
         },
-        "x-state": "8.10.0"
+        "x-state": "Added in 8.10.0"
       },
       "put": {
         "tags": [
@@ -24087,7 +24087,7 @@
             }
           }
         },
-        "x-state": "8.10.0"
+        "x-state": "Added in 8.10.0"
       },
       "delete": {
         "tags": [
@@ -24120,7 +24120,7 @@
             }
           }
         },
-        "x-state": "8.10.0"
+        "x-state": "Added in 8.10.0"
       }
     },
     "/_query_rules": {
@@ -24179,7 +24179,7 @@
             }
           }
         },
-        "x-state": "8.10.0"
+        "x-state": "Added in 8.10.0"
       }
     },
     "/_rank_eval": {
@@ -24211,7 +24211,7 @@
             "$ref": "#/components/responses/rank_eval#200"
           }
         },
-        "x-state": "6.2.0"
+        "x-state": "Added in 6.2.0"
       },
       "post": {
         "tags": [
@@ -24241,7 +24241,7 @@
             "$ref": "#/components/responses/rank_eval#200"
           }
         },
-        "x-state": "6.2.0"
+        "x-state": "Added in 6.2.0"
       }
     },
     "/{index}/_rank_eval": {
@@ -24276,7 +24276,7 @@
             "$ref": "#/components/responses/rank_eval#200"
           }
         },
-        "x-state": "6.2.0"
+        "x-state": "Added in 6.2.0"
       },
       "post": {
         "tags": [
@@ -24309,7 +24309,7 @@
             "$ref": "#/components/responses/rank_eval#200"
           }
         },
-        "x-state": "6.2.0"
+        "x-state": "Added in 6.2.0"
       }
     },
     "/_reindex": {
@@ -24502,7 +24502,7 @@
             }
           }
         },
-        "x-state": "2.3.0"
+        "x-state": "Added in 2.3.0"
       }
     },
     "/_reindex/{task_id}/_rethrottle": {
@@ -24558,7 +24558,7 @@
             }
           }
         },
-        "x-state": "2.4.0"
+        "x-state": "Added in 2.4.0"
       }
     },
     "/_render/template": {
@@ -26100,7 +26100,7 @@
             "$ref": "#/components/responses/search_mvt#200"
           }
         },
-        "x-state": "7.15.0"
+        "x-state": "Added in 7.15.0"
       },
       "post": {
         "tags": [
@@ -26155,7 +26155,7 @@
             "$ref": "#/components/responses/search_mvt#200"
           }
         },
-        "x-state": "7.15.0"
+        "x-state": "Added in 7.15.0"
       }
     },
     "/_search_shards": {
@@ -26352,7 +26352,7 @@
             "$ref": "#/components/responses/search_template#200"
           }
         },
-        "x-state": "2.0.0"
+        "x-state": "Added in 2.0.0"
       },
       "post": {
         "tags": [
@@ -26409,7 +26409,7 @@
             "$ref": "#/components/responses/search_template#200"
           }
         },
-        "x-state": "2.0.0"
+        "x-state": "Added in 2.0.0"
       }
     },
     "/{index}/_search/template": {
@@ -26471,7 +26471,7 @@
             "$ref": "#/components/responses/search_template#200"
           }
         },
-        "x-state": "2.0.0"
+        "x-state": "Added in 2.0.0"
       },
       "post": {
         "tags": [
@@ -26531,7 +26531,7 @@
             "$ref": "#/components/responses/search_template#200"
           }
         },
-        "x-state": "2.0.0"
+        "x-state": "Added in 2.0.0"
       }
     },
     "/_searchable_snapshots/cache/stats": {
@@ -26758,7 +26758,7 @@
             }
           }
         },
-        "x-state": "7.10.0"
+        "x-state": "Added in 7.10.0"
       }
     },
     "/_searchable_snapshots/stats": {
@@ -26778,7 +26778,7 @@
             "$ref": "#/components/responses/searchable_snapshots.stats#200"
           }
         },
-        "x-state": "7.10.0"
+        "x-state": "Added in 7.10.0"
       }
     },
     "/{index}/_searchable_snapshots/stats": {
@@ -26801,7 +26801,7 @@
             "$ref": "#/components/responses/searchable_snapshots.stats#200"
           }
         },
-        "x-state": "7.10.0"
+        "x-state": "Added in 7.10.0"
       }
     },
     "/_security/profile/_activate": {
@@ -26850,7 +26850,7 @@
             }
           }
         },
-        "x-state": "8.2.0"
+        "x-state": "Added in 8.2.0"
       }
     },
     "/_security/_authenticate": {
@@ -26936,7 +26936,7 @@
             }
           }
         },
-        "x-state": "5.5.0"
+        "x-state": "Added in 5.5.0"
       }
     },
     "/_security/role": {
@@ -27032,7 +27032,7 @@
             }
           }
         },
-        "x-state": "8.15.0"
+        "x-state": "Added in 8.15.0"
       },
       "delete": {
         "tags": [
@@ -27106,7 +27106,7 @@
             }
           }
         },
-        "x-state": "8.15.0"
+        "x-state": "Added in 8.15.0"
       }
     },
     "/_security/user/{username}/_password": {
@@ -27251,7 +27251,7 @@
             }
           }
         },
-        "x-state": "7.10.0"
+        "x-state": "Added in 7.10.0"
       }
     },
     "/_security/privilege/{application}/_clear_cache": {
@@ -27305,7 +27305,7 @@
             }
           }
         },
-        "x-state": "7.9.0"
+        "x-state": "Added in 7.9.0"
       }
     },
     "/_security/realm/{realms}/_clear_cache": {
@@ -27616,7 +27616,7 @@
             }
           }
         },
-        "x-state": "6.7.0"
+        "x-state": "Added in 6.7.0"
       },
       "put": {
         "tags": [
@@ -27638,7 +27638,7 @@
             "$ref": "#/components/responses/security.create_api_key#200"
           }
         },
-        "x-state": "6.7.0"
+        "x-state": "Added in 6.7.0"
       },
       "post": {
         "tags": [
@@ -27660,7 +27660,7 @@
             "$ref": "#/components/responses/security.create_api_key#200"
           }
         },
-        "x-state": "6.7.0"
+        "x-state": "Added in 6.7.0"
       },
       "delete": {
         "tags": [
@@ -27745,7 +27745,7 @@
             }
           }
         },
-        "x-state": "6.7.0"
+        "x-state": "Added in 6.7.0"
       }
     },
     "/_security/service/{namespace}/{service}/credential/token/{name}": {
@@ -27872,7 +27872,7 @@
             }
           }
         },
-        "x-state": "5.5.0"
+        "x-state": "Added in 5.5.0"
       }
     },
     "/_security/service/{namespace}/{service}/credential/token": {
@@ -27920,7 +27920,7 @@
             "$ref": "#/components/responses/security.get_privileges#200"
           }
         },
-        "x-state": "6.4.0"
+        "x-state": "Added in 6.4.0"
       },
       "delete": {
         "tags": [
@@ -27980,7 +27980,7 @@
             }
           }
         },
-        "x-state": "6.4.0"
+        "x-state": "Added in 6.4.0"
       }
     },
     "/_security/role/{name}": {
@@ -28118,7 +28118,7 @@
             "$ref": "#/components/responses/security.get_role_mapping#200"
           }
         },
-        "x-state": "5.5.0"
+        "x-state": "Added in 5.5.0"
       },
       "put": {
         "tags": [
@@ -28142,7 +28142,7 @@
             "$ref": "#/components/responses/security.put_role_mapping#200"
           }
         },
-        "x-state": "5.5.0"
+        "x-state": "Added in 5.5.0"
       },
       "post": {
         "tags": [
@@ -28166,7 +28166,7 @@
             "$ref": "#/components/responses/security.put_role_mapping#200"
           }
         },
-        "x-state": "5.5.0"
+        "x-state": "Added in 5.5.0"
       },
       "delete": {
         "tags": [
@@ -28217,7 +28217,7 @@
             }
           }
         },
-        "x-state": "5.5.0"
+        "x-state": "Added in 5.5.0"
       }
     },
     "/_security/user/{username}": {
@@ -28402,7 +28402,7 @@
             "$ref": "#/components/responses/security.disable_user_profile#200"
           }
         },
-        "x-state": "8.2.0"
+        "x-state": "Added in 8.2.0"
       },
       "post": {
         "tags": [
@@ -28423,7 +28423,7 @@
             "$ref": "#/components/responses/security.disable_user_profile#200"
           }
         },
-        "x-state": "8.2.0"
+        "x-state": "Added in 8.2.0"
       }
     },
     "/_security/user/{username}/_enable": {
@@ -28488,7 +28488,7 @@
             "$ref": "#/components/responses/security.enable_user_profile#200"
           }
         },
-        "x-state": "8.2.0"
+        "x-state": "Added in 8.2.0"
       },
       "post": {
         "tags": [
@@ -28509,7 +28509,7 @@
             "$ref": "#/components/responses/security.enable_user_profile#200"
           }
         },
-        "x-state": "8.2.0"
+        "x-state": "Added in 8.2.0"
       }
     },
     "/_security/enroll/kibana": {
@@ -28543,7 +28543,7 @@
             }
           }
         },
-        "x-state": "8.0.0"
+        "x-state": "Added in 8.0.0"
       }
     },
     "/_security/enroll/node": {
@@ -28596,7 +28596,7 @@
             }
           }
         },
-        "x-state": "8.0.0"
+        "x-state": "Added in 8.0.0"
       }
     },
     "/_security/privilege/_builtin": {
@@ -28633,7 +28633,7 @@
             }
           }
         },
-        "x-state": "7.3.0"
+        "x-state": "Added in 7.3.0"
       }
     },
     "/_security/privilege": {
@@ -28648,7 +28648,7 @@
             "$ref": "#/components/responses/security.get_privileges#200"
           }
         },
-        "x-state": "6.4.0"
+        "x-state": "Added in 6.4.0"
       },
       "put": {
         "tags": [
@@ -28669,7 +28669,7 @@
             "$ref": "#/components/responses/security.put_privileges#200"
           }
         },
-        "x-state": "6.4.0"
+        "x-state": "Added in 6.4.0"
       },
       "post": {
         "tags": [
@@ -28690,7 +28690,7 @@
             "$ref": "#/components/responses/security.put_privileges#200"
           }
         },
-        "x-state": "6.4.0"
+        "x-state": "Added in 6.4.0"
       }
     },
     "/_security/privilege/{application}": {
@@ -28710,7 +28710,7 @@
             "$ref": "#/components/responses/security.get_privileges#200"
           }
         },
-        "x-state": "6.4.0"
+        "x-state": "Added in 6.4.0"
       }
     },
     "/_security/role_mapping": {
@@ -28725,7 +28725,7 @@
             "$ref": "#/components/responses/security.get_role_mapping#200"
           }
         },
-        "x-state": "5.5.0"
+        "x-state": "Added in 5.5.0"
       }
     },
     "/_security/service/{namespace}/{service}": {
@@ -28748,7 +28748,7 @@
             "$ref": "#/components/responses/security.get_service_accounts#200"
           }
         },
-        "x-state": "7.13.0"
+        "x-state": "Added in 7.13.0"
       }
     },
     "/_security/service/{namespace}": {
@@ -28768,7 +28768,7 @@
             "$ref": "#/components/responses/security.get_service_accounts#200"
           }
         },
-        "x-state": "7.13.0"
+        "x-state": "Added in 7.13.0"
       }
     },
     "/_security/service": {
@@ -28783,7 +28783,7 @@
             "$ref": "#/components/responses/security.get_service_accounts#200"
           }
         },
-        "x-state": "7.13.0"
+        "x-state": "Added in 7.13.0"
       }
     },
     "/_security/service/{namespace}/{service}/credential": {
@@ -28852,7 +28852,7 @@
             }
           }
         },
-        "x-state": "7.13.0"
+        "x-state": "Added in 7.13.0"
       }
     },
     "/_security/oauth2/token": {
@@ -28933,7 +28933,7 @@
             }
           }
         },
-        "x-state": "5.5.0"
+        "x-state": "Added in 5.5.0"
       },
       "delete": {
         "tags": [
@@ -28999,7 +28999,7 @@
             }
           }
         },
-        "x-state": "5.5.0"
+        "x-state": "Added in 5.5.0"
       }
     },
     "/_security/user": {
@@ -29118,7 +29118,7 @@
             }
           }
         },
-        "x-state": "6.5.0"
+        "x-state": "Added in 6.5.0"
       }
     },
     "/_security/profile/{uid}": {
@@ -29197,7 +29197,7 @@
             }
           }
         },
-        "x-state": "8.2.0"
+        "x-state": "Added in 8.2.0"
       }
     },
     "/_security/api_key/grant": {
@@ -29278,7 +29278,7 @@
             }
           }
         },
-        "x-state": "7.9.0"
+        "x-state": "Added in 7.9.0"
       }
     },
     "/_security/user/_has_privileges": {
@@ -29297,7 +29297,7 @@
             "$ref": "#/components/responses/security.has_privileges#200"
           }
         },
-        "x-state": "6.4.0"
+        "x-state": "Added in 6.4.0"
       },
       "post": {
         "tags": [
@@ -29314,7 +29314,7 @@
             "$ref": "#/components/responses/security.has_privileges#200"
           }
         },
-        "x-state": "6.4.0"
+        "x-state": "Added in 6.4.0"
       }
     },
     "/_security/user/{user}/_has_privileges": {
@@ -29338,7 +29338,7 @@
             "$ref": "#/components/responses/security.has_privileges#200"
           }
         },
-        "x-state": "6.4.0"
+        "x-state": "Added in 6.4.0"
       },
       "post": {
         "tags": [
@@ -29360,7 +29360,7 @@
             "$ref": "#/components/responses/security.has_privileges#200"
           }
         },
-        "x-state": "6.4.0"
+        "x-state": "Added in 6.4.0"
       }
     },
     "/_security/profile/_has_privileges": {
@@ -29378,7 +29378,7 @@
             "$ref": "#/components/responses/security.has_privileges_user_profile#200"
           }
         },
-        "x-state": "8.3.0"
+        "x-state": "Added in 8.3.0"
       },
       "post": {
         "tags": [
@@ -29394,7 +29394,7 @@
             "$ref": "#/components/responses/security.has_privileges_user_profile#200"
           }
         },
-        "x-state": "8.3.0"
+        "x-state": "Added in 8.3.0"
       }
     },
     "/_security/_query/api_key": {
@@ -29424,7 +29424,7 @@
             "$ref": "#/components/responses/security.query_api_keys#200"
           }
         },
-        "x-state": "7.15.0"
+        "x-state": "Added in 7.15.0"
       },
       "post": {
         "tags": [
@@ -29452,7 +29452,7 @@
             "$ref": "#/components/responses/security.query_api_keys#200"
           }
         },
-        "x-state": "7.15.0"
+        "x-state": "Added in 7.15.0"
       }
     },
     "/_security/_query/role": {
@@ -29471,7 +29471,7 @@
             "$ref": "#/components/responses/security.query_role#200"
           }
         },
-        "x-state": "8.15.0"
+        "x-state": "Added in 8.15.0"
       },
       "post": {
         "tags": [
@@ -29488,7 +29488,7 @@
             "$ref": "#/components/responses/security.query_role#200"
           }
         },
-        "x-state": "8.15.0"
+        "x-state": "Added in 8.15.0"
       }
     },
     "/_security/_query/user": {
@@ -29512,7 +29512,7 @@
             "$ref": "#/components/responses/security.query_user#200"
           }
         },
-        "x-state": "8.14.0"
+        "x-state": "Added in 8.14.0"
       },
       "post": {
         "tags": [
@@ -29534,7 +29534,7 @@
             "$ref": "#/components/responses/security.query_user#200"
           }
         },
-        "x-state": "8.14.0"
+        "x-state": "Added in 8.14.0"
       }
     },
     "/_security/saml/authenticate": {
@@ -29607,7 +29607,7 @@
             }
           }
         },
-        "x-state": "7.5.0"
+        "x-state": "Added in 7.5.0"
       }
     },
     "/_security/saml/complete_logout": {
@@ -29656,7 +29656,7 @@
             }
           }
         },
-        "x-state": "7.14.0"
+        "x-state": "Added in 7.14.0"
       }
     },
     "/_security/saml/invalidate": {
@@ -29721,7 +29721,7 @@
             }
           }
         },
-        "x-state": "7.5.0"
+        "x-state": "Added in 7.5.0"
       }
     },
     "/_security/saml/logout": {
@@ -29774,7 +29774,7 @@
             }
           }
         },
-        "x-state": "7.5.0"
+        "x-state": "Added in 7.5.0"
       }
     },
     "/_security/saml/prepare": {
@@ -29836,7 +29836,7 @@
             }
           }
         },
-        "x-state": "7.5.0"
+        "x-state": "Added in 7.5.0"
       }
     },
     "/_security/saml/metadata/{realm_name}": {
@@ -29879,7 +29879,7 @@
             }
           }
         },
-        "x-state": "7.11.0"
+        "x-state": "Added in 7.11.0"
       }
     },
     "/_security/profile/_suggest": {
@@ -29902,7 +29902,7 @@
             "$ref": "#/components/responses/security.suggest_user_profiles#200"
           }
         },
-        "x-state": "8.2.0"
+        "x-state": "Added in 8.2.0"
       },
       "post": {
         "tags": [
@@ -29923,7 +29923,7 @@
             "$ref": "#/components/responses/security.suggest_user_profiles#200"
           }
         },
-        "x-state": "8.2.0"
+        "x-state": "Added in 8.2.0"
       }
     },
     "/_security/api_key/{id}": {
@@ -29995,7 +29995,7 @@
             }
           }
         },
-        "x-state": "8.4.0"
+        "x-state": "Added in 8.4.0"
       }
     },
     "/_security/profile/{uid}/_data": {
@@ -30027,7 +30027,7 @@
             "$ref": "#/components/responses/security.update_user_profile_data#200"
           }
         },
-        "x-state": "8.2.0"
+        "x-state": "Added in 8.2.0"
       },
       "post": {
         "tags": [
@@ -30057,7 +30057,7 @@
             "$ref": "#/components/responses/security.update_user_profile_data#200"
           }
         },
-        "x-state": "8.2.0"
+        "x-state": "Added in 8.2.0"
       }
     },
     "/_nodes/{node_id}/shutdown": {
@@ -30084,7 +30084,7 @@
             "$ref": "#/components/responses/shutdown.get_node#200"
           }
         },
-        "x-state": "7.13.0"
+        "x-state": "Added in 7.13.0"
       },
       "put": {
         "tags": [
@@ -30169,7 +30169,7 @@
             }
           }
         },
-        "x-state": "7.13.0"
+        "x-state": "Added in 7.13.0"
       },
       "delete": {
         "tags": [
@@ -30223,7 +30223,7 @@
             }
           }
         },
-        "x-state": "7.13.0"
+        "x-state": "Added in 7.13.0"
       }
     },
     "/_nodes/shutdown": {
@@ -30247,7 +30247,7 @@
             "$ref": "#/components/responses/shutdown.get_node#200"
           }
         },
-        "x-state": "7.13.0"
+        "x-state": "Added in 7.13.0"
       }
     },
     "/_slm/policy/{policy_id}": {
@@ -30267,7 +30267,7 @@
             "$ref": "#/components/responses/slm.get_lifecycle#200"
           }
         },
-        "x-state": "7.4.0"
+        "x-state": "Added in 7.4.0"
       },
       "put": {
         "tags": [
@@ -30347,7 +30347,7 @@
             }
           }
         },
-        "x-state": "7.4.0"
+        "x-state": "Added in 7.4.0"
       },
       "delete": {
         "tags": [
@@ -30380,7 +30380,7 @@
             }
           }
         },
-        "x-state": "7.4.0"
+        "x-state": "Added in 7.4.0"
       }
     },
     "/_slm/policy/{policy_id}/_execute": {
@@ -30423,7 +30423,7 @@
             }
           }
         },
-        "x-state": "7.4.0"
+        "x-state": "Added in 7.4.0"
       }
     },
     "/_slm/_execute_retention": {
@@ -30445,7 +30445,7 @@
             }
           }
         },
-        "x-state": "7.5.0"
+        "x-state": "Added in 7.5.0"
       }
     },
     "/_slm/policy": {
@@ -30460,7 +30460,7 @@
             "$ref": "#/components/responses/slm.get_lifecycle#200"
           }
         },
-        "x-state": "7.4.0"
+        "x-state": "Added in 7.4.0"
       }
     },
     "/_slm/stats": {
@@ -30529,7 +30529,7 @@
             }
           }
         },
-        "x-state": "7.5.0"
+        "x-state": "Added in 7.5.0"
       }
     },
     "/_slm/status": {
@@ -30559,7 +30559,7 @@
             }
           }
         },
-        "x-state": "7.6.0"
+        "x-state": "Added in 7.6.0"
       }
     },
     "/_slm/start": {
@@ -30581,7 +30581,7 @@
             }
           }
         },
-        "x-state": "7.6.0"
+        "x-state": "Added in 7.6.0"
       }
     },
     "/_slm/stop": {
@@ -30603,7 +30603,7 @@
             }
           }
         },
-        "x-state": "7.6.0"
+        "x-state": "Added in 7.6.0"
       }
     },
     "/_snapshot/{repository}/_cleanup": {
@@ -30666,7 +30666,7 @@
             }
           }
         },
-        "x-state": "7.4.0"
+        "x-state": "Added in 7.4.0"
       }
     },
     "/_snapshot/{repository}/{snapshot}/_clone/{target_snapshot}": {
@@ -30760,7 +30760,7 @@
             }
           }
         },
-        "x-state": "7.10.0"
+        "x-state": "Added in 7.10.0"
       }
     },
     "/_snapshot/{repository}/{snapshot}": {
@@ -30962,7 +30962,7 @@
             }
           }
         },
-        "x-state": "0.0.0"
+        "x-state": "Added in 0.0.0"
       },
       "put": {
         "tags": [
@@ -30992,7 +30992,7 @@
             "$ref": "#/components/responses/snapshot.create#200"
           }
         },
-        "x-state": "0.0.0"
+        "x-state": "Added in 0.0.0"
       },
       "post": {
         "tags": [
@@ -31022,7 +31022,7 @@
             "$ref": "#/components/responses/snapshot.create#200"
           }
         },
-        "x-state": "0.0.0"
+        "x-state": "Added in 0.0.0"
       },
       "delete": {
         "tags": [
@@ -31101,7 +31101,7 @@
             "$ref": "#/components/responses/snapshot.get_repository#200"
           }
         },
-        "x-state": "0.0.0"
+        "x-state": "Added in 0.0.0"
       },
       "put": {
         "tags": [
@@ -31131,7 +31131,7 @@
             "$ref": "#/components/responses/snapshot.create_repository#200"
           }
         },
-        "x-state": "0.0.0"
+        "x-state": "Added in 0.0.0"
       },
       "post": {
         "tags": [
@@ -31161,7 +31161,7 @@
             "$ref": "#/components/responses/snapshot.create_repository#200"
           }
         },
-        "x-state": "0.0.0"
+        "x-state": "Added in 0.0.0"
       },
       "delete": {
         "tags": [
@@ -31214,7 +31214,7 @@
             }
           }
         },
-        "x-state": "0.0.0"
+        "x-state": "Added in 0.0.0"
       }
     },
     "/_snapshot": {
@@ -31237,7 +31237,7 @@
             "$ref": "#/components/responses/snapshot.get_repository#200"
           }
         },
-        "x-state": "0.0.0"
+        "x-state": "Added in 0.0.0"
       }
     },
     "/_snapshot/{repository}/_verify_integrity": {
@@ -31473,7 +31473,7 @@
             }
           }
         },
-        "x-state": "0.0.0"
+        "x-state": "Added in 0.0.0"
       }
     },
     "/_snapshot/_status": {
@@ -31496,7 +31496,7 @@
             "$ref": "#/components/responses/snapshot.status#200"
           }
         },
-        "x-state": "7.8.0"
+        "x-state": "Added in 7.8.0"
       }
     },
     "/_snapshot/{repository}/_status": {
@@ -31522,7 +31522,7 @@
             "$ref": "#/components/responses/snapshot.status#200"
           }
         },
-        "x-state": "7.8.0"
+        "x-state": "Added in 7.8.0"
       }
     },
     "/_snapshot/{repository}/{snapshot}/_status": {
@@ -31551,7 +31551,7 @@
             "$ref": "#/components/responses/snapshot.status#200"
           }
         },
-        "x-state": "7.8.0"
+        "x-state": "Added in 7.8.0"
       }
     },
     "/_snapshot/{repository}/_verify": {
@@ -31617,7 +31617,7 @@
             }
           }
         },
-        "x-state": "0.0.0"
+        "x-state": "Added in 0.0.0"
       }
     },
     "/_sql/close": {
@@ -31666,7 +31666,7 @@
             }
           }
         },
-        "x-state": "6.3.0"
+        "x-state": "Added in 6.3.0"
       }
     },
     "/_sql/async/delete/{id}": {
@@ -31702,7 +31702,7 @@
             }
           }
         },
-        "x-state": "7.15.0"
+        "x-state": "Added in 7.15.0"
       }
     },
     "/_sql/async/{id}": {
@@ -31814,7 +31814,7 @@
             }
           }
         },
-        "x-state": "7.15.0"
+        "x-state": "Added in 7.15.0"
       }
     },
     "/_sql/async/status/{id}": {
@@ -31879,7 +31879,7 @@
             }
           }
         },
-        "x-state": "7.15.0"
+        "x-state": "Added in 7.15.0"
       }
     },
     "/_sql": {
@@ -31902,7 +31902,7 @@
             "$ref": "#/components/responses/sql.query#200"
           }
         },
-        "x-state": "6.3.0"
+        "x-state": "Added in 6.3.0"
       },
       "post": {
         "tags": [
@@ -31923,7 +31923,7 @@
             "$ref": "#/components/responses/sql.query#200"
           }
         },
-        "x-state": "6.3.0"
+        "x-state": "Added in 6.3.0"
       }
     },
     "/_sql/translate": {
@@ -31941,7 +31941,7 @@
             "$ref": "#/components/responses/sql.translate#200"
           }
         },
-        "x-state": "6.3.0"
+        "x-state": "Added in 6.3.0"
       },
       "post": {
         "tags": [
@@ -31957,7 +31957,7 @@
             "$ref": "#/components/responses/sql.translate#200"
           }
         },
-        "x-state": "6.3.0"
+        "x-state": "Added in 6.3.0"
       }
     },
     "/_ssl/certificates": {
@@ -31982,7 +31982,7 @@
             }
           }
         },
-        "x-state": "6.2.0"
+        "x-state": "Added in 6.2.0"
       }
     },
     "/_synonyms/{id}": {
@@ -32052,7 +32052,7 @@
             }
           }
         },
-        "x-state": "8.10.0"
+        "x-state": "Added in 8.10.0"
       },
       "put": {
         "tags": [
@@ -32126,7 +32126,7 @@
             }
           }
         },
-        "x-state": "8.10.0"
+        "x-state": "Added in 8.10.0"
       },
       "delete": {
         "tags": [
@@ -32159,7 +32159,7 @@
             }
           }
         },
-        "x-state": "8.10.0"
+        "x-state": "Added in 8.10.0"
       }
     },
     "/_synonyms/{set_id}/{rule_id}": {
@@ -32205,7 +32205,7 @@
             }
           }
         },
-        "x-state": "8.10.0"
+        "x-state": "Added in 8.10.0"
       },
       "put": {
         "tags": [
@@ -32267,7 +32267,7 @@
             }
           }
         },
-        "x-state": "8.10.0"
+        "x-state": "Added in 8.10.0"
       },
       "delete": {
         "tags": [
@@ -32311,7 +32311,7 @@
             }
           }
         },
-        "x-state": "8.10.0"
+        "x-state": "Added in 8.10.0"
       }
     },
     "/_synonyms": {
@@ -32370,7 +32370,7 @@
             }
           }
         },
-        "x-state": "8.10.0"
+        "x-state": "Added in 8.10.0"
       }
     },
     "/_tasks/_cancel": {
@@ -32646,7 +32646,7 @@
             "$ref": "#/components/responses/terms_enum#200"
           }
         },
-        "x-state": "7.14.0"
+        "x-state": "Added in 7.14.0"
       },
       "post": {
         "tags": [
@@ -32668,7 +32668,7 @@
             "$ref": "#/components/responses/terms_enum#200"
           }
         },
-        "x-state": "7.14.0"
+        "x-state": "Added in 7.14.0"
       }
     },
     "/{index}/_termvectors/{id}": {
@@ -33177,7 +33177,7 @@
             }
           }
         },
-        "x-state": "7.13.0"
+        "x-state": "Added in 7.13.0"
       }
     },
     "/_text_structure/test_grok_pattern": {
@@ -33200,7 +33200,7 @@
             "$ref": "#/components/responses/text_structure.test_grok_pattern#200"
           }
         },
-        "x-state": "8.13.0"
+        "x-state": "Added in 8.13.0"
       },
       "post": {
         "tags": [
@@ -33221,7 +33221,7 @@
             "$ref": "#/components/responses/text_structure.test_grok_pattern#200"
           }
         },
-        "x-state": "8.13.0"
+        "x-state": "Added in 8.13.0"
       }
     },
     "/_transform/{transform_id}": {
@@ -33254,7 +33254,7 @@
             "$ref": "#/components/responses/transform.get_transform#200"
           }
         },
-        "x-state": "7.5.0"
+        "x-state": "Added in 7.5.0"
       },
       "put": {
         "tags": [
@@ -33355,7 +33355,7 @@
             }
           }
         },
-        "x-state": "7.2.0"
+        "x-state": "Added in 7.2.0"
       },
       "delete": {
         "tags": [
@@ -33419,7 +33419,7 @@
             }
           }
         },
-        "x-state": "7.5.0"
+        "x-state": "Added in 7.5.0"
       }
     },
     "/_transform": {
@@ -33449,7 +33449,7 @@
             "$ref": "#/components/responses/transform.get_transform#200"
           }
         },
-        "x-state": "7.5.0"
+        "x-state": "Added in 7.5.0"
       }
     },
     "/_transform/{transform_id}/_stats": {
@@ -33540,7 +33540,7 @@
             }
           }
         },
-        "x-state": "7.5.0"
+        "x-state": "Added in 7.5.0"
       }
     },
     "/_transform/{transform_id}/_preview": {
@@ -33567,7 +33567,7 @@
             "$ref": "#/components/responses/transform.preview_transform#200"
           }
         },
-        "x-state": "7.2.0"
+        "x-state": "Added in 7.2.0"
       },
       "post": {
         "tags": [
@@ -33592,7 +33592,7 @@
             "$ref": "#/components/responses/transform.preview_transform#200"
           }
         },
-        "x-state": "7.2.0"
+        "x-state": "Added in 7.2.0"
       }
     },
     "/_transform/_preview": {
@@ -33616,7 +33616,7 @@
             "$ref": "#/components/responses/transform.preview_transform#200"
           }
         },
-        "x-state": "7.2.0"
+        "x-state": "Added in 7.2.0"
       },
       "post": {
         "tags": [
@@ -33638,7 +33638,7 @@
             "$ref": "#/components/responses/transform.preview_transform#200"
           }
         },
-        "x-state": "7.2.0"
+        "x-state": "Added in 7.2.0"
       }
     },
     "/_transform/{transform_id}/_reset": {
@@ -33684,7 +33684,7 @@
             }
           }
         },
-        "x-state": "8.1.0"
+        "x-state": "Added in 8.1.0"
       }
     },
     "/_transform/{transform_id}/_schedule_now": {
@@ -33730,7 +33730,7 @@
             }
           }
         },
-        "x-state": "8.7.0"
+        "x-state": "Added in 8.7.0"
       }
     },
     "/_transform/{transform_id}/_start": {
@@ -33786,7 +33786,7 @@
             }
           }
         },
-        "x-state": "7.5.0"
+        "x-state": "Added in 7.5.0"
       }
     },
     "/_transform/{transform_id}/_stop": {
@@ -33872,7 +33872,7 @@
             }
           }
         },
-        "x-state": "7.5.0"
+        "x-state": "Added in 7.5.0"
       }
     },
     "/_transform/{transform_id}/_update": {
@@ -34027,7 +34027,7 @@
             }
           }
         },
-        "x-state": "7.2.0"
+        "x-state": "Added in 7.2.0"
       }
     },
     "/_transform/_upgrade": {
@@ -34091,7 +34091,7 @@
             }
           }
         },
-        "x-state": "7.16.0"
+        "x-state": "Added in 7.16.0"
       }
     },
     "/{index}/_update/{id}": {
@@ -34727,7 +34727,7 @@
             }
           }
         },
-        "x-state": "2.4.0"
+        "x-state": "Added in 2.4.0"
       }
     },
     "/_update_by_query/{task_id}/_rethrottle": {
@@ -34783,7 +34783,7 @@
             }
           }
         },
-        "x-state": "6.5.0"
+        "x-state": "Added in 6.5.0"
       }
     },
     "/_watcher/watch/{watch_id}/_ack": {
@@ -34995,7 +34995,7 @@
             }
           }
         },
-        "x-state": "5.6.0"
+        "x-state": "Added in 5.6.0"
       },
       "put": {
         "tags": [
@@ -35219,7 +35219,7 @@
             "$ref": "#/components/responses/watcher.query_watches#200"
           }
         },
-        "x-state": "7.11.0"
+        "x-state": "Added in 7.11.0"
       },
       "post": {
         "tags": [
@@ -35235,7 +35235,7 @@
             "$ref": "#/components/responses/watcher.query_watches#200"
           }
         },
-        "x-state": "7.11.0"
+        "x-state": "Added in 7.11.0"
       }
     },
     "/_watcher/_start": {
@@ -35279,7 +35279,7 @@
             "$ref": "#/components/responses/watcher.stats#200"
           }
         },
-        "x-state": "5.5.0"
+        "x-state": "Added in 5.5.0"
       }
     },
     "/_watcher/stats/{metric}": {
@@ -35305,7 +35305,7 @@
             "$ref": "#/components/responses/watcher.stats#200"
           }
         },
-        "x-state": "5.5.0"
+        "x-state": "Added in 5.5.0"
       }
     },
     "/_watcher/_stop": {
@@ -49285,7 +49285,7 @@
           },
           "dataset.size": {
             "description": "total size of dataset (including the cache for partially mounted indices)",
-            "x-state": "8.11.0",
+            "x-state": "Added in 8.11.0",
             "oneOf": [
               {
                 "type": "string"
@@ -51328,7 +51328,7 @@
           },
           "dataset": {
             "description": "total size of dataset (including the cache for partially mounted indices)",
-            "x-state": "8.11.0",
+            "x-state": "Added in 8.11.0",
             "oneOf": [
               {
                 "type": "string"
@@ -61026,7 +61026,7 @@
           },
           "routes": {
             "description": "Detailed HTTP stats broken down by route",
-            "x-state": "8.12.0",
+            "x-state": "Added in 8.12.0",
             "type": "object",
             "additionalProperties": {
               "$ref": "#/components/schemas/nodes._types:HttpRoute"
@@ -61231,12 +61231,12 @@
           },
           "ingested_as_first_pipeline_in_bytes": {
             "description": "Total number of bytes of all documents ingested by the pipeline.\nThis field is only present on pipelines which are the first to process a document.\nThus, it is not present on pipelines which only serve as a final pipeline after a default pipeline, a pipeline run after a reroute processor, or pipelines in pipeline processors.",
-            "x-state": "8.15.0",
+            "x-state": "Added in 8.15.0",
             "type": "number"
           },
           "produced_as_first_pipeline_in_bytes": {
             "description": "Total number of bytes of all documents produced by the pipeline.\nThis field is only present on pipelines which are the first to process a document.\nThus, it is not present on pipelines which only serve as a final pipeline after a default pipeline, a pipeline run after a reroute processor, or pipelines in pipeline processors.\nIn situations where there are subsequent pipelines, the value represents the size of the document after all pipelines have run.",
-            "x-state": "8.15.0",
+            "x-state": "Added in 8.15.0",
             "type": "number"
           }
         },
