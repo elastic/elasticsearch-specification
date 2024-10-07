@@ -302,7 +302,7 @@ actions:
       content:
         application/json:
           examples:
-            asyncSearchSubmitResponseExample1:
+            asyncSearchSubmitRequestExample1:
               $ref: "../../specification/async_search/submit/AsyncSearchSubmitRequestExample1.json"
   - target: "$.components['responses']['async_search.submit#200']"
     description: "Add example for asynch search submit response"
@@ -338,7 +338,7 @@ actions:
           examples: 
             previewTransformRequestExample1: 
               $ref: "../../specification/transform/preview_transform/PreviewTransformRequestExample1.json"
-  - target: "$.components['reponses']['transform.preview_transform#200']"
+  - target: "$.components['responses']['transform.preview_transform#200']"
     description: "Add examples for preview transform operation"
     update: 
       content:
@@ -407,3 +407,88 @@ actions:
           examples:
             graphExploreRequestExample1:
               $ref: "../../specification/graph/explore/graphExploreRequestExample1.json"
+  - target: "$.paths['/{index}/_block/{block}']['put']"
+    description: "Add examples for add index block operation"
+    update: 
+      responses:
+        200:
+          content:
+            application/json:
+              examples:
+                indicesAddBlockResponseExample1:
+                  $ref: "../../specification/indices/add_block/IndicesAddBlockResponseExample1.yaml"
+  - target: "$.components['requestBodies']['indices.analyze']"
+    description: "Add example for analyze API request"
+    update: 
+      content:
+        application/json:
+          examples:
+            indicesAnalyzeRequestExample1:
+              $ref: "../../specification/indices/analyze/indicesAnalyzeRequestExample1.yaml"
+  - target: "$.paths['/{index}']['put']"
+    description: "Add examples for create index request"
+    update: 
+      requestBody:
+        content:
+          application/json:
+            examples:
+              indicesCreateRequestExample1:
+                $ref: "../../specification/indices/create/indicesCreateRequestExample1.yaml"
+              indicesCreateRequestExample2:
+                $ref: "../../specification/indices/create/indicesCreateRequestExample2.yaml"
+  - target: "$.paths['/_data_stream/{name}/_lifecycle']['delete']"
+    description: "Add example for delete data stream lifecycle response"
+    update: 
+      responses:
+        200:
+          content:
+            application/json:
+              examples:
+                indicesDeleteDataLifecycleResponseExample1:
+                  $ref: "../../specification/indices/delete_data_lifecycle/IndicesDeleteDataLifecycleResponseExample1.yaml"
+  - target: "$.paths['/_data_stream/{name}/_lifecycle']['get']"
+    description: "Add example for get data stream lifecycle response"
+    update: 
+      responses:
+        200:
+          content:
+            application/json:
+              examples:
+                indicesGetDataLifecycleResponseExample1:
+                  $ref: "../../specification/indices/get_data_lifecycle/IndicesGetDataLifecycleResponseExample1.yaml"
+  - target: "$.components['responses']['indices.get_data_stream#200']"
+    description: "Add example for get data stream response"
+    update: 
+      content:
+        application/json:
+          examples:
+            indicesGetDataStreamResponseExample:
+              $ref: "../../specification/indices/get_data_stream/indicesGetDataStreamResponseExample1.yaml"
+  - target: "$.paths['/_data_stream/{name}/_lifecycle']['put']"
+    description: "Add examples update data stream lifecycle request and response"
+    update: 
+      requestBody: 
+        content: 
+          application/json: 
+            examples: 
+              indicesPutDataLifecycleRequestExample1: 
+                $ref: "../../specification/indices/put_data_lifecycle/IndicesPutDataLifecycleRequestExample1.yaml"
+              indicesPutLifecycleRequestExample2:
+                $ref: "../../specification/indices/put_data_lifecycle/IndicesPutDataLifecycleRequestExample2.yaml"
+      responses:
+        200:
+          content:
+            application/json:
+              examples:
+                indicesPutDataLifecycleResponseExample1:
+                  $ref: "../../specification/indices/put_data_lifecycle/IndicesPutDataLifecycleResponseExample1.yaml"
+  - target: "$.paths['/{index}/_lifecycle/explain']['get']"
+    description: "Add example for explain data stream lifecycle response"
+    update: 
+      responses:
+        200:
+          content:
+            application/json:
+              examples:
+                indicesExplainDataLifecycleResponseExample:
+                  $ref: "../../specification/indices/explain_data_lifecycle/IndicesExplainDataLifecycleResponseExample1.yaml"
