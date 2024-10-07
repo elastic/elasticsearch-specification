@@ -164,7 +164,7 @@ pub fn availability_as_extensions(availabilities: &Option<Availabilities>) -> In
                         result.insert("x-beta".to_string(), serde_json::Value::Bool(true));
                     }
                     Stability::Experimental => {
-                        result.insert("x-technical-preview".to_string(), serde_json::Value::Bool(true));
+                        result.insert("x-state".to_string(), serde_json::Value::String("Technical preview".to_string()));
                     }
                     _ => {}
                 }

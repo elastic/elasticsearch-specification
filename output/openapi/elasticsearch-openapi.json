@@ -1879,7 +1879,7 @@
             }
           }
         },
-        "x-technical-preview": true,
+        "x-state": "Technical preview",
         "x-available-since": "5.0.0"
       }
     },
@@ -4058,7 +4058,7 @@
             }
           }
         },
-        "x-technical-preview": true,
+        "x-state": "Technical preview",
         "x-available-since": "8.12.0"
       }
     },
@@ -4252,7 +4252,7 @@
             }
           }
         },
-        "x-technical-preview": true,
+        "x-state": "Technical preview",
         "x-available-since": "8.12.0"
       }
     },
@@ -4742,7 +4742,7 @@
             }
           }
         },
-        "x-technical-preview": true,
+        "x-state": "Technical preview",
         "x-available-since": "8.12.0"
       }
     },
@@ -4938,7 +4938,7 @@
             }
           }
         },
-        "x-technical-preview": true,
+        "x-state": "Technical preview",
         "x-available-since": "8.12.0"
       }
     },
@@ -5071,7 +5071,7 @@
             }
           }
         },
-        "x-technical-preview": true,
+        "x-state": "Technical preview",
         "x-available-since": "8.12.0"
       }
     },
@@ -5512,7 +5512,7 @@
             }
           }
         },
-        "x-technical-preview": true,
+        "x-state": "Technical preview",
         "x-available-since": "8.12.0"
       }
     },
@@ -8202,7 +8202,7 @@
             }
           }
         },
-        "x-technical-preview": true,
+        "x-state": "Technical preview",
         "x-available-since": "7.12.0"
       }
     },
@@ -8546,7 +8546,7 @@
             "$ref": "#/components/responses/fleet.msearch#200"
           }
         },
-        "x-technical-preview": true,
+        "x-state": "Technical preview",
         "x-available-since": "7.16.0"
       },
       "post": {
@@ -8605,7 +8605,7 @@
             "$ref": "#/components/responses/fleet.msearch#200"
           }
         },
-        "x-technical-preview": true,
+        "x-state": "Technical preview",
         "x-available-since": "7.16.0"
       }
     },
@@ -8669,7 +8669,7 @@
             "$ref": "#/components/responses/fleet.msearch#200"
           }
         },
-        "x-technical-preview": true,
+        "x-state": "Technical preview",
         "x-available-since": "7.16.0"
       },
       "post": {
@@ -8731,7 +8731,7 @@
             "$ref": "#/components/responses/fleet.msearch#200"
           }
         },
-        "x-technical-preview": true,
+        "x-state": "Technical preview",
         "x-available-since": "7.16.0"
       }
     },
@@ -8888,7 +8888,7 @@
             "$ref": "#/components/responses/fleet.search#200"
           }
         },
-        "x-technical-preview": true,
+        "x-state": "Technical preview",
         "x-available-since": "7.16.0"
       },
       "post": {
@@ -9043,7 +9043,7 @@
             "$ref": "#/components/responses/fleet.search#200"
           }
         },
-        "x-technical-preview": true,
+        "x-state": "Technical preview",
         "x-available-since": "7.16.0"
       }
     },
@@ -11862,7 +11862,7 @@
             }
           }
         },
-        "x-technical-preview": true,
+        "x-state": "Technical preview",
         "x-available-since": "7.15.0"
       }
     },
@@ -11919,7 +11919,7 @@
             }
           }
         },
-        "x-technical-preview": true,
+        "x-state": "Technical preview",
         "x-available-since": "8.5.0"
       }
     },
@@ -12154,7 +12154,7 @@
             }
           }
         },
-        "x-technical-preview": true,
+        "x-state": "Technical preview",
         "x-available-since": "7.15.0"
       }
     },
@@ -14681,7 +14681,7 @@
             "$ref": "#/components/responses/inference.get#200"
           }
         },
-        "x-technical-preview": true,
+        "x-state": "Technical preview",
         "x-available-since": "8.11.0"
       },
       "put": {
@@ -14703,7 +14703,7 @@
             "$ref": "#/components/responses/inference.put#200"
           }
         },
-        "x-technical-preview": true,
+        "x-state": "Technical preview",
         "x-available-since": "8.11.0"
       },
       "post": {
@@ -14728,7 +14728,7 @@
             "$ref": "#/components/responses/inference.inference#200"
           }
         },
-        "x-technical-preview": true,
+        "x-state": "Technical preview",
         "x-available-since": "8.11.0"
       },
       "delete": {
@@ -14753,7 +14753,7 @@
             "$ref": "#/components/responses/inference.delete#200"
           }
         },
-        "x-technical-preview": true,
+        "x-state": "Technical preview",
         "x-available-since": "8.11.0"
       }
     },
@@ -14777,7 +14777,7 @@
             "$ref": "#/components/responses/inference.get#200"
           }
         },
-        "x-technical-preview": true,
+        "x-state": "Technical preview",
         "x-available-since": "8.11.0"
       },
       "put": {
@@ -14802,7 +14802,7 @@
             "$ref": "#/components/responses/inference.put#200"
           }
         },
-        "x-technical-preview": true,
+        "x-state": "Technical preview",
         "x-available-since": "8.11.0"
       },
       "post": {
@@ -14830,7 +14830,7 @@
             "$ref": "#/components/responses/inference.inference#200"
           }
         },
-        "x-technical-preview": true,
+        "x-state": "Technical preview",
         "x-available-since": "8.11.0"
       },
       "delete": {
@@ -14858,7 +14858,7 @@
             "$ref": "#/components/responses/inference.delete#200"
           }
         },
-        "x-technical-preview": true,
+        "x-state": "Technical preview",
         "x-available-since": "8.11.0"
       }
     },
@@ -14874,7 +14874,7 @@
             "$ref": "#/components/responses/inference.get#200"
           }
         },
-        "x-technical-preview": true,
+        "x-state": "Technical preview",
         "x-available-since": "8.11.0"
       }
     },
@@ -15510,7 +15510,7 @@
         },
         "deprecated": true,
         "x-available-since": "8.0.0",
-        "x-technical-preview": true
+        "x-state": "Technical preview"
       },
       "post": {
         "tags": [
@@ -15536,7 +15536,7 @@
         },
         "deprecated": true,
         "x-available-since": "8.0.0",
-        "x-technical-preview": true
+        "x-state": "Technical preview"
       }
     },
     "/_license": {
@@ -22998,7 +22998,7 @@
             }
           }
         },
-        "x-technical-preview": true,
+        "x-state": "Technical preview",
         "x-available-since": "7.16.0"
       }
     },
@@ -23035,7 +23035,7 @@
             }
           }
         },
-        "x-technical-preview": true,
+        "x-state": "Technical preview",
         "x-available-since": "7.16.0"
       }
     },
@@ -24707,7 +24707,7 @@
           }
         },
         "x-available-since": "6.3.0",
-        "x-technical-preview": true
+        "x-state": "Technical preview"
       },
       "put": {
         "tags": [
@@ -24791,7 +24791,7 @@
           }
         },
         "x-available-since": "6.3.0",
-        "x-technical-preview": true
+        "x-state": "Technical preview"
       },
       "delete": {
         "tags": [
@@ -24839,7 +24839,7 @@
           }
         },
         "x-available-since": "6.3.0",
-        "x-technical-preview": true
+        "x-state": "Technical preview"
       }
     },
     "/_rollup/job": {
@@ -24855,7 +24855,7 @@
           }
         },
         "x-available-since": "6.3.0",
-        "x-technical-preview": true
+        "x-state": "Technical preview"
       }
     },
     "/_rollup/data/{id}": {
@@ -24876,7 +24876,7 @@
           }
         },
         "x-available-since": "6.3.0",
-        "x-technical-preview": true
+        "x-state": "Technical preview"
       }
     },
     "/_rollup/data": {
@@ -24892,7 +24892,7 @@
           }
         },
         "x-available-since": "6.3.0",
-        "x-technical-preview": true
+        "x-state": "Technical preview"
       }
     },
     "/{index}/_rollup/data": {
@@ -24931,7 +24931,7 @@
           }
         },
         "x-available-since": "6.4.0",
-        "x-technical-preview": true
+        "x-state": "Technical preview"
       }
     },
     "/{index}/_rollup_search": {
@@ -24961,7 +24961,7 @@
           }
         },
         "x-available-since": "6.3.0",
-        "x-technical-preview": true
+        "x-state": "Technical preview"
       },
       "post": {
         "tags": [
@@ -24989,7 +24989,7 @@
           }
         },
         "x-available-since": "6.3.0",
-        "x-technical-preview": true
+        "x-state": "Technical preview"
       }
     },
     "/_rollup/job/{id}/_start": {
@@ -25033,7 +25033,7 @@
           }
         },
         "x-available-since": "6.3.0",
-        "x-technical-preview": true
+        "x-state": "Technical preview"
       }
     },
     "/_rollup/job/{id}/_stop": {
@@ -25097,7 +25097,7 @@
           }
         },
         "x-available-since": "6.3.0",
-        "x-technical-preview": true
+        "x-state": "Technical preview"
       }
     },
     "/_scripts/painless/_execute": {
@@ -25116,7 +25116,7 @@
             "$ref": "#/components/responses/scripts_painless_execute#200"
           }
         },
-        "x-technical-preview": true,
+        "x-state": "Technical preview",
         "x-available-since": "6.3.0"
       },
       "post": {
@@ -25134,7 +25134,7 @@
             "$ref": "#/components/responses/scripts_painless_execute#200"
           }
         },
-        "x-technical-preview": true,
+        "x-state": "Technical preview",
         "x-available-since": "6.3.0"
       }
     },
@@ -25910,7 +25910,7 @@
             "$ref": "#/components/responses/search_application.get_behavioral_analytics#200"
           }
         },
-        "x-technical-preview": true,
+        "x-state": "Technical preview",
         "x-available-since": "8.8.0"
       },
       "put": {
@@ -25944,7 +25944,7 @@
             }
           }
         },
-        "x-technical-preview": true,
+        "x-state": "Technical preview",
         "x-available-since": "8.8.0"
       },
       "delete": {
@@ -25979,7 +25979,7 @@
             }
           }
         },
-        "x-technical-preview": true,
+        "x-state": "Technical preview",
         "x-available-since": "8.8.0"
       }
     },
@@ -25995,7 +25995,7 @@
             "$ref": "#/components/responses/search_application.get_behavioral_analytics#200"
           }
         },
-        "x-technical-preview": true,
+        "x-state": "Technical preview",
         "x-available-since": "8.8.0"
       }
     },
@@ -26629,7 +26629,7 @@
           }
         },
         "x-available-since": "7.13.0",
-        "x-technical-preview": true
+        "x-state": "Technical preview"
       }
     },
     "/_searchable_snapshots/{node_id}/cache/stats": {
@@ -26653,7 +26653,7 @@
           }
         },
         "x-available-since": "7.13.0",
-        "x-technical-preview": true
+        "x-state": "Technical preview"
       }
     },
     "/_searchable_snapshots/cache/clear": {
@@ -26686,7 +26686,7 @@
           }
         },
         "x-available-since": "7.10.0",
-        "x-technical-preview": true
+        "x-state": "Technical preview"
       }
     },
     "/{index}/_searchable_snapshots/cache/clear": {
@@ -26722,7 +26722,7 @@
           }
         },
         "x-available-since": "7.10.0",
-        "x-technical-preview": true
+        "x-state": "Technical preview"
       }
     },
     "/_snapshot/{repository}/{snapshot}/_mount": {
@@ -31436,7 +31436,7 @@
           }
         },
         "x-available-since": "8.16.0",
-        "x-technical-preview": true
+        "x-state": "Technical preview"
       }
     },
     "/_snapshot/{repository}/{snapshot}/_restore": {
@@ -32483,7 +32483,7 @@
             "$ref": "#/components/responses/tasks.cancel#200"
           }
         },
-        "x-technical-preview": true,
+        "x-state": "Technical preview",
         "x-available-since": "2.3.0"
       }
     },
@@ -32516,7 +32516,7 @@
             "$ref": "#/components/responses/tasks.cancel#200"
           }
         },
-        "x-technical-preview": true,
+        "x-state": "Technical preview",
         "x-available-since": "2.3.0"
       }
     },
@@ -32591,7 +32591,7 @@
             }
           }
         },
-        "x-technical-preview": true,
+        "x-state": "Technical preview",
         "x-available-since": "5.0.0"
       }
     },
@@ -32709,7 +32709,7 @@
             }
           }
         },
-        "x-technical-preview": true,
+        "x-state": "Technical preview",
         "x-available-since": "2.3.0"
       }
     },
@@ -45013,7 +45013,7 @@
                   },
                   "prune": {
                     "description": "Whether to perform pruning, omitting the non-significant tokens from the query to improve query performance.\nIf prune is true but the pruning_config is not specified, pruning will occur but default values will be used.\nDefault: false",
-                    "x-technical-preview": true,
+                    "x-state": "Technical preview",
                     "x-available-since": "8.15.0",
                     "type": "boolean"
                   },
@@ -59134,7 +59134,7 @@
               },
               "time_series_dimension": {
                 "description": "For internal use by Elastic only. Marks the field as a time series dimension. Defaults to false.",
-                "x-technical-preview": true,
+                "x-state": "Technical preview",
                 "type": "boolean"
               },
               "type": {
@@ -59951,7 +59951,7 @@
               },
               "time_series_dimension": {
                 "description": "For internal use by Elastic only. Marks the field as a time series dimension. Defaults to false.",
-                "x-technical-preview": true,
+                "x-state": "Technical preview",
                 "type": "boolean"
               },
               "type": {
@@ -60240,7 +60240,7 @@
               },
               "time_series_dimension": {
                 "description": "For internal use by Elastic only. Marks the field as a time series dimension. Defaults to false.",
-                "x-technical-preview": true,
+                "x-state": "Technical preview",
                 "type": "boolean"
               }
             }
@@ -64870,7 +64870,7 @@
           },
           "time_series_dimension": {
             "description": "Whether this field is used as a time series dimension.",
-            "x-technical-preview": true,
+            "x-state": "Technical preview",
             "x-available-since": "8.0.0",
             "type": "boolean"
           },
@@ -64879,7 +64879,7 @@
           },
           "non_dimension_indices": {
             "description": "If this list is present in response then some indices have the\nfield marked as a dimension and other indices, the ones in this list, do not.",
-            "x-technical-preview": true,
+            "x-state": "Technical preview",
             "x-available-since": "8.0.0",
             "type": "array",
             "items": {
@@ -64888,7 +64888,7 @@
           },
           "metric_conflicts_indices": {
             "description": "The list of indices where this field is present if these indices\ndon’t have the same `time_series_metric` value for this field.",
-            "x-technical-preview": true,
+            "x-state": "Technical preview",
             "x-available-since": "8.0.0",
             "type": "array",
             "items": {
