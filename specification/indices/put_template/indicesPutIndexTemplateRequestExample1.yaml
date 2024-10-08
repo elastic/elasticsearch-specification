@@ -1,0 +1,7 @@
+summary: Create or update an index setting.
+# method_request: PUT /_index_template/template_1
+# description: ''
+# type: request
+value:
+  "{\n  \"index_patterns\" : [\"template*\"],\n  \"priority\" : 1,\n  \"template\"\
+  : {\n    \"settings\" : {\n      \"number_of_shards\" : 2\n    }\n  }\n}"
