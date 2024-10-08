@@ -72,7 +72,7 @@
             }
           }
         },
-        "x-available-since": "7.7.0"
+        "x-state": "Added in 7.7.0"
       },
       "delete": {
         "tags": [
@@ -106,7 +106,7 @@
             }
           }
         },
-        "x-available-since": "7.7.0"
+        "x-state": "Added in 7.7.0"
       }
     },
     "/_async_search/status/{id}": {
@@ -142,7 +142,7 @@
             }
           }
         },
-        "x-available-since": "7.11.0"
+        "x-state": "Added in 7.11.0"
       }
     },
     "/_async_search": {
@@ -301,7 +301,7 @@
             "$ref": "#/components/responses/async_search.submit#200"
           }
         },
-        "x-available-since": "7.7.0"
+        "x-state": "Added in 7.7.0"
       }
     },
     "/{index}/_async_search": {
@@ -463,7 +463,7 @@
             "$ref": "#/components/responses/async_search.submit#200"
           }
         },
-        "x-available-since": "7.7.0"
+        "x-state": "Added in 7.7.0"
       }
     },
     "/_bulk": {
@@ -712,7 +712,7 @@
             "$ref": "#/components/responses/cat.component_templates#200"
           }
         },
-        "x-available-since": "5.1.0"
+        "x-state": "Added in 5.1.0"
       }
     },
     "/_cat/component_templates/{name}": {
@@ -733,7 +733,7 @@
             "$ref": "#/components/responses/cat.component_templates#200"
           }
         },
-        "x-available-since": "5.1.0"
+        "x-state": "Added in 5.1.0"
       }
     },
     "/_cat/count": {
@@ -899,7 +899,7 @@
             "$ref": "#/components/responses/cat.ml_data_frame_analytics#200"
           }
         },
-        "x-available-since": "7.7.0"
+        "x-state": "Added in 7.7.0"
       }
     },
     "/_cat/ml/data_frame/analytics/{id}": {
@@ -935,7 +935,7 @@
             "$ref": "#/components/responses/cat.ml_data_frame_analytics#200"
           }
         },
-        "x-available-since": "7.7.0"
+        "x-state": "Added in 7.7.0"
       }
     },
     "/_cat/ml/datafeeds": {
@@ -965,7 +965,7 @@
             "$ref": "#/components/responses/cat.ml_datafeeds#200"
           }
         },
-        "x-available-since": "7.7.0"
+        "x-state": "Added in 7.7.0"
       }
     },
     "/_cat/ml/datafeeds/{datafeed_id}": {
@@ -998,7 +998,7 @@
             "$ref": "#/components/responses/cat.ml_datafeeds#200"
           }
         },
-        "x-available-since": "7.7.0"
+        "x-state": "Added in 7.7.0"
       }
     },
     "/_cat/ml/anomaly_detectors": {
@@ -1031,7 +1031,7 @@
             "$ref": "#/components/responses/cat.ml_jobs#200"
           }
         },
-        "x-available-since": "7.7.0"
+        "x-state": "Added in 7.7.0"
       }
     },
     "/_cat/ml/anomaly_detectors/{job_id}": {
@@ -1067,7 +1067,7 @@
             "$ref": "#/components/responses/cat.ml_jobs#200"
           }
         },
-        "x-available-since": "7.7.0"
+        "x-state": "Added in 7.7.0"
       }
     },
     "/_cat/ml/trained_models": {
@@ -1103,7 +1103,7 @@
             "$ref": "#/components/responses/cat.ml_trained_models#200"
           }
         },
-        "x-available-since": "7.7.0"
+        "x-state": "Added in 7.7.0"
       }
     },
     "/_cat/ml/trained_models/{model_id}": {
@@ -1142,7 +1142,7 @@
             "$ref": "#/components/responses/cat.ml_trained_models#200"
           }
         },
-        "x-available-since": "7.7.0"
+        "x-state": "Added in 7.7.0"
       }
     },
     "/_cat/transforms": {
@@ -1178,7 +1178,7 @@
             "$ref": "#/components/responses/cat.transforms#200"
           }
         },
-        "x-available-since": "7.7.0"
+        "x-state": "Added in 7.7.0"
       }
     },
     "/_cat/transforms/{transform_id}": {
@@ -1217,7 +1217,7 @@
             "$ref": "#/components/responses/cat.transforms#200"
           }
         },
-        "x-available-since": "7.7.0"
+        "x-state": "Added in 7.7.0"
       }
     },
     "/_search/scroll": {
@@ -1417,7 +1417,7 @@
             }
           }
         },
-        "x-available-since": "7.10.0"
+        "x-state": "Added in 7.10.0"
       }
     },
     "/_component_template/{name}": {
@@ -1450,7 +1450,7 @@
             "$ref": "#/components/responses/cluster.get_component_template#200"
           }
         },
-        "x-available-since": "7.8.0"
+        "x-state": "Added in 7.8.0"
       },
       "put": {
         "tags": [
@@ -1478,7 +1478,7 @@
             "$ref": "#/components/responses/cluster.put_component_template#200"
           }
         },
-        "x-available-since": "7.8.0"
+        "x-state": "Added in 7.8.0"
       },
       "post": {
         "tags": [
@@ -1506,7 +1506,7 @@
             "$ref": "#/components/responses/cluster.put_component_template#200"
           }
         },
-        "x-available-since": "7.8.0"
+        "x-state": "Added in 7.8.0"
       },
       "delete": {
         "tags": [
@@ -1560,7 +1560,7 @@
             }
           }
         },
-        "x-available-since": "7.8.0"
+        "x-state": "Added in 7.8.0"
       },
       "head": {
         "tags": [
@@ -1610,7 +1610,7 @@
             }
           }
         },
-        "x-available-since": "7.8.0"
+        "x-state": "Added in 7.8.0"
       }
     },
     "/_component_template": {
@@ -1640,7 +1640,7 @@
             "$ref": "#/components/responses/cluster.get_component_template#200"
           }
         },
-        "x-available-since": "7.8.0"
+        "x-state": "Added in 7.8.0"
       }
     },
     "/_info/{target}": {
@@ -1699,7 +1699,7 @@
             }
           }
         },
-        "x-available-since": "8.9.0"
+        "x-state": "Added in 8.9.0"
       }
     },
     "/_connector/{connector_id}/_check_in": {
@@ -1742,8 +1742,7 @@
             }
           }
         },
-        "x-technical-preview": true,
-        "x-available-since": "8.12.0"
+        "x-state": "Technical preview"
       }
     },
     "/_connector/{connector_id}": {
@@ -1778,8 +1777,7 @@
             }
           }
         },
-        "x-beta": true,
-        "x-available-since": "8.12.0"
+        "x-beta": true
       },
       "put": {
         "tags": [
@@ -1800,8 +1798,7 @@
             "$ref": "#/components/responses/connector.put#200"
           }
         },
-        "x-beta": true,
-        "x-available-since": "8.12.0"
+        "x-beta": true
       },
       "delete": {
         "tags": [
@@ -1844,8 +1841,7 @@
             }
           }
         },
-        "x-beta": true,
-        "x-available-since": "8.12.0"
+        "x-beta": true
       }
     },
     "/_connector": {
@@ -1944,8 +1940,7 @@
             }
           }
         },
-        "x-beta": true,
-        "x-available-since": "8.12.0"
+        "x-beta": true
       },
       "put": {
         "tags": [
@@ -1961,8 +1956,7 @@
             "$ref": "#/components/responses/connector.put#200"
           }
         },
-        "x-beta": true,
-        "x-available-since": "8.12.0"
+        "x-beta": true
       },
       "post": {
         "tags": [
@@ -2023,8 +2017,7 @@
             }
           }
         },
-        "x-beta": true,
-        "x-available-since": "8.12.0"
+        "x-beta": true
       }
     },
     "/_connector/_sync_job/{connector_sync_job_id}/_cancel": {
@@ -2067,8 +2060,7 @@
             }
           }
         },
-        "x-beta": true,
-        "x-available-since": "8.12.0"
+        "x-beta": true
       }
     },
     "/_connector/_sync_job/{connector_sync_job_id}": {
@@ -2103,8 +2095,7 @@
             }
           }
         },
-        "x-beta": true,
-        "x-available-since": "8.12.0"
+        "x-beta": true
       },
       "delete": {
         "tags": [
@@ -2137,8 +2128,7 @@
             }
           }
         },
-        "x-beta": true,
-        "x-available-since": "8.12.0"
+        "x-beta": true
       }
     },
     "/_connector/_sync_job": {
@@ -2237,8 +2227,7 @@
             }
           }
         },
-        "x-beta": true,
-        "x-available-since": "8.12.0"
+        "x-beta": true
       },
       "post": {
         "tags": [
@@ -2290,8 +2279,7 @@
             }
           }
         },
-        "x-beta": true,
-        "x-available-since": "8.12.0"
+        "x-beta": true
       }
     },
     "/_connector/{connector_id}/_filtering/_activate": {
@@ -2334,8 +2322,7 @@
             }
           }
         },
-        "x-technical-preview": true,
-        "x-available-since": "8.12.0"
+        "x-state": "Technical preview"
       }
     },
     "/_connector/{connector_id}/_api_key_id": {
@@ -2396,8 +2383,7 @@
             }
           }
         },
-        "x-beta": true,
-        "x-available-since": "8.12.0"
+        "x-beta": true
       }
     },
     "/_connector/{connector_id}/_configuration": {
@@ -2461,8 +2447,7 @@
             }
           }
         },
-        "x-beta": true,
-        "x-available-since": "8.12.0"
+        "x-beta": true
       }
     },
     "/_connector/{connector_id}/_error": {
@@ -2530,8 +2515,7 @@
             }
           }
         },
-        "x-technical-preview": true,
-        "x-available-since": "8.12.0"
+        "x-state": "Technical preview"
       }
     },
     "/_connector/{connector_id}/_filtering": {
@@ -2601,8 +2585,7 @@
             }
           }
         },
-        "x-beta": true,
-        "x-available-since": "8.12.0"
+        "x-beta": true
       }
     },
     "/_connector/{connector_id}/_filtering/_validation": {
@@ -2663,8 +2646,7 @@
             }
           }
         },
-        "x-technical-preview": true,
-        "x-available-since": "8.12.0"
+        "x-state": "Technical preview"
       }
     },
     "/_connector/{connector_id}/_index_name": {
@@ -2732,8 +2714,7 @@
             }
           }
         },
-        "x-beta": true,
-        "x-available-since": "8.12.0"
+        "x-beta": true
       }
     },
     "/_connector/{connector_id}/_name": {
@@ -2794,8 +2775,7 @@
             }
           }
         },
-        "x-beta": true,
-        "x-available-since": "8.12.0"
+        "x-beta": true
       }
     },
     "/_connector/{connector_id}/_native": {
@@ -2856,8 +2836,7 @@
             }
           }
         },
-        "x-beta": true,
-        "x-available-since": "8.12.0"
+        "x-beta": true
       }
     },
     "/_connector/{connector_id}/_pipeline": {
@@ -2918,8 +2897,7 @@
             }
           }
         },
-        "x-beta": true,
-        "x-available-since": "8.12.0"
+        "x-beta": true
       }
     },
     "/_connector/{connector_id}/_scheduling": {
@@ -2980,8 +2958,7 @@
             }
           }
         },
-        "x-beta": true,
-        "x-available-since": "8.12.0"
+        "x-beta": true
       }
     },
     "/_connector/{connector_id}/_service_type": {
@@ -3042,8 +3019,7 @@
             }
           }
         },
-        "x-beta": true,
-        "x-available-since": "8.12.0"
+        "x-beta": true
       }
     },
     "/_connector/{connector_id}/_status": {
@@ -3104,8 +3080,7 @@
             }
           }
         },
-        "x-technical-preview": true,
-        "x-available-since": "8.12.0"
+        "x-state": "Technical preview"
       }
     },
     "/_count": {
@@ -3399,7 +3374,7 @@
             "$ref": "#/components/responses/create#200"
           }
         },
-        "x-available-since": "5.0.0"
+        "x-state": "Added in 5.0.0"
       },
       "post": {
         "tags": [
@@ -3445,7 +3420,7 @@
             "$ref": "#/components/responses/create#200"
           }
         },
-        "x-available-since": "5.0.0"
+        "x-state": "Added in 5.0.0"
       }
     },
     "/{index}/_doc/{id}": {
@@ -4376,7 +4351,7 @@
             }
           }
         },
-        "x-available-since": "5.0.0"
+        "x-state": "Added in 5.0.0"
       }
     },
     "/_scripts/{id}": {
@@ -4564,7 +4539,7 @@
             "$ref": "#/components/responses/enrich.get_policy#200"
           }
         },
-        "x-available-since": "7.5.0"
+        "x-state": "Added in 7.5.0"
       },
       "put": {
         "tags": [
@@ -4619,7 +4594,7 @@
             }
           }
         },
-        "x-available-since": "7.5.0"
+        "x-state": "Added in 7.5.0"
       },
       "delete": {
         "tags": [
@@ -4653,7 +4628,7 @@
             }
           }
         },
-        "x-available-since": "7.5.0"
+        "x-state": "Added in 7.5.0"
       }
     },
     "/_enrich/policy/{name}/_execute": {
@@ -4706,7 +4681,7 @@
             }
           }
         },
-        "x-available-since": "7.5.0"
+        "x-state": "Added in 7.5.0"
       }
     },
     "/_enrich/policy": {
@@ -4722,7 +4697,7 @@
             "$ref": "#/components/responses/enrich.get_policy#200"
           }
         },
-        "x-available-since": "7.5.0"
+        "x-state": "Added in 7.5.0"
       }
     },
     "/_enrich/_stats": {
@@ -4757,7 +4732,6 @@
                     },
                     "cache_stats": {
                       "description": "Objects containing information about the enrich cache stats on each ingest node.",
-                      "x-available-since": "7.16.0",
                       "type": "array",
                       "items": {
                         "$ref": "#/components/schemas/enrich.stats:CacheStats"
@@ -4773,7 +4747,7 @@
             }
           }
         },
-        "x-available-since": "7.5.0"
+        "x-state": "Added in 7.5.0"
       }
     },
     "/_eql/search/{id}": {
@@ -4828,7 +4802,7 @@
             }
           }
         },
-        "x-available-since": "7.9.0"
+        "x-state": "Added in 7.9.0"
       },
       "delete": {
         "tags": [
@@ -4862,7 +4836,7 @@
             }
           }
         },
-        "x-available-since": "7.9.0"
+        "x-state": "Added in 7.9.0"
       }
     },
     "/_eql/search/status/{id}": {
@@ -4925,7 +4899,7 @@
             }
           }
         },
-        "x-available-since": "7.9.0"
+        "x-state": "Added in 7.9.0"
       }
     },
     "/{index}/_eql/search": {
@@ -4966,7 +4940,7 @@
             "$ref": "#/components/responses/eql.search#200"
           }
         },
-        "x-available-since": "7.9.0"
+        "x-state": "Added in 7.9.0"
       },
       "post": {
         "tags": [
@@ -5005,7 +4979,7 @@
             "$ref": "#/components/responses/eql.search#200"
           }
         },
-        "x-available-since": "7.9.0"
+        "x-state": "Added in 7.9.0"
       }
     },
     "/_query": {
@@ -5111,8 +5085,7 @@
               }
             }
           }
-        },
-        "x-available-since": "8.11.0"
+        }
       }
     },
     "/{index}/_source/{id}": {
@@ -5388,7 +5361,7 @@
             }
           }
         },
-        "x-available-since": "5.4.0"
+        "x-state": "Added in 5.4.0"
       }
     },
     "/{index}/_explain/{id}": {
@@ -5555,7 +5528,7 @@
             "$ref": "#/components/responses/field_caps#200"
           }
         },
-        "x-available-since": "5.4.0"
+        "x-state": "Added in 5.4.0"
       },
       "post": {
         "tags": [
@@ -5598,7 +5571,7 @@
             "$ref": "#/components/responses/field_caps#200"
           }
         },
-        "x-available-since": "5.4.0"
+        "x-state": "Added in 5.4.0"
       }
     },
     "/{index}/_field_caps": {
@@ -5646,7 +5619,7 @@
             "$ref": "#/components/responses/field_caps#200"
           }
         },
-        "x-available-since": "5.4.0"
+        "x-state": "Added in 5.4.0"
       },
       "post": {
         "tags": [
@@ -5692,7 +5665,7 @@
             "$ref": "#/components/responses/field_caps#200"
           }
         },
-        "x-available-since": "5.4.0"
+        "x-state": "Added in 5.4.0"
       }
     },
     "/{index}/_graph/explore": {
@@ -5918,7 +5891,7 @@
             }
           }
         },
-        "x-available-since": "7.9.0"
+        "x-state": "Added in 7.9.0"
       }
     },
     "/_analyze": {
@@ -6418,7 +6391,7 @@
             "$ref": "#/components/responses/indices.get_data_stream#200"
           }
         },
-        "x-available-since": "7.9.0"
+        "x-state": "Added in 7.9.0"
       },
       "put": {
         "tags": [
@@ -6472,7 +6445,7 @@
             }
           }
         },
-        "x-available-since": "7.9.0"
+        "x-state": "Added in 7.9.0"
       },
       "delete": {
         "tags": [
@@ -6526,7 +6499,7 @@
             }
           }
         },
-        "x-available-since": "7.9.0"
+        "x-state": "Added in 7.9.0"
       }
     },
     "/{index}/_alias/{name}": {
@@ -6847,7 +6820,7 @@
             }
           }
         },
-        "x-available-since": "8.11.0"
+        "x-state": "Added in 8.11.0"
       },
       "put": {
         "tags": [
@@ -6928,7 +6901,7 @@
             }
           }
         },
-        "x-available-since": "8.11.0"
+        "x-state": "Added in 8.11.0"
       },
       "delete": {
         "tags": [
@@ -6992,7 +6965,7 @@
             }
           }
         },
-        "x-available-since": "8.11.0"
+        "x-state": "Added in 8.11.0"
       }
     },
     "/_index_template/{name}": {
@@ -7025,7 +6998,7 @@
             "$ref": "#/components/responses/indices.get_index_template#200"
           }
         },
-        "x-available-since": "7.9.0"
+        "x-state": "Added in 7.9.0"
       },
       "put": {
         "tags": [
@@ -7056,7 +7029,7 @@
             "$ref": "#/components/responses/indices.put_index_template#200"
           }
         },
-        "x-available-since": "7.9.0"
+        "x-state": "Added in 7.9.0"
       },
       "post": {
         "tags": [
@@ -7087,7 +7060,7 @@
             "$ref": "#/components/responses/indices.put_index_template#200"
           }
         },
-        "x-available-since": "7.9.0"
+        "x-state": "Added in 7.9.0"
       },
       "delete": {
         "tags": [
@@ -7141,7 +7114,7 @@
             }
           }
         },
-        "x-available-since": "7.8.0"
+        "x-state": "Added in 7.8.0"
       },
       "head": {
         "tags": [
@@ -7308,7 +7281,7 @@
             }
           }
         },
-        "x-available-since": "8.11.0"
+        "x-state": "Added in 8.11.0"
       }
     },
     "/_alias": {
@@ -7399,7 +7372,7 @@
             "$ref": "#/components/responses/indices.get_data_stream#200"
           }
         },
-        "x-available-since": "7.9.0"
+        "x-state": "Added in 7.9.0"
       }
     },
     "/_index_template": {
@@ -7429,7 +7402,7 @@
             "$ref": "#/components/responses/indices.get_index_template#200"
           }
         },
-        "x-available-since": "7.9.0"
+        "x-state": "Added in 7.9.0"
       }
     },
     "/_mapping": {
@@ -7875,7 +7848,7 @@
             }
           }
         },
-        "x-available-since": "7.9.0"
+        "x-state": "Added in 7.9.0"
       }
     },
     "/_data_stream/_modify": {
@@ -7920,7 +7893,7 @@
             }
           }
         },
-        "x-available-since": "7.16.0"
+        "x-state": "Added in 7.16.0"
       }
     },
     "/_template/{name}": {
@@ -8185,7 +8158,7 @@
             }
           }
         },
-        "x-available-since": "7.9.0"
+        "x-state": "Added in 7.9.0"
       }
     },
     "/{alias}/_rollover": {
@@ -8221,7 +8194,7 @@
             "$ref": "#/components/responses/indices.rollover#200"
           }
         },
-        "x-available-since": "5.0.0"
+        "x-state": "Added in 5.0.0"
       }
     },
     "/{alias}/_rollover/{new_index}": {
@@ -8260,7 +8233,7 @@
             "$ref": "#/components/responses/indices.rollover#200"
           }
         },
-        "x-available-since": "5.0.0"
+        "x-state": "Added in 5.0.0"
       }
     },
     "/_index_template/_simulate_index/{name}": {
@@ -8330,7 +8303,7 @@
             }
           }
         },
-        "x-available-since": "7.9.0"
+        "x-state": "Added in 7.9.0"
       }
     },
     "/_index_template/_simulate": {
@@ -8455,7 +8428,7 @@
             }
           }
         },
-        "x-available-since": "1.3.0"
+        "x-state": "Added in 1.3.0"
       }
     },
     "/_validate/query": {
@@ -8512,7 +8485,7 @@
             "$ref": "#/components/responses/indices.validate_query#200"
           }
         },
-        "x-available-since": "1.3.0"
+        "x-state": "Added in 1.3.0"
       },
       "post": {
         "tags": [
@@ -8567,7 +8540,7 @@
             "$ref": "#/components/responses/indices.validate_query#200"
           }
         },
-        "x-available-since": "1.3.0"
+        "x-state": "Added in 1.3.0"
       }
     },
     "/{index}/_validate/query": {
@@ -8627,7 +8600,7 @@
             "$ref": "#/components/responses/indices.validate_query#200"
           }
         },
-        "x-available-since": "1.3.0"
+        "x-state": "Added in 1.3.0"
       },
       "post": {
         "tags": [
@@ -8685,7 +8658,7 @@
             "$ref": "#/components/responses/indices.validate_query#200"
           }
         },
-        "x-available-since": "1.3.0"
+        "x-state": "Added in 1.3.0"
       }
     },
     "/_inference/{inference_id}": {
@@ -8705,8 +8678,7 @@
             "$ref": "#/components/responses/inference.get#200"
           }
         },
-        "x-technical-preview": true,
-        "x-available-since": "8.11.0"
+        "x-state": "Technical preview"
       },
       "put": {
         "tags": [
@@ -8727,8 +8699,7 @@
             "$ref": "#/components/responses/inference.put#200"
           }
         },
-        "x-technical-preview": true,
-        "x-available-since": "8.11.0"
+        "x-state": "Technical preview"
       },
       "post": {
         "tags": [
@@ -8752,8 +8723,7 @@
             "$ref": "#/components/responses/inference.inference#200"
           }
         },
-        "x-technical-preview": true,
-        "x-available-since": "8.11.0"
+        "x-state": "Technical preview"
       },
       "delete": {
         "tags": [
@@ -8777,8 +8747,7 @@
             "$ref": "#/components/responses/inference.delete#200"
           }
         },
-        "x-technical-preview": true,
-        "x-available-since": "8.11.0"
+        "x-state": "Technical preview"
       }
     },
     "/_inference/{task_type}/{inference_id}": {
@@ -8801,8 +8770,7 @@
             "$ref": "#/components/responses/inference.get#200"
           }
         },
-        "x-technical-preview": true,
-        "x-available-since": "8.11.0"
+        "x-state": "Technical preview"
       },
       "put": {
         "tags": [
@@ -8826,8 +8794,7 @@
             "$ref": "#/components/responses/inference.put#200"
           }
         },
-        "x-technical-preview": true,
-        "x-available-since": "8.11.0"
+        "x-state": "Technical preview"
       },
       "post": {
         "tags": [
@@ -8854,8 +8821,7 @@
             "$ref": "#/components/responses/inference.inference#200"
           }
         },
-        "x-technical-preview": true,
-        "x-available-since": "8.11.0"
+        "x-state": "Technical preview"
       },
       "delete": {
         "tags": [
@@ -8882,8 +8848,7 @@
             "$ref": "#/components/responses/inference.delete#200"
           }
         },
-        "x-technical-preview": true,
-        "x-available-since": "8.11.0"
+        "x-state": "Technical preview"
       }
     },
     "/_inference": {
@@ -8898,8 +8863,7 @@
             "$ref": "#/components/responses/inference.get#200"
           }
         },
-        "x-technical-preview": true,
-        "x-available-since": "8.11.0"
+        "x-state": "Technical preview"
       }
     },
     "/": {
@@ -8988,7 +8952,7 @@
             "$ref": "#/components/responses/ingest.get_pipeline#200"
           }
         },
-        "x-available-since": "5.0.0"
+        "x-state": "Added in 5.0.0"
       },
       "put": {
         "tags": [
@@ -9092,7 +9056,7 @@
             }
           }
         },
-        "x-available-since": "5.0.0"
+        "x-state": "Added in 5.0.0"
       },
       "delete": {
         "tags": [
@@ -9145,7 +9109,7 @@
             }
           }
         },
-        "x-available-since": "5.0.0"
+        "x-state": "Added in 5.0.0"
       }
     },
     "/_ingest/pipeline": {
@@ -9169,7 +9133,7 @@
             "$ref": "#/components/responses/ingest.get_pipeline#200"
           }
         },
-        "x-available-since": "5.0.0"
+        "x-state": "Added in 5.0.0"
       }
     },
     "/_ingest/processor/grok": {
@@ -9203,7 +9167,7 @@
             }
           }
         },
-        "x-available-since": "6.1.0"
+        "x-state": "Added in 6.1.0"
       }
     },
     "/_ingest/pipeline/_simulate": {
@@ -9226,7 +9190,7 @@
             "$ref": "#/components/responses/ingest.simulate#200"
           }
         },
-        "x-available-since": "5.0.0"
+        "x-state": "Added in 5.0.0"
       },
       "post": {
         "tags": [
@@ -9247,7 +9211,7 @@
             "$ref": "#/components/responses/ingest.simulate#200"
           }
         },
-        "x-available-since": "5.0.0"
+        "x-state": "Added in 5.0.0"
       }
     },
     "/_ingest/pipeline/{id}/_simulate": {
@@ -9273,7 +9237,7 @@
             "$ref": "#/components/responses/ingest.simulate#200"
           }
         },
-        "x-available-since": "5.0.0"
+        "x-state": "Added in 5.0.0"
       },
       "post": {
         "tags": [
@@ -9297,7 +9261,7 @@
             "$ref": "#/components/responses/ingest.simulate#200"
           }
         },
-        "x-available-since": "5.0.0"
+        "x-state": "Added in 5.0.0"
       }
     },
     "/_license": {
@@ -9369,7 +9333,7 @@
             "$ref": "#/components/responses/logstash.get_pipeline#200"
           }
         },
-        "x-available-since": "7.12.0"
+        "x-state": "Added in 7.12.0"
       },
       "put": {
         "tags": [
@@ -9408,7 +9372,7 @@
             }
           }
         },
-        "x-available-since": "7.12.0"
+        "x-state": "Added in 7.12.0"
       },
       "delete": {
         "tags": [
@@ -9437,7 +9401,7 @@
             }
           }
         },
-        "x-available-since": "7.12.0"
+        "x-state": "Added in 7.12.0"
       }
     },
     "/_logstash/pipeline": {
@@ -9452,7 +9416,7 @@
             "$ref": "#/components/responses/logstash.get_pipeline#200"
           }
         },
-        "x-available-since": "7.12.0"
+        "x-state": "Added in 7.12.0"
       }
     },
     "/_mget": {
@@ -9496,7 +9460,7 @@
             "$ref": "#/components/responses/mget#200"
           }
         },
-        "x-available-since": "1.3.0"
+        "x-state": "Added in 1.3.0"
       },
       "post": {
         "tags": [
@@ -9538,7 +9502,7 @@
             "$ref": "#/components/responses/mget#200"
           }
         },
-        "x-available-since": "1.3.0"
+        "x-state": "Added in 1.3.0"
       }
     },
     "/{index}/_mget": {
@@ -9585,7 +9549,7 @@
             "$ref": "#/components/responses/mget#200"
           }
         },
-        "x-available-since": "1.3.0"
+        "x-state": "Added in 1.3.0"
       },
       "post": {
         "tags": [
@@ -9630,7 +9594,7 @@
             "$ref": "#/components/responses/mget#200"
           }
         },
-        "x-available-since": "1.3.0"
+        "x-state": "Added in 1.3.0"
       }
     },
     "/_ml/anomaly_detectors/{job_id}/_close": {
@@ -9726,7 +9690,7 @@
             }
           }
         },
-        "x-available-since": "5.4.0"
+        "x-state": "Added in 5.4.0"
       }
     },
     "/_ml/calendars/{calendar_id}": {
@@ -9755,7 +9719,7 @@
             "$ref": "#/components/responses/ml.get_calendars#200"
           }
         },
-        "x-available-since": "6.2.0"
+        "x-state": "Added in 6.2.0"
       },
       "put": {
         "tags": [
@@ -9826,7 +9790,7 @@
             }
           }
         },
-        "x-available-since": "6.2.0"
+        "x-state": "Added in 6.2.0"
       },
       "post": {
         "tags": [
@@ -9853,7 +9817,7 @@
             "$ref": "#/components/responses/ml.get_calendars#200"
           }
         },
-        "x-available-since": "6.2.0"
+        "x-state": "Added in 6.2.0"
       },
       "delete": {
         "tags": [
@@ -9887,7 +9851,7 @@
             }
           }
         },
-        "x-available-since": "6.2.0"
+        "x-state": "Added in 6.2.0"
       }
     },
     "/_ml/calendars/{calendar_id}/events/{event_id}": {
@@ -9933,7 +9897,7 @@
             }
           }
         },
-        "x-available-since": "6.2.0"
+        "x-state": "Added in 6.2.0"
       }
     },
     "/_ml/calendars/{calendar_id}/jobs/{job_id}": {
@@ -9995,7 +9959,7 @@
             }
           }
         },
-        "x-available-since": "6.2.0"
+        "x-state": "Added in 6.2.0"
       },
       "delete": {
         "tags": [
@@ -10055,7 +10019,7 @@
             }
           }
         },
-        "x-available-since": "6.2.0"
+        "x-state": "Added in 6.2.0"
       }
     },
     "/_ml/data_frame/analytics/{id}": {
@@ -10088,7 +10052,7 @@
             "$ref": "#/components/responses/ml.get_data_frame_analytics#200"
           }
         },
-        "x-available-since": "7.3.0"
+        "x-state": "Added in 7.3.0"
       },
       "put": {
         "tags": [
@@ -10225,7 +10189,7 @@
             }
           }
         },
-        "x-available-since": "7.3.0"
+        "x-state": "Added in 7.3.0"
       },
       "delete": {
         "tags": [
@@ -10278,7 +10242,7 @@
             }
           }
         },
-        "x-available-since": "7.3.0"
+        "x-state": "Added in 7.3.0"
       }
     },
     "/_ml/datafeeds/{datafeed_id}": {
@@ -10305,7 +10269,7 @@
             "$ref": "#/components/responses/ml.get_datafeeds#200"
           }
         },
-        "x-available-since": "5.5.0"
+        "x-state": "Added in 5.5.0"
       },
       "put": {
         "tags": [
@@ -10508,7 +10472,7 @@
             }
           }
         },
-        "x-available-since": "5.4.0"
+        "x-state": "Added in 5.4.0"
       },
       "delete": {
         "tags": [
@@ -10551,7 +10515,7 @@
             }
           }
         },
-        "x-available-since": "5.4.0"
+        "x-state": "Added in 5.4.0"
       }
     },
     "/_ml/filters/{filter_id}": {
@@ -10578,7 +10542,7 @@
             "$ref": "#/components/responses/ml.get_filters#200"
           }
         },
-        "x-available-since": "5.5.0"
+        "x-state": "Added in 5.5.0"
       },
       "put": {
         "tags": [
@@ -10654,7 +10618,7 @@
             }
           }
         },
-        "x-available-since": "5.4.0"
+        "x-state": "Added in 5.4.0"
       },
       "delete": {
         "tags": [
@@ -10688,7 +10652,7 @@
             }
           }
         },
-        "x-available-since": "5.4.0"
+        "x-state": "Added in 5.4.0"
       }
     },
     "/_ml/anomaly_detectors/{job_id}": {
@@ -10715,7 +10679,7 @@
             "$ref": "#/components/responses/ml.get_jobs#200"
           }
         },
-        "x-available-since": "5.5.0"
+        "x-state": "Added in 5.5.0"
       },
       "put": {
         "tags": [
@@ -10898,7 +10862,7 @@
             }
           }
         },
-        "x-available-since": "5.4.0"
+        "x-state": "Added in 5.4.0"
       },
       "delete": {
         "tags": [
@@ -10962,7 +10926,7 @@
             }
           }
         },
-        "x-available-since": "5.4.0"
+        "x-state": "Added in 5.4.0"
       }
     },
     "/_ml/trained_models/{model_id}": {
@@ -11003,7 +10967,7 @@
             "$ref": "#/components/responses/ml.get_trained_models#200"
           }
         },
-        "x-available-since": "7.10.0"
+        "x-state": "Added in 7.10.0"
       },
       "put": {
         "tags": [
@@ -11111,7 +11075,7 @@
             }
           }
         },
-        "x-available-since": "7.10.0"
+        "x-state": "Added in 7.10.0"
       },
       "delete": {
         "tags": [
@@ -11155,7 +11119,7 @@
             }
           }
         },
-        "x-available-since": "7.10.0"
+        "x-state": "Added in 7.10.0"
       }
     },
     "/_ml/trained_models/{model_id}/model_aliases/{model_alias}": {
@@ -11212,7 +11176,7 @@
             }
           }
         },
-        "x-available-since": "7.13.0"
+        "x-state": "Added in 7.13.0"
       },
       "delete": {
         "tags": [
@@ -11257,7 +11221,7 @@
             }
           }
         },
-        "x-available-since": "7.13.0"
+        "x-state": "Added in 7.13.0"
       }
     },
     "/_ml/anomaly_detectors/_estimate_model_memory": {
@@ -11317,7 +11281,7 @@
             }
           }
         },
-        "x-available-since": "7.7.0"
+        "x-state": "Added in 7.7.0"
       }
     },
     "/_ml/data_frame/_evaluate": {
@@ -11376,7 +11340,7 @@
             }
           }
         },
-        "x-available-since": "7.3.0"
+        "x-state": "Added in 7.3.0"
       }
     },
     "/_ml/anomaly_detectors/{job_id}/_flush": {
@@ -11501,7 +11465,7 @@
             }
           }
         },
-        "x-available-since": "5.4.0"
+        "x-state": "Added in 5.4.0"
       }
     },
     "/_ml/calendars/{calendar_id}/events": {
@@ -11601,7 +11565,7 @@
             }
           }
         },
-        "x-available-since": "6.2.0"
+        "x-state": "Added in 6.2.0"
       },
       "post": {
         "tags": [
@@ -11667,7 +11631,7 @@
             }
           }
         },
-        "x-available-since": "6.2.0"
+        "x-state": "Added in 6.2.0"
       }
     },
     "/_ml/calendars": {
@@ -11693,7 +11657,7 @@
             "$ref": "#/components/responses/ml.get_calendars#200"
           }
         },
-        "x-available-since": "6.2.0"
+        "x-state": "Added in 6.2.0"
       },
       "post": {
         "tags": [
@@ -11717,7 +11681,7 @@
             "$ref": "#/components/responses/ml.get_calendars#200"
           }
         },
-        "x-available-since": "6.2.0"
+        "x-state": "Added in 6.2.0"
       }
     },
     "/_ml/data_frame/analytics": {
@@ -11747,7 +11711,7 @@
             "$ref": "#/components/responses/ml.get_data_frame_analytics#200"
           }
         },
-        "x-available-since": "7.3.0"
+        "x-state": "Added in 7.3.0"
       }
     },
     "/_ml/data_frame/analytics/_stats": {
@@ -11776,7 +11740,7 @@
             "$ref": "#/components/responses/ml.get_data_frame_analytics_stats#200"
           }
         },
-        "x-available-since": "7.3.0"
+        "x-state": "Added in 7.3.0"
       }
     },
     "/_ml/data_frame/analytics/{id}/_stats": {
@@ -11808,7 +11772,7 @@
             "$ref": "#/components/responses/ml.get_data_frame_analytics_stats#200"
           }
         },
-        "x-available-since": "7.3.0"
+        "x-state": "Added in 7.3.0"
       }
     },
     "/_ml/datafeeds/{datafeed_id}/_stats": {
@@ -11832,7 +11796,7 @@
             "$ref": "#/components/responses/ml.get_datafeed_stats#200"
           }
         },
-        "x-available-since": "5.5.0"
+        "x-state": "Added in 5.5.0"
       }
     },
     "/_ml/datafeeds/_stats": {
@@ -11853,7 +11817,7 @@
             "$ref": "#/components/responses/ml.get_datafeed_stats#200"
           }
         },
-        "x-available-since": "5.5.0"
+        "x-state": "Added in 5.5.0"
       }
     },
     "/_ml/datafeeds": {
@@ -11877,7 +11841,7 @@
             "$ref": "#/components/responses/ml.get_datafeeds#200"
           }
         },
-        "x-available-since": "5.5.0"
+        "x-state": "Added in 5.5.0"
       }
     },
     "/_ml/filters": {
@@ -11901,7 +11865,7 @@
             "$ref": "#/components/responses/ml.get_filters#200"
           }
         },
-        "x-available-since": "5.5.0"
+        "x-state": "Added in 5.5.0"
       }
     },
     "/_ml/anomaly_detectors/_stats": {
@@ -11921,7 +11885,7 @@
             "$ref": "#/components/responses/ml.get_job_stats#200"
           }
         },
-        "x-available-since": "5.5.0"
+        "x-state": "Added in 5.5.0"
       }
     },
     "/_ml/anomaly_detectors/{job_id}/_stats": {
@@ -11944,7 +11908,7 @@
             "$ref": "#/components/responses/ml.get_job_stats#200"
           }
         },
-        "x-available-since": "5.5.0"
+        "x-state": "Added in 5.5.0"
       }
     },
     "/_ml/anomaly_detectors": {
@@ -11968,7 +11932,7 @@
             "$ref": "#/components/responses/ml.get_jobs#200"
           }
         },
-        "x-available-since": "5.5.0"
+        "x-state": "Added in 5.5.0"
       }
     },
     "/_ml/anomaly_detectors/{job_id}/results/overall_buckets": {
@@ -12013,7 +11977,7 @@
             "$ref": "#/components/responses/ml.get_overall_buckets#200"
           }
         },
-        "x-available-since": "6.1.0"
+        "x-state": "Added in 6.1.0"
       },
       "post": {
         "tags": [
@@ -12056,7 +12020,7 @@
             "$ref": "#/components/responses/ml.get_overall_buckets#200"
           }
         },
-        "x-available-since": "6.1.0"
+        "x-state": "Added in 6.1.0"
       }
     },
     "/_ml/trained_models": {
@@ -12094,7 +12058,7 @@
             "$ref": "#/components/responses/ml.get_trained_models#200"
           }
         },
-        "x-available-since": "7.10.0"
+        "x-state": "Added in 7.10.0"
       }
     },
     "/_ml/trained_models/{model_id}/_stats": {
@@ -12124,7 +12088,7 @@
             "$ref": "#/components/responses/ml.get_trained_models_stats#200"
           }
         },
-        "x-available-since": "7.10.0"
+        "x-state": "Added in 7.10.0"
       }
     },
     "/_ml/trained_models/_stats": {
@@ -12151,7 +12115,7 @@
             "$ref": "#/components/responses/ml.get_trained_models_stats#200"
           }
         },
-        "x-available-since": "7.10.0"
+        "x-state": "Added in 7.10.0"
       }
     },
     "/_ml/trained_models/{model_id}/_infer": {
@@ -12177,7 +12141,7 @@
             "$ref": "#/components/responses/ml.infer_trained_model#200"
           }
         },
-        "x-available-since": "8.3.0"
+        "x-state": "Added in 8.3.0"
       }
     },
     "/_ml/trained_models/{model_id}/deployment/_infer": {
@@ -12203,7 +12167,7 @@
             "$ref": "#/components/responses/ml.infer_trained_model#200"
           }
         },
-        "x-available-since": "8.3.0"
+        "x-state": "Added in 8.3.0"
       }
     },
     "/_ml/anomaly_detectors/{job_id}/_open": {
@@ -12275,7 +12239,7 @@
             }
           }
         },
-        "x-available-since": "5.4.0"
+        "x-state": "Added in 5.4.0"
       }
     },
     "/_ml/data_frame/analytics/_preview": {
@@ -12294,7 +12258,7 @@
             "$ref": "#/components/responses/ml.preview_data_frame_analytics#200"
           }
         },
-        "x-available-since": "7.13.0"
+        "x-state": "Added in 7.13.0"
       },
       "post": {
         "tags": [
@@ -12311,7 +12275,7 @@
             "$ref": "#/components/responses/ml.preview_data_frame_analytics#200"
           }
         },
-        "x-available-since": "7.13.0"
+        "x-state": "Added in 7.13.0"
       }
     },
     "/_ml/data_frame/analytics/{id}/_preview": {
@@ -12335,7 +12299,7 @@
             "$ref": "#/components/responses/ml.preview_data_frame_analytics#200"
           }
         },
-        "x-available-since": "7.13.0"
+        "x-state": "Added in 7.13.0"
       },
       "post": {
         "tags": [
@@ -12357,7 +12321,7 @@
             "$ref": "#/components/responses/ml.preview_data_frame_analytics#200"
           }
         },
-        "x-available-since": "7.13.0"
+        "x-state": "Added in 7.13.0"
       }
     },
     "/_ml/datafeeds/{datafeed_id}/_preview": {
@@ -12387,7 +12351,7 @@
             "$ref": "#/components/responses/ml.preview_datafeed#200"
           }
         },
-        "x-available-since": "5.4.0"
+        "x-state": "Added in 5.4.0"
       },
       "post": {
         "tags": [
@@ -12415,7 +12379,7 @@
             "$ref": "#/components/responses/ml.preview_datafeed#200"
           }
         },
-        "x-available-since": "5.4.0"
+        "x-state": "Added in 5.4.0"
       }
     },
     "/_ml/datafeeds/_preview": {
@@ -12442,7 +12406,7 @@
             "$ref": "#/components/responses/ml.preview_datafeed#200"
           }
         },
-        "x-available-since": "5.4.0"
+        "x-state": "Added in 5.4.0"
       },
       "post": {
         "tags": [
@@ -12467,7 +12431,7 @@
             "$ref": "#/components/responses/ml.preview_datafeed#200"
           }
         },
-        "x-available-since": "5.4.0"
+        "x-state": "Added in 5.4.0"
       }
     },
     "/_ml/trained_models/{model_id}/definition/{part}": {
@@ -12542,7 +12506,7 @@
             }
           }
         },
-        "x-available-since": "8.0.0"
+        "x-state": "Added in 8.0.0"
       }
     },
     "/_ml/trained_models/{model_id}/vocabulary": {
@@ -12581,7 +12545,6 @@
                   },
                   "merges": {
                     "description": "The optional model merges if required by the tokenizer.",
-                    "x-available-since": "8.2.0",
                     "type": "array",
                     "items": {
                       "type": "string"
@@ -12589,7 +12552,6 @@
                   },
                   "scores": {
                     "description": "The optional vocabulary value scores if required by the tokenizer.",
-                    "x-available-since": "8.9.0",
                     "type": "array",
                     "items": {
                       "type": "number"
@@ -12616,7 +12578,7 @@
             }
           }
         },
-        "x-available-since": "8.0.0"
+        "x-state": "Added in 8.0.0"
       }
     },
     "/_ml/anomaly_detectors/{job_id}/_reset": {
@@ -12672,7 +12634,7 @@
             }
           }
         },
-        "x-available-since": "7.14.0"
+        "x-state": "Added in 7.14.0"
       }
     },
     "/_ml/data_frame/analytics/{id}/_start": {
@@ -12730,7 +12692,7 @@
             }
           }
         },
-        "x-available-since": "7.3.0"
+        "x-state": "Added in 7.3.0"
       }
     },
     "/_ml/datafeeds/{datafeed_id}/_start": {
@@ -12829,7 +12791,7 @@
             }
           }
         },
-        "x-available-since": "5.5.0"
+        "x-state": "Added in 5.5.0"
       }
     },
     "/_ml/trained_models/{model_id}/deployment/_start": {
@@ -12943,7 +12905,7 @@
             }
           }
         },
-        "x-available-since": "8.0.0"
+        "x-state": "Added in 8.0.0"
       }
     },
     "/_ml/data_frame/analytics/{id}/_stop": {
@@ -13017,7 +12979,7 @@
             }
           }
         },
-        "x-available-since": "7.3.0"
+        "x-state": "Added in 7.3.0"
       }
     },
     "/_ml/datafeeds/{datafeed_id}/_stop": {
@@ -13113,7 +13075,7 @@
             }
           }
         },
-        "x-available-since": "5.4.0"
+        "x-state": "Added in 5.4.0"
       }
     },
     "/_ml/trained_models/{model_id}/deployment/_stop": {
@@ -13176,7 +13138,7 @@
             }
           }
         },
-        "x-available-since": "8.0.0"
+        "x-state": "Added in 8.0.0"
       }
     },
     "/_ml/data_frame/analytics/{id}/_update": {
@@ -13294,7 +13256,7 @@
             }
           }
         },
-        "x-available-since": "7.3.0"
+        "x-state": "Added in 7.3.0"
       }
     },
     "/_ml/datafeeds/{datafeed_id}/_update": {
@@ -13500,7 +13462,7 @@
             }
           }
         },
-        "x-available-since": "6.4.0"
+        "x-state": "Added in 6.4.0"
       }
     },
     "/_ml/filters/{filter_id}/_update": {
@@ -13585,7 +13547,7 @@
             }
           }
         },
-        "x-available-since": "6.4.0"
+        "x-state": "Added in 6.4.0"
       }
     },
     "/_ml/anomaly_detectors/{job_id}/_update": {
@@ -13792,7 +13754,7 @@
             }
           }
         },
-        "x-available-since": "5.5.0"
+        "x-state": "Added in 5.5.0"
       }
     },
     "/_ml/trained_models/{model_id}/deployment/_update": {
@@ -13861,7 +13823,7 @@
           }
         },
         "x-beta": true,
-        "x-available-since": "8.6.0"
+        "x-state": "Added in 8.6.0"
       }
     },
     "/_msearch": {
@@ -13920,7 +13882,7 @@
             "$ref": "#/components/responses/msearch#200"
           }
         },
-        "x-available-since": "1.3.0"
+        "x-state": "Added in 1.3.0"
       },
       "post": {
         "tags": [
@@ -13977,7 +13939,7 @@
             "$ref": "#/components/responses/msearch#200"
           }
         },
-        "x-available-since": "1.3.0"
+        "x-state": "Added in 1.3.0"
       }
     },
     "/{index}/_msearch": {
@@ -14039,7 +14001,7 @@
             "$ref": "#/components/responses/msearch#200"
           }
         },
-        "x-available-since": "1.3.0"
+        "x-state": "Added in 1.3.0"
       },
       "post": {
         "tags": [
@@ -14099,7 +14061,7 @@
             "$ref": "#/components/responses/msearch#200"
           }
         },
-        "x-available-since": "1.3.0"
+        "x-state": "Added in 1.3.0"
       }
     },
     "/_msearch/template": {
@@ -14134,7 +14096,7 @@
             "$ref": "#/components/responses/msearch_template#200"
           }
         },
-        "x-available-since": "5.0.0"
+        "x-state": "Added in 5.0.0"
       },
       "post": {
         "tags": [
@@ -14167,7 +14129,7 @@
             "$ref": "#/components/responses/msearch_template#200"
           }
         },
-        "x-available-since": "5.0.0"
+        "x-state": "Added in 5.0.0"
       }
     },
     "/{index}/_msearch/template": {
@@ -14205,7 +14167,7 @@
             "$ref": "#/components/responses/msearch_template#200"
           }
         },
-        "x-available-since": "5.0.0"
+        "x-state": "Added in 5.0.0"
       },
       "post": {
         "tags": [
@@ -14241,7 +14203,7 @@
             "$ref": "#/components/responses/msearch_template#200"
           }
         },
-        "x-available-since": "5.0.0"
+        "x-state": "Added in 5.0.0"
       }
     },
     "/_mtermvectors": {
@@ -14576,7 +14538,7 @@
             }
           }
         },
-        "x-available-since": "7.10.0"
+        "x-state": "Added in 7.10.0"
       }
     },
     "/_scripts/{id}/{context}": {
@@ -14684,7 +14646,7 @@
             }
           }
         },
-        "x-available-since": "8.15.0"
+        "x-state": "Added in 8.15.0"
       },
       "put": {
         "tags": [
@@ -14775,7 +14737,7 @@
             }
           }
         },
-        "x-available-since": "8.15.0"
+        "x-state": "Added in 8.15.0"
       },
       "delete": {
         "tags": [
@@ -14819,7 +14781,7 @@
             }
           }
         },
-        "x-available-since": "8.15.0"
+        "x-state": "Added in 8.15.0"
       }
     },
     "/_query_rules/{ruleset_id}": {
@@ -14854,7 +14816,7 @@
             }
           }
         },
-        "x-available-since": "8.10.0"
+        "x-state": "Added in 8.10.0"
       },
       "put": {
         "tags": [
@@ -14923,7 +14885,7 @@
             }
           }
         },
-        "x-available-since": "8.10.0"
+        "x-state": "Added in 8.10.0"
       },
       "delete": {
         "tags": [
@@ -14956,7 +14918,7 @@
             }
           }
         },
-        "x-available-since": "8.10.0"
+        "x-state": "Added in 8.10.0"
       }
     },
     "/_query_rules": {
@@ -15015,7 +14977,7 @@
             }
           }
         },
-        "x-available-since": "8.10.0"
+        "x-state": "Added in 8.10.0"
       }
     },
     "/_rank_eval": {
@@ -15047,7 +15009,7 @@
             "$ref": "#/components/responses/rank_eval#200"
           }
         },
-        "x-available-since": "6.2.0"
+        "x-state": "Added in 6.2.0"
       },
       "post": {
         "tags": [
@@ -15077,7 +15039,7 @@
             "$ref": "#/components/responses/rank_eval#200"
           }
         },
-        "x-available-since": "6.2.0"
+        "x-state": "Added in 6.2.0"
       }
     },
     "/{index}/_rank_eval": {
@@ -15112,7 +15074,7 @@
             "$ref": "#/components/responses/rank_eval#200"
           }
         },
-        "x-available-since": "6.2.0"
+        "x-state": "Added in 6.2.0"
       },
       "post": {
         "tags": [
@@ -15145,7 +15107,7 @@
             "$ref": "#/components/responses/rank_eval#200"
           }
         },
-        "x-available-since": "6.2.0"
+        "x-state": "Added in 6.2.0"
       }
     },
     "/_reindex": {
@@ -15338,7 +15300,7 @@
             }
           }
         },
-        "x-available-since": "2.3.0"
+        "x-state": "Added in 2.3.0"
       }
     },
     "/_render/template": {
@@ -15431,8 +15393,7 @@
             "$ref": "#/components/responses/scripts_painless_execute#200"
           }
         },
-        "x-technical-preview": true,
-        "x-available-since": "6.3.0"
+        "x-state": "Technical preview"
       },
       "post": {
         "tags": [
@@ -15449,8 +15410,7 @@
             "$ref": "#/components/responses/scripts_painless_execute#200"
           }
         },
-        "x-technical-preview": true,
-        "x-available-since": "6.3.0"
+        "x-state": "Technical preview"
       }
     },
     "/_search": {
@@ -16095,8 +16055,7 @@
             }
           }
         },
-        "x-beta": true,
-        "x-available-since": "8.8.0"
+        "x-beta": true
       },
       "put": {
         "tags": [
@@ -16157,8 +16116,7 @@
             }
           }
         },
-        "x-beta": true,
-        "x-available-since": "8.8.0"
+        "x-beta": true
       },
       "delete": {
         "tags": [
@@ -16192,8 +16150,7 @@
             }
           }
         },
-        "x-beta": true,
-        "x-available-since": "8.8.0"
+        "x-beta": true
       }
     },
     "/_application/analytics/{name}": {
@@ -16213,8 +16170,7 @@
             "$ref": "#/components/responses/search_application.get_behavioral_analytics#200"
           }
         },
-        "x-technical-preview": true,
-        "x-available-since": "8.8.0"
+        "x-state": "Technical preview"
       },
       "put": {
         "tags": [
@@ -16247,8 +16203,7 @@
             }
           }
         },
-        "x-technical-preview": true,
-        "x-available-since": "8.8.0"
+        "x-state": "Technical preview"
       },
       "delete": {
         "tags": [
@@ -16282,8 +16237,7 @@
             }
           }
         },
-        "x-technical-preview": true,
-        "x-available-since": "8.8.0"
+        "x-state": "Technical preview"
       }
     },
     "/_application/analytics": {
@@ -16298,8 +16252,7 @@
             "$ref": "#/components/responses/search_application.get_behavioral_analytics#200"
           }
         },
-        "x-technical-preview": true,
-        "x-available-since": "8.8.0"
+        "x-state": "Technical preview"
       }
     },
     "/_application/search_application": {
@@ -16368,8 +16321,7 @@
             }
           }
         },
-        "x-beta": true,
-        "x-available-since": "8.8.0"
+        "x-beta": true
       }
     },
     "/_application/search_application/{name}/_search": {
@@ -16396,8 +16348,7 @@
             "$ref": "#/components/responses/search_application.search#200"
           }
         },
-        "x-beta": true,
-        "x-available-since": "8.8.0"
+        "x-beta": true
       },
       "post": {
         "tags": [
@@ -16422,8 +16373,7 @@
             "$ref": "#/components/responses/search_application.search#200"
           }
         },
-        "x-beta": true,
-        "x-available-since": "8.8.0"
+        "x-beta": true
       }
     },
     "/{index}/_mvt/{field}/{zoom}/{x}/{y}": {
@@ -16480,7 +16430,7 @@
             "$ref": "#/components/responses/search_mvt#200"
           }
         },
-        "x-available-since": "7.15.0"
+        "x-state": "Added in 7.15.0"
       },
       "post": {
         "tags": [
@@ -16535,7 +16485,7 @@
             "$ref": "#/components/responses/search_mvt#200"
           }
         },
-        "x-available-since": "7.15.0"
+        "x-state": "Added in 7.15.0"
       }
     },
     "/_search/template": {
@@ -16594,7 +16544,7 @@
             "$ref": "#/components/responses/search_template#200"
           }
         },
-        "x-available-since": "2.0.0"
+        "x-state": "Added in 2.0.0"
       },
       "post": {
         "tags": [
@@ -16651,7 +16601,7 @@
             "$ref": "#/components/responses/search_template#200"
           }
         },
-        "x-available-since": "2.0.0"
+        "x-state": "Added in 2.0.0"
       }
     },
     "/{index}/_search/template": {
@@ -16713,7 +16663,7 @@
             "$ref": "#/components/responses/search_template#200"
           }
         },
-        "x-available-since": "2.0.0"
+        "x-state": "Added in 2.0.0"
       },
       "post": {
         "tags": [
@@ -16773,7 +16723,7 @@
             "$ref": "#/components/responses/search_template#200"
           }
         },
-        "x-available-since": "2.0.0"
+        "x-state": "Added in 2.0.0"
       }
     },
     "/_security/_authenticate": {
@@ -16859,7 +16809,7 @@
             }
           }
         },
-        "x-available-since": "5.5.0"
+        "x-state": "Added in 5.5.0"
       }
     },
     "/_security/api_key": {
@@ -16975,7 +16925,7 @@
             }
           }
         },
-        "x-available-since": "6.7.0"
+        "x-state": "Added in 6.7.0"
       },
       "put": {
         "tags": [
@@ -16997,7 +16947,7 @@
             "$ref": "#/components/responses/security.create_api_key#200"
           }
         },
-        "x-available-since": "6.7.0"
+        "x-state": "Added in 6.7.0"
       },
       "post": {
         "tags": [
@@ -17019,7 +16969,7 @@
             "$ref": "#/components/responses/security.create_api_key#200"
           }
         },
-        "x-available-since": "6.7.0"
+        "x-state": "Added in 6.7.0"
       },
       "delete": {
         "tags": [
@@ -17104,7 +17054,7 @@
             }
           }
         },
-        "x-available-since": "6.7.0"
+        "x-state": "Added in 6.7.0"
       }
     },
     "/_security/user/_has_privileges": {
@@ -17123,7 +17073,7 @@
             "$ref": "#/components/responses/security.has_privileges#200"
           }
         },
-        "x-available-since": "6.4.0"
+        "x-state": "Added in 6.4.0"
       },
       "post": {
         "tags": [
@@ -17140,7 +17090,7 @@
             "$ref": "#/components/responses/security.has_privileges#200"
           }
         },
-        "x-available-since": "6.4.0"
+        "x-state": "Added in 6.4.0"
       }
     },
     "/_security/user/{user}/_has_privileges": {
@@ -17164,7 +17114,7 @@
             "$ref": "#/components/responses/security.has_privileges#200"
           }
         },
-        "x-available-since": "6.4.0"
+        "x-state": "Added in 6.4.0"
       },
       "post": {
         "tags": [
@@ -17186,7 +17136,7 @@
             "$ref": "#/components/responses/security.has_privileges#200"
           }
         },
-        "x-available-since": "6.4.0"
+        "x-state": "Added in 6.4.0"
       }
     },
     "/_security/_query/api_key": {
@@ -17216,7 +17166,7 @@
             "$ref": "#/components/responses/security.query_api_keys#200"
           }
         },
-        "x-available-since": "7.15.0"
+        "x-state": "Added in 7.15.0"
       },
       "post": {
         "tags": [
@@ -17244,7 +17194,7 @@
             "$ref": "#/components/responses/security.query_api_keys#200"
           }
         },
-        "x-available-since": "7.15.0"
+        "x-state": "Added in 7.15.0"
       }
     },
     "/_security/api_key/{id}": {
@@ -17316,7 +17266,7 @@
             }
           }
         },
-        "x-available-since": "8.4.0"
+        "x-state": "Added in 8.4.0"
       }
     },
     "/_sql/close": {
@@ -17365,7 +17315,7 @@
             }
           }
         },
-        "x-available-since": "6.3.0"
+        "x-state": "Added in 6.3.0"
       }
     },
     "/_sql/async/delete/{id}": {
@@ -17401,7 +17351,7 @@
             }
           }
         },
-        "x-available-since": "7.15.0"
+        "x-state": "Added in 7.15.0"
       }
     },
     "/_sql/async/{id}": {
@@ -17513,7 +17463,7 @@
             }
           }
         },
-        "x-available-since": "7.15.0"
+        "x-state": "Added in 7.15.0"
       }
     },
     "/_sql/async/status/{id}": {
@@ -17578,7 +17528,7 @@
             }
           }
         },
-        "x-available-since": "7.15.0"
+        "x-state": "Added in 7.15.0"
       }
     },
     "/_sql": {
@@ -17601,7 +17551,7 @@
             "$ref": "#/components/responses/sql.query#200"
           }
         },
-        "x-available-since": "6.3.0"
+        "x-state": "Added in 6.3.0"
       },
       "post": {
         "tags": [
@@ -17622,7 +17572,7 @@
             "$ref": "#/components/responses/sql.query#200"
           }
         },
-        "x-available-since": "6.3.0"
+        "x-state": "Added in 6.3.0"
       }
     },
     "/_sql/translate": {
@@ -17640,7 +17590,7 @@
             "$ref": "#/components/responses/sql.translate#200"
           }
         },
-        "x-available-since": "6.3.0"
+        "x-state": "Added in 6.3.0"
       },
       "post": {
         "tags": [
@@ -17656,7 +17606,7 @@
             "$ref": "#/components/responses/sql.translate#200"
           }
         },
-        "x-available-since": "6.3.0"
+        "x-state": "Added in 6.3.0"
       }
     },
     "/_synonyms/{id}": {
@@ -17726,7 +17676,7 @@
             }
           }
         },
-        "x-available-since": "8.10.0"
+        "x-state": "Added in 8.10.0"
       },
       "put": {
         "tags": [
@@ -17800,7 +17750,7 @@
             }
           }
         },
-        "x-available-since": "8.10.0"
+        "x-state": "Added in 8.10.0"
       },
       "delete": {
         "tags": [
@@ -17833,7 +17783,7 @@
             }
           }
         },
-        "x-available-since": "8.10.0"
+        "x-state": "Added in 8.10.0"
       }
     },
     "/_synonyms/{set_id}/{rule_id}": {
@@ -17879,7 +17829,7 @@
             }
           }
         },
-        "x-available-since": "8.10.0"
+        "x-state": "Added in 8.10.0"
       },
       "put": {
         "tags": [
@@ -17941,7 +17891,7 @@
             }
           }
         },
-        "x-available-since": "8.10.0"
+        "x-state": "Added in 8.10.0"
       },
       "delete": {
         "tags": [
@@ -17985,7 +17935,7 @@
             }
           }
         },
-        "x-available-since": "8.10.0"
+        "x-state": "Added in 8.10.0"
       }
     },
     "/_synonyms": {
@@ -18044,7 +17994,7 @@
             }
           }
         },
-        "x-available-since": "8.10.0"
+        "x-state": "Added in 8.10.0"
       }
     },
     "/_tasks/{task_id}": {
@@ -18118,8 +18068,7 @@
             }
           }
         },
-        "x-technical-preview": true,
-        "x-available-since": "5.0.0"
+        "x-state": "Technical preview"
       }
     },
     "/{index}/_terms_enum": {
@@ -18143,7 +18092,7 @@
             "$ref": "#/components/responses/terms_enum#200"
           }
         },
-        "x-available-since": "7.14.0"
+        "x-state": "Added in 7.14.0"
       },
       "post": {
         "tags": [
@@ -18165,7 +18114,7 @@
             "$ref": "#/components/responses/terms_enum#200"
           }
         },
-        "x-available-since": "7.14.0"
+        "x-state": "Added in 7.14.0"
       }
     },
     "/{index}/_termvectors/{id}": {
@@ -18424,7 +18373,7 @@
             "$ref": "#/components/responses/transform.get_transform#200"
           }
         },
-        "x-available-since": "7.5.0"
+        "x-state": "Added in 7.5.0"
       },
       "put": {
         "tags": [
@@ -18525,7 +18474,7 @@
             }
           }
         },
-        "x-available-since": "7.2.0"
+        "x-state": "Added in 7.2.0"
       },
       "delete": {
         "tags": [
@@ -18589,7 +18538,7 @@
             }
           }
         },
-        "x-available-since": "7.5.0"
+        "x-state": "Added in 7.5.0"
       }
     },
     "/_transform": {
@@ -18619,7 +18568,7 @@
             "$ref": "#/components/responses/transform.get_transform#200"
           }
         },
-        "x-available-since": "7.5.0"
+        "x-state": "Added in 7.5.0"
       }
     },
     "/_transform/{transform_id}/_stats": {
@@ -18710,7 +18659,7 @@
             }
           }
         },
-        "x-available-since": "7.5.0"
+        "x-state": "Added in 7.5.0"
       }
     },
     "/_transform/{transform_id}/_preview": {
@@ -18737,7 +18686,7 @@
             "$ref": "#/components/responses/transform.preview_transform#200"
           }
         },
-        "x-available-since": "7.2.0"
+        "x-state": "Added in 7.2.0"
       },
       "post": {
         "tags": [
@@ -18762,7 +18711,7 @@
             "$ref": "#/components/responses/transform.preview_transform#200"
           }
         },
-        "x-available-since": "7.2.0"
+        "x-state": "Added in 7.2.0"
       }
     },
     "/_transform/_preview": {
@@ -18786,7 +18735,7 @@
             "$ref": "#/components/responses/transform.preview_transform#200"
           }
         },
-        "x-available-since": "7.2.0"
+        "x-state": "Added in 7.2.0"
       },
       "post": {
         "tags": [
@@ -18808,7 +18757,7 @@
             "$ref": "#/components/responses/transform.preview_transform#200"
           }
         },
-        "x-available-since": "7.2.0"
+        "x-state": "Added in 7.2.0"
       }
     },
     "/_transform/{transform_id}/_reset": {
@@ -18854,7 +18803,7 @@
             }
           }
         },
-        "x-available-since": "8.1.0"
+        "x-state": "Added in 8.1.0"
       }
     },
     "/_transform/{transform_id}/_schedule_now": {
@@ -18900,7 +18849,7 @@
             }
           }
         },
-        "x-available-since": "8.7.0"
+        "x-state": "Added in 8.7.0"
       }
     },
     "/_transform/{transform_id}/_start": {
@@ -18956,7 +18905,7 @@
             }
           }
         },
-        "x-available-since": "7.5.0"
+        "x-state": "Added in 7.5.0"
       }
     },
     "/_transform/{transform_id}/_stop": {
@@ -19042,7 +18991,7 @@
             }
           }
         },
-        "x-available-since": "7.5.0"
+        "x-state": "Added in 7.5.0"
       }
     },
     "/_transform/{transform_id}/_update": {
@@ -19197,7 +19146,7 @@
             }
           }
         },
-        "x-available-since": "7.2.0"
+        "x-state": "Added in 7.2.0"
       }
     },
     "/{index}/_update/{id}": {
@@ -19833,7 +19782,7 @@
             }
           }
         },
-        "x-available-since": "2.4.0"
+        "x-state": "Added in 2.4.0"
       }
     }
   },
@@ -25616,7 +25565,6 @@
               "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-text-expansion-query.html"
             },
             "description": "Uses a natural language processing model to convert the query text into a list of token-weight pairs which are then used in a query against a sparse vector or rank features field.",
-            "x-available-since": "8.8.0",
             "type": "object",
             "additionalProperties": {
               "$ref": "#/components/schemas/_types.query_dsl:TextExpansionQuery"
@@ -25627,7 +25575,6 @@
           "weighted_tokens": {
             "deprecated": true,
             "description": "Supports returning text_expansion query results by sending in precomputed tokens with the query.",
-            "x-available-since": "8.13.0",
             "type": "object",
             "additionalProperties": {
               "$ref": "#/components/schemas/_types.query_dsl:WeightedTokensQuery"
@@ -28133,7 +28080,6 @@
               },
               "case_insensitive": {
                 "description": "Allows ASCII case insensitive matching of the value with the indexed field values when set to `true`.\nDefault is `false` which means the case sensitivity of matching depends on the underlying field’s mapping.",
-                "x-available-since": "7.10.0",
                 "type": "boolean"
               }
             },
@@ -28672,7 +28618,6 @@
             "properties": {
               "case_insensitive": {
                 "description": "Allows case insensitive matching of the regular expression value with the indexed field values when set to `true`.\nWhen `false`, case sensitivity of matching depends on the underlying field’s mapping.",
-                "x-available-since": "7.10.0",
                 "type": "boolean"
               },
               "flags": {
@@ -29208,8 +29153,7 @@
                   },
                   "prune": {
                     "description": "Whether to perform pruning, omitting the non-significant tokens from the query to improve query performance.\nIf prune is true but the pruning_config is not specified, pruning will occur but default values will be used.\nDefault: false",
-                    "x-technical-preview": true,
-                    "x-available-since": "8.15.0",
+                    "x-state": "Technical preview",
                     "type": "boolean"
                   },
                   "pruning_config": {
@@ -29271,7 +29215,6 @@
               },
               "case_insensitive": {
                 "description": "Allows ASCII case insensitive matching of the value with the indexed field values when set to `true`.\nWhen `false`, the case sensitivity of matching depends on the underlying field’s mapping.",
-                "x-available-since": "7.10.0",
                 "type": "boolean"
               }
             },
@@ -29384,7 +29327,6 @@
             "properties": {
               "case_insensitive": {
                 "description": "Allows case insensitive matching of the pattern with the indexed field values when set to true. Default is false which means the case sensitivity of matching depends on the underlying field’s mapping.",
-                "x-available-since": "7.10.0",
                 "type": "boolean"
               },
               "rewrite": {
@@ -33143,7 +33085,7 @@
           },
           "dataset.size": {
             "description": "total size of dataset (including the cache for partially mounted indices)",
-            "x-available-since": "8.11.0",
+            "x-state": "Added in 8.11.0",
             "oneOf": [
               {
                 "type": "string"
@@ -34493,7 +34435,6 @@
             "type": "string"
           },
           "type": {
-            "x-available-since": "8.0.0",
             "type": "string"
           }
         }
@@ -40875,7 +40816,7 @@
               },
               "time_series_dimension": {
                 "description": "For internal use by Elastic only. Marks the field as a time series dimension. Defaults to false.",
-                "x-technical-preview": true,
+                "x-state": "Technical preview",
                 "type": "boolean"
               },
               "type": {
@@ -41190,7 +41131,6 @@
                 ]
               },
               "null_value": {
-                "x-available-since": "7.15.0",
                 "type": "string"
               }
             },
@@ -41692,7 +41632,7 @@
               },
               "time_series_dimension": {
                 "description": "For internal use by Elastic only. Marks the field as a time series dimension. Defaults to false.",
-                "x-technical-preview": true,
+                "x-state": "Technical preview",
                 "type": "boolean"
               },
               "type": {
@@ -41981,7 +41921,7 @@
               },
               "time_series_dimension": {
                 "description": "For internal use by Elastic only. Marks the field as a time series dimension. Defaults to false.",
-                "x-technical-preview": true,
+                "x-state": "Technical preview",
                 "type": "boolean"
               }
             }
@@ -42533,7 +42473,6 @@
           },
           "is_hidden": {
             "description": "If `true`, the alias is hidden.\nAll indices for the alias must have the same `is_hidden` value.",
-            "x-available-since": "7.16.0",
             "type": "boolean"
           }
         }
@@ -42765,12 +42704,12 @@
           },
           "ingested_as_first_pipeline_in_bytes": {
             "description": "Total number of bytes of all documents ingested by the pipeline.\nThis field is only present on pipelines which are the first to process a document.\nThus, it is not present on pipelines which only serve as a final pipeline after a default pipeline, a pipeline run after a reroute processor, or pipelines in pipeline processors.",
-            "x-available-since": "8.15.0",
+            "x-state": "Added in 8.15.0",
             "type": "number"
           },
           "produced_as_first_pipeline_in_bytes": {
             "description": "Total number of bytes of all documents produced by the pipeline.\nThis field is only present on pipelines which are the first to process a document.\nThus, it is not present on pipelines which only serve as a final pipeline after a default pipeline, a pipeline run after a reroute processor, or pipelines in pipeline processors.\nIn situations where there are subsequent pipelines, the value represents the size of the document after all pipelines have run.",
-            "x-available-since": "8.15.0",
+            "x-state": "Added in 8.15.0",
             "type": "number"
           }
         },
@@ -44458,8 +44397,7 @@
           },
           "time_series_dimension": {
             "description": "Whether this field is used as a time series dimension.",
-            "x-technical-preview": true,
-            "x-available-since": "8.0.0",
+            "x-state": "Technical preview",
             "type": "boolean"
           },
           "time_series_metric": {
@@ -44467,8 +44405,7 @@
           },
           "non_dimension_indices": {
             "description": "If this list is present in response then some indices have the\nfield marked as a dimension and other indices, the ones in this list, do not.",
-            "x-technical-preview": true,
-            "x-available-since": "8.0.0",
+            "x-state": "Technical preview",
             "type": "array",
             "items": {
               "$ref": "#/components/schemas/_types:IndexName"
@@ -44476,8 +44413,7 @@
           },
           "metric_conflicts_indices": {
             "description": "The list of indices where this field is present if these indices\ndon’t have the same `time_series_metric` value for this field.",
-            "x-technical-preview": true,
-            "x-available-since": "8.0.0",
+            "x-state": "Technical preview",
             "type": "array",
             "items": {
               "$ref": "#/components/schemas/_types:IndexName"
@@ -45087,7 +45023,6 @@
           },
           "system": {
             "description": "If `true`, the data stream is created and managed by an Elastic stack component and cannot be modified through normal user interaction.",
-            "x-available-since": "7.10.0",
             "type": "boolean"
           },
           "template": {
@@ -47049,7 +46984,6 @@
               },
               "trace_redact": {
                 "description": "If `true` then ingest metadata `_ingest._redact._is_redacted` is set to `true` if the document has been redacted",
-                "x-available-since": "8.16.0",
                 "type": "boolean"
               }
             },
@@ -47444,7 +47378,6 @@
               },
               "extract_device_type": {
                 "description": "Extracts device type from the user agent string on a best-effort basis.",
-                "x-available-since": "8.9.0",
                 "x-beta": true,
                 "type": "boolean"
               }
@@ -50132,7 +50065,6 @@
         "properties": {
           "annotations_enabled": {
             "description": "If true, enables calculation and storage of the model change annotations for each entity that is being analyzed.",
-            "x-available-since": "7.9.0",
             "type": "boolean"
           },
           "enabled": {
@@ -52132,7 +52064,6 @@
           },
           "knn": {
             "description": "Defines the approximate kNN search to run.",
-            "x-available-since": "8.4.0",
             "oneOf": [
               {
                 "$ref": "#/components/schemas/_types:KnnSearch"
@@ -53438,7 +53369,6 @@
           },
           "realm_type": {
             "description": "Realm type of the principal for which this API key was created",
-            "x-available-since": "8.14.0",
             "type": "string"
           },
           "username": {
@@ -53446,7 +53376,6 @@
           },
           "profile_uid": {
             "description": "The profile uid for the API key owner principal, if requested and if it exists",
-            "x-available-since": "8.14.0",
             "type": "string"
           },
           "metadata": {
@@ -53461,7 +53390,6 @@
           },
           "limited_by": {
             "description": "The owner user’s permissions associated with the API key.\nIt is a point-in-time snapshot captured at creation and subsequent updates.\nAn API key’s effective permissions are an intersection of its assigned privileges and the owner user’s permissions.",
-            "x-available-since": "8.5.0",
             "type": "array",
             "items": {
               "type": "object",
@@ -53740,7 +53668,6 @@
             "$ref": "#/components/schemas/_types:Name"
           },
           "type": {
-            "x-available-since": "7.14.0",
             "type": "string"
           }
         },
@@ -54360,7 +54287,6 @@
           },
           "unattended": {
             "description": "If `true`, the transform runs in unattended mode. In unattended mode, the transform retries indefinitely in case\nof an error which means the transform never fails. Setting the number of retries other than infinite fails in\nvalidation.",
-            "x-available-since": "8.5.0",
             "type": "boolean"
           }
         }
@@ -56047,7 +55973,6 @@
                 },
                 "encoded": {
                   "description": "API key credentials which is the base64-encoding of\nthe UTF-8 representation of `id` and `api_key` joined\nby a colon (`:`).",
-                  "x-available-since": "7.16.0",
                   "type": "string"
                 }
               },
@@ -61571,7 +61496,6 @@
                 },
                 "knn": {
                   "description": "Defines the approximate kNN search to run.",
-                  "x-available-since": "8.4.0",
                   "oneOf": [
                     {
                       "$ref": "#/components/schemas/_types:KnnSearch"
@@ -62750,7 +62674,6 @@
                 },
                 "knn": {
                   "description": "Defines the approximate kNN search to run.",
-                  "x-available-since": "8.4.0",
                   "oneOf": [
                     {
                       "$ref": "#/components/schemas/_types:KnnSearch"
