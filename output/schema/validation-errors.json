@@ -689,7 +689,8 @@
         "Request: query parameter 'rest_total_hits_as_int' does not exist in the json spec",
         "Request: query parameter 'typed_keys' does not exist in the json spec",
         "Request: query parameter 'wait_for_checkpoints' does not exist in the json spec",
-        "Request: query parameter 'allow_partial_search_results' does not exist in the json spec"
+        "Request: query parameter 'allow_partial_search_results' does not exist in the json spec",
+        "interface definition _types:RankContainer - Property rrf is a single-variant and must be required"
       ],
       "response": [
         "type_alias definition _global.msearch:ResponseItem / union_of / instance_of / Generics / instance_of - No type definition for '_global.msearch.ResponseItem:TDocument'"
@@ -1021,12 +1022,6 @@
       "request": [
         "Request: query parameter 'require_alias' does not exist in the json spec",
         "Request: missing json spec query parameter 'max_docs'"
-      ],
-      "response": []
-    },
-    "search": {
-      "request": [
-        "interface definition _types:RankContainer - Property rrf is a single-variant and must be required"
       ],
       "response": []
     },
