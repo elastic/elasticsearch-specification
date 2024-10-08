@@ -4930,6 +4930,7 @@
       },
       "description": "Close anomaly detection jobs.\nA job can be opened and closed multiple times throughout its lifecycle. A closed job cannot receive data or perform analysis operations, but you can still explore and navigate results.\nWhen you close a job, it runs housekeeping tasks such as pruning the model history, flushing buffers, calculating final results and persisting the model snapshots. Depending upon the size of the job, it could take several minutes to close and the equivalent time to re-open. After it is closed, the job has a minimal overhead on the cluster except for maintaining its meta data. Therefore it is a best practice to close jobs that are no longer required to process data.\nIf you close an anomaly detection job whose datafeed is running, the request first tries to stop the datafeed. This behavior is equivalent to calling stop datafeed API with the same timeout and force parameters as the close job request.\nWhen a datafeed that has a specified end date stops, it automatically closes its associated job.",
       "docId": "ml-close-job",
+      "docTag": "ml anomaly",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/ml-close-job.html",
       "name": "ml.close_job",
       "privileges": {
@@ -4974,6 +4975,7 @@
       },
       "description": "Delete a calendar.\nRemoves all scheduled events from a calendar, then deletes it.",
       "docId": "ml-delete-calendar",
+      "docTag": "ml anomaly",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/ml-delete-calendar.html",
       "name": "ml.delete_calendar",
       "privileges": {
@@ -5015,6 +5017,7 @@
       },
       "description": "Delete events from a calendar.",
       "docId": "ml-delete-calendar-event",
+      "docTag": "ml anomaly",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/ml-delete-calendar-event.html",
       "name": "ml.delete_calendar_event",
       "request": {
@@ -5051,6 +5054,7 @@
       },
       "description": "Delete anomaly jobs from a calendar.",
       "docId": "ml-delete-calendar-job",
+      "docTag": "ml anomaly",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/ml-delete-calendar-job.html",
       "name": "ml.delete_calendar_job",
       "privileges": {
@@ -5092,6 +5096,7 @@
       },
       "description": "Delete a data frame analytics job.",
       "docId": "ml-delete-dfanalytics",
+      "docTag": "ml data frame",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/delete-dfanalytics.html",
       "name": "ml.delete_data_frame_analytics",
       "privileges": {
@@ -5133,6 +5138,7 @@
       },
       "description": "Delete a datafeed.",
       "docId": "ml-delete-datafeed",
+      "docTag": "ml anomaly",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/ml-delete-datafeed.html",
       "name": "ml.delete_datafeed",
       "privileges": {
@@ -5173,6 +5179,7 @@
         }
       },
       "description": "Delete a filter.\nIf an anomaly detection job references the filter, you cannot delete the\nfilter. You must update or delete the job before you can delete the filter.",
+      "docTag": "ml anomaly",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/ml-delete-filter.html",
       "name": "ml.delete_filter",
       "privileges": {
@@ -5213,6 +5220,7 @@
         }
       },
       "description": "Delete an anomaly detection job.\nAll job configuration, model state and results are deleted.\nIt is not currently possible to delete multiple jobs using wildcards or a\ncomma separated list. If you delete a job that has a datafeed, the request\nfirst tries to delete the datafeed. This behavior is equivalent to calling\nthe delete datafeed API with the same timeout and force parameters as the\ndelete job request.",
+      "docTag": "ml anomaly",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/ml-delete-job.html",
       "name": "ml.delete_job",
       "privileges": {
@@ -5253,6 +5261,7 @@
         }
       },
       "description": "Delete an unreferenced trained model.\nThe request deletes a trained inference model that is not referenced by an ingest pipeline.",
+      "docTag": "ml trained model",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/delete-trained-models.html",
       "name": "ml.delete_trained_model",
       "privileges": {
@@ -5293,6 +5302,7 @@
         }
       },
       "description": "Delete a trained model alias.\nThis API deletes an existing model alias that refers to a trained model. If\nthe model alias is missing or refers to a model other than the one identified\nby the `model_id`, this API returns an error.",
+      "docTag": "ml trained model",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/delete-trained-models-aliases.html",
       "name": "ml.delete_trained_model_alias",
       "privileges": {
@@ -5336,6 +5346,7 @@
         }
       },
       "description": "Estimate job model memory usage.\nMakes an estimation of the memory usage for an anomaly detection job model.\nIt is based on analysis configuration details for the job and cardinality\nestimates for the fields it references.",
+      "docTag": "ml anomaly",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/ml-apis.html",
       "name": "ml.estimate_model_memory",
       "privileges": {
@@ -5379,6 +5390,7 @@
         }
       },
       "description": "Evaluate data frame analytics.\nThe API packages together commonly used evaluation metrics for various types\nof machine learning features. This has been designed for use on indexes\ncreated by data frame analytics. Evaluation requires both a ground truth\nfield and an analytics result field to be present.",
+      "docTag": "ml data frame",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/evaluate-dfanalytics.html",
       "name": "ml.evaluate_data_frame",
       "privileges": {
@@ -5422,6 +5434,7 @@
         }
       },
       "description": "Force buffered data to be processed.\nThe flush jobs API is only applicable when sending data for analysis using\nthe post data API. Depending on the content of the buffer, then it might\nadditionally calculate new results. Both flush and close operations are\nsimilar, however the flush is more efficient if you are expecting to send\nmore data for analysis. When flushing, the job remains open and is available\nto continue analyzing data. A close operation additionally prunes and\npersists the model state to disk and the job must be opened again before\nanalyzing further data.",
+      "docTag": "ml anomaly",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/ml-flush-job.html",
       "name": "ml.flush_job",
       "privileges": {
@@ -5465,6 +5478,7 @@
         }
       },
       "description": "Get info about events in calendars.",
+      "docTag": "ml anomaly",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/ml-get-calendar-event.html",
       "name": "ml.get_calendar_events",
       "privileges": {
@@ -5505,6 +5519,7 @@
         }
       },
       "description": "Get calendar configuration info.",
+      "docTag": "ml anomaly",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/ml-get-calendar.html",
       "name": "ml.get_calendars",
       "privileges": {
@@ -5556,6 +5571,7 @@
         }
       },
       "description": "Get data frame analytics job configuration info.\nYou can get information for multiple data frame analytics jobs in a single\nAPI request by using a comma-separated list of data frame analytics jobs or a\nwildcard expression.",
+      "docTag": "ml data frame",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/get-dfanalytics.html",
       "name": "ml.get_data_frame_analytics",
       "privileges": {
@@ -5602,6 +5618,7 @@
         }
       },
       "description": "Get data frame analytics jobs usage info.",
+      "docTag": "ml data frame",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/get-dfanalytics-stats.html",
       "name": "ml.get_data_frame_analytics_stats",
       "privileges": {
@@ -5648,6 +5665,7 @@
         }
       },
       "description": "Get datafeeds usage info.\nYou can get statistics for multiple datafeeds in a single API request by\nusing a comma-separated list of datafeeds or a wildcard expression. You can\nget statistics for all datafeeds by using `_all`, by specifying `*` as the\n`<feed_id>`, or by omitting the `<feed_id>`. If the datafeed is stopped, the\nonly information you receive is the `datafeed_id` and the `state`.\nThis API returns a maximum of 10,000 datafeeds.",
+      "docTag": "ml anomaly",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/ml-get-datafeed-stats.html",
       "name": "ml.get_datafeed_stats",
       "privileges": {
@@ -5694,6 +5712,7 @@
         }
       },
       "description": "Get datafeeds configuration info.\nYou can get information for multiple datafeeds in a single API request by\nusing a comma-separated list of datafeeds or a wildcard expression. You can\nget information for all datafeeds by using `_all`, by specifying `*` as the\n`<feed_id>`, or by omitting the `<feed_id>`.\nThis API returns a maximum of 10,000 datafeeds.",
+      "docTag": "ml anomaly",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/ml-get-datafeed.html",
       "name": "ml.get_datafeeds",
       "privileges": {
@@ -5740,6 +5759,7 @@
         }
       },
       "description": "Get filters.\nYou can get a single filter or all filters.",
+      "docTag": "ml anomaly",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/ml-get-filter.html",
       "name": "ml.get_filters",
       "privileges": {
@@ -5786,6 +5806,7 @@
         }
       },
       "description": "Get anomaly detection jobs usage info.",
+      "docTag": "ml anomaly",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/ml-get-job-stats.html",
       "name": "ml.get_job_stats",
       "privileges": {
@@ -5832,6 +5853,7 @@
         }
       },
       "description": "Get anomaly detection jobs configuration info.\nYou can get information for multiple anomaly detection jobs in a single API\nrequest by using a group name, a comma-separated list of jobs, or a wildcard\nexpression. You can get information for all anomaly detection jobs by using\n`_all`, by specifying `*` as the `<job_id>`, or by omitting the `<job_id>`.",
+      "docTag": "ml anomaly",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/ml-get-job.html",
       "name": "ml.get_jobs",
       "privileges": {
@@ -5878,6 +5900,7 @@
         }
       },
       "description": "Get overall bucket results.\n\nRetrievs overall bucket results that summarize the bucket results of\nmultiple anomaly detection jobs.\n\nThe `overall_score` is calculated by combining the scores of all the\nbuckets within the overall bucket span. First, the maximum\n`anomaly_score` per anomaly detection job in the overall bucket is\ncalculated. Then the `top_n` of those scores are averaged to result in\nthe `overall_score`. This means that you can fine-tune the\n`overall_score` so that it is more or less sensitive to the number of\njobs that detect an anomaly at the same time. For example, if you set\n`top_n` to `1`, the `overall_score` is the maximum bucket score in the\noverall bucket. Alternatively, if you set `top_n` to the number of jobs,\nthe `overall_score` is high only when all jobs detect anomalies in that\noverall bucket. If you set the `bucket_span` parameter (to a value\ngreater than its default), the `overall_score` is the maximum\n`overall_score` of the overall buckets that have a span equal to the\njobs' largest bucket span.",
+      "docTag": "ml anomaly",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/ml-get-overall-buckets.html",
       "name": "ml.get_overall_buckets",
       "privileges": {
@@ -5922,6 +5945,7 @@
         }
       },
       "description": "Get trained model configuration info.",
+      "docTag": "ml trained model",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/get-trained-models.html",
       "name": "ml.get_trained_models",
       "privileges": {
@@ -5968,6 +5992,7 @@
         }
       },
       "description": "Get trained models usage info.\nYou can get usage information for multiple trained\nmodels in a single API request by using a comma-separated list of model IDs or a wildcard expression.",
+      "docTag": "ml trained model",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/get-trained-models-stats.html",
       "name": "ml.get_trained_models_stats",
       "privileges": {
@@ -6014,6 +6039,7 @@
         }
       },
       "description": "Evaluate a trained model.",
+      "docTag": "ml trained model",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/infer-trained-model.html",
       "name": "ml.infer_trained_model",
       "request": {
@@ -6062,6 +6088,7 @@
         }
       },
       "description": "Open anomaly detection jobs.\nAn anomaly detection job must be opened to be ready to receive and analyze\ndata. It can be opened and closed multiple times throughout its lifecycle.\nWhen you open a new job, it starts with an empty model.\nWhen you open an existing job, the most recent model state is automatically\nloaded. The job is ready to resume its analysis from where it left off, once\nnew data is received.",
+      "docTag": "ml anomaly",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/ml-open-job.html",
       "name": "ml.open_job",
       "privileges": {
@@ -6105,6 +6132,7 @@
         }
       },
       "description": "Add scheduled events to the calendar.",
+      "docTag": "ml anomaly",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/ml-post-calendar-event.html",
       "name": "ml.post_calendar_events",
       "privileges": {
@@ -6148,6 +6176,7 @@
         }
       },
       "description": "Preview features used by data frame analytics.\nPreviews the extracted features used by a data frame analytics config.",
+      "docTag": "ml data frame",
       "docUrl": "http://www.elastic.co/guide/en/elasticsearch/reference/current/preview-dfanalytics.html",
       "name": "ml.preview_data_frame_analytics",
       "privileges": {
@@ -6199,6 +6228,7 @@
         }
       },
       "description": "Preview a datafeed.\nThis API returns the first \"page\" of search results from a datafeed.\nYou can preview an existing datafeed or provide configuration details for a datafeed\nand anomaly detection job in the API. The preview shows the structure of the data\nthat will be passed to the anomaly detection engine.\nIMPORTANT: When Elasticsearch security features are enabled, the preview uses the credentials of the user that\ncalled the API. However, when the datafeed starts it uses the roles of the last user that created or updated the\ndatafeed. To get a preview that accurately reflects the behavior of the datafeed, use the appropriate credentials.\nYou can also use secondary authorization headers to supply the credentials.",
+      "docTag": "ml anomaly",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/ml-preview-datafeed.html",
       "name": "ml.preview_datafeed",
       "privileges": {
@@ -6253,6 +6283,7 @@
         }
       },
       "description": "Create a calendar.",
+      "docTag": "ml anomaly",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/ml-put-calendar.html",
       "name": "ml.put_calendar",
       "privileges": {
@@ -6296,6 +6327,7 @@
         }
       },
       "description": "Add anomaly detection job to calendar.",
+      "docTag": "ml anomaly",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/ml-put-calendar-job.html",
       "name": "ml.put_calendar_job",
       "privileges": {
@@ -6337,6 +6369,7 @@
       },
       "description": "Create a data frame analytics job.\nThis API creates a data frame analytics job that performs an analysis on the\nsource indices and stores the outcome in a destination index.",
       "docId": "put-dfanalytics",
+      "docTag": "ml data frame",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/put-dfanalytics.html",
       "name": "ml.put_data_frame_analytics",
       "privileges": {
@@ -6387,6 +6420,7 @@
         }
       },
       "description": "Create a datafeed.\nDatafeeds retrieve data from Elasticsearch for analysis by an anomaly detection job.\nYou can associate only one datafeed with each anomaly detection job.\nThe datafeed contains a query that runs at a defined interval (`frequency`).\nIf you are concerned about delayed data, you can add a delay (`query_delay') at each interval.\nWhen Elasticsearch security features are enabled, your datafeed remembers which roles the user who created it had\nat the time of creation and runs the query using those same roles. If you provide secondary authorization headers,\nthose credentials are used instead.\nYou must use Kibana, this API, or the create anomaly detection jobs API to create a datafeed. Do not add a datafeed\ndirectly to the `.ml-config` index. Do not give users `write` privileges on the `.ml-config` index.",
+      "docTag": "ml anomaly",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/ml-put-datafeed.html",
       "name": "ml.put_datafeed",
       "privileges": {
@@ -6433,6 +6467,7 @@
         }
       },
       "description": "Create a filter.\nA filter contains a list of strings. It can be used by one or more anomaly detection jobs.\nSpecifically, filters are referenced in the `custom_rules` property of detector configuration objects.",
+      "docTag": "ml anomaly",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/ml-put-filter.html",
       "name": "ml.put_filter",
       "privileges": {
@@ -6476,6 +6511,7 @@
         }
       },
       "description": "Create an anomaly detection job.\nIf you include a `datafeed_config`, you must have read index privileges on the source index.",
+      "docTag": "ml anomaly",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/ml-put-job.html",
       "name": "ml.put_job",
       "privileges": {
@@ -6522,6 +6558,7 @@
         }
       },
       "description": "Create a trained model.\nEnable you to supply a trained model that is not created by data frame analytics.",
+      "docTag": "ml trained model",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/put-trained-models.html",
       "name": "ml.put_trained_model",
       "privileges": {
@@ -6565,6 +6602,7 @@
         }
       },
       "description": "Create or update a trained model alias.\nA trained model alias is a logical name used to reference a single trained\nmodel.\nYou can use aliases instead of trained model identifiers to make it easier to\nreference your models. For example, you can use aliases in inference\naggregations and processors.\nAn alias must be unique and refer to only a single trained model. However,\nyou can have multiple aliases for each trained model.\nIf you use this API to update an alias such that it references a different\ntrained model ID and the model uses a different type of data frame analytics,\nan error occurs. For example, this situation occurs if you have a trained\nmodel for regression analysis and a trained model for classification\nanalysis; you cannot reassign an alias from one type of trained model to\nanother.\nIf you use this API to update an alias and there are very few input fields in\ncommon between the old and new trained models for the model alias, the API\nreturns a warning.",
+      "docTag": "ml trained model",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/put-trained-models-aliases.html",
       "name": "ml.put_trained_model_alias",
       "privileges": {
@@ -6608,6 +6646,7 @@
         }
       },
       "description": "Create part of a trained model definition.",
+      "docTag": "ml trained model",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/put-trained-model-definition-part.html",
       "name": "ml.put_trained_model_definition_part",
       "privileges": {
@@ -6651,6 +6690,7 @@
         }
       },
       "description": "Create a trained model vocabulary.\nThis API is supported only for natural language processing (NLP) models.\nThe vocabulary is stored in the index as described in `inference_config.*.vocabulary` of the trained model definition.",
+      "docTag": "ml trained model",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/put-trained-model-vocabulary.html",
       "name": "ml.put_trained_model_vocabulary",
       "privileges": {
@@ -6694,6 +6734,7 @@
         }
       },
       "description": "Reset an anomaly detection job.\nAll model state and results are deleted. The job is ready to start over as if\nit had just been created.\nIt is not currently possible to reset multiple jobs using wildcards or a\ncomma separated list.",
+      "docTag": "ml anomaly",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/ml-reset-job.html",
       "name": "ml.reset_job",
       "privileges": {
@@ -6734,6 +6775,7 @@
         }
       },
       "description": "Start a data frame analytics job.\nA data frame analytics job can be started and stopped multiple times\nthroughout its lifecycle.\nIf the destination index does not exist, it is created automatically the\nfirst time you start the data frame analytics job. The\n`index.number_of_shards` and `index.number_of_replicas` settings for the\ndestination index are copied from the source index. If there are multiple\nsource indices, the destination index copies the highest setting values. The\nmappings for the destination index are also copied from the source indices.\nIf there are any mapping conflicts, the job fails to start.\nIf the destination index exists, it is used as is. You can therefore set up\nthe destination index in advance with custom settings and mappings.",
+      "docTag": "ml data frame",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/start-dfanalytics.html",
       "name": "ml.start_data_frame_analytics",
       "privileges": {
@@ -6784,6 +6826,7 @@
         }
       },
       "description": "Start datafeeds.\n\nA datafeed must be started in order to retrieve data from Elasticsearch. A datafeed can be started and stopped\nmultiple times throughout its lifecycle.\n\nBefore you can start a datafeed, the anomaly detection job must be open. Otherwise, an error occurs.\n\nIf you restart a stopped datafeed, it continues processing input data from the next millisecond after it was stopped.\nIf new data was indexed for that exact millisecond between stopping and starting, it will be ignored.\n\nWhen Elasticsearch security features are enabled, your datafeed remembers which roles the last user to create or\nupdate it had at the time of creation or update and runs the query using those same roles. If you provided secondary\nauthorization headers when you created or updated the datafeed, those credentials are used instead.",
+      "docTag": "ml anomaly",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/ml-start-datafeed.html",
       "name": "ml.start_datafeed",
       "privileges": {
@@ -6827,6 +6870,7 @@
         }
       },
       "description": "Start a trained model deployment.\nIt allocates the model to every machine learning node.",
+      "docTag": "ml trained model",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/start-trained-model-deployment.html",
       "name": "ml.start_trained_model_deployment",
       "privileges": {
@@ -6870,6 +6914,7 @@
         }
       },
       "description": "Stop data frame analytics jobs.\nA data frame analytics job can be started and stopped multiple times\nthroughout its lifecycle.",
+      "docTag": "ml data frame",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/stop-dfanalytics.html",
       "name": "ml.stop_data_frame_analytics",
       "privileges": {
@@ -6913,6 +6958,7 @@
         }
       },
       "description": "Stop datafeeds.\nA datafeed that is stopped ceases to retrieve data from Elasticsearch. A datafeed can be started and stopped\nmultiple times throughout its lifecycle.",
+      "docTag": "ml anomaly",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/ml-stop-datafeed.html",
       "name": "ml.stop_datafeed",
       "privileges": {
@@ -6956,6 +7002,7 @@
         }
       },
       "description": "Stop a trained model deployment.",
+      "docTag": "ml trained model",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/stop-trained-model-deployment.html",
       "name": "ml.stop_trained_model_deployment",
       "privileges": {
@@ -6999,6 +7046,7 @@
         }
       },
       "description": "Update a data frame analytics job.",
+      "docTag": "ml data frame",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/update-dfanalytics.html",
       "name": "ml.update_data_frame_analytics",
       "privileges": {
@@ -7049,6 +7097,7 @@
         }
       },
       "description": "Update a datafeed.\nYou must stop and start the datafeed for the changes to be applied.\nWhen Elasticsearch security features are enabled, your datafeed remembers which roles the user who updated it had at\nthe time of the update and runs the query using those same roles. If you provide secondary authorization headers,\nthose credentials are used instead.",
+      "docTag": "ml anomaly",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/ml-update-datafeed.html",
       "name": "ml.update_datafeed",
       "privileges": {
@@ -7092,6 +7141,7 @@
         }
       },
       "description": "Update a filter.\nUpdates the description of a filter, adds items, or removes items from the list.",
+      "docTag": "ml anomaly",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/ml-update-filter.html",
       "name": "ml.update_filter",
       "privileges": {
@@ -7135,6 +7185,7 @@
         }
       },
       "description": "Update an anomaly detection job.\nUpdates certain properties of an anomaly detection job.",
+      "docTag": "ml anomaly",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/ml-update-job.html",
       "name": "ml.update_job",
       "privileges": {
@@ -7178,6 +7229,7 @@
         }
       },
       "description": "Update a trained model deployment.",
+      "docTag": "ml trained model",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/update-trained-model-deployment.html",
       "name": "ml.update_trained_model_deployment",
       "privileges": {
@@ -26274,7 +26326,7 @@
           }
         }
       ],
-      "specLocation": "ml/close_job/MlCloseJobRequest.ts#L24-L77"
+      "specLocation": "ml/close_job/MlCloseJobRequest.ts#L24-L78"
     },
     {
       "body": {
@@ -26334,7 +26386,7 @@
         }
       ],
       "query": [],
-      "specLocation": "ml/delete_calendar/MlDeleteCalendarRequest.ts#L23-L37"
+      "specLocation": "ml/delete_calendar/MlDeleteCalendarRequest.ts#L23-L38"
     },
     {
       "body": {
@@ -26400,7 +26452,7 @@
         }
       ],
       "query": [],
-      "specLocation": "ml/delete_calendar_event/MlDeleteCalendarEventRequest.ts#L23-L42"
+      "specLocation": "ml/delete_calendar_event/MlDeleteCalendarEventRequest.ts#L23-L43"
     },
     {
       "body": {
@@ -26466,7 +26518,7 @@
         }
       ],
       "query": [],
-      "specLocation": "ml/delete_calendar_job/MlDeleteCalendarJobRequest.ts#L23-L43"
+      "specLocation": "ml/delete_calendar_job/MlDeleteCalendarJobRequest.ts#L23-L44"
     },
     {
       "body": {
@@ -26578,7 +26630,7 @@
           }
         }
       ],
-      "specLocation": "ml/delete_data_frame_analytics/MlDeleteDataFrameAnalyticsRequest.ts#L24-L51"
+      "specLocation": "ml/delete_data_frame_analytics/MlDeleteDataFrameAnalyticsRequest.ts#L24-L52"
     },
     {
       "body": {
@@ -26645,7 +26697,7 @@
           }
         }
       ],
-      "specLocation": "ml/delete_datafeed/MlDeleteDatafeedRequest.ts#L23-L48"
+      "specLocation": "ml/delete_datafeed/MlDeleteDatafeedRequest.ts#L23-L49"
     },
     {
       "body": {
@@ -26699,7 +26751,7 @@
         }
       ],
       "query": [],
-      "specLocation": "ml/delete_filter/MlDeleteFilterRequest.ts#L23-L39"
+      "specLocation": "ml/delete_filter/MlDeleteFilterRequest.ts#L23-L40"
     },
     {
       "body": {
@@ -26792,7 +26844,7 @@
           }
         }
       ],
-      "specLocation": "ml/delete_job/MlDeleteJobRequest.ts#L23-L63"
+      "specLocation": "ml/delete_job/MlDeleteJobRequest.ts#L23-L64"
     },
     {
       "body": {
@@ -26859,7 +26911,7 @@
           }
         }
       ],
-      "specLocation": "ml/delete_trained_model/MlDeleteTrainedModelRequest.ts#L23-L42"
+      "specLocation": "ml/delete_trained_model/MlDeleteTrainedModelRequest.ts#L23-L43"
     },
     {
       "body": {
@@ -26925,7 +26977,7 @@
         }
       ],
       "query": [],
-      "specLocation": "ml/delete_trained_model_alias/MlDeleteTrainedModelAliasRequest.ts#L23-L44"
+      "specLocation": "ml/delete_trained_model_alias/MlDeleteTrainedModelAliasRequest.ts#L23-L45"
     },
     {
       "body": {
@@ -27026,7 +27078,7 @@
       },
       "path": [],
       "query": [],
-      "specLocation": "ml/estimate_model_memory/MlEstimateModelMemoryRequest.ts#L26-L62"
+      "specLocation": "ml/estimate_model_memory/MlEstimateModelMemoryRequest.ts#L26-L63"
     },
     {
       "body": {
@@ -27113,7 +27165,7 @@
       },
       "path": [],
       "query": [],
-      "specLocation": "ml/evaluate_data_frame/MlEvaluateDataFrameRequest.ts#L25-L52"
+      "specLocation": "ml/evaluate_data_frame/MlEvaluateDataFrameRequest.ts#L25-L53"
     },
     {
       "body": {
@@ -27318,7 +27370,7 @@
           }
         }
       ],
-      "specLocation": "ml/flush_job/MlFlushJobRequest.ts#L24-L99"
+      "specLocation": "ml/flush_job/MlFlushJobRequest.ts#L24-L100"
     },
     {
       "body": {
@@ -27453,7 +27505,7 @@
           }
         }
       ],
-      "specLocation": "ml/get_calendar_events/MlGetCalendarEventsRequest.ts#L25-L53"
+      "specLocation": "ml/get_calendar_events/MlGetCalendarEventsRequest.ts#L25-L54"
     },
     {
       "body": {
@@ -27568,7 +27620,7 @@
           }
         }
       ],
-      "specLocation": "ml/get_calendars/MlGetCalendarsRequest.ts#L25-L51"
+      "specLocation": "ml/get_calendars/MlGetCalendarsRequest.ts#L25-L52"
     },
     {
       "body": {
@@ -27695,7 +27747,7 @@
           }
         }
       ],
-      "specLocation": "ml/get_data_frame_analytics/MlGetDataFrameAnalyticsRequest.ts#L24-L77"
+      "specLocation": "ml/get_data_frame_analytics/MlGetDataFrameAnalyticsRequest.ts#L24-L78"
     },
     {
       "body": {
@@ -27823,7 +27875,7 @@
           }
         }
       ],
-      "specLocation": "ml/get_data_frame_analytics_stats/MlGetDataFrameAnalyticsStatsRequest.ts#L24-L72"
+      "specLocation": "ml/get_data_frame_analytics_stats/MlGetDataFrameAnalyticsStatsRequest.ts#L24-L73"
     },
     {
       "body": {
@@ -27911,7 +27963,7 @@
           }
         }
       ],
-      "specLocation": "ml/get_datafeed_stats/MlGetDatafeedStatsRequest.ts#L23-L60"
+      "specLocation": "ml/get_datafeed_stats/MlGetDatafeedStatsRequest.ts#L23-L61"
     },
     {
       "body": {
@@ -28011,7 +28063,7 @@
           }
         }
       ],
-      "specLocation": "ml/get_datafeeds/MlGetDatafeedsRequest.ts#L23-L66"
+      "specLocation": "ml/get_datafeeds/MlGetDatafeedsRequest.ts#L23-L67"
     },
     {
       "body": {
@@ -28112,7 +28164,7 @@
           }
         }
       ],
-      "specLocation": "ml/get_filters/MlGetFiltersRequest.ts#L24-L51"
+      "specLocation": "ml/get_filters/MlGetFiltersRequest.ts#L24-L52"
     },
     {
       "body": {
@@ -28200,7 +28252,7 @@
           }
         }
       ],
-      "specLocation": "ml/get_job_stats/MlGetJobStatsRequest.ts#L23-L56"
+      "specLocation": "ml/get_job_stats/MlGetJobStatsRequest.ts#L23-L57"
     },
     {
       "body": {
@@ -28301,7 +28353,7 @@
           }
         }
       ],
-      "specLocation": "ml/get_jobs/MlGetJobsRequest.ts#L23-L66"
+      "specLocation": "ml/get_jobs/MlGetJobsRequest.ts#L23-L67"
     },
     {
       "body": {
@@ -28576,7 +28628,7 @@
           }
         }
       ],
-      "specLocation": "ml/get_overall_buckets/MlGetOverallBucketsRequest.ts#L25-L145"
+      "specLocation": "ml/get_overall_buckets/MlGetOverallBucketsRequest.ts#L25-L146"
     },
     {
       "body": {
@@ -28756,7 +28808,7 @@
           }
         }
       ],
-      "specLocation": "ml/get_trained_models/MlGetTrainedModelRequest.ts#L25-L91"
+      "specLocation": "ml/get_trained_models/MlGetTrainedModelRequest.ts#L25-L92"
     },
     {
       "body": {
@@ -28871,7 +28923,7 @@
           }
         }
       ],
-      "specLocation": "ml/get_trained_models_stats/MlGetTrainedModelStatsRequest.ts#L24-L65"
+      "specLocation": "ml/get_trained_models_stats/MlGetTrainedModelStatsRequest.ts#L24-L66"
     },
     {
       "body": {
@@ -28997,7 +29049,7 @@
           }
         }
       ],
-      "specLocation": "ml/infer_trained_model/MlInferTrainedModelRequest.ts#L27-L59"
+      "specLocation": "ml/infer_trained_model/MlInferTrainedModelRequest.ts#L27-L60"
     },
     {
       "body": {
@@ -29089,7 +29141,7 @@
           }
         }
       ],
-      "specLocation": "ml/open_job/MlOpenJobRequest.ts#L24-L58"
+      "specLocation": "ml/open_job/MlOpenJobRequest.ts#L24-L59"
     },
     {
       "body": {
@@ -29178,7 +29230,7 @@
         }
       ],
       "query": [],
-      "specLocation": "ml/post_calendar_events/MlPostCalendarEventsRequest.ts#L24-L40"
+      "specLocation": "ml/post_calendar_events/MlPostCalendarEventsRequest.ts#L24-L41"
     },
     {
       "body": {
@@ -29257,7 +29309,7 @@
         }
       ],
       "query": [],
-      "specLocation": "ml/preview_data_frame_analytics/MlPreviewDataFrameAnalyticsRequest.ts#L24-L48"
+      "specLocation": "ml/preview_data_frame_analytics/MlPreviewDataFrameAnalyticsRequest.ts#L24-L49"
     },
     {
       "body": {
@@ -29383,7 +29435,7 @@
           }
         }
       ],
-      "specLocation": "ml/preview_datafeed/MlPreviewDatafeedRequest.ts#L26-L69"
+      "specLocation": "ml/preview_datafeed/MlPreviewDatafeedRequest.ts#L26-L70"
     },
     {
       "body": {
@@ -29475,7 +29527,7 @@
         }
       ],
       "query": [],
-      "specLocation": "ml/put_calendar/MlPutCalendarRequest.ts#L23-L43"
+      "specLocation": "ml/put_calendar/MlPutCalendarRequest.ts#L23-L44"
     },
     {
       "body": {
@@ -29572,7 +29624,7 @@
         }
       ],
       "query": [],
-      "specLocation": "ml/put_calendar_job/MlPutCalendarJobRequest.ts#L23-L37"
+      "specLocation": "ml/put_calendar_job/MlPutCalendarJobRequest.ts#L23-L38"
     },
     {
       "body": {
@@ -29794,7 +29846,7 @@
         }
       ],
       "query": [],
-      "specLocation": "ml/put_data_frame_analytics/MlPutDataFrameAnalyticsRequest.ts#L30-L141"
+      "specLocation": "ml/put_data_frame_analytics/MlPutDataFrameAnalyticsRequest.ts#L30-L142"
     },
     {
       "body": {
@@ -30243,7 +30295,7 @@
           }
         }
       ],
-      "specLocation": "ml/put_datafeed/MlPutDatafeedRequest.ts#L37-L172"
+      "specLocation": "ml/put_datafeed/MlPutDatafeedRequest.ts#L37-L173"
     },
     {
       "body": {
@@ -30511,7 +30563,7 @@
         }
       ],
       "query": [],
-      "specLocation": "ml/put_filter/MlPutFilterRequest.ts#L23-L50"
+      "specLocation": "ml/put_filter/MlPutFilterRequest.ts#L23-L51"
     },
     {
       "body": {
@@ -30785,7 +30837,7 @@
         }
       ],
       "query": [],
-      "specLocation": "ml/put_job/MlPutJobRequest.ts#L30-L112"
+      "specLocation": "ml/put_job/MlPutJobRequest.ts#L30-L113"
     },
     {
       "body": {
@@ -31234,7 +31286,7 @@
           }
         }
       ],
-      "specLocation": "ml/put_trained_model/MlPutTrainedModelRequest.ts#L31-L127"
+      "specLocation": "ml/put_trained_model/MlPutTrainedModelRequest.ts#L31-L128"
     },
     {
       "body": {
@@ -31314,7 +31366,7 @@
           }
         }
       ],
-      "specLocation": "ml/put_trained_model_alias/MlPutTrainedModelAliasRequest.ts#L23-L66"
+      "specLocation": "ml/put_trained_model_alias/MlPutTrainedModelAliasRequest.ts#L23-L67"
     },
     {
       "body": {
@@ -31418,7 +31470,7 @@
         }
       ],
       "query": [],
-      "specLocation": "ml/put_trained_model_definition_part/MlPutTrainedModelDefinitionPartRequest.ts#L24-L57"
+      "specLocation": "ml/put_trained_model_definition_part/MlPutTrainedModelDefinitionPartRequest.ts#L24-L58"
     },
     {
       "body": {
@@ -31531,7 +31583,7 @@
         }
       ],
       "query": [],
-      "specLocation": "ml/put_trained_model_vocabulary/MlPutTrainedModelVocabularyRequest.ts#L24-L60"
+      "specLocation": "ml/put_trained_model_vocabulary/MlPutTrainedModelVocabularyRequest.ts#L24-L61"
     },
     {
       "body": {
@@ -31612,7 +31664,7 @@
           }
         }
       ],
-      "specLocation": "ml/reset_job/MlResetJobRequest.ts#L23-L57"
+      "specLocation": "ml/reset_job/MlResetJobRequest.ts#L23-L58"
     },
     {
       "body": {
@@ -31680,7 +31732,7 @@
           }
         }
       ],
-      "specLocation": "ml/start_data_frame_analytics/MlStartDataFrameAnalyticsRequest.ts#L24-L60"
+      "specLocation": "ml/start_data_frame_analytics/MlStartDataFrameAnalyticsRequest.ts#L24-L61"
     },
     {
       "body": {
@@ -31829,7 +31881,7 @@
           }
         }
       ],
-      "specLocation": "ml/start_datafeed/MlStartDatafeedRequest.ts#L24-L91"
+      "specLocation": "ml/start_datafeed/MlStartDatafeedRequest.ts#L24-L92"
     },
     {
       "body": {
@@ -31992,7 +32044,7 @@
           }
         }
       ],
-      "specLocation": "ml/start_trained_model_deployment/MlStartTrainedModelDeploymentRequest.ts#L29-L93"
+      "specLocation": "ml/start_trained_model_deployment/MlStartTrainedModelDeploymentRequest.ts#L29-L94"
     },
     {
       "body": {
@@ -32092,7 +32144,7 @@
           }
         }
       ],
-      "specLocation": "ml/stop_data_frame_analytics/MlStopDataFrameAnalyticsRequest.ts#L24-L70"
+      "specLocation": "ml/stop_data_frame_analytics/MlStopDataFrameAnalyticsRequest.ts#L24-L71"
     },
     {
       "body": {
@@ -32233,7 +32285,7 @@
           }
         }
       ],
-      "specLocation": "ml/stop_datafeed/MlStopDatafeedRequest.ts#L24-L78"
+      "specLocation": "ml/stop_datafeed/MlStopDatafeedRequest.ts#L24-L79"
     },
     {
       "body": {
@@ -32320,7 +32372,7 @@
           }
         }
       ],
-      "specLocation": "ml/stop_trained_model_deployment/MlStopTrainedModelDeploymentRequest.ts#L23-L53"
+      "specLocation": "ml/stop_trained_model_deployment/MlStopTrainedModelDeploymentRequest.ts#L23-L54"
     },
     {
       "body": {
@@ -32437,7 +32489,7 @@
         }
       ],
       "query": [],
-      "specLocation": "ml/update_data_frame_analytics/MlUpdateDataFrameAnalyticsRequest.ts#L24-L72"
+      "specLocation": "ml/update_data_frame_analytics/MlUpdateDataFrameAnalyticsRequest.ts#L24-L73"
     },
     {
       "body": {
@@ -32862,7 +32914,7 @@
           }
         }
       ],
-      "specLocation": "ml/update_datafeed/MlUpdateDatafeedRequest.ts#L31-L162"
+      "specLocation": "ml/update_datafeed/MlUpdateDatafeedRequest.ts#L31-L163"
     },
     {
       "body": {
@@ -33145,7 +33197,7 @@
         }
       ],
       "query": [],
-      "specLocation": "ml/update_filter/MlUpdateFilterRequest.ts#L23-L52"
+      "specLocation": "ml/update_filter/MlUpdateFilterRequest.ts#L23-L53"
     },
     {
       "body": {
@@ -33434,7 +33486,7 @@
         }
       ],
       "query": [],
-      "specLocation": "ml/update_job/MlUpdateJobRequest.ts#L33-L139"
+      "specLocation": "ml/update_job/MlUpdateJobRequest.ts#L33-L140"
     },
     {
       "body": {
@@ -33775,7 +33827,7 @@
           }
         }
       ],
-      "specLocation": "ml/update_trained_model_deployment/MlUpdateTrainedModelDeploymentRequest.ts#L24-L62"
+      "specLocation": "ml/update_trained_model_deployment/MlUpdateTrainedModelDeploymentRequest.ts#L24-L63"
     },
     {
       "body": {
