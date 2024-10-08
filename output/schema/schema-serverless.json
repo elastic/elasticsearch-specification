@@ -120146,7 +120146,7 @@
         {
           "description": "Task settings specific to the service and task type",
           "name": "task_settings",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {

@@ -45639,8 +45639,7 @@
         },
         "required": [
           "service",
-          "service_settings",
-          "task_settings"
+          "service_settings"
         ]
       },
       "inference._types:ServiceSettings": {
