@@ -1,8 +1,9 @@
-summary: A successful response for running an ingest pipeline against a set of provided documents. 
+summary: A successful response for running an ingest pipeline against a set of provided documents.
 # description: ''
 # type: response
 # response_code: 200
-value: "{\n   \"docs\": [\n      {\n         \"doc\": {\n            \"_id\": \"id\"\
+value:
+  "{\n   \"docs\": [\n      {\n         \"doc\": {\n            \"_id\": \"id\"\
   ,\n            \"_index\": \"index\",\n            \"_version\": \"-3\",\n     \
   \       \"_source\": {\n               \"field2\": \"_value\",\n               \"\
   foo\": \"bar\"\n            },\n            \"_ingest\": {\n               \"timestamp\"\

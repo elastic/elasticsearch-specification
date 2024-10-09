@@ -2,7 +2,8 @@ summary: A successful response for retrieving information about an ingest pipeli
 # description: ''
 # type: response
 # response_code: 200
-value: "{\n  \"my-pipeline-id\" : {\n    \"description\" : \"describe pipeline\",\n\
+value:
+  "{\n  \"my-pipeline-id\" : {\n    \"description\" : \"describe pipeline\",\n\
   \    \"version\" : 123,\n    \"processors\" : [\n      {\n        \"set\" : {\n\
   \          \"field\" : \"foo\",\n          \"value\" : \"bar\"\n        }\n    \
   \  }\n    ]\n  }\n}"
