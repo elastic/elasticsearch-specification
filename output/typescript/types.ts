@@ -16888,6 +16888,7 @@ export interface NodesInfoNodeInfoXpack {
   license?: NodesInfoNodeInfoXpackLicense
   security: NodesInfoNodeInfoXpackSecurity
   notification?: Record<string, any>
+  ml?: NodesInfoNodeInfoXpackMl
 }
 
 export interface NodesInfoNodeInfoXpackLicense {
@@ -16898,12 +16899,15 @@ export interface NodesInfoNodeInfoXpackLicenseType {
   type: string
 }
 
+export interface NodesInfoNodeInfoXpackMl {
+  use_auto_machine_memory_percent?: boolean
+}
+
 export interface NodesInfoNodeInfoXpackSecurity {
   http: NodesInfoNodeInfoXpackSecuritySsl
   enabled: string
   transport?: NodesInfoNodeInfoXpackSecuritySsl
   authc?: NodesInfoNodeInfoXpackSecurityAuthc
-  ml?: NodesInfoNodeInfoXpackSecurityMl
 }
 
 export interface NodesInfoNodeInfoXpackSecurityAuthc {
@@ -16924,10 +16928,6 @@ export interface NodesInfoNodeInfoXpackSecurityAuthcRealmsStatus {
 
 export interface NodesInfoNodeInfoXpackSecurityAuthcToken {
   enabled: string
-}
-
-export interface NodesInfoNodeInfoXpackSecurityMl {
-  use_auto_machine_memory_percent?: boolean
 }
 
 export interface NodesInfoNodeInfoXpackSecuritySsl {

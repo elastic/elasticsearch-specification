@@ -77789,6 +77789,9 @@
             "additionalProperties": {
               "type": "object"
             }
+          },
+          "ml": {
+            "$ref": "#/components/schemas/nodes.info:NodeInfoXpackMl"
           }
         },
         "required": [
@@ -77831,9 +77834,6 @@
           },
           "authc": {
             "$ref": "#/components/schemas/nodes.info:NodeInfoXpackSecurityAuthc"
-          },
-          "ml": {
-            "$ref": "#/components/schemas/nodes.info:NodeInfoXpackSecurityMl"
           }
         },
         "required": [
@@ -77914,7 +77914,7 @@
           "enabled"
         ]
       },
-      "nodes.info:NodeInfoXpackSecurityMl": {
+      "nodes.info:NodeInfoXpackMl": {
         "type": "object",
         "properties": {
           "use_auto_machine_memory_percent": {

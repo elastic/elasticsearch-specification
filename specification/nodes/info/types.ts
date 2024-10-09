@@ -240,6 +240,7 @@ export class NodeInfoXpack {
   license?: NodeInfoXpackLicense
   security: NodeInfoXpackSecurity
   notification?: Dictionary<string, UserDefinedValue>
+  ml?: NodeInfoXpackMl
 }
 
 export class NodeInfoXpackSecurity {
@@ -247,10 +248,9 @@ export class NodeInfoXpackSecurity {
   enabled: string
   transport?: NodeInfoXpackSecuritySsl
   authc?: NodeInfoXpackSecurityAuthc
-  ml?: NodeInfoXpackSecurityMl
 }
 
-export class NodeInfoXpackSecurityMl {
+export class NodeInfoXpackMl {
   use_auto_machine_memory_percent?: boolean
 }
 
