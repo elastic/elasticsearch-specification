@@ -16903,11 +16903,12 @@ export interface NodesInfoNodeInfoXpackSecurity {
   enabled: string
   transport?: NodesInfoNodeInfoXpackSecuritySsl
   authc?: NodesInfoNodeInfoXpackSecurityAuthc
+  ml?: NodesInfoNodeInfoXpackSecurityMl
 }
 
 export interface NodesInfoNodeInfoXpackSecurityAuthc {
-  realms: NodesInfoNodeInfoXpackSecurityAuthcRealms
-  token: NodesInfoNodeInfoXpackSecurityAuthcToken
+  realms?: NodesInfoNodeInfoXpackSecurityAuthcRealms
+  token?: NodesInfoNodeInfoXpackSecurityAuthcToken
 }
 
 export interface NodesInfoNodeInfoXpackSecurityAuthcRealms {
@@ -16923,6 +16924,10 @@ export interface NodesInfoNodeInfoXpackSecurityAuthcRealmsStatus {
 
 export interface NodesInfoNodeInfoXpackSecurityAuthcToken {
   enabled: string
+}
+
+export interface NodesInfoNodeInfoXpackSecurityMl {
+  use_auto_machine_memory_percent?: boolean
 }
 
 export interface NodesInfoNodeInfoXpackSecuritySsl {

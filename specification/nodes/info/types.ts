@@ -247,6 +247,11 @@ export class NodeInfoXpackSecurity {
   enabled: string
   transport?: NodeInfoXpackSecuritySsl
   authc?: NodeInfoXpackSecurityAuthc
+  ml?: NodeInfoXpackSecurityMl
+}
+
+export class NodeInfoXpackSecurityMl {
+  use_auto_machine_memory_percent?: boolean
 }
 
 export class NodeInfoXpackSecuritySsl {
@@ -254,8 +259,8 @@ export class NodeInfoXpackSecuritySsl {
 }
 
 export class NodeInfoXpackSecurityAuthc {
-  realms: NodeInfoXpackSecurityAuthcRealms
-  token: NodeInfoXpackSecurityAuthcToken
+  realms?: NodeInfoXpackSecurityAuthcRealms
+  token?: NodeInfoXpackSecurityAuthcToken
 }
 
 export class NodeInfoXpackSecurityAuthcRealms {
