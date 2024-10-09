@@ -77834,7 +77834,6 @@
           }
         },
         "required": [
-          "http",
           "enabled"
         ]
       },
