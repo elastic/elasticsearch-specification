@@ -4700,56 +4700,6 @@
         "x-state": "Added in 7.5.0"
       }
     },
-    "/_enrich/_stats": {
-      "get": {
-        "tags": [
-          "enrich"
-        ],
-        "summary": "Get enrich stats",
-        "description": "Returns enrich coordinator statistics and information about enrich policies that are currently executing.",
-        "operationId": "enrich-stats",
-        "responses": {
-          "200": {
-            "description": "",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "properties": {
-                    "coordinator_stats": {
-                      "description": "Objects containing information about each coordinating ingest node for configured enrich processors.",
-                      "type": "array",
-                      "items": {
-                        "$ref": "#/components/schemas/enrich.stats:CoordinatorStats"
-                      }
-                    },
-                    "executing_policies": {
-                      "description": "Objects containing information about each enrich policy that is currently executing.",
-                      "type": "array",
-                      "items": {
-                        "$ref": "#/components/schemas/enrich.stats:ExecutingPolicy"
-                      }
-                    },
-                    "cache_stats": {
-                      "description": "Objects containing information about the enrich cache stats on each ingest node.",
-                      "type": "array",
-                      "items": {
-                        "$ref": "#/components/schemas/enrich.stats:CacheStats"
-                      }
-                    }
-                  },
-                  "required": [
-                    "coordinator_stats",
-                    "executing_policies"
-                  ]
-                }
-              }
-            }
-          }
-        },
-        "x-state": "Added in 7.5.0"
-      }
-    },
     "/_eql/search/{id}": {
       "get": {
         "tags": [
@@ -6746,228 +6696,6 @@
         }
       }
     },
-    "/_data_stream/{name}/_lifecycle": {
-      "get": {
-        "tags": [
-          "data stream"
-        ],
-        "summary": "Get data stream lifecycles",
-        "description": "Retrieves the data stream lifecycle configuration of one or more data streams.",
-        "operationId": "indices-get-data-lifecycle",
-        "parameters": [
-          {
-            "in": "path",
-            "name": "name",
-            "description": "Comma-separated list of data streams to limit the request.\nSupports wildcards (`*`).\nTo target all data streams, omit this parameter or use `*` or `_all`.",
-            "required": true,
-            "deprecated": false,
-            "schema": {
-              "$ref": "#/components/schemas/_types:DataStreamNames"
-            },
-            "style": "simple"
-          },
-          {
-            "in": "query",
-            "name": "expand_wildcards",
-            "description": "Type of data stream that wildcard patterns can match.\nSupports comma-separated values, such as `open,hidden`.\nValid values are: `all`, `open`, `closed`, `hidden`, `none`.",
-            "deprecated": false,
-            "schema": {
-              "$ref": "#/components/schemas/_types:ExpandWildcards"
-            },
-            "style": "form"
-          },
-          {
-            "in": "query",
-            "name": "include_defaults",
-            "description": "If `true`, return all default settings in the response.",
-            "deprecated": false,
-            "schema": {
-              "type": "boolean"
-            },
-            "style": "form"
-          },
-          {
-            "in": "query",
-            "name": "master_timeout",
-            "description": "Period to wait for a connection to the master node. If no response is received before the timeout expires, the request fails and returns an error.",
-            "deprecated": false,
-            "schema": {
-              "$ref": "#/components/schemas/_types:Duration"
-            },
-            "style": "form"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "properties": {
-                    "data_streams": {
-                      "type": "array",
-                      "items": {
-                        "$ref": "#/components/schemas/indices.get_data_lifecycle:DataStreamWithLifecycle"
-                      }
-                    }
-                  },
-                  "required": [
-                    "data_streams"
-                  ]
-                }
-              }
-            }
-          }
-        },
-        "x-state": "Added in 8.11.0"
-      },
-      "put": {
-        "tags": [
-          "indices"
-        ],
-        "summary": "Update data stream lifecycles",
-        "description": "Update the data stream lifecycle of the specified data streams.",
-        "operationId": "indices-put-data-lifecycle",
-        "parameters": [
-          {
-            "in": "path",
-            "name": "name",
-            "description": "Comma-separated list of data streams used to limit the request.\nSupports wildcards (`*`).\nTo target all data streams use `*` or `_all`.",
-            "required": true,
-            "deprecated": false,
-            "schema": {
-              "$ref": "#/components/schemas/_types:DataStreamNames"
-            },
-            "style": "simple"
-          },
-          {
-            "in": "query",
-            "name": "expand_wildcards",
-            "description": "Type of data stream that wildcard patterns can match.\nSupports comma-separated values, such as `open,hidden`.\nValid values are: `all`, `hidden`, `open`, `closed`, `none`.",
-            "deprecated": false,
-            "schema": {
-              "$ref": "#/components/schemas/_types:ExpandWildcards"
-            },
-            "style": "form"
-          },
-          {
-            "in": "query",
-            "name": "master_timeout",
-            "description": "Period to wait for a connection to the master node. If no response is\nreceived before the timeout expires, the request fails and returns an\nerror.",
-            "deprecated": false,
-            "schema": {
-              "$ref": "#/components/schemas/_types:Duration"
-            },
-            "style": "form"
-          },
-          {
-            "in": "query",
-            "name": "timeout",
-            "description": "Period to wait for a response.\nIf no response is received before the timeout expires, the request fails and returns an error.",
-            "deprecated": false,
-            "schema": {
-              "$ref": "#/components/schemas/_types:Duration"
-            },
-            "style": "form"
-          }
-        ],
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "type": "object",
-                "properties": {
-                  "data_retention": {
-                    "$ref": "#/components/schemas/_types:Duration"
-                  },
-                  "downsampling": {
-                    "$ref": "#/components/schemas/indices._types:DataStreamLifecycleDownsampling"
-                  }
-                }
-              }
-            }
-          }
-        },
-        "responses": {
-          "200": {
-            "description": "",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/_types:AcknowledgedResponseBase"
-                }
-              }
-            }
-          }
-        },
-        "x-state": "Added in 8.11.0"
-      },
-      "delete": {
-        "tags": [
-          "indices"
-        ],
-        "summary": "Delete data stream lifecycles",
-        "description": "Removes the data stream lifecycle from a data stream, rendering it not managed by the data stream lifecycle.",
-        "operationId": "indices-delete-data-lifecycle",
-        "parameters": [
-          {
-            "in": "path",
-            "name": "name",
-            "description": "A comma-separated list of data streams of which the data stream lifecycle will be deleted; use `*` to get all data streams",
-            "required": true,
-            "deprecated": false,
-            "schema": {
-              "$ref": "#/components/schemas/_types:DataStreamNames"
-            },
-            "style": "simple"
-          },
-          {
-            "in": "query",
-            "name": "expand_wildcards",
-            "description": "Whether wildcard expressions should get expanded to open or closed indices (default: open)",
-            "deprecated": false,
-            "schema": {
-              "$ref": "#/components/schemas/_types:ExpandWildcards"
-            },
-            "style": "form"
-          },
-          {
-            "in": "query",
-            "name": "master_timeout",
-            "description": "Specify timeout for connection to master",
-            "deprecated": false,
-            "schema": {
-              "$ref": "#/components/schemas/_types:Duration"
-            },
-            "style": "form"
-          },
-          {
-            "in": "query",
-            "name": "timeout",
-            "description": "Explicit timestamp for the document",
-            "deprecated": false,
-            "schema": {
-              "$ref": "#/components/schemas/_types:Duration"
-            },
-            "style": "form"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/_types:AcknowledgedResponseBase"
-                }
-              }
-            }
-          }
-        },
-        "x-state": "Added in 8.11.0"
-      }
-    },
     "/_index_template/{name}": {
       "get": {
         "tags": [
@@ -7343,6 +7071,164 @@
             "$ref": "#/components/responses/indices.get_alias#200"
           }
         }
+      }
+    },
+    "/_data_stream/{name}/_lifecycle": {
+      "get": {
+        "tags": [
+          "data stream"
+        ],
+        "summary": "Get data stream lifecycles",
+        "description": "Retrieves the data stream lifecycle configuration of one or more data streams.",
+        "operationId": "indices-get-data-lifecycle",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "name",
+            "description": "Comma-separated list of data streams to limit the request.\nSupports wildcards (`*`).\nTo target all data streams, omit this parameter or use `*` or `_all`.",
+            "required": true,
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/_types:DataStreamNames"
+            },
+            "style": "simple"
+          },
+          {
+            "in": "query",
+            "name": "expand_wildcards",
+            "description": "Type of data stream that wildcard patterns can match.\nSupports comma-separated values, such as `open,hidden`.\nValid values are: `all`, `open`, `closed`, `hidden`, `none`.",
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/_types:ExpandWildcards"
+            },
+            "style": "form"
+          },
+          {
+            "in": "query",
+            "name": "include_defaults",
+            "description": "If `true`, return all default settings in the response.",
+            "deprecated": false,
+            "schema": {
+              "type": "boolean"
+            },
+            "style": "form"
+          },
+          {
+            "in": "query",
+            "name": "master_timeout",
+            "description": "Period to wait for a connection to the master node. If no response is received before the timeout expires, the request fails and returns an error.",
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/_types:Duration"
+            },
+            "style": "form"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data_streams": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/indices.get_data_lifecycle:DataStreamWithLifecycle"
+                      }
+                    }
+                  },
+                  "required": [
+                    "data_streams"
+                  ]
+                }
+              }
+            }
+          }
+        },
+        "x-state": "Added in 8.11.0"
+      },
+      "put": {
+        "tags": [
+          "indices"
+        ],
+        "summary": "Update data stream lifecycles",
+        "description": "Update the data stream lifecycle of the specified data streams.",
+        "operationId": "indices-put-data-lifecycle",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "name",
+            "description": "Comma-separated list of data streams used to limit the request.\nSupports wildcards (`*`).\nTo target all data streams use `*` or `_all`.",
+            "required": true,
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/_types:DataStreamNames"
+            },
+            "style": "simple"
+          },
+          {
+            "in": "query",
+            "name": "expand_wildcards",
+            "description": "Type of data stream that wildcard patterns can match.\nSupports comma-separated values, such as `open,hidden`.\nValid values are: `all`, `hidden`, `open`, `closed`, `none`.",
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/_types:ExpandWildcards"
+            },
+            "style": "form"
+          },
+          {
+            "in": "query",
+            "name": "master_timeout",
+            "description": "Period to wait for a connection to the master node. If no response is\nreceived before the timeout expires, the request fails and returns an\nerror.",
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/_types:Duration"
+            },
+            "style": "form"
+          },
+          {
+            "in": "query",
+            "name": "timeout",
+            "description": "Period to wait for a response.\nIf no response is received before the timeout expires, the request fails and returns an error.",
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/_types:Duration"
+            },
+            "style": "form"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "data_retention": {
+                    "$ref": "#/components/schemas/_types:Duration"
+                  },
+                  "downsampling": {
+                    "$ref": "#/components/schemas/indices._types:DataStreamLifecycleDownsampling"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/_types:AcknowledgedResponseBase"
+                }
+              }
+            }
+          }
+        },
+        "x-state": "Added in 8.11.0"
       }
     },
     "/_data_stream": {
@@ -43973,145 +43859,6 @@
           "match_field"
         ]
       },
-      "enrich.stats:CoordinatorStats": {
-        "type": "object",
-        "properties": {
-          "executed_searches_total": {
-            "type": "number"
-          },
-          "node_id": {
-            "$ref": "#/components/schemas/_types:Id"
-          },
-          "queue_size": {
-            "type": "number"
-          },
-          "remote_requests_current": {
-            "type": "number"
-          },
-          "remote_requests_total": {
-            "type": "number"
-          }
-        },
-        "required": [
-          "executed_searches_total",
-          "node_id",
-          "queue_size",
-          "remote_requests_current",
-          "remote_requests_total"
-        ]
-      },
-      "enrich.stats:ExecutingPolicy": {
-        "type": "object",
-        "properties": {
-          "name": {
-            "$ref": "#/components/schemas/_types:Name"
-          },
-          "task": {
-            "$ref": "#/components/schemas/tasks._types:TaskInfo"
-          }
-        },
-        "required": [
-          "name",
-          "task"
-        ]
-      },
-      "tasks._types:TaskInfo": {
-        "type": "object",
-        "properties": {
-          "action": {
-            "type": "string"
-          },
-          "cancelled": {
-            "type": "boolean"
-          },
-          "cancellable": {
-            "type": "boolean"
-          },
-          "description": {
-            "type": "string"
-          },
-          "headers": {
-            "type": "object",
-            "additionalProperties": {
-              "type": "string"
-            }
-          },
-          "id": {
-            "type": "number"
-          },
-          "node": {
-            "$ref": "#/components/schemas/_types:NodeId"
-          },
-          "running_time": {
-            "$ref": "#/components/schemas/_types:Duration"
-          },
-          "running_time_in_nanos": {
-            "$ref": "#/components/schemas/_types:DurationValueUnitNanos"
-          },
-          "start_time_in_millis": {
-            "$ref": "#/components/schemas/_types:EpochTimeUnitMillis"
-          },
-          "status": {
-            "description": "Task status information can vary wildly from task to task.",
-            "type": "object"
-          },
-          "type": {
-            "type": "string"
-          },
-          "parent_task_id": {
-            "$ref": "#/components/schemas/_types:TaskId"
-          }
-        },
-        "required": [
-          "action",
-          "cancellable",
-          "headers",
-          "id",
-          "node",
-          "running_time_in_nanos",
-          "start_time_in_millis",
-          "type"
-        ]
-      },
-      "enrich.stats:CacheStats": {
-        "type": "object",
-        "properties": {
-          "node_id": {
-            "$ref": "#/components/schemas/_types:Id"
-          },
-          "count": {
-            "type": "number"
-          },
-          "hits": {
-            "type": "number"
-          },
-          "hits_time_in_millis": {
-            "$ref": "#/components/schemas/_types:DurationValueUnitMillis"
-          },
-          "misses": {
-            "type": "number"
-          },
-          "misses_time_in_millis": {
-            "$ref": "#/components/schemas/_types:DurationValueUnitMillis"
-          },
-          "evictions": {
-            "type": "number"
-          },
-          "size_in_bytes": {
-            "type": "number"
-          }
-        },
-        "required": [
-          "node_id",
-          "count",
-          "hits",
-          "hits_time_in_millis",
-          "misses",
-          "misses_time_in_millis",
-          "evictions",
-          "size_in_bytes"
-        ]
-      },
       "eql._types:EqlSearchResponseBase": {
         "type": "object",
         "properties": {
@@ -54106,6 +53853,64 @@
         },
         "required": [
           "synonyms"
+        ]
+      },
+      "tasks._types:TaskInfo": {
+        "type": "object",
+        "properties": {
+          "action": {
+            "type": "string"
+          },
+          "cancelled": {
+            "type": "boolean"
+          },
+          "cancellable": {
+            "type": "boolean"
+          },
+          "description": {
+            "type": "string"
+          },
+          "headers": {
+            "type": "object",
+            "additionalProperties": {
+              "type": "string"
+            }
+          },
+          "id": {
+            "type": "number"
+          },
+          "node": {
+            "$ref": "#/components/schemas/_types:NodeId"
+          },
+          "running_time": {
+            "$ref": "#/components/schemas/_types:Duration"
+          },
+          "running_time_in_nanos": {
+            "$ref": "#/components/schemas/_types:DurationValueUnitNanos"
+          },
+          "start_time_in_millis": {
+            "$ref": "#/components/schemas/_types:EpochTimeUnitMillis"
+          },
+          "status": {
+            "description": "Task status information can vary wildly from task to task.",
+            "type": "object"
+          },
+          "type": {
+            "type": "string"
+          },
+          "parent_task_id": {
+            "$ref": "#/components/schemas/_types:TaskId"
+          }
+        },
+        "required": [
+          "action",
+          "cancellable",
+          "headers",
+          "id",
+          "node",
+          "running_time_in_nanos",
+          "start_time_in_millis",
+          "type"
         ]
       },
       "transform.get_transform:TransformSummary": {
