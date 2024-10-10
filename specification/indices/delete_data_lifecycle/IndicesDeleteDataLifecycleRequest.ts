@@ -26,7 +26,7 @@ import { Duration } from '@_types/Time'
  * Removes the data stream lifecycle from a data stream, rendering it not managed by the data stream lifecycle.
  * @rest_spec_name indices.delete_data_lifecycle
  * @availability stack since=8.11.0 stability=stable
- * @availability serverless stability=stable visibility=public
+ * @availability serverless stability=stable visibility=private
  */
 export interface Request extends RequestBase {
   path_parts: {

@@ -33,13 +33,13 @@ import { Metadata, Name, Refresh } from '@_types/common'
  * The create or update roles API cannot update roles that are defined in roles files.
  * @rest_spec_name security.put_role
  * @availability stack stability=stable
- * @availability serverless stability=stable visibility=private
+ * @availability serverless stability=stable visibility=public
  * @cluster_privileges manage_security
  */
 export interface Request extends RequestBase {
   path_parts: {
     /**
-     * The name of the role.
+     * The name of the role that is being created or updated. On Elasticsearch Serverless, the role name must begin with a letter or digit and can only contain letters, digits and the characters '_', '-', and '.'. Each role must have a unique name, as this will serve as the identifier for that role.
      */
     name: Name
   }

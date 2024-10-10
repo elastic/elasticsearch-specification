@@ -2247,41 +2247,6 @@
           "visibility": "public"
         },
         "stack": {
-          "since": "7.5.0",
-          "stability": "stable"
-        }
-      },
-      "description": "Get enrich stats.\nReturns enrich coordinator statistics and information about enrich policies that are currently executing.",
-      "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/enrich-stats-api.html",
-      "name": "enrich.stats",
-      "request": {
-        "name": "Request",
-        "namespace": "enrich.stats"
-      },
-      "requestBodyRequired": false,
-      "response": {
-        "name": "Response",
-        "namespace": "enrich.stats"
-      },
-      "responseMediaType": [
-        "application/json"
-      ],
-      "urls": [
-        {
-          "methods": [
-            "GET"
-          ],
-          "path": "/_enrich/_stats"
-        }
-      ]
-    },
-    {
-      "availability": {
-        "serverless": {
-          "stability": "stable",
-          "visibility": "public"
-        },
-        "stack": {
           "since": "7.9.0",
           "stability": "stable"
         }
@@ -3046,41 +3011,6 @@
             "DELETE"
           ],
           "path": "/{index}/_aliases/{name}"
-        }
-      ]
-    },
-    {
-      "availability": {
-        "serverless": {
-          "stability": "stable",
-          "visibility": "public"
-        },
-        "stack": {
-          "since": "8.11.0",
-          "stability": "stable"
-        }
-      },
-      "description": "Delete data stream lifecycles.\nRemoves the data stream lifecycle from a data stream, rendering it not managed by the data stream lifecycle.",
-      "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/data-streams-delete-lifecycle.html",
-      "name": "indices.delete_data_lifecycle",
-      "request": {
-        "name": "Request",
-        "namespace": "indices.delete_data_lifecycle"
-      },
-      "requestBodyRequired": false,
-      "response": {
-        "name": "Response",
-        "namespace": "indices.delete_data_lifecycle"
-      },
-      "responseMediaType": [
-        "application/json"
-      ],
-      "urls": [
-        {
-          "methods": [
-            "DELETE"
-          ],
-          "path": "/_data_stream/{name}/_lifecycle"
         }
       ]
     },
@@ -8484,6 +8414,40 @@
           "visibility": "public"
         },
         "stack": {
+          "stability": "stable"
+        }
+      },
+      "description": "Removes roles in the native realm.",
+      "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/security-api-delete-role.html",
+      "name": "security.delete_role",
+      "request": {
+        "name": "Request",
+        "namespace": "security.delete_role"
+      },
+      "requestBodyRequired": false,
+      "response": {
+        "name": "Response",
+        "namespace": "security.delete_role"
+      },
+      "responseMediaType": [
+        "application/json"
+      ],
+      "urls": [
+        {
+          "methods": [
+            "DELETE"
+          ],
+          "path": "/_security/role/{name}"
+        }
+      ]
+    },
+    {
+      "availability": {
+        "serverless": {
+          "stability": "stable",
+          "visibility": "public"
+        },
+        "stack": {
           "since": "6.7.0",
           "stability": "stable"
         }
@@ -8515,6 +8479,91 @@
             "GET"
           ],
           "path": "/_security/api_key"
+        }
+      ]
+    },
+    {
+      "availability": {
+        "serverless": {
+          "stability": "stable",
+          "visibility": "public"
+        },
+        "stack": {
+          "since": "7.3.0",
+          "stability": "stable"
+        }
+      },
+      "description": "Retrieves the list of cluster privileges and index privileges that are available in this version of Elasticsearch.",
+      "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/security-api-get-builtin-privileges.html",
+      "name": "security.get_builtin_privileges",
+      "privileges": {
+        "cluster": [
+          "manage_security"
+        ]
+      },
+      "request": {
+        "name": "Request",
+        "namespace": "security.get_builtin_privileges"
+      },
+      "requestBodyRequired": false,
+      "response": {
+        "name": "Response",
+        "namespace": "security.get_builtin_privileges"
+      },
+      "responseMediaType": [
+        "application/json"
+      ],
+      "urls": [
+        {
+          "methods": [
+            "GET"
+          ],
+          "path": "/_security/privilege/_builtin"
+        }
+      ]
+    },
+    {
+      "availability": {
+        "serverless": {
+          "stability": "stable",
+          "visibility": "public"
+        },
+        "stack": {
+          "stability": "stable"
+        }
+      },
+      "description": "The role management APIs are generally the preferred way to manage roles, rather than using file-based role management.\nThe get roles API cannot retrieve roles that are defined in roles files.",
+      "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/security-api-get-role.html",
+      "name": "security.get_role",
+      "privileges": {
+        "cluster": [
+          "manage_security"
+        ]
+      },
+      "request": {
+        "name": "Request",
+        "namespace": "security.get_role"
+      },
+      "requestBodyRequired": false,
+      "response": {
+        "name": "Response",
+        "namespace": "security.get_role"
+      },
+      "responseMediaType": [
+        "application/json"
+      ],
+      "urls": [
+        {
+          "methods": [
+            "GET"
+          ],
+          "path": "/_security/role/{name}"
+        },
+        {
+          "methods": [
+            "GET"
+          ],
+          "path": "/_security/role"
         }
       ]
     },
@@ -8605,6 +8654,49 @@
             "DELETE"
           ],
           "path": "/_security/api_key"
+        }
+      ]
+    },
+    {
+      "availability": {
+        "serverless": {
+          "stability": "stable",
+          "visibility": "public"
+        },
+        "stack": {
+          "stability": "stable"
+        }
+      },
+      "description": "The role management APIs are generally the preferred way to manage roles, rather than using file-based role management.\nThe create or update roles API cannot update roles that are defined in roles files.",
+      "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/security-api-put-role.html",
+      "name": "security.put_role",
+      "privileges": {
+        "cluster": [
+          "manage_security"
+        ]
+      },
+      "request": {
+        "name": "Request",
+        "namespace": "security.put_role"
+      },
+      "requestBodyRequired": true,
+      "requestMediaType": [
+        "application/json"
+      ],
+      "response": {
+        "name": "Response",
+        "namespace": "security.put_role"
+      },
+      "responseMediaType": [
+        "application/json"
+      ],
+      "urls": [
+        {
+          "methods": [
+            "PUT",
+            "POST"
+          ],
+          "path": "/_security/role/{name}"
         }
       ]
     },
@@ -16822,93 +16914,6 @@
       "body": {
         "kind": "no_body"
       },
-      "description": "Get enrich stats.\nReturns enrich coordinator statistics and information about enrich policies that are currently executing.",
-      "inherits": {
-        "type": {
-          "name": "RequestBase",
-          "namespace": "_types"
-        }
-      },
-      "kind": "request",
-      "name": {
-        "name": "Request",
-        "namespace": "enrich.stats"
-      },
-      "path": [],
-      "query": [],
-      "specLocation": "enrich/stats/EnrichStatsRequest.ts#L22-L29"
-    },
-    {
-      "body": {
-        "kind": "properties",
-        "properties": [
-          {
-            "description": "Objects containing information about each coordinating ingest node for configured enrich processors.",
-            "name": "coordinator_stats",
-            "required": true,
-            "type": {
-              "kind": "array_of",
-              "value": {
-                "kind": "instance_of",
-                "type": {
-                  "name": "CoordinatorStats",
-                  "namespace": "enrich.stats"
-                }
-              }
-            }
-          },
-          {
-            "description": "Objects containing information about each enrich policy that is currently executing.",
-            "name": "executing_policies",
-            "required": true,
-            "type": {
-              "kind": "array_of",
-              "value": {
-                "kind": "instance_of",
-                "type": {
-                  "name": "ExecutingPolicy",
-                  "namespace": "enrich.stats"
-                }
-              }
-            }
-          },
-          {
-            "availability": {
-              "serverless": {},
-              "stack": {
-                "since": "7.16.0"
-              }
-            },
-            "description": "Objects containing information about the enrich cache stats on each ingest node.",
-            "name": "cache_stats",
-            "required": false,
-            "type": {
-              "kind": "array_of",
-              "value": {
-                "kind": "instance_of",
-                "type": {
-                  "name": "CacheStats",
-                  "namespace": "enrich.stats"
-                }
-              }
-            }
-          }
-        ]
-      },
-      "kind": "response",
-      "name": {
-        "name": "Response",
-        "namespace": "enrich.stats"
-      },
-      "specLocation": "enrich/stats/EnrichStatsResponse.ts#L22-L39"
-    },
-    {
-      "attachedBehaviors": [
-        "CommonQueryParameters"
-      ],
-      "body": {
-        "kind": "no_body"
-      },
       "description": "Deletes an async EQL search or a stored synchronous EQL search.\nThe API also deletes results for the search.",
       "inherits": {
         "type": {
@@ -20430,97 +20435,6 @@
         "namespace": "indices.delete_alias"
       },
       "specLocation": "indices/delete_alias/IndicesDeleteAliasResponse.ts#L22-L24"
-    },
-    {
-      "attachedBehaviors": [
-        "CommonQueryParameters"
-      ],
-      "body": {
-        "kind": "no_body"
-      },
-      "description": "Delete data stream lifecycles.\nRemoves the data stream lifecycle from a data stream, rendering it not managed by the data stream lifecycle.",
-      "inherits": {
-        "type": {
-          "name": "RequestBase",
-          "namespace": "_types"
-        }
-      },
-      "kind": "request",
-      "name": {
-        "name": "Request",
-        "namespace": "indices.delete_data_lifecycle"
-      },
-      "path": [
-        {
-          "description": "A comma-separated list of data streams of which the data stream lifecycle will be deleted; use `*` to get all data streams",
-          "name": "name",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "DataStreamNames",
-              "namespace": "_types"
-            }
-          }
-        }
-      ],
-      "query": [
-        {
-          "description": "Whether wildcard expressions should get expanded to open or closed indices (default: open)",
-          "name": "expand_wildcards",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "ExpandWildcards",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "description": "Specify timeout for connection to master",
-          "name": "master_timeout",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "Duration",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "description": "Explicit timestamp for the document",
-          "name": "timeout",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "Duration",
-              "namespace": "_types"
-            }
-          }
-        }
-      ],
-      "specLocation": "indices/delete_data_lifecycle/IndicesDeleteDataLifecycleRequest.ts#L24-L40"
-    },
-    {
-      "body": {
-        "kind": "value",
-        "value": {
-          "kind": "instance_of",
-          "type": {
-            "name": "AcknowledgedResponseBase",
-            "namespace": "_types"
-          }
-        }
-      },
-      "kind": "response",
-      "name": {
-        "name": "Response",
-        "namespace": "indices.delete_data_lifecycle"
-      },
-      "specLocation": "indices/delete_data_lifecycle/IndicesDeleteDataLifecycleResponse.ts#L22-L24"
     },
     {
       "attachedBehaviors": [
@@ -39083,6 +38997,79 @@
       "body": {
         "kind": "no_body"
       },
+      "description": "Removes roles in the native realm.",
+      "inherits": {
+        "type": {
+          "name": "RequestBase",
+          "namespace": "_types"
+        }
+      },
+      "kind": "request",
+      "name": {
+        "name": "Request",
+        "namespace": "security.delete_role"
+      },
+      "path": [
+        {
+          "description": "Role name",
+          "name": "name",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Name",
+              "namespace": "_types"
+            }
+          }
+        }
+      ],
+      "query": [
+        {
+          "description": "If `true` (the default) then refresh the affected shards to make this operation visible to search, if `wait_for` then wait for a refresh to make this operation visible to search, if `false` then do nothing with refreshes.",
+          "name": "refresh",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Refresh",
+              "namespace": "_types"
+            }
+          }
+        }
+      ],
+      "specLocation": "security/delete_role/SecurityDeleteRoleRequest.ts#L23-L35"
+    },
+    {
+      "body": {
+        "kind": "properties",
+        "properties": [
+          {
+            "name": "found",
+            "required": true,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "boolean",
+                "namespace": "_builtins"
+              }
+            }
+          }
+        ]
+      },
+      "kind": "response",
+      "name": {
+        "name": "Response",
+        "namespace": "security.delete_role"
+      },
+      "specLocation": "security/delete_role/SecurityDeleteRoleResponse.ts#L20-L22"
+    },
+    {
+      "attachedBehaviors": [
+        "CommonQueryParameters"
+      ],
+      "body": {
+        "kind": "no_body"
+      },
       "description": "Get API key information.\nRetrieves information for one or more API keys.\nNOTE: If you have only the `manage_own_api_key` privilege, this API returns only the API keys that you own.\nIf you have `read_security`, `manage_api_key` or greater privileges (including `manage_security`), this API returns all API keys regardless of ownership.",
       "inherits": {
         "type": {
@@ -39244,6 +39231,132 @@
         "namespace": "security.get_api_key"
       },
       "specLocation": "security/get_api_key/SecurityGetApiKeyResponse.ts#L22-L24"
+    },
+    {
+      "attachedBehaviors": [
+        "CommonQueryParameters"
+      ],
+      "body": {
+        "kind": "no_body"
+      },
+      "description": "Retrieves the list of cluster privileges and index privileges that are available in this version of Elasticsearch.",
+      "inherits": {
+        "type": {
+          "name": "RequestBase",
+          "namespace": "_types"
+        }
+      },
+      "kind": "request",
+      "name": {
+        "name": "Request",
+        "namespace": "security.get_builtin_privileges"
+      },
+      "path": [],
+      "query": [],
+      "specLocation": "security/get_builtin_privileges/SecurityGetBuiltinPrivilegesRequest.ts#L22-L28"
+    },
+    {
+      "body": {
+        "kind": "properties",
+        "properties": [
+          {
+            "name": "cluster",
+            "required": true,
+            "type": {
+              "kind": "array_of",
+              "value": {
+                "kind": "instance_of",
+                "type": {
+                  "name": "string",
+                  "namespace": "_builtins"
+                }
+              }
+            }
+          },
+          {
+            "name": "index",
+            "required": true,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "Indices",
+                "namespace": "_types"
+              }
+            }
+          }
+        ]
+      },
+      "kind": "response",
+      "name": {
+        "name": "Response",
+        "namespace": "security.get_builtin_privileges"
+      },
+      "specLocation": "security/get_builtin_privileges/SecurityGetBuiltinPrivilegesResponse.ts#L22-L24"
+    },
+    {
+      "attachedBehaviors": [
+        "CommonQueryParameters"
+      ],
+      "body": {
+        "kind": "no_body"
+      },
+      "description": "The role management APIs are generally the preferred way to manage roles, rather than using file-based role management.\nThe get roles API cannot retrieve roles that are defined in roles files.",
+      "inherits": {
+        "type": {
+          "name": "RequestBase",
+          "namespace": "_types"
+        }
+      },
+      "kind": "request",
+      "name": {
+        "name": "Request",
+        "namespace": "security.get_role"
+      },
+      "path": [
+        {
+          "description": "The name of the role. You can specify multiple roles as a comma-separated list. If you do not specify this parameter, the API returns information about all roles.",
+          "name": "name",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Names",
+              "namespace": "_types"
+            }
+          }
+        }
+      ],
+      "query": [],
+      "specLocation": "security/get_role/SecurityGetRoleRequest.ts#L23-L38"
+    },
+    {
+      "body": {
+        "kind": "value",
+        "value": {
+          "key": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "_builtins"
+            }
+          },
+          "kind": "dictionary_of",
+          "singleKey": false,
+          "value": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Role",
+              "namespace": "security.get_role"
+            }
+          }
+        }
+      },
+      "kind": "response",
+      "name": {
+        "name": "Response",
+        "namespace": "security.get_role"
+      },
+      "specLocation": "security/get_role/SecurityGetRoleResponse.ts#L23-L26"
     },
     {
       "attachedBehaviors": [
@@ -39581,6 +39694,186 @@
         "namespace": "security.invalidate_api_key"
       },
       "specLocation": "security/invalidate_api_key/SecurityInvalidateApiKeyResponse.ts#L23-L30"
+    },
+    {
+      "attachedBehaviors": [
+        "CommonQueryParameters"
+      ],
+      "body": {
+        "kind": "properties",
+        "properties": [
+          {
+            "description": "A list of application privilege entries.",
+            "name": "applications",
+            "required": false,
+            "type": {
+              "kind": "array_of",
+              "value": {
+                "kind": "instance_of",
+                "type": {
+                  "name": "ApplicationPrivileges",
+                  "namespace": "security._types"
+                }
+              }
+            }
+          },
+          {
+            "description": "A list of cluster privileges. These privileges define the cluster-level actions for users with this role.",
+            "name": "cluster",
+            "required": false,
+            "type": {
+              "kind": "array_of",
+              "value": {
+                "kind": "instance_of",
+                "type": {
+                  "name": "ClusterPrivilege",
+                  "namespace": "security._types"
+                }
+              }
+            }
+          },
+          {
+            "description": "A list of indices permissions entries.",
+            "name": "indices",
+            "required": false,
+            "type": {
+              "kind": "array_of",
+              "value": {
+                "kind": "instance_of",
+                "type": {
+                  "name": "IndicesPrivileges",
+                  "namespace": "security._types"
+                }
+              }
+            }
+          },
+          {
+            "description": "Optional metadata. Within the metadata object, keys that begin with an underscore (`_`) are reserved for system use.",
+            "name": "metadata",
+            "required": false,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "Metadata",
+                "namespace": "_types"
+              }
+            }
+          },
+          {
+            "description": "A list of users that the owners of this role can impersonate. *Note*: in Serverless, the run-as feature is disabled. For API compatibility, you can still specify an empty `run_as` field, but a non-empty list will be rejected.",
+            "docId": "run-as-privilege",
+            "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/run-as-privilege.html",
+            "name": "run_as",
+            "required": false,
+            "type": {
+              "kind": "array_of",
+              "value": {
+                "kind": "instance_of",
+                "type": {
+                  "name": "string",
+                  "namespace": "_builtins"
+                }
+              }
+            }
+          },
+          {
+            "description": "Optional description of the role descriptor",
+            "name": "description",
+            "required": false,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "_builtins"
+              }
+            }
+          },
+          {
+            "description": "Indicates roles that might be incompatible with the current cluster license, specifically roles with document and field level security. When the cluster license doesn’t allow certain features for a given role, this parameter is updated dynamically to list the incompatible features. If `enabled` is `false`, the role is ignored, but is still listed in the response from the authenticate API.",
+            "name": "transient_metadata",
+            "required": false,
+            "type": {
+              "key": {
+                "kind": "instance_of",
+                "type": {
+                  "name": "string",
+                  "namespace": "_builtins"
+                }
+              },
+              "kind": "dictionary_of",
+              "singleKey": false,
+              "value": {
+                "kind": "user_defined_value"
+              }
+            }
+          }
+        ]
+      },
+      "description": "The role management APIs are generally the preferred way to manage roles, rather than using file-based role management.\nThe create or update roles API cannot update roles that are defined in roles files.",
+      "inherits": {
+        "type": {
+          "name": "RequestBase",
+          "namespace": "_types"
+        }
+      },
+      "kind": "request",
+      "name": {
+        "name": "Request",
+        "namespace": "security.put_role"
+      },
+      "path": [
+        {
+          "description": "The name of the role that is being created or updated. On Elasticsearch Serverless, the role name must begin with a letter or digit and can only contain letters, digits and the characters '_', '-', and '.'. Each role must have a unique name, as this will serve as the identifier for that role.",
+          "name": "name",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Name",
+              "namespace": "_types"
+            }
+          }
+        }
+      ],
+      "query": [
+        {
+          "description": "If `true` (the default) then refresh the affected shards to make this operation visible to search, if `wait_for` then wait for a refresh to make this operation visible to search, if `false` then do nothing with refreshes.",
+          "name": "refresh",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Refresh",
+              "namespace": "_types"
+            }
+          }
+        }
+      ],
+      "specLocation": "security/put_role/SecurityPutRoleRequest.ts#L31-L91"
+    },
+    {
+      "body": {
+        "kind": "properties",
+        "properties": [
+          {
+            "name": "role",
+            "required": true,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "CreatedStatus",
+                "namespace": "security._types"
+              }
+            }
+          }
+        ]
+      },
+      "kind": "response",
+      "name": {
+        "name": "Response",
+        "namespace": "security.put_role"
+      },
+      "specLocation": "security/put_role/SecurityPutRoleResponse.ts#L22-L24"
     },
     {
       "attachedBehaviors": [
@@ -116507,219 +116800,6 @@
       "specLocation": "enrich/_types/Policy.ts#L34-L41"
     },
     {
-      "kind": "interface",
-      "name": {
-        "name": "CoordinatorStats",
-        "namespace": "enrich.stats"
-      },
-      "properties": [
-        {
-          "name": "executed_searches_total",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "long",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "name": "node_id",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "Id",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "name": "queue_size",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "integer",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "name": "remote_requests_current",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "integer",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "name": "remote_requests_total",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "long",
-              "namespace": "_types"
-            }
-          }
-        }
-      ],
-      "specLocation": "enrich/stats/types.ts#L30-L36"
-    },
-    {
-      "kind": "interface",
-      "name": {
-        "name": "ExecutingPolicy",
-        "namespace": "enrich.stats"
-      },
-      "properties": [
-        {
-          "name": "name",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "Name",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "name": "task",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "TaskInfo",
-              "namespace": "tasks._types"
-            }
-          }
-        }
-      ],
-      "specLocation": "enrich/stats/types.ts#L25-L28"
-    },
-    {
-      "kind": "interface",
-      "name": {
-        "name": "CacheStats",
-        "namespace": "enrich.stats"
-      },
-      "properties": [
-        {
-          "name": "node_id",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "Id",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "name": "count",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "integer",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "name": "hits",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "integer",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "name": "hits_time_in_millis",
-          "required": true,
-          "type": {
-            "generics": [
-              {
-                "kind": "instance_of",
-                "type": {
-                  "name": "UnitMillis",
-                  "namespace": "_types"
-                }
-              }
-            ],
-            "kind": "instance_of",
-            "type": {
-              "name": "DurationValue",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "name": "misses",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "integer",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "name": "misses_time_in_millis",
-          "required": true,
-          "type": {
-            "generics": [
-              {
-                "kind": "instance_of",
-                "type": {
-                  "name": "UnitMillis",
-                  "namespace": "_types"
-                }
-              }
-            ],
-            "kind": "instance_of",
-            "type": {
-              "name": "DurationValue",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "name": "evictions",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "integer",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "name": "size_in_bytes",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "long",
-              "namespace": "_types"
-            }
-          }
-        }
-      ],
-      "specLocation": "enrich/stats/types.ts#L38-L50"
-    },
-    {
       "generics": [
         {
           "name": "TEvent",
@@ -120146,7 +120226,7 @@
         {
           "description": "Task settings specific to the service and task type",
           "name": "task_settings",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -138762,6 +138842,200 @@
     {
       "kind": "interface",
       "name": {
+        "name": "Role",
+        "namespace": "security.get_role"
+      },
+      "properties": [
+        {
+          "name": "cluster",
+          "required": true,
+          "type": {
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "_builtins"
+              }
+            }
+          }
+        },
+        {
+          "name": "indices",
+          "required": true,
+          "type": {
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "IndicesPrivileges",
+                "namespace": "security._types"
+              }
+            }
+          }
+        },
+        {
+          "name": "metadata",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Metadata",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "run_as",
+          "required": true,
+          "type": {
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "_builtins"
+              }
+            }
+          }
+        },
+        {
+          "name": "transient_metadata",
+          "required": false,
+          "type": {
+            "key": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "_builtins"
+              }
+            },
+            "kind": "dictionary_of",
+            "singleKey": false,
+            "value": {
+              "kind": "user_defined_value"
+            }
+          }
+        },
+        {
+          "name": "applications",
+          "required": true,
+          "type": {
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "ApplicationPrivileges",
+                "namespace": "security._types"
+              }
+            }
+          }
+        },
+        {
+          "name": "role_templates",
+          "required": false,
+          "type": {
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "RoleTemplate",
+                "namespace": "security._types"
+              }
+            }
+          }
+        },
+        {
+          "availability": {
+            "serverless": {},
+            "stack": {
+              "since": "8.0.0"
+            }
+          },
+          "name": "global",
+          "required": false,
+          "type": {
+            "key": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "_builtins"
+              }
+            },
+            "kind": "dictionary_of",
+            "singleKey": false,
+            "value": {
+              "key": {
+                "kind": "instance_of",
+                "type": {
+                  "name": "string",
+                  "namespace": "_builtins"
+                }
+              },
+              "kind": "dictionary_of",
+              "singleKey": false,
+              "value": {
+                "key": {
+                  "kind": "instance_of",
+                  "type": {
+                    "name": "string",
+                    "namespace": "_builtins"
+                  }
+                },
+                "kind": "dictionary_of",
+                "singleKey": false,
+                "value": {
+                  "kind": "array_of",
+                  "value": {
+                    "kind": "instance_of",
+                    "type": {
+                      "name": "string",
+                      "namespace": "_builtins"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      ],
+      "specLocation": "security/get_role/types.ts#L29-L42"
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "RoleTemplate",
+        "namespace": "security._types"
+      },
+      "properties": [
+        {
+          "name": "format",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "TemplateFormat",
+              "namespace": "security._types"
+            }
+          }
+        },
+        {
+          "name": "template",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Script",
+              "namespace": "_types"
+            }
+          }
+        }
+      ],
+      "specLocation": "security/_types/RoleTemplate.ts#L28-L31"
+    },
+    {
+      "kind": "interface",
+      "name": {
         "name": "ApplicationPrivilegesCheck",
         "namespace": "security.has_privileges"
       },
@@ -138859,6 +139133,27 @@
         }
       ],
       "specLocation": "security/has_privileges/types.ts#L33-L44"
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "CreatedStatus",
+        "namespace": "security._types"
+      },
+      "properties": [
+        {
+          "name": "created",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "_builtins"
+            }
+          }
+        }
+      ],
+      "specLocation": "security/_types/CreatedStatus.ts#L20-L22"
     },
     {
       "kind": "interface",

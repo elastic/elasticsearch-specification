@@ -12683,7 +12683,7 @@ export type InferenceDenseVector = float[]
 export interface InferenceInferenceEndpoint {
   service: string
   service_settings: InferenceServiceSettings
-  task_settings: InferenceTaskSettings
+  task_settings?: InferenceTaskSettings
 }
 
 export interface InferenceInferenceEndpointInfo extends InferenceInferenceEndpoint {
@@ -16899,7 +16899,7 @@ export interface NodesInfoNodeInfoXpackLicenseType {
 }
 
 export interface NodesInfoNodeInfoXpackSecurity {
-  http: NodesInfoNodeInfoXpackSecuritySsl
+  http?: NodesInfoNodeInfoXpackSecuritySsl
   enabled: string
   transport?: NodesInfoNodeInfoXpackSecuritySsl
   authc?: NodesInfoNodeInfoXpackSecurityAuthc

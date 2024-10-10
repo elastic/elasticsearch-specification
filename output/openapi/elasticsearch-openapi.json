@@ -69014,8 +69014,7 @@
         },
         "required": [
           "service",
-          "service_settings",
-          "task_settings"
+          "service_settings"
         ]
       },
       "inference._types:ServiceSettings": {
@@ -77834,7 +77833,6 @@
           }
         },
         "required": [
-          "http",
           "enabled"
         ]
       },
@@ -99988,7 +99986,7 @@
       "security.put_role#name": {
         "in": "path",
         "name": "name",
-        "description": "The name of the role.",
+        "description": "The name of the role that is being created or updated. On Elasticsearch Serverless, the role name must begin with a letter or digit and can only contain letters, digits and the characters '_', '-', and '.'. Each role must have a unique name, as this will serve as the identifier for that role.",
         "required": true,
         "deprecated": false,
         "schema": {
