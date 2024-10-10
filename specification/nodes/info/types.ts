@@ -240,6 +240,7 @@ export class NodeInfoXpack {
   license?: NodeInfoXpackLicense
   security: NodeInfoXpackSecurity
   notification?: Dictionary<string, UserDefinedValue>
+  ml?: NodeInfoXpackMl
 }
 
 export class NodeInfoXpackSecurity {
@@ -249,13 +250,17 @@ export class NodeInfoXpackSecurity {
   authc?: NodeInfoXpackSecurityAuthc
 }
 
+export class NodeInfoXpackMl {
+  use_auto_machine_memory_percent?: boolean
+}
+
 export class NodeInfoXpackSecuritySsl {
   ssl: Dictionary<string, string>
 }
 
 export class NodeInfoXpackSecurityAuthc {
-  realms: NodeInfoXpackSecurityAuthcRealms
-  token: NodeInfoXpackSecurityAuthcToken
+  realms?: NodeInfoXpackSecurityAuthcRealms
+  token?: NodeInfoXpackSecurityAuthcToken
 }
 
 export class NodeInfoXpackSecurityAuthcRealms {
