@@ -1285,8 +1285,7 @@ export class SplitProcessor extends ProcessorBase {
   target_field?: Field
 }
 
-export class TerminateProcessor extends ProcessorBase {
-}
+export class TerminateProcessor extends ProcessorBase {}
 
 export class TrimProcessor extends ProcessorBase {
   /**
