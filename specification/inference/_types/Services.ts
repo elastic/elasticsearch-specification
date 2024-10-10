@@ -35,7 +35,7 @@ export class InferenceEndpoint {
   /**
    * Task settings specific to the service and task type
    */
-  task_settings: TaskSettings
+  task_settings?: TaskSettings
 }
 
 /**
