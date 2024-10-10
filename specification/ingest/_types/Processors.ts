@@ -531,10 +531,11 @@ export class CircleProcessor extends ProcessorBase {
 export enum ConvertType {
   integer,
   long,
-  float,
   double,
-  string,
+  float,
   boolean,
+  ip,
+  string,
   auto
 }
 
