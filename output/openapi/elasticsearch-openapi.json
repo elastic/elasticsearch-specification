@@ -78550,7 +78550,6 @@
           }
         },
         "required": [
-          "http",
           "enabled"
         ]
       },
