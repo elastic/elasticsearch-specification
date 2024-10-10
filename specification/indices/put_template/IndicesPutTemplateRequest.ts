@@ -31,7 +31,6 @@ import { Duration } from '@_types/Time'
  * Index templates define settings, mappings, and aliases that can be applied automatically to new indices.
  * @rest_spec_name indices.put_template
  * @availability stack stability=stable
- * @availability serverless stability=stable visibility=public
  */
 export interface Request extends RequestBase {
   path_parts: {
