@@ -56,6 +56,13 @@ export class ProcessorContainer {
    */
   circle?: CircleProcessor
   /**
+   * Computes the Community ID for network flow data as defined in the
+   * Community ID Specification. You can use a community ID to correlate network
+   * events related to a single flow.
+   * @doc_id community-id-processor
+   */
+  community_id?: CommunityIDProcessor
+  /**
    * Converts a field in the currently ingested document to a different type, such as converting a string to an integer.
    * If the field value is an array, all members will be converted.
    * @doc_id convert-processor
@@ -526,6 +533,58 @@ export class CircleProcessor extends ProcessorBase {
    * By default, the field is updated in-place.
    */
   target_field?: Field
+}
+
+export class CommunityIDProcessor extends ProcessorBase {
+  /**
+   * Field containing the source IP address.
+   */
+  source_ip?: string
+  /**
+   * Field containing the source port.
+   */
+  source_port?: string
+  /**
+   * Field containing the destination IP address.
+   */
+  destination_ip?: string
+  /**
+   * Field containing the destination port.
+   */
+  destination_port?: string
+  /**
+   * Field containing the IANA number.
+   */
+  iana_number?: string
+  /**
+   * Field containing the ICMP type.
+   */
+  icmp_type?: string
+  /**
+   * Field containing the ICMP code.
+   */
+  icmp_code?: string
+  /**
+   * Field containing the transport protocol name or number. Used only when the
+   * iana_number field is not present. The following protocol names are currently
+   * supported: ICMP, IGMP, TCP, UDP, GRE, ICMP IPv6, EIGRP, OSPF, PIM, and SCTP.
+   */
+  transport?: string
+  /**
+   * Output field for the community ID.
+   */
+  target_field?: Field
+  /**
+   * Seed for the community ID hash. Must be between 0 and 65535 (inclusive). The
+   * seed can prevent hash collisions between network domains, such as a staging
+   * and production network that use the same addressing scheme.
+   */
+  seed?: integer
+  /**
+   * If true and any required fields are missing, the processor quietly exits
+   * without modifying the document.
+   */
+  ignore_missing?: boolean
 }
 
 export enum ConvertType {
