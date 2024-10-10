@@ -231,6 +231,12 @@ export class ProcessorContainer {
    */
   split?: SplitProcessor
   /**
+   * Terminates the current ingest pipeline, causing no further processors to be run.
+   * This will normally be executed conditionally, using the `if` option.
+   * @doc_id terminate-processor
+   */
+  terminate?: TerminateProcessor
+  /**
    * Trims whitespace from a field.
    * If the field is an array of strings, all members of the array will be trimmed.
    * This only works on leading and trailing whitespace.
@@ -1277,6 +1283,9 @@ export class SplitProcessor extends ProcessorBase {
    * @server_default field
    */
   target_field?: Field
+}
+
+export class TerminateProcessor extends ProcessorBase {
 }
 
 export class TrimProcessor extends ProcessorBase {
