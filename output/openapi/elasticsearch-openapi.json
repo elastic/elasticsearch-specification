@@ -77822,7 +77822,6 @@
           }
         },
         "required": [
-          "http",
           "enabled"
         ]
       },
