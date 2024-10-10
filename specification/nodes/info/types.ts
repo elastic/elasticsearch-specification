@@ -243,7 +243,7 @@ export class NodeInfoXpack {
 }
 
 export class NodeInfoXpackSecurity {
-  http: NodeInfoXpackSecuritySsl
+  http?: NodeInfoXpackSecuritySsl
   enabled: string
   transport?: NodeInfoXpackSecuritySsl
   authc?: NodeInfoXpackSecurityAuthc
