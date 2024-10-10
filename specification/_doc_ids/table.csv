@@ -78,6 +78,7 @@ cluster-stats,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/c
 cluster-update-settings,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/cluster-update-settings.html
 cluster,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/cluster.html
 common-options,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/common-options.html
+community-id-processor,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/community-id-processor.html
 connector-sync-job-cancel,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/cancel-connector-sync-job-api.html
 connector-sync-job-delete,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/delete-connector-sync-job-api.html
 connector-sync-job-get,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/get-connector-sync-job-api.html
@@ -157,6 +158,7 @@ fail-processor,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/
 field-and-document-access-control,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/field-and-document-access-control.html
 field-usage-stats,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/field-usage-stats.html
 find-structure,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/find-structure.html
+fingerprint-processor,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/fingerprint-processor.html
 foreach-processor,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/foreach-processor.html
 fuzziness,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/common-options.html#fuzziness
 gap-policy,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/search-aggregations-pipeline.html#gap-policy
@@ -329,6 +331,7 @@ modules-scripting,https://www.elastic.co/guide/en/elasticsearch/reference/{branc
 modules-snapshots,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/modules-snapshots.html
 monitor-elasticsearch-cluster,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/monitor-elasticsearch-cluster.html
 multi-fields,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/multi-fields.html
+network-direction-processor,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/network-direction-processor.html
 node-roles,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/modules-node.html#node-roles
 paginate-search-results,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/paginate-search-results.html
 painless-contexts,https://www.elastic.co/guide/en/elasticsearch/painless/{branch}/painless-contexts.html
