@@ -114,6 +114,12 @@ export class ProcessorContainer {
    */
   fail?: FailProcessor
   /**
+   * Computes a hash of the document’s content. You can use this hash for
+   * content fingerprinting.
+   * @doc_id fingerprint-processor
+   */
+  fingerprint?: FingerprintProcessor
+  /**
    * Runs an ingest processor on each element of an array or object.
    * @doc_id foreach-processor
    */
@@ -814,6 +820,33 @@ export class FailProcessor extends ProcessorBase {
    * Supports template snippets.
    */
   message: string
+}
+
+export class FingerprintProcessor extends ProcessorBase {
+  /**
+   * Array of fields to include in the fingerprint. For objects, the processor
+   * hashes both the field key and value. For other fields, the processor hashes
+   * only the field value.
+   */
+  fields: string[]
+  /**
+   * Output field for the fingerprint.
+   */
+  target_field?: Field
+  /**
+   * Salt value for the hash function.
+   */
+  salt?: string
+  /**
+   * The hash method used to compute the fingerprint. Must be one of MD5, SHA-1,
+   * SHA-256, SHA-512, or MurmurHash3.
+   */
+  method?: string
+  /**
+   * If true, the processor ignores any missing fields. If all fields are
+   * missing, the processor silently exits without modifying the document.
+   */
+  ignore_missing?: boolean
 }
 
 export class ForeachProcessor extends ProcessorBase {
