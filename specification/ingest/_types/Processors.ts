@@ -183,6 +183,12 @@ export class ProcessorContainer {
    */
   lowercase?: LowercaseProcessor
   /**
+   * Calculates the network direction given a source IP address, destination IP
+   * address, and a list of internal networks.
+   * @doc_id network-direction-processor
+   */
+  network_direction?: NetworkDirectionProcessor
+  /**
    * Executes another pipeline.
    * @doc_id pipeline-processor
    */
@@ -1137,6 +1143,38 @@ export class LowercaseProcessor extends ProcessorBase {
    * @server_default field
    */
   target_field?: Field
+}
+
+export class NetworkDirectionProcessor extends ProcessorBase {
+  /**
+   * Field containing the source IP address.
+   */
+  source_ip?: string
+  /**
+   * Field containing the destination IP address.
+   */
+  destination_ip?: string
+  /**
+   * Output field for the network direction.
+   */
+  target_field?: Field
+  /**
+   * List of internal networks. Supports IPv4 and IPv6 addresses and ranges in
+   * CIDR notation. Also supports the named ranges listed below. These may be
+   * constructed with template snippets. Must specify only one of
+   * internal_networks or internal_networks_field.
+   */
+  internal_networks: string[]
+  /**
+   * A field on the given document to read the internal_networks configuration
+   * from.
+   */
+  internal_networks_field?: string
+  /**
+   * If true and any required fields are missing, the processor quietly exits
+   * without modifying the document.
+   */
+  ignore_missing?: boolean
 }
 
 export class PipelineProcessor extends ProcessorBase {
