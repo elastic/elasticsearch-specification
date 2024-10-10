@@ -596,6 +596,7 @@ stop-transform,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/
 supported-flags,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/query-dsl-simple-query-string-query.html#supported-flags
 tasks,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/tasks.html
 templating-role-query,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/field-and-document-access-control.html#templating-role-query
+terminate-processor,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/terminate-processor.html
 time-value,https://github.com/elastic/elasticsearch/blob/{branch}/libs/core/src/main/java/org/elasticsearch/core/TimeValue.java
 trim-processor,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/trim-processor.html
 unfreeze-index-api,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/unfreeze-index-api.html
