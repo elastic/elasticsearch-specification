@@ -196,7 +196,11 @@ pub fn add_endpoint(
 
         // Create the operation, it will be repeated if we have several methods
         let operation = openapiv3::Operation {
-            tags: vec![namespace.to_string()],
+            tags: if let Some(doc_tag) = &endpoint.doc_tag {
+                vec![doc_tag.clone()]
+            } else {
+                vec![namespace.to_string()]
+            },
             summary: sum_desc.summary,
             description: sum_desc.description,
             // external_docs: tac.convert_external_docs(endpoint),

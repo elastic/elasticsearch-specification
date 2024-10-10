@@ -28,6 +28,7 @@ import { Duration } from '@_types/Time'
  * @availability serverless stability=stable visibility=public
  * @cluster_privileges manage_ml
  * @doc_id ml-delete-dfanalytics
+ * @doc_tag ml data frame
  */
 export interface Request extends RequestBase {
   path_parts: {

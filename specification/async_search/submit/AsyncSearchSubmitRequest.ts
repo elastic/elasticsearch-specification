@@ -62,6 +62,7 @@ import { Duration } from '@_types/Time'
  * @availability stack since=7.7.0 stability=stable
  * @availability serverless stability=stable visibility=public
  * @doc_id async-search
+ * @doc_tag search
  */
 // NOTE: this is a SearchRequest with 3 added parameters: wait_for_completion_timeout, keep_on_completion and keep_alive
 export interface Request extends RequestBase {

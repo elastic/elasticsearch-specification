@@ -868,6 +868,12 @@
       ],
       "response": []
     },
+    "inference.stream_inference": {
+      "request": [
+        "Missing request & response"
+      ],
+      "response": []
+    },
     "ingest.delete_geoip_database": {
       "request": [
         "Request: query parameter 'master_timeout' does not exist in the json spec",

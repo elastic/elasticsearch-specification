@@ -25,6 +25,7 @@ import { Duration } from '@_types/Time'
  * Reloads the keystore on nodes in the cluster.
  * @rest_spec_name nodes.reload_secure_settings
  * @availability stack since=6.5.0 stability=stable
+ * @doc_tag cluster
  */
 export interface Request extends RequestBase {
   path_parts: {

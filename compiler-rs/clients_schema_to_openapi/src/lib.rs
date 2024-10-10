@@ -155,18 +155,20 @@ pub fn availability_as_extensions(availabilities: &Option<Availabilities>) -> In
     if let Some(avails) = availabilities {
         // We may have several availabilities, but since generally exists only on stateful (stack)
         for (_, availability) in avails {
-            if let Some(since) = &availability.since {
-                result.insert("x-available-since".to_string(), serde_json::Value::String(since.clone()));
-            }
             if let Some(stability) = &availability.stability {
                 match stability {
                     Stability::Beta => {
                         result.insert("x-beta".to_string(), serde_json::Value::Bool(true));
                     }
                     Stability::Experimental => {
-                        result.insert("x-technical-preview".to_string(), serde_json::Value::Bool(true));
+                        result.insert("x-state".to_string(), serde_json::Value::String("Technical preview".to_string()));
                     }
-                    _ => {}
+                    Stability::Stable => {
+                        if let Some(since) = &availability.since {
+                            let stable_since = "Added in ".to_string() + since;
+                            result.insert("x-state".to_string(), serde_json::Value::String(stable_since));
+                        }
+                    }
                 }
             }
         }

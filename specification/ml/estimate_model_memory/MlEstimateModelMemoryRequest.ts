@@ -32,6 +32,7 @@ import { long } from '@_types/Numeric'
  * @availability stack since=7.7.0 stability=stable
  * @availability serverless stability=stable visibility=public
  * @cluster_privileges manage_ml
+ * @doc_tag ml anomaly
  */
 export interface Request extends RequestBase {
   body: {

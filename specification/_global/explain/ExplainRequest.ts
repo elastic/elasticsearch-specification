@@ -29,6 +29,7 @@ import { Operator } from '@_types/query_dsl/Operator'
  * @rest_spec_name explain
  * @availability stack stability=stable
  * @availability serverless stability=stable visibility=public
+ * @doc_tag search
  */
 export interface Request extends RequestBase {
   path_parts: {

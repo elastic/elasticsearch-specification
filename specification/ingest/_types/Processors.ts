@@ -1087,6 +1087,13 @@ export class RedactProcessor extends ProcessorBase {
    * @server_default false
    */
   skip_if_unlicensed?: boolean
+  /**
+   * If `true` then ingest metadata `_ingest._redact._is_redacted` is set to `true` if the document has been redacted
+   * @availability stack since=8.16.0
+   * @availability serverless
+   * @server_default false
+   */
+  trace_redact?: boolean
 }
 
 export class RemoveProcessor extends ProcessorBase {

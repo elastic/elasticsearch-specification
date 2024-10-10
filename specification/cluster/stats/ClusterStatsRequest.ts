@@ -37,10 +37,10 @@ export interface Request extends RequestBase {
   }
   query_parameters: {
     /**
-     * If `true`, returns settings in flat format.
+     * Include remote cluster data into the response
      * @server_default false
      */
-    flat_settings?: boolean
+    include_remotes?: boolean
     /**
      * Period to wait for each node to respond.
      * If a node does not respond before its timeout expires, the response does not include its stats.
