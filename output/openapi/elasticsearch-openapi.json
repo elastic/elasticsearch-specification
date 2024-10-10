@@ -31461,13 +31461,13 @@
                 "schema": {
                   "type": "object",
                   "properties": {
+                    "accepted": {
+                      "type": "boolean"
+                    },
                     "snapshot": {
                       "$ref": "#/components/schemas/snapshot.restore:SnapshotRestore"
                     }
-                  },
-                  "required": [
-                    "snapshot"
-                  ]
+                  }
                 }
               }
             }
