@@ -17095,7 +17095,7 @@
             }
           }
         },
-        "x-available-since": "7.3.0"
+        "x-state": "Added in 7.3.0"
       }
     },
     "/_security/role": {
@@ -53635,7 +53635,6 @@
             }
           },
           "global": {
-            "x-available-since": "8.0.0",
             "type": "object",
             "additionalProperties": {
               "type": "object",
