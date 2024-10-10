@@ -94075,7 +94075,7 @@
         "name": "ConvertType",
         "namespace": "ingest._types"
       },
-      "specLocation": "ingest/_types/Processors.ts#L525-L533"
+      "specLocation": "ingest/_types/Processors.ts#L531-L539"
     },
     {
       "kind": "enum",
@@ -94091,7 +94091,7 @@
         "name": "GeoGridTargetFormat",
         "namespace": "ingest._types"
       },
-      "specLocation": "ingest/_types/Processors.ts#L400-L403"
+      "specLocation": "ingest/_types/Processors.ts#L406-L409"
     },
     {
       "kind": "enum",
@@ -94110,7 +94110,7 @@
         "name": "GeoGridTileType",
         "namespace": "ingest._types"
       },
-      "specLocation": "ingest/_types/Processors.ts#L394-L398"
+      "specLocation": "ingest/_types/Processors.ts#L400-L404"
     },
     {
       "kind": "enum",
@@ -94128,7 +94128,7 @@
         "name": "JsonProcessorConflictStrategy",
         "namespace": "ingest._types"
       },
-      "specLocation": "ingest/_types/Processors.ts#L964-L969"
+      "specLocation": "ingest/_types/Processors.ts#L970-L975"
     },
     {
       "kind": "enum",
@@ -94144,7 +94144,7 @@
         "name": "ShapeType",
         "namespace": "ingest._types"
       },
-      "specLocation": "ingest/_types/Processors.ts#L1232-L1235"
+      "specLocation": "ingest/_types/Processors.ts#L1238-L1241"
     },
     {
       "kind": "enum",
@@ -94169,7 +94169,7 @@
         "name": "UserAgentProperty",
         "namespace": "ingest._types"
       },
-      "specLocation": "ingest/_types/Processors.ts#L474-L480"
+      "specLocation": "ingest/_types/Processors.ts#L480-L486"
     },
     {
       "kind": "enum",
@@ -120892,6 +120892,20 @@
           }
         },
         {
+          "description": "Terminates the current ingest pipeline, causing no further processors to be run.\nThis will normally be executed conditionally, using the `if` option.",
+          "docId": "terminate-processor",
+          "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/terminate-processor.html",
+          "name": "terminate",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "TerminateProcessor",
+              "namespace": "ingest._types"
+            }
+          }
+        },
+        {
           "description": "Trims whitespace from a field.\nIf the field is an array of strings, all members of the array will be trimmed.\nThis only works on leading and trailing whitespace.",
           "docId": "trim-processor",
           "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/trim-processor.html",
@@ -120961,7 +120975,7 @@
           }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L27-L264",
+      "specLocation": "ingest/_types/Processors.ts#L27-L270",
       "variants": {
         "kind": "container",
         "nonExhaustive": true
@@ -121025,7 +121039,7 @@
           }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L291-L306"
+      "specLocation": "ingest/_types/Processors.ts#L297-L312"
     },
     {
       "kind": "interface",
@@ -121098,7 +121112,7 @@
           }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L266-L289"
+      "specLocation": "ingest/_types/Processors.ts#L272-L295"
     },
     {
       "inherits": {
@@ -121218,7 +121232,7 @@
           }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L308-L349"
+      "specLocation": "ingest/_types/Processors.ts#L314-L355"
     },
     {
       "inherits": {
@@ -121272,7 +121286,7 @@
           }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L482-L498"
+      "specLocation": "ingest/_types/Processors.ts#L488-L504"
     },
     {
       "inherits": {
@@ -121349,7 +121363,7 @@
           }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L500-L523"
+      "specLocation": "ingest/_types/Processors.ts#L506-L529"
     },
     {
       "inherits": {
@@ -121415,7 +121429,7 @@
           }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L535-L555"
+      "specLocation": "ingest/_types/Processors.ts#L541-L561"
     },
     {
       "inherits": {
@@ -121513,7 +121527,7 @@
           }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L557-L590"
+      "specLocation": "ingest/_types/Processors.ts#L563-L596"
     },
     {
       "inherits": {
@@ -121595,7 +121609,7 @@
           }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L632-L659"
+      "specLocation": "ingest/_types/Processors.ts#L638-L665"
     },
     {
       "inherits": {
@@ -121701,7 +121715,7 @@
           }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L592-L630"
+      "specLocation": "ingest/_types/Processors.ts#L598-L636"
     },
     {
       "inherits": {
@@ -121767,7 +121781,7 @@
           }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L661-L680"
+      "specLocation": "ingest/_types/Processors.ts#L667-L686"
     },
     {
       "inherits": {
@@ -121820,7 +121834,7 @@
           }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L682-L700"
+      "specLocation": "ingest/_types/Processors.ts#L688-L706"
     },
     {
       "inherits": {
@@ -121835,7 +121849,7 @@
         "namespace": "ingest._types"
       },
       "properties": [],
-      "specLocation": "ingest/_types/Processors.ts#L702-L702"
+      "specLocation": "ingest/_types/Processors.ts#L708-L708"
     },
     {
       "inherits": {
@@ -121939,7 +121953,7 @@
           }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L704-L743"
+      "specLocation": "ingest/_types/Processors.ts#L710-L749"
     },
     {
       "inherits": {
@@ -121967,7 +121981,7 @@
           }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L745-L751"
+      "specLocation": "ingest/_types/Processors.ts#L751-L757"
     },
     {
       "inherits": {
@@ -122020,7 +122034,7 @@
           }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L753-L767"
+      "specLocation": "ingest/_types/Processors.ts#L759-L773"
     },
     {
       "inherits": {
@@ -122147,7 +122161,7 @@
           }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L351-L392"
+      "specLocation": "ingest/_types/Processors.ts#L357-L398"
     },
     {
       "inherits": {
@@ -122254,7 +122268,7 @@
           }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L405-L439"
+      "specLocation": "ingest/_types/Processors.ts#L411-L445"
     },
     {
       "inherits": {
@@ -122346,7 +122360,7 @@
           }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L769-L794"
+      "specLocation": "ingest/_types/Processors.ts#L775-L800"
     },
     {
       "inherits": {
@@ -122424,7 +122438,7 @@
           }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L796-L820"
+      "specLocation": "ingest/_types/Processors.ts#L802-L826"
     },
     {
       "inherits": {
@@ -122478,7 +122492,7 @@
           }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L822-L838"
+      "specLocation": "ingest/_types/Processors.ts#L828-L844"
     },
     {
       "inherits": {
@@ -122550,7 +122564,7 @@
           }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L840-L859"
+      "specLocation": "ingest/_types/Processors.ts#L846-L865"
     },
     {
       "kind": "interface",
@@ -122584,7 +122598,7 @@
           }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L861-L873",
+      "specLocation": "ingest/_types/Processors.ts#L867-L879",
       "variants": {
         "kind": "container"
       }
@@ -122623,7 +122637,7 @@
           }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L875-L886"
+      "specLocation": "ingest/_types/Processors.ts#L881-L892"
     },
     {
       "kind": "interface",
@@ -122697,7 +122711,7 @@
           }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L888-L914"
+      "specLocation": "ingest/_types/Processors.ts#L894-L920"
     },
     {
       "inherits": {
@@ -122750,7 +122764,7 @@
           }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L916-L931"
+      "specLocation": "ingest/_types/Processors.ts#L922-L937"
     },
     {
       "inherits": {
@@ -122829,7 +122843,7 @@
           }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L933-L962"
+      "specLocation": "ingest/_types/Processors.ts#L939-L968"
     },
     {
       "inherits": {
@@ -122986,7 +123000,7 @@
           }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L971-L1023"
+      "specLocation": "ingest/_types/Processors.ts#L977-L1029"
     },
     {
       "inherits": {
@@ -123040,7 +123054,7 @@
           }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L1025-L1041"
+      "specLocation": "ingest/_types/Processors.ts#L1031-L1047"
     },
     {
       "inherits": {
@@ -123081,7 +123095,7 @@
           }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L1043-L1054"
+      "specLocation": "ingest/_types/Processors.ts#L1049-L1060"
     },
     {
       "inherits": {
@@ -123217,7 +123231,7 @@
           }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L1056-L1097"
+      "specLocation": "ingest/_types/Processors.ts#L1062-L1103"
     },
     {
       "inherits": {
@@ -123270,7 +123284,7 @@
           }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L1099-L1113"
+      "specLocation": "ingest/_types/Processors.ts#L1105-L1119"
     },
     {
       "inherits": {
@@ -123323,7 +123337,7 @@
           }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L1115-L1131"
+      "specLocation": "ingest/_types/Processors.ts#L1121-L1137"
     },
     {
       "inherits": {
@@ -123405,7 +123419,7 @@
           }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L1133-L1161"
+      "specLocation": "ingest/_types/Processors.ts#L1139-L1167"
     },
     {
       "inherits": {
@@ -123477,7 +123491,7 @@
           }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L1163-L1183"
+      "specLocation": "ingest/_types/Processors.ts#L1169-L1189"
     },
     {
       "inherits": {
@@ -123563,7 +123577,7 @@
           }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L1185-L1219"
+      "specLocation": "ingest/_types/Processors.ts#L1191-L1225"
     },
     {
       "inherits": {
@@ -123606,7 +123620,7 @@
           }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L1221-L1230"
+      "specLocation": "ingest/_types/Processors.ts#L1227-L1236"
     },
     {
       "inherits": {
@@ -123659,7 +123673,7 @@
           }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L1237-L1253"
+      "specLocation": "ingest/_types/Processors.ts#L1243-L1259"
     },
     {
       "inherits": {
@@ -123738,7 +123752,22 @@
           }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L1255-L1280"
+      "specLocation": "ingest/_types/Processors.ts#L1261-L1286"
+    },
+    {
+      "inherits": {
+        "type": {
+          "name": "ProcessorBase",
+          "namespace": "ingest._types"
+        }
+      },
+      "kind": "interface",
+      "name": {
+        "name": "TerminateProcessor",
+        "namespace": "ingest._types"
+      },
+      "properties": [],
+      "specLocation": "ingest/_types/Processors.ts#L1288-L1288"
     },
     {
       "inherits": {
@@ -123792,7 +123821,7 @@
           }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L1282-L1298"
+      "specLocation": "ingest/_types/Processors.ts#L1290-L1306"
     },
     {
       "inherits": {
@@ -123846,7 +123875,7 @@
           }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L1300-L1316"
+      "specLocation": "ingest/_types/Processors.ts#L1308-L1324"
     },
     {
       "inherits": {
@@ -123900,7 +123929,7 @@
           }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L1318-L1334"
+      "specLocation": "ingest/_types/Processors.ts#L1326-L1342"
     },
     {
       "inherits": {
@@ -123980,7 +124009,7 @@
           }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L1336-L1362"
+      "specLocation": "ingest/_types/Processors.ts#L1344-L1370"
     },
     {
       "inherits": {
@@ -124093,7 +124122,7 @@
           }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L441-L472"
+      "specLocation": "ingest/_types/Processors.ts#L447-L478"
     },
     {
       "kind": "interface",

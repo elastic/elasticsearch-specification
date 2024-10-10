@@ -13049,6 +13049,7 @@ export interface IngestProcessorContainer {
   set_security_user?: IngestSetSecurityUserProcessor
   sort?: IngestSortProcessor
   split?: IngestSplitProcessor
+  terminate?: IngestTerminateProcessor
   trim?: IngestTrimProcessor
   uppercase?: IngestUppercaseProcessor
   urldecode?: IngestUrlDecodeProcessor
@@ -13120,6 +13121,9 @@ export interface IngestSplitProcessor extends IngestProcessorBase {
   preserve_trailing?: boolean
   separator: string
   target_field?: Field
+}
+
+export interface IngestTerminateProcessor extends IngestProcessorBase {
 }
 
 export interface IngestTrimProcessor extends IngestProcessorBase {
