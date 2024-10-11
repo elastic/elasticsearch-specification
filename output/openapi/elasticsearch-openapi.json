@@ -69445,6 +69445,9 @@
           "split": {
             "$ref": "#/components/schemas/ingest._types:SplitProcessor"
           },
+          "terminate": {
+            "$ref": "#/components/schemas/ingest._types:TerminateProcessor"
+          },
           "trim": {
             "$ref": "#/components/schemas/ingest._types:TrimProcessor"
           },
@@ -70730,6 +70733,16 @@
               "field",
               "separator"
             ]
+          }
+        ]
+      },
+      "ingest._types:TerminateProcessor": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/ingest._types:ProcessorBase"
+          },
+          {
+            "type": "object"
           }
         ]
       },
