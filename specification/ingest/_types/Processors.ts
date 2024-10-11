@@ -201,6 +201,14 @@ export class ProcessorContainer {
    */
   redact?: RedactProcessor
   /**
+   * Extracts the registered domain (also known as the effective top-level
+   * domain or eTLD), sub-domain, and top-level domain from a fully qualified
+   * domain name (FQDN). Uses the registered domains defined in the Mozilla
+   * Public Suffix List.
+   * @doc_id registered-domain-processor
+   */
+  registered_domain?: RegisteredDomainProcessor
+  /**
    * Removes existing fields.
    * If one field doesn’t exist, an exception will be thrown.
    * @doc_id remove-processor
@@ -1257,6 +1265,25 @@ export class RedactProcessor extends ProcessorBase {
    * @server_default false
    */
   trace_redact?: boolean
+}
+
+export class RegisteredDomainProcessor extends ProcessorBase {
+  /**
+   * Field containing the source FQDN.
+   */
+  field: Field
+  /**
+   * Object field containing extracted domain components. If an empty string,
+   * the processor adds components to the document’s root.
+   * @server-default <empty string>
+   */
+  target_field?: Field
+  /**
+   * If true and any required fields are missing, the processor quietly exits
+   * without modifying the document.
+   * @server-default true
+   */
+  ignore_missing?: boolean
 }
 
 export class RemoveProcessor extends ProcessorBase {
