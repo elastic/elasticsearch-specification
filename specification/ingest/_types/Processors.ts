@@ -753,6 +753,12 @@ export class DateProcessor extends ProcessorBase {
    * @server_default UTC
    */
   timezone?: string
+  /**
+   * The format to use when writing the date to target_field. Must be a valid
+   * java time pattern.
+   * @server-default yyyy-MM-dd'T'HH:mm:ss.SSSXXX
+   */
+  output_format?: string
 }
 
 export class DissectProcessor extends ProcessorBase {
