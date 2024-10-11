@@ -594,7 +594,7 @@ export class CommunityIDProcessor extends ProcessorBase {
   /**
    * Field containing the transport protocol name or number. Used only when the
    * iana_number field is not present. The following protocol names are currently
-   * supported: ICMP, IGMP, TCP, UDP, GRE, ICMP IPv6, EIGRP, OSPF, PIM, and SCTP.
+   * supported: eigrp, gre, icmp, icmpv6, igmp, ipv6-icmp, ospf, pim, sctp, tcp, udp
    * @server-default network.transport
    */
   transport?: Field
