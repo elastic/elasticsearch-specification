@@ -909,6 +909,12 @@ export class ForeachProcessor extends ProcessorBase {
 
 export class GrokProcessor extends ProcessorBase {
   /**
+   * Must be disabled or v1. If v1, the processor uses patterns with Elastic
+   * Common Schema (ECS) field names.
+   * @server-default disabled
+   */
+  ecs_compatibility?: string
+  /**
    * The field to use for grok expression parsing.
    */
   field: Field
