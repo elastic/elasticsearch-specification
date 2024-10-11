@@ -558,62 +558,62 @@ export class CircleProcessor extends ProcessorBase {
 export class CommunityIDProcessor extends ProcessorBase {
   /**
    * Field containing the source IP address.
-   * @server-default source.ip
+   * @server_default source.ip
    */
   source_ip?: Field
   /**
    * Field containing the source port.
-   * @server-default source.port
+   * @server_default source.port
    */
   source_port?: Field
   /**
    * Field containing the destination IP address.
-   * @server-default destination.ip
+   * @server_default destination.ip
    */
   destination_ip?: Field
   /**
    * Field containing the destination port.
-   * @server-default destination.port
+   * @server_default destination.port
    */
   destination_port?: Field
   /**
    * Field containing the IANA number.
-   * @server-default network.iana_number
+   * @server_default network.iana_number
    */
   iana_number?: Field
   /**
    * Field containing the ICMP type.
-   * @server-default icmp.type
+   * @server_default icmp.type
    */
   icmp_type?: Field
   /**
    * Field containing the ICMP code.
-   * @server-default icmp.code
+   * @server_default icmp.code
    */
   icmp_code?: Field
   /**
    * Field containing the transport protocol name or number. Used only when the
    * iana_number field is not present. The following protocol names are currently
    * supported: eigrp, gre, icmp, icmpv6, igmp, ipv6-icmp, ospf, pim, sctp, tcp, udp
-   * @server-default network.transport
+   * @server_default network.transport
    */
   transport?: Field
   /**
    * Output field for the community ID.
-   * @server-default network.community_id
+   * @server_default network.community_id
    */
   target_field?: Field
   /**
    * Seed for the community ID hash. Must be between 0 and 65535 (inclusive). The
    * seed can prevent hash collisions between network domains, such as a staging
    * and production network that use the same addressing scheme.
-   * @server-default 0
+   * @server_default 0
    */
   seed?: integer
   /**
    * If true and any required fields are missing, the processor quietly exits
    * without modifying the document.
-   * @server-default true
+   * @server_default true
    */
   ignore_missing?: boolean
 }
@@ -756,7 +756,7 @@ export class DateProcessor extends ProcessorBase {
   /**
    * The format to use when writing the date to target_field. Must be a valid
    * java time pattern.
-   * @server-default yyyy-MM-dd'T'HH:mm:ss.SSSXXX
+   * @server_default yyyy-MM-dd'T'HH:mm:ss.SSSXXX
    */
   output_format?: string
 }
@@ -870,7 +870,7 @@ export class FingerprintProcessor extends ProcessorBase {
   fields: Fields
   /**
    * Output field for the fingerprint.
-   * @server-default fingerprint
+   * @server_default fingerprint
    */
   target_field?: Field
   /**
@@ -880,13 +880,13 @@ export class FingerprintProcessor extends ProcessorBase {
   /**
    * The hash method used to compute the fingerprint. Must be one of MD5, SHA-1,
    * SHA-256, SHA-512, or MurmurHash3.
-   * @server-default SHA-1
+   * @server_default SHA-1
    */
   method?: FingerprintDigest
   /**
    * If true, the processor ignores any missing fields. If all fields are
    * missing, the processor silently exits without modifying the document.
-   * @server-default false
+   * @server_default false
    */
   ignore_missing?: boolean
 }
@@ -911,7 +911,7 @@ export class GrokProcessor extends ProcessorBase {
   /**
    * Must be disabled or v1. If v1, the processor uses patterns with Elastic
    * Common Schema (ECS) field names.
-   * @server-default disabled
+   * @server_default disabled
    */
   ecs_compatibility?: string
   /**
@@ -1190,17 +1190,17 @@ export class LowercaseProcessor extends ProcessorBase {
 export class NetworkDirectionProcessor extends ProcessorBase {
   /**
    * Field containing the source IP address.
-   * @server-default source.ip
+   * @server_default source.ip
    */
   source_ip?: Field
   /**
    * Field containing the destination IP address.
-   * @server-default destination.ip
+   * @server_default destination.ip
    */
   destination_ip?: Field
   /**
    * Output field for the network direction.
-   * @server-default network.direction
+   * @server_default network.direction
    */
   target_field?: Field
   /**
@@ -1218,7 +1218,7 @@ export class NetworkDirectionProcessor extends ProcessorBase {
   /**
    * If true and any required fields are missing, the processor quietly exits
    * without modifying the document.
-   * @server-default true
+   * @server_default true
    */
   ignore_missing?: boolean
 }
@@ -1287,13 +1287,13 @@ export class RegisteredDomainProcessor extends ProcessorBase {
   /**
    * Object field containing extracted domain components. If an empty string,
    * the processor adds components to the document’s root.
-   * @server-default <empty string>
+   * @server_default <empty string>
    */
   target_field?: Field
   /**
    * If true and any required fields are missing, the processor quietly exits
    * without modifying the document.
-   * @server-default true
+   * @server_default true
    */
   ignore_missing?: boolean
 }
