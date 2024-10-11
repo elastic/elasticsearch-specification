@@ -550,51 +550,62 @@ export class CircleProcessor extends ProcessorBase {
 export class CommunityIDProcessor extends ProcessorBase {
   /**
    * Field containing the source IP address.
+   * @server-default source.ip
    */
-  source_ip?: string
+  source_ip?: Field
   /**
    * Field containing the source port.
+   * @server-default source.port
    */
-  source_port?: string
+  source_port?: Field
   /**
    * Field containing the destination IP address.
+   * @server-default destination.ip
    */
-  destination_ip?: string
+  destination_ip?: Field
   /**
    * Field containing the destination port.
+   * @server-default destination.port
    */
-  destination_port?: string
+  destination_port?: Field
   /**
    * Field containing the IANA number.
+   * @server-default network.iana_number
    */
-  iana_number?: string
+  iana_number?: Field
   /**
    * Field containing the ICMP type.
+   * @server-default icmp.type
    */
-  icmp_type?: string
+  icmp_type?: Field
   /**
    * Field containing the ICMP code.
+   * @server-default icmp.code
    */
-  icmp_code?: string
+  icmp_code?: Field
   /**
    * Field containing the transport protocol name or number. Used only when the
    * iana_number field is not present. The following protocol names are currently
    * supported: ICMP, IGMP, TCP, UDP, GRE, ICMP IPv6, EIGRP, OSPF, PIM, and SCTP.
+   * @server-default network.transport
    */
-  transport?: string
+  transport?: Field
   /**
    * Output field for the community ID.
+   * @server-default network.community_id
    */
   target_field?: Field
   /**
    * Seed for the community ID hash. Must be between 0 and 65535 (inclusive). The
    * seed can prevent hash collisions between network domains, such as a staging
    * and production network that use the same addressing scheme.
+   * @server-default 0
    */
   seed?: integer
   /**
    * If true and any required fields are missing, the processor quietly exits
    * without modifying the document.
+   * @server-default true
    */
   ignore_missing?: boolean
 }
@@ -834,9 +845,10 @@ export class FingerprintProcessor extends ProcessorBase {
    * hashes both the field key and value. For other fields, the processor hashes
    * only the field value.
    */
-  fields: string[]
+  fields: Fields
   /**
    * Output field for the fingerprint.
+   * @server-default fingerprint
    */
   target_field?: Field
   /**
@@ -846,11 +858,13 @@ export class FingerprintProcessor extends ProcessorBase {
   /**
    * The hash method used to compute the fingerprint. Must be one of MD5, SHA-1,
    * SHA-256, SHA-512, or MurmurHash3.
+   * @server-default SHA-1
    */
   method?: string
   /**
    * If true, the processor ignores any missing fields. If all fields are
    * missing, the processor silently exits without modifying the document.
+   * @server-default false
    */
   ignore_missing?: boolean
 }
@@ -1148,14 +1162,17 @@ export class LowercaseProcessor extends ProcessorBase {
 export class NetworkDirectionProcessor extends ProcessorBase {
   /**
    * Field containing the source IP address.
+   * @server-default source.ip
    */
-  source_ip?: string
+  source_ip?: Field
   /**
    * Field containing the destination IP address.
+   * @server-default destination.ip
    */
-  destination_ip?: string
+  destination_ip?: Field
   /**
    * Output field for the network direction.
+   * @server-default network.direction
    */
   target_field?: Field
   /**
@@ -1169,10 +1186,11 @@ export class NetworkDirectionProcessor extends ProcessorBase {
    * A field on the given document to read the internal_networks configuration
    * from.
    */
-  internal_networks_field?: string
+  internal_networks_field?: Field
   /**
    * If true and any required fields are missing, the processor quietly exits
    * without modifying the document.
+   * @server-default true
    */
   ignore_missing?: boolean
 }
