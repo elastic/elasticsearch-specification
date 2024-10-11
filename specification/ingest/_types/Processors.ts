@@ -839,6 +839,14 @@ export class FailProcessor extends ProcessorBase {
   message: string
 }
 
+export enum FingerprintDigest {
+  md5 = 'MD5',
+  sha1 = 'SHA-1',
+  sha256 = 'SHA-256',
+  sha512 = 'SHA-512',
+  murmurHash3 = 'MurmurHash3'
+}
+
 export class FingerprintProcessor extends ProcessorBase {
   /**
    * Array of fields to include in the fingerprint. For objects, the processor
@@ -860,7 +868,7 @@ export class FingerprintProcessor extends ProcessorBase {
    * SHA-256, SHA-512, or MurmurHash3.
    * @server-default SHA-1
    */
-  method?: string
+  method?: FingerprintDigest
   /**
    * If true, the processor ignores any missing fields. If all fields are
    * missing, the processor silently exits without modifying the document.
