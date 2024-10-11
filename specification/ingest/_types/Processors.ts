@@ -1209,7 +1209,7 @@ export class NetworkDirectionProcessor extends ProcessorBase {
    * constructed with template snippets. Must specify only one of
    * internal_networks or internal_networks_field.
    */
-  internal_networks: string[]
+  internal_networks?: string[]
   /**
    * A field on the given document to read the internal_networks configuration
    * from.
