@@ -1287,7 +1287,6 @@ export class RegisteredDomainProcessor extends ProcessorBase {
   /**
    * Object field containing extracted domain components. If an empty string,
    * the processor adds components to the document’s root.
-   * @server_default <empty string>
    */
   target_field?: Field
   /**
