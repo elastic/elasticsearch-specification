@@ -77772,7 +77772,17 @@
         "type": "object",
         "properties": {
           "host": {
-            "$ref": "#/components/schemas/_types:Host"
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/_types:Host"
+              },
+              {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/_types:Host"
+                }
+              }
+            ]
           }
         }
       },

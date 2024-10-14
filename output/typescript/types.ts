@@ -16856,7 +16856,7 @@ export interface NodesInfoNodeInfoSettingsIngest {
 }
 
 export interface NodesInfoNodeInfoSettingsNetwork {
-  host?: Host
+  host?: Host | Host[]
 }
 
 export interface NodesInfoNodeInfoSettingsNode {

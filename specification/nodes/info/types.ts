@@ -221,7 +221,7 @@ export class NodeInfoSettingsTransportFeatures {
 }
 
 export class NodeInfoSettingsNetwork {
-  host?: Host
+  host?: Host | Host[]
 }
 
 export class NodeInfoIngest {
