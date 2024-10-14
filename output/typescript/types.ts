@@ -10434,6 +10434,7 @@ export interface EqlSearchRequest extends RequestBase {
     fields?: QueryDslFieldAndFormat | Field | (QueryDslFieldAndFormat | Field)[]
     result_position?: EqlSearchResultPosition
     runtime_mappings?: MappingRuntimeFields
+    max_samples_per_key?: integer
   }
 }
 
@@ -17904,7 +17905,7 @@ export type SecurityIndexPrivilege = 'all' | 'auto_configure' | 'create' | 'crea
 
 export interface SecurityIndicesPrivileges {
   field_security?: SecurityFieldSecurity
-  names: IndexName | IndexName[]
+  names: IndexName[]
   privileges: SecurityIndexPrivilege[]
   query?: SecurityIndicesPrivilegesQuery
   allow_restricted_indices?: boolean
@@ -17931,7 +17932,7 @@ export interface SecurityRemoteClusterPrivileges {
 export interface SecurityRemoteIndicesPrivileges {
   clusters: Names
   field_security?: SecurityFieldSecurity
-  names: IndexName | IndexName[]
+  names: IndexName[]
   privileges: SecurityIndexPrivilege[]
   query?: SecurityIndicesPrivilegesQuery
   allow_restricted_indices?: boolean
@@ -18033,7 +18034,7 @@ export interface SecurityUser {
 
 export interface SecurityUserIndicesPrivileges {
   field_security?: SecurityFieldSecurity[]
-  names: IndexName | IndexName[]
+  names: IndexName[]
   privileges: SecurityIndexPrivilege[]
   query?: SecurityIndicesPrivilegesQuery[]
   allow_restricted_indices: boolean
@@ -18374,9 +18375,8 @@ export interface SecurityGetBuiltinPrivilegesRequest extends RequestBase {
 }
 
 export interface SecurityGetBuiltinPrivilegesResponse {
-  cluster: SecurityClusterPrivilege[]
-  index: Indices
-  remote_cluster: SecurityRemoteClusterPrivilege[]
+  cluster: string[]
+  index: IndexName[]
 }
 
 export interface SecurityGetPrivilegesRequest extends RequestBase {

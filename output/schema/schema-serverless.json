@@ -17628,6 +17628,19 @@
                 "namespace": "_types.mapping"
               }
             }
+          },
+          {
+            "description": "By default, the response of a sample query contains up to `10` samples, with one sample per unique set of join keys. Use the `size`\nparameter to get a smaller or larger set of samples. To retrieve more than one sample per set of join keys, use the\n`max_samples_per_key` parameter. Pipes are not supported for sample queries.",
+            "name": "max_samples_per_key",
+            "required": false,
+            "serverDefault": 1,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "integer",
+                "namespace": "_types"
+              }
+            }
           }
         ]
       },
@@ -17760,7 +17773,7 @@
           }
         }
       ],
-      "specLocation": "eql/search/EqlSearchRequest.ts#L28-L135"
+      "specLocation": "eql/search/EqlSearchRequest.ts#L28-L142"
     },
     {
       "body": {
@@ -141273,26 +141286,14 @@
           "name": "names",
           "required": true,
           "type": {
-            "items": [
-              {
-                "kind": "instance_of",
-                "type": {
-                  "name": "IndexName",
-                  "namespace": "_types"
-                }
-              },
-              {
-                "kind": "array_of",
-                "value": {
-                  "kind": "instance_of",
-                  "type": {
-                    "name": "IndexName",
-                    "namespace": "_types"
-                  }
-                }
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "IndexName",
+                "namespace": "_types"
               }
-            ],
-            "kind": "union_of"
+            }
           }
         },
         {
