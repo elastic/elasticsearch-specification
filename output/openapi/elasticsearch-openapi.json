@@ -77790,6 +77790,9 @@
             "additionalProperties": {
               "type": "object"
             }
+          },
+          "ml": {
+            "$ref": "#/components/schemas/nodes.info:NodeInfoXpackMl"
           }
         },
         "required": [
@@ -77861,11 +77864,7 @@
           "token": {
             "$ref": "#/components/schemas/nodes.info:NodeInfoXpackSecurityAuthcToken"
           }
-        },
-        "required": [
-          "realms",
-          "token"
-        ]
+        }
       },
       "nodes.info:NodeInfoXpackSecurityAuthcRealms": {
         "type": "object",
@@ -77914,6 +77913,14 @@
         "required": [
           "enabled"
         ]
+      },
+      "nodes.info:NodeInfoXpackMl": {
+        "type": "object",
+        "properties": {
+          "use_auto_machine_memory_percent": {
+            "type": "boolean"
+          }
+        }
       },
       "nodes.info:NodeInfoScript": {
         "type": "object",
