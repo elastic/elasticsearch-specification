@@ -17,8 +17,8 @@
  * under the License.
  */
 
-import { Indices } from '@_types/common'
+import { IndexName } from '@_types/common'
 
 export class Response {
-  body: { cluster: string[]; index: Indices }
+  body: { cluster: string[]; index: IndexName[] }
 }
