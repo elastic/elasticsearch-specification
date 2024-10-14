@@ -85688,6 +85688,88 @@
       "specLocation": "_types/analysis/nori-plugin.ts#L28-L34"
     },
     {
+      "kind": "enum",
+      "members": [
+        {
+          "description": "Indexes a single bit per dimension. Useful for very high-dimensional vectors or models that specifically support\nbit vectors.\n\nNOTE: when using `bit`, the number of dimensions must be a multiple of `8` and must represent the number of bits.",
+          "name": "bit"
+        },
+        {
+          "description": "Indexes a 1-byte integer value per dimension.",
+          "name": "byte"
+        },
+        {
+          "description": "Indexes a 4-byte floating-point value per dimension.",
+          "name": "float"
+        }
+      ],
+      "name": {
+        "name": "DenseVectorElementType",
+        "namespace": "_types.mapping"
+      },
+      "specLocation": "_types/mapping/DenseVectorProperty.ts#L64-L80"
+    },
+    {
+      "kind": "enum",
+      "members": [
+        {
+          "description": "This utilizes a brute-force search algorithm for exact kNN search. This supports all `element_type` values.",
+          "name": "flat"
+        },
+        {
+          "description": "This utilizes the HNSW algorithm for scalable approximate kNN search. This supports all `element_type` values.",
+          "name": "hnsw"
+        },
+        {
+          "description": "This utilizes a brute-force search algorithm in addition to automatically half-byte scalar quantization.\nOnly supports `element_type` of `float`.",
+          "name": "int4_flat"
+        },
+        {
+          "description": "This utilizes the HNSW algorithm in addition to automatically scalar quantization for scalable approximate kNN\nsearch with `element_type` of `float`.\n\nThis can reduce the memory footprint by 8x at the cost of some accuracy.",
+          "name": "int4_hnsw"
+        },
+        {
+          "description": "This utilizes a brute-force search algorithm in addition to automatically scalar quantization. Only supports\n`element_type` of `float`.",
+          "name": "int8_flat"
+        },
+        {
+          "description": "The default index type for `float` vectors. This utilizes the HNSW algorithm in addition to automatically scalar\nquantization for scalable approximate kNN search with `element_type` of `float`.\n\nThis can reduce the memory footprint by 4x at the cost of some accuracy.",
+          "name": "int8_hnsw"
+        }
+      ],
+      "name": {
+        "name": "DenseVectorIndexOptionsType",
+        "namespace": "_types.mapping"
+      },
+      "specLocation": "_types/mapping/DenseVectorProperty.ts#L164-L197"
+    },
+    {
+      "kind": "enum",
+      "members": [
+        {
+          "description": "Computes the cosine similarity. During indexing Elasticsearch automatically normalizes vectors with `cosine`\nsimilarity to unit length. This allows to internally use `dot_product` for computing similarity, which is more\nefficient. Original un-normalized vectors can be still accessed through scripts.\n\nThe document `_score` is computed as `(1 + cosine(query, vector)) / 2`.\n\nThe `cosine` similarity does not allow vectors with zero magnitude, since cosine is not defined in this case.",
+          "name": "cosine"
+        },
+        {
+          "description": "Computes the dot product of two unit vectors. This option provides an optimized way to perform cosine similarity.\nThe constraints and computed score are defined by `element_type`.\n\nWhen `element_type` is `float`, all vectors must be unit length, including both document and query vectors.\n\nThe document `_score` is computed as `(1 + dot_product(query, vector)) / 2`.\n\nWhen `element_type` is `byte`, all vectors must have the same length including both document and query vectors or\nresults will be inaccurate.\n\nThe document `_score` is computed as `0.5 + (dot_product(query, vector) / (32768 * dims))` where `dims` is the\nnumber of dimensions per vector.",
+          "name": "dot_product"
+        },
+        {
+          "description": "Computes similarity based on the `L2` distance (also known as Euclidean distance) between the vectors.\n\nThe document `_score` is computed as `1 / (1 + l2_norm(query, vector)^2)`.\n\nFor `bit` vectors, instead of using `l2_norm`, the `hamming` distance between the vectors is used.\n\nThe `_score` transformation is `(numBits - hamming(a, b)) / numBits`.",
+          "name": "l2_norm"
+        },
+        {
+          "description": "Computes the maximum inner product of two vectors. This is similar to `dot_product`, but doesn't require vectors\nto be normalized. This means that each vector’s magnitude can significantly effect the score.\n\nThe document `_score` is adjusted to prevent negative values. For `max_inner_product` values `< 0`, the `_score`\nis `1 / (1 + -1 * max_inner_product(query, vector))`. For non-negative `max_inner_product` results the `_score`\nis calculated `max_inner_product(query, vector) + 1`.",
+          "name": "max_inner_product"
+        }
+      ],
+      "name": {
+        "name": "DenseVectorSimilarity",
+        "namespace": "_types.mapping"
+      },
+      "specLocation": "_types/mapping/DenseVectorProperty.ts#L82-L127"
+    },
+    {
       "esQuirk": "This is a boolean that evolved into an enum. Boolean values should be accepted on reading, and\ntrue and false must be serialized as JSON booleans, or it may break Kibana (see elasticsearch-java#139)",
       "kind": "enum",
       "members": [
@@ -87969,7 +88051,7 @@
           }
         }
       ],
-      "specLocation": "_types/mapping/complex.ts#L61-L66"
+      "specLocation": "_types/mapping/complex.ts#L51-L56"
     },
     {
       "inherits": {
@@ -87993,17 +88075,7 @@
           }
         },
         {
-          "name": "element_type",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "_builtins"
-            }
-          }
-        },
-        {
+          "description": "Number of vector dimensions. Can't exceed `4096`. If `dims` is not specified, it will be set to the length of\nthe first vector added to the field.",
           "name": "dims",
           "required": false,
           "type": {
@@ -88015,19 +88087,23 @@
           }
         },
         {
-          "name": "similarity",
+          "description": "The data type used to encode vectors. The supported data types are `float` (default), `byte`, and `bit`.",
+          "name": "element_type",
           "required": false,
+          "serverDefault": "float",
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
-              "namespace": "_builtins"
+              "name": "DenseVectorElementType",
+              "namespace": "_types.mapping"
             }
           }
         },
         {
+          "description": "If `true`, you can search this field using the kNN search API.",
           "name": "index",
           "required": false,
+          "serverDefault": true,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -88037,6 +88113,7 @@
           }
         },
         {
+          "description": "An optional section that configures the kNN indexing algorithm. The HNSW algorithm has two internal parameters\nthat influence how the data structure is built. These can be adjusted to improve the accuracy of results, at the\nexpense of slower indexing speed.\n\nThis parameter can only be specified when `index` is `true`.",
           "name": "index_options",
           "required": false,
           "type": {
@@ -88046,9 +88123,21 @@
               "namespace": "_types.mapping"
             }
           }
+        },
+        {
+          "description": "The vector similarity metric to use in kNN search.\n\nDocuments are ranked by their vector field's similarity to the query vector. The `_score` of each document will\nbe derived from the similarity, in a way that ensures scores are positive and that a larger score corresponds\nto a higher ranking.\n\nDefaults to `l2_norm` when `element_type` is `bit` otherwise defaults to `cosine`.\n\n`bit` vectors only support `l2_norm` as their similarity metric.\n\nThis parameter can only be specified when `index` is `true`.",
+          "name": "similarity",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "DenseVectorSimilarity",
+              "namespace": "_types.mapping"
+            }
+          }
         }
       ],
-      "specLocation": "_types/mapping/complex.ts#L52-L59"
+      "specLocation": "_types/mapping/DenseVectorProperty.ts#L23-L62"
     },
     {
       "kind": "interface",
@@ -88058,39 +88147,7 @@
       },
       "properties": [
         {
-          "name": "type",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "_builtins"
-            }
-          }
-        },
-        {
-          "name": "m",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "integer",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "name": "ef_construction",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "integer",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
+          "description": "The confidence interval to use when quantizing the vectors. Can be any value between and including `0.90` and\n`1.0` or exactly `0`. When the value is `0`, this indicates that dynamic quantiles should be calculated for\noptimized quantization. When between `0.90` and `1.0`, this value restricts the values used when calculating\nthe quantization thresholds.\n\nFor example, a value of `0.95` will only use the middle `95%` of the values when calculating the quantization\nthresholds (e.g. the highest and lowest `2.5%` of values will be ignored).\n\nDefaults to `1/(dims + 1)` for `int8` quantized vectors and `0` for `int4` for dynamic quantile calculation.\n\nOnly applicable to `int8_hnsw`, `int4_hnsw`, `int8_flat`, and `int4_flat` index types.",
           "name": "confidence_interval",
           "required": false,
           "type": {
@@ -88100,9 +88157,47 @@
               "namespace": "_types"
             }
           }
+        },
+        {
+          "description": "The number of candidates to track while assembling the list of nearest neighbors for each new node.\n\nOnly applicable to `hnsw`, `int8_hnsw`, and `int4_hnsw` index types.",
+          "name": "ef_construction",
+          "required": false,
+          "serverDefault": 100,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "The number of neighbors each node will be connected to in the HNSW graph.\n\nOnly applicable to `hnsw`, `int8_hnsw`, and `int4_hnsw` index types.",
+          "name": "m",
+          "required": false,
+          "serverDefault": 16,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "The type of kNN algorithm to use.",
+          "name": "type",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "DenseVectorIndexOptionsType",
+              "namespace": "_types.mapping"
+            }
+          }
         }
       ],
-      "specLocation": "_types/mapping/DenseVectorIndexOptions.ts#L22-L27"
+      "specLocation": "_types/mapping/DenseVectorProperty.ts#L129-L162"
     },
     {
       "inherits": {
@@ -88225,7 +88320,7 @@
           }
         }
       ],
-      "specLocation": "_types/mapping/complex.ts#L26-L37"
+      "specLocation": "_types/mapping/complex.ts#L25-L36"
     },
     {
       "inherits": {
@@ -88282,7 +88377,7 @@
           }
         }
       ],
-      "specLocation": "_types/mapping/complex.ts#L39-L44"
+      "specLocation": "_types/mapping/complex.ts#L38-L43"
     },
     {
       "inherits": {
@@ -88328,7 +88423,7 @@
           }
         }
       ],
-      "specLocation": "_types/mapping/complex.ts#L46-L50"
+      "specLocation": "_types/mapping/complex.ts#L45-L49"
     },
     {
       "kind": "interface",

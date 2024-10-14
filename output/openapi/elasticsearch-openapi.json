@@ -59494,20 +59494,22 @@
                   "dense_vector"
                 ]
               },
-              "element_type": {
-                "type": "string"
-              },
               "dims": {
+                "description": "Number of vector dimensions. Can't exceed `4096`. If `dims` is not specified, it will be set to the length of\nthe first vector added to the field.",
                 "type": "number"
               },
-              "similarity": {
-                "type": "string"
+              "element_type": {
+                "$ref": "#/components/schemas/_types.mapping:DenseVectorElementType"
               },
               "index": {
+                "description": "If `true`, you can search this field using the kNN search API.",
                 "type": "boolean"
               },
               "index_options": {
                 "$ref": "#/components/schemas/_types.mapping:DenseVectorIndexOptions"
+              },
+              "similarity": {
+                "$ref": "#/components/schemas/_types.mapping:DenseVectorSimilarity"
               }
             },
             "required": [
@@ -59516,24 +59518,55 @@
           }
         ]
       },
+      "_types.mapping:DenseVectorElementType": {
+        "type": "string",
+        "enum": [
+          "bit",
+          "byte",
+          "float"
+        ]
+      },
       "_types.mapping:DenseVectorIndexOptions": {
         "type": "object",
         "properties": {
-          "type": {
-            "type": "string"
-          },
-          "m": {
+          "confidence_interval": {
+            "description": "The confidence interval to use when quantizing the vectors. Can be any value between and including `0.90` and\n`1.0` or exactly `0`. When the value is `0`, this indicates that dynamic quantiles should be calculated for\noptimized quantization. When between `0.90` and `1.0`, this value restricts the values used when calculating\nthe quantization thresholds.\n\nFor example, a value of `0.95` will only use the middle `95%` of the values when calculating the quantization\nthresholds (e.g. the highest and lowest `2.5%` of values will be ignored).\n\nDefaults to `1/(dims + 1)` for `int8` quantized vectors and `0` for `int4` for dynamic quantile calculation.\n\nOnly applicable to `int8_hnsw`, `int4_hnsw`, `int8_flat`, and `int4_flat` index types.",
             "type": "number"
           },
           "ef_construction": {
+            "description": "The number of candidates to track while assembling the list of nearest neighbors for each new node.\n\nOnly applicable to `hnsw`, `int8_hnsw`, and `int4_hnsw` index types.",
             "type": "number"
           },
-          "confidence_interval": {
+          "m": {
+            "description": "The number of neighbors each node will be connected to in the HNSW graph.\n\nOnly applicable to `hnsw`, `int8_hnsw`, and `int4_hnsw` index types.",
             "type": "number"
+          },
+          "type": {
+            "$ref": "#/components/schemas/_types.mapping:DenseVectorIndexOptionsType"
           }
         },
         "required": [
           "type"
+        ]
+      },
+      "_types.mapping:DenseVectorIndexOptionsType": {
+        "type": "string",
+        "enum": [
+          "flat",
+          "hnsw",
+          "int4_flat",
+          "int4_hnsw",
+          "int8_flat",
+          "int8_hnsw"
+        ]
+      },
+      "_types.mapping:DenseVectorSimilarity": {
+        "type": "string",
+        "enum": [
+          "cosine",
+          "dot_product",
+          "l2_norm",
+          "max_inner_product"
         ]
       },
       "_types.mapping:FlattenedProperty": {
