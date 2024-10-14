@@ -36,7 +36,6 @@ import {
 import { integer } from '@_types/Numeric'
 import {
   AggregateMetricDoubleProperty,
-  DenseVectorProperty,
   FlattenedProperty,
   NestedProperty,
   ObjectProperty
@@ -69,6 +68,7 @@ import {
   VersionProperty,
   WildcardProperty
 } from './core'
+import { DenseVectorProperty } from './DenseVectorProperty'
 import { DynamicMapping } from './dynamic-template'
 import {
   CompletionProperty,
