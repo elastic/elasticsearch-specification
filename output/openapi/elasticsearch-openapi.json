@@ -28621,7 +28621,10 @@
                       }
                     },
                     "index": {
-                      "$ref": "#/components/schemas/_types:Indices"
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/_types:IndexName"
+                      }
                     }
                   },
                   "required": [
@@ -81311,7 +81314,11 @@
             "$ref": "#/components/schemas/security._types:FieldSecurity"
           },
           "names": {
-            "$ref": "#/components/schemas/_types:Indices"
+            "description": "A list of indices (or index name patterns) to which the permissions in this entry apply.",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/_types:IndexName"
+            }
           },
           "privileges": {
             "description": "The index level privileges that owners of the role have on the specified indices.",
@@ -82034,7 +82041,11 @@
             }
           },
           "names": {
-            "$ref": "#/components/schemas/_types:Indices"
+            "description": "A list of indices (or index name patterns) to which the permissions in this entry apply.",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/_types:IndexName"
+            }
           },
           "privileges": {
             "description": "The index level privileges that owners of the role have on the specified indices.",
@@ -82255,7 +82266,11 @@
             "$ref": "#/components/schemas/security._types:FieldSecurity"
           },
           "names": {
-            "$ref": "#/components/schemas/_types:Indices"
+            "description": "A list of indices (or index name patterns) to which the permissions in this entry apply.",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/_types:IndexName"
+            }
           },
           "privileges": {
             "description": "The index level privileges that owners of the role have on the specified indices.",
