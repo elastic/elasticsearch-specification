@@ -22,11 +22,43 @@ import { PropertyBase } from './Property'
 
 export class DenseVectorProperty extends PropertyBase {
   type: 'dense_vector'
-  element_type?: DenseVectorElementType
+  /**
+   * Number of vector dimensions. Can't exceed `4096`. If `dims` is not specified, it will be set to the length of
+   * the first vector added to the field.
+   */
   dims?: integer
-  similarity?: DenseVectorSimilarity
+  /**
+   * The data type used to encode vectors. The supported data types are `float` (default), `byte`, and `bit`.
+   * @server_default float
+   */
+  element_type?: DenseVectorElementType
+  /**
+   * If `true`, you can search this field using the kNN search API.
+   * @server_default true
+   */
   index?: boolean
+  /**
+   * An optional section that configures the kNN indexing algorithm. The HNSW algorithm has two internal parameters
+   * that influence how the data structure is built. These can be adjusted to improve the accuracy of results, at the
+   * expense of slower indexing speed.
+   *
+   * This parameter can only be specified when `index` is `true`.
+   */
   index_options?: DenseVectorIndexOptions
+  /**
+   * The vector similarity metric to use in kNN search.
+   *
+   * Documents are ranked by their vector field's similarity to the query vector. The `_score` of each document will
+   * be derived from the similarity, in a way that ensures scores are positive and that a larger score corresponds
+   * to a higher ranking.
+   *
+   * Defaults to `l2_norm` when `element_type` is `bit` otherwise defaults to `cosine`.
+   *
+   * `bit` vectors only support `l2_norm` as their similarity metric.
+   *
+   * This parameter can only be specified when `index` is `true`.
+   */
+  similarity?: DenseVectorSimilarity
 }
 
 export enum DenseVectorElementType {
@@ -95,10 +127,38 @@ export enum DenseVectorSimilarity {
 }
 
 export class DenseVectorIndexOptions {
-  type: DenseVectorIndexOptionsType
-  m?: integer
-  ef_construction?: integer
+  /**
+   * The confidence interval to use when quantizing the vectors. Can be any value between and including `0.90` and
+   * `1.0` or exactly `0`. When the value is `0`, this indicates that dynamic quantiles should be calculated for
+   * optimized quantization. When between `0.90` and `1.0`, this value restricts the values used when calculating
+   * the quantization thresholds.
+   *
+   * For example, a value of `0.95` will only use the middle `95%` of the values when calculating the quantization
+   * thresholds (e.g. the highest and lowest `2.5%` of values will be ignored).
+   *
+   * Defaults to `1/(dims + 1)` for `int8` quantized vectors and `0` for `int4` for dynamic quantile calculation.
+   *
+   * Only applicable to `int8_hnsw`, `int4_hnsw`, `int8_flat`, and `int4_flat` index types.
+   */
   confidence_interval?: float
+  /**
+   * The number of candidates to track while assembling the list of nearest neighbors for each new node.
+   *
+   * Only applicable to `hnsw`, `int8_hnsw`, and `int4_hnsw` index types.
+   * @server_default 100
+   */
+  ef_construction?: integer
+  /**
+   * The number of neighbors each node will be connected to in the HNSW graph.
+   *
+   * Only applicable to `hnsw`, `int8_hnsw`, and `int4_hnsw` index types.
+   * @server_default 16
+   */
+  m?: integer
+  /**
+   * The type of kNN algorithm to use.
+   */
+  type: DenseVectorIndexOptionsType
 }
 
 export enum DenseVectorIndexOptionsType {

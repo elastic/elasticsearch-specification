@@ -5407,21 +5407,27 @@ export interface MappingDateRangeProperty extends MappingRangePropertyBase {
   type: 'date_range'
 }
 
+export type MappingDenseVectorElementType = 'bit' | 'byte' | 'float'
+
 export interface MappingDenseVectorIndexOptions {
-  type: string
-  m?: integer
-  ef_construction?: integer
   confidence_interval?: float
+  ef_construction?: integer
+  m?: integer
+  type: MappingDenseVectorIndexOptionsType
 }
+
+export type MappingDenseVectorIndexOptionsType = 'flat' | 'hnsw' | 'int4_flat' | 'int4_hnsw' | 'int8_flat' | 'int8_hnsw'
 
 export interface MappingDenseVectorProperty extends MappingPropertyBase {
   type: 'dense_vector'
-  element_type?: string
   dims?: integer
-  similarity?: string
+  element_type?: MappingDenseVectorElementType
   index?: boolean
   index_options?: MappingDenseVectorIndexOptions
+  similarity?: MappingDenseVectorSimilarity
 }
+
+export type MappingDenseVectorSimilarity = 'cosine' | 'dot_product' | 'l2_norm' | 'max_inner_product'
 
 export interface MappingDocValuesPropertyBase extends MappingCorePropertyBase {
   doc_values?: boolean
