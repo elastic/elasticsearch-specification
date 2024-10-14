@@ -45745,6 +45745,9 @@
           "circle": {
             "$ref": "#/components/schemas/ingest._types:CircleProcessor"
           },
+          "community_id": {
+            "$ref": "#/components/schemas/ingest._types:CommunityIDProcessor"
+          },
           "convert": {
             "$ref": "#/components/schemas/ingest._types:ConvertProcessor"
           },
@@ -45771,6 +45774,9 @@
           },
           "fail": {
             "$ref": "#/components/schemas/ingest._types:FailProcessor"
+          },
+          "fingerprint": {
+            "$ref": "#/components/schemas/ingest._types:FingerprintProcessor"
           },
           "foreach": {
             "$ref": "#/components/schemas/ingest._types:ForeachProcessor"
@@ -45805,11 +45811,17 @@
           "lowercase": {
             "$ref": "#/components/schemas/ingest._types:LowercaseProcessor"
           },
+          "network_direction": {
+            "$ref": "#/components/schemas/ingest._types:NetworkDirectionProcessor"
+          },
           "pipeline": {
             "$ref": "#/components/schemas/ingest._types:PipelineProcessor"
           },
           "redact": {
             "$ref": "#/components/schemas/ingest._types:RedactProcessor"
+          },
+          "registered_domain": {
+            "$ref": "#/components/schemas/ingest._types:RegisteredDomainProcessor"
           },
           "remove": {
             "$ref": "#/components/schemas/ingest._types:RemoveProcessor"
@@ -46035,6 +46047,53 @@
           "shape"
         ]
       },
+      "ingest._types:CommunityIDProcessor": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/ingest._types:ProcessorBase"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "source_ip": {
+                "$ref": "#/components/schemas/_types:Field"
+              },
+              "source_port": {
+                "$ref": "#/components/schemas/_types:Field"
+              },
+              "destination_ip": {
+                "$ref": "#/components/schemas/_types:Field"
+              },
+              "destination_port": {
+                "$ref": "#/components/schemas/_types:Field"
+              },
+              "iana_number": {
+                "$ref": "#/components/schemas/_types:Field"
+              },
+              "icmp_type": {
+                "$ref": "#/components/schemas/_types:Field"
+              },
+              "icmp_code": {
+                "$ref": "#/components/schemas/_types:Field"
+              },
+              "transport": {
+                "$ref": "#/components/schemas/_types:Field"
+              },
+              "target_field": {
+                "$ref": "#/components/schemas/_types:Field"
+              },
+              "seed": {
+                "description": "Seed for the community ID hash. Must be between 0 and 65535 (inclusive). The\nseed can prevent hash collisions between network domains, such as a staging\nand production network that use the same addressing scheme.",
+                "type": "number"
+              },
+              "ignore_missing": {
+                "description": "If true and any required fields are missing, the processor quietly exits\nwithout modifying the document.",
+                "type": "boolean"
+              }
+            }
+          }
+        ]
+      },
       "ingest._types:ConvertProcessor": {
         "allOf": [
           {
@@ -46069,10 +46128,11 @@
         "enum": [
           "integer",
           "long",
-          "float",
           "double",
-          "string",
+          "float",
           "boolean",
+          "ip",
+          "string",
           "auto"
         ]
       },
@@ -46145,6 +46205,10 @@
               },
               "timezone": {
                 "description": "The timezone to use when parsing the date.\nSupports template snippets.",
+                "type": "string"
+              },
+              "output_format": {
+                "description": "The format to use when writing the date to target_field. Must be a valid\njava time pattern.",
                 "type": "string"
               }
             },
@@ -46339,6 +46403,48 @@
           }
         ]
       },
+      "ingest._types:FingerprintProcessor": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/ingest._types:ProcessorBase"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "fields": {
+                "$ref": "#/components/schemas/_types:Fields"
+              },
+              "target_field": {
+                "$ref": "#/components/schemas/_types:Field"
+              },
+              "salt": {
+                "description": "Salt value for the hash function.",
+                "type": "string"
+              },
+              "method": {
+                "$ref": "#/components/schemas/ingest._types:FingerprintDigest"
+              },
+              "ignore_missing": {
+                "description": "If true, the processor ignores any missing fields. If all fields are\nmissing, the processor silently exits without modifying the document.",
+                "type": "boolean"
+              }
+            },
+            "required": [
+              "fields"
+            ]
+          }
+        ]
+      },
+      "ingest._types:FingerprintDigest": {
+        "type": "string",
+        "enum": [
+          "MD5",
+          "SHA-1",
+          "SHA-256",
+          "SHA-512",
+          "MurmurHash3"
+        ]
+      },
       "ingest._types:ForeachProcessor": {
         "allOf": [
           {
@@ -46477,6 +46583,10 @@
           {
             "type": "object",
             "properties": {
+              "ecs_compatibility": {
+                "description": "Must be disabled or v1. If v1, the processor uses patterns with Elastic\nCommon Schema (ECS) field names.",
+                "type": "string"
+              },
               "field": {
                 "$ref": "#/components/schemas/_types:Field"
               },
@@ -46807,6 +46917,41 @@
           }
         ]
       },
+      "ingest._types:NetworkDirectionProcessor": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/ingest._types:ProcessorBase"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "source_ip": {
+                "$ref": "#/components/schemas/_types:Field"
+              },
+              "destination_ip": {
+                "$ref": "#/components/schemas/_types:Field"
+              },
+              "target_field": {
+                "$ref": "#/components/schemas/_types:Field"
+              },
+              "internal_networks": {
+                "description": "List of internal networks. Supports IPv4 and IPv6 addresses and ranges in\nCIDR notation. Also supports the named ranges listed below. These may be\nconstructed with template snippets. Must specify only one of\ninternal_networks or internal_networks_field.",
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "internal_networks_field": {
+                "$ref": "#/components/schemas/_types:Field"
+              },
+              "ignore_missing": {
+                "description": "If true and any required fields are missing, the processor quietly exits\nwithout modifying the document.",
+                "type": "boolean"
+              }
+            }
+          }
+        ]
+      },
       "ingest._types:PipelineProcessor": {
         "allOf": [
           {
@@ -46877,6 +47022,31 @@
             "required": [
               "field",
               "patterns"
+            ]
+          }
+        ]
+      },
+      "ingest._types:RegisteredDomainProcessor": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/ingest._types:ProcessorBase"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "field": {
+                "$ref": "#/components/schemas/_types:Field"
+              },
+              "target_field": {
+                "$ref": "#/components/schemas/_types:Field"
+              },
+              "ignore_missing": {
+                "description": "If true and any required fields are missing, the processor quietly exits\nwithout modifying the document.",
+                "type": "boolean"
+              }
+            },
+            "required": [
+              "field"
             ]
           }
         ]
