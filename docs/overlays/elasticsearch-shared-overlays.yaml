@@ -143,19 +143,19 @@ actions:
           x-displayName: Machine learning anomaly detection
           # description:
           externalDocs:
-            url: https://www.elastic.co/guide/en/machine-learning/master/ml-ad-finding-anomalies.html
+            url: https://www.elastic.co/guide/en/machine-learning/current/ml-ad-finding-anomalies.html
             description: Finding anomalies
         - name: ml data frame
           x-displayName: Machine learning data frame analytics
           # description:
           externalDocs:
-            url: https://www.elastic.co/guide/en/machine-learning/master/ml-dfa-overview.html
+            url: https://www.elastic.co/guide/en/machine-learning/current/ml-dfa-overview.html
             description: Data frame analytics overview
         - name: ml trained model
           x-displayName: Machine learning trained model
           # description:
           externalDocs:
-            url: https://www.elastic.co/guide/en/machine-learning/master/ml-nlp-overview.html
+            url: https://www.elastic.co/guide/en/machine-learning/current/ml-nlp-overview.html
             description: Natural language processing overview
         - name: migration
           x-displayName: Migration
@@ -254,7 +254,7 @@ actions:
       description: >
         Character filters that are used to preprocess characters before they are passed to the tokenizer.
       externalDocs:
-        url: https://www.elastic.co/guide/en/elasticsearch/reference/master/analysis-charfilters.html
+        url: https://www.elastic.co/guide/en/elasticsearch/reference/current/analysis-charfilters.html
         description: Character filters reference
   - target: "$.components['schemas']['_types.analysis:Tokenizer'].oneOf"
     description: Remove existing oneOf definition for tokenizer
@@ -266,7 +266,7 @@ actions:
       description: >
         A tokenizer to use to convert text into tokens.
       externalDocs:
-        url: https://www.elastic.co/guide/en/elasticsearch/reference/master/analysis-tokenizers.html
+        url: https://www.elastic.co/guide/en/elasticsearch/reference/current/analysis-tokenizers.html
         description: Tokenizer reference
   - target: "$.components['schemas']['_types.analysis:TokenFilter'].oneOf"
     description: Remove existing oneOf definition for tokenfilter
@@ -278,7 +278,7 @@ actions:
       description: >
         Token filters that are applied after the tokenizer.
       externalDocs:
-        url: https://www.elastic.co/guide/en/elasticsearch/reference/master/analysis-tokenfilters.html
+        url: https://www.elastic.co/guide/en/elasticsearch/reference/current/analysis-tokenfilters.html
         description: Token filter reference
 # Abbreviate and annotate items that are not shown in Bump.sh due to depth limits
   - target: "$.components['schemas']['ml._types:Datafeed'].properties.query"
