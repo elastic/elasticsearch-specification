@@ -4,14 +4,6 @@ info:
   title: Overlays for changes that apply to both Elasticsearch and Elasticsearch Serverless OpenAPI documents
   version: 0.0.1
 actions:
-# Add x-model to hide children of schema objects that are defined elsewhere
-  - target: "$.components['schemas']['_types.query_dsl:QueryContainer']"
-    description: Add x-model and updated externalDocs for the QueryContainer object
-    update:
-      x-model: true
-      externalDocs:
-        url: https://www.elastic.co/guide/en/elasticsearch/reference/master/query-dsl.html
-        description: Query domain specific language (DSL) reference
 # Add an alphabetically sorted list of tags
   - target: '$'
     description: Add document-level tags sorted by display name
@@ -244,6 +236,13 @@ actions:
         - name: watcher
           x-displayName: Watcher
 # Add x-model and/or abbreviate schemas that should point to other references
+  - target: "$.components['schemas']['_types.query_dsl:QueryContainer']"
+    description: Add x-model and updated externalDocs for the QueryContainer object
+    update:
+      x-model: true
+      externalDocs:
+        url: https://www.elastic.co/guide/en/elasticsearch/reference/master/query-dsl.html
+        description: Query domain specific language (DSL) reference
   - target: "$.components['schemas']['_types.analysis:CharFilter'].oneOf"
     description: Remove existing oneOf definition for CharFilter
     remove: true
@@ -280,6 +279,13 @@ actions:
       externalDocs:
         url: https://www.elastic.co/guide/en/elasticsearch/reference/master/analysis-tokenfilters.html
         description: Token filter reference
+  - target: "$.components['schemas']['security._types:RoleTemplateScript']"
+    description: Add x-model where recommended by Bump.sh
+    update:
+      x-model: true
+      externalDocs:
+        description: Templating a role query
+        url: https://www.elastic.co/guide/en/elasticsearch/reference/master/field-and-document-access-control.html#templating-role-query
 # Abbreviate and annotate items that are not shown in Bump.sh due to depth limits
   - target: "$.components['schemas']['ml._types:Datafeed'].properties.query"
     description: Remove query object from anomaly detection datafeed
