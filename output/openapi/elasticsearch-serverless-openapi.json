@@ -14,8 +14,8 @@
         "tags": [
           "search"
         ],
-        "summary": "Retrieves the results of a previously submitted async search request given its identifier",
-        "description": "If the Elasticsearch security features are enabled, access to the results of a specific async search is restricted to the user or API key that submitted it.",
+        "summary": "Get async search results",
+        "description": "Retrieve the results of a previously submitted asynchronous search request.\nIf the Elasticsearch security features are enabled, access to the results of a specific async search is restricted to the user or API key that submitted it.",
         "operationId": "async-search-get",
         "parameters": [
           {
@@ -78,8 +78,8 @@
         "tags": [
           "search"
         ],
-        "summary": "Deletes an async search by identifier",
-        "description": "If the search is still running, the search request will be cancelled.\nOtherwise, the saved search results are deleted.\nIf the Elasticsearch security features are enabled, the deletion of a specific async search is restricted to: the authenticated user that submitted the original search request; users that have the `cancel_task` cluster privilege.",
+        "summary": "Delete an async search",
+        "description": "If the asynchronous search is still running, it is cancelled.\nOtherwise, the saved search results are deleted.\nIf the Elasticsearch security features are enabled, the deletion of a specific async search is restricted to: the authenticated user that submitted the original search request; users that have the `cancel_task` cluster privilege.",
         "operationId": "async-search-delete",
         "parameters": [
           {
@@ -114,8 +114,8 @@
         "tags": [
           "search"
         ],
-        "summary": "Get async search status\n",
-        "description": "Retrieves the status of a previously submitted async search request given its identifier, without retrieving search results.\nIf the Elasticsearch security features are enabled, use of this API is restricted to the `monitoring_user` role.",
+        "summary": "Get async search status",
+        "description": "Retrieve the status of a previously submitted async search request given its identifier, without retrieving search results.\nIf the Elasticsearch security features are enabled, use of this API is restricted to the `monitoring_user` role.",
         "operationId": "async-search-status",
         "parameters": [
           {
@@ -150,8 +150,8 @@
         "tags": [
           "search"
         ],
-        "summary": "Runs a search request asynchronously",
-        "description": "When the primary sort of the results is an indexed field, shards get sorted based on minimum and maximum value that they hold for that field, hence partial results become available following the sort criteria that was requested.\nWarning: Async search does not support scroll nor search requests that only include the suggest section.\nBy default, Elasticsearch doesn’t allow you to store an async search response larger than 10Mb and an attempt to do this results in an error.\nThe maximum allowed size for a stored async search response can be set by changing the `search.max_async_search_response_size` cluster level setting.",
+        "summary": "Run an async search",
+        "description": "When the primary sort of the results is an indexed field, shards get sorted based on minimum and maximum value that they hold for that field. Partial results become available following the sort criteria that was requested.\n\nWarning: Asynchronous search does not support scroll or search requests that include only the suggest section.\n\nBy default, Elasticsearch does not allow you to store an async search response larger than 10Mb and an attempt to do this results in an error.\nThe maximum allowed size for a stored async search response can be set by changing the `search.max_async_search_response_size` cluster level setting.",
         "operationId": "async-search-submit",
         "parameters": [
           {
@@ -309,8 +309,8 @@
         "tags": [
           "search"
         ],
-        "summary": "Runs a search request asynchronously",
-        "description": "When the primary sort of the results is an indexed field, shards get sorted based on minimum and maximum value that they hold for that field, hence partial results become available following the sort criteria that was requested.\nWarning: Async search does not support scroll nor search requests that only include the suggest section.\nBy default, Elasticsearch doesn’t allow you to store an async search response larger than 10Mb and an attempt to do this results in an error.\nThe maximum allowed size for a stored async search response can be set by changing the `search.max_async_search_response_size` cluster level setting.",
+        "summary": "Run an async search",
+        "description": "When the primary sort of the results is an indexed field, shards get sorted based on minimum and maximum value that they hold for that field. Partial results become available following the sort criteria that was requested.\n\nWarning: Asynchronous search does not support scroll or search requests that include only the suggest section.\n\nBy default, Elasticsearch does not allow you to store an async search response larger than 10Mb and an attempt to do this results in an error.\nThe maximum allowed size for a stored async search response can be set by changing the `search.max_async_search_response_size` cluster level setting.",
         "operationId": "async-search-submit-1",
         "parameters": [
           {
@@ -5849,7 +5849,8 @@
         "tags": [
           "indices"
         ],
-        "summary": "Performs analysis on a text string and returns the resulting tokens",
+        "summary": "Get tokens from text analysis",
+        "description": "The analyze API performs [analysis](https://www.elastic.co/guide/en/elasticsearch/reference/current/analysis.html) on a text string and returns the resulting tokens.",
         "operationId": "indices-analyze",
         "requestBody": {
           "$ref": "#/components/requestBodies/indices.analyze"
@@ -5864,7 +5865,8 @@
         "tags": [
           "indices"
         ],
-        "summary": "Performs analysis on a text string and returns the resulting tokens",
+        "summary": "Get tokens from text analysis",
+        "description": "The analyze API performs [analysis](https://www.elastic.co/guide/en/elasticsearch/reference/current/analysis.html) on a text string and returns the resulting tokens.",
         "operationId": "indices-analyze-1",
         "requestBody": {
           "$ref": "#/components/requestBodies/indices.analyze"
@@ -5881,7 +5883,8 @@
         "tags": [
           "indices"
         ],
-        "summary": "Performs analysis on a text string and returns the resulting tokens",
+        "summary": "Get tokens from text analysis",
+        "description": "The analyze API performs [analysis](https://www.elastic.co/guide/en/elasticsearch/reference/current/analysis.html) on a text string and returns the resulting tokens.",
         "operationId": "indices-analyze-2",
         "parameters": [
           {
@@ -5901,7 +5904,8 @@
         "tags": [
           "indices"
         ],
-        "summary": "Performs analysis on a text string and returns the resulting tokens",
+        "summary": "Get tokens from text analysis",
+        "description": "The analyze API performs [analysis](https://www.elastic.co/guide/en/elasticsearch/reference/current/analysis.html) on a text string and returns the resulting tokens.",
         "operationId": "indices-analyze-3",
         "parameters": [
           {
