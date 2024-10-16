@@ -18,7 +18,7 @@
           "stability": "stable"
         }
       },
-      "description": "Deletes an async search by identifier.\nIf the search is still running, the search request will be cancelled.\nOtherwise, the saved search results are deleted.\nIf the Elasticsearch security features are enabled, the deletion of a specific async search is restricted to: the authenticated user that submitted the original search request; users that have the `cancel_task` cluster privilege.",
+      "description": "Delete an async search.\nIf the asynchronous search is still running, it is cancelled.\nOtherwise, the saved search results are deleted.\nIf the Elasticsearch security features are enabled, the deletion of a specific async search is restricted to: the authenticated user that submitted the original search request; users that have the `cancel_task` cluster privilege.",
       "docId": "async-search",
       "docTag": "search",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/async-search.html",
@@ -55,7 +55,7 @@
           "stability": "stable"
         }
       },
-      "description": "Retrieves the results of a previously submitted async search request given its identifier.\nIf the Elasticsearch security features are enabled, access to the results of a specific async search is restricted to the user or API key that submitted it.",
+      "description": "Get async search results.\nRetrieve the results of a previously submitted asynchronous search request.\nIf the Elasticsearch security features are enabled, access to the results of a specific async search is restricted to the user or API key that submitted it.",
       "docId": "async-search",
       "docTag": "search",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/async-search.html",
@@ -92,7 +92,7 @@
           "stability": "stable"
         }
       },
-      "description": "Get async search status\nRetrieves the status of a previously submitted async search request given its identifier, without retrieving search results.\nIf the Elasticsearch security features are enabled, use of this API is restricted to the `monitoring_user` role.",
+      "description": "Get async search status.\nRetrieve the status of a previously submitted async search request given its identifier, without retrieving search results.\nIf the Elasticsearch security features are enabled, use of this API is restricted to the `monitoring_user` role.",
       "docId": "async-search",
       "docTag": "search",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/async-search.html",
@@ -129,7 +129,7 @@
           "stability": "stable"
         }
       },
-      "description": "Runs a search request asynchronously.\nWhen the primary sort of the results is an indexed field, shards get sorted based on minimum and maximum value that they hold for that field, hence partial results become available following the sort criteria that was requested.\nWarning: Async search does not support scroll nor search requests that only include the suggest section.\nBy default, Elasticsearch doesn’t allow you to store an async search response larger than 10Mb and an attempt to do this results in an error.\nThe maximum allowed size for a stored async search response can be set by changing the `search.max_async_search_response_size` cluster level setting.",
+      "description": "Run an async search.\nWhen the primary sort of the results is an indexed field, shards get sorted based on minimum and maximum value that they hold for that field. Partial results become available following the sort criteria that was requested.\n\nWarning: Asynchronous search does not support scroll or search requests that include only the suggest section.\n\nBy default, Elasticsearch does not allow you to store an async search response larger than 10Mb and an attempt to do this results in an error.\nThe maximum allowed size for a stored async search response can be set by changing the `search.max_async_search_response_size` cluster level setting.",
       "docId": "async-search",
       "docTag": "search",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/async-search.html",
@@ -2819,7 +2819,7 @@
           "stability": "stable"
         }
       },
-      "description": "Performs analysis on a text string and returns the resulting tokens.",
+      "description": "Get tokens from text analysis.\nThe analyze API performs [analysis](https://www.elastic.co/guide/en/elasticsearch/reference/current/analysis.html) on a text string and returns the resulting tokens.",
       "docId": "indices-analyze",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/indices-analyze.html",
       "name": "indices.analyze",
@@ -9884,7 +9884,7 @@
       "body": {
         "kind": "no_body"
       },
-      "description": "Deletes an async search by identifier.\nIf the search is still running, the search request will be cancelled.\nOtherwise, the saved search results are deleted.\nIf the Elasticsearch security features are enabled, the deletion of a specific async search is restricted to: the authenticated user that submitted the original search request; users that have the `cancel_task` cluster privilege.",
+      "description": "Delete an async search.\nIf the asynchronous search is still running, it is cancelled.\nOtherwise, the saved search results are deleted.\nIf the Elasticsearch security features are enabled, the deletion of a specific async search is restricted to: the authenticated user that submitted the original search request; users that have the `cancel_task` cluster privilege.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -9938,7 +9938,7 @@
       "body": {
         "kind": "no_body"
       },
-      "description": "Retrieves the results of a previously submitted async search request given its identifier.\nIf the Elasticsearch security features are enabled, access to the results of a specific async search is restricted to the user or API key that submitted it.",
+      "description": "Get async search results.\nRetrieve the results of a previously submitted asynchronous search request.\nIf the Elasticsearch security features are enabled, access to the results of a specific async search is restricted to the user or API key that submitted it.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -10002,7 +10002,7 @@
           }
         }
       ],
-      "specLocation": "async_search/get/AsyncSearchGetRequest.ts#L24-L55"
+      "specLocation": "async_search/get/AsyncSearchGetRequest.ts#L24-L56"
     },
     {
       "body": {
@@ -10044,7 +10044,7 @@
       "body": {
         "kind": "no_body"
       },
-      "description": "Get async search status\nRetrieves the status of a previously submitted async search request given its identifier, without retrieving search results.\nIf the Elasticsearch security features are enabled, use of this API is restricted to the `monitoring_user` role.",
+      "description": "Get async search status.\nRetrieve the status of a previously submitted async search request given its identifier, without retrieving search results.\nIf the Elasticsearch security features are enabled, use of this API is restricted to the `monitoring_user` role.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -10573,7 +10573,7 @@
           }
         ]
       },
-      "description": "Runs a search request asynchronously.\nWhen the primary sort of the results is an indexed field, shards get sorted based on minimum and maximum value that they hold for that field, hence partial results become available following the sort criteria that was requested.\nWarning: Async search does not support scroll nor search requests that only include the suggest section.\nBy default, Elasticsearch doesn’t allow you to store an async search response larger than 10Mb and an attempt to do this results in an error.\nThe maximum allowed size for a stored async search response can be set by changing the `search.max_async_search_response_size` cluster level setting.",
+      "description": "Run an async search.\nWhen the primary sort of the results is an indexed field, shards get sorted based on minimum and maximum value that they hold for that field. Partial results become available following the sort criteria that was requested.\n\nWarning: Asynchronous search does not support scroll or search requests that include only the suggest section.\n\nBy default, Elasticsearch does not allow you to store an async search response larger than 10Mb and an attempt to do this results in an error.\nThe maximum allowed size for a stored async search response can be set by changing the `search.max_async_search_response_size` cluster level setting.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -11175,7 +11175,7 @@
           }
         }
       ],
-      "specLocation": "async_search/submit/AsyncSearchSubmitRequest.ts#L55-L287"
+      "specLocation": "async_search/submit/AsyncSearchSubmitRequest.ts#L55-L289"
     },
     {
       "body": {
@@ -19862,7 +19862,7 @@
           }
         ]
       },
-      "description": "Performs analysis on a text string and returns the resulting tokens.",
+      "description": "Get tokens from text analysis.\nThe analyze API performs [analysis](https://www.elastic.co/guide/en/elasticsearch/reference/current/analysis.html) on a text string and returns the resulting tokens.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -19891,7 +19891,7 @@
         }
       ],
       "query": [],
-      "specLocation": "indices/analyze/IndicesAnalyzeRequest.ts#L27-L92"
+      "specLocation": "indices/analyze/IndicesAnalyzeRequest.ts#L27-L93"
     },
     {
       "body": {
