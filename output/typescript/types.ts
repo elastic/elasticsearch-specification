@@ -12795,6 +12795,20 @@ export interface IngestCircleProcessor extends IngestProcessorBase {
   target_field?: Field
 }
 
+export interface IngestCommunityIDProcessor extends IngestProcessorBase {
+  source_ip?: Field
+  source_port?: Field
+  destination_ip?: Field
+  destination_port?: Field
+  iana_number?: Field
+  icmp_type?: Field
+  icmp_code?: Field
+  transport?: Field
+  target_field?: Field
+  seed?: integer
+  ignore_missing?: boolean
+}
+
 export interface IngestConvertProcessor extends IngestProcessorBase {
   field: Field
   ignore_missing?: boolean
@@ -12802,7 +12816,7 @@ export interface IngestConvertProcessor extends IngestProcessorBase {
   type: IngestConvertType
 }
 
-export type IngestConvertType = 'integer' | 'long' | 'float' | 'double' | 'string' | 'boolean' | 'auto'
+export type IngestConvertType = 'integer' | 'long' | 'double' | 'float' | 'boolean' | 'ip' | 'string' | 'auto'
 
 export interface IngestCsvProcessor extends IngestProcessorBase {
   empty_value?: any
@@ -12835,6 +12849,7 @@ export interface IngestDateProcessor extends IngestProcessorBase {
   locale?: string
   target_field?: Field
   timezone?: string
+  output_format?: string
 }
 
 export interface IngestDissectProcessor extends IngestProcessorBase {
@@ -12865,6 +12880,16 @@ export interface IngestEnrichProcessor extends IngestProcessorBase {
 
 export interface IngestFailProcessor extends IngestProcessorBase {
   message: string
+}
+
+export type IngestFingerprintDigest = 'MD5' | 'SHA-1' | 'SHA-256' | 'SHA-512' | 'MurmurHash3'
+
+export interface IngestFingerprintProcessor extends IngestProcessorBase {
+  fields: Fields
+  target_field?: Field
+  salt?: string
+  method?: IngestFingerprintDigest
+  ignore_missing?: boolean
 }
 
 export interface IngestForeachProcessor extends IngestProcessorBase {
@@ -12900,6 +12925,7 @@ export interface IngestGeoIpProcessor extends IngestProcessorBase {
 }
 
 export interface IngestGrokProcessor extends IngestProcessorBase {
+  ecs_compatibility?: string
   field: Field
   ignore_missing?: boolean
   pattern_definitions?: Record<string, string>
@@ -12986,6 +13012,15 @@ export interface IngestMaxmind {
   account_id: Id
 }
 
+export interface IngestNetworkDirectionProcessor extends IngestProcessorBase {
+  source_ip?: Field
+  destination_ip?: Field
+  target_field?: Field
+  internal_networks?: string[]
+  internal_networks_field?: Field
+  ignore_missing?: boolean
+}
+
 export interface IngestPipeline {
   description?: string
   on_failure?: IngestProcessorContainer[]
@@ -13019,6 +13054,7 @@ export interface IngestProcessorContainer {
   attachment?: IngestAttachmentProcessor
   bytes?: IngestBytesProcessor
   circle?: IngestCircleProcessor
+  community_id?: IngestCommunityIDProcessor
   convert?: IngestConvertProcessor
   csv?: IngestCsvProcessor
   date?: IngestDateProcessor
@@ -13028,6 +13064,7 @@ export interface IngestProcessorContainer {
   drop?: IngestDropProcessor
   enrich?: IngestEnrichProcessor
   fail?: IngestFailProcessor
+  fingerprint?: IngestFingerprintProcessor
   foreach?: IngestForeachProcessor
   geo_grid?: IngestGeoGridProcessor
   geoip?: IngestGeoIpProcessor
@@ -13039,8 +13076,10 @@ export interface IngestProcessorContainer {
   json?: IngestJsonProcessor
   kv?: IngestKeyValueProcessor
   lowercase?: IngestLowercaseProcessor
+  network_direction?: IngestNetworkDirectionProcessor
   pipeline?: IngestPipelineProcessor
   redact?: IngestRedactProcessor
+  registered_domain?: IngestRegisteredDomainProcessor
   remove?: IngestRemoveProcessor
   rename?: IngestRenameProcessor
   reroute?: IngestRerouteProcessor
@@ -13066,6 +13105,12 @@ export interface IngestRedactProcessor extends IngestProcessorBase {
   ignore_missing?: boolean
   skip_if_unlicensed?: boolean
   trace_redact?: boolean
+}
+
+export interface IngestRegisteredDomainProcessor extends IngestProcessorBase {
+  field: Field
+  target_field?: Field
+  ignore_missing?: boolean
 }
 
 export interface IngestRemoveProcessor extends IngestProcessorBase {
