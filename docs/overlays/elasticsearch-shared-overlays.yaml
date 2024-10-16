@@ -350,55 +350,13 @@ actions:
         externalDocs:
           url: https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl.html
           description: Query DSL
-  - target: "$.components['schemas']['security._types:IndicesPrivilegesQuery'].oneOf"
-    description: Remove types from security role descriptors indices query
-    remove: true
-  - target: "$.components['schemas']['security._types:IndicesPrivilegesQuery']"
-    description: Re-add simplified types for security role descriptors indices query
+  - target: "$.components['schemas']['security._types:RoleTemplateScript']"
+    description: Add x-model where recommended by Bump.sh
     update:
-      x-abbreviated: true
-      oneOf:
-        - type: string
-        - type: object
-  - target: "$.components['schemas']['indices.update_aliases:AddAction'].properties.filter"
-    description: Remove filter from update aliases add action
-    remove: true
-  - target: "$.components['schemas']['indices.update_aliases:AddAction'].properties"
-    description: Re-add simplified filter for update aliases add action
-    update:
-      filter:
-        x-abbreviated: true
-        type: object
-        description: A query used to limit the documents the alias can access. 
-        externalDocs:
-          description: Query DSL
-          url: https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl.html
-  - target: "$.components['requestBodies']['indices.put_alias'].content['application/json'].schema.properties.filter"
-    description: Remove filter from create or update alias
-    remove: true
-  - target: "$.components['requestBodies']['indices.put_alias'].content['application/json'].schema.properties"
-    description: Re-add simplified filter for create or update alias 
-    update:
-      filter:
-        x-abbreviated: true
-        type: object
-        description: A query used to limit the documents the alias can access. 
-        externalDocs:
-          description: Query DSL
-          url: https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl.html
-  - target: "$.components['schemas']['indices._types:AliasDefinition'].properties.filter"
-    description: Remove filter from alias definition
-    remove: true
-  - target: "$.components['schemas']['indices._types:AliasDefinition'].properties"
-    description: Re-add simplified filter for alias definition
-    update:
-      filter:
-        x-abbreviated: true
-        type: object
-        description: A query used to limit the documents the alias can access. 
-        externalDocs:
-          description: Query DSL
-          url: https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl.html
+      x-model: true
+      externalDocs:
+        description: Templating a role query
+        url: https://www.elastic.co/guide/en/elasticsearch/reference/master/field-and-document-access-control.html#templating-role-query
 # Examples
   - target: "$.components['requestBodies']['async_search.submit']"
     description: "Add example for asynch search submit request"
