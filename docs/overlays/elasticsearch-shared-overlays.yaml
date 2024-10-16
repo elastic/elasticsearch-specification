@@ -243,6 +243,43 @@ actions:
       # W
         - name: watcher
           x-displayName: Watcher
+# Add x-model and/or abbreviate schemas that should point to other references
+  - target: "$.components['schemas']['_types.analysis:CharFilter'].oneOf"
+    description: Remove existing oneOf definition for CharFilter
+    remove: true
+  - target: "$.components['schemas']['_types.analysis:CharFilter']"
+    description: Simplify CharFilter definition
+    update:
+      x-model: true
+      description: >
+        Character filters that are used to preprocess characters before they are passed to the tokenizer.
+      externalDocs:
+        url: https://www.elastic.co/guide/en/elasticsearch/reference/master/analysis-charfilters.html
+        description: Character filters reference
+  - target: "$.components['schemas']['_types.analysis:Tokenizer'].oneOf"
+    description: Remove existing oneOf definition for tokenizer
+    remove: true
+  - target: "$.components['schemas']['_types.analysis:Tokenizer']"
+    description: Simplify tokenizer definition
+    update:
+      x-model: true
+      description: >
+        A tokenizer to use to convert text into tokens.
+      externalDocs:
+        url: https://www.elastic.co/guide/en/elasticsearch/reference/master/analysis-tokenizers.html
+        description: Tokenizer reference
+  - target: "$.components['schemas']['_types.analysis:TokenFilter'].oneOf"
+    description: Remove existing oneOf definition for tokenfilter
+    remove: true
+  - target: "$.components['schemas']['_types.analysis:TokenFilter']"
+    description: Simplify tokenfilter definition
+    update:
+      x-model: true
+      description: >
+        Token filters that are applied after the tokenizer.
+      externalDocs:
+        url: https://www.elastic.co/guide/en/elasticsearch/reference/master/analysis-tokenfilters.html
+        description: Token filter reference
 # Abbreviate and annotate items that are not shown in Bump.sh due to depth limits
   - target: "$.components['schemas']['ml._types:Datafeed'].properties.query"
     description: Remove query object from anomaly detection datafeed
