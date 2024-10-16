@@ -14,8 +14,8 @@
         "tags": [
           "search"
         ],
-        "summary": "Retrieves the results of a previously submitted async search request given its identifier",
-        "description": "If the Elasticsearch security features are enabled, access to the results of a specific async search is restricted to the user or API key that submitted it.",
+        "summary": "Get async search results",
+        "description": "Retrieve the results of a previously submitted asynchronous search request.\nIf the Elasticsearch security features are enabled, access to the results of a specific async search is restricted to the user or API key that submitted it.",
         "operationId": "async-search-get",
         "parameters": [
           {
@@ -78,8 +78,8 @@
         "tags": [
           "search"
         ],
-        "summary": "Deletes an async search by identifier",
-        "description": "If the search is still running, the search request will be cancelled.\nOtherwise, the saved search results are deleted.\nIf the Elasticsearch security features are enabled, the deletion of a specific async search is restricted to: the authenticated user that submitted the original search request; users that have the `cancel_task` cluster privilege.",
+        "summary": "Delete an async search",
+        "description": "If the asynchronous search is still running, it is cancelled.\nOtherwise, the saved search results are deleted.\nIf the Elasticsearch security features are enabled, the deletion of a specific async search is restricted to: the authenticated user that submitted the original search request; users that have the `cancel_task` cluster privilege.",
         "operationId": "async-search-delete",
         "parameters": [
           {
@@ -114,8 +114,8 @@
         "tags": [
           "search"
         ],
-        "summary": "Get async search status\n",
-        "description": "Retrieves the status of a previously submitted async search request given its identifier, without retrieving search results.\nIf the Elasticsearch security features are enabled, use of this API is restricted to the `monitoring_user` role.",
+        "summary": "Get async search status",
+        "description": "Retrieve the status of a previously submitted async search request given its identifier, without retrieving search results.\nIf the Elasticsearch security features are enabled, use of this API is restricted to the `monitoring_user` role.",
         "operationId": "async-search-status",
         "parameters": [
           {
@@ -150,8 +150,8 @@
         "tags": [
           "search"
         ],
-        "summary": "Runs a search request asynchronously",
-        "description": "When the primary sort of the results is an indexed field, shards get sorted based on minimum and maximum value that they hold for that field, hence partial results become available following the sort criteria that was requested.\nWarning: Async search does not support scroll nor search requests that only include the suggest section.\nBy default, Elasticsearch doesn’t allow you to store an async search response larger than 10Mb and an attempt to do this results in an error.\nThe maximum allowed size for a stored async search response can be set by changing the `search.max_async_search_response_size` cluster level setting.",
+        "summary": "Run an async search",
+        "description": "When the primary sort of the results is an indexed field, shards get sorted based on minimum and maximum value that they hold for that field. Partial results become available following the sort criteria that was requested.\n\nWarning: Asynchronous search does not support scroll or search requests that include only the suggest section.\n\nBy default, Elasticsearch does not allow you to store an async search response larger than 10Mb and an attempt to do this results in an error.\nThe maximum allowed size for a stored async search response can be set by changing the `search.max_async_search_response_size` cluster level setting.",
         "operationId": "async-search-submit",
         "parameters": [
           {
@@ -309,8 +309,8 @@
         "tags": [
           "search"
         ],
-        "summary": "Runs a search request asynchronously",
-        "description": "When the primary sort of the results is an indexed field, shards get sorted based on minimum and maximum value that they hold for that field, hence partial results become available following the sort criteria that was requested.\nWarning: Async search does not support scroll nor search requests that only include the suggest section.\nBy default, Elasticsearch doesn’t allow you to store an async search response larger than 10Mb and an attempt to do this results in an error.\nThe maximum allowed size for a stored async search response can be set by changing the `search.max_async_search_response_size` cluster level setting.",
+        "summary": "Run an async search",
+        "description": "When the primary sort of the results is an indexed field, shards get sorted based on minimum and maximum value that they hold for that field. Partial results become available following the sort criteria that was requested.\n\nWarning: Asynchronous search does not support scroll or search requests that include only the suggest section.\n\nBy default, Elasticsearch does not allow you to store an async search response larger than 10Mb and an attempt to do this results in an error.\nThe maximum allowed size for a stored async search response can be set by changing the `search.max_async_search_response_size` cluster level setting.",
         "operationId": "async-search-submit-1",
         "parameters": [
           {
@@ -5899,7 +5899,8 @@
         "tags": [
           "indices"
         ],
-        "summary": "Performs analysis on a text string and returns the resulting tokens",
+        "summary": "Get tokens from text analysis",
+        "description": "The analyze API performs [analysis](https://www.elastic.co/guide/en/elasticsearch/reference/current/analysis.html) on a text string and returns the resulting tokens.",
         "operationId": "indices-analyze",
         "requestBody": {
           "$ref": "#/components/requestBodies/indices.analyze"
@@ -5914,7 +5915,8 @@
         "tags": [
           "indices"
         ],
-        "summary": "Performs analysis on a text string and returns the resulting tokens",
+        "summary": "Get tokens from text analysis",
+        "description": "The analyze API performs [analysis](https://www.elastic.co/guide/en/elasticsearch/reference/current/analysis.html) on a text string and returns the resulting tokens.",
         "operationId": "indices-analyze-1",
         "requestBody": {
           "$ref": "#/components/requestBodies/indices.analyze"
@@ -5931,7 +5933,8 @@
         "tags": [
           "indices"
         ],
-        "summary": "Performs analysis on a text string and returns the resulting tokens",
+        "summary": "Get tokens from text analysis",
+        "description": "The analyze API performs [analysis](https://www.elastic.co/guide/en/elasticsearch/reference/current/analysis.html) on a text string and returns the resulting tokens.",
         "operationId": "indices-analyze-2",
         "parameters": [
           {
@@ -5951,7 +5954,8 @@
         "tags": [
           "indices"
         ],
-        "summary": "Performs analysis on a text string and returns the resulting tokens",
+        "summary": "Get tokens from text analysis",
+        "description": "The analyze API performs [analysis](https://www.elastic.co/guide/en/elasticsearch/reference/current/analysis.html) on a text string and returns the resulting tokens.",
         "operationId": "indices-analyze-3",
         "parameters": [
           {
@@ -45933,6 +45937,9 @@
           "circle": {
             "$ref": "#/components/schemas/ingest._types:CircleProcessor"
           },
+          "community_id": {
+            "$ref": "#/components/schemas/ingest._types:CommunityIDProcessor"
+          },
           "convert": {
             "$ref": "#/components/schemas/ingest._types:ConvertProcessor"
           },
@@ -45959,6 +45966,9 @@
           },
           "fail": {
             "$ref": "#/components/schemas/ingest._types:FailProcessor"
+          },
+          "fingerprint": {
+            "$ref": "#/components/schemas/ingest._types:FingerprintProcessor"
           },
           "foreach": {
             "$ref": "#/components/schemas/ingest._types:ForeachProcessor"
@@ -45993,11 +46003,17 @@
           "lowercase": {
             "$ref": "#/components/schemas/ingest._types:LowercaseProcessor"
           },
+          "network_direction": {
+            "$ref": "#/components/schemas/ingest._types:NetworkDirectionProcessor"
+          },
           "pipeline": {
             "$ref": "#/components/schemas/ingest._types:PipelineProcessor"
           },
           "redact": {
             "$ref": "#/components/schemas/ingest._types:RedactProcessor"
+          },
+          "registered_domain": {
+            "$ref": "#/components/schemas/ingest._types:RegisteredDomainProcessor"
           },
           "remove": {
             "$ref": "#/components/schemas/ingest._types:RemoveProcessor"
@@ -46223,6 +46239,53 @@
           "shape"
         ]
       },
+      "ingest._types:CommunityIDProcessor": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/ingest._types:ProcessorBase"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "source_ip": {
+                "$ref": "#/components/schemas/_types:Field"
+              },
+              "source_port": {
+                "$ref": "#/components/schemas/_types:Field"
+              },
+              "destination_ip": {
+                "$ref": "#/components/schemas/_types:Field"
+              },
+              "destination_port": {
+                "$ref": "#/components/schemas/_types:Field"
+              },
+              "iana_number": {
+                "$ref": "#/components/schemas/_types:Field"
+              },
+              "icmp_type": {
+                "$ref": "#/components/schemas/_types:Field"
+              },
+              "icmp_code": {
+                "$ref": "#/components/schemas/_types:Field"
+              },
+              "transport": {
+                "$ref": "#/components/schemas/_types:Field"
+              },
+              "target_field": {
+                "$ref": "#/components/schemas/_types:Field"
+              },
+              "seed": {
+                "description": "Seed for the community ID hash. Must be between 0 and 65535 (inclusive). The\nseed can prevent hash collisions between network domains, such as a staging\nand production network that use the same addressing scheme.",
+                "type": "number"
+              },
+              "ignore_missing": {
+                "description": "If true and any required fields are missing, the processor quietly exits\nwithout modifying the document.",
+                "type": "boolean"
+              }
+            }
+          }
+        ]
+      },
       "ingest._types:ConvertProcessor": {
         "allOf": [
           {
@@ -46257,10 +46320,11 @@
         "enum": [
           "integer",
           "long",
-          "float",
           "double",
-          "string",
+          "float",
           "boolean",
+          "ip",
+          "string",
           "auto"
         ]
       },
@@ -46333,6 +46397,10 @@
               },
               "timezone": {
                 "description": "The timezone to use when parsing the date.\nSupports template snippets.",
+                "type": "string"
+              },
+              "output_format": {
+                "description": "The format to use when writing the date to target_field. Must be a valid\njava time pattern.",
                 "type": "string"
               }
             },
@@ -46527,6 +46595,48 @@
           }
         ]
       },
+      "ingest._types:FingerprintProcessor": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/ingest._types:ProcessorBase"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "fields": {
+                "$ref": "#/components/schemas/_types:Fields"
+              },
+              "target_field": {
+                "$ref": "#/components/schemas/_types:Field"
+              },
+              "salt": {
+                "description": "Salt value for the hash function.",
+                "type": "string"
+              },
+              "method": {
+                "$ref": "#/components/schemas/ingest._types:FingerprintDigest"
+              },
+              "ignore_missing": {
+                "description": "If true, the processor ignores any missing fields. If all fields are\nmissing, the processor silently exits without modifying the document.",
+                "type": "boolean"
+              }
+            },
+            "required": [
+              "fields"
+            ]
+          }
+        ]
+      },
+      "ingest._types:FingerprintDigest": {
+        "type": "string",
+        "enum": [
+          "MD5",
+          "SHA-1",
+          "SHA-256",
+          "SHA-512",
+          "MurmurHash3"
+        ]
+      },
       "ingest._types:ForeachProcessor": {
         "allOf": [
           {
@@ -46665,6 +46775,10 @@
           {
             "type": "object",
             "properties": {
+              "ecs_compatibility": {
+                "description": "Must be disabled or v1. If v1, the processor uses patterns with Elastic\nCommon Schema (ECS) field names.",
+                "type": "string"
+              },
               "field": {
                 "$ref": "#/components/schemas/_types:Field"
               },
@@ -46995,6 +47109,41 @@
           }
         ]
       },
+      "ingest._types:NetworkDirectionProcessor": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/ingest._types:ProcessorBase"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "source_ip": {
+                "$ref": "#/components/schemas/_types:Field"
+              },
+              "destination_ip": {
+                "$ref": "#/components/schemas/_types:Field"
+              },
+              "target_field": {
+                "$ref": "#/components/schemas/_types:Field"
+              },
+              "internal_networks": {
+                "description": "List of internal networks. Supports IPv4 and IPv6 addresses and ranges in\nCIDR notation. Also supports the named ranges listed below. These may be\nconstructed with template snippets. Must specify only one of\ninternal_networks or internal_networks_field.",
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "internal_networks_field": {
+                "$ref": "#/components/schemas/_types:Field"
+              },
+              "ignore_missing": {
+                "description": "If true and any required fields are missing, the processor quietly exits\nwithout modifying the document.",
+                "type": "boolean"
+              }
+            }
+          }
+        ]
+      },
       "ingest._types:PipelineProcessor": {
         "allOf": [
           {
@@ -47065,6 +47214,31 @@
             "required": [
               "field",
               "patterns"
+            ]
+          }
+        ]
+      },
+      "ingest._types:RegisteredDomainProcessor": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/ingest._types:ProcessorBase"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "field": {
+                "$ref": "#/components/schemas/_types:Field"
+              },
+              "target_field": {
+                "$ref": "#/components/schemas/_types:Field"
+              },
+              "ignore_missing": {
+                "description": "If true and any required fields are missing, the processor quietly exits\nwithout modifying the document.",
+                "type": "boolean"
+              }
+            },
+            "required": [
+              "field"
             ]
           }
         ]
