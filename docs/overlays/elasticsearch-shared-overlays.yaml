@@ -286,76 +286,28 @@ actions:
       externalDocs:
         description: Templating a role query
         url: https://www.elastic.co/guide/en/elasticsearch/reference/master/field-and-document-access-control.html#templating-role-query
-# Abbreviate and annotate items that are not shown in Bump.sh due to depth limits
-  - target: "$.components['schemas']['ml._types:Datafeed'].properties.query"
-    description: Remove query object from anomaly detection datafeed
-    remove: true
-  - target: "$.components['schemas']['ml._types:Datafeed'].properties"
-    description: Re-add a simplified query object in anomaly detection datafeed
+# Annotate items that are not shown in Bump.sh due to depth limits
+  # These hopefully can be fixed by adding branch levels in Bump.sh since the info doesn't exist elsewhere
+  - target: "$.components['schemas']['ml._types:TrainedModelConfigMetadata'].properties"
+    description: Add x-model to trained_model_configs > metadata > total_feature_importance
     update:
-      query:
+      total_feature_importance:
         x-model: true
-        type: object
-        description: >
-          The Elasticsearch query domain-specific language (DSL).
-          This value corresponds to the query object in an Elasticsearch search POST body.
-          All the options that are supported by Elasticsearch can be used, as this object is passed verbatim to Elasticsearch.
-          By default, this property has the following value: `{"match_all": {"boost": 1}}`.
-        externalDocs:
-          url: https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl.html
-          description: Query DSL
-  - target: "$.components['schemas']['ml._types:CategorizationAnalyzerDefinition'].properties.tokenizer"
-    description: Remove tokenizer object from ML anomaly detection analysis config
-    remove: true
-  - target: "$.components['schemas']['ml._types:CategorizationAnalyzerDefinition'].properties"
-    description: Re-add a simplified tokenizer object in anomaly detection analysis config
+  - target: "$.components['schemas']['ml._types:Detector'].properties"
+    description: Add x-model to anomaly detection job > analysis_config > detectors > custom_rules
     update:
-      tokenizer:
+      custom_rules:
         x-model: true
-        oneOf:
-          - type: object
-          - type: string
-        description: >
-          The name or definition of the tokenizer to use after character filters are applied.
-          This property is compulsory if `categorization_analyzer` is specified as an object.
-          Machine learning provides a tokenizer called `ml_standard` that tokenizes in a way that has been determined to produce good categorization results on a variety of log file formats for logs in English.
-          If you want to use that tokenizer but change the character or token filters, specify `"tokenizer": "ml_standard"` in your `categorization_analyzer`.
-          Additionally, the `ml_classic` tokenizer is available, which tokenizes in the same way as the non-customizable tokenizer in old versions of the product (before 6.2).
-          `ml_classic` was the default categorization tokenizer in versions 6.2 to 7.13, so if you need categorization identical to the default for jobs created in these versions, specify `"tokenizer": "ml_classic"` in your `categorization_analyzer`.
-        externalDocs:
-          url: https://www.elastic.co/guide/en/elasticsearch/reference/current/analysis-tokenizers.html
-          description: Tokenizer reference
-  - target: "$.components['schemas']['ml._types:DataframeAnalyticsSource'].properties.query"
-    description: Remove query object from data frame analytics source
-    remove: true
-  - target: "$.components['schemas']['ml._types:DataframeAnalyticsSource'].properties"
-    description: Re-add a simplified query object in data frame analytics source
+  - target: "$.components['schemas']['ml._types:DetectorRead'].properties"
+    description: Add x-model to anomaly detection jobs > analysis_config > detectors > custom_rules
     update:
-      query:
+      custom_rules:
         x-model: true
-        type: object
-        description: >
-          The Elasticsearch query domain-specific language (DSL).
-          This value corresponds to the query object in an Elasticsearch search POST body.
-          All the options that are supported by Elasticsearch can be used, as this object is passed verbatim to Elasticsearch.
-          By default, this property has the following value: `{"match_all": {}}`.
-        externalDocs:
-          url: https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl.html
-          description: Query DSL
-  - target: "$.components['schemas']['transform._types:Source'].properties.query"
-    description: Remove query object from transform source
-    remove: true
-  - target: "$.components['schemas']['transform._types:Source'].properties"
-    description: Re-add a simplified query object in transform source
+  - target: "$.components['schemas']['ml.put_trained_model:TargetMeanEncodingPreprocessor'].properties"
+    description: Add x-model to data frame analytics job > analysis> classification > feature_processors > target_mean_encoding > target_map
     update:
-      query:
+      target_map:
         x-model: true
-        type: object
-        description: >
-          A query clause that retrieves a subset of data from the source index.
-        externalDocs:
-          url: https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl.html
-          description: Query DSL
 # Examples
   - target: "$.components['requestBodies']['async_search.submit']"
     description: "Add example for asynch search submit request"
