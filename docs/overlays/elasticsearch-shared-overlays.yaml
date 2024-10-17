@@ -308,56 +308,7 @@ actions:
     update:
       target_map:
         x-model: true
-# Annotate and abbreviate items that are not shown in Bump.sh due to depth limits
-  # These are likely long-term and should refer to query language reference etc
-  - target: "$.paths['/_ml/datafeeds/{datafeed_id}']['put']['requestBody'].content['application/json'].schema.properties"
-    description: "Re-add a simplified query object in create datafeeds operation"
-    update:
-      query:
-        x-model: true
-        type: object
-        description: >
-          The Elasticsearch query domain-specific language (DSL).
-          This value corresponds to the query object in an Elasticsearch search POST body.
-          All the options that are supported by Elasticsearch can be used, as this object is passed verbatim to Elasticsearch.
-          By default, this property has the following value: `{"match_all": {"boost": 1}}`.
-        externalDocs:
-          url: https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl.html
-          description: Query DSL
-  - target: "$.components['schemas']['ml._types:Datafeed'].properties.query"
-    description: Remove query object from anomaly detection datafeed
-    remove: true
-  - target: "$.components['schemas']['ml._types:Datafeed'].properties"
-    description: Re-add a simplified query object in anomaly detection datafeed
-    update:
-      query:
-        x-model: true
-        type: object
-        description: >
-          The Elasticsearch query domain-specific language (DSL).
-          This value corresponds to the query object in an Elasticsearch search POST body.
-          All the options that are supported by Elasticsearch can be used, as this object is passed verbatim to Elasticsearch.
-          By default, this property has the following value: `{"match_all": {"boost": 1}}`.
-        externalDocs:
-          url: https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl.html
-          description: Query DSL
-  - target: "$.components['schemas']['ml._types:DatafeedConfig'].properties.query"
-    description: Remove query object from anomaly detection datafeed configuration
-    remove: true
-  - target: "$.components['schemas']['ml._types:DatafeedConfig'].properties"
-    description: Re-add a simplified query object in anomaly detection datafeed configuration
-    update:
-      query:
-        x-model: true
-        type: object
-        description: >
-          The Elasticsearch query domain-specific language (DSL).
-          This value corresponds to the query object in an Elasticsearch search POST body.
-          All the options that are supported by Elasticsearch can be used, as this object is passed verbatim to Elasticsearch.
-          By default, this property has the following value: `{"match_all": {"boost": 1}}`.
-        externalDocs:
-          url: https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl.html
-          description: Query DSL
+# Override definitions for common schema objects that should have context-specific details
   - target: "$.components['schemas']['ml._types:CategorizationAnalyzerDefinition'].properties.tokenizer"
     description: Remove tokenizer object from ML anomaly detection analysis config
     remove: true
@@ -377,54 +328,8 @@ actions:
           Additionally, the `ml_classic` tokenizer is available, which tokenizes in the same way as the non-customizable tokenizer in old versions of the product (before 6.2).
           `ml_classic` was the default categorization tokenizer in versions 6.2 to 7.13, so if you need categorization identical to the default for jobs created in these versions, specify `"tokenizer": "ml_classic"` in your `categorization_analyzer`.
         externalDocs:
-          url: https://www.elastic.co/guide/en/elasticsearch/reference/current/analysis-tokenizers.html
+          url: https://www.elastic.co/guide/en/elasticsearch/reference/master/analysis-tokenizers.html
           description: Tokenizer reference
-  - target: "$.components['schemas']['ml._types:DataframeAnalyticsSource'].properties.query"
-    description: Remove query object from data frame analytics source
-    remove: true
-  - target: "$.components['schemas']['ml._types:DataframeAnalyticsSource'].properties"
-    description: Re-add a simplified query object in data frame analytics source
-    update:
-      query:
-        x-model: true
-        type: object
-        description: >
-          The Elasticsearch query domain-specific language (DSL).
-          This value corresponds to the query object in an Elasticsearch search POST body.
-          All the options that are supported by Elasticsearch can be used, as this object is passed verbatim to Elasticsearch.
-          By default, this property has the following value: `{"match_all": {}}`.
-        externalDocs:
-          url: https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl.html
-          description: Query DSL
-  - target: "$.components['schemas']['transform._types:Source'].properties.query"
-    description: Remove query object from transform source
-    remove: true
-  - target: "$.components['schemas']['transform._types:Source'].properties"
-    description: Re-add a simplified query object in transform source
-    update:
-      query:
-        x-model: true
-        type: object
-        description: >
-          A query clause that retrieves a subset of data from the source index.
-        externalDocs:
-          url: https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl.html
-          description: Query DSL
-  - target: "$.components['requestBodies']['graph.explore'].content['application/json'].schema.properties.query"
-    description: Remove query object from graph explore operation
-    remove: true
-  - target: "$.components['requestBodies']['graph.explore'].content['application/json'].schema.properties"
-    description: "Re-add simplified query object in graph explore operation"
-    update: 
-      query:
-        x-model: true
-        type: object
-        description: >
-          A seed query that identifies the documents of interest.
-          Can be any valid Elasticsearch query.
-        externalDocs:
-          url: https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl.html
-          description: Query DSL
   - target: "$.components['schemas']['graph._types:Hop'].properties.query"
     description: Remove query object from graph explore connections schema
     remove: true
@@ -438,7 +343,7 @@ actions:
           An optional guiding query that constrains the Graph API as it explores connected terms.
           For example, you might want to direct the Graph API to ignore older data by specifying a query that identifies recent documents.
         externalDocs:
-          url: https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl.html
+          url: https://www.elastic.co/guide/en/elasticsearch/reference/master/query-dsl.html
           description: Query DSL
   - target: "$.components['schemas']['_global.scripts_painless_execute:PainlessContextSetup'].properties.query"
     description: Remove query object from painless script context setup schema
@@ -454,35 +359,7 @@ actions:
           Use this property to specify a query for computing a score.
           Besides deciding whether or not the document matches, the query clause also calculates a relevance score in the `_score` metadata field.
         externalDocs:
-          url: https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl.html
-          description: Query DSL
-  - target: "$.components['requestBodies']['async_search.submit'].content['application/json'].schema.properties.query"
-    description: Remove query object from asynch search request
-    remove: true
-  - target: "$.components['requestBodies']['async_search.submit'].content['application/json'].schema.properties"
-    description: "Re-add simplified query object in asynch search request"
-    update: 
-      query:
-        x-model: true
-        type: object
-        description: >
-          Defines the search definition using the Query DSL.
-        externalDocs:
-          url: https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl.html
-          description: Query DSL
-  - target: "$.components['requestBodies']['search'].content['application/json'].schema.properties.query"
-    description: Remove query object from search request
-    remove: true
-  - target: "$.components['requestBodies']['search'].content['application/json'].schema.properties"
-    description: "Re-add simplified query object in search request"
-    update: 
-      query:
-        x-model: true
-        type: object
-        description: >
-          Defines the search definition using the Query DSL.
-        externalDocs:
-          url: https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl.html
+          url: https://www.elastic.co/guide/en/elasticsearch/reference/master/query-dsl.html
           description: Query DSL
 # Examples
   - target: "$.components['requestBodies']['async_search.submit']"
