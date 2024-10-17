@@ -289,32 +289,32 @@ actions:
 # Annotate items that are not shown in Bump.sh due to depth limits
   # These hopefully can be fixed by adding branch levels in Bump.sh since the info doesn't exist elsewhere
   - target: "$.components['schemas']['ml._types:TrainedModelConfigMetadata'].properties"
-    description: Add x-abbrebreviated to trained_model_configs > metadata > total_feature_importance
+    description: Add x-model to trained_model_configs > metadata > total_feature_importance
     update:
       total_feature_importance:
-        x-abbreviated: true
+        x-model: true
   - target: "$.components['schemas']['ml._types:Detector'].properties"
-    description: Add x-abbrebreviated to anomaly detection job > analysis_config > detectors > custom_rules
+    description: Add x-model to anomaly detection job > analysis_config > detectors > custom_rules
     update:
       custom_rules:
-        x-abbreviated: true
+        x-model: true
   - target: "$.components['schemas']['ml._types:DetectorRead'].properties"
-    description: Add x-abbrebreviated to anomaly detection jobs > analysis_config > detectors > custom_rules
+    description: Add x-model to anomaly detection jobs > analysis_config > detectors > custom_rules
     update:
       custom_rules:
-        x-abbreviated: true
+        x-model: true
   - target: "$.components['schemas']['ml.put_trained_model:TargetMeanEncodingPreprocessor'].properties"
-    description: Add x-abbrebreviated to data frame analytics job > analysis> classification > feature_processors > target_mean_encoding > target_map
+    description: Add x-model to data frame analytics job > analysis> classification > feature_processors > target_mean_encoding > target_map
     update:
       target_map:
-        x-abbreviated: true
+        x-model: true
 # Annotate and abbreviate items that are not shown in Bump.sh due to depth limits
   # These are likely long-term and should refer to query language reference etc
   - target: "$.paths['/_ml/datafeeds/{datafeed_id}']['put']['requestBody'].content['application/json'].schema.properties"
     description: "Re-add a simplified query object in create datafeeds operation"
     update:
       query:
-        x-abbreviated: true
+        x-model: true
         type: object
         description: >
           The Elasticsearch query domain-specific language (DSL).
@@ -331,7 +331,7 @@ actions:
     description: Re-add a simplified query object in anomaly detection datafeed
     update:
       query:
-        x-abbreviated: true
+        x-model: true
         type: object
         description: >
           The Elasticsearch query domain-specific language (DSL).
@@ -417,7 +417,7 @@ actions:
     description: "Re-add simplified query object in graph explore operation"
     update: 
       query:
-        x-abbreviated: true
+        x-model: true
         type: object
         description: >
           A seed query that identifies the documents of interest.
@@ -432,7 +432,7 @@ actions:
     description: "Re-add simplified query object in graph explore connections schema"
     update: 
       query:
-        x-abbreviated: true
+        x-model: true
         type: object
         description: >
           An optional guiding query that constrains the Graph API as it explores connected terms.
@@ -447,7 +447,7 @@ actions:
     description: "Re-add simplified query object in painless script context setup schema"
     update: 
       query:
-        x-abbreviated: true
+        x-model: true
         type: object
         description: >
           This property applies only when `score` is specified as the script `context`.
@@ -463,7 +463,7 @@ actions:
     description: "Re-add simplified query object in asynch search request"
     update: 
       query:
-        x-abbreviated: true
+        x-model: true
         type: object
         description: >
           Defines the search definition using the Query DSL.
@@ -477,7 +477,7 @@ actions:
     description: "Re-add simplified query object in search request"
     update: 
       query:
-        x-abbreviated: true
+        x-model: true
         type: object
         description: >
           Defines the search definition using the Query DSL.
