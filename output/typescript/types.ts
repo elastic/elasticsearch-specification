@@ -9738,7 +9738,7 @@ export interface ConnectorFeatureEnabled {
 export interface ConnectorFilteringAdvancedSnippet {
   created_at?: DateTime
   updated_at?: DateTime
-  value: Record<string, any>
+  value: any
 }
 
 export interface ConnectorFilteringConfig {

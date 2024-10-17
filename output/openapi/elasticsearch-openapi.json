@@ -63729,10 +63729,7 @@
             "$ref": "#/components/schemas/_types:DateTime"
           },
           "value": {
-            "type": "object",
-            "additionalProperties": {
-              "type": "object"
-            }
+            "type": "object"
           }
         },
         "required": [

@@ -192,7 +192,7 @@ enum FilteringValidationState {
 export interface FilteringAdvancedSnippet {
   created_at?: DateTime
   updated_at?: DateTime
-  value: Dictionary<string, UserDefinedValue>
+  value: UserDefinedValue
 }
 
 export interface FilteringRulesValidation {
