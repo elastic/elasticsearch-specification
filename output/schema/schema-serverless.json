@@ -18,7 +18,7 @@
           "stability": "stable"
         }
       },
-      "description": "Deletes an async search by identifier.\nIf the search is still running, the search request will be cancelled.\nOtherwise, the saved search results are deleted.\nIf the Elasticsearch security features are enabled, the deletion of a specific async search is restricted to: the authenticated user that submitted the original search request; users that have the `cancel_task` cluster privilege.",
+      "description": "Delete an async search.\nIf the asynchronous search is still running, it is cancelled.\nOtherwise, the saved search results are deleted.\nIf the Elasticsearch security features are enabled, the deletion of a specific async search is restricted to: the authenticated user that submitted the original search request; users that have the `cancel_task` cluster privilege.",
       "docId": "async-search",
       "docTag": "search",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/async-search.html",
@@ -55,7 +55,7 @@
           "stability": "stable"
         }
       },
-      "description": "Retrieves the results of a previously submitted async search request given its identifier.\nIf the Elasticsearch security features are enabled, access to the results of a specific async search is restricted to the user or API key that submitted it.",
+      "description": "Get async search results.\nRetrieve the results of a previously submitted asynchronous search request.\nIf the Elasticsearch security features are enabled, access to the results of a specific async search is restricted to the user or API key that submitted it.",
       "docId": "async-search",
       "docTag": "search",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/async-search.html",
@@ -92,7 +92,7 @@
           "stability": "stable"
         }
       },
-      "description": "Get async search status\nRetrieves the status of a previously submitted async search request given its identifier, without retrieving search results.\nIf the Elasticsearch security features are enabled, use of this API is restricted to the `monitoring_user` role.",
+      "description": "Get async search status.\nRetrieve the status of a previously submitted async search request given its identifier, without retrieving search results.\nIf the Elasticsearch security features are enabled, use of this API is restricted to the `monitoring_user` role.",
       "docId": "async-search",
       "docTag": "search",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/async-search.html",
@@ -129,7 +129,7 @@
           "stability": "stable"
         }
       },
-      "description": "Runs a search request asynchronously.\nWhen the primary sort of the results is an indexed field, shards get sorted based on minimum and maximum value that they hold for that field, hence partial results become available following the sort criteria that was requested.\nWarning: Async search does not support scroll nor search requests that only include the suggest section.\nBy default, Elasticsearch doesn’t allow you to store an async search response larger than 10Mb and an attempt to do this results in an error.\nThe maximum allowed size for a stored async search response can be set by changing the `search.max_async_search_response_size` cluster level setting.",
+      "description": "Run an async search.\nWhen the primary sort of the results is an indexed field, shards get sorted based on minimum and maximum value that they hold for that field. Partial results become available following the sort criteria that was requested.\n\nWarning: Asynchronous search does not support scroll or search requests that include only the suggest section.\n\nBy default, Elasticsearch does not allow you to store an async search response larger than 10Mb and an attempt to do this results in an error.\nThe maximum allowed size for a stored async search response can be set by changing the `search.max_async_search_response_size` cluster level setting.",
       "docId": "async-search",
       "docTag": "search",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/async-search.html",
@@ -2854,7 +2854,7 @@
           "stability": "stable"
         }
       },
-      "description": "Performs analysis on a text string and returns the resulting tokens.",
+      "description": "Get tokens from text analysis.\nThe analyze API performs [analysis](https://www.elastic.co/guide/en/elasticsearch/reference/current/analysis.html) on a text string and returns the resulting tokens.",
       "docId": "indices-analyze",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/indices-analyze.html",
       "name": "indices.analyze",
@@ -9877,7 +9877,7 @@
       "body": {
         "kind": "no_body"
       },
-      "description": "Deletes an async search by identifier.\nIf the search is still running, the search request will be cancelled.\nOtherwise, the saved search results are deleted.\nIf the Elasticsearch security features are enabled, the deletion of a specific async search is restricted to: the authenticated user that submitted the original search request; users that have the `cancel_task` cluster privilege.",
+      "description": "Delete an async search.\nIf the asynchronous search is still running, it is cancelled.\nOtherwise, the saved search results are deleted.\nIf the Elasticsearch security features are enabled, the deletion of a specific async search is restricted to: the authenticated user that submitted the original search request; users that have the `cancel_task` cluster privilege.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -9931,7 +9931,7 @@
       "body": {
         "kind": "no_body"
       },
-      "description": "Retrieves the results of a previously submitted async search request given its identifier.\nIf the Elasticsearch security features are enabled, access to the results of a specific async search is restricted to the user or API key that submitted it.",
+      "description": "Get async search results.\nRetrieve the results of a previously submitted asynchronous search request.\nIf the Elasticsearch security features are enabled, access to the results of a specific async search is restricted to the user or API key that submitted it.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -9995,7 +9995,7 @@
           }
         }
       ],
-      "specLocation": "async_search/get/AsyncSearchGetRequest.ts#L24-L55"
+      "specLocation": "async_search/get/AsyncSearchGetRequest.ts#L24-L56"
     },
     {
       "body": {
@@ -10037,7 +10037,7 @@
       "body": {
         "kind": "no_body"
       },
-      "description": "Get async search status\nRetrieves the status of a previously submitted async search request given its identifier, without retrieving search results.\nIf the Elasticsearch security features are enabled, use of this API is restricted to the `monitoring_user` role.",
+      "description": "Get async search status.\nRetrieve the status of a previously submitted async search request given its identifier, without retrieving search results.\nIf the Elasticsearch security features are enabled, use of this API is restricted to the `monitoring_user` role.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -10566,7 +10566,7 @@
           }
         ]
       },
-      "description": "Runs a search request asynchronously.\nWhen the primary sort of the results is an indexed field, shards get sorted based on minimum and maximum value that they hold for that field, hence partial results become available following the sort criteria that was requested.\nWarning: Async search does not support scroll nor search requests that only include the suggest section.\nBy default, Elasticsearch doesn’t allow you to store an async search response larger than 10Mb and an attempt to do this results in an error.\nThe maximum allowed size for a stored async search response can be set by changing the `search.max_async_search_response_size` cluster level setting.",
+      "description": "Run an async search.\nWhen the primary sort of the results is an indexed field, shards get sorted based on minimum and maximum value that they hold for that field. Partial results become available following the sort criteria that was requested.\n\nWarning: Asynchronous search does not support scroll or search requests that include only the suggest section.\n\nBy default, Elasticsearch does not allow you to store an async search response larger than 10Mb and an attempt to do this results in an error.\nThe maximum allowed size for a stored async search response can be set by changing the `search.max_async_search_response_size` cluster level setting.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -11168,7 +11168,7 @@
           }
         }
       ],
-      "specLocation": "async_search/submit/AsyncSearchSubmitRequest.ts#L55-L287"
+      "specLocation": "async_search/submit/AsyncSearchSubmitRequest.ts#L55-L289"
     },
     {
       "body": {
@@ -19942,7 +19942,7 @@
           }
         ]
       },
-      "description": "Performs analysis on a text string and returns the resulting tokens.",
+      "description": "Get tokens from text analysis.\nThe analyze API performs [analysis](https://www.elastic.co/guide/en/elasticsearch/reference/current/analysis.html) on a text string and returns the resulting tokens.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -19971,7 +19971,7 @@
         }
       ],
       "query": [],
-      "specLocation": "indices/analyze/IndicesAnalyzeRequest.ts#L27-L92"
+      "specLocation": "indices/analyze/IndicesAnalyzeRequest.ts#L27-L93"
     },
     {
       "body": {
@@ -94190,16 +94190,19 @@
           "name": "long"
         },
         {
-          "name": "float"
-        },
-        {
           "name": "double"
         },
         {
-          "name": "string"
+          "name": "float"
         },
         {
           "name": "boolean"
+        },
+        {
+          "name": "ip"
+        },
+        {
+          "name": "string"
         },
         {
           "name": "auto"
@@ -94209,7 +94212,37 @@
         "name": "ConvertType",
         "namespace": "ingest._types"
       },
-      "specLocation": "ingest/_types/Processors.ts#L531-L539"
+      "specLocation": "ingest/_types/Processors.ts#L621-L630"
+    },
+    {
+      "kind": "enum",
+      "members": [
+        {
+          "codegenName": "md5",
+          "name": "MD5"
+        },
+        {
+          "codegenName": "sha1",
+          "name": "SHA-1"
+        },
+        {
+          "codegenName": "sha256",
+          "name": "SHA-256"
+        },
+        {
+          "codegenName": "sha512",
+          "name": "SHA-512"
+        },
+        {
+          "codegenName": "murmurHash3",
+          "name": "MurmurHash3"
+        }
+      ],
+      "name": {
+        "name": "FingerprintDigest",
+        "namespace": "ingest._types"
+      },
+      "specLocation": "ingest/_types/Processors.ts#L856-L862"
     },
     {
       "kind": "enum",
@@ -94225,7 +94258,7 @@
         "name": "GeoGridTargetFormat",
         "namespace": "ingest._types"
       },
-      "specLocation": "ingest/_types/Processors.ts#L406-L409"
+      "specLocation": "ingest/_types/Processors.ts#L433-L436"
     },
     {
       "kind": "enum",
@@ -94244,7 +94277,7 @@
         "name": "GeoGridTileType",
         "namespace": "ingest._types"
       },
-      "specLocation": "ingest/_types/Processors.ts#L400-L404"
+      "specLocation": "ingest/_types/Processors.ts#L427-L431"
     },
     {
       "kind": "enum",
@@ -94262,7 +94295,7 @@
         "name": "JsonProcessorConflictStrategy",
         "namespace": "ingest._types"
       },
-      "specLocation": "ingest/_types/Processors.ts#L970-L975"
+      "specLocation": "ingest/_types/Processors.ts#L1111-L1116"
     },
     {
       "kind": "enum",
@@ -94278,7 +94311,7 @@
         "name": "ShapeType",
         "namespace": "ingest._types"
       },
-      "specLocation": "ingest/_types/Processors.ts#L1238-L1241"
+      "specLocation": "ingest/_types/Processors.ts#L1433-L1436"
     },
     {
       "kind": "enum",
@@ -94303,7 +94336,7 @@
         "name": "UserAgentProperty",
         "namespace": "ingest._types"
       },
-      "specLocation": "ingest/_types/Processors.ts#L480-L486"
+      "specLocation": "ingest/_types/Processors.ts#L507-L513"
     },
     {
       "kind": "enum",
@@ -120899,6 +120932,20 @@
           }
         },
         {
+          "description": "Computes the Community ID for network flow data as defined in the\nCommunity ID Specification. You can use a community ID to correlate network\nevents related to a single flow.",
+          "docId": "community-id-processor",
+          "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/community-id-processor.html",
+          "name": "community_id",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "CommunityIDProcessor",
+              "namespace": "ingest._types"
+            }
+          }
+        },
+        {
           "description": "Converts a field in the currently ingested document to a different type, such as converting a string to an integer.\nIf the field value is an array, all members will be converted.",
           "docId": "convert-processor",
           "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/convert-processor.html",
@@ -121020,6 +121067,20 @@
             "kind": "instance_of",
             "type": {
               "name": "FailProcessor",
+              "namespace": "ingest._types"
+            }
+          }
+        },
+        {
+          "description": "Computes a hash of the document’s content. You can use this hash for\ncontent fingerprinting.",
+          "docId": "fingerprint-processor",
+          "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/fingerprint-processor.html",
+          "name": "fingerprint",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "FingerprintProcessor",
               "namespace": "ingest._types"
             }
           }
@@ -121178,6 +121239,20 @@
           }
         },
         {
+          "description": "Calculates the network direction given a source IP address, destination IP\naddress, and a list of internal networks.",
+          "docId": "network-direction-processor",
+          "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/network-direction-processor.html",
+          "name": "network_direction",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "NetworkDirectionProcessor",
+              "namespace": "ingest._types"
+            }
+          }
+        },
+        {
           "description": "Executes another pipeline.",
           "docId": "pipeline-processor",
           "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/pipeline-processor.html",
@@ -121201,6 +121276,20 @@
             "kind": "instance_of",
             "type": {
               "name": "RedactProcessor",
+              "namespace": "ingest._types"
+            }
+          }
+        },
+        {
+          "description": "Extracts the registered domain (also known as the effective top-level\ndomain or eTLD), sub-domain, and top-level domain from a fully qualified\ndomain name (FQDN). Uses the registered domains defined in the Mozilla\nPublic Suffix List.",
+          "docId": "registered-domain-processor",
+          "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/registered-domain-processor.html",
+          "name": "registered_domain",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "RegisteredDomainProcessor",
               "namespace": "ingest._types"
             }
           }
@@ -121401,7 +121490,7 @@
           }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L27-L270",
+      "specLocation": "ingest/_types/Processors.ts#L27-L297",
       "variants": {
         "kind": "container",
         "nonExhaustive": true
@@ -121465,7 +121554,7 @@
           }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L297-L312"
+      "specLocation": "ingest/_types/Processors.ts#L324-L339"
     },
     {
       "kind": "interface",
@@ -121538,7 +121627,7 @@
           }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L272-L295"
+      "specLocation": "ingest/_types/Processors.ts#L299-L322"
     },
     {
       "inherits": {
@@ -121658,7 +121747,7 @@
           }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L314-L355"
+      "specLocation": "ingest/_types/Processors.ts#L341-L382"
     },
     {
       "inherits": {
@@ -121712,7 +121801,7 @@
           }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L488-L504"
+      "specLocation": "ingest/_types/Processors.ts#L515-L531"
     },
     {
       "inherits": {
@@ -121789,7 +121878,166 @@
           }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L506-L529"
+      "specLocation": "ingest/_types/Processors.ts#L533-L556"
+    },
+    {
+      "inherits": {
+        "type": {
+          "name": "ProcessorBase",
+          "namespace": "ingest._types"
+        }
+      },
+      "kind": "interface",
+      "name": {
+        "name": "CommunityIDProcessor",
+        "namespace": "ingest._types"
+      },
+      "properties": [
+        {
+          "description": "Field containing the source IP address.",
+          "name": "source_ip",
+          "required": false,
+          "serverDefault": "source.ip",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Field",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "Field containing the source port.",
+          "name": "source_port",
+          "required": false,
+          "serverDefault": "source.port",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Field",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "Field containing the destination IP address.",
+          "name": "destination_ip",
+          "required": false,
+          "serverDefault": "destination.ip",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Field",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "Field containing the destination port.",
+          "name": "destination_port",
+          "required": false,
+          "serverDefault": "destination.port",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Field",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "Field containing the IANA number.",
+          "name": "iana_number",
+          "required": false,
+          "serverDefault": "network.iana_number",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Field",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "Field containing the ICMP type.",
+          "name": "icmp_type",
+          "required": false,
+          "serverDefault": "icmp.type",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Field",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "Field containing the ICMP code.",
+          "name": "icmp_code",
+          "required": false,
+          "serverDefault": "icmp.code",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Field",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "Field containing the transport protocol name or number. Used only when the\niana_number field is not present. The following protocol names are currently\nsupported: eigrp, gre, icmp, icmpv6, igmp, ipv6-icmp, ospf, pim, sctp, tcp, udp",
+          "name": "transport",
+          "required": false,
+          "serverDefault": "network.transport",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Field",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "Output field for the community ID.",
+          "name": "target_field",
+          "required": false,
+          "serverDefault": "network.community_id",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Field",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "Seed for the community ID hash. Must be between 0 and 65535 (inclusive). The\nseed can prevent hash collisions between network domains, such as a staging\nand production network that use the same addressing scheme.",
+          "name": "seed",
+          "required": false,
+          "serverDefault": 0,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "If true and any required fields are missing, the processor quietly exits\nwithout modifying the document.",
+          "name": "ignore_missing",
+          "required": false,
+          "serverDefault": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "_builtins"
+            }
+          }
+        }
+      ],
+      "specLocation": "ingest/_types/Processors.ts#L558-L619"
     },
     {
       "inherits": {
@@ -121855,7 +122103,7 @@
           }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L541-L561"
+      "specLocation": "ingest/_types/Processors.ts#L632-L652"
     },
     {
       "inherits": {
@@ -121953,7 +122201,7 @@
           }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L563-L596"
+      "specLocation": "ingest/_types/Processors.ts#L654-L687"
     },
     {
       "inherits": {
@@ -122033,9 +122281,22 @@
               "namespace": "_builtins"
             }
           }
+        },
+        {
+          "description": "The format to use when writing the date to target_field. Must be a valid\njava time pattern.",
+          "name": "output_format",
+          "required": false,
+          "serverDefault": "yyyy-MM-dd'T'HH:mm:ss.SSSXXX",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "_builtins"
+            }
+          }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L638-L665"
+      "specLocation": "ingest/_types/Processors.ts#L729-L762"
     },
     {
       "inherits": {
@@ -122141,7 +122402,7 @@
           }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L598-L636"
+      "specLocation": "ingest/_types/Processors.ts#L689-L727"
     },
     {
       "inherits": {
@@ -122207,7 +122468,7 @@
           }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L667-L686"
+      "specLocation": "ingest/_types/Processors.ts#L764-L783"
     },
     {
       "inherits": {
@@ -122260,7 +122521,7 @@
           }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L688-L706"
+      "specLocation": "ingest/_types/Processors.ts#L785-L803"
     },
     {
       "inherits": {
@@ -122275,7 +122536,7 @@
         "namespace": "ingest._types"
       },
       "properties": [],
-      "specLocation": "ingest/_types/Processors.ts#L708-L708"
+      "specLocation": "ingest/_types/Processors.ts#L805-L805"
     },
     {
       "inherits": {
@@ -122379,7 +122640,7 @@
           }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L710-L749"
+      "specLocation": "ingest/_types/Processors.ts#L807-L846"
     },
     {
       "inherits": {
@@ -122407,7 +122668,86 @@
           }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L751-L757"
+      "specLocation": "ingest/_types/Processors.ts#L848-L854"
+    },
+    {
+      "inherits": {
+        "type": {
+          "name": "ProcessorBase",
+          "namespace": "ingest._types"
+        }
+      },
+      "kind": "interface",
+      "name": {
+        "name": "FingerprintProcessor",
+        "namespace": "ingest._types"
+      },
+      "properties": [
+        {
+          "description": "Array of fields to include in the fingerprint. For objects, the processor\nhashes both the field key and value. For other fields, the processor hashes\nonly the field value.",
+          "name": "fields",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Fields",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "Output field for the fingerprint.",
+          "name": "target_field",
+          "required": false,
+          "serverDefault": "fingerprint",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Field",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "Salt value for the hash function.",
+          "name": "salt",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "_builtins"
+            }
+          }
+        },
+        {
+          "description": "The hash method used to compute the fingerprint. Must be one of MD5, SHA-1,\nSHA-256, SHA-512, or MurmurHash3.",
+          "name": "method",
+          "required": false,
+          "serverDefault": "SHA-1",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "FingerprintDigest",
+              "namespace": "ingest._types"
+            }
+          }
+        },
+        {
+          "description": "If true, the processor ignores any missing fields. If all fields are\nmissing, the processor silently exits without modifying the document.",
+          "name": "ignore_missing",
+          "required": false,
+          "serverDefault": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "_builtins"
+            }
+          }
+        }
+      ],
+      "specLocation": "ingest/_types/Processors.ts#L864-L892"
     },
     {
       "inherits": {
@@ -122460,7 +122800,7 @@
           }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L759-L773"
+      "specLocation": "ingest/_types/Processors.ts#L894-L908"
     },
     {
       "inherits": {
@@ -122587,7 +122927,7 @@
           }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L357-L398"
+      "specLocation": "ingest/_types/Processors.ts#L384-L425"
     },
     {
       "inherits": {
@@ -122694,7 +123034,7 @@
           }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L411-L445"
+      "specLocation": "ingest/_types/Processors.ts#L438-L472"
     },
     {
       "inherits": {
@@ -122709,6 +123049,19 @@
         "namespace": "ingest._types"
       },
       "properties": [
+        {
+          "description": "Must be disabled or v1. If v1, the processor uses patterns with Elastic\nCommon Schema (ECS) field names.",
+          "name": "ecs_compatibility",
+          "required": false,
+          "serverDefault": "disabled",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "_builtins"
+            }
+          }
+        },
         {
           "description": "The field to use for grok expression parsing.",
           "name": "field",
@@ -122786,7 +123139,7 @@
           }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L775-L800"
+      "specLocation": "ingest/_types/Processors.ts#L910-L941"
     },
     {
       "inherits": {
@@ -122864,7 +123217,7 @@
           }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L802-L826"
+      "specLocation": "ingest/_types/Processors.ts#L943-L967"
     },
     {
       "inherits": {
@@ -122918,7 +123271,7 @@
           }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L828-L844"
+      "specLocation": "ingest/_types/Processors.ts#L969-L985"
     },
     {
       "inherits": {
@@ -122990,7 +123343,7 @@
           }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L846-L865"
+      "specLocation": "ingest/_types/Processors.ts#L987-L1006"
     },
     {
       "kind": "interface",
@@ -123024,7 +123377,7 @@
           }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L867-L879",
+      "specLocation": "ingest/_types/Processors.ts#L1008-L1020",
       "variants": {
         "kind": "container"
       }
@@ -123063,7 +123416,7 @@
           }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L881-L892"
+      "specLocation": "ingest/_types/Processors.ts#L1022-L1033"
     },
     {
       "kind": "interface",
@@ -123137,7 +123490,7 @@
           }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L894-L920"
+      "specLocation": "ingest/_types/Processors.ts#L1035-L1061"
     },
     {
       "inherits": {
@@ -123190,7 +123543,7 @@
           }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L922-L937"
+      "specLocation": "ingest/_types/Processors.ts#L1063-L1078"
     },
     {
       "inherits": {
@@ -123269,7 +123622,7 @@
           }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L939-L968"
+      "specLocation": "ingest/_types/Processors.ts#L1080-L1109"
     },
     {
       "inherits": {
@@ -123426,7 +123779,7 @@
           }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L977-L1029"
+      "specLocation": "ingest/_types/Processors.ts#L1118-L1170"
     },
     {
       "inherits": {
@@ -123480,7 +123833,102 @@
           }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L1031-L1047"
+      "specLocation": "ingest/_types/Processors.ts#L1172-L1188"
+    },
+    {
+      "inherits": {
+        "type": {
+          "name": "ProcessorBase",
+          "namespace": "ingest._types"
+        }
+      },
+      "kind": "interface",
+      "name": {
+        "name": "NetworkDirectionProcessor",
+        "namespace": "ingest._types"
+      },
+      "properties": [
+        {
+          "description": "Field containing the source IP address.",
+          "name": "source_ip",
+          "required": false,
+          "serverDefault": "source.ip",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Field",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "Field containing the destination IP address.",
+          "name": "destination_ip",
+          "required": false,
+          "serverDefault": "destination.ip",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Field",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "Output field for the network direction.",
+          "name": "target_field",
+          "required": false,
+          "serverDefault": "network.direction",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Field",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "List of internal networks. Supports IPv4 and IPv6 addresses and ranges in\nCIDR notation. Also supports the named ranges listed below. These may be\nconstructed with template snippets. Must specify only one of\ninternal_networks or internal_networks_field.",
+          "name": "internal_networks",
+          "required": false,
+          "type": {
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "_builtins"
+              }
+            }
+          }
+        },
+        {
+          "description": "A field on the given document to read the internal_networks configuration\nfrom.",
+          "name": "internal_networks_field",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Field",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "If true and any required fields are missing, the processor quietly exits\nwithout modifying the document.",
+          "name": "ignore_missing",
+          "required": false,
+          "serverDefault": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "_builtins"
+            }
+          }
+        }
+      ],
+      "specLocation": "ingest/_types/Processors.ts#L1190-L1224"
     },
     {
       "inherits": {
@@ -123521,7 +123969,7 @@
           }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L1049-L1060"
+      "specLocation": "ingest/_types/Processors.ts#L1226-L1237"
     },
     {
       "inherits": {
@@ -123657,7 +124105,60 @@
           }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L1062-L1103"
+      "specLocation": "ingest/_types/Processors.ts#L1239-L1280"
+    },
+    {
+      "inherits": {
+        "type": {
+          "name": "ProcessorBase",
+          "namespace": "ingest._types"
+        }
+      },
+      "kind": "interface",
+      "name": {
+        "name": "RegisteredDomainProcessor",
+        "namespace": "ingest._types"
+      },
+      "properties": [
+        {
+          "description": "Field containing the source FQDN.",
+          "name": "field",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Field",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "Object field containing extracted domain components. If an empty string,\nthe processor adds components to the document’s root.",
+          "name": "target_field",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Field",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "If true and any required fields are missing, the processor quietly exits\nwithout modifying the document.",
+          "name": "ignore_missing",
+          "required": false,
+          "serverDefault": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "_builtins"
+            }
+          }
+        }
+      ],
+      "specLocation": "ingest/_types/Processors.ts#L1282-L1298"
     },
     {
       "inherits": {
@@ -123710,7 +124211,7 @@
           }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L1105-L1119"
+      "specLocation": "ingest/_types/Processors.ts#L1300-L1314"
     },
     {
       "inherits": {
@@ -123763,7 +124264,7 @@
           }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L1121-L1137"
+      "specLocation": "ingest/_types/Processors.ts#L1316-L1332"
     },
     {
       "inherits": {
@@ -123845,7 +124346,7 @@
           }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L1139-L1167"
+      "specLocation": "ingest/_types/Processors.ts#L1334-L1362"
     },
     {
       "inherits": {
@@ -123917,7 +124418,7 @@
           }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L1169-L1189"
+      "specLocation": "ingest/_types/Processors.ts#L1364-L1384"
     },
     {
       "inherits": {
@@ -124003,7 +124504,7 @@
           }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L1191-L1225"
+      "specLocation": "ingest/_types/Processors.ts#L1386-L1420"
     },
     {
       "inherits": {
@@ -124046,7 +124547,7 @@
           }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L1227-L1236"
+      "specLocation": "ingest/_types/Processors.ts#L1422-L1431"
     },
     {
       "inherits": {
@@ -124099,7 +124600,7 @@
           }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L1243-L1259"
+      "specLocation": "ingest/_types/Processors.ts#L1438-L1454"
     },
     {
       "inherits": {
@@ -124178,7 +124679,7 @@
           }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L1261-L1286"
+      "specLocation": "ingest/_types/Processors.ts#L1456-L1481"
     },
     {
       "inherits": {
@@ -124193,7 +124694,7 @@
         "namespace": "ingest._types"
       },
       "properties": [],
-      "specLocation": "ingest/_types/Processors.ts#L1288-L1288"
+      "specLocation": "ingest/_types/Processors.ts#L1483-L1483"
     },
     {
       "inherits": {
@@ -124247,7 +124748,7 @@
           }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L1290-L1306"
+      "specLocation": "ingest/_types/Processors.ts#L1485-L1501"
     },
     {
       "inherits": {
@@ -124301,7 +124802,7 @@
           }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L1308-L1324"
+      "specLocation": "ingest/_types/Processors.ts#L1503-L1519"
     },
     {
       "inherits": {
@@ -124355,7 +124856,7 @@
           }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L1326-L1342"
+      "specLocation": "ingest/_types/Processors.ts#L1521-L1537"
     },
     {
       "inherits": {
@@ -124435,7 +124936,7 @@
           }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L1344-L1370"
+      "specLocation": "ingest/_types/Processors.ts#L1539-L1565"
     },
     {
       "inherits": {
@@ -124548,7 +125049,7 @@
           }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L447-L478"
+      "specLocation": "ingest/_types/Processors.ts#L474-L505"
     },
     {
       "kind": "interface",
