@@ -283,7 +283,74 @@ actions:
       externalDocs:
         description: Templating a role query
         url: https://www.elastic.co/guide/en/elasticsearch/reference/master/field-and-document-access-control.html#templating-role-query
+  - target: "$.components['schemas']['_types.query_dsl:DistanceFeatureQuery']"
+    description: Add x-model for distance feature query
+    update:
+      x-model: true
+      externalDocs:
+        description: Distance feature query
+        url: https://www.elastic.co/guide/en/elasticsearch/reference/master/query-dsl-distance-feature-query.html
+  - target: "$.components['schemas']['_types.query_dsl:MoreLikeThisQuery']"
+    description: Add x-model for more like this query
+    update:
+      x-model: true
+      externalDocs:
+        description: More like this query
+        url: https://www.elastic.co/guide/en/elasticsearch/reference/master/query-dsl-mlt-query.html
+  - target: "$.components['schemas']['_types.query_dsl:PercolateQuery']"
+    description: Add x-model for percolate query
+    update:
+      x-model: true
+      externalDocs:
+        description: Percolate query
+        url: https://www.elastic.co/guide/en/elasticsearch/reference/master/query-dsl-percolate-query.html
+  - target: "$.components['schemas']['_types.query_dsl:RankFeatureQuery']"
+    description: Add x-model for rank feature query
+    update:
+      x-model: true
+      externalDocs:
+        description: Rank feature query
+        url: https://www.elastic.co/guide/en/elasticsearch/reference/master/query-dsl-rank-feature-query.html
+  - target: "$.components['schemas']['_types.query_dsl:ScriptQuery']"
+    description: Add x-model for script query
+    update:
+      x-model: true
+      externalDocs:
+        description: Script query
+        url: https://www.elastic.co/guide/en/elasticsearch/reference/master/query-dsl-script-query.html
+  - target: "$.components['schemas']['_types.query_dsl:ScriptScoreQuery']"
+    description: Add x-model for script score query
+    update:
+      x-model: true
+      externalDocs:
+        description: Script score query
+        url: https://www.elastic.co/guide/en/elasticsearch/reference/master/query-dsl-script-score-query.html
+  - target: "$.components['schemas']['_types.query_dsl:WrapperQuery']"
+    description: Add x-model for wrapper query
+    update:
+      x-model: true
+      externalDocs:
+        description: Wrapper query
+        url: https://www.elastic.co/guide/en/elasticsearch/reference/master/query-dsl-wrapper-query.html
+  - target: "$.components['schemas']['_types.query_dsl:PinnedQuery']"
+    description: Add x-model for pinned query
+    update:
+      x-model: true
+      externalDocs:
+        description: Pinned query
+        url: https://www.elastic.co/guide/en/elasticsearch/reference/master/query-dsl-pinned-query.html
+  - target: "$.components['schemas']['_types.query_dsl:RuleQuery']"
+    description: Add x-model for rule query
+    update:
+      x-model: true
+      externalDocs:
+        description: Rule query
+        url: https://www.elastic.co/guide/en/elasticsearch/reference/master/query-dsl-rule-query.html
 # Abbreviate and annotate items that are not shown in Bump.sh due to depth limits
+  - target: "$.components['schemas']['_types.query_dsl:LikeDocument']"
+    description: Add x-model to LikeDocument schema
+    update:
+      x-model: true
   - target: "$.components['schemas']['ml._types:Datafeed'].properties.query"
     description: Remove query object from anomaly detection datafeed
     remove: true
