@@ -58,7 +58,7 @@ export interface Request extends RequestBase {
 ([original source code](https://github.com/elastic/elasticsearch-specification/blob/main/specification/_global/rank_eval/RankEvalRequest.ts))
 
 For more information about the tags in this example (and other common tags such
-as `@deprecated` and `@doc_id`), refer to the [Modeling Guide](https://github.com/elastic/elasticsearch-specification/blob/main/docs/modeling-guide.md#additional-information).
+as `@deprecated` and `@ext_doc_id`), refer to the [Modeling Guide](https://github.com/elastic/elasticsearch-specification/blob/main/docs/modeling-guide.md#additional-information).
 
 ## Markup language
 
@@ -76,9 +76,9 @@ GFM also has implementations in most languages, meaning that code generators wil
 
 **Doc comments are reference material**: they should be as succinct as possible while capturing all the necessary information to use the elements they're documenting. Remember that they will often show up in small IDE autocompletion popups!
 
-In particular, doc comments are not the right place for tutorials or examples, which should be in dedicated documentation pages. These pages can of course be linked from the doc comments.
+In particular, doc comments are not the right place for tutorials or extended examples, which should be in dedicated documentation pages. To reduce the risk of broken links, use `@ext_doc_id` to implement a link to additional documentation. 
 
-API endpoints will also have a `@doc_url` JSDoc tag that links to that API's detailed documentation page.
+API endpoints can also have `@doc_id` or `@doc_url` JSDoc tags that enable clients to link to the API docs, for example.
 
 ### Multi-paragraph doc comments
 
