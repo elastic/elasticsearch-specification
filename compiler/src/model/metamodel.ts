@@ -406,6 +406,8 @@ export class Endpoint {
   description: string
   docUrl: string
   docId?: string
+  extDocId?: string
+  extDocUrl?: string
   deprecation?: Deprecation
   availability: Availabilities
   docTag?: string

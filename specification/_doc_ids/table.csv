@@ -311,6 +311,7 @@ ml-regression-loss,https://www.elastic.co/guide/en/machine-learning/{branch}/dfa
 ml-regression,https://www.elastic.co/guide/en/machine-learning/{branch}/ml-dfa-regression.html
 ml-reset-job,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/ml-reset-job.html
 ml-revert-snapshot,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/ml-revert-snapshot.html
+ml-run-job,https://www.elastic.co/guide/en/machine-learning/{branch}/ml-ad-run-jobs.html
 ml-set-upgrade-mode,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/ml-set-upgrade-mode.html
 ml-settings,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/ml-settings.html
 ml-start-datafeed,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/ml-start-datafeed.html

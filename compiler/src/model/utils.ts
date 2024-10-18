@@ -625,7 +625,7 @@ export function hoistRequestAnnotations (
   request: model.Request, jsDocs: JSDoc[], mappings: Record<string, model.Endpoint>, response: model.TypeName | null
 ): void {
   const knownRequestAnnotations = [
-    'rest_spec_name', 'behavior', 'class_serializer', 'index_privileges', 'cluster_privileges', 'doc_id', 'availability', 'doc_tag'
+    'rest_spec_name', 'behavior', 'class_serializer', 'index_privileges', 'cluster_privileges', 'doc_id', 'availability', 'doc_tag', `ext_doc_id`
   ]
   // in most of the cases the jsDocs comes in a single block,
   // but it can happen that the user defines multiple single line jsDoc.
@@ -685,6 +685,12 @@ export function hoistRequestAnnotations (
       const docUrl = docIds.find(entry => entry[0] === value.trim())
       assert(jsDocs, docUrl != null, `The @doc_id '${value.trim()}' is not present in _doc_ids/table.csv`)
       endpoint.docUrl = docUrl[1].replace(/\r/g, '')
+    } else if (tag === 'ext_doc_id') {
+      assert(jsDocs, value.trim() !== '', `Request ${request.name.name}'s @ext_doc_id cannot be empty`)
+      endpoint.extDocId = value.trim()
+      const docUrl = docIds.find(entry => entry[0] === value.trim())
+      assert(jsDocs, docUrl != null, `The @ext_doc_id '${value.trim()}' is not present in _doc_ids/table.csv`)
+      endpoint.extDocUrl = docUrl[1].replace(/\r/g, '')
     } else if (tag === 'availability') {
       // The @availability jsTag is different than most because it allows
       // multiple values within the same docstring, hence needing to parse

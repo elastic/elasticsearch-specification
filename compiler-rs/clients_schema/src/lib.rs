@@ -55,6 +55,11 @@ pub trait Documented {
     fn description(&self) -> Option<&str>;
 }
 
+pub trait ExternalDocument {
+    fn ext_doc_id(&self) -> Option<&str>;
+    fn ext_doc_url(&self) -> Option<&str>;
+}
+
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Eq, PartialOrd, Ord, Hash)]
 pub struct TypeName {
     // Order is important for Ord implementation
@@ -818,6 +823,12 @@ pub struct Endpoint {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub doc_tag: Option<String>,
 
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub ext_doc_id: Option<String>,
+
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub ext_doc_url: Option<String>,
+
     /// If missing, there is not yet a request definition for this endpoint.
     #[serde(skip_serializing_if = "Option::is_none")]
     pub request: Option<TypeName>,
@@ -851,6 +862,16 @@ impl Documented for Endpoint {
 
     fn description(&self) -> Option<&str> {
         Some(self.description.as_str())
+    }
+}
+
+impl ExternalDocument for Endpoint {
+    fn ext_doc_url(&self) -> Option<&str> {
+        self.ext_doc_url.as_deref()
+    }
+
+    fn ext_doc_id(&self) -> Option<&str> {
+        self.ext_doc_id.as_deref()
     }
 }
 

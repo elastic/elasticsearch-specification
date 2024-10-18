@@ -203,8 +203,8 @@ pub fn add_endpoint(
             },
             summary: sum_desc.summary,
             description: sum_desc.description,
-            // external_docs: tac.convert_external_docs(endpoint),
-            external_docs: None, // Need values that differ from client purposes
+            external_docs: tac.convert_endpoint_external_docs(endpoint),
+            // external_docs: None, // Need values that differ from client purposes
             operation_id: None, // set in clone_operation below with operation_counter
             parameters,
             request_body: request_body.clone(),

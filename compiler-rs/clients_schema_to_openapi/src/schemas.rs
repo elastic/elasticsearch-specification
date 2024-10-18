@@ -226,6 +226,23 @@ impl<'a> TypesAndComponents<'a> {
         })
     }
 
+    pub fn convert_endpoint_external_docs(&self, obj: &impl clients_schema::ExternalDocument) -> Option<ExternalDocumentation> {
+        // FIXME: does the model contain resolved doc_id?
+        obj.ext_doc_url().map(|url| {
+            let branch: &str = self
+                .model
+                .info
+                .as_ref()
+                .and_then(|i| i.version.as_deref())
+                .unwrap_or("current");
+            ExternalDocumentation {
+                description: None,
+                url: url.trim().replace("{branch}", branch),
+                extensions: Default::default(),
+            }
+        })
+    }
+
     fn for_body(&mut self, body: &Body) -> anyhow::Result<Option<ReferenceOr<Schema>>> {
         let result = match body {
             Body::NoBody(_) => None,

@@ -17539,6 +17539,9 @@
         ],
         "summary": "Create an anomaly detection job",
         "description": "If you include a `datafeed_config`, you must have read index privileges on the source index.",
+        "externalDocs": {
+          "url": "https://www.elastic.co/guide/en/machine-learning/current/ml-ad-run-jobs.html"
+        },
         "operationId": "ml-put-job",
         "parameters": [
           {
