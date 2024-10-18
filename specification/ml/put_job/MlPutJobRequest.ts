@@ -36,7 +36,6 @@ import { Duration } from '@_types/Time'
  * @index_privileges read
  * @cluster_privileges manage_ml
  * @doc_tag ml anomaly
- * @ext_doc_id ml-run-job
  */
 export interface Request extends RequestBase {
   path_parts: {
