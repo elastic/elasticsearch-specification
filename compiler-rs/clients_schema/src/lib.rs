@@ -58,6 +58,7 @@ pub trait Documented {
 pub trait ExternalDocument {
     fn ext_doc_id(&self) -> Option<&str>;
     fn ext_doc_url(&self) -> Option<&str>;
+    fn ext_doc_description(&self) -> Option<&str>;
 }
 
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Eq, PartialOrd, Ord, Hash)]
@@ -326,6 +327,9 @@ pub struct Property {
     pub ext_doc_id: Option<String>,
 
     #[serde(skip_serializing_if = "Option::is_none")]
+    pub ext_doc_description: Option<String>,
+
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub server_default: Option<ServerDefault>,
 
     #[serde(skip_serializing_if = "Option::is_none")]
@@ -373,6 +377,10 @@ impl ExternalDocument for Property {
 
     fn ext_doc_id(&self) -> Option<&str> {
         self.ext_doc_id.as_deref()
+    }
+
+    fn ext_doc_description(&self) -> Option<&str> {
+        self.ext_doc_description.as_deref()
     }
 }
 
@@ -506,6 +514,9 @@ pub struct BaseType {
     pub ext_doc_id: Option<String>,
 
     #[serde(skip_serializing_if = "Option::is_none")]
+    pub ext_doc_description: Option<String>,
+
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub deprecation: Option<Deprecation>,
 
     /// If this endpoint has a quirk that needs special attention, give a short explanation about it
@@ -542,6 +553,7 @@ impl BaseType {
             spec_location: None,
             ext_doc_id: None,
             ext_doc_url: None,
+            ext_doc_description: None,
         }
     }
 }
@@ -568,6 +580,10 @@ impl ExternalDocument for BaseType {
     fn ext_doc_id(&self) -> Option<&str> {
         self.ext_doc_id.as_deref()
     }
+
+    fn ext_doc_description(&self) -> Option<&str> {
+        self.ext_doc_description.as_deref()
+    }
 }
 
 trait WithBaseType {
@@ -590,11 +606,15 @@ impl<T: WithBaseType> Documented for T {
 
 impl<T: WithBaseType> ExternalDocument for T {
     fn ext_doc_url(&self) -> Option<&str> {
-        self.base().doc_url()
+        self.base().ext_doc_url()
     }
 
     fn ext_doc_id(&self) -> Option<&str> {
-        self.base().doc_id()
+        self.base().ext_doc_id()
+    }
+
+    fn ext_doc_description(&self) -> Option<&str> {
+        self.base().ext_doc_description()
     }
 }
 
@@ -866,6 +886,9 @@ pub struct Endpoint {
     pub ext_doc_url: Option<String>,
 
     #[serde(skip_serializing_if = "Option::is_none")]
+    pub ext_doc_description: Option<String>,
+
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub deprecation: Option<Deprecation>,
 
     #[serde(skip_serializing_if = "Option::is_none")]
@@ -917,6 +940,10 @@ impl ExternalDocument for Endpoint {
 
     fn ext_doc_id(&self) -> Option<&str> {
         self.ext_doc_id.as_deref()
+    }
+
+    fn ext_doc_description(&self) -> Option<&str> {
+        self.ext_doc_description.as_deref()
     }
 }
 

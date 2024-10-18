@@ -691,6 +691,10 @@ export function hoistRequestAnnotations (
       const docUrl = docIds.find(entry => entry[0] === value.trim())
       assert(jsDocs, docUrl != null, `The @ext_doc_id '${value.trim()}' is not present in _doc_ids/table.csv`)
       endpoint.extDocUrl = docUrl[1].replace(/\r/g, '')
+      const docDesc = docUrl[2].trim()
+      if (docDesc != null) {
+        endpoint.extDocDesc = docDesc
+      }
     } else if (tag === 'availability') {
       // The @availability jsTag is different than most because it allows
       // multiple values within the same docstring, hence needing to parse
@@ -754,6 +758,10 @@ export function hoistTypeAnnotations (type: model.TypeDefinition, jsDocs: JSDoc[
       const docUrl = docIds.find(entry => entry[0] === value.trim())
       assert(jsDocs, docUrl != null, `The @ext_doc_id '${value.trim()}' is not present in _doc_ids/table.csv`)
       type.extDocUrl = docUrl[1].replace(/\r/g, '')
+      const docDesc = docUrl[2].trim()
+      if (docDesc != null) {
+        type.extDocDesc = docDesc
+      }
     } else if (tag === 'codegen_names') {
       type.codegenNames = parseCommaSeparated(value)
       assert(jsDocs,
@@ -826,6 +834,10 @@ function hoistPropertyAnnotations (property: model.Property, jsDocs: JSDoc[]): v
       const docUrl = docIds.find(entry => entry[0] === value)
       if (docUrl != null) {
         property.extDocUrl = docUrl[1].replace(/\r/g, '')
+        const docDesc = docUrl[2].trim()
+        if (docDesc != null) {
+          property.extDocDesc = docDesc
+        }
       }
     } else if (tag === 'server_default') {
       assert(jsDocs, property.type.kind === 'instance_of' || property.type.kind === 'union_of' || property.type.kind === 'array_of', `Default values can only be configured for instance_of or union_of types, you are using ${property.type.kind}`)

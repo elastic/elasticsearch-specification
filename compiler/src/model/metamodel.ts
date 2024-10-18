@@ -128,6 +128,7 @@ export class Property {
   docId?: string
   extDocId?: string
   extDocUrl?: string
+  extDocDesc?: string
   serverDefault?: boolean | string | number | string[] | number[]
   deprecation?: Deprecation
   availability?: Availabilities
@@ -162,6 +163,7 @@ export abstract class BaseType {
   docId?: string
   extDocId?: string
   extDocUrl?: string
+  extDocDesc?: string
   deprecation?: Deprecation
   /** If this endpoint has a quirk that needs special attention, give a short explanation about it */
   esQuirk?: string
@@ -412,6 +414,7 @@ export class Endpoint {
   docId?: string
   extDocId?: string
   extDocUrl?: string
+  extDocDesc?: string
   deprecation?: Deprecation
   availability: Availabilities
   docTag?: string

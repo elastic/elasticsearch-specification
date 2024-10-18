@@ -122,6 +122,7 @@ fn generate_type_for_schema(
     }
     if let Some(ref docs) = data.external_docs {
         base.ext_doc_url = Some(docs.ext_docs_url.clone())
+        base.ext_doc_description = Some(docs.ext_doc_description.clone())
     }
 
     // TODO: data.readonly/writeonly -> OverloadOf?

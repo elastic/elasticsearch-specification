@@ -219,7 +219,7 @@ impl<'a> TypesAndComponents<'a> {
                 .and_then(|i| i.version.as_deref())
                 .unwrap_or("current");
             ExternalDocumentation {
-                description: None,
+                description: obj.ext_doc_description().as_deref(),
                 url: url.trim().replace("{branch}", branch),
                 extensions: Default::default(),
             }
