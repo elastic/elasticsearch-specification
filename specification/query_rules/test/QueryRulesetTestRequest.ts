@@ -23,7 +23,7 @@ import { Id } from '@_types/common'
 
 /**
  * Creates or updates a query ruleset.
- * @rest_spec_name query_rules.put_ruleset
+ * @rest_spec_name query_rules.test
  * @availability stack since=8.10.0 stability=stable
  * @availability serverless stability=stable visibility=public
  */
