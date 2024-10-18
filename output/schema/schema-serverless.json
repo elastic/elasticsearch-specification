@@ -47106,8 +47106,8 @@
       "specLocation": "_types/aggregations/Aggregation.ts#L20-L20"
     },
     {
-      "docId": "query-dsl",
-      "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/query-dsl.html",
+      "extDocId": "query-dsl",
+      "extDocUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/query-dsl.html",
       "kind": "interface",
       "name": {
         "name": "QueryContainer",
@@ -102710,8 +102710,8 @@
       "properties": [
         {
           "description": "When you create a role, you can specify a query that defines the document level security permissions. You can optionally\nuse Mustache templates in the role query to insert the username of the current authenticated user into the role.\nLike other places in Elasticsearch that support templating or scripting, you can specify inline, stored, or file-based\ntemplates and define custom parameters. You access the details for the current authenticated user through the _user parameter.",
-          "docId": "templating-role-query",
-          "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/field-and-document-access-control.html#templating-role-query",
+          "extDocId": "templating-role-query",
+          "extDocUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/field-and-document-access-control.html#templating-role-query",
           "name": "template",
           "required": false,
           "type": {
