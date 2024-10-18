@@ -7609,7 +7609,7 @@
       "name": "query_rules.put_ruleset",
       "request": {
         "name": "Request",
-        "namespace": "query_rules.put_ruleset"
+        "namespace": "query_rules.test"
       },
       "requestBodyRequired": true,
       "requestMediaType": [
@@ -7617,7 +7617,7 @@
       ],
       "response": {
         "name": "Response",
-        "namespace": "query_rules.put_ruleset"
+        "namespace": "query_rules.test"
       },
       "responseMediaType": [
         "application/json"
@@ -34737,29 +34737,21 @@
         "kind": "properties",
         "properties": [
           {
-            "name": "rules",
+            "name": "match_criteria",
             "required": true,
             "type": {
-              "items": [
-                {
-                  "kind": "instance_of",
-                  "type": {
-                    "name": "QueryRule",
-                    "namespace": "query_rules._types"
-                  }
-                },
-                {
-                  "kind": "array_of",
-                  "value": {
-                    "kind": "instance_of",
-                    "type": {
-                      "name": "QueryRule",
-                      "namespace": "query_rules._types"
-                    }
-                  }
+              "key": {
+                "kind": "instance_of",
+                "type": {
+                  "name": "string",
+                  "namespace": "_builtins"
                 }
-              ],
-              "kind": "union_of"
+              },
+              "kind": "dictionary_of",
+              "singleKey": false,
+              "value": {
+                "kind": "user_defined_value"
+              }
             }
           }
         ]
@@ -34774,7 +34766,7 @@
       "kind": "request",
       "name": {
         "name": "Request",
-        "namespace": "query_rules.put_ruleset"
+        "namespace": "query_rules.test"
       },
       "path": [
         {
@@ -34791,20 +34783,34 @@
         }
       ],
       "query": [],
-      "specLocation": "query_rules/put_ruleset/QueryRulesetPutRequest.ts#L23-L43"
+      "specLocation": "query_rules/test/QueryRulesetTestRequest.ts#L24-L44"
     },
     {
       "body": {
         "kind": "properties",
         "properties": [
           {
-            "name": "result",
+            "name": "total_matched_rules",
             "required": true,
             "type": {
               "kind": "instance_of",
               "type": {
-                "name": "Result",
+                "name": "integer",
                 "namespace": "_types"
+              }
+            }
+          },
+          {
+            "name": "matched_rules",
+            "required": true,
+            "type": {
+              "kind": "array_of",
+              "value": {
+                "kind": "instance_of",
+                "type": {
+                  "name": "QueryRulesetMatchedRule",
+                  "namespace": "query_rules.test"
+                }
               }
             }
           }
@@ -34813,9 +34819,9 @@
       "kind": "response",
       "name": {
         "name": "Response",
-        "namespace": "query_rules.put_ruleset"
+        "namespace": "query_rules.test"
       },
-      "specLocation": "query_rules/put_ruleset/QueryRulesetPutResponse.ts#L22-L26"
+      "specLocation": "query_rules/test/QueryRulesetTestResponse.ts#L23-L28"
     },
     {
       "attachedBehaviors": [
@@ -137181,6 +137187,40 @@
         }
       ],
       "specLocation": "query_rules/list_rulesets/types.ts#L23-L37"
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "QueryRulesetMatchedRule",
+        "namespace": "query_rules.test"
+      },
+      "properties": [
+        {
+          "description": "Ruleset unique identifier",
+          "name": "ruleset_id",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Id",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "Rule unique identifier within that ruleset",
+          "name": "rule_id",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Id",
+              "namespace": "_types"
+            }
+          }
+        }
+      ],
+      "specLocation": "query_rules/test/types.ts#L21-L30"
     },
     {
       "kind": "interface",

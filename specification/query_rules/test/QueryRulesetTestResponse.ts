@@ -22,7 +22,7 @@ import { QueryRulesetMatchedRule } from './types'
 
 export class Response {
   body: {
-    total_matched_rules: integer,
+    total_matched_rules: integer
     matched_rules: QueryRulesetMatchedRule[]
   }
 }

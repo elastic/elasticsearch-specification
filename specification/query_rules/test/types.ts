@@ -16,9 +16,7 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-import { Dictionary } from '@spec_utils/Dictionary'
 import { Id } from '@_types/common'
-import { integer } from '@_types/Numeric'
 
 export class QueryRulesetMatchedRule {
   /**
