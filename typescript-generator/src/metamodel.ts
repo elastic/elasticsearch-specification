@@ -126,6 +126,8 @@ export class Property {
   description?: string
   docUrl?: string
   docId?: string
+  extDocId?: string
+  extDocUrl?: string
   serverDefault?: boolean | string | number | string[] | number[]
   deprecation?: Deprecation
   availability?: Availabilities
@@ -158,6 +160,8 @@ export abstract class BaseType {
   /** Link to public documentation */
   docUrl?: string
   docId?: string
+  extDocId?: string
+  extDocUrl?: string
   deprecation?: Deprecation
   /** If this endpoint has a quirk that needs special attention, give a short explanation about it */
   esQuirk?: string
@@ -406,11 +410,11 @@ export class Endpoint {
   description: string
   docUrl: string
   docId?: string
+  extDocId?: string
+  extDocUrl?: string
   deprecation?: Deprecation
   availability: Availabilities
   docTag?: string
-  extDocId?: string
-  extDocUrl?: string
   /**
    * If the request value is `null` it means that there is not yet a
    * request type definition for this endpoint.
