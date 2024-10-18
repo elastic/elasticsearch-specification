@@ -240,9 +240,6 @@ actions:
     description: Add x-model and updated externalDocs for the QueryContainer object
     update:
       x-model: true
-      externalDocs:
-        url: https://www.elastic.co/guide/en/elasticsearch/reference/master/query-dsl.html
-        description: Query domain specific language (DSL) reference
   - target: "$.components['schemas']['_types.analysis:CharFilter'].oneOf"
     description: Remove existing oneOf definition for CharFilter
     remove: true

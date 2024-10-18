@@ -25243,6 +25243,9 @@
         ]
       },
       "_types.query_dsl:QueryContainer": {
+        "externalDocs": {
+          "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl.html"
+        },
         "type": "object",
         "properties": {
           "bool": {
