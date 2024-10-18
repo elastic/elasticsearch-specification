@@ -102,7 +102,7 @@ import { WeightedTokensQuery } from './WeightedTokensQuery'
 /**
  * @variants container
  * @non_exhaustive
- * @doc_id query-dsl
+ * @ext_doc_id query-dsl
  */
 export class QueryContainer {
   /**
