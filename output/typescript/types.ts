@@ -17191,6 +17191,17 @@ export interface QueryRulesPutRuleResponse {
   result: Result
 }
 
+export interface QueryRulesPutRulesetRequest extends RequestBase {
+  ruleset_id: Id
+  body?: {
+    rules: QueryRulesQueryRule | QueryRulesQueryRule[]
+  }
+}
+
+export interface QueryRulesPutRulesetResponse {
+  result: Result
+}
+
 export interface QueryRulesTestQueryRulesetMatchedRule {
   ruleset_id: Id
   rule_id: Id
