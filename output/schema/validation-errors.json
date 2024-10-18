@@ -1023,6 +1023,12 @@
       ],
       "response": []
     },
+    "query_rules.test": {
+      "request": [
+        "Missing request & response"
+      ],
+      "response": []
+    },
     "reindex": {
       "request": [
         "Request: query parameter 'require_alias' does not exist in the json spec",

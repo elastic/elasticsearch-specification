@@ -17191,15 +17191,21 @@ export interface QueryRulesPutRuleResponse {
   result: Result
 }
 
-export interface QueryRulesPutRulesetRequest extends RequestBase {
+export interface QueryRulesTestQueryRulesetMatchedRule {
+  ruleset_id: Id
+  rule_id: Id
+}
+
+export interface QueryRulesTestRequest extends RequestBase {
   ruleset_id: Id
   body?: {
-    rules: QueryRulesQueryRule | QueryRulesQueryRule[]
+    match_criteria: Record<string, any>
   }
 }
 
-export interface QueryRulesPutRulesetResponse {
-  result: Result
+export interface QueryRulesTestResponse {
+  total_matched_rules: integer
+  matched_rules: QueryRulesTestQueryRulesetMatchedRule[]
 }
 
 export interface RollupDateHistogramGrouping {
