@@ -2084,9 +2084,6 @@
                 "type": "object",
                 "properties": {
                   "remote_cluster": {
-                    "externalDocs": {
-                      "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/modules-remote-clusters.html"
-                    },
                     "description": "The remote cluster containing the leader indices to match against.",
                     "type": "string"
                   },
@@ -7662,9 +7659,6 @@
                     "type": "string"
                   },
                   "params": {
-                    "externalDocs": {
-                      "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/esql-rest.html#esql-rest-params"
-                    },
                     "description": "To avoid any attempts of hacking or code injection, extract the values in a separate list of parameters. Use question mark placeholders (?) in the query string for each of the parameters.",
                     "type": "array",
                     "items": {
@@ -16722,9 +16716,6 @@
                 "type": "object",
                 "properties": {
                   "allow_lazy_start": {
-                    "externalDocs": {
-                      "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/ml-settings.html"
-                    },
                     "description": "Specifies whether this job can start when there is insufficient machine\nlearning node capacity for it to be immediately assigned to a node. If\nset to `false` and a machine learning node with capacity to run the job\ncannot be immediately found, the API returns an error. If set to `true`,\nthe API does not return an error; the job waits in the `starting` state\nuntil sufficient machine learning node capacity is available. This\nbehavior is also affected by the cluster-wide\n`xpack.ml.max_lazy_ml_nodes` setting.",
                     "type": "boolean"
                   },
@@ -21284,9 +21275,6 @@
                     "type": "string"
                   },
                   "model_memory_limit": {
-                    "externalDocs": {
-                      "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/ml-settings.html"
-                    },
                     "description": "The approximate maximum amount of memory resources that are permitted for\nanalytical processing. If your `elasticsearch.yml` file contains an\n`xpack.ml.max_model_memory_limit` setting, an error occurs when you try\nto create data frame analytics jobs that have `model_memory_limit` values\ngreater than that setting.",
                     "type": "string"
                   },
@@ -21295,9 +21283,6 @@
                     "type": "number"
                   },
                   "allow_lazy_start": {
-                    "externalDocs": {
-                      "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/ml-settings.html"
-                    },
                     "description": "Specifies whether this job can start when there is insufficient machine\nlearning node capacity for it to be immediately assigned to a node.",
                     "type": "boolean"
                   }
@@ -21690,9 +21675,6 @@
                 "type": "object",
                 "properties": {
                   "allow_lazy_open": {
-                    "externalDocs": {
-                      "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/ml-settings.html"
-                    },
                     "description": "Advanced configuration option. Specifies whether this job can open when\nthere is insufficient machine learning node capacity for it to be\nimmediately assigned to a node. If `false` and a machine learning node\nwith capacity to run the job cannot immediately be found, the open\nanomaly detection jobs API returns an error. However, this is also\nsubject to the cluster-wide `xpack.ml.max_lazy_ml_nodes` setting. If this\noption is set to `true`, the open anomaly detection jobs API does not\nreturn an error and the job waits in the opening state until sufficient\nmachine learning node capacity is available.",
                     "type": "boolean"
                   },
@@ -21726,16 +21708,10 @@
                     "$ref": "#/components/schemas/_types:Duration"
                   },
                   "daily_model_snapshot_retention_after_days": {
-                    "externalDocs": {
-                      "url": "https://www.elastic.co/guide/en/machine-learning/current/ml-ad-run-jobs.html#ml-ad-model-snapshots"
-                    },
                     "description": "Advanced configuration option, which affects the automatic removal of old\nmodel snapshots for this job. It specifies a period of time (in days)\nafter which only the first snapshot per day is retained. This period is\nrelative to the timestamp of the most recent snapshot for this job. Valid\nvalues range from 0 to `model_snapshot_retention_days`. For jobs created\nbefore version 7.8.0, the default value matches\n`model_snapshot_retention_days`.",
                     "type": "number"
                   },
                   "model_snapshot_retention_days": {
-                    "externalDocs": {
-                      "url": "https://www.elastic.co/guide/en/machine-learning/current/ml-ad-run-jobs.html#ml-ad-model-snapshots"
-                    },
                     "description": "Advanced configuration option, which affects the automatic removal of old\nmodel snapshots for this job. It specifies the maximum period of time (in\ndays) that snapshots are retained. This period is relative to the\ntimestamp of the most recent snapshot for this job.",
                     "type": "number"
                   },
@@ -29964,9 +29940,6 @@
                 "type": "object",
                 "properties": {
                   "role_descriptors": {
-                    "externalDocs": {
-                      "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/security-api-put-role.html"
-                    },
                     "description": "An array of role descriptors for this API key. This parameter is optional. When it is not specified or is an empty array, then the API key will have a point in time snapshot of permissions of the authenticated user. If you supply role descriptors then the resultant permissions would be an intersection of API keys permissions and authenticated user’s permissions thereby limiting the access scope for API keys. The structure of role descriptor is the same as the request for create role API. For more details, see create or update roles API.",
                     "type": "object",
                     "additionalProperties": {
@@ -35579,9 +35552,6 @@
         ]
       },
       "_types:Duration": {
-        "externalDocs": {
-          "url": "https://github.com/elastic/elasticsearch/blob/current/libs/core/src/main/java/org/elasticsearch/core/TimeValue.java"
-        },
         "description": "A duration. Units can be `nanos`, `micros`, `ms` (milliseconds), `s` (seconds), `m` (minutes), `h` (hours) and\n`d` (days). Also accepts \"0\" without a unit and \"-1\" to indicate an unspecified value.",
         "oneOf": [
           {
@@ -40458,9 +40428,6 @@
         ]
       },
       "_global.search._types:Context": {
-        "externalDocs": {
-          "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-mlt-query.html#_document_input_parameters"
-        },
         "description": "Text or location that we want similar documents for or a lookup to a document's field for the text.",
         "oneOf": [
           {
@@ -41053,9 +41020,6 @@
         ]
       },
       "_types.query_dsl:QueryContainer": {
-        "externalDocs": {
-          "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl.html"
-        },
         "type": "object",
         "properties": {
           "bool": {
@@ -41092,9 +41056,6 @@
             "$ref": "#/components/schemas/_types.query_dsl:FunctionScoreQuery"
           },
           "fuzzy": {
-            "externalDocs": {
-              "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-fuzzy-query.html"
-            },
             "description": "Returns documents that contain terms similar to the search term, as measured by a Levenshtein edit distance.",
             "type": "object",
             "additionalProperties": {
@@ -41125,9 +41086,6 @@
             "$ref": "#/components/schemas/_types.query_dsl:IdsQuery"
           },
           "intervals": {
-            "externalDocs": {
-              "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-intervals-query.html"
-            },
             "description": "Returns documents based on the order and proximity of matching terms.",
             "type": "object",
             "additionalProperties": {
@@ -41140,9 +41098,6 @@
             "$ref": "#/components/schemas/_types:KnnQuery"
           },
           "match": {
-            "externalDocs": {
-              "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-match-query.html"
-            },
             "description": "Returns documents that match a provided text, number, date or boolean value.\nThe provided text is analyzed before matching.",
             "type": "object",
             "additionalProperties": {
@@ -41155,9 +41110,6 @@
             "$ref": "#/components/schemas/_types.query_dsl:MatchAllQuery"
           },
           "match_bool_prefix": {
-            "externalDocs": {
-              "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-match-bool-prefix-query.html"
-            },
             "description": "Analyzes its input and constructs a `bool` query from the terms.\nEach term except the last is used in a `term` query.\nThe last term is used in a prefix query.",
             "type": "object",
             "additionalProperties": {
@@ -41170,9 +41122,6 @@
             "$ref": "#/components/schemas/_types.query_dsl:MatchNoneQuery"
           },
           "match_phrase": {
-            "externalDocs": {
-              "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-match-query-phrase.html"
-            },
             "description": "Analyzes the text and creates a phrase query out of the analyzed text.",
             "type": "object",
             "additionalProperties": {
@@ -41182,9 +41131,6 @@
             "maxProperties": 1
           },
           "match_phrase_prefix": {
-            "externalDocs": {
-              "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-match-query-phrase-prefix.html"
-            },
             "description": "Returns documents that contain the words of a provided text, in the same order as provided.\nThe last term of the provided text is treated as a prefix, matching any words that begin with that term.",
             "type": "object",
             "additionalProperties": {
@@ -41212,9 +41158,6 @@
             "$ref": "#/components/schemas/_types.query_dsl:PinnedQuery"
           },
           "prefix": {
-            "externalDocs": {
-              "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-prefix-query.html"
-            },
             "description": "Returns documents that contain a specific prefix in a provided field.",
             "type": "object",
             "additionalProperties": {
@@ -41227,9 +41170,6 @@
             "$ref": "#/components/schemas/_types.query_dsl:QueryStringQuery"
           },
           "range": {
-            "externalDocs": {
-              "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-range-query.html"
-            },
             "description": "Returns documents that contain terms within a provided range.",
             "type": "object",
             "additionalProperties": {
@@ -41242,9 +41182,6 @@
             "$ref": "#/components/schemas/_types.query_dsl:RankFeatureQuery"
           },
           "regexp": {
-            "externalDocs": {
-              "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-regexp-query.html"
-            },
             "description": "Returns documents that contain terms matching a regular expression.",
             "type": "object",
             "additionalProperties": {
@@ -41293,9 +41230,6 @@
             "$ref": "#/components/schemas/_types.query_dsl:SpanOrQuery"
           },
           "span_term": {
-            "externalDocs": {
-              "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-span-term-query.html"
-            },
             "description": "Matches spans containing a term.",
             "type": "object",
             "additionalProperties": {
@@ -41311,9 +41245,6 @@
             "$ref": "#/components/schemas/_types.query_dsl:SparseVectorQuery"
           },
           "term": {
-            "externalDocs": {
-              "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-term-query.html"
-            },
             "description": "Returns documents that contain an exact term in a provided field.\nTo return a document, the query term must exactly match the queried field's value, including whitespace and capitalization.",
             "type": "object",
             "additionalProperties": {
@@ -41326,9 +41257,6 @@
             "$ref": "#/components/schemas/_types.query_dsl:TermsQuery"
           },
           "terms_set": {
-            "externalDocs": {
-              "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-terms-set-query.html"
-            },
             "description": "Returns documents that contain a minimum number of exact terms in a provided field.\nTo return a document, a required number of terms must exactly match the field values, including whitespace and capitalization.",
             "type": "object",
             "additionalProperties": {
@@ -41339,9 +41267,6 @@
           },
           "text_expansion": {
             "deprecated": true,
-            "externalDocs": {
-              "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-text-expansion-query.html"
-            },
             "description": "Uses a natural language processing model to convert the query text into a list of token-weight pairs which are then used in a query against a sparse vector or rank features field.",
             "type": "object",
             "additionalProperties": {
@@ -41361,9 +41286,6 @@
             "maxProperties": 1
           },
           "wildcard": {
-            "externalDocs": {
-              "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-wildcard-query.html"
-            },
             "description": "Returns documents that contain terms matching a wildcard pattern.",
             "type": "object",
             "additionalProperties": {
@@ -41454,9 +41376,6 @@
         ]
       },
       "_types:MinimumShouldMatch": {
-        "externalDocs": {
-          "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-minimum-should-match.html"
-        },
         "description": "The minimum number of terms that should match as integer, percentage or range",
         "oneOf": [
           {
@@ -42137,15 +42056,9 @@
         ]
       },
       "_types:MultiTermQueryRewrite": {
-        "externalDocs": {
-          "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-multi-term-rewrite.html"
-        },
         "type": "string"
       },
       "_types:Fuzziness": {
-        "externalDocs": {
-          "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/common-options.html#fuzziness"
-        },
         "oneOf": [
           {
             "type": "string"
@@ -42633,9 +42546,6 @@
         ]
       },
       "_types:SortOptions": {
-        "externalDocs": {
-          "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/sort-search-results.html"
-        },
         "type": "object",
         "properties": {
           "_score": {
@@ -43002,9 +42912,6 @@
         "type": "object",
         "properties": {
           "analyzer": {
-            "externalDocs": {
-              "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/analysis.html"
-            },
             "description": "Analyzer used to normalize the term.",
             "type": "string"
           },
@@ -43035,9 +42942,6 @@
         "type": "object",
         "properties": {
           "analyzer": {
-            "externalDocs": {
-              "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/analysis.html"
-            },
             "description": "Analyzer used to analyze terms in the query.",
             "type": "string"
           },
@@ -43068,9 +42972,6 @@
         "type": "object",
         "properties": {
           "analyzer": {
-            "externalDocs": {
-              "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/analysis.html"
-            },
             "description": "Analyzer used to analyze the `prefix`.",
             "type": "string"
           },
@@ -43195,9 +43096,6 @@
             "type": "object",
             "properties": {
               "analyzer": {
-                "externalDocs": {
-                  "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/analysis.html"
-                },
                 "description": "Analyzer used to convert the text in the query value into tokens.",
                 "type": "string"
               },
@@ -43287,9 +43185,6 @@
             "type": "object",
             "properties": {
               "analyzer": {
-                "externalDocs": {
-                  "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/analysis.html"
-                },
                 "description": "Analyzer used to convert the text in the query value into tokens.",
                 "type": "string"
               },
@@ -43347,9 +43242,6 @@
             "type": "object",
             "properties": {
               "analyzer": {
-                "externalDocs": {
-                  "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/analysis.html"
-                },
                 "description": "Analyzer used to convert the text in the query value into tokens.",
                 "type": "string"
               },
@@ -43380,9 +43272,6 @@
             "type": "object",
             "properties": {
               "analyzer": {
-                "externalDocs": {
-                  "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/analysis.html"
-                },
                 "description": "Analyzer used to convert text in the query value into tokens.",
                 "type": "string"
               },
@@ -43417,9 +43306,6 @@
             "type": "object",
             "properties": {
               "analyzer": {
-                "externalDocs": {
-                  "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/analysis.html"
-                },
                 "description": "The analyzer that is used to analyze the free form text.\nDefaults to the analyzer associated with the first field in fields.",
                 "type": "string"
               },
@@ -43517,9 +43403,6 @@
         ]
       },
       "_types.query_dsl:Like": {
-        "externalDocs": {
-          "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-mlt-query.html#_document_input_parameters"
-        },
         "description": "Text that we want similar documents for or a lookup to a document's field for the text.",
         "oneOf": [
           {
@@ -43599,9 +43482,6 @@
             "type": "object",
             "properties": {
               "analyzer": {
-                "externalDocs": {
-                  "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/analysis.html"
-                },
                 "description": "Analyzer used to convert the text in the query value into tokens.",
                 "type": "string"
               },
@@ -43880,9 +43760,6 @@
                 "type": "boolean"
               },
               "analyzer": {
-                "externalDocs": {
-                  "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/analysis.html"
-                },
                 "description": "Analyzer used to convert text in the query string into tokens.",
                 "type": "string"
               },
@@ -44017,9 +43894,6 @@
         ]
       },
       "_types:DateFormat": {
-        "externalDocs": {
-          "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/mapping-date-format.html"
-        },
         "type": "string"
       },
       "_types.query_dsl:RangeQueryBase": {
@@ -44399,9 +44273,6 @@
                 "type": "boolean"
               },
               "flags": {
-                "externalDocs": {
-                  "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/regexp-syntax.html"
-                },
                 "description": "Enables optional operators for the regular expression.",
                 "type": "string"
               },
@@ -44413,9 +44284,6 @@
                 "$ref": "#/components/schemas/_types:MultiTermQueryRewrite"
               },
               "value": {
-                "externalDocs": {
-                  "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/regexp-syntax.html"
-                },
                 "description": "Regular expression for terms you wish to find in the provided field.",
                 "type": "string"
               }
@@ -44548,9 +44416,6 @@
             "type": "object",
             "properties": {
               "analyzer": {
-                "externalDocs": {
-                  "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/analysis.html"
-                },
                 "description": "Analyzer used to convert text in the query string into tokens.",
                 "type": "string"
               },
@@ -44610,9 +44475,6 @@
         ]
       },
       "_types.query_dsl:SimpleQueryStringFlags": {
-        "externalDocs": {
-          "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-simple-query-string-query.html#supported-flags"
-        },
         "description": "Query flags can be either a single flag or a combination of flags, e.g. `OR|AND|PREFIX`",
         "allOf": [
           {
@@ -46697,9 +46559,6 @@
             "$ref": "#/components/schemas/_types:Field"
           },
           "num_top_feature_importance_values": {
-            "externalDocs": {
-              "url": "https://www.elastic.co/guide/en/machine-learning/current/ml-feature-importance.html"
-            },
             "description": "Specifies the maximum number of feature importance values per document.",
             "type": "number"
           }
@@ -46713,9 +46572,6 @@
             "type": "number"
           },
           "num_top_feature_importance_values": {
-            "externalDocs": {
-              "url": "https://www.elastic.co/guide/en/machine-learning/current/ml-feature-importance.html"
-            },
             "description": "Specifies the maximum number of feature importance values per document.",
             "type": "number"
           },
@@ -48314,9 +48170,6 @@
             }
           },
           "format": {
-            "externalDocs": {
-              "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/mapping-date-format.html"
-            },
             "description": "A custom format for `date` type runtime fields.",
             "type": "string"
           },
@@ -48450,9 +48303,6 @@
         ]
       },
       "_types:NodeName": {
-        "externalDocs": {
-          "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/modules-node.html"
-        },
         "type": "string"
       },
       "autoscaling.get_autoscaling_capacity:AutoscalingDecider": {
@@ -48980,9 +48830,6 @@
         ]
       },
       "_types:ByteSize": {
-        "externalDocs": {
-          "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/api-conventions.html#byte-units"
-        },
         "oneOf": [
           {
             "type": "number"
@@ -57196,9 +57043,6 @@
         ]
       },
       "_types.analysis:Normalizer": {
-        "externalDocs": {
-          "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/analysis-normalizers.html"
-        },
         "discriminator": {
           "propertyName": "type"
         },
@@ -58728,9 +58572,6 @@
         "type": "object",
         "properties": {
           "meta": {
-            "externalDocs": {
-              "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/mapping-meta-field.html"
-            },
             "description": "Metadata about the field.",
             "type": "object",
             "additionalProperties": {
@@ -59073,9 +58914,6 @@
             ]
           },
           "fields": {
-            "externalDocs": {
-              "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/multi-fields.html"
-            },
             "description": "Multi-fields allow the same string value to be indexed in multiple ways for different purposes, such as one\nfield for search and a multi-field for sorting and aggregations, or the same string value analyzed by different analyzers.",
             "type": "object",
             "additionalProperties": {
@@ -59083,9 +58921,6 @@
             }
           },
           "meta": {
-            "externalDocs": {
-              "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/mapping-meta-field.html"
-            },
             "description": "Metadata about the field.",
             "type": "object",
             "additionalProperties": {
@@ -61512,9 +61347,6 @@
         }
       },
       "_types:DataStreamName": {
-        "externalDocs": {
-          "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/indices-create-data-stream.html#indices-create-data-stream-api-path-params"
-        },
         "type": "string"
       },
       "indices._types:DataStreamLifecycle": {
@@ -61891,9 +61723,6 @@
             "$ref": "#/components/schemas/cluster.stats:FieldTypesMappings"
           },
           "versions": {
-            "externalDocs": {
-              "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/analyzer-anatomy.html"
-            },
             "description": "Contains statistics about analyzers and analyzer components used in selected nodes.",
             "type": "array",
             "items": {
@@ -62527,9 +62356,6 @@
             "$ref": "#/components/schemas/cluster.stats:ClusterNodeCount"
           },
           "discovery_types": {
-            "externalDocs": {
-              "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/modules-discovery-hosts-providers.html"
-            },
             "description": "Contains statistics about the discovery types used by selected nodes.",
             "type": "object",
             "additionalProperties": {
@@ -64551,9 +64377,6 @@
             }
           },
           "sequences": {
-            "externalDocs": {
-              "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/eql-syntax.html#eql-sequences"
-            },
             "description": "Contains event sequences matching the query. Each object represents a matching sequence. This parameter is only returned for EQL queries containing a sequence.",
             "type": "array",
             "items": {
@@ -64576,9 +64399,6 @@
             "type": "object"
           },
           "missing": {
-            "externalDocs": {
-              "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/eql-syntax.html#eql-missing-events"
-            },
             "description": "Set to `true` for events in a timespan-constrained sequence that do not meet a given condition.",
             "type": "boolean"
           },
@@ -64609,9 +64429,6 @@
             }
           },
           "join_keys": {
-            "externalDocs": {
-              "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/eql-syntax.html#eql-sequences"
-            },
             "description": "Shared field values used to constrain matches in the sequence. These are defined using the by keyword in the EQL query syntax.",
             "type": "array",
             "items": {
@@ -64800,9 +64617,6 @@
             "type": "string"
           },
           "metadata_field": {
-            "externalDocs": {
-              "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/mapping-fields.html"
-            },
             "description": "Whether this field is registered as a metadata field.",
             "type": "boolean"
           },
@@ -65383,9 +65197,6 @@
             "$ref": "#/components/schemas/_types:Duration"
           },
           "use_significance": {
-            "externalDocs": {
-              "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/search-aggregations-bucket-significantterms-aggregation.html"
-            },
             "description": "Filters associated terms so only those that are significantly associated with your query are included.",
             "type": "boolean"
           }
@@ -71465,9 +71276,6 @@
             "type": "string"
           },
           "pipeline": {
-            "externalDocs": {
-              "url": "https://www.elastic.co/guide/en/logstash/current/configuration-file-structure.html"
-            },
             "description": "Configuration for the pipeline.",
             "type": "string"
           },
@@ -71503,9 +71311,6 @@
         "type": "object",
         "properties": {
           "pipeline.workers": {
-            "externalDocs": {
-              "url": "https://www.elastic.co/guide/en/logstash/current/logstash-settings-file.html"
-            },
             "description": "The number of workers that will, in parallel, execute the filter and output stages of the pipeline.",
             "type": "number"
           },
@@ -71518,9 +71323,6 @@
             "type": "number"
           },
           "queue.type": {
-            "externalDocs": {
-              "url": "https://www.elastic.co/guide/en/logstash/current/logstash-settings-file.html"
-            },
             "description": "The internal queuing model to use for event buffering.",
             "type": "string"
           },
@@ -72099,9 +71901,6 @@
         "type": "object",
         "properties": {
           "mse": {
-            "externalDocs": {
-              "url": "https://en.wikipedia.org/wiki/Mean_squared_error"
-            },
             "description": "Average squared difference between the predicted values and the actual (ground truth) value. For more information, read this wiki article.",
             "type": "object",
             "additionalProperties": {
@@ -72115,9 +71914,6 @@
             "$ref": "#/components/schemas/ml._types:DataframeEvaluationRegressionMetricsHuber"
           },
           "r_squared": {
-            "externalDocs": {
-              "url": "https://en.wikipedia.org/wiki/Coefficient_of_determination"
-            },
             "description": "Proportion of the variance in the dependent variable that is predictable from the independent variables.",
             "type": "object",
             "additionalProperties": {
@@ -75345,9 +75141,6 @@
         "type": "object",
         "properties": {
           "absolute_importance": {
-            "externalDocs": {
-              "url": "https://www.elastic.co/guide/en/machine-learning/current/dfa-regression-lossfunction.html"
-            },
             "description": "A positive number showing how much the parameter influences the variation of the loss function. For hyperparameters with values that are not specified by the user but tuned during hyperparameter optimization.",
             "type": "number"
           },
@@ -75486,9 +75279,6 @@
             "$ref": "#/components/schemas/ml._types:TrainedModelInferenceStats"
           },
           "ingest": {
-            "externalDocs": {
-              "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/cluster-nodes-stats.html"
-            },
             "description": "A collection of ingest stats for the model across all nodes.\nThe values are summations of the individual node statistics.\nThe format matches the ingest section in the nodes stats API.",
             "type": "object",
             "additionalProperties": {
@@ -75731,9 +75521,6 @@
         "type": "object",
         "properties": {
           "cache_miss_count": {
-            "externalDocs": {
-              "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/ml-settings.html"
-            },
             "description": "The number of times the model was loaded for inference and was not retrieved from the cache.\nIf this number is close to the `inference_count`, the cache is not being appropriately used.\nThis can be solved by increasing the cache size or its time-to-live (TTL).\nRefer to general machine learning settings for the appropriate settings.",
             "type": "number"
           },
@@ -76290,9 +76077,6 @@
         "type": "object",
         "properties": {
           "allow_lazy_open": {
-            "externalDocs": {
-              "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/ml-put-job.html"
-            },
             "description": "Advanced configuration option. Specifies whether this job can open when there is insufficient machine learning node capacity for it to be immediately assigned to a node.",
             "type": "boolean"
           },
@@ -76460,9 +76244,6 @@
             "$ref": "#/components/schemas/_types:Field"
           },
           "function": {
-            "externalDocs": {
-              "url": "https://www.elastic.co/guide/en/machine-learning/current/ml-functions.html"
-            },
             "description": "The analysis function that is used.\nFor example, `count`, `rare`, `mean`, `min`, `max`, and `sum`.",
             "type": "string"
           },
@@ -77335,9 +77116,6 @@
             }
           },
           "total_indexing_buffer": {
-            "externalDocs": {
-              "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/indexing-buffer.html"
-            },
             "description": "Total heap allowed to be used to hold recently indexed documents before they must be written to disk. This size is a shared pool across all shards on this node, and is controlled by Indexing Buffer settings.",
             "type": "number"
           },
@@ -79890,9 +79668,6 @@
             "type": "object",
             "properties": {
               "normalize": {
-                "externalDocs": {
-                  "url": "https://en.wikipedia.org/wiki/Discounted_cumulative_gain#Normalized_DCG"
-                },
                 "description": "If set to true, this metric will calculate the Normalized DCG.",
                 "type": "boolean"
               }
@@ -81390,9 +81165,6 @@
             "$ref": "#/components/schemas/_types:Metadata"
           },
           "run_as": {
-            "externalDocs": {
-              "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/run-as-privilege.html"
-            },
             "description": "A list of users that the API keys can impersonate. *Note*: in Serverless, the run-as feature is disabled. For API compatibility, you can still specify an empty `run_as` field, but a non-empty list will be rejected.",
             "type": "array",
             "items": {
@@ -82024,9 +81796,6 @@
             "$ref": "#/components/schemas/_types:Metadata"
           },
           "run_as": {
-            "externalDocs": {
-              "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/run-as-privilege.html"
-            },
             "description": "A list of users that the API keys can impersonate.",
             "type": "array",
             "items": {
@@ -82205,9 +81974,6 @@
         "type": "object",
         "properties": {
           "field_security": {
-            "externalDocs": {
-              "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/field-and-document-access-control.html"
-            },
             "description": "The document fields that the owners of the role have read access to.",
             "type": "array",
             "items": {
@@ -82533,9 +82299,6 @@
             "$ref": "#/components/schemas/_types.query_dsl:IdsQuery"
           },
           "match": {
-            "externalDocs": {
-              "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-match-query.html"
-            },
             "description": "Returns documents that match a provided text, number, date or boolean value.\nThe provided text is analyzed before matching.",
             "type": "object",
             "additionalProperties": {
@@ -82548,9 +82311,6 @@
             "$ref": "#/components/schemas/_types.query_dsl:MatchAllQuery"
           },
           "prefix": {
-            "externalDocs": {
-              "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-prefix-query.html"
-            },
             "description": "Returns documents that contain a specific prefix in a provided field.",
             "type": "object",
             "additionalProperties": {
@@ -82560,9 +82320,6 @@
             "maxProperties": 1
           },
           "range": {
-            "externalDocs": {
-              "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-range-query.html"
-            },
             "description": "Returns documents that contain terms within a provided range.",
             "type": "object",
             "additionalProperties": {
@@ -82575,9 +82332,6 @@
             "$ref": "#/components/schemas/_types.query_dsl:SimpleQueryStringQuery"
           },
           "term": {
-            "externalDocs": {
-              "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-term-query.html"
-            },
             "description": "Returns documents that contain an exact term in a provided field.\nTo return a document, the query term must exactly match the queried field's value, including whitespace and capitalization.",
             "type": "object",
             "additionalProperties": {
@@ -82590,9 +82344,6 @@
             "$ref": "#/components/schemas/_types.query_dsl:TermsQuery"
           },
           "wildcard": {
-            "externalDocs": {
-              "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-wildcard-query.html"
-            },
             "description": "Returns documents that contain terms matching a wildcard pattern.",
             "type": "object",
             "additionalProperties": {
@@ -82705,9 +82456,6 @@
             "$ref": "#/components/schemas/_types.query_dsl:IdsQuery"
           },
           "match": {
-            "externalDocs": {
-              "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-match-query.html"
-            },
             "description": "Returns roles that match a provided text, number, date or boolean value.\nThe provided text is analyzed before matching.",
             "type": "object",
             "additionalProperties": {
@@ -82720,9 +82468,6 @@
             "$ref": "#/components/schemas/_types.query_dsl:MatchAllQuery"
           },
           "prefix": {
-            "externalDocs": {
-              "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-prefix-query.html"
-            },
             "description": "Returns roles that contain a specific prefix in a provided field.",
             "type": "object",
             "additionalProperties": {
@@ -82732,9 +82477,6 @@
             "maxProperties": 1
           },
           "range": {
-            "externalDocs": {
-              "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-range-query.html"
-            },
             "description": "Returns roles that contain terms within a provided range.",
             "type": "object",
             "additionalProperties": {
@@ -82747,9 +82489,6 @@
             "$ref": "#/components/schemas/_types.query_dsl:SimpleQueryStringQuery"
           },
           "term": {
-            "externalDocs": {
-              "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-term-query.html"
-            },
             "description": "Returns roles that contain an exact term in a provided field.\nTo return a document, the query term must exactly match the queried field's value, including whitespace and capitalization.",
             "type": "object",
             "additionalProperties": {
@@ -82762,9 +82501,6 @@
             "$ref": "#/components/schemas/_types.query_dsl:TermsQuery"
           },
           "wildcard": {
-            "externalDocs": {
-              "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-wildcard-query.html"
-            },
             "description": "Returns roles that contain terms matching a wildcard pattern.",
             "type": "object",
             "additionalProperties": {
@@ -82812,9 +82548,6 @@
             "$ref": "#/components/schemas/_types.query_dsl:ExistsQuery"
           },
           "match": {
-            "externalDocs": {
-              "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-match-query.html"
-            },
             "description": "Returns users that match a provided text, number, date or boolean value.\nThe provided text is analyzed before matching.",
             "type": "object",
             "additionalProperties": {
@@ -82827,9 +82560,6 @@
             "$ref": "#/components/schemas/_types.query_dsl:MatchAllQuery"
           },
           "prefix": {
-            "externalDocs": {
-              "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-prefix-query.html"
-            },
             "description": "Returns users that contain a specific prefix in a provided field.",
             "type": "object",
             "additionalProperties": {
@@ -82839,9 +82569,6 @@
             "maxProperties": 1
           },
           "range": {
-            "externalDocs": {
-              "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-range-query.html"
-            },
             "description": "Returns users that contain terms within a provided range.",
             "type": "object",
             "additionalProperties": {
@@ -82854,9 +82581,6 @@
             "$ref": "#/components/schemas/_types.query_dsl:SimpleQueryStringQuery"
           },
           "term": {
-            "externalDocs": {
-              "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-term-query.html"
-            },
             "description": "Returns users that contain an exact term in a provided field.\nTo return a document, the query term must exactly match the queried field's value, including whitespace and capitalization.",
             "type": "object",
             "additionalProperties": {
@@ -82869,9 +82593,6 @@
             "$ref": "#/components/schemas/_types.query_dsl:TermsQuery"
           },
           "wildcard": {
-            "externalDocs": {
-              "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-wildcard-query.html"
-            },
             "description": "Returns users that contain terms matching a wildcard pattern.",
             "type": "object",
             "additionalProperties": {
@@ -83196,9 +82917,6 @@
         ]
       },
       "watcher._types:CronExpression": {
-        "externalDocs": {
-          "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/api-conventions.html#api-cron-expressions"
-        },
         "type": "string"
       },
       "slm._types:Statistics": {
@@ -101383,9 +101101,6 @@
               "type": "object",
               "properties": {
                 "query": {
-                  "externalDocs": {
-                    "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/eql-syntax.html"
-                  },
                   "description": "EQL query you wish to run.",
                   "type": "string"
                 },
@@ -101703,9 +101418,6 @@
               "type": "object",
               "properties": {
                 "analyzer": {
-                  "externalDocs": {
-                    "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/analysis-analyzers.html"
-                  },
                   "description": "The name of the analyzer that should be applied to the provided `text`.\nThis could be a built-in analyzer, or an analyzer that’s been configured in the index.",
                   "type": "string"
                 },
@@ -101717,9 +101429,6 @@
                   }
                 },
                 "char_filter": {
-                  "externalDocs": {
-                    "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/analysis-charfilters.html"
-                  },
                   "description": "Array of character filters used to preprocess characters before the tokenizer.",
                   "type": "array",
                   "items": {
@@ -101734,9 +101443,6 @@
                   "$ref": "#/components/schemas/_types:Field"
                 },
                 "filter": {
-                  "externalDocs": {
-                    "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/analysis-tokenfilters.html"
-                  },
                   "description": "Array of token filters used to apply after the tokenizer.",
                   "type": "array",
                   "items": {
@@ -101744,9 +101450,6 @@
                   }
                 },
                 "normalizer": {
-                  "externalDocs": {
-                    "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/analysis-normalizers.html"
-                  },
                   "description": "Normalizer to use to convert text into a single token.",
                   "type": "string"
                 },
@@ -101775,9 +101478,6 @@
                   }
                 },
                 "settings": {
-                  "externalDocs": {
-                    "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/index-modules.html#index-modules-settings"
-                  },
                   "description": "Configuration options for the target index.",
                   "type": "object",
                   "additionalProperties": {
@@ -102342,9 +102042,6 @@
                   "type": "string"
                 },
                 "model_memory_limit": {
-                  "externalDocs": {
-                    "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/ml-settings.html"
-                  },
                   "description": "The approximate maximum amount of memory resources that are permitted for\nanalytical processing. If your `elasticsearch.yml` file contains an\n`xpack.ml.max_model_memory_limit` setting, an error occurs when you try to\ncreate data frame analytics jobs that have `model_memory_limit` values\ngreater than that setting.",
                   "type": "string"
                 },
@@ -102356,9 +102053,6 @@
                   "$ref": "#/components/schemas/ml._types:DataframeAnalysisAnalyzedFields"
                 },
                 "allow_lazy_start": {
-                  "externalDocs": {
-                    "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/ml-settings.html"
-                  },
                   "description": "Specifies whether this job can start when there is insufficient machine\nlearning node capacity for it to be immediately assigned to a node.",
                   "type": "boolean"
                 }
@@ -103158,9 +102852,6 @@
                   "$ref": "#/components/schemas/_types:Name"
                 },
                 "role_descriptors": {
-                  "externalDocs": {
-                    "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/security-api-put-role.html"
-                  },
                   "description": "An array of role descriptors for this API key. This parameter is optional. When it is not specified or is an empty array, then the API key will have a point in time snapshot of permissions of the authenticated user. If you supply role descriptors then the resultant permissions would be an intersection of API keys permissions and authenticated user’s permissions thereby limiting the access scope for API keys. The structure of role descriptor is the same as the request for create role API. For more details, see create or update roles API.",
                   "type": "object",
                   "additionalProperties": {
@@ -103294,9 +102985,6 @@
                   "$ref": "#/components/schemas/_types:Metadata"
                 },
                 "run_as": {
-                  "externalDocs": {
-                    "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/run-as-privilege.html"
-                  },
                   "description": "A list of users that the owners of this role can impersonate. *Note*: in Serverless, the run-as feature is disabled. For API compatibility, you can still specify an empty `run_as` field, but a non-empty list will be rejected.",
                   "type": "array",
                   "items": {

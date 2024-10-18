@@ -719,7 +719,7 @@ export function hoistTypeAnnotations (type: model.TypeDefinition, jsDocs: JSDoc[
   assert(jsDocs, jsDocs.length < 2, 'Use a single multiline jsDoc block instead of multiple single line blocks')
 
   const validTags = ['class_serializer', 'doc_url', 'doc_id', 'behavior', 'variants', 'variant', 'shortcut_property',
-    'codegen_names', 'non_exhaustive', 'es_quirk', 'behavior_meta']
+    'codegen_names', 'non_exhaustive', 'es_quirk', 'behavior_meta', 'ext_doc_id']
   const tags = parseJsDocTags(jsDocs)
   if (jsDocs.length === 1) {
     const description = jsDocs[0].getDescription()
@@ -748,7 +748,14 @@ export function hoistTypeAnnotations (type: model.TypeDefinition, jsDocs: JSDoc[
       const docUrl = docIds.find(entry => entry[0] === value.trim())
       assert(jsDocs, docUrl != null, `The @doc_id '${value.trim()}' is not present in _doc_ids/table.csv`)
       type.docUrl = docUrl[1].replace(/\r/g, '')
-    } else if (tag === 'codegen_names') {
+    } else if (tag === 'ext_doc_id') {
+      assert(jsDocs, value.trim() !== '', `Type ${type.name.namespace}.${type.name.name}'s @ext_doc_id cannot be empty`)
+      type.extDocId = value.trim()
+      const docUrl = docIds.find(entry => entry[0] === value.trim())
+      assert(jsDocs, docUrl != null, `The @ext_doc_id '${value.trim()}' is not present in _doc_ids/table.csv`)
+      type.extDocUrl = docUrl[1].replace(/\r/g, '')
+    }
+    else if (tag === 'codegen_names') {
       type.codegenNames = parseCommaSeparated(value)
       assert(jsDocs,
         type.kind === 'type_alias' && type.type.kind === 'union_of' && type.type.items.length === type.codegenNames.length,
@@ -770,7 +777,7 @@ function hoistPropertyAnnotations (property: model.Property, jsDocs: JSDoc[]): v
   assert(jsDocs, jsDocs.length < 2, 'Use a single multiline jsDoc block instead of multiple single line blocks')
 
   const validTags = ['prop_serializer', 'doc_url', 'aliases', 'codegen_name', 'server_default',
-    'variant', 'doc_id', 'es_quirk', 'availability']
+    'variant', 'doc_id', 'es_quirk', 'availability', 'ext_doc_id']
   const tags = parseJsDocTags(jsDocs)
   if (jsDocs.length === 1) {
     const description = jsDocs[0].getDescription()
@@ -813,6 +820,13 @@ function hoistPropertyAnnotations (property: model.Property, jsDocs: JSDoc[]): v
       const docUrl = docIds.find(entry => entry[0] === value)
       if (docUrl != null) {
         property.docUrl = docUrl[1].replace(/\r/g, '')
+      }
+    } else if (tag === 'ext_doc_id') {
+      assert(jsDocs, value.trim() !== '', `Property ${property.name}'s @ext_doc_id is cannot be empty`)
+      property.extDocId = value
+      const docUrl = docIds.find(entry => entry[0] === value)
+      if (docUrl != null) {
+        property.extDocUrl = docUrl[1].replace(/\r/g, '')
       }
     } else if (tag === 'server_default') {
       assert(jsDocs, property.type.kind === 'instance_of' || property.type.kind === 'union_of' || property.type.kind === 'array_of', `Default values can only be configured for instance_of or union_of types, you are using ${property.type.kind}`)

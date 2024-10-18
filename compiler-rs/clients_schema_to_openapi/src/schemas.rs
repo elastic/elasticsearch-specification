@@ -209,24 +209,7 @@ impl<'a> TypesAndComponents<'a> {
         self.for_body(&response.body)
     }
 
-    pub fn convert_external_docs(&self, obj: &impl clients_schema::Documented) -> Option<ExternalDocumentation> {
-        // FIXME: does the model contain resolved doc_id?
-        obj.doc_url().map(|url| {
-            let branch: &str = self
-                .model
-                .info
-                .as_ref()
-                .and_then(|i| i.version.as_deref())
-                .unwrap_or("current");
-            ExternalDocumentation {
-                description: None,
-                url: url.trim().replace("{branch}", branch),
-                extensions: Default::default(),
-            }
-        })
-    }
-
-    pub fn convert_endpoint_external_docs(&self, obj: &impl clients_schema::ExternalDocument) -> Option<ExternalDocumentation> {
+    pub fn convert_external_docs(&self, obj: &impl clients_schema::ExternalDocument) -> Option<ExternalDocumentation> {
         // FIXME: does the model contain resolved doc_id?
         obj.ext_doc_url().map(|url| {
             let branch: &str = self

@@ -57,7 +57,7 @@ export interface Request extends RequestBase {
     /**
      * If `true`, the request is real-time as opposed to near-real-time.
      * @server_default true
-     * @doc_id realtime
+     * @ext_doc_id realtime
      */
     realtime?: boolean
     /**
@@ -67,7 +67,7 @@ export interface Request extends RequestBase {
     refresh?: boolean
     /**
      * Target the specified primary shard.
-     * @doc_id routing
+     * @ext_doc_id routing
      */
     routing?: Routing
     /**

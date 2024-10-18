@@ -126,6 +126,8 @@ export class Property {
   description?: string
   docUrl?: string
   docId?: string
+  extDocId?: string
+  extDocUrl?: string
   serverDefault?: boolean | string | number | string[] | number[]
   deprecation?: Deprecation
   availability?: Availabilities
@@ -158,6 +160,8 @@ export abstract class BaseType {
   /** Link to public documentation */
   docUrl?: string
   docId?: string
+  extDocId?: string
+  extDocUrl?: string
   deprecation?: Deprecation
   /** If this endpoint has a quirk that needs special attention, give a short explanation about it */
   esQuirk?: string
