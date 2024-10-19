@@ -374,7 +374,6 @@ query-dsl-match-query,https://www.elastic.co/guide/en/elasticsearch/reference/{b
 query-dsl-minimum-should-match,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/query-dsl-minimum-should-match.html
 query-dsl-minimum-should-match,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/query-dsl-minimum-should-match.html
 query-dsl-mlt-query,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/query-dsl-mlt-query.html
-query-dsl-mlt-query,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/query-dsl-mlt-query.html
 query-dsl-multi-match-query,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/query-dsl-multi-match-query.html
 query-dsl-multi-term-rewrite,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/query-dsl-multi-term-rewrite.html
 query-dsl-nested-query,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/query-dsl-nested-query.html
@@ -389,7 +388,6 @@ query-dsl-regexp-query,https://www.elastic.co/guide/en/elasticsearch/reference/{
 query-dsl-script-query,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/query-dsl-script-query.html
 query-dsl-script-score-query,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/query-dsl-script-score-query.html
 query-dsl-shape-query,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/query-dsl-shape-query.html
-query-dsl-simple-query-string-query,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/query-dsl-simple-query-string-query.html
 query-dsl-simple-query-string-query,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/query-dsl-simple-query-string-query.html
 query-dsl-span-containing-query,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/query-dsl-span-containing-query.html
 query-dsl-span-field-masking-query,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/query-dsl-span-field-masking-query.html

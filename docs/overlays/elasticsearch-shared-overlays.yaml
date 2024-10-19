@@ -272,9 +272,6 @@ actions:
     description: Add x-model for distance feature query
     update:
       x-model: true
-      externalDocs:
-        description: Distance feature query
-        url: https://www.elastic.co/guide/en/elasticsearch/reference/master/query-dsl-distance-feature-query.html
   - target: "$.components['schemas']['_types.query_dsl:MoreLikeThisQuery']"
     description: Add x-model for more like this query
     update:
