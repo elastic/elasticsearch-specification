@@ -272,6 +272,44 @@ actions:
     description: Add x-model for distance feature query
     update:
       x-model: true
+  - target: "$.components['schemas']['_types.query_dsl:GeoShapeQuery']"
+    description: Add x-model
+    update:
+      x-model: true
+      externalDocs:
+        url: https://www.elastic.co/guide/en/elasticsearch/reference/master/query-dsl-geo-shape-query.html
+  - target: "$.components['schemas']['_types.query_dsl:GeoPolygonQuery']"
+    description: Add x-model
+    update:
+      x-model: true
+      externalDocs:
+        url: https://www.elastic.co/guide/en/elasticsearch/reference/master/query-dsl-geo-polygon-query.html
+  - target: "$.components['schemas']['_types.query_dsl:GeoDistanceQuery']"
+    description: Add x-model
+    update:
+      x-model: true
+      externalDocs:
+        url: https://www.elastic.co/guide/en/elasticsearch/reference/master/query-dsl-geo-distance-query.html
+  - target: "$.components['schemas']['_types.query_dsl:DistanceFeatureQueryBase']"
+    description: Add x-model to distance feature query base
+    update:
+      x-model: true
+  - target: "$.components['schemas']['_types.query_dsl:GeoDistanceFeatureQuery']"
+    description: Add x-model to geo distance feature query 
+    update:
+      x-model: true
+  - target: "$.components['schemas']['_types.query_dsl:DistanceFeatureQueryBaseGeoLocationDistance']"
+    description: Add x-model to distance feature query base geolocation distance
+    update:
+      x-model: true
+  - target: "$.components['schemas']['_types.query_dsl:DateDistanceFeatureQuery']"
+    description: Add x-model
+    update:
+      x-model: true
+  - target: "$.components['schemas']['_types.query_dsl:DistanceFeatureQueryBaseDateMathDuration']"
+    description: Add x-model
+    update:
+      x-model: true
   - target: "$.components['schemas']['_types.query_dsl:MoreLikeThisQuery']"
     description: Add x-model for more like this query
     update:
@@ -300,6 +338,10 @@ actions:
       externalDocs:
         description: Script query
         url: https://www.elastic.co/guide/en/elasticsearch/reference/master/query-dsl-script-query.html
+  - target: "$.components['schemas']['_types.query_dsl:ScriptScoreFunction']"
+    description: Add x-model for script score query
+    update:
+      x-model: true
   - target: "$.components['schemas']['_types.query_dsl:ScriptScoreQuery']"
     description: Add x-model for script score query
     update:
@@ -328,6 +370,196 @@ actions:
       externalDocs:
         description: Rule query
         url: https://www.elastic.co/guide/en/elasticsearch/reference/master/query-dsl-rule-query.html
+  - target: "$.components['schemas']['_types.query_dsl:BoolQuery']"
+    description: Add x-model for boolean query
+    update:
+      x-model: true
+      externalDocs:
+        url: https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-bool-query.html
+  - target: "$.components['schemas']['_types.query_dsl:QueryBase']"
+    description: Add x-model for query base
+    update:
+      x-model: true
+  - target: "$.components['schemas']['_types.query_dsl:BoostingQuery']"
+    description: Add x-model for query base
+    update:
+      x-model: true
+      externalDocs:
+        url: https://www.elastic.co/guide/en/elasticsearch/reference/master/query-dsl-boosting-query.html
+  - target: "$.components['schemas']['_types.query_dsl:CommonTermsQuery']"
+    description: Add x-model for common terms query
+    update:
+      x-model: true
+  - target: "$.components['schemas']['_types.query_dsl:CombinedFieldsQuery']"
+    description: Add x-model for combined fields query
+    update:
+      x-model: true
+  - target: "$.components['schemas']['_types.query_dsl:ConstantScoreQuery']"
+    description: Add x-model for constant score query
+    update:
+      x-model: true
+      externalDocs:
+        url: https://www.elastic.co/guide/en/elasticsearch/reference/master/query-dsl-constant-score-query.html
+  - target: "$.components['schemas']['_types.query_dsl:DisMaxQuery']"
+    description: Add x-model to Disjunction max query
+    update:
+      x-model: true
+      externalDocs:
+        url: https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-dis-max-query.html
+  - target: "$.components['schemas']['_types.query_dsl:UntypedDistanceFeatureQuery']"
+    description: Add x-model to untyped distance feature query
+    update:
+      x-model: true
+  - target: "$.components['schemas']['_types.query_dsl:ExistsQuery']"
+    description: Add x-model
+    update:
+      x-model: true
+      externalDocs:
+        url: https://www.elastic.co/guide/en/elasticsearch/reference/master/query-dsl-exists-query.html
+  - target: "$.components['schemas']['_types.query_dsl:FunctionScoreQuery']"
+    description: Add x-model
+    update:
+      x-model: true
+      externalDocs:
+        url: https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-function-score-query.html
+  - target: "$.components['schemas']['_types.query_dsl:FunctionScoreContainer']"
+    description: Add x-model
+    update:
+      x-model: true
+  - target: "$.components['schemas']['_types.query_dsl:DecayFunction']"
+    description: Add x-model
+    update:
+      x-model: true
+  - target: "$.components['schemas']['_types.query_dsl:UntypedDecayFunction']"
+    description: Add x-model
+    update:
+      x-model: true
+  - target: "$.components['schemas']['_types.query_dsl:DecayFunctionBase']"
+    description: Add x-model
+    update:
+      x-model: true
+  - target: "$.components['schemas']['_types.query_dsl:MultiValueMode']"
+    description: Add x-model
+    update:
+      x-model: true
+  - target: "$.components['schemas']['_types.query_dsl:DateDecayFunction']"
+    description: Add x-model
+    update:
+      x-model: true
+  - target: "$.components['schemas']['_types.query_dsl:DecayFunctionBaseDateMathDuration']"
+    description: Add x-model
+    update:
+      x-model: true
+  - target: "$.components['schemas']['_types.query_dsl:NumericDecayFunction']"
+    description: Add x-model
+    update:
+      x-model: true
+  - target: "$.components['schemas']['_types.query_dsl:DecayFunctionBasedoubledouble']"
+    description: Add x-model
+    update:
+      x-model: true
+  - target: "$.components['schemas']['_types.query_dsl:GeoDecayFunction']"
+    description: Add x-model
+    update:
+      x-model: true
+  - target: "$.components['schemas']['_types.query_dsl:DecayFunctionBaseGeoLocationDistance']"
+    description: Add x-model
+    update:
+      x-model: true
+  - target: "$.components['schemas']['_types.query_dsl:FieldValueFactorScoreFunction']"
+    description: Add x-model
+    update:
+      x-model: true
+  - target: "$.components['schemas']['_types.query_dsl:RandomScoreFunction']"
+    description: Add x-model
+    update:
+      x-model: true
+  - target: "$.components['schemas']['_types.query_dsl:FuzzyQuery']"
+    description: Add x-model
+    update:
+      x-model: true
+      externalDocs:
+        url: https://www.elastic.co/guide/en/elasticsearch/reference/master/query-dsl-fuzzy-query.html
+  - target: "$.components['schemas']['_types.query_dsl:GeoBoundingBoxQuery']"
+    description: Add x-model
+    update:
+      x-model: true
+      externalDocs:
+        url: https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-geo-bounding-box-query.html
+  - target: "$.components['schemas']['_types.query_dsl:HasChildQuery']"
+    description: Add x-model
+    update:
+      x-model: true
+      externalDocs:
+        url: https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-has-child-query.html
+  - target: "$.components['schemas']['_types.query_dsl:HasParentQuery']"
+    description: Add x-model
+    update:
+      x-model: true
+      externalDocs:
+        url: https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-has-parent-query.html
+  - target: "$.components['schemas']['_types.query_dsl:IntervalsQuery']"
+    description: Add x-model
+    update:
+      x-model: true
+      externalDocs:
+        url: https://www.elastic.co/guide/en/elasticsearch/reference/master/query-dsl-intervals-query.html
+  - target: "$.components['schemas']['_types.query_dsl:IntervalsAllOf']"
+    description: Add x-model
+    update:
+      x-model: true
+  - target: "$.components['schemas']['_types.query_dsl:IntervalsContainer']"
+    description: Add x-model
+    update:
+      x-model: true
+  - target: "$.components['schemas']['_types.query_dsl:IntervalsAnyOf']"
+    description: Add x-model
+    update:
+      x-model: true
+  - target: "$.components['schemas']['_types.query_dsl:IntervalsFilter']"
+    description: Add x-model
+    update:
+      x-model: true
+  - target: "$.components['schemas']['_types.query_dsl:IntervalsFuzzy']"
+    description: Add x-model
+    update:
+      x-model: true
+  - target: "$.components['schemas']['_types.query_dsl:IntervalsMatch']"
+    description: Add x-model
+    update:
+      x-model: true
+  - target: "$.components['schemas']['_types.query_dsl:IntervalsPrefix']"
+    description: Add x-model
+    update:
+      x-model: true
+  - target: "$.components['schemas']['_types.query_dsl:IntervalsWildcard']"
+    description: Add x-model
+    update:
+      x-model: true
+  - target: "$.components['schemas']['_types.query_dsl:MatchQuery']"
+    description: Add x-model
+    update:
+      x-model: true
+      externalDocs:
+        url: https://www.elastic.co/guide/en/elasticsearch/reference/master/query-dsl-match-query.html
+  - target: "$.components['schemas']['_types.query_dsl:MatchBoolPrefixQuery']"
+    description: Add x-model
+    update:
+      x-model: true
+      externalDocs:
+        url: https://www.elastic.co/guide/en/elasticsearch/reference/master/query-dsl-match-bool-prefix-query.html
+  - target: "$.components['schemas']['_types.query_dsl:MatchPhraseQuery']"
+    description: Add x-model
+    update:
+      x-model: true
+      externalDocs:
+        url: https://www.elastic.co/guide/en/elasticsearch/reference/master/query-dsl-match-query-phrase.html
+  - target: "$.components['schemas']['_types.query_dsl:MatchPhrasePrefixQuery']"
+    description: Add x-model
+    update:
+      x-model: true
+      externalDocs:
+        url: https://www.elastic.co/guide/en/elasticsearch/reference/master/query-dsl-match-query-phrase-prefix.html
 # Abbreviate and annotate items that are not shown in Bump.sh due to depth limits
   - target: "$.components['schemas']['_types.query_dsl:LikeDocument']"
     description: Add x-model to LikeDocument schema

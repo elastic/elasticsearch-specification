@@ -67,6 +67,9 @@ export class BoostingQuery extends QueryBase {
   positive: QueryContainer
 }
 
+/**
+ * @ext_doc_id query-dsl-constant-score-query
+ */
 export class ConstantScoreQuery extends QueryBase {
   /**
    * Filter query you wish to run. Any returned documents must match this query.
