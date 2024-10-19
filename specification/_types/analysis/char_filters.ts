@@ -25,7 +25,7 @@ export class CharFilterBase {
   version?: VersionString
 }
 
-/** 
+/**
  * @codegen_names name, definition
  * @ext_doc_id analysis-charfilters
  */

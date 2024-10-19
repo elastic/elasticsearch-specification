@@ -137,7 +137,7 @@ export class WhitespaceTokenizer extends TokenizerBase {
   max_token_length?: integer
 }
 
-/** 
+/**
  * @codegen_names name, definition
  * @ext_doc_id analysis-tokenizers
  */
