@@ -29,8 +29,7 @@ import { RequestBase } from '@_types/Base'
 import { Metadata, Name, Refresh } from '@_types/common'
 
 /**
- * Create or update roles API
- *
+ * Create or update roles API.
  * Create or update roles in the native realm.
  * @rest_spec_name security.put_role
  * @availability stack stability=stable

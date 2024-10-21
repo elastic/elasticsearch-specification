@@ -16863,7 +16863,7 @@
         "tags": [
           "security"
         ],
-        "summary": "Get roles API\n",
+        "summary": "Get roles API",
         "description": "Retrieves roles in the native realm.",
         "operationId": "security-get-role",
         "parameters": [
@@ -16881,7 +16881,7 @@
         "tags": [
           "security"
         ],
-        "summary": "Create or update roles API\n",
+        "summary": "Create or update roles API",
         "description": "Create or update roles in the native realm.",
         "operationId": "security-put-role",
         "parameters": [
@@ -16905,7 +16905,7 @@
         "tags": [
           "security"
         ],
-        "summary": "Create or update roles API\n",
+        "summary": "Create or update roles API",
         "description": "Create or update roles in the native realm.",
         "operationId": "security-put-role-1",
         "parameters": [
@@ -16929,7 +16929,7 @@
         "tags": [
           "security"
         ],
-        "summary": "Delete roles API\n",
+        "summary": "Delete roles API",
         "description": "Removes roles in the native realm.",
         "operationId": "security-delete-role",
         "parameters": [
@@ -16982,7 +16982,7 @@
         "tags": [
           "security"
         ],
-        "summary": "Get builtin privileges API\n",
+        "summary": "Get builtin privileges API",
         "description": "Retrieves the list of cluster privileges and index privileges that are available in this version of Elasticsearch.",
         "operationId": "security-get-builtin-privileges",
         "responses": {
@@ -17023,7 +17023,7 @@
         "tags": [
           "security"
         ],
-        "summary": "Get roles API\n",
+        "summary": "Get roles API",
         "description": "Retrieves roles in the native realm.",
         "operationId": "security-get-role-1",
         "responses": {

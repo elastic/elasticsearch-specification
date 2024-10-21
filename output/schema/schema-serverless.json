@@ -8379,7 +8379,7 @@
           "stability": "stable"
         }
       },
-      "description": "Delete roles API\n\nRemoves roles in the native realm.",
+      "description": "Delete roles API.\nRemoves roles in the native realm.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/security-api-delete-role.html",
       "name": "security.delete_role",
       "request": {
@@ -8455,7 +8455,7 @@
           "stability": "stable"
         }
       },
-      "description": "Get builtin privileges API\n\nRetrieves the list of cluster privileges and index privileges that are available in this version of Elasticsearch.",
+      "description": "Get builtin privileges API.\nRetrieves the list of cluster privileges and index privileges that are available in this version of Elasticsearch.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/security-api-get-builtin-privileges.html",
       "name": "security.get_builtin_privileges",
       "privileges": {
@@ -8494,7 +8494,7 @@
           "stability": "stable"
         }
       },
-      "description": "Get roles API\n\nRetrieves roles in the native realm.",
+      "description": "Get roles API.\nRetrieves roles in the native realm.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/security-api-get-role.html",
       "name": "security.get_role",
       "privileges": {
@@ -8629,7 +8629,7 @@
           "stability": "stable"
         }
       },
-      "description": "Create or update roles API\n\nCreate or update roles in the native realm.",
+      "description": "Create or update roles API.\nCreate or update roles in the native realm.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/security-api-put-role.html",
       "name": "security.put_role",
       "privileges": {
@@ -38755,7 +38755,7 @@
       "body": {
         "kind": "no_body"
       },
-      "description": "Delete roles API\n\nRemoves roles in the native realm.",
+      "description": "Delete roles API.\nRemoves roles in the native realm.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -38795,7 +38795,7 @@
           }
         }
       ],
-      "specLocation": "security/delete_role/SecurityDeleteRoleRequest.ts#L23-L38"
+      "specLocation": "security/delete_role/SecurityDeleteRoleRequest.ts#L23-L37"
     },
     {
       "body": {
@@ -38997,7 +38997,7 @@
       "body": {
         "kind": "no_body"
       },
-      "description": "Get builtin privileges API\n\nRetrieves the list of cluster privileges and index privileges that are available in this version of Elasticsearch.",
+      "description": "Get builtin privileges API.\nRetrieves the list of cluster privileges and index privileges that are available in this version of Elasticsearch.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -39011,7 +39011,7 @@
       },
       "path": [],
       "query": [],
-      "specLocation": "security/get_builtin_privileges/SecurityGetBuiltinPrivilegesRequest.ts#L22-L31"
+      "specLocation": "security/get_builtin_privileges/SecurityGetBuiltinPrivilegesRequest.ts#L22-L30"
     },
     {
       "body": {
@@ -39061,7 +39061,7 @@
       "body": {
         "kind": "no_body"
       },
-      "description": "Get roles API\n\nRetrieves roles in the native realm.",
+      "description": "Get roles API.\nRetrieves roles in the native realm.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -39088,7 +39088,7 @@
         }
       ],
       "query": [],
-      "specLocation": "security/get_role/SecurityGetRoleRequest.ts#L23-L39"
+      "specLocation": "security/get_role/SecurityGetRoleRequest.ts#L23-L38"
     },
     {
       "body": {
@@ -39570,7 +39570,7 @@
           }
         ]
       },
-      "description": "Create or update roles API\n\nCreate or update roles in the native realm.",
+      "description": "Create or update roles API.\nCreate or update roles in the native realm.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -39610,7 +39610,7 @@
           }
         }
       ],
-      "specLocation": "security/put_role/SecurityPutRoleRequest.ts#L31-L92"
+      "specLocation": "security/put_role/SecurityPutRoleRequest.ts#L31-L91"
     },
     {
       "body": {
