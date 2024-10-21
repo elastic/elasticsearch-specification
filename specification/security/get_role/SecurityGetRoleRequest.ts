@@ -22,6 +22,7 @@ import { Names } from '@_types/common'
 
 /**
  * Get roles API.
+ *
  * Retrieves roles in the native realm.
  * @rest_spec_name security.get_role
  * @availability stack stability=stable
