@@ -111,7 +111,7 @@ data-stream-path-param,https://www.elastic.co/guide/en/elasticsearch/reference/{
 data-streams,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/data-streams.html
 date-index-name-processor,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/date-index-name-processor.html
 dcg,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/search-rank-eval.html#_discounted_cumulative_gain_dcg
-defining-roles,https://www.elastic.co/guide/en/elasticsearch/reference/master/defining-roles.html
+defining-roles,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/defining-roles.html
 delete-async-sql-search-api,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/delete-async-sql-search-api.html
 delete-enrich-policy-api,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/delete-enrich-policy-api.html
 delete-license,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/delete-license.html
@@ -259,6 +259,7 @@ lowercase-processor,https://www.elastic.co/guide/en/elasticsearch/reference/{bra
 mapping-date-format,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/mapping-date-format.html
 mapping-meta-field,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/mapping-meta-field.html
 mapping-metadata,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/mapping-fields.html
+mapping-roles,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/mapping-roles.html
 mapping-settings-limit,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/mapping-settings-limit.html
 mapping-source-field,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/mapping-source-field.html
 mapping,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/mapping.html
@@ -570,6 +571,7 @@ security-api-saml-logout,https://www.elastic.co/guide/en/elasticsearch/reference
 security-api-saml-prepare-authentication,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/security-api-saml-prepare-authentication.html
 security-api-saml-sp-metadata,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/security-api-saml-sp-metadata.html
 security-api-ssl,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/security-api-ssl.html
+security-privileges,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/security-privileges.html
 service-accounts,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/service-accounts.html
 set-processor,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/set-processor.html
 shape,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/shape.html
