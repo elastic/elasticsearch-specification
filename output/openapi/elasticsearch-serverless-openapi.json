@@ -16863,8 +16863,8 @@
         "tags": [
           "security"
         ],
-        "summary": "The role management APIs are generally the preferred way to manage roles, rather than using file-based role management",
-        "description": "The get roles API cannot retrieve roles that are defined in roles files.",
+        "summary": "Get roles API",
+        "description": "Retrieves roles in the native realm.",
         "operationId": "security-get-role",
         "parameters": [
           {
@@ -16881,8 +16881,8 @@
         "tags": [
           "security"
         ],
-        "summary": "The role management APIs are generally the preferred way to manage roles, rather than using file-based role management",
-        "description": "The create or update roles API cannot update roles that are defined in roles files.",
+        "summary": "Create or update roles API",
+        "description": "Create or update roles in the native realm.",
         "operationId": "security-put-role",
         "parameters": [
           {
@@ -16905,8 +16905,8 @@
         "tags": [
           "security"
         ],
-        "summary": "The role management APIs are generally the preferred way to manage roles, rather than using file-based role management",
-        "description": "The create or update roles API cannot update roles that are defined in roles files.",
+        "summary": "Create or update roles API",
+        "description": "Create or update roles in the native realm.",
         "operationId": "security-put-role-1",
         "parameters": [
           {
@@ -16929,7 +16929,8 @@
         "tags": [
           "security"
         ],
-        "summary": "Removes roles in the native realm",
+        "summary": "Delete roles API",
+        "description": "Removes roles in the native realm.",
         "operationId": "security-delete-role",
         "parameters": [
           {
@@ -16981,7 +16982,8 @@
         "tags": [
           "security"
         ],
-        "summary": "Retrieves the list of cluster privileges and index privileges that are available in this version of Elasticsearch",
+        "summary": "Get builtin privileges API",
+        "description": "Retrieves the list of cluster privileges and index privileges that are available in this version of Elasticsearch.",
         "operationId": "security-get-builtin-privileges",
         "responses": {
           "200": {
@@ -17021,8 +17023,8 @@
         "tags": [
           "security"
         ],
-        "summary": "The role management APIs are generally the preferred way to manage roles, rather than using file-based role management",
-        "description": "The get roles API cannot retrieve roles that are defined in roles files.",
+        "summary": "Get roles API",
+        "description": "Retrieves roles in the native realm.",
         "operationId": "security-get-role-1",
         "responses": {
           "200": {

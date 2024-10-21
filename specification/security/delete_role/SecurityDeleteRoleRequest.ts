@@ -21,6 +21,9 @@ import { RequestBase } from '@_types/Base'
 import { Name, Refresh } from '@_types/common'
 
 /**
+ * Delete roles API.
+ *
+ * Removes roles in the native realm.
  * @rest_spec_name security.delete_role
  * @availability stack stability=stable
  * @availability serverless stability=stable visibility=public
