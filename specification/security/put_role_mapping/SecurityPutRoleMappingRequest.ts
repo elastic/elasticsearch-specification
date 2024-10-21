@@ -27,7 +27,7 @@ import { Metadata, Name, Refresh } from '@_types/common'
  * Role mappings define which roles are assigned to each user.
  * Each mapping has rules that identify users and a list of roles that are granted to those users.
  * The role mapping APIs are generally the preferred way to manage role mappings rather than using role mapping files. The create or update role mappings API cannot update role mappings that are defined in role mapping files.
- * 
+ *
  * This API does not create roles. Rather, it maps users to existing roles.
  * Roles can be created by using the create or update roles API or roles files.
  * @rest_spec_name security.put_role_mapping
