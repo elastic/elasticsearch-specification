@@ -23,6 +23,8 @@ import { Password, Username } from '@_types/common'
 import { AccessTokenGrantType } from './types'
 
 /**
+ * Get a token.
+ * Create a bearer token for access without requiring basic authentication.
  * @rest_spec_name security.get_token
  * @availability stack since=5.5.0 stability=stable
  * @availability serverless stability=stable visibility=private

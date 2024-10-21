@@ -21,6 +21,9 @@ import { RequestBase } from '@_types/Base'
 import { Name } from '@_types/common'
 
 /**
+ * Clear the privileges cache.
+ * Evict privileges from the native application privilege cache.
+ * The cache is also automatically cleared for applications that have their privileges updated.
  * @rest_spec_name security.clear_cached_privileges
  * @availability stack since=7.9.0 stability=stable
  * @availability serverless stability=stable visibility=private

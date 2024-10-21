@@ -22,7 +22,8 @@ import { RequestBase } from '@_types/Base'
 import { Refresh } from '@_types/common'
 
 /**
- * Enables a user profile so it's visible in user profile searches.
+ * Activate a user profile.
+ * Activated user profiles are visible in user profile searches.
  * @rest_spec_name security.enable_user_profile
  * @availability stack since=8.2.0 stability=stable
  * @availability serverless stability=stable visibility=private

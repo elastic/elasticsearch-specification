@@ -21,11 +21,13 @@ import { RequestBase } from '@_types/Base'
 import { Namespace, Service } from '@_types/common'
 
 /**
- * This API returns a list of service accounts that match the provided path parameter(s).
+ * Get service accounts.
+ * Get a list of service accounts that match the provided path parameters.
  * @rest_spec_name security.get_service_accounts
  * @availability stack since=7.13.0 stability=stable
  * @availability serverless stability=stable visibility=private
  * @cluster_privileges manage_service_account
+ * @ext_doc_id service-accounts
  */
 export interface Request extends RequestBase {
   path_parts: {
