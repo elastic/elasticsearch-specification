@@ -29,13 +29,14 @@ import { RequestBase } from '@_types/Base'
 import { Metadata, Name, Refresh } from '@_types/common'
 
 /**
- * Create or update roles API.
- *
- * Create or update roles in the native realm.
+ * Create or update roles.
+ * The role management APIs are generally the preferred way to manage roles in the native realm, rather than using file-based role management.
+ * The create or update roles API cannot update roles that are defined in roles files.
  * @rest_spec_name security.put_role
  * @availability stack stability=stable
  * @availability serverless stability=stable visibility=public
  * @cluster_privileges manage_security
+ * @ext_doc_id defining-roles
  */
 export interface Request extends RequestBase {
   path_parts: {

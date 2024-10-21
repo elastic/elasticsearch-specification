@@ -23,7 +23,9 @@ import { Sort, SortResults } from '@_types/sort'
 import { UserQueryContainer } from './types'
 
 /**
- * Retrieves information for Users in a paginated manner. You can optionally filter the results with a query.
+ * Find users with a query.
+ * Get information for users in a paginated manner.
+ * You can optionally filter the results with a query.
  * @rest_spec_name security.query_user
  * @availability stack since=8.14.0 stability=stable
  * @availability serverless stability=stable visibility=private

@@ -22,8 +22,9 @@ import { Password, Username } from '@_types/common'
 import { ApiKeyGrantType, GrantApiKey } from './types'
 
 /**
- * Creates an API key on behalf of another user.
- * This API is similar to Create API keys, however it creates the API key for a user that is different than the user that runs the API.
+ * Grant an API key.
+ * Create an API key on behalf of another user.
+ * This API is similar to the create API keys API, however it creates the API key for a user that is different than the user that runs the API.
  * The caller must have authentication credentials (either an access token, or a username and password) for the user on whose behalf the API key will be created.
  * It is not possible to use this API to create an API key without that user’s credentials.
  * The user, for whom the authentication credentials is provided, can optionally "run as" (impersonate) another user.

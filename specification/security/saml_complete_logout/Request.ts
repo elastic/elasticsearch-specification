@@ -21,6 +21,7 @@ import { RequestBase } from '@_types/Base'
 import { Ids } from '@_types/common'
 
 /**
+ * Logout of SAML completely.
  * Verifies the logout response sent from the SAML IdP.
  * @rest_spec_name security.saml_complete_logout
  * @availability stack since=7.14.0 stability=stable

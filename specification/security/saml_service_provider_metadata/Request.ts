@@ -21,6 +21,7 @@ import { RequestBase } from '@_types/Base'
 import { Name } from '@_types/common'
 
 /**
+ * Create SAML service provider metadata.
  * Generate SAML metadata for a SAML 2.0 Service Provider.
  * @rest_spec_name security.saml_service_provider_metadata
  * @availability stack since=7.11.0 stability=stable

@@ -24,10 +24,11 @@ import { ApplicationPrivilegesCheck, IndexPrivilegesCheck } from './types'
 
 /**
  * Check user privileges.
- * Determines whether the specified user has a specified list of privileges.
+ * Determine whether the specified user has a specified list of privileges.
  * @rest_spec_name security.has_privileges
  * @availability stack since=6.4.0 stability=stable
  * @availability serverless stability=stable visibility=public
+ * @ext_doc_id security-privileges
  */
 export interface Request extends RequestBase {
   path_parts: {

@@ -20,6 +20,7 @@
 import { RequestBase } from '@_types/Base'
 
 /**
+ * Logout of SAML.
  * Submits a request to invalidate an access token and refresh token.
  * @rest_spec_name security.saml_logout
  * @availability stack since=7.5.0 stability=stable

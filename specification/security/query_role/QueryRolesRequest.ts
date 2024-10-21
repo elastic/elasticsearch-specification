@@ -23,7 +23,8 @@ import { Sort, SortResults } from '@_types/sort'
 import { RoleQueryContainer } from './types'
 
 /**
- * Retrieves roles in a paginated manner. You can optionally filter the results with a query.
+ * Find roles with a query.
+ * Get roles in a paginated manner. You can optionally filter the results with a query.
  * @rest_spec_name security.query_role
  * @availability stack since=8.15.0 stability=stable
  * @availability serverless stability=stable visibility=private

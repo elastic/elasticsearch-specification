@@ -22,13 +22,14 @@ import { Id, Name, Username } from '@_types/common'
 
 /**
  * Invalidate API keys.
- * Invalidates one or more API keys.
+ * This API invalidates API keys created by the create API key or grant API key APIs.
+ * Invalidated API keys fail authentication, but they can still be viewed using the get API key information and query API key information APIs, for at least the configured retention period, until they are automatically deleted.
  * The `manage_api_key` privilege allows deleting any API keys.
  * The `manage_own_api_key` only allows deleting API keys that are owned by the user.
  * In addition, with the `manage_own_api_key` privilege, an invalidation request must be issued in one of the three formats:
  * - Set the parameter `owner=true`.
  * - Or, set both `username` and `realm_name` to match the user’s identity.
- * - Or, if the request is issued by an API key, i.e. an API key invalidates itself, specify its ID in the `ids` field.
+ * - Or, if the request is issued by an API key, that is to say an API key invalidates itself, specify its ID in the `ids` field.
  * @rest_spec_name security.invalidate_api_key
  * @availability stack since=6.7.0 stability=stable
  * @availability serverless stability=stable visibility=public
