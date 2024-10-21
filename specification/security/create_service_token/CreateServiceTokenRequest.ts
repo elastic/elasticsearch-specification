@@ -26,7 +26,7 @@ import { Name, Namespace, Refresh, Service } from '@_types/common'
  * @rest_spec_name security.create_service_token
  * @availability stack stability=stable
  * @availability serverless stability=stable visibility=private
- * @ext_doc_id service-account
+ * @ext_doc_id service-accounts
  */
 export interface Request extends RequestBase {
   path_parts: {

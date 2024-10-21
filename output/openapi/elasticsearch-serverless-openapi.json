@@ -16726,7 +16726,7 @@
           "security"
         ],
         "summary": "Create an API key",
-        "description": "Creates an API key for access without requiring basic authentication.\nA successful request returns a JSON structure that contains the API key, its unique id, and its name.\nIf applicable, it also returns expiration information for the API key in milliseconds.\nNOTE: By default, API keys never expire. You can specify expiration information when you create the API keys.",
+        "description": "Create an API key for access without requiring basic authentication.\nA successful request returns a JSON structure that contains the API key, its unique id, and its name.\nIf applicable, it also returns expiration information for the API key in milliseconds.\nNOTE: By default, API keys never expire. You can specify expiration information when you create the API keys.",
         "operationId": "security-create-api-key",
         "parameters": [
           {
@@ -16748,7 +16748,7 @@
           "security"
         ],
         "summary": "Create an API key",
-        "description": "Creates an API key for access without requiring basic authentication.\nA successful request returns a JSON structure that contains the API key, its unique id, and its name.\nIf applicable, it also returns expiration information for the API key in milliseconds.\nNOTE: By default, API keys never expire. You can specify expiration information when you create the API keys.",
+        "description": "Create an API key for access without requiring basic authentication.\nA successful request returns a JSON structure that contains the API key, its unique id, and its name.\nIf applicable, it also returns expiration information for the API key in milliseconds.\nNOTE: By default, API keys never expire. You can specify expiration information when you create the API keys.",
         "operationId": "security-create-api-key-1",
         "parameters": [
           {
@@ -16856,8 +16856,8 @@
         "tags": [
           "security"
         ],
-        "summary": "Get roles API",
-        "description": "Retrieves roles in the native realm.",
+        "summary": "Get roles",
+        "description": "Get roles in the native realm.",
         "operationId": "security-get-role",
         "parameters": [
           {
@@ -16922,8 +16922,8 @@
         "tags": [
           "security"
         ],
-        "summary": "Delete roles API",
-        "description": "Removes roles in the native realm.",
+        "summary": "Delete roles",
+        "description": "Remove roles in the native realm.",
         "operationId": "security-delete-role",
         "parameters": [
           {
@@ -16975,8 +16975,11 @@
         "tags": [
           "security"
         ],
-        "summary": "Get builtin privileges API",
-        "description": "Retrieves the list of cluster privileges and index privileges that are available in this version of Elasticsearch.",
+        "summary": "Get builtin privileges",
+        "description": "Get the list of cluster privileges and index privileges that are available in this version of Elasticsearch.",
+        "externalDocs": {
+          "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/security-privileges.html"
+        },
         "operationId": "security-get-builtin-privileges",
         "responses": {
           "200": {
@@ -17016,8 +17019,8 @@
         "tags": [
           "security"
         ],
-        "summary": "Get roles API",
-        "description": "Retrieves roles in the native realm.",
+        "summary": "Get roles",
+        "description": "Get roles in the native realm.",
         "operationId": "security-get-role-1",
         "responses": {
           "200": {
