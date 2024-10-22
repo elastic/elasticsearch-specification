@@ -26789,7 +26789,8 @@
         "tags": [
           "security"
         ],
-        "summary": "Creates or updates a user profile on behalf of another user",
+        "summary": "Activate a user profile",
+        "description": "Create or update a user profile on behalf of another user.",
         "operationId": "security-activate-user-profile",
         "requestBody": {
           "content": {
@@ -26924,8 +26925,8 @@
         "tags": [
           "security"
         ],
-        "summary": "The role management APIs are generally the preferred way to manage roles, rather than using file-based role management",
-        "description": "The get roles API cannot retrieve roles that are defined in roles files.",
+        "summary": "Get roles",
+        "description": "Get roles in the native realm.\nThe role management APIs are generally the preferred way to manage roles, rather than using file-based role management.\nThe get roles API cannot retrieve roles that are defined in roles files.",
         "operationId": "security-get-role-1",
         "responses": {
           "200": {
@@ -26937,8 +26938,8 @@
         "tags": [
           "security"
         ],
-        "summary": "The role management APIs are generally the preferred way to manage roles, rather than using file-based role management",
-        "description": "The bulk create or update roles API cannot update roles that are defined in roles files.",
+        "summary": "Bulk create or update roles",
+        "description": "The role management APIs are generally the preferred way to manage roles, rather than using file-based role management.\nThe bulk create or update roles API cannot update roles that are defined in roles files.",
         "operationId": "security-bulk-put-role",
         "parameters": [
           {
@@ -27018,8 +27019,8 @@
         "tags": [
           "security"
         ],
-        "summary": "The role management APIs are generally the preferred way to manage roles, rather than using file-based role management",
-        "description": "The bulk delete roles API cannot delete roles that are defined in roles files.",
+        "summary": "Bulk delete roles",
+        "description": "The role management APIs are generally the preferred way to manage roles, rather than using file-based role management.\nThe bulk delete roles API cannot delete roles that are defined in roles files.",
         "operationId": "security-bulk-delete-role",
         "parameters": [
           {
@@ -27094,7 +27095,8 @@
         "tags": [
           "security"
         ],
-        "summary": "Changes the passwords of users in the native realm and built-in users",
+        "summary": "Change passwords",
+        "description": "Change the passwords of users in the native realm and built-in users.",
         "operationId": "security-change-password",
         "parameters": [
           {
@@ -27117,7 +27119,8 @@
         "tags": [
           "security"
         ],
-        "summary": "Changes the passwords of users in the native realm and built-in users",
+        "summary": "Change passwords",
+        "description": "Change the passwords of users in the native realm and built-in users.",
         "operationId": "security-change-password-1",
         "parameters": [
           {
@@ -27142,7 +27145,8 @@
         "tags": [
           "security"
         ],
-        "summary": "Changes the passwords of users in the native realm and built-in users",
+        "summary": "Change passwords",
+        "description": "Change the passwords of users in the native realm and built-in users.",
         "operationId": "security-change-password-2",
         "parameters": [
           {
@@ -27162,7 +27166,8 @@
         "tags": [
           "security"
         ],
-        "summary": "Changes the passwords of users in the native realm and built-in users",
+        "summary": "Change passwords",
+        "description": "Change the passwords of users in the native realm and built-in users.",
         "operationId": "security-change-password-3",
         "parameters": [
           {
@@ -27184,8 +27189,8 @@
         "tags": [
           "security"
         ],
-        "summary": "Evicts a subset of all entries from the API key cache",
-        "description": "The cache is also automatically cleared on state changes of the security index.",
+        "summary": "Clear the API key cache",
+        "description": "Evict a subset of all entries from the API key cache.\nThe cache is also automatically cleared on state changes of the security index.",
         "operationId": "security-clear-api-key-cache",
         "parameters": [
           {
@@ -27239,7 +27244,8 @@
         "tags": [
           "security"
         ],
-        "summary": "Evicts application privileges from the native application privileges cache",
+        "summary": "Clear the privileges cache",
+        "description": "Evict privileges from the native application privilege cache.\nThe cache is also automatically cleared for applications that have their privileges updated.",
         "operationId": "security-clear-cached-privileges",
         "parameters": [
           {
@@ -27293,8 +27299,8 @@
         "tags": [
           "security"
         ],
-        "summary": "Evicts users from the user cache",
-        "description": "Can completely clear the cache or evict specific users.",
+        "summary": "Clear the user cache",
+        "description": "Evict users from the user cache. You can completely clear the cache or evict specific users.",
         "operationId": "security-clear-cached-realms",
         "parameters": [
           {
@@ -27360,7 +27366,8 @@
         "tags": [
           "security"
         ],
-        "summary": "Evicts roles from the native role cache",
+        "summary": "Clear the roles cache",
+        "description": "Evict roles from the native role cache.",
         "operationId": "security-clear-cached-roles",
         "parameters": [
           {
@@ -27413,7 +27420,11 @@
         "tags": [
           "security"
         ],
-        "summary": "Evicts tokens from the service account token caches",
+        "summary": "Clear service account token caches",
+        "description": "Evict a subset of all entries from the service account token caches.",
+        "externalDocs": {
+          "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/service-accounts.html"
+        },
         "operationId": "security-clear-cached-service-tokens",
         "parameters": [
           {
@@ -27603,7 +27614,7 @@
           "security"
         ],
         "summary": "Create an API key",
-        "description": "Creates an API key for access without requiring basic authentication.\nA successful request returns a JSON structure that contains the API key, its unique id, and its name.\nIf applicable, it also returns expiration information for the API key in milliseconds.\nNOTE: By default, API keys never expire. You can specify expiration information when you create the API keys.",
+        "description": "Create an API key for access without requiring basic authentication.\nA successful request returns a JSON structure that contains the API key, its unique id, and its name.\nIf applicable, it also returns expiration information for the API key in milliseconds.\nNOTE: By default, API keys never expire. You can specify expiration information when you create the API keys.",
         "operationId": "security-create-api-key",
         "parameters": [
           {
@@ -27625,7 +27636,7 @@
           "security"
         ],
         "summary": "Create an API key",
-        "description": "Creates an API key for access without requiring basic authentication.\nA successful request returns a JSON structure that contains the API key, its unique id, and its name.\nIf applicable, it also returns expiration information for the API key in milliseconds.\nNOTE: By default, API keys never expire. You can specify expiration information when you create the API keys.",
+        "description": "Create an API key for access without requiring basic authentication.\nA successful request returns a JSON structure that contains the API key, its unique id, and its name.\nIf applicable, it also returns expiration information for the API key in milliseconds.\nNOTE: By default, API keys never expire. You can specify expiration information when you create the API keys.",
         "operationId": "security-create-api-key-1",
         "parameters": [
           {
@@ -27733,7 +27744,11 @@
         "tags": [
           "security"
         ],
-        "summary": "Creates a service accounts token for access without requiring basic authentication",
+        "summary": "Create a service account token",
+        "description": "Create a service accounts token for access without requiring basic authentication.",
+        "externalDocs": {
+          "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/service-accounts.html"
+        },
         "operationId": "security-create-service-token",
         "parameters": [
           {
@@ -27759,7 +27774,11 @@
         "tags": [
           "security"
         ],
-        "summary": "Creates a service accounts token for access without requiring basic authentication",
+        "summary": "Create a service account token",
+        "description": "Create a service accounts token for access without requiring basic authentication.",
+        "externalDocs": {
+          "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/service-accounts.html"
+        },
         "operationId": "security-create-service-token-1",
         "parameters": [
           {
@@ -27785,7 +27804,11 @@
         "tags": [
           "security"
         ],
-        "summary": "Deletes a service account token",
+        "summary": "Delete service account tokens",
+        "description": "Delete service account tokens for a service in a specified namespace.",
+        "externalDocs": {
+          "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/service-accounts.html"
+        },
         "operationId": "security-delete-service-token",
         "parameters": [
           {
@@ -27860,7 +27883,11 @@
         "tags": [
           "security"
         ],
-        "summary": "Creates a service accounts token for access without requiring basic authentication",
+        "summary": "Create a service account token",
+        "description": "Create a service accounts token for access without requiring basic authentication.",
+        "externalDocs": {
+          "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/service-accounts.html"
+        },
         "operationId": "security-create-service-token-2",
         "parameters": [
           {
@@ -27885,7 +27912,10 @@
         "tags": [
           "security"
         ],
-        "summary": "Retrieves application privileges",
+        "summary": "Get application privileges",
+        "externalDocs": {
+          "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/security-privileges.html"
+        },
         "operationId": "security-get-privileges-2",
         "parameters": [
           {
@@ -27906,7 +27936,10 @@
         "tags": [
           "security"
         ],
-        "summary": "Removes application privileges",
+        "summary": "Delete application privileges",
+        "externalDocs": {
+          "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/security-privileges.html"
+        },
         "operationId": "security-delete-privileges",
         "parameters": [
           {
@@ -27968,8 +28001,8 @@
         "tags": [
           "security"
         ],
-        "summary": "The role management APIs are generally the preferred way to manage roles, rather than using file-based role management",
-        "description": "The get roles API cannot retrieve roles that are defined in roles files.",
+        "summary": "Get roles",
+        "description": "Get roles in the native realm.\nThe role management APIs are generally the preferred way to manage roles, rather than using file-based role management.\nThe get roles API cannot retrieve roles that are defined in roles files.",
         "operationId": "security-get-role",
         "parameters": [
           {
@@ -28034,7 +28067,8 @@
         "tags": [
           "security"
         ],
-        "summary": "Removes roles in the native realm",
+        "summary": "Delete roles",
+        "description": "Delete roles in the native realm.",
         "operationId": "security-delete-role",
         "parameters": [
           {
@@ -28086,7 +28120,11 @@
         "tags": [
           "security"
         ],
-        "summary": "Retrieves role mappings",
+        "summary": "Get role mappings",
+        "description": "Role mappings define which roles are assigned to each user.\nThe role mapping APIs are generally the preferred way to manage role mappings rather than using role mapping files.\nThe get role mappings API cannot retrieve role mappings that are defined in role mapping files.",
+        "externalDocs": {
+          "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/mapping-roles.html"
+        },
         "operationId": "security-get-role-mapping",
         "parameters": [
           {
@@ -28152,7 +28190,7 @@
         "tags": [
           "security"
         ],
-        "summary": "Removes role mappings",
+        "summary": "Delete role mappings",
         "operationId": "security-delete-role-mapping",
         "parameters": [
           {
@@ -28205,7 +28243,8 @@
         "tags": [
           "security"
         ],
-        "summary": "Retrieves information about users in the native realm and built-in users",
+        "summary": "Get users",
+        "description": "Get information about users in the native realm and built-in users.",
         "operationId": "security-get-user",
         "parameters": [
           {
@@ -28273,7 +28312,8 @@
         "tags": [
           "security"
         ],
-        "summary": "Deletes users from the native realm",
+        "summary": "Delete users",
+        "description": "Delete users from the native realm.",
         "operationId": "security-delete-user",
         "parameters": [
           {
@@ -28325,7 +28365,8 @@
         "tags": [
           "security"
         ],
-        "summary": "Disables users in the native realm",
+        "summary": "Disable users",
+        "description": "Disable users in the native realm.",
         "operationId": "security-disable-user",
         "parameters": [
           {
@@ -28345,7 +28386,8 @@
         "tags": [
           "security"
         ],
-        "summary": "Disables users in the native realm",
+        "summary": "Disable users",
+        "description": "Disable users in the native realm.",
         "operationId": "security-disable-user-1",
         "parameters": [
           {
@@ -28367,7 +28409,8 @@
         "tags": [
           "security"
         ],
-        "summary": "Disables a user profile so it's not visible in user profile searches",
+        "summary": "Disable a user profile",
+        "description": "Disable user profiles so that they are not visible in user profile searches.",
         "operationId": "security-disable-user-profile",
         "parameters": [
           {
@@ -28388,7 +28431,8 @@
         "tags": [
           "security"
         ],
-        "summary": "Disables a user profile so it's not visible in user profile searches",
+        "summary": "Disable a user profile",
+        "description": "Disable user profiles so that they are not visible in user profile searches.",
         "operationId": "security-disable-user-profile-1",
         "parameters": [
           {
@@ -28411,7 +28455,8 @@
         "tags": [
           "security"
         ],
-        "summary": "Enables users in the native realm",
+        "summary": "Enable users",
+        "description": "Enable users in the native realm.",
         "operationId": "security-enable-user",
         "parameters": [
           {
@@ -28431,7 +28476,8 @@
         "tags": [
           "security"
         ],
-        "summary": "Enables users in the native realm",
+        "summary": "Enable users",
+        "description": "Enable users in the native realm.",
         "operationId": "security-enable-user-1",
         "parameters": [
           {
@@ -28453,7 +28499,8 @@
         "tags": [
           "security"
         ],
-        "summary": "Enables a user profile so it's visible in user profile searches",
+        "summary": "Enable a user profile",
+        "description": "Enable user profiles to make them visible in user profile searches.",
         "operationId": "security-enable-user-profile",
         "parameters": [
           {
@@ -28474,7 +28521,8 @@
         "tags": [
           "security"
         ],
-        "summary": "Enables a user profile so it's visible in user profile searches",
+        "summary": "Enable a user profile",
+        "description": "Enable user profiles to make them visible in user profile searches.",
         "operationId": "security-enable-user-profile-1",
         "parameters": [
           {
@@ -28497,7 +28545,8 @@
         "tags": [
           "security"
         ],
-        "summary": "Enables a Kibana instance to configure itself for communication with a secured Elasticsearch cluster",
+        "summary": "Enroll Kibana",
+        "description": "Enable a Kibana instance to configure itself for communication with a secured Elasticsearch cluster.",
         "operationId": "security-enroll-kibana",
         "responses": {
           "200": {
@@ -28531,7 +28580,8 @@
         "tags": [
           "security"
         ],
-        "summary": "Allows a new node to join an existing cluster with security features enabled",
+        "summary": "Enroll a node",
+        "description": "Enroll a new node to allow it to join an existing cluster with security features enabled.",
         "operationId": "security-enroll-node",
         "responses": {
           "200": {
@@ -28584,7 +28634,11 @@
         "tags": [
           "security"
         ],
-        "summary": "Retrieves the list of cluster privileges and index privileges that are available in this version of Elasticsearch",
+        "summary": "Get builtin privileges",
+        "description": "Get the list of cluster privileges and index privileges that are available in this version of Elasticsearch.",
+        "externalDocs": {
+          "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/security-privileges.html"
+        },
         "operationId": "security-get-builtin-privileges",
         "responses": {
           "200": {
@@ -28621,7 +28675,10 @@
         "tags": [
           "security"
         ],
-        "summary": "Retrieves application privileges",
+        "summary": "Get application privileges",
+        "externalDocs": {
+          "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/security-privileges.html"
+        },
         "operationId": "security-get-privileges",
         "responses": {
           "200": {
@@ -28678,7 +28735,10 @@
         "tags": [
           "security"
         ],
-        "summary": "Retrieves application privileges",
+        "summary": "Get application privileges",
+        "externalDocs": {
+          "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/security-privileges.html"
+        },
         "operationId": "security-get-privileges-1",
         "parameters": [
           {
@@ -28698,7 +28758,11 @@
         "tags": [
           "security"
         ],
-        "summary": "Retrieves role mappings",
+        "summary": "Get role mappings",
+        "description": "Role mappings define which roles are assigned to each user.\nThe role mapping APIs are generally the preferred way to manage role mappings rather than using role mapping files.\nThe get role mappings API cannot retrieve role mappings that are defined in role mapping files.",
+        "externalDocs": {
+          "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/mapping-roles.html"
+        },
         "operationId": "security-get-role-mapping-1",
         "responses": {
           "200": {
@@ -28713,7 +28777,11 @@
         "tags": [
           "security"
         ],
-        "summary": "This API returns a list of service accounts that match the provided path parameter(s)",
+        "summary": "Get service accounts",
+        "description": "Get a list of service accounts that match the provided path parameters.",
+        "externalDocs": {
+          "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/service-accounts.html"
+        },
         "operationId": "security-get-service-accounts",
         "parameters": [
           {
@@ -28736,7 +28804,11 @@
         "tags": [
           "security"
         ],
-        "summary": "This API returns a list of service accounts that match the provided path parameter(s)",
+        "summary": "Get service accounts",
+        "description": "Get a list of service accounts that match the provided path parameters.",
+        "externalDocs": {
+          "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/service-accounts.html"
+        },
         "operationId": "security-get-service-accounts-1",
         "parameters": [
           {
@@ -28756,7 +28828,11 @@
         "tags": [
           "security"
         ],
-        "summary": "This API returns a list of service accounts that match the provided path parameter(s)",
+        "summary": "Get service accounts",
+        "description": "Get a list of service accounts that match the provided path parameters.",
+        "externalDocs": {
+          "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/service-accounts.html"
+        },
         "operationId": "security-get-service-accounts-2",
         "responses": {
           "200": {
@@ -28771,7 +28847,10 @@
         "tags": [
           "security"
         ],
-        "summary": "Retrieves information of all service credentials for a service account",
+        "summary": "Get service account credentials",
+        "externalDocs": {
+          "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/service-accounts.html"
+        },
         "operationId": "security-get-service-credentials",
         "parameters": [
           {
@@ -28840,7 +28919,8 @@
         "tags": [
           "security"
         ],
-        "summary": "Creates a bearer token for access without requiring basic authentication",
+        "summary": "Get a token",
+        "description": "Create a bearer token for access without requiring basic authentication.",
         "operationId": "security-get-token",
         "requestBody": {
           "content": {
@@ -28987,7 +29067,8 @@
         "tags": [
           "security"
         ],
-        "summary": "Retrieves information about users in the native realm and built-in users",
+        "summary": "Get users",
+        "description": "Get information about users in the native realm and built-in users.",
         "operationId": "security-get-user-1",
         "parameters": [
           {
