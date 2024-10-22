@@ -35651,6 +35651,9 @@
         ]
       },
       "_types.aggregations:Aggregate": {
+        "externalDocs": {
+          "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/search-aggregations.html"
+        },
         "oneOf": [
           {
             "$ref": "#/components/schemas/_types.aggregations:CardinalityAggregate"
@@ -41053,6 +41056,9 @@
             "$ref": "#/components/schemas/_types.query_dsl:FunctionScoreQuery"
           },
           "fuzzy": {
+            "externalDocs": {
+              "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-fuzzy-query.html"
+            },
             "description": "Returns documents that contain terms similar to the search term, as measured by a Levenshtein edit distance.",
             "type": "object",
             "additionalProperties": {
@@ -41083,6 +41089,9 @@
             "$ref": "#/components/schemas/_types.query_dsl:IdsQuery"
           },
           "intervals": {
+            "externalDocs": {
+              "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-intervals-query.html"
+            },
             "description": "Returns documents based on the order and proximity of matching terms.",
             "type": "object",
             "additionalProperties": {
@@ -41095,6 +41104,9 @@
             "$ref": "#/components/schemas/_types:KnnQuery"
           },
           "match": {
+            "externalDocs": {
+              "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-match-query.html"
+            },
             "description": "Returns documents that match a provided text, number, date or boolean value.\nThe provided text is analyzed before matching.",
             "type": "object",
             "additionalProperties": {
@@ -41107,6 +41119,9 @@
             "$ref": "#/components/schemas/_types.query_dsl:MatchAllQuery"
           },
           "match_bool_prefix": {
+            "externalDocs": {
+              "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-match-bool-prefix-query.html"
+            },
             "description": "Analyzes its input and constructs a `bool` query from the terms.\nEach term except the last is used in a `term` query.\nThe last term is used in a prefix query.",
             "type": "object",
             "additionalProperties": {
@@ -41119,6 +41134,9 @@
             "$ref": "#/components/schemas/_types.query_dsl:MatchNoneQuery"
           },
           "match_phrase": {
+            "externalDocs": {
+              "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-match-query-phrase.html"
+            },
             "description": "Analyzes the text and creates a phrase query out of the analyzed text.",
             "type": "object",
             "additionalProperties": {
@@ -41128,6 +41146,9 @@
             "maxProperties": 1
           },
           "match_phrase_prefix": {
+            "externalDocs": {
+              "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-match-query-phrase-prefix.html"
+            },
             "description": "Returns documents that contain the words of a provided text, in the same order as provided.\nThe last term of the provided text is treated as a prefix, matching any words that begin with that term.",
             "type": "object",
             "additionalProperties": {
@@ -41155,6 +41176,9 @@
             "$ref": "#/components/schemas/_types.query_dsl:PinnedQuery"
           },
           "prefix": {
+            "externalDocs": {
+              "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-prefix-query.html"
+            },
             "description": "Returns documents that contain a specific prefix in a provided field.",
             "type": "object",
             "additionalProperties": {
@@ -41167,6 +41191,9 @@
             "$ref": "#/components/schemas/_types.query_dsl:QueryStringQuery"
           },
           "range": {
+            "externalDocs": {
+              "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-range-query.html"
+            },
             "description": "Returns documents that contain terms within a provided range.",
             "type": "object",
             "additionalProperties": {
@@ -41179,6 +41206,9 @@
             "$ref": "#/components/schemas/_types.query_dsl:RankFeatureQuery"
           },
           "regexp": {
+            "externalDocs": {
+              "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-regexp-query.html"
+            },
             "description": "Returns documents that contain terms matching a regular expression.",
             "type": "object",
             "additionalProperties": {
@@ -41227,6 +41257,9 @@
             "$ref": "#/components/schemas/_types.query_dsl:SpanOrQuery"
           },
           "span_term": {
+            "externalDocs": {
+              "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-span-term-query.html"
+            },
             "description": "Matches spans containing a term.",
             "type": "object",
             "additionalProperties": {
@@ -41242,6 +41275,9 @@
             "$ref": "#/components/schemas/_types.query_dsl:SparseVectorQuery"
           },
           "term": {
+            "externalDocs": {
+              "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-term-query.html"
+            },
             "description": "Returns documents that contain an exact term in a provided field.\nTo return a document, the query term must exactly match the queried field's value, including whitespace and capitalization.",
             "type": "object",
             "additionalProperties": {
@@ -41254,6 +41290,9 @@
             "$ref": "#/components/schemas/_types.query_dsl:TermsQuery"
           },
           "terms_set": {
+            "externalDocs": {
+              "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-terms-set-query.html"
+            },
             "description": "Returns documents that contain a minimum number of exact terms in a provided field.\nTo return a document, a required number of terms must exactly match the field values, including whitespace and capitalization.",
             "type": "object",
             "additionalProperties": {
@@ -41264,6 +41303,9 @@
           },
           "text_expansion": {
             "deprecated": true,
+            "externalDocs": {
+              "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-text-expansion-query.html"
+            },
             "description": "Uses a natural language processing model to convert the query text into a list of token-weight pairs which are then used in a query against a sparse vector or rank features field.",
             "type": "object",
             "additionalProperties": {
@@ -41274,6 +41316,9 @@
           },
           "weighted_tokens": {
             "deprecated": true,
+            "externalDocs": {
+              "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-weighted-tokens-query.html"
+            },
             "description": "Supports returning text_expansion query results by sending in precomputed tokens with the query.",
             "type": "object",
             "additionalProperties": {
@@ -41283,6 +41328,9 @@
             "maxProperties": 1
           },
           "wildcard": {
+            "externalDocs": {
+              "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-wildcard-query.html"
+            },
             "description": "Returns documents that contain terms matching a wildcard pattern.",
             "type": "object",
             "additionalProperties": {
@@ -41554,6 +41602,9 @@
         ]
       },
       "_types.query_dsl:DistanceFeatureQuery": {
+        "externalDocs": {
+          "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-distance-feature-query.html"
+        },
         "oneOf": [
           {
             "$ref": "#/components/schemas/_types.query_dsl:UntypedDistanceFeatureQuery"
@@ -42776,6 +42827,9 @@
             "$ref": "#/components/schemas/_types.query_dsl:QueryBase"
           },
           {
+            "externalDocs": {
+              "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-intervals-query.html"
+            },
             "type": "object",
             "properties": {
               "all_of": {
@@ -43303,6 +43357,9 @@
             "type": "object",
             "properties": {
               "analyzer": {
+                "externalDocs": {
+                  "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/analysis.html"
+                },
                 "description": "The analyzer that is used to analyze the free form text.\nDefaults to the analyzer associated with the first field in fields.",
                 "type": "string"
               },
@@ -43666,6 +43723,9 @@
             "$ref": "#/components/schemas/_types.query_dsl:QueryBase"
           },
           {
+            "externalDocs": {
+              "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-pinned-query.html"
+            },
             "allOf": [
               {
                 "type": "object",
@@ -43857,6 +43917,9 @@
         "type": "string"
       },
       "_types.query_dsl:RangeQuery": {
+        "externalDocs": {
+          "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-range-query.html"
+        },
         "oneOf": [
           {
             "$ref": "#/components/schemas/_types.query_dsl:UntypedRangeQuery"
@@ -44777,6 +44840,9 @@
             "$ref": "#/components/schemas/_types.query_dsl:QueryBase"
           },
           {
+            "externalDocs": {
+              "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-sparse-vector-query.html"
+            },
             "allOf": [
               {
                 "type": "object",
@@ -55053,6 +55119,9 @@
         ]
       },
       "_types.analysis:CharFilter": {
+        "externalDocs": {
+          "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/analysis-charfilters.html"
+        },
         "oneOf": [
           {
             "type": "string"
@@ -55237,6 +55306,9 @@
         ]
       },
       "_types.analysis:TokenFilter": {
+        "externalDocs": {
+          "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/analysis-tokenfilters.html"
+        },
         "oneOf": [
           {
             "type": "string"
@@ -57093,6 +57165,9 @@
         ]
       },
       "_types.analysis:Tokenizer": {
+        "externalDocs": {
+          "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/analysis-tokenizers.html"
+        },
         "oneOf": [
           {
             "type": "string"
