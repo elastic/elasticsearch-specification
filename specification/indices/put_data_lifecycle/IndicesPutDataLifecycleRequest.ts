@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { DataStreamLifecycleDownsampling } from '@indices/_types/DataStreamLifecycleDownsampling'
+import { DataStreamLifecycle } from '@indices/_types/DataStreamLifecycle'
 import { RequestBase } from '@_types/Base'
 import { DataStreamNames, ExpandWildcards } from '@_types/common'
 import { Duration } from '@_types/Time'
@@ -60,17 +60,8 @@ export interface Request extends RequestBase {
      */
     timeout?: Duration
   }
-  body: {
-    /**
-     * If defined, every document added to this data stream will be stored at least for this time frame.
-     * Any time after this duration the document could be deleted.
-     * When empty, every document in this data stream will be stored indefinitely.
-     */
-    data_retention?: Duration
-    /**
-     * If defined, every backing index will execute the configured downsampling configuration after the backing
-     * index is not the data stream write index anymore.
-     */
-    downsampling?: DataStreamLifecycleDownsampling
-  }
+  /**
+   * @codegen_name lifecycle
+   */
+  body: DataStreamLifecycle
 }
