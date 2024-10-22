@@ -36,6 +36,7 @@ actions:
             Connectors are Elasticsearch integrations that bring content from third-party data sources, which can be deployed on Elastic Cloud or hosted on your own infrastructure:
             
             * Native connectors are a managed service on Elastic Cloud
+            
             * Connector clients are self-managed on your infrastructure
             
             This API provides an alternative to relying solely on Kibana UI for connector and sync job management. The API comes with a set of validations and assertions to ensure that the state representation in the internal index remains valid.

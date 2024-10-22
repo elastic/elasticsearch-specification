@@ -19,7 +19,12 @@
 import { RequestBase } from '@_types/Base'
 import { Id } from '@_types/common'
 /**
- * Updates the API key id in the connector document
+ * Update the connector API key ID.
+ *
+ * Update the `api_key_id` and `api_key_secret_id` fields of a connector.
+ * You can specify the ID of the API key used for authorization and the ID of the connector secret where the API key is stored.
+ * The connector secret ID is required only for native connectors.
+ * Connector clients do not use this field.
  * @rest_spec_name connector.update_api_key_id
  * @availability stack since=8.12.0 stability=beta
  * @availability serverless stability=beta visibility=public

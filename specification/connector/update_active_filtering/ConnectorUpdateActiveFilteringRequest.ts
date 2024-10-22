@@ -20,6 +20,8 @@ import { RequestBase } from '@_types/Base'
 import { Id } from '@_types/common'
 
 /**
+ * Activate the connector draft filter. 
+ *
  * Activates the valid draft filtering for a connector.
  * @rest_spec_name connector.update_active_filtering
  * @availability stack since=8.12.0 stability=experimental
