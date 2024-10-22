@@ -267,7 +267,7 @@ actions:
       x-model: true
       externalDocs:
         description: Templating a role query
-        url: https://www.elastic.co/guide/en/elasticsearch/reference/master/field-and-document-access-control.html#templating-role-query
+        url: https://www.elastic.co/guide/en/elasticsearch/reference/current/field-and-document-access-control.html#templating-role-query
   - target: "$.components['schemas']['_types.query_dsl:DistanceFeatureQuery']"
     description: Add x-model for distance feature query
     update:
