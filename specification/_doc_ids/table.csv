@@ -389,6 +389,7 @@ query-dsl-regexp-query,https://www.elastic.co/guide/en/elasticsearch/reference/{
 query-dsl-rule-query,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/query-dsl-rule-query.html
 query-dsl-script-query,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/query-dsl-script-query.html
 query-dsl-script-score-query,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/query-dsl-script-score-query.html
+query-dsl-semantic-query,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/query-dsl-semantic-query.html
 query-dsl-shape-query,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/query-dsl-shape-query.html
 query-dsl-simple-query-string-query,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/query-dsl-simple-query-string-query.html
 query-dsl-span-containing-query,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/query-dsl-span-containing-query.html
@@ -404,6 +405,7 @@ query-dsl-term-query,https://www.elastic.co/guide/en/elasticsearch/reference/{br
 query-dsl-terms-query,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/query-dsl-terms-query.html
 query-dsl-terms-set-query,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/query-dsl-terms-set-query.html
 query-dsl-text-expansion-query,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/query-dsl-text-expansion-query.html
+query-dsl-weighted-tokens-query,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/query-dsl-weighted-tokens-query.html
 query-dsl-wildcard-query,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/query-dsl-wildcard-query.html
 query-dsl-wrapper-query,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/query-dsl-wrapper-query.html
 query-dsl,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/query-dsl.html
@@ -451,6 +453,7 @@ search-aggregations-pipeline-bucket-path,https://www.elastic.co/guide/en/elastic
 search-aggregations-pipeline-bucket-script-aggregation,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/search-aggregations-pipeline-bucket-script-aggregation.html
 search-aggregations-pipeline-bucket-selector-aggregation,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/search-aggregations-pipeline-bucket-selector-aggregation.html
 search-aggregations-pipeline-bucket-sort-aggregation,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/search-aggregations-pipeline-bucket-sort-aggregation.html
+search-aggregations-bucket-composite-aggregation,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/search-aggregations-bucket-composite-aggregation.html
 search-aggregations-pipeline-cumulative-cardinality-aggregation,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/search-aggregations-pipeline-cumulative-cardinality-aggregation.html
 search-aggregations-pipeline-cumulative-sum-aggregation,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/search-aggregations-pipeline-cumulative-sum-aggregation.html
 search-aggregations-pipeline-derivative-aggregation,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/search-aggregations-pipeline-derivative-aggregation.html

@@ -85,6 +85,9 @@ export class FuzzyQuery extends QueryBase {
   value: string | double | boolean
 }
 
+/**
+ * @ext_doc_id query-dsl-ids-query
+ */
 export class IdsQuery extends QueryBase {
   /**
    * An array of document IDs.
@@ -92,7 +95,10 @@ export class IdsQuery extends QueryBase {
   values?: Ids
 }
 
-/** @shortcut_property value */
+/**
+ * @shortcut_property value
+ * @ext_doc_id query-dsl-prefix-query
+ */
 export class PrefixQuery extends QueryBase {
   /**
    * Method used to rewrite the query.
@@ -170,6 +176,7 @@ export class TermRangeQuery extends RangeQueryBase<string> {}
 /**
  * @codegen_names untyped, date, number, term
  * @variants untagged untyped=_types.query_dsl.UntypedRangeQuery
+ * @ext_doc_id query-dsl-range-query
  */
 // Note: deserialization depends on value types
 export type RangeQuery =
@@ -193,7 +200,10 @@ export enum RangeRelation {
   intersects
 }
 
-/** @shortcut_property value */
+/**
+ * @shortcut_property value
+ * @ext_doc_id query-dsl-regexp-query
+ */
 export class RegexpQuery extends QueryBase {
   /**
    *  Allows case insensitive matching of the regular expression value with the indexed field values when set to `true`.
@@ -225,7 +235,10 @@ export class RegexpQuery extends QueryBase {
   value: string
 }
 
-/** @shortcut_property value */
+/**
+ * @shortcut_property value
+ * @ext_doc_id query-dsl-term-query
+ */
 export class TermQuery extends QueryBase {
   /**
    * Term you wish to find in the provided field.
@@ -243,6 +256,7 @@ export class TermQuery extends QueryBase {
 
 /**
  * @behavior_meta AdditionalProperty key=field value=term
+ * @ext_doc_id query-dsl-terms-query
  */
 export class TermsQuery
   extends QueryBase
@@ -260,6 +274,9 @@ export class TermsLookup {
   routing?: Routing
 }
 
+/**
+ * @ext_doc_id query-dsl-terms-set-query
+ */
 export class TermsSetQuery extends QueryBase {
   /**
    * Specification describing number of matching terms required to return a document.
@@ -285,7 +302,10 @@ export class TypeQuery extends QueryBase {
   value: string
 }
 
-/** @shortcut_property value */
+/**
+ * @shortcut_property value
+ * @ext_doc_id query-dsl-wildcard-query
+ */
 export class WildcardQuery extends QueryBase {
   /**
    * Allows case insensitive matching of the pattern with the indexed field values when set to true. Default is false which means the case sensitivity of matching depends on the underlying field’s mapping.

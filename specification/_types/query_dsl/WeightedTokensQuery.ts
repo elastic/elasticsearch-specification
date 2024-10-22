@@ -22,6 +22,9 @@ import { float } from '@_types/Numeric'
 import { QueryBase } from './abstractions'
 import { TokenPruningConfig } from './TokenPruningConfig'
 
+/**
+ * @ext_doc_id query-dsl-weighted-tokens-query
+ */
 export class WeightedTokensQuery extends QueryBase {
   /** The tokens representing this query */
   tokens: Dictionary<string, float>

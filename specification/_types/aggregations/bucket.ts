@@ -69,6 +69,9 @@ export class AdjacencyMatrixAggregation extends BucketAggregationBase {
   separator?: string
 }
 
+/**
+ * @ext_doc_id search-aggregations-bucket-autodatehistogram-aggregation
+ */
 export class AutoDateHistogramAggregation extends BucketAggregationBase {
   /**
    * The target number of buckets.
@@ -124,6 +127,9 @@ export class ChildrenAggregation extends BucketAggregationBase {
 
 export type CompositeAggregateKey = Dictionary<Field, FieldValue>
 
+/**
+ * @ext_doc_id search-aggregations-bucket-composite-aggregation
+ */
 export class CompositeAggregation extends BucketAggregationBase {
   // Must be consistent with CompositeAggregate.after_key
   /**
@@ -324,6 +330,9 @@ export class DateRangeExpression {
   to?: FieldDateMath
 }
 
+/**
+ * @ext_doc_id search-aggregations-bucket-diversified-sampler-aggregation
+ */
 export class DiversifiedSamplerAggregation extends BucketAggregationBase {
   /**
    * The type of value used for de-duplication.
@@ -409,6 +418,9 @@ export class GeoDistanceAggregation extends BucketAggregationBase {
   unit?: DistanceUnit
 }
 
+/**
+ * @ext_doc_id search-aggregations-bucket-geohashgrid-aggregation
+ */
 export class GeoHashGridAggregation extends BucketAggregationBase {
   /**
    * The bounding box to filter the points in each bucket.
@@ -691,6 +703,9 @@ export class AggregationRange {
   to?: double | null
 }
 
+/**
+ * @ext_doc_id search-aggregations-bucket-rare-terms-aggregation
+ */
 export class RareTermsAggregation extends BucketAggregationBase {
   /**
    * Terms that should be excluded from the aggregation.
@@ -731,6 +746,9 @@ export class ReverseNestedAggregation extends BucketAggregationBase {
   path?: Field
 }
 
+/**
+ * @ext_doc_id search-aggregations-random-sampler-aggregation
+ */
 export class RandomSamplerAggregation extends BucketAggregationBase {
   /**
    * The probability that a document will be included in the aggregated data.
@@ -750,6 +768,9 @@ export class RandomSamplerAggregation extends BucketAggregationBase {
   shard_seed?: integer
 }
 
+/**
+ * @ext_doc_id search-aggregations-bucket-sampler-aggregation
+ */
 export class SamplerAggregation extends BucketAggregationBase {
   /**
    * Limits how many top-scoring documents are collected in the sample processed on each shard.
@@ -793,6 +814,9 @@ export class ScriptedHeuristic {
   script: Script
 }
 
+/**
+ * @ext_doc_id search-aggregations-bucket-significanttext-aggregation
+ */
 export class SignificantTermsAggregation extends BucketAggregationBase {
   /**
    * A background filter that can be used to focus in on significant terms within a narrower context, instead of the entire index.
@@ -859,6 +883,9 @@ export class SignificantTermsAggregation extends BucketAggregationBase {
   size?: integer
 }
 
+/**
+ * @ext_doc_id search-aggregations-bucket-significanttext-aggregation
+ */
 export class SignificantTextAggregation extends BucketAggregationBase {
   /**
    * A background filter that can be used to focus in on significant terms within a narrower context, instead of the entire index.
@@ -933,6 +960,9 @@ export class SignificantTextAggregation extends BucketAggregationBase {
   source_fields?: Fields
 }
 
+/**
+ * @ext_doc_id search-aggregations-bucket-terms-aggregation
+ */
 export class TermsAggregation extends BucketAggregationBase {
   /**
    * Determines how child aggregations should be calculated: breadth-first or depth-first.
@@ -1000,6 +1030,9 @@ export class TermsAggregation extends BucketAggregationBase {
   format?: string
 }
 
+/**
+ * @ext_doc_id search-aggregations-bucket-time-series-aggregation
+ */
 export class TimeSeriesAggregation extends BucketAggregationBase {
   /**
    * The maximum number of results to return.
@@ -1055,6 +1088,9 @@ export class TermsPartition {
   partition: long
 }
 
+/**
+ * @ext_doc_id search-aggregations-bucket-variablewidthhistogram-aggregation
+ */
 export class VariableWidthHistogramAggregation {
   /**
    * The name of the field.
@@ -1083,6 +1119,7 @@ export class VariableWidthHistogramAggregation {
  * field is re-analyzed using a custom analyzer. The resulting tokens are then categorized
  * creating buckets of similarly formatted text values. This aggregation works best with machine
  * generated text like system logs. Only the first 100 analyzed tokens are used to categorize the text.
+ * @ext_doc_id search-aggregations-bucket-categorize-text-aggregation
  */
 export class CategorizeTextAggregation extends Aggregation {
   /**
@@ -1200,6 +1237,9 @@ export class FrequentItemSetsField {
   include?: TermsInclude
 }
 
+/**
+ * @ext_doc_id search-aggregations-bucket-frequent-item-sets-aggregation
+ */
 export class FrequentItemSetsAggregation {
   /**
    * Fields to analyze.
