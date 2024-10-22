@@ -276,20 +276,14 @@ actions:
     description: Add x-model
     update:
       x-model: true
-      externalDocs:
-        url: https://www.elastic.co/guide/en/elasticsearch/reference/master/query-dsl-geo-shape-query.html
   - target: "$.components['schemas']['_types.query_dsl:GeoPolygonQuery']"
     description: Add x-model
     update:
       x-model: true
-      externalDocs:
-        url: https://www.elastic.co/guide/en/elasticsearch/reference/master/query-dsl-geo-polygon-query.html
   - target: "$.components['schemas']['_types.query_dsl:GeoDistanceQuery']"
     description: Add x-model
     update:
       x-model: true
-      externalDocs:
-        url: https://www.elastic.co/guide/en/elasticsearch/reference/master/query-dsl-geo-distance-query.html
   - target: "$.components['schemas']['_types.query_dsl:DistanceFeatureQueryBase']"
     description: Add x-model to distance feature query base
     update:
@@ -314,30 +308,18 @@ actions:
     description: Add x-model for more like this query
     update:
       x-model: true
-      externalDocs:
-        description: More like this query
-        url: https://www.elastic.co/guide/en/elasticsearch/reference/master/query-dsl-mlt-query.html
   - target: "$.components['schemas']['_types.query_dsl:PercolateQuery']"
     description: Add x-model for percolate query
     update:
       x-model: true
-      externalDocs:
-        description: Percolate query
-        url: https://www.elastic.co/guide/en/elasticsearch/reference/master/query-dsl-percolate-query.html
   - target: "$.components['schemas']['_types.query_dsl:RankFeatureQuery']"
     description: Add x-model for rank feature query
     update:
       x-model: true
-      externalDocs:
-        description: Rank feature query
-        url: https://www.elastic.co/guide/en/elasticsearch/reference/master/query-dsl-rank-feature-query.html
   - target: "$.components['schemas']['_types.query_dsl:ScriptQuery']"
     description: Add x-model for script query
     update:
       x-model: true
-      externalDocs:
-        description: Script query
-        url: https://www.elastic.co/guide/en/elasticsearch/reference/master/query-dsl-script-query.html
   - target: "$.components['schemas']['_types.query_dsl:ScriptScoreFunction']"
     description: Add x-model for script score query
     update:
@@ -346,36 +328,22 @@ actions:
     description: Add x-model for script score query
     update:
       x-model: true
-      externalDocs:
-        description: Script score query
-        url: https://www.elastic.co/guide/en/elasticsearch/reference/master/query-dsl-script-score-query.html
   - target: "$.components['schemas']['_types.query_dsl:WrapperQuery']"
     description: Add x-model for wrapper query
     update:
       x-model: true
-      externalDocs:
-        description: Wrapper query
-        url: https://www.elastic.co/guide/en/elasticsearch/reference/master/query-dsl-wrapper-query.html
   - target: "$.components['schemas']['_types.query_dsl:PinnedQuery']"
     description: Add x-model for pinned query
     update:
       x-model: true
-      externalDocs:
-        description: Pinned query
-        url: https://www.elastic.co/guide/en/elasticsearch/reference/master/query-dsl-pinned-query.html
   - target: "$.components['schemas']['_types.query_dsl:RuleQuery']"
     description: Add x-model for rule query
     update:
       x-model: true
-      externalDocs:
-        description: Rule query
-        url: https://www.elastic.co/guide/en/elasticsearch/reference/master/query-dsl-rule-query.html
   - target: "$.components['schemas']['_types.query_dsl:BoolQuery']"
     description: Add x-model for boolean query
     update:
       x-model: true
-      externalDocs:
-        url: https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-bool-query.html
   - target: "$.components['schemas']['_types.query_dsl:QueryBase']"
     description: Add x-model for query base
     update:
@@ -384,8 +352,6 @@ actions:
     description: Add x-model for query base
     update:
       x-model: true
-      externalDocs:
-        url: https://www.elastic.co/guide/en/elasticsearch/reference/master/query-dsl-boosting-query.html
   - target: "$.components['schemas']['_types.query_dsl:CommonTermsQuery']"
     description: Add x-model for common terms query
     update:
@@ -398,14 +364,10 @@ actions:
     description: Add x-model for constant score query
     update:
       x-model: true
-      externalDocs:
-        url: https://www.elastic.co/guide/en/elasticsearch/reference/master/query-dsl-constant-score-query.html
   - target: "$.components['schemas']['_types.query_dsl:DisMaxQuery']"
     description: Add x-model to Disjunction max query
     update:
       x-model: true
-      externalDocs:
-        url: https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-dis-max-query.html
   - target: "$.components['schemas']['_types.query_dsl:UntypedDistanceFeatureQuery']"
     description: Add x-model to untyped distance feature query
     update:
@@ -414,14 +376,10 @@ actions:
     description: Add x-model
     update:
       x-model: true
-      externalDocs:
-        url: https://www.elastic.co/guide/en/elasticsearch/reference/master/query-dsl-exists-query.html
   - target: "$.components['schemas']['_types.query_dsl:FunctionScoreQuery']"
     description: Add x-model
     update:
       x-model: true
-      externalDocs:
-        url: https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-function-score-query.html
   - target: "$.components['schemas']['_types.query_dsl:FunctionScoreContainer']"
     description: Add x-model
     update:
@@ -478,38 +436,26 @@ actions:
     description: Add x-model
     update:
       x-model: true
-      externalDocs:
-        url: https://www.elastic.co/guide/en/elasticsearch/reference/master/query-dsl-fuzzy-query.html
   - target: "$.components['schemas']['_types.query_dsl:GeoBoundingBoxQuery']"
     description: Add x-model
     update:
       x-model: true
-      externalDocs:
-        url: https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-geo-bounding-box-query.html
   - target: "$.components['schemas']['_types.query_dsl:HasChildQuery']"
     description: Add x-model
     update:
       x-model: true
-      externalDocs:
-        url: https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-has-child-query.html
   - target: "$.components['schemas']['_types.query_dsl:HasParentQuery']"
     description: Add x-model
     update:
       x-model: true
-      externalDocs:
-        url: https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-has-parent-query.html
   - target: "$.components['schemas']['_types.query_dsl:ParentIdQuery']"
     description: Add x-model
     update:
       x-model: true
-      externalDocs:
-        url: https://www.elastic.co/guide/en/elasticsearch/reference/master/query-dsl-parent-id-query.html
   - target: "$.components['schemas']['_types.query_dsl:IntervalsQuery']"
     description: Add x-model
     update:
       x-model: true
-      externalDocs:
-        url: https://www.elastic.co/guide/en/elasticsearch/reference/master/query-dsl-intervals-query.html
   - target: "$.components['schemas']['_types.query_dsl:IntervalsAllOf']"
     description: Add x-model
     update:
@@ -546,134 +492,90 @@ actions:
     description: Add x-model
     update:
       x-model: true
-      externalDocs:
-        url: https://www.elastic.co/guide/en/elasticsearch/reference/master/query-dsl-match-query.html
   - target: "$.components['schemas']['_types.query_dsl:MatchBoolPrefixQuery']"
     description: Add x-model
     update:
       x-model: true
-      externalDocs:
-        url: https://www.elastic.co/guide/en/elasticsearch/reference/master/query-dsl-match-bool-prefix-query.html
   - target: "$.components['schemas']['_types.query_dsl:MatchPhraseQuery']"
     description: Add x-model
     update:
       x-model: true
-      externalDocs:
-        url: https://www.elastic.co/guide/en/elasticsearch/reference/master/query-dsl-match-query-phrase.html
   - target: "$.components['schemas']['_types.query_dsl:MatchPhrasePrefixQuery']"
     description: Add x-model
     update:
       x-model: true
-      externalDocs:
-        url: https://www.elastic.co/guide/en/elasticsearch/reference/master/query-dsl-match-query-phrase-prefix.html
   - target: "$.components['schemas']['_types.query_dsl:MultiMatchQuery']"
     description: Add x-model
     update:
       x-model: true
-      externalDocs:
-        url: https://www.elastic.co/guide/en/elasticsearch/reference/master/query-dsl-multi-match-query.html
   - target: "$.components['schemas']['_types.query_dsl:QueryStringQuery']"
     description: Add x-model
     update:
       x-model: true
-      externalDocs:
-        url: https://www.elastic.co/guide/en/elasticsearch/reference/master/query-dsl-query-string-query.html
   - target: "$.components['schemas']['_types.query_dsl:SimpleQueryStringQuery']"
     description: Add x-model
     update:
       x-model: true
-      externalDocs:
-        url: https://www.elastic.co/guide/en/elasticsearch/reference/master/query-dsl-simple-query-string-query.html
   - target: "$.components['schemas']['_types.query_dsl:ShapeQuery']"
     description: Add x-model
     update:
       x-model: true
-      externalDocs:
-        url: https://www.elastic.co/guide/en/elasticsearch/reference/master/query-dsl-shape-query.html
   - target: "$.components['schemas']['_types.query_dsl:NestedQuery']"
     description: Add x-model
     update:
       x-model: true
-      externalDocs:
-        url: https://www.elastic.co/guide/en/elasticsearch/reference/master/query-dsl-nested-query.html
   - target: "$.components['schemas']['_types.query_dsl:MatchAllQuery']"
     description: Add x-model
     update:
       x-model: true
-      externalDocs:
-        url: https://www.elastic.co/guide/en/elasticsearch/reference/master/query-dsl-match-all-query.html
   - target: "$.components['schemas']['_types.query_dsl:MatchNoneQuery']"
     description: Add x-model
     update:
       x-model: true
-      externalDocs:
-        url: https://www.elastic.co/guide/en/elasticsearch/reference/master/query-dsl-match-all-query.html
   - target: "$.components['schemas']['_types.query_dsl:SpanContainingQuery']"
     description: Add x-model
     update:
       x-model: true
-      externalDocs:
-        url: https://www.elastic.co/guide/en/elasticsearch/reference/master/query-dsl-span-containing-query.html
   - target: "$.components['schemas']['_types.query_dsl:SpanFieldMaskingQuery']"
     description: Add x-model
     update:
       x-model: true
-      externalDocs:
-        url: https://www.elastic.co/guide/en/elasticsearch/reference/master/query-dsl-span-field-masking-query.html
   - target: "$.components['schemas']['_types.query_dsl:SpanFirstQuery']"
     description: Add x-model
     update:
       x-model: true
-      externalDocs:
-        url: https://www.elastic.co/guide/en/elasticsearch/reference/master/query-dsl-span-first-query.html
   - target: "$.components['schemas']['_types.query_dsl:SpanMultiTermQuery']"
     description: Add x-model
     update:
       x-model: true
-      externalDocs:
-        url: https://www.elastic.co/guide/en/elasticsearch/reference/master/query-dsl-span-multi-term-query.html
   - target: "$.components['schemas']['_types.query_dsl:SpanNearQuery']"
     description: Add x-model
     update:
       x-model: true
-      externalDocs:
-        url: https://www.elastic.co/guide/en/elasticsearch/reference/master/query-dsl-span-near-query.html
   - target: "$.components['schemas']['_types.query_dsl:SpanNotQuery']"
     description: Add x-model
     update:
       x-model: true
-      externalDocs:
-        url: https://www.elastic.co/guide/en/elasticsearch/reference/master/query-dsl-span-not-query.html
   - target: "$.components['schemas']['_types.query_dsl:SpanOrQuery']"
     description: Add x-model
     update:
       x-model: true
-      externalDocs:
-        url: https://www.elastic.co/guide/en/elasticsearch/reference/master/query-dsl-span-or-query.html
   - target: "$.components['schemas']['_types.query_dsl:SpanTermQuery']"
     description: Add x-model
     update:
       x-model: true
-      externalDocs:
-        url: https://www.elastic.co/guide/en/elasticsearch/reference/master/query-dsl-span-term-query.html
   - target: "$.components['schemas']['_types.query_dsl:SpanWithinQuery']"
     description: Add x-model
     update:
       x-model: true
-      externalDocs:
-        url: https://www.elastic.co/guide/en/elasticsearch/reference/master/query-dsl-span-within-query.html
   - target: "$.components['schemas']['_types:KnnQuery']"
     description: Add x-model
     update:
       x-model: true
-      externalDocs:
-        url: https://www.elastic.co/guide/en/elasticsearch/reference/master/query-dsl-knn-query.html
   - target: "$.components['schemas']['_types.query_dsl:SparseVectorQuery']"
     description: Add x-model
     update:
       x-model: true
-      externalDocs:
-        url: https://www.elastic.co/guide/en/elasticsearch/reference/master/query-dsl-sparse-vector-query.html
   - target: "$.components['schemas']['_types.query_dsl:SemanticQuery']"
     description: Add x-model
     update:
@@ -745,8 +647,6 @@ actions:
     description: Add x-model
     update:
       x-model: true
-      externalDocs:
-        url: https://www.elastic.co/guide/en/elasticsearch/reference/master/search-aggregations.html
   - target: "$.components['schemas']['_types.aggregations:CardinalityAggregate']"
     description: Add x-model
     update:
@@ -757,20 +657,26 @@ actions:
     description: Add x-model
     update:
       x-model: true
-      externalDocs:
-        url:
+      # externalDocs:
+      #   url:
   - target: "$.components['schemas']['_types.aggregations:HdrPercentileRanksAggregate']"
     description: Add x-model
     update:
       x-model: true
       # externalDocs:
-      #   url:
+      #   url: 
+  - target: "$.components['schemas']['_types.aggregations:PercentileRanksAggregation']"
+    description: Add x-model
+    update:
+      x-model: true
+      externalDocs:
+        url: https://www.elastic.co/guide/en/elasticsearch/reference/master/search-aggregations-metrics-percentile-rank-aggregation.html
   - target: "$.components['schemas']['_types.aggregations:TDigestPercentilesAggregate']"
     description: Add x-model
     update:
       x-model: true
-      # externalDocs:
-      #   url:
+      externalDocs:
+        url: https://www.elastic.co/guide/en/elasticsearch/reference/master/search-aggregations-metrics-percentile-aggregation.html
   - target: "$.components['schemas']['_types.aggregations:TDigestPercentileRanksAggregate']"
     description: Add x-model
     update:
@@ -781,50 +687,50 @@ actions:
     description: Add x-model
     update:
       x-model: true
-      # externalDocs:
-      #   url:
+      externalDocs:
+        url: https://www.elastic.co/guide/en/elasticsearch/reference/master/search-aggregations-pipeline-percentiles-bucket-aggregation.html
   - target: "$.components['schemas']['_types.aggregations:MedianAbsoluteDeviationAggregate']"
     description: Add x-model
     update:
       x-model: true
-      # externalDocs:
-      #   url:
+      externalDocs:
+        url: https://www.elastic.co/guide/en/elasticsearch/reference/master/search-aggregations-metrics-median-absolute-deviation-aggregation.html
   - target: "$.components['schemas']['_types.aggregations:MinAggregate']"
     description: Add x-model
     update:
       x-model: true
-      # externalDocs:
-      #   url:
+      externalDocs:
+        url: https://www.elastic.co/guide/en/elasticsearch/reference/master/search-aggregations-metrics-min-aggregation.html
   - target: "$.components['schemas']['_types.aggregations:MaxAggregate']"
     description: Add x-model
     update:
       x-model: true
-      # externalDocs:
-      #   url:
+      externalDocs:
+        url: https://www.elastic.co/guide/en/elasticsearch/reference/master/search-aggregations-metrics-max-aggregation.html
   - target: "$.components['schemas']['_types.aggregations:SumAggregate']"
     description: Add x-model
     update:
       x-model: true
-      # externalDocs:
-      #   url:
+      externalDocs:
+        url: https://www.elastic.co/guide/en/elasticsearch/reference/master/search-aggregations-metrics-sum-aggregation.html
   - target: "$.components['schemas']['_types.aggregations:AvgAggregate']"
     description: Add x-model
     update:
       x-model: true
-      # externalDocs:
-      #   url:
+      externalDocs:
+        url: https://www.elastic.co/guide/en/elasticsearch/reference/master/search-aggregations-metrics-avg-aggregation.html
   - target: "$.components['schemas']['_types.aggregations:WeightedAvgAggregate']"
     description: Add x-model
     update:
       x-model: true
-      # externalDocs:
-      #   url:
+      externalDocs:
+        url: https://www.elastic.co/guide/en/elasticsearch/reference/master/search-aggregations-metrics-weight-avg-aggregation.html
   - target: "$.components['schemas']['_types.aggregations:ValueCountAggregate']"
     description: Add x-model
     update:
       x-model: true
-      # externalDocs:
-      #   url:
+      externalDocs:
+        url: https://www.elastic.co/guide/en/elasticsearch/reference/master/search-aggregations-metrics-valuecount-aggregation.html
   - target: "$.components['schemas']['_types.aggregations:SimpleValueAggregate']"
     description: Add x-model
     update:
@@ -835,8 +741,8 @@ actions:
     description: Add x-model
     update:
       x-model: true
-      # externalDocs:
-      #   url:
+      externalDocs:
+        url: https://www.elastic.co/guide/en/elasticsearch/reference/master/search-aggregations-pipeline-derivative-aggregation.html
   - target: "$.components['schemas']['_types.aggregations:BucketMetricValueAggregate']"
     description: Add x-model
     update:
@@ -847,20 +753,20 @@ actions:
     description: Add x-model
     update:
       x-model: true
-      # externalDocs:
-      #   url:
+      externalDocs:
+        url: https://www.elastic.co/guide/en/elasticsearch/reference/current/search-aggregations-metrics-stats-aggregation.html
   - target: "$.components['schemas']['_types.aggregations:StatsBucketAggregate']"
     description: Add x-model
     update:
       x-model: true
       externalDocs:
-        url:
+        url: https://www.elastic.co/guide/en/elasticsearch/reference/master/search-aggregations-pipeline-stats-bucket-aggregation.html
   - target: "$.components['schemas']['_types.aggregations:ExtendedStatsAggregate']"
     description: Add x-model
     update:
       x-model: true
       externalDocs:
-        url:
+        url: https://www.elastic.co/guide/en/elasticsearch/reference/master/search-aggregations-metrics-extendedstats-aggregation.html
   - target: "$.components['schemas']['_types.aggregations:ExtendedStatsBucketAggregate']"
     description: Add x-model
     update:
@@ -871,38 +777,38 @@ actions:
     description: Add x-model
     update:
       x-model: true
-      # externalDocs:
-      #   url:
+      externalDocs:
+        url: https://www.elastic.co/guide/en/elasticsearch/reference/master/search-aggregations-metrics-geobounds-aggregation.html
   - target: "$.components['schemas']['_types.aggregations:GeoCentroidAggregate']"
     description: Add x-model
     update:
       x-model: true
-      # externalDocs:
-      #   url:
+      externalDocs:
+        url: https://www.elastic.co/guide/en/elasticsearch/reference/master/search-aggregations-metrics-geocentroid-aggregation.html
   - target: "$.components['schemas']['_types.aggregations:HistogramAggregate']"
     description: Add x-model
     update:
       x-model: true
-      # externalDocs:
-      #   url:
+      externalDocs:
+        url: https://www.elastic.co/guide/en/elasticsearch/reference/master/search-aggregations-bucket-histogram-aggregation.html
   - target: "$.components['schemas']['_types.aggregations:DateHistogramAggregate']"
     description: Add x-model
     update:
       x-model: true
       externalDocs:
-        url:
+        url: https://www.elastic.co/guide/en/elasticsearch/reference/master/search-aggregations-bucket-datehistogram-aggregation.html
   - target: "$.components['schemas']['_types.aggregations:AutoDateHistogramAggregate']"
     description: Add x-model
     update:
       x-model: true
-      # externalDocs:
-      #   url:
+      externalDocs:
+        url: https://www.elastic.co/guide/en/elasticsearch/reference/current/search-aggregations-bucket-autodatehistogram-aggregation.html
   - target: "$.components['schemas']['_types.aggregations:VariableWidthHistogramAggregate']"
     description: Add x-model
     update:
       x-model: true
-      # externalDocs:
-      #   url:
+      externalDocs:
+        url: https://www.elastic.co/guide/en/elasticsearch/reference/master/search-aggregations-bucket-variablewidthhistogram-aggregation.html
   - target: "$.components['schemas']['_types.aggregations:StringTermsAggregate']"
     description: Add x-model
     update:
@@ -949,38 +855,38 @@ actions:
     description: Add x-model
     update:
       x-model: true
-      # externalDocs:
-      #   url:
+      externalDocs:
+        url: https://www.elastic.co/guide/en/elasticsearch/reference/master/search-aggregations-bucket-multi-terms-aggregation.html
   - target: "$.components['schemas']['_types.aggregations:MissingAggregate']"
     description: Add x-model
     update:
       x-model: true
-      # externalDocs:
-      #   url:
+      externalDocs:
+        url: https://www.elastic.co/guide/en/elasticsearch/reference/master/search-aggregations-bucket-missing-aggregation.html
   - target: "$.components['schemas']['_types.aggregations:NestedAggregate']"
     description: Add x-model
     update:
       x-model: true
-      # externalDocs:
-      #   url:
+      externalDocs:
+        url: https://www.elastic.co/guide/en/elasticsearch/reference/master/search-aggregations-bucket-nested-aggregation.html
   - target: "$.components['schemas']['_types.aggregations:ReverseNestedAggregate']"
     description: Add x-model
     update:
       x-model: true
-      # externalDocs:
-      #   url:
+      externalDocs:
+        url: https://www.elastic.co/guide/en/elasticsearch/reference/master/search-aggregations-bucket-reverse-nested-aggregation.html
   - target: "$.components['schemas']['_types.aggregations:GlobalAggregate']"
     description: Add x-model
     update:
       x-model: true
-      # externalDocs:
-      #   url:
+      externalDocs:
+        url: https://www.elastic.co/guide/en/elasticsearch/reference/master/search-aggregations-bucket-global-aggregation.html
   - target: "$.components['schemas']['_types.aggregations:FilterAggregate']"
     description: Add x-model
     update:
       x-model: true
-      # externalDocs:
-      #   url:
+      externalDocs:
+        url: https://www.elastic.co/guide/en/elasticsearch/reference/master/search-aggregations-bucket-filter-aggregation.html
   - target: "$.components['schemas']['_types.aggregations:ChildrenAggregate']"
     description: Add x-model
     update:
@@ -1009,14 +915,14 @@ actions:
     description: Add x-model
     update:
       x-model: true
-      # externalDocs:
-      #   url:
+      externalDocs:
+        url: https://www.elastic.co/guide/en/elasticsearch/reference/master/search-aggregations-bucket-geohashgrid-aggregation.html
   - target: "$.components['schemas']['_types.aggregations:GeoTileGridAggregate']"
     description: Add x-model
     update:
       x-model: true
-      # externalDocs:
-      #   url:
+      externalDocs:
+        url: https://www.elastic.co/guide/en/elasticsearch/reference/master/search-aggregations-bucket-geotilegrid-aggregation.html
   - target: "$.components['schemas']['_types.aggregations:GeoHexGridAggregate']"
     description: Add x-model
     update:
@@ -1027,38 +933,38 @@ actions:
     description: Add x-model
     update:
       x-model: true
-      # externalDocs:
-      #   url:
+      externalDocs:
+        url: https://www.elastic.co/guide/en/elasticsearch/reference/master/search-aggregations-bucket-geohexgrid-aggregation.html
   - target: "$.components['schemas']['_types.aggregations:DateRangeAggregate']"
     description: Add x-model
     update:
       x-model: true
-      # externalDocs:
-      #   url:
+      externalDocs:
+        url: https://www.elastic.co/guide/en/elasticsearch/reference/master/search-aggregations-bucket-daterange-aggregation.html
   - target: "$.components['schemas']['_types.aggregations:GeoDistanceAggregate']"
     description: Add x-model
     update:
       x-model: true
-      # externalDocs:
-      #   url:
+      externalDocs:
+        url: https://www.elastic.co/guide/en/elasticsearch/reference/master/search-aggregations-bucket-geodistance-aggregation.html
   - target: "$.components['schemas']['_types.aggregations:IpRangeAggregate']"
     description: Add x-model
     update:
       x-model: true
-      # externalDocs:
-      #   url:
+      externalDocs:
+        url: https://www.elastic.co/guide/en/elasticsearch/reference/master/search-aggregations-bucket-iprange-aggregation.html
   - target: "$.components['schemas']['_types.aggregations:IpPrefixAggregate']"
     description: Add x-model
     update:
       x-model: true
-      # externalDocs:
-      #   url:
+      externalDocs:
+        url: https://www.elastic.co/guide/en/elasticsearch/reference/master/search-aggregations-bucket-ipprefix-aggregation.html
   - target: "$.components['schemas']['_types.aggregations:FiltersAggregate']"
     description: Add x-model
     update:
       x-model: true
-      # externalDocs:
-      #   url:
+      externalDocs:
+        url: https://www.elastic.co/guide/en/elasticsearch/reference/master/search-aggregations-bucket-filters-aggregation.html
   - target: "$.components['schemas']['_types.aggregations:AdjacencyMatrixAggregate']"
     description: Add x-model
     update:
@@ -1081,8 +987,14 @@ actions:
     description: Add x-model
     update:
       x-model: true
+      # externalDocs:
+      #   url: 
+  - target: "$.components['schemas']['_types.aggregations:SignificantTermsAggregation']"
+    description: Add x-model
+    update:
+      x-model: true
       externalDocs:
-        url: https://www.elastic.co/guide/en/elasticsearch/reference/master/search-aggregations-bucket-significantterms-aggregation.html
+        url: https://www.elastic.co/guide/en/elasticsearch/reference/current/search-aggregations-bucket-significanttext-aggregation.html
   - target: "$.components['schemas']['_types.aggregations:CompositeAggregate']"
     description: Add x-model
     update:
@@ -1105,68 +1017,194 @@ actions:
     description: Add x-model
     update:
       x-model: true
-      # externalDocs:
-      #   url:
+      externalDocs:
+        url: https://www.elastic.co/guide/en/elasticsearch/reference/master/search-aggregations-metrics-scripted-metric-aggregation.html
   - target: "$.components['schemas']['_types.aggregations:TopHitsAggregate']"
     description: Add x-model
     update:
       x-model: true
-      # externalDocs:
-      #   url:
+      externalDocs:
+        url: https://www.elastic.co/guide/en/elasticsearch/reference/master/search-aggregations-metrics-top-hits-aggregation.html
   - target: "$.components['schemas']['_types.aggregations:InferenceAggregate']"
     description: Add x-model
     update:
       x-model: true
-      # externalDocs:
-      #   url:
+      externalDocs:
+        url: https://www.elastic.co/guide/en/elasticsearch/reference/master/search-aggregations-pipeline-inference-bucket-aggregation.html
   - target: "$.components['schemas']['_types.aggregations:StringStatsAggregate']"
     description: Add x-model
     update:
       x-model: true
       # externalDocs:
-      #   url:
+      #   url: 
   - target: "$.components['schemas']['_types.aggregations:BoxPlotAggregate']"
     description: Add x-model
     update:
       x-model: true
-      # externalDocs:
-      #   url:
+      externalDocs:
+        url: https://www.elastic.co/guide/en/elasticsearch/reference/master/search-aggregations-metrics-boxplot-aggregation.html
   - target: "$.components['schemas']['_types.aggregations:TopMetricsAggregate']"
     description: Add x-model
     update:
       x-model: true
-      # externalDocs:
-      #   url:
+      externalDocs:
+        url: https://www.elastic.co/guide/en/elasticsearch/reference/master/search-aggregations-metrics-top-metrics.html
   - target: "$.components['schemas']['_types.aggregations:TTestAggregate']"
     description: Add x-model
     update:
       x-model: true
-      # externalDocs:
-      #   url:
+      externalDocs:
+        url: https://www.elastic.co/guide/en/elasticsearch/reference/master/search-aggregations-metrics-ttest-aggregation.html
   - target: "$.components['schemas']['_types.aggregations:RateAggregate']"
     description: Add x-model
     update:
       x-model: true
-      # externalDocs:
-      #   url:
+      externalDocs:
+        url: https://www.elastic.co/guide/en/elasticsearch/reference/master/search-aggregations-metrics-rate-aggregation.html
   - target: "$.components['schemas']['_types.aggregations:CumulativeCardinalityAggregate']"
     description: Add x-model
     update:
       x-model: true
-      # externalDocs:
-      #   url:
+      externalDocs:
+        url: https://www.elastic.co/guide/en/elasticsearch/reference/master/search-aggregations-metrics-cardinality-aggregation.html
   - target: "$.components['schemas']['_types.aggregations:MatrixStatsAggregate']"
     description: Add x-model
     update:
       x-model: true
-      # externalDocs:
-      #   url:
+      externalDocs:
+        url: https://www.elastic.co/guide/en/elasticsearch/reference/master/search-aggregations-matrix-stats-aggregation.html
   - target: "$.components['schemas']['_types.aggregations:GeoLineAggregate']"
     description: Add x-model
     update:
       x-model: true
-      # externalDocs:
-      #   url:
+      externalDocs:
+        url: https://www.elastic.co/guide/en/elasticsearch/reference/master/search-aggregations-metrics-geo-line.html
+  - target: "$.components['schemas']['_types.aggregations:AutoDateHistogramAggregation']"
+    description: Add x-model
+    update:
+      x-model: true
+      externalDocs:
+        url: https://www.elastic.co/guide/en/elasticsearch/reference/master/search-aggregations-bucket-autodatehistogram-aggregation.html
+  - target: "$.components['schemas']['_types.aggregations:CategorizeTextAggregation']"
+    description: Add x-model
+    update:
+      x-model: true
+      externalDocs:
+        url: https://www.elastic.co/guide/en/elasticsearch/reference/master/search-aggregations-bucket-categorize-text-aggregation.html
+  - target: "$.components['schemas']['_types.aggregations:DiversifiedSamplerAggregation']"
+    description: Add x-model
+    update:
+      x-model: true
+      externalDocs:
+        url: https://www.elastic.co/guide/en/elasticsearch/reference/master/search-aggregations-bucket-diversified-sampler-aggregation.html
+  - target: "$.components['schemas']['_types.aggregations:RandomSamplerAggregation']"
+    description: Add x-model
+    update:
+      x-model: true
+      externalDocs:
+        url: https://www.elastic.co/guide/en/elasticsearch/reference/master/search-aggregations-random-sampler-aggregation.html
+  - target: "$.components['schemas']['_types.aggregations:RareTermsAggregation']"
+    description: Add x-model
+    update:
+      x-model: true
+      externalDocs:
+        url: https://www.elastic.co/guide/en/elasticsearch/reference/master/search-aggregations-bucket-rare-terms-aggregation.html
+  - target: "$.components['schemas']['_types.aggregations:SignificantTextAggregation']"
+    description: Add x-model
+    update:
+      x-model: true
+      externalDocs:
+        url: https://www.elastic.co/guide/en/elasticsearch/reference/master/search-aggregations-bucket-significanttext-aggregation.html
+  - target: "$.components['schemas']['_types.aggregations:TermsAggregation']"
+    description: Add x-model
+    update:
+      x-model: true
+      externalDocs:
+        url: https://www.elastic.co/guide/en/elasticsearch/reference/master/search-aggregations-bucket-terms-aggregation.html
+  - target: "$.components['schemas']['_types.aggregations:AverageBucketAggregation']"
+    description: Add x-model
+    update:
+      x-model: true
+      externalDocs:
+        url: https://www.elastic.co/guide/en/elasticsearch/reference/master/search-aggregations-pipeline-avg-bucket-aggregation.html
+  - target: "$.components['schemas']['_types.aggregations:BucketScriptAggregation']"
+    description: Add x-model
+    update:
+      x-model: true
+      externalDocs:
+        url: https://www.elastic.co/guide/en/elasticsearch/reference/master/search-aggregations-pipeline-bucket-script-aggregation.html
+  - target: "$.components['schemas']['_types.aggregations:BucketKsAggregation']"
+    description: Add x-model
+    update:
+      x-model: true
+      externalDocs:
+        url: https://www.elastic.co/guide/en/elasticsearch/reference/master/search-aggregations-bucket-count-ks-test-aggregation.html
+  - target: "$.components['schemas']['_types.aggregations:BucketCorrelationAggregation']"
+    description: Add x-model
+    update:
+      x-model: true
+      externalDocs:
+        url: https://www.elastic.co/guide/en/elasticsearch/reference/master/search-aggregations-bucket-correlation-aggregation.html
+  - target: "$.components['schemas']['_types.aggregations:BucketSelectorAggregation']"
+    description: Add x-model
+    update:
+      x-model: true
+      externalDocs:
+        url: https://www.elastic.co/guide/en/elasticsearch/reference/master/search-aggregations-pipeline-bucket-selector-aggregation.html
+  - target: "$.components['schemas']['_types.aggregations:BucketSortAggregation']"
+    description: Add x-model
+    update:
+      x-model: true
+      externalDocs:
+        url: https://www.elastic.co/guide/en/elasticsearch/reference/master/search-aggregations-pipeline-bucket-sort-aggregation.html
+  - target: "$.components['schemas']['_types.aggregations:CumulativeSumAggregation']"
+    description: Add x-model
+    update:
+      x-model: true
+      externalDocs:
+        url: https://www.elastic.co/guide/en/elasticsearch/reference/master/search-aggregations-pipeline-cumulative-sum-aggregation.html
+  - target: "$.components['schemas']['_types.aggregations:MaxBucketAggregation']"
+    description: Add x-model
+    update:
+      x-model: true
+      externalDocs:
+        url: https://www.elastic.co/guide/en/elasticsearch/reference/master/search-aggregations-pipeline-max-bucket-aggregation.html
+  - target: "$.components['schemas']['_types.aggregations:MinBucketAggregation']"
+    description: Add x-model
+    update:
+      x-model: true
+      externalDocs:
+        url: https://www.elastic.co/guide/en/elasticsearch/reference/master/search-aggregations-pipeline-min-bucket-aggregation.html
+  - target: "$.components['schemas']['_types.aggregations:MovingFunctionAggregation']"
+    description: Add x-model
+    update:
+      x-model: true
+      externalDocs:
+        url: https://www.elastic.co/guide/en/elasticsearch/reference/master/search-aggregations-pipeline-movfn-aggregation.html
+  - target: "$.components['schemas']['_types.aggregations:MovingPercentilesAggregation']"
+    description: Add x-model
+    update:
+      x-model: true
+      externalDocs:
+        url: https://www.elastic.co/guide/en/elasticsearch/reference/master/search-aggregations-pipeline-moving-percentiles-aggregation.html
+  - target: "$.components['schemas']['_types.aggregations:NormalizeAggregation']"
+    description: Add x-model
+    update:
+      x-model: true
+      externalDocs:
+        url: https://www.elastic.co/guide/en/elasticsearch/reference/master/search-aggregations-pipeline-normalize-aggregation.html
+  - target: "$.components['schemas']['_types.aggregations:SerialDifferencingAggregation']"
+    description: Add x-model
+    update:
+      x-model: true
+      externalDocs:
+        url: https://www.elastic.co/guide/en/elasticsearch/reference/master/search-aggregations-pipeline-serialdiff-aggregation.html
+  - target: "$.components['schemas']['_types.aggregations:SumBucketAggregation']"
+    description: Add x-model
+    update:
+      x-model: true
+      externalDocs:
+        url: https://www.elastic.co/guide/en/elasticsearch/reference/master/search-aggregations-pipeline-sum-bucket-aggregation.html  
   - target: "$.components['schemas']['_types.query_dsl:LikeDocument']"
     description: Add x-model to LikeDocument schema
     update:

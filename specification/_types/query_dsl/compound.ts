@@ -26,6 +26,9 @@ import { Script } from '@_types/Scripting'
 import { DateMath, Duration } from '@_types/Time'
 import { QueryBase, QueryContainer } from './abstractions'
 
+/**
+ * @ext_doc_id query-dsl-bool-query
+ */
 export class BoolQuery extends QueryBase {
   /**
    * The clause (query) must appear in matching documents.
@@ -52,6 +55,9 @@ export class BoolQuery extends QueryBase {
   should?: QueryContainer | QueryContainer[]
 }
 
+/**
+ * @ext_doc_id query-dsl-boosting-query
+ */
 export class BoostingQuery extends QueryBase {
   /**
    * Floating point number between 0 and 1.0 used to decrease the relevance scores of documents matching the `negative` query.
@@ -79,6 +85,9 @@ export class ConstantScoreQuery extends QueryBase {
   filter: QueryContainer
 }
 
+/**
+ * @ext_doc_id query-dsl-dis-max-query
+ */
 export class DisMaxQuery extends QueryBase {
   /**
    * One or more query clauses.
@@ -95,6 +104,7 @@ export class DisMaxQuery extends QueryBase {
 
 /**
  * @shortcut_property functions
+ * @ext_doc_id query-dsl-function-score-query
  */
 export class FunctionScoreQuery extends QueryBase {
   /**

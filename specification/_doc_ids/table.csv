@@ -359,6 +359,7 @@ query-dsl-function-score-query,https://www.elastic.co/guide/en/elasticsearch/ref
 query-dsl-fuzzy-query,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/query-dsl-fuzzy-query.html
 query-dsl-geo-bounding-box-query,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/query-dsl-geo-bounding-box-query.html
 query-dsl-geo-distance-query,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/query-dsl-geo-distance-query.html
+query-dsl-geo-polygon-query,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/query-dsl-geo-polygon-query.html
 query-dsl-geo-shape-query,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/query-dsl-geo-shape-query.html
 query-dsl-has-child-query,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/query-dsl-has-child-query.html
 query-dsl-has-parent-query,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/query-dsl-has-parent-query.html
@@ -385,6 +386,7 @@ query-dsl-query-string-query,https://www.elastic.co/guide/en/elasticsearch/refer
 query-dsl-range-query,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/query-dsl-range-query.html
 query-dsl-rank-feature-query,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/query-dsl-rank-feature-query.html
 query-dsl-regexp-query,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/query-dsl-regexp-query.html
+query-dsl-rule-query,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/query-dsl-rule-query.html
 query-dsl-script-query,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/query-dsl-script-query.html
 query-dsl-script-score-query,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/query-dsl-script-score-query.html
 query-dsl-shape-query,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/query-dsl-shape-query.html
@@ -427,6 +429,7 @@ run-as-privilege,https://www.elastic.co/guide/en/elasticsearch/reference/{branch
 runtime-search-request,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/runtime-search-request.html
 script-processor,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/script-processor.html
 scroll-search-results,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/paginate-search-results.html#scroll-search-results
+search-aggregations,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/search-aggregations.html
 search-aggregations-bucket-adjacency-matrix-aggregation,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/search-aggregations-bucket-adjacency-matrix-aggregation.html
 search-aggregations-bucket-autodatehistogram-aggregation,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/search-aggregations-bucket-autodatehistogram-aggregation.html
 search-aggregations-bucket-categorize-text-aggregation,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/search-aggregations-bucket-categorize-text-aggregation.html
@@ -582,6 +585,7 @@ slm-api-stop,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/sl
 sort-processor,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/sort-processor.html
 sort-search-results,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/sort-search-results.html
 sort-tiebreaker,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/eql.html#eql-search-specify-a-sort-tiebreaker
+query-dsl-sparse-vector-query,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/query-dsl-sparse-vector-query.html
 split-processor,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/split-processor.html
 sql-rest-filtering,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/sql-rest-filtering.html
 sql-rest-format,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/sql-rest-format.html

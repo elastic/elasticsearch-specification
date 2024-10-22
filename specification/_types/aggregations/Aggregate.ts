@@ -38,6 +38,7 @@ import { DurationLarge, EpochTime, UnitMillis } from '@_types/Time'
 /**
  * @variants external
  * @non_exhaustive
+ * @ext_doc_id search-aggregations
  */
 export type Aggregate =
   | CardinalityAggregate

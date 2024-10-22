@@ -35,6 +35,9 @@ import { Script } from '@_types/Scripting'
 import { DateFormat, DateMath, TimeZone } from '@_types/Time'
 import { QueryBase } from './abstractions'
 
+/**
+ * @ext_doc_id query-dsl-exists-query
+ */
 export class ExistsQuery extends QueryBase {
   /**
    * Name of the field you wish to search.
@@ -42,7 +45,10 @@ export class ExistsQuery extends QueryBase {
   field: Field
 }
 
-/** @shortcut_property value */
+/**
+ * @shortcut_property value
+ * @ext_doc_id query-dsl-fuzzy-query
+ */
 export class FuzzyQuery extends QueryBase {
   /**
    * Maximum number of variations created.

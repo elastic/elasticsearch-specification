@@ -202,6 +202,9 @@ export class LikeDocument {
  */
 export type Like = string | LikeDocument
 
+/**
+ * @ext_doc_id query-dsl-percolate-query
+ */
 export class PercolateQuery extends QueryBase {
   /**
    * The source of the document being percolated.
@@ -363,6 +366,7 @@ export class ScriptScoreQuery extends QueryBase {
 
 /**
  * @behavior_meta AdditionalProperty key=field value=shape
+ * @ext_doc_id query-dsl-shape-query
  */
 // Shape query doesn't follow the common pattern of having a single field-name property
 // holding also the query base fields (boost and _name)
@@ -392,7 +396,7 @@ export class ShapeFieldQuery {
 }
 
 /**
- * @ext_doc_id query-dsl-regexp-query
+ * @ext_doc_id query-dsl-rule-query
  */
 export class RuleQuery extends QueryBase {
   organic: QueryContainer

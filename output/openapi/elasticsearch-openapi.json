@@ -35656,6 +35656,9 @@
         ]
       },
       "_types.aggregations:Aggregate": {
+        "externalDocs": {
+          "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/search-aggregations.html"
+        },
         "oneOf": [
           {
             "$ref": "#/components/schemas/_types.aggregations:CardinalityAggregate"
@@ -42826,6 +42829,9 @@
             "$ref": "#/components/schemas/_types.query_dsl:QueryBase"
           },
           {
+            "externalDocs": {
+              "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-intervals-query.html"
+            },
             "type": "object",
             "properties": {
               "all_of": {
@@ -44833,6 +44839,9 @@
             "$ref": "#/components/schemas/_types.query_dsl:QueryBase"
           },
           {
+            "externalDocs": {
+              "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-sparse-vector-query.html"
+            },
             "allOf": [
               {
                 "type": "object",
