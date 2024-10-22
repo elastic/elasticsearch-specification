@@ -24,6 +24,7 @@ import { UserQueryContainer } from './types'
 
 /**
  * Find users with a query.
+ *
  * Get information for users in a paginated manner.
  * You can optionally filter the results with a query.
  * @rest_spec_name security.query_user

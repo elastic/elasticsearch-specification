@@ -28030,7 +28030,7 @@
           "security"
         ],
         "summary": "Create or update roles",
-        "description": "The role management APIs are generally the preferred way to manage roles in the native realm, rather than using file-based role management.\nThe create or update roles API cannot update roles that are defined in roles files.",
+        "description": "The role management APIs are generally the preferred way to manage roles in the native realm, rather than using file-based role management.\nThe create or update roles API cannot update roles that are defined in roles files.\nFile-based role management is not available in Elastic Serverless.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/defining-roles.html"
         },
@@ -28057,7 +28057,7 @@
           "security"
         ],
         "summary": "Create or update roles",
-        "description": "The role management APIs are generally the preferred way to manage roles in the native realm, rather than using file-based role management.\nThe create or update roles API cannot update roles that are defined in roles files.",
+        "description": "The role management APIs are generally the preferred way to manage roles in the native realm, rather than using file-based role management.\nThe create or update roles API cannot update roles that are defined in roles files.\nFile-based role management is not available in Elastic Serverless.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/defining-roles.html"
         },

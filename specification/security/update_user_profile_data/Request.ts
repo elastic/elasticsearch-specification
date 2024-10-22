@@ -26,6 +26,7 @@ import { long } from '@_types/Numeric'
 
 /**
  * Update user profile data.
+ *
  * Update specific data for the user profile that is associated with a unique ID.
  * @rest_spec_name security.update_user_profile_data
  * @availability stack since=8.2.0 stability=stable

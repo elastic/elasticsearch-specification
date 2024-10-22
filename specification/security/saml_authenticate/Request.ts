@@ -22,6 +22,7 @@ import { Ids } from '@_types/common'
 
 /**
  * Authenticate SAML.
+ *
  * Submits a SAML response message to Elasticsearch for consumption.
  * @rest_spec_name security.saml_authenticate
  * @availability stack since=7.5.0 stability=stable

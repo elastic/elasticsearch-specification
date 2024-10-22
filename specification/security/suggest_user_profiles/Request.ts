@@ -23,6 +23,7 @@ import { Hint } from './types'
 
 /**
  * Suggest a user profile.
+ *
  * Get suggestions for user profiles that match specified search criteria.
  * @rest_spec_name security.suggest_user_profiles
  * @availability stack since=8.2.0 stability=stable

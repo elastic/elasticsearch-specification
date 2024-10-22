@@ -22,6 +22,7 @@ import { Id, Name, Username } from '@_types/common'
 
 /**
  * Invalidate API keys.
+ *
  * This API invalidates API keys created by the create API key or grant API key APIs.
  * Invalidated API keys fail authentication, but they can still be viewed using the get API key information and query API key information APIs, for at least the configured retention period, until they are automatically deleted.
  * The `manage_api_key` privilege allows deleting any API keys.

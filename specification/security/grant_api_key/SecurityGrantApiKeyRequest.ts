@@ -23,6 +23,7 @@ import { ApiKeyGrantType, GrantApiKey } from './types'
 
 /**
  * Grant an API key.
+ *
  * Create an API key on behalf of another user.
  * This API is similar to the create API keys API, however it creates the API key for a user that is different than the user that runs the API.
  * The caller must have authentication credentials (either an access token, or a username and password) for the user on whose behalf the API key will be created.

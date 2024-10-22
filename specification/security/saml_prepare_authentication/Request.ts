@@ -21,6 +21,7 @@ import { RequestBase } from '@_types/Base'
 
 /**
  * Prepare SAML authentication.
+ *
  * Creates a SAML authentication request (`<AuthnRequest>`) as a URL string, based on the configuration of the respective SAML realm in Elasticsearch.
  * @rest_spec_name security.saml_prepare_authentication
  * @availability stack since=7.5.0 stability=stable

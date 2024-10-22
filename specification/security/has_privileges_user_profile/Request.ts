@@ -23,6 +23,7 @@ import { PrivilegesCheck } from './types'
 
 /**
  * Check user profile privileges.
+ *
  * Determine whether the users associated with the specified user profile IDs have all the requested privileges.
  * @rest_spec_name security.has_privileges_user_profile
  * @availability stack since=8.3.0 stability=stable

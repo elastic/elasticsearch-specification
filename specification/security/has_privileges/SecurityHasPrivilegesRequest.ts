@@ -24,6 +24,7 @@ import { ApplicationPrivilegesCheck, IndexPrivilegesCheck } from './types'
 
 /**
  * Check user privileges.
+ *
  * Determine whether the specified user has a specified list of privileges.
  * @rest_spec_name security.has_privileges
  * @availability stack since=6.4.0 stability=stable

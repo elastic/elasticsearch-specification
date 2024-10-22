@@ -22,6 +22,7 @@ import { Name, Username } from '@_types/common'
 
 /**
  * Invalidate a token.
+ *
  * The access tokens returned by the get token API have a finite period of time for which they are valid.
  * After that time period, they can no longer be used.
  * The time period is defined by the `xpack.security.authc.token.timeout` setting.

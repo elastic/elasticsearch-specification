@@ -25,6 +25,7 @@ import { ApiKeyAggregationContainer, ApiKeyQueryContainer } from './types'
 
 /**
  * Find API keys with a query.
+ *
  * Get a paginated list of API keys and their information. You can optionally filter the results with a query.
  * @rest_spec_name security.query_api_keys
  * @availability stack since=7.15.0 stability=stable

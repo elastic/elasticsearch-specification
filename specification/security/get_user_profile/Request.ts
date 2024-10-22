@@ -22,6 +22,7 @@ import { RequestBase } from '@_types/Base'
 
 /**
  * Get a user profile.
+ *
  * Get a user's profile using the unique profile ID.
  * @rest_spec_name security.get_user_profile
  * @availability stack since=8.2.0 stability=stable
