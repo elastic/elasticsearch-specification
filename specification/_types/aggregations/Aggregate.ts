@@ -623,7 +623,7 @@ export class GeoDistanceAggregate extends RangeAggregate {}
 
 /**
  * @variant name=ip_range
- * @ext_doc_id search-aggregations-bucket-iprange-aggregation 
+ * @ext_doc_id search-aggregations-bucket-iprange-aggregation
  */
 // ES: InternalBinaryRange
 export class IpRangeAggregate extends MultiBucketAggregateBase<IpRangeBucket> {}
