@@ -232,7 +232,10 @@ export class IntervalsPrefix {
   use_field?: Field
 }
 
-/** @variants container */
+/**
+ * @variants container
+ * @ext_doc_id query-dsl-intervals-query
+ */
 // Note: similar to IntervalsContainer, but has to be duplicated because of the QueryBase parent class
 export class IntervalsQuery extends QueryBase {
   /**
@@ -279,7 +282,10 @@ export class IntervalsWildcard {
   use_field?: Field
 }
 
-/** @shortcut_property query */
+/**
+ * @shortcut_property query
+ * @ext_doc_id query-dsl-match-query
+ */
 export class MatchQuery extends QueryBase {
   /**
    * Analyzer used to convert the text in the query value into tokens.
@@ -346,7 +352,10 @@ export class MatchQuery extends QueryBase {
   zero_terms_query?: ZeroTermsQuery
 }
 
-/** @shortcut_property query */
+/**
+ * @shortcut_property query
+ * @ext_doc_id query-dsl-match-bool-prefix-query
+ */
 export class MatchBoolPrefixQuery extends QueryBase {
   /**
    * Analyzer used to convert the text in the query value into tokens.
@@ -402,7 +411,10 @@ export class MatchBoolPrefixQuery extends QueryBase {
   query: string
 }
 
-/** @shortcut_property query */
+/**
+ * @shortcut_property query
+ * @ext_doc_id query-dsl-match-query-phrase
+ */
 export class MatchPhraseQuery extends QueryBase {
   /**
    * Analyzer used to convert the text in the query value into tokens.
@@ -425,7 +437,10 @@ export class MatchPhraseQuery extends QueryBase {
   zero_terms_query?: ZeroTermsQuery
 }
 
-/** @shortcut_property query */
+/**
+ * @shortcut_property query
+ * @ext_doc_id query-dsl-match-query-phrase-prefix
+ */
 export class MatchPhrasePrefixQuery extends QueryBase {
   /**
    * Analyzer used to convert text in the query value into tokens.
@@ -453,6 +468,9 @@ export class MatchPhrasePrefixQuery extends QueryBase {
   zero_terms_query?: ZeroTermsQuery
 }
 
+/**
+ * @ext_doc_id query-dsl-multi-match-query
+ */
 export class MultiMatchQuery extends QueryBase {
   /**
    * Analyzer used to convert the text in the query value into tokens.
@@ -577,6 +595,9 @@ export enum ZeroTermsQuery {
   none
 }
 
+/**
+ * @ext_doc_id query-dsl-query-string-query
+ */
 export class QueryStringQuery extends QueryBase {
   /**
    * If `true`, the wildcard characters `*` and `?` are allowed as the first character of the query string.
@@ -762,6 +783,9 @@ export enum SimpleQueryStringFlag {
   ALL
 }
 
+/**
+ * @ext_doc_id query-dsl-simple-query-string-query
+ */
 export class SimpleQueryStringQuery extends QueryBase {
   /**
    * Analyzer used to convert text in the query string into tokens.
