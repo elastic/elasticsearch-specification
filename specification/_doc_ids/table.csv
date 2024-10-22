@@ -111,6 +111,7 @@ data-stream-path-param,https://www.elastic.co/guide/en/elasticsearch/reference/{
 data-streams,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/data-streams.html
 date-index-name-processor,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/date-index-name-processor.html
 dcg,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/search-rank-eval.html#_discounted_cumulative_gain_dcg
+defining-roles,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/defining-roles.html
 delete-async-sql-search-api,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/delete-async-sql-search-api.html
 delete-enrich-policy-api,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/delete-enrich-policy-api.html
 delete-license,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/delete-license.html
@@ -612,6 +613,7 @@ uppercase-processor,https://www.elastic.co/guide/en/elasticsearch/reference/{bra
 urldecode-processor,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/urldecode-processor.html
 usage-api,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/usage-api.html
 user-agent-processor,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/user-agent-processor.html
+user-profile,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/user-profile.html
 voting-config-exclusions,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/voting-config-exclusions.html
 watcher-api-ack-watch,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/watcher-api-ack-watch.html
 watcher-api-activate-watch,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/watcher-api-activate-watch.html
