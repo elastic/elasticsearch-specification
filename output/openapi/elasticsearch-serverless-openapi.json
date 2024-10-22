@@ -16923,7 +16923,7 @@
           "security"
         ],
         "summary": "Delete roles",
-        "description": "Remove roles in the native realm.",
+        "description": "Delete roles in the native realm.",
         "operationId": "security-delete-role",
         "parameters": [
           {

@@ -26799,7 +26799,7 @@
         "tags": [
           "security"
         ],
-        "summary": "Create or update a user profile",
+        "summary": "Activate a user profile",
         "description": "Create or update a user profile on behalf of another user.",
         "operationId": "security-activate-user-profile",
         "requestBody": {
@@ -28078,7 +28078,7 @@
           "security"
         ],
         "summary": "Delete roles",
-        "description": "Remove roles in the native realm.",
+        "description": "Delete roles in the native realm.",
         "operationId": "security-delete-role",
         "parameters": [
           {
@@ -28375,8 +28375,8 @@
         "tags": [
           "security"
         ],
-        "summary": "Deactivate users",
-        "description": "Deactivate users in the native realm.",
+        "summary": "Disable users",
+        "description": "Disable users in the native realm.",
         "operationId": "security-disable-user",
         "parameters": [
           {
@@ -28396,8 +28396,8 @@
         "tags": [
           "security"
         ],
-        "summary": "Deactivate users",
-        "description": "Deactivate users in the native realm.",
+        "summary": "Disable users",
+        "description": "Disable users in the native realm.",
         "operationId": "security-disable-user-1",
         "parameters": [
           {
@@ -28419,8 +28419,8 @@
         "tags": [
           "security"
         ],
-        "summary": "Deactivate a user profile",
-        "description": "Deactivated user profiles are not visible in user profile searches.",
+        "summary": "Disable a user profile",
+        "description": "Disable user profiles so that they are not visible in user profile searches.",
         "operationId": "security-disable-user-profile",
         "parameters": [
           {
@@ -28441,8 +28441,8 @@
         "tags": [
           "security"
         ],
-        "summary": "Deactivate a user profile",
-        "description": "Deactivated user profiles are not visible in user profile searches.",
+        "summary": "Disable a user profile",
+        "description": "Disable user profiles so that they are not visible in user profile searches.",
         "operationId": "security-disable-user-profile-1",
         "parameters": [
           {
@@ -28465,8 +28465,8 @@
         "tags": [
           "security"
         ],
-        "summary": "Activate users",
-        "description": "Activate users in the native realm.",
+        "summary": "Enable users",
+        "description": "Enable users in the native realm.",
         "operationId": "security-enable-user",
         "parameters": [
           {
@@ -28486,8 +28486,8 @@
         "tags": [
           "security"
         ],
-        "summary": "Activate users",
-        "description": "Activate users in the native realm.",
+        "summary": "Enable users",
+        "description": "Enable users in the native realm.",
         "operationId": "security-enable-user-1",
         "parameters": [
           {
@@ -28509,8 +28509,8 @@
         "tags": [
           "security"
         ],
-        "summary": "Activate a user profile",
-        "description": "Activated user profiles are visible in user profile searches.",
+        "summary": "Enable a user profile",
+        "description": "Enable user profiles to make them visible in user profile searches.",
         "operationId": "security-enable-user-profile",
         "parameters": [
           {
@@ -28531,8 +28531,8 @@
         "tags": [
           "security"
         ],
-        "summary": "Activate a user profile",
-        "description": "Activated user profiles are visible in user profile searches.",
+        "summary": "Enable a user profile",
+        "description": "Enable user profiles to make them visible in user profile searches.",
         "operationId": "security-enable-user-profile-1",
         "parameters": [
           {
