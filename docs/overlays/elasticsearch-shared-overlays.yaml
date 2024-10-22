@@ -1070,6 +1070,12 @@ actions:
         externalDocs:
           url: https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl.html
           description: Query DSL
+  - target: "$.components['schemas']['_global.search._types:FieldCollapse']"
+    description: Add x-model and externalDocs
+    update:
+      x-model: true
+      externalDocs:
+        url: https://www.elastic.co/guide/en/elasticsearch/reference/master/collapse-search-results.html
 # Examples
   - target: "$.components['requestBodies']['async_search.submit']"
     description: "Add example for asynch search submit request"
