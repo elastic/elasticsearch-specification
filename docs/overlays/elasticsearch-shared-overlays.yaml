@@ -1076,6 +1076,11 @@ actions:
       x-model: true
       externalDocs:
         url: https://www.elastic.co/guide/en/elasticsearch/reference/master/collapse-search-results.html
+  - target: "$.components['schemas']['_global.msearch:MultisearchBody'].properties"
+    description: Add x-model
+    update:
+      aggregations:
+        x-model: true
 # Examples
   - target: "$.components['requestBodies']['async_search.submit']"
     description: "Add example for asynch search submit request"
