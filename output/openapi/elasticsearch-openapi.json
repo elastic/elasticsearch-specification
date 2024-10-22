@@ -2206,7 +2206,7 @@
           {
             "in": "path",
             "name": "index",
-            "description": "The name of the follower index",
+            "description": "The name of the follower index.",
             "required": true,
             "deprecated": false,
             "schema": {
@@ -2217,7 +2217,7 @@
           {
             "in": "query",
             "name": "wait_for_active_shards",
-            "description": "Sets the number of shard copies that must be active before returning. Defaults to 0. Set to `all` for all shard copies, otherwise set to any non-negative value less than or equal to the total number of copies for the shard (number of replicas + 1)",
+            "description": "Specifies the number of shards to wait on being active before responding. This defaults to waiting on none of the shards to be\nactive.\nA shard must be restored from the leader index before being active. Restoring a follower shard requires transferring all the\nremote Lucene segment files to the follower index.",
             "deprecated": false,
             "schema": {
               "$ref": "#/components/schemas/_types:WaitForActiveShards"
@@ -2231,43 +2231,60 @@
               "schema": {
                 "type": "object",
                 "properties": {
+                  "data_stream_name": {
+                    "description": "If the leader index is part of a data stream, the name to which the local data stream for the followed index should be renamed.",
+                    "type": "string"
+                  },
                   "leader_index": {
                     "$ref": "#/components/schemas/_types:IndexName"
                   },
                   "max_outstanding_read_requests": {
+                    "description": "The maximum number of outstanding reads requests from the remote cluster.",
                     "type": "number"
                   },
                   "max_outstanding_write_requests": {
+                    "description": "The maximum number of outstanding write requests on the follower.",
                     "type": "number"
                   },
                   "max_read_request_operation_count": {
+                    "description": "The maximum number of operations to pull per read from the remote cluster.",
                     "type": "number"
                   },
                   "max_read_request_size": {
-                    "type": "string"
+                    "$ref": "#/components/schemas/_types:ByteSize"
                   },
                   "max_retry_delay": {
                     "$ref": "#/components/schemas/_types:Duration"
                   },
                   "max_write_buffer_count": {
+                    "description": "The maximum number of operations that can be queued for writing. When this limit is reached, reads from the remote cluster will be\ndeferred until the number of queued operations goes below the limit.",
                     "type": "number"
                   },
                   "max_write_buffer_size": {
-                    "type": "string"
+                    "$ref": "#/components/schemas/_types:ByteSize"
                   },
                   "max_write_request_operation_count": {
+                    "description": "The maximum number of operations per bulk write request executed on the follower.",
                     "type": "number"
                   },
                   "max_write_request_size": {
-                    "type": "string"
+                    "$ref": "#/components/schemas/_types:ByteSize"
                   },
                   "read_poll_timeout": {
                     "$ref": "#/components/schemas/_types:Duration"
                   },
                   "remote_cluster": {
+                    "description": "The remote cluster containing the leader index.",
                     "type": "string"
+                  },
+                  "settings": {
+                    "$ref": "#/components/schemas/indices._types:IndexSettings"
                   }
-                }
+                },
+                "required": [
+                  "leader_index",
+                  "remote_cluster"
+                ]
               }
             }
           },
@@ -11257,18 +11274,11 @@
           "content": {
             "application/json": {
               "schema": {
-                "type": "object",
-                "properties": {
-                  "data_retention": {
-                    "$ref": "#/components/schemas/_types:Duration"
-                  },
-                  "downsampling": {
-                    "$ref": "#/components/schemas/indices._types:DataStreamLifecycleDownsampling"
-                  }
-                }
+                "$ref": "#/components/schemas/indices._types:DataStreamLifecycle"
               }
             }
-          }
+          },
+          "required": true
         },
         "responses": {
           "200": {
@@ -25740,7 +25750,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/search_application._types:SearchApplication"
+                "$ref": "#/components/schemas/search_application._types:SearchApplicationParameters"
               }
             }
           },
@@ -25958,7 +25968,7 @@
                     "results": {
                       "type": "array",
                       "items": {
-                        "$ref": "#/components/schemas/search_application.list:SearchApplicationListItem"
+                        "$ref": "#/components/schemas/search_application._types:SearchApplication"
                       }
                     }
                   },
@@ -26789,7 +26799,8 @@
         "tags": [
           "security"
         ],
-        "summary": "Creates or updates a user profile on behalf of another user",
+        "summary": "Activate a user profile",
+        "description": "Create or update a user profile on behalf of another user.",
         "operationId": "security-activate-user-profile",
         "requestBody": {
           "content": {
@@ -26924,8 +26935,8 @@
         "tags": [
           "security"
         ],
-        "summary": "Get roles API",
-        "description": "Retrieves roles in the native realm.",
+        "summary": "Get roles",
+        "description": "Get roles in the native realm.",
         "operationId": "security-get-role-1",
         "responses": {
           "200": {
@@ -26937,8 +26948,8 @@
         "tags": [
           "security"
         ],
-        "summary": "The role management APIs are generally the preferred way to manage roles, rather than using file-based role management",
-        "description": "The bulk create or update roles API cannot update roles that are defined in roles files.",
+        "summary": "Bulk create or update roles",
+        "description": "The role management APIs are generally the preferred way to manage roles, rather than using file-based role management.\nThe bulk create or update roles API cannot update roles that are defined in roles files.",
         "operationId": "security-bulk-put-role",
         "parameters": [
           {
@@ -27018,8 +27029,8 @@
         "tags": [
           "security"
         ],
-        "summary": "The role management APIs are generally the preferred way to manage roles, rather than using file-based role management",
-        "description": "The bulk delete roles API cannot delete roles that are defined in roles files.",
+        "summary": "Bulk delete roles",
+        "description": "The role management APIs are generally the preferred way to manage roles, rather than using file-based role management.\nThe bulk delete roles API cannot delete roles that are defined in roles files.",
         "operationId": "security-bulk-delete-role",
         "parameters": [
           {
@@ -27094,7 +27105,8 @@
         "tags": [
           "security"
         ],
-        "summary": "Changes the passwords of users in the native realm and built-in users",
+        "summary": "Change passwords",
+        "description": "Change the passwords of users in the native realm and built-in users.",
         "operationId": "security-change-password",
         "parameters": [
           {
@@ -27117,7 +27129,8 @@
         "tags": [
           "security"
         ],
-        "summary": "Changes the passwords of users in the native realm and built-in users",
+        "summary": "Change passwords",
+        "description": "Change the passwords of users in the native realm and built-in users.",
         "operationId": "security-change-password-1",
         "parameters": [
           {
@@ -27142,7 +27155,8 @@
         "tags": [
           "security"
         ],
-        "summary": "Changes the passwords of users in the native realm and built-in users",
+        "summary": "Change passwords",
+        "description": "Change the passwords of users in the native realm and built-in users.",
         "operationId": "security-change-password-2",
         "parameters": [
           {
@@ -27162,7 +27176,8 @@
         "tags": [
           "security"
         ],
-        "summary": "Changes the passwords of users in the native realm and built-in users",
+        "summary": "Change passwords",
+        "description": "Change the passwords of users in the native realm and built-in users.",
         "operationId": "security-change-password-3",
         "parameters": [
           {
@@ -27184,8 +27199,8 @@
         "tags": [
           "security"
         ],
-        "summary": "Evicts a subset of all entries from the API key cache",
-        "description": "The cache is also automatically cleared on state changes of the security index.",
+        "summary": "Clear the API key cache",
+        "description": "Evict a subset of all entries from the API key cache.\nThe cache is also automatically cleared on state changes of the security index.",
         "operationId": "security-clear-api-key-cache",
         "parameters": [
           {
@@ -27239,7 +27254,8 @@
         "tags": [
           "security"
         ],
-        "summary": "Evicts application privileges from the native application privileges cache",
+        "summary": "Clear the privileges cache",
+        "description": "Evict privileges from the native application privilege cache.\nThe cache is also automatically cleared for applications that have their privileges updated.",
         "operationId": "security-clear-cached-privileges",
         "parameters": [
           {
@@ -27293,8 +27309,8 @@
         "tags": [
           "security"
         ],
-        "summary": "Evicts users from the user cache",
-        "description": "Can completely clear the cache or evict specific users.",
+        "summary": "Clear the user cache",
+        "description": "Evict users from the user cache. You can completely clear the cache or evict specific users.",
         "operationId": "security-clear-cached-realms",
         "parameters": [
           {
@@ -27360,7 +27376,8 @@
         "tags": [
           "security"
         ],
-        "summary": "Evicts roles from the native role cache",
+        "summary": "Clear the roles cache",
+        "description": "Evict roles from the native role cache.",
         "operationId": "security-clear-cached-roles",
         "parameters": [
           {
@@ -27413,7 +27430,11 @@
         "tags": [
           "security"
         ],
-        "summary": "Evicts tokens from the service account token caches",
+        "summary": "Clear service account token caches",
+        "description": "Evict a subset of all entries from the service account token caches.",
+        "externalDocs": {
+          "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/service-accounts.html"
+        },
         "operationId": "security-clear-cached-service-tokens",
         "parameters": [
           {
@@ -27603,7 +27624,7 @@
           "security"
         ],
         "summary": "Create an API key",
-        "description": "Creates an API key for access without requiring basic authentication.\nA successful request returns a JSON structure that contains the API key, its unique id, and its name.\nIf applicable, it also returns expiration information for the API key in milliseconds.\nNOTE: By default, API keys never expire. You can specify expiration information when you create the API keys.",
+        "description": "Create an API key for access without requiring basic authentication.\nA successful request returns a JSON structure that contains the API key, its unique id, and its name.\nIf applicable, it also returns expiration information for the API key in milliseconds.\nNOTE: By default, API keys never expire. You can specify expiration information when you create the API keys.",
         "operationId": "security-create-api-key",
         "parameters": [
           {
@@ -27625,7 +27646,7 @@
           "security"
         ],
         "summary": "Create an API key",
-        "description": "Creates an API key for access without requiring basic authentication.\nA successful request returns a JSON structure that contains the API key, its unique id, and its name.\nIf applicable, it also returns expiration information for the API key in milliseconds.\nNOTE: By default, API keys never expire. You can specify expiration information when you create the API keys.",
+        "description": "Create an API key for access without requiring basic authentication.\nA successful request returns a JSON structure that contains the API key, its unique id, and its name.\nIf applicable, it also returns expiration information for the API key in milliseconds.\nNOTE: By default, API keys never expire. You can specify expiration information when you create the API keys.",
         "operationId": "security-create-api-key-1",
         "parameters": [
           {
@@ -27733,7 +27754,11 @@
         "tags": [
           "security"
         ],
-        "summary": "Creates a service accounts token for access without requiring basic authentication",
+        "summary": "Create a service account token",
+        "description": "Create a service accounts token for access without requiring basic authentication.",
+        "externalDocs": {
+          "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/service-accounts.html"
+        },
         "operationId": "security-create-service-token",
         "parameters": [
           {
@@ -27759,7 +27784,11 @@
         "tags": [
           "security"
         ],
-        "summary": "Creates a service accounts token for access without requiring basic authentication",
+        "summary": "Create a service account token",
+        "description": "Create a service accounts token for access without requiring basic authentication.",
+        "externalDocs": {
+          "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/service-accounts.html"
+        },
         "operationId": "security-create-service-token-1",
         "parameters": [
           {
@@ -27785,7 +27814,11 @@
         "tags": [
           "security"
         ],
-        "summary": "Deletes a service account token",
+        "summary": "Delete service account tokens",
+        "description": "Delete service account tokens for a service in a specified namespace.",
+        "externalDocs": {
+          "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/service-accounts.html"
+        },
         "operationId": "security-delete-service-token",
         "parameters": [
           {
@@ -27860,7 +27893,11 @@
         "tags": [
           "security"
         ],
-        "summary": "Creates a service accounts token for access without requiring basic authentication",
+        "summary": "Create a service account token",
+        "description": "Create a service accounts token for access without requiring basic authentication.",
+        "externalDocs": {
+          "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/service-accounts.html"
+        },
         "operationId": "security-create-service-token-2",
         "parameters": [
           {
@@ -27885,7 +27922,10 @@
         "tags": [
           "security"
         ],
-        "summary": "Retrieves application privileges",
+        "summary": "Get application privileges",
+        "externalDocs": {
+          "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/security-privileges.html"
+        },
         "operationId": "security-get-privileges-2",
         "parameters": [
           {
@@ -27906,7 +27946,10 @@
         "tags": [
           "security"
         ],
-        "summary": "Removes application privileges",
+        "summary": "Delete application privileges",
+        "externalDocs": {
+          "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/security-privileges.html"
+        },
         "operationId": "security-delete-privileges",
         "parameters": [
           {
@@ -27968,8 +28011,8 @@
         "tags": [
           "security"
         ],
-        "summary": "Get roles API",
-        "description": "Retrieves roles in the native realm.",
+        "summary": "Get roles",
+        "description": "Get roles in the native realm.",
         "operationId": "security-get-role",
         "parameters": [
           {
@@ -28040,8 +28083,8 @@
         "tags": [
           "security"
         ],
-        "summary": "Delete roles API",
-        "description": "Removes roles in the native realm.",
+        "summary": "Delete roles",
+        "description": "Delete roles in the native realm.",
         "operationId": "security-delete-role",
         "parameters": [
           {
@@ -28093,7 +28136,11 @@
         "tags": [
           "security"
         ],
-        "summary": "Retrieves role mappings",
+        "summary": "Get role mappings",
+        "description": "Role mappings define which roles are assigned to each user.\nThe role mapping APIs are generally the preferred way to manage role mappings rather than using role mapping files.\nThe get role mappings API cannot retrieve role mappings that are defined in role mapping files.",
+        "externalDocs": {
+          "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/mapping-roles.html"
+        },
         "operationId": "security-get-role-mapping",
         "parameters": [
           {
@@ -28167,7 +28214,7 @@
         "tags": [
           "security"
         ],
-        "summary": "Removes role mappings",
+        "summary": "Delete role mappings",
         "operationId": "security-delete-role-mapping",
         "parameters": [
           {
@@ -28220,7 +28267,8 @@
         "tags": [
           "security"
         ],
-        "summary": "Retrieves information about users in the native realm and built-in users",
+        "summary": "Get users",
+        "description": "Get information about users in the native realm and built-in users.",
         "operationId": "security-get-user",
         "parameters": [
           {
@@ -28288,7 +28336,8 @@
         "tags": [
           "security"
         ],
-        "summary": "Deletes users from the native realm",
+        "summary": "Delete users",
+        "description": "Delete users from the native realm.",
         "operationId": "security-delete-user",
         "parameters": [
           {
@@ -28340,7 +28389,8 @@
         "tags": [
           "security"
         ],
-        "summary": "Disables users in the native realm",
+        "summary": "Disable users",
+        "description": "Disable users in the native realm.",
         "operationId": "security-disable-user",
         "parameters": [
           {
@@ -28360,7 +28410,8 @@
         "tags": [
           "security"
         ],
-        "summary": "Disables users in the native realm",
+        "summary": "Disable users",
+        "description": "Disable users in the native realm.",
         "operationId": "security-disable-user-1",
         "parameters": [
           {
@@ -28382,7 +28433,8 @@
         "tags": [
           "security"
         ],
-        "summary": "Disables a user profile so it's not visible in user profile searches",
+        "summary": "Disable a user profile",
+        "description": "Disable user profiles so that they are not visible in user profile searches.",
         "operationId": "security-disable-user-profile",
         "parameters": [
           {
@@ -28403,7 +28455,8 @@
         "tags": [
           "security"
         ],
-        "summary": "Disables a user profile so it's not visible in user profile searches",
+        "summary": "Disable a user profile",
+        "description": "Disable user profiles so that they are not visible in user profile searches.",
         "operationId": "security-disable-user-profile-1",
         "parameters": [
           {
@@ -28426,7 +28479,8 @@
         "tags": [
           "security"
         ],
-        "summary": "Enables users in the native realm",
+        "summary": "Enable users",
+        "description": "Enable users in the native realm.",
         "operationId": "security-enable-user",
         "parameters": [
           {
@@ -28446,7 +28500,8 @@
         "tags": [
           "security"
         ],
-        "summary": "Enables users in the native realm",
+        "summary": "Enable users",
+        "description": "Enable users in the native realm.",
         "operationId": "security-enable-user-1",
         "parameters": [
           {
@@ -28468,7 +28523,8 @@
         "tags": [
           "security"
         ],
-        "summary": "Enables a user profile so it's visible in user profile searches",
+        "summary": "Enable a user profile",
+        "description": "Enable user profiles to make them visible in user profile searches.",
         "operationId": "security-enable-user-profile",
         "parameters": [
           {
@@ -28489,7 +28545,8 @@
         "tags": [
           "security"
         ],
-        "summary": "Enables a user profile so it's visible in user profile searches",
+        "summary": "Enable a user profile",
+        "description": "Enable user profiles to make them visible in user profile searches.",
         "operationId": "security-enable-user-profile-1",
         "parameters": [
           {
@@ -28512,7 +28569,8 @@
         "tags": [
           "security"
         ],
-        "summary": "Enables a Kibana instance to configure itself for communication with a secured Elasticsearch cluster",
+        "summary": "Enroll Kibana",
+        "description": "Enable a Kibana instance to configure itself for communication with a secured Elasticsearch cluster.",
         "operationId": "security-enroll-kibana",
         "responses": {
           "200": {
@@ -28546,7 +28604,8 @@
         "tags": [
           "security"
         ],
-        "summary": "Allows a new node to join an existing cluster with security features enabled",
+        "summary": "Enroll a node",
+        "description": "Enroll a new node to allow it to join an existing cluster with security features enabled.",
         "operationId": "security-enroll-node",
         "responses": {
           "200": {
@@ -28599,8 +28658,11 @@
         "tags": [
           "security"
         ],
-        "summary": "Get builtin privileges API",
-        "description": "Retrieves the list of cluster privileges and index privileges that are available in this version of Elasticsearch.",
+        "summary": "Get builtin privileges",
+        "description": "Get the list of cluster privileges and index privileges that are available in this version of Elasticsearch.",
+        "externalDocs": {
+          "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/security-privileges.html"
+        },
         "operationId": "security-get-builtin-privileges",
         "responses": {
           "200": {
@@ -28640,7 +28702,10 @@
         "tags": [
           "security"
         ],
-        "summary": "Retrieves application privileges",
+        "summary": "Get application privileges",
+        "externalDocs": {
+          "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/security-privileges.html"
+        },
         "operationId": "security-get-privileges",
         "responses": {
           "200": {
@@ -28703,7 +28768,10 @@
         "tags": [
           "security"
         ],
-        "summary": "Retrieves application privileges",
+        "summary": "Get application privileges",
+        "externalDocs": {
+          "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/security-privileges.html"
+        },
         "operationId": "security-get-privileges-1",
         "parameters": [
           {
@@ -28723,7 +28791,11 @@
         "tags": [
           "security"
         ],
-        "summary": "Retrieves role mappings",
+        "summary": "Get role mappings",
+        "description": "Role mappings define which roles are assigned to each user.\nThe role mapping APIs are generally the preferred way to manage role mappings rather than using role mapping files.\nThe get role mappings API cannot retrieve role mappings that are defined in role mapping files.",
+        "externalDocs": {
+          "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/mapping-roles.html"
+        },
         "operationId": "security-get-role-mapping-1",
         "responses": {
           "200": {
@@ -28738,7 +28810,11 @@
         "tags": [
           "security"
         ],
-        "summary": "This API returns a list of service accounts that match the provided path parameter(s)",
+        "summary": "Get service accounts",
+        "description": "Get a list of service accounts that match the provided path parameters.",
+        "externalDocs": {
+          "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/service-accounts.html"
+        },
         "operationId": "security-get-service-accounts",
         "parameters": [
           {
@@ -28761,7 +28837,11 @@
         "tags": [
           "security"
         ],
-        "summary": "This API returns a list of service accounts that match the provided path parameter(s)",
+        "summary": "Get service accounts",
+        "description": "Get a list of service accounts that match the provided path parameters.",
+        "externalDocs": {
+          "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/service-accounts.html"
+        },
         "operationId": "security-get-service-accounts-1",
         "parameters": [
           {
@@ -28781,7 +28861,11 @@
         "tags": [
           "security"
         ],
-        "summary": "This API returns a list of service accounts that match the provided path parameter(s)",
+        "summary": "Get service accounts",
+        "description": "Get a list of service accounts that match the provided path parameters.",
+        "externalDocs": {
+          "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/service-accounts.html"
+        },
         "operationId": "security-get-service-accounts-2",
         "responses": {
           "200": {
@@ -28796,7 +28880,10 @@
         "tags": [
           "security"
         ],
-        "summary": "Retrieves information of all service credentials for a service account",
+        "summary": "Get service account credentials",
+        "externalDocs": {
+          "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/service-accounts.html"
+        },
         "operationId": "security-get-service-credentials",
         "parameters": [
           {
@@ -28865,7 +28952,8 @@
         "tags": [
           "security"
         ],
-        "summary": "Creates a bearer token for access without requiring basic authentication",
+        "summary": "Get a token",
+        "description": "Create a bearer token for access without requiring basic authentication.",
         "operationId": "security-get-token",
         "requestBody": {
           "content": {
@@ -29013,7 +29101,8 @@
         "tags": [
           "security"
         ],
-        "summary": "Retrieves information about users in the native realm and built-in users",
+        "summary": "Get users",
+        "description": "Get information about users in the native realm and built-in users.",
         "operationId": "security-get-user-1",
         "parameters": [
           {
@@ -35708,6 +35797,9 @@
         ]
       },
       "_types.aggregations:Aggregate": {
+        "externalDocs": {
+          "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/search-aggregations.html"
+        },
         "oneOf": [
           {
             "$ref": "#/components/schemas/_types.aggregations:CardinalityAggregate"
@@ -41110,6 +41202,9 @@
             "$ref": "#/components/schemas/_types.query_dsl:FunctionScoreQuery"
           },
           "fuzzy": {
+            "externalDocs": {
+              "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-fuzzy-query.html"
+            },
             "description": "Returns documents that contain terms similar to the search term, as measured by a Levenshtein edit distance.",
             "type": "object",
             "additionalProperties": {
@@ -41140,6 +41235,9 @@
             "$ref": "#/components/schemas/_types.query_dsl:IdsQuery"
           },
           "intervals": {
+            "externalDocs": {
+              "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-intervals-query.html"
+            },
             "description": "Returns documents based on the order and proximity of matching terms.",
             "type": "object",
             "additionalProperties": {
@@ -41152,6 +41250,9 @@
             "$ref": "#/components/schemas/_types:KnnQuery"
           },
           "match": {
+            "externalDocs": {
+              "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-match-query.html"
+            },
             "description": "Returns documents that match a provided text, number, date or boolean value.\nThe provided text is analyzed before matching.",
             "type": "object",
             "additionalProperties": {
@@ -41164,6 +41265,9 @@
             "$ref": "#/components/schemas/_types.query_dsl:MatchAllQuery"
           },
           "match_bool_prefix": {
+            "externalDocs": {
+              "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-match-bool-prefix-query.html"
+            },
             "description": "Analyzes its input and constructs a `bool` query from the terms.\nEach term except the last is used in a `term` query.\nThe last term is used in a prefix query.",
             "type": "object",
             "additionalProperties": {
@@ -41176,6 +41280,9 @@
             "$ref": "#/components/schemas/_types.query_dsl:MatchNoneQuery"
           },
           "match_phrase": {
+            "externalDocs": {
+              "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-match-query-phrase.html"
+            },
             "description": "Analyzes the text and creates a phrase query out of the analyzed text.",
             "type": "object",
             "additionalProperties": {
@@ -41185,6 +41292,9 @@
             "maxProperties": 1
           },
           "match_phrase_prefix": {
+            "externalDocs": {
+              "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-match-query-phrase-prefix.html"
+            },
             "description": "Returns documents that contain the words of a provided text, in the same order as provided.\nThe last term of the provided text is treated as a prefix, matching any words that begin with that term.",
             "type": "object",
             "additionalProperties": {
@@ -41212,6 +41322,9 @@
             "$ref": "#/components/schemas/_types.query_dsl:PinnedQuery"
           },
           "prefix": {
+            "externalDocs": {
+              "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-prefix-query.html"
+            },
             "description": "Returns documents that contain a specific prefix in a provided field.",
             "type": "object",
             "additionalProperties": {
@@ -41224,6 +41337,9 @@
             "$ref": "#/components/schemas/_types.query_dsl:QueryStringQuery"
           },
           "range": {
+            "externalDocs": {
+              "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-range-query.html"
+            },
             "description": "Returns documents that contain terms within a provided range.",
             "type": "object",
             "additionalProperties": {
@@ -41236,6 +41352,9 @@
             "$ref": "#/components/schemas/_types.query_dsl:RankFeatureQuery"
           },
           "regexp": {
+            "externalDocs": {
+              "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-regexp-query.html"
+            },
             "description": "Returns documents that contain terms matching a regular expression.",
             "type": "object",
             "additionalProperties": {
@@ -41284,6 +41403,9 @@
             "$ref": "#/components/schemas/_types.query_dsl:SpanOrQuery"
           },
           "span_term": {
+            "externalDocs": {
+              "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-span-term-query.html"
+            },
             "description": "Matches spans containing a term.",
             "type": "object",
             "additionalProperties": {
@@ -41299,6 +41421,9 @@
             "$ref": "#/components/schemas/_types.query_dsl:SparseVectorQuery"
           },
           "term": {
+            "externalDocs": {
+              "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-term-query.html"
+            },
             "description": "Returns documents that contain an exact term in a provided field.\nTo return a document, the query term must exactly match the queried field's value, including whitespace and capitalization.",
             "type": "object",
             "additionalProperties": {
@@ -41311,6 +41436,9 @@
             "$ref": "#/components/schemas/_types.query_dsl:TermsQuery"
           },
           "terms_set": {
+            "externalDocs": {
+              "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-terms-set-query.html"
+            },
             "description": "Returns documents that contain a minimum number of exact terms in a provided field.\nTo return a document, a required number of terms must exactly match the field values, including whitespace and capitalization.",
             "type": "object",
             "additionalProperties": {
@@ -41321,6 +41449,9 @@
           },
           "text_expansion": {
             "deprecated": true,
+            "externalDocs": {
+              "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-text-expansion-query.html"
+            },
             "description": "Uses a natural language processing model to convert the query text into a list of token-weight pairs which are then used in a query against a sparse vector or rank features field.",
             "type": "object",
             "additionalProperties": {
@@ -41331,6 +41462,9 @@
           },
           "weighted_tokens": {
             "deprecated": true,
+            "externalDocs": {
+              "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-weighted-tokens-query.html"
+            },
             "description": "Supports returning text_expansion query results by sending in precomputed tokens with the query.",
             "type": "object",
             "additionalProperties": {
@@ -41340,6 +41474,9 @@
             "maxProperties": 1
           },
           "wildcard": {
+            "externalDocs": {
+              "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-wildcard-query.html"
+            },
             "description": "Returns documents that contain terms matching a wildcard pattern.",
             "type": "object",
             "additionalProperties": {
@@ -41611,6 +41748,9 @@
         ]
       },
       "_types.query_dsl:DistanceFeatureQuery": {
+        "externalDocs": {
+          "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-distance-feature-query.html"
+        },
         "oneOf": [
           {
             "$ref": "#/components/schemas/_types.query_dsl:UntypedDistanceFeatureQuery"
@@ -42833,6 +42973,9 @@
             "$ref": "#/components/schemas/_types.query_dsl:QueryBase"
           },
           {
+            "externalDocs": {
+              "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-intervals-query.html"
+            },
             "type": "object",
             "properties": {
               "all_of": {
@@ -43360,6 +43503,9 @@
             "type": "object",
             "properties": {
               "analyzer": {
+                "externalDocs": {
+                  "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/analysis.html"
+                },
                 "description": "The analyzer that is used to analyze the free form text.\nDefaults to the analyzer associated with the first field in fields.",
                 "type": "string"
               },
@@ -43723,6 +43869,9 @@
             "$ref": "#/components/schemas/_types.query_dsl:QueryBase"
           },
           {
+            "externalDocs": {
+              "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-pinned-query.html"
+            },
             "allOf": [
               {
                 "type": "object",
@@ -43914,6 +44063,9 @@
         "type": "string"
       },
       "_types.query_dsl:RangeQuery": {
+        "externalDocs": {
+          "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-range-query.html"
+        },
         "oneOf": [
           {
             "$ref": "#/components/schemas/_types.query_dsl:UntypedRangeQuery"
@@ -44834,6 +44986,9 @@
             "$ref": "#/components/schemas/_types.query_dsl:QueryBase"
           },
           {
+            "externalDocs": {
+              "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-sparse-vector-query.html"
+            },
             "allOf": [
               {
                 "type": "object",
@@ -52093,809 +52248,6 @@
           }
         }
       },
-      "ccr.follow_info:FollowerIndex": {
-        "type": "object",
-        "properties": {
-          "follower_index": {
-            "$ref": "#/components/schemas/_types:IndexName"
-          },
-          "leader_index": {
-            "$ref": "#/components/schemas/_types:IndexName"
-          },
-          "parameters": {
-            "$ref": "#/components/schemas/ccr.follow_info:FollowerIndexParameters"
-          },
-          "remote_cluster": {
-            "$ref": "#/components/schemas/_types:Name"
-          },
-          "status": {
-            "$ref": "#/components/schemas/ccr.follow_info:FollowerIndexStatus"
-          }
-        },
-        "required": [
-          "follower_index",
-          "leader_index",
-          "remote_cluster",
-          "status"
-        ]
-      },
-      "ccr.follow_info:FollowerIndexParameters": {
-        "type": "object",
-        "properties": {
-          "max_outstanding_read_requests": {
-            "type": "number"
-          },
-          "max_outstanding_write_requests": {
-            "type": "number"
-          },
-          "max_read_request_operation_count": {
-            "type": "number"
-          },
-          "max_read_request_size": {
-            "type": "string"
-          },
-          "max_retry_delay": {
-            "$ref": "#/components/schemas/_types:Duration"
-          },
-          "max_write_buffer_count": {
-            "type": "number"
-          },
-          "max_write_buffer_size": {
-            "type": "string"
-          },
-          "max_write_request_operation_count": {
-            "type": "number"
-          },
-          "max_write_request_size": {
-            "type": "string"
-          },
-          "read_poll_timeout": {
-            "$ref": "#/components/schemas/_types:Duration"
-          }
-        },
-        "required": [
-          "max_outstanding_read_requests",
-          "max_outstanding_write_requests",
-          "max_read_request_operation_count",
-          "max_read_request_size",
-          "max_retry_delay",
-          "max_write_buffer_count",
-          "max_write_buffer_size",
-          "max_write_request_operation_count",
-          "max_write_request_size",
-          "read_poll_timeout"
-        ]
-      },
-      "ccr.follow_info:FollowerIndexStatus": {
-        "type": "string",
-        "enum": [
-          "active",
-          "paused"
-        ]
-      },
-      "ccr._types:FollowIndexStats": {
-        "type": "object",
-        "properties": {
-          "index": {
-            "$ref": "#/components/schemas/_types:IndexName"
-          },
-          "shards": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/ccr._types:ShardStats"
-            }
-          }
-        },
-        "required": [
-          "index",
-          "shards"
-        ]
-      },
-      "ccr._types:ShardStats": {
-        "type": "object",
-        "properties": {
-          "bytes_read": {
-            "type": "number"
-          },
-          "failed_read_requests": {
-            "type": "number"
-          },
-          "failed_write_requests": {
-            "type": "number"
-          },
-          "fatal_exception": {
-            "$ref": "#/components/schemas/_types:ErrorCause"
-          },
-          "follower_aliases_version": {
-            "$ref": "#/components/schemas/_types:VersionNumber"
-          },
-          "follower_global_checkpoint": {
-            "type": "number"
-          },
-          "follower_index": {
-            "type": "string"
-          },
-          "follower_mapping_version": {
-            "$ref": "#/components/schemas/_types:VersionNumber"
-          },
-          "follower_max_seq_no": {
-            "$ref": "#/components/schemas/_types:SequenceNumber"
-          },
-          "follower_settings_version": {
-            "$ref": "#/components/schemas/_types:VersionNumber"
-          },
-          "last_requested_seq_no": {
-            "$ref": "#/components/schemas/_types:SequenceNumber"
-          },
-          "leader_global_checkpoint": {
-            "type": "number"
-          },
-          "leader_index": {
-            "type": "string"
-          },
-          "leader_max_seq_no": {
-            "$ref": "#/components/schemas/_types:SequenceNumber"
-          },
-          "operations_read": {
-            "type": "number"
-          },
-          "operations_written": {
-            "type": "number"
-          },
-          "outstanding_read_requests": {
-            "type": "number"
-          },
-          "outstanding_write_requests": {
-            "type": "number"
-          },
-          "read_exceptions": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/ccr._types:ReadException"
-            }
-          },
-          "remote_cluster": {
-            "type": "string"
-          },
-          "shard_id": {
-            "type": "number"
-          },
-          "successful_read_requests": {
-            "type": "number"
-          },
-          "successful_write_requests": {
-            "type": "number"
-          },
-          "time_since_last_read": {
-            "$ref": "#/components/schemas/_types:Duration"
-          },
-          "time_since_last_read_millis": {
-            "$ref": "#/components/schemas/_types:DurationValueUnitMillis"
-          },
-          "total_read_remote_exec_time": {
-            "$ref": "#/components/schemas/_types:Duration"
-          },
-          "total_read_remote_exec_time_millis": {
-            "$ref": "#/components/schemas/_types:DurationValueUnitMillis"
-          },
-          "total_read_time": {
-            "$ref": "#/components/schemas/_types:Duration"
-          },
-          "total_read_time_millis": {
-            "$ref": "#/components/schemas/_types:DurationValueUnitMillis"
-          },
-          "total_write_time": {
-            "$ref": "#/components/schemas/_types:Duration"
-          },
-          "total_write_time_millis": {
-            "$ref": "#/components/schemas/_types:DurationValueUnitMillis"
-          },
-          "write_buffer_operation_count": {
-            "type": "number"
-          },
-          "write_buffer_size_in_bytes": {
-            "$ref": "#/components/schemas/_types:ByteSize"
-          }
-        },
-        "required": [
-          "bytes_read",
-          "failed_read_requests",
-          "failed_write_requests",
-          "follower_aliases_version",
-          "follower_global_checkpoint",
-          "follower_index",
-          "follower_mapping_version",
-          "follower_max_seq_no",
-          "follower_settings_version",
-          "last_requested_seq_no",
-          "leader_global_checkpoint",
-          "leader_index",
-          "leader_max_seq_no",
-          "operations_read",
-          "operations_written",
-          "outstanding_read_requests",
-          "outstanding_write_requests",
-          "read_exceptions",
-          "remote_cluster",
-          "shard_id",
-          "successful_read_requests",
-          "successful_write_requests",
-          "time_since_last_read_millis",
-          "total_read_remote_exec_time_millis",
-          "total_read_time_millis",
-          "total_write_time_millis",
-          "write_buffer_operation_count",
-          "write_buffer_size_in_bytes"
-        ]
-      },
-      "ccr._types:ReadException": {
-        "type": "object",
-        "properties": {
-          "exception": {
-            "$ref": "#/components/schemas/_types:ErrorCause"
-          },
-          "from_seq_no": {
-            "$ref": "#/components/schemas/_types:SequenceNumber"
-          },
-          "retries": {
-            "type": "number"
-          }
-        },
-        "required": [
-          "exception",
-          "from_seq_no",
-          "retries"
-        ]
-      },
-      "_types:Uuid": {
-        "type": "string"
-      },
-      "ccr.get_auto_follow_pattern:AutoFollowPattern": {
-        "type": "object",
-        "properties": {
-          "name": {
-            "$ref": "#/components/schemas/_types:Name"
-          },
-          "pattern": {
-            "$ref": "#/components/schemas/ccr.get_auto_follow_pattern:AutoFollowPatternSummary"
-          }
-        },
-        "required": [
-          "name",
-          "pattern"
-        ]
-      },
-      "ccr.get_auto_follow_pattern:AutoFollowPatternSummary": {
-        "type": "object",
-        "properties": {
-          "active": {
-            "type": "boolean"
-          },
-          "remote_cluster": {
-            "description": "The remote cluster containing the leader indices to match against.",
-            "type": "string"
-          },
-          "follow_index_pattern": {
-            "$ref": "#/components/schemas/_types:IndexPattern"
-          },
-          "leader_index_patterns": {
-            "$ref": "#/components/schemas/_types:IndexPatterns"
-          },
-          "leader_index_exclusion_patterns": {
-            "$ref": "#/components/schemas/_types:IndexPatterns"
-          },
-          "max_outstanding_read_requests": {
-            "description": "The maximum number of outstanding reads requests from the remote cluster.",
-            "type": "number"
-          }
-        },
-        "required": [
-          "active",
-          "remote_cluster",
-          "leader_index_patterns",
-          "leader_index_exclusion_patterns",
-          "max_outstanding_read_requests"
-        ]
-      },
-      "_types:IndexPattern": {
-        "type": "string"
-      },
-      "_types:IndexPatterns": {
-        "type": "array",
-        "items": {
-          "$ref": "#/components/schemas/_types:IndexPattern"
-        }
-      },
-      "ccr.stats:AutoFollowStats": {
-        "type": "object",
-        "properties": {
-          "auto_followed_clusters": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/ccr.stats:AutoFollowedCluster"
-            }
-          },
-          "number_of_failed_follow_indices": {
-            "type": "number"
-          },
-          "number_of_failed_remote_cluster_state_requests": {
-            "type": "number"
-          },
-          "number_of_successful_follow_indices": {
-            "type": "number"
-          },
-          "recent_auto_follow_errors": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/_types:ErrorCause"
-            }
-          }
-        },
-        "required": [
-          "auto_followed_clusters",
-          "number_of_failed_follow_indices",
-          "number_of_failed_remote_cluster_state_requests",
-          "number_of_successful_follow_indices",
-          "recent_auto_follow_errors"
-        ]
-      },
-      "ccr.stats:AutoFollowedCluster": {
-        "type": "object",
-        "properties": {
-          "cluster_name": {
-            "$ref": "#/components/schemas/_types:Name"
-          },
-          "last_seen_metadata_version": {
-            "$ref": "#/components/schemas/_types:VersionNumber"
-          },
-          "time_since_last_check_millis": {
-            "$ref": "#/components/schemas/_types:DurationValueUnitMillis"
-          }
-        },
-        "required": [
-          "cluster_name",
-          "last_seen_metadata_version",
-          "time_since_last_check_millis"
-        ]
-      },
-      "ccr.stats:FollowStats": {
-        "type": "object",
-        "properties": {
-          "indices": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/ccr._types:FollowIndexStats"
-            }
-          }
-        },
-        "required": [
-          "indices"
-        ]
-      },
-      "_types:ScrollIds": {
-        "oneOf": [
-          {
-            "$ref": "#/components/schemas/_types:ScrollId"
-          },
-          {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/_types:ScrollId"
-            }
-          }
-        ]
-      },
-      "cluster.allocation_explain:Decision": {
-        "type": "string",
-        "enum": [
-          "yes",
-          "no",
-          "worse_balance",
-          "throttled",
-          "awaiting_info",
-          "allocation_delayed",
-          "no_valid_shard_copy",
-          "no_attempt"
-        ]
-      },
-      "cluster.allocation_explain:AllocationDecision": {
-        "type": "object",
-        "properties": {
-          "decider": {
-            "type": "string"
-          },
-          "decision": {
-            "$ref": "#/components/schemas/cluster.allocation_explain:AllocationExplainDecision"
-          },
-          "explanation": {
-            "type": "string"
-          }
-        },
-        "required": [
-          "decider",
-          "decision",
-          "explanation"
-        ]
-      },
-      "cluster.allocation_explain:AllocationExplainDecision": {
-        "type": "string",
-        "enum": [
-          "NO",
-          "YES",
-          "THROTTLE",
-          "ALWAYS"
-        ]
-      },
-      "cluster.allocation_explain:ClusterInfo": {
-        "type": "object",
-        "properties": {
-          "nodes": {
-            "type": "object",
-            "additionalProperties": {
-              "$ref": "#/components/schemas/cluster.allocation_explain:NodeDiskUsage"
-            }
-          },
-          "shard_sizes": {
-            "type": "object",
-            "additionalProperties": {
-              "type": "number"
-            }
-          },
-          "shard_data_set_sizes": {
-            "type": "object",
-            "additionalProperties": {
-              "type": "string"
-            }
-          },
-          "shard_paths": {
-            "type": "object",
-            "additionalProperties": {
-              "type": "string"
-            }
-          },
-          "reserved_sizes": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/cluster.allocation_explain:ReservedSize"
-            }
-          }
-        },
-        "required": [
-          "nodes",
-          "shard_sizes",
-          "shard_paths",
-          "reserved_sizes"
-        ]
-      },
-      "cluster.allocation_explain:NodeDiskUsage": {
-        "type": "object",
-        "properties": {
-          "node_name": {
-            "$ref": "#/components/schemas/_types:Name"
-          },
-          "least_available": {
-            "$ref": "#/components/schemas/cluster.allocation_explain:DiskUsage"
-          },
-          "most_available": {
-            "$ref": "#/components/schemas/cluster.allocation_explain:DiskUsage"
-          }
-        },
-        "required": [
-          "node_name",
-          "least_available",
-          "most_available"
-        ]
-      },
-      "cluster.allocation_explain:DiskUsage": {
-        "type": "object",
-        "properties": {
-          "path": {
-            "type": "string"
-          },
-          "total_bytes": {
-            "type": "number"
-          },
-          "used_bytes": {
-            "type": "number"
-          },
-          "free_bytes": {
-            "type": "number"
-          },
-          "free_disk_percent": {
-            "type": "number"
-          },
-          "used_disk_percent": {
-            "type": "number"
-          }
-        },
-        "required": [
-          "path",
-          "total_bytes",
-          "used_bytes",
-          "free_bytes",
-          "free_disk_percent",
-          "used_disk_percent"
-        ]
-      },
-      "cluster.allocation_explain:ReservedSize": {
-        "type": "object",
-        "properties": {
-          "node_id": {
-            "$ref": "#/components/schemas/_types:Id"
-          },
-          "path": {
-            "type": "string"
-          },
-          "total": {
-            "type": "number"
-          },
-          "shards": {
-            "type": "array",
-            "items": {
-              "type": "string"
-            }
-          }
-        },
-        "required": [
-          "node_id",
-          "path",
-          "total",
-          "shards"
-        ]
-      },
-      "cluster.allocation_explain:CurrentNode": {
-        "type": "object",
-        "properties": {
-          "id": {
-            "$ref": "#/components/schemas/_types:Id"
-          },
-          "name": {
-            "$ref": "#/components/schemas/_types:Name"
-          },
-          "roles": {
-            "$ref": "#/components/schemas/_types:NodeRoles"
-          },
-          "attributes": {
-            "type": "object",
-            "additionalProperties": {
-              "type": "string"
-            }
-          },
-          "transport_address": {
-            "$ref": "#/components/schemas/_types:TransportAddress"
-          },
-          "weight_ranking": {
-            "type": "number"
-          }
-        },
-        "required": [
-          "id",
-          "name",
-          "roles",
-          "attributes",
-          "transport_address",
-          "weight_ranking"
-        ]
-      },
-      "_types:NodeRoles": {
-        "description": "* @doc_id node-roles",
-        "type": "array",
-        "items": {
-          "$ref": "#/components/schemas/_types:NodeRole"
-        }
-      },
-      "_types:NodeRole": {
-        "type": "string",
-        "enum": [
-          "master",
-          "data",
-          "data_cold",
-          "data_content",
-          "data_frozen",
-          "data_hot",
-          "data_warm",
-          "client",
-          "ingest",
-          "ml",
-          "voting_only",
-          "transform",
-          "remote_cluster_client",
-          "coordinating_only"
-        ]
-      },
-      "_types:TransportAddress": {
-        "type": "string"
-      },
-      "cluster.allocation_explain:NodeAllocationExplanation": {
-        "type": "object",
-        "properties": {
-          "deciders": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/cluster.allocation_explain:AllocationDecision"
-            }
-          },
-          "node_attributes": {
-            "type": "object",
-            "additionalProperties": {
-              "type": "string"
-            }
-          },
-          "node_decision": {
-            "$ref": "#/components/schemas/cluster.allocation_explain:Decision"
-          },
-          "node_id": {
-            "$ref": "#/components/schemas/_types:Id"
-          },
-          "node_name": {
-            "$ref": "#/components/schemas/_types:Name"
-          },
-          "roles": {
-            "$ref": "#/components/schemas/_types:NodeRoles"
-          },
-          "store": {
-            "$ref": "#/components/schemas/cluster.allocation_explain:AllocationStore"
-          },
-          "transport_address": {
-            "$ref": "#/components/schemas/_types:TransportAddress"
-          },
-          "weight_ranking": {
-            "type": "number"
-          }
-        },
-        "required": [
-          "deciders",
-          "node_attributes",
-          "node_decision",
-          "node_id",
-          "node_name",
-          "roles",
-          "transport_address",
-          "weight_ranking"
-        ]
-      },
-      "cluster.allocation_explain:AllocationStore": {
-        "type": "object",
-        "properties": {
-          "allocation_id": {
-            "type": "string"
-          },
-          "found": {
-            "type": "boolean"
-          },
-          "in_sync": {
-            "type": "boolean"
-          },
-          "matching_size_in_bytes": {
-            "type": "number"
-          },
-          "matching_sync_id": {
-            "type": "boolean"
-          },
-          "store_exception": {
-            "type": "string"
-          }
-        },
-        "required": [
-          "allocation_id",
-          "found",
-          "in_sync",
-          "matching_size_in_bytes",
-          "matching_sync_id",
-          "store_exception"
-        ]
-      },
-      "cluster.allocation_explain:UnassignedInformation": {
-        "type": "object",
-        "properties": {
-          "at": {
-            "$ref": "#/components/schemas/_types:DateTime"
-          },
-          "last_allocation_status": {
-            "type": "string"
-          },
-          "reason": {
-            "$ref": "#/components/schemas/cluster.allocation_explain:UnassignedInformationReason"
-          },
-          "details": {
-            "type": "string"
-          },
-          "failed_allocation_attempts": {
-            "type": "number"
-          },
-          "delayed": {
-            "type": "boolean"
-          },
-          "allocation_status": {
-            "type": "string"
-          }
-        },
-        "required": [
-          "at",
-          "reason"
-        ]
-      },
-      "cluster.allocation_explain:UnassignedInformationReason": {
-        "type": "string",
-        "enum": [
-          "INDEX_CREATED",
-          "CLUSTER_RECOVERED",
-          "INDEX_REOPENED",
-          "DANGLING_INDEX_IMPORTED",
-          "NEW_INDEX_RESTORED",
-          "EXISTING_INDEX_RESTORED",
-          "REPLICA_ADDED",
-          "ALLOCATION_FAILED",
-          "NODE_LEFT",
-          "REROUTE_CANCELLED",
-          "REINITIALIZED",
-          "REALLOCATED_REPLICA",
-          "PRIMARY_FAILED",
-          "FORCED_EMPTY_PRIMARY",
-          "MANUAL_ALLOCATION"
-        ]
-      },
-      "cluster._types:ComponentTemplate": {
-        "type": "object",
-        "properties": {
-          "name": {
-            "$ref": "#/components/schemas/_types:Name"
-          },
-          "component_template": {
-            "$ref": "#/components/schemas/cluster._types:ComponentTemplateNode"
-          }
-        },
-        "required": [
-          "name",
-          "component_template"
-        ]
-      },
-      "cluster._types:ComponentTemplateNode": {
-        "type": "object",
-        "properties": {
-          "template": {
-            "$ref": "#/components/schemas/cluster._types:ComponentTemplateSummary"
-          },
-          "version": {
-            "$ref": "#/components/schemas/_types:VersionNumber"
-          },
-          "_meta": {
-            "$ref": "#/components/schemas/_types:Metadata"
-          }
-        },
-        "required": [
-          "template"
-        ]
-      },
-      "cluster._types:ComponentTemplateSummary": {
-        "type": "object",
-        "properties": {
-          "_meta": {
-            "$ref": "#/components/schemas/_types:Metadata"
-          },
-          "version": {
-            "$ref": "#/components/schemas/_types:VersionNumber"
-          },
-          "settings": {
-            "type": "object",
-            "additionalProperties": {
-              "$ref": "#/components/schemas/indices._types:IndexSettings"
-            }
-          },
-          "mappings": {
-            "$ref": "#/components/schemas/_types.mapping:TypeMapping"
-          },
-          "aliases": {
-            "type": "object",
-            "additionalProperties": {
-              "$ref": "#/components/schemas/indices._types:AliasDefinition"
-            }
-          },
-          "lifecycle": {
-            "$ref": "#/components/schemas/indices._types:DataStreamLifecycleWithRollover"
-          }
-        }
-      },
       "indices._types:IndexSettings": {
         "type": "object",
         "properties": {
@@ -53507,6 +52859,9 @@
             "type": "string"
           }
         ]
+      },
+      "_types:Uuid": {
+        "type": "string"
       },
       "indices._types:IndexVersioning": {
         "type": "object",
@@ -55110,6 +54465,9 @@
         ]
       },
       "_types.analysis:CharFilter": {
+        "externalDocs": {
+          "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/analysis-charfilters.html"
+        },
         "oneOf": [
           {
             "type": "string"
@@ -55294,6 +54652,9 @@
         ]
       },
       "_types.analysis:TokenFilter": {
+        "externalDocs": {
+          "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/analysis-tokenfilters.html"
+        },
         "oneOf": [
           {
             "type": "string"
@@ -57150,6 +56511,9 @@
         ]
       },
       "_types.analysis:Tokenizer": {
+        "externalDocs": {
+          "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/analysis-tokenizers.html"
+        },
         "oneOf": [
           {
             "type": "string"
@@ -58183,6 +57547,799 @@
             "type": "string"
           }
         ]
+      },
+      "ccr.follow_info:FollowerIndex": {
+        "type": "object",
+        "properties": {
+          "follower_index": {
+            "$ref": "#/components/schemas/_types:IndexName"
+          },
+          "leader_index": {
+            "$ref": "#/components/schemas/_types:IndexName"
+          },
+          "parameters": {
+            "$ref": "#/components/schemas/ccr.follow_info:FollowerIndexParameters"
+          },
+          "remote_cluster": {
+            "$ref": "#/components/schemas/_types:Name"
+          },
+          "status": {
+            "$ref": "#/components/schemas/ccr.follow_info:FollowerIndexStatus"
+          }
+        },
+        "required": [
+          "follower_index",
+          "leader_index",
+          "remote_cluster",
+          "status"
+        ]
+      },
+      "ccr.follow_info:FollowerIndexParameters": {
+        "type": "object",
+        "properties": {
+          "max_outstanding_read_requests": {
+            "description": "The maximum number of outstanding reads requests from the remote cluster.",
+            "type": "number"
+          },
+          "max_outstanding_write_requests": {
+            "description": "The maximum number of outstanding write requests on the follower.",
+            "type": "number"
+          },
+          "max_read_request_operation_count": {
+            "description": "The maximum number of operations to pull per read from the remote cluster.",
+            "type": "number"
+          },
+          "max_read_request_size": {
+            "$ref": "#/components/schemas/_types:ByteSize"
+          },
+          "max_retry_delay": {
+            "$ref": "#/components/schemas/_types:Duration"
+          },
+          "max_write_buffer_count": {
+            "description": "The maximum number of operations that can be queued for writing. When this limit is reached, reads from the remote cluster will be\ndeferred until the number of queued operations goes below the limit.",
+            "type": "number"
+          },
+          "max_write_buffer_size": {
+            "$ref": "#/components/schemas/_types:ByteSize"
+          },
+          "max_write_request_operation_count": {
+            "description": "The maximum number of operations per bulk write request executed on the follower.",
+            "type": "number"
+          },
+          "max_write_request_size": {
+            "$ref": "#/components/schemas/_types:ByteSize"
+          },
+          "read_poll_timeout": {
+            "$ref": "#/components/schemas/_types:Duration"
+          }
+        }
+      },
+      "ccr.follow_info:FollowerIndexStatus": {
+        "type": "string",
+        "enum": [
+          "active",
+          "paused"
+        ]
+      },
+      "ccr._types:FollowIndexStats": {
+        "type": "object",
+        "properties": {
+          "index": {
+            "$ref": "#/components/schemas/_types:IndexName"
+          },
+          "shards": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ccr._types:ShardStats"
+            }
+          }
+        },
+        "required": [
+          "index",
+          "shards"
+        ]
+      },
+      "ccr._types:ShardStats": {
+        "type": "object",
+        "properties": {
+          "bytes_read": {
+            "type": "number"
+          },
+          "failed_read_requests": {
+            "type": "number"
+          },
+          "failed_write_requests": {
+            "type": "number"
+          },
+          "fatal_exception": {
+            "$ref": "#/components/schemas/_types:ErrorCause"
+          },
+          "follower_aliases_version": {
+            "$ref": "#/components/schemas/_types:VersionNumber"
+          },
+          "follower_global_checkpoint": {
+            "type": "number"
+          },
+          "follower_index": {
+            "type": "string"
+          },
+          "follower_mapping_version": {
+            "$ref": "#/components/schemas/_types:VersionNumber"
+          },
+          "follower_max_seq_no": {
+            "$ref": "#/components/schemas/_types:SequenceNumber"
+          },
+          "follower_settings_version": {
+            "$ref": "#/components/schemas/_types:VersionNumber"
+          },
+          "last_requested_seq_no": {
+            "$ref": "#/components/schemas/_types:SequenceNumber"
+          },
+          "leader_global_checkpoint": {
+            "type": "number"
+          },
+          "leader_index": {
+            "type": "string"
+          },
+          "leader_max_seq_no": {
+            "$ref": "#/components/schemas/_types:SequenceNumber"
+          },
+          "operations_read": {
+            "type": "number"
+          },
+          "operations_written": {
+            "type": "number"
+          },
+          "outstanding_read_requests": {
+            "type": "number"
+          },
+          "outstanding_write_requests": {
+            "type": "number"
+          },
+          "read_exceptions": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ccr._types:ReadException"
+            }
+          },
+          "remote_cluster": {
+            "type": "string"
+          },
+          "shard_id": {
+            "type": "number"
+          },
+          "successful_read_requests": {
+            "type": "number"
+          },
+          "successful_write_requests": {
+            "type": "number"
+          },
+          "time_since_last_read": {
+            "$ref": "#/components/schemas/_types:Duration"
+          },
+          "time_since_last_read_millis": {
+            "$ref": "#/components/schemas/_types:DurationValueUnitMillis"
+          },
+          "total_read_remote_exec_time": {
+            "$ref": "#/components/schemas/_types:Duration"
+          },
+          "total_read_remote_exec_time_millis": {
+            "$ref": "#/components/schemas/_types:DurationValueUnitMillis"
+          },
+          "total_read_time": {
+            "$ref": "#/components/schemas/_types:Duration"
+          },
+          "total_read_time_millis": {
+            "$ref": "#/components/schemas/_types:DurationValueUnitMillis"
+          },
+          "total_write_time": {
+            "$ref": "#/components/schemas/_types:Duration"
+          },
+          "total_write_time_millis": {
+            "$ref": "#/components/schemas/_types:DurationValueUnitMillis"
+          },
+          "write_buffer_operation_count": {
+            "type": "number"
+          },
+          "write_buffer_size_in_bytes": {
+            "$ref": "#/components/schemas/_types:ByteSize"
+          }
+        },
+        "required": [
+          "bytes_read",
+          "failed_read_requests",
+          "failed_write_requests",
+          "follower_aliases_version",
+          "follower_global_checkpoint",
+          "follower_index",
+          "follower_mapping_version",
+          "follower_max_seq_no",
+          "follower_settings_version",
+          "last_requested_seq_no",
+          "leader_global_checkpoint",
+          "leader_index",
+          "leader_max_seq_no",
+          "operations_read",
+          "operations_written",
+          "outstanding_read_requests",
+          "outstanding_write_requests",
+          "read_exceptions",
+          "remote_cluster",
+          "shard_id",
+          "successful_read_requests",
+          "successful_write_requests",
+          "time_since_last_read_millis",
+          "total_read_remote_exec_time_millis",
+          "total_read_time_millis",
+          "total_write_time_millis",
+          "write_buffer_operation_count",
+          "write_buffer_size_in_bytes"
+        ]
+      },
+      "ccr._types:ReadException": {
+        "type": "object",
+        "properties": {
+          "exception": {
+            "$ref": "#/components/schemas/_types:ErrorCause"
+          },
+          "from_seq_no": {
+            "$ref": "#/components/schemas/_types:SequenceNumber"
+          },
+          "retries": {
+            "type": "number"
+          }
+        },
+        "required": [
+          "exception",
+          "from_seq_no",
+          "retries"
+        ]
+      },
+      "ccr.get_auto_follow_pattern:AutoFollowPattern": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "$ref": "#/components/schemas/_types:Name"
+          },
+          "pattern": {
+            "$ref": "#/components/schemas/ccr.get_auto_follow_pattern:AutoFollowPatternSummary"
+          }
+        },
+        "required": [
+          "name",
+          "pattern"
+        ]
+      },
+      "ccr.get_auto_follow_pattern:AutoFollowPatternSummary": {
+        "type": "object",
+        "properties": {
+          "active": {
+            "type": "boolean"
+          },
+          "remote_cluster": {
+            "description": "The remote cluster containing the leader indices to match against.",
+            "type": "string"
+          },
+          "follow_index_pattern": {
+            "$ref": "#/components/schemas/_types:IndexPattern"
+          },
+          "leader_index_patterns": {
+            "$ref": "#/components/schemas/_types:IndexPatterns"
+          },
+          "leader_index_exclusion_patterns": {
+            "$ref": "#/components/schemas/_types:IndexPatterns"
+          },
+          "max_outstanding_read_requests": {
+            "description": "The maximum number of outstanding reads requests from the remote cluster.",
+            "type": "number"
+          }
+        },
+        "required": [
+          "active",
+          "remote_cluster",
+          "leader_index_patterns",
+          "leader_index_exclusion_patterns",
+          "max_outstanding_read_requests"
+        ]
+      },
+      "_types:IndexPattern": {
+        "type": "string"
+      },
+      "_types:IndexPatterns": {
+        "type": "array",
+        "items": {
+          "$ref": "#/components/schemas/_types:IndexPattern"
+        }
+      },
+      "ccr.stats:AutoFollowStats": {
+        "type": "object",
+        "properties": {
+          "auto_followed_clusters": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ccr.stats:AutoFollowedCluster"
+            }
+          },
+          "number_of_failed_follow_indices": {
+            "type": "number"
+          },
+          "number_of_failed_remote_cluster_state_requests": {
+            "type": "number"
+          },
+          "number_of_successful_follow_indices": {
+            "type": "number"
+          },
+          "recent_auto_follow_errors": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/_types:ErrorCause"
+            }
+          }
+        },
+        "required": [
+          "auto_followed_clusters",
+          "number_of_failed_follow_indices",
+          "number_of_failed_remote_cluster_state_requests",
+          "number_of_successful_follow_indices",
+          "recent_auto_follow_errors"
+        ]
+      },
+      "ccr.stats:AutoFollowedCluster": {
+        "type": "object",
+        "properties": {
+          "cluster_name": {
+            "$ref": "#/components/schemas/_types:Name"
+          },
+          "last_seen_metadata_version": {
+            "$ref": "#/components/schemas/_types:VersionNumber"
+          },
+          "time_since_last_check_millis": {
+            "$ref": "#/components/schemas/_types:DurationValueUnitMillis"
+          }
+        },
+        "required": [
+          "cluster_name",
+          "last_seen_metadata_version",
+          "time_since_last_check_millis"
+        ]
+      },
+      "ccr.stats:FollowStats": {
+        "type": "object",
+        "properties": {
+          "indices": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ccr._types:FollowIndexStats"
+            }
+          }
+        },
+        "required": [
+          "indices"
+        ]
+      },
+      "_types:ScrollIds": {
+        "oneOf": [
+          {
+            "$ref": "#/components/schemas/_types:ScrollId"
+          },
+          {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/_types:ScrollId"
+            }
+          }
+        ]
+      },
+      "cluster.allocation_explain:Decision": {
+        "type": "string",
+        "enum": [
+          "yes",
+          "no",
+          "worse_balance",
+          "throttled",
+          "awaiting_info",
+          "allocation_delayed",
+          "no_valid_shard_copy",
+          "no_attempt"
+        ]
+      },
+      "cluster.allocation_explain:AllocationDecision": {
+        "type": "object",
+        "properties": {
+          "decider": {
+            "type": "string"
+          },
+          "decision": {
+            "$ref": "#/components/schemas/cluster.allocation_explain:AllocationExplainDecision"
+          },
+          "explanation": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "decider",
+          "decision",
+          "explanation"
+        ]
+      },
+      "cluster.allocation_explain:AllocationExplainDecision": {
+        "type": "string",
+        "enum": [
+          "NO",
+          "YES",
+          "THROTTLE",
+          "ALWAYS"
+        ]
+      },
+      "cluster.allocation_explain:ClusterInfo": {
+        "type": "object",
+        "properties": {
+          "nodes": {
+            "type": "object",
+            "additionalProperties": {
+              "$ref": "#/components/schemas/cluster.allocation_explain:NodeDiskUsage"
+            }
+          },
+          "shard_sizes": {
+            "type": "object",
+            "additionalProperties": {
+              "type": "number"
+            }
+          },
+          "shard_data_set_sizes": {
+            "type": "object",
+            "additionalProperties": {
+              "type": "string"
+            }
+          },
+          "shard_paths": {
+            "type": "object",
+            "additionalProperties": {
+              "type": "string"
+            }
+          },
+          "reserved_sizes": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/cluster.allocation_explain:ReservedSize"
+            }
+          }
+        },
+        "required": [
+          "nodes",
+          "shard_sizes",
+          "shard_paths",
+          "reserved_sizes"
+        ]
+      },
+      "cluster.allocation_explain:NodeDiskUsage": {
+        "type": "object",
+        "properties": {
+          "node_name": {
+            "$ref": "#/components/schemas/_types:Name"
+          },
+          "least_available": {
+            "$ref": "#/components/schemas/cluster.allocation_explain:DiskUsage"
+          },
+          "most_available": {
+            "$ref": "#/components/schemas/cluster.allocation_explain:DiskUsage"
+          }
+        },
+        "required": [
+          "node_name",
+          "least_available",
+          "most_available"
+        ]
+      },
+      "cluster.allocation_explain:DiskUsage": {
+        "type": "object",
+        "properties": {
+          "path": {
+            "type": "string"
+          },
+          "total_bytes": {
+            "type": "number"
+          },
+          "used_bytes": {
+            "type": "number"
+          },
+          "free_bytes": {
+            "type": "number"
+          },
+          "free_disk_percent": {
+            "type": "number"
+          },
+          "used_disk_percent": {
+            "type": "number"
+          }
+        },
+        "required": [
+          "path",
+          "total_bytes",
+          "used_bytes",
+          "free_bytes",
+          "free_disk_percent",
+          "used_disk_percent"
+        ]
+      },
+      "cluster.allocation_explain:ReservedSize": {
+        "type": "object",
+        "properties": {
+          "node_id": {
+            "$ref": "#/components/schemas/_types:Id"
+          },
+          "path": {
+            "type": "string"
+          },
+          "total": {
+            "type": "number"
+          },
+          "shards": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        },
+        "required": [
+          "node_id",
+          "path",
+          "total",
+          "shards"
+        ]
+      },
+      "cluster.allocation_explain:CurrentNode": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "$ref": "#/components/schemas/_types:Id"
+          },
+          "name": {
+            "$ref": "#/components/schemas/_types:Name"
+          },
+          "roles": {
+            "$ref": "#/components/schemas/_types:NodeRoles"
+          },
+          "attributes": {
+            "type": "object",
+            "additionalProperties": {
+              "type": "string"
+            }
+          },
+          "transport_address": {
+            "$ref": "#/components/schemas/_types:TransportAddress"
+          },
+          "weight_ranking": {
+            "type": "number"
+          }
+        },
+        "required": [
+          "id",
+          "name",
+          "roles",
+          "attributes",
+          "transport_address",
+          "weight_ranking"
+        ]
+      },
+      "_types:NodeRoles": {
+        "description": "* @doc_id node-roles",
+        "type": "array",
+        "items": {
+          "$ref": "#/components/schemas/_types:NodeRole"
+        }
+      },
+      "_types:NodeRole": {
+        "type": "string",
+        "enum": [
+          "master",
+          "data",
+          "data_cold",
+          "data_content",
+          "data_frozen",
+          "data_hot",
+          "data_warm",
+          "client",
+          "ingest",
+          "ml",
+          "voting_only",
+          "transform",
+          "remote_cluster_client",
+          "coordinating_only"
+        ]
+      },
+      "_types:TransportAddress": {
+        "type": "string"
+      },
+      "cluster.allocation_explain:NodeAllocationExplanation": {
+        "type": "object",
+        "properties": {
+          "deciders": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/cluster.allocation_explain:AllocationDecision"
+            }
+          },
+          "node_attributes": {
+            "type": "object",
+            "additionalProperties": {
+              "type": "string"
+            }
+          },
+          "node_decision": {
+            "$ref": "#/components/schemas/cluster.allocation_explain:Decision"
+          },
+          "node_id": {
+            "$ref": "#/components/schemas/_types:Id"
+          },
+          "node_name": {
+            "$ref": "#/components/schemas/_types:Name"
+          },
+          "roles": {
+            "$ref": "#/components/schemas/_types:NodeRoles"
+          },
+          "store": {
+            "$ref": "#/components/schemas/cluster.allocation_explain:AllocationStore"
+          },
+          "transport_address": {
+            "$ref": "#/components/schemas/_types:TransportAddress"
+          },
+          "weight_ranking": {
+            "type": "number"
+          }
+        },
+        "required": [
+          "deciders",
+          "node_attributes",
+          "node_decision",
+          "node_id",
+          "node_name",
+          "roles",
+          "transport_address",
+          "weight_ranking"
+        ]
+      },
+      "cluster.allocation_explain:AllocationStore": {
+        "type": "object",
+        "properties": {
+          "allocation_id": {
+            "type": "string"
+          },
+          "found": {
+            "type": "boolean"
+          },
+          "in_sync": {
+            "type": "boolean"
+          },
+          "matching_size_in_bytes": {
+            "type": "number"
+          },
+          "matching_sync_id": {
+            "type": "boolean"
+          },
+          "store_exception": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "allocation_id",
+          "found",
+          "in_sync",
+          "matching_size_in_bytes",
+          "matching_sync_id",
+          "store_exception"
+        ]
+      },
+      "cluster.allocation_explain:UnassignedInformation": {
+        "type": "object",
+        "properties": {
+          "at": {
+            "$ref": "#/components/schemas/_types:DateTime"
+          },
+          "last_allocation_status": {
+            "type": "string"
+          },
+          "reason": {
+            "$ref": "#/components/schemas/cluster.allocation_explain:UnassignedInformationReason"
+          },
+          "details": {
+            "type": "string"
+          },
+          "failed_allocation_attempts": {
+            "type": "number"
+          },
+          "delayed": {
+            "type": "boolean"
+          },
+          "allocation_status": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "at",
+          "reason"
+        ]
+      },
+      "cluster.allocation_explain:UnassignedInformationReason": {
+        "type": "string",
+        "enum": [
+          "INDEX_CREATED",
+          "CLUSTER_RECOVERED",
+          "INDEX_REOPENED",
+          "DANGLING_INDEX_IMPORTED",
+          "NEW_INDEX_RESTORED",
+          "EXISTING_INDEX_RESTORED",
+          "REPLICA_ADDED",
+          "ALLOCATION_FAILED",
+          "NODE_LEFT",
+          "REROUTE_CANCELLED",
+          "REINITIALIZED",
+          "REALLOCATED_REPLICA",
+          "PRIMARY_FAILED",
+          "FORCED_EMPTY_PRIMARY",
+          "MANUAL_ALLOCATION"
+        ]
+      },
+      "cluster._types:ComponentTemplate": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "$ref": "#/components/schemas/_types:Name"
+          },
+          "component_template": {
+            "$ref": "#/components/schemas/cluster._types:ComponentTemplateNode"
+          }
+        },
+        "required": [
+          "name",
+          "component_template"
+        ]
+      },
+      "cluster._types:ComponentTemplateNode": {
+        "type": "object",
+        "properties": {
+          "template": {
+            "$ref": "#/components/schemas/cluster._types:ComponentTemplateSummary"
+          },
+          "version": {
+            "$ref": "#/components/schemas/_types:VersionNumber"
+          },
+          "_meta": {
+            "$ref": "#/components/schemas/_types:Metadata"
+          }
+        },
+        "required": [
+          "template"
+        ]
+      },
+      "cluster._types:ComponentTemplateSummary": {
+        "type": "object",
+        "properties": {
+          "_meta": {
+            "$ref": "#/components/schemas/_types:Metadata"
+          },
+          "version": {
+            "$ref": "#/components/schemas/_types:VersionNumber"
+          },
+          "settings": {
+            "type": "object",
+            "additionalProperties": {
+              "$ref": "#/components/schemas/indices._types:IndexSettings"
+            }
+          },
+          "mappings": {
+            "$ref": "#/components/schemas/_types.mapping:TypeMapping"
+          },
+          "aliases": {
+            "type": "object",
+            "additionalProperties": {
+              "$ref": "#/components/schemas/indices._types:AliasDefinition"
+            }
+          },
+          "lifecycle": {
+            "$ref": "#/components/schemas/indices._types:DataStreamLifecycleWithRollover"
+          }
+        }
       },
       "_types.mapping:TypeMapping": {
         "type": "object",
@@ -60631,6 +60788,56 @@
         }
       },
       "indices._types:DataStreamLifecycleWithRollover": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/indices._types:DataStreamLifecycle"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "rollover": {
+                "$ref": "#/components/schemas/indices._types:DataStreamLifecycleRolloverConditions"
+              }
+            }
+          }
+        ]
+      },
+      "indices._types:DataStreamLifecycleRolloverConditions": {
+        "type": "object",
+        "properties": {
+          "min_age": {
+            "$ref": "#/components/schemas/_types:Duration"
+          },
+          "max_age": {
+            "type": "string"
+          },
+          "min_docs": {
+            "type": "number"
+          },
+          "max_docs": {
+            "type": "number"
+          },
+          "min_size": {
+            "$ref": "#/components/schemas/_types:ByteSize"
+          },
+          "max_size": {
+            "$ref": "#/components/schemas/_types:ByteSize"
+          },
+          "min_primary_shard_size": {
+            "$ref": "#/components/schemas/_types:ByteSize"
+          },
+          "max_primary_shard_size": {
+            "$ref": "#/components/schemas/_types:ByteSize"
+          },
+          "min_primary_shard_docs": {
+            "type": "number"
+          },
+          "max_primary_shard_docs": {
+            "type": "number"
+          }
+        }
+      },
+      "indices._types:DataStreamLifecycle": {
         "type": "object",
         "properties": {
           "data_retention": {
@@ -60639,8 +60846,9 @@
           "downsampling": {
             "$ref": "#/components/schemas/indices._types:DataStreamLifecycleDownsampling"
           },
-          "rollover": {
-            "$ref": "#/components/schemas/indices._types:DataStreamLifecycleRolloverConditions"
+          "enabled": {
+            "description": "If defined, it turns data stream lifecycle on/off (`true`/`false`) for this data stream. A data stream lifecycle\nthat's disabled (enabled: `false`) will have no effect on the data stream.",
+            "type": "boolean"
           }
         }
       },
@@ -60684,41 +60892,6 @@
         "required": [
           "fixed_interval"
         ]
-      },
-      "indices._types:DataStreamLifecycleRolloverConditions": {
-        "type": "object",
-        "properties": {
-          "min_age": {
-            "$ref": "#/components/schemas/_types:Duration"
-          },
-          "max_age": {
-            "type": "string"
-          },
-          "min_docs": {
-            "type": "number"
-          },
-          "max_docs": {
-            "type": "number"
-          },
-          "min_size": {
-            "$ref": "#/components/schemas/_types:ByteSize"
-          },
-          "max_size": {
-            "$ref": "#/components/schemas/_types:ByteSize"
-          },
-          "min_primary_shard_size": {
-            "$ref": "#/components/schemas/_types:ByteSize"
-          },
-          "max_primary_shard_size": {
-            "$ref": "#/components/schemas/_types:ByteSize"
-          },
-          "min_primary_shard_docs": {
-            "type": "number"
-          },
-          "max_primary_shard_docs": {
-            "type": "number"
-          }
-        }
       },
       "_types:Level": {
         "type": "string",
@@ -61402,17 +61575,6 @@
       },
       "_types:DataStreamName": {
         "type": "string"
-      },
-      "indices._types:DataStreamLifecycle": {
-        "type": "object",
-        "properties": {
-          "data_retention": {
-            "$ref": "#/components/schemas/_types:Duration"
-          },
-          "downsampling": {
-            "$ref": "#/components/schemas/indices._types:DataStreamLifecycleDownsampling"
-          }
-        }
       },
       "cluster.remote_info:ClusterRemoteInfo": {
         "discriminator": {
@@ -66733,7 +66895,7 @@
             "$ref": "#/components/schemas/_types:DataStreamName"
           },
           "lifecycle": {
-            "$ref": "#/components/schemas/indices._types:DataStreamLifecycle"
+            "$ref": "#/components/schemas/indices._types:DataStreamLifecycleWithRollover"
           }
         },
         "required": [
@@ -80653,20 +80815,36 @@
         ]
       },
       "search_application._types:SearchApplication": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/search_application._types:SearchApplicationParameters"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "name": {
+                "$ref": "#/components/schemas/_types:Name"
+              },
+              "updated_at_millis": {
+                "$ref": "#/components/schemas/_types:EpochTimeUnitMillis"
+              }
+            },
+            "required": [
+              "name",
+              "updated_at_millis"
+            ]
+          }
+        ]
+      },
+      "search_application._types:SearchApplicationParameters": {
         "type": "object",
         "properties": {
-          "name": {
-            "$ref": "#/components/schemas/_types:Name"
-          },
           "indices": {
             "description": "Indices that are part of the Search Application.",
             "type": "array",
             "items": {
               "$ref": "#/components/schemas/_types:IndexName"
             }
-          },
-          "updated_at_millis": {
-            "$ref": "#/components/schemas/_types:EpochTimeUnitMillis"
           },
           "analytics_collection_name": {
             "$ref": "#/components/schemas/_types:Name"
@@ -80676,9 +80854,7 @@
           }
         },
         "required": [
-          "name",
-          "indices",
-          "updated_at_millis"
+          "indices"
         ]
       },
       "search_application._types:SearchApplicationTemplate": {
@@ -80712,32 +80888,6 @@
         },
         "required": [
           "name"
-        ]
-      },
-      "search_application.list:SearchApplicationListItem": {
-        "type": "object",
-        "properties": {
-          "name": {
-            "$ref": "#/components/schemas/_types:Name"
-          },
-          "indices": {
-            "description": "Indices that are part of the Search Application",
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/_types:IndexName"
-            }
-          },
-          "updated_at_millis": {
-            "$ref": "#/components/schemas/_types:EpochTimeUnitMillis"
-          },
-          "analytics_collection_name": {
-            "$ref": "#/components/schemas/_types:Name"
-          }
-        },
-        "required": [
-          "name",
-          "indices",
-          "updated_at_millis"
         ]
       },
       "search_application.put_behavioral_analytics:AnalyticsAcknowledgeResponseBase": {

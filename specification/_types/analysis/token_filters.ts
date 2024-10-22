@@ -342,7 +342,10 @@ export class UppercaseTokenFilter extends TokenFilterBase {
   type: 'uppercase'
 }
 
-/** @codegen_names name, definition */
+/**
+ * @codegen_names name, definition
+ * @ext_doc_id analysis-tokenfilters
+ */
 // ES: NameOrDefinition, used everywhere charfilter, tokenfilter or tokenizer is used
 export type TokenFilter = string | TokenFilterDefinition
 

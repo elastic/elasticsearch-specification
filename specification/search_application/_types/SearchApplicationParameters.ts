@@ -17,25 +17,20 @@
  * under the License.
  */
 
-import { RequestBase } from '@_types/Base'
-import { Name, Namespace, Refresh, Service } from '@_types/common'
+import { IndexName, Name } from '@_types/common'
+import { SearchApplicationTemplate } from './SearchApplicationTemplate'
 
-/**
- * Create a service account token.
- *
- * Create a service accounts token for access without requiring basic authentication.
- * @rest_spec_name security.create_service_token
- * @availability stack stability=stable
- * @availability serverless stability=stable visibility=private
- * @ext_doc_id service-accounts
- */
-export interface Request extends RequestBase {
-  path_parts: {
-    namespace: Namespace
-    service: Service
-    name?: Name
-  }
-  query_parameters: {
-    refresh?: Refresh
-  }
+export class SearchApplicationParameters {
+  /**
+   * Indices that are part of the Search Application.
+   */
+  indices: IndexName[]
+  /**
+   * Analytics collection associated to the Search Application.
+   */
+  analytics_collection_name?: Name
+  /**
+   * Search template to use on search operations.
+   */
+  template?: SearchApplicationTemplate
 }
