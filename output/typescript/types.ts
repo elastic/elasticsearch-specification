@@ -10889,6 +10889,7 @@ export interface IndicesDataStreamIndex {
 export interface IndicesDataStreamLifecycle {
   data_retention?: Duration
   downsampling?: IndicesDataStreamLifecycleDownsampling
+  enabled?: boolean
 }
 
 export interface IndicesDataStreamLifecycleDownsampling {
@@ -10908,9 +10909,7 @@ export interface IndicesDataStreamLifecycleRolloverConditions {
   max_primary_shard_docs?: long
 }
 
-export interface IndicesDataStreamLifecycleWithRollover {
-  data_retention?: Duration
-  downsampling?: IndicesDataStreamLifecycleDownsampling
+export interface IndicesDataStreamLifecycleWithRollover extends IndicesDataStreamLifecycle {
   rollover?: IndicesDataStreamLifecycleRolloverConditions
 }
 
@@ -11774,7 +11773,7 @@ export type IndicesGetAliasResponse = Record<IndexName, IndicesGetAliasIndexAlia
 
 export interface IndicesGetDataLifecycleDataStreamWithLifecycle {
   name: DataStreamName
-  lifecycle?: IndicesDataStreamLifecycle
+  lifecycle?: IndicesDataStreamLifecycleWithRollover
 }
 
 export interface IndicesGetDataLifecycleRequest extends RequestBase {
@@ -11941,10 +11940,7 @@ export interface IndicesPutDataLifecycleRequest extends RequestBase {
   expand_wildcards?: ExpandWildcards
   master_timeout?: Duration
   timeout?: Duration
-  body?: {
-    data_retention?: Duration
-    downsampling?: IndicesDataStreamLifecycleDownsampling
-  }
+  body?: IndicesDataStreamLifecycle
 }
 
 export type IndicesPutDataLifecycleResponse = AcknowledgedResponseBase
@@ -17402,10 +17398,13 @@ export interface SearchApplicationEventDataStream {
   name: IndexName
 }
 
-export interface SearchApplicationSearchApplication {
+export interface SearchApplicationSearchApplication extends SearchApplicationSearchApplicationParameters {
   name: Name
-  indices: IndexName[]
   updated_at_millis: EpochTime<UnitMillis>
+}
+
+export interface SearchApplicationSearchApplicationParameters {
+  indices: IndexName[]
   analytics_collection_name?: Name
   template?: SearchApplicationSearchApplicationTemplate
 }
@@ -17446,20 +17445,13 @@ export interface SearchApplicationListRequest extends RequestBase {
 
 export interface SearchApplicationListResponse {
   count: long
-  results: SearchApplicationListSearchApplicationListItem[]
-}
-
-export interface SearchApplicationListSearchApplicationListItem {
-  name: Name
-  indices: IndexName[]
-  updated_at_millis: EpochTime<UnitMillis>
-  analytics_collection_name?: Name
+  results: SearchApplicationSearchApplication[]
 }
 
 export interface SearchApplicationPutRequest extends RequestBase {
   name: Name
   create?: boolean
-  body?: SearchApplicationSearchApplication
+  body?: SearchApplicationSearchApplicationParameters
 }
 
 export interface SearchApplicationPutResponse {

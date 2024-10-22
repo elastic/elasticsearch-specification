@@ -7204,18 +7204,11 @@
           "content": {
             "application/json": {
               "schema": {
-                "type": "object",
-                "properties": {
-                  "data_retention": {
-                    "$ref": "#/components/schemas/_types:Duration"
-                  },
-                  "downsampling": {
-                    "$ref": "#/components/schemas/indices._types:DataStreamLifecycleDownsampling"
-                  }
-                }
+                "$ref": "#/components/schemas/indices._types:DataStreamLifecycle"
               }
             }
-          }
+          },
+          "required": true
         },
         "responses": {
           "200": {
@@ -15891,7 +15884,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/search_application._types:SearchApplication"
+                "$ref": "#/components/schemas/search_application._types:SearchApplicationParameters"
               }
             }
           },
@@ -16109,7 +16102,7 @@
                     "results": {
                       "type": "array",
                       "items": {
-                        "$ref": "#/components/schemas/search_application.list:SearchApplicationListItem"
+                        "$ref": "#/components/schemas/search_application._types:SearchApplication"
                       }
                     }
                   },
@@ -42352,6 +42345,56 @@
         }
       },
       "indices._types:DataStreamLifecycleWithRollover": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/indices._types:DataStreamLifecycle"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "rollover": {
+                "$ref": "#/components/schemas/indices._types:DataStreamLifecycleRolloverConditions"
+              }
+            }
+          }
+        ]
+      },
+      "indices._types:DataStreamLifecycleRolloverConditions": {
+        "type": "object",
+        "properties": {
+          "min_age": {
+            "$ref": "#/components/schemas/_types:Duration"
+          },
+          "max_age": {
+            "type": "string"
+          },
+          "min_docs": {
+            "type": "number"
+          },
+          "max_docs": {
+            "type": "number"
+          },
+          "min_size": {
+            "$ref": "#/components/schemas/_types:ByteSize"
+          },
+          "max_size": {
+            "$ref": "#/components/schemas/_types:ByteSize"
+          },
+          "min_primary_shard_size": {
+            "$ref": "#/components/schemas/_types:ByteSize"
+          },
+          "max_primary_shard_size": {
+            "$ref": "#/components/schemas/_types:ByteSize"
+          },
+          "min_primary_shard_docs": {
+            "type": "number"
+          },
+          "max_primary_shard_docs": {
+            "type": "number"
+          }
+        }
+      },
+      "indices._types:DataStreamLifecycle": {
         "type": "object",
         "properties": {
           "data_retention": {
@@ -42360,8 +42403,9 @@
           "downsampling": {
             "$ref": "#/components/schemas/indices._types:DataStreamLifecycleDownsampling"
           },
-          "rollover": {
-            "$ref": "#/components/schemas/indices._types:DataStreamLifecycleRolloverConditions"
+          "enabled": {
+            "description": "If defined, it turns data stream lifecycle on/off (`true`/`false`) for this data stream. A data stream lifecycle\nthat's disabled (enabled: `false`) will have no effect on the data stream.",
+            "type": "boolean"
           }
         }
       },
@@ -42405,41 +42449,6 @@
         "required": [
           "fixed_interval"
         ]
-      },
-      "indices._types:DataStreamLifecycleRolloverConditions": {
-        "type": "object",
-        "properties": {
-          "min_age": {
-            "$ref": "#/components/schemas/_types:Duration"
-          },
-          "max_age": {
-            "type": "string"
-          },
-          "min_docs": {
-            "type": "number"
-          },
-          "max_docs": {
-            "type": "number"
-          },
-          "min_size": {
-            "$ref": "#/components/schemas/_types:ByteSize"
-          },
-          "max_size": {
-            "$ref": "#/components/schemas/_types:ByteSize"
-          },
-          "min_primary_shard_size": {
-            "$ref": "#/components/schemas/_types:ByteSize"
-          },
-          "max_primary_shard_size": {
-            "$ref": "#/components/schemas/_types:ByteSize"
-          },
-          "min_primary_shard_docs": {
-            "type": "number"
-          },
-          "max_primary_shard_docs": {
-            "type": "number"
-          }
-        }
       },
       "_types:ClusterInfoTargets": {
         "oneOf": [
@@ -42783,17 +42792,6 @@
       },
       "_types:DataStreamName": {
         "type": "string"
-      },
-      "indices._types:DataStreamLifecycle": {
-        "type": "object",
-        "properties": {
-          "data_retention": {
-            "$ref": "#/components/schemas/_types:Duration"
-          },
-          "downsampling": {
-            "$ref": "#/components/schemas/indices._types:DataStreamLifecycleDownsampling"
-          }
-        }
       },
       "_types:Result": {
         "type": "string",
@@ -44673,7 +44671,7 @@
             "$ref": "#/components/schemas/_types:DataStreamName"
           },
           "lifecycle": {
-            "$ref": "#/components/schemas/indices._types:DataStreamLifecycle"
+            "$ref": "#/components/schemas/indices._types:DataStreamLifecycleWithRollover"
           }
         },
         "required": [
@@ -53076,20 +53074,36 @@
         ]
       },
       "search_application._types:SearchApplication": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/search_application._types:SearchApplicationParameters"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "name": {
+                "$ref": "#/components/schemas/_types:Name"
+              },
+              "updated_at_millis": {
+                "$ref": "#/components/schemas/_types:EpochTimeUnitMillis"
+              }
+            },
+            "required": [
+              "name",
+              "updated_at_millis"
+            ]
+          }
+        ]
+      },
+      "search_application._types:SearchApplicationParameters": {
         "type": "object",
         "properties": {
-          "name": {
-            "$ref": "#/components/schemas/_types:Name"
-          },
           "indices": {
             "description": "Indices that are part of the Search Application.",
             "type": "array",
             "items": {
               "$ref": "#/components/schemas/_types:IndexName"
             }
-          },
-          "updated_at_millis": {
-            "$ref": "#/components/schemas/_types:EpochTimeUnitMillis"
           },
           "analytics_collection_name": {
             "$ref": "#/components/schemas/_types:Name"
@@ -53099,9 +53113,7 @@
           }
         },
         "required": [
-          "name",
-          "indices",
-          "updated_at_millis"
+          "indices"
         ]
       },
       "search_application._types:SearchApplicationTemplate": {
@@ -53135,32 +53147,6 @@
         },
         "required": [
           "name"
-        ]
-      },
-      "search_application.list:SearchApplicationListItem": {
-        "type": "object",
-        "properties": {
-          "name": {
-            "$ref": "#/components/schemas/_types:Name"
-          },
-          "indices": {
-            "description": "Indices that are part of the Search Application",
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/_types:IndexName"
-            }
-          },
-          "updated_at_millis": {
-            "$ref": "#/components/schemas/_types:EpochTimeUnitMillis"
-          },
-          "analytics_collection_name": {
-            "$ref": "#/components/schemas/_types:Name"
-          }
-        },
-        "required": [
-          "name",
-          "indices",
-          "updated_at_millis"
         ]
       },
       "search_application.put_behavioral_analytics:AnalyticsAcknowledgeResponseBase": {

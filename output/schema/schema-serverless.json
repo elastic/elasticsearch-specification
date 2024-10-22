@@ -3702,7 +3702,7 @@
         "name": "Request",
         "namespace": "indices.put_data_lifecycle"
       },
-      "requestBodyRequired": false,
+      "requestBodyRequired": true,
       "response": {
         "name": "Response",
         "namespace": "indices.put_data_lifecycle"
@@ -22244,33 +22244,15 @@
         "CommonQueryParameters"
       ],
       "body": {
-        "kind": "properties",
-        "properties": [
-          {
-            "description": "If defined, every document added to this data stream will be stored at least for this time frame.\nAny time after this duration the document could be deleted.\nWhen empty, every document in this data stream will be stored indefinitely.",
-            "name": "data_retention",
-            "required": false,
-            "type": {
-              "kind": "instance_of",
-              "type": {
-                "name": "Duration",
-                "namespace": "_types"
-              }
-            }
-          },
-          {
-            "description": "If defined, every backing index will execute the configured downsampling configuration after the backing\nindex is not the data stream write index anymore.",
-            "name": "downsampling",
-            "required": false,
-            "type": {
-              "kind": "instance_of",
-              "type": {
-                "name": "DataStreamLifecycleDownsampling",
-                "namespace": "indices._types"
-              }
-            }
+        "codegenName": "lifecycle",
+        "kind": "value",
+        "value": {
+          "kind": "instance_of",
+          "type": {
+            "name": "DataStreamLifecycle",
+            "namespace": "indices._types"
           }
-        ]
+        }
       },
       "description": "Update data stream lifecycles.\nUpdate the data stream lifecycle of the specified data streams.",
       "inherits": {
@@ -22339,7 +22321,7 @@
           }
         }
       ],
-      "specLocation": "indices/put_data_lifecycle/IndicesPutDataLifecycleRequest.ts#L25-L76"
+      "specLocation": "indices/put_data_lifecycle/IndicesPutDataLifecycleRequest.ts#L25-L67"
     },
     {
       "body": {
@@ -37232,8 +37214,8 @@
               "value": {
                 "kind": "instance_of",
                 "type": {
-                  "name": "SearchApplicationListItem",
-                  "namespace": "search_application.list"
+                  "name": "SearchApplication",
+                  "namespace": "search_application._types"
                 }
               }
             }
@@ -37245,7 +37227,7 @@
         "name": "Response",
         "namespace": "search_application.list"
       },
-      "specLocation": "search_application/list/SearchApplicationsListResponse.ts#L24-L29"
+      "specLocation": "search_application/list/SearchApplicationsListResponse.ts#L23-L28"
     },
     {
       "attachedBehaviors": [
@@ -37257,7 +37239,7 @@
         "value": {
           "kind": "instance_of",
           "type": {
-            "name": "SearchApplication",
+            "name": "SearchApplicationParameters",
             "namespace": "search_application._types"
           }
         }
@@ -114684,9 +114666,38 @@
     },
     {
       "description": "Data stream lifecycle with rollover can be used to display the configuration including the default rollover conditions,\nif asked.",
+      "inherits": {
+        "type": {
+          "name": "DataStreamLifecycle",
+          "namespace": "indices._types"
+        }
+      },
       "kind": "interface",
       "name": {
         "name": "DataStreamLifecycleWithRollover",
+        "namespace": "indices._types"
+      },
+      "properties": [
+        {
+          "description": "The conditions which will trigger the rollover of a backing index as configured by the cluster setting `cluster.lifecycle.default.rollover`.\nThis property is an implementation detail and it will only be retrieved when the query param `include_defaults` is set to true.\nThe contents of this field are subject to change.",
+          "name": "rollover",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "DataStreamLifecycleRolloverConditions",
+              "namespace": "indices._types"
+            }
+          }
+        }
+      ],
+      "specLocation": "indices/_types/DataStreamLifecycle.ts#L47-L58"
+    },
+    {
+      "description": "Data stream lifecycle denotes that a data stream is managed by the data stream lifecycle and contains the configuration.",
+      "kind": "interface",
+      "name": {
+        "name": "DataStreamLifecycle",
         "namespace": "indices._types"
       },
       "properties": [
@@ -114715,19 +114726,20 @@
           }
         },
         {
-          "description": "The conditions which will trigger the rollover of a backing index as configured by the cluster setting `cluster.lifecycle.default.rollover`.\nThis property is an implementation detail and it will only be retrieved when the query param `include_defaults` is set to true.\nThe contents of this field are subject to change.",
-          "name": "rollover",
+          "description": "If defined, it turns data stream lifecycle on/off (`true`/`false`) for this data stream. A data stream lifecycle\nthat's disabled (enabled: `false`) will have no effect on the data stream.",
+          "name": "enabled",
           "required": false,
+          "serverDefault": true,
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "DataStreamLifecycleRolloverConditions",
-              "namespace": "indices._types"
+              "name": "boolean",
+              "namespace": "_builtins"
             }
           }
         }
       ],
-      "specLocation": "indices/_types/DataStreamLifecycle.ts#L33-L55"
+      "specLocation": "indices/_types/DataStreamLifecycle.ts#L25-L45"
     },
     {
       "kind": "interface",
@@ -114928,7 +114940,7 @@
           }
         }
       ],
-      "specLocation": "indices/_types/DataStreamLifecycle.ts#L57-L69"
+      "specLocation": "indices/_types/DataStreamLifecycle.ts#L60-L72"
     },
     {
       "kind": "interface",
@@ -115111,39 +115123,6 @@
         }
       ],
       "specLocation": "indices/_types/Alias.ts#L23-L53"
-    },
-    {
-      "description": "Data stream lifecycle denotes that a data stream is managed by the data stream lifecycle and contains the configuration.",
-      "kind": "interface",
-      "name": {
-        "name": "DataStreamLifecycle",
-        "namespace": "indices._types"
-      },
-      "properties": [
-        {
-          "name": "data_retention",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "Duration",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "name": "downsampling",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "DataStreamLifecycleDownsampling",
-              "namespace": "indices._types"
-            }
-          }
-        }
-      ],
-      "specLocation": "indices/_types/DataStreamLifecycle.ts#L25-L31"
     },
     {
       "kind": "interface",
@@ -118326,7 +118305,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "DataStreamLifecycle",
+              "name": "DataStreamLifecycleWithRollover",
               "namespace": "indices._types"
             }
           }
@@ -138422,6 +138401,12 @@
       "specLocation": "_types/Retriever.ts#L73-L80"
     },
     {
+      "inherits": {
+        "type": {
+          "name": "SearchApplicationParameters",
+          "namespace": "search_application._types"
+        }
+      },
       "kind": "interface",
       "name": {
         "name": "SearchApplication",
@@ -138429,7 +138414,7 @@
       },
       "properties": [
         {
-          "description": "Search Application name.",
+          "description": "Search Application name",
           "name": "name",
           "required": true,
           "type": {
@@ -138437,21 +138422,6 @@
             "type": {
               "name": "Name",
               "namespace": "_types"
-            }
-          }
-        },
-        {
-          "description": "Indices that are part of the Search Application.",
-          "name": "indices",
-          "required": true,
-          "type": {
-            "kind": "array_of",
-            "value": {
-              "kind": "instance_of",
-              "type": {
-                "name": "IndexName",
-                "namespace": "_types"
-              }
             }
           }
         },
@@ -138473,6 +138443,31 @@
             "type": {
               "name": "EpochTime",
               "namespace": "_types"
+            }
+          }
+        }
+      ],
+      "specLocation": "search_application/_types/SearchApplication.ts#L24-L33"
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "SearchApplicationParameters",
+        "namespace": "search_application._types"
+      },
+      "properties": [
+        {
+          "description": "Indices that are part of the Search Application.",
+          "name": "indices",
+          "required": true,
+          "type": {
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "IndexName",
+                "namespace": "_types"
+              }
             }
           }
         },
@@ -138501,7 +138496,7 @@
           }
         }
       ],
-      "specLocation": "search_application/_types/SearchApplication.ts#L24-L45"
+      "specLocation": "search_application/_types/SearchApplicationParameters.ts#L23-L36"
     },
     {
       "kind": "interface",
@@ -138523,7 +138518,7 @@
           }
         }
       ],
-      "specLocation": "search_application/_types/SearchApplication.ts#L47-L52"
+      "specLocation": "search_application/_types/SearchApplicationTemplate.ts#L22-L27"
     },
     {
       "kind": "interface",
@@ -138567,76 +138562,6 @@
         }
       ],
       "specLocation": "search_application/_types/BehavioralAnalytics.ts#L29-L31"
-    },
-    {
-      "kind": "interface",
-      "name": {
-        "name": "SearchApplicationListItem",
-        "namespace": "search_application.list"
-      },
-      "properties": [
-        {
-          "description": "Search Application name",
-          "name": "name",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "Name",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "description": "Indices that are part of the Search Application",
-          "name": "indices",
-          "required": true,
-          "type": {
-            "kind": "array_of",
-            "value": {
-              "kind": "instance_of",
-              "type": {
-                "name": "IndexName",
-                "namespace": "_types"
-              }
-            }
-          }
-        },
-        {
-          "description": "Last time the Search Application was updated",
-          "name": "updated_at_millis",
-          "required": true,
-          "type": {
-            "generics": [
-              {
-                "kind": "instance_of",
-                "type": {
-                  "name": "UnitMillis",
-                  "namespace": "_types"
-                }
-              }
-            ],
-            "kind": "instance_of",
-            "type": {
-              "name": "EpochTime",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "description": "Analytics collection associated to the Search Application",
-          "name": "analytics_collection_name",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "Name",
-              "namespace": "_types"
-            }
-          }
-        }
-      ],
-      "specLocation": "search_application/list/SearchApplicationsListResponse.ts#L31-L48"
     },
     {
       "inherits": {
