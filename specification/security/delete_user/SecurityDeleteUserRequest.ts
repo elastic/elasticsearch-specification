@@ -22,7 +22,7 @@ import { Refresh, Username } from '@_types/common'
 
 /**
  * Delete users.
- * 
+ *
  * Delete users from the native realm.
  * @rest_spec_name security.delete_user
  * @availability stack stability=stable

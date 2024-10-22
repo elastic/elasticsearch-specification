@@ -22,7 +22,7 @@ import { Namespace, Service } from '@_types/common'
 
 /**
  * Get service accounts.
- * 
+ *
  * Get a list of service accounts that match the provided path parameters.
  * @rest_spec_name security.get_service_accounts
  * @availability stack since=7.13.0 stability=stable

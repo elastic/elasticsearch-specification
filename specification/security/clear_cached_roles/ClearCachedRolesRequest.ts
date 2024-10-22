@@ -22,7 +22,7 @@ import { Names } from '@_types/common'
 
 /**
  * Clear the roles cache.
- * 
+ *
  * Evict roles from the native role cache.
  * @rest_spec_name security.clear_cached_roles
  * @availability stack stability=stable

@@ -22,7 +22,7 @@ import { Refresh, Username } from '@_types/common'
 
 /**
  * Enable users.
- * 
+ *
  * Enable users in the native realm.
  * @rest_spec_name security.enable_user
  * @availability stack stability=stable

@@ -23,7 +23,7 @@ import { Refresh } from '@_types/common'
 
 /**
  * Disable a user profile.
- * 
+ *
  * Disable user profiles so that they are not visible in user profile searches.
  * @rest_spec_name security.disable_user_profile
  * @availability stack since=8.2.0 stability=stable

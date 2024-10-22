@@ -21,7 +21,7 @@ import { RequestBase } from '@_types/Base'
 
 /**
  * Authenticate a user.
- * 
+ *
  * Authenticates a user and returns information about the authenticated user.
  * Include the user information in a [basic auth header](https://en.wikipedia.org/wiki/Basic_access_authentication).
  * A successful call returns a JSON structure that shows user information such as their username, the roles that are assigned to the user, any assigned metadata, and information about the realms that authenticated and authorized the user.

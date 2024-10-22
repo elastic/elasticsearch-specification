@@ -22,7 +22,7 @@ import { Name, Refresh } from '@_types/common'
 
 /**
  * Delete roles.
- * 
+ *
  * Delete roles in the native realm.
  * @rest_spec_name security.delete_role
  * @availability stack stability=stable

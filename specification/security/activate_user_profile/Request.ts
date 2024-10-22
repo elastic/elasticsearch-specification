@@ -22,7 +22,7 @@ import { RequestBase } from '@_types/Base'
 
 /**
  * Activate a user profile.
- * 
+ *
  * Create or update a user profile on behalf of another user.
  * @rest_spec_name security.activate_user_profile
  * @availability stack since=8.2.0 stability=stable

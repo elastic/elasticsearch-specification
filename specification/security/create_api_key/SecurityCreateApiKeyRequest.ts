@@ -25,7 +25,7 @@ import { Duration } from '@_types/Time'
 
 /**
  * Create an API key.
- * 
+ *
  * Create an API key for access without requiring basic authentication.
  * A successful request returns a JSON structure that contains the API key, its unique id, and its name.
  * If applicable, it also returns expiration information for the API key in milliseconds.

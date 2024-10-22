@@ -22,7 +22,7 @@ import { Name } from '@_types/common'
 
 /**
  * Clear the privileges cache.
- * 
+ *
  * Evict privileges from the native application privilege cache.
  * The cache is also automatically cleared for applications that have their privileges updated.
  * @rest_spec_name security.clear_cached_privileges

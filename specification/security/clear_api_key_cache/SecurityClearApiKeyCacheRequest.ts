@@ -22,7 +22,7 @@ import { Ids } from '@_types/common'
 
 /**
  * Clear the API key cache.
- * 
+ *
  * Evict a subset of all entries from the API key cache.
  * The cache is also automatically cleared on state changes of the security index.
  * @rest_spec_name security.clear_api_key_cache

@@ -22,7 +22,7 @@ import { Names } from '@_types/common'
 
 /**
  * Get role mappings.
- * 
+ *
  * Role mappings define which roles are assigned to each user.
  * The role mapping APIs are generally the preferred way to manage role mappings rather than using role mapping files.
  * The get role mappings API cannot retrieve role mappings that are defined in role mapping files.

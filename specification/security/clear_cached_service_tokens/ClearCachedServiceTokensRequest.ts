@@ -22,7 +22,7 @@ import { Names, Namespace, Service } from '@_types/common'
 
 /**
  * Clear service account token caches.
- * 
+ *
  * Evict a subset of all entries from the service account token caches.
  * @rest_spec_name security.clear_cached_service_tokens
  * @availability stack stability=stable
