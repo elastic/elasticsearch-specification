@@ -22,7 +22,7 @@ import { Id } from '@_types/common'
 /**
  * Check in a connector.
  * 
- * Updates the `last_seen` field in the connector and sets it to the current timestamp.
+ * Update the `last_seen` field in the connector and set it to the current timestamp.
  * @rest_spec_name connector.check_in
  * @availability stack since=8.12.0 stability=experimental
  * @availability serverless stability=experimental visibility=public
