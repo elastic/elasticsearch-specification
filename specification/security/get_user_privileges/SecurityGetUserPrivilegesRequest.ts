@@ -21,6 +21,7 @@ import { RequestBase } from '@_types/Base'
 import { Name } from '@_types/common'
 
 /**
+ * Get user privileges.
  * @rest_spec_name security.get_user_privileges
  * @availability stack since=6.5.0 stability=stable
  * @availability serverless stability=stable visibility=private

@@ -29,12 +29,16 @@ import { RequestBase } from '@_types/Base'
 import { Metadata, Name, Refresh } from '@_types/common'
 
 /**
- * The role management APIs are generally the preferred way to manage roles, rather than using file-based role management.
+ * Create or update roles.
+ *
+ * The role management APIs are generally the preferred way to manage roles in the native realm, rather than using file-based role management.
  * The create or update roles API cannot update roles that are defined in roles files.
+ * File-based role management is not available in Elastic Serverless.
  * @rest_spec_name security.put_role
  * @availability stack stability=stable
  * @availability serverless stability=stable visibility=private
  * @cluster_privileges manage_security
+ * @ext_doc_id defining-roles
  */
 export interface Request extends RequestBase {
   path_parts: {
