@@ -21,6 +21,9 @@ import { RequestBase } from '@_types/Base'
 import { Names } from '@_types/common'
 
 /**
+ * Clear the user cache.
+ *
+ * Evict users from the user cache. You can completely clear the cache or evict specific users.
  * @rest_spec_name security.clear_cached_realms
  * @availability stack stability=stable
  * @availability serverless stability=stable visibility=private
