@@ -25544,6 +25544,9 @@
           },
           "weighted_tokens": {
             "deprecated": true,
+            "externalDocs": {
+              "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-weighted-tokens-query.html"
+            },
             "description": "Supports returning text_expansion query results by sending in precomputed tokens with the query.",
             "type": "object",
             "additionalProperties": {
@@ -28142,6 +28145,9 @@
         "type": "string"
       },
       "_types.query_dsl:RangeQuery": {
+        "externalDocs": {
+          "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-range-query.html"
+        },
         "oneOf": [
           {
             "$ref": "#/components/schemas/_types.query_dsl:UntypedRangeQuery"
