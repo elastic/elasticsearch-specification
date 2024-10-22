@@ -17,12 +17,20 @@
  * under the License.
  */
 
-import { SearchApplication } from '@search_application/_types/SearchApplication'
-import { long } from '@_types/Numeric'
+import { IndexName, Name } from '@_types/common'
+import { SearchApplicationTemplate } from './SearchApplicationTemplate'
 
-export class Response {
-  body: {
-    count: long
-    results: SearchApplication[]
-  }
+export class SearchApplicationParameters {
+  /**
+   * Indices that are part of the Search Application.
+   */
+  indices: IndexName[]
+  /**
+   * Analytics collection associated to the Search Application.
+   */
+  analytics_collection_name?: Name
+  /**
+   * Search template to use on search operations.
+   */
+  template?: SearchApplicationTemplate
 }
