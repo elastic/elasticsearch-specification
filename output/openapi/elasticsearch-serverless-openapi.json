@@ -17004,7 +17004,7 @@
           "security"
         ],
         "summary": "Invalidate API keys",
-        "description": "Invalidates one or more API keys.\nThe `manage_api_key` privilege allows deleting any API keys.\nThe `manage_own_api_key` only allows deleting API keys that are owned by the user.\nIn addition, with the `manage_own_api_key` privilege, an invalidation request must be issued in one of the three formats:\n- Set the parameter `owner=true`.\n- Or, set both `username` and `realm_name` to match the user’s identity.\n- Or, if the request is issued by an API key, i.e. an API key invalidates itself, specify its ID in the `ids` field.",
+        "description": "This API invalidates API keys created by the create API key or grant API key APIs.\nInvalidated API keys fail authentication, but they can still be viewed using the get API key information and query API key information APIs, for at least the configured retention period, until they are automatically deleted.\nThe `manage_api_key` privilege allows deleting any API keys.\nThe `manage_own_api_key` only allows deleting API keys that are owned by the user.\nIn addition, with the `manage_own_api_key` privilege, an invalidation request must be issued in one of the three formats:\n- Set the parameter `owner=true`.\n- Or, set both `username` and `realm_name` to match the user’s identity.\n- Or, if the request is issued by an API key, that is to say an API key invalidates itself, specify its ID in the `ids` field.",
         "operationId": "security-invalidate-api-key",
         "requestBody": {
           "content": {
@@ -17091,7 +17091,10 @@
           "security"
         ],
         "summary": "Check user privileges",
-        "description": "Determines whether the specified user has a specified list of privileges.",
+        "description": "Determine whether the specified user has a specified list of privileges.",
+        "externalDocs": {
+          "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/security-privileges.html"
+        },
         "operationId": "security-has-privileges",
         "requestBody": {
           "$ref": "#/components/requestBodies/security.has_privileges"
@@ -17108,7 +17111,10 @@
           "security"
         ],
         "summary": "Check user privileges",
-        "description": "Determines whether the specified user has a specified list of privileges.",
+        "description": "Determine whether the specified user has a specified list of privileges.",
+        "externalDocs": {
+          "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/security-privileges.html"
+        },
         "operationId": "security-has-privileges-1",
         "requestBody": {
           "$ref": "#/components/requestBodies/security.has_privileges"
@@ -17127,7 +17133,10 @@
           "security"
         ],
         "summary": "Check user privileges",
-        "description": "Determines whether the specified user has a specified list of privileges.",
+        "description": "Determine whether the specified user has a specified list of privileges.",
+        "externalDocs": {
+          "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/security-privileges.html"
+        },
         "operationId": "security-has-privileges-2",
         "parameters": [
           {
@@ -17149,7 +17158,10 @@
           "security"
         ],
         "summary": "Check user privileges",
-        "description": "Determines whether the specified user has a specified list of privileges.",
+        "description": "Determine whether the specified user has a specified list of privileges.",
+        "externalDocs": {
+          "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/security-privileges.html"
+        },
         "operationId": "security-has-privileges-3",
         "parameters": [
           {
@@ -17172,8 +17184,8 @@
         "tags": [
           "security"
         ],
-        "summary": "Query API keys",
-        "description": "Retrieves a paginated list of API keys and their information. You can optionally filter the results with a query.",
+        "summary": "Find API keys with a query",
+        "description": "Get a paginated list of API keys and their information. You can optionally filter the results with a query.",
         "operationId": "security-query-api-keys",
         "parameters": [
           {
@@ -17200,8 +17212,8 @@
         "tags": [
           "security"
         ],
-        "summary": "Query API keys",
-        "description": "Retrieves a paginated list of API keys and their information. You can optionally filter the results with a query.",
+        "summary": "Find API keys with a query",
+        "description": "Get a paginated list of API keys and their information. You can optionally filter the results with a query.",
         "operationId": "security-query-api-keys-1",
         "parameters": [
           {
