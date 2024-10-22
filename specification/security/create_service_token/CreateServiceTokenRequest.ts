@@ -22,6 +22,7 @@ import { Name, Namespace, Refresh, Service } from '@_types/common'
 
 /**
  * Create a service account token.
+ * 
  * Create a service accounts token for access without requiring basic authentication.
  * @rest_spec_name security.create_service_token
  * @availability stack stability=stable

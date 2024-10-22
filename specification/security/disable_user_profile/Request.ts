@@ -22,8 +22,9 @@ import { RequestBase } from '@_types/Base'
 import { Refresh } from '@_types/common'
 
 /**
- * Deactivate a user profile.
- * Deactivated user profiles are not visible in user profile searches.
+ * Disable a user profile.
+ * 
+ * Disable user profiles so that they are not visible in user profile searches.
  * @rest_spec_name security.disable_user_profile
  * @availability stack since=8.2.0 stability=stable
  * @availability serverless stability=stable visibility=private

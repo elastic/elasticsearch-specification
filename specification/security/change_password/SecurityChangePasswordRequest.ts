@@ -22,6 +22,7 @@ import { Password, Refresh, Username } from '@_types/common'
 
 /**
  * Change passwords.
+ * 
  * Change the passwords of users in the native realm and built-in users.
  * @rest_spec_name security.change_password
  * @availability stack stability=stable

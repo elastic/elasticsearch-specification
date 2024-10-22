@@ -21,8 +21,9 @@ import { RequestBase } from '@_types/Base'
 import { Refresh, Username } from '@_types/common'
 
 /**
- * Deactivate users.
- * Deactivate users in the native realm.
+ * Disable users.
+ * 
+ * Disable users in the native realm.
  * @rest_spec_name security.disable_user
  * @availability stack stability=stable
  */

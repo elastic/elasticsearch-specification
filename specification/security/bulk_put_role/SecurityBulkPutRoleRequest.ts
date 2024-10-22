@@ -24,6 +24,7 @@ import { Refresh } from '@_types/common'
 
 /**
  * Bulk create or update roles.
+ * 
  * The role management APIs are generally the preferred way to manage roles, rather than using file-based role management.
  * The bulk create or update roles API cannot update roles that are defined in roles files.
  * @rest_spec_name security.bulk_put_role

@@ -21,8 +21,9 @@ import { RequestBase } from '@_types/Base'
 import { Refresh, Username } from '@_types/common'
 
 /**
- * Activate users.
- * Activate users in the native realm.
+ * Enable users.
+ * 
+ * Enable users in the native realm.
  * @rest_spec_name security.enable_user
  * @availability stack stability=stable
  */
