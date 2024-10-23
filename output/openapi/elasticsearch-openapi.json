@@ -2750,9 +2750,13 @@
     "/_search/scroll": {
       "get": {
         "tags": [
-          "scroll"
+          "search"
         ],
-        "summary": "Allows to retrieve a large numbers of results from a single search request",
+        "summary": "Run a scrolling search",
+        "description": "IMPORTANT: The scroll API is no longer recommend for deep pagination. If you need to preserve the index state while paging through more than 10,000 hits, use the `search_after` parameter with a point in time (PIT).\n\nThe scroll API gets large sets of results from a single scrolling search request.\nTo get the necessary scroll ID, submit a search API request that includes an argument for the `scroll` query parameter.\nThe `scroll` parameter indicates how long Elasticsearch should retain the search context for the request.\nThe search response returns a scroll ID in the `_scroll_id` response body parameter.\nYou can then use the scroll ID with the scroll API to retrieve the next batch of results for the request.\nIf the Elasticsearch security features are enabled, the access to the results of a specific scroll ID is restricted to the user or API key that submitted the search.\n\nYou can also use the scroll API to specify a new scroll parameter that extends or shortens the retention period for the search context.\n\nIMPORTANT: Results from a scrolling search reflect the state of the index at the time of the initial search request. Subsequent indexing or document changes only affect later search and scroll requests.",
+        "externalDocs": {
+          "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/paginate-search-results.html#scroll-search-results"
+        },
         "operationId": "scroll",
         "parameters": [
           {
@@ -2776,9 +2780,13 @@
       },
       "post": {
         "tags": [
-          "scroll"
+          "search"
         ],
-        "summary": "Allows to retrieve a large numbers of results from a single search request",
+        "summary": "Run a scrolling search",
+        "description": "IMPORTANT: The scroll API is no longer recommend for deep pagination. If you need to preserve the index state while paging through more than 10,000 hits, use the `search_after` parameter with a point in time (PIT).\n\nThe scroll API gets large sets of results from a single scrolling search request.\nTo get the necessary scroll ID, submit a search API request that includes an argument for the `scroll` query parameter.\nThe `scroll` parameter indicates how long Elasticsearch should retain the search context for the request.\nThe search response returns a scroll ID in the `_scroll_id` response body parameter.\nYou can then use the scroll ID with the scroll API to retrieve the next batch of results for the request.\nIf the Elasticsearch security features are enabled, the access to the results of a specific scroll ID is restricted to the user or API key that submitted the search.\n\nYou can also use the scroll API to specify a new scroll parameter that extends or shortens the retention period for the search context.\n\nIMPORTANT: Results from a scrolling search reflect the state of the index at the time of the initial search request. Subsequent indexing or document changes only affect later search and scroll requests.",
+        "externalDocs": {
+          "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/paginate-search-results.html#scroll-search-results"
+        },
         "operationId": "scroll-1",
         "parameters": [
           {
@@ -2819,9 +2827,13 @@
     "/_search/scroll/{scroll_id}": {
       "get": {
         "tags": [
-          "scroll"
+          "search"
         ],
-        "summary": "Allows to retrieve a large numbers of results from a single search request",
+        "summary": "Run a scrolling search",
+        "description": "IMPORTANT: The scroll API is no longer recommend for deep pagination. If you need to preserve the index state while paging through more than 10,000 hits, use the `search_after` parameter with a point in time (PIT).\n\nThe scroll API gets large sets of results from a single scrolling search request.\nTo get the necessary scroll ID, submit a search API request that includes an argument for the `scroll` query parameter.\nThe `scroll` parameter indicates how long Elasticsearch should retain the search context for the request.\nThe search response returns a scroll ID in the `_scroll_id` response body parameter.\nYou can then use the scroll ID with the scroll API to retrieve the next batch of results for the request.\nIf the Elasticsearch security features are enabled, the access to the results of a specific scroll ID is restricted to the user or API key that submitted the search.\n\nYou can also use the scroll API to specify a new scroll parameter that extends or shortens the retention period for the search context.\n\nIMPORTANT: Results from a scrolling search reflect the state of the index at the time of the initial search request. Subsequent indexing or document changes only affect later search and scroll requests.",
+        "externalDocs": {
+          "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/paginate-search-results.html#scroll-search-results"
+        },
         "operationId": "scroll-2",
         "parameters": [
           {
@@ -2848,9 +2860,13 @@
       },
       "post": {
         "tags": [
-          "scroll"
+          "search"
         ],
-        "summary": "Allows to retrieve a large numbers of results from a single search request",
+        "summary": "Run a scrolling search",
+        "description": "IMPORTANT: The scroll API is no longer recommend for deep pagination. If you need to preserve the index state while paging through more than 10,000 hits, use the `search_after` parameter with a point in time (PIT).\n\nThe scroll API gets large sets of results from a single scrolling search request.\nTo get the necessary scroll ID, submit a search API request that includes an argument for the `scroll` query parameter.\nThe `scroll` parameter indicates how long Elasticsearch should retain the search context for the request.\nThe search response returns a scroll ID in the `_scroll_id` response body parameter.\nYou can then use the scroll ID with the scroll API to retrieve the next batch of results for the request.\nIf the Elasticsearch security features are enabled, the access to the results of a specific scroll ID is restricted to the user or API key that submitted the search.\n\nYou can also use the scroll API to specify a new scroll parameter that extends or shortens the retention period for the search context.\n\nIMPORTANT: Results from a scrolling search reflect the state of the index at the time of the initial search request. Subsequent indexing or document changes only affect later search and scroll requests.",
+        "externalDocs": {
+          "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/paginate-search-results.html#scroll-search-results"
+        },
         "operationId": "scroll-3",
         "parameters": [
           {
@@ -5864,15 +5880,16 @@
     "/_dangling/{index_uuid}": {
       "post": {
         "tags": [
-          "dangling_indices"
+          "indices"
         ],
-        "summary": "Imports the specified dangling index",
+        "summary": "Import a dangling index",
+        "description": "If Elasticsearch encounters index data that is absent from the current cluster state, those indices are considered to be dangling.\nFor example, this can happen if you delete more than `cluster.indices.tombstones.size` indices while an Elasticsearch node is offline.",
         "operationId": "dangling-indices-import-dangling-index",
         "parameters": [
           {
             "in": "path",
             "name": "index_uuid",
-            "description": "The UUID of the dangling index",
+            "description": "The UUID of the index to import. Use the get dangling indices API to locate the UUID.",
             "required": true,
             "deprecated": false,
             "schema": {
@@ -5883,7 +5900,7 @@
           {
             "in": "query",
             "name": "accept_data_loss",
-            "description": "Must be set to true in order to import the dangling index",
+            "description": "This parameter must be set to true to import a dangling index.\nBecause Elasticsearch cannot know where the dangling index data came from or determine which shard copies are fresh and which are stale, it cannot guarantee that the imported data represents the latest state of the index when it was last in the cluster.",
             "required": true,
             "deprecated": false,
             "schema": {
@@ -5928,15 +5945,16 @@
       },
       "delete": {
         "tags": [
-          "dangling_indices"
+          "indices"
         ],
-        "summary": "Deletes the specified dangling index",
+        "summary": "Delete a dangling index",
+        "description": "If Elasticsearch encounters index data that is absent from the current cluster state, those indices are considered to be dangling.\nFor example, this can happen if you delete more than `cluster.indices.tombstones.size` indices while an Elasticsearch node is offline.",
         "operationId": "dangling-indices-delete-dangling-index",
         "parameters": [
           {
             "in": "path",
             "name": "index_uuid",
-            "description": "The UUID of the dangling index",
+            "description": "The UUID of the index to delete. Use the get dangling indices API to find the UUID.",
             "required": true,
             "deprecated": false,
             "schema": {
@@ -5947,7 +5965,7 @@
           {
             "in": "query",
             "name": "accept_data_loss",
-            "description": "Must be set to true in order to delete the dangling index",
+            "description": "This parameter must be set to true to acknowledge that it will no longer be possible to recove data from the dangling index.",
             "required": true,
             "deprecated": false,
             "schema": {
@@ -5994,9 +6012,10 @@
     "/_dangling": {
       "get": {
         "tags": [
-          "dangling_indices"
+          "indices"
         ],
-        "summary": "Returns all dangling indices",
+        "summary": "Get the dangling indices",
+        "description": "If Elasticsearch encounters index data that is absent from the current cluster state, those indices are considered to be dangling.\nFor example, this can happen if you delete more than `cluster.indices.tombstones.size` indices while an Elasticsearch node is offline.\n\nUse this API to list dangling indices, which you can then import or delete.",
         "operationId": "dangling-indices-list-dangling-indices",
         "responses": {
           "200": {
@@ -9044,9 +9063,10 @@
     "/_script_context": {
       "get": {
         "tags": [
-          "get_script_context"
+          "script"
         ],
-        "summary": "Returns all script contexts",
+        "summary": "Get script contexts",
+        "description": "Get a list of supported script contexts and their methods.",
         "operationId": "get-script-context",
         "responses": {
           "200": {
@@ -9076,9 +9096,10 @@
     "/_script_language": {
       "get": {
         "tags": [
-          "get_script_languages"
+          "script"
         ],
-        "summary": "Returns available script types, languages and contexts",
+        "summary": "Get script languages",
+        "description": "Get a list of available script types, languages, and contexts.",
         "operationId": "get-script-languages",
         "responses": {
           "200": {
@@ -22317,9 +22338,10 @@
     "/_msearch": {
       "get": {
         "tags": [
-          "msearch"
+          "search"
         ],
-        "summary": "Allows to execute several search operations in one request",
+        "summary": "Run multiple searches",
+        "description": "The format of the request is similar to the bulk API format and makes use of the newline delimited JSON (NDJSON) format.\nThe structure is as follows:\n\n```\nheader\\n\nbody\\n\nheader\\n\nbody\\n\n```\n\nThis structure is specifically optimized to reduce parsing if a specific search ends up redirected to another node.\n\nIMPORTANT: The final line of data must end with a newline character `\\n`.\nEach newline character may be preceded by a carriage return `\\r`.\nWhen sending requests to this endpoint the `Content-Type` header should be set to `application/x-ndjson`.",
         "operationId": "msearch",
         "parameters": [
           {
@@ -22374,9 +22396,10 @@
       },
       "post": {
         "tags": [
-          "msearch"
+          "search"
         ],
-        "summary": "Allows to execute several search operations in one request",
+        "summary": "Run multiple searches",
+        "description": "The format of the request is similar to the bulk API format and makes use of the newline delimited JSON (NDJSON) format.\nThe structure is as follows:\n\n```\nheader\\n\nbody\\n\nheader\\n\nbody\\n\n```\n\nThis structure is specifically optimized to reduce parsing if a specific search ends up redirected to another node.\n\nIMPORTANT: The final line of data must end with a newline character `\\n`.\nEach newline character may be preceded by a carriage return `\\r`.\nWhen sending requests to this endpoint the `Content-Type` header should be set to `application/x-ndjson`.",
         "operationId": "msearch-1",
         "parameters": [
           {
@@ -22433,9 +22456,10 @@
     "/{index}/_msearch": {
       "get": {
         "tags": [
-          "msearch"
+          "search"
         ],
-        "summary": "Allows to execute several search operations in one request",
+        "summary": "Run multiple searches",
+        "description": "The format of the request is similar to the bulk API format and makes use of the newline delimited JSON (NDJSON) format.\nThe structure is as follows:\n\n```\nheader\\n\nbody\\n\nheader\\n\nbody\\n\n```\n\nThis structure is specifically optimized to reduce parsing if a specific search ends up redirected to another node.\n\nIMPORTANT: The final line of data must end with a newline character `\\n`.\nEach newline character may be preceded by a carriage return `\\r`.\nWhen sending requests to this endpoint the `Content-Type` header should be set to `application/x-ndjson`.",
         "operationId": "msearch-2",
         "parameters": [
           {
@@ -22493,9 +22517,10 @@
       },
       "post": {
         "tags": [
-          "msearch"
+          "search"
         ],
-        "summary": "Allows to execute several search operations in one request",
+        "summary": "Run multiple searches",
+        "description": "The format of the request is similar to the bulk API format and makes use of the newline delimited JSON (NDJSON) format.\nThe structure is as follows:\n\n```\nheader\\n\nbody\\n\nheader\\n\nbody\\n\n```\n\nThis structure is specifically optimized to reduce parsing if a specific search ends up redirected to another node.\n\nIMPORTANT: The final line of data must end with a newline character `\\n`.\nEach newline character may be preceded by a carriage return `\\r`.\nWhen sending requests to this endpoint the `Content-Type` header should be set to `application/x-ndjson`.",
         "operationId": "msearch-3",
         "parameters": [
           {
@@ -32114,9 +32139,10 @@
     "/_ssl/certificates": {
       "get": {
         "tags": [
-          "ssl"
+          "security"
         ],
-        "summary": "Retrieves information about the X.509 certificates used to encrypt communications in the cluster",
+        "summary": "Get SSL certificates",
+        "description": "Get information about the X.509 certificates that are used to encrypt communications in the cluster.\nThe API returns a list that includes certificates from all TLS contexts including:\n\n- Settings for transport and HTTP interfaces\n- TLS settings that are used within authentication realms\n- TLS settings for remote monitoring exporters\n\nThe list includes certificates that are used for configuring trust, such as those configured in the `xpack.security.transport.ssl.truststore` and `xpack.security.transport.ssl.certificate_authorities` settings.\nIt also includes certificates that are used for configuring server identity, such as `xpack.security.http.ssl.keystore` and `xpack.security.http.ssl.certificate settings`.\n\nThe list does not include certificates that are sourced from the default SSL context of the Java Runtime Environment (JRE), even if those certificates are in use within Elasticsearch.\n\nNOTE: When a PKCS#11 token is configured as the truststore of the JRE, the API returns all the certificates that are included in the PKCS#11 token irrespective of whether these are used in the Elasticsearch TLS configuration.\n\nIf Elasticsearch is configured to use a keystore or truststore, the API output includes all certificates in that store, even though some of the certificates might not be in active use within the cluster.",
         "operationId": "ssl-certificates",
         "responses": {
           "200": {
@@ -32779,10 +32805,10 @@
     "/{index}/_terms_enum": {
       "get": {
         "tags": [
-          "terms_enum"
+          "search"
         ],
-        "summary": "The terms enum API  can be used to discover terms in the index that begin with the provided string",
-        "description": "It is designed for low-latency look-ups used in auto-complete scenarios.",
+        "summary": "Get terms in an index",
+        "description": "Discover terms that match a partial string in an index.\nThis \"terms enum\" API is designed for low-latency look-ups used in auto-complete scenarios.\n\nIf the `complete` property in the response is false, the returned terms set may be incomplete and should be treated as approximate.\nThis can occur due to a few reasons, such as a request timeout or a node error.\n\nNOTE: The terms enum API may return terms from deleted documents. Deleted documents are initially only marked as deleted. It is not until their segments are merged that documents are actually deleted. Until that happens, the terms enum API will return terms from these documents.",
         "operationId": "terms-enum",
         "parameters": [
           {
@@ -32801,10 +32827,10 @@
       },
       "post": {
         "tags": [
-          "terms_enum"
+          "search"
         ],
-        "summary": "The terms enum API  can be used to discover terms in the index that begin with the provided string",
-        "description": "It is designed for low-latency look-ups used in auto-complete scenarios.",
+        "summary": "Get terms in an index",
+        "description": "Discover terms that match a partial string in an index.\nThis \"terms enum\" API is designed for low-latency look-ups used in auto-complete scenarios.\n\nIf the `complete` property in the response is false, the returned terms set may be incomplete and should be treated as approximate.\nThis can occur due to a few reasons, such as a request timeout or a node error.\n\nNOTE: The terms enum API may return terms from deleted documents. Deleted documents are initially only marked as deleted. It is not until their segments are merged that documents are actually deleted. Until that happens, the terms enum API will return terms from these documents.",
         "operationId": "terms-enum-1",
         "parameters": [
           {

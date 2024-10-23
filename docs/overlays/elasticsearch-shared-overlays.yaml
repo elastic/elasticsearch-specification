@@ -93,8 +93,6 @@ actions:
           x-displayName: Index
           description: >
             Index APIs enable you to manage individual indices, index settings, aliases, mappings, and index templates.
-        - name: dangling_indices
-          x-displayName: Index - Import dangling index
         - name: ilm
           x-displayName: Index lifecycle management
           externalDocs:
@@ -169,26 +167,14 @@ actions:
       # S
         - name: script
           x-displayName: Script
-        - name: get_script_context
-          x-displayName: Script - Get contexts
-        - name: get_script_languages
-          x-displayName: Script - Get languages
         - name: search
           x-displayName: Search
-        - name: msearch
-          x-displayName: Search - Multi search
-        - name: scroll
-          x-displayName: Search - Scroll
-        - name: terms_enum
-          x-displayName: Search - Terms enum
         - name: search_application
           x-displayName: Search application
         - name: searchable_snapshots
           x-displayName: Searchable snapshots
         - name: security
           x-displayName: Security
-        - name: ssl
-          x-displayName: Security - SSL
         - name: snapshot
           x-displayName: Snapshot and restore
           description: >
