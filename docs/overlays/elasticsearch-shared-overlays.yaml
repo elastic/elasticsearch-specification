@@ -175,10 +175,6 @@ actions:
       # S
         - name: script
           x-displayName: Script
-        - name: get_script_context
-          x-displayName: Script - Get contexts
-        - name: get_script_languages
-          x-displayName: Script - Get languages
         - name: search
           x-displayName: Search
         - name: msearch

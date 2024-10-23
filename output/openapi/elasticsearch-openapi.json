@@ -9008,9 +9008,10 @@
     "/_script_context": {
       "get": {
         "tags": [
-          "get_script_context"
+          "script"
         ],
-        "summary": "Returns all script contexts",
+        "summary": "Get script contexts",
+        "description": "Get a list of supported script contexts and their methods.",
         "operationId": "get-script-context",
         "responses": {
           "200": {
@@ -9040,9 +9041,10 @@
     "/_script_language": {
       "get": {
         "tags": [
-          "get_script_languages"
+          "script"
         ],
-        "summary": "Returns available script types, languages and contexts",
+        "summary": "Get script languages",
+        "description": "Get a list of available script types, languages, and contexts.",
         "operationId": "get-script-languages",
         "responses": {
           "200": {
