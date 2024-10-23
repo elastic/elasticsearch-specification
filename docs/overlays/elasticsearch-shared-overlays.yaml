@@ -101,8 +101,6 @@ actions:
           x-displayName: Index
           description: >
             Index APIs enable you to manage individual indices, index settings, aliases, mappings, and index templates.
-        - name: dangling_indices
-          x-displayName: Index - Import dangling index
         - name: ilm
           x-displayName: Index lifecycle management
           externalDocs:
