@@ -17550,6 +17550,11 @@ export interface SearchableSnapshotsStatsResponse {
   total: any
 }
 
+export interface SecurityAccess {
+  replication?: SecurityReplicationAccess[]
+  search?: SecurityRemoteIndicesPrivileges[]
+}
+
 export interface SecurityApiKey {
   creation?: long
   expiration?: long
@@ -17636,6 +17641,10 @@ export interface SecurityRemoteIndicesPrivileges {
   privileges: SecurityIndexPrivilege[]
   query?: SecurityIndicesPrivilegesQuery
   allow_restricted_indices?: boolean
+}
+
+export interface SecurityReplicationAccess {
+  names: IndexName[]
 }
 
 export interface SecurityRoleDescriptor {
@@ -17890,6 +17899,7 @@ export interface SecurityCreateApiKeyResponse {
 
 export interface SecurityCreateCrossClusterApiKeyRequest extends RequestBase {
   body?: {
+    access: SecurityAccess
     expiration?: Duration
     metadata?: Metadata
     name?: Name
@@ -18624,6 +18634,7 @@ export interface SecurityUpdateApiKeyResponse {
 export interface SecurityUpdateCrossClusterApiKeyRequest extends RequestBase {
   id: Id
   body?: {
+    access: SecurityAccess
     expiration?: Duration
     metadata?: Metadata
   }
