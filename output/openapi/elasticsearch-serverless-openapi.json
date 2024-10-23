@@ -1223,9 +1223,13 @@
     "/_search/scroll": {
       "get": {
         "tags": [
-          "scroll"
+          "search"
         ],
-        "summary": "Allows to retrieve a large numbers of results from a single search request",
+        "summary": "Run a scrolling search",
+        "description": "IMPORTANT: The scroll API is no longer recommend for deep pagination. If you need to preserve the index state while paging through more than 10,000 hits, use the `search_after` parameter with a point in time (PIT).\n\nThe scroll API gets large sets of results from a single scrolling search request.\nTo get the necessary scroll ID, submit a search API request that includes an argument for the `scroll` query parameter.\nThe `scroll` parameter indicates how long Elasticsearch should retain the search context for the request.\nThe search response returns a scroll ID in the `_scroll_id` response body parameter.\nYou can then use the scroll ID with the scroll API to retrieve the next batch of results for the request.\nIf the Elasticsearch security features are enabled, the access to the results of a specific scroll ID is restricted to the user or API key that submitted the search.\n\nYou can also use the scroll API to specify a new scroll parameter that extends or shortens the retention period for the search context.\n\nIMPORTANT: Results from a scrolling search reflect the state of the index at the time of the initial search request. Subsequent indexing or document changes only affect later search and scroll requests.",
+        "externalDocs": {
+          "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/paginate-search-results.html#scroll-search-results"
+        },
         "operationId": "scroll",
         "parameters": [
           {
@@ -1249,9 +1253,13 @@
       },
       "post": {
         "tags": [
-          "scroll"
+          "search"
         ],
-        "summary": "Allows to retrieve a large numbers of results from a single search request",
+        "summary": "Run a scrolling search",
+        "description": "IMPORTANT: The scroll API is no longer recommend for deep pagination. If you need to preserve the index state while paging through more than 10,000 hits, use the `search_after` parameter with a point in time (PIT).\n\nThe scroll API gets large sets of results from a single scrolling search request.\nTo get the necessary scroll ID, submit a search API request that includes an argument for the `scroll` query parameter.\nThe `scroll` parameter indicates how long Elasticsearch should retain the search context for the request.\nThe search response returns a scroll ID in the `_scroll_id` response body parameter.\nYou can then use the scroll ID with the scroll API to retrieve the next batch of results for the request.\nIf the Elasticsearch security features are enabled, the access to the results of a specific scroll ID is restricted to the user or API key that submitted the search.\n\nYou can also use the scroll API to specify a new scroll parameter that extends or shortens the retention period for the search context.\n\nIMPORTANT: Results from a scrolling search reflect the state of the index at the time of the initial search request. Subsequent indexing or document changes only affect later search and scroll requests.",
+        "externalDocs": {
+          "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/paginate-search-results.html#scroll-search-results"
+        },
         "operationId": "scroll-1",
         "parameters": [
           {
@@ -1292,9 +1300,13 @@
     "/_search/scroll/{scroll_id}": {
       "get": {
         "tags": [
-          "scroll"
+          "search"
         ],
-        "summary": "Allows to retrieve a large numbers of results from a single search request",
+        "summary": "Run a scrolling search",
+        "description": "IMPORTANT: The scroll API is no longer recommend for deep pagination. If you need to preserve the index state while paging through more than 10,000 hits, use the `search_after` parameter with a point in time (PIT).\n\nThe scroll API gets large sets of results from a single scrolling search request.\nTo get the necessary scroll ID, submit a search API request that includes an argument for the `scroll` query parameter.\nThe `scroll` parameter indicates how long Elasticsearch should retain the search context for the request.\nThe search response returns a scroll ID in the `_scroll_id` response body parameter.\nYou can then use the scroll ID with the scroll API to retrieve the next batch of results for the request.\nIf the Elasticsearch security features are enabled, the access to the results of a specific scroll ID is restricted to the user or API key that submitted the search.\n\nYou can also use the scroll API to specify a new scroll parameter that extends or shortens the retention period for the search context.\n\nIMPORTANT: Results from a scrolling search reflect the state of the index at the time of the initial search request. Subsequent indexing or document changes only affect later search and scroll requests.",
+        "externalDocs": {
+          "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/paginate-search-results.html#scroll-search-results"
+        },
         "operationId": "scroll-2",
         "parameters": [
           {
@@ -1321,9 +1333,13 @@
       },
       "post": {
         "tags": [
-          "scroll"
+          "search"
         ],
-        "summary": "Allows to retrieve a large numbers of results from a single search request",
+        "summary": "Run a scrolling search",
+        "description": "IMPORTANT: The scroll API is no longer recommend for deep pagination. If you need to preserve the index state while paging through more than 10,000 hits, use the `search_after` parameter with a point in time (PIT).\n\nThe scroll API gets large sets of results from a single scrolling search request.\nTo get the necessary scroll ID, submit a search API request that includes an argument for the `scroll` query parameter.\nThe `scroll` parameter indicates how long Elasticsearch should retain the search context for the request.\nThe search response returns a scroll ID in the `_scroll_id` response body parameter.\nYou can then use the scroll ID with the scroll API to retrieve the next batch of results for the request.\nIf the Elasticsearch security features are enabled, the access to the results of a specific scroll ID is restricted to the user or API key that submitted the search.\n\nYou can also use the scroll API to specify a new scroll parameter that extends or shortens the retention period for the search context.\n\nIMPORTANT: Results from a scrolling search reflect the state of the index at the time of the initial search request. Subsequent indexing or document changes only affect later search and scroll requests.",
+        "externalDocs": {
+          "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/paginate-search-results.html#scroll-search-results"
+        },
         "operationId": "scroll-3",
         "parameters": [
           {
@@ -9234,9 +9250,10 @@
     "/_mget": {
       "get": {
         "tags": [
-          "mget"
+          "document"
         ],
-        "summary": "Allows to get multiple documents in one request",
+        "summary": "Get multiple documents",
+        "description": "Get multiple JSON documents by ID from one or more indices.\nIf you specify an index in the request URI, you only need to specify the document IDs in the request body.\nTo ensure fast responses, this multi get (mget) API responds with partial results if one or more shards fail.",
         "operationId": "mget",
         "parameters": [
           {
@@ -9276,9 +9293,10 @@
       },
       "post": {
         "tags": [
-          "mget"
+          "document"
         ],
-        "summary": "Allows to get multiple documents in one request",
+        "summary": "Get multiple documents",
+        "description": "Get multiple JSON documents by ID from one or more indices.\nIf you specify an index in the request URI, you only need to specify the document IDs in the request body.\nTo ensure fast responses, this multi get (mget) API responds with partial results if one or more shards fail.",
         "operationId": "mget-1",
         "parameters": [
           {
@@ -9320,9 +9338,10 @@
     "/{index}/_mget": {
       "get": {
         "tags": [
-          "mget"
+          "document"
         ],
-        "summary": "Allows to get multiple documents in one request",
+        "summary": "Get multiple documents",
+        "description": "Get multiple JSON documents by ID from one or more indices.\nIf you specify an index in the request URI, you only need to specify the document IDs in the request body.\nTo ensure fast responses, this multi get (mget) API responds with partial results if one or more shards fail.",
         "operationId": "mget-2",
         "parameters": [
           {
@@ -9365,9 +9384,10 @@
       },
       "post": {
         "tags": [
-          "mget"
+          "document"
         ],
-        "summary": "Allows to get multiple documents in one request",
+        "summary": "Get multiple documents",
+        "description": "Get multiple JSON documents by ID from one or more indices.\nIf you specify an index in the request URI, you only need to specify the document IDs in the request body.\nTo ensure fast responses, this multi get (mget) API responds with partial results if one or more shards fail.",
         "operationId": "mget-3",
         "parameters": [
           {
@@ -13623,9 +13643,10 @@
     "/_msearch": {
       "get": {
         "tags": [
-          "msearch"
+          "search"
         ],
-        "summary": "Allows to execute several search operations in one request",
+        "summary": "Run multiple searches",
+        "description": "The format of the request is similar to the bulk API format and makes use of the newline delimited JSON (NDJSON) format.\nThe structure is as follows:\n\n```\nheader\\n\nbody\\n\nheader\\n\nbody\\n\n```\n\nThis structure is specifically optimized to reduce parsing if a specific search ends up redirected to another node.\n\nIMPORTANT: The final line of data must end with a newline character `\\n`.\nEach newline character may be preceded by a carriage return `\\r`.\nWhen sending requests to this endpoint the `Content-Type` header should be set to `application/x-ndjson`.",
         "operationId": "msearch",
         "parameters": [
           {
@@ -13680,9 +13701,10 @@
       },
       "post": {
         "tags": [
-          "msearch"
+          "search"
         ],
-        "summary": "Allows to execute several search operations in one request",
+        "summary": "Run multiple searches",
+        "description": "The format of the request is similar to the bulk API format and makes use of the newline delimited JSON (NDJSON) format.\nThe structure is as follows:\n\n```\nheader\\n\nbody\\n\nheader\\n\nbody\\n\n```\n\nThis structure is specifically optimized to reduce parsing if a specific search ends up redirected to another node.\n\nIMPORTANT: The final line of data must end with a newline character `\\n`.\nEach newline character may be preceded by a carriage return `\\r`.\nWhen sending requests to this endpoint the `Content-Type` header should be set to `application/x-ndjson`.",
         "operationId": "msearch-1",
         "parameters": [
           {
@@ -13739,9 +13761,10 @@
     "/{index}/_msearch": {
       "get": {
         "tags": [
-          "msearch"
+          "search"
         ],
-        "summary": "Allows to execute several search operations in one request",
+        "summary": "Run multiple searches",
+        "description": "The format of the request is similar to the bulk API format and makes use of the newline delimited JSON (NDJSON) format.\nThe structure is as follows:\n\n```\nheader\\n\nbody\\n\nheader\\n\nbody\\n\n```\n\nThis structure is specifically optimized to reduce parsing if a specific search ends up redirected to another node.\n\nIMPORTANT: The final line of data must end with a newline character `\\n`.\nEach newline character may be preceded by a carriage return `\\r`.\nWhen sending requests to this endpoint the `Content-Type` header should be set to `application/x-ndjson`.",
         "operationId": "msearch-2",
         "parameters": [
           {
@@ -13799,9 +13822,10 @@
       },
       "post": {
         "tags": [
-          "msearch"
+          "search"
         ],
-        "summary": "Allows to execute several search operations in one request",
+        "summary": "Run multiple searches",
+        "description": "The format of the request is similar to the bulk API format and makes use of the newline delimited JSON (NDJSON) format.\nThe structure is as follows:\n\n```\nheader\\n\nbody\\n\nheader\\n\nbody\\n\n```\n\nThis structure is specifically optimized to reduce parsing if a specific search ends up redirected to another node.\n\nIMPORTANT: The final line of data must end with a newline character `\\n`.\nEach newline character may be preceded by a carriage return `\\r`.\nWhen sending requests to this endpoint the `Content-Type` header should be set to `application/x-ndjson`.",
         "operationId": "msearch-3",
         "parameters": [
           {
@@ -14003,9 +14027,10 @@
     "/_mtermvectors": {
       "get": {
         "tags": [
-          "mtermvectors"
+          "document"
         ],
-        "summary": "Returns multiple termvectors in one request",
+        "summary": "Get multiple term vectors",
+        "description": "You can specify existing documents by index and ID or provide artificial documents in the body of the request.\nYou can specify the index in the request body or request URI.\nThe response contains a `docs` array with all the fetched termvectors.\nEach element has the structure provided by the termvectors API.",
         "operationId": "mtermvectors",
         "parameters": [
           {
@@ -14056,9 +14081,10 @@
       },
       "post": {
         "tags": [
-          "mtermvectors"
+          "document"
         ],
-        "summary": "Returns multiple termvectors in one request",
+        "summary": "Get multiple term vectors",
+        "description": "You can specify existing documents by index and ID or provide artificial documents in the body of the request.\nYou can specify the index in the request body or request URI.\nThe response contains a `docs` array with all the fetched termvectors.\nEach element has the structure provided by the termvectors API.",
         "operationId": "mtermvectors-1",
         "parameters": [
           {
@@ -14111,9 +14137,10 @@
     "/{index}/_mtermvectors": {
       "get": {
         "tags": [
-          "mtermvectors"
+          "document"
         ],
-        "summary": "Returns multiple termvectors in one request",
+        "summary": "Get multiple term vectors",
+        "description": "You can specify existing documents by index and ID or provide artificial documents in the body of the request.\nYou can specify the index in the request body or request URI.\nThe response contains a `docs` array with all the fetched termvectors.\nEach element has the structure provided by the termvectors API.",
         "operationId": "mtermvectors-2",
         "parameters": [
           {
@@ -14167,9 +14194,10 @@
       },
       "post": {
         "tags": [
-          "mtermvectors"
+          "document"
         ],
-        "summary": "Returns multiple termvectors in one request",
+        "summary": "Get multiple term vectors",
+        "description": "You can specify existing documents by index and ID or provide artificial documents in the body of the request.\nYou can specify the index in the request body or request URI.\nThe response contains a `docs` array with all the fetched termvectors.\nEach element has the structure provided by the termvectors API.",
         "operationId": "mtermvectors-3",
         "parameters": [
           {
@@ -18061,10 +18089,10 @@
     "/{index}/_terms_enum": {
       "get": {
         "tags": [
-          "terms_enum"
+          "search"
         ],
-        "summary": "The terms enum API  can be used to discover terms in the index that begin with the provided string",
-        "description": "It is designed for low-latency look-ups used in auto-complete scenarios.",
+        "summary": "Get terms in an index",
+        "description": "Discover terms that match a partial string in an index.\nThis \"terms enum\" API is designed for low-latency look-ups used in auto-complete scenarios.\n\nIf the `complete` property in the response is false, the returned terms set may be incomplete and should be treated as approximate.\nThis can occur due to a few reasons, such as a request timeout or a node error.\n\nNOTE: The terms enum API may return terms from deleted documents. Deleted documents are initially only marked as deleted. It is not until their segments are merged that documents are actually deleted. Until that happens, the terms enum API will return terms from these documents.",
         "operationId": "terms-enum",
         "parameters": [
           {
@@ -18083,10 +18111,10 @@
       },
       "post": {
         "tags": [
-          "terms_enum"
+          "search"
         ],
-        "summary": "The terms enum API  can be used to discover terms in the index that begin with the provided string",
-        "description": "It is designed for low-latency look-ups used in auto-complete scenarios.",
+        "summary": "Get terms in an index",
+        "description": "Discover terms that match a partial string in an index.\nThis \"terms enum\" API is designed for low-latency look-ups used in auto-complete scenarios.\n\nIf the `complete` property in the response is false, the returned terms set may be incomplete and should be treated as approximate.\nThis can occur due to a few reasons, such as a request timeout or a node error.\n\nNOTE: The terms enum API may return terms from deleted documents. Deleted documents are initially only marked as deleted. It is not until their segments are merged that documents are actually deleted. Until that happens, the terms enum API will return terms from these documents.",
         "operationId": "terms-enum-1",
         "parameters": [
           {
@@ -61886,6 +61914,10 @@
                 },
                 "runtime_mappings": {
                   "$ref": "#/components/schemas/_types.mapping:RuntimeFields"
+                },
+                "max_samples_per_key": {
+                  "description": "By default, the response of a sample query contains up to `10` samples, with one sample per unique set of join keys. Use the `size`\nparameter to get a smaller or larger set of samples. To retrieve more than one sample per set of join keys, use the\n`max_samples_per_key` parameter. Pipes are not supported for sample queries.",
+                  "type": "number"
                 }
               },
               "required": [

@@ -10328,6 +10328,7 @@ export interface EqlSearchRequest extends RequestBase {
     fields?: QueryDslFieldAndFormat | Field | (QueryDslFieldAndFormat | Field)[]
     result_position?: EqlSearchResultPosition
     runtime_mappings?: MappingRuntimeFields
+    max_samples_per_key?: integer
   }
 }
 
