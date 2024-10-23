@@ -9234,9 +9234,10 @@
     "/_mget": {
       "get": {
         "tags": [
-          "mget"
+          "document"
         ],
-        "summary": "Allows to get multiple documents in one request",
+        "summary": "Get multiple documents",
+        "description": "Get multiple JSON documents by ID from one or more indices.\nIf you specify an index in the request URI, you only need to specify the document IDs in the request body.\nTo ensure fast responses, this multi get (mget) API responds with partial results if one or more shards fail.",
         "operationId": "mget",
         "parameters": [
           {
@@ -9276,9 +9277,10 @@
       },
       "post": {
         "tags": [
-          "mget"
+          "document"
         ],
-        "summary": "Allows to get multiple documents in one request",
+        "summary": "Get multiple documents",
+        "description": "Get multiple JSON documents by ID from one or more indices.\nIf you specify an index in the request URI, you only need to specify the document IDs in the request body.\nTo ensure fast responses, this multi get (mget) API responds with partial results if one or more shards fail.",
         "operationId": "mget-1",
         "parameters": [
           {
@@ -9320,9 +9322,10 @@
     "/{index}/_mget": {
       "get": {
         "tags": [
-          "mget"
+          "document"
         ],
-        "summary": "Allows to get multiple documents in one request",
+        "summary": "Get multiple documents",
+        "description": "Get multiple JSON documents by ID from one or more indices.\nIf you specify an index in the request URI, you only need to specify the document IDs in the request body.\nTo ensure fast responses, this multi get (mget) API responds with partial results if one or more shards fail.",
         "operationId": "mget-2",
         "parameters": [
           {
@@ -9365,9 +9368,10 @@
       },
       "post": {
         "tags": [
-          "mget"
+          "document"
         ],
-        "summary": "Allows to get multiple documents in one request",
+        "summary": "Get multiple documents",
+        "description": "Get multiple JSON documents by ID from one or more indices.\nIf you specify an index in the request URI, you only need to specify the document IDs in the request body.\nTo ensure fast responses, this multi get (mget) API responds with partial results if one or more shards fail.",
         "operationId": "mget-3",
         "parameters": [
           {
@@ -14003,9 +14007,10 @@
     "/_mtermvectors": {
       "get": {
         "tags": [
-          "mtermvectors"
+          "document"
         ],
-        "summary": "Returns multiple termvectors in one request",
+        "summary": "Get multiple term vectors",
+        "description": "You can specify existing documents by index and ID or provide artificial documents in the body of the request.\nYou can specify the index in the request body or request URI.\nThe response contains a `docs` array with all the fetched termvectors.\nEach element has the structure provided by the termvectors API.",
         "operationId": "mtermvectors",
         "parameters": [
           {
@@ -14056,9 +14061,10 @@
       },
       "post": {
         "tags": [
-          "mtermvectors"
+          "document"
         ],
-        "summary": "Returns multiple termvectors in one request",
+        "summary": "Get multiple term vectors",
+        "description": "You can specify existing documents by index and ID or provide artificial documents in the body of the request.\nYou can specify the index in the request body or request URI.\nThe response contains a `docs` array with all the fetched termvectors.\nEach element has the structure provided by the termvectors API.",
         "operationId": "mtermvectors-1",
         "parameters": [
           {
@@ -14111,9 +14117,10 @@
     "/{index}/_mtermvectors": {
       "get": {
         "tags": [
-          "mtermvectors"
+          "document"
         ],
-        "summary": "Returns multiple termvectors in one request",
+        "summary": "Get multiple term vectors",
+        "description": "You can specify existing documents by index and ID or provide artificial documents in the body of the request.\nYou can specify the index in the request body or request URI.\nThe response contains a `docs` array with all the fetched termvectors.\nEach element has the structure provided by the termvectors API.",
         "operationId": "mtermvectors-2",
         "parameters": [
           {
@@ -14167,9 +14174,10 @@
       },
       "post": {
         "tags": [
-          "mtermvectors"
+          "document"
         ],
-        "summary": "Returns multiple termvectors in one request",
+        "summary": "Get multiple term vectors",
+        "description": "You can specify existing documents by index and ID or provide artificial documents in the body of the request.\nYou can specify the index in the request body or request URI.\nThe response contains a `docs` array with all the fetched termvectors.\nEach element has the structure provided by the termvectors API.",
         "operationId": "mtermvectors-3",
         "parameters": [
           {
