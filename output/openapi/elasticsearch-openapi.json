@@ -22294,9 +22294,10 @@
     "/_msearch": {
       "get": {
         "tags": [
-          "msearch"
+          "search"
         ],
-        "summary": "Allows to execute several search operations in one request",
+        "summary": "Run multiple searches",
+        "description": "The format of the request is similar to the bulk API format and makes use of the newline delimited JSON (NDJSON) format.\nThe structure is as follows:\n\n```\nheader\\n\nbody\\n\nheader\\n\nbody\\n\n```\n\nThis structure is specifically optimized to reduce parsing if a specific search ends up redirected to another node.\n\nIMPORTANT: The final line of data must end with a newline character `\\n`.\nEach newline character may be preceded by a carriage return `\\r`.\nWhen sending requests to this endpoint the `Content-Type` header should be set to `application/x-ndjson`.",
         "operationId": "msearch",
         "parameters": [
           {
@@ -22351,9 +22352,10 @@
       },
       "post": {
         "tags": [
-          "msearch"
+          "search"
         ],
-        "summary": "Allows to execute several search operations in one request",
+        "summary": "Run multiple searches",
+        "description": "The format of the request is similar to the bulk API format and makes use of the newline delimited JSON (NDJSON) format.\nThe structure is as follows:\n\n```\nheader\\n\nbody\\n\nheader\\n\nbody\\n\n```\n\nThis structure is specifically optimized to reduce parsing if a specific search ends up redirected to another node.\n\nIMPORTANT: The final line of data must end with a newline character `\\n`.\nEach newline character may be preceded by a carriage return `\\r`.\nWhen sending requests to this endpoint the `Content-Type` header should be set to `application/x-ndjson`.",
         "operationId": "msearch-1",
         "parameters": [
           {
@@ -22410,9 +22412,10 @@
     "/{index}/_msearch": {
       "get": {
         "tags": [
-          "msearch"
+          "search"
         ],
-        "summary": "Allows to execute several search operations in one request",
+        "summary": "Run multiple searches",
+        "description": "The format of the request is similar to the bulk API format and makes use of the newline delimited JSON (NDJSON) format.\nThe structure is as follows:\n\n```\nheader\\n\nbody\\n\nheader\\n\nbody\\n\n```\n\nThis structure is specifically optimized to reduce parsing if a specific search ends up redirected to another node.\n\nIMPORTANT: The final line of data must end with a newline character `\\n`.\nEach newline character may be preceded by a carriage return `\\r`.\nWhen sending requests to this endpoint the `Content-Type` header should be set to `application/x-ndjson`.",
         "operationId": "msearch-2",
         "parameters": [
           {
@@ -22470,9 +22473,10 @@
       },
       "post": {
         "tags": [
-          "msearch"
+          "search"
         ],
-        "summary": "Allows to execute several search operations in one request",
+        "summary": "Run multiple searches",
+        "description": "The format of the request is similar to the bulk API format and makes use of the newline delimited JSON (NDJSON) format.\nThe structure is as follows:\n\n```\nheader\\n\nbody\\n\nheader\\n\nbody\\n\n```\n\nThis structure is specifically optimized to reduce parsing if a specific search ends up redirected to another node.\n\nIMPORTANT: The final line of data must end with a newline character `\\n`.\nEach newline character may be preceded by a carriage return `\\r`.\nWhen sending requests to this endpoint the `Content-Type` header should be set to `application/x-ndjson`.",
         "operationId": "msearch-3",
         "parameters": [
           {
