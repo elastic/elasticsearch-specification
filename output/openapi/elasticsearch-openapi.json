@@ -5862,15 +5862,16 @@
     "/_dangling/{index_uuid}": {
       "post": {
         "tags": [
-          "dangling_indices"
+          "indices"
         ],
-        "summary": "Imports the specified dangling index",
+        "summary": "Import a dangling index",
+        "description": "If Elasticsearch encounters index data that is absent from the current cluster state, those indices are considered to be dangling.\nFor example, this can happen if you delete more than `cluster.indices.tombstones.size` indices while an Elasticsearch node is offline.",
         "operationId": "dangling-indices-import-dangling-index",
         "parameters": [
           {
             "in": "path",
             "name": "index_uuid",
-            "description": "The UUID of the dangling index",
+            "description": "The UUID of the index to import. Use the get dangling indices API to locate the UUID.",
             "required": true,
             "deprecated": false,
             "schema": {
@@ -5881,7 +5882,7 @@
           {
             "in": "query",
             "name": "accept_data_loss",
-            "description": "Must be set to true in order to import the dangling index",
+            "description": "This parameter must be set to true to import a dangling index.\nBecause Elasticsearch cannot know where the dangling index data came from or determine which shard copies are fresh and which are stale, it cannot guarantee that the imported data represents the latest state of the index when it was last in the cluster.",
             "required": true,
             "deprecated": false,
             "schema": {
@@ -5926,15 +5927,16 @@
       },
       "delete": {
         "tags": [
-          "dangling_indices"
+          "indices"
         ],
-        "summary": "Deletes the specified dangling index",
+        "summary": "Delete a dangling index",
+        "description": "If Elasticsearch encounters index data that is absent from the current cluster state, those indices are considered to be dangling.\nFor example, this can happen if you delete more than `cluster.indices.tombstones.size` indices while an Elasticsearch node is offline.",
         "operationId": "dangling-indices-delete-dangling-index",
         "parameters": [
           {
             "in": "path",
             "name": "index_uuid",
-            "description": "The UUID of the dangling index",
+            "description": "The UUID of the index to delete. Use the get dangling indices API to find the UUID.",
             "required": true,
             "deprecated": false,
             "schema": {
@@ -5945,7 +5947,7 @@
           {
             "in": "query",
             "name": "accept_data_loss",
-            "description": "Must be set to true in order to delete the dangling index",
+            "description": "This parameter must be set to true to acknowledge that it will no longer be possible to recove data from the dangling index.",
             "required": true,
             "deprecated": false,
             "schema": {
@@ -5992,9 +5994,10 @@
     "/_dangling": {
       "get": {
         "tags": [
-          "dangling_indices"
+          "indices"
         ],
-        "summary": "Returns all dangling indices",
+        "summary": "Get the dangling indices",
+        "description": "If Elasticsearch encounters index data that is absent from the current cluster state, those indices are considered to be dangling.\nFor example, this can happen if you delete more than `cluster.indices.tombstones.size` indices while an Elasticsearch node is offline.\n\nUse this API to list dangling indices, which you can then import or delete.",
         "operationId": "dangling-indices-list-dangling-indices",
         "responses": {
           "200": {
