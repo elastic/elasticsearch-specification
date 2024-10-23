@@ -42,7 +42,7 @@ actions:
             This API provides an alternative to relying solely on Kibana UI for connector and sync job management. The API comes with a set of validations and assertions to ensure that the state representation in the internal index remains valid.
           externalDocs:
             url: https://www.elastic.co/guide/en/elasticsearch/reference/master/es-connectors-tutorial-api.html
-            description: To get started with Connector APIs, check out the tutorial.
+            description: Connector API tutorial
         - name: ccr
           x-displayName: Cross-cluster replication
       # D
