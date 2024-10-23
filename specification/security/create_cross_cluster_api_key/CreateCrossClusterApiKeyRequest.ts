@@ -18,36 +18,44 @@
  */
 
 import { RequestBase } from '@_types/Base'
-import { Id, Metadata } from '@_types/common'
+import { Metadata, Name } from '@_types/common'
 import { Duration } from '@_types/Time'
 
 /**
- * Update a cross-cluster API key.
+ * Create a cross-cluster API key.
  *
- * Update the attributes of an existing cross-cluster API key, which is used for API key based remote cluster access.
- * @rest_spec_name security.update_cross_cluster_api_key
+ * Create an API key of the `cross_cluster` type for the API key based remote cluster access.
+ * A `cross_cluster` API key cannot be used to authenticate through the REST interface.
+ *
+ * IMPORTANT: To authenticate this request you must use a credential that is not an API key. Even if you use an API key that has the required privilege, the API returns an error.
+ *
+ * Cross-cluster API keys are created by the Elasticsearch API key service, which is automatically enabled.
+ *
+ * A successful request returns a JSON structure that contains the API key, its unique ID, and its name. If applicable, it also returns expiration information for the API key in milliseconds.
+ *
+ * By default, API keys never expire. You can specify expiration information when you create the API keys.
+ *
+ * Cross-cluster API keys can only be updated with the update cross-cluster API key API.
+ * Attempting to update them with the update REST API key API or the bulk update REST API keys API will result in an error.
+ * @rest_spec_name security.create_cross_cluster_api_key
  * @availability stack stability=stable
+ * @cluster_privileges manage_security
  * @ext_doc_id remote-clusters-api-key
  */
 export interface Request extends RequestBase {
-  path_parts: {
-    /**
-     * The ID of the cross-cluster API key to update.
-     */
-    id: Id
-  }
   body: {
     /**
      * Expiration time for the API key.
-     * By default, API keys never expire. This property can be omitted to leave the value unchanged.
+     * By default, API keys never expire.
      */
     expiration?: Duration
     /**
      * Arbitrary metadata that you want to associate with the API key.
      * It supports nested data structure.
      * Within the metadata object, keys beginning with `_` are reserved for system usage.
-     * When specified, this information fully replaces metadata previously associated with the API key.
      */
     metadata?: Metadata
+    /** Specifies the name for this API key. */
+    name?: Name
   }
 }
