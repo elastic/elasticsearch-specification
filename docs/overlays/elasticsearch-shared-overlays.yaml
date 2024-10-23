@@ -39,6 +39,7 @@ actions:
             
             * Self-managed connectors (Connector clients) are self-managed on your infrastructure.
             
+            
             This API provides an alternative to relying solely on Kibana UI for connector and sync job management. The API comes with a set of validations and assertions to ensure that the state representation in the internal index remains valid.
           externalDocs:
             url: https://www.elastic.co/guide/en/elasticsearch/reference/master/es-connectors-tutorial-api.html
