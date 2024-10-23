@@ -20,7 +20,12 @@ import { RequestBase } from '@_types/Base'
 import { Id } from '@_types/common'
 
 /**
- * Deletes a connector.
+ * Delete a connector.
+ *
+ * Removes a connector and associated sync jobs.
+ * This is a destructive action that is not recoverable.
+ * NOTE: This action doesn’t delete any API keys, ingest pipelines, or data indices associated with the connector.
+ * These need to be removed manually.
  * @rest_spec_name connector.delete
  * @availability stack since=8.12.0 stability=beta
  * @availability serverless stability=beta visibility=public
