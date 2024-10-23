@@ -293,7 +293,7 @@ export class RoleTemplateQuery {
    * Like other places in Elasticsearch that support templating or scripting, you can specify inline, stored, or file-based
    * templates and define custom parameters. You access the details for the current authenticated user through the _user parameter.
    *
-   * @doc_id templating-role-query
+   * @ext_doc_id templating-role-query
    */
   template?: RoleTemplateScript
 }
