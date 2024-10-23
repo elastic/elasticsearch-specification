@@ -29,9 +29,17 @@ import {
 import { Operation } from './types'
 
 /**
+ * Get multiple term vectors.
+ *
+ * Get multiple term vectors with a single request.
+ * You can specify existing documents by index and ID or provide artificial documents in the body of the request.
+ * You can specify the index in the request body or request URI.
+ * The response contains a `docs` array with all the fetched termvectors.
+ * Each element has the structure provided by the termvectors API.
  * @rest_spec_name mtermvectors
  * @availability stack stability=stable
  * @availability serverless stability=stable visibility=public
+ * @doc_tag document
  */
 export interface Request extends RequestBase {
   path_parts: {
