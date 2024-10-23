@@ -13478,10 +13478,10 @@ export interface LicensePostStartTrialResponse {
 export interface LogstashPipeline {
   description: string
   last_modified: DateTime
-  pipeline_metadata: LogstashPipelineMetadata
-  username: string
   pipeline: string
+  pipeline_metadata: LogstashPipelineMetadata
   pipeline_settings: LogstashPipelineSettings
+  username: string
 }
 
 export interface LogstashPipelineMetadata {

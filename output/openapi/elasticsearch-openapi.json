@@ -15843,7 +15843,11 @@
         "tags": [
           "logstash"
         ],
-        "summary": "Retrieves pipelines used for Logstash Central Management",
+        "summary": "Get Logstash pipelines",
+        "description": "Get pipelines that are used for Logstash Central Management.",
+        "externalDocs": {
+          "url": "https://www.elastic.co/guide/en/logstash/current/logstash-centralized-pipeline-management.html"
+        },
         "operationId": "logstash-get-pipeline-1",
         "parameters": [
           {
@@ -15861,13 +15865,17 @@
         "tags": [
           "logstash"
         ],
-        "summary": "Creates or updates a pipeline used for Logstash Central Management",
+        "summary": "Create or update a Logstash pipeline",
+        "description": "Create a pipeline that is used for Logstash Central Management.\nIf the specified pipeline exists, it is replaced.",
+        "externalDocs": {
+          "url": "https://www.elastic.co/guide/en/logstash/current/logstash-centralized-pipeline-management.html"
+        },
         "operationId": "logstash-put-pipeline",
         "parameters": [
           {
             "in": "path",
             "name": "id",
-            "description": "Identifier for the pipeline.",
+            "description": "An identifier for the pipeline.",
             "required": true,
             "deprecated": false,
             "schema": {
@@ -15900,13 +15908,17 @@
         "tags": [
           "logstash"
         ],
-        "summary": "Deletes a pipeline used for Logstash Central Management",
+        "summary": "Delete a Logstash pipeline",
+        "description": "Delete a pipeline that is used for Logstash Central Management.",
+        "externalDocs": {
+          "url": "https://www.elastic.co/guide/en/logstash/current/logstash-centralized-pipeline-management.html"
+        },
         "operationId": "logstash-delete-pipeline",
         "parameters": [
           {
             "in": "path",
             "name": "id",
-            "description": "Identifier for the pipeline.",
+            "description": "An identifier for the pipeline.",
             "required": true,
             "deprecated": false,
             "schema": {
@@ -15931,7 +15943,11 @@
         "tags": [
           "logstash"
         ],
-        "summary": "Retrieves pipelines used for Logstash Central Management",
+        "summary": "Get Logstash pipelines",
+        "description": "Get pipelines that are used for Logstash Central Management.",
+        "externalDocs": {
+          "url": "https://www.elastic.co/guide/en/logstash/current/logstash-centralized-pipeline-management.html"
+        },
         "operationId": "logstash-get-pipeline",
         "responses": {
           "200": {
@@ -71533,34 +71549,37 @@
         "type": "object",
         "properties": {
           "description": {
-            "description": "Description of the pipeline.\nThis description is not used by Elasticsearch or Logstash.",
+            "description": "A description of the pipeline.\nThis description is not used by Elasticsearch or Logstash.",
             "type": "string"
           },
           "last_modified": {
             "$ref": "#/components/schemas/_types:DateTime"
           },
+          "pipeline": {
+            "externalDocs": {
+              "url": "https://www.elastic.co/guide/en/logstash/current/configuration-file-structure.html"
+            },
+            "description": "The configuration for the pipeline.",
+            "type": "string"
+          },
           "pipeline_metadata": {
             "$ref": "#/components/schemas/logstash._types:PipelineMetadata"
           },
-          "username": {
-            "description": "User who last updated the pipeline.",
-            "type": "string"
-          },
-          "pipeline": {
-            "description": "Configuration for the pipeline.",
-            "type": "string"
-          },
           "pipeline_settings": {
             "$ref": "#/components/schemas/logstash._types:PipelineSettings"
+          },
+          "username": {
+            "description": "The user who last updated the pipeline.",
+            "type": "string"
           }
         },
         "required": [
           "description",
           "last_modified",
-          "pipeline_metadata",
-          "username",
           "pipeline",
-          "pipeline_settings"
+          "pipeline_metadata",
+          "pipeline_settings",
+          "username"
         ]
       },
       "logstash._types:PipelineMetadata": {
@@ -96856,7 +96875,7 @@
       "logstash.get_pipeline#id": {
         "in": "path",
         "name": "id",
-        "description": "Comma-separated list of pipeline identifiers.",
+        "description": "A comma-separated list of pipeline identifiers.",
         "required": true,
         "deprecated": false,
         "schema": {
