@@ -4722,7 +4722,8 @@
           "stability": "stable"
         }
       },
-      "description": "Allows to get multiple documents in one request.",
+      "description": "Get multiple documents.\n\nGet multiple JSON documents by ID from one or more indices.\nIf you specify an index in the request URI, you only need to specify the document IDs in the request body.\nTo ensure fast responses, this multi get (mget) API responds with partial results if one or more shards fail.",
+      "docTag": "document",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/docs-multi-get.html",
       "name": "mget",
       "privileges": {
@@ -7219,7 +7220,8 @@
           "stability": "stable"
         }
       },
-      "description": "Returns multiple termvectors in one request.",
+      "description": "Get multiple term vectors.\n\nYou can specify existing documents by index and ID or provide artificial documents in the body of the request.\nYou can specify the index in the request body or request URI.\nThe response contains a `docs` array with all the fetched termvectors.\nEach element has the structure provided by the termvectors API.",
+      "docTag": "document",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/docs-multi-termvectors.html",
       "name": "mtermvectors",
       "request": {
@@ -17375,6 +17377,19 @@
                 "namespace": "_types.mapping"
               }
             }
+          },
+          {
+            "description": "By default, the response of a sample query contains up to `10` samples, with one sample per unique set of join keys. Use the `size`\nparameter to get a smaller or larger set of samples. To retrieve more than one sample per set of join keys, use the\n`max_samples_per_key` parameter. Pipes are not supported for sample queries.",
+            "name": "max_samples_per_key",
+            "required": false,
+            "serverDefault": 1,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "integer",
+                "namespace": "_types"
+              }
+            }
           }
         ]
       },
@@ -17481,7 +17496,7 @@
           }
         }
       ],
-      "specLocation": "eql/search/EqlSearchRequest.ts#L28-L118"
+      "specLocation": "eql/search/EqlSearchRequest.ts#L28-L125"
     },
     {
       "body": {
@@ -25509,7 +25524,7 @@
           }
         ]
       },
-      "description": "Allows to get multiple documents in one request.",
+      "description": "Get multiple documents.\n\nGet multiple JSON documents by ID from one or more indices.\nIf you specify an index in the request URI, you only need to specify the document IDs in the request body.\nTo ensure fast responses, this multi get (mget) API responds with partial results if one or more shards fail.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -25642,7 +25657,7 @@
           }
         }
       ],
-      "specLocation": "_global/mget/MultiGetRequest.ts#L25-L98"
+      "specLocation": "_global/mget/MultiGetRequest.ts#L25-L104"
     },
     {
       "body": {
@@ -33756,7 +33771,7 @@
           }
         ]
       },
-      "description": "Returns multiple termvectors in one request.",
+      "description": "Get multiple term vectors.\n\nYou can specify existing documents by index and ID or provide artificial documents in the body of the request.\nYou can specify the index in the request body or request URI.\nThe response contains a `docs` array with all the fetched termvectors.\nEach element has the structure provided by the termvectors API.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -33939,7 +33954,7 @@
           }
         }
       ],
-      "specLocation": "_global/mtermvectors/MultiTermVectorsRequest.ts#L31-L109"
+      "specLocation": "_global/mtermvectors/MultiTermVectorsRequest.ts#L31-L116"
     },
     {
       "body": {
@@ -58080,7 +58095,7 @@
           ],
           "meta": {
             "key": "field",
-            "value": "term"
+            "value": "terms"
           },
           "type": {
             "name": "AdditionalProperty",
