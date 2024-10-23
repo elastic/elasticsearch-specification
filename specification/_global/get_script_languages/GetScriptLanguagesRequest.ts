@@ -20,7 +20,11 @@
 import { RequestBase } from '@_types/Base'
 
 /**
+ * Get script languages.
+ *
+ * Get a list of available script types, languages, and contexts.
  * @rest_spec_name get_script_languages
  * @availability stack stability=stable
+ * @doc_tag script
  */
 export interface Request extends RequestBase {}

@@ -24,9 +24,19 @@ import { QueryContainer } from '@_types/query_dsl/abstractions'
 import { Duration } from '@_types/Time'
 
 /**
+ * Get terms in an index.
+ *
+ * Discover terms that match a partial string in an index.
+ * This "terms enum" API is designed for low-latency look-ups used in auto-complete scenarios.
+ *
+ * If the `complete` property in the response is false, the returned terms set may be incomplete and should be treated as approximate.
+ * This can occur due to a few reasons, such as a request timeout or a node error.
+ *
+ * NOTE: The terms enum API may return terms from deleted documents. Deleted documents are initially only marked as deleted. It is not until their segments are merged that documents are actually deleted. Until that happens, the terms enum API will return terms from these documents.
  * @rest_spec_name terms_enum
  * @availability stack since=7.14.0 stability=stable
  * @availability serverless stability=stable visibility=public
+ * @doc_tag search
  */
 export interface Request extends RequestBase {
   path_parts: {
