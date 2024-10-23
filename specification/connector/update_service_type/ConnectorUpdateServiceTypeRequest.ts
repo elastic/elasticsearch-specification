@@ -20,7 +20,7 @@ import { RequestBase } from '@_types/Base'
 import { Id } from '@_types/common'
 
 /**
- * Updates the service type of the connector
+ * Update the connector service type.
  * @rest_spec_name connector.update_service_type
  * @availability stack since=8.12.0 stability=beta
  * @availability serverless stability=beta visibility=public
