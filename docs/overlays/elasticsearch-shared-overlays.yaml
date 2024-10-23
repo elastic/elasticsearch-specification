@@ -173,8 +173,6 @@ actions:
           x-displayName: Searchable snapshots
         - name: security
           x-displayName: Security
-        - name: ssl
-          x-displayName: Security - SSL
         - name: snapshot
           x-displayName: Snapshot and restore
           description: >
