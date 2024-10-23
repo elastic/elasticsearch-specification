@@ -37,7 +37,7 @@ actions:
             
             * Elastic managed connectors (Native connectors) are a managed service on Elastic Cloud
             
-            * Self-managed connectors (Connector clients) are self-managed on your infrastructure
+            * Self-managed connectors (Connector clients) are self-managed on your infrastructure.
             
             This API provides an alternative to relying solely on Kibana UI for connector and sync job management. The API comes with a set of validations and assertions to ensure that the state representation in the internal index remains valid.
           externalDocs:
