@@ -31,7 +31,6 @@ import { Operation } from './types'
 /**
  * Get multiple term vectors.
  *
- * Get multiple term vectors with a single request.
  * You can specify existing documents by index and ID or provide artificial documents in the body of the request.
  * You can specify the index in the request body or request URI.
  * The response contains a `docs` array with all the fetched termvectors.

@@ -14010,7 +14010,7 @@
           "document"
         ],
         "summary": "Get multiple term vectors",
-        "description": "Get multiple term vectors with a single request.\nYou can specify existing documents by index and ID or provide artificial documents in the body of the request.\nYou can specify the index in the request body or request URI.\nThe response contains a `docs` array with all the fetched termvectors.\nEach element has the structure provided by the termvectors API.",
+        "description": "You can specify existing documents by index and ID or provide artificial documents in the body of the request.\nYou can specify the index in the request body or request URI.\nThe response contains a `docs` array with all the fetched termvectors.\nEach element has the structure provided by the termvectors API.",
         "operationId": "mtermvectors",
         "parameters": [
           {
@@ -14064,7 +14064,7 @@
           "document"
         ],
         "summary": "Get multiple term vectors",
-        "description": "Get multiple term vectors with a single request.\nYou can specify existing documents by index and ID or provide artificial documents in the body of the request.\nYou can specify the index in the request body or request URI.\nThe response contains a `docs` array with all the fetched termvectors.\nEach element has the structure provided by the termvectors API.",
+        "description": "You can specify existing documents by index and ID or provide artificial documents in the body of the request.\nYou can specify the index in the request body or request URI.\nThe response contains a `docs` array with all the fetched termvectors.\nEach element has the structure provided by the termvectors API.",
         "operationId": "mtermvectors-1",
         "parameters": [
           {
@@ -14120,7 +14120,7 @@
           "document"
         ],
         "summary": "Get multiple term vectors",
-        "description": "Get multiple term vectors with a single request.\nYou can specify existing documents by index and ID or provide artificial documents in the body of the request.\nYou can specify the index in the request body or request URI.\nThe response contains a `docs` array with all the fetched termvectors.\nEach element has the structure provided by the termvectors API.",
+        "description": "You can specify existing documents by index and ID or provide artificial documents in the body of the request.\nYou can specify the index in the request body or request URI.\nThe response contains a `docs` array with all the fetched termvectors.\nEach element has the structure provided by the termvectors API.",
         "operationId": "mtermvectors-2",
         "parameters": [
           {
@@ -14177,7 +14177,7 @@
           "document"
         ],
         "summary": "Get multiple term vectors",
-        "description": "Get multiple term vectors with a single request.\nYou can specify existing documents by index and ID or provide artificial documents in the body of the request.\nYou can specify the index in the request body or request URI.\nThe response contains a `docs` array with all the fetched termvectors.\nEach element has the structure provided by the termvectors API.",
+        "description": "You can specify existing documents by index and ID or provide artificial documents in the body of the request.\nYou can specify the index in the request body or request URI.\nThe response contains a `docs` array with all the fetched termvectors.\nEach element has the structure provided by the termvectors API.",
         "operationId": "mtermvectors-3",
         "parameters": [
           {
