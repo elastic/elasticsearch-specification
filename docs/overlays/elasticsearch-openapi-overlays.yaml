@@ -9,6 +9,8 @@ actions:
     update:
       title: Elasticsearch API
       description: >
+        Elasticsearch provides REST APIs that are used by the UI components and can be called directly to configure and access Elasticsearch features.
+        
         ## Documentation source and versions
         
         This documentation is derived from the `8.x` branch of the [elasticsearch-specification](https://github.com/elastic/elasticsearch-specification) repository.
