@@ -20,7 +20,7 @@ import { RequestBase } from '@_types/Base'
 import { Id } from '@_types/common'
 
 /**
- * Updates the name and description fields in the connector document
+ * Update the connector name and description.
  * @rest_spec_name connector.update_name
  * @availability stack since=8.12.0 stability=beta
  * @availability serverless stability=beta visibility=public
