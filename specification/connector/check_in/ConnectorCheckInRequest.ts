@@ -21,7 +21,7 @@ import { Id } from '@_types/common'
 
 /**
  * Check in a connector.
- * 
+ *
  * Update the `last_seen` field in the connector and set it to the current timestamp.
  * @rest_spec_name connector.check_in
  * @availability stack since=8.12.0 stability=experimental

@@ -23,7 +23,7 @@ import { Id } from '@_types/common'
  * Delete a connector sync job.
  *
  * Remove a connector sync job and its associated data.
- * This is a destructive action that is not recoverable. 
+ * This is a destructive action that is not recoverable.
  * @rest_spec_name connector.sync_job_delete
  * @availability stack since=8.12.0 stability=beta
  * @availability serverless stability=beta visibility=public
