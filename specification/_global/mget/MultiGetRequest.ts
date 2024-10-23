@@ -23,10 +23,16 @@ import { Fields, Ids, IndexName, Routing } from '@_types/common'
 import { Operation } from './types'
 
 /**
+ * Get multiple documents.
+ * 
+ * Get multiple JSON documents by ID from one or more indices.
+ * If you specify an index in the request URI, you only need to specify the document IDs in the request body.
+ * To ensure fast responses, this multi get (mget) API responds with partial results if one or more shards fail.
  * @rest_spec_name mget
  * @availability stack since=1.3.0 stability=stable
  * @availability serverless stability=stable visibility=public
  * @index_privileges read
+ * @doc_tag document
  */
 export interface Request extends RequestBase {
   path_parts: {
