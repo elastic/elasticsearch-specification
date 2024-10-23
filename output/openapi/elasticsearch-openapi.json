@@ -32771,10 +32771,10 @@
     "/{index}/_terms_enum": {
       "get": {
         "tags": [
-          "terms_enum"
+          "search"
         ],
-        "summary": "The terms enum API  can be used to discover terms in the index that begin with the provided string",
-        "description": "It is designed for low-latency look-ups used in auto-complete scenarios.",
+        "summary": "Get terms in an index",
+        "description": "Discover terms that match a partial string in an index.\nThis \"terms enum\" API is designed for low-latency look-ups used in auto-complete scenarios.\n\nIf the `complete` property in the response is false, the returned terms set may be incomplete and should be treated as approximate.\nThis can occur due to a few reasons, such as a request timeout or a node error.\n\nNOTE: The terms enum API may return terms from deleted documents. Deleted documents are initially only marked as deleted. It is not until their segments are merged that documents are actually deleted. Until that happens, the terms enum API will return terms from these documents.",
         "operationId": "terms-enum",
         "parameters": [
           {
@@ -32793,10 +32793,10 @@
       },
       "post": {
         "tags": [
-          "terms_enum"
+          "search"
         ],
-        "summary": "The terms enum API  can be used to discover terms in the index that begin with the provided string",
-        "description": "It is designed for low-latency look-ups used in auto-complete scenarios.",
+        "summary": "Get terms in an index",
+        "description": "Discover terms that match a partial string in an index.\nThis \"terms enum\" API is designed for low-latency look-ups used in auto-complete scenarios.\n\nIf the `complete` property in the response is false, the returned terms set may be incomplete and should be treated as approximate.\nThis can occur due to a few reasons, such as a request timeout or a node error.\n\nNOTE: The terms enum API may return terms from deleted documents. Deleted documents are initially only marked as deleted. It is not until their segments are merged that documents are actually deleted. Until that happens, the terms enum API will return terms from these documents.",
         "operationId": "terms-enum-1",
         "parameters": [
           {
