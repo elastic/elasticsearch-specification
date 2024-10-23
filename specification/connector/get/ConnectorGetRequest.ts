@@ -20,7 +20,9 @@ import { RequestBase } from '@_types/Base'
 import { Id } from '@_types/common'
 
 /**
- * Retrieves a connector.
+ * Get a connector.
+ *
+ * Get the details about a connector.
  * @rest_spec_name connector.get
  * @availability stack since=8.12.0 stability=beta
  * @availability serverless stability=beta visibility=public
