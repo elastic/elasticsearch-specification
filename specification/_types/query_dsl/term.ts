@@ -255,7 +255,7 @@ export class TermQuery extends QueryBase {
 }
 
 /**
- * @behavior_meta AdditionalProperty key=field value=term
+ * @behavior_meta AdditionalProperty key=field value=terms
  * @ext_doc_id query-dsl-terms-query
  */
 export class TermsQuery
