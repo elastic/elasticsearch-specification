@@ -181,8 +181,6 @@ actions:
           x-displayName: Script - Get languages
         - name: search
           x-displayName: Search
-        - name: terms_enum
-          x-displayName: Search - Terms enum
         - name: search_application
           x-displayName: Search application
         - name: searchable_snapshots
