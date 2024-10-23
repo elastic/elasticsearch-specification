@@ -4052,7 +4052,8 @@
         "tags": [
           "connector"
         ],
-        "summary": "Updates the last_seen field in the connector, and sets it to current timestamp",
+        "summary": "Check in a connector",
+        "description": "Update the `last_seen` field in the connector and set it to the current timestamp.",
         "operationId": "connector-check-in",
         "parameters": [
           {
@@ -4095,7 +4096,8 @@
         "tags": [
           "connector"
         ],
-        "summary": "Retrieves a connector",
+        "summary": "Get a connector",
+        "description": "Get the details about a connector.",
         "operationId": "connector-get",
         "parameters": [
           {
@@ -4128,7 +4130,7 @@
         "tags": [
           "connector"
         ],
-        "summary": "Creates or updates a connector",
+        "summary": "Create or update a connector",
         "operationId": "connector-put",
         "parameters": [
           {
@@ -4149,7 +4151,8 @@
         "tags": [
           "connector"
         ],
-        "summary": "Deletes a connector",
+        "summary": "Delete a connector",
+        "description": "Removes a connector and associated sync jobs.\nThis is a destructive action that is not recoverable.\nNOTE: This action doesn’t delete any API keys, ingest pipelines, or data indices associated with the connector.\nThese need to be removed manually.",
         "operationId": "connector-delete",
         "parameters": [
           {
@@ -4194,7 +4197,8 @@
         "tags": [
           "connector"
         ],
-        "summary": "Updates last sync stats in the connector document",
+        "summary": "Update the connector last sync stats",
+        "description": "Update the fields related to the last sync of a connector.\nThis action is used for analytics and monitoring.",
         "operationId": "connector-last-sync",
         "parameters": [
           {
@@ -4285,7 +4289,8 @@
         "tags": [
           "connector"
         ],
-        "summary": "Returns existing connectors",
+        "summary": "Get all connectors",
+        "description": "Get information about all connectors.",
         "operationId": "connector-list",
         "parameters": [
           {
@@ -4382,7 +4387,7 @@
         "tags": [
           "connector"
         ],
-        "summary": "Creates or updates a connector",
+        "summary": "Create or update a connector",
         "operationId": "connector-put-1",
         "requestBody": {
           "$ref": "#/components/requestBodies/connector.put"
@@ -4398,7 +4403,8 @@
         "tags": [
           "connector"
         ],
-        "summary": "Creates a connector",
+        "summary": "Create a connector",
+        "description": "Connectors are Elasticsearch integrations that bring content from third-party data sources, which can be deployed on Elastic Cloud or hosted on your own infrastructure.\nElastic managed connectors (Native connectors) are a managed service on Elastic Cloud.\nSelf-managed connectors (Connector clients) are self-managed on your infrastructure.",
         "operationId": "connector-post",
         "requestBody": {
           "content": {
@@ -4461,7 +4467,8 @@
         "tags": [
           "connector"
         ],
-        "summary": "Cancels a connector sync job",
+        "summary": "Cancel a connector sync job",
+        "description": "Cancel a connector sync job, which sets the status to cancelling and updates `cancellation_requested_at` to the current time.\nThe connector service is then responsible for setting the status of connector sync jobs to cancelled.",
         "operationId": "connector-sync-job-cancel",
         "parameters": [
           {
@@ -4504,7 +4511,7 @@
         "tags": [
           "connector"
         ],
-        "summary": "Retrieves a connector sync job",
+        "summary": "Get a connector sync job",
         "operationId": "connector-sync-job-get",
         "parameters": [
           {
@@ -4537,7 +4544,8 @@
         "tags": [
           "connector"
         ],
-        "summary": "Deletes a connector sync job",
+        "summary": "Delete a connector sync job",
+        "description": "Remove a connector sync job and its associated data.\nThis is a destructive action that is not recoverable.",
         "operationId": "connector-sync-job-delete",
         "parameters": [
           {
@@ -4572,7 +4580,8 @@
         "tags": [
           "connector"
         ],
-        "summary": "Lists connector sync jobs",
+        "summary": "Get all connector sync jobs",
+        "description": "Get information about all stored connector sync jobs listed by their creation date in ascending order.",
         "operationId": "connector-sync-job-list",
         "parameters": [
           {
@@ -4669,7 +4678,8 @@
         "tags": [
           "connector"
         ],
-        "summary": "Creates a connector sync job",
+        "summary": "Create a connector sync job",
+        "description": "Create a connector sync job document in the internal index and initialize its counters and timestamps with default values.",
         "operationId": "connector-sync-job-post",
         "requestBody": {
           "content": {
@@ -4723,7 +4733,8 @@
         "tags": [
           "connector"
         ],
-        "summary": "Activates the valid draft filtering for a connector",
+        "summary": "Activate the connector draft filter",
+        "description": "Activates the valid draft filtering for a connector.",
         "operationId": "connector-update-active-filtering",
         "parameters": [
           {
@@ -4766,7 +4777,8 @@
         "tags": [
           "connector"
         ],
-        "summary": "Updates the API key id in the connector document",
+        "summary": "Update the connector API key ID",
+        "description": "Update the `api_key_id` and `api_key_secret_id` fields of a connector.\nYou can specify the ID of the API key used for authorization and the ID of the connector secret where the API key is stored.\nThe connector secret ID is required only for Elastic managed (native) connectors.\nSelf-managed connectors (connector clients) do not use this field.",
         "operationId": "connector-update-api-key-id",
         "parameters": [
           {
@@ -4827,7 +4839,8 @@
         "tags": [
           "connector"
         ],
-        "summary": "Updates the configuration field in the connector document",
+        "summary": "Update the connector configuration",
+        "description": "Update the configuration field in the connector document.",
         "operationId": "connector-update-configuration",
         "parameters": [
           {
@@ -4891,7 +4904,8 @@
         "tags": [
           "connector"
         ],
-        "summary": "Updates the filtering field in the connector document",
+        "summary": "Update the connector error field",
+        "description": "Set the error field for the connector.\nIf the error provided in the request body is non-null, the connector’s status is updated to error.\nOtherwise, if the error is reset to null, the connector status is updated to connected.",
         "operationId": "connector-update-error",
         "parameters": [
           {
@@ -4959,7 +4973,8 @@
         "tags": [
           "connector"
         ],
-        "summary": "Updates the filtering field in the connector document",
+        "summary": "Update the connector filtering",
+        "description": "Update the draft filtering configuration of a connector and marks the draft validation state as edited.\nThe filtering draft is activated once validated by the running Elastic connector service.\nThe filtering property is used to configure sync rules (both basic and advanced) for a connector.",
         "operationId": "connector-update-filtering",
         "parameters": [
           {
@@ -5029,7 +5044,8 @@
         "tags": [
           "connector"
         ],
-        "summary": "Updates the draft filtering validation info for a connector",
+        "summary": "Update the connector draft filtering validation",
+        "description": "Update the draft filtering validation info for a connector.",
         "operationId": "connector-update-filtering-validation",
         "parameters": [
           {
@@ -5090,7 +5106,8 @@
         "tags": [
           "connector"
         ],
-        "summary": "Updates the index_name in the connector document",
+        "summary": "Update the connector index name",
+        "description": "Update the `index_name` field of a connector, specifying the index where the data ingested by the connector is stored.",
         "operationId": "connector-update-index-name",
         "parameters": [
           {
@@ -5158,7 +5175,7 @@
         "tags": [
           "connector"
         ],
-        "summary": "Updates the name and description fields in the connector document",
+        "summary": "Update the connector name and description",
         "operationId": "connector-update-name",
         "parameters": [
           {
@@ -5219,7 +5236,7 @@
         "tags": [
           "connector"
         ],
-        "summary": "Updates the is_native flag in the connector document",
+        "summary": "Update the connector is_native flag",
         "operationId": "connector-update-native",
         "parameters": [
           {
@@ -5280,7 +5297,8 @@
         "tags": [
           "connector"
         ],
-        "summary": "Updates the pipeline field in the connector document",
+        "summary": "Update the connector pipeline",
+        "description": "When you create a new connector, the configuration of an ingest pipeline is populated with default settings.",
         "operationId": "connector-update-pipeline",
         "parameters": [
           {
@@ -5341,7 +5359,7 @@
         "tags": [
           "connector"
         ],
-        "summary": "Updates the scheduling field in the connector document",
+        "summary": "Update the connector scheduling",
         "operationId": "connector-update-scheduling",
         "parameters": [
           {
@@ -5402,7 +5420,7 @@
         "tags": [
           "connector"
         ],
-        "summary": "Updates the service type of the connector",
+        "summary": "Update the connector service type",
         "operationId": "connector-update-service-type",
         "parameters": [
           {
@@ -5463,7 +5481,7 @@
         "tags": [
           "connector"
         ],
-        "summary": "Updates the status of the connector",
+        "summary": "Update the connector status",
         "operationId": "connector-update-status",
         "parameters": [
           {
@@ -32258,9 +32276,10 @@
     "/_ssl/certificates": {
       "get": {
         "tags": [
-          "ssl"
+          "security"
         ],
-        "summary": "Retrieves information about the X.509 certificates used to encrypt communications in the cluster",
+        "summary": "Get SSL certificates",
+        "description": "Get information about the X.509 certificates that are used to encrypt communications in the cluster.\nThe API returns a list that includes certificates from all TLS contexts including:\n\n- Settings for transport and HTTP interfaces\n- TLS settings that are used within authentication realms\n- TLS settings for remote monitoring exporters\n\nThe list includes certificates that are used for configuring trust, such as those configured in the `xpack.security.transport.ssl.truststore` and `xpack.security.transport.ssl.certificate_authorities` settings.\nIt also includes certificates that are used for configuring server identity, such as `xpack.security.http.ssl.keystore` and `xpack.security.http.ssl.certificate settings`.\n\nThe list does not include certificates that are sourced from the default SSL context of the Java Runtime Environment (JRE), even if those certificates are in use within Elasticsearch.\n\nNOTE: When a PKCS#11 token is configured as the truststore of the JRE, the API returns all the certificates that are included in the PKCS#11 token irrespective of whether these are used in the Elasticsearch TLS configuration.\n\nIf Elasticsearch is configured to use a keystore or truststore, the API output includes all certificates in that store, even though some of the certificates might not be in active use within the cluster.",
         "operationId": "ssl-certificates",
         "responses": {
           "200": {
