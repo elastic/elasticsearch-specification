@@ -22678,9 +22678,10 @@
     "/_mtermvectors": {
       "get": {
         "tags": [
-          "mtermvectors"
+          "document"
         ],
-        "summary": "Returns multiple termvectors in one request",
+        "summary": "Get multiple term vectors",
+        "description": "Get multiple term vectors with a single request.\nYou can specify existing documents by index and ID or provide artificial documents in the body of the request.\nYou can specify the index in the request body or request URI.\nThe response contains a `docs` array with all the fetched termvectors.\nEach element has the structure provided by the termvectors API.",
         "operationId": "mtermvectors",
         "parameters": [
           {
@@ -22731,9 +22732,10 @@
       },
       "post": {
         "tags": [
-          "mtermvectors"
+          "document"
         ],
-        "summary": "Returns multiple termvectors in one request",
+        "summary": "Get multiple term vectors",
+        "description": "Get multiple term vectors with a single request.\nYou can specify existing documents by index and ID or provide artificial documents in the body of the request.\nYou can specify the index in the request body or request URI.\nThe response contains a `docs` array with all the fetched termvectors.\nEach element has the structure provided by the termvectors API.",
         "operationId": "mtermvectors-1",
         "parameters": [
           {
@@ -22786,9 +22788,10 @@
     "/{index}/_mtermvectors": {
       "get": {
         "tags": [
-          "mtermvectors"
+          "document"
         ],
-        "summary": "Returns multiple termvectors in one request",
+        "summary": "Get multiple term vectors",
+        "description": "Get multiple term vectors with a single request.\nYou can specify existing documents by index and ID or provide artificial documents in the body of the request.\nYou can specify the index in the request body or request URI.\nThe response contains a `docs` array with all the fetched termvectors.\nEach element has the structure provided by the termvectors API.",
         "operationId": "mtermvectors-2",
         "parameters": [
           {
@@ -22842,9 +22845,10 @@
       },
       "post": {
         "tags": [
-          "mtermvectors"
+          "document"
         ],
-        "summary": "Returns multiple termvectors in one request",
+        "summary": "Get multiple term vectors",
+        "description": "Get multiple term vectors with a single request.\nYou can specify existing documents by index and ID or provide artificial documents in the body of the request.\nYou can specify the index in the request body or request URI.\nThe response contains a `docs` array with all the fetched termvectors.\nEach element has the structure provided by the termvectors API.",
         "operationId": "mtermvectors-3",
         "parameters": [
           {
