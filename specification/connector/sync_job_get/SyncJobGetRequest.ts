@@ -20,7 +20,7 @@ import { RequestBase } from '@_types/Base'
 import { Id } from '@_types/common'
 
 /**
- * Retrieves a connector sync job.
+ * Get a connector sync job.
  * @rest_spec_name connector.sync_job_get
  * @availability stack since=8.12.0 stability=beta
  * @availability serverless stability=beta visibility=public
