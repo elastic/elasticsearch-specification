@@ -20,6 +20,8 @@
 import { RequestBase } from '@_types/Base'
 import { Id, Metadata } from '@_types/common'
 import { Duration } from '@_types/Time'
+import { Access } from '@security/_types/Access'
+import { Dictionary } from '@spec_utils/Dictionary'
 
 /**
  * Update a cross-cluster API key.
@@ -37,6 +39,13 @@ export interface Request extends RequestBase {
     id: Id
   }
   body: {
+    /**
+     * The access to be granted to this API key.
+     * The access is composed of permissions for cross cluster search and cross cluster replication.
+     * At least one of them must be specified.
+     * When specified, the new access assignment fully replaces the previously assigned access.
+     */
+    access: Access
     /**
      * Expiration time for the API key.
      * By default, API keys never expire. This property can be omitted to leave the value unchanged.

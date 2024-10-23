@@ -18,8 +18,10 @@
  */
 
 import { RequestBase } from '@_types/Base'
+import { Dictionary } from '@spec_utils/Dictionary'
 import { Metadata, Name } from '@_types/common'
 import { Duration } from '@_types/Time'
+import { Access } from '@security/_types/Access'
 
 /**
  * Create a cross-cluster API key.
@@ -30,6 +32,8 @@ import { Duration } from '@_types/Time'
  * IMPORTANT: To authenticate this request you must use a credential that is not an API key. Even if you use an API key that has the required privilege, the API returns an error.
  *
  * Cross-cluster API keys are created by the Elasticsearch API key service, which is automatically enabled.
+ * 
+ * NOTE: Unlike REST API keys, a cross-cluster API key does not capture permissions of the authenticated user. The API key’s effective permission is exactly as specified with the `access` property.
  *
  * A successful request returns a JSON structure that contains the API key, its unique ID, and its name. If applicable, it also returns expiration information for the API key in milliseconds.
  *
@@ -44,6 +48,15 @@ import { Duration } from '@_types/Time'
  */
 export interface Request extends RequestBase {
   body: {
+    /**
+     * The access to be granted to this API key.
+     * The access is composed of permissions for cross-cluster search and cross-cluster replication.
+     * At least one of them must be specified.
+     *
+     * NOTE: No explicit privileges should be specified for either search or replication access.
+     * The creation process automatically converts the access specification to a role descriptor which has relevant privileges assigned accordingly.
+     */
+    access: Access
     /**
      * Expiration time for the API key.
      * By default, API keys never expire.

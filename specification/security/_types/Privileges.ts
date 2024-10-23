@@ -376,3 +376,10 @@ export class ApplicationGlobalUserPrivileges {
 export class ManageUserPrivileges {
   applications: string[]
 }
+
+export class ReplicationAccess {
+  /**
+   * A list of indices (or index name patterns) to which the permissions in this entry apply.
+   */
+   names: IndexName[]
+}
