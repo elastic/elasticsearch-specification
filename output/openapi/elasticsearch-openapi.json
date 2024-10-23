@@ -64673,9 +64673,6 @@
         "type": "object",
         "properties": {
           "aggregations": {
-            "externalDocs": {
-              "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/search-aggregations.html"
-            },
             "type": "object",
             "additionalProperties": {
               "$ref": "#/components/schemas/_types.aggregations:AggregationContainer"
