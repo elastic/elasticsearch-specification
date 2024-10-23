@@ -21,7 +21,9 @@ import { Indices, Names } from '@_types/common'
 import { integer } from '@_types/Numeric'
 
 /**
- * Returns existing connectors.
+ * Get all connectors.
+ *
+ * Get information about all connectors.
  * @rest_spec_name connector.list
  * @availability stack since=8.12.0 stability=beta
  * @availability serverless stability=beta visibility=public

@@ -21,7 +21,9 @@ import { Id } from '@_types/common'
 import { SyncJobTriggerMethod, SyncJobType } from '../_types/SyncJob'
 
 /**
- * Creates a connector sync job.
+ * Create a connector sync job.
+ *
+ * Create a connector sync job document in the internal index and initialize its counters and timestamps with default values.
  * @rest_spec_name connector.sync_job_post
  * @availability stack since=8.12.0 stability=beta
  * @availability serverless stability=beta visibility=public
