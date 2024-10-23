@@ -20,7 +20,9 @@
 import { RequestBase } from '@_types/Base'
 
 /**
- * Enables a Kibana instance to configure itself for communication with a secured Elasticsearch cluster.
+ * Enroll Kibana.
+ *
+ * Enable a Kibana instance to configure itself for communication with a secured Elasticsearch cluster.
  * @rest_spec_name security.enroll_kibana
  * @availability stack since=8.0.0 stability=stable
  */

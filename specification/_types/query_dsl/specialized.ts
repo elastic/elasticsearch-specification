@@ -76,6 +76,7 @@ export class DateDistanceFeatureQuery extends DistanceFeatureQueryBase<
 /**
  * @codegen_names untyped, geo, date
  * @variants untagged untyped=_types.query_dsl.UntypedDistanceFeatureQuery
+ * @ext_doc_id query-dsl-distance-feature-query
  */
 // Note: deserialization depends on value types
 export type DistanceFeatureQuery =
@@ -83,11 +84,14 @@ export type DistanceFeatureQuery =
   | GeoDistanceFeatureQuery
   | DateDistanceFeatureQuery
 
+/**
+ * @ext_doc_id query-dsl-mlt-query
+ */
 export class MoreLikeThisQuery extends QueryBase {
   /**
    * The analyzer that is used to analyze the free form text.
    * Defaults to the analyzer associated with the first field in fields.
-   * @doc_id analysis
+   * @ext_doc_id analysis
    */
   analyzer?: string
   /**
@@ -198,6 +202,9 @@ export class LikeDocument {
  */
 export type Like = string | LikeDocument
 
+/**
+ * @ext_doc_id query-dsl-percolate-query
+ */
 export class PercolateQuery extends QueryBase {
   /**
    * The source of the document being percolated.
@@ -239,6 +246,7 @@ export class PercolateQuery extends QueryBase {
 
 /**
  * @variants container
+ * @ext_doc_id query-dsl-pinned-query
  */
 export class PinnedQuery extends QueryBase {
   /**
@@ -298,6 +306,9 @@ export class RankFeatureFunctionSigmoid extends RankFeatureFunction {
   exponent: float
 }
 
+/**
+ * @ext_doc_id query-dsl-rank-feature-query
+ */
 export class RankFeatureQuery extends QueryBase {
   /**
    * `rank_feature` or `rank_features` field used to boost relevance scores.
@@ -323,6 +334,9 @@ export class RankFeatureQuery extends QueryBase {
   sigmoid?: RankFeatureFunctionSigmoid
 }
 
+/**
+ * @ext_doc_id query-dsl-script-query
+ */
 export class ScriptQuery extends QueryBase {
   /**
    * Contains a script to run as a query.
@@ -331,6 +345,9 @@ export class ScriptQuery extends QueryBase {
   script: Script
 }
 
+/**
+ * @ext_doc_id query-dsl-script-score-query
+ */
 export class ScriptScoreQuery extends QueryBase {
   /**
    * Documents with a score lower than this floating point number are excluded from the search results.
@@ -349,6 +366,7 @@ export class ScriptScoreQuery extends QueryBase {
 
 /**
  * @behavior_meta AdditionalProperty key=field value=shape
+ * @ext_doc_id query-dsl-shape-query
  */
 // Shape query doesn't follow the common pattern of having a single field-name property
 // holding also the query base fields (boost and _name)
@@ -377,6 +395,9 @@ export class ShapeFieldQuery {
   shape?: GeoShape
 }
 
+/**
+ * @ext_doc_id query-dsl-rule-query
+ */
 export class RuleQuery extends QueryBase {
   organic: QueryContainer
   ruleset_ids: Id[]

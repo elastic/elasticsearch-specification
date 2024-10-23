@@ -7204,18 +7204,11 @@
           "content": {
             "application/json": {
               "schema": {
-                "type": "object",
-                "properties": {
-                  "data_retention": {
-                    "$ref": "#/components/schemas/_types:Duration"
-                  },
-                  "downsampling": {
-                    "$ref": "#/components/schemas/indices._types:DataStreamLifecycleDownsampling"
-                  }
-                }
+                "$ref": "#/components/schemas/indices._types:DataStreamLifecycle"
               }
             }
-          }
+          },
+          "required": true
         },
         "responses": {
           "200": {
@@ -15891,7 +15884,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/search_application._types:SearchApplication"
+                "$ref": "#/components/schemas/search_application._types:SearchApplicationParameters"
               }
             }
           },
@@ -16109,7 +16102,7 @@
                     "results": {
                       "type": "array",
                       "items": {
-                        "$ref": "#/components/schemas/search_application.list:SearchApplicationListItem"
+                        "$ref": "#/components/schemas/search_application._types:SearchApplication"
                       }
                     }
                   },
@@ -16733,7 +16726,7 @@
           "security"
         ],
         "summary": "Create an API key",
-        "description": "Creates an API key for access without requiring basic authentication.\nA successful request returns a JSON structure that contains the API key, its unique id, and its name.\nIf applicable, it also returns expiration information for the API key in milliseconds.\nNOTE: By default, API keys never expire. You can specify expiration information when you create the API keys.",
+        "description": "Create an API key for access without requiring basic authentication.\nA successful request returns a JSON structure that contains the API key, its unique id, and its name.\nIf applicable, it also returns expiration information for the API key in milliseconds.\nNOTE: By default, API keys never expire. You can specify expiration information when you create the API keys.",
         "operationId": "security-create-api-key",
         "parameters": [
           {
@@ -16755,7 +16748,7 @@
           "security"
         ],
         "summary": "Create an API key",
-        "description": "Creates an API key for access without requiring basic authentication.\nA successful request returns a JSON structure that contains the API key, its unique id, and its name.\nIf applicable, it also returns expiration information for the API key in milliseconds.\nNOTE: By default, API keys never expire. You can specify expiration information when you create the API keys.",
+        "description": "Create an API key for access without requiring basic authentication.\nA successful request returns a JSON structure that contains the API key, its unique id, and its name.\nIf applicable, it also returns expiration information for the API key in milliseconds.\nNOTE: By default, API keys never expire. You can specify expiration information when you create the API keys.",
         "operationId": "security-create-api-key-1",
         "parameters": [
           {
@@ -16777,7 +16770,7 @@
           "security"
         ],
         "summary": "Invalidate API keys",
-        "description": "Invalidates one or more API keys.\nThe `manage_api_key` privilege allows deleting any API keys.\nThe `manage_own_api_key` only allows deleting API keys that are owned by the user.\nIn addition, with the `manage_own_api_key` privilege, an invalidation request must be issued in one of the three formats:\n- Set the parameter `owner=true`.\n- Or, set both `username` and `realm_name` to match the user’s identity.\n- Or, if the request is issued by an API key, i.e. an API key invalidates itself, specify its ID in the `ids` field.",
+        "description": "This API invalidates API keys created by the create API key or grant API key APIs.\nInvalidated API keys fail authentication, but they can still be viewed using the get API key information and query API key information APIs, for at least the configured retention period, until they are automatically deleted.\nThe `manage_api_key` privilege allows deleting any API keys.\nThe `manage_own_api_key` only allows deleting API keys that are owned by the user.\nIn addition, with the `manage_own_api_key` privilege, an invalidation request must be issued in one of the three formats:\n- Set the parameter `owner=true`.\n- Or, set both `username` and `realm_name` to match the user’s identity.\n- Or, if the request is issued by an API key, that is to say an API key invalidates itself, specify its ID in the `ids` field.",
         "operationId": "security-invalidate-api-key",
         "requestBody": {
           "content": {
@@ -16863,8 +16856,8 @@
         "tags": [
           "security"
         ],
-        "summary": "Get roles API",
-        "description": "Retrieves roles in the native realm.",
+        "summary": "Get roles",
+        "description": "Get roles in the native realm.",
         "operationId": "security-get-role",
         "parameters": [
           {
@@ -16881,8 +16874,11 @@
         "tags": [
           "security"
         ],
-        "summary": "Create or update roles API",
-        "description": "Create or update roles in the native realm.",
+        "summary": "Create or update roles",
+        "description": "The role management APIs are generally the preferred way to manage roles in the native realm, rather than using file-based role management.\nThe create or update roles API cannot update roles that are defined in roles files.\nFile-based role management is not available in Elastic Serverless.",
+        "externalDocs": {
+          "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/defining-roles.html"
+        },
         "operationId": "security-put-role",
         "parameters": [
           {
@@ -16905,8 +16901,11 @@
         "tags": [
           "security"
         ],
-        "summary": "Create or update roles API",
-        "description": "Create or update roles in the native realm.",
+        "summary": "Create or update roles",
+        "description": "The role management APIs are generally the preferred way to manage roles in the native realm, rather than using file-based role management.\nThe create or update roles API cannot update roles that are defined in roles files.\nFile-based role management is not available in Elastic Serverless.",
+        "externalDocs": {
+          "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/defining-roles.html"
+        },
         "operationId": "security-put-role-1",
         "parameters": [
           {
@@ -16929,8 +16928,8 @@
         "tags": [
           "security"
         ],
-        "summary": "Delete roles API",
-        "description": "Removes roles in the native realm.",
+        "summary": "Delete roles",
+        "description": "Delete roles in the native realm.",
         "operationId": "security-delete-role",
         "parameters": [
           {
@@ -16982,8 +16981,11 @@
         "tags": [
           "security"
         ],
-        "summary": "Get builtin privileges API",
-        "description": "Retrieves the list of cluster privileges and index privileges that are available in this version of Elasticsearch.",
+        "summary": "Get builtin privileges",
+        "description": "Get the list of cluster privileges and index privileges that are available in this version of Elasticsearch.",
+        "externalDocs": {
+          "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/security-privileges.html"
+        },
         "operationId": "security-get-builtin-privileges",
         "responses": {
           "200": {
@@ -17023,8 +17025,8 @@
         "tags": [
           "security"
         ],
-        "summary": "Get roles API",
-        "description": "Retrieves roles in the native realm.",
+        "summary": "Get roles",
+        "description": "Get roles in the native realm.",
         "operationId": "security-get-role-1",
         "responses": {
           "200": {
@@ -17039,7 +17041,10 @@
           "security"
         ],
         "summary": "Check user privileges",
-        "description": "Determines whether the specified user has a specified list of privileges.",
+        "description": "Determine whether the specified user has a specified list of privileges.",
+        "externalDocs": {
+          "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/security-privileges.html"
+        },
         "operationId": "security-has-privileges",
         "requestBody": {
           "$ref": "#/components/requestBodies/security.has_privileges"
@@ -17056,7 +17061,10 @@
           "security"
         ],
         "summary": "Check user privileges",
-        "description": "Determines whether the specified user has a specified list of privileges.",
+        "description": "Determine whether the specified user has a specified list of privileges.",
+        "externalDocs": {
+          "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/security-privileges.html"
+        },
         "operationId": "security-has-privileges-1",
         "requestBody": {
           "$ref": "#/components/requestBodies/security.has_privileges"
@@ -17075,7 +17083,10 @@
           "security"
         ],
         "summary": "Check user privileges",
-        "description": "Determines whether the specified user has a specified list of privileges.",
+        "description": "Determine whether the specified user has a specified list of privileges.",
+        "externalDocs": {
+          "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/security-privileges.html"
+        },
         "operationId": "security-has-privileges-2",
         "parameters": [
           {
@@ -17097,7 +17108,10 @@
           "security"
         ],
         "summary": "Check user privileges",
-        "description": "Determines whether the specified user has a specified list of privileges.",
+        "description": "Determine whether the specified user has a specified list of privileges.",
+        "externalDocs": {
+          "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/security-privileges.html"
+        },
         "operationId": "security-has-privileges-3",
         "parameters": [
           {
@@ -17120,8 +17134,8 @@
         "tags": [
           "security"
         ],
-        "summary": "Query API keys",
-        "description": "Retrieves a paginated list of API keys and their information. You can optionally filter the results with a query.",
+        "summary": "Find API keys with a query",
+        "description": "Get a paginated list of API keys and their information. You can optionally filter the results with a query.",
         "operationId": "security-query-api-keys",
         "parameters": [
           {
@@ -17148,8 +17162,8 @@
         "tags": [
           "security"
         ],
-        "summary": "Query API keys",
-        "description": "Retrieves a paginated list of API keys and their information. You can optionally filter the results with a query.",
+        "summary": "Find API keys with a query",
+        "description": "Get a paginated list of API keys and their information. You can optionally filter the results with a query.",
         "operationId": "security-query-api-keys-1",
         "parameters": [
           {
@@ -19882,6 +19896,9 @@
         ]
       },
       "_types.aggregations:Aggregate": {
+        "externalDocs": {
+          "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/search-aggregations.html"
+        },
         "oneOf": [
           {
             "$ref": "#/components/schemas/_types.aggregations:CardinalityAggregate"
@@ -25281,6 +25298,9 @@
             "$ref": "#/components/schemas/_types.query_dsl:FunctionScoreQuery"
           },
           "fuzzy": {
+            "externalDocs": {
+              "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-fuzzy-query.html"
+            },
             "description": "Returns documents that contain terms similar to the search term, as measured by a Levenshtein edit distance.",
             "type": "object",
             "additionalProperties": {
@@ -25311,6 +25331,9 @@
             "$ref": "#/components/schemas/_types.query_dsl:IdsQuery"
           },
           "intervals": {
+            "externalDocs": {
+              "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-intervals-query.html"
+            },
             "description": "Returns documents based on the order and proximity of matching terms.",
             "type": "object",
             "additionalProperties": {
@@ -25323,6 +25346,9 @@
             "$ref": "#/components/schemas/_types:KnnQuery"
           },
           "match": {
+            "externalDocs": {
+              "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-match-query.html"
+            },
             "description": "Returns documents that match a provided text, number, date or boolean value.\nThe provided text is analyzed before matching.",
             "type": "object",
             "additionalProperties": {
@@ -25335,6 +25361,9 @@
             "$ref": "#/components/schemas/_types.query_dsl:MatchAllQuery"
           },
           "match_bool_prefix": {
+            "externalDocs": {
+              "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-match-bool-prefix-query.html"
+            },
             "description": "Analyzes its input and constructs a `bool` query from the terms.\nEach term except the last is used in a `term` query.\nThe last term is used in a prefix query.",
             "type": "object",
             "additionalProperties": {
@@ -25347,6 +25376,9 @@
             "$ref": "#/components/schemas/_types.query_dsl:MatchNoneQuery"
           },
           "match_phrase": {
+            "externalDocs": {
+              "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-match-query-phrase.html"
+            },
             "description": "Analyzes the text and creates a phrase query out of the analyzed text.",
             "type": "object",
             "additionalProperties": {
@@ -25356,6 +25388,9 @@
             "maxProperties": 1
           },
           "match_phrase_prefix": {
+            "externalDocs": {
+              "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-match-query-phrase-prefix.html"
+            },
             "description": "Returns documents that contain the words of a provided text, in the same order as provided.\nThe last term of the provided text is treated as a prefix, matching any words that begin with that term.",
             "type": "object",
             "additionalProperties": {
@@ -25383,6 +25418,9 @@
             "$ref": "#/components/schemas/_types.query_dsl:PinnedQuery"
           },
           "prefix": {
+            "externalDocs": {
+              "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-prefix-query.html"
+            },
             "description": "Returns documents that contain a specific prefix in a provided field.",
             "type": "object",
             "additionalProperties": {
@@ -25395,6 +25433,9 @@
             "$ref": "#/components/schemas/_types.query_dsl:QueryStringQuery"
           },
           "range": {
+            "externalDocs": {
+              "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-range-query.html"
+            },
             "description": "Returns documents that contain terms within a provided range.",
             "type": "object",
             "additionalProperties": {
@@ -25407,6 +25448,9 @@
             "$ref": "#/components/schemas/_types.query_dsl:RankFeatureQuery"
           },
           "regexp": {
+            "externalDocs": {
+              "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-regexp-query.html"
+            },
             "description": "Returns documents that contain terms matching a regular expression.",
             "type": "object",
             "additionalProperties": {
@@ -25455,6 +25499,9 @@
             "$ref": "#/components/schemas/_types.query_dsl:SpanOrQuery"
           },
           "span_term": {
+            "externalDocs": {
+              "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-span-term-query.html"
+            },
             "description": "Matches spans containing a term.",
             "type": "object",
             "additionalProperties": {
@@ -25470,6 +25517,9 @@
             "$ref": "#/components/schemas/_types.query_dsl:SparseVectorQuery"
           },
           "term": {
+            "externalDocs": {
+              "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-term-query.html"
+            },
             "description": "Returns documents that contain an exact term in a provided field.\nTo return a document, the query term must exactly match the queried field's value, including whitespace and capitalization.",
             "type": "object",
             "additionalProperties": {
@@ -25482,6 +25532,9 @@
             "$ref": "#/components/schemas/_types.query_dsl:TermsQuery"
           },
           "terms_set": {
+            "externalDocs": {
+              "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-terms-set-query.html"
+            },
             "description": "Returns documents that contain a minimum number of exact terms in a provided field.\nTo return a document, a required number of terms must exactly match the field values, including whitespace and capitalization.",
             "type": "object",
             "additionalProperties": {
@@ -25492,6 +25545,9 @@
           },
           "text_expansion": {
             "deprecated": true,
+            "externalDocs": {
+              "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-text-expansion-query.html"
+            },
             "description": "Uses a natural language processing model to convert the query text into a list of token-weight pairs which are then used in a query against a sparse vector or rank features field.",
             "type": "object",
             "additionalProperties": {
@@ -25502,6 +25558,9 @@
           },
           "weighted_tokens": {
             "deprecated": true,
+            "externalDocs": {
+              "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-weighted-tokens-query.html"
+            },
             "description": "Supports returning text_expansion query results by sending in precomputed tokens with the query.",
             "type": "object",
             "additionalProperties": {
@@ -25511,6 +25570,9 @@
             "maxProperties": 1
           },
           "wildcard": {
+            "externalDocs": {
+              "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-wildcard-query.html"
+            },
             "description": "Returns documents that contain terms matching a wildcard pattern.",
             "type": "object",
             "additionalProperties": {
@@ -25782,6 +25844,9 @@
         ]
       },
       "_types.query_dsl:DistanceFeatureQuery": {
+        "externalDocs": {
+          "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-distance-feature-query.html"
+        },
         "oneOf": [
           {
             "$ref": "#/components/schemas/_types.query_dsl:UntypedDistanceFeatureQuery"
@@ -27004,6 +27069,9 @@
             "$ref": "#/components/schemas/_types.query_dsl:QueryBase"
           },
           {
+            "externalDocs": {
+              "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-intervals-query.html"
+            },
             "type": "object",
             "properties": {
               "all_of": {
@@ -27531,6 +27599,9 @@
             "type": "object",
             "properties": {
               "analyzer": {
+                "externalDocs": {
+                  "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/analysis.html"
+                },
                 "description": "The analyzer that is used to analyze the free form text.\nDefaults to the analyzer associated with the first field in fields.",
                 "type": "string"
               },
@@ -27894,6 +27965,9 @@
             "$ref": "#/components/schemas/_types.query_dsl:QueryBase"
           },
           {
+            "externalDocs": {
+              "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-pinned-query.html"
+            },
             "allOf": [
               {
                 "type": "object",
@@ -28085,6 +28159,9 @@
         "type": "string"
       },
       "_types.query_dsl:RangeQuery": {
+        "externalDocs": {
+          "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-range-query.html"
+        },
         "oneOf": [
           {
             "$ref": "#/components/schemas/_types.query_dsl:UntypedRangeQuery"
@@ -29005,6 +29082,9 @@
             "$ref": "#/components/schemas/_types.query_dsl:QueryBase"
           },
           {
+            "externalDocs": {
+              "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-sparse-vector-query.html"
+            },
             "allOf": [
               {
                 "type": "object",
@@ -36831,6 +36911,9 @@
         ]
       },
       "_types.analysis:CharFilter": {
+        "externalDocs": {
+          "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/analysis-charfilters.html"
+        },
         "oneOf": [
           {
             "type": "string"
@@ -37015,6 +37098,9 @@
         ]
       },
       "_types.analysis:TokenFilter": {
+        "externalDocs": {
+          "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/analysis-tokenfilters.html"
+        },
         "oneOf": [
           {
             "type": "string"
@@ -38871,6 +38957,9 @@
         ]
       },
       "_types.analysis:Tokenizer": {
+        "externalDocs": {
+          "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/analysis-tokenizers.html"
+        },
         "oneOf": [
           {
             "type": "string"
@@ -42352,6 +42441,56 @@
         }
       },
       "indices._types:DataStreamLifecycleWithRollover": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/indices._types:DataStreamLifecycle"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "rollover": {
+                "$ref": "#/components/schemas/indices._types:DataStreamLifecycleRolloverConditions"
+              }
+            }
+          }
+        ]
+      },
+      "indices._types:DataStreamLifecycleRolloverConditions": {
+        "type": "object",
+        "properties": {
+          "min_age": {
+            "$ref": "#/components/schemas/_types:Duration"
+          },
+          "max_age": {
+            "type": "string"
+          },
+          "min_docs": {
+            "type": "number"
+          },
+          "max_docs": {
+            "type": "number"
+          },
+          "min_size": {
+            "$ref": "#/components/schemas/_types:ByteSize"
+          },
+          "max_size": {
+            "$ref": "#/components/schemas/_types:ByteSize"
+          },
+          "min_primary_shard_size": {
+            "$ref": "#/components/schemas/_types:ByteSize"
+          },
+          "max_primary_shard_size": {
+            "$ref": "#/components/schemas/_types:ByteSize"
+          },
+          "min_primary_shard_docs": {
+            "type": "number"
+          },
+          "max_primary_shard_docs": {
+            "type": "number"
+          }
+        }
+      },
+      "indices._types:DataStreamLifecycle": {
         "type": "object",
         "properties": {
           "data_retention": {
@@ -42360,8 +42499,9 @@
           "downsampling": {
             "$ref": "#/components/schemas/indices._types:DataStreamLifecycleDownsampling"
           },
-          "rollover": {
-            "$ref": "#/components/schemas/indices._types:DataStreamLifecycleRolloverConditions"
+          "enabled": {
+            "description": "If defined, it turns data stream lifecycle on/off (`true`/`false`) for this data stream. A data stream lifecycle\nthat's disabled (enabled: `false`) will have no effect on the data stream.",
+            "type": "boolean"
           }
         }
       },
@@ -42405,41 +42545,6 @@
         "required": [
           "fixed_interval"
         ]
-      },
-      "indices._types:DataStreamLifecycleRolloverConditions": {
-        "type": "object",
-        "properties": {
-          "min_age": {
-            "$ref": "#/components/schemas/_types:Duration"
-          },
-          "max_age": {
-            "type": "string"
-          },
-          "min_docs": {
-            "type": "number"
-          },
-          "max_docs": {
-            "type": "number"
-          },
-          "min_size": {
-            "$ref": "#/components/schemas/_types:ByteSize"
-          },
-          "max_size": {
-            "$ref": "#/components/schemas/_types:ByteSize"
-          },
-          "min_primary_shard_size": {
-            "$ref": "#/components/schemas/_types:ByteSize"
-          },
-          "max_primary_shard_size": {
-            "$ref": "#/components/schemas/_types:ByteSize"
-          },
-          "min_primary_shard_docs": {
-            "type": "number"
-          },
-          "max_primary_shard_docs": {
-            "type": "number"
-          }
-        }
       },
       "_types:ClusterInfoTargets": {
         "oneOf": [
@@ -42783,17 +42888,6 @@
       },
       "_types:DataStreamName": {
         "type": "string"
-      },
-      "indices._types:DataStreamLifecycle": {
-        "type": "object",
-        "properties": {
-          "data_retention": {
-            "$ref": "#/components/schemas/_types:Duration"
-          },
-          "downsampling": {
-            "$ref": "#/components/schemas/indices._types:DataStreamLifecycleDownsampling"
-          }
-        }
       },
       "_types:Result": {
         "type": "string",
@@ -44673,7 +44767,7 @@
             "$ref": "#/components/schemas/_types:DataStreamName"
           },
           "lifecycle": {
-            "$ref": "#/components/schemas/indices._types:DataStreamLifecycle"
+            "$ref": "#/components/schemas/indices._types:DataStreamLifecycleWithRollover"
           }
         },
         "required": [
@@ -53076,20 +53170,36 @@
         ]
       },
       "search_application._types:SearchApplication": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/search_application._types:SearchApplicationParameters"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "name": {
+                "$ref": "#/components/schemas/_types:Name"
+              },
+              "updated_at_millis": {
+                "$ref": "#/components/schemas/_types:EpochTimeUnitMillis"
+              }
+            },
+            "required": [
+              "name",
+              "updated_at_millis"
+            ]
+          }
+        ]
+      },
+      "search_application._types:SearchApplicationParameters": {
         "type": "object",
         "properties": {
-          "name": {
-            "$ref": "#/components/schemas/_types:Name"
-          },
           "indices": {
             "description": "Indices that are part of the Search Application.",
             "type": "array",
             "items": {
               "$ref": "#/components/schemas/_types:IndexName"
             }
-          },
-          "updated_at_millis": {
-            "$ref": "#/components/schemas/_types:EpochTimeUnitMillis"
           },
           "analytics_collection_name": {
             "$ref": "#/components/schemas/_types:Name"
@@ -53099,9 +53209,7 @@
           }
         },
         "required": [
-          "name",
-          "indices",
-          "updated_at_millis"
+          "indices"
         ]
       },
       "search_application._types:SearchApplicationTemplate": {
@@ -53135,32 +53243,6 @@
         },
         "required": [
           "name"
-        ]
-      },
-      "search_application.list:SearchApplicationListItem": {
-        "type": "object",
-        "properties": {
-          "name": {
-            "$ref": "#/components/schemas/_types:Name"
-          },
-          "indices": {
-            "description": "Indices that are part of the Search Application",
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/_types:IndexName"
-            }
-          },
-          "updated_at_millis": {
-            "$ref": "#/components/schemas/_types:EpochTimeUnitMillis"
-          },
-          "analytics_collection_name": {
-            "$ref": "#/components/schemas/_types:Name"
-          }
-        },
-        "required": [
-          "name",
-          "indices",
-          "updated_at_millis"
         ]
       },
       "search_application.put_behavioral_analytics:AnalyticsAcknowledgeResponseBase": {

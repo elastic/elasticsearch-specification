@@ -47,6 +47,9 @@ export class Datafeed {
   indexes?: string[]
   job_id: Id
   max_empty_searches?: integer
+  /**
+   * @ext_doc_id query-dsl
+   */
   query: QueryContainer
   query_delay?: Duration
   script_fields?: Dictionary<string, ScriptField>
