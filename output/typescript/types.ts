@@ -17888,6 +17888,22 @@ export interface SecurityCreateApiKeyResponse {
   encoded: string
 }
 
+export interface SecurityCreateCrossClusterApiKeyRequest extends RequestBase {
+  body?: {
+    expiration?: Duration
+    metadata?: Metadata
+    name?: Name
+  }
+}
+
+export interface SecurityCreateCrossClusterApiKeyResponse {
+  api_key: string
+  expiration?: long
+  id: Id
+  name: Name
+  encoded: string
+}
+
 export interface SecurityCreateServiceTokenRequest extends RequestBase {
   namespace: Namespace
   service: Service

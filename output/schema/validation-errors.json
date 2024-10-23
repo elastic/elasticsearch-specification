@@ -1079,12 +1079,6 @@
       ],
       "response": []
     },
-    "security.create_cross_cluster_api_key": {
-      "request": [
-        "Missing request & response"
-      ],
-      "response": []
-    },
     "security.get_settings": {
       "request": [
         "Missing request & response"
