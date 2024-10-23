@@ -4388,7 +4388,7 @@
           "connector"
         ],
         "summary": "Create a connector",
-        "description": "Connectors are Elasticsearch integrations that bring content from third-party data sources, which can be deployed on Elastic Cloud or hosted on your own infrastructure.\nNative connectors are a managed service on Elastic Cloud.\nConnector clients are self-managed on your infrastructure.",
+        "description": "Connectors are Elasticsearch integrations that bring content from third-party data sources, which can be deployed on Elastic Cloud or hosted on your own infrastructure.\nElastic managed connectors (Native connectors) are a managed service on Elastic Cloud.\nSelf-managed connectors (Connector clients) are self-managed on your infrastructure.",
         "operationId": "connector-post",
         "requestBody": {
           "content": {
@@ -4762,7 +4762,7 @@
           "connector"
         ],
         "summary": "Update the connector API key ID",
-        "description": "Update the `api_key_id` and `api_key_secret_id` fields of a connector.\nYou can specify the ID of the API key used for authorization and the ID of the connector secret where the API key is stored.\nThe connector secret ID is required only for native connectors.\nConnector clients do not use this field.",
+        "description": "Update the `api_key_id` and `api_key_secret_id` fields of a connector.\nYou can specify the ID of the API key used for authorization and the ID of the connector secret where the API key is stored.\nThe connector secret ID is required only for Elastic managed (native) connectors.\nSelf-managed connectors (connector clients) do not use this field.",
         "operationId": "connector-update-api-key-id",
         "parameters": [
           {
