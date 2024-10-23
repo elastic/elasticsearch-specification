@@ -6950,9 +6950,10 @@
     "/_delete_by_query/{task_id}/_rethrottle": {
       "post": {
         "tags": [
-          "delete_by_query_rethrottle"
+          "document"
         ],
-        "summary": "Changes the number of requests per second for a particular Delete By Query operation",
+        "summary": "Throttle a delete by query operation",
+        "description": "Change the number of requests per second for a particular delete by query operation.\nRethrottling that speeds up the query takes effect immediately but rethrotting that slows down the query takes effect after completing the current batch to prevent scroll timeouts.",
         "operationId": "delete-by-query-rethrottle",
         "parameters": [
           {
@@ -24508,7 +24509,8 @@
         "tags": [
           "document"
         ],
-        "summary": "Copies documents from a source to a destination",
+        "summary": "Throttle a reindex operation",
+        "description": "Change the number of requests per second for a particular reindex operation.",
         "operationId": "reindex-rethrottle",
         "parameters": [
           {
@@ -34864,9 +34866,10 @@
     "/_update_by_query/{task_id}/_rethrottle": {
       "post": {
         "tags": [
-          "update_by_query_rethrottle"
+          "document"
         ],
-        "summary": "Changes the number of requests per second for a particular Update By Query operation",
+        "summary": "Throttle an update by query operation",
+        "description": "Change the number of requests per second for a particular update by query operation.\nRethrottling that speeds up the query takes effect immediately but rethrotting that slows down the query takes effect after completing the current batch to prevent scroll timeouts.",
         "operationId": "update-by-query-rethrottle",
         "parameters": [
           {
