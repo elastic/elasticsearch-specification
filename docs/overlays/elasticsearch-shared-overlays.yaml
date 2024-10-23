@@ -181,8 +181,6 @@ actions:
           x-displayName: Script - Get languages
         - name: search
           x-displayName: Search
-        - name: msearch
-          x-displayName: Search - Multi search
         - name: scroll
           x-displayName: Search - Scroll
         - name: terms_enum
