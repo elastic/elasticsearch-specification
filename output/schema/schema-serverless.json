@@ -987,7 +987,7 @@
           "stability": "experimental"
         }
       },
-      "description": "Updates the last_seen field in the connector, and sets it to current timestamp",
+      "description": "Check in a connector.\n\nUpdate the `last_seen` field in the connector and set it to the current timestamp.",
       "docId": "connector-checkin",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/check-in-connector-api.html",
       "name": "connector.check_in",
@@ -1023,7 +1023,7 @@
           "stability": "beta"
         }
       },
-      "description": "Deletes a connector.",
+      "description": "Delete a connector.\n\nRemoves a connector and associated sync jobs.\nThis is a destructive action that is not recoverable.\nNOTE: This action doesn’t delete any API keys, ingest pipelines, or data indices associated with the connector.\nThese need to be removed manually.",
       "docId": "connector-delete",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/delete-connector-api.html",
       "name": "connector.delete",
@@ -1059,7 +1059,7 @@
           "stability": "beta"
         }
       },
-      "description": "Retrieves a connector.",
+      "description": "Get a connector.\n\nGet the details about a connector.",
       "docId": "connector-get",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/get-connector-api.html",
       "name": "connector.get",
@@ -1095,7 +1095,7 @@
           "stability": "beta"
         }
       },
-      "description": "Returns existing connectors.",
+      "description": "Get all connectors.\n\nGet information about all connectors.",
       "docId": "connector-list",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/list-connector-api.html",
       "name": "connector.list",
@@ -1131,7 +1131,7 @@
           "stability": "beta"
         }
       },
-      "description": "Creates a connector.",
+      "description": "Create a connector.\n\nConnectors are Elasticsearch integrations that bring content from third-party data sources, which can be deployed on Elastic Cloud or hosted on your own infrastructure.\nElastic managed connectors (Native connectors) are a managed service on Elastic Cloud.\nSelf-managed connectors (Connector clients) are self-managed on your infrastructure.",
       "docId": "connector-post",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/create-connector-api.html",
       "name": "connector.post",
@@ -1170,7 +1170,7 @@
           "stability": "beta"
         }
       },
-      "description": "Creates or updates a connector.",
+      "description": "Create or update a connector.",
       "docId": "connector-put",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/create-connector-api.html",
       "name": "connector.put",
@@ -1215,7 +1215,7 @@
           "stability": "beta"
         }
       },
-      "description": "Cancels a connector sync job.",
+      "description": "Cancel a connector sync job.\n\nCancel a connector sync job, which sets the status to cancelling and updates `cancellation_requested_at` to the current time.\nThe connector service is then responsible for setting the status of connector sync jobs to cancelled.",
       "docId": "connector-sync-job-cancel",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/cancel-connector-sync-job-api.html",
       "name": "connector.sync_job_cancel",
@@ -1251,7 +1251,7 @@
           "stability": "beta"
         }
       },
-      "description": "Deletes a connector sync job.",
+      "description": "Delete a connector sync job.\n\nRemove a connector sync job and its associated data.\nThis is a destructive action that is not recoverable.",
       "docId": "connector-sync-job-delete",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/delete-connector-sync-job-api.html",
       "name": "connector.sync_job_delete",
@@ -1287,7 +1287,7 @@
           "stability": "beta"
         }
       },
-      "description": "Retrieves a connector sync job.",
+      "description": "Get a connector sync job.",
       "docId": "connector-sync-job-get",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/get-connector-sync-job-api.html",
       "name": "connector.sync_job_get",
@@ -1323,7 +1323,7 @@
           "stability": "beta"
         }
       },
-      "description": "Lists connector sync jobs.",
+      "description": "Get all connector sync jobs.\n\nGet information about all stored connector sync jobs listed by their creation date in ascending order.",
       "docId": "connector-sync-job-list",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/list-connector-sync-jobs-api.html",
       "name": "connector.sync_job_list",
@@ -1359,7 +1359,7 @@
           "stability": "beta"
         }
       },
-      "description": "Creates a connector sync job.",
+      "description": "Create a connector sync job.\n\nCreate a connector sync job document in the internal index and initialize its counters and timestamps with default values.",
       "docId": "connector-sync-job-post",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/create-connector-sync-job-api.html",
       "name": "connector.sync_job_post",
@@ -1398,7 +1398,7 @@
           "stability": "experimental"
         }
       },
-      "description": "Activates the valid draft filtering for a connector.",
+      "description": "Activate the connector draft filter.\n\nActivates the valid draft filtering for a connector.",
       "docId": "connector-update-filtering",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/update-connector-filtering-api.html",
       "name": "connector.update_active_filtering",
@@ -1437,7 +1437,7 @@
           "stability": "beta"
         }
       },
-      "description": "Updates the API key id in the connector document",
+      "description": "Update the connector API key ID.\n\nUpdate the `api_key_id` and `api_key_secret_id` fields of a connector.\nYou can specify the ID of the API key used for authorization and the ID of the connector secret where the API key is stored.\nThe connector secret ID is required only for Elastic managed (native) connectors.\nSelf-managed connectors (connector clients) do not use this field.",
       "docId": "connector-update-api-key-id",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/update-connector-api-key-id-api.html",
       "name": "connector.update_api_key_id",
@@ -1476,7 +1476,7 @@
           "stability": "beta"
         }
       },
-      "description": "Updates the configuration field in the connector document",
+      "description": "Update the connector configuration.\n\nUpdate the configuration field in the connector document.",
       "docId": "connector-configuration",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/update-connector-configuration-api.html",
       "name": "connector.update_configuration",
@@ -1515,7 +1515,7 @@
           "stability": "experimental"
         }
       },
-      "description": "Updates the filtering field in the connector document",
+      "description": "Update the connector error field.\n\nSet the error field for the connector.\nIf the error provided in the request body is non-null, the connector’s status is updated to error.\nOtherwise, if the error is reset to null, the connector status is updated to connected.",
       "docId": "connector-update-error",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/update-connector-error-api.html",
       "name": "connector.update_error",
@@ -1554,7 +1554,7 @@
           "stability": "beta"
         }
       },
-      "description": "Updates the filtering field in the connector document",
+      "description": "Update the connector filtering.\n\nUpdate the draft filtering configuration of a connector and marks the draft validation state as edited.\nThe filtering draft is activated once validated by the running Elastic connector service.\nThe filtering property is used to configure sync rules (both basic and advanced) for a connector.",
       "docId": "connector-update-filtering",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/update-connector-filtering-api.html",
       "name": "connector.update_filtering",
@@ -1593,7 +1593,7 @@
           "stability": "experimental"
         }
       },
-      "description": "Updates the draft filtering validation info for a connector.",
+      "description": "Update the connector draft filtering validation.\n\nUpdate the draft filtering validation info for a connector.",
       "docId": "connector-update-filtering-validation",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/update-connector-filtering-validation-api.html",
       "name": "connector.update_filtering_validation",
@@ -1632,7 +1632,7 @@
           "stability": "beta"
         }
       },
-      "description": "Updates the index_name in the connector document",
+      "description": "Update the connector index name.\n\nUpdate the `index_name` field of a connector, specifying the index where the data ingested by the connector is stored.",
       "docId": "connector-update-index-name",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/update-connector-index-name-api.html",
       "name": "connector.update_index_name",
@@ -1671,7 +1671,7 @@
           "stability": "beta"
         }
       },
-      "description": "Updates the name and description fields in the connector document",
+      "description": "Update the connector name and description.",
       "docId": "connector-update-name",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/update-connector-name-description-api.html",
       "name": "connector.update_name",
@@ -1710,7 +1710,7 @@
           "stability": "beta"
         }
       },
-      "description": "Updates the is_native flag in the connector document",
+      "description": "Update the connector is_native flag.",
       "docId": "connector-update-native",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/update-connector-native-api.html",
       "name": "connector.update_native",
@@ -1749,7 +1749,7 @@
           "stability": "beta"
         }
       },
-      "description": "Updates the pipeline field in the connector document",
+      "description": "Update the connector pipeline.\n\nWhen you create a new connector, the configuration of an ingest pipeline is populated with default settings.",
       "docId": "connector-update-pipeline",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/update-connector-pipeline-api.html",
       "name": "connector.update_pipeline",
@@ -1788,7 +1788,7 @@
           "stability": "beta"
         }
       },
-      "description": "Updates the scheduling field in the connector document",
+      "description": "Update the connector scheduling.",
       "docId": "connector-update-scheduling",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/update-connector-scheduling-api.html",
       "name": "connector.update_scheduling",
@@ -1827,7 +1827,7 @@
           "stability": "beta"
         }
       },
-      "description": "Updates the service type of the connector",
+      "description": "Update the connector service type.",
       "docId": "connector-update-service-type",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/update-connector-service-type-api.html",
       "name": "connector.update_service_type",
@@ -1866,7 +1866,7 @@
           "stability": "experimental"
         }
       },
-      "description": "Updates the status of the connector",
+      "description": "Update the connector status.",
       "docId": "connector-update-status",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/update-connector-status-api.html",
       "name": "connector.update_status",
@@ -13219,7 +13219,7 @@
       "body": {
         "kind": "no_body"
       },
-      "description": "Updates the last_seen field in the connector, and sets it to current timestamp",
+      "description": "Check in a connector.\n\nUpdate the `last_seen` field in the connector and set it to the current timestamp.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -13246,7 +13246,7 @@
         }
       ],
       "query": [],
-      "specLocation": "connector/check_in/ConnectorCheckInRequest.ts#L22-L36"
+      "specLocation": "connector/check_in/ConnectorCheckInRequest.ts#L22-L38"
     },
     {
       "body": {
@@ -13279,7 +13279,7 @@
       "body": {
         "kind": "no_body"
       },
-      "description": "Deletes a connector.",
+      "description": "Delete a connector.\n\nRemoves a connector and associated sync jobs.\nThis is a destructive action that is not recoverable.\nNOTE: This action doesn’t delete any API keys, ingest pipelines, or data indices associated with the connector.\nThese need to be removed manually.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -13319,7 +13319,7 @@
           }
         }
       ],
-      "specLocation": "connector/delete/ConnectorDeleteRequest.ts#L22-L42"
+      "specLocation": "connector/delete/ConnectorDeleteRequest.ts#L22-L47"
     },
     {
       "body": {
@@ -13346,7 +13346,7 @@
       "body": {
         "kind": "no_body"
       },
-      "description": "Retrieves a connector.",
+      "description": "Get a connector.\n\nGet the details about a connector.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -13373,7 +13373,7 @@
         }
       ],
       "query": [],
-      "specLocation": "connector/get/ConnectorGetRequest.ts#L22-L36"
+      "specLocation": "connector/get/ConnectorGetRequest.ts#L22-L38"
     },
     {
       "body": {
@@ -13400,7 +13400,7 @@
       "body": {
         "kind": "no_body"
       },
-      "description": "Returns existing connectors.",
+      "description": "Get all connectors.\n\nGet information about all connectors.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -13487,7 +13487,7 @@
           }
         }
       ],
-      "specLocation": "connector/list/ConnectorListRequest.ts#L23-L57"
+      "specLocation": "connector/list/ConnectorListRequest.ts#L23-L59"
     },
     {
       "body": {
@@ -13602,7 +13602,7 @@
           }
         ]
       },
-      "description": "Creates a connector.",
+      "description": "Create a connector.\n\nConnectors are Elasticsearch integrations that bring content from third-party data sources, which can be deployed on Elastic Cloud or hosted on your own infrastructure.\nElastic managed connectors (Native connectors) are a managed service on Elastic Cloud.\nSelf-managed connectors (Connector clients) are self-managed on your infrastructure.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -13616,7 +13616,7 @@
       },
       "path": [],
       "query": [],
-      "specLocation": "connector/post/ConnectorPostRequest.ts#L22-L42"
+      "specLocation": "connector/post/ConnectorPostRequest.ts#L22-L46"
     },
     {
       "body": {
@@ -13728,7 +13728,7 @@
           }
         ]
       },
-      "description": "Creates or updates a connector.",
+      "description": "Create or update a connector.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -13799,7 +13799,7 @@
       "body": {
         "kind": "no_body"
       },
-      "description": "Cancels a connector sync job.",
+      "description": "Cancel a connector sync job.\n\nCancel a connector sync job, which sets the status to cancelling and updates `cancellation_requested_at` to the current time.\nThe connector service is then responsible for setting the status of connector sync jobs to cancelled.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -13826,7 +13826,7 @@
         }
       ],
       "query": [],
-      "specLocation": "connector/sync_job_cancel/SyncJobCancelRequest.ts#L22-L36"
+      "specLocation": "connector/sync_job_cancel/SyncJobCancelRequest.ts#L22-L39"
     },
     {
       "body": {
@@ -13859,7 +13859,7 @@
       "body": {
         "kind": "no_body"
       },
-      "description": "Deletes a connector sync job.",
+      "description": "Delete a connector sync job.\n\nRemove a connector sync job and its associated data.\nThis is a destructive action that is not recoverable.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -13886,7 +13886,7 @@
         }
       ],
       "query": [],
-      "specLocation": "connector/sync_job_delete/SyncJobDeleteRequest.ts#L22-L36"
+      "specLocation": "connector/sync_job_delete/SyncJobDeleteRequest.ts#L22-L39"
     },
     {
       "body": {
@@ -13913,7 +13913,7 @@
       "body": {
         "kind": "no_body"
       },
-      "description": "Retrieves a connector sync job.",
+      "description": "Get a connector sync job.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -13967,7 +13967,7 @@
       "body": {
         "kind": "no_body"
       },
-      "description": "Lists connector sync jobs.",
+      "description": "Get all connector sync jobs.\n\nGet information about all stored connector sync jobs listed by their creation date in ascending order.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -14057,7 +14057,7 @@
           }
         }
       ],
-      "specLocation": "connector/sync_job_list/SyncJobListRequest.ts#L25-L55"
+      "specLocation": "connector/sync_job_list/SyncJobListRequest.ts#L25-L57"
     },
     {
       "body": {
@@ -14140,7 +14140,7 @@
           }
         ]
       },
-      "description": "Creates a connector sync job.",
+      "description": "Create a connector sync job.\n\nCreate a connector sync job document in the internal index and initialize its counters and timestamps with default values.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -14154,7 +14154,7 @@
       },
       "path": [],
       "query": [],
-      "specLocation": "connector/sync_job_post/SyncJobPostRequest.ts#L23-L43"
+      "specLocation": "connector/sync_job_post/SyncJobPostRequest.ts#L23-L45"
     },
     {
       "body": {
@@ -14187,7 +14187,7 @@
       "body": {
         "kind": "no_body"
       },
-      "description": "Activates the valid draft filtering for a connector.",
+      "description": "Activate the connector draft filter.\n\nActivates the valid draft filtering for a connector.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -14214,7 +14214,7 @@
         }
       ],
       "query": [],
-      "specLocation": "connector/update_active_filtering/ConnectorUpdateActiveFilteringRequest.ts#L22-L36"
+      "specLocation": "connector/update_active_filtering/ConnectorUpdateActiveFilteringRequest.ts#L22-L38"
     },
     {
       "body": {
@@ -14271,7 +14271,7 @@
           }
         ]
       },
-      "description": "Updates the API key id in the connector document",
+      "description": "Update the connector API key ID.\n\nUpdate the `api_key_id` and `api_key_secret_id` fields of a connector.\nYou can specify the ID of the API key used for authorization and the ID of the connector secret where the API key is stored.\nThe connector secret ID is required only for Elastic managed (native) connectors.\nSelf-managed connectors (connector clients) do not use this field.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -14298,7 +14298,7 @@
         }
       ],
       "query": [],
-      "specLocation": "connector/update_api_key_id/ConnectorUpdateAPIKeyIDRequest.ts#L21-L42"
+      "specLocation": "connector/update_api_key_id/ConnectorUpdateAPIKeyIDRequest.ts#L21-L47"
     },
     {
       "body": {
@@ -14362,7 +14362,7 @@
           }
         ]
       },
-      "description": "Updates the configuration field in the connector document",
+      "description": "Update the connector configuration.\n\nUpdate the configuration field in the connector document.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -14389,7 +14389,7 @@
         }
       ],
       "query": [],
-      "specLocation": "connector/update_configuration/ConnectorUpdateConfigurationRequest.ts#L25-L47"
+      "specLocation": "connector/update_configuration/ConnectorUpdateConfigurationRequest.ts#L25-L49"
     },
     {
       "body": {
@@ -14444,7 +14444,7 @@
           }
         ]
       },
-      "description": "Updates the filtering field in the connector document",
+      "description": "Update the connector error field.\n\nSet the error field for the connector.\nIf the error provided in the request body is non-null, the connector’s status is updated to error.\nOtherwise, if the error is reset to null, the connector status is updated to connected.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -14471,7 +14471,7 @@
         }
       ],
       "query": [],
-      "specLocation": "connector/update_error/ConnectorUpdateErrorRequest.ts#L23-L44"
+      "specLocation": "connector/update_error/ConnectorUpdateErrorRequest.ts#L23-L48"
     },
     {
       "body": {
@@ -14545,7 +14545,7 @@
           }
         ]
       },
-      "description": "Updates the filtering field in the connector document",
+      "description": "Update the connector filtering.\n\nUpdate the draft filtering configuration of a connector and marks the draft validation state as edited.\nThe filtering draft is activated once validated by the running Elastic connector service.\nThe filtering property is used to configure sync rules (both basic and advanced) for a connector.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -14572,7 +14572,7 @@
         }
       ],
       "query": [],
-      "specLocation": "connector/update_filtering/ConnectorUpdateFilteringRequest.ts#L27-L50"
+      "specLocation": "connector/update_filtering/ConnectorUpdateFilteringRequest.ts#L27-L54"
     },
     {
       "body": {
@@ -14618,7 +14618,7 @@
           }
         ]
       },
-      "description": "Updates the draft filtering validation info for a connector.",
+      "description": "Update the connector draft filtering validation.\n\nUpdate the draft filtering validation info for a connector.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -14645,7 +14645,7 @@
         }
       ],
       "query": [],
-      "specLocation": "connector/update_filtering_validation/ConnectorUpdateFilteringValidationRequest.ts#L23-L40"
+      "specLocation": "connector/update_filtering_validation/ConnectorUpdateFilteringValidationRequest.ts#L23-L42"
     },
     {
       "body": {
@@ -14700,7 +14700,7 @@
           }
         ]
       },
-      "description": "Updates the index_name in the connector document",
+      "description": "Update the connector index name.\n\nUpdate the `index_name` field of a connector, specifying the index where the data ingested by the connector is stored.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -14727,7 +14727,7 @@
         }
       ],
       "query": [],
-      "specLocation": "connector/update_index_name/ConnectorUpdateIndexNameRequest.ts#L23-L43"
+      "specLocation": "connector/update_index_name/ConnectorUpdateIndexNameRequest.ts#L23-L45"
     },
     {
       "body": {
@@ -14784,7 +14784,7 @@
           }
         ]
       },
-      "description": "Updates the name and description fields in the connector document",
+      "description": "Update the connector name and description.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -14857,7 +14857,7 @@
           }
         ]
       },
-      "description": "Updates the is_native flag in the connector document",
+      "description": "Update the connector is_native flag.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -14930,7 +14930,7 @@
           }
         ]
       },
-      "description": "Updates the pipeline field in the connector document",
+      "description": "Update the connector pipeline.\n\nWhen you create a new connector, the configuration of an ingest pipeline is populated with default settings.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -14957,7 +14957,7 @@
         }
       ],
       "query": [],
-      "specLocation": "connector/update_pipeline/ConnectorUpdatePipelineRequest.ts#L23-L44"
+      "specLocation": "connector/update_pipeline/ConnectorUpdatePipelineRequest.ts#L23-L46"
     },
     {
       "body": {
@@ -15003,7 +15003,7 @@
           }
         ]
       },
-      "description": "Updates the scheduling field in the connector document",
+      "description": "Update the connector scheduling.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -15076,7 +15076,7 @@
           }
         ]
       },
-      "description": "Updates the service type of the connector",
+      "description": "Update the connector service type.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -15149,7 +15149,7 @@
           }
         ]
       },
-      "description": "Updates the status of the connector",
+      "description": "Update the connector status.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -45522,6 +45522,7 @@
           "aliases": [
             "aggs"
           ],
+          "extDocId": "search-aggregations",
           "name": "aggregations",
           "required": false,
           "type": {
@@ -45981,7 +45982,7 @@
           }
         }
       ],
-      "specLocation": "_global/msearch/types.ts#L70-L201"
+      "specLocation": "_global/msearch/types.ts#L70-L204"
     },
     {
       "kind": "interface",
@@ -51442,6 +51443,8 @@
       }
     },
     {
+      "extDocId": "collapse-search-results",
+      "extDocUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/collapse-search-results.html",
       "kind": "interface",
       "name": {
         "name": "FieldCollapse",
@@ -51511,7 +51514,7 @@
           }
         }
       ],
-      "specLocation": "_global/search/_types/FieldCollapse.ts#L24-L38"
+      "specLocation": "_global/search/_types/FieldCollapse.ts#L24-L41"
     },
     {
       "description": "A reference to a field with formatting instructions on how to return the value",
@@ -67705,7 +67708,7 @@
         "name": "ResponseItem",
         "namespace": "_global.msearch"
       },
-      "specLocation": "_global/msearch/types.ts#L208-L211",
+      "specLocation": "_global/msearch/types.ts#L211-L214",
       "type": {
         "items": [
           {
@@ -67775,7 +67778,7 @@
           }
         }
       ],
-      "specLocation": "_global/msearch/types.ts#L213-L216"
+      "specLocation": "_global/msearch/types.ts#L216-L219"
     },
     {
       "generics": [
@@ -136644,7 +136647,7 @@
           }
         }
       ],
-      "specLocation": "_global/msearch/types.ts#L203-L206"
+      "specLocation": "_global/msearch/types.ts#L206-L209"
     },
     {
       "kind": "interface",
