@@ -17,11 +17,10 @@
  * under the License.
  */
 
+import { Access } from '@security/_types/Access'
 import { RequestBase } from '@_types/Base'
-import { Dictionary } from '@spec_utils/Dictionary'
 import { Metadata, Name } from '@_types/common'
 import { Duration } from '@_types/Time'
-import { Access } from '@security/_types/Access'
 
 /**
  * Create a cross-cluster API key.
@@ -32,7 +31,7 @@ import { Access } from '@security/_types/Access'
  * IMPORTANT: To authenticate this request you must use a credential that is not an API key. Even if you use an API key that has the required privilege, the API returns an error.
  *
  * Cross-cluster API keys are created by the Elasticsearch API key service, which is automatically enabled.
- * 
+ *
  * NOTE: Unlike REST API keys, a cross-cluster API key does not capture permissions of the authenticated user. The API key’s effective permission is exactly as specified with the `access` property.
  *
  * A successful request returns a JSON structure that contains the API key, its unique ID, and its name. If applicable, it also returns expiration information for the API key in milliseconds.
