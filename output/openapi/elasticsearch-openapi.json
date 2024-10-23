@@ -30154,6 +30154,71 @@
         "x-state": "Added in 8.4.0"
       }
     },
+    "/_security/cross_cluster/api_key/{id}": {
+      "put": {
+        "tags": [
+          "security"
+        ],
+        "summary": "Update cross-cluster API key",
+        "description": "Update the attributes of an existing cross-cluster API key, which is used for API key based remote cluster access.",
+        "externalDocs": {
+          "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/remote-clusters-api-key.html"
+        },
+        "operationId": "security-update-cross-cluster-api-key",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "description": "The ID of the cross-cluster API key to update.",
+            "required": true,
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/_types:Id"
+            },
+            "style": "simple"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "expiration": {
+                    "$ref": "#/components/schemas/_types:Duration"
+                  },
+                  "metadata": {
+                    "$ref": "#/components/schemas/_types:Metadata"
+                  }
+                }
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "updated": {
+                      "description": "If `true`, the API key was updated.\nIf `false`, the API key didn’t change because no change was detected.",
+                      "type": "boolean"
+                    }
+                  },
+                  "required": [
+                    "updated"
+                  ]
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/_security/profile/{uid}/_data": {
       "put": {
         "tags": [
