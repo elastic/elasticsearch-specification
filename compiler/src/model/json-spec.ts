@@ -62,6 +62,10 @@ export interface JsonSpec {
     required?: boolean
   }
   docTag?: string
+  externalDocs?: {
+    url: string
+    description?: string
+  }
 }
 
 export default function buildJsonSpec (): Map<string, JsonSpec> {
