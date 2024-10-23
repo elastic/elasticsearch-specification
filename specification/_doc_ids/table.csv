@@ -253,6 +253,7 @@ knn-inner-hits,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/
 logstash-api-delete-pipeline,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/logstash-api-delete-pipeline.html
 logstash-api-get-pipeline,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/logstash-api-get-pipeline.html
 logstash-api-put-pipeline,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/logstash-api-put-pipeline.html
+logstash-centralized-pipeline-management,https://www.elastic.co/guide/en/logstash/{branch}/logstash-centralized-pipeline-management.html
 logstash-configuration-file-structure,https://www.elastic.co/guide/en/logstash/{branch}/configuration-file-structure.html
 logstash-logstash-settings-file,https://www.elastic.co/guide/en/logstash/{branch}/logstash-settings-file.html
 lowercase-processor,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/lowercase-processor.html
