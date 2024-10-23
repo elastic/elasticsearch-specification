@@ -36026,7 +36026,8 @@
             "availability": {
               "serverless": {},
               "stack": {
-                "since": "8.14.0"
+                "since": "8.14.0",
+                "stability": "stable"
               }
             },
             "description": "A retriever is a specification to describe top documents returned from a search. A retriever replaces other elements of the search API that also return top documents such as query and knn.",
@@ -138488,18 +138489,6 @@
           }
         },
         {
-          "description": "Minimum _score for matching documents. Documents with a lower _score are not included in the top documents.",
-          "name": "min_score",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "float",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
           "description": "Collapses the top documents by a specified key into a single top document per key.",
           "name": "collapse",
           "required": false,
@@ -138512,7 +138501,7 @@
           }
         }
       ],
-      "specLocation": "_types/Retriever.ts#L45-L58"
+      "specLocation": "_types/Retriever.ts#L47-L58"
     },
     {
       "kind": "interface",
@@ -138547,9 +138536,21 @@
             ],
             "kind": "union_of"
           }
+        },
+        {
+          "description": "Minimum _score for matching documents. Documents with a lower _score are not included in the top documents.",
+          "name": "min_score",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "float",
+              "namespace": "_types"
+            }
+          }
         }
       ],
-      "specLocation": "_types/Retriever.ts#L40-L43"
+      "specLocation": "_types/Retriever.ts#L40-L45"
     },
     {
       "inherits": {

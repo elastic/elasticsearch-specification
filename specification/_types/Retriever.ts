@@ -40,6 +40,8 @@ export class RetrieverContainer {
 export class RetrieverBase {
   /** Query to filter the documents that can match. */
   filter?: QueryContainer | QueryContainer[]
+  /** Minimum _score for matching documents. Documents with a lower _score are not included in the top documents. */
+  min_score?: float
 }
 
 export class StandardRetriever extends RetrieverBase {
@@ -51,8 +53,6 @@ export class StandardRetriever extends RetrieverBase {
   terminate_after?: integer
   /** A sort object that that specifies the order of matching documents. */
   sort?: Sort
-  /** Minimum _score for matching documents. Documents with a lower _score are not included in the top documents. */
-  min_score?: float
   /** Collapses the top documents by a specified key into a single top document per key. */
   collapse?: FieldCollapse
 }

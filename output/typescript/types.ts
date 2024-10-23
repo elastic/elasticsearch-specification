@@ -2697,6 +2697,7 @@ export interface Retries {
 
 export interface RetrieverBase {
   filter?: QueryDslQueryContainer | QueryDslQueryContainer[]
+  min_score?: float
 }
 
 export interface RetrieverContainer {
@@ -2868,7 +2869,6 @@ export interface StandardRetriever extends RetrieverBase {
   search_after?: SortResults
   terminate_after?: integer
   sort?: Sort
-  min_score?: float
   collapse?: SearchFieldCollapse
 }
 

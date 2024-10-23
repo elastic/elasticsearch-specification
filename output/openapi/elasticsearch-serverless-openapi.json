@@ -53073,10 +53073,6 @@
               "sort": {
                 "$ref": "#/components/schemas/_types:Sort"
               },
-              "min_score": {
-                "description": "Minimum _score for matching documents. Documents with a lower _score are not included in the top documents.",
-                "type": "number"
-              },
               "collapse": {
                 "$ref": "#/components/schemas/_global.search._types:FieldCollapse"
               }
@@ -53100,6 +53096,10 @@
                 }
               }
             ]
+          },
+          "min_score": {
+            "description": "Minimum _score for matching documents. Documents with a lower _score are not included in the top documents.",
+            "type": "number"
           }
         }
       },
