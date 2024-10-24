@@ -7641,6 +7641,44 @@
           "visibility": "public"
         },
         "stack": {
+          "since": "8.10.0",
+          "stability": "stable"
+        }
+      },
+      "description": "Creates or updates a query ruleset.",
+      "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/test-query-ruleset.html",
+      "name": "query_rules.test",
+      "request": {
+        "name": "Request",
+        "namespace": "query_rules.test"
+      },
+      "requestBodyRequired": true,
+      "requestMediaType": [
+        "application/json"
+      ],
+      "response": {
+        "name": "Response",
+        "namespace": "query_rules.test"
+      },
+      "responseMediaType": [
+        "application/json"
+      ],
+      "urls": [
+        {
+          "methods": [
+            "POST"
+          ],
+          "path": "/_query_rules/{ruleset_id}/_test"
+        }
+      ]
+    },
+    {
+      "availability": {
+        "serverless": {
+          "stability": "stable",
+          "visibility": "public"
+        },
+        "stack": {
           "since": "6.2.0",
           "stability": "stable"
         }
@@ -34824,6 +34862,100 @@
         "namespace": "query_rules.put_ruleset"
       },
       "specLocation": "query_rules/put_ruleset/QueryRulesetPutResponse.ts#L22-L26"
+    },
+    {
+      "attachedBehaviors": [
+        "CommonQueryParameters"
+      ],
+      "body": {
+        "kind": "properties",
+        "properties": [
+          {
+            "name": "match_criteria",
+            "required": true,
+            "type": {
+              "key": {
+                "kind": "instance_of",
+                "type": {
+                  "name": "string",
+                  "namespace": "_builtins"
+                }
+              },
+              "kind": "dictionary_of",
+              "singleKey": false,
+              "value": {
+                "kind": "user_defined_value"
+              }
+            }
+          }
+        ]
+      },
+      "description": "Creates or updates a query ruleset.",
+      "inherits": {
+        "type": {
+          "name": "RequestBase",
+          "namespace": "_types"
+        }
+      },
+      "kind": "request",
+      "name": {
+        "name": "Request",
+        "namespace": "query_rules.test"
+      },
+      "path": [
+        {
+          "description": "The unique identifier of the query ruleset to be created or updated",
+          "name": "ruleset_id",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Id",
+              "namespace": "_types"
+            }
+          }
+        }
+      ],
+      "query": [],
+      "specLocation": "query_rules/test/QueryRulesetTestRequest.ts#L24-L44"
+    },
+    {
+      "body": {
+        "kind": "properties",
+        "properties": [
+          {
+            "name": "total_matched_rules",
+            "required": true,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "integer",
+                "namespace": "_types"
+              }
+            }
+          },
+          {
+            "name": "matched_rules",
+            "required": true,
+            "type": {
+              "kind": "array_of",
+              "value": {
+                "kind": "instance_of",
+                "type": {
+                  "name": "QueryRulesetMatchedRule",
+                  "namespace": "query_rules.test"
+                }
+              }
+            }
+          }
+        ]
+      },
+      "kind": "response",
+      "name": {
+        "name": "Response",
+        "namespace": "query_rules.test"
+      },
+      "specLocation": "query_rules/test/QueryRulesetTestResponse.ts#L23-L28"
     },
     {
       "attachedBehaviors": [
@@ -137467,6 +137599,40 @@
         }
       ],
       "specLocation": "query_rules/list_rulesets/types.ts#L23-L37"
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "QueryRulesetMatchedRule",
+        "namespace": "query_rules.test"
+      },
+      "properties": [
+        {
+          "description": "Ruleset unique identifier",
+          "name": "ruleset_id",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Id",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "Rule unique identifier within that ruleset",
+          "name": "rule_id",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Id",
+              "namespace": "_types"
+            }
+          }
+        }
+      ],
+      "specLocation": "query_rules/test/QueryRulesetTestResponse.ts#L30-L39"
     },
     {
       "kind": "interface",
