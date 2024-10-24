@@ -18,12 +18,12 @@
  */
 
 import { FieldCollapse } from '@global/search/_types/FieldCollapse'
+import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 import { QueryVector, QueryVectorBuilder } from '@_types/Knn'
 import { float, integer } from '@_types/Numeric'
 import { Sort, SortResults } from '@_types/sort'
-import { QueryContainer } from './query_dsl/abstractions'
 import { Id } from './common'
-import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
+import { QueryContainer } from './query_dsl/abstractions'
 
 /**
  * @variants container
