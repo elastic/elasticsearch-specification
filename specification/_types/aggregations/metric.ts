@@ -105,6 +105,9 @@ export class ExtendedStatsAggregation extends FormatMetricAggregationBase {
   sigma?: double
 }
 
+/**
+ * @ext_doc_id search-aggregations-metrics-geobounds-aggregation
+ */
 export class GeoBoundsAggregation extends MetricAggregationBase {
   /**
    * Specifies whether the bounding box should be allowed to overlap the international date line.
@@ -161,6 +164,9 @@ export class GeoLinePoint {
 
 export class MaxAggregation extends FormatMetricAggregationBase {}
 
+/**
+ * @ext_doc_id search-aggregations-metrics-median-absolute-deviation-aggregation
+ */
 export class MedianAbsoluteDeviationAggregation extends FormatMetricAggregationBase {
   /**
    * Limits the maximum number of nodes used by the underlying TDigest algorithm to `20 * compression`, enabling control of memory usage and approximation error.
@@ -171,6 +177,9 @@ export class MedianAbsoluteDeviationAggregation extends FormatMetricAggregationB
 
 export class MinAggregation extends FormatMetricAggregationBase {}
 
+/**
+ * @ext_doc_id search-aggregations-metrics-percentile-rank-aggregation
+ */
 export class PercentileRanksAggregation extends FormatMetricAggregationBase {
   /**
    * By default, the aggregation associates a unique string key with each bucket and returns the ranges as a hash rather than an array.
@@ -396,6 +405,9 @@ export class TopHitsAggregation extends MetricAggregationBase {
   seq_no_primary_term?: boolean
 }
 
+/**
+ * @ext_doc_id search-aggregations-metrics-top-metrics
+ */
 export class TopMetricsAggregation extends MetricAggregationBase {
   /**
    * The fields of the top document to return.

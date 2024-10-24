@@ -51,6 +51,9 @@ export interface KnnSearch {
   inner_hits?: InnerHits
 }
 
+/**
+ * @ext_doc_id query-dsl-knn-query
+ */
 export interface KnnQuery extends QueryBase {
   /** The name of the vector field to search against */
   field: Field

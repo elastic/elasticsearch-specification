@@ -25,6 +25,7 @@ import { TokenPruningConfig } from './TokenPruningConfig'
 
 /**
  * @variants container
+ * @ext_doc_id query-dsl-sparse-vector-query
  */
 export class SparseVectorQuery extends QueryBase {
   /**

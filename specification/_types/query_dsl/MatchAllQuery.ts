@@ -19,4 +19,7 @@
 
 import { QueryBase } from './abstractions'
 
+/**
+ * @ext_doc_id query-dsl-match-all-query
+ */
 export class MatchAllQuery extends QueryBase {}

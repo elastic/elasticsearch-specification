@@ -74,7 +74,10 @@ export interface Request extends RequestBase {
      * @availability serverless
      */
     filter?: QueryContainer | QueryContainer[]
-    /** kNN query to execute */
+    /**
+     * kNN query to execute
+     * @ext_doc_id query-dsl-knn-query
+     */
     knn: Query
   }
 }
