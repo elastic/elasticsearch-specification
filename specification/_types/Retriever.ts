@@ -22,6 +22,8 @@ import { QueryVector, QueryVectorBuilder } from '@_types/Knn'
 import { float, integer } from '@_types/Numeric'
 import { Sort, SortResults } from '@_types/sort'
 import { QueryContainer } from './query_dsl/abstractions'
+import { Id } from './common'
+import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 
 /**
  * @variants container
@@ -33,6 +35,8 @@ export class RetrieverContainer {
   knn?: KnnRetriever
   /** A retriever that produces top documents from reciprocal rank fusion (RRF). */
   rrf?: RRFRetriever
+  /** A retriever that replaces the functionality of a rule query. */
+  rule?: RuleRetriever
 }
 
 export class RetrieverBase {
@@ -76,5 +80,16 @@ export class RRFRetriever extends RetrieverBase {
   /** This value determines how much influence documents in individual result sets per query have over the final ranked result set. */
   rank_constant?: integer
   /** This value determines the size of the individual result sets per query.  */
+  rank_window_size?: integer
+}
+
+export class RuleRetriever extends RetrieverBase {
+  /** The ruleset IDs containing the rules this retriever is evaluating against. */
+  ruleset_ids: Id[]
+  /** The match criteria that will determine if a rule in the provided rulesets should be applied. */
+  match_criteria: UserDefinedValue
+  /** The retriever whose results rules should be applied to. */
+  retriever: RetrieverContainer
+  /** This value determines the size of the individual result set.  */
   rank_window_size?: integer
 }
