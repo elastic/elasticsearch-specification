@@ -347,10 +347,13 @@ export interface Request extends RequestBase {
   body: {
     /**
      * Defines the aggregations that are run as part of the search request.
-     * @aliases aggs */ // ES uses "aggregations" in serialization
+     * @aliases aggs
+     * @ext_doc_id search-aggregations
+     */ // ES uses "aggregations" in serialization
     aggregations?: Dictionary<string, AggregationContainer>
     /**
      * Collapses search results the values of the specified field.
+     * @ext_doc_id collapse-search-results
      */
     collapse?: FieldCollapse
     /**
@@ -372,6 +375,7 @@ export interface Request extends RequestBase {
     from?: integer
     /**
      * Specifies the highlighter to use for retrieving highlighted snippets from one or more fields in your search results.
+     * @ext_doc_id highlighting
      */
     highlight?: Highlight
     /**
@@ -394,6 +398,7 @@ export interface Request extends RequestBase {
      * Defines the approximate kNN search to run.
      * @availability stack since=8.4.0
      * @availability serverless
+     * @ext_doc_id query-dsl-knn-query
      */
     knn?: KnnSearch | KnnSearch[]
     /**
@@ -424,6 +429,7 @@ export interface Request extends RequestBase {
     query?: QueryContainer
     /**
      * Can be used to improve precision by reordering just the top (for example 100 - 500) documents returned by the `query` and `post_filter` phases.
+     * @ext_doc_id rescore
      */
     rescore?: Rescore | Rescore[]
     /**

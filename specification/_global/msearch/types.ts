@@ -73,6 +73,9 @@ export class MultisearchBody {
    * @ext_doc_id search-aggregations
    */ // ES uses "aggregations" in serialization
   aggregations?: Dictionary<string, AggregationContainer>
+  /**
+   * @ext_doc_id collapse-search-results
+   */
   collapse?: FieldCollapse
   /**
    * Defines the search definition using the Query DSL.
@@ -103,6 +106,7 @@ export class MultisearchBody {
    * Defines the approximate kNN search to run.
    * @availability stack since=8.4.0
    * @availability serverless
+   * @ext_doc_id query-dsl-knn-query
    */
   knn?: KnnSearch | KnnSearch[]
   /**
@@ -112,6 +116,9 @@ export class MultisearchBody {
    * @server_default 0
    */
   from?: integer
+  /**
+   * @ext_doc_id highlighting
+   */
   highlight?: Highlight
   /**
    * Boosts the _score of documents from specified indices.
@@ -124,6 +131,9 @@ export class MultisearchBody {
   min_score?: double
   post_filter?: QueryContainer
   profile?: boolean
+  /**
+   * @ext_doc_id rescore
+   */
   rescore?: Rescore | Rescore[]
   /**
    * Retrieve a script evaluation (based on different fields) for each hit.

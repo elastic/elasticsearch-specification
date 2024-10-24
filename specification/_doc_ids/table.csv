@@ -188,6 +188,7 @@ get-trial-status,https://www.elastic.co/guide/en/elasticsearch/reference/{branch
 graph-explore-api,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/graph-explore-api.html
 grok-processor,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/grok-processor.html
 gsub-processor,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/gsub-processor.html
+highlighting,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/highlighting.html
 ilm-delete-lifecycle,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/ilm-delete-lifecycle.html
 ilm-explain-lifecycle,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/ilm-explain-lifecycle.html
 ilm-get-lifecycle,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/ilm-get-lifecycle.html
@@ -420,6 +421,7 @@ remove-processor,https://www.elastic.co/guide/en/elasticsearch/reference/{branch
 rename-processor,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/rename-processor.html
 reroute-processor,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/reroute-processor.html
 render-search-template-api,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/render-search-template-api.html
+rescore,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/filter-search-results.html#rescore
 reset-transform,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/reset-transform.html
 rollup-delete-job,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/rollup-delete-job.html
 rollup-get-job,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/rollup-get-job.html

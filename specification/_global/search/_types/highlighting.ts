@@ -44,6 +44,9 @@ export enum BoundaryScanner {
   word
 }
 
+/**
+ * @ext_doc_id highlighting
+ */
 export class HighlightBase {
   type?: HighlighterType
   /**

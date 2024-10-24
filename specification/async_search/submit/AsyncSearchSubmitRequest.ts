@@ -173,6 +173,9 @@ export interface Request extends RequestBase {
      * @server_default 0
      */
     from?: integer
+    /**
+     * @ext_doc_id highlighting
+     */
     highlight?: Highlight
     /**
      * Number of hits matching the query to count accurately. If true, the exact
@@ -194,6 +197,7 @@ export interface Request extends RequestBase {
      * Defines the approximate kNN search to run.
      * @availability stack since=8.4.0
      * @availability serverless
+     * @ext_doc_id query-dsl-knn-query
      */
     knn?: KnnSearch | KnnSearch[]
     /**
@@ -207,6 +211,9 @@ export interface Request extends RequestBase {
      * Defines the search definition using the Query DSL.
      */
     query?: QueryContainer
+    /**
+     * @ext_doc_id rescore
+     */
     rescore?: Rescore | Rescore[]
     /**
      * Retrieve a script evaluation (based on different fields) for each hit.

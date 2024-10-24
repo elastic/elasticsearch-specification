@@ -131,8 +131,13 @@ export interface Request extends RequestBase {
     allow_partial_search_results?: boolean
   }
   body: {
-    /** @aliases aggs */
+    /** @aliases aggs
+     * @ext_doc_id search-aggregations 
+     */
     aggregations?: Dictionary<string, AggregationContainer>
+    /**
+     * @ext_doc_id collapse-search-results
+     */
     collapse?: FieldCollapse
     /**
      * If true, returns detailed information about score computation as part of a hit.
@@ -150,6 +155,9 @@ export interface Request extends RequestBase {
      * @server_default 0
      */
     from?: integer
+    /**
+     * @ext_doc_id highlighting
+     */
     highlight?: Highlight
     /**
      * Number of hits matching the query to count accurately. If true, the exact
@@ -178,6 +186,9 @@ export interface Request extends RequestBase {
      * Defines the search definition using the Query DSL.
      */
     query?: QueryContainer
+    /**
+     * @ext_doc_id rescore
+     */
     rescore?: Rescore | Rescore[]
     /**
      * Retrieve a script evaluation (based on different fields) for each hit.
