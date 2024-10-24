@@ -14682,22 +14682,15 @@
               "schema": {
                 "type": "object",
                 "properties": {
-                  "rules": {
-                    "oneOf": [
-                      {
-                        "$ref": "#/components/schemas/query_rules._types:QueryRule"
-                      },
-                      {
-                        "type": "array",
-                        "items": {
-                          "$ref": "#/components/schemas/query_rules._types:QueryRule"
-                        }
-                      }
-                    ]
+                  "match_criteria": {
+                    "type": "object",
+                    "additionalProperties": {
+                      "type": "object"
+                    }
                   }
                 },
                 "required": [
-                  "rules"
+                  "match_criteria"
                 ]
               }
             }
@@ -14712,12 +14705,19 @@
                 "schema": {
                   "type": "object",
                   "properties": {
-                    "result": {
-                      "$ref": "#/components/schemas/_types:Result"
+                    "total_matched_rules": {
+                      "type": "number"
+                    },
+                    "matched_rules": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/query_rules.test:QueryRulesetMatchedRule"
+                      }
                     }
                   },
                   "required": [
-                    "result"
+                    "total_matched_rules",
+                    "matched_rules"
                   ]
                 }
               }
@@ -52687,6 +52687,21 @@
           "ruleset_id",
           "rule_total_count",
           "rule_criteria_types_counts"
+        ]
+      },
+      "query_rules.test:QueryRulesetMatchedRule": {
+        "type": "object",
+        "properties": {
+          "ruleset_id": {
+            "$ref": "#/components/schemas/_types:Id"
+          },
+          "rule_id": {
+            "$ref": "#/components/schemas/_types:Id"
+          }
+        },
+        "required": [
+          "ruleset_id",
+          "rule_id"
         ]
       },
       "_global.rank_eval:RankEvalRequestItem": {
