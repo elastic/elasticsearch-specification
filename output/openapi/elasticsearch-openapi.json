@@ -101405,6 +101405,10 @@
                 },
                 "runtime_mappings": {
                   "$ref": "#/components/schemas/_types.mapping:RuntimeFields"
+                },
+                "max_samples_per_key": {
+                  "description": "By default, the response of a sample query contains up to `10` samples, with one sample per unique set of join keys. Use the `size`\nparameter to get a smaller or larger set of samples. To retrieve more than one sample per set of join keys, use the\n`max_samples_per_key` parameter. Pipes are not supported for sample queries.",
+                  "type": "number"
                 }
               },
               "required": [
