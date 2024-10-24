@@ -154,8 +154,13 @@ export interface Request extends RequestBase {
     sort?: string | string[]
   }
   body: {
-    /** @aliases aggs */
+    /** @aliases aggs
+     * @ext_doc_id search-aggregations
+    */
     aggregations?: Dictionary<string, AggregationContainer>
+    /**
+     * @ext_doc_id collapse-search-results
+     */
     collapse?: FieldCollapse
     /**
      * If true, returns detailed information about score computation as part of a hit.

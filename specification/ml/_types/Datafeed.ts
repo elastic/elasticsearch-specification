@@ -34,7 +34,10 @@ import {
 import { DiscoveryNode } from './DiscoveryNode'
 
 export class Datafeed {
-  /** @aliases aggs */
+  /**
+   * @aliases aggs
+   * @ext_doc_id search-aggregations
+   */
   aggregations?: Dictionary<string, AggregationContainer>
   /**
    * The security privileges that the datafeed uses to run its queries. If Elastic Stack security features were disabled at the time of the most recent update to the datafeed, this property is omitted.
@@ -64,6 +67,7 @@ export class DatafeedConfig {
    * If set, the datafeed performs aggregation searches. Support for aggregations is limited and should be used only with low cardinality data.
    *
    * @aliases aggs
+   * @ext_doc_id search-aggregations
    */
   aggregations?: Dictionary<string, AggregationContainer>
   /**

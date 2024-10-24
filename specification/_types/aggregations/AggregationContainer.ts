@@ -114,6 +114,7 @@ export class AggregationContainer {
    * Only applies to bucket aggregations.
    * @variant container_property
    * @aliases aggs
+   * @ext_doc_id search-aggregations
    */
   aggregations?: Dictionary<string, AggregationContainer>
   /**

@@ -19948,6 +19948,9 @@
         "type": "object",
         "properties": {
           "aggregations": {
+            "externalDocs": {
+              "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/search-aggregations.html"
+            },
             "description": "Partial aggregations results, coming from the shards that have already completed the execution of the query.",
             "type": "object",
             "additionalProperties": {
@@ -25100,6 +25103,9 @@
             "type": "object",
             "properties": {
               "aggregations": {
+                "externalDocs": {
+                  "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/search-aggregations.html"
+                },
                 "description": "Sub-aggregations for this aggregation.\nOnly applies to bucket aggregations.",
                 "type": "object",
                 "additionalProperties": {
@@ -49539,6 +49545,9 @@
         "type": "object",
         "properties": {
           "aggregations": {
+            "externalDocs": {
+              "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/search-aggregations.html"
+            },
             "type": "object",
             "additionalProperties": {
               "$ref": "#/components/schemas/_types.aggregations:AggregationContainer"
@@ -51457,6 +51466,9 @@
         "type": "object",
         "properties": {
           "aggregations": {
+            "externalDocs": {
+              "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/search-aggregations.html"
+            },
             "description": "If set, the datafeed performs aggregation searches. Support for aggregations is limited and should be used only with low cardinality data.",
             "type": "object",
             "additionalProperties": {
@@ -61678,6 +61690,9 @@
               "type": "object",
               "properties": {
                 "aggregations": {
+                  "externalDocs": {
+                    "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/search-aggregations.html"
+                  },
                   "type": "object",
                   "additionalProperties": {
                     "$ref": "#/components/schemas/_types.aggregations:AggregationContainer"
