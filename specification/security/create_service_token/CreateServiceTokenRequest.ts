@@ -21,10 +21,13 @@ import { RequestBase } from '@_types/Base'
 import { Name, Namespace, Refresh, Service } from '@_types/common'
 
 /**
- * Creates a service accounts token for access without requiring basic authentication.
+ * Create a service account token.
+ *
+ * Create a service accounts token for access without requiring basic authentication.
  * @rest_spec_name security.create_service_token
  * @availability stack stability=stable
  * @availability serverless stability=stable visibility=private
+ * @ext_doc_id service-accounts
  */
 export interface Request extends RequestBase {
   path_parts: {

@@ -20,9 +20,13 @@
 import { RequestBase } from '@_types/Base'
 
 /**
+ * Get builtin privileges.
+ *
+ * Get the list of cluster privileges and index privileges that are available in this version of Elasticsearch.
  * @rest_spec_name security.get_builtin_privileges
  * @availability stack since=7.3.0 stability=stable
  * @availability serverless stability=stable visibility=private
  * @cluster_privileges manage_security
+ * @ext_doc_id security-privileges
  */
 export interface Request extends RequestBase {}

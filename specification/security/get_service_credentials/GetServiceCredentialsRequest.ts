@@ -21,9 +21,11 @@ import { RequestBase } from '@_types/Base'
 import { Name, Namespace } from '@_types/common'
 
 /**
+ * Get service account credentials.
  * @rest_spec_name security.get_service_credentials
  * @availability stack since=7.13.0 stability=stable
  * @availability serverless stability=stable visibility=private
+ * @ext_doc_id service-accounts
  */
 export interface Request extends RequestBase {
   path_parts: {

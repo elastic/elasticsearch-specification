@@ -21,6 +21,9 @@ import { RequestBase } from '@_types/Base'
 import { Names } from '@_types/common'
 
 /**
+ * Clear the roles cache.
+ *
+ * Evict roles from the native role cache.
  * @rest_spec_name security.clear_cached_roles
  * @availability stack stability=stable
  * @availability serverless stability=stable visibility=private

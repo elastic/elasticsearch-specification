@@ -21,10 +21,16 @@ import { RequestBase } from '@_types/Base'
 import { Names } from '@_types/common'
 
 /**
+ * Get role mappings.
+ *
+ * Role mappings define which roles are assigned to each user.
+ * The role mapping APIs are generally the preferred way to manage role mappings rather than using role mapping files.
+ * The get role mappings API cannot retrieve role mappings that are defined in role mapping files.
  * @rest_spec_name security.get_role_mapping
  * @availability stack since=5.5.0 stability=stable
  * @availability serverless stability=stable visibility=private
  * @cluster_privileges manage_security
+ * @ext_doc_id mapping-roles
  */
 export interface Request extends RequestBase {
   path_parts: {
