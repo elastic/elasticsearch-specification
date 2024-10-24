@@ -20,7 +20,11 @@ import { RequestBase } from '@_types/Base'
 import { IndexName } from '@_types/common'
 
 /**
- * Creates a connector.
+ * Create a connector.
+ *
+ * Connectors are Elasticsearch integrations that bring content from third-party data sources, which can be deployed on Elastic Cloud or hosted on your own infrastructure.
+ * Elastic managed connectors (Native connectors) are a managed service on Elastic Cloud.
+ * Self-managed connectors (Connector clients) are self-managed on your infrastructure.
  * @rest_spec_name connector.post
  * @availability stack since=8.12.0 stability=beta
  * @availability serverless stability=beta visibility=public
