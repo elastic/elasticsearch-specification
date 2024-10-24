@@ -21,7 +21,9 @@ import { Id } from '@_types/common'
 import { FilteringRulesValidation } from 'connector/_types/Connector'
 
 /**
- * Updates the draft filtering validation info for a connector.
+ * Update the connector draft filtering validation.
+ *
+ * Update the draft filtering validation info for a connector.
  * @rest_spec_name connector.update_filtering_validation
  * @availability stack since=8.12.0 stability=experimental
  * @availability serverless stability=experimental visibility=public

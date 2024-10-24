@@ -80,6 +80,7 @@ cluster,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/cluster
 common-options,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/common-options.html
 community-id-processor,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/community-id-processor.html
 connector-sync-job-cancel,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/cancel-connector-sync-job-api.html
+collapse-search-results,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/collapse-search-results.html
 connector-sync-job-delete,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/delete-connector-sync-job-api.html
 connector-sync-job-get,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/get-connector-sync-job-api.html
 connector-sync-job-post,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/create-connector-sync-job-api.html
