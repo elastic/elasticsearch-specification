@@ -52142,6 +52142,9 @@
             }
           },
           "knn": {
+            "externalDocs": {
+              "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-knn-query.html"
+            },
             "description": "Defines the approximate kNN search to run.",
             "oneOf": [
               {
@@ -52183,6 +52186,9 @@
             "type": "boolean"
           },
           "rescore": {
+            "externalDocs": {
+              "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/filter-search-results.html#rescore"
+            },
             "oneOf": [
               {
                 "$ref": "#/components/schemas/_global.search._types:Rescore"
@@ -61719,6 +61725,9 @@
                   }
                 },
                 "knn": {
+                  "externalDocs": {
+                    "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-knn-query.html"
+                  },
                   "description": "Defines the approximate kNN search to run.",
                   "oneOf": [
                     {
@@ -61746,6 +61755,9 @@
                   "$ref": "#/components/schemas/_types.query_dsl:QueryContainer"
                 },
                 "rescore": {
+                  "externalDocs": {
+                    "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/filter-search-results.html#rescore"
+                  },
                   "oneOf": [
                     {
                       "$ref": "#/components/schemas/_global.search._types:Rescore"
@@ -62792,6 +62804,9 @@
               "type": "object",
               "properties": {
                 "aggregations": {
+                  "externalDocs": {
+                    "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/search-aggregations.html"
+                  },
                   "description": "Defines the aggregations that are run as part of the search request.",
                   "type": "object",
                   "additionalProperties": {
@@ -62840,6 +62855,9 @@
                   }
                 },
                 "knn": {
+                  "externalDocs": {
+                    "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-knn-query.html"
+                  },
                   "description": "Defines the approximate kNN search to run.",
                   "oneOf": [
                     {
@@ -62868,6 +62886,9 @@
                   "$ref": "#/components/schemas/_types.query_dsl:QueryContainer"
                 },
                 "rescore": {
+                  "externalDocs": {
+                    "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/filter-search-results.html#rescore"
+                  },
                   "description": "Can be used to improve precision by reordering just the top (for example 100 - 500) documents returned by the `query` and `post_filter` phases.",
                   "oneOf": [
                     {
