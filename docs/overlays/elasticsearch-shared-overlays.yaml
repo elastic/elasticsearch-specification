@@ -57,14 +57,6 @@ actions:
           externalDocs:
             description: Reading and writing documents
             url: https://www.elastic.co/guide/en/elasticsearch/reference/8.16/docs-replication.html
-        - name: mget
-          x-displayName: Document - Multi get
-        - name: mtermvectors
-          x-displayName: Document - Multi term vectors
-        - name: delete_by_query_rethrottle
-          x-displayName: Document - Rethrottle delete by query
-        - name: update_by_query_rethrottle
-          x-displayName: Document - Rethrottle update by query
       # E  
         - name: enrich
           x-displayName: Enrich
