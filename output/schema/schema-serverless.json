@@ -7612,6 +7612,44 @@
       "name": "query_rules.put_ruleset",
       "request": {
         "name": "Request",
+        "namespace": "query_rules.put_ruleset"
+      },
+      "requestBodyRequired": true,
+      "requestMediaType": [
+        "application/json"
+      ],
+      "response": {
+        "name": "Response",
+        "namespace": "query_rules.put_ruleset"
+      },
+      "responseMediaType": [
+        "application/json"
+      ],
+      "urls": [
+        {
+          "methods": [
+            "PUT"
+          ],
+          "path": "/_query_rules/{ruleset_id}"
+        }
+      ]
+    },
+    {
+      "availability": {
+        "serverless": {
+          "stability": "stable",
+          "visibility": "public"
+        },
+        "stack": {
+          "since": "8.10.0",
+          "stability": "stable"
+        }
+      },
+      "description": "Creates or updates a query ruleset.",
+      "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/test-query-ruleset.html",
+      "name": "query_rules.test",
+      "request": {
+        "name": "Request",
         "namespace": "query_rules.test"
       },
       "requestBodyRequired": true,
@@ -7628,9 +7666,9 @@
       "urls": [
         {
           "methods": [
-            "PUT"
+            "POST"
           ],
-          "path": "/_query_rules/{ruleset_id}"
+          "path": "/_query_rules/{ruleset_id}/_test"
         }
       ]
     },
@@ -34736,6 +34774,94 @@
         "namespace": "query_rules.put_rule"
       },
       "specLocation": "query_rules/put_rule/QueryRulePutResponse.ts#L22-L26"
+    },
+    {
+      "attachedBehaviors": [
+        "CommonQueryParameters"
+      ],
+      "body": {
+        "kind": "properties",
+        "properties": [
+          {
+            "name": "rules",
+            "required": true,
+            "type": {
+              "items": [
+                {
+                  "kind": "instance_of",
+                  "type": {
+                    "name": "QueryRule",
+                    "namespace": "query_rules._types"
+                  }
+                },
+                {
+                  "kind": "array_of",
+                  "value": {
+                    "kind": "instance_of",
+                    "type": {
+                      "name": "QueryRule",
+                      "namespace": "query_rules._types"
+                    }
+                  }
+                }
+              ],
+              "kind": "union_of"
+            }
+          }
+        ]
+      },
+      "description": "Creates or updates a query ruleset.",
+      "inherits": {
+        "type": {
+          "name": "RequestBase",
+          "namespace": "_types"
+        }
+      },
+      "kind": "request",
+      "name": {
+        "name": "Request",
+        "namespace": "query_rules.put_ruleset"
+      },
+      "path": [
+        {
+          "description": "The unique identifier of the query ruleset to be created or updated",
+          "name": "ruleset_id",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Id",
+              "namespace": "_types"
+            }
+          }
+        }
+      ],
+      "query": [],
+      "specLocation": "query_rules/put_ruleset/QueryRulesetPutRequest.ts#L23-L43"
+    },
+    {
+      "body": {
+        "kind": "properties",
+        "properties": [
+          {
+            "name": "result",
+            "required": true,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "Result",
+                "namespace": "_types"
+              }
+            }
+          }
+        ]
+      },
+      "kind": "response",
+      "name": {
+        "name": "Response",
+        "namespace": "query_rules.put_ruleset"
+      },
+      "specLocation": "query_rules/put_ruleset/QueryRulesetPutResponse.ts#L22-L26"
     },
     {
       "attachedBehaviors": [
@@ -137505,7 +137631,7 @@
           }
         }
       ],
-      "specLocation": "query_rules/test/types.ts#L21-L30"
+      "specLocation": "query_rules/test/QueryRulesetTestResponse.ts#L30-L39"
     },
     {
       "kind": "interface",
