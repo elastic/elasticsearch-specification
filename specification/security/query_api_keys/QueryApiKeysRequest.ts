@@ -24,8 +24,9 @@ import { Sort, SortResults } from '@_types/sort'
 import { ApiKeyAggregationContainer, ApiKeyQueryContainer } from './types'
 
 /**
- * Query API keys.
- * Retrieves a paginated list of API keys and their information. You can optionally filter the results with a query.
+ * Find API keys with a query.
+ *
+ * Get a paginated list of API keys and their information. You can optionally filter the results with a query.
  * @rest_spec_name security.query_api_keys
  * @availability stack since=7.15.0 stability=stable
  * @availability serverless stability=stable visibility=public

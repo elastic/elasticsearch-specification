@@ -21,7 +21,9 @@ import { UserProfileId } from '@security/_types/UserProfile'
 import { RequestBase } from '@_types/Base'
 
 /**
- * Retrieves a user's profile using the unique profile ID.
+ * Get a user profile.
+ *
+ * Get a user's profile using the unique profile ID.
  * @rest_spec_name security.get_user_profile
  * @availability stack since=8.2.0 stability=stable
  * @availability serverless stability=stable visibility=private

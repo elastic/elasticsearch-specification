@@ -22,10 +22,14 @@ import { RequestBase } from '@_types/Base'
 import { PrivilegesCheck } from './types'
 
 /**
+ * Check user profile privileges.
+ *
+ * Determine whether the users associated with the specified user profile IDs have all the requested privileges.
  * @rest_spec_name security.has_privileges_user_profile
  * @availability stack since=8.3.0 stability=stable
  * @availability serverless stability=stable visibility=private
  * @cluster_privileges manage_user_profile
+ * @ext_doc_id user-profile
  */
 export interface Request extends RequestBase {
   body: {
