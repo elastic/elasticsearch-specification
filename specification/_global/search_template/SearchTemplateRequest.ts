@@ -30,11 +30,12 @@ import {
 import { Duration } from '@_types/Time'
 
 /**
- * Runs a search with a search template.
+ * Run a search with a search template.
  * @rest_spec_name search_template
  * @availability stack since=2.0.0 stability=stable
  * @availability serverless stability=stable visibility=public
  * @doc_tag search
+ * @ext_doc_id search-teamplate
  */
 export interface Request extends RequestBase {
   path_parts: {
