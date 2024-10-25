@@ -31,7 +31,7 @@ import { Duration } from '@_types/Time'
  * search requests using the same point in time. For example, if refreshes happen between
  * `search_after` requests, then the results of those requests might not be consistent as changes happening
  * between searches are only visible to the more recent point in time.
- * 
+ *
  * A point in time must be opened explicitly before being used in search requests.
  * The `keep_alive` parameter tells Elasticsearch how long it should persist.
  * @rest_spec_name open_point_in_time
