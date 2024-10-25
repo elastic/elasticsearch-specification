@@ -27924,8 +27924,7 @@
                       "type": "string"
                     },
                     "expiration": {
-                      "description": "Expiration in milliseconds for the API key.",
-                      "type": "number"
+                      "$ref": "#/components/schemas/_types:DurationValueUnitMillis"
                     },
                     "id": {
                       "$ref": "#/components/schemas/_types:Id"

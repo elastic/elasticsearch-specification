@@ -17925,7 +17925,7 @@ export interface SecurityCreateCrossClusterApiKeyRequest extends RequestBase {
 
 export interface SecurityCreateCrossClusterApiKeyResponse {
   api_key: string
-  expiration?: long
+  expiration?: DurationValue<UnitMillis>
   id: Id
   name: Name
   encoded: string

@@ -18,7 +18,7 @@
  */
 
 import { Id, Name } from '@_types/common'
-import { long } from '@_types/Numeric'
+import { DurationValue, UnitMillis } from '@_types/Time'
 
 export class Response {
   body: {
