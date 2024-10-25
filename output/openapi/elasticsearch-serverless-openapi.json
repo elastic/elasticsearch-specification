@@ -114,8 +114,8 @@
         "tags": [
           "search"
         ],
-        "summary": "Get async search status",
-        "description": "Retrieve the status of a previously submitted async search request given its identifier, without retrieving search results.\nIf the Elasticsearch security features are enabled, use of this API is restricted to the `monitoring_user` role.",
+        "summary": "Get the async search status",
+        "description": "Get the status of a previously submitted async search request given its identifier, without retrieving search results.\nIf the Elasticsearch security features are enabled, use of this API is restricted to the `monitoring_user` role.",
         "operationId": "async-search-status",
         "parameters": [
           {
@@ -15351,8 +15351,8 @@
         "tags": [
           "search"
         ],
-        "summary": "Returns search hits that match the query defined in the request",
-        "description": "You can provide search queries using the `q` query string parameter or the request body.\nIf both are specified, only the query parameter is used.",
+        "summary": "Run a search",
+        "description": "Get search hits that match the query defined in the request.\nYou can provide search queries using the `q` query string parameter or the request body.\nIf both are specified, only the query parameter is used.",
         "operationId": "search",
         "parameters": [
           {
@@ -15501,8 +15501,8 @@
         "tags": [
           "search"
         ],
-        "summary": "Returns search hits that match the query defined in the request",
-        "description": "You can provide search queries using the `q` query string parameter or the request body.\nIf both are specified, only the query parameter is used.",
+        "summary": "Run a search",
+        "description": "Get search hits that match the query defined in the request.\nYou can provide search queries using the `q` query string parameter or the request body.\nIf both are specified, only the query parameter is used.",
         "operationId": "search-1",
         "parameters": [
           {
@@ -15653,8 +15653,8 @@
         "tags": [
           "search"
         ],
-        "summary": "Returns search hits that match the query defined in the request",
-        "description": "You can provide search queries using the `q` query string parameter or the request body.\nIf both are specified, only the query parameter is used.",
+        "summary": "Run a search",
+        "description": "Get search hits that match the query defined in the request.\nYou can provide search queries using the `q` query string parameter or the request body.\nIf both are specified, only the query parameter is used.",
         "operationId": "search-2",
         "parameters": [
           {
@@ -15806,8 +15806,8 @@
         "tags": [
           "search"
         ],
-        "summary": "Returns search hits that match the query defined in the request",
-        "description": "You can provide search queries using the `q` query string parameter or the request body.\nIf both are specified, only the query parameter is used.",
+        "summary": "Run a search",
+        "description": "Get search hits that match the query defined in the request.\nYou can provide search queries using the `q` query string parameter or the request body.\nIf both are specified, only the query parameter is used.",
         "operationId": "search-3",
         "parameters": [
           {
@@ -16315,7 +16315,7 @@
           "search"
         ],
         "summary": "Search a vector tile",
-        "description": "Searches a vector tile for geospatial values.",
+        "description": "Search a vector tile for geospatial values.",
         "operationId": "search-mvt-1",
         "parameters": [
           {
@@ -16370,7 +16370,7 @@
           "search"
         ],
         "summary": "Search a vector tile",
-        "description": "Searches a vector tile for geospatial values.",
+        "description": "Search a vector tile for geospatial values.",
         "operationId": "search-mvt",
         "parameters": [
           {
@@ -18261,7 +18261,7 @@
           "document"
         ],
         "summary": "Get term vector information",
-        "description": "Returns information and statistics about terms in the fields of a particular document.",
+        "description": "Get information and statistics about terms in the fields of a particular document.",
         "operationId": "termvectors",
         "parameters": [
           {
@@ -18318,7 +18318,7 @@
           "document"
         ],
         "summary": "Get term vector information",
-        "description": "Returns information and statistics about terms in the fields of a particular document.",
+        "description": "Get information and statistics about terms in the fields of a particular document.",
         "operationId": "termvectors-1",
         "parameters": [
           {
@@ -18377,7 +18377,7 @@
           "document"
         ],
         "summary": "Get term vector information",
-        "description": "Returns information and statistics about terms in the fields of a particular document.",
+        "description": "Get information and statistics about terms in the fields of a particular document.",
         "operationId": "termvectors-2",
         "parameters": [
           {
@@ -18431,7 +18431,7 @@
           "document"
         ],
         "summary": "Get term vector information",
-        "description": "Returns information and statistics about terms in the fields of a particular document.",
+        "description": "Get information and statistics about terms in the fields of a particular document.",
         "operationId": "termvectors-3",
         "parameters": [
           {

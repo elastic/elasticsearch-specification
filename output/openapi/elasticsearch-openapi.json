@@ -114,8 +114,8 @@
         "tags": [
           "search"
         ],
-        "summary": "Get async search status",
-        "description": "Retrieve the status of a previously submitted async search request given its identifier, without retrieving search results.\nIf the Elasticsearch security features are enabled, use of this API is restricted to the `monitoring_user` role.",
+        "summary": "Get the async search status",
+        "description": "Get the status of a previously submitted async search request given its identifier, without retrieving search results.\nIf the Elasticsearch security features are enabled, use of this API is restricted to the `monitoring_user` role.",
         "operationId": "async-search-status",
         "parameters": [
           {
@@ -15493,7 +15493,8 @@
         "tags": [
           "search"
         ],
-        "summary": "Performs a kNN search",
+        "summary": "Run a knn search",
+        "description": "NOTE: The kNN search API has been replaced by the `knn` option in the search API.\n\nPerform a k-nearest neighbor (kNN) search on a dense_vector field and return the matching documents.\nGiven a query vector, the API finds the k closest vectors and returns those documents as search hits.\n\nElasticsearch uses the HNSW algorithm to support efficient kNN search.\nLike most kNN algorithms, HNSW is an approximate method that sacrifices result accuracy for improved search speed.\nThis means the results returned are not always the true k closest neighbors.\n\nThe kNN search API supports restricting the search using a filter.\nThe search will return the top k documents that also match the filter query.",
         "operationId": "knn-search",
         "parameters": [
           {
@@ -15518,7 +15519,8 @@
         "tags": [
           "search"
         ],
-        "summary": "Performs a kNN search",
+        "summary": "Run a knn search",
+        "description": "NOTE: The kNN search API has been replaced by the `knn` option in the search API.\n\nPerform a k-nearest neighbor (kNN) search on a dense_vector field and return the matching documents.\nGiven a query vector, the API finds the k closest vectors and returns those documents as search hits.\n\nElasticsearch uses the HNSW algorithm to support efficient kNN search.\nLike most kNN algorithms, HNSW is an approximate method that sacrifices result accuracy for improved search speed.\nThis means the results returned are not always the true k closest neighbors.\n\nThe kNN search API supports restricting the search using a filter.\nThe search will return the top k documents that also match the filter query.",
         "operationId": "knn-search-1",
         "parameters": [
           {
@@ -25213,8 +25215,8 @@
         "tags": [
           "search"
         ],
-        "summary": "Returns search hits that match the query defined in the request",
-        "description": "You can provide search queries using the `q` query string parameter or the request body.\nIf both are specified, only the query parameter is used.",
+        "summary": "Run a search",
+        "description": "Get search hits that match the query defined in the request.\nYou can provide search queries using the `q` query string parameter or the request body.\nIf both are specified, only the query parameter is used.",
         "operationId": "search",
         "parameters": [
           {
@@ -25366,8 +25368,8 @@
         "tags": [
           "search"
         ],
-        "summary": "Returns search hits that match the query defined in the request",
-        "description": "You can provide search queries using the `q` query string parameter or the request body.\nIf both are specified, only the query parameter is used.",
+        "summary": "Run a search",
+        "description": "Get search hits that match the query defined in the request.\nYou can provide search queries using the `q` query string parameter or the request body.\nIf both are specified, only the query parameter is used.",
         "operationId": "search-1",
         "parameters": [
           {
@@ -25521,8 +25523,8 @@
         "tags": [
           "search"
         ],
-        "summary": "Returns search hits that match the query defined in the request",
-        "description": "You can provide search queries using the `q` query string parameter or the request body.\nIf both are specified, only the query parameter is used.",
+        "summary": "Run a search",
+        "description": "Get search hits that match the query defined in the request.\nYou can provide search queries using the `q` query string parameter or the request body.\nIf both are specified, only the query parameter is used.",
         "operationId": "search-2",
         "parameters": [
           {
@@ -25677,8 +25679,8 @@
         "tags": [
           "search"
         ],
-        "summary": "Returns search hits that match the query defined in the request",
-        "description": "You can provide search queries using the `q` query string parameter or the request body.\nIf both are specified, only the query parameter is used.",
+        "summary": "Run a search",
+        "description": "Get search hits that match the query defined in the request.\nYou can provide search queries using the `q` query string parameter or the request body.\nIf both are specified, only the query parameter is used.",
         "operationId": "search-3",
         "parameters": [
           {
@@ -26189,7 +26191,7 @@
           "search"
         ],
         "summary": "Search a vector tile",
-        "description": "Searches a vector tile for geospatial values.",
+        "description": "Search a vector tile for geospatial values.",
         "operationId": "search-mvt-1",
         "parameters": [
           {
@@ -26244,7 +26246,7 @@
           "search"
         ],
         "summary": "Search a vector tile",
-        "description": "Searches a vector tile for geospatial values.",
+        "description": "Search a vector tile for geospatial values.",
         "operationId": "search-mvt",
         "parameters": [
           {
@@ -26300,7 +26302,8 @@
         "tags": [
           "search"
         ],
-        "summary": "Returns information about the indices and shards that a search request would be executed against",
+        "summary": "Get the search shards",
+        "description": "Get the indices and shards that a search request would be run against.\nThis information can be useful for working out issues or planning optimizations with routing and shard preferences.\nWhen filtered aliases are used, the filter is returned as part of the indices section.",
         "operationId": "search-shards",
         "parameters": [
           {
@@ -26332,7 +26335,8 @@
         "tags": [
           "search"
         ],
-        "summary": "Returns information about the indices and shards that a search request would be executed against",
+        "summary": "Get the search shards",
+        "description": "Get the indices and shards that a search request would be run against.\nThis information can be useful for working out issues or planning optimizations with routing and shard preferences.\nWhen filtered aliases are used, the filter is returned as part of the indices section.",
         "operationId": "search-shards-1",
         "parameters": [
           {
@@ -26366,7 +26370,8 @@
         "tags": [
           "search"
         ],
-        "summary": "Returns information about the indices and shards that a search request would be executed against",
+        "summary": "Get the search shards",
+        "description": "Get the indices and shards that a search request would be run against.\nThis information can be useful for working out issues or planning optimizations with routing and shard preferences.\nWhen filtered aliases are used, the filter is returned as part of the indices section.",
         "operationId": "search-shards-2",
         "parameters": [
           {
@@ -26401,7 +26406,8 @@
         "tags": [
           "search"
         ],
-        "summary": "Returns information about the indices and shards that a search request would be executed against",
+        "summary": "Get the search shards",
+        "description": "Get the indices and shards that a search request would be run against.\nThis information can be useful for working out issues or planning optimizations with routing and shard preferences.\nWhen filtered aliases are used, the filter is returned as part of the indices section.",
         "operationId": "search-shards-3",
         "parameters": [
           {
@@ -32960,7 +32966,7 @@
           "document"
         ],
         "summary": "Get term vector information",
-        "description": "Returns information and statistics about terms in the fields of a particular document.",
+        "description": "Get information and statistics about terms in the fields of a particular document.",
         "operationId": "termvectors",
         "parameters": [
           {
@@ -33017,7 +33023,7 @@
           "document"
         ],
         "summary": "Get term vector information",
-        "description": "Returns information and statistics about terms in the fields of a particular document.",
+        "description": "Get information and statistics about terms in the fields of a particular document.",
         "operationId": "termvectors-1",
         "parameters": [
           {
@@ -33076,7 +33082,7 @@
           "document"
         ],
         "summary": "Get term vector information",
-        "description": "Returns information and statistics about terms in the fields of a particular document.",
+        "description": "Get information and statistics about terms in the fields of a particular document.",
         "operationId": "termvectors-2",
         "parameters": [
           {
@@ -33130,7 +33136,7 @@
           "document"
         ],
         "summary": "Get term vector information",
-        "description": "Returns information and statistics about terms in the fields of a particular document.",
+        "description": "Get information and statistics about terms in the fields of a particular document.",
         "operationId": "termvectors-3",
         "parameters": [
           {
