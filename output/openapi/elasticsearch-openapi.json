@@ -2812,7 +2812,8 @@
         "tags": [
           "search"
         ],
-        "summary": "Clears the search context and results for a scrolling search",
+        "summary": "Clear a scrolling search",
+        "description": "Clear the search context and results for a scrolling search.",
         "operationId": "clear-scroll",
         "requestBody": {
           "$ref": "#/components/requestBodies/clear_scroll"
@@ -2895,7 +2896,8 @@
         "tags": [
           "search"
         ],
-        "summary": "Clears the search context and results for a scrolling search",
+        "summary": "Clear a scrolling search",
+        "description": "Clear the search context and results for a scrolling search.",
         "operationId": "clear-scroll-1",
         "parameters": [
           {
@@ -2917,7 +2919,8 @@
         "tags": [
           "search"
         ],
-        "summary": "Closes a point-in-time",
+        "summary": "Close a point in time",
+        "description": "A point in time must be opened explicitly before being used in search requests.\nThe `keep_alive` parameter tells Elasticsearch how long it should persist.\nA point in time is automatically closed when the `keep_alive` period has elapsed.\nHowever, keeping points in time has a cost; close them as soon as they are no lwonger required for search requests.",
         "operationId": "close-point-in-time",
         "requestBody": {
           "content": {
@@ -8230,8 +8233,8 @@
         "tags": [
           "search"
         ],
-        "summary": "The field capabilities API returns the information about the capabilities of fields among multiple indices",
-        "description": "The field capabilities API returns runtime fields like any other field. For example, a runtime field with a type\nof keyword is returned as any other field that belongs to the `keyword` family.",
+        "summary": "Get the field capabilities",
+        "description": "Get information about the capabilities of fields among multiple indices.\n\nFor data streams, the API returns field capabilities among the stream’s backing indices.\nIt returns runtime fields like any other field.\nFor example, a runtime field with a type of keyword is returned the same as any other field that belongs to the `keyword` family.",
         "operationId": "field-caps",
         "parameters": [
           {
@@ -8273,8 +8276,8 @@
         "tags": [
           "search"
         ],
-        "summary": "The field capabilities API returns the information about the capabilities of fields among multiple indices",
-        "description": "The field capabilities API returns runtime fields like any other field. For example, a runtime field with a type\nof keyword is returned as any other field that belongs to the `keyword` family.",
+        "summary": "Get the field capabilities",
+        "description": "Get information about the capabilities of fields among multiple indices.\n\nFor data streams, the API returns field capabilities among the stream’s backing indices.\nIt returns runtime fields like any other field.\nFor example, a runtime field with a type of keyword is returned the same as any other field that belongs to the `keyword` family.",
         "operationId": "field-caps-1",
         "parameters": [
           {
@@ -8318,8 +8321,8 @@
         "tags": [
           "search"
         ],
-        "summary": "The field capabilities API returns the information about the capabilities of fields among multiple indices",
-        "description": "The field capabilities API returns runtime fields like any other field. For example, a runtime field with a type\nof keyword is returned as any other field that belongs to the `keyword` family.",
+        "summary": "Get the field capabilities",
+        "description": "Get information about the capabilities of fields among multiple indices.\n\nFor data streams, the API returns field capabilities among the stream’s backing indices.\nIt returns runtime fields like any other field.\nFor example, a runtime field with a type of keyword is returned the same as any other field that belongs to the `keyword` family.",
         "operationId": "field-caps-2",
         "parameters": [
           {
@@ -8364,8 +8367,8 @@
         "tags": [
           "search"
         ],
-        "summary": "The field capabilities API returns the information about the capabilities of fields among multiple indices",
-        "description": "The field capabilities API returns runtime fields like any other field. For example, a runtime field with a type\nof keyword is returned as any other field that belongs to the `keyword` family.",
+        "summary": "Get the field capabilities",
+        "description": "Get information about the capabilities of fields among multiple indices.\n\nFor data streams, the API returns field capabilities among the stream’s backing indices.\nIt returns runtime fields like any other field.\nFor example, a runtime field with a type of keyword is returned the same as any other field that belongs to the `keyword` family.",
         "operationId": "field-caps-3",
         "parameters": [
           {
@@ -22582,7 +22585,10 @@
         "tags": [
           "search"
         ],
-        "summary": "Runs multiple templated searches with a single request",
+        "summary": "Run multiple templated searches",
+        "externalDocs": {
+          "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/search-template.html"
+        },
         "operationId": "msearch-template",
         "parameters": [
           {
@@ -22615,7 +22621,10 @@
         "tags": [
           "search"
         ],
-        "summary": "Runs multiple templated searches with a single request",
+        "summary": "Run multiple templated searches",
+        "externalDocs": {
+          "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/search-template.html"
+        },
         "operationId": "msearch-template-1",
         "parameters": [
           {
@@ -22650,7 +22659,10 @@
         "tags": [
           "search"
         ],
-        "summary": "Runs multiple templated searches with a single request",
+        "summary": "Run multiple templated searches",
+        "externalDocs": {
+          "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/search-template.html"
+        },
         "operationId": "msearch-template-2",
         "parameters": [
           {
@@ -22686,7 +22698,10 @@
         "tags": [
           "search"
         ],
-        "summary": "Runs multiple templated searches with a single request",
+        "summary": "Run multiple templated searches",
+        "externalDocs": {
+          "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/search-template.html"
+        },
         "operationId": "msearch-template-3",
         "parameters": [
           {
@@ -23677,8 +23692,8 @@
         "tags": [
           "search"
         ],
-        "summary": "A search request by default executes against the most recent visible data of the target indices,\n",
-        "description": "which is called point in time. Elasticsearch pit (point in time) is a lightweight view into the\nstate of the data as it existed when initiated. In some cases, it’s preferred to perform multiple\nsearch requests using the same point in time. For example, if refreshes happen between\n`search_after` requests, then the results of those requests might not be consistent as changes happening\nbetween searches are only visible to the more recent point in time.",
+        "summary": "Open a point in time",
+        "description": "A search request by default runs against the most recent visible data of the target indices,\nwhich is called point in time. Elasticsearch pit (point in time) is a lightweight view into the\nstate of the data as it existed when initiated. In some cases, it’s preferred to perform multiple\nsearch requests using the same point in time. For example, if refreshes happen between\n`search_after` requests, then the results of those requests might not be consistent as changes happening\nbetween searches are only visible to the more recent point in time.\n\nA point in time must be opened explicitly before being used in search requests.\nThe `keep_alive` parameter tells Elasticsearch how long it should persist.",
         "operationId": "open-point-in-time",
         "parameters": [
           {
@@ -24300,7 +24315,8 @@
         "tags": [
           "search"
         ],
-        "summary": "Enables you to evaluate the quality of ranked search results over a set of typical search queries",
+        "summary": "Evaluate ranked search results",
+        "description": "Evaluate the quality of ranked search results over a set of typical search queries.",
         "operationId": "rank-eval",
         "parameters": [
           {
@@ -24330,7 +24346,8 @@
         "tags": [
           "search"
         ],
-        "summary": "Enables you to evaluate the quality of ranked search results over a set of typical search queries",
+        "summary": "Evaluate ranked search results",
+        "description": "Evaluate the quality of ranked search results over a set of typical search queries.",
         "operationId": "rank-eval-1",
         "parameters": [
           {
@@ -24362,7 +24379,8 @@
         "tags": [
           "search"
         ],
-        "summary": "Enables you to evaluate the quality of ranked search results over a set of typical search queries",
+        "summary": "Evaluate ranked search results",
+        "description": "Evaluate the quality of ranked search results over a set of typical search queries.",
         "operationId": "rank-eval-2",
         "parameters": [
           {
@@ -24395,7 +24413,8 @@
         "tags": [
           "search"
         ],
-        "summary": "Enables you to evaluate the quality of ranked search results over a set of typical search queries",
+        "summary": "Evaluate ranked search results",
+        "description": "Evaluate the quality of ranked search results over a set of typical search queries.",
         "operationId": "rank-eval-3",
         "parameters": [
           {
@@ -24680,7 +24699,8 @@
         "tags": [
           "search"
         ],
-        "summary": "Renders a search template as a search request body",
+        "summary": "Render a search template",
+        "description": "Render a search template as a search request body.",
         "operationId": "render-search-template",
         "requestBody": {
           "$ref": "#/components/requestBodies/render_search_template"
@@ -24695,7 +24715,8 @@
         "tags": [
           "search"
         ],
-        "summary": "Renders a search template as a search request body",
+        "summary": "Render a search template",
+        "description": "Render a search template as a search request body.",
         "operationId": "render-search-template-1",
         "requestBody": {
           "$ref": "#/components/requestBodies/render_search_template"
@@ -24712,7 +24733,8 @@
         "tags": [
           "search"
         ],
-        "summary": "Renders a search template as a search request body",
+        "summary": "Render a search template",
+        "description": "Render a search template as a search request body.",
         "operationId": "render-search-template-2",
         "parameters": [
           {
@@ -24732,7 +24754,8 @@
         "tags": [
           "search"
         ],
-        "summary": "Renders a search template as a search request body",
+        "summary": "Render a search template",
+        "description": "Render a search template as a search request body.",
         "operationId": "render-search-template-3",
         "parameters": [
           {
@@ -26415,7 +26438,10 @@
         "tags": [
           "search"
         ],
-        "summary": "Runs a search with a search template",
+        "summary": "Run a search with a search template",
+        "externalDocs": {
+          "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/search-template.html"
+        },
         "operationId": "search-template",
         "parameters": [
           {
@@ -26472,7 +26498,10 @@
         "tags": [
           "search"
         ],
-        "summary": "Runs a search with a search template",
+        "summary": "Run a search with a search template",
+        "externalDocs": {
+          "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/search-template.html"
+        },
         "operationId": "search-template-1",
         "parameters": [
           {
@@ -26531,7 +26560,10 @@
         "tags": [
           "search"
         ],
-        "summary": "Runs a search with a search template",
+        "summary": "Run a search with a search template",
+        "externalDocs": {
+          "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/search-template.html"
+        },
         "operationId": "search-template-2",
         "parameters": [
           {
@@ -26591,7 +26623,10 @@
         "tags": [
           "search"
         ],
-        "summary": "Runs a search with a search template",
+        "summary": "Run a search with a search template",
+        "externalDocs": {
+          "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/search-template.html"
+        },
         "operationId": "search-template-3",
         "parameters": [
           {
