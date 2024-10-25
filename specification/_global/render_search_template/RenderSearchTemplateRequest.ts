@@ -23,7 +23,9 @@ import { RequestBase } from '@_types/Base'
 import { Id } from '@_types/common'
 
 /**
- * Renders a search template as a search request body.
+ * Render a search template.
+ *
+ * Render a search template as a search request body.
  * @rest_spec_name render_search_template
  * @availability stack stability=stable
  * @availability serverless stability=stable visibility=public

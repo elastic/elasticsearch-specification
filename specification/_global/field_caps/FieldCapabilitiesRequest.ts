@@ -23,9 +23,13 @@ import { RuntimeFields } from '@_types/mapping/RuntimeFields'
 import { QueryContainer } from '@_types/query_dsl/abstractions'
 
 /**
- * The field capabilities API returns the information about the capabilities of fields among multiple indices.
- * The field capabilities API returns runtime fields like any other field. For example, a runtime field with a type
- * of keyword is returned as any other field that belongs to the `keyword` family.
+ * Get the field capabilities.
+ *
+ * Get information about the capabilities of fields among multiple indices.
+ *
+ * For data streams, the API returns field capabilities among the stream’s backing indices.
+ * It returns runtime fields like any other field.
+ * For example, a runtime field with a type of keyword is returned the same as any other field that belongs to the `keyword` family.
  * @rest_spec_name field_caps
  * @availability stack since=5.4.0 stability=stable
  * @availability serverless stability=stable visibility=public

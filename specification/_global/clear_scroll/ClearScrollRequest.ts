@@ -21,7 +21,9 @@ import { RequestBase } from '@_types/Base'
 import { ScrollIds } from '@_types/common'
 
 /**
- * Clears the search context and results for a scrolling search.
+ * Clear a scrolling search.
+ *
+ * Clear the search context and results for a scrolling search.
  * @rest_spec_name clear_scroll
  * @availability stack stability=stable
  * @availability serverless stability=stable visibility=public
