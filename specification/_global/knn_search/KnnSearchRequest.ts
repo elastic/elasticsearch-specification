@@ -25,7 +25,7 @@ import { Query } from './_types/Knn'
 
 /**
  * Run a knn search.
- * 
+ *
  * NOTE: The kNN search API has been replaced by the `knn` option in the search API.
  *
  * Perform a k-nearest neighbor (kNN) search on a dense_vector field and return the matching documents.
