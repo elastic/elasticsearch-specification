@@ -29,7 +29,7 @@ export class Response {
     /**
      * Expiration in milliseconds for the API key.
      */
-    expiration?: long
+    expiration?: DurationValue<UnitMillis>
     /**
      * Unique ID for this API key.
      */
