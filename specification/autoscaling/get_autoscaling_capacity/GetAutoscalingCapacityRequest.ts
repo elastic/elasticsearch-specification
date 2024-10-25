@@ -33,7 +33,7 @@ import { RequestBase } from '@_types/Base'
  *
  * The response contains decider-specific information you can use to diagnose how and why autoscaling determined a certain capacity was required.
  * This information is provided for diagnosis only.
- * Do not use this information to make autoscaling decisions. 
+ * Do not use this information to make autoscaling decisions.
  * @rest_spec_name autoscaling.get_autoscaling_capacity
  * @availability stack since=7.11.0 stability=stable
  * @doc_id autoscaling-get-autoscaling-capacity
