@@ -52,7 +52,9 @@ import { SourceConfig, SourceConfigParam } from './_types/SourceFilter'
 import { Suggester } from './_types/suggester'
 
 /**
- * Returns search hits that match the query defined in the request.
+ * Run a search.
+ *
+ * Get search hits that match the query defined in the request.
  * You can provide search queries using the `q` query string parameter or the request body.
  * If both are specified, only the query parameter is used.
  * @rest_spec_name search

@@ -54,6 +54,7 @@ import { Duration } from '@_types/Time'
 
 /**
  * Run an async search.
+ *
  * When the primary sort of the results is an indexed field, shards get sorted based on minimum and maximum value that they hold for that field. Partial results become available following the sort criteria that was requested.
  *
  * Warning: Asynchronous search does not support scroll or search requests that include only the suggest section.
