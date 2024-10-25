@@ -6265,7 +6265,7 @@
           "stability": "stable"
         }
       },
-      "description": "Create a datafeed.\nDatafeeds retrieve data from Elasticsearch for analysis by an anomaly detection job.\nYou can associate only one datafeed with each anomaly detection job.\nThe datafeed contains a query that runs at a defined interval (`frequency`).\nIf you are concerned about delayed data, you can add a delay (`query_delay') at each interval.\nWhen Elasticsearch security features are enabled, your datafeed remembers which roles the user who created it had\nat the time of creation and runs the query using those same roles. If you provide secondary authorization headers,\nthose credentials are used instead.\nYou must use Kibana, this API, or the create anomaly detection jobs API to create a datafeed. Do not add a datafeed\ndirectly to the `.ml-config` index. Do not give users `write` privileges on the `.ml-config` index.",
+      "description": "Create a datafeed.\nDatafeeds retrieve data from Elasticsearch for analysis by an anomaly detection job.\nYou can associate only one datafeed with each anomaly detection job.\nThe datafeed contains a query that runs at a defined interval (`frequency`).\nIf you are concerned about delayed data, you can add a delay (`query_delay`) at each interval.\nWhen Elasticsearch security features are enabled, your datafeed remembers which roles the user who created it had\nat the time of creation and runs the query using those same roles. If you provide secondary authorization headers,\nthose credentials are used instead.\nYou must use Kibana, this API, or the create anomaly detection jobs API to create a datafeed. Do not add a datafeed\ndirectly to the `.ml-config` index. Do not give users `write` privileges on the `.ml-config` index.",
       "docTag": "ml anomaly",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/ml-put-datafeed.html",
       "name": "ml.put_datafeed",
@@ -7631,6 +7631,44 @@
             "PUT"
           ],
           "path": "/_query_rules/{ruleset_id}"
+        }
+      ]
+    },
+    {
+      "availability": {
+        "serverless": {
+          "stability": "stable",
+          "visibility": "public"
+        },
+        "stack": {
+          "since": "8.10.0",
+          "stability": "stable"
+        }
+      },
+      "description": "Creates or updates a query ruleset.",
+      "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/test-query-ruleset.html",
+      "name": "query_rules.test",
+      "request": {
+        "name": "Request",
+        "namespace": "query_rules.test"
+      },
+      "requestBodyRequired": true,
+      "requestMediaType": [
+        "application/json"
+      ],
+      "response": {
+        "name": "Response",
+        "namespace": "query_rules.test"
+      },
+      "responseMediaType": [
+        "application/json"
+      ],
+      "urls": [
+        {
+          "methods": [
+            "POST"
+          ],
+          "path": "/_query_rules/{ruleset_id}/_test"
         }
       ]
     },
@@ -29706,7 +29744,7 @@
           }
         ]
       },
-      "description": "Create a datafeed.\nDatafeeds retrieve data from Elasticsearch for analysis by an anomaly detection job.\nYou can associate only one datafeed with each anomaly detection job.\nThe datafeed contains a query that runs at a defined interval (`frequency`).\nIf you are concerned about delayed data, you can add a delay (`query_delay') at each interval.\nWhen Elasticsearch security features are enabled, your datafeed remembers which roles the user who created it had\nat the time of creation and runs the query using those same roles. If you provide secondary authorization headers,\nthose credentials are used instead.\nYou must use Kibana, this API, or the create anomaly detection jobs API to create a datafeed. Do not add a datafeed\ndirectly to the `.ml-config` index. Do not give users `write` privileges on the `.ml-config` index.",
+      "description": "Create a datafeed.\nDatafeeds retrieve data from Elasticsearch for analysis by an anomaly detection job.\nYou can associate only one datafeed with each anomaly detection job.\nThe datafeed contains a query that runs at a defined interval (`frequency`).\nIf you are concerned about delayed data, you can add a delay (`query_delay`) at each interval.\nWhen Elasticsearch security features are enabled, your datafeed remembers which roles the user who created it had\nat the time of creation and runs the query using those same roles. If you provide secondary authorization headers,\nthose credentials are used instead.\nYou must use Kibana, this API, or the create anomaly detection jobs API to create a datafeed. Do not add a datafeed\ndirectly to the `.ml-config` index. Do not give users `write` privileges on the `.ml-config` index.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -34824,6 +34862,100 @@
         "namespace": "query_rules.put_ruleset"
       },
       "specLocation": "query_rules/put_ruleset/QueryRulesetPutResponse.ts#L22-L26"
+    },
+    {
+      "attachedBehaviors": [
+        "CommonQueryParameters"
+      ],
+      "body": {
+        "kind": "properties",
+        "properties": [
+          {
+            "name": "match_criteria",
+            "required": true,
+            "type": {
+              "key": {
+                "kind": "instance_of",
+                "type": {
+                  "name": "string",
+                  "namespace": "_builtins"
+                }
+              },
+              "kind": "dictionary_of",
+              "singleKey": false,
+              "value": {
+                "kind": "user_defined_value"
+              }
+            }
+          }
+        ]
+      },
+      "description": "Creates or updates a query ruleset.",
+      "inherits": {
+        "type": {
+          "name": "RequestBase",
+          "namespace": "_types"
+        }
+      },
+      "kind": "request",
+      "name": {
+        "name": "Request",
+        "namespace": "query_rules.test"
+      },
+      "path": [
+        {
+          "description": "The unique identifier of the query ruleset to be created or updated",
+          "name": "ruleset_id",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Id",
+              "namespace": "_types"
+            }
+          }
+        }
+      ],
+      "query": [],
+      "specLocation": "query_rules/test/QueryRulesetTestRequest.ts#L24-L44"
+    },
+    {
+      "body": {
+        "kind": "properties",
+        "properties": [
+          {
+            "name": "total_matched_rules",
+            "required": true,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "integer",
+                "namespace": "_types"
+              }
+            }
+          },
+          {
+            "name": "matched_rules",
+            "required": true,
+            "type": {
+              "kind": "array_of",
+              "value": {
+                "kind": "instance_of",
+                "type": {
+                  "name": "QueryRulesetMatchedRule",
+                  "namespace": "query_rules.test"
+                }
+              }
+            }
+          }
+        ]
+      },
+      "kind": "response",
+      "name": {
+        "name": "Response",
+        "namespace": "query_rules.test"
+      },
+      "specLocation": "query_rules/test/QueryRulesetTestResponse.ts#L23-L28"
     },
     {
       "attachedBehaviors": [
@@ -45399,6 +45531,8 @@
           "aliases": [
             "aggs"
           ],
+          "extDocId": "search-aggregations",
+          "extDocUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/search-aggregations.html",
           "name": "aggregations",
           "required": false,
           "type": {
@@ -45858,7 +45992,7 @@
           }
         }
       ],
-      "specLocation": "_global/msearch/types.ts#L70-L201"
+      "specLocation": "_global/msearch/types.ts#L70-L204"
     },
     {
       "kind": "interface",
@@ -51347,6 +51481,8 @@
       }
     },
     {
+      "extDocId": "collapse-search-results",
+      "extDocUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/collapse-search-results.html",
       "kind": "interface",
       "name": {
         "name": "FieldCollapse",
@@ -51416,7 +51552,7 @@
           }
         }
       ],
-      "specLocation": "_global/search/_types/FieldCollapse.ts#L24-L38"
+      "specLocation": "_global/search/_types/FieldCollapse.ts#L24-L41"
     },
     {
       "description": "A reference to a field with formatting instructions on how to return the value",
@@ -67766,7 +67902,7 @@
         "name": "ResponseItem",
         "namespace": "_global.msearch"
       },
-      "specLocation": "_global/msearch/types.ts#L208-L211",
+      "specLocation": "_global/msearch/types.ts#L211-L214",
       "type": {
         "items": [
           {
@@ -67836,7 +67972,7 @@
           }
         }
       ],
-      "specLocation": "_global/msearch/types.ts#L213-L216"
+      "specLocation": "_global/msearch/types.ts#L216-L219"
     },
     {
       "generics": [
@@ -136635,7 +136771,7 @@
           }
         }
       ],
-      "specLocation": "_global/msearch/types.ts#L203-L206"
+      "specLocation": "_global/msearch/types.ts#L206-L209"
     },
     {
       "kind": "interface",
@@ -137462,6 +137598,40 @@
         }
       ],
       "specLocation": "query_rules/list_rulesets/types.ts#L23-L37"
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "QueryRulesetMatchedRule",
+        "namespace": "query_rules.test"
+      },
+      "properties": [
+        {
+          "description": "Ruleset unique identifier",
+          "name": "ruleset_id",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Id",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "Rule unique identifier within that ruleset",
+          "name": "rule_id",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Id",
+              "namespace": "_types"
+            }
+          }
+        }
+      ],
+      "specLocation": "query_rules/test/QueryRulesetTestResponse.ts#L30-L39"
     },
     {
       "kind": "interface",
