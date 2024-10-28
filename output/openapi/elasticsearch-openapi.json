@@ -27782,7 +27782,7 @@
           "security"
         ],
         "summary": "Invalidate API keys",
-        "description": "Invalidates one or more API keys.\nThe `manage_api_key` privilege allows deleting any API keys.\nThe `manage_own_api_key` only allows deleting API keys that are owned by the user.\nIn addition, with the `manage_own_api_key` privilege, an invalidation request must be issued in one of the three formats:\n- Set the parameter `owner=true`.\n- Or, set both `username` and `realm_name` to match the user’s identity.\n- Or, if the request is issued by an API key, i.e. an API key invalidates itself, specify its ID in the `ids` field.",
+        "description": "This API invalidates API keys created by the create API key or grant API key APIs.\nInvalidated API keys fail authentication, but they can still be viewed using the get API key information and query API key information APIs, for at least the configured retention period, until they are automatically deleted.\nThe `manage_api_key` privilege allows deleting any API keys.\nThe `manage_own_api_key` only allows deleting API keys that are owned by the user.\nIn addition, with the `manage_own_api_key` privilege, an invalidation request must be issued in one of the three formats:\n- Set the parameter `owner=true`.\n- Or, set both `username` and `realm_name` to match the user’s identity.\n- Or, if the request is issued by an API key, that is to say an API key invalidates itself, specify its ID in the `ids` field.",
         "operationId": "security-invalidate-api-key",
         "requestBody": {
           "content": {
@@ -28143,8 +28143,11 @@
         "tags": [
           "security"
         ],
-        "summary": "The role management APIs are generally the preferred way to manage roles, rather than using file-based role management",
-        "description": "The create or update roles API cannot update roles that are defined in roles files.",
+        "summary": "Create or update roles",
+        "description": "The role management APIs are generally the preferred way to manage roles in the native realm, rather than using file-based role management.\nThe create or update roles API cannot update roles that are defined in roles files.\nFile-based role management is not available in Elastic Serverless.",
+        "externalDocs": {
+          "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/defining-roles.html"
+        },
         "operationId": "security-put-role",
         "parameters": [
           {
@@ -28167,8 +28170,11 @@
         "tags": [
           "security"
         ],
-        "summary": "The role management APIs are generally the preferred way to manage roles, rather than using file-based role management",
-        "description": "The create or update roles API cannot update roles that are defined in roles files.",
+        "summary": "Create or update roles",
+        "description": "The role management APIs are generally the preferred way to manage roles in the native realm, rather than using file-based role management.\nThe create or update roles API cannot update roles that are defined in roles files.\nFile-based role management is not available in Elastic Serverless.",
+        "externalDocs": {
+          "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/defining-roles.html"
+        },
         "operationId": "security-put-role-1",
         "parameters": [
           {
@@ -28266,7 +28272,11 @@
         "tags": [
           "security"
         ],
-        "summary": "Creates and updates role mappings",
+        "summary": "Create or update role mappings",
+        "description": "Role mappings define which roles are assigned to each user.\nEach mapping has rules that identify users and a list of roles that are granted to those users.\nThe role mapping APIs are generally the preferred way to manage role mappings rather than using role mapping files. The create or update role mappings API cannot update role mappings that are defined in role mapping files.\n\nThis API does not create roles. Rather, it maps users to existing roles.\nRoles can be created by using the create or update roles API or roles files.",
+        "externalDocs": {
+          "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/mapping-roles.html"
+        },
         "operationId": "security-put-role-mapping",
         "parameters": [
           {
@@ -28290,7 +28300,11 @@
         "tags": [
           "security"
         ],
-        "summary": "Creates and updates role mappings",
+        "summary": "Create or update role mappings",
+        "description": "Role mappings define which roles are assigned to each user.\nEach mapping has rules that identify users and a list of roles that are granted to those users.\nThe role mapping APIs are generally the preferred way to manage role mappings rather than using role mapping files. The create or update role mappings API cannot update role mappings that are defined in role mapping files.\n\nThis API does not create roles. Rather, it maps users to existing roles.\nRoles can be created by using the create or update roles API or roles files.",
+        "externalDocs": {
+          "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/mapping-roles.html"
+        },
         "operationId": "security-put-role-mapping-1",
         "parameters": [
           {
@@ -28388,8 +28402,8 @@
         "tags": [
           "security"
         ],
-        "summary": "Adds and updates users in the native realm",
-        "description": "These users are commonly referred to as native users.",
+        "summary": "Create or update users",
+        "description": "A password is required for adding a new user but is optional when updating an existing user.\nTo change a user’s password without updating any other fields, use the change password API.",
         "operationId": "security-put-user",
         "parameters": [
           {
@@ -28412,8 +28426,8 @@
         "tags": [
           "security"
         ],
-        "summary": "Adds and updates users in the native realm",
-        "description": "These users are commonly referred to as native users.",
+        "summary": "Create or update users",
+        "description": "A password is required for adding a new user but is optional when updating an existing user.\nTo change a user’s password without updating any other fields, use the change password API.",
         "operationId": "security-put-user-1",
         "parameters": [
           {
@@ -28815,7 +28829,10 @@
         "tags": [
           "security"
         ],
-        "summary": "Adds or updates application privileges",
+        "summary": "Create or update application privileges",
+        "externalDocs": {
+          "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/security-privileges.html"
+        },
         "operationId": "security-put-privileges",
         "parameters": [
           {
@@ -28836,7 +28853,10 @@
         "tags": [
           "security"
         ],
-        "summary": "Adds or updates application privileges",
+        "summary": "Create or update application privileges",
+        "externalDocs": {
+          "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/security-privileges.html"
+        },
         "operationId": "security-put-privileges-1",
         "parameters": [
           {
@@ -29123,7 +29143,8 @@
         "tags": [
           "security"
         ],
-        "summary": "Invalidates one or more access tokens or refresh tokens",
+        "summary": "Invalidate a token",
+        "description": "The access tokens returned by the get token API have a finite period of time for which they are valid.\nAfter that time period, they can no longer be used.\nThe time period is defined by the `xpack.security.authc.token.timeout` setting.\n\nThe refresh tokens returned by the get token API are only valid for 24 hours. They can also be used exactly once.\nIf you want to invalidate one or more access or refresh tokens immediately, use this invalidate token API.",
         "operationId": "security-invalidate-token",
         "requestBody": {
           "content": {
@@ -29211,7 +29232,7 @@
         "tags": [
           "security"
         ],
-        "summary": "Retrieves security privileges for the logged in user",
+        "summary": "Get user privileges",
         "operationId": "security-get-user-privileges",
         "parameters": [
           {
@@ -29311,7 +29332,8 @@
         "tags": [
           "security"
         ],
-        "summary": "Retrieves a user's profile using the unique profile ID",
+        "summary": "Get a user profile",
+        "description": "Get a user's profile using the unique profile ID.",
         "operationId": "security-get-user-profile",
         "parameters": [
           {
@@ -29390,8 +29412,8 @@
         "tags": [
           "security"
         ],
-        "summary": "Creates an API key on behalf of another user",
-        "description": "This API is similar to Create API keys, however it creates the API key for a user that is different than the user that runs the API.\nThe caller must have authentication credentials (either an access token, or a username and password) for the user on whose behalf the API key will be created.\nIt is not possible to use this API to create an API key without that user’s credentials.\nThe user, for whom the authentication credentials is provided, can optionally \"run as\" (impersonate) another user.\nIn this case, the API key will be created on behalf of the impersonated user.\n\nThis API is intended be used by applications that need to create and manage API keys for end users, but cannot guarantee that those users have permission to create API keys on their own behalf.\n\nA successful grant API key API call returns a JSON structure that contains the API key, its unique id, and its name.\nIf applicable, it also returns expiration information for the API key in milliseconds.\n\nBy default, API keys never expire. You can specify expiration information when you create the API keys.",
+        "summary": "Grant an API key",
+        "description": "Create an API key on behalf of another user.\nThis API is similar to the create API keys API, however it creates the API key for a user that is different than the user that runs the API.\nThe caller must have authentication credentials (either an access token, or a username and password) for the user on whose behalf the API key will be created.\nIt is not possible to use this API to create an API key without that user’s credentials.\nThe user, for whom the authentication credentials is provided, can optionally \"run as\" (impersonate) another user.\nIn this case, the API key will be created on behalf of the impersonated user.\n\nThis API is intended be used by applications that need to create and manage API keys for end users, but cannot guarantee that those users have permission to create API keys on their own behalf.\n\nA successful grant API key API call returns a JSON structure that contains the API key, its unique id, and its name.\nIf applicable, it also returns expiration information for the API key in milliseconds.\n\nBy default, API keys never expire. You can specify expiration information when you create the API keys.",
         "operationId": "security-grant-api-key",
         "requestBody": {
           "content": {
@@ -29472,7 +29494,10 @@
           "security"
         ],
         "summary": "Check user privileges",
-        "description": "Determines whether the specified user has a specified list of privileges.",
+        "description": "Determine whether the specified user has a specified list of privileges.",
+        "externalDocs": {
+          "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/security-privileges.html"
+        },
         "operationId": "security-has-privileges",
         "requestBody": {
           "$ref": "#/components/requestBodies/security.has_privileges"
@@ -29489,7 +29514,10 @@
           "security"
         ],
         "summary": "Check user privileges",
-        "description": "Determines whether the specified user has a specified list of privileges.",
+        "description": "Determine whether the specified user has a specified list of privileges.",
+        "externalDocs": {
+          "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/security-privileges.html"
+        },
         "operationId": "security-has-privileges-1",
         "requestBody": {
           "$ref": "#/components/requestBodies/security.has_privileges"
@@ -29508,7 +29536,10 @@
           "security"
         ],
         "summary": "Check user privileges",
-        "description": "Determines whether the specified user has a specified list of privileges.",
+        "description": "Determine whether the specified user has a specified list of privileges.",
+        "externalDocs": {
+          "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/security-privileges.html"
+        },
         "operationId": "security-has-privileges-2",
         "parameters": [
           {
@@ -29530,7 +29561,10 @@
           "security"
         ],
         "summary": "Check user privileges",
-        "description": "Determines whether the specified user has a specified list of privileges.",
+        "description": "Determine whether the specified user has a specified list of privileges.",
+        "externalDocs": {
+          "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/security-privileges.html"
+        },
         "operationId": "security-has-privileges-3",
         "parameters": [
           {
@@ -29553,7 +29587,11 @@
         "tags": [
           "security"
         ],
-        "summary": "Determines whether the users associated with the specified profile IDs have all the requested privileges",
+        "summary": "Check user profile privileges",
+        "description": "Determine whether the users associated with the specified user profile IDs have all the requested privileges.",
+        "externalDocs": {
+          "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/user-profile.html"
+        },
         "operationId": "security-has-privileges-user-profile",
         "requestBody": {
           "$ref": "#/components/requestBodies/security.has_privileges_user_profile"
@@ -29569,7 +29607,11 @@
         "tags": [
           "security"
         ],
-        "summary": "Determines whether the users associated with the specified profile IDs have all the requested privileges",
+        "summary": "Check user profile privileges",
+        "description": "Determine whether the users associated with the specified user profile IDs have all the requested privileges.",
+        "externalDocs": {
+          "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/user-profile.html"
+        },
         "operationId": "security-has-privileges-user-profile-1",
         "requestBody": {
           "$ref": "#/components/requestBodies/security.has_privileges_user_profile"
@@ -29587,8 +29629,8 @@
         "tags": [
           "security"
         ],
-        "summary": "Query API keys",
-        "description": "Retrieves a paginated list of API keys and their information. You can optionally filter the results with a query.",
+        "summary": "Find API keys with a query",
+        "description": "Get a paginated list of API keys and their information. You can optionally filter the results with a query.",
         "operationId": "security-query-api-keys",
         "parameters": [
           {
@@ -29615,8 +29657,8 @@
         "tags": [
           "security"
         ],
-        "summary": "Query API keys",
-        "description": "Retrieves a paginated list of API keys and their information. You can optionally filter the results with a query.",
+        "summary": "Find API keys with a query",
+        "description": "Get a paginated list of API keys and their information. You can optionally filter the results with a query.",
         "operationId": "security-query-api-keys-1",
         "parameters": [
           {
@@ -29645,8 +29687,8 @@
         "tags": [
           "security"
         ],
-        "summary": "Retrieves roles in a paginated manner",
-        "description": "You can optionally filter the results with a query.",
+        "summary": "Find roles with a query",
+        "description": "Get roles in a paginated manner. You can optionally filter the results with a query.",
         "operationId": "security-query-role",
         "requestBody": {
           "$ref": "#/components/requestBodies/security.query_role"
@@ -29662,8 +29704,8 @@
         "tags": [
           "security"
         ],
-        "summary": "Retrieves roles in a paginated manner",
-        "description": "You can optionally filter the results with a query.",
+        "summary": "Find roles with a query",
+        "description": "Get roles in a paginated manner. You can optionally filter the results with a query.",
         "operationId": "security-query-role-1",
         "requestBody": {
           "$ref": "#/components/requestBodies/security.query_role"
@@ -29681,8 +29723,8 @@
         "tags": [
           "security"
         ],
-        "summary": "Retrieves information for Users in a paginated manner",
-        "description": "You can optionally filter the results with a query.",
+        "summary": "Find users with a query",
+        "description": "Get information for users in a paginated manner.\nYou can optionally filter the results with a query.",
         "operationId": "security-query-user",
         "parameters": [
           {
@@ -29703,8 +29745,8 @@
         "tags": [
           "security"
         ],
-        "summary": "Retrieves information for Users in a paginated manner",
-        "description": "You can optionally filter the results with a query.",
+        "summary": "Find users with a query",
+        "description": "Get information for users in a paginated manner.\nYou can optionally filter the results with a query.",
         "operationId": "security-query-user-1",
         "parameters": [
           {
@@ -29727,7 +29769,8 @@
         "tags": [
           "security"
         ],
-        "summary": "Submits a SAML Response message to Elasticsearch for consumption",
+        "summary": "Authenticate SAML",
+        "description": "Submits a SAML response message to Elasticsearch for consumption.",
         "operationId": "security-saml-authenticate",
         "requestBody": {
           "content": {
@@ -29800,7 +29843,8 @@
         "tags": [
           "security"
         ],
-        "summary": "Verifies the logout response sent from the SAML IdP",
+        "summary": "Logout of SAML completely",
+        "description": "Verifies the logout response sent from the SAML IdP.",
         "operationId": "security-saml-complete-logout",
         "requestBody": {
           "content": {
@@ -29849,7 +29893,8 @@
         "tags": [
           "security"
         ],
-        "summary": "Submits a SAML LogoutRequest message to Elasticsearch for consumption",
+        "summary": "Invalidate SAML",
+        "description": "Submits a SAML LogoutRequest message to Elasticsearch for consumption.",
         "operationId": "security-saml-invalidate",
         "requestBody": {
           "content": {
@@ -29914,7 +29959,8 @@
         "tags": [
           "security"
         ],
-        "summary": "Submits a request to invalidate an access token and refresh token",
+        "summary": "Logout of SAML",
+        "description": "Submits a request to invalidate an access token and refresh token.",
         "operationId": "security-saml-logout",
         "requestBody": {
           "content": {
@@ -29967,7 +30013,8 @@
         "tags": [
           "security"
         ],
-        "summary": "Creates a SAML authentication request (<AuthnRequest>) as a URL string, based on the configuration of the respective SAML realm in Elasticsearch",
+        "summary": "Prepare SAML authentication",
+        "description": "Creates a SAML authentication request (`<AuthnRequest>`) as a URL string, based on the configuration of the respective SAML realm in Elasticsearch.",
         "operationId": "security-saml-prepare-authentication",
         "requestBody": {
           "content": {
@@ -30029,7 +30076,8 @@
         "tags": [
           "security"
         ],
-        "summary": "Generate SAML metadata for a SAML 2.0 Service Provider",
+        "summary": "Create SAML service provider metadata",
+        "description": "Generate SAML metadata for a SAML 2.0 Service Provider.",
         "operationId": "security-saml-service-provider-metadata",
         "parameters": [
           {
@@ -30072,7 +30120,8 @@
         "tags": [
           "security"
         ],
-        "summary": "Get suggestions for user profiles that match specified search criteria",
+        "summary": "Suggest a user profile",
+        "description": "Get suggestions for user profiles that match specified search criteria.",
         "operationId": "security-suggest-user-profiles",
         "parameters": [
           {
@@ -30093,7 +30142,8 @@
         "tags": [
           "security"
         ],
-        "summary": "Get suggestions for user profiles that match specified search criteria",
+        "summary": "Suggest a user profile",
+        "description": "Get suggestions for user profiles that match specified search criteria.",
         "operationId": "security-suggest-user-profiles-1",
         "parameters": [
           {
@@ -30185,7 +30235,8 @@
         "tags": [
           "security"
         ],
-        "summary": "Updates specific data for the user profile that's associated with the specified unique ID",
+        "summary": "Update user profile data",
+        "description": "Update specific data for the user profile that is associated with a unique ID.",
         "operationId": "security-update-user-profile-data",
         "parameters": [
           {
@@ -30215,7 +30266,8 @@
         "tags": [
           "security"
         ],
-        "summary": "Updates specific data for the user profile that's associated with the specified unique ID",
+        "summary": "Update user profile data",
+        "description": "Update specific data for the user profile that is associated with a unique ID.",
         "operationId": "security-update-user-profile-data-1",
         "parameters": [
           {
