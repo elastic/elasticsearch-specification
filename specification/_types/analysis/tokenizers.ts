@@ -38,9 +38,12 @@ export class EdgeNGramTokenizer extends TokenizerBase {
 export class NGramTokenizer extends TokenizerBase {
   type: 'ngram'
   custom_token_chars?: string
-  max_gram: integer
-  min_gram: integer
-  token_chars: TokenChar[]
+  max_gram?: integer
+  min_gram?: integer
+  /**
+   * @server_default []
+   */
+  token_chars?: TokenChar[]
 }
 
 export enum TokenChar {

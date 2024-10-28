@@ -58561,10 +58561,7 @@
               }
             },
             "required": [
-              "type",
-              "max_gram",
-              "min_gram",
-              "token_chars"
+              "type"
             ]
           }
         ]
