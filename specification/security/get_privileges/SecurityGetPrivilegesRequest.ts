@@ -21,9 +21,11 @@ import { RequestBase } from '@_types/Base'
 import { Name, Names } from '@_types/common'
 
 /**
+ * Get application privileges.
  * @rest_spec_name security.get_privileges
  * @availability stack since=6.4.0 stability=stable
  * @availability serverless stability=stable visibility=private
+ * @ext_doc_id security-privileges
  */
 export interface Request extends RequestBase {
   path_parts: {
