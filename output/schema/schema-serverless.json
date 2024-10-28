@@ -8620,8 +8620,10 @@
           "stability": "stable"
         }
       },
-      "description": "Check user privileges.\nDetermines whether the specified user has a specified list of privileges.",
+      "description": "Check user privileges.\n\nDetermine whether the specified user has a specified list of privileges.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/security-api-has-privileges.html",
+      "extDocId": "security-privileges",
+      "extDocUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/security-privileges.html",
       "name": "security.has_privileges",
       "request": {
         "name": "Request",
@@ -8666,7 +8668,7 @@
           "stability": "stable"
         }
       },
-      "description": "Invalidate API keys.\nInvalidates one or more API keys.\nThe `manage_api_key` privilege allows deleting any API keys.\nThe `manage_own_api_key` only allows deleting API keys that are owned by the user.\nIn addition, with the `manage_own_api_key` privilege, an invalidation request must be issued in one of the three formats:\n- Set the parameter `owner=true`.\n- Or, set both `username` and `realm_name` to match the user’s identity.\n- Or, if the request is issued by an API key, i.e. an API key invalidates itself, specify its ID in the `ids` field.",
+      "description": "Invalidate API keys.\n\nThis API invalidates API keys created by the create API key or grant API key APIs.\nInvalidated API keys fail authentication, but they can still be viewed using the get API key information and query API key information APIs, for at least the configured retention period, until they are automatically deleted.\nThe `manage_api_key` privilege allows deleting any API keys.\nThe `manage_own_api_key` only allows deleting API keys that are owned by the user.\nIn addition, with the `manage_own_api_key` privilege, an invalidation request must be issued in one of the three formats:\n- Set the parameter `owner=true`.\n- Or, set both `username` and `realm_name` to match the user’s identity.\n- Or, if the request is issued by an API key, that is to say an API key invalidates itself, specify its ID in the `ids` field.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/security-api-invalidate-api-key.html",
       "name": "security.invalidate_api_key",
       "privileges": {
@@ -8710,7 +8712,7 @@
           "stability": "stable"
         }
       },
-      "description": "Query API keys.\nRetrieves a paginated list of API keys and their information. You can optionally filter the results with a query.",
+      "description": "Find API keys with a query.\n\nGet a paginated list of API keys and their information. You can optionally filter the results with a query.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/security-api-query-api-key.html",
       "name": "security.query_api_keys",
       "privileges": {
@@ -8755,7 +8757,7 @@
           "stability": "stable"
         }
       },
-      "description": "Update an API key.\nUpdates attributes of an existing API key.\nUsers can only update API keys that they created or that were granted to them.\nUse this API to update API keys created by the create API Key or grant API Key APIs.\nIf you need to apply the same update to many API keys, you can use bulk update API Keys to reduce overhead.\nIt’s not possible to update expired API keys, or API keys that have been invalidated by invalidate API Key.\nThis API supports updates to an API key’s access scope and metadata.\nThe access scope of an API key is derived from the `role_descriptors` you specify in the request, and a snapshot of the owner user’s permissions at the time of the request.\nThe snapshot of the owner’s permissions is updated automatically on every call.\nIf you don’t specify `role_descriptors` in the request, a call to this API might still change the API key’s access scope.\nThis change can occur if the owner user’s permissions have changed since the API key was created or last modified.\nTo update another user’s API key, use the `run_as` feature to submit a request on behalf of another user.\nIMPORTANT: It’s not possible to use an API key as the authentication credential for this API.\nTo update an API key, the owner user’s credentials are required.",
+      "description": "Update an API key.\n\nUpdates attributes of an existing API key.\nUsers can only update API keys that they created or that were granted to them.\nUse this API to update API keys created by the create API Key or grant API Key APIs.\nIf you need to apply the same update to many API keys, you can use bulk update API Keys to reduce overhead.\nIt’s not possible to update expired API keys, or API keys that have been invalidated by invalidate API Key.\nThis API supports updates to an API key’s access scope and metadata.\nThe access scope of an API key is derived from the `role_descriptors` you specify in the request, and a snapshot of the owner user’s permissions at the time of the request.\nThe snapshot of the owner’s permissions is updated automatically on every call.\nIf you don’t specify `role_descriptors` in the request, a call to this API might still change the API key’s access scope.\nThis change can occur if the owner user’s permissions have changed since the API key was created or last modified.\nTo update another user’s API key, use the `run_as` feature to submit a request on behalf of another user.\nIMPORTANT: It’s not possible to use an API key as the authentication credential for this API.\nTo update an API key, the owner user’s credentials are required.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/security-api-update-api-key.html",
       "name": "security.update_api_key",
       "privileges": {
@@ -39621,7 +39623,7 @@
           }
         ]
       },
-      "description": "Check user privileges.\nDetermines whether the specified user has a specified list of privileges.",
+      "description": "Check user privileges.\n\nDetermine whether the specified user has a specified list of privileges.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -39648,7 +39650,7 @@
         }
       ],
       "query": [],
-      "specLocation": "security/has_privileges/SecurityHasPrivilegesRequest.ts#L25-L44"
+      "specLocation": "security/has_privileges/SecurityHasPrivilegesRequest.ts#L25-L46"
     },
     {
       "body": {
@@ -39824,7 +39826,7 @@
           }
         ]
       },
-      "description": "Invalidate API keys.\nInvalidates one or more API keys.\nThe `manage_api_key` privilege allows deleting any API keys.\nThe `manage_own_api_key` only allows deleting API keys that are owned by the user.\nIn addition, with the `manage_own_api_key` privilege, an invalidation request must be issued in one of the three formats:\n- Set the parameter `owner=true`.\n- Or, set both `username` and `realm_name` to match the user’s identity.\n- Or, if the request is issued by an API key, i.e. an API key invalidates itself, specify its ID in the `ids` field.",
+      "description": "Invalidate API keys.\n\nThis API invalidates API keys created by the create API key or grant API key APIs.\nInvalidated API keys fail authentication, but they can still be viewed using the get API key information and query API key information APIs, for at least the configured retention period, until they are automatically deleted.\nThe `manage_api_key` privilege allows deleting any API keys.\nThe `manage_own_api_key` only allows deleting API keys that are owned by the user.\nIn addition, with the `manage_own_api_key` privilege, an invalidation request must be issued in one of the three formats:\n- Set the parameter `owner=true`.\n- Or, set both `username` and `realm_name` to match the user’s identity.\n- Or, if the request is issued by an API key, that is to say an API key invalidates itself, specify its ID in the `ids` field.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -39838,7 +39840,7 @@
       },
       "path": [],
       "query": [],
-      "specLocation": "security/invalidate_api_key/SecurityInvalidateApiKeyRequest.ts#L23-L67"
+      "specLocation": "security/invalidate_api_key/SecurityInvalidateApiKeyRequest.ts#L23-L69"
     },
     {
       "body": {
@@ -40005,7 +40007,7 @@
           }
         ]
       },
-      "description": "Query API keys.\nRetrieves a paginated list of API keys and their information. You can optionally filter the results with a query.",
+      "description": "Find API keys with a query.\n\nGet a paginated list of API keys and their information. You can optionally filter the results with a query.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -40076,7 +40078,7 @@
           }
         }
       ],
-      "specLocation": "security/query_api_keys/QueryApiKeysRequest.ts#L26-L100"
+      "specLocation": "security/query_api_keys/QueryApiKeysRequest.ts#L26-L101"
     },
     {
       "body": {
@@ -40211,7 +40213,7 @@
           }
         ]
       },
-      "description": "Update an API key.\nUpdates attributes of an existing API key.\nUsers can only update API keys that they created or that were granted to them.\nUse this API to update API keys created by the create API Key or grant API Key APIs.\nIf you need to apply the same update to many API keys, you can use bulk update API Keys to reduce overhead.\nIt’s not possible to update expired API keys, or API keys that have been invalidated by invalidate API Key.\nThis API supports updates to an API key’s access scope and metadata.\nThe access scope of an API key is derived from the `role_descriptors` you specify in the request, and a snapshot of the owner user’s permissions at the time of the request.\nThe snapshot of the owner’s permissions is updated automatically on every call.\nIf you don’t specify `role_descriptors` in the request, a call to this API might still change the API key’s access scope.\nThis change can occur if the owner user’s permissions have changed since the API key was created or last modified.\nTo update another user’s API key, use the `run_as` feature to submit a request on behalf of another user.\nIMPORTANT: It’s not possible to use an API key as the authentication credential for this API.\nTo update an API key, the owner user’s credentials are required.",
+      "description": "Update an API key.\n\nUpdates attributes of an existing API key.\nUsers can only update API keys that they created or that were granted to them.\nUse this API to update API keys created by the create API Key or grant API Key APIs.\nIf you need to apply the same update to many API keys, you can use bulk update API Keys to reduce overhead.\nIt’s not possible to update expired API keys, or API keys that have been invalidated by invalidate API Key.\nThis API supports updates to an API key’s access scope and metadata.\nThe access scope of an API key is derived from the `role_descriptors` you specify in the request, and a snapshot of the owner user’s permissions at the time of the request.\nThe snapshot of the owner’s permissions is updated automatically on every call.\nIf you don’t specify `role_descriptors` in the request, a call to this API might still change the API key’s access scope.\nThis change can occur if the owner user’s permissions have changed since the API key was created or last modified.\nTo update another user’s API key, use the `run_as` feature to submit a request on behalf of another user.\nIMPORTANT: It’s not possible to use an API key as the authentication credential for this API.\nTo update an API key, the owner user’s credentials are required.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -40238,7 +40240,7 @@
         }
       ],
       "query": [],
-      "specLocation": "security/update_api_key/Request.ts#L26-L66"
+      "specLocation": "security/update_api_key/Request.ts#L26-L67"
     },
     {
       "body": {
