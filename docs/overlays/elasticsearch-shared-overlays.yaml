@@ -35,13 +35,15 @@ actions:
             
             Connectors are Elasticsearch integrations that bring content from third-party data sources, which can be deployed on Elastic Cloud or hosted on your own infrastructure:
             
-            * Native connectors are a managed service on Elastic Cloud
-            * Connector clients are self-managed on your infrastructure
+            * Elastic managed connectors (Native connectors) are a managed service on Elastic Cloud
+            
+            * Self-managed connectors (Connector clients) are self-managed on your infrastructure.
+            
             
             This API provides an alternative to relying solely on Kibana UI for connector and sync job management. The API comes with a set of validations and assertions to ensure that the state representation in the internal index remains valid.
           externalDocs:
-            url: https://www.elastic.co/guide/en/enterprise-search/current/connectors-tutorial-api.html
-            description: To get started with Connector APIs, check out the tutorial.
+            url: https://www.elastic.co/guide/en/elasticsearch/reference/master/es-connectors-tutorial-api.html
+            description: Connector API tutorial
         - name: ccr
           x-displayName: Cross-cluster replication
       # D
@@ -55,14 +57,6 @@ actions:
           externalDocs:
             description: Reading and writing documents
             url: https://www.elastic.co/guide/en/elasticsearch/reference/master/docs-replication.html
-        - name: mget
-          x-displayName: Document - Multi get
-        - name: mtermvectors
-          x-displayName: Document - Multi term vectors
-        - name: delete_by_query_rethrottle
-          x-displayName: Document - Rethrottle delete by query
-        - name: update_by_query_rethrottle
-          x-displayName: Document - Rethrottle update by query
       # E  
         - name: enrich
           x-displayName: Enrich
@@ -71,14 +65,14 @@ actions:
           description: >
             Event Query Language (EQL) is a query language for event-based time series data, such as logs, metrics, and traces.
           externalDocs:
-            url: https://www.elastic.co/guide/en/elasticsearch/reference/current/eql.html
+            url: https://www.elastic.co/guide/en/elasticsearch/reference/master/eql.html
             description: EQL search
         - name: esql
           x-displayName: ES|QL
           description: >
             The Elasticsearch Query Language (ES|QL) provides a powerful way to filter, transform, and analyze data stored in Elasticsearch, and in the future in other runtimes.
           externalDocs:
-            url: https://www.elastic.co/guide/en/elasticsearch/reference/current/esql.html
+            url: https://www.elastic.co/guide/en/elasticsearch/reference/master/esql.html
             description: ES|QL overview and tutorials
       # F
         - name: features
@@ -92,19 +86,17 @@ actions:
           description: >
             The graph explore API enables you to extract and summarize information about the documents and terms in an Elasticsearch data stream or index.
           externalDocs:
-            url: https://www.elastic.co/guide/en/kibana/current/xpack-graph.html
+            url: https://www.elastic.co/guide/en/kibana/master/xpack-graph.html
             description: Getting started with Graph
       # I
         - name: indices
           x-displayName: Index
           description: >
             Index APIs enable you to manage individual indices, index settings, aliases, mappings, and index templates.
-        - name: dangling_indices
-          x-displayName: Index - Import dangling index
         - name: ilm
           x-displayName: Index lifecycle management
           externalDocs:
-            url: https://www.elastic.co/guide/en/elasticsearch/reference/current/index-lifecycle-management.html
+            url: https://www.elastic.co/guide/en/elasticsearch/reference/master/index-lifecycle-management.html
             description: Manage the index lifecycle
         - name: inference
           x-displayName: Inference
@@ -126,7 +118,7 @@ actions:
           description: >
             Logstash APIs enable you to manage pipelines that are used by Logstash Central Management.
           externalDocs:
-            url: https://www.elastic.co/guide/en/logstash/current/logstash-centralized-pipeline-management.html
+            url: https://www.elastic.co/guide/en/logstash/master/logstash-centralized-pipeline-management.html
             description: Centralized pipeline management
       # M
         - name: ml
@@ -167,7 +159,7 @@ actions:
             If a query matches one or more rules in the ruleset, the query is re-written to apply the rules before searching.
             This allows pinning documents for only queries that match a specific term.
           externalDocs:
-            url: https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-rule-query.html
+            url: https://www.elastic.co/guide/en/elasticsearch/reference/master/query-dsl-rule-query.html
             description: Rule query
       # R
         - name: rollup
@@ -175,46 +167,34 @@ actions:
       # S
         - name: script
           x-displayName: Script
-        - name: get_script_context
-          x-displayName: Script - Get contexts
-        - name: get_script_languages
-          x-displayName: Script - Get languages
         - name: search
           x-displayName: Search
-        - name: msearch
-          x-displayName: Search - Multi search
-        - name: scroll
-          x-displayName: Search - Scroll
-        - name: terms_enum
-          x-displayName: Search - Terms enum
         - name: search_application
           x-displayName: Search application
         - name: searchable_snapshots
           x-displayName: Searchable snapshots
         - name: security
           x-displayName: Security
-        - name: ssl
-          x-displayName: Security - SSL
         - name: snapshot
           x-displayName: Snapshot and restore
           description: >
             Snapshot and restore APIs enable you to set up snapshot repositories, manage snapshot backups, and restore snapshots to a running cluster.
           externalDocs:
-            url: https://www.elastic.co/guide/en/elasticsearch/reference/current/snapshot-restore.html
+            url: https://www.elastic.co/guide/en/elasticsearch/reference/master/snapshot-restore.html
             description: Snapshot and restore
         - name: slm
           x-displayName: Snapshot lifecycle management
           description: >
             Snapshot lifecycle management (SLM) APIs enable you to set up policies to automatically take snapshots and control how long they are retained.
           externalDocs:
-            url: https://www.elastic.co/guide/en/elasticsearch/reference/current/snapshots-take-snapshot.html
+            url: https://www.elastic.co/guide/en/elasticsearch/reference/master/snapshots-take-snapshot.html
             description: Create a snapshot
         - name: sql
           x-displayName: SQL
           description: >
             Elasticsearch's SQL APIs enable you to run SQL queries on Elasticsearch indices and data streams.
           externalDocs:
-            url: https://www.elastic.co/guide/en/elasticsearch/reference/current/xpack-sql.html
+            url: https://www.elastic.co/guide/en/elasticsearch/reference/master/xpack-sql.html
             description: An overview and tutorials for the Elasticsearch SQL features
         - name: synonyms
           x-displayName: Synonyms
@@ -1016,7 +996,7 @@ actions:
           All the options that are supported by Elasticsearch can be used, as this object is passed verbatim to Elasticsearch.
           By default, this property has the following value: `{"match_all": {"boost": 1}}`.
         externalDocs:
-          url: https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl.html
+          url: https://www.elastic.co/guide/en/elasticsearch/reference/master/query-dsl.html
           description: Query DSL
   - target: "$.components['schemas']['ml._types:CategorizationAnalyzerDefinition'].properties.tokenizer"
     description: Remove tokenizer object from ML anomaly detection analysis config
@@ -1037,7 +1017,7 @@ actions:
           Additionally, the `ml_classic` tokenizer is available, which tokenizes in the same way as the non-customizable tokenizer in old versions of the product (before 6.2).
           `ml_classic` was the default categorization tokenizer in versions 6.2 to 7.13, so if you need categorization identical to the default for jobs created in these versions, specify `"tokenizer": "ml_classic"` in your `categorization_analyzer`.
         externalDocs:
-          url: https://www.elastic.co/guide/en/elasticsearch/reference/current/analysis-tokenizers.html
+          url: https://www.elastic.co/guide/en/elasticsearch/reference/master/analysis-tokenizers.html
           description: Tokenizer reference
   - target: "$.components['schemas']['ml._types:DataframeAnalyticsSource'].properties.query"
     description: Remove query object from data frame analytics source
@@ -1054,7 +1034,7 @@ actions:
           All the options that are supported by Elasticsearch can be used, as this object is passed verbatim to Elasticsearch.
           By default, this property has the following value: `{"match_all": {}}`.
         externalDocs:
-          url: https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl.html
+          url: https://www.elastic.co/guide/en/elasticsearch/reference/master/query-dsl.html
           description: Query DSL
   - target: "$.components['schemas']['transform._types:Source'].properties.query"
     description: Remove query object from transform source
@@ -1068,8 +1048,19 @@ actions:
         description: >
           A query clause that retrieves a subset of data from the source index.
         externalDocs:
-          url: https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl.html
+          url: https://www.elastic.co/guide/en/elasticsearch/reference/master/query-dsl.html
           description: Query DSL
+  - target: "$.components['schemas']['_global.search._types:FieldCollapse']"
+    description: Add x-model and externalDocs
+    update:
+      x-model: true
+      externalDocs:
+        url: https://www.elastic.co/guide/en/elasticsearch/reference/master/collapse-search-results.html
+  - target: "$.components['schemas']['_global.msearch:MultisearchBody'].properties"
+    description: Add x-model
+    update:
+      aggregations:
+        x-model: true
 # Examples
   - target: "$.components['requestBodies']['async_search.submit']"
     description: "Add example for asynch search submit request"

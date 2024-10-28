@@ -17199,6 +17199,23 @@ export interface QueryRulesPutRulesetResponse {
   result: Result
 }
 
+export interface QueryRulesTestQueryRulesetMatchedRule {
+  ruleset_id: Id
+  rule_id: Id
+}
+
+export interface QueryRulesTestRequest extends RequestBase {
+  ruleset_id: Id
+  body?: {
+    match_criteria: Record<string, any>
+  }
+}
+
+export interface QueryRulesTestResponse {
+  total_matched_rules: integer
+  matched_rules: QueryRulesTestQueryRulesetMatchedRule[]
+}
+
 export interface RollupDateHistogramGrouping {
   delay?: Duration
   field: Field

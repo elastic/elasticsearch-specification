@@ -987,7 +987,7 @@
           "stability": "experimental"
         }
       },
-      "description": "Updates the last_seen field in the connector, and sets it to current timestamp",
+      "description": "Check in a connector.\n\nUpdate the `last_seen` field in the connector and set it to the current timestamp.",
       "docId": "connector-checkin",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/check-in-connector-api.html",
       "name": "connector.check_in",
@@ -1023,7 +1023,7 @@
           "stability": "beta"
         }
       },
-      "description": "Deletes a connector.",
+      "description": "Delete a connector.\n\nRemoves a connector and associated sync jobs.\nThis is a destructive action that is not recoverable.\nNOTE: This action doesn’t delete any API keys, ingest pipelines, or data indices associated with the connector.\nThese need to be removed manually.",
       "docId": "connector-delete",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/delete-connector-api.html",
       "name": "connector.delete",
@@ -1059,7 +1059,7 @@
           "stability": "beta"
         }
       },
-      "description": "Retrieves a connector.",
+      "description": "Get a connector.\n\nGet the details about a connector.",
       "docId": "connector-get",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/get-connector-api.html",
       "name": "connector.get",
@@ -1095,7 +1095,7 @@
           "stability": "beta"
         }
       },
-      "description": "Returns existing connectors.",
+      "description": "Get all connectors.\n\nGet information about all connectors.",
       "docId": "connector-list",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/list-connector-api.html",
       "name": "connector.list",
@@ -1131,7 +1131,7 @@
           "stability": "beta"
         }
       },
-      "description": "Creates a connector.",
+      "description": "Create a connector.\n\nConnectors are Elasticsearch integrations that bring content from third-party data sources, which can be deployed on Elastic Cloud or hosted on your own infrastructure.\nElastic managed connectors (Native connectors) are a managed service on Elastic Cloud.\nSelf-managed connectors (Connector clients) are self-managed on your infrastructure.",
       "docId": "connector-post",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/create-connector-api.html",
       "name": "connector.post",
@@ -1170,7 +1170,7 @@
           "stability": "beta"
         }
       },
-      "description": "Creates or updates a connector.",
+      "description": "Create or update a connector.",
       "docId": "connector-put",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/create-connector-api.html",
       "name": "connector.put",
@@ -1215,7 +1215,7 @@
           "stability": "beta"
         }
       },
-      "description": "Cancels a connector sync job.",
+      "description": "Cancel a connector sync job.\n\nCancel a connector sync job, which sets the status to cancelling and updates `cancellation_requested_at` to the current time.\nThe connector service is then responsible for setting the status of connector sync jobs to cancelled.",
       "docId": "connector-sync-job-cancel",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/cancel-connector-sync-job-api.html",
       "name": "connector.sync_job_cancel",
@@ -1251,7 +1251,7 @@
           "stability": "beta"
         }
       },
-      "description": "Deletes a connector sync job.",
+      "description": "Delete a connector sync job.\n\nRemove a connector sync job and its associated data.\nThis is a destructive action that is not recoverable.",
       "docId": "connector-sync-job-delete",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/delete-connector-sync-job-api.html",
       "name": "connector.sync_job_delete",
@@ -1287,7 +1287,7 @@
           "stability": "beta"
         }
       },
-      "description": "Retrieves a connector sync job.",
+      "description": "Get a connector sync job.",
       "docId": "connector-sync-job-get",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/get-connector-sync-job-api.html",
       "name": "connector.sync_job_get",
@@ -1323,7 +1323,7 @@
           "stability": "beta"
         }
       },
-      "description": "Lists connector sync jobs.",
+      "description": "Get all connector sync jobs.\n\nGet information about all stored connector sync jobs listed by their creation date in ascending order.",
       "docId": "connector-sync-job-list",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/list-connector-sync-jobs-api.html",
       "name": "connector.sync_job_list",
@@ -1359,7 +1359,7 @@
           "stability": "beta"
         }
       },
-      "description": "Creates a connector sync job.",
+      "description": "Create a connector sync job.\n\nCreate a connector sync job document in the internal index and initialize its counters and timestamps with default values.",
       "docId": "connector-sync-job-post",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/create-connector-sync-job-api.html",
       "name": "connector.sync_job_post",
@@ -1398,7 +1398,7 @@
           "stability": "experimental"
         }
       },
-      "description": "Activates the valid draft filtering for a connector.",
+      "description": "Activate the connector draft filter.\n\nActivates the valid draft filtering for a connector.",
       "docId": "connector-update-filtering",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/update-connector-filtering-api.html",
       "name": "connector.update_active_filtering",
@@ -1437,7 +1437,7 @@
           "stability": "beta"
         }
       },
-      "description": "Updates the API key id in the connector document",
+      "description": "Update the connector API key ID.\n\nUpdate the `api_key_id` and `api_key_secret_id` fields of a connector.\nYou can specify the ID of the API key used for authorization and the ID of the connector secret where the API key is stored.\nThe connector secret ID is required only for Elastic managed (native) connectors.\nSelf-managed connectors (connector clients) do not use this field.",
       "docId": "connector-update-api-key-id",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/update-connector-api-key-id-api.html",
       "name": "connector.update_api_key_id",
@@ -1476,7 +1476,7 @@
           "stability": "beta"
         }
       },
-      "description": "Updates the configuration field in the connector document",
+      "description": "Update the connector configuration.\n\nUpdate the configuration field in the connector document.",
       "docId": "connector-configuration",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/update-connector-configuration-api.html",
       "name": "connector.update_configuration",
@@ -1515,7 +1515,7 @@
           "stability": "experimental"
         }
       },
-      "description": "Updates the filtering field in the connector document",
+      "description": "Update the connector error field.\n\nSet the error field for the connector.\nIf the error provided in the request body is non-null, the connector’s status is updated to error.\nOtherwise, if the error is reset to null, the connector status is updated to connected.",
       "docId": "connector-update-error",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/update-connector-error-api.html",
       "name": "connector.update_error",
@@ -1554,7 +1554,7 @@
           "stability": "beta"
         }
       },
-      "description": "Updates the filtering field in the connector document",
+      "description": "Update the connector filtering.\n\nUpdate the draft filtering configuration of a connector and marks the draft validation state as edited.\nThe filtering draft is activated once validated by the running Elastic connector service.\nThe filtering property is used to configure sync rules (both basic and advanced) for a connector.",
       "docId": "connector-update-filtering",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/update-connector-filtering-api.html",
       "name": "connector.update_filtering",
@@ -1593,7 +1593,7 @@
           "stability": "experimental"
         }
       },
-      "description": "Updates the draft filtering validation info for a connector.",
+      "description": "Update the connector draft filtering validation.\n\nUpdate the draft filtering validation info for a connector.",
       "docId": "connector-update-filtering-validation",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/update-connector-filtering-validation-api.html",
       "name": "connector.update_filtering_validation",
@@ -1632,7 +1632,7 @@
           "stability": "beta"
         }
       },
-      "description": "Updates the index_name in the connector document",
+      "description": "Update the connector index name.\n\nUpdate the `index_name` field of a connector, specifying the index where the data ingested by the connector is stored.",
       "docId": "connector-update-index-name",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/update-connector-index-name-api.html",
       "name": "connector.update_index_name",
@@ -1671,7 +1671,7 @@
           "stability": "beta"
         }
       },
-      "description": "Updates the name and description fields in the connector document",
+      "description": "Update the connector name and description.",
       "docId": "connector-update-name",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/update-connector-name-description-api.html",
       "name": "connector.update_name",
@@ -1710,7 +1710,7 @@
           "stability": "beta"
         }
       },
-      "description": "Updates the is_native flag in the connector document",
+      "description": "Update the connector is_native flag.",
       "docId": "connector-update-native",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/update-connector-native-api.html",
       "name": "connector.update_native",
@@ -1749,7 +1749,7 @@
           "stability": "beta"
         }
       },
-      "description": "Updates the pipeline field in the connector document",
+      "description": "Update the connector pipeline.\n\nWhen you create a new connector, the configuration of an ingest pipeline is populated with default settings.",
       "docId": "connector-update-pipeline",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/update-connector-pipeline-api.html",
       "name": "connector.update_pipeline",
@@ -1788,7 +1788,7 @@
           "stability": "beta"
         }
       },
-      "description": "Updates the scheduling field in the connector document",
+      "description": "Update the connector scheduling.",
       "docId": "connector-update-scheduling",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/update-connector-scheduling-api.html",
       "name": "connector.update_scheduling",
@@ -1827,7 +1827,7 @@
           "stability": "beta"
         }
       },
-      "description": "Updates the service type of the connector",
+      "description": "Update the connector service type.",
       "docId": "connector-update-service-type",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/update-connector-service-type-api.html",
       "name": "connector.update_service_type",
@@ -1866,7 +1866,7 @@
           "stability": "experimental"
         }
       },
-      "description": "Updates the status of the connector",
+      "description": "Update the connector status.",
       "docId": "connector-update-status",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/update-connector-status-api.html",
       "name": "connector.update_status",
@@ -4722,7 +4722,8 @@
           "stability": "stable"
         }
       },
-      "description": "Allows to get multiple documents in one request.",
+      "description": "Get multiple documents.\n\nGet multiple JSON documents by ID from one or more indices.\nIf you specify an index in the request URI, you only need to specify the document IDs in the request body.\nTo ensure fast responses, this multi get (mget) API responds with partial results if one or more shards fail.",
+      "docTag": "document",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/docs-multi-get.html",
       "name": "mget",
       "privileges": {
@@ -6264,7 +6265,7 @@
           "stability": "stable"
         }
       },
-      "description": "Create a datafeed.\nDatafeeds retrieve data from Elasticsearch for analysis by an anomaly detection job.\nYou can associate only one datafeed with each anomaly detection job.\nThe datafeed contains a query that runs at a defined interval (`frequency`).\nIf you are concerned about delayed data, you can add a delay (`query_delay') at each interval.\nWhen Elasticsearch security features are enabled, your datafeed remembers which roles the user who created it had\nat the time of creation and runs the query using those same roles. If you provide secondary authorization headers,\nthose credentials are used instead.\nYou must use Kibana, this API, or the create anomaly detection jobs API to create a datafeed. Do not add a datafeed\ndirectly to the `.ml-config` index. Do not give users `write` privileges on the `.ml-config` index.",
+      "description": "Create a datafeed.\nDatafeeds retrieve data from Elasticsearch for analysis by an anomaly detection job.\nYou can associate only one datafeed with each anomaly detection job.\nThe datafeed contains a query that runs at a defined interval (`frequency`).\nIf you are concerned about delayed data, you can add a delay (`query_delay`) at each interval.\nWhen Elasticsearch security features are enabled, your datafeed remembers which roles the user who created it had\nat the time of creation and runs the query using those same roles. If you provide secondary authorization headers,\nthose credentials are used instead.\nYou must use Kibana, this API, or the create anomaly detection jobs API to create a datafeed. Do not add a datafeed\ndirectly to the `.ml-config` index. Do not give users `write` privileges on the `.ml-config` index.",
       "docTag": "ml anomaly",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/ml-put-datafeed.html",
       "name": "ml.put_datafeed",
@@ -7117,7 +7118,8 @@
           "stability": "stable"
         }
       },
-      "description": "Allows to execute several search operations in one request.",
+      "description": "Run multiple searches.\n\nThe format of the request is similar to the bulk API format and makes use of the newline delimited JSON (NDJSON) format.\nThe structure is as follows:\n\n```\nheader\\n\nbody\\n\nheader\\n\nbody\\n\n```\n\nThis structure is specifically optimized to reduce parsing if a specific search ends up redirected to another node.\n\nIMPORTANT: The final line of data must end with a newline character `\\n`.\nEach newline character may be preceded by a carriage return `\\r`.\nWhen sending requests to this endpoint the `Content-Type` header should be set to `application/x-ndjson`.",
+      "docTag": "search",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/search-multi-search.html",
       "name": "msearch",
       "privileges": {
@@ -7219,7 +7221,8 @@
           "stability": "stable"
         }
       },
-      "description": "Returns multiple termvectors in one request.",
+      "description": "Get multiple term vectors.\n\nYou can specify existing documents by index and ID or provide artificial documents in the body of the request.\nYou can specify the index in the request body or request URI.\nThe response contains a `docs` array with all the fetched termvectors.\nEach element has the structure provided by the termvectors API.",
+      "docTag": "document",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/docs-multi-termvectors.html",
       "name": "mtermvectors",
       "request": {
@@ -7638,6 +7641,44 @@
           "visibility": "public"
         },
         "stack": {
+          "since": "8.10.0",
+          "stability": "stable"
+        }
+      },
+      "description": "Creates or updates a query ruleset.",
+      "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/test-query-ruleset.html",
+      "name": "query_rules.test",
+      "request": {
+        "name": "Request",
+        "namespace": "query_rules.test"
+      },
+      "requestBodyRequired": true,
+      "requestMediaType": [
+        "application/json"
+      ],
+      "response": {
+        "name": "Response",
+        "namespace": "query_rules.test"
+      },
+      "responseMediaType": [
+        "application/json"
+      ],
+      "urls": [
+        {
+          "methods": [
+            "POST"
+          ],
+          "path": "/_query_rules/{ruleset_id}/_test"
+        }
+      ]
+    },
+    {
+      "availability": {
+        "serverless": {
+          "stability": "stable",
+          "visibility": "public"
+        },
+        "stack": {
           "since": "6.2.0",
           "stability": "stable"
         }
@@ -7818,8 +7859,11 @@
           "stability": "stable"
         }
       },
-      "description": "Allows to retrieve a large numbers of results from a single search request.",
+      "description": "Run a scrolling search.\n\nIMPORTANT: The scroll API is no longer recommend for deep pagination. If you need to preserve the index state while paging through more than 10,000 hits, use the `search_after` parameter with a point in time (PIT).\n\nThe scroll API gets large sets of results from a single scrolling search request.\nTo get the necessary scroll ID, submit a search API request that includes an argument for the `scroll` query parameter.\nThe `scroll` parameter indicates how long Elasticsearch should retain the search context for the request.\nThe search response returns a scroll ID in the `_scroll_id` response body parameter.\nYou can then use the scroll ID with the scroll API to retrieve the next batch of results for the request.\nIf the Elasticsearch security features are enabled, the access to the results of a specific scroll ID is restricted to the user or API key that submitted the search.\n\nYou can also use the scroll API to specify a new scroll parameter that extends or shortens the retention period for the search context.\n\nIMPORTANT: Results from a scrolling search reflect the state of the index at the time of the initial search request. Subsequent indexing or document changes only affect later search and scroll requests.",
+      "docTag": "search",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/search-request-body.html#request-body-search-scroll",
+      "extDocId": "scroll-search-results",
+      "extDocUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/paginate-search-results.html#scroll-search-results",
       "name": "scroll",
       "request": {
         "name": "Request",
@@ -9281,7 +9325,8 @@
           "stability": "stable"
         }
       },
-      "description": "The terms enum API  can be used to discover terms in the index that begin with the provided string. It is designed for low-latency look-ups used in auto-complete scenarios.",
+      "description": "Get terms in an index.\n\nDiscover terms that match a partial string in an index.\nThis \"terms enum\" API is designed for low-latency look-ups used in auto-complete scenarios.\n\nIf the `complete` property in the response is false, the returned terms set may be incomplete and should be treated as approximate.\nThis can occur due to a few reasons, such as a request timeout or a node error.\n\nNOTE: The terms enum API may return terms from deleted documents. Deleted documents are initially only marked as deleted. It is not until their segments are merged that documents are actually deleted. Until that happens, the terms enum API will return terms from these documents.",
+      "docTag": "search",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/search-terms-enum.html",
       "name": "terms_enum",
       "request": {
@@ -13232,7 +13277,7 @@
       "body": {
         "kind": "no_body"
       },
-      "description": "Updates the last_seen field in the connector, and sets it to current timestamp",
+      "description": "Check in a connector.\n\nUpdate the `last_seen` field in the connector and set it to the current timestamp.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -13259,7 +13304,7 @@
         }
       ],
       "query": [],
-      "specLocation": "connector/check_in/ConnectorCheckInRequest.ts#L22-L36"
+      "specLocation": "connector/check_in/ConnectorCheckInRequest.ts#L22-L38"
     },
     {
       "body": {
@@ -13292,7 +13337,7 @@
       "body": {
         "kind": "no_body"
       },
-      "description": "Deletes a connector.",
+      "description": "Delete a connector.\n\nRemoves a connector and associated sync jobs.\nThis is a destructive action that is not recoverable.\nNOTE: This action doesn’t delete any API keys, ingest pipelines, or data indices associated with the connector.\nThese need to be removed manually.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -13332,7 +13377,7 @@
           }
         }
       ],
-      "specLocation": "connector/delete/ConnectorDeleteRequest.ts#L22-L42"
+      "specLocation": "connector/delete/ConnectorDeleteRequest.ts#L22-L47"
     },
     {
       "body": {
@@ -13359,7 +13404,7 @@
       "body": {
         "kind": "no_body"
       },
-      "description": "Retrieves a connector.",
+      "description": "Get a connector.\n\nGet the details about a connector.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -13386,7 +13431,7 @@
         }
       ],
       "query": [],
-      "specLocation": "connector/get/ConnectorGetRequest.ts#L22-L36"
+      "specLocation": "connector/get/ConnectorGetRequest.ts#L22-L38"
     },
     {
       "body": {
@@ -13413,7 +13458,7 @@
       "body": {
         "kind": "no_body"
       },
-      "description": "Returns existing connectors.",
+      "description": "Get all connectors.\n\nGet information about all connectors.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -13500,7 +13545,7 @@
           }
         }
       ],
-      "specLocation": "connector/list/ConnectorListRequest.ts#L23-L57"
+      "specLocation": "connector/list/ConnectorListRequest.ts#L23-L59"
     },
     {
       "body": {
@@ -13615,7 +13660,7 @@
           }
         ]
       },
-      "description": "Creates a connector.",
+      "description": "Create a connector.\n\nConnectors are Elasticsearch integrations that bring content from third-party data sources, which can be deployed on Elastic Cloud or hosted on your own infrastructure.\nElastic managed connectors (Native connectors) are a managed service on Elastic Cloud.\nSelf-managed connectors (Connector clients) are self-managed on your infrastructure.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -13629,7 +13674,7 @@
       },
       "path": [],
       "query": [],
-      "specLocation": "connector/post/ConnectorPostRequest.ts#L22-L42"
+      "specLocation": "connector/post/ConnectorPostRequest.ts#L22-L46"
     },
     {
       "body": {
@@ -13741,7 +13786,7 @@
           }
         ]
       },
-      "description": "Creates or updates a connector.",
+      "description": "Create or update a connector.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -13812,7 +13857,7 @@
       "body": {
         "kind": "no_body"
       },
-      "description": "Cancels a connector sync job.",
+      "description": "Cancel a connector sync job.\n\nCancel a connector sync job, which sets the status to cancelling and updates `cancellation_requested_at` to the current time.\nThe connector service is then responsible for setting the status of connector sync jobs to cancelled.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -13839,7 +13884,7 @@
         }
       ],
       "query": [],
-      "specLocation": "connector/sync_job_cancel/SyncJobCancelRequest.ts#L22-L36"
+      "specLocation": "connector/sync_job_cancel/SyncJobCancelRequest.ts#L22-L39"
     },
     {
       "body": {
@@ -13872,7 +13917,7 @@
       "body": {
         "kind": "no_body"
       },
-      "description": "Deletes a connector sync job.",
+      "description": "Delete a connector sync job.\n\nRemove a connector sync job and its associated data.\nThis is a destructive action that is not recoverable.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -13899,7 +13944,7 @@
         }
       ],
       "query": [],
-      "specLocation": "connector/sync_job_delete/SyncJobDeleteRequest.ts#L22-L36"
+      "specLocation": "connector/sync_job_delete/SyncJobDeleteRequest.ts#L22-L39"
     },
     {
       "body": {
@@ -13926,7 +13971,7 @@
       "body": {
         "kind": "no_body"
       },
-      "description": "Retrieves a connector sync job.",
+      "description": "Get a connector sync job.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -13980,7 +14025,7 @@
       "body": {
         "kind": "no_body"
       },
-      "description": "Lists connector sync jobs.",
+      "description": "Get all connector sync jobs.\n\nGet information about all stored connector sync jobs listed by their creation date in ascending order.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -14070,7 +14115,7 @@
           }
         }
       ],
-      "specLocation": "connector/sync_job_list/SyncJobListRequest.ts#L25-L55"
+      "specLocation": "connector/sync_job_list/SyncJobListRequest.ts#L25-L57"
     },
     {
       "body": {
@@ -14153,7 +14198,7 @@
           }
         ]
       },
-      "description": "Creates a connector sync job.",
+      "description": "Create a connector sync job.\n\nCreate a connector sync job document in the internal index and initialize its counters and timestamps with default values.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -14167,7 +14212,7 @@
       },
       "path": [],
       "query": [],
-      "specLocation": "connector/sync_job_post/SyncJobPostRequest.ts#L23-L43"
+      "specLocation": "connector/sync_job_post/SyncJobPostRequest.ts#L23-L45"
     },
     {
       "body": {
@@ -14200,7 +14245,7 @@
       "body": {
         "kind": "no_body"
       },
-      "description": "Activates the valid draft filtering for a connector.",
+      "description": "Activate the connector draft filter.\n\nActivates the valid draft filtering for a connector.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -14227,7 +14272,7 @@
         }
       ],
       "query": [],
-      "specLocation": "connector/update_active_filtering/ConnectorUpdateActiveFilteringRequest.ts#L22-L36"
+      "specLocation": "connector/update_active_filtering/ConnectorUpdateActiveFilteringRequest.ts#L22-L38"
     },
     {
       "body": {
@@ -14284,7 +14329,7 @@
           }
         ]
       },
-      "description": "Updates the API key id in the connector document",
+      "description": "Update the connector API key ID.\n\nUpdate the `api_key_id` and `api_key_secret_id` fields of a connector.\nYou can specify the ID of the API key used for authorization and the ID of the connector secret where the API key is stored.\nThe connector secret ID is required only for Elastic managed (native) connectors.\nSelf-managed connectors (connector clients) do not use this field.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -14311,7 +14356,7 @@
         }
       ],
       "query": [],
-      "specLocation": "connector/update_api_key_id/ConnectorUpdateAPIKeyIDRequest.ts#L21-L42"
+      "specLocation": "connector/update_api_key_id/ConnectorUpdateAPIKeyIDRequest.ts#L21-L47"
     },
     {
       "body": {
@@ -14375,7 +14420,7 @@
           }
         ]
       },
-      "description": "Updates the configuration field in the connector document",
+      "description": "Update the connector configuration.\n\nUpdate the configuration field in the connector document.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -14402,7 +14447,7 @@
         }
       ],
       "query": [],
-      "specLocation": "connector/update_configuration/ConnectorUpdateConfigurationRequest.ts#L25-L47"
+      "specLocation": "connector/update_configuration/ConnectorUpdateConfigurationRequest.ts#L25-L49"
     },
     {
       "body": {
@@ -14457,7 +14502,7 @@
           }
         ]
       },
-      "description": "Updates the filtering field in the connector document",
+      "description": "Update the connector error field.\n\nSet the error field for the connector.\nIf the error provided in the request body is non-null, the connector’s status is updated to error.\nOtherwise, if the error is reset to null, the connector status is updated to connected.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -14484,7 +14529,7 @@
         }
       ],
       "query": [],
-      "specLocation": "connector/update_error/ConnectorUpdateErrorRequest.ts#L23-L44"
+      "specLocation": "connector/update_error/ConnectorUpdateErrorRequest.ts#L23-L48"
     },
     {
       "body": {
@@ -14558,7 +14603,7 @@
           }
         ]
       },
-      "description": "Updates the filtering field in the connector document",
+      "description": "Update the connector filtering.\n\nUpdate the draft filtering configuration of a connector and marks the draft validation state as edited.\nThe filtering draft is activated once validated by the running Elastic connector service.\nThe filtering property is used to configure sync rules (both basic and advanced) for a connector.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -14585,7 +14630,7 @@
         }
       ],
       "query": [],
-      "specLocation": "connector/update_filtering/ConnectorUpdateFilteringRequest.ts#L27-L50"
+      "specLocation": "connector/update_filtering/ConnectorUpdateFilteringRequest.ts#L27-L54"
     },
     {
       "body": {
@@ -14631,7 +14676,7 @@
           }
         ]
       },
-      "description": "Updates the draft filtering validation info for a connector.",
+      "description": "Update the connector draft filtering validation.\n\nUpdate the draft filtering validation info for a connector.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -14658,7 +14703,7 @@
         }
       ],
       "query": [],
-      "specLocation": "connector/update_filtering_validation/ConnectorUpdateFilteringValidationRequest.ts#L23-L40"
+      "specLocation": "connector/update_filtering_validation/ConnectorUpdateFilteringValidationRequest.ts#L23-L42"
     },
     {
       "body": {
@@ -14713,7 +14758,7 @@
           }
         ]
       },
-      "description": "Updates the index_name in the connector document",
+      "description": "Update the connector index name.\n\nUpdate the `index_name` field of a connector, specifying the index where the data ingested by the connector is stored.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -14740,7 +14785,7 @@
         }
       ],
       "query": [],
-      "specLocation": "connector/update_index_name/ConnectorUpdateIndexNameRequest.ts#L23-L43"
+      "specLocation": "connector/update_index_name/ConnectorUpdateIndexNameRequest.ts#L23-L45"
     },
     {
       "body": {
@@ -14797,7 +14842,7 @@
           }
         ]
       },
-      "description": "Updates the name and description fields in the connector document",
+      "description": "Update the connector name and description.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -14870,7 +14915,7 @@
           }
         ]
       },
-      "description": "Updates the is_native flag in the connector document",
+      "description": "Update the connector is_native flag.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -14943,7 +14988,7 @@
           }
         ]
       },
-      "description": "Updates the pipeline field in the connector document",
+      "description": "Update the connector pipeline.\n\nWhen you create a new connector, the configuration of an ingest pipeline is populated with default settings.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -14970,7 +15015,7 @@
         }
       ],
       "query": [],
-      "specLocation": "connector/update_pipeline/ConnectorUpdatePipelineRequest.ts#L23-L44"
+      "specLocation": "connector/update_pipeline/ConnectorUpdatePipelineRequest.ts#L23-L46"
     },
     {
       "body": {
@@ -15016,7 +15061,7 @@
           }
         ]
       },
-      "description": "Updates the scheduling field in the connector document",
+      "description": "Update the connector scheduling.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -15089,7 +15134,7 @@
           }
         ]
       },
-      "description": "Updates the service type of the connector",
+      "description": "Update the connector service type.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -15162,7 +15207,7 @@
           }
         ]
       },
-      "description": "Updates the status of the connector",
+      "description": "Update the connector status.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -25522,7 +25567,7 @@
           }
         ]
       },
-      "description": "Allows to get multiple documents in one request.",
+      "description": "Get multiple documents.\n\nGet multiple JSON documents by ID from one or more indices.\nIf you specify an index in the request URI, you only need to specify the document IDs in the request body.\nTo ensure fast responses, this multi get (mget) API responds with partial results if one or more shards fail.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -25655,7 +25700,7 @@
           }
         }
       ],
-      "specLocation": "_global/mget/MultiGetRequest.ts#L25-L98"
+      "specLocation": "_global/mget/MultiGetRequest.ts#L25-L104"
     },
     {
       "body": {
@@ -29699,7 +29744,7 @@
           }
         ]
       },
-      "description": "Create a datafeed.\nDatafeeds retrieve data from Elasticsearch for analysis by an anomaly detection job.\nYou can associate only one datafeed with each anomaly detection job.\nThe datafeed contains a query that runs at a defined interval (`frequency`).\nIf you are concerned about delayed data, you can add a delay (`query_delay') at each interval.\nWhen Elasticsearch security features are enabled, your datafeed remembers which roles the user who created it had\nat the time of creation and runs the query using those same roles. If you provide secondary authorization headers,\nthose credentials are used instead.\nYou must use Kibana, this API, or the create anomaly detection jobs API to create a datafeed. Do not add a datafeed\ndirectly to the `.ml-config` index. Do not give users `write` privileges on the `.ml-config` index.",
+      "description": "Create a datafeed.\nDatafeeds retrieve data from Elasticsearch for analysis by an anomaly detection job.\nYou can associate only one datafeed with each anomaly detection job.\nThe datafeed contains a query that runs at a defined interval (`frequency`).\nIf you are concerned about delayed data, you can add a delay (`query_delay`) at each interval.\nWhen Elasticsearch security features are enabled, your datafeed remembers which roles the user who created it had\nat the time of creation and runs the query using those same roles. If you provide secondary authorization headers,\nthose credentials are used instead.\nYou must use Kibana, this API, or the create anomaly detection jobs API to create a datafeed. Do not add a datafeed\ndirectly to the `.ml-config` index. Do not give users `write` privileges on the `.ml-config` index.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -33359,7 +33404,7 @@
           }
         }
       },
-      "description": "Allows to execute several search operations in one request.",
+      "description": "Run multiple searches.\n\nThe format of the request is similar to the bulk API format and makes use of the newline delimited JSON (NDJSON) format.\nThe structure is as follows:\n\n```\nheader\\n\nbody\\n\nheader\\n\nbody\\n\n```\n\nThis structure is specifically optimized to reduce parsing if a specific search ends up redirected to another node.\n\nIMPORTANT: The final line of data must end with a newline character `\\n`.\nEach newline character may be preceded by a carriage return `\\r`.\nWhen sending requests to this endpoint the `Content-Type` header should be set to `application/x-ndjson`.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -33551,7 +33596,7 @@
           }
         }
       ],
-      "specLocation": "_global/msearch/MultiSearchRequest.ts#L25-L106"
+      "specLocation": "_global/msearch/MultiSearchRequest.ts#L25-L124"
     },
     {
       "body": {
@@ -33769,7 +33814,7 @@
           }
         ]
       },
-      "description": "Returns multiple termvectors in one request.",
+      "description": "Get multiple term vectors.\n\nYou can specify existing documents by index and ID or provide artificial documents in the body of the request.\nYou can specify the index in the request body or request URI.\nThe response contains a `docs` array with all the fetched termvectors.\nEach element has the structure provided by the termvectors API.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -33952,7 +33997,7 @@
           }
         }
       ],
-      "specLocation": "_global/mtermvectors/MultiTermVectorsRequest.ts#L31-L109"
+      "specLocation": "_global/mtermvectors/MultiTermVectorsRequest.ts#L31-L116"
     },
     {
       "body": {
@@ -34826,6 +34871,100 @@
         "kind": "properties",
         "properties": [
           {
+            "name": "match_criteria",
+            "required": true,
+            "type": {
+              "key": {
+                "kind": "instance_of",
+                "type": {
+                  "name": "string",
+                  "namespace": "_builtins"
+                }
+              },
+              "kind": "dictionary_of",
+              "singleKey": false,
+              "value": {
+                "kind": "user_defined_value"
+              }
+            }
+          }
+        ]
+      },
+      "description": "Creates or updates a query ruleset.",
+      "inherits": {
+        "type": {
+          "name": "RequestBase",
+          "namespace": "_types"
+        }
+      },
+      "kind": "request",
+      "name": {
+        "name": "Request",
+        "namespace": "query_rules.test"
+      },
+      "path": [
+        {
+          "description": "The unique identifier of the query ruleset to be created or updated",
+          "name": "ruleset_id",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Id",
+              "namespace": "_types"
+            }
+          }
+        }
+      ],
+      "query": [],
+      "specLocation": "query_rules/test/QueryRulesetTestRequest.ts#L24-L44"
+    },
+    {
+      "body": {
+        "kind": "properties",
+        "properties": [
+          {
+            "name": "total_matched_rules",
+            "required": true,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "integer",
+                "namespace": "_types"
+              }
+            }
+          },
+          {
+            "name": "matched_rules",
+            "required": true,
+            "type": {
+              "kind": "array_of",
+              "value": {
+                "kind": "instance_of",
+                "type": {
+                  "name": "QueryRulesetMatchedRule",
+                  "namespace": "query_rules.test"
+                }
+              }
+            }
+          }
+        ]
+      },
+      "kind": "response",
+      "name": {
+        "name": "Response",
+        "namespace": "query_rules.test"
+      },
+      "specLocation": "query_rules/test/QueryRulesetTestResponse.ts#L23-L28"
+    },
+    {
+      "attachedBehaviors": [
+        "CommonQueryParameters"
+      ],
+      "body": {
+        "kind": "properties",
+        "properties": [
+          {
             "description": "A set of typical search requests, together with their provided ratings.",
             "name": "requests",
             "required": true,
@@ -35659,7 +35798,7 @@
           }
         ]
       },
-      "description": "Allows to retrieve a large numbers of results from a single search request.",
+      "description": "Run a scrolling search.\n\nIMPORTANT: The scroll API is no longer recommend for deep pagination. If you need to preserve the index state while paging through more than 10,000 hits, use the `search_after` parameter with a point in time (PIT).\n\nThe scroll API gets large sets of results from a single scrolling search request.\nTo get the necessary scroll ID, submit a search API request that includes an argument for the `scroll` query parameter.\nThe `scroll` parameter indicates how long Elasticsearch should retain the search context for the request.\nThe search response returns a scroll ID in the `_scroll_id` response body parameter.\nYou can then use the scroll ID with the scroll API to retrieve the next batch of results for the request.\nIf the Elasticsearch security features are enabled, the access to the results of a specific scroll ID is restricted to the user or API key that submitted the search.\n\nYou can also use the scroll API to specify a new scroll parameter that extends or shortens the retention period for the search context.\n\nIMPORTANT: Results from a scrolling search reflect the state of the index at the time of the initial search request. Subsequent indexing or document changes only affect later search and scroll requests.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -35735,7 +35874,7 @@
           }
         }
       ],
-      "specLocation": "_global/scroll/ScrollRequest.ts#L24-L59"
+      "specLocation": "_global/scroll/ScrollRequest.ts#L24-L75"
     },
     {
       "body": {
@@ -41709,7 +41848,7 @@
           }
         ]
       },
-      "description": "The terms enum API  can be used to discover terms in the index that begin with the provided string. It is designed for low-latency look-ups used in auto-complete scenarios.",
+      "description": "Get terms in an index.\n\nDiscover terms that match a partial string in an index.\nThis \"terms enum\" API is designed for low-latency look-ups used in auto-complete scenarios.\n\nIf the `complete` property in the response is false, the returned terms set may be incomplete and should be treated as approximate.\nThis can occur due to a few reasons, such as a request timeout or a node error.\n\nNOTE: The terms enum API may return terms from deleted documents. Deleted documents are initially only marked as deleted. It is not until their segments are merged that documents are actually deleted. Until that happens, the terms enum API will return terms from these documents.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -41736,7 +41875,7 @@
         }
       ],
       "query": [],
-      "specLocation": "_global/terms_enum/TermsEnumRequest.ts#L26-L65"
+      "specLocation": "_global/terms_enum/TermsEnumRequest.ts#L26-L75"
     },
     {
       "body": {
@@ -45392,6 +45531,8 @@
           "aliases": [
             "aggs"
           ],
+          "extDocId": "search-aggregations",
+          "extDocUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/search-aggregations.html",
           "name": "aggregations",
           "required": false,
           "type": {
@@ -45851,7 +45992,7 @@
           }
         }
       ],
-      "specLocation": "_global/msearch/types.ts#L70-L201"
+      "specLocation": "_global/msearch/types.ts#L70-L204"
     },
     {
       "kind": "interface",
@@ -51340,6 +51481,8 @@
       }
     },
     {
+      "extDocId": "collapse-search-results",
+      "extDocUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/collapse-search-results.html",
       "kind": "interface",
       "name": {
         "name": "FieldCollapse",
@@ -51409,7 +51552,7 @@
           }
         }
       ],
-      "specLocation": "_global/search/_types/FieldCollapse.ts#L24-L38"
+      "specLocation": "_global/search/_types/FieldCollapse.ts#L24-L41"
     },
     {
       "description": "A reference to a field with formatting instructions on how to return the value",
@@ -67759,7 +67902,7 @@
         "name": "ResponseItem",
         "namespace": "_global.msearch"
       },
-      "specLocation": "_global/msearch/types.ts#L208-L211",
+      "specLocation": "_global/msearch/types.ts#L211-L214",
       "type": {
         "items": [
           {
@@ -67829,7 +67972,7 @@
           }
         }
       ],
-      "specLocation": "_global/msearch/types.ts#L213-L216"
+      "specLocation": "_global/msearch/types.ts#L216-L219"
     },
     {
       "generics": [
@@ -136628,7 +136771,7 @@
           }
         }
       ],
-      "specLocation": "_global/msearch/types.ts#L203-L206"
+      "specLocation": "_global/msearch/types.ts#L206-L209"
     },
     {
       "kind": "interface",
@@ -137455,6 +137598,40 @@
         }
       ],
       "specLocation": "query_rules/list_rulesets/types.ts#L23-L37"
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "QueryRulesetMatchedRule",
+        "namespace": "query_rules.test"
+      },
+      "properties": [
+        {
+          "description": "Ruleset unique identifier",
+          "name": "ruleset_id",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Id",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "Rule unique identifier within that ruleset",
+          "name": "rule_id",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Id",
+              "namespace": "_types"
+            }
+          }
+        }
+      ],
+      "specLocation": "query_rules/test/QueryRulesetTestResponse.ts#L30-L39"
     },
     {
       "kind": "interface",

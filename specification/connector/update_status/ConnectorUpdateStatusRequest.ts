@@ -21,7 +21,7 @@ import { Id } from '@_types/common'
 import { ConnectorStatus } from '../_types/Connector'
 
 /**
- * Updates the status of the connector
+ * Update the connector status.
  * @rest_spec_name connector.update_status
  * @availability stack since=8.12.0 stability=experimental
  * @availability serverless stability=experimental visibility=public
