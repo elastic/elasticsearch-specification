@@ -68,7 +68,10 @@ export class MultisearchHeader {
 
 // We should keep this in sync with the normal search request body.
 export class MultisearchBody {
-  /** @aliases aggs */ // ES uses "aggregations" in serialization
+  /**
+   * @aliases aggs
+   * @ext_doc_id search-aggregations
+   */ // ES uses "aggregations" in serialization
   aggregations?: Dictionary<string, AggregationContainer>
   collapse?: FieldCollapse
   /**

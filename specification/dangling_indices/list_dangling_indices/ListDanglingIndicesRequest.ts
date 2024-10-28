@@ -20,7 +20,14 @@
 import { RequestBase } from '@_types/Base'
 
 /**
+ * Get the dangling indices.
+ *
+ * If Elasticsearch encounters index data that is absent from the current cluster state, those indices are considered to be dangling.
+ * For example, this can happen if you delete more than `cluster.indices.tombstones.size` indices while an Elasticsearch node is offline.
+ *
+ * Use this API to list dangling indices, which you can then import or delete.
  * @rest_spec_name dangling_indices.list_dangling_indices
  * @availability stack since=7.9.0 stability=stable
+ * @doc_tag indices
  */
 export interface Request extends RequestBase {}
