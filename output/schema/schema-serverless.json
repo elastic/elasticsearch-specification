@@ -36176,9 +36176,12 @@
           },
           {
             "availability": {
-              "serverless": {},
+              "serverless": {
+                "stability": "stable"
+              },
               "stack": {
-                "since": "8.14.0"
+                "since": "8.14.0",
+                "stability": "stable"
               }
             },
             "description": "A retriever is a specification to describe top documents returned from a search. A retriever replaces other elements of the search API that also return top documents such as query and knn.",
