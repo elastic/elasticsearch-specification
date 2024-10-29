@@ -36176,7 +36176,9 @@
           },
           {
             "availability": {
-              "serverless": {},
+              "serverless": {
+                "stability": "stable"
+              },
               "stack": {
                 "since": "8.14.0",
                 "stability": "stable"
