@@ -27904,7 +27904,8 @@
                   }
                 },
                 "required": [
-                  "access"
+                  "access",
+                  "name"
                 ]
               }
             }
@@ -82030,7 +82031,7 @@
             "description": "A list of indices permission entries for cross-cluster search.",
             "type": "array",
             "items": {
-              "$ref": "#/components/schemas/security._types:RemoteIndicesPrivileges"
+              "$ref": "#/components/schemas/security._types:SearchAccess"
             }
           }
         }
@@ -82050,12 +82051,9 @@
           "names"
         ]
       },
-      "security._types:RemoteIndicesPrivileges": {
+      "security._types:SearchAccess": {
         "type": "object",
         "properties": {
-          "clusters": {
-            "$ref": "#/components/schemas/_types:Names"
-          },
           "field_security": {
             "$ref": "#/components/schemas/security._types:FieldSecurity"
           },
@@ -82064,13 +82062,6 @@
             "type": "array",
             "items": {
               "$ref": "#/components/schemas/_types:IndexName"
-            }
-          },
-          "privileges": {
-            "description": "The index level privileges that owners of the role have on the specified indices.",
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/security._types:IndexPrivilege"
             }
           },
           "query": {
@@ -82082,9 +82073,7 @@
           }
         },
         "required": [
-          "clusters",
-          "names",
-          "privileges"
+          "names"
         ]
       },
       "security.create_service_token:Token": {
@@ -82761,6 +82750,43 @@
         },
         "required": [
           "created"
+        ]
+      },
+      "security._types:RemoteIndicesPrivileges": {
+        "type": "object",
+        "properties": {
+          "clusters": {
+            "$ref": "#/components/schemas/_types:Names"
+          },
+          "field_security": {
+            "$ref": "#/components/schemas/security._types:FieldSecurity"
+          },
+          "names": {
+            "description": "A list of indices (or index name patterns) to which the permissions in this entry apply.",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/_types:IndexName"
+            }
+          },
+          "privileges": {
+            "description": "The index level privileges that owners of the role have on the specified indices.",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/security._types:IndexPrivilege"
+            }
+          },
+          "query": {
+            "$ref": "#/components/schemas/security._types:IndicesPrivilegesQuery"
+          },
+          "allow_restricted_indices": {
+            "description": "Set to `true` if using wildcard or regular expressions for patterns that cover restricted indices. Implicitly, restricted indices have limited privileges that can cause pattern tests to fail. If restricted indices are explicitly included in the `names` list, Elasticsearch checks privileges against these indices regardless of the value set for `allow_restricted_indices`.",
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "clusters",
+          "names",
+          "privileges"
         ]
       },
       "security.query_api_keys:ApiKeyAggregationContainer": {

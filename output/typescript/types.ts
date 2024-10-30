@@ -17569,7 +17569,7 @@ export interface SearchableSnapshotsStatsResponse {
 
 export interface SecurityAccess {
   replication?: SecurityReplicationAccess[]
-  search?: SecurityRemoteIndicesPrivileges[]
+  search?: SecuritySearchAccess[]
 }
 
 export interface SecurityApiKey {
@@ -17720,6 +17720,13 @@ export interface SecurityRoleTemplateScript {
   params?: Record<string, any>
   lang?: ScriptLanguage
   options?: Record<string, string>
+}
+
+export interface SecuritySearchAccess {
+  field_security?: SecurityFieldSecurity
+  names: IndexName[]
+  query?: SecurityIndicesPrivilegesQuery
+  allow_restricted_indices?: boolean
 }
 
 export type SecurityTemplateFormat = 'string' | 'json'
@@ -17919,7 +17926,7 @@ export interface SecurityCreateCrossClusterApiKeyRequest extends RequestBase {
     access: SecurityAccess
     expiration?: Duration
     metadata?: Metadata
-    name?: Name
+    name: Name
   }
 }
 

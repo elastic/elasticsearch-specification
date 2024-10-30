@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { RemoteIndicesPrivileges, ReplicationAccess } from './Privileges'
+import { ReplicationAccess, SearchAccess } from './Privileges'
 
 export class Access {
   /**
@@ -27,5 +27,5 @@ export class Access {
   /**
    * A list of indices permission entries for cross-cluster search.
    */
-  search?: RemoteIndicesPrivileges[]
+  search?: SearchAccess[]
 }
