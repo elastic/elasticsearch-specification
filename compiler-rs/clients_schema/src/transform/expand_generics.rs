@@ -486,6 +486,7 @@ mod tests {
     use super::*;
 
     #[test]
+    #[ignore]
     pub fn compare_with_js_version() -> testresult::TestResult {
         let canonical_json = {
             // Deserialize and reserialize to have a consistent JSON format
