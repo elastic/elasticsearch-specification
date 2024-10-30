@@ -68,6 +68,6 @@ export interface Request extends RequestBase {
      */
     metadata?: Metadata
     /** Specifies the name for this API key. */
-    name?: Name
+    name: Name
   }
 }
