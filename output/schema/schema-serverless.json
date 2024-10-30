@@ -20834,22 +20834,9 @@
               "namespace": "_builtins"
             }
           }
-        },
-        {
-          "description": "If `true`, the request retrieves information from the local node only.",
-          "name": "local",
-          "required": false,
-          "serverDefault": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "boolean",
-              "namespace": "_builtins"
-            }
-          }
         }
       ],
-      "specLocation": "indices/exists_alias/IndicesExistsAliasRequest.ts#L23-L68"
+      "specLocation": "indices/exists_alias/IndicesExistsAliasRequest.ts#L23-L63"
     },
     {
       "body": {
@@ -21279,22 +21266,9 @@
               "namespace": "_builtins"
             }
           }
-        },
-        {
-          "description": "If `true`, the request retrieves information from the local node only.",
-          "name": "local",
-          "required": false,
-          "serverDefault": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "boolean",
-              "namespace": "_builtins"
-            }
-          }
         }
       ],
-      "specLocation": "indices/get_alias/IndicesGetAliasRequest.ts#L23-L71"
+      "specLocation": "indices/get_alias/IndicesGetAliasRequest.ts#L23-L66"
     },
     {
       "body": {
