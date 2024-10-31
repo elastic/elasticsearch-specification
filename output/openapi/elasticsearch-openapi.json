@@ -13708,9 +13708,6 @@
           },
           {
             "$ref": "#/components/parameters/indices.segments#ignore_unavailable"
-          },
-          {
-            "$ref": "#/components/parameters/indices.segments#verbose"
           }
         ],
         "responses": {
@@ -13740,9 +13737,6 @@
           },
           {
             "$ref": "#/components/parameters/indices.segments#ignore_unavailable"
-          },
-          {
-            "$ref": "#/components/parameters/indices.segments#verbose"
           }
         ],
         "responses": {
@@ -96282,16 +96276,6 @@
         "in": "query",
         "name": "ignore_unavailable",
         "description": "If `false`, the request returns an error if it targets a missing or closed index.",
-        "deprecated": false,
-        "schema": {
-          "type": "boolean"
-        },
-        "style": "form"
-      },
-      "indices.segments#verbose": {
-        "in": "query",
-        "name": "verbose",
-        "description": "If `true`, the request returns a verbose response.",
         "deprecated": false,
         "schema": {
           "type": "boolean"

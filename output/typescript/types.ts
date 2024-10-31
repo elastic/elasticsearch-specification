@@ -12277,7 +12277,6 @@ export interface IndicesSegmentsRequest extends RequestBase {
   allow_no_indices?: boolean
   expand_wildcards?: ExpandWildcards
   ignore_unavailable?: boolean
-  verbose?: boolean
 }
 
 export interface IndicesSegmentsResponse {
