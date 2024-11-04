@@ -152,6 +152,15 @@ pub fn expand(model: IndexedModel, config: ExpandConfig) -> anyhow::Result<Index
             itf.inherits = Some(expand_inherits(inherit, &mappings, model, ctx)?);
         }
 
+        if !itf.behaviors.is_empty() {
+            itf.behaviors.iter().for_each(|b| {
+                if b.generics.is_empty() {
+                    // If the behavior has no generics, we can just expand it
+                    let _ = expand_type(&b.typ, Vec::new(), model, ctx);
+                }
+            });
+        }
+
         // We keep the generic parameters of behaviors, but expand their value
         for behavior in &mut itf.behaviors {
             for arg in &mut behavior.generics {
