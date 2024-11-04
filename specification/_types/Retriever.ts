@@ -35,13 +35,15 @@ export class RetrieverContainer {
   knn?: KnnRetriever
   /** A retriever that produces top documents from reciprocal rank fusion (RRF). */
   rrf?: RRFRetriever
-  /** A retriever that replaces the functionality of a rule query. */
-  rule?: RuleRetriever
+  /** A retriever that reranks the top documents based on a reranking model using the InferenceAPI */
+  text_similarity_reranker?: TextSimilarityReranker
 }
 
 export class RetrieverBase {
   /** Query to filter the documents that can match. */
   filter?: QueryContainer | QueryContainer[]
+  /** Minimum _score for matching documents. Documents with a lower _score are not included in the top documents. */
+  min_score?: float
 }
 
 export class StandardRetriever extends RetrieverBase {
@@ -53,8 +55,6 @@ export class StandardRetriever extends RetrieverBase {
   terminate_after?: integer
   /** A sort object that that specifies the order of matching documents. */
   sort?: Sort
-  /** Minimum _score for matching documents. Documents with a lower _score are not included in the top documents. */
-  min_score?: float
   /** Collapses the top documents by a specified key into a single top document per key. */
   collapse?: FieldCollapse
 }
@@ -83,13 +83,15 @@ export class RRFRetriever extends RetrieverBase {
   rank_window_size?: integer
 }
 
-export class RuleRetriever extends RetrieverBase {
-  /** The ruleset IDs containing the rules this retriever is evaluating against. */
-  ruleset_ids: Id[]
-  /** The match criteria that will determine if a rule in the provided rulesets should be applied. */
-  match_criteria: UserDefinedValue
-  /** The retriever whose results rules should be applied to. */
+export class TextSimilarityReranker extends RetrieverBase {
+  /** The nested retriever which will produce the first-level results, that will later be used for reranking. */
   retriever: RetrieverContainer
-  /** This value determines the size of the individual result set.  */
+  /** This value determines how many documents we will consider from the nested retriever.  */
   rank_window_size?: integer
+  /** Unique identifier of the inference endpoint created using the inference API. */
+  inference_id?: string
+  /** The text snippet used as the basis for similarity comparison */
+  inference_text?: string
+  /** The document field to be used for text similarity comparisons. This field should contain the text that will be evaluated against the inference_text */
+  field?: string
 }
