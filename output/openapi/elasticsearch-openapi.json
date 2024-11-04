@@ -24077,15 +24077,22 @@
               "schema": {
                 "type": "object",
                 "properties": {
-                  "match_criteria": {
-                    "type": "object",
-                    "additionalProperties": {
-                      "type": "object"
-                    }
+                  "rules": {
+                    "oneOf": [
+                      {
+                        "$ref": "#/components/schemas/query_rules._types:QueryRule"
+                      },
+                      {
+                        "type": "array",
+                        "items": {
+                          "$ref": "#/components/schemas/query_rules._types:QueryRule"
+                        }
+                      }
+                    ]
                   }
                 },
                 "required": [
-                  "match_criteria"
+                  "rules"
                 ]
               }
             }
@@ -24100,19 +24107,12 @@
                 "schema": {
                   "type": "object",
                   "properties": {
-                    "total_matched_rules": {
-                      "type": "number"
-                    },
-                    "matched_rules": {
-                      "type": "array",
-                      "items": {
-                        "$ref": "#/components/schemas/query_rules.test:QueryRulesetMatchedRule"
-                      }
+                    "result": {
+                      "$ref": "#/components/schemas/_types:Result"
                     }
                   },
                   "required": [
-                    "total_matched_rules",
-                    "matched_rules"
+                    "result"
                   ]
                 }
               }
@@ -24205,6 +24205,77 @@
                   "required": [
                     "count",
                     "results"
+                  ]
+                }
+              }
+            }
+          }
+        },
+        "x-state": "Added in 8.10.0"
+      }
+    },
+    "/_query_rules/{ruleset_id}/_test": {
+      "post": {
+        "tags": [
+          "query_rules"
+        ],
+        "summary": "Creates or updates a query ruleset",
+        "operationId": "query-rules-test",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "ruleset_id",
+            "description": "The unique identifier of the query ruleset to be created or updated",
+            "required": true,
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/_types:Id"
+            },
+            "style": "simple"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "match_criteria": {
+                    "type": "object",
+                    "additionalProperties": {
+                      "type": "object"
+                    }
+                  }
+                },
+                "required": [
+                  "match_criteria"
+                ]
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "total_matched_rules": {
+                      "type": "number"
+                    },
+                    "matched_rules": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/query_rules.test:QueryRulesetMatchedRule"
+                      }
+                    }
+                  },
+                  "required": [
+                    "total_matched_rules",
+                    "matched_rules"
                   ]
                 }
               }
