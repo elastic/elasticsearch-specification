@@ -37,6 +37,8 @@ export class RetrieverContainer {
   rrf?: RRFRetriever
   /** A retriever that reranks the top documents based on a reranking model using the InferenceAPI */
   text_similarity_reranker?: TextSimilarityReranker
+  /** A retriever that replaces the functionality of a rule query. */
+  rule?: RuleRetriever
 }
 
 export class RetrieverBase {
@@ -94,4 +96,15 @@ export class TextSimilarityReranker extends RetrieverBase {
   inference_text?: string
   /** The document field to be used for text similarity comparisons. This field should contain the text that will be evaluated against the inference_text */
   field?: string
+}
+
+export class RuleRetriever extends RetrieverBase {
+  /** The ruleset IDs containing the rules this retriever is evaluating against. */
+  ruleset_ids: Id[]
+  /** The match criteria that will determine if a rule in the provided rulesets should be applied. */
+  match_criteria: UserDefinedValue
+  /** The retriever whose results rules should be applied to. */
+  retriever: RetrieverContainer
+  /** This value determines the size of the individual result set.  */
+  rank_window_size?: integer
 }
