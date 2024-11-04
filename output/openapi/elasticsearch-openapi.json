@@ -80979,6 +80979,9 @@
           },
           "text_similarity_reranker": {
             "$ref": "#/components/schemas/_types:TextSimilarityReranker"
+          },
+          "rule": {
+            "$ref": "#/components/schemas/_types:RuleRetriever"
           }
         },
         "minProperties": 1,
@@ -81133,6 +81136,41 @@
               }
             },
             "required": [
+              "retriever"
+            ]
+          }
+        ]
+      },
+      "_types:RuleRetriever": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/_types:RetrieverBase"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "ruleset_ids": {
+                "description": "The ruleset IDs containing the rules this retriever is evaluating against.",
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/_types:Id"
+                }
+              },
+              "match_criteria": {
+                "description": "The match criteria that will determine if a rule in the provided rulesets should be applied.",
+                "type": "object"
+              },
+              "retriever": {
+                "$ref": "#/components/schemas/_types:RetrieverContainer"
+              },
+              "rank_window_size": {
+                "description": "This value determines the size of the individual result set.",
+                "type": "number"
+              }
+            },
+            "required": [
+              "ruleset_ids",
+              "match_criteria",
               "retriever"
             ]
           }

@@ -138612,9 +138612,21 @@
               "namespace": "_types"
             }
           }
+        },
+        {
+          "description": "A retriever that replaces the functionality of a rule query.",
+          "name": "rule",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "RuleRetriever",
+              "namespace": "_types"
+            }
+          }
         }
       ],
-      "specLocation": "_types/Retriever.ts#L26-L38",
+      "specLocation": "_types/Retriever.ts#L28-L42",
       "variants": {
         "kind": "container"
       }
@@ -138693,7 +138705,7 @@
           }
         }
       ],
-      "specLocation": "_types/Retriever.ts#L47-L58"
+      "specLocation": "_types/Retriever.ts#L51-L62"
     },
     {
       "kind": "interface",
@@ -138742,7 +138754,7 @@
           }
         }
       ],
-      "specLocation": "_types/Retriever.ts#L40-L45"
+      "specLocation": "_types/Retriever.ts#L44-L49"
     },
     {
       "inherits": {
@@ -138830,7 +138842,7 @@
           }
         }
       ],
-      "specLocation": "_types/Retriever.ts#L60-L73"
+      "specLocation": "_types/Retriever.ts#L64-L77"
     },
     {
       "inherits": {
@@ -138885,7 +138897,7 @@
           }
         }
       ],
-      "specLocation": "_types/Retriever.ts#L75-L82"
+      "specLocation": "_types/Retriever.ts#L79-L86"
     },
     {
       "inherits": {
@@ -138961,7 +138973,70 @@
           }
         }
       ],
-      "specLocation": "_types/Retriever.ts#L84-L95"
+      "specLocation": "_types/Retriever.ts#L88-L99"
+    },
+    {
+      "inherits": {
+        "type": {
+          "name": "RetrieverBase",
+          "namespace": "_types"
+        }
+      },
+      "kind": "interface",
+      "name": {
+        "name": "RuleRetriever",
+        "namespace": "_types"
+      },
+      "properties": [
+        {
+          "description": "The ruleset IDs containing the rules this retriever is evaluating against.",
+          "name": "ruleset_ids",
+          "required": true,
+          "type": {
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "Id",
+                "namespace": "_types"
+              }
+            }
+          }
+        },
+        {
+          "description": "The match criteria that will determine if a rule in the provided rulesets should be applied.",
+          "name": "match_criteria",
+          "required": true,
+          "type": {
+            "kind": "user_defined_value"
+          }
+        },
+        {
+          "description": "The retriever whose results rules should be applied to.",
+          "name": "retriever",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "RetrieverContainer",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "This value determines the size of the individual result set.",
+          "name": "rank_window_size",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "_types"
+            }
+          }
+        }
+      ],
+      "specLocation": "_types/Retriever.ts#L101-L110"
     },
     {
       "inherits": {
