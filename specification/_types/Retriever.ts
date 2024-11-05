@@ -108,4 +108,3 @@ export class RuleRetriever extends RetrieverBase {
   /** This value determines the size of the individual result set.  */
   rank_window_size?: integer
 }
-
