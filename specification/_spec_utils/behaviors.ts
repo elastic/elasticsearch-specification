@@ -106,14 +106,6 @@ export interface CommonCatQueryParameters {
    */
   help?: boolean
   /**
-   * If `true`, the request computes the list of selected nodes from the
-   * local cluster state. If `false` the list of selected nodes are computed
-   * from the cluster state of the master node. In both cases the coordinating
-   * node will send requests for further information to each selected node.
-   * @server_default false
-   */
-  local?: boolean
-  /**
    * Period to wait for a connection to the master node.
    * @server_default 30s
    */
