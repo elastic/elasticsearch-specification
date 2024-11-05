@@ -6265,7 +6265,7 @@
           "stability": "stable"
         }
       },
-      "description": "Create a datafeed.\nDatafeeds retrieve data from Elasticsearch for analysis by an anomaly detection job.\nYou can associate only one datafeed with each anomaly detection job.\nThe datafeed contains a query that runs at a defined interval (`frequency`).\nIf you are concerned about delayed data, you can add a delay (`query_delay') at each interval.\nWhen Elasticsearch security features are enabled, your datafeed remembers which roles the user who created it had\nat the time of creation and runs the query using those same roles. If you provide secondary authorization headers,\nthose credentials are used instead.\nYou must use Kibana, this API, or the create anomaly detection jobs API to create a datafeed. Do not add a datafeed\ndirectly to the `.ml-config` index. Do not give users `write` privileges on the `.ml-config` index.",
+      "description": "Create a datafeed.\nDatafeeds retrieve data from Elasticsearch for analysis by an anomaly detection job.\nYou can associate only one datafeed with each anomaly detection job.\nThe datafeed contains a query that runs at a defined interval (`frequency`).\nIf you are concerned about delayed data, you can add a delay (`query_delay`) at each interval.\nWhen Elasticsearch security features are enabled, your datafeed remembers which roles the user who created it had\nat the time of creation and runs the query using those same roles. If you provide secondary authorization headers,\nthose credentials are used instead.\nYou must use Kibana, this API, or the create anomaly detection jobs API to create a datafeed. Do not add a datafeed\ndirectly to the `.ml-config` index. Do not give users `write` privileges on the `.ml-config` index.",
       "docTag": "ml anomaly",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/ml-put-datafeed.html",
       "name": "ml.put_datafeed",
@@ -20834,22 +20834,9 @@
               "namespace": "_builtins"
             }
           }
-        },
-        {
-          "description": "If `true`, the request retrieves information from the local node only.",
-          "name": "local",
-          "required": false,
-          "serverDefault": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "boolean",
-              "namespace": "_builtins"
-            }
-          }
         }
       ],
-      "specLocation": "indices/exists_alias/IndicesExistsAliasRequest.ts#L23-L68"
+      "specLocation": "indices/exists_alias/IndicesExistsAliasRequest.ts#L23-L63"
     },
     {
       "body": {
@@ -21279,22 +21266,9 @@
               "namespace": "_builtins"
             }
           }
-        },
-        {
-          "description": "If `true`, the request retrieves information from the local node only.",
-          "name": "local",
-          "required": false,
-          "serverDefault": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "boolean",
-              "namespace": "_builtins"
-            }
-          }
         }
       ],
-      "specLocation": "indices/get_alias/IndicesGetAliasRequest.ts#L23-L71"
+      "specLocation": "indices/get_alias/IndicesGetAliasRequest.ts#L23-L66"
     },
     {
       "body": {
@@ -29744,7 +29718,7 @@
           }
         ]
       },
-      "description": "Create a datafeed.\nDatafeeds retrieve data from Elasticsearch for analysis by an anomaly detection job.\nYou can associate only one datafeed with each anomaly detection job.\nThe datafeed contains a query that runs at a defined interval (`frequency`).\nIf you are concerned about delayed data, you can add a delay (`query_delay') at each interval.\nWhen Elasticsearch security features are enabled, your datafeed remembers which roles the user who created it had\nat the time of creation and runs the query using those same roles. If you provide secondary authorization headers,\nthose credentials are used instead.\nYou must use Kibana, this API, or the create anomaly detection jobs API to create a datafeed. Do not add a datafeed\ndirectly to the `.ml-config` index. Do not give users `write` privileges on the `.ml-config` index.",
+      "description": "Create a datafeed.\nDatafeeds retrieve data from Elasticsearch for analysis by an anomaly detection job.\nYou can associate only one datafeed with each anomaly detection job.\nThe datafeed contains a query that runs at a defined interval (`frequency`).\nIf you are concerned about delayed data, you can add a delay (`query_delay`) at each interval.\nWhen Elasticsearch security features are enabled, your datafeed remembers which roles the user who created it had\nat the time of creation and runs the query using those same roles. If you provide secondary authorization headers,\nthose credentials are used instead.\nYou must use Kibana, this API, or the create anomaly detection jobs API to create a datafeed. Do not add a datafeed\ndirectly to the `.ml-config` index. Do not give users `write` privileges on the `.ml-config` index.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -36176,9 +36150,12 @@
           },
           {
             "availability": {
-              "serverless": {},
+              "serverless": {
+                "stability": "stable"
+              },
               "stack": {
-                "since": "8.14.0"
+                "since": "8.14.0",
+                "stability": "stable"
               }
             },
             "description": "A retriever is a specification to describe top documents returned from a search. A retriever replaces other elements of the search API that also return top documents such as query and knn.",
@@ -138597,9 +138574,33 @@
               "namespace": "_types"
             }
           }
+        },
+        {
+          "description": "A retriever that reranks the top documents based on a reranking model using the InferenceAPI",
+          "name": "text_similarity_reranker",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "TextSimilarityReranker",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "A retriever that replaces the functionality of a rule query.",
+          "name": "rule",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "RuleRetriever",
+              "namespace": "_types"
+            }
+          }
         }
       ],
-      "specLocation": "_types/Retriever.ts#L26-L36",
+      "specLocation": "_types/Retriever.ts#L28-L42",
       "variants": {
         "kind": "container"
       }
@@ -138666,18 +138667,6 @@
           }
         },
         {
-          "description": "Minimum _score for matching documents. Documents with a lower _score are not included in the top documents.",
-          "name": "min_score",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "float",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
           "description": "Collapses the top documents by a specified key into a single top document per key.",
           "name": "collapse",
           "required": false,
@@ -138690,7 +138679,7 @@
           }
         }
       ],
-      "specLocation": "_types/Retriever.ts#L43-L56"
+      "specLocation": "_types/Retriever.ts#L51-L62"
     },
     {
       "kind": "interface",
@@ -138725,9 +138714,21 @@
             ],
             "kind": "union_of"
           }
+        },
+        {
+          "description": "Minimum _score for matching documents. Documents with a lower _score are not included in the top documents.",
+          "name": "min_score",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "float",
+              "namespace": "_types"
+            }
+          }
         }
       ],
-      "specLocation": "_types/Retriever.ts#L38-L41"
+      "specLocation": "_types/Retriever.ts#L44-L49"
     },
     {
       "inherits": {
@@ -138815,7 +138816,7 @@
           }
         }
       ],
-      "specLocation": "_types/Retriever.ts#L58-L71"
+      "specLocation": "_types/Retriever.ts#L64-L77"
     },
     {
       "inherits": {
@@ -138870,7 +138871,146 @@
           }
         }
       ],
-      "specLocation": "_types/Retriever.ts#L73-L80"
+      "specLocation": "_types/Retriever.ts#L79-L86"
+    },
+    {
+      "inherits": {
+        "type": {
+          "name": "RetrieverBase",
+          "namespace": "_types"
+        }
+      },
+      "kind": "interface",
+      "name": {
+        "name": "TextSimilarityReranker",
+        "namespace": "_types"
+      },
+      "properties": [
+        {
+          "description": "The nested retriever which will produce the first-level results, that will later be used for reranking.",
+          "name": "retriever",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "RetrieverContainer",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "This value determines how many documents we will consider from the nested retriever.",
+          "name": "rank_window_size",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "Unique identifier of the inference endpoint created using the inference API.",
+          "name": "inference_id",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "_builtins"
+            }
+          }
+        },
+        {
+          "description": "The text snippet used as the basis for similarity comparison",
+          "name": "inference_text",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "_builtins"
+            }
+          }
+        },
+        {
+          "description": "The document field to be used for text similarity comparisons. This field should contain the text that will be evaluated against the inference_text",
+          "name": "field",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "_builtins"
+            }
+          }
+        }
+      ],
+      "specLocation": "_types/Retriever.ts#L88-L99"
+    },
+    {
+      "inherits": {
+        "type": {
+          "name": "RetrieverBase",
+          "namespace": "_types"
+        }
+      },
+      "kind": "interface",
+      "name": {
+        "name": "RuleRetriever",
+        "namespace": "_types"
+      },
+      "properties": [
+        {
+          "description": "The ruleset IDs containing the rules this retriever is evaluating against.",
+          "name": "ruleset_ids",
+          "required": true,
+          "type": {
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "Id",
+                "namespace": "_types"
+              }
+            }
+          }
+        },
+        {
+          "description": "The match criteria that will determine if a rule in the provided rulesets should be applied.",
+          "name": "match_criteria",
+          "required": true,
+          "type": {
+            "kind": "user_defined_value"
+          }
+        },
+        {
+          "description": "The retriever whose results rules should be applied to.",
+          "name": "retriever",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "RetrieverContainer",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "This value determines the size of the individual result set.",
+          "name": "rank_window_size",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "_types"
+            }
+          }
+        }
+      ],
+      "specLocation": "_types/Retriever.ts#L101-L110"
     },
     {
       "inherits": {

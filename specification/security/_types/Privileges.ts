@@ -376,3 +376,32 @@ export class ApplicationGlobalUserPrivileges {
 export class ManageUserPrivileges {
   applications: string[]
 }
+
+export class ReplicationAccess {
+  /**
+   * A list of indices (or index name patterns) to which the permissions in this entry apply.
+   */
+  names: IndexName[]
+}
+
+export class SearchAccess {
+  /**
+   * The document fields that the owners of the role have read access to.
+   * @doc_id field-and-document-access-control
+   */
+  field_security?: FieldSecurity
+  /**
+   * A list of indices (or index name patterns) to which the permissions in this entry apply.
+   */
+  names: IndexName[]
+  /**
+   * A search query that defines the documents the owners of the role have access to. A document within the specified indices must match this query for it to be accessible by the owners of the role.
+   */
+  query?: IndicesPrivilegesQuery
+  /**
+   * Set to `true` if using wildcard or regular expressions for patterns that cover restricted indices. Implicitly, restricted indices have limited privileges that can cause pattern tests to fail. If restricted indices are explicitly included in the `names` list, Elasticsearch checks privileges against these indices regardless of the value set for `allow_restricted_indices`.
+   * @server_default false
+   * @availability stack
+   */
+  allow_restricted_indices?: boolean
+}
