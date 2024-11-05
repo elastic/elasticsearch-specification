@@ -22,6 +22,7 @@ import { Id } from '@_types/common'
 
 /**
  * Delete an async search.
+ *
  * If the asynchronous search is still running, it is cancelled.
  * Otherwise, the saved search results are deleted.
  * If the Elasticsearch security features are enabled, the deletion of a specific async search is restricted to: the authenticated user that submitted the original search request; users that have the `cancel_task` cluster privilege.
