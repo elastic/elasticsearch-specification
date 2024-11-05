@@ -23,12 +23,13 @@ import { long } from '@_types/Numeric'
 import { RequestItem } from './types'
 
 /**
- * Runs multiple templated searches with a single request.
+ * Run multiple templated searches.
  * @rest_spec_name msearch_template
  * @availability stack since=5.0.0 stability=stable
  * @availability serverless stability=stable visibility=public
  * @index_privileges read
  * @doc_tag search
+ * @ext_doc_id search-templates
  */
 export interface Request extends RequestBase {
   path_parts: {
