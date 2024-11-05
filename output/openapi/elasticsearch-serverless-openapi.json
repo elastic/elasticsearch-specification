@@ -14916,15 +14916,22 @@
               "schema": {
                 "type": "object",
                 "properties": {
-                  "match_criteria": {
-                    "type": "object",
-                    "additionalProperties": {
-                      "type": "object"
-                    }
+                  "rules": {
+                    "oneOf": [
+                      {
+                        "$ref": "#/components/schemas/query_rules._types:QueryRule"
+                      },
+                      {
+                        "type": "array",
+                        "items": {
+                          "$ref": "#/components/schemas/query_rules._types:QueryRule"
+                        }
+                      }
+                    ]
                   }
                 },
                 "required": [
-                  "match_criteria"
+                  "rules"
                 ]
               }
             }
@@ -14939,19 +14946,12 @@
                 "schema": {
                   "type": "object",
                   "properties": {
-                    "total_matched_rules": {
-                      "type": "number"
-                    },
-                    "matched_rules": {
-                      "type": "array",
-                      "items": {
-                        "$ref": "#/components/schemas/query_rules.test:QueryRulesetMatchedRule"
-                      }
+                    "result": {
+                      "$ref": "#/components/schemas/_types:Result"
                     }
                   },
                   "required": [
-                    "total_matched_rules",
-                    "matched_rules"
+                    "result"
                   ]
                 }
               }
@@ -15044,6 +15044,77 @@
                   "required": [
                     "count",
                     "results"
+                  ]
+                }
+              }
+            }
+          }
+        },
+        "x-state": "Added in 8.10.0"
+      }
+    },
+    "/_query_rules/{ruleset_id}/_test": {
+      "post": {
+        "tags": [
+          "query_rules"
+        ],
+        "summary": "Creates or updates a query ruleset",
+        "operationId": "query-rules-test",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "ruleset_id",
+            "description": "The unique identifier of the query ruleset to be created or updated",
+            "required": true,
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/_types:Id"
+            },
+            "style": "simple"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "match_criteria": {
+                    "type": "object",
+                    "additionalProperties": {
+                      "type": "object"
+                    }
+                  }
+                },
+                "required": [
+                  "match_criteria"
+                ]
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "total_matched_rules": {
+                      "type": "number"
+                    },
+                    "matched_rules": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/query_rules.test:QueryRulesetMatchedRule"
+                      }
+                    }
+                  },
+                  "required": [
+                    "total_matched_rules",
+                    "matched_rules"
                   ]
                 }
               }
@@ -53274,6 +53345,12 @@
           },
           "rrf": {
             "$ref": "#/components/schemas/_types:RRFRetriever"
+          },
+          "text_similarity_reranker": {
+            "$ref": "#/components/schemas/_types:TextSimilarityReranker"
+          },
+          "rule": {
+            "$ref": "#/components/schemas/_types:RuleRetriever"
           }
         },
         "minProperties": 1,
@@ -53300,10 +53377,6 @@
               "sort": {
                 "$ref": "#/components/schemas/_types:Sort"
               },
-              "min_score": {
-                "description": "Minimum _score for matching documents. Documents with a lower _score are not included in the top documents.",
-                "type": "number"
-              },
               "collapse": {
                 "$ref": "#/components/schemas/_global.search._types:FieldCollapse"
               }
@@ -53327,6 +53400,10 @@
                 }
               }
             ]
+          },
+          "min_score": {
+            "description": "Minimum _score for matching documents. Documents with a lower _score are not included in the top documents.",
+            "type": "number"
           }
         }
       },
@@ -53395,6 +53472,75 @@
             },
             "required": [
               "retrievers"
+            ]
+          }
+        ]
+      },
+      "_types:TextSimilarityReranker": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/_types:RetrieverBase"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "retriever": {
+                "$ref": "#/components/schemas/_types:RetrieverContainer"
+              },
+              "rank_window_size": {
+                "description": "This value determines how many documents we will consider from the nested retriever.",
+                "type": "number"
+              },
+              "inference_id": {
+                "description": "Unique identifier of the inference endpoint created using the inference API.",
+                "type": "string"
+              },
+              "inference_text": {
+                "description": "The text snippet used as the basis for similarity comparison",
+                "type": "string"
+              },
+              "field": {
+                "description": "The document field to be used for text similarity comparisons. This field should contain the text that will be evaluated against the inference_text",
+                "type": "string"
+              }
+            },
+            "required": [
+              "retriever"
+            ]
+          }
+        ]
+      },
+      "_types:RuleRetriever": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/_types:RetrieverBase"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "ruleset_ids": {
+                "description": "The ruleset IDs containing the rules this retriever is evaluating against.",
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/_types:Id"
+                }
+              },
+              "match_criteria": {
+                "description": "The match criteria that will determine if a rule in the provided rulesets should be applied.",
+                "type": "object"
+              },
+              "retriever": {
+                "$ref": "#/components/schemas/_types:RetrieverContainer"
+              },
+              "rank_window_size": {
+                "description": "This value determines the size of the individual result set.",
+                "type": "number"
+              }
+            },
+            "required": [
+              "ruleset_ids",
+              "match_criteria",
+              "retriever"
             ]
           }
         ]
