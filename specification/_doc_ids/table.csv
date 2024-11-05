@@ -10,6 +10,8 @@ api-date-math-index-names,https://www.elastic.co/guide/en/elasticsearch/referenc
 append-processor,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/append-processor.html
 async-search,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/async-search.html
 attachment,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/attachment.html
+autoscaling,https://www.elastic.co/guide/en/cloud/current/ec-autoscaling.html
+autoscaling-deciders,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/autoscaling-deciders.html
 autoscaling-delete-autoscaling-policy,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/autoscaling-delete-autoscaling-policy.html
 autoscaling-get-autoscaling-capacity,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/autoscaling-get-autoscaling-capacity.html
 autoscaling-get-autoscaling-policy,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/autoscaling-get-autoscaling-policy.html
