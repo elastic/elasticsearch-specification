@@ -18,7 +18,7 @@
           "stability": "stable"
         }
       },
-      "description": "Delete an async search.\nIf the asynchronous search is still running, it is cancelled.\nOtherwise, the saved search results are deleted.\nIf the Elasticsearch security features are enabled, the deletion of a specific async search is restricted to: the authenticated user that submitted the original search request; users that have the `cancel_task` cluster privilege.",
+      "description": "Delete an async search.\n\nIf the asynchronous search is still running, it is cancelled.\nOtherwise, the saved search results are deleted.\nIf the Elasticsearch security features are enabled, the deletion of a specific async search is restricted to: the authenticated user that submitted the original search request; users that have the `cancel_task` cluster privilege.",
       "docId": "async-search",
       "docTag": "search",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/async-search.html",
@@ -55,7 +55,7 @@
           "stability": "stable"
         }
       },
-      "description": "Get async search results.\nRetrieve the results of a previously submitted asynchronous search request.\nIf the Elasticsearch security features are enabled, access to the results of a specific async search is restricted to the user or API key that submitted it.",
+      "description": "Get async search results.\n\nRetrieve the results of a previously submitted asynchronous search request.\nIf the Elasticsearch security features are enabled, access to the results of a specific async search is restricted to the user or API key that submitted it.",
       "docId": "async-search",
       "docTag": "search",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/async-search.html",
@@ -92,7 +92,7 @@
           "stability": "stable"
         }
       },
-      "description": "Get async search status.\nRetrieve the status of a previously submitted async search request given its identifier, without retrieving search results.\nIf the Elasticsearch security features are enabled, use of this API is restricted to the `monitoring_user` role.",
+      "description": "Get the async search status.\n\nGet the status of a previously submitted async search request given its identifier, without retrieving search results.\nIf the Elasticsearch security features are enabled, use of this API is restricted to the `monitoring_user` role.",
       "docId": "async-search",
       "docTag": "search",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/async-search.html",
@@ -129,7 +129,7 @@
           "stability": "stable"
         }
       },
-      "description": "Run an async search.\nWhen the primary sort of the results is an indexed field, shards get sorted based on minimum and maximum value that they hold for that field. Partial results become available following the sort criteria that was requested.\n\nWarning: Asynchronous search does not support scroll or search requests that include only the suggest section.\n\nBy default, Elasticsearch does not allow you to store an async search response larger than 10Mb and an attempt to do this results in an error.\nThe maximum allowed size for a stored async search response can be set by changing the `search.max_async_search_response_size` cluster level setting.",
+      "description": "Run an async search.\n\nWhen the primary sort of the results is an indexed field, shards get sorted based on minimum and maximum value that they hold for that field. Partial results become available following the sort criteria that was requested.\n\nWarning: Asynchronous search does not support scroll or search requests that include only the suggest section.\n\nBy default, Elasticsearch does not allow you to store an async search response larger than 10Mb and an attempt to do this results in an error.\nThe maximum allowed size for a stored async search response can be set by changing the `search.max_async_search_response_size` cluster level setting.",
       "docId": "async-search",
       "docTag": "search",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/async-search.html",
@@ -687,7 +687,7 @@
           "stability": "stable"
         }
       },
-      "description": "Clears the search context and results for a scrolling search.",
+      "description": "Clear a scrolling search.\n\nClear the search context and results for a scrolling search.",
       "docId": "clear-scroll-api",
       "docTag": "search",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/clear-scroll-api.html",
@@ -738,7 +738,7 @@
           "stability": "stable"
         }
       },
-      "description": "Closes a point-in-time.",
+      "description": "Close a point in time.\n\nA point in time must be opened explicitly before being used in search requests.\nThe `keep_alive` parameter tells Elasticsearch how long it should persist.\nA point in time is automatically closed when the `keep_alive` period has elapsed.\nHowever, keeping points in time has a cost; close them as soon as they are no longer required for search requests.",
       "docId": "point-in-time-api",
       "docTag": "search",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/point-in-time-api.html",
@@ -2577,7 +2577,7 @@
           "stability": "stable"
         }
       },
-      "description": "The field capabilities API returns the information about the capabilities of fields among multiple indices.\nThe field capabilities API returns runtime fields like any other field. For example, a runtime field with a type\nof keyword is returned as any other field that belongs to the `keyword` family.",
+      "description": "Get the field capabilities.\n\nGet information about the capabilities of fields among multiple indices.\n\nFor data streams, the API returns field capabilities among the stream’s backing indices.\nIt returns runtime fields like any other field.\nFor example, a runtime field with a type of keyword is returned the same as any other field that belongs to the `keyword` family.",
       "docTag": "search",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/search-field-caps.html",
       "name": "field_caps",
@@ -7325,9 +7325,11 @@
           "stability": "stable"
         }
       },
-      "description": "Runs multiple templated searches with a single request.",
+      "description": "Run multiple templated searches.",
       "docTag": "search",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/search-multi-search.html",
+      "extDocId": "search-templates",
+      "extDocUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/search-template.html",
       "name": "msearch_template",
       "privileges": {
         "index": [
@@ -7423,7 +7425,7 @@
           "stability": "stable"
         }
       },
-      "description": "A search request by default executes against the most recent visible data of the target indices,\nwhich is called point in time. Elasticsearch pit (point in time) is a lightweight view into the\nstate of the data as it existed when initiated. In some cases, it’s preferred to perform multiple\nsearch requests using the same point in time. For example, if refreshes happen between\n`search_after` requests, then the results of those requests might not be consistent as changes happening\nbetween searches are only visible to the more recent point in time.",
+      "description": "Open a point in time.\n\nA search request by default runs against the most recent visible data of the target indices,\nwhich is called point in time. Elasticsearch pit (point in time) is a lightweight view into the\nstate of the data as it existed when initiated. In some cases, it’s preferred to perform multiple\nsearch requests using the same point in time. For example, if refreshes happen between\n`search_after` requests, then the results of those requests might not be consistent as changes happening\nbetween searches are only visible to the more recent point in time.\n\nA point in time must be opened explicitly before being used in search requests.\nThe `keep_alive` parameter tells Elasticsearch how long it should persist.",
       "docId": "point-in-time-api",
       "docTag": "search",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/point-in-time-api.html",
@@ -7838,7 +7840,7 @@
           "stability": "stable"
         }
       },
-      "description": "Enables you to evaluate the quality of ranked search results over a set of typical search queries.",
+      "description": "Evaluate ranked search results.\n\nEvaluate the quality of ranked search results over a set of typical search queries.",
       "docTag": "search",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/search-rank-eval.html",
       "name": "rank_eval",
@@ -7928,7 +7930,7 @@
           "stability": "stable"
         }
       },
-      "description": "Renders a search template as a search request body.",
+      "description": "Render a search template.\n\nRender a search template as a search request body.",
       "docTag": "search",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/render-search-template-api.html",
       "name": "render_search_template",
@@ -8066,7 +8068,7 @@
           "stability": "stable"
         }
       },
-      "description": "Returns search hits that match the query defined in the request.\nYou can provide search queries using the `q` query string parameter or the request body.\nIf both are specified, only the query parameter is used.",
+      "description": "Run a search.\n\nGet search hits that match the query defined in the request.\nYou can provide search queries using the `q` query string parameter or the request body.\nIf both are specified, only the query parameter is used.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/search-search.html",
       "name": "search",
       "privileges": {
@@ -8413,7 +8415,7 @@
           "stability": "stable"
         }
       },
-      "description": "Search a vector tile.\nSearches a vector tile for geospatial values.",
+      "description": "Search a vector tile.\n\nSearch a vector tile for geospatial values.",
       "docTag": "search",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/search-vector-tile-api.html",
       "name": "search_mvt",
@@ -8453,9 +8455,11 @@
           "stability": "stable"
         }
       },
-      "description": "Runs a search with a search template.",
+      "description": "Run a search with a search template.",
       "docTag": "search",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/search-template.html",
+      "extDocId": "search-template",
+      "extDocUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/search-template.html",
       "name": "search_template",
       "request": {
         "name": "Request",
@@ -9353,7 +9357,7 @@
           "stability": "stable"
         }
       },
-      "description": "Get term vector information.\nReturns information and statistics about terms in the fields of a particular document.",
+      "description": "Get term vector information.\n\nGet information and statistics about terms in the fields of a particular document.",
       "docTag": "document",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/docs-termvectors.html",
       "name": "termvectors",
@@ -9924,7 +9928,7 @@
       "body": {
         "kind": "no_body"
       },
-      "description": "Delete an async search.\nIf the asynchronous search is still running, it is cancelled.\nOtherwise, the saved search results are deleted.\nIf the Elasticsearch security features are enabled, the deletion of a specific async search is restricted to: the authenticated user that submitted the original search request; users that have the `cancel_task` cluster privilege.",
+      "description": "Delete an async search.\n\nIf the asynchronous search is still running, it is cancelled.\nOtherwise, the saved search results are deleted.\nIf the Elasticsearch security features are enabled, the deletion of a specific async search is restricted to: the authenticated user that submitted the original search request; users that have the `cancel_task` cluster privilege.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -9951,7 +9955,7 @@
         }
       ],
       "query": [],
-      "specLocation": "async_search/delete/AsyncSearchDeleteRequest.ts#L23-L39"
+      "specLocation": "async_search/delete/AsyncSearchDeleteRequest.ts#L23-L40"
     },
     {
       "body": {
@@ -9978,7 +9982,7 @@
       "body": {
         "kind": "no_body"
       },
-      "description": "Get async search results.\nRetrieve the results of a previously submitted asynchronous search request.\nIf the Elasticsearch security features are enabled, access to the results of a specific async search is restricted to the user or API key that submitted it.",
+      "description": "Get async search results.\n\nRetrieve the results of a previously submitted asynchronous search request.\nIf the Elasticsearch security features are enabled, access to the results of a specific async search is restricted to the user or API key that submitted it.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -10042,7 +10046,7 @@
           }
         }
       ],
-      "specLocation": "async_search/get/AsyncSearchGetRequest.ts#L24-L56"
+      "specLocation": "async_search/get/AsyncSearchGetRequest.ts#L24-L57"
     },
     {
       "body": {
@@ -10084,7 +10088,7 @@
       "body": {
         "kind": "no_body"
       },
-      "description": "Get async search status.\nRetrieve the status of a previously submitted async search request given its identifier, without retrieving search results.\nIf the Elasticsearch security features are enabled, use of this API is restricted to the `monitoring_user` role.",
+      "description": "Get the async search status.\n\nGet the status of a previously submitted async search request given its identifier, without retrieving search results.\nIf the Elasticsearch security features are enabled, use of this API is restricted to the `monitoring_user` role.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -10111,7 +10115,7 @@
         }
       ],
       "query": [],
-      "specLocation": "async_search/status/AsyncSearchStatusRequest.ts#L23-L38"
+      "specLocation": "async_search/status/AsyncSearchStatusRequest.ts#L23-L39"
     },
     {
       "body": {
@@ -10613,7 +10617,7 @@
           }
         ]
       },
-      "description": "Run an async search.\nWhen the primary sort of the results is an indexed field, shards get sorted based on minimum and maximum value that they hold for that field. Partial results become available following the sort criteria that was requested.\n\nWarning: Asynchronous search does not support scroll or search requests that include only the suggest section.\n\nBy default, Elasticsearch does not allow you to store an async search response larger than 10Mb and an attempt to do this results in an error.\nThe maximum allowed size for a stored async search response can be set by changing the `search.max_async_search_response_size` cluster level setting.",
+      "description": "Run an async search.\n\nWhen the primary sort of the results is an indexed field, shards get sorted based on minimum and maximum value that they hold for that field. Partial results become available following the sort criteria that was requested.\n\nWarning: Asynchronous search does not support scroll or search requests that include only the suggest section.\n\nBy default, Elasticsearch does not allow you to store an async search response larger than 10Mb and an attempt to do this results in an error.\nThe maximum allowed size for a stored async search response can be set by changing the `search.max_async_search_response_size` cluster level setting.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -11215,7 +11219,7 @@
           }
         }
       ],
-      "specLocation": "async_search/submit/AsyncSearchSubmitRequest.ts#L55-L289"
+      "specLocation": "async_search/submit/AsyncSearchSubmitRequest.ts#L55-L290"
     },
     {
       "body": {
@@ -12529,7 +12533,7 @@
           }
         ]
       },
-      "description": "Clears the search context and results for a scrolling search.",
+      "description": "Clear a scrolling search.\n\nClear the search context and results for a scrolling search.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -12556,7 +12560,7 @@
         }
       ],
       "query": [],
-      "specLocation": "_global/clear_scroll/ClearScrollRequest.ts#L23-L46"
+      "specLocation": "_global/clear_scroll/ClearScrollRequest.ts#L23-L48"
     },
     {
       "body": {
@@ -12648,7 +12652,7 @@
           }
         ]
       },
-      "description": "Closes a point-in-time.",
+      "description": "Close a point in time.\n\nA point in time must be opened explicitly before being used in search requests.\nThe `keep_alive` parameter tells Elasticsearch how long it should persist.\nA point in time is automatically closed when the `keep_alive` period has elapsed.\nHowever, keeping points in time has a cost; close them as soon as they are no longer required for search requests.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -12662,7 +12666,7 @@
       },
       "path": [],
       "query": [],
-      "specLocation": "_global/close_point_in_time/ClosePointInTimeRequest.ts#L23-L38"
+      "specLocation": "_global/close_point_in_time/ClosePointInTimeRequest.ts#L23-L43"
     },
     {
       "body": {
@@ -18540,7 +18544,7 @@
           }
         ]
       },
-      "description": "The field capabilities API returns the information about the capabilities of fields among multiple indices.\nThe field capabilities API returns runtime fields like any other field. For example, a runtime field with a type\nof keyword is returned as any other field that belongs to the `keyword` family.",
+      "description": "Get the field capabilities.\n\nGet information about the capabilities of fields among multiple indices.\n\nFor data streams, the API returns field capabilities among the stream’s backing indices.\nIt returns runtime fields like any other field.\nFor example, a runtime field with a type of keyword is returned the same as any other field that belongs to the `keyword` family.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -18690,7 +18694,7 @@
           }
         }
       ],
-      "specLocation": "_global/field_caps/FieldCapabilitiesRequest.ts#L25-L107"
+      "specLocation": "_global/field_caps/FieldCapabilitiesRequest.ts#L25-L111"
     },
     {
       "body": {
@@ -34171,7 +34175,7 @@
           }
         }
       },
-      "description": "Runs multiple templated searches with a single request.",
+      "description": "Run multiple templated searches.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -34262,7 +34266,7 @@
           }
         }
       ],
-      "specLocation": "_global/msearch_template/MultiSearchTemplateRequest.ts#L25-L71"
+      "specLocation": "_global/msearch_template/MultiSearchTemplateRequest.ts#L25-L72"
     },
     {
       "body": {
@@ -34569,7 +34573,7 @@
           }
         ]
       },
-      "description": "A search request by default executes against the most recent visible data of the target indices,\nwhich is called point in time. Elasticsearch pit (point in time) is a lightweight view into the\nstate of the data as it existed when initiated. In some cases, it’s preferred to perform multiple\nsearch requests using the same point in time. For example, if refreshes happen between\n`search_after` requests, then the results of those requests might not be consistent as changes happening\nbetween searches are only visible to the more recent point in time.",
+      "description": "Open a point in time.\n\nA search request by default runs against the most recent visible data of the target indices,\nwhich is called point in time. Elasticsearch pit (point in time) is a lightweight view into the\nstate of the data as it existed when initiated. In some cases, it’s preferred to perform multiple\nsearch requests using the same point in time. For example, if refreshes happen between\n`search_after` requests, then the results of those requests might not be consistent as changes happening\nbetween searches are only visible to the more recent point in time.\n\nA point in time must be opened explicitly before being used in search requests.\nThe `keep_alive` parameter tells Elasticsearch how long it should persist.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -34659,7 +34663,7 @@
           }
         }
       ],
-      "specLocation": "_global/open_point_in_time/OpenPointInTimeRequest.ts#L25-L76"
+      "specLocation": "_global/open_point_in_time/OpenPointInTimeRequest.ts#L25-L81"
     },
     {
       "body": {
@@ -35515,7 +35519,7 @@
           }
         ]
       },
-      "description": "Enables you to evaluate the quality of ranked search results over a set of typical search queries.",
+      "description": "Evaluate ranked search results.\n\nEvaluate the quality of ranked search results over a set of typical search queries.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -35593,7 +35597,7 @@
           }
         }
       ],
-      "specLocation": "_global/rank_eval/RankEvalRequest.ts#L24-L62"
+      "specLocation": "_global/rank_eval/RankEvalRequest.ts#L24-L64"
     },
     {
       "body": {
@@ -36132,7 +36136,7 @@
           }
         ]
       },
-      "description": "Renders a search template as a search request body.",
+      "description": "Render a search template.\n\nRender a search template as a search request body.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -36159,7 +36163,7 @@
         }
       ],
       "query": [],
-      "specLocation": "_global/render_search_template/RenderSearchTemplateRequest.ts#L25-L56"
+      "specLocation": "_global/render_search_template/RenderSearchTemplateRequest.ts#L25-L58"
     },
     {
       "body": {
@@ -36946,7 +36950,7 @@
           }
         ]
       },
-      "description": "Returns search hits that match the query defined in the request.\nYou can provide search queries using the `q` query string parameter or the request body.\nIf both are specified, only the query parameter is used.",
+      "description": "Run a search.\n\nGet search hits that match the query defined in the request.\nYou can provide search queries using the `q` query string parameter or the request body.\nIf both are specified, only the query parameter is used.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -37548,7 +37552,7 @@
           }
         }
       ],
-      "specLocation": "_global/search/SearchRequest.ts#L54-L529"
+      "specLocation": "_global/search/SearchRequest.ts#L54-L531"
     },
     {
       "body": {
@@ -38353,7 +38357,7 @@
           }
         ]
       },
-      "description": "Search a vector tile.\nSearches a vector tile for geospatial values.",
+      "description": "Search a vector tile.\n\nSearch a vector tile for geospatial values.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -38518,7 +38522,7 @@
           }
         }
       ],
-      "specLocation": "_global/search_mvt/SearchMvtRequest.ts#L33-L192"
+      "specLocation": "_global/search_mvt/SearchMvtRequest.ts#L33-L193"
     },
     {
       "body": {
@@ -38616,7 +38620,7 @@
           }
         ]
       },
-      "description": "Runs a search with a search template.",
+      "description": "Run a search with a search template.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -38814,7 +38818,7 @@
           }
         }
       ],
-      "specLocation": "_global/search_template/SearchTemplateRequest.ts#L32-L135"
+      "specLocation": "_global/search_template/SearchTemplateRequest.ts#L32-L136"
     },
     {
       "body": {
@@ -42125,7 +42129,7 @@
           }
         ]
       },
-      "description": "Get term vector information.\nReturns information and statistics about terms in the fields of a particular document.",
+      "description": "Get term vector information.\n\nGet information and statistics about terms in the fields of a particular document.",
       "generics": [
         {
           "name": "TDocument",
@@ -42311,7 +42315,7 @@
           }
         }
       ],
-      "specLocation": "_global/termvectors/TermVectorsRequest.ts#L33-L121"
+      "specLocation": "_global/termvectors/TermVectorsRequest.ts#L33-L122"
     },
     {
       "body": {
