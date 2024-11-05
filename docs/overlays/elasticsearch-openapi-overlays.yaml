@@ -265,3 +265,52 @@ actions:
               examples:
                 indicesOpenResponseExample1:
                   $ref: "../../specification/indices/open/indicesOpenResponseExample1.yaml"
+  - target: "$.paths['/_autoscaling/policy/{name}']['delete']"
+    description: "Add examples for delete autoscaling policy response"
+    update:
+      responses:
+        200:
+          content:
+            application/json:
+              examples:
+                deleteAutoscalingPolicyResponseExample1:
+                  $ref: "../../specification/autoscaling/delete_autoscaling_policy/autoscalingApisDeleteAutoscalingPolicyResponseExample1.yaml"
+  - target: "$.paths['/_autoscaling/capacity']['get']"
+    description: "Add examples for get autoscaling capacity response"
+    update:
+      responses:
+        200:
+          content:
+            application/json:
+              examples:
+                getAutoscalingCapacityResponseExample1:
+                  $ref: "../../specification/autoscaling/get_autoscaling_capacity/autoscalingApisGetAutoscalingCapacityResponseExample1.yaml"
+  - target: "$.paths['/_autoscaling/policy/{name}']['get']"
+    description: "Add examples for get autoscaling policy response"
+    update:
+      responses:
+        200:
+          content:
+            application/json:
+              examples:
+                getAutoscalingPolicyResponseExample1:
+                  $ref: "../../specification/autoscaling/get_autoscaling_policy/autoscalingApisGetAutoscalingPolicyResponseExample1.yaml"
+  - target: "$.paths['/_autoscaling/policy/{name}']['put']"
+    description: "Add examples for create autoscaling policy operation"
+    update:
+      update: 
+      requestBody: 
+        content: 
+          application/json: 
+            examples:
+              createAutoscalingPolicyRequestExample1: 
+                $ref: "../../specification/autoscaling/put_autoscaling_policy/autoscalingApisPutAutoscalingPolicyRequestExample1.yaml"
+              createAutoscalingPolicyRequestExample2: 
+                $ref: "../../specification/autoscaling/put_autoscaling_policy/autoscalingApisPutAutoscalingPolicyRequestExample2.yaml"
+      responses:
+        200:
+          content:
+            application/json:
+              examples:
+                createAutoscalingPolicyResponseExample1:
+                  $ref: "../../specification/autoscaling/put_autoscaling_policy/autoscalingApisPutAutoscalingPolicyResponseExample1.yaml"
