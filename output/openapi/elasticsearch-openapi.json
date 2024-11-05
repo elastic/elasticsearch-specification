@@ -86756,6 +86756,9 @@
           "logstash": {
             "$ref": "#/components/schemas/xpack.info:Feature"
           },
+          "logsdb": {
+            "$ref": "#/components/schemas/xpack.info:Feature"
+          },
           "ml": {
             "$ref": "#/components/schemas/xpack.info:Feature"
           },
@@ -86813,6 +86816,7 @@
           "graph",
           "ilm",
           "logstash",
+          "logsdb",
           "ml",
           "monitoring",
           "rollup",
