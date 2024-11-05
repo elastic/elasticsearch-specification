@@ -23,12 +23,17 @@ import { QueryContainer } from '@_types/query_dsl/abstractions'
 import { Duration } from '@_types/Time'
 
 /**
- * A search request by default executes against the most recent visible data of the target indices,
+ * Open a point in time.
+ *
+ * A search request by default runs against the most recent visible data of the target indices,
  * which is called point in time. Elasticsearch pit (point in time) is a lightweight view into the
  * state of the data as it existed when initiated. In some cases, it’s preferred to perform multiple
  * search requests using the same point in time. For example, if refreshes happen between
  * `search_after` requests, then the results of those requests might not be consistent as changes happening
  * between searches are only visible to the more recent point in time.
+ *
+ * A point in time must be opened explicitly before being used in search requests.
+ * The `keep_alive` parameter tells Elasticsearch how long it should persist.
  * @rest_spec_name open_point_in_time
  * @availability stack since=7.10.0 stability=stable
  * @availability serverless stability=stable visibility=public
