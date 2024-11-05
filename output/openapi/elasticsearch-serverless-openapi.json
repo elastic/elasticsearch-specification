@@ -1393,7 +1393,7 @@
           "search"
         ],
         "summary": "Close a point in time",
-        "description": "A point in time must be opened explicitly before being used in search requests.\nThe `keep_alive` parameter tells Elasticsearch how long it should persist.\nA point in time is automatically closed when the `keep_alive` period has elapsed.\nHowever, keeping points in time has a cost; close them as soon as they are no lwonger required for search requests.",
+        "description": "A point in time must be opened explicitly before being used in search requests.\nThe `keep_alive` parameter tells Elasticsearch how long it should persist.\nA point in time is automatically closed when the `keep_alive` period has elapsed.\nHowever, keeping points in time has a cost; close them as soon as they are no longer required for search requests.",
         "operationId": "close-point-in-time",
         "requestBody": {
           "content": {
