@@ -36690,9 +36690,12 @@
           },
           {
             "availability": {
-              "serverless": {},
+              "serverless": {
+                "stability": "stable"
+              },
               "stack": {
-                "since": "8.14.0"
+                "since": "8.14.0",
+                "stability": "stable"
               }
             },
             "description": "A retriever is a specification to describe top documents returned from a search. A retriever replaces other elements of the search API that also return top documents such as query and knn.",
@@ -138891,9 +138894,21 @@
               "namespace": "_types"
             }
           }
+        },
+        {
+          "description": "A retriever that reranks the top documents based on a reranking model using the InferenceAPI",
+          "name": "text_similarity_reranker",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "TextSimilarityReranker",
+              "namespace": "_types"
+            }
+          }
         }
       ],
-      "specLocation": "_types/Retriever.ts#L26-L36",
+      "specLocation": "_types/Retriever.ts#L26-L38",
       "variants": {
         "kind": "container"
       }
@@ -138960,18 +138975,6 @@
           }
         },
         {
-          "description": "Minimum _score for matching documents. Documents with a lower _score are not included in the top documents.",
-          "name": "min_score",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "float",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
           "description": "Collapses the top documents by a specified key into a single top document per key.",
           "name": "collapse",
           "required": false,
@@ -138984,7 +138987,7 @@
           }
         }
       ],
-      "specLocation": "_types/Retriever.ts#L43-L56"
+      "specLocation": "_types/Retriever.ts#L47-L58"
     },
     {
       "kind": "interface",
@@ -139019,9 +139022,21 @@
             ],
             "kind": "union_of"
           }
+        },
+        {
+          "description": "Minimum _score for matching documents. Documents with a lower _score are not included in the top documents.",
+          "name": "min_score",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "float",
+              "namespace": "_types"
+            }
+          }
         }
       ],
-      "specLocation": "_types/Retriever.ts#L38-L41"
+      "specLocation": "_types/Retriever.ts#L40-L45"
     },
     {
       "inherits": {
@@ -139109,7 +139124,7 @@
           }
         }
       ],
-      "specLocation": "_types/Retriever.ts#L58-L71"
+      "specLocation": "_types/Retriever.ts#L60-L73"
     },
     {
       "inherits": {
@@ -139164,7 +139179,83 @@
           }
         }
       ],
-      "specLocation": "_types/Retriever.ts#L73-L80"
+      "specLocation": "_types/Retriever.ts#L75-L82"
+    },
+    {
+      "inherits": {
+        "type": {
+          "name": "RetrieverBase",
+          "namespace": "_types"
+        }
+      },
+      "kind": "interface",
+      "name": {
+        "name": "TextSimilarityReranker",
+        "namespace": "_types"
+      },
+      "properties": [
+        {
+          "description": "The nested retriever which will produce the first-level results, that will later be used for reranking.",
+          "name": "retriever",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "RetrieverContainer",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "This value determines how many documents we will consider from the nested retriever.",
+          "name": "rank_window_size",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "Unique identifier of the inference endpoint created using the inference API.",
+          "name": "inference_id",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "_builtins"
+            }
+          }
+        },
+        {
+          "description": "The text snippet used as the basis for similarity comparison",
+          "name": "inference_text",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "_builtins"
+            }
+          }
+        },
+        {
+          "description": "The document field to be used for text similarity comparisons. This field should contain the text that will be evaluated against the inference_text",
+          "name": "field",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "_builtins"
+            }
+          }
+        }
+      ],
+      "specLocation": "_types/Retriever.ts#L84-L95"
     },
     {
       "kind": "interface",

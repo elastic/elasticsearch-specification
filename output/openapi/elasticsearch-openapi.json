@@ -80777,6 +80777,9 @@
           },
           "rrf": {
             "$ref": "#/components/schemas/_types:RRFRetriever"
+          },
+          "text_similarity_reranker": {
+            "$ref": "#/components/schemas/_types:TextSimilarityReranker"
           }
         },
         "minProperties": 1,
@@ -80803,10 +80806,6 @@
               "sort": {
                 "$ref": "#/components/schemas/_types:Sort"
               },
-              "min_score": {
-                "description": "Minimum _score for matching documents. Documents with a lower _score are not included in the top documents.",
-                "type": "number"
-              },
               "collapse": {
                 "$ref": "#/components/schemas/_global.search._types:FieldCollapse"
               }
@@ -80830,6 +80829,10 @@
                 }
               }
             ]
+          },
+          "min_score": {
+            "description": "Minimum _score for matching documents. Documents with a lower _score are not included in the top documents.",
+            "type": "number"
           }
         }
       },
@@ -80898,6 +80901,40 @@
             },
             "required": [
               "retrievers"
+            ]
+          }
+        ]
+      },
+      "_types:TextSimilarityReranker": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/_types:RetrieverBase"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "retriever": {
+                "$ref": "#/components/schemas/_types:RetrieverContainer"
+              },
+              "rank_window_size": {
+                "description": "This value determines how many documents we will consider from the nested retriever.",
+                "type": "number"
+              },
+              "inference_id": {
+                "description": "Unique identifier of the inference endpoint created using the inference API.",
+                "type": "string"
+              },
+              "inference_text": {
+                "description": "The text snippet used as the basis for similarity comparison",
+                "type": "string"
+              },
+              "field": {
+                "description": "The document field to be used for text similarity comparisons. This field should contain the text that will be evaluated against the inference_text",
+                "type": "string"
+              }
+            },
+            "required": [
+              "retriever"
             ]
           }
         ]
