@@ -22,7 +22,9 @@ import { ExpandWildcards, Indices } from '@_types/common'
 import { RankEvalMetric, RankEvalRequestItem } from './types'
 
 /**
- * Enables you to evaluate the quality of ranked search results over a set of typical search queries.
+ * Evaluate ranked search results.
+ *
+ * Evaluate the quality of ranked search results over a set of typical search queries.
  * @rest_spec_name rank_eval
  * @availability stack since=6.2.0 stability=stable
  * @availability serverless stability=stable visibility=public
