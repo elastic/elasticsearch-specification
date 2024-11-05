@@ -17,9 +17,7 @@
  * under the License.
  */
 
-import { CatRequestBase } from '@cat/_types/CatBase'
-import {Bytes, ExpandWildcards, HealthStatus} from "@_types/common";
-import {TimeUnit} from "@_types/Time";
+import {CatRequestBase} from '@cat/_types/CatBase'
 
 /**
  * Get component templates.
@@ -34,18 +32,18 @@ import {TimeUnit} from "@_types/Time";
  * @cluster_privileges monitor
  */
 export interface Request extends CatRequestBase {
-  path_parts: {
-    /** The name of the component template. Accepts wildcard expressions. If omitted, all component templates are returned. */
-    name?: string
-  }
-  query_parameters: {
-    /**
-     * If `true`, the request computes the list of selected nodes from the
-     * local cluster state. If `false` the list of selected nodes are computed
-     * from the cluster state of the master node. In both cases the coordinating
-     * node will send requests for further information to each selected node.
-     * @server_default false
-     */
-    local?: boolean
-  }
+    path_parts: {
+        /** The name of the component template. Accepts wildcard expressions. If omitted, all component templates are returned. */
+        name?: string
+    }
+    query_parameters: {
+        /**
+         * If `true`, the request computes the list of selected nodes from the
+         * local cluster state. If `false` the list of selected nodes are computed
+         * from the cluster state of the master node. In both cases the coordinating
+         * node will send requests for further information to each selected node.
+         * @server_default false
+         */
+        local?: boolean
+    }
 }
