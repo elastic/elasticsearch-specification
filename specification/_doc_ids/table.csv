@@ -534,6 +534,7 @@ search-validate,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}
 search-vector-tile-api,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/search-vector-tile-api.html
 searchable-snapshots-api-mount-snapshot,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/searchable-snapshots-api-mount-snapshot.html
 searchable-snapshots-apis,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/searchable-snapshots-apis.html
+search-templates,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/search-template.html
 secure-settings,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/secure-settings.html
 security-api-authenticate,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/security-api-authenticate.html
 security-api-change-password,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/security-api-change-password.html
