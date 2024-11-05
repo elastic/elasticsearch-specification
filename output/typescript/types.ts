@@ -2705,6 +2705,7 @@ export interface RetrieverContainer {
   knn?: KnnRetriever
   rrf?: RRFRetriever
   text_similarity_reranker?: TextSimilarityReranker
+  rule?: RuleRetriever
 }
 
 export type Routing = string
@@ -2712,6 +2713,13 @@ export type Routing = string
 export interface RrfRank {
   rank_constant?: long
   rank_window_size?: long
+}
+
+export interface RuleRetriever extends RetrieverBase {
+  ruleset_ids: Id[]
+  match_criteria: any
+  retriever: RetrieverContainer
+  rank_window_size?: integer
 }
 
 export type ScalarValue = long | double | string | boolean | null
