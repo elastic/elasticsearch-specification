@@ -58065,7 +58065,7 @@
         "in": "query",
         "name": "local",
         "description": "If `true`, the request retrieves information from the local node only.",
-        "deprecated": false,
+        "deprecated": true,
         "schema": {
           "type": "boolean"
         },
@@ -58127,7 +58127,7 @@
         "in": "query",
         "name": "local",
         "description": "If `true`, the request retrieves information from the local node only.",
-        "deprecated": false,
+        "deprecated": true,
         "schema": {
           "type": "boolean"
         },

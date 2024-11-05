@@ -64,6 +64,7 @@ export interface Request extends RequestBase {
     /**
      * If `true`, the request retrieves information from the local node only.
      * @server_default false
+     * @deprecated 8.12.0
      */
     local?: boolean
   }
