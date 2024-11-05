@@ -21,9 +21,13 @@ import { RequestBase } from '@_types/Base'
 import { Name } from '@_types/common'
 
 /**
+ * Delete an autoscaling policy.
+ *
+ * NOTE: This feature is designed for indirect use by Elasticsearch Service, Elastic Cloud Enterprise, and Elastic Cloud on Kubernetes. Direct use is not supported.
  * @rest_spec_name autoscaling.delete_autoscaling_policy
  * @availability stack since=7.11.0 stability=stable
  * @doc_id autoscaling-delete-autoscaling-policy
+ * @ext_doc_id autoscaling
  */
 export interface Request extends RequestBase {
   path_parts: {

@@ -22,6 +22,9 @@ import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 
 export class AutoscalingPolicy {
   roles: string[]
-  /** Decider settings */
+  /**
+   * Decider settings.
+   * @ext_doc_id autoscaling-deciders
+   */
   deciders: Dictionary<string, UserDefinedValue>
 }

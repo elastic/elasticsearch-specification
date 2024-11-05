@@ -471,8 +471,11 @@
         "tags": [
           "autoscaling"
         ],
-        "summary": "Retrieves an autoscaling policy",
-        "description": "Designed for indirect use by ECE/ESS and ECK. Direct use is not supported.",
+        "summary": "Get an autoscaling policy",
+        "description": "NOTE: This feature is designed for indirect use by Elasticsearch Service, Elastic Cloud Enterprise, and Elastic Cloud on Kubernetes. Direct use is not supported.",
+        "externalDocs": {
+          "url": "https://www.elastic.co/guide/en/cloud/current/ec-autoscaling.html"
+        },
         "operationId": "autoscaling-get-autoscaling-policy",
         "parameters": [
           {
@@ -505,8 +508,11 @@
         "tags": [
           "autoscaling"
         ],
-        "summary": "Creates a new autoscaling policy",
-        "description": "Designed for indirect use by ECE/ESS and ECK. Direct use is not supported.",
+        "summary": "Create or update an autoscaling policy",
+        "description": "NOTE: This feature is designed for indirect use by Elasticsearch Service, Elastic Cloud Enterprise, and Elastic Cloud on Kubernetes. Direct use is not supported.",
+        "externalDocs": {
+          "url": "https://www.elastic.co/guide/en/cloud/current/ec-autoscaling.html"
+        },
         "operationId": "autoscaling-put-autoscaling-policy",
         "parameters": [
           {
@@ -549,8 +555,11 @@
         "tags": [
           "autoscaling"
         ],
-        "summary": "Deletes an autoscaling policy",
-        "description": "Designed for indirect use by ECE/ESS and ECK. Direct use is not supported.",
+        "summary": "Delete an autoscaling policy",
+        "description": "NOTE: This feature is designed for indirect use by Elasticsearch Service, Elastic Cloud Enterprise, and Elastic Cloud on Kubernetes. Direct use is not supported.",
+        "externalDocs": {
+          "url": "https://www.elastic.co/guide/en/cloud/current/ec-autoscaling.html"
+        },
         "operationId": "autoscaling-delete-autoscaling-policy",
         "parameters": [
           {
@@ -585,8 +594,11 @@
         "tags": [
           "autoscaling"
         ],
-        "summary": "Gets the current autoscaling capacity based on the configured autoscaling policy",
-        "description": "Designed for indirect use by ECE/ESS and ECK. Direct use is not supported.",
+        "summary": "Get the autoscaling capacity",
+        "description": "NOTE: This feature is designed for indirect use by Elasticsearch Service, Elastic Cloud Enterprise, and Elastic Cloud on Kubernetes. Direct use is not supported.\n\nThis API gets the current autoscaling capacity based on the configured autoscaling policy.\nIt will return information to size the cluster appropriately to the current workload.\n\nThe `required_capacity` is calculated as the maximum of the `required_capacity` result of all individual deciders that are enabled for the policy.\n\nThe operator should verify that the `current_nodes` match the operator’s knowledge of the cluster to avoid making autoscaling decisions based on stale or incomplete information.\n\nThe response contains decider-specific information you can use to diagnose how and why autoscaling determined a certain capacity was required.\nThis information is provided for diagnosis only.\nDo not use this information to make autoscaling decisions.",
+        "externalDocs": {
+          "url": "https://www.elastic.co/guide/en/cloud/current/ec-autoscaling.html"
+        },
         "operationId": "autoscaling-get-autoscaling-capacity",
         "responses": {
           "200": {
@@ -48695,7 +48707,10 @@
             }
           },
           "deciders": {
-            "description": "Decider settings",
+            "externalDocs": {
+              "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/autoscaling-deciders.html"
+            },
+            "description": "Decider settings.",
             "type": "object",
             "additionalProperties": {
               "type": "object"
