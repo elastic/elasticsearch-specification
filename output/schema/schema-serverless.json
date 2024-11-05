@@ -21128,6 +21128,10 @@
           }
         },
         {
+          "deprecation": {
+            "description": "",
+            "version": "8.12.0"
+          },
           "description": "If `true`, the request retrieves information from the local node only.",
           "name": "local",
           "required": false,
@@ -21141,7 +21145,7 @@
           }
         }
       ],
-      "specLocation": "indices/exists_alias/IndicesExistsAliasRequest.ts#L23-L68"
+      "specLocation": "indices/exists_alias/IndicesExistsAliasRequest.ts#L23-L69"
     },
     {
       "body": {
@@ -21573,6 +21577,10 @@
           }
         },
         {
+          "deprecation": {
+            "description": "",
+            "version": "8.12.0"
+          },
           "description": "If `true`, the request retrieves information from the local node only.",
           "name": "local",
           "required": false,
@@ -21586,7 +21594,7 @@
           }
         }
       ],
-      "specLocation": "indices/get_alias/IndicesGetAliasRequest.ts#L23-L71"
+      "specLocation": "indices/get_alias/IndicesGetAliasRequest.ts#L23-L72"
     },
     {
       "body": {
