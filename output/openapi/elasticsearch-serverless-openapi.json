@@ -6512,9 +6512,6 @@
           },
           {
             "$ref": "#/components/parameters/indices.get_alias#ignore_unavailable"
-          },
-          {
-            "$ref": "#/components/parameters/indices.get_alias#local"
           }
         ],
         "responses": {
@@ -6632,9 +6629,6 @@
           },
           {
             "$ref": "#/components/parameters/indices.exists_alias#ignore_unavailable"
-          },
-          {
-            "$ref": "#/components/parameters/indices.exists_alias#local"
           }
         ],
         "responses": {
@@ -6940,9 +6934,6 @@
           },
           {
             "$ref": "#/components/parameters/indices.get_alias#ignore_unavailable"
-          },
-          {
-            "$ref": "#/components/parameters/indices.get_alias#local"
           }
         ],
         "responses": {
@@ -6970,9 +6961,6 @@
           },
           {
             "$ref": "#/components/parameters/indices.exists_alias#ignore_unavailable"
-          },
-          {
-            "$ref": "#/components/parameters/indices.exists_alias#local"
           }
         ],
         "responses": {
@@ -7066,9 +7054,6 @@
           },
           {
             "$ref": "#/components/parameters/indices.get_alias#ignore_unavailable"
-          },
-          {
-            "$ref": "#/components/parameters/indices.get_alias#local"
           }
         ],
         "responses": {
@@ -7098,9 +7083,6 @@
           },
           {
             "$ref": "#/components/parameters/indices.get_alias#ignore_unavailable"
-          },
-          {
-            "$ref": "#/components/parameters/indices.get_alias#local"
           }
         ],
         "responses": {
@@ -10125,7 +10107,7 @@
           "ml anomaly"
         ],
         "summary": "Create a datafeed",
-        "description": "Datafeeds retrieve data from Elasticsearch for analysis by an anomaly detection job.\nYou can associate only one datafeed with each anomaly detection job.\nThe datafeed contains a query that runs at a defined interval (`frequency`).\nIf you are concerned about delayed data, you can add a delay (`query_delay') at each interval.\nWhen Elasticsearch security features are enabled, your datafeed remembers which roles the user who created it had\nat the time of creation and runs the query using those same roles. If you provide secondary authorization headers,\nthose credentials are used instead.\nYou must use Kibana, this API, or the create anomaly detection jobs API to create a datafeed. Do not add a datafeed\ndirectly to the `.ml-config` index. Do not give users `write` privileges on the `.ml-config` index.",
+        "description": "Datafeeds retrieve data from Elasticsearch for analysis by an anomaly detection job.\nYou can associate only one datafeed with each anomaly detection job.\nThe datafeed contains a query that runs at a defined interval (`frequency`).\nIf you are concerned about delayed data, you can add a delay (`query_delay`) at each interval.\nWhen Elasticsearch security features are enabled, your datafeed remembers which roles the user who created it had\nat the time of creation and runs the query using those same roles. If you provide secondary authorization headers,\nthose credentials are used instead.\nYou must use Kibana, this API, or the create anomaly detection jobs API to create a datafeed. Do not add a datafeed\ndirectly to the `.ml-config` index. Do not give users `write` privileges on the `.ml-config` index.",
         "operationId": "ml-put-datafeed",
         "parameters": [
           {
@@ -53213,6 +53195,12 @@
           },
           "rrf": {
             "$ref": "#/components/schemas/_types:RRFRetriever"
+          },
+          "text_similarity_reranker": {
+            "$ref": "#/components/schemas/_types:TextSimilarityReranker"
+          },
+          "rule": {
+            "$ref": "#/components/schemas/_types:RuleRetriever"
           }
         },
         "minProperties": 1,
@@ -53239,10 +53227,6 @@
               "sort": {
                 "$ref": "#/components/schemas/_types:Sort"
               },
-              "min_score": {
-                "description": "Minimum _score for matching documents. Documents with a lower _score are not included in the top documents.",
-                "type": "number"
-              },
               "collapse": {
                 "$ref": "#/components/schemas/_global.search._types:FieldCollapse"
               }
@@ -53266,6 +53250,10 @@
                 }
               }
             ]
+          },
+          "min_score": {
+            "description": "Minimum _score for matching documents. Documents with a lower _score are not included in the top documents.",
+            "type": "number"
           }
         }
       },
@@ -53334,6 +53322,75 @@
             },
             "required": [
               "retrievers"
+            ]
+          }
+        ]
+      },
+      "_types:TextSimilarityReranker": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/_types:RetrieverBase"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "retriever": {
+                "$ref": "#/components/schemas/_types:RetrieverContainer"
+              },
+              "rank_window_size": {
+                "description": "This value determines how many documents we will consider from the nested retriever.",
+                "type": "number"
+              },
+              "inference_id": {
+                "description": "Unique identifier of the inference endpoint created using the inference API.",
+                "type": "string"
+              },
+              "inference_text": {
+                "description": "The text snippet used as the basis for similarity comparison",
+                "type": "string"
+              },
+              "field": {
+                "description": "The document field to be used for text similarity comparisons. This field should contain the text that will be evaluated against the inference_text",
+                "type": "string"
+              }
+            },
+            "required": [
+              "retriever"
+            ]
+          }
+        ]
+      },
+      "_types:RuleRetriever": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/_types:RetrieverBase"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "ruleset_ids": {
+                "description": "The ruleset IDs containing the rules this retriever is evaluating against.",
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/_types:Id"
+                }
+              },
+              "match_criteria": {
+                "description": "The match criteria that will determine if a rule in the provided rulesets should be applied.",
+                "type": "object"
+              },
+              "retriever": {
+                "$ref": "#/components/schemas/_types:RetrieverContainer"
+              },
+              "rank_window_size": {
+                "description": "This value determines the size of the individual result set.",
+                "type": "number"
+              }
+            },
+            "required": [
+              "ruleset_ids",
+              "match_criteria",
+              "retriever"
             ]
           }
         ]
@@ -58484,16 +58541,6 @@
         },
         "style": "form"
       },
-      "indices.exists_alias#local": {
-        "in": "query",
-        "name": "local",
-        "description": "If `true`, the request retrieves information from the local node only.",
-        "deprecated": false,
-        "schema": {
-          "type": "boolean"
-        },
-        "style": "form"
-      },
       "indices.get_alias#name": {
         "in": "path",
         "name": "name",
@@ -58540,16 +58587,6 @@
         "in": "query",
         "name": "ignore_unavailable",
         "description": "If `false`, the request returns an error if it targets a missing or closed index.",
-        "deprecated": false,
-        "schema": {
-          "type": "boolean"
-        },
-        "style": "form"
-      },
-      "indices.get_alias#local": {
-        "in": "query",
-        "name": "local",
-        "description": "If `true`, the request retrieves information from the local node only.",
         "deprecated": false,
         "schema": {
           "type": "boolean"

@@ -2697,12 +2697,15 @@ export interface Retries {
 
 export interface RetrieverBase {
   filter?: QueryDslQueryContainer | QueryDslQueryContainer[]
+  min_score?: float
 }
 
 export interface RetrieverContainer {
   standard?: StandardRetriever
   knn?: KnnRetriever
   rrf?: RRFRetriever
+  text_similarity_reranker?: TextSimilarityReranker
+  rule?: RuleRetriever
 }
 
 export type Routing = string
@@ -2710,6 +2713,13 @@ export type Routing = string
 export interface RrfRank {
   rank_constant?: long
   rank_window_size?: long
+}
+
+export interface RuleRetriever extends RetrieverBase {
+  ruleset_ids: Id[]
+  match_criteria: any
+  retriever: RetrieverContainer
+  rank_window_size?: integer
 }
 
 export type ScalarValue = long | double | string | boolean | null
@@ -2867,7 +2877,6 @@ export interface StandardRetriever extends RetrieverBase {
   search_after?: SortResults
   terminate_after?: integer
   sort?: Sort
-  min_score?: float
   collapse?: SearchFieldCollapse
 }
 
@@ -2902,6 +2911,14 @@ export type TaskId = string | integer
 export interface TextEmbedding {
   model_id: string
   model_text: string
+}
+
+export interface TextSimilarityReranker extends RetrieverBase {
+  retriever: RetrieverContainer
+  rank_window_size?: integer
+  inference_id?: string
+  inference_text?: string
+  field?: string
 }
 
 export type ThreadType = 'cpu' | 'wait' | 'block' | 'gpu' | 'mem'
@@ -11612,7 +11629,6 @@ export interface IndicesExistsAliasRequest extends RequestBase {
   allow_no_indices?: boolean
   expand_wildcards?: ExpandWildcards
   ignore_unavailable?: boolean
-  local?: boolean
 }
 
 export type IndicesExistsAliasResponse = boolean
@@ -11767,7 +11783,6 @@ export interface IndicesGetAliasRequest extends RequestBase {
   allow_no_indices?: boolean
   expand_wildcards?: ExpandWildcards
   ignore_unavailable?: boolean
-  local?: boolean
 }
 
 export type IndicesGetAliasResponse = Record<IndexName, IndicesGetAliasIndexAliases>
@@ -12268,7 +12283,6 @@ export interface IndicesSegmentsRequest extends RequestBase {
   allow_no_indices?: boolean
   expand_wildcards?: ExpandWildcards
   ignore_unavailable?: boolean
-  verbose?: boolean
 }
 
 export interface IndicesSegmentsResponse {
@@ -17567,6 +17581,11 @@ export interface SearchableSnapshotsStatsResponse {
   total: any
 }
 
+export interface SecurityAccess {
+  replication?: SecurityReplicationAccess[]
+  search?: SecuritySearchAccess[]
+}
+
 export interface SecurityApiKey {
   creation?: long
   expiration?: long
@@ -17655,6 +17674,10 @@ export interface SecurityRemoteIndicesPrivileges {
   allow_restricted_indices?: boolean
 }
 
+export interface SecurityReplicationAccess {
+  names: IndexName[]
+}
+
 export interface SecurityRoleDescriptor {
   cluster?: SecurityClusterPrivilege[]
   indices?: SecurityIndicesPrivileges[]
@@ -17711,6 +17734,13 @@ export interface SecurityRoleTemplateScript {
   params?: Record<string, any>
   lang?: ScriptLanguage
   options?: Record<string, string>
+}
+
+export interface SecuritySearchAccess {
+  field_security?: SecurityFieldSecurity
+  names: IndexName[]
+  query?: SecurityIndicesPrivilegesQuery
+  allow_restricted_indices?: boolean
 }
 
 export type SecurityTemplateFormat = 'string' | 'json'
@@ -17900,6 +17930,23 @@ export interface SecurityCreateApiKeyRequest extends RequestBase {
 export interface SecurityCreateApiKeyResponse {
   api_key: string
   expiration?: long
+  id: Id
+  name: Name
+  encoded: string
+}
+
+export interface SecurityCreateCrossClusterApiKeyRequest extends RequestBase {
+  body?: {
+    access: SecurityAccess
+    expiration?: Duration
+    metadata?: Metadata
+    name: Name
+  }
+}
+
+export interface SecurityCreateCrossClusterApiKeyResponse {
+  api_key: string
+  expiration?: DurationValue<UnitMillis>
   id: Id
   name: Name
   encoded: string
@@ -18619,6 +18666,19 @@ export interface SecurityUpdateApiKeyRequest extends RequestBase {
 }
 
 export interface SecurityUpdateApiKeyResponse {
+  updated: boolean
+}
+
+export interface SecurityUpdateCrossClusterApiKeyRequest extends RequestBase {
+  id: Id
+  body?: {
+    access: SecurityAccess
+    expiration?: Duration
+    metadata?: Metadata
+  }
+}
+
+export interface SecurityUpdateCrossClusterApiKeyResponse {
   updated: boolean
 }
 
