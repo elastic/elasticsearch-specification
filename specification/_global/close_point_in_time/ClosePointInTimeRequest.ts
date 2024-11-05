@@ -26,7 +26,7 @@ import { Id } from '@_types/common'
  * A point in time must be opened explicitly before being used in search requests.
  * The `keep_alive` parameter tells Elasticsearch how long it should persist.
  * A point in time is automatically closed when the `keep_alive` period has elapsed.
- * However, keeping points in time has a cost; close them as soon as they are no lwonger required for search requests.
+ * However, keeping points in time has a cost; close them as soon as they are no longer required for search requests.
  * @rest_spec_name close_point_in_time
  * @availability stack since=7.10.0 stability=stable
  * @availability serverless stability=stable visibility=public
