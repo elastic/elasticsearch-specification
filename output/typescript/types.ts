@@ -13087,6 +13087,7 @@ export interface IngestProcessorContainer {
   fail?: IngestFailProcessor
   fingerprint?: IngestFingerprintProcessor
   foreach?: IngestForeachProcessor
+  ip_location?: IngestGeoIpProcessor
   geo_grid?: IngestGeoGridProcessor
   geoip?: IngestGeoIpProcessor
   grok?: IngestGrokProcessor

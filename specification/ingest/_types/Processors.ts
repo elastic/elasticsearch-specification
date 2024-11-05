@@ -125,6 +125,10 @@ export class ProcessorContainer {
    */
   foreach?: ForeachProcessor
   /**
+   * Currently an undocumented alias for GeoIP Processor.
+   */
+  ip_location?: GeoIpProcessor
+  /**
    * Converts geo-grid definitions of grid tiles or cells to regular bounding boxes or polygons which describe their shape.
    * This is useful if there is a need to interact with the tile shapes as spatially indexable fields.
    * @doc_id geo-grid-processor
