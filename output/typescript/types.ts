@@ -11629,7 +11629,6 @@ export interface IndicesExistsAliasRequest extends RequestBase {
   allow_no_indices?: boolean
   expand_wildcards?: ExpandWildcards
   ignore_unavailable?: boolean
-  local?: boolean
 }
 
 export type IndicesExistsAliasResponse = boolean
@@ -11784,7 +11783,6 @@ export interface IndicesGetAliasRequest extends RequestBase {
   allow_no_indices?: boolean
   expand_wildcards?: ExpandWildcards
   ignore_unavailable?: boolean
-  local?: boolean
 }
 
 export type IndicesGetAliasResponse = Record<IndexName, IndicesGetAliasIndexAliases>

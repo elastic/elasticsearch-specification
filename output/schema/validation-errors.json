@@ -110,7 +110,6 @@
     "cat.aliases": {
       "request": [
         "Request: missing json spec query parameter 'format'",
-        "Request: missing json spec query parameter 'local'",
         "Request: missing json spec query parameter 'h'",
         "Request: missing json spec query parameter 'help'",
         "Request: missing json spec query parameter 's'",

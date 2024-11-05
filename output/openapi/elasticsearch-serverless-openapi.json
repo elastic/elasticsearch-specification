@@ -6509,9 +6509,6 @@
           },
           {
             "$ref": "#/components/parameters/indices.get_alias#ignore_unavailable"
-          },
-          {
-            "$ref": "#/components/parameters/indices.get_alias#local"
           }
         ],
         "responses": {
@@ -6629,9 +6626,6 @@
           },
           {
             "$ref": "#/components/parameters/indices.exists_alias#ignore_unavailable"
-          },
-          {
-            "$ref": "#/components/parameters/indices.exists_alias#local"
           }
         ],
         "responses": {
@@ -6937,9 +6931,6 @@
           },
           {
             "$ref": "#/components/parameters/indices.get_alias#ignore_unavailable"
-          },
-          {
-            "$ref": "#/components/parameters/indices.get_alias#local"
           }
         ],
         "responses": {
@@ -6967,9 +6958,6 @@
           },
           {
             "$ref": "#/components/parameters/indices.exists_alias#ignore_unavailable"
-          },
-          {
-            "$ref": "#/components/parameters/indices.exists_alias#local"
           }
         ],
         "responses": {
@@ -7063,9 +7051,6 @@
           },
           {
             "$ref": "#/components/parameters/indices.get_alias#ignore_unavailable"
-          },
-          {
-            "$ref": "#/components/parameters/indices.get_alias#local"
           }
         ],
         "responses": {
@@ -7095,9 +7080,6 @@
           },
           {
             "$ref": "#/components/parameters/indices.get_alias#ignore_unavailable"
-          },
-          {
-            "$ref": "#/components/parameters/indices.get_alias#local"
           }
         ],
         "responses": {
@@ -58524,16 +58506,6 @@
         },
         "style": "form"
       },
-      "indices.exists_alias#local": {
-        "in": "query",
-        "name": "local",
-        "description": "If `true`, the request retrieves information from the local node only.",
-        "deprecated": false,
-        "schema": {
-          "type": "boolean"
-        },
-        "style": "form"
-      },
       "indices.get_alias#name": {
         "in": "path",
         "name": "name",
@@ -58580,16 +58552,6 @@
         "in": "query",
         "name": "ignore_unavailable",
         "description": "If `false`, the request returns an error if it targets a missing or closed index.",
-        "deprecated": false,
-        "schema": {
-          "type": "boolean"
-        },
-        "style": "form"
-      },
-      "indices.get_alias#local": {
-        "in": "query",
-        "name": "local",
-        "description": "If `true`, the request retrieves information from the local node only.",
         "deprecated": false,
         "schema": {
           "type": "boolean"
