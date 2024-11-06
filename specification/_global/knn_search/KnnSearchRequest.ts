@@ -39,7 +39,7 @@ import { Query } from './_types/Knn'
  * The search will return the top k documents that also match the filter query.
  * @rest_spec_name knn_search
  * @availability stack since=8.0.0 stability=experimental
- * @deprecated 8.4.0
+ * @deprecated 8.4.0 The kNN search API has been replaced by the `knn` option in the search API.
  * @doc_tag search
  */
 export interface Request extends RequestBase {
