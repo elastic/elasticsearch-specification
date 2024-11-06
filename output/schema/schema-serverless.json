@@ -11642,8 +11642,22 @@
           }
         }
       ],
-      "query": [],
-      "specLocation": "cat/component_templates/CatComponentTemplatesRequest.ts#L22-L39"
+      "query": [
+        {
+          "description": "If `true`, the request computes the list of selected nodes from the\nlocal cluster state. If `false` the list of selected nodes are computed\nfrom the cluster state of the master node. In both cases the coordinating\nnode will send requests for further information to each selected node.",
+          "name": "local",
+          "required": false,
+          "serverDefault": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "_builtins"
+            }
+          }
+        }
+      ],
+      "specLocation": "cat/component_templates/CatComponentTemplatesRequest.ts#L22-L49"
     },
     {
       "body": {
@@ -11877,9 +11891,22 @@
               "namespace": "_types"
             }
           }
+        },
+        {
+          "description": "If `true`, the request computes the list of selected nodes from the\nlocal cluster state. If `false` the list of selected nodes are computed\nfrom the cluster state of the master node. In both cases the coordinating\nnode will send requests for further information to each selected node.",
+          "name": "local",
+          "required": false,
+          "serverDefault": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "_builtins"
+            }
+          }
         }
       ],
-      "specLocation": "cat/indices/CatIndicesRequest.ts#L24-L77"
+      "specLocation": "cat/indices/CatIndicesRequest.ts#L24-L85"
     },
     {
       "body": {
@@ -106911,19 +106938,6 @@
           }
         },
         {
-          "description": "If `true`, the request computes the list of selected nodes from the\nlocal cluster state. If `false` the list of selected nodes are computed\nfrom the cluster state of the master node. In both cases the coordinating\nnode will send requests for further information to each selected node.",
-          "name": "local",
-          "required": false,
-          "serverDefault": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "boolean",
-              "namespace": "_builtins"
-            }
-          }
-        },
-        {
           "description": "Period to wait for a connection to the master node.",
           "name": "master_timeout",
           "required": false,
@@ -106962,7 +106976,7 @@
           }
         }
       ],
-      "specLocation": "_spec_utils/behaviors.ts#L86-L132"
+      "specLocation": "_spec_utils/behaviors.ts#L86-L124"
     },
     {
       "kind": "interface",
@@ -135697,7 +135711,7 @@
         "namespace": "_spec_utils"
       },
       "properties": [],
-      "specLocation": "_spec_utils/behaviors.ts#L134-L140"
+      "specLocation": "_spec_utils/behaviors.ts#L126-L132"
     },
     {
       "attachedBehaviors": [

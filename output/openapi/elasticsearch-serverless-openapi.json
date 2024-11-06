@@ -707,6 +707,11 @@
         "summary": "Get component templates",
         "description": "Returns information about component templates in a cluster.\nComponent templates are building blocks for constructing index templates that specify index mappings, settings, and aliases.\n\nCAT APIs are only intended for human consumption using the command line or Kibana console.\nThey are not intended for use by applications. For application consumption, use the get component template API.",
         "operationId": "cat-component-templates",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/cat.component_templates#local"
+          }
+        ],
         "responses": {
           "200": {
             "$ref": "#/components/responses/cat.component_templates#200"
@@ -726,6 +731,9 @@
         "parameters": [
           {
             "$ref": "#/components/parameters/cat.component_templates#name"
+          },
+          {
+            "$ref": "#/components/parameters/cat.component_templates#local"
           }
         ],
         "responses": {
@@ -822,6 +830,9 @@
           },
           {
             "$ref": "#/components/parameters/cat.indices#time"
+          },
+          {
+            "$ref": "#/components/parameters/cat.indices#local"
           }
         ],
         "responses": {
@@ -860,6 +871,9 @@
           },
           {
             "$ref": "#/components/parameters/cat.indices#time"
+          },
+          {
+            "$ref": "#/components/parameters/cat.indices#local"
           }
         ],
         "responses": {
@@ -57178,6 +57192,16 @@
         },
         "style": "simple"
       },
+      "cat.component_templates#local": {
+        "in": "query",
+        "name": "local",
+        "description": "If `true`, the request computes the list of selected nodes from the\nlocal cluster state. If `false` the list of selected nodes are computed\nfrom the cluster state of the master node. In both cases the coordinating\nnode will send requests for further information to each selected node.",
+        "deprecated": false,
+        "schema": {
+          "type": "boolean"
+        },
+        "style": "form"
+      },
       "cat.count#index": {
         "in": "path",
         "name": "index",
@@ -57257,6 +57281,16 @@
         "deprecated": false,
         "schema": {
           "$ref": "#/components/schemas/_types:TimeUnit"
+        },
+        "style": "form"
+      },
+      "cat.indices#local": {
+        "in": "query",
+        "name": "local",
+        "description": "If `true`, the request computes the list of selected nodes from the\nlocal cluster state. If `false` the list of selected nodes are computed\nfrom the cluster state of the master node. In both cases the coordinating\nnode will send requests for further information to each selected node.",
+        "deprecated": false,
+        "schema": {
+          "type": "boolean"
         },
         "style": "form"
       },
