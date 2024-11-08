@@ -27916,6 +27916,84 @@
         "x-state": "Added in 6.7.0"
       }
     },
+    "/_security/cross_cluster/api_key": {
+      "post": {
+        "tags": [
+          "security"
+        ],
+        "summary": "Create a cross-cluster API key",
+        "description": "Create an API key of the `cross_cluster` type for the API key based remote cluster access.\nA `cross_cluster` API key cannot be used to authenticate through the REST interface.\n\nIMPORTANT: To authenticate this request you must use a credential that is not an API key. Even if you use an API key that has the required privilege, the API returns an error.\n\nCross-cluster API keys are created by the Elasticsearch API key service, which is automatically enabled.\n\nNOTE: Unlike REST API keys, a cross-cluster API key does not capture permissions of the authenticated user. The API key’s effective permission is exactly as specified with the `access` property.\n\nA successful request returns a JSON structure that contains the API key, its unique ID, and its name. If applicable, it also returns expiration information for the API key in milliseconds.\n\nBy default, API keys never expire. You can specify expiration information when you create the API keys.\n\nCross-cluster API keys can only be updated with the update cross-cluster API key API.\nAttempting to update them with the update REST API key API or the bulk update REST API keys API will result in an error.",
+        "externalDocs": {
+          "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/remote-clusters-api-key.html"
+        },
+        "operationId": "security-create-cross-cluster-api-key",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "access": {
+                    "$ref": "#/components/schemas/security._types:Access"
+                  },
+                  "expiration": {
+                    "$ref": "#/components/schemas/_types:Duration"
+                  },
+                  "metadata": {
+                    "$ref": "#/components/schemas/_types:Metadata"
+                  },
+                  "name": {
+                    "$ref": "#/components/schemas/_types:Name"
+                  }
+                },
+                "required": [
+                  "access",
+                  "name"
+                ]
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "api_key": {
+                      "description": "Generated API key.",
+                      "type": "string"
+                    },
+                    "expiration": {
+                      "$ref": "#/components/schemas/_types:DurationValueUnitMillis"
+                    },
+                    "id": {
+                      "$ref": "#/components/schemas/_types:Id"
+                    },
+                    "name": {
+                      "$ref": "#/components/schemas/_types:Name"
+                    },
+                    "encoded": {
+                      "description": "API key credentials which is the base64-encoding of\nthe UTF-8 representation of `id` and `api_key` joined\nby a colon (`:`).",
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "api_key",
+                    "id",
+                    "name",
+                    "encoded"
+                  ]
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/_security/service/{namespace}/{service}/credential/token/{name}": {
       "put": {
         "tags": [
@@ -30281,6 +30359,77 @@
           }
         },
         "x-state": "Added in 8.4.0"
+      }
+    },
+    "/_security/cross_cluster/api_key/{id}": {
+      "put": {
+        "tags": [
+          "security"
+        ],
+        "summary": "Update a cross-cluster API key",
+        "description": "Update the attributes of an existing cross-cluster API key, which is used for API key based remote cluster access.",
+        "externalDocs": {
+          "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/remote-clusters-api-key.html"
+        },
+        "operationId": "security-update-cross-cluster-api-key",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "description": "The ID of the cross-cluster API key to update.",
+            "required": true,
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/_types:Id"
+            },
+            "style": "simple"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "access": {
+                    "$ref": "#/components/schemas/security._types:Access"
+                  },
+                  "expiration": {
+                    "$ref": "#/components/schemas/_types:Duration"
+                  },
+                  "metadata": {
+                    "$ref": "#/components/schemas/_types:Metadata"
+                  }
+                },
+                "required": [
+                  "access"
+                ]
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "updated": {
+                      "description": "If `true`, the API key was updated.\nIf `false`, the API key didn’t change because no change was detected.",
+                      "type": "boolean"
+                    }
+                  },
+                  "required": [
+                    "updated"
+                  ]
+                }
+              }
+            }
+          }
+        }
       }
     },
     "/_security/profile/{uid}/_data": {
@@ -81950,6 +82099,65 @@
       },
       "_types:Service": {
         "type": "string"
+      },
+      "security._types:Access": {
+        "type": "object",
+        "properties": {
+          "replication": {
+            "description": "A list of indices permission entries for cross-cluster replication.",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/security._types:ReplicationAccess"
+            }
+          },
+          "search": {
+            "description": "A list of indices permission entries for cross-cluster search.",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/security._types:SearchAccess"
+            }
+          }
+        }
+      },
+      "security._types:ReplicationAccess": {
+        "type": "object",
+        "properties": {
+          "names": {
+            "description": "A list of indices (or index name patterns) to which the permissions in this entry apply.",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/_types:IndexName"
+            }
+          }
+        },
+        "required": [
+          "names"
+        ]
+      },
+      "security._types:SearchAccess": {
+        "type": "object",
+        "properties": {
+          "field_security": {
+            "$ref": "#/components/schemas/security._types:FieldSecurity"
+          },
+          "names": {
+            "description": "A list of indices (or index name patterns) to which the permissions in this entry apply.",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/_types:IndexName"
+            }
+          },
+          "query": {
+            "$ref": "#/components/schemas/security._types:IndicesPrivilegesQuery"
+          },
+          "allow_restricted_indices": {
+            "description": "Set to `true` if using wildcard or regular expressions for patterns that cover restricted indices. Implicitly, restricted indices have limited privileges that can cause pattern tests to fail. If restricted indices are explicitly included in the `names` list, Elasticsearch checks privileges against these indices regardless of the value set for `allow_restricted_indices`.",
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "names"
+        ]
       },
       "security.create_service_token:Token": {
         "type": "object",
