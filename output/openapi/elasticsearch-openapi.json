@@ -15164,6 +15164,157 @@
         "x-state": "Added in 8.15.0"
       }
     },
+    "/_ingest/ip_location/database/{id}": {
+      "get": {
+        "tags": [
+          "ingest"
+        ],
+        "summary": "Returns information about one or more IP location database configurations",
+        "operationId": "ingest-get-ip-location-database-1",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/ingest.get_ip_location_database#id"
+          },
+          {
+            "$ref": "#/components/parameters/ingest.get_ip_location_database#master_timeout"
+          }
+        ],
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/ingest.get_ip_location_database#200"
+          }
+        },
+        "x-state": "Added in 8.15.0"
+      },
+      "put": {
+        "tags": [
+          "ingest"
+        ],
+        "summary": "Returns information about one or more IP location database configurations",
+        "operationId": "ingest-put-ip-location-database",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "description": "ID of the database configuration to create or update.",
+            "required": true,
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/_types:Id"
+            },
+            "style": "simple"
+          },
+          {
+            "in": "query",
+            "name": "master_timeout",
+            "description": "Period to wait for a connection to the master node.\nIf no response is received before the timeout expires, the request fails and returns an error.",
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/_types:Duration"
+            },
+            "style": "form"
+          },
+          {
+            "in": "query",
+            "name": "timeout",
+            "description": "Period to wait for a response. If no response is received before the timeout expires, the request fails and returns an error.",
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/_types:Duration"
+            },
+            "style": "form"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "$ref": "#/components/schemas/_types:Name"
+                  },
+                  "maxmind": {
+                    "$ref": "#/components/schemas/ingest._types:Maxmind"
+                  }
+                },
+                "required": [
+                  "name",
+                  "maxmind"
+                ]
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/_types:AcknowledgedResponseBase"
+                }
+              }
+            }
+          }
+        },
+        "x-state": "Added in 8.15.0"
+      },
+      "delete": {
+        "tags": [
+          "ingest"
+        ],
+        "summary": "Deletes a geoip database configuration",
+        "operationId": "ingest-delete-ip-location-database",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "description": "A comma-separated list of IP location database configurations to delete",
+            "required": true,
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/_types:Ids"
+            },
+            "style": "simple"
+          },
+          {
+            "in": "query",
+            "name": "master_timeout",
+            "description": "Period to wait for a connection to the master node.\nIf no response is received before the timeout expires, the request fails and returns an error.",
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/_types:Duration"
+            },
+            "style": "form"
+          },
+          {
+            "in": "query",
+            "name": "timeout",
+            "description": "Period to wait for a response. If no response is received before the timeout expires, the request fails and returns an error.",
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/_types:Duration"
+            },
+            "style": "form"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/_types:AcknowledgedResponseBase"
+                }
+              }
+            }
+          }
+        },
+        "x-state": "Added in 8.15.0"
+      }
+    },
     "/_ingest/pipeline/{id}": {
       "get": {
         "tags": [
@@ -15401,6 +15552,26 @@
         "responses": {
           "200": {
             "$ref": "#/components/responses/ingest.get_geoip_database#200"
+          }
+        },
+        "x-state": "Added in 8.15.0"
+      }
+    },
+    "/_ingest/ip_location/database": {
+      "get": {
+        "tags": [
+          "ingest"
+        ],
+        "summary": "Returns information about one or more IP location database configurations",
+        "operationId": "ingest-get-ip-location-database",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/ingest.get_ip_location_database#master_timeout"
+          }
+        ],
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/ingest.get_ip_location_database#200"
           }
         },
         "x-state": "Added in 8.15.0"
@@ -69765,6 +69936,29 @@
           "account_id"
         ]
       },
+      "ingest.get_ip_location_database:DatabaseConfigurationMetadata": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "$ref": "#/components/schemas/_types:Id"
+          },
+          "version": {
+            "type": "number"
+          },
+          "modified_date_millis": {
+            "$ref": "#/components/schemas/_types:EpochTimeUnitMillis"
+          },
+          "database": {
+            "$ref": "#/components/schemas/ingest._types:DatabaseConfiguration"
+          }
+        },
+        "required": [
+          "id",
+          "version",
+          "modified_date_millis",
+          "database"
+        ]
+      },
       "ingest._types:Pipeline": {
         "type": "object",
         "properties": {
@@ -90150,6 +90344,27 @@
           }
         }
       },
+      "ingest.get_ip_location_database#200": {
+        "description": "",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "databases": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/ingest.get_ip_location_database:DatabaseConfigurationMetadata"
+                  }
+                }
+              },
+              "required": [
+                "databases"
+              ]
+            }
+          }
+        }
+      },
       "ingest.get_pipeline#200": {
         "description": "",
         "content": {
@@ -97271,6 +97486,27 @@
         "style": "simple"
       },
       "ingest.get_geoip_database#master_timeout": {
+        "in": "query",
+        "name": "master_timeout",
+        "description": "Period to wait for a connection to the master node.\nIf no response is received before the timeout expires, the request fails and returns an error.",
+        "deprecated": false,
+        "schema": {
+          "$ref": "#/components/schemas/_types:Duration"
+        },
+        "style": "form"
+      },
+      "ingest.get_ip_location_database#id": {
+        "in": "path",
+        "name": "id",
+        "description": "Comma-separated list of database configuration IDs to retrieve.\nWildcard (`*`) expressions are supported.\nTo get all database configurations, omit this parameter or use `*`.",
+        "required": true,
+        "deprecated": false,
+        "schema": {
+          "$ref": "#/components/schemas/_types:Ids"
+        },
+        "style": "simple"
+      },
+      "ingest.get_ip_location_database#master_timeout": {
         "in": "query",
         "name": "master_timeout",
         "description": "Period to wait for a connection to the master node.\nIf no response is received before the timeout expires, the request fails and returns an error.",

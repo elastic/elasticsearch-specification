@@ -13244,6 +13244,14 @@ export interface IngestDeleteGeoipDatabaseRequest extends RequestBase {
 
 export type IngestDeleteGeoipDatabaseResponse = AcknowledgedResponseBase
 
+export interface IngestDeleteIpLocationDatabaseRequest extends RequestBase {
+  id: Ids
+  master_timeout?: Duration
+  timeout?: Duration
+}
+
+export type IngestDeleteIpLocationDatabaseResponse = AcknowledgedResponseBase
+
 export interface IngestDeletePipelineRequest extends RequestBase {
   id: Id
   master_timeout?: Duration
@@ -13294,6 +13302,22 @@ export interface IngestGetGeoipDatabaseResponse {
   databases: IngestGetGeoipDatabaseDatabaseConfigurationMetadata[]
 }
 
+export interface IngestGetIpLocationDatabaseDatabaseConfigurationMetadata {
+  id: Id
+  version: long
+  modified_date_millis: EpochTime<UnitMillis>
+  database: IngestDatabaseConfiguration
+}
+
+export interface IngestGetIpLocationDatabaseRequest extends RequestBase {
+  id?: Ids
+  master_timeout?: Duration
+}
+
+export interface IngestGetIpLocationDatabaseResponse {
+  databases: IngestGetIpLocationDatabaseDatabaseConfigurationMetadata[]
+}
+
 export interface IngestGetPipelineRequest extends RequestBase {
   id?: Id
   master_timeout?: Duration
@@ -13320,6 +13344,18 @@ export interface IngestPutGeoipDatabaseRequest extends RequestBase {
 }
 
 export type IngestPutGeoipDatabaseResponse = AcknowledgedResponseBase
+
+export interface IngestPutIpLocationDatabaseRequest extends RequestBase {
+  id: Id
+  master_timeout?: Duration
+  timeout?: Duration
+  body?: {
+    name: Name
+    maxmind: IngestMaxmind
+  }
+}
+
+export type IngestPutIpLocationDatabaseResponse = AcknowledgedResponseBase
 
 export interface IngestPutPipelineRequest extends RequestBase {
   id: Id
