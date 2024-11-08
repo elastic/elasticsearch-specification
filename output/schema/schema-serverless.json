@@ -3337,7 +3337,7 @@
           "stability": "stable"
         }
       },
-      "description": "Get the status for a data stream lifecycle.\nRetrieves information about an index or data stream’s current data stream lifecycle status, such as time since index creation, time since rollover, the lifecycle configuration managing the index, or any errors encountered during lifecycle execution.",
+      "description": "Get the status for a data stream lifecycle.\nGet information about an index or data stream's current data stream lifecycle status, such as time since index creation, time since rollover, the lifecycle configuration managing the index, or any errors encountered during lifecycle execution.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/data-streams-explain-lifecycle.html",
       "name": "indices.explain_data_lifecycle",
       "request": {
@@ -3980,9 +3980,17 @@
           "stability": "stable"
         }
       },
-      "description": "Create or update an index template.\nIndex templates define settings, mappings, and aliases that can be applied automatically to new indices.",
+      "description": "Create or update an index template.\nIndex templates define settings, mappings, and aliases that can be applied automatically to new indices.\nElasticsearch applies templates to new indices based on an index pattern that matches the index name.\n\nIMPORTANT: This documentation is about legacy index templates, which are deprecated and will be replaced by the composable templates introduced in Elasticsearch 7.8.\n\nComposable templates always take precedence over legacy templates.\nIf no composable template matches a new index, matching legacy templates are applied according to their order.\n\nIndex templates are only applied during index creation.\nChanges to index templates do not affect existing indices.\nSettings and mappings specified in create index API requests override any settings or mappings specified in an index template.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/indices-templates-v1.html",
+      "extDocId": "index-templates",
+      "extDocUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/index-templates.html",
       "name": "indices.put_template",
+      "privileges": {
+        "cluster": [
+          "manage_index_templates",
+          "manage"
+        ]
+      },
       "request": {
         "name": "Request",
         "namespace": "indices.put_template"
@@ -4448,9 +4456,14 @@
           "visibility": "public"
         }
       },
-      "description": "Create an inference endpoint",
+      "description": "Create an inference endpoint.\nWhen you create an inference endpoint, the associated machine learning model is automatically deployed if it is not already running.\nAfter creating the endpoint, wait for the model deployment to complete before using it.\nTo verify the deployment status, use the get trained model statistics API.\nLook for `\"state\": \"fully_allocated\"` in the response and ensure that the `\"allocation_count\"` matches the `\"target_allocation_count\"`.\nAvoid creating multiple endpoints for the same model unless required, as each endpoint consumes significant resources.\n\nIMPORTANT: The inference APIs enable you to use certain services, such as built-in machine learning models (ELSER, E5), models uploaded through Eland, Cohere, OpenAI, Mistral, Azure OpenAI, Google AI Studio, Google Vertex AI, Anthropic, Watsonx.ai, or Hugging Face.\nFor built-in models and models uploaded through Eland, the inference APIs offer an alternative way to use and manage trained models.\nHowever, if you do not plan to use the inference APIs to use these models or if you want to use non-NLP models, use the machine learning trained model APIs.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/put-inference-api.html",
       "name": "inference.put",
+      "privileges": {
+        "cluster": [
+          "manage_inference"
+        ]
+      },
       "request": {
         "name": "Request",
         "namespace": "inference.put"
@@ -4730,7 +4743,7 @@
           "stability": "stable"
         }
       },
-      "description": "Get license information.\nReturns information about your Elastic license, including its type, its status, when it was issued, and when it expires.\nFor more information about the different types of licenses, refer to [Elastic Stack subscriptions](https://www.elastic.co/subscriptions).",
+      "description": "Get license information.\nGet information about your Elastic license including its type, its status, when it was issued, and when it expires.\n\nNOTE: If the master node is generating a new cluster state, the get license API may return a `404 Not Found` response.\nIf you receive an unexpected 404 response after cluster startup, wait a short period and retry the request.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/get-license.html",
       "name": "license.get",
       "request": {
@@ -4765,8 +4778,10 @@
           "stability": "stable"
         }
       },
-      "description": "Deletes a pipeline used for Logstash Central Management.",
+      "description": "Delete a Logstash pipeline.\n\nDelete a pipeline that is used for Logstash Central Management.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/logstash-api-delete-pipeline.html",
+      "extDocId": "logstash-centralized-pipeline-management",
+      "extDocUrl": "https://www.elastic.co/guide/en/logstash/{branch}/logstash-centralized-pipeline-management.html",
       "name": "logstash.delete_pipeline",
       "privileges": {
         "cluster": [
@@ -4805,8 +4820,10 @@
           "stability": "stable"
         }
       },
-      "description": "Retrieves pipelines used for Logstash Central Management.",
+      "description": "Get Logstash pipelines.\n\nGet pipelines that are used for Logstash Central Management.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/logstash-api-get-pipeline.html",
+      "extDocId": "logstash-centralized-pipeline-management",
+      "extDocUrl": "https://www.elastic.co/guide/en/logstash/{branch}/logstash-centralized-pipeline-management.html",
       "name": "logstash.get_pipeline",
       "privileges": {
         "cluster": [
@@ -4851,8 +4868,10 @@
           "stability": "stable"
         }
       },
-      "description": "Creates or updates a pipeline used for Logstash Central Management.",
+      "description": "Create or update a Logstash pipeline.\n\nCreate a pipeline that is used for Logstash Central Management.\nIf the specified pipeline exists, it is replaced.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/logstash-api-put-pipeline.html",
+      "extDocId": "logstash-centralized-pipeline-management",
+      "extDocUrl": "https://www.elastic.co/guide/en/logstash/{branch}/logstash-centralized-pipeline-management.html",
       "name": "logstash.put_pipeline",
       "privileges": {
         "cluster": [
@@ -9303,7 +9322,7 @@
           "stability": "experimental"
         }
       },
-      "description": "Get task information.\nReturns information about the tasks currently executing in the cluster.",
+      "description": "Get task information.\nGet information about a task currently running in the cluster.",
       "docId": "tasks",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/tasks.html",
       "name": "tasks.get",
@@ -11344,6 +11363,19 @@
       ],
       "query": [
         {
+          "description": "If `true`, the response will include the ingest pipelines that were executed for each index or create.",
+          "name": "list_executed_pipelines",
+          "required": false,
+          "serverDefault": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "_builtins"
+            }
+          }
+        },
+        {
           "description": "ID of the pipeline to use to preprocess incoming documents.\nIf the index has a default ingest pipeline specified, then setting the value to `_none` disables the default ingest pipeline for this request.\nIf a final pipeline is configured it will always run, regardless of the value of this parameter.",
           "name": "pipeline",
           "required": false,
@@ -11454,9 +11486,22 @@
               "namespace": "_builtins"
             }
           }
+        },
+        {
+          "description": "If `true`, the request's actions must target a data stream (existing or to-be-created).",
+          "name": "require_data_stream",
+          "required": false,
+          "serverDefault": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "_builtins"
+            }
+          }
         }
       ],
-      "specLocation": "_global/bulk/BulkRequest.ts#L32-L105"
+      "specLocation": "_global/bulk/BulkRequest.ts#L32-L115"
     },
     {
       "body": {
@@ -11634,8 +11679,22 @@
           }
         }
       ],
-      "query": [],
-      "specLocation": "cat/component_templates/CatComponentTemplatesRequest.ts#L22-L39"
+      "query": [
+        {
+          "description": "If `true`, the request computes the list of selected nodes from the\nlocal cluster state. If `false` the list of selected nodes are computed\nfrom the cluster state of the master node. In both cases the coordinating\nnode will send requests for further information to each selected node.",
+          "name": "local",
+          "required": false,
+          "serverDefault": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "_builtins"
+            }
+          }
+        }
+      ],
+      "specLocation": "cat/component_templates/CatComponentTemplatesRequest.ts#L22-L49"
     },
     {
       "body": {
@@ -21229,7 +21288,7 @@
       "body": {
         "kind": "no_body"
       },
-      "description": "Get the status for a data stream lifecycle.\nRetrieves information about an index or data stream’s current data stream lifecycle status, such as time since index creation, time since rollover, the lifecycle configuration managing the index, or any errors encountered during lifecycle execution.",
+      "description": "Get the status for a data stream lifecycle.\nGet information about an index or data stream's current data stream lifecycle status, such as time since index creation, time since rollover, the lifecycle configuration managing the index, or any errors encountered during lifecycle execution.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -23529,7 +23588,7 @@
           }
         ]
       },
-      "description": "Create or update an index template.\nIndex templates define settings, mappings, and aliases that can be applied automatically to new indices.",
+      "description": "Create or update an index template.\nIndex templates define settings, mappings, and aliases that can be applied automatically to new indices.\nElasticsearch applies templates to new indices based on an index pattern that matches the index name.\n\nIMPORTANT: This documentation is about legacy index templates, which are deprecated and will be replaced by the composable templates introduced in Elasticsearch 7.8.\n\nComposable templates always take precedence over legacy templates.\nIf no composable template matches a new index, matching legacy templates are applied according to their order.\n\nIndex templates are only applied during index creation.\nChanges to index templates do not affect existing indices.\nSettings and mappings specified in create index API requests override any settings or mappings specified in an index template.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -23606,7 +23665,7 @@
           }
         }
       ],
-      "specLocation": "indices/put_template/IndicesPutTemplateRequest.ts#L29-L95"
+      "specLocation": "indices/put_template/IndicesPutTemplateRequest.ts#L29-L107"
     },
     {
       "body": {
@@ -25151,7 +25210,7 @@
           }
         }
       },
-      "description": "Create an inference endpoint",
+      "description": "Create an inference endpoint.\nWhen you create an inference endpoint, the associated machine learning model is automatically deployed if it is not already running.\nAfter creating the endpoint, wait for the model deployment to complete before using it.\nTo verify the deployment status, use the get trained model statistics API.\nLook for `\"state\": \"fully_allocated\"` in the response and ensure that the `\"allocation_count\"` matches the `\"target_allocation_count\"`.\nAvoid creating multiple endpoints for the same model unless required, as each endpoint consumes significant resources.\n\nIMPORTANT: The inference APIs enable you to use certain services, such as built-in machine learning models (ELSER, E5), models uploaded through Eland, Cohere, OpenAI, Mistral, Azure OpenAI, Google AI Studio, Google Vertex AI, Anthropic, Watsonx.ai, or Hugging Face.\nFor built-in models and models uploaded through Eland, the inference APIs offer an alternative way to use and manage trained models.\nHowever, if you do not plan to use the inference APIs to use these models or if you want to use non-NLP models, use the machine learning trained model APIs.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -25190,7 +25249,7 @@
         }
       ],
       "query": [],
-      "specLocation": "inference/put/PutRequest.ts#L25-L44"
+      "specLocation": "inference/put/PutRequest.ts#L25-L54"
     },
     {
       "body": {
@@ -25818,7 +25877,7 @@
       "body": {
         "kind": "no_body"
       },
-      "description": "Get license information.\nReturns information about your Elastic license, including its type, its status, when it was issued, and when it expires.\nFor more information about the different types of licenses, refer to [Elastic Stack subscriptions](https://www.elastic.co/subscriptions).",
+      "description": "Get license information.\nGet information about your Elastic license including its type, its status, when it was issued, and when it expires.\n\nNOTE: If the master node is generating a new cluster state, the get license API may return a `404 Not Found` response.\nIf you receive an unexpected 404 response after cluster startup, wait a short period and retry the request.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -25863,7 +25922,7 @@
           }
         }
       ],
-      "specLocation": "license/get/GetLicenseRequest.ts#L22-L45"
+      "specLocation": "license/get/GetLicenseRequest.ts#L22-L47"
     },
     {
       "body": {
@@ -25896,7 +25955,7 @@
       "body": {
         "kind": "no_body"
       },
-      "description": "Deletes a pipeline used for Logstash Central Management.",
+      "description": "Delete a Logstash pipeline.\n\nDelete a pipeline that is used for Logstash Central Management.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -25910,7 +25969,7 @@
       },
       "path": [
         {
-          "description": "Identifier for the pipeline.",
+          "description": "An identifier for the pipeline.",
           "name": "id",
           "required": true,
           "type": {
@@ -25923,7 +25982,7 @@
         }
       ],
       "query": [],
-      "specLocation": "logstash/delete_pipeline/LogstashDeletePipelineRequest.ts#L23-L37"
+      "specLocation": "logstash/delete_pipeline/LogstashDeletePipelineRequest.ts#L23-L40"
     },
     {
       "body": {
@@ -25943,7 +26002,7 @@
       "body": {
         "kind": "no_body"
       },
-      "description": "Retrieves pipelines used for Logstash Central Management.",
+      "description": "Get Logstash pipelines.\n\nGet pipelines that are used for Logstash Central Management.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -25957,7 +26016,7 @@
       },
       "path": [
         {
-          "description": "Comma-separated list of pipeline identifiers.",
+          "description": "A comma-separated list of pipeline identifiers.",
           "name": "id",
           "required": false,
           "type": {
@@ -25970,7 +26029,7 @@
         }
       ],
       "query": [],
-      "specLocation": "logstash/get_pipeline/LogstashGetPipelineRequest.ts#L23-L37"
+      "specLocation": "logstash/get_pipeline/LogstashGetPipelineRequest.ts#L23-L40"
     },
     {
       "body": {
@@ -26016,7 +26075,7 @@
           }
         }
       },
-      "description": "Creates or updates a pipeline used for Logstash Central Management.",
+      "description": "Create or update a Logstash pipeline.\n\nCreate a pipeline that is used for Logstash Central Management.\nIf the specified pipeline exists, it is replaced.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -26030,7 +26089,7 @@
       },
       "path": [
         {
-          "description": "Identifier for the pipeline.",
+          "description": "An identifier for the pipeline.",
           "name": "id",
           "required": true,
           "type": {
@@ -26043,7 +26102,7 @@
         }
       ],
       "query": [],
-      "specLocation": "logstash/put_pipeline/LogstashPutPipelineRequest.ts#L24-L39"
+      "specLocation": "logstash/put_pipeline/LogstashPutPipelineRequest.ts#L24-L44"
     },
     {
       "body": {
@@ -41911,7 +41970,7 @@
       "body": {
         "kind": "no_body"
       },
-      "description": "Get task information.\nReturns information about the tasks currently executing in the cluster.",
+      "description": "Get task information.\nGet information about a task currently running in the cluster.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -104935,6 +104994,7 @@
           }
         },
         {
+          "description": "Human readable text that identifies the particular request that the task is performing.\nFor example, it might identify the search request being performed by a search task.\nOther kinds of tasks have different descriptions, like `_reindex` which has the source and the destination, or `_bulk` which just has the number of requests and the destination indices.\nMany requests will have only an empty description because more detailed information about the request is not easily available or particularly helpful in identifying the request.",
           "name": "description",
           "required": false,
           "type": {
@@ -105041,7 +105101,7 @@
           }
         },
         {
-          "description": "Task status information can vary wildly from task to task.",
+          "description": "The internal status of the task, which varies from task to task.\nThe format also varies.\nWhile the goal is to keep the status for a particular task consistent from version to version, this is not always possible because sometimes the implementation changes.\nFields might be removed from the status for a particular request so any parsing you do of the status might break in minor releases.",
           "name": "status",
           "required": false,
           "type": {
@@ -105071,7 +105131,7 @@
           }
         }
       ],
-      "specLocation": "tasks/_types/TaskInfo.ts#L32-L47"
+      "specLocation": "tasks/_types/TaskInfo.ts#L32-L58"
     },
     {
       "inherits": {
@@ -105909,7 +105969,7 @@
         "name": "XPackCategory",
         "namespace": "xpack.info"
       },
-      "specLocation": "xpack/info/XPackInfoRequest.ts#L44-L48"
+      "specLocation": "xpack/info/XPackInfoRequest.ts#L49-L53"
     },
     {
       "attachedBehaviors": [
@@ -107296,19 +107356,6 @@
           }
         },
         {
-          "description": "If `true`, the request computes the list of selected nodes from the\nlocal cluster state. If `false` the list of selected nodes are computed\nfrom the cluster state of the master node. In both cases the coordinating\nnode will send requests for further information to each selected node.",
-          "name": "local",
-          "required": false,
-          "serverDefault": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "boolean",
-              "namespace": "_builtins"
-            }
-          }
-        },
-        {
           "description": "Period to wait for a connection to the master node.",
           "name": "master_timeout",
           "required": false,
@@ -107347,7 +107394,7 @@
           }
         }
       ],
-      "specLocation": "_spec_utils/behaviors.ts#L86-L132"
+      "specLocation": "_spec_utils/behaviors.ts#L86-L124"
     },
     {
       "kind": "interface",
@@ -126550,7 +126597,7 @@
       },
       "properties": [
         {
-          "description": "Description of the pipeline.\nThis description is not used by Elasticsearch or Logstash.",
+          "description": "A description of the pipeline.\nThis description is not used by Elasticsearch or Logstash.",
           "name": "description",
           "required": true,
           "type": {
@@ -126562,7 +126609,7 @@
           }
         },
         {
-          "description": "Date the pipeline was last updated.\nMust be in the `yyyy-MM-dd'T'HH:mm:ss.SSSZZ` strict_date_time format.",
+          "description": "The date the pipeline was last updated.\nIt must be in the `yyyy-MM-dd'T'HH:mm:ss.SSSZZ` strict_date_time format.",
           "name": "last_modified",
           "required": true,
           "type": {
@@ -126574,33 +126621,9 @@
           }
         },
         {
-          "description": "Optional metadata about the pipeline.\nMay have any contents.\nThis metadata is not generated or used by Elasticsearch or Logstash.",
-          "name": "pipeline_metadata",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "PipelineMetadata",
-              "namespace": "logstash._types"
-            }
-          }
-        },
-        {
-          "description": "User who last updated the pipeline.",
-          "name": "username",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "_builtins"
-            }
-          }
-        },
-        {
-          "description": "Configuration for the pipeline.",
-          "docId": "logstash-configuration-file-structure",
-          "docUrl": "https://www.elastic.co/guide/en/logstash/{branch}/configuration-file-structure.html",
+          "description": "The configuration for the pipeline.",
+          "extDocId": "logstash-configuration-file-structure",
+          "extDocUrl": "https://www.elastic.co/guide/en/logstash/{branch}/configuration-file-structure.html",
           "name": "pipeline",
           "required": true,
           "type": {
@@ -126612,9 +126635,21 @@
           }
         },
         {
-          "description": "Settings for the pipeline.\nSupports only flat keys in dot notation.",
-          "docId": "logstash-logstash-settings-file",
-          "docUrl": "https://www.elastic.co/guide/en/logstash/{branch}/logstash-settings-file.html",
+          "description": "Optional metadata about the pipeline, which can have any contents.\nThis metadata is not generated or used by Elasticsearch or Logstash.",
+          "name": "pipeline_metadata",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "PipelineMetadata",
+              "namespace": "logstash._types"
+            }
+          }
+        },
+        {
+          "description": "Settings for the pipeline.\nIt supports only flat keys in dot notation.",
+          "extDocId": "logstash-logstash-settings-file",
+          "extDocUrl": "https://www.elastic.co/guide/en/logstash/{branch}/logstash-settings-file.html",
           "name": "pipeline_settings",
           "required": true,
           "type": {
@@ -126624,9 +126659,21 @@
               "namespace": "logstash._types"
             }
           }
+        },
+        {
+          "description": "The user who last updated the pipeline.",
+          "name": "username",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "_builtins"
+            }
+          }
         }
       ],
-      "specLocation": "logstash/_types/Pipeline.ts#L60-L92"
+      "specLocation": "logstash/_types/Pipeline.ts#L60-L91"
     },
     {
       "kind": "interface",
@@ -136999,7 +137046,7 @@
         "namespace": "_spec_utils"
       },
       "properties": [],
-      "specLocation": "_spec_utils/behaviors.ts#L134-L140"
+      "specLocation": "_spec_utils/behaviors.ts#L126-L132"
     },
     {
       "attachedBehaviors": [

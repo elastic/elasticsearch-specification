@@ -37,5 +37,13 @@ export interface Request extends CatRequestBase {
   query_parameters: {
     /** The unit used to display byte values. */
     bytes?: Bytes
+    /**
+     * If `true`, the request computes the list of selected nodes from the
+     * local cluster state. If `false` the list of selected nodes are computed
+     * from the cluster state of the master node. In both cases the coordinating
+     * node will send requests for further information to each selected node.
+     * @server_default false
+     */
+    local?: boolean
   }
 }
