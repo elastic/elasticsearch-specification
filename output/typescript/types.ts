@@ -17572,6 +17572,11 @@ export interface SearchableSnapshotsStatsResponse {
   total: any
 }
 
+export interface SecurityAccess {
+  replication?: SecurityReplicationAccess[]
+  search?: SecuritySearchAccess[]
+}
+
 export interface SecurityApiKey {
   creation?: long
   expiration?: long
@@ -17660,6 +17665,10 @@ export interface SecurityRemoteIndicesPrivileges {
   allow_restricted_indices?: boolean
 }
 
+export interface SecurityReplicationAccess {
+  names: IndexName[]
+}
+
 export interface SecurityRoleDescriptor {
   cluster?: SecurityClusterPrivilege[]
   indices?: SecurityIndicesPrivileges[]
@@ -17716,6 +17725,13 @@ export interface SecurityRoleTemplateScript {
   params?: Record<string, any>
   lang?: ScriptLanguage
   options?: Record<string, string>
+}
+
+export interface SecuritySearchAccess {
+  field_security?: SecurityFieldSecurity
+  names: IndexName[]
+  query?: SecurityIndicesPrivilegesQuery
+  allow_restricted_indices?: boolean
 }
 
 export type SecurityTemplateFormat = 'string' | 'json'
@@ -17905,6 +17921,23 @@ export interface SecurityCreateApiKeyRequest extends RequestBase {
 export interface SecurityCreateApiKeyResponse {
   api_key: string
   expiration?: long
+  id: Id
+  name: Name
+  encoded: string
+}
+
+export interface SecurityCreateCrossClusterApiKeyRequest extends RequestBase {
+  body?: {
+    access: SecurityAccess
+    expiration?: Duration
+    metadata?: Metadata
+    name: Name
+  }
+}
+
+export interface SecurityCreateCrossClusterApiKeyResponse {
+  api_key: string
+  expiration?: DurationValue<UnitMillis>
   id: Id
   name: Name
   encoded: string
@@ -18624,6 +18657,19 @@ export interface SecurityUpdateApiKeyRequest extends RequestBase {
 }
 
 export interface SecurityUpdateApiKeyResponse {
+  updated: boolean
+}
+
+export interface SecurityUpdateCrossClusterApiKeyRequest extends RequestBase {
+  id: Id
+  body?: {
+    access: SecurityAccess
+    expiration?: Duration
+    metadata?: Metadata
+  }
+}
+
+export interface SecurityUpdateCrossClusterApiKeyResponse {
   updated: boolean
 }
 
