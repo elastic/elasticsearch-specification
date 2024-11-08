@@ -11222,7 +11222,7 @@
           }
         }
       ],
-      "specLocation": "async_search/submit/AsyncSearchSubmitRequest.ts#L55-L289"
+      "specLocation": "async_search/submit/AsyncSearchSubmitRequest.ts#L54-L288"
     },
     {
       "body": {
@@ -36998,7 +36998,7 @@
           }
         }
       ],
-      "specLocation": "_global/search/SearchRequest.ts#L54-L526"
+      "specLocation": "_global/search/SearchRequest.ts#L53-L525"
     },
     {
       "body": {
