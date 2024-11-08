@@ -3820,6 +3820,9 @@
         "namespace": "indices.put_data_lifecycle"
       },
       "requestBodyRequired": false,
+      "requestMediaType": [
+        "application/json"
+      ],
       "response": {
         "name": "Response",
         "namespace": "indices.put_data_lifecycle"
