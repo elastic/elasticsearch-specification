@@ -187,7 +187,6 @@
     },
     "cat.indices": {
       "request": [
-        "Request: query parameter 'local' does not exist in the json spec",
         "Request: missing json spec query parameter 'format'",
         "Request: missing json spec query parameter 'master_timeout'",
         "Request: missing json spec query parameter 'h'",

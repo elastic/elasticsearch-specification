@@ -7410,7 +7410,6 @@ export interface CatIndicesRequest extends CatCatRequestBase {
   include_unloaded_segments?: boolean
   pri?: boolean
   time?: TimeUnit
-  local?: boolean
 }
 
 export type CatIndicesResponse = CatIndicesIndicesRecord[]
