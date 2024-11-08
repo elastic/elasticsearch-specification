@@ -3703,6 +3703,9 @@
         "namespace": "indices.put_data_lifecycle"
       },
       "requestBodyRequired": true,
+      "requestMediaType": [
+        "application/json"
+      ],
       "response": {
         "name": "Response",
         "namespace": "indices.put_data_lifecycle"
@@ -10877,17 +10880,6 @@
           }
         },
         {
-          "name": "min_compatible_shard_node",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "VersionString",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
           "description": "Specify the node or shard the operation should be performed on (default: random)",
           "name": "preference",
           "required": false,
@@ -11230,7 +11222,7 @@
           }
         }
       ],
-      "specLocation": "async_search/submit/AsyncSearchSubmitRequest.ts#L55-L290"
+      "specLocation": "async_search/submit/AsyncSearchSubmitRequest.ts#L54-L288"
     },
     {
       "body": {
@@ -36650,18 +36642,6 @@
           }
         },
         {
-          "description": "The minimum version of the node that can handle the request\nAny handling node with a lower version will fail the request.",
-          "name": "min_compatible_shard_node",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "VersionString",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
           "description": "Nodes and shards used for the search.\nBy default, Elasticsearch selects from eligible nodes and shards using adaptive replica selection, accounting for allocation awareness. Valid values are:\n`_only_local` to run the search only on shards on the local node;\n`_local` to, if possible, run the search on shards on the local node, or if not, select shards using the default method;\n`_only_nodes:<node-id>,<node-id>` to run the search on only the specified nodes IDs, where, if suitable shards exist on more than one selected node, use shards on those nodes using the default method, or if none of the specified nodes are available, select shards from any available node using the default method;\n`_prefer_nodes:<node-id>,<node-id>` to if possible, run the search on the specified nodes IDs, or if not, select shards using the default method;\n`_shards:<shard>,<shard>` to run the search only on the specified shards;\n`<custom-string>` (any string that does not start with `_`) to route searches with the same `<custom-string>` to the same shards in the same order.",
           "name": "preference",
           "required": false,
@@ -37018,7 +36998,7 @@
           }
         }
       ],
-      "specLocation": "_global/search/SearchRequest.ts#L54-L531"
+      "specLocation": "_global/search/SearchRequest.ts#L53-L525"
     },
     {
       "body": {

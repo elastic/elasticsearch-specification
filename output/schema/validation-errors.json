@@ -58,7 +58,6 @@
     "async_search.submit": {
       "request": [
         "Request: query parameter 'ccs_minimize_roundtrips' does not exist in the json spec",
-        "Request: query parameter 'min_compatible_shard_node' does not exist in the json spec",
         "Request: query parameter 'pre_filter_shard_size' does not exist in the json spec",
         "Request: query parameter 'scroll' does not exist in the json spec",
         "Request: query parameter 'rest_total_hits_as_int' does not exist in the json spec",
@@ -709,7 +708,6 @@
         "Request: query parameter 'ignore_unavailable' does not exist in the json spec",
         "Request: query parameter 'lenient' does not exist in the json spec",
         "Request: query parameter 'max_concurrent_shard_requests' does not exist in the json spec",
-        "Request: query parameter 'min_compatible_shard_node' does not exist in the json spec",
         "Request: query parameter 'preference' does not exist in the json spec",
         "Request: query parameter 'pre_filter_shard_size' does not exist in the json spec",
         "Request: query parameter 'request_cache' does not exist in the json spec",

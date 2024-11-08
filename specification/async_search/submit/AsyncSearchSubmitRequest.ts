@@ -39,8 +39,7 @@ import {
   Indices,
   Routing,
   SearchType,
-  SuggestMode,
-  VersionString
+  SuggestMode
 } from '@_types/common'
 import { KnnSearch } from '@_types/Knn'
 import { RuntimeFields } from '@_types/mapping/RuntimeFields'
@@ -114,7 +113,6 @@ export interface Request extends RequestBase {
     ignore_unavailable?: boolean
     lenient?: boolean
     max_concurrent_shard_requests?: long
-    min_compatible_shard_node?: VersionString
     preference?: string
     /**
      * The default value cannot be changed, which enforces the execution of a pre-filter roundtrip to retrieve statistics from each shard so that the ones that surely don’t hold any document matching the query get skipped.

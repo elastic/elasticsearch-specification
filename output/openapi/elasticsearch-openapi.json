@@ -209,9 +209,6 @@
             "$ref": "#/components/parameters/async_search.submit#max_concurrent_shard_requests"
           },
           {
-            "$ref": "#/components/parameters/async_search.submit#min_compatible_shard_node"
-          },
-          {
             "$ref": "#/components/parameters/async_search.submit#preference"
           },
           {
@@ -369,9 +366,6 @@
           },
           {
             "$ref": "#/components/parameters/async_search.submit#max_concurrent_shard_requests"
-          },
-          {
-            "$ref": "#/components/parameters/async_search.submit#min_compatible_shard_node"
           },
           {
             "$ref": "#/components/parameters/async_search.submit#preference"
@@ -8902,9 +8896,6 @@
             "$ref": "#/components/parameters/fleet.search#max_concurrent_shard_requests"
           },
           {
-            "$ref": "#/components/parameters/fleet.search#min_compatible_shard_node"
-          },
-          {
             "$ref": "#/components/parameters/fleet.search#preference"
           },
           {
@@ -9054,9 +9045,6 @@
           },
           {
             "$ref": "#/components/parameters/fleet.search#max_concurrent_shard_requests"
-          },
-          {
-            "$ref": "#/components/parameters/fleet.search#min_compatible_shard_node"
           },
           {
             "$ref": "#/components/parameters/fleet.search#preference"
@@ -25509,9 +25497,6 @@
             "$ref": "#/components/parameters/search#max_concurrent_shard_requests"
           },
           {
-            "$ref": "#/components/parameters/search#min_compatible_shard_node"
-          },
-          {
             "$ref": "#/components/parameters/search#preference"
           },
           {
@@ -25660,9 +25645,6 @@
           },
           {
             "$ref": "#/components/parameters/search#max_concurrent_shard_requests"
-          },
-          {
-            "$ref": "#/components/parameters/search#min_compatible_shard_node"
           },
           {
             "$ref": "#/components/parameters/search#preference"
@@ -25820,9 +25802,6 @@
             "$ref": "#/components/parameters/search#max_concurrent_shard_requests"
           },
           {
-            "$ref": "#/components/parameters/search#min_compatible_shard_node"
-          },
-          {
             "$ref": "#/components/parameters/search#preference"
           },
           {
@@ -25974,9 +25953,6 @@
           },
           {
             "$ref": "#/components/parameters/search#max_concurrent_shard_requests"
-          },
-          {
-            "$ref": "#/components/parameters/search#min_compatible_shard_node"
           },
           {
             "$ref": "#/components/parameters/search#preference"
@@ -41396,9 +41372,6 @@
           "none"
         ]
       },
-      "_types:VersionString": {
-        "type": "string"
-      },
       "_types:SearchType": {
         "type": "string",
         "enum": [
@@ -50580,6 +50553,9 @@
             "type": "string"
           }
         }
+      },
+      "_types:VersionString": {
+        "type": "string"
       },
       "cat._types:CatDatafeedColumns": {
         "oneOf": [
@@ -92732,15 +92708,6 @@
         },
         "style": "form"
       },
-      "async_search.submit#min_compatible_shard_node": {
-        "in": "query",
-        "name": "min_compatible_shard_node",
-        "deprecated": false,
-        "schema": {
-          "$ref": "#/components/schemas/_types:VersionString"
-        },
-        "style": "form"
-      },
       "async_search.submit#preference": {
         "in": "query",
         "name": "preference",
@@ -95037,15 +95004,6 @@
         "deprecated": false,
         "schema": {
           "type": "number"
-        },
-        "style": "form"
-      },
-      "fleet.search#min_compatible_shard_node": {
-        "in": "query",
-        "name": "min_compatible_shard_node",
-        "deprecated": false,
-        "schema": {
-          "$ref": "#/components/schemas/_types:VersionString"
         },
         "style": "form"
       },
@@ -99904,16 +99862,6 @@
         "deprecated": false,
         "schema": {
           "type": "number"
-        },
-        "style": "form"
-      },
-      "search#min_compatible_shard_node": {
-        "in": "query",
-        "name": "min_compatible_shard_node",
-        "description": "The minimum version of the node that can handle the request\nAny handling node with a lower version will fail the request.",
-        "deprecated": false,
-        "schema": {
-          "$ref": "#/components/schemas/_types:VersionString"
         },
         "style": "form"
       },
