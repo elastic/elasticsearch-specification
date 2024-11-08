@@ -22,7 +22,7 @@ import { Ids } from '@_types/common'
 import { Duration } from '@_types/Time'
 
 /**
- * Deletes a geoip database configuration.
+ * Deletes an IP location database configuration.
  * @rest_spec_name ingest.delete_ip_location_database
  * @availability stack since=8.15.0 stability=stable
  * @availability serverless visibility=private
