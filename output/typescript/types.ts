@@ -6981,6 +6981,7 @@ export interface CatAllocationAllocationRecord {
 export interface CatAllocationRequest extends CatCatRequestBase {
   node_id?: NodeIds
   bytes?: Bytes
+  local?: boolean
 }
 
 export type CatAllocationResponse = CatAllocationAllocationRecord[]
@@ -6997,6 +6998,7 @@ export interface CatComponentTemplatesComponentTemplate {
 
 export interface CatComponentTemplatesRequest extends CatCatRequestBase {
   name?: string
+  local?: boolean
 }
 
 export type CatComponentTemplatesResponse = CatComponentTemplatesComponentTemplate[]
@@ -7422,6 +7424,7 @@ export interface CatMasterMasterRecord {
 }
 
 export interface CatMasterRequest extends CatCatRequestBase {
+  local?: boolean
 }
 
 export type CatMasterResponse = CatMasterMasterRecord[]
@@ -7789,6 +7792,7 @@ export interface CatNodeattrsNodeAttributesRecord {
 }
 
 export interface CatNodeattrsRequest extends CatCatRequestBase {
+  local?: boolean
 }
 
 export type CatNodeattrsResponse = CatNodeattrsNodeAttributesRecord[]
@@ -8083,6 +8087,7 @@ export interface CatPendingTasksPendingTasksRecord {
 }
 
 export interface CatPendingTasksRequest extends CatCatRequestBase {
+  local?: boolean
 }
 
 export type CatPendingTasksResponse = CatPendingTasksPendingTasksRecord[]
@@ -8102,6 +8107,7 @@ export interface CatPluginsPluginsRecord {
 }
 
 export interface CatPluginsRequest extends CatCatRequestBase {
+  local?: boolean
 }
 
 export type CatPluginsResponse = CatPluginsPluginsRecord[]
@@ -8188,6 +8194,7 @@ export type CatRepositoriesResponse = CatRepositoriesRepositoriesRecord[]
 export interface CatSegmentsRequest extends CatCatRequestBase {
   index?: Indices
   bytes?: Bytes
+  local?: boolean
 }
 
 export type CatSegmentsResponse = CatSegmentsSegmentsRecord[]
@@ -8543,6 +8550,7 @@ export interface CatTasksTasksRecord {
 
 export interface CatTemplatesRequest extends CatCatRequestBase {
   name?: Name
+  local?: boolean
 }
 
 export type CatTemplatesResponse = CatTemplatesTemplatesRecord[]
@@ -8564,6 +8572,7 @@ export interface CatTemplatesTemplatesRecord {
 export interface CatThreadPoolRequest extends CatCatRequestBase {
   thread_pool_patterns?: Names
   time?: TimeUnit
+  local?: boolean
 }
 
 export type CatThreadPoolResponse = CatThreadPoolThreadPoolRecord[]
@@ -21135,7 +21144,6 @@ export interface SpecUtilsCommonCatQueryParameters {
   format?: string
   h?: Names
   help?: boolean
-  local?: boolean
   master_timeout?: Duration
   s?: Names
   v?: boolean
