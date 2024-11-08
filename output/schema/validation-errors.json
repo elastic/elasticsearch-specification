@@ -64,7 +64,6 @@
     "cat.allocation": {
       "request": [
         "Request: missing json spec query parameter 'format'",
-        "Request: missing json spec query parameter 'local'",
         "Request: missing json spec query parameter 'master_timeout'",
         "Request: missing json spec query parameter 'h'",
         "Request: missing json spec query parameter 'help'",
@@ -77,7 +76,6 @@
     "cat.component_templates": {
       "request": [
         "Request: missing json spec query parameter 'format'",
-        "Request: missing json spec query parameter 'local'",
         "Request: missing json spec query parameter 'master_timeout'",
         "Request: missing json spec query parameter 'h'",
         "Request: missing json spec query parameter 'help'",
@@ -143,7 +141,6 @@
     "cat.master": {
       "request": [
         "Request: missing json spec query parameter 'format'",
-        "Request: missing json spec query parameter 'local'",
         "Request: missing json spec query parameter 'master_timeout'",
         "Request: missing json spec query parameter 'h'",
         "Request: missing json spec query parameter 'help'",
@@ -201,7 +198,6 @@
     "cat.nodeattrs": {
       "request": [
         "Request: missing json spec query parameter 'format'",
-        "Request: missing json spec query parameter 'local'",
         "Request: missing json spec query parameter 'master_timeout'",
         "Request: missing json spec query parameter 'h'",
         "Request: missing json spec query parameter 'help'",
@@ -227,7 +223,6 @@
     "cat.pending_tasks": {
       "request": [
         "Request: missing json spec query parameter 'format'",
-        "Request: missing json spec query parameter 'local'",
         "Request: missing json spec query parameter 'master_timeout'",
         "Request: missing json spec query parameter 'h'",
         "Request: missing json spec query parameter 'help'",
@@ -241,7 +236,6 @@
     "cat.plugins": {
       "request": [
         "Request: missing json spec query parameter 'format'",
-        "Request: missing json spec query parameter 'local'",
         "Request: missing json spec query parameter 'master_timeout'",
         "Request: missing json spec query parameter 'h'",
         "Request: missing json spec query parameter 'help'",
@@ -280,6 +274,7 @@
     },
     "cat.segments": {
       "request": [
+        "Request: query parameter 'local' does not exist in the json spec",
         "Request: missing json spec query parameter 'format'",
         "Request: missing json spec query parameter 'h'",
         "Request: missing json spec query parameter 'help'",
@@ -332,7 +327,6 @@
     "cat.templates": {
       "request": [
         "Request: missing json spec query parameter 'format'",
-        "Request: missing json spec query parameter 'local'",
         "Request: missing json spec query parameter 'master_timeout'",
         "Request: missing json spec query parameter 'h'",
         "Request: missing json spec query parameter 'help'",
@@ -345,7 +339,6 @@
     "cat.thread_pool": {
       "request": [
         "Request: missing json spec query parameter 'format'",
-        "Request: missing json spec query parameter 'local'",
         "Request: missing json spec query parameter 'master_timeout'",
         "Request: missing json spec query parameter 'h'",
         "Request: missing json spec query parameter 'help'",
