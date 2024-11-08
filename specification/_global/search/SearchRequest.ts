@@ -30,8 +30,7 @@ import {
   Indices,
   Routing,
   SearchType,
-  SuggestMode,
-  VersionString
+  SuggestMode
 } from '@_types/common'
 import { KnnSearch } from '@_types/Knn'
 import { RuntimeFields } from '@_types/mapping/RuntimeFields'
@@ -165,11 +164,6 @@ export interface Request extends RequestBase {
      * @server_default 5
      */
     max_concurrent_shard_requests?: long
-    /**
-     * The minimum version of the node that can handle the request
-     * Any handling node with a lower version will fail the request.
-     */
-    min_compatible_shard_node?: VersionString
     /**
      * Nodes and shards used for the search.
      * By default, Elasticsearch selects from eligible nodes and shards using adaptive replica selection, accounting for allocation awareness. Valid values are:

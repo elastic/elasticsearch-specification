@@ -1185,7 +1185,6 @@ export interface SearchRequest extends RequestBase {
   include_named_queries_score?: boolean
   lenient?: boolean
   max_concurrent_shard_requests?: long
-  min_compatible_shard_node?: VersionString
   preference?: string
   pre_filter_shard_size?: long
   request_cache?: boolean
@@ -6767,7 +6766,6 @@ export interface AsyncSearchSubmitRequest extends RequestBase {
   ignore_unavailable?: boolean
   lenient?: boolean
   max_concurrent_shard_requests?: long
-  min_compatible_shard_node?: VersionString
   preference?: string
   pre_filter_shard_size?: long
   request_cache?: boolean
@@ -10468,7 +10466,6 @@ export interface FleetSearchRequest extends RequestBase {
   ignore_unavailable?: boolean
   lenient?: boolean
   max_concurrent_shard_requests?: long
-  min_compatible_shard_node?: VersionString
   preference?: string
   pre_filter_shard_size?: long
   request_cache?: boolean
