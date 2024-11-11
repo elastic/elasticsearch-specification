@@ -33042,7 +33042,7 @@
           },
           {
             "in": "query",
-            "name": "node_id",
+            "name": "nodes",
             "description": "Comma-separated list of node IDs or names used to limit returned information.",
             "deprecated": false,
             "schema": {
