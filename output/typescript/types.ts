@@ -19562,7 +19562,7 @@ export interface TasksListRequest extends RequestBase {
   actions?: string | string[]
   detailed?: boolean
   group_by?: TasksGroupBy
-  nodes?: string[]
+  nodes?: NodeIds
   parent_task_id?: Id
   master_timeout?: Duration
   timeout?: Duration

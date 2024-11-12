@@ -33046,10 +33046,7 @@
             "description": "Comma-separated list of node IDs or names used to limit returned information.",
             "deprecated": false,
             "schema": {
-              "type": "array",
-              "items": {
-                "type": "string"
-              }
+              "$ref": "#/components/schemas/_types:NodeIds"
             },
             "style": "form"
           },

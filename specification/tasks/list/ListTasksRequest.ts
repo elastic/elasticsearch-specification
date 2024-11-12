@@ -19,7 +19,7 @@
 
 import { GroupBy } from '@tasks/_types/GroupBy'
 import { RequestBase } from '@_types/Base'
-import { Id } from '@_types/common'
+import { Id, NodeIds } from '@_types/common'
 import { Duration } from '@_types/Time'
 
 /**
@@ -48,7 +48,7 @@ export interface Request extends RequestBase {
     /**
      * Comma-separated list of node IDs or names used to limit returned information.
      */
-    nodes?: string[]
+    nodes?: NodeIds
     /**
      * Parent task ID used to limit returned information. To return all tasks, omit this parameter or use a value of `-1`.
      */
