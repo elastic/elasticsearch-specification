@@ -209,9 +209,6 @@
             "$ref": "#/components/parameters/async_search.submit#max_concurrent_shard_requests"
           },
           {
-            "$ref": "#/components/parameters/async_search.submit#min_compatible_shard_node"
-          },
-          {
             "$ref": "#/components/parameters/async_search.submit#preference"
           },
           {
@@ -369,9 +366,6 @@
           },
           {
             "$ref": "#/components/parameters/async_search.submit#max_concurrent_shard_requests"
-          },
-          {
-            "$ref": "#/components/parameters/async_search.submit#min_compatible_shard_node"
           },
           {
             "$ref": "#/components/parameters/async_search.submit#preference"
@@ -8902,9 +8896,6 @@
             "$ref": "#/components/parameters/fleet.search#max_concurrent_shard_requests"
           },
           {
-            "$ref": "#/components/parameters/fleet.search#min_compatible_shard_node"
-          },
-          {
             "$ref": "#/components/parameters/fleet.search#preference"
           },
           {
@@ -9054,9 +9045,6 @@
           },
           {
             "$ref": "#/components/parameters/fleet.search#max_concurrent_shard_requests"
-          },
-          {
-            "$ref": "#/components/parameters/fleet.search#min_compatible_shard_node"
           },
           {
             "$ref": "#/components/parameters/fleet.search#preference"
@@ -25338,9 +25326,6 @@
             "$ref": "#/components/parameters/search#max_concurrent_shard_requests"
           },
           {
-            "$ref": "#/components/parameters/search#min_compatible_shard_node"
-          },
-          {
             "$ref": "#/components/parameters/search#preference"
           },
           {
@@ -25489,9 +25474,6 @@
           },
           {
             "$ref": "#/components/parameters/search#max_concurrent_shard_requests"
-          },
-          {
-            "$ref": "#/components/parameters/search#min_compatible_shard_node"
           },
           {
             "$ref": "#/components/parameters/search#preference"
@@ -25649,9 +25631,6 @@
             "$ref": "#/components/parameters/search#max_concurrent_shard_requests"
           },
           {
-            "$ref": "#/components/parameters/search#min_compatible_shard_node"
-          },
-          {
             "$ref": "#/components/parameters/search#preference"
           },
           {
@@ -25803,9 +25782,6 @@
           },
           {
             "$ref": "#/components/parameters/search#max_concurrent_shard_requests"
-          },
-          {
-            "$ref": "#/components/parameters/search#min_compatible_shard_node"
           },
           {
             "$ref": "#/components/parameters/search#preference"
@@ -33066,14 +33042,11 @@
           },
           {
             "in": "query",
-            "name": "node_id",
+            "name": "nodes",
             "description": "Comma-separated list of node IDs or names used to limit returned information.",
             "deprecated": false,
             "schema": {
-              "type": "array",
-              "items": {
-                "type": "string"
-              }
+              "$ref": "#/components/schemas/_types:NodeIds"
             },
             "style": "form"
           },
@@ -41224,9 +41197,6 @@
           "hidden",
           "none"
         ]
-      },
-      "_types:VersionString": {
-        "type": "string"
       },
       "_types:SearchType": {
         "type": "string",
@@ -50409,6 +50379,9 @@
             "type": "string"
           }
         }
+      },
+      "_types:VersionString": {
+        "type": "string"
       },
       "cat._types:CatDatafeedColumns": {
         "oneOf": [
@@ -69849,6 +69822,9 @@
           "foreach": {
             "$ref": "#/components/schemas/ingest._types:ForeachProcessor"
           },
+          "ip_location": {
+            "$ref": "#/components/schemas/ingest._types:IpLocationProcessor"
+          },
           "geo_grid": {
             "$ref": "#/components/schemas/ingest._types:GeoGridProcessor"
           },
@@ -70535,6 +70511,50 @@
             "required": [
               "field",
               "processor"
+            ]
+          }
+        ]
+      },
+      "ingest._types:IpLocationProcessor": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/ingest._types:ProcessorBase"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "database_file": {
+                "description": "The database filename referring to a database the module ships with (GeoLite2-City.mmdb, GeoLite2-Country.mmdb, or GeoLite2-ASN.mmdb) or a custom database in the ingest-geoip config directory.",
+                "type": "string"
+              },
+              "field": {
+                "$ref": "#/components/schemas/_types:Field"
+              },
+              "first_only": {
+                "description": "If `true`, only the first found IP location data will be returned, even if the field contains an array.",
+                "type": "boolean"
+              },
+              "ignore_missing": {
+                "description": "If `true` and `field` does not exist, the processor quietly exits without modifying the document.",
+                "type": "boolean"
+              },
+              "properties": {
+                "description": "Controls what properties are added to the `target_field` based on the IP location lookup.",
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "target_field": {
+                "$ref": "#/components/schemas/_types:Field"
+              },
+              "download_database_on_pipeline_creation": {
+                "description": "If `true` (and if `ingest.geoip.downloader.eager.download` is `false`), the missing database is downloaded when the pipeline is created.\nElse, the download is triggered by when the pipeline is used as the `default_pipeline` or `final_pipeline` in an index.",
+                "type": "boolean"
+              }
+            },
+            "required": [
+              "field"
             ]
           }
         ]
@@ -92517,15 +92537,6 @@
         },
         "style": "form"
       },
-      "async_search.submit#min_compatible_shard_node": {
-        "in": "query",
-        "name": "min_compatible_shard_node",
-        "deprecated": false,
-        "schema": {
-          "$ref": "#/components/schemas/_types:VersionString"
-        },
-        "style": "form"
-      },
       "async_search.submit#preference": {
         "in": "query",
         "name": "preference",
@@ -94822,15 +94833,6 @@
         "deprecated": false,
         "schema": {
           "type": "number"
-        },
-        "style": "form"
-      },
-      "fleet.search#min_compatible_shard_node": {
-        "in": "query",
-        "name": "min_compatible_shard_node",
-        "deprecated": false,
-        "schema": {
-          "$ref": "#/components/schemas/_types:VersionString"
         },
         "style": "form"
       },
@@ -99668,16 +99670,6 @@
         "deprecated": false,
         "schema": {
           "type": "number"
-        },
-        "style": "form"
-      },
-      "search#min_compatible_shard_node": {
-        "in": "query",
-        "name": "min_compatible_shard_node",
-        "description": "The minimum version of the node that can handle the request\nAny handling node with a lower version will fail the request.",
-        "deprecated": false,
-        "schema": {
-          "$ref": "#/components/schemas/_types:VersionString"
         },
         "style": "form"
       },

@@ -1185,7 +1185,6 @@ export interface SearchRequest extends RequestBase {
   include_named_queries_score?: boolean
   lenient?: boolean
   max_concurrent_shard_requests?: long
-  min_compatible_shard_node?: VersionString
   preference?: string
   pre_filter_shard_size?: long
   request_cache?: boolean
@@ -6767,7 +6766,6 @@ export interface AsyncSearchSubmitRequest extends RequestBase {
   ignore_unavailable?: boolean
   lenient?: boolean
   max_concurrent_shard_requests?: long
-  min_compatible_shard_node?: VersionString
   preference?: string
   pre_filter_shard_size?: long
   request_cache?: boolean
@@ -10468,7 +10466,6 @@ export interface FleetSearchRequest extends RequestBase {
   ignore_unavailable?: boolean
   lenient?: boolean
   max_concurrent_shard_requests?: long
-  min_compatible_shard_node?: VersionString
   preference?: string
   pre_filter_shard_size?: long
   request_cache?: boolean
@@ -13000,6 +12997,16 @@ export interface IngestInferenceProcessor extends IngestProcessorBase {
   inference_config?: IngestInferenceConfig
 }
 
+export interface IngestIpLocationProcessor extends IngestProcessorBase {
+  database_file?: string
+  field: Field
+  first_only?: boolean
+  ignore_missing?: boolean
+  properties?: string[]
+  target_field?: Field
+  download_database_on_pipeline_creation?: boolean
+}
+
 export interface IngestJoinProcessor extends IngestProcessorBase {
   field: Field
   separator: string
@@ -13094,6 +13101,7 @@ export interface IngestProcessorContainer {
   fail?: IngestFailProcessor
   fingerprint?: IngestFingerprintProcessor
   foreach?: IngestForeachProcessor
+  ip_location?: IngestIpLocationProcessor
   geo_grid?: IngestGeoGridProcessor
   geoip?: IngestGeoIpProcessor
   grok?: IngestGrokProcessor
@@ -19569,7 +19577,7 @@ export interface TasksListRequest extends RequestBase {
   actions?: string | string[]
   detailed?: boolean
   group_by?: TasksGroupBy
-  node_id?: string[]
+  nodes?: NodeIds
   parent_task_id?: Id
   master_timeout?: Duration
   timeout?: Duration
