@@ -25,7 +25,7 @@ import {
   ApplicationPrivileges,
   ClusterPrivilege,
   GlobalPrivilege,
-  IndicesPrivileges
+  IndicesPrivileges, RemoteClusterPrivileges, RemoteIndicesPrivileges
 } from './Privileges'
 
 export class RoleDescriptor {
@@ -38,6 +38,19 @@ export class RoleDescriptor {
    * @aliases index
    */
   indices?: IndicesPrivileges[]
+
+  /**
+   * A list of indices permissions for remote clusters.
+   * @availability stack since=8.14.0
+   */
+  remote_indices?: RemoteIndicesPrivileges[]
+
+  /**
+   * A list of cluster permissions for remote clusters. Note - this is limited a subset of the cluster permissions.
+   * @availability stack since=8.15.0
+   */
+  remote_cluster?: RemoteClusterPrivileges[]
+
   /**
    * An object defining global privileges. A global privilege is a form of cluster privilege that is request-aware. Support for global privileges is currently limited to the management of application privileges.
    * @availability stack
@@ -73,6 +86,17 @@ export class RoleDescriptorRead implements OverloadOf<RoleDescriptor> {
    * @aliases index
    */
   indices: IndicesPrivileges[]
+  /**
+   * A list of indices permissions for remote clusters.
+   * @availability stack since=8.14.0
+   */
+  remote_indices?: RemoteIndicesPrivileges[]
+
+  /**
+   * A list of cluster permissions for remote clusters. Note - this is limited a subset of the cluster permissions.
+   * @availability stack since=8.15.0
+   */
+  remote_cluster?: RemoteClusterPrivileges[]
   /**
    * An object defining global privileges. A global privilege is a form of cluster privilege that is request-aware. Support for global privileges is currently limited to the management of application privileges.
    */

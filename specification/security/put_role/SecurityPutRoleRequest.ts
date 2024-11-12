@@ -20,7 +20,7 @@
 import {
   ApplicationPrivileges,
   ClusterPrivilege,
-  IndicesPrivileges,
+  IndicesPrivileges, RemoteClusterPrivileges,
   RemoteIndicesPrivileges
 } from '@security/_types/Privileges'
 import { Dictionary } from '@spec_utils/Dictionary'
@@ -74,6 +74,12 @@ export interface Request extends RequestBase {
      *
      */
     remote_indices?: RemoteIndicesPrivileges[]
+    /**
+     * A list of remote cluster permissions entries.
+     * @availability stack since=8.15.0
+     *
+     */
+    remote_cluster?: RemoteClusterPrivileges[]
     /**
      * Optional metadata. Within the metadata object, keys that begin with an underscore (`_`) are reserved for system use.
      */

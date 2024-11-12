@@ -18,7 +18,8 @@
  */
 
 import { IndexName } from '@_types/common'
+import {ClusterPrivilege, ClusterPrivilegeForRemote} from "@security/_types/Privileges";
 
 export class Response {
-  body: { cluster: string[]; index: IndexName[] }
+  body: { cluster: ClusterPrivilege[]; index: IndexName[]; remote_cluster: ClusterPrivilegeForRemote[] }
 }

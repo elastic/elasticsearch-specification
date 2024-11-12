@@ -154,6 +154,10 @@ export enum ClusterPrivilege {
   /**
    * @availability stack
    */
+  monitor_stats,
+  /**
+   * @availability stack
+   */
   monitor_text_structure,
   monitor_transform,
   /**
@@ -194,6 +198,21 @@ export enum ClusterPrivilege {
   write_fleet_secrets
 }
 
+/**
+ * The subset of cluster level privileges that can be defined for remote clusters.
+ * @availability stack
+ */
+export enum ClusterPrivilegeForRemote {
+  /**
+   * @availability stack since=8.14.0
+   */
+  monitor_enrich,
+  /**
+   * @availability stack since=8.17.0
+   */
+  monitor_stats
+}
+
 // Keep in sync with RemoteIndicesPrivileges
 export class IndicesPrivileges {
   /**
@@ -221,6 +240,9 @@ export class IndicesPrivileges {
   allow_restricted_indices?: boolean
 }
 
+/**
+ * The subset of index level privileges that can be defined for remote clusters.
+ */
 // Keep in sync with IndicesPrivileges
 export class RemoteIndicesPrivileges {
   /**
@@ -250,6 +272,20 @@ export class RemoteIndicesPrivileges {
    * @availability stack
    */
   allow_restricted_indices?: boolean
+}
+
+/**
+ * The subset of cluster level privileges that can be defined for remote clusters.
+ */
+export class RemoteClusterPrivileges {
+  /**
+   *  A list of cluster aliases to which the permissions in this entry apply.
+   */
+  clusters: Names
+  /**
+   * The cluster level privileges that owners of the role have on the remote cluster.
+   */
+  privileges: ClusterPrivilegeForRemote[]
 }
 
 export class UserIndicesPrivileges {
