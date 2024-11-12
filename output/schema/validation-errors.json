@@ -1190,9 +1190,7 @@
     },
     "tasks.list": {
       "request": [
-        "Request: query parameter 'node_id' does not exist in the json spec",
-        "Request: query parameter 'master_timeout' does not exist in the json spec",
-        "Request: missing json spec query parameter 'nodes'"
+        "Request: query parameter 'master_timeout' does not exist in the json spec"
       ],
       "response": []
     },
