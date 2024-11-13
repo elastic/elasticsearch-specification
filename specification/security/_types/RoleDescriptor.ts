@@ -25,7 +25,9 @@ import {
   ApplicationPrivileges,
   ClusterPrivilege,
   GlobalPrivilege,
-  IndicesPrivileges, RemoteClusterPrivileges, RemoteIndicesPrivileges
+  IndicesPrivileges,
+  RemoteClusterPrivileges,
+  RemoteIndicesPrivileges
 } from './Privileges'
 
 export class RoleDescriptor {

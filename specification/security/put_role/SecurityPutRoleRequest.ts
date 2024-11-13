@@ -20,7 +20,8 @@
 import {
   ApplicationPrivileges,
   ClusterPrivilege,
-  IndicesPrivileges, RemoteClusterPrivileges,
+  IndicesPrivileges,
+  RemoteClusterPrivileges,
   RemoteIndicesPrivileges
 } from '@security/_types/Privileges'
 import { Dictionary } from '@spec_utils/Dictionary'

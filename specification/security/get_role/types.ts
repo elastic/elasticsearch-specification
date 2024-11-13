@@ -18,8 +18,11 @@
  */
 
 import {
-  ApplicationPrivileges, ClusterPrivilege,
-  IndicesPrivileges, RemoteClusterPrivileges, RemoteIndicesPrivileges
+  ApplicationPrivileges,
+  ClusterPrivilege,
+  IndicesPrivileges,
+  RemoteClusterPrivileges,
+  RemoteIndicesPrivileges
 } from '@security/_types/Privileges'
 import { RoleTemplate } from '@security/_types/RoleTemplate'
 import { Dictionary } from '@spec_utils/Dictionary'
