@@ -202,7 +202,7 @@ export enum ClusterPrivilege {
  * The subset of cluster level privileges that can be defined for remote clusters.
  * @availability stack
  */
-export enum ClusterPrivilegeForRemote {
+export enum RemoteClusterPrivilege {
   /**
    * @availability stack since=8.14.0
    */
@@ -285,7 +285,7 @@ export class RemoteClusterPrivileges {
   /**
    * The cluster level privileges that owners of the role have on the remote cluster.
    */
-  privileges: ClusterPrivilegeForRemote[]
+  privileges: RemoteClusterPrivilege[]
 }
 
 export class UserIndicesPrivileges {
