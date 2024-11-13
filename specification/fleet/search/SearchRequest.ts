@@ -39,8 +39,7 @@ import {
   IndexName,
   Routing,
   SearchType,
-  SuggestMode,
-  VersionString
+  SuggestMode
 } from '@_types/common'
 import { RuntimeFields } from '@_types/mapping/RuntimeFields'
 import { double, integer, long } from '@_types/Numeric'
@@ -82,7 +81,6 @@ export interface Request extends RequestBase {
     ignore_unavailable?: boolean
     lenient?: boolean
     max_concurrent_shard_requests?: long
-    min_compatible_shard_node?: VersionString
     preference?: string
     pre_filter_shard_size?: long
     request_cache?: boolean
