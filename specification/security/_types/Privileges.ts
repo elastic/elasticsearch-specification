@@ -152,7 +152,7 @@ export enum ClusterPrivilege {
    */
   monitor_snapshot,
   /**
-   * @availability stack
+   * @availability stack since=8.17.0
    */
   monitor_stats,
   /**
