@@ -10428,6 +10428,24 @@ export interface FleetGlobalCheckpointsResponse {
   timed_out: boolean
 }
 
+export interface FleetMsearchFleetMultisearchHeader {
+  allow_no_indices?: boolean
+  expand_wildcards?: ExpandWildcards
+  ignore_unavailable?: boolean
+  index?: Indices
+  preference?: string
+  request_cache?: boolean
+  routing?: Routing
+  search_type?: SearchType
+  ccs_minimize_roundtrips?: boolean
+  allow_partial_search_results?: boolean
+  ignore_throttled?: boolean
+  wait_for_checkpoints?: FleetCheckpoint | FleetCheckpoint[]
+  wait_for_checkpoints_timeout?: Duration
+}
+
+export type FleetMsearchFleetRequestItem = FleetMsearchFleetMultisearchHeader | MsearchMultisearchBody
+
 export interface FleetMsearchRequest extends RequestBase {
   index?: IndexName | IndexAlias
   allow_no_indices?: boolean
@@ -10442,13 +10460,12 @@ export interface FleetMsearchRequest extends RequestBase {
   rest_total_hits_as_int?: boolean
   typed_keys?: boolean
   wait_for_checkpoints?: FleetCheckpoint[]
+  wait_for_checkpoints_timeout?: Duration
   allow_partial_search_results?: boolean
-  body?: MsearchRequestItem[]
+  body?: FleetMsearchFleetRequestItem[]
 }
 
-export interface FleetMsearchResponse<TDocument = unknown> {
-  docs: MsearchResponseItem<TDocument>[]
-}
+export type FleetMsearchResponse<TDocument = unknown> = MsearchMultiSearchResult<TDocument>
 
 export interface FleetSearchRequest extends RequestBase {
   index: IndexName | IndexAlias
@@ -10493,7 +10510,8 @@ export interface FleetSearchRequest extends RequestBase {
   size?: integer
   from?: integer
   sort?: string | string[]
-  wait_for_checkpoints?: FleetCheckpoint[]
+  wait_for_checkpoints?: FleetCheckpoint | FleetCheckpoint[]
+  wait_for_checkpoints_timeout?: Duration
   allow_partial_search_results?: boolean
   body?: {
     aggregations?: Record<string, AggregationsAggregationContainer>

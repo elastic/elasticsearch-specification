@@ -45219,7 +45219,7 @@
         "name": "RequestItem",
         "namespace": "_global.msearch"
       },
-      "specLocation": "_global/msearch/types.ts#L47-L50",
+      "specLocation": "_global/msearch/types.ts#L49-L52",
       "type": {
         "items": [
           {
@@ -45370,7 +45370,7 @@
           }
         }
       ],
-      "specLocation": "_global/msearch/types.ts#L52-L67"
+      "specLocation": "_global/msearch/types.ts#L54-L69"
     },
     {
       "kind": "type_alias",
@@ -45967,7 +45967,7 @@
           }
         }
       ],
-      "specLocation": "_global/msearch/types.ts#L70-L204"
+      "specLocation": "_global/msearch/types.ts#L72-L206"
     },
     {
       "kind": "interface",
@@ -67877,7 +67877,7 @@
         "name": "ResponseItem",
         "namespace": "_global.msearch"
       },
-      "specLocation": "_global/msearch/types.ts#L211-L214",
+      "specLocation": "_global/msearch/types.ts#L213-L216",
       "type": {
         "items": [
           {
@@ -67947,7 +67947,7 @@
           }
         }
       ],
-      "specLocation": "_global/msearch/types.ts#L216-L219"
+      "specLocation": "_global/msearch/types.ts#L218-L221"
     },
     {
       "generics": [
@@ -93247,6 +93247,207 @@
           "namespace": "_types"
         }
       }
+    },
+    {
+      "codegenNames": [
+        "header",
+        "body"
+      ],
+      "kind": "type_alias",
+      "name": {
+        "name": "FleetRequestItem",
+        "namespace": "fleet.msearch"
+      },
+      "specLocation": "fleet/msearch/MultiSearchRequest.ts#L123-L126",
+      "type": {
+        "items": [
+          {
+            "kind": "instance_of",
+            "type": {
+              "name": "FleetMultisearchHeader",
+              "namespace": "fleet.msearch"
+            }
+          },
+          {
+            "kind": "instance_of",
+            "type": {
+              "name": "MultisearchBody",
+              "namespace": "_global.msearch"
+            }
+          }
+        ],
+        "kind": "union_of"
+      }
+    },
+    {
+      "description": "Contains parameters used to limit or change the subsequent search body request.",
+      "kind": "interface",
+      "name": {
+        "name": "FleetMultisearchHeader",
+        "namespace": "fleet.msearch"
+      },
+      "properties": [
+        {
+          "name": "allow_no_indices",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "_builtins"
+            }
+          }
+        },
+        {
+          "name": "expand_wildcards",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "ExpandWildcards",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "ignore_unavailable",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "_builtins"
+            }
+          }
+        },
+        {
+          "name": "index",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Indices",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "preference",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "_builtins"
+            }
+          }
+        },
+        {
+          "name": "request_cache",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "_builtins"
+            }
+          }
+        },
+        {
+          "name": "routing",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Routing",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "search_type",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "SearchType",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "ccs_minimize_roundtrips",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "_builtins"
+            }
+          }
+        },
+        {
+          "name": "allow_partial_search_results",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "_builtins"
+            }
+          }
+        },
+        {
+          "name": "ignore_throttled",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "_builtins"
+            }
+          }
+        },
+        {
+          "description": "A comma separated list of checkpoints. When configured, the search API will only be executed on a shard\nafter the relevant checkpoint has become visible for search. Defaults to an empty list which will cause\nElasticsearch to immediately execute the search.",
+          "name": "wait_for_checkpoints",
+          "required": false,
+          "type": {
+            "items": [
+              {
+                "kind": "instance_of",
+                "type": {
+                  "name": "Checkpoint",
+                  "namespace": "fleet._types"
+                }
+              },
+              {
+                "kind": "array_of",
+                "value": {
+                  "kind": "instance_of",
+                  "type": {
+                    "name": "Checkpoint",
+                    "namespace": "fleet._types"
+                  }
+                }
+              }
+            ],
+            "kind": "union_of"
+          }
+        },
+        {
+          "name": "wait_for_checkpoints_timeout",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Duration",
+              "namespace": "_types"
+            }
+          }
+        }
+      ],
+      "specLocation": "fleet/msearch/MultiSearchRequest.ts#L128-L154"
     },
     {
       "kind": "type_alias",
@@ -136852,7 +137053,7 @@
           }
         }
       ],
-      "specLocation": "_global/msearch/types.ts#L206-L209"
+      "specLocation": "_global/msearch/types.ts#L208-L211"
     },
     {
       "kind": "interface",

@@ -8645,6 +8645,9 @@
             "$ref": "#/components/parameters/fleet.msearch#wait_for_checkpoints"
           },
           {
+            "$ref": "#/components/parameters/fleet.msearch#wait_for_checkpoints_timeout"
+          },
+          {
             "$ref": "#/components/parameters/fleet.msearch#allow_partial_search_results"
           }
         ],
@@ -8701,6 +8704,9 @@
           },
           {
             "$ref": "#/components/parameters/fleet.msearch#wait_for_checkpoints"
+          },
+          {
+            "$ref": "#/components/parameters/fleet.msearch#wait_for_checkpoints_timeout"
           },
           {
             "$ref": "#/components/parameters/fleet.msearch#allow_partial_search_results"
@@ -8766,6 +8772,9 @@
             "$ref": "#/components/parameters/fleet.msearch#wait_for_checkpoints"
           },
           {
+            "$ref": "#/components/parameters/fleet.msearch#wait_for_checkpoints_timeout"
+          },
+          {
             "$ref": "#/components/parameters/fleet.msearch#allow_partial_search_results"
           }
         ],
@@ -8825,6 +8834,9 @@
           },
           {
             "$ref": "#/components/parameters/fleet.msearch#wait_for_checkpoints"
+          },
+          {
+            "$ref": "#/components/parameters/fleet.msearch#wait_for_checkpoints_timeout"
           },
           {
             "$ref": "#/components/parameters/fleet.msearch#allow_partial_search_results"
@@ -8980,6 +8992,9 @@
             "$ref": "#/components/parameters/fleet.search#wait_for_checkpoints"
           },
           {
+            "$ref": "#/components/parameters/fleet.search#wait_for_checkpoints_timeout"
+          },
+          {
             "$ref": "#/components/parameters/fleet.search#allow_partial_search_results"
           }
         ],
@@ -9129,6 +9144,9 @@
           },
           {
             "$ref": "#/components/parameters/fleet.search#wait_for_checkpoints"
+          },
+          {
+            "$ref": "#/components/parameters/fleet.search#wait_for_checkpoints_timeout"
           },
           {
             "$ref": "#/components/parameters/fleet.search#allow_partial_search_results"
@@ -65235,17 +65253,17 @@
       "fleet._types:Checkpoint": {
         "type": "number"
       },
-      "_global.msearch:RequestItem": {
+      "fleet.msearch:FleetRequestItem": {
         "oneOf": [
           {
-            "$ref": "#/components/schemas/_global.msearch:MultisearchHeader"
+            "$ref": "#/components/schemas/fleet.msearch:FleetMultisearchHeader"
           },
           {
             "$ref": "#/components/schemas/_global.msearch:MultisearchBody"
           }
         ]
       },
-      "_global.msearch:MultisearchHeader": {
+      "fleet.msearch:FleetMultisearchHeader": {
         "type": "object",
         "properties": {
           "allow_no_indices": {
@@ -65280,6 +65298,23 @@
           },
           "ignore_throttled": {
             "type": "boolean"
+          },
+          "wait_for_checkpoints": {
+            "description": "A comma separated list of checkpoints. When configured, the search API will only be executed on a shard\nafter the relevant checkpoint has become visible for search. Defaults to an empty list which will cause\nElasticsearch to immediately execute the search.",
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/fleet._types:Checkpoint"
+              },
+              {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/fleet._types:Checkpoint"
+                }
+              }
+            ]
+          },
+          "wait_for_checkpoints_timeout": {
+            "$ref": "#/components/schemas/_types:Duration"
           }
         }
       },
@@ -65443,6 +65478,24 @@
             "$ref": "#/components/schemas/_global.search._types:Suggester"
           }
         }
+      },
+      "_global.msearch:MultiSearchResult": {
+        "type": "object",
+        "properties": {
+          "took": {
+            "type": "number"
+          },
+          "responses": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/_global.msearch:ResponseItem"
+            }
+          }
+        },
+        "required": [
+          "took",
+          "responses"
+        ]
       },
       "_global.msearch:ResponseItem": {
         "oneOf": [
@@ -77232,23 +77285,53 @@
           "model_memory_limit"
         ]
       },
-      "_global.msearch:MultiSearchResult": {
+      "_global.msearch:RequestItem": {
+        "oneOf": [
+          {
+            "$ref": "#/components/schemas/_global.msearch:MultisearchHeader"
+          },
+          {
+            "$ref": "#/components/schemas/_global.msearch:MultisearchBody"
+          }
+        ]
+      },
+      "_global.msearch:MultisearchHeader": {
         "type": "object",
         "properties": {
-          "took": {
-            "type": "number"
+          "allow_no_indices": {
+            "type": "boolean"
           },
-          "responses": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/_global.msearch:ResponseItem"
-            }
+          "expand_wildcards": {
+            "$ref": "#/components/schemas/_types:ExpandWildcards"
+          },
+          "ignore_unavailable": {
+            "type": "boolean"
+          },
+          "index": {
+            "$ref": "#/components/schemas/_types:Indices"
+          },
+          "preference": {
+            "type": "string"
+          },
+          "request_cache": {
+            "type": "boolean"
+          },
+          "routing": {
+            "$ref": "#/components/schemas/_types:Routing"
+          },
+          "search_type": {
+            "$ref": "#/components/schemas/_types:SearchType"
+          },
+          "ccs_minimize_roundtrips": {
+            "type": "boolean"
+          },
+          "allow_partial_search_results": {
+            "type": "boolean"
+          },
+          "ignore_throttled": {
+            "type": "boolean"
           }
-        },
-        "required": [
-          "took",
-          "responses"
-        ]
+        }
       },
       "_global.msearch_template:RequestItem": {
         "oneOf": [
@@ -89367,18 +89450,7 @@
         "content": {
           "application/json": {
             "schema": {
-              "type": "object",
-              "properties": {
-                "docs": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/_global.msearch:ResponseItem"
-                  }
-                }
-              },
-              "required": [
-                "docs"
-              ]
+              "$ref": "#/components/schemas/_global.msearch:MultiSearchResult"
             }
           }
         }
@@ -94682,6 +94754,15 @@
         },
         "style": "form"
       },
+      "fleet.msearch#wait_for_checkpoints_timeout": {
+        "in": "query",
+        "name": "wait_for_checkpoints_timeout",
+        "deprecated": false,
+        "schema": {
+          "$ref": "#/components/schemas/_types:Duration"
+        },
+        "style": "form"
+      },
       "fleet.msearch#allow_partial_search_results": {
         "in": "query",
         "name": "allow_partial_search_results",
@@ -95100,10 +95181,27 @@
         "description": "A comma separated list of checkpoints. When configured, the search API will only be executed on a shard\nafter the relevant checkpoint has become visible for search. Defaults to an empty list which will cause\nElasticsearch to immediately execute the search.",
         "deprecated": false,
         "schema": {
-          "type": "array",
-          "items": {
-            "$ref": "#/components/schemas/fleet._types:Checkpoint"
-          }
+          "oneOf": [
+            {
+              "$ref": "#/components/schemas/fleet._types:Checkpoint"
+            },
+            {
+              "type": "array",
+              "items": {
+                "$ref": "#/components/schemas/fleet._types:Checkpoint"
+              }
+            }
+          ]
+        },
+        "style": "form"
+      },
+      "fleet.search#wait_for_checkpoints_timeout": {
+        "in": "query",
+        "name": "wait_for_checkpoints_timeout",
+        "description": "Explicit wait_for_checkpoints timeout",
+        "deprecated": false,
+        "schema": {
+          "$ref": "#/components/schemas/_types:Duration"
         },
         "style": "form"
       },
@@ -101979,7 +102077,7 @@
             "schema": {
               "type": "array",
               "items": {
-                "$ref": "#/components/schemas/_global.msearch:RequestItem"
+                "$ref": "#/components/schemas/fleet.msearch:FleetRequestItem"
               }
             }
           }

@@ -680,6 +680,7 @@
         "Request: query parameter 'rest_total_hits_as_int' does not exist in the json spec",
         "Request: query parameter 'typed_keys' does not exist in the json spec",
         "Request: query parameter 'wait_for_checkpoints' does not exist in the json spec",
+        "Request: query parameter 'wait_for_checkpoints_timeout' does not exist in the json spec",
         "Request: query parameter 'allow_partial_search_results' does not exist in the json spec"
       ],
       "response": [
@@ -734,8 +735,7 @@
         "Request: query parameter 'q' does not exist in the json spec",
         "Request: query parameter 'size' does not exist in the json spec",
         "Request: query parameter 'from' does not exist in the json spec",
-        "Request: query parameter 'sort' does not exist in the json spec",
-        "Request: missing json spec query parameter 'wait_for_checkpoints_timeout'"
+        "Request: query parameter 'sort' does not exist in the json spec"
       ],
       "response": []
     },

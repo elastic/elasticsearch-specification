@@ -17,15 +17,18 @@
  * under the License.
  */
 
-import { RequestItem } from '@global/msearch/types'
+import { MultisearchBody } from '@global/msearch/types'
 import { RequestBase } from '@_types/Base'
 import {
   ExpandWildcards,
   IndexAlias,
   IndexName,
+  Indices,
+  Routing,
   SearchType
 } from '@_types/common'
 import { long } from '@_types/Numeric'
+import { Duration } from '@_types/Time'
 import { Checkpoint } from '../_types/Checkpoints'
 
 /**
@@ -102,6 +105,10 @@ export interface Request extends RequestBase {
      * @server_default []
      */
     wait_for_checkpoints?: Checkpoint[]
+    /*
+     * @server_default 30s
+     */
+    wait_for_checkpoints_timeout?: Duration
     /**
      * If true, returns partial results if there are shard request timeouts or [shard failures](https://www.elastic.co/guide/en/elasticsearch/reference/current/docs-replication.html#shard-failures). If false, returns
      * an error with no partial results. Defaults to the configured cluster setting `search.default_allow_partial_results`
@@ -110,5 +117,38 @@ export interface Request extends RequestBase {
     allow_partial_search_results?: boolean
   }
   /** @codegen_name searches */
-  body: Array<RequestItem>
+  body: Array<FleetRequestItem>
+}
+
+/**
+ * @codegen_names header, body
+ */
+export type FleetRequestItem = FleetMultisearchHeader | MultisearchBody
+
+/**
+ * Contains parameters used to limit or change the subsequent search body request.
+ */
+export class FleetMultisearchHeader {
+  allow_no_indices?: boolean
+  expand_wildcards?: ExpandWildcards
+  ignore_unavailable?: boolean
+  index?: Indices
+  preference?: string
+  request_cache?: boolean
+  routing?: Routing
+  search_type?: SearchType
+  ccs_minimize_roundtrips?: boolean
+  allow_partial_search_results?: boolean
+  ignore_throttled?: boolean
+  /**
+   * A comma separated list of checkpoints. When configured, the search API will only be executed on a shard
+   * after the relevant checkpoint has become visible for search. Defaults to an empty list which will cause
+   * Elasticsearch to immediately execute the search.
+   */
+  wait_for_checkpoints?: Checkpoint | Checkpoint[]
+  /*
+   * Time to wait for the checkpoints to become visible for search.
+   * @server_default 30s
+   */
+  wait_for_checkpoints_timeout?: Duration
 }
