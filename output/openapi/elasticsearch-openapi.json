@@ -81966,11 +81966,7 @@
             "$ref": "#/components/schemas/security._types:FieldSecurity"
           },
           "names": {
-            "description": "A list of indices (or index name patterns) to which the permissions in this entry apply.",
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/_types:IndexName"
-            }
+            "$ref": "#/components/schemas/_types:Indices"
           },
           "privileges": {
             "description": "The index level privileges that owners of the role have on the specified indices.",
@@ -82249,11 +82245,7 @@
         "type": "object",
         "properties": {
           "names": {
-            "description": "A list of indices (or index name patterns) to which the permissions in this entry apply.",
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/_types:IndexName"
-            }
+            "$ref": "#/components/schemas/_types:Indices"
           }
         },
         "required": [
@@ -82267,11 +82259,7 @@
             "$ref": "#/components/schemas/security._types:FieldSecurity"
           },
           "names": {
-            "description": "A list of indices (or index name patterns) to which the permissions in this entry apply.",
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/_types:IndexName"
-            }
+            "$ref": "#/components/schemas/_types:Indices"
           },
           "query": {
             "$ref": "#/components/schemas/security._types:IndicesPrivilegesQuery"
@@ -82746,11 +82734,7 @@
             }
           },
           "names": {
-            "description": "A list of indices (or index name patterns) to which the permissions in this entry apply.",
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/_types:IndexName"
-            }
+            "$ref": "#/components/schemas/_types:Indices"
           },
           "privileges": {
             "description": "The index level privileges that owners of the role have on the specified indices.",
@@ -82971,11 +82955,7 @@
             "$ref": "#/components/schemas/security._types:FieldSecurity"
           },
           "names": {
-            "description": "A list of indices (or index name patterns) to which the permissions in this entry apply.",
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/_types:IndexName"
-            }
+            "$ref": "#/components/schemas/_types:Indices"
           },
           "privileges": {
             "description": "The index level privileges that owners of the role have on the specified indices.",
