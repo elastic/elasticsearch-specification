@@ -17700,6 +17700,7 @@ export interface SecurityRemoteIndicesPrivileges {
 
 export interface SecurityReplicationAccess {
   names: IndexName[]
+  allow_restricted_indices?: boolean
 }
 
 export interface SecurityRoleDescriptor {
