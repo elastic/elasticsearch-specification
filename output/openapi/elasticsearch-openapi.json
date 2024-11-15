@@ -82134,6 +82134,10 @@
             "items": {
               "$ref": "#/components/schemas/_types:IndexName"
             }
+          },
+          "allow_restricted_indices": {
+            "description": "This needs to be set to true if the patterns in the names field should cover system indices.",
+            "type": "boolean"
           }
         },
         "required": [
