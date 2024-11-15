@@ -68,10 +68,14 @@ export class IndexTemplate {
    * Marks this index template as deprecated.
    * When creating or updating a non-deprecated index template that uses deprecated components,
    * Elasticsearch will emit a deprecation warning.
+   * @availability stack since=8.12.0
+   * @availability serverless
    */
   deprecated?: boolean
   /**
    * A list of component template names that are allowed to be absent.
+   * @availability stack since=8.7.0
+   * @availability serverless
    */
   ignore_missing_component_templates?: Names
 }
