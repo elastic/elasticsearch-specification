@@ -220,6 +220,8 @@ export class IndicesPrivileges {
    * @doc_id field-and-document-access-control
    */
   field_security?: FieldSecurity
+  // We're using IndexName | IndexName[] instead of Indices in this file on purpose:
+  // https://github.com/elastic/elasticsearch-specification/pull/3127
   /**
    * A list of indices (or index name patterns) to which the permissions in this entry apply.
    */
