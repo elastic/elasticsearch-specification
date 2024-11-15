@@ -871,9 +871,21 @@
       ],
       "response": []
     },
+    "ingest.delete_ip_location_database": {
+      "request": [
+        "Missing request & response"
+      ],
+      "response": []
+    },
     "ingest.get_geoip_database": {
       "request": [
         "Request: query parameter 'master_timeout' does not exist in the json spec"
+      ],
+      "response": []
+    },
+    "ingest.get_ip_location_database": {
+      "request": [
+        "Missing request & response"
       ],
       "response": []
     },
@@ -881,6 +893,12 @@
       "request": [
         "Request: query parameter 'master_timeout' does not exist in the json spec",
         "Request: query parameter 'timeout' does not exist in the json spec"
+      ],
+      "response": []
+    },
+    "ingest.put_ip_location_database": {
+      "request": [
+        "Missing request & response"
       ],
       "response": []
     },
