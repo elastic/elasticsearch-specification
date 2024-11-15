@@ -11108,6 +11108,8 @@ export interface IndicesIndexTemplate {
   _meta?: Metadata
   allow_auto_create?: boolean
   data_stream?: IndicesIndexTemplateDataStreamConfiguration
+  deprecated?: boolean
+  ignore_missing_component_templates?: Names
 }
 
 export interface IndicesIndexTemplateDataStreamConfiguration {
@@ -13557,6 +13559,7 @@ export interface MigrationDeprecationsRequest extends RequestBase {
 export interface MigrationDeprecationsResponse {
   cluster_settings: MigrationDeprecationsDeprecation[]
   index_settings: Record<string, MigrationDeprecationsDeprecation[]>
+  data_streams: Record<string, MigrationDeprecationsDeprecation[]>
   node_settings: MigrationDeprecationsDeprecation[]
   ml_settings: MigrationDeprecationsDeprecation[]
 }
