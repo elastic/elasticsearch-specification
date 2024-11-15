@@ -19,7 +19,7 @@
 
 import { Dictionary } from '@spec_utils/Dictionary'
 import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
-import { Id, Indices, Names } from '@_types/common'
+import { Id, IndexName, Names } from '@_types/common'
 import { QueryContainer } from '@_types/query_dsl/abstractions'
 import { ScriptLanguage } from '@_types/Scripting'
 import { FieldSecurity } from './FieldSecurity'
@@ -204,7 +204,7 @@ export class IndicesPrivileges {
   /**
    * A list of indices (or index name patterns) to which the permissions in this entry apply.
    */
-  names: Indices
+  names: IndexName | IndexName[]
   /**
    * The index level privileges that owners of the role have on the specified indices.
    */
@@ -235,7 +235,7 @@ export class RemoteIndicesPrivileges {
   /**
    * A list of indices (or index name patterns) to which the permissions in this entry apply.
    */
-  names: Indices
+  names: IndexName | IndexName[]
   /**
    * The index level privileges that owners of the role have on the specified indices.
    */
@@ -261,7 +261,7 @@ export class UserIndicesPrivileges {
   /**
    * A list of indices (or index name patterns) to which the permissions in this entry apply.
    */
-  names: Indices
+  names: IndexName | IndexName[]
   /**
    * The index level privileges that owners of the role have on the specified indices.
    */
@@ -381,7 +381,7 @@ export class ReplicationAccess {
   /**
    * A list of indices (or index name patterns) to which the permissions in this entry apply.
    */
-  names: Indices
+  names: IndexName | IndexName[]
 }
 
 export class SearchAccess {
@@ -393,7 +393,7 @@ export class SearchAccess {
   /**
    * A list of indices (or index name patterns) to which the permissions in this entry apply.
    */
-  names: Indices
+  names: IndexName | IndexName[]
   /**
    * A search query that defines the documents the owners of the role have access to. A document within the specified indices must match this query for it to be accessible by the owners of the role.
    */
