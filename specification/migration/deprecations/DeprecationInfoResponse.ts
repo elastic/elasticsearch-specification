@@ -24,6 +24,7 @@ export class Response {
   body: {
     cluster_settings: Deprecation[]
     index_settings: Dictionary<string, Deprecation[]>
+    data_streams: Dictionary<string, Deprecation[]>
     node_settings: Deprecation[]
     ml_settings: Deprecation[]
   }

@@ -152,6 +152,10 @@ export enum ClusterPrivilege {
    */
   monitor_snapshot,
   /**
+   * @availability stack since=8.17.0
+   */
+  monitor_stats,
+  /**
    * @availability stack
    */
   monitor_text_structure,
@@ -194,6 +198,21 @@ export enum ClusterPrivilege {
   write_fleet_secrets
 }
 
+/**
+ * The subset of cluster level privileges that can be defined for remote clusters.
+ * @availability stack
+ */
+export enum RemoteClusterPrivilege {
+  /**
+   * @availability stack since=8.14.0
+   */
+  monitor_enrich,
+  /**
+   * @availability stack since=8.17.0
+   */
+  monitor_stats
+}
+
 // Keep in sync with RemoteIndicesPrivileges
 export class IndicesPrivileges {
   /**
@@ -221,6 +240,9 @@ export class IndicesPrivileges {
   allow_restricted_indices?: boolean
 }
 
+/**
+ * The subset of index level privileges that can be defined for remote clusters.
+ */
 // Keep in sync with IndicesPrivileges
 export class RemoteIndicesPrivileges {
   /**
@@ -250,6 +272,20 @@ export class RemoteIndicesPrivileges {
    * @availability stack
    */
   allow_restricted_indices?: boolean
+}
+
+/**
+ * The subset of cluster level privileges that can be defined for remote clusters.
+ */
+export class RemoteClusterPrivileges {
+  /**
+   *  A list of cluster aliases to which the permissions in this entry apply.
+   */
+  clusters: Names
+  /**
+   * The cluster level privileges that owners of the role have on the remote cluster.
+   */
+  privileges: RemoteClusterPrivilege[]
 }
 
 export class UserIndicesPrivileges {
@@ -382,6 +418,11 @@ export class ReplicationAccess {
    * A list of indices (or index name patterns) to which the permissions in this entry apply.
    */
   names: IndexName | IndexName[]
+  /**
+   * This needs to be set to true if the patterns in the names field should cover system indices.
+   * @server_default false
+   */
+  allow_restricted_indices?: boolean
 }
 
 export class SearchAccess {
