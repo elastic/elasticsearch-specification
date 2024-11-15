@@ -67499,6 +67499,13 @@
           },
           "data_stream": {
             "$ref": "#/components/schemas/indices._types:IndexTemplateDataStreamConfiguration"
+          },
+          "deprecated": {
+            "description": "Marks this index template as deprecated.\nWhen creating or updating a non-deprecated index template that uses deprecated components,\nElasticsearch will emit a deprecation warning.",
+            "type": "boolean"
+          },
+          "ignore_missing_component_templates": {
+            "$ref": "#/components/schemas/_types:Names"
           }
         },
         "required": [
@@ -82339,6 +82346,10 @@
             "items": {
               "$ref": "#/components/schemas/_types:IndexName"
             }
+          },
+          "allow_restricted_indices": {
+            "description": "This needs to be set to true if the patterns in the names field should cover system indices.",
+            "type": "boolean"
           }
         },
         "required": [
@@ -90402,6 +90413,15 @@
                     }
                   }
                 },
+                "data_streams": {
+                  "type": "object",
+                  "additionalProperties": {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/components/schemas/migration.deprecations:Deprecation"
+                    }
+                  }
+                },
                 "node_settings": {
                   "type": "array",
                   "items": {
@@ -90418,6 +90438,7 @@
               "required": [
                 "cluster_settings",
                 "index_settings",
+                "data_streams",
                 "node_settings",
                 "ml_settings"
               ]

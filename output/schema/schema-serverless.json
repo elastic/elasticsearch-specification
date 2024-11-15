@@ -119244,9 +119244,45 @@
               "namespace": "indices._types"
             }
           }
+        },
+        {
+          "availability": {
+            "serverless": {},
+            "stack": {
+              "since": "8.12.0"
+            }
+          },
+          "description": "Marks this index template as deprecated.\nWhen creating or updating a non-deprecated index template that uses deprecated components,\nElasticsearch will emit a deprecation warning.",
+          "name": "deprecated",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "_builtins"
+            }
+          }
+        },
+        {
+          "availability": {
+            "serverless": {},
+            "stack": {
+              "since": "8.7.0"
+            }
+          },
+          "description": "A list of component template names that are allowed to be absent.",
+          "name": "ignore_missing_component_templates",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Names",
+              "namespace": "_types"
+            }
+          }
         }
       ],
-      "specLocation": "indices/_types/IndexTemplate.ts#L28-L67"
+      "specLocation": "indices/_types/IndexTemplate.ts#L28-L81"
     },
     {
       "kind": "interface",
@@ -119323,7 +119359,7 @@
           }
         }
       ],
-      "specLocation": "indices/_types/IndexTemplate.ts#L82-L104"
+      "specLocation": "indices/_types/IndexTemplate.ts#L96-L118"
     },
     {
       "kind": "interface",
@@ -119359,7 +119395,7 @@
           }
         }
       ],
-      "specLocation": "indices/_types/IndexTemplate.ts#L69-L80"
+      "specLocation": "indices/_types/IndexTemplate.ts#L83-L94"
     },
     {
       "kind": "interface",
