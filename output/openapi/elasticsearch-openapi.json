@@ -67492,6 +67492,13 @@
           },
           "data_stream": {
             "$ref": "#/components/schemas/indices._types:IndexTemplateDataStreamConfiguration"
+          },
+          "deprecated": {
+            "description": "Marks this index template as deprecated.\nWhen creating or updating a non-deprecated index template that uses deprecated components,\nElasticsearch will emit a deprecation warning.",
+            "type": "boolean"
+          },
+          "ignore_missing_component_templates": {
+            "$ref": "#/components/schemas/_types:Names"
           }
         },
         "required": [
