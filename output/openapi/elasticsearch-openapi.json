@@ -90402,6 +90402,15 @@
                     }
                   }
                 },
+                "data_streams": {
+                  "type": "object",
+                  "additionalProperties": {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/components/schemas/migration.deprecations:Deprecation"
+                    }
+                  }
+                },
                 "node_settings": {
                   "type": "array",
                   "items": {
@@ -90418,6 +90427,7 @@
               "required": [
                 "cluster_settings",
                 "index_settings",
+                "data_streams",
                 "node_settings",
                 "ml_settings"
               ]
