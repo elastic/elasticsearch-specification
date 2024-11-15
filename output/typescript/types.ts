@@ -11108,6 +11108,8 @@ export interface IndicesIndexTemplate {
   _meta?: Metadata
   allow_auto_create?: boolean
   data_stream?: IndicesIndexTemplateDataStreamConfiguration
+  deprecated?: boolean
+  ignore_missing_component_templates?: Names
 }
 
 export interface IndicesIndexTemplateDataStreamConfiguration {
