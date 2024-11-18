@@ -69905,11 +69905,13 @@
           },
           "maxmind": {
             "$ref": "#/components/schemas/ingest._types:Maxmind"
+          },
+          "ipinfo": {
+            "$ref": "#/components/schemas/ingest._types:Ipinfo"
           }
         },
         "required": [
-          "name",
-          "maxmind"
+          "name"
         ]
       },
       "ingest._types:Maxmind": {
@@ -69922,6 +69924,9 @@
         "required": [
           "account_id"
         ]
+      },
+      "ingest._types:Ipinfo": {
+        "type": "object"
       },
       "ingest.get_ip_location_database:DatabaseConfigurationMetadata": {
         "type": "object",

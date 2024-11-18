@@ -12857,7 +12857,8 @@ export interface IngestCsvProcessor extends IngestProcessorBase {
 
 export interface IngestDatabaseConfiguration {
   name: Name
-  maxmind: IngestMaxmind
+  maxmind?: IngestMaxmind
+  ipinfo?: IngestIpinfo
 }
 
 export interface IngestDateIndexNameProcessor extends IngestProcessorBase {
@@ -13007,6 +13008,10 @@ export interface IngestIpLocationProcessor extends IngestProcessorBase {
   properties?: string[]
   target_field?: Field
   download_database_on_pipeline_creation?: boolean
+}
+
+export interface IngestIpinfo {
+  [key: string]: never
 }
 
 export interface IngestJoinProcessor extends IngestProcessorBase {
