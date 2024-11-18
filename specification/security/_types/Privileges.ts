@@ -220,10 +220,12 @@ export class IndicesPrivileges {
    * @doc_id field-and-document-access-control
    */
   field_security?: FieldSecurity
+  // We're using IndexName | IndexName[] instead of Indices in this file on purpose:
+  // https://github.com/elastic/elasticsearch-specification/pull/3127
   /**
    * A list of indices (or index name patterns) to which the permissions in this entry apply.
    */
-  names: IndexName[]
+  names: IndexName | IndexName[]
   /**
    * The index level privileges that owners of the role have on the specified indices.
    */
@@ -257,7 +259,7 @@ export class RemoteIndicesPrivileges {
   /**
    * A list of indices (or index name patterns) to which the permissions in this entry apply.
    */
-  names: IndexName[]
+  names: IndexName | IndexName[]
   /**
    * The index level privileges that owners of the role have on the specified indices.
    */
@@ -297,7 +299,7 @@ export class UserIndicesPrivileges {
   /**
    * A list of indices (or index name patterns) to which the permissions in this entry apply.
    */
-  names: IndexName[]
+  names: IndexName | IndexName[]
   /**
    * The index level privileges that owners of the role have on the specified indices.
    */
@@ -417,7 +419,7 @@ export class ReplicationAccess {
   /**
    * A list of indices (or index name patterns) to which the permissions in this entry apply.
    */
-  names: IndexName[]
+  names: IndexName | IndexName[]
   /**
    * This needs to be set to true if the patterns in the names field should cover system indices.
    * @server_default false
@@ -434,7 +436,7 @@ export class SearchAccess {
   /**
    * A list of indices (or index name patterns) to which the permissions in this entry apply.
    */
-  names: IndexName[]
+  names: IndexName | IndexName[]
   /**
    * A search query that defines the documents the owners of the role have access to. A document within the specified indices must match this query for it to be accessible by the owners of the role.
    */

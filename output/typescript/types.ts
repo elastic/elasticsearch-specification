@@ -17668,7 +17668,7 @@ export type SecurityIndexPrivilege = 'all' | 'auto_configure' | 'create' | 'crea
 
 export interface SecurityIndicesPrivileges {
   field_security?: SecurityFieldSecurity
-  names: IndexName[]
+  names: IndexName | IndexName[]
   privileges: SecurityIndexPrivilege[]
   query?: SecurityIndicesPrivilegesQuery
   allow_restricted_indices?: boolean
@@ -17695,14 +17695,14 @@ export interface SecurityRemoteClusterPrivileges {
 export interface SecurityRemoteIndicesPrivileges {
   clusters: Names
   field_security?: SecurityFieldSecurity
-  names: IndexName[]
+  names: IndexName | IndexName[]
   privileges: SecurityIndexPrivilege[]
   query?: SecurityIndicesPrivilegesQuery
   allow_restricted_indices?: boolean
 }
 
 export interface SecurityReplicationAccess {
-  names: IndexName[]
+  names: IndexName | IndexName[]
   allow_restricted_indices?: boolean
 }
 
@@ -17770,7 +17770,7 @@ export interface SecurityRoleTemplateScript {
 
 export interface SecuritySearchAccess {
   field_security?: SecurityFieldSecurity
-  names: IndexName[]
+  names: IndexName | IndexName[]
   query?: SecurityIndicesPrivilegesQuery
   allow_restricted_indices?: boolean
 }
@@ -17789,7 +17789,7 @@ export interface SecurityUser {
 
 export interface SecurityUserIndicesPrivileges {
   field_security?: SecurityFieldSecurity[]
-  names: IndexName[]
+  names: IndexName | IndexName[]
   privileges: SecurityIndexPrivilege[]
   query?: SecurityIndicesPrivilegesQuery[]
   allow_restricted_indices: boolean
