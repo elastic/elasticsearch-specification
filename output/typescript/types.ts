@@ -17706,6 +17706,12 @@ export interface SecurityReplicationAccess {
   allow_restricted_indices?: boolean
 }
 
+export interface SecurityRestriction {
+  workflows: SecurityRestrictionWorkflow[]
+}
+
+export type SecurityRestrictionWorkflow = 'search_application_query'| string
+
 export interface SecurityRoleDescriptor {
   cluster?: SecurityClusterPrivilege[]
   indices?: SecurityIndicesPrivileges[]
@@ -17717,6 +17723,7 @@ export interface SecurityRoleDescriptor {
   metadata?: Metadata
   run_as?: string[]
   description?: string
+  restriction?: SecurityRestriction
   transient_metadata?: Record<string, any>
 }
 
@@ -17731,6 +17738,7 @@ export interface SecurityRoleDescriptorRead {
   metadata?: Metadata
   run_as?: string[]
   description?: string
+  restriction?: SecurityRestriction
   transient_metadata?: Record<string, any>
 }
 
