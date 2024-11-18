@@ -29135,7 +29135,7 @@
                     "cluster": {
                       "type": "array",
                       "items": {
-                        "type": "string"
+                        "$ref": "#/components/schemas/security._types:ClusterPrivilege"
                       }
                     },
                     "index": {
@@ -29143,11 +29143,18 @@
                       "items": {
                         "$ref": "#/components/schemas/_types:IndexName"
                       }
+                    },
+                    "remote_cluster": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/security._types:RemoteClusterPrivilege"
+                      }
                     }
                   },
                   "required": [
                     "cluster",
-                    "index"
+                    "index",
+                    "remote_cluster"
                   ]
                 }
               }
@@ -33213,14 +33220,11 @@
           },
           {
             "in": "query",
-            "name": "node_id",
+            "name": "nodes",
             "description": "Comma-separated list of node IDs or names used to limit returned information.",
             "deprecated": false,
             "schema": {
-              "type": "array",
-              "items": {
-                "type": "string"
-              }
+              "$ref": "#/components/schemas/_types:NodeIds"
             },
             "style": "form"
           },
@@ -67666,6 +67670,13 @@
           },
           "data_stream": {
             "$ref": "#/components/schemas/indices._types:IndexTemplateDataStreamConfiguration"
+          },
+          "deprecated": {
+            "description": "Marks this index template as deprecated.\nWhen creating or updating a non-deprecated index template that uses deprecated components,\nElasticsearch will emit a deprecation warning.",
+            "type": "boolean"
+          },
+          "ignore_missing_component_templates": {
+            "$ref": "#/components/schemas/_types:Names"
           }
         },
         "required": [
@@ -70019,6 +70030,9 @@
           "foreach": {
             "$ref": "#/components/schemas/ingest._types:ForeachProcessor"
           },
+          "ip_location": {
+            "$ref": "#/components/schemas/ingest._types:IpLocationProcessor"
+          },
           "geo_grid": {
             "$ref": "#/components/schemas/ingest._types:GeoGridProcessor"
           },
@@ -70705,6 +70719,50 @@
             "required": [
               "field",
               "processor"
+            ]
+          }
+        ]
+      },
+      "ingest._types:IpLocationProcessor": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/ingest._types:ProcessorBase"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "database_file": {
+                "description": "The database filename referring to a database the module ships with (GeoLite2-City.mmdb, GeoLite2-Country.mmdb, or GeoLite2-ASN.mmdb) or a custom database in the ingest-geoip config directory.",
+                "type": "string"
+              },
+              "field": {
+                "$ref": "#/components/schemas/_types:Field"
+              },
+              "first_only": {
+                "description": "If `true`, only the first found IP location data will be returned, even if the field contains an array.",
+                "type": "boolean"
+              },
+              "ignore_missing": {
+                "description": "If `true` and `field` does not exist, the processor quietly exits without modifying the document.",
+                "type": "boolean"
+              },
+              "properties": {
+                "description": "Controls what properties are added to the `target_field` based on the IP location lookup.",
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "target_field": {
+                "$ref": "#/components/schemas/_types:Field"
+              },
+              "download_database_on_pipeline_creation": {
+                "description": "If `true` (and if `ingest.geoip.downloader.eager.download` is `false`), the missing database is downloaded when the pipeline is created.\nElse, the download is triggered by when the pipeline is used as the `default_pipeline` or `final_pipeline` in an index.",
+                "type": "boolean"
+              }
+            },
+            "required": [
+              "field"
             ]
           }
         ]
@@ -81996,6 +82054,20 @@
               "$ref": "#/components/schemas/security._types:IndicesPrivileges"
             }
           },
+          "remote_indices": {
+            "description": "A list of indices permissions for remote clusters.",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/security._types:RemoteIndicesPrivileges"
+            }
+          },
+          "remote_cluster": {
+            "description": "A list of cluster permissions for remote clusters. Note - this is limited a subset of the cluster permissions.",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/security._types:RemoteClusterPrivileges"
+            }
+          },
           "global": {
             "description": "An object defining global privileges. A global privilege is a form of cluster privilege that is request-aware. Support for global privileges is currently limited to the management of application privileges.",
             "oneOf": [
@@ -82088,6 +82160,7 @@
               "monitor_ml",
               "monitor_rollup",
               "monitor_snapshot",
+              "monitor_stats",
               "monitor_text_structure",
               "monitor_transform",
               "monitor_watcher",
@@ -82117,10 +82190,17 @@
           },
           "names": {
             "description": "A list of indices (or index name patterns) to which the permissions in this entry apply.",
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/_types:IndexName"
-            }
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/_types:IndexName"
+              },
+              {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/_types:IndexName"
+                }
+              }
+            ]
           },
           "privileges": {
             "description": "The index level privileges that owners of the role have on the specified indices.",
@@ -82244,6 +82324,76 @@
           {
             "$ref": "#/components/schemas/_types.query_dsl:QueryContainer"
           }
+        ]
+      },
+      "security._types:RemoteIndicesPrivileges": {
+        "type": "object",
+        "properties": {
+          "clusters": {
+            "$ref": "#/components/schemas/_types:Names"
+          },
+          "field_security": {
+            "$ref": "#/components/schemas/security._types:FieldSecurity"
+          },
+          "names": {
+            "description": "A list of indices (or index name patterns) to which the permissions in this entry apply.",
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/_types:IndexName"
+              },
+              {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/_types:IndexName"
+                }
+              }
+            ]
+          },
+          "privileges": {
+            "description": "The index level privileges that owners of the role have on the specified indices.",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/security._types:IndexPrivilege"
+            }
+          },
+          "query": {
+            "$ref": "#/components/schemas/security._types:IndicesPrivilegesQuery"
+          },
+          "allow_restricted_indices": {
+            "description": "Set to `true` if using wildcard or regular expressions for patterns that cover restricted indices. Implicitly, restricted indices have limited privileges that can cause pattern tests to fail. If restricted indices are explicitly included in the `names` list, Elasticsearch checks privileges against these indices regardless of the value set for `allow_restricted_indices`.",
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "clusters",
+          "names",
+          "privileges"
+        ]
+      },
+      "security._types:RemoteClusterPrivileges": {
+        "type": "object",
+        "properties": {
+          "clusters": {
+            "$ref": "#/components/schemas/_types:Names"
+          },
+          "privileges": {
+            "description": "The cluster level privileges that owners of the role have on the remote cluster.",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/security._types:RemoteClusterPrivilege"
+            }
+          }
+        },
+        "required": [
+          "clusters",
+          "privileges"
+        ]
+      },
+      "security._types:RemoteClusterPrivilege": {
+        "type": "string",
+        "enum": [
+          "monitor_enrich",
+          "monitor_stats"
         ]
       },
       "security._types:GlobalPrivilege": {
@@ -82400,10 +82550,21 @@
         "properties": {
           "names": {
             "description": "A list of indices (or index name patterns) to which the permissions in this entry apply.",
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/_types:IndexName"
-            }
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/_types:IndexName"
+              },
+              {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/_types:IndexName"
+                }
+              }
+            ]
+          },
+          "allow_restricted_indices": {
+            "description": "This needs to be set to true if the patterns in the names field should cover system indices.",
+            "type": "boolean"
           }
         },
         "required": [
@@ -82418,10 +82579,17 @@
           },
           "names": {
             "description": "A list of indices (or index name patterns) to which the permissions in this entry apply.",
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/_types:IndexName"
-            }
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/_types:IndexName"
+              },
+              {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/_types:IndexName"
+                }
+              }
+            ]
           },
           "query": {
             "$ref": "#/components/schemas/security._types:IndicesPrivilegesQuery"
@@ -82505,13 +82673,25 @@
           "cluster": {
             "type": "array",
             "items": {
-              "type": "string"
+              "$ref": "#/components/schemas/security._types:ClusterPrivilege"
             }
           },
           "indices": {
             "type": "array",
             "items": {
               "$ref": "#/components/schemas/security._types:IndicesPrivileges"
+            }
+          },
+          "remote_indices": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/security._types:RemoteIndicesPrivileges"
+            }
+          },
+          "remote_cluster": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/security._types:RemoteClusterPrivileges"
             }
           },
           "metadata": {
@@ -82684,6 +82864,20 @@
             "type": "array",
             "items": {
               "$ref": "#/components/schemas/security._types:IndicesPrivileges"
+            }
+          },
+          "remote_indices": {
+            "description": "A list of indices permissions for remote clusters.",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/security._types:RemoteIndicesPrivileges"
+            }
+          },
+          "remote_cluster": {
+            "description": "A list of cluster permissions for remote clusters. Note - this is limited a subset of the cluster permissions.",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/security._types:RemoteClusterPrivileges"
             }
           },
           "global": {
@@ -82897,10 +83091,17 @@
           },
           "names": {
             "description": "A list of indices (or index name patterns) to which the permissions in this entry apply.",
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/_types:IndexName"
-            }
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/_types:IndexName"
+              },
+              {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/_types:IndexName"
+                }
+              }
+            ]
           },
           "privileges": {
             "description": "The index level privileges that owners of the role have on the specified indices.",
@@ -83109,43 +83310,6 @@
         },
         "required": [
           "created"
-        ]
-      },
-      "security._types:RemoteIndicesPrivileges": {
-        "type": "object",
-        "properties": {
-          "clusters": {
-            "$ref": "#/components/schemas/_types:Names"
-          },
-          "field_security": {
-            "$ref": "#/components/schemas/security._types:FieldSecurity"
-          },
-          "names": {
-            "description": "A list of indices (or index name patterns) to which the permissions in this entry apply.",
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/_types:IndexName"
-            }
-          },
-          "privileges": {
-            "description": "The index level privileges that owners of the role have on the specified indices.",
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/security._types:IndexPrivilege"
-            }
-          },
-          "query": {
-            "$ref": "#/components/schemas/security._types:IndicesPrivilegesQuery"
-          },
-          "allow_restricted_indices": {
-            "description": "Set to `true` if using wildcard or regular expressions for patterns that cover restricted indices. Implicitly, restricted indices have limited privileges that can cause pattern tests to fail. If restricted indices are explicitly included in the `names` list, Elasticsearch checks privileges against these indices regardless of the value set for `allow_restricted_indices`.",
-            "type": "boolean"
-          }
-        },
-        "required": [
-          "clusters",
-          "names",
-          "privileges"
         ]
       },
       "security.query_api_keys:ApiKeyAggregationContainer": {
@@ -90499,6 +90663,15 @@
                     }
                   }
                 },
+                "data_streams": {
+                  "type": "object",
+                  "additionalProperties": {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/components/schemas/migration.deprecations:Deprecation"
+                    }
+                  }
+                },
                 "node_settings": {
                   "type": "array",
                   "items": {
@@ -90515,6 +90688,7 @@
               "required": [
                 "cluster_settings",
                 "index_settings",
+                "data_streams",
                 "node_settings",
                 "ml_settings"
               ]
@@ -103936,6 +104110,13 @@
                   "type": "array",
                   "items": {
                     "$ref": "#/components/schemas/security._types:RemoteIndicesPrivileges"
+                  }
+                },
+                "remote_cluster": {
+                  "description": "A list of remote cluster permissions entries.",
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/security._types:RemoteClusterPrivileges"
                   }
                 },
                 "metadata": {

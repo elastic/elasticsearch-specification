@@ -17121,7 +17121,7 @@
                     "cluster": {
                       "type": "array",
                       "items": {
-                        "type": "string"
+                        "$ref": "#/components/schemas/security._types:ClusterPrivilege"
                       }
                     },
                     "index": {
@@ -17129,11 +17129,18 @@
                       "items": {
                         "$ref": "#/components/schemas/_types:IndexName"
                       }
+                    },
+                    "remote_cluster": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/security._types:RemoteClusterPrivilege"
+                      }
                     }
                   },
                   "required": [
                     "cluster",
-                    "index"
+                    "index",
+                    "remote_cluster"
                   ]
                 }
               }
@@ -45088,6 +45095,13 @@
           },
           "data_stream": {
             "$ref": "#/components/schemas/indices._types:IndexTemplateDataStreamConfiguration"
+          },
+          "deprecated": {
+            "description": "Marks this index template as deprecated.\nWhen creating or updating a non-deprecated index template that uses deprecated components,\nElasticsearch will emit a deprecation warning.",
+            "type": "boolean"
+          },
+          "ignore_missing_component_templates": {
+            "$ref": "#/components/schemas/_types:Names"
           }
         },
         "required": [
@@ -45827,6 +45841,9 @@
           "foreach": {
             "$ref": "#/components/schemas/ingest._types:ForeachProcessor"
           },
+          "ip_location": {
+            "$ref": "#/components/schemas/ingest._types:IpLocationProcessor"
+          },
           "geo_grid": {
             "$ref": "#/components/schemas/ingest._types:GeoGridProcessor"
           },
@@ -46513,6 +46530,50 @@
             "required": [
               "field",
               "processor"
+            ]
+          }
+        ]
+      },
+      "ingest._types:IpLocationProcessor": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/ingest._types:ProcessorBase"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "database_file": {
+                "description": "The database filename referring to a database the module ships with (GeoLite2-City.mmdb, GeoLite2-Country.mmdb, or GeoLite2-ASN.mmdb) or a custom database in the ingest-geoip config directory.",
+                "type": "string"
+              },
+              "field": {
+                "$ref": "#/components/schemas/_types:Field"
+              },
+              "first_only": {
+                "description": "If `true`, only the first found IP location data will be returned, even if the field contains an array.",
+                "type": "boolean"
+              },
+              "ignore_missing": {
+                "description": "If `true` and `field` does not exist, the processor quietly exits without modifying the document.",
+                "type": "boolean"
+              },
+              "properties": {
+                "description": "Controls what properties are added to the `target_field` based on the IP location lookup.",
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "target_field": {
+                "$ref": "#/components/schemas/_types:Field"
+              },
+              "download_database_on_pipeline_creation": {
+                "description": "If `true` (and if `ingest.geoip.downloader.eager.download` is `false`), the missing database is downloaded when the pipeline is created.\nElse, the download is triggered by when the pipeline is used as the `default_pipeline` or `final_pipeline` in an index.",
+                "type": "boolean"
+              }
+            },
+            "required": [
+              "field"
             ]
           }
         ]
@@ -53661,10 +53722,17 @@
           },
           "names": {
             "description": "A list of indices (or index name patterns) to which the permissions in this entry apply.",
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/_types:IndexName"
-            }
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/_types:IndexName"
+              },
+              {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/_types:IndexName"
+                }
+              }
+            ]
           },
           "privileges": {
             "description": "The index level privileges that owners of the role have on the specified indices.",
@@ -53837,13 +53905,16 @@
           "name"
         ]
       },
+      "security._types:RemoteClusterPrivilege": {
+        "type": "string"
+      },
       "security.get_role:Role": {
         "type": "object",
         "properties": {
           "cluster": {
             "type": "array",
             "items": {
-              "type": "string"
+              "$ref": "#/components/schemas/security._types:ClusterPrivilege"
             }
           },
           "indices": {
