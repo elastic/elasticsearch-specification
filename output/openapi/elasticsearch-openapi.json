@@ -81996,10 +81996,17 @@
           },
           "names": {
             "description": "A list of indices (or index name patterns) to which the permissions in this entry apply.",
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/_types:IndexName"
-            }
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/_types:IndexName"
+              },
+              {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/_types:IndexName"
+                }
+              }
+            ]
           },
           "privileges": {
             "description": "The index level privileges that owners of the role have on the specified indices.",
@@ -82136,10 +82143,17 @@
           },
           "names": {
             "description": "A list of indices (or index name patterns) to which the permissions in this entry apply.",
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/_types:IndexName"
-            }
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/_types:IndexName"
+              },
+              {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/_types:IndexName"
+                }
+              }
+            ]
           },
           "privileges": {
             "description": "The index level privileges that owners of the role have on the specified indices.",
@@ -82342,10 +82356,17 @@
         "properties": {
           "names": {
             "description": "A list of indices (or index name patterns) to which the permissions in this entry apply.",
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/_types:IndexName"
-            }
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/_types:IndexName"
+              },
+              {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/_types:IndexName"
+                }
+              }
+            ]
           },
           "allow_restricted_indices": {
             "description": "This needs to be set to true if the patterns in the names field should cover system indices.",
@@ -82364,10 +82385,17 @@
           },
           "names": {
             "description": "A list of indices (or index name patterns) to which the permissions in this entry apply.",
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/_types:IndexName"
-            }
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/_types:IndexName"
+              },
+              {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/_types:IndexName"
+                }
+              }
+            ]
           },
           "query": {
             "$ref": "#/components/schemas/security._types:IndicesPrivilegesQuery"
@@ -82869,10 +82897,17 @@
           },
           "names": {
             "description": "A list of indices (or index name patterns) to which the permissions in this entry apply.",
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/_types:IndexName"
-            }
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/_types:IndexName"
+              },
+              {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/_types:IndexName"
+                }
+              }
+            ]
           },
           "privileges": {
             "description": "The index level privileges that owners of the role have on the specified indices.",
