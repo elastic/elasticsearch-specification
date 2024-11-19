@@ -28920,16 +28920,23 @@
                     "cluster": {
                       "type": "array",
                       "items": {
-                        "type": "string"
+                        "$ref": "#/components/schemas/security._types:ClusterPrivilege"
                       }
                     },
                     "index": {
                       "$ref": "#/components/schemas/_types:Indices"
+                    },
+                    "remote_cluster": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/security._types:RemoteClusterPrivilege"
+                      }
                     }
                   },
                   "required": [
                     "cluster",
-                    "index"
+                    "index",
+                    "remote_cluster"
                   ]
                 }
               }
@@ -81775,6 +81782,20 @@
               "$ref": "#/components/schemas/security._types:IndicesPrivileges"
             }
           },
+          "remote_indices": {
+            "description": "A list of indices permissions for remote clusters.",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/security._types:RemoteIndicesPrivileges"
+            }
+          },
+          "remote_cluster": {
+            "description": "A list of cluster permissions for remote clusters. Note - this is limited a subset of the cluster permissions.",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/security._types:RemoteClusterPrivileges"
+            }
+          },
           "global": {
             "description": "An object defining global privileges. A global privilege is a form of cluster privilege that is request-aware. Support for global privileges is currently limited to the management of application privileges.",
             "oneOf": [
@@ -81867,6 +81888,7 @@
               "monitor_ml",
               "monitor_rollup",
               "monitor_snapshot",
+              "monitor_stats",
               "monitor_text_structure",
               "monitor_transform",
               "monitor_watcher",
@@ -82019,6 +82041,65 @@
           {
             "$ref": "#/components/schemas/_types.query_dsl:QueryContainer"
           }
+        ]
+      },
+      "security._types:RemoteIndicesPrivileges": {
+        "type": "object",
+        "properties": {
+          "clusters": {
+            "$ref": "#/components/schemas/_types:Names"
+          },
+          "field_security": {
+            "$ref": "#/components/schemas/security._types:FieldSecurity"
+          },
+          "names": {
+            "$ref": "#/components/schemas/_types:Indices"
+          },
+          "privileges": {
+            "description": "The index level privileges that owners of the role have on the specified indices.",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/security._types:IndexPrivilege"
+            }
+          },
+          "query": {
+            "$ref": "#/components/schemas/security._types:IndicesPrivilegesQuery"
+          },
+          "allow_restricted_indices": {
+            "description": "Set to `true` if using wildcard or regular expressions for patterns that cover restricted indices. Implicitly, restricted indices have limited privileges that can cause pattern tests to fail. If restricted indices are explicitly included in the `names` list, Elasticsearch checks privileges against these indices regardless of the value set for `allow_restricted_indices`.",
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "clusters",
+          "names",
+          "privileges"
+        ]
+      },
+      "security._types:RemoteClusterPrivileges": {
+        "type": "object",
+        "properties": {
+          "clusters": {
+            "$ref": "#/components/schemas/_types:Names"
+          },
+          "privileges": {
+            "description": "The cluster level privileges that owners of the role have on the remote cluster.",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/security._types:RemoteClusterPrivilege"
+            }
+          }
+        },
+        "required": [
+          "clusters",
+          "privileges"
+        ]
+      },
+      "security._types:RemoteClusterPrivilege": {
+        "type": "string",
+        "enum": [
+          "monitor_enrich",
+          "monitor_stats"
         ]
       },
       "security._types:GlobalPrivilege": {
@@ -82284,13 +82365,25 @@
           "cluster": {
             "type": "array",
             "items": {
-              "type": "string"
+              "$ref": "#/components/schemas/security._types:ClusterPrivilege"
             }
           },
           "indices": {
             "type": "array",
             "items": {
               "$ref": "#/components/schemas/security._types:IndicesPrivileges"
+            }
+          },
+          "remote_indices": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/security._types:RemoteIndicesPrivileges"
+            }
+          },
+          "remote_cluster": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/security._types:RemoteClusterPrivileges"
             }
           },
           "metadata": {
@@ -82463,6 +82556,20 @@
             "type": "array",
             "items": {
               "$ref": "#/components/schemas/security._types:IndicesPrivileges"
+            }
+          },
+          "remote_indices": {
+            "description": "A list of indices permissions for remote clusters.",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/security._types:RemoteIndicesPrivileges"
+            }
+          },
+          "remote_cluster": {
+            "description": "A list of cluster permissions for remote clusters. Note - this is limited a subset of the cluster permissions.",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/security._types:RemoteClusterPrivileges"
             }
           },
           "global": {
@@ -82884,39 +82991,6 @@
         },
         "required": [
           "created"
-        ]
-      },
-      "security._types:RemoteIndicesPrivileges": {
-        "type": "object",
-        "properties": {
-          "clusters": {
-            "$ref": "#/components/schemas/_types:Names"
-          },
-          "field_security": {
-            "$ref": "#/components/schemas/security._types:FieldSecurity"
-          },
-          "names": {
-            "$ref": "#/components/schemas/_types:Indices"
-          },
-          "privileges": {
-            "description": "The index level privileges that owners of the role have on the specified indices.",
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/security._types:IndexPrivilege"
-            }
-          },
-          "query": {
-            "$ref": "#/components/schemas/security._types:IndicesPrivilegesQuery"
-          },
-          "allow_restricted_indices": {
-            "description": "Set to `true` if using wildcard or regular expressions for patterns that cover restricted indices. Implicitly, restricted indices have limited privileges that can cause pattern tests to fail. If restricted indices are explicitly included in the `names` list, Elasticsearch checks privileges against these indices regardless of the value set for `allow_restricted_indices`.",
-            "type": "boolean"
-          }
-        },
-        "required": [
-          "clusters",
-          "names",
-          "privileges"
         ]
       },
       "security.query_api_keys:ApiKeyAggregationContainer": {
@@ -103679,6 +103753,13 @@
                   "type": "array",
                   "items": {
                     "$ref": "#/components/schemas/security._types:RemoteIndicesPrivileges"
+                  }
+                },
+                "remote_cluster": {
+                  "description": "A list of remote cluster permissions entries.",
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/security._types:RemoteClusterPrivileges"
                   }
                 },
                 "metadata": {

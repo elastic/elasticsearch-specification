@@ -17,8 +17,16 @@
  * under the License.
  */
 
+import {
+  ClusterPrivilege,
+  RemoteClusterPrivilege
+} from '@security/_types/Privileges'
 import { Indices } from '@_types/common'
 
 export class Response {
-  body: { cluster: string[]; index: Indices }
+  body: {
+    cluster: ClusterPrivilege[]
+    index: Indices
+    remote_cluster: RemoteClusterPrivilege[]
+  }
 }

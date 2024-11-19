@@ -103055,7 +103055,7 @@
         "name": "ClusterPrivilege",
         "namespace": "security._types"
       },
-      "specLocation": "security/_types/Privileges.ts#L42-L195"
+      "specLocation": "security/_types/Privileges.ts#L42-L199"
     },
     {
       "kind": "enum",
@@ -103132,7 +103132,7 @@
         "name": "IndexPrivilege",
         "namespace": "security._types"
       },
-      "specLocation": "security/_types/Privileges.ts#L324-L366"
+      "specLocation": "security/_types/Privileges.ts#L360-L402"
     },
     {
       "codegenNames": [
@@ -103146,7 +103146,7 @@
         "name": "IndicesPrivilegesQuery",
         "namespace": "security._types"
       },
-      "specLocation": "security/_types/Privileges.ts#L279-L287",
+      "specLocation": "security/_types/Privileges.ts#L315-L323",
       "type": {
         "items": [
           {
@@ -103196,7 +103196,7 @@
           }
         }
       ],
-      "specLocation": "security/_types/Privileges.ts#L289-L299"
+      "specLocation": "security/_types/Privileges.ts#L325-L335"
     },
     {
       "kind": "interface",
@@ -103284,7 +103284,7 @@
         }
       ],
       "shortcutProperty": "source",
-      "specLocation": "security/_types/Privileges.ts#L301-L319"
+      "specLocation": "security/_types/Privileges.ts#L337-L355"
     },
     {
       "codegenNames": [
@@ -103296,7 +103296,7 @@
         "name": "RoleTemplateInlineQuery",
         "namespace": "security._types"
       },
-      "specLocation": "security/_types/Privileges.ts#L321-L322",
+      "specLocation": "security/_types/Privileges.ts#L357-L358",
       "type": {
         "items": [
           {
@@ -103316,6 +103316,15 @@
         ],
         "kind": "union_of"
       }
+    },
+    {
+      "kind": "enum",
+      "members": [],
+      "name": {
+        "name": "RemoteClusterPrivilege",
+        "namespace": "security._types"
+      },
+      "specLocation": "security/_types/Privileges.ts#L201-L214"
     },
     {
       "kind": "enum",
@@ -140076,7 +140085,7 @@
           }
         }
       ],
-      "specLocation": "security/_types/RoleDescriptor.ts#L31-L64"
+      "specLocation": "security/_types/RoleDescriptor.ts#L33-L79"
     },
     {
       "kind": "interface",
@@ -140139,7 +140148,7 @@
           }
         }
       ],
-      "specLocation": "security/_types/Privileges.ts#L198-L222"
+      "specLocation": "security/_types/Privileges.ts#L217-L241"
     },
     {
       "kind": "interface",
