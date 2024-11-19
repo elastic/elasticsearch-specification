@@ -17,8 +17,8 @@
  * under the License.
  */
 
-import { ApiKeyRead } from '@security/_types/ApiKey'
+import { ApiKey } from '@security/_types/ApiKey'
 
 export class Response {
-  body: { api_keys: ApiKeyRead[] }
+  body: { api_keys: ApiKey[] }
 }

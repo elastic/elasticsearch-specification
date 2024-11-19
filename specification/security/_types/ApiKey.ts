@@ -17,7 +17,6 @@
  * under the License.
  */
 
-import { OverloadOf } from '@spec_utils/behaviors'
 import { Dictionary } from '@spec_utils/Dictionary'
 import { Id, Metadata, Name, Username } from '@_types/common'
 import { long } from '@_types/Numeric'
@@ -28,95 +27,19 @@ import { RoleDescriptor } from './RoleDescriptor'
 
 export class ApiKey {
   /**
-   * Creation time for the API key in milliseconds.
-   */
-  creation?: long
-  /**
-   * Expiration time for the API key in milliseconds.
-   */
-  expiration?: long
-  /**
    * Id for the API key
    */
   id: Id
-  /**
-   * Invalidation status for the API key.
-   * If the key has been invalidated, it has a value of `true`. Otherwise, it is `false`.
-   */
-  invalidated?: boolean
-  /**
-   * If the key has been invalidated, invalidation time in milliseconds.
-   * @availability stack since=8.12.0
-   * @availability serverless
-   */
-  invalidation?: EpochTime<UnitMillis>
   /**
    * Name of the API key.
    */
   name: Name
   /**
-   * Realm name of the principal for which this API key was created.
-   */
-  realm?: string
-  /**
-   * Realm type of the principal for which this API key was created
-   * @availability stack since=8.14.0
-   * @availability serverless
-   */
-  realm_type?: string
-  /**
    * The type of the API key (e.g. `rest` or `cross_cluster`).
    * @availability stack since=8.10.0
    * @availability serverless
    */
-  type?: ApiKeyType
-  /**
-   * Principal for which this API key was created
-   */
-  username?: Username
-  /**
-   * The profile uid for the API key owner principal, if requested and if it exists
-   * @availability stack since=8.14.0
-   * @availability serverless
-   */
-  profile_uid?: string
-  /**
-   * Metadata of the API key
-   * @availability stack since=7.13.0
-   * @availability serverless
-   */
-  metadata?: Metadata
-  /**
-   * The role descriptors assigned to this API key when it was created or last updated.
-   * An empty role descriptor means the API key inherits the owner user’s permissions.
-   */
-  role_descriptors?: Dictionary<string, RoleDescriptor>
-  /**
-   * The owner user’s permissions associated with the API key.
-   * It is a point-in-time snapshot captured at creation and subsequent updates.
-   * An API key’s effective permissions are an intersection of its assigned privileges and the owner user’s permissions.
-   * @availability stack since=8.5.0
-   * @availability serverless
-   */
-  limited_by?: Array<Dictionary<string, RoleDescriptor>>
-  /**
-   * The access granted to cross-cluster API keys.
-   * The access is composed of permissions for cross cluster search and cross cluster replication.
-   * At least one of them must be specified.
-   * When specified, the new access assignment fully replaces the previously assigned access.
-   * @availability stack since=8.10.0
-   * @availability serverless
-   */
-  access?: Access
-  _sort?: SortResults
-}
-
-export enum ApiKeyType {
-  rest,
-  cross_cluster
-}
-
-export class ApiKeyRead implements OverloadOf<ApiKey> {
+  type: ApiKeyType
   /**
    * Creation time for the API key in milliseconds.
    */
@@ -125,10 +48,6 @@ export class ApiKeyRead implements OverloadOf<ApiKey> {
    * Expiration time for the API key in milliseconds.
    */
   expiration?: long
-  /**
-   * Id for the API key
-   */
-  id: Id
   /**
    * Invalidation status for the API key.
    * If the key has been invalidated, it has a value of `true`. Otherwise, it is `false`.
@@ -141,35 +60,19 @@ export class ApiKeyRead implements OverloadOf<ApiKey> {
    */
   invalidation?: EpochTime<UnitMillis>
   /**
-   * Name of the API key.
+   * Principal for which this API key was created
    */
-  name: Name
+  username: Username
   /**
    * Realm name of the principal for which this API key was created.
    */
-  realm?: string
+  realm: string
   /**
    * Realm type of the principal for which this API key was created
    * @availability stack since=8.14.0
    * @availability serverless
    */
   realm_type?: string
-  /**
-   * The type of the API key (e.g. `rest` or `cross_cluster`).
-   * @availability stack since=8.10.0
-   * @availability serverless
-   */
-  type: ApiKeyType
-  /**
-   * Principal for which this API key was created
-   */
-  username: Username
-  /**
-   * The profile uid for the API key owner principal, if requested and if it exists
-   * @availability stack since=8.14.0
-   * @availability serverless
-   */
-  profile_uid?: string
   /**
    * Metadata of the API key
    * @availability stack since=7.13.0
@@ -198,5 +101,19 @@ export class ApiKeyRead implements OverloadOf<ApiKey> {
    * @availability serverless
    */
   access?: Access
+  /**
+   * The profile uid for the API key owner principal, if requested and if it exists
+   * @availability stack since=8.14.0
+   * @availability serverless
+   */
+  profile_uid?: string
+  /**
+   * Sorting values when using the `sort` parameter with the `security.query_api_keys` API.
+   */
   _sort?: SortResults
+}
+
+export enum ApiKeyType {
+  rest,
+  cross_cluster
 }

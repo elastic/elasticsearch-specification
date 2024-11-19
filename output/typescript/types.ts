@@ -17607,40 +17607,21 @@ export interface SecurityAccess {
 }
 
 export interface SecurityApiKey {
-  creation?: long
-  expiration?: long
   id: Id
-  invalidated?: boolean
-  invalidation?: EpochTime<UnitMillis>
   name: Name
-  realm?: string
-  realm_type?: string
-  type?: SecurityApiKeyType
-  username?: Username
-  profile_uid?: string
-  metadata?: Metadata
-  role_descriptors?: Record<string, SecurityRoleDescriptor>
-  limited_by?: Record<string, SecurityRoleDescriptor>[]
-  access?: SecurityAccess
-  _sort?: SortResults
-}
-
-export interface SecurityApiKeyRead {
+  type: SecurityApiKeyType
   creation: long
   expiration?: long
-  id: Id
   invalidated: boolean
   invalidation?: EpochTime<UnitMillis>
-  name: Name
-  realm?: string
-  realm_type?: string
-  type: SecurityApiKeyType
   username: Username
-  profile_uid?: string
+  realm: string
+  realm_type?: string
   metadata: Metadata
   role_descriptors?: Record<string, SecurityRoleDescriptor>
   limited_by?: Record<string, SecurityRoleDescriptor>[]
   access?: SecurityAccess
+  profile_uid?: string
   _sort?: SortResults
 }
 
@@ -17867,11 +17848,16 @@ export interface SecurityActivateUserProfileRequest extends RequestBase {
 
 export type SecurityActivateUserProfileResponse = SecurityUserProfileWithMetadata
 
+export interface SecurityAuthenticateAuthenticateApiKey {
+  id: Id
+  name?: Name
+}
+
 export interface SecurityAuthenticateRequest extends RequestBase {
 }
 
 export interface SecurityAuthenticateResponse {
-  api_key?: SecurityApiKey
+  api_key?: SecurityAuthenticateAuthenticateApiKey
   authentication_realm: SecurityRealmInfo
   email?: string | null
   full_name?: Name | null
@@ -18150,7 +18136,7 @@ export interface SecurityGetApiKeyRequest extends RequestBase {
 }
 
 export interface SecurityGetApiKeyResponse {
-  api_keys: SecurityApiKeyRead[]
+  api_keys: SecurityApiKey[]
 }
 
 export interface SecurityGetBuiltinPrivilegesRequest extends RequestBase {
@@ -18550,7 +18536,7 @@ export interface SecurityQueryApiKeysRequest extends RequestBase {
 export interface SecurityQueryApiKeysResponse {
   total: integer
   count: integer
-  api_keys: SecurityApiKeyRead[]
+  api_keys: SecurityApiKey[]
   aggregations?: Record<AggregateName, SecurityQueryApiKeysApiKeyAggregate>
 }
 
