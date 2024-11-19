@@ -69898,17 +69898,17 @@
         ]
       },
       "ingest._types:DatabaseConfiguration": {
-        "description": "The configuration necessary to identify which IP geolocation provider to use to download the database, as well as any provider-specific configuration necessary for such downloading.\nAt present, the only supported providers are maxmind and ipinfo, and the maxmind provider requires that an account_id (string) is configured.\nA provider (either maxmind or ipinfo) must be specified.",
+        "description": "The configuration necessary to identify which IP geolocation provider to use to download a database, as well as any provider-specific configuration necessary for such downloading.\nAt present, the only supported providers are maxmind and ipinfo, and the maxmind provider requires that an account_id (string) is configured.\nA provider (either maxmind or ipinfo) must be specified.",
         "oneOf": [
           {
-            "$ref": "#/components/schemas/ingest._types:Maxmind"
+            "$ref": "#/components/schemas/ingest._types:MaxmindConfiguration"
           },
           {
-            "$ref": "#/components/schemas/ingest._types:Ipinfo"
+            "$ref": "#/components/schemas/ingest._types:IpinfoConfiguration"
           }
         ]
       },
-      "ingest._types:Maxmind": {
+      "ingest._types:MaxmindConfiguration": {
         "allOf": [
           {
             "$ref": "#/components/schemas/ingest._types:DatabaseConfigurationBase"
@@ -69916,14 +69916,25 @@
           {
             "type": "object",
             "properties": {
-              "account_id": {
-                "$ref": "#/components/schemas/_types:Id"
+              "maxmind": {
+                "$ref": "#/components/schemas/ingest._types:Maxmind"
               }
             },
             "required": [
-              "account_id"
+              "maxmind"
             ]
           }
+        ]
+      },
+      "ingest._types:Maxmind": {
+        "type": "object",
+        "properties": {
+          "account_id": {
+            "$ref": "#/components/schemas/_types:Id"
+          }
+        },
+        "required": [
+          "account_id"
         ]
       },
       "ingest._types:DatabaseConfigurationBase": {
@@ -69937,15 +69948,26 @@
           "name"
         ]
       },
-      "ingest._types:Ipinfo": {
+      "ingest._types:IpinfoConfiguration": {
         "allOf": [
           {
             "$ref": "#/components/schemas/ingest._types:DatabaseConfigurationBase"
           },
           {
-            "type": "object"
+            "type": "object",
+            "properties": {
+              "ipinfo": {
+                "$ref": "#/components/schemas/ingest._types:Ipinfo"
+              }
+            },
+            "required": [
+              "ipinfo"
+            ]
           }
         ]
+      },
+      "ingest._types:Ipinfo": {
+        "type": "object"
       },
       "ingest.get_ip_location_database:DatabaseConfigurationMetadata": {
         "type": "object",

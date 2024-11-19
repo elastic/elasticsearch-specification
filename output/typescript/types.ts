@@ -12855,7 +12855,7 @@ export interface IngestCsvProcessor extends IngestProcessorBase {
   trim?: boolean
 }
 
-export type IngestDatabaseConfiguration = IngestMaxmind | IngestIpinfo
+export type IngestDatabaseConfiguration = IngestMaxmindConfiguration | IngestIpinfoConfiguration
 
 export interface IngestDatabaseConfigurationBase {
   name: Name
@@ -13010,7 +13010,12 @@ export interface IngestIpLocationProcessor extends IngestProcessorBase {
   download_database_on_pipeline_creation?: boolean
 }
 
-export interface IngestIpinfo extends IngestDatabaseConfigurationBase {
+export interface IngestIpinfo {
+  [key: string]: never
+}
+
+export interface IngestIpinfoConfiguration extends IngestDatabaseConfigurationBase {
+  ipinfo: IngestIpinfo
 }
 
 export interface IngestJoinProcessor extends IngestProcessorBase {
@@ -13049,8 +13054,12 @@ export interface IngestLowercaseProcessor extends IngestProcessorBase {
   target_field?: Field
 }
 
-export interface IngestMaxmind extends IngestDatabaseConfigurationBase {
+export interface IngestMaxmind {
   account_id: Id
+}
+
+export interface IngestMaxmindConfiguration extends IngestDatabaseConfigurationBase {
+  maxmind: IngestMaxmind
 }
 
 export interface IngestNetworkDirectionProcessor extends IngestProcessorBase {
