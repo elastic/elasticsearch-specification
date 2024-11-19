@@ -17129,18 +17129,11 @@
                       "items": {
                         "$ref": "#/components/schemas/_types:IndexName"
                       }
-                    },
-                    "remote_cluster": {
-                      "type": "array",
-                      "items": {
-                        "$ref": "#/components/schemas/security._types:RemoteClusterPrivilege"
-                      }
                     }
                   },
                   "required": [
                     "cluster",
-                    "index",
-                    "remote_cluster"
+                    "index"
                   ]
                 }
               }
@@ -53934,9 +53927,6 @@
         "required": [
           "name"
         ]
-      },
-      "security._types:RemoteClusterPrivilege": {
-        "type": "string"
       },
       "security.get_role:Role": {
         "type": "object",

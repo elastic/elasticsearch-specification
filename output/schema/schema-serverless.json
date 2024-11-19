@@ -39159,20 +39159,6 @@
                 }
               }
             }
-          },
-          {
-            "name": "remote_cluster",
-            "required": true,
-            "type": {
-              "kind": "array_of",
-              "value": {
-                "kind": "instance_of",
-                "type": {
-                  "name": "RemoteClusterPrivilege",
-                  "namespace": "security._types"
-                }
-              }
-            }
           }
         ]
       },
@@ -39181,7 +39167,7 @@
         "name": "Response",
         "namespace": "security.get_builtin_privileges"
       },
-      "specLocation": "security/get_builtin_privileges/SecurityGetBuiltinPrivilegesResponse.ts#L26-L32"
+      "specLocation": "security/get_builtin_privileges/SecurityGetBuiltinPrivilegesResponse.ts#L26-L35"
     },
     {
       "attachedBehaviors": [
@@ -39739,7 +39725,7 @@
           }
         }
       ],
-      "specLocation": "security/put_role/SecurityPutRoleRequest.ts#L32-L102"
+      "specLocation": "security/put_role/SecurityPutRoleRequest.ts#L32-L101"
     },
     {
       "body": {
@@ -103066,7 +103052,7 @@
         "name": "IndexPrivilege",
         "namespace": "security._types"
       },
-      "specLocation": "security/_types/Privileges.ts#L362-L404"
+      "specLocation": "security/_types/Privileges.ts#L361-L403"
     },
     {
       "codegenNames": [
@@ -103080,7 +103066,7 @@
         "name": "IndicesPrivilegesQuery",
         "namespace": "security._types"
       },
-      "specLocation": "security/_types/Privileges.ts#L317-L325",
+      "specLocation": "security/_types/Privileges.ts#L316-L324",
       "type": {
         "items": [
           {
@@ -103130,7 +103116,7 @@
           }
         }
       ],
-      "specLocation": "security/_types/Privileges.ts#L327-L337"
+      "specLocation": "security/_types/Privileges.ts#L326-L336"
     },
     {
       "kind": "interface",
@@ -103218,7 +103204,7 @@
         }
       ],
       "shortcutProperty": "source",
-      "specLocation": "security/_types/Privileges.ts#L339-L357"
+      "specLocation": "security/_types/Privileges.ts#L338-L356"
     },
     {
       "codegenNames": [
@@ -103230,7 +103216,7 @@
         "name": "RoleTemplateInlineQuery",
         "namespace": "security._types"
       },
-      "specLocation": "security/_types/Privileges.ts#L359-L360",
+      "specLocation": "security/_types/Privileges.ts#L358-L359",
       "type": {
         "items": [
           {
@@ -103258,7 +103244,7 @@
         "name": "RemoteClusterPrivilege",
         "namespace": "security._types"
       },
-      "specLocation": "security/_types/Privileges.ts#L201-L214"
+      "specLocation": "security/_types/Privileges.ts#L201-L213"
     },
     {
       "isOpen": true,
@@ -139799,7 +139785,7 @@
           }
         }
       ],
-      "specLocation": "security/_types/Privileges.ts#L217-L243"
+      "specLocation": "security/_types/Privileges.ts#L216-L242"
     },
     {
       "kind": "interface",
