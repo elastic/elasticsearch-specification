@@ -8510,7 +8510,7 @@
             "$ref": "#/components/responses/inference.get#200"
           }
         },
-        "x-state": "Technical preview"
+        "x-state": "Added in 8.11.0"
       },
       "put": {
         "tags": [
@@ -8531,7 +8531,7 @@
             "$ref": "#/components/responses/inference.put#200"
           }
         },
-        "x-state": "Technical preview"
+        "x-state": "Added in 8.11.0"
       },
       "post": {
         "tags": [
@@ -8555,7 +8555,7 @@
             "$ref": "#/components/responses/inference.inference#200"
           }
         },
-        "x-state": "Technical preview"
+        "x-state": "Added in 8.11.0"
       },
       "delete": {
         "tags": [
@@ -8579,7 +8579,7 @@
             "$ref": "#/components/responses/inference.delete#200"
           }
         },
-        "x-state": "Technical preview"
+        "x-state": "Added in 8.11.0"
       }
     },
     "/_inference/{task_type}/{inference_id}": {
@@ -8602,7 +8602,7 @@
             "$ref": "#/components/responses/inference.get#200"
           }
         },
-        "x-state": "Technical preview"
+        "x-state": "Added in 8.11.0"
       },
       "put": {
         "tags": [
@@ -8626,7 +8626,7 @@
             "$ref": "#/components/responses/inference.put#200"
           }
         },
-        "x-state": "Technical preview"
+        "x-state": "Added in 8.11.0"
       },
       "post": {
         "tags": [
@@ -8653,7 +8653,7 @@
             "$ref": "#/components/responses/inference.inference#200"
           }
         },
-        "x-state": "Technical preview"
+        "x-state": "Added in 8.11.0"
       },
       "delete": {
         "tags": [
@@ -8680,7 +8680,7 @@
             "$ref": "#/components/responses/inference.delete#200"
           }
         },
-        "x-state": "Technical preview"
+        "x-state": "Added in 8.11.0"
       }
     },
     "/_inference": {
@@ -8695,7 +8695,7 @@
             "$ref": "#/components/responses/inference.get#200"
           }
         },
-        "x-state": "Technical preview"
+        "x-state": "Added in 8.11.0"
       }
     },
     "/": {

@@ -4143,12 +4143,12 @@
     {
       "availability": {
         "serverless": {
-          "stability": "experimental",
+          "stability": "stable",
           "visibility": "public"
         },
         "stack": {
           "since": "8.11.0",
-          "stability": "experimental",
+          "stability": "stable",
           "visibility": "public"
         }
       },
@@ -4185,12 +4185,12 @@
     {
       "availability": {
         "serverless": {
-          "stability": "experimental",
+          "stability": "stable",
           "visibility": "public"
         },
         "stack": {
           "since": "8.11.0",
-          "stability": "experimental",
+          "stability": "stable",
           "visibility": "public"
         }
       },
@@ -4233,12 +4233,12 @@
     {
       "availability": {
         "serverless": {
-          "stability": "experimental",
+          "stability": "stable",
           "visibility": "public"
         },
         "stack": {
           "since": "8.11.0",
-          "stability": "experimental",
+          "stability": "stable",
           "visibility": "public"
         }
       },
@@ -4278,12 +4278,12 @@
     {
       "availability": {
         "serverless": {
-          "stability": "experimental",
+          "stability": "stable",
           "visibility": "public"
         },
         "stack": {
           "since": "8.11.0",
-          "stability": "experimental",
+          "stability": "stable",
           "visibility": "public"
         }
       },
