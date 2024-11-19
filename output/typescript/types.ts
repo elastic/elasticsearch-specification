@@ -17611,16 +17611,40 @@ export interface SecurityApiKey {
   expiration?: long
   id: Id
   invalidated?: boolean
+  invalidation?: EpochTime<UnitMillis>
   name: Name
   realm?: string
   realm_type?: string
+  type?: SecurityApiKeyType
   username?: Username
   profile_uid?: string
   metadata?: Metadata
   role_descriptors?: Record<string, SecurityRoleDescriptor>
   limited_by?: Record<string, SecurityRoleDescriptor>[]
+  access?: SecurityAccess
   _sort?: SortResults
 }
+
+export interface SecurityApiKeyRead {
+  creation: long
+  expiration?: long
+  id: Id
+  invalidated: boolean
+  invalidation?: EpochTime<UnitMillis>
+  name: Name
+  realm?: string
+  realm_type?: string
+  type: SecurityApiKeyType
+  username: Username
+  profile_uid?: string
+  metadata: Metadata
+  role_descriptors?: Record<string, SecurityRoleDescriptor>
+  limited_by?: Record<string, SecurityRoleDescriptor>[]
+  access?: SecurityAccess
+  _sort?: SortResults
+}
+
+export type SecurityApiKeyType = 'rest' | 'cross_cluster'
 
 export interface SecurityApplicationGlobalUserPrivileges {
   manage: SecurityManageUserPrivileges
@@ -18118,7 +18142,7 @@ export interface SecurityGetApiKeyRequest extends RequestBase {
 }
 
 export interface SecurityGetApiKeyResponse {
-  api_keys: SecurityApiKey[]
+  api_keys: SecurityApiKeyRead[]
 }
 
 export interface SecurityGetBuiltinPrivilegesRequest extends RequestBase {
@@ -18518,7 +18542,7 @@ export interface SecurityQueryApiKeysRequest extends RequestBase {
 export interface SecurityQueryApiKeysResponse {
   total: integer
   count: integer
-  api_keys: SecurityApiKey[]
+  api_keys: SecurityApiKeyRead[]
   aggregations?: Record<AggregateName, SecurityQueryApiKeysApiKeyAggregate>
 }
 

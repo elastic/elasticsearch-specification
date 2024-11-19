@@ -27816,7 +27816,7 @@
                     "api_keys": {
                       "type": "array",
                       "items": {
-                        "$ref": "#/components/schemas/security._types:ApiKey"
+                        "$ref": "#/components/schemas/security._types:ApiKeyRead"
                       }
                     }
                   },
@@ -81796,6 +81796,9 @@
             "description": "Invalidation status for the API key.\nIf the key has been invalidated, it has a value of `true`. Otherwise, it is `false`.",
             "type": "boolean"
           },
+          "invalidation": {
+            "$ref": "#/components/schemas/_types:EpochTimeUnitMillis"
+          },
           "name": {
             "$ref": "#/components/schemas/_types:Name"
           },
@@ -81806,6 +81809,9 @@
           "realm_type": {
             "description": "Realm type of the principal for which this API key was created",
             "type": "string"
+          },
+          "type": {
+            "$ref": "#/components/schemas/security._types:ApiKeyType"
           },
           "username": {
             "$ref": "#/components/schemas/_types:Username"
@@ -81834,6 +81840,9 @@
               }
             }
           },
+          "access": {
+            "$ref": "#/components/schemas/security._types:Access"
+          },
           "_sort": {
             "$ref": "#/components/schemas/_types:SortResults"
           }
@@ -81841,6 +81850,13 @@
         "required": [
           "id",
           "name"
+        ]
+      },
+      "security._types:ApiKeyType": {
+        "type": "string",
+        "enum": [
+          "rest",
+          "cross_cluster"
         ]
       },
       "security._types:RoleDescriptor": {
@@ -82266,72 +82282,6 @@
           "resources"
         ]
       },
-      "security._types:RealmInfo": {
-        "type": "object",
-        "properties": {
-          "name": {
-            "$ref": "#/components/schemas/_types:Name"
-          },
-          "type": {
-            "type": "string"
-          }
-        },
-        "required": [
-          "name",
-          "type"
-        ]
-      },
-      "security.authenticate:Token": {
-        "type": "object",
-        "properties": {
-          "name": {
-            "$ref": "#/components/schemas/_types:Name"
-          },
-          "type": {
-            "type": "string"
-          }
-        },
-        "required": [
-          "name"
-        ]
-      },
-      "security._types:BulkError": {
-        "type": "object",
-        "properties": {
-          "count": {
-            "description": "The number of errors",
-            "type": "number"
-          },
-          "details": {
-            "description": "Details about the errors, keyed by role name",
-            "type": "object",
-            "additionalProperties": {
-              "$ref": "#/components/schemas/_types:ErrorCause"
-            }
-          }
-        },
-        "required": [
-          "count",
-          "details"
-        ]
-      },
-      "security._types:ClusterNode": {
-        "type": "object",
-        "properties": {
-          "name": {
-            "$ref": "#/components/schemas/_types:Name"
-          }
-        },
-        "required": [
-          "name"
-        ]
-      },
-      "_types:Namespace": {
-        "type": "string"
-      },
-      "_types:Service": {
-        "type": "string"
-      },
       "security._types:Access": {
         "type": "object",
         "properties": {
@@ -82409,6 +82359,72 @@
           "names"
         ]
       },
+      "security._types:RealmInfo": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "$ref": "#/components/schemas/_types:Name"
+          },
+          "type": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "name",
+          "type"
+        ]
+      },
+      "security.authenticate:Token": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "$ref": "#/components/schemas/_types:Name"
+          },
+          "type": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "name"
+        ]
+      },
+      "security._types:BulkError": {
+        "type": "object",
+        "properties": {
+          "count": {
+            "description": "The number of errors",
+            "type": "number"
+          },
+          "details": {
+            "description": "Details about the errors, keyed by role name",
+            "type": "object",
+            "additionalProperties": {
+              "$ref": "#/components/schemas/_types:ErrorCause"
+            }
+          }
+        },
+        "required": [
+          "count",
+          "details"
+        ]
+      },
+      "security._types:ClusterNode": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "$ref": "#/components/schemas/_types:Name"
+          }
+        },
+        "required": [
+          "name"
+        ]
+      },
+      "_types:Namespace": {
+        "type": "string"
+      },
+      "_types:Service": {
+        "type": "string"
+      },
       "security.create_service_token:Token": {
         "type": "object",
         "properties": {
@@ -82448,6 +82464,85 @@
         "required": [
           "name",
           "value"
+        ]
+      },
+      "security._types:ApiKeyRead": {
+        "type": "object",
+        "properties": {
+          "creation": {
+            "description": "Creation time for the API key in milliseconds.",
+            "type": "number"
+          },
+          "expiration": {
+            "description": "Expiration time for the API key in milliseconds.",
+            "type": "number"
+          },
+          "id": {
+            "$ref": "#/components/schemas/_types:Id"
+          },
+          "invalidated": {
+            "description": "Invalidation status for the API key.\nIf the key has been invalidated, it has a value of `true`. Otherwise, it is `false`.",
+            "type": "boolean"
+          },
+          "invalidation": {
+            "$ref": "#/components/schemas/_types:EpochTimeUnitMillis"
+          },
+          "name": {
+            "$ref": "#/components/schemas/_types:Name"
+          },
+          "realm": {
+            "description": "Realm name of the principal for which this API key was created.",
+            "type": "string"
+          },
+          "realm_type": {
+            "description": "Realm type of the principal for which this API key was created",
+            "type": "string"
+          },
+          "type": {
+            "$ref": "#/components/schemas/security._types:ApiKeyType"
+          },
+          "username": {
+            "$ref": "#/components/schemas/_types:Username"
+          },
+          "profile_uid": {
+            "description": "The profile uid for the API key owner principal, if requested and if it exists",
+            "type": "string"
+          },
+          "metadata": {
+            "$ref": "#/components/schemas/_types:Metadata"
+          },
+          "role_descriptors": {
+            "description": "The role descriptors assigned to this API key when it was created or last updated.\nAn empty role descriptor means the API key inherits the owner user’s permissions.",
+            "type": "object",
+            "additionalProperties": {
+              "$ref": "#/components/schemas/security._types:RoleDescriptor"
+            }
+          },
+          "limited_by": {
+            "description": "The owner user’s permissions associated with the API key.\nIt is a point-in-time snapshot captured at creation and subsequent updates.\nAn API key’s effective permissions are an intersection of its assigned privileges and the owner user’s permissions.",
+            "type": "array",
+            "items": {
+              "type": "object",
+              "additionalProperties": {
+                "$ref": "#/components/schemas/security._types:RoleDescriptor"
+              }
+            }
+          },
+          "access": {
+            "$ref": "#/components/schemas/security._types:Access"
+          },
+          "_sort": {
+            "$ref": "#/components/schemas/_types:SortResults"
+          }
+        },
+        "required": [
+          "creation",
+          "id",
+          "invalidated",
+          "name",
+          "type",
+          "username",
+          "metadata"
         ]
       },
       "security.put_privileges:Actions": {
@@ -91857,7 +91952,7 @@
                   "description": "A list of API key information.",
                   "type": "array",
                   "items": {
-                    "$ref": "#/components/schemas/security._types:ApiKey"
+                    "$ref": "#/components/schemas/security._types:ApiKeyRead"
                   }
                 },
                 "aggregations": {

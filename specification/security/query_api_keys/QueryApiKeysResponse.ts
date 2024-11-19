@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { ApiKey } from '@security/_types/ApiKey'
+import { ApiKeyRead } from '@security/_types/ApiKey'
 import { Dictionary } from '@spec_utils/Dictionary'
 import { AggregateName } from '@_types/common'
 import { integer } from '@_types/Numeric'
@@ -36,7 +36,7 @@ export class Response {
     /**
      * A list of API key information.
      */
-    api_keys: ApiKey[]
+    api_keys: ApiKeyRead[]
     /**
      * The aggregations result, if requested.
      */

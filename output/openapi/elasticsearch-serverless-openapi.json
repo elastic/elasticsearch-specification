@@ -16830,7 +16830,7 @@
                     "api_keys": {
                       "type": "array",
                       "items": {
-                        "$ref": "#/components/schemas/security._types:ApiKey"
+                        "$ref": "#/components/schemas/security._types:ApiKeyRead"
                       }
                     }
                   },
@@ -53582,6 +53582,9 @@
             "description": "Invalidation status for the API key.\nIf the key has been invalidated, it has a value of `true`. Otherwise, it is `false`.",
             "type": "boolean"
           },
+          "invalidation": {
+            "$ref": "#/components/schemas/_types:EpochTimeUnitMillis"
+          },
           "name": {
             "$ref": "#/components/schemas/_types:Name"
           },
@@ -53592,6 +53595,9 @@
           "realm_type": {
             "description": "Realm type of the principal for which this API key was created",
             "type": "string"
+          },
+          "type": {
+            "$ref": "#/components/schemas/security._types:ApiKeyType"
           },
           "username": {
             "$ref": "#/components/schemas/_types:Username"
@@ -53620,6 +53626,9 @@
               }
             }
           },
+          "access": {
+            "$ref": "#/components/schemas/security._types:Access"
+          },
           "_sort": {
             "$ref": "#/components/schemas/_types:SortResults"
           }
@@ -53627,6 +53636,13 @@
         "required": [
           "id",
           "name"
+        ]
+      },
+      "security._types:ApiKeyType": {
+        "type": "string",
+        "enum": [
+          "rest",
+          "cross_cluster"
         ]
       },
       "security._types:RoleDescriptor": {
@@ -53876,6 +53892,79 @@
           "resources"
         ]
       },
+      "security._types:Access": {
+        "type": "object",
+        "properties": {
+          "replication": {
+            "description": "A list of indices permission entries for cross-cluster replication.",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/security._types:ReplicationAccess"
+            }
+          },
+          "search": {
+            "description": "A list of indices permission entries for cross-cluster search.",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/security._types:SearchAccess"
+            }
+          }
+        }
+      },
+      "security._types:ReplicationAccess": {
+        "type": "object",
+        "properties": {
+          "names": {
+            "description": "A list of indices (or index name patterns) to which the permissions in this entry apply.",
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/_types:IndexName"
+              },
+              {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/_types:IndexName"
+                }
+              }
+            ]
+          },
+          "allow_restricted_indices": {
+            "description": "This needs to be set to true if the patterns in the names field should cover system indices.",
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "names"
+        ]
+      },
+      "security._types:SearchAccess": {
+        "type": "object",
+        "properties": {
+          "field_security": {
+            "$ref": "#/components/schemas/security._types:FieldSecurity"
+          },
+          "names": {
+            "description": "A list of indices (or index name patterns) to which the permissions in this entry apply.",
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/_types:IndexName"
+              },
+              {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/_types:IndexName"
+                }
+              }
+            ]
+          },
+          "query": {
+            "$ref": "#/components/schemas/security._types:IndicesPrivilegesQuery"
+          }
+        },
+        "required": [
+          "names"
+        ]
+      },
       "security._types:RealmInfo": {
         "type": "object",
         "properties": {
@@ -53903,6 +53992,85 @@
         },
         "required": [
           "name"
+        ]
+      },
+      "security._types:ApiKeyRead": {
+        "type": "object",
+        "properties": {
+          "creation": {
+            "description": "Creation time for the API key in milliseconds.",
+            "type": "number"
+          },
+          "expiration": {
+            "description": "Expiration time for the API key in milliseconds.",
+            "type": "number"
+          },
+          "id": {
+            "$ref": "#/components/schemas/_types:Id"
+          },
+          "invalidated": {
+            "description": "Invalidation status for the API key.\nIf the key has been invalidated, it has a value of `true`. Otherwise, it is `false`.",
+            "type": "boolean"
+          },
+          "invalidation": {
+            "$ref": "#/components/schemas/_types:EpochTimeUnitMillis"
+          },
+          "name": {
+            "$ref": "#/components/schemas/_types:Name"
+          },
+          "realm": {
+            "description": "Realm name of the principal for which this API key was created.",
+            "type": "string"
+          },
+          "realm_type": {
+            "description": "Realm type of the principal for which this API key was created",
+            "type": "string"
+          },
+          "type": {
+            "$ref": "#/components/schemas/security._types:ApiKeyType"
+          },
+          "username": {
+            "$ref": "#/components/schemas/_types:Username"
+          },
+          "profile_uid": {
+            "description": "The profile uid for the API key owner principal, if requested and if it exists",
+            "type": "string"
+          },
+          "metadata": {
+            "$ref": "#/components/schemas/_types:Metadata"
+          },
+          "role_descriptors": {
+            "description": "The role descriptors assigned to this API key when it was created or last updated.\nAn empty role descriptor means the API key inherits the owner user’s permissions.",
+            "type": "object",
+            "additionalProperties": {
+              "$ref": "#/components/schemas/security._types:RoleDescriptor"
+            }
+          },
+          "limited_by": {
+            "description": "The owner user’s permissions associated with the API key.\nIt is a point-in-time snapshot captured at creation and subsequent updates.\nAn API key’s effective permissions are an intersection of its assigned privileges and the owner user’s permissions.",
+            "type": "array",
+            "items": {
+              "type": "object",
+              "additionalProperties": {
+                "$ref": "#/components/schemas/security._types:RoleDescriptor"
+              }
+            }
+          },
+          "access": {
+            "$ref": "#/components/schemas/security._types:Access"
+          },
+          "_sort": {
+            "$ref": "#/components/schemas/_types:SortResults"
+          }
+        },
+        "required": [
+          "creation",
+          "id",
+          "invalidated",
+          "name",
+          "type",
+          "username",
+          "metadata"
         ]
       },
       "security._types:RemoteClusterPrivilege": {
@@ -56440,7 +56608,7 @@
                   "description": "A list of API key information.",
                   "type": "array",
                   "items": {
-                    "$ref": "#/components/schemas/security._types:ApiKey"
+                    "$ref": "#/components/schemas/security._types:ApiKeyRead"
                   }
                 },
                 "aggregations": {
