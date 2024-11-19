@@ -103261,6 +103261,20 @@
       "specLocation": "security/_types/Privileges.ts#L201-L214"
     },
     {
+      "isOpen": true,
+      "kind": "enum",
+      "members": [
+        {
+          "name": "search_application_query"
+        }
+      ],
+      "name": {
+        "name": "RestrictionWorkflow",
+        "namespace": "security._types"
+      },
+      "specLocation": "security/_types/RoleDescriptor.ts#L134-L137"
+    },
+    {
       "kind": "enum",
       "members": [
         {
@@ -139677,6 +139691,18 @@
           }
         },
         {
+          "description": "Restriction for when the role descriptor is allowed to be effective.",
+          "name": "restriction",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Restriction",
+              "namespace": "security._types"
+            }
+          }
+        },
+        {
           "name": "transient_metadata",
           "required": false,
           "type": {
@@ -139695,7 +139721,7 @@
           }
         }
       ],
-      "specLocation": "security/_types/RoleDescriptor.ts#L33-L79"
+      "specLocation": "security/_types/RoleDescriptor.ts#L33-L80"
     },
     {
       "kind": "interface",
@@ -139858,6 +139884,30 @@
         }
       ],
       "specLocation": "security/_types/Privileges.ts#L27-L40"
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "Restriction",
+        "namespace": "security._types"
+      },
+      "properties": [
+        {
+          "name": "workflows",
+          "required": true,
+          "type": {
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "RestrictionWorkflow",
+                "namespace": "security._types"
+              }
+            }
+          }
+        }
+      ],
+      "specLocation": "security/_types/RoleDescriptor.ts#L130-L132"
     },
     {
       "kind": "interface",
