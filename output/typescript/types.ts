@@ -17197,6 +17197,7 @@ export interface QueryRulesListRulesetsQueryRulesetListItem {
   ruleset_id: Id
   rule_total_count: integer
   rule_criteria_types_counts: Record<string, integer>
+  rule_type_counts: Record<string, integer>
 }
 
 export interface QueryRulesListRulesetsRequest extends RequestBase {
