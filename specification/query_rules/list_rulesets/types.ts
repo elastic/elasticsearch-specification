@@ -31,7 +31,12 @@ export class QueryRulesetListItem {
   rule_total_count: integer
 
   /**
-   * A map of criteria type to the number of rules of that type
+   * A map of criteria type (e.g. exact) to the number of rules of that type
    */
   rule_criteria_types_counts: Dictionary<string, integer>
+
+  /**
+   * A map of rule type (e.g. pinned) to the number of rules of that type
+   */
+  rule_type_counts: Dictionary<string, integer>
 }
