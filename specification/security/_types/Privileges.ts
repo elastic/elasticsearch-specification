@@ -200,7 +200,6 @@ export enum ClusterPrivilege {
 
 /**
  * The subset of cluster level privileges that can be defined for remote clusters.
- * @availability stack
  */
 export enum RemoteClusterPrivilege {
   /**
