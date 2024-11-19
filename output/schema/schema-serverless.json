@@ -4298,12 +4298,12 @@
     {
       "availability": {
         "serverless": {
-          "stability": "experimental",
+          "stability": "stable",
           "visibility": "public"
         },
         "stack": {
           "since": "8.11.0",
-          "stability": "experimental",
+          "stability": "stable",
           "visibility": "public"
         }
       },
@@ -4340,12 +4340,12 @@
     {
       "availability": {
         "serverless": {
-          "stability": "experimental",
+          "stability": "stable",
           "visibility": "public"
         },
         "stack": {
           "since": "8.11.0",
-          "stability": "experimental",
+          "stability": "stable",
           "visibility": "public"
         }
       },
@@ -4388,12 +4388,12 @@
     {
       "availability": {
         "serverless": {
-          "stability": "experimental",
+          "stability": "stable",
           "visibility": "public"
         },
         "stack": {
           "since": "8.11.0",
-          "stability": "experimental",
+          "stability": "stable",
           "visibility": "public"
         }
       },
@@ -4433,12 +4433,12 @@
     {
       "availability": {
         "serverless": {
-          "stability": "experimental",
+          "stability": "stable",
           "visibility": "public"
         },
         "stack": {
           "since": "8.11.0",
-          "stability": "experimental",
+          "stability": "stable",
           "visibility": "public"
         }
       },
@@ -103132,7 +103132,7 @@
         "name": "IndexPrivilege",
         "namespace": "security._types"
       },
-      "specLocation": "security/_types/Privileges.ts#L360-L402"
+      "specLocation": "security/_types/Privileges.ts#L362-L404"
     },
     {
       "codegenNames": [
@@ -103146,7 +103146,7 @@
         "name": "IndicesPrivilegesQuery",
         "namespace": "security._types"
       },
-      "specLocation": "security/_types/Privileges.ts#L315-L323",
+      "specLocation": "security/_types/Privileges.ts#L317-L325",
       "type": {
         "items": [
           {
@@ -103196,7 +103196,7 @@
           }
         }
       ],
-      "specLocation": "security/_types/Privileges.ts#L325-L335"
+      "specLocation": "security/_types/Privileges.ts#L327-L337"
     },
     {
       "kind": "interface",
@@ -103284,7 +103284,7 @@
         }
       ],
       "shortcutProperty": "source",
-      "specLocation": "security/_types/Privileges.ts#L337-L355"
+      "specLocation": "security/_types/Privileges.ts#L339-L357"
     },
     {
       "codegenNames": [
@@ -103296,7 +103296,7 @@
         "name": "RoleTemplateInlineQuery",
         "namespace": "security._types"
       },
-      "specLocation": "security/_types/Privileges.ts#L357-L358",
+      "specLocation": "security/_types/Privileges.ts#L359-L360",
       "type": {
         "items": [
           {
@@ -140139,11 +140139,26 @@
           "name": "names",
           "required": true,
           "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "Indices",
-              "namespace": "_types"
-            }
+            "items": [
+              {
+                "kind": "instance_of",
+                "type": {
+                  "name": "IndexName",
+                  "namespace": "_types"
+                }
+              },
+              {
+                "kind": "array_of",
+                "value": {
+                  "kind": "instance_of",
+                  "type": {
+                    "name": "IndexName",
+                    "namespace": "_types"
+                  }
+                }
+              }
+            ],
+            "kind": "union_of"
           }
         },
         {
@@ -140174,7 +140189,7 @@
           }
         }
       ],
-      "specLocation": "security/_types/Privileges.ts#L217-L241"
+      "specLocation": "security/_types/Privileges.ts#L217-L243"
     },
     {
       "kind": "interface",
