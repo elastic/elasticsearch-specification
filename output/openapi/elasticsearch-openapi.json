@@ -14695,7 +14695,7 @@
             "$ref": "#/components/responses/inference.get#200"
           }
         },
-        "x-state": "Technical preview"
+        "x-state": "Added in 8.11.0"
       },
       "put": {
         "tags": [
@@ -14716,7 +14716,7 @@
             "$ref": "#/components/responses/inference.put#200"
           }
         },
-        "x-state": "Technical preview"
+        "x-state": "Added in 8.11.0"
       },
       "post": {
         "tags": [
@@ -14740,7 +14740,7 @@
             "$ref": "#/components/responses/inference.inference#200"
           }
         },
-        "x-state": "Technical preview"
+        "x-state": "Added in 8.11.0"
       },
       "delete": {
         "tags": [
@@ -14764,7 +14764,7 @@
             "$ref": "#/components/responses/inference.delete#200"
           }
         },
-        "x-state": "Technical preview"
+        "x-state": "Added in 8.11.0"
       }
     },
     "/_inference/{task_type}/{inference_id}": {
@@ -14787,7 +14787,7 @@
             "$ref": "#/components/responses/inference.get#200"
           }
         },
-        "x-state": "Technical preview"
+        "x-state": "Added in 8.11.0"
       },
       "put": {
         "tags": [
@@ -14811,7 +14811,7 @@
             "$ref": "#/components/responses/inference.put#200"
           }
         },
-        "x-state": "Technical preview"
+        "x-state": "Added in 8.11.0"
       },
       "post": {
         "tags": [
@@ -14838,7 +14838,7 @@
             "$ref": "#/components/responses/inference.inference#200"
           }
         },
-        "x-state": "Technical preview"
+        "x-state": "Added in 8.11.0"
       },
       "delete": {
         "tags": [
@@ -14865,7 +14865,7 @@
             "$ref": "#/components/responses/inference.delete#200"
           }
         },
-        "x-state": "Technical preview"
+        "x-state": "Added in 8.11.0"
       }
     },
     "/_inference": {
@@ -14880,7 +14880,7 @@
             "$ref": "#/components/responses/inference.get#200"
           }
         },
-        "x-state": "Technical preview"
+        "x-state": "Added in 8.11.0"
       }
     },
     "/": {
@@ -81920,7 +81920,18 @@
             "$ref": "#/components/schemas/security._types:FieldSecurity"
           },
           "names": {
-            "$ref": "#/components/schemas/_types:Indices"
+            "description": "A list of indices (or index name patterns) to which the permissions in this entry apply.",
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/_types:IndexName"
+              },
+              {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/_types:IndexName"
+                }
+              }
+            ]
           },
           "privileges": {
             "description": "The index level privileges that owners of the role have on the specified indices.",
@@ -82056,7 +82067,18 @@
             "$ref": "#/components/schemas/security._types:FieldSecurity"
           },
           "names": {
-            "$ref": "#/components/schemas/_types:Indices"
+            "description": "A list of indices (or index name patterns) to which the permissions in this entry apply.",
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/_types:IndexName"
+              },
+              {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/_types:IndexName"
+                }
+              }
+            ]
           },
           "privileges": {
             "description": "The index level privileges that owners of the role have on the specified indices.",
@@ -82286,10 +82308,17 @@
         "properties": {
           "names": {
             "description": "A list of indices (or index name patterns) to which the permissions in this entry apply.",
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/_types:IndexName"
-            }
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/_types:IndexName"
+              },
+              {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/_types:IndexName"
+                }
+              }
+            ]
           },
           "allow_restricted_indices": {
             "description": "This needs to be set to true if the patterns in the names field should cover system indices.",
@@ -82308,10 +82337,17 @@
           },
           "names": {
             "description": "A list of indices (or index name patterns) to which the permissions in this entry apply.",
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/_types:IndexName"
-            }
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/_types:IndexName"
+              },
+              {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/_types:IndexName"
+                }
+              }
+            ]
           },
           "query": {
             "$ref": "#/components/schemas/security._types:IndicesPrivilegesQuery"
@@ -82815,7 +82851,18 @@
             }
           },
           "names": {
-            "$ref": "#/components/schemas/_types:Indices"
+            "description": "A list of indices (or index name patterns) to which the permissions in this entry apply.",
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/_types:IndexName"
+              },
+              {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/_types:IndexName"
+                }
+              }
+            ]
           },
           "privileges": {
             "description": "The index level privileges that owners of the role have on the specified indices.",
