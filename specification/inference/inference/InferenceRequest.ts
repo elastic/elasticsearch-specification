@@ -26,8 +26,8 @@ import { Duration } from '@_types/Time'
 /**
  * Perform inference on the service
  * @rest_spec_name inference.inference
- * @availability stack since=8.11.0 stability=experimental visibility=public
- * @availability serverless stability=experimental visibility=public
+ * @availability stack since=8.11.0 stability=stable visibility=public
+ * @availability serverless stability=stable visibility=public
  */
 export interface Request extends RequestBase {
   path_parts: {
