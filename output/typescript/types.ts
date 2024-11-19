@@ -14201,11 +14201,15 @@ export interface MlDetectorRead {
 }
 
 export interface MlDiscoveryNode {
-  attributes: Record<string, string>
+  name?: Name
   ephemeral_id: Id
-  id: Id
-  name: Name
   transport_address: TransportAddress
+  external_id?: string
+  attributes?: Record<string, string>
+  roles: string[]
+  version?: VersionString
+  min_index_version?: integer
+  max_index_version?: integer
 }
 
 export type MlExcludeFrequent = 'all' | 'none' | 'by' | 'over'

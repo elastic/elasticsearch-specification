@@ -18,10 +18,9 @@
  */
 
 import { Dictionary } from '@spec_utils/Dictionary'
-import { Id, Name } from '@_types/common'
+import { Id, Name, VersionString } from '@_types/common'
 import { TransportAddress } from '@_types/Networking'
 import { integer } from '@_types/Numeric'
-import { VersionString } from '../../../output/typescript/types'
 
 export class DiscoveryNode {
   name?: Name

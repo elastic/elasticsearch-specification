@@ -74091,31 +74091,44 @@
       "ml._types:DiscoveryNode": {
         "type": "object",
         "properties": {
+          "name": {
+            "$ref": "#/components/schemas/_types:Name"
+          },
+          "ephemeral_id": {
+            "$ref": "#/components/schemas/_types:Id"
+          },
+          "transport_address": {
+            "$ref": "#/components/schemas/_types:TransportAddress"
+          },
+          "external_id": {
+            "type": "string"
+          },
           "attributes": {
             "type": "object",
             "additionalProperties": {
               "type": "string"
             }
           },
-          "ephemeral_id": {
-            "$ref": "#/components/schemas/_types:Id"
+          "roles": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
           },
-          "id": {
-            "$ref": "#/components/schemas/_types:Id"
+          "version": {
+            "$ref": "#/components/schemas/_types:VersionString"
           },
-          "name": {
-            "$ref": "#/components/schemas/_types:Name"
+          "min_index_version": {
+            "type": "number"
           },
-          "transport_address": {
-            "$ref": "#/components/schemas/_types:TransportAddress"
+          "max_index_version": {
+            "type": "number"
           }
         },
         "required": [
-          "attributes",
           "ephemeral_id",
-          "id",
-          "name",
-          "transport_address"
+          "transport_address",
+          "roles"
         ]
       },
       "ml._types:DatafeedTimingStats": {
