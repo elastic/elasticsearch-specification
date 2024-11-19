@@ -14751,7 +14751,7 @@
             "$ref": "#/components/responses/inference.get#200"
           }
         },
-        "x-state": "Technical preview"
+        "x-state": "Added in 8.11.0"
       },
       "put": {
         "tags": [
@@ -14772,7 +14772,7 @@
             "$ref": "#/components/responses/inference.put#200"
           }
         },
-        "x-state": "Technical preview"
+        "x-state": "Added in 8.11.0"
       },
       "post": {
         "tags": [
@@ -14796,7 +14796,7 @@
             "$ref": "#/components/responses/inference.inference#200"
           }
         },
-        "x-state": "Technical preview"
+        "x-state": "Added in 8.11.0"
       },
       "delete": {
         "tags": [
@@ -14820,7 +14820,7 @@
             "$ref": "#/components/responses/inference.delete#200"
           }
         },
-        "x-state": "Technical preview"
+        "x-state": "Added in 8.11.0"
       }
     },
     "/_inference/{task_type}/{inference_id}": {
@@ -14843,7 +14843,7 @@
             "$ref": "#/components/responses/inference.get#200"
           }
         },
-        "x-state": "Technical preview"
+        "x-state": "Added in 8.11.0"
       },
       "put": {
         "tags": [
@@ -14867,7 +14867,7 @@
             "$ref": "#/components/responses/inference.put#200"
           }
         },
-        "x-state": "Technical preview"
+        "x-state": "Added in 8.11.0"
       },
       "post": {
         "tags": [
@@ -14894,7 +14894,7 @@
             "$ref": "#/components/responses/inference.inference#200"
           }
         },
-        "x-state": "Technical preview"
+        "x-state": "Added in 8.11.0"
       },
       "delete": {
         "tags": [
@@ -14921,7 +14921,7 @@
             "$ref": "#/components/responses/inference.delete#200"
           }
         },
-        "x-state": "Technical preview"
+        "x-state": "Added in 8.11.0"
       }
     },
     "/_inference": {
@@ -14936,7 +14936,7 @@
             "$ref": "#/components/responses/inference.get#200"
           }
         },
-        "x-state": "Technical preview"
+        "x-state": "Added in 8.11.0"
       }
     },
     "/": {
@@ -80381,7 +80381,14 @@
             "type": "number"
           },
           "rule_criteria_types_counts": {
-            "description": "A map of criteria type to the number of rules of that type",
+            "description": "A map of criteria type (e.g. exact) to the number of rules of that type",
+            "type": "object",
+            "additionalProperties": {
+              "type": "number"
+            }
+          },
+          "rule_type_counts": {
+            "description": "A map of rule type (e.g. pinned) to the number of rules of that type",
             "type": "object",
             "additionalProperties": {
               "type": "number"
@@ -80391,7 +80398,8 @@
         "required": [
           "ruleset_id",
           "rule_total_count",
-          "rule_criteria_types_counts"
+          "rule_criteria_types_counts",
+          "rule_type_counts"
         ]
       },
       "query_rules.test:QueryRulesetMatchedRule": {
@@ -82149,6 +82157,9 @@
             "description": "Optional description of the role descriptor",
             "type": "string"
           },
+          "restriction": {
+            "$ref": "#/components/schemas/security._types:Restriction"
+          },
           "transient_metadata": {
             "type": "object",
             "additionalProperties": {
@@ -82504,6 +82515,33 @@
           "application",
           "privileges",
           "resources"
+        ]
+      },
+      "security._types:Restriction": {
+        "type": "object",
+        "properties": {
+          "workflows": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/security._types:RestrictionWorkflow"
+            }
+          }
+        },
+        "required": [
+          "workflows"
+        ]
+      },
+      "security._types:RestrictionWorkflow": {
+        "anyOf": [
+          {
+            "type": "string",
+            "enum": [
+              "search_application_query"
+            ]
+          },
+          {
+            "type": "string"
+          }
         ]
       },
       "security._types:RealmInfo": {
@@ -82960,6 +82998,9 @@
           "description": {
             "description": "Optional description of the role descriptor",
             "type": "string"
+          },
+          "restriction": {
+            "$ref": "#/components/schemas/security._types:Restriction"
           },
           "transient_metadata": {
             "type": "object",

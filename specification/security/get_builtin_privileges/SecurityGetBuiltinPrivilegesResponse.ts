@@ -27,6 +27,9 @@ export class Response {
   body: {
     cluster: ClusterPrivilege[]
     index: IndexName[]
+    /**
+     * @availability stack since=8.15.0
+     */
     remote_cluster: RemoteClusterPrivilege[]
   }
 }

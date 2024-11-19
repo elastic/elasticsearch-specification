@@ -4143,12 +4143,12 @@
     {
       "availability": {
         "serverless": {
-          "stability": "experimental",
+          "stability": "stable",
           "visibility": "public"
         },
         "stack": {
           "since": "8.11.0",
-          "stability": "experimental",
+          "stability": "stable",
           "visibility": "public"
         }
       },
@@ -4185,12 +4185,12 @@
     {
       "availability": {
         "serverless": {
-          "stability": "experimental",
+          "stability": "stable",
           "visibility": "public"
         },
         "stack": {
           "since": "8.11.0",
-          "stability": "experimental",
+          "stability": "stable",
           "visibility": "public"
         }
       },
@@ -4233,12 +4233,12 @@
     {
       "availability": {
         "serverless": {
-          "stability": "experimental",
+          "stability": "stable",
           "visibility": "public"
         },
         "stack": {
           "since": "8.11.0",
-          "stability": "experimental",
+          "stability": "stable",
           "visibility": "public"
         }
       },
@@ -4278,12 +4278,12 @@
     {
       "availability": {
         "serverless": {
-          "stability": "experimental",
+          "stability": "stable",
           "visibility": "public"
         },
         "stack": {
           "since": "8.11.0",
-          "stability": "experimental",
+          "stability": "stable",
           "visibility": "public"
         }
       },
@@ -39159,20 +39159,6 @@
                 }
               }
             }
-          },
-          {
-            "name": "remote_cluster",
-            "required": true,
-            "type": {
-              "kind": "array_of",
-              "value": {
-                "kind": "instance_of",
-                "type": {
-                  "name": "RemoteClusterPrivilege",
-                  "namespace": "security._types"
-                }
-              }
-            }
           }
         ]
       },
@@ -39181,7 +39167,7 @@
         "name": "Response",
         "namespace": "security.get_builtin_privileges"
       },
-      "specLocation": "security/get_builtin_privileges/SecurityGetBuiltinPrivilegesResponse.ts#L26-L32"
+      "specLocation": "security/get_builtin_privileges/SecurityGetBuiltinPrivilegesResponse.ts#L26-L35"
     },
     {
       "attachedBehaviors": [
@@ -39739,7 +39725,7 @@
           }
         }
       ],
-      "specLocation": "security/put_role/SecurityPutRoleRequest.ts#L32-L102"
+      "specLocation": "security/put_role/SecurityPutRoleRequest.ts#L32-L101"
     },
     {
       "body": {
@@ -103066,7 +103052,7 @@
         "name": "IndexPrivilege",
         "namespace": "security._types"
       },
-      "specLocation": "security/_types/Privileges.ts#L362-L404"
+      "specLocation": "security/_types/Privileges.ts#L361-L403"
     },
     {
       "codegenNames": [
@@ -103080,7 +103066,7 @@
         "name": "IndicesPrivilegesQuery",
         "namespace": "security._types"
       },
-      "specLocation": "security/_types/Privileges.ts#L317-L325",
+      "specLocation": "security/_types/Privileges.ts#L316-L324",
       "type": {
         "items": [
           {
@@ -103130,7 +103116,7 @@
           }
         }
       ],
-      "specLocation": "security/_types/Privileges.ts#L327-L337"
+      "specLocation": "security/_types/Privileges.ts#L326-L336"
     },
     {
       "kind": "interface",
@@ -103218,7 +103204,7 @@
         }
       ],
       "shortcutProperty": "source",
-      "specLocation": "security/_types/Privileges.ts#L339-L357"
+      "specLocation": "security/_types/Privileges.ts#L338-L356"
     },
     {
       "codegenNames": [
@@ -103230,7 +103216,7 @@
         "name": "RoleTemplateInlineQuery",
         "namespace": "security._types"
       },
-      "specLocation": "security/_types/Privileges.ts#L359-L360",
+      "specLocation": "security/_types/Privileges.ts#L358-L359",
       "type": {
         "items": [
           {
@@ -103258,7 +103244,21 @@
         "name": "RemoteClusterPrivilege",
         "namespace": "security._types"
       },
-      "specLocation": "security/_types/Privileges.ts#L201-L214"
+      "specLocation": "security/_types/Privileges.ts#L201-L213"
+    },
+    {
+      "isOpen": true,
+      "kind": "enum",
+      "members": [
+        {
+          "name": "search_application_query"
+        }
+      ],
+      "name": {
+        "name": "RestrictionWorkflow",
+        "namespace": "security._types"
+      },
+      "specLocation": "security/_types/RoleDescriptor.ts#L134-L137"
     },
     {
       "kind": "enum",
@@ -137714,8 +137714,31 @@
           }
         },
         {
-          "description": "A map of criteria type to the number of rules of that type",
+          "description": "A map of criteria type (e.g. exact) to the number of rules of that type",
           "name": "rule_criteria_types_counts",
+          "required": true,
+          "type": {
+            "key": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "_builtins"
+              }
+            },
+            "kind": "dictionary_of",
+            "singleKey": false,
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "integer",
+                "namespace": "_types"
+              }
+            }
+          }
+        },
+        {
+          "description": "A map of rule type (e.g. pinned) to the number of rules of that type",
+          "name": "rule_type_counts",
           "required": true,
           "type": {
             "key": {
@@ -137737,7 +137760,7 @@
           }
         }
       ],
-      "specLocation": "query_rules/list_rulesets/types.ts#L23-L37"
+      "specLocation": "query_rules/list_rulesets/types.ts#L23-L42"
     },
     {
       "kind": "interface",
@@ -139677,6 +139700,18 @@
           }
         },
         {
+          "description": "Restriction for when the role descriptor is allowed to be effective.",
+          "name": "restriction",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Restriction",
+              "namespace": "security._types"
+            }
+          }
+        },
+        {
           "name": "transient_metadata",
           "required": false,
           "type": {
@@ -139695,7 +139730,7 @@
           }
         }
       ],
-      "specLocation": "security/_types/RoleDescriptor.ts#L33-L79"
+      "specLocation": "security/_types/RoleDescriptor.ts#L33-L80"
     },
     {
       "kind": "interface",
@@ -139773,7 +139808,7 @@
           }
         }
       ],
-      "specLocation": "security/_types/Privileges.ts#L217-L243"
+      "specLocation": "security/_types/Privileges.ts#L216-L242"
     },
     {
       "kind": "interface",
@@ -139858,6 +139893,30 @@
         }
       ],
       "specLocation": "security/_types/Privileges.ts#L27-L40"
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "Restriction",
+        "namespace": "security._types"
+      },
+      "properties": [
+        {
+          "name": "workflows",
+          "required": true,
+          "type": {
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "RestrictionWorkflow",
+                "namespace": "security._types"
+              }
+            }
+          }
+        }
+      ],
+      "specLocation": "security/_types/RoleDescriptor.ts#L130-L132"
     },
     {
       "kind": "interface",

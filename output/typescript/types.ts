@@ -17246,6 +17246,7 @@ export interface QueryRulesListRulesetsQueryRulesetListItem {
   ruleset_id: Id
   rule_total_count: integer
   rule_criteria_types_counts: Record<string, integer>
+  rule_type_counts: Record<string, integer>
 }
 
 export interface QueryRulesListRulesetsRequest extends RequestBase {
@@ -17755,6 +17756,12 @@ export interface SecurityReplicationAccess {
   allow_restricted_indices?: boolean
 }
 
+export interface SecurityRestriction {
+  workflows: SecurityRestrictionWorkflow[]
+}
+
+export type SecurityRestrictionWorkflow = 'search_application_query'| string
+
 export interface SecurityRoleDescriptor {
   cluster?: SecurityClusterPrivilege[]
   indices?: SecurityIndicesPrivileges[]
@@ -17766,6 +17773,7 @@ export interface SecurityRoleDescriptor {
   metadata?: Metadata
   run_as?: string[]
   description?: string
+  restriction?: SecurityRestriction
   transient_metadata?: Record<string, any>
 }
 
@@ -17780,6 +17788,7 @@ export interface SecurityRoleDescriptorRead {
   metadata?: Metadata
   run_as?: string[]
   description?: string
+  restriction?: SecurityRestriction
   transient_metadata?: Record<string, any>
 }
 
