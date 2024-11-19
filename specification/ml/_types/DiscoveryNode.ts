@@ -20,11 +20,17 @@
 import { Dictionary } from '@spec_utils/Dictionary'
 import { Id, Name } from '@_types/common'
 import { TransportAddress } from '@_types/Networking'
+import { integer } from '@_types/Numeric'
+import { VersionString } from '../../../output/typescript/types'
 
 export class DiscoveryNode {
-  attributes: Dictionary<string, string>
+  name?: Name
   ephemeral_id: Id
-  id: Id
-  name: Name
   transport_address: TransportAddress
+  external_id?: string
+  attributes?: Dictionary<string, string>
+  roles: string[]
+  version?: VersionString
+  min_index_version?: integer
+  max_index_version?: integer
 }
