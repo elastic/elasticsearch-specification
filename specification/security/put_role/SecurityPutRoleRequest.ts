@@ -78,7 +78,6 @@ export interface Request extends RequestBase {
     /**
      * A list of remote cluster permissions entries.
      * @availability stack since=8.15.0
-     *
      */
     remote_cluster?: RemoteClusterPrivileges[]
     /**
