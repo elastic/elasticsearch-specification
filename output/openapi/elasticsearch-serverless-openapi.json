@@ -53683,6 +53683,9 @@
             "description": "Optional description of the role descriptor",
             "type": "string"
           },
+          "restriction": {
+            "$ref": "#/components/schemas/security._types:Restriction"
+          },
           "transient_metadata": {
             "type": "object",
             "additionalProperties": {
@@ -53890,6 +53893,33 @@
           "application",
           "privileges",
           "resources"
+        ]
+      },
+      "security._types:Restriction": {
+        "type": "object",
+        "properties": {
+          "workflows": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/security._types:RestrictionWorkflow"
+            }
+          }
+        },
+        "required": [
+          "workflows"
+        ]
+      },
+      "security._types:RestrictionWorkflow": {
+        "anyOf": [
+          {
+            "type": "string",
+            "enum": [
+              "search_application_query"
+            ]
+          },
+          {
+            "type": "string"
+          }
         ]
       },
       "security._types:Access": {
