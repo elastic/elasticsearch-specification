@@ -23821,7 +23821,7 @@
           {
             "in": "query",
             "name": "allow_partial_search_results",
-            "description": "If `false`, creating a point in time request when a shard is missing or unavailable will throw an exception. \nIf `true`, the point in time will contain all the shards that are available at the time of the request.",
+            "description": "If `false`, creating a point in time request when a shard is missing or unavailable will throw an exception.\nIf `true`, the point in time will contain all the shards that are available at the time of the request.",
             "deprecated": false,
             "schema": {
               "type": "boolean"
