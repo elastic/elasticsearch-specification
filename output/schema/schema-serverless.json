@@ -34119,9 +34119,22 @@
               "namespace": "_types"
             }
           }
+        },
+        {
+          "description": "If `false`, creating a point in time request when a shard is missing or unavailable will throw an exception.\nIf `true`, the point in time will contain all the shards that are available at the time of the request.",
+          "name": "allow_partial_search_results",
+          "required": false,
+          "serverDefault": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "_builtins"
+            }
+          }
         }
       ],
-      "specLocation": "_global/open_point_in_time/OpenPointInTimeRequest.ts#L25-L81"
+      "specLocation": "_global/open_point_in_time/OpenPointInTimeRequest.ts#L25-L87"
     },
     {
       "body": {
