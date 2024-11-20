@@ -895,6 +895,7 @@ export interface OpenPointInTimeRequest extends RequestBase {
   preference?: string
   routing?: Routing
   expand_wildcards?: ExpandWildcards
+  allow_partial_search_results?: boolean
   body?: {
     index_filter?: QueryDslQueryContainer
   }
