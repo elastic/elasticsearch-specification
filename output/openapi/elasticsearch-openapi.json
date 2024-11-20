@@ -80051,7 +80051,14 @@
             "type": "number"
           },
           "rule_criteria_types_counts": {
-            "description": "A map of criteria type to the number of rules of that type",
+            "description": "A map of criteria type (e.g. exact) to the number of rules of that type",
+            "type": "object",
+            "additionalProperties": {
+              "type": "number"
+            }
+          },
+          "rule_type_counts": {
+            "description": "A map of rule type (e.g. pinned) to the number of rules of that type",
             "type": "object",
             "additionalProperties": {
               "type": "number"
@@ -80061,7 +80068,8 @@
         "required": [
           "ruleset_id",
           "rule_total_count",
-          "rule_criteria_types_counts"
+          "rule_criteria_types_counts",
+          "rule_type_counts"
         ]
       },
       "query_rules.test:QueryRulesetMatchedRule": {
