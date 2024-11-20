@@ -19,8 +19,3 @@ actions:
       x-feedbackLink:
         label: Feedback
         url: https://github.com/elastic/docs-content/issues/new?assignees=&labels=feedback%2Ccommunity&projects=&template=api-feedback.yaml&title=%5BFeedback%5D%3A+
-  # Temporarily mark all operations as beta
-  - target: "$.paths[*]['get','put','post','delete','options','head','patch','trace']"
-    description: Add x-beta
-    update:
-      x-beta: true
