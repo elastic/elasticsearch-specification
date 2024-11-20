@@ -71,6 +71,12 @@ export interface Request extends RequestBase {
      * @server_default open
      */
     expand_wildcards?: ExpandWildcards
+    /**
+     * If `false`, creating a point in time request when a shard is missing or unavailable will throw an exception.
+     * If `true`, the point in time will contain all the shards that are available at the time of the request.
+     * @server_default false
+     */
+    allow_partial_search_results?: boolean
   }
   body: {
     /**
