@@ -1001,6 +1001,12 @@
       ],
       "response": []
     },
+    "open_point_in_time": {
+      "request": [
+        "Request: query parameter 'allow_partial_search_results' does not exist in the json spec"
+      ],
+      "response": []
+    },
     "profiling.flamegraph": {
       "request": [
         "Missing request & response"
