@@ -67,32 +67,6 @@
       ],
       "response": []
     },
-    "autoscaling.delete_autoscaling_policy": {
-      "request": [
-        "Request: missing json spec query parameter 'master_timeout'",
-        "Request: missing json spec query parameter 'timeout'"
-      ],
-      "response": []
-    },
-    "autoscaling.get_autoscaling_capacity": {
-      "request": [
-        "Request: missing json spec query parameter 'master_timeout'"
-      ],
-      "response": []
-    },
-    "autoscaling.get_autoscaling_policy": {
-      "request": [
-        "Request: missing json spec query parameter 'master_timeout'"
-      ],
-      "response": []
-    },
-    "autoscaling.put_autoscaling_policy": {
-      "request": [
-        "Request: missing json spec query parameter 'master_timeout'",
-        "Request: missing json spec query parameter 'timeout'"
-      ],
-      "response": []
-    },
     "bulk": {
       "request": [
         "Request: missing json spec query parameter 'type'",
