@@ -73683,6 +73683,9 @@
           },
           "version": {
             "$ref": "#/components/schemas/_types:VersionString"
+          },
+          "_meta": {
+            "$ref": "#/components/schemas/_types:Metadata"
           }
         },
         "required": [
@@ -74070,7 +74073,11 @@
             "$ref": "#/components/schemas/_types:Id"
           },
           "node": {
-            "$ref": "#/components/schemas/ml._types:DiscoveryNode"
+            "description": "For started datafeeds only, this information pertains to the node upon which the datafeed is started.",
+            "type": "object",
+            "additionalProperties": {
+              "$ref": "#/components/schemas/ml._types:DiscoveryNode"
+            }
           },
           "state": {
             "$ref": "#/components/schemas/ml._types:DatafeedState"
@@ -74084,8 +74091,7 @@
         },
         "required": [
           "datafeed_id",
-          "state",
-          "timing_stats"
+          "state"
         ]
       },
       "ml._types:DiscoveryNode": {
@@ -74464,7 +74470,11 @@
             "$ref": "#/components/schemas/ml._types:ModelSizeStats"
           },
           "node": {
-            "$ref": "#/components/schemas/ml._types:DiscoveryNode"
+            "description": "Contains properties for the node that runs the job.\nThis information is available only for open jobs.",
+            "type": "object",
+            "additionalProperties": {
+              "$ref": "#/components/schemas/ml._types:DiscoveryNode"
+            }
           },
           "open_time": {
             "$ref": "#/components/schemas/_types:DateTime"
@@ -75067,7 +75077,10 @@
             "$ref": "#/components/schemas/ml._types:SnapshotUpgradeState"
           },
           "node": {
-            "$ref": "#/components/schemas/ml._types:DiscoveryNode"
+            "type": "object",
+            "additionalProperties": {
+              "$ref": "#/components/schemas/ml._types:DiscoveryNode"
+            }
           },
           "assignment_explanation": {
             "type": "string"
@@ -76069,6 +76082,9 @@
       "ml._types:TrainedModelDeploymentStats": {
         "type": "object",
         "properties": {
+          "adaptive_allocations": {
+            "$ref": "#/components/schemas/ml._types:AdaptiveAllocationsSettings"
+          },
           "allocation_status": {
             "$ref": "#/components/schemas/ml._types:TrainedModelDeploymentAllocationStatus"
           },
@@ -76100,6 +76116,9 @@
             "description": "The number of allocations requested.",
             "type": "number"
           },
+          "priority": {
+            "$ref": "#/components/schemas/ml._types:TrainingPriority"
+          },
           "queue_capacity": {
             "description": "The number of inference requests that can be queued before new requests are rejected.",
             "type": "number"
@@ -76130,18 +76149,28 @@
         "required": [
           "allocation_status",
           "deployment_id",
-          "error_count",
-          "inference_count",
           "model_id",
           "nodes",
-          "number_of_allocations",
-          "queue_capacity",
-          "rejected_execution_count",
-          "reason",
+          "priority",
           "start_time",
-          "state",
-          "threads_per_allocation",
-          "timeout_count"
+          "state"
+        ]
+      },
+      "ml._types:AdaptiveAllocationsSettings": {
+        "type": "object",
+        "properties": {
+          "enabled": {
+            "type": "boolean"
+          },
+          "min_number_of_allocations": {
+            "type": "number"
+          },
+          "max_number_of_allocations": {
+            "type": "number"
+          }
+        },
+        "required": [
+          "enabled"
         ]
       },
       "ml._types:TrainedModelDeploymentAllocationStatus": {
@@ -76179,6 +76208,12 @@
           "average_inference_time_ms": {
             "$ref": "#/components/schemas/_types:DurationValueUnitFloatMillis"
           },
+          "average_inference_time_ms_last_minute": {
+            "$ref": "#/components/schemas/_types:DurationValueUnitFloatMillis"
+          },
+          "average_inference_time_ms_excluding_cache_hits": {
+            "$ref": "#/components/schemas/_types:DurationValueUnitFloatMillis"
+          },
           "error_count": {
             "description": "The number of errors when evaluating the trained model.",
             "type": "number"
@@ -76187,12 +76222,22 @@
             "description": "The total number of inference calls made against this node for this model.",
             "type": "number"
           },
+          "inference_cache_hit_count": {
+            "type": "number"
+          },
+          "inference_cache_hit_count_last_minute": {
+            "type": "number"
+          },
           "last_access": {
             "description": "The epoch time stamp of the last inference call for the model on this node.",
             "type": "number"
           },
           "node": {
-            "$ref": "#/components/schemas/ml._types:DiscoveryNode"
+            "description": "Information pertaining to the node.",
+            "type": "object",
+            "additionalProperties": {
+              "$ref": "#/components/schemas/ml._types:DiscoveryNode"
+            }
           },
           "number_of_allocations": {
             "description": "The number of allocations assigned to this node.",
@@ -76200,6 +76245,9 @@
           },
           "number_of_pending_requests": {
             "description": "The number of inference requests queued to be processed.",
+            "type": "number"
+          },
+          "peak_throughput_per_minute": {
             "type": "number"
           },
           "rejection_execution_count": {
@@ -76216,24 +76264,17 @@
             "description": "The number of threads used by each allocation during inference.",
             "type": "number"
           },
+          "throughput_last_minute": {
+            "type": "number"
+          },
           "timeout_count": {
             "description": "The number of inference requests that timed out before being processed.",
             "type": "number"
           }
         },
         "required": [
-          "average_inference_time_ms",
-          "error_count",
-          "inference_count",
-          "last_access",
-          "node",
-          "number_of_allocations",
-          "number_of_pending_requests",
-          "rejection_execution_count",
-          "routing_state",
-          "start_time",
-          "threads_per_allocation",
-          "timeout_count"
+          "peak_throughput_per_minute",
+          "routing_state"
         ]
       },
       "ml._types:TrainedModelAssignmentRoutingTable": {
@@ -76256,10 +76297,7 @@
           }
         },
         "required": [
-          "reason",
-          "routing_state",
-          "current_allocations",
-          "target_allocations"
+          "routing_state"
         ]
       },
       "ml._types:RoutingState": {
@@ -76270,6 +76308,13 @@
           "starting",
           "stopped",
           "stopping"
+        ]
+      },
+      "ml._types:TrainingPriority": {
+        "type": "string",
+        "enum": [
+          "normal",
+          "low"
         ]
       },
       "ml._types:DeploymentAssignmentState": {
@@ -77274,13 +77319,6 @@
         },
         "required": [
           "field_names"
-        ]
-      },
-      "ml._types:TrainingPriority": {
-        "type": "string",
-        "enum": [
-          "normal",
-          "low"
         ]
       },
       "ml._types:TrainedModelAssignment": {

@@ -154,7 +154,7 @@ export class DatafeedStats {
    * For started datafeeds only, this information pertains to the node upon which the datafeed is started.
    * @availability stack
    */
-  node?: DiscoveryNode
+  node?: Dictionary<Id, DiscoveryNode>
   /**
    * The status of the datafeed, which can be one of the following values: `starting`, `started`, `stopping`, `stopped`.
    */
@@ -162,7 +162,7 @@ export class DatafeedStats {
   /**
    * An object that provides statistical information about timing aspect of this datafeed.
    */
-  timing_stats: DatafeedTimingStats
+  timing_stats?: DatafeedTimingStats
   /**
    * An object containing the running state for this datafeed.
    * It is only provided if the datafeed is started.

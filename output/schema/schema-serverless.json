@@ -94936,7 +94936,7 @@
         "name": "CategorizationStatus",
         "namespace": "ml._types"
       },
-      "specLocation": "ml/_types/Model.ts#L83-L86"
+      "specLocation": "ml/_types/Model.ts#L84-L87"
     },
     {
       "kind": "enum",
@@ -95058,7 +95058,7 @@
         "name": "DeploymentAllocationState",
         "namespace": "ml._types"
       },
-      "specLocation": "ml/_types/TrainedModel.ts#L273-L286"
+      "specLocation": "ml/_types/TrainedModel.ts#L297-L310"
     },
     {
       "kind": "enum",
@@ -95084,7 +95084,7 @@
         "name": "DeploymentAssignmentState",
         "namespace": "ml._types"
       },
-      "specLocation": "ml/_types/TrainedModel.ts#L288-L305"
+      "specLocation": "ml/_types/TrainedModel.ts#L312-L329"
     },
     {
       "kind": "enum",
@@ -95220,7 +95220,7 @@
         "name": "MemoryStatus",
         "namespace": "ml._types"
       },
-      "specLocation": "ml/_types/Model.ts#L88-L92"
+      "specLocation": "ml/_types/Model.ts#L89-L93"
     },
     {
       "kind": "type_alias",
@@ -95280,7 +95280,7 @@
         "name": "RoutingState",
         "namespace": "ml._types"
       },
-      "specLocation": "ml/_types/TrainedModel.ts#L347-L368"
+      "specLocation": "ml/_types/TrainedModel.ts#L371-L392"
     },
     {
       "kind": "enum",
@@ -95320,7 +95320,7 @@
         "name": "SnapshotUpgradeState",
         "namespace": "ml._types"
       },
-      "specLocation": "ml/_types/Model.ts#L94-L99"
+      "specLocation": "ml/_types/Model.ts#L95-L100"
     },
     {
       "kind": "enum",
@@ -95361,7 +95361,7 @@
         "name": "TrainedModelType",
         "namespace": "ml._types"
       },
-      "specLocation": "ml/_types/TrainedModel.ts#L257-L271"
+      "specLocation": "ml/_types/TrainedModel.ts#L281-L295"
     },
     {
       "kind": "enum",
@@ -95377,7 +95377,7 @@
         "name": "TrainingPriority",
         "namespace": "ml._types"
       },
-      "specLocation": "ml/_types/TrainedModel.ts#L307-L310"
+      "specLocation": "ml/_types/TrainedModel.ts#L331-L334"
     },
     {
       "codegenNames": [
@@ -128128,9 +128128,20 @@
               "namespace": "_types"
             }
           }
+        },
+        {
+          "name": "_meta",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Metadata",
+              "namespace": "_types"
+            }
+          }
         }
       ],
-      "specLocation": "ml/_types/DataframeAnalytics.ts#L305-L321"
+      "specLocation": "ml/_types/DataframeAnalytics.ts#L306-L323"
     },
     {
       "kind": "interface",
@@ -128182,7 +128193,7 @@
           }
         }
       ],
-      "specLocation": "ml/_types/DataframeAnalytics.ts#L83-L100",
+      "specLocation": "ml/_types/DataframeAnalytics.ts#L84-L101",
       "variants": {
         "kind": "container"
       }
@@ -128225,7 +128236,7 @@
           }
         }
       ],
-      "specLocation": "ml/_types/DataframeAnalytics.ts#L226-L235"
+      "specLocation": "ml/_types/DataframeAnalytics.ts#L227-L236"
     },
     {
       "kind": "interface",
@@ -128460,7 +128471,7 @@
           }
         }
       ],
-      "specLocation": "ml/_types/DataframeAnalytics.ts#L133-L212"
+      "specLocation": "ml/_types/DataframeAnalytics.ts#L134-L213"
     },
     {
       "kind": "interface",
@@ -128530,7 +128541,7 @@
           }
         }
       ],
-      "specLocation": "ml/_types/DataframeAnalytics.ts#L245-L257",
+      "specLocation": "ml/_types/DataframeAnalytics.ts#L246-L258",
       "variants": {
         "kind": "container"
       }
@@ -128589,7 +128600,7 @@
           }
         }
       ],
-      "specLocation": "ml/_types/DataframeAnalytics.ts#L259-L266"
+      "specLocation": "ml/_types/DataframeAnalytics.ts#L260-L267"
     },
     {
       "kind": "interface",
@@ -128614,7 +128625,7 @@
           }
         }
       ],
-      "specLocation": "ml/_types/DataframeAnalytics.ts#L268-L271"
+      "specLocation": "ml/_types/DataframeAnalytics.ts#L269-L272"
     },
     {
       "kind": "interface",
@@ -128698,7 +128709,7 @@
           }
         }
       ],
-      "specLocation": "ml/_types/DataframeAnalytics.ts#L273-L285"
+      "specLocation": "ml/_types/DataframeAnalytics.ts#L274-L286"
     },
     {
       "kind": "interface",
@@ -128732,7 +128743,7 @@
           }
         }
       ],
-      "specLocation": "ml/_types/DataframeAnalytics.ts#L287-L292"
+      "specLocation": "ml/_types/DataframeAnalytics.ts#L288-L293"
     },
     {
       "kind": "interface",
@@ -128797,7 +128808,7 @@
           }
         }
       ],
-      "specLocation": "ml/_types/DataframeAnalytics.ts#L294-L303"
+      "specLocation": "ml/_types/DataframeAnalytics.ts#L295-L304"
     },
     {
       "kind": "interface",
@@ -128883,7 +128894,7 @@
           }
         }
       ],
-      "specLocation": "ml/_types/DataframeAnalytics.ts#L102-L131"
+      "specLocation": "ml/_types/DataframeAnalytics.ts#L103-L132"
     },
     {
       "inherits": {
@@ -128924,7 +128935,7 @@
           }
         }
       ],
-      "specLocation": "ml/_types/DataframeAnalytics.ts#L214-L224"
+      "specLocation": "ml/_types/DataframeAnalytics.ts#L215-L225"
     },
     {
       "kind": "interface",
@@ -128965,7 +128976,7 @@
         }
       ],
       "shortcutProperty": "includes",
-      "specLocation": "ml/_types/DataframeAnalytics.ts#L237-L243"
+      "specLocation": "ml/_types/DataframeAnalytics.ts#L238-L244"
     },
     {
       "kind": "interface",
@@ -129082,7 +129093,7 @@
           }
         }
       ],
-      "specLocation": "ml/_types/DataframeAnalytics.ts#L76-L81"
+      "specLocation": "ml/_types/DataframeAnalytics.ts#L77-L82"
     },
     {
       "kind": "interface",
@@ -129142,7 +129153,7 @@
           }
         }
       ],
-      "specLocation": "ml/_types/DataframeAnalytics.ts#L38-L52"
+      "specLocation": "ml/_types/DataframeAnalytics.ts#L39-L53"
     },
     {
       "kind": "interface",
@@ -129239,7 +129250,7 @@
           }
         }
       ],
-      "specLocation": "ml/_types/DataframeAnalytics.ts#L323-L343"
+      "specLocation": "ml/_types/DataframeAnalytics.ts#L325-L345"
     },
     {
       "kind": "interface",
@@ -129285,7 +129296,7 @@
           }
         }
       ],
-      "specLocation": "ml/_types/DataframeAnalytics.ts#L372-L380",
+      "specLocation": "ml/_types/DataframeAnalytics.ts#L374-L382",
       "variants": {
         "kind": "container"
       }
@@ -129367,7 +129378,7 @@
           }
         }
       ],
-      "specLocation": "ml/_types/DataframeAnalytics.ts#L382-L401"
+      "specLocation": "ml/_types/DataframeAnalytics.ts#L384-L403"
     },
     {
       "kind": "interface",
@@ -129545,7 +129556,7 @@
           }
         }
       ],
-      "specLocation": "ml/_types/DataframeAnalytics.ts#L418-L524"
+      "specLocation": "ml/_types/DataframeAnalytics.ts#L420-L526"
     },
     {
       "kind": "interface",
@@ -129597,7 +129608,7 @@
           }
         }
       ],
-      "specLocation": "ml/_types/DataframeAnalytics.ts#L562-L567"
+      "specLocation": "ml/_types/DataframeAnalytics.ts#L564-L569"
     },
     {
       "kind": "interface",
@@ -129634,7 +129645,7 @@
           }
         }
       ],
-      "specLocation": "ml/_types/DataframeAnalytics.ts#L569-L574"
+      "specLocation": "ml/_types/DataframeAnalytics.ts#L571-L576"
     },
     {
       "kind": "interface",
@@ -129689,7 +129700,7 @@
           }
         }
       ],
-      "specLocation": "ml/_types/DataframeAnalytics.ts#L403-L416"
+      "specLocation": "ml/_types/DataframeAnalytics.ts#L405-L418"
     },
     {
       "kind": "interface",
@@ -129774,7 +129785,7 @@
           }
         }
       ],
-      "specLocation": "ml/_types/DataframeAnalytics.ts#L526-L560"
+      "specLocation": "ml/_types/DataframeAnalytics.ts#L528-L562"
     },
     {
       "kind": "interface",
@@ -129820,7 +129831,7 @@
           }
         }
       ],
-      "specLocation": "ml/_types/DataframeAnalytics.ts#L363-L370"
+      "specLocation": "ml/_types/DataframeAnalytics.ts#L365-L372"
     },
     {
       "kind": "interface",
@@ -129887,7 +129898,7 @@
           }
         }
       ],
-      "specLocation": "ml/_types/DataframeAnalytics.ts#L352-L361"
+      "specLocation": "ml/_types/DataframeAnalytics.ts#L354-L363"
     },
     {
       "kind": "interface",
@@ -129921,7 +129932,7 @@
           }
         }
       ],
-      "specLocation": "ml/_types/DataframeAnalytics.ts#L345-L350"
+      "specLocation": "ml/_types/DataframeAnalytics.ts#L347-L352"
     },
     {
       "kind": "interface",
@@ -129969,7 +129980,7 @@
         {
           "description": "An object that provides statistical information about timing aspect of this datafeed.",
           "name": "timing_stats",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -131389,7 +131400,7 @@
           }
         }
       ],
-      "specLocation": "ml/_types/Model.ts#L59-L81"
+      "specLocation": "ml/_types/Model.ts#L60-L82"
     },
     {
       "kind": "interface",
@@ -132410,7 +132421,7 @@
           }
         }
       ],
-      "specLocation": "ml/_types/TrainedModel.ts#L164-L199"
+      "specLocation": "ml/_types/TrainedModel.ts#L188-L223"
     },
     {
       "description": "Inference configuration provided when storing the model config",
@@ -133312,7 +133323,7 @@
           }
         }
       ],
-      "specLocation": "ml/_types/TrainedModel.ts#L201-L204"
+      "specLocation": "ml/_types/TrainedModel.ts#L225-L228"
     },
     {
       "kind": "interface",
@@ -133389,7 +133400,7 @@
           }
         }
       ],
-      "specLocation": "ml/_types/TrainedModel.ts#L206-L214"
+      "specLocation": "ml/_types/TrainedModel.ts#L230-L238"
     },
     {
       "kind": "interface",
@@ -133461,7 +133472,7 @@
           }
         }
       ],
-      "specLocation": "ml/_types/TrainedModel.ts#L216-L230"
+      "specLocation": "ml/_types/TrainedModel.ts#L240-L254"
     },
     {
       "kind": "interface",
@@ -133513,7 +133524,7 @@
           }
         }
       ],
-      "specLocation": "ml/_types/TrainedModel.ts#L232-L239"
+      "specLocation": "ml/_types/TrainedModel.ts#L256-L263"
     },
     {
       "kind": "interface",
@@ -133559,7 +133570,7 @@
           }
         }
       ],
-      "specLocation": "ml/_types/TrainedModel.ts#L248-L255"
+      "specLocation": "ml/_types/TrainedModel.ts#L272-L279"
     },
     {
       "kind": "interface",
@@ -133596,7 +133607,7 @@
           }
         }
       ],
-      "specLocation": "ml/_types/TrainedModel.ts#L241-L246"
+      "specLocation": "ml/_types/TrainedModel.ts#L265-L270"
     },
     {
       "kind": "interface",
@@ -133617,7 +133628,7 @@
           }
         }
       ],
-      "specLocation": "ml/_types/TrainedModel.ts#L416-L418"
+      "specLocation": "ml/_types/TrainedModel.ts#L440-L442"
     },
     {
       "kind": "interface",
@@ -133638,7 +133649,7 @@
           }
         }
       ],
-      "specLocation": "ml/_types/TrainedModel.ts#L420-L422"
+      "specLocation": "ml/_types/TrainedModel.ts#L444-L446"
     },
     {
       "kind": "interface",
@@ -133672,7 +133683,7 @@
           }
         }
       ],
-      "specLocation": "ml/_types/TrainedModel.ts#L424-L433"
+      "specLocation": "ml/_types/TrainedModel.ts#L448-L457"
     },
     {
       "kind": "interface",
@@ -133773,6 +133784,17 @@
       },
       "properties": [
         {
+          "name": "adaptive_allocations",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "AdaptiveAllocationsSettings",
+              "namespace": "ml._types"
+            }
+          }
+        },
+        {
           "description": "The detailed allocation status for the deployment.",
           "name": "allocation_status",
           "required": true,
@@ -133810,7 +133832,7 @@
         {
           "description": "The sum of `error_count` for all nodes in the deployment.",
           "name": "error_count",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -133822,7 +133844,7 @@
         {
           "description": "The sum of `inference_count` for all nodes in the deployment.",
           "name": "inference_count",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -133861,7 +133883,7 @@
         {
           "description": "The number of allocations requested.",
           "name": "number_of_allocations",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -133871,9 +133893,20 @@
           }
         },
         {
+          "name": "priority",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "TrainingPriority",
+              "namespace": "ml._types"
+            }
+          }
+        },
+        {
           "description": "The number of inference requests that can be queued before new requests are rejected.",
           "name": "queue_capacity",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -133885,7 +133918,7 @@
         {
           "description": "The sum of `rejected_execution_count` for all nodes in the deployment.\nIndividual nodes reject an inference request if the inference queue is full.\nThe queue size is controlled by the `queue_capacity` setting in the start\ntrained model deployment API.",
           "name": "rejected_execution_count",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -133897,7 +133930,7 @@
         {
           "description": "The reason for the current deployment state. Usually only populated when\nthe model is not deployed to a node.",
           "name": "reason",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -133942,7 +133975,7 @@
         {
           "description": "The number of threads used be each allocation during inference.",
           "name": "threads_per_allocation",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -133954,7 +133987,7 @@
         {
           "description": "The sum of `timeout_count` for all nodes in the deployment.",
           "name": "timeout_count",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -133964,7 +133997,50 @@
           }
         }
       ],
-      "specLocation": "ml/_types/TrainedModel.ts#L61-L101"
+      "specLocation": "ml/_types/TrainedModel.ts#L61-L104"
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "AdaptiveAllocationsSettings",
+        "namespace": "ml._types"
+      },
+      "properties": [
+        {
+          "name": "enabled",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "_builtins"
+            }
+          }
+        },
+        {
+          "name": "min_number_of_allocations",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "max_number_of_allocations",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "_types"
+            }
+          }
+        }
+      ],
+      "specLocation": "ml/_types/TrainedModel.ts#L106-L110"
     },
     {
       "kind": "interface",
@@ -134010,7 +134086,7 @@
           }
         }
       ],
-      "specLocation": "ml/_types/TrainedModel.ts#L390-L397"
+      "specLocation": "ml/_types/TrainedModel.ts#L414-L421"
     },
     {
       "kind": "interface",
@@ -134022,7 +134098,48 @@
         {
           "description": "The average time for each inference call to complete on this node.",
           "name": "average_inference_time_ms",
-          "required": true,
+          "required": false,
+          "type": {
+            "generics": [
+              {
+                "kind": "instance_of",
+                "type": {
+                  "name": "UnitFloatMillis",
+                  "namespace": "_types"
+                }
+              }
+            ],
+            "kind": "instance_of",
+            "type": {
+              "name": "DurationValue",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "average_inference_time_ms_last_minute",
+          "required": false,
+          "type": {
+            "generics": [
+              {
+                "kind": "instance_of",
+                "type": {
+                  "name": "UnitFloatMillis",
+                  "namespace": "_types"
+                }
+              }
+            ],
+            "kind": "instance_of",
+            "type": {
+              "name": "DurationValue",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "The average time for each inference call to complete on this node, excluding cache",
+          "name": "average_inference_time_ms_excluding_cache_hits",
+          "required": false,
           "type": {
             "generics": [
               {
@@ -134043,7 +134160,7 @@
         {
           "description": "The number of errors when evaluating the trained model.",
           "name": "error_count",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -134055,11 +134172,33 @@
         {
           "description": "The total number of inference calls made against this node for this model.",
           "name": "inference_count",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "integer",
+              "name": "long",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "inference_cache_hit_count",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "long",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "inference_cache_hit_count_last_minute",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "long",
               "namespace": "_types"
             }
           }
@@ -134067,7 +134206,7 @@
         {
           "description": "The epoch time stamp of the last inference call for the model on this node.",
           "name": "last_access",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -134079,7 +134218,7 @@
         {
           "description": "The number of allocations assigned to this node.",
           "name": "number_of_allocations",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -134091,7 +134230,7 @@
         {
           "description": "The number of inference requests queued to be processed.",
           "name": "number_of_pending_requests",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -134101,9 +134240,20 @@
           }
         },
         {
+          "name": "peak_throughput_per_minute",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "long",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
           "description": "The number of inference requests that were not processed because the queue was full.",
           "name": "rejection_execution_count",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -134127,7 +134277,7 @@
         {
           "description": "The epoch timestamp when the allocation started.",
           "name": "start_time",
-          "required": true,
+          "required": false,
           "type": {
             "generics": [
               {
@@ -134148,7 +134298,18 @@
         {
           "description": "The number of threads used by each allocation during inference.",
           "name": "threads_per_allocation",
-          "required": true,
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "throughput_last_minute",
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -134160,7 +134321,7 @@
         {
           "description": "The number of inference requests that timed out before being processed.",
           "name": "timeout_count",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -134170,7 +134331,7 @@
           }
         }
       ],
-      "specLocation": "ml/_types/TrainedModel.ts#L132-L162"
+      "specLocation": "ml/_types/TrainedModel.ts#L141-L186"
     },
     {
       "kind": "interface",
@@ -134182,7 +134343,7 @@
         {
           "description": "The reason for the current state. It is usually populated only when the\n`routing_state` is `failed`.",
           "name": "reason",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -134206,7 +134367,7 @@
         {
           "description": "Current number of allocations.",
           "name": "current_allocations",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -134218,7 +134379,7 @@
         {
           "description": "Target number of allocations.",
           "name": "target_allocations",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -134228,7 +134389,7 @@
           }
         }
       ],
-      "specLocation": "ml/_types/TrainedModel.ts#L370-L388"
+      "specLocation": "ml/_types/TrainedModel.ts#L394-L412"
     },
     {
       "kind": "interface",
@@ -134309,7 +134470,7 @@
           }
         }
       ],
-      "specLocation": "ml/_types/TrainedModel.ts#L103-L123"
+      "specLocation": "ml/_types/TrainedModel.ts#L112-L132"
     },
     {
       "kind": "interface",
@@ -134343,7 +134504,7 @@
           }
         }
       ],
-      "specLocation": "ml/_types/TrainedModel.ts#L125-L130"
+      "specLocation": "ml/_types/TrainedModel.ts#L134-L139"
     },
     {
       "kind": "interface",
@@ -136761,7 +136922,7 @@
           }
         }
       ],
-      "specLocation": "ml/_types/TrainedModel.ts#L399-L414"
+      "specLocation": "ml/_types/TrainedModel.ts#L423-L438"
     },
     {
       "kind": "interface",
@@ -136872,7 +137033,7 @@
           }
         }
       ],
-      "specLocation": "ml/_types/TrainedModel.ts#L312-L345"
+      "specLocation": "ml/_types/TrainedModel.ts#L336-L369"
     },
     {
       "kind": "interface",

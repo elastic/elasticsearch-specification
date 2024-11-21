@@ -310,7 +310,7 @@ export class JobStats {
    * This information is available only for open jobs.
    * @availability stack
    */
-  node?: DiscoveryNode
+  node?: Dictionary<Id, DiscoveryNode>
   /**
    * For open jobs only, the elapsed time for which the job has been open.
    */

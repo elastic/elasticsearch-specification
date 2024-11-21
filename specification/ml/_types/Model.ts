@@ -18,6 +18,7 @@
  */
 
 import { DiscoveryNode } from '@ml/_types/DiscoveryNode'
+import { Dictionary } from '@spec_utils/Dictionary'
 import { ByteSize, Id, VersionString } from '@_types/common'
 import { integer, long } from '@_types/Numeric'
 import { DateTime } from '@_types/Time'
@@ -52,7 +53,7 @@ export class ModelSnapshotUpgrade {
   /**
    * @availability stack
    */
-  node: DiscoveryNode
+  node: Dictionary<Id, DiscoveryNode>
   assignment_explanation: string
 }
 

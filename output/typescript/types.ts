@@ -13624,6 +13624,12 @@ export interface MigrationPostFeatureUpgradeResponse {
   features: MigrationPostFeatureUpgradeMigrationFeature[]
 }
 
+export interface MlAdaptiveAllocationsSettings {
+  enabled: boolean
+  min_number_of_allocations?: integer
+  max_number_of_allocations?: integer
+}
+
 export interface MlAnalysisConfig {
   bucket_span?: Duration
   categorization_analyzer?: MlCategorizationAnalyzer
@@ -13895,9 +13901,9 @@ export type MlDatafeedState = 'started' | 'stopped' | 'starting' | 'stopping'
 export interface MlDatafeedStats {
   assignment_explanation?: string
   datafeed_id: Id
-  node?: MlDiscoveryNode
+  node?: Record<Id, MlDiscoveryNode>
   state: MlDatafeedState
-  timing_stats: MlDatafeedTimingStats
+  timing_stats?: MlDatafeedTimingStats
   running_state?: MlDatafeedRunningState
 }
 
@@ -14095,6 +14101,7 @@ export interface MlDataframeAnalyticsSummary {
   model_memory_limit?: string
   source: MlDataframeAnalyticsSource
   version?: VersionString
+  _meta?: Metadata
 }
 
 export interface MlDataframeEvaluationClassification {
@@ -14406,7 +14413,7 @@ export interface MlJobStats {
   forecasts_stats: MlJobForecastStatistics
   job_id: string
   model_size_stats: MlModelSizeStats
-  node?: MlDiscoveryNode
+  node?: Record<Id, MlDiscoveryNode>
   open_time?: DateTime
   state: MlJobState
   timing_stats: MlJobTimingStats
@@ -14473,7 +14480,7 @@ export interface MlModelSnapshotUpgrade {
   job_id: Id
   snapshot_id: Id
   state: MlSnapshotUpgradeState
-  node: MlDiscoveryNode
+  node: Record<Id, MlDiscoveryNode>
   assignment_explanation: string
 }
 
@@ -14676,10 +14683,10 @@ export interface MlTrainedModelAssignment {
 }
 
 export interface MlTrainedModelAssignmentRoutingTable {
-  reason: string
+  reason?: string
   routing_state: MlRoutingState
-  current_allocations: integer
-  target_allocations: integer
+  current_allocations?: integer
+  target_allocations?: integer
 }
 
 export interface MlTrainedModelAssignmentTaskParameters {
@@ -14733,36 +14740,44 @@ export interface MlTrainedModelDeploymentAllocationStatus {
 }
 
 export interface MlTrainedModelDeploymentNodesStats {
-  average_inference_time_ms: DurationValue<UnitFloatMillis>
-  error_count: integer
-  inference_count: integer
-  last_access: long
-  node: MlDiscoveryNode
-  number_of_allocations: integer
-  number_of_pending_requests: integer
-  rejection_execution_count: integer
+  average_inference_time_ms?: DurationValue<UnitFloatMillis>
+  average_inference_time_ms_last_minute?: DurationValue<UnitFloatMillis>
+  average_inference_time_ms_excluding_cache_hits?: DurationValue<UnitFloatMillis>
+  error_count?: integer
+  inference_count?: long
+  inference_cache_hit_count?: long
+  inference_cache_hit_count_last_minute?: long
+  last_access?: long
+  node?: Record<Id, MlDiscoveryNode>
+  number_of_allocations?: integer
+  number_of_pending_requests?: integer
+  peak_throughput_per_minute: long
+  rejection_execution_count?: integer
   routing_state: MlTrainedModelAssignmentRoutingTable
-  start_time: EpochTime<UnitMillis>
-  threads_per_allocation: integer
-  timeout_count: integer
+  start_time?: EpochTime<UnitMillis>
+  threads_per_allocation?: integer
+  throughput_last_minute?: integer
+  timeout_count?: integer
 }
 
 export interface MlTrainedModelDeploymentStats {
+  adaptive_allocations?: MlAdaptiveAllocationsSettings
   allocation_status: MlTrainedModelDeploymentAllocationStatus
   cache_size?: ByteSize
   deployment_id: Id
-  error_count: integer
-  inference_count: integer
+  error_count?: integer
+  inference_count?: integer
   model_id: Id
   nodes: MlTrainedModelDeploymentNodesStats[]
-  number_of_allocations: integer
-  queue_capacity: integer
-  rejected_execution_count: integer
-  reason: string
+  number_of_allocations?: integer
+  priority: MlTrainingPriority
+  queue_capacity?: integer
+  rejected_execution_count?: integer
+  reason?: string
   start_time: EpochTime<UnitMillis>
   state: MlDeploymentAssignmentState
-  threads_per_allocation: integer
-  timeout_count: integer
+  threads_per_allocation?: integer
+  timeout_count?: integer
 }
 
 export interface MlTrainedModelEntities {
