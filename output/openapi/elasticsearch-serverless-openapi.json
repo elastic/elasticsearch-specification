@@ -49538,6 +49538,9 @@
           "exponential_average_search_time_per_hour_ms": {
             "$ref": "#/components/schemas/_types:DurationValueUnitFloatMillis"
           },
+          "exponential_average_calculation_context": {
+            "$ref": "#/components/schemas/ml._types:ExponentialAverageCalculationContext"
+          },
           "job_id": {
             "$ref": "#/components/schemas/_types:Id"
           },
@@ -49570,6 +49573,23 @@
       "_types:UnitFloatMillis": {
         "description": "Time unit for fractional milliseconds",
         "type": "number"
+      },
+      "ml._types:ExponentialAverageCalculationContext": {
+        "type": "object",
+        "properties": {
+          "incremental_metric_value_ms": {
+            "type": "number"
+          },
+          "latest_timestamp": {
+            "$ref": "#/components/schemas/_types:EpochTimeUnitMillis"
+          },
+          "previous_exponential_average_ms": {
+            "$ref": "#/components/schemas/_types:DurationValueUnitFloatMillis"
+          }
+        },
+        "required": [
+          "incremental_metric_value_ms"
+        ]
       },
       "ml._types:DatafeedRunningState": {
         "type": "object",
@@ -52071,11 +52091,25 @@
       "ml._types:TrainedModelAssignment": {
         "type": "object",
         "properties": {
+          "adaptive_allocations": {
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/ml._types:AdaptiveAllocationsSettings"
+              },
+              {
+                "nullable": true,
+                "type": "string"
+              }
+            ]
+          },
           "assignment_state": {
             "$ref": "#/components/schemas/ml._types:DeploymentAssignmentState"
           },
           "max_assigned_allocations": {
             "type": "number"
+          },
+          "reason": {
+            "type": "string"
           },
           "routing_table": {
             "description": "The allocation state for each node.",
@@ -52121,6 +52155,12 @@
           "priority": {
             "$ref": "#/components/schemas/ml._types:TrainingPriority"
           },
+          "per_deployment_memory_bytes": {
+            "type": "number"
+          },
+          "per_allocation_memory_bytes": {
+            "type": "number"
+          },
           "queue_capacity": {
             "description": "Number of inference requests are allowed in the queue at a time.",
             "type": "number"
@@ -52134,9 +52174,10 @@
           "model_bytes",
           "model_id",
           "deployment_id",
-          "cache_size",
           "number_of_allocations",
           "priority",
+          "per_deployment_memory_bytes",
+          "per_allocation_memory_bytes",
           "queue_capacity",
           "threads_per_allocation"
         ]

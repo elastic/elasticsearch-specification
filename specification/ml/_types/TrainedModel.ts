@@ -162,7 +162,7 @@ export class TrainedModelDeploymentNodesStats {
    * Information pertaining to the node.
    * @availability stack
    */
-  node?: Dictionary<Id, DiscoveryNode>
+  node?: DiscoveryNode
   /**
    * The number of allocations assigned to this node.
    */
@@ -351,12 +351,15 @@ export class TrainedModelAssignmentTaskParameters {
    * @availability stack since=8.4.0
    * @availability serverless
    */
-  cache_size: ByteSize
+  cache_size?: ByteSize
   /**
    * The total number of allocations this model is assigned across ML nodes.
    */
   number_of_allocations: integer
   priority: TrainingPriority
+
+  per_deployment_memory_bytes: long
+  per_allocation_memory_bytes: long
 
   /**
    * Number of inference requests are allowed in the queue at a time.
@@ -421,11 +424,13 @@ export class TrainedModelDeploymentAllocationStatus {
 }
 
 export class TrainedModelAssignment {
+  adaptive_allocations?: AdaptiveAllocationsSettings | null
   /**
    * The overall assignment state.
    */
   assignment_state: DeploymentAssignmentState
   max_assigned_allocations?: integer
+  reason?: string
   /**
    * The allocation state for each node.
    */

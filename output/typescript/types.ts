@@ -13901,7 +13901,7 @@ export type MlDatafeedState = 'started' | 'stopped' | 'starting' | 'stopping'
 export interface MlDatafeedStats {
   assignment_explanation?: string
   datafeed_id: Id
-  node?: Record<Id, MlDiscoveryNode>
+  node?: MlDiscoveryNode
   state: MlDatafeedState
   timing_stats?: MlDatafeedTimingStats
   running_state?: MlDatafeedRunningState
@@ -13910,6 +13910,7 @@ export interface MlDatafeedStats {
 export interface MlDatafeedTimingStats {
   bucket_count: long
   exponential_average_search_time_per_hour_ms: DurationValue<UnitFloatMillis>
+  exponential_average_calculation_context?: MlExponentialAverageCalculationContext
   job_id: Id
   search_count: long
   total_search_time_ms: DurationValue<UnitFloatMillis>
@@ -14210,16 +14211,23 @@ export interface MlDetectorRead {
 export interface MlDiscoveryNode {
   name?: Name
   ephemeral_id: Id
+  id?: Id
   transport_address: TransportAddress
   external_id?: string
   attributes?: Record<string, string>
-  roles: string[]
+  roles?: string[]
   version?: VersionString
   min_index_version?: integer
   max_index_version?: integer
 }
 
 export type MlExcludeFrequent = 'all' | 'none' | 'by' | 'over'
+
+export interface MlExponentialAverageCalculationContext {
+  incremental_metric_value_ms: double
+  latest_timestamp?: EpochTime<UnitMillis>
+  previous_exponential_average_ms?: DurationValue<UnitFloatMillis>
+}
 
 export interface MlFillMaskInferenceOptions {
   mask_token?: string
@@ -14413,7 +14421,7 @@ export interface MlJobStats {
   forecasts_stats: MlJobForecastStatistics
   job_id: string
   model_size_stats: MlModelSizeStats
-  node?: Record<Id, MlDiscoveryNode>
+  node?: MlDiscoveryNode
   open_time?: DateTime
   state: MlJobState
   timing_stats: MlJobTimingStats
@@ -14480,7 +14488,7 @@ export interface MlModelSnapshotUpgrade {
   job_id: Id
   snapshot_id: Id
   state: MlSnapshotUpgradeState
-  node: Record<Id, MlDiscoveryNode>
+  node: MlDiscoveryNode
   assignment_explanation: string
 }
 
@@ -14675,8 +14683,10 @@ export interface MlTotalFeatureImportanceStatistics {
 }
 
 export interface MlTrainedModelAssignment {
+  adaptive_allocations?: MlAdaptiveAllocationsSettings | null
   assignment_state: MlDeploymentAssignmentState
   max_assigned_allocations?: integer
+  reason?: string
   routing_table: Record<string, MlTrainedModelAssignmentRoutingTable>
   start_time: DateTime
   task_parameters: MlTrainedModelAssignmentTaskParameters
@@ -14693,9 +14703,11 @@ export interface MlTrainedModelAssignmentTaskParameters {
   model_bytes: integer
   model_id: Id
   deployment_id: Id
-  cache_size: ByteSize
+  cache_size?: ByteSize
   number_of_allocations: integer
   priority: MlTrainingPriority
+  per_deployment_memory_bytes: long
+  per_allocation_memory_bytes: long
   queue_capacity: integer
   threads_per_allocation: integer
 }
@@ -14748,7 +14760,7 @@ export interface MlTrainedModelDeploymentNodesStats {
   inference_cache_hit_count?: long
   inference_cache_hit_count_last_minute?: long
   last_access?: long
-  node?: Record<Id, MlDiscoveryNode>
+  node?: MlDiscoveryNode
   number_of_allocations?: integer
   number_of_pending_requests?: integer
   peak_throughput_per_minute: long

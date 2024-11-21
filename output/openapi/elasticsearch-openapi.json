@@ -74073,11 +74073,7 @@
             "$ref": "#/components/schemas/_types:Id"
           },
           "node": {
-            "description": "For started datafeeds only, this information pertains to the node upon which the datafeed is started.",
-            "type": "object",
-            "additionalProperties": {
-              "$ref": "#/components/schemas/ml._types:DiscoveryNode"
-            }
+            "$ref": "#/components/schemas/ml._types:DiscoveryNode"
           },
           "state": {
             "$ref": "#/components/schemas/ml._types:DatafeedState"
@@ -74101,6 +74097,9 @@
             "$ref": "#/components/schemas/_types:Name"
           },
           "ephemeral_id": {
+            "$ref": "#/components/schemas/_types:Id"
+          },
+          "id": {
             "$ref": "#/components/schemas/_types:Id"
           },
           "transport_address": {
@@ -74133,8 +74132,7 @@
         },
         "required": [
           "ephemeral_id",
-          "transport_address",
-          "roles"
+          "transport_address"
         ]
       },
       "ml._types:DatafeedTimingStats": {
@@ -74146,6 +74144,9 @@
           },
           "exponential_average_search_time_per_hour_ms": {
             "$ref": "#/components/schemas/_types:DurationValueUnitFloatMillis"
+          },
+          "exponential_average_calculation_context": {
+            "$ref": "#/components/schemas/ml._types:ExponentialAverageCalculationContext"
           },
           "job_id": {
             "$ref": "#/components/schemas/_types:Id"
@@ -74179,6 +74180,23 @@
       "_types:UnitFloatMillis": {
         "description": "Time unit for fractional milliseconds",
         "type": "number"
+      },
+      "ml._types:ExponentialAverageCalculationContext": {
+        "type": "object",
+        "properties": {
+          "incremental_metric_value_ms": {
+            "type": "number"
+          },
+          "latest_timestamp": {
+            "$ref": "#/components/schemas/_types:EpochTimeUnitMillis"
+          },
+          "previous_exponential_average_ms": {
+            "$ref": "#/components/schemas/_types:DurationValueUnitFloatMillis"
+          }
+        },
+        "required": [
+          "incremental_metric_value_ms"
+        ]
       },
       "ml._types:DatafeedRunningState": {
         "type": "object",
@@ -74470,11 +74488,7 @@
             "$ref": "#/components/schemas/ml._types:ModelSizeStats"
           },
           "node": {
-            "description": "Contains properties for the node that runs the job.\nThis information is available only for open jobs.",
-            "type": "object",
-            "additionalProperties": {
-              "$ref": "#/components/schemas/ml._types:DiscoveryNode"
-            }
+            "$ref": "#/components/schemas/ml._types:DiscoveryNode"
           },
           "open_time": {
             "$ref": "#/components/schemas/_types:DateTime"
@@ -75077,10 +75091,7 @@
             "$ref": "#/components/schemas/ml._types:SnapshotUpgradeState"
           },
           "node": {
-            "type": "object",
-            "additionalProperties": {
-              "$ref": "#/components/schemas/ml._types:DiscoveryNode"
-            }
+            "$ref": "#/components/schemas/ml._types:DiscoveryNode"
           },
           "assignment_explanation": {
             "type": "string"
@@ -76233,11 +76244,7 @@
             "type": "number"
           },
           "node": {
-            "description": "Information pertaining to the node.",
-            "type": "object",
-            "additionalProperties": {
-              "$ref": "#/components/schemas/ml._types:DiscoveryNode"
-            }
+            "$ref": "#/components/schemas/ml._types:DiscoveryNode"
           },
           "number_of_allocations": {
             "description": "The number of allocations assigned to this node.",
@@ -77324,11 +77331,25 @@
       "ml._types:TrainedModelAssignment": {
         "type": "object",
         "properties": {
+          "adaptive_allocations": {
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/ml._types:AdaptiveAllocationsSettings"
+              },
+              {
+                "nullable": true,
+                "type": "string"
+              }
+            ]
+          },
           "assignment_state": {
             "$ref": "#/components/schemas/ml._types:DeploymentAssignmentState"
           },
           "max_assigned_allocations": {
             "type": "number"
+          },
+          "reason": {
+            "type": "string"
           },
           "routing_table": {
             "description": "The allocation state for each node.",
@@ -77374,6 +77395,12 @@
           "priority": {
             "$ref": "#/components/schemas/ml._types:TrainingPriority"
           },
+          "per_deployment_memory_bytes": {
+            "type": "number"
+          },
+          "per_allocation_memory_bytes": {
+            "type": "number"
+          },
           "queue_capacity": {
             "description": "Number of inference requests are allowed in the queue at a time.",
             "type": "number"
@@ -77387,9 +77414,10 @@
           "model_bytes",
           "model_id",
           "deployment_id",
-          "cache_size",
           "number_of_allocations",
           "priority",
+          "per_deployment_memory_bytes",
+          "per_allocation_memory_bytes",
           "queue_capacity",
           "threads_per_allocation"
         ]
