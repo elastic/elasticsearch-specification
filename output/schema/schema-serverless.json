@@ -10128,8 +10128,22 @@
           }
         }
       ],
-      "query": [],
-      "specLocation": "async_search/status/AsyncSearchStatusRequest.ts#L23-L39"
+      "query": [
+        {
+          "description": "Specifies how long the async search needs to be available.\nOngoing async searches and any saved search results are deleted after this period.",
+          "name": "keep_alive",
+          "required": false,
+          "serverDefault": "5d",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Duration",
+              "namespace": "_types"
+            }
+          }
+        }
+      ],
+      "specLocation": "async_search/status/AsyncSearchStatusRequest.ts#L24-L48"
     },
     {
       "body": {
@@ -10930,17 +10944,6 @@
           }
         },
         {
-          "name": "scroll",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "Duration",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
           "description": "Search operation type",
           "name": "search_type",
           "required": false,
@@ -11088,6 +11091,7 @@
           }
         },
         {
+          "description": "Indicates whether hits.total should be rendered as an integer or an object in the rest search response",
           "name": "rest_total_hits_as_int",
           "required": false,
           "type": {
@@ -11222,7 +11226,7 @@
           }
         }
       ],
-      "specLocation": "async_search/submit/AsyncSearchSubmitRequest.ts#L54-L288"
+      "specLocation": "async_search/submit/AsyncSearchSubmitRequest.ts#L54-L289"
     },
     {
       "body": {

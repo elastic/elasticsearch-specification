@@ -19,6 +19,7 @@
 
 import { RequestBase } from '@_types/Base'
 import { Id } from '@_types/common'
+import { Duration } from '@_types/Time'
 
 /**
  * Get the async search status.
@@ -35,5 +36,13 @@ export interface Request extends RequestBase {
   path_parts: {
     /** A unique identifier for the async search. */
     id: Id
+  }
+  query_parameters: {
+    /**
+     * Specifies how long the async search needs to be available.
+     * Ongoing async searches and any saved search results are deleted after this period.
+     * @server_default 5d
+     */
+    keep_alive?: Duration
   }
 }

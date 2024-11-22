@@ -49,18 +49,8 @@
         "type_alias definition _global.search._types:Suggest - Expected 1 generic parameters but got 0"
       ]
     },
-    "async_search.status": {
-      "request": [
-        "Request: missing json spec query parameter 'keep_alive'"
-      ],
-      "response": []
-    },
     "async_search.submit": {
       "request": [
-        "Request: query parameter 'ccs_minimize_roundtrips' does not exist in the json spec",
-        "Request: query parameter 'pre_filter_shard_size' does not exist in the json spec",
-        "Request: query parameter 'scroll' does not exist in the json spec",
-        "Request: query parameter 'rest_total_hits_as_int' does not exist in the json spec",
         "interface definition _types:QueryVectorBuilder - Property text_embedding is a single-variant and must be required",
         "type_alias definition _spec_utils:PipeSeparatedFlags / union_of / instance_of - No type definition for '_spec_utils.PipeSeparatedFlags:T'"
       ],
