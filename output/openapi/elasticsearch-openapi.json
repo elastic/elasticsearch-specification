@@ -21914,7 +21914,7 @@
                     "description": "An array of detector update objects.",
                     "type": "array",
                     "items": {
-                      "$ref": "#/components/schemas/ml._types:Detector"
+                      "$ref": "#/components/schemas/ml._types:DetectorUpdate"
                     }
                   },
                   "per_partition_categorization": {
@@ -74377,6 +74377,14 @@
           "expand_wildcards": {
             "$ref": "#/components/schemas/_types:ExpandWildcards"
           },
+          "exclude": {
+            "deprecated": true,
+            "type": "string"
+          },
+          "failure_store": {
+            "deprecated": true,
+            "type": "string"
+          },
           "ignore_unavailable": {
             "description": "If true, missing or closed indices are not included in the response.",
             "type": "boolean"
@@ -74384,6 +74392,14 @@
           "ignore_throttled": {
             "description": "If true, concrete, expanded or aliased indices are ignored when frozen.",
             "type": "boolean"
+          },
+          "include": {
+            "deprecated": true,
+            "type": "string"
+          },
+          "only": {
+            "deprecated": true,
+            "type": "string"
           }
         }
       },
@@ -75570,6 +75586,9 @@
           "model_size_bytes": {
             "$ref": "#/components/schemas/_types:ByteSize"
           },
+          "model_package": {
+            "$ref": "#/components/schemas/ml._types:ModelPackageConfig"
+          },
           "location": {
             "$ref": "#/components/schemas/ml._types:TrainedModelLocation"
           },
@@ -75659,6 +75678,9 @@
           "bert": {
             "$ref": "#/components/schemas/ml._types:NlpBertTokenizationConfig"
           },
+          "bert_ja": {
+            "$ref": "#/components/schemas/ml._types:NlpBertTokenizationConfig"
+          },
           "mpnet": {
             "$ref": "#/components/schemas/ml._types:NlpBertTokenizationConfig"
           },
@@ -75704,6 +75726,10 @@
       "ml._types:NlpRobertaTokenizationConfig": {
         "type": "object",
         "properties": {
+          "do_lower_case": {
+            "description": "Should the tokenizer lower case the text",
+            "type": "boolean"
+          },
           "add_prefix_space": {
             "description": "Should the tokenizer prefix input with a space character",
             "type": "boolean"
@@ -75779,8 +75805,22 @@
           "results_field": {
             "description": "The field that is added to incoming documents to contain the inference prediction. Defaults to predicted_value.",
             "type": "string"
+          },
+          "vocabulary": {
+            "$ref": "#/components/schemas/ml._types:Vocabulary"
           }
         }
+      },
+      "ml._types:Vocabulary": {
+        "type": "object",
+        "properties": {
+          "index": {
+            "$ref": "#/components/schemas/_types:IndexName"
+          }
+        },
+        "required": [
+          "index"
+        ]
       },
       "ml._types:NerInferenceOptions": {
         "type": "object",
@@ -75803,17 +75843,6 @@
             "$ref": "#/components/schemas/ml._types:Vocabulary"
           }
         }
-      },
-      "ml._types:Vocabulary": {
-        "type": "object",
-        "properties": {
-          "index": {
-            "$ref": "#/components/schemas/_types:IndexName"
-          }
-        },
-        "required": [
-          "index"
-        ]
       },
       "ml._types:PassThroughInferenceOptions": {
         "type": "object",
@@ -75843,6 +75872,9 @@
           "results_field": {
             "description": "The field that is added to incoming documents to contain the inference prediction. Defaults to predicted_value.",
             "type": "string"
+          },
+          "vocabulary": {
+            "$ref": "#/components/schemas/ml._types:Vocabulary"
           }
         }
       },
@@ -75855,6 +75887,9 @@
           "results_field": {
             "description": "The field that is added to incoming documents to contain the inference prediction. Defaults to predicted_value.",
             "type": "string"
+          },
+          "vocabulary": {
+            "$ref": "#/components/schemas/ml._types:Vocabulary"
           }
         }
       },
@@ -76022,6 +76057,78 @@
           "importance"
         ]
       },
+      "ml._types:ModelPackageConfig": {
+        "type": "object",
+        "properties": {
+          "create_time": {
+            "$ref": "#/components/schemas/_types:EpochTimeUnitMillis"
+          },
+          "description": {
+            "type": "string"
+          },
+          "inference_config": {
+            "type": "object",
+            "additionalProperties": {
+              "type": "object"
+            }
+          },
+          "metadata": {
+            "$ref": "#/components/schemas/_types:Metadata"
+          },
+          "minimum_version": {
+            "type": "string"
+          },
+          "model_repository": {
+            "type": "string"
+          },
+          "model_type": {
+            "type": "string"
+          },
+          "packaged_model_id": {
+            "$ref": "#/components/schemas/_types:Id"
+          },
+          "platform_architecture": {
+            "type": "string"
+          },
+          "prefix_strings": {
+            "$ref": "#/components/schemas/ml._types:TrainedModelPrefixStrings"
+          },
+          "size": {
+            "type": "number"
+          },
+          "sha256": {
+            "type": "string"
+          },
+          "tags": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "vocabulary_file": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "packaged_model_id"
+        ]
+      },
+      "ml._types:TrainedModelPrefixStrings": {
+        "type": "object",
+        "properties": {
+          "ingest": {
+            "description": "String prepended to input at ingest",
+            "type": "string"
+          },
+          "search": {
+            "description": "String prepended to input at search",
+            "type": "string"
+          },
+          "none": {
+            "type": "string"
+          }
+        }
+      },
       "ml._types:TrainedModelLocation": {
         "type": "object",
         "properties": {
@@ -76043,19 +76150,6 @@
         "required": [
           "name"
         ]
-      },
-      "ml._types:TrainedModelPrefixStrings": {
-        "type": "object",
-        "properties": {
-          "ingest": {
-            "description": "String prepended to input at ingest",
-            "type": "string"
-          },
-          "search": {
-            "description": "String prepended to input at search",
-            "type": "string"
-          }
-        }
       },
       "ml._types:TrainedModelStats": {
         "type": "object",
@@ -77432,6 +77526,29 @@
         },
         "required": [
           "model_memory_limit"
+        ]
+      },
+      "ml._types:DetectorUpdate": {
+        "type": "object",
+        "properties": {
+          "detector_index": {
+            "description": "A unique identifier for the detector.\nThis identifier is based on the order of the detectors in the `analysis_config`, starting at zero.",
+            "type": "number"
+          },
+          "description": {
+            "description": "A description of the detector.",
+            "type": "string"
+          },
+          "custom_rules": {
+            "description": "An array of custom rule objects, which enable you to customize the way detectors operate.\nFor example, a rule may dictate to the detector conditions under which results should be skipped.\nKibana refers to custom rules as job rules.",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ml._types:DetectionRule"
+            }
+          }
+        },
+        "required": [
+          "detector_index"
         ]
       },
       "_global.msearch:MultiSearchResult": {

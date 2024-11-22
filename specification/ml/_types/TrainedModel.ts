@@ -24,6 +24,7 @@ import {
   Field,
   Id,
   IndexName,
+  Metadata,
   Name,
   VersionString
 } from '@_types/common'
@@ -218,6 +219,7 @@ export class TrainedModelConfig {
   /** An object containing metadata about the trained model. For example, models created by data frame analytics contain analysis_config and input objects. */
   metadata?: TrainedModelConfigMetadata
   model_size_bytes?: ByteSize
+  model_package?: ModelPackageConfig
   location?: TrainedModelLocation
   prefix_strings?: TrainedModelPrefixStrings
 }
@@ -235,6 +237,23 @@ export class TrainedModelConfigMetadata {
   hyperparameters?: Hyperparameter[]
   /** An array of the total feature importance for each feature used from the training data set. This array of objects is returned if data frame analytics trained the model and the request includes total_feature_importance in the include request parameter. */
   total_feature_importance?: TotalFeatureImportance[]
+}
+
+export class ModelPackageConfig {
+  create_time?: EpochTime<UnitMillis>
+  description?: string
+  inference_config?: Dictionary<string, UserDefinedValue>
+  metadata?: Metadata
+  minimum_version?: string
+  model_repository?: string
+  model_type?: string
+  packaged_model_id: Id
+  platform_architecture?: string
+  prefix_strings?: TrainedModelPrefixStrings
+  size?: long
+  sha256?: string
+  tags?: string[]
+  vocabulary_file?: string
 }
 
 export class Hyperparameter {
@@ -459,4 +478,6 @@ export class TrainedModelPrefixStrings {
    * String prepended to input at search
    */
   search?: string
+
+  none?: string
 }

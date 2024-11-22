@@ -2468,8 +2468,12 @@ export type Indices = IndexName | IndexName[]
 export interface IndicesOptions {
   allow_no_indices?: boolean
   expand_wildcards?: ExpandWildcards
+  exclude?: string
+  failure_store?: string
   ignore_unavailable?: boolean
   ignore_throttled?: boolean
+  include?: string
+  only?: string
 }
 
 export interface IndicesResponseBase extends AcknowledgedResponseBase {
@@ -14208,6 +14212,12 @@ export interface MlDetectorRead {
   use_null?: boolean
 }
 
+export interface MlDetectorUpdate {
+  detector_index: integer
+  description?: string
+  custom_rules?: MlDetectionRule[]
+}
+
 export interface MlDiscoveryNode {
   name?: Name
   ephemeral_id: Id
@@ -14234,6 +14244,7 @@ export interface MlFillMaskInferenceOptions {
   num_top_classes?: integer
   tokenization?: MlTokenizationConfigContainer
   results_field?: string
+  vocabulary?: MlVocabulary
 }
 
 export interface MlFillMaskInferenceUpdateOptions {
@@ -14441,6 +14452,23 @@ export interface MlJobTimingStats {
 
 export type MlMemoryStatus = 'ok' | 'soft_limit' | 'hard_limit'
 
+export interface MlModelPackageConfig {
+  create_time?: EpochTime<UnitMillis>
+  description?: string
+  inference_config?: Record<string, any>
+  metadata?: Metadata
+  minimum_version?: string
+  model_repository?: string
+  model_type?: string
+  packaged_model_id: Id
+  platform_architecture?: string
+  prefix_strings?: MlTrainedModelPrefixStrings
+  size?: long
+  sha256?: string
+  tags?: string[]
+  vocabulary_file?: string
+}
+
 export interface MlModelPlotConfig {
   annotations_enabled?: boolean
   enabled?: boolean
@@ -14513,6 +14541,7 @@ export interface MlNlpBertTokenizationConfig {
 }
 
 export interface MlNlpRobertaTokenizationConfig {
+  do_lower_case?: boolean
   add_prefix_space?: boolean
   with_special_tokens?: boolean
   max_sequence_length?: integer
@@ -14629,6 +14658,7 @@ export interface MlTextEmbeddingInferenceOptions {
   embedding_size?: integer
   tokenization?: MlTokenizationConfigContainer
   results_field?: string
+  vocabulary?: MlVocabulary
 }
 
 export interface MlTextEmbeddingInferenceUpdateOptions {
@@ -14639,6 +14669,7 @@ export interface MlTextEmbeddingInferenceUpdateOptions {
 export interface MlTextExpansionInferenceOptions {
   tokenization?: MlTokenizationConfigContainer
   results_field?: string
+  vocabulary?: MlVocabulary
 }
 
 export interface MlTextExpansionInferenceUpdateOptions {
@@ -14653,6 +14684,7 @@ export interface MlTimingStats {
 
 export interface MlTokenizationConfigContainer {
   bert?: MlNlpBertTokenizationConfig
+  bert_ja?: MlNlpBertTokenizationConfig
   mpnet?: MlNlpBertTokenizationConfig
   roberta?: MlNlpRobertaTokenizationConfig
 }
@@ -14730,6 +14762,7 @@ export interface MlTrainedModelConfig {
   license_level?: string
   metadata?: MlTrainedModelConfigMetadata
   model_size_bytes?: ByteSize
+  model_package?: MlModelPackageConfig
   location?: MlTrainedModelLocation
   prefix_strings?: MlTrainedModelPrefixStrings
 }
@@ -14830,6 +14863,7 @@ export interface MlTrainedModelLocationIndex {
 export interface MlTrainedModelPrefixStrings {
   ingest?: string
   search?: string
+  none?: string
 }
 
 export interface MlTrainedModelSizeStats {
@@ -16132,7 +16166,7 @@ export interface MlUpdateJobRequest extends RequestBase {
     renormalization_window_days?: long
     results_retention_days?: long
     groups?: string[]
-    detectors?: MlDetector[]
+    detectors?: MlDetectorUpdate[]
     per_partition_categorization?: MlPerPartitionCategorization
   }
 }

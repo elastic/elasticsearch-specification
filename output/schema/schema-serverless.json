@@ -32960,7 +32960,7 @@
               "value": {
                 "kind": "instance_of",
                 "type": {
-                  "name": "Detector",
+                  "name": "DetectorUpdate",
                   "namespace": "ml._types"
                 }
               }
@@ -76439,7 +76439,7 @@
         "name": "ClusterInfoTarget",
         "namespace": "_types"
       },
-      "specLocation": "_types/common.ts#L382-L388"
+      "specLocation": "_types/common.ts#L401-L407"
     },
     {
       "kind": "type_alias",
@@ -76447,7 +76447,7 @@
         "name": "ClusterInfoTargets",
         "namespace": "_types"
       },
-      "specLocation": "_types/common.ts#L390-L390",
+      "specLocation": "_types/common.ts#L409-L409",
       "type": {
         "items": [
           {
@@ -77368,7 +77368,7 @@
         "name": "Slices",
         "namespace": "_types"
       },
-      "specLocation": "_types/common.ts#L365-L370",
+      "specLocation": "_types/common.ts#L384-L389",
       "type": {
         "items": [
           {
@@ -77401,7 +77401,7 @@
         "name": "SlicesCalculation",
         "namespace": "_types"
       },
-      "specLocation": "_types/common.ts#L372-L380"
+      "specLocation": "_types/common.ts#L391-L399"
     },
     {
       "kind": "type_alias",
@@ -95058,7 +95058,7 @@
         "name": "DeploymentAllocationState",
         "namespace": "ml._types"
       },
-      "specLocation": "ml/_types/TrainedModel.ts#L297-L310"
+      "specLocation": "ml/_types/TrainedModel.ts#L316-L329"
     },
     {
       "kind": "enum",
@@ -95084,7 +95084,7 @@
         "name": "DeploymentAssignmentState",
         "namespace": "ml._types"
       },
-      "specLocation": "ml/_types/TrainedModel.ts#L312-L329"
+      "specLocation": "ml/_types/TrainedModel.ts#L331-L348"
     },
     {
       "kind": "enum",
@@ -95106,7 +95106,7 @@
         "name": "ExcludeFrequent",
         "namespace": "ml._types"
       },
-      "specLocation": "ml/_types/Detector.ts#L127-L132"
+      "specLocation": "ml/_types/Detector.ts#L145-L150"
     },
     {
       "kind": "enum",
@@ -95228,7 +95228,7 @@
         "name": "PredictedValue",
         "namespace": "ml._types"
       },
-      "specLocation": "ml/_types/inference.ts#L457-L457",
+      "specLocation": "ml/_types/inference.ts#L468-L468",
       "type": {
         "items": [
           {
@@ -95280,7 +95280,7 @@
         "name": "RoutingState",
         "namespace": "ml._types"
       },
-      "specLocation": "ml/_types/TrainedModel.ts#L374-L395"
+      "specLocation": "ml/_types/TrainedModel.ts#L393-L414"
     },
     {
       "kind": "enum",
@@ -95339,7 +95339,7 @@
         "name": "TokenizationTruncate",
         "namespace": "ml._types"
       },
-      "specLocation": "ml/_types/inference.ts#L350-L354"
+      "specLocation": "ml/_types/inference.ts#L361-L365"
     },
     {
       "kind": "enum",
@@ -95361,7 +95361,7 @@
         "name": "TrainedModelType",
         "namespace": "ml._types"
       },
-      "specLocation": "ml/_types/TrainedModel.ts#L281-L295"
+      "specLocation": "ml/_types/TrainedModel.ts#L300-L314"
     },
     {
       "kind": "enum",
@@ -95377,7 +95377,7 @@
         "name": "TrainingPriority",
         "namespace": "ml._types"
       },
-      "specLocation": "ml/_types/TrainedModel.ts#L331-L334"
+      "specLocation": "ml/_types/TrainedModel.ts#L350-L353"
     },
     {
       "codegenNames": [
@@ -130678,6 +130678,36 @@
           }
         },
         {
+          "deprecation": {
+            "description": "this value will be replaced by the selector `::*` on the expression level",
+            "version": "8.16.0"
+          },
+          "name": "exclude",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "_builtins"
+            }
+          }
+        },
+        {
+          "deprecation": {
+            "description": "this query param will be replaced by the selector `::` on the expression level",
+            "version": "8.16.0"
+          },
+          "name": "failure_store",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "_builtins"
+            }
+          }
+        },
+        {
           "description": "If true, missing or closed indices are not included in the response.",
           "name": "ignore_unavailable",
           "required": false,
@@ -130702,9 +130732,39 @@
               "namespace": "_builtins"
             }
           }
+        },
+        {
+          "deprecation": {
+            "description": "this value will be replaced by the selector `::*` on the expression level",
+            "version": "8.16.0"
+          },
+          "name": "include",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "_builtins"
+            }
+          }
+        },
+        {
+          "deprecation": {
+            "description": "this value will be replaced by the selector `::*` on the expression level",
+            "version": "8.16.0"
+          },
+          "name": "only",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "_builtins"
+            }
+          }
         }
       ],
-      "specLocation": "_types/common.ts#L336-L363"
+      "specLocation": "_types/common.ts#L336-L382"
     },
     {
       "kind": "interface",
@@ -132471,6 +132531,17 @@
           }
         },
         {
+          "name": "model_package",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "ModelPackageConfig",
+              "namespace": "ml._types"
+            }
+          }
+        },
+        {
           "name": "location",
           "required": false,
           "type": {
@@ -132493,7 +132564,7 @@
           }
         }
       ],
-      "specLocation": "ml/_types/TrainedModel.ts#L188-L223"
+      "specLocation": "ml/_types/TrainedModel.ts#L189-L225"
     },
     {
       "description": "Inference configuration provided when storing the model config",
@@ -132737,7 +132808,7 @@
           }
         }
       ],
-      "specLocation": "ml/_types/inference.ts#L189-L199"
+      "specLocation": "ml/_types/inference.ts#L196-L206"
     },
     {
       "description": "Tokenization options stored in inference configuration",
@@ -132750,6 +132821,18 @@
         {
           "description": "Indicates BERT tokenization and its options",
           "name": "bert",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "NlpBertTokenizationConfig",
+              "namespace": "ml._types"
+            }
+          }
+        },
+        {
+          "description": "Indicates BERT Japanese tokenization and its options",
+          "name": "bert_ja",
           "required": false,
           "type": {
             "kind": "instance_of",
@@ -132796,7 +132879,7 @@
           }
         }
       ],
-      "specLocation": "ml/_types/inference.ts#L110-L129",
+      "specLocation": "ml/_types/inference.ts#L110-L131",
       "variants": {
         "kind": "container"
       }
@@ -132875,7 +132958,7 @@
           }
         }
       ],
-      "specLocation": "ml/_types/inference.ts#L131-L158"
+      "specLocation": "ml/_types/inference.ts#L133-L160"
     },
     {
       "description": "RoBERTa tokenization configuration options",
@@ -132885,6 +132968,19 @@
         "namespace": "ml._types"
       },
       "properties": [
+        {
+          "description": "Should the tokenizer lower case the text",
+          "name": "do_lower_case",
+          "required": false,
+          "serverDefault": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "_builtins"
+            }
+          }
+        },
         {
           "description": "Should the tokenizer prefix input with a space character",
           "name": "add_prefix_space",
@@ -132951,7 +133047,7 @@
           }
         }
       ],
-      "specLocation": "ml/_types/inference.ts#L160-L187"
+      "specLocation": "ml/_types/inference.ts#L162-L194"
     },
     {
       "description": "Zero shot classification configuration options",
@@ -133042,7 +133138,7 @@
           }
         }
       ],
-      "specLocation": "ml/_types/inference.ts#L201-L222"
+      "specLocation": "ml/_types/inference.ts#L208-L229"
     },
     {
       "description": "Fill mask inference options",
@@ -133099,9 +133195,41 @@
               "namespace": "_builtins"
             }
           }
+        },
+        {
+          "name": "vocabulary",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Vocabulary",
+              "namespace": "ml._types"
+            }
+          }
         }
       ],
-      "specLocation": "ml/_types/inference.ts#L266-L280"
+      "specLocation": "ml/_types/inference.ts#L276-L291"
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "Vocabulary",
+        "namespace": "ml._types"
+      },
+      "properties": [
+        {
+          "name": "index",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "IndexName",
+              "namespace": "_types"
+            }
+          }
+        }
+      ],
+      "specLocation": "ml/_types/inference.ts#L240-L242"
     },
     {
       "description": "Named entity recognition options",
@@ -133162,28 +133290,7 @@
           }
         }
       ],
-      "specLocation": "ml/_types/inference.ts#L255-L264"
-    },
-    {
-      "kind": "interface",
-      "name": {
-        "name": "Vocabulary",
-        "namespace": "ml._types"
-      },
-      "properties": [
-        {
-          "name": "index",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "IndexName",
-              "namespace": "_types"
-            }
-          }
-        }
-      ],
-      "specLocation": "ml/_types/inference.ts#L233-L235"
+      "specLocation": "ml/_types/inference.ts#L265-L274"
     },
     {
       "description": "Pass through configuration options",
@@ -133229,7 +133336,7 @@
           }
         }
       ],
-      "specLocation": "ml/_types/inference.ts#L224-L231"
+      "specLocation": "ml/_types/inference.ts#L231-L238"
     },
     {
       "description": "Text embedding inference options",
@@ -133274,9 +133381,20 @@
               "namespace": "_builtins"
             }
           }
+        },
+        {
+          "name": "vocabulary",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Vocabulary",
+              "namespace": "ml._types"
+            }
+          }
         }
       ],
-      "specLocation": "ml/_types/inference.ts#L237-L245"
+      "specLocation": "ml/_types/inference.ts#L244-L254"
     },
     {
       "description": "Text expansion inference options",
@@ -133309,9 +133427,20 @@
               "namespace": "_builtins"
             }
           }
+        },
+        {
+          "name": "vocabulary",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Vocabulary",
+              "namespace": "ml._types"
+            }
+          }
         }
       ],
-      "specLocation": "ml/_types/inference.ts#L247-L253"
+      "specLocation": "ml/_types/inference.ts#L256-L263"
     },
     {
       "description": "Question answering inference options",
@@ -133370,7 +133499,7 @@
           }
         }
       ],
-      "specLocation": "ml/_types/inference.ts#L282-L292"
+      "specLocation": "ml/_types/inference.ts#L293-L303"
     },
     {
       "kind": "interface",
@@ -133395,7 +133524,7 @@
           }
         }
       ],
-      "specLocation": "ml/_types/TrainedModel.ts#L225-L228"
+      "specLocation": "ml/_types/TrainedModel.ts#L227-L230"
     },
     {
       "kind": "interface",
@@ -133472,7 +133601,7 @@
           }
         }
       ],
-      "specLocation": "ml/_types/TrainedModel.ts#L230-L238"
+      "specLocation": "ml/_types/TrainedModel.ts#L232-L240"
     },
     {
       "kind": "interface",
@@ -133544,7 +133673,7 @@
           }
         }
       ],
-      "specLocation": "ml/_types/TrainedModel.ts#L240-L254"
+      "specLocation": "ml/_types/TrainedModel.ts#L259-L273"
     },
     {
       "kind": "interface",
@@ -133596,7 +133725,7 @@
           }
         }
       ],
-      "specLocation": "ml/_types/TrainedModel.ts#L256-L263"
+      "specLocation": "ml/_types/TrainedModel.ts#L275-L282"
     },
     {
       "kind": "interface",
@@ -133642,7 +133771,7 @@
           }
         }
       ],
-      "specLocation": "ml/_types/TrainedModel.ts#L272-L279"
+      "specLocation": "ml/_types/TrainedModel.ts#L291-L298"
     },
     {
       "kind": "interface",
@@ -133679,49 +133808,190 @@
           }
         }
       ],
-      "specLocation": "ml/_types/TrainedModel.ts#L265-L270"
+      "specLocation": "ml/_types/TrainedModel.ts#L284-L289"
     },
     {
       "kind": "interface",
       "name": {
-        "name": "TrainedModelLocation",
+        "name": "ModelPackageConfig",
         "namespace": "ml._types"
       },
       "properties": [
         {
-          "name": "index",
-          "required": true,
+          "name": "create_time",
+          "required": false,
           "type": {
+            "generics": [
+              {
+                "kind": "instance_of",
+                "type": {
+                  "name": "UnitMillis",
+                  "namespace": "_types"
+                }
+              }
+            ],
             "kind": "instance_of",
             "type": {
-              "name": "TrainedModelLocationIndex",
-              "namespace": "ml._types"
-            }
-          }
-        }
-      ],
-      "specLocation": "ml/_types/TrainedModel.ts#L445-L447"
-    },
-    {
-      "kind": "interface",
-      "name": {
-        "name": "TrainedModelLocationIndex",
-        "namespace": "ml._types"
-      },
-      "properties": [
-        {
-          "name": "name",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "IndexName",
+              "name": "EpochTime",
               "namespace": "_types"
             }
           }
+        },
+        {
+          "name": "description",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "_builtins"
+            }
+          }
+        },
+        {
+          "name": "inference_config",
+          "required": false,
+          "type": {
+            "key": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "_builtins"
+              }
+            },
+            "kind": "dictionary_of",
+            "singleKey": false,
+            "value": {
+              "kind": "user_defined_value"
+            }
+          }
+        },
+        {
+          "name": "metadata",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Metadata",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "minimum_version",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "_builtins"
+            }
+          }
+        },
+        {
+          "name": "model_repository",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "_builtins"
+            }
+          }
+        },
+        {
+          "name": "model_type",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "_builtins"
+            }
+          }
+        },
+        {
+          "name": "packaged_model_id",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Id",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "platform_architecture",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "_builtins"
+            }
+          }
+        },
+        {
+          "name": "prefix_strings",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "TrainedModelPrefixStrings",
+              "namespace": "ml._types"
+            }
+          }
+        },
+        {
+          "name": "size",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "long",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "sha256",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "_builtins"
+            }
+          }
+        },
+        {
+          "name": "tags",
+          "required": false,
+          "type": {
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "_builtins"
+              }
+            }
+          }
+        },
+        {
+          "name": "vocabulary_file",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "_builtins"
+            }
+          }
         }
       ],
-      "specLocation": "ml/_types/TrainedModel.ts#L449-L451"
+      "specLocation": "ml/_types/TrainedModel.ts#L242-L257"
     },
     {
       "kind": "interface",
@@ -133753,9 +134023,62 @@
               "namespace": "_builtins"
             }
           }
+        },
+        {
+          "name": "none",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "_builtins"
+            }
+          }
         }
       ],
-      "specLocation": "ml/_types/TrainedModel.ts#L453-L462"
+      "specLocation": "ml/_types/TrainedModel.ts#L472-L483"
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "TrainedModelLocation",
+        "namespace": "ml._types"
+      },
+      "properties": [
+        {
+          "name": "index",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "TrainedModelLocationIndex",
+              "namespace": "ml._types"
+            }
+          }
+        }
+      ],
+      "specLocation": "ml/_types/TrainedModel.ts#L464-L466"
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "TrainedModelLocationIndex",
+        "namespace": "ml._types"
+      },
+      "properties": [
+        {
+          "name": "name",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "IndexName",
+              "namespace": "_types"
+            }
+          }
+        }
+      ],
+      "specLocation": "ml/_types/TrainedModel.ts#L468-L470"
     },
     {
       "kind": "interface",
@@ -133846,7 +134169,7 @@
           }
         }
       ],
-      "specLocation": "ml/_types/TrainedModel.ts#L41-L59"
+      "specLocation": "ml/_types/TrainedModel.ts#L42-L60"
     },
     {
       "kind": "interface",
@@ -134069,7 +134392,7 @@
           }
         }
       ],
-      "specLocation": "ml/_types/TrainedModel.ts#L61-L104"
+      "specLocation": "ml/_types/TrainedModel.ts#L62-L105"
     },
     {
       "kind": "interface",
@@ -134112,7 +134435,7 @@
           }
         }
       ],
-      "specLocation": "ml/_types/TrainedModel.ts#L106-L110"
+      "specLocation": "ml/_types/TrainedModel.ts#L107-L111"
     },
     {
       "kind": "interface",
@@ -134158,7 +134481,7 @@
           }
         }
       ],
-      "specLocation": "ml/_types/TrainedModel.ts#L417-L424"
+      "specLocation": "ml/_types/TrainedModel.ts#L436-L443"
     },
     {
       "kind": "interface",
@@ -134403,7 +134726,7 @@
           }
         }
       ],
-      "specLocation": "ml/_types/TrainedModel.ts#L141-L186"
+      "specLocation": "ml/_types/TrainedModel.ts#L142-L187"
     },
     {
       "kind": "interface",
@@ -134461,7 +134784,7 @@
           }
         }
       ],
-      "specLocation": "ml/_types/TrainedModel.ts#L397-L415"
+      "specLocation": "ml/_types/TrainedModel.ts#L416-L434"
     },
     {
       "kind": "interface",
@@ -134542,7 +134865,7 @@
           }
         }
       ],
-      "specLocation": "ml/_types/TrainedModel.ts#L112-L132"
+      "specLocation": "ml/_types/TrainedModel.ts#L113-L133"
     },
     {
       "kind": "interface",
@@ -134576,7 +134899,7 @@
           }
         }
       ],
-      "specLocation": "ml/_types/TrainedModel.ts#L134-L139"
+      "specLocation": "ml/_types/TrainedModel.ts#L135-L140"
     },
     {
       "kind": "interface",
@@ -134706,7 +135029,7 @@
           }
         }
       ],
-      "specLocation": "ml/_types/inference.ts#L296-L318",
+      "specLocation": "ml/_types/inference.ts#L307-L329",
       "variants": {
         "kind": "container"
       }
@@ -134770,7 +135093,7 @@
           }
         }
       ],
-      "specLocation": "ml/_types/inference.ts#L363-L372"
+      "specLocation": "ml/_types/inference.ts#L374-L383"
     },
     {
       "kind": "interface",
@@ -134804,7 +135127,7 @@
           }
         }
       ],
-      "specLocation": "ml/_types/inference.ts#L356-L361"
+      "specLocation": "ml/_types/inference.ts#L367-L372"
     },
     {
       "kind": "interface",
@@ -134865,7 +135188,7 @@
           }
         }
       ],
-      "specLocation": "ml/_types/inference.ts#L374-L383"
+      "specLocation": "ml/_types/inference.ts#L385-L394"
     },
     {
       "kind": "interface",
@@ -134911,7 +135234,7 @@
           }
         }
       ],
-      "specLocation": "ml/_types/inference.ts#L411-L418"
+      "specLocation": "ml/_types/inference.ts#L422-L429"
     },
     {
       "kind": "interface",
@@ -134945,7 +135268,7 @@
           }
         }
       ],
-      "specLocation": "ml/_types/inference.ts#L404-L409"
+      "specLocation": "ml/_types/inference.ts#L415-L420"
     },
     {
       "kind": "interface",
@@ -134979,7 +135302,7 @@
           }
         }
       ],
-      "specLocation": "ml/_types/inference.ts#L385-L390"
+      "specLocation": "ml/_types/inference.ts#L396-L401"
     },
     {
       "kind": "interface",
@@ -135012,7 +135335,7 @@
           }
         }
       ],
-      "specLocation": "ml/_types/inference.ts#L392-L396"
+      "specLocation": "ml/_types/inference.ts#L403-L407"
     },
     {
       "kind": "interface",
@@ -135045,7 +135368,7 @@
           }
         }
       ],
-      "specLocation": "ml/_types/inference.ts#L398-L402"
+      "specLocation": "ml/_types/inference.ts#L409-L413"
     },
     {
       "kind": "interface",
@@ -135115,7 +135438,7 @@
           }
         }
       ],
-      "specLocation": "ml/_types/inference.ts#L420-L431"
+      "specLocation": "ml/_types/inference.ts#L431-L442"
     },
     {
       "kind": "interface",
@@ -135257,7 +135580,7 @@
           }
         }
       ],
-      "specLocation": "ml/_types/inference.ts#L459-L507"
+      "specLocation": "ml/_types/inference.ts#L470-L518"
     },
     {
       "kind": "interface",
@@ -135322,7 +135645,7 @@
           }
         }
       ],
-      "specLocation": "ml/_types/inference.ts#L433-L439"
+      "specLocation": "ml/_types/inference.ts#L444-L450"
     },
     {
       "kind": "interface",
@@ -135365,7 +135688,7 @@
           }
         }
       ],
-      "specLocation": "ml/_types/inference.ts#L440-L444"
+      "specLocation": "ml/_types/inference.ts#L451-L455"
     },
     {
       "kind": "interface",
@@ -135411,7 +135734,7 @@
           }
         }
       ],
-      "specLocation": "ml/_types/inference.ts#L451-L455"
+      "specLocation": "ml/_types/inference.ts#L462-L466"
     },
     {
       "kind": "interface",
@@ -135443,7 +135766,7 @@
           }
         }
       ],
-      "specLocation": "ml/_types/inference.ts#L446-L449"
+      "specLocation": "ml/_types/inference.ts#L457-L460"
     },
     {
       "kind": "interface",
@@ -137028,7 +137351,7 @@
           }
         }
       ],
-      "specLocation": "ml/_types/TrainedModel.ts#L426-L443"
+      "specLocation": "ml/_types/TrainedModel.ts#L445-L462"
     },
     {
       "kind": "interface",
@@ -137161,7 +137484,7 @@
           }
         }
       ],
-      "specLocation": "ml/_types/TrainedModel.ts#L336-L372"
+      "specLocation": "ml/_types/TrainedModel.ts#L355-L391"
     },
     {
       "kind": "interface",
@@ -137184,6 +137507,55 @@
         }
       ],
       "specLocation": "ml/_types/Analysis.ts#L174-L179"
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "DetectorUpdate",
+        "namespace": "ml._types"
+      },
+      "properties": [
+        {
+          "description": "A unique identifier for the detector.\nThis identifier is based on the order of the detectors in the `analysis_config`, starting at zero.",
+          "name": "detector_index",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "A description of the detector.",
+          "name": "description",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "_builtins"
+            }
+          }
+        },
+        {
+          "description": "An array of custom rule objects, which enable you to customize the way detectors operate.\nFor example, a rule may dictate to the detector conditions under which results should be skipped.\nKibana refers to custom rules as job rules.",
+          "name": "custom_rules",
+          "required": false,
+          "type": {
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "DetectionRule",
+                "namespace": "ml._types"
+              }
+            }
+          }
+        }
+      ],
+      "specLocation": "ml/_types/Detector.ts#L127-L143"
     },
     {
       "generics": [
