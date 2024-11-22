@@ -38,6 +38,7 @@ export class Indicators {
   ilm?: IlmIndicator
   slm?: SlmIndicator
   shards_capacity?: ShardsCapacityIndicator
+  file_settings?: FileSettingsIndicator
 }
 
 export class BaseIndicator {
@@ -201,4 +202,15 @@ export class ShardsCapacityIndicatorDetails {
 export class ShardsCapacityIndicatorTierDetail {
   max_shards_in_cluster: integer
   current_used_shards?: integer
+}
+
+/** FILE_SETTINGS **/
+
+export class FileSettingsIndicator extends BaseIndicator {
+  details?: FileSettingsIndicatorDetails
+}
+
+export class FileSettingsIndicatorDetails {
+  failure_streak: long
+  most_recent_failure: string
 }
