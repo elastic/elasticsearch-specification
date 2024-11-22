@@ -6840,6 +6840,8 @@ export interface AutoscalingAutoscalingPolicy {
 
 export interface AutoscalingDeleteAutoscalingPolicyRequest extends RequestBase {
   name: Name
+  master_timeout?: Duration
+  timeout?: Duration
 }
 
 export type AutoscalingDeleteAutoscalingPolicyResponse = AcknowledgedResponseBase
@@ -6872,6 +6874,7 @@ export interface AutoscalingGetAutoscalingCapacityAutoscalingResources {
 }
 
 export interface AutoscalingGetAutoscalingCapacityRequest extends RequestBase {
+  master_timeout?: Duration
 }
 
 export interface AutoscalingGetAutoscalingCapacityResponse {
@@ -6880,12 +6883,15 @@ export interface AutoscalingGetAutoscalingCapacityResponse {
 
 export interface AutoscalingGetAutoscalingPolicyRequest extends RequestBase {
   name: Name
+  master_timeout?: Duration
 }
 
 export type AutoscalingGetAutoscalingPolicyResponse = AutoscalingAutoscalingPolicy
 
 export interface AutoscalingPutAutoscalingPolicyRequest extends RequestBase {
   name: Name
+  master_timeout?: Duration
+  timeout?: Duration
   body?: AutoscalingAutoscalingPolicy
 }
 
@@ -17658,20 +17664,25 @@ export interface SecurityAccess {
 }
 
 export interface SecurityApiKey {
-  creation?: long
-  expiration?: long
   id: Id
-  invalidated?: boolean
   name: Name
-  realm?: string
+  type: SecurityApiKeyType
+  creation: EpochTime<UnitMillis>
+  expiration?: EpochTime<UnitMillis>
+  invalidated: boolean
+  invalidation?: EpochTime<UnitMillis>
+  username: Username
+  realm: string
   realm_type?: string
-  username?: Username
-  profile_uid?: string
-  metadata?: Metadata
+  metadata: Metadata
   role_descriptors?: Record<string, SecurityRoleDescriptor>
   limited_by?: Record<string, SecurityRoleDescriptor>[]
+  access?: SecurityAccess
+  profile_uid?: string
   _sort?: SortResults
 }
+
+export type SecurityApiKeyType = 'rest' | 'cross_cluster'
 
 export interface SecurityApplicationGlobalUserPrivileges {
   manage: SecurityManageUserPrivileges
@@ -17894,11 +17905,16 @@ export interface SecurityActivateUserProfileRequest extends RequestBase {
 
 export type SecurityActivateUserProfileResponse = SecurityUserProfileWithMetadata
 
+export interface SecurityAuthenticateAuthenticateApiKey {
+  id: Id
+  name?: Name
+}
+
 export interface SecurityAuthenticateRequest extends RequestBase {
 }
 
 export interface SecurityAuthenticateResponse {
-  api_key?: SecurityApiKey
+  api_key?: SecurityAuthenticateAuthenticateApiKey
   authentication_realm: SecurityRealmInfo
   email?: string | null
   full_name?: Name | null
