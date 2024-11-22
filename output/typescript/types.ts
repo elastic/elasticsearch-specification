@@ -6828,6 +6828,8 @@ export interface AutoscalingAutoscalingPolicy {
 
 export interface AutoscalingDeleteAutoscalingPolicyRequest extends RequestBase {
   name: Name
+  master_timeout?: Duration
+  timeout?: Duration
 }
 
 export type AutoscalingDeleteAutoscalingPolicyResponse = AcknowledgedResponseBase
@@ -6860,6 +6862,7 @@ export interface AutoscalingGetAutoscalingCapacityAutoscalingResources {
 }
 
 export interface AutoscalingGetAutoscalingCapacityRequest extends RequestBase {
+  master_timeout?: Duration
 }
 
 export interface AutoscalingGetAutoscalingCapacityResponse {
@@ -6868,12 +6871,15 @@ export interface AutoscalingGetAutoscalingCapacityResponse {
 
 export interface AutoscalingGetAutoscalingPolicyRequest extends RequestBase {
   name: Name
+  master_timeout?: Duration
 }
 
 export type AutoscalingGetAutoscalingPolicyResponse = AutoscalingAutoscalingPolicy
 
 export interface AutoscalingPutAutoscalingPolicyRequest extends RequestBase {
   name: Name
+  master_timeout?: Duration
+  timeout?: Duration
   body?: AutoscalingAutoscalingPolicy
 }
 
