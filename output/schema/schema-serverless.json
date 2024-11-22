@@ -39092,8 +39092,8 @@
             "type": {
               "kind": "instance_of",
               "type": {
-                "name": "ApiKey",
-                "namespace": "security._types"
+                "name": "AuthenticateApiKey",
+                "namespace": "security.authenticate"
               }
             }
           },
@@ -39247,7 +39247,7 @@
         "name": "Response",
         "namespace": "security.authenticate"
       },
-      "specLocation": "security/authenticate/SecurityAuthenticateResponse.ts#L25-L43"
+      "specLocation": "security/authenticate/SecurityAuthenticateResponse.ts#L24-L42"
     },
     {
       "attachedBehaviors": [
@@ -102979,6 +102979,22 @@
       "specLocation": "searchable_snapshots/_types/stats.ts#L20-L24"
     },
     {
+      "kind": "enum",
+      "members": [
+        {
+          "name": "rest"
+        },
+        {
+          "name": "cross_cluster"
+        }
+      ],
+      "name": {
+        "name": "ApiKeyType",
+        "namespace": "security._types"
+      },
+      "specLocation": "security/_types/ApiKey.ts#L116-L119"
+    },
+    {
       "isOpen": true,
       "kind": "enum",
       "members": [
@@ -139809,36 +139825,11 @@
     {
       "kind": "interface",
       "name": {
-        "name": "ApiKey",
-        "namespace": "security._types"
+        "name": "AuthenticateApiKey",
+        "namespace": "security.authenticate"
       },
       "properties": [
         {
-          "description": "Creation time for the API key in milliseconds.",
-          "name": "creation",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "long",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "description": "Expiration time for the API key in milliseconds.",
-          "name": "expiration",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "long",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "description": "Id for the API key",
           "name": "id",
           "required": true,
           "type": {
@@ -139850,19 +139841,27 @@
           }
         },
         {
-          "description": "Invalidation status for the API key.\nIf the key has been invalidated, it has a value of `true`. Otherwise, it is `false`.",
-          "name": "invalidated",
+          "name": "name",
           "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "boolean",
-              "namespace": "_builtins"
+              "name": "Name",
+              "namespace": "_types"
             }
           }
-        },
+        }
+      ],
+      "specLocation": "security/authenticate/SecurityAuthenticateResponse.ts#L44-L47"
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "RealmInfo",
+        "namespace": "security._types"
+      },
+      "properties": [
         {
-          "description": "Name of the API key.",
           "name": "name",
           "required": true,
           "type": {
@@ -139874,151 +139873,56 @@
           }
         },
         {
-          "description": "Realm name of the principal for which this API key was created.",
-          "name": "realm",
-          "required": false,
+          "name": "type",
+          "required": true,
           "type": {
             "kind": "instance_of",
             "type": {
               "name": "string",
               "namespace": "_builtins"
-            }
-          }
-        },
-        {
-          "availability": {
-            "serverless": {},
-            "stack": {
-              "since": "8.14.0"
-            }
-          },
-          "description": "Realm type of the principal for which this API key was created",
-          "name": "realm_type",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "_builtins"
-            }
-          }
-        },
-        {
-          "description": "Principal for which this API key was created",
-          "name": "username",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "Username",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "availability": {
-            "serverless": {},
-            "stack": {
-              "since": "8.14.0"
-            }
-          },
-          "description": "The profile uid for the API key owner principal, if requested and if it exists",
-          "name": "profile_uid",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "_builtins"
-            }
-          }
-        },
-        {
-          "availability": {
-            "serverless": {},
-            "stack": {
-              "since": "7.13.0"
-            }
-          },
-          "description": "Metadata of the API key",
-          "name": "metadata",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "Metadata",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "description": "The role descriptors assigned to this API key when it was created or last updated.\nAn empty role descriptor means the API key inherits the owner user’s permissions.",
-          "name": "role_descriptors",
-          "required": false,
-          "type": {
-            "key": {
-              "kind": "instance_of",
-              "type": {
-                "name": "string",
-                "namespace": "_builtins"
-              }
-            },
-            "kind": "dictionary_of",
-            "singleKey": false,
-            "value": {
-              "kind": "instance_of",
-              "type": {
-                "name": "RoleDescriptor",
-                "namespace": "security._types"
-              }
-            }
-          }
-        },
-        {
-          "availability": {
-            "serverless": {},
-            "stack": {
-              "since": "8.5.0"
-            }
-          },
-          "description": "The owner user’s permissions associated with the API key.\nIt is a point-in-time snapshot captured at creation and subsequent updates.\nAn API key’s effective permissions are an intersection of its assigned privileges and the owner user’s permissions.",
-          "name": "limited_by",
-          "required": false,
-          "type": {
-            "kind": "array_of",
-            "value": {
-              "key": {
-                "kind": "instance_of",
-                "type": {
-                  "name": "string",
-                  "namespace": "_builtins"
-                }
-              },
-              "kind": "dictionary_of",
-              "singleKey": false,
-              "value": {
-                "kind": "instance_of",
-                "type": {
-                  "name": "RoleDescriptor",
-                  "namespace": "security._types"
-                }
-              }
-            }
-          }
-        },
-        {
-          "name": "_sort",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "SortResults",
-              "namespace": "_types"
             }
           }
         }
       ],
-      "specLocation": "security/_types/ApiKey.ts#L26-L88"
+      "specLocation": "security/_types/RealmInfo.ts#L22-L25"
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "Token",
+        "namespace": "security.authenticate"
+      },
+      "properties": [
+        {
+          "name": "name",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Name",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "availability": {
+            "serverless": {},
+            "stack": {
+              "since": "7.14.0"
+            }
+          },
+          "name": "type",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "_builtins"
+            }
+          }
+        }
+      ],
+      "specLocation": "security/authenticate/types.ts#L22-L29"
     },
     {
       "kind": "interface",
@@ -140338,43 +140242,24 @@
     {
       "kind": "interface",
       "name": {
-        "name": "RealmInfo",
+        "name": "ApiKey",
         "namespace": "security._types"
       },
       "properties": [
         {
-          "name": "name",
+          "description": "Id for the API key",
+          "name": "id",
           "required": true,
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "Name",
+              "name": "Id",
               "namespace": "_types"
             }
           }
         },
         {
-          "name": "type",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "_builtins"
-            }
-          }
-        }
-      ],
-      "specLocation": "security/_types/RealmInfo.ts#L22-L25"
-    },
-    {
-      "kind": "interface",
-      "name": {
-        "name": "Token",
-        "namespace": "security.authenticate"
-      },
-      "properties": [
-        {
+          "description": "Name of the API key.",
           "name": "name",
           "required": true,
           "type": {
@@ -140389,10 +140274,134 @@
           "availability": {
             "serverless": {},
             "stack": {
-              "since": "7.14.0"
+              "since": "8.10.0"
             }
           },
+          "description": "The type of the API key (e.g. `rest` or `cross_cluster`).",
           "name": "type",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "ApiKeyType",
+              "namespace": "security._types"
+            }
+          }
+        },
+        {
+          "description": "Creation time for the API key in milliseconds.",
+          "name": "creation",
+          "required": true,
+          "type": {
+            "generics": [
+              {
+                "kind": "instance_of",
+                "type": {
+                  "name": "UnitMillis",
+                  "namespace": "_types"
+                }
+              }
+            ],
+            "kind": "instance_of",
+            "type": {
+              "name": "EpochTime",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "Expiration time for the API key in milliseconds.",
+          "name": "expiration",
+          "required": false,
+          "type": {
+            "generics": [
+              {
+                "kind": "instance_of",
+                "type": {
+                  "name": "UnitMillis",
+                  "namespace": "_types"
+                }
+              }
+            ],
+            "kind": "instance_of",
+            "type": {
+              "name": "EpochTime",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "Invalidation status for the API key.\nIf the key has been invalidated, it has a value of `true`. Otherwise, it is `false`.",
+          "name": "invalidated",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "_builtins"
+            }
+          }
+        },
+        {
+          "availability": {
+            "serverless": {},
+            "stack": {
+              "since": "8.12.0"
+            }
+          },
+          "description": "If the key has been invalidated, invalidation time in milliseconds.",
+          "name": "invalidation",
+          "required": false,
+          "type": {
+            "generics": [
+              {
+                "kind": "instance_of",
+                "type": {
+                  "name": "UnitMillis",
+                  "namespace": "_types"
+                }
+              }
+            ],
+            "kind": "instance_of",
+            "type": {
+              "name": "EpochTime",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "Principal for which this API key was created",
+          "name": "username",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Username",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "Realm name of the principal for which this API key was created.",
+          "name": "realm",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "_builtins"
+            }
+          }
+        },
+        {
+          "availability": {
+            "serverless": {},
+            "stack": {
+              "since": "8.14.0"
+            }
+          },
+          "description": "Realm type of the principal for which this API key was created",
+          "name": "realm_type",
           "required": false,
           "type": {
             "kind": "instance_of",
@@ -140401,9 +140410,283 @@
               "namespace": "_builtins"
             }
           }
+        },
+        {
+          "availability": {
+            "serverless": {},
+            "stack": {
+              "since": "7.13.0"
+            }
+          },
+          "description": "Metadata of the API key",
+          "name": "metadata",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Metadata",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "The role descriptors assigned to this API key when it was created or last updated.\nAn empty role descriptor means the API key inherits the owner user’s permissions.",
+          "name": "role_descriptors",
+          "required": false,
+          "type": {
+            "key": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "_builtins"
+              }
+            },
+            "kind": "dictionary_of",
+            "singleKey": false,
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "RoleDescriptor",
+                "namespace": "security._types"
+              }
+            }
+          }
+        },
+        {
+          "availability": {
+            "serverless": {},
+            "stack": {
+              "since": "8.5.0"
+            }
+          },
+          "description": "The owner user’s permissions associated with the API key.\nIt is a point-in-time snapshot captured at creation and subsequent updates.\nAn API key’s effective permissions are an intersection of its assigned privileges and the owner user’s permissions.",
+          "name": "limited_by",
+          "required": false,
+          "type": {
+            "kind": "array_of",
+            "value": {
+              "key": {
+                "kind": "instance_of",
+                "type": {
+                  "name": "string",
+                  "namespace": "_builtins"
+                }
+              },
+              "kind": "dictionary_of",
+              "singleKey": false,
+              "value": {
+                "kind": "instance_of",
+                "type": {
+                  "name": "RoleDescriptor",
+                  "namespace": "security._types"
+                }
+              }
+            }
+          }
+        },
+        {
+          "availability": {
+            "serverless": {},
+            "stack": {
+              "since": "8.10.0"
+            }
+          },
+          "description": "The access granted to cross-cluster API keys.\nThe access is composed of permissions for cross cluster search and cross cluster replication.\nAt least one of them must be specified.\nWhen specified, the new access assignment fully replaces the previously assigned access.",
+          "name": "access",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Access",
+              "namespace": "security._types"
+            }
+          }
+        },
+        {
+          "availability": {
+            "serverless": {},
+            "stack": {
+              "since": "8.14.0"
+            }
+          },
+          "description": "The profile uid for the API key owner principal, if requested and if it exists",
+          "name": "profile_uid",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "_builtins"
+            }
+          }
+        },
+        {
+          "description": "Sorting values when using the `sort` parameter with the `security.query_api_keys` API.",
+          "name": "_sort",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "SortResults",
+              "namespace": "_types"
+            }
+          }
         }
       ],
-      "specLocation": "security/authenticate/types.ts#L22-L29"
+      "specLocation": "security/_types/ApiKey.ts#L28-L114"
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "Access",
+        "namespace": "security._types"
+      },
+      "properties": [
+        {
+          "description": "A list of indices permission entries for cross-cluster replication.",
+          "name": "replication",
+          "required": false,
+          "type": {
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "ReplicationAccess",
+                "namespace": "security._types"
+              }
+            }
+          }
+        },
+        {
+          "description": "A list of indices permission entries for cross-cluster search.",
+          "name": "search",
+          "required": false,
+          "type": {
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "SearchAccess",
+                "namespace": "security._types"
+              }
+            }
+          }
+        }
+      ],
+      "specLocation": "security/_types/Access.ts#L22-L31"
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "ReplicationAccess",
+        "namespace": "security._types"
+      },
+      "properties": [
+        {
+          "description": "A list of indices (or index name patterns) to which the permissions in this entry apply.",
+          "name": "names",
+          "required": true,
+          "type": {
+            "items": [
+              {
+                "kind": "instance_of",
+                "type": {
+                  "name": "IndexName",
+                  "namespace": "_types"
+                }
+              },
+              {
+                "kind": "array_of",
+                "value": {
+                  "kind": "instance_of",
+                  "type": {
+                    "name": "IndexName",
+                    "namespace": "_types"
+                  }
+                }
+              }
+            ],
+            "kind": "union_of"
+          }
+        },
+        {
+          "description": "This needs to be set to true if the patterns in the names field should cover system indices.",
+          "name": "allow_restricted_indices",
+          "required": false,
+          "serverDefault": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "_builtins"
+            }
+          }
+        }
+      ],
+      "specLocation": "security/_types/Privileges.ts#L418-L428"
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "SearchAccess",
+        "namespace": "security._types"
+      },
+      "properties": [
+        {
+          "description": "The document fields that the owners of the role have read access to.",
+          "docId": "field-and-document-access-control",
+          "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/field-and-document-access-control.html",
+          "name": "field_security",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "FieldSecurity",
+              "namespace": "security._types"
+            }
+          }
+        },
+        {
+          "description": "A list of indices (or index name patterns) to which the permissions in this entry apply.",
+          "name": "names",
+          "required": true,
+          "type": {
+            "items": [
+              {
+                "kind": "instance_of",
+                "type": {
+                  "name": "IndexName",
+                  "namespace": "_types"
+                }
+              },
+              {
+                "kind": "array_of",
+                "value": {
+                  "kind": "instance_of",
+                  "type": {
+                    "name": "IndexName",
+                    "namespace": "_types"
+                  }
+                }
+              }
+            ],
+            "kind": "union_of"
+          }
+        },
+        {
+          "description": "A search query that defines the documents the owners of the role have access to. A document within the specified indices must match this query for it to be accessible by the owners of the role.",
+          "name": "query",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "IndicesPrivilegesQuery",
+              "namespace": "security._types"
+            }
+          }
+        }
+      ],
+      "specLocation": "security/_types/Privileges.ts#L430-L450"
     },
     {
       "kind": "interface",
