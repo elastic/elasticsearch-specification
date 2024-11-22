@@ -502,6 +502,15 @@ export interface HealthReportDiskIndicatorDetails {
   nodes_with_unknown_disk_status: long
 }
 
+export interface HealthReportFileSettingsIndicator extends HealthReportBaseIndicator {
+  details?: HealthReportFileSettingsIndicatorDetails
+}
+
+export interface HealthReportFileSettingsIndicatorDetails {
+  failure_streak: long
+  most_recent_failure: string
+}
+
 export interface HealthReportIlmIndicator extends HealthReportBaseIndicator {
   details?: HealthReportIlmIndicatorDetails
 }
@@ -537,6 +546,7 @@ export interface HealthReportIndicators {
   ilm?: HealthReportIlmIndicator
   slm?: HealthReportSlmIndicator
   shards_capacity?: HealthReportShardsCapacityIndicator
+  file_settings?: HealthReportFileSettingsIndicator
 }
 
 export interface HealthReportMasterIsStableIndicator extends HealthReportBaseIndicator {
