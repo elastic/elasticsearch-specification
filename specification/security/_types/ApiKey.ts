@@ -19,7 +19,6 @@
 
 import { Dictionary } from '@spec_utils/Dictionary'
 import { Id, Metadata, Name, Username } from '@_types/common'
-import { long } from '@_types/Numeric'
 import { SortResults } from '@_types/sort'
 import { EpochTime, UnitMillis } from '@_types/Time'
 import { Access } from './Access'
@@ -43,11 +42,11 @@ export class ApiKey {
   /**
    * Creation time for the API key in milliseconds.
    */
-  creation: long
+  creation: EpochTime<UnitMillis>
   /**
    * Expiration time for the API key in milliseconds.
    */
-  expiration?: long
+  expiration?: EpochTime<UnitMillis>
   /**
    * Invalidation status for the API key.
    * If the key has been invalidated, it has a value of `true`. Otherwise, it is `false`.

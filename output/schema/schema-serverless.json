@@ -102913,7 +102913,7 @@
         "name": "ApiKeyType",
         "namespace": "security._types"
       },
-      "specLocation": "security/_types/ApiKey.ts#L117-L120"
+      "specLocation": "security/_types/ApiKey.ts#L116-L119"
     },
     {
       "isOpen": true,
@@ -139867,9 +139867,18 @@
           "name": "creation",
           "required": true,
           "type": {
+            "generics": [
+              {
+                "kind": "instance_of",
+                "type": {
+                  "name": "UnitMillis",
+                  "namespace": "_types"
+                }
+              }
+            ],
             "kind": "instance_of",
             "type": {
-              "name": "long",
+              "name": "EpochTime",
               "namespace": "_types"
             }
           }
@@ -139879,9 +139888,18 @@
           "name": "expiration",
           "required": false,
           "type": {
+            "generics": [
+              {
+                "kind": "instance_of",
+                "type": {
+                  "name": "UnitMillis",
+                  "namespace": "_types"
+                }
+              }
+            ],
             "kind": "instance_of",
             "type": {
-              "name": "long",
+              "name": "EpochTime",
               "namespace": "_types"
             }
           }
@@ -140089,7 +140107,7 @@
           }
         }
       ],
-      "specLocation": "security/_types/ApiKey.ts#L29-L115"
+      "specLocation": "security/_types/ApiKey.ts#L28-L114"
     },
     {
       "kind": "interface",

@@ -17610,8 +17610,8 @@ export interface SecurityApiKey {
   id: Id
   name: Name
   type: SecurityApiKeyType
-  creation: long
-  expiration?: long
+  creation: EpochTime<UnitMillis>
+  expiration?: EpochTime<UnitMillis>
   invalidated: boolean
   invalidation?: EpochTime<UnitMillis>
   username: Username

@@ -53897,12 +53897,10 @@
             "$ref": "#/components/schemas/security._types:ApiKeyType"
           },
           "creation": {
-            "description": "Creation time for the API key in milliseconds.",
-            "type": "number"
+            "$ref": "#/components/schemas/_types:EpochTimeUnitMillis"
           },
           "expiration": {
-            "description": "Expiration time for the API key in milliseconds.",
-            "type": "number"
+            "$ref": "#/components/schemas/_types:EpochTimeUnitMillis"
           },
           "invalidated": {
             "description": "Invalidation status for the API key.\nIf the key has been invalidated, it has a value of `true`. Otherwise, it is `false`.",
