@@ -115,12 +115,16 @@ export interface Request extends RequestBase {
     from?: integer
     sort?: string | string[]
     /**
-     *  A comma separated list of checkpoints. When configured, the search API will only be executed on a shard
+     * A comma separated list of checkpoints. When configured, the search API will only be executed on a shard
      * after the relevant checkpoint has become visible for search. Defaults to an empty list which will cause
      * Elasticsearch to immediately execute the search.
-     * @server_default []
      */
-    wait_for_checkpoints?: Checkpoint[]
+    wait_for_checkpoints?: Checkpoint | Checkpoint[]
+    /*
+     * Time to wait for the checkpoints to become visible for search.
+     * @server_default 30s
+     */
+    wait_for_checkpoints_timeout?: Duration
     /**
      * If true, returns partial results if there are shard request timeouts or [shard failures](https://www.elastic.co/guide/en/elasticsearch/reference/current/docs-replication.html#shard-failures). If false, returns
      * an error with no partial results. Defaults to the configured cluster setting `search.default_allow_partial_results`
