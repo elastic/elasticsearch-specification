@@ -66,7 +66,9 @@ import { Duration } from '@_types/Time'
  * @doc_id async-search
  * @doc_tag search
  */
-// NOTE: this is a SearchRequest with 3 added parameters: wait_for_completion_timeout, keep_on_completion and keep_alive
+// NOTE: this is a SearchRequest with:
+//  * 3 added parameters: wait_for_completion_timeout, keep_on_completion and keep_alive
+//  * 1 removed parameters: scroll
 export interface Request extends RequestBase {
   path_parts: {
     index?: Indices
@@ -122,7 +124,6 @@ export interface Request extends RequestBase {
     /** @server_default true */
     request_cache?: boolean
     routing?: Routing
-    scroll?: Duration
     search_type?: SearchType
     stats?: string[]
     stored_fields?: Fields
