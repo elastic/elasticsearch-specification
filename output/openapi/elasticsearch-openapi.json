@@ -65956,6 +65956,9 @@
           },
           "shards_capacity": {
             "$ref": "#/components/schemas/_global.health_report:ShardsCapacityIndicator"
+          },
+          "file_settings": {
+            "$ref": "#/components/schemas/_global.health_report:FileSettingsIndicator"
           }
         }
       },
@@ -66520,6 +66523,36 @@
         },
         "required": [
           "max_shards_in_cluster"
+        ]
+      },
+      "_global.health_report:FileSettingsIndicator": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/_global.health_report:BaseIndicator"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "details": {
+                "$ref": "#/components/schemas/_global.health_report:FileSettingsIndicatorDetails"
+              }
+            }
+          }
+        ]
+      },
+      "_global.health_report:FileSettingsIndicatorDetails": {
+        "type": "object",
+        "properties": {
+          "failure_streak": {
+            "type": "number"
+          },
+          "most_recent_failure": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "failure_streak",
+          "most_recent_failure"
         ]
       },
       "ilm.explain_lifecycle:LifecycleExplain": {

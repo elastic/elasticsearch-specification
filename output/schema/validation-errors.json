@@ -631,21 +631,7 @@
       "response": []
     },
     "fleet.msearch": {
-      "request": [
-        "Request: query parameter 'allow_no_indices' does not exist in the json spec",
-        "Request: query parameter 'ccs_minimize_roundtrips' does not exist in the json spec",
-        "Request: query parameter 'expand_wildcards' does not exist in the json spec",
-        "Request: query parameter 'ignore_throttled' does not exist in the json spec",
-        "Request: query parameter 'ignore_unavailable' does not exist in the json spec",
-        "Request: query parameter 'max_concurrent_searches' does not exist in the json spec",
-        "Request: query parameter 'max_concurrent_shard_requests' does not exist in the json spec",
-        "Request: query parameter 'pre_filter_shard_size' does not exist in the json spec",
-        "Request: query parameter 'search_type' does not exist in the json spec",
-        "Request: query parameter 'rest_total_hits_as_int' does not exist in the json spec",
-        "Request: query parameter 'typed_keys' does not exist in the json spec",
-        "Request: query parameter 'wait_for_checkpoints' does not exist in the json spec",
-        "Request: query parameter 'allow_partial_search_results' does not exist in the json spec"
-      ],
+      "request": [],
       "response": [
         "type_alias definition _global.msearch:ResponseItem / union_of / instance_of / Generics / instance_of - No type definition for '_global.msearch.ResponseItem:TDocument'"
       ]
@@ -653,53 +639,6 @@
     "fleet.post_secret": {
       "request": [
         "Missing request & response"
-      ],
-      "response": []
-    },
-    "fleet.search": {
-      "request": [
-        "Request: query parameter 'allow_no_indices' does not exist in the json spec",
-        "Request: query parameter 'analyzer' does not exist in the json spec",
-        "Request: query parameter 'analyze_wildcard' does not exist in the json spec",
-        "Request: query parameter 'batched_reduce_size' does not exist in the json spec",
-        "Request: query parameter 'ccs_minimize_roundtrips' does not exist in the json spec",
-        "Request: query parameter 'default_operator' does not exist in the json spec",
-        "Request: query parameter 'df' does not exist in the json spec",
-        "Request: query parameter 'docvalue_fields' does not exist in the json spec",
-        "Request: query parameter 'expand_wildcards' does not exist in the json spec",
-        "Request: query parameter 'explain' does not exist in the json spec",
-        "Request: query parameter 'ignore_throttled' does not exist in the json spec",
-        "Request: query parameter 'ignore_unavailable' does not exist in the json spec",
-        "Request: query parameter 'lenient' does not exist in the json spec",
-        "Request: query parameter 'max_concurrent_shard_requests' does not exist in the json spec",
-        "Request: query parameter 'preference' does not exist in the json spec",
-        "Request: query parameter 'pre_filter_shard_size' does not exist in the json spec",
-        "Request: query parameter 'request_cache' does not exist in the json spec",
-        "Request: query parameter 'routing' does not exist in the json spec",
-        "Request: query parameter 'scroll' does not exist in the json spec",
-        "Request: query parameter 'search_type' does not exist in the json spec",
-        "Request: query parameter 'stats' does not exist in the json spec",
-        "Request: query parameter 'stored_fields' does not exist in the json spec",
-        "Request: query parameter 'suggest_field' does not exist in the json spec",
-        "Request: query parameter 'suggest_mode' does not exist in the json spec",
-        "Request: query parameter 'suggest_size' does not exist in the json spec",
-        "Request: query parameter 'suggest_text' does not exist in the json spec",
-        "Request: query parameter 'terminate_after' does not exist in the json spec",
-        "Request: query parameter 'timeout' does not exist in the json spec",
-        "Request: query parameter 'track_total_hits' does not exist in the json spec",
-        "Request: query parameter 'track_scores' does not exist in the json spec",
-        "Request: query parameter 'typed_keys' does not exist in the json spec",
-        "Request: query parameter 'rest_total_hits_as_int' does not exist in the json spec",
-        "Request: query parameter 'version' does not exist in the json spec",
-        "Request: query parameter '_source' does not exist in the json spec",
-        "Request: query parameter '_source_excludes' does not exist in the json spec",
-        "Request: query parameter '_source_includes' does not exist in the json spec",
-        "Request: query parameter 'seq_no_primary_term' does not exist in the json spec",
-        "Request: query parameter 'q' does not exist in the json spec",
-        "Request: query parameter 'size' does not exist in the json spec",
-        "Request: query parameter 'from' does not exist in the json spec",
-        "Request: query parameter 'sort' does not exist in the json spec",
-        "Request: missing json spec query parameter 'wait_for_checkpoints_timeout'"
       ],
       "response": []
     },
