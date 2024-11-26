@@ -19,6 +19,7 @@
 
 import { Dictionary, SingleKeyDictionary } from '@spec_utils/Dictionary'
 import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
+import { AggregationContainer } from '@_types/aggregations/AggregationContainer'
 import {
   Id,
   IndexName,
@@ -28,7 +29,7 @@ import {
   Username
 } from '@_types/common'
 import { Host } from '@_types/Networking'
-import { uint } from '@_types/Numeric'
+import { integer, uint } from '@_types/Numeric'
 import { QueryContainer } from '@_types/query_dsl/abstractions'
 import { Duration } from '@_types/Time'
 
@@ -145,7 +146,18 @@ export class SearchTemplateRequestBody {
 }
 
 export class SearchInputRequestBody {
-  query: QueryContainer
+  query?: QueryContainer
+  /**
+   * Defines the aggregations that are run as part of the search request.
+   * @aliases aggs */ // ES uses "aggregations" in serialization
+  aggregations?: Dictionary<string, AggregationContainer>
+  /**
+   * The number of hits to return.
+   * By default, you cannot page through more than 10,000 hits using the `from` and `size` parameters.
+   * To page through more hits, use the `search_after` parameter.
+   * @server_default 10
+   */
+  size?: integer
 }
 
 export class SimpleInput {
