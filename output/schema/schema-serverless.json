@@ -105202,7 +105202,7 @@
         "name": "ConnectionScheme",
         "namespace": "watcher._types"
       },
-      "specLocation": "watcher/_types/Input.ts#L39-L42"
+      "specLocation": "watcher/_types/Input.ts#L40-L43"
     },
     {
       "docId": "cron-expressions",
@@ -105384,7 +105384,7 @@
         "name": "HttpInputMethod",
         "namespace": "watcher._types"
       },
-      "specLocation": "watcher/_types/Input.ts#L59-L65"
+      "specLocation": "watcher/_types/Input.ts#L60-L66"
     },
     {
       "kind": "enum",
@@ -105403,7 +105403,7 @@
         "name": "InputType",
         "namespace": "watcher._types"
       },
-      "specLocation": "watcher/_types/Input.ts#L100-L104"
+      "specLocation": "watcher/_types/Input.ts#L101-L105"
     },
     {
       "kind": "enum",
@@ -105519,7 +105519,7 @@
         "name": "ResponseContentType",
         "namespace": "watcher._types"
       },
-      "specLocation": "watcher/_types/Input.ts#L106-L110"
+      "specLocation": "watcher/_types/Input.ts#L107-L111"
     },
     {
       "codegenNames": [
