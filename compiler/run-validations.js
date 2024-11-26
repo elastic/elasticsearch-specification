@@ -174,7 +174,7 @@ async function run () {
     metadata.branchName = branchName
 
     spinner.text = 'Downloading recordings'
-    await $`node ${path.join(uploadRecordingsPath, 'download.js')} --branch ${branchName}`
+    await $`node ${path.join(uploadRecordingsPath, 'download.js')} --branch ${branchName} --git`
 
     spinner.text = 'Fetching artifacts'
     await $`node ${path.join(cloneEsPath, 'index.js')} --branch ${argv['branch']}`
