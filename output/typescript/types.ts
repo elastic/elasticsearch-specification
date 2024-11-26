@@ -6724,6 +6724,7 @@ export type AsyncSearchGetResponse<TDocument = unknown> = AsyncSearchAsyncSearch
 
 export interface AsyncSearchStatusRequest extends RequestBase {
   id: Id
+  keep_alive?: Duration
 }
 
 export type AsyncSearchStatusResponse = AsyncSearchStatusStatusResponseBase
@@ -6759,7 +6760,6 @@ export interface AsyncSearchSubmitRequest extends RequestBase {
   pre_filter_shard_size?: long
   request_cache?: boolean
   routing?: Routing
-  scroll?: Duration
   search_type?: SearchType
   stats?: string[]
   stored_fields?: Fields
