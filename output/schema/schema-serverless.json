@@ -11088,6 +11088,7 @@
           }
         },
         {
+          "description": "Indicates whether hits.total should be rendered as an integer or an object in the rest search response",
           "name": "rest_total_hits_as_int",
           "required": false,
           "type": {

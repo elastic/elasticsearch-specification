@@ -57171,6 +57171,7 @@
       "async_search.submit#rest_total_hits_as_int": {
         "in": "query",
         "name": "rest_total_hits_as_int",
+        "description": "Indicates whether hits.total should be rendered as an integer or an object in the rest search response",
         "deprecated": false,
         "schema": {
           "type": "boolean"
