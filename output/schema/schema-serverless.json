@@ -10117,8 +10117,22 @@
           }
         }
       ],
-      "query": [],
-      "specLocation": "async_search/status/AsyncSearchStatusRequest.ts#L23-L39"
+      "query": [
+        {
+          "description": "Specifies how long the async search needs to be available.\nOngoing async searches and any saved search results are deleted after this period.",
+          "name": "keep_alive",
+          "required": false,
+          "serverDefault": "5d",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Duration",
+              "namespace": "_types"
+            }
+          }
+        }
+      ],
+      "specLocation": "async_search/status/AsyncSearchStatusRequest.ts#L24-L48"
     },
     {
       "body": {
@@ -10930,17 +10944,6 @@
           }
         },
         {
-          "name": "scroll",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "Duration",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
           "description": "Search operation type",
           "name": "search_type",
           "required": false,
@@ -11223,7 +11226,7 @@
           }
         }
       ],
-      "specLocation": "async_search/submit/AsyncSearchSubmitRequest.ts#L55-L290"
+      "specLocation": "async_search/submit/AsyncSearchSubmitRequest.ts#L55-L291"
     },
     {
       "body": {
@@ -105532,7 +105535,7 @@
         "name": "ScheduleTimeOfDay",
         "namespace": "watcher._types"
       },
-      "specLocation": "watcher/_types/Schedule.ts#L98-L103",
+      "specLocation": "watcher/_types/Schedule.ts#L99-L104",
       "type": {
         "items": [
           {
@@ -105589,7 +105592,7 @@
           }
         }
       ],
-      "specLocation": "watcher/_types/Schedule.ts#L105-L108"
+      "specLocation": "watcher/_types/Schedule.ts#L106-L109"
     },
     {
       "kind": "enum",
