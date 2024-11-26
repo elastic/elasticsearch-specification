@@ -6,8 +6,8 @@
   "scripts": {
     "lint": "ts-standard src",
     "lint:fix": "ts-standard --fix src",
-    "format:check": "prettier --config .prettierrc.json --check ../specification/",
-    "format:fix": "prettier --config .prettierrc.json --write ../specification/",
+    "format:check": "prettier --config .prettierrc.json --loglevel warn --check ../specification/",
+    "format:fix": "prettier --config .prettierrc.json --loglevel warn --write ../specification/",
     "generate-schema": "ts-node src/index.ts",
     "transform-expand-generics": "ts-node src/transform/expand-generics.ts",
     "transform-to-openapi": "ts-node src/transform/schema-to-openapi.ts",
