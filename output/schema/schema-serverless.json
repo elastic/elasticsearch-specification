@@ -102992,7 +102992,7 @@
         "name": "ApiKeyType",
         "namespace": "security._types"
       },
-      "specLocation": "security/_types/ApiKey.ts#L116-L119"
+      "specLocation": "security/_types/ApiKey.ts#L115-L118"
     },
     {
       "isOpen": true,
@@ -140533,7 +140533,7 @@
           }
         }
       ],
-      "specLocation": "security/_types/ApiKey.ts#L28-L114"
+      "specLocation": "security/_types/ApiKey.ts#L27-L113"
     },
     {
       "kind": "interface",
