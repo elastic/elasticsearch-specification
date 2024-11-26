@@ -18,6 +18,7 @@
  */
 
 import { RequestBase } from '@_types/Base'
+import { Duration } from '@_types/Time'
 
 /**
  * Get the autoscaling capacity.
@@ -39,4 +40,12 @@ import { RequestBase } from '@_types/Base'
  * @doc_id autoscaling-get-autoscaling-capacity
  * @ext_doc_id autoscaling
  */
-export interface Request extends RequestBase {}
+export interface Request extends RequestBase {
+  query_parameters: {
+    /**
+     * Period to wait for a connection to the master node.
+     * If no response is received before the timeout expires, the request fails and returns an error.
+     * @server_default 30s */
+    master_timeout?: Duration
+  }
+}
