@@ -128,6 +128,16 @@
               "$ref": "#/components/schemas/_types:Id"
             },
             "style": "simple"
+          },
+          {
+            "in": "query",
+            "name": "keep_alive",
+            "description": "Specifies how long the async search needs to be available.\nOngoing async searches and any saved search results are deleted after this period.",
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/_types:Duration"
+            },
+            "style": "form"
           }
         ],
         "responses": {
@@ -222,9 +232,6 @@
           },
           {
             "$ref": "#/components/parameters/async_search.submit#routing"
-          },
-          {
-            "$ref": "#/components/parameters/async_search.submit#scroll"
           },
           {
             "$ref": "#/components/parameters/async_search.submit#search_type"
@@ -384,9 +391,6 @@
           },
           {
             "$ref": "#/components/parameters/async_search.submit#routing"
-          },
-          {
-            "$ref": "#/components/parameters/async_search.submit#scroll"
           },
           {
             "$ref": "#/components/parameters/async_search.submit#search_type"
@@ -86572,6 +86576,9 @@
       "watcher._types:ScheduleContainer": {
         "type": "object",
         "properties": {
+          "timezone": {
+            "type": "string"
+          },
           "cron": {
             "$ref": "#/components/schemas/watcher._types:CronExpression"
           },
@@ -92782,15 +92789,6 @@
         "deprecated": false,
         "schema": {
           "$ref": "#/components/schemas/_types:Routing"
-        },
-        "style": "form"
-      },
-      "async_search.submit#scroll": {
-        "in": "query",
-        "name": "scroll",
-        "deprecated": false,
-        "schema": {
-          "$ref": "#/components/schemas/_types:Duration"
         },
         "style": "form"
       },
