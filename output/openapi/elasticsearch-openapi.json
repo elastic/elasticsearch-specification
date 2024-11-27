@@ -85701,19 +85701,11 @@
         "properties": {
           "query": {
             "$ref": "#/components/schemas/_types.query_dsl:QueryContainer"
-          },
-          "aggregations": {
-            "description": "Defines the aggregations that are run as part of the search request.",
-            "type": "object",
-            "additionalProperties": {
-              "$ref": "#/components/schemas/_types.aggregations:AggregationContainer"
-            }
-          },
-          "size": {
-            "description": "The number of hits to return.\nBy default, you cannot page through more than 10,000 hits using the `from` and `size` parameters.\nTo page through more hits, use the `search_after` parameter.",
-            "type": "number"
           }
-        }
+        },
+        "required": [
+          "query"
+        ]
       },
       "watcher._types:SearchTemplateRequestBody": {
         "type": "object",

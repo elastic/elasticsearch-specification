@@ -20326,10 +20326,7 @@ export interface WatcherSearchInput {
 }
 
 export interface WatcherSearchInputRequestBody {
-  query?: QueryDslQueryContainer
-  aggregations?: Record<string, AggregationsAggregationContainer>
-  aggs?: Record<string, AggregationsAggregationContainer>
-  size?: integer
+  query: QueryDslQueryContainer
 }
 
 export interface WatcherSearchInputRequestDefinition {
