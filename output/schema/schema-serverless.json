@@ -105455,7 +105455,7 @@
         "name": "ScheduleTimeOfDay",
         "namespace": "watcher._types"
       },
-      "specLocation": "watcher/_types/Schedule.ts#L98-L103",
+      "specLocation": "watcher/_types/Schedule.ts#L99-L104",
       "type": {
         "items": [
           {
@@ -105512,7 +105512,7 @@
           }
         }
       ],
-      "specLocation": "watcher/_types/Schedule.ts#L105-L108"
+      "specLocation": "watcher/_types/Schedule.ts#L106-L109"
     },
     {
       "kind": "enum",

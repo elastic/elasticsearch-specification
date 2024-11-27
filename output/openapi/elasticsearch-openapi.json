@@ -86687,6 +86687,9 @@
       "watcher._types:ScheduleContainer": {
         "type": "object",
         "properties": {
+          "timezone": {
+            "type": "string"
+          },
           "cron": {
             "$ref": "#/components/schemas/watcher._types:CronExpression"
           },
