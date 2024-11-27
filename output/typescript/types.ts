@@ -20328,6 +20328,7 @@ export interface WatcherReportingEmailAttachment {
 export type WatcherResponseContentType = 'json' | 'yaml' | 'text'
 
 export interface WatcherScheduleContainer {
+  timezone?: string
   cron?: WatcherCronExpression
   daily?: WatcherDailySchedule
   hourly?: WatcherHourlySchedule
