@@ -15,6 +15,7 @@
 // specific language governing permissions and limitations
 // under the License.
 
+use std::env;
 use std::path::PathBuf;
 use std::{collections::BTreeSet, path::Path};
 
@@ -26,8 +27,12 @@ fn main() -> anyhow::Result<()> {
     let subscriber = FmtSubscriber::builder().with_max_level(Level::TRACE).finish();
     tracing::subscriber::set_global_default(subscriber)?;
 
-    let path = "../../../ent-search/swagger/enterprise-search.json";
-    // let path = "./fixtures/kibana.serverless.yaml";
+    let args: Vec<String> = env::args().collect();
+    let path = match args.len() - 1 {
+        0 => "../../../ent-search/swagger/enterprise-search.json",
+        1 => &args[1],
+        _ => panic!("expected a single argument"),
+    };
 
     info!("Loading OpenAPI from {path}");
     let data = std::fs::read_to_string(path)?;
