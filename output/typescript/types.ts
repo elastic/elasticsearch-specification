@@ -14483,6 +14483,7 @@ export interface MlModelSizeStats {
   model_bytes: ByteSize
   model_bytes_exceeded?: ByteSize
   model_bytes_memory_limit?: ByteSize
+  output_memory_allocator_bytes?: long
   peak_model_bytes?: ByteSize
   assignment_memory_basis?: string
   result_type: string
@@ -14570,7 +14571,7 @@ export interface MlOverallBucket {
   overall_score: double
   result_type: string
   timestamp: EpochTime<UnitMillis>
-  timestamp_string: DateTime
+  timestamp_string?: DateTime
 }
 
 export interface MlOverallBucketJob {
@@ -14793,7 +14794,7 @@ export interface MlTrainedModelDeploymentNodesStats {
   inference_cache_hit_count?: long
   inference_cache_hit_count_last_minute?: long
   last_access?: long
-  node?: MlDiscoveryNode
+  node?: Record<Id, MlDiscoveryNode>
   number_of_allocations?: integer
   number_of_pending_requests?: integer
   peak_throughput_per_minute: long
@@ -14815,6 +14816,7 @@ export interface MlTrainedModelDeploymentStats {
   model_id: Id
   nodes: MlTrainedModelDeploymentNodesStats[]
   number_of_allocations?: integer
+  peak_throughput_per_minute: long
   priority: MlTrainingPriority
   queue_capacity?: integer
   rejected_execution_count?: integer

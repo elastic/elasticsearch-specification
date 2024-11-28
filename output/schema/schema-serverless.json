@@ -94936,7 +94936,7 @@
         "name": "CategorizationStatus",
         "namespace": "ml._types"
       },
-      "specLocation": "ml/_types/Model.ts#L83-L86"
+      "specLocation": "ml/_types/Model.ts#L84-L87"
     },
     {
       "kind": "enum",
@@ -95058,7 +95058,7 @@
         "name": "DeploymentAllocationState",
         "namespace": "ml._types"
       },
-      "specLocation": "ml/_types/TrainedModel.ts#L316-L329"
+      "specLocation": "ml/_types/TrainedModel.ts#L318-L331"
     },
     {
       "kind": "enum",
@@ -95084,7 +95084,7 @@
         "name": "DeploymentAssignmentState",
         "namespace": "ml._types"
       },
-      "specLocation": "ml/_types/TrainedModel.ts#L331-L348"
+      "specLocation": "ml/_types/TrainedModel.ts#L333-L350"
     },
     {
       "kind": "enum",
@@ -95220,7 +95220,7 @@
         "name": "MemoryStatus",
         "namespace": "ml._types"
       },
-      "specLocation": "ml/_types/Model.ts#L88-L92"
+      "specLocation": "ml/_types/Model.ts#L89-L93"
     },
     {
       "kind": "type_alias",
@@ -95280,7 +95280,7 @@
         "name": "RoutingState",
         "namespace": "ml._types"
       },
-      "specLocation": "ml/_types/TrainedModel.ts#L393-L414"
+      "specLocation": "ml/_types/TrainedModel.ts#L395-L416"
     },
     {
       "kind": "enum",
@@ -95320,7 +95320,7 @@
         "name": "SnapshotUpgradeState",
         "namespace": "ml._types"
       },
-      "specLocation": "ml/_types/Model.ts#L94-L99"
+      "specLocation": "ml/_types/Model.ts#L95-L100"
     },
     {
       "kind": "enum",
@@ -95361,7 +95361,7 @@
         "name": "TrainedModelType",
         "namespace": "ml._types"
       },
-      "specLocation": "ml/_types/TrainedModel.ts#L300-L314"
+      "specLocation": "ml/_types/TrainedModel.ts#L302-L316"
     },
     {
       "kind": "enum",
@@ -95377,7 +95377,7 @@
         "name": "TrainingPriority",
         "namespace": "ml._types"
       },
-      "specLocation": "ml/_types/TrainedModel.ts#L350-L353"
+      "specLocation": "ml/_types/TrainedModel.ts#L352-L355"
     },
     {
       "codegenNames": [
@@ -131378,6 +131378,17 @@
           }
         },
         {
+          "name": "output_memory_allocator_bytes",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "long",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
           "name": "peak_model_bytes",
           "required": false,
           "type": {
@@ -131532,7 +131543,7 @@
           }
         }
       ],
-      "specLocation": "ml/_types/Model.ts#L59-L81"
+      "specLocation": "ml/_types/Model.ts#L59-L82"
     },
     {
       "kind": "interface",
@@ -132263,7 +132274,7 @@
         {
           "description": "The start time of the bucket for which these results were calculated.",
           "name": "timestamp_string",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -132564,7 +132575,7 @@
           }
         }
       ],
-      "specLocation": "ml/_types/TrainedModel.ts#L189-L225"
+      "specLocation": "ml/_types/TrainedModel.ts#L191-L227"
     },
     {
       "description": "Inference configuration provided when storing the model config",
@@ -133524,7 +133535,7 @@
           }
         }
       ],
-      "specLocation": "ml/_types/TrainedModel.ts#L227-L230"
+      "specLocation": "ml/_types/TrainedModel.ts#L229-L232"
     },
     {
       "kind": "interface",
@@ -133601,7 +133612,7 @@
           }
         }
       ],
-      "specLocation": "ml/_types/TrainedModel.ts#L232-L240"
+      "specLocation": "ml/_types/TrainedModel.ts#L234-L242"
     },
     {
       "kind": "interface",
@@ -133673,7 +133684,7 @@
           }
         }
       ],
-      "specLocation": "ml/_types/TrainedModel.ts#L259-L273"
+      "specLocation": "ml/_types/TrainedModel.ts#L261-L275"
     },
     {
       "kind": "interface",
@@ -133725,7 +133736,7 @@
           }
         }
       ],
-      "specLocation": "ml/_types/TrainedModel.ts#L275-L282"
+      "specLocation": "ml/_types/TrainedModel.ts#L277-L284"
     },
     {
       "kind": "interface",
@@ -133771,7 +133782,7 @@
           }
         }
       ],
-      "specLocation": "ml/_types/TrainedModel.ts#L291-L298"
+      "specLocation": "ml/_types/TrainedModel.ts#L293-L300"
     },
     {
       "kind": "interface",
@@ -133808,7 +133819,7 @@
           }
         }
       ],
-      "specLocation": "ml/_types/TrainedModel.ts#L284-L289"
+      "specLocation": "ml/_types/TrainedModel.ts#L286-L291"
     },
     {
       "kind": "interface",
@@ -133991,7 +134002,7 @@
           }
         }
       ],
-      "specLocation": "ml/_types/TrainedModel.ts#L242-L257"
+      "specLocation": "ml/_types/TrainedModel.ts#L244-L259"
     },
     {
       "kind": "interface",
@@ -134036,7 +134047,7 @@
           }
         }
       ],
-      "specLocation": "ml/_types/TrainedModel.ts#L472-L483"
+      "specLocation": "ml/_types/TrainedModel.ts#L474-L485"
     },
     {
       "kind": "interface",
@@ -134057,7 +134068,7 @@
           }
         }
       ],
-      "specLocation": "ml/_types/TrainedModel.ts#L464-L466"
+      "specLocation": "ml/_types/TrainedModel.ts#L466-L468"
     },
     {
       "kind": "interface",
@@ -134078,7 +134089,7 @@
           }
         }
       ],
-      "specLocation": "ml/_types/TrainedModel.ts#L468-L470"
+      "specLocation": "ml/_types/TrainedModel.ts#L470-L472"
     },
     {
       "kind": "interface",
@@ -134288,6 +134299,17 @@
           }
         },
         {
+          "name": "peak_throughput_per_minute",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "long",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
           "name": "priority",
           "required": true,
           "type": {
@@ -134392,7 +134414,7 @@
           }
         }
       ],
-      "specLocation": "ml/_types/TrainedModel.ts#L62-L105"
+      "specLocation": "ml/_types/TrainedModel.ts#L62-L107"
     },
     {
       "kind": "interface",
@@ -134435,7 +134457,7 @@
           }
         }
       ],
-      "specLocation": "ml/_types/TrainedModel.ts#L107-L111"
+      "specLocation": "ml/_types/TrainedModel.ts#L109-L113"
     },
     {
       "kind": "interface",
@@ -134481,7 +134503,7 @@
           }
         }
       ],
-      "specLocation": "ml/_types/TrainedModel.ts#L436-L443"
+      "specLocation": "ml/_types/TrainedModel.ts#L438-L445"
     },
     {
       "kind": "interface",
@@ -134726,7 +134748,7 @@
           }
         }
       ],
-      "specLocation": "ml/_types/TrainedModel.ts#L142-L187"
+      "specLocation": "ml/_types/TrainedModel.ts#L144-L189"
     },
     {
       "kind": "interface",
@@ -134784,7 +134806,7 @@
           }
         }
       ],
-      "specLocation": "ml/_types/TrainedModel.ts#L416-L434"
+      "specLocation": "ml/_types/TrainedModel.ts#L418-L436"
     },
     {
       "kind": "interface",
@@ -134865,7 +134887,7 @@
           }
         }
       ],
-      "specLocation": "ml/_types/TrainedModel.ts#L113-L133"
+      "specLocation": "ml/_types/TrainedModel.ts#L115-L135"
     },
     {
       "kind": "interface",
@@ -134899,7 +134921,7 @@
           }
         }
       ],
-      "specLocation": "ml/_types/TrainedModel.ts#L135-L140"
+      "specLocation": "ml/_types/TrainedModel.ts#L137-L142"
     },
     {
       "kind": "interface",
@@ -137351,7 +137373,7 @@
           }
         }
       ],
-      "specLocation": "ml/_types/TrainedModel.ts#L445-L462"
+      "specLocation": "ml/_types/TrainedModel.ts#L447-L464"
     },
     {
       "kind": "interface",
@@ -137484,7 +137506,7 @@
           }
         }
       ],
-      "specLocation": "ml/_types/TrainedModel.ts#L355-L391"
+      "specLocation": "ml/_types/TrainedModel.ts#L357-L393"
     },
     {
       "kind": "interface",

@@ -80,6 +80,8 @@ export class TrainedModelDeploymentStats {
   /** The number of allocations requested. */
   number_of_allocations?: integer
 
+  peak_throughput_per_minute: long
+
   priority: TrainingPriority
   /** The number of inference requests that can be queued before new requests are rejected. */
   queue_capacity?: integer
@@ -163,7 +165,7 @@ export class TrainedModelDeploymentNodesStats {
    * Information pertaining to the node.
    * @availability stack
    */
-  node?: DiscoveryNode
+  node?: Dictionary<Id, DiscoveryNode>
   /**
    * The number of allocations assigned to this node.
    */

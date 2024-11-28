@@ -50015,6 +50015,9 @@
           "model_bytes_memory_limit": {
             "$ref": "#/components/schemas/_types:ByteSize"
           },
+          "output_memory_allocator_bytes": {
+            "type": "number"
+          },
           "peak_model_bytes": {
             "$ref": "#/components/schemas/_types:ByteSize"
           },
@@ -50318,8 +50321,7 @@
           "jobs",
           "overall_score",
           "result_type",
-          "timestamp",
-          "timestamp_string"
+          "timestamp"
         ]
       },
       "_types:DurationValueUnitSeconds": {
@@ -51057,6 +51059,9 @@
             "description": "The number of allocations requested.",
             "type": "number"
           },
+          "peak_throughput_per_minute": {
+            "type": "number"
+          },
           "priority": {
             "$ref": "#/components/schemas/ml._types:TrainingPriority"
           },
@@ -51092,6 +51097,7 @@
           "deployment_id",
           "model_id",
           "nodes",
+          "peak_throughput_per_minute",
           "priority",
           "start_time",
           "state"
