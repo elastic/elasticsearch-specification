@@ -13664,7 +13664,7 @@ export interface MlAnalysisConfigRead {
 
 export interface MlAnalysisLimits {
   categorization_examples_limit?: long
-  model_memory_limit?: string
+  model_memory_limit?: string | long
 }
 
 export interface MlAnalysisMemoryLimit {
@@ -15524,6 +15524,7 @@ export interface MlGetTrainedModelsRequest extends RequestBase {
   exclude_generated?: boolean
   from?: integer
   include?: MlInclude
+  include_model_definition?: boolean
   size?: integer
   tags?: string | string[]
 }
@@ -15576,9 +15577,11 @@ export interface MlInfoDefaults {
 }
 
 export interface MlInfoLimits {
+  max_single_ml_node_processors?: integer
   max_model_memory_limit?: string
   effective_max_model_memory_limit: string
   total_ml_memory: string
+  total_ml_processors?: integer
 }
 
 export interface MlInfoNativeCode {
@@ -15629,15 +15632,15 @@ export interface MlPostDataRequest<TData = unknown> extends RequestBase {
 
 export interface MlPostDataResponse {
   bucket_count: long
-  earliest_record_timestamp: long
+  earliest_record_timestamp?: long
   empty_bucket_count: long
   input_bytes: long
   input_field_count: long
   input_record_count: long
   invalid_date_count: long
   job_id: Id
-  last_data_time: integer
-  latest_record_timestamp: long
+  last_data_time?: integer
+  latest_record_timestamp?: long
   missing_field_count: long
   out_of_order_timestamp_count: long
   processed_field_count: long
@@ -15710,6 +15713,7 @@ export interface MlPutDataFrameAnalyticsRequest extends RequestBase {
     description?: string
     dest: MlDataframeAnalyticsDestination
     max_num_threads?: integer
+    _meta?: Metadata
     model_memory_limit?: string
     source: MlDataframeAnalyticsSource
     headers?: HttpHeaders
@@ -15727,6 +15731,7 @@ export interface MlPutDataFrameAnalyticsResponse {
   dest: MlDataframeAnalyticsDestination
   id: Id
   max_num_threads: integer
+  _meta?: Metadata
   model_memory_limit: string
   source: MlDataframeAnalyticsSource
   version: VersionString
@@ -15740,6 +15745,7 @@ export interface MlPutDatafeedRequest extends RequestBase {
   ignore_unavailable?: boolean
   body?: {
     aggregations?: Record<string, AggregationsAggregationContainer>
+    aggs?: Record<string, AggregationsAggregationContainer>
     chunking_config?: MlChunkingConfig
     delayed_data_check_config?: MlDelayedDataCheckConfig
     frequency?: Duration
@@ -15801,6 +15807,7 @@ export interface MlPutJobRequest extends RequestBase {
     data_description: MlDataDescription
     datafeed_config?: MlDatafeedConfig
     description?: string
+    job_id?: Id
     groups?: string[]
     model_plot_config?: MlModelPlotConfig
     model_snapshot_retention_days?: long

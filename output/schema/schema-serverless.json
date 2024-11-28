@@ -28289,6 +28289,22 @@
           }
         },
         {
+          "deprecation": {
+            "description": "",
+            "version": "7.10.0"
+          },
+          "description": "parameter is deprecated! Use [include=definition] instead",
+          "name": "include_model_definition",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "_builtins"
+            }
+          }
+        },
+        {
           "description": "Specifies the maximum number of models to obtain.",
           "name": "size",
           "required": false,
@@ -28329,7 +28345,7 @@
           }
         }
       ],
-      "specLocation": "ml/get_trained_models/MlGetTrainedModelRequest.ts#L25-L92"
+      "specLocation": "ml/get_trained_models/MlGetTrainedModelRequest.ts#L25-L99"
     },
     {
       "body": {
@@ -29280,6 +29296,17 @@
             }
           },
           {
+            "name": "_meta",
+            "required": false,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "Metadata",
+                "namespace": "_types"
+              }
+            }
+          },
+          {
             "description": "The approximate maximum amount of memory resources that are permitted for\nanalytical processing. If your `elasticsearch.yml` file contains an\n`xpack.ml.max_model_memory_limit` setting, an error occurs when you try\nto create data frame analytics jobs that have `model_memory_limit` values\ngreater than that setting.",
             "name": "model_memory_limit",
             "required": false,
@@ -29367,7 +29394,7 @@
         }
       ],
       "query": [],
-      "specLocation": "ml/put_data_frame_analytics/MlPutDataFrameAnalyticsRequest.ts#L30-L142"
+      "specLocation": "ml/put_data_frame_analytics/MlPutDataFrameAnalyticsRequest.ts#L30-L144"
     },
     {
       "body": {
@@ -29482,6 +29509,17 @@
             }
           },
           {
+            "name": "_meta",
+            "required": false,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "Metadata",
+                "namespace": "_types"
+              }
+            }
+          },
+          {
             "name": "model_memory_limit",
             "required": true,
             "type": {
@@ -29521,7 +29559,7 @@
         "name": "Response",
         "namespace": "ml.put_data_frame_analytics"
       },
-      "specLocation": "ml/put_data_frame_analytics/MlPutDataFrameAnalyticsResponse.ts#L31-L46"
+      "specLocation": "ml/put_data_frame_analytics/MlPutDataFrameAnalyticsResponse.ts#L31-L47"
     },
     {
       "attachedBehaviors": [
@@ -29531,6 +29569,9 @@
         "kind": "properties",
         "properties": [
           {
+            "aliases": [
+              "aggs"
+            ],
             "description": "If set, the datafeed performs aggregation searches.\nSupport for aggregations is limited and should be used only with low cardinality data.",
             "name": "aggregations",
             "required": false,
@@ -29816,7 +29857,7 @@
           }
         }
       ],
-      "specLocation": "ml/put_datafeed/MlPutDatafeedRequest.ts#L37-L173"
+      "specLocation": "ml/put_datafeed/MlPutDatafeedRequest.ts#L37-L175"
     },
     {
       "body": {
@@ -30253,6 +30294,18 @@
             }
           },
           {
+            "description": "The identifier for the anomaly detection job. This identifier can contain lowercase alphanumeric characters (a-z and 0-9), hyphens, and underscores. It must start and end with alphanumeric characters.",
+            "name": "job_id",
+            "required": false,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "Id",
+                "namespace": "_types"
+              }
+            }
+          },
+          {
             "description": "A list of job groups. A job can belong to no groups or many.",
             "name": "groups",
             "required": false,
@@ -30358,7 +30411,7 @@
         }
       ],
       "query": [],
-      "specLocation": "ml/put_job/MlPutJobRequest.ts#L30-L113"
+      "specLocation": "ml/put_job/MlPutJobRequest.ts#L30-L117"
     },
     {
       "body": {
@@ -132010,11 +132063,23 @@
           "required": false,
           "serverDefault": "1024mb",
           "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "_builtins"
-            }
+            "items": [
+              {
+                "kind": "instance_of",
+                "type": {
+                  "name": "string",
+                  "namespace": "_builtins"
+                }
+              },
+              {
+                "kind": "instance_of",
+                "type": {
+                  "name": "long",
+                  "namespace": "_types"
+                }
+              }
+            ],
+            "kind": "union_of"
           }
         }
       ],

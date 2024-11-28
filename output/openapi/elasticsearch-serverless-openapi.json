@@ -9941,6 +9941,9 @@
                     "description": "The maximum number of threads to be used by the analysis. Using more\nthreads may decrease the time necessary to complete the analysis at the\ncost of using more CPU. Note that the process may use additional threads\nfor operational functionality other than the analysis itself.",
                     "type": "number"
                   },
+                  "_meta": {
+                    "$ref": "#/components/schemas/_types:Metadata"
+                  },
                   "model_memory_limit": {
                     "description": "The approximate maximum amount of memory resources that are permitted for\nanalytical processing. If your `elasticsearch.yml` file contains an\n`xpack.ml.max_model_memory_limit` setting, an error occurs when you try\nto create data frame analytics jobs that have `model_memory_limit` values\ngreater than that setting.",
                     "type": "string"
@@ -9999,6 +10002,9 @@
                     },
                     "max_num_threads": {
                       "type": "number"
+                    },
+                    "_meta": {
+                      "$ref": "#/components/schemas/_types:Metadata"
                     },
                     "model_memory_limit": {
                       "type": "string"
@@ -10574,6 +10580,9 @@
                     "description": "A description of the job.",
                     "type": "string"
                   },
+                  "job_id": {
+                    "$ref": "#/components/schemas/_types:Id"
+                  },
                   "groups": {
                     "description": "A list of job groups. A job can belong to no groups or many.",
                     "type": "array",
@@ -10791,6 +10800,9 @@
           },
           {
             "$ref": "#/components/parameters/ml.get_trained_models#include"
+          },
+          {
+            "$ref": "#/components/parameters/ml.get_trained_models#include_model_definition"
           },
           {
             "$ref": "#/components/parameters/ml.get_trained_models#size"
@@ -11882,6 +11894,9 @@
           },
           {
             "$ref": "#/components/parameters/ml.get_trained_models#include"
+          },
+          {
+            "$ref": "#/components/parameters/ml.get_trained_models#include_model_definition"
           },
           {
             "$ref": "#/components/parameters/ml.get_trained_models#size"
@@ -50218,7 +50233,14 @@
           },
           "model_memory_limit": {
             "description": "The approximate maximum amount of memory resources that are required for analytical processing. Once this limit is approached, data pruning becomes more aggressive. Upon exceeding this limit, new entities are not modeled. If the `xpack.ml.max_model_memory_limit` setting has a value greater than 0 and less than 1024mb, that value is used instead of the default. The default value is relatively small to ensure that high resource usage is a conscious decision. If you have jobs that are expected to analyze high cardinality fields, you will likely need to use a higher value. If you specify a number instead of a string, the units are assumed to be MiB. Specifying a string is recommended for clarity. If you specify a byte size unit of `b` or `kb` and the number does not equate to a discrete number of megabytes, it is rounded down to the closest MiB. The minimum valid value is 1 MiB. If you specify a value less than 1 MiB, an error occurs. If you specify a value for the `xpack.ml.max_model_memory_limit` setting, an error occurs when you try to create jobs that have `model_memory_limit` values greater than that setting value.",
-            "type": "string"
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "number"
+              }
+            ]
           }
         }
       },
@@ -60435,6 +60457,16 @@
         "deprecated": false,
         "schema": {
           "$ref": "#/components/schemas/ml._types:Include"
+        },
+        "style": "form"
+      },
+      "ml.get_trained_models#include_model_definition": {
+        "in": "query",
+        "name": "include_model_definition",
+        "description": "parameter is deprecated! Use [include=definition] instead",
+        "deprecated": true,
+        "schema": {
+          "type": "boolean"
         },
         "style": "form"
       },

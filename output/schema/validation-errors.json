@@ -854,12 +854,6 @@
       ],
       "response": []
     },
-    "ml.get_trained_models": {
-      "request": [
-        "Request: missing json spec query parameter 'include_model_definition'"
-      ],
-      "response": []
-    },
     "ml.put_job": {
       "request": [
         "Request: missing json spec query parameter 'ignore_unavailable'",

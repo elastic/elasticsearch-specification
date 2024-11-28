@@ -32,9 +32,11 @@ export class NativeCode {
 }
 
 export class Limits {
+  max_single_ml_node_processors?: integer
   max_model_memory_limit?: string
   effective_max_model_memory_limit: string
   total_ml_memory: string
+  total_ml_processors?: integer
 }
 
 export class Datafeeds {

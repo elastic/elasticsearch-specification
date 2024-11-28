@@ -84,6 +84,10 @@ export interface Request extends RequestBase {
      */
     description?: string
     /**
+     * The identifier for the anomaly detection job. This identifier can contain lowercase alphanumeric characters (a-z and 0-9), hyphens, and underscores. It must start and end with alphanumeric characters.
+     */
+    job_id?: Id
+    /**
      * A list of job groups. A job can belong to no groups or many.
      */
     groups?: string[]
