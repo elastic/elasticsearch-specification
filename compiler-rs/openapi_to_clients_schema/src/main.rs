@@ -26,8 +26,8 @@ fn main() -> anyhow::Result<()> {
     let subscriber = FmtSubscriber::builder().with_max_level(Level::TRACE).finish();
     tracing::subscriber::set_global_default(subscriber)?;
 
-    // let path = "../../../ent-search/swagger/enterprise-search.json";
-    let path = "./fixtures/kibana.serverless.yaml";
+    let path = "../../../ent-search/swagger/enterprise-search.json";
+    // let path = "./fixtures/kibana.serverless.yaml";
 
     info!("Loading OpenAPI from {path}");
     let file = std::fs::File::open(path)?;
