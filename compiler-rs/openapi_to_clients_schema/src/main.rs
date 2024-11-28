@@ -31,7 +31,7 @@ fn main() -> anyhow::Result<()> {
     let path = match args.len() - 1 {
         0 => "../../../ent-search/swagger/enterprise-search.json",
         1 => &args[1],
-        _ => panic!("expected a single argument"),
+        _ => return Err(anyhow::anyhow!("expected a single argument")),
     };
 
     info!("Loading OpenAPI from {path}");
