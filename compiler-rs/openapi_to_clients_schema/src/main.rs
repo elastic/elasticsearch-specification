@@ -30,25 +30,25 @@ fn main() -> anyhow::Result<()> {
     // let path = "./fixtures/kibana.serverless.yaml";
 
     info!("Loading OpenAPI from {path}");
-    let file = std::fs::File::open(path)?;
+    let data = std::fs::read_to_string(path)?;
 
     // Track unused fields, to find any additional stuff the OpenAPI model would miss
     let mut unused = BTreeSet::new();
 
     let open_api = match Path::new(path).extension() {
         Some(ext) if ext == "json" => {
-            let deser = &mut serde_json::Deserializer::from_reader(file);
-            serde_ignored::deserialize(deser, |path| {
+            let mut deser = serde_json::Deserializer::from_str(&data);
+            serde_ignored::deserialize(&mut deser, |path| {
                 unused.insert(path.to_string());
             })
-            .map_err(|err| From::from(err))
+            .map_err(From::from)
         }
         Some(ext) if ext == "yml" || ext == "yaml" => {
-            let deser = serde_yml::Deserializer::from_reader(file);
+            let deser = serde_yml::Deserializer::from_str(&data);
             serde_ignored::deserialize(deser, |path| {
                 unused.insert(path.to_string());
             })
-            .map_err(|err| From::from(err))
+            .map_err(From::from)
         }
         _ => Err(anyhow::anyhow!(format!("Unsupported file extension {:?}", path))),
     }?;
