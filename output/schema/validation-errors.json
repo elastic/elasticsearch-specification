@@ -858,7 +858,6 @@
       "request": [
         "Request: missing json spec query parameter 'ignore_unavailable'",
         "Request: missing json spec query parameter 'allow_no_indices'",
-        "Request: missing json spec query parameter 'ignore_throttled'",
         "Request: missing json spec query parameter 'expand_wildcards'"
       ],
       "response": []

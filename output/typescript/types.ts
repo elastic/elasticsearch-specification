@@ -13905,7 +13905,7 @@ export type MlDatafeedState = 'started' | 'stopped' | 'starting' | 'stopping'
 export interface MlDatafeedStats {
   assignment_explanation?: string
   datafeed_id: Id
-  node?: MlDiscoveryNode
+  node?: MlDiscoveryNodeCompact
   state: MlDatafeedState
   timing_stats?: MlDatafeedTimingStats
   running_state?: MlDatafeedRunningState
@@ -14218,10 +14218,19 @@ export interface MlDetectorUpdate {
   custom_rules?: MlDetectionRule[]
 }
 
-export interface MlDiscoveryNode {
+export type MlDiscoveryNode = Partial<Record<Id, MlDiscoveryNodeContent>>
+
+export interface MlDiscoveryNodeCompact {
+  name: Name
+  ephemeral_id: Id
+  id: Id
+  transport_address: TransportAddress
+  attributes?: Record<string, string>
+}
+
+export interface MlDiscoveryNodeContent {
   name?: Name
   ephemeral_id: Id
-  id?: Id
   transport_address: TransportAddress
   external_id?: string
   attributes?: Record<string, string>
@@ -14432,7 +14441,7 @@ export interface MlJobStats {
   forecasts_stats: MlJobForecastStatistics
   job_id: string
   model_size_stats: MlModelSizeStats
-  node?: MlDiscoveryNode
+  node?: MlDiscoveryNodeCompact
   open_time?: DateTime
   state: MlJobState
   timing_stats: MlJobTimingStats
@@ -14794,7 +14803,7 @@ export interface MlTrainedModelDeploymentNodesStats {
   inference_cache_hit_count?: long
   inference_cache_hit_count_last_minute?: long
   last_access?: long
-  node?: Record<Id, MlDiscoveryNode>
+  node?: MlDiscoveryNode
   number_of_allocations?: integer
   number_of_pending_requests?: integer
   peak_throughput_per_minute: long
@@ -15797,6 +15806,7 @@ export interface MlPutFilterResponse {
 
 export interface MlPutJobRequest extends RequestBase {
   job_id: Id
+  ignore_throttled?: boolean
   body?: {
     allow_lazy_open?: boolean
     analysis_config: MlAnalysisConfig

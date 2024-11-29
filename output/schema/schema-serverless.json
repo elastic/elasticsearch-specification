@@ -30410,8 +30410,21 @@
           }
         }
       ],
-      "query": [],
-      "specLocation": "ml/put_job/MlPutJobRequest.ts#L30-L117"
+      "query": [
+        {
+          "description": "Ignore indices that are marked as throttled (default: true). Only set if datafeed_config is provided.",
+          "name": "ignore_throttled",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "_builtins"
+            }
+          }
+        }
+      ],
+      "specLocation": "ml/put_job/MlPutJobRequest.ts#L30-L120"
     },
     {
       "body": {
@@ -95138,6 +95151,155 @@
         "namespace": "ml._types"
       },
       "specLocation": "ml/_types/TrainedModel.ts#L333-L350"
+    },
+    {
+      "kind": "type_alias",
+      "name": {
+        "name": "DiscoveryNode",
+        "namespace": "ml._types"
+      },
+      "specLocation": "ml/_types/DiscoveryNode.ts#L25-L25",
+      "type": {
+        "key": {
+          "kind": "instance_of",
+          "type": {
+            "name": "Id",
+            "namespace": "_types"
+          }
+        },
+        "kind": "dictionary_of",
+        "singleKey": true,
+        "value": {
+          "kind": "instance_of",
+          "type": {
+            "name": "DiscoveryNodeContent",
+            "namespace": "ml._types"
+          }
+        }
+      }
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "DiscoveryNodeContent",
+        "namespace": "ml._types"
+      },
+      "properties": [
+        {
+          "name": "name",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Name",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "ephemeral_id",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Id",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "transport_address",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "TransportAddress",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "external_id",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "_builtins"
+            }
+          }
+        },
+        {
+          "name": "attributes",
+          "required": false,
+          "type": {
+            "key": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "_builtins"
+              }
+            },
+            "kind": "dictionary_of",
+            "singleKey": false,
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "_builtins"
+              }
+            }
+          }
+        },
+        {
+          "name": "roles",
+          "required": false,
+          "type": {
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "_builtins"
+              }
+            }
+          }
+        },
+        {
+          "name": "version",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "VersionString",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "min_index_version",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "max_index_version",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "_types"
+            }
+          }
+        }
+      ],
+      "specLocation": "ml/_types/DiscoveryNode.ts#L27-L37"
     },
     {
       "kind": "enum",

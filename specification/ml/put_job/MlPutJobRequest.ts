@@ -44,6 +44,9 @@ export interface Request extends RequestBase {
      */
     job_id: Id
   }
+  query_parameters: {
+    ignore_throttled?: boolean
+  }
   body: {
     /**
      * Advanced configuration option. Specifies whether this job can open when there is insufficient machine learning node capacity for it to be immediately assigned to a node. By default, if a machine learning node with capacity to run the job cannot immediately be found, the open anomaly detection jobs API returns an error. However, this is also subject to the cluster-wide `xpack.ml.max_lazy_ml_nodes` setting. If this option is set to true, the open anomaly detection jobs API does not return an error and the job waits in the opening state until sufficient machine learning node capacity is available.

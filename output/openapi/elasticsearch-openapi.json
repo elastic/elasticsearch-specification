@@ -17731,6 +17731,16 @@
               "$ref": "#/components/schemas/_types:Id"
             },
             "style": "simple"
+          },
+          {
+            "in": "query",
+            "name": "ignore_throttled",
+            "description": "Ignore indices that are marked as throttled (default: true). Only set if datafeed_config is provided.",
+            "deprecated": false,
+            "schema": {
+              "type": "boolean"
+            },
+            "style": "form"
           }
         ],
         "requestBody": {
@@ -74085,7 +74095,7 @@
             "$ref": "#/components/schemas/_types:Id"
           },
           "node": {
-            "$ref": "#/components/schemas/ml._types:DiscoveryNode"
+            "$ref": "#/components/schemas/ml._types:DiscoveryNodeCompact"
           },
           "state": {
             "$ref": "#/components/schemas/ml._types:DatafeedState"
@@ -74102,7 +74112,7 @@
           "state"
         ]
       },
-      "ml._types:DiscoveryNode": {
+      "ml._types:DiscoveryNodeCompact": {
         "type": "object",
         "properties": {
           "name": {
@@ -74117,33 +74127,17 @@
           "transport_address": {
             "$ref": "#/components/schemas/_types:TransportAddress"
           },
-          "external_id": {
-            "type": "string"
-          },
           "attributes": {
             "type": "object",
             "additionalProperties": {
               "type": "string"
             }
-          },
-          "roles": {
-            "type": "array",
-            "items": {
-              "type": "string"
-            }
-          },
-          "version": {
-            "$ref": "#/components/schemas/_types:VersionString"
-          },
-          "min_index_version": {
-            "type": "number"
-          },
-          "max_index_version": {
-            "type": "number"
           }
         },
         "required": [
+          "name",
           "ephemeral_id",
+          "id",
           "transport_address"
         ]
       },
@@ -74516,7 +74510,7 @@
             "$ref": "#/components/schemas/ml._types:ModelSizeStats"
           },
           "node": {
-            "$ref": "#/components/schemas/ml._types:DiscoveryNode"
+            "$ref": "#/components/schemas/ml._types:DiscoveryNodeCompact"
           },
           "open_time": {
             "$ref": "#/components/schemas/_types:DateTime"
@@ -75150,6 +75144,56 @@
           "saving_new_state",
           "stopped",
           "failed"
+        ]
+      },
+      "ml._types:DiscoveryNode": {
+        "type": "object",
+        "additionalProperties": {
+          "$ref": "#/components/schemas/ml._types:DiscoveryNodeContent"
+        },
+        "minProperties": 1,
+        "maxProperties": 1
+      },
+      "ml._types:DiscoveryNodeContent": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "$ref": "#/components/schemas/_types:Name"
+          },
+          "ephemeral_id": {
+            "$ref": "#/components/schemas/_types:Id"
+          },
+          "transport_address": {
+            "$ref": "#/components/schemas/_types:TransportAddress"
+          },
+          "external_id": {
+            "type": "string"
+          },
+          "attributes": {
+            "type": "object",
+            "additionalProperties": {
+              "type": "string"
+            }
+          },
+          "roles": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "version": {
+            "$ref": "#/components/schemas/_types:VersionString"
+          },
+          "min_index_version": {
+            "type": "number"
+          },
+          "max_index_version": {
+            "type": "number"
+          }
+        },
+        "required": [
+          "ephemeral_id",
+          "transport_address"
         ]
       },
       "ml._types:ModelSnapshot": {
@@ -76363,11 +76407,7 @@
             "type": "number"
           },
           "node": {
-            "description": "Information pertaining to the node.",
-            "type": "object",
-            "additionalProperties": {
-              "$ref": "#/components/schemas/ml._types:DiscoveryNode"
-            }
+            "$ref": "#/components/schemas/ml._types:DiscoveryNode"
           },
           "number_of_allocations": {
             "description": "The number of allocations assigned to this node.",

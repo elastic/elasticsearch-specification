@@ -165,7 +165,7 @@ export class TrainedModelDeploymentNodesStats {
    * Information pertaining to the node.
    * @availability stack
    */
-  node?: Dictionary<Id, DiscoveryNode>
+  node?: DiscoveryNode
   /**
    * The number of allocations assigned to this node.
    */

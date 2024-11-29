@@ -10542,6 +10542,16 @@
               "$ref": "#/components/schemas/_types:Id"
             },
             "style": "simple"
+          },
+          {
+            "in": "query",
+            "name": "ignore_throttled",
+            "description": "Ignore indices that are marked as throttled (default: true). Only set if datafeed_config is provided.",
+            "deprecated": false,
+            "schema": {
+              "type": "boolean"
+            },
+            "style": "form"
           }
         ],
         "requestBody": {

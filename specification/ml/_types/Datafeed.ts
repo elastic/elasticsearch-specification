@@ -32,7 +32,7 @@ import {
   UnitFloatMillis,
   UnitMillis
 } from '@_types/Time'
-import { DiscoveryNode } from './DiscoveryNode'
+import { DiscoveryNodeCompact } from './DiscoveryNode'
 
 export class Datafeed {
   /** @aliases aggs */
@@ -155,7 +155,7 @@ export class DatafeedStats {
    * For started datafeeds only, this information pertains to the node upon which the datafeed is started.
    * @availability stack
    */
-  node?: DiscoveryNode
+  node?: DiscoveryNodeCompact
   /**
    * The status of the datafeed, which can be one of the following values: `starting`, `started`, `stopping`, `stopped`.
    */
