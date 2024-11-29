@@ -4,6 +4,7 @@ info:
   title: Overlays for the Elasticsearch OpenAPI document
   version: 0.0.1
 actions:
+# Add document info details
   - target: '$.info'
     description: Add a document description and feedback link
     update:
@@ -23,6 +24,43 @@ actions:
       x-feedbackLink:
         label: Feedback
         url: https://github.com/elastic/docs-content/issues/new?assignees=&labels=feedback%2Ccommunity&projects=&template=api-feedback.yaml&title=%5BFeedback%5D%3A+
+# Add security details
+  - target: '$.components'
+    description: Add securitySchemes
+    update:
+        securitySchemes:
+          apiKeyAuth:
+            in: header
+            name: Authorization
+            type: apiKey
+            description: |
+              Elasticsearch APIs support key-based authentication.
+              You must create an API key and use the encoded value in the request header.
+              For example:
+
+              
+              ```
+              curl -X GET "${ES_URL}/_cat/indices?v=true" \
+                -H "Authorization: ApiKey ${API_KEY}"
+              ```
+              
+              To get API keys, use the `/_security/api_key` APIs.
+          basicAuth:
+            scheme: basic
+            type: http
+          bearerAuth:
+            scheme: bearer
+            type: http
+            description: |
+              Elasticsearch APIs support the use of bearer tokens in the `Authorization` HTTP header to authenticate with the API.
+              For examples, refer to [Token-based authentication services](https://www.elastic.co/guide/en/elasticsearch/reference/current/token-authentication-services.html)
+  - target: '$'
+    description: Add document security
+    update:
+      security:
+        - apiKeyAuth: []
+        - basicAuth: []
+        - bearerAuth: []
 # Examples that apply only to the Elasticsearch OpenAPI document
   - target: "$.paths['/_features']['get']"
     description: "Add examples for get features operation"
