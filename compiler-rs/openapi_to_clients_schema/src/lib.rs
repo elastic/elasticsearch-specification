@@ -21,27 +21,30 @@ pub mod types;
 
 use std::convert::Into;
 
+use anyhow::Error;
 use clients_schema::IndexedModel;
 use openapi::OpenAPI;
 use tracing::warn;
+use types::Types;
 
 /// Generate a schema.json from an OpenAPI schema
 pub fn generate(open_api: &OpenAPI) -> anyhow::Result<clients_schema::IndexedModel> {
     let mut json_schema = clients_schema::IndexedModel::default();
 
-    generate_types(open_api, &mut json_schema)?;
+    let mut schema_types = generate_types(open_api)?;
+    generate_endpoints(open_api, &mut json_schema, &mut schema_types)?;
 
-    // endpoints
-    // for (id, path) in &open_api.paths.paths {
-    //     let endpoint = generate_endpoint(open_api, id, path)?;
-    //     json_schema.endpoints.push(endpoint);
-    // }
+    json_schema.types = schema_types
+        .types()
+        .into_iter()
+        .map(|t| (t.name().clone(), t))
+        .collect();
 
     Ok(json_schema)
 }
 
 /// Generate all types from OpenAPI components
-fn generate_types(open_api: &OpenAPI, model: &mut IndexedModel) -> anyhow::Result<()> {
+fn generate_types(open_api: &OpenAPI) -> anyhow::Result<types::Types> {
     if let Some(ref components) = open_api.components {
         let mut types = types::Types::default();
         for (id, schema) in &components.schemas {
@@ -52,7 +55,16 @@ fn generate_types(open_api: &OpenAPI, model: &mut IndexedModel) -> anyhow::Resul
             }
         }
         let _ = types.check_tracker(); // TODO: actually fail
-        model.types = types.types().into_iter().map(|t| (t.name().clone(), t)).collect();
+        Ok(types)
+    } else {
+        Err(Error::msg("No components found"))
+    }
+}
+
+fn generate_endpoints(open_api: &OpenAPI, json_schema: &mut IndexedModel, types: &mut Types) -> anyhow::Result<()> {
+    for (id, path) in &open_api.paths.paths {
+        let endpoint = endpoints::generate_endpoint(id, path, types)?;
+        json_schema.endpoints.push(endpoint);
     }
 
     Ok(())

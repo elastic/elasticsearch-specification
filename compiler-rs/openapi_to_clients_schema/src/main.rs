@@ -34,6 +34,17 @@ fn main() -> anyhow::Result<()> {
         _ => return Err(anyhow::anyhow!("expected a single argument")),
     };
 
+    let open_api = read_openapi_schema(path)?;
+    let sch_json = openapi_to_clients_schema::generate(&OpenAPI(open_api))?;
+
+    let dest = PathBuf::from(path).with_extension("schema.json");
+    let output = std::fs::File::create(dest)?;
+    serde_json::to_writer_pretty(output, &sch_json)?;
+
+    Ok(())
+}
+
+fn read_openapi_schema(path: &str) -> anyhow::Result<openapiv3::OpenAPI> {
     info!("Loading OpenAPI from {path}");
     let data = std::fs::read_to_string(path)?;
 
@@ -46,27 +57,30 @@ fn main() -> anyhow::Result<()> {
             serde_ignored::deserialize(&mut deser, |path| {
                 unused.insert(path.to_string());
             })
-            .map_err(From::from)
+            .map_err(Into::into)
         }
         Some(ext) if ext == "yml" || ext == "yaml" => {
             let deser = serde_yml::Deserializer::from_str(&data);
             serde_ignored::deserialize(deser, |path| {
                 unused.insert(path.to_string());
             })
-            .map_err(From::from)
+            .map_err(Into::into)
         }
         _ => Err(anyhow::anyhow!(format!("Unsupported file extension {:?}", path))),
-    }?;
+    };
 
     if !unused.is_empty() {
-        println!("Unused fields in the OpenAPI schema: {:?}", unused);
+        let message = format!("Unused fields in the OpenAPI schema: {:?}", unused);
+        return Err(anyhow::anyhow!(message));
     }
 
+    open_api
+}
+
+#[test]
+fn test_kibana_conversion() -> anyhow::Result<()> {
+    let open_api = read_openapi_schema("fixtures/kibana.serverless.yaml")?;
     let sch_json = openapi_to_clients_schema::generate(&OpenAPI(open_api))?;
-
-    let dest = PathBuf::from(path).with_extension("schema.json");
-    let output = std::fs::File::create(dest)?;
-    serde_json::to_writer_pretty(output, &sch_json)?;
-
+    insta::assert_json_snapshot!(sch_json);
     Ok(())
 }

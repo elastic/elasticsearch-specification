@@ -20,6 +20,13 @@ convert_case = { workspace = true }
 tracing = { workspace = true }
 tracing-subscriber = { workspace = true }
 
+[dev-dependencies]
+insta = { version = "1.41.1", features = ["json", "serde"] }
+
+[profile.dev.package]
+insta.opt-level = 3
+similar.opt-level = 3
+
 # Some json schema implementations
 #boon = "0.3.1"
 #jsonschema-transpiler = "1.10.0"

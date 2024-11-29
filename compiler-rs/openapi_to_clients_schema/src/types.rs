@@ -55,7 +55,7 @@ impl Types {
         let mut failed = false;
         for id in self.tracker.iter() {
             if !self.types.contains_key(id) {
-                error!("Type '{id}' tracked but but not generated.");
+                error!("Type '{id}' tracked but not generated.");
                 failed = true;
             }
         }
@@ -532,7 +532,7 @@ fn id_to_typename(id: &str) -> TypeName {
     }
 }
 
-fn ref_to_typename(ref_id: &str) -> TypeName {
+pub fn ref_to_typename(ref_id: &str) -> TypeName {
     let id = ref_id.trim_start_matches("#/components/schemas/");
     id_to_typename(id)
 }
