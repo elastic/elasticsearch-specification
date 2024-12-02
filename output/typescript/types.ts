@@ -6762,7 +6762,6 @@ export interface AsyncSearchSubmitRequest extends RequestBase {
   index?: Indices
   wait_for_completion_timeout?: Duration
   keep_on_completion?: boolean
-  keep_alive?: Duration
   allow_no_indices?: boolean
   allow_partial_search_results?: boolean
   analyzer?: string
@@ -6779,7 +6778,6 @@ export interface AsyncSearchSubmitRequest extends RequestBase {
   lenient?: boolean
   max_concurrent_shard_requests?: long
   preference?: string
-  pre_filter_shard_size?: long
   request_cache?: boolean
   routing?: Routing
   search_type?: SearchType
