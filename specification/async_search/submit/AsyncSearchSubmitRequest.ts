@@ -67,8 +67,8 @@ import { Duration } from '@_types/Time'
  * @doc_tag search
  */
 // NOTE: this is a SearchRequest with:
-//  * 3 added parameters: wait_for_completion_timeout, keep_on_completion and keep_alive
-//  * 1 removed parameters: scroll
+//  * 2 added parameters: wait_for_completion_timeout, keep_on_completion
+//  * 2 removed parameters: scroll, pre_filter_shard_size
 export interface Request extends RequestBase {
   path_parts: {
     index?: Indices
@@ -85,12 +85,6 @@ export interface Request extends RequestBase {
      * @server_default false
      */
     keep_on_completion?: boolean
-    /**
-     * Specifies how long the async search needs to be available.
-     * Ongoing async searches and any saved search results are deleted after this period.
-     * @server_default 5d
-     */
-    keep_alive?: Duration
     allow_no_indices?: boolean
     allow_partial_search_results?: boolean
     analyzer?: string
@@ -116,11 +110,6 @@ export interface Request extends RequestBase {
     lenient?: boolean
     max_concurrent_shard_requests?: long
     preference?: string
-    /**
-     * The default value cannot be changed, which enforces the execution of a pre-filter roundtrip to retrieve statistics from each shard so that the ones that surely don’t hold any document matching the query get skipped.
-     * @server_default 1
-     */
-    pre_filter_shard_size?: long
     /** @server_default true */
     request_cache?: boolean
     routing?: Routing
