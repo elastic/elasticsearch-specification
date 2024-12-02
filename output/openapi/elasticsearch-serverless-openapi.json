@@ -171,9 +171,6 @@
             "$ref": "#/components/parameters/async_search.submit#keep_on_completion"
           },
           {
-            "$ref": "#/components/parameters/async_search.submit#keep_alive"
-          },
-          {
             "$ref": "#/components/parameters/async_search.submit#allow_no_indices"
           },
           {
@@ -223,9 +220,6 @@
           },
           {
             "$ref": "#/components/parameters/async_search.submit#preference"
-          },
-          {
-            "$ref": "#/components/parameters/async_search.submit#pre_filter_shard_size"
           },
           {
             "$ref": "#/components/parameters/async_search.submit#request_cache"
@@ -330,9 +324,6 @@
             "$ref": "#/components/parameters/async_search.submit#keep_on_completion"
           },
           {
-            "$ref": "#/components/parameters/async_search.submit#keep_alive"
-          },
-          {
             "$ref": "#/components/parameters/async_search.submit#allow_no_indices"
           },
           {
@@ -382,9 +373,6 @@
           },
           {
             "$ref": "#/components/parameters/async_search.submit#preference"
-          },
-          {
-            "$ref": "#/components/parameters/async_search.submit#pre_filter_shard_size"
           },
           {
             "$ref": "#/components/parameters/async_search.submit#request_cache"
@@ -56914,16 +56902,6 @@
         },
         "style": "form"
       },
-      "async_search.submit#keep_alive": {
-        "in": "query",
-        "name": "keep_alive",
-        "description": "Specifies how long the async search needs to be available.\nOngoing async searches and any saved search results are deleted after this period.",
-        "deprecated": false,
-        "schema": {
-          "$ref": "#/components/schemas/_types:Duration"
-        },
-        "style": "form"
-      },
       "async_search.submit#allow_no_indices": {
         "in": "query",
         "name": "allow_no_indices",
@@ -57090,16 +57068,6 @@
         "deprecated": false,
         "schema": {
           "type": "string"
-        },
-        "style": "form"
-      },
-      "async_search.submit#pre_filter_shard_size": {
-        "in": "query",
-        "name": "pre_filter_shard_size",
-        "description": "The default value cannot be changed, which enforces the execution of a pre-filter roundtrip to retrieve statistics from each shard so that the ones that surely don’t hold any document matching the query get skipped.",
-        "deprecated": false,
-        "schema": {
-          "type": "number"
         },
         "style": "form"
       },

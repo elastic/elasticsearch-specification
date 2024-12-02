@@ -10688,19 +10688,6 @@
           }
         },
         {
-          "description": "Specifies how long the async search needs to be available.\nOngoing async searches and any saved search results are deleted after this period.",
-          "name": "keep_alive",
-          "required": false,
-          "serverDefault": "5d",
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "Duration",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
           "description": "Whether to ignore if a wildcard indices expression resolves into no concrete indices. (This includes `_all` string or when no indices have been specified)",
           "name": "allow_no_indices",
           "required": false,
@@ -10902,19 +10889,6 @@
             "type": {
               "name": "string",
               "namespace": "_builtins"
-            }
-          }
-        },
-        {
-          "description": "The default value cannot be changed, which enforces the execution of a pre-filter roundtrip to retrieve statistics from each shard so that the ones that surely don’t hold any document matching the query get skipped.",
-          "name": "pre_filter_shard_size",
-          "required": false,
-          "serverDefault": 1,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "long",
-              "namespace": "_types"
             }
           }
         },
@@ -11226,7 +11200,7 @@
           }
         }
       ],
-      "specLocation": "async_search/submit/AsyncSearchSubmitRequest.ts#L55-L291"
+      "specLocation": "async_search/submit/AsyncSearchSubmitRequest.ts#L55-L280"
     },
     {
       "body": {
