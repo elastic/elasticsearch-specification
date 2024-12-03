@@ -22,8 +22,8 @@ import { Ids } from '@_types/common'
 import { Duration } from '@_types/Time'
 
 /**
- * Get IP geolocation data configuration.
- * Get information about one or more IP geoip database configurations.
+ * Get GeoIP database configurations.
+ * Get information about one or more IP geolocation database configurations.
  * @rest_spec_name ingest.get_geoip_database
  * @availability stack since=8.15.0 stability=stable
  * @availability serverless visibility=private

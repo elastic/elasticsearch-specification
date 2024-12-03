@@ -15060,7 +15060,8 @@
         "tags": [
           "ingest"
         ],
-        "summary": "Returns information about one or more geoip database configurations",
+        "summary": "Get GeoIP database configurations",
+        "description": "Get information about one or more IP geolocation database configurations.",
         "operationId": "ingest-get-geoip-database-1",
         "parameters": [
           {
@@ -15081,7 +15082,8 @@
         "tags": [
           "ingest"
         ],
-        "summary": "Returns information about one or more geoip database configurations",
+        "summary": "Create or update GeoIP database configurations",
+        "description": "Create or update IP geolocation database configurations.",
         "operationId": "ingest-put-geoip-database",
         "parameters": [
           {
@@ -15156,7 +15158,8 @@
         "tags": [
           "ingest"
         ],
-        "summary": "Deletes a geoip database configuration",
+        "summary": "Delete GeoIP database configurations",
+        "description": "Delete one or more IP geolocation database configurations.",
         "operationId": "ingest-delete-geoip-database",
         "parameters": [
           {
@@ -15211,8 +15214,11 @@
         "tags": [
           "ingest"
         ],
-        "summary": "Returns information about one or more ingest pipelines",
-        "description": "This API returns a local reference of the pipeline.",
+        "summary": "Get pipelines",
+        "description": "Get information about one or more ingest pipelines.\nThis API returns a local reference of the pipeline.",
+        "externalDocs": {
+          "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/ingest.html"
+        },
         "operationId": "ingest-get-pipeline-1",
         "parameters": [
           {
@@ -15236,8 +15242,11 @@
         "tags": [
           "ingest"
         ],
-        "summary": "Creates or updates an ingest pipeline",
+        "summary": "Create or update a pipeline",
         "description": "Changes made using this API take effect immediately.",
+        "externalDocs": {
+          "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/ingest.html"
+        },
         "operationId": "ingest-put-pipeline",
         "parameters": [
           {
@@ -15340,7 +15349,11 @@
         "tags": [
           "ingest"
         ],
-        "summary": "Deletes one or more existing ingest pipeline",
+        "summary": "Delete pipelines",
+        "description": "Delete one or more ingest pipelines.",
+        "externalDocs": {
+          "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/ingest.html"
+        },
         "operationId": "ingest-delete-pipeline",
         "parameters": [
           {
@@ -15395,7 +15408,11 @@
         "tags": [
           "ingest"
         ],
-        "summary": "Gets download statistics for GeoIP2 databases used with the geoip processor",
+        "summary": "Get GeoIP statistics",
+        "description": "Get download statistics for GeoIP2 databases that are used with the GeoIP processor.",
+        "externalDocs": {
+          "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/geoip-processor.html"
+        },
         "operationId": "ingest-geo-ip-stats",
         "responses": {
           "200": {
@@ -15433,7 +15450,8 @@
         "tags": [
           "ingest"
         ],
-        "summary": "Returns information about one or more geoip database configurations",
+        "summary": "Get GeoIP database configurations",
+        "description": "Get information about one or more IP geolocation database configurations.",
         "operationId": "ingest-get-geoip-database",
         "parameters": [
           {
@@ -15453,8 +15471,11 @@
         "tags": [
           "ingest"
         ],
-        "summary": "Returns information about one or more ingest pipelines",
-        "description": "This API returns a local reference of the pipeline.",
+        "summary": "Get pipelines",
+        "description": "Get information about one or more ingest pipelines.\nThis API returns a local reference of the pipeline.",
+        "externalDocs": {
+          "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/ingest.html"
+        },
         "operationId": "ingest-get-pipeline",
         "parameters": [
           {
@@ -15477,8 +15498,11 @@
         "tags": [
           "ingest"
         ],
-        "summary": "Extracts structured fields out of a single text field within a document",
-        "description": "You choose which field to extract matched fields from, as well as the grok pattern you expect will match.\nA grok pattern is like a regular expression that supports aliased expressions that can be reused.",
+        "summary": "Run a grok processor",
+        "description": "Extract structured fields out of a single text field within a document.\nYou must choose which field to extract matched fields from, as well as the grok pattern you expect will match.\nA grok pattern is like a regular expression that supports aliased expressions that can be reused.",
+        "externalDocs": {
+          "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/grok-processor.html"
+        },
         "operationId": "ingest-processor-grok",
         "responses": {
           "200": {
@@ -15511,7 +15535,8 @@
         "tags": [
           "ingest"
         ],
-        "summary": "Executes an ingest pipeline against a set of provided documents",
+        "summary": "Simulate a pipeline",
+        "description": "Run an ingest pipeline against a set of provided documents.\nYou can either specify an existing pipeline to use with the provided documents or supply a pipeline definition in the body of the request.",
         "operationId": "ingest-simulate",
         "parameters": [
           {
@@ -15532,7 +15557,8 @@
         "tags": [
           "ingest"
         ],
-        "summary": "Executes an ingest pipeline against a set of provided documents",
+        "summary": "Simulate a pipeline",
+        "description": "Run an ingest pipeline against a set of provided documents.\nYou can either specify an existing pipeline to use with the provided documents or supply a pipeline definition in the body of the request.",
         "operationId": "ingest-simulate-1",
         "parameters": [
           {
@@ -15555,7 +15581,8 @@
         "tags": [
           "ingest"
         ],
-        "summary": "Executes an ingest pipeline against a set of provided documents",
+        "summary": "Simulate a pipeline",
+        "description": "Run an ingest pipeline against a set of provided documents.\nYou can either specify an existing pipeline to use with the provided documents or supply a pipeline definition in the body of the request.",
         "operationId": "ingest-simulate-2",
         "parameters": [
           {
@@ -15579,7 +15606,8 @@
         "tags": [
           "ingest"
         ],
-        "summary": "Executes an ingest pipeline against a set of provided documents",
+        "summary": "Simulate a pipeline",
+        "description": "Run an ingest pipeline against a set of provided documents.\nYou can either specify an existing pipeline to use with the provided documents or supply a pipeline definition in the body of the request.",
         "operationId": "ingest-simulate-3",
         "parameters": [
           {
