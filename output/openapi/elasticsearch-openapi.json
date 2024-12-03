@@ -72054,13 +72054,22 @@
           },
           "url": {
             "type": "string"
+          },
+          "resolve_during_rolling_upgrade": {
+            "type": "boolean"
+          },
+          "_meta": {
+            "type": "object",
+            "additionalProperties": {
+              "type": "object"
+            }
           }
         },
         "required": [
-          "details",
           "level",
           "message",
-          "url"
+          "url",
+          "resolve_during_rolling_upgrade"
         ]
       },
       "migration.deprecations:DeprecationLevel": {
