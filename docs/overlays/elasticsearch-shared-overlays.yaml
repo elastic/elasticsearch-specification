@@ -1258,3 +1258,19 @@ actions:
               examples:
                 indicesExplainDataLifecycleResponseExample:
                   $ref: "../../specification/indices/explain_data_lifecycle/IndicesExplainDataLifecycleResponseExample1.yaml"
+  - target: "$.components['requestBodies']['indices.put_index_template']"
+    description: "Add example for create index template request"
+    update: 
+      content:
+        application/json:
+          examples:
+            indicesPutIndexTemplateRequestExample1:
+              $ref: "../../specification/indices/put_index_template/IndicesPutIndexTemplateRequestExample1.yaml"
+  - target: "$.components['requestBodies']['indices.put_mapping']"
+    description: "Add example for put mapping request"
+    update: 
+      content:
+        application/json:
+          examples:
+            indicesPutSettingRequestExample1:
+              $ref: "../../specification/indices/put_settings/IndicesPutSettingsRequestExample1.yaml"
