@@ -17,6 +17,7 @@
  * under the License.
  */
 
+import { Dictionary } from '@spec_utils/Dictionary'
 import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 import { Name } from '@_types/common'
 
@@ -26,3 +27,5 @@ export class Column {
 }
 
 export type Row = UserDefinedValue[]
+
+export type QueryParameters = Dictionary<string, UserDefinedValue> | UserDefinedValue[]
