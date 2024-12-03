@@ -17,13 +17,12 @@
  * under the License.
  */
 
-import { Dictionary } from '@spec_utils/Dictionary'
-import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 import { RequestBase } from '@_types/Base'
 import { RuntimeFields } from '@_types/mapping/RuntimeFields'
 import { integer } from '@_types/Numeric'
 import { QueryContainer } from '@_types/query_dsl/abstractions'
 import { Duration, TimeZone } from '@_types/Time'
+import { QueryParameters } from '@sql/types'
 
 /**
  * @rest_spec_name sql.query
@@ -102,7 +101,7 @@ export interface Request extends RequestBase {
     /**
      * Values for parameters in the query.
      */
-    params?: Dictionary<string, UserDefinedValue>
+    params?: QueryParameters
     /**
      * Retention period for an async or saved synchronous search.
      * @server_default 5d
