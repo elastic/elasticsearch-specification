@@ -94765,7 +94765,7 @@
         "name": "DeprecationLevel",
         "namespace": "migration.deprecations"
       },
-      "specLocation": "migration/deprecations/types.ts#L20-L27"
+      "specLocation": "migration/deprecations/types.ts#L23-L30"
     },
     {
       "kind": "enum",
