@@ -23,6 +23,7 @@ import { Field, Fields, GrokPattern, Id, Name } from '@_types/common'
 import { GeoShapeRelation } from '@_types/Geo'
 import { double, integer, long } from '@_types/Numeric'
 import { SortOrder } from '@_types/sort'
+import { Script } from '@_types/Scripting'
 
 /**
  * @variants container
@@ -309,7 +310,7 @@ export class ProcessorBase {
   /**
    * Conditionally execute the processor.
    */
-  if?: string
+  if?: Script
   /**
    * Ignore failures for the processor.
    */
@@ -731,7 +732,7 @@ export class DateIndexNameProcessor extends ProcessorBase {
    * An array of the expected date formats for parsing dates / timestamps in the document being preprocessed.
    * Can be a java time pattern or one of the following formats: ISO8601, UNIX, UNIX_MS, or TAI64N.
    */
-  date_formats: string[]
+  date_formats?: string[]
   /**
    * How to round the date when formatting the date into the index name. Valid values are:
    * `y` (year), `M` (month), `w` (week), `d` (day), `h` (hour), `m` (minute) and `s` (second).
