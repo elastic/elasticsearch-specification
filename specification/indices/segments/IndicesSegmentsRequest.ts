@@ -55,10 +55,5 @@ export interface Request extends RequestBase {
      * @server_default false
      */
     ignore_unavailable?: boolean
-    /**
-     * If `true`, the request returns a verbose response.
-     * @server_default false
-     */
-    verbose?: boolean
   }
 }

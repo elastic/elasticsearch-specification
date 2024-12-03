@@ -209,9 +209,9 @@ impl<'a> TypesAndComponents<'a> {
         self.for_body(&response.body)
     }
 
-    pub fn convert_external_docs(&self, obj: &impl clients_schema::Documented) -> Option<ExternalDocumentation> {
+    pub fn convert_external_docs(&self, obj: &impl clients_schema::ExternalDocument) -> Option<ExternalDocumentation> {
         // FIXME: does the model contain resolved doc_id?
-        obj.doc_url().map(|url| {
+        obj.ext_doc_url().map(|url| {
             let branch: &str = self
                 .model
                 .info

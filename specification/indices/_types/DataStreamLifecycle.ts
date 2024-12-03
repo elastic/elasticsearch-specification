@@ -26,26 +26,29 @@ import { Duration } from '@_types/Time'
  * Data stream lifecycle denotes that a data stream is managed by the data stream lifecycle and contains the configuration.
  */
 export class DataStreamLifecycle {
-  data_retention?: Duration
-  downsampling?: DataStreamLifecycleDownsampling
-}
-
-/**
- * Data stream lifecycle with rollover can be used to display the configuration including the default rollover conditions,
- * if asked.
- */
-export class DataStreamLifecycleWithRollover {
   /**
    * If defined, every document added to this data stream will be stored at least for this time frame.
    * Any time after this duration the document could be deleted.
    * When empty, every document in this data stream will be stored indefinitely.
    */
   data_retention?: Duration
-
   /**
    * The downsampling configuration to execute for the managed backing index after rollover.
    */
   downsampling?: DataStreamLifecycleDownsampling
+  /**
+   * If defined, it turns data stream lifecycle on/off (`true`/`false`) for this data stream. A data stream lifecycle
+   * that's disabled (enabled: `false`) will have no effect on the data stream.
+   * @server_default true
+   */
+  enabled?: boolean
+}
+
+/**
+ * Data stream lifecycle with rollover can be used to display the configuration including the default rollover conditions,
+ * if asked.
+ */
+export class DataStreamLifecycleWithRollover extends DataStreamLifecycle {
   /**
    * The conditions which will trigger the rollover of a backing index as configured by the cluster setting `cluster.lifecycle.default.rollover`.
    * This property is an implementation detail and it will only be retrieved when the query param `include_defaults` is set to true.

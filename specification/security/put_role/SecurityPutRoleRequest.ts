@@ -21,6 +21,7 @@ import {
   ApplicationPrivileges,
   ClusterPrivilege,
   IndicesPrivileges,
+  RemoteClusterPrivileges,
   RemoteIndicesPrivileges
 } from '@security/_types/Privileges'
 import { Dictionary } from '@spec_utils/Dictionary'
@@ -29,17 +30,21 @@ import { RequestBase } from '@_types/Base'
 import { Metadata, Name, Refresh } from '@_types/common'
 
 /**
- * The role management APIs are generally the preferred way to manage roles, rather than using file-based role management.
+ * Create or update roles.
+ *
+ * The role management APIs are generally the preferred way to manage roles in the native realm, rather than using file-based role management.
  * The create or update roles API cannot update roles that are defined in roles files.
+ * File-based role management is not available in Elastic Serverless.
  * @rest_spec_name security.put_role
  * @availability stack stability=stable
- * @availability serverless stability=stable visibility=private
+ * @availability serverless stability=stable visibility=public
  * @cluster_privileges manage_security
+ * @ext_doc_id defining-roles
  */
 export interface Request extends RequestBase {
   path_parts: {
     /**
-     * The name of the role.
+     * The name of the role that is being created or updated. On Elasticsearch Serverless, the role name must begin with a letter or digit and can only contain letters, digits and the characters '_', '-', and '.'. Each role must have a unique name, as this will serve as the identifier for that role.
      */
     name: Name
   }
@@ -70,6 +75,11 @@ export interface Request extends RequestBase {
      *
      */
     remote_indices?: RemoteIndicesPrivileges[]
+    /**
+     * A list of remote cluster permissions entries.
+     * @availability stack since=8.15.0
+     */
+    remote_cluster?: RemoteClusterPrivileges[]
     /**
      * Optional metadata. Within the metadata object, keys that begin with an underscore (`_`) are reserved for system use.
      */

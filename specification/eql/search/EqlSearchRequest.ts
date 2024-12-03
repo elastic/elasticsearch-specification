@@ -20,7 +20,7 @@
 import { RequestBase } from '@_types/Base'
 import { ExpandWildcards, Field, Indices } from '@_types/common'
 import { RuntimeFields } from '@_types/mapping/RuntimeFields'
-import { uint } from '@_types/Numeric'
+import { integer, uint } from '@_types/Numeric'
 import { FieldAndFormat, QueryContainer } from '@_types/query_dsl/abstractions'
 import { Duration } from '@_types/Time'
 import { ResultPosition } from './types'
@@ -114,5 +114,12 @@ export interface Request extends RequestBase {
      * @availability serverless
      */
     runtime_mappings?: RuntimeFields
+    /**
+     * By default, the response of a sample query contains up to `10` samples, with one sample per unique set of join keys. Use the `size`
+     * parameter to get a smaller or larger set of samples. To retrieve more than one sample per set of join keys, use the
+     * `max_samples_per_key` parameter. Pipes are not supported for sample queries.
+     * @server_default 1
+     */
+    max_samples_per_key?: integer
   }
 }

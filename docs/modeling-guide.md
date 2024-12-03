@@ -598,24 +598,11 @@ class Foo {
 }
 ```
 
-#### `@doc_url`
-
-The documentation url for the parameter or definition.
-If possible, use `@doc_id`.
-
-```ts
-class Foo {
-  bar: string
-  /** @doc_url http://localhost:9200 */
-  baz?: string
-  faz: string
-}
-```
-
 #### `@doc_id`
 
-The documentation id that can be used for generating the doc url.
-You must add the id/url pair in `specification/_doc_ids/table.csv`.
+An identifier that can be used for generating the doc url in clients.
+The unique id/url pair must exist in `specification/_doc_ids/table.csv`.
+NOTE: This link is *not* included in the OpenAPI output.
 
 ```ts
 /**
@@ -629,6 +616,43 @@ class Request {
 
 ```csv
 foobar,/guide/en/example
+```
+
+#### `@ext_doc_id`
+
+An identifier for a link.
+The unique id/url pair must exist in `specification/_doc_ids/table.csv`.
+NOTE: This link is included in the OpenAPI output.
+
+```ts
+/**
+ * @variants container
+ * @non_exhaustive
+ * @ext_doc_id query-dsl
+ */
+export class QueryContainer {
+  ...
+}
+```
+
+```csv
+query-dsl,/guide/en/example
+```
+
+
+#### `@doc_url`
+
+The documentation url for the parameter or definition.
+To reduce the risk of broken links, use `@doc_id` instead.
+NOTE: This link is *not* included in the OpenAPI output.
+
+```ts
+class Foo {
+  bar: string
+  /** @doc_url http://localhost:9200 */
+  baz?: string
+  faz: string
+}
 ```
 
 #### `@doc_tag`

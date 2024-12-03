@@ -19,7 +19,7 @@
 
 import { Dictionary } from '@spec_utils/Dictionary'
 import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
-import { Id, Indices, Names } from '@_types/common'
+import { Id, IndexName, Names } from '@_types/common'
 import { QueryContainer } from '@_types/query_dsl/abstractions'
 import { ScriptLanguage } from '@_types/Scripting'
 import { FieldSecurity } from './FieldSecurity'
@@ -152,6 +152,10 @@ export enum ClusterPrivilege {
    */
   monitor_snapshot,
   /**
+   * @availability stack since=8.17.0
+   */
+  monitor_stats,
+  /**
    * @availability stack
    */
   monitor_text_structure,
@@ -194,6 +198,20 @@ export enum ClusterPrivilege {
   write_fleet_secrets
 }
 
+/**
+ * The subset of cluster level privileges that can be defined for remote clusters.
+ */
+export enum RemoteClusterPrivilege {
+  /**
+   * @availability stack since=8.14.0
+   */
+  monitor_enrich,
+  /**
+   * @availability stack since=8.17.0
+   */
+  monitor_stats
+}
+
 // Keep in sync with RemoteIndicesPrivileges
 export class IndicesPrivileges {
   /**
@@ -201,10 +219,12 @@ export class IndicesPrivileges {
    * @doc_id field-and-document-access-control
    */
   field_security?: FieldSecurity
+  // We're using IndexName | IndexName[] instead of Indices in this file on purpose:
+  // https://github.com/elastic/elasticsearch-specification/pull/3127
   /**
    * A list of indices (or index name patterns) to which the permissions in this entry apply.
    */
-  names: Indices
+  names: IndexName | IndexName[]
   /**
    * The index level privileges that owners of the role have on the specified indices.
    */
@@ -221,6 +241,9 @@ export class IndicesPrivileges {
   allow_restricted_indices?: boolean
 }
 
+/**
+ * The subset of index level privileges that can be defined for remote clusters.
+ */
 // Keep in sync with IndicesPrivileges
 export class RemoteIndicesPrivileges {
   /**
@@ -235,7 +258,7 @@ export class RemoteIndicesPrivileges {
   /**
    * A list of indices (or index name patterns) to which the permissions in this entry apply.
    */
-  names: Indices
+  names: IndexName | IndexName[]
   /**
    * The index level privileges that owners of the role have on the specified indices.
    */
@@ -252,6 +275,20 @@ export class RemoteIndicesPrivileges {
   allow_restricted_indices?: boolean
 }
 
+/**
+ * The subset of cluster level privileges that can be defined for remote clusters.
+ */
+export class RemoteClusterPrivileges {
+  /**
+   *  A list of cluster aliases to which the permissions in this entry apply.
+   */
+  clusters: Names
+  /**
+   * The cluster level privileges that owners of the role have on the remote cluster.
+   */
+  privileges: RemoteClusterPrivilege[]
+}
+
 export class UserIndicesPrivileges {
   /**
    * The document fields that the owners of the role have read access to.
@@ -261,7 +298,7 @@ export class UserIndicesPrivileges {
   /**
    * A list of indices (or index name patterns) to which the permissions in this entry apply.
    */
-  names: Indices
+  names: IndexName | IndexName[]
   /**
    * The index level privileges that owners of the role have on the specified indices.
    */
@@ -293,7 +330,7 @@ export class RoleTemplateQuery {
    * Like other places in Elasticsearch that support templating or scripting, you can specify inline, stored, or file-based
    * templates and define custom parameters. You access the details for the current authenticated user through the _user parameter.
    *
-   * @doc_id templating-role-query
+   * @ext_doc_id templating-role-query
    */
   template?: RoleTemplateScript
 }
@@ -375,4 +412,38 @@ export class ApplicationGlobalUserPrivileges {
 
 export class ManageUserPrivileges {
   applications: string[]
+}
+
+export class ReplicationAccess {
+  /**
+   * A list of indices (or index name patterns) to which the permissions in this entry apply.
+   */
+  names: IndexName | IndexName[]
+  /**
+   * This needs to be set to true if the patterns in the names field should cover system indices.
+   * @server_default false
+   */
+  allow_restricted_indices?: boolean
+}
+
+export class SearchAccess {
+  /**
+   * The document fields that the owners of the role have read access to.
+   * @doc_id field-and-document-access-control
+   */
+  field_security?: FieldSecurity
+  /**
+   * A list of indices (or index name patterns) to which the permissions in this entry apply.
+   */
+  names: IndexName | IndexName[]
+  /**
+   * A search query that defines the documents the owners of the role have access to. A document within the specified indices must match this query for it to be accessible by the owners of the role.
+   */
+  query?: IndicesPrivilegesQuery
+  /**
+   * Set to `true` if using wildcard or regular expressions for patterns that cover restricted indices. Implicitly, restricted indices have limited privileges that can cause pattern tests to fail. If restricted indices are explicitly included in the `names` list, Elasticsearch checks privileges against these indices regardless of the value set for `allow_restricted_indices`.
+   * @server_default false
+   * @availability stack
+   */
+  allow_restricted_indices?: boolean
 }

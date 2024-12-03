@@ -25,7 +25,8 @@ import { Field, IndexName } from '@_types/common'
 import { TextToAnalyze } from './types'
 
 /**
- * Performs analysis on a text string and returns the resulting tokens.
+ * Get tokens from text analysis.
+ * The analyze API performs [analysis](https://www.elastic.co/guide/en/elasticsearch/reference/current/analysis.html) on a text string and returns the resulting tokens.
  * @doc_id indices-analyze
  * @rest_spec_name indices.analyze
  * @availability stack stability=stable

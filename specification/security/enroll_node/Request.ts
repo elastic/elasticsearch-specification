@@ -20,7 +20,9 @@
 import { RequestBase } from '@_types/Base'
 
 /**
- * Allows a new node to join an existing cluster with security features enabled.
+ * Enroll a node.
+ *
+ * Enroll a new node to allow it to join an existing cluster with security features enabled.
  * @rest_spec_name security.enroll_node
  * @availability stack since=8.0.0 stability=stable
  */

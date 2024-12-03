@@ -17,11 +17,23 @@
  * under the License.
  */
 
-import { float, integer } from '@_types/Numeric'
+import { Id } from '@_types/common'
+import { integer } from '@_types/Numeric'
 
-export class DenseVectorIndexOptions {
-  type: string
-  m?: integer
-  ef_construction?: integer
-  confidence_interval?: float
+export class Response {
+  body: {
+    total_matched_rules: integer
+    matched_rules: QueryRulesetMatchedRule[]
+  }
+}
+
+export class QueryRulesetMatchedRule {
+  /**
+   * Ruleset unique identifier
+   */
+  ruleset_id: Id
+  /**
+   * Rule unique identifier within that ruleset
+   */
+  rule_id: Id
 }

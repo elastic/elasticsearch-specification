@@ -56,6 +56,13 @@ export class ProcessorContainer {
    */
   circle?: CircleProcessor
   /**
+   * Computes the Community ID for network flow data as defined in the
+   * Community ID Specification. You can use a community ID to correlate network
+   * events related to a single flow.
+   * @doc_id community-id-processor
+   */
+  community_id?: CommunityIDProcessor
+  /**
    * Converts a field in the currently ingested document to a different type, such as converting a string to an integer.
    * If the field value is an array, all members will be converted.
    * @doc_id convert-processor
@@ -107,10 +114,20 @@ export class ProcessorContainer {
    */
   fail?: FailProcessor
   /**
+   * Computes a hash of the document’s content. You can use this hash for
+   * content fingerprinting.
+   * @doc_id fingerprint-processor
+   */
+  fingerprint?: FingerprintProcessor
+  /**
    * Runs an ingest processor on each element of an array or object.
    * @doc_id foreach-processor
    */
   foreach?: ForeachProcessor
+  /**
+   * Currently an undocumented alias for GeoIP Processor.
+   */
+  ip_location?: IpLocationProcessor
   /**
    * Converts geo-grid definitions of grid tiles or cells to regular bounding boxes or polygons which describe their shape.
    * This is useful if there is a need to interact with the tile shapes as spatially indexable fields.
@@ -170,6 +187,12 @@ export class ProcessorContainer {
    */
   lowercase?: LowercaseProcessor
   /**
+   * Calculates the network direction given a source IP address, destination IP
+   * address, and a list of internal networks.
+   * @doc_id network-direction-processor
+   */
+  network_direction?: NetworkDirectionProcessor
+  /**
    * Executes another pipeline.
    * @doc_id pipeline-processor
    */
@@ -181,6 +204,14 @@ export class ProcessorContainer {
    * @doc_id redact-processor
    */
   redact?: RedactProcessor
+  /**
+   * Extracts the registered domain (also known as the effective top-level
+   * domain or eTLD), sub-domain, and top-level domain from a fully qualified
+   * domain name (FQDN). Uses the registered domains defined in the Mozilla
+   * Public Suffix List.
+   * @doc_id registered-domain-processor
+   */
+  registered_domain?: RegisteredDomainProcessor
   /**
    * Removes existing fields.
    * If one field doesn’t exist, an exception will be thrown.
@@ -230,6 +261,12 @@ export class ProcessorContainer {
    * @doc_id split-processor
    */
   split?: SplitProcessor
+  /**
+   * Terminates the current ingest pipeline, causing no further processors to be run.
+   * This will normally be executed conditionally, using the `if` option.
+   * @doc_id terminate-processor
+   */
+  terminate?: TerminateProcessor
   /**
    * Trims whitespace from a field.
    * If the field is an array of strings, all members of the array will be trimmed.
@@ -438,6 +475,42 @@ export class GeoIpProcessor extends ProcessorBase {
   download_database_on_pipeline_creation?: boolean
 }
 
+export class IpLocationProcessor extends ProcessorBase {
+  /**
+   * The database filename referring to a database the module ships with (GeoLite2-City.mmdb, GeoLite2-Country.mmdb, or GeoLite2-ASN.mmdb) or a custom database in the ingest-geoip config directory.
+   * @server_default GeoLite2-City.mmdb
+   */
+  database_file?: string
+  /**
+   * The field to get the ip address from for the geographical lookup.
+   */
+  field: Field
+  /**
+   * If `true`, only the first found IP location data will be returned, even if the field contains an array.
+   * @server_default true
+   */
+  first_only?: boolean
+  /**
+   * If `true` and `field` does not exist, the processor quietly exits without modifying the document.
+   * @server_default false
+   */
+  ignore_missing?: boolean
+  /**
+   * Controls what properties are added to the `target_field` based on the IP location lookup.
+   */
+  properties?: string[]
+  /**
+   * The field that will hold the geographical information looked up from the MaxMind database.
+   * @server_default geoip
+   */
+  target_field?: Field
+  /**
+   * If `true` (and if `ingest.geoip.downloader.eager.download` is `false`), the missing database is downloaded when the pipeline is created.
+   * Else, the download is triggered by when the pipeline is used as the `default_pipeline` or `final_pipeline` in an index.
+   */
+  download_database_on_pipeline_creation?: boolean
+}
+
 export class UserAgentProcessor extends ProcessorBase {
   /**
    * The field containing the user agent string.
@@ -522,13 +595,77 @@ export class CircleProcessor extends ProcessorBase {
   target_field?: Field
 }
 
+export class CommunityIDProcessor extends ProcessorBase {
+  /**
+   * Field containing the source IP address.
+   * @server_default source.ip
+   */
+  source_ip?: Field
+  /**
+   * Field containing the source port.
+   * @server_default source.port
+   */
+  source_port?: Field
+  /**
+   * Field containing the destination IP address.
+   * @server_default destination.ip
+   */
+  destination_ip?: Field
+  /**
+   * Field containing the destination port.
+   * @server_default destination.port
+   */
+  destination_port?: Field
+  /**
+   * Field containing the IANA number.
+   * @server_default network.iana_number
+   */
+  iana_number?: Field
+  /**
+   * Field containing the ICMP type.
+   * @server_default icmp.type
+   */
+  icmp_type?: Field
+  /**
+   * Field containing the ICMP code.
+   * @server_default icmp.code
+   */
+  icmp_code?: Field
+  /**
+   * Field containing the transport protocol name or number. Used only when the
+   * iana_number field is not present. The following protocol names are currently
+   * supported: eigrp, gre, icmp, icmpv6, igmp, ipv6-icmp, ospf, pim, sctp, tcp, udp
+   * @server_default network.transport
+   */
+  transport?: Field
+  /**
+   * Output field for the community ID.
+   * @server_default network.community_id
+   */
+  target_field?: Field
+  /**
+   * Seed for the community ID hash. Must be between 0 and 65535 (inclusive). The
+   * seed can prevent hash collisions between network domains, such as a staging
+   * and production network that use the same addressing scheme.
+   * @server_default 0
+   */
+  seed?: integer
+  /**
+   * If true and any required fields are missing, the processor quietly exits
+   * without modifying the document.
+   * @server_default true
+   */
+  ignore_missing?: boolean
+}
+
 export enum ConvertType {
   integer,
   long,
-  float,
   double,
-  string,
+  float,
   boolean,
+  ip,
+  string,
   auto
 }
 
@@ -656,6 +793,12 @@ export class DateProcessor extends ProcessorBase {
    * @server_default UTC
    */
   timezone?: string
+  /**
+   * The format to use when writing the date to target_field. Must be a valid
+   * java time pattern.
+   * @server_default yyyy-MM-dd'T'HH:mm:ss.SSSXXX
+   */
+  output_format?: string
 }
 
 export class DissectProcessor extends ProcessorBase {
@@ -750,6 +893,44 @@ export class FailProcessor extends ProcessorBase {
   message: string
 }
 
+export enum FingerprintDigest {
+  md5 = 'MD5',
+  sha1 = 'SHA-1',
+  sha256 = 'SHA-256',
+  sha512 = 'SHA-512',
+  murmurHash3 = 'MurmurHash3'
+}
+
+export class FingerprintProcessor extends ProcessorBase {
+  /**
+   * Array of fields to include in the fingerprint. For objects, the processor
+   * hashes both the field key and value. For other fields, the processor hashes
+   * only the field value.
+   */
+  fields: Fields
+  /**
+   * Output field for the fingerprint.
+   * @server_default fingerprint
+   */
+  target_field?: Field
+  /**
+   * Salt value for the hash function.
+   */
+  salt?: string
+  /**
+   * The hash method used to compute the fingerprint. Must be one of MD5, SHA-1,
+   * SHA-256, SHA-512, or MurmurHash3.
+   * @server_default SHA-1
+   */
+  method?: FingerprintDigest
+  /**
+   * If true, the processor ignores any missing fields. If all fields are
+   * missing, the processor silently exits without modifying the document.
+   * @server_default false
+   */
+  ignore_missing?: boolean
+}
+
 export class ForeachProcessor extends ProcessorBase {
   /**
    * Field containing array or object values.
@@ -767,6 +948,12 @@ export class ForeachProcessor extends ProcessorBase {
 }
 
 export class GrokProcessor extends ProcessorBase {
+  /**
+   * Must be disabled or v1. If v1, the processor uses patterns with Elastic
+   * Common Schema (ECS) field names.
+   * @server_default disabled
+   */
+  ecs_compatibility?: string
   /**
    * The field to use for grok expression parsing.
    */
@@ -1040,6 +1227,42 @@ export class LowercaseProcessor extends ProcessorBase {
   target_field?: Field
 }
 
+export class NetworkDirectionProcessor extends ProcessorBase {
+  /**
+   * Field containing the source IP address.
+   * @server_default source.ip
+   */
+  source_ip?: Field
+  /**
+   * Field containing the destination IP address.
+   * @server_default destination.ip
+   */
+  destination_ip?: Field
+  /**
+   * Output field for the network direction.
+   * @server_default network.direction
+   */
+  target_field?: Field
+  /**
+   * List of internal networks. Supports IPv4 and IPv6 addresses and ranges in
+   * CIDR notation. Also supports the named ranges listed below. These may be
+   * constructed with template snippets. Must specify only one of
+   * internal_networks or internal_networks_field.
+   */
+  internal_networks?: string[]
+  /**
+   * A field on the given document to read the internal_networks configuration
+   * from.
+   */
+  internal_networks_field?: Field
+  /**
+   * If true and any required fields are missing, the processor quietly exits
+   * without modifying the document.
+   * @server_default true
+   */
+  ignore_missing?: boolean
+}
+
 export class PipelineProcessor extends ProcessorBase {
   /**
    * The name of the pipeline to execute.
@@ -1094,6 +1317,24 @@ export class RedactProcessor extends ProcessorBase {
    * @server_default false
    */
   trace_redact?: boolean
+}
+
+export class RegisteredDomainProcessor extends ProcessorBase {
+  /**
+   * Field containing the source FQDN.
+   */
+  field: Field
+  /**
+   * Object field containing extracted domain components. If an empty string,
+   * the processor adds components to the document’s root.
+   */
+  target_field?: Field
+  /**
+   * If true and any required fields are missing, the processor quietly exits
+   * without modifying the document.
+   * @server_default true
+   */
+  ignore_missing?: boolean
 }
 
 export class RemoveProcessor extends ProcessorBase {
@@ -1278,6 +1519,8 @@ export class SplitProcessor extends ProcessorBase {
    */
   target_field?: Field
 }
+
+export class TerminateProcessor extends ProcessorBase {}
 
 export class TrimProcessor extends ProcessorBase {
   /**
