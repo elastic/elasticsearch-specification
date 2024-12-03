@@ -23,7 +23,7 @@ import { Id, Name } from '@_types/common'
 import { Duration } from '@_types/Time'
 
 /**
- * Returns information about one or more geoip database configurations.
+ * Create or update IP geolocation database configurations.
  * @rest_spec_name ingest.put_geoip_database
  * @availability stack since=8.15.0 stability=stable
  * @availability serverless visibility=private

@@ -22,11 +22,13 @@ import { Id } from '@_types/common'
 import { Duration } from '@_types/Time'
 
 /**
- * Returns information about one or more ingest pipelines.
+ * Get pipelines.
+ * Get information about one or more ingest pipelines.
  * This API returns a local reference of the pipeline.
  * @rest_spec_name ingest.get_pipeline
  * @availability stack since=5.0.0 stability=stable
  * @availability serverless stability=stable visibility=public
+ * @ext_doc_id ingest
  */
 export interface Request extends RequestBase {
   path_parts: {
