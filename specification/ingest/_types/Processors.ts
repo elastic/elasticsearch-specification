@@ -22,8 +22,8 @@ import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 import { Field, Fields, GrokPattern, Id, Name } from '@_types/common'
 import { GeoShapeRelation } from '@_types/Geo'
 import { double, integer, long } from '@_types/Numeric'
-import { SortOrder } from '@_types/sort'
 import { Script } from '@_types/Scripting'
+import { SortOrder } from '@_types/sort'
 
 /**
  * @variants container

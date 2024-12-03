@@ -28,4 +28,6 @@ export class Column {
 
 export type Row = UserDefinedValue[]
 
-export type QueryParameters = Dictionary<string, UserDefinedValue> | UserDefinedValue[]
+export type QueryParameters =
+  | Dictionary<string, UserDefinedValue>
+  | UserDefinedValue[]
