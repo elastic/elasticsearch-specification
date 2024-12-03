@@ -159,7 +159,7 @@ export class NodeInfoPath {
   logs?: string
   home?: string
   repo?: string[]
-  data?: string[]
+  data?: string | string[]
 }
 
 export class NodeInfoRepositories {
