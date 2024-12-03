@@ -24,22 +24,7 @@ export class Hop {
   /**
    * Specifies one or more fields from which you want to extract terms that are associated with the specified vertices.
    */
-  connections?: NextHop
-  /**
-   * A seed query that identifies the documents of interest.
-   */
-  query: QueryContainer
-  /**
-   * Contains the fields you are interested in.
-   */
-  vertices: VertexDefinition[]
-}
-
-export class NextHop {
-  /**
-   * Specifies one or more fields from which you want to extract terms that are associated with the specified vertices.
-   */
-  connections?: NextHop
+  connections?: Hop
   /**
    * An optional guiding query that constrains the Graph API as it explores connected terms.
    */

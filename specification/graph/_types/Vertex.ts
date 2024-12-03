@@ -58,6 +58,7 @@ export class VertexDefinition {
   size?: integer
 }
 
+/** @shortcut_property term */
 export class VertexInclude {
   boost: double
   term: string
