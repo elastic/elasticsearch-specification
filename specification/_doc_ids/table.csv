@@ -187,6 +187,7 @@ get-trained-models,https://www.elastic.co/guide/en/elasticsearch/reference/{bran
 get-transform-stats,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/get-transform-stats.html
 get-transform,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/get-transform.html
 get-trial-status,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/get-trial-status.html
+graph,https://www.elastic.co/guide/en/kibana/current/xpack-graph.html
 graph-explore-api,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/graph-explore-api.html
 grok-processor,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/grok-processor.html
 gsub-processor,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/gsub-processor.html
