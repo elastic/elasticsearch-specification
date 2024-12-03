@@ -36,6 +36,7 @@ export class CustomAnalyzer {
 
 export class FingerprintAnalyzer {
   type: 'fingerprint'
+  /** @deprecated 7.14.0 */
   version?: VersionString
   /**
    * The maximum token size to emit. Tokens larger than this size will be discarded.
@@ -64,11 +65,13 @@ export class FingerprintAnalyzer {
 
 export class KeywordAnalyzer {
   type: 'keyword'
+  /** @deprecated 7.14.0 */
   version?: VersionString
 }
 
 export class LanguageAnalyzer {
   type: 'language'
+  /** @deprecated 7.14.0 */
   version?: VersionString
   language: Language
   stem_exclusion: string[]
@@ -329,6 +332,7 @@ export class ThaiAnalyzer {
 
 export class NoriAnalyzer {
   type: 'nori'
+  /** @deprecated 7.14.0 */
   version?: VersionString
   decompound_mode?: NoriDecompoundMode
   stoptags?: string[]
@@ -337,6 +341,7 @@ export class NoriAnalyzer {
 
 export class PatternAnalyzer {
   type: 'pattern'
+  /** @deprecated 7.14.0 */
   version?: VersionString
   /**
    * Java regular expression flags. Flags should be pipe-separated, eg "CASE_INSENSITIVE|COMMENTS".
@@ -371,12 +376,14 @@ export class PatternAnalyzer {
 
 export class SimpleAnalyzer {
   type: 'simple'
+  /** @deprecated 7.14.0 */
   version?: VersionString
 }
 
 // TODO: This one seems undocumented!?
 export class SnowballAnalyzer {
   type: 'snowball'
+  /** @deprecated 7.14.0 */
   version?: VersionString
   language: SnowballLanguage
   stopwords?: StopWords
@@ -406,6 +413,7 @@ export class StandardAnalyzer {
 
 export class StopAnalyzer {
   type: 'stop'
+  /** @deprecated 7.14.0 */
   version?: VersionString
   /**
    * A pre-defined stop words list like `_english_` or an array containing a list of stop words.
@@ -422,6 +430,7 @@ export class StopAnalyzer {
 
 export class WhitespaceAnalyzer {
   type: 'whitespace'
+  /** @deprecated 7.14.0 */
   version?: VersionString
 }
 
