@@ -11211,8 +11211,8 @@ export interface IndicesMappingLimitSettingsNestedObjects {
 }
 
 export interface IndicesMappingLimitSettingsTotalFields {
-  limit?: long
-  ignore_dynamic_beyond_limit?: boolean
+  limit?: long | string
+  ignore_dynamic_beyond_limit?: boolean | string
 }
 
 export interface IndicesMerge {
