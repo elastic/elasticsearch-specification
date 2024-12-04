@@ -8558,7 +8558,7 @@
           "fleet"
         ],
         "summary": "Get global checkpoints",
-        "description": "Get the current global checkpoints for an index.\nThis API is design for internal use by the Fleet server project.",
+        "description": "Get the current global checkpoints for an index.\nThis API is designed for internal use by the Fleet server project.",
         "operationId": "fleet-global-checkpoints",
         "parameters": [
           {
@@ -8901,7 +8901,7 @@
           "fleet"
         ],
         "summary": "Run a Fleet search",
-        "description": "The purpose of the Fleet search API is to provide a search api where the search will be run only\nafter the provided checkpoint has been processed and is visible for searches inside of Elasticsearch.",
+        "description": "The purpose of the Fleet search API is to provide an API where the search will be run only\nafter the provided checkpoint has been processed and is visible for searches inside of Elasticsearch.",
         "operationId": "fleet-search",
         "parameters": [
           {
@@ -9052,7 +9052,7 @@
           "fleet"
         ],
         "summary": "Run a Fleet search",
-        "description": "The purpose of the Fleet search API is to provide a search api where the search will be run only\nafter the provided checkpoint has been processed and is visible for searches inside of Elasticsearch.",
+        "description": "The purpose of the Fleet search API is to provide an API where the search will be run only\nafter the provided checkpoint has been processed and is visible for searches inside of Elasticsearch.",
         "operationId": "fleet-search-1",
         "parameters": [
           {
