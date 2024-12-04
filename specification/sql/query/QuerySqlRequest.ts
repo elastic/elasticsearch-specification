@@ -26,6 +26,8 @@ import { QueryContainer } from '@_types/query_dsl/abstractions'
 import { Duration, TimeZone } from '@_types/Time'
 
 /**
+ * Get SQL search results.
+ * Run an SQL request.
  * @rest_spec_name sql.query
  * @availability stack since=6.3.0 stability=stable
  * @availability serverless stability=stable visibility=public
