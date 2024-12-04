@@ -21,7 +21,8 @@ import { RequestBase } from '@_types/Base'
 import { Id } from '@_types/common'
 
 /**
- * Deletes an async EQL search or a stored synchronous EQL search.
+ * Delete an async EQL search.
+ * Delete an async EQL search or a stored synchronous EQL search.
  * The API also deletes results for the search.
  * @rest_spec_name eql.delete
  * @availability stack since=7.9.0 stability=stable
