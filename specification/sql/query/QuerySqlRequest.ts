@@ -17,8 +17,8 @@
  * under the License.
  */
 
-import { QueryParameters } from '@sql/types'
 import { RequestBase } from '@_types/Base'
+import { FieldValue } from '@_types/common'
 import { RuntimeFields } from '@_types/mapping/RuntimeFields'
 import { integer } from '@_types/Numeric'
 import { QueryContainer } from '@_types/query_dsl/abstractions'
@@ -103,7 +103,7 @@ export interface Request extends RequestBase {
     /**
      * Values for parameters in the query.
      */
-    params?: QueryParameters
+    params?: FieldValue[]
     /**
      * Retention period for an async or saved synchronous search.
      * @server_default 5d

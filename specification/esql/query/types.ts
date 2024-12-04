@@ -17,17 +17,9 @@
  * under the License.
  */
 
-import { Dictionary } from '@spec_utils/Dictionary'
-import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
-import { Name } from '@_types/common'
+import { SingleKeyDictionary } from '@spec_utils/Dictionary'
+import { Field, FieldValue } from '@_types/common'
 
-export class Column {
-  name: Name
-  type: string
-}
-
-export type Row = UserDefinedValue[]
-
-export type QueryParameters =
-  | Dictionary<string, UserDefinedValue>
-  | UserDefinedValue[]
+export type EsqlQueryParameters =
+  | FieldValue[]
+  | SingleKeyDictionary<Field, FieldValue>
