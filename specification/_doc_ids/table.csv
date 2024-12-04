@@ -151,6 +151,7 @@ eql-sequences,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/e
 eql-missing-events,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/eql-syntax.html#eql-missing-events
 eql-syntax,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/eql-syntax.html
 eql,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/eql.html
+esql,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/esql.html
 esql-query,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/esql-rest.html
 esql-query-params,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/esql-rest.html#esql-rest-params
 esql-returning-localized-results,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/esql-rest.html#esql-locale-param
