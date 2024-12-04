@@ -22,6 +22,8 @@ import { Id } from '@_types/common'
 import { Duration } from '@_types/Time'
 
 /**
+ * Get async SQL search results.
+ * Get the current status and available results for an async SQL search or stored synchronous SQL search.
  * @rest_spec_name sql.get_async
  * @availability stack since=7.15.0 stability=stable
  * @availability serverless stability=stable visibility=public
