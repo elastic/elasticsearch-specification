@@ -24,6 +24,8 @@ import { QueryContainer } from '@_types/query_dsl/abstractions'
 import { Operator } from '@_types/query_dsl/Operator'
 
 /**
+ * Count search results.
+ * Get the number of documents matching a query.
  * @rest_spec_name count
  * @availability stack stability=stable
  * @availability serverless stability=stable visibility=public
