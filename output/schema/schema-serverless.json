@@ -2704,9 +2704,11 @@
           "stability": "stable"
         }
       },
-      "description": "Extracts and summarizes information about the documents and terms in an Elasticsearch data stream or index.",
+      "description": "Explore graph analytics.\nExtract and summarize information about the documents and terms in an Elasticsearch data stream or index.\nThe easiest way to understand the behavior of this API is to use the Graph UI to explore connections.\nAn initial request to the `_explore` API contains a seed query that identifies the documents of interest and specifies the fields that define the vertices and connections you want to include in the graph.\nSubsequent requests enable you to spider out from one more vertices of interest.\nYou can exclude vertices that have already been returned.",
       "docId": "graph-explore-api",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/graph-explore-api.html",
+      "extDocId": "graph",
+      "extDocUrl": "https://www.elastic.co/guide/en/kibana/{branch}/xpack-graph.html",
       "name": "graph.explore",
       "request": {
         "name": "Request",
@@ -19288,7 +19290,7 @@
           }
         ]
       },
-      "description": "Extracts and summarizes information about the documents and terms in an Elasticsearch data stream or index.",
+      "description": "Explore graph analytics.\nExtract and summarize information about the documents and terms in an Elasticsearch data stream or index.\nThe easiest way to understand the behavior of this API is to use the Graph UI to explore connections.\nAn initial request to the `_explore` API contains a seed query that identifies the documents of interest and specifies the fields that define the vertices and connections you want to include in the graph.\nSubsequent requests enable you to spider out from one more vertices of interest.\nYou can exclude vertices that have already been returned.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -19340,7 +19342,7 @@
           }
         }
       ],
-      "specLocation": "graph/explore/GraphExploreRequest.ts#L28-L72"
+      "specLocation": "graph/explore/GraphExploreRequest.ts#L28-L78"
     },
     {
       "body": {
