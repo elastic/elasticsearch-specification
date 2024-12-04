@@ -22,7 +22,8 @@ import { RequestBase } from '@_types/Base'
 import { Id } from '@_types/common'
 
 /**
- * Creates or updates a query ruleset.
+ * Test a query ruleset.
+ * Evaluate match criteria against a query ruleset to identify the rules that would match that criteria.
  * @rest_spec_name query_rules.test
  * @availability stack since=8.10.0 stability=stable
  * @availability serverless stability=stable visibility=public

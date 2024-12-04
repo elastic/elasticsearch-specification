@@ -20,7 +20,8 @@ import { RequestBase } from '@_types/Base'
 import { integer } from '@_types/Numeric'
 
 /**
- * Returns summarized information about existing query rulesets.
+ * Get all query rulesets.
+ * Get summarized information about the query rulesets.
  * @rest_spec_name query_rules.list_rulesets
  * @availability stack since=8.10.0 stability=stable
  * @availability serverless stability=stable visibility=public
