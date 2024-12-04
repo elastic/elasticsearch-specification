@@ -20,7 +20,7 @@ import { RequestBase } from '@_types/Base'
 import { Id } from '@_types/common'
 
 /**
- * Deletes a synonym set
+ * Delete a synonym set.
  * @rest_spec_name synonyms.delete_synonym
  * @availability stack since=8.10.0 stability=stable
  * @availability serverless stability=stable visibility=public
