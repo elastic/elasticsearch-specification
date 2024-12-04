@@ -23,6 +23,8 @@ import { QueryContainer } from '@_types/query_dsl/abstractions'
 import { TimeZone } from '@_types/Time'
 
 /**
+ * Translate SQL into Elasticsearch queries.
+ * Translate an SQL search into a search API request containing Query DSL.
  * @rest_spec_name sql.translate
  * @availability stack since=6.3.0 stability=stable
  * @availability serverless stability=stable visibility=public
