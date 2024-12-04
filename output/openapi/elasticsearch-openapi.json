@@ -8557,8 +8557,8 @@
         "tags": [
           "fleet"
         ],
-        "summary": "Returns the current global checkpoints for an index",
-        "description": "This API is design for internal use by the fleet server project.",
+        "summary": "Get global checkpoints",
+        "description": "Get the current global checkpoints for an index.\nThis API is designed for internal use by the Fleet server project.",
         "operationId": "fleet-global-checkpoints",
         "parameters": [
           {
@@ -8658,8 +8658,8 @@
         "tags": [
           "fleet"
         ],
-        "summary": "Executes several [fleet searches](https://www.elastic.co/guide/en/elasticsearch/reference/current/fleet-search.html) with a single API request",
-        "description": "The API follows the same structure as the [multi search](https://www.elastic.co/guide/en/elasticsearch/reference/current/search-multi-search.html) API. However, similar to the fleet search API, it\nsupports the wait_for_checkpoints parameter.",
+        "summary": "Run multiple Fleet searches",
+        "description": "Run several Fleet searches with a single API request.\nThe API follows the same structure as the multi search API.\nHowever, similar to the Fleet search API, it supports the `wait_for_checkpoints` parameter.",
         "operationId": "fleet-msearch",
         "parameters": [
           {
@@ -8716,8 +8716,8 @@
         "tags": [
           "fleet"
         ],
-        "summary": "Executes several [fleet searches](https://www.elastic.co/guide/en/elasticsearch/reference/current/fleet-search.html) with a single API request",
-        "description": "The API follows the same structure as the [multi search](https://www.elastic.co/guide/en/elasticsearch/reference/current/search-multi-search.html) API. However, similar to the fleet search API, it\nsupports the wait_for_checkpoints parameter.",
+        "summary": "Run multiple Fleet searches",
+        "description": "Run several Fleet searches with a single API request.\nThe API follows the same structure as the multi search API.\nHowever, similar to the Fleet search API, it supports the `wait_for_checkpoints` parameter.",
         "operationId": "fleet-msearch-1",
         "parameters": [
           {
@@ -8776,8 +8776,8 @@
         "tags": [
           "fleet"
         ],
-        "summary": "Executes several [fleet searches](https://www.elastic.co/guide/en/elasticsearch/reference/current/fleet-search.html) with a single API request",
-        "description": "The API follows the same structure as the [multi search](https://www.elastic.co/guide/en/elasticsearch/reference/current/search-multi-search.html) API. However, similar to the fleet search API, it\nsupports the wait_for_checkpoints parameter.",
+        "summary": "Run multiple Fleet searches",
+        "description": "Run several Fleet searches with a single API request.\nThe API follows the same structure as the multi search API.\nHowever, similar to the Fleet search API, it supports the `wait_for_checkpoints` parameter.",
         "operationId": "fleet-msearch-2",
         "parameters": [
           {
@@ -8837,8 +8837,8 @@
         "tags": [
           "fleet"
         ],
-        "summary": "Executes several [fleet searches](https://www.elastic.co/guide/en/elasticsearch/reference/current/fleet-search.html) with a single API request",
-        "description": "The API follows the same structure as the [multi search](https://www.elastic.co/guide/en/elasticsearch/reference/current/search-multi-search.html) API. However, similar to the fleet search API, it\nsupports the wait_for_checkpoints parameter.",
+        "summary": "Run multiple Fleet searches",
+        "description": "Run several Fleet searches with a single API request.\nThe API follows the same structure as the multi search API.\nHowever, similar to the Fleet search API, it supports the `wait_for_checkpoints` parameter.",
         "operationId": "fleet-msearch-3",
         "parameters": [
           {
@@ -8900,8 +8900,8 @@
         "tags": [
           "fleet"
         ],
-        "summary": "The purpose of the fleet search api is to provide a search api where the search will only be executed\n",
-        "description": "after provided checkpoint has been processed and is visible for searches inside of Elasticsearch.",
+        "summary": "Run a Fleet search",
+        "description": "The purpose of the Fleet search API is to provide an API where the search will be run only\nafter the provided checkpoint has been processed and is visible for searches inside of Elasticsearch.",
         "operationId": "fleet-search",
         "parameters": [
           {
@@ -9051,8 +9051,8 @@
         "tags": [
           "fleet"
         ],
-        "summary": "The purpose of the fleet search api is to provide a search api where the search will only be executed\n",
-        "description": "after provided checkpoint has been processed and is visible for searches inside of Elasticsearch.",
+        "summary": "Run a Fleet search",
+        "description": "The purpose of the Fleet search API is to provide an API where the search will be run only\nafter the provided checkpoint has been processed and is visible for searches inside of Elasticsearch.",
         "operationId": "fleet-search-1",
         "parameters": [
           {
