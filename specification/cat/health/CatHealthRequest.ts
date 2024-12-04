@@ -21,7 +21,7 @@ import { CatRequestBase } from '@cat/_types/CatBase'
 import { TimeUnit } from '@_types/Time'
 
 /**
- * Returns the health status of a cluster, similar to the cluster health API.
+ * Get the cluster health status.
  * IMPORTANT: cat APIs are only intended for human consumption using the command line or Kibana console.
  * They are not intended for use by applications. For application consumption, use the cluster health API.
  * This API is often used to check malfunctioning clusters.
