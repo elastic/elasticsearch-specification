@@ -9200,7 +9200,11 @@
         "tags": [
           "graph"
         ],
-        "summary": "Extracts and summarizes information about the documents and terms in an Elasticsearch data stream or index",
+        "summary": "Explore graph analytics",
+        "description": "Extract and summarize information about the documents and terms in an Elasticsearch data stream or index.\nThe easiest way to understand the behaviour of this API is to use the Graph UI to explore connections.\nAn initial request to the `_explore` API contains a seed query that identifies the documents of interest and specifies the fields that define the vertices and connections you want to include in the graph.\nSubsequent requests enable you to spider out from one more vertices of interest.\nYou can exclude vertices that have already been returned.",
+        "externalDocs": {
+          "url": "https://www.elastic.co/guide/en/kibana/current/xpack-graph.html"
+        },
         "operationId": "graph-explore",
         "parameters": [
           {
@@ -9226,7 +9230,11 @@
         "tags": [
           "graph"
         ],
-        "summary": "Extracts and summarizes information about the documents and terms in an Elasticsearch data stream or index",
+        "summary": "Explore graph analytics",
+        "description": "Extract and summarize information about the documents and terms in an Elasticsearch data stream or index.\nThe easiest way to understand the behaviour of this API is to use the Graph UI to explore connections.\nAn initial request to the `_explore` API contains a seed query that identifies the documents of interest and specifies the fields that define the vertices and connections you want to include in the graph.\nSubsequent requests enable you to spider out from one more vertices of interest.\nYou can exclude vertices that have already been returned.",
+        "externalDocs": {
+          "url": "https://www.elastic.co/guide/en/kibana/current/xpack-graph.html"
+        },
         "operationId": "graph-explore-1",
         "parameters": [
           {

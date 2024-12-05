@@ -26,11 +26,17 @@ import { ExploreControls } from '../_types/ExploreControls'
 import { Hop } from '../_types/Hop'
 
 /**
- * Extracts and summarizes information about the documents and terms in an Elasticsearch data stream or index.
+ * Explore graph analytics.
+ * Extract and summarize information about the documents and terms in an Elasticsearch data stream or index.
+ * The easiest way to understand the behavior of this API is to use the Graph UI to explore connections.
+ * An initial request to the `_explore` API contains a seed query that identifies the documents of interest and specifies the fields that define the vertices and connections you want to include in the graph.
+ * Subsequent requests enable you to spider out from one more vertices of interest.
+ * You can exclude vertices that have already been returned.
  * @doc_id graph-explore-api
  * @rest_spec_name graph.explore
  * @availability stack stability=stable
  * @availability serverless stability=stable visibility=public
+ * @ext_doc_id graph
  */
 export interface Request extends RequestBase {
   path_parts: {
