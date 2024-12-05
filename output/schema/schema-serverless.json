@@ -95220,7 +95220,7 @@
         },
         {
           "name": "external_id",
-          "required": false,
+          "required": true,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -95231,7 +95231,7 @@
         },
         {
           "name": "attributes",
-          "required": false,
+          "required": true,
           "type": {
             "key": {
               "kind": "instance_of",
@@ -95253,7 +95253,7 @@
         },
         {
           "name": "roles",
-          "required": false,
+          "required": true,
           "type": {
             "kind": "array_of",
             "value": {
@@ -95267,7 +95267,7 @@
         },
         {
           "name": "version",
-          "required": false,
+          "required": true,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -95278,7 +95278,7 @@
         },
         {
           "name": "min_index_version",
-          "required": false,
+          "required": true,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -95289,7 +95289,7 @@
         },
         {
           "name": "max_index_version",
-          "required": false,
+          "required": true,
           "type": {
             "kind": "instance_of",
             "type": {

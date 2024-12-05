@@ -14225,19 +14225,19 @@ export interface MlDiscoveryNodeCompact {
   ephemeral_id: Id
   id: Id
   transport_address: TransportAddress
-  attributes?: Record<string, string>
+  attributes: Record<string, string>
 }
 
 export interface MlDiscoveryNodeContent {
   name?: Name
   ephemeral_id: Id
   transport_address: TransportAddress
-  external_id?: string
-  attributes?: Record<string, string>
-  roles?: string[]
-  version?: VersionString
-  min_index_version?: integer
-  max_index_version?: integer
+  external_id: string
+  attributes: Record<string, string>
+  roles: string[]
+  version: VersionString
+  min_index_version: integer
+  max_index_version: integer
 }
 
 export type MlExcludeFrequent = 'all' | 'none' | 'by' | 'over'

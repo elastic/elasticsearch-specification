@@ -28,12 +28,12 @@ export class DiscoveryNodeContent {
   name?: Name
   ephemeral_id: Id
   transport_address: TransportAddress
-  external_id?: string
-  attributes?: Dictionary<string, string>
-  roles?: string[]
-  version?: VersionString
-  min_index_version?: integer
-  max_index_version?: integer
+  external_id: string
+  attributes: Dictionary<string, string>
+  roles: string[]
+  version: VersionString
+  min_index_version: integer
+  max_index_version: integer
 }
 
 /**
@@ -44,5 +44,5 @@ export class DiscoveryNodeCompact {
   ephemeral_id: Id
   id: Id
   transport_address: TransportAddress
-  attributes?: Dictionary<string, string>
+  attributes: Dictionary<string, string>
 }

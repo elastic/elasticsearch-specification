@@ -74138,7 +74138,8 @@
           "name",
           "ephemeral_id",
           "id",
-          "transport_address"
+          "transport_address",
+          "attributes"
         ]
       },
       "ml._types:DatafeedTimingStats": {
@@ -75193,7 +75194,13 @@
         },
         "required": [
           "ephemeral_id",
-          "transport_address"
+          "transport_address",
+          "external_id",
+          "attributes",
+          "roles",
+          "version",
+          "min_index_version",
+          "max_index_version"
         ]
       },
       "ml._types:ModelSnapshot": {
