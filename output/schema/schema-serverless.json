@@ -9057,7 +9057,7 @@
           "stability": "stable"
         }
       },
-      "description": "Deletes a synonym set",
+      "description": "Delete a synonym set.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/delete-synonyms-set.html",
       "name": "synonyms.delete_synonym",
       "request": {
@@ -9092,7 +9092,7 @@
           "stability": "stable"
         }
       },
-      "description": "Deletes a synonym rule in a synonym set",
+      "description": "Delete a synonym rule.\nDelete a synonym rule from a synonym set.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/delete-synonym-rule.html",
       "name": "synonyms.delete_synonym_rule",
       "request": {
@@ -9130,7 +9130,7 @@
           "stability": "stable"
         }
       },
-      "description": "Retrieves a synonym set",
+      "description": "Get a synonym set.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/get-synonyms-set.html",
       "name": "synonyms.get_synonym",
       "request": {
@@ -9165,7 +9165,7 @@
           "stability": "stable"
         }
       },
-      "description": "Retrieves a synonym rule from a synonym set",
+      "description": "Get a synonym rule.\nGet a synonym rule from a synonym set.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/get-synonym-rule.html",
       "name": "synonyms.get_synonym_rule",
       "request": {
@@ -9203,7 +9203,7 @@
           "stability": "stable"
         }
       },
-      "description": "Retrieves a summary of all defined synonym sets",
+      "description": "Get all synonym sets.\nGet a summary of all defined synonym sets.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/list-synonyms-sets.html",
       "name": "synonyms.get_synonyms_sets",
       "request": {
@@ -9238,7 +9238,7 @@
           "stability": "stable"
         }
       },
-      "description": "Creates or updates a synonym set.",
+      "description": "Create or update a synonym set.\nSynonyms sets are limited to a maximum of 10,000 synonym rules per set.\nIf you need to manage more synonym rules, you can create multiple synonym sets.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/put-synonyms-set.html",
       "name": "synonyms.put_synonym",
       "request": {
@@ -9276,7 +9276,7 @@
           "stability": "stable"
         }
       },
-      "description": "Creates or updates a synonym rule in a synonym set",
+      "description": "Create or update a synonym rule.\nCreate or update a synonym rule in a synonym set.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/put-synonym-rule.html",
       "name": "synonyms.put_synonym_rule",
       "request": {
@@ -41072,7 +41072,7 @@
       "body": {
         "kind": "no_body"
       },
-      "description": "Deletes a synonym set",
+      "description": "Delete a synonym set.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -41126,7 +41126,7 @@
       "body": {
         "kind": "no_body"
       },
-      "description": "Deletes a synonym rule in a synonym set",
+      "description": "Delete a synonym rule.\nDelete a synonym rule from a synonym set.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -41165,7 +41165,7 @@
         }
       ],
       "query": [],
-      "specLocation": "synonyms/delete_synonym_rule/SynonymRuleDeleteRequest.ts#L22-L40"
+      "specLocation": "synonyms/delete_synonym_rule/SynonymRuleDeleteRequest.ts#L22-L41"
     },
     {
       "body": {
@@ -41192,7 +41192,7 @@
       "body": {
         "kind": "no_body"
       },
-      "description": "Retrieves a synonym set",
+      "description": "Get a synonym set.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -41293,7 +41293,7 @@
       "body": {
         "kind": "no_body"
       },
-      "description": "Retrieves a synonym rule from a synonym set",
+      "description": "Get a synonym rule.\nGet a synonym rule from a synonym set.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -41332,7 +41332,7 @@
         }
       ],
       "query": [],
-      "specLocation": "synonyms/get_synonym_rule/SynonymRuleGetRequest.ts#L22-L40"
+      "specLocation": "synonyms/get_synonym_rule/SynonymRuleGetRequest.ts#L22-L41"
     },
     {
       "body": {
@@ -41359,7 +41359,7 @@
       "body": {
         "kind": "no_body"
       },
-      "description": "Retrieves a summary of all defined synonym sets",
+      "description": "Get all synonym sets.\nGet a summary of all defined synonym sets.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -41400,7 +41400,7 @@
           }
         }
       ],
-      "specLocation": "synonyms/get_synonyms_sets/SynonymsSetsGetRequest.ts#L22-L41"
+      "specLocation": "synonyms/get_synonyms_sets/SynonymsSetsGetRequest.ts#L22-L42"
     },
     {
       "body": {
@@ -41476,7 +41476,7 @@
           }
         ]
       },
-      "description": "Creates or updates a synonym set.",
+      "description": "Create or update a synonym set.\nSynonyms sets are limited to a maximum of 10,000 synonym rules per set.\nIf you need to manage more synonym rules, you can create multiple synonym sets.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -41503,7 +41503,7 @@
         }
       ],
       "query": [],
-      "specLocation": "synonyms/put_synonym/SynonymsPutRequest.ts#L23-L42"
+      "specLocation": "synonyms/put_synonym/SynonymsPutRequest.ts#L23-L44"
     },
     {
       "body": {
@@ -41560,7 +41560,7 @@
           }
         ]
       },
-      "description": "Creates or updates a synonym rule in a synonym set",
+      "description": "Create or update a synonym rule.\nCreate or update a synonym rule in a synonym set.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -41599,7 +41599,7 @@
         }
       ],
       "query": [],
-      "specLocation": "synonyms/put_synonym_rule/SynonymRulePutRequest.ts#L23-L47"
+      "specLocation": "synonyms/put_synonym_rule/SynonymRulePutRequest.ts#L23-L48"
     },
     {
       "body": {
