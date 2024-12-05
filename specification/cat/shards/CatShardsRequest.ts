@@ -21,7 +21,8 @@ import { CatRequestBase } from '@cat/_types/CatBase'
 import { Bytes, Indices } from '@_types/common'
 
 /**
- * Returns information about the shards in a cluster.
+ * Get shard information.
+ * Get information about the shards in a cluster.
  * For data streams, the API returns information about the backing indices.
  * IMPORTANT: cat APIs are only intended for human consumption using the command line or Kibana console. They are not intended for use by applications.
  * @rest_spec_name cat.shards

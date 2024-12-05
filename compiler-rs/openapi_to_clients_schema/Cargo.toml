@@ -11,6 +11,7 @@ clients_schema = {path="../clients_schema"}
 
 serde_json = { workspace = true }
 serde_ignored = { workspace = true }
+serde_yml = { workspace = true }
 openapiv3 = { workspace = true }
 anyhow = { workspace = true }
 indexmap = { workspace = true }

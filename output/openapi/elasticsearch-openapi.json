@@ -128,6 +128,16 @@
               "$ref": "#/components/schemas/_types:Id"
             },
             "style": "simple"
+          },
+          {
+            "in": "query",
+            "name": "keep_alive",
+            "description": "Specifies how long the async search needs to be available.\nOngoing async searches and any saved search results are deleted after this period.",
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/_types:Duration"
+            },
+            "style": "form"
           }
         ],
         "responses": {
@@ -159,9 +169,6 @@
           },
           {
             "$ref": "#/components/parameters/async_search.submit#keep_on_completion"
-          },
-          {
-            "$ref": "#/components/parameters/async_search.submit#keep_alive"
           },
           {
             "$ref": "#/components/parameters/async_search.submit#allow_no_indices"
@@ -212,16 +219,10 @@
             "$ref": "#/components/parameters/async_search.submit#preference"
           },
           {
-            "$ref": "#/components/parameters/async_search.submit#pre_filter_shard_size"
-          },
-          {
             "$ref": "#/components/parameters/async_search.submit#request_cache"
           },
           {
             "$ref": "#/components/parameters/async_search.submit#routing"
-          },
-          {
-            "$ref": "#/components/parameters/async_search.submit#scroll"
           },
           {
             "$ref": "#/components/parameters/async_search.submit#search_type"
@@ -320,9 +321,6 @@
             "$ref": "#/components/parameters/async_search.submit#keep_on_completion"
           },
           {
-            "$ref": "#/components/parameters/async_search.submit#keep_alive"
-          },
-          {
             "$ref": "#/components/parameters/async_search.submit#allow_no_indices"
           },
           {
@@ -371,16 +369,10 @@
             "$ref": "#/components/parameters/async_search.submit#preference"
           },
           {
-            "$ref": "#/components/parameters/async_search.submit#pre_filter_shard_size"
-          },
-          {
             "$ref": "#/components/parameters/async_search.submit#request_cache"
           },
           {
             "$ref": "#/components/parameters/async_search.submit#routing"
-          },
-          {
-            "$ref": "#/components/parameters/async_search.submit#scroll"
           },
           {
             "$ref": "#/components/parameters/async_search.submit#search_type"
@@ -920,8 +912,8 @@
         "tags": [
           "cat"
         ],
-        "summary": "Provides a snapshot of the number of shards allocated to each data node and their disk space",
-        "description": "IMPORTANT: cat APIs are only intended for human consumption using the command line or Kibana console. They are not intended for use by applications.",
+        "summary": "Get shard allocation information",
+        "description": "Get a snapshot of the number of shards allocated to each data node and their disk space.\nIMPORTANT: cat APIs are only intended for human consumption using the command line or Kibana console. They are not intended for use by applications.",
         "operationId": "cat-allocation",
         "parameters": [
           {
@@ -943,8 +935,8 @@
         "tags": [
           "cat"
         ],
-        "summary": "Provides a snapshot of the number of shards allocated to each data node and their disk space",
-        "description": "IMPORTANT: cat APIs are only intended for human consumption using the command line or Kibana console. They are not intended for use by applications.",
+        "summary": "Get shard allocation information",
+        "description": "Get a snapshot of the number of shards allocated to each data node and their disk space.\nIMPORTANT: cat APIs are only intended for human consumption using the command line or Kibana console. They are not intended for use by applications.",
         "operationId": "cat-allocation-1",
         "parameters": [
           {
@@ -1049,8 +1041,8 @@
         "tags": [
           "cat"
         ],
-        "summary": "Returns the amount of heap memory currently used by the field data cache on every data node in the cluster",
-        "description": "IMPORTANT: cat APIs are only intended for human consumption using the command line or Kibana console.\nThey are not intended for use by applications. For application consumption, use the nodes stats API.",
+        "summary": "Get field data cache information",
+        "description": "Get the amount of heap memory currently used by the field data cache on every data node in the cluster.\nIMPORTANT: cat APIs are only intended for human consumption using the command line or Kibana console.\nThey are not intended for use by applications. For application consumption, use the nodes stats API.",
         "operationId": "cat-fielddata",
         "parameters": [
           {
@@ -1072,8 +1064,8 @@
         "tags": [
           "cat"
         ],
-        "summary": "Returns the amount of heap memory currently used by the field data cache on every data node in the cluster",
-        "description": "IMPORTANT: cat APIs are only intended for human consumption using the command line or Kibana console.\nThey are not intended for use by applications. For application consumption, use the nodes stats API.",
+        "summary": "Get field data cache information",
+        "description": "Get the amount of heap memory currently used by the field data cache on every data node in the cluster.\nIMPORTANT: cat APIs are only intended for human consumption using the command line or Kibana console.\nThey are not intended for use by applications. For application consumption, use the nodes stats API.",
         "operationId": "cat-fielddata-1",
         "parameters": [
           {
@@ -1098,7 +1090,7 @@
         "tags": [
           "cat"
         ],
-        "summary": "Returns the health status of a cluster, similar to the cluster health API",
+        "summary": "Get the cluster health status",
         "description": "IMPORTANT: cat APIs are only intended for human consumption using the command line or Kibana console.\nThey are not intended for use by applications. For application consumption, use the cluster health API.\nThis API is often used to check malfunctioning clusters.\nTo help you track cluster health alongside log files and alerting systems, the API returns timestamps in two formats:\n`HH:MM:SS`, which is human-readable but includes no date information;\n`Unix epoch time`, which is machine-sortable and includes date information.\nThe latter format is useful for cluster recoveries that take multiple days.\nYou can use the cat health API to verify cluster health across multiple nodes.\nYou also can use the API to track the recovery of a large cluster over a longer period of time.",
         "operationId": "cat-health",
         "parameters": [
@@ -1243,8 +1235,8 @@
         "tags": [
           "cat"
         ],
-        "summary": "Returns information about the master node, including the ID, bound IP address, and name",
-        "description": "IMPORTANT: cat APIs are only intended for human consumption using the command line or Kibana console. They are not intended for use by applications. For application consumption, use the nodes info API.",
+        "summary": "Get master node information",
+        "description": "Get information about the master node, including the ID, bound IP address, and name.\nIMPORTANT: cat APIs are only intended for human consumption using the command line or Kibana console. They are not intended for use by applications. For application consumption, use the nodes info API.",
         "operationId": "cat-master",
         "parameters": [
           {
@@ -1556,8 +1548,8 @@
         "tags": [
           "cat"
         ],
-        "summary": "Returns information about custom node attributes",
-        "description": "IMPORTANT: cat APIs are only intended for human consumption using the command line or Kibana console. They are not intended for use by applications. For application consumption, use the nodes info API.",
+        "summary": "Get node attribute information",
+        "description": "Get information about custom node attributes.\nIMPORTANT: cat APIs are only intended for human consumption using the command line or Kibana console. They are not intended for use by applications. For application consumption, use the nodes info API.",
         "operationId": "cat-nodeattrs",
         "parameters": [
           {
@@ -1593,8 +1585,8 @@
         "tags": [
           "cat"
         ],
-        "summary": "Returns information about the nodes in a cluster",
-        "description": "IMPORTANT: cat APIs are only intended for human consumption using the command line or Kibana console. They are not intended for use by applications. For application consumption, use the nodes info API.",
+        "summary": "Get node information",
+        "description": "Get information about the nodes in a cluster.\nIMPORTANT: cat APIs are only intended for human consumption using the command line or Kibana console. They are not intended for use by applications. For application consumption, use the nodes info API.",
         "operationId": "cat-nodes",
         "parameters": [
           {
@@ -1657,8 +1649,8 @@
         "tags": [
           "cat"
         ],
-        "summary": "Returns cluster-level changes that have not yet been executed",
-        "description": "IMPORTANT: cat APIs are only intended for human consumption using the command line or Kibana console. They are not intended for use by applications. For application consumption, use the pending cluster tasks API.",
+        "summary": "Get pending task information",
+        "description": "Get information about cluster-level changes that have not yet taken effect.\nIMPORTANT: cat APIs are only intended for human consumption using the command line or Kibana console. They are not intended for use by applications. For application consumption, use the pending cluster tasks API.",
         "operationId": "cat-pending-tasks",
         "parameters": [
           {
@@ -1694,8 +1686,8 @@
         "tags": [
           "cat"
         ],
-        "summary": "Returns a list of plugins running on each node of a cluster",
-        "description": "IMPORTANT: cat APIs are only intended for human consumption using the command line or Kibana console. They are not intended for use by applications. For application consumption, use the nodes info API.",
+        "summary": "Get plugin information",
+        "description": "Get a list of plugins running on each node of a cluster.\nIMPORTANT: cat APIs are only intended for human consumption using the command line or Kibana console. They are not intended for use by applications. For application consumption, use the nodes info API.",
         "operationId": "cat-plugins",
         "parameters": [
           {
@@ -1731,8 +1723,8 @@
         "tags": [
           "cat"
         ],
-        "summary": "Returns information about ongoing and completed shard recoveries",
-        "description": "Shard recovery is the process of initializing a shard copy, such as restoring a primary shard from a snapshot or syncing a replica shard from a primary shard. When a shard recovery completes, the recovered shard is available for search and indexing.\nFor data streams, the API returns information about the stream’s backing indices.\nIMPORTANT: cat APIs are only intended for human consumption using the command line or Kibana console. They are not intended for use by applications. For application consumption, use the index recovery API.",
+        "summary": "Get shard recovery information",
+        "description": "Get information about ongoing and completed shard recoveries.\nShard recovery is the process of initializing a shard copy, such as restoring a primary shard from a snapshot or syncing a replica shard from a primary shard. When a shard recovery completes, the recovered shard is available for search and indexing.\nFor data streams, the API returns information about the stream’s backing indices.\nIMPORTANT: cat APIs are only intended for human consumption using the command line or Kibana console. They are not intended for use by applications. For application consumption, use the index recovery API.",
         "operationId": "cat-recovery",
         "parameters": [
           {
@@ -1757,8 +1749,8 @@
         "tags": [
           "cat"
         ],
-        "summary": "Returns information about ongoing and completed shard recoveries",
-        "description": "Shard recovery is the process of initializing a shard copy, such as restoring a primary shard from a snapshot or syncing a replica shard from a primary shard. When a shard recovery completes, the recovered shard is available for search and indexing.\nFor data streams, the API returns information about the stream’s backing indices.\nIMPORTANT: cat APIs are only intended for human consumption using the command line or Kibana console. They are not intended for use by applications. For application consumption, use the index recovery API.",
+        "summary": "Get shard recovery information",
+        "description": "Get information about ongoing and completed shard recoveries.\nShard recovery is the process of initializing a shard copy, such as restoring a primary shard from a snapshot or syncing a replica shard from a primary shard. When a shard recovery completes, the recovered shard is available for search and indexing.\nFor data streams, the API returns information about the stream’s backing indices.\nIMPORTANT: cat APIs are only intended for human consumption using the command line or Kibana console. They are not intended for use by applications. For application consumption, use the index recovery API.",
         "operationId": "cat-recovery-1",
         "parameters": [
           {
@@ -1786,8 +1778,8 @@
         "tags": [
           "cat"
         ],
-        "summary": "Returns the snapshot repositories for a cluster",
-        "description": "IMPORTANT: cat APIs are only intended for human consumption using the command line or Kibana console. They are not intended for use by applications. For application consumption, use the get snapshot repository API.",
+        "summary": "Get snapshot repository information",
+        "description": "Get a list of snapshot repositories for a cluster.\nIMPORTANT: cat APIs are only intended for human consumption using the command line or Kibana console. They are not intended for use by applications. For application consumption, use the get snapshot repository API.",
         "operationId": "cat-repositories",
         "responses": {
           "200": {
@@ -1812,8 +1804,8 @@
         "tags": [
           "cat"
         ],
-        "summary": "Returns low-level information about the Lucene segments in index shards",
-        "description": "For data streams, the API returns information about the backing indices.\nIMPORTANT: cat APIs are only intended for human consumption using the command line or Kibana console. They are not intended for use by applications. For application consumption, use the index segments API.",
+        "summary": "Get segment information",
+        "description": "Get low-level information about the Lucene segments in index shards.\nFor data streams, the API returns information about the backing indices.\nIMPORTANT: cat APIs are only intended for human consumption using the command line or Kibana console. They are not intended for use by applications. For application consumption, use the index segments API.",
         "operationId": "cat-segments",
         "parameters": [
           {
@@ -1835,8 +1827,8 @@
         "tags": [
           "cat"
         ],
-        "summary": "Returns low-level information about the Lucene segments in index shards",
-        "description": "For data streams, the API returns information about the backing indices.\nIMPORTANT: cat APIs are only intended for human consumption using the command line or Kibana console. They are not intended for use by applications. For application consumption, use the index segments API.",
+        "summary": "Get segment information",
+        "description": "Get low-level information about the Lucene segments in index shards.\nFor data streams, the API returns information about the backing indices.\nIMPORTANT: cat APIs are only intended for human consumption using the command line or Kibana console. They are not intended for use by applications. For application consumption, use the index segments API.",
         "operationId": "cat-segments-1",
         "parameters": [
           {
@@ -1861,8 +1853,8 @@
         "tags": [
           "cat"
         ],
-        "summary": "Returns information about the shards in a cluster",
-        "description": "For data streams, the API returns information about the backing indices.\nIMPORTANT: cat APIs are only intended for human consumption using the command line or Kibana console. They are not intended for use by applications.",
+        "summary": "Get shard information",
+        "description": "Get information about the shards in a cluster.\nFor data streams, the API returns information about the backing indices.\nIMPORTANT: cat APIs are only intended for human consumption using the command line or Kibana console. They are not intended for use by applications.",
         "operationId": "cat-shards",
         "parameters": [
           {
@@ -1881,8 +1873,8 @@
         "tags": [
           "cat"
         ],
-        "summary": "Returns information about the shards in a cluster",
-        "description": "For data streams, the API returns information about the backing indices.\nIMPORTANT: cat APIs are only intended for human consumption using the command line or Kibana console. They are not intended for use by applications.",
+        "summary": "Get shard information",
+        "description": "Get information about the shards in a cluster.\nFor data streams, the API returns information about the backing indices.\nIMPORTANT: cat APIs are only intended for human consumption using the command line or Kibana console. They are not intended for use by applications.",
         "operationId": "cat-shards-1",
         "parameters": [
           {
@@ -1904,8 +1896,8 @@
         "tags": [
           "cat"
         ],
-        "summary": "Returns information about the snapshots stored in one or more repositories",
-        "description": "A snapshot is a backup of an index or running Elasticsearch cluster.\nIMPORTANT: cat APIs are only intended for human consumption using the command line or Kibana console. They are not intended for use by applications. For application consumption, use the get snapshot API.",
+        "summary": "Get snapshot information\n",
+        "description": "Get information about the snapshots stored in one or more repositories.\nA snapshot is a backup of an index or running Elasticsearch cluster.\nIMPORTANT: cat APIs are only intended for human consumption using the command line or Kibana console. They are not intended for use by applications. For application consumption, use the get snapshot API.",
         "operationId": "cat-snapshots",
         "parameters": [
           {
@@ -1925,8 +1917,8 @@
         "tags": [
           "cat"
         ],
-        "summary": "Returns information about the snapshots stored in one or more repositories",
-        "description": "A snapshot is a backup of an index or running Elasticsearch cluster.\nIMPORTANT: cat APIs are only intended for human consumption using the command line or Kibana console. They are not intended for use by applications. For application consumption, use the get snapshot API.",
+        "summary": "Get snapshot information\n",
+        "description": "Get information about the snapshots stored in one or more repositories.\nA snapshot is a backup of an index or running Elasticsearch cluster.\nIMPORTANT: cat APIs are only intended for human consumption using the command line or Kibana console. They are not intended for use by applications. For application consumption, use the get snapshot API.",
         "operationId": "cat-snapshots-1",
         "parameters": [
           {
@@ -1949,8 +1941,8 @@
         "tags": [
           "cat"
         ],
-        "summary": "Returns information about tasks currently executing in the cluster",
-        "description": "IMPORTANT: cat APIs are only intended for human consumption using the command line or Kibana console. They are not intended for use by applications. For application consumption, use the task management API.",
+        "summary": "Get task information",
+        "description": "Get information about tasks currently running in the cluster.\nIMPORTANT: cat APIs are only intended for human consumption using the command line or Kibana console. They are not intended for use by applications. For application consumption, use the task management API.",
         "operationId": "cat-tasks",
         "parameters": [
           {
@@ -2023,8 +2015,8 @@
         "tags": [
           "cat"
         ],
-        "summary": "Returns information about index templates in a cluster",
-        "description": "You can use index templates to apply index settings and field mappings to new indices at creation.\nIMPORTANT: cat APIs are only intended for human consumption using the command line or Kibana console. They are not intended for use by applications. For application consumption, use the get index template API.",
+        "summary": "Get index template information",
+        "description": "Get information about the index templates in a cluster.\nYou can use index templates to apply index settings and field mappings to new indices at creation.\nIMPORTANT: cat APIs are only intended for human consumption using the command line or Kibana console. They are not intended for use by applications. For application consumption, use the get index template API.",
         "operationId": "cat-templates",
         "parameters": [
           {
@@ -2044,8 +2036,8 @@
         "tags": [
           "cat"
         ],
-        "summary": "Returns information about index templates in a cluster",
-        "description": "You can use index templates to apply index settings and field mappings to new indices at creation.\nIMPORTANT: cat APIs are only intended for human consumption using the command line or Kibana console. They are not intended for use by applications. For application consumption, use the get index template API.",
+        "summary": "Get index template information",
+        "description": "Get information about the index templates in a cluster.\nYou can use index templates to apply index settings and field mappings to new indices at creation.\nIMPORTANT: cat APIs are only intended for human consumption using the command line or Kibana console. They are not intended for use by applications. For application consumption, use the get index template API.",
         "operationId": "cat-templates-1",
         "parameters": [
           {
@@ -2068,8 +2060,8 @@
         "tags": [
           "cat"
         ],
-        "summary": "Returns thread pool statistics for each node in a cluster",
-        "description": "Returned information includes all built-in thread pools and custom thread pools.\nIMPORTANT: cat APIs are only intended for human consumption using the command line or Kibana console. They are not intended for use by applications. For application consumption, use the nodes info API.",
+        "summary": "Get thread pool statistics",
+        "description": "Get thread pool statistics for each node in a cluster.\nReturned information includes all built-in thread pools and custom thread pools.\nIMPORTANT: cat APIs are only intended for human consumption using the command line or Kibana console. They are not intended for use by applications. For application consumption, use the nodes info API.",
         "operationId": "cat-thread-pool",
         "parameters": [
           {
@@ -2091,8 +2083,8 @@
         "tags": [
           "cat"
         ],
-        "summary": "Returns thread pool statistics for each node in a cluster",
-        "description": "Returned information includes all built-in thread pools and custom thread pools.\nIMPORTANT: cat APIs are only intended for human consumption using the command line or Kibana console. They are not intended for use by applications. For application consumption, use the nodes info API.",
+        "summary": "Get thread pool statistics",
+        "description": "Get thread pool statistics for each node in a cluster.\nReturned information includes all built-in thread pools and custom thread pools.\nIMPORTANT: cat APIs are only intended for human consumption using the command line or Kibana console. They are not intended for use by applications. For application consumption, use the nodes info API.",
         "operationId": "cat-thread-pool-1",
         "parameters": [
           {
@@ -2117,8 +2109,8 @@
         "tags": [
           "cat"
         ],
-        "summary": "Get transforms",
-        "description": "Returns configuration and usage information about transforms.\n\nCAT APIs are only intended for human consumption using the Kibana\nconsole or command line. They are not intended for use by applications. For\napplication consumption, use the get transform statistics API.",
+        "summary": "Get transform information",
+        "description": "Get configuration and usage information about transforms.\n\nCAT APIs are only intended for human consumption using the Kibana\nconsole or command line. They are not intended for use by applications. For\napplication consumption, use the get transform statistics API.",
         "operationId": "cat-transforms",
         "parameters": [
           {
@@ -2153,8 +2145,8 @@
         "tags": [
           "cat"
         ],
-        "summary": "Get transforms",
-        "description": "Returns configuration and usage information about transforms.\n\nCAT APIs are only intended for human consumption using the Kibana\nconsole or command line. They are not intended for use by applications. For\napplication consumption, use the get transform statistics API.",
+        "summary": "Get transform information",
+        "description": "Get configuration and usage information about transforms.\n\nCAT APIs are only intended for human consumption using the Kibana\nconsole or command line. They are not intended for use by applications. For\napplication consumption, use the get transform statistics API.",
         "operationId": "cat-transforms-1",
         "parameters": [
           {
@@ -5695,7 +5687,8 @@
         "tags": [
           "search"
         ],
-        "summary": "Returns number of documents matching a query",
+        "summary": "Count search results",
+        "description": "Get the number of documents matching a query.",
         "operationId": "count-1",
         "parameters": [
           {
@@ -5754,7 +5747,8 @@
         "tags": [
           "search"
         ],
-        "summary": "Returns number of documents matching a query",
+        "summary": "Count search results",
+        "description": "Get the number of documents matching a query.",
         "operationId": "count",
         "parameters": [
           {
@@ -5815,7 +5809,8 @@
         "tags": [
           "search"
         ],
-        "summary": "Returns number of documents matching a query",
+        "summary": "Count search results",
+        "description": "Get the number of documents matching a query.",
         "operationId": "count-3",
         "parameters": [
           {
@@ -5877,7 +5872,8 @@
         "tags": [
           "search"
         ],
-        "summary": "Returns number of documents matching a query",
+        "summary": "Count search results",
+        "description": "Get the number of documents matching a query.",
         "operationId": "count-2",
         "parameters": [
           {
@@ -7465,7 +7461,8 @@
         "tags": [
           "enrich"
         ],
-        "summary": "Creates the enrich index for an existing enrich policy",
+        "summary": "Run an enrich policy",
+        "description": "Create the enrich index for an existing enrich policy.",
         "operationId": "enrich-execute-policy",
         "parameters": [
           {
@@ -7584,7 +7581,8 @@
         "tags": [
           "eql"
         ],
-        "summary": "Returns the current status and available results for an async EQL search or a stored synchronous EQL search",
+        "summary": "Get async EQL search results",
+        "description": "Get the current status and available results for an async EQL search or a stored synchronous EQL search.",
         "operationId": "eql-get",
         "parameters": [
           {
@@ -7637,8 +7635,8 @@
         "tags": [
           "eql"
         ],
-        "summary": "Deletes an async EQL search or a stored synchronous EQL search",
-        "description": "The API also deletes results for the search.",
+        "summary": "Delete an async EQL search",
+        "description": "Delete an async EQL search or a stored synchronous EQL search.\nThe API also deletes results for the search.",
         "operationId": "eql-delete",
         "parameters": [
           {
@@ -7673,7 +7671,8 @@
         "tags": [
           "eql"
         ],
-        "summary": "Returns the current status for an async EQL search or a stored synchronous EQL search without returning results",
+        "summary": "Get the async EQL status",
+        "description": "Get the current status for an async EQL search or a stored synchronous EQL search without returning results.",
         "operationId": "eql-get-status",
         "parameters": [
           {
@@ -7736,7 +7735,11 @@
         "tags": [
           "eql"
         ],
-        "summary": "Returns results matching a query expressed in Event Query Language (EQL)",
+        "summary": "Get EQL search results",
+        "description": "Returns search results for an Event Query Language (EQL) query.\nEQL assumes each document in a data stream or index corresponds to an event.",
+        "externalDocs": {
+          "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/eql.html"
+        },
         "operationId": "eql-search",
         "parameters": [
           {
@@ -7775,7 +7778,11 @@
         "tags": [
           "eql"
         ],
-        "summary": "Returns results matching a query expressed in Event Query Language (EQL)",
+        "summary": "Get EQL search results",
+        "description": "Returns search results for an Event Query Language (EQL) query.\nEQL assumes each document in a data stream or index corresponds to an event.",
+        "externalDocs": {
+          "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/eql.html"
+        },
         "operationId": "eql-search-1",
         "parameters": [
           {
@@ -7816,7 +7823,11 @@
         "tags": [
           "esql"
         ],
-        "summary": "Executes an ES|QL request",
+        "summary": "Run an ES|QL query",
+        "description": "Get search results for an ES|QL (Elasticsearch query language) query.",
+        "externalDocs": {
+          "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/esql.html"
+        },
         "operationId": "esql-query",
         "parameters": [
           {
@@ -8565,8 +8576,8 @@
         "tags": [
           "fleet"
         ],
-        "summary": "Returns the current global checkpoints for an index",
-        "description": "This API is design for internal use by the fleet server project.",
+        "summary": "Get global checkpoints",
+        "description": "Get the current global checkpoints for an index.\nThis API is designed for internal use by the Fleet server project.",
         "operationId": "fleet-global-checkpoints",
         "parameters": [
           {
@@ -8666,8 +8677,8 @@
         "tags": [
           "fleet"
         ],
-        "summary": "Executes several [fleet searches](https://www.elastic.co/guide/en/elasticsearch/reference/current/fleet-search.html) with a single API request",
-        "description": "The API follows the same structure as the [multi search](https://www.elastic.co/guide/en/elasticsearch/reference/current/search-multi-search.html) API. However, similar to the fleet search API, it\nsupports the wait_for_checkpoints parameter.",
+        "summary": "Run multiple Fleet searches",
+        "description": "Run several Fleet searches with a single API request.\nThe API follows the same structure as the multi search API.\nHowever, similar to the Fleet search API, it supports the `wait_for_checkpoints` parameter.",
         "operationId": "fleet-msearch",
         "parameters": [
           {
@@ -8724,8 +8735,8 @@
         "tags": [
           "fleet"
         ],
-        "summary": "Executes several [fleet searches](https://www.elastic.co/guide/en/elasticsearch/reference/current/fleet-search.html) with a single API request",
-        "description": "The API follows the same structure as the [multi search](https://www.elastic.co/guide/en/elasticsearch/reference/current/search-multi-search.html) API. However, similar to the fleet search API, it\nsupports the wait_for_checkpoints parameter.",
+        "summary": "Run multiple Fleet searches",
+        "description": "Run several Fleet searches with a single API request.\nThe API follows the same structure as the multi search API.\nHowever, similar to the Fleet search API, it supports the `wait_for_checkpoints` parameter.",
         "operationId": "fleet-msearch-1",
         "parameters": [
           {
@@ -8784,8 +8795,8 @@
         "tags": [
           "fleet"
         ],
-        "summary": "Executes several [fleet searches](https://www.elastic.co/guide/en/elasticsearch/reference/current/fleet-search.html) with a single API request",
-        "description": "The API follows the same structure as the [multi search](https://www.elastic.co/guide/en/elasticsearch/reference/current/search-multi-search.html) API. However, similar to the fleet search API, it\nsupports the wait_for_checkpoints parameter.",
+        "summary": "Run multiple Fleet searches",
+        "description": "Run several Fleet searches with a single API request.\nThe API follows the same structure as the multi search API.\nHowever, similar to the Fleet search API, it supports the `wait_for_checkpoints` parameter.",
         "operationId": "fleet-msearch-2",
         "parameters": [
           {
@@ -8845,8 +8856,8 @@
         "tags": [
           "fleet"
         ],
-        "summary": "Executes several [fleet searches](https://www.elastic.co/guide/en/elasticsearch/reference/current/fleet-search.html) with a single API request",
-        "description": "The API follows the same structure as the [multi search](https://www.elastic.co/guide/en/elasticsearch/reference/current/search-multi-search.html) API. However, similar to the fleet search API, it\nsupports the wait_for_checkpoints parameter.",
+        "summary": "Run multiple Fleet searches",
+        "description": "Run several Fleet searches with a single API request.\nThe API follows the same structure as the multi search API.\nHowever, similar to the Fleet search API, it supports the `wait_for_checkpoints` parameter.",
         "operationId": "fleet-msearch-3",
         "parameters": [
           {
@@ -8908,8 +8919,8 @@
         "tags": [
           "fleet"
         ],
-        "summary": "The purpose of the fleet search api is to provide a search api where the search will only be executed\n",
-        "description": "after provided checkpoint has been processed and is visible for searches inside of Elasticsearch.",
+        "summary": "Run a Fleet search",
+        "description": "The purpose of the Fleet search API is to provide an API where the search will be run only\nafter the provided checkpoint has been processed and is visible for searches inside of Elasticsearch.",
         "operationId": "fleet-search",
         "parameters": [
           {
@@ -9059,8 +9070,8 @@
         "tags": [
           "fleet"
         ],
-        "summary": "The purpose of the fleet search api is to provide a search api where the search will only be executed\n",
-        "description": "after provided checkpoint has been processed and is visible for searches inside of Elasticsearch.",
+        "summary": "Run a Fleet search",
+        "description": "The purpose of the Fleet search API is to provide an API where the search will be run only\nafter the provided checkpoint has been processed and is visible for searches inside of Elasticsearch.",
         "operationId": "fleet-search-1",
         "parameters": [
           {
@@ -9285,7 +9296,11 @@
         "tags": [
           "graph"
         ],
-        "summary": "Extracts and summarizes information about the documents and terms in an Elasticsearch data stream or index",
+        "summary": "Explore graph analytics",
+        "description": "Extract and summarize information about the documents and terms in an Elasticsearch data stream or index.\nThe easiest way to understand the behavior of this API is to use the Graph UI to explore connections.\nAn initial request to the `_explore` API contains a seed query that identifies the documents of interest and specifies the fields that define the vertices and connections you want to include in the graph.\nSubsequent requests enable you to spider out from one more vertices of interest.\nYou can exclude vertices that have already been returned.",
+        "externalDocs": {
+          "url": "https://www.elastic.co/guide/en/kibana/current/xpack-graph.html"
+        },
         "operationId": "graph-explore",
         "parameters": [
           {
@@ -9311,7 +9326,11 @@
         "tags": [
           "graph"
         ],
-        "summary": "Extracts and summarizes information about the documents and terms in an Elasticsearch data stream or index",
+        "summary": "Explore graph analytics",
+        "description": "Extract and summarize information about the documents and terms in an Elasticsearch data stream or index.\nThe easiest way to understand the behavior of this API is to use the Graph UI to explore connections.\nAn initial request to the `_explore` API contains a seed query that identifies the documents of interest and specifies the fields that define the vertices and connections you want to include in the graph.\nSubsequent requests enable you to spider out from one more vertices of interest.\nYou can exclude vertices that have already been returned.",
+        "externalDocs": {
+          "url": "https://www.elastic.co/guide/en/kibana/current/xpack-graph.html"
+        },
         "operationId": "graph-explore-1",
         "parameters": [
           {
@@ -11110,6 +11129,9 @@
           },
           {
             "$ref": "#/components/parameters/indices.get_alias#ignore_unavailable"
+          },
+          {
+            "$ref": "#/components/parameters/indices.get_alias#master_timeout"
           }
         ],
         "responses": {
@@ -11227,6 +11249,9 @@
           },
           {
             "$ref": "#/components/parameters/indices.exists_alias#ignore_unavailable"
+          },
+          {
+            "$ref": "#/components/parameters/indices.exists_alias#master_timeout"
           }
         ],
         "responses": {
@@ -11692,7 +11717,8 @@
         "tags": [
           "indices"
         ],
-        "summary": "Returns information about whether a particular index template exists",
+        "summary": "Check index templates",
+        "description": "Check whether index templates exist.",
         "operationId": "indices-exists-index-template",
         "parameters": [
           {
@@ -12094,6 +12120,9 @@
           },
           {
             "$ref": "#/components/parameters/indices.get_alias#ignore_unavailable"
+          },
+          {
+            "$ref": "#/components/parameters/indices.get_alias#master_timeout"
           }
         ],
         "responses": {
@@ -12121,6 +12150,9 @@
           },
           {
             "$ref": "#/components/parameters/indices.exists_alias#ignore_unavailable"
+          },
+          {
+            "$ref": "#/components/parameters/indices.exists_alias#master_timeout"
           }
         ],
         "responses": {
@@ -12524,6 +12556,9 @@
           },
           {
             "$ref": "#/components/parameters/indices.get_alias#ignore_unavailable"
+          },
+          {
+            "$ref": "#/components/parameters/indices.get_alias#master_timeout"
           }
         ],
         "responses": {
@@ -12553,6 +12588,9 @@
           },
           {
             "$ref": "#/components/parameters/indices.get_alias#ignore_unavailable"
+          },
+          {
+            "$ref": "#/components/parameters/indices.get_alias#master_timeout"
           }
         ],
         "responses": {
@@ -13659,8 +13697,8 @@
         "tags": [
           "indices"
         ],
-        "summary": "Resolves the specified name(s) and/or index patterns for indices, aliases, and data streams",
-        "description": "Multiple patterns and remote clusters are supported.",
+        "summary": "Resolve indices",
+        "description": "Resolve the names and/or index patterns for indices, aliases, and data streams.\nMultiple patterns and remote clusters are supported.",
         "operationId": "indices-resolve-index",
         "parameters": [
           {
@@ -15068,7 +15106,8 @@
         "tags": [
           "ingest"
         ],
-        "summary": "Returns information about one or more geoip database configurations",
+        "summary": "Get GeoIP database configurations",
+        "description": "Get information about one or more IP geolocation database configurations.",
         "operationId": "ingest-get-geoip-database-1",
         "parameters": [
           {
@@ -15089,7 +15128,8 @@
         "tags": [
           "ingest"
         ],
-        "summary": "Returns information about one or more geoip database configurations",
+        "summary": "Create or update GeoIP database configurations",
+        "description": "Create or update IP geolocation database configurations.",
         "operationId": "ingest-put-geoip-database",
         "parameters": [
           {
@@ -15164,7 +15204,8 @@
         "tags": [
           "ingest"
         ],
-        "summary": "Deletes a geoip database configuration",
+        "summary": "Delete GeoIP database configurations",
+        "description": "Delete one or more IP geolocation database configurations.",
         "operationId": "ingest-delete-geoip-database",
         "parameters": [
           {
@@ -15370,8 +15411,11 @@
         "tags": [
           "ingest"
         ],
-        "summary": "Returns information about one or more ingest pipelines",
-        "description": "This API returns a local reference of the pipeline.",
+        "summary": "Get pipelines",
+        "description": "Get information about one or more ingest pipelines.\nThis API returns a local reference of the pipeline.",
+        "externalDocs": {
+          "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/ingest.html"
+        },
         "operationId": "ingest-get-pipeline-1",
         "parameters": [
           {
@@ -15395,8 +15439,11 @@
         "tags": [
           "ingest"
         ],
-        "summary": "Creates or updates an ingest pipeline",
+        "summary": "Create or update a pipeline",
         "description": "Changes made using this API take effect immediately.",
+        "externalDocs": {
+          "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/ingest.html"
+        },
         "operationId": "ingest-put-pipeline",
         "parameters": [
           {
@@ -15499,7 +15546,11 @@
         "tags": [
           "ingest"
         ],
-        "summary": "Deletes one or more existing ingest pipeline",
+        "summary": "Delete pipelines",
+        "description": "Delete one or more ingest pipelines.",
+        "externalDocs": {
+          "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/ingest.html"
+        },
         "operationId": "ingest-delete-pipeline",
         "parameters": [
           {
@@ -15554,7 +15605,11 @@
         "tags": [
           "ingest"
         ],
-        "summary": "Gets download statistics for GeoIP2 databases used with the geoip processor",
+        "summary": "Get GeoIP statistics",
+        "description": "Get download statistics for GeoIP2 databases that are used with the GeoIP processor.",
+        "externalDocs": {
+          "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/geoip-processor.html"
+        },
         "operationId": "ingest-geo-ip-stats",
         "responses": {
           "200": {
@@ -15592,7 +15647,8 @@
         "tags": [
           "ingest"
         ],
-        "summary": "Returns information about one or more geoip database configurations",
+        "summary": "Get GeoIP database configurations",
+        "description": "Get information about one or more IP geolocation database configurations.",
         "operationId": "ingest-get-geoip-database",
         "parameters": [
           {
@@ -15632,8 +15688,11 @@
         "tags": [
           "ingest"
         ],
-        "summary": "Returns information about one or more ingest pipelines",
-        "description": "This API returns a local reference of the pipeline.",
+        "summary": "Get pipelines",
+        "description": "Get information about one or more ingest pipelines.\nThis API returns a local reference of the pipeline.",
+        "externalDocs": {
+          "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/ingest.html"
+        },
         "operationId": "ingest-get-pipeline",
         "parameters": [
           {
@@ -15656,8 +15715,11 @@
         "tags": [
           "ingest"
         ],
-        "summary": "Extracts structured fields out of a single text field within a document",
-        "description": "You choose which field to extract matched fields from, as well as the grok pattern you expect will match.\nA grok pattern is like a regular expression that supports aliased expressions that can be reused.",
+        "summary": "Run a grok processor",
+        "description": "Extract structured fields out of a single text field within a document.\nYou must choose which field to extract matched fields from, as well as the grok pattern you expect will match.\nA grok pattern is like a regular expression that supports aliased expressions that can be reused.",
+        "externalDocs": {
+          "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/grok-processor.html"
+        },
         "operationId": "ingest-processor-grok",
         "responses": {
           "200": {
@@ -15690,7 +15752,8 @@
         "tags": [
           "ingest"
         ],
-        "summary": "Executes an ingest pipeline against a set of provided documents",
+        "summary": "Simulate a pipeline",
+        "description": "Run an ingest pipeline against a set of provided documents.\nYou can either specify an existing pipeline to use with the provided documents or supply a pipeline definition in the body of the request.",
         "operationId": "ingest-simulate",
         "parameters": [
           {
@@ -15711,7 +15774,8 @@
         "tags": [
           "ingest"
         ],
-        "summary": "Executes an ingest pipeline against a set of provided documents",
+        "summary": "Simulate a pipeline",
+        "description": "Run an ingest pipeline against a set of provided documents.\nYou can either specify an existing pipeline to use with the provided documents or supply a pipeline definition in the body of the request.",
         "operationId": "ingest-simulate-1",
         "parameters": [
           {
@@ -15734,7 +15798,8 @@
         "tags": [
           "ingest"
         ],
-        "summary": "Executes an ingest pipeline against a set of provided documents",
+        "summary": "Simulate a pipeline",
+        "description": "Run an ingest pipeline against a set of provided documents.\nYou can either specify an existing pipeline to use with the provided documents or supply a pipeline definition in the body of the request.",
         "operationId": "ingest-simulate-2",
         "parameters": [
           {
@@ -15758,7 +15823,8 @@
         "tags": [
           "ingest"
         ],
-        "summary": "Executes an ingest pipeline against a set of provided documents",
+        "summary": "Simulate a pipeline",
+        "description": "Run an ingest pipeline against a set of provided documents.\nYou can either specify an existing pipeline to use with the provided documents or supply a pipeline definition in the body of the request.",
         "operationId": "ingest-simulate-3",
         "parameters": [
           {
@@ -24170,7 +24236,11 @@
         "tags": [
           "query_rules"
         ],
-        "summary": "Returns the details about a query rule within a query ruleset",
+        "summary": "Get a query rule",
+        "description": "Get details about a query rule within a query ruleset.",
+        "externalDocs": {
+          "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/search-using-query-rules.html"
+        },
         "operationId": "query-rules-get-rule",
         "parameters": [
           {
@@ -24214,7 +24284,8 @@
         "tags": [
           "query_rules"
         ],
-        "summary": "Creates or updates a query rule within a query ruleset",
+        "summary": "Create or update a query rule",
+        "description": "Create or update a query rule within a query ruleset.",
         "operationId": "query-rules-put-rule",
         "parameters": [
           {
@@ -24305,7 +24376,8 @@
         "tags": [
           "query_rules"
         ],
-        "summary": "Deletes a query rule within a query ruleset",
+        "summary": "Delete a query rule",
+        "description": "Delete a query rule within a query ruleset.",
         "operationId": "query-rules-delete-rule",
         "parameters": [
           {
@@ -24351,7 +24423,8 @@
         "tags": [
           "query_rules"
         ],
-        "summary": "Returns the details about a query ruleset",
+        "summary": "Get a query ruleset",
+        "description": "Get details about a query ruleset.",
         "operationId": "query-rules-get-ruleset",
         "parameters": [
           {
@@ -24384,7 +24457,10 @@
         "tags": [
           "query_rules"
         ],
-        "summary": "Creates or updates a query ruleset",
+        "summary": "Create or update a query ruleset",
+        "externalDocs": {
+          "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/search-using-query-rules.html"
+        },
         "operationId": "query-rules-put-ruleset",
         "parameters": [
           {
@@ -24453,7 +24529,7 @@
         "tags": [
           "query_rules"
         ],
-        "summary": "Deletes a query ruleset",
+        "summary": "Delete a query ruleset",
         "operationId": "query-rules-delete-ruleset",
         "parameters": [
           {
@@ -24488,7 +24564,8 @@
         "tags": [
           "query_rules"
         ],
-        "summary": "Returns summarized information about existing query rulesets",
+        "summary": "Get all query rulesets",
+        "description": "Get summarized information about the query rulesets.",
         "operationId": "query-rules-list-rulesets",
         "parameters": [
           {
@@ -24547,7 +24624,8 @@
         "tags": [
           "query_rules"
         ],
-        "summary": "Creates or updates a query ruleset",
+        "summary": "Test a query ruleset",
+        "description": "Evaluate match criteria against a query ruleset to identify the rules that would match that criteria.",
         "operationId": "query-rules-test",
         "parameters": [
           {
@@ -32358,7 +32436,7 @@
         "tags": [
           "sql"
         ],
-        "summary": "Clears the SQL cursor",
+        "summary": "Clear an SQL search cursor",
         "operationId": "sql-clear-cursor",
         "requestBody": {
           "content": {
@@ -32407,8 +32485,8 @@
         "tags": [
           "sql"
         ],
-        "summary": "Deletes an async SQL search or a stored synchronous SQL search",
-        "description": "If the search is still running, the API cancels it.",
+        "summary": "Delete an async SQL search",
+        "description": "Delete an async SQL search or a stored synchronous SQL search.\nIf the search is still running, the API cancels it.",
         "operationId": "sql-delete-async",
         "parameters": [
           {
@@ -32443,7 +32521,8 @@
         "tags": [
           "sql"
         ],
-        "summary": "Returns the current status and available results for an async SQL search or stored synchronous SQL search",
+        "summary": "Get async SQL search results",
+        "description": "Get the current status and available results for an async SQL search or stored synchronous SQL search.",
         "operationId": "sql-get-async",
         "parameters": [
           {
@@ -32555,7 +32634,8 @@
         "tags": [
           "sql"
         ],
-        "summary": "Returns the current status of an async SQL search or a stored synchronous SQL search",
+        "summary": "Get the async SQL search status",
+        "description": "Get the current status of an async SQL search or a stored synchronous SQL search.",
         "operationId": "sql-get-async-status",
         "parameters": [
           {
@@ -32620,7 +32700,8 @@
         "tags": [
           "sql"
         ],
-        "summary": "Executes a SQL request",
+        "summary": "Get SQL search results",
+        "description": "Run an SQL request.",
         "operationId": "sql-query-1",
         "parameters": [
           {
@@ -32641,7 +32722,8 @@
         "tags": [
           "sql"
         ],
-        "summary": "Executes a SQL request",
+        "summary": "Get SQL search results",
+        "description": "Run an SQL request.",
         "operationId": "sql-query",
         "parameters": [
           {
@@ -32664,7 +32746,8 @@
         "tags": [
           "sql"
         ],
-        "summary": "Translates SQL into Elasticsearch queries",
+        "summary": "Translate SQL into Elasticsearch queries",
+        "description": "Translate an SQL search into a search API request containing Query DSL.",
         "operationId": "sql-translate-1",
         "requestBody": {
           "$ref": "#/components/requestBodies/sql.translate"
@@ -32680,7 +32763,8 @@
         "tags": [
           "sql"
         ],
-        "summary": "Translates SQL into Elasticsearch queries",
+        "summary": "Translate SQL into Elasticsearch queries",
+        "description": "Translate an SQL search into a search API request containing Query DSL.",
         "operationId": "sql-translate",
         "requestBody": {
           "$ref": "#/components/requestBodies/sql.translate"
@@ -32724,7 +32808,7 @@
         "tags": [
           "synonyms"
         ],
-        "summary": "Retrieves a synonym set",
+        "summary": "Get a synonym set",
         "operationId": "synonyms-get-synonym",
         "parameters": [
           {
@@ -32792,7 +32876,8 @@
         "tags": [
           "synonyms"
         ],
-        "summary": "Creates or updates a synonym set",
+        "summary": "Create or update a synonym set",
+        "description": "Synonyms sets are limited to a maximum of 10,000 synonym rules per set.\nIf you need to manage more synonym rules, you can create multiple synonym sets.",
         "operationId": "synonyms-put-synonym",
         "parameters": [
           {
@@ -32866,7 +32951,7 @@
         "tags": [
           "synonyms"
         ],
-        "summary": "Deletes a synonym set",
+        "summary": "Delete a synonym set",
         "operationId": "synonyms-delete-synonym",
         "parameters": [
           {
@@ -32901,7 +32986,8 @@
         "tags": [
           "synonyms"
         ],
-        "summary": "Retrieves a synonym rule from a synonym set",
+        "summary": "Get a synonym rule",
+        "description": "Get a synonym rule from a synonym set.",
         "operationId": "synonyms-get-synonym-rule",
         "parameters": [
           {
@@ -32945,7 +33031,8 @@
         "tags": [
           "synonyms"
         ],
-        "summary": "Creates or updates a synonym rule in a synonym set",
+        "summary": "Create or update a synonym rule",
+        "description": "Create or update a synonym rule in a synonym set.",
         "operationId": "synonyms-put-synonym-rule",
         "parameters": [
           {
@@ -33007,7 +33094,8 @@
         "tags": [
           "synonyms"
         ],
-        "summary": "Deletes a synonym rule in a synonym set",
+        "summary": "Delete a synonym rule",
+        "description": "Delete a synonym rule from a synonym set.",
         "operationId": "synonyms-delete-synonym-rule",
         "parameters": [
           {
@@ -33053,7 +33141,8 @@
         "tags": [
           "synonyms"
         ],
-        "summary": "Retrieves a summary of all defined synonym sets",
+        "summary": "Get all synonym sets",
+        "description": "Get a summary of all defined synonym sets.",
         "operationId": "synonyms-get-synonyms-sets",
         "parameters": [
           {
@@ -58031,11 +58120,25 @@
         "properties": {
           "limit": {
             "description": "The maximum number of fields in an index. Field and object mappings, as well as field aliases count towards this limit.\nThe limit is in place to prevent mappings and searches from becoming too large. Higher values can lead to performance\ndegradations and memory issues, especially in clusters with a high load or few resources.",
-            "type": "number"
+            "oneOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "string"
+              }
+            ]
           },
           "ignore_dynamic_beyond_limit": {
             "description": "This setting determines what happens when a dynamically mapped field would exceed the total fields limit. When set\nto false (the default), the index request of the document that tries to add a dynamic field to the mapping will fail\nwith the message Limit of total fields [X] has been exceeded. When set to true, the index request will not fail.\nInstead, fields that would exceed the limit are not added to the mapping, similar to dynamic: false.\nThe fields that were not added to the mapping will be added to the _ignored field.",
-            "type": "boolean"
+            "oneOf": [
+              {
+                "type": "boolean"
+              },
+              {
+                "type": "string"
+              }
+            ]
           }
         }
       },
@@ -66123,6 +66226,9 @@
           },
           "shards_capacity": {
             "$ref": "#/components/schemas/_global.health_report:ShardsCapacityIndicator"
+          },
+          "file_settings": {
+            "$ref": "#/components/schemas/_global.health_report:FileSettingsIndicator"
           }
         }
       },
@@ -66687,6 +66793,36 @@
         },
         "required": [
           "max_shards_in_cluster"
+        ]
+      },
+      "_global.health_report:FileSettingsIndicator": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/_global.health_report:BaseIndicator"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "details": {
+                "$ref": "#/components/schemas/_global.health_report:FileSettingsIndicatorDetails"
+              }
+            }
+          }
+        ]
+      },
+      "_global.health_report:FileSettingsIndicatorDetails": {
+        "type": "object",
+        "properties": {
+          "failure_streak": {
+            "type": "number"
+          },
+          "most_recent_failure": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "failure_streak",
+          "most_recent_failure"
         ]
       },
       "ilm.explain_lifecycle:LifecycleExplain": {
@@ -72366,13 +72502,22 @@
           },
           "url": {
             "type": "string"
+          },
+          "resolve_during_rolling_upgrade": {
+            "type": "boolean"
+          },
+          "_meta": {
+            "type": "object",
+            "additionalProperties": {
+              "type": "object"
+            }
           }
         },
         "required": [
-          "details",
           "level",
           "message",
-          "url"
+          "url",
+          "resolve_during_rolling_upgrade"
         ]
       },
       "migration.deprecations:DeprecationLevel": {
@@ -78546,10 +78691,17 @@
             }
           },
           "data": {
-            "type": "array",
-            "items": {
-              "type": "string"
-            }
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              }
+            ]
           }
         }
       },
@@ -86881,6 +87033,9 @@
       "watcher._types:ScheduleContainer": {
         "type": "object",
         "properties": {
+          "timezone": {
+            "type": "string"
+          },
           "cron": {
             "$ref": "#/components/schemas/watcher._types:CronExpression"
           },
@@ -92906,16 +93061,6 @@
         },
         "style": "form"
       },
-      "async_search.submit#keep_alive": {
-        "in": "query",
-        "name": "keep_alive",
-        "description": "Specifies how long the async search needs to be available.\nOngoing async searches and any saved search results are deleted after this period.",
-        "deprecated": false,
-        "schema": {
-          "$ref": "#/components/schemas/_types:Duration"
-        },
-        "style": "form"
-      },
       "async_search.submit#allow_no_indices": {
         "in": "query",
         "name": "allow_no_indices",
@@ -93076,16 +93221,6 @@
         },
         "style": "form"
       },
-      "async_search.submit#pre_filter_shard_size": {
-        "in": "query",
-        "name": "pre_filter_shard_size",
-        "description": "The default value cannot be changed, which enforces the execution of a pre-filter roundtrip to retrieve statistics from each shard so that the ones that surely don’t hold any document matching the query get skipped.",
-        "deprecated": false,
-        "schema": {
-          "type": "number"
-        },
-        "style": "form"
-      },
       "async_search.submit#request_cache": {
         "in": "query",
         "name": "request_cache",
@@ -93103,15 +93238,6 @@
         "deprecated": false,
         "schema": {
           "$ref": "#/components/schemas/_types:Routing"
-        },
-        "style": "form"
-      },
-      "async_search.submit#scroll": {
-        "in": "query",
-        "name": "scroll",
-        "deprecated": false,
-        "schema": {
-          "$ref": "#/components/schemas/_types:Duration"
         },
         "style": "form"
       },
@@ -93241,6 +93367,7 @@
       "async_search.submit#rest_total_hits_as_int": {
         "in": "query",
         "name": "rest_total_hits_as_int",
+        "description": "Indicates whether hits.total should be rendered as an integer or an object in the rest search response",
         "deprecated": false,
         "schema": {
           "type": "boolean"
@@ -96150,6 +96277,16 @@
         },
         "style": "form"
       },
+      "indices.exists_alias#master_timeout": {
+        "in": "query",
+        "name": "master_timeout",
+        "description": "Period to wait for a connection to the master node.\nIf no response is received before the timeout expires, the request fails and returns an error.",
+        "deprecated": false,
+        "schema": {
+          "$ref": "#/components/schemas/_types:Duration"
+        },
+        "style": "form"
+      },
       "indices.flush#index": {
         "in": "path",
         "name": "index",
@@ -96341,6 +96478,16 @@
         "deprecated": false,
         "schema": {
           "type": "boolean"
+        },
+        "style": "form"
+      },
+      "indices.get_alias#master_timeout": {
+        "in": "query",
+        "name": "master_timeout",
+        "description": "Period to wait for a connection to the master node.\nIf no response is received before the timeout expires, the request fails and returns an error.",
+        "deprecated": false,
+        "schema": {
+          "$ref": "#/components/schemas/_types:Duration"
         },
         "style": "form"
       },

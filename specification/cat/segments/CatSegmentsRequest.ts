@@ -21,7 +21,8 @@ import { CatRequestBase } from '@cat/_types/CatBase'
 import { Bytes, Indices } from '@_types/common'
 
 /**
- * Returns low-level information about the Lucene segments in index shards.
+ * Get segment information.
+ * Get low-level information about the Lucene segments in index shards.
  * For data streams, the API returns information about the backing indices.
  * IMPORTANT: cat APIs are only intended for human consumption using the command line or Kibana console. They are not intended for use by applications. For application consumption, use the index segments API.
  * @rest_spec_name cat.segments

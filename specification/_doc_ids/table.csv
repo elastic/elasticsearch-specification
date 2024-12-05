@@ -151,6 +151,7 @@ eql-sequences,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/e
 eql-missing-events,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/eql-syntax.html#eql-missing-events
 eql-syntax,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/eql-syntax.html
 eql,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/eql.html
+esql,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/esql.html
 esql-query,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/esql-rest.html
 esql-query-params,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/esql-rest.html#esql-rest-params
 esql-returning-localized-results,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/esql-rest.html#esql-locale-param
@@ -187,6 +188,7 @@ get-trained-models,https://www.elastic.co/guide/en/elasticsearch/reference/{bran
 get-transform-stats,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/get-transform-stats.html
 get-transform,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/get-transform.html
 get-trial-status,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/get-trial-status.html
+graph,https://www.elastic.co/guide/en/kibana/{branch}/xpack-graph.html
 graph-explore-api,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/graph-explore-api.html
 grok-processor,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/grok-processor.html
 gsub-processor,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/gsub-processor.html
@@ -414,6 +416,7 @@ query-dsl-weighted-tokens-query,https://www.elastic.co/guide/en/elasticsearch/re
 query-dsl-wildcard-query,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/query-dsl-wildcard-query.html
 query-dsl-wrapper-query,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/query-dsl-wrapper-query.html
 query-dsl,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/query-dsl.html
+query-rule,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/search-using-query-rules.html
 realtime,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/docs-get.html#realtime
 redact-processor,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/redact-processor.html
 regexp-syntax,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/regexp-syntax.html

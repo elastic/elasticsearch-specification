@@ -640,7 +640,7 @@
           "stability": "stable"
         }
       },
-      "description": "Get transforms.\nReturns configuration and usage information about transforms.\n\nCAT APIs are only intended for human consumption using the Kibana\nconsole or command line. They are not intended for use by applications. For\napplication consumption, use the get transform statistics API.",
+      "description": "Get transform information.\nGet configuration and usage information about transforms.\n\nCAT APIs are only intended for human consumption using the Kibana\nconsole or command line. They are not intended for use by applications. For\napplication consumption, use the get transform statistics API.",
       "docId": "cat-transforms",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/cat-transforms.html",
       "name": "cat.transforms",
@@ -1904,7 +1904,7 @@
           "stability": "stable"
         }
       },
-      "description": "Returns number of documents matching a query.",
+      "description": "Count search results.\nGet the number of documents matching a query.",
       "docTag": "search",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/search-count.html",
       "name": "count",
@@ -2135,7 +2135,7 @@
           "stability": "stable"
         }
       },
-      "description": "Creates the enrich index for an existing enrich policy.",
+      "description": "Run an enrich policy.\nCreate the enrich index for an existing enrich policy.",
       "docId": "execute-enrich-policy-api",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/execute-enrich-policy-api.html",
       "name": "enrich.execute_policy",
@@ -2251,7 +2251,7 @@
           "stability": "stable"
         }
       },
-      "description": "Deletes an async EQL search or a stored synchronous EQL search.\nThe API also deletes results for the search.",
+      "description": "Delete an async EQL search.\nDelete an async EQL search or a stored synchronous EQL search.\nThe API also deletes results for the search.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/eql-search-api.html",
       "name": "eql.delete",
       "request": {
@@ -2286,7 +2286,7 @@
           "stability": "stable"
         }
       },
-      "description": "Returns the current status and available results for an async EQL search or a stored synchronous EQL search.",
+      "description": "Get async EQL search results.\nGet the current status and available results for an async EQL search or a stored synchronous EQL search.",
       "docId": "eql-async-search-api",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/get-async-eql-search-api.html",
       "name": "eql.get",
@@ -2322,7 +2322,7 @@
           "stability": "stable"
         }
       },
-      "description": "Returns the current status for an async EQL search or a stored synchronous EQL search without returning results.",
+      "description": "Get the async EQL status.\nGet the current status for an async EQL search or a stored synchronous EQL search without returning results.",
       "docId": "eql-async-search-status-api",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/get-async-eql-status-api.html",
       "name": "eql.get_status",
@@ -2358,8 +2358,10 @@
           "stability": "stable"
         }
       },
-      "description": "Returns results matching a query expressed in Event Query Language (EQL)",
+      "description": "Get EQL search results.\nReturns search results for an Event Query Language (EQL) query.\nEQL assumes each document in a data stream or index corresponds to an event.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/eql-search-api.html",
+      "extDocId": "eql",
+      "extDocUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/eql.html",
       "name": "eql.search",
       "request": {
         "name": "Request",
@@ -2393,9 +2395,11 @@
           "since": "8.11.0"
         }
       },
-      "description": "Executes an ES|QL request",
+      "description": "Run an ES|QL query.\nGet search results for an ES|QL (Elasticsearch query language) query.",
       "docId": "esql-query",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/esql-rest.html",
+      "extDocId": "esql",
+      "extDocUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/esql.html",
       "name": "esql.query",
       "request": {
         "name": "Request",
@@ -2700,9 +2704,11 @@
           "stability": "stable"
         }
       },
-      "description": "Extracts and summarizes information about the documents and terms in an Elasticsearch data stream or index.",
+      "description": "Explore graph analytics.\nExtract and summarize information about the documents and terms in an Elasticsearch data stream or index.\nThe easiest way to understand the behavior of this API is to use the Graph UI to explore connections.\nAn initial request to the `_explore` API contains a seed query that identifies the documents of interest and specifies the fields that define the vertices and connections you want to include in the graph.\nSubsequent requests enable you to spider out from one more vertices of interest.\nYou can exclude vertices that have already been returned.",
       "docId": "graph-explore-api",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/graph-explore-api.html",
+      "extDocId": "graph",
+      "extDocUrl": "https://www.elastic.co/guide/en/kibana/{branch}/xpack-graph.html",
       "name": "graph.explore",
       "request": {
         "name": "Request",
@@ -3179,7 +3185,7 @@
           "stability": "stable"
         }
       },
-      "description": "Returns information about whether a particular index template exists.",
+      "description": "Check index templates.\nCheck whether index templates exist.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/index-templates.html",
       "name": "indices.exists_index_template",
       "request": {
@@ -3900,7 +3906,7 @@
           "stability": "stable"
         }
       },
-      "description": "Resolves the specified name(s) and/or index patterns for indices, aliases, and data streams.\nMultiple patterns and remote clusters are supported.",
+      "description": "Resolve indices.\nResolve the names and/or index patterns for indices, aliases, and data streams.\nMultiple patterns and remote clusters are supported.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/indices-resolve-index-api.html",
       "name": "indices.resolve_index",
       "request": {
@@ -4365,8 +4371,10 @@
           "stability": "stable"
         }
       },
-      "description": "Deletes one or more existing ingest pipeline.",
+      "description": "Delete pipelines.\nDelete one or more ingest pipelines.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/delete-pipeline-api.html",
+      "extDocId": "ingest",
+      "extDocUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/ingest.html",
       "name": "ingest.delete_pipeline",
       "request": {
         "name": "Request",
@@ -4400,8 +4408,10 @@
           "stability": "stable"
         }
       },
-      "description": "Returns information about one or more ingest pipelines.\nThis API returns a local reference of the pipeline.",
+      "description": "Get pipelines.\nGet information about one or more ingest pipelines.\nThis API returns a local reference of the pipeline.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/get-pipeline-api.html",
+      "extDocId": "ingest",
+      "extDocUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/ingest.html",
       "name": "ingest.get_pipeline",
       "request": {
         "name": "Request",
@@ -4441,9 +4451,11 @@
           "stability": "stable"
         }
       },
-      "description": "Extracts structured fields out of a single text field within a document.\nYou choose which field to extract matched fields from, as well as the grok pattern you expect will match.\nA grok pattern is like a regular expression that supports aliased expressions that can be reused.",
+      "description": "Run a grok processor.\nExtract structured fields out of a single text field within a document.\nYou must choose which field to extract matched fields from, as well as the grok pattern you expect will match.\nA grok pattern is like a regular expression that supports aliased expressions that can be reused.",
       "docId": "grok-processor",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/grok-processor.html",
+      "extDocId": "grok-processor",
+      "extDocUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/grok-processor.html",
       "name": "ingest.processor_grok",
       "request": {
         "name": "Request",
@@ -4477,9 +4489,11 @@
           "stability": "stable"
         }
       },
-      "description": "Creates or updates an ingest pipeline.\nChanges made using this API take effect immediately.",
+      "description": "Create or update a pipeline.\nChanges made using this API take effect immediately.",
       "docId": "ingest",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/ingest.html",
+      "extDocId": "ingest",
+      "extDocUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/ingest.html",
       "name": "ingest.put_pipeline",
       "request": {
         "name": "Request",
@@ -4516,7 +4530,7 @@
           "stability": "stable"
         }
       },
-      "description": "Executes an ingest pipeline against a set of provided documents.",
+      "description": "Simulate a pipeline.\nRun an ingest pipeline against a set of provided documents.\nYou can either specify an existing pipeline to use with the provided documents or supply a pipeline definition in the body of the request.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/simulate-pipeline-api.html",
       "name": "ingest.simulate",
       "request": {
@@ -7399,7 +7413,7 @@
           "stability": "stable"
         }
       },
-      "description": "Deletes a query rule within a query ruleset.",
+      "description": "Delete a query rule.\nDelete a query rule within a query ruleset.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/delete-query-rule.html",
       "name": "query_rules.delete_rule",
       "request": {
@@ -7434,7 +7448,7 @@
           "stability": "stable"
         }
       },
-      "description": "Deletes a query ruleset.",
+      "description": "Delete a query ruleset.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/delete-query-ruleset.html",
       "name": "query_rules.delete_ruleset",
       "request": {
@@ -7469,8 +7483,10 @@
           "stability": "stable"
         }
       },
-      "description": "Returns the details about a query rule within a query ruleset",
+      "description": "Get a query rule.\nGet details about a query rule within a query ruleset.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/get-query-rule.html",
+      "extDocId": "query-rule",
+      "extDocUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/search-using-query-rules.html",
       "name": "query_rules.get_rule",
       "request": {
         "name": "Request",
@@ -7504,7 +7520,7 @@
           "stability": "stable"
         }
       },
-      "description": "Returns the details about a query ruleset",
+      "description": "Get a query ruleset.\nGet details about a query ruleset.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/get-query-ruleset.html",
       "name": "query_rules.get_ruleset",
       "request": {
@@ -7539,7 +7555,7 @@
           "stability": "stable"
         }
       },
-      "description": "Returns summarized information about existing query rulesets.",
+      "description": "Get all query rulesets.\nGet summarized information about the query rulesets.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/list-query-rulesets.html",
       "name": "query_rules.list_rulesets",
       "request": {
@@ -7574,7 +7590,7 @@
           "stability": "stable"
         }
       },
-      "description": "Creates or updates a query rule within a query ruleset.",
+      "description": "Create or update a query rule.\nCreate or update a query rule within a query ruleset.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/put-query-rule.html",
       "name": "query_rules.put_rule",
       "request": {
@@ -7612,8 +7628,10 @@
           "stability": "stable"
         }
       },
-      "description": "Creates or updates a query ruleset.",
+      "description": "Create or update a query ruleset.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/put-query-ruleset.html",
+      "extDocId": "query-rule",
+      "extDocUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/search-using-query-rules.html",
       "name": "query_rules.put_ruleset",
       "request": {
         "name": "Request",
@@ -7650,7 +7668,7 @@
           "stability": "stable"
         }
       },
-      "description": "Creates or updates a query ruleset.",
+      "description": "Test a query ruleset.\nEvaluate match criteria against a query ruleset to identify the rules that would match that criteria.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/test-query-ruleset.html",
       "name": "query_rules.test",
       "request": {
@@ -8818,7 +8836,7 @@
           "stability": "stable"
         }
       },
-      "description": "Clears the SQL cursor",
+      "description": "Clear an SQL search cursor.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/clear-sql-cursor-api.html",
       "name": "sql.clear_cursor",
       "request": {
@@ -8856,7 +8874,7 @@
           "stability": "stable"
         }
       },
-      "description": "Deletes an async SQL search or a stored synchronous SQL search. If the search is still running, the API cancels it.",
+      "description": "Delete an async SQL search.\nDelete an async SQL search or a stored synchronous SQL search.\nIf the search is still running, the API cancels it.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/delete-async-sql-search-api.html",
       "name": "sql.delete_async",
       "request": {
@@ -8891,7 +8909,7 @@
           "stability": "stable"
         }
       },
-      "description": "Returns the current status and available results for an async SQL search or stored synchronous SQL search",
+      "description": "Get async SQL search results.\nGet the current status and available results for an async SQL search or stored synchronous SQL search.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/get-async-sql-search-api.html",
       "name": "sql.get_async",
       "request": {
@@ -8926,7 +8944,7 @@
           "stability": "stable"
         }
       },
-      "description": "Returns the current status of an async SQL search or a stored synchronous SQL search",
+      "description": "Get the async SQL search status.\nGet the current status of an async SQL search or a stored synchronous SQL search.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/get-async-sql-search-status-api.html",
       "name": "sql.get_async_status",
       "request": {
@@ -8961,7 +8979,7 @@
           "stability": "stable"
         }
       },
-      "description": "Executes a SQL request",
+      "description": "Get SQL search results.\nRun an SQL request.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/sql-search-api.html",
       "name": "sql.query",
       "request": {
@@ -9000,7 +9018,7 @@
           "stability": "stable"
         }
       },
-      "description": "Translates SQL into Elasticsearch queries",
+      "description": "Translate SQL into Elasticsearch queries.\nTranslate an SQL search into a search API request containing Query DSL.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/sql-translate-api.html",
       "name": "sql.translate",
       "request": {
@@ -9039,7 +9057,7 @@
           "stability": "stable"
         }
       },
-      "description": "Deletes a synonym set",
+      "description": "Delete a synonym set.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/delete-synonyms-set.html",
       "name": "synonyms.delete_synonym",
       "request": {
@@ -9074,7 +9092,7 @@
           "stability": "stable"
         }
       },
-      "description": "Deletes a synonym rule in a synonym set",
+      "description": "Delete a synonym rule.\nDelete a synonym rule from a synonym set.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/delete-synonym-rule.html",
       "name": "synonyms.delete_synonym_rule",
       "request": {
@@ -9112,7 +9130,7 @@
           "stability": "stable"
         }
       },
-      "description": "Retrieves a synonym set",
+      "description": "Get a synonym set.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/get-synonyms-set.html",
       "name": "synonyms.get_synonym",
       "request": {
@@ -9147,7 +9165,7 @@
           "stability": "stable"
         }
       },
-      "description": "Retrieves a synonym rule from a synonym set",
+      "description": "Get a synonym rule.\nGet a synonym rule from a synonym set.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/get-synonym-rule.html",
       "name": "synonyms.get_synonym_rule",
       "request": {
@@ -9185,7 +9203,7 @@
           "stability": "stable"
         }
       },
-      "description": "Retrieves a summary of all defined synonym sets",
+      "description": "Get all synonym sets.\nGet a summary of all defined synonym sets.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/list-synonyms-sets.html",
       "name": "synonyms.get_synonyms_sets",
       "request": {
@@ -9220,7 +9238,7 @@
           "stability": "stable"
         }
       },
-      "description": "Creates or updates a synonym set.",
+      "description": "Create or update a synonym set.\nSynonyms sets are limited to a maximum of 10,000 synonym rules per set.\nIf you need to manage more synonym rules, you can create multiple synonym sets.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/put-synonyms-set.html",
       "name": "synonyms.put_synonym",
       "request": {
@@ -9258,7 +9276,7 @@
           "stability": "stable"
         }
       },
-      "description": "Creates or updates a synonym rule in a synonym set",
+      "description": "Create or update a synonym rule.\nCreate or update a synonym rule in a synonym set.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/put-synonym-rule.html",
       "name": "synonyms.put_synonym_rule",
       "request": {
@@ -10128,8 +10146,22 @@
           }
         }
       ],
-      "query": [],
-      "specLocation": "async_search/status/AsyncSearchStatusRequest.ts#L23-L39"
+      "query": [
+        {
+          "description": "Specifies how long the async search needs to be available.\nOngoing async searches and any saved search results are deleted after this period.",
+          "name": "keep_alive",
+          "required": false,
+          "serverDefault": "5d",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Duration",
+              "namespace": "_types"
+            }
+          }
+        }
+      ],
+      "specLocation": "async_search/status/AsyncSearchStatusRequest.ts#L24-L48"
     },
     {
       "body": {
@@ -10685,19 +10717,6 @@
           }
         },
         {
-          "description": "Specifies how long the async search needs to be available.\nOngoing async searches and any saved search results are deleted after this period.",
-          "name": "keep_alive",
-          "required": false,
-          "serverDefault": "5d",
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "Duration",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
           "description": "Whether to ignore if a wildcard indices expression resolves into no concrete indices. (This includes `_all` string or when no indices have been specified)",
           "name": "allow_no_indices",
           "required": false,
@@ -10892,19 +10911,6 @@
           }
         },
         {
-          "description": "The default value cannot be changed, which enforces the execution of a pre-filter roundtrip to retrieve statistics from each shard so that the ones that surely don’t hold any document matching the query get skipped.",
-          "name": "pre_filter_shard_size",
-          "required": false,
-          "serverDefault": 1,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "long",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
           "description": "Specify if request cache should be used for this request or not, defaults to true",
           "name": "request_cache",
           "required": false,
@@ -10925,17 +10931,6 @@
             "kind": "instance_of",
             "type": {
               "name": "Routing",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "name": "scroll",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "Duration",
               "namespace": "_types"
             }
           }
@@ -11088,6 +11083,7 @@
           }
         },
         {
+          "description": "Indicates whether hits.total should be rendered as an integer or an object in the rest search response",
           "name": "rest_total_hits_as_int",
           "required": false,
           "type": {
@@ -11222,7 +11218,7 @@
           }
         }
       ],
-      "specLocation": "async_search/submit/AsyncSearchSubmitRequest.ts#L54-L288"
+      "specLocation": "async_search/submit/AsyncSearchSubmitRequest.ts#L54-L278"
     },
     {
       "body": {
@@ -12402,7 +12398,7 @@
       "body": {
         "kind": "no_body"
       },
-      "description": "Get transforms.\nReturns configuration and usage information about transforms.\n\nCAT APIs are only intended for human consumption using the Kibana\nconsole or command line. They are not intended for use by applications. For\napplication consumption, use the get transform statistics API.",
+      "description": "Get transform information.\nGet configuration and usage information about transforms.\n\nCAT APIs are only intended for human consumption using the Kibana\nconsole or command line. They are not intended for use by applications. For\napplication consumption, use the get transform statistics API.",
       "inherits": {
         "type": {
           "name": "CatRequestBase",
@@ -15291,7 +15287,7 @@
           }
         ]
       },
-      "description": "Returns number of documents matching a query.",
+      "description": "Count search results.\nGet the number of documents matching a query.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -15493,7 +15489,7 @@
           }
         }
       ],
-      "specLocation": "_global/count/CountRequest.ts#L26-L121"
+      "specLocation": "_global/count/CountRequest.ts#L26-L123"
     },
     {
       "body": {
@@ -16697,7 +16693,7 @@
       "body": {
         "kind": "no_body"
       },
-      "description": "Creates the enrich index for an existing enrich policy.",
+      "description": "Run an enrich policy.\nCreate the enrich index for an existing enrich policy.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -16738,7 +16734,7 @@
           }
         }
       ],
-      "specLocation": "enrich/execute_policy/ExecuteEnrichPolicyRequest.ts#L23-L44"
+      "specLocation": "enrich/execute_policy/ExecuteEnrichPolicyRequest.ts#L23-L45"
     },
     {
       "body": {
@@ -16937,7 +16933,7 @@
       "body": {
         "kind": "no_body"
       },
-      "description": "Deletes an async EQL search or a stored synchronous EQL search.\nThe API also deletes results for the search.",
+      "description": "Delete an async EQL search.\nDelete an async EQL search or a stored synchronous EQL search.\nThe API also deletes results for the search.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -16964,7 +16960,7 @@
         }
       ],
       "query": [],
-      "specLocation": "eql/delete/EqlDeleteRequest.ts#L23-L39"
+      "specLocation": "eql/delete/EqlDeleteRequest.ts#L23-L40"
     },
     {
       "body": {
@@ -16991,7 +16987,7 @@
       "body": {
         "kind": "no_body"
       },
-      "description": "Returns the current status and available results for an async EQL search or a stored synchronous EQL search.",
+      "description": "Get async EQL search results.\nGet the current status and available results for an async EQL search or a stored synchronous EQL search.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -17043,7 +17039,7 @@
           }
         }
       ],
-      "specLocation": "eql/get/EqlGetRequest.ts#L24-L50"
+      "specLocation": "eql/get/EqlGetRequest.ts#L24-L51"
     },
     {
       "body": {
@@ -17085,7 +17081,7 @@
       "body": {
         "kind": "no_body"
       },
-      "description": "Returns the current status for an async EQL search or a stored synchronous EQL search without returning results.",
+      "description": "Get the async EQL status.\nGet the current status for an async EQL search or a stored synchronous EQL search without returning results.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -17112,7 +17108,7 @@
         }
       ],
       "query": [],
-      "specLocation": "eql/get_status/EqlGetStatusRequest.ts#L23-L35"
+      "specLocation": "eql/get_status/EqlGetStatusRequest.ts#L23-L36"
     },
     {
       "body": {
@@ -17446,7 +17442,7 @@
           }
         ]
       },
-      "description": "Returns results matching a query expressed in Event Query Language (EQL)",
+      "description": "Get EQL search results.\nReturns search results for an Event Query Language (EQL) query.\nEQL assumes each document in a data stream or index corresponds to an event.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -17549,7 +17545,7 @@
           }
         }
       ],
-      "specLocation": "eql/search/EqlSearchRequest.ts#L28-L125"
+      "specLocation": "eql/search/EqlSearchRequest.ts#L28-L129"
     },
     {
       "body": {
@@ -17703,7 +17699,7 @@
           }
         ]
       },
-      "description": "Executes an ES|QL request",
+      "description": "Run an ES|QL query.\nGet search results for an ES|QL (Elasticsearch query language) query.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -17755,7 +17751,7 @@
           }
         }
       ],
-      "specLocation": "esql/query/QueryRequest.ts#L26-L89"
+      "specLocation": "esql/query/QueryRequest.ts#L26-L91"
     },
     {
       "body": {
@@ -19294,7 +19290,7 @@
           }
         ]
       },
-      "description": "Extracts and summarizes information about the documents and terms in an Elasticsearch data stream or index.",
+      "description": "Explore graph analytics.\nExtract and summarize information about the documents and terms in an Elasticsearch data stream or index.\nThe easiest way to understand the behavior of this API is to use the Graph UI to explore connections.\nAn initial request to the `_explore` API contains a seed query that identifies the documents of interest and specifies the fields that define the vertices and connections you want to include in the graph.\nSubsequent requests enable you to spider out from one more vertices of interest.\nYou can exclude vertices that have already been returned.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -19346,7 +19342,7 @@
           }
         }
       ],
-      "specLocation": "graph/explore/GraphExploreRequest.ts#L28-L72"
+      "specLocation": "graph/explore/GraphExploreRequest.ts#L28-L78"
     },
     {
       "body": {
@@ -20844,9 +20840,22 @@
               "namespace": "_builtins"
             }
           }
+        },
+        {
+          "description": "Period to wait for a connection to the master node.\nIf no response is received before the timeout expires, the request fails and returns an error.",
+          "name": "master_timeout",
+          "required": false,
+          "serverDefault": "30s",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Duration",
+              "namespace": "_types"
+            }
+          }
         }
       ],
-      "specLocation": "indices/exists_alias/IndicesExistsAliasRequest.ts#L23-L63"
+      "specLocation": "indices/exists_alias/IndicesExistsAliasRequest.ts#L24-L70"
     },
     {
       "body": {
@@ -20866,7 +20875,7 @@
       "body": {
         "kind": "no_body"
       },
-      "description": "Returns information about whether a particular index template exists.",
+      "description": "Check index templates.\nCheck whether index templates exist.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -20907,7 +20916,7 @@
           }
         }
       ],
-      "specLocation": "indices/exists_index_template/IndicesExistsIndexTemplateRequest.ts#L24-L41"
+      "specLocation": "indices/exists_index_template/IndicesExistsIndexTemplateRequest.ts#L24-L43"
     },
     {
       "body": {
@@ -21276,9 +21285,22 @@
               "namespace": "_builtins"
             }
           }
+        },
+        {
+          "description": "Period to wait for a connection to the master node.\nIf no response is received before the timeout expires, the request fails and returns an error.",
+          "name": "master_timeout",
+          "required": false,
+          "serverDefault": "30s",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Duration",
+              "namespace": "_types"
+            }
+          }
         }
       ],
-      "specLocation": "indices/get_alias/IndicesGetAliasRequest.ts#L23-L66"
+      "specLocation": "indices/get_alias/IndicesGetAliasRequest.ts#L24-L73"
     },
     {
       "body": {
@@ -23186,7 +23208,7 @@
       "body": {
         "kind": "no_body"
       },
-      "description": "Resolves the specified name(s) and/or index patterns for indices, aliases, and data streams.\nMultiple patterns and remote clusters are supported.",
+      "description": "Resolve indices.\nResolve the names and/or index patterns for indices, aliases, and data streams.\nMultiple patterns and remote clusters are supported.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -23253,7 +23275,7 @@
           }
         }
       ],
-      "specLocation": "indices/resolve_index/ResolveIndexRequest.ts#L23-L60"
+      "specLocation": "indices/resolve_index/ResolveIndexRequest.ts#L23-L61"
     },
     {
       "body": {
@@ -24767,7 +24789,7 @@
       "body": {
         "kind": "no_body"
       },
-      "description": "Deletes one or more existing ingest pipeline.",
+      "description": "Delete pipelines.\nDelete one or more ingest pipelines.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -24821,7 +24843,7 @@
           }
         }
       ],
-      "specLocation": "ingest/delete_pipeline/DeletePipelineRequest.ts#L24-L52"
+      "specLocation": "ingest/delete_pipeline/DeletePipelineRequest.ts#L24-L54"
     },
     {
       "body": {
@@ -24848,7 +24870,7 @@
       "body": {
         "kind": "no_body"
       },
-      "description": "Returns information about one or more ingest pipelines.\nThis API returns a local reference of the pipeline.",
+      "description": "Get pipelines.\nGet information about one or more ingest pipelines.\nThis API returns a local reference of the pipeline.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -24902,7 +24924,7 @@
           }
         }
       ],
-      "specLocation": "ingest/get_pipeline/GetPipelineRequest.ts#L24-L50"
+      "specLocation": "ingest/get_pipeline/GetPipelineRequest.ts#L24-L52"
     },
     {
       "body": {
@@ -24940,7 +24962,7 @@
       "body": {
         "kind": "no_body"
       },
-      "description": "Extracts structured fields out of a single text field within a document.\nYou choose which field to extract matched fields from, as well as the grok pattern you expect will match.\nA grok pattern is like a regular expression that supports aliased expressions that can be reused.",
+      "description": "Run a grok processor.\nExtract structured fields out of a single text field within a document.\nYou must choose which field to extract matched fields from, as well as the grok pattern you expect will match.\nA grok pattern is like a regular expression that supports aliased expressions that can be reused.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -24954,7 +24976,7 @@
       },
       "path": [],
       "query": [],
-      "specLocation": "ingest/processor_grok/GrokProcessorPatternsRequest.ts#L22-L31"
+      "specLocation": "ingest/processor_grok/GrokProcessorPatternsRequest.ts#L22-L33"
     },
     {
       "body": {
@@ -25079,7 +25101,7 @@
           }
         ]
       },
-      "description": "Creates or updates an ingest pipeline.\nChanges made using this API take effect immediately.",
+      "description": "Create or update a pipeline.\nChanges made using this API take effect immediately.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -25145,7 +25167,7 @@
           }
         }
       ],
-      "specLocation": "ingest/put_pipeline/PutPipelineRequest.ts#L25-L83"
+      "specLocation": "ingest/put_pipeline/PutPipelineRequest.ts#L25-L84"
     },
     {
       "body": {
@@ -25201,7 +25223,7 @@
           }
         ]
       },
-      "description": "Executes an ingest pipeline against a set of provided documents.",
+      "description": "Simulate a pipeline.\nRun an ingest pipeline against a set of provided documents.\nYou can either specify an existing pipeline to use with the provided documents or supply a pipeline definition in the body of the request.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -25241,7 +25263,7 @@
           }
         }
       ],
-      "specLocation": "ingest/simulate/SimulatePipelineRequest.ts#L25-L57"
+      "specLocation": "ingest/simulate/SimulatePipelineRequest.ts#L25-L59"
     },
     {
       "body": {
@@ -34320,7 +34342,7 @@
       "body": {
         "kind": "no_body"
       },
-      "description": "Deletes a query rule within a query ruleset.",
+      "description": "Delete a query rule.\nDelete a query rule within a query ruleset.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -34359,7 +34381,7 @@
         }
       ],
       "query": [],
-      "specLocation": "query_rules/delete_rule/QueryRuleDeleteRequest.ts#L22-L40"
+      "specLocation": "query_rules/delete_rule/QueryRuleDeleteRequest.ts#L22-L41"
     },
     {
       "body": {
@@ -34386,7 +34408,7 @@
       "body": {
         "kind": "no_body"
       },
-      "description": "Deletes a query ruleset.",
+      "description": "Delete a query ruleset.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -34440,7 +34462,7 @@
       "body": {
         "kind": "no_body"
       },
-      "description": "Returns the details about a query rule within a query ruleset",
+      "description": "Get a query rule.\nGet details about a query rule within a query ruleset.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -34479,7 +34501,7 @@
         }
       ],
       "query": [],
-      "specLocation": "query_rules/get_rule/QueryRuleGetRequest.ts#L22-L40"
+      "specLocation": "query_rules/get_rule/QueryRuleGetRequest.ts#L22-L42"
     },
     {
       "body": {
@@ -34506,7 +34528,7 @@
       "body": {
         "kind": "no_body"
       },
-      "description": "Returns the details about a query ruleset",
+      "description": "Get a query ruleset.\nGet details about a query ruleset.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -34533,7 +34555,7 @@
         }
       ],
       "query": [],
-      "specLocation": "query_rules/get_ruleset/QueryRulesetGetRequest.ts#L22-L35"
+      "specLocation": "query_rules/get_ruleset/QueryRulesetGetRequest.ts#L22-L36"
     },
     {
       "body": {
@@ -34560,7 +34582,7 @@
       "body": {
         "kind": "no_body"
       },
-      "description": "Returns summarized information about existing query rulesets.",
+      "description": "Get all query rulesets.\nGet summarized information about the query rulesets.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -34599,7 +34621,7 @@
           }
         }
       ],
-      "specLocation": "query_rules/list_rulesets/QueryRulesetListRequest.ts#L22-L39"
+      "specLocation": "query_rules/list_rulesets/QueryRulesetListRequest.ts#L22-L40"
     },
     {
       "body": {
@@ -34707,7 +34729,7 @@
           }
         ]
       },
-      "description": "Creates or updates a query rule within a query ruleset.",
+      "description": "Create or update a query rule.\nCreate or update a query rule within a query ruleset.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -34746,7 +34768,7 @@
         }
       ],
       "query": [],
-      "specLocation": "query_rules/put_rule/QueryRulePutRequest.ts#L28-L56"
+      "specLocation": "query_rules/put_rule/QueryRulePutRequest.ts#L28-L57"
     },
     {
       "body": {
@@ -34807,7 +34829,7 @@
           }
         ]
       },
-      "description": "Creates or updates a query ruleset.",
+      "description": "Create or update a query ruleset.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -34834,7 +34856,7 @@
         }
       ],
       "query": [],
-      "specLocation": "query_rules/put_ruleset/QueryRulesetPutRequest.ts#L23-L43"
+      "specLocation": "query_rules/put_ruleset/QueryRulesetPutRequest.ts#L23-L44"
     },
     {
       "body": {
@@ -34887,7 +34909,7 @@
           }
         ]
       },
-      "description": "Creates or updates a query ruleset.",
+      "description": "Test a query ruleset.\nEvaluate match criteria against a query ruleset to identify the rules that would match that criteria.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -34914,7 +34936,7 @@
         }
       ],
       "query": [],
-      "specLocation": "query_rules/test/QueryRulesetTestRequest.ts#L24-L44"
+      "specLocation": "query_rules/test/QueryRulesetTestRequest.ts#L24-L45"
     },
     {
       "body": {
@@ -40144,7 +40166,7 @@
           }
         ]
       },
-      "description": "Clears the SQL cursor",
+      "description": "Clear an SQL search cursor.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -40158,7 +40180,7 @@
       },
       "path": [],
       "query": [],
-      "specLocation": "sql/clear_cursor/ClearSqlCursorRequest.ts#L22-L34"
+      "specLocation": "sql/clear_cursor/ClearSqlCursorRequest.ts#L22-L35"
     },
     {
       "body": {
@@ -40191,7 +40213,7 @@
       "body": {
         "kind": "no_body"
       },
-      "description": "Deletes an async SQL search or a stored synchronous SQL search. If the search is still running, the API cancels it.",
+      "description": "Delete an async SQL search.\nDelete an async SQL search or a stored synchronous SQL search.\nIf the search is still running, the API cancels it.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -40218,7 +40240,7 @@
         }
       ],
       "query": [],
-      "specLocation": "sql/delete_async/SqlDeleteAsyncRequest.ts#L23-L35"
+      "specLocation": "sql/delete_async/SqlDeleteAsyncRequest.ts#L23-L38"
     },
     {
       "body": {
@@ -40245,7 +40267,7 @@
       "body": {
         "kind": "no_body"
       },
-      "description": "Returns the current status and available results for an async SQL search or stored synchronous SQL search",
+      "description": "Get async SQL search results.\nGet the current status and available results for an async SQL search or stored synchronous SQL search.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -40322,7 +40344,7 @@
           }
         }
       ],
-      "specLocation": "sql/get_async/SqlGetAsyncRequest.ts#L24-L58"
+      "specLocation": "sql/get_async/SqlGetAsyncRequest.ts#L24-L60"
     },
     {
       "body": {
@@ -40422,7 +40444,7 @@
       "body": {
         "kind": "no_body"
       },
-      "description": "Returns the current status of an async SQL search or a stored synchronous SQL search",
+      "description": "Get the async SQL search status.\nGet the current status of an async SQL search or a stored synchronous SQL search.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -40449,7 +40471,7 @@
         }
       ],
       "query": [],
-      "specLocation": "sql/get_async_status/SqlGetAsyncStatusRequest.ts#L23-L35"
+      "specLocation": "sql/get_async_status/SqlGetAsyncStatusRequest.ts#L23-L37"
     },
     {
       "body": {
@@ -40775,7 +40797,7 @@
           }
         ]
       },
-      "description": "Executes a SQL request",
+      "description": "Get SQL search results.\nRun an SQL request.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -40804,7 +40826,7 @@
           }
         }
       ],
-      "specLocation": "sql/query/QuerySqlRequest.ts#L28-L122"
+      "specLocation": "sql/query/QuerySqlRequest.ts#L28-L124"
     },
     {
       "body": {
@@ -40960,7 +40982,7 @@
           }
         ]
       },
-      "description": "Translates SQL into Elasticsearch queries",
+      "description": "Translate SQL into Elasticsearch queries.\nTranslate an SQL search into a search API request containing Query DSL.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -40974,7 +40996,7 @@
       },
       "path": [],
       "query": [],
-      "specLocation": "sql/translate/TranslateSqlRequest.ts#L25-L54"
+      "specLocation": "sql/translate/TranslateSqlRequest.ts#L25-L56"
     },
     {
       "body": {
@@ -41076,7 +41098,7 @@
       "body": {
         "kind": "no_body"
       },
-      "description": "Deletes a synonym set",
+      "description": "Delete a synonym set.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -41130,7 +41152,7 @@
       "body": {
         "kind": "no_body"
       },
-      "description": "Deletes a synonym rule in a synonym set",
+      "description": "Delete a synonym rule.\nDelete a synonym rule from a synonym set.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -41169,7 +41191,7 @@
         }
       ],
       "query": [],
-      "specLocation": "synonyms/delete_synonym_rule/SynonymRuleDeleteRequest.ts#L22-L40"
+      "specLocation": "synonyms/delete_synonym_rule/SynonymRuleDeleteRequest.ts#L22-L41"
     },
     {
       "body": {
@@ -41196,7 +41218,7 @@
       "body": {
         "kind": "no_body"
       },
-      "description": "Retrieves a synonym set",
+      "description": "Get a synonym set.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -41297,7 +41319,7 @@
       "body": {
         "kind": "no_body"
       },
-      "description": "Retrieves a synonym rule from a synonym set",
+      "description": "Get a synonym rule.\nGet a synonym rule from a synonym set.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -41336,7 +41358,7 @@
         }
       ],
       "query": [],
-      "specLocation": "synonyms/get_synonym_rule/SynonymRuleGetRequest.ts#L22-L40"
+      "specLocation": "synonyms/get_synonym_rule/SynonymRuleGetRequest.ts#L22-L41"
     },
     {
       "body": {
@@ -41363,7 +41385,7 @@
       "body": {
         "kind": "no_body"
       },
-      "description": "Retrieves a summary of all defined synonym sets",
+      "description": "Get all synonym sets.\nGet a summary of all defined synonym sets.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -41404,7 +41426,7 @@
           }
         }
       ],
-      "specLocation": "synonyms/get_synonyms_sets/SynonymsSetsGetRequest.ts#L22-L41"
+      "specLocation": "synonyms/get_synonyms_sets/SynonymsSetsGetRequest.ts#L22-L42"
     },
     {
       "body": {
@@ -41480,7 +41502,7 @@
           }
         ]
       },
-      "description": "Creates or updates a synonym set.",
+      "description": "Create or update a synonym set.\nSynonyms sets are limited to a maximum of 10,000 synonym rules per set.\nIf you need to manage more synonym rules, you can create multiple synonym sets.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -41507,7 +41529,7 @@
         }
       ],
       "query": [],
-      "specLocation": "synonyms/put_synonym/SynonymsPutRequest.ts#L23-L42"
+      "specLocation": "synonyms/put_synonym/SynonymsPutRequest.ts#L23-L44"
     },
     {
       "body": {
@@ -41564,7 +41586,7 @@
           }
         ]
       },
-      "description": "Creates or updates a synonym rule in a synonym set",
+      "description": "Create or update a synonym rule.\nCreate or update a synonym rule in a synonym set.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -41603,7 +41625,7 @@
         }
       ],
       "query": [],
-      "specLocation": "synonyms/put_synonym_rule/SynonymRulePutRequest.ts#L23-L47"
+      "specLocation": "synonyms/put_synonym_rule/SynonymRulePutRequest.ts#L23-L48"
     },
     {
       "body": {
@@ -44765,7 +44787,7 @@
         "name": "ImpactArea",
         "namespace": "_global.health_report"
       },
-      "specLocation": "_global/health_report/types.ts#L73-L78"
+      "specLocation": "_global/health_report/types.ts#L74-L79"
     },
     {
       "kind": "enum",
@@ -93244,7 +93266,7 @@
         "name": "EsqlFormat",
         "namespace": "esql.query"
       },
-      "specLocation": "esql/query/QueryRequest.ts#L91-L100"
+      "specLocation": "esql/query/QueryRequest.ts#L93-L102"
     },
     {
       "kind": "type_alias",
@@ -94787,7 +94809,7 @@
         "name": "DeprecationLevel",
         "namespace": "migration.deprecations"
       },
-      "specLocation": "migration/deprecations/types.ts#L20-L27"
+      "specLocation": "migration/deprecations/types.ts#L23-L30"
     },
     {
       "kind": "enum",
@@ -104475,7 +104497,7 @@
         "name": "SqlFormat",
         "namespace": "sql.query"
       },
-      "specLocation": "sql/query/QuerySqlRequest.ts#L124-L132"
+      "specLocation": "sql/query/QuerySqlRequest.ts#L126-L134"
     },
     {
       "kind": "type_alias",
@@ -105451,7 +105473,7 @@
         "name": "ScheduleTimeOfDay",
         "namespace": "watcher._types"
       },
-      "specLocation": "watcher/_types/Schedule.ts#L98-L103",
+      "specLocation": "watcher/_types/Schedule.ts#L99-L104",
       "type": {
         "items": [
           {
@@ -105508,7 +105530,7 @@
           }
         }
       ],
-      "specLocation": "watcher/_types/Schedule.ts#L105-L108"
+      "specLocation": "watcher/_types/Schedule.ts#L106-L109"
     },
     {
       "kind": "enum",
@@ -113972,26 +113994,50 @@
           "description": "The maximum number of fields in an index. Field and object mappings, as well as field aliases count towards this limit.\nThe limit is in place to prevent mappings and searches from becoming too large. Higher values can lead to performance\ndegradations and memory issues, especially in clusters with a high load or few resources.",
           "name": "limit",
           "required": false,
-          "serverDefault": 1000,
+          "serverDefault": "1000",
           "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "long",
-              "namespace": "_types"
-            }
+            "items": [
+              {
+                "kind": "instance_of",
+                "type": {
+                  "name": "long",
+                  "namespace": "_types"
+                }
+              },
+              {
+                "kind": "instance_of",
+                "type": {
+                  "name": "string",
+                  "namespace": "_builtins"
+                }
+              }
+            ],
+            "kind": "union_of"
           }
         },
         {
           "description": "This setting determines what happens when a dynamically mapped field would exceed the total fields limit. When set\nto false (the default), the index request of the document that tries to add a dynamic field to the mapping will fail\nwith the message Limit of total fields [X] has been exceeded. When set to true, the index request will not fail.\nInstead, fields that would exceed the limit are not added to the mapping, similar to dynamic: false.\nThe fields that were not added to the mapping will be added to the _ignored field.",
           "name": "ignore_dynamic_beyond_limit",
           "required": false,
-          "serverDefault": false,
+          "serverDefault": "false",
           "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "boolean",
-              "namespace": "_builtins"
-            }
+            "items": [
+              {
+                "kind": "instance_of",
+                "type": {
+                  "name": "boolean",
+                  "namespace": "_builtins"
+                }
+              },
+              {
+                "kind": "instance_of",
+                "type": {
+                  "name": "string",
+                  "namespace": "_builtins"
+                }
+              }
+            ],
+            "kind": "union_of"
           }
         }
       ],

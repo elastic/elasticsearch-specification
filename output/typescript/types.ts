@@ -502,6 +502,15 @@ export interface HealthReportDiskIndicatorDetails {
   nodes_with_unknown_disk_status: long
 }
 
+export interface HealthReportFileSettingsIndicator extends HealthReportBaseIndicator {
+  details?: HealthReportFileSettingsIndicatorDetails
+}
+
+export interface HealthReportFileSettingsIndicatorDetails {
+  failure_streak: long
+  most_recent_failure: string
+}
+
 export interface HealthReportIlmIndicator extends HealthReportBaseIndicator {
   details?: HealthReportIlmIndicatorDetails
 }
@@ -537,6 +546,7 @@ export interface HealthReportIndicators {
   ilm?: HealthReportIlmIndicator
   slm?: HealthReportSlmIndicator
   shards_capacity?: HealthReportShardsCapacityIndicator
+  file_settings?: HealthReportFileSettingsIndicator
 }
 
 export interface HealthReportMasterIsStableIndicator extends HealthReportBaseIndicator {
@@ -6737,6 +6747,7 @@ export type AsyncSearchGetResponse<TDocument = unknown> = AsyncSearchAsyncSearch
 
 export interface AsyncSearchStatusRequest extends RequestBase {
   id: Id
+  keep_alive?: Duration
 }
 
 export type AsyncSearchStatusResponse = AsyncSearchStatusStatusResponseBase
@@ -6751,7 +6762,6 @@ export interface AsyncSearchSubmitRequest extends RequestBase {
   index?: Indices
   wait_for_completion_timeout?: Duration
   keep_on_completion?: boolean
-  keep_alive?: Duration
   allow_no_indices?: boolean
   allow_partial_search_results?: boolean
   analyzer?: string
@@ -6768,10 +6778,8 @@ export interface AsyncSearchSubmitRequest extends RequestBase {
   lenient?: boolean
   max_concurrent_shard_requests?: long
   preference?: string
-  pre_filter_shard_size?: long
   request_cache?: boolean
   routing?: Routing
-  scroll?: Duration
   search_type?: SearchType
   stats?: string[]
   stored_fields?: Fields
@@ -11203,8 +11211,8 @@ export interface IndicesMappingLimitSettingsNestedObjects {
 }
 
 export interface IndicesMappingLimitSettingsTotalFields {
-  limit?: long
-  ignore_dynamic_beyond_limit?: boolean
+  limit?: long | string
+  ignore_dynamic_beyond_limit?: boolean | string
 }
 
 export interface IndicesMerge {
@@ -11644,6 +11652,7 @@ export interface IndicesExistsAliasRequest extends RequestBase {
   allow_no_indices?: boolean
   expand_wildcards?: ExpandWildcards
   ignore_unavailable?: boolean
+  master_timeout?: Duration
 }
 
 export type IndicesExistsAliasResponse = boolean
@@ -11798,6 +11807,7 @@ export interface IndicesGetAliasRequest extends RequestBase {
   allow_no_indices?: boolean
   expand_wildcards?: ExpandWildcards
   ignore_unavailable?: boolean
+  master_timeout?: Duration
 }
 
 export type IndicesGetAliasResponse = Record<IndexName, IndicesGetAliasIndexAliases>
@@ -13610,10 +13620,12 @@ export interface LogstashPutPipelineRequest extends RequestBase {
 export type LogstashPutPipelineResponse = boolean
 
 export interface MigrationDeprecationsDeprecation {
-  details: string
+  details?: string
   level: MigrationDeprecationsDeprecationLevel
   message: string
   url: string
+  resolve_during_rolling_upgrade: boolean
+  _meta?: Record<string, any>
 }
 
 export type MigrationDeprecationsDeprecationLevel = 'none' | 'info' | 'warning' | 'critical'
@@ -16898,7 +16910,7 @@ export interface NodesInfoNodeInfoPath {
   logs?: string
   home?: string
   repo?: string[]
-  data?: string[]
+  data?: string | string[]
 }
 
 export interface NodesInfoNodeInfoRepositories {
@@ -20386,6 +20398,7 @@ export interface WatcherReportingEmailAttachment {
 export type WatcherResponseContentType = 'json' | 'yaml' | 'text'
 
 export interface WatcherScheduleContainer {
+  timezone?: string
   cron?: WatcherCronExpression
   daily?: WatcherDailySchedule
   hourly?: WatcherHourlySchedule

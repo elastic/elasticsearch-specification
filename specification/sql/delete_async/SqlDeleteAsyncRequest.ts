@@ -21,6 +21,9 @@ import { RequestBase } from '@_types/Base'
 import { Id } from '@_types/common'
 
 /**
+ * Delete an async SQL search.
+ * Delete an async SQL search or a stored synchronous SQL search.
+ * If the search is still running, the API cancels it.
  * @rest_spec_name sql.delete_async
  * @availability stack since=7.15.0 stability=stable
  * @availability serverless stability=stable visibility=public
