@@ -23,8 +23,8 @@ import { integer } from '@_types/Numeric'
 import { TimeUnit } from '@_types/Time'
 
 /**
- * Get transforms.
- * Returns configuration and usage information about transforms.
+ * Get transform information.
+ * Get configuration and usage information about transforms.
  *
  * CAT APIs are only intended for human consumption using the Kibana
  * console or command line. They are not intended for use by applications. For
