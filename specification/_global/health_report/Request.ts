@@ -39,7 +39,7 @@ import { Duration } from '@_types/Time'
  * A diagnosis contains a cause detailing a root cause analysis, an action containing a brief description of the steps to take to fix the problem, the list of affected resources (if applicable), and a detailed step-by-step troubleshooting guide to fix the diagnosed problem.
  *
  * NOTE: The health indicators perform root cause analysis of non-green health statuses. This can be computationally expensive when called frequently.
- * When setting up automated polling of the API for health status set verbose to false to disable the more expensive analysis logic.
+ * When setting up automated polling of the API for health status, set verbose to false to disable the more expensive analysis logic.
  * @rest_spec_name health_report
  * @availability stack since=8.7.0 stability=stable
  * @availability serverless stability=stable visibility=private
