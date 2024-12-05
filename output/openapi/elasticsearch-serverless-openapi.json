@@ -8786,7 +8786,7 @@
           "cluster"
         ],
         "summary": "Ping the cluster",
-        "description": "Returns whether the cluster is running.",
+        "description": "Get information about whether the cluster is running.",
         "operationId": "ping",
         "responses": {
           "200": {
