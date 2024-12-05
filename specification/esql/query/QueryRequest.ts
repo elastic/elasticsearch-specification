@@ -24,11 +24,13 @@ import { FieldValue } from '@_types/common'
 import { QueryContainer } from '@_types/query_dsl/abstractions'
 
 /**
- * Executes an ES|QL request
+ * Run an ES|QL query.
+ * Get search results for an ES|QL (Elasticsearch query language) query.
  * @rest_spec_name esql.query
  * @availability stack since=8.11.0
  * @availability serverless
  * @doc_id esql-query
+ * @ext_doc_id esql
  */
 export interface Request extends RequestBase {
   query_parameters: {

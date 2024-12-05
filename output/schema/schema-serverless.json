@@ -18,7 +18,7 @@
           "stability": "stable"
         }
       },
-      "description": "Delete an async search.\nIf the asynchronous search is still running, it is cancelled.\nOtherwise, the saved search results are deleted.\nIf the Elasticsearch security features are enabled, the deletion of a specific async search is restricted to: the authenticated user that submitted the original search request; users that have the `cancel_task` cluster privilege.",
+      "description": "Delete an async search.\n\nIf the asynchronous search is still running, it is cancelled.\nOtherwise, the saved search results are deleted.\nIf the Elasticsearch security features are enabled, the deletion of a specific async search is restricted to: the authenticated user that submitted the original search request; users that have the `cancel_task` cluster privilege.",
       "docId": "async-search",
       "docTag": "search",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/async-search.html",
@@ -55,7 +55,7 @@
           "stability": "stable"
         }
       },
-      "description": "Get async search results.\nRetrieve the results of a previously submitted asynchronous search request.\nIf the Elasticsearch security features are enabled, access to the results of a specific async search is restricted to the user or API key that submitted it.",
+      "description": "Get async search results.\n\nRetrieve the results of a previously submitted asynchronous search request.\nIf the Elasticsearch security features are enabled, access to the results of a specific async search is restricted to the user or API key that submitted it.",
       "docId": "async-search",
       "docTag": "search",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/async-search.html",
@@ -92,7 +92,7 @@
           "stability": "stable"
         }
       },
-      "description": "Get async search status.\nRetrieve the status of a previously submitted async search request given its identifier, without retrieving search results.\nIf the Elasticsearch security features are enabled, use of this API is restricted to the `monitoring_user` role.",
+      "description": "Get the async search status.\n\nGet the status of a previously submitted async search request given its identifier, without retrieving search results.\nIf the Elasticsearch security features are enabled, use of this API is restricted to the `monitoring_user` role.",
       "docId": "async-search",
       "docTag": "search",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/async-search.html",
@@ -129,7 +129,7 @@
           "stability": "stable"
         }
       },
-      "description": "Run an async search.\nWhen the primary sort of the results is an indexed field, shards get sorted based on minimum and maximum value that they hold for that field. Partial results become available following the sort criteria that was requested.\n\nWarning: Asynchronous search does not support scroll or search requests that include only the suggest section.\n\nBy default, Elasticsearch does not allow you to store an async search response larger than 10Mb and an attempt to do this results in an error.\nThe maximum allowed size for a stored async search response can be set by changing the `search.max_async_search_response_size` cluster level setting.",
+      "description": "Run an async search.\n\nWhen the primary sort of the results is an indexed field, shards get sorted based on minimum and maximum value that they hold for that field. Partial results become available following the sort criteria that was requested.\n\nWarning: Asynchronous search does not support scroll or search requests that include only the suggest section.\n\nBy default, Elasticsearch does not allow you to store an async search response larger than 10Mb and an attempt to do this results in an error.\nThe maximum allowed size for a stored async search response can be set by changing the `search.max_async_search_response_size` cluster level setting.",
       "docId": "async-search",
       "docTag": "search",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/async-search.html",
@@ -640,7 +640,7 @@
           "stability": "stable"
         }
       },
-      "description": "Get transforms.\nReturns configuration and usage information about transforms.\n\nCAT APIs are only intended for human consumption using the Kibana\nconsole or command line. They are not intended for use by applications. For\napplication consumption, use the get transform statistics API.",
+      "description": "Get transform information.\nGet configuration and usage information about transforms.\n\nCAT APIs are only intended for human consumption using the Kibana\nconsole or command line. They are not intended for use by applications. For\napplication consumption, use the get transform statistics API.",
       "docId": "cat-transforms",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/cat-transforms.html",
       "name": "cat.transforms",
@@ -687,7 +687,7 @@
           "stability": "stable"
         }
       },
-      "description": "Clears the search context and results for a scrolling search.",
+      "description": "Clear a scrolling search.\n\nClear the search context and results for a scrolling search.",
       "docId": "clear-scroll-api",
       "docTag": "search",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/clear-scroll-api.html",
@@ -738,7 +738,7 @@
           "stability": "stable"
         }
       },
-      "description": "Closes a point-in-time.",
+      "description": "Close a point in time.\n\nA point in time must be opened explicitly before being used in search requests.\nThe `keep_alive` parameter tells Elasticsearch how long it should persist.\nA point in time is automatically closed when the `keep_alive` period has elapsed.\nHowever, keeping points in time has a cost; close them as soon as they are no longer required for search requests.",
       "docId": "point-in-time-api",
       "docTag": "search",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/point-in-time-api.html",
@@ -1904,7 +1904,7 @@
           "stability": "stable"
         }
       },
-      "description": "Returns number of documents matching a query.",
+      "description": "Count search results.\nGet the number of documents matching a query.",
       "docTag": "search",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/search-count.html",
       "name": "count",
@@ -2135,7 +2135,7 @@
           "stability": "stable"
         }
       },
-      "description": "Creates the enrich index for an existing enrich policy.",
+      "description": "Run an enrich policy.\nCreate the enrich index for an existing enrich policy.",
       "docId": "execute-enrich-policy-api",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/execute-enrich-policy-api.html",
       "name": "enrich.execute_policy",
@@ -2251,7 +2251,7 @@
           "stability": "stable"
         }
       },
-      "description": "Deletes an async EQL search or a stored synchronous EQL search.\nThe API also deletes results for the search.",
+      "description": "Delete an async EQL search.\nDelete an async EQL search or a stored synchronous EQL search.\nThe API also deletes results for the search.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/eql-search-api.html",
       "name": "eql.delete",
       "request": {
@@ -2286,7 +2286,7 @@
           "stability": "stable"
         }
       },
-      "description": "Returns the current status and available results for an async EQL search or a stored synchronous EQL search.",
+      "description": "Get async EQL search results.\nGet the current status and available results for an async EQL search or a stored synchronous EQL search.",
       "docId": "eql-async-search-api",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/get-async-eql-search-api.html",
       "name": "eql.get",
@@ -2322,7 +2322,7 @@
           "stability": "stable"
         }
       },
-      "description": "Returns the current status for an async EQL search or a stored synchronous EQL search without returning results.",
+      "description": "Get the async EQL status.\nGet the current status for an async EQL search or a stored synchronous EQL search without returning results.",
       "docId": "eql-async-search-status-api",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/get-async-eql-status-api.html",
       "name": "eql.get_status",
@@ -2358,8 +2358,10 @@
           "stability": "stable"
         }
       },
-      "description": "Returns results matching a query expressed in Event Query Language (EQL)",
+      "description": "Get EQL search results.\nReturns search results for an Event Query Language (EQL) query.\nEQL assumes each document in a data stream or index corresponds to an event.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/eql-search-api.html",
+      "extDocId": "eql",
+      "extDocUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/eql.html",
       "name": "eql.search",
       "request": {
         "name": "Request",
@@ -2393,9 +2395,11 @@
           "since": "8.11.0"
         }
       },
-      "description": "Executes an ES|QL request",
+      "description": "Run an ES|QL query.\nGet search results for an ES|QL (Elasticsearch query language) query.",
       "docId": "esql-query",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/esql-rest.html",
+      "extDocId": "esql",
+      "extDocUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/esql.html",
       "name": "esql.query",
       "request": {
         "name": "Request",
@@ -2542,7 +2546,7 @@
           "stability": "stable"
         }
       },
-      "description": "The field capabilities API returns the information about the capabilities of fields among multiple indices.\nThe field capabilities API returns runtime fields like any other field. For example, a runtime field with a type\nof keyword is returned as any other field that belongs to the `keyword` family.",
+      "description": "Get the field capabilities.\n\nGet information about the capabilities of fields among multiple indices.\n\nFor data streams, the API returns field capabilities among the stream’s backing indices.\nIt returns runtime fields like any other field.\nFor example, a runtime field with a type of keyword is returned the same as any other field that belongs to the `keyword` family.",
       "docTag": "search",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/search-field-caps.html",
       "name": "field_caps",
@@ -2700,9 +2704,11 @@
           "stability": "stable"
         }
       },
-      "description": "Extracts and summarizes information about the documents and terms in an Elasticsearch data stream or index.",
+      "description": "Explore graph analytics.\nExtract and summarize information about the documents and terms in an Elasticsearch data stream or index.\nThe easiest way to understand the behavior of this API is to use the Graph UI to explore connections.\nAn initial request to the `_explore` API contains a seed query that identifies the documents of interest and specifies the fields that define the vertices and connections you want to include in the graph.\nSubsequent requests enable you to spider out from one more vertices of interest.\nYou can exclude vertices that have already been returned.",
       "docId": "graph-explore-api",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/graph-explore-api.html",
+      "extDocId": "graph",
+      "extDocUrl": "https://www.elastic.co/guide/en/kibana/{branch}/xpack-graph.html",
       "name": "graph.explore",
       "request": {
         "name": "Request",
@@ -3179,7 +3185,7 @@
           "stability": "stable"
         }
       },
-      "description": "Returns information about whether a particular index template exists.",
+      "description": "Check index templates.\nCheck whether index templates exist.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/index-templates.html",
       "name": "indices.exists_index_template",
       "request": {
@@ -3703,6 +3709,9 @@
         "namespace": "indices.put_data_lifecycle"
       },
       "requestBodyRequired": true,
+      "requestMediaType": [
+        "application/json"
+      ],
       "response": {
         "name": "Response",
         "namespace": "indices.put_data_lifecycle"
@@ -3897,7 +3906,7 @@
           "stability": "stable"
         }
       },
-      "description": "Resolves the specified name(s) and/or index patterns for indices, aliases, and data streams.\nMultiple patterns and remote clusters are supported.",
+      "description": "Resolve indices.\nResolve the names and/or index patterns for indices, aliases, and data streams.\nMultiple patterns and remote clusters are supported.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/indices-resolve-index-api.html",
       "name": "indices.resolve_index",
       "request": {
@@ -4140,12 +4149,12 @@
     {
       "availability": {
         "serverless": {
-          "stability": "experimental",
+          "stability": "stable",
           "visibility": "public"
         },
         "stack": {
           "since": "8.11.0",
-          "stability": "experimental",
+          "stability": "stable",
           "visibility": "public"
         }
       },
@@ -4182,12 +4191,12 @@
     {
       "availability": {
         "serverless": {
-          "stability": "experimental",
+          "stability": "stable",
           "visibility": "public"
         },
         "stack": {
           "since": "8.11.0",
-          "stability": "experimental",
+          "stability": "stable",
           "visibility": "public"
         }
       },
@@ -4230,12 +4239,12 @@
     {
       "availability": {
         "serverless": {
-          "stability": "experimental",
+          "stability": "stable",
           "visibility": "public"
         },
         "stack": {
           "since": "8.11.0",
-          "stability": "experimental",
+          "stability": "stable",
           "visibility": "public"
         }
       },
@@ -4275,12 +4284,12 @@
     {
       "availability": {
         "serverless": {
-          "stability": "experimental",
+          "stability": "stable",
           "visibility": "public"
         },
         "stack": {
           "since": "8.11.0",
-          "stability": "experimental",
+          "stability": "stable",
           "visibility": "public"
         }
       },
@@ -4362,8 +4371,10 @@
           "stability": "stable"
         }
       },
-      "description": "Deletes one or more existing ingest pipeline.",
+      "description": "Delete pipelines.\nDelete one or more ingest pipelines.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/delete-pipeline-api.html",
+      "extDocId": "ingest",
+      "extDocUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/ingest.html",
       "name": "ingest.delete_pipeline",
       "request": {
         "name": "Request",
@@ -4397,8 +4408,10 @@
           "stability": "stable"
         }
       },
-      "description": "Returns information about one or more ingest pipelines.\nThis API returns a local reference of the pipeline.",
+      "description": "Get pipelines.\nGet information about one or more ingest pipelines.\nThis API returns a local reference of the pipeline.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/get-pipeline-api.html",
+      "extDocId": "ingest",
+      "extDocUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/ingest.html",
       "name": "ingest.get_pipeline",
       "request": {
         "name": "Request",
@@ -4438,9 +4451,11 @@
           "stability": "stable"
         }
       },
-      "description": "Extracts structured fields out of a single text field within a document.\nYou choose which field to extract matched fields from, as well as the grok pattern you expect will match.\nA grok pattern is like a regular expression that supports aliased expressions that can be reused.",
+      "description": "Run a grok processor.\nExtract structured fields out of a single text field within a document.\nYou must choose which field to extract matched fields from, as well as the grok pattern you expect will match.\nA grok pattern is like a regular expression that supports aliased expressions that can be reused.",
       "docId": "grok-processor",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/grok-processor.html",
+      "extDocId": "grok-processor",
+      "extDocUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/grok-processor.html",
       "name": "ingest.processor_grok",
       "request": {
         "name": "Request",
@@ -4474,9 +4489,11 @@
           "stability": "stable"
         }
       },
-      "description": "Creates or updates an ingest pipeline.\nChanges made using this API take effect immediately.",
+      "description": "Create or update a pipeline.\nChanges made using this API take effect immediately.",
       "docId": "ingest",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/ingest.html",
+      "extDocId": "ingest",
+      "extDocUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/ingest.html",
       "name": "ingest.put_pipeline",
       "request": {
         "name": "Request",
@@ -4513,7 +4530,7 @@
           "stability": "stable"
         }
       },
-      "description": "Executes an ingest pipeline against a set of provided documents.",
+      "description": "Simulate a pipeline.\nRun an ingest pipeline against a set of provided documents.\nYou can either specify an existing pipeline to use with the provided documents or supply a pipeline definition in the body of the request.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/simulate-pipeline-api.html",
       "name": "ingest.simulate",
       "request": {
@@ -6265,7 +6282,7 @@
           "stability": "stable"
         }
       },
-      "description": "Create a datafeed.\nDatafeeds retrieve data from Elasticsearch for analysis by an anomaly detection job.\nYou can associate only one datafeed with each anomaly detection job.\nThe datafeed contains a query that runs at a defined interval (`frequency`).\nIf you are concerned about delayed data, you can add a delay (`query_delay') at each interval.\nWhen Elasticsearch security features are enabled, your datafeed remembers which roles the user who created it had\nat the time of creation and runs the query using those same roles. If you provide secondary authorization headers,\nthose credentials are used instead.\nYou must use Kibana, this API, or the create anomaly detection jobs API to create a datafeed. Do not add a datafeed\ndirectly to the `.ml-config` index. Do not give users `write` privileges on the `.ml-config` index.",
+      "description": "Create a datafeed.\nDatafeeds retrieve data from Elasticsearch for analysis by an anomaly detection job.\nYou can associate only one datafeed with each anomaly detection job.\nThe datafeed contains a query that runs at a defined interval (`frequency`).\nIf you are concerned about delayed data, you can add a delay (`query_delay`) at each interval.\nWhen Elasticsearch security features are enabled, your datafeed remembers which roles the user who created it had\nat the time of creation and runs the query using those same roles. If you provide secondary authorization headers,\nthose credentials are used instead.\nYou must use Kibana, this API, or the create anomaly detection jobs API to create a datafeed. Do not add a datafeed\ndirectly to the `.ml-config` index. Do not give users `write` privileges on the `.ml-config` index.",
       "docTag": "ml anomaly",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/ml-put-datafeed.html",
       "name": "ml.put_datafeed",
@@ -7170,9 +7187,11 @@
           "stability": "stable"
         }
       },
-      "description": "Runs multiple templated searches with a single request.",
+      "description": "Run multiple templated searches.",
       "docTag": "search",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/search-multi-search.html",
+      "extDocId": "search-templates",
+      "extDocUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/search-template.html",
       "name": "msearch_template",
       "privileges": {
         "index": [
@@ -7268,7 +7287,7 @@
           "stability": "stable"
         }
       },
-      "description": "A search request by default executes against the most recent visible data of the target indices,\nwhich is called point in time. Elasticsearch pit (point in time) is a lightweight view into the\nstate of the data as it existed when initiated. In some cases, it’s preferred to perform multiple\nsearch requests using the same point in time. For example, if refreshes happen between\n`search_after` requests, then the results of those requests might not be consistent as changes happening\nbetween searches are only visible to the more recent point in time.",
+      "description": "Open a point in time.\n\nA search request by default runs against the most recent visible data of the target indices,\nwhich is called point in time. Elasticsearch pit (point in time) is a lightweight view into the\nstate of the data as it existed when initiated. In some cases, it’s preferred to perform multiple\nsearch requests using the same point in time. For example, if refreshes happen between\n`search_after` requests, then the results of those requests might not be consistent as changes happening\nbetween searches are only visible to the more recent point in time.\n\nA point in time must be opened explicitly before being used in search requests.\nThe `keep_alive` parameter tells Elasticsearch how long it should persist.",
       "docId": "point-in-time-api",
       "docTag": "search",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/point-in-time-api.html",
@@ -7312,7 +7331,7 @@
           "stability": "stable"
         }
       },
-      "description": "Ping the cluster.\nReturns whether the cluster is running.",
+      "description": "Ping the cluster.\nGet information about whether the cluster is running.",
       "docTag": "cluster",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/index.html",
       "name": "ping",
@@ -7394,7 +7413,7 @@
           "stability": "stable"
         }
       },
-      "description": "Deletes a query rule within a query ruleset.",
+      "description": "Delete a query rule.\nDelete a query rule within a query ruleset.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/delete-query-rule.html",
       "name": "query_rules.delete_rule",
       "request": {
@@ -7429,7 +7448,7 @@
           "stability": "stable"
         }
       },
-      "description": "Deletes a query ruleset.",
+      "description": "Delete a query ruleset.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/delete-query-ruleset.html",
       "name": "query_rules.delete_ruleset",
       "request": {
@@ -7464,8 +7483,10 @@
           "stability": "stable"
         }
       },
-      "description": "Returns the details about a query rule within a query ruleset",
+      "description": "Get a query rule.\nGet details about a query rule within a query ruleset.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/get-query-rule.html",
+      "extDocId": "query-rule",
+      "extDocUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/search-using-query-rules.html",
       "name": "query_rules.get_rule",
       "request": {
         "name": "Request",
@@ -7499,7 +7520,7 @@
           "stability": "stable"
         }
       },
-      "description": "Returns the details about a query ruleset",
+      "description": "Get a query ruleset.\nGet details about a query ruleset.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/get-query-ruleset.html",
       "name": "query_rules.get_ruleset",
       "request": {
@@ -7534,7 +7555,7 @@
           "stability": "stable"
         }
       },
-      "description": "Returns summarized information about existing query rulesets.",
+      "description": "Get all query rulesets.\nGet summarized information about the query rulesets.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/list-query-rulesets.html",
       "name": "query_rules.list_rulesets",
       "request": {
@@ -7569,7 +7590,7 @@
           "stability": "stable"
         }
       },
-      "description": "Creates or updates a query rule within a query ruleset.",
+      "description": "Create or update a query rule.\nCreate or update a query rule within a query ruleset.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/put-query-rule.html",
       "name": "query_rules.put_rule",
       "request": {
@@ -7607,8 +7628,10 @@
           "stability": "stable"
         }
       },
-      "description": "Creates or updates a query ruleset.",
+      "description": "Create or update a query ruleset.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/put-query-ruleset.html",
+      "extDocId": "query-rule",
+      "extDocUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/search-using-query-rules.html",
       "name": "query_rules.put_ruleset",
       "request": {
         "name": "Request",
@@ -7641,11 +7664,49 @@
           "visibility": "public"
         },
         "stack": {
+          "since": "8.10.0",
+          "stability": "stable"
+        }
+      },
+      "description": "Test a query ruleset.\nEvaluate match criteria against a query ruleset to identify the rules that would match that criteria.",
+      "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/test-query-ruleset.html",
+      "name": "query_rules.test",
+      "request": {
+        "name": "Request",
+        "namespace": "query_rules.test"
+      },
+      "requestBodyRequired": true,
+      "requestMediaType": [
+        "application/json"
+      ],
+      "response": {
+        "name": "Response",
+        "namespace": "query_rules.test"
+      },
+      "responseMediaType": [
+        "application/json"
+      ],
+      "urls": [
+        {
+          "methods": [
+            "POST"
+          ],
+          "path": "/_query_rules/{ruleset_id}/_test"
+        }
+      ]
+    },
+    {
+      "availability": {
+        "serverless": {
+          "stability": "stable",
+          "visibility": "public"
+        },
+        "stack": {
           "since": "6.2.0",
           "stability": "stable"
         }
       },
-      "description": "Enables you to evaluate the quality of ranked search results over a set of typical search queries.",
+      "description": "Evaluate ranked search results.\n\nEvaluate the quality of ranked search results over a set of typical search queries.",
       "docTag": "search",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/search-rank-eval.html",
       "name": "rank_eval",
@@ -7735,7 +7796,7 @@
           "stability": "stable"
         }
       },
-      "description": "Renders a search template as a search request body.",
+      "description": "Render a search template.\n\nRender a search template as a search request body.",
       "docTag": "search",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/render-search-template-api.html",
       "name": "render_search_template",
@@ -7873,7 +7934,7 @@
           "stability": "stable"
         }
       },
-      "description": "Returns search hits that match the query defined in the request.\nYou can provide search queries using the `q` query string parameter or the request body.\nIf both are specified, only the query parameter is used.",
+      "description": "Run a search.\n\nGet search hits that match the query defined in the request.\nYou can provide search queries using the `q` query string parameter or the request body.\nIf both are specified, only the query parameter is used.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/search-search.html",
       "name": "search",
       "privileges": {
@@ -8220,7 +8281,7 @@
           "stability": "stable"
         }
       },
-      "description": "Search a vector tile.\nSearches a vector tile for geospatial values.",
+      "description": "Search a vector tile.\n\nSearch a vector tile for geospatial values.",
       "docTag": "search",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/search-vector-tile-api.html",
       "name": "search_mvt",
@@ -8260,9 +8321,11 @@
           "stability": "stable"
         }
       },
-      "description": "Runs a search with a search template.",
+      "description": "Run a search with a search template.",
       "docTag": "search",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/search-template.html",
+      "extDocId": "search-template",
+      "extDocUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/search-template.html",
       "name": "search_template",
       "request": {
         "name": "Request",
@@ -8773,7 +8836,7 @@
           "stability": "stable"
         }
       },
-      "description": "Clears the SQL cursor",
+      "description": "Clear an SQL search cursor.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/clear-sql-cursor-api.html",
       "name": "sql.clear_cursor",
       "request": {
@@ -8811,7 +8874,7 @@
           "stability": "stable"
         }
       },
-      "description": "Deletes an async SQL search or a stored synchronous SQL search. If the search is still running, the API cancels it.",
+      "description": "Delete an async SQL search.\nDelete an async SQL search or a stored synchronous SQL search.\nIf the search is still running, the API cancels it.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/delete-async-sql-search-api.html",
       "name": "sql.delete_async",
       "request": {
@@ -8846,7 +8909,7 @@
           "stability": "stable"
         }
       },
-      "description": "Returns the current status and available results for an async SQL search or stored synchronous SQL search",
+      "description": "Get async SQL search results.\nGet the current status and available results for an async SQL search or stored synchronous SQL search.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/get-async-sql-search-api.html",
       "name": "sql.get_async",
       "request": {
@@ -8881,7 +8944,7 @@
           "stability": "stable"
         }
       },
-      "description": "Returns the current status of an async SQL search or a stored synchronous SQL search",
+      "description": "Get the async SQL search status.\nGet the current status of an async SQL search or a stored synchronous SQL search.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/get-async-sql-search-status-api.html",
       "name": "sql.get_async_status",
       "request": {
@@ -8916,7 +8979,7 @@
           "stability": "stable"
         }
       },
-      "description": "Executes a SQL request",
+      "description": "Get SQL search results.\nRun an SQL request.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/sql-search-api.html",
       "name": "sql.query",
       "request": {
@@ -8955,7 +9018,7 @@
           "stability": "stable"
         }
       },
-      "description": "Translates SQL into Elasticsearch queries",
+      "description": "Translate SQL into Elasticsearch queries.\nTranslate an SQL search into a search API request containing Query DSL.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/sql-translate-api.html",
       "name": "sql.translate",
       "request": {
@@ -8994,7 +9057,7 @@
           "stability": "stable"
         }
       },
-      "description": "Deletes a synonym set",
+      "description": "Delete a synonym set.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/delete-synonyms-set.html",
       "name": "synonyms.delete_synonym",
       "request": {
@@ -9029,7 +9092,7 @@
           "stability": "stable"
         }
       },
-      "description": "Deletes a synonym rule in a synonym set",
+      "description": "Delete a synonym rule.\nDelete a synonym rule from a synonym set.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/delete-synonym-rule.html",
       "name": "synonyms.delete_synonym_rule",
       "request": {
@@ -9067,7 +9130,7 @@
           "stability": "stable"
         }
       },
-      "description": "Retrieves a synonym set",
+      "description": "Get a synonym set.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/get-synonyms-set.html",
       "name": "synonyms.get_synonym",
       "request": {
@@ -9102,7 +9165,7 @@
           "stability": "stable"
         }
       },
-      "description": "Retrieves a synonym rule from a synonym set",
+      "description": "Get a synonym rule.\nGet a synonym rule from a synonym set.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/get-synonym-rule.html",
       "name": "synonyms.get_synonym_rule",
       "request": {
@@ -9140,7 +9203,7 @@
           "stability": "stable"
         }
       },
-      "description": "Retrieves a summary of all defined synonym sets",
+      "description": "Get all synonym sets.\nGet a summary of all defined synonym sets.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/list-synonyms-sets.html",
       "name": "synonyms.get_synonyms_sets",
       "request": {
@@ -9175,7 +9238,7 @@
           "stability": "stable"
         }
       },
-      "description": "Creates or updates a synonym set.",
+      "description": "Create or update a synonym set.\nSynonyms sets are limited to a maximum of 10,000 synonym rules per set.\nIf you need to manage more synonym rules, you can create multiple synonym sets.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/put-synonyms-set.html",
       "name": "synonyms.put_synonym",
       "request": {
@@ -9213,7 +9276,7 @@
           "stability": "stable"
         }
       },
-      "description": "Creates or updates a synonym rule in a synonym set",
+      "description": "Create or update a synonym rule.\nCreate or update a synonym rule in a synonym set.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/put-synonym-rule.html",
       "name": "synonyms.put_synonym_rule",
       "request": {
@@ -9326,7 +9389,7 @@
           "stability": "stable"
         }
       },
-      "description": "Get term vector information.\nReturns information and statistics about terms in the fields of a particular document.",
+      "description": "Get term vector information.\n\nGet information and statistics about terms in the fields of a particular document.",
       "docTag": "document",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/docs-termvectors.html",
       "name": "termvectors",
@@ -9897,7 +9960,7 @@
       "body": {
         "kind": "no_body"
       },
-      "description": "Delete an async search.\nIf the asynchronous search is still running, it is cancelled.\nOtherwise, the saved search results are deleted.\nIf the Elasticsearch security features are enabled, the deletion of a specific async search is restricted to: the authenticated user that submitted the original search request; users that have the `cancel_task` cluster privilege.",
+      "description": "Delete an async search.\n\nIf the asynchronous search is still running, it is cancelled.\nOtherwise, the saved search results are deleted.\nIf the Elasticsearch security features are enabled, the deletion of a specific async search is restricted to: the authenticated user that submitted the original search request; users that have the `cancel_task` cluster privilege.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -9924,7 +9987,7 @@
         }
       ],
       "query": [],
-      "specLocation": "async_search/delete/AsyncSearchDeleteRequest.ts#L23-L39"
+      "specLocation": "async_search/delete/AsyncSearchDeleteRequest.ts#L23-L40"
     },
     {
       "body": {
@@ -9951,7 +10014,7 @@
       "body": {
         "kind": "no_body"
       },
-      "description": "Get async search results.\nRetrieve the results of a previously submitted asynchronous search request.\nIf the Elasticsearch security features are enabled, access to the results of a specific async search is restricted to the user or API key that submitted it.",
+      "description": "Get async search results.\n\nRetrieve the results of a previously submitted asynchronous search request.\nIf the Elasticsearch security features are enabled, access to the results of a specific async search is restricted to the user or API key that submitted it.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -10015,7 +10078,7 @@
           }
         }
       ],
-      "specLocation": "async_search/get/AsyncSearchGetRequest.ts#L24-L56"
+      "specLocation": "async_search/get/AsyncSearchGetRequest.ts#L24-L57"
     },
     {
       "body": {
@@ -10057,7 +10120,7 @@
       "body": {
         "kind": "no_body"
       },
-      "description": "Get async search status.\nRetrieve the status of a previously submitted async search request given its identifier, without retrieving search results.\nIf the Elasticsearch security features are enabled, use of this API is restricted to the `monitoring_user` role.",
+      "description": "Get the async search status.\n\nGet the status of a previously submitted async search request given its identifier, without retrieving search results.\nIf the Elasticsearch security features are enabled, use of this API is restricted to the `monitoring_user` role.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -10083,8 +10146,22 @@
           }
         }
       ],
-      "query": [],
-      "specLocation": "async_search/status/AsyncSearchStatusRequest.ts#L23-L38"
+      "query": [
+        {
+          "description": "Specifies how long the async search needs to be available.\nOngoing async searches and any saved search results are deleted after this period.",
+          "name": "keep_alive",
+          "required": false,
+          "serverDefault": "5d",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Duration",
+              "namespace": "_types"
+            }
+          }
+        }
+      ],
+      "specLocation": "async_search/status/AsyncSearchStatusRequest.ts#L24-L48"
     },
     {
       "body": {
@@ -10586,7 +10663,7 @@
           }
         ]
       },
-      "description": "Run an async search.\nWhen the primary sort of the results is an indexed field, shards get sorted based on minimum and maximum value that they hold for that field. Partial results become available following the sort criteria that was requested.\n\nWarning: Asynchronous search does not support scroll or search requests that include only the suggest section.\n\nBy default, Elasticsearch does not allow you to store an async search response larger than 10Mb and an attempt to do this results in an error.\nThe maximum allowed size for a stored async search response can be set by changing the `search.max_async_search_response_size` cluster level setting.",
+      "description": "Run an async search.\n\nWhen the primary sort of the results is an indexed field, shards get sorted based on minimum and maximum value that they hold for that field. Partial results become available following the sort criteria that was requested.\n\nWarning: Asynchronous search does not support scroll or search requests that include only the suggest section.\n\nBy default, Elasticsearch does not allow you to store an async search response larger than 10Mb and an attempt to do this results in an error.\nThe maximum allowed size for a stored async search response can be set by changing the `search.max_async_search_response_size` cluster level setting.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -10636,19 +10713,6 @@
             "type": {
               "name": "boolean",
               "namespace": "_builtins"
-            }
-          }
-        },
-        {
-          "description": "Specifies how long the async search needs to be available.\nOngoing async searches and any saved search results are deleted after this period.",
-          "name": "keep_alive",
-          "required": false,
-          "serverDefault": "5d",
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "Duration",
-              "namespace": "_types"
             }
           }
         },
@@ -10835,17 +10899,6 @@
           }
         },
         {
-          "name": "min_compatible_shard_node",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "VersionString",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
           "description": "Specify the node or shard the operation should be performed on (default: random)",
           "name": "preference",
           "required": false,
@@ -10854,19 +10907,6 @@
             "type": {
               "name": "string",
               "namespace": "_builtins"
-            }
-          }
-        },
-        {
-          "description": "The default value cannot be changed, which enforces the execution of a pre-filter roundtrip to retrieve statistics from each shard so that the ones that surely don’t hold any document matching the query get skipped.",
-          "name": "pre_filter_shard_size",
-          "required": false,
-          "serverDefault": 1,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "long",
-              "namespace": "_types"
             }
           }
         },
@@ -10891,17 +10931,6 @@
             "kind": "instance_of",
             "type": {
               "name": "Routing",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "name": "scroll",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "Duration",
               "namespace": "_types"
             }
           }
@@ -11054,6 +11083,7 @@
           }
         },
         {
+          "description": "Indicates whether hits.total should be rendered as an integer or an object in the rest search response",
           "name": "rest_total_hits_as_int",
           "required": false,
           "type": {
@@ -11188,7 +11218,7 @@
           }
         }
       ],
-      "specLocation": "async_search/submit/AsyncSearchSubmitRequest.ts#L55-L289"
+      "specLocation": "async_search/submit/AsyncSearchSubmitRequest.ts#L54-L278"
     },
     {
       "body": {
@@ -11604,8 +11634,22 @@
           }
         }
       ],
-      "query": [],
-      "specLocation": "cat/component_templates/CatComponentTemplatesRequest.ts#L22-L39"
+      "query": [
+        {
+          "description": "If `true`, the request computes the list of selected nodes from the\nlocal cluster state. If `false` the list of selected nodes are computed\nfrom the cluster state of the master node. In both cases the coordinating\nnode will send requests for further information to each selected node.",
+          "name": "local",
+          "required": false,
+          "serverDefault": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "_builtins"
+            }
+          }
+        }
+      ],
+      "specLocation": "cat/component_templates/CatComponentTemplatesRequest.ts#L22-L49"
     },
     {
       "body": {
@@ -12354,7 +12398,7 @@
       "body": {
         "kind": "no_body"
       },
-      "description": "Get transforms.\nReturns configuration and usage information about transforms.\n\nCAT APIs are only intended for human consumption using the Kibana\nconsole or command line. They are not intended for use by applications. For\napplication consumption, use the get transform statistics API.",
+      "description": "Get transform information.\nGet configuration and usage information about transforms.\n\nCAT APIs are only intended for human consumption using the Kibana\nconsole or command line. They are not intended for use by applications. For\napplication consumption, use the get transform statistics API.",
       "inherits": {
         "type": {
           "name": "CatRequestBase",
@@ -12502,7 +12546,7 @@
           }
         ]
       },
-      "description": "Clears the search context and results for a scrolling search.",
+      "description": "Clear a scrolling search.\n\nClear the search context and results for a scrolling search.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -12529,7 +12573,7 @@
         }
       ],
       "query": [],
-      "specLocation": "_global/clear_scroll/ClearScrollRequest.ts#L23-L46"
+      "specLocation": "_global/clear_scroll/ClearScrollRequest.ts#L23-L48"
     },
     {
       "body": {
@@ -12621,7 +12665,7 @@
           }
         ]
       },
-      "description": "Closes a point-in-time.",
+      "description": "Close a point in time.\n\nA point in time must be opened explicitly before being used in search requests.\nThe `keep_alive` parameter tells Elasticsearch how long it should persist.\nA point in time is automatically closed when the `keep_alive` period has elapsed.\nHowever, keeping points in time has a cost; close them as soon as they are no longer required for search requests.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -12635,7 +12679,7 @@
       },
       "path": [],
       "query": [],
-      "specLocation": "_global/close_point_in_time/ClosePointInTimeRequest.ts#L23-L38"
+      "specLocation": "_global/close_point_in_time/ClosePointInTimeRequest.ts#L23-L43"
     },
     {
       "body": {
@@ -15243,7 +15287,7 @@
           }
         ]
       },
-      "description": "Returns number of documents matching a query.",
+      "description": "Count search results.\nGet the number of documents matching a query.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -15445,7 +15489,7 @@
           }
         }
       ],
-      "specLocation": "_global/count/CountRequest.ts#L26-L121"
+      "specLocation": "_global/count/CountRequest.ts#L26-L123"
     },
     {
       "body": {
@@ -16649,7 +16693,7 @@
       "body": {
         "kind": "no_body"
       },
-      "description": "Creates the enrich index for an existing enrich policy.",
+      "description": "Run an enrich policy.\nCreate the enrich index for an existing enrich policy.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -16690,7 +16734,7 @@
           }
         }
       ],
-      "specLocation": "enrich/execute_policy/ExecuteEnrichPolicyRequest.ts#L23-L44"
+      "specLocation": "enrich/execute_policy/ExecuteEnrichPolicyRequest.ts#L23-L45"
     },
     {
       "body": {
@@ -16889,7 +16933,7 @@
       "body": {
         "kind": "no_body"
       },
-      "description": "Deletes an async EQL search or a stored synchronous EQL search.\nThe API also deletes results for the search.",
+      "description": "Delete an async EQL search.\nDelete an async EQL search or a stored synchronous EQL search.\nThe API also deletes results for the search.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -16916,7 +16960,7 @@
         }
       ],
       "query": [],
-      "specLocation": "eql/delete/EqlDeleteRequest.ts#L23-L39"
+      "specLocation": "eql/delete/EqlDeleteRequest.ts#L23-L40"
     },
     {
       "body": {
@@ -16943,7 +16987,7 @@
       "body": {
         "kind": "no_body"
       },
-      "description": "Returns the current status and available results for an async EQL search or a stored synchronous EQL search.",
+      "description": "Get async EQL search results.\nGet the current status and available results for an async EQL search or a stored synchronous EQL search.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -16995,7 +17039,7 @@
           }
         }
       ],
-      "specLocation": "eql/get/EqlGetRequest.ts#L24-L50"
+      "specLocation": "eql/get/EqlGetRequest.ts#L24-L51"
     },
     {
       "body": {
@@ -17037,7 +17081,7 @@
       "body": {
         "kind": "no_body"
       },
-      "description": "Returns the current status for an async EQL search or a stored synchronous EQL search without returning results.",
+      "description": "Get the async EQL status.\nGet the current status for an async EQL search or a stored synchronous EQL search without returning results.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -17064,7 +17108,7 @@
         }
       ],
       "query": [],
-      "specLocation": "eql/get_status/EqlGetStatusRequest.ts#L23-L35"
+      "specLocation": "eql/get_status/EqlGetStatusRequest.ts#L23-L36"
     },
     {
       "body": {
@@ -17398,7 +17442,7 @@
           }
         ]
       },
-      "description": "Returns results matching a query expressed in Event Query Language (EQL)",
+      "description": "Get EQL search results.\nReturns search results for an Event Query Language (EQL) query.\nEQL assumes each document in a data stream or index corresponds to an event.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -17501,7 +17545,7 @@
           }
         }
       ],
-      "specLocation": "eql/search/EqlSearchRequest.ts#L28-L125"
+      "specLocation": "eql/search/EqlSearchRequest.ts#L28-L129"
     },
     {
       "body": {
@@ -17655,7 +17699,7 @@
           }
         ]
       },
-      "description": "Executes an ES|QL request",
+      "description": "Run an ES|QL query.\nGet search results for an ES|QL (Elasticsearch query language) query.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -17707,7 +17751,7 @@
           }
         }
       ],
-      "specLocation": "esql/query/QueryRequest.ts#L26-L89"
+      "specLocation": "esql/query/QueryRequest.ts#L26-L91"
     },
     {
       "body": {
@@ -18439,7 +18483,7 @@
           }
         ]
       },
-      "description": "The field capabilities API returns the information about the capabilities of fields among multiple indices.\nThe field capabilities API returns runtime fields like any other field. For example, a runtime field with a type\nof keyword is returned as any other field that belongs to the `keyword` family.",
+      "description": "Get the field capabilities.\n\nGet information about the capabilities of fields among multiple indices.\n\nFor data streams, the API returns field capabilities among the stream’s backing indices.\nIt returns runtime fields like any other field.\nFor example, a runtime field with a type of keyword is returned the same as any other field that belongs to the `keyword` family.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -18589,7 +18633,7 @@
           }
         }
       ],
-      "specLocation": "_global/field_caps/FieldCapabilitiesRequest.ts#L25-L107"
+      "specLocation": "_global/field_caps/FieldCapabilitiesRequest.ts#L25-L111"
     },
     {
       "body": {
@@ -19246,7 +19290,7 @@
           }
         ]
       },
-      "description": "Extracts and summarizes information about the documents and terms in an Elasticsearch data stream or index.",
+      "description": "Explore graph analytics.\nExtract and summarize information about the documents and terms in an Elasticsearch data stream or index.\nThe easiest way to understand the behavior of this API is to use the Graph UI to explore connections.\nAn initial request to the `_explore` API contains a seed query that identifies the documents of interest and specifies the fields that define the vertices and connections you want to include in the graph.\nSubsequent requests enable you to spider out from one more vertices of interest.\nYou can exclude vertices that have already been returned.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -19298,7 +19342,7 @@
           }
         }
       ],
-      "specLocation": "graph/explore/GraphExploreRequest.ts#L28-L72"
+      "specLocation": "graph/explore/GraphExploreRequest.ts#L28-L78"
     },
     {
       "body": {
@@ -20798,20 +20842,20 @@
           }
         },
         {
-          "description": "If `true`, the request retrieves information from the local node only.",
-          "name": "local",
+          "description": "Period to wait for a connection to the master node.\nIf no response is received before the timeout expires, the request fails and returns an error.",
+          "name": "master_timeout",
           "required": false,
-          "serverDefault": false,
+          "serverDefault": "30s",
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "boolean",
-              "namespace": "_builtins"
+              "name": "Duration",
+              "namespace": "_types"
             }
           }
         }
       ],
-      "specLocation": "indices/exists_alias/IndicesExistsAliasRequest.ts#L23-L68"
+      "specLocation": "indices/exists_alias/IndicesExistsAliasRequest.ts#L24-L70"
     },
     {
       "body": {
@@ -20831,7 +20875,7 @@
       "body": {
         "kind": "no_body"
       },
-      "description": "Returns information about whether a particular index template exists.",
+      "description": "Check index templates.\nCheck whether index templates exist.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -20872,7 +20916,7 @@
           }
         }
       ],
-      "specLocation": "indices/exists_index_template/IndicesExistsIndexTemplateRequest.ts#L24-L41"
+      "specLocation": "indices/exists_index_template/IndicesExistsIndexTemplateRequest.ts#L24-L43"
     },
     {
       "body": {
@@ -21243,20 +21287,20 @@
           }
         },
         {
-          "description": "If `true`, the request retrieves information from the local node only.",
-          "name": "local",
+          "description": "Period to wait for a connection to the master node.\nIf no response is received before the timeout expires, the request fails and returns an error.",
+          "name": "master_timeout",
           "required": false,
-          "serverDefault": false,
+          "serverDefault": "30s",
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "boolean",
-              "namespace": "_builtins"
+              "name": "Duration",
+              "namespace": "_types"
             }
           }
         }
       ],
-      "specLocation": "indices/get_alias/IndicesGetAliasRequest.ts#L23-L71"
+      "specLocation": "indices/get_alias/IndicesGetAliasRequest.ts#L24-L73"
     },
     {
       "body": {
@@ -23164,7 +23208,7 @@
       "body": {
         "kind": "no_body"
       },
-      "description": "Resolves the specified name(s) and/or index patterns for indices, aliases, and data streams.\nMultiple patterns and remote clusters are supported.",
+      "description": "Resolve indices.\nResolve the names and/or index patterns for indices, aliases, and data streams.\nMultiple patterns and remote clusters are supported.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -23231,7 +23275,7 @@
           }
         }
       ],
-      "specLocation": "indices/resolve_index/ResolveIndexRequest.ts#L23-L60"
+      "specLocation": "indices/resolve_index/ResolveIndexRequest.ts#L23-L61"
     },
     {
       "body": {
@@ -24745,7 +24789,7 @@
       "body": {
         "kind": "no_body"
       },
-      "description": "Deletes one or more existing ingest pipeline.",
+      "description": "Delete pipelines.\nDelete one or more ingest pipelines.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -24799,7 +24843,7 @@
           }
         }
       ],
-      "specLocation": "ingest/delete_pipeline/DeletePipelineRequest.ts#L24-L52"
+      "specLocation": "ingest/delete_pipeline/DeletePipelineRequest.ts#L24-L54"
     },
     {
       "body": {
@@ -24826,7 +24870,7 @@
       "body": {
         "kind": "no_body"
       },
-      "description": "Returns information about one or more ingest pipelines.\nThis API returns a local reference of the pipeline.",
+      "description": "Get pipelines.\nGet information about one or more ingest pipelines.\nThis API returns a local reference of the pipeline.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -24880,7 +24924,7 @@
           }
         }
       ],
-      "specLocation": "ingest/get_pipeline/GetPipelineRequest.ts#L24-L50"
+      "specLocation": "ingest/get_pipeline/GetPipelineRequest.ts#L24-L52"
     },
     {
       "body": {
@@ -24918,7 +24962,7 @@
       "body": {
         "kind": "no_body"
       },
-      "description": "Extracts structured fields out of a single text field within a document.\nYou choose which field to extract matched fields from, as well as the grok pattern you expect will match.\nA grok pattern is like a regular expression that supports aliased expressions that can be reused.",
+      "description": "Run a grok processor.\nExtract structured fields out of a single text field within a document.\nYou must choose which field to extract matched fields from, as well as the grok pattern you expect will match.\nA grok pattern is like a regular expression that supports aliased expressions that can be reused.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -24932,7 +24976,7 @@
       },
       "path": [],
       "query": [],
-      "specLocation": "ingest/processor_grok/GrokProcessorPatternsRequest.ts#L22-L31"
+      "specLocation": "ingest/processor_grok/GrokProcessorPatternsRequest.ts#L22-L33"
     },
     {
       "body": {
@@ -25057,7 +25101,7 @@
           }
         ]
       },
-      "description": "Creates or updates an ingest pipeline.\nChanges made using this API take effect immediately.",
+      "description": "Create or update a pipeline.\nChanges made using this API take effect immediately.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -25123,7 +25167,7 @@
           }
         }
       ],
-      "specLocation": "ingest/put_pipeline/PutPipelineRequest.ts#L25-L83"
+      "specLocation": "ingest/put_pipeline/PutPipelineRequest.ts#L25-L84"
     },
     {
       "body": {
@@ -25179,7 +25223,7 @@
           }
         ]
       },
-      "description": "Executes an ingest pipeline against a set of provided documents.",
+      "description": "Simulate a pipeline.\nRun an ingest pipeline against a set of provided documents.\nYou can either specify an existing pipeline to use with the provided documents or supply a pipeline definition in the body of the request.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -25219,7 +25263,7 @@
           }
         }
       ],
-      "specLocation": "ingest/simulate/SimulatePipelineRequest.ts#L25-L57"
+      "specLocation": "ingest/simulate/SimulatePipelineRequest.ts#L25-L59"
     },
     {
       "body": {
@@ -29706,7 +29750,7 @@
           }
         ]
       },
-      "description": "Create a datafeed.\nDatafeeds retrieve data from Elasticsearch for analysis by an anomaly detection job.\nYou can associate only one datafeed with each anomaly detection job.\nThe datafeed contains a query that runs at a defined interval (`frequency`).\nIf you are concerned about delayed data, you can add a delay (`query_delay') at each interval.\nWhen Elasticsearch security features are enabled, your datafeed remembers which roles the user who created it had\nat the time of creation and runs the query using those same roles. If you provide secondary authorization headers,\nthose credentials are used instead.\nYou must use Kibana, this API, or the create anomaly detection jobs API to create a datafeed. Do not add a datafeed\ndirectly to the `.ml-config` index. Do not give users `write` privileges on the `.ml-config` index.",
+      "description": "Create a datafeed.\nDatafeeds retrieve data from Elasticsearch for analysis by an anomaly detection job.\nYou can associate only one datafeed with each anomaly detection job.\nThe datafeed contains a query that runs at a defined interval (`frequency`).\nIf you are concerned about delayed data, you can add a delay (`query_delay`) at each interval.\nWhen Elasticsearch security features are enabled, your datafeed remembers which roles the user who created it had\nat the time of creation and runs the query using those same roles. If you provide secondary authorization headers,\nthose credentials are used instead.\nYou must use Kibana, this API, or the create anomaly detection jobs API to create a datafeed. Do not add a datafeed\ndirectly to the `.ml-config` index. Do not give users `write` privileges on the `.ml-config` index.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -33611,7 +33655,7 @@
           }
         }
       },
-      "description": "Runs multiple templated searches with a single request.",
+      "description": "Run multiple templated searches.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -33702,7 +33746,7 @@
           }
         }
       ],
-      "specLocation": "_global/msearch_template/MultiSearchTemplateRequest.ts#L25-L71"
+      "specLocation": "_global/msearch_template/MultiSearchTemplateRequest.ts#L25-L72"
     },
     {
       "body": {
@@ -34009,7 +34053,7 @@
           }
         ]
       },
-      "description": "A search request by default executes against the most recent visible data of the target indices,\nwhich is called point in time. Elasticsearch pit (point in time) is a lightweight view into the\nstate of the data as it existed when initiated. In some cases, it’s preferred to perform multiple\nsearch requests using the same point in time. For example, if refreshes happen between\n`search_after` requests, then the results of those requests might not be consistent as changes happening\nbetween searches are only visible to the more recent point in time.",
+      "description": "Open a point in time.\n\nA search request by default runs against the most recent visible data of the target indices,\nwhich is called point in time. Elasticsearch pit (point in time) is a lightweight view into the\nstate of the data as it existed when initiated. In some cases, it’s preferred to perform multiple\nsearch requests using the same point in time. For example, if refreshes happen between\n`search_after` requests, then the results of those requests might not be consistent as changes happening\nbetween searches are only visible to the more recent point in time.\n\nA point in time must be opened explicitly before being used in search requests.\nThe `keep_alive` parameter tells Elasticsearch how long it should persist.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -34097,9 +34141,22 @@
               "namespace": "_types"
             }
           }
+        },
+        {
+          "description": "If `false`, creating a point in time request when a shard is missing or unavailable will throw an exception.\nIf `true`, the point in time will contain all the shards that are available at the time of the request.",
+          "name": "allow_partial_search_results",
+          "required": false,
+          "serverDefault": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "_builtins"
+            }
+          }
         }
       ],
-      "specLocation": "_global/open_point_in_time/OpenPointInTimeRequest.ts#L25-L76"
+      "specLocation": "_global/open_point_in_time/OpenPointInTimeRequest.ts#L25-L87"
     },
     {
       "body": {
@@ -34144,7 +34201,7 @@
       "body": {
         "kind": "no_body"
       },
-      "description": "Ping the cluster.\nReturns whether the cluster is running.",
+      "description": "Ping the cluster.\nGet information about whether the cluster is running.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -34285,7 +34342,7 @@
       "body": {
         "kind": "no_body"
       },
-      "description": "Deletes a query rule within a query ruleset.",
+      "description": "Delete a query rule.\nDelete a query rule within a query ruleset.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -34324,7 +34381,7 @@
         }
       ],
       "query": [],
-      "specLocation": "query_rules/delete_rule/QueryRuleDeleteRequest.ts#L22-L40"
+      "specLocation": "query_rules/delete_rule/QueryRuleDeleteRequest.ts#L22-L41"
     },
     {
       "body": {
@@ -34351,7 +34408,7 @@
       "body": {
         "kind": "no_body"
       },
-      "description": "Deletes a query ruleset.",
+      "description": "Delete a query ruleset.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -34405,7 +34462,7 @@
       "body": {
         "kind": "no_body"
       },
-      "description": "Returns the details about a query rule within a query ruleset",
+      "description": "Get a query rule.\nGet details about a query rule within a query ruleset.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -34444,7 +34501,7 @@
         }
       ],
       "query": [],
-      "specLocation": "query_rules/get_rule/QueryRuleGetRequest.ts#L22-L40"
+      "specLocation": "query_rules/get_rule/QueryRuleGetRequest.ts#L22-L42"
     },
     {
       "body": {
@@ -34471,7 +34528,7 @@
       "body": {
         "kind": "no_body"
       },
-      "description": "Returns the details about a query ruleset",
+      "description": "Get a query ruleset.\nGet details about a query ruleset.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -34498,7 +34555,7 @@
         }
       ],
       "query": [],
-      "specLocation": "query_rules/get_ruleset/QueryRulesetGetRequest.ts#L22-L35"
+      "specLocation": "query_rules/get_ruleset/QueryRulesetGetRequest.ts#L22-L36"
     },
     {
       "body": {
@@ -34525,7 +34582,7 @@
       "body": {
         "kind": "no_body"
       },
-      "description": "Returns summarized information about existing query rulesets.",
+      "description": "Get all query rulesets.\nGet summarized information about the query rulesets.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -34564,7 +34621,7 @@
           }
         }
       ],
-      "specLocation": "query_rules/list_rulesets/QueryRulesetListRequest.ts#L22-L39"
+      "specLocation": "query_rules/list_rulesets/QueryRulesetListRequest.ts#L22-L40"
     },
     {
       "body": {
@@ -34672,7 +34729,7 @@
           }
         ]
       },
-      "description": "Creates or updates a query rule within a query ruleset.",
+      "description": "Create or update a query rule.\nCreate or update a query rule within a query ruleset.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -34711,7 +34768,7 @@
         }
       ],
       "query": [],
-      "specLocation": "query_rules/put_rule/QueryRulePutRequest.ts#L28-L56"
+      "specLocation": "query_rules/put_rule/QueryRulePutRequest.ts#L28-L57"
     },
     {
       "body": {
@@ -34772,7 +34829,7 @@
           }
         ]
       },
-      "description": "Creates or updates a query ruleset.",
+      "description": "Create or update a query ruleset.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -34799,7 +34856,7 @@
         }
       ],
       "query": [],
-      "specLocation": "query_rules/put_ruleset/QueryRulesetPutRequest.ts#L23-L43"
+      "specLocation": "query_rules/put_ruleset/QueryRulesetPutRequest.ts#L23-L44"
     },
     {
       "body": {
@@ -34824,6 +34881,100 @@
         "namespace": "query_rules.put_ruleset"
       },
       "specLocation": "query_rules/put_ruleset/QueryRulesetPutResponse.ts#L22-L26"
+    },
+    {
+      "attachedBehaviors": [
+        "CommonQueryParameters"
+      ],
+      "body": {
+        "kind": "properties",
+        "properties": [
+          {
+            "name": "match_criteria",
+            "required": true,
+            "type": {
+              "key": {
+                "kind": "instance_of",
+                "type": {
+                  "name": "string",
+                  "namespace": "_builtins"
+                }
+              },
+              "kind": "dictionary_of",
+              "singleKey": false,
+              "value": {
+                "kind": "user_defined_value"
+              }
+            }
+          }
+        ]
+      },
+      "description": "Test a query ruleset.\nEvaluate match criteria against a query ruleset to identify the rules that would match that criteria.",
+      "inherits": {
+        "type": {
+          "name": "RequestBase",
+          "namespace": "_types"
+        }
+      },
+      "kind": "request",
+      "name": {
+        "name": "Request",
+        "namespace": "query_rules.test"
+      },
+      "path": [
+        {
+          "description": "The unique identifier of the query ruleset to be created or updated",
+          "name": "ruleset_id",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Id",
+              "namespace": "_types"
+            }
+          }
+        }
+      ],
+      "query": [],
+      "specLocation": "query_rules/test/QueryRulesetTestRequest.ts#L24-L45"
+    },
+    {
+      "body": {
+        "kind": "properties",
+        "properties": [
+          {
+            "name": "total_matched_rules",
+            "required": true,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "integer",
+                "namespace": "_types"
+              }
+            }
+          },
+          {
+            "name": "matched_rules",
+            "required": true,
+            "type": {
+              "kind": "array_of",
+              "value": {
+                "kind": "instance_of",
+                "type": {
+                  "name": "QueryRulesetMatchedRule",
+                  "namespace": "query_rules.test"
+                }
+              }
+            }
+          }
+        ]
+      },
+      "kind": "response",
+      "name": {
+        "name": "Response",
+        "namespace": "query_rules.test"
+      },
+      "specLocation": "query_rules/test/QueryRulesetTestResponse.ts#L23-L28"
     },
     {
       "attachedBehaviors": [
@@ -34861,7 +35012,7 @@
           }
         ]
       },
-      "description": "Enables you to evaluate the quality of ranked search results over a set of typical search queries.",
+      "description": "Evaluate ranked search results.\n\nEvaluate the quality of ranked search results over a set of typical search queries.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -34939,7 +35090,7 @@
           }
         }
       ],
-      "specLocation": "_global/rank_eval/RankEvalRequest.ts#L24-L62"
+      "specLocation": "_global/rank_eval/RankEvalRequest.ts#L24-L64"
     },
     {
       "body": {
@@ -35478,7 +35629,7 @@
           }
         ]
       },
-      "description": "Renders a search template as a search request body.",
+      "description": "Render a search template.\n\nRender a search template as a search request body.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -35505,7 +35656,7 @@
         }
       ],
       "query": [],
-      "specLocation": "_global/render_search_template/RenderSearchTemplateRequest.ts#L25-L56"
+      "specLocation": "_global/render_search_template/RenderSearchTemplateRequest.ts#L25-L58"
     },
     {
       "body": {
@@ -36044,9 +36195,12 @@
           },
           {
             "availability": {
-              "serverless": {},
+              "serverless": {
+                "stability": "stable"
+              },
               "stack": {
-                "since": "8.14.0"
+                "since": "8.14.0",
+                "stability": "stable"
               }
             },
             "description": "A retriever is a specification to describe top documents returned from a search. A retriever replaces other elements of the search API that also return top documents such as query and knn.",
@@ -36289,7 +36443,7 @@
           }
         ]
       },
-      "description": "Returns search hits that match the query defined in the request.\nYou can provide search queries using the `q` query string parameter or the request body.\nIf both are specified, only the query parameter is used.",
+      "description": "Run a search.\n\nGet search hits that match the query defined in the request.\nYou can provide search queries using the `q` query string parameter or the request body.\nIf both are specified, only the query parameter is used.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -36518,18 +36672,6 @@
             "kind": "instance_of",
             "type": {
               "name": "long",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "description": "The minimum version of the node that can handle the request\nAny handling node with a lower version will fail the request.",
-          "name": "min_compatible_shard_node",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "VersionString",
               "namespace": "_types"
             }
           }
@@ -36891,7 +37033,7 @@
           }
         }
       ],
-      "specLocation": "_global/search/SearchRequest.ts#L54-L529"
+      "specLocation": "_global/search/SearchRequest.ts#L53-L525"
     },
     {
       "body": {
@@ -37696,7 +37838,7 @@
           }
         ]
       },
-      "description": "Search a vector tile.\nSearches a vector tile for geospatial values.",
+      "description": "Search a vector tile.\n\nSearch a vector tile for geospatial values.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -37861,7 +38003,7 @@
           }
         }
       ],
-      "specLocation": "_global/search_mvt/SearchMvtRequest.ts#L33-L192"
+      "specLocation": "_global/search_mvt/SearchMvtRequest.ts#L33-L193"
     },
     {
       "body": {
@@ -37959,7 +38101,7 @@
           }
         ]
       },
-      "description": "Runs a search with a search template.",
+      "description": "Run a search with a search template.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -38157,7 +38299,7 @@
           }
         }
       ],
-      "specLocation": "_global/search_template/SearchTemplateRequest.ts#L32-L135"
+      "specLocation": "_global/search_template/SearchTemplateRequest.ts#L32-L136"
     },
     {
       "body": {
@@ -38415,8 +38557,8 @@
             "type": {
               "kind": "instance_of",
               "type": {
-                "name": "ApiKey",
-                "namespace": "security._types"
+                "name": "AuthenticateApiKey",
+                "namespace": "security.authenticate"
               }
             }
           },
@@ -38570,7 +38712,7 @@
         "name": "Response",
         "namespace": "security.authenticate"
       },
-      "specLocation": "security/authenticate/SecurityAuthenticateResponse.ts#L25-L43"
+      "specLocation": "security/authenticate/SecurityAuthenticateResponse.ts#L24-L42"
     },
     {
       "attachedBehaviors": [
@@ -39033,8 +39175,8 @@
               "value": {
                 "kind": "instance_of",
                 "type": {
-                  "name": "string",
-                  "namespace": "_builtins"
+                  "name": "ClusterPrivilege",
+                  "namespace": "security._types"
                 }
               }
             }
@@ -39060,7 +39202,7 @@
         "name": "Response",
         "namespace": "security.get_builtin_privileges"
       },
-      "specLocation": "security/get_builtin_privileges/SecurityGetBuiltinPrivilegesResponse.ts#L22-L24"
+      "specLocation": "security/get_builtin_privileges/SecurityGetBuiltinPrivilegesResponse.ts#L26-L35"
     },
     {
       "attachedBehaviors": [
@@ -39618,7 +39760,7 @@
           }
         }
       ],
-      "specLocation": "security/put_role/SecurityPutRoleRequest.ts#L31-L95"
+      "specLocation": "security/put_role/SecurityPutRoleRequest.ts#L32-L101"
     },
     {
       "body": {
@@ -40024,7 +40166,7 @@
           }
         ]
       },
-      "description": "Clears the SQL cursor",
+      "description": "Clear an SQL search cursor.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -40038,7 +40180,7 @@
       },
       "path": [],
       "query": [],
-      "specLocation": "sql/clear_cursor/ClearSqlCursorRequest.ts#L22-L34"
+      "specLocation": "sql/clear_cursor/ClearSqlCursorRequest.ts#L22-L35"
     },
     {
       "body": {
@@ -40071,7 +40213,7 @@
       "body": {
         "kind": "no_body"
       },
-      "description": "Deletes an async SQL search or a stored synchronous SQL search. If the search is still running, the API cancels it.",
+      "description": "Delete an async SQL search.\nDelete an async SQL search or a stored synchronous SQL search.\nIf the search is still running, the API cancels it.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -40098,7 +40240,7 @@
         }
       ],
       "query": [],
-      "specLocation": "sql/delete_async/SqlDeleteAsyncRequest.ts#L23-L35"
+      "specLocation": "sql/delete_async/SqlDeleteAsyncRequest.ts#L23-L38"
     },
     {
       "body": {
@@ -40125,7 +40267,7 @@
       "body": {
         "kind": "no_body"
       },
-      "description": "Returns the current status and available results for an async SQL search or stored synchronous SQL search",
+      "description": "Get async SQL search results.\nGet the current status and available results for an async SQL search or stored synchronous SQL search.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -40202,7 +40344,7 @@
           }
         }
       ],
-      "specLocation": "sql/get_async/SqlGetAsyncRequest.ts#L24-L58"
+      "specLocation": "sql/get_async/SqlGetAsyncRequest.ts#L24-L60"
     },
     {
       "body": {
@@ -40302,7 +40444,7 @@
       "body": {
         "kind": "no_body"
       },
-      "description": "Returns the current status of an async SQL search or a stored synchronous SQL search",
+      "description": "Get the async SQL search status.\nGet the current status of an async SQL search or a stored synchronous SQL search.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -40329,7 +40471,7 @@
         }
       ],
       "query": [],
-      "specLocation": "sql/get_async_status/SqlGetAsyncStatusRequest.ts#L23-L35"
+      "specLocation": "sql/get_async_status/SqlGetAsyncStatusRequest.ts#L23-L37"
     },
     {
       "body": {
@@ -40655,7 +40797,7 @@
           }
         ]
       },
-      "description": "Executes a SQL request",
+      "description": "Get SQL search results.\nRun an SQL request.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -40684,7 +40826,7 @@
           }
         }
       ],
-      "specLocation": "sql/query/QuerySqlRequest.ts#L28-L122"
+      "specLocation": "sql/query/QuerySqlRequest.ts#L28-L124"
     },
     {
       "body": {
@@ -40840,7 +40982,7 @@
           }
         ]
       },
-      "description": "Translates SQL into Elasticsearch queries",
+      "description": "Translate SQL into Elasticsearch queries.\nTranslate an SQL search into a search API request containing Query DSL.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -40854,7 +40996,7 @@
       },
       "path": [],
       "query": [],
-      "specLocation": "sql/translate/TranslateSqlRequest.ts#L25-L54"
+      "specLocation": "sql/translate/TranslateSqlRequest.ts#L25-L56"
     },
     {
       "body": {
@@ -40956,7 +41098,7 @@
       "body": {
         "kind": "no_body"
       },
-      "description": "Deletes a synonym set",
+      "description": "Delete a synonym set.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -41010,7 +41152,7 @@
       "body": {
         "kind": "no_body"
       },
-      "description": "Deletes a synonym rule in a synonym set",
+      "description": "Delete a synonym rule.\nDelete a synonym rule from a synonym set.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -41049,7 +41191,7 @@
         }
       ],
       "query": [],
-      "specLocation": "synonyms/delete_synonym_rule/SynonymRuleDeleteRequest.ts#L22-L40"
+      "specLocation": "synonyms/delete_synonym_rule/SynonymRuleDeleteRequest.ts#L22-L41"
     },
     {
       "body": {
@@ -41076,7 +41218,7 @@
       "body": {
         "kind": "no_body"
       },
-      "description": "Retrieves a synonym set",
+      "description": "Get a synonym set.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -41177,7 +41319,7 @@
       "body": {
         "kind": "no_body"
       },
-      "description": "Retrieves a synonym rule from a synonym set",
+      "description": "Get a synonym rule.\nGet a synonym rule from a synonym set.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -41216,7 +41358,7 @@
         }
       ],
       "query": [],
-      "specLocation": "synonyms/get_synonym_rule/SynonymRuleGetRequest.ts#L22-L40"
+      "specLocation": "synonyms/get_synonym_rule/SynonymRuleGetRequest.ts#L22-L41"
     },
     {
       "body": {
@@ -41243,7 +41385,7 @@
       "body": {
         "kind": "no_body"
       },
-      "description": "Retrieves a summary of all defined synonym sets",
+      "description": "Get all synonym sets.\nGet a summary of all defined synonym sets.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -41284,7 +41426,7 @@
           }
         }
       ],
-      "specLocation": "synonyms/get_synonyms_sets/SynonymsSetsGetRequest.ts#L22-L41"
+      "specLocation": "synonyms/get_synonyms_sets/SynonymsSetsGetRequest.ts#L22-L42"
     },
     {
       "body": {
@@ -41360,7 +41502,7 @@
           }
         ]
       },
-      "description": "Creates or updates a synonym set.",
+      "description": "Create or update a synonym set.\nSynonyms sets are limited to a maximum of 10,000 synonym rules per set.\nIf you need to manage more synonym rules, you can create multiple synonym sets.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -41387,7 +41529,7 @@
         }
       ],
       "query": [],
-      "specLocation": "synonyms/put_synonym/SynonymsPutRequest.ts#L23-L42"
+      "specLocation": "synonyms/put_synonym/SynonymsPutRequest.ts#L23-L44"
     },
     {
       "body": {
@@ -41444,7 +41586,7 @@
           }
         ]
       },
-      "description": "Creates or updates a synonym rule in a synonym set",
+      "description": "Create or update a synonym rule.\nCreate or update a synonym rule in a synonym set.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -41483,7 +41625,7 @@
         }
       ],
       "query": [],
-      "specLocation": "synonyms/put_synonym_rule/SynonymRulePutRequest.ts#L23-L47"
+      "specLocation": "synonyms/put_synonym_rule/SynonymRulePutRequest.ts#L23-L48"
     },
     {
       "body": {
@@ -41850,7 +41992,7 @@
           }
         ]
       },
-      "description": "Get term vector information.\nReturns information and statistics about terms in the fields of a particular document.",
+      "description": "Get term vector information.\n\nGet information and statistics about terms in the fields of a particular document.",
       "generics": [
         {
           "name": "TDocument",
@@ -42036,7 +42178,7 @@
           }
         }
       ],
-      "specLocation": "_global/termvectors/TermVectorsRequest.ts#L33-L121"
+      "specLocation": "_global/termvectors/TermVectorsRequest.ts#L33-L122"
     },
     {
       "body": {
@@ -44645,7 +44787,7 @@
         "name": "ImpactArea",
         "namespace": "_global.health_report"
       },
-      "specLocation": "_global/health_report/types.ts#L73-L78"
+      "specLocation": "_global/health_report/types.ts#L74-L79"
     },
     {
       "kind": "enum",
@@ -45399,6 +45541,8 @@
           "aliases": [
             "aggs"
           ],
+          "extDocId": "search-aggregations",
+          "extDocUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/search-aggregations.html",
           "name": "aggregations",
           "required": false,
           "type": {
@@ -45858,7 +46002,7 @@
           }
         }
       ],
-      "specLocation": "_global/msearch/types.ts#L70-L201"
+      "specLocation": "_global/msearch/types.ts#L70-L204"
     },
     {
       "kind": "interface",
@@ -51347,6 +51491,8 @@
       }
     },
     {
+      "extDocId": "collapse-search-results",
+      "extDocUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/collapse-search-results.html",
       "kind": "interface",
       "name": {
         "name": "FieldCollapse",
@@ -51416,7 +51562,7 @@
           }
         }
       ],
-      "specLocation": "_global/search/_types/FieldCollapse.ts#L24-L38"
+      "specLocation": "_global/search/_types/FieldCollapse.ts#L24-L41"
     },
     {
       "description": "A reference to a field with formatting instructions on how to return the value",
@@ -67766,7 +67912,7 @@
         "name": "ResponseItem",
         "namespace": "_global.msearch"
       },
-      "specLocation": "_global/msearch/types.ts#L208-L211",
+      "specLocation": "_global/msearch/types.ts#L211-L214",
       "type": {
         "items": [
           {
@@ -67836,7 +67982,7 @@
           }
         }
       ],
-      "specLocation": "_global/msearch/types.ts#L213-L216"
+      "specLocation": "_global/msearch/types.ts#L216-L219"
     },
     {
       "generics": [
@@ -93120,7 +93266,7 @@
         "name": "EsqlFormat",
         "namespace": "esql.query"
       },
-      "specLocation": "esql/query/QueryRequest.ts#L91-L100"
+      "specLocation": "esql/query/QueryRequest.ts#L93-L102"
     },
     {
       "kind": "type_alias",
@@ -94456,7 +94602,7 @@
         "name": "ConvertType",
         "namespace": "ingest._types"
       },
-      "specLocation": "ingest/_types/Processors.ts#L621-L630"
+      "specLocation": "ingest/_types/Processors.ts#L661-L670"
     },
     {
       "kind": "enum",
@@ -94486,7 +94632,7 @@
         "name": "FingerprintDigest",
         "namespace": "ingest._types"
       },
-      "specLocation": "ingest/_types/Processors.ts#L856-L862"
+      "specLocation": "ingest/_types/Processors.ts#L896-L902"
     },
     {
       "kind": "enum",
@@ -94502,7 +94648,7 @@
         "name": "GeoGridTargetFormat",
         "namespace": "ingest._types"
       },
-      "specLocation": "ingest/_types/Processors.ts#L433-L436"
+      "specLocation": "ingest/_types/Processors.ts#L437-L440"
     },
     {
       "kind": "enum",
@@ -94521,7 +94667,7 @@
         "name": "GeoGridTileType",
         "namespace": "ingest._types"
       },
-      "specLocation": "ingest/_types/Processors.ts#L427-L431"
+      "specLocation": "ingest/_types/Processors.ts#L431-L435"
     },
     {
       "kind": "enum",
@@ -94539,7 +94685,7 @@
         "name": "JsonProcessorConflictStrategy",
         "namespace": "ingest._types"
       },
-      "specLocation": "ingest/_types/Processors.ts#L1111-L1116"
+      "specLocation": "ingest/_types/Processors.ts#L1151-L1156"
     },
     {
       "kind": "enum",
@@ -94555,7 +94701,7 @@
         "name": "ShapeType",
         "namespace": "ingest._types"
       },
-      "specLocation": "ingest/_types/Processors.ts#L1433-L1436"
+      "specLocation": "ingest/_types/Processors.ts#L1473-L1476"
     },
     {
       "kind": "enum",
@@ -94580,7 +94726,7 @@
         "name": "UserAgentProperty",
         "namespace": "ingest._types"
       },
-      "specLocation": "ingest/_types/Processors.ts#L507-L513"
+      "specLocation": "ingest/_types/Processors.ts#L547-L553"
     },
     {
       "kind": "enum",
@@ -94663,7 +94809,7 @@
         "name": "DeprecationLevel",
         "namespace": "migration.deprecations"
       },
-      "specLocation": "migration/deprecations/types.ts#L20-L27"
+      "specLocation": "migration/deprecations/types.ts#L23-L30"
     },
     {
       "kind": "enum",
@@ -102775,6 +102921,22 @@
       "specLocation": "searchable_snapshots/_types/stats.ts#L20-L24"
     },
     {
+      "kind": "enum",
+      "members": [
+        {
+          "name": "rest"
+        },
+        {
+          "name": "cross_cluster"
+        }
+      ],
+      "name": {
+        "name": "ApiKeyType",
+        "namespace": "security._types"
+      },
+      "specLocation": "security/_types/ApiKey.ts#L115-L118"
+    },
+    {
       "isOpen": true,
       "kind": "enum",
       "members": [
@@ -102864,7 +103026,7 @@
         "name": "ClusterPrivilege",
         "namespace": "security._types"
       },
-      "specLocation": "security/_types/Privileges.ts#L42-L195"
+      "specLocation": "security/_types/Privileges.ts#L42-L199"
     },
     {
       "kind": "enum",
@@ -102941,7 +103103,7 @@
         "name": "IndexPrivilege",
         "namespace": "security._types"
       },
-      "specLocation": "security/_types/Privileges.ts#L324-L366"
+      "specLocation": "security/_types/Privileges.ts#L361-L403"
     },
     {
       "codegenNames": [
@@ -102955,7 +103117,7 @@
         "name": "IndicesPrivilegesQuery",
         "namespace": "security._types"
       },
-      "specLocation": "security/_types/Privileges.ts#L279-L287",
+      "specLocation": "security/_types/Privileges.ts#L316-L324",
       "type": {
         "items": [
           {
@@ -103005,7 +103167,7 @@
           }
         }
       ],
-      "specLocation": "security/_types/Privileges.ts#L289-L299"
+      "specLocation": "security/_types/Privileges.ts#L326-L336"
     },
     {
       "kind": "interface",
@@ -103093,7 +103255,7 @@
         }
       ],
       "shortcutProperty": "source",
-      "specLocation": "security/_types/Privileges.ts#L301-L319"
+      "specLocation": "security/_types/Privileges.ts#L338-L356"
     },
     {
       "codegenNames": [
@@ -103105,7 +103267,7 @@
         "name": "RoleTemplateInlineQuery",
         "namespace": "security._types"
       },
-      "specLocation": "security/_types/Privileges.ts#L321-L322",
+      "specLocation": "security/_types/Privileges.ts#L358-L359",
       "type": {
         "items": [
           {
@@ -103125,6 +103287,29 @@
         ],
         "kind": "union_of"
       }
+    },
+    {
+      "kind": "enum",
+      "members": [],
+      "name": {
+        "name": "RemoteClusterPrivilege",
+        "namespace": "security._types"
+      },
+      "specLocation": "security/_types/Privileges.ts#L201-L213"
+    },
+    {
+      "isOpen": true,
+      "kind": "enum",
+      "members": [
+        {
+          "name": "search_application_query"
+        }
+      ],
+      "name": {
+        "name": "RestrictionWorkflow",
+        "namespace": "security._types"
+      },
+      "specLocation": "security/_types/RoleDescriptor.ts#L134-L137"
     },
     {
       "kind": "enum",
@@ -104312,7 +104497,7 @@
         "name": "SqlFormat",
         "namespace": "sql.query"
       },
-      "specLocation": "sql/query/QuerySqlRequest.ts#L124-L132"
+      "specLocation": "sql/query/QuerySqlRequest.ts#L126-L134"
     },
     {
       "kind": "type_alias",
@@ -105288,7 +105473,7 @@
         "name": "ScheduleTimeOfDay",
         "namespace": "watcher._types"
       },
-      "specLocation": "watcher/_types/Schedule.ts#L98-L103",
+      "specLocation": "watcher/_types/Schedule.ts#L99-L104",
       "type": {
         "items": [
           {
@@ -105345,7 +105530,7 @@
           }
         }
       ],
-      "specLocation": "watcher/_types/Schedule.ts#L105-L108"
+      "specLocation": "watcher/_types/Schedule.ts#L106-L109"
     },
     {
       "kind": "enum",
@@ -106798,19 +106983,6 @@
           }
         },
         {
-          "description": "If `true`, the request computes the list of selected nodes from the\nlocal cluster state. If `false` the list of selected nodes are computed\nfrom the cluster state of the master node. In both cases the coordinating\nnode will send requests for further information to each selected node.",
-          "name": "local",
-          "required": false,
-          "serverDefault": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "boolean",
-              "namespace": "_builtins"
-            }
-          }
-        },
-        {
           "description": "Period to wait for a connection to the master node.",
           "name": "master_timeout",
           "required": false,
@@ -106849,7 +107021,7 @@
           }
         }
       ],
-      "specLocation": "_spec_utils/behaviors.ts#L86-L132"
+      "specLocation": "_spec_utils/behaviors.ts#L86-L124"
     },
     {
       "kind": "interface",
@@ -113822,26 +113994,50 @@
           "description": "The maximum number of fields in an index. Field and object mappings, as well as field aliases count towards this limit.\nThe limit is in place to prevent mappings and searches from becoming too large. Higher values can lead to performance\ndegradations and memory issues, especially in clusters with a high load or few resources.",
           "name": "limit",
           "required": false,
-          "serverDefault": 1000,
+          "serverDefault": "1000",
           "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "long",
-              "namespace": "_types"
-            }
+            "items": [
+              {
+                "kind": "instance_of",
+                "type": {
+                  "name": "long",
+                  "namespace": "_types"
+                }
+              },
+              {
+                "kind": "instance_of",
+                "type": {
+                  "name": "string",
+                  "namespace": "_builtins"
+                }
+              }
+            ],
+            "kind": "union_of"
           }
         },
         {
           "description": "This setting determines what happens when a dynamically mapped field would exceed the total fields limit. When set\nto false (the default), the index request of the document that tries to add a dynamic field to the mapping will fail\nwith the message Limit of total fields [X] has been exceeded. When set to true, the index request will not fail.\nInstead, fields that would exceed the limit are not added to the mapping, similar to dynamic: false.\nThe fields that were not added to the mapping will be added to the _ignored field.",
           "name": "ignore_dynamic_beyond_limit",
           "required": false,
-          "serverDefault": false,
+          "serverDefault": "false",
           "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "boolean",
-              "namespace": "_builtins"
-            }
+            "items": [
+              {
+                "kind": "instance_of",
+                "type": {
+                  "name": "boolean",
+                  "namespace": "_builtins"
+                }
+              },
+              {
+                "kind": "instance_of",
+                "type": {
+                  "name": "string",
+                  "namespace": "_builtins"
+                }
+              }
+            ],
+            "kind": "union_of"
           }
         }
       ],
@@ -119123,9 +119319,45 @@
               "namespace": "indices._types"
             }
           }
+        },
+        {
+          "availability": {
+            "serverless": {},
+            "stack": {
+              "since": "8.12.0"
+            }
+          },
+          "description": "Marks this index template as deprecated.\nWhen creating or updating a non-deprecated index template that uses deprecated components,\nElasticsearch will emit a deprecation warning.",
+          "name": "deprecated",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "_builtins"
+            }
+          }
+        },
+        {
+          "availability": {
+            "serverless": {},
+            "stack": {
+              "since": "8.7.0"
+            }
+          },
+          "description": "A list of component template names that are allowed to be absent.",
+          "name": "ignore_missing_component_templates",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Names",
+              "namespace": "_types"
+            }
+          }
         }
       ],
-      "specLocation": "indices/_types/IndexTemplate.ts#L28-L67"
+      "specLocation": "indices/_types/IndexTemplate.ts#L28-L81"
     },
     {
       "kind": "interface",
@@ -119202,7 +119434,7 @@
           }
         }
       ],
-      "specLocation": "indices/_types/IndexTemplate.ts#L82-L104"
+      "specLocation": "indices/_types/IndexTemplate.ts#L96-L118"
     },
     {
       "kind": "interface",
@@ -119238,7 +119470,7 @@
           }
         }
       ],
-      "specLocation": "indices/_types/IndexTemplate.ts#L69-L80"
+      "specLocation": "indices/_types/IndexTemplate.ts#L83-L94"
     },
     {
       "kind": "interface",
@@ -121040,6 +121272,18 @@
           }
         },
         {
+          "description": "Currently an undocumented alias for GeoIP Processor.",
+          "name": "ip_location",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "IpLocationProcessor",
+              "namespace": "ingest._types"
+            }
+          }
+        },
+        {
           "description": "Converts geo-grid definitions of grid tiles or cells to regular bounding boxes or polygons which describe their shape.\nThis is useful if there is a need to interact with the tile shapes as spatially indexable fields.",
           "docId": "geo-grid-processor",
           "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/ingest-geo-grid-processor.html",
@@ -121430,7 +121674,7 @@
           }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L27-L297",
+      "specLocation": "ingest/_types/Processors.ts#L27-L301",
       "variants": {
         "kind": "container",
         "nonExhaustive": true
@@ -121494,7 +121738,7 @@
           }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L324-L339"
+      "specLocation": "ingest/_types/Processors.ts#L328-L343"
     },
     {
       "kind": "interface",
@@ -121567,7 +121811,7 @@
           }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L299-L322"
+      "specLocation": "ingest/_types/Processors.ts#L303-L326"
     },
     {
       "inherits": {
@@ -121687,7 +121931,7 @@
           }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L341-L382"
+      "specLocation": "ingest/_types/Processors.ts#L345-L386"
     },
     {
       "inherits": {
@@ -121741,7 +121985,7 @@
           }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L515-L531"
+      "specLocation": "ingest/_types/Processors.ts#L555-L571"
     },
     {
       "inherits": {
@@ -121818,7 +122062,7 @@
           }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L533-L556"
+      "specLocation": "ingest/_types/Processors.ts#L573-L596"
     },
     {
       "inherits": {
@@ -121977,7 +122221,7 @@
           }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L558-L619"
+      "specLocation": "ingest/_types/Processors.ts#L598-L659"
     },
     {
       "inherits": {
@@ -122043,7 +122287,7 @@
           }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L632-L652"
+      "specLocation": "ingest/_types/Processors.ts#L672-L692"
     },
     {
       "inherits": {
@@ -122141,7 +122385,7 @@
           }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L654-L687"
+      "specLocation": "ingest/_types/Processors.ts#L694-L727"
     },
     {
       "inherits": {
@@ -122236,7 +122480,7 @@
           }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L729-L762"
+      "specLocation": "ingest/_types/Processors.ts#L769-L802"
     },
     {
       "inherits": {
@@ -122342,7 +122586,7 @@
           }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L689-L727"
+      "specLocation": "ingest/_types/Processors.ts#L729-L767"
     },
     {
       "inherits": {
@@ -122408,7 +122652,7 @@
           }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L764-L783"
+      "specLocation": "ingest/_types/Processors.ts#L804-L823"
     },
     {
       "inherits": {
@@ -122461,7 +122705,7 @@
           }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L785-L803"
+      "specLocation": "ingest/_types/Processors.ts#L825-L843"
     },
     {
       "inherits": {
@@ -122476,7 +122720,7 @@
         "namespace": "ingest._types"
       },
       "properties": [],
-      "specLocation": "ingest/_types/Processors.ts#L805-L805"
+      "specLocation": "ingest/_types/Processors.ts#L845-L845"
     },
     {
       "inherits": {
@@ -122580,7 +122824,7 @@
           }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L807-L846"
+      "specLocation": "ingest/_types/Processors.ts#L847-L886"
     },
     {
       "inherits": {
@@ -122608,7 +122852,7 @@
           }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L848-L854"
+      "specLocation": "ingest/_types/Processors.ts#L888-L894"
     },
     {
       "inherits": {
@@ -122687,7 +122931,7 @@
           }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L864-L892"
+      "specLocation": "ingest/_types/Processors.ts#L904-L932"
     },
     {
       "inherits": {
@@ -122740,7 +122984,114 @@
           }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L894-L908"
+      "specLocation": "ingest/_types/Processors.ts#L934-L948"
+    },
+    {
+      "inherits": {
+        "type": {
+          "name": "ProcessorBase",
+          "namespace": "ingest._types"
+        }
+      },
+      "kind": "interface",
+      "name": {
+        "name": "IpLocationProcessor",
+        "namespace": "ingest._types"
+      },
+      "properties": [
+        {
+          "description": "The database filename referring to a database the module ships with (GeoLite2-City.mmdb, GeoLite2-Country.mmdb, or GeoLite2-ASN.mmdb) or a custom database in the ingest-geoip config directory.",
+          "name": "database_file",
+          "required": false,
+          "serverDefault": "GeoLite2-City.mmdb",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "_builtins"
+            }
+          }
+        },
+        {
+          "description": "The field to get the ip address from for the geographical lookup.",
+          "name": "field",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Field",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "If `true`, only the first found IP location data will be returned, even if the field contains an array.",
+          "name": "first_only",
+          "required": false,
+          "serverDefault": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "_builtins"
+            }
+          }
+        },
+        {
+          "description": "If `true` and `field` does not exist, the processor quietly exits without modifying the document.",
+          "name": "ignore_missing",
+          "required": false,
+          "serverDefault": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "_builtins"
+            }
+          }
+        },
+        {
+          "description": "Controls what properties are added to the `target_field` based on the IP location lookup.",
+          "name": "properties",
+          "required": false,
+          "type": {
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "_builtins"
+              }
+            }
+          }
+        },
+        {
+          "description": "The field that will hold the geographical information looked up from the MaxMind database.",
+          "name": "target_field",
+          "required": false,
+          "serverDefault": "geoip",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Field",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "If `true` (and if `ingest.geoip.downloader.eager.download` is `false`), the missing database is downloaded when the pipeline is created.\nElse, the download is triggered by when the pipeline is used as the `default_pipeline` or `final_pipeline` in an index.",
+          "name": "download_database_on_pipeline_creation",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "_builtins"
+            }
+          }
+        }
+      ],
+      "specLocation": "ingest/_types/Processors.ts#L478-L512"
     },
     {
       "inherits": {
@@ -122867,7 +123218,7 @@
           }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L384-L425"
+      "specLocation": "ingest/_types/Processors.ts#L388-L429"
     },
     {
       "inherits": {
@@ -122974,7 +123325,7 @@
           }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L438-L472"
+      "specLocation": "ingest/_types/Processors.ts#L442-L476"
     },
     {
       "inherits": {
@@ -123079,7 +123430,7 @@
           }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L910-L941"
+      "specLocation": "ingest/_types/Processors.ts#L950-L981"
     },
     {
       "inherits": {
@@ -123157,7 +123508,7 @@
           }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L943-L967"
+      "specLocation": "ingest/_types/Processors.ts#L983-L1007"
     },
     {
       "inherits": {
@@ -123211,7 +123562,7 @@
           }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L969-L985"
+      "specLocation": "ingest/_types/Processors.ts#L1009-L1025"
     },
     {
       "inherits": {
@@ -123283,7 +123634,7 @@
           }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L987-L1006"
+      "specLocation": "ingest/_types/Processors.ts#L1027-L1046"
     },
     {
       "kind": "interface",
@@ -123317,7 +123668,7 @@
           }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L1008-L1020",
+      "specLocation": "ingest/_types/Processors.ts#L1048-L1060",
       "variants": {
         "kind": "container"
       }
@@ -123356,7 +123707,7 @@
           }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L1022-L1033"
+      "specLocation": "ingest/_types/Processors.ts#L1062-L1073"
     },
     {
       "kind": "interface",
@@ -123430,7 +123781,7 @@
           }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L1035-L1061"
+      "specLocation": "ingest/_types/Processors.ts#L1075-L1101"
     },
     {
       "inherits": {
@@ -123483,7 +123834,7 @@
           }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L1063-L1078"
+      "specLocation": "ingest/_types/Processors.ts#L1103-L1118"
     },
     {
       "inherits": {
@@ -123562,7 +123913,7 @@
           }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L1080-L1109"
+      "specLocation": "ingest/_types/Processors.ts#L1120-L1149"
     },
     {
       "inherits": {
@@ -123719,7 +124070,7 @@
           }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L1118-L1170"
+      "specLocation": "ingest/_types/Processors.ts#L1158-L1210"
     },
     {
       "inherits": {
@@ -123773,7 +124124,7 @@
           }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L1172-L1188"
+      "specLocation": "ingest/_types/Processors.ts#L1212-L1228"
     },
     {
       "inherits": {
@@ -123868,7 +124219,7 @@
           }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L1190-L1224"
+      "specLocation": "ingest/_types/Processors.ts#L1230-L1264"
     },
     {
       "inherits": {
@@ -123909,7 +124260,7 @@
           }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L1226-L1237"
+      "specLocation": "ingest/_types/Processors.ts#L1266-L1277"
     },
     {
       "inherits": {
@@ -124045,7 +124396,7 @@
           }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L1239-L1280"
+      "specLocation": "ingest/_types/Processors.ts#L1279-L1320"
     },
     {
       "inherits": {
@@ -124098,7 +124449,7 @@
           }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L1282-L1298"
+      "specLocation": "ingest/_types/Processors.ts#L1322-L1338"
     },
     {
       "inherits": {
@@ -124151,7 +124502,7 @@
           }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L1300-L1314"
+      "specLocation": "ingest/_types/Processors.ts#L1340-L1354"
     },
     {
       "inherits": {
@@ -124204,7 +124555,7 @@
           }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L1316-L1332"
+      "specLocation": "ingest/_types/Processors.ts#L1356-L1372"
     },
     {
       "inherits": {
@@ -124286,7 +124637,7 @@
           }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L1334-L1362"
+      "specLocation": "ingest/_types/Processors.ts#L1374-L1402"
     },
     {
       "inherits": {
@@ -124358,7 +124709,7 @@
           }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L1364-L1384"
+      "specLocation": "ingest/_types/Processors.ts#L1404-L1424"
     },
     {
       "inherits": {
@@ -124444,7 +124795,7 @@
           }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L1386-L1420"
+      "specLocation": "ingest/_types/Processors.ts#L1426-L1460"
     },
     {
       "inherits": {
@@ -124487,7 +124838,7 @@
           }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L1422-L1431"
+      "specLocation": "ingest/_types/Processors.ts#L1462-L1471"
     },
     {
       "inherits": {
@@ -124540,7 +124891,7 @@
           }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L1438-L1454"
+      "specLocation": "ingest/_types/Processors.ts#L1478-L1494"
     },
     {
       "inherits": {
@@ -124619,7 +124970,7 @@
           }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L1456-L1481"
+      "specLocation": "ingest/_types/Processors.ts#L1496-L1521"
     },
     {
       "inherits": {
@@ -124634,7 +124985,7 @@
         "namespace": "ingest._types"
       },
       "properties": [],
-      "specLocation": "ingest/_types/Processors.ts#L1483-L1483"
+      "specLocation": "ingest/_types/Processors.ts#L1523-L1523"
     },
     {
       "inherits": {
@@ -124688,7 +125039,7 @@
           }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L1485-L1501"
+      "specLocation": "ingest/_types/Processors.ts#L1525-L1541"
     },
     {
       "inherits": {
@@ -124742,7 +125093,7 @@
           }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L1503-L1519"
+      "specLocation": "ingest/_types/Processors.ts#L1543-L1559"
     },
     {
       "inherits": {
@@ -124796,7 +125147,7 @@
           }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L1521-L1537"
+      "specLocation": "ingest/_types/Processors.ts#L1561-L1577"
     },
     {
       "inherits": {
@@ -124876,7 +125227,7 @@
           }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L1539-L1565"
+      "specLocation": "ingest/_types/Processors.ts#L1579-L1605"
     },
     {
       "inherits": {
@@ -124989,7 +125340,7 @@
           }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L474-L505"
+      "specLocation": "ingest/_types/Processors.ts#L514-L545"
     },
     {
       "kind": "interface",
@@ -135584,7 +135935,7 @@
         "namespace": "_spec_utils"
       },
       "properties": [],
-      "specLocation": "_spec_utils/behaviors.ts#L134-L140"
+      "specLocation": "_spec_utils/behaviors.ts#L126-L132"
     },
     {
       "attachedBehaviors": [
@@ -136635,7 +136986,7 @@
           }
         }
       ],
-      "specLocation": "_global/msearch/types.ts#L203-L206"
+      "specLocation": "_global/msearch/types.ts#L206-L209"
     },
     {
       "kind": "interface",
@@ -137438,8 +137789,31 @@
           }
         },
         {
-          "description": "A map of criteria type to the number of rules of that type",
+          "description": "A map of criteria type (e.g. exact) to the number of rules of that type",
           "name": "rule_criteria_types_counts",
+          "required": true,
+          "type": {
+            "key": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "_builtins"
+              }
+            },
+            "kind": "dictionary_of",
+            "singleKey": false,
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "integer",
+                "namespace": "_types"
+              }
+            }
+          }
+        },
+        {
+          "description": "A map of rule type (e.g. pinned) to the number of rules of that type",
+          "name": "rule_type_counts",
           "required": true,
           "type": {
             "key": {
@@ -137461,7 +137835,41 @@
           }
         }
       ],
-      "specLocation": "query_rules/list_rulesets/types.ts#L23-L37"
+      "specLocation": "query_rules/list_rulesets/types.ts#L23-L42"
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "QueryRulesetMatchedRule",
+        "namespace": "query_rules.test"
+      },
+      "properties": [
+        {
+          "description": "Ruleset unique identifier",
+          "name": "ruleset_id",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Id",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "Rule unique identifier within that ruleset",
+          "name": "rule_id",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Id",
+              "namespace": "_types"
+            }
+          }
+        }
+      ],
+      "specLocation": "query_rules/test/QueryRulesetTestResponse.ts#L30-L39"
     },
     {
       "kind": "interface",
@@ -138427,9 +138835,33 @@
               "namespace": "_types"
             }
           }
+        },
+        {
+          "description": "A retriever that reranks the top documents based on a reranking model using the InferenceAPI",
+          "name": "text_similarity_reranker",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "TextSimilarityReranker",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "A retriever that replaces the functionality of a rule query.",
+          "name": "rule",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "RuleRetriever",
+              "namespace": "_types"
+            }
+          }
         }
       ],
-      "specLocation": "_types/Retriever.ts#L26-L36",
+      "specLocation": "_types/Retriever.ts#L28-L42",
       "variants": {
         "kind": "container"
       }
@@ -138496,18 +138928,6 @@
           }
         },
         {
-          "description": "Minimum _score for matching documents. Documents with a lower _score are not included in the top documents.",
-          "name": "min_score",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "float",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
           "description": "Collapses the top documents by a specified key into a single top document per key.",
           "name": "collapse",
           "required": false,
@@ -138520,7 +138940,7 @@
           }
         }
       ],
-      "specLocation": "_types/Retriever.ts#L43-L56"
+      "specLocation": "_types/Retriever.ts#L51-L62"
     },
     {
       "kind": "interface",
@@ -138555,9 +138975,21 @@
             ],
             "kind": "union_of"
           }
+        },
+        {
+          "description": "Minimum _score for matching documents. Documents with a lower _score are not included in the top documents.",
+          "name": "min_score",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "float",
+              "namespace": "_types"
+            }
+          }
         }
       ],
-      "specLocation": "_types/Retriever.ts#L38-L41"
+      "specLocation": "_types/Retriever.ts#L44-L49"
     },
     {
       "inherits": {
@@ -138645,7 +139077,7 @@
           }
         }
       ],
-      "specLocation": "_types/Retriever.ts#L58-L71"
+      "specLocation": "_types/Retriever.ts#L64-L77"
     },
     {
       "inherits": {
@@ -138700,7 +139132,146 @@
           }
         }
       ],
-      "specLocation": "_types/Retriever.ts#L73-L80"
+      "specLocation": "_types/Retriever.ts#L79-L86"
+    },
+    {
+      "inherits": {
+        "type": {
+          "name": "RetrieverBase",
+          "namespace": "_types"
+        }
+      },
+      "kind": "interface",
+      "name": {
+        "name": "TextSimilarityReranker",
+        "namespace": "_types"
+      },
+      "properties": [
+        {
+          "description": "The nested retriever which will produce the first-level results, that will later be used for reranking.",
+          "name": "retriever",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "RetrieverContainer",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "This value determines how many documents we will consider from the nested retriever.",
+          "name": "rank_window_size",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "Unique identifier of the inference endpoint created using the inference API.",
+          "name": "inference_id",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "_builtins"
+            }
+          }
+        },
+        {
+          "description": "The text snippet used as the basis for similarity comparison",
+          "name": "inference_text",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "_builtins"
+            }
+          }
+        },
+        {
+          "description": "The document field to be used for text similarity comparisons. This field should contain the text that will be evaluated against the inference_text",
+          "name": "field",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "_builtins"
+            }
+          }
+        }
+      ],
+      "specLocation": "_types/Retriever.ts#L88-L99"
+    },
+    {
+      "inherits": {
+        "type": {
+          "name": "RetrieverBase",
+          "namespace": "_types"
+        }
+      },
+      "kind": "interface",
+      "name": {
+        "name": "RuleRetriever",
+        "namespace": "_types"
+      },
+      "properties": [
+        {
+          "description": "The ruleset IDs containing the rules this retriever is evaluating against.",
+          "name": "ruleset_ids",
+          "required": true,
+          "type": {
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "Id",
+                "namespace": "_types"
+              }
+            }
+          }
+        },
+        {
+          "description": "The match criteria that will determine if a rule in the provided rulesets should be applied.",
+          "name": "match_criteria",
+          "required": true,
+          "type": {
+            "kind": "user_defined_value"
+          }
+        },
+        {
+          "description": "The retriever whose results rules should be applied to.",
+          "name": "retriever",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "RetrieverContainer",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "This value determines the size of the individual result set.",
+          "name": "rank_window_size",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "_types"
+            }
+          }
+        }
+      ],
+      "specLocation": "_types/Retriever.ts#L101-L110"
     },
     {
       "inherits": {
@@ -138896,36 +139467,11 @@
     {
       "kind": "interface",
       "name": {
-        "name": "ApiKey",
-        "namespace": "security._types"
+        "name": "AuthenticateApiKey",
+        "namespace": "security.authenticate"
       },
       "properties": [
         {
-          "description": "Creation time for the API key in milliseconds.",
-          "name": "creation",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "long",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "description": "Expiration time for the API key in milliseconds.",
-          "name": "expiration",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "long",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "description": "Id for the API key",
           "name": "id",
           "required": true,
           "type": {
@@ -138937,19 +139483,27 @@
           }
         },
         {
-          "description": "Invalidation status for the API key.\nIf the key has been invalidated, it has a value of `true`. Otherwise, it is `false`.",
-          "name": "invalidated",
+          "name": "name",
           "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "boolean",
-              "namespace": "_builtins"
+              "name": "Name",
+              "namespace": "_types"
             }
           }
-        },
+        }
+      ],
+      "specLocation": "security/authenticate/SecurityAuthenticateResponse.ts#L44-L47"
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "RealmInfo",
+        "namespace": "security._types"
+      },
+      "properties": [
         {
-          "description": "Name of the API key.",
           "name": "name",
           "required": true,
           "type": {
@@ -138961,151 +139515,56 @@
           }
         },
         {
-          "description": "Realm name of the principal for which this API key was created.",
-          "name": "realm",
-          "required": false,
+          "name": "type",
+          "required": true,
           "type": {
             "kind": "instance_of",
             "type": {
               "name": "string",
               "namespace": "_builtins"
-            }
-          }
-        },
-        {
-          "availability": {
-            "serverless": {},
-            "stack": {
-              "since": "8.14.0"
-            }
-          },
-          "description": "Realm type of the principal for which this API key was created",
-          "name": "realm_type",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "_builtins"
-            }
-          }
-        },
-        {
-          "description": "Principal for which this API key was created",
-          "name": "username",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "Username",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "availability": {
-            "serverless": {},
-            "stack": {
-              "since": "8.14.0"
-            }
-          },
-          "description": "The profile uid for the API key owner principal, if requested and if it exists",
-          "name": "profile_uid",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "_builtins"
-            }
-          }
-        },
-        {
-          "availability": {
-            "serverless": {},
-            "stack": {
-              "since": "7.13.0"
-            }
-          },
-          "description": "Metadata of the API key",
-          "name": "metadata",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "Metadata",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "description": "The role descriptors assigned to this API key when it was created or last updated.\nAn empty role descriptor means the API key inherits the owner user’s permissions.",
-          "name": "role_descriptors",
-          "required": false,
-          "type": {
-            "key": {
-              "kind": "instance_of",
-              "type": {
-                "name": "string",
-                "namespace": "_builtins"
-              }
-            },
-            "kind": "dictionary_of",
-            "singleKey": false,
-            "value": {
-              "kind": "instance_of",
-              "type": {
-                "name": "RoleDescriptor",
-                "namespace": "security._types"
-              }
-            }
-          }
-        },
-        {
-          "availability": {
-            "serverless": {},
-            "stack": {
-              "since": "8.5.0"
-            }
-          },
-          "description": "The owner user’s permissions associated with the API key.\nIt is a point-in-time snapshot captured at creation and subsequent updates.\nAn API key’s effective permissions are an intersection of its assigned privileges and the owner user’s permissions.",
-          "name": "limited_by",
-          "required": false,
-          "type": {
-            "kind": "array_of",
-            "value": {
-              "key": {
-                "kind": "instance_of",
-                "type": {
-                  "name": "string",
-                  "namespace": "_builtins"
-                }
-              },
-              "kind": "dictionary_of",
-              "singleKey": false,
-              "value": {
-                "kind": "instance_of",
-                "type": {
-                  "name": "RoleDescriptor",
-                  "namespace": "security._types"
-                }
-              }
-            }
-          }
-        },
-        {
-          "name": "_sort",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "SortResults",
-              "namespace": "_types"
             }
           }
         }
       ],
-      "specLocation": "security/_types/ApiKey.ts#L26-L88"
+      "specLocation": "security/_types/RealmInfo.ts#L22-L25"
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "Token",
+        "namespace": "security.authenticate"
+      },
+      "properties": [
+        {
+          "name": "name",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Name",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "availability": {
+            "serverless": {},
+            "stack": {
+              "since": "7.14.0"
+            }
+          },
+          "name": "type",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "_builtins"
+            }
+          }
+        }
+      ],
+      "specLocation": "security/authenticate/types.ts#L22-L29"
     },
     {
       "kind": "interface",
@@ -139204,6 +139663,18 @@
           }
         },
         {
+          "description": "Restriction for when the role descriptor is allowed to be effective.",
+          "name": "restriction",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Restriction",
+              "namespace": "security._types"
+            }
+          }
+        },
+        {
           "name": "transient_metadata",
           "required": false,
           "type": {
@@ -139222,7 +139693,7 @@
           }
         }
       ],
-      "specLocation": "security/_types/RoleDescriptor.ts#L31-L64"
+      "specLocation": "security/_types/RoleDescriptor.ts#L33-L80"
     },
     {
       "kind": "interface",
@@ -139250,14 +139721,26 @@
           "name": "names",
           "required": true,
           "type": {
-            "kind": "array_of",
-            "value": {
-              "kind": "instance_of",
-              "type": {
-                "name": "IndexName",
-                "namespace": "_types"
+            "items": [
+              {
+                "kind": "instance_of",
+                "type": {
+                  "name": "IndexName",
+                  "namespace": "_types"
+                }
+              },
+              {
+                "kind": "array_of",
+                "value": {
+                  "kind": "instance_of",
+                  "type": {
+                    "name": "IndexName",
+                    "namespace": "_types"
+                  }
+                }
               }
-            }
+            ],
+            "kind": "union_of"
           }
         },
         {
@@ -139288,7 +139771,7 @@
           }
         }
       ],
-      "specLocation": "security/_types/Privileges.ts#L198-L222"
+      "specLocation": "security/_types/Privileges.ts#L216-L242"
     },
     {
       "kind": "interface",
@@ -139377,43 +139860,48 @@
     {
       "kind": "interface",
       "name": {
-        "name": "RealmInfo",
+        "name": "Restriction",
         "namespace": "security._types"
       },
       "properties": [
         {
-          "name": "name",
+          "name": "workflows",
+          "required": true,
+          "type": {
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "RestrictionWorkflow",
+                "namespace": "security._types"
+              }
+            }
+          }
+        }
+      ],
+      "specLocation": "security/_types/RoleDescriptor.ts#L130-L132"
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "ApiKey",
+        "namespace": "security._types"
+      },
+      "properties": [
+        {
+          "description": "Id for the API key",
+          "name": "id",
           "required": true,
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "Name",
+              "name": "Id",
               "namespace": "_types"
             }
           }
         },
         {
-          "name": "type",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "_builtins"
-            }
-          }
-        }
-      ],
-      "specLocation": "security/_types/RealmInfo.ts#L22-L25"
-    },
-    {
-      "kind": "interface",
-      "name": {
-        "name": "Token",
-        "namespace": "security.authenticate"
-      },
-      "properties": [
-        {
+          "description": "Name of the API key.",
           "name": "name",
           "required": true,
           "type": {
@@ -139428,10 +139916,134 @@
           "availability": {
             "serverless": {},
             "stack": {
-              "since": "7.14.0"
+              "since": "8.10.0"
             }
           },
+          "description": "The type of the API key (e.g. `rest` or `cross_cluster`).",
           "name": "type",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "ApiKeyType",
+              "namespace": "security._types"
+            }
+          }
+        },
+        {
+          "description": "Creation time for the API key in milliseconds.",
+          "name": "creation",
+          "required": true,
+          "type": {
+            "generics": [
+              {
+                "kind": "instance_of",
+                "type": {
+                  "name": "UnitMillis",
+                  "namespace": "_types"
+                }
+              }
+            ],
+            "kind": "instance_of",
+            "type": {
+              "name": "EpochTime",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "Expiration time for the API key in milliseconds.",
+          "name": "expiration",
+          "required": false,
+          "type": {
+            "generics": [
+              {
+                "kind": "instance_of",
+                "type": {
+                  "name": "UnitMillis",
+                  "namespace": "_types"
+                }
+              }
+            ],
+            "kind": "instance_of",
+            "type": {
+              "name": "EpochTime",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "Invalidation status for the API key.\nIf the key has been invalidated, it has a value of `true`. Otherwise, it is `false`.",
+          "name": "invalidated",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "_builtins"
+            }
+          }
+        },
+        {
+          "availability": {
+            "serverless": {},
+            "stack": {
+              "since": "8.12.0"
+            }
+          },
+          "description": "If the key has been invalidated, invalidation time in milliseconds.",
+          "name": "invalidation",
+          "required": false,
+          "type": {
+            "generics": [
+              {
+                "kind": "instance_of",
+                "type": {
+                  "name": "UnitMillis",
+                  "namespace": "_types"
+                }
+              }
+            ],
+            "kind": "instance_of",
+            "type": {
+              "name": "EpochTime",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "Principal for which this API key was created",
+          "name": "username",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Username",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "Realm name of the principal for which this API key was created.",
+          "name": "realm",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "_builtins"
+            }
+          }
+        },
+        {
+          "availability": {
+            "serverless": {},
+            "stack": {
+              "since": "8.14.0"
+            }
+          },
+          "description": "Realm type of the principal for which this API key was created",
+          "name": "realm_type",
           "required": false,
           "type": {
             "kind": "instance_of",
@@ -139440,9 +140052,283 @@
               "namespace": "_builtins"
             }
           }
+        },
+        {
+          "availability": {
+            "serverless": {},
+            "stack": {
+              "since": "7.13.0"
+            }
+          },
+          "description": "Metadata of the API key",
+          "name": "metadata",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Metadata",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "The role descriptors assigned to this API key when it was created or last updated.\nAn empty role descriptor means the API key inherits the owner user’s permissions.",
+          "name": "role_descriptors",
+          "required": false,
+          "type": {
+            "key": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "_builtins"
+              }
+            },
+            "kind": "dictionary_of",
+            "singleKey": false,
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "RoleDescriptor",
+                "namespace": "security._types"
+              }
+            }
+          }
+        },
+        {
+          "availability": {
+            "serverless": {},
+            "stack": {
+              "since": "8.5.0"
+            }
+          },
+          "description": "The owner user’s permissions associated with the API key.\nIt is a point-in-time snapshot captured at creation and subsequent updates.\nAn API key’s effective permissions are an intersection of its assigned privileges and the owner user’s permissions.",
+          "name": "limited_by",
+          "required": false,
+          "type": {
+            "kind": "array_of",
+            "value": {
+              "key": {
+                "kind": "instance_of",
+                "type": {
+                  "name": "string",
+                  "namespace": "_builtins"
+                }
+              },
+              "kind": "dictionary_of",
+              "singleKey": false,
+              "value": {
+                "kind": "instance_of",
+                "type": {
+                  "name": "RoleDescriptor",
+                  "namespace": "security._types"
+                }
+              }
+            }
+          }
+        },
+        {
+          "availability": {
+            "serverless": {},
+            "stack": {
+              "since": "8.10.0"
+            }
+          },
+          "description": "The access granted to cross-cluster API keys.\nThe access is composed of permissions for cross cluster search and cross cluster replication.\nAt least one of them must be specified.\nWhen specified, the new access assignment fully replaces the previously assigned access.",
+          "name": "access",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Access",
+              "namespace": "security._types"
+            }
+          }
+        },
+        {
+          "availability": {
+            "serverless": {},
+            "stack": {
+              "since": "8.14.0"
+            }
+          },
+          "description": "The profile uid for the API key owner principal, if requested and if it exists",
+          "name": "profile_uid",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "_builtins"
+            }
+          }
+        },
+        {
+          "description": "Sorting values when using the `sort` parameter with the `security.query_api_keys` API.",
+          "name": "_sort",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "SortResults",
+              "namespace": "_types"
+            }
+          }
         }
       ],
-      "specLocation": "security/authenticate/types.ts#L22-L29"
+      "specLocation": "security/_types/ApiKey.ts#L27-L113"
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "Access",
+        "namespace": "security._types"
+      },
+      "properties": [
+        {
+          "description": "A list of indices permission entries for cross-cluster replication.",
+          "name": "replication",
+          "required": false,
+          "type": {
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "ReplicationAccess",
+                "namespace": "security._types"
+              }
+            }
+          }
+        },
+        {
+          "description": "A list of indices permission entries for cross-cluster search.",
+          "name": "search",
+          "required": false,
+          "type": {
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "SearchAccess",
+                "namespace": "security._types"
+              }
+            }
+          }
+        }
+      ],
+      "specLocation": "security/_types/Access.ts#L22-L31"
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "ReplicationAccess",
+        "namespace": "security._types"
+      },
+      "properties": [
+        {
+          "description": "A list of indices (or index name patterns) to which the permissions in this entry apply.",
+          "name": "names",
+          "required": true,
+          "type": {
+            "items": [
+              {
+                "kind": "instance_of",
+                "type": {
+                  "name": "IndexName",
+                  "namespace": "_types"
+                }
+              },
+              {
+                "kind": "array_of",
+                "value": {
+                  "kind": "instance_of",
+                  "type": {
+                    "name": "IndexName",
+                    "namespace": "_types"
+                  }
+                }
+              }
+            ],
+            "kind": "union_of"
+          }
+        },
+        {
+          "description": "This needs to be set to true if the patterns in the names field should cover system indices.",
+          "name": "allow_restricted_indices",
+          "required": false,
+          "serverDefault": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "_builtins"
+            }
+          }
+        }
+      ],
+      "specLocation": "security/_types/Privileges.ts#L417-L427"
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "SearchAccess",
+        "namespace": "security._types"
+      },
+      "properties": [
+        {
+          "description": "The document fields that the owners of the role have read access to.",
+          "docId": "field-and-document-access-control",
+          "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/field-and-document-access-control.html",
+          "name": "field_security",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "FieldSecurity",
+              "namespace": "security._types"
+            }
+          }
+        },
+        {
+          "description": "A list of indices (or index name patterns) to which the permissions in this entry apply.",
+          "name": "names",
+          "required": true,
+          "type": {
+            "items": [
+              {
+                "kind": "instance_of",
+                "type": {
+                  "name": "IndexName",
+                  "namespace": "_types"
+                }
+              },
+              {
+                "kind": "array_of",
+                "value": {
+                  "kind": "instance_of",
+                  "type": {
+                    "name": "IndexName",
+                    "namespace": "_types"
+                  }
+                }
+              }
+            ],
+            "kind": "union_of"
+          }
+        },
+        {
+          "description": "A search query that defines the documents the owners of the role have access to. A document within the specified indices must match this query for it to be accessible by the owners of the role.",
+          "name": "query",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "IndicesPrivilegesQuery",
+              "namespace": "security._types"
+            }
+          }
+        }
+      ],
+      "specLocation": "security/_types/Privileges.ts#L429-L449"
     },
     {
       "kind": "interface",
@@ -139459,8 +140345,8 @@
             "value": {
               "kind": "instance_of",
               "type": {
-                "name": "string",
-                "namespace": "_builtins"
+                "name": "ClusterPrivilege",
+                "namespace": "security._types"
               }
             }
           }
@@ -139604,7 +140490,7 @@
           }
         }
       ],
-      "specLocation": "security/get_role/types.ts#L29-L42"
+      "specLocation": "security/get_role/types.ts#L32-L53"
     },
     {
       "kind": "interface",

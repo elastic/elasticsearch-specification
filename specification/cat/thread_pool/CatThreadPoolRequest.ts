@@ -22,7 +22,8 @@ import { Names } from '@_types/common'
 import { TimeUnit } from '@_types/Time'
 
 /**
- * Returns thread pool statistics for each node in a cluster.
+ * Get thread pool statistics.
+ * Get thread pool statistics for each node in a cluster.
  * Returned information includes all built-in thread pools and custom thread pools.
  * IMPORTANT: cat APIs are only intended for human consumption using the command line or Kibana console. They are not intended for use by applications. For application consumption, use the nodes info API.
  * @rest_spec_name cat.thread_pool
@@ -44,5 +45,13 @@ export interface Request extends CatRequestBase {
      * The unit used to display time values.
      */
     time?: TimeUnit
+    /**
+     * If `true`, the request computes the list of selected nodes from the
+     * local cluster state. If `false` the list of selected nodes are computed
+     * from the cluster state of the master node. In both cases the coordinating
+     * node will send requests for further information to each selected node.
+     * @server_default false
+     */
+    local?: boolean
   }
 }

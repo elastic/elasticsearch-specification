@@ -49,47 +49,10 @@
         "type_alias definition _global.search._types:Suggest - Expected 1 generic parameters but got 0"
       ]
     },
-    "async_search.status": {
-      "request": [
-        "Request: missing json spec query parameter 'keep_alive'"
-      ],
-      "response": []
-    },
     "async_search.submit": {
       "request": [
-        "Request: query parameter 'ccs_minimize_roundtrips' does not exist in the json spec",
-        "Request: query parameter 'min_compatible_shard_node' does not exist in the json spec",
-        "Request: query parameter 'pre_filter_shard_size' does not exist in the json spec",
-        "Request: query parameter 'scroll' does not exist in the json spec",
-        "Request: query parameter 'rest_total_hits_as_int' does not exist in the json spec",
         "interface definition _types:QueryVectorBuilder - Property text_embedding is a single-variant and must be required",
         "type_alias definition _spec_utils:PipeSeparatedFlags / union_of / instance_of - No type definition for '_spec_utils.PipeSeparatedFlags:T'"
-      ],
-      "response": []
-    },
-    "autoscaling.delete_autoscaling_policy": {
-      "request": [
-        "Request: missing json spec query parameter 'master_timeout'",
-        "Request: missing json spec query parameter 'timeout'"
-      ],
-      "response": []
-    },
-    "autoscaling.get_autoscaling_capacity": {
-      "request": [
-        "Request: missing json spec query parameter 'master_timeout'"
-      ],
-      "response": []
-    },
-    "autoscaling.get_autoscaling_policy": {
-      "request": [
-        "Request: missing json spec query parameter 'master_timeout'"
-      ],
-      "response": []
-    },
-    "autoscaling.put_autoscaling_policy": {
-      "request": [
-        "Request: missing json spec query parameter 'master_timeout'",
-        "Request: missing json spec query parameter 'timeout'"
       ],
       "response": []
     },
@@ -110,7 +73,6 @@
     "cat.aliases": {
       "request": [
         "Request: missing json spec query parameter 'format'",
-        "Request: missing json spec query parameter 'local'",
         "Request: missing json spec query parameter 'h'",
         "Request: missing json spec query parameter 'help'",
         "Request: missing json spec query parameter 's'",
@@ -122,7 +84,6 @@
     "cat.allocation": {
       "request": [
         "Request: missing json spec query parameter 'format'",
-        "Request: missing json spec query parameter 'local'",
         "Request: missing json spec query parameter 'master_timeout'",
         "Request: missing json spec query parameter 'h'",
         "Request: missing json spec query parameter 'help'",
@@ -137,7 +98,6 @@
     "cat.component_templates": {
       "request": [
         "Request: missing json spec query parameter 'format'",
-        "Request: missing json spec query parameter 'local'",
         "Request: missing json spec query parameter 'master_timeout'",
         "Request: missing json spec query parameter 'h'",
         "Request: missing json spec query parameter 'help'",
@@ -203,7 +163,6 @@
     "cat.master": {
       "request": [
         "Request: missing json spec query parameter 'format'",
-        "Request: missing json spec query parameter 'local'",
         "Request: missing json spec query parameter 'master_timeout'",
         "Request: missing json spec query parameter 'h'",
         "Request: missing json spec query parameter 'help'",
@@ -261,7 +220,6 @@
     "cat.nodeattrs": {
       "request": [
         "Request: missing json spec query parameter 'format'",
-        "Request: missing json spec query parameter 'local'",
         "Request: missing json spec query parameter 'master_timeout'",
         "Request: missing json spec query parameter 'h'",
         "Request: missing json spec query parameter 'help'",
@@ -287,7 +245,6 @@
     "cat.pending_tasks": {
       "request": [
         "Request: missing json spec query parameter 'format'",
-        "Request: missing json spec query parameter 'local'",
         "Request: missing json spec query parameter 'master_timeout'",
         "Request: missing json spec query parameter 'h'",
         "Request: missing json spec query parameter 'help'",
@@ -301,7 +258,6 @@
     "cat.plugins": {
       "request": [
         "Request: missing json spec query parameter 'format'",
-        "Request: missing json spec query parameter 'local'",
         "Request: missing json spec query parameter 'master_timeout'",
         "Request: missing json spec query parameter 'h'",
         "Request: missing json spec query parameter 'help'",
@@ -340,6 +296,7 @@
     },
     "cat.segments": {
       "request": [
+        "Request: query parameter 'local' does not exist in the json spec",
         "Request: missing json spec query parameter 'format'",
         "Request: missing json spec query parameter 'h'",
         "Request: missing json spec query parameter 'help'",
@@ -392,7 +349,6 @@
     "cat.templates": {
       "request": [
         "Request: missing json spec query parameter 'format'",
-        "Request: missing json spec query parameter 'local'",
         "Request: missing json spec query parameter 'master_timeout'",
         "Request: missing json spec query parameter 'h'",
         "Request: missing json spec query parameter 'help'",
@@ -405,7 +361,6 @@
     "cat.thread_pool": {
       "request": [
         "Request: missing json spec query parameter 'format'",
-        "Request: missing json spec query parameter 'local'",
         "Request: missing json spec query parameter 'master_timeout'",
         "Request: missing json spec query parameter 'h'",
         "Request: missing json spec query parameter 'help'",
@@ -676,21 +631,7 @@
       "response": []
     },
     "fleet.msearch": {
-      "request": [
-        "Request: query parameter 'allow_no_indices' does not exist in the json spec",
-        "Request: query parameter 'ccs_minimize_roundtrips' does not exist in the json spec",
-        "Request: query parameter 'expand_wildcards' does not exist in the json spec",
-        "Request: query parameter 'ignore_throttled' does not exist in the json spec",
-        "Request: query parameter 'ignore_unavailable' does not exist in the json spec",
-        "Request: query parameter 'max_concurrent_searches' does not exist in the json spec",
-        "Request: query parameter 'max_concurrent_shard_requests' does not exist in the json spec",
-        "Request: query parameter 'pre_filter_shard_size' does not exist in the json spec",
-        "Request: query parameter 'search_type' does not exist in the json spec",
-        "Request: query parameter 'rest_total_hits_as_int' does not exist in the json spec",
-        "Request: query parameter 'typed_keys' does not exist in the json spec",
-        "Request: query parameter 'wait_for_checkpoints' does not exist in the json spec",
-        "Request: query parameter 'allow_partial_search_results' does not exist in the json spec"
-      ],
+      "request": [],
       "response": [
         "type_alias definition _global.msearch:ResponseItem / union_of / instance_of / Generics / instance_of - No type definition for '_global.msearch.ResponseItem:TDocument'"
       ]
@@ -698,54 +639,6 @@
     "fleet.post_secret": {
       "request": [
         "Missing request & response"
-      ],
-      "response": []
-    },
-    "fleet.search": {
-      "request": [
-        "Request: query parameter 'allow_no_indices' does not exist in the json spec",
-        "Request: query parameter 'analyzer' does not exist in the json spec",
-        "Request: query parameter 'analyze_wildcard' does not exist in the json spec",
-        "Request: query parameter 'batched_reduce_size' does not exist in the json spec",
-        "Request: query parameter 'ccs_minimize_roundtrips' does not exist in the json spec",
-        "Request: query parameter 'default_operator' does not exist in the json spec",
-        "Request: query parameter 'df' does not exist in the json spec",
-        "Request: query parameter 'docvalue_fields' does not exist in the json spec",
-        "Request: query parameter 'expand_wildcards' does not exist in the json spec",
-        "Request: query parameter 'explain' does not exist in the json spec",
-        "Request: query parameter 'ignore_throttled' does not exist in the json spec",
-        "Request: query parameter 'ignore_unavailable' does not exist in the json spec",
-        "Request: query parameter 'lenient' does not exist in the json spec",
-        "Request: query parameter 'max_concurrent_shard_requests' does not exist in the json spec",
-        "Request: query parameter 'min_compatible_shard_node' does not exist in the json spec",
-        "Request: query parameter 'preference' does not exist in the json spec",
-        "Request: query parameter 'pre_filter_shard_size' does not exist in the json spec",
-        "Request: query parameter 'request_cache' does not exist in the json spec",
-        "Request: query parameter 'routing' does not exist in the json spec",
-        "Request: query parameter 'scroll' does not exist in the json spec",
-        "Request: query parameter 'search_type' does not exist in the json spec",
-        "Request: query parameter 'stats' does not exist in the json spec",
-        "Request: query parameter 'stored_fields' does not exist in the json spec",
-        "Request: query parameter 'suggest_field' does not exist in the json spec",
-        "Request: query parameter 'suggest_mode' does not exist in the json spec",
-        "Request: query parameter 'suggest_size' does not exist in the json spec",
-        "Request: query parameter 'suggest_text' does not exist in the json spec",
-        "Request: query parameter 'terminate_after' does not exist in the json spec",
-        "Request: query parameter 'timeout' does not exist in the json spec",
-        "Request: query parameter 'track_total_hits' does not exist in the json spec",
-        "Request: query parameter 'track_scores' does not exist in the json spec",
-        "Request: query parameter 'typed_keys' does not exist in the json spec",
-        "Request: query parameter 'rest_total_hits_as_int' does not exist in the json spec",
-        "Request: query parameter 'version' does not exist in the json spec",
-        "Request: query parameter '_source' does not exist in the json spec",
-        "Request: query parameter '_source_excludes' does not exist in the json spec",
-        "Request: query parameter '_source_includes' does not exist in the json spec",
-        "Request: query parameter 'seq_no_primary_term' does not exist in the json spec",
-        "Request: query parameter 'q' does not exist in the json spec",
-        "Request: query parameter 'size' does not exist in the json spec",
-        "Request: query parameter 'from' does not exist in the json spec",
-        "Request: query parameter 'sort' does not exist in the json spec",
-        "Request: missing json spec query parameter 'wait_for_checkpoints_timeout'"
       ],
       "response": []
     },
@@ -815,6 +708,12 @@
       ],
       "response": []
     },
+    "indices.exists_alias": {
+      "request": [
+        "Request: query parameter 'master_timeout' does not exist in the json spec"
+      ],
+      "response": []
+    },
     "indices.exists_index_template": {
       "request": [
         "Request: missing json spec query parameter 'flat_settings'",
@@ -827,6 +726,12 @@
         "Request: query parameter 'master_timeout' does not exist in the json spec",
         "Request: query parameter 'timeout' does not exist in the json spec",
         "Request: query parameter 'wait_for_active_shards' does not exist in the json spec"
+      ],
+      "response": []
+    },
+    "indices.get_alias": {
+      "request": [
+        "Request: query parameter 'master_timeout' does not exist in the json spec"
       ],
       "response": []
     },
@@ -881,9 +786,21 @@
       ],
       "response": []
     },
+    "ingest.delete_ip_location_database": {
+      "request": [
+        "Missing request & response"
+      ],
+      "response": []
+    },
     "ingest.get_geoip_database": {
       "request": [
         "Request: query parameter 'master_timeout' does not exist in the json spec"
+      ],
+      "response": []
+    },
+    "ingest.get_ip_location_database": {
+      "request": [
+        "Missing request & response"
       ],
       "response": []
     },
@@ -891,6 +808,12 @@
       "request": [
         "Request: query parameter 'master_timeout' does not exist in the json spec",
         "Request: query parameter 'timeout' does not exist in the json spec"
+      ],
+      "response": []
+    },
+    "ingest.put_ip_location_database": {
+      "request": [
+        "Missing request & response"
       ],
       "response": []
     },
@@ -1079,12 +1002,6 @@
       ],
       "response": []
     },
-    "security.create_cross_cluster_api_key": {
-      "request": [
-        "Missing request & response"
-      ],
-      "response": []
-    },
     "security.get_settings": {
       "request": [
         "Missing request & response"
@@ -1118,12 +1035,6 @@
       "response": []
     },
     "security.oidc_prepare_authentication": {
-      "request": [
-        "Missing request & response"
-      ],
-      "response": []
-    },
-    "security.update_cross_cluster_api_key": {
       "request": [
         "Missing request & response"
       ],
@@ -1202,9 +1113,7 @@
     },
     "tasks.list": {
       "request": [
-        "Request: query parameter 'node_id' does not exist in the json spec",
-        "Request: query parameter 'master_timeout' does not exist in the json spec",
-        "Request: missing json spec query parameter 'nodes'"
+        "Request: query parameter 'master_timeout' does not exist in the json spec"
       ],
       "response": []
     },

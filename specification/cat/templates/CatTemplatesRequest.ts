@@ -21,7 +21,8 @@ import { CatRequestBase } from '@cat/_types/CatBase'
 import { Name } from '@_types/common'
 
 /**
- * Returns information about index templates in a cluster.
+ * Get index template information.
+ * Get information about the index templates in a cluster.
  * You can use index templates to apply index settings and field mappings to new indices at creation.
  * IMPORTANT: cat APIs are only intended for human consumption using the command line or Kibana console. They are not intended for use by applications. For application consumption, use the get index template API.
  * @rest_spec_name cat.templates
@@ -37,5 +38,15 @@ export interface Request extends CatRequestBase {
      * Accepts wildcard expressions. If omitted, all templates are returned.
      */
     name?: Name
+  }
+  query_parameters: {
+    /**
+     * If `true`, the request computes the list of selected nodes from the
+     * local cluster state. If `false` the list of selected nodes are computed
+     * from the cluster state of the master node. In both cases the coordinating
+     * node will send requests for further information to each selected node.
+     * @server_default false
+     */
+    local?: boolean
   }
 }

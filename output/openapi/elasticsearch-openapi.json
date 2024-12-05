@@ -114,8 +114,8 @@
         "tags": [
           "search"
         ],
-        "summary": "Get async search status",
-        "description": "Retrieve the status of a previously submitted async search request given its identifier, without retrieving search results.\nIf the Elasticsearch security features are enabled, use of this API is restricted to the `monitoring_user` role.",
+        "summary": "Get the async search status",
+        "description": "Get the status of a previously submitted async search request given its identifier, without retrieving search results.\nIf the Elasticsearch security features are enabled, use of this API is restricted to the `monitoring_user` role.",
         "operationId": "async-search-status",
         "parameters": [
           {
@@ -128,6 +128,16 @@
               "$ref": "#/components/schemas/_types:Id"
             },
             "style": "simple"
+          },
+          {
+            "in": "query",
+            "name": "keep_alive",
+            "description": "Specifies how long the async search needs to be available.\nOngoing async searches and any saved search results are deleted after this period.",
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/_types:Duration"
+            },
+            "style": "form"
           }
         ],
         "responses": {
@@ -159,9 +169,6 @@
           },
           {
             "$ref": "#/components/parameters/async_search.submit#keep_on_completion"
-          },
-          {
-            "$ref": "#/components/parameters/async_search.submit#keep_alive"
           },
           {
             "$ref": "#/components/parameters/async_search.submit#allow_no_indices"
@@ -209,22 +216,13 @@
             "$ref": "#/components/parameters/async_search.submit#max_concurrent_shard_requests"
           },
           {
-            "$ref": "#/components/parameters/async_search.submit#min_compatible_shard_node"
-          },
-          {
             "$ref": "#/components/parameters/async_search.submit#preference"
-          },
-          {
-            "$ref": "#/components/parameters/async_search.submit#pre_filter_shard_size"
           },
           {
             "$ref": "#/components/parameters/async_search.submit#request_cache"
           },
           {
             "$ref": "#/components/parameters/async_search.submit#routing"
-          },
-          {
-            "$ref": "#/components/parameters/async_search.submit#scroll"
           },
           {
             "$ref": "#/components/parameters/async_search.submit#search_type"
@@ -323,9 +321,6 @@
             "$ref": "#/components/parameters/async_search.submit#keep_on_completion"
           },
           {
-            "$ref": "#/components/parameters/async_search.submit#keep_alive"
-          },
-          {
             "$ref": "#/components/parameters/async_search.submit#allow_no_indices"
           },
           {
@@ -371,22 +366,13 @@
             "$ref": "#/components/parameters/async_search.submit#max_concurrent_shard_requests"
           },
           {
-            "$ref": "#/components/parameters/async_search.submit#min_compatible_shard_node"
-          },
-          {
             "$ref": "#/components/parameters/async_search.submit#preference"
-          },
-          {
-            "$ref": "#/components/parameters/async_search.submit#pre_filter_shard_size"
           },
           {
             "$ref": "#/components/parameters/async_search.submit#request_cache"
           },
           {
             "$ref": "#/components/parameters/async_search.submit#routing"
-          },
-          {
-            "$ref": "#/components/parameters/async_search.submit#scroll"
           },
           {
             "$ref": "#/components/parameters/async_search.submit#search_type"
@@ -471,8 +457,11 @@
         "tags": [
           "autoscaling"
         ],
-        "summary": "Retrieves an autoscaling policy",
-        "description": "Designed for indirect use by ECE/ESS and ECK. Direct use is not supported.",
+        "summary": "Get an autoscaling policy",
+        "description": "NOTE: This feature is designed for indirect use by Elasticsearch Service, Elastic Cloud Enterprise, and Elastic Cloud on Kubernetes. Direct use is not supported.",
+        "externalDocs": {
+          "url": "https://www.elastic.co/guide/en/cloud/current/ec-autoscaling.html"
+        },
         "operationId": "autoscaling-get-autoscaling-policy",
         "parameters": [
           {
@@ -485,6 +474,16 @@
               "$ref": "#/components/schemas/_types:Name"
             },
             "style": "simple"
+          },
+          {
+            "in": "query",
+            "name": "master_timeout",
+            "description": "Period to wait for a connection to the master node.\nIf no response is received before the timeout expires, the request fails and returns an error.",
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/_types:Duration"
+            },
+            "style": "form"
           }
         ],
         "responses": {
@@ -505,8 +504,11 @@
         "tags": [
           "autoscaling"
         ],
-        "summary": "Creates a new autoscaling policy",
-        "description": "Designed for indirect use by ECE/ESS and ECK. Direct use is not supported.",
+        "summary": "Create or update an autoscaling policy",
+        "description": "NOTE: This feature is designed for indirect use by Elasticsearch Service, Elastic Cloud Enterprise, and Elastic Cloud on Kubernetes. Direct use is not supported.",
+        "externalDocs": {
+          "url": "https://www.elastic.co/guide/en/cloud/current/ec-autoscaling.html"
+        },
         "operationId": "autoscaling-put-autoscaling-policy",
         "parameters": [
           {
@@ -519,6 +521,26 @@
               "$ref": "#/components/schemas/_types:Name"
             },
             "style": "simple"
+          },
+          {
+            "in": "query",
+            "name": "master_timeout",
+            "description": "Period to wait for a connection to the master node.\nIf no response is received before the timeout expires, the request fails and returns an error.",
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/_types:Duration"
+            },
+            "style": "form"
+          },
+          {
+            "in": "query",
+            "name": "timeout",
+            "description": "Period to wait for a response. If no response is received before the timeout expires, the request fails and returns an error.",
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/_types:Duration"
+            },
+            "style": "form"
           }
         ],
         "requestBody": {
@@ -549,8 +571,11 @@
         "tags": [
           "autoscaling"
         ],
-        "summary": "Deletes an autoscaling policy",
-        "description": "Designed for indirect use by ECE/ESS and ECK. Direct use is not supported.",
+        "summary": "Delete an autoscaling policy",
+        "description": "NOTE: This feature is designed for indirect use by Elasticsearch Service, Elastic Cloud Enterprise, and Elastic Cloud on Kubernetes. Direct use is not supported.",
+        "externalDocs": {
+          "url": "https://www.elastic.co/guide/en/cloud/current/ec-autoscaling.html"
+        },
         "operationId": "autoscaling-delete-autoscaling-policy",
         "parameters": [
           {
@@ -563,6 +588,26 @@
               "$ref": "#/components/schemas/_types:Name"
             },
             "style": "simple"
+          },
+          {
+            "in": "query",
+            "name": "master_timeout",
+            "description": "Period to wait for a connection to the master node.\nIf no response is received before the timeout expires, the request fails and returns an error.",
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/_types:Duration"
+            },
+            "style": "form"
+          },
+          {
+            "in": "query",
+            "name": "timeout",
+            "description": "Period to wait for a response. If no response is received before the timeout expires, the request fails and returns an error.",
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/_types:Duration"
+            },
+            "style": "form"
           }
         ],
         "responses": {
@@ -585,9 +630,24 @@
         "tags": [
           "autoscaling"
         ],
-        "summary": "Gets the current autoscaling capacity based on the configured autoscaling policy",
-        "description": "Designed for indirect use by ECE/ESS and ECK. Direct use is not supported.",
+        "summary": "Get the autoscaling capacity",
+        "description": "NOTE: This feature is designed for indirect use by Elasticsearch Service, Elastic Cloud Enterprise, and Elastic Cloud on Kubernetes. Direct use is not supported.\n\nThis API gets the current autoscaling capacity based on the configured autoscaling policy.\nIt will return information to size the cluster appropriately to the current workload.\n\nThe `required_capacity` is calculated as the maximum of the `required_capacity` result of all individual deciders that are enabled for the policy.\n\nThe operator should verify that the `current_nodes` match the operator’s knowledge of the cluster to avoid making autoscaling decisions based on stale or incomplete information.\n\nThe response contains decider-specific information you can use to diagnose how and why autoscaling determined a certain capacity was required.\nThis information is provided for diagnosis only.\nDo not use this information to make autoscaling decisions.",
+        "externalDocs": {
+          "url": "https://www.elastic.co/guide/en/cloud/current/ec-autoscaling.html"
+        },
         "operationId": "autoscaling-get-autoscaling-capacity",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "master_timeout",
+            "description": "Period to wait for a connection to the master node.\nIf no response is received before the timeout expires, the request fails and returns an error.",
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/_types:Duration"
+            },
+            "style": "form"
+          }
+        ],
         "responses": {
           "200": {
             "description": "",
@@ -852,12 +912,15 @@
         "tags": [
           "cat"
         ],
-        "summary": "Provides a snapshot of the number of shards allocated to each data node and their disk space",
-        "description": "IMPORTANT: cat APIs are only intended for human consumption using the command line or Kibana console. They are not intended for use by applications.",
+        "summary": "Get shard allocation information",
+        "description": "Get a snapshot of the number of shards allocated to each data node and their disk space.\nIMPORTANT: cat APIs are only intended for human consumption using the command line or Kibana console. They are not intended for use by applications.",
         "operationId": "cat-allocation",
         "parameters": [
           {
             "$ref": "#/components/parameters/cat.allocation#bytes"
+          },
+          {
+            "$ref": "#/components/parameters/cat.allocation#local"
           }
         ],
         "responses": {
@@ -872,8 +935,8 @@
         "tags": [
           "cat"
         ],
-        "summary": "Provides a snapshot of the number of shards allocated to each data node and their disk space",
-        "description": "IMPORTANT: cat APIs are only intended for human consumption using the command line or Kibana console. They are not intended for use by applications.",
+        "summary": "Get shard allocation information",
+        "description": "Get a snapshot of the number of shards allocated to each data node and their disk space.\nIMPORTANT: cat APIs are only intended for human consumption using the command line or Kibana console. They are not intended for use by applications.",
         "operationId": "cat-allocation-1",
         "parameters": [
           {
@@ -881,6 +944,9 @@
           },
           {
             "$ref": "#/components/parameters/cat.allocation#bytes"
+          },
+          {
+            "$ref": "#/components/parameters/cat.allocation#local"
           }
         ],
         "responses": {
@@ -898,6 +964,11 @@
         "summary": "Get component templates",
         "description": "Returns information about component templates in a cluster.\nComponent templates are building blocks for constructing index templates that specify index mappings, settings, and aliases.\n\nCAT APIs are only intended for human consumption using the command line or Kibana console.\nThey are not intended for use by applications. For application consumption, use the get component template API.",
         "operationId": "cat-component-templates",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/cat.component_templates#local"
+          }
+        ],
         "responses": {
           "200": {
             "$ref": "#/components/responses/cat.component_templates#200"
@@ -917,6 +988,9 @@
         "parameters": [
           {
             "$ref": "#/components/parameters/cat.component_templates#name"
+          },
+          {
+            "$ref": "#/components/parameters/cat.component_templates#local"
           }
         ],
         "responses": {
@@ -967,8 +1041,8 @@
         "tags": [
           "cat"
         ],
-        "summary": "Returns the amount of heap memory currently used by the field data cache on every data node in the cluster",
-        "description": "IMPORTANT: cat APIs are only intended for human consumption using the command line or Kibana console.\nThey are not intended for use by applications. For application consumption, use the nodes stats API.",
+        "summary": "Get field data cache information",
+        "description": "Get the amount of heap memory currently used by the field data cache on every data node in the cluster.\nIMPORTANT: cat APIs are only intended for human consumption using the command line or Kibana console.\nThey are not intended for use by applications. For application consumption, use the nodes stats API.",
         "operationId": "cat-fielddata",
         "parameters": [
           {
@@ -990,8 +1064,8 @@
         "tags": [
           "cat"
         ],
-        "summary": "Returns the amount of heap memory currently used by the field data cache on every data node in the cluster",
-        "description": "IMPORTANT: cat APIs are only intended for human consumption using the command line or Kibana console.\nThey are not intended for use by applications. For application consumption, use the nodes stats API.",
+        "summary": "Get field data cache information",
+        "description": "Get the amount of heap memory currently used by the field data cache on every data node in the cluster.\nIMPORTANT: cat APIs are only intended for human consumption using the command line or Kibana console.\nThey are not intended for use by applications. For application consumption, use the nodes stats API.",
         "operationId": "cat-fielddata-1",
         "parameters": [
           {
@@ -1016,7 +1090,7 @@
         "tags": [
           "cat"
         ],
-        "summary": "Returns the health status of a cluster, similar to the cluster health API",
+        "summary": "Get the cluster health status",
         "description": "IMPORTANT: cat APIs are only intended for human consumption using the command line or Kibana console.\nThey are not intended for use by applications. For application consumption, use the cluster health API.\nThis API is often used to check malfunctioning clusters.\nTo help you track cluster health alongside log files and alerting systems, the API returns timestamps in two formats:\n`HH:MM:SS`, which is human-readable but includes no date information;\n`Unix epoch time`, which is machine-sortable and includes date information.\nThe latter format is useful for cluster recoveries that take multiple days.\nYou can use the cat health API to verify cluster health across multiple nodes.\nYou also can use the API to track the recovery of a large cluster over a longer period of time.",
         "operationId": "cat-health",
         "parameters": [
@@ -1161,9 +1235,21 @@
         "tags": [
           "cat"
         ],
-        "summary": "Returns information about the master node, including the ID, bound IP address, and name",
-        "description": "IMPORTANT: cat APIs are only intended for human consumption using the command line or Kibana console. They are not intended for use by applications. For application consumption, use the nodes info API.",
+        "summary": "Get master node information",
+        "description": "Get information about the master node, including the ID, bound IP address, and name.\nIMPORTANT: cat APIs are only intended for human consumption using the command line or Kibana console. They are not intended for use by applications. For application consumption, use the nodes info API.",
         "operationId": "cat-master",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "local",
+            "description": "If `true`, the request computes the list of selected nodes from the\nlocal cluster state. If `false` the list of selected nodes are computed\nfrom the cluster state of the master node. In both cases the coordinating\nnode will send requests for further information to each selected node.",
+            "deprecated": false,
+            "schema": {
+              "type": "boolean"
+            },
+            "style": "form"
+          }
+        ],
         "responses": {
           "200": {
             "description": "",
@@ -1462,9 +1548,21 @@
         "tags": [
           "cat"
         ],
-        "summary": "Returns information about custom node attributes",
-        "description": "IMPORTANT: cat APIs are only intended for human consumption using the command line or Kibana console. They are not intended for use by applications. For application consumption, use the nodes info API.",
+        "summary": "Get node attribute information",
+        "description": "Get information about custom node attributes.\nIMPORTANT: cat APIs are only intended for human consumption using the command line or Kibana console. They are not intended for use by applications. For application consumption, use the nodes info API.",
         "operationId": "cat-nodeattrs",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "local",
+            "description": "If `true`, the request computes the list of selected nodes from the\nlocal cluster state. If `false` the list of selected nodes are computed\nfrom the cluster state of the master node. In both cases the coordinating\nnode will send requests for further information to each selected node.",
+            "deprecated": false,
+            "schema": {
+              "type": "boolean"
+            },
+            "style": "form"
+          }
+        ],
         "responses": {
           "200": {
             "description": "",
@@ -1487,8 +1585,8 @@
         "tags": [
           "cat"
         ],
-        "summary": "Returns information about the nodes in a cluster",
-        "description": "IMPORTANT: cat APIs are only intended for human consumption using the command line or Kibana console. They are not intended for use by applications. For application consumption, use the nodes info API.",
+        "summary": "Get node information",
+        "description": "Get information about the nodes in a cluster.\nIMPORTANT: cat APIs are only intended for human consumption using the command line or Kibana console. They are not intended for use by applications. For application consumption, use the nodes info API.",
         "operationId": "cat-nodes",
         "parameters": [
           {
@@ -1551,9 +1649,21 @@
         "tags": [
           "cat"
         ],
-        "summary": "Returns cluster-level changes that have not yet been executed",
-        "description": "IMPORTANT: cat APIs are only intended for human consumption using the command line or Kibana console. They are not intended for use by applications. For application consumption, use the pending cluster tasks API.",
+        "summary": "Get pending task information",
+        "description": "Get information about cluster-level changes that have not yet taken effect.\nIMPORTANT: cat APIs are only intended for human consumption using the command line or Kibana console. They are not intended for use by applications. For application consumption, use the pending cluster tasks API.",
         "operationId": "cat-pending-tasks",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "local",
+            "description": "If `true`, the request computes the list of selected nodes from the\nlocal cluster state. If `false` the list of selected nodes are computed\nfrom the cluster state of the master node. In both cases the coordinating\nnode will send requests for further information to each selected node.",
+            "deprecated": false,
+            "schema": {
+              "type": "boolean"
+            },
+            "style": "form"
+          }
+        ],
         "responses": {
           "200": {
             "description": "",
@@ -1576,9 +1686,21 @@
         "tags": [
           "cat"
         ],
-        "summary": "Returns a list of plugins running on each node of a cluster",
-        "description": "IMPORTANT: cat APIs are only intended for human consumption using the command line or Kibana console. They are not intended for use by applications. For application consumption, use the nodes info API.",
+        "summary": "Get plugin information",
+        "description": "Get a list of plugins running on each node of a cluster.\nIMPORTANT: cat APIs are only intended for human consumption using the command line or Kibana console. They are not intended for use by applications. For application consumption, use the nodes info API.",
         "operationId": "cat-plugins",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "local",
+            "description": "If `true`, the request computes the list of selected nodes from the\nlocal cluster state. If `false` the list of selected nodes are computed\nfrom the cluster state of the master node. In both cases the coordinating\nnode will send requests for further information to each selected node.",
+            "deprecated": false,
+            "schema": {
+              "type": "boolean"
+            },
+            "style": "form"
+          }
+        ],
         "responses": {
           "200": {
             "description": "",
@@ -1601,8 +1723,8 @@
         "tags": [
           "cat"
         ],
-        "summary": "Returns information about ongoing and completed shard recoveries",
-        "description": "Shard recovery is the process of initializing a shard copy, such as restoring a primary shard from a snapshot or syncing a replica shard from a primary shard. When a shard recovery completes, the recovered shard is available for search and indexing.\nFor data streams, the API returns information about the stream’s backing indices.\nIMPORTANT: cat APIs are only intended for human consumption using the command line or Kibana console. They are not intended for use by applications. For application consumption, use the index recovery API.",
+        "summary": "Get shard recovery information",
+        "description": "Get information about ongoing and completed shard recoveries.\nShard recovery is the process of initializing a shard copy, such as restoring a primary shard from a snapshot or syncing a replica shard from a primary shard. When a shard recovery completes, the recovered shard is available for search and indexing.\nFor data streams, the API returns information about the stream’s backing indices.\nIMPORTANT: cat APIs are only intended for human consumption using the command line or Kibana console. They are not intended for use by applications. For application consumption, use the index recovery API.",
         "operationId": "cat-recovery",
         "parameters": [
           {
@@ -1627,8 +1749,8 @@
         "tags": [
           "cat"
         ],
-        "summary": "Returns information about ongoing and completed shard recoveries",
-        "description": "Shard recovery is the process of initializing a shard copy, such as restoring a primary shard from a snapshot or syncing a replica shard from a primary shard. When a shard recovery completes, the recovered shard is available for search and indexing.\nFor data streams, the API returns information about the stream’s backing indices.\nIMPORTANT: cat APIs are only intended for human consumption using the command line or Kibana console. They are not intended for use by applications. For application consumption, use the index recovery API.",
+        "summary": "Get shard recovery information",
+        "description": "Get information about ongoing and completed shard recoveries.\nShard recovery is the process of initializing a shard copy, such as restoring a primary shard from a snapshot or syncing a replica shard from a primary shard. When a shard recovery completes, the recovered shard is available for search and indexing.\nFor data streams, the API returns information about the stream’s backing indices.\nIMPORTANT: cat APIs are only intended for human consumption using the command line or Kibana console. They are not intended for use by applications. For application consumption, use the index recovery API.",
         "operationId": "cat-recovery-1",
         "parameters": [
           {
@@ -1656,8 +1778,8 @@
         "tags": [
           "cat"
         ],
-        "summary": "Returns the snapshot repositories for a cluster",
-        "description": "IMPORTANT: cat APIs are only intended for human consumption using the command line or Kibana console. They are not intended for use by applications. For application consumption, use the get snapshot repository API.",
+        "summary": "Get snapshot repository information",
+        "description": "Get a list of snapshot repositories for a cluster.\nIMPORTANT: cat APIs are only intended for human consumption using the command line or Kibana console. They are not intended for use by applications. For application consumption, use the get snapshot repository API.",
         "operationId": "cat-repositories",
         "responses": {
           "200": {
@@ -1682,12 +1804,15 @@
         "tags": [
           "cat"
         ],
-        "summary": "Returns low-level information about the Lucene segments in index shards",
-        "description": "For data streams, the API returns information about the backing indices.\nIMPORTANT: cat APIs are only intended for human consumption using the command line or Kibana console. They are not intended for use by applications. For application consumption, use the index segments API.",
+        "summary": "Get segment information",
+        "description": "Get low-level information about the Lucene segments in index shards.\nFor data streams, the API returns information about the backing indices.\nIMPORTANT: cat APIs are only intended for human consumption using the command line or Kibana console. They are not intended for use by applications. For application consumption, use the index segments API.",
         "operationId": "cat-segments",
         "parameters": [
           {
             "$ref": "#/components/parameters/cat.segments#bytes"
+          },
+          {
+            "$ref": "#/components/parameters/cat.segments#local"
           }
         ],
         "responses": {
@@ -1702,8 +1827,8 @@
         "tags": [
           "cat"
         ],
-        "summary": "Returns low-level information about the Lucene segments in index shards",
-        "description": "For data streams, the API returns information about the backing indices.\nIMPORTANT: cat APIs are only intended for human consumption using the command line or Kibana console. They are not intended for use by applications. For application consumption, use the index segments API.",
+        "summary": "Get segment information",
+        "description": "Get low-level information about the Lucene segments in index shards.\nFor data streams, the API returns information about the backing indices.\nIMPORTANT: cat APIs are only intended for human consumption using the command line or Kibana console. They are not intended for use by applications. For application consumption, use the index segments API.",
         "operationId": "cat-segments-1",
         "parameters": [
           {
@@ -1711,6 +1836,9 @@
           },
           {
             "$ref": "#/components/parameters/cat.segments#bytes"
+          },
+          {
+            "$ref": "#/components/parameters/cat.segments#local"
           }
         ],
         "responses": {
@@ -1725,8 +1853,8 @@
         "tags": [
           "cat"
         ],
-        "summary": "Returns information about the shards in a cluster",
-        "description": "For data streams, the API returns information about the backing indices.\nIMPORTANT: cat APIs are only intended for human consumption using the command line or Kibana console. They are not intended for use by applications.",
+        "summary": "Get shard information",
+        "description": "Get information about the shards in a cluster.\nFor data streams, the API returns information about the backing indices.\nIMPORTANT: cat APIs are only intended for human consumption using the command line or Kibana console. They are not intended for use by applications.",
         "operationId": "cat-shards",
         "parameters": [
           {
@@ -1745,8 +1873,8 @@
         "tags": [
           "cat"
         ],
-        "summary": "Returns information about the shards in a cluster",
-        "description": "For data streams, the API returns information about the backing indices.\nIMPORTANT: cat APIs are only intended for human consumption using the command line or Kibana console. They are not intended for use by applications.",
+        "summary": "Get shard information",
+        "description": "Get information about the shards in a cluster.\nFor data streams, the API returns information about the backing indices.\nIMPORTANT: cat APIs are only intended for human consumption using the command line or Kibana console. They are not intended for use by applications.",
         "operationId": "cat-shards-1",
         "parameters": [
           {
@@ -1768,8 +1896,8 @@
         "tags": [
           "cat"
         ],
-        "summary": "Returns information about the snapshots stored in one or more repositories",
-        "description": "A snapshot is a backup of an index or running Elasticsearch cluster.\nIMPORTANT: cat APIs are only intended for human consumption using the command line or Kibana console. They are not intended for use by applications. For application consumption, use the get snapshot API.",
+        "summary": "Get snapshot information\n",
+        "description": "Get information about the snapshots stored in one or more repositories.\nA snapshot is a backup of an index or running Elasticsearch cluster.\nIMPORTANT: cat APIs are only intended for human consumption using the command line or Kibana console. They are not intended for use by applications. For application consumption, use the get snapshot API.",
         "operationId": "cat-snapshots",
         "parameters": [
           {
@@ -1789,8 +1917,8 @@
         "tags": [
           "cat"
         ],
-        "summary": "Returns information about the snapshots stored in one or more repositories",
-        "description": "A snapshot is a backup of an index or running Elasticsearch cluster.\nIMPORTANT: cat APIs are only intended for human consumption using the command line or Kibana console. They are not intended for use by applications. For application consumption, use the get snapshot API.",
+        "summary": "Get snapshot information\n",
+        "description": "Get information about the snapshots stored in one or more repositories.\nA snapshot is a backup of an index or running Elasticsearch cluster.\nIMPORTANT: cat APIs are only intended for human consumption using the command line or Kibana console. They are not intended for use by applications. For application consumption, use the get snapshot API.",
         "operationId": "cat-snapshots-1",
         "parameters": [
           {
@@ -1813,8 +1941,8 @@
         "tags": [
           "cat"
         ],
-        "summary": "Returns information about tasks currently executing in the cluster",
-        "description": "IMPORTANT: cat APIs are only intended for human consumption using the command line or Kibana console. They are not intended for use by applications. For application consumption, use the task management API.",
+        "summary": "Get task information",
+        "description": "Get information about tasks currently running in the cluster.\nIMPORTANT: cat APIs are only intended for human consumption using the command line or Kibana console. They are not intended for use by applications. For application consumption, use the task management API.",
         "operationId": "cat-tasks",
         "parameters": [
           {
@@ -1887,9 +2015,14 @@
         "tags": [
           "cat"
         ],
-        "summary": "Returns information about index templates in a cluster",
-        "description": "You can use index templates to apply index settings and field mappings to new indices at creation.\nIMPORTANT: cat APIs are only intended for human consumption using the command line or Kibana console. They are not intended for use by applications. For application consumption, use the get index template API.",
+        "summary": "Get index template information",
+        "description": "Get information about the index templates in a cluster.\nYou can use index templates to apply index settings and field mappings to new indices at creation.\nIMPORTANT: cat APIs are only intended for human consumption using the command line or Kibana console. They are not intended for use by applications. For application consumption, use the get index template API.",
         "operationId": "cat-templates",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/cat.templates#local"
+          }
+        ],
         "responses": {
           "200": {
             "$ref": "#/components/responses/cat.templates#200"
@@ -1903,12 +2036,15 @@
         "tags": [
           "cat"
         ],
-        "summary": "Returns information about index templates in a cluster",
-        "description": "You can use index templates to apply index settings and field mappings to new indices at creation.\nIMPORTANT: cat APIs are only intended for human consumption using the command line or Kibana console. They are not intended for use by applications. For application consumption, use the get index template API.",
+        "summary": "Get index template information",
+        "description": "Get information about the index templates in a cluster.\nYou can use index templates to apply index settings and field mappings to new indices at creation.\nIMPORTANT: cat APIs are only intended for human consumption using the command line or Kibana console. They are not intended for use by applications. For application consumption, use the get index template API.",
         "operationId": "cat-templates-1",
         "parameters": [
           {
             "$ref": "#/components/parameters/cat.templates#name"
+          },
+          {
+            "$ref": "#/components/parameters/cat.templates#local"
           }
         ],
         "responses": {
@@ -1924,12 +2060,15 @@
         "tags": [
           "cat"
         ],
-        "summary": "Returns thread pool statistics for each node in a cluster",
-        "description": "Returned information includes all built-in thread pools and custom thread pools.\nIMPORTANT: cat APIs are only intended for human consumption using the command line or Kibana console. They are not intended for use by applications. For application consumption, use the nodes info API.",
+        "summary": "Get thread pool statistics",
+        "description": "Get thread pool statistics for each node in a cluster.\nReturned information includes all built-in thread pools and custom thread pools.\nIMPORTANT: cat APIs are only intended for human consumption using the command line or Kibana console. They are not intended for use by applications. For application consumption, use the nodes info API.",
         "operationId": "cat-thread-pool",
         "parameters": [
           {
             "$ref": "#/components/parameters/cat.thread_pool#time"
+          },
+          {
+            "$ref": "#/components/parameters/cat.thread_pool#local"
           }
         ],
         "responses": {
@@ -1944,8 +2083,8 @@
         "tags": [
           "cat"
         ],
-        "summary": "Returns thread pool statistics for each node in a cluster",
-        "description": "Returned information includes all built-in thread pools and custom thread pools.\nIMPORTANT: cat APIs are only intended for human consumption using the command line or Kibana console. They are not intended for use by applications. For application consumption, use the nodes info API.",
+        "summary": "Get thread pool statistics",
+        "description": "Get thread pool statistics for each node in a cluster.\nReturned information includes all built-in thread pools and custom thread pools.\nIMPORTANT: cat APIs are only intended for human consumption using the command line or Kibana console. They are not intended for use by applications. For application consumption, use the nodes info API.",
         "operationId": "cat-thread-pool-1",
         "parameters": [
           {
@@ -1953,6 +2092,9 @@
           },
           {
             "$ref": "#/components/parameters/cat.thread_pool#time"
+          },
+          {
+            "$ref": "#/components/parameters/cat.thread_pool#local"
           }
         ],
         "responses": {
@@ -1967,8 +2109,8 @@
         "tags": [
           "cat"
         ],
-        "summary": "Get transforms",
-        "description": "Returns configuration and usage information about transforms.\n\nCAT APIs are only intended for human consumption using the Kibana\nconsole or command line. They are not intended for use by applications. For\napplication consumption, use the get transform statistics API.",
+        "summary": "Get transform information",
+        "description": "Get configuration and usage information about transforms.\n\nCAT APIs are only intended for human consumption using the Kibana\nconsole or command line. They are not intended for use by applications. For\napplication consumption, use the get transform statistics API.",
         "operationId": "cat-transforms",
         "parameters": [
           {
@@ -2003,8 +2145,8 @@
         "tags": [
           "cat"
         ],
-        "summary": "Get transforms",
-        "description": "Returns configuration and usage information about transforms.\n\nCAT APIs are only intended for human consumption using the Kibana\nconsole or command line. They are not intended for use by applications. For\napplication consumption, use the get transform statistics API.",
+        "summary": "Get transform information",
+        "description": "Get configuration and usage information about transforms.\n\nCAT APIs are only intended for human consumption using the Kibana\nconsole or command line. They are not intended for use by applications. For\napplication consumption, use the get transform statistics API.",
         "operationId": "cat-transforms-1",
         "parameters": [
           {
@@ -2812,7 +2954,8 @@
         "tags": [
           "search"
         ],
-        "summary": "Clears the search context and results for a scrolling search",
+        "summary": "Clear a scrolling search",
+        "description": "Clear the search context and results for a scrolling search.",
         "operationId": "clear-scroll",
         "requestBody": {
           "$ref": "#/components/requestBodies/clear_scroll"
@@ -2895,7 +3038,8 @@
         "tags": [
           "search"
         ],
-        "summary": "Clears the search context and results for a scrolling search",
+        "summary": "Clear a scrolling search",
+        "description": "Clear the search context and results for a scrolling search.",
         "operationId": "clear-scroll-1",
         "parameters": [
           {
@@ -2917,7 +3061,8 @@
         "tags": [
           "search"
         ],
-        "summary": "Closes a point-in-time",
+        "summary": "Close a point in time",
+        "description": "A point in time must be opened explicitly before being used in search requests.\nThe `keep_alive` parameter tells Elasticsearch how long it should persist.\nA point in time is automatically closed when the `keep_alive` period has elapsed.\nHowever, keeping points in time has a cost; close them as soon as they are no longer required for search requests.",
         "operationId": "close-point-in-time",
         "requestBody": {
           "content": {
@@ -2968,7 +3113,8 @@
         "tags": [
           "cluster"
         ],
-        "summary": "Provides explanations for shard allocations in the cluster",
+        "summary": "Explain the shard allocations",
+        "description": "Get explanations for shard allocations in the cluster.\nFor unassigned shards, it provides an explanation for why the shard is unassigned.\nFor assigned shards, it provides an explanation for why the shard is remaining on its current node and has not moved or rebalanced to another node.\nThis API can be very useful when attempting to diagnose why a shard is unassigned or why a shard continues to remain on its current node when you might expect otherwise.",
         "operationId": "cluster-allocation-explain",
         "parameters": [
           {
@@ -2992,7 +3138,8 @@
         "tags": [
           "cluster"
         ],
-        "summary": "Provides explanations for shard allocations in the cluster",
+        "summary": "Explain the shard allocations",
+        "description": "Get explanations for shard allocations in the cluster.\nFor unassigned shards, it provides an explanation for why the shard is unassigned.\nFor assigned shards, it provides an explanation for why the shard is remaining on its current node and has not moved or rebalanced to another node.\nThis API can be very useful when attempting to diagnose why a shard is unassigned or why a shard continues to remain on its current node when you might expect otherwise.",
         "operationId": "cluster-allocation-explain-1",
         "parameters": [
           {
@@ -3211,7 +3358,11 @@
         "tags": [
           "cluster"
         ],
-        "summary": "Updates the cluster voting config exclusions by node ids or node names",
+        "summary": "Update voting configuration exclusions",
+        "description": "Update the cluster voting config exclusions by node IDs or node names.\nBy default, if there are more than three master-eligible nodes in the cluster and you remove fewer than half of the master-eligible nodes in the cluster at once, the voting configuration automatically shrinks.\nIf you want to shrink the voting configuration to contain fewer than three nodes or to remove half or more of the master-eligible nodes in the cluster at once, use this API to remove departing nodes from the voting configuration manually.\nThe API adds an entry for each specified node to the cluster’s voting configuration exclusions list.\nIt then waits until the cluster has reconfigured its voting configuration to exclude the specified nodes.\n\nClusters should have no voting configuration exclusions in normal operation.\nOnce the excluded nodes have stopped, clear the voting configuration exclusions with `DELETE /_cluster/voting_config_exclusions`.\nThis API waits for the nodes to be fully removed from the cluster before it returns.\nIf your cluster has voting configuration exclusions for nodes that you no longer intend to remove, use `DELETE /_cluster/voting_config_exclusions?wait_for_removal=false` to clear the voting configuration exclusions without waiting for the nodes to leave the cluster.\n\nA response to `POST /_cluster/voting_config_exclusions` with an HTTP status code of 200 OK guarantees that the node has been removed from the voting configuration and will not be reinstated until the voting configuration exclusions are cleared by calling `DELETE /_cluster/voting_config_exclusions`.\nIf the call to `POST /_cluster/voting_config_exclusions` fails or returns a response with an HTTP status code other than 200 OK then the node may not have been removed from the voting configuration.\nIn that case, you may safely retry the call.\n\nNOTE: Voting exclusions are required only when you remove at least half of the master-eligible nodes from a cluster in a short time period.\nThey are not required when removing master-ineligible nodes or when removing fewer than half of the master-eligible nodes.",
+        "externalDocs": {
+          "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/add-elasticsearch-nodes.html"
+        },
         "operationId": "cluster-post-voting-config-exclusions",
         "parameters": [
           {
@@ -3259,7 +3410,11 @@
         "tags": [
           "cluster"
         ],
-        "summary": "Clears cluster voting config exclusions",
+        "summary": "Clear cluster voting config exclusions",
+        "description": "Remove master-eligible nodes from the voting configuration exclusion list.",
+        "externalDocs": {
+          "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/add-elasticsearch-nodes.html"
+        },
         "operationId": "cluster-delete-voting-config-exclusions",
         "parameters": [
           {
@@ -3319,7 +3474,7 @@
         "tags": [
           "cluster"
         ],
-        "summary": "Returns cluster-wide settings",
+        "summary": "Get cluster-wide settings",
         "description": "By default, it returns only settings that have been explicitly defined.",
         "operationId": "cluster-get-settings",
         "parameters": [
@@ -3405,7 +3560,8 @@
         "tags": [
           "cluster"
         ],
-        "summary": "Updates the cluster settings",
+        "summary": "Update the cluster settings",
+        "description": "Configure and update dynamic settings on a running cluster.\nYou can also configure dynamic settings locally on an unstarted or shut down node in `elasticsearch.yml`.\n\nUpdates made with this API can be persistent, which apply across cluster restarts, or transient, which reset after a cluster restart.\nYou can also reset transient or persistent settings by assigning them a null value.\n\nIf you configure the same setting using multiple methods, Elasticsearch applies the settings in following order of precedence: 1) Transient setting; 2) Persistent setting; 3) `elasticsearch.yml` setting; 4) Default setting value.\nFor example, you can apply a transient setting to override a persistent setting or `elasticsearch.yml` setting.\nHowever, a change to an `elasticsearch.yml` setting will not override a defined transient or persistent setting.\n\nTIP: In Elastic Cloud, use the user settings feature to configure all cluster settings. This method automatically rejects unsafe settings that could break your cluster.\nIf you run Elasticsearch on your own hardware, use this API to configure dynamic cluster settings.\nOnly use `elasticsearch.yml` for static cluster settings and node settings.\nThe API doesn’t require a restart and ensures a setting’s value is the same on all nodes.\n\nWARNING: Transient cluster settings are no longer recommended. Use persistent cluster settings instead.\nIf a cluster becomes unstable, transient settings can clear unexpectedly, resulting in a potentially undesired cluster configuration.",
         "operationId": "cluster-put-settings",
         "parameters": [
           {
@@ -3504,8 +3660,8 @@
         "tags": [
           "cluster"
         ],
-        "summary": "The cluster health API returns a simple status on the health of the cluster",
-        "description": "You can also use the API to get the health status of only specified data streams and indices. For data streams, the API retrieves the health status of the stream’s backing indices.\nThe cluster health status is: green, yellow or red. On the shard level, a red status indicates that the specific shard is not allocated in the cluster, yellow means that the primary shard is allocated but replicas are not, and green means that all shards are allocated. The index level status is controlled by the worst shard status. The cluster status is controlled by the worst index status.",
+        "summary": "Get the cluster health status",
+        "description": "You can also use the API to get the health status of only specified data streams and indices.\nFor data streams, the API retrieves the health status of the stream’s backing indices.\n\nThe cluster health status is: green, yellow or red.\nOn the shard level, a red status indicates that the specific shard is not allocated in the cluster. Yellow means that the primary shard is allocated but replicas are not. Green means that all shards are allocated.\nThe index level status is controlled by the worst shard status.\n\nOne of the main benefits of the API is the ability to wait until the cluster reaches a certain high watermark health level.\nThe cluster status is controlled by the worst index status.",
         "operationId": "cluster-health",
         "parameters": [
           {
@@ -3555,8 +3711,8 @@
         "tags": [
           "cluster"
         ],
-        "summary": "The cluster health API returns a simple status on the health of the cluster",
-        "description": "You can also use the API to get the health status of only specified data streams and indices. For data streams, the API retrieves the health status of the stream’s backing indices.\nThe cluster health status is: green, yellow or red. On the shard level, a red status indicates that the specific shard is not allocated in the cluster, yellow means that the primary shard is allocated but replicas are not, and green means that all shards are allocated. The index level status is controlled by the worst shard status. The cluster status is controlled by the worst index status.",
+        "summary": "Get the cluster health status",
+        "description": "You can also use the API to get the health status of only specified data streams and indices.\nFor data streams, the API retrieves the health status of the stream’s backing indices.\n\nThe cluster health status is: green, yellow or red.\nOn the shard level, a red status indicates that the specific shard is not allocated in the cluster. Yellow means that the primary shard is allocated but replicas are not. Green means that all shards are allocated.\nThe index level status is controlled by the worst shard status.\n\nOne of the main benefits of the API is the ability to wait until the cluster reaches a certain high watermark health level.\nThe cluster status is controlled by the worst index status.",
         "operationId": "cluster-health-1",
         "parameters": [
           {
@@ -3668,8 +3824,8 @@
         "tags": [
           "cluster"
         ],
-        "summary": "Returns cluster-level changes (such as create index, update mapping, allocate or fail shard) that have not yet been executed",
-        "description": "NOTE: This API returns a list of any pending updates to the cluster state.\nThese are distinct from the tasks reported by the Task Management API which include periodic tasks and tasks initiated by the user, such as node stats, search queries, or create index requests.\nHowever, if a user-initiated task such as a create index command causes a cluster state update, the activity of this task might be reported by both task api and pending cluster tasks API.",
+        "summary": "Get the pending cluster tasks",
+        "description": "Get information about cluster-level changes (such as create index, update mapping, allocate or fail shard) that have not yet taken effect.\n\nNOTE: This API returns a list of any pending updates to the cluster state.\nThese are distinct from the tasks reported by the task management API which include periodic tasks and tasks initiated by the user, such as node stats, search queries, or create index requests.\nHowever, if a user-initiated task such as a create index command causes a cluster state update, the activity of this task might be reported by both task api and pending cluster tasks API.",
         "operationId": "cluster-pending-tasks",
         "parameters": [
           {
@@ -3723,8 +3879,8 @@
         "tags": [
           "cluster"
         ],
-        "summary": "The cluster remote info API allows you to retrieve all of the configured\n",
-        "description": "remote cluster information. It returns connection and endpoint information\nkeyed by the configured remote cluster alias.",
+        "summary": "Get remote cluster information",
+        "description": "Get all of the configured remote cluster information.\nThis API returns connection and endpoint information keyed by the configured remote cluster alias.",
         "operationId": "cluster-remote-info",
         "responses": {
           "200": {
@@ -3749,13 +3905,14 @@
         "tags": [
           "cluster"
         ],
-        "summary": "Allows to manually change the allocation of individual shards in the cluster",
+        "summary": "Reroute the cluster",
+        "description": "Manually change the allocation of individual shards in the cluster.\nFor example, a shard can be moved from one node to another explicitly, an allocation can be canceled, and an unassigned shard can be explicitly allocated to a specific node.\n\nIt is important to note that after processing any reroute commands Elasticsearch will perform rebalancing as normal (respecting the values of settings such as `cluster.routing.rebalance.enable`) in order to remain in a balanced state.\nFor example, if the requested allocation includes moving a shard from node1 to node2 then this may cause a shard to be moved from node2 back to node1 to even things out.\n\nThe cluster can be set to disable allocations using the `cluster.routing.allocation.enable` setting.\nIf allocations are disabled then the only allocations that will be performed are explicit ones given using the reroute command, and consequent allocations due to rebalancing.\n\nThe cluster will attempt to allocate a shard a maximum of `index.allocation.max_retries` times in a row (defaults to `5`), before giving up and leaving the shard unallocated.\nThis scenario can be caused by structural problems such as having an analyzer which refers to a stopwords file which doesn’t exist on all nodes.\n\nOnce the problem has been corrected, allocation can be manually retried by calling the reroute API with the `?retry_failed` URI query parameter, which will attempt a single retry round for these shards.",
         "operationId": "cluster-reroute",
         "parameters": [
           {
             "in": "query",
             "name": "dry_run",
-            "description": "If true, then the request simulates the operation only and returns the resulting state.",
+            "description": "If true, then the request simulates the operation.\nIt will calculate the result of applying the commands to the current cluster state and return the resulting cluster state after the commands (and rebalancing) have been applied; it will not actually perform the requested changes.",
             "deprecated": false,
             "schema": {
               "type": "boolean"
@@ -3765,7 +3922,7 @@
           {
             "in": "query",
             "name": "explain",
-            "description": "If true, then the response contains an explanation of why the commands can or cannot be executed.",
+            "description": "If true, then the response contains an explanation of why the commands can or cannot run.",
             "deprecated": false,
             "schema": {
               "type": "boolean"
@@ -3869,7 +4026,8 @@
         "tags": [
           "cluster"
         ],
-        "summary": "Returns a comprehensive information about the state of the cluster",
+        "summary": "Get the cluster state",
+        "description": "Get comprehensive information about the state of the cluster.\n\nThe cluster state is an internal data structure which keeps track of a variety of information needed by every node, including the identity and attributes of the other nodes in the cluster; cluster-wide settings; index metadata, including the mapping and settings for each index; the location and status of every shard copy in the cluster.\n\nThe elected master node ensures that every node in the cluster has a copy of the same cluster state.\nThis API lets you retrieve a representation of this internal state for debugging or diagnostic purposes.\nYou may need to consult the Elasticsearch source code to determine the precise meaning of the response.\n\nBy default the API will route requests to the elected master node since this node is the authoritative source of cluster states.\nYou can also retrieve the cluster state held on the node handling the API request by adding the `?local=true` query parameter.\n\nElasticsearch may need to expend significant effort to compute a response to this API in larger clusters, and the response may comprise a very large quantity of data.\nIf you use this API repeatedly, your cluster may become unstable.\n\nWARNING: The response is a representation of an internal data structure.\nIts format is not subject to the same compatibility guarantees as other more stable APIs and may change from version to version.\nDo not query this API using external monitoring tools.\nInstead, obtain the information you require using other more stable cluster APIs.",
         "operationId": "cluster-state",
         "parameters": [
           {
@@ -3910,7 +4068,8 @@
         "tags": [
           "cluster"
         ],
-        "summary": "Returns a comprehensive information about the state of the cluster",
+        "summary": "Get the cluster state",
+        "description": "Get comprehensive information about the state of the cluster.\n\nThe cluster state is an internal data structure which keeps track of a variety of information needed by every node, including the identity and attributes of the other nodes in the cluster; cluster-wide settings; index metadata, including the mapping and settings for each index; the location and status of every shard copy in the cluster.\n\nThe elected master node ensures that every node in the cluster has a copy of the same cluster state.\nThis API lets you retrieve a representation of this internal state for debugging or diagnostic purposes.\nYou may need to consult the Elasticsearch source code to determine the precise meaning of the response.\n\nBy default the API will route requests to the elected master node since this node is the authoritative source of cluster states.\nYou can also retrieve the cluster state held on the node handling the API request by adding the `?local=true` query parameter.\n\nElasticsearch may need to expend significant effort to compute a response to this API in larger clusters, and the response may comprise a very large quantity of data.\nIf you use this API repeatedly, your cluster may become unstable.\n\nWARNING: The response is a representation of an internal data structure.\nIts format is not subject to the same compatibility guarantees as other more stable APIs and may change from version to version.\nDo not query this API using external monitoring tools.\nInstead, obtain the information you require using other more stable cluster APIs.",
         "operationId": "cluster-state-1",
         "parameters": [
           {
@@ -3954,7 +4113,8 @@
         "tags": [
           "cluster"
         ],
-        "summary": "Returns a comprehensive information about the state of the cluster",
+        "summary": "Get the cluster state",
+        "description": "Get comprehensive information about the state of the cluster.\n\nThe cluster state is an internal data structure which keeps track of a variety of information needed by every node, including the identity and attributes of the other nodes in the cluster; cluster-wide settings; index metadata, including the mapping and settings for each index; the location and status of every shard copy in the cluster.\n\nThe elected master node ensures that every node in the cluster has a copy of the same cluster state.\nThis API lets you retrieve a representation of this internal state for debugging or diagnostic purposes.\nYou may need to consult the Elasticsearch source code to determine the precise meaning of the response.\n\nBy default the API will route requests to the elected master node since this node is the authoritative source of cluster states.\nYou can also retrieve the cluster state held on the node handling the API request by adding the `?local=true` query parameter.\n\nElasticsearch may need to expend significant effort to compute a response to this API in larger clusters, and the response may comprise a very large quantity of data.\nIf you use this API repeatedly, your cluster may become unstable.\n\nWARNING: The response is a representation of an internal data structure.\nIts format is not subject to the same compatibility guarantees as other more stable APIs and may change from version to version.\nDo not query this API using external monitoring tools.\nInstead, obtain the information you require using other more stable cluster APIs.",
         "operationId": "cluster-state-2",
         "parameters": [
           {
@@ -4001,8 +4161,8 @@
         "tags": [
           "cluster"
         ],
-        "summary": "Returns cluster statistics",
-        "description": "It returns basic index metrics (shard numbers, store size, memory usage) and information about the current nodes that form the cluster (number, roles, os, jvm versions, memory usage, cpu and installed plugins).",
+        "summary": "Get cluster statistics",
+        "description": "Get basic index metrics (shard numbers, store size, memory usage) and information about the current nodes that form the cluster (number, roles, os, jvm versions, memory usage, cpu and installed plugins).",
         "operationId": "cluster-stats",
         "parameters": [
           {
@@ -4025,8 +4185,8 @@
         "tags": [
           "cluster"
         ],
-        "summary": "Returns cluster statistics",
-        "description": "It returns basic index metrics (shard numbers, store size, memory usage) and information about the current nodes that form the cluster (number, roles, os, jvm versions, memory usage, cpu and installed plugins).",
+        "summary": "Get cluster statistics",
+        "description": "Get basic index metrics (shard numbers, store size, memory usage) and information about the current nodes that form the cluster (number, roles, os, jvm versions, memory usage, cpu and installed plugins).",
         "operationId": "cluster-stats-1",
         "parameters": [
           {
@@ -5542,7 +5702,8 @@
         "tags": [
           "search"
         ],
-        "summary": "Returns number of documents matching a query",
+        "summary": "Count search results",
+        "description": "Get the number of documents matching a query.",
         "operationId": "count-1",
         "parameters": [
           {
@@ -5601,7 +5762,8 @@
         "tags": [
           "search"
         ],
-        "summary": "Returns number of documents matching a query",
+        "summary": "Count search results",
+        "description": "Get the number of documents matching a query.",
         "operationId": "count",
         "parameters": [
           {
@@ -5662,7 +5824,8 @@
         "tags": [
           "search"
         ],
-        "summary": "Returns number of documents matching a query",
+        "summary": "Count search results",
+        "description": "Get the number of documents matching a query.",
         "operationId": "count-3",
         "parameters": [
           {
@@ -5724,7 +5887,8 @@
         "tags": [
           "search"
         ],
-        "summary": "Returns number of documents matching a query",
+        "summary": "Count search results",
+        "description": "Get the number of documents matching a query.",
         "operationId": "count-2",
         "parameters": [
           {
@@ -7312,7 +7476,8 @@
         "tags": [
           "enrich"
         ],
-        "summary": "Creates the enrich index for an existing enrich policy",
+        "summary": "Run an enrich policy",
+        "description": "Create the enrich index for an existing enrich policy.",
         "operationId": "enrich-execute-policy",
         "parameters": [
           {
@@ -7431,7 +7596,8 @@
         "tags": [
           "eql"
         ],
-        "summary": "Returns the current status and available results for an async EQL search or a stored synchronous EQL search",
+        "summary": "Get async EQL search results",
+        "description": "Get the current status and available results for an async EQL search or a stored synchronous EQL search.",
         "operationId": "eql-get",
         "parameters": [
           {
@@ -7484,8 +7650,8 @@
         "tags": [
           "eql"
         ],
-        "summary": "Deletes an async EQL search or a stored synchronous EQL search",
-        "description": "The API also deletes results for the search.",
+        "summary": "Delete an async EQL search",
+        "description": "Delete an async EQL search or a stored synchronous EQL search.\nThe API also deletes results for the search.",
         "operationId": "eql-delete",
         "parameters": [
           {
@@ -7520,7 +7686,8 @@
         "tags": [
           "eql"
         ],
-        "summary": "Returns the current status for an async EQL search or a stored synchronous EQL search without returning results",
+        "summary": "Get the async EQL status",
+        "description": "Get the current status for an async EQL search or a stored synchronous EQL search without returning results.",
         "operationId": "eql-get-status",
         "parameters": [
           {
@@ -7583,7 +7750,11 @@
         "tags": [
           "eql"
         ],
-        "summary": "Returns results matching a query expressed in Event Query Language (EQL)",
+        "summary": "Get EQL search results",
+        "description": "Returns search results for an Event Query Language (EQL) query.\nEQL assumes each document in a data stream or index corresponds to an event.",
+        "externalDocs": {
+          "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/eql.html"
+        },
         "operationId": "eql-search",
         "parameters": [
           {
@@ -7622,7 +7793,11 @@
         "tags": [
           "eql"
         ],
-        "summary": "Returns results matching a query expressed in Event Query Language (EQL)",
+        "summary": "Get EQL search results",
+        "description": "Returns search results for an Event Query Language (EQL) query.\nEQL assumes each document in a data stream or index corresponds to an event.",
+        "externalDocs": {
+          "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/eql.html"
+        },
         "operationId": "eql-search-1",
         "parameters": [
           {
@@ -7663,7 +7838,11 @@
         "tags": [
           "esql"
         ],
-        "summary": "Executes an ES|QL request",
+        "summary": "Run an ES|QL query",
+        "description": "Get search results for an ES|QL (Elasticsearch query language) query.",
+        "externalDocs": {
+          "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/esql.html"
+        },
         "operationId": "esql-query",
         "parameters": [
           {
@@ -8230,8 +8409,8 @@
         "tags": [
           "search"
         ],
-        "summary": "The field capabilities API returns the information about the capabilities of fields among multiple indices",
-        "description": "The field capabilities API returns runtime fields like any other field. For example, a runtime field with a type\nof keyword is returned as any other field that belongs to the `keyword` family.",
+        "summary": "Get the field capabilities",
+        "description": "Get information about the capabilities of fields among multiple indices.\n\nFor data streams, the API returns field capabilities among the stream’s backing indices.\nIt returns runtime fields like any other field.\nFor example, a runtime field with a type of keyword is returned the same as any other field that belongs to the `keyword` family.",
         "operationId": "field-caps",
         "parameters": [
           {
@@ -8273,8 +8452,8 @@
         "tags": [
           "search"
         ],
-        "summary": "The field capabilities API returns the information about the capabilities of fields among multiple indices",
-        "description": "The field capabilities API returns runtime fields like any other field. For example, a runtime field with a type\nof keyword is returned as any other field that belongs to the `keyword` family.",
+        "summary": "Get the field capabilities",
+        "description": "Get information about the capabilities of fields among multiple indices.\n\nFor data streams, the API returns field capabilities among the stream’s backing indices.\nIt returns runtime fields like any other field.\nFor example, a runtime field with a type of keyword is returned the same as any other field that belongs to the `keyword` family.",
         "operationId": "field-caps-1",
         "parameters": [
           {
@@ -8318,8 +8497,8 @@
         "tags": [
           "search"
         ],
-        "summary": "The field capabilities API returns the information about the capabilities of fields among multiple indices",
-        "description": "The field capabilities API returns runtime fields like any other field. For example, a runtime field with a type\nof keyword is returned as any other field that belongs to the `keyword` family.",
+        "summary": "Get the field capabilities",
+        "description": "Get information about the capabilities of fields among multiple indices.\n\nFor data streams, the API returns field capabilities among the stream’s backing indices.\nIt returns runtime fields like any other field.\nFor example, a runtime field with a type of keyword is returned the same as any other field that belongs to the `keyword` family.",
         "operationId": "field-caps-2",
         "parameters": [
           {
@@ -8364,8 +8543,8 @@
         "tags": [
           "search"
         ],
-        "summary": "The field capabilities API returns the information about the capabilities of fields among multiple indices",
-        "description": "The field capabilities API returns runtime fields like any other field. For example, a runtime field with a type\nof keyword is returned as any other field that belongs to the `keyword` family.",
+        "summary": "Get the field capabilities",
+        "description": "Get information about the capabilities of fields among multiple indices.\n\nFor data streams, the API returns field capabilities among the stream’s backing indices.\nIt returns runtime fields like any other field.\nFor example, a runtime field with a type of keyword is returned the same as any other field that belongs to the `keyword` family.",
         "operationId": "field-caps-3",
         "parameters": [
           {
@@ -8412,8 +8591,8 @@
         "tags": [
           "fleet"
         ],
-        "summary": "Returns the current global checkpoints for an index",
-        "description": "This API is design for internal use by the fleet server project.",
+        "summary": "Get global checkpoints",
+        "description": "Get the current global checkpoints for an index.\nThis API is designed for internal use by the Fleet server project.",
         "operationId": "fleet-global-checkpoints",
         "parameters": [
           {
@@ -8513,8 +8692,8 @@
         "tags": [
           "fleet"
         ],
-        "summary": "Executes several [fleet searches](https://www.elastic.co/guide/en/elasticsearch/reference/current/fleet-search.html) with a single API request",
-        "description": "The API follows the same structure as the [multi search](https://www.elastic.co/guide/en/elasticsearch/reference/current/search-multi-search.html) API. However, similar to the fleet search API, it\nsupports the wait_for_checkpoints parameter.",
+        "summary": "Run multiple Fleet searches",
+        "description": "Run several Fleet searches with a single API request.\nThe API follows the same structure as the multi search API.\nHowever, similar to the Fleet search API, it supports the `wait_for_checkpoints` parameter.",
         "operationId": "fleet-msearch",
         "parameters": [
           {
@@ -8571,8 +8750,8 @@
         "tags": [
           "fleet"
         ],
-        "summary": "Executes several [fleet searches](https://www.elastic.co/guide/en/elasticsearch/reference/current/fleet-search.html) with a single API request",
-        "description": "The API follows the same structure as the [multi search](https://www.elastic.co/guide/en/elasticsearch/reference/current/search-multi-search.html) API. However, similar to the fleet search API, it\nsupports the wait_for_checkpoints parameter.",
+        "summary": "Run multiple Fleet searches",
+        "description": "Run several Fleet searches with a single API request.\nThe API follows the same structure as the multi search API.\nHowever, similar to the Fleet search API, it supports the `wait_for_checkpoints` parameter.",
         "operationId": "fleet-msearch-1",
         "parameters": [
           {
@@ -8631,8 +8810,8 @@
         "tags": [
           "fleet"
         ],
-        "summary": "Executes several [fleet searches](https://www.elastic.co/guide/en/elasticsearch/reference/current/fleet-search.html) with a single API request",
-        "description": "The API follows the same structure as the [multi search](https://www.elastic.co/guide/en/elasticsearch/reference/current/search-multi-search.html) API. However, similar to the fleet search API, it\nsupports the wait_for_checkpoints parameter.",
+        "summary": "Run multiple Fleet searches",
+        "description": "Run several Fleet searches with a single API request.\nThe API follows the same structure as the multi search API.\nHowever, similar to the Fleet search API, it supports the `wait_for_checkpoints` parameter.",
         "operationId": "fleet-msearch-2",
         "parameters": [
           {
@@ -8692,8 +8871,8 @@
         "tags": [
           "fleet"
         ],
-        "summary": "Executes several [fleet searches](https://www.elastic.co/guide/en/elasticsearch/reference/current/fleet-search.html) with a single API request",
-        "description": "The API follows the same structure as the [multi search](https://www.elastic.co/guide/en/elasticsearch/reference/current/search-multi-search.html) API. However, similar to the fleet search API, it\nsupports the wait_for_checkpoints parameter.",
+        "summary": "Run multiple Fleet searches",
+        "description": "Run several Fleet searches with a single API request.\nThe API follows the same structure as the multi search API.\nHowever, similar to the Fleet search API, it supports the `wait_for_checkpoints` parameter.",
         "operationId": "fleet-msearch-3",
         "parameters": [
           {
@@ -8755,8 +8934,8 @@
         "tags": [
           "fleet"
         ],
-        "summary": "The purpose of the fleet search api is to provide a search api where the search will only be executed\n",
-        "description": "after provided checkpoint has been processed and is visible for searches inside of Elasticsearch.",
+        "summary": "Run a Fleet search",
+        "description": "The purpose of the Fleet search API is to provide an API where the search will be run only\nafter the provided checkpoint has been processed and is visible for searches inside of Elasticsearch.",
         "operationId": "fleet-search",
         "parameters": [
           {
@@ -8803,9 +8982,6 @@
           },
           {
             "$ref": "#/components/parameters/fleet.search#max_concurrent_shard_requests"
-          },
-          {
-            "$ref": "#/components/parameters/fleet.search#min_compatible_shard_node"
           },
           {
             "$ref": "#/components/parameters/fleet.search#preference"
@@ -8909,8 +9085,8 @@
         "tags": [
           "fleet"
         ],
-        "summary": "The purpose of the fleet search api is to provide a search api where the search will only be executed\n",
-        "description": "after provided checkpoint has been processed and is visible for searches inside of Elasticsearch.",
+        "summary": "Run a Fleet search",
+        "description": "The purpose of the Fleet search API is to provide an API where the search will be run only\nafter the provided checkpoint has been processed and is visible for searches inside of Elasticsearch.",
         "operationId": "fleet-search-1",
         "parameters": [
           {
@@ -8957,9 +9133,6 @@
           },
           {
             "$ref": "#/components/parameters/fleet.search#max_concurrent_shard_requests"
-          },
-          {
-            "$ref": "#/components/parameters/fleet.search#min_compatible_shard_node"
           },
           {
             "$ref": "#/components/parameters/fleet.search#preference"
@@ -9138,7 +9311,11 @@
         "tags": [
           "graph"
         ],
-        "summary": "Extracts and summarizes information about the documents and terms in an Elasticsearch data stream or index",
+        "summary": "Explore graph analytics",
+        "description": "Extract and summarize information about the documents and terms in an Elasticsearch data stream or index.\nThe easiest way to understand the behavior of this API is to use the Graph UI to explore connections.\nAn initial request to the `_explore` API contains a seed query that identifies the documents of interest and specifies the fields that define the vertices and connections you want to include in the graph.\nSubsequent requests enable you to spider out from one more vertices of interest.\nYou can exclude vertices that have already been returned.",
+        "externalDocs": {
+          "url": "https://www.elastic.co/guide/en/kibana/current/xpack-graph.html"
+        },
         "operationId": "graph-explore",
         "parameters": [
           {
@@ -9164,7 +9341,11 @@
         "tags": [
           "graph"
         ],
-        "summary": "Extracts and summarizes information about the documents and terms in an Elasticsearch data stream or index",
+        "summary": "Explore graph analytics",
+        "description": "Extract and summarize information about the documents and terms in an Elasticsearch data stream or index.\nThe easiest way to understand the behavior of this API is to use the Graph UI to explore connections.\nAn initial request to the `_explore` API contains a seed query that identifies the documents of interest and specifies the fields that define the vertices and connections you want to include in the graph.\nSubsequent requests enable you to spider out from one more vertices of interest.\nYou can exclude vertices that have already been returned.",
+        "externalDocs": {
+          "url": "https://www.elastic.co/guide/en/kibana/current/xpack-graph.html"
+        },
         "operationId": "graph-explore-1",
         "parameters": [
           {
@@ -9192,7 +9373,8 @@
         "tags": [
           "health_report"
         ],
-        "summary": "Returns the health of the cluster",
+        "summary": "Get the cluster health",
+        "description": "Get a report with the health status of an Elasticsearch cluster.\nThe report contains a list of indicators that compose Elasticsearch functionality.\n\nEach indicator has a health status of: green, unknown, yellow or red.\nThe indicator will provide an explanation and metadata describing the reason for its current health status.\n\nThe cluster’s status is controlled by the worst indicator status.\n\nIn the event that an indicator’s status is non-green, a list of impacts may be present in the indicator result which detail the functionalities that are negatively affected by the health issue.\nEach impact carries with it a severity level, an area of the system that is affected, and a simple description of the impact on the system.\n\nSome health indicators can determine the root cause of a health problem and prescribe a set of steps that can be performed in order to improve the health of the system.\nThe root cause and remediation steps are encapsulated in a diagnosis.\nA diagnosis contains a cause detailing a root cause analysis, an action containing a brief description of the steps to take to fix the problem, the list of affected resources (if applicable), and a detailed step-by-step troubleshooting guide to fix the diagnosed problem.\n\nNOTE: The health indicators perform root cause analysis of non-green health statuses. This can be computationally expensive when called frequently.\nWhen setting up automated polling of the API for health status, set verbose to false to disable the more expensive analysis logic.",
         "operationId": "health-report",
         "parameters": [
           {
@@ -9218,7 +9400,8 @@
         "tags": [
           "health_report"
         ],
-        "summary": "Returns the health of the cluster",
+        "summary": "Get the cluster health",
+        "description": "Get a report with the health status of an Elasticsearch cluster.\nThe report contains a list of indicators that compose Elasticsearch functionality.\n\nEach indicator has a health status of: green, unknown, yellow or red.\nThe indicator will provide an explanation and metadata describing the reason for its current health status.\n\nThe cluster’s status is controlled by the worst indicator status.\n\nIn the event that an indicator’s status is non-green, a list of impacts may be present in the indicator result which detail the functionalities that are negatively affected by the health issue.\nEach impact carries with it a severity level, an area of the system that is affected, and a simple description of the impact on the system.\n\nSome health indicators can determine the root cause of a health problem and prescribe a set of steps that can be performed in order to improve the health of the system.\nThe root cause and remediation steps are encapsulated in a diagnosis.\nA diagnosis contains a cause detailing a root cause analysis, an action containing a brief description of the steps to take to fix the problem, the list of affected resources (if applicable), and a detailed step-by-step troubleshooting guide to fix the diagnosed problem.\n\nNOTE: The health indicators perform root cause analysis of non-green health statuses. This can be computationally expensive when called frequently.\nWhen setting up automated polling of the API for health status, set verbose to false to disable the more expensive analysis logic.",
         "operationId": "health-report-1",
         "parameters": [
           {
@@ -10965,7 +11148,7 @@
             "$ref": "#/components/parameters/indices.get_alias#ignore_unavailable"
           },
           {
-            "$ref": "#/components/parameters/indices.get_alias#local"
+            "$ref": "#/components/parameters/indices.get_alias#master_timeout"
           }
         ],
         "responses": {
@@ -11085,7 +11268,7 @@
             "$ref": "#/components/parameters/indices.exists_alias#ignore_unavailable"
           },
           {
-            "$ref": "#/components/parameters/indices.exists_alias#local"
+            "$ref": "#/components/parameters/indices.exists_alias#master_timeout"
           }
         ],
         "responses": {
@@ -11551,7 +11734,8 @@
         "tags": [
           "indices"
         ],
-        "summary": "Returns information about whether a particular index template exists",
+        "summary": "Check index templates",
+        "description": "Check whether index templates exist.",
         "operationId": "indices-exists-index-template",
         "parameters": [
           {
@@ -11955,7 +12139,7 @@
             "$ref": "#/components/parameters/indices.get_alias#ignore_unavailable"
           },
           {
-            "$ref": "#/components/parameters/indices.get_alias#local"
+            "$ref": "#/components/parameters/indices.get_alias#master_timeout"
           }
         ],
         "responses": {
@@ -11985,7 +12169,7 @@
             "$ref": "#/components/parameters/indices.exists_alias#ignore_unavailable"
           },
           {
-            "$ref": "#/components/parameters/indices.exists_alias#local"
+            "$ref": "#/components/parameters/indices.exists_alias#master_timeout"
           }
         ],
         "responses": {
@@ -12391,7 +12575,7 @@
             "$ref": "#/components/parameters/indices.get_alias#ignore_unavailable"
           },
           {
-            "$ref": "#/components/parameters/indices.get_alias#local"
+            "$ref": "#/components/parameters/indices.get_alias#master_timeout"
           }
         ],
         "responses": {
@@ -12423,7 +12607,7 @@
             "$ref": "#/components/parameters/indices.get_alias#ignore_unavailable"
           },
           {
-            "$ref": "#/components/parameters/indices.get_alias#local"
+            "$ref": "#/components/parameters/indices.get_alias#master_timeout"
           }
         ],
         "responses": {
@@ -13530,8 +13714,8 @@
         "tags": [
           "indices"
         ],
-        "summary": "Resolves the specified name(s) and/or index patterns for indices, aliases, and data streams",
-        "description": "Multiple patterns and remote clusters are supported.",
+        "summary": "Resolve indices",
+        "description": "Resolve the names and/or index patterns for indices, aliases, and data streams.\nMultiple patterns and remote clusters are supported.",
         "operationId": "indices-resolve-index",
         "parameters": [
           {
@@ -13708,9 +13892,6 @@
           },
           {
             "$ref": "#/components/parameters/indices.segments#ignore_unavailable"
-          },
-          {
-            "$ref": "#/components/parameters/indices.segments#verbose"
           }
         ],
         "responses": {
@@ -13740,9 +13921,6 @@
           },
           {
             "$ref": "#/components/parameters/indices.segments#ignore_unavailable"
-          },
-          {
-            "$ref": "#/components/parameters/indices.segments#verbose"
           }
         ],
         "responses": {
@@ -14690,7 +14868,7 @@
             "$ref": "#/components/responses/inference.get#200"
           }
         },
-        "x-state": "Technical preview"
+        "x-state": "Added in 8.11.0"
       },
       "put": {
         "tags": [
@@ -14711,7 +14889,7 @@
             "$ref": "#/components/responses/inference.put#200"
           }
         },
-        "x-state": "Technical preview"
+        "x-state": "Added in 8.11.0"
       },
       "post": {
         "tags": [
@@ -14735,7 +14913,7 @@
             "$ref": "#/components/responses/inference.inference#200"
           }
         },
-        "x-state": "Technical preview"
+        "x-state": "Added in 8.11.0"
       },
       "delete": {
         "tags": [
@@ -14759,7 +14937,7 @@
             "$ref": "#/components/responses/inference.delete#200"
           }
         },
-        "x-state": "Technical preview"
+        "x-state": "Added in 8.11.0"
       }
     },
     "/_inference/{task_type}/{inference_id}": {
@@ -14782,7 +14960,7 @@
             "$ref": "#/components/responses/inference.get#200"
           }
         },
-        "x-state": "Technical preview"
+        "x-state": "Added in 8.11.0"
       },
       "put": {
         "tags": [
@@ -14806,7 +14984,7 @@
             "$ref": "#/components/responses/inference.put#200"
           }
         },
-        "x-state": "Technical preview"
+        "x-state": "Added in 8.11.0"
       },
       "post": {
         "tags": [
@@ -14833,7 +15011,7 @@
             "$ref": "#/components/responses/inference.inference#200"
           }
         },
-        "x-state": "Technical preview"
+        "x-state": "Added in 8.11.0"
       },
       "delete": {
         "tags": [
@@ -14860,7 +15038,7 @@
             "$ref": "#/components/responses/inference.delete#200"
           }
         },
-        "x-state": "Technical preview"
+        "x-state": "Added in 8.11.0"
       }
     },
     "/_inference": {
@@ -14875,7 +15053,7 @@
             "$ref": "#/components/responses/inference.get#200"
           }
         },
-        "x-state": "Technical preview"
+        "x-state": "Added in 8.11.0"
       }
     },
     "/": {
@@ -14928,7 +15106,7 @@
           "cluster"
         ],
         "summary": "Ping the cluster",
-        "description": "Returns whether the cluster is running.",
+        "description": "Get information about whether the cluster is running.",
         "operationId": "ping",
         "responses": {
           "200": {
@@ -14945,7 +15123,8 @@
         "tags": [
           "ingest"
         ],
-        "summary": "Returns information about one or more geoip database configurations",
+        "summary": "Get GeoIP database configurations",
+        "description": "Get information about one or more IP geolocation database configurations.",
         "operationId": "ingest-get-geoip-database-1",
         "parameters": [
           {
@@ -14966,7 +15145,8 @@
         "tags": [
           "ingest"
         ],
-        "summary": "Returns information about one or more geoip database configurations",
+        "summary": "Create or update GeoIP database configurations",
+        "description": "Create or update IP geolocation database configurations.",
         "operationId": "ingest-put-geoip-database",
         "parameters": [
           {
@@ -15041,7 +15221,8 @@
         "tags": [
           "ingest"
         ],
-        "summary": "Deletes a geoip database configuration",
+        "summary": "Delete GeoIP database configurations",
+        "description": "Delete one or more IP geolocation database configurations.",
         "operationId": "ingest-delete-geoip-database",
         "parameters": [
           {
@@ -15096,8 +15277,11 @@
         "tags": [
           "ingest"
         ],
-        "summary": "Returns information about one or more ingest pipelines",
-        "description": "This API returns a local reference of the pipeline.",
+        "summary": "Get pipelines",
+        "description": "Get information about one or more ingest pipelines.\nThis API returns a local reference of the pipeline.",
+        "externalDocs": {
+          "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/ingest.html"
+        },
         "operationId": "ingest-get-pipeline-1",
         "parameters": [
           {
@@ -15121,8 +15305,11 @@
         "tags": [
           "ingest"
         ],
-        "summary": "Creates or updates an ingest pipeline",
+        "summary": "Create or update a pipeline",
         "description": "Changes made using this API take effect immediately.",
+        "externalDocs": {
+          "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/ingest.html"
+        },
         "operationId": "ingest-put-pipeline",
         "parameters": [
           {
@@ -15225,7 +15412,11 @@
         "tags": [
           "ingest"
         ],
-        "summary": "Deletes one or more existing ingest pipeline",
+        "summary": "Delete pipelines",
+        "description": "Delete one or more ingest pipelines.",
+        "externalDocs": {
+          "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/ingest.html"
+        },
         "operationId": "ingest-delete-pipeline",
         "parameters": [
           {
@@ -15280,7 +15471,11 @@
         "tags": [
           "ingest"
         ],
-        "summary": "Gets download statistics for GeoIP2 databases used with the geoip processor",
+        "summary": "Get GeoIP statistics",
+        "description": "Get download statistics for GeoIP2 databases that are used with the GeoIP processor.",
+        "externalDocs": {
+          "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/geoip-processor.html"
+        },
         "operationId": "ingest-geo-ip-stats",
         "responses": {
           "200": {
@@ -15318,7 +15513,8 @@
         "tags": [
           "ingest"
         ],
-        "summary": "Returns information about one or more geoip database configurations",
+        "summary": "Get GeoIP database configurations",
+        "description": "Get information about one or more IP geolocation database configurations.",
         "operationId": "ingest-get-geoip-database",
         "parameters": [
           {
@@ -15338,8 +15534,11 @@
         "tags": [
           "ingest"
         ],
-        "summary": "Returns information about one or more ingest pipelines",
-        "description": "This API returns a local reference of the pipeline.",
+        "summary": "Get pipelines",
+        "description": "Get information about one or more ingest pipelines.\nThis API returns a local reference of the pipeline.",
+        "externalDocs": {
+          "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/ingest.html"
+        },
         "operationId": "ingest-get-pipeline",
         "parameters": [
           {
@@ -15362,8 +15561,11 @@
         "tags": [
           "ingest"
         ],
-        "summary": "Extracts structured fields out of a single text field within a document",
-        "description": "You choose which field to extract matched fields from, as well as the grok pattern you expect will match.\nA grok pattern is like a regular expression that supports aliased expressions that can be reused.",
+        "summary": "Run a grok processor",
+        "description": "Extract structured fields out of a single text field within a document.\nYou must choose which field to extract matched fields from, as well as the grok pattern you expect will match.\nA grok pattern is like a regular expression that supports aliased expressions that can be reused.",
+        "externalDocs": {
+          "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/grok-processor.html"
+        },
         "operationId": "ingest-processor-grok",
         "responses": {
           "200": {
@@ -15396,7 +15598,8 @@
         "tags": [
           "ingest"
         ],
-        "summary": "Executes an ingest pipeline against a set of provided documents",
+        "summary": "Simulate a pipeline",
+        "description": "Run an ingest pipeline against a set of provided documents.\nYou can either specify an existing pipeline to use with the provided documents or supply a pipeline definition in the body of the request.",
         "operationId": "ingest-simulate",
         "parameters": [
           {
@@ -15417,7 +15620,8 @@
         "tags": [
           "ingest"
         ],
-        "summary": "Executes an ingest pipeline against a set of provided documents",
+        "summary": "Simulate a pipeline",
+        "description": "Run an ingest pipeline against a set of provided documents.\nYou can either specify an existing pipeline to use with the provided documents or supply a pipeline definition in the body of the request.",
         "operationId": "ingest-simulate-1",
         "parameters": [
           {
@@ -15440,7 +15644,8 @@
         "tags": [
           "ingest"
         ],
-        "summary": "Executes an ingest pipeline against a set of provided documents",
+        "summary": "Simulate a pipeline",
+        "description": "Run an ingest pipeline against a set of provided documents.\nYou can either specify an existing pipeline to use with the provided documents or supply a pipeline definition in the body of the request.",
         "operationId": "ingest-simulate-2",
         "parameters": [
           {
@@ -15464,7 +15669,8 @@
         "tags": [
           "ingest"
         ],
-        "summary": "Executes an ingest pipeline against a set of provided documents",
+        "summary": "Simulate a pipeline",
+        "description": "Run an ingest pipeline against a set of provided documents.\nYou can either specify an existing pipeline to use with the provided documents or supply a pipeline definition in the body of the request.",
         "operationId": "ingest-simulate-3",
         "parameters": [
           {
@@ -15490,7 +15696,8 @@
         "tags": [
           "search"
         ],
-        "summary": "Performs a kNN search",
+        "summary": "Run a knn search",
+        "description": "NOTE: The kNN search API has been replaced by the `knn` option in the search API.\n\nPerform a k-nearest neighbor (kNN) search on a dense_vector field and return the matching documents.\nGiven a query vector, the API finds the k closest vectors and returns those documents as search hits.\n\nElasticsearch uses the HNSW algorithm to support efficient kNN search.\nLike most kNN algorithms, HNSW is an approximate method that sacrifices result accuracy for improved search speed.\nThis means the results returned are not always the true k closest neighbors.\n\nThe kNN search API supports restricting the search using a filter.\nThe search will return the top k documents that also match the filter query.",
         "operationId": "knn-search",
         "parameters": [
           {
@@ -15515,7 +15722,8 @@
         "tags": [
           "search"
         ],
-        "summary": "Performs a kNN search",
+        "summary": "Run a knn search",
+        "description": "NOTE: The kNN search API has been replaced by the `knn` option in the search API.\n\nPerform a k-nearest neighbor (kNN) search on a dense_vector field and return the matching documents.\nGiven a query vector, the API finds the k closest vectors and returns those documents as search hits.\n\nElasticsearch uses the HNSW algorithm to support efficient kNN search.\nLike most kNN algorithms, HNSW is an approximate method that sacrifices result accuracy for improved search speed.\nThis means the results returned are not always the true k closest neighbors.\n\nThe kNN search API supports restricting the search using a filter.\nThe search will return the top k documents that also match the filter query.",
         "operationId": "knn-search-1",
         "parameters": [
           {
@@ -16978,7 +17186,7 @@
           "ml anomaly"
         ],
         "summary": "Create a datafeed",
-        "description": "Datafeeds retrieve data from Elasticsearch for analysis by an anomaly detection job.\nYou can associate only one datafeed with each anomaly detection job.\nThe datafeed contains a query that runs at a defined interval (`frequency`).\nIf you are concerned about delayed data, you can add a delay (`query_delay') at each interval.\nWhen Elasticsearch security features are enabled, your datafeed remembers which roles the user who created it had\nat the time of creation and runs the query using those same roles. If you provide secondary authorization headers,\nthose credentials are used instead.\nYou must use Kibana, this API, or the create anomaly detection jobs API to create a datafeed. Do not add a datafeed\ndirectly to the `.ml-config` index. Do not give users `write` privileges on the `.ml-config` index.",
+        "description": "Datafeeds retrieve data from Elasticsearch for analysis by an anomaly detection job.\nYou can associate only one datafeed with each anomaly detection job.\nThe datafeed contains a query that runs at a defined interval (`frequency`).\nIf you are concerned about delayed data, you can add a delay (`query_delay`) at each interval.\nWhen Elasticsearch security features are enabled, your datafeed remembers which roles the user who created it had\nat the time of creation and runs the query using those same roles. If you provide secondary authorization headers,\nthose credentials are used instead.\nYou must use Kibana, this API, or the create anomaly detection jobs API to create a datafeed. Do not add a datafeed\ndirectly to the `.ml-config` index. Do not give users `write` privileges on the `.ml-config` index.",
         "operationId": "ml-put-datafeed",
         "parameters": [
           {
@@ -22598,7 +22806,10 @@
         "tags": [
           "search"
         ],
-        "summary": "Runs multiple templated searches with a single request",
+        "summary": "Run multiple templated searches",
+        "externalDocs": {
+          "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/search-template.html"
+        },
         "operationId": "msearch-template",
         "parameters": [
           {
@@ -22631,7 +22842,10 @@
         "tags": [
           "search"
         ],
-        "summary": "Runs multiple templated searches with a single request",
+        "summary": "Run multiple templated searches",
+        "externalDocs": {
+          "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/search-template.html"
+        },
         "operationId": "msearch-template-1",
         "parameters": [
           {
@@ -22666,7 +22880,10 @@
         "tags": [
           "search"
         ],
-        "summary": "Runs multiple templated searches with a single request",
+        "summary": "Run multiple templated searches",
+        "externalDocs": {
+          "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/search-template.html"
+        },
         "operationId": "msearch-template-2",
         "parameters": [
           {
@@ -22702,7 +22919,10 @@
         "tags": [
           "search"
         ],
-        "summary": "Runs multiple templated searches with a single request",
+        "summary": "Run multiple templated searches",
+        "externalDocs": {
+          "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/search-template.html"
+        },
         "operationId": "msearch-template-3",
         "parameters": [
           {
@@ -22966,7 +23186,8 @@
         "tags": [
           "cluster"
         ],
-        "summary": "You can use this API to clear the archived repositories metering information in the cluster",
+        "summary": "Clear the archived repositories metering",
+        "description": "Clear the archived repositories metering information in the cluster.",
         "operationId": "nodes-clear-repositories-metering-archive",
         "parameters": [
           {
@@ -23012,8 +23233,8 @@
         "tags": [
           "cluster"
         ],
-        "summary": "You can use the cluster repositories metering API to retrieve repositories metering information in a cluster",
-        "description": "This API exposes monotonically non-decreasing counters and it’s expected that clients would durably store the\ninformation needed to compute aggregations over a period of time. Additionally, the information exposed by this\nAPI is volatile, meaning that it won’t be present after node restarts.",
+        "summary": "Get cluster repositories metering",
+        "description": "Get repositories metering information for a cluster.\nThis API exposes monotonically non-decreasing counters and it is expected that clients would durably store the information needed to compute aggregations over a period of time.\nAdditionally, the information exposed by this API is volatile, meaning that it will not be present after node restarts.",
         "operationId": "nodes-get-repositories-metering-info",
         "parameters": [
           {
@@ -23048,8 +23269,8 @@
         "tags": [
           "cluster"
         ],
-        "summary": "This API yields a breakdown of the hot threads on each selected node in the cluster",
-        "description": "The output is plain text with a breakdown of each node’s top hot threads.",
+        "summary": "Get the hot threads for nodes",
+        "description": "Get a breakdown of the hot threads on each selected node in the cluster.\nThe output is plain text with a breakdown of the top hot threads for each node.",
         "operationId": "nodes-hot-threads",
         "parameters": [
           {
@@ -23089,8 +23310,8 @@
         "tags": [
           "cluster"
         ],
-        "summary": "This API yields a breakdown of the hot threads on each selected node in the cluster",
-        "description": "The output is plain text with a breakdown of each node’s top hot threads.",
+        "summary": "Get the hot threads for nodes",
+        "description": "Get a breakdown of the hot threads on each selected node in the cluster.\nThe output is plain text with a breakdown of the top hot threads for each node.",
         "operationId": "nodes-hot-threads-1",
         "parameters": [
           {
@@ -23133,7 +23354,8 @@
         "tags": [
           "cluster"
         ],
-        "summary": "Returns cluster nodes information",
+        "summary": "Get node information",
+        "description": "By default, the API returns all attributes and core settings for cluster nodes.",
         "operationId": "nodes-info",
         "parameters": [
           {
@@ -23159,7 +23381,8 @@
         "tags": [
           "cluster"
         ],
-        "summary": "Returns cluster nodes information",
+        "summary": "Get node information",
+        "description": "By default, the API returns all attributes and core settings for cluster nodes.",
         "operationId": "nodes-info-1",
         "parameters": [
           {
@@ -23188,7 +23411,8 @@
         "tags": [
           "cluster"
         ],
-        "summary": "Returns cluster nodes information",
+        "summary": "Get node information",
+        "description": "By default, the API returns all attributes and core settings for cluster nodes.",
         "operationId": "nodes-info-2",
         "parameters": [
           {
@@ -23217,7 +23441,8 @@
         "tags": [
           "cluster"
         ],
-        "summary": "Returns cluster nodes information",
+        "summary": "Get node information",
+        "description": "By default, the API returns all attributes and core settings for cluster nodes.",
         "operationId": "nodes-info-3",
         "parameters": [
           {
@@ -23249,7 +23474,8 @@
         "tags": [
           "cluster"
         ],
-        "summary": "Reloads the keystore on nodes in the cluster",
+        "summary": "Reload the keystore on nodes in the cluster",
+        "description": "Secure settings are stored in an on-disk keystore. Certain of these settings are reloadable.\nThat is, you can change them on disk and reload them without restarting any nodes in the cluster.\nWhen you have updated reloadable secure settings in your keystore, you can use this API to reload those settings on each node.\n\nWhen the Elasticsearch keystore is password protected and not simply obfuscated, you must provide the password for the keystore when you reload the secure settings.\nReloading the settings for the whole cluster assumes that the keystores for all nodes are protected with the same password; this method is allowed only when inter-node communications are encrypted.\nAlternatively, you can reload the secure settings on each node by locally accessing the API and passing the node-specific Elasticsearch keystore password.",
         "operationId": "nodes-reload-secure-settings",
         "parameters": [
           {
@@ -23272,7 +23498,8 @@
         "tags": [
           "cluster"
         ],
-        "summary": "Reloads the keystore on nodes in the cluster",
+        "summary": "Reload the keystore on nodes in the cluster",
+        "description": "Secure settings are stored in an on-disk keystore. Certain of these settings are reloadable.\nThat is, you can change them on disk and reload them without restarting any nodes in the cluster.\nWhen you have updated reloadable secure settings in your keystore, you can use this API to reload those settings on each node.\n\nWhen the Elasticsearch keystore is password protected and not simply obfuscated, you must provide the password for the keystore when you reload the secure settings.\nReloading the settings for the whole cluster assumes that the keystores for all nodes are protected with the same password; this method is allowed only when inter-node communications are encrypted.\nAlternatively, you can reload the secure settings on each node by locally accessing the API and passing the node-specific Elasticsearch keystore password.",
         "operationId": "nodes-reload-secure-settings-1",
         "parameters": [
           {
@@ -23298,7 +23525,8 @@
         "tags": [
           "cluster"
         ],
-        "summary": "Returns cluster nodes statistics",
+        "summary": "Get node statistics",
+        "description": "Get statistics for nodes in a cluster.\nBy default, all stats are returned. You can limit the returned information by using metrics.",
         "operationId": "nodes-stats",
         "parameters": [
           {
@@ -23344,7 +23572,8 @@
         "tags": [
           "cluster"
         ],
-        "summary": "Returns cluster nodes statistics",
+        "summary": "Get node statistics",
+        "description": "Get statistics for nodes in a cluster.\nBy default, all stats are returned. You can limit the returned information by using metrics.",
         "operationId": "nodes-stats-1",
         "parameters": [
           {
@@ -23393,7 +23622,8 @@
         "tags": [
           "cluster"
         ],
-        "summary": "Returns cluster nodes statistics",
+        "summary": "Get node statistics",
+        "description": "Get statistics for nodes in a cluster.\nBy default, all stats are returned. You can limit the returned information by using metrics.",
         "operationId": "nodes-stats-2",
         "parameters": [
           {
@@ -23442,7 +23672,8 @@
         "tags": [
           "cluster"
         ],
-        "summary": "Returns cluster nodes statistics",
+        "summary": "Get node statistics",
+        "description": "Get statistics for nodes in a cluster.\nBy default, all stats are returned. You can limit the returned information by using metrics.",
         "operationId": "nodes-stats-3",
         "parameters": [
           {
@@ -23494,7 +23725,8 @@
         "tags": [
           "cluster"
         ],
-        "summary": "Returns cluster nodes statistics",
+        "summary": "Get node statistics",
+        "description": "Get statistics for nodes in a cluster.\nBy default, all stats are returned. You can limit the returned information by using metrics.",
         "operationId": "nodes-stats-4",
         "parameters": [
           {
@@ -23546,7 +23778,8 @@
         "tags": [
           "cluster"
         ],
-        "summary": "Returns cluster nodes statistics",
+        "summary": "Get node statistics",
+        "description": "Get statistics for nodes in a cluster.\nBy default, all stats are returned. You can limit the returned information by using metrics.",
         "operationId": "nodes-stats-5",
         "parameters": [
           {
@@ -23601,7 +23834,7 @@
         "tags": [
           "cluster"
         ],
-        "summary": "Returns information on the usage of features",
+        "summary": "Get feature usage information",
         "operationId": "nodes-usage",
         "parameters": [
           {
@@ -23621,7 +23854,7 @@
         "tags": [
           "cluster"
         ],
-        "summary": "Returns information on the usage of features",
+        "summary": "Get feature usage information",
         "operationId": "nodes-usage-1",
         "parameters": [
           {
@@ -23644,7 +23877,7 @@
         "tags": [
           "cluster"
         ],
-        "summary": "Returns information on the usage of features",
+        "summary": "Get feature usage information",
         "operationId": "nodes-usage-2",
         "parameters": [
           {
@@ -23667,7 +23900,7 @@
         "tags": [
           "cluster"
         ],
-        "summary": "Returns information on the usage of features",
+        "summary": "Get feature usage information",
         "operationId": "nodes-usage-3",
         "parameters": [
           {
@@ -23693,8 +23926,8 @@
         "tags": [
           "search"
         ],
-        "summary": "A search request by default executes against the most recent visible data of the target indices,\n",
-        "description": "which is called point in time. Elasticsearch pit (point in time) is a lightweight view into the\nstate of the data as it existed when initiated. In some cases, it’s preferred to perform multiple\nsearch requests using the same point in time. For example, if refreshes happen between\n`search_after` requests, then the results of those requests might not be consistent as changes happening\nbetween searches are only visible to the more recent point in time.",
+        "summary": "Open a point in time",
+        "description": "A search request by default runs against the most recent visible data of the target indices,\nwhich is called point in time. Elasticsearch pit (point in time) is a lightweight view into the\nstate of the data as it existed when initiated. In some cases, it’s preferred to perform multiple\nsearch requests using the same point in time. For example, if refreshes happen between\n`search_after` requests, then the results of those requests might not be consistent as changes happening\nbetween searches are only visible to the more recent point in time.\n\nA point in time must be opened explicitly before being used in search requests.\nThe `keep_alive` parameter tells Elasticsearch how long it should persist.",
         "operationId": "open-point-in-time",
         "parameters": [
           {
@@ -23756,6 +23989,16 @@
             "deprecated": false,
             "schema": {
               "$ref": "#/components/schemas/_types:ExpandWildcards"
+            },
+            "style": "form"
+          },
+          {
+            "in": "query",
+            "name": "allow_partial_search_results",
+            "description": "If `false`, creating a point in time request when a shard is missing or unavailable will throw an exception.\nIf `true`, the point in time will contain all the shards that are available at the time of the request.",
+            "deprecated": false,
+            "schema": {
+              "type": "boolean"
             },
             "style": "form"
           }
@@ -23868,7 +24111,11 @@
         "tags": [
           "query_rules"
         ],
-        "summary": "Returns the details about a query rule within a query ruleset",
+        "summary": "Get a query rule",
+        "description": "Get details about a query rule within a query ruleset.",
+        "externalDocs": {
+          "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/search-using-query-rules.html"
+        },
         "operationId": "query-rules-get-rule",
         "parameters": [
           {
@@ -23912,7 +24159,8 @@
         "tags": [
           "query_rules"
         ],
-        "summary": "Creates or updates a query rule within a query ruleset",
+        "summary": "Create or update a query rule",
+        "description": "Create or update a query rule within a query ruleset.",
         "operationId": "query-rules-put-rule",
         "parameters": [
           {
@@ -24003,7 +24251,8 @@
         "tags": [
           "query_rules"
         ],
-        "summary": "Deletes a query rule within a query ruleset",
+        "summary": "Delete a query rule",
+        "description": "Delete a query rule within a query ruleset.",
         "operationId": "query-rules-delete-rule",
         "parameters": [
           {
@@ -24049,7 +24298,8 @@
         "tags": [
           "query_rules"
         ],
-        "summary": "Returns the details about a query ruleset",
+        "summary": "Get a query ruleset",
+        "description": "Get details about a query ruleset.",
         "operationId": "query-rules-get-ruleset",
         "parameters": [
           {
@@ -24082,7 +24332,10 @@
         "tags": [
           "query_rules"
         ],
-        "summary": "Creates or updates a query ruleset",
+        "summary": "Create or update a query ruleset",
+        "externalDocs": {
+          "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/search-using-query-rules.html"
+        },
         "operationId": "query-rules-put-ruleset",
         "parameters": [
           {
@@ -24151,7 +24404,7 @@
         "tags": [
           "query_rules"
         ],
-        "summary": "Deletes a query ruleset",
+        "summary": "Delete a query ruleset",
         "operationId": "query-rules-delete-ruleset",
         "parameters": [
           {
@@ -24186,7 +24439,8 @@
         "tags": [
           "query_rules"
         ],
-        "summary": "Returns summarized information about existing query rulesets",
+        "summary": "Get all query rulesets",
+        "description": "Get summarized information about the query rulesets.",
         "operationId": "query-rules-list-rulesets",
         "parameters": [
           {
@@ -24240,12 +24494,85 @@
         "x-state": "Added in 8.10.0"
       }
     },
+    "/_query_rules/{ruleset_id}/_test": {
+      "post": {
+        "tags": [
+          "query_rules"
+        ],
+        "summary": "Test a query ruleset",
+        "description": "Evaluate match criteria against a query ruleset to identify the rules that would match that criteria.",
+        "operationId": "query-rules-test",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "ruleset_id",
+            "description": "The unique identifier of the query ruleset to be created or updated",
+            "required": true,
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/_types:Id"
+            },
+            "style": "simple"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "match_criteria": {
+                    "type": "object",
+                    "additionalProperties": {
+                      "type": "object"
+                    }
+                  }
+                },
+                "required": [
+                  "match_criteria"
+                ]
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "total_matched_rules": {
+                      "type": "number"
+                    },
+                    "matched_rules": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/query_rules.test:QueryRulesetMatchedRule"
+                      }
+                    }
+                  },
+                  "required": [
+                    "total_matched_rules",
+                    "matched_rules"
+                  ]
+                }
+              }
+            }
+          }
+        },
+        "x-state": "Added in 8.10.0"
+      }
+    },
     "/_rank_eval": {
       "get": {
         "tags": [
           "search"
         ],
-        "summary": "Enables you to evaluate the quality of ranked search results over a set of typical search queries",
+        "summary": "Evaluate ranked search results",
+        "description": "Evaluate the quality of ranked search results over a set of typical search queries.",
         "operationId": "rank-eval",
         "parameters": [
           {
@@ -24275,7 +24602,8 @@
         "tags": [
           "search"
         ],
-        "summary": "Enables you to evaluate the quality of ranked search results over a set of typical search queries",
+        "summary": "Evaluate ranked search results",
+        "description": "Evaluate the quality of ranked search results over a set of typical search queries.",
         "operationId": "rank-eval-1",
         "parameters": [
           {
@@ -24307,7 +24635,8 @@
         "tags": [
           "search"
         ],
-        "summary": "Enables you to evaluate the quality of ranked search results over a set of typical search queries",
+        "summary": "Evaluate ranked search results",
+        "description": "Evaluate the quality of ranked search results over a set of typical search queries.",
         "operationId": "rank-eval-2",
         "parameters": [
           {
@@ -24340,7 +24669,8 @@
         "tags": [
           "search"
         ],
-        "summary": "Enables you to evaluate the quality of ranked search results over a set of typical search queries",
+        "summary": "Evaluate ranked search results",
+        "description": "Evaluate the quality of ranked search results over a set of typical search queries.",
         "operationId": "rank-eval-3",
         "parameters": [
           {
@@ -24625,7 +24955,8 @@
         "tags": [
           "search"
         ],
-        "summary": "Renders a search template as a search request body",
+        "summary": "Render a search template",
+        "description": "Render a search template as a search request body.",
         "operationId": "render-search-template",
         "requestBody": {
           "$ref": "#/components/requestBodies/render_search_template"
@@ -24640,7 +24971,8 @@
         "tags": [
           "search"
         ],
-        "summary": "Renders a search template as a search request body",
+        "summary": "Render a search template",
+        "description": "Render a search template as a search request body.",
         "operationId": "render-search-template-1",
         "requestBody": {
           "$ref": "#/components/requestBodies/render_search_template"
@@ -24657,7 +24989,8 @@
         "tags": [
           "search"
         ],
-        "summary": "Renders a search template as a search request body",
+        "summary": "Render a search template",
+        "description": "Render a search template as a search request body.",
         "operationId": "render-search-template-2",
         "parameters": [
           {
@@ -24677,7 +25010,8 @@
         "tags": [
           "search"
         ],
-        "summary": "Renders a search template as a search request body",
+        "summary": "Render a search template",
+        "description": "Render a search template as a search request body.",
         "operationId": "render-search-template-3",
         "parameters": [
           {
@@ -25135,8 +25469,8 @@
         "tags": [
           "search"
         ],
-        "summary": "Returns search hits that match the query defined in the request",
-        "description": "You can provide search queries using the `q` query string parameter or the request body.\nIf both are specified, only the query parameter is used.",
+        "summary": "Run a search",
+        "description": "Get search hits that match the query defined in the request.\nYou can provide search queries using the `q` query string parameter or the request body.\nIf both are specified, only the query parameter is used.",
         "operationId": "search",
         "parameters": [
           {
@@ -25186,9 +25520,6 @@
           },
           {
             "$ref": "#/components/parameters/search#max_concurrent_shard_requests"
-          },
-          {
-            "$ref": "#/components/parameters/search#min_compatible_shard_node"
           },
           {
             "$ref": "#/components/parameters/search#preference"
@@ -25288,8 +25619,8 @@
         "tags": [
           "search"
         ],
-        "summary": "Returns search hits that match the query defined in the request",
-        "description": "You can provide search queries using the `q` query string parameter or the request body.\nIf both are specified, only the query parameter is used.",
+        "summary": "Run a search",
+        "description": "Get search hits that match the query defined in the request.\nYou can provide search queries using the `q` query string parameter or the request body.\nIf both are specified, only the query parameter is used.",
         "operationId": "search-1",
         "parameters": [
           {
@@ -25339,9 +25670,6 @@
           },
           {
             "$ref": "#/components/parameters/search#max_concurrent_shard_requests"
-          },
-          {
-            "$ref": "#/components/parameters/search#min_compatible_shard_node"
           },
           {
             "$ref": "#/components/parameters/search#preference"
@@ -25443,8 +25771,8 @@
         "tags": [
           "search"
         ],
-        "summary": "Returns search hits that match the query defined in the request",
-        "description": "You can provide search queries using the `q` query string parameter or the request body.\nIf both are specified, only the query parameter is used.",
+        "summary": "Run a search",
+        "description": "Get search hits that match the query defined in the request.\nYou can provide search queries using the `q` query string parameter or the request body.\nIf both are specified, only the query parameter is used.",
         "operationId": "search-2",
         "parameters": [
           {
@@ -25497,9 +25825,6 @@
           },
           {
             "$ref": "#/components/parameters/search#max_concurrent_shard_requests"
-          },
-          {
-            "$ref": "#/components/parameters/search#min_compatible_shard_node"
           },
           {
             "$ref": "#/components/parameters/search#preference"
@@ -25599,8 +25924,8 @@
         "tags": [
           "search"
         ],
-        "summary": "Returns search hits that match the query defined in the request",
-        "description": "You can provide search queries using the `q` query string parameter or the request body.\nIf both are specified, only the query parameter is used.",
+        "summary": "Run a search",
+        "description": "Get search hits that match the query defined in the request.\nYou can provide search queries using the `q` query string parameter or the request body.\nIf both are specified, only the query parameter is used.",
         "operationId": "search-3",
         "parameters": [
           {
@@ -25653,9 +25978,6 @@
           },
           {
             "$ref": "#/components/parameters/search#max_concurrent_shard_requests"
-          },
-          {
-            "$ref": "#/components/parameters/search#min_compatible_shard_node"
           },
           {
             "$ref": "#/components/parameters/search#preference"
@@ -26111,7 +26433,7 @@
           "search"
         ],
         "summary": "Search a vector tile",
-        "description": "Searches a vector tile for geospatial values.",
+        "description": "Search a vector tile for geospatial values.",
         "operationId": "search-mvt-1",
         "parameters": [
           {
@@ -26166,7 +26488,7 @@
           "search"
         ],
         "summary": "Search a vector tile",
-        "description": "Searches a vector tile for geospatial values.",
+        "description": "Search a vector tile for geospatial values.",
         "operationId": "search-mvt",
         "parameters": [
           {
@@ -26222,7 +26544,8 @@
         "tags": [
           "search"
         ],
-        "summary": "Returns information about the indices and shards that a search request would be executed against",
+        "summary": "Get the search shards",
+        "description": "Get the indices and shards that a search request would be run against.\nThis information can be useful for working out issues or planning optimizations with routing and shard preferences.\nWhen filtered aliases are used, the filter is returned as part of the indices section.",
         "operationId": "search-shards",
         "parameters": [
           {
@@ -26254,7 +26577,8 @@
         "tags": [
           "search"
         ],
-        "summary": "Returns information about the indices and shards that a search request would be executed against",
+        "summary": "Get the search shards",
+        "description": "Get the indices and shards that a search request would be run against.\nThis information can be useful for working out issues or planning optimizations with routing and shard preferences.\nWhen filtered aliases are used, the filter is returned as part of the indices section.",
         "operationId": "search-shards-1",
         "parameters": [
           {
@@ -26288,7 +26612,8 @@
         "tags": [
           "search"
         ],
-        "summary": "Returns information about the indices and shards that a search request would be executed against",
+        "summary": "Get the search shards",
+        "description": "Get the indices and shards that a search request would be run against.\nThis information can be useful for working out issues or planning optimizations with routing and shard preferences.\nWhen filtered aliases are used, the filter is returned as part of the indices section.",
         "operationId": "search-shards-2",
         "parameters": [
           {
@@ -26323,7 +26648,8 @@
         "tags": [
           "search"
         ],
-        "summary": "Returns information about the indices and shards that a search request would be executed against",
+        "summary": "Get the search shards",
+        "description": "Get the indices and shards that a search request would be run against.\nThis information can be useful for working out issues or planning optimizations with routing and shard preferences.\nWhen filtered aliases are used, the filter is returned as part of the indices section.",
         "operationId": "search-shards-3",
         "parameters": [
           {
@@ -26360,7 +26686,10 @@
         "tags": [
           "search"
         ],
-        "summary": "Runs a search with a search template",
+        "summary": "Run a search with a search template",
+        "externalDocs": {
+          "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/search-template.html"
+        },
         "operationId": "search-template",
         "parameters": [
           {
@@ -26417,7 +26746,10 @@
         "tags": [
           "search"
         ],
-        "summary": "Runs a search with a search template",
+        "summary": "Run a search with a search template",
+        "externalDocs": {
+          "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/search-template.html"
+        },
         "operationId": "search-template-1",
         "parameters": [
           {
@@ -26476,7 +26808,10 @@
         "tags": [
           "search"
         ],
-        "summary": "Runs a search with a search template",
+        "summary": "Run a search with a search template",
+        "externalDocs": {
+          "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/search-template.html"
+        },
         "operationId": "search-template-2",
         "parameters": [
           {
@@ -26536,7 +26871,10 @@
         "tags": [
           "search"
         ],
-        "summary": "Runs a search with a search template",
+        "summary": "Run a search with a search template",
+        "externalDocs": {
+          "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/search-template.html"
+        },
         "operationId": "search-template-3",
         "parameters": [
           {
@@ -26930,7 +27268,7 @@
                   "type": "object",
                   "properties": {
                     "api_key": {
-                      "$ref": "#/components/schemas/security._types:ApiKey"
+                      "$ref": "#/components/schemas/security.authenticate:AuthenticateApiKey"
                     },
                     "authentication_realm": {
                       "$ref": "#/components/schemas/security._types:RealmInfo"
@@ -27816,6 +28154,84 @@
           }
         },
         "x-state": "Added in 6.7.0"
+      }
+    },
+    "/_security/cross_cluster/api_key": {
+      "post": {
+        "tags": [
+          "security"
+        ],
+        "summary": "Create a cross-cluster API key",
+        "description": "Create an API key of the `cross_cluster` type for the API key based remote cluster access.\nA `cross_cluster` API key cannot be used to authenticate through the REST interface.\n\nIMPORTANT: To authenticate this request you must use a credential that is not an API key. Even if you use an API key that has the required privilege, the API returns an error.\n\nCross-cluster API keys are created by the Elasticsearch API key service, which is automatically enabled.\n\nNOTE: Unlike REST API keys, a cross-cluster API key does not capture permissions of the authenticated user. The API key’s effective permission is exactly as specified with the `access` property.\n\nA successful request returns a JSON structure that contains the API key, its unique ID, and its name. If applicable, it also returns expiration information for the API key in milliseconds.\n\nBy default, API keys never expire. You can specify expiration information when you create the API keys.\n\nCross-cluster API keys can only be updated with the update cross-cluster API key API.\nAttempting to update them with the update REST API key API or the bulk update REST API keys API will result in an error.",
+        "externalDocs": {
+          "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/remote-clusters-api-key.html"
+        },
+        "operationId": "security-create-cross-cluster-api-key",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "access": {
+                    "$ref": "#/components/schemas/security._types:Access"
+                  },
+                  "expiration": {
+                    "$ref": "#/components/schemas/_types:Duration"
+                  },
+                  "metadata": {
+                    "$ref": "#/components/schemas/_types:Metadata"
+                  },
+                  "name": {
+                    "$ref": "#/components/schemas/_types:Name"
+                  }
+                },
+                "required": [
+                  "access",
+                  "name"
+                ]
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "api_key": {
+                      "description": "Generated API key.",
+                      "type": "string"
+                    },
+                    "expiration": {
+                      "$ref": "#/components/schemas/_types:DurationValueUnitMillis"
+                    },
+                    "id": {
+                      "$ref": "#/components/schemas/_types:Id"
+                    },
+                    "name": {
+                      "$ref": "#/components/schemas/_types:Name"
+                    },
+                    "encoded": {
+                      "description": "API key credentials which is the base64-encoding of\nthe UTF-8 representation of `id` and `api_key` joined\nby a colon (`:`).",
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "api_key",
+                    "id",
+                    "name",
+                    "encoded"
+                  ]
+                }
+              }
+            }
+          }
+        }
       }
     },
     "/_security/service/{namespace}/{service}/credential/token/{name}": {
@@ -28744,7 +29160,7 @@
                     "cluster": {
                       "type": "array",
                       "items": {
-                        "type": "string"
+                        "$ref": "#/components/schemas/security._types:ClusterPrivilege"
                       }
                     },
                     "index": {
@@ -28752,11 +29168,18 @@
                       "items": {
                         "$ref": "#/components/schemas/_types:IndexName"
                       }
+                    },
+                    "remote_cluster": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/security._types:RemoteClusterPrivilege"
+                      }
                     }
                   },
                   "required": [
                     "cluster",
-                    "index"
+                    "index",
+                    "remote_cluster"
                   ]
                 }
               }
@@ -30186,6 +30609,77 @@
           }
         },
         "x-state": "Added in 8.4.0"
+      }
+    },
+    "/_security/cross_cluster/api_key/{id}": {
+      "put": {
+        "tags": [
+          "security"
+        ],
+        "summary": "Update a cross-cluster API key",
+        "description": "Update the attributes of an existing cross-cluster API key, which is used for API key based remote cluster access.",
+        "externalDocs": {
+          "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/remote-clusters-api-key.html"
+        },
+        "operationId": "security-update-cross-cluster-api-key",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "description": "The ID of the cross-cluster API key to update.",
+            "required": true,
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/_types:Id"
+            },
+            "style": "simple"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "access": {
+                    "$ref": "#/components/schemas/security._types:Access"
+                  },
+                  "expiration": {
+                    "$ref": "#/components/schemas/_types:Duration"
+                  },
+                  "metadata": {
+                    "$ref": "#/components/schemas/_types:Metadata"
+                  }
+                },
+                "required": [
+                  "access"
+                ]
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "updated": {
+                      "description": "If `true`, the API key was updated.\nIf `false`, the API key didn’t change because no change was detected.",
+                      "type": "boolean"
+                    }
+                  },
+                  "required": [
+                    "updated"
+                  ]
+                }
+              }
+            }
+          }
+        }
       }
     },
     "/_security/profile/{uid}/_data": {
@@ -31817,7 +32311,7 @@
         "tags": [
           "sql"
         ],
-        "summary": "Clears the SQL cursor",
+        "summary": "Clear an SQL search cursor",
         "operationId": "sql-clear-cursor",
         "requestBody": {
           "content": {
@@ -31866,8 +32360,8 @@
         "tags": [
           "sql"
         ],
-        "summary": "Deletes an async SQL search or a stored synchronous SQL search",
-        "description": "If the search is still running, the API cancels it.",
+        "summary": "Delete an async SQL search",
+        "description": "Delete an async SQL search or a stored synchronous SQL search.\nIf the search is still running, the API cancels it.",
         "operationId": "sql-delete-async",
         "parameters": [
           {
@@ -31902,7 +32396,8 @@
         "tags": [
           "sql"
         ],
-        "summary": "Returns the current status and available results for an async SQL search or stored synchronous SQL search",
+        "summary": "Get async SQL search results",
+        "description": "Get the current status and available results for an async SQL search or stored synchronous SQL search.",
         "operationId": "sql-get-async",
         "parameters": [
           {
@@ -32014,7 +32509,8 @@
         "tags": [
           "sql"
         ],
-        "summary": "Returns the current status of an async SQL search or a stored synchronous SQL search",
+        "summary": "Get the async SQL search status",
+        "description": "Get the current status of an async SQL search or a stored synchronous SQL search.",
         "operationId": "sql-get-async-status",
         "parameters": [
           {
@@ -32079,7 +32575,8 @@
         "tags": [
           "sql"
         ],
-        "summary": "Executes a SQL request",
+        "summary": "Get SQL search results",
+        "description": "Run an SQL request.",
         "operationId": "sql-query-1",
         "parameters": [
           {
@@ -32100,7 +32597,8 @@
         "tags": [
           "sql"
         ],
-        "summary": "Executes a SQL request",
+        "summary": "Get SQL search results",
+        "description": "Run an SQL request.",
         "operationId": "sql-query",
         "parameters": [
           {
@@ -32123,7 +32621,8 @@
         "tags": [
           "sql"
         ],
-        "summary": "Translates SQL into Elasticsearch queries",
+        "summary": "Translate SQL into Elasticsearch queries",
+        "description": "Translate an SQL search into a search API request containing Query DSL.",
         "operationId": "sql-translate-1",
         "requestBody": {
           "$ref": "#/components/requestBodies/sql.translate"
@@ -32139,7 +32638,8 @@
         "tags": [
           "sql"
         ],
-        "summary": "Translates SQL into Elasticsearch queries",
+        "summary": "Translate SQL into Elasticsearch queries",
+        "description": "Translate an SQL search into a search API request containing Query DSL.",
         "operationId": "sql-translate",
         "requestBody": {
           "$ref": "#/components/requestBodies/sql.translate"
@@ -32183,7 +32683,7 @@
         "tags": [
           "synonyms"
         ],
-        "summary": "Retrieves a synonym set",
+        "summary": "Get a synonym set",
         "operationId": "synonyms-get-synonym",
         "parameters": [
           {
@@ -32251,7 +32751,8 @@
         "tags": [
           "synonyms"
         ],
-        "summary": "Creates or updates a synonym set",
+        "summary": "Create or update a synonym set",
+        "description": "Synonyms sets are limited to a maximum of 10,000 synonym rules per set.\nIf you need to manage more synonym rules, you can create multiple synonym sets.",
         "operationId": "synonyms-put-synonym",
         "parameters": [
           {
@@ -32325,7 +32826,7 @@
         "tags": [
           "synonyms"
         ],
-        "summary": "Deletes a synonym set",
+        "summary": "Delete a synonym set",
         "operationId": "synonyms-delete-synonym",
         "parameters": [
           {
@@ -32360,7 +32861,8 @@
         "tags": [
           "synonyms"
         ],
-        "summary": "Retrieves a synonym rule from a synonym set",
+        "summary": "Get a synonym rule",
+        "description": "Get a synonym rule from a synonym set.",
         "operationId": "synonyms-get-synonym-rule",
         "parameters": [
           {
@@ -32404,7 +32906,8 @@
         "tags": [
           "synonyms"
         ],
-        "summary": "Creates or updates a synonym rule in a synonym set",
+        "summary": "Create or update a synonym rule",
+        "description": "Create or update a synonym rule in a synonym set.",
         "operationId": "synonyms-put-synonym-rule",
         "parameters": [
           {
@@ -32466,7 +32969,8 @@
         "tags": [
           "synonyms"
         ],
-        "summary": "Deletes a synonym rule in a synonym set",
+        "summary": "Delete a synonym rule",
+        "description": "Delete a synonym rule from a synonym set.",
         "operationId": "synonyms-delete-synonym-rule",
         "parameters": [
           {
@@ -32512,7 +33016,8 @@
         "tags": [
           "synonyms"
         ],
-        "summary": "Retrieves a summary of all defined synonym sets",
+        "summary": "Get all synonym sets",
+        "description": "Get a summary of all defined synonym sets.",
         "operationId": "synonyms-get-synonyms-sets",
         "parameters": [
           {
@@ -32751,14 +33256,11 @@
           },
           {
             "in": "query",
-            "name": "node_id",
+            "name": "nodes",
             "description": "Comma-separated list of node IDs or names used to limit returned information.",
             "deprecated": false,
             "schema": {
-              "type": "array",
-              "items": {
-                "type": "string"
-              }
+              "$ref": "#/components/schemas/_types:NodeIds"
             },
             "style": "form"
           },
@@ -32870,7 +33372,7 @@
           "document"
         ],
         "summary": "Get term vector information",
-        "description": "Returns information and statistics about terms in the fields of a particular document.",
+        "description": "Get information and statistics about terms in the fields of a particular document.",
         "operationId": "termvectors",
         "parameters": [
           {
@@ -32927,7 +33429,7 @@
           "document"
         ],
         "summary": "Get term vector information",
-        "description": "Returns information and statistics about terms in the fields of a particular document.",
+        "description": "Get information and statistics about terms in the fields of a particular document.",
         "operationId": "termvectors-1",
         "parameters": [
           {
@@ -32986,7 +33488,7 @@
           "document"
         ],
         "summary": "Get term vector information",
-        "description": "Returns information and statistics about terms in the fields of a particular document.",
+        "description": "Get information and statistics about terms in the fields of a particular document.",
         "operationId": "termvectors-2",
         "parameters": [
           {
@@ -33040,7 +33542,7 @@
           "document"
         ],
         "summary": "Get term vector information",
-        "description": "Returns information and statistics about terms in the fields of a particular document.",
+        "description": "Get information and statistics about terms in the fields of a particular document.",
         "operationId": "termvectors-3",
         "parameters": [
           {
@@ -40910,9 +41412,6 @@
           "none"
         ]
       },
-      "_types:VersionString": {
-        "type": "string"
-      },
       "_types:SearchType": {
         "type": "string",
         "enum": [
@@ -48612,7 +49111,10 @@
             }
           },
           "deciders": {
-            "description": "Decider settings",
+            "externalDocs": {
+              "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/autoscaling-deciders.html"
+            },
+            "description": "Decider settings.",
             "type": "object",
             "additionalProperties": {
               "type": "object"
@@ -50091,6 +50593,9 @@
             "type": "string"
           }
         }
+      },
+      "_types:VersionString": {
+        "type": "string"
       },
       "cat._types:CatDatafeedColumns": {
         "oneOf": [
@@ -57490,11 +57995,25 @@
         "properties": {
           "limit": {
             "description": "The maximum number of fields in an index. Field and object mappings, as well as field aliases count towards this limit.\nThe limit is in place to prevent mappings and searches from becoming too large. Higher values can lead to performance\ndegradations and memory issues, especially in clusters with a high load or few resources.",
-            "type": "number"
+            "oneOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "string"
+              }
+            ]
           },
           "ignore_dynamic_beyond_limit": {
             "description": "This setting determines what happens when a dynamically mapped field would exceed the total fields limit. When set\nto false (the default), the index request of the document that tries to add a dynamic field to the mapping will fail\nwith the message Limit of total fields [X] has been exceeded. When set to true, the index request will not fail.\nInstead, fields that would exceed the limit are not added to the mapping, similar to dynamic: false.\nThe fields that were not added to the mapping will be added to the _ignored field.",
-            "type": "boolean"
+            "oneOf": [
+              {
+                "type": "boolean"
+              },
+              {
+                "type": "string"
+              }
+            ]
           }
         }
       },
@@ -64996,6 +65515,9 @@
         "type": "object",
         "properties": {
           "aggregations": {
+            "externalDocs": {
+              "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/search-aggregations.html"
+            },
             "type": "object",
             "additionalProperties": {
               "$ref": "#/components/schemas/_types.aggregations:AggregationContainer"
@@ -65579,6 +66101,9 @@
           },
           "shards_capacity": {
             "$ref": "#/components/schemas/_global.health_report:ShardsCapacityIndicator"
+          },
+          "file_settings": {
+            "$ref": "#/components/schemas/_global.health_report:FileSettingsIndicator"
           }
         }
       },
@@ -66143,6 +66668,36 @@
         },
         "required": [
           "max_shards_in_cluster"
+        ]
+      },
+      "_global.health_report:FileSettingsIndicator": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/_global.health_report:BaseIndicator"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "details": {
+                "$ref": "#/components/schemas/_global.health_report:FileSettingsIndicatorDetails"
+              }
+            }
+          }
+        ]
+      },
+      "_global.health_report:FileSettingsIndicatorDetails": {
+        "type": "object",
+        "properties": {
+          "failure_streak": {
+            "type": "number"
+          },
+          "most_recent_failure": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "failure_streak",
+          "most_recent_failure"
         ]
       },
       "ilm.explain_lifecycle:LifecycleExplain": {
@@ -67198,6 +67753,13 @@
           },
           "data_stream": {
             "$ref": "#/components/schemas/indices._types:IndexTemplateDataStreamConfiguration"
+          },
+          "deprecated": {
+            "description": "Marks this index template as deprecated.\nWhen creating or updating a non-deprecated index template that uses deprecated components,\nElasticsearch will emit a deprecation warning.",
+            "type": "boolean"
+          },
+          "ignore_missing_component_templates": {
+            "$ref": "#/components/schemas/_types:Names"
           }
         },
         "required": [
@@ -69528,6 +70090,9 @@
           "foreach": {
             "$ref": "#/components/schemas/ingest._types:ForeachProcessor"
           },
+          "ip_location": {
+            "$ref": "#/components/schemas/ingest._types:IpLocationProcessor"
+          },
           "geo_grid": {
             "$ref": "#/components/schemas/ingest._types:GeoGridProcessor"
           },
@@ -70214,6 +70779,50 @@
             "required": [
               "field",
               "processor"
+            ]
+          }
+        ]
+      },
+      "ingest._types:IpLocationProcessor": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/ingest._types:ProcessorBase"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "database_file": {
+                "description": "The database filename referring to a database the module ships with (GeoLite2-City.mmdb, GeoLite2-Country.mmdb, or GeoLite2-ASN.mmdb) or a custom database in the ingest-geoip config directory.",
+                "type": "string"
+              },
+              "field": {
+                "$ref": "#/components/schemas/_types:Field"
+              },
+              "first_only": {
+                "description": "If `true`, only the first found IP location data will be returned, even if the field contains an array.",
+                "type": "boolean"
+              },
+              "ignore_missing": {
+                "description": "If `true` and `field` does not exist, the processor quietly exits without modifying the document.",
+                "type": "boolean"
+              },
+              "properties": {
+                "description": "Controls what properties are added to the `target_field` based on the IP location lookup.",
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "target_field": {
+                "$ref": "#/components/schemas/_types:Field"
+              },
+              "download_database_on_pipeline_creation": {
+                "description": "If `true` (and if `ingest.geoip.downloader.eager.download` is `false`), the missing database is downloaded when the pipeline is created.\nElse, the download is triggered by when the pipeline is used as the `default_pipeline` or `final_pipeline` in an index.",
+                "type": "boolean"
+              }
+            },
+            "required": [
+              "field"
             ]
           }
         ]
@@ -71711,13 +72320,22 @@
           },
           "url": {
             "type": "string"
+          },
+          "resolve_during_rolling_upgrade": {
+            "type": "boolean"
+          },
+          "_meta": {
+            "type": "object",
+            "additionalProperties": {
+              "type": "object"
+            }
           }
         },
         "required": [
-          "details",
           "level",
           "message",
-          "url"
+          "url",
+          "resolve_during_rolling_upgrade"
         ]
       },
       "migration.deprecations:DeprecationLevel": {
@@ -77891,10 +78509,17 @@
             }
           },
           "data": {
-            "type": "array",
-            "items": {
-              "type": "string"
-            }
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              }
+            ]
           }
         }
       },
@@ -79789,7 +80414,14 @@
             "type": "number"
           },
           "rule_criteria_types_counts": {
-            "description": "A map of criteria type to the number of rules of that type",
+            "description": "A map of criteria type (e.g. exact) to the number of rules of that type",
+            "type": "object",
+            "additionalProperties": {
+              "type": "number"
+            }
+          },
+          "rule_type_counts": {
+            "description": "A map of rule type (e.g. pinned) to the number of rules of that type",
             "type": "object",
             "additionalProperties": {
               "type": "number"
@@ -79799,7 +80431,23 @@
         "required": [
           "ruleset_id",
           "rule_total_count",
-          "rule_criteria_types_counts"
+          "rule_criteria_types_counts",
+          "rule_type_counts"
+        ]
+      },
+      "query_rules.test:QueryRulesetMatchedRule": {
+        "type": "object",
+        "properties": {
+          "ruleset_id": {
+            "$ref": "#/components/schemas/_types:Id"
+          },
+          "rule_id": {
+            "$ref": "#/components/schemas/_types:Id"
+          }
+        },
+        "required": [
+          "ruleset_id",
+          "rule_id"
         ]
       },
       "_global.rank_eval:RankEvalRequestItem": {
@@ -80763,6 +81411,12 @@
           },
           "rrf": {
             "$ref": "#/components/schemas/_types:RRFRetriever"
+          },
+          "text_similarity_reranker": {
+            "$ref": "#/components/schemas/_types:TextSimilarityReranker"
+          },
+          "rule": {
+            "$ref": "#/components/schemas/_types:RuleRetriever"
           }
         },
         "minProperties": 1,
@@ -80789,10 +81443,6 @@
               "sort": {
                 "$ref": "#/components/schemas/_types:Sort"
               },
-              "min_score": {
-                "description": "Minimum _score for matching documents. Documents with a lower _score are not included in the top documents.",
-                "type": "number"
-              },
               "collapse": {
                 "$ref": "#/components/schemas/_global.search._types:FieldCollapse"
               }
@@ -80816,6 +81466,10 @@
                 }
               }
             ]
+          },
+          "min_score": {
+            "description": "Minimum _score for matching documents. Documents with a lower _score are not included in the top documents.",
+            "type": "number"
           }
         }
       },
@@ -80884,6 +81538,75 @@
             },
             "required": [
               "retrievers"
+            ]
+          }
+        ]
+      },
+      "_types:TextSimilarityReranker": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/_types:RetrieverBase"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "retriever": {
+                "$ref": "#/components/schemas/_types:RetrieverContainer"
+              },
+              "rank_window_size": {
+                "description": "This value determines how many documents we will consider from the nested retriever.",
+                "type": "number"
+              },
+              "inference_id": {
+                "description": "Unique identifier of the inference endpoint created using the inference API.",
+                "type": "string"
+              },
+              "inference_text": {
+                "description": "The text snippet used as the basis for similarity comparison",
+                "type": "string"
+              },
+              "field": {
+                "description": "The document field to be used for text similarity comparisons. This field should contain the text that will be evaluated against the inference_text",
+                "type": "string"
+              }
+            },
+            "required": [
+              "retriever"
+            ]
+          }
+        ]
+      },
+      "_types:RuleRetriever": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/_types:RetrieverBase"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "ruleset_ids": {
+                "description": "The ruleset IDs containing the rules this retriever is evaluating against.",
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/_types:Id"
+                }
+              },
+              "match_criteria": {
+                "description": "The match criteria that will determine if a rule in the provided rulesets should be applied.",
+                "type": "object"
+              },
+              "retriever": {
+                "$ref": "#/components/schemas/_types:RetrieverContainer"
+              },
+              "rank_window_size": {
+                "description": "This value determines the size of the individual result set.",
+                "type": "number"
+              }
+            },
+            "required": [
+              "ruleset_ids",
+              "match_criteria",
+              "retriever"
             ]
           }
         ]
@@ -81336,69 +82059,67 @@
           "username"
         ]
       },
-      "security._types:ApiKey": {
+      "security.authenticate:AuthenticateApiKey": {
         "type": "object",
         "properties": {
-          "creation": {
-            "description": "Creation time for the API key in milliseconds.",
-            "type": "number"
-          },
-          "expiration": {
-            "description": "Expiration time for the API key in milliseconds.",
-            "type": "number"
-          },
           "id": {
             "$ref": "#/components/schemas/_types:Id"
           },
-          "invalidated": {
-            "description": "Invalidation status for the API key.\nIf the key has been invalidated, it has a value of `true`. Otherwise, it is `false`.",
-            "type": "boolean"
-          },
           "name": {
             "$ref": "#/components/schemas/_types:Name"
-          },
-          "realm": {
-            "description": "Realm name of the principal for which this API key was created.",
-            "type": "string"
-          },
-          "realm_type": {
-            "description": "Realm type of the principal for which this API key was created",
-            "type": "string"
-          },
-          "username": {
-            "$ref": "#/components/schemas/_types:Username"
-          },
-          "profile_uid": {
-            "description": "The profile uid for the API key owner principal, if requested and if it exists",
-            "type": "string"
-          },
-          "metadata": {
-            "$ref": "#/components/schemas/_types:Metadata"
-          },
-          "role_descriptors": {
-            "description": "The role descriptors assigned to this API key when it was created or last updated.\nAn empty role descriptor means the API key inherits the owner user’s permissions.",
-            "type": "object",
-            "additionalProperties": {
-              "$ref": "#/components/schemas/security._types:RoleDescriptor"
-            }
-          },
-          "limited_by": {
-            "description": "The owner user’s permissions associated with the API key.\nIt is a point-in-time snapshot captured at creation and subsequent updates.\nAn API key’s effective permissions are an intersection of its assigned privileges and the owner user’s permissions.",
-            "type": "array",
-            "items": {
-              "type": "object",
-              "additionalProperties": {
-                "$ref": "#/components/schemas/security._types:RoleDescriptor"
-              }
-            }
-          },
-          "_sort": {
-            "$ref": "#/components/schemas/_types:SortResults"
           }
         },
         "required": [
-          "id",
+          "id"
+        ]
+      },
+      "security._types:RealmInfo": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "$ref": "#/components/schemas/_types:Name"
+          },
+          "type": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "name",
+          "type"
+        ]
+      },
+      "security.authenticate:Token": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "$ref": "#/components/schemas/_types:Name"
+          },
+          "type": {
+            "type": "string"
+          }
+        },
+        "required": [
           "name"
+        ]
+      },
+      "security._types:BulkError": {
+        "type": "object",
+        "properties": {
+          "count": {
+            "description": "The number of errors",
+            "type": "number"
+          },
+          "details": {
+            "description": "Details about the errors, keyed by role name",
+            "type": "object",
+            "additionalProperties": {
+              "$ref": "#/components/schemas/_types:ErrorCause"
+            }
+          }
+        },
+        "required": [
+          "count",
+          "details"
         ]
       },
       "security._types:RoleDescriptor": {
@@ -81416,6 +82137,20 @@
             "type": "array",
             "items": {
               "$ref": "#/components/schemas/security._types:IndicesPrivileges"
+            }
+          },
+          "remote_indices": {
+            "description": "A list of indices permissions for remote clusters.",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/security._types:RemoteIndicesPrivileges"
+            }
+          },
+          "remote_cluster": {
+            "description": "A list of cluster permissions for remote clusters. Note - this is limited a subset of the cluster permissions.",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/security._types:RemoteClusterPrivileges"
             }
           },
           "global": {
@@ -81452,6 +82187,9 @@
           "description": {
             "description": "Optional description of the role descriptor",
             "type": "string"
+          },
+          "restriction": {
+            "$ref": "#/components/schemas/security._types:Restriction"
           },
           "transient_metadata": {
             "type": "object",
@@ -81510,6 +82248,7 @@
               "monitor_ml",
               "monitor_rollup",
               "monitor_snapshot",
+              "monitor_stats",
               "monitor_text_structure",
               "monitor_transform",
               "monitor_watcher",
@@ -81539,10 +82278,17 @@
           },
           "names": {
             "description": "A list of indices (or index name patterns) to which the permissions in this entry apply.",
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/_types:IndexName"
-            }
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/_types:IndexName"
+              },
+              {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/_types:IndexName"
+                }
+              }
+            ]
           },
           "privileges": {
             "description": "The index level privileges that owners of the role have on the specified indices.",
@@ -81668,6 +82414,76 @@
           }
         ]
       },
+      "security._types:RemoteIndicesPrivileges": {
+        "type": "object",
+        "properties": {
+          "clusters": {
+            "$ref": "#/components/schemas/_types:Names"
+          },
+          "field_security": {
+            "$ref": "#/components/schemas/security._types:FieldSecurity"
+          },
+          "names": {
+            "description": "A list of indices (or index name patterns) to which the permissions in this entry apply.",
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/_types:IndexName"
+              },
+              {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/_types:IndexName"
+                }
+              }
+            ]
+          },
+          "privileges": {
+            "description": "The index level privileges that owners of the role have on the specified indices.",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/security._types:IndexPrivilege"
+            }
+          },
+          "query": {
+            "$ref": "#/components/schemas/security._types:IndicesPrivilegesQuery"
+          },
+          "allow_restricted_indices": {
+            "description": "Set to `true` if using wildcard or regular expressions for patterns that cover restricted indices. Implicitly, restricted indices have limited privileges that can cause pattern tests to fail. If restricted indices are explicitly included in the `names` list, Elasticsearch checks privileges against these indices regardless of the value set for `allow_restricted_indices`.",
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "clusters",
+          "names",
+          "privileges"
+        ]
+      },
+      "security._types:RemoteClusterPrivileges": {
+        "type": "object",
+        "properties": {
+          "clusters": {
+            "$ref": "#/components/schemas/_types:Names"
+          },
+          "privileges": {
+            "description": "The cluster level privileges that owners of the role have on the remote cluster.",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/security._types:RemoteClusterPrivilege"
+            }
+          }
+        },
+        "required": [
+          "clusters",
+          "privileges"
+        ]
+      },
+      "security._types:RemoteClusterPrivilege": {
+        "type": "string",
+        "enum": [
+          "monitor_enrich",
+          "monitor_stats"
+        ]
+      },
       "security._types:GlobalPrivilege": {
         "type": "object",
         "properties": {
@@ -81732,53 +82548,31 @@
           "resources"
         ]
       },
-      "security._types:RealmInfo": {
+      "security._types:Restriction": {
         "type": "object",
         "properties": {
-          "name": {
-            "$ref": "#/components/schemas/_types:Name"
-          },
-          "type": {
-            "type": "string"
-          }
-        },
-        "required": [
-          "name",
-          "type"
-        ]
-      },
-      "security.authenticate:Token": {
-        "type": "object",
-        "properties": {
-          "name": {
-            "$ref": "#/components/schemas/_types:Name"
-          },
-          "type": {
-            "type": "string"
-          }
-        },
-        "required": [
-          "name"
-        ]
-      },
-      "security._types:BulkError": {
-        "type": "object",
-        "properties": {
-          "count": {
-            "description": "The number of errors",
-            "type": "number"
-          },
-          "details": {
-            "description": "Details about the errors, keyed by role name",
-            "type": "object",
-            "additionalProperties": {
-              "$ref": "#/components/schemas/_types:ErrorCause"
+          "workflows": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/security._types:RestrictionWorkflow"
             }
           }
         },
         "required": [
-          "count",
-          "details"
+          "workflows"
+        ]
+      },
+      "security._types:RestrictionWorkflow": {
+        "anyOf": [
+          {
+            "type": "string",
+            "enum": [
+              "search_application_query"
+            ]
+          },
+          {
+            "type": "string"
+          }
         ]
       },
       "security._types:ClusterNode": {
@@ -81797,6 +82591,83 @@
       },
       "_types:Service": {
         "type": "string"
+      },
+      "security._types:Access": {
+        "type": "object",
+        "properties": {
+          "replication": {
+            "description": "A list of indices permission entries for cross-cluster replication.",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/security._types:ReplicationAccess"
+            }
+          },
+          "search": {
+            "description": "A list of indices permission entries for cross-cluster search.",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/security._types:SearchAccess"
+            }
+          }
+        }
+      },
+      "security._types:ReplicationAccess": {
+        "type": "object",
+        "properties": {
+          "names": {
+            "description": "A list of indices (or index name patterns) to which the permissions in this entry apply.",
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/_types:IndexName"
+              },
+              {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/_types:IndexName"
+                }
+              }
+            ]
+          },
+          "allow_restricted_indices": {
+            "description": "This needs to be set to true if the patterns in the names field should cover system indices.",
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "names"
+        ]
+      },
+      "security._types:SearchAccess": {
+        "type": "object",
+        "properties": {
+          "field_security": {
+            "$ref": "#/components/schemas/security._types:FieldSecurity"
+          },
+          "names": {
+            "description": "A list of indices (or index name patterns) to which the permissions in this entry apply.",
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/_types:IndexName"
+              },
+              {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/_types:IndexName"
+                }
+              }
+            ]
+          },
+          "query": {
+            "$ref": "#/components/schemas/security._types:IndicesPrivilegesQuery"
+          },
+          "allow_restricted_indices": {
+            "description": "Set to `true` if using wildcard or regular expressions for patterns that cover restricted indices. Implicitly, restricted indices have limited privileges that can cause pattern tests to fail. If restricted indices are explicitly included in the `names` list, Elasticsearch checks privileges against these indices regardless of the value set for `allow_restricted_indices`.",
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "names"
+        ]
       },
       "security.create_service_token:Token": {
         "type": "object",
@@ -81839,6 +82710,91 @@
           "value"
         ]
       },
+      "security._types:ApiKey": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "$ref": "#/components/schemas/_types:Id"
+          },
+          "name": {
+            "$ref": "#/components/schemas/_types:Name"
+          },
+          "type": {
+            "$ref": "#/components/schemas/security._types:ApiKeyType"
+          },
+          "creation": {
+            "$ref": "#/components/schemas/_types:EpochTimeUnitMillis"
+          },
+          "expiration": {
+            "$ref": "#/components/schemas/_types:EpochTimeUnitMillis"
+          },
+          "invalidated": {
+            "description": "Invalidation status for the API key.\nIf the key has been invalidated, it has a value of `true`. Otherwise, it is `false`.",
+            "type": "boolean"
+          },
+          "invalidation": {
+            "$ref": "#/components/schemas/_types:EpochTimeUnitMillis"
+          },
+          "username": {
+            "$ref": "#/components/schemas/_types:Username"
+          },
+          "realm": {
+            "description": "Realm name of the principal for which this API key was created.",
+            "type": "string"
+          },
+          "realm_type": {
+            "description": "Realm type of the principal for which this API key was created",
+            "type": "string"
+          },
+          "metadata": {
+            "$ref": "#/components/schemas/_types:Metadata"
+          },
+          "role_descriptors": {
+            "description": "The role descriptors assigned to this API key when it was created or last updated.\nAn empty role descriptor means the API key inherits the owner user’s permissions.",
+            "type": "object",
+            "additionalProperties": {
+              "$ref": "#/components/schemas/security._types:RoleDescriptor"
+            }
+          },
+          "limited_by": {
+            "description": "The owner user’s permissions associated with the API key.\nIt is a point-in-time snapshot captured at creation and subsequent updates.\nAn API key’s effective permissions are an intersection of its assigned privileges and the owner user’s permissions.",
+            "type": "array",
+            "items": {
+              "type": "object",
+              "additionalProperties": {
+                "$ref": "#/components/schemas/security._types:RoleDescriptor"
+              }
+            }
+          },
+          "access": {
+            "$ref": "#/components/schemas/security._types:Access"
+          },
+          "profile_uid": {
+            "description": "The profile uid for the API key owner principal, if requested and if it exists",
+            "type": "string"
+          },
+          "_sort": {
+            "$ref": "#/components/schemas/_types:SortResults"
+          }
+        },
+        "required": [
+          "id",
+          "name",
+          "type",
+          "creation",
+          "invalidated",
+          "username",
+          "realm",
+          "metadata"
+        ]
+      },
+      "security._types:ApiKeyType": {
+        "type": "string",
+        "enum": [
+          "rest",
+          "cross_cluster"
+        ]
+      },
       "security.put_privileges:Actions": {
         "type": "object",
         "properties": {
@@ -81868,13 +82824,25 @@
           "cluster": {
             "type": "array",
             "items": {
-              "type": "string"
+              "$ref": "#/components/schemas/security._types:ClusterPrivilege"
             }
           },
           "indices": {
             "type": "array",
             "items": {
               "$ref": "#/components/schemas/security._types:IndicesPrivileges"
+            }
+          },
+          "remote_indices": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/security._types:RemoteIndicesPrivileges"
+            }
+          },
+          "remote_cluster": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/security._types:RemoteClusterPrivileges"
             }
           },
           "metadata": {
@@ -82049,6 +83017,20 @@
               "$ref": "#/components/schemas/security._types:IndicesPrivileges"
             }
           },
+          "remote_indices": {
+            "description": "A list of indices permissions for remote clusters.",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/security._types:RemoteIndicesPrivileges"
+            }
+          },
+          "remote_cluster": {
+            "description": "A list of cluster permissions for remote clusters. Note - this is limited a subset of the cluster permissions.",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/security._types:RemoteClusterPrivileges"
+            }
+          },
           "global": {
             "description": "An object defining global privileges. A global privilege is a form of cluster privilege that is request-aware. Support for global privileges is currently limited to the management of application privileges.",
             "oneOf": [
@@ -82083,6 +83065,9 @@
           "description": {
             "description": "Optional description of the role descriptor",
             "type": "string"
+          },
+          "restriction": {
+            "$ref": "#/components/schemas/security._types:Restriction"
           },
           "transient_metadata": {
             "type": "object",
@@ -82260,10 +83245,17 @@
           },
           "names": {
             "description": "A list of indices (or index name patterns) to which the permissions in this entry apply.",
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/_types:IndexName"
-            }
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/_types:IndexName"
+              },
+              {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/_types:IndexName"
+                }
+              }
+            ]
           },
           "privileges": {
             "description": "The index level privileges that owners of the role have on the specified indices.",
@@ -82472,43 +83464,6 @@
         },
         "required": [
           "created"
-        ]
-      },
-      "security._types:RemoteIndicesPrivileges": {
-        "type": "object",
-        "properties": {
-          "clusters": {
-            "$ref": "#/components/schemas/_types:Names"
-          },
-          "field_security": {
-            "$ref": "#/components/schemas/security._types:FieldSecurity"
-          },
-          "names": {
-            "description": "A list of indices (or index name patterns) to which the permissions in this entry apply.",
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/_types:IndexName"
-            }
-          },
-          "privileges": {
-            "description": "The index level privileges that owners of the role have on the specified indices.",
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/security._types:IndexPrivilege"
-            }
-          },
-          "query": {
-            "$ref": "#/components/schemas/security._types:IndicesPrivilegesQuery"
-          },
-          "allow_restricted_indices": {
-            "description": "Set to `true` if using wildcard or regular expressions for patterns that cover restricted indices. Implicitly, restricted indices have limited privileges that can cause pattern tests to fail. If restricted indices are explicitly included in the `names` list, Elasticsearch checks privileges against these indices regardless of the value set for `allow_restricted_indices`.",
-            "type": "boolean"
-          }
-        },
-        "required": [
-          "clusters",
-          "names",
-          "privileges"
         ]
       },
       "security.query_api_keys:ApiKeyAggregationContainer": {
@@ -85896,6 +86851,9 @@
       "watcher._types:ScheduleContainer": {
         "type": "object",
         "properties": {
+          "timezone": {
+            "type": "string"
+          },
           "cron": {
             "$ref": "#/components/schemas/watcher._types:CronExpression"
           },
@@ -86664,6 +87622,9 @@
           "logstash": {
             "$ref": "#/components/schemas/xpack.info:Feature"
           },
+          "logsdb": {
+            "$ref": "#/components/schemas/xpack.info:Feature"
+          },
           "ml": {
             "$ref": "#/components/schemas/xpack.info:Feature"
           },
@@ -86721,6 +87682,7 @@
           "graph",
           "ilm",
           "logstash",
+          "logsdb",
           "ml",
           "monitoring",
           "rollup",
@@ -89837,6 +90799,15 @@
                     }
                   }
                 },
+                "data_streams": {
+                  "type": "object",
+                  "additionalProperties": {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/components/schemas/migration.deprecations:Deprecation"
+                    }
+                  }
+                },
                 "node_settings": {
                   "type": "array",
                   "items": {
@@ -89853,6 +90824,7 @@
               "required": [
                 "cluster_settings",
                 "index_settings",
+                "data_streams",
                 "node_settings",
                 "ml_settings"
               ]
@@ -91886,16 +92858,6 @@
         },
         "style": "form"
       },
-      "async_search.submit#keep_alive": {
-        "in": "query",
-        "name": "keep_alive",
-        "description": "Specifies how long the async search needs to be available.\nOngoing async searches and any saved search results are deleted after this period.",
-        "deprecated": false,
-        "schema": {
-          "$ref": "#/components/schemas/_types:Duration"
-        },
-        "style": "form"
-      },
       "async_search.submit#allow_no_indices": {
         "in": "query",
         "name": "allow_no_indices",
@@ -92046,15 +93008,6 @@
         },
         "style": "form"
       },
-      "async_search.submit#min_compatible_shard_node": {
-        "in": "query",
-        "name": "min_compatible_shard_node",
-        "deprecated": false,
-        "schema": {
-          "$ref": "#/components/schemas/_types:VersionString"
-        },
-        "style": "form"
-      },
       "async_search.submit#preference": {
         "in": "query",
         "name": "preference",
@@ -92062,16 +93015,6 @@
         "deprecated": false,
         "schema": {
           "type": "string"
-        },
-        "style": "form"
-      },
-      "async_search.submit#pre_filter_shard_size": {
-        "in": "query",
-        "name": "pre_filter_shard_size",
-        "description": "The default value cannot be changed, which enforces the execution of a pre-filter roundtrip to retrieve statistics from each shard so that the ones that surely don’t hold any document matching the query get skipped.",
-        "deprecated": false,
-        "schema": {
-          "type": "number"
         },
         "style": "form"
       },
@@ -92092,15 +93035,6 @@
         "deprecated": false,
         "schema": {
           "$ref": "#/components/schemas/_types:Routing"
-        },
-        "style": "form"
-      },
-      "async_search.submit#scroll": {
-        "in": "query",
-        "name": "scroll",
-        "deprecated": false,
-        "schema": {
-          "$ref": "#/components/schemas/_types:Duration"
         },
         "style": "form"
       },
@@ -92230,6 +93164,7 @@
       "async_search.submit#rest_total_hits_as_int": {
         "in": "query",
         "name": "rest_total_hits_as_int",
+        "description": "Indicates whether hits.total should be rendered as an integer or an object in the rest search response",
         "deprecated": false,
         "schema": {
           "type": "boolean"
@@ -92479,6 +93414,16 @@
         },
         "style": "form"
       },
+      "cat.allocation#local": {
+        "in": "query",
+        "name": "local",
+        "description": "If `true`, the request computes the list of selected nodes from the\nlocal cluster state. If `false` the list of selected nodes are computed\nfrom the cluster state of the master node. In both cases the coordinating\nnode will send requests for further information to each selected node.",
+        "deprecated": false,
+        "schema": {
+          "type": "boolean"
+        },
+        "style": "form"
+      },
       "cat.component_templates#name": {
         "in": "path",
         "name": "name",
@@ -92489,6 +93434,16 @@
           "type": "string"
         },
         "style": "simple"
+      },
+      "cat.component_templates#local": {
+        "in": "query",
+        "name": "local",
+        "description": "If `true`, the request computes the list of selected nodes from the\nlocal cluster state. If `false` the list of selected nodes are computed\nfrom the cluster state of the master node. In both cases the coordinating\nnode will send requests for further information to each selected node.",
+        "deprecated": false,
+        "schema": {
+          "type": "boolean"
+        },
+        "style": "form"
       },
       "cat.count#index": {
         "in": "path",
@@ -92909,6 +93864,16 @@
         },
         "style": "form"
       },
+      "cat.segments#local": {
+        "in": "query",
+        "name": "local",
+        "description": "If `true`, the request computes the list of selected nodes from the\nlocal cluster state. If `false` the list of selected nodes are computed\nfrom the cluster state of the master node. In both cases the coordinating\nnode will send requests for further information to each selected node.",
+        "deprecated": false,
+        "schema": {
+          "type": "boolean"
+        },
+        "style": "form"
+      },
       "cat.shards#index": {
         "in": "path",
         "name": "index",
@@ -92962,6 +93927,16 @@
         },
         "style": "simple"
       },
+      "cat.templates#local": {
+        "in": "query",
+        "name": "local",
+        "description": "If `true`, the request computes the list of selected nodes from the\nlocal cluster state. If `false` the list of selected nodes are computed\nfrom the cluster state of the master node. In both cases the coordinating\nnode will send requests for further information to each selected node.",
+        "deprecated": false,
+        "schema": {
+          "type": "boolean"
+        },
+        "style": "form"
+      },
       "cat.thread_pool#thread_pool_patterns": {
         "in": "path",
         "name": "thread_pool_patterns",
@@ -92980,6 +93955,16 @@
         "deprecated": false,
         "schema": {
           "$ref": "#/components/schemas/_types:TimeUnit"
+        },
+        "style": "form"
+      },
+      "cat.thread_pool#local": {
+        "in": "query",
+        "name": "local",
+        "description": "If `true`, the request computes the list of selected nodes from the\nlocal cluster state. If `false` the list of selected nodes are computed\nfrom the cluster state of the master node. In both cases the coordinating\nnode will send requests for further information to each selected node.",
+        "deprecated": false,
+        "schema": {
+          "type": "boolean"
         },
         "style": "form"
       },
@@ -94304,15 +95289,6 @@
         },
         "style": "form"
       },
-      "fleet.search#min_compatible_shard_node": {
-        "in": "query",
-        "name": "min_compatible_shard_node",
-        "deprecated": false,
-        "schema": {
-          "$ref": "#/components/schemas/_types:VersionString"
-        },
-        "style": "form"
-      },
       "fleet.search#preference": {
         "in": "query",
         "name": "preference",
@@ -95098,13 +96074,13 @@
         },
         "style": "form"
       },
-      "indices.exists_alias#local": {
+      "indices.exists_alias#master_timeout": {
         "in": "query",
-        "name": "local",
-        "description": "If `true`, the request retrieves information from the local node only.",
+        "name": "master_timeout",
+        "description": "Period to wait for a connection to the master node.\nIf no response is received before the timeout expires, the request fails and returns an error.",
         "deprecated": false,
         "schema": {
-          "type": "boolean"
+          "$ref": "#/components/schemas/_types:Duration"
         },
         "style": "form"
       },
@@ -95302,13 +96278,13 @@
         },
         "style": "form"
       },
-      "indices.get_alias#local": {
+      "indices.get_alias#master_timeout": {
         "in": "query",
-        "name": "local",
-        "description": "If `true`, the request retrieves information from the local node only.",
+        "name": "master_timeout",
+        "description": "Period to wait for a connection to the master node.\nIf no response is received before the timeout expires, the request fails and returns an error.",
         "deprecated": false,
         "schema": {
-          "type": "boolean"
+          "$ref": "#/components/schemas/_types:Duration"
         },
         "style": "form"
       },
@@ -96175,16 +97151,6 @@
         "in": "query",
         "name": "ignore_unavailable",
         "description": "If `false`, the request returns an error if it targets a missing or closed index.",
-        "deprecated": false,
-        "schema": {
-          "type": "boolean"
-        },
-        "style": "form"
-      },
-      "indices.segments#verbose": {
-        "in": "query",
-        "name": "verbose",
-        "description": "If `true`, the request returns a verbose response.",
         "deprecated": false,
         "schema": {
           "type": "boolean"
@@ -99177,16 +100143,6 @@
         "deprecated": false,
         "schema": {
           "type": "number"
-        },
-        "style": "form"
-      },
-      "search#min_compatible_shard_node": {
-        "in": "query",
-        "name": "min_compatible_shard_node",
-        "description": "The minimum version of the node that can handle the request\nAny handling node with a lower version will fail the request.",
-        "deprecated": false,
-        "schema": {
-          "$ref": "#/components/schemas/_types:VersionString"
         },
         "style": "form"
       },
@@ -103261,6 +104217,13 @@
                   "type": "array",
                   "items": {
                     "$ref": "#/components/schemas/security._types:RemoteIndicesPrivileges"
+                  }
+                },
+                "remote_cluster": {
+                  "description": "A list of remote cluster permissions entries.",
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/security._types:RemoteClusterPrivileges"
                   }
                 },
                 "metadata": {

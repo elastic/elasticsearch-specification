@@ -59,6 +59,7 @@ export class Features {
   graph: Feature
   ilm: Feature
   logstash: Feature
+  logsdb: Feature
   ml: Feature
   monitoring: Feature
   rollup: Feature

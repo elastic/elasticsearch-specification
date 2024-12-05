@@ -19,10 +19,12 @@
 
 import { RequestBase } from '@_types/Base'
 import { Id } from '@_types/common'
+import { Duration } from '@_types/Time'
 
 /**
- * Get async search status.
- * Retrieve the status of a previously submitted async search request given its identifier, without retrieving search results.
+ * Get the async search status.
+ *
+ * Get the status of a previously submitted async search request given its identifier, without retrieving search results.
  * If the Elasticsearch security features are enabled, use of this API is restricted to the `monitoring_user` role.
  * @rest_spec_name async_search.status
  * @availability stack since=7.11.0 stability=stable
@@ -34,5 +36,13 @@ export interface Request extends RequestBase {
   path_parts: {
     /** A unique identifier for the async search. */
     id: Id
+  }
+  query_parameters: {
+    /**
+     * Specifies how long the async search needs to be available.
+     * Ongoing async searches and any saved search results are deleted after this period.
+     * @server_default 5d
+     */
+    keep_alive?: Duration
   }
 }

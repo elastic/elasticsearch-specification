@@ -20,7 +20,8 @@
 import { CatRequestBase } from '@cat/_types/CatBase'
 
 /**
- * Returns information about custom node attributes.
+ * Get node attribute information.
+ * Get information about custom node attributes.
  * IMPORTANT: cat APIs are only intended for human consumption using the command line or Kibana console. They are not intended for use by applications. For application consumption, use the nodes info API.
  * @rest_spec_name cat.nodeattrs
  * @availability stack stability=stable
@@ -28,4 +29,15 @@ import { CatRequestBase } from '@cat/_types/CatBase'
  * @doc_id cat-nodeattrs
  * @cluster_privileges monitor
  */
-export interface Request extends CatRequestBase {}
+export interface Request extends CatRequestBase {
+  query_parameters: {
+    /**
+     * If `true`, the request computes the list of selected nodes from the
+     * local cluster state. If `false` the list of selected nodes are computed
+     * from the cluster state of the master node. In both cases the coordinating
+     * node will send requests for further information to each selected node.
+     * @server_default false
+     */
+    local?: boolean
+  }
+}

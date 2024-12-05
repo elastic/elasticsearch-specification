@@ -25,8 +25,8 @@ import { Id } from '@_types/common'
 /**
  * Create an inference endpoint
  * @rest_spec_name inference.put
- * @availability stack since=8.11.0 stability=experimental visibility=public
- * @availability serverless stability=experimental visibility=public
+ * @availability stack since=8.11.0 stability=stable visibility=public
+ * @availability serverless stability=stable visibility=public
  */
 export interface Request extends RequestBase {
   path_parts: {

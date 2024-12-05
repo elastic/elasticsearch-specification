@@ -39,8 +39,7 @@ import {
   IndexName,
   Routing,
   SearchType,
-  SuggestMode,
-  VersionString
+  SuggestMode
 } from '@_types/common'
 import { RuntimeFields } from '@_types/mapping/RuntimeFields'
 import { double, integer, long } from '@_types/Numeric'
@@ -53,8 +52,9 @@ import { Duration } from '@_types/Time'
 import { Checkpoint } from '../_types/Checkpoints'
 
 /**
- * The purpose of the fleet search api is to provide a search api where the search will only be executed
- * after provided checkpoint has been processed and is visible for searches inside of Elasticsearch.
+ * Run a Fleet search.
+ * The purpose of the Fleet search API is to provide an API where the search will be run only
+ * after the provided checkpoint has been processed and is visible for searches inside of Elasticsearch.
  * @rest_spec_name fleet.search
  * @availability stack since=7.16.0 stability=experimental
  * @availability serverless stability=experimental visibility=private
@@ -82,7 +82,6 @@ export interface Request extends RequestBase {
     ignore_unavailable?: boolean
     lenient?: boolean
     max_concurrent_shard_requests?: long
-    min_compatible_shard_node?: VersionString
     preference?: string
     pre_filter_shard_size?: long
     request_cache?: boolean

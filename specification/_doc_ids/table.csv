@@ -1,3 +1,4 @@
+add-nodes,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/add-elasticsearch-nodes.html
 analysis-analyzers,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/analysis-analyzers.html
 analysis-charfilters,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/analysis-charfilters.html
 analysis-normalizers,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/analysis-normalizers.html
@@ -10,6 +11,8 @@ api-date-math-index-names,https://www.elastic.co/guide/en/elasticsearch/referenc
 append-processor,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/append-processor.html
 async-search,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/async-search.html
 attachment,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/attachment.html
+autoscaling,https://www.elastic.co/guide/en/cloud/current/ec-autoscaling.html
+autoscaling-deciders,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/autoscaling-deciders.html
 autoscaling-delete-autoscaling-policy,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/autoscaling-delete-autoscaling-policy.html
 autoscaling-get-autoscaling-capacity,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/autoscaling-get-autoscaling-capacity.html
 autoscaling-get-autoscaling-policy,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/autoscaling-get-autoscaling-policy.html
@@ -80,6 +83,7 @@ cluster,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/cluster
 common-options,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/common-options.html
 community-id-processor,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/community-id-processor.html
 connector-sync-job-cancel,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/cancel-connector-sync-job-api.html
+collapse-search-results,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/collapse-search-results.html
 connector-sync-job-delete,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/delete-connector-sync-job-api.html
 connector-sync-job-get,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/get-connector-sync-job-api.html
 connector-sync-job-post,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/create-connector-sync-job-api.html
@@ -148,6 +152,7 @@ eql-sequences,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/e
 eql-missing-events,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/eql-syntax.html#eql-missing-events
 eql-syntax,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/eql-syntax.html
 eql,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/eql.html
+esql,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/esql.html
 esql-query,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/esql-rest.html
 esql-query-params,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/esql-rest.html#esql-rest-params
 esql-returning-localized-results,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/esql-rest.html#esql-locale-param
@@ -184,6 +189,7 @@ get-trained-models,https://www.elastic.co/guide/en/elasticsearch/reference/{bran
 get-transform-stats,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/get-transform-stats.html
 get-transform,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/get-transform.html
 get-trial-status,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/get-trial-status.html
+graph,https://www.elastic.co/guide/en/kibana/{branch}/xpack-graph.html
 graph-explore-api,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/graph-explore-api.html
 grok-processor,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/grok-processor.html
 gsub-processor,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/gsub-processor.html
@@ -412,11 +418,13 @@ query-dsl-weighted-tokens-query,https://www.elastic.co/guide/en/elasticsearch/re
 query-dsl-wildcard-query,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/query-dsl-wildcard-query.html
 query-dsl-wrapper-query,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/query-dsl-wrapper-query.html
 query-dsl,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/query-dsl.html
+query-rule,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/search-using-query-rules.html
 realtime,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/docs-get.html#realtime
 redact-processor,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/redact-processor.html
 regexp-syntax,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/regexp-syntax.html
 registered-domain-processor,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/registered-domain-processor.html
 remove-processor,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/remove-processor.html
+remote-clusters-api-key,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/remote-clusters-api-key.html
 rename-processor,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/rename-processor.html
 reroute-processor,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/reroute-processor.html
 render-search-template-api,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/render-search-template-api.html
@@ -531,6 +539,7 @@ search-validate,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}
 search-vector-tile-api,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/search-vector-tile-api.html
 searchable-snapshots-api-mount-snapshot,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/searchable-snapshots-api-mount-snapshot.html
 searchable-snapshots-apis,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/searchable-snapshots-apis.html
+search-templates,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/search-template.html
 secure-settings,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/secure-settings.html
 security-api-authenticate,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/security-api-authenticate.html
 security-api-change-password,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/security-api-change-password.html

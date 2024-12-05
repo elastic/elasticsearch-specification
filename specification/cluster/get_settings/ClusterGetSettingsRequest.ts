@@ -21,7 +21,7 @@ import { RequestBase } from '@_types/Base'
 import { Duration } from '@_types/Time'
 
 /**
- * Returns cluster-wide settings.
+ * Get cluster-wide settings.
  * By default, it returns only settings that have been explicitly defined.
  * @rest_spec_name cluster.get_settings
  * @availability stack stability=stable

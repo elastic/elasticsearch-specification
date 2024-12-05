@@ -17,8 +17,19 @@
  * under the License.
  */
 
+import {
+  ClusterPrivilege,
+  RemoteClusterPrivilege
+} from '@security/_types/Privileges'
 import { IndexName } from '@_types/common'
 
 export class Response {
-  body: { cluster: string[]; index: IndexName[] }
+  body: {
+    cluster: ClusterPrivilege[]
+    index: IndexName[]
+    /**
+     * @availability stack since=8.15.0
+     */
+    remote_cluster: RemoteClusterPrivilege[]
+  }
 }

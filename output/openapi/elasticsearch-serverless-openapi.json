@@ -114,8 +114,8 @@
         "tags": [
           "search"
         ],
-        "summary": "Get async search status",
-        "description": "Retrieve the status of a previously submitted async search request given its identifier, without retrieving search results.\nIf the Elasticsearch security features are enabled, use of this API is restricted to the `monitoring_user` role.",
+        "summary": "Get the async search status",
+        "description": "Get the status of a previously submitted async search request given its identifier, without retrieving search results.\nIf the Elasticsearch security features are enabled, use of this API is restricted to the `monitoring_user` role.",
         "operationId": "async-search-status",
         "parameters": [
           {
@@ -128,6 +128,16 @@
               "$ref": "#/components/schemas/_types:Id"
             },
             "style": "simple"
+          },
+          {
+            "in": "query",
+            "name": "keep_alive",
+            "description": "Specifies how long the async search needs to be available.\nOngoing async searches and any saved search results are deleted after this period.",
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/_types:Duration"
+            },
+            "style": "form"
           }
         ],
         "responses": {
@@ -159,9 +169,6 @@
           },
           {
             "$ref": "#/components/parameters/async_search.submit#keep_on_completion"
-          },
-          {
-            "$ref": "#/components/parameters/async_search.submit#keep_alive"
           },
           {
             "$ref": "#/components/parameters/async_search.submit#allow_no_indices"
@@ -209,22 +216,13 @@
             "$ref": "#/components/parameters/async_search.submit#max_concurrent_shard_requests"
           },
           {
-            "$ref": "#/components/parameters/async_search.submit#min_compatible_shard_node"
-          },
-          {
             "$ref": "#/components/parameters/async_search.submit#preference"
-          },
-          {
-            "$ref": "#/components/parameters/async_search.submit#pre_filter_shard_size"
           },
           {
             "$ref": "#/components/parameters/async_search.submit#request_cache"
           },
           {
             "$ref": "#/components/parameters/async_search.submit#routing"
-          },
-          {
-            "$ref": "#/components/parameters/async_search.submit#scroll"
           },
           {
             "$ref": "#/components/parameters/async_search.submit#search_type"
@@ -323,9 +321,6 @@
             "$ref": "#/components/parameters/async_search.submit#keep_on_completion"
           },
           {
-            "$ref": "#/components/parameters/async_search.submit#keep_alive"
-          },
-          {
             "$ref": "#/components/parameters/async_search.submit#allow_no_indices"
           },
           {
@@ -371,22 +366,13 @@
             "$ref": "#/components/parameters/async_search.submit#max_concurrent_shard_requests"
           },
           {
-            "$ref": "#/components/parameters/async_search.submit#min_compatible_shard_node"
-          },
-          {
             "$ref": "#/components/parameters/async_search.submit#preference"
-          },
-          {
-            "$ref": "#/components/parameters/async_search.submit#pre_filter_shard_size"
           },
           {
             "$ref": "#/components/parameters/async_search.submit#request_cache"
           },
           {
             "$ref": "#/components/parameters/async_search.submit#routing"
-          },
-          {
-            "$ref": "#/components/parameters/async_search.submit#scroll"
           },
           {
             "$ref": "#/components/parameters/async_search.submit#search_type"
@@ -707,6 +693,11 @@
         "summary": "Get component templates",
         "description": "Returns information about component templates in a cluster.\nComponent templates are building blocks for constructing index templates that specify index mappings, settings, and aliases.\n\nCAT APIs are only intended for human consumption using the command line or Kibana console.\nThey are not intended for use by applications. For application consumption, use the get component template API.",
         "operationId": "cat-component-templates",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/cat.component_templates#local"
+          }
+        ],
         "responses": {
           "200": {
             "$ref": "#/components/responses/cat.component_templates#200"
@@ -726,6 +717,9 @@
         "parameters": [
           {
             "$ref": "#/components/parameters/cat.component_templates#name"
+          },
+          {
+            "$ref": "#/components/parameters/cat.component_templates#local"
           }
         ],
         "responses": {
@@ -1150,8 +1144,8 @@
         "tags": [
           "cat"
         ],
-        "summary": "Get transforms",
-        "description": "Returns configuration and usage information about transforms.\n\nCAT APIs are only intended for human consumption using the Kibana\nconsole or command line. They are not intended for use by applications. For\napplication consumption, use the get transform statistics API.",
+        "summary": "Get transform information",
+        "description": "Get configuration and usage information about transforms.\n\nCAT APIs are only intended for human consumption using the Kibana\nconsole or command line. They are not intended for use by applications. For\napplication consumption, use the get transform statistics API.",
         "operationId": "cat-transforms",
         "parameters": [
           {
@@ -1186,8 +1180,8 @@
         "tags": [
           "cat"
         ],
-        "summary": "Get transforms",
-        "description": "Returns configuration and usage information about transforms.\n\nCAT APIs are only intended for human consumption using the Kibana\nconsole or command line. They are not intended for use by applications. For\napplication consumption, use the get transform statistics API.",
+        "summary": "Get transform information",
+        "description": "Get configuration and usage information about transforms.\n\nCAT APIs are only intended for human consumption using the Kibana\nconsole or command line. They are not intended for use by applications. For\napplication consumption, use the get transform statistics API.",
         "operationId": "cat-transforms-1",
         "parameters": [
           {
@@ -1285,7 +1279,8 @@
         "tags": [
           "search"
         ],
-        "summary": "Clears the search context and results for a scrolling search",
+        "summary": "Clear a scrolling search",
+        "description": "Clear the search context and results for a scrolling search.",
         "operationId": "clear-scroll",
         "requestBody": {
           "$ref": "#/components/requestBodies/clear_scroll"
@@ -1368,7 +1363,8 @@
         "tags": [
           "search"
         ],
-        "summary": "Clears the search context and results for a scrolling search",
+        "summary": "Clear a scrolling search",
+        "description": "Clear the search context and results for a scrolling search.",
         "operationId": "clear-scroll-1",
         "parameters": [
           {
@@ -1390,7 +1386,8 @@
         "tags": [
           "search"
         ],
-        "summary": "Closes a point-in-time",
+        "summary": "Close a point in time",
+        "description": "A point in time must be opened explicitly before being used in search requests.\nThe `keep_alive` parameter tells Elasticsearch how long it should persist.\nA point in time is automatically closed when the `keep_alive` period has elapsed.\nHowever, keeping points in time has a cost; close them as soon as they are no longer required for search requests.",
         "operationId": "close-point-in-time",
         "requestBody": {
           "content": {
@@ -3121,7 +3118,8 @@
         "tags": [
           "search"
         ],
-        "summary": "Returns number of documents matching a query",
+        "summary": "Count search results",
+        "description": "Get the number of documents matching a query.",
         "operationId": "count-1",
         "parameters": [
           {
@@ -3180,7 +3178,8 @@
         "tags": [
           "search"
         ],
-        "summary": "Returns number of documents matching a query",
+        "summary": "Count search results",
+        "description": "Get the number of documents matching a query.",
         "operationId": "count",
         "parameters": [
           {
@@ -3241,7 +3240,8 @@
         "tags": [
           "search"
         ],
-        "summary": "Returns number of documents matching a query",
+        "summary": "Count search results",
+        "description": "Get the number of documents matching a query.",
         "operationId": "count-3",
         "parameters": [
           {
@@ -3303,7 +3303,8 @@
         "tags": [
           "search"
         ],
-        "summary": "Returns number of documents matching a query",
+        "summary": "Count search results",
+        "description": "Get the number of documents matching a query.",
         "operationId": "count-2",
         "parameters": [
           {
@@ -4669,7 +4670,8 @@
         "tags": [
           "enrich"
         ],
-        "summary": "Creates the enrich index for an existing enrich policy",
+        "summary": "Run an enrich policy",
+        "description": "Create the enrich index for an existing enrich policy.",
         "operationId": "enrich-execute-policy",
         "parameters": [
           {
@@ -4738,7 +4740,8 @@
         "tags": [
           "eql"
         ],
-        "summary": "Returns the current status and available results for an async EQL search or a stored synchronous EQL search",
+        "summary": "Get async EQL search results",
+        "description": "Get the current status and available results for an async EQL search or a stored synchronous EQL search.",
         "operationId": "eql-get",
         "parameters": [
           {
@@ -4791,8 +4794,8 @@
         "tags": [
           "eql"
         ],
-        "summary": "Deletes an async EQL search or a stored synchronous EQL search",
-        "description": "The API also deletes results for the search.",
+        "summary": "Delete an async EQL search",
+        "description": "Delete an async EQL search or a stored synchronous EQL search.\nThe API also deletes results for the search.",
         "operationId": "eql-delete",
         "parameters": [
           {
@@ -4827,7 +4830,8 @@
         "tags": [
           "eql"
         ],
-        "summary": "Returns the current status for an async EQL search or a stored synchronous EQL search without returning results",
+        "summary": "Get the async EQL status",
+        "description": "Get the current status for an async EQL search or a stored synchronous EQL search without returning results.",
         "operationId": "eql-get-status",
         "parameters": [
           {
@@ -4890,7 +4894,11 @@
         "tags": [
           "eql"
         ],
-        "summary": "Returns results matching a query expressed in Event Query Language (EQL)",
+        "summary": "Get EQL search results",
+        "description": "Returns search results for an Event Query Language (EQL) query.\nEQL assumes each document in a data stream or index corresponds to an event.",
+        "externalDocs": {
+          "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/eql.html"
+        },
         "operationId": "eql-search",
         "parameters": [
           {
@@ -4929,7 +4937,11 @@
         "tags": [
           "eql"
         ],
-        "summary": "Returns results matching a query expressed in Event Query Language (EQL)",
+        "summary": "Get EQL search results",
+        "description": "Returns search results for an Event Query Language (EQL) query.\nEQL assumes each document in a data stream or index corresponds to an event.",
+        "externalDocs": {
+          "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/eql.html"
+        },
         "operationId": "eql-search-1",
         "parameters": [
           {
@@ -4970,7 +4982,11 @@
         "tags": [
           "esql"
         ],
-        "summary": "Executes an ES|QL request",
+        "summary": "Run an ES|QL query",
+        "description": "Get search results for an ES|QL (Elasticsearch query language) query.",
+        "externalDocs": {
+          "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/esql.html"
+        },
         "operationId": "esql-query",
         "parameters": [
           {
@@ -5471,8 +5487,8 @@
         "tags": [
           "search"
         ],
-        "summary": "The field capabilities API returns the information about the capabilities of fields among multiple indices",
-        "description": "The field capabilities API returns runtime fields like any other field. For example, a runtime field with a type\nof keyword is returned as any other field that belongs to the `keyword` family.",
+        "summary": "Get the field capabilities",
+        "description": "Get information about the capabilities of fields among multiple indices.\n\nFor data streams, the API returns field capabilities among the stream’s backing indices.\nIt returns runtime fields like any other field.\nFor example, a runtime field with a type of keyword is returned the same as any other field that belongs to the `keyword` family.",
         "operationId": "field-caps",
         "parameters": [
           {
@@ -5514,8 +5530,8 @@
         "tags": [
           "search"
         ],
-        "summary": "The field capabilities API returns the information about the capabilities of fields among multiple indices",
-        "description": "The field capabilities API returns runtime fields like any other field. For example, a runtime field with a type\nof keyword is returned as any other field that belongs to the `keyword` family.",
+        "summary": "Get the field capabilities",
+        "description": "Get information about the capabilities of fields among multiple indices.\n\nFor data streams, the API returns field capabilities among the stream’s backing indices.\nIt returns runtime fields like any other field.\nFor example, a runtime field with a type of keyword is returned the same as any other field that belongs to the `keyword` family.",
         "operationId": "field-caps-1",
         "parameters": [
           {
@@ -5559,8 +5575,8 @@
         "tags": [
           "search"
         ],
-        "summary": "The field capabilities API returns the information about the capabilities of fields among multiple indices",
-        "description": "The field capabilities API returns runtime fields like any other field. For example, a runtime field with a type\nof keyword is returned as any other field that belongs to the `keyword` family.",
+        "summary": "Get the field capabilities",
+        "description": "Get information about the capabilities of fields among multiple indices.\n\nFor data streams, the API returns field capabilities among the stream’s backing indices.\nIt returns runtime fields like any other field.\nFor example, a runtime field with a type of keyword is returned the same as any other field that belongs to the `keyword` family.",
         "operationId": "field-caps-2",
         "parameters": [
           {
@@ -5605,8 +5621,8 @@
         "tags": [
           "search"
         ],
-        "summary": "The field capabilities API returns the information about the capabilities of fields among multiple indices",
-        "description": "The field capabilities API returns runtime fields like any other field. For example, a runtime field with a type\nof keyword is returned as any other field that belongs to the `keyword` family.",
+        "summary": "Get the field capabilities",
+        "description": "Get information about the capabilities of fields among multiple indices.\n\nFor data streams, the API returns field capabilities among the stream’s backing indices.\nIt returns runtime fields like any other field.\nFor example, a runtime field with a type of keyword is returned the same as any other field that belongs to the `keyword` family.",
         "operationId": "field-caps-3",
         "parameters": [
           {
@@ -5653,7 +5669,11 @@
         "tags": [
           "graph"
         ],
-        "summary": "Extracts and summarizes information about the documents and terms in an Elasticsearch data stream or index",
+        "summary": "Explore graph analytics",
+        "description": "Extract and summarize information about the documents and terms in an Elasticsearch data stream or index.\nThe easiest way to understand the behavior of this API is to use the Graph UI to explore connections.\nAn initial request to the `_explore` API contains a seed query that identifies the documents of interest and specifies the fields that define the vertices and connections you want to include in the graph.\nSubsequent requests enable you to spider out from one more vertices of interest.\nYou can exclude vertices that have already been returned.",
+        "externalDocs": {
+          "url": "https://www.elastic.co/guide/en/kibana/current/xpack-graph.html"
+        },
         "operationId": "graph-explore",
         "parameters": [
           {
@@ -5679,7 +5699,11 @@
         "tags": [
           "graph"
         ],
-        "summary": "Extracts and summarizes information about the documents and terms in an Elasticsearch data stream or index",
+        "summary": "Explore graph analytics",
+        "description": "Extract and summarize information about the documents and terms in an Elasticsearch data stream or index.\nThe easiest way to understand the behavior of this API is to use the Graph UI to explore connections.\nAn initial request to the `_explore` API contains a seed query that identifies the documents of interest and specifies the fields that define the vertices and connections you want to include in the graph.\nSubsequent requests enable you to spider out from one more vertices of interest.\nYou can exclude vertices that have already been returned.",
+        "externalDocs": {
+          "url": "https://www.elastic.co/guide/en/kibana/current/xpack-graph.html"
+        },
         "operationId": "graph-explore-1",
         "parameters": [
           {
@@ -6511,7 +6535,7 @@
             "$ref": "#/components/parameters/indices.get_alias#ignore_unavailable"
           },
           {
-            "$ref": "#/components/parameters/indices.get_alias#local"
+            "$ref": "#/components/parameters/indices.get_alias#master_timeout"
           }
         ],
         "responses": {
@@ -6631,7 +6655,7 @@
             "$ref": "#/components/parameters/indices.exists_alias#ignore_unavailable"
           },
           {
-            "$ref": "#/components/parameters/indices.exists_alias#local"
+            "$ref": "#/components/parameters/indices.exists_alias#master_timeout"
           }
         ],
         "responses": {
@@ -6882,7 +6906,8 @@
         "tags": [
           "indices"
         ],
-        "summary": "Returns information about whether a particular index template exists",
+        "summary": "Check index templates",
+        "description": "Check whether index templates exist.",
         "operationId": "indices-exists-index-template",
         "parameters": [
           {
@@ -6939,7 +6964,7 @@
             "$ref": "#/components/parameters/indices.get_alias#ignore_unavailable"
           },
           {
-            "$ref": "#/components/parameters/indices.get_alias#local"
+            "$ref": "#/components/parameters/indices.get_alias#master_timeout"
           }
         ],
         "responses": {
@@ -6969,7 +6994,7 @@
             "$ref": "#/components/parameters/indices.exists_alias#ignore_unavailable"
           },
           {
-            "$ref": "#/components/parameters/indices.exists_alias#local"
+            "$ref": "#/components/parameters/indices.exists_alias#master_timeout"
           }
         ],
         "responses": {
@@ -7065,7 +7090,7 @@
             "$ref": "#/components/parameters/indices.get_alias#ignore_unavailable"
           },
           {
-            "$ref": "#/components/parameters/indices.get_alias#local"
+            "$ref": "#/components/parameters/indices.get_alias#master_timeout"
           }
         ],
         "responses": {
@@ -7097,7 +7122,7 @@
             "$ref": "#/components/parameters/indices.get_alias#ignore_unavailable"
           },
           {
-            "$ref": "#/components/parameters/indices.get_alias#local"
+            "$ref": "#/components/parameters/indices.get_alias#master_timeout"
           }
         ],
         "responses": {
@@ -7920,8 +7945,8 @@
         "tags": [
           "indices"
         ],
-        "summary": "Resolves the specified name(s) and/or index patterns for indices, aliases, and data streams",
-        "description": "Multiple patterns and remote clusters are supported.",
+        "summary": "Resolve indices",
+        "description": "Resolve the names and/or index patterns for indices, aliases, and data streams.\nMultiple patterns and remote clusters are supported.",
         "operationId": "indices-resolve-index",
         "parameters": [
           {
@@ -8523,7 +8548,7 @@
             "$ref": "#/components/responses/inference.get#200"
           }
         },
-        "x-state": "Technical preview"
+        "x-state": "Added in 8.11.0"
       },
       "put": {
         "tags": [
@@ -8544,7 +8569,7 @@
             "$ref": "#/components/responses/inference.put#200"
           }
         },
-        "x-state": "Technical preview"
+        "x-state": "Added in 8.11.0"
       },
       "post": {
         "tags": [
@@ -8568,7 +8593,7 @@
             "$ref": "#/components/responses/inference.inference#200"
           }
         },
-        "x-state": "Technical preview"
+        "x-state": "Added in 8.11.0"
       },
       "delete": {
         "tags": [
@@ -8592,7 +8617,7 @@
             "$ref": "#/components/responses/inference.delete#200"
           }
         },
-        "x-state": "Technical preview"
+        "x-state": "Added in 8.11.0"
       }
     },
     "/_inference/{task_type}/{inference_id}": {
@@ -8615,7 +8640,7 @@
             "$ref": "#/components/responses/inference.get#200"
           }
         },
-        "x-state": "Technical preview"
+        "x-state": "Added in 8.11.0"
       },
       "put": {
         "tags": [
@@ -8639,7 +8664,7 @@
             "$ref": "#/components/responses/inference.put#200"
           }
         },
-        "x-state": "Technical preview"
+        "x-state": "Added in 8.11.0"
       },
       "post": {
         "tags": [
@@ -8666,7 +8691,7 @@
             "$ref": "#/components/responses/inference.inference#200"
           }
         },
-        "x-state": "Technical preview"
+        "x-state": "Added in 8.11.0"
       },
       "delete": {
         "tags": [
@@ -8693,7 +8718,7 @@
             "$ref": "#/components/responses/inference.delete#200"
           }
         },
-        "x-state": "Technical preview"
+        "x-state": "Added in 8.11.0"
       }
     },
     "/_inference": {
@@ -8708,7 +8733,7 @@
             "$ref": "#/components/responses/inference.get#200"
           }
         },
-        "x-state": "Technical preview"
+        "x-state": "Added in 8.11.0"
       }
     },
     "/": {
@@ -8761,7 +8786,7 @@
           "cluster"
         ],
         "summary": "Ping the cluster",
-        "description": "Returns whether the cluster is running.",
+        "description": "Get information about whether the cluster is running.",
         "operationId": "ping",
         "responses": {
           "200": {
@@ -8778,8 +8803,11 @@
         "tags": [
           "ingest"
         ],
-        "summary": "Returns information about one or more ingest pipelines",
-        "description": "This API returns a local reference of the pipeline.",
+        "summary": "Get pipelines",
+        "description": "Get information about one or more ingest pipelines.\nThis API returns a local reference of the pipeline.",
+        "externalDocs": {
+          "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/ingest.html"
+        },
         "operationId": "ingest-get-pipeline-1",
         "parameters": [
           {
@@ -8803,8 +8831,11 @@
         "tags": [
           "ingest"
         ],
-        "summary": "Creates or updates an ingest pipeline",
+        "summary": "Create or update a pipeline",
         "description": "Changes made using this API take effect immediately.",
+        "externalDocs": {
+          "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/ingest.html"
+        },
         "operationId": "ingest-put-pipeline",
         "parameters": [
           {
@@ -8907,7 +8938,11 @@
         "tags": [
           "ingest"
         ],
-        "summary": "Deletes one or more existing ingest pipeline",
+        "summary": "Delete pipelines",
+        "description": "Delete one or more ingest pipelines.",
+        "externalDocs": {
+          "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/ingest.html"
+        },
         "operationId": "ingest-delete-pipeline",
         "parameters": [
           {
@@ -8962,8 +8997,11 @@
         "tags": [
           "ingest"
         ],
-        "summary": "Returns information about one or more ingest pipelines",
-        "description": "This API returns a local reference of the pipeline.",
+        "summary": "Get pipelines",
+        "description": "Get information about one or more ingest pipelines.\nThis API returns a local reference of the pipeline.",
+        "externalDocs": {
+          "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/ingest.html"
+        },
         "operationId": "ingest-get-pipeline",
         "parameters": [
           {
@@ -8986,8 +9024,11 @@
         "tags": [
           "ingest"
         ],
-        "summary": "Extracts structured fields out of a single text field within a document",
-        "description": "You choose which field to extract matched fields from, as well as the grok pattern you expect will match.\nA grok pattern is like a regular expression that supports aliased expressions that can be reused.",
+        "summary": "Run a grok processor",
+        "description": "Extract structured fields out of a single text field within a document.\nYou must choose which field to extract matched fields from, as well as the grok pattern you expect will match.\nA grok pattern is like a regular expression that supports aliased expressions that can be reused.",
+        "externalDocs": {
+          "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/grok-processor.html"
+        },
         "operationId": "ingest-processor-grok",
         "responses": {
           "200": {
@@ -9020,7 +9061,8 @@
         "tags": [
           "ingest"
         ],
-        "summary": "Executes an ingest pipeline against a set of provided documents",
+        "summary": "Simulate a pipeline",
+        "description": "Run an ingest pipeline against a set of provided documents.\nYou can either specify an existing pipeline to use with the provided documents or supply a pipeline definition in the body of the request.",
         "operationId": "ingest-simulate",
         "parameters": [
           {
@@ -9041,7 +9083,8 @@
         "tags": [
           "ingest"
         ],
-        "summary": "Executes an ingest pipeline against a set of provided documents",
+        "summary": "Simulate a pipeline",
+        "description": "Run an ingest pipeline against a set of provided documents.\nYou can either specify an existing pipeline to use with the provided documents or supply a pipeline definition in the body of the request.",
         "operationId": "ingest-simulate-1",
         "parameters": [
           {
@@ -9064,7 +9107,8 @@
         "tags": [
           "ingest"
         ],
-        "summary": "Executes an ingest pipeline against a set of provided documents",
+        "summary": "Simulate a pipeline",
+        "description": "Run an ingest pipeline against a set of provided documents.\nYou can either specify an existing pipeline to use with the provided documents or supply a pipeline definition in the body of the request.",
         "operationId": "ingest-simulate-2",
         "parameters": [
           {
@@ -9088,7 +9132,8 @@
         "tags": [
           "ingest"
         ],
-        "summary": "Executes an ingest pipeline against a set of provided documents",
+        "summary": "Simulate a pipeline",
+        "description": "Run an ingest pipeline against a set of provided documents.\nYou can either specify an existing pipeline to use with the provided documents or supply a pipeline definition in the body of the request.",
         "operationId": "ingest-simulate-3",
         "parameters": [
           {
@@ -10138,7 +10183,7 @@
           "ml anomaly"
         ],
         "summary": "Create a datafeed",
-        "description": "Datafeeds retrieve data from Elasticsearch for analysis by an anomaly detection job.\nYou can associate only one datafeed with each anomaly detection job.\nThe datafeed contains a query that runs at a defined interval (`frequency`).\nIf you are concerned about delayed data, you can add a delay (`query_delay') at each interval.\nWhen Elasticsearch security features are enabled, your datafeed remembers which roles the user who created it had\nat the time of creation and runs the query using those same roles. If you provide secondary authorization headers,\nthose credentials are used instead.\nYou must use Kibana, this API, or the create anomaly detection jobs API to create a datafeed. Do not add a datafeed\ndirectly to the `.ml-config` index. Do not give users `write` privileges on the `.ml-config` index.",
+        "description": "Datafeeds retrieve data from Elasticsearch for analysis by an anomaly detection job.\nYou can associate only one datafeed with each anomaly detection job.\nThe datafeed contains a query that runs at a defined interval (`frequency`).\nIf you are concerned about delayed data, you can add a delay (`query_delay`) at each interval.\nWhen Elasticsearch security features are enabled, your datafeed remembers which roles the user who created it had\nat the time of creation and runs the query using those same roles. If you provide secondary authorization headers,\nthose credentials are used instead.\nYou must use Kibana, this API, or the create anomaly detection jobs API to create a datafeed. Do not add a datafeed\ndirectly to the `.ml-config` index. Do not give users `write` privileges on the `.ml-config` index.",
         "operationId": "ml-put-datafeed",
         "parameters": [
           {
@@ -13920,7 +13965,10 @@
         "tags": [
           "search"
         ],
-        "summary": "Runs multiple templated searches with a single request",
+        "summary": "Run multiple templated searches",
+        "externalDocs": {
+          "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/search-template.html"
+        },
         "operationId": "msearch-template",
         "parameters": [
           {
@@ -13953,7 +14001,10 @@
         "tags": [
           "search"
         ],
-        "summary": "Runs multiple templated searches with a single request",
+        "summary": "Run multiple templated searches",
+        "externalDocs": {
+          "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/search-template.html"
+        },
         "operationId": "msearch-template-1",
         "parameters": [
           {
@@ -13988,7 +14039,10 @@
         "tags": [
           "search"
         ],
-        "summary": "Runs multiple templated searches with a single request",
+        "summary": "Run multiple templated searches",
+        "externalDocs": {
+          "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/search-template.html"
+        },
         "operationId": "msearch-template-2",
         "parameters": [
           {
@@ -14024,7 +14078,10 @@
         "tags": [
           "search"
         ],
-        "summary": "Runs multiple templated searches with a single request",
+        "summary": "Run multiple templated searches",
+        "externalDocs": {
+          "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/search-template.html"
+        },
         "operationId": "msearch-template-3",
         "parameters": [
           {
@@ -14288,8 +14345,8 @@
         "tags": [
           "search"
         ],
-        "summary": "A search request by default executes against the most recent visible data of the target indices,\n",
-        "description": "which is called point in time. Elasticsearch pit (point in time) is a lightweight view into the\nstate of the data as it existed when initiated. In some cases, it’s preferred to perform multiple\nsearch requests using the same point in time. For example, if refreshes happen between\n`search_after` requests, then the results of those requests might not be consistent as changes happening\nbetween searches are only visible to the more recent point in time.",
+        "summary": "Open a point in time",
+        "description": "A search request by default runs against the most recent visible data of the target indices,\nwhich is called point in time. Elasticsearch pit (point in time) is a lightweight view into the\nstate of the data as it existed when initiated. In some cases, it’s preferred to perform multiple\nsearch requests using the same point in time. For example, if refreshes happen between\n`search_after` requests, then the results of those requests might not be consistent as changes happening\nbetween searches are only visible to the more recent point in time.\n\nA point in time must be opened explicitly before being used in search requests.\nThe `keep_alive` parameter tells Elasticsearch how long it should persist.",
         "operationId": "open-point-in-time",
         "parameters": [
           {
@@ -14351,6 +14408,16 @@
             "deprecated": false,
             "schema": {
               "$ref": "#/components/schemas/_types:ExpandWildcards"
+            },
+            "style": "form"
+          },
+          {
+            "in": "query",
+            "name": "allow_partial_search_results",
+            "description": "If `false`, creating a point in time request when a shard is missing or unavailable will throw an exception.\nIf `true`, the point in time will contain all the shards that are available at the time of the request.",
+            "deprecated": false,
+            "schema": {
+              "type": "boolean"
             },
             "style": "form"
           }
@@ -14463,7 +14530,11 @@
         "tags": [
           "query_rules"
         ],
-        "summary": "Returns the details about a query rule within a query ruleset",
+        "summary": "Get a query rule",
+        "description": "Get details about a query rule within a query ruleset.",
+        "externalDocs": {
+          "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/search-using-query-rules.html"
+        },
         "operationId": "query-rules-get-rule",
         "parameters": [
           {
@@ -14507,7 +14578,8 @@
         "tags": [
           "query_rules"
         ],
-        "summary": "Creates or updates a query rule within a query ruleset",
+        "summary": "Create or update a query rule",
+        "description": "Create or update a query rule within a query ruleset.",
         "operationId": "query-rules-put-rule",
         "parameters": [
           {
@@ -14598,7 +14670,8 @@
         "tags": [
           "query_rules"
         ],
-        "summary": "Deletes a query rule within a query ruleset",
+        "summary": "Delete a query rule",
+        "description": "Delete a query rule within a query ruleset.",
         "operationId": "query-rules-delete-rule",
         "parameters": [
           {
@@ -14644,7 +14717,8 @@
         "tags": [
           "query_rules"
         ],
-        "summary": "Returns the details about a query ruleset",
+        "summary": "Get a query ruleset",
+        "description": "Get details about a query ruleset.",
         "operationId": "query-rules-get-ruleset",
         "parameters": [
           {
@@ -14677,7 +14751,10 @@
         "tags": [
           "query_rules"
         ],
-        "summary": "Creates or updates a query ruleset",
+        "summary": "Create or update a query ruleset",
+        "externalDocs": {
+          "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/search-using-query-rules.html"
+        },
         "operationId": "query-rules-put-ruleset",
         "parameters": [
           {
@@ -14746,7 +14823,7 @@
         "tags": [
           "query_rules"
         ],
-        "summary": "Deletes a query ruleset",
+        "summary": "Delete a query ruleset",
         "operationId": "query-rules-delete-ruleset",
         "parameters": [
           {
@@ -14781,7 +14858,8 @@
         "tags": [
           "query_rules"
         ],
-        "summary": "Returns summarized information about existing query rulesets",
+        "summary": "Get all query rulesets",
+        "description": "Get summarized information about the query rulesets.",
         "operationId": "query-rules-list-rulesets",
         "parameters": [
           {
@@ -14835,12 +14913,85 @@
         "x-state": "Added in 8.10.0"
       }
     },
+    "/_query_rules/{ruleset_id}/_test": {
+      "post": {
+        "tags": [
+          "query_rules"
+        ],
+        "summary": "Test a query ruleset",
+        "description": "Evaluate match criteria against a query ruleset to identify the rules that would match that criteria.",
+        "operationId": "query-rules-test",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "ruleset_id",
+            "description": "The unique identifier of the query ruleset to be created or updated",
+            "required": true,
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/_types:Id"
+            },
+            "style": "simple"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "match_criteria": {
+                    "type": "object",
+                    "additionalProperties": {
+                      "type": "object"
+                    }
+                  }
+                },
+                "required": [
+                  "match_criteria"
+                ]
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "total_matched_rules": {
+                      "type": "number"
+                    },
+                    "matched_rules": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/query_rules.test:QueryRulesetMatchedRule"
+                      }
+                    }
+                  },
+                  "required": [
+                    "total_matched_rules",
+                    "matched_rules"
+                  ]
+                }
+              }
+            }
+          }
+        },
+        "x-state": "Added in 8.10.0"
+      }
+    },
     "/_rank_eval": {
       "get": {
         "tags": [
           "search"
         ],
-        "summary": "Enables you to evaluate the quality of ranked search results over a set of typical search queries",
+        "summary": "Evaluate ranked search results",
+        "description": "Evaluate the quality of ranked search results over a set of typical search queries.",
         "operationId": "rank-eval",
         "parameters": [
           {
@@ -14870,7 +15021,8 @@
         "tags": [
           "search"
         ],
-        "summary": "Enables you to evaluate the quality of ranked search results over a set of typical search queries",
+        "summary": "Evaluate ranked search results",
+        "description": "Evaluate the quality of ranked search results over a set of typical search queries.",
         "operationId": "rank-eval-1",
         "parameters": [
           {
@@ -14902,7 +15054,8 @@
         "tags": [
           "search"
         ],
-        "summary": "Enables you to evaluate the quality of ranked search results over a set of typical search queries",
+        "summary": "Evaluate ranked search results",
+        "description": "Evaluate the quality of ranked search results over a set of typical search queries.",
         "operationId": "rank-eval-2",
         "parameters": [
           {
@@ -14935,7 +15088,8 @@
         "tags": [
           "search"
         ],
-        "summary": "Enables you to evaluate the quality of ranked search results over a set of typical search queries",
+        "summary": "Evaluate ranked search results",
+        "description": "Evaluate the quality of ranked search results over a set of typical search queries.",
         "operationId": "rank-eval-3",
         "parameters": [
           {
@@ -15163,7 +15317,8 @@
         "tags": [
           "search"
         ],
-        "summary": "Renders a search template as a search request body",
+        "summary": "Render a search template",
+        "description": "Render a search template as a search request body.",
         "operationId": "render-search-template",
         "requestBody": {
           "$ref": "#/components/requestBodies/render_search_template"
@@ -15178,7 +15333,8 @@
         "tags": [
           "search"
         ],
-        "summary": "Renders a search template as a search request body",
+        "summary": "Render a search template",
+        "description": "Render a search template as a search request body.",
         "operationId": "render-search-template-1",
         "requestBody": {
           "$ref": "#/components/requestBodies/render_search_template"
@@ -15195,7 +15351,8 @@
         "tags": [
           "search"
         ],
-        "summary": "Renders a search template as a search request body",
+        "summary": "Render a search template",
+        "description": "Render a search template as a search request body.",
         "operationId": "render-search-template-2",
         "parameters": [
           {
@@ -15215,7 +15372,8 @@
         "tags": [
           "search"
         ],
-        "summary": "Renders a search template as a search request body",
+        "summary": "Render a search template",
+        "description": "Render a search template as a search request body.",
         "operationId": "render-search-template-3",
         "parameters": [
           {
@@ -15273,8 +15431,8 @@
         "tags": [
           "search"
         ],
-        "summary": "Returns search hits that match the query defined in the request",
-        "description": "You can provide search queries using the `q` query string parameter or the request body.\nIf both are specified, only the query parameter is used.",
+        "summary": "Run a search",
+        "description": "Get search hits that match the query defined in the request.\nYou can provide search queries using the `q` query string parameter or the request body.\nIf both are specified, only the query parameter is used.",
         "operationId": "search",
         "parameters": [
           {
@@ -15324,9 +15482,6 @@
           },
           {
             "$ref": "#/components/parameters/search#max_concurrent_shard_requests"
-          },
-          {
-            "$ref": "#/components/parameters/search#min_compatible_shard_node"
           },
           {
             "$ref": "#/components/parameters/search#preference"
@@ -15423,8 +15578,8 @@
         "tags": [
           "search"
         ],
-        "summary": "Returns search hits that match the query defined in the request",
-        "description": "You can provide search queries using the `q` query string parameter or the request body.\nIf both are specified, only the query parameter is used.",
+        "summary": "Run a search",
+        "description": "Get search hits that match the query defined in the request.\nYou can provide search queries using the `q` query string parameter or the request body.\nIf both are specified, only the query parameter is used.",
         "operationId": "search-1",
         "parameters": [
           {
@@ -15474,9 +15629,6 @@
           },
           {
             "$ref": "#/components/parameters/search#max_concurrent_shard_requests"
-          },
-          {
-            "$ref": "#/components/parameters/search#min_compatible_shard_node"
           },
           {
             "$ref": "#/components/parameters/search#preference"
@@ -15575,8 +15727,8 @@
         "tags": [
           "search"
         ],
-        "summary": "Returns search hits that match the query defined in the request",
-        "description": "You can provide search queries using the `q` query string parameter or the request body.\nIf both are specified, only the query parameter is used.",
+        "summary": "Run a search",
+        "description": "Get search hits that match the query defined in the request.\nYou can provide search queries using the `q` query string parameter or the request body.\nIf both are specified, only the query parameter is used.",
         "operationId": "search-2",
         "parameters": [
           {
@@ -15629,9 +15781,6 @@
           },
           {
             "$ref": "#/components/parameters/search#max_concurrent_shard_requests"
-          },
-          {
-            "$ref": "#/components/parameters/search#min_compatible_shard_node"
           },
           {
             "$ref": "#/components/parameters/search#preference"
@@ -15728,8 +15877,8 @@
         "tags": [
           "search"
         ],
-        "summary": "Returns search hits that match the query defined in the request",
-        "description": "You can provide search queries using the `q` query string parameter or the request body.\nIf both are specified, only the query parameter is used.",
+        "summary": "Run a search",
+        "description": "Get search hits that match the query defined in the request.\nYou can provide search queries using the `q` query string parameter or the request body.\nIf both are specified, only the query parameter is used.",
         "operationId": "search-3",
         "parameters": [
           {
@@ -15782,9 +15931,6 @@
           },
           {
             "$ref": "#/components/parameters/search#max_concurrent_shard_requests"
-          },
-          {
-            "$ref": "#/components/parameters/search#min_compatible_shard_node"
           },
           {
             "$ref": "#/components/parameters/search#preference"
@@ -16237,7 +16383,7 @@
           "search"
         ],
         "summary": "Search a vector tile",
-        "description": "Searches a vector tile for geospatial values.",
+        "description": "Search a vector tile for geospatial values.",
         "operationId": "search-mvt-1",
         "parameters": [
           {
@@ -16292,7 +16438,7 @@
           "search"
         ],
         "summary": "Search a vector tile",
-        "description": "Searches a vector tile for geospatial values.",
+        "description": "Search a vector tile for geospatial values.",
         "operationId": "search-mvt",
         "parameters": [
           {
@@ -16348,7 +16494,10 @@
         "tags": [
           "search"
         ],
-        "summary": "Runs a search with a search template",
+        "summary": "Run a search with a search template",
+        "externalDocs": {
+          "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/search-template.html"
+        },
         "operationId": "search-template",
         "parameters": [
           {
@@ -16405,7 +16554,10 @@
         "tags": [
           "search"
         ],
-        "summary": "Runs a search with a search template",
+        "summary": "Run a search with a search template",
+        "externalDocs": {
+          "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/search-template.html"
+        },
         "operationId": "search-template-1",
         "parameters": [
           {
@@ -16464,7 +16616,10 @@
         "tags": [
           "search"
         ],
-        "summary": "Runs a search with a search template",
+        "summary": "Run a search with a search template",
+        "externalDocs": {
+          "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/search-template.html"
+        },
         "operationId": "search-template-2",
         "parameters": [
           {
@@ -16524,7 +16679,10 @@
         "tags": [
           "search"
         ],
-        "summary": "Runs a search with a search template",
+        "summary": "Run a search with a search template",
+        "externalDocs": {
+          "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/search-template.html"
+        },
         "operationId": "search-template-3",
         "parameters": [
           {
@@ -16598,7 +16756,7 @@
                   "type": "object",
                   "properties": {
                     "api_key": {
-                      "$ref": "#/components/schemas/security._types:ApiKey"
+                      "$ref": "#/components/schemas/security.authenticate:AuthenticateApiKey"
                     },
                     "authentication_realm": {
                       "$ref": "#/components/schemas/security._types:RealmInfo"
@@ -17059,7 +17217,7 @@
                     "cluster": {
                       "type": "array",
                       "items": {
-                        "type": "string"
+                        "$ref": "#/components/schemas/security._types:ClusterPrivilege"
                       }
                     },
                     "index": {
@@ -17322,7 +17480,7 @@
         "tags": [
           "sql"
         ],
-        "summary": "Clears the SQL cursor",
+        "summary": "Clear an SQL search cursor",
         "operationId": "sql-clear-cursor",
         "requestBody": {
           "content": {
@@ -17371,8 +17529,8 @@
         "tags": [
           "sql"
         ],
-        "summary": "Deletes an async SQL search or a stored synchronous SQL search",
-        "description": "If the search is still running, the API cancels it.",
+        "summary": "Delete an async SQL search",
+        "description": "Delete an async SQL search or a stored synchronous SQL search.\nIf the search is still running, the API cancels it.",
         "operationId": "sql-delete-async",
         "parameters": [
           {
@@ -17407,7 +17565,8 @@
         "tags": [
           "sql"
         ],
-        "summary": "Returns the current status and available results for an async SQL search or stored synchronous SQL search",
+        "summary": "Get async SQL search results",
+        "description": "Get the current status and available results for an async SQL search or stored synchronous SQL search.",
         "operationId": "sql-get-async",
         "parameters": [
           {
@@ -17519,7 +17678,8 @@
         "tags": [
           "sql"
         ],
-        "summary": "Returns the current status of an async SQL search or a stored synchronous SQL search",
+        "summary": "Get the async SQL search status",
+        "description": "Get the current status of an async SQL search or a stored synchronous SQL search.",
         "operationId": "sql-get-async-status",
         "parameters": [
           {
@@ -17584,7 +17744,8 @@
         "tags": [
           "sql"
         ],
-        "summary": "Executes a SQL request",
+        "summary": "Get SQL search results",
+        "description": "Run an SQL request.",
         "operationId": "sql-query-1",
         "parameters": [
           {
@@ -17605,7 +17766,8 @@
         "tags": [
           "sql"
         ],
-        "summary": "Executes a SQL request",
+        "summary": "Get SQL search results",
+        "description": "Run an SQL request.",
         "operationId": "sql-query",
         "parameters": [
           {
@@ -17628,7 +17790,8 @@
         "tags": [
           "sql"
         ],
-        "summary": "Translates SQL into Elasticsearch queries",
+        "summary": "Translate SQL into Elasticsearch queries",
+        "description": "Translate an SQL search into a search API request containing Query DSL.",
         "operationId": "sql-translate-1",
         "requestBody": {
           "$ref": "#/components/requestBodies/sql.translate"
@@ -17644,7 +17807,8 @@
         "tags": [
           "sql"
         ],
-        "summary": "Translates SQL into Elasticsearch queries",
+        "summary": "Translate SQL into Elasticsearch queries",
+        "description": "Translate an SQL search into a search API request containing Query DSL.",
         "operationId": "sql-translate",
         "requestBody": {
           "$ref": "#/components/requestBodies/sql.translate"
@@ -17662,7 +17826,7 @@
         "tags": [
           "synonyms"
         ],
-        "summary": "Retrieves a synonym set",
+        "summary": "Get a synonym set",
         "operationId": "synonyms-get-synonym",
         "parameters": [
           {
@@ -17730,7 +17894,8 @@
         "tags": [
           "synonyms"
         ],
-        "summary": "Creates or updates a synonym set",
+        "summary": "Create or update a synonym set",
+        "description": "Synonyms sets are limited to a maximum of 10,000 synonym rules per set.\nIf you need to manage more synonym rules, you can create multiple synonym sets.",
         "operationId": "synonyms-put-synonym",
         "parameters": [
           {
@@ -17804,7 +17969,7 @@
         "tags": [
           "synonyms"
         ],
-        "summary": "Deletes a synonym set",
+        "summary": "Delete a synonym set",
         "operationId": "synonyms-delete-synonym",
         "parameters": [
           {
@@ -17839,7 +18004,8 @@
         "tags": [
           "synonyms"
         ],
-        "summary": "Retrieves a synonym rule from a synonym set",
+        "summary": "Get a synonym rule",
+        "description": "Get a synonym rule from a synonym set.",
         "operationId": "synonyms-get-synonym-rule",
         "parameters": [
           {
@@ -17883,7 +18049,8 @@
         "tags": [
           "synonyms"
         ],
-        "summary": "Creates or updates a synonym rule in a synonym set",
+        "summary": "Create or update a synonym rule",
+        "description": "Create or update a synonym rule in a synonym set.",
         "operationId": "synonyms-put-synonym-rule",
         "parameters": [
           {
@@ -17945,7 +18112,8 @@
         "tags": [
           "synonyms"
         ],
-        "summary": "Deletes a synonym rule in a synonym set",
+        "summary": "Delete a synonym rule",
+        "description": "Delete a synonym rule from a synonym set.",
         "operationId": "synonyms-delete-synonym-rule",
         "parameters": [
           {
@@ -17991,7 +18159,8 @@
         "tags": [
           "synonyms"
         ],
-        "summary": "Retrieves a summary of all defined synonym sets",
+        "summary": "Get all synonym sets",
+        "description": "Get a summary of all defined synonym sets.",
         "operationId": "synonyms-get-synonyms-sets",
         "parameters": [
           {
@@ -18171,7 +18340,7 @@
           "document"
         ],
         "summary": "Get term vector information",
-        "description": "Returns information and statistics about terms in the fields of a particular document.",
+        "description": "Get information and statistics about terms in the fields of a particular document.",
         "operationId": "termvectors",
         "parameters": [
           {
@@ -18228,7 +18397,7 @@
           "document"
         ],
         "summary": "Get term vector information",
-        "description": "Returns information and statistics about terms in the fields of a particular document.",
+        "description": "Get information and statistics about terms in the fields of a particular document.",
         "operationId": "termvectors-1",
         "parameters": [
           {
@@ -18287,7 +18456,7 @@
           "document"
         ],
         "summary": "Get term vector information",
-        "description": "Returns information and statistics about terms in the fields of a particular document.",
+        "description": "Get information and statistics about terms in the fields of a particular document.",
         "operationId": "termvectors-2",
         "parameters": [
           {
@@ -18341,7 +18510,7 @@
           "document"
         ],
         "summary": "Get term vector information",
-        "description": "Returns information and statistics about terms in the fields of a particular document.",
+        "description": "Get information and statistics about terms in the fields of a particular document.",
         "operationId": "termvectors-3",
         "parameters": [
           {
@@ -24998,9 +25167,6 @@
           "hidden",
           "none"
         ]
-      },
-      "_types:VersionString": {
-        "type": "string"
       },
       "_types:SearchType": {
         "type": "string",
@@ -33731,6 +33897,9 @@
           }
         }
       },
+      "_types:VersionString": {
+        "type": "string"
+      },
       "cat._types:CatDatafeedColumns": {
         "oneOf": [
           {
@@ -39926,11 +40095,25 @@
         "properties": {
           "limit": {
             "description": "The maximum number of fields in an index. Field and object mappings, as well as field aliases count towards this limit.\nThe limit is in place to prevent mappings and searches from becoming too large. Higher values can lead to performance\ndegradations and memory issues, especially in clusters with a high load or few resources.",
-            "type": "number"
+            "oneOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "string"
+              }
+            ]
           },
           "ignore_dynamic_beyond_limit": {
             "description": "This setting determines what happens when a dynamically mapped field would exceed the total fields limit. When set\nto false (the default), the index request of the document that tries to add a dynamic field to the mapping will fail\nwith the message Limit of total fields [X] has been exceeded. When set to true, the index request will not fail.\nInstead, fields that would exceed the limit are not added to the mapping, similar to dynamic: false.\nThe fields that were not added to the mapping will be added to the _ignored field.",
-            "type": "boolean"
+            "oneOf": [
+              {
+                "type": "boolean"
+              },
+              {
+                "type": "string"
+              }
+            ]
           }
         }
       },
@@ -45026,6 +45209,13 @@
           },
           "data_stream": {
             "$ref": "#/components/schemas/indices._types:IndexTemplateDataStreamConfiguration"
+          },
+          "deprecated": {
+            "description": "Marks this index template as deprecated.\nWhen creating or updating a non-deprecated index template that uses deprecated components,\nElasticsearch will emit a deprecation warning.",
+            "type": "boolean"
+          },
+          "ignore_missing_component_templates": {
+            "$ref": "#/components/schemas/_types:Names"
           }
         },
         "required": [
@@ -45765,6 +45955,9 @@
           "foreach": {
             "$ref": "#/components/schemas/ingest._types:ForeachProcessor"
           },
+          "ip_location": {
+            "$ref": "#/components/schemas/ingest._types:IpLocationProcessor"
+          },
           "geo_grid": {
             "$ref": "#/components/schemas/ingest._types:GeoGridProcessor"
           },
@@ -46451,6 +46644,50 @@
             "required": [
               "field",
               "processor"
+            ]
+          }
+        ]
+      },
+      "ingest._types:IpLocationProcessor": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/ingest._types:ProcessorBase"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "database_file": {
+                "description": "The database filename referring to a database the module ships with (GeoLite2-City.mmdb, GeoLite2-Country.mmdb, or GeoLite2-ASN.mmdb) or a custom database in the ingest-geoip config directory.",
+                "type": "string"
+              },
+              "field": {
+                "$ref": "#/components/schemas/_types:Field"
+              },
+              "first_only": {
+                "description": "If `true`, only the first found IP location data will be returned, even if the field contains an array.",
+                "type": "boolean"
+              },
+              "ignore_missing": {
+                "description": "If `true` and `field` does not exist, the processor quietly exits without modifying the document.",
+                "type": "boolean"
+              },
+              "properties": {
+                "description": "Controls what properties are added to the `target_field` based on the IP location lookup.",
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "target_field": {
+                "$ref": "#/components/schemas/_types:Field"
+              },
+              "download_database_on_pipeline_creation": {
+                "description": "If `true` (and if `ingest.geoip.downloader.eager.download` is `false`), the missing database is downloaded when the pipeline is created.\nElse, the download is triggered by when the pipeline is used as the `default_pipeline` or `final_pipeline` in an index.",
+                "type": "boolean"
+              }
+            },
+            "required": [
+              "field"
             ]
           }
         ]
@@ -52054,6 +52291,9 @@
         "type": "object",
         "properties": {
           "aggregations": {
+            "externalDocs": {
+              "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/search-aggregations.html"
+            },
             "type": "object",
             "additionalProperties": {
               "$ref": "#/components/schemas/_types.aggregations:AggregationContainer"
@@ -52692,7 +52932,14 @@
             "type": "number"
           },
           "rule_criteria_types_counts": {
-            "description": "A map of criteria type to the number of rules of that type",
+            "description": "A map of criteria type (e.g. exact) to the number of rules of that type",
+            "type": "object",
+            "additionalProperties": {
+              "type": "number"
+            }
+          },
+          "rule_type_counts": {
+            "description": "A map of rule type (e.g. pinned) to the number of rules of that type",
             "type": "object",
             "additionalProperties": {
               "type": "number"
@@ -52702,7 +52949,23 @@
         "required": [
           "ruleset_id",
           "rule_total_count",
-          "rule_criteria_types_counts"
+          "rule_criteria_types_counts",
+          "rule_type_counts"
+        ]
+      },
+      "query_rules.test:QueryRulesetMatchedRule": {
+        "type": "object",
+        "properties": {
+          "ruleset_id": {
+            "$ref": "#/components/schemas/_types:Id"
+          },
+          "rule_id": {
+            "$ref": "#/components/schemas/_types:Id"
+          }
+        },
+        "required": [
+          "ruleset_id",
+          "rule_id"
         ]
       },
       "_global.rank_eval:RankEvalRequestItem": {
@@ -53108,6 +53371,12 @@
           },
           "rrf": {
             "$ref": "#/components/schemas/_types:RRFRetriever"
+          },
+          "text_similarity_reranker": {
+            "$ref": "#/components/schemas/_types:TextSimilarityReranker"
+          },
+          "rule": {
+            "$ref": "#/components/schemas/_types:RuleRetriever"
           }
         },
         "minProperties": 1,
@@ -53134,10 +53403,6 @@
               "sort": {
                 "$ref": "#/components/schemas/_types:Sort"
               },
-              "min_score": {
-                "description": "Minimum _score for matching documents. Documents with a lower _score are not included in the top documents.",
-                "type": "number"
-              },
               "collapse": {
                 "$ref": "#/components/schemas/_global.search._types:FieldCollapse"
               }
@@ -53161,6 +53426,10 @@
                 }
               }
             ]
+          },
+          "min_score": {
+            "description": "Minimum _score for matching documents. Documents with a lower _score are not included in the top documents.",
+            "type": "number"
           }
         }
       },
@@ -53229,6 +53498,75 @@
             },
             "required": [
               "retrievers"
+            ]
+          }
+        ]
+      },
+      "_types:TextSimilarityReranker": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/_types:RetrieverBase"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "retriever": {
+                "$ref": "#/components/schemas/_types:RetrieverContainer"
+              },
+              "rank_window_size": {
+                "description": "This value determines how many documents we will consider from the nested retriever.",
+                "type": "number"
+              },
+              "inference_id": {
+                "description": "Unique identifier of the inference endpoint created using the inference API.",
+                "type": "string"
+              },
+              "inference_text": {
+                "description": "The text snippet used as the basis for similarity comparison",
+                "type": "string"
+              },
+              "field": {
+                "description": "The document field to be used for text similarity comparisons. This field should contain the text that will be evaluated against the inference_text",
+                "type": "string"
+              }
+            },
+            "required": [
+              "retriever"
+            ]
+          }
+        ]
+      },
+      "_types:RuleRetriever": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/_types:RetrieverBase"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "ruleset_ids": {
+                "description": "The ruleset IDs containing the rules this retriever is evaluating against.",
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/_types:Id"
+                }
+              },
+              "match_criteria": {
+                "description": "The match criteria that will determine if a rule in the provided rulesets should be applied.",
+                "type": "object"
+              },
+              "retriever": {
+                "$ref": "#/components/schemas/_types:RetrieverContainer"
+              },
+              "rank_window_size": {
+                "description": "This value determines the size of the individual result set.",
+                "type": "number"
+              }
+            },
+            "required": [
+              "ruleset_ids",
+              "match_criteria",
+              "retriever"
             ]
           }
         ]
@@ -53351,68 +53689,46 @@
       "_types:MapboxVectorTiles": {
         "type": "object"
       },
-      "security._types:ApiKey": {
+      "security.authenticate:AuthenticateApiKey": {
         "type": "object",
         "properties": {
-          "creation": {
-            "description": "Creation time for the API key in milliseconds.",
-            "type": "number"
-          },
-          "expiration": {
-            "description": "Expiration time for the API key in milliseconds.",
-            "type": "number"
-          },
           "id": {
             "$ref": "#/components/schemas/_types:Id"
           },
-          "invalidated": {
-            "description": "Invalidation status for the API key.\nIf the key has been invalidated, it has a value of `true`. Otherwise, it is `false`.",
-            "type": "boolean"
-          },
           "name": {
             "$ref": "#/components/schemas/_types:Name"
-          },
-          "realm": {
-            "description": "Realm name of the principal for which this API key was created.",
-            "type": "string"
-          },
-          "realm_type": {
-            "description": "Realm type of the principal for which this API key was created",
-            "type": "string"
-          },
-          "username": {
-            "$ref": "#/components/schemas/_types:Username"
-          },
-          "profile_uid": {
-            "description": "The profile uid for the API key owner principal, if requested and if it exists",
-            "type": "string"
-          },
-          "metadata": {
-            "$ref": "#/components/schemas/_types:Metadata"
-          },
-          "role_descriptors": {
-            "description": "The role descriptors assigned to this API key when it was created or last updated.\nAn empty role descriptor means the API key inherits the owner user’s permissions.",
-            "type": "object",
-            "additionalProperties": {
-              "$ref": "#/components/schemas/security._types:RoleDescriptor"
-            }
-          },
-          "limited_by": {
-            "description": "The owner user’s permissions associated with the API key.\nIt is a point-in-time snapshot captured at creation and subsequent updates.\nAn API key’s effective permissions are an intersection of its assigned privileges and the owner user’s permissions.",
-            "type": "array",
-            "items": {
-              "type": "object",
-              "additionalProperties": {
-                "$ref": "#/components/schemas/security._types:RoleDescriptor"
-              }
-            }
-          },
-          "_sort": {
-            "$ref": "#/components/schemas/_types:SortResults"
           }
         },
         "required": [
-          "id",
+          "id"
+        ]
+      },
+      "security._types:RealmInfo": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "$ref": "#/components/schemas/_types:Name"
+          },
+          "type": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "name",
+          "type"
+        ]
+      },
+      "security.authenticate:Token": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "$ref": "#/components/schemas/_types:Name"
+          },
+          "type": {
+            "type": "string"
+          }
+        },
+        "required": [
           "name"
         ]
       },
@@ -53453,6 +53769,9 @@
           "description": {
             "description": "Optional description of the role descriptor",
             "type": "string"
+          },
+          "restriction": {
+            "$ref": "#/components/schemas/security._types:Restriction"
           },
           "transient_metadata": {
             "type": "object",
@@ -53509,10 +53828,17 @@
           },
           "names": {
             "description": "A list of indices (or index name patterns) to which the permissions in this entry apply.",
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/_types:IndexName"
-            }
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/_types:IndexName"
+              },
+              {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/_types:IndexName"
+                }
+              }
+            ]
           },
           "privileges": {
             "description": "The index level privileges that owners of the role have on the specified indices.",
@@ -53656,33 +53982,189 @@
           "resources"
         ]
       },
-      "security._types:RealmInfo": {
+      "security._types:Restriction": {
         "type": "object",
         "properties": {
-          "name": {
-            "$ref": "#/components/schemas/_types:Name"
-          },
-          "type": {
-            "type": "string"
+          "workflows": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/security._types:RestrictionWorkflow"
+            }
           }
         },
         "required": [
-          "name",
-          "type"
+          "workflows"
         ]
       },
-      "security.authenticate:Token": {
+      "security._types:RestrictionWorkflow": {
+        "anyOf": [
+          {
+            "type": "string",
+            "enum": [
+              "search_application_query"
+            ]
+          },
+          {
+            "type": "string"
+          }
+        ]
+      },
+      "security._types:ApiKey": {
         "type": "object",
         "properties": {
+          "id": {
+            "$ref": "#/components/schemas/_types:Id"
+          },
           "name": {
             "$ref": "#/components/schemas/_types:Name"
           },
           "type": {
+            "$ref": "#/components/schemas/security._types:ApiKeyType"
+          },
+          "creation": {
+            "$ref": "#/components/schemas/_types:EpochTimeUnitMillis"
+          },
+          "expiration": {
+            "$ref": "#/components/schemas/_types:EpochTimeUnitMillis"
+          },
+          "invalidated": {
+            "description": "Invalidation status for the API key.\nIf the key has been invalidated, it has a value of `true`. Otherwise, it is `false`.",
+            "type": "boolean"
+          },
+          "invalidation": {
+            "$ref": "#/components/schemas/_types:EpochTimeUnitMillis"
+          },
+          "username": {
+            "$ref": "#/components/schemas/_types:Username"
+          },
+          "realm": {
+            "description": "Realm name of the principal for which this API key was created.",
             "type": "string"
+          },
+          "realm_type": {
+            "description": "Realm type of the principal for which this API key was created",
+            "type": "string"
+          },
+          "metadata": {
+            "$ref": "#/components/schemas/_types:Metadata"
+          },
+          "role_descriptors": {
+            "description": "The role descriptors assigned to this API key when it was created or last updated.\nAn empty role descriptor means the API key inherits the owner user’s permissions.",
+            "type": "object",
+            "additionalProperties": {
+              "$ref": "#/components/schemas/security._types:RoleDescriptor"
+            }
+          },
+          "limited_by": {
+            "description": "The owner user’s permissions associated with the API key.\nIt is a point-in-time snapshot captured at creation and subsequent updates.\nAn API key’s effective permissions are an intersection of its assigned privileges and the owner user’s permissions.",
+            "type": "array",
+            "items": {
+              "type": "object",
+              "additionalProperties": {
+                "$ref": "#/components/schemas/security._types:RoleDescriptor"
+              }
+            }
+          },
+          "access": {
+            "$ref": "#/components/schemas/security._types:Access"
+          },
+          "profile_uid": {
+            "description": "The profile uid for the API key owner principal, if requested and if it exists",
+            "type": "string"
+          },
+          "_sort": {
+            "$ref": "#/components/schemas/_types:SortResults"
           }
         },
         "required": [
-          "name"
+          "id",
+          "name",
+          "type",
+          "creation",
+          "invalidated",
+          "username",
+          "realm",
+          "metadata"
+        ]
+      },
+      "security._types:ApiKeyType": {
+        "type": "string",
+        "enum": [
+          "rest",
+          "cross_cluster"
+        ]
+      },
+      "security._types:Access": {
+        "type": "object",
+        "properties": {
+          "replication": {
+            "description": "A list of indices permission entries for cross-cluster replication.",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/security._types:ReplicationAccess"
+            }
+          },
+          "search": {
+            "description": "A list of indices permission entries for cross-cluster search.",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/security._types:SearchAccess"
+            }
+          }
+        }
+      },
+      "security._types:ReplicationAccess": {
+        "type": "object",
+        "properties": {
+          "names": {
+            "description": "A list of indices (or index name patterns) to which the permissions in this entry apply.",
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/_types:IndexName"
+              },
+              {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/_types:IndexName"
+                }
+              }
+            ]
+          },
+          "allow_restricted_indices": {
+            "description": "This needs to be set to true if the patterns in the names field should cover system indices.",
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "names"
+        ]
+      },
+      "security._types:SearchAccess": {
+        "type": "object",
+        "properties": {
+          "field_security": {
+            "$ref": "#/components/schemas/security._types:FieldSecurity"
+          },
+          "names": {
+            "description": "A list of indices (or index name patterns) to which the permissions in this entry apply.",
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/_types:IndexName"
+              },
+              {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/_types:IndexName"
+                }
+              }
+            ]
+          },
+          "query": {
+            "$ref": "#/components/schemas/security._types:IndicesPrivilegesQuery"
+          }
+        },
+        "required": [
+          "names"
         ]
       },
       "security.get_role:Role": {
@@ -53691,7 +54173,7 @@
           "cluster": {
             "type": "array",
             "items": {
-              "type": "string"
+              "$ref": "#/components/schemas/security._types:ClusterPrivilege"
             }
           },
           "indices": {
@@ -56468,16 +56950,6 @@
         },
         "style": "form"
       },
-      "async_search.submit#keep_alive": {
-        "in": "query",
-        "name": "keep_alive",
-        "description": "Specifies how long the async search needs to be available.\nOngoing async searches and any saved search results are deleted after this period.",
-        "deprecated": false,
-        "schema": {
-          "$ref": "#/components/schemas/_types:Duration"
-        },
-        "style": "form"
-      },
       "async_search.submit#allow_no_indices": {
         "in": "query",
         "name": "allow_no_indices",
@@ -56628,15 +57100,6 @@
         },
         "style": "form"
       },
-      "async_search.submit#min_compatible_shard_node": {
-        "in": "query",
-        "name": "min_compatible_shard_node",
-        "deprecated": false,
-        "schema": {
-          "$ref": "#/components/schemas/_types:VersionString"
-        },
-        "style": "form"
-      },
       "async_search.submit#preference": {
         "in": "query",
         "name": "preference",
@@ -56644,16 +57107,6 @@
         "deprecated": false,
         "schema": {
           "type": "string"
-        },
-        "style": "form"
-      },
-      "async_search.submit#pre_filter_shard_size": {
-        "in": "query",
-        "name": "pre_filter_shard_size",
-        "description": "The default value cannot be changed, which enforces the execution of a pre-filter roundtrip to retrieve statistics from each shard so that the ones that surely don’t hold any document matching the query get skipped.",
-        "deprecated": false,
-        "schema": {
-          "type": "number"
         },
         "style": "form"
       },
@@ -56674,15 +57127,6 @@
         "deprecated": false,
         "schema": {
           "$ref": "#/components/schemas/_types:Routing"
-        },
-        "style": "form"
-      },
-      "async_search.submit#scroll": {
-        "in": "query",
-        "name": "scroll",
-        "deprecated": false,
-        "schema": {
-          "$ref": "#/components/schemas/_types:Duration"
         },
         "style": "form"
       },
@@ -56812,6 +57256,7 @@
       "async_search.submit#rest_total_hits_as_int": {
         "in": "query",
         "name": "rest_total_hits_as_int",
+        "description": "Indicates whether hits.total should be rendered as an integer or an object in the rest search response",
         "deprecated": false,
         "schema": {
           "type": "boolean"
@@ -57050,6 +57495,16 @@
           "type": "string"
         },
         "style": "simple"
+      },
+      "cat.component_templates#local": {
+        "in": "query",
+        "name": "local",
+        "description": "If `true`, the request computes the list of selected nodes from the\nlocal cluster state. If `false` the list of selected nodes are computed\nfrom the cluster state of the master node. In both cases the coordinating\nnode will send requests for further information to each selected node.",
+        "deprecated": false,
+        "schema": {
+          "type": "boolean"
+        },
+        "style": "form"
       },
       "cat.count#index": {
         "in": "path",
@@ -58379,13 +58834,13 @@
         },
         "style": "form"
       },
-      "indices.exists_alias#local": {
+      "indices.exists_alias#master_timeout": {
         "in": "query",
-        "name": "local",
-        "description": "If `true`, the request retrieves information from the local node only.",
+        "name": "master_timeout",
+        "description": "Period to wait for a connection to the master node.\nIf no response is received before the timeout expires, the request fails and returns an error.",
         "deprecated": false,
         "schema": {
-          "type": "boolean"
+          "$ref": "#/components/schemas/_types:Duration"
         },
         "style": "form"
       },
@@ -58441,13 +58896,13 @@
         },
         "style": "form"
       },
-      "indices.get_alias#local": {
+      "indices.get_alias#master_timeout": {
         "in": "query",
-        "name": "local",
-        "description": "If `true`, the request retrieves information from the local node only.",
+        "name": "master_timeout",
+        "description": "Period to wait for a connection to the master node.\nIf no response is received before the timeout expires, the request fails and returns an error.",
         "deprecated": false,
         "schema": {
-          "type": "boolean"
+          "$ref": "#/components/schemas/_types:Duration"
         },
         "style": "form"
       },
@@ -60688,16 +61143,6 @@
         "deprecated": false,
         "schema": {
           "type": "number"
-        },
-        "style": "form"
-      },
-      "search#min_compatible_shard_node": {
-        "in": "query",
-        "name": "min_compatible_shard_node",
-        "description": "The minimum version of the node that can handle the request\nAny handling node with a lower version will fail the request.",
-        "deprecated": false,
-        "schema": {
-          "$ref": "#/components/schemas/_types:VersionString"
         },
         "style": "form"
       },

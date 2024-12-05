@@ -21,10 +21,11 @@ import { Id } from '@_types/common'
 import { QueryRule } from '../_types/QueryRuleset'
 
 /**
- * Creates or updates a query ruleset.
+ * Create or update a query ruleset.
  * @rest_spec_name query_rules.put_ruleset
  * @availability stack since=8.10.0 stability=stable
  * @availability serverless stability=stable visibility=public
+ * @ext_doc_id query-rule
  */
 export interface Request extends RequestBase {
   path_parts: {

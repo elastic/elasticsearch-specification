@@ -20,9 +20,9 @@
 import { RequestBase } from '@_types/Base'
 
 /**
- * The cluster remote info API allows you to retrieve all of the configured
- * remote cluster information. It returns connection and endpoint information
- * keyed by the configured remote cluster alias.
+ * Get remote cluster information.
+ * Get all of the configured remote cluster information.
+ * This API returns connection and endpoint information keyed by the configured remote cluster alias.
  * @rest_spec_name cluster.remote_info
  * @availability stack since=6.1.0 stability=stable
  * @doc_id cluster-remote-info
