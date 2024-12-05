@@ -46,7 +46,7 @@ export interface Request extends RequestBase {
   query_parameters: {
     /**
      * If true, then the request simulates the operation.
-     * It will calculate the result of applying the commands to the current cluster state and return the resulting cluster state after the commands (and re-balancing) has been applied; it will not actually perform the requested changes.
+     * It will calculate the result of applying the commands to the current cluster state and return the resulting cluster state after the commands (and rebalancing) have been applied; it will not actually perform the requested changes.
      * @server_default false
      */
     dry_run?: boolean
