@@ -17792,7 +17792,7 @@
         "tags": [
           "synonyms"
         ],
-        "summary": "Retrieves a synonym set",
+        "summary": "Get a synonym set",
         "operationId": "synonyms-get-synonym",
         "parameters": [
           {
@@ -17860,7 +17860,8 @@
         "tags": [
           "synonyms"
         ],
-        "summary": "Creates or updates a synonym set",
+        "summary": "Create or update a synonym set",
+        "description": "Synonyms sets are limited to a maximum of 10000 synonym rules per set.\nIf you need to manage more synonym rules, you can create multiple synonym sets.",
         "operationId": "synonyms-put-synonym",
         "parameters": [
           {
@@ -17934,7 +17935,7 @@
         "tags": [
           "synonyms"
         ],
-        "summary": "Deletes a synonym set",
+        "summary": "Delete a synonym set",
         "operationId": "synonyms-delete-synonym",
         "parameters": [
           {
@@ -17969,7 +17970,8 @@
         "tags": [
           "synonyms"
         ],
-        "summary": "Retrieves a synonym rule from a synonym set",
+        "summary": "Get a synonym rule",
+        "description": "Get a synonym rule from a synonym set.",
         "operationId": "synonyms-get-synonym-rule",
         "parameters": [
           {
@@ -18013,7 +18015,8 @@
         "tags": [
           "synonyms"
         ],
-        "summary": "Creates or updates a synonym rule in a synonym set",
+        "summary": "Create or update a synonym rule",
+        "description": "Create or update a synonym rule in a synonym set.",
         "operationId": "synonyms-put-synonym-rule",
         "parameters": [
           {
@@ -18075,7 +18078,8 @@
         "tags": [
           "synonyms"
         ],
-        "summary": "Deletes a synonym rule in a synonym set",
+        "summary": "Delete a synonym rule",
+        "description": "Delete a synonym rule from a synonym set.",
         "operationId": "synonyms-delete-synonym-rule",
         "parameters": [
           {
@@ -18121,7 +18125,8 @@
         "tags": [
           "synonyms"
         ],
-        "summary": "Retrieves a summary of all defined synonym sets",
+        "summary": "Get all synonym sets",
+        "description": "Get a summary of all defined synonym sets.",
         "operationId": "synonyms-get-synonyms-sets",
         "parameters": [
           {
