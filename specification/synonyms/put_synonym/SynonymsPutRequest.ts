@@ -22,7 +22,7 @@ import { SynonymRule } from '../_types/SynonymRule'
 
 /**
  * Create or update a synonym set.
- * Synonyms sets are limited to a maximum of 10000 synonym rules per set.
+ * Synonyms sets are limited to a maximum of 10,000 synonym rules per set.
  * If you need to manage more synonym rules, you can create multiple synonym sets.
  * @rest_spec_name synonyms.put_synonym
  * @availability stack since=8.10.0 stability=stable
