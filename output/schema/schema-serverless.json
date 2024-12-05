@@ -2286,7 +2286,7 @@
           "stability": "stable"
         }
       },
-      "description": "Deletes an async EQL search or a stored synchronous EQL search.\nThe API also deletes results for the search.",
+      "description": "Delete an async EQL search.\nDelete an async EQL search or a stored synchronous EQL search.\nThe API also deletes results for the search.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/eql-search-api.html",
       "name": "eql.delete",
       "request": {
@@ -2321,7 +2321,7 @@
           "stability": "stable"
         }
       },
-      "description": "Returns the current status and available results for an async EQL search or a stored synchronous EQL search.",
+      "description": "Get async EQL search results.\nGet the current status and available results for an async EQL search or a stored synchronous EQL search.",
       "docId": "eql-async-search-api",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/get-async-eql-search-api.html",
       "name": "eql.get",
@@ -2357,7 +2357,7 @@
           "stability": "stable"
         }
       },
-      "description": "Returns the current status for an async EQL search or a stored synchronous EQL search without returning results.",
+      "description": "Get the async EQL status.\nGet the current status for an async EQL search or a stored synchronous EQL search without returning results.",
       "docId": "eql-async-search-status-api",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/get-async-eql-status-api.html",
       "name": "eql.get_status",
@@ -2393,8 +2393,10 @@
           "stability": "stable"
         }
       },
-      "description": "Returns results matching a query expressed in Event Query Language (EQL)",
+      "description": "Get EQL search results.\nReturns search results for an Event Query Language (EQL) query.\nEQL assumes each document in a data stream or index corresponds to an event.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/eql-search-api.html",
+      "extDocId": "eql",
+      "extDocUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/eql.html",
       "name": "eql.search",
       "request": {
         "name": "Request",
@@ -17013,7 +17015,7 @@
       "body": {
         "kind": "no_body"
       },
-      "description": "Deletes an async EQL search or a stored synchronous EQL search.\nThe API also deletes results for the search.",
+      "description": "Delete an async EQL search.\nDelete an async EQL search or a stored synchronous EQL search.\nThe API also deletes results for the search.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -17040,7 +17042,7 @@
         }
       ],
       "query": [],
-      "specLocation": "eql/delete/EqlDeleteRequest.ts#L23-L39"
+      "specLocation": "eql/delete/EqlDeleteRequest.ts#L23-L40"
     },
     {
       "body": {
@@ -17067,7 +17069,7 @@
       "body": {
         "kind": "no_body"
       },
-      "description": "Returns the current status and available results for an async EQL search or a stored synchronous EQL search.",
+      "description": "Get async EQL search results.\nGet the current status and available results for an async EQL search or a stored synchronous EQL search.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -17119,7 +17121,7 @@
           }
         }
       ],
-      "specLocation": "eql/get/EqlGetRequest.ts#L24-L50"
+      "specLocation": "eql/get/EqlGetRequest.ts#L24-L51"
     },
     {
       "body": {
@@ -17161,7 +17163,7 @@
       "body": {
         "kind": "no_body"
       },
-      "description": "Returns the current status for an async EQL search or a stored synchronous EQL search without returning results.",
+      "description": "Get the async EQL status.\nGet the current status for an async EQL search or a stored synchronous EQL search without returning results.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -17188,7 +17190,7 @@
         }
       ],
       "query": [],
-      "specLocation": "eql/get_status/EqlGetStatusRequest.ts#L23-L35"
+      "specLocation": "eql/get_status/EqlGetStatusRequest.ts#L23-L36"
     },
     {
       "body": {
@@ -17509,7 +17511,7 @@
           }
         ]
       },
-      "description": "Returns results matching a query expressed in Event Query Language (EQL)",
+      "description": "Get EQL search results.\nReturns search results for an Event Query Language (EQL) query.\nEQL assumes each document in a data stream or index corresponds to an event.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -17612,7 +17614,7 @@
           }
         }
       ],
-      "specLocation": "eql/search/EqlSearchRequest.ts#L28-L118"
+      "specLocation": "eql/search/EqlSearchRequest.ts#L28-L122"
     },
     {
       "body": {
