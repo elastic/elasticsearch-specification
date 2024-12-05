@@ -20840,9 +20840,22 @@
               "namespace": "_builtins"
             }
           }
+        },
+        {
+          "description": "Period to wait for a connection to the master node.\nIf no response is received before the timeout expires, the request fails and returns an error.",
+          "name": "master_timeout",
+          "required": false,
+          "serverDefault": "30s",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Duration",
+              "namespace": "_types"
+            }
+          }
         }
       ],
-      "specLocation": "indices/exists_alias/IndicesExistsAliasRequest.ts#L23-L63"
+      "specLocation": "indices/exists_alias/IndicesExistsAliasRequest.ts#L24-L70"
     },
     {
       "body": {
@@ -21272,9 +21285,22 @@
               "namespace": "_builtins"
             }
           }
+        },
+        {
+          "description": "Period to wait for a connection to the master node.\nIf no response is received before the timeout expires, the request fails and returns an error.",
+          "name": "master_timeout",
+          "required": false,
+          "serverDefault": "30s",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Duration",
+              "namespace": "_types"
+            }
+          }
         }
       ],
-      "specLocation": "indices/get_alias/IndicesGetAliasRequest.ts#L23-L66"
+      "specLocation": "indices/get_alias/IndicesGetAliasRequest.ts#L24-L73"
     },
     {
       "body": {
