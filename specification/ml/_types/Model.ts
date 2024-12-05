@@ -64,7 +64,7 @@ export class ModelSizeStats {
   model_bytes: ByteSize
   model_bytes_exceeded?: ByteSize
   model_bytes_memory_limit?: ByteSize
-  output_memory_allocator_bytes?: long
+  output_memory_allocator_bytes?: ByteSize
   peak_model_bytes?: ByteSize
   assignment_memory_basis?: string
   result_type: string

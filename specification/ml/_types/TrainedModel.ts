@@ -34,7 +34,8 @@ import {
   DurationValue,
   EpochTime,
   UnitFloatMillis,
-  UnitMillis
+  UnitMillis,
+  UnitNanos
 } from '@_types/Time'
 import { DiscoveryNode } from './DiscoveryNode'
 import { InferenceConfigCreateContainer } from './inference'
@@ -160,7 +161,7 @@ export class TrainedModelDeploymentNodesStats {
   inference_cache_hit_count_last_minute?: long
 
   /** The epoch time stamp of the last inference call for the model on this node. */
-  last_access?: long
+  last_access?: EpochTime<UnitNanos>
   /**
    * Information pertaining to the node.
    * @availability stack
@@ -179,7 +180,7 @@ export class TrainedModelDeploymentNodesStats {
   /** The current routing state and reason for the current routing state for this allocation. */
   routing_state: TrainedModelAssignmentRoutingTable
   /** The epoch timestamp when the allocation started. */
-  start_time?: EpochTime<UnitMillis>
+  start_time?: EpochTime<UnitNanos>
   /** The number of threads used by each allocation during inference. */
   threads_per_allocation?: integer
 
@@ -252,7 +253,7 @@ export class ModelPackageConfig {
   packaged_model_id: Id
   platform_architecture?: string
   prefix_strings?: TrainedModelPrefixStrings
-  size?: long
+  size?: ByteSize
   sha256?: string
   tags?: string[]
   vocabulary_file?: string
@@ -379,8 +380,8 @@ export class TrainedModelAssignmentTaskParameters {
   number_of_allocations: integer
   priority: TrainingPriority
 
-  per_deployment_memory_bytes: long
-  per_allocation_memory_bytes: long
+  per_deployment_memory_bytes: ByteSize
+  per_allocation_memory_bytes: ByteSize
 
   /**
    * Number of inference requests are allowed in the queue at a time.

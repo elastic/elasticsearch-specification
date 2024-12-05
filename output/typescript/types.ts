@@ -13664,7 +13664,7 @@ export interface MlAnalysisConfigRead {
 
 export interface MlAnalysisLimits {
   categorization_examples_limit?: long
-  model_memory_limit?: string | long
+  model_memory_limit?: ByteSize
 }
 
 export interface MlAnalysisMemoryLimit {
@@ -14243,7 +14243,7 @@ export interface MlDiscoveryNodeContent {
 export type MlExcludeFrequent = 'all' | 'none' | 'by' | 'over'
 
 export interface MlExponentialAverageCalculationContext {
-  incremental_metric_value_ms: double
+  incremental_metric_value_ms: DurationValue<UnitFloatMillis>
   latest_timestamp?: EpochTime<UnitMillis>
   previous_exponential_average_ms?: DurationValue<UnitFloatMillis>
 }
@@ -14472,7 +14472,7 @@ export interface MlModelPackageConfig {
   packaged_model_id: Id
   platform_architecture?: string
   prefix_strings?: MlTrainedModelPrefixStrings
-  size?: long
+  size?: ByteSize
   sha256?: string
   tags?: string[]
   vocabulary_file?: string
@@ -14492,7 +14492,7 @@ export interface MlModelSizeStats {
   model_bytes: ByteSize
   model_bytes_exceeded?: ByteSize
   model_bytes_memory_limit?: ByteSize
-  output_memory_allocator_bytes?: long
+  output_memory_allocator_bytes?: ByteSize
   peak_model_bytes?: ByteSize
   assignment_memory_basis?: string
   result_type: string
@@ -14748,8 +14748,8 @@ export interface MlTrainedModelAssignmentTaskParameters {
   cache_size?: ByteSize
   number_of_allocations: integer
   priority: MlTrainingPriority
-  per_deployment_memory_bytes: long
-  per_allocation_memory_bytes: long
+  per_deployment_memory_bytes: ByteSize
+  per_allocation_memory_bytes: ByteSize
   queue_capacity: integer
   threads_per_allocation: integer
 }
@@ -14802,14 +14802,14 @@ export interface MlTrainedModelDeploymentNodesStats {
   inference_count?: long
   inference_cache_hit_count?: long
   inference_cache_hit_count_last_minute?: long
-  last_access?: long
+  last_access?: EpochTime<UnitNanos>
   node?: MlDiscoveryNode
   number_of_allocations?: integer
   number_of_pending_requests?: integer
   peak_throughput_per_minute: long
   rejection_execution_count?: integer
   routing_state: MlTrainedModelAssignmentRoutingTable
-  start_time?: EpochTime<UnitMillis>
+  start_time?: EpochTime<UnitNanos>
   threads_per_allocation?: integer
   throughput_last_minute?: integer
   timeout_count?: integer
@@ -15587,8 +15587,8 @@ export interface MlInfoDefaults {
 
 export interface MlInfoLimits {
   max_single_ml_node_processors?: integer
-  max_model_memory_limit?: string
-  effective_max_model_memory_limit: string
+  max_model_memory_limit?: ByteSize
+  effective_max_model_memory_limit: ByteSize
   total_ml_memory: string
   total_ml_processors?: integer
 }
@@ -15641,7 +15641,7 @@ export interface MlPostDataRequest<TData = unknown> extends RequestBase {
 
 export interface MlPostDataResponse {
   bucket_count: long
-  earliest_record_timestamp?: long
+  earliest_record_timestamp?: EpochTime<UnitMillis>
   empty_bucket_count: long
   input_bytes: long
   input_field_count: long
@@ -15649,7 +15649,7 @@ export interface MlPostDataResponse {
   invalid_date_count: long
   job_id: Id
   last_data_time?: integer
-  latest_record_timestamp?: long
+  latest_record_timestamp?: EpochTime<UnitMillis>
   missing_field_count: long
   out_of_order_timestamp_count: long
   processed_field_count: long

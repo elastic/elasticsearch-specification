@@ -352,12 +352,12 @@ export class IndicesOptions {
   expand_wildcards?: ExpandWildcards
 
   /**
-   * @deprecated 8.16.0 this value will be replaced by the selector `::*` on the expression level
+   * @deprecated 8.16.0 this value will be replaced by the selector `::*` on the expression level.
    */
   exclude?: string
 
   /**
-   * @deprecated 8.16.0 this query param will be replaced by the selector `::` on the expression level
+   * @deprecated 8.16.0 this query param will be replaced by the selector `::` on the expression level.
    */
   failure_store?: string
   /**
@@ -371,12 +371,12 @@ export class IndicesOptions {
    */
   ignore_throttled?: boolean
   /**
-   * @deprecated 8.16.0 this value will be replaced by the selector `::*` on the expression level
+   * @deprecated 8.16.0 this value will be replaced by the selector `::*` on the expression level.
    */
   include?: string
 
   /**
-   * @deprecated 8.16.0 this value will be replaced by the selector `::*` on the expression level
+   * @deprecated 8.16.0 this value will be replaced by the selector `::*` on the expression level.
    */
   only?: string
 }

@@ -49603,7 +49603,7 @@
         "type": "object",
         "properties": {
           "incremental_metric_value_ms": {
-            "type": "number"
+            "$ref": "#/components/schemas/_types:DurationValueUnitFloatMillis"
           },
           "latest_timestamp": {
             "$ref": "#/components/schemas/_types:EpochTimeUnitMillis"
@@ -50041,7 +50041,7 @@
             "$ref": "#/components/schemas/_types:ByteSize"
           },
           "output_memory_allocator_bytes": {
-            "type": "number"
+            "$ref": "#/components/schemas/_types:ByteSize"
           },
           "peak_model_bytes": {
             "$ref": "#/components/schemas/_types:ByteSize"
@@ -50242,15 +50242,7 @@
             "type": "number"
           },
           "model_memory_limit": {
-            "description": "The approximate maximum amount of memory resources that are required for analytical processing. Once this limit is approached, data pruning becomes more aggressive. Upon exceeding this limit, new entities are not modeled. If the `xpack.ml.max_model_memory_limit` setting has a value greater than 0 and less than 1024mb, that value is used instead of the default. The default value is relatively small to ensure that high resource usage is a conscious decision. If you have jobs that are expected to analyze high cardinality fields, you will likely need to use a higher value. If you specify a number instead of a string, the units are assumed to be MiB. Specifying a string is recommended for clarity. If you specify a byte size unit of `b` or `kb` and the number does not equate to a discrete number of megabytes, it is rounded down to the closest MiB. The minimum valid value is 1 MiB. If you specify a value less than 1 MiB, an error occurs. If you specify a value for the `xpack.ml.max_model_memory_limit` setting, an error occurs when you try to create jobs that have `model_memory_limit` values greater than that setting value.",
-            "oneOf": [
-              {
-                "type": "string"
-              },
-              {
-                "type": "number"
-              }
-            ]
+            "$ref": "#/components/schemas/_types:ByteSize"
           }
         }
       },
@@ -50964,7 +50956,7 @@
             "$ref": "#/components/schemas/ml._types:TrainedModelPrefixStrings"
           },
           "size": {
-            "type": "number"
+            "$ref": "#/components/schemas/_types:ByteSize"
           },
           "sha256": {
             "type": "string"
@@ -51208,8 +51200,7 @@
             "type": "number"
           },
           "last_access": {
-            "description": "The epoch time stamp of the last inference call for the model on this node.",
-            "type": "number"
+            "$ref": "#/components/schemas/_types:EpochTimeUnitNanos"
           },
           "number_of_allocations": {
             "description": "The number of allocations assigned to this node.",
@@ -51230,7 +51221,7 @@
             "$ref": "#/components/schemas/ml._types:TrainedModelAssignmentRoutingTable"
           },
           "start_time": {
-            "$ref": "#/components/schemas/_types:EpochTimeUnitMillis"
+            "$ref": "#/components/schemas/_types:EpochTimeUnitNanos"
           },
           "threads_per_allocation": {
             "description": "The number of threads used by each allocation during inference.",
@@ -51247,6 +51238,13 @@
         "required": [
           "peak_throughput_per_minute",
           "routing_state"
+        ]
+      },
+      "_types:EpochTimeUnitNanos": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/_types:UnitNanos"
+          }
         ]
       },
       "ml._types:TrainedModelAssignmentRoutingTable": {
@@ -52288,10 +52286,10 @@
             "$ref": "#/components/schemas/ml._types:TrainingPriority"
           },
           "per_deployment_memory_bytes": {
-            "type": "number"
+            "$ref": "#/components/schemas/_types:ByteSize"
           },
           "per_allocation_memory_bytes": {
-            "type": "number"
+            "$ref": "#/components/schemas/_types:ByteSize"
           },
           "queue_capacity": {
             "description": "Number of inference requests are allowed in the queue at a time.",

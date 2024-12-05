@@ -95124,7 +95124,7 @@
         "name": "DeploymentAllocationState",
         "namespace": "ml._types"
       },
-      "specLocation": "ml/_types/TrainedModel.ts#L318-L331"
+      "specLocation": "ml/_types/TrainedModel.ts#L319-L332"
     },
     {
       "kind": "enum",
@@ -95150,7 +95150,7 @@
         "name": "DeploymentAssignmentState",
         "namespace": "ml._types"
       },
-      "specLocation": "ml/_types/TrainedModel.ts#L333-L350"
+      "specLocation": "ml/_types/TrainedModel.ts#L334-L351"
     },
     {
       "kind": "type_alias",
@@ -95495,7 +95495,7 @@
         "name": "RoutingState",
         "namespace": "ml._types"
       },
-      "specLocation": "ml/_types/TrainedModel.ts#L395-L416"
+      "specLocation": "ml/_types/TrainedModel.ts#L396-L417"
     },
     {
       "kind": "enum",
@@ -95576,7 +95576,7 @@
         "name": "TrainedModelType",
         "namespace": "ml._types"
       },
-      "specLocation": "ml/_types/TrainedModel.ts#L302-L316"
+      "specLocation": "ml/_types/TrainedModel.ts#L303-L317"
     },
     {
       "kind": "enum",
@@ -95592,7 +95592,7 @@
         "name": "TrainingPriority",
         "namespace": "ml._types"
       },
-      "specLocation": "ml/_types/TrainedModel.ts#L352-L355"
+      "specLocation": "ml/_types/TrainedModel.ts#L353-L356"
     },
     {
       "codegenNames": [
@@ -130350,9 +130350,18 @@
           "name": "incremental_metric_value_ms",
           "required": true,
           "type": {
+            "generics": [
+              {
+                "kind": "instance_of",
+                "type": {
+                  "name": "UnitFloatMillis",
+                  "namespace": "_types"
+                }
+              }
+            ],
             "kind": "instance_of",
             "type": {
-              "name": "double",
+              "name": "DurationValue",
               "namespace": "_types"
             }
           }
@@ -130894,7 +130903,7 @@
         },
         {
           "deprecation": {
-            "description": "this value will be replaced by the selector `::*` on the expression level",
+            "description": "this value will be replaced by the selector `::*` on the expression level.",
             "version": "8.16.0"
           },
           "name": "exclude",
@@ -130909,7 +130918,7 @@
         },
         {
           "deprecation": {
-            "description": "this query param will be replaced by the selector `::` on the expression level",
+            "description": "this query param will be replaced by the selector `::` on the expression level.",
             "version": "8.16.0"
           },
           "name": "failure_store",
@@ -130950,7 +130959,7 @@
         },
         {
           "deprecation": {
-            "description": "this value will be replaced by the selector `::*` on the expression level",
+            "description": "this value will be replaced by the selector `::*` on the expression level.",
             "version": "8.16.0"
           },
           "name": "include",
@@ -130965,7 +130974,7 @@
         },
         {
           "deprecation": {
-            "description": "this value will be replaced by the selector `::*` on the expression level",
+            "description": "this value will be replaced by the selector `::*` on the expression level.",
             "version": "8.16.0"
           },
           "name": "only",
@@ -131598,7 +131607,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "long",
+              "name": "ByteSize",
               "namespace": "_types"
             }
           }
@@ -132225,23 +132234,11 @@
           "required": false,
           "serverDefault": "1024mb",
           "type": {
-            "items": [
-              {
-                "kind": "instance_of",
-                "type": {
-                  "name": "string",
-                  "namespace": "_builtins"
-                }
-              },
-              {
-                "kind": "instance_of",
-                "type": {
-                  "name": "long",
-                  "namespace": "_types"
-                }
-              }
-            ],
-            "kind": "union_of"
+            "kind": "instance_of",
+            "type": {
+              "name": "ByteSize",
+              "namespace": "_types"
+            }
           }
         }
       ],
@@ -132802,7 +132799,7 @@
           }
         }
       ],
-      "specLocation": "ml/_types/TrainedModel.ts#L191-L227"
+      "specLocation": "ml/_types/TrainedModel.ts#L192-L228"
     },
     {
       "description": "Inference configuration provided when storing the model config",
@@ -133762,7 +133759,7 @@
           }
         }
       ],
-      "specLocation": "ml/_types/TrainedModel.ts#L229-L232"
+      "specLocation": "ml/_types/TrainedModel.ts#L230-L233"
     },
     {
       "kind": "interface",
@@ -133839,7 +133836,7 @@
           }
         }
       ],
-      "specLocation": "ml/_types/TrainedModel.ts#L234-L242"
+      "specLocation": "ml/_types/TrainedModel.ts#L235-L243"
     },
     {
       "kind": "interface",
@@ -133911,7 +133908,7 @@
           }
         }
       ],
-      "specLocation": "ml/_types/TrainedModel.ts#L261-L275"
+      "specLocation": "ml/_types/TrainedModel.ts#L262-L276"
     },
     {
       "kind": "interface",
@@ -133963,7 +133960,7 @@
           }
         }
       ],
-      "specLocation": "ml/_types/TrainedModel.ts#L277-L284"
+      "specLocation": "ml/_types/TrainedModel.ts#L278-L285"
     },
     {
       "kind": "interface",
@@ -134009,7 +134006,7 @@
           }
         }
       ],
-      "specLocation": "ml/_types/TrainedModel.ts#L293-L300"
+      "specLocation": "ml/_types/TrainedModel.ts#L294-L301"
     },
     {
       "kind": "interface",
@@ -134046,7 +134043,7 @@
           }
         }
       ],
-      "specLocation": "ml/_types/TrainedModel.ts#L286-L291"
+      "specLocation": "ml/_types/TrainedModel.ts#L287-L292"
     },
     {
       "kind": "interface",
@@ -134187,7 +134184,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "long",
+              "name": "ByteSize",
               "namespace": "_types"
             }
           }
@@ -134229,7 +134226,7 @@
           }
         }
       ],
-      "specLocation": "ml/_types/TrainedModel.ts#L244-L259"
+      "specLocation": "ml/_types/TrainedModel.ts#L245-L260"
     },
     {
       "kind": "interface",
@@ -134274,7 +134271,7 @@
           }
         }
       ],
-      "specLocation": "ml/_types/TrainedModel.ts#L474-L485"
+      "specLocation": "ml/_types/TrainedModel.ts#L475-L486"
     },
     {
       "kind": "interface",
@@ -134295,7 +134292,7 @@
           }
         }
       ],
-      "specLocation": "ml/_types/TrainedModel.ts#L466-L468"
+      "specLocation": "ml/_types/TrainedModel.ts#L467-L469"
     },
     {
       "kind": "interface",
@@ -134316,7 +134313,7 @@
           }
         }
       ],
-      "specLocation": "ml/_types/TrainedModel.ts#L470-L472"
+      "specLocation": "ml/_types/TrainedModel.ts#L471-L473"
     },
     {
       "kind": "interface",
@@ -134407,7 +134404,7 @@
           }
         }
       ],
-      "specLocation": "ml/_types/TrainedModel.ts#L42-L60"
+      "specLocation": "ml/_types/TrainedModel.ts#L43-L61"
     },
     {
       "kind": "interface",
@@ -134641,7 +134638,7 @@
           }
         }
       ],
-      "specLocation": "ml/_types/TrainedModel.ts#L62-L107"
+      "specLocation": "ml/_types/TrainedModel.ts#L63-L108"
     },
     {
       "kind": "interface",
@@ -134684,7 +134681,7 @@
           }
         }
       ],
-      "specLocation": "ml/_types/TrainedModel.ts#L109-L113"
+      "specLocation": "ml/_types/TrainedModel.ts#L110-L114"
     },
     {
       "kind": "interface",
@@ -134730,7 +134727,7 @@
           }
         }
       ],
-      "specLocation": "ml/_types/TrainedModel.ts#L438-L445"
+      "specLocation": "ml/_types/TrainedModel.ts#L439-L446"
     },
     {
       "kind": "interface",
@@ -134852,9 +134849,18 @@
           "name": "last_access",
           "required": false,
           "type": {
+            "generics": [
+              {
+                "kind": "instance_of",
+                "type": {
+                  "name": "UnitNanos",
+                  "namespace": "_types"
+                }
+              }
+            ],
             "kind": "instance_of",
             "type": {
-              "name": "long",
+              "name": "EpochTime",
               "namespace": "_types"
             }
           }
@@ -134927,7 +134933,7 @@
               {
                 "kind": "instance_of",
                 "type": {
-                  "name": "UnitMillis",
+                  "name": "UnitNanos",
                   "namespace": "_types"
                 }
               }
@@ -134975,7 +134981,7 @@
           }
         }
       ],
-      "specLocation": "ml/_types/TrainedModel.ts#L144-L189"
+      "specLocation": "ml/_types/TrainedModel.ts#L145-L190"
     },
     {
       "kind": "interface",
@@ -135033,7 +135039,7 @@
           }
         }
       ],
-      "specLocation": "ml/_types/TrainedModel.ts#L418-L436"
+      "specLocation": "ml/_types/TrainedModel.ts#L419-L437"
     },
     {
       "kind": "interface",
@@ -135114,7 +135120,7 @@
           }
         }
       ],
-      "specLocation": "ml/_types/TrainedModel.ts#L115-L135"
+      "specLocation": "ml/_types/TrainedModel.ts#L116-L136"
     },
     {
       "kind": "interface",
@@ -135148,7 +135154,7 @@
           }
         }
       ],
-      "specLocation": "ml/_types/TrainedModel.ts#L137-L142"
+      "specLocation": "ml/_types/TrainedModel.ts#L138-L143"
     },
     {
       "kind": "interface",
@@ -137600,7 +137606,7 @@
           }
         }
       ],
-      "specLocation": "ml/_types/TrainedModel.ts#L447-L464"
+      "specLocation": "ml/_types/TrainedModel.ts#L448-L465"
     },
     {
       "kind": "interface",
@@ -137692,7 +137698,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "long",
+              "name": "ByteSize",
               "namespace": "_types"
             }
           }
@@ -137703,7 +137709,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "long",
+              "name": "ByteSize",
               "namespace": "_types"
             }
           }
@@ -137733,7 +137739,7 @@
           }
         }
       ],
-      "specLocation": "ml/_types/TrainedModel.ts#L357-L393"
+      "specLocation": "ml/_types/TrainedModel.ts#L358-L394"
     },
     {
       "kind": "interface",
