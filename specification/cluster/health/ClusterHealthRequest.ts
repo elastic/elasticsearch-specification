@@ -38,7 +38,7 @@ import { Duration } from '@_types/Time'
  * On the shard level, a red status indicates that the specific shard is not allocated in the cluster. Yellow means that the primary shard is allocated but replicas are not. Green means that all shards are allocated.
  * The index level status is controlled by the worst shard status.
  *
- * One of the main benefits of the API is the ability to wait until the cluster reaches a certain high water-mark health level.
+ * One of the main benefits of the API is the ability to wait until the cluster reaches a certain high watermark health level.
  * The cluster status is controlled by the worst index status.
  * @rest_spec_name cluster.health
  * @availability stack since=1.3.0 stability=stable
