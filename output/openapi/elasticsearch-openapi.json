@@ -11129,6 +11129,9 @@
           },
           {
             "$ref": "#/components/parameters/indices.get_alias#ignore_unavailable"
+          },
+          {
+            "$ref": "#/components/parameters/indices.get_alias#master_timeout"
           }
         ],
         "responses": {
@@ -11246,6 +11249,9 @@
           },
           {
             "$ref": "#/components/parameters/indices.exists_alias#ignore_unavailable"
+          },
+          {
+            "$ref": "#/components/parameters/indices.exists_alias#master_timeout"
           }
         ],
         "responses": {
@@ -12114,6 +12120,9 @@
           },
           {
             "$ref": "#/components/parameters/indices.get_alias#ignore_unavailable"
+          },
+          {
+            "$ref": "#/components/parameters/indices.get_alias#master_timeout"
           }
         ],
         "responses": {
@@ -12141,6 +12150,9 @@
           },
           {
             "$ref": "#/components/parameters/indices.exists_alias#ignore_unavailable"
+          },
+          {
+            "$ref": "#/components/parameters/indices.exists_alias#master_timeout"
           }
         ],
         "responses": {
@@ -12544,6 +12556,9 @@
           },
           {
             "$ref": "#/components/parameters/indices.get_alias#ignore_unavailable"
+          },
+          {
+            "$ref": "#/components/parameters/indices.get_alias#master_timeout"
           }
         ],
         "responses": {
@@ -12573,6 +12588,9 @@
           },
           {
             "$ref": "#/components/parameters/indices.get_alias#ignore_unavailable"
+          },
+          {
+            "$ref": "#/components/parameters/indices.get_alias#master_timeout"
           }
         ],
         "responses": {
@@ -96007,6 +96025,16 @@
         },
         "style": "form"
       },
+      "indices.exists_alias#master_timeout": {
+        "in": "query",
+        "name": "master_timeout",
+        "description": "Period to wait for a connection to the master node.\nIf no response is received before the timeout expires, the request fails and returns an error.",
+        "deprecated": false,
+        "schema": {
+          "$ref": "#/components/schemas/_types:Duration"
+        },
+        "style": "form"
+      },
       "indices.flush#index": {
         "in": "path",
         "name": "index",
@@ -96198,6 +96226,16 @@
         "deprecated": false,
         "schema": {
           "type": "boolean"
+        },
+        "style": "form"
+      },
+      "indices.get_alias#master_timeout": {
+        "in": "query",
+        "name": "master_timeout",
+        "description": "Period to wait for a connection to the master node.\nIf no response is received before the timeout expires, the request fails and returns an error.",
+        "deprecated": false,
+        "schema": {
+          "$ref": "#/components/schemas/_types:Duration"
         },
         "style": "form"
       },
