@@ -21,7 +21,8 @@ import { RequestBase } from '@_types/Base'
 import { Name } from '@_types/common'
 
 /**
- * Creates the enrich index for an existing enrich policy.
+ * Run an enrich policy.
+ * Create the enrich index for an existing enrich policy.
  * @doc_id execute-enrich-policy-api
  * @rest_spec_name enrich.execute_policy
  * @availability stack since=7.5.0 stability=stable

@@ -21,7 +21,8 @@ import { RequestBase } from '@_types/Base'
 import { ExpandWildcards, Names } from '@_types/common'
 
 /**
- * Resolves the specified name(s) and/or index patterns for indices, aliases, and data streams.
+ * Resolve indices.
+ * Resolve the names and/or index patterns for indices, aliases, and data streams.
  * Multiple patterns and remote clusters are supported.
  * @rest_spec_name indices.resolve_index
  * @availability stack since=7.9.0 stability=stable
