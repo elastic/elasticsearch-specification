@@ -1,3 +1,4 @@
+add-nodes,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/add-elasticsearch-nodes.html
 analysis-analyzers,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/analysis-analyzers.html
 analysis-charfilters,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/analysis-charfilters.html
 analysis-normalizers,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/analysis-normalizers.html

@@ -23,8 +23,9 @@ import { long } from '@_types/Numeric'
 import { Duration } from '@_types/Time'
 
 /**
- * This API yields a breakdown of the hot threads on each selected node in the cluster.
- * The output is plain text with a breakdown of each node’s top hot threads.
+ * Get the hot threads for nodes.
+ * Get a breakdown of the hot threads on each selected node in the cluster.
+ * The output is plain text with a breakdown of the top hot threads for each node.
  * @rest_spec_name nodes.hot_threads
  * @availability stack stability=stable
  * @availability serverless stability=stable visibility=private

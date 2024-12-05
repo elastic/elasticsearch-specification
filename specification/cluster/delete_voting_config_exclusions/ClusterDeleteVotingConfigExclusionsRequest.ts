@@ -20,9 +20,12 @@
 import { RequestBase } from '@_types/Base'
 
 /**
+ * Clear cluster voting config exclusions.
+ * Remove master-eligible nodes from the voting configuration exclusion list.
  * @rest_spec_name cluster.delete_voting_config_exclusions
  * @availability stack since=7.0.0 stability=stable
  * @doc_id voting-config-exclusions
+ * @ext_doc_id add-nodes
  */
 export interface Request extends RequestBase {
   query_parameters: {
