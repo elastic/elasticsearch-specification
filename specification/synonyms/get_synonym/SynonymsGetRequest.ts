@@ -21,7 +21,7 @@ import { Id } from '@_types/common'
 import { integer } from '@_types/Numeric'
 
 /**
- * Retrieves a synonym set
+ * Get a synonym set.
  * @rest_spec_name synonyms.get_synonym
  * @availability stack since=8.10.0 stability=stable
  * @availability serverless stability=stable visibility=public
