@@ -26,7 +26,8 @@ import {
 } from '../_types/QueryRuleset'
 
 /**
- * Creates or updates a query rule within a query ruleset.
+ * Create or update a query rule.
+ * Create or update a query rule within a query ruleset.
  * @rest_spec_name query_rules.put_rule
  * @availability stack since=8.15.0 stability=stable
  * @availability serverless stability=stable visibility=public

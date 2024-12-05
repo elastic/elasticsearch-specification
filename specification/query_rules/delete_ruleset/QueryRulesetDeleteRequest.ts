@@ -20,7 +20,7 @@ import { RequestBase } from '@_types/Base'
 import { Id } from '@_types/common'
 
 /**
- * Deletes a query ruleset.
+ * Delete a query ruleset.
  * @rest_spec_name query_rules.delete_ruleset
  * @availability stack since=8.10.0 stability=stable
  * @availability serverless stability=stable visibility=public

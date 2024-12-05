@@ -5594,7 +5594,8 @@
         "tags": [
           "search"
         ],
-        "summary": "Returns number of documents matching a query",
+        "summary": "Count search results",
+        "description": "Get the number of documents matching a query.",
         "operationId": "count-1",
         "parameters": [
           {
@@ -5653,7 +5654,8 @@
         "tags": [
           "search"
         ],
-        "summary": "Returns number of documents matching a query",
+        "summary": "Count search results",
+        "description": "Get the number of documents matching a query.",
         "operationId": "count",
         "parameters": [
           {
@@ -5714,7 +5716,8 @@
         "tags": [
           "search"
         ],
-        "summary": "Returns number of documents matching a query",
+        "summary": "Count search results",
+        "description": "Get the number of documents matching a query.",
         "operationId": "count-3",
         "parameters": [
           {
@@ -5776,7 +5779,8 @@
         "tags": [
           "search"
         ],
-        "summary": "Returns number of documents matching a query",
+        "summary": "Count search results",
+        "description": "Get the number of documents matching a query.",
         "operationId": "count-2",
         "parameters": [
           {
@@ -7364,7 +7368,8 @@
         "tags": [
           "enrich"
         ],
-        "summary": "Creates the enrich index for an existing enrich policy",
+        "summary": "Run an enrich policy",
+        "description": "Create the enrich index for an existing enrich policy.",
         "operationId": "enrich-execute-policy",
         "parameters": [
           {
@@ -7715,7 +7720,11 @@
         "tags": [
           "esql"
         ],
-        "summary": "Executes an ES|QL request",
+        "summary": "Run an ES|QL query",
+        "description": "Get search results for an ES|QL (Elasticsearch query language) query.",
+        "externalDocs": {
+          "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/esql.html"
+        },
         "operationId": "esql-query",
         "parameters": [
           {
@@ -11618,7 +11627,8 @@
         "tags": [
           "indices"
         ],
-        "summary": "Returns information about whether a particular index template exists",
+        "summary": "Check index templates",
+        "description": "Check whether index templates exist.",
         "operationId": "indices-exists-index-template",
         "parameters": [
           {
@@ -13597,8 +13607,8 @@
         "tags": [
           "indices"
         ],
-        "summary": "Resolves the specified name(s) and/or index patterns for indices, aliases, and data streams",
-        "description": "Multiple patterns and remote clusters are supported.",
+        "summary": "Resolve indices",
+        "description": "Resolve the names and/or index patterns for indices, aliases, and data streams.\nMultiple patterns and remote clusters are supported.",
         "operationId": "indices-resolve-index",
         "parameters": [
           {
@@ -15012,7 +15022,8 @@
         "tags": [
           "ingest"
         ],
-        "summary": "Returns information about one or more geoip database configurations",
+        "summary": "Get GeoIP database configurations",
+        "description": "Get information about one or more IP geolocation database configurations.",
         "operationId": "ingest-get-geoip-database-1",
         "parameters": [
           {
@@ -15033,7 +15044,8 @@
         "tags": [
           "ingest"
         ],
-        "summary": "Returns information about one or more geoip database configurations",
+        "summary": "Create or update GeoIP database configurations",
+        "description": "Create or update IP geolocation database configurations.",
         "operationId": "ingest-put-geoip-database",
         "parameters": [
           {
@@ -15108,7 +15120,8 @@
         "tags": [
           "ingest"
         ],
-        "summary": "Deletes a geoip database configuration",
+        "summary": "Delete GeoIP database configurations",
+        "description": "Delete one or more IP geolocation database configurations.",
         "operationId": "ingest-delete-geoip-database",
         "parameters": [
           {
@@ -15163,8 +15176,11 @@
         "tags": [
           "ingest"
         ],
-        "summary": "Returns information about one or more ingest pipelines",
-        "description": "This API returns a local reference of the pipeline.",
+        "summary": "Get pipelines",
+        "description": "Get information about one or more ingest pipelines.\nThis API returns a local reference of the pipeline.",
+        "externalDocs": {
+          "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/ingest.html"
+        },
         "operationId": "ingest-get-pipeline-1",
         "parameters": [
           {
@@ -15188,8 +15204,11 @@
         "tags": [
           "ingest"
         ],
-        "summary": "Creates or updates an ingest pipeline",
+        "summary": "Create or update a pipeline",
         "description": "Changes made using this API take effect immediately.",
+        "externalDocs": {
+          "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/ingest.html"
+        },
         "operationId": "ingest-put-pipeline",
         "parameters": [
           {
@@ -15292,7 +15311,11 @@
         "tags": [
           "ingest"
         ],
-        "summary": "Deletes one or more existing ingest pipeline",
+        "summary": "Delete pipelines",
+        "description": "Delete one or more ingest pipelines.",
+        "externalDocs": {
+          "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/ingest.html"
+        },
         "operationId": "ingest-delete-pipeline",
         "parameters": [
           {
@@ -15347,7 +15370,11 @@
         "tags": [
           "ingest"
         ],
-        "summary": "Gets download statistics for GeoIP2 databases used with the geoip processor",
+        "summary": "Get GeoIP statistics",
+        "description": "Get download statistics for GeoIP2 databases that are used with the GeoIP processor.",
+        "externalDocs": {
+          "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/geoip-processor.html"
+        },
         "operationId": "ingest-geo-ip-stats",
         "responses": {
           "200": {
@@ -15385,7 +15412,8 @@
         "tags": [
           "ingest"
         ],
-        "summary": "Returns information about one or more geoip database configurations",
+        "summary": "Get GeoIP database configurations",
+        "description": "Get information about one or more IP geolocation database configurations.",
         "operationId": "ingest-get-geoip-database",
         "parameters": [
           {
@@ -15405,8 +15433,11 @@
         "tags": [
           "ingest"
         ],
-        "summary": "Returns information about one or more ingest pipelines",
-        "description": "This API returns a local reference of the pipeline.",
+        "summary": "Get pipelines",
+        "description": "Get information about one or more ingest pipelines.\nThis API returns a local reference of the pipeline.",
+        "externalDocs": {
+          "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/ingest.html"
+        },
         "operationId": "ingest-get-pipeline",
         "parameters": [
           {
@@ -15429,8 +15460,11 @@
         "tags": [
           "ingest"
         ],
-        "summary": "Extracts structured fields out of a single text field within a document",
-        "description": "You choose which field to extract matched fields from, as well as the grok pattern you expect will match.\nA grok pattern is like a regular expression that supports aliased expressions that can be reused.",
+        "summary": "Run a grok processor",
+        "description": "Extract structured fields out of a single text field within a document.\nYou must choose which field to extract matched fields from, as well as the grok pattern you expect will match.\nA grok pattern is like a regular expression that supports aliased expressions that can be reused.",
+        "externalDocs": {
+          "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/grok-processor.html"
+        },
         "operationId": "ingest-processor-grok",
         "responses": {
           "200": {
@@ -15463,7 +15497,8 @@
         "tags": [
           "ingest"
         ],
-        "summary": "Executes an ingest pipeline against a set of provided documents",
+        "summary": "Simulate a pipeline",
+        "description": "Run an ingest pipeline against a set of provided documents.\nYou can either specify an existing pipeline to use with the provided documents or supply a pipeline definition in the body of the request.",
         "operationId": "ingest-simulate",
         "parameters": [
           {
@@ -15484,7 +15519,8 @@
         "tags": [
           "ingest"
         ],
-        "summary": "Executes an ingest pipeline against a set of provided documents",
+        "summary": "Simulate a pipeline",
+        "description": "Run an ingest pipeline against a set of provided documents.\nYou can either specify an existing pipeline to use with the provided documents or supply a pipeline definition in the body of the request.",
         "operationId": "ingest-simulate-1",
         "parameters": [
           {
@@ -15507,7 +15543,8 @@
         "tags": [
           "ingest"
         ],
-        "summary": "Executes an ingest pipeline against a set of provided documents",
+        "summary": "Simulate a pipeline",
+        "description": "Run an ingest pipeline against a set of provided documents.\nYou can either specify an existing pipeline to use with the provided documents or supply a pipeline definition in the body of the request.",
         "operationId": "ingest-simulate-2",
         "parameters": [
           {
@@ -15531,7 +15568,8 @@
         "tags": [
           "ingest"
         ],
-        "summary": "Executes an ingest pipeline against a set of provided documents",
+        "summary": "Simulate a pipeline",
+        "description": "Run an ingest pipeline against a set of provided documents.\nYou can either specify an existing pipeline to use with the provided documents or supply a pipeline definition in the body of the request.",
         "operationId": "ingest-simulate-3",
         "parameters": [
           {
@@ -23943,7 +23981,11 @@
         "tags": [
           "query_rules"
         ],
-        "summary": "Returns the details about a query rule within a query ruleset",
+        "summary": "Get a query rule",
+        "description": "Get details about a query rule within a query ruleset.",
+        "externalDocs": {
+          "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/search-using-query-rules.html"
+        },
         "operationId": "query-rules-get-rule",
         "parameters": [
           {
@@ -23987,7 +24029,8 @@
         "tags": [
           "query_rules"
         ],
-        "summary": "Creates or updates a query rule within a query ruleset",
+        "summary": "Create or update a query rule",
+        "description": "Create or update a query rule within a query ruleset.",
         "operationId": "query-rules-put-rule",
         "parameters": [
           {
@@ -24078,7 +24121,8 @@
         "tags": [
           "query_rules"
         ],
-        "summary": "Deletes a query rule within a query ruleset",
+        "summary": "Delete a query rule",
+        "description": "Delete a query rule within a query ruleset.",
         "operationId": "query-rules-delete-rule",
         "parameters": [
           {
@@ -24124,7 +24168,8 @@
         "tags": [
           "query_rules"
         ],
-        "summary": "Returns the details about a query ruleset",
+        "summary": "Get a query ruleset",
+        "description": "Get details about a query ruleset.",
         "operationId": "query-rules-get-ruleset",
         "parameters": [
           {
@@ -24157,7 +24202,10 @@
         "tags": [
           "query_rules"
         ],
-        "summary": "Creates or updates a query ruleset",
+        "summary": "Create or update a query ruleset",
+        "externalDocs": {
+          "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/search-using-query-rules.html"
+        },
         "operationId": "query-rules-put-ruleset",
         "parameters": [
           {
@@ -24226,7 +24274,7 @@
         "tags": [
           "query_rules"
         ],
-        "summary": "Deletes a query ruleset",
+        "summary": "Delete a query ruleset",
         "operationId": "query-rules-delete-ruleset",
         "parameters": [
           {
@@ -24261,7 +24309,8 @@
         "tags": [
           "query_rules"
         ],
-        "summary": "Returns summarized information about existing query rulesets",
+        "summary": "Get all query rulesets",
+        "description": "Get summarized information about the query rulesets.",
         "operationId": "query-rules-list-rulesets",
         "parameters": [
           {
@@ -24320,7 +24369,8 @@
         "tags": [
           "query_rules"
         ],
-        "summary": "Creates or updates a query ruleset",
+        "summary": "Test a query ruleset",
+        "description": "Evaluate match criteria against a query ruleset to identify the rules that would match that criteria.",
         "operationId": "query-rules-test",
         "parameters": [
           {
@@ -32140,7 +32190,7 @@
         "tags": [
           "sql"
         ],
-        "summary": "Clears the SQL cursor",
+        "summary": "Clear an SQL search cursor",
         "operationId": "sql-clear-cursor",
         "requestBody": {
           "content": {
@@ -32189,8 +32239,8 @@
         "tags": [
           "sql"
         ],
-        "summary": "Deletes an async SQL search or a stored synchronous SQL search",
-        "description": "If the search is still running, the API cancels it.",
+        "summary": "Delete an async SQL search",
+        "description": "Delete an async SQL search or a stored synchronous SQL search.\nIf the search is still running, the API cancels it.",
         "operationId": "sql-delete-async",
         "parameters": [
           {
@@ -32225,7 +32275,8 @@
         "tags": [
           "sql"
         ],
-        "summary": "Returns the current status and available results for an async SQL search or stored synchronous SQL search",
+        "summary": "Get async SQL search results",
+        "description": "Get the current status and available results for an async SQL search or stored synchronous SQL search.",
         "operationId": "sql-get-async",
         "parameters": [
           {
@@ -32337,7 +32388,8 @@
         "tags": [
           "sql"
         ],
-        "summary": "Returns the current status of an async SQL search or a stored synchronous SQL search",
+        "summary": "Get the async SQL search status",
+        "description": "Get the current status of an async SQL search or a stored synchronous SQL search.",
         "operationId": "sql-get-async-status",
         "parameters": [
           {
@@ -32402,7 +32454,8 @@
         "tags": [
           "sql"
         ],
-        "summary": "Executes a SQL request",
+        "summary": "Get SQL search results",
+        "description": "Run an SQL request.",
         "operationId": "sql-query-1",
         "parameters": [
           {
@@ -32423,7 +32476,8 @@
         "tags": [
           "sql"
         ],
-        "summary": "Executes a SQL request",
+        "summary": "Get SQL search results",
+        "description": "Run an SQL request.",
         "operationId": "sql-query",
         "parameters": [
           {
@@ -32446,7 +32500,8 @@
         "tags": [
           "sql"
         ],
-        "summary": "Translates SQL into Elasticsearch queries",
+        "summary": "Translate SQL into Elasticsearch queries",
+        "description": "Translate an SQL search into a search API request containing Query DSL.",
         "operationId": "sql-translate-1",
         "requestBody": {
           "$ref": "#/components/requestBodies/sql.translate"
@@ -32462,7 +32517,8 @@
         "tags": [
           "sql"
         ],
-        "summary": "Translates SQL into Elasticsearch queries",
+        "summary": "Translate SQL into Elasticsearch queries",
+        "description": "Translate an SQL search into a search API request containing Query DSL.",
         "operationId": "sql-translate",
         "requestBody": {
           "$ref": "#/components/requestBodies/sql.translate"
