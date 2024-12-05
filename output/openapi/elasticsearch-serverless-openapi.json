@@ -4788,7 +4788,8 @@
         "tags": [
           "eql"
         ],
-        "summary": "Returns the current status and available results for an async EQL search or a stored synchronous EQL search",
+        "summary": "Get async EQL search results",
+        "description": "Get the current status and available results for an async EQL search or a stored synchronous EQL search.",
         "operationId": "eql-get",
         "parameters": [
           {
@@ -4841,8 +4842,8 @@
         "tags": [
           "eql"
         ],
-        "summary": "Deletes an async EQL search or a stored synchronous EQL search",
-        "description": "The API also deletes results for the search.",
+        "summary": "Delete an async EQL search",
+        "description": "Delete an async EQL search or a stored synchronous EQL search.\nThe API also deletes results for the search.",
         "operationId": "eql-delete",
         "parameters": [
           {
@@ -4877,7 +4878,8 @@
         "tags": [
           "eql"
         ],
-        "summary": "Returns the current status for an async EQL search or a stored synchronous EQL search without returning results",
+        "summary": "Get the async EQL status",
+        "description": "Get the current status for an async EQL search or a stored synchronous EQL search without returning results.",
         "operationId": "eql-get-status",
         "parameters": [
           {
@@ -4940,7 +4942,11 @@
         "tags": [
           "eql"
         ],
-        "summary": "Returns results matching a query expressed in Event Query Language (EQL)",
+        "summary": "Get EQL search results",
+        "description": "Returns search results for an Event Query Language (EQL) query.\nEQL assumes each document in a data stream or index corresponds to an event.",
+        "externalDocs": {
+          "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/eql.html"
+        },
         "operationId": "eql-search",
         "parameters": [
           {
@@ -4979,7 +4985,11 @@
         "tags": [
           "eql"
         ],
-        "summary": "Returns results matching a query expressed in Event Query Language (EQL)",
+        "summary": "Get EQL search results",
+        "description": "Returns search results for an Event Query Language (EQL) query.\nEQL assumes each document in a data stream or index corresponds to an event.",
+        "externalDocs": {
+          "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/eql.html"
+        },
         "operationId": "eql-search-1",
         "parameters": [
           {
@@ -5708,7 +5718,7 @@
           "graph"
         ],
         "summary": "Explore graph analytics",
-        "description": "Extract and summarize information about the documents and terms in an Elasticsearch data stream or index.\nThe easiest way to understand the behaviour of this API is to use the Graph UI to explore connections.\nAn initial request to the `_explore` API contains a seed query that identifies the documents of interest and specifies the fields that define the vertices and connections you want to include in the graph.\nSubsequent requests enable you to spider out from one more vertices of interest.\nYou can exclude vertices that have already been returned.",
+        "description": "Extract and summarize information about the documents and terms in an Elasticsearch data stream or index.\nThe easiest way to understand the behavior of this API is to use the Graph UI to explore connections.\nAn initial request to the `_explore` API contains a seed query that identifies the documents of interest and specifies the fields that define the vertices and connections you want to include in the graph.\nSubsequent requests enable you to spider out from one more vertices of interest.\nYou can exclude vertices that have already been returned.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/kibana/current/xpack-graph.html"
         },
@@ -5738,7 +5748,7 @@
           "graph"
         ],
         "summary": "Explore graph analytics",
-        "description": "Extract and summarize information about the documents and terms in an Elasticsearch data stream or index.\nThe easiest way to understand the behaviour of this API is to use the Graph UI to explore connections.\nAn initial request to the `_explore` API contains a seed query that identifies the documents of interest and specifies the fields that define the vertices and connections you want to include in the graph.\nSubsequent requests enable you to spider out from one more vertices of interest.\nYou can exclude vertices that have already been returned.",
+        "description": "Extract and summarize information about the documents and terms in an Elasticsearch data stream or index.\nThe easiest way to understand the behavior of this API is to use the Graph UI to explore connections.\nAn initial request to the `_explore` API contains a seed query that identifies the documents of interest and specifies the fields that define the vertices and connections you want to include in the graph.\nSubsequent requests enable you to spider out from one more vertices of interest.\nYou can exclude vertices that have already been returned.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/kibana/current/xpack-graph.html"
         },
@@ -17929,7 +17939,7 @@
           "synonyms"
         ],
         "summary": "Create or update a synonym set",
-        "description": "Synonyms sets are limited to a maximum of 10000 synonym rules per set.\nIf you need to manage more synonym rules, you can create multiple synonym sets.",
+        "description": "Synonyms sets are limited to a maximum of 10,000 synonym rules per set.\nIf you need to manage more synonym rules, you can create multiple synonym sets.",
         "operationId": "synonyms-put-synonym",
         "parameters": [
           {
