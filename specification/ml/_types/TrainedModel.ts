@@ -180,7 +180,7 @@ export class TrainedModelDeploymentNodesStats {
   /** The current routing state and reason for the current routing state for this allocation. */
   routing_state: TrainedModelAssignmentRoutingTable
   /** The epoch timestamp when the allocation started. */
-  start_time?: EpochTime<UnitNanos>
+  start_time?: EpochTime<UnitMillis>
   /** The number of threads used by each allocation during inference. */
   threads_per_allocation?: integer
 
