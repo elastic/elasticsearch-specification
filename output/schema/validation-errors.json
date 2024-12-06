@@ -77,6 +77,7 @@
         "Request: missing json spec query parameter 'help'",
         "Request: missing json spec query parameter 's'",
         "Request: missing json spec query parameter 'v'",
+        "Request: missing json spec query parameter 'master_timeout'",
         "request definition cat.aliases:Request / body - A request with inherited properties must have a PropertyBody"
       ],
       "response": []
@@ -708,12 +709,6 @@
       ],
       "response": []
     },
-    "indices.exists_alias": {
-      "request": [
-        "Request: query parameter 'master_timeout' does not exist in the json spec"
-      ],
-      "response": []
-    },
     "indices.exists_index_template": {
       "request": [
         "Request: missing json spec query parameter 'flat_settings'",
@@ -726,12 +721,6 @@
         "Request: query parameter 'master_timeout' does not exist in the json spec",
         "Request: query parameter 'timeout' does not exist in the json spec",
         "Request: query parameter 'wait_for_active_shards' does not exist in the json spec"
-      ],
-      "response": []
-    },
-    "indices.get_alias": {
-      "request": [
-        "Request: query parameter 'master_timeout' does not exist in the json spec"
       ],
       "response": []
     },
