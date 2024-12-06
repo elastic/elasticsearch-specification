@@ -161,7 +161,7 @@ export class TrainedModelDeploymentNodesStats {
   inference_cache_hit_count_last_minute?: long
 
   /** The epoch time stamp of the last inference call for the model on this node. */
-  last_access?: EpochTime<UnitNanos>
+  last_access?: EpochTime<UnitMillis>
   /**
    * Information pertaining to the node.
    * @availability stack
