@@ -63,7 +63,7 @@ export class TrainedModelStats {
 export class TrainedModelDeploymentStats {
   adaptive_allocations?: AdaptiveAllocationsSettings
   /** The detailed allocation status for the deployment. */
-  allocation_status: TrainedModelDeploymentAllocationStatus
+  allocation_status?: TrainedModelDeploymentAllocationStatus
   cache_size?: ByteSize
   /** The unique identifier for the trained model deployment. */
   deployment_id: Id
