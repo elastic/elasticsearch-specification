@@ -100,7 +100,7 @@ export class TrainedModelDeploymentStats {
   /** The epoch timestamp when the deployment started. */
   start_time: EpochTime<UnitMillis>
   /** The overall state of the deployment. */
-  state: DeploymentAssignmentState
+  state?: DeploymentAssignmentState
   /** The number of threads used be each allocation during inference. */
   threads_per_allocation?: integer
   /** The sum of `timeout_count` for all nodes in the deployment. */
