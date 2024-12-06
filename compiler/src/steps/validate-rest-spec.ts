@@ -162,7 +162,7 @@ export default async function validateRestSpec (model: model.Model, jsonSpec: Ma
         body = Body.yesBody
       }
 
-      if (definition.attachedBehaviors) {
+      if (definition.attachedBehaviors != null) {
         for (const attachedBehavior of definition.attachedBehaviors) {
           const type_ = getDefinition({
             namespace: '_spec_utils',
