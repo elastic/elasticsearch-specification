@@ -161,27 +161,27 @@ export default async function validateRestSpec (model: model.Model, jsonSpec: Ma
       if (definition.body.kind !== 'no_body') {
         body = Body.yesBody
       }
+
+      if (definition.attachedBehaviors) {
+        for (const attachedBehavior of definition.attachedBehaviors) {
+          const type_ = getDefinition({
+            namespace: '_spec_utils',
+            name: attachedBehavior
+          })
+          if (
+            type_.kind === 'interface' &&
+            // allowing CommonQueryParameters too generates many errors
+            attachedBehavior === 'CommonCatQueryParameters'
+          ) {
+            for (const prop of type_.properties) {
+              query.push(prop)
+            }
+          }
+        }
+      }
     } else {
       if (definition.properties.length > 0) {
         query.push(...definition.properties)
-      }
-    }
-
-    if (Array.isArray(definition.inherits)) {
-      const inherits = definition.inherits.map(inherit => getDefinition(inherit.type))
-      for (const inherit of inherits) {
-        const properties = getProperties(inherit)
-        if (properties.path.length > 0) {
-          path.push(...properties.path)
-        }
-
-        if (properties.query.length > 0) {
-          query.push(...properties.query)
-        }
-
-        if (properties.body === Body.yesBody) {
-          body = properties.body
-        }
       }
     }
 
