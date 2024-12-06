@@ -2468,12 +2468,8 @@ export type Indices = IndexName | IndexName[]
 export interface IndicesOptions {
   allow_no_indices?: boolean
   expand_wildcards?: ExpandWildcards
-  exclude?: string
-  failure_store?: string
   ignore_unavailable?: boolean
   ignore_throttled?: boolean
-  include?: string
-  only?: string
 }
 
 export interface IndicesResponseBase extends AcknowledgedResponseBase {

@@ -76505,7 +76505,7 @@
         "name": "ClusterInfoTarget",
         "namespace": "_types"
       },
-      "specLocation": "_types/common.ts#L401-L407"
+      "specLocation": "_types/common.ts#L382-L388"
     },
     {
       "kind": "type_alias",
@@ -76513,7 +76513,7 @@
         "name": "ClusterInfoTargets",
         "namespace": "_types"
       },
-      "specLocation": "_types/common.ts#L409-L409",
+      "specLocation": "_types/common.ts#L390-L390",
       "type": {
         "items": [
           {
@@ -77434,7 +77434,7 @@
         "name": "Slices",
         "namespace": "_types"
       },
-      "specLocation": "_types/common.ts#L384-L389",
+      "specLocation": "_types/common.ts#L365-L370",
       "type": {
         "items": [
           {
@@ -77467,7 +77467,7 @@
         "name": "SlicesCalculation",
         "namespace": "_types"
       },
-      "specLocation": "_types/common.ts#L391-L399"
+      "specLocation": "_types/common.ts#L372-L380"
     },
     {
       "kind": "type_alias",
@@ -130902,36 +130902,6 @@
           }
         },
         {
-          "deprecation": {
-            "description": "this value will be replaced by the selector `::*` on the expression level.",
-            "version": "8.16.0"
-          },
-          "name": "exclude",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "_builtins"
-            }
-          }
-        },
-        {
-          "deprecation": {
-            "description": "this query param will be replaced by the selector `::` on the expression level.",
-            "version": "8.16.0"
-          },
-          "name": "failure_store",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "_builtins"
-            }
-          }
-        },
-        {
           "description": "If true, missing or closed indices are not included in the response.",
           "name": "ignore_unavailable",
           "required": false,
@@ -130956,39 +130926,9 @@
               "namespace": "_builtins"
             }
           }
-        },
-        {
-          "deprecation": {
-            "description": "this value will be replaced by the selector `::*` on the expression level.",
-            "version": "8.16.0"
-          },
-          "name": "include",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "_builtins"
-            }
-          }
-        },
-        {
-          "deprecation": {
-            "description": "this value will be replaced by the selector `::*` on the expression level.",
-            "version": "8.16.0"
-          },
-          "name": "only",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "_builtins"
-            }
-          }
         }
       ],
-      "specLocation": "_types/common.ts#L336-L382"
+      "specLocation": "_types/common.ts#L336-L363"
     },
     {
       "kind": "interface",

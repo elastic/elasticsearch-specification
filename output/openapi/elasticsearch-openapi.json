@@ -74384,14 +74384,6 @@
           "expand_wildcards": {
             "$ref": "#/components/schemas/_types:ExpandWildcards"
           },
-          "exclude": {
-            "deprecated": true,
-            "type": "string"
-          },
-          "failure_store": {
-            "deprecated": true,
-            "type": "string"
-          },
           "ignore_unavailable": {
             "description": "If true, missing or closed indices are not included in the response.",
             "type": "boolean"
@@ -74399,14 +74391,6 @@
           "ignore_throttled": {
             "description": "If true, concrete, expanded or aliased indices are ignored when frozen.",
             "type": "boolean"
-          },
-          "include": {
-            "deprecated": true,
-            "type": "string"
-          },
-          "only": {
-            "deprecated": true,
-            "type": "string"
           }
         }
       },
