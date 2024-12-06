@@ -50969,9 +50969,6 @@
           "search": {
             "description": "String prepended to input at search",
             "type": "string"
-          },
-          "none": {
-            "type": "string"
           }
         }
       },
@@ -51101,14 +51098,12 @@
           }
         },
         "required": [
-          "allocation_status",
           "deployment_id",
           "model_id",
           "nodes",
           "peak_throughput_per_minute",
           "priority",
-          "start_time",
-          "state"
+          "start_time"
         ]
       },
       "ml._types:AdaptiveAllocationsSettings": {
@@ -51184,7 +51179,7 @@
             "type": "number"
           },
           "last_access": {
-            "$ref": "#/components/schemas/_types:EpochTimeUnitNanos"
+            "$ref": "#/components/schemas/_types:EpochTimeUnitMillis"
           },
           "number_of_allocations": {
             "description": "The number of allocations assigned to this node.",
@@ -51205,7 +51200,7 @@
             "$ref": "#/components/schemas/ml._types:TrainedModelAssignmentRoutingTable"
           },
           "start_time": {
-            "$ref": "#/components/schemas/_types:EpochTimeUnitNanos"
+            "$ref": "#/components/schemas/_types:EpochTimeUnitMillis"
           },
           "threads_per_allocation": {
             "description": "The number of threads used by each allocation during inference.",
@@ -51221,14 +51216,8 @@
         },
         "required": [
           "peak_throughput_per_minute",
-          "routing_state"
-        ]
-      },
-      "_types:EpochTimeUnitNanos": {
-        "allOf": [
-          {
-            "$ref": "#/components/schemas/_types:UnitNanos"
-          }
+          "routing_state",
+          "throughput_last_minute"
         ]
       },
       "ml._types:TrainedModelAssignmentRoutingTable": {
@@ -51251,7 +51240,9 @@
           }
         },
         "required": [
-          "routing_state"
+          "routing_state",
+          "current_allocations",
+          "target_allocations"
         ]
       },
       "ml._types:RoutingState": {
@@ -52250,8 +52241,7 @@
         "type": "object",
         "properties": {
           "model_bytes": {
-            "description": "The size of the trained model in bytes.",
-            "type": "number"
+            "$ref": "#/components/schemas/_types:ByteSize"
           },
           "model_id": {
             "$ref": "#/components/schemas/_types:Id"

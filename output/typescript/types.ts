@@ -14733,12 +14733,12 @@ export interface MlTrainedModelAssignment {
 export interface MlTrainedModelAssignmentRoutingTable {
   reason?: string
   routing_state: MlRoutingState
-  current_allocations?: integer
-  target_allocations?: integer
+  current_allocations: integer
+  target_allocations: integer
 }
 
 export interface MlTrainedModelAssignmentTaskParameters {
-  model_bytes: integer
+  model_bytes: ByteSize
   model_id: Id
   deployment_id: Id
   cache_size?: ByteSize
@@ -14798,22 +14798,22 @@ export interface MlTrainedModelDeploymentNodesStats {
   inference_count?: long
   inference_cache_hit_count?: long
   inference_cache_hit_count_last_minute?: long
-  last_access?: EpochTime<UnitNanos>
+  last_access?: EpochTime<UnitMillis>
   node?: MlDiscoveryNode
   number_of_allocations?: integer
   number_of_pending_requests?: integer
   peak_throughput_per_minute: long
   rejection_execution_count?: integer
   routing_state: MlTrainedModelAssignmentRoutingTable
-  start_time?: EpochTime<UnitNanos>
+  start_time?: EpochTime<UnitMillis>
   threads_per_allocation?: integer
-  throughput_last_minute?: integer
+  throughput_last_minute: integer
   timeout_count?: integer
 }
 
 export interface MlTrainedModelDeploymentStats {
   adaptive_allocations?: MlAdaptiveAllocationsSettings
-  allocation_status: MlTrainedModelDeploymentAllocationStatus
+  allocation_status?: MlTrainedModelDeploymentAllocationStatus
   cache_size?: ByteSize
   deployment_id: Id
   error_count?: integer
@@ -14827,7 +14827,7 @@ export interface MlTrainedModelDeploymentStats {
   rejected_execution_count?: integer
   reason?: string
   start_time: EpochTime<UnitMillis>
-  state: MlDeploymentAssignmentState
+  state?: MlDeploymentAssignmentState
   threads_per_allocation?: integer
   timeout_count?: integer
 }
@@ -14870,7 +14870,6 @@ export interface MlTrainedModelLocationIndex {
 export interface MlTrainedModelPrefixStrings {
   ingest?: string
   search?: string
-  none?: string
 }
 
 export interface MlTrainedModelSizeStats {

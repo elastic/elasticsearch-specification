@@ -95124,7 +95124,7 @@
         "name": "DeploymentAllocationState",
         "namespace": "ml._types"
       },
-      "specLocation": "ml/_types/TrainedModel.ts#L319-L332"
+      "specLocation": "ml/_types/TrainedModel.ts#L318-L331"
     },
     {
       "kind": "enum",
@@ -95150,7 +95150,7 @@
         "name": "DeploymentAssignmentState",
         "namespace": "ml._types"
       },
-      "specLocation": "ml/_types/TrainedModel.ts#L334-L351"
+      "specLocation": "ml/_types/TrainedModel.ts#L333-L350"
     },
     {
       "kind": "type_alias",
@@ -95495,7 +95495,7 @@
         "name": "RoutingState",
         "namespace": "ml._types"
       },
-      "specLocation": "ml/_types/TrainedModel.ts#L396-L417"
+      "specLocation": "ml/_types/TrainedModel.ts#L395-L416"
     },
     {
       "kind": "enum",
@@ -95576,7 +95576,7 @@
         "name": "TrainedModelType",
         "namespace": "ml._types"
       },
-      "specLocation": "ml/_types/TrainedModel.ts#L303-L317"
+      "specLocation": "ml/_types/TrainedModel.ts#L302-L316"
     },
     {
       "kind": "enum",
@@ -95592,7 +95592,7 @@
         "name": "TrainingPriority",
         "namespace": "ml._types"
       },
-      "specLocation": "ml/_types/TrainedModel.ts#L353-L356"
+      "specLocation": "ml/_types/TrainedModel.ts#L352-L355"
     },
     {
       "codegenNames": [
@@ -132739,7 +132739,7 @@
           }
         }
       ],
-      "specLocation": "ml/_types/TrainedModel.ts#L192-L228"
+      "specLocation": "ml/_types/TrainedModel.ts#L191-L227"
     },
     {
       "description": "Inference configuration provided when storing the model config",
@@ -133699,7 +133699,7 @@
           }
         }
       ],
-      "specLocation": "ml/_types/TrainedModel.ts#L230-L233"
+      "specLocation": "ml/_types/TrainedModel.ts#L229-L232"
     },
     {
       "kind": "interface",
@@ -133776,7 +133776,7 @@
           }
         }
       ],
-      "specLocation": "ml/_types/TrainedModel.ts#L235-L243"
+      "specLocation": "ml/_types/TrainedModel.ts#L234-L242"
     },
     {
       "kind": "interface",
@@ -133848,7 +133848,7 @@
           }
         }
       ],
-      "specLocation": "ml/_types/TrainedModel.ts#L262-L276"
+      "specLocation": "ml/_types/TrainedModel.ts#L261-L275"
     },
     {
       "kind": "interface",
@@ -133900,7 +133900,7 @@
           }
         }
       ],
-      "specLocation": "ml/_types/TrainedModel.ts#L278-L285"
+      "specLocation": "ml/_types/TrainedModel.ts#L277-L284"
     },
     {
       "kind": "interface",
@@ -133946,7 +133946,7 @@
           }
         }
       ],
-      "specLocation": "ml/_types/TrainedModel.ts#L294-L301"
+      "specLocation": "ml/_types/TrainedModel.ts#L293-L300"
     },
     {
       "kind": "interface",
@@ -133983,7 +133983,7 @@
           }
         }
       ],
-      "specLocation": "ml/_types/TrainedModel.ts#L287-L292"
+      "specLocation": "ml/_types/TrainedModel.ts#L286-L291"
     },
     {
       "kind": "interface",
@@ -134166,7 +134166,7 @@
           }
         }
       ],
-      "specLocation": "ml/_types/TrainedModel.ts#L245-L260"
+      "specLocation": "ml/_types/TrainedModel.ts#L244-L259"
     },
     {
       "kind": "interface",
@@ -134198,20 +134198,9 @@
               "namespace": "_builtins"
             }
           }
-        },
-        {
-          "name": "none",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "_builtins"
-            }
-          }
         }
       ],
-      "specLocation": "ml/_types/TrainedModel.ts#L475-L486"
+      "specLocation": "ml/_types/TrainedModel.ts#L474-L483"
     },
     {
       "kind": "interface",
@@ -134232,7 +134221,7 @@
           }
         }
       ],
-      "specLocation": "ml/_types/TrainedModel.ts#L467-L469"
+      "specLocation": "ml/_types/TrainedModel.ts#L466-L468"
     },
     {
       "kind": "interface",
@@ -134253,7 +134242,7 @@
           }
         }
       ],
-      "specLocation": "ml/_types/TrainedModel.ts#L471-L473"
+      "specLocation": "ml/_types/TrainedModel.ts#L470-L472"
     },
     {
       "kind": "interface",
@@ -134344,7 +134333,7 @@
           }
         }
       ],
-      "specLocation": "ml/_types/TrainedModel.ts#L43-L61"
+      "specLocation": "ml/_types/TrainedModel.ts#L42-L60"
     },
     {
       "kind": "interface",
@@ -134367,7 +134356,7 @@
         {
           "description": "The detailed allocation status for the deployment.",
           "name": "allocation_status",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -134544,7 +134533,7 @@
         {
           "description": "The overall state of the deployment.",
           "name": "state",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -134578,7 +134567,7 @@
           }
         }
       ],
-      "specLocation": "ml/_types/TrainedModel.ts#L63-L108"
+      "specLocation": "ml/_types/TrainedModel.ts#L62-L107"
     },
     {
       "kind": "interface",
@@ -134621,7 +134610,7 @@
           }
         }
       ],
-      "specLocation": "ml/_types/TrainedModel.ts#L110-L114"
+      "specLocation": "ml/_types/TrainedModel.ts#L109-L113"
     },
     {
       "kind": "interface",
@@ -134667,7 +134656,7 @@
           }
         }
       ],
-      "specLocation": "ml/_types/TrainedModel.ts#L439-L446"
+      "specLocation": "ml/_types/TrainedModel.ts#L438-L445"
     },
     {
       "kind": "interface",
@@ -134793,7 +134782,7 @@
               {
                 "kind": "instance_of",
                 "type": {
-                  "name": "UnitNanos",
+                  "name": "UnitMillis",
                   "namespace": "_types"
                 }
               }
@@ -134873,7 +134862,7 @@
               {
                 "kind": "instance_of",
                 "type": {
-                  "name": "UnitNanos",
+                  "name": "UnitMillis",
                   "namespace": "_types"
                 }
               }
@@ -134899,7 +134888,7 @@
         },
         {
           "name": "throughput_last_minute",
-          "required": false,
+          "required": true,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -134921,7 +134910,7 @@
           }
         }
       ],
-      "specLocation": "ml/_types/TrainedModel.ts#L145-L190"
+      "specLocation": "ml/_types/TrainedModel.ts#L144-L189"
     },
     {
       "kind": "interface",
@@ -134957,7 +134946,7 @@
         {
           "description": "Current number of allocations.",
           "name": "current_allocations",
-          "required": false,
+          "required": true,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -134969,7 +134958,7 @@
         {
           "description": "Target number of allocations.",
           "name": "target_allocations",
-          "required": false,
+          "required": true,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -134979,7 +134968,7 @@
           }
         }
       ],
-      "specLocation": "ml/_types/TrainedModel.ts#L419-L437"
+      "specLocation": "ml/_types/TrainedModel.ts#L418-L436"
     },
     {
       "kind": "interface",
@@ -135060,7 +135049,7 @@
           }
         }
       ],
-      "specLocation": "ml/_types/TrainedModel.ts#L116-L136"
+      "specLocation": "ml/_types/TrainedModel.ts#L115-L135"
     },
     {
       "kind": "interface",
@@ -135094,7 +135083,7 @@
           }
         }
       ],
-      "specLocation": "ml/_types/TrainedModel.ts#L138-L143"
+      "specLocation": "ml/_types/TrainedModel.ts#L137-L142"
     },
     {
       "kind": "interface",
@@ -137546,7 +137535,7 @@
           }
         }
       ],
-      "specLocation": "ml/_types/TrainedModel.ts#L448-L465"
+      "specLocation": "ml/_types/TrainedModel.ts#L447-L464"
     },
     {
       "kind": "interface",
@@ -137562,7 +137551,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "integer",
+              "name": "ByteSize",
               "namespace": "_types"
             }
           }
@@ -137679,7 +137668,7 @@
           }
         }
       ],
-      "specLocation": "ml/_types/TrainedModel.ts#L358-L394"
+      "specLocation": "ml/_types/TrainedModel.ts#L357-L393"
     },
     {
       "kind": "interface",

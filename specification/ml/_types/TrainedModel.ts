@@ -34,8 +34,7 @@ import {
   DurationValue,
   EpochTime,
   UnitFloatMillis,
-  UnitMillis,
-  UnitNanos
+  UnitMillis
 } from '@_types/Time'
 import { DiscoveryNode } from './DiscoveryNode'
 import { InferenceConfigCreateContainer } from './inference'
@@ -359,7 +358,7 @@ export class TrainedModelAssignmentTaskParameters {
   /**
    * The size of the trained model in bytes.
    */
-  model_bytes: integer
+  model_bytes: ByteSize
   /**
    * The unique identifier for the trained model.
    */
@@ -429,11 +428,11 @@ export class TrainedModelAssignmentRoutingTable {
   /**
    * Current number of allocations.
    */
-  current_allocations?: integer
+  current_allocations: integer
   /**
    * Target number of allocations.
    */
-  target_allocations?: integer
+  target_allocations: integer
 }
 
 export class TrainedModelDeploymentAllocationStatus {
@@ -481,6 +480,4 @@ export class TrainedModelPrefixStrings {
    * String prepended to input at search
    */
   search?: string
-
-  none?: string
 }
