@@ -184,7 +184,7 @@ export class TrainedModelDeploymentNodesStats {
   /** The number of threads used by each allocation during inference. */
   threads_per_allocation?: integer
 
-  throughput_last_minute?: integer
+  throughput_last_minute: integer
   /** The number of inference requests that timed out before being processed. */
   timeout_count?: integer
 }
