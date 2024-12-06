@@ -233,5 +233,6 @@ dist/*            binary
 ### Linguist Overrides #############################################################################
 
 output/** linguist-generated=true
+output/schema/validation-errors.json linguist-generated=false
 
 ####################################################################################################

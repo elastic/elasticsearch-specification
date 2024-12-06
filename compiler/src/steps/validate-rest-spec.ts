@@ -97,7 +97,8 @@ export default async function validateRestSpec (model: model.Model, jsonSpec: Ma
         }
       }
 
-      if (spec.params != null) {
+      // fleet API are deliberately undocumented in rest-api-spec)
+      if (spec.params != null && !endpoint.name.startsWith('fleet.')) {
         const params = Object.keys(spec.params)
         const queryProperties = requestProperties.query.map(property => property.name)
         // are all the parameters in the request definition present in the json spec?
