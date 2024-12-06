@@ -114,6 +114,8 @@ export class ClassificationInferenceOptions {
 export class TokenizationConfigContainer {
   /** Indicates BERT tokenization and its options */
   bert?: NlpBertTokenizationConfig
+  /** Indicates BERT Japanese tokenization and its options */
+  bert_ja?: NlpBertTokenizationConfig
   /**
    * Indicates MPNET tokenization and its options
    * @availability stack since=8.1.0
@@ -159,6 +161,11 @@ export class NlpBertTokenizationConfig {
 
 /** RoBERTa tokenization configuration options */
 export class NlpRobertaTokenizationConfig {
+  /**
+   * Should the tokenizer lower case the text
+   * @server_default false
+   */
+  do_lower_case?: boolean
   /**
    * Should the tokenizer prefix input with a space character
    * @server_default false
@@ -242,6 +249,8 @@ export class TextEmbeddingInferenceOptions {
   tokenization?: TokenizationConfigContainer
   /** The field that is added to incoming documents to contain the inference prediction. Defaults to predicted_value. */
   results_field?: string
+
+  vocabulary?: Vocabulary
 }
 
 /** Text expansion inference options */
@@ -250,6 +259,7 @@ export class TextExpansionInferenceOptions {
   tokenization?: TokenizationConfigContainer
   /** The field that is added to incoming documents to contain the inference prediction. Defaults to predicted_value. */
   results_field?: string
+  vocabulary?: Vocabulary
 }
 
 /** Named entity recognition options */
@@ -277,6 +287,7 @@ export class FillMaskInferenceOptions {
   tokenization?: TokenizationConfigContainer
   /** The field that is added to incoming documents to contain the inference prediction. Defaults to predicted_value. */
   results_field?: string
+  vocabulary?: Vocabulary
 }
 
 /** Question answering inference options */
