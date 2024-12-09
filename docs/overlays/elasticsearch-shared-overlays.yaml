@@ -1265,12 +1265,47 @@ actions:
         application/json:
           examples:
             indicesPutIndexTemplateRequestExample1:
-              $ref: "../../specification/indices/put_index_template/IndicesPutIndexTemplateRequestExample1.yaml"
+              $ref: "../../specification/indices/put_index_template/indicesPutIndexTemplateRequestExample1.yaml"
   - target: "$.components['requestBodies']['indices.put_mapping']"
-    description: "Add example for put mapping request"
+    description: "Add example for update mapping request"
+    update: 
+      content:
+        application/json:
+          examples:
+            indicesPutSettingRequestExample1:
+              $ref: "../../specification/indices/put_mapping/indicesPutMappingRequestExample1.yaml"
+  - target: "$.components['requestBodies']['indices.put_settings']"
+    description: "Add example for update index settings request"
     update: 
       content:
         application/json:
           examples:
             indicesPutSettingRequestExample1:
               $ref: "../../specification/indices/put_settings/IndicesPutSettingsRequestExample1.yaml"
+  - target: "$.paths['/_resolve/index/{name}']['get']"
+    description: "Add examples for resolve index operation"
+    update: 
+      responses:
+        200:
+          content:
+            application/json:
+              examples:
+                indicesResolveResponseExample1:
+                  $ref: "../../specification/indices/resolve_index/indicesResolveResponseExample1.yaml"
+  - target: "$.components['requestBodies']['indices.rollover']"
+    description: "Add example for rollover index request"
+    update: 
+      content:
+        application/json:
+          examples:
+            indicesRolloverRequestExample1:
+              $ref: "../../specification/indices/rollover/indicesRolloverRequestExample1.yaml"
+  - target: "$.components['responses']['indices.rollover#200']"
+    description: "Add example for rollover index response"
+    update: 
+      content:
+        application/json:
+          examples:
+            indicesRolloverResponseExample1:
+              $ref: "../../specification/indices/rollover/indicesRolloverResponseExample1.yaml"
+
