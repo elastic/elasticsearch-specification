@@ -259,7 +259,7 @@ export class TextExpansionInferenceOptions {
   tokenization?: TokenizationConfigContainer
   /** The field that is added to incoming documents to contain the inference prediction. Defaults to predicted_value. */
   results_field?: string
-  vocabulary?: Vocabulary
+  vocabulary: Vocabulary
 }
 
 /** Named entity recognition options */
