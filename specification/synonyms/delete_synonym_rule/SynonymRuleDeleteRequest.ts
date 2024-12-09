@@ -20,7 +20,8 @@ import { RequestBase } from '@_types/Base'
 import { Id } from '@_types/common'
 
 /**
- * Deletes a synonym rule in a synonym set
+ * Delete a synonym rule.
+ * Delete a synonym rule from a synonym set.
  * @rest_spec_name synonyms.delete_synonym_rule
  * @availability stack since=8.10.0 stability=stable
  * @availability serverless stability=stable visibility=public

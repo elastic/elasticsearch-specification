@@ -20,7 +20,8 @@
 import { CatRequestBase } from '@cat/_types/CatBase'
 
 /**
- * Returns information about custom node attributes.
+ * Get node attribute information.
+ * Get information about custom node attributes.
  * IMPORTANT: cat APIs are only intended for human consumption using the command line or Kibana console. They are not intended for use by applications. For application consumption, use the nodes info API.
  * @rest_spec_name cat.nodeattrs
  * @availability stack stability=stable

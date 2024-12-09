@@ -20,7 +20,8 @@
 import { CatRequestBase } from '@cat/_types/CatBase'
 
 /**
- * Returns a list of plugins running on each node of a cluster.
+ * Get plugin information.
+ * Get a list of plugins running on each node of a cluster.
  * IMPORTANT: cat APIs are only intended for human consumption using the command line or Kibana console. They are not intended for use by applications. For application consumption, use the nodes info API.
  * @rest_spec_name cat.plugins
  * @availability stack stability=stable

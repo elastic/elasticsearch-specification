@@ -1144,8 +1144,8 @@
         "tags": [
           "cat"
         ],
-        "summary": "Get transforms",
-        "description": "Returns configuration and usage information about transforms.\n\nCAT APIs are only intended for human consumption using the Kibana\nconsole or command line. They are not intended for use by applications. For\napplication consumption, use the get transform statistics API.",
+        "summary": "Get transform information",
+        "description": "Get configuration and usage information about transforms.\n\nCAT APIs are only intended for human consumption using the Kibana\nconsole or command line. They are not intended for use by applications. For\napplication consumption, use the get transform statistics API.",
         "operationId": "cat-transforms",
         "parameters": [
           {
@@ -1180,8 +1180,8 @@
         "tags": [
           "cat"
         ],
-        "summary": "Get transforms",
-        "description": "Returns configuration and usage information about transforms.\n\nCAT APIs are only intended for human consumption using the Kibana\nconsole or command line. They are not intended for use by applications. For\napplication consumption, use the get transform statistics API.",
+        "summary": "Get transform information",
+        "description": "Get configuration and usage information about transforms.\n\nCAT APIs are only intended for human consumption using the Kibana\nconsole or command line. They are not intended for use by applications. For\napplication consumption, use the get transform statistics API.",
         "operationId": "cat-transforms-1",
         "parameters": [
           {
@@ -3118,7 +3118,8 @@
         "tags": [
           "search"
         ],
-        "summary": "Returns number of documents matching a query",
+        "summary": "Count search results",
+        "description": "Get the number of documents matching a query.",
         "operationId": "count-1",
         "parameters": [
           {
@@ -3177,7 +3178,8 @@
         "tags": [
           "search"
         ],
-        "summary": "Returns number of documents matching a query",
+        "summary": "Count search results",
+        "description": "Get the number of documents matching a query.",
         "operationId": "count",
         "parameters": [
           {
@@ -3238,7 +3240,8 @@
         "tags": [
           "search"
         ],
-        "summary": "Returns number of documents matching a query",
+        "summary": "Count search results",
+        "description": "Get the number of documents matching a query.",
         "operationId": "count-3",
         "parameters": [
           {
@@ -3300,7 +3303,8 @@
         "tags": [
           "search"
         ],
-        "summary": "Returns number of documents matching a query",
+        "summary": "Count search results",
+        "description": "Get the number of documents matching a query.",
         "operationId": "count-2",
         "parameters": [
           {
@@ -4666,7 +4670,8 @@
         "tags": [
           "enrich"
         ],
-        "summary": "Creates the enrich index for an existing enrich policy",
+        "summary": "Run an enrich policy",
+        "description": "Create the enrich index for an existing enrich policy.",
         "operationId": "enrich-execute-policy",
         "parameters": [
           {
@@ -4735,7 +4740,8 @@
         "tags": [
           "eql"
         ],
-        "summary": "Returns the current status and available results for an async EQL search or a stored synchronous EQL search",
+        "summary": "Get async EQL search results",
+        "description": "Get the current status and available results for an async EQL search or a stored synchronous EQL search.",
         "operationId": "eql-get",
         "parameters": [
           {
@@ -4788,8 +4794,8 @@
         "tags": [
           "eql"
         ],
-        "summary": "Deletes an async EQL search or a stored synchronous EQL search",
-        "description": "The API also deletes results for the search.",
+        "summary": "Delete an async EQL search",
+        "description": "Delete an async EQL search or a stored synchronous EQL search.\nThe API also deletes results for the search.",
         "operationId": "eql-delete",
         "parameters": [
           {
@@ -4824,7 +4830,8 @@
         "tags": [
           "eql"
         ],
-        "summary": "Returns the current status for an async EQL search or a stored synchronous EQL search without returning results",
+        "summary": "Get the async EQL status",
+        "description": "Get the current status for an async EQL search or a stored synchronous EQL search without returning results.",
         "operationId": "eql-get-status",
         "parameters": [
           {
@@ -4887,7 +4894,11 @@
         "tags": [
           "eql"
         ],
-        "summary": "Returns results matching a query expressed in Event Query Language (EQL)",
+        "summary": "Get EQL search results",
+        "description": "Returns search results for an Event Query Language (EQL) query.\nEQL assumes each document in a data stream or index corresponds to an event.",
+        "externalDocs": {
+          "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/eql.html"
+        },
         "operationId": "eql-search",
         "parameters": [
           {
@@ -4926,7 +4937,11 @@
         "tags": [
           "eql"
         ],
-        "summary": "Returns results matching a query expressed in Event Query Language (EQL)",
+        "summary": "Get EQL search results",
+        "description": "Returns search results for an Event Query Language (EQL) query.\nEQL assumes each document in a data stream or index corresponds to an event.",
+        "externalDocs": {
+          "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/eql.html"
+        },
         "operationId": "eql-search-1",
         "parameters": [
           {
@@ -4967,7 +4982,11 @@
         "tags": [
           "esql"
         ],
-        "summary": "Executes an ES|QL request",
+        "summary": "Run an ES|QL query",
+        "description": "Get search results for an ES|QL (Elasticsearch query language) query.",
+        "externalDocs": {
+          "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/esql.html"
+        },
         "operationId": "esql-query",
         "parameters": [
           {
@@ -5650,7 +5669,11 @@
         "tags": [
           "graph"
         ],
-        "summary": "Extracts and summarizes information about the documents and terms in an Elasticsearch data stream or index",
+        "summary": "Explore graph analytics",
+        "description": "Extract and summarize information about the documents and terms in an Elasticsearch data stream or index.\nThe easiest way to understand the behavior of this API is to use the Graph UI to explore connections.\nAn initial request to the `_explore` API contains a seed query that identifies the documents of interest and specifies the fields that define the vertices and connections you want to include in the graph.\nSubsequent requests enable you to spider out from one more vertices of interest.\nYou can exclude vertices that have already been returned.",
+        "externalDocs": {
+          "url": "https://www.elastic.co/guide/en/kibana/current/xpack-graph.html"
+        },
         "operationId": "graph-explore",
         "parameters": [
           {
@@ -5676,7 +5699,11 @@
         "tags": [
           "graph"
         ],
-        "summary": "Extracts and summarizes information about the documents and terms in an Elasticsearch data stream or index",
+        "summary": "Explore graph analytics",
+        "description": "Extract and summarize information about the documents and terms in an Elasticsearch data stream or index.\nThe easiest way to understand the behavior of this API is to use the Graph UI to explore connections.\nAn initial request to the `_explore` API contains a seed query that identifies the documents of interest and specifies the fields that define the vertices and connections you want to include in the graph.\nSubsequent requests enable you to spider out from one more vertices of interest.\nYou can exclude vertices that have already been returned.",
+        "externalDocs": {
+          "url": "https://www.elastic.co/guide/en/kibana/current/xpack-graph.html"
+        },
         "operationId": "graph-explore-1",
         "parameters": [
           {
@@ -6506,6 +6533,9 @@
           },
           {
             "$ref": "#/components/parameters/indices.get_alias#ignore_unavailable"
+          },
+          {
+            "$ref": "#/components/parameters/indices.get_alias#master_timeout"
           }
         ],
         "responses": {
@@ -6623,6 +6653,9 @@
           },
           {
             "$ref": "#/components/parameters/indices.exists_alias#ignore_unavailable"
+          },
+          {
+            "$ref": "#/components/parameters/indices.exists_alias#master_timeout"
           }
         ],
         "responses": {
@@ -6873,7 +6906,8 @@
         "tags": [
           "indices"
         ],
-        "summary": "Returns information about whether a particular index template exists",
+        "summary": "Check index templates",
+        "description": "Check whether index templates exist.",
         "operationId": "indices-exists-index-template",
         "parameters": [
           {
@@ -6928,6 +6962,9 @@
           },
           {
             "$ref": "#/components/parameters/indices.get_alias#ignore_unavailable"
+          },
+          {
+            "$ref": "#/components/parameters/indices.get_alias#master_timeout"
           }
         ],
         "responses": {
@@ -6955,6 +6992,9 @@
           },
           {
             "$ref": "#/components/parameters/indices.exists_alias#ignore_unavailable"
+          },
+          {
+            "$ref": "#/components/parameters/indices.exists_alias#master_timeout"
           }
         ],
         "responses": {
@@ -7048,6 +7088,9 @@
           },
           {
             "$ref": "#/components/parameters/indices.get_alias#ignore_unavailable"
+          },
+          {
+            "$ref": "#/components/parameters/indices.get_alias#master_timeout"
           }
         ],
         "responses": {
@@ -7077,6 +7120,9 @@
           },
           {
             "$ref": "#/components/parameters/indices.get_alias#ignore_unavailable"
+          },
+          {
+            "$ref": "#/components/parameters/indices.get_alias#master_timeout"
           }
         ],
         "responses": {
@@ -7899,8 +7945,8 @@
         "tags": [
           "indices"
         ],
-        "summary": "Resolves the specified name(s) and/or index patterns for indices, aliases, and data streams",
-        "description": "Multiple patterns and remote clusters are supported.",
+        "summary": "Resolve indices",
+        "description": "Resolve the names and/or index patterns for indices, aliases, and data streams.\nMultiple patterns and remote clusters are supported.",
         "operationId": "indices-resolve-index",
         "parameters": [
           {
@@ -8740,7 +8786,7 @@
           "cluster"
         ],
         "summary": "Ping the cluster",
-        "description": "Returns whether the cluster is running.",
+        "description": "Get information about whether the cluster is running.",
         "operationId": "ping",
         "responses": {
           "200": {
@@ -8757,8 +8803,11 @@
         "tags": [
           "ingest"
         ],
-        "summary": "Returns information about one or more ingest pipelines",
-        "description": "This API returns a local reference of the pipeline.",
+        "summary": "Get pipelines",
+        "description": "Get information about one or more ingest pipelines.\nThis API returns a local reference of the pipeline.",
+        "externalDocs": {
+          "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/ingest.html"
+        },
         "operationId": "ingest-get-pipeline-1",
         "parameters": [
           {
@@ -8782,8 +8831,11 @@
         "tags": [
           "ingest"
         ],
-        "summary": "Creates or updates an ingest pipeline",
+        "summary": "Create or update a pipeline",
         "description": "Changes made using this API take effect immediately.",
+        "externalDocs": {
+          "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/ingest.html"
+        },
         "operationId": "ingest-put-pipeline",
         "parameters": [
           {
@@ -8886,7 +8938,11 @@
         "tags": [
           "ingest"
         ],
-        "summary": "Deletes one or more existing ingest pipeline",
+        "summary": "Delete pipelines",
+        "description": "Delete one or more ingest pipelines.",
+        "externalDocs": {
+          "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/ingest.html"
+        },
         "operationId": "ingest-delete-pipeline",
         "parameters": [
           {
@@ -8941,8 +8997,11 @@
         "tags": [
           "ingest"
         ],
-        "summary": "Returns information about one or more ingest pipelines",
-        "description": "This API returns a local reference of the pipeline.",
+        "summary": "Get pipelines",
+        "description": "Get information about one or more ingest pipelines.\nThis API returns a local reference of the pipeline.",
+        "externalDocs": {
+          "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/ingest.html"
+        },
         "operationId": "ingest-get-pipeline",
         "parameters": [
           {
@@ -8965,8 +9024,11 @@
         "tags": [
           "ingest"
         ],
-        "summary": "Extracts structured fields out of a single text field within a document",
-        "description": "You choose which field to extract matched fields from, as well as the grok pattern you expect will match.\nA grok pattern is like a regular expression that supports aliased expressions that can be reused.",
+        "summary": "Run a grok processor",
+        "description": "Extract structured fields out of a single text field within a document.\nYou must choose which field to extract matched fields from, as well as the grok pattern you expect will match.\nA grok pattern is like a regular expression that supports aliased expressions that can be reused.",
+        "externalDocs": {
+          "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/grok-processor.html"
+        },
         "operationId": "ingest-processor-grok",
         "responses": {
           "200": {
@@ -8999,7 +9061,8 @@
         "tags": [
           "ingest"
         ],
-        "summary": "Executes an ingest pipeline against a set of provided documents",
+        "summary": "Simulate a pipeline",
+        "description": "Run an ingest pipeline against a set of provided documents.\nYou can either specify an existing pipeline to use with the provided documents or supply a pipeline definition in the body of the request.",
         "operationId": "ingest-simulate",
         "parameters": [
           {
@@ -9020,7 +9083,8 @@
         "tags": [
           "ingest"
         ],
-        "summary": "Executes an ingest pipeline against a set of provided documents",
+        "summary": "Simulate a pipeline",
+        "description": "Run an ingest pipeline against a set of provided documents.\nYou can either specify an existing pipeline to use with the provided documents or supply a pipeline definition in the body of the request.",
         "operationId": "ingest-simulate-1",
         "parameters": [
           {
@@ -9043,7 +9107,8 @@
         "tags": [
           "ingest"
         ],
-        "summary": "Executes an ingest pipeline against a set of provided documents",
+        "summary": "Simulate a pipeline",
+        "description": "Run an ingest pipeline against a set of provided documents.\nYou can either specify an existing pipeline to use with the provided documents or supply a pipeline definition in the body of the request.",
         "operationId": "ingest-simulate-2",
         "parameters": [
           {
@@ -9067,7 +9132,8 @@
         "tags": [
           "ingest"
         ],
-        "summary": "Executes an ingest pipeline against a set of provided documents",
+        "summary": "Simulate a pipeline",
+        "description": "Run an ingest pipeline against a set of provided documents.\nYou can either specify an existing pipeline to use with the provided documents or supply a pipeline definition in the body of the request.",
         "operationId": "ingest-simulate-3",
         "parameters": [
           {
@@ -14448,7 +14514,11 @@
         "tags": [
           "query_rules"
         ],
-        "summary": "Returns the details about a query rule within a query ruleset",
+        "summary": "Get a query rule",
+        "description": "Get details about a query rule within a query ruleset.",
+        "externalDocs": {
+          "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/search-using-query-rules.html"
+        },
         "operationId": "query-rules-get-rule",
         "parameters": [
           {
@@ -14492,7 +14562,8 @@
         "tags": [
           "query_rules"
         ],
-        "summary": "Creates or updates a query rule within a query ruleset",
+        "summary": "Create or update a query rule",
+        "description": "Create or update a query rule within a query ruleset.",
         "operationId": "query-rules-put-rule",
         "parameters": [
           {
@@ -14583,7 +14654,8 @@
         "tags": [
           "query_rules"
         ],
-        "summary": "Deletes a query rule within a query ruleset",
+        "summary": "Delete a query rule",
+        "description": "Delete a query rule within a query ruleset.",
         "operationId": "query-rules-delete-rule",
         "parameters": [
           {
@@ -14629,7 +14701,8 @@
         "tags": [
           "query_rules"
         ],
-        "summary": "Returns the details about a query ruleset",
+        "summary": "Get a query ruleset",
+        "description": "Get details about a query ruleset.",
         "operationId": "query-rules-get-ruleset",
         "parameters": [
           {
@@ -14662,7 +14735,10 @@
         "tags": [
           "query_rules"
         ],
-        "summary": "Creates or updates a query ruleset",
+        "summary": "Create or update a query ruleset",
+        "externalDocs": {
+          "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/search-using-query-rules.html"
+        },
         "operationId": "query-rules-put-ruleset",
         "parameters": [
           {
@@ -14731,7 +14807,7 @@
         "tags": [
           "query_rules"
         ],
-        "summary": "Deletes a query ruleset",
+        "summary": "Delete a query ruleset",
         "operationId": "query-rules-delete-ruleset",
         "parameters": [
           {
@@ -14766,7 +14842,8 @@
         "tags": [
           "query_rules"
         ],
-        "summary": "Returns summarized information about existing query rulesets",
+        "summary": "Get all query rulesets",
+        "description": "Get summarized information about the query rulesets.",
         "operationId": "query-rules-list-rulesets",
         "parameters": [
           {
@@ -14825,7 +14902,8 @@
         "tags": [
           "query_rules"
         ],
-        "summary": "Creates or updates a query ruleset",
+        "summary": "Test a query ruleset",
+        "description": "Evaluate match criteria against a query ruleset to identify the rules that would match that criteria.",
         "operationId": "query-rules-test",
         "parameters": [
           {
@@ -17386,7 +17464,7 @@
         "tags": [
           "sql"
         ],
-        "summary": "Clears the SQL cursor",
+        "summary": "Clear an SQL search cursor",
         "operationId": "sql-clear-cursor",
         "requestBody": {
           "content": {
@@ -17435,8 +17513,8 @@
         "tags": [
           "sql"
         ],
-        "summary": "Deletes an async SQL search or a stored synchronous SQL search",
-        "description": "If the search is still running, the API cancels it.",
+        "summary": "Delete an async SQL search",
+        "description": "Delete an async SQL search or a stored synchronous SQL search.\nIf the search is still running, the API cancels it.",
         "operationId": "sql-delete-async",
         "parameters": [
           {
@@ -17471,7 +17549,8 @@
         "tags": [
           "sql"
         ],
-        "summary": "Returns the current status and available results for an async SQL search or stored synchronous SQL search",
+        "summary": "Get async SQL search results",
+        "description": "Get the current status and available results for an async SQL search or stored synchronous SQL search.",
         "operationId": "sql-get-async",
         "parameters": [
           {
@@ -17583,7 +17662,8 @@
         "tags": [
           "sql"
         ],
-        "summary": "Returns the current status of an async SQL search or a stored synchronous SQL search",
+        "summary": "Get the async SQL search status",
+        "description": "Get the current status of an async SQL search or a stored synchronous SQL search.",
         "operationId": "sql-get-async-status",
         "parameters": [
           {
@@ -17648,7 +17728,8 @@
         "tags": [
           "sql"
         ],
-        "summary": "Executes a SQL request",
+        "summary": "Get SQL search results",
+        "description": "Run an SQL request.",
         "operationId": "sql-query-1",
         "parameters": [
           {
@@ -17669,7 +17750,8 @@
         "tags": [
           "sql"
         ],
-        "summary": "Executes a SQL request",
+        "summary": "Get SQL search results",
+        "description": "Run an SQL request.",
         "operationId": "sql-query",
         "parameters": [
           {
@@ -17692,7 +17774,8 @@
         "tags": [
           "sql"
         ],
-        "summary": "Translates SQL into Elasticsearch queries",
+        "summary": "Translate SQL into Elasticsearch queries",
+        "description": "Translate an SQL search into a search API request containing Query DSL.",
         "operationId": "sql-translate-1",
         "requestBody": {
           "$ref": "#/components/requestBodies/sql.translate"
@@ -17708,7 +17791,8 @@
         "tags": [
           "sql"
         ],
-        "summary": "Translates SQL into Elasticsearch queries",
+        "summary": "Translate SQL into Elasticsearch queries",
+        "description": "Translate an SQL search into a search API request containing Query DSL.",
         "operationId": "sql-translate",
         "requestBody": {
           "$ref": "#/components/requestBodies/sql.translate"
@@ -17726,7 +17810,7 @@
         "tags": [
           "synonyms"
         ],
-        "summary": "Retrieves a synonym set",
+        "summary": "Get a synonym set",
         "operationId": "synonyms-get-synonym",
         "parameters": [
           {
@@ -17794,7 +17878,8 @@
         "tags": [
           "synonyms"
         ],
-        "summary": "Creates or updates a synonym set",
+        "summary": "Create or update a synonym set",
+        "description": "Synonyms sets are limited to a maximum of 10,000 synonym rules per set.\nIf you need to manage more synonym rules, you can create multiple synonym sets.",
         "operationId": "synonyms-put-synonym",
         "parameters": [
           {
@@ -17868,7 +17953,7 @@
         "tags": [
           "synonyms"
         ],
-        "summary": "Deletes a synonym set",
+        "summary": "Delete a synonym set",
         "operationId": "synonyms-delete-synonym",
         "parameters": [
           {
@@ -17903,7 +17988,8 @@
         "tags": [
           "synonyms"
         ],
-        "summary": "Retrieves a synonym rule from a synonym set",
+        "summary": "Get a synonym rule",
+        "description": "Get a synonym rule from a synonym set.",
         "operationId": "synonyms-get-synonym-rule",
         "parameters": [
           {
@@ -17947,7 +18033,8 @@
         "tags": [
           "synonyms"
         ],
-        "summary": "Creates or updates a synonym rule in a synonym set",
+        "summary": "Create or update a synonym rule",
+        "description": "Create or update a synonym rule in a synonym set.",
         "operationId": "synonyms-put-synonym-rule",
         "parameters": [
           {
@@ -18009,7 +18096,8 @@
         "tags": [
           "synonyms"
         ],
-        "summary": "Deletes a synonym rule in a synonym set",
+        "summary": "Delete a synonym rule",
+        "description": "Delete a synonym rule from a synonym set.",
         "operationId": "synonyms-delete-synonym-rule",
         "parameters": [
           {
@@ -18055,7 +18143,8 @@
         "tags": [
           "synonyms"
         ],
-        "summary": "Retrieves a summary of all defined synonym sets",
+        "summary": "Get all synonym sets",
+        "description": "Get a summary of all defined synonym sets.",
         "operationId": "synonyms-get-synonyms-sets",
         "parameters": [
           {
@@ -39990,11 +40079,25 @@
         "properties": {
           "limit": {
             "description": "The maximum number of fields in an index. Field and object mappings, as well as field aliases count towards this limit.\nThe limit is in place to prevent mappings and searches from becoming too large. Higher values can lead to performance\ndegradations and memory issues, especially in clusters with a high load or few resources.",
-            "type": "number"
+            "oneOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "string"
+              }
+            ]
           },
           "ignore_dynamic_beyond_limit": {
             "description": "This setting determines what happens when a dynamically mapped field would exceed the total fields limit. When set\nto false (the default), the index request of the document that tries to add a dynamic field to the mapping will fail\nwith the message Limit of total fields [X] has been exceeded. When set to true, the index request will not fail.\nInstead, fields that would exceed the limit are not added to the mapping, similar to dynamic: false.\nThe fields that were not added to the mapping will be added to the _ignored field.",
-            "type": "boolean"
+            "oneOf": [
+              {
+                "type": "boolean"
+              },
+              {
+                "type": "string"
+              }
+            ]
           }
         }
       },
@@ -58712,6 +58815,16 @@
         },
         "style": "form"
       },
+      "indices.exists_alias#master_timeout": {
+        "in": "query",
+        "name": "master_timeout",
+        "description": "Period to wait for a connection to the master node.\nIf no response is received before the timeout expires, the request fails and returns an error.",
+        "deprecated": false,
+        "schema": {
+          "$ref": "#/components/schemas/_types:Duration"
+        },
+        "style": "form"
+      },
       "indices.get_alias#name": {
         "in": "path",
         "name": "name",
@@ -58761,6 +58874,16 @@
         "deprecated": false,
         "schema": {
           "type": "boolean"
+        },
+        "style": "form"
+      },
+      "indices.get_alias#master_timeout": {
+        "in": "query",
+        "name": "master_timeout",
+        "description": "Period to wait for a connection to the master node.\nIf no response is received before the timeout expires, the request fails and returns an error.",
+        "deprecated": false,
+        "schema": {
+          "$ref": "#/components/schemas/_types:Duration"
         },
         "style": "form"
       },
