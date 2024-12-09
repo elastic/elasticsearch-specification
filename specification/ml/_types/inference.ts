@@ -250,7 +250,7 @@ export class TextEmbeddingInferenceOptions {
   /** The field that is added to incoming documents to contain the inference prediction. Defaults to predicted_value. */
   results_field?: string
 
-  vocabulary?: Vocabulary
+  vocabulary: Vocabulary
 }
 
 /** Text expansion inference options */
