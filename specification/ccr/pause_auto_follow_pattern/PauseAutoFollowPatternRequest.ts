@@ -21,9 +21,18 @@ import { RequestBase } from '@_types/Base'
 import { Name } from '@_types/common'
 
 /**
+ * Pause an auto-follow pattern.
+ * Pause a cross-cluster replication auto-follow pattern.
+ * When the API returns, the auto-follow pattern is inactive.
+ * New indices that are created on the remote cluster and match the auto-follow patterns are ignored.
+ *
+ * You can resume auto-following with the resume auto-follow pattern API.
+ * When it resumes, the auto-follow pattern is active again and automatically configures follower indices for newly created indices on the remote cluster that match its patterns.
+ * Remote indices that were created while the pattern was paused will also be followed, unless they have been deleted or closed in the interim.
  * @rest_spec_name ccr.pause_auto_follow_pattern
  * @availability stack since=7.5.0 stability=stable
  * @doc_id ccr-pause-auto-follow-pattern
+ * @ext_doc_id ccr-auto-follow
  */
 export interface Request extends RequestBase {
   path_parts: {
