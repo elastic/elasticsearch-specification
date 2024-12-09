@@ -17734,8 +17734,38 @@
           },
           {
             "in": "query",
+            "name": "allow_no_indices",
+            "description": "If `true`, wildcard indices expressions that resolve into no concrete indices are ignored. This includes the\n`_all` string or when no indices are specified.",
+            "deprecated": false,
+            "schema": {
+              "type": "boolean"
+            },
+            "style": "form"
+          },
+          {
+            "in": "query",
+            "name": "expand_wildcards",
+            "description": "Type of index that wildcard patterns can match. If the request can target data streams, this argument determines\nwhether wildcard expressions match hidden data streams. Supports comma-separated values. Valid values are:\n\n* `all`: Match any data stream or index, including hidden ones.\n* `closed`: Match closed, non-hidden indices. Also matches any non-hidden data stream. Data streams cannot be closed.\n* `hidden`: Match hidden data streams and hidden indices. Must be combined with `open`, `closed`, or both.\n* `none`: Wildcard patterns are not accepted.\n* `open`: Match open, non-hidden indices. Also matches any non-hidden data stream.",
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/_types:ExpandWildcards"
+            },
+            "style": "form"
+          },
+          {
+            "in": "query",
             "name": "ignore_throttled",
-            "description": "Ignore indices that are marked as throttled (default: true). Only set if datafeed_config is provided.",
+            "description": "If `true`, concrete, expanded or aliased indices are ignored when frozen.",
+            "deprecated": true,
+            "schema": {
+              "type": "boolean"
+            },
+            "style": "form"
+          },
+          {
+            "in": "query",
+            "name": "ignore_unavailable",
+            "description": "If `true`, unavailable indices (missing or closed) are ignored.",
             "deprecated": false,
             "schema": {
               "type": "boolean"
@@ -20343,13 +20373,13 @@
                 "schema": {
                   "type": "object",
                   "properties": {
-                    "bucket_count": {
+                    "job_id": {
+                      "$ref": "#/components/schemas/_types:Id"
+                    },
+                    "processed_record_count": {
                       "type": "number"
                     },
-                    "earliest_record_timestamp": {
-                      "$ref": "#/components/schemas/_types:EpochTimeUnitMillis"
-                    },
-                    "empty_bucket_count": {
+                    "processed_field_count": {
                       "type": "number"
                     },
                     "input_bytes": {
@@ -20358,20 +20388,8 @@
                     "input_field_count": {
                       "type": "number"
                     },
-                    "input_record_count": {
-                      "type": "number"
-                    },
                     "invalid_date_count": {
                       "type": "number"
-                    },
-                    "job_id": {
-                      "$ref": "#/components/schemas/_types:Id"
-                    },
-                    "last_data_time": {
-                      "type": "number"
-                    },
-                    "latest_record_timestamp": {
-                      "$ref": "#/components/schemas/_types:EpochTimeUnitMillis"
                     },
                     "missing_field_count": {
                       "type": "number"
@@ -20379,29 +20397,50 @@
                     "out_of_order_timestamp_count": {
                       "type": "number"
                     },
-                    "processed_field_count": {
-                      "type": "number"
-                    },
-                    "processed_record_count": {
+                    "empty_bucket_count": {
                       "type": "number"
                     },
                     "sparse_bucket_count": {
                       "type": "number"
+                    },
+                    "bucket_count": {
+                      "type": "number"
+                    },
+                    "earliest_record_timestamp": {
+                      "$ref": "#/components/schemas/_types:EpochTimeUnitMillis"
+                    },
+                    "latest_record_timestamp": {
+                      "$ref": "#/components/schemas/_types:EpochTimeUnitMillis"
+                    },
+                    "last_data_time": {
+                      "$ref": "#/components/schemas/_types:EpochTimeUnitMillis"
+                    },
+                    "latest_empty_bucket_timestamp": {
+                      "$ref": "#/components/schemas/_types:EpochTimeUnitMillis"
+                    },
+                    "latest_sparse_bucket_timestamp": {
+                      "$ref": "#/components/schemas/_types:EpochTimeUnitMillis"
+                    },
+                    "input_record_count": {
+                      "type": "number"
+                    },
+                    "log_time": {
+                      "$ref": "#/components/schemas/_types:EpochTimeUnitMillis"
                     }
                   },
                   "required": [
-                    "bucket_count",
-                    "empty_bucket_count",
+                    "job_id",
+                    "processed_record_count",
+                    "processed_field_count",
                     "input_bytes",
                     "input_field_count",
-                    "input_record_count",
                     "invalid_date_count",
-                    "job_id",
                     "missing_field_count",
                     "out_of_order_timestamp_count",
-                    "processed_field_count",
-                    "processed_record_count",
-                    "sparse_bucket_count"
+                    "empty_bucket_count",
+                    "sparse_bucket_count",
+                    "bucket_count",
+                    "input_record_count"
                   ]
                 }
               }
@@ -75740,26 +75779,36 @@
         "maxProperties": 1
       },
       "ml._types:NlpBertTokenizationConfig": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/ml._types:CommonTokenizationConfig"
+          },
+          {
+            "type": "object"
+          }
+        ]
+      },
+      "ml._types:CommonTokenizationConfig": {
         "type": "object",
         "properties": {
           "do_lower_case": {
             "description": "Should the tokenizer lower case the text",
             "type": "boolean"
           },
-          "with_special_tokens": {
-            "description": "Is tokenization completed with special tokens",
-            "type": "boolean"
-          },
           "max_sequence_length": {
             "description": "Maximum input sequence length for the model",
+            "type": "number"
+          },
+          "span": {
+            "description": "Tokenization spanning options. Special value of -1 indicates no spanning takes place",
             "type": "number"
           },
           "truncate": {
             "$ref": "#/components/schemas/ml._types:TokenizationTruncate"
           },
-          "span": {
-            "description": "Tokenization spanning options. Special value of -1 indicates no spanning takes place",
-            "type": "number"
+          "with_special_tokens": {
+            "description": "Is tokenization completed with special tokens",
+            "type": "boolean"
           }
         }
       },
@@ -75772,32 +75821,20 @@
         ]
       },
       "ml._types:NlpRobertaTokenizationConfig": {
-        "type": "object",
-        "properties": {
-          "do_lower_case": {
-            "description": "Should the tokenizer lower case the text",
-            "type": "boolean"
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/ml._types:CommonTokenizationConfig"
           },
-          "add_prefix_space": {
-            "description": "Should the tokenizer prefix input with a space character",
-            "type": "boolean"
-          },
-          "with_special_tokens": {
-            "description": "Is tokenization completed with special tokens",
-            "type": "boolean"
-          },
-          "max_sequence_length": {
-            "description": "Maximum input sequence length for the model",
-            "type": "number"
-          },
-          "truncate": {
-            "$ref": "#/components/schemas/ml._types:TokenizationTruncate"
-          },
-          "span": {
-            "description": "Tokenization spanning options. Special value of -1 indicates no spanning takes place",
-            "type": "number"
+          {
+            "type": "object",
+            "properties": {
+              "add_prefix_space": {
+                "description": "Should the tokenizer prefix input with a space character",
+                "type": "boolean"
+              }
+            }
           }
-        }
+        ]
       },
       "ml._types:ZeroShotClassificationInferenceOptions": {
         "type": "object",
@@ -75857,7 +75894,10 @@
           "vocabulary": {
             "$ref": "#/components/schemas/ml._types:Vocabulary"
           }
-        }
+        },
+        "required": [
+          "vocabulary"
+        ]
       },
       "ml._types:Vocabulary": {
         "type": "object",
@@ -75924,7 +75964,10 @@
           "vocabulary": {
             "$ref": "#/components/schemas/ml._types:Vocabulary"
           }
-        }
+        },
+        "required": [
+          "vocabulary"
+        ]
       },
       "ml._types:TextExpansionInferenceOptions": {
         "type": "object",
@@ -75939,7 +75982,10 @@
           "vocabulary": {
             "$ref": "#/components/schemas/ml._types:Vocabulary"
           }
-        }
+        },
+        "required": [
+          "vocabulary"
+        ]
       },
       "ml._types:QuestionAnsweringInferenceOptions": {
         "type": "object",
@@ -76924,6 +76970,9 @@
           "max_single_ml_node_processors": {
             "type": "number"
           },
+          "total_ml_processors": {
+            "type": "number"
+          },
           "max_model_memory_limit": {
             "$ref": "#/components/schemas/_types:ByteSize"
           },
@@ -76931,14 +76980,10 @@
             "$ref": "#/components/schemas/_types:ByteSize"
           },
           "total_ml_memory": {
-            "type": "string"
-          },
-          "total_ml_processors": {
-            "type": "number"
+            "$ref": "#/components/schemas/_types:ByteSize"
           }
         },
         "required": [
-          "effective_max_model_memory_limit",
           "total_ml_memory"
         ]
       },

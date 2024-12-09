@@ -13812,6 +13812,14 @@ export interface MlClassificationInferenceOptions {
   top_classes_results_field?: string
 }
 
+export interface MlCommonTokenizationConfig {
+  do_lower_case?: boolean
+  max_sequence_length?: integer
+  span?: integer
+  truncate?: MlTokenizationTruncate
+  with_special_tokens?: boolean
+}
+
 export type MlConditionOperator = 'gt' | 'gte' | 'lt' | 'lte'
 
 export type MlCustomSettings = any
@@ -14249,7 +14257,7 @@ export interface MlFillMaskInferenceOptions {
   num_top_classes?: integer
   tokenization?: MlTokenizationConfigContainer
   results_field?: string
-  vocabulary?: MlVocabulary
+  vocabulary: MlVocabulary
 }
 
 export interface MlFillMaskInferenceUpdateOptions {
@@ -14538,21 +14546,11 @@ export interface MlNerInferenceUpdateOptions {
   results_field?: string
 }
 
-export interface MlNlpBertTokenizationConfig {
-  do_lower_case?: boolean
-  with_special_tokens?: boolean
-  max_sequence_length?: integer
-  truncate?: MlTokenizationTruncate
-  span?: integer
+export interface MlNlpBertTokenizationConfig extends MlCommonTokenizationConfig {
 }
 
-export interface MlNlpRobertaTokenizationConfig {
-  do_lower_case?: boolean
+export interface MlNlpRobertaTokenizationConfig extends MlCommonTokenizationConfig {
   add_prefix_space?: boolean
-  with_special_tokens?: boolean
-  max_sequence_length?: integer
-  truncate?: MlTokenizationTruncate
-  span?: integer
 }
 
 export interface MlNlpTokenizationUpdateOptions {
@@ -14664,7 +14662,7 @@ export interface MlTextEmbeddingInferenceOptions {
   embedding_size?: integer
   tokenization?: MlTokenizationConfigContainer
   results_field?: string
-  vocabulary?: MlVocabulary
+  vocabulary: MlVocabulary
 }
 
 export interface MlTextEmbeddingInferenceUpdateOptions {
@@ -14675,7 +14673,7 @@ export interface MlTextEmbeddingInferenceUpdateOptions {
 export interface MlTextExpansionInferenceOptions {
   tokenization?: MlTokenizationConfigContainer
   results_field?: string
-  vocabulary?: MlVocabulary
+  vocabulary: MlVocabulary
 }
 
 export interface MlTextExpansionInferenceUpdateOptions {
@@ -15582,10 +15580,10 @@ export interface MlInfoDefaults {
 
 export interface MlInfoLimits {
   max_single_ml_node_processors?: integer
-  max_model_memory_limit?: ByteSize
-  effective_max_model_memory_limit: ByteSize
-  total_ml_memory: string
   total_ml_processors?: integer
+  max_model_memory_limit?: ByteSize
+  effective_max_model_memory_limit?: ByteSize
+  total_ml_memory: ByteSize
 }
 
 export interface MlInfoNativeCode {
@@ -15635,21 +15633,24 @@ export interface MlPostDataRequest<TData = unknown> extends RequestBase {
 }
 
 export interface MlPostDataResponse {
-  bucket_count: long
-  earliest_record_timestamp?: EpochTime<UnitMillis>
-  empty_bucket_count: long
+  job_id: Id
+  processed_record_count: long
+  processed_field_count: long
   input_bytes: long
   input_field_count: long
-  input_record_count: long
   invalid_date_count: long
-  job_id: Id
-  last_data_time?: integer
-  latest_record_timestamp?: EpochTime<UnitMillis>
   missing_field_count: long
   out_of_order_timestamp_count: long
-  processed_field_count: long
-  processed_record_count: long
+  empty_bucket_count: long
   sparse_bucket_count: long
+  bucket_count: long
+  earliest_record_timestamp?: EpochTime<UnitMillis>
+  latest_record_timestamp?: EpochTime<UnitMillis>
+  last_data_time?: EpochTime<UnitMillis>
+  latest_empty_bucket_timestamp?: EpochTime<UnitMillis>
+  latest_sparse_bucket_timestamp?: EpochTime<UnitMillis>
+  input_record_count: long
+  log_time?: EpochTime<UnitMillis>
 }
 
 export interface MlPreviewDataFrameAnalyticsDataframePreviewConfig {
@@ -15801,7 +15802,10 @@ export interface MlPutFilterResponse {
 
 export interface MlPutJobRequest extends RequestBase {
   job_id: Id
+  allow_no_indices?: boolean
+  expand_wildcards?: ExpandWildcards
   ignore_throttled?: boolean
+  ignore_unavailable?: boolean
   body?: {
     allow_lazy_open?: boolean
     analysis_config: MlAnalysisConfig

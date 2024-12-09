@@ -130,67 +130,44 @@ export class TokenizationConfigContainer {
   roberta?: NlpRobertaTokenizationConfig
 }
 
-/** BERT and MPNet tokenization configuration options */
-export class NlpBertTokenizationConfig {
+export class CommonTokenizationConfig {
   /**
    * Should the tokenizer lower case the text
    * @server_default false
    */
   do_lower_case?: boolean
-  /**
-   * Is tokenization completed with special tokens
-   * @server_default true
-   */
-  with_special_tokens?: boolean
   /**
    * Maximum input sequence length for the model
    * @server_default 512
    */
   max_sequence_length?: integer
   /**
+   * Tokenization spanning options. Special value of -1 indicates no spanning takes place
+   * @server_default -1
+   */
+  span?: integer
+  /**
    * Should tokenization input be automatically truncated before sending to the model for inference
    * @server_default first
    */
   truncate?: TokenizationTruncate
   /**
-   * Tokenization spanning options. Special value of -1 indicates no spanning takes place
-   * @server_default -1
+   * Is tokenization completed with special tokens
+   * @server_default true
    */
-  span?: integer
+  with_special_tokens?: boolean
 }
 
+/** BERT and MPNet tokenization configuration options */
+export class NlpBertTokenizationConfig extends CommonTokenizationConfig {}
+
 /** RoBERTa tokenization configuration options */
-export class NlpRobertaTokenizationConfig {
-  /**
-   * Should the tokenizer lower case the text
-   * @server_default false
-   */
-  do_lower_case?: boolean
+export class NlpRobertaTokenizationConfig extends CommonTokenizationConfig {
   /**
    * Should the tokenizer prefix input with a space character
    * @server_default false
    */
   add_prefix_space?: boolean
-  /**
-   * Is tokenization completed with special tokens
-   * @server_default true
-   */
-  with_special_tokens?: boolean
-  /**
-   * Maximum input sequence length for the model
-   * @server_default 512
-   */
-  max_sequence_length?: integer
-  /**
-   * Should tokenization input be automatically truncated before sending to the model for inference
-   * @server_default first
-   */
-  truncate?: TokenizationTruncate
-  /**
-   * Tokenization spanning options. Special value of -1 indicates no spanning takes place
-   * @server_default -1
-   */
-  span?: integer
 }
 
 /** Text classification configuration options */

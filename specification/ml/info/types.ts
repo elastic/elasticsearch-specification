@@ -33,10 +33,10 @@ export class NativeCode {
 
 export class Limits {
   max_single_ml_node_processors?: integer
-  max_model_memory_limit?: ByteSize
-  effective_max_model_memory_limit: ByteSize
-  total_ml_memory: string
   total_ml_processors?: integer
+  max_model_memory_limit?: ByteSize
+  effective_max_model_memory_limit?: ByteSize
+  total_ml_memory: ByteSize
 }
 
 export class Datafeeds {

@@ -30412,9 +30412,53 @@
       ],
       "query": [
         {
-          "description": "Ignore indices that are marked as throttled (default: true). Only set if datafeed_config is provided.",
+          "description": "If `true`, wildcard indices expressions that resolve into no concrete indices are ignored. This includes the\n`_all` string or when no indices are specified.",
+          "name": "allow_no_indices",
+          "required": false,
+          "serverDefault": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "_builtins"
+            }
+          }
+        },
+        {
+          "description": "Type of index that wildcard patterns can match. If the request can target data streams, this argument determines\nwhether wildcard expressions match hidden data streams. Supports comma-separated values. Valid values are:\n\n* `all`: Match any data stream or index, including hidden ones.\n* `closed`: Match closed, non-hidden indices. Also matches any non-hidden data stream. Data streams cannot be closed.\n* `hidden`: Match hidden data streams and hidden indices. Must be combined with `open`, `closed`, or both.\n* `none`: Wildcard patterns are not accepted.\n* `open`: Match open, non-hidden indices. Also matches any non-hidden data stream.",
+          "name": "expand_wildcards",
+          "required": false,
+          "serverDefault": "open",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "ExpandWildcards",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "deprecation": {
+            "description": "",
+            "version": "7.16.0"
+          },
+          "description": "If `true`, concrete, expanded or aliased indices are ignored when frozen.",
           "name": "ignore_throttled",
           "required": false,
+          "serverDefault": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "_builtins"
+            }
+          }
+        },
+        {
+          "description": "If `true`, unavailable indices (missing or closed) are ignored.",
+          "name": "ignore_unavailable",
+          "required": false,
+          "serverDefault": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -30424,7 +30468,7 @@
           }
         }
       ],
-      "specLocation": "ml/put_job/MlPutJobRequest.ts#L30-L120"
+      "specLocation": "ml/put_job/MlPutJobRequest.ts#L30-L148"
     },
     {
       "body": {
@@ -95443,7 +95487,7 @@
         "name": "PredictedValue",
         "namespace": "ml._types"
       },
-      "specLocation": "ml/_types/inference.ts#L468-L468",
+      "specLocation": "ml/_types/inference.ts#L445-L445",
       "type": {
         "items": [
           {
@@ -95554,7 +95598,7 @@
         "name": "TokenizationTruncate",
         "namespace": "ml._types"
       },
-      "specLocation": "ml/_types/inference.ts#L361-L365"
+      "specLocation": "ml/_types/inference.ts#L338-L342"
     },
     {
       "kind": "enum",
@@ -132983,7 +133027,7 @@
           }
         }
       ],
-      "specLocation": "ml/_types/inference.ts#L196-L206"
+      "specLocation": "ml/_types/inference.ts#L173-L183"
     },
     {
       "description": "Tokenization options stored in inference configuration",
@@ -133061,9 +133105,24 @@
     },
     {
       "description": "BERT and MPNet tokenization configuration options",
+      "inherits": {
+        "type": {
+          "name": "CommonTokenizationConfig",
+          "namespace": "ml._types"
+        }
+      },
       "kind": "interface",
       "name": {
         "name": "NlpBertTokenizationConfig",
+        "namespace": "ml._types"
+      },
+      "properties": [],
+      "specLocation": "ml/_types/inference.ts#L161-L162"
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "CommonTokenizationConfig",
         "namespace": "ml._types"
       },
       "properties": [
@@ -133072,19 +133131,6 @@
           "name": "do_lower_case",
           "required": false,
           "serverDefault": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "boolean",
-              "namespace": "_builtins"
-            }
-          }
-        },
-        {
-          "description": "Is tokenization completed with special tokens",
-          "name": "with_special_tokens",
-          "required": false,
-          "serverDefault": true,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -133107,6 +133153,19 @@
           }
         },
         {
+          "description": "Tokenization spanning options. Special value of -1 indicates no spanning takes place",
+          "name": "span",
+          "required": false,
+          "serverDefault": -1,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
           "description": "Should tokenization input be automatically truncated before sending to the model for inference",
           "name": "truncate",
           "required": false,
@@ -133120,34 +133179,10 @@
           }
         },
         {
-          "description": "Tokenization spanning options. Special value of -1 indicates no spanning takes place",
-          "name": "span",
+          "description": "Is tokenization completed with special tokens",
+          "name": "with_special_tokens",
           "required": false,
-          "serverDefault": -1,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "integer",
-              "namespace": "_types"
-            }
-          }
-        }
-      ],
-      "specLocation": "ml/_types/inference.ts#L133-L160"
-    },
-    {
-      "description": "RoBERTa tokenization configuration options",
-      "kind": "interface",
-      "name": {
-        "name": "NlpRobertaTokenizationConfig",
-        "namespace": "ml._types"
-      },
-      "properties": [
-        {
-          "description": "Should the tokenizer lower case the text",
-          "name": "do_lower_case",
-          "required": false,
-          "serverDefault": false,
+          "serverDefault": true,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -133155,7 +133190,24 @@
               "namespace": "_builtins"
             }
           }
-        },
+        }
+      ],
+      "specLocation": "ml/_types/inference.ts#L133-L159"
+    },
+    {
+      "description": "RoBERTa tokenization configuration options",
+      "inherits": {
+        "type": {
+          "name": "CommonTokenizationConfig",
+          "namespace": "ml._types"
+        }
+      },
+      "kind": "interface",
+      "name": {
+        "name": "NlpRobertaTokenizationConfig",
+        "namespace": "ml._types"
+      },
+      "properties": [
         {
           "description": "Should the tokenizer prefix input with a space character",
           "name": "add_prefix_space",
@@ -133168,61 +133220,9 @@
               "namespace": "_builtins"
             }
           }
-        },
-        {
-          "description": "Is tokenization completed with special tokens",
-          "name": "with_special_tokens",
-          "required": false,
-          "serverDefault": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "boolean",
-              "namespace": "_builtins"
-            }
-          }
-        },
-        {
-          "description": "Maximum input sequence length for the model",
-          "name": "max_sequence_length",
-          "required": false,
-          "serverDefault": 512,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "integer",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "description": "Should tokenization input be automatically truncated before sending to the model for inference",
-          "name": "truncate",
-          "required": false,
-          "serverDefault": "first",
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "TokenizationTruncate",
-              "namespace": "ml._types"
-            }
-          }
-        },
-        {
-          "description": "Tokenization spanning options. Special value of -1 indicates no spanning takes place",
-          "name": "span",
-          "required": false,
-          "serverDefault": -1,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "integer",
-              "namespace": "_types"
-            }
-          }
         }
       ],
-      "specLocation": "ml/_types/inference.ts#L162-L194"
+      "specLocation": "ml/_types/inference.ts#L164-L171"
     },
     {
       "description": "Zero shot classification configuration options",
@@ -133313,7 +133313,7 @@
           }
         }
       ],
-      "specLocation": "ml/_types/inference.ts#L208-L229"
+      "specLocation": "ml/_types/inference.ts#L185-L206"
     },
     {
       "description": "Fill mask inference options",
@@ -133373,7 +133373,7 @@
         },
         {
           "name": "vocabulary",
-          "required": false,
+          "required": true,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -133383,7 +133383,7 @@
           }
         }
       ],
-      "specLocation": "ml/_types/inference.ts#L276-L291"
+      "specLocation": "ml/_types/inference.ts#L253-L268"
     },
     {
       "kind": "interface",
@@ -133404,7 +133404,7 @@
           }
         }
       ],
-      "specLocation": "ml/_types/inference.ts#L240-L242"
+      "specLocation": "ml/_types/inference.ts#L217-L219"
     },
     {
       "description": "Named entity recognition options",
@@ -133465,7 +133465,7 @@
           }
         }
       ],
-      "specLocation": "ml/_types/inference.ts#L265-L274"
+      "specLocation": "ml/_types/inference.ts#L242-L251"
     },
     {
       "description": "Pass through configuration options",
@@ -133511,7 +133511,7 @@
           }
         }
       ],
-      "specLocation": "ml/_types/inference.ts#L231-L238"
+      "specLocation": "ml/_types/inference.ts#L208-L215"
     },
     {
       "description": "Text embedding inference options",
@@ -133559,7 +133559,7 @@
         },
         {
           "name": "vocabulary",
-          "required": false,
+          "required": true,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -133569,7 +133569,7 @@
           }
         }
       ],
-      "specLocation": "ml/_types/inference.ts#L244-L254"
+      "specLocation": "ml/_types/inference.ts#L221-L231"
     },
     {
       "description": "Text expansion inference options",
@@ -133605,7 +133605,7 @@
         },
         {
           "name": "vocabulary",
-          "required": false,
+          "required": true,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -133615,7 +133615,7 @@
           }
         }
       ],
-      "specLocation": "ml/_types/inference.ts#L256-L263"
+      "specLocation": "ml/_types/inference.ts#L233-L240"
     },
     {
       "description": "Question answering inference options",
@@ -133674,7 +133674,7 @@
           }
         }
       ],
-      "specLocation": "ml/_types/inference.ts#L293-L303"
+      "specLocation": "ml/_types/inference.ts#L270-L280"
     },
     {
       "kind": "interface",
@@ -135213,7 +135213,7 @@
           }
         }
       ],
-      "specLocation": "ml/_types/inference.ts#L307-L329",
+      "specLocation": "ml/_types/inference.ts#L284-L306",
       "variants": {
         "kind": "container"
       }
@@ -135277,7 +135277,7 @@
           }
         }
       ],
-      "specLocation": "ml/_types/inference.ts#L374-L383"
+      "specLocation": "ml/_types/inference.ts#L351-L360"
     },
     {
       "kind": "interface",
@@ -135311,7 +135311,7 @@
           }
         }
       ],
-      "specLocation": "ml/_types/inference.ts#L367-L372"
+      "specLocation": "ml/_types/inference.ts#L344-L349"
     },
     {
       "kind": "interface",
@@ -135372,7 +135372,7 @@
           }
         }
       ],
-      "specLocation": "ml/_types/inference.ts#L385-L394"
+      "specLocation": "ml/_types/inference.ts#L362-L371"
     },
     {
       "kind": "interface",
@@ -135418,7 +135418,7 @@
           }
         }
       ],
-      "specLocation": "ml/_types/inference.ts#L422-L429"
+      "specLocation": "ml/_types/inference.ts#L399-L406"
     },
     {
       "kind": "interface",
@@ -135452,7 +135452,7 @@
           }
         }
       ],
-      "specLocation": "ml/_types/inference.ts#L415-L420"
+      "specLocation": "ml/_types/inference.ts#L392-L397"
     },
     {
       "kind": "interface",
@@ -135486,7 +135486,7 @@
           }
         }
       ],
-      "specLocation": "ml/_types/inference.ts#L396-L401"
+      "specLocation": "ml/_types/inference.ts#L373-L378"
     },
     {
       "kind": "interface",
@@ -135519,7 +135519,7 @@
           }
         }
       ],
-      "specLocation": "ml/_types/inference.ts#L403-L407"
+      "specLocation": "ml/_types/inference.ts#L380-L384"
     },
     {
       "kind": "interface",
@@ -135552,7 +135552,7 @@
           }
         }
       ],
-      "specLocation": "ml/_types/inference.ts#L409-L413"
+      "specLocation": "ml/_types/inference.ts#L386-L390"
     },
     {
       "kind": "interface",
@@ -135622,7 +135622,7 @@
           }
         }
       ],
-      "specLocation": "ml/_types/inference.ts#L431-L442"
+      "specLocation": "ml/_types/inference.ts#L408-L419"
     },
     {
       "kind": "interface",
@@ -135764,7 +135764,7 @@
           }
         }
       ],
-      "specLocation": "ml/_types/inference.ts#L470-L518"
+      "specLocation": "ml/_types/inference.ts#L447-L495"
     },
     {
       "kind": "interface",
@@ -135829,7 +135829,7 @@
           }
         }
       ],
-      "specLocation": "ml/_types/inference.ts#L444-L450"
+      "specLocation": "ml/_types/inference.ts#L421-L427"
     },
     {
       "kind": "interface",
@@ -135872,7 +135872,7 @@
           }
         }
       ],
-      "specLocation": "ml/_types/inference.ts#L451-L455"
+      "specLocation": "ml/_types/inference.ts#L428-L432"
     },
     {
       "kind": "interface",
@@ -135918,7 +135918,7 @@
           }
         }
       ],
-      "specLocation": "ml/_types/inference.ts#L462-L466"
+      "specLocation": "ml/_types/inference.ts#L439-L443"
     },
     {
       "kind": "interface",
@@ -135950,7 +135950,7 @@
           }
         }
       ],
-      "specLocation": "ml/_types/inference.ts#L457-L460"
+      "specLocation": "ml/_types/inference.ts#L434-L437"
     },
     {
       "kind": "interface",

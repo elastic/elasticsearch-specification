@@ -23,7 +23,7 @@ import { DataDescription } from '@ml/_types/Job'
 import { ModelPlotConfig } from '@ml/_types/ModelPlot'
 import { CustomSettings } from '@ml/_types/Settings'
 import { RequestBase } from '@_types/Base'
-import { Id, IndexName } from '@_types/common'
+import { ExpandWildcards, Id, IndexName } from '@_types/common'
 import { long } from '@_types/Numeric'
 import { Duration } from '@_types/Time'
 
@@ -45,7 +45,35 @@ export interface Request extends RequestBase {
     job_id: Id
   }
   query_parameters: {
+    /**
+     * If `true`, wildcard indices expressions that resolve into no concrete indices are ignored. This includes the
+     * `_all` string or when no indices are specified.
+     * @server_default true
+     */
+    allow_no_indices?: boolean
+    /**
+     * Type of index that wildcard patterns can match. If the request can target data streams, this argument determines
+     * whether wildcard expressions match hidden data streams. Supports comma-separated values. Valid values are:
+     *
+     * * `all`: Match any data stream or index, including hidden ones.
+     * * `closed`: Match closed, non-hidden indices. Also matches any non-hidden data stream. Data streams cannot be closed.
+     * * `hidden`: Match hidden data streams and hidden indices. Must be combined with `open`, `closed`, or both.
+     * * `none`: Wildcard patterns are not accepted.
+     * * `open`: Match open, non-hidden indices. Also matches any non-hidden data stream.
+     * @server_default open
+     */
+    expand_wildcards?: ExpandWildcards
+    /**
+     * If `true`, concrete, expanded or aliased indices are ignored when frozen.
+     * @server_default true
+     * @deprecated 7.16.0
+     */
     ignore_throttled?: boolean
+    /**
+     * If `true`, unavailable indices (missing or closed) are ignored.
+     * @server_default false
+     */
+    ignore_unavailable?: boolean
   }
   body: {
     /**
