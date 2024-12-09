@@ -17,7 +17,6 @@
  * under the License.
  */
 
-import { Phases } from '@ilm/_types/Phase'
 import { JobStatistics } from '@ml/_types/Job'
 import { Statistics } from '@slm/_types/SnapshotLifecycle'
 import { Dictionary } from '@spec_utils/Dictionary'
@@ -150,6 +149,19 @@ export class ForecastStatistics {
 
 export class HealthStatistics extends Base {
   invocations: Invocations
+}
+
+export class Phase {
+  actions: string[]
+  min_age: DurationValue<UnitMillis>
+}
+
+export class Phases {
+  cold?: Phase
+  delete?: Phase
+  frozen?: Phase
+  hot?: Phase
+  warm?: Phase
 }
 
 export class IlmPolicyStatistics {

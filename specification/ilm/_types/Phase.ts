@@ -25,10 +25,7 @@ import { Duration, DurationLarge } from '@_types/Time'
 
 export class Phase {
   actions?: Actions
-  /**
-   * @es_quirk output as a millis number in XPack usage stats, which cannot roundtrip with a Duration as it requires a unit.
-   */
-  min_age?: Duration | long
+  min_age?: Duration
 }
 
 export class Phases {
