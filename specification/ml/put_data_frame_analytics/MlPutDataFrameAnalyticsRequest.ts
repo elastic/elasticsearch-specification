@@ -24,7 +24,7 @@ import {
   DataframeAnalyticsSource
 } from '@ml/_types/DataframeAnalytics'
 import { RequestBase } from '@_types/Base'
-import { HttpHeaders, Id, VersionString } from '@_types/common'
+import { HttpHeaders, Id, Metadata, VersionString } from '@_types/common'
 import { integer } from '@_types/Numeric'
 
 /**
@@ -115,6 +115,8 @@ export interface Request extends RequestBase {
      * @server_default 1
      */
     max_num_threads?: integer
+
+    _meta?: Metadata
     /**
      * The approximate maximum amount of memory resources that are permitted for
      * analytical processing. If your `elasticsearch.yml` file contains an
