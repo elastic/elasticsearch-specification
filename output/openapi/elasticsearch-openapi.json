@@ -66879,14 +66879,7 @@
             "$ref": "#/components/schemas/ilm._types:Actions"
           },
           "min_age": {
-            "oneOf": [
-              {
-                "$ref": "#/components/schemas/_types:Duration"
-              },
-              {
-                "type": "number"
-              }
-            ]
+            "$ref": "#/components/schemas/_types:Duration"
           }
         }
       },
@@ -88362,12 +88355,50 @@
             "type": "number"
           },
           "phases": {
-            "$ref": "#/components/schemas/ilm._types:Phases"
+            "$ref": "#/components/schemas/xpack.usage:Phases"
           }
         },
         "required": [
           "indices_managed",
           "phases"
+        ]
+      },
+      "xpack.usage:Phases": {
+        "type": "object",
+        "properties": {
+          "cold": {
+            "$ref": "#/components/schemas/xpack.usage:Phase"
+          },
+          "delete": {
+            "$ref": "#/components/schemas/xpack.usage:Phase"
+          },
+          "frozen": {
+            "$ref": "#/components/schemas/xpack.usage:Phase"
+          },
+          "hot": {
+            "$ref": "#/components/schemas/xpack.usage:Phase"
+          },
+          "warm": {
+            "$ref": "#/components/schemas/xpack.usage:Phase"
+          }
+        }
+      },
+      "xpack.usage:Phase": {
+        "type": "object",
+        "properties": {
+          "actions": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "min_age": {
+            "$ref": "#/components/schemas/_types:DurationValueUnitMillis"
+          }
+        },
+        "required": [
+          "actions",
+          "min_age"
         ]
       },
       "xpack.usage:MachineLearning": {
