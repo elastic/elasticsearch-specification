@@ -287,7 +287,7 @@ export class FillMaskInferenceOptions {
   tokenization?: TokenizationConfigContainer
   /** The field that is added to incoming documents to contain the inference prediction. Defaults to predicted_value. */
   results_field?: string
-  vocabulary?: Vocabulary
+  vocabulary: Vocabulary
 }
 
 /** Question answering inference options */
