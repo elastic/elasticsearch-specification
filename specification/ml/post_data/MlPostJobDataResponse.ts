@@ -29,9 +29,6 @@ export class Response {
     input_bytes: long
     input_field_count: long
     invalid_date_count: long
-    job_id: Id
-    last_data_time?: EpochTime<UnitMillis>
-    latest_record_timestamp?: EpochTime<UnitMillis>
     missing_field_count: long
     out_of_order_timestamp_count: long
     empty_bucket_count: long
