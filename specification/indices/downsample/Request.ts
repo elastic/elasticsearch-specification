@@ -26,7 +26,7 @@ import { IndexName } from '@_types/common'
  * Aggregate a time series (TSDS) index and store pre-computed statistical summaries (`min`, `max`, `sum`, `value_count` and `avg`) for each metric field grouped by a configured time interval.
  * For example, a TSDS index that contains metrics sampled every 10 seconds can be downsampled to an hourly index.
  * All documents within an hour interval are summarized and stored as a single document in the downsample index.
- * 
+ *
  * NOTE: Only indices in a time series data stream are supported.
  * Neither field nor document level security can be defined on the source index.
  * The source index must be read only (`index.blocks.write: true`).

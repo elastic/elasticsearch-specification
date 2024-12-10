@@ -56,7 +56,7 @@ import { Duration } from '@_types/Time'
  * * The source index must have more primary shards than the target index.
  * * The number of primary shards in the target index must be a factor of the number of primary shards in the source index. The source index must have more primary shards than the target index.
  * * The index must not contain more than 2,147,483,519 documents in total across all shards that will be shrunk into a single shard on the target index as this is the maximum number of docs that can fit into a single shard.
-* * The node handling the shrink process must have sufficient free disk space to accommodate a second copy of the existing index.
+ * * The node handling the shrink process must have sufficient free disk space to accommodate a second copy of the existing index.
  * @doc_id indices-shrink-index
  * @rest_spec_name indices.shrink
  * @availability stack since=5.0.0 stability=stable
