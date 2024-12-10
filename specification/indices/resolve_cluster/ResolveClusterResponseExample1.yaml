@@ -1,4 +1,4 @@
-summary: A successful response for resolving a specified index expressions to return information about each cluster.
+summary: A successful response for resolving a specified index expression to return information about each cluster.
 # description: ''
 # type: response
 response_code: 200
