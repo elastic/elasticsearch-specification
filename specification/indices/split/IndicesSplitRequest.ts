@@ -27,12 +27,7 @@ import { Duration } from '@_types/Time'
 /**
  * Split an index.
  * Split an index into a new index with more primary shards.
- * @doc_id indices-split-index
- * @rest_spec_name indices.split
- * @availability stack since=6.1.0 stability=stable
- * @index_privileges manage
- *
- * Before you can split an index:
+ * * Before you can split an index:
  *
  * * The index must be read-only.
  * * The cluster health status must be green.
@@ -54,6 +49,10 @@ import { Duration } from '@_types/Time'
  * * The source index must have fewer primary shards than the target index.
  * * The number of primary shards in the target index must be a multiple of the number of primary shards in the source index.
  * * The node handling the split process must have sufficient free disk space to accommodate a second copy of the existing index.
+ * @doc_id indices-split-index
+ * @rest_spec_name indices.split
+ * @availability stack since=6.1.0 stability=stable
+ * @index_privileges manage
  */
 export interface Request extends RequestBase {
   path_parts: {
