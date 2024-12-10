@@ -4,16 +4,16 @@ summary: Create or update an index template.
 # type: request
 value:
   index_patterns:
-    - "te*"
-    - "bar*"
+    - 'te*'
+    - 'bar*'
   settings:
     number_of_shards: 1
   mappings:
-    _source: 
+    _source:
       enabled: false
   properties:
     host_name:
       type: keyword
-    created_at: 
+    created_at:
       type: date
-      format: "EEE MMM dd HH:mm:ss Z yyyy"
+      format: 'EEE MMM dd HH:mm:ss Z yyyy'
