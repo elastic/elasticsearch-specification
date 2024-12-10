@@ -30,8 +30,7 @@ import {
   Indices,
   Routing,
   SearchType,
-  SuggestMode,
-  VersionString
+  SuggestMode
 } from '@_types/common'
 import { KnnSearch } from '@_types/Knn'
 import { RuntimeFields } from '@_types/mapping/RuntimeFields'
@@ -52,7 +51,9 @@ import { SourceConfig, SourceConfigParam } from './_types/SourceFilter'
 import { Suggester } from './_types/suggester'
 
 /**
- * Returns search hits that match the query defined in the request.
+ * Run a search.
+ *
+ * Get search hits that match the query defined in the request.
  * You can provide search queries using the `q` query string parameter or the request body.
  * If both are specified, only the query parameter is used.
  * @rest_spec_name search
@@ -163,11 +164,6 @@ export interface Request extends RequestBase {
      * @server_default 5
      */
     max_concurrent_shard_requests?: long
-    /**
-     * The minimum version of the node that can handle the request
-     * Any handling node with a lower version will fail the request.
-     */
-    min_compatible_shard_node?: VersionString
     /**
      * Nodes and shards used for the search.
      * By default, Elasticsearch selects from eligible nodes and shards using adaptive replica selection, accounting for allocation awareness. Valid values are:
@@ -428,8 +424,8 @@ export interface Request extends RequestBase {
     rescore?: Rescore | Rescore[]
     /**
      * A retriever is a specification to describe top documents returned from a search. A retriever replaces other elements of the search API that also return top documents such as query and knn.
-     * @availability stack since=8.14.0
-     * @availability serverless
+     * @availability stack since=8.14.0 stability=stable
+     * @availability serverless stability=stable
      */
     retriever?: RetrieverContainer
     /**

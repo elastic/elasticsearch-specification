@@ -25,7 +25,9 @@ import {
   ApplicationPrivileges,
   ClusterPrivilege,
   GlobalPrivilege,
-  IndicesPrivileges
+  IndicesPrivileges,
+  RemoteClusterPrivileges,
+  RemoteIndicesPrivileges
 } from './Privileges'
 
 export class RoleDescriptor {
@@ -38,6 +40,16 @@ export class RoleDescriptor {
    * @aliases index
    */
   indices?: IndicesPrivileges[]
+  /**
+   * A list of indices permissions for remote clusters.
+   * @availability stack since=8.14.0
+   */
+  remote_indices?: RemoteIndicesPrivileges[]
+  /**
+   * A list of cluster permissions for remote clusters. Note - this is limited a subset of the cluster permissions.
+   * @availability stack since=8.15.0
+   */
+  remote_cluster?: RemoteClusterPrivileges[]
   /**
    * An object defining global privileges. A global privilege is a form of cluster privilege that is request-aware. Support for global privileges is currently limited to the management of application privileges.
    * @availability stack
@@ -60,6 +72,10 @@ export class RoleDescriptor {
    * Optional description of the role descriptor
    */
   description?: string
+  /**
+   * Restriction for when the role descriptor is allowed to be effective.
+   */
+  restriction?: Restriction
   transient_metadata?: Dictionary<string, UserDefinedValue>
 }
 
@@ -73,6 +89,16 @@ export class RoleDescriptorRead implements OverloadOf<RoleDescriptor> {
    * @aliases index
    */
   indices: IndicesPrivileges[]
+  /**
+   * A list of indices permissions for remote clusters.
+   * @availability stack since=8.14.0
+   */
+  remote_indices?: RemoteIndicesPrivileges[]
+  /**
+   * A list of cluster permissions for remote clusters. Note - this is limited a subset of the cluster permissions.
+   * @availability stack since=8.15.0
+   */
+  remote_cluster?: RemoteClusterPrivileges[]
   /**
    * An object defining global privileges. A global privilege is a form of cluster privilege that is request-aware. Support for global privileges is currently limited to the management of application privileges.
    */
@@ -94,5 +120,18 @@ export class RoleDescriptorRead implements OverloadOf<RoleDescriptor> {
    * Optional description of the role descriptor
    */
   description?: string
+  /**
+   * Restriction for when the role descriptor is allowed to be effective.
+   */
+  restriction?: Restriction
   transient_metadata?: Dictionary<string, UserDefinedValue>
+}
+
+export class Restriction {
+  workflows: RestrictionWorkflow[]
+}
+
+/** @non_exhaustive */
+export enum RestrictionWorkflow {
+  search_application_query
 }

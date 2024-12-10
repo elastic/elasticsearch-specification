@@ -21,11 +21,12 @@ import { RequestBase } from '@_types/Base'
 import { Names } from '@_types/common'
 
 /**
- * The role management APIs are generally the preferred way to manage roles, rather than using file-based role management.
- * The get roles API cannot retrieve roles that are defined in roles files.
+ * Get roles.
+ *
+ * Get roles in the native realm.
  * @rest_spec_name security.get_role
  * @availability stack stability=stable
- * @availability serverless stability=stable visibility=private
+ * @availability serverless stability=stable visibility=public
  * @cluster_privileges manage_security
  */
 export interface Request extends RequestBase {

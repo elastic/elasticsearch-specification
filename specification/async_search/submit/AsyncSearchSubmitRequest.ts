@@ -39,8 +39,7 @@ import {
   Indices,
   Routing,
   SearchType,
-  SuggestMode,
-  VersionString
+  SuggestMode
 } from '@_types/common'
 import { KnnSearch } from '@_types/Knn'
 import { RuntimeFields } from '@_types/mapping/RuntimeFields'
@@ -53,10 +52,13 @@ import { Sort, SortResults } from '@_types/sort'
 import { Duration } from '@_types/Time'
 
 /**
- * Runs a search request asynchronously.
- * When the primary sort of the results is an indexed field, shards get sorted based on minimum and maximum value that they hold for that field, hence partial results become available following the sort criteria that was requested.
- * Warning: Async search does not support scroll nor search requests that only include the suggest section.
- * By default, Elasticsearch doesn’t allow you to store an async search response larger than 10Mb and an attempt to do this results in an error.
+ * Run an async search.
+ *
+ * When the primary sort of the results is an indexed field, shards get sorted based on minimum and maximum value that they hold for that field. Partial results become available following the sort criteria that was requested.
+ *
+ * Warning: Asynchronous search does not support scroll or search requests that include only the suggest section.
+ *
+ * By default, Elasticsearch does not allow you to store an async search response larger than 10Mb and an attempt to do this results in an error.
  * The maximum allowed size for a stored async search response can be set by changing the `search.max_async_search_response_size` cluster level setting.
  * @rest_spec_name async_search.submit
  * @availability stack since=7.7.0 stability=stable
@@ -64,7 +66,9 @@ import { Duration } from '@_types/Time'
  * @doc_id async-search
  * @doc_tag search
  */
-// NOTE: this is a SearchRequest with 3 added parameters: wait_for_completion_timeout, keep_on_completion and keep_alive
+// NOTE: this is a SearchRequest with:
+//  * 2 added parameters: wait_for_completion_timeout, keep_on_completion
+//  * 2 removed parameters: scroll, pre_filter_shard_size
 export interface Request extends RequestBase {
   path_parts: {
     index?: Indices
@@ -81,12 +85,6 @@ export interface Request extends RequestBase {
      * @server_default false
      */
     keep_on_completion?: boolean
-    /**
-     * Specifies how long the async search needs to be available.
-     * Ongoing async searches and any saved search results are deleted after this period.
-     * @server_default 5d
-     */
-    keep_alive?: Duration
     allow_no_indices?: boolean
     allow_partial_search_results?: boolean
     analyzer?: string
@@ -111,17 +109,10 @@ export interface Request extends RequestBase {
     ignore_unavailable?: boolean
     lenient?: boolean
     max_concurrent_shard_requests?: long
-    min_compatible_shard_node?: VersionString
     preference?: string
-    /**
-     * The default value cannot be changed, which enforces the execution of a pre-filter roundtrip to retrieve statistics from each shard so that the ones that surely don’t hold any document matching the query get skipped.
-     * @server_default 1
-     */
-    pre_filter_shard_size?: long
     /** @server_default true */
     request_cache?: boolean
     routing?: Routing
-    scroll?: Duration
     search_type?: SearchType
     stats?: string[]
     stored_fields?: Fields

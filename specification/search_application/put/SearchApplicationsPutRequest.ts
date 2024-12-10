@@ -18,7 +18,7 @@
  */
 import { RequestBase } from '@_types/Base'
 import { Name } from '@_types/common'
-import { SearchApplication } from '../_types/SearchApplication'
+import { SearchApplicationParameters } from '../_types/SearchApplicationParameters'
 
 /**
  * Create or update a search application.
@@ -44,5 +44,5 @@ export interface Request extends RequestBase {
    * Contains parameters for a search application.
    */
   /** @codegen_name search_application */
-  body: SearchApplication
+  body: SearchApplicationParameters
 }

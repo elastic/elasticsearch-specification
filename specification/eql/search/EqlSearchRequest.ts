@@ -20,15 +20,19 @@
 import { RequestBase } from '@_types/Base'
 import { ExpandWildcards, Field, Indices } from '@_types/common'
 import { RuntimeFields } from '@_types/mapping/RuntimeFields'
-import { uint } from '@_types/Numeric'
+import { integer, uint } from '@_types/Numeric'
 import { FieldAndFormat, QueryContainer } from '@_types/query_dsl/abstractions'
 import { Duration } from '@_types/Time'
 import { ResultPosition } from './types'
 
 /**
+ * Get EQL search results.
+ * Returns search results for an Event Query Language (EQL) query.
+ * EQL assumes each document in a data stream or index corresponds to an event.
  * @rest_spec_name eql.search
  * @availability stack since=7.9.0 stability=stable
  * @availability serverless stability=stable visibility=public
+ * @ext_doc_id eql
  */
 export interface Request extends RequestBase {
   path_parts: {
@@ -114,5 +118,12 @@ export interface Request extends RequestBase {
      * @availability serverless
      */
     runtime_mappings?: RuntimeFields
+    /**
+     * By default, the response of a sample query contains up to `10` samples, with one sample per unique set of join keys. Use the `size`
+     * parameter to get a smaller or larger set of samples. To retrieve more than one sample per set of join keys, use the
+     * `max_samples_per_key` parameter. Pipes are not supported for sample queries.
+     * @server_default 1
+     */
+    max_samples_per_key?: integer
   }
 }

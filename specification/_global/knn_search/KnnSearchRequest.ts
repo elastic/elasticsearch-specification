@@ -24,9 +24,22 @@ import { FieldAndFormat, QueryContainer } from '@_types/query_dsl/abstractions'
 import { Query } from './_types/Knn'
 
 /**
+ * Run a knn search.
+ *
+ * NOTE: The kNN search API has been replaced by the `knn` option in the search API.
+ *
+ * Perform a k-nearest neighbor (kNN) search on a dense_vector field and return the matching documents.
+ * Given a query vector, the API finds the k closest vectors and returns those documents as search hits.
+ *
+ * Elasticsearch uses the HNSW algorithm to support efficient kNN search.
+ * Like most kNN algorithms, HNSW is an approximate method that sacrifices result accuracy for improved search speed.
+ * This means the results returned are not always the true k closest neighbors.
+ *
+ * The kNN search API supports restricting the search using a filter.
+ * The search will return the top k documents that also match the filter query.
  * @rest_spec_name knn_search
  * @availability stack since=8.0.0 stability=experimental
- * @deprecated 8.4.0
+ * @deprecated 8.4.0 The kNN search API has been replaced by the `knn` option in the search API.
  * @doc_tag search
  */
 export interface Request extends RequestBase {
@@ -74,7 +87,10 @@ export interface Request extends RequestBase {
      * @availability serverless
      */
     filter?: QueryContainer | QueryContainer[]
-    /** kNN query to execute */
+    /**
+     * kNN query to execute
+     * @ext_doc_id query-dsl-knn-query
+     */
     knn: Query
   }
 }

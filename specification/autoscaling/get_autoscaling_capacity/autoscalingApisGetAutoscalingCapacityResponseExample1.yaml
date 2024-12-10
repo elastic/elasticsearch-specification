@@ -1,0 +1,5 @@
+summary: 'A successful response for retrieving the current autoscaling capacity.'
+description: 'This may be a response to `GET /_autoscaling/capacity`.'
+# type: "response"
+# response_code: 200
+value: "{\n  policies: {}\n}"

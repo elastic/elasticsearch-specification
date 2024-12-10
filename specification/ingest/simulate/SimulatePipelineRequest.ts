@@ -23,7 +23,9 @@ import { Id } from '@_types/common'
 import { Document } from './types'
 
 /**
- * Executes an ingest pipeline against a set of provided documents.
+ * Simulate a pipeline.
+ * Run an ingest pipeline against a set of provided documents.
+ * You can either specify an existing pipeline to use with the provided documents or supply a pipeline definition in the body of the request.
  * @rest_spec_name ingest.simulate
  * @availability stack since=5.0.0 stability=stable
  * @availability serverless stability=stable visibility=public

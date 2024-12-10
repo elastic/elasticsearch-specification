@@ -21,9 +21,12 @@ import { RequestBase } from '@_types/Base'
 import { Name, Refresh } from '@_types/common'
 
 /**
+ * Delete roles.
+ *
+ * Delete roles in the native realm.
  * @rest_spec_name security.delete_role
  * @availability stack stability=stable
- * @availability serverless stability=stable visibility=private
+ * @availability serverless stability=stable visibility=public
  */
 export interface Request extends RequestBase {
   path_parts: {

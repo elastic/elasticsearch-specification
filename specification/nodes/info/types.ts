@@ -159,7 +159,7 @@ export class NodeInfoPath {
   logs?: string
   home?: string
   repo?: string[]
-  data?: string[]
+  data?: string | string[]
 }
 
 export class NodeInfoRepositories {
@@ -221,7 +221,7 @@ export class NodeInfoSettingsTransportFeatures {
 }
 
 export class NodeInfoSettingsNetwork {
-  host?: Host
+  host?: Host | Host[]
 }
 
 export class NodeInfoIngest {
@@ -240,13 +240,18 @@ export class NodeInfoXpack {
   license?: NodeInfoXpackLicense
   security: NodeInfoXpackSecurity
   notification?: Dictionary<string, UserDefinedValue>
+  ml?: NodeInfoXpackMl
 }
 
 export class NodeInfoXpackSecurity {
-  http: NodeInfoXpackSecuritySsl
+  http?: NodeInfoXpackSecuritySsl
   enabled: string
   transport?: NodeInfoXpackSecuritySsl
   authc?: NodeInfoXpackSecurityAuthc
+}
+
+export class NodeInfoXpackMl {
+  use_auto_machine_memory_percent?: boolean
 }
 
 export class NodeInfoXpackSecuritySsl {
@@ -254,8 +259,8 @@ export class NodeInfoXpackSecuritySsl {
 }
 
 export class NodeInfoXpackSecurityAuthc {
-  realms: NodeInfoXpackSecurityAuthcRealms
-  token: NodeInfoXpackSecurityAuthcToken
+  realms?: NodeInfoXpackSecurityAuthcRealms
+  token?: NodeInfoXpackSecurityAuthcToken
 }
 
 export class NodeInfoXpackSecurityAuthcRealms {

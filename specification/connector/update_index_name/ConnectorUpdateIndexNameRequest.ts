@@ -21,7 +21,9 @@ import { RequestBase } from '@_types/Base'
 import { Id, IndexName } from '@_types/common'
 
 /**
- * Updates the index_name in the connector document
+ * Update the connector index name.
+ *
+ * Update the `index_name` field of a connector, specifying the index where the data ingested by the connector is stored.
  * @rest_spec_name connector.update_index_name
  * @availability stack since=8.12.0 stability=beta
  * @availability serverless stability=beta visibility=public
