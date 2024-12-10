@@ -1258,6 +1258,41 @@ actions:
               examples:
                 indicesExplainDataLifecycleResponseExample:
                   $ref: "../../specification/indices/explain_data_lifecycle/IndicesExplainDataLifecycleResponseExample1.yaml"
+  - target: "$.components['responses']['ingest.get_pipeline#200']"
+    description: "Add example for get pipeline response"
+    update: 
+      content:
+        application/json:
+          examples:
+            indicesGetDataStreamResponseExample:
+              $ref: "../../specification/ingest/get_pipeline/GetPipelineResponseExample1.yaml"
+  - target: "$.paths['/_ingest/pipeline/{id}']['put']"
+    description: "Add examples for create pipeline"
+    update: 
+      requestBody: 
+        content: 
+          application/json: 
+            examples: 
+              putPipelineRequestExample1: 
+                $ref: "../../specification/ingest/put_pipeline/PutPipelineRequestExample1.yaml"
+              putPipelineRequestExample2: 
+                $ref: "../../specification/ingest/put_pipeline/PutPipelineRequestExample2.yaml"
+  - target: "$.components['requestBodies']['ingest.simulate']"
+    description: "Add example for simulate pipeline request"
+    update: 
+      content:
+        application/json:
+          examples:
+            simulatePipelineRequestExample1:
+              $ref: "../../specification/ingest/simulate/SimulatePipelineRequestExample1.yaml"
+  - target: "$.components['responses']['ingest.simulate#200']"
+    description: "Add example for simulate pipeline response"
+    update: 
+      content:
+        application/json:
+          examples:
+            simulatePipelineResponseExample1:
+              $ref: "../../specification/ingest/simulate/SimulatePipelineResponseExample1.yaml"
   - target: "$.components['requestBodies']['indices.put_index_template']"
     description: "Add example for create index template request"
     update: 
@@ -1308,4 +1343,3 @@ actions:
           examples:
             indicesRolloverResponseExample1:
               $ref: "../../specification/indices/rollover/indicesRolloverResponseExample1.yaml"
-
