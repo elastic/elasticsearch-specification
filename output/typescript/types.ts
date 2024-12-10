@@ -12876,6 +12876,9 @@ export interface IngestDatabaseConfiguration {
   name: Name
   maxmind?: IngestMaxmind
   ipinfo?: IngestIpinfo
+}
+
+export interface IngestDatabaseConfigurationFull extends IngestDatabaseConfiguration {
   web?: IngestWeb
   local?: IngestLocal
 }
@@ -13348,7 +13351,7 @@ export interface IngestGetIpLocationDatabaseDatabaseConfigurationMetadata {
   id: Id
   version: long
   modified_date_millis: EpochTime<UnitMillis>
-  database: IngestDatabaseConfiguration
+  database: IngestDatabaseConfigurationFull
 }
 
 export interface IngestGetIpLocationDatabaseRequest extends RequestBase {
@@ -13391,10 +13394,7 @@ export interface IngestPutIpLocationDatabaseRequest extends RequestBase {
   id: Id
   master_timeout?: Duration
   timeout?: Duration
-  body?: {
-    name: Name
-    maxmind: IngestMaxmind
-  }
+  body?: IngestDatabaseConfiguration
 }
 
 export type IngestPutIpLocationDatabaseResponse = AcknowledgedResponseBase

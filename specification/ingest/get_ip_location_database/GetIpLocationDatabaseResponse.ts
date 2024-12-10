@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { DatabaseConfiguration } from '@ingest/_types/Database'
+import { DatabaseConfigurationFull } from '@ingest/_types/Database'
 import { Id } from '@_types/common'
 import { long } from '@_types/Numeric'
 import { EpochTime, UnitMillis } from '@_types/Time'
@@ -30,5 +30,5 @@ class DatabaseConfigurationMetadata {
   id: Id
   version: long
   modified_date_millis: EpochTime<UnitMillis>
-  database: DatabaseConfiguration
+  database: DatabaseConfigurationFull
 }

@@ -15320,19 +15320,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "type": "object",
-                "properties": {
-                  "name": {
-                    "$ref": "#/components/schemas/_types:Name"
-                  },
-                  "maxmind": {
-                    "$ref": "#/components/schemas/ingest._types:Maxmind"
-                  }
-                },
-                "required": [
-                  "name",
-                  "maxmind"
-                ]
+                "$ref": "#/components/schemas/ingest._types:DatabaseConfiguration"
               }
             }
           },
@@ -70127,12 +70115,6 @@
               },
               "ipinfo": {
                 "$ref": "#/components/schemas/ingest._types:Ipinfo"
-              },
-              "web": {
-                "$ref": "#/components/schemas/ingest._types:Web"
-              },
-              "local": {
-                "$ref": "#/components/schemas/ingest._types:Local"
               }
             },
             "minProperties": 1,
@@ -70154,20 +70136,6 @@
       "ingest._types:Ipinfo": {
         "type": "object"
       },
-      "ingest._types:Web": {
-        "type": "object"
-      },
-      "ingest._types:Local": {
-        "type": "object",
-        "properties": {
-          "type": {
-            "type": "string"
-          }
-        },
-        "required": [
-          "type"
-        ]
-      },
       "ingest.get_ip_location_database:DatabaseConfigurationMetadata": {
         "type": "object",
         "properties": {
@@ -70181,7 +70149,7 @@
             "$ref": "#/components/schemas/_types:EpochTimeUnitMillis"
           },
           "database": {
-            "$ref": "#/components/schemas/ingest._types:DatabaseConfiguration"
+            "$ref": "#/components/schemas/ingest._types:DatabaseConfigurationFull"
           }
         },
         "required": [
@@ -70189,6 +70157,38 @@
           "version",
           "modified_date_millis",
           "database"
+        ]
+      },
+      "ingest._types:DatabaseConfigurationFull": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/ingest._types:DatabaseConfiguration"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "web": {
+                "$ref": "#/components/schemas/ingest._types:Web"
+              },
+              "local": {
+                "$ref": "#/components/schemas/ingest._types:Local"
+              }
+            }
+          }
+        ]
+      },
+      "ingest._types:Web": {
+        "type": "object"
+      },
+      "ingest._types:Local": {
+        "type": "object",
+        "properties": {
+          "type": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "type"
         ]
       },
       "ingest._types:Pipeline": {

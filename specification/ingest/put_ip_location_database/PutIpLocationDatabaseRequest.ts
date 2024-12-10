@@ -17,9 +17,9 @@
  * under the License.
  */
 
-import { Maxmind } from '@ingest/_types/Database'
+import { DatabaseConfiguration } from '@ingest/_types/Database'
 import { RequestBase } from '@_types/Base'
-import { Id, Name } from '@_types/common'
+import { Id } from '@_types/common'
 import { Duration } from '@_types/Time'
 
 /**
@@ -46,12 +46,6 @@ export interface Request extends RequestBase {
      * @server_default 30s */
     timeout?: Duration
   }
-  body: {
-    /** The provider-assigned name of the IP geolocation database to download. */
-    name: Name
-    /** The configuration necessary to identify which IP geolocation provider to use to download the database, as well as any provider-specific configuration necessary for such downloading.
-     * At present, the only supported provider is maxmind, and the maxmind provider requires that an account_id (string) is configured.
-     */
-    maxmind: Maxmind
-  }
+  /** @codegen_name configuration */
+  body: DatabaseConfiguration
 }

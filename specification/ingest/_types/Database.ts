@@ -34,8 +34,11 @@ export class DatabaseConfiguration {
 
   maxmind?: Maxmind
   ipinfo?: Ipinfo
-  readonly web?: Web
-  readonly local?: Local
+}
+
+export class DatabaseConfigurationFull extends DatabaseConfiguration {
+  web?: Web
+  local?: Local
 }
 
 export class Maxmind {
@@ -47,5 +50,5 @@ export class Ipinfo {}
 export class Web {}
 
 export class Local {
-  readonly type: string
+  type: string
 }
