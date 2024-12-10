@@ -384,11 +384,11 @@ actions:
           examples:
             indicesSplitRequestExample1:
               $ref: "../../specification/indices/split/indicesSplitRequestExample1.yaml"
-  # - target: "$.components['requestBodies']['indices.put_template']"
-  #   description: "Add example for legacy create template request"
-  #   update: 
-  #     content:
-  #       application/json:
-  #         examples:
-  #           indicesLegacyPutTemplateRequestExample1:
-  #             $ref: "../../specification/indices/put_template/indicesPutIndexTemplateRequestExample1.yaml"
+  - target: "$.components['requestBodies']['indices.put_template']"
+    description: "Add example for legacy create template request"
+    update: 
+      content:
+        application/json:
+          examples:
+            indicesLegacyPutTemplateRequestExample1:
+              $ref: "../../specification/indices/put_template/indicesPutTemplateRequestExample1.yaml"
