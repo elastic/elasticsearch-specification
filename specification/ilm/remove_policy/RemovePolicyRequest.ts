@@ -21,8 +21,12 @@ import { RequestBase } from '@_types/Base'
 import { IndexName } from '@_types/common'
 
 /**
+ * Remove policies from an index.
+ * Remove the assigned lifecycle policies from an index or a data stream's backing indices.
+ * It also stops managing the indices.
  * @rest_spec_name ilm.remove_policy
  * @availability stack since=6.6.0 stability=stable
+ * @index_privileges manage_ilm
  */
 export interface Request extends RequestBase {
   path_parts: {
