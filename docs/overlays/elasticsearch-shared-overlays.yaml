@@ -1284,7 +1284,7 @@ actions:
         application/json:
           examples:
             simulatePipelineRequestExample1:
-              $ref: "../../specification/ingest/simulate/SimulatePipelineRequestExample1.json"
+              $ref: "../../specification/ingest/simulate/SimulatePipelineRequestExample1.yaml"
   - target: "$.components['responses']['ingest.simulate#200']"
     description: "Add example for simulate pipeline response"
     update: 
@@ -1292,5 +1292,5 @@ actions:
         application/json:
           examples:
             simulatePipelineResponseExample1:
-              $ref: "../../specification/ingest/simulate/SimulatePipelineResponseExample1.json"
+              $ref: "../../specification/ingest/simulate/SimulatePipelineResponseExample1.yaml"
   
