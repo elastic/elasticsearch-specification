@@ -212,6 +212,7 @@ index-modules,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/i
 index,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/index.html
 indexing-buffer,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/indexing-buffer.html
 index-modules-merge,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/index-modules-merge.html
+index-templates,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/index-templates.html
 indices-aliases,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/indices-aliases.html
 indices-analyze,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/indices-analyze.html
 indices-clearcache,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/indices-clearcache.html
