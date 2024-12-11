@@ -598,6 +598,7 @@ slm-api-get-status,https://www.elastic.co/guide/en/elasticsearch/reference/{bran
 slm-api-put-policy,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/slm-api-put-policy.html
 slm-api-start,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/slm-api-start.html
 slm-api-stop,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/slm-api-stop.html
+snapshot-create,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/snapshots-take-snapshot.html
 sort-processor,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/sort-processor.html
 sort-search-results,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/sort-search-results.html
 sort-tiebreaker,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/eql.html#eql-search-specify-a-sort-tiebreaker
