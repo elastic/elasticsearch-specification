@@ -21,6 +21,11 @@ import { RequestBase } from '@_types/Base'
 import { IndexName } from '@_types/common'
 
 /**
+ * Pause a follower.
+ * Pause a cross-cluster replication follower index.
+ * The follower index will not fetch any additional operations from the leader index.
+ * You can resume following with the resume follower API.
+ * You can pause and resume a follower index to change the configuration of the following task.
  * @rest_spec_name ccr.pause_follow
  * @availability stack since=6.5.0 stability=stable
  * @doc_id ccr-post-pause-follow
