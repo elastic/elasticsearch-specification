@@ -196,6 +196,7 @@ ilm-delete-lifecycle,https://www.elastic.co/guide/en/elasticsearch/reference/{br
 ilm-explain-lifecycle,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/ilm-explain-lifecycle.html
 ilm-get-lifecycle,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/ilm-get-lifecycle.html
 ilm-get-status,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/ilm-get-status.html
+ilm-index-lifecycle,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/ilm-index-lifecycle.html
 ilm-migrate-to-data-tiers,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/ilm-migrate-to-data-tiers.html
 ilm-move-to-step,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/ilm-move-to-step.html
 ilm-put-lifecycle,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/ilm-put-lifecycle.html
@@ -270,6 +271,7 @@ mapping-source-field,https://www.elastic.co/guide/en/elasticsearch/reference/{br
 mapping,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/mapping.html
 mapping,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/mapping.html
 mean-reciprocal,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/search-rank-eval.html#_mean_reciprocal_rank
+migrate-index-allocation-filters,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/migrate-index-allocation-filters.html
 migration-api-deprecation,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/migration-api-deprecation.html
 migration-api-feature-upgrade,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/migration-api-feature-upgrade.html
 ml-apis,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/ml-apis.html

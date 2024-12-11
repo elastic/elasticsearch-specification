@@ -21,8 +21,15 @@ import { RequestBase } from '@_types/Base'
 import { Duration } from '@_types/Time'
 
 /**
+ * Stop the ILM plugin.
+ * Halt all lifecycle management operations and stop the index lifecycle management plugin.
+ * This is useful when you are performing maintenance on the cluster and need to prevent ILM from performing any actions on your indices.
+ *
+ * The API returns as soon as the stop request has been acknowledged, but the plugin might continue to run until in-progress operations complete and the plugin can be safely stopped.
+ * Use the get ILM status API to check whether ILM is running.
  * @rest_spec_name ilm.stop
  * @availability stack since=6.6.0 stability=stable
+ * @cluster_privileges manage_ilm
  */
 export interface Request extends RequestBase {
   query_parameters: {
