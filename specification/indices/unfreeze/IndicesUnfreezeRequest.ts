@@ -22,9 +22,11 @@ import { ExpandWildcards, IndexName } from '@_types/common'
 import { Duration } from '@_types/Time'
 
 /**
- * Unfreezes an index.
+ * Unfreeze an index.
+ * When a frozen index is unfrozen, the index goes through the normal recovery process and becomes writeable again.
  * @rest_spec_name indices.unfreeze
  * @availability stack since=6.6.0 stability=stable
+ * @index_privileges manage
  */
 export interface Request extends RequestBase {
   path_parts: {
