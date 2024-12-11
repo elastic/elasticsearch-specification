@@ -2108,8 +2108,11 @@
         "tags": [
           "ccr"
         ],
-        "summary": "Gets configured auto-follow patterns",
-        "description": "Returns the specified auto-follow pattern collection.",
+        "summary": "Get auto-follow patterns",
+        "description": "Get cross-cluster replication auto-follow patterns.",
+        "externalDocs": {
+          "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/ccr-auto-follow.html"
+        },
         "operationId": "ccr-get-auto-follow-pattern-1",
         "parameters": [
           {
@@ -2127,8 +2130,11 @@
         "tags": [
           "ccr"
         ],
-        "summary": "Creates a new named collection of auto-follow patterns against a specified remote cluster",
-        "description": "Newly created indices on the remote cluster matching any of the specified patterns will be automatically configured as follower indices.",
+        "summary": "Create or update auto-follow patterns",
+        "description": "Create a collection of cross-cluster replication auto-follow patterns for a remote cluster.\nNewly created indices on the remote cluster that match any of the patterns are automatically configured as follower indices.\nIndices on the remote cluster that were created before the auto-follow pattern was created will not be auto-followed even if they match the pattern.\n\nThis API can also be used to update auto-follow patterns.\nNOTE: Follower indices that were configured automatically before updating an auto-follow pattern will remain unchanged even if they do not match against the new patterns.",
+        "externalDocs": {
+          "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/ccr-auto-follow.html"
+        },
         "operationId": "ccr-put-auto-follow-pattern",
         "parameters": [
           {
@@ -2231,7 +2237,11 @@
         "tags": [
           "ccr"
         ],
-        "summary": "Deletes auto-follow patterns",
+        "summary": "Delete auto-follow patterns",
+        "description": "Delete a collection of cross-cluster replication auto-follow patterns.",
+        "externalDocs": {
+          "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/ccr-auto-follow.html"
+        },
         "operationId": "ccr-delete-auto-follow-pattern",
         "parameters": [
           {
@@ -2266,7 +2276,8 @@
         "tags": [
           "ccr"
         ],
-        "summary": "Creates a new follower index configured to follow the referenced leader index",
+        "summary": "Create a follower",
+        "description": "Create a cross-cluster replication follower index that follows a specific leader index.\nWhen the API returns, the follower index exists and cross-cluster replication starts replicating operations from the leader index to the follower index.",
         "operationId": "ccr-follow",
         "parameters": [
           {
@@ -2375,7 +2386,11 @@
         "tags": [
           "ccr"
         ],
-        "summary": "Retrieves information about all follower indices, including parameters and status for each follower index",
+        "summary": "Get follower information",
+        "description": "Get information about all cross-cluster replication follower indices.\nFor example, the results include follower index names, leader index names, replication options, and whether the follower indices are active or paused.",
+        "externalDocs": {
+          "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/xpack-ccr.html"
+        },
         "operationId": "ccr-follow-info",
         "parameters": [
           {
@@ -2421,7 +2436,11 @@
         "tags": [
           "ccr"
         ],
-        "summary": "Retrieves follower stats. return shard-level stats about the following tasks associated with each shard for the specified indices",
+        "summary": "Get follower stats",
+        "description": "Get cross-cluster replication follower stats.\nThe API returns shard-level stats about the \"following tasks\" associated with each shard for the specified indices.",
+        "externalDocs": {
+          "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/xpack-ccr.html"
+        },
         "operationId": "ccr-follow-stats",
         "parameters": [
           {
@@ -2467,7 +2486,11 @@
         "tags": [
           "ccr"
         ],
-        "summary": "Removes the follower retention leases from the leader",
+        "summary": "Forget a follower",
+        "description": "Remove the cross-cluster replication follower retention leases from the leader.\n\nA following index takes out retention leases on its leader index.\nThese leases are used to increase the likelihood that the shards of the leader index retain the history of operations that the shards of the following index need to run replication.\nWhen a follower index is converted to a regular index by the unfollow API (either by directly calling the API or by index lifecycle management tasks), these leases are removed.\nHowever, removal of the leases can fail, for example when the remote cluster containing the leader index is unavailable.\nWhile the leases will eventually expire on their own, their extended existence can cause the leader index to hold more history than necessary and prevent index lifecycle management from performing some operations on the leader index.\nThis API exists to enable manually removing the leases when the unfollow API is unable to do so.\n\nNOTE: This API does not stop replication by a following index. If you use this API with a follower index that is still actively following, the following index will add back retention leases on the leader.\nThe only purpose of this API is to handle the case of failure to remove the following retention leases after the unfollow API is invoked.",
+        "externalDocs": {
+          "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/xpack-ccr.html"
+        },
         "operationId": "ccr-forget-follower",
         "parameters": [
           {
@@ -2534,8 +2557,11 @@
         "tags": [
           "ccr"
         ],
-        "summary": "Gets configured auto-follow patterns",
-        "description": "Returns the specified auto-follow pattern collection.",
+        "summary": "Get auto-follow patterns",
+        "description": "Get cross-cluster replication auto-follow patterns.",
+        "externalDocs": {
+          "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/ccr-auto-follow.html"
+        },
         "operationId": "ccr-get-auto-follow-pattern",
         "responses": {
           "200": {
@@ -2550,7 +2576,11 @@
         "tags": [
           "ccr"
         ],
-        "summary": "Pauses an auto-follow pattern",
+        "summary": "Pause an auto-follow pattern",
+        "description": "Pause a cross-cluster replication auto-follow pattern.\nWhen the API returns, the auto-follow pattern is inactive.\nNew indices that are created on the remote cluster and match the auto-follow patterns are ignored.\n\nYou can resume auto-following with the resume auto-follow pattern API.\nWhen it resumes, the auto-follow pattern is active again and automatically configures follower indices for newly created indices on the remote cluster that match its patterns.\nRemote indices that were created while the pattern was paused will also be followed, unless they have been deleted or closed in the interim.",
+        "externalDocs": {
+          "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/ccr-auto-follow.html"
+        },
         "operationId": "ccr-pause-auto-follow-pattern",
         "parameters": [
           {
@@ -2585,8 +2615,8 @@
         "tags": [
           "ccr"
         ],
-        "summary": "Pauses a follower index",
-        "description": "The follower index will not fetch any additional operations from the leader index.",
+        "summary": "Pause a follower",
+        "description": "Pause a cross-cluster replication follower index.\nThe follower index will not fetch any additional operations from the leader index.\nYou can resume following with the resume follower API.\nYou can pause and resume a follower index to change the configuration of the following task.",
         "operationId": "ccr-pause-follow",
         "parameters": [
           {
@@ -2621,7 +2651,11 @@
         "tags": [
           "ccr"
         ],
-        "summary": "Resumes an auto-follow pattern that has been paused",
+        "summary": "Resume an auto-follow pattern",
+        "description": "Resume a cross-cluster replication auto-follow pattern that was paused.\nThe auto-follow pattern will resume configuring following indices for newly created indices that match its patterns on the remote cluster.\nRemote indices created while the pattern was paused will also be followed unless they have been deleted or closed in the interim.",
+        "externalDocs": {
+          "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/ccr-auto-follow.html"
+        },
         "operationId": "ccr-resume-auto-follow-pattern",
         "parameters": [
           {
@@ -2656,7 +2690,11 @@
         "tags": [
           "ccr"
         ],
-        "summary": "Resumes a follower index that has been paused",
+        "summary": "Resume a follower",
+        "description": "Resume a cross-cluster replication follower index that was paused.\nThe follower index could have been paused with the pause follower API.\nAlternatively it could be paused due to replication that cannot be retried due to failures during following tasks.\nWhen this API returns, the follower index will resume fetching operations from the leader index.",
+        "externalDocs": {
+          "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/xpack-ccr.html"
+        },
         "operationId": "ccr-resume-follow",
         "parameters": [
           {
@@ -2732,7 +2770,8 @@
         "tags": [
           "ccr"
         ],
-        "summary": "Gets all stats related to cross-cluster replication",
+        "summary": "Get cross-cluster replication stats",
+        "description": "This API returns stats about auto-following and the same shard-level stats as the get follower stats API.",
         "operationId": "ccr-stats",
         "responses": {
           "200": {
@@ -2766,7 +2805,11 @@
         "tags": [
           "ccr"
         ],
-        "summary": "Stops the following task associated with a follower index and removes index metadata and settings associated with cross-cluster replication",
+        "summary": "Unfollow an index",
+        "description": "Convert a cross-cluster replication follower index to a regular index.\nThe API stops the following task associated with a follower index and removes index metadata and settings associated with cross-cluster replication.\nThe follower index must be paused and closed before you call the unfollow API.\n\nNOTE: Currently cross-cluster replication does not support converting an existing regular index to a follower index. Converting a follower index to a regular index is an irreversible operation.",
+        "externalDocs": {
+          "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/xpack-ccr.html"
+        },
         "operationId": "ccr-unfollow",
         "parameters": [
           {

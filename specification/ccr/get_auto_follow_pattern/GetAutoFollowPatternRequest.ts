@@ -21,9 +21,12 @@ import { RequestBase } from '@_types/Base'
 import { Name } from '@_types/common'
 
 /**
+ * Get auto-follow patterns.
+ * Get cross-cluster replication auto-follow patterns.
  * @rest_spec_name ccr.get_auto_follow_pattern
  * @availability stack since=6.5.0 stability=stable
  * @doc_id ccr-get-auto-follow-pattern
+ * @ext_doc_id ccr-auto-follow
  */
 export interface Request extends RequestBase {
   path_parts: {

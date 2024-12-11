@@ -21,9 +21,13 @@ import { RequestBase } from '@_types/Base'
 import { Indices } from '@_types/common'
 
 /**
+ * Get follower information.
+ * Get information about all cross-cluster replication follower indices.
+ * For example, the results include follower index names, leader index names, replication options, and whether the follower indices are active or paused.
  * @rest_spec_name ccr.follow_info
  * @availability stack since=6.7.0 stability=stable
  * @doc_id ccr-get-follow-info
+ * @ext_doc_id ccr
  */
 export interface Request extends RequestBase {
   path_parts: {

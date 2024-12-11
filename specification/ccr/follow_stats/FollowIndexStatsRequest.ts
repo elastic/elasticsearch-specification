@@ -21,9 +21,13 @@ import { RequestBase } from '@_types/Base'
 import { Indices } from '@_types/common'
 
 /**
+ * Get follower stats.
+ * Get cross-cluster replication follower stats.
+ * The API returns shard-level stats about the "following tasks" associated with each shard for the specified indices.
  * @rest_spec_name ccr.follow_stats
  * @availability stack since=6.5.0 stability=stable
  * @doc_id ccr-get-follow-stats
+ * @ext_doc_id ccr
  */
 export interface Request extends RequestBase {
   path_parts: {
