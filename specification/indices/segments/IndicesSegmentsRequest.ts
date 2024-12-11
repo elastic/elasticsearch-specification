@@ -20,8 +20,10 @@
 import { RequestBase } from '@_types/Base'
 import { ExpandWildcards, Indices } from '@_types/common'
 
-/** Returns low-level information about the Lucene segments in index shards.
- * For data streams, the API returns information about the stream’s backing indices.
+/**
+ * Get index segments.
+ * Get low-level information about the Lucene segments in index shards.
+ * For data streams, the API returns information about the stream's backing indices.
  * @rest_spec_name indices.segments
  * @availability stack stability=stable
  * @availability serverless stability=stable visibility=private
