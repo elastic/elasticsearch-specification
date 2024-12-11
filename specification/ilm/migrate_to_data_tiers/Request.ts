@@ -20,12 +20,23 @@
 import { RequestBase } from '@_types/Base'
 
 /**
- * Switches the indices, ILM policies, and legacy, composable and component templates from using custom node attributes and
- * attribute-based allocation filters to using data tiers, and optionally deletes one legacy index template.+
+ * Migrate to data tiers routing.
+ * Switch the indices, ILM policies, and legacy, composable, and component templates from using custom node attributes and attribute-based allocation filters to using data tiers.
+ * Optionally, delete one legacy index template.
  * Using node roles enables ILM to automatically move the indices between data tiers.
  *
+ * Migrating away from custom node attributes routing can be manually performed.
+ * This API provides an automated way of performing three out of the four manual steps listed in the migration guide:
+ *
+ * 1. Stop setting the custom hot attribute on new indices.
+ * 1. Remove custom allocation settings from existing ILM policies.
+ * 1. Replace custom allocation settings from existing indices with the corresponding tier preference.
+ *
+ * ILM must be stopped before performing the migration.
+ * Use the stop ILM and get ILM status APIs to wait until the reported operation mode is `STOPPED`.
  * @rest_spec_name ilm.migrate_to_data_tiers
  * @availability stack since=7.14.0 stability=stable
+ * @ext_doc_id migrate-index-allocation-filters
  */
 export interface Request extends RequestBase {
   query_parameters: {
