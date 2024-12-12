@@ -8317,7 +8317,11 @@
         "tags": [
           "features"
         ],
-        "summary": "Gets a list of features which can be included in snapshots using the feature_states field when creating a snapshot",
+        "summary": "Get the features",
+        "description": "Get a list of features that can be included in snapshots using the `feature_states` field when creating a snapshot.\nYou can use this API to determine which feature states to include when taking a snapshot.\nBy default, all feature states are included in a snapshot if that snapshot includes the global state, or none if it does not.\n\nA feature state includes one or more system indices necessary for a given feature to function.\nIn order to ensure data integrity, all system indices that comprise a feature state are snapshotted and restored together.\n\nThe features listed by this API are a combination of built-in features and features defined by plugins.\nIn order for a feature state to be listed in this API and recognized as a valid feature state by the create snapshot API, the plugin that defines that feature must be installed on the master node.",
+        "externalDocs": {
+          "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/snapshots-take-snapshot.html"
+        },
         "operationId": "features-get-features",
         "responses": {
           "200": {
@@ -8350,7 +8354,8 @@
         "tags": [
           "features"
         ],
-        "summary": "Resets the internal state of features, usually by deleting system indices",
+        "summary": "Reset the features",
+        "description": "Clear all of the state information stored in system indices by Elasticsearch features, including the security and machine learning indices.\n\nWARNING: Intended for development and testing use only. Do not reset features on a production cluster.\n\nReturn a cluster to the same state as a new installation by resetting the feature state for all Elasticsearch features.\nThis deletes all state information stored in system indices.\n\nThe response code is HTTP 200 if the state is successfully reset for all features.\nIt is HTTP 500 if the reset operation failed for any feature.\n\nNote that select features might provide a way to reset particular system indices.\nUsing this API resets all features, both those that are built-in and implemented as plugins.\n\nTo list the features that will be affected, use the get features API.\n\nIMPORTANT: The features installed on the node you submit this request to are the features that will be reset. Run on the master node if you have any doubts about which plugins are installed on individual nodes.",
         "operationId": "features-reset-features",
         "responses": {
           "200": {
