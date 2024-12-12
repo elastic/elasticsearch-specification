@@ -19,6 +19,7 @@
 
 import { License } from '@license/_types/License'
 import { RequestBase } from '@_types/Base'
+import { Duration } from '@_types/Time'
 
 /**
  * Update the license.
@@ -40,6 +41,11 @@ export interface Request extends RequestBase {
      * @server_default false
      */
     acknowledge?: boolean
+    /**
+     * Period to wait for a connection to the master node.
+     * @server_default 30s
+     */
+    master_timeout?: Duration
   }
   body: {
     license?: License

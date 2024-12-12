@@ -18,10 +18,19 @@
  */
 
 import { RequestBase } from '@_types/Base'
+import { Duration } from '@_types/Time'
 
 /**
  * @rest_spec_name slm.start
  * @availability stack since=7.6.0 stability=stable
  * @availability serverless stability=stable visibility=private
  */
-export interface Request extends RequestBase {}
+export interface Request extends RequestBase {
+  query_parameters: {
+    /**
+     * Period to wait for a connection to the master node.
+     * @server_default 30s
+     */
+    master_timeout?: Duration
+  }
+}

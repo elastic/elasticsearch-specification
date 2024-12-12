@@ -40,6 +40,11 @@ export interface Request extends RequestBase {
   }
   query_parameters: {
     /**
+     * Period to wait for a connection to the master node.
+     * @server_default 30s
+     */
+    master_timeout?: Duration
+    /**
      * Specifies the number of shards to wait on being active before responding. This defaults to waiting on none of the shards to be
      * active.
      * A shard must be restored from the leader index before being active. Restoring a follower shard requires transferring all the

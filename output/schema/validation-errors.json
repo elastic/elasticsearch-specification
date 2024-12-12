@@ -116,24 +116,6 @@
       ],
       "response": []
     },
-    "ccr.delete_auto_follow_pattern": {
-      "request": [
-        "Request: missing json spec query parameter 'master_timeout'"
-      ],
-      "response": []
-    },
-    "ccr.follow": {
-      "request": [
-        "Request: missing json spec query parameter 'master_timeout'"
-      ],
-      "response": []
-    },
-    "ccr.follow_info": {
-      "request": [
-        "Request: missing json spec query parameter 'master_timeout'"
-      ],
-      "response": []
-    },
     "ccr.follow_stats": {
       "request": [
         "Request: missing json spec query parameter 'timeout'"
@@ -146,76 +128,15 @@
       ],
       "response": []
     },
-    "ccr.get_auto_follow_pattern": {
-      "request": [
-        "Request: missing json spec query parameter 'master_timeout'"
-      ],
-      "response": []
-    },
-    "ccr.pause_auto_follow_pattern": {
-      "request": [
-        "Request: missing json spec query parameter 'master_timeout'"
-      ],
-      "response": []
-    },
-    "ccr.pause_follow": {
-      "request": [
-        "Request: missing json spec query parameter 'master_timeout'"
-      ],
-      "response": []
-    },
-    "ccr.put_auto_follow_pattern": {
-      "request": [
-        "Request: missing json spec query parameter 'master_timeout'"
-      ],
-      "response": []
-    },
-    "ccr.resume_auto_follow_pattern": {
-      "request": [
-        "Request: missing json spec query parameter 'master_timeout'"
-      ],
-      "response": []
-    },
-    "ccr.resume_follow": {
-      "request": [
-        "Request: missing json spec query parameter 'master_timeout'"
-      ],
-      "response": []
-    },
     "ccr.stats": {
       "request": [
-        "Request: missing json spec query parameter 'timeout'",
-        "Request: missing json spec query parameter 'master_timeout'"
-      ],
-      "response": []
-    },
-    "ccr.unfollow": {
-      "request": [
-        "Request: missing json spec query parameter 'master_timeout'"
-      ],
-      "response": []
-    },
-    "cluster.allocation_explain": {
-      "request": [
-        "Request: missing json spec query parameter 'master_timeout'"
-      ],
-      "response": []
-    },
-    "cluster.delete_voting_config_exclusions": {
-      "request": [
-        "Request: missing json spec query parameter 'master_timeout'"
+        "Request: missing json spec query parameter 'timeout'"
       ],
       "response": []
     },
     "cluster.get_component_template": {
       "request": [
         "Request: query parameter 'flat_settings' does not exist in the json spec"
-      ],
-      "response": []
-    },
-    "cluster.post_voting_config_exclusions": {
-      "request": [
-        "Request: missing json spec query parameter 'master_timeout'"
       ],
       "response": []
     },
@@ -285,36 +206,6 @@
       ],
       "response": []
     },
-    "enrich.delete_policy": {
-      "request": [
-        "Request: missing json spec query parameter 'master_timeout'"
-      ],
-      "response": []
-    },
-    "enrich.execute_policy": {
-      "request": [
-        "Request: missing json spec query parameter 'master_timeout'"
-      ],
-      "response": []
-    },
-    "enrich.get_policy": {
-      "request": [
-        "Request: missing json spec query parameter 'master_timeout'"
-      ],
-      "response": []
-    },
-    "enrich.put_policy": {
-      "request": [
-        "Request: missing json spec query parameter 'master_timeout'"
-      ],
-      "response": []
-    },
-    "enrich.stats": {
-      "request": [
-        "Request: missing json spec query parameter 'master_timeout'"
-      ],
-      "response": []
-    },
     "eql.search": {
       "request": [
         "Request: query parameter 'allow_no_indices' does not exist in the json spec",
@@ -340,18 +231,6 @@
       "response": [
         "type_alias definition _types:EsqlColumns / instance_of - No type definition for '_builtins:binary'"
       ]
-    },
-    "features.get_features": {
-      "request": [
-        "Request: missing json spec query parameter 'master_timeout'"
-      ],
-      "response": []
-    },
-    "features.reset_features": {
-      "request": [
-        "Request: missing json spec query parameter 'master_timeout'"
-      ],
-      "response": []
     },
     "fleet.delete_secret": {
       "request": [
@@ -385,42 +264,36 @@
     },
     "ilm.delete_lifecycle": {
       "request": [
-        "Request: query parameter 'master_timeout' does not exist in the json spec",
         "Request: query parameter 'timeout' does not exist in the json spec"
       ],
       "response": []
     },
     "ilm.explain_lifecycle": {
       "request": [
-        "Request: query parameter 'master_timeout' does not exist in the json spec",
         "Request: query parameter 'timeout' does not exist in the json spec"
       ],
       "response": []
     },
     "ilm.get_lifecycle": {
       "request": [
-        "Request: query parameter 'master_timeout' does not exist in the json spec",
         "Request: query parameter 'timeout' does not exist in the json spec"
       ],
       "response": []
     },
     "ilm.put_lifecycle": {
       "request": [
-        "Request: query parameter 'master_timeout' does not exist in the json spec",
         "Request: query parameter 'timeout' does not exist in the json spec"
       ],
       "response": []
     },
     "ilm.start": {
       "request": [
-        "Request: query parameter 'master_timeout' does not exist in the json spec",
         "Request: query parameter 'timeout' does not exist in the json spec"
       ],
       "response": []
     },
     "ilm.stop": {
       "request": [
-        "Request: query parameter 'master_timeout' does not exist in the json spec",
         "Request: query parameter 'timeout' does not exist in the json spec"
       ],
       "response": []
@@ -452,7 +325,6 @@
     },
     "indices.field_usage_stats": {
       "request": [
-        "Request: query parameter 'master_timeout' does not exist in the json spec",
         "Request: query parameter 'timeout' does not exist in the json spec",
         "Request: query parameter 'wait_for_active_shards' does not exist in the json spec"
       ],
@@ -504,7 +376,6 @@
     },
     "ingest.delete_geoip_database": {
       "request": [
-        "Request: query parameter 'master_timeout' does not exist in the json spec",
         "Request: query parameter 'timeout' does not exist in the json spec"
       ],
       "response": []
@@ -512,12 +383,6 @@
     "ingest.delete_ip_location_database": {
       "request": [
         "Missing request & response"
-      ],
-      "response": []
-    },
-    "ingest.get_geoip_database": {
-      "request": [
-        "Request: query parameter 'master_timeout' does not exist in the json spec"
       ],
       "response": []
     },
@@ -529,7 +394,6 @@
     },
     "ingest.put_geoip_database": {
       "request": [
-        "Request: query parameter 'master_timeout' does not exist in the json spec",
         "Request: query parameter 'timeout' does not exist in the json spec"
       ],
       "response": []
@@ -542,21 +406,18 @@
     },
     "license.delete": {
       "request": [
-        "Request: missing json spec query parameter 'master_timeout'",
         "Request: missing json spec query parameter 'timeout'"
       ],
       "response": []
     },
     "license.post": {
       "request": [
-        "Request: missing json spec query parameter 'master_timeout'",
         "Request: missing json spec query parameter 'timeout'"
       ],
       "response": []
     },
     "license.post_start_basic": {
       "request": [
-        "Request: missing json spec query parameter 'master_timeout'",
         "Request: missing json spec query parameter 'timeout'"
       ],
       "response": []
@@ -565,7 +426,6 @@
       "request": [
         "Request: query parameter 'type_query_string' does not exist in the json spec",
         "Request: missing json spec query parameter 'type'",
-        "Request: missing json spec query parameter 'master_timeout'",
         "Request: missing json spec query parameter 'timeout'"
       ],
       "response": []
@@ -603,24 +463,6 @@
         "Request: query parameter 'ignore_unavailable' does not exist in the json spec",
         "Request: query parameter 'include_named_queries_score' does not exist in the json spec",
         "Request: query parameter 'routing' does not exist in the json spec"
-      ],
-      "response": []
-    },
-    "nodes.hot_threads": {
-      "request": [
-        "Request: query parameter 'master_timeout' does not exist in the json spec"
-      ],
-      "response": []
-    },
-    "nodes.info": {
-      "request": [
-        "Request: query parameter 'master_timeout' does not exist in the json spec"
-      ],
-      "response": []
-    },
-    "nodes.stats": {
-      "request": [
-        "Request: query parameter 'master_timeout' does not exist in the json spec"
       ],
       "response": []
     },
@@ -688,12 +530,6 @@
         "type_alias definition _types:MapboxVectorTiles / instance_of - No type definition for '_builtins:binary'"
       ]
     },
-    "search_shards": {
-      "request": [
-        "Request: missing json spec query parameter 'master_timeout'"
-      ],
-      "response": []
-    },
     "searchable_snapshots.clear_cache": {
       "request": [
         "Request: query parameter 'pretty' does not exist in the json spec",
@@ -756,7 +592,6 @@
     },
     "shutdown.delete_node": {
       "request": [
-        "Request: query parameter 'master_timeout' does not exist in the json spec",
         "Request: query parameter 'timeout' does not exist in the json spec"
       ],
       "response": []
@@ -769,7 +604,6 @@
     },
     "shutdown.put_node": {
       "request": [
-        "Request: query parameter 'master_timeout' does not exist in the json spec",
         "Request: query parameter 'timeout' does not exist in the json spec"
       ],
       "response": []
@@ -782,21 +616,18 @@
     },
     "slm.put_lifecycle": {
       "request": [
-        "Request: query parameter 'master_timeout' does not exist in the json spec",
         "Request: query parameter 'timeout' does not exist in the json spec"
       ],
       "response": []
     },
     "slm.start": {
       "request": [
-        "Request: missing json spec query parameter 'master_timeout'",
         "Request: missing json spec query parameter 'timeout'"
       ],
       "response": []
     },
     "slm.stop": {
       "request": [
-        "Request: missing json spec query parameter 'master_timeout'",
         "Request: missing json spec query parameter 'timeout'"
       ],
       "response": []
@@ -816,12 +647,6 @@
     "snapshot.repository_analyze": {
       "request": [
         "Missing request & response"
-      ],
-      "response": []
-    },
-    "tasks.list": {
-      "request": [
-        "Request: query parameter 'master_timeout' does not exist in the json spec"
       ],
       "response": []
     },
@@ -867,18 +692,6 @@
     "watcher.get_settings": {
       "request": [
         "Missing request & response"
-      ],
-      "response": []
-    },
-    "watcher.start": {
-      "request": [
-        "Request: missing json spec query parameter 'master_timeout'"
-      ],
-      "response": []
-    },
-    "watcher.stop": {
-      "request": [
-        "Request: missing json spec query parameter 'master_timeout'"
       ],
       "response": []
     },

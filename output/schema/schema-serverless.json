@@ -11601,9 +11601,22 @@
               "namespace": "_types"
             }
           }
+        },
+        {
+          "description": "Period to wait for a connection to the master node.",
+          "name": "master_timeout",
+          "required": false,
+          "serverDefault": "30s",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Duration",
+              "namespace": "_types"
+            }
+          }
         }
       ],
-      "specLocation": "cat/aliases/CatAliasesRequest.ts#L23-L43"
+      "specLocation": "cat/aliases/CatAliasesRequest.ts#L24-L49"
     },
     {
       "body": {
@@ -11673,9 +11686,22 @@
               "namespace": "_builtins"
             }
           }
+        },
+        {
+          "description": "Period to wait for a connection to the master node.",
+          "name": "master_timeout",
+          "required": false,
+          "serverDefault": "30s",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Duration",
+              "namespace": "_types"
+            }
+          }
         }
       ],
-      "specLocation": "cat/component_templates/CatComponentTemplatesRequest.ts#L22-L49"
+      "specLocation": "cat/component_templates/CatComponentTemplatesRequest.ts#L23-L55"
     },
     {
       "body": {
@@ -11757,20 +11783,10 @@
       "specLocation": "cat/count/CatCountResponse.ts#L22-L24"
     },
     {
-      "attachedBehaviors": [
-        "CommonCatQueryParameters",
-        "CommonQueryParameters"
-      ],
       "body": {
         "kind": "no_body"
       },
       "description": "Get CAT help.\nReturns help for the CAT APIs.",
-      "inherits": {
-        "type": {
-          "name": "CatRequestBase",
-          "namespace": "cat._types"
-        }
-      },
       "kind": "request",
       "name": {
         "name": "Request",
@@ -11782,24 +11798,15 @@
     },
     {
       "body": {
-        "kind": "value",
-        "value": {
-          "kind": "array_of",
-          "value": {
-            "kind": "instance_of",
-            "type": {
-              "name": "HelpRecord",
-              "namespace": "cat.help"
-            }
-          }
-        }
+        "kind": "properties",
+        "properties": []
       },
       "kind": "response",
       "name": {
         "name": "Response",
         "namespace": "cat.help"
       },
-      "specLocation": "cat/help/CatHelpResponse.ts#L22-L24"
+      "specLocation": "cat/help/CatHelpResponse.ts#L20-L25"
     },
     {
       "attachedBehaviors": [
@@ -11909,9 +11916,22 @@
               "namespace": "_types"
             }
           }
+        },
+        {
+          "description": "Period to wait for a connection to the master node.",
+          "name": "master_timeout",
+          "required": false,
+          "serverDefault": "30s",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Duration",
+              "namespace": "_types"
+            }
+          }
         }
       ],
-      "specLocation": "cat/indices/CatIndicesRequest.ts#L24-L77"
+      "specLocation": "cat/indices/CatIndicesRequest.ts#L24-L82"
     },
     {
       "body": {
@@ -12391,9 +12411,21 @@
               "namespace": "_types"
             }
           }
+        },
+        {
+          "description": "Unit used to display time values.",
+          "name": "time",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Duration",
+              "namespace": "_types"
+            }
+          }
         }
       ],
-      "specLocation": "cat/ml_trained_models/CatTrainedModelsRequest.ts#L24-L64"
+      "specLocation": "cat/ml_trained_models/CatTrainedModelsRequest.ts#L25-L69"
     },
     {
       "body": {
@@ -16691,8 +16723,22 @@
           }
         }
       ],
-      "query": [],
-      "specLocation": "enrich/delete_policy/DeleteEnrichPolicyRequest.ts#L23-L37"
+      "query": [
+        {
+          "description": "Period to wait for a connection to the master node.",
+          "name": "master_timeout",
+          "required": false,
+          "serverDefault": "30s",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Duration",
+              "namespace": "_types"
+            }
+          }
+        }
+      ],
+      "specLocation": "enrich/delete_policy/DeleteEnrichPolicyRequest.ts#L24-L45"
     },
     {
       "body": {
@@ -16747,6 +16793,19 @@
       ],
       "query": [
         {
+          "description": "Period to wait for a connection to the master node.",
+          "name": "master_timeout",
+          "required": false,
+          "serverDefault": "30s",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Duration",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
           "description": "If `true`, the request blocks other enrich policy execution requests until complete.",
           "name": "wait_for_completion",
           "required": false,
@@ -16760,7 +16819,7 @@
           }
         }
       ],
-      "specLocation": "enrich/execute_policy/ExecuteEnrichPolicyRequest.ts#L23-L45"
+      "specLocation": "enrich/execute_policy/ExecuteEnrichPolicyRequest.ts#L24-L51"
     },
     {
       "body": {
@@ -16830,8 +16889,22 @@
           }
         }
       ],
-      "query": [],
-      "specLocation": "enrich/get_policy/GetEnrichPolicyRequest.ts#L23-L38"
+      "query": [
+        {
+          "description": "Period to wait for a connection to the master node.",
+          "name": "master_timeout",
+          "required": false,
+          "serverDefault": "30s",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Duration",
+              "namespace": "_types"
+            }
+          }
+        }
+      ],
+      "specLocation": "enrich/get_policy/GetEnrichPolicyRequest.ts#L24-L46"
     },
     {
       "body": {
@@ -16931,8 +17004,22 @@
           }
         }
       ],
-      "query": [],
-      "specLocation": "enrich/put_policy/PutEnrichPolicyRequest.ts#L24-L53"
+      "query": [
+        {
+          "description": "Period to wait for a connection to the master node.",
+          "name": "master_timeout",
+          "required": false,
+          "serverDefault": "30s",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Duration",
+              "namespace": "_types"
+            }
+          }
+        }
+      ],
+      "specLocation": "enrich/put_policy/PutEnrichPolicyRequest.ts#L25-L61"
     },
     {
       "body": {
@@ -107268,19 +107355,6 @@
           }
         },
         {
-          "description": "Period to wait for a connection to the master node.",
-          "name": "master_timeout",
-          "required": false,
-          "serverDefault": "30s",
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "Duration",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
           "description": "List of columns that determine how the table should be sorted.\nSorting defaults to ascending and can be changed by setting `:asc`\nor `:desc` as a suffix to the column name.",
           "name": "s",
           "required": false,
@@ -107306,7 +107380,7 @@
           }
         }
       ],
-      "specLocation": "_spec_utils/behaviors.ts#L86-L124"
+      "specLocation": "_spec_utils/behaviors.ts#L86-L119"
     },
     {
       "kind": "interface",
@@ -107577,27 +107651,6 @@
         }
       ],
       "specLocation": "cat/count/types.ts#L23-L39"
-    },
-    {
-      "kind": "interface",
-      "name": {
-        "name": "HelpRecord",
-        "namespace": "cat.help"
-      },
-      "properties": [
-        {
-          "name": "endpoint",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "_builtins"
-            }
-          }
-        }
-      ],
-      "specLocation": "cat/help/types.ts#L20-L22"
     },
     {
       "kind": "interface",
@@ -136701,7 +136754,7 @@
         "namespace": "_spec_utils"
       },
       "properties": [],
-      "specLocation": "_spec_utils/behaviors.ts#L126-L132"
+      "specLocation": "_spec_utils/behaviors.ts#L121-L127"
     },
     {
       "attachedBehaviors": [

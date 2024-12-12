@@ -1896,6 +1896,7 @@ export interface SearchShardsRequest extends RequestBase {
   expand_wildcards?: ExpandWildcards
   ignore_unavailable?: boolean
   local?: boolean
+  master_timeout?: Duration
   preference?: string
   routing?: Routing
 }
@@ -6953,6 +6954,7 @@ export interface CatAliasesAliasesRecord {
 export interface CatAliasesRequest extends CatCatRequestBase {
   name?: Names
   expand_wildcards?: ExpandWildcards
+  master_timeout?: Duration
 }
 
 export type CatAliasesResponse = CatAliasesAliasesRecord[]
@@ -6997,6 +6999,7 @@ export interface CatAllocationRequest extends CatCatRequestBase {
   node_id?: NodeIds
   bytes?: Bytes
   local?: boolean
+  master_timeout?: Duration
 }
 
 export type CatAllocationResponse = CatAllocationAllocationRecord[]
@@ -7014,6 +7017,7 @@ export interface CatComponentTemplatesComponentTemplate {
 export interface CatComponentTemplatesRequest extends CatCatRequestBase {
   name?: string
   local?: boolean
+  master_timeout?: Duration
 }
 
 export type CatComponentTemplatesResponse = CatComponentTemplatesComponentTemplate[]
@@ -7117,14 +7121,11 @@ export interface CatHealthRequest extends CatCatRequestBase {
 
 export type CatHealthResponse = CatHealthHealthRecord[]
 
-export interface CatHelpHelpRecord {
-  endpoint: string
+export interface CatHelpRequest {
 }
 
-export interface CatHelpRequest extends CatCatRequestBase {
+export interface CatHelpResponse {
 }
-
-export type CatHelpResponse = CatHelpHelpRecord[]
 
 export interface CatIndicesIndicesRecord {
   health?: string
@@ -7425,6 +7426,7 @@ export interface CatIndicesRequest extends CatCatRequestBase {
   include_unloaded_segments?: boolean
   pri?: boolean
   time?: TimeUnit
+  master_timeout?: Duration
 }
 
 export type CatIndicesResponse = CatIndicesIndicesRecord[]
@@ -7440,6 +7442,7 @@ export interface CatMasterMasterRecord {
 
 export interface CatMasterRequest extends CatCatRequestBase {
   local?: boolean
+  master_timeout?: Duration
 }
 
 export type CatMasterResponse = CatMasterMasterRecord[]
@@ -7740,6 +7743,7 @@ export interface CatMlTrainedModelsRequest extends CatCatRequestBase {
   s?: CatCatTrainedModelsColumns
   from?: integer
   size?: integer
+  time?: Duration
 }
 
 export type CatMlTrainedModelsResponse = CatMlTrainedModelsTrainedModelsRecord[]
@@ -7808,6 +7812,7 @@ export interface CatNodeattrsNodeAttributesRecord {
 
 export interface CatNodeattrsRequest extends CatCatRequestBase {
   local?: boolean
+  master_timeout?: Duration
 }
 
 export type CatNodeattrsResponse = CatNodeattrsNodeAttributesRecord[]
@@ -8086,6 +8091,8 @@ export interface CatNodesRequest extends CatCatRequestBase {
   bytes?: Bytes
   full_id?: boolean | string
   include_unloaded_segments?: boolean
+  master_timeout?: Duration
+  time?: Duration
 }
 
 export type CatNodesResponse = CatNodesNodesRecord[]
@@ -8103,6 +8110,8 @@ export interface CatPendingTasksPendingTasksRecord {
 
 export interface CatPendingTasksRequest extends CatCatRequestBase {
   local?: boolean
+  master_timeout?: Duration
+  time?: Duration
 }
 
 export type CatPendingTasksResponse = CatPendingTasksPendingTasksRecord[]
@@ -8122,7 +8131,9 @@ export interface CatPluginsPluginsRecord {
 }
 
 export interface CatPluginsRequest extends CatCatRequestBase {
+  include_bootstrap?: boolean
   local?: boolean
+  master_timeout?: Duration
 }
 
 export type CatPluginsResponse = CatPluginsPluginsRecord[]
@@ -8190,6 +8201,7 @@ export interface CatRecoveryRequest extends CatCatRequestBase {
   active_only?: boolean
   bytes?: Bytes
   detailed?: boolean
+  time?: Duration
 }
 
 export type CatRecoveryResponse = CatRecoveryRecoveryRecord[]
@@ -8202,6 +8214,8 @@ export interface CatRepositoriesRepositoriesRecord {
 }
 
 export interface CatRepositoriesRequest extends CatCatRequestBase {
+  local?: boolean
+  master_timeout?: Duration
 }
 
 export type CatRepositoriesResponse = CatRepositoriesRepositoriesRecord[]
@@ -8209,7 +8223,6 @@ export type CatRepositoriesResponse = CatRepositoriesRepositoriesRecord[]
 export interface CatSegmentsRequest extends CatCatRequestBase {
   index?: Indices
   bytes?: Bytes
-  local?: boolean
 }
 
 export type CatSegmentsResponse = CatSegmentsSegmentsRecord[]
@@ -8259,6 +8272,8 @@ export interface CatSegmentsSegmentsRecord {
 export interface CatShardsRequest extends CatCatRequestBase {
   index?: Indices
   bytes?: Bytes
+  master_timeout?: Duration
+  time?: Duration
 }
 
 export type CatShardsResponse = CatShardsShardsRecord[]
@@ -8481,6 +8496,8 @@ export interface CatShardsShardsRecord {
 export interface CatSnapshotsRequest extends CatCatRequestBase {
   repository?: Names
   ignore_unavailable?: boolean
+  master_timeout?: Duration
+  time?: Duration
 }
 
 export type CatSnapshotsResponse = CatSnapshotsSnapshotsRecord[]
@@ -8522,8 +8539,9 @@ export interface CatSnapshotsSnapshotsRecord {
 export interface CatTasksRequest extends CatCatRequestBase {
   actions?: string[]
   detailed?: boolean
-  node_id?: string[]
+  nodes?: string[]
   parent_task_id?: string
+  time?: Duration
 }
 
 export type CatTasksResponse = CatTasksTasksRecord[]
@@ -8566,6 +8584,7 @@ export interface CatTasksTasksRecord {
 export interface CatTemplatesRequest extends CatCatRequestBase {
   name?: Name
   local?: boolean
+  master_timeout?: Duration
 }
 
 export type CatTemplatesResponse = CatTemplatesTemplatesRecord[]
@@ -8588,6 +8607,7 @@ export interface CatThreadPoolRequest extends CatCatRequestBase {
   thread_pool_patterns?: Names
   time?: TimeUnit
   local?: boolean
+  master_timeout?: Duration
 }
 
 export type CatThreadPoolResponse = CatThreadPoolThreadPoolRecord[]
@@ -8771,12 +8791,14 @@ export interface CcrShardStats {
 
 export interface CcrDeleteAutoFollowPatternRequest extends RequestBase {
   name: Name
+  master_timeout?: Duration
 }
 
 export type CcrDeleteAutoFollowPatternResponse = AcknowledgedResponseBase
 
 export interface CcrFollowRequest extends RequestBase {
   index: IndexName
+  master_timeout?: Duration
   wait_for_active_shards?: WaitForActiveShards
   body?: {
     data_stream_name?: string
@@ -8827,6 +8849,7 @@ export type CcrFollowInfoFollowerIndexStatus = 'active' | 'paused'
 
 export interface CcrFollowInfoRequest extends RequestBase {
   index: Indices
+  master_timeout?: Duration
 }
 
 export interface CcrFollowInfoResponse {
@@ -8871,6 +8894,7 @@ export interface CcrGetAutoFollowPatternAutoFollowPatternSummary {
 
 export interface CcrGetAutoFollowPatternRequest extends RequestBase {
   name?: Name
+  master_timeout?: Duration
 }
 
 export interface CcrGetAutoFollowPatternResponse {
@@ -8879,18 +8903,21 @@ export interface CcrGetAutoFollowPatternResponse {
 
 export interface CcrPauseAutoFollowPatternRequest extends RequestBase {
   name: Name
+  master_timeout?: Duration
 }
 
 export type CcrPauseAutoFollowPatternResponse = AcknowledgedResponseBase
 
 export interface CcrPauseFollowRequest extends RequestBase {
   index: IndexName
+  master_timeout?: Duration
 }
 
 export type CcrPauseFollowResponse = AcknowledgedResponseBase
 
 export interface CcrPutAutoFollowPatternRequest extends RequestBase {
   name: Name
+  master_timeout?: Duration
   body?: {
     remote_cluster: string
     follow_index_pattern?: IndexPattern
@@ -8914,12 +8941,14 @@ export type CcrPutAutoFollowPatternResponse = AcknowledgedResponseBase
 
 export interface CcrResumeAutoFollowPatternRequest extends RequestBase {
   name: Name
+  master_timeout?: Duration
 }
 
 export type CcrResumeAutoFollowPatternResponse = AcknowledgedResponseBase
 
 export interface CcrResumeFollowRequest extends RequestBase {
   index: IndexName
+  master_timeout?: Duration
   body?: {
     max_outstanding_read_requests?: long
     max_outstanding_write_requests?: long
@@ -8955,6 +8984,7 @@ export interface CcrStatsFollowStats {
 }
 
 export interface CcrStatsRequest extends RequestBase {
+  master_timeout?: Duration
 }
 
 export interface CcrStatsResponse {
@@ -8964,6 +8994,7 @@ export interface CcrStatsResponse {
 
 export interface CcrUnfollowRequest extends RequestBase {
   index: IndexName
+  master_timeout?: Duration
 }
 
 export type CcrUnfollowResponse = AcknowledgedResponseBase
@@ -9054,6 +9085,7 @@ export interface ClusterAllocationExplainNodeDiskUsage {
 export interface ClusterAllocationExplainRequest extends RequestBase {
   include_disk_info?: boolean
   include_yes_decisions?: boolean
+  master_timeout?: Duration
   body?: {
     current_node?: string
     index?: IndexName
@@ -9118,6 +9150,7 @@ export interface ClusterDeleteComponentTemplateRequest extends RequestBase {
 export type ClusterDeleteComponentTemplateResponse = AcknowledgedResponseBase
 
 export interface ClusterDeleteVotingConfigExclusionsRequest extends RequestBase {
+  master_timeout?: Duration
   wait_for_removal?: boolean
 }
 
@@ -9250,6 +9283,7 @@ export interface ClusterPendingTasksResponse {
 export interface ClusterPostVotingConfigExclusionsRequest extends RequestBase {
   node_names?: Names
   node_ids?: Ids
+  master_timeout?: Duration
   timeout?: Duration
 }
 
@@ -10219,6 +10253,7 @@ export interface EnrichSummary {
 
 export interface EnrichDeletePolicyRequest extends RequestBase {
   name: Name
+  master_timeout?: Duration
 }
 
 export type EnrichDeletePolicyResponse = AcknowledgedResponseBase
@@ -10231,6 +10266,7 @@ export interface EnrichExecutePolicyExecuteEnrichPolicyStatus {
 
 export interface EnrichExecutePolicyRequest extends RequestBase {
   name: Name
+  master_timeout?: Duration
   wait_for_completion?: boolean
 }
 
@@ -10241,6 +10277,7 @@ export interface EnrichExecutePolicyResponse {
 
 export interface EnrichGetPolicyRequest extends RequestBase {
   name?: Names
+  master_timeout?: Duration
 }
 
 export interface EnrichGetPolicyResponse {
@@ -10249,6 +10286,7 @@ export interface EnrichGetPolicyResponse {
 
 export interface EnrichPutPolicyRequest extends RequestBase {
   name: Name
+  master_timeout?: Duration
   body?: {
     geo_match?: EnrichPolicy
     match?: EnrichPolicy
@@ -10283,6 +10321,7 @@ export interface EnrichStatsExecutingPolicy {
 }
 
 export interface EnrichStatsRequest extends RequestBase {
+  master_timeout?: Duration
 }
 
 export interface EnrichStatsResponse {
@@ -10417,6 +10456,7 @@ export interface FeaturesFeature {
 }
 
 export interface FeaturesGetFeaturesRequest extends RequestBase {
+  master_timeout?: Duration
 }
 
 export interface FeaturesGetFeaturesResponse {
@@ -10424,6 +10464,7 @@ export interface FeaturesGetFeaturesResponse {
 }
 
 export interface FeaturesResetFeaturesRequest extends RequestBase {
+  master_timeout?: Duration
 }
 
 export interface FeaturesResetFeaturesResponse {
@@ -10725,7 +10766,6 @@ export interface IlmWaitForSnapshotAction {
 
 export interface IlmDeleteLifecycleRequest extends RequestBase {
   name: Name
-  master_timeout?: Duration
   timeout?: Duration
 }
 
@@ -10774,7 +10814,6 @@ export interface IlmExplainLifecycleRequest extends RequestBase {
   index: IndexName
   only_errors?: boolean
   only_managed?: boolean
-  master_timeout?: Duration
   timeout?: Duration
 }
 
@@ -10790,7 +10829,6 @@ export interface IlmGetLifecycleLifecycle {
 
 export interface IlmGetLifecycleRequest extends RequestBase {
   name?: Name
-  master_timeout?: Duration
   timeout?: Duration
 }
 
@@ -10839,7 +10877,6 @@ export interface IlmMoveToStepStepKey {
 
 export interface IlmPutLifecycleRequest extends RequestBase {
   name: Name
-  master_timeout?: Duration
   timeout?: Duration
   body?: {
     policy?: IlmPolicy
@@ -10864,14 +10901,12 @@ export interface IlmRetryRequest extends RequestBase {
 export type IlmRetryResponse = AcknowledgedResponseBase
 
 export interface IlmStartRequest extends RequestBase {
-  master_timeout?: Duration
   timeout?: Duration
 }
 
 export type IlmStartResponse = AcknowledgedResponseBase
 
 export interface IlmStopRequest extends RequestBase {
-  master_timeout?: Duration
   timeout?: Duration
 }
 
@@ -11730,7 +11765,6 @@ export interface IndicesFieldUsageStatsRequest extends RequestBase {
   expand_wildcards?: ExpandWildcards
   ignore_unavailable?: boolean
   fields?: Fields
-  master_timeout?: Duration
   timeout?: Duration
   wait_for_active_shards?: WaitForActiveShards
 }
@@ -13267,7 +13301,6 @@ export type IngestUserAgentProperty = 'name' | 'os' | 'device' | 'original' | 'v
 
 export interface IngestDeleteGeoipDatabaseRequest extends RequestBase {
   id: Ids
-  master_timeout?: Duration
   timeout?: Duration
 }
 
@@ -13316,7 +13349,6 @@ export interface IngestGetGeoipDatabaseDatabaseConfigurationMetadata {
 
 export interface IngestGetGeoipDatabaseRequest extends RequestBase {
   id?: Ids
-  master_timeout?: Duration
 }
 
 export interface IngestGetGeoipDatabaseResponse {
@@ -13340,7 +13372,6 @@ export interface IngestProcessorGrokResponse {
 
 export interface IngestPutGeoipDatabaseRequest extends RequestBase {
   id: Id
-  master_timeout?: Duration
   timeout?: Duration
   body?: {
     name: Name
@@ -13442,6 +13473,7 @@ export type LicenseLicenseStatus = 'active' | 'valid' | 'invalid' | 'expired'
 export type LicenseLicenseType = 'missing' | 'trial' | 'basic' | 'standard' | 'dev' | 'silver' | 'gold' | 'platinum' | 'enterprise'
 
 export interface LicenseDeleteRequest extends RequestBase {
+  master_timeout?: Duration
 }
 
 export type LicenseDeleteResponse = AcknowledgedResponseBase
@@ -13491,6 +13523,7 @@ export interface LicensePostAcknowledgement {
 
 export interface LicensePostRequest extends RequestBase {
   acknowledge?: boolean
+  master_timeout?: Duration
   body?: {
     license?: LicenseLicense
     licenses?: LicenseLicense[]
@@ -13505,6 +13538,7 @@ export interface LicensePostResponse {
 
 export interface LicensePostStartBasicRequest extends RequestBase {
   acknowledge?: boolean
+  master_timeout?: Duration
 }
 
 export interface LicensePostStartBasicResponse {
@@ -13518,6 +13552,7 @@ export interface LicensePostStartBasicResponse {
 export interface LicensePostStartTrialRequest extends RequestBase {
   acknowledge?: boolean
   type_query_string?: string
+  master_timeout?: Duration
 }
 
 export interface LicensePostStartTrialResponse {
@@ -16812,7 +16847,6 @@ export interface NodesHotThreadsRequest extends RequestBase {
   ignore_idle_threads?: boolean
   interval?: Duration
   snapshots?: long
-  master_timeout?: Duration
   threads?: long
   timeout?: Duration
   type?: ThreadType
@@ -17174,7 +17208,6 @@ export interface NodesInfoRequest extends RequestBase {
   node_id?: NodeIds
   metric?: Metrics
   flat_settings?: boolean
-  master_timeout?: Duration
   timeout?: Duration
 }
 
@@ -17210,7 +17243,6 @@ export interface NodesStatsRequest extends RequestBase {
   groups?: boolean
   include_segment_file_sizes?: boolean
   level?: Level
-  master_timeout?: Duration
   timeout?: Duration
   types?: string[]
   include_unloaded_segments?: boolean
@@ -18858,7 +18890,6 @@ export type ShutdownType = 'restart' | 'remove' | 'replace'
 
 export interface ShutdownDeleteNodeRequest extends RequestBase {
   node_id: NodeId
-  master_timeout?: TimeUnit
   timeout?: TimeUnit
 }
 
@@ -18903,7 +18934,6 @@ export type ShutdownGetNodeShutdownType = 'remove' | 'restart'
 
 export interface ShutdownPutNodeRequest extends RequestBase {
   node_id: NodeId
-  master_timeout?: TimeUnit
   timeout?: TimeUnit
   body?: {
     type: ShutdownType
@@ -19030,7 +19060,6 @@ export interface SlmGetStatusResponse {
 
 export interface SlmPutLifecycleRequest extends RequestBase {
   policy_id: Name
-  master_timeout?: Duration
   timeout?: Duration
   body?: {
     config?: SlmConfiguration
@@ -19044,11 +19073,13 @@ export interface SlmPutLifecycleRequest extends RequestBase {
 export type SlmPutLifecycleResponse = AcknowledgedResponseBase
 
 export interface SlmStartRequest extends RequestBase {
+  master_timeout?: Duration
 }
 
 export type SlmStartResponse = AcknowledgedResponseBase
 
 export interface SlmStopRequest extends RequestBase {
+  master_timeout?: Duration
 }
 
 export type SlmStopResponse = AcknowledgedResponseBase
@@ -19706,7 +19737,6 @@ export interface TasksListRequest extends RequestBase {
   group_by?: TasksGroupBy
   nodes?: NodeIds
   parent_task_id?: Id
-  master_timeout?: Duration
   timeout?: Duration
   wait_for_completion?: boolean
 }
@@ -20724,6 +20754,7 @@ export interface WatcherQueryWatchesResponse {
 }
 
 export interface WatcherStartRequest extends RequestBase {
+  master_timeout?: Duration
 }
 
 export type WatcherStartResponse = AcknowledgedResponseBase
@@ -20766,6 +20797,7 @@ export interface WatcherStatsWatcherNodeStats {
 export type WatcherStatsWatcherState = 'stopped' | 'starting' | 'started' | 'stopping'
 
 export interface WatcherStopRequest extends RequestBase {
+  master_timeout?: Duration
 }
 
 export type WatcherStopResponse = AcknowledgedResponseBase
@@ -21295,7 +21327,6 @@ export interface SpecUtilsCommonCatQueryParameters {
   format?: string
   h?: Names
   help?: boolean
-  master_timeout?: Duration
   s?: Names
   v?: boolean
 }

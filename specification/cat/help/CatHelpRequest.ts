@@ -17,8 +17,6 @@
  * under the License.
  */
 
-import { CatRequestBase } from '@cat/_types/CatBase'
-
 /**
  * Get CAT help.
  * Returns help for the CAT APIs.

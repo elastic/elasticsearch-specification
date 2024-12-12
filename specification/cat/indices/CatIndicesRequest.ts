@@ -19,7 +19,7 @@
 
 import { CatRequestBase } from '@cat/_types/CatBase'
 import { Bytes, ExpandWildcards, HealthStatus, Indices } from '@_types/common'
-import {Duration, TimeUnit} from '@_types/Time'
+import { Duration, TimeUnit } from '@_types/Time'
 
 /**
  * Get index information.

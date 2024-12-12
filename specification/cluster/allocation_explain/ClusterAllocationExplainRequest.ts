@@ -20,6 +20,7 @@
 import { RequestBase } from '@_types/Base'
 import { IndexName } from '@_types/common'
 import { integer } from '@_types/Numeric'
+import { Duration } from '@_types/Time'
 
 /**
  * Explain the shard allocations.
@@ -44,6 +45,11 @@ export interface Request extends RequestBase {
      * @server_default false
      */
     include_yes_decisions?: boolean
+    /**
+     * Period to wait for a connection to the master node.
+     * @server_default 30s
+     */
+    master_timeout?: Duration
   }
   body: {
     /**

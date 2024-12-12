@@ -19,7 +19,7 @@
 
 import { CatRequestBase } from '@cat/_types/CatBase'
 import { Names } from '@_types/common'
-import {Duration, TimeUnit} from '@_types/Time'
+import { Duration, TimeUnit } from '@_types/Time'
 
 /**
  * Get thread pool statistics.

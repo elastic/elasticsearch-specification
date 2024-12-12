@@ -18,7 +18,7 @@
  */
 
 import { CatRequestBase } from '@cat/_types/CatBase'
-import {Duration} from "@_types/Time";
+import { Duration } from '@_types/Time'
 
 /**
  * Get snapshot repository information.
@@ -31,19 +31,19 @@ import {Duration} from "@_types/Time";
  * @cluster_privileges monitor_snapshot
  */
 export interface Request extends CatRequestBase {
-    query_parameters: {
-        /**
-         * If `true`, the request computes the list of selected nodes from the
-         * local cluster state. If `false` the list of selected nodes are computed
-         * from the cluster state of the master node. In both cases the coordinating
-         * node will send requests for further information to each selected node.
-         * @server_default false
-         */
-        local?: boolean
-        /**
-         * Period to wait for a connection to the master node.
-         * @server_default 30s
-         */
-        master_timeout?: Duration
-    }
+  query_parameters: {
+    /**
+     * If `true`, the request computes the list of selected nodes from the
+     * local cluster state. If `false` the list of selected nodes are computed
+     * from the cluster state of the master node. In both cases the coordinating
+     * node will send requests for further information to each selected node.
+     * @server_default false
+     */
+    local?: boolean
+    /**
+     * Period to wait for a connection to the master node.
+     * @server_default 30s
+     */
+    master_timeout?: Duration
+  }
 }

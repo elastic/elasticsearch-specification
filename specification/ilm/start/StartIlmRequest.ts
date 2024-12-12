@@ -31,7 +31,6 @@ import { Duration } from '@_types/Time'
  */
 export interface Request extends RequestBase {
   query_parameters: {
-    master_timeout?: Duration
     timeout?: Duration
   }
 }

@@ -19,7 +19,7 @@
 
 import { CatRequestBase } from '@cat/_types/CatBase'
 import { Name } from '@_types/common'
-import {Duration} from "@_types/Time";
+import { Duration } from '@_types/Time'
 
 /**
  * Get index template information.

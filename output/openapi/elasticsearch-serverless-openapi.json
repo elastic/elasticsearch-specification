@@ -677,6 +677,9 @@
         "parameters": [
           {
             "$ref": "#/components/parameters/cat.aliases#expand_wildcards"
+          },
+          {
+            "$ref": "#/components/parameters/cat.aliases#master_timeout"
           }
         ],
         "responses": {
@@ -700,6 +703,9 @@
           },
           {
             "$ref": "#/components/parameters/cat.aliases#expand_wildcards"
+          },
+          {
+            "$ref": "#/components/parameters/cat.aliases#master_timeout"
           }
         ],
         "responses": {
@@ -720,6 +726,9 @@
         "parameters": [
           {
             "$ref": "#/components/parameters/cat.component_templates#local"
+          },
+          {
+            "$ref": "#/components/parameters/cat.component_templates#master_timeout"
           }
         ],
         "responses": {
@@ -744,6 +753,9 @@
           },
           {
             "$ref": "#/components/parameters/cat.component_templates#local"
+          },
+          {
+            "$ref": "#/components/parameters/cat.component_templates#master_timeout"
           }
         ],
         "responses": {
@@ -803,10 +815,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/cat.help:HelpRecord"
-                  }
+                  "type": "object"
                 }
               }
             }
@@ -840,6 +849,9 @@
           },
           {
             "$ref": "#/components/parameters/cat.indices#time"
+          },
+          {
+            "$ref": "#/components/parameters/cat.indices#master_timeout"
           }
         ],
         "responses": {
@@ -878,6 +890,9 @@
           },
           {
             "$ref": "#/components/parameters/cat.indices#time"
+          },
+          {
+            "$ref": "#/components/parameters/cat.indices#master_timeout"
           }
         ],
         "responses": {
@@ -1114,6 +1129,9 @@
           },
           {
             "$ref": "#/components/parameters/cat.ml_trained_models#size"
+          },
+          {
+            "$ref": "#/components/parameters/cat.ml_trained_models#time"
           }
         ],
         "responses": {
@@ -1153,6 +1171,9 @@
           },
           {
             "$ref": "#/components/parameters/cat.ml_trained_models#size"
+          },
+          {
+            "$ref": "#/components/parameters/cat.ml_trained_models#time"
           }
         ],
         "responses": {
@@ -4590,6 +4611,9 @@
         "parameters": [
           {
             "$ref": "#/components/parameters/enrich.get_policy#name"
+          },
+          {
+            "$ref": "#/components/parameters/enrich.get_policy#master_timeout"
           }
         ],
         "responses": {
@@ -4617,6 +4641,16 @@
               "$ref": "#/components/schemas/_types:Name"
             },
             "style": "simple"
+          },
+          {
+            "in": "query",
+            "name": "master_timeout",
+            "description": "Period to wait for a connection to the master node.",
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/_types:Duration"
+            },
+            "style": "form"
           }
         ],
         "requestBody": {
@@ -4672,6 +4706,16 @@
               "$ref": "#/components/schemas/_types:Name"
             },
             "style": "simple"
+          },
+          {
+            "in": "query",
+            "name": "master_timeout",
+            "description": "Period to wait for a connection to the master node.",
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/_types:Duration"
+            },
+            "style": "form"
           }
         ],
         "responses": {
@@ -4708,6 +4752,16 @@
               "$ref": "#/components/schemas/_types:Name"
             },
             "style": "simple"
+          },
+          {
+            "in": "query",
+            "name": "master_timeout",
+            "description": "Period to wait for a connection to the master node.",
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/_types:Duration"
+            },
+            "style": "form"
           },
           {
             "in": "query",
@@ -4751,6 +4805,11 @@
         "summary": "Get an enrich policy",
         "description": "Returns information about an enrich policy.",
         "operationId": "enrich-get-policy-1",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/enrich.get_policy#master_timeout"
+          }
+        ],
         "responses": {
           "200": {
             "$ref": "#/components/responses/enrich.get_policy#200"
@@ -33181,17 +33240,6 @@
         "description": "Time of day, expressed as HH:MM:SS",
         "type": "string"
       },
-      "cat.help:HelpRecord": {
-        "type": "object",
-        "properties": {
-          "endpoint": {
-            "type": "string"
-          }
-        },
-        "required": [
-          "endpoint"
-        ]
-      },
       "_types:Bytes": {
         "type": "string",
         "enum": [
@@ -57739,6 +57787,16 @@
         },
         "style": "form"
       },
+      "cat.aliases#master_timeout": {
+        "in": "query",
+        "name": "master_timeout",
+        "description": "Period to wait for a connection to the master node.",
+        "deprecated": false,
+        "schema": {
+          "$ref": "#/components/schemas/_types:Duration"
+        },
+        "style": "form"
+      },
       "cat.component_templates#name": {
         "in": "path",
         "name": "name",
@@ -57757,6 +57815,16 @@
         "deprecated": false,
         "schema": {
           "type": "boolean"
+        },
+        "style": "form"
+      },
+      "cat.component_templates#master_timeout": {
+        "in": "query",
+        "name": "master_timeout",
+        "description": "Period to wait for a connection to the master node.",
+        "deprecated": false,
+        "schema": {
+          "$ref": "#/components/schemas/_types:Duration"
         },
         "style": "form"
       },
@@ -57839,6 +57907,16 @@
         "deprecated": false,
         "schema": {
           "$ref": "#/components/schemas/_types:TimeUnit"
+        },
+        "style": "form"
+      },
+      "cat.indices#master_timeout": {
+        "in": "query",
+        "name": "master_timeout",
+        "description": "Period to wait for a connection to the master node.",
+        "deprecated": false,
+        "schema": {
+          "$ref": "#/components/schemas/_types:Duration"
         },
         "style": "form"
       },
@@ -58083,6 +58161,16 @@
         "deprecated": false,
         "schema": {
           "type": "number"
+        },
+        "style": "form"
+      },
+      "cat.ml_trained_models#time": {
+        "in": "query",
+        "name": "time",
+        "description": "Unit used to display time values.",
+        "deprecated": false,
+        "schema": {
+          "$ref": "#/components/schemas/_types:Duration"
         },
         "style": "form"
       },
@@ -58514,6 +58602,16 @@
           "$ref": "#/components/schemas/_types:Names"
         },
         "style": "simple"
+      },
+      "enrich.get_policy#master_timeout": {
+        "in": "query",
+        "name": "master_timeout",
+        "description": "Period to wait for a connection to the master node.",
+        "deprecated": false,
+        "schema": {
+          "$ref": "#/components/schemas/_types:Duration"
+        },
+        "style": "form"
       },
       "eql.search#index": {
         "in": "path",

@@ -18,7 +18,7 @@
  */
 
 import { CatRequestBase } from '@cat/_types/CatBase'
-import {Duration} from "@_types/Time";
+import { Duration } from '@_types/Time'
 
 /**
  * Get node attribute information.
