@@ -27,6 +27,6 @@ import { RequestBase } from '@_types/Base'
  * @rest_spec_name license.delete
  * @availability stack stability=stable
  * @cluster_privileges manage
- * @ext_doc_id licence-management
+ * @ext_doc_id license-management
  */
 export interface Request extends RequestBase {}
