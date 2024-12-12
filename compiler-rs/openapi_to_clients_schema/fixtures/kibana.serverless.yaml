@@ -1,0 +1,319 @@
+openapi: 3.0.3
+info:
+  contact:
+    name: Kibana Team
+  description: |
+    The Kibana REST APIs for Elastic serverless enable you to manage resources
+    such as connectors, data views, and saved objects. The API calls are
+    stateless. Each request that you make happens in isolation from other calls
+    and must include all of the necessary information for Kibana to fulfill the
+    request. API requests return JSON output, which is a format that is
+    machine-readable and works well for automation.
+
+    To interact with Kibana APIs, use the following operations:
+
+    - GET: Fetches the information.
+    - POST: Adds new information.
+    - PUT: Updates the existing information.
+    - DELETE: Removes the information.
+
+    You can prepend any Kibana API endpoint with `kbn:` and run the request in
+    **Dev Tools → Console**. For example:
+
+    ```
+    GET kbn:/api/data_views
+    ```
+
+    ## Documentation source and versions
+
+    This documentation is derived from the `main` branch of the [kibana](https://github.com/elastic/kibana) repository.
+    It is provided under license [Attribution-NonCommercial-NoDerivatives 4.0 International](https://creativecommons.org/licenses/by-nc-nd/4.0/).
+  title: Kibana Serverless APIs
+  version: 1.0.2
+  x-doc-license:
+    name: Attribution-NonCommercial-NoDerivatives 4.0 International
+    url: https://creativecommons.org/licenses/by-nc-nd/4.0/
+  x-feedbackLink:
+    label: Feedback
+    url: https://github.com/elastic/docs-content/issues/new?assignees=&labels=feedback%2Ccommunity&projects=&template=api-feedback.yaml&title=%5BFeedback%5D%3A+
+servers:
+  - url: https://{kibana_url}
+    variables:
+      kibana_url:
+        default: localhost:5601
+paths:
+  /api/status:
+    get:
+      operationId: SystemStatus
+      parameters:
+        - description: The version of the API to use
+          in: header
+          name: elastic-api-version
+          schema:
+            default: '2023-10-31'
+            enum:
+              - '2023-10-31'
+            type: string
+        - description: Set to "true" to get the response in v7 format.
+          in: query
+          name: v7format
+          required: false
+          schema:
+            type: boolean
+        - description: Set to "true" to get the response in v8 format.
+          in: query
+          name: v8format
+          required: false
+          schema:
+            type: boolean
+      responses:
+        '200':
+          content:
+            application/json; Elastic-Api-Version=2023-10-31:
+              schema:
+                $ref: '#/components/schemas/Kibana_HTTP_APIs_core_status_response'
+          description: Overall status is OK and Kibana should be functioning normally.
+      summary: Get Kibana's current status
+      tags:
+        - system
+components:
+  schemas:
+    Kibana_HTTP_APIs_core_status_redactedResponse:
+      additionalProperties: false
+      description: A minimal representation of Kibana's operational status.
+      properties:
+        status:
+          additionalProperties: false
+          properties:
+            overall:
+              additionalProperties: false
+              properties:
+                level:
+                  description:
+                    Service status levels as human and machine readable
+                    values.
+                  enum: [available, degraded, unavailable, critical]
+                  type: string
+              required: [level]
+              type: object
+          required: [overall]
+          type: object
+      required: [status]
+      type: object
+    Kibana_HTTP_APIs_core_status_response:
+      additionalProperties: false
+      description: Kibana's operational status as well as a detailed breakdown of plugin statuses indication of various loads (like event loop utilization and network traffic) at time of request.
+      type: object
+      properties:
+        metrics:
+          additionalProperties: false
+          description: Metric groups collected by Kibana.
+          type: object
+          properties:
+            collection_interval_in_millis:
+              description: The interval at which metrics should be collected.
+              type: number
+            elasticsearch_client:
+              additionalProperties: false
+              description: Current network metrics of Kibana's Elasticsearch client.
+              type: object
+              properties:
+                totalActiveSockets:
+                  description: Count of network sockets currently in use.
+                  type: number
+                totalIdleSockets:
+                  description: Count of network sockets currently idle.
+                  type: number
+                totalQueuedRequests:
+                  description: Count of requests not yet assigned to sockets.
+                  type: number
+              required:
+                - totalActiveSockets
+                - totalIdleSockets
+                - totalQueuedRequests
+            last_updated:
+              description: The time metrics were collected.
+              type: string
+          required:
+            - elasticsearch_client
+            - last_updated
+            - collection_interval_in_millis
+        name:
+          description: Kibana instance name.
+          type: string
+        status:
+          additionalProperties: false
+          type: object
+          properties:
+            core:
+              additionalProperties: false
+              description: Statuses of core Kibana services.
+              type: object
+              properties:
+                elasticsearch:
+                  additionalProperties: false
+                  type: object
+                  properties:
+                    detail:
+                      description: Human readable detail of the service status.
+                      type: string
+                    documentationUrl:
+                      description: A URL to further documentation regarding this service.
+                      type: string
+                    level:
+                      description: Service status levels as human and machine readable values.
+                      enum:
+                        - available
+                        - degraded
+                        - unavailable
+                        - critical
+                      type: string
+                    meta:
+                      additionalProperties: true
+                      description: An unstructured set of extra metadata about this service.
+                      type: object
+                    summary:
+                      description: A human readable summary of the service status.
+                      type: string
+                  required:
+                    - level
+                    - summary
+                    - meta
+                savedObjects:
+                  additionalProperties: false
+                  type: object
+                  properties:
+                    detail:
+                      description: Human readable detail of the service status.
+                      type: string
+                    documentationUrl:
+                      description: A URL to further documentation regarding this service.
+                      type: string
+                    level:
+                      description: Service status levels as human and machine readable values.
+                      enum:
+                        - available
+                        - degraded
+                        - unavailable
+                        - critical
+                      type: string
+                    meta:
+                      additionalProperties: true
+                      description: An unstructured set of extra metadata about this service.
+                      type: object
+                    summary:
+                      description: A human readable summary of the service status.
+                      type: string
+                  required:
+                    - level
+                    - summary
+                    - meta
+              required:
+                - elasticsearch
+                - savedObjects
+            overall:
+              additionalProperties: false
+              type: object
+              properties:
+                detail:
+                  description: Human readable detail of the service status.
+                  type: string
+                documentationUrl:
+                  description: A URL to further documentation regarding this service.
+                  type: string
+                level:
+                  description: Service status levels as human and machine readable values.
+                  enum:
+                    - available
+                    - degraded
+                    - unavailable
+                    - critical
+                  type: string
+                meta:
+                  additionalProperties: true
+                  description: An unstructured set of extra metadata about this service.
+                  type: object
+                summary:
+                  description: A human readable summary of the service status.
+                  type: string
+              required:
+                - level
+                - summary
+                - meta
+            plugins:
+              additionalProperties:
+                additionalProperties: false
+                type: object
+                properties:
+                  detail:
+                    description: Human readable detail of the service status.
+                    type: string
+                  documentationUrl:
+                    description: A URL to further documentation regarding this service.
+                    type: string
+                  level:
+                    description: Service status levels as human and machine readable values.
+                    enum:
+                      - available
+                      - degraded
+                      - unavailable
+                      - critical
+                    type: string
+                  meta:
+                    additionalProperties: true
+                    description: An unstructured set of extra metadata about this service.
+                    type: object
+                  summary:
+                    description: A human readable summary of the service status.
+                    type: string
+                required:
+                  - level
+                  - summary
+                  - meta
+              description: A dynamic mapping of plugin ID to plugin status.
+              type: object
+          required:
+            - overall
+            - core
+            - plugins
+        uuid:
+          description: Unique, generated Kibana instance UUID. This UUID should persist even if the Kibana process restarts.
+          type: string
+        version:
+          additionalProperties: false
+          type: object
+          properties:
+            build_date:
+              description: The date and time of this build.
+              type: string
+            build_flavor:
+              description: The build flavour determines configuration and behavior of Kibana. On premise users will almost always run the "traditional" flavour, while other flavours are reserved for Elastic-specific use cases.
+              enum:
+                - serverless
+                - traditional
+              type: string
+            build_hash:
+              description: A unique hash value representing the git commit of this Kibana build.
+              type: string
+            build_number:
+              description: A monotonically increasing number, each subsequent build will have a higher number.
+              type: number
+            build_snapshot:
+              description: Whether this build is a snapshot build.
+              type: boolean
+            number:
+              description: A semantic version number.
+              type: string
+          required:
+            - number
+            - build_hash
+            - build_number
+            - build_snapshot
+            - build_flavor
+            - build_date
+      required:
+        - name
+        - uuid
+        - version
+        - status
+        - metrics
