@@ -3337,7 +3337,7 @@
           "stability": "stable"
         }
       },
-      "description": "Get the status for a data stream lifecycle.\nRetrieves information about an index or data stream’s current data stream lifecycle status, such as time since index creation, time since rollover, the lifecycle configuration managing the index, or any errors encountered during lifecycle execution.",
+      "description": "Get the status for a data stream lifecycle.\nGet information about an index or data stream's current data stream lifecycle status, such as time since index creation, time since rollover, the lifecycle configuration managing the index, or any errors encountered during lifecycle execution.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/data-streams-explain-lifecycle.html",
       "name": "indices.explain_data_lifecycle",
       "request": {
@@ -21280,7 +21280,7 @@
       "body": {
         "kind": "no_body"
       },
-      "description": "Get the status for a data stream lifecycle.\nRetrieves information about an index or data stream’s current data stream lifecycle status, such as time since index creation, time since rollover, the lifecycle configuration managing the index, or any errors encountered during lifecycle execution.",
+      "description": "Get the status for a data stream lifecycle.\nGet information about an index or data stream's current data stream lifecycle status, such as time since index creation, time since rollover, the lifecycle configuration managing the index, or any errors encountered during lifecycle execution.",
       "inherits": {
         "type": {
           "name": "RequestBase",
