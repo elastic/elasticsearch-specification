@@ -15849,7 +15849,7 @@
           "license"
         ],
         "summary": "Get license information",
-        "description": "Returns information about your Elastic license, including its type, its status, when it was issued, and when it expires.\nFor more information about the different types of licenses, refer to [Elastic Stack subscriptions](https://www.elastic.co/subscriptions).",
+        "description": "Get information about your Elastic license including its type, its status, when it was issued, and when it expires.\n\nNOTE: If the master node is generating a new cluster state, the get license API may return a `404 Not Found` response.\nIf you receive an unexpected 404 response after cluster startup, wait a short period and retry the request.",
         "operationId": "license-get",
         "parameters": [
           {
@@ -15898,7 +15898,8 @@
         "tags": [
           "license"
         ],
-        "summary": "Updates the license for the cluster",
+        "summary": "Update the license",
+        "description": "You can update your license at runtime without shutting down your nodes.\nLicense updates take effect immediately.\nIf the license you are installing does not support all of the features that were available with your previous license, however, you are notified in the response.\nYou must then re-submit the API request with the acknowledge parameter set to true.\n\nNOTE: If Elasticsearch security features are enabled and you are installing a gold or higher license, you must enable TLS on the transport networking layer before you install the license.\nIf the operator privileges feature is enabled, only operator users can use this API.",
         "operationId": "license-post",
         "parameters": [
           {
@@ -15918,7 +15919,8 @@
         "tags": [
           "license"
         ],
-        "summary": "Updates the license for the cluster",
+        "summary": "Update the license",
+        "description": "You can update your license at runtime without shutting down your nodes.\nLicense updates take effect immediately.\nIf the license you are installing does not support all of the features that were available with your previous license, however, you are notified in the response.\nYou must then re-submit the API request with the acknowledge parameter set to true.\n\nNOTE: If Elasticsearch security features are enabled and you are installing a gold or higher license, you must enable TLS on the transport networking layer before you install the license.\nIf the operator privileges feature is enabled, only operator users can use this API.",
         "operationId": "license-post-1",
         "parameters": [
           {
@@ -15938,7 +15940,11 @@
         "tags": [
           "license"
         ],
-        "summary": "Deletes licensing information for the cluster",
+        "summary": "Delete the license",
+        "description": "When the license expires, your subscription level reverts to Basic.\n\nIf the operator privileges feature is enabled, only operator users can use this API.",
+        "externalDocs": {
+          "url": "https://www.elastic.co/guide/en/kibana/current/managing-licenses.html"
+        },
         "operationId": "license-delete",
         "responses": {
           "200": {
@@ -15959,7 +15965,7 @@
         "tags": [
           "license"
         ],
-        "summary": "Retrieves information about the status of the basic license",
+        "summary": "Get the basic license status",
         "operationId": "license-get-basic-status",
         "responses": {
           "200": {
@@ -15989,7 +15995,7 @@
         "tags": [
           "license"
         ],
-        "summary": "Retrieves information about the status of the trial license",
+        "summary": "Get the trial status",
         "operationId": "license-get-trial-status",
         "responses": {
           "200": {
@@ -16019,8 +16025,8 @@
         "tags": [
           "license"
         ],
-        "summary": "The start basic API enables you to initiate an indefinite basic license, which gives access to all the basic features",
-        "description": "If the basic license does not support all of the features that are available with your current license, however, you are notified in the response. You must then re-submit the API request with the acknowledge parameter set to true.\nTo check the status of your basic license, use the following API: [Get basic status](https://www.elastic.co/guide/en/elasticsearch/reference/current/get-basic-status.html).",
+        "summary": "Start a basic license",
+        "description": "Start an indefinite basic license, which gives access to all the basic features.\n\nNOTE: In order to start a basic license, you must not currently have a basic license.\n\nIf the basic license does not support all of the features that are available with your current license, however, you are notified in the response.\nYou must then re-submit the API request with the `acknowledge` parameter set to `true`.\n\nTo check the status of your basic license, use the get basic license API.",
         "operationId": "license-post-start-basic",
         "parameters": [
           {
@@ -16088,7 +16094,8 @@
         "tags": [
           "license"
         ],
-        "summary": "The start trial API enables you to start a 30-day trial, which gives access to all subscription features",
+        "summary": "Start a trial",
+        "description": "Start a 30-day trial, which gives access to all subscription features.\n\nNOTE: You are allowed to start a trial only if your cluster has not already activated a trial for the current major product version.\nFor example, if you have already activated a trial for v8.0, you cannot start a new trial until v9.0. You can, however, request an extended trial at https://www.elastic.co/trialextension.\n\nTo check the status of your trial, use the get trial status API.",
         "operationId": "license-post-start-trial",
         "parameters": [
           {

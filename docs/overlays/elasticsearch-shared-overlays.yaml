@@ -113,6 +113,9 @@ actions:
         - name: license
           x-displayName: Licensing
           description: Licensing APIs enable you to manage your licenses.
+          externalDocs:
+            url: https://www.elastic.co/subscriptions
+            description: For more information about the different types of licenses, refer to Elastic subscriptions
         - name: logstash
           x-displayName: Logstash
           description: >

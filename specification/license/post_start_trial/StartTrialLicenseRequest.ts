@@ -20,7 +20,13 @@
 import { RequestBase } from '@_types/Base'
 
 /**
- * The start trial API enables you to start a 30-day trial, which gives access to all subscription features.
+ * Start a trial.
+ * Start a 30-day trial, which gives access to all subscription features.
+ *
+ * NOTE: You are allowed to start a trial only if your cluster has not already activated a trial for the current major product version.
+ * For example, if you have already activated a trial for v8.0, you cannot start a new trial until v9.0. You can, however, request an extended trial at https://www.elastic.co/trialextension.
+ *
+ * To check the status of your trial, use the get trial status API.
  * @rest_spec_name license.post_start_trial
  * @availability stack since=6.1.0 stability=stable
  * @cluster_privileges manage
