@@ -22,7 +22,9 @@ import { Fields, Level, Metrics, NodeIds } from '@_types/common'
 import { Duration } from '@_types/Time'
 
 /**
- * Returns cluster nodes statistics.
+ * Get node statistics.
+ * Get statistics for nodes in a cluster.
+ * By default, all stats are returned. You can limit the returned information by using metrics.
  * @rest_spec_name nodes.stats
  * @availability stack stability=stable
  * @availability serverless stability=stable visibility=private
