@@ -9415,7 +9415,7 @@
         "tags": [
           "ilm"
         ],
-        "summary": "Retrieves a lifecycle policy",
+        "summary": "Get lifecycle policies",
         "operationId": "ilm-get-lifecycle",
         "parameters": [
           {
@@ -9439,8 +9439,11 @@
         "tags": [
           "ilm"
         ],
-        "summary": "Creates a lifecycle policy",
-        "description": "If the specified policy exists, the policy is replaced and the policy version is incremented.",
+        "summary": "Create or update a lifecycle policy",
+        "description": "If the specified policy exists, it is replaced and the policy version is incremented.\n\nNOTE: Only the latest version of the policy is stored, you cannot revert to previous versions.",
+        "externalDocs": {
+          "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/ilm-index-lifecycle.html"
+        },
         "operationId": "ilm-put-lifecycle",
         "parameters": [
           {
@@ -9507,7 +9510,7 @@
         "tags": [
           "ilm"
         ],
-        "summary": "Deletes the specified lifecycle policy definition",
+        "summary": "Delete a lifecycle policy",
         "description": "You cannot delete policies that are currently in use. If the policy is being used to manage any indices, the request fails and returns an error.",
         "operationId": "ilm-delete-lifecycle",
         "parameters": [
@@ -9563,8 +9566,8 @@
         "tags": [
           "ilm"
         ],
-        "summary": "Retrieves information about the index’s current lifecycle state, such as the currently executing phase, action, and step",
-        "description": "Shows when the index entered each one, the definition of the running phase, and information about any failures.",
+        "summary": "Explain the lifecycle state",
+        "description": "Get the current lifecycle status for one or more indices.\nFor data streams, the API retrieves the current lifecycle status for the stream's backing indices.\n\nThe response indicates when the index entered each lifecycle state, provides the definition of the running phase, and information about any failures.",
         "operationId": "ilm-explain-lifecycle",
         "parameters": [
           {
@@ -9650,7 +9653,7 @@
         "tags": [
           "ilm"
         ],
-        "summary": "Retrieves a lifecycle policy",
+        "summary": "Get lifecycle policies",
         "operationId": "ilm-get-lifecycle-1",
         "parameters": [
           {
@@ -9673,7 +9676,8 @@
         "tags": [
           "ilm"
         ],
-        "summary": "Retrieves the current index lifecycle management (ILM) status",
+        "summary": "Get the ILM status",
+        "description": "Get the current index lifecycle management status.",
         "operationId": "ilm-get-status",
         "responses": {
           "200": {
@@ -9703,8 +9707,11 @@
         "tags": [
           "ilm"
         ],
-        "summary": "Switches the indices, ILM policies, and legacy, composable and component templates from using custom node attributes and\n",
-        "description": "attribute-based allocation filters to using data tiers, and optionally deletes one legacy index template.+\nUsing node roles enables ILM to automatically move the indices between data tiers.",
+        "summary": "Migrate to data tiers routing",
+        "description": "Switch the indices, ILM policies, and legacy, composable, and component templates from using custom node attributes and attribute-based allocation filters to using data tiers.\nOptionally, delete one legacy index template.\nUsing node roles enables ILM to automatically move the indices between data tiers.\n\nMigrating away from custom node attributes routing can be manually performed.\nThis API provides an automated way of performing three out of the four manual steps listed in the migration guide:\n\n1. Stop setting the custom hot attribute on new indices.\n1. Remove custom allocation settings from existing ILM policies.\n1. Replace custom allocation settings from existing indices with the corresponding tier preference.\n\nILM must be stopped before performing the migration.\nUse the stop ILM and get ILM status APIs to wait until the reported operation mode is `STOPPED`.",
+        "externalDocs": {
+          "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/migrate-index-allocation-filters.html"
+        },
         "operationId": "ilm-migrate-to-data-tiers",
         "parameters": [
           {
@@ -9799,7 +9806,8 @@
         "tags": [
           "ilm"
         ],
-        "summary": "Manually moves an index into the specified step and executes that step",
+        "summary": "Move to a lifecycle step",
+        "description": "Manually move an index into a specific step in the lifecycle policy and run that step.\n\nWARNING: This operation can result in the loss of data. Manually moving an index into a specific step runs that step even if it has already been performed. This is a potentially destructive action and this should be considered an expert level API.\n\nYou must specify both the current step and the step to be executed in the body of the request.\nThe request will fail if the current step does not match the step currently running for the index\nThis is to prevent the index from being moved from an unexpected step into the next step.\n\nWhen specifying the target (`next_step`) to which the index will be moved, either the name or both the action and name fields are optional.\nIf only the phase is specified, the index will move to the first step of the first action in the target phase.\nIf the phase and action are specified, the index will move to the first step of the specified action in the specified phase.\nOnly actions specified in the ILM policy are considered valid.\nAn index cannot move to a step that is not part of its policy.",
         "operationId": "ilm-move-to-step",
         "parameters": [
           {
@@ -9855,7 +9863,8 @@
         "tags": [
           "ilm"
         ],
-        "summary": "Removes the assigned lifecycle policy and stops managing the specified index",
+        "summary": "Remove policies from an index",
+        "description": "Remove the assigned lifecycle policies from an index or a data stream's backing indices.\nIt also stops managing the indices.",
         "operationId": "ilm-remove-policy",
         "parameters": [
           {
@@ -9905,7 +9914,8 @@
         "tags": [
           "ilm"
         ],
-        "summary": "Retries executing the policy for an index that is in the ERROR step",
+        "summary": "Retry a policy",
+        "description": "Retry running the lifecycle policy for an index that is in the ERROR step.\nThe API sets the policy back to the step where the error occurred and runs the step.\nUse the explain lifecycle state API to determine whether an index is in the ERROR step.",
         "operationId": "ilm-retry",
         "parameters": [
           {
@@ -9940,7 +9950,8 @@
         "tags": [
           "ilm"
         ],
-        "summary": "Start the index lifecycle management (ILM) plugin",
+        "summary": "Start the ILM plugin",
+        "description": "Start the index lifecycle management plugin if it is currently stopped.\nILM is started automatically when the cluster is formed.\nRestarting ILM is necessary only when it has been stopped using the stop ILM API.",
         "operationId": "ilm-start",
         "parameters": [
           {
@@ -9982,7 +9993,8 @@
         "tags": [
           "ilm"
         ],
-        "summary": "Halts all lifecycle management operations and stops the index lifecycle management (ILM) plugin",
+        "summary": "Stop the ILM plugin",
+        "description": "Halt all lifecycle management operations and stop the index lifecycle management plugin.\nThis is useful when you are performing maintenance on the cluster and need to prevent ILM from performing any actions on your indices.\n\nThe API returns as soon as the stop request has been acknowledged, but the plugin might continue to run until in-progress operations complete and the plugin can be safely stopped.\nUse the get ILM status API to check whether ILM is running.",
         "operationId": "ilm-stop",
         "parameters": [
           {
@@ -12188,7 +12200,7 @@
           "indices"
         ],
         "summary": "Get the status for a data stream lifecycle",
-        "description": "Retrieves information about an index or data stream’s current data stream lifecycle status, such as time since index creation, time since rollover, the lifecycle configuration managing the index, or any errors encountered during lifecycle execution.",
+        "description": "Get information about an index or data stream's current data stream lifecycle status, such as time since index creation, time since rollover, the lifecycle configuration managing the index, or any errors encountered during lifecycle execution.",
         "operationId": "indices-explain-data-lifecycle",
         "parameters": [
           {
