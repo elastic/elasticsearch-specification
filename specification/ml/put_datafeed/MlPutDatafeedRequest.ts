@@ -87,8 +87,10 @@ export interface Request extends RequestBase {
     ignore_unavailable?: boolean
   }
   body: {
-    /** If set, the datafeed performs aggregation searches.
+    /**
+     * If set, the datafeed performs aggregation searches.
      * Support for aggregations is limited and should be used only with low cardinality data.
+     * @aliases aggs
      */
     aggregations?: Dictionary<string, AggregationContainer>
     /**
