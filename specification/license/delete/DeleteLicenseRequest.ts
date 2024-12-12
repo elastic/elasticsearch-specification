@@ -20,7 +20,13 @@
 import { RequestBase } from '@_types/Base'
 
 /**
+ * Delete the license.
+ * When the license expires, your subscription level reverts to Basic.
+ *
+ * If the operator privileges feature is enabled, only operator users can use this API.
  * @rest_spec_name license.delete
  * @availability stack stability=stable
+ * @cluster_privileges manage
+ * @ext_doc_id license-management
  */
 export interface Request extends RequestBase {}
