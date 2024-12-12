@@ -19,7 +19,7 @@
 
 import { CatRequestBase } from '@cat/_types/CatBase'
 import { Bytes, ExpandWildcards, HealthStatus, Indices } from '@_types/common'
-import { TimeUnit } from '@_types/Time'
+import {Duration, TimeUnit} from '@_types/Time'
 
 /**
  * Get index information.
@@ -73,5 +73,10 @@ export interface Request extends CatRequestBase {
     pri?: boolean
     /** The unit used to display time values. */
     time?: TimeUnit
+    /**
+     * Period to wait for a connection to the master node.
+     * @server_default 30s
+     */
+    master_timeout?: Duration
   }
 }

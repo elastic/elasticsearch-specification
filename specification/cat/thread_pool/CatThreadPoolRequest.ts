@@ -19,7 +19,7 @@
 
 import { CatRequestBase } from '@cat/_types/CatBase'
 import { Names } from '@_types/common'
-import { TimeUnit } from '@_types/Time'
+import {Duration, TimeUnit} from '@_types/Time'
 
 /**
  * Get thread pool statistics.
@@ -53,5 +53,10 @@ export interface Request extends CatRequestBase {
      * @server_default false
      */
     local?: boolean
+    /**
+     * Period to wait for a connection to the master node.
+     * @server_default 30s
+     */
+    master_timeout?: Duration
   }
 }

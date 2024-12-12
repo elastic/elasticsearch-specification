@@ -19,6 +19,7 @@
 
 import { CatRequestBase } from '@cat/_types/CatBase'
 import { Bytes, Indices } from '@_types/common'
+import {Duration} from "@_types/Time";
 
 /**
  * Get shard information.
@@ -46,5 +47,14 @@ export interface Request extends CatRequestBase {
      * The unit used to display byte values.
      */
     bytes?: Bytes
+    /**
+     * Period to wait for a connection to the master node.
+     * @server_default 30s
+     */
+    master_timeout?: Duration
+    /**
+     * Unit used to display time values.
+     */
+    time?: Duration
   }
 }

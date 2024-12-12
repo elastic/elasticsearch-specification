@@ -19,6 +19,7 @@
 
 import { CatRequestBase } from '@cat/_types/CatBase'
 import { Names } from '@_types/common'
+import {Duration} from "@_types/Time";
 
 /**
  * Get snapshot information
@@ -47,5 +48,14 @@ export interface Request extends CatRequestBase {
      * @server_default false
      */
     ignore_unavailable?: boolean
+    /**
+     * Period to wait for a connection to the master node.
+     * @server_default 30s
+     */
+    master_timeout?: Duration
+    /**
+     * Unit used to display time values.
+     */
+    time?: Duration
   }
 }

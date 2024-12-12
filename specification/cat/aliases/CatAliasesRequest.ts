@@ -19,6 +19,7 @@
 
 import { CatRequestBase } from '@cat/_types/CatBase'
 import { ExpandWildcards, Names } from '@_types/common'
+import {Duration} from "@_types/Time";
 
 /**
  * Get aliases.
@@ -39,5 +40,10 @@ export interface Request extends CatRequestBase {
   }
   query_parameters: {
     expand_wildcards?: ExpandWildcards
+    /**
+     * Period to wait for a connection to the master node.
+     * @server_default 30s
+     */
+    master_timeout?: Duration
   }
 }

@@ -20,6 +20,7 @@
 import { CatRequestBase, CatTrainedModelsColumns } from '@cat/_types/CatBase'
 import { Bytes, Id } from '@_types/common'
 import { integer } from '@_types/Numeric'
+import {Duration} from "@_types/Time";
 
 /**
  * Get trained models.
@@ -60,5 +61,9 @@ export interface Request extends CatRequestBase {
     from?: integer
     /** The maximum number of transforms to display. */
     size?: integer
+    /**
+     * Unit used to display time values.
+     */
+    time?: Duration
   }
 }

@@ -106,11 +106,6 @@ export interface CommonCatQueryParameters {
    */
   help?: boolean
   /**
-   * Period to wait for a connection to the master node.
-   * @server_default 30s
-   */
-  master_timeout?: Duration
-  /**
    * List of columns that determine how the table should be sorted.
    * Sorting defaults to ascending and can be changed by setting `:asc`
    * or `:desc` as a suffix to the column name.

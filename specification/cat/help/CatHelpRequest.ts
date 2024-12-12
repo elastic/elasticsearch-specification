@@ -27,4 +27,4 @@ import { CatRequestBase } from '@cat/_types/CatBase'
  * @availability serverless stability=stable visibility=public
  * @doc_id cat
  */
-export interface Request extends CatRequestBase {}
+export interface Request {}

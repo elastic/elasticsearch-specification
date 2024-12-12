@@ -18,6 +18,7 @@
  */
 
 import { CatRequestBase } from '@cat/_types/CatBase'
+import {Duration} from "@_types/Time";
 
 /**
  * Get task information.
@@ -41,8 +42,12 @@ export interface Request extends CatRequestBase {
      */
     detailed?: boolean
     /** Unique node identifiers, which are used to limit the response. */
-    node_id?: string[]
+    nodes?: string[]
     /** The parent task identifier, which is used to limit the response. */
     parent_task_id?: string
+    /**
+     * Unit used to display time values.
+     */
+    time?: Duration
   }
 }

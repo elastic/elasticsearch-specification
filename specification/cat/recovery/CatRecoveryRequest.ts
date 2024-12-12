@@ -19,6 +19,7 @@
 
 import { CatRequestBase } from '@cat/_types/CatBase'
 import { Bytes, Indices } from '@_types/common'
+import {Duration} from "@_types/Time";
 
 /**
  * Get shard recovery information.
@@ -56,5 +57,9 @@ export interface Request extends CatRequestBase {
      * @server_default false
      */
     detailed?: boolean
+    /**
+     * Unit used to display time values.
+     */
+    time?: Duration
   }
 }
