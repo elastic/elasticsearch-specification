@@ -15462,7 +15462,6 @@ export interface MlGetMemoryStatsMemory {
 
 export interface MlGetMemoryStatsRequest extends RequestBase {
   node_id?: Id
-  human?: boolean
   master_timeout?: Duration
   timeout?: Duration
 }
@@ -17698,8 +17697,6 @@ export interface SearchableSnapshotsClearCacheRequest extends RequestBase {
   expand_wildcards?: ExpandWildcards
   allow_no_indices?: boolean
   ignore_unavailable?: boolean
-  pretty?: boolean
-  human?: boolean
 }
 
 export type SearchableSnapshotsClearCacheResponse = any
@@ -20859,7 +20856,6 @@ export interface XpackInfoNativeCodeInformation {
 export interface XpackInfoRequest extends RequestBase {
   categories?: XpackInfoXPackCategory[]
   accept_enterprise?: boolean
-  human?: boolean
 }
 
 export interface XpackInfoResponse {

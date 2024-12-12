@@ -33,11 +33,6 @@ export interface Request extends RequestBase {
      */
     categories?: XPackCategory[]
     accept_enterprise?: boolean
-    /**
-     * Defines whether additional human-readable information is included in the response. In particular, it adds descriptions and a tag line.
-     * @server_default true
-     */
-    human?: boolean
   }
 }
 

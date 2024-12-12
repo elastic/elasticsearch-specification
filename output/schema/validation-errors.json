@@ -344,13 +344,6 @@
         "type_alias definition _global.mget:ResponseItem / union_of / instance_of / Generics / instance_of - No type definition for '_global.mget.ResponseItem:TDocument'"
       ]
     },
-    "ml.get_memory_stats": {
-      "request": [
-        "Request: query parameter 'human' does not exist in the json spec",
-        "request definition ml.get_memory_stats:Request / query - Property 'human' is already defined in an ancestor class"
-      ],
-      "response": []
-    },
     "ml.stop_datafeed": {
       "request": [
         "Request: missing json spec query parameter 'allow_no_datafeeds'"
@@ -434,11 +427,7 @@
     },
     "searchable_snapshots.clear_cache": {
       "request": [
-        "Request: query parameter 'pretty' does not exist in the json spec",
-        "Request: query parameter 'human' does not exist in the json spec",
-        "Request: missing json spec query parameter 'index'",
-        "request definition searchable_snapshots.clear_cache:Request / query - Property 'pretty' is already defined in an ancestor class",
-        "request definition searchable_snapshots.clear_cache:Request / query - Property 'human' is already defined in an ancestor class"
+        "Request: missing json spec query parameter 'index'"
       ],
       "response": []
     },
@@ -552,13 +541,6 @@
     "watcher.update_settings": {
       "request": [
         "Missing request & response"
-      ],
-      "response": []
-    },
-    "xpack.info": {
-      "request": [
-        "Request: query parameter 'human' does not exist in the json spec",
-        "request definition xpack.info:Request / query - Property 'human' is already defined in an ancestor class"
       ],
       "response": []
     }
