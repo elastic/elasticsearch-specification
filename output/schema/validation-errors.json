@@ -36,14 +36,6 @@
       ],
       "response": []
     },
-    "async_search.get": {
-      "request": [],
-      "response": [
-        "type_alias definition _global.search._types:Suggest - A tagged union should not have generic parameters",
-        "type_alias definition _global.search._types:Suggest / instance_of / Generics / instance_of - No type definition for '_global.search._types.Suggest:TDocument'",
-        "type_alias definition _global.search._types:Suggest - Expected 1 generic parameters but got 0"
-      ]
-    },
     "async_search.submit": {
       "request": [
         "interface definition _types:QueryVectorBuilder - Property text_embedding is a single-variant and must be required"

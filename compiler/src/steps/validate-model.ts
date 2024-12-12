@@ -544,30 +544,26 @@ export default async function validateModel (apiModel: model.Model, restSpec: Ma
     const openGenerics = openGenericSet(typeDef);
 
     if (typeDef.variants != null) {
-      if (typeDef.generics != null && typeDef.generics.length !== 0) {
-        modelError('A tagged union should not have generic parameters')
-      }
-
       if (typeDef.type.kind !== 'union_of') {
         modelError('The "variants" tag only applies to unions')
       } else {
-        validateTaggedUnion(typeDef.name, typeDef.type, typeDef.variants)
+        validateTaggedUnion(typeDef.name, typeDef.type, typeDef.variants, openGenerics)
       }
     } else {
       validateValueOf(typeDef.type, openGenerics)
     }
   }
 
-  function validateTaggedUnion (parentName: TypeName, valueOf: model.UnionOf, variants: model.InternalTag | model.ExternalTag | model.Untagged): void {
+  function validateTaggedUnion (parentName: TypeName, valueOf: model.UnionOf, variants: model.InternalTag | model.ExternalTag | model.Untagged, openGenerics: Set<string>): void {
     if (variants.kind === 'external_tag') {
       // All items must have a 'variant' attribute
-      const items = flattenUnionMembers(valueOf)
+      const items = flattenUnionMembers(valueOf, openGenerics)
 
       for (const item of items) {
         if (item.kind !== 'instance_of') {
           modelError('Items of externally tagged unions must be types with a "variant_tag" annotation')
         } else {
-          validateTypeRef(item.type, undefined, new Set<string>())
+          validateTypeRef(item.type, item.generics, openGenerics)
           const type = getTypeDef(item.type)
           if (type == null) {
             modelError(`Type ${fqn(item.type)} not found`)
@@ -582,13 +578,13 @@ export default async function validateModel (apiModel: model.Model, restSpec: Ma
       }
     } else if (variants.kind === 'internal_tag') {
       const tagName = variants.tag
-      const items = flattenUnionMembers(valueOf)
+      const items = flattenUnionMembers(valueOf, openGenerics)
 
       for (const item of items) {
         if (item.kind !== 'instance_of') {
           modelError('Items of internally tagged unions must be type references')
         } else {
-          validateTypeRef(item.type, undefined, new Set<string>())
+          validateTypeRef(item.type, item.generics, openGenerics)
           const type = getTypeDef(item.type)
           if (type == null) {
             modelError(`Type ${fqn(item.type)} not found`)
@@ -601,7 +597,7 @@ export default async function validateModel (apiModel: model.Model, restSpec: Ma
         }
       }
 
-      validateValueOf(valueOf, new Set())
+      validateValueOf(valueOf, openGenerics)
     } else if (variants.kind === 'untagged') {
       if (fqn(parentName) !== '_types.query_dsl:DecayFunction' &&
           fqn(parentName) !== '_types.query_dsl:DistanceFeatureQuery' &&
@@ -614,7 +610,7 @@ export default async function validateModel (apiModel: model.Model, restSpec: Ma
         modelError(`Type ${fqn(variants.untypedVariant)} not found`)
       }
 
-      const items = flattenUnionMembers(valueOf)
+      const items = flattenUnionMembers(valueOf, openGenerics)
       const baseTypes = new Set<string>()
       let foundUntyped = false
 
@@ -622,7 +618,7 @@ export default async function validateModel (apiModel: model.Model, restSpec: Ma
         if (item.kind !== 'instance_of') {
           modelError('Items of type untagged unions must be type references')
         } else {
-          validateTypeRef(item.type, undefined, new Set<string>())
+          validateTypeRef(item.type, item.generics, openGenerics)
           const type = getTypeDef(item.type)
           if (type == null) {
             modelError(`Type ${fqn(item.type)} not found`)
@@ -879,7 +875,7 @@ export default async function validateModel (apiModel: model.Model, restSpec: Ma
         } else {
           // tagged union: the discriminant tells us what to look for, check each member in isolation
           assert(typeDef.type.kind === 'union_of', 'Variants are only allowed on union_of type aliases')
-          for (const item of flattenUnionMembers(typeDef.type)) {
+          for (const item of flattenUnionMembers(typeDef.type, new Set())) {
             validateValueOfJsonEvents(item)
           }
 
@@ -894,13 +890,13 @@ export default async function validateModel (apiModel: model.Model, restSpec: Ma
   }
 
   /** Build the flattened item list of potentially nested unions (this is used for large unions) */
-  function flattenUnionMembers (union: model.UnionOf): model.ValueOf[] {
+  function flattenUnionMembers (union: model.UnionOf, openGenerics: Set<string>): model.ValueOf[] {
     const allItems = new Array<model.ValueOf>()
 
     function collectItems (items: model.ValueOf[]): void {
       for (const item of items) {
         if (item.kind !== 'instance_of') {
-          validateValueOf(item, new Set<string>())
+          validateValueOf(item, openGenerics)
           allItems.push(item)
         } else {
           const itemType = getTypeDef(item.type)
@@ -910,7 +906,7 @@ export default async function validateModel (apiModel: model.Model, restSpec: Ma
             // Recurse in nested union
             collectItems(itemType.type.items)
           } else {
-            validateValueOf(item, new Set<string>())
+            validateValueOf(item, openGenerics)
             allItems.push(item)
           }
         }
