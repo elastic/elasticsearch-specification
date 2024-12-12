@@ -397,11 +397,6 @@ export default async function validateModel (apiModel: model.Model, restSpec: Ma
     context.pop()
 
     context.push('body')
-    if (typeDef.inherits != null && typeDef.body.kind !== 'properties') {
-      if (fqn(typeDef.inherits.type) !== '_types:RequestBase') {
-        modelError('A request with inherited properties must have a PropertyBody')
-      }
-    }
     switch (typeDef.body.kind) {
       case 'properties':
         validateProperties(typeDef.body.properties, openGenerics, inheritedProps)
