@@ -20409,8 +20409,8 @@
         "tags": [
           "ml"
         ],
-        "summary": "Return ML defaults and limits",
-        "description": "Returns defaults and limits used by machine learning.\nThis endpoint is designed to be used by a user interface that needs to fully\nunderstand machine learning configurations where some options are not\nspecified, meaning that the defaults should be used. This endpoint may be\nused to find out what those defaults are. It also provides information about\nthe maximum size of machine learning jobs that could run in the current\ncluster configuration.",
+        "summary": "Get machine learning information",
+        "description": "Get defaults and limits used by machine learning.\nThis endpoint is designed to be used by a user interface that needs to fully\nunderstand machine learning configurations where some options are not\nspecified, meaning that the defaults should be used. This endpoint may be\nused to find out what those defaults are. It also provides information about\nthe maximum size of machine learning jobs that could run in the current\ncluster configuration.",
         "operationId": "ml-info",
         "responses": {
           "200": {
@@ -22586,9 +22586,9 @@
     "/_ml/anomaly_detectors/_validate/detector": {
       "post": {
         "tags": [
-          "ml"
+          "ml anomaly"
         ],
-        "summary": "Validates an anomaly detection detector",
+        "summary": "Validate an anomaly detection job",
         "operationId": "ml-validate-detector",
         "requestBody": {
           "content": {
