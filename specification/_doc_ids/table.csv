@@ -213,6 +213,8 @@ index-modules-slowlog-slowlog,https://www.elastic.co/guide/en/elasticsearch/refe
 index-modules,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/index-modules.html
 index,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/index.html
 indexing-buffer,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/indexing-buffer.html
+index-modules-merge,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/index-modules-merge.html
+index-templates,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/index-templates.html
 indices-aliases,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/indices-aliases.html
 indices-analyze,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/indices-analyze.html
 indices-clearcache,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/indices-clearcache.html
@@ -524,6 +526,7 @@ search-aggregations-metrics-top-metrics,https://www.elastic.co/guide/en/elastics
 search-aggregations-metrics-valuecount-aggregation,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/search-aggregations-metrics-valuecount-aggregation.html
 search-aggregations-metrics-weight-avg-aggregation,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/search-aggregations-metrics-weight-avg-aggregation.html
 search-aggregations-bucket-variablewidthhistogram-aggregation,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/search-aggregations-bucket-variablewidthhistogram-aggregation.html
+search-analyzer,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/search-analyzer.html
 search-count,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/search-count.html
 search-explain,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/search-explain.html
 search-field-caps,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/search-field-caps.html

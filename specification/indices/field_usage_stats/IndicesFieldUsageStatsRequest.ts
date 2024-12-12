@@ -27,7 +27,10 @@ import {
 import { Duration } from '@_types/Time'
 
 /**
- * Returns field usage information for each shard and field of an index.
+ * Get field usage stats.
+ * Get field usage information for each shard and field of an index.
+ * Field usage statistics are automatically captured when queries are running on a cluster.
+ * A shard-level search request that accesses a given field, even if multiple times during that request, is counted as a single use.
  * @rest_spec_name indices.field_usage_stats
  * @availability stack since=7.15.0 stability=experimental
  * @availability serverless stability=experimental visibility=private
