@@ -260,6 +260,7 @@ k-precision,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/sea
 k-recall,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/search-rank-eval.html#k-recall
 kv-processor,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/kv-processor.html
 knn-inner-hits,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/knn-search.html#nested-knn-search-inner-hits
+license-management,https://www.elastic.co/guide/en/kibana/{branch}/managing-licenses.html
 logstash-api-delete-pipeline,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/logstash-api-delete-pipeline.html
 logstash-api-get-pipeline,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/logstash-api-get-pipeline.html
 logstash-api-put-pipeline,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/logstash-api-put-pipeline.html

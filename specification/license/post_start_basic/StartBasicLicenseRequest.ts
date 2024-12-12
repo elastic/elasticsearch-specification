@@ -20,10 +20,18 @@
 import { RequestBase } from '@_types/Base'
 
 /**
- * The start basic API enables you to initiate an indefinite basic license, which gives access to all the basic features. If the basic license does not support all of the features that are available with your current license, however, you are notified in the response. You must then re-submit the API request with the acknowledge parameter set to true.
- * To check the status of your basic license, use the following API: [Get basic status](https://www.elastic.co/guide/en/elasticsearch/reference/current/get-basic-status.html).
+ * Start a basic license.
+ * Start an indefinite basic license, which gives access to all the basic features.
+ *
+ * NOTE: In order to start a basic license, you must not currently have a basic license.
+ *
+ * If the basic license does not support all of the features that are available with your current license, however, you are notified in the response.
+ * You must then re-submit the API request with the `acknowledge` parameter set to `true`.
+ *
+ * To check the status of your basic license, use the get basic license API.
  * @rest_spec_name license.post_start_basic
  * @availability stack since=6.3.0 stability=stable
+ * @cluster_privileges manage
  */
 export interface Request extends RequestBase {
   query_parameters: {

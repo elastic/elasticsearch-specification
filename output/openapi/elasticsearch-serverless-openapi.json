@@ -9422,7 +9422,7 @@
           "license"
         ],
         "summary": "Get license information",
-        "description": "Returns information about your Elastic license, including its type, its status, when it was issued, and when it expires.\nFor more information about the different types of licenses, refer to [Elastic Stack subscriptions](https://www.elastic.co/subscriptions).",
+        "description": "Get information about your Elastic license including its type, its status, when it was issued, and when it expires.\n\nNOTE: If the master node is generating a new cluster state, the get license API may return a `404 Not Found` response.\nIf you receive an unexpected 404 response after cluster startup, wait a short period and retry the request.",
         "operationId": "license-get",
         "parameters": [
           {
