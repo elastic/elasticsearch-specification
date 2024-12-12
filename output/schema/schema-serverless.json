@@ -11344,6 +11344,19 @@
       ],
       "query": [
         {
+          "description": "If `true`, the response will include the ingest pipelines that were executed for each index or create.",
+          "name": "list_executed_pipelines",
+          "required": false,
+          "serverDefault": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "_builtins"
+            }
+          }
+        },
+        {
           "description": "ID of the pipeline to use to preprocess incoming documents.\nIf the index has a default ingest pipeline specified, then setting the value to `_none` disables the default ingest pipeline for this request.\nIf a final pipeline is configured it will always run, regardless of the value of this parameter.",
           "name": "pipeline",
           "required": false,
@@ -11454,9 +11467,22 @@
               "namespace": "_builtins"
             }
           }
+        },
+        {
+          "description": "If `true`, the request's actions must target a data stream (existing or to-be-created).",
+          "name": "require_data_stream",
+          "required": false,
+          "serverDefault": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "_builtins"
+            }
+          }
         }
       ],
-      "specLocation": "_global/bulk/BulkRequest.ts#L32-L105"
+      "specLocation": "_global/bulk/BulkRequest.ts#L32-L115"
     },
     {
       "body": {
