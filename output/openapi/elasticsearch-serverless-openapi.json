@@ -480,6 +480,9 @@
         "operationId": "bulk-1",
         "parameters": [
           {
+            "$ref": "#/components/parameters/bulk#list_executed_pipelines"
+          },
+          {
             "$ref": "#/components/parameters/bulk#pipeline"
           },
           {
@@ -505,6 +508,9 @@
           },
           {
             "$ref": "#/components/parameters/bulk#require_alias"
+          },
+          {
+            "$ref": "#/components/parameters/bulk#require_data_stream"
           }
         ],
         "requestBody": {
@@ -525,6 +531,9 @@
         "operationId": "bulk",
         "parameters": [
           {
+            "$ref": "#/components/parameters/bulk#list_executed_pipelines"
+          },
+          {
             "$ref": "#/components/parameters/bulk#pipeline"
           },
           {
@@ -550,6 +559,9 @@
           },
           {
             "$ref": "#/components/parameters/bulk#require_alias"
+          },
+          {
+            "$ref": "#/components/parameters/bulk#require_data_stream"
           }
         ],
         "requestBody": {
@@ -575,6 +587,9 @@
             "$ref": "#/components/parameters/bulk#index"
           },
           {
+            "$ref": "#/components/parameters/bulk#list_executed_pipelines"
+          },
+          {
             "$ref": "#/components/parameters/bulk#pipeline"
           },
           {
@@ -600,6 +615,9 @@
           },
           {
             "$ref": "#/components/parameters/bulk#require_alias"
+          },
+          {
+            "$ref": "#/components/parameters/bulk#require_data_stream"
           }
         ],
         "requestBody": {
@@ -623,6 +641,9 @@
             "$ref": "#/components/parameters/bulk#index"
           },
           {
+            "$ref": "#/components/parameters/bulk#list_executed_pipelines"
+          },
+          {
             "$ref": "#/components/parameters/bulk#pipeline"
           },
           {
@@ -648,6 +669,9 @@
           },
           {
             "$ref": "#/components/parameters/bulk#require_alias"
+          },
+          {
+            "$ref": "#/components/parameters/bulk#require_data_stream"
           }
         ],
         "requestBody": {
@@ -57344,6 +57368,16 @@
         },
         "style": "simple"
       },
+      "bulk#list_executed_pipelines": {
+        "in": "query",
+        "name": "list_executed_pipelines",
+        "description": "If `true`, the response will include the ingest pipelines that were executed for each index or create.",
+        "deprecated": false,
+        "schema": {
+          "type": "boolean"
+        },
+        "style": "form"
+      },
       "bulk#pipeline": {
         "in": "query",
         "name": "pipeline",
@@ -57428,6 +57462,16 @@
         "in": "query",
         "name": "require_alias",
         "description": "If `true`, the request’s actions must target an index alias.",
+        "deprecated": false,
+        "schema": {
+          "type": "boolean"
+        },
+        "style": "form"
+      },
+      "bulk#require_data_stream": {
+        "in": "query",
+        "name": "require_data_stream",
+        "description": "If `true`, the request's actions must target a data stream (existing or to-be-created).",
         "deprecated": false,
         "schema": {
           "type": "boolean"
