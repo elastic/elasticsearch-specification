@@ -24,7 +24,6 @@ import {
   Indices,
   WaitForActiveShards
 } from '@_types/common'
-import { Duration } from '@_types/Time'
 
 /**
  * Get field usage stats.
@@ -65,12 +64,6 @@ export interface Request extends RequestBase {
      * Comma-separated list or wildcard expressions of fields to include in the statistics.
      */
     fields?: Fields
-    /**
-     * Period to wait for a response.
-     * If no response is received before the timeout expires, the request fails and returns an error.
-     * @server_default 30s
-     */
-    timeout?: Duration
     /**
      * The number of shard copies that must be active before proceeding with the operation.
      * Set to all or any positive integer up to the total number of shards in the index (`number_of_replicas+1`).

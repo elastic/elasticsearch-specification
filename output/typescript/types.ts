@@ -8858,6 +8858,7 @@ export interface CcrFollowInfoResponse {
 
 export interface CcrFollowStatsRequest extends RequestBase {
   index: Indices
+  timeout?: Duration
 }
 
 export interface CcrFollowStatsResponse {
@@ -8866,6 +8867,7 @@ export interface CcrFollowStatsResponse {
 
 export interface CcrForgetFollowerRequest extends RequestBase {
   index: IndexName
+  timeout?: Duration
   body?: {
     follower_cluster?: string
     follower_index?: IndexName
@@ -8985,6 +8987,7 @@ export interface CcrStatsFollowStats {
 
 export interface CcrStatsRequest extends RequestBase {
   master_timeout?: Duration
+  timeout?: Duration
 }
 
 export interface CcrStatsResponse {
@@ -9293,6 +9296,7 @@ export interface ClusterPutComponentTemplateRequest extends RequestBase {
   name: Name
   create?: boolean
   master_timeout?: Duration
+  timeout?: Duration
   body?: {
     template: IndicesIndexState
     version?: VersionNumber
@@ -10766,7 +10770,6 @@ export interface IlmWaitForSnapshotAction {
 
 export interface IlmDeleteLifecycleRequest extends RequestBase {
   name: Name
-  timeout?: Duration
 }
 
 export type IlmDeleteLifecycleResponse = AcknowledgedResponseBase
@@ -10814,7 +10817,6 @@ export interface IlmExplainLifecycleRequest extends RequestBase {
   index: IndexName
   only_errors?: boolean
   only_managed?: boolean
-  timeout?: Duration
 }
 
 export interface IlmExplainLifecycleResponse {
@@ -10829,7 +10831,6 @@ export interface IlmGetLifecycleLifecycle {
 
 export interface IlmGetLifecycleRequest extends RequestBase {
   name?: Name
-  timeout?: Duration
 }
 
 export type IlmGetLifecycleResponse = Record<string, IlmGetLifecycleLifecycle>
@@ -10877,7 +10878,6 @@ export interface IlmMoveToStepStepKey {
 
 export interface IlmPutLifecycleRequest extends RequestBase {
   name: Name
-  timeout?: Duration
   body?: {
     policy?: IlmPolicy
   }
@@ -10901,13 +10901,11 @@ export interface IlmRetryRequest extends RequestBase {
 export type IlmRetryResponse = AcknowledgedResponseBase
 
 export interface IlmStartRequest extends RequestBase {
-  timeout?: Duration
 }
 
 export type IlmStartResponse = AcknowledgedResponseBase
 
 export interface IlmStopRequest extends RequestBase {
-  timeout?: Duration
 }
 
 export type IlmStopResponse = AcknowledgedResponseBase
@@ -11765,7 +11763,6 @@ export interface IndicesFieldUsageStatsRequest extends RequestBase {
   expand_wildcards?: ExpandWildcards
   ignore_unavailable?: boolean
   fields?: Fields
-  timeout?: Duration
   wait_for_active_shards?: WaitForActiveShards
 }
 
@@ -13301,7 +13298,6 @@ export type IngestUserAgentProperty = 'name' | 'os' | 'device' | 'original' | 'v
 
 export interface IngestDeleteGeoipDatabaseRequest extends RequestBase {
   id: Ids
-  timeout?: Duration
 }
 
 export type IngestDeleteGeoipDatabaseResponse = AcknowledgedResponseBase
@@ -13372,7 +13368,6 @@ export interface IngestProcessorGrokResponse {
 
 export interface IngestPutGeoipDatabaseRequest extends RequestBase {
   id: Id
-  timeout?: Duration
   body?: {
     name: Name
     maxmind: IngestMaxmind
@@ -13474,6 +13469,7 @@ export type LicenseLicenseType = 'missing' | 'trial' | 'basic' | 'standard' | 'd
 
 export interface LicenseDeleteRequest extends RequestBase {
   master_timeout?: Duration
+  timeout?: Duration
 }
 
 export type LicenseDeleteResponse = AcknowledgedResponseBase
@@ -13524,6 +13520,7 @@ export interface LicensePostAcknowledgement {
 export interface LicensePostRequest extends RequestBase {
   acknowledge?: boolean
   master_timeout?: Duration
+  timeout?: Duration
   body?: {
     license?: LicenseLicense
     licenses?: LicenseLicense[]
@@ -13539,6 +13536,7 @@ export interface LicensePostResponse {
 export interface LicensePostStartBasicRequest extends RequestBase {
   acknowledge?: boolean
   master_timeout?: Duration
+  timeout?: Duration
 }
 
 export interface LicensePostStartBasicResponse {
@@ -13553,6 +13551,7 @@ export interface LicensePostStartTrialRequest extends RequestBase {
   acknowledge?: boolean
   type_query_string?: string
   master_timeout?: Duration
+  timeout?: Duration
 }
 
 export interface LicensePostStartTrialResponse {
@@ -15069,6 +15068,7 @@ export type MlDeleteModelSnapshotResponse = AcknowledgedResponseBase
 export interface MlDeleteTrainedModelRequest extends RequestBase {
   model_id: Id
   force?: boolean
+  timeout?: Duration
 }
 
 export type MlDeleteTrainedModelResponse = AcknowledgedResponseBase
@@ -18890,7 +18890,6 @@ export type ShutdownType = 'restart' | 'remove' | 'replace'
 
 export interface ShutdownDeleteNodeRequest extends RequestBase {
   node_id: NodeId
-  timeout?: TimeUnit
 }
 
 export type ShutdownDeleteNodeResponse = AcknowledgedResponseBase
@@ -18917,7 +18916,6 @@ export interface ShutdownGetNodePluginsStatus {
 export interface ShutdownGetNodeRequest extends RequestBase {
   node_id?: NodeIds
   master_timeout?: TimeUnit
-  timeout?: TimeUnit
 }
 
 export interface ShutdownGetNodeResponse {
@@ -18934,7 +18932,6 @@ export type ShutdownGetNodeShutdownType = 'remove' | 'restart'
 
 export interface ShutdownPutNodeRequest extends RequestBase {
   node_id: NodeId
-  timeout?: TimeUnit
   body?: {
     type: ShutdownType
     reason: string
@@ -19060,7 +19057,6 @@ export interface SlmGetStatusResponse {
 
 export interface SlmPutLifecycleRequest extends RequestBase {
   policy_id: Name
-  timeout?: Duration
   body?: {
     config?: SlmConfiguration
     name?: Name
@@ -19074,12 +19070,14 @@ export type SlmPutLifecycleResponse = AcknowledgedResponseBase
 
 export interface SlmStartRequest extends RequestBase {
   master_timeout?: Duration
+  timeout?: Duration
 }
 
 export type SlmStartResponse = AcknowledgedResponseBase
 
 export interface SlmStopRequest extends RequestBase {
   master_timeout?: Duration
+  timeout?: Duration
 }
 
 export type SlmStopResponse = AcknowledgedResponseBase
@@ -19300,7 +19298,6 @@ export interface SnapshotCloneRequest extends RequestBase {
   snapshot: Name
   target_snapshot: Name
   master_timeout?: Duration
-  timeout?: Duration
   body?: {
     indices: string
   }
@@ -20039,6 +20036,7 @@ export type TransformPutTransformResponse = AcknowledgedResponseBase
 export interface TransformResetTransformRequest extends RequestBase {
   transform_id: Id
   force?: boolean
+  timeout?: Duration
 }
 
 export type TransformResetTransformResponse = AcknowledgedResponseBase

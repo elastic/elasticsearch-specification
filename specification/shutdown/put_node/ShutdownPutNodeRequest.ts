@@ -19,7 +19,6 @@
 
 import { RequestBase } from '@_types/Base'
 import { NodeId } from '@_types/common'
-import { TimeUnit } from '@_types/Time'
 import { Type } from '../_types/types'
 
 /**
@@ -29,13 +28,6 @@ import { Type } from '../_types/types'
 export interface Request extends RequestBase {
   path_parts: {
     node_id: NodeId
-  }
-  query_parameters: {
-    /**
-     * Period to wait for a response. If no response is received before the timeout expires, the request fails and returns an error.
-     * @server_default 30s
-     */
-    timeout?: TimeUnit
   }
   body: {
     /**

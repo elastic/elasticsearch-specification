@@ -18,7 +18,6 @@
  */
 
 import { RequestBase } from '@_types/Base'
-import { Duration } from '@_types/Time'
 
 /**
  * Start the ILM plugin.
@@ -29,8 +28,4 @@ import { Duration } from '@_types/Time'
  * @availability stack since=6.6.0 stability=stable
  * @cluster_privileges manage_ilm
  */
-export interface Request extends RequestBase {
-  query_parameters: {
-    timeout?: Duration
-  }
-}
+export interface Request extends RequestBase {}

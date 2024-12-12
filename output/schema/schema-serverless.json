@@ -11794,7 +11794,7 @@
       },
       "path": [],
       "query": [],
-      "specLocation": "cat/help/CatHelpRequest.ts#L22-L30"
+      "specLocation": "cat/help/CatHelpRequest.ts#L20-L28"
     },
     {
       "body": {
@@ -13312,9 +13312,22 @@
               "namespace": "_types"
             }
           }
+        },
+        {
+          "description": "Period to wait for a response. If no response is received before the timeout expires, the request fails and returns an error.",
+          "name": "timeout",
+          "required": false,
+          "serverDefault": "30s",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Duration",
+              "namespace": "_types"
+            }
+          }
         }
       ],
-      "specLocation": "cluster/put_component_template/ClusterPutComponentTemplateRequest.ts#L25-L95"
+      "specLocation": "cluster/put_component_template/ClusterPutComponentTemplateRequest.ts#L25-L100"
     },
     {
       "body": {
@@ -26561,9 +26574,22 @@
               "namespace": "_builtins"
             }
           }
+        },
+        {
+          "description": "Period to wait for a response. If no response is received before the timeout expires, the request fails and returns an error.",
+          "name": "timeout",
+          "required": false,
+          "serverDefault": "30s",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Duration",
+              "namespace": "_types"
+            }
+          }
         }
       ],
-      "specLocation": "ml/delete_trained_model/MlDeleteTrainedModelRequest.ts#L23-L43"
+      "specLocation": "ml/delete_trained_model/MlDeleteTrainedModelRequest.ts#L24-L49"
     },
     {
       "body": {
@@ -43295,9 +43321,22 @@
               "namespace": "_builtins"
             }
           }
+        },
+        {
+          "description": "Period to wait for a response. If no response is received before the timeout expires, the request fails and returns an error.",
+          "name": "timeout",
+          "required": false,
+          "serverDefault": "30s",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Duration",
+              "namespace": "_types"
+            }
+          }
         }
       ],
-      "specLocation": "transform/reset_transform/ResetTransformRequest.ts#L23-L49"
+      "specLocation": "transform/reset_transform/ResetTransformRequest.ts#L24-L55"
     },
     {
       "body": {
@@ -45465,7 +45504,7 @@
         "namespace": "_spec_utils"
       },
       "properties": [],
-      "specLocation": "_spec_utils/behaviors.ts#L29-L37"
+      "specLocation": "_spec_utils/behaviors.ts#L28-L36"
     },
     {
       "codegenNames": [
@@ -49822,7 +49861,7 @@
         "namespace": "_spec_utils"
       },
       "properties": [],
-      "specLocation": "_spec_utils/behaviors.ts#L39-L48"
+      "specLocation": "_spec_utils/behaviors.ts#L38-L47"
     },
     {
       "generics": [
@@ -106065,7 +106104,7 @@
           }
         }
       ],
-      "specLocation": "_spec_utils/behaviors.ts#L50-L84"
+      "specLocation": "_spec_utils/behaviors.ts#L49-L83"
     },
     {
       "kind": "interface",
@@ -107380,7 +107419,7 @@
           }
         }
       ],
-      "specLocation": "_spec_utils/behaviors.ts#L86-L119"
+      "specLocation": "_spec_utils/behaviors.ts#L85-L118"
     },
     {
       "kind": "interface",
@@ -136754,7 +136793,7 @@
         "namespace": "_spec_utils"
       },
       "properties": [],
-      "specLocation": "_spec_utils/behaviors.ts#L121-L127"
+      "specLocation": "_spec_utils/behaviors.ts#L120-L126"
     },
     {
       "attachedBehaviors": [

@@ -116,33 +116,9 @@
       ],
       "response": []
     },
-    "ccr.follow_stats": {
-      "request": [
-        "Request: missing json spec query parameter 'timeout'"
-      ],
-      "response": []
-    },
-    "ccr.forget_follower": {
-      "request": [
-        "Request: missing json spec query parameter 'timeout'"
-      ],
-      "response": []
-    },
-    "ccr.stats": {
-      "request": [
-        "Request: missing json spec query parameter 'timeout'"
-      ],
-      "response": []
-    },
     "cluster.get_component_template": {
       "request": [
         "Request: query parameter 'flat_settings' does not exist in the json spec"
-      ],
-      "response": []
-    },
-    "cluster.put_component_template": {
-      "request": [
-        "Request: missing json spec query parameter 'timeout'"
       ],
       "response": []
     },
@@ -262,42 +238,6 @@
       ],
       "response": []
     },
-    "ilm.delete_lifecycle": {
-      "request": [
-        "Request: query parameter 'timeout' does not exist in the json spec"
-      ],
-      "response": []
-    },
-    "ilm.explain_lifecycle": {
-      "request": [
-        "Request: query parameter 'timeout' does not exist in the json spec"
-      ],
-      "response": []
-    },
-    "ilm.get_lifecycle": {
-      "request": [
-        "Request: query parameter 'timeout' does not exist in the json spec"
-      ],
-      "response": []
-    },
-    "ilm.put_lifecycle": {
-      "request": [
-        "Request: query parameter 'timeout' does not exist in the json spec"
-      ],
-      "response": []
-    },
-    "ilm.start": {
-      "request": [
-        "Request: query parameter 'timeout' does not exist in the json spec"
-      ],
-      "response": []
-    },
-    "ilm.stop": {
-      "request": [
-        "Request: query parameter 'timeout' does not exist in the json spec"
-      ],
-      "response": []
-    },
     "index": {
       "request": [
         "Request: missing json spec query parameter 'require_data_stream'"
@@ -325,7 +265,6 @@
     },
     "indices.field_usage_stats": {
       "request": [
-        "Request: query parameter 'timeout' does not exist in the json spec",
         "Request: query parameter 'wait_for_active_shards' does not exist in the json spec"
       ],
       "response": []
@@ -374,12 +313,6 @@
       ],
       "response": []
     },
-    "ingest.delete_geoip_database": {
-      "request": [
-        "Request: query parameter 'timeout' does not exist in the json spec"
-      ],
-      "response": []
-    },
     "ingest.delete_ip_location_database": {
       "request": [
         "Missing request & response"
@@ -392,41 +325,16 @@
       ],
       "response": []
     },
-    "ingest.put_geoip_database": {
-      "request": [
-        "Request: query parameter 'timeout' does not exist in the json spec"
-      ],
-      "response": []
-    },
     "ingest.put_ip_location_database": {
       "request": [
         "Missing request & response"
       ],
       "response": []
     },
-    "license.delete": {
-      "request": [
-        "Request: missing json spec query parameter 'timeout'"
-      ],
-      "response": []
-    },
-    "license.post": {
-      "request": [
-        "Request: missing json spec query parameter 'timeout'"
-      ],
-      "response": []
-    },
-    "license.post_start_basic": {
-      "request": [
-        "Request: missing json spec query parameter 'timeout'"
-      ],
-      "response": []
-    },
     "license.post_start_trial": {
       "request": [
         "Request: query parameter 'type_query_string' does not exist in the json spec",
-        "Request: missing json spec query parameter 'type'",
-        "Request: missing json spec query parameter 'timeout'"
+        "Request: missing json spec query parameter 'type'"
       ],
       "response": []
     },
@@ -435,12 +343,6 @@
       "response": [
         "type_alias definition _global.mget:ResponseItem / union_of / instance_of / Generics / instance_of - No type definition for '_global.mget.ResponseItem:TDocument'"
       ]
-    },
-    "ml.delete_trained_model": {
-      "request": [
-        "Request: missing json spec query parameter 'timeout'"
-      ],
-      "response": []
     },
     "ml.get_memory_stats": {
       "request": [
@@ -590,51 +492,9 @@
       ],
       "response": []
     },
-    "shutdown.delete_node": {
-      "request": [
-        "Request: query parameter 'timeout' does not exist in the json spec"
-      ],
-      "response": []
-    },
-    "shutdown.get_node": {
-      "request": [
-        "Request: query parameter 'timeout' does not exist in the json spec"
-      ],
-      "response": []
-    },
-    "shutdown.put_node": {
-      "request": [
-        "Request: query parameter 'timeout' does not exist in the json spec"
-      ],
-      "response": []
-    },
     "simulate.ingest": {
       "request": [
         "Missing request & response"
-      ],
-      "response": []
-    },
-    "slm.put_lifecycle": {
-      "request": [
-        "Request: query parameter 'timeout' does not exist in the json spec"
-      ],
-      "response": []
-    },
-    "slm.start": {
-      "request": [
-        "Request: missing json spec query parameter 'timeout'"
-      ],
-      "response": []
-    },
-    "slm.stop": {
-      "request": [
-        "Request: missing json spec query parameter 'timeout'"
-      ],
-      "response": []
-    },
-    "snapshot.clone": {
-      "request": [
-        "Request: query parameter 'timeout' does not exist in the json spec"
       ],
       "response": []
     },
@@ -674,12 +534,6 @@
         "interface definition transform._types:RetentionPolicyContainer - Property time is a single-variant and must be required",
         "interface definition transform._types:SyncContainer - Property time is a single-variant and must be required"
       ]
-    },
-    "transform.reset_transform": {
-      "request": [
-        "Request: missing json spec query parameter 'timeout'"
-      ],
-      "response": []
     },
     "watcher.execute_watch": {
       "request": [
