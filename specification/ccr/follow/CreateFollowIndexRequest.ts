@@ -23,6 +23,9 @@ import { long } from '@_types/Numeric'
 import { Duration } from '@_types/Time'
 
 /**
+ * Create a follower.
+ * Create a cross-cluster replication follower index that follows a specific leader index.
+ * When the API returns, the follower index exists and cross-cluster replication starts replicating operations from the leader index to the follower index.
  * @rest_spec_name ccr.follow
  * @availability stack since=6.5.0 stability=stable
  * @doc_id ccr-put-follow
