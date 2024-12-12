@@ -21,9 +21,16 @@ import { RequestBase } from '@_types/Base'
 import { IndexName } from '@_types/common'
 
 /**
+ * Unfollow an index.
+ * Convert a cross-cluster replication follower index to a regular index.
+ * The API stops the following task associated with a follower index and removes index metadata and settings associated with cross-cluster replication.
+ * The follower index must be paused and closed before you call the unfollow API.
+ *
+ * NOTE: Currently cross-cluster replication does not support converting an existing regular index to a follower index. Converting a follower index to a regular index is an irreversible operation.
  * @rest_spec_name ccr.unfollow
  * @availability stack since=6.5.0 stability=stable
  * @doc_id ccr-post-unfollow
+ * @ext_doc_id ccr
  */
 export interface Request extends RequestBase {
   path_parts: {
