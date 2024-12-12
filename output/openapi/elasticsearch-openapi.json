@@ -16960,6 +16960,9 @@
                     "description": "The maximum number of threads to be used by the analysis. Using more\nthreads may decrease the time necessary to complete the analysis at the\ncost of using more CPU. Note that the process may use additional threads\nfor operational functionality other than the analysis itself.",
                     "type": "number"
                   },
+                  "_meta": {
+                    "$ref": "#/components/schemas/_types:Metadata"
+                  },
                   "model_memory_limit": {
                     "description": "The approximate maximum amount of memory resources that are permitted for\nanalytical processing. If your `elasticsearch.yml` file contains an\n`xpack.ml.max_model_memory_limit` setting, an error occurs when you try\nto create data frame analytics jobs that have `model_memory_limit` values\ngreater than that setting.",
                     "type": "string"
@@ -17018,6 +17021,9 @@
                     },
                     "max_num_threads": {
                       "type": "number"
+                    },
+                    "_meta": {
+                      "$ref": "#/components/schemas/_types:Metadata"
                     },
                     "model_memory_limit": {
                       "type": "string"
@@ -17766,6 +17772,46 @@
               "$ref": "#/components/schemas/_types:Id"
             },
             "style": "simple"
+          },
+          {
+            "in": "query",
+            "name": "allow_no_indices",
+            "description": "If `true`, wildcard indices expressions that resolve into no concrete indices are ignored. This includes the\n`_all` string or when no indices are specified.",
+            "deprecated": false,
+            "schema": {
+              "type": "boolean"
+            },
+            "style": "form"
+          },
+          {
+            "in": "query",
+            "name": "expand_wildcards",
+            "description": "Type of index that wildcard patterns can match. If the request can target data streams, this argument determines\nwhether wildcard expressions match hidden data streams. Supports comma-separated values. Valid values are:\n\n* `all`: Match any data stream or index, including hidden ones.\n* `closed`: Match closed, non-hidden indices. Also matches any non-hidden data stream. Data streams cannot be closed.\n* `hidden`: Match hidden data streams and hidden indices. Must be combined with `open`, `closed`, or both.\n* `none`: Wildcard patterns are not accepted.\n* `open`: Match open, non-hidden indices. Also matches any non-hidden data stream.",
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/_types:ExpandWildcards"
+            },
+            "style": "form"
+          },
+          {
+            "in": "query",
+            "name": "ignore_throttled",
+            "description": "If `true`, concrete, expanded or aliased indices are ignored when frozen.",
+            "deprecated": true,
+            "schema": {
+              "type": "boolean"
+            },
+            "style": "form"
+          },
+          {
+            "in": "query",
+            "name": "ignore_unavailable",
+            "description": "If `true`, unavailable indices (missing or closed) are ignored.",
+            "deprecated": false,
+            "schema": {
+              "type": "boolean"
+            },
+            "style": "form"
           }
         ],
         "requestBody": {
@@ -17803,6 +17849,9 @@
                   "description": {
                     "description": "A description of the job.",
                     "type": "string"
+                  },
+                  "job_id": {
+                    "$ref": "#/components/schemas/_types:Id"
                   },
                   "groups": {
                     "description": "A list of job groups. A job can belong to no groups or many.",
@@ -18152,6 +18201,9 @@
           },
           {
             "$ref": "#/components/parameters/ml.get_trained_models#include"
+          },
+          {
+            "$ref": "#/components/parameters/ml.get_trained_models#include_model_definition"
           },
           {
             "$ref": "#/components/parameters/ml.get_trained_models#size"
@@ -20059,6 +20111,9 @@
             "$ref": "#/components/parameters/ml.get_trained_models#include"
           },
           {
+            "$ref": "#/components/parameters/ml.get_trained_models#include_model_definition"
+          },
+          {
             "$ref": "#/components/parameters/ml.get_trained_models#size"
           },
           {
@@ -20359,13 +20414,13 @@
                 "schema": {
                   "type": "object",
                   "properties": {
-                    "bucket_count": {
+                    "job_id": {
+                      "$ref": "#/components/schemas/_types:Id"
+                    },
+                    "processed_record_count": {
                       "type": "number"
                     },
-                    "earliest_record_timestamp": {
-                      "type": "number"
-                    },
-                    "empty_bucket_count": {
+                    "processed_field_count": {
                       "type": "number"
                     },
                     "input_bytes": {
@@ -20374,19 +20429,7 @@
                     "input_field_count": {
                       "type": "number"
                     },
-                    "input_record_count": {
-                      "type": "number"
-                    },
                     "invalid_date_count": {
-                      "type": "number"
-                    },
-                    "job_id": {
-                      "$ref": "#/components/schemas/_types:Id"
-                    },
-                    "last_data_time": {
-                      "type": "number"
-                    },
-                    "latest_record_timestamp": {
                       "type": "number"
                     },
                     "missing_field_count": {
@@ -20395,32 +20438,50 @@
                     "out_of_order_timestamp_count": {
                       "type": "number"
                     },
-                    "processed_field_count": {
-                      "type": "number"
-                    },
-                    "processed_record_count": {
+                    "empty_bucket_count": {
                       "type": "number"
                     },
                     "sparse_bucket_count": {
                       "type": "number"
+                    },
+                    "bucket_count": {
+                      "type": "number"
+                    },
+                    "earliest_record_timestamp": {
+                      "$ref": "#/components/schemas/_types:EpochTimeUnitMillis"
+                    },
+                    "latest_record_timestamp": {
+                      "$ref": "#/components/schemas/_types:EpochTimeUnitMillis"
+                    },
+                    "last_data_time": {
+                      "$ref": "#/components/schemas/_types:EpochTimeUnitMillis"
+                    },
+                    "latest_empty_bucket_timestamp": {
+                      "$ref": "#/components/schemas/_types:EpochTimeUnitMillis"
+                    },
+                    "latest_sparse_bucket_timestamp": {
+                      "$ref": "#/components/schemas/_types:EpochTimeUnitMillis"
+                    },
+                    "input_record_count": {
+                      "type": "number"
+                    },
+                    "log_time": {
+                      "$ref": "#/components/schemas/_types:EpochTimeUnitMillis"
                     }
                   },
                   "required": [
-                    "bucket_count",
-                    "earliest_record_timestamp",
-                    "empty_bucket_count",
+                    "job_id",
+                    "processed_record_count",
+                    "processed_field_count",
                     "input_bytes",
                     "input_field_count",
-                    "input_record_count",
                     "invalid_date_count",
-                    "job_id",
-                    "last_data_time",
-                    "latest_record_timestamp",
                     "missing_field_count",
                     "out_of_order_timestamp_count",
-                    "processed_field_count",
-                    "processed_record_count",
-                    "sparse_bucket_count"
+                    "empty_bucket_count",
+                    "sparse_bucket_count",
+                    "bucket_count",
+                    "input_record_count"
                   ]
                 }
               }
@@ -21955,7 +22016,7 @@
                     "description": "An array of detector update objects.",
                     "type": "array",
                     "items": {
-                      "$ref": "#/components/schemas/ml._types:Detector"
+                      "$ref": "#/components/schemas/ml._types:DetectorUpdate"
                     }
                   },
                   "per_partition_categorization": {
@@ -73695,6 +73756,9 @@
           },
           "version": {
             "$ref": "#/components/schemas/_types:VersionString"
+          },
+          "_meta": {
+            "$ref": "#/components/schemas/_types:Metadata"
           }
         },
         "required": [
@@ -74082,7 +74146,7 @@
             "$ref": "#/components/schemas/_types:Id"
           },
           "node": {
-            "$ref": "#/components/schemas/ml._types:DiscoveryNode"
+            "$ref": "#/components/schemas/ml._types:DiscoveryNodeCompact"
           },
           "state": {
             "$ref": "#/components/schemas/ml._types:DatafeedState"
@@ -74096,18 +74160,14 @@
         },
         "required": [
           "datafeed_id",
-          "state",
-          "timing_stats"
+          "state"
         ]
       },
-      "ml._types:DiscoveryNode": {
+      "ml._types:DiscoveryNodeCompact": {
         "type": "object",
         "properties": {
-          "attributes": {
-            "type": "object",
-            "additionalProperties": {
-              "type": "string"
-            }
+          "name": {
+            "$ref": "#/components/schemas/_types:Name"
           },
           "ephemeral_id": {
             "$ref": "#/components/schemas/_types:Id"
@@ -74115,19 +74175,22 @@
           "id": {
             "$ref": "#/components/schemas/_types:Id"
           },
-          "name": {
-            "$ref": "#/components/schemas/_types:Name"
-          },
           "transport_address": {
             "$ref": "#/components/schemas/_types:TransportAddress"
+          },
+          "attributes": {
+            "type": "object",
+            "additionalProperties": {
+              "type": "string"
+            }
           }
         },
         "required": [
-          "attributes",
+          "name",
           "ephemeral_id",
           "id",
-          "name",
-          "transport_address"
+          "transport_address",
+          "attributes"
         ]
       },
       "ml._types:DatafeedTimingStats": {
@@ -74139,6 +74202,9 @@
           },
           "exponential_average_search_time_per_hour_ms": {
             "$ref": "#/components/schemas/_types:DurationValueUnitFloatMillis"
+          },
+          "exponential_average_calculation_context": {
+            "$ref": "#/components/schemas/ml._types:ExponentialAverageCalculationContext"
           },
           "job_id": {
             "$ref": "#/components/schemas/_types:Id"
@@ -74172,6 +74238,23 @@
       "_types:UnitFloatMillis": {
         "description": "Time unit for fractional milliseconds",
         "type": "number"
+      },
+      "ml._types:ExponentialAverageCalculationContext": {
+        "type": "object",
+        "properties": {
+          "incremental_metric_value_ms": {
+            "$ref": "#/components/schemas/_types:DurationValueUnitFloatMillis"
+          },
+          "latest_timestamp": {
+            "$ref": "#/components/schemas/_types:EpochTimeUnitMillis"
+          },
+          "previous_exponential_average_ms": {
+            "$ref": "#/components/schemas/_types:DurationValueUnitFloatMillis"
+          }
+        },
+        "required": [
+          "incremental_metric_value_ms"
+        ]
       },
       "ml._types:DatafeedRunningState": {
         "type": "object",
@@ -74463,7 +74546,7 @@
             "$ref": "#/components/schemas/ml._types:ModelSizeStats"
           },
           "node": {
-            "$ref": "#/components/schemas/ml._types:DiscoveryNode"
+            "$ref": "#/components/schemas/ml._types:DiscoveryNodeCompact"
           },
           "open_time": {
             "$ref": "#/components/schemas/_types:DateTime"
@@ -74639,6 +74722,9 @@
             "$ref": "#/components/schemas/_types:ByteSize"
           },
           "model_bytes_memory_limit": {
+            "$ref": "#/components/schemas/_types:ByteSize"
+          },
+          "output_memory_allocator_bytes": {
             "$ref": "#/components/schemas/_types:ByteSize"
           },
           "peak_model_bytes": {
@@ -74840,8 +74926,7 @@
             "type": "number"
           },
           "model_memory_limit": {
-            "description": "The approximate maximum amount of memory resources that are required for analytical processing. Once this limit is approached, data pruning becomes more aggressive. Upon exceeding this limit, new entities are not modeled. If the `xpack.ml.max_model_memory_limit` setting has a value greater than 0 and less than 1024mb, that value is used instead of the default. The default value is relatively small to ensure that high resource usage is a conscious decision. If you have jobs that are expected to analyze high cardinality fields, you will likely need to use a higher value. If you specify a number instead of a string, the units are assumed to be MiB. Specifying a string is recommended for clarity. If you specify a byte size unit of `b` or `kb` and the number does not equate to a discrete number of megabytes, it is rounded down to the closest MiB. The minimum valid value is 1 MiB. If you specify a value less than 1 MiB, an error occurs. If you specify a value for the `xpack.ml.max_model_memory_limit` setting, an error occurs when you try to create jobs that have `model_memory_limit` values greater than that setting value.",
-            "type": "string"
+            "$ref": "#/components/schemas/_types:ByteSize"
           }
         }
       },
@@ -75089,6 +75174,62 @@
           "failed"
         ]
       },
+      "ml._types:DiscoveryNode": {
+        "type": "object",
+        "additionalProperties": {
+          "$ref": "#/components/schemas/ml._types:DiscoveryNodeContent"
+        },
+        "minProperties": 1,
+        "maxProperties": 1
+      },
+      "ml._types:DiscoveryNodeContent": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "$ref": "#/components/schemas/_types:Name"
+          },
+          "ephemeral_id": {
+            "$ref": "#/components/schemas/_types:Id"
+          },
+          "transport_address": {
+            "$ref": "#/components/schemas/_types:TransportAddress"
+          },
+          "external_id": {
+            "type": "string"
+          },
+          "attributes": {
+            "type": "object",
+            "additionalProperties": {
+              "type": "string"
+            }
+          },
+          "roles": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "version": {
+            "$ref": "#/components/schemas/_types:VersionString"
+          },
+          "min_index_version": {
+            "type": "number"
+          },
+          "max_index_version": {
+            "type": "number"
+          }
+        },
+        "required": [
+          "ephemeral_id",
+          "transport_address",
+          "external_id",
+          "attributes",
+          "roles",
+          "version",
+          "min_index_version",
+          "max_index_version"
+        ]
+      },
       "ml._types:ModelSnapshot": {
         "type": "object",
         "properties": {
@@ -75176,8 +75317,7 @@
           "jobs",
           "overall_score",
           "result_type",
-          "timestamp",
-          "timestamp_string"
+          "timestamp"
         ]
       },
       "ml._types:OverallBucketJob": {
@@ -75545,6 +75685,9 @@
           "model_size_bytes": {
             "$ref": "#/components/schemas/_types:ByteSize"
           },
+          "model_package": {
+            "$ref": "#/components/schemas/ml._types:ModelPackageConfig"
+          },
           "location": {
             "$ref": "#/components/schemas/ml._types:TrainedModelLocation"
           },
@@ -75634,6 +75777,9 @@
           "bert": {
             "$ref": "#/components/schemas/ml._types:NlpBertTokenizationConfig"
           },
+          "bert_ja": {
+            "$ref": "#/components/schemas/ml._types:NlpBertTokenizationConfig"
+          },
           "mpnet": {
             "$ref": "#/components/schemas/ml._types:NlpBertTokenizationConfig"
           },
@@ -75645,26 +75791,36 @@
         "maxProperties": 1
       },
       "ml._types:NlpBertTokenizationConfig": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/ml._types:CommonTokenizationConfig"
+          },
+          {
+            "type": "object"
+          }
+        ]
+      },
+      "ml._types:CommonTokenizationConfig": {
         "type": "object",
         "properties": {
           "do_lower_case": {
             "description": "Should the tokenizer lower case the text",
             "type": "boolean"
           },
-          "with_special_tokens": {
-            "description": "Is tokenization completed with special tokens",
-            "type": "boolean"
-          },
           "max_sequence_length": {
             "description": "Maximum input sequence length for the model",
+            "type": "number"
+          },
+          "span": {
+            "description": "Tokenization spanning options. Special value of -1 indicates no spanning takes place",
             "type": "number"
           },
           "truncate": {
             "$ref": "#/components/schemas/ml._types:TokenizationTruncate"
           },
-          "span": {
-            "description": "Tokenization spanning options. Special value of -1 indicates no spanning takes place",
-            "type": "number"
+          "with_special_tokens": {
+            "description": "Is tokenization completed with special tokens",
+            "type": "boolean"
           }
         }
       },
@@ -75677,28 +75833,20 @@
         ]
       },
       "ml._types:NlpRobertaTokenizationConfig": {
-        "type": "object",
-        "properties": {
-          "add_prefix_space": {
-            "description": "Should the tokenizer prefix input with a space character",
-            "type": "boolean"
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/ml._types:CommonTokenizationConfig"
           },
-          "with_special_tokens": {
-            "description": "Is tokenization completed with special tokens",
-            "type": "boolean"
-          },
-          "max_sequence_length": {
-            "description": "Maximum input sequence length for the model",
-            "type": "number"
-          },
-          "truncate": {
-            "$ref": "#/components/schemas/ml._types:TokenizationTruncate"
-          },
-          "span": {
-            "description": "Tokenization spanning options. Special value of -1 indicates no spanning takes place",
-            "type": "number"
+          {
+            "type": "object",
+            "properties": {
+              "add_prefix_space": {
+                "description": "Should the tokenizer prefix input with a space character",
+                "type": "boolean"
+              }
+            }
           }
-        }
+        ]
       },
       "ml._types:ZeroShotClassificationInferenceOptions": {
         "type": "object",
@@ -75754,8 +75902,25 @@
           "results_field": {
             "description": "The field that is added to incoming documents to contain the inference prediction. Defaults to predicted_value.",
             "type": "string"
+          },
+          "vocabulary": {
+            "$ref": "#/components/schemas/ml._types:Vocabulary"
           }
-        }
+        },
+        "required": [
+          "vocabulary"
+        ]
+      },
+      "ml._types:Vocabulary": {
+        "type": "object",
+        "properties": {
+          "index": {
+            "$ref": "#/components/schemas/_types:IndexName"
+          }
+        },
+        "required": [
+          "index"
+        ]
       },
       "ml._types:NerInferenceOptions": {
         "type": "object",
@@ -75778,17 +75943,6 @@
             "$ref": "#/components/schemas/ml._types:Vocabulary"
           }
         }
-      },
-      "ml._types:Vocabulary": {
-        "type": "object",
-        "properties": {
-          "index": {
-            "$ref": "#/components/schemas/_types:IndexName"
-          }
-        },
-        "required": [
-          "index"
-        ]
       },
       "ml._types:PassThroughInferenceOptions": {
         "type": "object",
@@ -75818,8 +75972,14 @@
           "results_field": {
             "description": "The field that is added to incoming documents to contain the inference prediction. Defaults to predicted_value.",
             "type": "string"
+          },
+          "vocabulary": {
+            "$ref": "#/components/schemas/ml._types:Vocabulary"
           }
-        }
+        },
+        "required": [
+          "vocabulary"
+        ]
       },
       "ml._types:TextExpansionInferenceOptions": {
         "type": "object",
@@ -75830,8 +75990,14 @@
           "results_field": {
             "description": "The field that is added to incoming documents to contain the inference prediction. Defaults to predicted_value.",
             "type": "string"
+          },
+          "vocabulary": {
+            "$ref": "#/components/schemas/ml._types:Vocabulary"
           }
-        }
+        },
+        "required": [
+          "vocabulary"
+        ]
       },
       "ml._types:QuestionAnsweringInferenceOptions": {
         "type": "object",
@@ -75997,6 +76163,75 @@
           "importance"
         ]
       },
+      "ml._types:ModelPackageConfig": {
+        "type": "object",
+        "properties": {
+          "create_time": {
+            "$ref": "#/components/schemas/_types:EpochTimeUnitMillis"
+          },
+          "description": {
+            "type": "string"
+          },
+          "inference_config": {
+            "type": "object",
+            "additionalProperties": {
+              "type": "object"
+            }
+          },
+          "metadata": {
+            "$ref": "#/components/schemas/_types:Metadata"
+          },
+          "minimum_version": {
+            "type": "string"
+          },
+          "model_repository": {
+            "type": "string"
+          },
+          "model_type": {
+            "type": "string"
+          },
+          "packaged_model_id": {
+            "$ref": "#/components/schemas/_types:Id"
+          },
+          "platform_architecture": {
+            "type": "string"
+          },
+          "prefix_strings": {
+            "$ref": "#/components/schemas/ml._types:TrainedModelPrefixStrings"
+          },
+          "size": {
+            "$ref": "#/components/schemas/_types:ByteSize"
+          },
+          "sha256": {
+            "type": "string"
+          },
+          "tags": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "vocabulary_file": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "packaged_model_id"
+        ]
+      },
+      "ml._types:TrainedModelPrefixStrings": {
+        "type": "object",
+        "properties": {
+          "ingest": {
+            "description": "String prepended to input at ingest",
+            "type": "string"
+          },
+          "search": {
+            "description": "String prepended to input at search",
+            "type": "string"
+          }
+        }
+      },
       "ml._types:TrainedModelLocation": {
         "type": "object",
         "properties": {
@@ -76018,19 +76253,6 @@
         "required": [
           "name"
         ]
-      },
-      "ml._types:TrainedModelPrefixStrings": {
-        "type": "object",
-        "properties": {
-          "ingest": {
-            "description": "String prepended to input at ingest",
-            "type": "string"
-          },
-          "search": {
-            "description": "String prepended to input at search",
-            "type": "string"
-          }
-        }
       },
       "ml._types:TrainedModelStats": {
         "type": "object",
@@ -76068,6 +76290,9 @@
       "ml._types:TrainedModelDeploymentStats": {
         "type": "object",
         "properties": {
+          "adaptive_allocations": {
+            "$ref": "#/components/schemas/ml._types:AdaptiveAllocationsSettings"
+          },
           "allocation_status": {
             "$ref": "#/components/schemas/ml._types:TrainedModelDeploymentAllocationStatus"
           },
@@ -76099,6 +76324,12 @@
             "description": "The number of allocations requested.",
             "type": "number"
           },
+          "peak_throughput_per_minute": {
+            "type": "number"
+          },
+          "priority": {
+            "$ref": "#/components/schemas/ml._types:TrainingPriority"
+          },
           "queue_capacity": {
             "description": "The number of inference requests that can be queued before new requests are rejected.",
             "type": "number"
@@ -76127,20 +76358,29 @@
           }
         },
         "required": [
-          "allocation_status",
           "deployment_id",
-          "error_count",
-          "inference_count",
           "model_id",
           "nodes",
-          "number_of_allocations",
-          "queue_capacity",
-          "rejected_execution_count",
-          "reason",
-          "start_time",
-          "state",
-          "threads_per_allocation",
-          "timeout_count"
+          "peak_throughput_per_minute",
+          "priority",
+          "start_time"
+        ]
+      },
+      "ml._types:AdaptiveAllocationsSettings": {
+        "type": "object",
+        "properties": {
+          "enabled": {
+            "type": "boolean"
+          },
+          "min_number_of_allocations": {
+            "type": "number"
+          },
+          "max_number_of_allocations": {
+            "type": "number"
+          }
+        },
+        "required": [
+          "enabled"
         ]
       },
       "ml._types:TrainedModelDeploymentAllocationStatus": {
@@ -76178,6 +76418,12 @@
           "average_inference_time_ms": {
             "$ref": "#/components/schemas/_types:DurationValueUnitFloatMillis"
           },
+          "average_inference_time_ms_last_minute": {
+            "$ref": "#/components/schemas/_types:DurationValueUnitFloatMillis"
+          },
+          "average_inference_time_ms_excluding_cache_hits": {
+            "$ref": "#/components/schemas/_types:DurationValueUnitFloatMillis"
+          },
           "error_count": {
             "description": "The number of errors when evaluating the trained model.",
             "type": "number"
@@ -76186,9 +76432,14 @@
             "description": "The total number of inference calls made against this node for this model.",
             "type": "number"
           },
-          "last_access": {
-            "description": "The epoch time stamp of the last inference call for the model on this node.",
+          "inference_cache_hit_count": {
             "type": "number"
+          },
+          "inference_cache_hit_count_last_minute": {
+            "type": "number"
+          },
+          "last_access": {
+            "$ref": "#/components/schemas/_types:EpochTimeUnitMillis"
           },
           "node": {
             "$ref": "#/components/schemas/ml._types:DiscoveryNode"
@@ -76199,6 +76450,9 @@
           },
           "number_of_pending_requests": {
             "description": "The number of inference requests queued to be processed.",
+            "type": "number"
+          },
+          "peak_throughput_per_minute": {
             "type": "number"
           },
           "rejection_execution_count": {
@@ -76215,24 +76469,18 @@
             "description": "The number of threads used by each allocation during inference.",
             "type": "number"
           },
+          "throughput_last_minute": {
+            "type": "number"
+          },
           "timeout_count": {
             "description": "The number of inference requests that timed out before being processed.",
             "type": "number"
           }
         },
         "required": [
-          "average_inference_time_ms",
-          "error_count",
-          "inference_count",
-          "last_access",
-          "node",
-          "number_of_allocations",
-          "number_of_pending_requests",
-          "rejection_execution_count",
+          "peak_throughput_per_minute",
           "routing_state",
-          "start_time",
-          "threads_per_allocation",
-          "timeout_count"
+          "throughput_last_minute"
         ]
       },
       "ml._types:TrainedModelAssignmentRoutingTable": {
@@ -76255,7 +76503,6 @@
           }
         },
         "required": [
-          "reason",
           "routing_state",
           "current_allocations",
           "target_allocations"
@@ -76269,6 +76516,13 @@
           "starting",
           "stopped",
           "stopping"
+        ]
+      },
+      "ml._types:TrainingPriority": {
+        "type": "string",
+        "enum": [
+          "normal",
+          "low"
         ]
       },
       "ml._types:DeploymentAssignmentState": {
@@ -76725,18 +76979,23 @@
       "ml.info:Limits": {
         "type": "object",
         "properties": {
+          "max_single_ml_node_processors": {
+            "type": "number"
+          },
+          "total_ml_processors": {
+            "type": "number"
+          },
           "max_model_memory_limit": {
-            "type": "string"
+            "$ref": "#/components/schemas/_types:ByteSize"
           },
           "effective_max_model_memory_limit": {
-            "type": "string"
+            "$ref": "#/components/schemas/_types:ByteSize"
           },
           "total_ml_memory": {
-            "type": "string"
+            "$ref": "#/components/schemas/_types:ByteSize"
           }
         },
         "required": [
-          "effective_max_model_memory_limit",
           "total_ml_memory"
         ]
       },
@@ -77275,21 +77534,28 @@
           "field_names"
         ]
       },
-      "ml._types:TrainingPriority": {
-        "type": "string",
-        "enum": [
-          "normal",
-          "low"
-        ]
-      },
       "ml._types:TrainedModelAssignment": {
         "type": "object",
         "properties": {
+          "adaptive_allocations": {
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/ml._types:AdaptiveAllocationsSettings"
+              },
+              {
+                "nullable": true,
+                "type": "string"
+              }
+            ]
+          },
           "assignment_state": {
             "$ref": "#/components/schemas/ml._types:DeploymentAssignmentState"
           },
           "max_assigned_allocations": {
             "type": "number"
+          },
+          "reason": {
+            "type": "string"
           },
           "routing_table": {
             "description": "The allocation state for each node.",
@@ -77316,8 +77582,7 @@
         "type": "object",
         "properties": {
           "model_bytes": {
-            "description": "The size of the trained model in bytes.",
-            "type": "number"
+            "$ref": "#/components/schemas/_types:ByteSize"
           },
           "model_id": {
             "$ref": "#/components/schemas/_types:Id"
@@ -77335,6 +77600,12 @@
           "priority": {
             "$ref": "#/components/schemas/ml._types:TrainingPriority"
           },
+          "per_deployment_memory_bytes": {
+            "$ref": "#/components/schemas/_types:ByteSize"
+          },
+          "per_allocation_memory_bytes": {
+            "$ref": "#/components/schemas/_types:ByteSize"
+          },
           "queue_capacity": {
             "description": "Number of inference requests are allowed in the queue at a time.",
             "type": "number"
@@ -77348,9 +77619,10 @@
           "model_bytes",
           "model_id",
           "deployment_id",
-          "cache_size",
           "number_of_allocations",
           "priority",
+          "per_deployment_memory_bytes",
+          "per_allocation_memory_bytes",
           "queue_capacity",
           "threads_per_allocation"
         ]
@@ -77365,6 +77637,29 @@
         },
         "required": [
           "model_memory_limit"
+        ]
+      },
+      "ml._types:DetectorUpdate": {
+        "type": "object",
+        "properties": {
+          "detector_index": {
+            "description": "A unique identifier for the detector.\nThis identifier is based on the order of the detectors in the `analysis_config`, starting at zero.",
+            "type": "number"
+          },
+          "description": {
+            "description": "A description of the detector.",
+            "type": "string"
+          },
+          "custom_rules": {
+            "description": "An array of custom rule objects, which enable you to customize the way detectors operate.\nFor example, a rule may dictate to the detector conditions under which results should be skipped.\nKibana refers to custom rules as job rules.",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ml._types:DetectionRule"
+            }
+          }
+        },
+        "required": [
+          "detector_index"
         ]
       },
       "_global.msearch:MultiSearchResult": {
@@ -98614,6 +98909,16 @@
         "deprecated": false,
         "schema": {
           "$ref": "#/components/schemas/ml._types:Include"
+        },
+        "style": "form"
+      },
+      "ml.get_trained_models#include_model_definition": {
+        "in": "query",
+        "name": "include_model_definition",
+        "description": "parameter is deprecated! Use [include=definition] instead",
+        "deprecated": true,
+        "schema": {
+          "type": "boolean"
         },
         "style": "form"
       },

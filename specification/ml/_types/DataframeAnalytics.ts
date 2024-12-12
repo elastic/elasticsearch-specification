@@ -25,6 +25,7 @@ import {
   Id,
   IndexName,
   Indices,
+  Metadata,
   Name,
   VersionString
 } from '@_types/common'
@@ -318,6 +319,7 @@ export class DataframeAnalyticsSummary {
   model_memory_limit?: string
   source: DataframeAnalyticsSource
   version?: VersionString
+  _meta?: Metadata
 }
 
 export class DataframeAnalytics {
