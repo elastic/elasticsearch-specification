@@ -18,7 +18,7 @@
  */
 
 import { CatRequestBase } from '@cat/_types/CatBase'
-import { Duration } from '@_types/Time'
+import { Duration, TimeUnit } from '@_types/Time'
 
 /**
  * Get pending task information.
@@ -48,6 +48,6 @@ export interface Request extends CatRequestBase {
     /**
      * Unit used to display time values.
      */
-    time?: Duration
+    time?: TimeUnit
   }
 }

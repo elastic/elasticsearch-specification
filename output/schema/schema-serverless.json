@@ -12045,7 +12045,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "Duration",
+              "name": "TimeUnit",
               "namespace": "_types"
             }
           }
@@ -12419,7 +12419,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "Duration",
+              "name": "TimeUnit",
               "namespace": "_types"
             }
           }
@@ -106007,7 +106007,7 @@
         "name": "XPackCategory",
         "namespace": "xpack.info"
       },
-      "specLocation": "xpack/info/XPackInfoRequest.ts#L44-L48"
+      "specLocation": "xpack/info/XPackInfoRequest.ts#L39-L43"
     },
     {
       "attachedBehaviors": [

@@ -58003,7 +58003,7 @@
         "description": "Unit used to display time values.",
         "deprecated": false,
         "schema": {
-          "$ref": "#/components/schemas/_types:Duration"
+          "$ref": "#/components/schemas/_types:TimeUnit"
         },
         "style": "form"
       },
@@ -58196,7 +58196,7 @@
         "description": "Unit used to display time values.",
         "deprecated": false,
         "schema": {
-          "$ref": "#/components/schemas/_types:Duration"
+          "$ref": "#/components/schemas/_types:TimeUnit"
         },
         "style": "form"
       },

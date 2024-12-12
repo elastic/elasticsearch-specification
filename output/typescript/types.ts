@@ -7497,7 +7497,7 @@ export interface CatMlDataFrameAnalyticsRequest extends CatCatRequestBase {
   bytes?: Bytes
   h?: CatCatDfaColumns
   s?: CatCatDfaColumns
-  time?: Duration
+  time?: TimeUnit
 }
 
 export type CatMlDataFrameAnalyticsResponse = CatMlDataFrameAnalyticsDataFrameAnalyticsRecord[]
@@ -7743,7 +7743,7 @@ export interface CatMlTrainedModelsRequest extends CatCatRequestBase {
   s?: CatCatTrainedModelsColumns
   from?: integer
   size?: integer
-  time?: Duration
+  time?: TimeUnit
 }
 
 export type CatMlTrainedModelsResponse = CatMlTrainedModelsTrainedModelsRecord[]
@@ -8092,7 +8092,7 @@ export interface CatNodesRequest extends CatCatRequestBase {
   full_id?: boolean | string
   include_unloaded_segments?: boolean
   master_timeout?: Duration
-  time?: Duration
+  time?: TimeUnit
 }
 
 export type CatNodesResponse = CatNodesNodesRecord[]
@@ -8111,7 +8111,7 @@ export interface CatPendingTasksPendingTasksRecord {
 export interface CatPendingTasksRequest extends CatCatRequestBase {
   local?: boolean
   master_timeout?: Duration
-  time?: Duration
+  time?: TimeUnit
 }
 
 export type CatPendingTasksResponse = CatPendingTasksPendingTasksRecord[]
@@ -8201,7 +8201,7 @@ export interface CatRecoveryRequest extends CatCatRequestBase {
   active_only?: boolean
   bytes?: Bytes
   detailed?: boolean
-  time?: Duration
+  time?: TimeUnit
 }
 
 export type CatRecoveryResponse = CatRecoveryRecoveryRecord[]
@@ -8273,7 +8273,7 @@ export interface CatShardsRequest extends CatCatRequestBase {
   index?: Indices
   bytes?: Bytes
   master_timeout?: Duration
-  time?: Duration
+  time?: TimeUnit
 }
 
 export type CatShardsResponse = CatShardsShardsRecord[]
@@ -8497,7 +8497,7 @@ export interface CatSnapshotsRequest extends CatCatRequestBase {
   repository?: Names
   ignore_unavailable?: boolean
   master_timeout?: Duration
-  time?: Duration
+  time?: TimeUnit
 }
 
 export type CatSnapshotsResponse = CatSnapshotsSnapshotsRecord[]
@@ -8541,7 +8541,7 @@ export interface CatTasksRequest extends CatCatRequestBase {
   detailed?: boolean
   nodes?: string[]
   parent_task_id?: string
-  time?: Duration
+  time?: TimeUnit
 }
 
 export type CatTasksResponse = CatTasksTasksRecord[]

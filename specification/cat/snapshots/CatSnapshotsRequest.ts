@@ -19,7 +19,7 @@
 
 import { CatRequestBase } from '@cat/_types/CatBase'
 import { Names } from '@_types/common'
-import { Duration } from '@_types/Time'
+import { Duration, TimeUnit } from '@_types/Time'
 
 /**
  * Get snapshot information
@@ -56,6 +56,6 @@ export interface Request extends CatRequestBase {
     /**
      * Unit used to display time values.
      */
-    time?: Duration
+    time?: TimeUnit
   }
 }

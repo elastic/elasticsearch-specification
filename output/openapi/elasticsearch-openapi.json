@@ -1713,7 +1713,7 @@
             "description": "Unit used to display time values.",
             "deprecated": false,
             "schema": {
-              "$ref": "#/components/schemas/_types:Duration"
+              "$ref": "#/components/schemas/_types:TimeUnit"
             },
             "style": "form"
           }
@@ -1770,7 +1770,7 @@
             "description": "Unit used to display time values.",
             "deprecated": false,
             "schema": {
-              "$ref": "#/components/schemas/_types:Duration"
+              "$ref": "#/components/schemas/_types:TimeUnit"
             },
             "style": "form"
           }
@@ -2174,7 +2174,7 @@
             "description": "Unit used to display time values.",
             "deprecated": false,
             "schema": {
-              "$ref": "#/components/schemas/_types:Duration"
+              "$ref": "#/components/schemas/_types:TimeUnit"
             },
             "style": "form"
           }
@@ -20197,9 +20197,6 @@
         "operationId": "ml-get-memory-stats",
         "parameters": [
           {
-            "$ref": "#/components/parameters/ml.get_memory_stats#human"
-          },
-          {
             "$ref": "#/components/parameters/ml.get_memory_stats#master_timeout"
           },
           {
@@ -20225,9 +20222,6 @@
         "parameters": [
           {
             "$ref": "#/components/parameters/ml.get_memory_stats#node_id"
-          },
-          {
-            "$ref": "#/components/parameters/ml.get_memory_stats#human"
           },
           {
             "$ref": "#/components/parameters/ml.get_memory_stats#master_timeout"
@@ -27463,12 +27457,6 @@
           },
           {
             "$ref": "#/components/parameters/searchable_snapshots.clear_cache#ignore_unavailable"
-          },
-          {
-            "$ref": "#/components/parameters/searchable_snapshots.clear_cache#pretty"
-          },
-          {
-            "$ref": "#/components/parameters/searchable_snapshots.clear_cache#human"
           }
         ],
         "responses": {
@@ -27498,12 +27486,6 @@
           },
           {
             "$ref": "#/components/parameters/searchable_snapshots.clear_cache#ignore_unavailable"
-          },
-          {
-            "$ref": "#/components/parameters/searchable_snapshots.clear_cache#pretty"
-          },
-          {
-            "$ref": "#/components/parameters/searchable_snapshots.clear_cache#human"
           }
         ],
         "responses": {
@@ -36516,16 +36498,6 @@
             "in": "query",
             "name": "accept_enterprise",
             "description": "If this param is used it must be set to true",
-            "deprecated": false,
-            "schema": {
-              "type": "boolean"
-            },
-            "style": "form"
-          },
-          {
-            "in": "query",
-            "name": "human",
-            "description": "Defines whether additional human-readable information is included in the response. In particular, it adds descriptions and a tag line.",
             "deprecated": false,
             "schema": {
               "type": "boolean"
@@ -94361,7 +94333,7 @@
         "description": "Unit used to display time values.",
         "deprecated": false,
         "schema": {
-          "$ref": "#/components/schemas/_types:Duration"
+          "$ref": "#/components/schemas/_types:TimeUnit"
         },
         "style": "form"
       },
@@ -94554,7 +94526,7 @@
         "description": "Unit used to display time values.",
         "deprecated": false,
         "schema": {
-          "$ref": "#/components/schemas/_types:Duration"
+          "$ref": "#/components/schemas/_types:TimeUnit"
         },
         "style": "form"
       },
@@ -94605,7 +94577,7 @@
         "description": "Unit used to display time values.",
         "deprecated": false,
         "schema": {
-          "$ref": "#/components/schemas/_types:Duration"
+          "$ref": "#/components/schemas/_types:TimeUnit"
         },
         "style": "form"
       },
@@ -94667,7 +94639,7 @@
         "description": "Unit used to display time values.",
         "deprecated": false,
         "schema": {
-          "$ref": "#/components/schemas/_types:Duration"
+          "$ref": "#/components/schemas/_types:TimeUnit"
         },
         "style": "form"
       },
@@ -94708,7 +94680,7 @@
         "description": "Unit used to display time values.",
         "deprecated": false,
         "schema": {
-          "$ref": "#/components/schemas/_types:Duration"
+          "$ref": "#/components/schemas/_types:TimeUnit"
         },
         "style": "form"
       },
@@ -99425,16 +99397,6 @@
         },
         "style": "simple"
       },
-      "ml.get_memory_stats#human": {
-        "in": "query",
-        "name": "human",
-        "description": "Specify this query parameter to include the fields with units in the response. Otherwise only\nthe `_in_bytes` sizes are returned in the response.",
-        "deprecated": false,
-        "schema": {
-          "type": "boolean"
-        },
-        "style": "form"
-      },
       "ml.get_memory_stats#master_timeout": {
         "in": "query",
         "name": "master_timeout",
@@ -101702,24 +101664,6 @@
         "in": "query",
         "name": "ignore_unavailable",
         "description": "Whether specified concrete indices should be ignored when unavailable (missing or closed)",
-        "deprecated": false,
-        "schema": {
-          "type": "boolean"
-        },
-        "style": "form"
-      },
-      "searchable_snapshots.clear_cache#pretty": {
-        "in": "query",
-        "name": "pretty",
-        "deprecated": false,
-        "schema": {
-          "type": "boolean"
-        },
-        "style": "form"
-      },
-      "searchable_snapshots.clear_cache#human": {
-        "in": "query",
-        "name": "human",
         "deprecated": false,
         "schema": {
           "type": "boolean"
