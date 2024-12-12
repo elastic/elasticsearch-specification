@@ -16477,7 +16477,8 @@
         "tags": [
           "migration"
         ],
-        "summary": "Retrieves information about different cluster, node, and index level settings that use deprecated features that will be removed or changed in the next major version",
+        "summary": "Get deprecation information",
+        "description": "Get information about different cluster, node, and index level settings that use deprecated features that will be removed or changed in the next major version.\n\nTIP: This APIs is designed for indirect use by the Upgrade Assistant. We strongly recommend you use the Upgrade Assistant.",
         "operationId": "migration-deprecations",
         "responses": {
           "200": {
@@ -16492,7 +16493,8 @@
         "tags": [
           "migration"
         ],
-        "summary": "Retrieves information about different cluster, node, and index level settings that use deprecated features that will be removed or changed in the next major version",
+        "summary": "Get deprecation information",
+        "description": "Get information about different cluster, node, and index level settings that use deprecated features that will be removed or changed in the next major version.\n\nTIP: This APIs is designed for indirect use by the Upgrade Assistant. We strongly recommend you use the Upgrade Assistant.",
         "operationId": "migration-deprecations-1",
         "parameters": [
           {
@@ -16512,7 +16514,8 @@
         "tags": [
           "migration"
         ],
-        "summary": "Find out whether system features need to be upgraded or not",
+        "summary": "Get feature migration information",
+        "description": "Version upgrades sometimes require changes to how features store configuration information and data in system indices.\nCheck which features need to be migrated and the status of any migrations that are in progress.\n\nTIP: This API is designed for indirect use by the Upgrade Assistant.\nWe strongly recommend you use the Upgrade Assistant.",
         "operationId": "migration-get-feature-upgrade-status",
         "responses": {
           "200": {
@@ -16547,7 +16550,8 @@
         "tags": [
           "migration"
         ],
-        "summary": "Begin upgrades for system features",
+        "summary": "Start the feature migration",
+        "description": "Version upgrades sometimes require changes to how features store configuration information and data in system indices.\nThis API starts the automatic migration process.\n\nSome functionality might be temporarily unavailable during the migration process.\n\nTIP: The API is designed for indirect use by the Upgrade Assistant. We strongly recommend you use the Upgrade Assistant.",
         "operationId": "migration-post-feature-upgrade",
         "responses": {
           "200": {
