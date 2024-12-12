@@ -58,7 +58,6 @@
     },
     "bulk": {
       "request": [
-        "Request: missing json spec query parameter 'type'",
         "Request: missing json spec query parameter 'require_data_stream'",
         "Request: missing json spec query parameter 'list_executed_pipelines'"
       ],
@@ -725,6 +724,18 @@
       "response": [
         "type_alias definition _global.mget:ResponseItem / union_of / instance_of / Generics / instance_of - No type definition for '_global.mget.ResponseItem:TDocument'"
       ]
+    },
+    "migrate.get_reindex_status": {
+      "request": [
+        "Missing request & response"
+      ],
+      "response": []
+    },
+    "migrate.reindex": {
+      "request": [
+        "Missing request & response"
+      ],
+      "response": []
     },
     "ml.delete_trained_model": {
       "request": [
