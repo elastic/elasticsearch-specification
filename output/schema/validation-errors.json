@@ -56,14 +56,6 @@
       ],
       "response": []
     },
-    "bulk": {
-      "request": [
-        "Request: missing json spec query parameter 'type'",
-        "Request: missing json spec query parameter 'require_data_stream'",
-        "Request: missing json spec query parameter 'list_executed_pipelines'"
-      ],
-      "response": []
-    },
     "capabilities": {
       "request": [
         "Missing request & response"
