@@ -149,7 +149,7 @@ export default async function validateModel (apiModel: model.Model, restSpec: Ma
 
   // Register builtin types
   for (const name of [
-    'string', 'boolean', 'number', 'null', 'void'
+    'string', 'boolean', 'number', 'null', 'void', 'binary'
   ]) {
     const typeName = {
       namespace: '_builtins',

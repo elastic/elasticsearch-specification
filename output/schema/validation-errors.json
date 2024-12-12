@@ -389,12 +389,6 @@
       ],
       "response": []
     },
-    "esql.query": {
-      "request": [],
-      "response": [
-        "type_alias definition _types:EsqlColumns / instance_of - No type definition for '_builtins:binary'"
-      ]
-    },
     "features.get_features": {
       "request": [
         "Request: missing json spec query parameter 'master_timeout'"
@@ -726,9 +720,7 @@
         "Request: query parameter 'grid_agg' does not exist in the json spec",
         "Request: missing json spec query parameter 'track_total_hits'"
       ],
-      "response": [
-        "type_alias definition _types:MapboxVectorTiles / instance_of - No type definition for '_builtins:binary'"
-      ]
+      "response": []
     },
     "search_shards": {
       "request": [
