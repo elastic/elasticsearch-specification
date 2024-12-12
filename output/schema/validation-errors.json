@@ -39,11 +39,7 @@
     "async_search.get": {
       "request": [],
       "response": [
-        "type_alias definition _types:EpochTime / instance_of - No type definition for '_types.EpochTime:Unit'",
-        "type_alias definition _types.aggregations:Buckets / union_of / dictionary_of / instance_of - No type definition for '_types.aggregations.Buckets:TBucket'",
-        "type_alias definition _types.aggregations:Buckets / union_of / array_of / instance_of - No type definition for '_types.aggregations.Buckets:TBucket'",
         "type_alias definition _spec_utils:Void / instance_of - No type definition for '_builtins:void'",
-        "type_alias definition _types:DurationValue / instance_of - No type definition for '_types.DurationValue:Unit'",
         "type_alias definition _global.search._types:Suggest - A tagged union should not have generic parameters",
         "type_alias definition _global.search._types:Suggest / instance_of / Generics / instance_of - No type definition for '_global.search._types.Suggest:TDocument'",
         "type_alias definition _global.search._types:Suggest - Expected 1 generic parameters but got 0"
@@ -51,8 +47,7 @@
     },
     "async_search.submit": {
       "request": [
-        "interface definition _types:QueryVectorBuilder - Property text_embedding is a single-variant and must be required",
-        "type_alias definition _spec_utils:PipeSeparatedFlags / union_of / instance_of - No type definition for '_spec_utils.PipeSeparatedFlags:T'"
+        "interface definition _types:QueryVectorBuilder - Property text_embedding is a single-variant and must be required"
       ],
       "response": []
     },
@@ -61,12 +56,6 @@
         "Missing request & response"
       ],
       "response": []
-    },
-    "cat.allocation": {
-      "request": [],
-      "response": [
-        "type_alias definition _spec_utils:Stringified / union_of / instance_of - No type definition for '_spec_utils.Stringified:T'"
-      ]
     },
     "cat.count": {
       "request": [
@@ -353,12 +342,6 @@
       ],
       "response": []
     },
-    "connector.update_error": {
-      "request": [
-        "type_alias definition _spec_utils:WithNullValue / union_of / instance_of - No type definition for '_spec_utils.WithNullValue:T'"
-      ],
-      "response": []
-    },
     "connector.update_features": {
       "request": [
         "Missing request & response"
@@ -444,12 +427,6 @@
         "Missing request & response"
       ],
       "response": []
-    },
-    "fleet.msearch": {
-      "request": [],
-      "response": [
-        "type_alias definition _global.msearch:ResponseItem / union_of / instance_of / Generics / instance_of - No type definition for '_global.msearch.ResponseItem:TDocument'"
-      ]
     },
     "fleet.post_secret": {
       "request": [
@@ -649,12 +626,6 @@
         "Request: missing json spec query parameter 'timeout'"
       ],
       "response": []
-    },
-    "mget": {
-      "request": [],
-      "response": [
-        "type_alias definition _global.mget:ResponseItem / union_of / instance_of / Generics / instance_of - No type definition for '_global.mget.ResponseItem:TDocument'"
-      ]
     },
     "ml.delete_trained_model": {
       "request": [

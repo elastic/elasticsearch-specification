@@ -541,7 +541,7 @@ export default async function validateModel (apiModel: model.Model, restSpec: Ma
   }
 
   function validateTypeAlias (typeDef: model.TypeAlias): void {
-    const openGenerics = new Set(typeDef.generics?.map(t => t.name))
+    const openGenerics = openGenericSet(typeDef);
 
     if (typeDef.variants != null) {
       if (typeDef.generics != null && typeDef.generics.length !== 0) {
@@ -674,7 +674,7 @@ export default async function validateModel (apiModel: model.Model, restSpec: Ma
   // -----------------------------------------------------------------------------------------------
   // Constituents of type definitions
 
-  function openGenericSet (typeDef: model.Request | model.Response | model.Interface): Set<string> {
+  function openGenericSet (typeDef: model.Request | model.Response | model.Interface | model.TypeAlias): Set<string> {
     return new Set((typeDef.generics ?? []).map(name => fqn(name)))
   }
 
