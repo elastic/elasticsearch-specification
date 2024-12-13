@@ -77,6 +77,13 @@ export interface Request extends RequestBase {
      * body.
      */
     include?: Include
+
+    /**
+     * parameter is deprecated! Use [include=definition] instead
+     * @deprecated 7.10.0
+     */
+    include_model_definition?: boolean
+
     /**
      * Specifies the maximum number of models to obtain.
      * @server_default 100
