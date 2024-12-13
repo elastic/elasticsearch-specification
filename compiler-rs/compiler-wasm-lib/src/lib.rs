@@ -30,7 +30,7 @@ fn convert0(json: &str, flavor: &str) -> anyhow::Result<String> {
     let filter: Option<fn(&Option<Availabilities>) -> bool> = match flavor {
         "all" => None,
         "stack" => Some(|a| {
-            // Generate public and private items for Stack
+            // Generate only public items for Stack
             clients_schema::Flavor::Stack.visibility(a) == Some(Visibility::Public)
         }),
         "serverless" => Some(|a| {
