@@ -541,7 +541,7 @@ export default async function validateModel (apiModel: model.Model, restSpec: Ma
   }
 
   function validateTypeAlias (typeDef: model.TypeAlias): void {
-    const openGenerics = openGenericSet(typeDef);
+    const openGenerics = openGenericSet(typeDef)
 
     if (typeDef.variants != null) {
       if (typeDef.type.kind !== 'union_of') {
