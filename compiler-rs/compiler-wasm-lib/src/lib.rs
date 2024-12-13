@@ -31,7 +31,7 @@ fn convert0(json: &str, flavor: &str) -> anyhow::Result<String> {
         "all" => None,
         "stack" => Some(|a| {
             // Generate public and private items for Stack
-            clients_schema::Flavor::Stack.available(a)
+            clients_schema::Flavor::Stack.visibility(a) == Some(Visibility::Public)
         }),
         "serverless" => Some(|a| {
             // Generate only public items for Serverless
