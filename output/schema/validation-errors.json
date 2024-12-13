@@ -36,24 +36,10 @@
       ],
       "response": []
     },
-    "async_search.get": {
-      "request": [],
-      "response": [
-        "type_alias definition _types:EpochTime / instance_of - No type definition for '_types.EpochTime:Unit'",
-        "type_alias definition _types.aggregations:Buckets / union_of / dictionary_of / instance_of - No type definition for '_types.aggregations.Buckets:TBucket'",
-        "type_alias definition _types.aggregations:Buckets / union_of / array_of / instance_of - No type definition for '_types.aggregations.Buckets:TBucket'",
-        "type_alias definition _spec_utils:Void / instance_of - No type definition for '_builtins:void'",
-        "type_alias definition _types:DurationValue / instance_of - No type definition for '_types.DurationValue:Unit'",
-        "type_alias definition _global.search._types:Suggest - A tagged union should not have generic parameters",
-        "type_alias definition _global.search._types:Suggest / instance_of / Generics / instance_of - No type definition for '_global.search._types.Suggest:TDocument'",
-        "type_alias definition _global.search._types:Suggest - Expected 1 generic parameters but got 0"
-      ]
-    },
     "async_search.submit": {
       "request": [
         "Request: query parameter 'min_compatible_shard_node' does not exist in the json spec",
-        "interface definition _types:QueryVectorBuilder - Property text_embedding is a single-variant and must be required",
-        "type_alias definition _spec_utils:PipeSeparatedFlags / union_of / instance_of - No type definition for '_spec_utils.PipeSeparatedFlags:T'"
+        "interface definition _types:QueryVectorBuilder - Property text_embedding is a single-variant and must be required"
       ],
       "response": []
     },
@@ -86,9 +72,7 @@
         "Request: missing json spec query parameter 'v'",
         "request definition cat.allocation:Request / body - A request with inherited properties must have a PropertyBody"
       ],
-      "response": [
-        "type_alias definition _spec_utils:Stringified / union_of / instance_of - No type definition for '_spec_utils.Stringified:T'"
-      ]
+      "response": []
     },
     "cat.component_templates": {
       "request": [
@@ -539,12 +523,6 @@
       ],
       "response": []
     },
-    "connector.update_error": {
-      "request": [
-        "type_alias definition _spec_utils:WithNullValue / union_of / instance_of - No type definition for '_spec_utils.WithNullValue:T'"
-      ],
-      "response": []
-    },
     "connector.update_features": {
       "request": [
         "Missing request & response"
@@ -601,12 +579,6 @@
       ],
       "response": []
     },
-    "esql.query": {
-      "request": [],
-      "response": [
-        "type_alias definition _types:EsqlColumns / instance_of - No type definition for '_builtins:binary'"
-      ]
-    },
     "features.get_features": {
       "request": [
         "Request: missing json spec query parameter 'master_timeout'"
@@ -647,9 +619,7 @@
         "Request: query parameter 'wait_for_checkpoints' does not exist in the json spec",
         "Request: query parameter 'allow_partial_search_results' does not exist in the json spec"
       ],
-      "response": [
-        "type_alias definition _global.msearch:ResponseItem / union_of / instance_of / Generics / instance_of - No type definition for '_global.msearch.ResponseItem:TDocument'"
-      ]
+      "response": []
     },
     "fleet.post_secret": {
       "request": [
@@ -898,12 +868,6 @@
       ],
       "response": []
     },
-    "mget": {
-      "request": [],
-      "response": [
-        "type_alias definition _global.mget:ResponseItem / union_of / instance_of / Generics / instance_of - No type definition for '_global.mget.ResponseItem:TDocument'"
-      ]
-    },
     "ml.delete_trained_model": {
       "request": [
         "Request: missing json spec query parameter 'timeout'"
@@ -1012,9 +976,7 @@
         "Request: query parameter 'grid_agg' does not exist in the json spec",
         "Request: missing json spec query parameter 'track_total_hits'"
       ],
-      "response": [
-        "type_alias definition _types:MapboxVectorTiles / instance_of - No type definition for '_builtins:binary'"
-      ]
+      "response": []
     },
     "search_shards": {
       "request": [
