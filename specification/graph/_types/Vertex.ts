@@ -60,6 +60,6 @@ export class VertexDefinition {
 
 /** @shortcut_property term */
 export class VertexInclude {
-  boost: double
+  boost?: double
   term: string
 }
