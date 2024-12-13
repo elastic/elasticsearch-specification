@@ -4419,98 +4419,6 @@
         "x-beta": true
       }
     },
-    "/_connector/{connector_id}/_last_sync": {
-      "put": {
-        "tags": [
-          "connector"
-        ],
-        "summary": "Update the connector last sync stats",
-        "description": "Update the fields related to the last sync of a connector.\nThis action is used for analytics and monitoring.",
-        "operationId": "connector-last-sync",
-        "parameters": [
-          {
-            "in": "path",
-            "name": "connector_id",
-            "description": "The unique identifier of the connector to be updated",
-            "required": true,
-            "deprecated": false,
-            "schema": {
-              "$ref": "#/components/schemas/_types:Id"
-            },
-            "style": "simple"
-          }
-        ],
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "type": "object",
-                "properties": {
-                  "last_access_control_sync_error": {
-                    "type": "string"
-                  },
-                  "last_access_control_sync_scheduled_at": {
-                    "$ref": "#/components/schemas/_types:DateTime"
-                  },
-                  "last_access_control_sync_status": {
-                    "$ref": "#/components/schemas/connector._types:SyncStatus"
-                  },
-                  "last_deleted_document_count": {
-                    "type": "number"
-                  },
-                  "last_incremental_sync_scheduled_at": {
-                    "$ref": "#/components/schemas/_types:DateTime"
-                  },
-                  "last_indexed_document_count": {
-                    "type": "number"
-                  },
-                  "last_seen": {
-                    "$ref": "#/components/schemas/_types:DateTime"
-                  },
-                  "last_sync_error": {
-                    "type": "string"
-                  },
-                  "last_sync_scheduled_at": {
-                    "$ref": "#/components/schemas/_types:DateTime"
-                  },
-                  "last_sync_status": {
-                    "$ref": "#/components/schemas/connector._types:SyncStatus"
-                  },
-                  "last_synced": {
-                    "$ref": "#/components/schemas/_types:DateTime"
-                  },
-                  "sync_cursor": {
-                    "type": "object"
-                  }
-                }
-              }
-            }
-          },
-          "required": true
-        },
-        "responses": {
-          "200": {
-            "description": "",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "properties": {
-                    "result": {
-                      "$ref": "#/components/schemas/_types:Result"
-                    }
-                  },
-                  "required": [
-                    "result"
-                  ]
-                }
-              }
-            }
-          }
-        },
-        "x-state": "Technical preview"
-      }
-    },
     "/_connector": {
       "get": {
         "tags": [
@@ -6304,16 +6212,6 @@
               "$ref": "#/components/schemas/_types:Id"
             },
             "style": "simple"
-          },
-          {
-            "in": "query",
-            "name": "force_synthetic_source",
-            "description": "Should this request force synthetic _source?\nUse this to test if the mapping supports synthetic _source and to get a sense of the worst case performance.\nFetches with this enabled will be slower the enabling synthetic source natively in the index.",
-            "deprecated": false,
-            "schema": {
-              "type": "boolean"
-            },
-            "style": "form"
           },
           {
             "in": "query",
@@ -16288,9 +16186,6 @@
         "operationId": "mget",
         "parameters": [
           {
-            "$ref": "#/components/parameters/mget#force_synthetic_source"
-          },
-          {
             "$ref": "#/components/parameters/mget#preference"
           },
           {
@@ -16333,9 +16228,6 @@
         "description": "Get multiple JSON documents by ID from one or more indices.\nIf you specify an index in the request URI, you only need to specify the document IDs in the request body.\nTo ensure fast responses, this multi get (mget) API responds with partial results if one or more shards fail.",
         "operationId": "mget-1",
         "parameters": [
-          {
-            "$ref": "#/components/parameters/mget#force_synthetic_source"
-          },
           {
             "$ref": "#/components/parameters/mget#preference"
           },
@@ -16385,9 +16277,6 @@
             "$ref": "#/components/parameters/mget#index"
           },
           {
-            "$ref": "#/components/parameters/mget#force_synthetic_source"
-          },
-          {
             "$ref": "#/components/parameters/mget#preference"
           },
           {
@@ -16432,9 +16321,6 @@
         "parameters": [
           {
             "$ref": "#/components/parameters/mget#index"
-          },
-          {
-            "$ref": "#/components/parameters/mget#force_synthetic_source"
           },
           {
             "$ref": "#/components/parameters/mget#preference"
@@ -22522,99 +22408,6 @@
         "x-state": "Added in 5.4.0"
       }
     },
-    "/_ml/anomaly_detectors/_validate": {
-      "post": {
-        "tags": [
-          "ml"
-        ],
-        "summary": "Validates an anomaly detection job",
-        "operationId": "ml-validate",
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "type": "object",
-                "properties": {
-                  "job_id": {
-                    "$ref": "#/components/schemas/_types:Id"
-                  },
-                  "analysis_config": {
-                    "$ref": "#/components/schemas/ml._types:AnalysisConfig"
-                  },
-                  "analysis_limits": {
-                    "$ref": "#/components/schemas/ml._types:AnalysisLimits"
-                  },
-                  "data_description": {
-                    "$ref": "#/components/schemas/ml._types:DataDescription"
-                  },
-                  "description": {
-                    "type": "string"
-                  },
-                  "model_plot": {
-                    "$ref": "#/components/schemas/ml._types:ModelPlotConfig"
-                  },
-                  "model_snapshot_id": {
-                    "$ref": "#/components/schemas/_types:Id"
-                  },
-                  "model_snapshot_retention_days": {
-                    "type": "number"
-                  },
-                  "results_index_name": {
-                    "$ref": "#/components/schemas/_types:IndexName"
-                  }
-                }
-              }
-            }
-          },
-          "required": true
-        },
-        "responses": {
-          "200": {
-            "description": "",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/_types:AcknowledgedResponseBase"
-                }
-              }
-            }
-          }
-        },
-        "x-state": "Added in 6.3.0"
-      }
-    },
-    "/_ml/anomaly_detectors/_validate/detector": {
-      "post": {
-        "tags": [
-          "ml"
-        ],
-        "summary": "Validates an anomaly detection detector",
-        "operationId": "ml-validate-detector",
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/ml._types:Detector"
-              }
-            }
-          },
-          "required": true
-        },
-        "responses": {
-          "200": {
-            "description": "",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/_types:AcknowledgedResponseBase"
-                }
-              }
-            }
-          }
-        },
-        "x-state": "Added in 5.4.0"
-      }
-    },
     "/_monitoring/bulk": {
       "put": {
         "tags": [
@@ -25775,9 +25568,6 @@
           },
           {
             "$ref": "#/components/parameters/search#sort"
-          },
-          {
-            "$ref": "#/components/parameters/search#force_synthetic_source"
           }
         ],
         "requestBody": {
@@ -25925,9 +25715,6 @@
           },
           {
             "$ref": "#/components/parameters/search#sort"
-          },
-          {
-            "$ref": "#/components/parameters/search#force_synthetic_source"
           }
         ],
         "requestBody": {
@@ -26080,9 +25867,6 @@
           },
           {
             "$ref": "#/components/parameters/search#sort"
-          },
-          {
-            "$ref": "#/components/parameters/search#force_synthetic_source"
           }
         ],
         "requestBody": {
@@ -26233,9 +26017,6 @@
           },
           {
             "$ref": "#/components/parameters/search#sort"
-          },
-          {
-            "$ref": "#/components/parameters/search#force_synthetic_source"
           }
         ],
         "requestBody": {
@@ -32098,121 +31879,6 @@
           }
         },
         "x-state": "Added in 0.0.0"
-      }
-    },
-    "/_snapshot/{repository}/_verify_integrity": {
-      "post": {
-        "tags": [
-          "snapshot"
-        ],
-        "summary": "Verifies the integrity of the contents of a snapshot repository",
-        "operationId": "snapshot-repository-verify-integrity",
-        "parameters": [
-          {
-            "in": "path",
-            "name": "repository",
-            "description": "A repository name",
-            "required": true,
-            "deprecated": false,
-            "schema": {
-              "$ref": "#/components/schemas/_types:Names"
-            },
-            "style": "simple"
-          },
-          {
-            "in": "query",
-            "name": "meta_thread_pool_concurrency",
-            "description": "Number of threads to use for reading metadata",
-            "deprecated": false,
-            "schema": {
-              "type": "number"
-            },
-            "style": "form"
-          },
-          {
-            "in": "query",
-            "name": "blob_thread_pool_concurrency",
-            "description": "Number of threads to use for reading blob contents",
-            "deprecated": false,
-            "schema": {
-              "type": "number"
-            },
-            "style": "form"
-          },
-          {
-            "in": "query",
-            "name": "snapshot_verification_concurrency",
-            "description": "Number of snapshots to verify concurrently",
-            "deprecated": false,
-            "schema": {
-              "type": "number"
-            },
-            "style": "form"
-          },
-          {
-            "in": "query",
-            "name": "index_verification_concurrency",
-            "description": "Number of indices to verify concurrently",
-            "deprecated": false,
-            "schema": {
-              "type": "number"
-            },
-            "style": "form"
-          },
-          {
-            "in": "query",
-            "name": "index_snapshot_verification_concurrency",
-            "description": "Number of snapshots to verify concurrently within each index",
-            "deprecated": false,
-            "schema": {
-              "type": "number"
-            },
-            "style": "form"
-          },
-          {
-            "in": "query",
-            "name": "max_failed_shard_snapshots",
-            "description": "Maximum permitted number of failed shard snapshots",
-            "deprecated": false,
-            "schema": {
-              "type": "number"
-            },
-            "style": "form"
-          },
-          {
-            "in": "query",
-            "name": "verify_blob_contents",
-            "description": "Whether to verify the contents of individual blobs",
-            "deprecated": false,
-            "schema": {
-              "type": "boolean"
-            },
-            "style": "form"
-          },
-          {
-            "in": "query",
-            "name": "max_bytes_per_sec",
-            "description": "Rate limit for individual blob verification",
-            "deprecated": false,
-            "schema": {
-              "type": "string"
-            },
-            "style": "form"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object"
-                }
-              }
-            }
-          }
-        },
-        "x-state": "Technical preview"
       }
     },
     "/_snapshot/{repository}/{snapshot}/_restore": {
@@ -98285,16 +97951,6 @@
         },
         "style": "simple"
       },
-      "mget#force_synthetic_source": {
-        "in": "query",
-        "name": "force_synthetic_source",
-        "description": "Should this request force synthetic _source?\nUse this to test if the mapping supports synthetic _source and to get a sense of the worst case performance.\nFetches with this enabled will be slower the enabling synthetic source natively in the index.",
-        "deprecated": false,
-        "schema": {
-          "type": "boolean"
-        },
-        "style": "form"
-      },
       "mget#preference": {
         "in": "query",
         "name": "preference",
@@ -100861,16 +100517,6 @@
               }
             }
           ]
-        },
-        "style": "form"
-      },
-      "search#force_synthetic_source": {
-        "in": "query",
-        "name": "force_synthetic_source",
-        "description": "Should this request force synthetic _source?\nUse this to test if the mapping supports synthetic _source and to get a sense of the worst case performance.\nFetches with this enabled will be slower the enabling synthetic source natively in the index.",
-        "deprecated": false,
-        "schema": {
-          "type": "boolean"
         },
         "style": "form"
       },
