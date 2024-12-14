@@ -22,9 +22,12 @@ import { Id } from '@_types/common'
 import { Duration } from '@_types/Time'
 
 /**
- * Stops an existing, started rollup job.
+ * Stop rollup jobs.
+ * If you try to stop a job that does not exist, an exception occurs.
+ * If you try to stop a job that is already stopped, nothing happens.
  * @rest_spec_name rollup.stop_job
  * @availability stack since=6.3.0 stability=experimental
+ * @cluster_privileges manage_rollup
  */
 export interface Request extends RequestBase {
   path_parts: {
