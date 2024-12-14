@@ -23,7 +23,7 @@ import { TimeUnit } from '@_types/Time'
 
 /**
  * Get the shutdown status.
- * 
+ *
  * Get information about nodes that are ready to be shut down, have shut down preparations still in progress, or have stalled.
  * The API returns status information for each part of the shut down process.
  *
