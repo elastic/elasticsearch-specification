@@ -24,7 +24,7 @@ import { Id } from '@_types/common'
  * Get the rollup job capabilities.
  * Get the capabilities of any rollup jobs that have been configured for a specific index or index pattern.
  *
- * This API is useful because a rollup job is often configured to rollup only a subset of fields from the source index. 
+ * This API is useful because a rollup job is often configured to rollup only a subset of fields from the source index.
  * Furthermore, only certain aggregations can be configured for various fields, leading to a limited subset of functionality depending on that configuration.
  * This API enables you to inspect an index and determine:
  *

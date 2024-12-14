@@ -25377,7 +25377,7 @@
           "rollup"
         ],
         "summary": "Get the rollup job capabilities",
-        "description": "Get the capabilities of any rollup jobs that have been configured for a specific index or index pattern.\n\nThis API is useful because a rollup job is often configured to rollup only a subset of fields from the source index. \nFurthermore, only certain aggregations can be configured for various fields, leading to a limited subset of functionality depending on that configuration.\nThis API enables you to inspect an index and determine:\n\n1. Does this index have associated rollup data somewhere in the cluster?\n2. If yes to the first question, what fields were rolled up, what aggregations can be performed, and where does the data live?",
+        "description": "Get the capabilities of any rollup jobs that have been configured for a specific index or index pattern.\n\nThis API is useful because a rollup job is often configured to rollup only a subset of fields from the source index.\nFurthermore, only certain aggregations can be configured for various fields, leading to a limited subset of functionality depending on that configuration.\nThis API enables you to inspect an index and determine:\n\n1. Does this index have associated rollup data somewhere in the cluster?\n2. If yes to the first question, what fields were rolled up, what aggregations can be performed, and where does the data live?",
         "operationId": "rollup-get-rollup-caps",
         "parameters": [
           {
@@ -25398,7 +25398,7 @@
           "rollup"
         ],
         "summary": "Get the rollup job capabilities",
-        "description": "Get the capabilities of any rollup jobs that have been configured for a specific index or index pattern.\n\nThis API is useful because a rollup job is often configured to rollup only a subset of fields from the source index. \nFurthermore, only certain aggregations can be configured for various fields, leading to a limited subset of functionality depending on that configuration.\nThis API enables you to inspect an index and determine:\n\n1. Does this index have associated rollup data somewhere in the cluster?\n2. If yes to the first question, what fields were rolled up, what aggregations can be performed, and where does the data live?",
+        "description": "Get the capabilities of any rollup jobs that have been configured for a specific index or index pattern.\n\nThis API is useful because a rollup job is often configured to rollup only a subset of fields from the source index.\nFurthermore, only certain aggregations can be configured for various fields, leading to a limited subset of functionality depending on that configuration.\nThis API enables you to inspect an index and determine:\n\n1. Does this index have associated rollup data somewhere in the cluster?\n2. If yes to the first question, what fields were rolled up, what aggregations can be performed, and where does the data live?",
         "operationId": "rollup-get-rollup-caps-1",
         "responses": {
           "200": {
