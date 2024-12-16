@@ -21,12 +21,18 @@ import { RequestBase } from '@_types/Base'
 import { Names } from '@_types/common'
 
 /**
+ * Get snapshot lifecycle policy information.
+ * Get snapshot lifecycle policy definitions and information about the latest snapshot attempts.
  * @rest_spec_name slm.get_lifecycle
  * @availability stack since=7.4.0 stability=stable
  * @availability serverless stability=stable visibility=private
+ * @cluster_privileges manage_slm
  */
 export interface Request extends RequestBase {
   path_parts: {
+    /*
+    A comma-separate list of snapshot lifecycle policy identifiers.
+    */
     policy_id?: Names
   }
 }
