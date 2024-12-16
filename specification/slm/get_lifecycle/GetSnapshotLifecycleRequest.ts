@@ -21,7 +21,7 @@ import { RequestBase } from '@_types/Base'
 import { Names } from '@_types/common'
 
 /**
- * Get snapshot lifecycle policy information.
+ * Get policy information.
  * Get snapshot lifecycle policy definitions and information about the latest snapshot attempts.
  * @rest_spec_name slm.get_lifecycle
  * @availability stack since=7.4.0 stability=stable

@@ -20,7 +20,7 @@
 import { RequestBase } from '@_types/Base'
 
 /**
- * Run retention policy.
+ * Run a retention policy.
  * Manually apply the retention policy to force immediate removal of snapshots that are expired according to the snapshot lifecycle policy retention rules.
  * The retention policy is normally applied according to its schedule.
  * @rest_spec_name slm.execute_retention
