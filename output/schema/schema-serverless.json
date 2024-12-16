@@ -8789,6 +8789,50 @@
           "visibility": "public"
         },
         "stack": {
+          "since": "8.15.0",
+          "stability": "stable"
+        }
+      },
+      "description": "Find roles with a query.\n\nGet roles in a paginated manner. You can optionally filter the results with a query.",
+      "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/security-api-query-role.html",
+      "name": "security.query_role",
+      "privileges": {
+        "cluster": [
+          "read_security"
+        ]
+      },
+      "request": {
+        "name": "Request",
+        "namespace": "security.query_role"
+      },
+      "requestBodyRequired": false,
+      "requestMediaType": [
+        "application/json"
+      ],
+      "response": {
+        "name": "Response",
+        "namespace": "security.query_role"
+      },
+      "responseMediaType": [
+        "application/json"
+      ],
+      "urls": [
+        {
+          "methods": [
+            "GET",
+            "POST"
+          ],
+          "path": "/_security/_query/role"
+        }
+      ]
+    },
+    {
+      "availability": {
+        "serverless": {
+          "stability": "stable",
+          "visibility": "public"
+        },
+        "stack": {
           "since": "8.4.0",
           "stability": "stable"
         }
@@ -40168,6 +40212,147 @@
         "namespace": "security.query_api_keys"
       },
       "specLocation": "security/query_api_keys/QueryApiKeysResponse.ts#L26-L45"
+    },
+    {
+      "attachedBehaviors": [
+        "CommonQueryParameters"
+      ],
+      "body": {
+        "kind": "properties",
+        "properties": [
+          {
+            "description": "A query to filter which roles to return.\nIf the query parameter is missing, it is equivalent to a `match_all` query.\nThe query supports a subset of query types, including `match_all`, `bool`, `term`, `terms`, `match`,\n`ids`, `prefix`, `wildcard`, `exists`, `range`, and `simple_query_string`.\nYou can query the following information associated with roles: `name`, `description`, `metadata`,\n`applications.application`, `applications.privileges`, `applications.resources`.",
+            "name": "query",
+            "required": false,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "RoleQueryContainer",
+                "namespace": "security.query_role"
+              }
+            }
+          },
+          {
+            "description": "Starting document offset.\nBy default, you cannot page through more than 10,000 hits using the from and size parameters.\nTo page through more hits, use the `search_after` parameter.",
+            "name": "from",
+            "required": false,
+            "serverDefault": 0,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "integer",
+                "namespace": "_types"
+              }
+            }
+          },
+          {
+            "description": "All public fields of a role are eligible for sorting.\nIn addition, sort can also be applied to the `_doc` field to sort by index order.",
+            "docId": "sort-search-results",
+            "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/sort-search-results.html",
+            "name": "sort",
+            "required": false,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "Sort",
+                "namespace": "_types"
+              }
+            }
+          },
+          {
+            "description": "The number of hits to return.\nBy default, you cannot page through more than 10,000 hits using the `from` and `size` parameters.\nTo page through more hits, use the `search_after` parameter.",
+            "name": "size",
+            "required": false,
+            "serverDefault": 10,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "integer",
+                "namespace": "_types"
+              }
+            }
+          },
+          {
+            "description": "Search after definition",
+            "name": "search_after",
+            "required": false,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "SortResults",
+                "namespace": "_types"
+              }
+            }
+          }
+        ]
+      },
+      "description": "Find roles with a query.\n\nGet roles in a paginated manner. You can optionally filter the results with a query.",
+      "inherits": {
+        "type": {
+          "name": "RequestBase",
+          "namespace": "_types"
+        }
+      },
+      "kind": "request",
+      "name": {
+        "name": "Request",
+        "namespace": "security.query_role"
+      },
+      "path": [],
+      "query": [],
+      "specLocation": "security/query_role/QueryRolesRequest.ts#L25-L69"
+    },
+    {
+      "body": {
+        "kind": "properties",
+        "properties": [
+          {
+            "description": "The total number of roles found.",
+            "name": "total",
+            "required": true,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "integer",
+                "namespace": "_types"
+              }
+            }
+          },
+          {
+            "description": "The number of roles returned in the response.",
+            "name": "count",
+            "required": true,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "integer",
+                "namespace": "_types"
+              }
+            }
+          },
+          {
+            "description": "The list of roles.",
+            "name": "roles",
+            "required": true,
+            "type": {
+              "kind": "array_of",
+              "value": {
+                "kind": "instance_of",
+                "type": {
+                  "name": "QueryRole",
+                  "namespace": "security.query_role"
+                }
+              }
+            }
+          }
+        ]
+      },
+      "kind": "response",
+      "name": {
+        "name": "Response",
+        "namespace": "security.query_role"
+      },
+      "specLocation": "security/query_role/QueryRolesResponse.ts#L23-L38"
     },
     {
       "attachedBehaviors": [
@@ -141988,6 +142173,268 @@
         }
       ],
       "specLocation": "security/query_api_keys/types.ts#L207-L227"
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "RoleQueryContainer",
+        "namespace": "security.query_role"
+      },
+      "properties": [
+        {
+          "description": "matches roles matching boolean combinations of other queries.",
+          "docId": "query-dsl-bool-query",
+          "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/query-dsl-bool-query.html",
+          "name": "bool",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "BoolQuery",
+              "namespace": "_types.query_dsl"
+            }
+          }
+        },
+        {
+          "description": "Returns roles that contain an indexed value for a field.",
+          "docId": "query-dsl-exists-query",
+          "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/query-dsl-exists-query.html",
+          "name": "exists",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "ExistsQuery",
+              "namespace": "_types.query_dsl"
+            }
+          }
+        },
+        {
+          "description": "Returns roles based on their IDs.\nThis query uses role document IDs stored in the `_id` field.",
+          "docId": "query-dsl-ids-query",
+          "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/query-dsl-ids-query.html",
+          "name": "ids",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "IdsQuery",
+              "namespace": "_types.query_dsl"
+            }
+          }
+        },
+        {
+          "description": "Returns roles that match a provided text, number, date or boolean value.\nThe provided text is analyzed before matching.",
+          "docId": "query-dsl-match-query",
+          "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/query-dsl-match-query.html",
+          "name": "match",
+          "required": false,
+          "type": {
+            "key": {
+              "kind": "instance_of",
+              "type": {
+                "name": "Field",
+                "namespace": "_types"
+              }
+            },
+            "kind": "dictionary_of",
+            "singleKey": true,
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "MatchQuery",
+                "namespace": "_types.query_dsl"
+              }
+            }
+          }
+        },
+        {
+          "description": "Matches all roles, giving them all a `_score` of 1.0.",
+          "docId": "query-dsl-match-all-query",
+          "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/query-dsl-match-all-query.html",
+          "name": "match_all",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "MatchAllQuery",
+              "namespace": "_types.query_dsl"
+            }
+          }
+        },
+        {
+          "description": "Returns roles that contain a specific prefix in a provided field.",
+          "docId": "query-dsl-prefix-query",
+          "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/query-dsl-prefix-query.html",
+          "name": "prefix",
+          "required": false,
+          "type": {
+            "key": {
+              "kind": "instance_of",
+              "type": {
+                "name": "Field",
+                "namespace": "_types"
+              }
+            },
+            "kind": "dictionary_of",
+            "singleKey": true,
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "PrefixQuery",
+                "namespace": "_types.query_dsl"
+              }
+            }
+          }
+        },
+        {
+          "description": "Returns roles that contain terms within a provided range.",
+          "docId": "query-dsl-range-query",
+          "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/query-dsl-range-query.html",
+          "name": "range",
+          "required": false,
+          "type": {
+            "key": {
+              "kind": "instance_of",
+              "type": {
+                "name": "Field",
+                "namespace": "_types"
+              }
+            },
+            "kind": "dictionary_of",
+            "singleKey": true,
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "RangeQuery",
+                "namespace": "_types.query_dsl"
+              }
+            }
+          }
+        },
+        {
+          "description": "Returns roles based on a provided query string, using a parser with a limited but fault-tolerant syntax.",
+          "docId": "query-dsl-simple-query-string-query",
+          "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/query-dsl-simple-query-string-query.html",
+          "name": "simple_query_string",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "SimpleQueryStringQuery",
+              "namespace": "_types.query_dsl"
+            }
+          }
+        },
+        {
+          "description": "Returns roles that contain an exact term in a provided field.\nTo return a document, the query term must exactly match the queried field's value, including whitespace and capitalization.",
+          "docId": "query-dsl-term-query",
+          "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/query-dsl-term-query.html",
+          "name": "term",
+          "required": false,
+          "type": {
+            "key": {
+              "kind": "instance_of",
+              "type": {
+                "name": "Field",
+                "namespace": "_types"
+              }
+            },
+            "kind": "dictionary_of",
+            "singleKey": true,
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "TermQuery",
+                "namespace": "_types.query_dsl"
+              }
+            }
+          }
+        },
+        {
+          "description": "Returns roles that contain one or more exact terms in a provided field.\nTo return a document, one or more terms must exactly match a field value, including whitespace and capitalization.",
+          "docId": "query-dsl-terms-query",
+          "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/query-dsl-terms-query.html",
+          "name": "terms",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "TermsQuery",
+              "namespace": "_types.query_dsl"
+            }
+          }
+        },
+        {
+          "description": "Returns roles that contain terms matching a wildcard pattern.",
+          "docId": "query-dsl-wildcard-query",
+          "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/query-dsl-wildcard-query.html",
+          "name": "wildcard",
+          "required": false,
+          "type": {
+            "key": {
+              "kind": "instance_of",
+              "type": {
+                "name": "Field",
+                "namespace": "_types"
+              }
+            },
+            "kind": "dictionary_of",
+            "singleKey": true,
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "WildcardQuery",
+                "namespace": "_types.query_dsl"
+              }
+            }
+          }
+        }
+      ],
+      "specLocation": "security/query_role/types.ts#L37-L101",
+      "variants": {
+        "kind": "container",
+        "nonExhaustive": true
+      }
+    },
+    {
+      "inherits": {
+        "type": {
+          "name": "RoleDescriptor",
+          "namespace": "security._types"
+        }
+      },
+      "kind": "interface",
+      "name": {
+        "name": "QueryRole",
+        "namespace": "security.query_role"
+      },
+      "properties": [
+        {
+          "name": "_sort",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "SortResults",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "Name of the role.",
+          "name": "name",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "_builtins"
+            }
+          }
+        }
+      ],
+      "specLocation": "security/query_role/types.ts#L103-L109"
     },
     {
       "kind": "interface",
