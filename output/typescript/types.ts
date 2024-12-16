@@ -12714,6 +12714,19 @@ export interface IndicesValidateQueryResponse {
   error?: string
 }
 
+export interface InferenceCompletionChoice {
+  delta: InferenceCompletionDelta
+  finish_reason?: string
+  index: number
+}
+
+export interface InferenceCompletionDelta {
+  content?: string
+  refusal?: string
+  role?: string
+  tool_calls?: InferenceResultToolCall[]
+}
+
 export interface InferenceCompletionResult {
   result: string
 }
@@ -12751,6 +12764,18 @@ export interface InferenceRankedDocument {
   text?: string
 }
 
+export interface InferenceResultFunctionCall {
+  arguments?: string
+  name?: string
+}
+
+export interface InferenceResultToolCall {
+  index: number
+  id?: string
+  function?: InferenceResultFunctionCall
+  type?: string
+}
+
 export type InferenceServiceSettings = any
 
 export interface InferenceSparseEmbeddingResult {
@@ -12769,6 +12794,20 @@ export interface InferenceTextEmbeddingByteResult {
 
 export interface InferenceTextEmbeddingResult {
   embedding: InferenceDenseVector
+}
+
+export interface InferenceUnifiedInferenceResult {
+  id: string
+  choices: InferenceCompletionChoice[]
+  model: string
+  object: string
+  usage?: InferenceUsage
+}
+
+export interface InferenceUsage {
+  completion_tokens: number
+  prompt_tokens: number
+  total_tokens: number
 }
 
 export interface InferenceDeleteRequest extends RequestBase {
@@ -12809,6 +12848,68 @@ export interface InferencePutRequest extends RequestBase {
 }
 
 export type InferencePutResponse = InferenceInferenceEndpointInfo
+
+export interface InferenceUnifiedInferenceCompletionTool {
+  type: string
+  function: InferenceUnifiedInferenceCompletionToolFunction
+}
+
+export interface InferenceUnifiedInferenceCompletionToolChoice {
+  type: string
+  function: InferenceUnifiedInferenceCompletionToolChoiceFunction
+}
+
+export interface InferenceUnifiedInferenceCompletionToolChoiceFunction {
+  name: string
+}
+
+export interface InferenceUnifiedInferenceCompletionToolFunction {
+  description?: string
+  name: string
+  parameters?: any
+  strict?: boolean
+}
+
+export interface InferenceUnifiedInferenceContentObject {
+  text: string
+  type: string
+}
+
+export interface InferenceUnifiedInferenceMessage {
+  content: string | InferenceUnifiedInferenceContentObject[]
+  role: string
+  tool_call_id?: string
+  tool_calls?: InferenceUnifiedInferenceToolCall[]
+}
+
+export interface InferenceUnifiedInferenceRequest extends RequestBase {
+  task_type?: InferenceTaskType
+  inference_id: Id
+  timeout?: Duration
+  body?: {
+    messages: InferenceUnifiedInferenceMessage[]
+    model?: string
+    max_completion_tokens?: number
+    stop?: string[]
+    temperature?: number
+    tool_choice?: string | InferenceUnifiedInferenceCompletionToolChoice
+    tools?: InferenceUnifiedInferenceCompletionTool[]
+    top_p?: number
+  }
+}
+
+export type InferenceUnifiedInferenceResponse = InferenceUnifiedInferenceResult
+
+export interface InferenceUnifiedInferenceToolCall {
+  id: string
+  function: InferenceUnifiedInferenceToolCallFunction
+  type: string
+}
+
+export interface InferenceUnifiedInferenceToolCallFunction {
+  arguments: string
+  name: string
+}
 
 export interface IngestAppendProcessor extends IngestProcessorBase {
   field: Field
