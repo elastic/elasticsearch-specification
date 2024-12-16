@@ -17,11 +17,11 @@
  * under the License.
  */
 
+import { TaskType } from '@inference/_types/TaskType'
 import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 import { RequestBase } from '@_types/Base'
 import { Id } from '@_types/common'
 import { Duration } from '@_types/Time'
-import { TaskType } from '@inference/_types/TaskType'
 
 /**
  * An object style representation of a single portion of a conversation.
