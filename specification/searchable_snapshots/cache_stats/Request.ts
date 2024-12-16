@@ -26,7 +26,7 @@ import { Duration } from '@_types/Time'
  * Get statistics about the shared cache for partially mounted indices.
  * @rest_spec_name searchable_snapshots.cache_stats
  * @availability stack since=7.13.0 stability=experimental
- * @clsuter_privileges manage
+ * @cluster_privileges manage
  */
 export interface Request extends RequestBase {
   path_parts: {
