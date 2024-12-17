@@ -4610,8 +4610,10 @@
           "stability": "stable"
         }
       },
-      "description": "Deletes a pipeline used for Logstash Central Management.",
+      "description": "Delete a Logstash pipeline.\n\nDelete a pipeline that is used for Logstash Central Management.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/logstash-api-delete-pipeline.html",
+      "extDocId": "logstash-centralized-pipeline-management",
+      "extDocUrl": "https://www.elastic.co/guide/en/logstash/{branch}/logstash-centralized-pipeline-management.html",
       "name": "logstash.delete_pipeline",
       "privileges": {
         "cluster": [
@@ -4650,8 +4652,10 @@
           "stability": "stable"
         }
       },
-      "description": "Retrieves pipelines used for Logstash Central Management.",
+      "description": "Get Logstash pipelines.\n\nGet pipelines that are used for Logstash Central Management.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/logstash-api-get-pipeline.html",
+      "extDocId": "logstash-centralized-pipeline-management",
+      "extDocUrl": "https://www.elastic.co/guide/en/logstash/{branch}/logstash-centralized-pipeline-management.html",
       "name": "logstash.get_pipeline",
       "privileges": {
         "cluster": [
@@ -4696,8 +4700,10 @@
           "stability": "stable"
         }
       },
-      "description": "Creates or updates a pipeline used for Logstash Central Management.",
+      "description": "Create or update a Logstash pipeline.\n\nCreate a pipeline that is used for Logstash Central Management.\nIf the specified pipeline exists, it is replaced.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/logstash-api-put-pipeline.html",
+      "extDocId": "logstash-centralized-pipeline-management",
+      "extDocUrl": "https://www.elastic.co/guide/en/logstash/{branch}/logstash-centralized-pipeline-management.html",
       "name": "logstash.put_pipeline",
       "privileges": {
         "cluster": [
@@ -25403,7 +25409,7 @@
       "body": {
         "kind": "no_body"
       },
-      "description": "Deletes a pipeline used for Logstash Central Management.",
+      "description": "Delete a Logstash pipeline.\n\nDelete a pipeline that is used for Logstash Central Management.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -25417,7 +25423,7 @@
       },
       "path": [
         {
-          "description": "Identifier for the pipeline.",
+          "description": "An identifier for the pipeline.",
           "name": "id",
           "required": true,
           "type": {
@@ -25430,7 +25436,7 @@
         }
       ],
       "query": [],
-      "specLocation": "logstash/delete_pipeline/LogstashDeletePipelineRequest.ts#L23-L37"
+      "specLocation": "logstash/delete_pipeline/LogstashDeletePipelineRequest.ts#L23-L40"
     },
     {
       "body": {
@@ -25450,7 +25456,7 @@
       "body": {
         "kind": "no_body"
       },
-      "description": "Retrieves pipelines used for Logstash Central Management.",
+      "description": "Get Logstash pipelines.\n\nGet pipelines that are used for Logstash Central Management.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -25464,7 +25470,7 @@
       },
       "path": [
         {
-          "description": "Comma-separated list of pipeline identifiers.",
+          "description": "A comma-separated list of pipeline identifiers.",
           "name": "id",
           "required": false,
           "type": {
@@ -25477,7 +25483,7 @@
         }
       ],
       "query": [],
-      "specLocation": "logstash/get_pipeline/LogstashGetPipelineRequest.ts#L23-L37"
+      "specLocation": "logstash/get_pipeline/LogstashGetPipelineRequest.ts#L23-L40"
     },
     {
       "body": {
@@ -25523,7 +25529,7 @@
           }
         }
       },
-      "description": "Creates or updates a pipeline used for Logstash Central Management.",
+      "description": "Create or update a Logstash pipeline.\n\nCreate a pipeline that is used for Logstash Central Management.\nIf the specified pipeline exists, it is replaced.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -25537,7 +25543,7 @@
       },
       "path": [
         {
-          "description": "Identifier for the pipeline.",
+          "description": "An identifier for the pipeline.",
           "name": "id",
           "required": true,
           "type": {
@@ -25550,7 +25556,7 @@
         }
       ],
       "query": [],
-      "specLocation": "logstash/put_pipeline/LogstashPutPipelineRequest.ts#L24-L39"
+      "specLocation": "logstash/put_pipeline/LogstashPutPipelineRequest.ts#L24-L44"
     },
     {
       "body": {
@@ -126214,7 +126220,7 @@
       },
       "properties": [
         {
-          "description": "Description of the pipeline.\nThis description is not used by Elasticsearch or Logstash.",
+          "description": "A description of the pipeline.\nThis description is not used by Elasticsearch or Logstash.",
           "name": "description",
           "required": true,
           "type": {
@@ -126226,7 +126232,7 @@
           }
         },
         {
-          "description": "Date the pipeline was last updated.\nMust be in the `yyyy-MM-dd'T'HH:mm:ss.SSSZZ` strict_date_time format.",
+          "description": "The date the pipeline was last updated.\nIt must be in the `yyyy-MM-dd'T'HH:mm:ss.SSSZZ` strict_date_time format.",
           "name": "last_modified",
           "required": true,
           "type": {
@@ -126238,33 +126244,9 @@
           }
         },
         {
-          "description": "Optional metadata about the pipeline.\nMay have any contents.\nThis metadata is not generated or used by Elasticsearch or Logstash.",
-          "name": "pipeline_metadata",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "PipelineMetadata",
-              "namespace": "logstash._types"
-            }
-          }
-        },
-        {
-          "description": "User who last updated the pipeline.",
-          "name": "username",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "_builtins"
-            }
-          }
-        },
-        {
-          "description": "Configuration for the pipeline.",
-          "docId": "logstash-configuration-file-structure",
-          "docUrl": "https://www.elastic.co/guide/en/logstash/{branch}/configuration-file-structure.html",
+          "description": "The configuration for the pipeline.",
+          "extDocId": "logstash-configuration-file-structure",
+          "extDocUrl": "https://www.elastic.co/guide/en/logstash/{branch}/configuration-file-structure.html",
           "name": "pipeline",
           "required": true,
           "type": {
@@ -126276,9 +126258,21 @@
           }
         },
         {
-          "description": "Settings for the pipeline.\nSupports only flat keys in dot notation.",
-          "docId": "logstash-logstash-settings-file",
-          "docUrl": "https://www.elastic.co/guide/en/logstash/{branch}/logstash-settings-file.html",
+          "description": "Optional metadata about the pipeline, which can have any contents.\nThis metadata is not generated or used by Elasticsearch or Logstash.",
+          "name": "pipeline_metadata",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "PipelineMetadata",
+              "namespace": "logstash._types"
+            }
+          }
+        },
+        {
+          "description": "Settings for the pipeline.\nIt supports only flat keys in dot notation.",
+          "extDocId": "logstash-logstash-settings-file",
+          "extDocUrl": "https://www.elastic.co/guide/en/logstash/{branch}/logstash-settings-file.html",
           "name": "pipeline_settings",
           "required": true,
           "type": {
@@ -126288,9 +126282,21 @@
               "namespace": "logstash._types"
             }
           }
+        },
+        {
+          "description": "The user who last updated the pipeline.",
+          "name": "username",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "_builtins"
+            }
+          }
         }
       ],
-      "specLocation": "logstash/_types/Pipeline.ts#L60-L92"
+      "specLocation": "logstash/_types/Pipeline.ts#L60-L91"
     },
     {
       "kind": "interface",
