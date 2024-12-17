@@ -25233,7 +25233,8 @@
         "tags": [
           "rollup"
         ],
-        "summary": "Retrieves the configuration, stats, and status of rollup jobs",
+        "summary": "Get rollup job information",
+        "description": "Get the configuration, stats, and status of rollup jobs.\n\nNOTE: This API returns only active (both `STARTED` and `STOPPED`) jobs.\nIf a job was created, ran for a while, then was deleted, the API does not return any details about it.\nFor details about a historical rollup job, the rollup capabilities API may be more useful.",
         "operationId": "rollup-get-jobs",
         "parameters": [
           {
@@ -25251,7 +25252,8 @@
         "tags": [
           "rollup"
         ],
-        "summary": "Creates a rollup job",
+        "summary": "Create a rollup job",
+        "description": "WARNING: From 8.15.0, calling this API in a cluster with no rollup usage will fail with a message about the deprecation and planned removal of rollup features. A cluster either needs to contain a rollup job or a rollup index in order for this API to be allowed to run.\n\nThe rollup job configuration contains all the details about how the job should run, when it indexes documents, and what future queries will be able to run against the rollup index.\n\nThere are three main sections to the job configuration: the logistical details about the job (for example, the cron schedule), the fields that are used for grouping, and what metrics to collect for each group.\n\nJobs are created in a `STOPPED` state. You can start them with the start rollup jobs API.",
         "operationId": "rollup-put-job",
         "parameters": [
           {
@@ -25334,7 +25336,8 @@
         "tags": [
           "rollup"
         ],
-        "summary": "Deletes an existing rollup job",
+        "summary": "Delete a rollup job",
+        "description": "A job must be stopped first before it can be deleted.\nIf you attempt to delete a started job, an error occurs.\nSimilarly, if you attempt to delete a nonexistent job, an exception occurs.\n\nIMPORTANT: When you delete a job, you remove only the process that is actively monitoring and rolling up data.\nThe API does not delete any previously rolled up data.\nThis is by design; a user may wish to roll up a static data set.\nBecause the data set is static, after it has been fully rolled up there is no need to keep the indexing rollup job around (as there will be no new data).\nThus the job can be deleted, leaving behind the rolled up data for analysis.\nIf you wish to also remove the rollup data and the rollup index contains the data for only a single job, you can delete the whole rollup index.\nIf the rollup index stores data from several jobs, you must issue a delete-by-query that targets the rollup job's identifier in the rollup index. For example:\n\n```\nPOST my_rollup_index/_delete_by_query\n{\n  \"query\": {\n    \"term\": {\n      \"_rollup.id\": \"the_rollup_job_id\"\n    }\n  }\n}\n```",
         "operationId": "rollup-delete-job",
         "parameters": [
           {
@@ -25383,7 +25386,8 @@
         "tags": [
           "rollup"
         ],
-        "summary": "Retrieves the configuration, stats, and status of rollup jobs",
+        "summary": "Get rollup job information",
+        "description": "Get the configuration, stats, and status of rollup jobs.\n\nNOTE: This API returns only active (both `STARTED` and `STOPPED`) jobs.\nIf a job was created, ran for a while, then was deleted, the API does not return any details about it.\nFor details about a historical rollup job, the rollup capabilities API may be more useful.",
         "operationId": "rollup-get-jobs-1",
         "responses": {
           "200": {
@@ -25398,7 +25402,8 @@
         "tags": [
           "rollup"
         ],
-        "summary": "Returns the capabilities of any rollup jobs that have been configured for a specific index or index pattern",
+        "summary": "Get the rollup job capabilities",
+        "description": "Get the capabilities of any rollup jobs that have been configured for a specific index or index pattern.\n\nThis API is useful because a rollup job is often configured to rollup only a subset of fields from the source index.\nFurthermore, only certain aggregations can be configured for various fields, leading to a limited subset of functionality depending on that configuration.\nThis API enables you to inspect an index and determine:\n\n1. Does this index have associated rollup data somewhere in the cluster?\n2. If yes to the first question, what fields were rolled up, what aggregations can be performed, and where does the data live?",
         "operationId": "rollup-get-rollup-caps",
         "parameters": [
           {
@@ -25418,7 +25423,8 @@
         "tags": [
           "rollup"
         ],
-        "summary": "Returns the capabilities of any rollup jobs that have been configured for a specific index or index pattern",
+        "summary": "Get the rollup job capabilities",
+        "description": "Get the capabilities of any rollup jobs that have been configured for a specific index or index pattern.\n\nThis API is useful because a rollup job is often configured to rollup only a subset of fields from the source index.\nFurthermore, only certain aggregations can be configured for various fields, leading to a limited subset of functionality depending on that configuration.\nThis API enables you to inspect an index and determine:\n\n1. Does this index have associated rollup data somewhere in the cluster?\n2. If yes to the first question, what fields were rolled up, what aggregations can be performed, and where does the data live?",
         "operationId": "rollup-get-rollup-caps-1",
         "responses": {
           "200": {
@@ -25433,7 +25439,8 @@
         "tags": [
           "rollup"
         ],
-        "summary": "Returns the rollup capabilities of all jobs inside of a rollup index (for example, the index where rollup data is stored)",
+        "summary": "Get the rollup index capabilities",
+        "description": "Get the rollup capabilities of all jobs inside of a rollup index.\nA single rollup index may store the data for multiple rollup jobs and may have a variety of capabilities depending on those jobs. This API enables you to determine:\n\n* What jobs are stored in an index (or indices specified via a pattern)?\n* What target indices were rolled up, what fields were used in those rollups, and what aggregations can be performed on each job?",
         "operationId": "rollup-get-rollup-index-caps",
         "parameters": [
           {
@@ -25471,7 +25478,8 @@
         "tags": [
           "rollup"
         ],
-        "summary": "Enables searching rolled-up data using the standard Query DSL",
+        "summary": "Search rolled-up data",
+        "description": "The rollup search endpoint is needed because, internally, rolled-up documents utilize a different document structure than the original data.\nIt rewrites standard Query DSL into a format that matches the rollup documents then takes the response and rewrites it back to what a client would expect given the original query.",
         "operationId": "rollup-rollup-search",
         "parameters": [
           {
@@ -25498,7 +25506,8 @@
         "tags": [
           "rollup"
         ],
-        "summary": "Enables searching rolled-up data using the standard Query DSL",
+        "summary": "Search rolled-up data",
+        "description": "The rollup search endpoint is needed because, internally, rolled-up documents utilize a different document structure than the original data.\nIt rewrites standard Query DSL into a format that matches the rollup documents then takes the response and rewrites it back to what a client would expect given the original query.",
         "operationId": "rollup-rollup-search-1",
         "parameters": [
           {
@@ -25527,7 +25536,8 @@
         "tags": [
           "rollup"
         ],
-        "summary": "Starts an existing, stopped rollup job",
+        "summary": "Start rollup jobs",
+        "description": "If you try to start a job that does not exist, an exception occurs.\nIf you try to start a job that is already started, nothing happens.",
         "operationId": "rollup-start-job",
         "parameters": [
           {
@@ -25570,7 +25580,8 @@
         "tags": [
           "rollup"
         ],
-        "summary": "Stops an existing, started rollup job",
+        "summary": "Stop rollup jobs",
+        "description": "If you try to stop a job that does not exist, an exception occurs.\nIf you try to stop a job that is already stopped, nothing happens.",
         "operationId": "rollup-stop-job",
         "parameters": [
           {
