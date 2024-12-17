@@ -22526,7 +22526,8 @@
         "tags": [
           "monitoring"
         ],
-        "summary": "Used by the monitoring features to send monitoring data",
+        "summary": "Send monitoring data",
+        "description": "This API is used by the monitoring features to send monitoring data.",
         "operationId": "monitoring-bulk-1",
         "parameters": [
           {
@@ -22553,7 +22554,8 @@
         "tags": [
           "monitoring"
         ],
-        "summary": "Used by the monitoring features to send monitoring data",
+        "summary": "Send monitoring data",
+        "description": "This API is used by the monitoring features to send monitoring data.",
         "operationId": "monitoring-bulk",
         "parameters": [
           {
@@ -22582,7 +22584,8 @@
         "tags": [
           "monitoring"
         ],
-        "summary": "Used by the monitoring features to send monitoring data",
+        "summary": "Send monitoring data",
+        "description": "This API is used by the monitoring features to send monitoring data.",
         "operationId": "monitoring-bulk-3",
         "parameters": [
           {
@@ -22612,7 +22615,8 @@
         "tags": [
           "monitoring"
         ],
-        "summary": "Used by the monitoring features to send monitoring data",
+        "summary": "Send monitoring data",
+        "description": "This API is used by the monitoring features to send monitoring data.",
         "operationId": "monitoring-bulk-2",
         "parameters": [
           {
