@@ -30860,8 +30860,8 @@
         "tags": [
           "shutdown"
         ],
-        "summary": "Retrieve status of a node or nodes that are currently marked as shutting down",
-        "description": "Designed for indirect use by ECE/ESS and ECK. Direct use is not supported.",
+        "summary": "Get the shutdown status",
+        "description": "Get information about nodes that are ready to be shut down, have shut down preparations still in progress, or have stalled.\nThe API returns status information for each part of the shut down process.\n\nNOTE: This feature is designed for indirect use by Elasticsearch Service, Elastic Cloud Enterprise, and Elastic Cloud on Kubernetes. Direct use is not supported.\n\nIf the operator privileges feature is enabled, you must be an operator to use this API.",
         "operationId": "shutdown-get-node-1",
         "parameters": [
           {
@@ -30885,8 +30885,8 @@
         "tags": [
           "shutdown"
         ],
-        "summary": "Adds a node to be shut down",
-        "description": "Designed for indirect use by ECE/ESS and ECK. Direct use is not supported.",
+        "summary": "Prepare a node to be shut down",
+        "description": "NOTE: This feature is designed for indirect use by Elastic Cloud, Elastic Cloud Enterprise, and Elastic Cloud on Kubernetes. Direct use is not supported.\n\nIf the operator privileges feature is enabled, you must be an operator to use this API.\n\nThe API migrates ongoing tasks and index shards to other nodes as needed to prepare a node to be restarted or shut down and removed from the cluster.\nThis ensures that Elasticsearch can be stopped safely with minimal disruption to the cluster.\n\nYou must specify the type of shutdown: `restart`, `remove`, or `replace`.\nIf a node is already being prepared for shutdown, you can use this API to change the shutdown type.\n\nIMPORTANT: This API does NOT terminate the Elasticsearch process.\nMonitor the node shutdown status to determine when it is safe to stop Elasticsearch.",
         "operationId": "shutdown-put-node",
         "parameters": [
           {
@@ -30970,8 +30970,8 @@
         "tags": [
           "shutdown"
         ],
-        "summary": "Removes a node from the shutdown list",
-        "description": "Designed for indirect use by ECE/ESS and ECK. Direct use is not supported.",
+        "summary": "Cancel node shutdown preparations",
+        "description": "Remove a node from the shutdown list so it can resume normal operations.\nYou must explicitly clear the shutdown request when a node rejoins the cluster or when a node has permanently left the cluster.\nShutdown requests are never removed automatically by Elasticsearch.\n\nNOTE: This feature is designed for indirect use by Elastic Cloud, Elastic Cloud Enterprise, and Elastic Cloud on Kubernetes.\nDirect use is not supported.\n\nIf the operator privileges feature is enabled, you must be an operator to use this API.",
         "operationId": "shutdown-delete-node",
         "parameters": [
           {
@@ -31026,8 +31026,8 @@
         "tags": [
           "shutdown"
         ],
-        "summary": "Retrieve status of a node or nodes that are currently marked as shutting down",
-        "description": "Designed for indirect use by ECE/ESS and ECK. Direct use is not supported.",
+        "summary": "Get the shutdown status",
+        "description": "Get information about nodes that are ready to be shut down, have shut down preparations still in progress, or have stalled.\nThe API returns status information for each part of the shut down process.\n\nNOTE: This feature is designed for indirect use by Elasticsearch Service, Elastic Cloud Enterprise, and Elastic Cloud on Kubernetes. Direct use is not supported.\n\nIf the operator privileges feature is enabled, you must be an operator to use this API.",
         "operationId": "shutdown-get-node",
         "parameters": [
           {
