@@ -26,7 +26,7 @@ import { Duration } from '@_types/Time'
  * Restore a snapshot.
  * Restore a snapshot of a cluster or data streams and indices.
  *
- * You can only restore a snapshot to a running cluster with an elected master node.
+ * You can restore a snapshot only to a running cluster with an elected master node.
  * The snapshot repository must be registered and available to the cluster.
  * The snapshot and cluster versions must be compatible.
  *
