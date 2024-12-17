@@ -22,10 +22,13 @@ import { Name } from '@_types/common'
 import { Duration } from '@_types/Time'
 
 /**
- * Triggers the review of a snapshot repository’s contents and deletes any stale data not referenced by existing snapshots.
+ * Clean up the snapshot repository.
+ * Trigger the review of the contents of a snapshot repository and delete any stale data not referenced by existing snapshots.
  * @rest_spec_name snapshot.cleanup_repository
  * @availability stack since=7.4.0 stability=stable
  * @availability serverless stability=stable visibility=private
+ * @cluster_privileges manage
+ * @ext_doc_id clean-up-snapshot-repo
  */
 export interface Request extends RequestBase {
   path_parts: {

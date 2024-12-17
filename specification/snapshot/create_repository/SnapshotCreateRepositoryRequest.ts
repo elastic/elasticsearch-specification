@@ -23,9 +23,15 @@ import { Name } from '@_types/common'
 import { Duration } from '@_types/Time'
 
 /**
+ * Create or update a snapshot repository.
+ * IMPORTANT: If you are migrating searchable snapshots, the repository name must be identical in the source and destination clusters.
+ * To register a snapshot repository, the cluster's global metadata must be writeable.
+ * Ensure there are no cluster blocks (for example, `cluster.blocks.read_only` and `clsuter.blocks.read_only_allow_delete` settings) that prevent write access.
  * @rest_spec_name snapshot.create_repository
  * @availability stack since=0.0.0 stability=stable
  * @availability serverless stability=stable visibility=private
+ * @cluster_privileges manage
+ * @ext_doc_id register-repository
  */
 export interface Request extends RequestBase {
   path_parts: {
