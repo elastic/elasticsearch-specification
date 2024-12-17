@@ -1,0 +1,1197 @@
+---
+source: openapi_to_clients_schema/src/main.rs
+expression: sch_json
+---
+{
+  "endpoints": [
+    {
+      "name": "_global.system_status",
+      "description": "Get Kibana's current status",
+      "request": {
+        "namespace": "_global",
+        "name": "SystemStatusRequest"
+      },
+      "requestBodyRequired": false,
+      "response": {
+        "namespace": "_global",
+        "name": "KibanaHttpApIsCoreStatusResponse"
+      },
+      "urls": [
+        {
+          "path": "/api/status",
+          "methods": [
+            "GET"
+          ]
+        }
+      ],
+      "responseMediaType": [
+        "application/json"
+      ]
+    }
+  ],
+  "types": [
+    {
+      "kind": "interface",
+      "name": {
+        "namespace": "_global",
+        "name": "KibanaHttpApIsCoreStatusRedactedResponse"
+      },
+      "description": "A minimal representation of Kibana's operational status.",
+      "behaviors": [
+        {
+          "type": {
+            "namespace": "_spec_utils",
+            "name": "AdditionalProperties"
+          },
+          "generics": [
+            {
+              "kind": "instance_of",
+              "type": {
+                "namespace": "_builtins",
+                "name": "UserDefined"
+              }
+            }
+          ]
+        }
+      ],
+      "properties": [
+        {
+          "name": "status",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "namespace": "_global",
+              "name": "KibanaHttpApIsCoreStatusRedactedResponseStatus"
+            }
+          },
+          "required": true
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "namespace": "_global",
+        "name": "KibanaHttpApIsCoreStatusRedactedResponseStatus"
+      },
+      "behaviors": [
+        {
+          "type": {
+            "namespace": "_spec_utils",
+            "name": "AdditionalProperties"
+          },
+          "generics": [
+            {
+              "kind": "instance_of",
+              "type": {
+                "namespace": "_builtins",
+                "name": "UserDefined"
+              }
+            }
+          ]
+        }
+      ],
+      "properties": [
+        {
+          "name": "overall",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "namespace": "_global",
+              "name": "KibanaHttpApIsCoreStatusRedactedResponseStatusOverall"
+            }
+          },
+          "required": true
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "namespace": "_global",
+        "name": "KibanaHttpApIsCoreStatusRedactedResponseStatusOverall"
+      },
+      "behaviors": [
+        {
+          "type": {
+            "namespace": "_spec_utils",
+            "name": "AdditionalProperties"
+          },
+          "generics": [
+            {
+              "kind": "instance_of",
+              "type": {
+                "namespace": "_builtins",
+                "name": "UserDefined"
+              }
+            }
+          ]
+        }
+      ],
+      "properties": [
+        {
+          "name": "level",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "namespace": "_global",
+              "name": "KibanaHttpApIsCoreStatusRedactedResponseStatusOverallLevel"
+            }
+          },
+          "required": true
+        }
+      ]
+    },
+    {
+      "kind": "enum",
+      "name": {
+        "namespace": "_global",
+        "name": "KibanaHttpApIsCoreStatusRedactedResponseStatusOverallLevel"
+      },
+      "description": "Service status levels as human and machine readable values.",
+      "isOpen": false,
+      "members": [
+        {
+          "name": "available"
+        },
+        {
+          "name": "degraded"
+        },
+        {
+          "name": "unavailable"
+        },
+        {
+          "name": "critical"
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "namespace": "_global",
+        "name": "KibanaHttpApIsCoreStatusResponse"
+      },
+      "description": "Kibana's operational status as well as a detailed breakdown of plugin statuses indication of various loads (like event loop utilization and network traffic) at time of request.",
+      "behaviors": [
+        {
+          "type": {
+            "namespace": "_spec_utils",
+            "name": "AdditionalProperties"
+          },
+          "generics": [
+            {
+              "kind": "instance_of",
+              "type": {
+                "namespace": "_builtins",
+                "name": "UserDefined"
+              }
+            }
+          ]
+        }
+      ],
+      "properties": [
+        {
+          "name": "metrics",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "namespace": "_global",
+              "name": "KibanaHttpApIsCoreStatusResponseMetrics"
+            }
+          },
+          "required": true
+        },
+        {
+          "name": "name",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "namespace": "_builtins",
+              "name": "string"
+            }
+          },
+          "required": true
+        },
+        {
+          "name": "status",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "namespace": "_global",
+              "name": "KibanaHttpApIsCoreStatusResponseStatus"
+            }
+          },
+          "required": true
+        },
+        {
+          "name": "uuid",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "namespace": "_builtins",
+              "name": "string"
+            }
+          },
+          "required": true
+        },
+        {
+          "name": "version",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "namespace": "_global",
+              "name": "KibanaHttpApIsCoreStatusResponseVersion"
+            }
+          },
+          "required": true
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "namespace": "_global",
+        "name": "KibanaHttpApIsCoreStatusResponseMetrics"
+      },
+      "description": "Metric groups collected by Kibana.",
+      "behaviors": [
+        {
+          "type": {
+            "namespace": "_spec_utils",
+            "name": "AdditionalProperties"
+          },
+          "generics": [
+            {
+              "kind": "instance_of",
+              "type": {
+                "namespace": "_builtins",
+                "name": "UserDefined"
+              }
+            }
+          ]
+        }
+      ],
+      "properties": [
+        {
+          "name": "collection_interval_in_millis",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "namespace": "_builtins",
+              "name": "double"
+            }
+          },
+          "required": true
+        },
+        {
+          "name": "elasticsearch_client",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "namespace": "_global",
+              "name": "KibanaHttpApIsCoreStatusResponseMetricsElasticsearchClient"
+            }
+          },
+          "required": true
+        },
+        {
+          "name": "last_updated",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "namespace": "_builtins",
+              "name": "string"
+            }
+          },
+          "required": true
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "namespace": "_global",
+        "name": "KibanaHttpApIsCoreStatusResponseMetricsElasticsearchClient"
+      },
+      "description": "Current network metrics of Kibana's Elasticsearch client.",
+      "behaviors": [
+        {
+          "type": {
+            "namespace": "_spec_utils",
+            "name": "AdditionalProperties"
+          },
+          "generics": [
+            {
+              "kind": "instance_of",
+              "type": {
+                "namespace": "_builtins",
+                "name": "UserDefined"
+              }
+            }
+          ]
+        }
+      ],
+      "properties": [
+        {
+          "name": "totalActiveSockets",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "namespace": "_builtins",
+              "name": "double"
+            }
+          },
+          "required": true
+        },
+        {
+          "name": "totalIdleSockets",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "namespace": "_builtins",
+              "name": "double"
+            }
+          },
+          "required": true
+        },
+        {
+          "name": "totalQueuedRequests",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "namespace": "_builtins",
+              "name": "double"
+            }
+          },
+          "required": true
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "namespace": "_global",
+        "name": "KibanaHttpApIsCoreStatusResponseStatus"
+      },
+      "behaviors": [
+        {
+          "type": {
+            "namespace": "_spec_utils",
+            "name": "AdditionalProperties"
+          },
+          "generics": [
+            {
+              "kind": "instance_of",
+              "type": {
+                "namespace": "_builtins",
+                "name": "UserDefined"
+              }
+            }
+          ]
+        }
+      ],
+      "properties": [
+        {
+          "name": "core",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "namespace": "_global",
+              "name": "KibanaHttpApIsCoreStatusResponseStatusCore"
+            }
+          },
+          "required": true
+        },
+        {
+          "name": "overall",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "namespace": "_global",
+              "name": "KibanaHttpApIsCoreStatusResponseStatusOverall"
+            }
+          },
+          "required": true
+        },
+        {
+          "name": "plugins",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "namespace": "_global",
+              "name": "KibanaHttpApIsCoreStatusResponseStatusPlugins"
+            }
+          },
+          "required": true
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "namespace": "_global",
+        "name": "KibanaHttpApIsCoreStatusResponseStatusCore"
+      },
+      "description": "Statuses of core Kibana services.",
+      "behaviors": [
+        {
+          "type": {
+            "namespace": "_spec_utils",
+            "name": "AdditionalProperties"
+          },
+          "generics": [
+            {
+              "kind": "instance_of",
+              "type": {
+                "namespace": "_builtins",
+                "name": "UserDefined"
+              }
+            }
+          ]
+        }
+      ],
+      "properties": [
+        {
+          "name": "elasticsearch",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "namespace": "_global",
+              "name": "KibanaHttpApIsCoreStatusResponseStatusCoreElasticsearch"
+            }
+          },
+          "required": true
+        },
+        {
+          "name": "savedObjects",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "namespace": "_global",
+              "name": "KibanaHttpApIsCoreStatusResponseStatusCoreSavedObjects"
+            }
+          },
+          "required": true
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "namespace": "_global",
+        "name": "KibanaHttpApIsCoreStatusResponseStatusCoreElasticsearch"
+      },
+      "behaviors": [
+        {
+          "type": {
+            "namespace": "_spec_utils",
+            "name": "AdditionalProperties"
+          },
+          "generics": [
+            {
+              "kind": "instance_of",
+              "type": {
+                "namespace": "_builtins",
+                "name": "UserDefined"
+              }
+            }
+          ]
+        }
+      ],
+      "properties": [
+        {
+          "name": "detail",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "namespace": "_builtins",
+              "name": "string"
+            }
+          },
+          "required": false
+        },
+        {
+          "name": "documentationUrl",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "namespace": "_builtins",
+              "name": "string"
+            }
+          },
+          "required": false
+        },
+        {
+          "name": "level",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "namespace": "_global",
+              "name": "KibanaHttpApIsCoreStatusResponseStatusCoreElasticsearchLevel"
+            }
+          },
+          "required": true
+        },
+        {
+          "name": "meta",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "namespace": "_global",
+              "name": "KibanaHttpApIsCoreStatusResponseStatusCoreElasticsearchMeta"
+            }
+          },
+          "required": true
+        },
+        {
+          "name": "summary",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "namespace": "_builtins",
+              "name": "string"
+            }
+          },
+          "required": true
+        }
+      ]
+    },
+    {
+      "kind": "enum",
+      "name": {
+        "namespace": "_global",
+        "name": "KibanaHttpApIsCoreStatusResponseStatusCoreElasticsearchLevel"
+      },
+      "description": "Service status levels as human and machine readable values.",
+      "isOpen": false,
+      "members": [
+        {
+          "name": "available"
+        },
+        {
+          "name": "degraded"
+        },
+        {
+          "name": "unavailable"
+        },
+        {
+          "name": "critical"
+        }
+      ]
+    },
+    {
+      "kind": "type_alias",
+      "name": {
+        "namespace": "_global",
+        "name": "KibanaHttpApIsCoreStatusResponseStatusCoreElasticsearchMeta"
+      },
+      "description": "An unstructured set of extra metadata about this service.",
+      "type": {
+        "kind": "instance_of",
+        "type": {
+          "namespace": "_builtins",
+          "name": "Dictionary"
+        },
+        "generics": [
+          {
+            "kind": "instance_of",
+            "type": {
+              "namespace": "_builtins",
+              "name": "string"
+            }
+          },
+          {
+            "kind": "instance_of",
+            "type": {
+              "namespace": "_builtins",
+              "name": "UserDefined"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "namespace": "_global",
+        "name": "KibanaHttpApIsCoreStatusResponseStatusCoreSavedObjects"
+      },
+      "behaviors": [
+        {
+          "type": {
+            "namespace": "_spec_utils",
+            "name": "AdditionalProperties"
+          },
+          "generics": [
+            {
+              "kind": "instance_of",
+              "type": {
+                "namespace": "_builtins",
+                "name": "UserDefined"
+              }
+            }
+          ]
+        }
+      ],
+      "properties": [
+        {
+          "name": "detail",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "namespace": "_builtins",
+              "name": "string"
+            }
+          },
+          "required": false
+        },
+        {
+          "name": "documentationUrl",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "namespace": "_builtins",
+              "name": "string"
+            }
+          },
+          "required": false
+        },
+        {
+          "name": "level",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "namespace": "_global",
+              "name": "KibanaHttpApIsCoreStatusResponseStatusCoreSavedObjectsLevel"
+            }
+          },
+          "required": true
+        },
+        {
+          "name": "meta",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "namespace": "_global",
+              "name": "KibanaHttpApIsCoreStatusResponseStatusCoreSavedObjectsMeta"
+            }
+          },
+          "required": true
+        },
+        {
+          "name": "summary",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "namespace": "_builtins",
+              "name": "string"
+            }
+          },
+          "required": true
+        }
+      ]
+    },
+    {
+      "kind": "enum",
+      "name": {
+        "namespace": "_global",
+        "name": "KibanaHttpApIsCoreStatusResponseStatusCoreSavedObjectsLevel"
+      },
+      "description": "Service status levels as human and machine readable values.",
+      "isOpen": false,
+      "members": [
+        {
+          "name": "available"
+        },
+        {
+          "name": "degraded"
+        },
+        {
+          "name": "unavailable"
+        },
+        {
+          "name": "critical"
+        }
+      ]
+    },
+    {
+      "kind": "type_alias",
+      "name": {
+        "namespace": "_global",
+        "name": "KibanaHttpApIsCoreStatusResponseStatusCoreSavedObjectsMeta"
+      },
+      "description": "An unstructured set of extra metadata about this service.",
+      "type": {
+        "kind": "instance_of",
+        "type": {
+          "namespace": "_builtins",
+          "name": "Dictionary"
+        },
+        "generics": [
+          {
+            "kind": "instance_of",
+            "type": {
+              "namespace": "_builtins",
+              "name": "string"
+            }
+          },
+          {
+            "kind": "instance_of",
+            "type": {
+              "namespace": "_builtins",
+              "name": "UserDefined"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "namespace": "_global",
+        "name": "KibanaHttpApIsCoreStatusResponseStatusOverall"
+      },
+      "behaviors": [
+        {
+          "type": {
+            "namespace": "_spec_utils",
+            "name": "AdditionalProperties"
+          },
+          "generics": [
+            {
+              "kind": "instance_of",
+              "type": {
+                "namespace": "_builtins",
+                "name": "UserDefined"
+              }
+            }
+          ]
+        }
+      ],
+      "properties": [
+        {
+          "name": "detail",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "namespace": "_builtins",
+              "name": "string"
+            }
+          },
+          "required": false
+        },
+        {
+          "name": "documentationUrl",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "namespace": "_builtins",
+              "name": "string"
+            }
+          },
+          "required": false
+        },
+        {
+          "name": "level",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "namespace": "_global",
+              "name": "KibanaHttpApIsCoreStatusResponseStatusOverallLevel"
+            }
+          },
+          "required": true
+        },
+        {
+          "name": "meta",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "namespace": "_global",
+              "name": "KibanaHttpApIsCoreStatusResponseStatusOverallMeta"
+            }
+          },
+          "required": true
+        },
+        {
+          "name": "summary",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "namespace": "_builtins",
+              "name": "string"
+            }
+          },
+          "required": true
+        }
+      ]
+    },
+    {
+      "kind": "enum",
+      "name": {
+        "namespace": "_global",
+        "name": "KibanaHttpApIsCoreStatusResponseStatusOverallLevel"
+      },
+      "description": "Service status levels as human and machine readable values.",
+      "isOpen": false,
+      "members": [
+        {
+          "name": "available"
+        },
+        {
+          "name": "degraded"
+        },
+        {
+          "name": "unavailable"
+        },
+        {
+          "name": "critical"
+        }
+      ]
+    },
+    {
+      "kind": "type_alias",
+      "name": {
+        "namespace": "_global",
+        "name": "KibanaHttpApIsCoreStatusResponseStatusOverallMeta"
+      },
+      "description": "An unstructured set of extra metadata about this service.",
+      "type": {
+        "kind": "instance_of",
+        "type": {
+          "namespace": "_builtins",
+          "name": "Dictionary"
+        },
+        "generics": [
+          {
+            "kind": "instance_of",
+            "type": {
+              "namespace": "_builtins",
+              "name": "string"
+            }
+          },
+          {
+            "kind": "instance_of",
+            "type": {
+              "namespace": "_builtins",
+              "name": "UserDefined"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "kind": "type_alias",
+      "name": {
+        "namespace": "_global",
+        "name": "KibanaHttpApIsCoreStatusResponseStatusPlugins"
+      },
+      "description": "A dynamic mapping of plugin ID to plugin status.",
+      "type": {
+        "kind": "instance_of",
+        "type": {
+          "namespace": "_builtins",
+          "name": "Dictionary"
+        },
+        "generics": [
+          {
+            "kind": "instance_of",
+            "type": {
+              "namespace": "_builtins",
+              "name": "string"
+            }
+          },
+          {
+            "kind": "instance_of",
+            "type": {
+              "namespace": "_global",
+              "name": "KibanaHttpApIsCoreStatusResponseStatusPluginsValue"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "namespace": "_global",
+        "name": "KibanaHttpApIsCoreStatusResponseStatusPluginsValue"
+      },
+      "behaviors": [
+        {
+          "type": {
+            "namespace": "_spec_utils",
+            "name": "AdditionalProperties"
+          },
+          "generics": [
+            {
+              "kind": "instance_of",
+              "type": {
+                "namespace": "_builtins",
+                "name": "UserDefined"
+              }
+            }
+          ]
+        }
+      ],
+      "properties": [
+        {
+          "name": "detail",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "namespace": "_builtins",
+              "name": "string"
+            }
+          },
+          "required": false
+        },
+        {
+          "name": "documentationUrl",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "namespace": "_builtins",
+              "name": "string"
+            }
+          },
+          "required": false
+        },
+        {
+          "name": "level",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "namespace": "_global",
+              "name": "KibanaHttpApIsCoreStatusResponseStatusPluginsValueLevel"
+            }
+          },
+          "required": true
+        },
+        {
+          "name": "meta",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "namespace": "_global",
+              "name": "KibanaHttpApIsCoreStatusResponseStatusPluginsValueMeta"
+            }
+          },
+          "required": true
+        },
+        {
+          "name": "summary",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "namespace": "_builtins",
+              "name": "string"
+            }
+          },
+          "required": true
+        }
+      ]
+    },
+    {
+      "kind": "enum",
+      "name": {
+        "namespace": "_global",
+        "name": "KibanaHttpApIsCoreStatusResponseStatusPluginsValueLevel"
+      },
+      "description": "Service status levels as human and machine readable values.",
+      "isOpen": false,
+      "members": [
+        {
+          "name": "available"
+        },
+        {
+          "name": "degraded"
+        },
+        {
+          "name": "unavailable"
+        },
+        {
+          "name": "critical"
+        }
+      ]
+    },
+    {
+      "kind": "type_alias",
+      "name": {
+        "namespace": "_global",
+        "name": "KibanaHttpApIsCoreStatusResponseStatusPluginsValueMeta"
+      },
+      "description": "An unstructured set of extra metadata about this service.",
+      "type": {
+        "kind": "instance_of",
+        "type": {
+          "namespace": "_builtins",
+          "name": "Dictionary"
+        },
+        "generics": [
+          {
+            "kind": "instance_of",
+            "type": {
+              "namespace": "_builtins",
+              "name": "string"
+            }
+          },
+          {
+            "kind": "instance_of",
+            "type": {
+              "namespace": "_builtins",
+              "name": "UserDefined"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "namespace": "_global",
+        "name": "KibanaHttpApIsCoreStatusResponseVersion"
+      },
+      "behaviors": [
+        {
+          "type": {
+            "namespace": "_spec_utils",
+            "name": "AdditionalProperties"
+          },
+          "generics": [
+            {
+              "kind": "instance_of",
+              "type": {
+                "namespace": "_builtins",
+                "name": "UserDefined"
+              }
+            }
+          ]
+        }
+      ],
+      "properties": [
+        {
+          "name": "build_date",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "namespace": "_builtins",
+              "name": "string"
+            }
+          },
+          "required": true
+        },
+        {
+          "name": "build_flavor",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "namespace": "_global",
+              "name": "KibanaHttpApIsCoreStatusResponseVersionBuildFlavor"
+            }
+          },
+          "required": true
+        },
+        {
+          "name": "build_hash",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "namespace": "_builtins",
+              "name": "string"
+            }
+          },
+          "required": true
+        },
+        {
+          "name": "build_number",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "namespace": "_builtins",
+              "name": "double"
+            }
+          },
+          "required": true
+        },
+        {
+          "name": "build_snapshot",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "namespace": "_builtins",
+              "name": "boolean"
+            }
+          },
+          "required": true
+        },
+        {
+          "name": "number",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "namespace": "_builtins",
+              "name": "string"
+            }
+          },
+          "required": true
+        }
+      ]
+    },
+    {
+      "kind": "enum",
+      "name": {
+        "namespace": "_global",
+        "name": "KibanaHttpApIsCoreStatusResponseVersionBuildFlavor"
+      },
+      "description": "The build flavour determines configuration and behavior of Kibana. On premise users will almost always run the \"traditional\" flavour, while other flavours are reserved for Elastic-specific use cases.",
+      "isOpen": false,
+      "members": [
+        {
+          "name": "serverless"
+        },
+        {
+          "name": "traditional"
+        }
+      ]
+    },
+    {
+      "kind": "request",
+      "name": {
+        "namespace": "_global",
+        "name": "SystemStatusRequest"
+      },
+      "inherits": null,
+      "path": [],
+      "query": [
+        {
+          "name": "v7format",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "namespace": "_builtins",
+              "name": "boolean"
+            }
+          },
+          "required": false,
+          "description": "Set to \"true\" to get the response in v7 format."
+        },
+        {
+          "name": "v8format",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "namespace": "_builtins",
+              "name": "boolean"
+            }
+          },
+          "required": false,
+          "description": "Set to \"true\" to get the response in v8 format."
+        }
+      ],
+      "body": {
+        "kind": "no_body"
+      }
+    }
+  ]
+}
