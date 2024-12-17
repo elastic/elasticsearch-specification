@@ -29,6 +29,7 @@ export class Response {
 class DatabaseConfigurationMetadata {
   id: Id
   version: VersionNumber
-  modified_date_millis: EpochTime<UnitMillis>
+  modified_date_millis?: EpochTime<UnitMillis>
+  modified_date?: EpochTime<UnitMillis>
   database: DatabaseConfigurationFull
 }
