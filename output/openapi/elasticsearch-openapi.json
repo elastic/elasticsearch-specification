@@ -14997,6 +14997,7 @@
           "inference"
         ],
         "summary": "Create an inference endpoint",
+        "description": "When you create an inference endpoint, the associated machine learning model is automatically deployed if it is not already running.\nAfter creating the endpoint, wait for the model deployment to complete before using it.\nTo verify the deployment status, use the get trained model statistics API.\nLook for `\"state\": \"fully_allocated\"` in the response and ensure that the `\"allocation_count\"` matches the `\"target_allocation_count\"`.\nAvoid creating multiple endpoints for the same model unless required, as each endpoint consumes significant resources.\n\nIMPORTANT: The inference APIs enable you to use certain services, such as built-in machine learning models (ELSER, E5), models uploaded through Eland, Cohere, OpenAI, Mistral, Azure OpenAI, Google AI Studio, Google Vertex AI, Anthropic, Watsonx.ai, or Hugging Face.\nFor built-in models and models uploaded through Eland, the inference APIs offer an alternative way to use and manage trained models.\nHowever, if you do not plan to use the inference APIs to use these models or if you want to use non-NLP models, use the machine learning trained model APIs.",
         "operationId": "inference-put",
         "parameters": [
           {
@@ -15089,6 +15090,7 @@
           "inference"
         ],
         "summary": "Create an inference endpoint",
+        "description": "When you create an inference endpoint, the associated machine learning model is automatically deployed if it is not already running.\nAfter creating the endpoint, wait for the model deployment to complete before using it.\nTo verify the deployment status, use the get trained model statistics API.\nLook for `\"state\": \"fully_allocated\"` in the response and ensure that the `\"allocation_count\"` matches the `\"target_allocation_count\"`.\nAvoid creating multiple endpoints for the same model unless required, as each endpoint consumes significant resources.\n\nIMPORTANT: The inference APIs enable you to use certain services, such as built-in machine learning models (ELSER, E5), models uploaded through Eland, Cohere, OpenAI, Mistral, Azure OpenAI, Google AI Studio, Google Vertex AI, Anthropic, Watsonx.ai, or Hugging Face.\nFor built-in models and models uploaded through Eland, the inference APIs offer an alternative way to use and manage trained models.\nHowever, if you do not plan to use the inference APIs to use these models or if you want to use non-NLP models, use the machine learning trained model APIs.",
         "operationId": "inference-put-1",
         "parameters": [
           {
@@ -16180,7 +16182,11 @@
         "tags": [
           "logstash"
         ],
-        "summary": "Retrieves pipelines used for Logstash Central Management",
+        "summary": "Get Logstash pipelines",
+        "description": "Get pipelines that are used for Logstash Central Management.",
+        "externalDocs": {
+          "url": "https://www.elastic.co/guide/en/logstash/current/logstash-centralized-pipeline-management.html"
+        },
         "operationId": "logstash-get-pipeline-1",
         "parameters": [
           {
@@ -16198,13 +16204,17 @@
         "tags": [
           "logstash"
         ],
-        "summary": "Creates or updates a pipeline used for Logstash Central Management",
+        "summary": "Create or update a Logstash pipeline",
+        "description": "Create a pipeline that is used for Logstash Central Management.\nIf the specified pipeline exists, it is replaced.",
+        "externalDocs": {
+          "url": "https://www.elastic.co/guide/en/logstash/current/logstash-centralized-pipeline-management.html"
+        },
         "operationId": "logstash-put-pipeline",
         "parameters": [
           {
             "in": "path",
             "name": "id",
-            "description": "Identifier for the pipeline.",
+            "description": "An identifier for the pipeline.",
             "required": true,
             "deprecated": false,
             "schema": {
@@ -16237,13 +16247,17 @@
         "tags": [
           "logstash"
         ],
-        "summary": "Deletes a pipeline used for Logstash Central Management",
+        "summary": "Delete a Logstash pipeline",
+        "description": "Delete a pipeline that is used for Logstash Central Management.",
+        "externalDocs": {
+          "url": "https://www.elastic.co/guide/en/logstash/current/logstash-centralized-pipeline-management.html"
+        },
         "operationId": "logstash-delete-pipeline",
         "parameters": [
           {
             "in": "path",
             "name": "id",
-            "description": "Identifier for the pipeline.",
+            "description": "An identifier for the pipeline.",
             "required": true,
             "deprecated": false,
             "schema": {
@@ -16268,7 +16282,11 @@
         "tags": [
           "logstash"
         ],
-        "summary": "Retrieves pipelines used for Logstash Central Management",
+        "summary": "Get Logstash pipelines",
+        "description": "Get pipelines that are used for Logstash Central Management.",
+        "externalDocs": {
+          "url": "https://www.elastic.co/guide/en/logstash/current/logstash-centralized-pipeline-management.html"
+        },
         "operationId": "logstash-get-pipeline",
         "responses": {
           "200": {
@@ -16477,7 +16495,8 @@
         "tags": [
           "migration"
         ],
-        "summary": "Retrieves information about different cluster, node, and index level settings that use deprecated features that will be removed or changed in the next major version",
+        "summary": "Get deprecation information",
+        "description": "Get information about different cluster, node, and index level settings that use deprecated features that will be removed or changed in the next major version.\n\nTIP: This APIs is designed for indirect use by the Upgrade Assistant. We strongly recommend you use the Upgrade Assistant.",
         "operationId": "migration-deprecations",
         "responses": {
           "200": {
@@ -16492,7 +16511,8 @@
         "tags": [
           "migration"
         ],
-        "summary": "Retrieves information about different cluster, node, and index level settings that use deprecated features that will be removed or changed in the next major version",
+        "summary": "Get deprecation information",
+        "description": "Get information about different cluster, node, and index level settings that use deprecated features that will be removed or changed in the next major version.\n\nTIP: This APIs is designed for indirect use by the Upgrade Assistant. We strongly recommend you use the Upgrade Assistant.",
         "operationId": "migration-deprecations-1",
         "parameters": [
           {
@@ -16512,7 +16532,8 @@
         "tags": [
           "migration"
         ],
-        "summary": "Find out whether system features need to be upgraded or not",
+        "summary": "Get feature migration information",
+        "description": "Version upgrades sometimes require changes to how features store configuration information and data in system indices.\nCheck which features need to be migrated and the status of any migrations that are in progress.\n\nTIP: This API is designed for indirect use by the Upgrade Assistant.\nWe strongly recommend you use the Upgrade Assistant.",
         "operationId": "migration-get-feature-upgrade-status",
         "responses": {
           "200": {
@@ -16547,7 +16568,8 @@
         "tags": [
           "migration"
         ],
-        "summary": "Begin upgrades for system features",
+        "summary": "Start the feature migration",
+        "description": "Version upgrades sometimes require changes to how features store configuration information and data in system indices.\nThis API starts the automatic migration process.\n\nSome functionality might be temporarily unavailable during the migration process.\n\nTIP: The API is designed for indirect use by the Upgrade Assistant. We strongly recommend you use the Upgrade Assistant.",
         "operationId": "migration-post-feature-upgrade",
         "responses": {
           "200": {
@@ -20409,8 +20431,8 @@
         "tags": [
           "ml"
         ],
-        "summary": "Return ML defaults and limits",
-        "description": "Returns defaults and limits used by machine learning.\nThis endpoint is designed to be used by a user interface that needs to fully\nunderstand machine learning configurations where some options are not\nspecified, meaning that the defaults should be used. This endpoint may be\nused to find out what those defaults are. It also provides information about\nthe maximum size of machine learning jobs that could run in the current\ncluster configuration.",
+        "summary": "Get machine learning information",
+        "description": "Get defaults and limits used by machine learning.\nThis endpoint is designed to be used by a user interface that needs to fully\nunderstand machine learning configurations where some options are not\nspecified, meaning that the defaults should be used. This endpoint may be\nused to find out what those defaults are. It also provides information about\nthe maximum size of machine learning jobs that could run in the current\ncluster configuration.",
         "operationId": "ml-info",
         "responses": {
           "200": {
@@ -22586,9 +22608,9 @@
     "/_ml/anomaly_detectors/_validate/detector": {
       "post": {
         "tags": [
-          "ml"
+          "ml anomaly"
         ],
-        "summary": "Validates an anomaly detection detector",
+        "summary": "Validate an anomaly detection job",
         "operationId": "ml-validate-detector",
         "requestBody": {
           "content": {
@@ -22620,7 +22642,8 @@
         "tags": [
           "monitoring"
         ],
-        "summary": "Used by the monitoring features to send monitoring data",
+        "summary": "Send monitoring data",
+        "description": "This API is used by the monitoring features to send monitoring data.",
         "operationId": "monitoring-bulk-1",
         "parameters": [
           {
@@ -22647,7 +22670,8 @@
         "tags": [
           "monitoring"
         ],
-        "summary": "Used by the monitoring features to send monitoring data",
+        "summary": "Send monitoring data",
+        "description": "This API is used by the monitoring features to send monitoring data.",
         "operationId": "monitoring-bulk",
         "parameters": [
           {
@@ -22676,7 +22700,8 @@
         "tags": [
           "monitoring"
         ],
-        "summary": "Used by the monitoring features to send monitoring data",
+        "summary": "Send monitoring data",
+        "description": "This API is used by the monitoring features to send monitoring data.",
         "operationId": "monitoring-bulk-3",
         "parameters": [
           {
@@ -22706,7 +22731,8 @@
         "tags": [
           "monitoring"
         ],
-        "summary": "Used by the monitoring features to send monitoring data",
+        "summary": "Send monitoring data",
+        "description": "This API is used by the monitoring features to send monitoring data.",
         "operationId": "monitoring-bulk-2",
         "parameters": [
           {
@@ -25207,7 +25233,8 @@
         "tags": [
           "rollup"
         ],
-        "summary": "Retrieves the configuration, stats, and status of rollup jobs",
+        "summary": "Get rollup job information",
+        "description": "Get the configuration, stats, and status of rollup jobs.\n\nNOTE: This API returns only active (both `STARTED` and `STOPPED`) jobs.\nIf a job was created, ran for a while, then was deleted, the API does not return any details about it.\nFor details about a historical rollup job, the rollup capabilities API may be more useful.",
         "operationId": "rollup-get-jobs",
         "parameters": [
           {
@@ -25225,7 +25252,8 @@
         "tags": [
           "rollup"
         ],
-        "summary": "Creates a rollup job",
+        "summary": "Create a rollup job",
+        "description": "WARNING: From 8.15.0, calling this API in a cluster with no rollup usage will fail with a message about the deprecation and planned removal of rollup features. A cluster needs to contain either a rollup job or a rollup index in order for this API to be allowed to run.\n\nThe rollup job configuration contains all the details about how the job should run, when it indexes documents, and what future queries will be able to run against the rollup index.\n\nThere are three main sections to the job configuration: the logistical details about the job (for example, the cron schedule), the fields that are used for grouping, and what metrics to collect for each group.\n\nJobs are created in a `STOPPED` state. You can start them with the start rollup jobs API.",
         "operationId": "rollup-put-job",
         "parameters": [
           {
@@ -25308,7 +25336,8 @@
         "tags": [
           "rollup"
         ],
-        "summary": "Deletes an existing rollup job",
+        "summary": "Delete a rollup job",
+        "description": "A job must be stopped before it can be deleted.\nIf you attempt to delete a started job, an error occurs.\nSimilarly, if you attempt to delete a nonexistent job, an exception occurs.\n\nIMPORTANT: When you delete a job, you remove only the process that is actively monitoring and rolling up data.\nThe API does not delete any previously rolled up data.\nThis is by design; a user may wish to roll up a static data set.\nBecause the data set is static, after it has been fully rolled up there is no need to keep the indexing rollup job around (as there will be no new data).\nThus the job can be deleted, leaving behind the rolled up data for analysis.\nIf you wish to also remove the rollup data and the rollup index contains the data for only a single job, you can delete the whole rollup index.\nIf the rollup index stores data from several jobs, you must issue a delete-by-query that targets the rollup job's identifier in the rollup index. For example:\n\n```\nPOST my_rollup_index/_delete_by_query\n{\n  \"query\": {\n    \"term\": {\n      \"_rollup.id\": \"the_rollup_job_id\"\n    }\n  }\n}\n```",
         "operationId": "rollup-delete-job",
         "parameters": [
           {
@@ -25357,7 +25386,8 @@
         "tags": [
           "rollup"
         ],
-        "summary": "Retrieves the configuration, stats, and status of rollup jobs",
+        "summary": "Get rollup job information",
+        "description": "Get the configuration, stats, and status of rollup jobs.\n\nNOTE: This API returns only active (both `STARTED` and `STOPPED`) jobs.\nIf a job was created, ran for a while, then was deleted, the API does not return any details about it.\nFor details about a historical rollup job, the rollup capabilities API may be more useful.",
         "operationId": "rollup-get-jobs-1",
         "responses": {
           "200": {
@@ -25372,7 +25402,8 @@
         "tags": [
           "rollup"
         ],
-        "summary": "Returns the capabilities of any rollup jobs that have been configured for a specific index or index pattern",
+        "summary": "Get the rollup job capabilities",
+        "description": "Get the capabilities of any rollup jobs that have been configured for a specific index or index pattern.\n\nThis API is useful because a rollup job is often configured to rollup only a subset of fields from the source index.\nFurthermore, only certain aggregations can be configured for various fields, leading to a limited subset of functionality depending on that configuration.\nThis API enables you to inspect an index and determine:\n\n1. Does this index have associated rollup data somewhere in the cluster?\n2. If yes to the first question, what fields were rolled up, what aggregations can be performed, and where does the data live?",
         "operationId": "rollup-get-rollup-caps",
         "parameters": [
           {
@@ -25392,7 +25423,8 @@
         "tags": [
           "rollup"
         ],
-        "summary": "Returns the capabilities of any rollup jobs that have been configured for a specific index or index pattern",
+        "summary": "Get the rollup job capabilities",
+        "description": "Get the capabilities of any rollup jobs that have been configured for a specific index or index pattern.\n\nThis API is useful because a rollup job is often configured to rollup only a subset of fields from the source index.\nFurthermore, only certain aggregations can be configured for various fields, leading to a limited subset of functionality depending on that configuration.\nThis API enables you to inspect an index and determine:\n\n1. Does this index have associated rollup data somewhere in the cluster?\n2. If yes to the first question, what fields were rolled up, what aggregations can be performed, and where does the data live?",
         "operationId": "rollup-get-rollup-caps-1",
         "responses": {
           "200": {
@@ -25407,7 +25439,8 @@
         "tags": [
           "rollup"
         ],
-        "summary": "Returns the rollup capabilities of all jobs inside of a rollup index (for example, the index where rollup data is stored)",
+        "summary": "Get the rollup index capabilities",
+        "description": "Get the rollup capabilities of all jobs inside of a rollup index.\nA single rollup index may store the data for multiple rollup jobs and may have a variety of capabilities depending on those jobs. This API enables you to determine:\n\n* What jobs are stored in an index (or indices specified via a pattern)?\n* What target indices were rolled up, what fields were used in those rollups, and what aggregations can be performed on each job?",
         "operationId": "rollup-get-rollup-index-caps",
         "parameters": [
           {
@@ -25445,7 +25478,8 @@
         "tags": [
           "rollup"
         ],
-        "summary": "Enables searching rolled-up data using the standard Query DSL",
+        "summary": "Search rolled-up data",
+        "description": "The rollup search endpoint is needed because, internally, rolled-up documents utilize a different document structure than the original data.\nIt rewrites standard Query DSL into a format that matches the rollup documents then takes the response and rewrites it back to what a client would expect given the original query.",
         "operationId": "rollup-rollup-search",
         "parameters": [
           {
@@ -25472,7 +25506,8 @@
         "tags": [
           "rollup"
         ],
-        "summary": "Enables searching rolled-up data using the standard Query DSL",
+        "summary": "Search rolled-up data",
+        "description": "The rollup search endpoint is needed because, internally, rolled-up documents utilize a different document structure than the original data.\nIt rewrites standard Query DSL into a format that matches the rollup documents then takes the response and rewrites it back to what a client would expect given the original query.",
         "operationId": "rollup-rollup-search-1",
         "parameters": [
           {
@@ -25501,7 +25536,8 @@
         "tags": [
           "rollup"
         ],
-        "summary": "Starts an existing, stopped rollup job",
+        "summary": "Start rollup jobs",
+        "description": "If you try to start a job that does not exist, an exception occurs.\nIf you try to start a job that is already started, nothing happens.",
         "operationId": "rollup-start-job",
         "parameters": [
           {
@@ -25544,7 +25580,8 @@
         "tags": [
           "rollup"
         ],
-        "summary": "Stops an existing, started rollup job",
+        "summary": "Stop rollup jobs",
+        "description": "If you try to stop a job that does not exist, an exception occurs.\nIf you try to stop a job that is already stopped, nothing happens.",
         "operationId": "rollup-stop-job",
         "parameters": [
           {
@@ -27110,7 +27147,8 @@
         "tags": [
           "searchable_snapshots"
         ],
-        "summary": "Retrieve node-level cache statistics about searchable snapshots",
+        "summary": "Get cache statistics",
+        "description": "Get statistics about the shared cache for partially mounted indices.",
         "operationId": "searchable-snapshots-cache-stats",
         "parameters": [
           {
@@ -27130,7 +27168,8 @@
         "tags": [
           "searchable_snapshots"
         ],
-        "summary": "Retrieve node-level cache statistics about searchable snapshots",
+        "summary": "Get cache statistics",
+        "description": "Get statistics about the shared cache for partially mounted indices.",
         "operationId": "searchable-snapshots-cache-stats-1",
         "parameters": [
           {
@@ -27153,7 +27192,8 @@
         "tags": [
           "searchable_snapshots"
         ],
-        "summary": "Clear the cache of searchable snapshots",
+        "summary": "Clear the cache",
+        "description": "Clear indices and data streams from the shared cache for partially mounted indices.",
         "operationId": "searchable-snapshots-clear-cache",
         "parameters": [
           {
@@ -27185,7 +27225,8 @@
         "tags": [
           "searchable_snapshots"
         ],
-        "summary": "Clear the cache of searchable snapshots",
+        "summary": "Clear the cache",
+        "description": "Clear indices and data streams from the shared cache for partially mounted indices.",
         "operationId": "searchable-snapshots-clear-cache-1",
         "parameters": [
           {
@@ -27220,7 +27261,8 @@
         "tags": [
           "searchable_snapshots"
         ],
-        "summary": "Mount a snapshot as a searchable index",
+        "summary": "Mount a snapshot",
+        "description": "Mount a snapshot as a searchable snapshot index.\nDo not use this API for snapshots managed by index lifecycle management (ILM).\nManually mounting ILM-managed snapshots can interfere with ILM processes.",
         "operationId": "searchable-snapshots-mount",
         "parameters": [
           {
@@ -27337,7 +27379,7 @@
         "tags": [
           "searchable_snapshots"
         ],
-        "summary": "Retrieve shard-level statistics about searchable snapshots",
+        "summary": "Get searchable snapshot statistics",
         "operationId": "searchable-snapshots-stats",
         "parameters": [
           {
@@ -27357,7 +27399,7 @@
         "tags": [
           "searchable_snapshots"
         ],
-        "summary": "Retrieve shard-level statistics about searchable snapshots",
+        "summary": "Get searchable snapshot statistics",
         "operationId": "searchable-snapshots-stats-1",
         "parameters": [
           {
@@ -30925,8 +30967,8 @@
         "tags": [
           "shutdown"
         ],
-        "summary": "Retrieve status of a node or nodes that are currently marked as shutting down",
-        "description": "Designed for indirect use by ECE/ESS and ECK. Direct use is not supported.",
+        "summary": "Get the shutdown status",
+        "description": "Get information about nodes that are ready to be shut down, have shut down preparations still in progress, or have stalled.\nThe API returns status information for each part of the shut down process.\n\nNOTE: This feature is designed for indirect use by Elasticsearch Service, Elastic Cloud Enterprise, and Elastic Cloud on Kubernetes. Direct use is not supported.\n\nIf the operator privileges feature is enabled, you must be an operator to use this API.",
         "operationId": "shutdown-get-node-1",
         "parameters": [
           {
@@ -30950,8 +30992,8 @@
         "tags": [
           "shutdown"
         ],
-        "summary": "Adds a node to be shut down",
-        "description": "Designed for indirect use by ECE/ESS and ECK. Direct use is not supported.",
+        "summary": "Prepare a node to be shut down",
+        "description": "NOTE: This feature is designed for indirect use by Elastic Cloud, Elastic Cloud Enterprise, and Elastic Cloud on Kubernetes. Direct use is not supported.\n\nIf the operator privileges feature is enabled, you must be an operator to use this API.\n\nThe API migrates ongoing tasks and index shards to other nodes as needed to prepare a node to be restarted or shut down and removed from the cluster.\nThis ensures that Elasticsearch can be stopped safely with minimal disruption to the cluster.\n\nYou must specify the type of shutdown: `restart`, `remove`, or `replace`.\nIf a node is already being prepared for shutdown, you can use this API to change the shutdown type.\n\nIMPORTANT: This API does NOT terminate the Elasticsearch process.\nMonitor the node shutdown status to determine when it is safe to stop Elasticsearch.",
         "operationId": "shutdown-put-node",
         "parameters": [
           {
@@ -31035,8 +31077,8 @@
         "tags": [
           "shutdown"
         ],
-        "summary": "Removes a node from the shutdown list",
-        "description": "Designed for indirect use by ECE/ESS and ECK. Direct use is not supported.",
+        "summary": "Cancel node shutdown preparations",
+        "description": "Remove a node from the shutdown list so it can resume normal operations.\nYou must explicitly clear the shutdown request when a node rejoins the cluster or when a node has permanently left the cluster.\nShutdown requests are never removed automatically by Elasticsearch.\n\nNOTE: This feature is designed for indirect use by Elastic Cloud, Elastic Cloud Enterprise, and Elastic Cloud on Kubernetes.\nDirect use is not supported.\n\nIf the operator privileges feature is enabled, you must be an operator to use this API.",
         "operationId": "shutdown-delete-node",
         "parameters": [
           {
@@ -31091,8 +31133,8 @@
         "tags": [
           "shutdown"
         ],
-        "summary": "Retrieve status of a node or nodes that are currently marked as shutting down",
-        "description": "Designed for indirect use by ECE/ESS and ECK. Direct use is not supported.",
+        "summary": "Get the shutdown status",
+        "description": "Get information about nodes that are ready to be shut down, have shut down preparations still in progress, or have stalled.\nThe API returns status information for each part of the shut down process.\n\nNOTE: This feature is designed for indirect use by Elasticsearch Service, Elastic Cloud Enterprise, and Elastic Cloud on Kubernetes. Direct use is not supported.\n\nIf the operator privileges feature is enabled, you must be an operator to use this API.",
         "operationId": "shutdown-get-node",
         "parameters": [
           {
@@ -31115,7 +31157,8 @@
         "tags": [
           "slm"
         ],
-        "summary": "Retrieves one or more snapshot lifecycle policy definitions and information about the latest snapshot attempts",
+        "summary": "Get policy information",
+        "description": "Get snapshot lifecycle policy definitions and information about the latest snapshot attempts.",
         "operationId": "slm-get-lifecycle",
         "parameters": [
           {
@@ -31133,13 +31176,14 @@
         "tags": [
           "slm"
         ],
-        "summary": "Creates or updates a snapshot lifecycle policy",
+        "summary": "Create or update a policy",
+        "description": "Create or update a snapshot lifecycle policy.\nIf the policy already exists, this request increments the policy version.\nOnly the latest version of a policy is stored.",
         "operationId": "slm-put-lifecycle",
         "parameters": [
           {
             "in": "path",
             "name": "policy_id",
-            "description": "ID for the snapshot lifecycle policy you want to create or update.",
+            "description": "The identifier for the snapshot lifecycle policy you want to create or update.",
             "required": true,
             "deprecated": false,
             "schema": {
@@ -31213,7 +31257,8 @@
         "tags": [
           "slm"
         ],
-        "summary": "Deletes an existing snapshot lifecycle policy",
+        "summary": "Delete a policy",
+        "description": "Delete a snapshot lifecycle policy definition.\nThis operation prevents any future snapshots from being taken but does not cancel in-progress snapshots or remove previously-taken snapshots.",
         "operationId": "slm-delete-lifecycle",
         "parameters": [
           {
@@ -31248,7 +31293,8 @@
         "tags": [
           "slm"
         ],
-        "summary": "Immediately creates a snapshot according to the lifecycle policy, without waiting for the scheduled time",
+        "summary": "Run a policy",
+        "description": "Immediately create a snapshot according to the snapshot lifecycle policy without waiting for the scheduled time.\nThe snapshot policy is normally applied according to its schedule, but you might want to manually run a policy before performing an upgrade or other maintenance.",
         "operationId": "slm-execute-lifecycle",
         "parameters": [
           {
@@ -31291,7 +31337,8 @@
         "tags": [
           "slm"
         ],
-        "summary": "Deletes any snapshots that are expired according to the policy's retention rules",
+        "summary": "Run a retention policy",
+        "description": "Manually apply the retention policy to force immediate removal of snapshots that are expired according to the snapshot lifecycle policy retention rules.\nThe retention policy is normally applied according to its schedule.",
         "operationId": "slm-execute-retention",
         "responses": {
           "200": {
@@ -31313,7 +31360,8 @@
         "tags": [
           "slm"
         ],
-        "summary": "Retrieves one or more snapshot lifecycle policy definitions and information about the latest snapshot attempts",
+        "summary": "Get policy information",
+        "description": "Get snapshot lifecycle policy definitions and information about the latest snapshot attempts.",
         "operationId": "slm-get-lifecycle-1",
         "responses": {
           "200": {
@@ -31328,7 +31376,8 @@
         "tags": [
           "slm"
         ],
-        "summary": "Returns global and policy-level statistics about actions taken by snapshot lifecycle management",
+        "summary": "Get snapshot lifecycle management statistics",
+        "description": "Get global and policy-level statistics about actions taken by snapshot lifecycle management.",
         "operationId": "slm-get-stats",
         "responses": {
           "200": {
@@ -31397,7 +31446,7 @@
         "tags": [
           "slm"
         ],
-        "summary": "Retrieves the status of snapshot lifecycle management (SLM)",
+        "summary": "Get the snapshot lifecycle management status",
         "operationId": "slm-get-status",
         "responses": {
           "200": {
@@ -31427,7 +31476,8 @@
         "tags": [
           "slm"
         ],
-        "summary": "Turns on snapshot lifecycle management (SLM)",
+        "summary": "Start snapshot lifecycle management",
+        "description": "Snapshot lifecycle management (SLM) starts automatically when a cluster is formed.\nManually starting SLM is necessary only if it has been stopped using the stop SLM API.",
         "operationId": "slm-start",
         "responses": {
           "200": {
@@ -31449,7 +31499,8 @@
         "tags": [
           "slm"
         ],
-        "summary": "Turns off snapshot lifecycle management (SLM)",
+        "summary": "Stop snapshot lifecycle management",
+        "description": "Stop all snapshot lifecycle management (SLM) operations and the SLM plugin.\nThis API is useful when you are performing maintenance on a cluster and need to prevent SLM from performing any actions on your data streams or indices.\nStopping SLM does not stop any snapshots that are in progress.\nYou can manually trigger snapshots with the run snapshot lifecycle policy API even if SLM is stopped.\n\nThe API returns a response as soon as the request is acknowledged, but the plugin might continue to run until in-progress operations complete and it can be safely stopped.\nUse the get snapshot lifecycle management status API to see if SLM is running.",
         "operationId": "slm-stop",
         "responses": {
           "200": {
@@ -31471,7 +31522,11 @@
         "tags": [
           "snapshot"
         ],
-        "summary": "Triggers the review of a snapshot repository’s contents and deletes any stale data not referenced by existing snapshots",
+        "summary": "Clean up the snapshot repository",
+        "description": "Trigger the review of the contents of a snapshot repository and delete any stale data not referenced by existing snapshots.",
+        "externalDocs": {
+          "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/snapshots-register-repository.html#snapshots-repository-cleanup"
+        },
         "operationId": "snapshot-cleanup-repository",
         "parameters": [
           {
@@ -31534,7 +31589,8 @@
         "tags": [
           "snapshot"
         ],
-        "summary": "Clones indices from one snapshot into another snapshot in the same repository",
+        "summary": "Clone a snapshot",
+        "description": "Clone part of all of a snapshot into another snapshot in the same repository.",
         "operationId": "snapshot-clone",
         "parameters": [
           {
@@ -31628,7 +31684,7 @@
         "tags": [
           "snapshot"
         ],
-        "summary": "Returns information about a snapshot",
+        "summary": "Get snapshot information",
         "operationId": "snapshot-get",
         "parameters": [
           {
@@ -31828,7 +31884,11 @@
         "tags": [
           "snapshot"
         ],
-        "summary": "Creates a snapshot in a repository",
+        "summary": "Create a snapshot",
+        "description": "Take a snapshot of a cluster or of data streams and indices.",
+        "externalDocs": {
+          "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/snapshots-take-snapshot.html"
+        },
         "operationId": "snapshot-create",
         "parameters": [
           {
@@ -31858,7 +31918,11 @@
         "tags": [
           "snapshot"
         ],
-        "summary": "Creates a snapshot in a repository",
+        "summary": "Create a snapshot",
+        "description": "Take a snapshot of a cluster or of data streams and indices.",
+        "externalDocs": {
+          "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/snapshots-take-snapshot.html"
+        },
         "operationId": "snapshot-create-1",
         "parameters": [
           {
@@ -31888,7 +31952,7 @@
         "tags": [
           "snapshot"
         ],
-        "summary": "Deletes one or more snapshots",
+        "summary": "Delete snapshots",
         "operationId": "snapshot-delete",
         "parameters": [
           {
@@ -31943,7 +32007,7 @@
         "tags": [
           "snapshot"
         ],
-        "summary": "Returns information about a repository",
+        "summary": "Get snapshot repository information",
         "operationId": "snapshot-get-repository-1",
         "parameters": [
           {
@@ -31967,7 +32031,11 @@
         "tags": [
           "snapshot"
         ],
-        "summary": "Creates a repository",
+        "summary": "Create or update a snapshot repository",
+        "description": "IMPORTANT: If you are migrating searchable snapshots, the repository name must be identical in the source and destination clusters.\nTo register a snapshot repository, the cluster's global metadata must be writeable.\nEnsure there are no cluster blocks (for example, `cluster.blocks.read_only` and `clsuter.blocks.read_only_allow_delete` settings) that prevent write access.",
+        "externalDocs": {
+          "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/snapshots-register-repository.html"
+        },
         "operationId": "snapshot-create-repository",
         "parameters": [
           {
@@ -31997,7 +32065,11 @@
         "tags": [
           "snapshot"
         ],
-        "summary": "Creates a repository",
+        "summary": "Create or update a snapshot repository",
+        "description": "IMPORTANT: If you are migrating searchable snapshots, the repository name must be identical in the source and destination clusters.\nTo register a snapshot repository, the cluster's global metadata must be writeable.\nEnsure there are no cluster blocks (for example, `cluster.blocks.read_only` and `clsuter.blocks.read_only_allow_delete` settings) that prevent write access.",
+        "externalDocs": {
+          "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/snapshots-register-repository.html"
+        },
         "operationId": "snapshot-create-repository-1",
         "parameters": [
           {
@@ -32027,7 +32099,8 @@
         "tags": [
           "snapshot"
         ],
-        "summary": "Deletes a repository",
+        "summary": "Delete snapshot repositories",
+        "description": "When a repository is unregistered, Elasticsearch removes only the reference to the location where the repository is storing the snapshots.\nThe snapshots themselves are left untouched and in place.",
         "operationId": "snapshot-delete-repository",
         "parameters": [
           {
@@ -32082,7 +32155,7 @@
         "tags": [
           "snapshot"
         ],
-        "summary": "Returns information about a repository",
+        "summary": "Get snapshot repository information",
         "operationId": "snapshot-get-repository",
         "parameters": [
           {
@@ -32105,7 +32178,8 @@
         "tags": [
           "snapshot"
         ],
-        "summary": "Verifies the integrity of the contents of a snapshot repository",
+        "summary": "Verify the repository integrity",
+        "description": "Verify the integrity of the contents of a snapshot repository.\n\nThis API enables you to perform a comprehensive check of the contents of a repository, looking for any anomalies in its data or metadata which might prevent you from restoring snapshots from the repository or which might cause future snapshot create or delete operations to fail.\n\nIf you suspect the integrity of the contents of one of your snapshot repositories, cease all write activity to this repository immediately, set its `read_only` option to `true`, and use this API to verify its integrity.\nUntil you do so:\n\n* It may not be possible to restore some snapshots from this repository.\n* Searchable snapshots may report errors when searched or may have unassigned shards.\n* Taking snapshots into this repository may fail or may appear to succeed but have created a snapshot which cannot be restored.\n* Deleting snapshots from this repository may fail or may appear to succeed but leave the underlying data on disk.\n* Continuing to write to the repository while it is in an invalid state may causing additional damage to its contents.\n\nIf the API finds any problems with the integrity of the contents of your repository, Elasticsearch will not be able to repair the damage.\nThe only way to bring the repository back into a fully working state after its contents have been damaged is by restoring its contents from a repository backup which was taken before the damage occurred.\nYou must also identify what caused the damage and take action to prevent it from happening again.\n\nIf you cannot restore a repository backup, register a new repository and use this for all future snapshot operations.\nIn some cases it may be possible to recover some of the contents of a damaged repository, either by restoring as many of its snapshots as needed and taking new snapshots of the restored data, or by using the reindex API to copy data from any searchable snapshots mounted from the damaged repository.\n\nAvoid all operations which write to the repository while the verify repository integrity API is running.\nIf something changes the repository contents while an integrity verification is running then Elasticsearch may incorrectly report having detected some anomalies in its contents due to the concurrent writes.\nIt may also incorrectly fail to report some anomalies that the concurrent writes prevented it from detecting.\n\nNOTE: This API is intended for exploratory use by humans. You should expect the request parameters and the response format to vary in future versions.\n\nNOTE: This API may not work correctly in a mixed-version cluster.",
         "operationId": "snapshot-repository-verify-integrity",
         "parameters": [
           {
@@ -32220,7 +32294,11 @@
         "tags": [
           "snapshot"
         ],
-        "summary": "Restores a snapshot",
+        "summary": "Restore a snapshot",
+        "description": "Restore a snapshot of a cluster or data streams and indices.\n\nYou can restore a snapshot only to a running cluster with an elected master node.\nThe snapshot repository must be registered and available to the cluster.\nThe snapshot and cluster versions must be compatible.\n\nTo restore a snapshot, the cluster's global metadata must be writable. Ensure there are't any cluster blocks that prevent writes. The restore operation ignores index blocks.\n\nBefore you restore a data stream, ensure the cluster contains a matching index template with data streams enabled. To check, use the index management feature in Kibana or the get index template API:\n\n```\nGET _index_template/*?filter_path=index_templates.name,index_templates.index_template.index_patterns,index_templates.index_template.data_stream\n```\n\nIf no such template exists, you can create one or restore a cluster state that contains one. Without a matching index template, a data stream can't roll over or create backing indices.\n\nIf your snapshot contains data from App Search or Workplace Search, you must restore the Enterprise Search encryption key before you restore the snapshot.",
+        "externalDocs": {
+          "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/snapshots-restore-snapshot.html"
+        },
         "operationId": "snapshot-restore",
         "parameters": [
           {
@@ -32341,7 +32419,8 @@
         "tags": [
           "snapshot"
         ],
-        "summary": "Returns information about the status of a snapshot",
+        "summary": "Get the snapshot status",
+        "description": "Get a detailed description of the current state for each shard participating in the snapshot.\nNote that this API should be used only to obtain detailed shard-level information for ongoing snapshots.\nIf this detail is not needed or you want to obtain information about one or more existing snapshots, use the get snapshot API.\n\nWARNING: Using the API to return the status of any snapshots other than currently running snapshots can be expensive.\nThe API requires a read from the repository for each shard in each snapshot.\nFor example, if you have 100 snapshots with 1,000 shards each, an API request that includes all snapshots will require 100,000 reads (100 snapshots x 1,000 shards).\n\nDepending on the latency of your storage, such requests can take an extremely long time to return results.\nThese requests can also tax machine resources and, when using cloud storage, incur high processing costs.",
         "operationId": "snapshot-status",
         "parameters": [
           {
@@ -32364,7 +32443,8 @@
         "tags": [
           "snapshot"
         ],
-        "summary": "Returns information about the status of a snapshot",
+        "summary": "Get the snapshot status",
+        "description": "Get a detailed description of the current state for each shard participating in the snapshot.\nNote that this API should be used only to obtain detailed shard-level information for ongoing snapshots.\nIf this detail is not needed or you want to obtain information about one or more existing snapshots, use the get snapshot API.\n\nWARNING: Using the API to return the status of any snapshots other than currently running snapshots can be expensive.\nThe API requires a read from the repository for each shard in each snapshot.\nFor example, if you have 100 snapshots with 1,000 shards each, an API request that includes all snapshots will require 100,000 reads (100 snapshots x 1,000 shards).\n\nDepending on the latency of your storage, such requests can take an extremely long time to return results.\nThese requests can also tax machine resources and, when using cloud storage, incur high processing costs.",
         "operationId": "snapshot-status-1",
         "parameters": [
           {
@@ -32390,7 +32470,8 @@
         "tags": [
           "snapshot"
         ],
-        "summary": "Returns information about the status of a snapshot",
+        "summary": "Get the snapshot status",
+        "description": "Get a detailed description of the current state for each shard participating in the snapshot.\nNote that this API should be used only to obtain detailed shard-level information for ongoing snapshots.\nIf this detail is not needed or you want to obtain information about one or more existing snapshots, use the get snapshot API.\n\nWARNING: Using the API to return the status of any snapshots other than currently running snapshots can be expensive.\nThe API requires a read from the repository for each shard in each snapshot.\nFor example, if you have 100 snapshots with 1,000 shards each, an API request that includes all snapshots will require 100,000 reads (100 snapshots x 1,000 shards).\n\nDepending on the latency of your storage, such requests can take an extremely long time to return results.\nThese requests can also tax machine resources and, when using cloud storage, incur high processing costs.",
         "operationId": "snapshot-status-2",
         "parameters": [
           {
@@ -32419,7 +32500,11 @@
         "tags": [
           "snapshot"
         ],
-        "summary": "Verifies a repository",
+        "summary": "Verify a snapshot repository",
+        "description": "Check for common misconfigurations in a snapshot repository.",
+        "externalDocs": {
+          "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/snapshots-register-repository.html#snapshots-repository-verification"
+        },
         "operationId": "snapshot-verify-repository",
         "parameters": [
           {
@@ -72332,34 +72417,37 @@
         "type": "object",
         "properties": {
           "description": {
-            "description": "Description of the pipeline.\nThis description is not used by Elasticsearch or Logstash.",
+            "description": "A description of the pipeline.\nThis description is not used by Elasticsearch or Logstash.",
             "type": "string"
           },
           "last_modified": {
             "$ref": "#/components/schemas/_types:DateTime"
           },
+          "pipeline": {
+            "externalDocs": {
+              "url": "https://www.elastic.co/guide/en/logstash/current/configuration-file-structure.html"
+            },
+            "description": "The configuration for the pipeline.",
+            "type": "string"
+          },
           "pipeline_metadata": {
             "$ref": "#/components/schemas/logstash._types:PipelineMetadata"
           },
-          "username": {
-            "description": "User who last updated the pipeline.",
-            "type": "string"
-          },
-          "pipeline": {
-            "description": "Configuration for the pipeline.",
-            "type": "string"
-          },
           "pipeline_settings": {
             "$ref": "#/components/schemas/logstash._types:PipelineSettings"
+          },
+          "username": {
+            "description": "The user who last updated the pipeline.",
+            "type": "string"
           }
         },
         "required": [
           "description",
           "last_modified",
-          "pipeline_metadata",
-          "username",
           "pipeline",
-          "pipeline_settings"
+          "pipeline_metadata",
+          "pipeline_settings",
+          "username"
         ]
       },
       "logstash._types:PipelineMetadata": {
@@ -98266,7 +98354,7 @@
       "logstash.get_pipeline#id": {
         "in": "path",
         "name": "id",
-        "description": "Comma-separated list of pipeline identifiers.",
+        "description": "A comma-separated list of pipeline identifiers.",
         "required": true,
         "deprecated": false,
         "schema": {
