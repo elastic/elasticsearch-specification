@@ -24,8 +24,14 @@ import { IndexName, Name } from '@_types/common'
 import { Duration } from '@_types/Time'
 
 /**
+ * Mount a snapshot.
+ * Mount a snapshot as a searchable snapshot index.
+ * Do not use this API for snapshots managed by index lifecycle management (ILM).
+ * Manually mounting ILM-managed snapshots can interfere with ILM processes.
  * @rest_spec_name searchable_snapshots.mount
  * @availability stack since=7.10.0 stability=stable
+ * @cluster_privileges manage
+ * @index_privileges manage
  */
 export interface Request extends RequestBase {
   path_parts: {
