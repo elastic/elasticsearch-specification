@@ -33335,7 +33335,8 @@
         "tags": [
           "tasks"
         ],
-        "summary": "Cancels a task, if it can be cancelled through an API",
+        "summary": "Cancel a task",
+        "description": "A task may continue to run for some time after it has been cancelled because it may not be able to safely stop its current activity straight away.\nIt is also possible that Elasticsearch must complete its work on other tasks before it can process the cancellation.\nThe get task information API will continue to list these cancelled tasks until they complete.\nThe cancelled flag in the response indicates that the cancellation command has been processed and the task will stop as soon as possible.\n\nTo troubleshoot why a cancelled task does not complete promptly, use the get task information API with the `?detailed` parameter to identify the other tasks the system is running.\nYou can also use the node hot threads API to obtain detailed information about the work the system is doing instead of completing the cancelled task.",
         "operationId": "tasks-cancel",
         "parameters": [
           {
@@ -33364,7 +33365,8 @@
         "tags": [
           "tasks"
         ],
-        "summary": "Cancels a task, if it can be cancelled through an API",
+        "summary": "Cancel a task",
+        "description": "A task may continue to run for some time after it has been cancelled because it may not be able to safely stop its current activity straight away.\nIt is also possible that Elasticsearch must complete its work on other tasks before it can process the cancellation.\nThe get task information API will continue to list these cancelled tasks until they complete.\nThe cancelled flag in the response indicates that the cancellation command has been processed and the task will stop as soon as possible.\n\nTo troubleshoot why a cancelled task does not complete promptly, use the get task information API with the `?detailed` parameter to identify the other tasks the system is running.\nYou can also use the node hot threads API to obtain detailed information about the work the system is doing instead of completing the cancelled task.",
         "operationId": "tasks-cancel-1",
         "parameters": [
           {
@@ -33397,7 +33399,7 @@
           "tasks"
         ],
         "summary": "Get task information",
-        "description": "Returns information about the tasks currently executing in the cluster.",
+        "description": "Get information about a task currently running in the cluster.",
         "operationId": "tasks-get",
         "parameters": [
           {
@@ -33470,7 +33472,8 @@
         "tags": [
           "tasks"
         ],
-        "summary": "The task management API returns information about tasks currently executing on one or more nodes in the cluster",
+        "summary": "Get all tasks",
+        "description": "Get information about the tasks currently running on one or more nodes in the cluster.",
         "operationId": "tasks-list",
         "parameters": [
           {
@@ -33496,7 +33499,7 @@
           {
             "in": "query",
             "name": "detailed",
-            "description": "If `true`, the response includes detailed information about shard recoveries.",
+            "description": "If `true`, the response includes detailed information about shard recoveries.\nThis information is useful to distinguish tasks from each other but is more costly to run.",
             "deprecated": false,
             "schema": {
               "type": "boolean"
@@ -65175,6 +65178,7 @@
             "type": "boolean"
           },
           "description": {
+            "description": "Human readable text that identifies the particular request that the task is performing.\nFor example, it might identify the search request being performed by a search task.\nOther kinds of tasks have different descriptions, like `_reindex` which has the source and the destination, or `_bulk` which just has the number of requests and the destination indices.\nMany requests will have only an empty description because more detailed information about the request is not easily available or particularly helpful in identifying the request.",
             "type": "string"
           },
           "headers": {
@@ -65199,7 +65203,7 @@
             "$ref": "#/components/schemas/_types:EpochTimeUnitMillis"
           },
           "status": {
-            "description": "Task status information can vary wildly from task to task.",
+            "description": "The internal status of the task, which varies from task to task.\nThe format also varies.\nWhile the goal is to keep the status for a particular task consistent from version to version, this is not always possible because sometimes the implementation changes.\nFields might be removed from the status for a particular request so any parsing you do of the status might break in minor releases.",
             "type": "object"
           },
           "type": {
