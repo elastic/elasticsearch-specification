@@ -14997,6 +14997,7 @@
           "inference"
         ],
         "summary": "Create an inference endpoint",
+        "description": "When you create an inference endpoint, the associated machine learning model is automatically deployed if it is not already running.\nAfter creating the endpoint, wait for the model deployment to complete before using it.\nTo verify the deployment status, use the get trained model statistics API.\nLook for `\"state\": \"fully_allocated\"` in the response and ensure that the `\"allocation_count\"` matches the `\"target_allocation_count\"`.\nAvoid creating multiple endpoints for the same model unless required, as each endpoint consumes significant resources.\n\nIMPORTANT: The inference APIs enable you to use certain services, such as built-in machine learning models (ELSER, E5), models uploaded through Eland, Cohere, OpenAI, Mistral, Azure OpenAI, Google AI Studio, Google Vertex AI, Anthropic, Watsonx.ai, or Hugging Face.\nFor built-in models and models uploaded through Eland, the inference APIs offer an alternative way to use and manage trained models.\nHowever, if you do not plan to use the inference APIs to use these models or if you want to use non-NLP models, use the machine learning trained model APIs.",
         "operationId": "inference-put",
         "parameters": [
           {
@@ -15089,6 +15090,7 @@
           "inference"
         ],
         "summary": "Create an inference endpoint",
+        "description": "When you create an inference endpoint, the associated machine learning model is automatically deployed if it is not already running.\nAfter creating the endpoint, wait for the model deployment to complete before using it.\nTo verify the deployment status, use the get trained model statistics API.\nLook for `\"state\": \"fully_allocated\"` in the response and ensure that the `\"allocation_count\"` matches the `\"target_allocation_count\"`.\nAvoid creating multiple endpoints for the same model unless required, as each endpoint consumes significant resources.\n\nIMPORTANT: The inference APIs enable you to use certain services, such as built-in machine learning models (ELSER, E5), models uploaded through Eland, Cohere, OpenAI, Mistral, Azure OpenAI, Google AI Studio, Google Vertex AI, Anthropic, Watsonx.ai, or Hugging Face.\nFor built-in models and models uploaded through Eland, the inference APIs offer an alternative way to use and manage trained models.\nHowever, if you do not plan to use the inference APIs to use these models or if you want to use non-NLP models, use the machine learning trained model APIs.",
         "operationId": "inference-put-1",
         "parameters": [
           {
@@ -16180,7 +16182,11 @@
         "tags": [
           "logstash"
         ],
-        "summary": "Retrieves pipelines used for Logstash Central Management",
+        "summary": "Get Logstash pipelines",
+        "description": "Get pipelines that are used for Logstash Central Management.",
+        "externalDocs": {
+          "url": "https://www.elastic.co/guide/en/logstash/current/logstash-centralized-pipeline-management.html"
+        },
         "operationId": "logstash-get-pipeline-1",
         "parameters": [
           {
@@ -16198,13 +16204,17 @@
         "tags": [
           "logstash"
         ],
-        "summary": "Creates or updates a pipeline used for Logstash Central Management",
+        "summary": "Create or update a Logstash pipeline",
+        "description": "Create a pipeline that is used for Logstash Central Management.\nIf the specified pipeline exists, it is replaced.",
+        "externalDocs": {
+          "url": "https://www.elastic.co/guide/en/logstash/current/logstash-centralized-pipeline-management.html"
+        },
         "operationId": "logstash-put-pipeline",
         "parameters": [
           {
             "in": "path",
             "name": "id",
-            "description": "Identifier for the pipeline.",
+            "description": "An identifier for the pipeline.",
             "required": true,
             "deprecated": false,
             "schema": {
@@ -16237,13 +16247,17 @@
         "tags": [
           "logstash"
         ],
-        "summary": "Deletes a pipeline used for Logstash Central Management",
+        "summary": "Delete a Logstash pipeline",
+        "description": "Delete a pipeline that is used for Logstash Central Management.",
+        "externalDocs": {
+          "url": "https://www.elastic.co/guide/en/logstash/current/logstash-centralized-pipeline-management.html"
+        },
         "operationId": "logstash-delete-pipeline",
         "parameters": [
           {
             "in": "path",
             "name": "id",
-            "description": "Identifier for the pipeline.",
+            "description": "An identifier for the pipeline.",
             "required": true,
             "deprecated": false,
             "schema": {
@@ -16268,7 +16282,11 @@
         "tags": [
           "logstash"
         ],
-        "summary": "Retrieves pipelines used for Logstash Central Management",
+        "summary": "Get Logstash pipelines",
+        "description": "Get pipelines that are used for Logstash Central Management.",
+        "externalDocs": {
+          "url": "https://www.elastic.co/guide/en/logstash/current/logstash-centralized-pipeline-management.html"
+        },
         "operationId": "logstash-get-pipeline",
         "responses": {
           "200": {
@@ -27129,7 +27147,8 @@
         "tags": [
           "searchable_snapshots"
         ],
-        "summary": "Retrieve node-level cache statistics about searchable snapshots",
+        "summary": "Get cache statistics",
+        "description": "Get statistics about the shared cache for partially mounted indices.",
         "operationId": "searchable-snapshots-cache-stats",
         "parameters": [
           {
@@ -27149,7 +27168,8 @@
         "tags": [
           "searchable_snapshots"
         ],
-        "summary": "Retrieve node-level cache statistics about searchable snapshots",
+        "summary": "Get cache statistics",
+        "description": "Get statistics about the shared cache for partially mounted indices.",
         "operationId": "searchable-snapshots-cache-stats-1",
         "parameters": [
           {
@@ -27172,7 +27192,8 @@
         "tags": [
           "searchable_snapshots"
         ],
-        "summary": "Clear the cache of searchable snapshots",
+        "summary": "Clear the cache",
+        "description": "Clear indices and data streams from the shared cache for partially mounted indices.",
         "operationId": "searchable-snapshots-clear-cache",
         "parameters": [
           {
@@ -27204,7 +27225,8 @@
         "tags": [
           "searchable_snapshots"
         ],
-        "summary": "Clear the cache of searchable snapshots",
+        "summary": "Clear the cache",
+        "description": "Clear indices and data streams from the shared cache for partially mounted indices.",
         "operationId": "searchable-snapshots-clear-cache-1",
         "parameters": [
           {
@@ -27239,7 +27261,8 @@
         "tags": [
           "searchable_snapshots"
         ],
-        "summary": "Mount a snapshot as a searchable index",
+        "summary": "Mount a snapshot",
+        "description": "Mount a snapshot as a searchable snapshot index.\nDo not use this API for snapshots managed by index lifecycle management (ILM).\nManually mounting ILM-managed snapshots can interfere with ILM processes.",
         "operationId": "searchable-snapshots-mount",
         "parameters": [
           {
@@ -27356,7 +27379,7 @@
         "tags": [
           "searchable_snapshots"
         ],
-        "summary": "Retrieve shard-level statistics about searchable snapshots",
+        "summary": "Get searchable snapshot statistics",
         "operationId": "searchable-snapshots-stats",
         "parameters": [
           {
@@ -27376,7 +27399,7 @@
         "tags": [
           "searchable_snapshots"
         ],
-        "summary": "Retrieve shard-level statistics about searchable snapshots",
+        "summary": "Get searchable snapshot statistics",
         "operationId": "searchable-snapshots-stats-1",
         "parameters": [
           {
@@ -31499,7 +31522,11 @@
         "tags": [
           "snapshot"
         ],
-        "summary": "Triggers the review of a snapshot repository’s contents and deletes any stale data not referenced by existing snapshots",
+        "summary": "Clean up the snapshot repository",
+        "description": "Trigger the review of the contents of a snapshot repository and delete any stale data not referenced by existing snapshots.",
+        "externalDocs": {
+          "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/snapshots-register-repository.html#snapshots-repository-cleanup"
+        },
         "operationId": "snapshot-cleanup-repository",
         "parameters": [
           {
@@ -31562,7 +31589,8 @@
         "tags": [
           "snapshot"
         ],
-        "summary": "Clones indices from one snapshot into another snapshot in the same repository",
+        "summary": "Clone a snapshot",
+        "description": "Clone part of all of a snapshot into another snapshot in the same repository.",
         "operationId": "snapshot-clone",
         "parameters": [
           {
@@ -31656,7 +31684,7 @@
         "tags": [
           "snapshot"
         ],
-        "summary": "Returns information about a snapshot",
+        "summary": "Get snapshot information",
         "operationId": "snapshot-get",
         "parameters": [
           {
@@ -31856,7 +31884,11 @@
         "tags": [
           "snapshot"
         ],
-        "summary": "Creates a snapshot in a repository",
+        "summary": "Create a snapshot",
+        "description": "Take a snapshot of a cluster or of data streams and indices.",
+        "externalDocs": {
+          "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/snapshots-take-snapshot.html"
+        },
         "operationId": "snapshot-create",
         "parameters": [
           {
@@ -31886,7 +31918,11 @@
         "tags": [
           "snapshot"
         ],
-        "summary": "Creates a snapshot in a repository",
+        "summary": "Create a snapshot",
+        "description": "Take a snapshot of a cluster or of data streams and indices.",
+        "externalDocs": {
+          "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/snapshots-take-snapshot.html"
+        },
         "operationId": "snapshot-create-1",
         "parameters": [
           {
@@ -31916,7 +31952,7 @@
         "tags": [
           "snapshot"
         ],
-        "summary": "Deletes one or more snapshots",
+        "summary": "Delete snapshots",
         "operationId": "snapshot-delete",
         "parameters": [
           {
@@ -31971,7 +32007,7 @@
         "tags": [
           "snapshot"
         ],
-        "summary": "Returns information about a repository",
+        "summary": "Get snapshot repository information",
         "operationId": "snapshot-get-repository-1",
         "parameters": [
           {
@@ -31995,7 +32031,11 @@
         "tags": [
           "snapshot"
         ],
-        "summary": "Creates a repository",
+        "summary": "Create or update a snapshot repository",
+        "description": "IMPORTANT: If you are migrating searchable snapshots, the repository name must be identical in the source and destination clusters.\nTo register a snapshot repository, the cluster's global metadata must be writeable.\nEnsure there are no cluster blocks (for example, `cluster.blocks.read_only` and `clsuter.blocks.read_only_allow_delete` settings) that prevent write access.",
+        "externalDocs": {
+          "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/snapshots-register-repository.html"
+        },
         "operationId": "snapshot-create-repository",
         "parameters": [
           {
@@ -32025,7 +32065,11 @@
         "tags": [
           "snapshot"
         ],
-        "summary": "Creates a repository",
+        "summary": "Create or update a snapshot repository",
+        "description": "IMPORTANT: If you are migrating searchable snapshots, the repository name must be identical in the source and destination clusters.\nTo register a snapshot repository, the cluster's global metadata must be writeable.\nEnsure there are no cluster blocks (for example, `cluster.blocks.read_only` and `clsuter.blocks.read_only_allow_delete` settings) that prevent write access.",
+        "externalDocs": {
+          "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/snapshots-register-repository.html"
+        },
         "operationId": "snapshot-create-repository-1",
         "parameters": [
           {
@@ -32055,7 +32099,8 @@
         "tags": [
           "snapshot"
         ],
-        "summary": "Deletes a repository",
+        "summary": "Delete snapshot repositories",
+        "description": "When a repository is unregistered, Elasticsearch removes only the reference to the location where the repository is storing the snapshots.\nThe snapshots themselves are left untouched and in place.",
         "operationId": "snapshot-delete-repository",
         "parameters": [
           {
@@ -32110,7 +32155,7 @@
         "tags": [
           "snapshot"
         ],
-        "summary": "Returns information about a repository",
+        "summary": "Get snapshot repository information",
         "operationId": "snapshot-get-repository",
         "parameters": [
           {
@@ -32133,7 +32178,8 @@
         "tags": [
           "snapshot"
         ],
-        "summary": "Verifies the integrity of the contents of a snapshot repository",
+        "summary": "Verify the repository integrity",
+        "description": "Verify the integrity of the contents of a snapshot repository.\n\nThis API enables you to perform a comprehensive check of the contents of a repository, looking for any anomalies in its data or metadata which might prevent you from restoring snapshots from the repository or which might cause future snapshot create or delete operations to fail.\n\nIf you suspect the integrity of the contents of one of your snapshot repositories, cease all write activity to this repository immediately, set its `read_only` option to `true`, and use this API to verify its integrity.\nUntil you do so:\n\n* It may not be possible to restore some snapshots from this repository.\n* Searchable snapshots may report errors when searched or may have unassigned shards.\n* Taking snapshots into this repository may fail or may appear to succeed but have created a snapshot which cannot be restored.\n* Deleting snapshots from this repository may fail or may appear to succeed but leave the underlying data on disk.\n* Continuing to write to the repository while it is in an invalid state may causing additional damage to its contents.\n\nIf the API finds any problems with the integrity of the contents of your repository, Elasticsearch will not be able to repair the damage.\nThe only way to bring the repository back into a fully working state after its contents have been damaged is by restoring its contents from a repository backup which was taken before the damage occurred.\nYou must also identify what caused the damage and take action to prevent it from happening again.\n\nIf you cannot restore a repository backup, register a new repository and use this for all future snapshot operations.\nIn some cases it may be possible to recover some of the contents of a damaged repository, either by restoring as many of its snapshots as needed and taking new snapshots of the restored data, or by using the reindex API to copy data from any searchable snapshots mounted from the damaged repository.\n\nAvoid all operations which write to the repository while the verify repository integrity API is running.\nIf something changes the repository contents while an integrity verification is running then Elasticsearch may incorrectly report having detected some anomalies in its contents due to the concurrent writes.\nIt may also incorrectly fail to report some anomalies that the concurrent writes prevented it from detecting.\n\nNOTE: This API is intended for exploratory use by humans. You should expect the request parameters and the response format to vary in future versions.\n\nNOTE: This API may not work correctly in a mixed-version cluster.",
         "operationId": "snapshot-repository-verify-integrity",
         "parameters": [
           {
@@ -32248,7 +32294,11 @@
         "tags": [
           "snapshot"
         ],
-        "summary": "Restores a snapshot",
+        "summary": "Restore a snapshot",
+        "description": "Restore a snapshot of a cluster or data streams and indices.\n\nYou can restore a snapshot only to a running cluster with an elected master node.\nThe snapshot repository must be registered and available to the cluster.\nThe snapshot and cluster versions must be compatible.\n\nTo restore a snapshot, the cluster's global metadata must be writable. Ensure there are't any cluster blocks that prevent writes. The restore operation ignores index blocks.\n\nBefore you restore a data stream, ensure the cluster contains a matching index template with data streams enabled. To check, use the index management feature in Kibana or the get index template API:\n\n```\nGET _index_template/*?filter_path=index_templates.name,index_templates.index_template.index_patterns,index_templates.index_template.data_stream\n```\n\nIf no such template exists, you can create one or restore a cluster state that contains one. Without a matching index template, a data stream can't roll over or create backing indices.\n\nIf your snapshot contains data from App Search or Workplace Search, you must restore the Enterprise Search encryption key before you restore the snapshot.",
+        "externalDocs": {
+          "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/snapshots-restore-snapshot.html"
+        },
         "operationId": "snapshot-restore",
         "parameters": [
           {
@@ -32369,7 +32419,8 @@
         "tags": [
           "snapshot"
         ],
-        "summary": "Returns information about the status of a snapshot",
+        "summary": "Get the snapshot status",
+        "description": "Get a detailed description of the current state for each shard participating in the snapshot.\nNote that this API should be used only to obtain detailed shard-level information for ongoing snapshots.\nIf this detail is not needed or you want to obtain information about one or more existing snapshots, use the get snapshot API.\n\nWARNING: Using the API to return the status of any snapshots other than currently running snapshots can be expensive.\nThe API requires a read from the repository for each shard in each snapshot.\nFor example, if you have 100 snapshots with 1,000 shards each, an API request that includes all snapshots will require 100,000 reads (100 snapshots x 1,000 shards).\n\nDepending on the latency of your storage, such requests can take an extremely long time to return results.\nThese requests can also tax machine resources and, when using cloud storage, incur high processing costs.",
         "operationId": "snapshot-status",
         "parameters": [
           {
@@ -32392,7 +32443,8 @@
         "tags": [
           "snapshot"
         ],
-        "summary": "Returns information about the status of a snapshot",
+        "summary": "Get the snapshot status",
+        "description": "Get a detailed description of the current state for each shard participating in the snapshot.\nNote that this API should be used only to obtain detailed shard-level information for ongoing snapshots.\nIf this detail is not needed or you want to obtain information about one or more existing snapshots, use the get snapshot API.\n\nWARNING: Using the API to return the status of any snapshots other than currently running snapshots can be expensive.\nThe API requires a read from the repository for each shard in each snapshot.\nFor example, if you have 100 snapshots with 1,000 shards each, an API request that includes all snapshots will require 100,000 reads (100 snapshots x 1,000 shards).\n\nDepending on the latency of your storage, such requests can take an extremely long time to return results.\nThese requests can also tax machine resources and, when using cloud storage, incur high processing costs.",
         "operationId": "snapshot-status-1",
         "parameters": [
           {
@@ -32418,7 +32470,8 @@
         "tags": [
           "snapshot"
         ],
-        "summary": "Returns information about the status of a snapshot",
+        "summary": "Get the snapshot status",
+        "description": "Get a detailed description of the current state for each shard participating in the snapshot.\nNote that this API should be used only to obtain detailed shard-level information for ongoing snapshots.\nIf this detail is not needed or you want to obtain information about one or more existing snapshots, use the get snapshot API.\n\nWARNING: Using the API to return the status of any snapshots other than currently running snapshots can be expensive.\nThe API requires a read from the repository for each shard in each snapshot.\nFor example, if you have 100 snapshots with 1,000 shards each, an API request that includes all snapshots will require 100,000 reads (100 snapshots x 1,000 shards).\n\nDepending on the latency of your storage, such requests can take an extremely long time to return results.\nThese requests can also tax machine resources and, when using cloud storage, incur high processing costs.",
         "operationId": "snapshot-status-2",
         "parameters": [
           {
@@ -32447,7 +32500,11 @@
         "tags": [
           "snapshot"
         ],
-        "summary": "Verifies a repository",
+        "summary": "Verify a snapshot repository",
+        "description": "Check for common misconfigurations in a snapshot repository.",
+        "externalDocs": {
+          "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/snapshots-register-repository.html#snapshots-repository-verification"
+        },
         "operationId": "snapshot-verify-repository",
         "parameters": [
           {
@@ -72360,34 +72417,37 @@
         "type": "object",
         "properties": {
           "description": {
-            "description": "Description of the pipeline.\nThis description is not used by Elasticsearch or Logstash.",
+            "description": "A description of the pipeline.\nThis description is not used by Elasticsearch or Logstash.",
             "type": "string"
           },
           "last_modified": {
             "$ref": "#/components/schemas/_types:DateTime"
           },
+          "pipeline": {
+            "externalDocs": {
+              "url": "https://www.elastic.co/guide/en/logstash/current/configuration-file-structure.html"
+            },
+            "description": "The configuration for the pipeline.",
+            "type": "string"
+          },
           "pipeline_metadata": {
             "$ref": "#/components/schemas/logstash._types:PipelineMetadata"
           },
-          "username": {
-            "description": "User who last updated the pipeline.",
-            "type": "string"
-          },
-          "pipeline": {
-            "description": "Configuration for the pipeline.",
-            "type": "string"
-          },
           "pipeline_settings": {
             "$ref": "#/components/schemas/logstash._types:PipelineSettings"
+          },
+          "username": {
+            "description": "The user who last updated the pipeline.",
+            "type": "string"
           }
         },
         "required": [
           "description",
           "last_modified",
-          "pipeline_metadata",
-          "username",
           "pipeline",
-          "pipeline_settings"
+          "pipeline_metadata",
+          "pipeline_settings",
+          "username"
         ]
       },
       "logstash._types:PipelineMetadata": {
@@ -98294,7 +98354,7 @@
       "logstash.get_pipeline#id": {
         "in": "path",
         "name": "id",
-        "description": "Comma-separated list of pipeline identifiers.",
+        "description": "A comma-separated list of pipeline identifiers.",
         "required": true,
         "deprecated": false,
         "schema": {
