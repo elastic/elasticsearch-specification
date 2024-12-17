@@ -23,7 +23,7 @@ import { Id } from '@_types/common'
 /**
  * Delete a rollup job.
  *
- * A job must be stopped first before it can be deleted.
+ * A job must be stopped before it can be deleted.
  * If you attempt to delete a started job, an error occurs.
  * Similarly, if you attempt to delete a nonexistent job, an exception occurs.
  *

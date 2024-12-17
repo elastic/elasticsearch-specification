@@ -27,7 +27,7 @@ import { Duration } from '@_types/Time'
 /**
  * Create a rollup job.
  *
- * WARNING: From 8.15.0, calling this API in a cluster with no rollup usage will fail with a message about the deprecation and planned removal of rollup features. A cluster either needs to contain a rollup job or a rollup index in order for this API to be allowed to run.
+ * WARNING: From 8.15.0, calling this API in a cluster with no rollup usage will fail with a message about the deprecation and planned removal of rollup features. A cluster needs to contain either a rollup job or a rollup index in order for this API to be allowed to run.
  *
  * The rollup job configuration contains all the details about how the job should run, when it indexes documents, and what future queries will be able to run against the rollup index.
  *
