@@ -646,6 +646,7 @@ user-agent-processor,https://www.elastic.co/guide/en/elasticsearch/reference/{br
 user-profile,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/user-profile.html
 verify-repository,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/snapshots-register-repository.html#snapshots-repository-verification
 voting-config-exclusions,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/voting-config-exclusions.html
+watcher-works,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/how-watcher-works.html
 watcher-api-ack-watch,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/watcher-api-ack-watch.html
 watcher-api-activate-watch,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/watcher-api-activate-watch.html
 watcher-api-deactivate-watch,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/watcher-api-deactivate-watch.html
