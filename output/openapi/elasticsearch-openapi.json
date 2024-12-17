@@ -16477,7 +16477,8 @@
         "tags": [
           "migration"
         ],
-        "summary": "Retrieves information about different cluster, node, and index level settings that use deprecated features that will be removed or changed in the next major version",
+        "summary": "Get deprecation information",
+        "description": "Get information about different cluster, node, and index level settings that use deprecated features that will be removed or changed in the next major version.\n\nTIP: This APIs is designed for indirect use by the Upgrade Assistant. We strongly recommend you use the Upgrade Assistant.",
         "operationId": "migration-deprecations",
         "responses": {
           "200": {
@@ -16492,7 +16493,8 @@
         "tags": [
           "migration"
         ],
-        "summary": "Retrieves information about different cluster, node, and index level settings that use deprecated features that will be removed or changed in the next major version",
+        "summary": "Get deprecation information",
+        "description": "Get information about different cluster, node, and index level settings that use deprecated features that will be removed or changed in the next major version.\n\nTIP: This APIs is designed for indirect use by the Upgrade Assistant. We strongly recommend you use the Upgrade Assistant.",
         "operationId": "migration-deprecations-1",
         "parameters": [
           {
@@ -16512,7 +16514,8 @@
         "tags": [
           "migration"
         ],
-        "summary": "Find out whether system features need to be upgraded or not",
+        "summary": "Get feature migration information",
+        "description": "Version upgrades sometimes require changes to how features store configuration information and data in system indices.\nCheck which features need to be migrated and the status of any migrations that are in progress.\n\nTIP: This API is designed for indirect use by the Upgrade Assistant.\nWe strongly recommend you use the Upgrade Assistant.",
         "operationId": "migration-get-feature-upgrade-status",
         "responses": {
           "200": {
@@ -16547,7 +16550,8 @@
         "tags": [
           "migration"
         ],
-        "summary": "Begin upgrades for system features",
+        "summary": "Start the feature migration",
+        "description": "Version upgrades sometimes require changes to how features store configuration information and data in system indices.\nThis API starts the automatic migration process.\n\nSome functionality might be temporarily unavailable during the migration process.\n\nTIP: The API is designed for indirect use by the Upgrade Assistant. We strongly recommend you use the Upgrade Assistant.",
         "operationId": "migration-post-feature-upgrade",
         "responses": {
           "200": {
@@ -20409,8 +20413,8 @@
         "tags": [
           "ml"
         ],
-        "summary": "Return ML defaults and limits",
-        "description": "Returns defaults and limits used by machine learning.\nThis endpoint is designed to be used by a user interface that needs to fully\nunderstand machine learning configurations where some options are not\nspecified, meaning that the defaults should be used. This endpoint may be\nused to find out what those defaults are. It also provides information about\nthe maximum size of machine learning jobs that could run in the current\ncluster configuration.",
+        "summary": "Get machine learning information",
+        "description": "Get defaults and limits used by machine learning.\nThis endpoint is designed to be used by a user interface that needs to fully\nunderstand machine learning configurations where some options are not\nspecified, meaning that the defaults should be used. This endpoint may be\nused to find out what those defaults are. It also provides information about\nthe maximum size of machine learning jobs that could run in the current\ncluster configuration.",
         "operationId": "ml-info",
         "responses": {
           "200": {
@@ -22586,9 +22590,9 @@
     "/_ml/anomaly_detectors/_validate/detector": {
       "post": {
         "tags": [
-          "ml"
+          "ml anomaly"
         ],
-        "summary": "Validates an anomaly detection detector",
+        "summary": "Validate an anomaly detection job",
         "operationId": "ml-validate-detector",
         "requestBody": {
           "content": {
@@ -22620,7 +22624,8 @@
         "tags": [
           "monitoring"
         ],
-        "summary": "Used by the monitoring features to send monitoring data",
+        "summary": "Send monitoring data",
+        "description": "This API is used by the monitoring features to send monitoring data.",
         "operationId": "monitoring-bulk-1",
         "parameters": [
           {
@@ -22647,7 +22652,8 @@
         "tags": [
           "monitoring"
         ],
-        "summary": "Used by the monitoring features to send monitoring data",
+        "summary": "Send monitoring data",
+        "description": "This API is used by the monitoring features to send monitoring data.",
         "operationId": "monitoring-bulk",
         "parameters": [
           {
@@ -22676,7 +22682,8 @@
         "tags": [
           "monitoring"
         ],
-        "summary": "Used by the monitoring features to send monitoring data",
+        "summary": "Send monitoring data",
+        "description": "This API is used by the monitoring features to send monitoring data.",
         "operationId": "monitoring-bulk-3",
         "parameters": [
           {
@@ -22706,7 +22713,8 @@
         "tags": [
           "monitoring"
         ],
-        "summary": "Used by the monitoring features to send monitoring data",
+        "summary": "Send monitoring data",
+        "description": "This API is used by the monitoring features to send monitoring data.",
         "operationId": "monitoring-bulk-2",
         "parameters": [
           {
@@ -30936,8 +30944,8 @@
         "tags": [
           "shutdown"
         ],
-        "summary": "Retrieve status of a node or nodes that are currently marked as shutting down",
-        "description": "Designed for indirect use by ECE/ESS and ECK. Direct use is not supported.",
+        "summary": "Get the shutdown status",
+        "description": "Get information about nodes that are ready to be shut down, have shut down preparations still in progress, or have stalled.\nThe API returns status information for each part of the shut down process.\n\nNOTE: This feature is designed for indirect use by Elasticsearch Service, Elastic Cloud Enterprise, and Elastic Cloud on Kubernetes. Direct use is not supported.\n\nIf the operator privileges feature is enabled, you must be an operator to use this API.",
         "operationId": "shutdown-get-node-1",
         "parameters": [
           {
@@ -30961,8 +30969,8 @@
         "tags": [
           "shutdown"
         ],
-        "summary": "Adds a node to be shut down",
-        "description": "Designed for indirect use by ECE/ESS and ECK. Direct use is not supported.",
+        "summary": "Prepare a node to be shut down",
+        "description": "NOTE: This feature is designed for indirect use by Elastic Cloud, Elastic Cloud Enterprise, and Elastic Cloud on Kubernetes. Direct use is not supported.\n\nIf the operator privileges feature is enabled, you must be an operator to use this API.\n\nThe API migrates ongoing tasks and index shards to other nodes as needed to prepare a node to be restarted or shut down and removed from the cluster.\nThis ensures that Elasticsearch can be stopped safely with minimal disruption to the cluster.\n\nYou must specify the type of shutdown: `restart`, `remove`, or `replace`.\nIf a node is already being prepared for shutdown, you can use this API to change the shutdown type.\n\nIMPORTANT: This API does NOT terminate the Elasticsearch process.\nMonitor the node shutdown status to determine when it is safe to stop Elasticsearch.",
         "operationId": "shutdown-put-node",
         "parameters": [
           {
@@ -31046,8 +31054,8 @@
         "tags": [
           "shutdown"
         ],
-        "summary": "Removes a node from the shutdown list",
-        "description": "Designed for indirect use by ECE/ESS and ECK. Direct use is not supported.",
+        "summary": "Cancel node shutdown preparations",
+        "description": "Remove a node from the shutdown list so it can resume normal operations.\nYou must explicitly clear the shutdown request when a node rejoins the cluster or when a node has permanently left the cluster.\nShutdown requests are never removed automatically by Elasticsearch.\n\nNOTE: This feature is designed for indirect use by Elastic Cloud, Elastic Cloud Enterprise, and Elastic Cloud on Kubernetes.\nDirect use is not supported.\n\nIf the operator privileges feature is enabled, you must be an operator to use this API.",
         "operationId": "shutdown-delete-node",
         "parameters": [
           {
@@ -31102,8 +31110,8 @@
         "tags": [
           "shutdown"
         ],
-        "summary": "Retrieve status of a node or nodes that are currently marked as shutting down",
-        "description": "Designed for indirect use by ECE/ESS and ECK. Direct use is not supported.",
+        "summary": "Get the shutdown status",
+        "description": "Get information about nodes that are ready to be shut down, have shut down preparations still in progress, or have stalled.\nThe API returns status information for each part of the shut down process.\n\nNOTE: This feature is designed for indirect use by Elasticsearch Service, Elastic Cloud Enterprise, and Elastic Cloud on Kubernetes. Direct use is not supported.\n\nIf the operator privileges feature is enabled, you must be an operator to use this API.",
         "operationId": "shutdown-get-node",
         "parameters": [
           {
@@ -31126,7 +31134,8 @@
         "tags": [
           "slm"
         ],
-        "summary": "Retrieves one or more snapshot lifecycle policy definitions and information about the latest snapshot attempts",
+        "summary": "Get policy information",
+        "description": "Get snapshot lifecycle policy definitions and information about the latest snapshot attempts.",
         "operationId": "slm-get-lifecycle",
         "parameters": [
           {
@@ -31144,13 +31153,14 @@
         "tags": [
           "slm"
         ],
-        "summary": "Creates or updates a snapshot lifecycle policy",
+        "summary": "Create or update a policy",
+        "description": "Create or update a snapshot lifecycle policy.\nIf the policy already exists, this request increments the policy version.\nOnly the latest version of a policy is stored.",
         "operationId": "slm-put-lifecycle",
         "parameters": [
           {
             "in": "path",
             "name": "policy_id",
-            "description": "ID for the snapshot lifecycle policy you want to create or update.",
+            "description": "The identifier for the snapshot lifecycle policy you want to create or update.",
             "required": true,
             "deprecated": false,
             "schema": {
@@ -31224,7 +31234,8 @@
         "tags": [
           "slm"
         ],
-        "summary": "Deletes an existing snapshot lifecycle policy",
+        "summary": "Delete a policy",
+        "description": "Delete a snapshot lifecycle policy definition.\nThis operation prevents any future snapshots from being taken but does not cancel in-progress snapshots or remove previously-taken snapshots.",
         "operationId": "slm-delete-lifecycle",
         "parameters": [
           {
@@ -31259,7 +31270,8 @@
         "tags": [
           "slm"
         ],
-        "summary": "Immediately creates a snapshot according to the lifecycle policy, without waiting for the scheduled time",
+        "summary": "Run a policy",
+        "description": "Immediately create a snapshot according to the snapshot lifecycle policy without waiting for the scheduled time.\nThe snapshot policy is normally applied according to its schedule, but you might want to manually run a policy before performing an upgrade or other maintenance.",
         "operationId": "slm-execute-lifecycle",
         "parameters": [
           {
@@ -31302,7 +31314,8 @@
         "tags": [
           "slm"
         ],
-        "summary": "Deletes any snapshots that are expired according to the policy's retention rules",
+        "summary": "Run a retention policy",
+        "description": "Manually apply the retention policy to force immediate removal of snapshots that are expired according to the snapshot lifecycle policy retention rules.\nThe retention policy is normally applied according to its schedule.",
         "operationId": "slm-execute-retention",
         "responses": {
           "200": {
@@ -31324,7 +31337,8 @@
         "tags": [
           "slm"
         ],
-        "summary": "Retrieves one or more snapshot lifecycle policy definitions and information about the latest snapshot attempts",
+        "summary": "Get policy information",
+        "description": "Get snapshot lifecycle policy definitions and information about the latest snapshot attempts.",
         "operationId": "slm-get-lifecycle-1",
         "responses": {
           "200": {
@@ -31339,7 +31353,8 @@
         "tags": [
           "slm"
         ],
-        "summary": "Returns global and policy-level statistics about actions taken by snapshot lifecycle management",
+        "summary": "Get snapshot lifecycle management statistics",
+        "description": "Get global and policy-level statistics about actions taken by snapshot lifecycle management.",
         "operationId": "slm-get-stats",
         "responses": {
           "200": {
@@ -31408,7 +31423,7 @@
         "tags": [
           "slm"
         ],
-        "summary": "Retrieves the status of snapshot lifecycle management (SLM)",
+        "summary": "Get the snapshot lifecycle management status",
         "operationId": "slm-get-status",
         "responses": {
           "200": {
@@ -31438,7 +31453,8 @@
         "tags": [
           "slm"
         ],
-        "summary": "Turns on snapshot lifecycle management (SLM)",
+        "summary": "Start snapshot lifecycle management",
+        "description": "Snapshot lifecycle management (SLM) starts automatically when a cluster is formed.\nManually starting SLM is necessary only if it has been stopped using the stop SLM API.",
         "operationId": "slm-start",
         "responses": {
           "200": {
@@ -31460,7 +31476,8 @@
         "tags": [
           "slm"
         ],
-        "summary": "Turns off snapshot lifecycle management (SLM)",
+        "summary": "Stop snapshot lifecycle management",
+        "description": "Stop all snapshot lifecycle management (SLM) operations and the SLM plugin.\nThis API is useful when you are performing maintenance on a cluster and need to prevent SLM from performing any actions on your data streams or indices.\nStopping SLM does not stop any snapshots that are in progress.\nYou can manually trigger snapshots with the run snapshot lifecycle policy API even if SLM is stopped.\n\nThe API returns a response as soon as the request is acknowledged, but the plugin might continue to run until in-progress operations complete and it can be safely stopped.\nUse the get snapshot lifecycle management status API to see if SLM is running.",
         "operationId": "slm-stop",
         "responses": {
           "200": {
