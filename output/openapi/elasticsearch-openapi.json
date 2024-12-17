@@ -34989,8 +34989,8 @@
         "tags": [
           "transform"
         ],
-        "summary": "Upgrades all transforms",
-        "description": "This API identifies transforms that have a legacy configuration format and upgrades them to the latest version. It\nalso cleans up the internal data structures that store the transform state and checkpoints. The upgrade does not\naffect the source and destination indices. The upgrade also does not affect the roles that transforms use when\nElasticsearch security features are enabled; the role used to read source data and write to the destination index\nremains unchanged.",
+        "summary": "Upgrade all transforms",
+        "description": "Transforms are compatible across minor versions and between supported major versions.\nHowever, over time, the format of transform configuration information may change.\nThis API identifies transforms that have a legacy configuration format and upgrades them to the latest version.\nIt also cleans up the internal data structures that store the transform state and checkpoints.\nThe upgrade does not affect the source and destination indices.\nThe upgrade also does not affect the roles that transforms use when Elasticsearch security features are enabled; the role used to read source data and write to the destination index remains unchanged.\n\nIf a transform upgrade step fails, the upgrade stops and an error is returned about the underlying issue.\nResolve the issue then re-run the process again.\nA summary is returned when the upgrade is finished.\n\nTo ensure continuous transforms remain running during a major version upgrade of the cluster – for example, from 7.16 to 8.0 – it is recommended to upgrade transforms before upgrading the cluster.\nYou may want to perform a recent cluster backup prior to the upgrade.",
         "operationId": "transform-upgrade-transforms",
         "parameters": [
           {
