@@ -1969,6 +1969,12 @@
         "parameters": [
           {
             "$ref": "#/components/parameters/cat.segments#bytes"
+          },
+          {
+            "$ref": "#/components/parameters/cat.segments#local"
+          },
+          {
+            "$ref": "#/components/parameters/cat.segments#master_timeout"
           }
         ],
         "responses": {
@@ -1992,6 +1998,12 @@
           },
           {
             "$ref": "#/components/parameters/cat.segments#bytes"
+          },
+          {
+            "$ref": "#/components/parameters/cat.segments#local"
+          },
+          {
+            "$ref": "#/components/parameters/cat.segments#master_timeout"
           }
         ],
         "responses": {
@@ -2175,6 +2187,26 @@
             "deprecated": false,
             "schema": {
               "$ref": "#/components/schemas/_types:TimeUnit"
+            },
+            "style": "form"
+          },
+          {
+            "in": "query",
+            "name": "timeout",
+            "description": "Period to wait for a response.\nIf no response is received before the timeout expires, the request fails and returns an error.",
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/_types:Duration"
+            },
+            "style": "form"
+          },
+          {
+            "in": "query",
+            "name": "wait_for_completion",
+            "description": "If `true`, the request blocks until the task has completed.",
+            "deprecated": false,
+            "schema": {
+              "type": "boolean"
             },
             "style": "form"
           }
@@ -94598,6 +94630,26 @@
         "deprecated": false,
         "schema": {
           "$ref": "#/components/schemas/_types:Bytes"
+        },
+        "style": "form"
+      },
+      "cat.segments#local": {
+        "in": "query",
+        "name": "local",
+        "description": "If `true`, the request computes the list of selected nodes from the\nlocal cluster state. If `false` the list of selected nodes are computed\nfrom the cluster state of the master node. In both cases the coordinating\nnode will send requests for further information to each selected node.",
+        "deprecated": false,
+        "schema": {
+          "type": "boolean"
+        },
+        "style": "form"
+      },
+      "cat.segments#master_timeout": {
+        "in": "query",
+        "name": "master_timeout",
+        "description": "Period to wait for a connection to the master node.",
+        "deprecated": false,
+        "schema": {
+          "$ref": "#/components/schemas/_types:Duration"
         },
         "style": "form"
       },

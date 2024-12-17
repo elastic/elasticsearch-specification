@@ -89,6 +89,20 @@
       ],
       "response": []
     },
+    "cat.segments": {
+      "request": [
+        "Request: query parameter 'local' does not exist in the json spec",
+        "Request: query parameter 'master_timeout' does not exist in the json spec"
+      ],
+      "response": []
+    },
+    "cat.tasks": {
+      "request": [
+        "Request: query parameter 'timeout' does not exist in the json spec",
+        "Request: query parameter 'wait_for_completion' does not exist in the json spec"
+      ],
+      "response": []
+    },
     "cat.transforms": {
       "request": [
         "request definition cat.transforms:Request / query - Property 'h' is already defined in an ancestor class",

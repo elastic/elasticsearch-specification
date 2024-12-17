@@ -8222,6 +8222,8 @@ export type CatRepositoriesResponse = CatRepositoriesRepositoriesRecord[]
 export interface CatSegmentsRequest extends CatCatRequestBase {
   index?: Indices
   bytes?: Bytes
+  local?: boolean
+  master_timeout?: Duration
 }
 
 export type CatSegmentsResponse = CatSegmentsSegmentsRecord[]
@@ -8541,6 +8543,8 @@ export interface CatTasksRequest extends CatCatRequestBase {
   nodes?: string[]
   parent_task_id?: string
   time?: TimeUnit
+  timeout?: Duration
+  wait_for_completion?: boolean
 }
 
 export type CatTasksResponse = CatTasksTasksRecord[]
