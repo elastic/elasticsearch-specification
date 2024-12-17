@@ -31,7 +31,8 @@ import { Id } from '@_types/common'
  * Avoid creating multiple endpoints for the same model unless required, as each endpoint consumes significant resources.
  *
  * IMPORTANT: The inference APIs enable you to use certain services, such as built-in machine learning models (ELSER, E5), models uploaded through Eland, Cohere, OpenAI, Mistral, Azure OpenAI, Google AI Studio, Google Vertex AI, Anthropic, Watsonx.ai, or Hugging Face.
- * For built-in models and models uploaded through Eland, the inference APIs offer an alternative way to use and manage trained models. However, if you do not plan to use the inference APIs to use these models or if you want to use non-NLP models, use the machine learning trained model APIs.
+ * For built-in models and models uploaded through Eland, the inference APIs offer an alternative way to use and manage trained models.
+ * However, if you do not plan to use the inference APIs to use these models or if you want to use non-NLP models, use the machine learning trained model APIs.
  * @rest_spec_name inference.put
  * @availability stack since=8.11.0 stability=stable visibility=public
  * @availability serverless stability=stable visibility=public
