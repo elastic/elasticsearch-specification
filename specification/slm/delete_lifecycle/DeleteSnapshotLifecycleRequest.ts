@@ -21,9 +21,13 @@ import { RequestBase } from '@_types/Base'
 import { Name } from '@_types/common'
 
 /**
+ * Delete a policy.
+ * Delete a snapshot lifecycle policy definition.
+ * This operation prevents any future snapshots from being taken but does not cancel in-progress snapshots or remove previously-taken snapshots.
  * @rest_spec_name slm.delete_lifecycle
  * @availability stack since=7.4.0 stability=stable
  * @availability serverless stability=stable visibility=private
+ * @cluster_privileges manage_slm
  */
 export interface Request extends RequestBase {
   path_parts: {

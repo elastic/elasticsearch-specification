@@ -24,14 +24,20 @@ import { Name } from '@_types/common'
 import { Duration } from '@_types/Time'
 
 /**
+ * Create or update a policy.
+ * Create or update a snapshot lifecycle policy.
+ * If the policy already exists, this request increments the policy version.
+ * Only the latest version of a policy is stored.
  * @rest_spec_name slm.put_lifecycle
  * @availability stack since=7.4.0 stability=stable
  * @availability serverless stability=stable visibility=private
+ * @cluster_privileges manage_slm
+ * @index_privileges manage
  */
 export interface Request extends RequestBase {
   path_parts: {
     /**
-     * ID for the snapshot lifecycle policy you want to create or update.
+     * The identifier for the snapshot lifecycle policy you want to create or update.
      */
     policy_id: Name
   }
