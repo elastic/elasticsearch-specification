@@ -20,8 +20,10 @@
 import { RequestBase } from '@_types/Base'
 
 /**
+ * Get the snapshot lifecycle management status.
  * @rest_spec_name slm.get_status
  * @availability stack since=7.6.0 stability=stable
  * @availability serverless stability=stable visibility=private
+ * @cluster_privileges read_slm
  */
 export interface Request extends RequestBase {}
