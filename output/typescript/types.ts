@@ -10349,6 +10349,8 @@ export interface EqlGetStatusResponse {
 export interface EqlSearchRequest extends RequestBase {
   index: Indices
   allow_no_indices?: boolean
+  allow_partial_search_results?: boolean
+  allow_partial_sequence_results?: boolean
   expand_wildcards?: ExpandWildcards
   ignore_unavailable?: boolean
   keep_alive?: Duration
@@ -10365,6 +10367,8 @@ export interface EqlSearchRequest extends RequestBase {
     keep_alive?: Duration
     keep_on_completion?: boolean
     wait_for_completion_timeout?: Duration
+    allow_partial_search_results?: boolean
+    allow_partial_sequence_results?: boolean
     size?: uint
     fields?: QueryDslFieldAndFormat | Field | (QueryDslFieldAndFormat | Field)[]
     result_position?: EqlSearchResultPosition
