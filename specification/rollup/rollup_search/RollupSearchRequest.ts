@@ -25,7 +25,9 @@ import { integer } from '@_types/Numeric'
 import { QueryContainer } from '@_types/query_dsl/abstractions'
 
 /**
- * Enables searching rolled-up data using the standard Query DSL.
+ * Search rolled-up data.
+ * The rollup search endpoint is needed because, internally, rolled-up documents utilize a different document structure than the original data.
+ * It rewrites standard Query DSL into a format that matches the rollup documents then takes the response and rewrites it back to what a client would expect given the original query.
  * @rest_spec_name rollup.rollup_search
  * @availability stack since=6.3.0 stability=experimental
  */
