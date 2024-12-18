@@ -52,7 +52,6 @@
     "cat.aliases": {
       "request": [
         "Request: query parameter 'master_timeout' does not exist in the json spec",
-        "Request: missing json spec query parameter 'local'",
         "request definition cat.aliases:Request / body - A request with inherited properties must have a PropertyBody"
       ],
       "response": []

@@ -11620,9 +11620,22 @@
               "namespace": "_types"
             }
           }
+        },
+        {
+          "description": "If `true`, the request computes the list of selected nodes from the\nlocal cluster state. If `false` the list of selected nodes are computed\nfrom the cluster state of the master node. In both cases the coordinating\nnode will send requests for further information to each selected node.",
+          "name": "local",
+          "required": false,
+          "serverDefault": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "_builtins"
+            }
+          }
         }
       ],
-      "specLocation": "cat/aliases/CatAliasesRequest.ts#L23-L43"
+      "specLocation": "cat/aliases/CatAliasesRequest.ts#L23-L51"
     },
     {
       "body": {

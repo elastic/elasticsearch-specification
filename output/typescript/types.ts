@@ -6939,6 +6939,7 @@ export interface CatAliasesAliasesRecord {
 export interface CatAliasesRequest extends CatCatRequestBase {
   name?: Names
   expand_wildcards?: ExpandWildcards
+  local?: boolean
 }
 
 export type CatAliasesResponse = CatAliasesAliasesRecord[]
