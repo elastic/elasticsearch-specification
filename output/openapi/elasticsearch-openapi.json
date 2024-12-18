@@ -908,6 +908,9 @@
           },
           {
             "$ref": "#/components/parameters/cat.aliases#local"
+          },
+          {
+            "$ref": "#/components/parameters/cat.aliases#master_timeout"
           }
         ],
         "responses": {
@@ -934,6 +937,9 @@
           },
           {
             "$ref": "#/components/parameters/cat.aliases#local"
+          },
+          {
+            "$ref": "#/components/parameters/cat.aliases#master_timeout"
           }
         ],
         "responses": {
@@ -957,6 +963,9 @@
           },
           {
             "$ref": "#/components/parameters/cat.allocation#local"
+          },
+          {
+            "$ref": "#/components/parameters/cat.allocation#master_timeout"
           }
         ],
         "responses": {
@@ -983,6 +992,9 @@
           },
           {
             "$ref": "#/components/parameters/cat.allocation#local"
+          },
+          {
+            "$ref": "#/components/parameters/cat.allocation#master_timeout"
           }
         ],
         "responses": {
@@ -1003,6 +1015,9 @@
         "parameters": [
           {
             "$ref": "#/components/parameters/cat.component_templates#local"
+          },
+          {
+            "$ref": "#/components/parameters/cat.component_templates#master_timeout"
           }
         ],
         "responses": {
@@ -1027,6 +1042,9 @@
           },
           {
             "$ref": "#/components/parameters/cat.component_templates#local"
+          },
+          {
+            "$ref": "#/components/parameters/cat.component_templates#master_timeout"
           }
         ],
         "responses": {
@@ -1182,10 +1200,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/cat.help:HelpRecord"
-                  }
+                  "type": "object"
                 }
               }
             }
@@ -1219,6 +1234,9 @@
           },
           {
             "$ref": "#/components/parameters/cat.indices#time"
+          },
+          {
+            "$ref": "#/components/parameters/cat.indices#master_timeout"
           }
         ],
         "responses": {
@@ -1257,6 +1275,9 @@
           },
           {
             "$ref": "#/components/parameters/cat.indices#time"
+          },
+          {
+            "$ref": "#/components/parameters/cat.indices#master_timeout"
           }
         ],
         "responses": {
@@ -1282,6 +1303,16 @@
             "deprecated": false,
             "schema": {
               "type": "boolean"
+            },
+            "style": "form"
+          },
+          {
+            "in": "query",
+            "name": "master_timeout",
+            "description": "Period to wait for a connection to the master node.",
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/_types:Duration"
             },
             "style": "form"
           }
@@ -1530,6 +1561,9 @@
           },
           {
             "$ref": "#/components/parameters/cat.ml_trained_models#size"
+          },
+          {
+            "$ref": "#/components/parameters/cat.ml_trained_models#time"
           }
         ],
         "responses": {
@@ -1569,6 +1603,9 @@
           },
           {
             "$ref": "#/components/parameters/cat.ml_trained_models#size"
+          },
+          {
+            "$ref": "#/components/parameters/cat.ml_trained_models#time"
           }
         ],
         "responses": {
@@ -1595,6 +1632,16 @@
             "deprecated": false,
             "schema": {
               "type": "boolean"
+            },
+            "style": "form"
+          },
+          {
+            "in": "query",
+            "name": "master_timeout",
+            "description": "Period to wait for a connection to the master node.",
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/_types:Duration"
             },
             "style": "form"
           }
@@ -1661,6 +1708,26 @@
               "type": "boolean"
             },
             "style": "form"
+          },
+          {
+            "in": "query",
+            "name": "master_timeout",
+            "description": "Period to wait for a connection to the master node.",
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/_types:Duration"
+            },
+            "style": "form"
+          },
+          {
+            "in": "query",
+            "name": "time",
+            "description": "Unit used to display time values.",
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/_types:TimeUnit"
+            },
+            "style": "form"
           }
         ],
         "responses": {
@@ -1698,6 +1765,26 @@
               "type": "boolean"
             },
             "style": "form"
+          },
+          {
+            "in": "query",
+            "name": "master_timeout",
+            "description": "Period to wait for a connection to the master node.",
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/_types:Duration"
+            },
+            "style": "form"
+          },
+          {
+            "in": "query",
+            "name": "time",
+            "description": "Unit used to display time values.",
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/_types:TimeUnit"
+            },
+            "style": "form"
           }
         ],
         "responses": {
@@ -1728,11 +1815,31 @@
         "parameters": [
           {
             "in": "query",
+            "name": "include_bootstrap",
+            "description": "Include bootstrap plugins in the response",
+            "deprecated": false,
+            "schema": {
+              "type": "boolean"
+            },
+            "style": "form"
+          },
+          {
+            "in": "query",
             "name": "local",
             "description": "If `true`, the request computes the list of selected nodes from the\nlocal cluster state. If `false` the list of selected nodes are computed\nfrom the cluster state of the master node. In both cases the coordinating\nnode will send requests for further information to each selected node.",
             "deprecated": false,
             "schema": {
               "type": "boolean"
+            },
+            "style": "form"
+          },
+          {
+            "in": "query",
+            "name": "master_timeout",
+            "description": "Period to wait for a connection to the master node.",
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/_types:Duration"
             },
             "style": "form"
           }
@@ -1771,6 +1878,9 @@
           },
           {
             "$ref": "#/components/parameters/cat.recovery#detailed"
+          },
+          {
+            "$ref": "#/components/parameters/cat.recovery#time"
           }
         ],
         "responses": {
@@ -1800,6 +1910,9 @@
           },
           {
             "$ref": "#/components/parameters/cat.recovery#detailed"
+          },
+          {
+            "$ref": "#/components/parameters/cat.recovery#time"
           }
         ],
         "responses": {
@@ -1817,6 +1930,28 @@
         "summary": "Returns the snapshot repositories for a cluster",
         "description": "IMPORTANT: cat APIs are only intended for human consumption using the command line or Kibana console. They are not intended for use by applications. For application consumption, use the get snapshot repository API.",
         "operationId": "cat-repositories",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "local",
+            "description": "If `true`, the request computes the list of selected nodes from the\nlocal cluster state. If `false` the list of selected nodes are computed\nfrom the cluster state of the master node. In both cases the coordinating\nnode will send requests for further information to each selected node.",
+            "deprecated": false,
+            "schema": {
+              "type": "boolean"
+            },
+            "style": "form"
+          },
+          {
+            "in": "query",
+            "name": "master_timeout",
+            "description": "Period to wait for a connection to the master node.",
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/_types:Duration"
+            },
+            "style": "form"
+          }
+        ],
         "responses": {
           "200": {
             "description": "",
@@ -1849,6 +1984,9 @@
           },
           {
             "$ref": "#/components/parameters/cat.segments#local"
+          },
+          {
+            "$ref": "#/components/parameters/cat.segments#master_timeout"
           }
         ],
         "responses": {
@@ -1875,6 +2013,9 @@
           },
           {
             "$ref": "#/components/parameters/cat.segments#local"
+          },
+          {
+            "$ref": "#/components/parameters/cat.segments#master_timeout"
           }
         ],
         "responses": {
@@ -1895,6 +2036,12 @@
         "parameters": [
           {
             "$ref": "#/components/parameters/cat.shards#bytes"
+          },
+          {
+            "$ref": "#/components/parameters/cat.shards#master_timeout"
+          },
+          {
+            "$ref": "#/components/parameters/cat.shards#time"
           }
         ],
         "responses": {
@@ -1918,6 +2065,12 @@
           },
           {
             "$ref": "#/components/parameters/cat.shards#bytes"
+          },
+          {
+            "$ref": "#/components/parameters/cat.shards#master_timeout"
+          },
+          {
+            "$ref": "#/components/parameters/cat.shards#time"
           }
         ],
         "responses": {
@@ -1938,6 +2091,12 @@
         "parameters": [
           {
             "$ref": "#/components/parameters/cat.snapshots#ignore_unavailable"
+          },
+          {
+            "$ref": "#/components/parameters/cat.snapshots#master_timeout"
+          },
+          {
+            "$ref": "#/components/parameters/cat.snapshots#time"
           }
         ],
         "responses": {
@@ -1962,6 +2121,12 @@
           },
           {
             "$ref": "#/components/parameters/cat.snapshots#ignore_unavailable"
+          },
+          {
+            "$ref": "#/components/parameters/cat.snapshots#master_timeout"
+          },
+          {
+            "$ref": "#/components/parameters/cat.snapshots#time"
           }
         ],
         "responses": {
@@ -2006,7 +2171,7 @@
           },
           {
             "in": "query",
-            "name": "node_id",
+            "name": "nodes",
             "description": "Unique node identifiers, which are used to limit the response.",
             "deprecated": false,
             "schema": {
@@ -2024,6 +2189,36 @@
             "deprecated": false,
             "schema": {
               "type": "string"
+            },
+            "style": "form"
+          },
+          {
+            "in": "query",
+            "name": "time",
+            "description": "Unit used to display time values.",
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/_types:TimeUnit"
+            },
+            "style": "form"
+          },
+          {
+            "in": "query",
+            "name": "timeout",
+            "description": "Period to wait for a response.\nIf no response is received before the timeout expires, the request fails and returns an error.",
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/_types:Duration"
+            },
+            "style": "form"
+          },
+          {
+            "in": "query",
+            "name": "wait_for_completion",
+            "description": "If `true`, the request blocks until the task has completed.",
+            "deprecated": false,
+            "schema": {
+              "type": "boolean"
             },
             "style": "form"
           }
@@ -2057,6 +2252,9 @@
         "parameters": [
           {
             "$ref": "#/components/parameters/cat.templates#local"
+          },
+          {
+            "$ref": "#/components/parameters/cat.templates#master_timeout"
           }
         ],
         "responses": {
@@ -2081,6 +2279,9 @@
           },
           {
             "$ref": "#/components/parameters/cat.templates#local"
+          },
+          {
+            "$ref": "#/components/parameters/cat.templates#master_timeout"
           }
         ],
         "responses": {
@@ -2105,6 +2306,9 @@
           },
           {
             "$ref": "#/components/parameters/cat.thread_pool#local"
+          },
+          {
+            "$ref": "#/components/parameters/cat.thread_pool#master_timeout"
           }
         ],
         "responses": {
@@ -2131,6 +2335,9 @@
           },
           {
             "$ref": "#/components/parameters/cat.thread_pool#local"
+          },
+          {
+            "$ref": "#/components/parameters/cat.thread_pool#master_timeout"
           }
         ],
         "responses": {
@@ -50176,17 +50383,6 @@
           }
         }
       },
-      "cat.help:HelpRecord": {
-        "type": "object",
-        "properties": {
-          "endpoint": {
-            "type": "string"
-          }
-        },
-        "required": [
-          "endpoint"
-        ]
-      },
       "_types:HealthStatus": {
         "type": "string",
         "enum": [
@@ -94047,6 +94243,16 @@
         },
         "style": "form"
       },
+      "cat.aliases#master_timeout": {
+        "in": "query",
+        "name": "master_timeout",
+        "description": "Period to wait for a connection to the master node.",
+        "deprecated": false,
+        "schema": {
+          "$ref": "#/components/schemas/_types:Duration"
+        },
+        "style": "form"
+      },
       "cat.allocation#node_id": {
         "in": "path",
         "name": "node_id",
@@ -94078,6 +94284,16 @@
         },
         "style": "form"
       },
+      "cat.allocation#master_timeout": {
+        "in": "query",
+        "name": "master_timeout",
+        "description": "Period to wait for a connection to the master node.",
+        "deprecated": false,
+        "schema": {
+          "$ref": "#/components/schemas/_types:Duration"
+        },
+        "style": "form"
+      },
       "cat.component_templates#name": {
         "in": "path",
         "name": "name",
@@ -94096,6 +94312,16 @@
         "deprecated": false,
         "schema": {
           "type": "boolean"
+        },
+        "style": "form"
+      },
+      "cat.component_templates#master_timeout": {
+        "in": "query",
+        "name": "master_timeout",
+        "description": "Period to wait for a connection to the master node.",
+        "deprecated": false,
+        "schema": {
+          "$ref": "#/components/schemas/_types:Duration"
         },
         "style": "form"
       },
@@ -94212,6 +94438,16 @@
         },
         "style": "form"
       },
+      "cat.indices#master_timeout": {
+        "in": "query",
+        "name": "master_timeout",
+        "description": "Period to wait for a connection to the master node.",
+        "deprecated": false,
+        "schema": {
+          "$ref": "#/components/schemas/_types:Duration"
+        },
+        "style": "form"
+      },
       "cat.ml_data_frame_analytics#id": {
         "in": "path",
         "name": "id",
@@ -94269,7 +94505,7 @@
         "description": "Unit used to display time values.",
         "deprecated": false,
         "schema": {
-          "$ref": "#/components/schemas/_types:Duration"
+          "$ref": "#/components/schemas/_types:TimeUnit"
         },
         "style": "form"
       },
@@ -94456,6 +94692,16 @@
         },
         "style": "form"
       },
+      "cat.ml_trained_models#time": {
+        "in": "query",
+        "name": "time",
+        "description": "Unit used to display time values.",
+        "deprecated": false,
+        "schema": {
+          "$ref": "#/components/schemas/_types:TimeUnit"
+        },
+        "style": "form"
+      },
       "cat.recovery#index": {
         "in": "path",
         "name": "index",
@@ -94497,6 +94743,16 @@
         },
         "style": "form"
       },
+      "cat.recovery#time": {
+        "in": "query",
+        "name": "time",
+        "description": "Unit used to display time values.",
+        "deprecated": false,
+        "schema": {
+          "$ref": "#/components/schemas/_types:TimeUnit"
+        },
+        "style": "form"
+      },
       "cat.segments#index": {
         "in": "path",
         "name": "index",
@@ -94528,6 +94784,16 @@
         },
         "style": "form"
       },
+      "cat.segments#master_timeout": {
+        "in": "query",
+        "name": "master_timeout",
+        "description": "Period to wait for a connection to the master node.",
+        "deprecated": false,
+        "schema": {
+          "$ref": "#/components/schemas/_types:Duration"
+        },
+        "style": "form"
+      },
       "cat.shards#index": {
         "in": "path",
         "name": "index",
@@ -94546,6 +94812,26 @@
         "deprecated": false,
         "schema": {
           "$ref": "#/components/schemas/_types:Bytes"
+        },
+        "style": "form"
+      },
+      "cat.shards#master_timeout": {
+        "in": "query",
+        "name": "master_timeout",
+        "description": "Period to wait for a connection to the master node.",
+        "deprecated": false,
+        "schema": {
+          "$ref": "#/components/schemas/_types:Duration"
+        },
+        "style": "form"
+      },
+      "cat.shards#time": {
+        "in": "query",
+        "name": "time",
+        "description": "Unit used to display time values.",
+        "deprecated": false,
+        "schema": {
+          "$ref": "#/components/schemas/_types:TimeUnit"
         },
         "style": "form"
       },
@@ -94570,6 +94856,26 @@
         },
         "style": "form"
       },
+      "cat.snapshots#master_timeout": {
+        "in": "query",
+        "name": "master_timeout",
+        "description": "Period to wait for a connection to the master node.",
+        "deprecated": false,
+        "schema": {
+          "$ref": "#/components/schemas/_types:Duration"
+        },
+        "style": "form"
+      },
+      "cat.snapshots#time": {
+        "in": "query",
+        "name": "time",
+        "description": "Unit used to display time values.",
+        "deprecated": false,
+        "schema": {
+          "$ref": "#/components/schemas/_types:TimeUnit"
+        },
+        "style": "form"
+      },
       "cat.templates#name": {
         "in": "path",
         "name": "name",
@@ -94588,6 +94894,16 @@
         "deprecated": false,
         "schema": {
           "type": "boolean"
+        },
+        "style": "form"
+      },
+      "cat.templates#master_timeout": {
+        "in": "query",
+        "name": "master_timeout",
+        "description": "Period to wait for a connection to the master node.",
+        "deprecated": false,
+        "schema": {
+          "$ref": "#/components/schemas/_types:Duration"
         },
         "style": "form"
       },
@@ -94619,6 +94935,16 @@
         "deprecated": false,
         "schema": {
           "type": "boolean"
+        },
+        "style": "form"
+      },
+      "cat.thread_pool#master_timeout": {
+        "in": "query",
+        "name": "master_timeout",
+        "description": "Period to wait for a connection to the master node.",
+        "deprecated": false,
+        "schema": {
+          "$ref": "#/components/schemas/_types:Duration"
         },
         "style": "form"
       },
