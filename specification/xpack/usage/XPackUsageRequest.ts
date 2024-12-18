@@ -21,11 +21,13 @@ import { RequestBase } from '@_types/Base'
 import { Duration } from '@_types/Time'
 
 /**
- * This API provides information about which features are currently enabled and available under the current license and some usage statistics.
+ * Get usage information.
+ * Get information about the features that are currently enabled and available under the current license.
+ * The API also provides some usage statistics.
  * @rest_spec_name xpack.usage
  * @availability stack stability=stable
  * @availability serverless stability=stable visibility=private
- * @cluster_privileges monitor,manage
+ * @cluster_privileges monitor
  */
 export interface Request extends RequestBase {
   query_parameters: {
