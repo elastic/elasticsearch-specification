@@ -33706,8 +33706,8 @@
         "tags": [
           "text_structure"
         ],
-        "summary": "Finds the structure of a text file",
-        "description": "The text file must contain data that is suitable to be ingested into Elasticsearch.",
+        "summary": "Find the structure of a text file",
+        "description": "The text file must contain data that is suitable to be ingested into Elasticsearch.\n\nThis API provides a starting point for ingesting data into Elasticsearch in a format that is suitable for subsequent use with other Elastic Stack functionality.\nUnlike other Elasticsearch endpoints, the data that is posted to this endpoint does not need to be UTF-8 encoded and in JSON format.\nIt must, however, be text; binary text formats are not currently supported.\nThe size is limited to the Elasticsearch HTTP receive buffer size, which defaults to 100 Mb.\n\nThe response from the API contains:\n\n* A couple of messages from the beginning of the text.\n* Statistics that reveal the most common values for all fields detected within the text and basic numeric statistics for numeric fields.\n* Information about the structure of the text, which is useful when you write ingest configurations to index it or similarly formatted text.\n* Appropriate mappings for an Elasticsearch index, which you could use to ingest the text.\n\nAll this information can be calculated by the structure finder with no guidance.\nHowever, you can optionally override some of the decisions about the text structure by specifying one or more query parameters.",
         "operationId": "text-structure-find-structure",
         "parameters": [
           {
@@ -33753,7 +33753,7 @@
           {
             "in": "query",
             "name": "explain",
-            "description": "If this parameter is set to true, the response includes a field named explanation, which is an array of strings that indicate how the structure finder produced its result.",
+            "description": "If this parameter is set to true, the response includes a field named explanation, which is an array of strings that indicate how the structure finder produced its result.\nIf the structure finder produces unexpected results for some text, use this query parameter to help you determine why the returned structure was chosen.",
             "deprecated": false,
             "schema": {
               "type": "boolean"
@@ -33989,7 +33989,11 @@
         "tags": [
           "text_structure"
         ],
-        "summary": "Tests a Grok pattern on some text",
+        "summary": "Test a Grok pattern",
+        "description": "Test a Grok pattern on one or more lines of text.\nThe API indicates whether the lines match the pattern together with the offsets and lengths of the matched substrings.",
+        "externalDocs": {
+          "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/grok.html"
+        },
         "operationId": "text-structure-test-grok-pattern",
         "parameters": [
           {
@@ -34010,7 +34014,11 @@
         "tags": [
           "text_structure"
         ],
-        "summary": "Tests a Grok pattern on some text",
+        "summary": "Test a Grok pattern",
+        "description": "Test a Grok pattern on one or more lines of text.\nThe API indicates whether the lines match the pattern together with the offsets and lengths of the matched substrings.",
+        "externalDocs": {
+          "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/grok.html"
+        },
         "operationId": "text-structure-test-grok-pattern-1",
         "parameters": [
           {
