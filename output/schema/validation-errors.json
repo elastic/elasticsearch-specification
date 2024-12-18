@@ -619,7 +619,8 @@
     },
     "search_application.post_behavioral_analytics_event": {
       "request": [
-        "Missing request & response"
+        "Request: missing json spec query parameter 'debug'",
+        "Request: should have a body definition"
       ],
       "response": []
     },
