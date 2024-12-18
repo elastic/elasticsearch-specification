@@ -17,9 +17,8 @@
  * under the License.
  */
 
-import { Dictionary } from '@spec_utils/Dictionary'
-import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 import { RequestBase } from '@_types/Base'
+import { FieldValue } from '@_types/common'
 import { RuntimeFields } from '@_types/mapping/RuntimeFields'
 import { integer } from '@_types/Numeric'
 import { QueryContainer } from '@_types/query_dsl/abstractions'
@@ -104,7 +103,7 @@ export interface Request extends RequestBase {
     /**
      * Values for parameters in the query.
      */
-    params?: Dictionary<string, UserDefinedValue>
+    params?: FieldValue[]
     /**
      * Retention period for an async or saved synchronous search.
      * @server_default 5d

@@ -36,21 +36,42 @@ export class CustomAnalyzer {
 
 export class FingerprintAnalyzer {
   type: 'fingerprint'
+  /** @deprecated 7.14.0 */
   version?: VersionString
-  max_output_size: integer
-  preserve_original: boolean
-  separator: string
+  /**
+   * The maximum token size to emit. Tokens larger than this size will be discarded.
+   * Defaults to `255`
+   *
+   * @server_default 255
+   */
+  max_output_size?: integer
+  /**
+   * The character to use to concatenate the terms.
+   * Defaults to a space.
+   */
+  separator?: string
+  /**
+   * A pre-defined stop words list like `_english_` or an array containing a list of stop words.
+   * Defaults to `_none_`.
+   *
+   * @server_default _none_
+   */
   stopwords?: StopWords
+  /**
+   * The path to a file containing stop words.
+   */
   stopwords_path?: string
 }
 
 export class KeywordAnalyzer {
   type: 'keyword'
+  /** @deprecated 7.14.0 */
   version?: VersionString
 }
 
 export class LanguageAnalyzer {
   type: 'language'
+  /** @deprecated 7.14.0 */
   version?: VersionString
   language: Language
   stem_exclusion: string[]
@@ -311,6 +332,7 @@ export class ThaiAnalyzer {
 
 export class NoriAnalyzer {
   type: 'nori'
+  /** @deprecated 7.14.0 */
   version?: VersionString
   decompound_mode?: NoriDecompoundMode
   stoptags?: string[]
@@ -319,20 +341,49 @@ export class NoriAnalyzer {
 
 export class PatternAnalyzer {
   type: 'pattern'
+  /** @deprecated 7.14.0 */
   version?: VersionString
-  flags?: string
+  /**
+   * Java regular expression flags. Flags should be pipe-separated, eg "CASE_INSENSITIVE|COMMENTS".
+   */
+  flags?: string // TODO: Use PipeSeparatedFlags<T> and proper enum
+  /**
+   * Should terms be lowercased or not.
+   * Defaults to `true`.
+   *
+   * @server_default true
+   */
   lowercase?: boolean
-  pattern: string
+  /**
+   * A Java regular expression.
+   * Defaults to `\W+`.
+   *
+   * @server_default \W+
+   */
+  pattern?: string
+  /**
+   * A pre-defined stop words list like `_english_` or an array containing a list of stop words.
+   * Defaults to `_none_`.
+   *
+   * @server_default _none_
+   */
   stopwords?: StopWords
+  /**
+   * The path to a file containing stop words.
+   */
+  stopwords_path?: string
 }
 
 export class SimpleAnalyzer {
   type: 'simple'
+  /** @deprecated 7.14.0 */
   version?: VersionString
 }
 
+// TODO: This one seems undocumented!?
 export class SnowballAnalyzer {
   type: 'snowball'
+  /** @deprecated 7.14.0 */
   version?: VersionString
   language: SnowballLanguage
   stopwords?: StopWords
@@ -340,19 +391,46 @@ export class SnowballAnalyzer {
 
 export class StandardAnalyzer {
   type: 'standard'
+  /**
+   * The maximum token length. If a token is seen that exceeds this length then it is split at `max_token_length` intervals.
+   * Defaults to `255`.
+   *
+   * @server_default 255
+   */
   max_token_length?: integer
+  /**
+   * A pre-defined stop words list like `_english_` or an array containing a list of stop words.
+   * Defaults to `_none_`.
+   *
+   * @server_default _none_
+   */
   stopwords?: StopWords
+  /**
+   * The path to a file containing stop words.
+   */
+  stopwords_path?: string
 }
 
 export class StopAnalyzer {
   type: 'stop'
+  /** @deprecated 7.14.0 */
   version?: VersionString
+  /**
+   * A pre-defined stop words list like `_english_` or an array containing a list of stop words.
+   * Defaults to `_none_`.
+   *
+   * @server_default _none_
+   */
   stopwords?: StopWords
+  /**
+   * The path to a file containing stop words.
+   */
   stopwords_path?: string
 }
 
 export class WhitespaceAnalyzer {
   type: 'whitespace'
+  /** @deprecated 7.14.0 */
   version?: VersionString
 }
 
