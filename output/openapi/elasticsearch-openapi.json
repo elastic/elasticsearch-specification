@@ -905,6 +905,9 @@
         "parameters": [
           {
             "$ref": "#/components/parameters/cat.aliases#expand_wildcards"
+          },
+          {
+            "$ref": "#/components/parameters/cat.aliases#local"
           }
         ],
         "responses": {
@@ -928,6 +931,9 @@
           },
           {
             "$ref": "#/components/parameters/cat.aliases#expand_wildcards"
+          },
+          {
+            "$ref": "#/components/parameters/cat.aliases#local"
           }
         ],
         "responses": {
@@ -948,6 +954,9 @@
         "parameters": [
           {
             "$ref": "#/components/parameters/cat.allocation#bytes"
+          },
+          {
+            "$ref": "#/components/parameters/cat.allocation#local"
           }
         ],
         "responses": {
@@ -971,6 +980,9 @@
           },
           {
             "$ref": "#/components/parameters/cat.allocation#bytes"
+          },
+          {
+            "$ref": "#/components/parameters/cat.allocation#local"
           }
         ],
         "responses": {
@@ -988,6 +1000,11 @@
         "summary": "Get component templates",
         "description": "Returns information about component templates in a cluster.\nComponent templates are building blocks for constructing index templates that specify index mappings, settings, and aliases.\n\nCAT APIs are only intended for human consumption using the command line or Kibana console.\nThey are not intended for use by applications. For application consumption, use the get component template API.",
         "operationId": "cat-component-templates",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/cat.component_templates#local"
+          }
+        ],
         "responses": {
           "200": {
             "$ref": "#/components/responses/cat.component_templates#200"
@@ -1007,6 +1024,9 @@
         "parameters": [
           {
             "$ref": "#/components/parameters/cat.component_templates#name"
+          },
+          {
+            "$ref": "#/components/parameters/cat.component_templates#local"
           }
         ],
         "responses": {
@@ -1254,6 +1274,18 @@
         "summary": "Returns information about the master node, including the ID, bound IP address, and name",
         "description": "IMPORTANT: cat APIs are only intended for human consumption using the command line or Kibana console. They are not intended for use by applications. For application consumption, use the nodes info API.",
         "operationId": "cat-master",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "local",
+            "description": "If `true`, the request computes the list of selected nodes from the\nlocal cluster state. If `false` the list of selected nodes are computed\nfrom the cluster state of the master node. In both cases the coordinating\nnode will send requests for further information to each selected node.",
+            "deprecated": false,
+            "schema": {
+              "type": "boolean"
+            },
+            "style": "form"
+          }
+        ],
         "responses": {
           "200": {
             "description": "",
@@ -1555,6 +1587,18 @@
         "summary": "Returns information about custom node attributes",
         "description": "IMPORTANT: cat APIs are only intended for human consumption using the command line or Kibana console. They are not intended for use by applications. For application consumption, use the nodes info API.",
         "operationId": "cat-nodeattrs",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "local",
+            "description": "If `true`, the request computes the list of selected nodes from the\nlocal cluster state. If `false` the list of selected nodes are computed\nfrom the cluster state of the master node. In both cases the coordinating\nnode will send requests for further information to each selected node.",
+            "deprecated": false,
+            "schema": {
+              "type": "boolean"
+            },
+            "style": "form"
+          }
+        ],
         "responses": {
           "200": {
             "description": "",
@@ -1644,6 +1688,18 @@
         "summary": "Returns cluster-level changes that have not yet been executed",
         "description": "IMPORTANT: cat APIs are only intended for human consumption using the command line or Kibana console. They are not intended for use by applications. For application consumption, use the pending cluster tasks API.",
         "operationId": "cat-pending-tasks",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "local",
+            "description": "If `true`, the request computes the list of selected nodes from the\nlocal cluster state. If `false` the list of selected nodes are computed\nfrom the cluster state of the master node. In both cases the coordinating\nnode will send requests for further information to each selected node.",
+            "deprecated": false,
+            "schema": {
+              "type": "boolean"
+            },
+            "style": "form"
+          }
+        ],
         "responses": {
           "200": {
             "description": "",
@@ -1669,6 +1725,18 @@
         "summary": "Returns a list of plugins running on each node of a cluster",
         "description": "IMPORTANT: cat APIs are only intended for human consumption using the command line or Kibana console. They are not intended for use by applications. For application consumption, use the nodes info API.",
         "operationId": "cat-plugins",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "local",
+            "description": "If `true`, the request computes the list of selected nodes from the\nlocal cluster state. If `false` the list of selected nodes are computed\nfrom the cluster state of the master node. In both cases the coordinating\nnode will send requests for further information to each selected node.",
+            "deprecated": false,
+            "schema": {
+              "type": "boolean"
+            },
+            "style": "form"
+          }
+        ],
         "responses": {
           "200": {
             "description": "",
@@ -1778,6 +1846,9 @@
         "parameters": [
           {
             "$ref": "#/components/parameters/cat.segments#bytes"
+          },
+          {
+            "$ref": "#/components/parameters/cat.segments#local"
           }
         ],
         "responses": {
@@ -1801,6 +1872,9 @@
           },
           {
             "$ref": "#/components/parameters/cat.segments#bytes"
+          },
+          {
+            "$ref": "#/components/parameters/cat.segments#local"
           }
         ],
         "responses": {
@@ -1980,6 +2054,11 @@
         "summary": "Returns information about index templates in a cluster",
         "description": "You can use index templates to apply index settings and field mappings to new indices at creation.\nIMPORTANT: cat APIs are only intended for human consumption using the command line or Kibana console. They are not intended for use by applications. For application consumption, use the get index template API.",
         "operationId": "cat-templates",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/cat.templates#local"
+          }
+        ],
         "responses": {
           "200": {
             "$ref": "#/components/responses/cat.templates#200"
@@ -1999,6 +2078,9 @@
         "parameters": [
           {
             "$ref": "#/components/parameters/cat.templates#name"
+          },
+          {
+            "$ref": "#/components/parameters/cat.templates#local"
           }
         ],
         "responses": {
@@ -2020,6 +2102,9 @@
         "parameters": [
           {
             "$ref": "#/components/parameters/cat.thread_pool#time"
+          },
+          {
+            "$ref": "#/components/parameters/cat.thread_pool#local"
           }
         ],
         "responses": {
@@ -2043,6 +2128,9 @@
           },
           {
             "$ref": "#/components/parameters/cat.thread_pool#time"
+          },
+          {
+            "$ref": "#/components/parameters/cat.thread_pool#local"
           }
         ],
         "responses": {
@@ -93827,6 +93915,16 @@
         },
         "style": "form"
       },
+      "cat.aliases#local": {
+        "in": "query",
+        "name": "local",
+        "description": "If `true`, the request computes the list of selected nodes from the\nlocal cluster state. If `false` the list of selected nodes are computed\nfrom the cluster state of the master node. In both cases the coordinating\nnode will send requests for further information to each selected node.",
+        "deprecated": false,
+        "schema": {
+          "type": "boolean"
+        },
+        "style": "form"
+      },
       "cat.allocation#node_id": {
         "in": "path",
         "name": "node_id",
@@ -93848,6 +93946,16 @@
         },
         "style": "form"
       },
+      "cat.allocation#local": {
+        "in": "query",
+        "name": "local",
+        "description": "If `true`, the request computes the list of selected nodes from the\nlocal cluster state. If `false` the list of selected nodes are computed\nfrom the cluster state of the master node. In both cases the coordinating\nnode will send requests for further information to each selected node.",
+        "deprecated": false,
+        "schema": {
+          "type": "boolean"
+        },
+        "style": "form"
+      },
       "cat.component_templates#name": {
         "in": "path",
         "name": "name",
@@ -93858,6 +93966,16 @@
           "type": "string"
         },
         "style": "simple"
+      },
+      "cat.component_templates#local": {
+        "in": "query",
+        "name": "local",
+        "description": "If `true`, the request computes the list of selected nodes from the\nlocal cluster state. If `false` the list of selected nodes are computed\nfrom the cluster state of the master node. In both cases the coordinating\nnode will send requests for further information to each selected node.",
+        "deprecated": false,
+        "schema": {
+          "type": "boolean"
+        },
+        "style": "form"
       },
       "cat.count#index": {
         "in": "path",
@@ -94278,6 +94396,16 @@
         },
         "style": "form"
       },
+      "cat.segments#local": {
+        "in": "query",
+        "name": "local",
+        "description": "If `true`, the request computes the list of selected nodes from the\nlocal cluster state. If `false` the list of selected nodes are computed\nfrom the cluster state of the master node. In both cases the coordinating\nnode will send requests for further information to each selected node.",
+        "deprecated": false,
+        "schema": {
+          "type": "boolean"
+        },
+        "style": "form"
+      },
       "cat.shards#index": {
         "in": "path",
         "name": "index",
@@ -94331,6 +94459,16 @@
         },
         "style": "simple"
       },
+      "cat.templates#local": {
+        "in": "query",
+        "name": "local",
+        "description": "If `true`, the request computes the list of selected nodes from the\nlocal cluster state. If `false` the list of selected nodes are computed\nfrom the cluster state of the master node. In both cases the coordinating\nnode will send requests for further information to each selected node.",
+        "deprecated": false,
+        "schema": {
+          "type": "boolean"
+        },
+        "style": "form"
+      },
       "cat.thread_pool#thread_pool_patterns": {
         "in": "path",
         "name": "thread_pool_patterns",
@@ -94349,6 +94487,16 @@
         "deprecated": false,
         "schema": {
           "$ref": "#/components/schemas/_types:TimeUnit"
+        },
+        "style": "form"
+      },
+      "cat.thread_pool#local": {
+        "in": "query",
+        "name": "local",
+        "description": "If `true`, the request computes the list of selected nodes from the\nlocal cluster state. If `false` the list of selected nodes are computed\nfrom the cluster state of the master node. In both cases the coordinating\nnode will send requests for further information to each selected node.",
+        "deprecated": false,
+        "schema": {
+          "type": "boolean"
         },
         "style": "form"
       },
