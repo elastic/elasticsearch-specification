@@ -58,6 +58,11 @@ export interface Request extends RequestBase {
      */
     node_ids?: Ids
     /**
+     * Period to wait for a connection to the master node.
+     * @server_default 30s
+     */
+    master_timeout?: Duration
+    /**
      * When adding a voting configuration exclusion, the API waits for the
      * specified nodes to be excluded from the voting configuration before
      * returning. If the timeout expires before the appropriate condition

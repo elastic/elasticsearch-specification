@@ -19,6 +19,7 @@
 
 import { RequestBase } from '@_types/Base'
 import { Id } from '@_types/common'
+import { Duration } from '@_types/Time'
 
 /**
  * Delete an unreferenced trained model.
@@ -39,5 +40,10 @@ export interface Request extends RequestBase {
   query_parameters: {
     /** Forcefully deletes a trained model that is referenced by ingest pipelines or has a started deployment. **/
     force?: boolean
+    /**
+     * Period to wait for a response. If no response is received before the timeout expires, the request fails and returns an error.
+     * @server_default 30s
+     */
+    timeout?: Duration
   }
 }

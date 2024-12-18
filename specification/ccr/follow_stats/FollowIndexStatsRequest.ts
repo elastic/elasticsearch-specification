@@ -19,6 +19,7 @@
 
 import { RequestBase } from '@_types/Base'
 import { Indices } from '@_types/common'
+import { Duration } from '@_types/Time'
 
 /**
  * Get follower stats.
@@ -32,5 +33,12 @@ import { Indices } from '@_types/common'
 export interface Request extends RequestBase {
   path_parts: {
     index: Indices
+  }
+  query_parameters: {
+    /**
+     * Period to wait for a response. If no response is received before the timeout expires, the request fails and returns an error.
+     * @server_default 30s
+     */
+    timeout?: Duration
   }
 }

@@ -19,6 +19,7 @@
 
 import { RequestBase } from '@_types/Base'
 import { Name } from '@_types/common'
+import { Duration } from '@_types/Time'
 
 /**
  * Delete an enrich policy.
@@ -33,5 +34,12 @@ export interface Request extends RequestBase {
      * Enrich policy to delete.
      */
     name: Name
+  }
+  query_parameters: {
+    /**
+     * Period to wait for a connection to the master node.
+     * @server_default 30s
+     */
+    master_timeout?: Duration
   }
 }

@@ -19,6 +19,7 @@
 
 import { RequestBase } from '@_types/Base'
 import { ExpandWildcards, Indices, Routing } from '@_types/common'
+import { Duration } from '@_types/Time'
 
 /**
  * Get the search shards.
@@ -63,6 +64,11 @@ export interface Request extends RequestBase {
      * @server_default false
      */
     local?: boolean
+    /**
+     * Period to wait for a connection to the master node.
+     * @server_default 30s
+     */
+    master_timeout?: Duration
     /**
      * Specifies the node or shard the operation should be performed on.
      * Random by default.

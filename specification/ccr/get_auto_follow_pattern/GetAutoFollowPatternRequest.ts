@@ -19,6 +19,7 @@
 
 import { RequestBase } from '@_types/Base'
 import { Name } from '@_types/common'
+import { Duration } from '@_types/Time'
 
 /**
  * Get auto-follow patterns.
@@ -32,5 +33,12 @@ export interface Request extends RequestBase {
   path_parts: {
     /** Specifies the auto-follow pattern collection that you want to retrieve. If you do not specify a name, the API returns information for all collections. */
     name?: Name
+  }
+  query_parameters: {
+    /**
+     * Period to wait for a connection to the master node.
+     * @server_default 30s
+     */
+    master_timeout?: Duration
   }
 }

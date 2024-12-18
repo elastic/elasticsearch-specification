@@ -58,13 +58,6 @@ export interface Request extends RequestBase {
      */
     snapshots?: long
     /**
-     * Period to wait for a connection to the master node. If no response
-     * is received before the timeout expires, the request fails and
-     * returns an error.
-     * @server_default 30s
-     */
-    master_timeout?: Duration
-    /**
      * Specifies the number of hot threads to provide information for.
      * @server_default 3
      */

@@ -21,7 +21,6 @@ import { Configuration, Retention } from '@slm/_types/SnapshotLifecycle'
 import { CronExpression } from '@watcher/_types/Schedule'
 import { RequestBase } from '@_types/Base'
 import { Name } from '@_types/common'
-import { Duration } from '@_types/Time'
 
 /**
  * Create or update a policy.
@@ -40,18 +39,6 @@ export interface Request extends RequestBase {
      * The identifier for the snapshot lifecycle policy you want to create or update.
      */
     policy_id: Name
-  }
-  query_parameters: {
-    /**
-     * Period to wait for a connection to the master node. If no response is received before the timeout expires, the request fails and returns an error.
-     * @server_default 30s
-     */
-    master_timeout?: Duration
-    /**
-     * Period to wait for a response. If no response is received before the timeout expires, the request fails and returns an error.
-     * @server_default 30s
-     */
-    timeout?: Duration
   }
   body: {
     /**
