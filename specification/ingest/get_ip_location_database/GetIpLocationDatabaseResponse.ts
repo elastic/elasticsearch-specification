@@ -18,7 +18,7 @@
  */
 
 import { DatabaseConfigurationFull } from '@ingest/_types/Database'
-import { Id } from '@_types/common'
+import { Id, VersionNumber } from '@_types/common'
 import { long } from '@_types/Numeric'
 import { EpochTime, UnitMillis } from '@_types/Time'
 

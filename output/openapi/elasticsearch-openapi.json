@@ -70489,9 +70489,12 @@
             "$ref": "#/components/schemas/_types:Id"
           },
           "version": {
-            "type": "number"
+            "$ref": "#/components/schemas/_types:VersionNumber"
           },
           "modified_date_millis": {
+            "$ref": "#/components/schemas/_types:EpochTimeUnitMillis"
+          },
+          "modified_date": {
             "$ref": "#/components/schemas/_types:EpochTimeUnitMillis"
           },
           "database": {
@@ -70501,7 +70504,6 @@
         "required": [
           "id",
           "version",
-          "modified_date_millis",
           "database"
         ]
       },

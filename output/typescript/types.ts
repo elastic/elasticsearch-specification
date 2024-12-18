@@ -13351,8 +13351,9 @@ export interface IngestGetGeoipDatabaseResponse {
 
 export interface IngestGetIpLocationDatabaseDatabaseConfigurationMetadata {
   id: Id
-  version: long
-  modified_date_millis: EpochTime<UnitMillis>
+  version: VersionNumber
+  modified_date_millis?: EpochTime<UnitMillis>
+  modified_date?: EpochTime<UnitMillis>
   database: IngestDatabaseConfigurationFull
 }
 
