@@ -23,7 +23,7 @@ import { Duration } from '@_types/Time'
 
 /**
  * Get task information.
- * Returns information about the tasks currently executing in the cluster.
+ * Get information about a task currently running in the cluster.
  * @rest_spec_name tasks.get
  * @availability stack since=5.0.0 stability=experimental
  * @availability serverless stability=experimental visibility=public
