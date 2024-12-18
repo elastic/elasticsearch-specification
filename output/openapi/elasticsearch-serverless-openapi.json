@@ -4997,6 +4997,12 @@
             "$ref": "#/components/parameters/eql.search#allow_no_indices"
           },
           {
+            "$ref": "#/components/parameters/eql.search#allow_partial_search_results"
+          },
+          {
+            "$ref": "#/components/parameters/eql.search#allow_partial_sequence_results"
+          },
+          {
             "$ref": "#/components/parameters/eql.search#expand_wildcards"
           },
           {
@@ -5038,6 +5044,12 @@
           },
           {
             "$ref": "#/components/parameters/eql.search#allow_no_indices"
+          },
+          {
+            "$ref": "#/components/parameters/eql.search#allow_partial_search_results"
+          },
+          {
+            "$ref": "#/components/parameters/eql.search#allow_partial_sequence_results"
           },
           {
             "$ref": "#/components/parameters/eql.search#expand_wildcards"
@@ -8644,6 +8656,7 @@
           "inference"
         ],
         "summary": "Create an inference endpoint",
+        "description": "When you create an inference endpoint, the associated machine learning model is automatically deployed if it is not already running.\nAfter creating the endpoint, wait for the model deployment to complete before using it.\nTo verify the deployment status, use the get trained model statistics API.\nLook for `\"state\": \"fully_allocated\"` in the response and ensure that the `\"allocation_count\"` matches the `\"target_allocation_count\"`.\nAvoid creating multiple endpoints for the same model unless required, as each endpoint consumes significant resources.\n\nIMPORTANT: The inference APIs enable you to use certain services, such as built-in machine learning models (ELSER, E5), models uploaded through Eland, Cohere, OpenAI, Mistral, Azure OpenAI, Google AI Studio, Google Vertex AI, Anthropic, Watsonx.ai, or Hugging Face.\nFor built-in models and models uploaded through Eland, the inference APIs offer an alternative way to use and manage trained models.\nHowever, if you do not plan to use the inference APIs to use these models or if you want to use non-NLP models, use the machine learning trained model APIs.",
         "operationId": "inference-put",
         "parameters": [
           {
@@ -8736,6 +8749,7 @@
           "inference"
         ],
         "summary": "Create an inference endpoint",
+        "description": "When you create an inference endpoint, the associated machine learning model is automatically deployed if it is not already running.\nAfter creating the endpoint, wait for the model deployment to complete before using it.\nTo verify the deployment status, use the get trained model statistics API.\nLook for `\"state\": \"fully_allocated\"` in the response and ensure that the `\"allocation_count\"` matches the `\"target_allocation_count\"`.\nAvoid creating multiple endpoints for the same model unless required, as each endpoint consumes significant resources.\n\nIMPORTANT: The inference APIs enable you to use certain services, such as built-in machine learning models (ELSER, E5), models uploaded through Eland, Cohere, OpenAI, Mistral, Azure OpenAI, Google AI Studio, Google Vertex AI, Anthropic, Watsonx.ai, or Hugging Face.\nFor built-in models and models uploaded through Eland, the inference APIs offer an alternative way to use and manage trained models.\nHowever, if you do not plan to use the inference APIs to use these models or if you want to use non-NLP models, use the machine learning trained model APIs.",
         "operationId": "inference-put-1",
         "parameters": [
           {
@@ -9300,7 +9314,11 @@
         "tags": [
           "logstash"
         ],
-        "summary": "Retrieves pipelines used for Logstash Central Management",
+        "summary": "Get Logstash pipelines",
+        "description": "Get pipelines that are used for Logstash Central Management.",
+        "externalDocs": {
+          "url": "https://www.elastic.co/guide/en/logstash/current/logstash-centralized-pipeline-management.html"
+        },
         "operationId": "logstash-get-pipeline-1",
         "parameters": [
           {
@@ -9318,13 +9336,17 @@
         "tags": [
           "logstash"
         ],
-        "summary": "Creates or updates a pipeline used for Logstash Central Management",
+        "summary": "Create or update a Logstash pipeline",
+        "description": "Create a pipeline that is used for Logstash Central Management.\nIf the specified pipeline exists, it is replaced.",
+        "externalDocs": {
+          "url": "https://www.elastic.co/guide/en/logstash/current/logstash-centralized-pipeline-management.html"
+        },
         "operationId": "logstash-put-pipeline",
         "parameters": [
           {
             "in": "path",
             "name": "id",
-            "description": "Identifier for the pipeline.",
+            "description": "An identifier for the pipeline.",
             "required": true,
             "deprecated": false,
             "schema": {
@@ -9357,13 +9379,17 @@
         "tags": [
           "logstash"
         ],
-        "summary": "Deletes a pipeline used for Logstash Central Management",
+        "summary": "Delete a Logstash pipeline",
+        "description": "Delete a pipeline that is used for Logstash Central Management.",
+        "externalDocs": {
+          "url": "https://www.elastic.co/guide/en/logstash/current/logstash-centralized-pipeline-management.html"
+        },
         "operationId": "logstash-delete-pipeline",
         "parameters": [
           {
             "in": "path",
             "name": "id",
-            "description": "Identifier for the pipeline.",
+            "description": "An identifier for the pipeline.",
             "required": true,
             "deprecated": false,
             "schema": {
@@ -9388,7 +9414,11 @@
         "tags": [
           "logstash"
         ],
-        "summary": "Retrieves pipelines used for Logstash Central Management",
+        "summary": "Get Logstash pipelines",
+        "description": "Get pipelines that are used for Logstash Central Management.",
+        "externalDocs": {
+          "url": "https://www.elastic.co/guide/en/logstash/current/logstash-centralized-pipeline-management.html"
+        },
         "operationId": "logstash-get-pipeline",
         "responses": {
           "200": {
@@ -18358,7 +18388,7 @@
           "tasks"
         ],
         "summary": "Get task information",
-        "description": "Returns information about the tasks currently executing in the cluster.",
+        "description": "Get information about a task currently running in the cluster.",
         "operationId": "tasks-get",
         "parameters": [
           {
@@ -48065,34 +48095,37 @@
         "type": "object",
         "properties": {
           "description": {
-            "description": "Description of the pipeline.\nThis description is not used by Elasticsearch or Logstash.",
+            "description": "A description of the pipeline.\nThis description is not used by Elasticsearch or Logstash.",
             "type": "string"
           },
           "last_modified": {
             "$ref": "#/components/schemas/_types:DateTime"
           },
+          "pipeline": {
+            "externalDocs": {
+              "url": "https://www.elastic.co/guide/en/logstash/current/configuration-file-structure.html"
+            },
+            "description": "The configuration for the pipeline.",
+            "type": "string"
+          },
           "pipeline_metadata": {
             "$ref": "#/components/schemas/logstash._types:PipelineMetadata"
           },
-          "username": {
-            "description": "User who last updated the pipeline.",
-            "type": "string"
-          },
-          "pipeline": {
-            "description": "Configuration for the pipeline.",
-            "type": "string"
-          },
           "pipeline_settings": {
             "$ref": "#/components/schemas/logstash._types:PipelineSettings"
+          },
+          "username": {
+            "description": "The user who last updated the pipeline.",
+            "type": "string"
           }
         },
         "required": [
           "description",
           "last_modified",
-          "pipeline_metadata",
-          "username",
           "pipeline",
-          "pipeline_settings"
+          "pipeline_metadata",
+          "pipeline_settings",
+          "username"
         ]
       },
       "logstash._types:PipelineMetadata": {
@@ -55004,6 +55037,7 @@
             "type": "boolean"
           },
           "description": {
+            "description": "Human readable text that identifies the particular request that the task is performing.\nFor example, it might identify the search request being performed by a search task.\nOther kinds of tasks have different descriptions, like `_reindex` which has the source and the destination, or `_bulk` which just has the number of requests and the destination indices.\nMany requests will have only an empty description because more detailed information about the request is not easily available or particularly helpful in identifying the request.",
             "type": "string"
           },
           "headers": {
@@ -55028,7 +55062,7 @@
             "$ref": "#/components/schemas/_types:EpochTimeUnitMillis"
           },
           "status": {
-            "description": "Task status information can vary wildly from task to task.",
+            "description": "The internal status of the task, which varies from task to task.\nThe format also varies.\nWhile the goal is to keep the status for a particular task consistent from version to version, this is not always possible because sometimes the implementation changes.\nFields might be removed from the status for a particular request so any parsing you do of the status might break in minor releases.",
             "type": "object"
           },
           "type": {
@@ -58669,6 +58703,26 @@
         },
         "style": "form"
       },
+      "eql.search#allow_partial_search_results": {
+        "in": "query",
+        "name": "allow_partial_search_results",
+        "description": "If true, returns partial results if there are shard failures. If false, returns an error with no partial results.",
+        "deprecated": false,
+        "schema": {
+          "type": "boolean"
+        },
+        "style": "form"
+      },
+      "eql.search#allow_partial_sequence_results": {
+        "in": "query",
+        "name": "allow_partial_sequence_results",
+        "description": "If true, sequence queries will return partial results in case of shard failures. If false, they will return no results at all.\nThis flag has effect only if allow_partial_search_results is true.",
+        "deprecated": false,
+        "schema": {
+          "type": "boolean"
+        },
+        "style": "form"
+      },
       "eql.search#expand_wildcards": {
         "in": "query",
         "name": "expand_wildcards",
@@ -60232,7 +60286,7 @@
       "logstash.get_pipeline#id": {
         "in": "path",
         "name": "id",
-        "description": "Comma-separated list of pipeline identifiers.",
+        "description": "A comma-separated list of pipeline identifiers.",
         "required": true,
         "deprecated": false,
         "schema": {
@@ -62770,6 +62824,12 @@
                 },
                 "wait_for_completion_timeout": {
                   "$ref": "#/components/schemas/_types:Duration"
+                },
+                "allow_partial_search_results": {
+                  "type": "boolean"
+                },
+                "allow_partial_sequence_results": {
+                  "type": "boolean"
                 },
                 "size": {
                   "$ref": "#/components/schemas/_types:uint"

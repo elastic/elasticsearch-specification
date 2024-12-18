@@ -17,28 +17,8 @@
  * under the License.
  */
 
-import { RequestBase } from '@_types/Base'
-import { Name } from '@_types/common'
-import { Duration } from '@_types/Time'
+import { AcknowledgedResponseBase } from '@_types/Base'
 
-/**
- * Clone a snapshot.
- * Clone part of all of a snapshot into another snapshot in the same repository.
- * @rest_spec_name snapshot.clone
- * @availability stack since=7.10.0 stability=stable
- * @availability serverless stability=stable visibility=private
- * @cluster_privileges manage
- */
-export interface Request extends RequestBase {
-  path_parts: {
-    repository: Name
-    snapshot: Name
-    target_snapshot: Name
-  }
-  query_parameters: {
-    master_timeout?: Duration
-  }
-  body: {
-    indices: string
-  }
+export class Response {
+  body: AcknowledgedResponseBase
 }

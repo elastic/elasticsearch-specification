@@ -21,8 +21,11 @@ import { RequestBase } from '@_types/Base'
 import { Duration } from '@_types/Time'
 
 /**
+ * Stop the watch service.
+ * Stop the Watcher service if it is running.
  * @rest_spec_name watcher.stop
  * @availability stack stability=stable
+ * @cluster_privileges manage_watcher
  */
 export interface Request extends RequestBase {
   query_parameters: {

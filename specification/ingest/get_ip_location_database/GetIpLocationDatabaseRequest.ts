@@ -18,27 +18,29 @@
  */
 
 import { RequestBase } from '@_types/Base'
-import { Name } from '@_types/common'
+import { Ids } from '@_types/common'
 import { Duration } from '@_types/Time'
 
 /**
- * Clone a snapshot.
- * Clone part of all of a snapshot into another snapshot in the same repository.
- * @rest_spec_name snapshot.clone
- * @availability stack since=7.10.0 stability=stable
- * @availability serverless stability=stable visibility=private
- * @cluster_privileges manage
+ * Returns information about one or more IP location database configurations.
+ * @rest_spec_name ingest.get_ip_location_database
+ * @availability stack since=8.15.0 stability=stable
+ * @availability serverless visibility=private
  */
 export interface Request extends RequestBase {
   path_parts: {
-    repository: Name
-    snapshot: Name
-    target_snapshot: Name
+    /**
+     * Comma-separated list of database configuration IDs to retrieve.
+     * Wildcard (`*`) expressions are supported.
+     * To get all database configurations, omit this parameter or use `*`.
+     */
+    id?: Ids
   }
   query_parameters: {
+    /**
+     * Period to wait for a connection to the master node.
+     * If no response is received before the timeout expires, the request fails and returns an error.
+     * @server_default 30s */
     master_timeout?: Duration
-  }
-  body: {
-    indices: string
   }
 }

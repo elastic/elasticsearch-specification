@@ -22,8 +22,23 @@ import { NodeId } from '@_types/common'
 import { Type } from '../_types/types'
 
 /**
+ * Prepare a node to be shut down.
+ *
+ * NOTE: This feature is designed for indirect use by Elastic Cloud, Elastic Cloud Enterprise, and Elastic Cloud on Kubernetes. Direct use is not supported.
+ *
+ * If the operator privileges feature is enabled, you must be an operator to use this API.
+ *
+ * The API migrates ongoing tasks and index shards to other nodes as needed to prepare a node to be restarted or shut down and removed from the cluster.
+ * This ensures that Elasticsearch can be stopped safely with minimal disruption to the cluster.
+ *
+ * You must specify the type of shutdown: `restart`, `remove`, or `replace`.
+ * If a node is already being prepared for shutdown, you can use this API to change the shutdown type.
+ *
+ * IMPORTANT: This API does NOT terminate the Elasticsearch process.
+ * Monitor the node shutdown status to determine when it is safe to stop Elasticsearch.
  * @rest_spec_name shutdown.put_node
  * @availability stack since=7.13.0 stability=stable
+ * @cluster_privileges manage
  */
 export interface Request extends RequestBase {
   path_parts: {

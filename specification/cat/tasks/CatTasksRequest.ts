@@ -18,7 +18,7 @@
  */
 
 import { CatRequestBase } from '@cat/_types/CatBase'
-import { TimeUnit } from '@_types/Time'
+import { Duration, TimeUnit } from '@_types/Time'
 
 /**
  * Get task information.
@@ -49,5 +49,16 @@ export interface Request extends CatRequestBase {
      * Unit used to display time values.
      */
     time?: TimeUnit
+    /**
+     * Period to wait for a response.
+     * If no response is received before the timeout expires, the request fails and returns an error.
+     * @server_default 30s
+     */
+    timeout?: Duration
+    /**
+     * If `true`, the request blocks until the task has completed.
+     * @server_default false
+     */
+    wait_for_completion?: boolean
   }
 }

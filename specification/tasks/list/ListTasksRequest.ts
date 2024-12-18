@@ -23,11 +23,12 @@ import { Id, NodeIds } from '@_types/common'
 import { Duration } from '@_types/Time'
 
 /**
- * The task management API returns information about tasks currently executing on one or more nodes in the cluster.
+ * Get all tasks.
+ * Get information about the tasks currently running on one or more nodes in the cluster.
  * @rest_spec_name tasks.list
  * @availability stack since=2.3.0 stability=experimental
  * @availability serverless stability=experimental visibility=private
- * @cluster_privileges monitor, manage
+ * @cluster_privileges monitor
  * @doc_id tasks
  */
 export interface Request extends RequestBase {
@@ -38,6 +39,7 @@ export interface Request extends RequestBase {
     actions?: string | string[]
     /**
      * If `true`, the response includes detailed information about shard recoveries.
+     * This information is useful to distinguish tasks from each other but is more costly to run.
      * @server_default false
      */
     detailed?: boolean

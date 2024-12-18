@@ -8223,6 +8223,8 @@ export type CatRepositoriesResponse = CatRepositoriesRepositoriesRecord[]
 export interface CatSegmentsRequest extends CatCatRequestBase {
   index?: Indices
   bytes?: Bytes
+  local?: boolean
+  master_timeout?: Duration
 }
 
 export type CatSegmentsResponse = CatSegmentsSegmentsRecord[]
@@ -8542,6 +8544,8 @@ export interface CatTasksRequest extends CatCatRequestBase {
   nodes?: string[]
   parent_task_id?: string
   time?: TimeUnit
+  timeout?: Duration
+  wait_for_completion?: boolean
 }
 
 export type CatTasksResponse = CatTasksTasksRecord[]
@@ -10392,6 +10396,8 @@ export interface EqlGetStatusResponse {
 export interface EqlSearchRequest extends RequestBase {
   index: Indices
   allow_no_indices?: boolean
+  allow_partial_search_results?: boolean
+  allow_partial_sequence_results?: boolean
   expand_wildcards?: ExpandWildcards
   ignore_unavailable?: boolean
   keep_alive?: Duration
@@ -10408,6 +10414,8 @@ export interface EqlSearchRequest extends RequestBase {
     keep_alive?: Duration
     keep_on_completion?: boolean
     wait_for_completion_timeout?: Duration
+    allow_partial_search_results?: boolean
+    allow_partial_sequence_results?: boolean
     size?: uint
     fields?: QueryDslFieldAndFormat | Field | (QueryDslFieldAndFormat | Field)[]
     result_position?: EqlSearchResultPosition
@@ -12907,7 +12915,13 @@ export interface IngestCsvProcessor extends IngestProcessorBase {
 
 export interface IngestDatabaseConfiguration {
   name: Name
-  maxmind: IngestMaxmind
+  maxmind?: IngestMaxmind
+  ipinfo?: IngestIpinfo
+}
+
+export interface IngestDatabaseConfigurationFull extends IngestDatabaseConfiguration {
+  web?: IngestWeb
+  local?: IngestLocal
 }
 
 export interface IngestDateIndexNameProcessor extends IngestProcessorBase {
@@ -13059,6 +13073,10 @@ export interface IngestIpLocationProcessor extends IngestProcessorBase {
   download_database_on_pipeline_creation?: boolean
 }
 
+export interface IngestIpinfo {
+  [key: string]: never
+}
+
 export interface IngestJoinProcessor extends IngestProcessorBase {
   field: Field
   separator: string
@@ -13087,6 +13105,10 @@ export interface IngestKeyValueProcessor extends IngestProcessorBase {
   trim_key?: string
   trim_value?: string
   value_split: string
+}
+
+export interface IngestLocal {
+  type: string
 }
 
 export interface IngestLowercaseProcessor extends IngestProcessorBase {
@@ -13296,11 +13318,23 @@ export interface IngestUserAgentProcessor extends IngestProcessorBase {
 
 export type IngestUserAgentProperty = 'name' | 'os' | 'device' | 'original' | 'version'
 
+export interface IngestWeb {
+  [key: string]: never
+}
+
 export interface IngestDeleteGeoipDatabaseRequest extends RequestBase {
   id: Ids
 }
 
 export type IngestDeleteGeoipDatabaseResponse = AcknowledgedResponseBase
+
+export interface IngestDeleteIpLocationDatabaseRequest extends RequestBase {
+  id: Ids
+  master_timeout?: Duration
+  timeout?: Duration
+}
+
+export type IngestDeleteIpLocationDatabaseResponse = AcknowledgedResponseBase
 
 export interface IngestDeletePipelineRequest extends RequestBase {
   id: Id
@@ -13351,6 +13385,23 @@ export interface IngestGetGeoipDatabaseResponse {
   databases: IngestGetGeoipDatabaseDatabaseConfigurationMetadata[]
 }
 
+export interface IngestGetIpLocationDatabaseDatabaseConfigurationMetadata {
+  id: Id
+  version: VersionNumber
+  modified_date_millis?: EpochTime<UnitMillis>
+  modified_date?: EpochTime<UnitMillis>
+  database: IngestDatabaseConfigurationFull
+}
+
+export interface IngestGetIpLocationDatabaseRequest extends RequestBase {
+  id?: Ids
+  master_timeout?: Duration
+}
+
+export interface IngestGetIpLocationDatabaseResponse {
+  databases: IngestGetIpLocationDatabaseDatabaseConfigurationMetadata[]
+}
+
 export interface IngestGetPipelineRequest extends RequestBase {
   id?: Id
   master_timeout?: Duration
@@ -13375,6 +13426,15 @@ export interface IngestPutGeoipDatabaseRequest extends RequestBase {
 }
 
 export type IngestPutGeoipDatabaseResponse = AcknowledgedResponseBase
+
+export interface IngestPutIpLocationDatabaseRequest extends RequestBase {
+  id: Id
+  master_timeout?: Duration
+  timeout?: Duration
+  body?: IngestDatabaseConfiguration
+}
+
+export type IngestPutIpLocationDatabaseResponse = AcknowledgedResponseBase
 
 export interface IngestPutPipelineRequest extends RequestBase {
   id: Id
@@ -13564,10 +13624,10 @@ export interface LicensePostStartTrialResponse {
 export interface LogstashPipeline {
   description: string
   last_modified: DateTime
-  pipeline_metadata: LogstashPipelineMetadata
-  username: string
   pipeline: string
+  pipeline_metadata: LogstashPipelineMetadata
   pipeline_settings: LogstashPipelineSettings
+  username: string
 }
 
 export interface LogstashPipelineMetadata {

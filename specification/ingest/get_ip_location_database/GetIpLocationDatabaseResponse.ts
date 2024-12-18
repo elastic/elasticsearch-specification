@@ -17,28 +17,18 @@
  * under the License.
  */
 
-import { RequestBase } from '@_types/Base'
-import { Name } from '@_types/common'
-import { Duration } from '@_types/Time'
+import { DatabaseConfigurationFull } from '@ingest/_types/Database'
+import { Id, VersionNumber } from '@_types/common'
+import { EpochTime, UnitMillis } from '@_types/Time'
 
-/**
- * Clone a snapshot.
- * Clone part of all of a snapshot into another snapshot in the same repository.
- * @rest_spec_name snapshot.clone
- * @availability stack since=7.10.0 stability=stable
- * @availability serverless stability=stable visibility=private
- * @cluster_privileges manage
- */
-export interface Request extends RequestBase {
-  path_parts: {
-    repository: Name
-    snapshot: Name
-    target_snapshot: Name
-  }
-  query_parameters: {
-    master_timeout?: Duration
-  }
-  body: {
-    indices: string
-  }
+export class Response {
+  body: { databases: DatabaseConfigurationMetadata[] }
+}
+
+class DatabaseConfigurationMetadata {
+  id: Id
+  version: VersionNumber
+  modified_date_millis?: EpochTime<UnitMillis>
+  modified_date?: EpochTime<UnitMillis>
+  database: DatabaseConfigurationFull
 }
