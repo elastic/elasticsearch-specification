@@ -18,6 +18,7 @@
  */
 
 import { CatRequestBase } from '@cat/_types/CatBase'
+import { Duration, TimeUnit } from '@_types/Time'
 
 /**
  * Returns cluster-level changes that have not yet been executed.
@@ -38,5 +39,14 @@ export interface Request extends CatRequestBase {
      * @server_default false
      */
     local?: boolean
+    /**
+     * Period to wait for a connection to the master node.
+     * @server_default 30s
+     */
+    master_timeout?: Duration
+    /**
+     * Unit used to display time values.
+     */
+    time?: TimeUnit
   }
 }
