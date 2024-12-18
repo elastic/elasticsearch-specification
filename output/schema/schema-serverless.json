@@ -17427,6 +17427,28 @@
             }
           },
           {
+            "name": "allow_partial_search_results",
+            "required": false,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "boolean",
+                "namespace": "_builtins"
+              }
+            }
+          },
+          {
+            "name": "allow_partial_sequence_results",
+            "required": false,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "boolean",
+                "namespace": "_builtins"
+              }
+            }
+          },
+          {
             "description": "For basic queries, the maximum number of matching events to return. Defaults to 10",
             "docId": "eql-basic-syntax",
             "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/eql-syntax.html#eql-basic-syntax",
@@ -17551,6 +17573,32 @@
           }
         },
         {
+          "description": "If true, returns partial results if there are shard failures. If false, returns an error with no partial results.",
+          "name": "allow_partial_search_results",
+          "required": false,
+          "serverDefault": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "_builtins"
+            }
+          }
+        },
+        {
+          "description": "If true, sequence queries will return partial results in case of shard failures. If false, they will return no results at all.\nThis flag has effect only if allow_partial_search_results is true.",
+          "name": "allow_partial_sequence_results",
+          "required": false,
+          "serverDefault": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "_builtins"
+            }
+          }
+        },
+        {
           "name": "expand_wildcards",
           "required": false,
           "serverDefault": "open",
@@ -17614,7 +17662,7 @@
           }
         }
       ],
-      "specLocation": "eql/search/EqlSearchRequest.ts#L28-L129"
+      "specLocation": "eql/search/EqlSearchRequest.ts#L28-L142"
     },
     {
       "body": {
