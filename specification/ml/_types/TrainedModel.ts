@@ -24,6 +24,7 @@ import {
   Field,
   Id,
   IndexName,
+  Metadata,
   Name,
   VersionString
 } from '@_types/common'
@@ -59,15 +60,16 @@ export class TrainedModelStats {
 }
 
 export class TrainedModelDeploymentStats {
+  adaptive_allocations?: AdaptiveAllocationsSettings
   /** The detailed allocation status for the deployment. */
-  allocation_status: TrainedModelDeploymentAllocationStatus
+  allocation_status?: TrainedModelDeploymentAllocationStatus
   cache_size?: ByteSize
   /** The unique identifier for the trained model deployment. */
   deployment_id: Id
   /** The sum of `error_count` for all nodes in the deployment. */
-  error_count: integer
+  error_count?: integer
   /** The sum of `inference_count` for all nodes in the deployment. */
-  inference_count: integer
+  inference_count?: integer
   /** The unique identifier for the trained model. */
   model_id: Id
   /**
@@ -76,28 +78,38 @@ export class TrainedModelDeploymentStats {
    */
   nodes: TrainedModelDeploymentNodesStats[]
   /** The number of allocations requested. */
-  number_of_allocations: integer
+  number_of_allocations?: integer
+
+  peak_throughput_per_minute: long
+
+  priority: TrainingPriority
   /** The number of inference requests that can be queued before new requests are rejected. */
-  queue_capacity: integer
+  queue_capacity?: integer
   /**
    * The sum of `rejected_execution_count` for all nodes in the deployment.
    * Individual nodes reject an inference request if the inference queue is full.
    * The queue size is controlled by the `queue_capacity` setting in the start
    * trained model deployment API.
    */
-  rejected_execution_count: integer
+  rejected_execution_count?: integer
   /** The reason for the current deployment state. Usually only populated when
    * the model is not deployed to a node.
    */
-  reason: string
+  reason?: string
   /** The epoch timestamp when the deployment started. */
   start_time: EpochTime<UnitMillis>
   /** The overall state of the deployment. */
-  state: DeploymentAssignmentState
+  state?: DeploymentAssignmentState
   /** The number of threads used be each allocation during inference. */
-  threads_per_allocation: integer
+  threads_per_allocation?: integer
   /** The sum of `timeout_count` for all nodes in the deployment. */
-  timeout_count: integer
+  timeout_count?: integer
+}
+
+export class AdaptiveAllocationsSettings {
+  enabled: boolean
+  min_number_of_allocations?: integer
+  max_number_of_allocations?: integer
 }
 
 export class TrainedModelInferenceStats {
@@ -131,34 +143,49 @@ export class TrainedModelSizeStats {
 
 export class TrainedModelDeploymentNodesStats {
   /** The average time for each inference call to complete on this node. */
-  average_inference_time_ms: DurationValue<UnitFloatMillis>
+  average_inference_time_ms?: DurationValue<UnitFloatMillis>
+
+  average_inference_time_ms_last_minute?: DurationValue<UnitFloatMillis>
+
+  /** The average time for each inference call to complete on this node, excluding cache */
+  average_inference_time_ms_excluding_cache_hits?: DurationValue<UnitFloatMillis>
+
   /** The number of errors when evaluating the trained model. */
-  error_count: integer
+  error_count?: integer
   /** The total number of inference calls made against this node for this model. */
-  inference_count: integer
+  inference_count?: long
+
+  inference_cache_hit_count?: long
+
+  inference_cache_hit_count_last_minute?: long
+
   /** The epoch time stamp of the last inference call for the model on this node. */
-  last_access: long
+  last_access?: EpochTime<UnitMillis>
   /**
    * Information pertaining to the node.
    * @availability stack
    */
-  node: DiscoveryNode
+  node?: DiscoveryNode
   /**
    * The number of allocations assigned to this node.
    */
-  number_of_allocations: integer
+  number_of_allocations?: integer
   /** The number of inference requests queued to be processed. */
-  number_of_pending_requests: integer
+  number_of_pending_requests?: integer
+
+  peak_throughput_per_minute: long
   /** The number of inference requests that were not processed because the queue was full. */
-  rejection_execution_count: integer
+  rejection_execution_count?: integer
   /** The current routing state and reason for the current routing state for this allocation. */
   routing_state: TrainedModelAssignmentRoutingTable
   /** The epoch timestamp when the allocation started. */
-  start_time: EpochTime<UnitMillis>
+  start_time?: EpochTime<UnitMillis>
   /** The number of threads used by each allocation during inference. */
-  threads_per_allocation: integer
+  threads_per_allocation?: integer
+
+  throughput_last_minute: integer
   /** The number of inference requests that timed out before being processed. */
-  timeout_count: integer
+  timeout_count?: integer
 }
 
 export class TrainedModelConfig {
@@ -194,6 +221,7 @@ export class TrainedModelConfig {
   /** An object containing metadata about the trained model. For example, models created by data frame analytics contain analysis_config and input objects. */
   metadata?: TrainedModelConfigMetadata
   model_size_bytes?: ByteSize
+  model_package?: ModelPackageConfig
   location?: TrainedModelLocation
   prefix_strings?: TrainedModelPrefixStrings
 }
@@ -211,6 +239,23 @@ export class TrainedModelConfigMetadata {
   hyperparameters?: Hyperparameter[]
   /** An array of the total feature importance for each feature used from the training data set. This array of objects is returned if data frame analytics trained the model and the request includes total_feature_importance in the include request parameter. */
   total_feature_importance?: TotalFeatureImportance[]
+}
+
+export class ModelPackageConfig {
+  create_time?: EpochTime<UnitMillis>
+  description?: string
+  inference_config?: Dictionary<string, UserDefinedValue>
+  metadata?: Metadata
+  minimum_version?: string
+  model_repository?: string
+  model_type?: string
+  packaged_model_id: Id
+  platform_architecture?: string
+  prefix_strings?: TrainedModelPrefixStrings
+  size?: ByteSize
+  sha256?: string
+  tags?: string[]
+  vocabulary_file?: string
 }
 
 export class Hyperparameter {
@@ -313,7 +358,7 @@ export class TrainedModelAssignmentTaskParameters {
   /**
    * The size of the trained model in bytes.
    */
-  model_bytes: integer
+  model_bytes: ByteSize
   /**
    * The unique identifier for the trained model.
    */
@@ -327,12 +372,15 @@ export class TrainedModelAssignmentTaskParameters {
    * @availability stack since=8.4.0
    * @availability serverless
    */
-  cache_size: ByteSize
+  cache_size?: ByteSize
   /**
    * The total number of allocations this model is assigned across ML nodes.
    */
   number_of_allocations: integer
   priority: TrainingPriority
+
+  per_deployment_memory_bytes: ByteSize
+  per_allocation_memory_bytes: ByteSize
 
   /**
    * Number of inference requests are allowed in the queue at a time.
@@ -372,7 +420,7 @@ export class TrainedModelAssignmentRoutingTable {
    * The reason for the current state. It is usually populated only when the
    * `routing_state` is `failed`.
    */
-  reason: string
+  reason?: string
   /**
    * The current routing state.
    */
@@ -397,11 +445,13 @@ export class TrainedModelDeploymentAllocationStatus {
 }
 
 export class TrainedModelAssignment {
+  adaptive_allocations?: AdaptiveAllocationsSettings | null
   /**
    * The overall assignment state.
    */
   assignment_state: DeploymentAssignmentState
   max_assigned_allocations?: integer
+  reason?: string
   /**
    * The allocation state for each node.
    */

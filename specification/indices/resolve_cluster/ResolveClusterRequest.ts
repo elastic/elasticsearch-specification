@@ -21,9 +21,23 @@ import { RequestBase } from '@_types/Base'
 import { ExpandWildcards, Names } from '@_types/common'
 
 /**
- * Resolves the specified index expressions to return information about each cluster, including
- * the local cluster, if included.
+ * Resolve the cluster.
+ * Resolve the specified index expressions to return information about each cluster, including the local cluster, if included.
  * Multiple patterns and remote clusters are supported.
+ *
+ * This endpoint is useful before doing a cross-cluster search in order to determine which remote clusters should be included in a search.
+ *
+ * You use the same index expression with this endpoint as you would for cross-cluster search.
+ * Index and cluster exclusions are also supported with this endpoint.
+ *
+ * For each cluster in the index expression, information is returned about:
+ *
+ * * Whether the querying ("local") cluster is currently connected to each remote cluster in the index expression scope.
+ * * Whether each remote cluster is configured with `skip_unavailable` as `true` or `false`.
+ * * Whether there are any indices, aliases, or data streams on that cluster that match the index expression.
+ * * Whether the search is likely to have errors returned when you do the cross-cluster search (including any authorization errors if you do not have permission to query the index).
+ * * Cluster version information, including the Elasticsearch server version.
+ *
  * @rest_spec_name indices.resolve_cluster
  * @availability stack since=8.13.0 stability=stable
  */

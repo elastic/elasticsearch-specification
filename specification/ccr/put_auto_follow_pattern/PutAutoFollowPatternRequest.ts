@@ -25,9 +25,17 @@ import { integer } from '@_types/Numeric'
 import { Duration } from '@_types/Time'
 
 /**
+ * Create or update auto-follow patterns.
+ * Create a collection of cross-cluster replication auto-follow patterns for a remote cluster.
+ * Newly created indices on the remote cluster that match any of the patterns are automatically configured as follower indices.
+ * Indices on the remote cluster that were created before the auto-follow pattern was created will not be auto-followed even if they match the pattern.
+ *
+ * This API can also be used to update auto-follow patterns.
+ * NOTE: Follower indices that were configured automatically before updating an auto-follow pattern will remain unchanged even if they do not match against the new patterns.
  * @rest_spec_name ccr.put_auto_follow_pattern
  * @availability stack since=6.5.0 stability=stable
  * @doc_id ccr-put-auto-follow-pattern
+ * @ext_doc_id ccr-auto-follow
  */
 export interface Request extends RequestBase {
   path_parts: {

@@ -21,8 +21,13 @@ import { RequestBase } from '@_types/Base'
 import { IndexName } from '@_types/common'
 
 /**
+ * Get deprecation information.
+ * Get information about different cluster, node, and index level settings that use deprecated features that will be removed or changed in the next major version.
+ *
+ * TIP: This APIs is designed for indirect use by the Upgrade Assistant. We strongly recommend you use the Upgrade Assistant.
  * @rest_spec_name migration.deprecations
  * @availability stack since=6.1.0 stability=stable
+ * @cluster_privileges manage
  */
 export interface Request extends RequestBase {
   path_parts: {

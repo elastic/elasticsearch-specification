@@ -22,7 +22,8 @@ import { Metrics, NodeIds } from '@_types/common'
 import { Duration } from '@_types/Time'
 
 /**
- * Returns cluster nodes information.
+ * Get node information.
+ * By default, the API returns all attributes and core settings for cluster nodes.
  * @rest_spec_name nodes.info
  * @availability stack since=1.3.0 stability=stable
  * @availability serverless stability=stable visibility=private

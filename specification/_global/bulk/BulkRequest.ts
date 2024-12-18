@@ -49,6 +49,11 @@ export interface Request<TDocument, TPartialDocument> extends RequestBase {
   }
   query_parameters: {
     /**
+     * If `true`, the response will include the ingest pipelines that were executed for each index or create.
+     * @server_default false
+     */
+    list_executed_pipelines?: boolean
+    /**
      * ID of the pipeline to use to preprocess incoming documents.
      * If the index has a default ingest pipeline specified, then setting the value to `_none` disables the default ingest pipeline for this request.
      * If a final pipeline is configured it will always run, regardless of the value of this parameter.
@@ -92,6 +97,11 @@ export interface Request<TDocument, TPartialDocument> extends RequestBase {
      * @server_default false
      */
     require_alias?: boolean
+    /**
+     * If `true`, the request's actions must target a data stream (existing or to-be-created).
+     * @server_default false
+     */
+    require_data_stream?: boolean
   }
   /**
    * The request body contains a newline-delimited list of `create`, `delete`, `index`, and `update` actions and their associated source data.

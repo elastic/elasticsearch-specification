@@ -1,0 +1,7 @@
+summary: Create or update the mapping of an index.
+# method_request: PUT /my-index-000001/_mapping
+# description: ''
+# type: request
+value:
+  "{\n  \"properties\": {\n    \"email\": {\n      \"type\": \"keyword\"\n  \
+  \  }\n  }\n}"

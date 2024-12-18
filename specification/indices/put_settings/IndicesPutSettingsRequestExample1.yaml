@@ -1,0 +1,5 @@
+summary: Change a dynamic index setting in real time.
+# method_request: PUT /my-index-000001/_settings
+# description: ''
+# type: request
+value: "{\n  \"index\" : {\n    \"number_of_replicas\" : 2\n  }\n}"

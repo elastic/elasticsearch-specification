@@ -29,8 +29,20 @@ import { Duration } from '@_types/Time'
 /**
  * Create or update an index template.
  * Index templates define settings, mappings, and aliases that can be applied automatically to new indices.
+ * Elasticsearch applies templates to new indices based on an index pattern that matches the index name.
+ *
+ * IMPORTANT: This documentation is about legacy index templates, which are deprecated and will be replaced by the composable templates introduced in Elasticsearch 7.8.
+ *
+ * Composable templates always take precedence over legacy templates.
+ * If no composable template matches a new index, matching legacy templates are applied according to their order.
+ *
+ * Index templates are only applied during index creation.
+ * Changes to index templates do not affect existing indices.
+ * Settings and mappings specified in create index API requests override any settings or mappings specified in an index template.
  * @rest_spec_name indices.put_template
  * @availability stack stability=stable
+ * @cluster_privileges manage_index_templates, manage
+ * @ext_doc_id index-templates
  */
 export interface Request extends RequestBase {
   path_parts: {

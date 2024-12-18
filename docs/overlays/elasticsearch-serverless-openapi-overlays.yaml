@@ -23,23 +23,23 @@ actions:
   - target: '$.components'
     description: Add securitySchemes
     update:
-        securitySchemes:
-          apiKeyAuth:
-            description: |
-              Elasticsearch APIs use key-based authentication.
-              You must create an API key and use the encoded value in the request header.
-              For example:
-              
-              
-              ```
-              curl -X GET "${ES_URL}/_cat/indices?v=true" \
-                -H "Authorization: ApiKey ${API_KEY}"
-              ```
-              
-              To get API keys for the Elasticsearch endpoint (${ES_URL}) for a project, refer to [Connect to your Elasticsearch Serverless endpoint](https://www.elastic.co/guide/en/serverless/current/elasticsearch-connecting-to-es-serverless-endpoint.html).
-            in: header
-            name: Authorization
-            type: apiKey
+      securitySchemes:
+        apiKeyAuth:
+          description: |
+            Elasticsearch APIs use key-based authentication.
+            You must create an API key and use the encoded value in the request header.
+            For example:
+            
+            
+            ```
+            curl -X GET "${ES_URL}/_cat/indices?v=true" \
+              -H "Authorization: ApiKey ${API_KEY}"
+            ```
+            
+            To get API keys for the Elasticsearch endpoint (${ES_URL}) for a project, refer to [Connect to your Elasticsearch Serverless endpoint](https://www.elastic.co/guide/en/serverless/current/elasticsearch-connecting-to-es-serverless-endpoint.html).
+          in: header
+          name: Authorization
+          type: apiKey
   - target: '$'
     description: Add document security
     update:

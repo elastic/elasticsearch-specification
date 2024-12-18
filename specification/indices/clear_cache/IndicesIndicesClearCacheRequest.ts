@@ -21,8 +21,9 @@ import { RequestBase } from '@_types/Base'
 import { ExpandWildcards, Fields, Indices } from '@_types/common'
 
 /**
- * Clears the caches of one or more indices.
- * For data streams, the API clears the caches of the stream’s backing indices.
+ * Clear the cache.
+ * Clear the cache of one or more indices.
+ * For data streams, the API clears the caches of the stream's backing indices.
  * @rest_spec_name indices.clear_cache
  * @availability stack stability=stable
  * @availability serverless stability=stable visibility=private

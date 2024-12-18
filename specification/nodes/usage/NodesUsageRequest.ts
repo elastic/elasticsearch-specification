@@ -22,7 +22,7 @@ import { Metrics, NodeIds } from '@_types/common'
 import { Duration } from '@_types/Time'
 
 /**
- * Returns information on the usage of features.
+ * Get feature usage information.
  * @rest_spec_name nodes.usage
  * @availability stack since=6.0.0 stability=stable
  * @availability serverless stability=stable visibility=private

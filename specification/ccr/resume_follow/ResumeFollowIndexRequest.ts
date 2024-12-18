@@ -23,9 +23,15 @@ import { long } from '@_types/Numeric'
 import { Duration } from '@_types/Time'
 
 /**
+ * Resume a follower.
+ * Resume a cross-cluster replication follower index that was paused.
+ * The follower index could have been paused with the pause follower API.
+ * Alternatively it could be paused due to replication that cannot be retried due to failures during following tasks.
+ * When this API returns, the follower index will resume fetching operations from the leader index.
  * @rest_spec_name ccr.resume_follow
  * @availability stack since=6.5.0 stability=stable
  * @doc_id ccr-post-resume-follow
+ * @ext_doc_id ccr
  */
 export interface Request extends RequestBase {
   path_parts: {

@@ -20,6 +20,8 @@
 import { RequestBase } from '@_types/Base'
 
 /**
+ * Get cross-cluster replication stats.
+ * This API returns stats about auto-following and the same shard-level stats as the get follower stats API.
  * @rest_spec_name ccr.stats
  * @availability stack since=6.5.0 stability=stable
  * @doc_id ccr-get-stats
