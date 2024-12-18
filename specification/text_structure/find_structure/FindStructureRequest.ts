@@ -22,9 +22,27 @@ import { uint } from '@_types/Numeric'
 import { Duration } from '@_types/Time'
 
 /**
+ * Find the structure of a text file.
+ * The text file must contain data that is suitable to be ingested into Elasticsearch.
+ *
+ * This API provides a starting point for ingesting data into Elasticsearch in a format that is suitable for subsequent use with other Elastic Stack functionality.
+ * Unlike other Elasticsearch endpoints, the data that is posted to this endpoint does not need to be UTF-8 encoded and in JSON format.
+ * It must, however, be text; binary text formats are not currently supported.
+ * The size is limited to the Elasticsearch HTTP receive buffer size, which defaults to 100 Mb.
+ *
+ * The response from the API contains:
+ *
+ * * A couple of messages from the beginning of the text.
+ * * Statistics that reveal the most common values for all fields detected within the text and basic numeric statistics for numeric fields.
+ * * Information about the structure of the text, which is useful when you write ingest configurations to index it or similarly formatted text.
+ * * Appropriate mappings for an Elasticsearch index, which you could use to ingest the text.
+ *
+ * All this information can be calculated by the structure finder with no guidance.
+ * However, you can optionally override some of the decisions about the text structure by specifying one or more query parameters.
  * @rest_spec_name text_structure.find_structure
  * @availability stack since=7.13.0 stability=stable
  * @availability serverless stability=stable visibility=private
+ * @cluster_privileges monitor_text_structure
  */
 export interface Request<TJsonDocument> {
   query_parameters: {
@@ -38,6 +56,7 @@ export interface Request<TJsonDocument> {
     ecs_compatibility?: string
     /**
      * If this parameter is set to true, the response includes a field named explanation, which is an array of strings that indicate how the structure finder produced its result.
+     * If the structure finder produces unexpected results for some text, use this query parameter to help you determine why the returned structure was chosen.
      * @server_default false
      */
     explain?: boolean
