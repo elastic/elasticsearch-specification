@@ -35757,7 +35757,8 @@
         "tags": [
           "watcher"
         ],
-        "summary": "Acknowledges a watch, manually throttling the execution of the watch's actions",
+        "summary": "Acknowledge a watch",
+        "description": "Acknowledging a watch enables you to manually throttle the execution of the watch's actions.\n\nThe acknowledgement state of an action is stored in the `status.actions.<id>.ack.state` structure.\n\nIMPORTANT: If the specified watch is currently being executed, this API will return an error\nThe reason for this behavior is to prevent overwriting the watch status from a watch execution.",
         "operationId": "watcher-ack-watch",
         "parameters": [
           {
@@ -35774,7 +35775,8 @@
         "tags": [
           "watcher"
         ],
-        "summary": "Acknowledges a watch, manually throttling the execution of the watch's actions",
+        "summary": "Acknowledge a watch",
+        "description": "Acknowledging a watch enables you to manually throttle the execution of the watch's actions.\n\nThe acknowledgement state of an action is stored in the `status.actions.<id>.ack.state` structure.\n\nIMPORTANT: If the specified watch is currently being executed, this API will return an error\nThe reason for this behavior is to prevent overwriting the watch status from a watch execution.",
         "operationId": "watcher-ack-watch-1",
         "parameters": [
           {
@@ -35793,7 +35795,8 @@
         "tags": [
           "watcher"
         ],
-        "summary": "Acknowledges a watch, manually throttling the execution of the watch's actions",
+        "summary": "Acknowledge a watch",
+        "description": "Acknowledging a watch enables you to manually throttle the execution of the watch's actions.\n\nThe acknowledgement state of an action is stored in the `status.actions.<id>.ack.state` structure.\n\nIMPORTANT: If the specified watch is currently being executed, this API will return an error\nThe reason for this behavior is to prevent overwriting the watch status from a watch execution.",
         "operationId": "watcher-ack-watch-2",
         "parameters": [
           {
@@ -35813,7 +35816,8 @@
         "tags": [
           "watcher"
         ],
-        "summary": "Acknowledges a watch, manually throttling the execution of the watch's actions",
+        "summary": "Acknowledge a watch",
+        "description": "Acknowledging a watch enables you to manually throttle the execution of the watch's actions.\n\nThe acknowledgement state of an action is stored in the `status.actions.<id>.ack.state` structure.\n\nIMPORTANT: If the specified watch is currently being executed, this API will return an error\nThe reason for this behavior is to prevent overwriting the watch status from a watch execution.",
         "operationId": "watcher-ack-watch-3",
         "parameters": [
           {
@@ -35835,7 +35839,11 @@
         "tags": [
           "watcher"
         ],
-        "summary": "Activates a currently inactive watch",
+        "summary": "Activate a watch",
+        "description": "A watch can be either active or inactive.",
+        "externalDocs": {
+          "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/how-watcher-works.html"
+        },
         "operationId": "watcher-activate-watch",
         "parameters": [
           {
@@ -35852,7 +35860,11 @@
         "tags": [
           "watcher"
         ],
-        "summary": "Activates a currently inactive watch",
+        "summary": "Activate a watch",
+        "description": "A watch can be either active or inactive.",
+        "externalDocs": {
+          "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/how-watcher-works.html"
+        },
         "operationId": "watcher-activate-watch-1",
         "parameters": [
           {
@@ -35871,7 +35883,11 @@
         "tags": [
           "watcher"
         ],
-        "summary": "Deactivates a currently active watch",
+        "summary": "Deactivate a watch",
+        "description": "A watch can be either active or inactive.",
+        "externalDocs": {
+          "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/how-watcher-works.html"
+        },
         "operationId": "watcher-deactivate-watch",
         "parameters": [
           {
@@ -35888,7 +35904,11 @@
         "tags": [
           "watcher"
         ],
-        "summary": "Deactivates a currently active watch",
+        "summary": "Deactivate a watch",
+        "description": "A watch can be either active or inactive.",
+        "externalDocs": {
+          "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/how-watcher-works.html"
+        },
         "operationId": "watcher-deactivate-watch-1",
         "parameters": [
           {
@@ -35907,7 +35927,7 @@
         "tags": [
           "watcher"
         ],
-        "summary": "Retrieves a watch by its ID",
+        "summary": "Get a watch",
         "operationId": "watcher-get-watch",
         "parameters": [
           {
@@ -35967,7 +35987,8 @@
         "tags": [
           "watcher"
         ],
-        "summary": "Creates a new watch, or updates an existing one",
+        "summary": "Create or update a watch",
+        "description": "When a watch is registered, a new document that represents the watch is added to the `.watches` index and its trigger is immediately registered with the relevant trigger engine.\nTypically for the `schedule` trigger, the scheduler is the trigger engine.\n\nIMPORTANT: You must use Kibana or this API to create a watch.\nDo not add a watch directly to the `.watches` index by using the Elasticsearch index API.\nIf Elasticsearch security features are enabled, do not give users write privileges on the `.watches` index.\n\nWhen you add a watch you can also define its initial active state by setting the *active* parameter.\n\nWhen Elasticsearch security features are enabled, your watch can index or search only on indices for which the user that stored the watch has privileges.\nIf the user is able to read index `a`, but not index `b`, the same will apply when the watch runs.",
         "operationId": "watcher-put-watch",
         "parameters": [
           {
@@ -35999,7 +36020,8 @@
         "tags": [
           "watcher"
         ],
-        "summary": "Creates a new watch, or updates an existing one",
+        "summary": "Create or update a watch",
+        "description": "When a watch is registered, a new document that represents the watch is added to the `.watches` index and its trigger is immediately registered with the relevant trigger engine.\nTypically for the `schedule` trigger, the scheduler is the trigger engine.\n\nIMPORTANT: You must use Kibana or this API to create a watch.\nDo not add a watch directly to the `.watches` index by using the Elasticsearch index API.\nIf Elasticsearch security features are enabled, do not give users write privileges on the `.watches` index.\n\nWhen you add a watch you can also define its initial active state by setting the *active* parameter.\n\nWhen Elasticsearch security features are enabled, your watch can index or search only on indices for which the user that stored the watch has privileges.\nIf the user is able to read index `a`, but not index `b`, the same will apply when the watch runs.",
         "operationId": "watcher-put-watch-1",
         "parameters": [
           {
@@ -36031,7 +36053,8 @@
         "tags": [
           "watcher"
         ],
-        "summary": "Removes a watch from Watcher",
+        "summary": "Delete a watch",
+        "description": "When the watch is removed, the document representing the watch in the `.watches` index is gone and it will never be run again.\n\nDeleting a watch does not delete any watch execution records related to this watch from the watch history.\n\nIMPORTANT: Deleting a watch must be done by using only this API.\nDo not delete the watch directly from the `.watches` index using the Elasticsearch delete document API\nWhen Elasticsearch security features are enabled, make sure no write privileges are granted to anyone for the `.watches` index.",
         "operationId": "watcher-delete-watch",
         "parameters": [
           {
@@ -36081,8 +36104,8 @@
         "tags": [
           "watcher"
         ],
-        "summary": "This API can be used to force execution of the watch outside of its triggering logic or to simulate the watch execution for debugging purposes",
-        "description": "For testing and debugging purposes, you also have fine-grained control on how the watch runs. You can execute the watch without executing all of its actions or alternatively by simulating them. You can also force execution by ignoring the watch condition and control whether a watch record would be written to the watch history after execution.",
+        "summary": "Run a watch",
+        "description": "This API can be used to force execution of the watch outside of its triggering logic or to simulate the watch execution for debugging purposes.\n\nFor testing and debugging purposes, you also have fine-grained control on how the watch runs.\nYou can run the watch without running all of its actions or alternatively by simulating them.\nYou can also force execution by ignoring the watch condition and control whether a watch record would be written to the watch history after it runs.\n\nYou can use the run watch API to run watches that are not yet registered by specifying the watch definition inline.\nThis serves as great tool for testing and debugging your watches prior to adding them to Watcher.",
         "operationId": "watcher-execute-watch",
         "parameters": [
           {
@@ -36105,8 +36128,8 @@
         "tags": [
           "watcher"
         ],
-        "summary": "This API can be used to force execution of the watch outside of its triggering logic or to simulate the watch execution for debugging purposes",
-        "description": "For testing and debugging purposes, you also have fine-grained control on how the watch runs. You can execute the watch without executing all of its actions or alternatively by simulating them. You can also force execution by ignoring the watch condition and control whether a watch record would be written to the watch history after execution.",
+        "summary": "Run a watch",
+        "description": "This API can be used to force execution of the watch outside of its triggering logic or to simulate the watch execution for debugging purposes.\n\nFor testing and debugging purposes, you also have fine-grained control on how the watch runs.\nYou can run the watch without running all of its actions or alternatively by simulating them.\nYou can also force execution by ignoring the watch condition and control whether a watch record would be written to the watch history after it runs.\n\nYou can use the run watch API to run watches that are not yet registered by specifying the watch definition inline.\nThis serves as great tool for testing and debugging your watches prior to adding them to Watcher.",
         "operationId": "watcher-execute-watch-1",
         "parameters": [
           {
@@ -36131,8 +36154,8 @@
         "tags": [
           "watcher"
         ],
-        "summary": "This API can be used to force execution of the watch outside of its triggering logic or to simulate the watch execution for debugging purposes",
-        "description": "For testing and debugging purposes, you also have fine-grained control on how the watch runs. You can execute the watch without executing all of its actions or alternatively by simulating them. You can also force execution by ignoring the watch condition and control whether a watch record would be written to the watch history after execution.",
+        "summary": "Run a watch",
+        "description": "This API can be used to force execution of the watch outside of its triggering logic or to simulate the watch execution for debugging purposes.\n\nFor testing and debugging purposes, you also have fine-grained control on how the watch runs.\nYou can run the watch without running all of its actions or alternatively by simulating them.\nYou can also force execution by ignoring the watch condition and control whether a watch record would be written to the watch history after it runs.\n\nYou can use the run watch API to run watches that are not yet registered by specifying the watch definition inline.\nThis serves as great tool for testing and debugging your watches prior to adding them to Watcher.",
         "operationId": "watcher-execute-watch-2",
         "parameters": [
           {
@@ -36152,8 +36175,8 @@
         "tags": [
           "watcher"
         ],
-        "summary": "This API can be used to force execution of the watch outside of its triggering logic or to simulate the watch execution for debugging purposes",
-        "description": "For testing and debugging purposes, you also have fine-grained control on how the watch runs. You can execute the watch without executing all of its actions or alternatively by simulating them. You can also force execution by ignoring the watch condition and control whether a watch record would be written to the watch history after execution.",
+        "summary": "Run a watch",
+        "description": "This API can be used to force execution of the watch outside of its triggering logic or to simulate the watch execution for debugging purposes.\n\nFor testing and debugging purposes, you also have fine-grained control on how the watch runs.\nYou can run the watch without running all of its actions or alternatively by simulating them.\nYou can also force execution by ignoring the watch condition and control whether a watch record would be written to the watch history after it runs.\n\nYou can use the run watch API to run watches that are not yet registered by specifying the watch definition inline.\nThis serves as great tool for testing and debugging your watches prior to adding them to Watcher.",
         "operationId": "watcher-execute-watch-3",
         "parameters": [
           {
@@ -36175,7 +36198,8 @@
         "tags": [
           "watcher"
         ],
-        "summary": "Retrieves stored watches",
+        "summary": "Query watches",
+        "description": "Get all registered watches in a paginated manner and optionally filter watches by a query.",
         "operationId": "watcher-query-watches",
         "requestBody": {
           "$ref": "#/components/requestBodies/watcher.query_watches"
@@ -36191,7 +36215,8 @@
         "tags": [
           "watcher"
         ],
-        "summary": "Retrieves stored watches",
+        "summary": "Query watches",
+        "description": "Get all registered watches in a paginated manner and optionally filter watches by a query.",
         "operationId": "watcher-query-watches-1",
         "requestBody": {
           "$ref": "#/components/requestBodies/watcher.query_watches"
@@ -36209,7 +36234,8 @@
         "tags": [
           "watcher"
         ],
-        "summary": "Starts Watcher if it is not already running",
+        "summary": "Start the watch service",
+        "description": "Start the Watcher service if it is not already running.",
         "operationId": "watcher-start",
         "responses": {
           "200": {
@@ -36230,7 +36256,7 @@
         "tags": [
           "watcher"
         ],
-        "summary": "Retrieves the current Watcher metrics",
+        "summary": "Get Watcher statistics",
         "operationId": "watcher-stats",
         "parameters": [
           {
@@ -36253,7 +36279,7 @@
         "tags": [
           "watcher"
         ],
-        "summary": "Retrieves the current Watcher metrics",
+        "summary": "Get Watcher statistics",
         "operationId": "watcher-stats-1",
         "parameters": [
           {
@@ -36279,7 +36305,8 @@
         "tags": [
           "watcher"
         ],
-        "summary": "Stops Watcher if it is running",
+        "summary": "Stop the watch service",
+        "description": "Stop the Watcher service if it is running.",
         "operationId": "watcher-stop",
         "responses": {
           "200": {
