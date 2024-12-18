@@ -12856,7 +12856,13 @@ export interface IngestCsvProcessor extends IngestProcessorBase {
 
 export interface IngestDatabaseConfiguration {
   name: Name
-  maxmind: IngestMaxmind
+  maxmind?: IngestMaxmind
+  ipinfo?: IngestIpinfo
+}
+
+export interface IngestDatabaseConfigurationFull extends IngestDatabaseConfiguration {
+  web?: IngestWeb
+  local?: IngestLocal
 }
 
 export interface IngestDateIndexNameProcessor extends IngestProcessorBase {
@@ -13008,6 +13014,10 @@ export interface IngestIpLocationProcessor extends IngestProcessorBase {
   download_database_on_pipeline_creation?: boolean
 }
 
+export interface IngestIpinfo {
+  [key: string]: never
+}
+
 export interface IngestJoinProcessor extends IngestProcessorBase {
   field: Field
   separator: string
@@ -13036,6 +13046,10 @@ export interface IngestKeyValueProcessor extends IngestProcessorBase {
   trim_key?: string
   trim_value?: string
   value_split: string
+}
+
+export interface IngestLocal {
+  type: string
 }
 
 export interface IngestLowercaseProcessor extends IngestProcessorBase {
@@ -13245,6 +13259,10 @@ export interface IngestUserAgentProcessor extends IngestProcessorBase {
 
 export type IngestUserAgentProperty = 'name' | 'os' | 'device' | 'original' | 'version'
 
+export interface IngestWeb {
+  [key: string]: never
+}
+
 export interface IngestDeleteGeoipDatabaseRequest extends RequestBase {
   id: Ids
   master_timeout?: Duration
@@ -13252,6 +13270,14 @@ export interface IngestDeleteGeoipDatabaseRequest extends RequestBase {
 }
 
 export type IngestDeleteGeoipDatabaseResponse = AcknowledgedResponseBase
+
+export interface IngestDeleteIpLocationDatabaseRequest extends RequestBase {
+  id: Ids
+  master_timeout?: Duration
+  timeout?: Duration
+}
+
+export type IngestDeleteIpLocationDatabaseResponse = AcknowledgedResponseBase
 
 export interface IngestDeletePipelineRequest extends RequestBase {
   id: Id
@@ -13303,6 +13329,23 @@ export interface IngestGetGeoipDatabaseResponse {
   databases: IngestGetGeoipDatabaseDatabaseConfigurationMetadata[]
 }
 
+export interface IngestGetIpLocationDatabaseDatabaseConfigurationMetadata {
+  id: Id
+  version: VersionNumber
+  modified_date_millis?: EpochTime<UnitMillis>
+  modified_date?: EpochTime<UnitMillis>
+  database: IngestDatabaseConfigurationFull
+}
+
+export interface IngestGetIpLocationDatabaseRequest extends RequestBase {
+  id?: Ids
+  master_timeout?: Duration
+}
+
+export interface IngestGetIpLocationDatabaseResponse {
+  databases: IngestGetIpLocationDatabaseDatabaseConfigurationMetadata[]
+}
+
 export interface IngestGetPipelineRequest extends RequestBase {
   id?: Id
   master_timeout?: Duration
@@ -13329,6 +13372,15 @@ export interface IngestPutGeoipDatabaseRequest extends RequestBase {
 }
 
 export type IngestPutGeoipDatabaseResponse = AcknowledgedResponseBase
+
+export interface IngestPutIpLocationDatabaseRequest extends RequestBase {
+  id: Id
+  master_timeout?: Duration
+  timeout?: Duration
+  body?: IngestDatabaseConfiguration
+}
+
+export type IngestPutIpLocationDatabaseResponse = AcknowledgedResponseBase
 
 export interface IngestPutPipelineRequest extends RequestBase {
   id: Id
