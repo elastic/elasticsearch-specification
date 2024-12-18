@@ -19,6 +19,7 @@
 
 import { CatRequestBase } from '@cat/_types/CatBase'
 import { Bytes, Indices } from '@_types/common'
+import { TimeUnit } from '@_types/Time'
 
 /**
  * Returns information about ongoing and completed shard recoveries.
@@ -55,5 +56,9 @@ export interface Request extends CatRequestBase {
      * @server_default false
      */
     detailed?: boolean
+    /**
+     * Unit used to display time values.
+     */
+    time?: TimeUnit
   }
 }

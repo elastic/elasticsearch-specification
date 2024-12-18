@@ -18,6 +18,7 @@
  */
 
 import { CatRequestBase } from '@cat/_types/CatBase'
+import { Duration } from '@_types/Time'
 
 /**
  * Returns information about the master node, including the ID, bound IP address, and name.
@@ -38,5 +39,10 @@ export interface Request extends CatRequestBase {
      * @server_default false
      */
     local?: boolean
+    /**
+     * Period to wait for a connection to the master node.
+     * @server_default 30s
+     */
+    master_timeout?: Duration
   }
 }

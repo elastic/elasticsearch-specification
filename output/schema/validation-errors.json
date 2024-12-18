@@ -51,6 +51,7 @@
     },
     "cat.aliases": {
       "request": [
+        "Request: query parameter 'master_timeout' does not exist in the json spec",
         "Request: missing json spec query parameter 'format'",
         "Request: missing json spec query parameter 'h'",
         "Request: missing json spec query parameter 'help'",
@@ -63,7 +64,6 @@
     "cat.allocation": {
       "request": [
         "Request: missing json spec query parameter 'format'",
-        "Request: missing json spec query parameter 'master_timeout'",
         "Request: missing json spec query parameter 'h'",
         "Request: missing json spec query parameter 'help'",
         "Request: missing json spec query parameter 's'",
@@ -75,7 +75,6 @@
     "cat.component_templates": {
       "request": [
         "Request: missing json spec query parameter 'format'",
-        "Request: missing json spec query parameter 'master_timeout'",
         "Request: missing json spec query parameter 'h'",
         "Request: missing json spec query parameter 'help'",
         "Request: missing json spec query parameter 's'",
@@ -120,15 +119,13 @@
     "cat.help": {
       "request": [
         "Request: missing json spec query parameter 'help'",
-        "Request: missing json spec query parameter 's'",
-        "request definition cat.help:Request / body - A request with inherited properties must have a PropertyBody"
+        "Request: missing json spec query parameter 's'"
       ],
       "response": []
     },
     "cat.indices": {
       "request": [
         "Request: missing json spec query parameter 'format'",
-        "Request: missing json spec query parameter 'master_timeout'",
         "Request: missing json spec query parameter 'h'",
         "Request: missing json spec query parameter 'help'",
         "Request: missing json spec query parameter 's'",
@@ -140,7 +137,6 @@
     "cat.master": {
       "request": [
         "Request: missing json spec query parameter 'format'",
-        "Request: missing json spec query parameter 'master_timeout'",
         "Request: missing json spec query parameter 'h'",
         "Request: missing json spec query parameter 'help'",
         "Request: missing json spec query parameter 's'",
@@ -186,7 +182,6 @@
       "request": [
         "Request: missing json spec query parameter 'format'",
         "Request: missing json spec query parameter 'help'",
-        "Request: missing json spec query parameter 'time'",
         "Request: missing json spec query parameter 'v'",
         "request definition cat.ml_trained_models:Request / query - Property 'h' is already defined in an ancestor class",
         "request definition cat.ml_trained_models:Request / query - Property 's' is already defined in an ancestor class",
@@ -197,7 +192,6 @@
     "cat.nodeattrs": {
       "request": [
         "Request: missing json spec query parameter 'format'",
-        "Request: missing json spec query parameter 'master_timeout'",
         "Request: missing json spec query parameter 'h'",
         "Request: missing json spec query parameter 'help'",
         "Request: missing json spec query parameter 's'",
@@ -209,11 +203,9 @@
     "cat.nodes": {
       "request": [
         "Request: missing json spec query parameter 'format'",
-        "Request: missing json spec query parameter 'master_timeout'",
         "Request: missing json spec query parameter 'h'",
         "Request: missing json spec query parameter 'help'",
         "Request: missing json spec query parameter 's'",
-        "Request: missing json spec query parameter 'time'",
         "Request: missing json spec query parameter 'v'",
         "request definition cat.nodes:Request / body - A request with inherited properties must have a PropertyBody"
       ],
@@ -222,11 +214,9 @@
     "cat.pending_tasks": {
       "request": [
         "Request: missing json spec query parameter 'format'",
-        "Request: missing json spec query parameter 'master_timeout'",
         "Request: missing json spec query parameter 'h'",
         "Request: missing json spec query parameter 'help'",
         "Request: missing json spec query parameter 's'",
-        "Request: missing json spec query parameter 'time'",
         "Request: missing json spec query parameter 'v'",
         "request definition cat.pending_tasks:Request / body - A request with inherited properties must have a PropertyBody"
       ],
@@ -235,10 +225,8 @@
     "cat.plugins": {
       "request": [
         "Request: missing json spec query parameter 'format'",
-        "Request: missing json spec query parameter 'master_timeout'",
         "Request: missing json spec query parameter 'h'",
         "Request: missing json spec query parameter 'help'",
-        "Request: missing json spec query parameter 'include_bootstrap'",
         "Request: missing json spec query parameter 's'",
         "Request: missing json spec query parameter 'v'",
         "request definition cat.plugins:Request / body - A request with inherited properties must have a PropertyBody"
@@ -252,7 +240,6 @@
         "Request: missing json spec query parameter 'help'",
         "Request: missing json spec query parameter 'index'",
         "Request: missing json spec query parameter 's'",
-        "Request: missing json spec query parameter 'time'",
         "Request: missing json spec query parameter 'v'",
         "request definition cat.recovery:Request / body - A request with inherited properties must have a PropertyBody"
       ],
@@ -261,8 +248,6 @@
     "cat.repositories": {
       "request": [
         "Request: missing json spec query parameter 'format'",
-        "Request: missing json spec query parameter 'local'",
-        "Request: missing json spec query parameter 'master_timeout'",
         "Request: missing json spec query parameter 'h'",
         "Request: missing json spec query parameter 'help'",
         "Request: missing json spec query parameter 's'",
@@ -274,6 +259,7 @@
     "cat.segments": {
       "request": [
         "Request: query parameter 'local' does not exist in the json spec",
+        "Request: query parameter 'master_timeout' does not exist in the json spec",
         "Request: missing json spec query parameter 'format'",
         "Request: missing json spec query parameter 'h'",
         "Request: missing json spec query parameter 'help'",
@@ -286,11 +272,9 @@
     "cat.shards": {
       "request": [
         "Request: missing json spec query parameter 'format'",
-        "Request: missing json spec query parameter 'master_timeout'",
         "Request: missing json spec query parameter 'h'",
         "Request: missing json spec query parameter 'help'",
         "Request: missing json spec query parameter 's'",
-        "Request: missing json spec query parameter 'time'",
         "Request: missing json spec query parameter 'v'",
         "request definition cat.shards:Request / body - A request with inherited properties must have a PropertyBody"
       ],
@@ -299,11 +283,9 @@
     "cat.snapshots": {
       "request": [
         "Request: missing json spec query parameter 'format'",
-        "Request: missing json spec query parameter 'master_timeout'",
         "Request: missing json spec query parameter 'h'",
         "Request: missing json spec query parameter 'help'",
         "Request: missing json spec query parameter 's'",
-        "Request: missing json spec query parameter 'time'",
         "Request: missing json spec query parameter 'v'",
         "request definition cat.snapshots:Request / body - A request with inherited properties must have a PropertyBody"
       ],
@@ -311,13 +293,12 @@
     },
     "cat.tasks": {
       "request": [
-        "Request: query parameter 'node_id' does not exist in the json spec",
+        "Request: query parameter 'timeout' does not exist in the json spec",
+        "Request: query parameter 'wait_for_completion' does not exist in the json spec",
         "Request: missing json spec query parameter 'format'",
-        "Request: missing json spec query parameter 'nodes'",
         "Request: missing json spec query parameter 'h'",
         "Request: missing json spec query parameter 'help'",
         "Request: missing json spec query parameter 's'",
-        "Request: missing json spec query parameter 'time'",
         "Request: missing json spec query parameter 'v'",
         "request definition cat.tasks:Request / body - A request with inherited properties must have a PropertyBody"
       ],
@@ -326,7 +307,6 @@
     "cat.templates": {
       "request": [
         "Request: missing json spec query parameter 'format'",
-        "Request: missing json spec query parameter 'master_timeout'",
         "Request: missing json spec query parameter 'h'",
         "Request: missing json spec query parameter 'help'",
         "Request: missing json spec query parameter 's'",
@@ -338,7 +318,6 @@
     "cat.thread_pool": {
       "request": [
         "Request: missing json spec query parameter 'format'",
-        "Request: missing json spec query parameter 'master_timeout'",
         "Request: missing json spec query parameter 'h'",
         "Request: missing json spec query parameter 'help'",
         "Request: missing json spec query parameter 's'",

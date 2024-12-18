@@ -19,6 +19,7 @@
 
 import { CatRequestBase } from '@cat/_types/CatBase'
 import { Bytes, NodeIds } from '@_types/common'
+import { Duration } from '@_types/Time'
 
 /**
  * Provides a snapshot of the number of shards allocated to each data node and their disk space.
@@ -45,5 +46,10 @@ export interface Request extends CatRequestBase {
      * @server_default false
      */
     local?: boolean
+    /**
+     * Period to wait for a connection to the master node.
+     * @server_default 30s
+     */
+    master_timeout?: Duration
   }
 }
