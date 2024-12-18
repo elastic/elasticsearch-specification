@@ -690,6 +690,9 @@
         "operationId": "bulk-1",
         "parameters": [
           {
+            "$ref": "#/components/parameters/bulk#list_executed_pipelines"
+          },
+          {
             "$ref": "#/components/parameters/bulk#pipeline"
           },
           {
@@ -715,6 +718,9 @@
           },
           {
             "$ref": "#/components/parameters/bulk#require_alias"
+          },
+          {
+            "$ref": "#/components/parameters/bulk#require_data_stream"
           }
         ],
         "requestBody": {
@@ -735,6 +741,9 @@
         "operationId": "bulk",
         "parameters": [
           {
+            "$ref": "#/components/parameters/bulk#list_executed_pipelines"
+          },
+          {
             "$ref": "#/components/parameters/bulk#pipeline"
           },
           {
@@ -760,6 +769,9 @@
           },
           {
             "$ref": "#/components/parameters/bulk#require_alias"
+          },
+          {
+            "$ref": "#/components/parameters/bulk#require_data_stream"
           }
         ],
         "requestBody": {
@@ -785,6 +797,9 @@
             "$ref": "#/components/parameters/bulk#index"
           },
           {
+            "$ref": "#/components/parameters/bulk#list_executed_pipelines"
+          },
+          {
             "$ref": "#/components/parameters/bulk#pipeline"
           },
           {
@@ -810,6 +825,9 @@
           },
           {
             "$ref": "#/components/parameters/bulk#require_alias"
+          },
+          {
+            "$ref": "#/components/parameters/bulk#require_data_stream"
           }
         ],
         "requestBody": {
@@ -833,6 +851,9 @@
             "$ref": "#/components/parameters/bulk#index"
           },
           {
+            "$ref": "#/components/parameters/bulk#list_executed_pipelines"
+          },
+          {
             "$ref": "#/components/parameters/bulk#pipeline"
           },
           {
@@ -858,6 +879,9 @@
           },
           {
             "$ref": "#/components/parameters/bulk#require_alias"
+          },
+          {
+            "$ref": "#/components/parameters/bulk#require_data_stream"
           }
         ],
         "requestBody": {
@@ -25155,7 +25179,7 @@
           "rollup"
         ],
         "summary": "Create a rollup job",
-        "description": "WARNING: From 8.15.0, calling this API in a cluster with no rollup usage will fail with a message about the deprecation and planned removal of rollup features. A cluster either needs to contain a rollup job or a rollup index in order for this API to be allowed to run.\n\nThe rollup job configuration contains all the details about how the job should run, when it indexes documents, and what future queries will be able to run against the rollup index.\n\nThere are three main sections to the job configuration: the logistical details about the job (for example, the cron schedule), the fields that are used for grouping, and what metrics to collect for each group.\n\nJobs are created in a `STOPPED` state. You can start them with the start rollup jobs API.",
+        "description": "WARNING: From 8.15.0, calling this API in a cluster with no rollup usage will fail with a message about the deprecation and planned removal of rollup features. A cluster needs to contain either a rollup job or a rollup index in order for this API to be allowed to run.\n\nThe rollup job configuration contains all the details about how the job should run, when it indexes documents, and what future queries will be able to run against the rollup index.\n\nThere are three main sections to the job configuration: the logistical details about the job (for example, the cron schedule), the fields that are used for grouping, and what metrics to collect for each group.\n\nJobs are created in a `STOPPED` state. You can start them with the start rollup jobs API.",
         "operationId": "rollup-put-job",
         "parameters": [
           {
@@ -25239,7 +25263,7 @@
           "rollup"
         ],
         "summary": "Delete a rollup job",
-        "description": "A job must be stopped first before it can be deleted.\nIf you attempt to delete a started job, an error occurs.\nSimilarly, if you attempt to delete a nonexistent job, an exception occurs.\n\nIMPORTANT: When you delete a job, you remove only the process that is actively monitoring and rolling up data.\nThe API does not delete any previously rolled up data.\nThis is by design; a user may wish to roll up a static data set.\nBecause the data set is static, after it has been fully rolled up there is no need to keep the indexing rollup job around (as there will be no new data).\nThus the job can be deleted, leaving behind the rolled up data for analysis.\nIf you wish to also remove the rollup data and the rollup index contains the data for only a single job, you can delete the whole rollup index.\nIf the rollup index stores data from several jobs, you must issue a delete-by-query that targets the rollup job's identifier in the rollup index. For example:\n\n```\nPOST my_rollup_index/_delete_by_query\n{\n  \"query\": {\n    \"term\": {\n      \"_rollup.id\": \"the_rollup_job_id\"\n    }\n  }\n}\n```",
+        "description": "A job must be stopped before it can be deleted.\nIf you attempt to delete a started job, an error occurs.\nSimilarly, if you attempt to delete a nonexistent job, an exception occurs.\n\nIMPORTANT: When you delete a job, you remove only the process that is actively monitoring and rolling up data.\nThe API does not delete any previously rolled up data.\nThis is by design; a user may wish to roll up a static data set.\nBecause the data set is static, after it has been fully rolled up there is no need to keep the indexing rollup job around (as there will be no new data).\nThus the job can be deleted, leaving behind the rolled up data for analysis.\nIf you wish to also remove the rollup data and the rollup index contains the data for only a single job, you can delete the whole rollup index.\nIf the rollup index stores data from several jobs, you must issue a delete-by-query that targets the rollup job's identifier in the rollup index. For example:\n\n```\nPOST my_rollup_index/_delete_by_query\n{\n  \"query\": {\n    \"term\": {\n      \"_rollup.id\": \"the_rollup_job_id\"\n    }\n  }\n}\n```",
         "operationId": "rollup-delete-job",
         "parameters": [
           {
@@ -33246,7 +33270,8 @@
         "tags": [
           "tasks"
         ],
-        "summary": "Cancels a task, if it can be cancelled through an API",
+        "summary": "Cancel a task",
+        "description": "A task may continue to run for some time after it has been cancelled because it may not be able to safely stop its current activity straight away.\nIt is also possible that Elasticsearch must complete its work on other tasks before it can process the cancellation.\nThe get task information API will continue to list these cancelled tasks until they complete.\nThe cancelled flag in the response indicates that the cancellation command has been processed and the task will stop as soon as possible.\n\nTo troubleshoot why a cancelled task does not complete promptly, use the get task information API with the `?detailed` parameter to identify the other tasks the system is running.\nYou can also use the node hot threads API to obtain detailed information about the work the system is doing instead of completing the cancelled task.",
         "operationId": "tasks-cancel",
         "parameters": [
           {
@@ -33275,7 +33300,8 @@
         "tags": [
           "tasks"
         ],
-        "summary": "Cancels a task, if it can be cancelled through an API",
+        "summary": "Cancel a task",
+        "description": "A task may continue to run for some time after it has been cancelled because it may not be able to safely stop its current activity straight away.\nIt is also possible that Elasticsearch must complete its work on other tasks before it can process the cancellation.\nThe get task information API will continue to list these cancelled tasks until they complete.\nThe cancelled flag in the response indicates that the cancellation command has been processed and the task will stop as soon as possible.\n\nTo troubleshoot why a cancelled task does not complete promptly, use the get task information API with the `?detailed` parameter to identify the other tasks the system is running.\nYou can also use the node hot threads API to obtain detailed information about the work the system is doing instead of completing the cancelled task.",
         "operationId": "tasks-cancel-1",
         "parameters": [
           {
@@ -33308,7 +33334,7 @@
           "tasks"
         ],
         "summary": "Get task information",
-        "description": "Returns information about the tasks currently executing in the cluster.",
+        "description": "Get information about a task currently running in the cluster.",
         "operationId": "tasks-get",
         "parameters": [
           {
@@ -33381,7 +33407,8 @@
         "tags": [
           "tasks"
         ],
-        "summary": "The task management API returns information about tasks currently executing on one or more nodes in the cluster",
+        "summary": "Get all tasks",
+        "description": "Get information about the tasks currently running on one or more nodes in the cluster.",
         "operationId": "tasks-list",
         "parameters": [
           {
@@ -33407,7 +33434,7 @@
           {
             "in": "query",
             "name": "detailed",
-            "description": "If `true`, the response includes detailed information about shard recoveries.",
+            "description": "If `true`, the response includes detailed information about shard recoveries.\nThis information is useful to distinguish tasks from each other but is more costly to run.",
             "deprecated": false,
             "schema": {
               "type": "boolean"
@@ -65065,6 +65092,7 @@
             "type": "boolean"
           },
           "description": {
+            "description": "Human readable text that identifies the particular request that the task is performing.\nFor example, it might identify the search request being performed by a search task.\nOther kinds of tasks have different descriptions, like `_reindex` which has the source and the destination, or `_bulk` which just has the number of requests and the destination indices.\nMany requests will have only an empty description because more detailed information about the request is not easily available or particularly helpful in identifying the request.",
             "type": "string"
           },
           "headers": {
@@ -65089,7 +65117,7 @@
             "$ref": "#/components/schemas/_types:EpochTimeUnitMillis"
           },
           "status": {
-            "description": "Task status information can vary wildly from task to task.",
+            "description": "The internal status of the task, which varies from task to task.\nThe format also varies.\nWhile the goal is to keep the status for a particular task consistent from version to version, this is not always possible because sometimes the implementation changes.\nFields might be removed from the status for a particular request so any parsing you do of the status might break in minor releases.",
             "type": "object"
           },
           "type": {
@@ -93641,6 +93669,16 @@
         },
         "style": "simple"
       },
+      "bulk#list_executed_pipelines": {
+        "in": "query",
+        "name": "list_executed_pipelines",
+        "description": "If `true`, the response will include the ingest pipelines that were executed for each index or create.",
+        "deprecated": false,
+        "schema": {
+          "type": "boolean"
+        },
+        "style": "form"
+      },
       "bulk#pipeline": {
         "in": "query",
         "name": "pipeline",
@@ -93725,6 +93763,16 @@
         "in": "query",
         "name": "require_alias",
         "description": "If `true`, the request’s actions must target an index alias.",
+        "deprecated": false,
+        "schema": {
+          "type": "boolean"
+        },
+        "style": "form"
+      },
+      "bulk#require_data_stream": {
+        "in": "query",
+        "name": "require_data_stream",
+        "description": "If `true`, the request's actions must target a data stream (existing or to-be-created).",
         "deprecated": false,
         "schema": {
           "type": "boolean"
