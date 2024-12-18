@@ -70,32 +70,26 @@
     },
     "cat.count": {
       "request": [
-        "Request: query parameter 'master_timeout' does not exist in the json spec",
         "request definition cat.count:Request / body - A request with inherited properties must have a PropertyBody"
       ],
       "response": []
     },
     "cat.fielddata": {
       "request": [
-        "Request: query parameter 'master_timeout' does not exist in the json spec",
         "request definition cat.fielddata:Request / body - A request with inherited properties must have a PropertyBody"
       ],
       "response": []
     },
     "cat.health": {
       "request": [
-        "Request: query parameter 'master_timeout' does not exist in the json spec",
         "request definition cat.health:Request / body - A request with inherited properties must have a PropertyBody"
       ],
       "response": []
     },
     "cat.help": {
       "request": [
-        "Request: query parameter 'format' does not exist in the json spec",
-        "Request: query parameter 'h' does not exist in the json spec",
-        "Request: query parameter 'master_timeout' does not exist in the json spec",
-        "Request: query parameter 'v' does not exist in the json spec",
-        "request definition cat.help:Request / body - A request with inherited properties must have a PropertyBody"
+        "Request: missing json spec query parameter 'help'",
+        "Request: missing json spec query parameter 's'"
       ],
       "response": []
     },
@@ -113,7 +107,6 @@
     },
     "cat.ml_data_frame_analytics": {
       "request": [
-        "Request: query parameter 'master_timeout' does not exist in the json spec",
         "request definition cat.ml_data_frame_analytics:Request / query - Property 'h' is already defined in an ancestor class",
         "request definition cat.ml_data_frame_analytics:Request / query - Property 's' is already defined in an ancestor class",
         "request definition cat.ml_data_frame_analytics:Request / body - A request with inherited properties must have a PropertyBody"
@@ -122,7 +115,6 @@
     },
     "cat.ml_datafeeds": {
       "request": [
-        "Request: query parameter 'master_timeout' does not exist in the json spec",
         "request definition cat.ml_datafeeds:Request / query - Property 'h' is already defined in an ancestor class",
         "request definition cat.ml_datafeeds:Request / query - Property 's' is already defined in an ancestor class",
         "request definition cat.ml_datafeeds:Request / body - A request with inherited properties must have a PropertyBody"
@@ -131,7 +123,6 @@
     },
     "cat.ml_jobs": {
       "request": [
-        "Request: query parameter 'master_timeout' does not exist in the json spec",
         "request definition cat.ml_jobs:Request / query - Property 'h' is already defined in an ancestor class",
         "request definition cat.ml_jobs:Request / query - Property 's' is already defined in an ancestor class",
         "request definition cat.ml_jobs:Request / body - A request with inherited properties must have a PropertyBody"
@@ -140,8 +131,6 @@
     },
     "cat.ml_trained_models": {
       "request": [
-        "Request: query parameter 'master_timeout' does not exist in the json spec",
-        "Request: missing json spec query parameter 'time'",
         "request definition cat.ml_trained_models:Request / query - Property 'h' is already defined in an ancestor class",
         "request definition cat.ml_trained_models:Request / query - Property 's' is already defined in an ancestor class",
         "request definition cat.ml_trained_models:Request / body - A request with inherited properties must have a PropertyBody"
@@ -156,37 +145,31 @@
     },
     "cat.nodes": {
       "request": [
-        "Request: missing json spec query parameter 'time'",
         "request definition cat.nodes:Request / body - A request with inherited properties must have a PropertyBody"
       ],
       "response": []
     },
     "cat.pending_tasks": {
       "request": [
-        "Request: missing json spec query parameter 'time'",
         "request definition cat.pending_tasks:Request / body - A request with inherited properties must have a PropertyBody"
       ],
       "response": []
     },
     "cat.plugins": {
       "request": [
-        "Request: missing json spec query parameter 'include_bootstrap'",
         "request definition cat.plugins:Request / body - A request with inherited properties must have a PropertyBody"
       ],
       "response": []
     },
     "cat.recovery": {
       "request": [
-        "Request: query parameter 'master_timeout' does not exist in the json spec",
         "Request: missing json spec query parameter 'index'",
-        "Request: missing json spec query parameter 'time'",
         "request definition cat.recovery:Request / body - A request with inherited properties must have a PropertyBody"
       ],
       "response": []
     },
     "cat.repositories": {
       "request": [
-        "Request: missing json spec query parameter 'local'",
         "request definition cat.repositories:Request / body - A request with inherited properties must have a PropertyBody"
       ],
       "response": []
@@ -201,24 +184,20 @@
     },
     "cat.shards": {
       "request": [
-        "Request: missing json spec query parameter 'time'",
         "request definition cat.shards:Request / body - A request with inherited properties must have a PropertyBody"
       ],
       "response": []
     },
     "cat.snapshots": {
       "request": [
-        "Request: missing json spec query parameter 'time'",
         "request definition cat.snapshots:Request / body - A request with inherited properties must have a PropertyBody"
       ],
       "response": []
     },
     "cat.tasks": {
       "request": [
-        "Request: query parameter 'node_id' does not exist in the json spec",
-        "Request: query parameter 'master_timeout' does not exist in the json spec",
-        "Request: missing json spec query parameter 'nodes'",
-        "Request: missing json spec query parameter 'time'",
+        "Request: query parameter 'timeout' does not exist in the json spec",
+        "Request: query parameter 'wait_for_completion' does not exist in the json spec",
         "request definition cat.tasks:Request / body - A request with inherited properties must have a PropertyBody"
       ],
       "response": []
@@ -237,7 +216,6 @@
     },
     "cat.transforms": {
       "request": [
-        "Request: query parameter 'master_timeout' does not exist in the json spec",
         "request definition cat.transforms:Request / query - Property 'h' is already defined in an ancestor class",
         "request definition cat.transforms:Request / query - Property 's' is already defined in an ancestor class",
         "request definition cat.transforms:Request / body - A request with inherited properties must have a PropertyBody"
