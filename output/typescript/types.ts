@@ -19713,6 +19713,54 @@ export interface TasksListRequest extends RequestBase {
 
 export type TasksListResponse = TasksTaskListResponseBase
 
+export type TextStructureFindFieldStructureEcsCompatibilityType = 'disabled' | 'v1'
+
+export type TextStructureFindFieldStructureFormatType = 'delimited' | 'ndjson' | 'semi_structured_text' | 'xml'
+
+export interface TextStructureFindFieldStructureRequest extends RequestBase {
+  column_names?: string
+  delimiter?: string
+  documents_to_sample?: uint
+  ecs_compatibility?: TextStructureFindFieldStructureEcsCompatibilityType
+  explain?: boolean
+  field: string
+  format?: TextStructureFindFieldStructureFormatType
+  grok_pattern?: GrokPattern
+  index: string
+  quote?: string
+  should_trim_fields?: boolean
+  timeout?: Duration
+  timestamp_field?: string
+  timestamp_format?: string
+}
+
+export interface TextStructureFindFieldStructureResponse {
+}
+
+export type TextStructureFindMessageStructureEcsCompatibilityType = 'disabled' | 'v1'
+
+export type TextStructureFindMessageStructureFormatType = 'delimited' | 'ndjson' | 'semi_structured_text' | 'xml'
+
+export interface TextStructureFindMessageStructureRequest extends RequestBase {
+  column_names?: string
+  delimiter?: string
+  ecs_compatibility?: TextStructureFindMessageStructureEcsCompatibilityType
+  explain?: boolean
+  format?: TextStructureFindMessageStructureFormatType
+  grok_pattern?: GrokPattern
+  quote?: string
+  should_trim_fields?: boolean
+  timeout?: Duration
+  timestamp_field?: Field
+  timestamp_format?: string
+  body?: {
+    messages: string[]
+  }
+}
+
+export interface TextStructureFindMessageStructureResponse {
+}
+
 export interface TextStructureFindStructureFieldStat {
   count: integer
   cardinality: integer
