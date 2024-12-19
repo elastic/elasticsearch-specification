@@ -33,6 +33,7 @@ export class DiscoveryNodeContent {
   roles: string[]
   version: VersionString
   min_index_version: integer
+  min_read_only_index_version: integer
   max_index_version: integer
 }
 

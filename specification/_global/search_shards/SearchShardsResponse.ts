@@ -56,6 +56,7 @@ class SearchShardsNodeAttributes {
   roles: NodeRoles
   version: VersionString
   min_index_version: integer
+  min_read_only_index_version: integer
   max_index_version: integer
 }
 
