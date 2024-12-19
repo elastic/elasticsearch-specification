@@ -105174,6 +105174,44 @@
       "kind": "enum",
       "members": [
         {
+          "name": "disabled"
+        },
+        {
+          "name": "v1"
+        }
+      ],
+      "name": {
+        "name": "EcsCompatibilityType",
+        "namespace": "text_structure._types"
+      },
+      "specLocation": "text_structure/_types/Structure.ts#L40-L43"
+    },
+    {
+      "kind": "enum",
+      "members": [
+        {
+          "name": "delimited"
+        },
+        {
+          "name": "ndjson"
+        },
+        {
+          "name": "semi_structured_text"
+        },
+        {
+          "name": "xml"
+        }
+      ],
+      "name": {
+        "name": "FormatType",
+        "namespace": "text_structure._types"
+      },
+      "specLocation": "text_structure/_types/Structure.ts#L45-L50"
+    },
+    {
+      "kind": "enum",
+      "members": [
+        {
           "name": "awaits_successful_execution"
         },
         {
