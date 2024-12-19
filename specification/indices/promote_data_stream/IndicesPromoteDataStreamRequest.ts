@@ -35,6 +35,7 @@ import { Duration } from '@_types/Time'
  * This will affect the lifecycle management of the data stream and interfere with the data stream size and retention.
  * @rest_spec_name indices.promote_data_stream
  * @availability stack since=7.9.0 stability=stable
+ * @doc_tag data stream
  */
 export interface Request extends RequestBase {
   path_parts: {

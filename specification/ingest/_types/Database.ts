@@ -36,9 +36,20 @@ export class DatabaseConfiguration {
   ipinfo?: Ipinfo
 }
 
-export class DatabaseConfigurationFull extends DatabaseConfiguration {
+/**
+ * @variants container
+ */
+export class DatabaseConfigurationFull {
   web?: Web
   local?: Local
+  /**
+   * The provider-assigned name of the IP geolocation database to download.
+   * @variant container_property
+   */
+  name: Name
+
+  maxmind?: Maxmind
+  ipinfo?: Ipinfo
 }
 
 export class Maxmind {
