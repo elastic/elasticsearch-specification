@@ -10076,6 +10076,17 @@ export interface ConnectorUpdateErrorResponse {
   result: Result
 }
 
+export interface ConnectorUpdateFeaturesRequest extends RequestBase {
+  connector_id: Id
+  body?: {
+    features: ConnectorConnectorFeatures
+  }
+}
+
+export interface ConnectorUpdateFeaturesResponse {
+  result: Result
+}
+
 export interface ConnectorUpdateFilteringRequest extends RequestBase {
   connector_id: Id
   body?: {
