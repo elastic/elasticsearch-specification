@@ -17739,9 +17739,13 @@ export interface SearchApplicationListResponse {
 export interface SearchApplicationPostBehavioralAnalyticsEventRequest extends RequestBase {
   collection_name: Name
   event_type: SearchApplicationEventType
+  debug?: boolean
+  body?: any
 }
 
 export interface SearchApplicationPostBehavioralAnalyticsEventResponse {
+  accepted: boolean
+  event?: any
 }
 
 export interface SearchApplicationPutRequest extends RequestBase {

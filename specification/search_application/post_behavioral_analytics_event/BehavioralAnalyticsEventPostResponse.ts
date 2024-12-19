@@ -19,8 +19,8 @@
 
 export class Response {
   body: {
-      accepted: boolean
-      event?: UserDefinedValue
+    accepted: boolean
+    event?: UserDefinedValue
   }
   exceptions: [
     {
