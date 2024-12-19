@@ -64,7 +64,7 @@ export interface Request extends RequestBase {
     /**
      * The connector-specific metadata.
      */
-    metadata?: Dictionary<string, UserDefinedValue>
+    metadata?: Metadata
     /**
      * The total number of documents in the target index after the sync job finished.
      */
