@@ -3149,6 +3149,7 @@
         }
       },
       "description": "Delete data streams.\nDeletes one or more data streams and their backing indices.",
+      "docTag": "data stream",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/data-streams.html",
       "name": "indices.delete_data_stream",
       "privileges": {
@@ -3338,6 +3339,7 @@
         }
       },
       "description": "Get the status for a data stream lifecycle.\nGet information about an index or data stream's current data stream lifecycle status, such as time since index creation, time since rollover, the lifecycle configuration managing the index, or any errors encountered during lifecycle execution.",
+      "docTag": "data stream",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/data-streams-explain-lifecycle.html",
       "name": "indices.explain_data_lifecycle",
       "request": {
@@ -3819,6 +3821,7 @@
         }
       },
       "description": "Update data stream lifecycles.\nUpdate the data stream lifecycle of the specified data streams.",
+      "docTag": "data stream",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/data-streams-put-lifecycle.html",
       "name": "indices.put_data_lifecycle",
       "request": {
@@ -9311,7 +9314,7 @@
           "stability": "experimental"
         }
       },
-      "description": "Get task information.\nReturns information about the tasks currently executing in the cluster.",
+      "description": "Get task information.\nGet information about a task currently running in the cluster.",
       "docId": "tasks",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/tasks.html",
       "name": "tasks.get",
@@ -20911,7 +20914,7 @@
           }
         }
       ],
-      "specLocation": "indices/delete_data_stream/IndicesDeleteDataStreamRequest.ts#L24-L51"
+      "specLocation": "indices/delete_data_stream/IndicesDeleteDataStreamRequest.ts#L24-L52"
     },
     {
       "body": {
@@ -21374,7 +21377,7 @@
           }
         }
       ],
-      "specLocation": "indices/explain_data_lifecycle/IndicesExplainDataLifecycleRequest.ts#L24-L39"
+      "specLocation": "indices/explain_data_lifecycle/IndicesExplainDataLifecycleRequest.ts#L24-L40"
     },
     {
       "body": {
@@ -22799,7 +22802,7 @@
           }
         }
       ],
-      "specLocation": "indices/put_data_lifecycle/IndicesPutDataLifecycleRequest.ts#L25-L76"
+      "specLocation": "indices/put_data_lifecycle/IndicesPutDataLifecycleRequest.ts#L25-L77"
     },
     {
       "body": {
@@ -42004,7 +42007,7 @@
       "body": {
         "kind": "no_body"
       },
-      "description": "Get task information.\nReturns information about the tasks currently executing in the cluster.",
+      "description": "Get task information.\nGet information about a task currently running in the cluster.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -105028,6 +105031,7 @@
           }
         },
         {
+          "description": "Human readable text that identifies the particular request that the task is performing.\nFor example, it might identify the search request being performed by a search task.\nOther kinds of tasks have different descriptions, like `_reindex` which has the source and the destination, or `_bulk` which just has the number of requests and the destination indices.\nMany requests will have only an empty description because more detailed information about the request is not easily available or particularly helpful in identifying the request.",
           "name": "description",
           "required": false,
           "type": {
@@ -105134,7 +105138,7 @@
           }
         },
         {
-          "description": "Task status information can vary wildly from task to task.",
+          "description": "The internal status of the task, which varies from task to task.\nThe format also varies.\nWhile the goal is to keep the status for a particular task consistent from version to version, this is not always possible because sometimes the implementation changes.\nFields might be removed from the status for a particular request so any parsing you do of the status might break in minor releases.",
           "name": "status",
           "required": false,
           "type": {
@@ -105164,7 +105168,7 @@
           }
         }
       ],
-      "specLocation": "tasks/_types/TaskInfo.ts#L32-L47"
+      "specLocation": "tasks/_types/TaskInfo.ts#L32-L58"
     },
     {
       "inherits": {
