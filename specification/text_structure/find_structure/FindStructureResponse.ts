@@ -22,7 +22,7 @@ import { Dictionary } from '@spec_utils/Dictionary'
 import { Field, GrokPattern } from '@_types/common'
 import { TypeMapping } from '@_types/mapping/TypeMapping'
 import { integer } from '@_types/Numeric'
-import { FieldStat } from './types'
+import { FieldStat } from '../_types/Structure'
 
 export class Response {
   body: {
