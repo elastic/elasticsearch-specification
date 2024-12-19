@@ -16,6 +16,34 @@
  * specific language governing permissions and limitations
  * under the License.
  */
+
+import { PipelineConfig } from '@ingest/_types/Pipeline'
+import { Dictionary } from '@spec_utils/Dictionary'
+import { Field, GrokPattern } from '@_types/common'
+import { TypeMapping } from '@_types/mapping/TypeMapping'
+import { integer } from '@_types/Numeric'
+import {
+  EcsCompatibilityType,
+  FieldStat,
+  FormatType
+} from '../_types/Structure'
+
 export class Response {
-  body: {}
+  body: {
+    charset: string
+    ecs_compatibility?: EcsCompatibilityType
+    field_stats: Dictionary<Field, FieldStat>
+    format: FormatType
+    grok_pattern?: GrokPattern
+    java_timestamp_formats?: string[]
+    joda_timestamp_formats?: string[]
+    ingest_pipeline: PipelineConfig
+    mappings: TypeMapping
+    multiline_start_pattern?: string
+    need_client_timezone: boolean
+    num_lines_analyzed: integer
+    num_messages_analyzed: integer
+    sample_start: string
+    timestamp_field?: Field
+  }
 }

@@ -36,3 +36,15 @@ export class TopHit {
   count: long
   value: UserDefinedValue
 }
+
+export enum EcsCompatibilityType {
+  disabled,
+  v1
+}
+
+export enum FormatType {
+  delimited,
+  ndjson,
+  semi_structured_text,
+  xml
+}

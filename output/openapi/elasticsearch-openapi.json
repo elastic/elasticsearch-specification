@@ -34277,7 +34277,7 @@
             "description": "The mode of compatibility with ECS compliant Grok patterns.\nUse this parameter to specify whether to use ECS Grok patterns instead of legacy ones when the structure finder creates a Grok pattern.\nThis setting primarily has an impact when a whole message Grok pattern such as `%{CATALINALOG}` matches the input.\nIf the structure finder identifies a common structure but has no idea of the meaning then generic field names such as `path`, `ipaddress`, `field1`, and `field2` are used in the `grok_pattern` output.\nThe intention in that situation is that a user who knows the meanings will rename the fields before using them.",
             "deprecated": false,
             "schema": {
-              "$ref": "#/components/schemas/text_structure.find_field_structure:EcsCompatibilityType"
+              "$ref": "#/components/schemas/text_structure._types:EcsCompatibilityType"
             },
             "style": "form"
           },
@@ -34298,7 +34298,7 @@
             "required": true,
             "deprecated": false,
             "schema": {
-              "type": "string"
+              "$ref": "#/components/schemas/_types:Field"
             },
             "style": "form"
           },
@@ -34308,7 +34308,7 @@
             "description": "The high level structure of the text.\nBy default, the API chooses the format.\nIn this default scenario, all rows must have the same number of fields for a delimited format to be detected.\nIf the format is set to delimited and the delimiter is not set, however, the API tolerates up to 5% of rows that have a different number of columns than the first row.",
             "deprecated": false,
             "schema": {
-              "$ref": "#/components/schemas/text_structure.find_field_structure:FormatType"
+              "$ref": "#/components/schemas/text_structure._types:FormatType"
             },
             "style": "form"
           },
@@ -34329,7 +34329,7 @@
             "required": true,
             "deprecated": false,
             "schema": {
-              "type": "string"
+              "$ref": "#/components/schemas/_types:IndexName"
             },
             "style": "form"
           },
@@ -34369,7 +34369,7 @@
             "description": "The name of the field that contains the primary timestamp of each record in the text.\nIn particular, if the text was ingested into an index, this is the field that would be used to populate the `@timestamp` field.\n\nIf the format is `semi_structured_text`, this field must match the name of the appropriate extraction in the `grok_pattern`.\nTherefore, for semi-structured text, it is best not to specify this parameter unless `grok_pattern` is also specified.\n\nFor structured text, if you specify this parameter, the field must exist within the text.\n\nIf this parameter is not specified, the structure finder makes a decision about which field (if any) is the primary timestamp field.\nFor structured text, it is not compulsory to have a timestamp in the text.",
             "deprecated": false,
             "schema": {
-              "type": "string"
+              "$ref": "#/components/schemas/_types:Field"
             },
             "style": "form"
           },
@@ -34390,7 +34390,74 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "type": "object"
+                  "type": "object",
+                  "properties": {
+                    "charset": {
+                      "type": "string"
+                    },
+                    "ecs_compatibility": {
+                      "$ref": "#/components/schemas/text_structure._types:EcsCompatibilityType"
+                    },
+                    "field_stats": {
+                      "type": "object",
+                      "additionalProperties": {
+                        "$ref": "#/components/schemas/text_structure._types:FieldStat"
+                      }
+                    },
+                    "format": {
+                      "$ref": "#/components/schemas/text_structure._types:FormatType"
+                    },
+                    "grok_pattern": {
+                      "$ref": "#/components/schemas/_types:GrokPattern"
+                    },
+                    "java_timestamp_formats": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      }
+                    },
+                    "joda_timestamp_formats": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      }
+                    },
+                    "ingest_pipeline": {
+                      "$ref": "#/components/schemas/ingest._types:PipelineConfig"
+                    },
+                    "mappings": {
+                      "$ref": "#/components/schemas/_types.mapping:TypeMapping"
+                    },
+                    "multiline_start_pattern": {
+                      "type": "string"
+                    },
+                    "need_client_timezone": {
+                      "type": "boolean"
+                    },
+                    "num_lines_analyzed": {
+                      "type": "number"
+                    },
+                    "num_messages_analyzed": {
+                      "type": "number"
+                    },
+                    "sample_start": {
+                      "type": "string"
+                    },
+                    "timestamp_field": {
+                      "$ref": "#/components/schemas/_types:Field"
+                    }
+                  },
+                  "required": [
+                    "charset",
+                    "field_stats",
+                    "format",
+                    "ingest_pipeline",
+                    "mappings",
+                    "need_client_timezone",
+                    "num_lines_analyzed",
+                    "num_messages_analyzed",
+                    "sample_start"
+                  ]
                 }
               }
             }
@@ -34698,7 +34765,7 @@
                     "field_stats": {
                       "type": "object",
                       "additionalProperties": {
-                        "$ref": "#/components/schemas/text_structure.find_structure:FieldStat"
+                        "$ref": "#/components/schemas/text_structure._types:FieldStat"
                       }
                     },
                     "sample_start": {
@@ -86389,14 +86456,14 @@
           "none"
         ]
       },
-      "text_structure.find_field_structure:EcsCompatibilityType": {
+      "text_structure._types:EcsCompatibilityType": {
         "type": "string",
         "enum": [
           "disabled",
           "v1"
         ]
       },
-      "text_structure.find_field_structure:FormatType": {
+      "text_structure._types:FormatType": {
         "type": "string",
         "enum": [
           "delimited",
@@ -86405,23 +86472,7 @@
           "xml"
         ]
       },
-      "text_structure.find_message_structure:EcsCompatibilityType": {
-        "type": "string",
-        "enum": [
-          "disabled",
-          "v1"
-        ]
-      },
-      "text_structure.find_message_structure:FormatType": {
-        "type": "string",
-        "enum": [
-          "delimited",
-          "ndjson",
-          "semi_structured_text",
-          "xml"
-        ]
-      },
-      "text_structure.find_structure:FieldStat": {
+      "text_structure._types:FieldStat": {
         "type": "object",
         "properties": {
           "count": {
@@ -86433,7 +86484,7 @@
           "top_hits": {
             "type": "array",
             "items": {
-              "$ref": "#/components/schemas/text_structure.find_structure:TopHit"
+              "$ref": "#/components/schemas/text_structure._types:TopHit"
             }
           },
           "mean_value": {
@@ -86461,7 +86512,7 @@
           "top_hits"
         ]
       },
-      "text_structure.find_structure:TopHit": {
+      "text_structure._types:TopHit": {
         "type": "object",
         "properties": {
           "count": {
@@ -93889,7 +93940,74 @@
         "content": {
           "application/json": {
             "schema": {
-              "type": "object"
+              "type": "object",
+              "properties": {
+                "charset": {
+                  "type": "string"
+                },
+                "ecs_compatibility": {
+                  "$ref": "#/components/schemas/text_structure._types:EcsCompatibilityType"
+                },
+                "field_stats": {
+                  "type": "object",
+                  "additionalProperties": {
+                    "$ref": "#/components/schemas/text_structure._types:FieldStat"
+                  }
+                },
+                "format": {
+                  "$ref": "#/components/schemas/text_structure._types:FormatType"
+                },
+                "grok_pattern": {
+                  "$ref": "#/components/schemas/_types:GrokPattern"
+                },
+                "java_timestamp_formats": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                },
+                "joda_timestamp_formats": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                },
+                "ingest_pipeline": {
+                  "$ref": "#/components/schemas/ingest._types:PipelineConfig"
+                },
+                "mappings": {
+                  "$ref": "#/components/schemas/_types.mapping:TypeMapping"
+                },
+                "multiline_start_pattern": {
+                  "type": "string"
+                },
+                "need_client_timezone": {
+                  "type": "boolean"
+                },
+                "num_lines_analyzed": {
+                  "type": "number"
+                },
+                "num_messages_analyzed": {
+                  "type": "number"
+                },
+                "sample_start": {
+                  "type": "string"
+                },
+                "timestamp_field": {
+                  "$ref": "#/components/schemas/_types:Field"
+                }
+              },
+              "required": [
+                "charset",
+                "field_stats",
+                "format",
+                "ingest_pipeline",
+                "mappings",
+                "need_client_timezone",
+                "num_lines_analyzed",
+                "num_messages_analyzed",
+                "sample_start"
+              ]
             }
           }
         }
@@ -103301,7 +103419,7 @@
         "description": "The mode of compatibility with ECS compliant Grok patterns.\nUse this parameter to specify whether to use ECS Grok patterns instead of legacy ones when the structure finder creates a Grok pattern.\nThis setting primarily has an impact when a whole message Grok pattern such as `%{CATALINALOG}` matches the input.\nIf the structure finder identifies a common structure but has no idea of meaning then generic field names such as `path`, `ipaddress`, `field1`, and `field2` are used in the `grok_pattern` output, with the intention that a user who knows the meanings rename these fields before using it.",
         "deprecated": false,
         "schema": {
-          "$ref": "#/components/schemas/text_structure.find_message_structure:EcsCompatibilityType"
+          "$ref": "#/components/schemas/text_structure._types:EcsCompatibilityType"
         },
         "style": "form"
       },
@@ -103321,7 +103439,7 @@
         "description": "The high level structure of the text.\nBy default, the API chooses the format.\nIn this default scenario, all rows must have the same number of fields for a delimited format to be detected.\nIf the format is `delimited` and the delimiter is not set, however, the API tolerates up to 5% of rows that have a different number of columns than the first row.",
         "deprecated": false,
         "schema": {
-          "$ref": "#/components/schemas/text_structure.find_message_structure:FormatType"
+          "$ref": "#/components/schemas/text_structure._types:FormatType"
         },
         "style": "form"
       },

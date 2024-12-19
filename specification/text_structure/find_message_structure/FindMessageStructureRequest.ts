@@ -20,6 +20,8 @@
 import { RequestBase } from '@_types/Base'
 import { Field, GrokPattern } from '@_types/common'
 import { Duration } from '@_types/Time'
+import { EcsCompatibilityType, FormatType } from '../_types/Structure'
+
 /**
  * Find the structure of text messages.
  * Find the structure of a list of text messages.
@@ -39,6 +41,7 @@ import { Duration } from '@_types/Time'
  * @rest_spec_name text_structure.find_message_structure
  * @availability stack stability=stable visibility=public
  * @cluster_privileges monitor_text_structure
+ * @doc_id find-message-structure
  */
 interface Request extends RequestBase {
   query_parameters: {
@@ -157,16 +160,4 @@ interface Request extends RequestBase {
      */
     messages: Array<string>
   }
-}
-
-export enum EcsCompatibilityType {
-  disabled,
-  v1
-}
-
-export enum FormatType {
-  delimited,
-  ndjson,
-  semi_structured_text,
-  xml
 }

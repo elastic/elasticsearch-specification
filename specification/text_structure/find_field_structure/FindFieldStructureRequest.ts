@@ -18,15 +18,18 @@
  */
 
 import { RequestBase } from '@_types/Base'
-import { GrokPattern } from '@_types/common'
+import { Field, GrokPattern, IndexName } from '@_types/common'
 import { uint } from '@_types/Numeric'
 import { Duration } from '@_types/Time'
+import { EcsCompatibilityType, FormatType } from '../_types/Structure'
+
 /**
  * Find the structure of a text field.
  * Find the structure of a text field in an Elasticsearch index.
  * @rest_spec_name text_structure.find_field_structure
  * @availability stack stability=stable visibility=public
  * @cluster_privileges monitor_text_structure
+ * @doc_id find-field-structure
  */
 interface Request extends RequestBase {
   query_parameters: {
@@ -156,16 +159,4 @@ interface Request extends RequestBase {
      */
     timestamp_format?: string
   }
-}
-
-export enum EcsCompatibilityType {
-  disabled,
-  v1
-}
-
-export enum FormatType {
-  delimited,
-  ndjson,
-  semi_structured_text,
-  xml
 }
