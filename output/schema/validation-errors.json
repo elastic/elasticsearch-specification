@@ -907,18 +907,6 @@
       ],
       "response": []
     },
-    "text_structure.find_field_structure": {
-      "request": [
-        "Missing request & response"
-      ],
-      "response": []
-    },
-    "text_structure.find_message_structure": {
-      "request": [
-        "Missing request & response"
-      ],
-      "response": []
-    },
     "transform.get_node_stats": {
       "request": [
         "Missing request & response"
