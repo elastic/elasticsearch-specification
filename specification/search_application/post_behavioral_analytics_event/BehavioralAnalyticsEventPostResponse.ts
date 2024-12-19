@@ -18,7 +18,10 @@
  */
 
 export class Response {
-  body: {}
+  body: {
+      accepted: boolean
+      event?: UserDefinedValue
+  }
   exceptions: [
     {
       /**
