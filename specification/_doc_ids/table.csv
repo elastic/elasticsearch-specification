@@ -93,6 +93,7 @@ connector-sync-job-post,https://www.elastic.co/guide/en/elasticsearch/reference/
 connector-sync-job-list,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/list-connector-sync-jobs-api.html
 connector-checkin,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/check-in-connector-api.html
 connector-delete,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/delete-connector-api.html
+connector-features,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/update-connector-features-api.html
 connector-get,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/get-connector-api.html
 connector-last-sync,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/update-connector-last-sync-api.html
 connector-list,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/list-connector-api.html
