@@ -117,7 +117,7 @@ interface Request extends RequestBase {
      * If this parameter is not specified, the structure finder makes a decision about which field (if any) is the primary timestamp field.
      * For structured text, it is not compulsory to have a timestamp in the text.
      */
-    timestamp_field?: string
+    timestamp_field?: Field
     /**
      * The Java time format of the timestamp field in the text.
      * Only a subset of Java time format letter groups are supported:
