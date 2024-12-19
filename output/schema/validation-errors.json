@@ -494,12 +494,6 @@
       ],
       "response": []
     },
-    "connector.update_features": {
-      "request": [
-        "Missing request & response"
-      ],
-      "response": []
-    },
     "enrich.delete_policy": {
       "request": [
         "Request: missing json spec query parameter 'master_timeout'"

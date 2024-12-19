@@ -5397,6 +5397,68 @@
         "x-state": "Technical preview"
       }
     },
+    "/_connector/{connector_id}/_features": {
+      "put": {
+        "tags": [
+          "connector"
+        ],
+        "summary": "Update the connector features",
+        "description": "Update the connector features in the connector document.\nThis API can be used to control the following aspects of a connector:\n\n* document-level security\n* incremental syncs\n* advanced sync rules\n* basic sync rules\n\nNormally, the running connector service automatically manages these features.\nHowever, you can use this API to override the default behavior.\n\nTo sync data using self-managed connectors, you need to deploy the Elastic connector service on your own infrastructure.\nThis service runs automatically on Elastic Cloud for Elastic managed connectors.",
+        "operationId": "connector-update-features",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "connector_id",
+            "description": "The unique identifier of the connector to be updated.",
+            "required": true,
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/_types:Id"
+            },
+            "style": "simple"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "features": {
+                    "$ref": "#/components/schemas/connector._types:ConnectorFeatures"
+                  }
+                },
+                "required": [
+                  "features"
+                ]
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "result": {
+                      "$ref": "#/components/schemas/_types:Result"
+                    }
+                  },
+                  "required": [
+                    "result"
+                  ]
+                }
+              }
+            }
+          }
+        },
+        "x-state": "Technical preview"
+      }
+    },
     "/_connector/{connector_id}/_filtering": {
       "put": {
         "tags": [
