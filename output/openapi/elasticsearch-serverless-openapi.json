@@ -6514,7 +6514,7 @@
       },
       "delete": {
         "tags": [
-          "indices"
+          "data stream"
         ],
         "summary": "Delete data streams",
         "description": "Deletes one or more data streams and their backing indices.",
@@ -7064,7 +7064,7 @@
     "/{index}/_lifecycle/explain": {
       "get": {
         "tags": [
-          "indices"
+          "data stream"
         ],
         "summary": "Get the status for a data stream lifecycle",
         "description": "Get information about an index or data stream's current data stream lifecycle status, such as time since index creation, time since rollover, the lifecycle configuration managing the index, or any errors encountered during lifecycle execution.",
@@ -7267,7 +7267,7 @@
       },
       "put": {
         "tags": [
-          "indices"
+          "data stream"
         ],
         "summary": "Update data stream lifecycles",
         "description": "Update the data stream lifecycle of the specified data streams.",
