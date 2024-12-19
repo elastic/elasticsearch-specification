@@ -60,7 +60,7 @@ export interface Request extends RequestBase {
     /**
      * The timestamp to use in the `last_seen` property for the connector sync job.
      */
-    last_seen?: integer
+    last_seen?: Duration
     /**
      * The connector-specific metadata.
      */
