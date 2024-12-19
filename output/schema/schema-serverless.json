@@ -3032,6 +3032,7 @@
         }
       },
       "description": "Delete data streams.\nDeletes one or more data streams and their backing indices.",
+      "docTag": "data stream",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/data-streams.html",
       "name": "indices.delete_data_stream",
       "privileges": {
@@ -3221,6 +3222,7 @@
         }
       },
       "description": "Get the status for a data stream lifecycle.\nGet information about an index or data stream's current data stream lifecycle status, such as time since index creation, time since rollover, the lifecycle configuration managing the index, or any errors encountered during lifecycle execution.",
+      "docTag": "data stream",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/data-streams-explain-lifecycle.html",
       "name": "indices.explain_data_lifecycle",
       "request": {
@@ -3702,6 +3704,7 @@
         }
       },
       "description": "Update data stream lifecycles.\nUpdate the data stream lifecycle of the specified data streams.",
+      "docTag": "data stream",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/data-streams-put-lifecycle.html",
       "name": "indices.put_data_lifecycle",
       "request": {
@@ -20646,7 +20649,7 @@
           }
         }
       ],
-      "specLocation": "indices/delete_data_stream/IndicesDeleteDataStreamRequest.ts#L24-L51"
+      "specLocation": "indices/delete_data_stream/IndicesDeleteDataStreamRequest.ts#L24-L52"
     },
     {
       "body": {
@@ -21105,7 +21108,7 @@
           }
         }
       ],
-      "specLocation": "indices/explain_data_lifecycle/IndicesExplainDataLifecycleRequest.ts#L24-L39"
+      "specLocation": "indices/explain_data_lifecycle/IndicesExplainDataLifecycleRequest.ts#L24-L40"
     },
     {
       "body": {
@@ -22508,7 +22511,7 @@
           }
         }
       ],
-      "specLocation": "indices/put_data_lifecycle/IndicesPutDataLifecycleRequest.ts#L25-L67"
+      "specLocation": "indices/put_data_lifecycle/IndicesPutDataLifecycleRequest.ts#L25-L68"
     },
     {
       "body": {
