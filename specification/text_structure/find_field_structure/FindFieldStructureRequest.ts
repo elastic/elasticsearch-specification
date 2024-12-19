@@ -67,7 +67,7 @@ interface Request extends RequestBase {
     /**
      * The field that should be analyzed.
      */
-    field: string
+    field: Field
     /**
      * The high level structure of the text.
      * By default, the API chooses the format.
