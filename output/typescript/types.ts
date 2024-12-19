@@ -10018,6 +10018,17 @@ export interface ConnectorSyncJobCheckInRequest extends RequestBase {
 export interface ConnectorSyncJobCheckInResponse {
 }
 
+export interface ConnectorSyncJobClaimRequest extends RequestBase {
+  connector_sync_job_id: Id
+  body?: {
+    sync_cursor?: any
+    worker_hostname: string
+  }
+}
+
+export interface ConnectorSyncJobClaimResponse {
+}
+
 export interface ConnectorSyncJobDeleteRequest extends RequestBase {
   connector_sync_job_id: Id
 }
