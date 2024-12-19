@@ -4935,6 +4935,42 @@
         "x-beta": true
       }
     },
+    "/_connector/_sync_job/{connector_sync_job_id}/_check_in": {
+      "put": {
+        "tags": [
+          "connector"
+        ],
+        "summary": "Check in a connector sync job",
+        "description": "Check in a connector sync job and set the `last_seen` field to the current time before updating it in the internal index.\n\nTo sync data using self-managed connectors, you need to deploy the Elastic connector service on your own infrastructure.\nThis service runs automatically on Elastic Cloud for Elastic managed connectors.",
+        "operationId": "connector-sync-job-check-in",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "connector_sync_job_id",
+            "description": "The unique identifier of the connector sync job to be checked in.",
+            "required": true,
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/_types:Id"
+            },
+            "style": "simple"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                }
+              }
+            }
+          }
+        },
+        "x-state": "Technical preview"
+      }
+    },
     "/_connector/_sync_job/{connector_sync_job_id}/_claim": {
       "put": {
         "tags": [
@@ -25809,7 +25845,7 @@
           "rollup"
         ],
         "summary": "Create a rollup job",
-        "description": "WARNING: From 8.15.0, calling this API in a cluster with no rollup usage will fail with a message about the deprecation and planned removal of rollup features. A cluster either needs to contain a rollup job or a rollup index in order for this API to be allowed to run.\n\nThe rollup job configuration contains all the details about how the job should run, when it indexes documents, and what future queries will be able to run against the rollup index.\n\nThere are three main sections to the job configuration: the logistical details about the job (for example, the cron schedule), the fields that are used for grouping, and what metrics to collect for each group.\n\nJobs are created in a `STOPPED` state. You can start them with the start rollup jobs API.",
+        "description": "WARNING: From 8.15.0, calling this API in a cluster with no rollup usage will fail with a message about the deprecation and planned removal of rollup features. A cluster needs to contain either a rollup job or a rollup index in order for this API to be allowed to run.\n\nThe rollup job configuration contains all the details about how the job should run, when it indexes documents, and what future queries will be able to run against the rollup index.\n\nThere are three main sections to the job configuration: the logistical details about the job (for example, the cron schedule), the fields that are used for grouping, and what metrics to collect for each group.\n\nJobs are created in a `STOPPED` state. You can start them with the start rollup jobs API.",
         "operationId": "rollup-put-job",
         "parameters": [
           {
@@ -25893,7 +25929,7 @@
           "rollup"
         ],
         "summary": "Delete a rollup job",
-        "description": "A job must be stopped first before it can be deleted.\nIf you attempt to delete a started job, an error occurs.\nSimilarly, if you attempt to delete a nonexistent job, an exception occurs.\n\nIMPORTANT: When you delete a job, you remove only the process that is actively monitoring and rolling up data.\nThe API does not delete any previously rolled up data.\nThis is by design; a user may wish to roll up a static data set.\nBecause the data set is static, after it has been fully rolled up there is no need to keep the indexing rollup job around (as there will be no new data).\nThus the job can be deleted, leaving behind the rolled up data for analysis.\nIf you wish to also remove the rollup data and the rollup index contains the data for only a single job, you can delete the whole rollup index.\nIf the rollup index stores data from several jobs, you must issue a delete-by-query that targets the rollup job's identifier in the rollup index. For example:\n\n```\nPOST my_rollup_index/_delete_by_query\n{\n  \"query\": {\n    \"term\": {\n      \"_rollup.id\": \"the_rollup_job_id\"\n    }\n  }\n}\n```",
+        "description": "A job must be stopped before it can be deleted.\nIf you attempt to delete a started job, an error occurs.\nSimilarly, if you attempt to delete a nonexistent job, an exception occurs.\n\nIMPORTANT: When you delete a job, you remove only the process that is actively monitoring and rolling up data.\nThe API does not delete any previously rolled up data.\nThis is by design; a user may wish to roll up a static data set.\nBecause the data set is static, after it has been fully rolled up there is no need to keep the indexing rollup job around (as there will be no new data).\nThus the job can be deleted, leaving behind the rolled up data for analysis.\nIf you wish to also remove the rollup data and the rollup index contains the data for only a single job, you can delete the whole rollup index.\nIf the rollup index stores data from several jobs, you must issue a delete-by-query that targets the rollup job's identifier in the rollup index. For example:\n\n```\nPOST my_rollup_index/_delete_by_query\n{\n  \"query\": {\n    \"term\": {\n      \"_rollup.id\": \"the_rollup_job_id\"\n    }\n  }\n}\n```",
         "operationId": "rollup-delete-job",
         "parameters": [
           {
