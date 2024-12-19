@@ -5312,6 +5312,86 @@
         "x-beta": true
       }
     },
+    "/_connector/_sync_job/{connector_sync_job_id}/_stats": {
+      "put": {
+        "tags": [
+          "connector"
+        ],
+        "summary": "Set the connector sync job stats",
+        "description": "Stats include: `deleted_document_count`, `indexed_document_count`, `indexed_document_volume`, and `total_document_count`.\nYou can also update `last_seen`.\nThis API is mainly used by the connector service for updating sync job information.\n\nTo sync data using self-managed connectors, you need to deploy the Elastic connector service on your own infrastructure.\nThis service runs automatically on Elastic Cloud for Elastic managed connectors.",
+        "operationId": "connector-sync-job-update-stats",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "connector_sync_job_id",
+            "description": "The unique identifier of the connector sync job.",
+            "required": true,
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/_types:Id"
+            },
+            "style": "simple"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "deleted_document_count": {
+                    "description": "The number of documents the sync job deleted.",
+                    "type": "number"
+                  },
+                  "indexed_document_count": {
+                    "description": "The number of documents the sync job indexed.",
+                    "type": "number"
+                  },
+                  "indexed_document_volume": {
+                    "description": "The total size of the data (in MiB) the sync job indexed.",
+                    "type": "number"
+                  },
+                  "last_seen": {
+                    "description": "The timestamp to use in the `last_seen` property for the connector sync job.",
+                    "type": "number"
+                  },
+                  "metadata": {
+                    "description": "The connector-specific metadata.",
+                    "type": "object",
+                    "additionalProperties": {
+                      "type": "object"
+                    }
+                  },
+                  "total_document_count": {
+                    "description": "The total number of documents in the target index after the sync job finished.",
+                    "type": "number"
+                  }
+                },
+                "required": [
+                  "deleted_document_count",
+                  "indexed_document_count",
+                  "indexed_document_volume"
+                ]
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                }
+              }
+            }
+          }
+        },
+        "x-state": "Technical preview"
+      }
+    },
     "/_connector/{connector_id}/_filtering/_activate": {
       "put": {
         "tags": [

@@ -10083,6 +10083,21 @@ export interface ConnectorSyncJobPostResponse {
   id: Id
 }
 
+export interface ConnectorSyncJobUpdateStatsRequest extends RequestBase {
+  connector_sync_job_id: Id
+  body?: {
+    deleted_document_count: integer
+    indexed_document_count: integer
+    indexed_document_volume: integer
+    last_seen?: integer
+    metadata?: Record<string, any>
+    total_document_count?: integer
+  }
+}
+
+export interface ConnectorSyncJobUpdateStatsResponse {
+}
+
 export interface ConnectorUpdateActiveFilteringRequest extends RequestBase {
   connector_id: Id
 }
