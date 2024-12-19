@@ -11320,7 +11320,7 @@
       },
       "delete": {
         "tags": [
-          "indices"
+          "data stream"
         ],
         "summary": "Delete data streams",
         "description": "Deletes one or more data streams and their backing indices.",
@@ -11740,7 +11740,7 @@
       },
       "put": {
         "tags": [
-          "indices"
+          "data stream"
         ],
         "summary": "Update data stream lifecycles",
         "description": "Update the data stream lifecycle of the specified data streams.",
@@ -12373,7 +12373,7 @@
     "/{index}/_downsample/{target_index}": {
       "post": {
         "tags": [
-          "indices"
+          "data stream"
         ],
         "summary": "Downsample an index",
         "description": "Aggregate a time series (TSDS) index and store pre-computed statistical summaries (`min`, `max`, `sum`, `value_count` and `avg`) for each metric field grouped by a configured time interval.\nFor example, a TSDS index that contains metrics sampled every 10 seconds can be downsampled to an hourly index.\nAll documents within an hour interval are summarized and stored as a single document in the downsample index.\n\nNOTE: Only indices in a time series data stream are supported.\nNeither field nor document level security can be defined on the source index.\nThe source index must be read only (`index.blocks.write: true`).",
@@ -12492,7 +12492,7 @@
     "/{index}/_lifecycle/explain": {
       "get": {
         "tags": [
-          "indices"
+          "data stream"
         ],
         "summary": "Get the status for a data stream lifecycle",
         "description": "Get information about an index or data stream's current data stream lifecycle status, such as time since index creation, time since rollover, the lifecycle configuration managing the index, or any errors encountered during lifecycle execution.",
@@ -13700,7 +13700,7 @@
     "/_data_stream/_promote/{name}": {
       "post": {
         "tags": [
-          "indices"
+          "data stream"
         ],
         "summary": "Promote a data stream",
         "description": "Promote a data stream from a replicated data stream managed by cross-cluster replication (CCR) to a regular data stream.\n\nWith CCR auto following, a data stream from a remote cluster can be replicated to the local cluster.\nThese data streams can't be rolled over in the local cluster.\nThese replicated data streams roll over only if the upstream data stream rolls over.\nIn the event that the remote cluster is no longer available, the data stream in the local cluster can be promoted to a regular data stream, which allows these data streams to be rolled over in the local cluster.\n\nNOTE: When promoting a data stream, ensure the local cluster has a data stream enabled index template that matches the data stream.\nIf this is missing, the data stream will not be able to roll over until a matching index template is created.\nThis will affect the lifecycle management of the data stream and interfere with the data stream size and retention.",
