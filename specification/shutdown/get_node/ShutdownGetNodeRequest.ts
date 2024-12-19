@@ -22,8 +22,17 @@ import { NodeIds } from '@_types/common'
 import { TimeUnit } from '@_types/Time'
 
 /**
+ * Get the shutdown status.
+ *
+ * Get information about nodes that are ready to be shut down, have shut down preparations still in progress, or have stalled.
+ * The API returns status information for each part of the shut down process.
+ *
+ * NOTE: This feature is designed for indirect use by Elasticsearch Service, Elastic Cloud Enterprise, and Elastic Cloud on Kubernetes. Direct use is not supported.
+ *
+ * If the operator privileges feature is enabled, you must be an operator to use this API.
  * @rest_spec_name shutdown.get_node
  * @availability stack since=7.13.0 stability=stable
+ * @cluster_privileges manage
  */
 export interface Request extends RequestBase {
   path_parts: {
