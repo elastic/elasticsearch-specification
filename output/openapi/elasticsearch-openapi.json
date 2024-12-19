@@ -10263,6 +10263,7 @@
           {
             "in": "query",
             "name": "master_timeout",
+            "description": "Explicit operation timeout for connection to master node",
             "deprecated": false,
             "schema": {
               "$ref": "#/components/schemas/_types:Duration"
@@ -10272,6 +10273,7 @@
           {
             "in": "query",
             "name": "timeout",
+            "description": "Explicit operation timeout",
             "deprecated": false,
             "schema": {
               "$ref": "#/components/schemas/_types:Duration"
@@ -10306,6 +10308,7 @@
           {
             "in": "query",
             "name": "master_timeout",
+            "description": "Explicit operation timeout for connection to master node",
             "deprecated": false,
             "schema": {
               "$ref": "#/components/schemas/_types:Duration"
@@ -10315,6 +10318,7 @@
           {
             "in": "query",
             "name": "timeout",
+            "description": "Explicit operation timeout",
             "deprecated": false,
             "schema": {
               "$ref": "#/components/schemas/_types:Duration"
