@@ -21,8 +21,12 @@ import { RequestBase } from '@_types/Base'
 import { ExpandWildcards, Indices } from '@_types/common'
 
 /**
+ * Clear the cache.
+ * Clear indices and data streams from the shared cache for partially mounted indices.
  * @rest_spec_name searchable_snapshots.clear_cache
  * @availability stack since=7.10.0 stability=experimental
+ * @cluster_privileges manage
+ * @index_privileges manage
  */
 export interface Request extends RequestBase {
   path_parts: {

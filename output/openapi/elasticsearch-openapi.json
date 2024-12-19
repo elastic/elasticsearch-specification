@@ -27624,7 +27624,8 @@
         "tags": [
           "searchable_snapshots"
         ],
-        "summary": "Retrieve node-level cache statistics about searchable snapshots",
+        "summary": "Get cache statistics",
+        "description": "Get statistics about the shared cache for partially mounted indices.",
         "operationId": "searchable-snapshots-cache-stats",
         "parameters": [
           {
@@ -27644,7 +27645,8 @@
         "tags": [
           "searchable_snapshots"
         ],
-        "summary": "Retrieve node-level cache statistics about searchable snapshots",
+        "summary": "Get cache statistics",
+        "description": "Get statistics about the shared cache for partially mounted indices.",
         "operationId": "searchable-snapshots-cache-stats-1",
         "parameters": [
           {
@@ -27667,7 +27669,8 @@
         "tags": [
           "searchable_snapshots"
         ],
-        "summary": "Clear the cache of searchable snapshots",
+        "summary": "Clear the cache",
+        "description": "Clear indices and data streams from the shared cache for partially mounted indices.",
         "operationId": "searchable-snapshots-clear-cache",
         "parameters": [
           {
@@ -27699,7 +27702,8 @@
         "tags": [
           "searchable_snapshots"
         ],
-        "summary": "Clear the cache of searchable snapshots",
+        "summary": "Clear the cache",
+        "description": "Clear indices and data streams from the shared cache for partially mounted indices.",
         "operationId": "searchable-snapshots-clear-cache-1",
         "parameters": [
           {
@@ -27734,7 +27738,8 @@
         "tags": [
           "searchable_snapshots"
         ],
-        "summary": "Mount a snapshot as a searchable index",
+        "summary": "Mount a snapshot",
+        "description": "Mount a snapshot as a searchable snapshot index.\nDo not use this API for snapshots managed by index lifecycle management (ILM).\nManually mounting ILM-managed snapshots can interfere with ILM processes.",
         "operationId": "searchable-snapshots-mount",
         "parameters": [
           {
@@ -27851,7 +27856,7 @@
         "tags": [
           "searchable_snapshots"
         ],
-        "summary": "Retrieve shard-level statistics about searchable snapshots",
+        "summary": "Get searchable snapshot statistics",
         "operationId": "searchable-snapshots-stats",
         "parameters": [
           {
@@ -27871,7 +27876,7 @@
         "tags": [
           "searchable_snapshots"
         ],
-        "summary": "Retrieve shard-level statistics about searchable snapshots",
+        "summary": "Get searchable snapshot statistics",
         "operationId": "searchable-snapshots-stats-1",
         "parameters": [
           {
