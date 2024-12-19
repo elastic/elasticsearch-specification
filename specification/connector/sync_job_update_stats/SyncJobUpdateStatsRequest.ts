@@ -56,7 +56,7 @@ export interface Request extends RequestBase {
     /**
      * The total size of the data (in MiB) the sync job indexed.
      */
-    indexed_document_volume: integer
+    indexed_document_volume: long
     /**
      * The timestamp to use in the `last_seen` property for the connector sync job.
      */
