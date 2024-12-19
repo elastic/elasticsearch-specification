@@ -4459,9 +4459,14 @@
           "visibility": "public"
         }
       },
-      "description": "Create an inference endpoint",
+      "description": "Create an inference endpoint.\nWhen you create an inference endpoint, the associated machine learning model is automatically deployed if it is not already running.\nAfter creating the endpoint, wait for the model deployment to complete before using it.\nTo verify the deployment status, use the get trained model statistics API.\nLook for `\"state\": \"fully_allocated\"` in the response and ensure that the `\"allocation_count\"` matches the `\"target_allocation_count\"`.\nAvoid creating multiple endpoints for the same model unless required, as each endpoint consumes significant resources.\n\nIMPORTANT: The inference APIs enable you to use certain services, such as built-in machine learning models (ELSER, E5), models uploaded through Eland, Cohere, OpenAI, Mistral, Azure OpenAI, Google AI Studio, Google Vertex AI, Anthropic, Watsonx.ai, or Hugging Face.\nFor built-in models and models uploaded through Eland, the inference APIs offer an alternative way to use and manage trained models.\nHowever, if you do not plan to use the inference APIs to use these models or if you want to use non-NLP models, use the machine learning trained model APIs.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/put-inference-api.html",
       "name": "inference.put",
+      "privileges": {
+        "cluster": [
+          "manage_inference"
+        ]
+      },
       "request": {
         "name": "Request",
         "namespace": "inference.put"
@@ -4776,8 +4781,10 @@
           "stability": "stable"
         }
       },
-      "description": "Deletes a pipeline used for Logstash Central Management.",
+      "description": "Delete a Logstash pipeline.\n\nDelete a pipeline that is used for Logstash Central Management.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/logstash-api-delete-pipeline.html",
+      "extDocId": "logstash-centralized-pipeline-management",
+      "extDocUrl": "https://www.elastic.co/guide/en/logstash/{branch}/logstash-centralized-pipeline-management.html",
       "name": "logstash.delete_pipeline",
       "privileges": {
         "cluster": [
@@ -4816,8 +4823,10 @@
           "stability": "stable"
         }
       },
-      "description": "Retrieves pipelines used for Logstash Central Management.",
+      "description": "Get Logstash pipelines.\n\nGet pipelines that are used for Logstash Central Management.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/logstash-api-get-pipeline.html",
+      "extDocId": "logstash-centralized-pipeline-management",
+      "extDocUrl": "https://www.elastic.co/guide/en/logstash/{branch}/logstash-centralized-pipeline-management.html",
       "name": "logstash.get_pipeline",
       "privileges": {
         "cluster": [
@@ -4862,8 +4871,10 @@
           "stability": "stable"
         }
       },
-      "description": "Creates or updates a pipeline used for Logstash Central Management.",
+      "description": "Create or update a Logstash pipeline.\n\nCreate a pipeline that is used for Logstash Central Management.\nIf the specified pipeline exists, it is replaced.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/logstash-api-put-pipeline.html",
+      "extDocId": "logstash-centralized-pipeline-management",
+      "extDocUrl": "https://www.elastic.co/guide/en/logstash/{branch}/logstash-centralized-pipeline-management.html",
       "name": "logstash.put_pipeline",
       "privileges": {
         "cluster": [
@@ -25247,7 +25258,7 @@
           }
         }
       },
-      "description": "Create an inference endpoint",
+      "description": "Create an inference endpoint.\nWhen you create an inference endpoint, the associated machine learning model is automatically deployed if it is not already running.\nAfter creating the endpoint, wait for the model deployment to complete before using it.\nTo verify the deployment status, use the get trained model statistics API.\nLook for `\"state\": \"fully_allocated\"` in the response and ensure that the `\"allocation_count\"` matches the `\"target_allocation_count\"`.\nAvoid creating multiple endpoints for the same model unless required, as each endpoint consumes significant resources.\n\nIMPORTANT: The inference APIs enable you to use certain services, such as built-in machine learning models (ELSER, E5), models uploaded through Eland, Cohere, OpenAI, Mistral, Azure OpenAI, Google AI Studio, Google Vertex AI, Anthropic, Watsonx.ai, or Hugging Face.\nFor built-in models and models uploaded through Eland, the inference APIs offer an alternative way to use and manage trained models.\nHowever, if you do not plan to use the inference APIs to use these models or if you want to use non-NLP models, use the machine learning trained model APIs.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -25286,7 +25297,7 @@
         }
       ],
       "query": [],
-      "specLocation": "inference/put/PutRequest.ts#L25-L44"
+      "specLocation": "inference/put/PutRequest.ts#L25-L54"
     },
     {
       "body": {
@@ -25992,7 +26003,7 @@
       "body": {
         "kind": "no_body"
       },
-      "description": "Deletes a pipeline used for Logstash Central Management.",
+      "description": "Delete a Logstash pipeline.\n\nDelete a pipeline that is used for Logstash Central Management.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -26006,7 +26017,7 @@
       },
       "path": [
         {
-          "description": "Identifier for the pipeline.",
+          "description": "An identifier for the pipeline.",
           "name": "id",
           "required": true,
           "type": {
@@ -26019,7 +26030,7 @@
         }
       ],
       "query": [],
-      "specLocation": "logstash/delete_pipeline/LogstashDeletePipelineRequest.ts#L23-L37"
+      "specLocation": "logstash/delete_pipeline/LogstashDeletePipelineRequest.ts#L23-L40"
     },
     {
       "body": {
@@ -26039,7 +26050,7 @@
       "body": {
         "kind": "no_body"
       },
-      "description": "Retrieves pipelines used for Logstash Central Management.",
+      "description": "Get Logstash pipelines.\n\nGet pipelines that are used for Logstash Central Management.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -26053,7 +26064,7 @@
       },
       "path": [
         {
-          "description": "Comma-separated list of pipeline identifiers.",
+          "description": "A comma-separated list of pipeline identifiers.",
           "name": "id",
           "required": false,
           "type": {
@@ -26066,7 +26077,7 @@
         }
       ],
       "query": [],
-      "specLocation": "logstash/get_pipeline/LogstashGetPipelineRequest.ts#L23-L37"
+      "specLocation": "logstash/get_pipeline/LogstashGetPipelineRequest.ts#L23-L40"
     },
     {
       "body": {
@@ -26112,7 +26123,7 @@
           }
         }
       },
-      "description": "Creates or updates a pipeline used for Logstash Central Management.",
+      "description": "Create or update a Logstash pipeline.\n\nCreate a pipeline that is used for Logstash Central Management.\nIf the specified pipeline exists, it is replaced.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -26126,7 +26137,7 @@
       },
       "path": [
         {
-          "description": "Identifier for the pipeline.",
+          "description": "An identifier for the pipeline.",
           "name": "id",
           "required": true,
           "type": {
@@ -26139,7 +26150,7 @@
         }
       ],
       "query": [],
-      "specLocation": "logstash/put_pipeline/LogstashPutPipelineRequest.ts#L24-L39"
+      "specLocation": "logstash/put_pipeline/LogstashPutPipelineRequest.ts#L24-L44"
     },
     {
       "body": {
@@ -105204,6 +105215,44 @@
       "kind": "enum",
       "members": [
         {
+          "name": "disabled"
+        },
+        {
+          "name": "v1"
+        }
+      ],
+      "name": {
+        "name": "EcsCompatibilityType",
+        "namespace": "text_structure._types"
+      },
+      "specLocation": "text_structure/_types/Structure.ts#L40-L43"
+    },
+    {
+      "kind": "enum",
+      "members": [
+        {
+          "name": "delimited"
+        },
+        {
+          "name": "ndjson"
+        },
+        {
+          "name": "semi_structured_text"
+        },
+        {
+          "name": "xml"
+        }
+      ],
+      "name": {
+        "name": "FormatType",
+        "namespace": "text_structure._types"
+      },
+      "specLocation": "text_structure/_types/Structure.ts#L45-L50"
+    },
+    {
+      "kind": "enum",
+      "members": [
+        {
           "name": "awaits_successful_execution"
         },
         {
@@ -106006,7 +106055,7 @@
         "name": "XPackCategory",
         "namespace": "xpack.info"
       },
-      "specLocation": "xpack/info/XPackInfoRequest.ts#L44-L48"
+      "specLocation": "xpack/info/XPackInfoRequest.ts#L49-L53"
     },
     {
       "attachedBehaviors": [
@@ -116360,7 +116409,7 @@
           }
         }
       ],
-      "specLocation": "connector/_types/Connector.ts#L237-L268"
+      "specLocation": "connector/_types/Connector.ts#L252-L283"
     },
     {
       "kind": "interface",
@@ -116370,6 +116419,7 @@
       },
       "properties": [
         {
+          "description": "Indicates whether document-level security is enabled.",
           "name": "document_level_security",
           "required": false,
           "type": {
@@ -116381,6 +116431,7 @@
           }
         },
         {
+          "description": "Indicates whether incremental syncs are enabled.",
           "name": "incremental_sync",
           "required": false,
           "type": {
@@ -116392,6 +116443,7 @@
           }
         },
         {
+          "description": "Indicates whether managed connector API keys are enabled.",
           "name": "native_connector_api_keys",
           "required": false,
           "type": {
@@ -116414,7 +116466,7 @@
           }
         }
       ],
-      "specLocation": "connector/_types/Connector.ts#L224-L229"
+      "specLocation": "connector/_types/Connector.ts#L230-L244"
     },
     {
       "kind": "interface",
@@ -116445,6 +116497,7 @@
       },
       "properties": [
         {
+          "description": "Indicates whether advanced sync rules are enabled.",
           "name": "advanced",
           "required": false,
           "type": {
@@ -116456,6 +116509,7 @@
           }
         },
         {
+          "description": "Indicates whether basic sync rules are enabled.",
           "name": "basic",
           "required": false,
           "type": {
@@ -116467,7 +116521,7 @@
           }
         }
       ],
-      "specLocation": "connector/_types/Connector.ts#L219-L222"
+      "specLocation": "connector/_types/Connector.ts#L219-L228"
     },
     {
       "kind": "interface",
@@ -116863,7 +116917,7 @@
           }
         }
       ],
-      "specLocation": "connector/_types/Connector.ts#L231-L235"
+      "specLocation": "connector/_types/Connector.ts#L246-L250"
     },
     {
       "kind": "interface",
@@ -126600,7 +126654,7 @@
       },
       "properties": [
         {
-          "description": "Description of the pipeline.\nThis description is not used by Elasticsearch or Logstash.",
+          "description": "A description of the pipeline.\nThis description is not used by Elasticsearch or Logstash.",
           "name": "description",
           "required": true,
           "type": {
@@ -126612,7 +126666,7 @@
           }
         },
         {
-          "description": "Date the pipeline was last updated.\nMust be in the `yyyy-MM-dd'T'HH:mm:ss.SSSZZ` strict_date_time format.",
+          "description": "The date the pipeline was last updated.\nIt must be in the `yyyy-MM-dd'T'HH:mm:ss.SSSZZ` strict_date_time format.",
           "name": "last_modified",
           "required": true,
           "type": {
@@ -126624,33 +126678,9 @@
           }
         },
         {
-          "description": "Optional metadata about the pipeline.\nMay have any contents.\nThis metadata is not generated or used by Elasticsearch or Logstash.",
-          "name": "pipeline_metadata",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "PipelineMetadata",
-              "namespace": "logstash._types"
-            }
-          }
-        },
-        {
-          "description": "User who last updated the pipeline.",
-          "name": "username",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "_builtins"
-            }
-          }
-        },
-        {
-          "description": "Configuration for the pipeline.",
-          "docId": "logstash-configuration-file-structure",
-          "docUrl": "https://www.elastic.co/guide/en/logstash/{branch}/configuration-file-structure.html",
+          "description": "The configuration for the pipeline.",
+          "extDocId": "logstash-configuration-file-structure",
+          "extDocUrl": "https://www.elastic.co/guide/en/logstash/{branch}/configuration-file-structure.html",
           "name": "pipeline",
           "required": true,
           "type": {
@@ -126662,9 +126692,21 @@
           }
         },
         {
-          "description": "Settings for the pipeline.\nSupports only flat keys in dot notation.",
-          "docId": "logstash-logstash-settings-file",
-          "docUrl": "https://www.elastic.co/guide/en/logstash/{branch}/logstash-settings-file.html",
+          "description": "Optional metadata about the pipeline, which can have any contents.\nThis metadata is not generated or used by Elasticsearch or Logstash.",
+          "name": "pipeline_metadata",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "PipelineMetadata",
+              "namespace": "logstash._types"
+            }
+          }
+        },
+        {
+          "description": "Settings for the pipeline.\nIt supports only flat keys in dot notation.",
+          "extDocId": "logstash-logstash-settings-file",
+          "extDocUrl": "https://www.elastic.co/guide/en/logstash/{branch}/logstash-settings-file.html",
           "name": "pipeline_settings",
           "required": true,
           "type": {
@@ -126674,9 +126716,21 @@
               "namespace": "logstash._types"
             }
           }
+        },
+        {
+          "description": "The user who last updated the pipeline.",
+          "name": "username",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "_builtins"
+            }
+          }
         }
       ],
-      "specLocation": "logstash/_types/Pipeline.ts#L60-L92"
+      "specLocation": "logstash/_types/Pipeline.ts#L60-L91"
     },
     {
       "kind": "interface",
