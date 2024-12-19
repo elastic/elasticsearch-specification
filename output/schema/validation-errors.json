@@ -243,12 +243,6 @@
       ],
       "response": []
     },
-    "connector.sync_job_check_in": {
-      "request": [
-        "Missing request & response"
-      ],
-      "response": []
-    },
     "connector.sync_job_claim": {
       "request": [
         "Missing request & response"
@@ -788,18 +782,6 @@
     "tasks.list": {
       "request": [
         "Request: query parameter 'master_timeout' does not exist in the json spec"
-      ],
-      "response": []
-    },
-    "text_structure.find_field_structure": {
-      "request": [
-        "Missing request & response"
-      ],
-      "response": []
-    },
-    "text_structure.find_message_structure": {
-      "request": [
-        "Missing request & response"
       ],
       "response": []
     },
