@@ -40,3 +40,11 @@ export interface Request extends RequestBase {
     event_type: EventType
   }
 }
+  query_parameters: {
+    /**
+     * Whether the response type has to include more details
+     */
+    debug?: boolean
+  }
+  /** @codegen_name payload */
+  body: UserDefinedValue
