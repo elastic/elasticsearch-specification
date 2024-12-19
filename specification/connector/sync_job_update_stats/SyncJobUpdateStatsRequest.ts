@@ -16,11 +16,11 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-import { Dictionary } from '@spec_utils/Dictionary'
-import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
+
 import { RequestBase } from '@_types/Base'
-import { Id } from '@_types/common'
-import { integer } from '@_types/Numeric'
+import { Duration } from '@_types/Time'
+import { Id, Metadata } from '@_types/common'
+import { integer, long } from '@_types/Numeric'
 
 /**
  * Set the connector sync job stats.
