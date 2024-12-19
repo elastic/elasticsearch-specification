@@ -10011,6 +10011,13 @@ export interface ConnectorSyncJobCancelResponse {
   result: Result
 }
 
+export interface ConnectorSyncJobCheckInRequest extends RequestBase {
+  connector_sync_job_id: Id
+}
+
+export interface ConnectorSyncJobCheckInResponse {
+}
+
 export interface ConnectorSyncJobDeleteRequest extends RequestBase {
   connector_sync_job_id: Id
 }
