@@ -52,7 +52,7 @@ export interface Request extends RequestBase {
     /**
      * The number of documents the sync job indexed.
      */
-    indexed_document_count: integer
+    indexed_document_count: long
     /**
      * The total size of the data (in MiB) the sync job indexed.
      */
