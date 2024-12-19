@@ -165,6 +165,8 @@ explain-dfanalytics,https://www.elastic.co/guide/en/elasticsearch/reference/{bra
 fail-processor,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/fail-processor.html
 field-and-document-access-control,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/field-and-document-access-control.html
 field-usage-stats,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/field-usage-stats.html
+find-field-structure,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/find-field-structure.html
+find-message-structure,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/find-message-structure.html
 find-structure,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/find-structure.html
 fingerprint-processor,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/fingerprint-processor.html
 foreach-processor,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/foreach-processor.html
