@@ -48,7 +48,7 @@ export interface Request<TJsonDocument> {
   query_parameters: {
     /** The text’s character set. It must be a character set that is supported by the JVM that Elasticsearch uses. For example, UTF-8, UTF-16LE, windows-1252, or EUC-JP. If this parameter is not specified, the structure finder chooses an appropriate character set. */
     charset?: string
-    /** If you have set format to delimited, you can specify the column names in a comma-separated list. If this parameter is not specified, the structure finder uses the column names from the header row of the text. If the text does not have a header role, columns are named "column1", "column2", "column3", etc. */
+    /** If you have set format to delimited, you can specify the column names in a comma-separated list. If this parameter is not specified, the structure finder uses the column names from the header row of the text. If the text does not have a header role, columns are named "column1", "column2", "column3", for example. */
     column_names?: string
     /** If you have set format to delimited, you can specify the character used to delimit the values in each row. Only a single character is supported; the delimiter cannot have multiple characters. By default, the API considers the following possibilities: comma, tab, semi-colon, and pipe (|). In this default scenario, all rows must have the same number of fields for the delimited format to be detected. If you specify a delimiter, up to 10% of the rows can have a different number of columns than the first row. */
     delimiter?: string
@@ -81,7 +81,7 @@ export interface Request<TJsonDocument> {
     /** If you have set format to delimited, you can specify whether values between delimiters should have whitespace trimmed from them. If this parameter is not specified and the delimiter is pipe (|), the default value is true. Otherwise, the default value is false. */
     should_trim_fields?: boolean
     /**
-     * Sets the maximum amount of time that the structure analysis make take. If the analysis is still running when the timeout expires then it will be aborted.
+     * Sets the maximum amount of time that the structure analysis can take. If the analysis is still running when the timeout expires then it will be stopped.
      * @server_default 25s
      */
     timeout?: Duration
