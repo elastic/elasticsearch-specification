@@ -70665,7 +70665,15 @@
       "ingest._types:DatabaseConfigurationFull": {
         "allOf": [
           {
-            "$ref": "#/components/schemas/ingest._types:DatabaseConfiguration"
+            "type": "object",
+            "properties": {
+              "name": {
+                "$ref": "#/components/schemas/_types:Name"
+              }
+            },
+            "required": [
+              "name"
+            ]
           },
           {
             "type": "object",
@@ -70675,8 +70683,16 @@
               },
               "local": {
                 "$ref": "#/components/schemas/ingest._types:Local"
+              },
+              "maxmind": {
+                "$ref": "#/components/schemas/ingest._types:Maxmind"
+              },
+              "ipinfo": {
+                "$ref": "#/components/schemas/ingest._types:Ipinfo"
               }
-            }
+            },
+            "minProperties": 1,
+            "maxProperties": 1
           }
         ]
       },
