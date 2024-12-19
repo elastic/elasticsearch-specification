@@ -25,6 +25,7 @@ import { EventType } from '../_types/AnalyticsEvent'
  * @rest_spec_name search_application.post_behavioral_analytics_event
  * @availability stack stability=experimental visibility=public
  * @doc_tag analytics
+ * @doc_id behavioral-analytics-collection-event
  * @ext_doc_id behavioral-analytics-event-reference
  */
 export interface Request extends RequestBase {
