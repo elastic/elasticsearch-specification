@@ -22,8 +22,10 @@ import { RequestBase } from '@_types/Base'
 import { Duration } from '@_types/Time'
 
 /**
+ * Send monitoring data.
+ * This API is used by the monitoring features to send monitoring data.
  * @rest_spec_name monitoring.bulk
- * @availability stack since=6.3.0 stability=stable
+ * @availability stack since=6.3.0 stability=stable visibility=private
  */
 export interface Request<TDocument, TPartialDocument> extends RequestBase {
   path_parts: {
