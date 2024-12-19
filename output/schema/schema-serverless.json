@@ -116327,7 +116327,7 @@
           }
         }
       ],
-      "specLocation": "connector/_types/Connector.ts#L237-L268"
+      "specLocation": "connector/_types/Connector.ts#L252-L283"
     },
     {
       "kind": "interface",
@@ -116337,6 +116337,7 @@
       },
       "properties": [
         {
+          "description": "Indicates whether document-level security is enabled.",
           "name": "document_level_security",
           "required": false,
           "type": {
@@ -116348,6 +116349,7 @@
           }
         },
         {
+          "description": "Indicates whether incremental syncs are enabled.",
           "name": "incremental_sync",
           "required": false,
           "type": {
@@ -116359,6 +116361,7 @@
           }
         },
         {
+          "description": "Indicates whether managed connector API keys are enabled.",
           "name": "native_connector_api_keys",
           "required": false,
           "type": {
@@ -116381,7 +116384,7 @@
           }
         }
       ],
-      "specLocation": "connector/_types/Connector.ts#L224-L229"
+      "specLocation": "connector/_types/Connector.ts#L230-L244"
     },
     {
       "kind": "interface",
@@ -116412,6 +116415,7 @@
       },
       "properties": [
         {
+          "description": "Indicates whether advanced sync rules are enabled.",
           "name": "advanced",
           "required": false,
           "type": {
@@ -116423,6 +116427,7 @@
           }
         },
         {
+          "description": "Indicates whether basic sync rules are enabled.",
           "name": "basic",
           "required": false,
           "type": {
@@ -116434,7 +116439,7 @@
           }
         }
       ],
-      "specLocation": "connector/_types/Connector.ts#L219-L222"
+      "specLocation": "connector/_types/Connector.ts#L219-L228"
     },
     {
       "kind": "interface",
@@ -116830,7 +116835,7 @@
           }
         }
       ],
-      "specLocation": "connector/_types/Connector.ts#L231-L235"
+      "specLocation": "connector/_types/Connector.ts#L246-L250"
     },
     {
       "kind": "interface",
