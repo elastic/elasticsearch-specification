@@ -5063,6 +5063,61 @@
         "x-beta": true
       }
     },
+    "/_connector/_sync_job/{connector_sync_job_id}/_error": {
+      "put": {
+        "tags": [
+          "connector"
+        ],
+        "summary": "Set a connector sync job error",
+        "description": "Set the `error` field for a connector sync job and set its `status` to `error`.\n\nTo sync data using self-managed connectors, you need to deploy the Elastic connector service on your own infrastructure.\nThis service runs automatically on Elastic Cloud for Elastic managed connectors.",
+        "operationId": "connector-sync-job-error",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "connector_sync_job_id",
+            "description": "The unique identifier for the connector sync job.",
+            "required": true,
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/_types:Id"
+            },
+            "style": "simple"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "error": {
+                    "description": "The error for the connector sync job error field.",
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "error"
+                ]
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                }
+              }
+            }
+          }
+        },
+        "x-state": "Technical preview"
+      }
+    },
     "/_connector/_sync_job": {
       "get": {
         "tags": [
