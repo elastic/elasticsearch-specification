@@ -17,9 +17,6 @@
  * under the License.
  */
 
-import { Result } from '@_types/Result'
-
 export class Response {
-  body: {
-  }
+  body: {}
 }
