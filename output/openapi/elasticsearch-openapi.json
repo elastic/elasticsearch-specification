@@ -899,6 +899,9 @@
         "parameters": [
           {
             "$ref": "#/components/parameters/cat.aliases#expand_wildcards"
+          },
+          {
+            "$ref": "#/components/parameters/cat.aliases#master_timeout"
           }
         ],
         "responses": {
@@ -922,6 +925,9 @@
           },
           {
             "$ref": "#/components/parameters/cat.aliases#expand_wildcards"
+          },
+          {
+            "$ref": "#/components/parameters/cat.aliases#master_timeout"
           }
         ],
         "responses": {
@@ -945,6 +951,9 @@
           },
           {
             "$ref": "#/components/parameters/cat.allocation#local"
+          },
+          {
+            "$ref": "#/components/parameters/cat.allocation#master_timeout"
           }
         ],
         "responses": {
@@ -971,6 +980,9 @@
           },
           {
             "$ref": "#/components/parameters/cat.allocation#local"
+          },
+          {
+            "$ref": "#/components/parameters/cat.allocation#master_timeout"
           }
         ],
         "responses": {
@@ -991,6 +1003,9 @@
         "parameters": [
           {
             "$ref": "#/components/parameters/cat.component_templates#local"
+          },
+          {
+            "$ref": "#/components/parameters/cat.component_templates#master_timeout"
           }
         ],
         "responses": {
@@ -1015,6 +1030,9 @@
           },
           {
             "$ref": "#/components/parameters/cat.component_templates#local"
+          },
+          {
+            "$ref": "#/components/parameters/cat.component_templates#master_timeout"
           }
         ],
         "responses": {
@@ -1170,10 +1188,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/cat.help:HelpRecord"
-                  }
+                  "type": "object"
                 }
               }
             }
@@ -1207,6 +1222,9 @@
           },
           {
             "$ref": "#/components/parameters/cat.indices#time"
+          },
+          {
+            "$ref": "#/components/parameters/cat.indices#master_timeout"
           }
         ],
         "responses": {
@@ -1245,6 +1263,9 @@
           },
           {
             "$ref": "#/components/parameters/cat.indices#time"
+          },
+          {
+            "$ref": "#/components/parameters/cat.indices#master_timeout"
           }
         ],
         "responses": {
@@ -1270,6 +1291,16 @@
             "deprecated": false,
             "schema": {
               "type": "boolean"
+            },
+            "style": "form"
+          },
+          {
+            "in": "query",
+            "name": "master_timeout",
+            "description": "Period to wait for a connection to the master node.",
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/_types:Duration"
             },
             "style": "form"
           }
@@ -1518,6 +1549,9 @@
           },
           {
             "$ref": "#/components/parameters/cat.ml_trained_models#size"
+          },
+          {
+            "$ref": "#/components/parameters/cat.ml_trained_models#time"
           }
         ],
         "responses": {
@@ -1557,6 +1591,9 @@
           },
           {
             "$ref": "#/components/parameters/cat.ml_trained_models#size"
+          },
+          {
+            "$ref": "#/components/parameters/cat.ml_trained_models#time"
           }
         ],
         "responses": {
@@ -1583,6 +1620,16 @@
             "deprecated": false,
             "schema": {
               "type": "boolean"
+            },
+            "style": "form"
+          },
+          {
+            "in": "query",
+            "name": "master_timeout",
+            "description": "Period to wait for a connection to the master node.",
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/_types:Duration"
             },
             "style": "form"
           }
@@ -1649,6 +1696,26 @@
               "type": "boolean"
             },
             "style": "form"
+          },
+          {
+            "in": "query",
+            "name": "master_timeout",
+            "description": "Period to wait for a connection to the master node.",
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/_types:Duration"
+            },
+            "style": "form"
+          },
+          {
+            "in": "query",
+            "name": "time",
+            "description": "Unit used to display time values.",
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/_types:TimeUnit"
+            },
+            "style": "form"
           }
         ],
         "responses": {
@@ -1686,6 +1753,26 @@
               "type": "boolean"
             },
             "style": "form"
+          },
+          {
+            "in": "query",
+            "name": "master_timeout",
+            "description": "Period to wait for a connection to the master node.",
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/_types:Duration"
+            },
+            "style": "form"
+          },
+          {
+            "in": "query",
+            "name": "time",
+            "description": "Unit used to display time values.",
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/_types:TimeUnit"
+            },
+            "style": "form"
           }
         ],
         "responses": {
@@ -1716,11 +1803,31 @@
         "parameters": [
           {
             "in": "query",
+            "name": "include_bootstrap",
+            "description": "Include bootstrap plugins in the response",
+            "deprecated": false,
+            "schema": {
+              "type": "boolean"
+            },
+            "style": "form"
+          },
+          {
+            "in": "query",
             "name": "local",
             "description": "If `true`, the request computes the list of selected nodes from the\nlocal cluster state. If `false` the list of selected nodes are computed\nfrom the cluster state of the master node. In both cases the coordinating\nnode will send requests for further information to each selected node.",
             "deprecated": false,
             "schema": {
               "type": "boolean"
+            },
+            "style": "form"
+          },
+          {
+            "in": "query",
+            "name": "master_timeout",
+            "description": "Period to wait for a connection to the master node.",
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/_types:Duration"
             },
             "style": "form"
           }
@@ -1759,6 +1866,9 @@
           },
           {
             "$ref": "#/components/parameters/cat.recovery#detailed"
+          },
+          {
+            "$ref": "#/components/parameters/cat.recovery#time"
           }
         ],
         "responses": {
@@ -1788,6 +1898,9 @@
           },
           {
             "$ref": "#/components/parameters/cat.recovery#detailed"
+          },
+          {
+            "$ref": "#/components/parameters/cat.recovery#time"
           }
         ],
         "responses": {
@@ -1805,6 +1918,28 @@
         "summary": "Get snapshot repository information",
         "description": "Get a list of snapshot repositories for a cluster.\nIMPORTANT: cat APIs are only intended for human consumption using the command line or Kibana console. They are not intended for use by applications. For application consumption, use the get snapshot repository API.",
         "operationId": "cat-repositories",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "local",
+            "description": "If `true`, the request computes the list of selected nodes from the\nlocal cluster state. If `false` the list of selected nodes are computed\nfrom the cluster state of the master node. In both cases the coordinating\nnode will send requests for further information to each selected node.",
+            "deprecated": false,
+            "schema": {
+              "type": "boolean"
+            },
+            "style": "form"
+          },
+          {
+            "in": "query",
+            "name": "master_timeout",
+            "description": "Period to wait for a connection to the master node.",
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/_types:Duration"
+            },
+            "style": "form"
+          }
+        ],
         "responses": {
           "200": {
             "description": "",
@@ -1837,6 +1972,9 @@
           },
           {
             "$ref": "#/components/parameters/cat.segments#local"
+          },
+          {
+            "$ref": "#/components/parameters/cat.segments#master_timeout"
           }
         ],
         "responses": {
@@ -1863,6 +2001,9 @@
           },
           {
             "$ref": "#/components/parameters/cat.segments#local"
+          },
+          {
+            "$ref": "#/components/parameters/cat.segments#master_timeout"
           }
         ],
         "responses": {
@@ -1883,6 +2024,12 @@
         "parameters": [
           {
             "$ref": "#/components/parameters/cat.shards#bytes"
+          },
+          {
+            "$ref": "#/components/parameters/cat.shards#master_timeout"
+          },
+          {
+            "$ref": "#/components/parameters/cat.shards#time"
           }
         ],
         "responses": {
@@ -1906,6 +2053,12 @@
           },
           {
             "$ref": "#/components/parameters/cat.shards#bytes"
+          },
+          {
+            "$ref": "#/components/parameters/cat.shards#master_timeout"
+          },
+          {
+            "$ref": "#/components/parameters/cat.shards#time"
           }
         ],
         "responses": {
@@ -1926,6 +2079,12 @@
         "parameters": [
           {
             "$ref": "#/components/parameters/cat.snapshots#ignore_unavailable"
+          },
+          {
+            "$ref": "#/components/parameters/cat.snapshots#master_timeout"
+          },
+          {
+            "$ref": "#/components/parameters/cat.snapshots#time"
           }
         ],
         "responses": {
@@ -1950,6 +2109,12 @@
           },
           {
             "$ref": "#/components/parameters/cat.snapshots#ignore_unavailable"
+          },
+          {
+            "$ref": "#/components/parameters/cat.snapshots#master_timeout"
+          },
+          {
+            "$ref": "#/components/parameters/cat.snapshots#time"
           }
         ],
         "responses": {
@@ -1994,7 +2159,7 @@
           },
           {
             "in": "query",
-            "name": "node_id",
+            "name": "nodes",
             "description": "Unique node identifiers, which are used to limit the response.",
             "deprecated": false,
             "schema": {
@@ -2012,6 +2177,36 @@
             "deprecated": false,
             "schema": {
               "type": "string"
+            },
+            "style": "form"
+          },
+          {
+            "in": "query",
+            "name": "time",
+            "description": "Unit used to display time values.",
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/_types:TimeUnit"
+            },
+            "style": "form"
+          },
+          {
+            "in": "query",
+            "name": "timeout",
+            "description": "Period to wait for a response.\nIf no response is received before the timeout expires, the request fails and returns an error.",
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/_types:Duration"
+            },
+            "style": "form"
+          },
+          {
+            "in": "query",
+            "name": "wait_for_completion",
+            "description": "If `true`, the request blocks until the task has completed.",
+            "deprecated": false,
+            "schema": {
+              "type": "boolean"
             },
             "style": "form"
           }
@@ -2045,6 +2240,9 @@
         "parameters": [
           {
             "$ref": "#/components/parameters/cat.templates#local"
+          },
+          {
+            "$ref": "#/components/parameters/cat.templates#master_timeout"
           }
         ],
         "responses": {
@@ -2069,6 +2267,9 @@
           },
           {
             "$ref": "#/components/parameters/cat.templates#local"
+          },
+          {
+            "$ref": "#/components/parameters/cat.templates#master_timeout"
           }
         ],
         "responses": {
@@ -2093,6 +2294,9 @@
           },
           {
             "$ref": "#/components/parameters/cat.thread_pool#local"
+          },
+          {
+            "$ref": "#/components/parameters/cat.thread_pool#master_timeout"
           }
         ],
         "responses": {
@@ -2119,6 +2323,9 @@
           },
           {
             "$ref": "#/components/parameters/cat.thread_pool#local"
+          },
+          {
+            "$ref": "#/components/parameters/cat.thread_pool#master_timeout"
           }
         ],
         "responses": {
@@ -7831,6 +8038,12 @@
             "$ref": "#/components/parameters/eql.search#allow_no_indices"
           },
           {
+            "$ref": "#/components/parameters/eql.search#allow_partial_search_results"
+          },
+          {
+            "$ref": "#/components/parameters/eql.search#allow_partial_sequence_results"
+          },
+          {
             "$ref": "#/components/parameters/eql.search#expand_wildcards"
           },
           {
@@ -7872,6 +8085,12 @@
           },
           {
             "$ref": "#/components/parameters/eql.search#allow_no_indices"
+          },
+          {
+            "$ref": "#/components/parameters/eql.search#allow_partial_search_results"
+          },
+          {
+            "$ref": "#/components/parameters/eql.search#allow_partial_sequence_results"
           },
           {
             "$ref": "#/components/parameters/eql.search#expand_wildcards"
@@ -15396,6 +15615,145 @@
         "x-state": "Added in 8.15.0"
       }
     },
+    "/_ingest/ip_location/database/{id}": {
+      "get": {
+        "tags": [
+          "ingest"
+        ],
+        "summary": "Returns information about one or more IP location database configurations",
+        "operationId": "ingest-get-ip-location-database-1",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/ingest.get_ip_location_database#id"
+          },
+          {
+            "$ref": "#/components/parameters/ingest.get_ip_location_database#master_timeout"
+          }
+        ],
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/ingest.get_ip_location_database#200"
+          }
+        },
+        "x-state": "Added in 8.15.0"
+      },
+      "put": {
+        "tags": [
+          "ingest"
+        ],
+        "summary": "Returns information about one or more IP location database configurations",
+        "operationId": "ingest-put-ip-location-database",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "description": "ID of the database configuration to create or update.",
+            "required": true,
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/_types:Id"
+            },
+            "style": "simple"
+          },
+          {
+            "in": "query",
+            "name": "master_timeout",
+            "description": "Period to wait for a connection to the master node.\nIf no response is received before the timeout expires, the request fails and returns an error.",
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/_types:Duration"
+            },
+            "style": "form"
+          },
+          {
+            "in": "query",
+            "name": "timeout",
+            "description": "Period to wait for a response. If no response is received before the timeout expires, the request fails and returns an error.",
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/_types:Duration"
+            },
+            "style": "form"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ingest._types:DatabaseConfiguration"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/_types:AcknowledgedResponseBase"
+                }
+              }
+            }
+          }
+        },
+        "x-state": "Added in 8.15.0"
+      },
+      "delete": {
+        "tags": [
+          "ingest"
+        ],
+        "summary": "Deletes an IP location database configuration",
+        "operationId": "ingest-delete-ip-location-database",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "description": "A comma-separated list of IP location database configurations to delete",
+            "required": true,
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/_types:Ids"
+            },
+            "style": "simple"
+          },
+          {
+            "in": "query",
+            "name": "master_timeout",
+            "description": "Period to wait for a connection to the master node.\nIf no response is received before the timeout expires, the request fails and returns an error.",
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/_types:Duration"
+            },
+            "style": "form"
+          },
+          {
+            "in": "query",
+            "name": "timeout",
+            "description": "Period to wait for a response. If no response is received before the timeout expires, the request fails and returns an error.",
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/_types:Duration"
+            },
+            "style": "form"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/_types:AcknowledgedResponseBase"
+                }
+              }
+            }
+          }
+        },
+        "x-state": "Added in 8.15.0"
+      }
+    },
     "/_ingest/pipeline/{id}": {
       "get": {
         "tags": [
@@ -15648,6 +16006,26 @@
         "responses": {
           "200": {
             "$ref": "#/components/responses/ingest.get_geoip_database#200"
+          }
+        },
+        "x-state": "Added in 8.15.0"
+      }
+    },
+    "/_ingest/ip_location/database": {
+      "get": {
+        "tags": [
+          "ingest"
+        ],
+        "summary": "Returns information about one or more IP location database configurations",
+        "operationId": "ingest-get-ip-location-database",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/ingest.get_ip_location_database#master_timeout"
+          }
+        ],
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/ingest.get_ip_location_database#200"
           }
         },
         "x-state": "Added in 8.15.0"
@@ -33335,7 +33713,8 @@
         "tags": [
           "tasks"
         ],
-        "summary": "Cancels a task, if it can be cancelled through an API",
+        "summary": "Cancel a task",
+        "description": "A task may continue to run for some time after it has been cancelled because it may not be able to safely stop its current activity straight away.\nIt is also possible that Elasticsearch must complete its work on other tasks before it can process the cancellation.\nThe get task information API will continue to list these cancelled tasks until they complete.\nThe cancelled flag in the response indicates that the cancellation command has been processed and the task will stop as soon as possible.\n\nTo troubleshoot why a cancelled task does not complete promptly, use the get task information API with the `?detailed` parameter to identify the other tasks the system is running.\nYou can also use the node hot threads API to obtain detailed information about the work the system is doing instead of completing the cancelled task.",
         "operationId": "tasks-cancel",
         "parameters": [
           {
@@ -33364,7 +33743,8 @@
         "tags": [
           "tasks"
         ],
-        "summary": "Cancels a task, if it can be cancelled through an API",
+        "summary": "Cancel a task",
+        "description": "A task may continue to run for some time after it has been cancelled because it may not be able to safely stop its current activity straight away.\nIt is also possible that Elasticsearch must complete its work on other tasks before it can process the cancellation.\nThe get task information API will continue to list these cancelled tasks until they complete.\nThe cancelled flag in the response indicates that the cancellation command has been processed and the task will stop as soon as possible.\n\nTo troubleshoot why a cancelled task does not complete promptly, use the get task information API with the `?detailed` parameter to identify the other tasks the system is running.\nYou can also use the node hot threads API to obtain detailed information about the work the system is doing instead of completing the cancelled task.",
         "operationId": "tasks-cancel-1",
         "parameters": [
           {
@@ -33397,7 +33777,7 @@
           "tasks"
         ],
         "summary": "Get task information",
-        "description": "Returns information about the tasks currently executing in the cluster.",
+        "description": "Get information about a task currently running in the cluster.",
         "operationId": "tasks-get",
         "parameters": [
           {
@@ -33470,7 +33850,8 @@
         "tags": [
           "tasks"
         ],
-        "summary": "The task management API returns information about tasks currently executing on one or more nodes in the cluster",
+        "summary": "Get all tasks",
+        "description": "Get information about the tasks currently running on one or more nodes in the cluster.",
         "operationId": "tasks-list",
         "parameters": [
           {
@@ -33496,7 +33877,7 @@
           {
             "in": "query",
             "name": "detailed",
-            "description": "If `true`, the response includes detailed information about shard recoveries.",
+            "description": "If `true`, the response includes detailed information about shard recoveries.\nThis information is useful to distinguish tasks from each other but is more costly to run.",
             "deprecated": false,
             "schema": {
               "type": "boolean"
@@ -34126,8 +34507,8 @@
         "tags": [
           "text_structure"
         ],
-        "summary": "Finds the structure of a text file",
-        "description": "The text file must contain data that is suitable to be ingested into Elasticsearch.",
+        "summary": "Find the structure of a text file",
+        "description": "The text file must contain data that is suitable to be ingested into Elasticsearch.\n\nThis API provides a starting point for ingesting data into Elasticsearch in a format that is suitable for subsequent use with other Elastic Stack functionality.\nUnlike other Elasticsearch endpoints, the data that is posted to this endpoint does not need to be UTF-8 encoded and in JSON format.\nIt must, however, be text; binary text formats are not currently supported.\nThe size is limited to the Elasticsearch HTTP receive buffer size, which defaults to 100 Mb.\n\nThe response from the API contains:\n\n* A couple of messages from the beginning of the text.\n* Statistics that reveal the most common values for all fields detected within the text and basic numeric statistics for numeric fields.\n* Information about the structure of the text, which is useful when you write ingest configurations to index it or similarly formatted text.\n* Appropriate mappings for an Elasticsearch index, which you could use to ingest the text.\n\nAll this information can be calculated by the structure finder with no guidance.\nHowever, you can optionally override some of the decisions about the text structure by specifying one or more query parameters.",
         "operationId": "text-structure-find-structure",
         "parameters": [
           {
@@ -34173,7 +34554,7 @@
           {
             "in": "query",
             "name": "explain",
-            "description": "If this parameter is set to true, the response includes a field named explanation, which is an array of strings that indicate how the structure finder produced its result.",
+            "description": "If this parameter is set to true, the response includes a field named explanation, which is an array of strings that indicate how the structure finder produced its result.\nIf the structure finder produces unexpected results for some text, use this query parameter to help you determine why the returned structure was chosen.",
             "deprecated": false,
             "schema": {
               "type": "boolean"
@@ -34409,7 +34790,11 @@
         "tags": [
           "text_structure"
         ],
-        "summary": "Tests a Grok pattern on some text",
+        "summary": "Test a Grok pattern",
+        "description": "Test a Grok pattern on one or more lines of text.\nThe API indicates whether the lines match the pattern together with the offsets and lengths of the matched substrings.",
+        "externalDocs": {
+          "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/grok.html"
+        },
         "operationId": "text-structure-test-grok-pattern",
         "parameters": [
           {
@@ -34430,7 +34815,11 @@
         "tags": [
           "text_structure"
         ],
-        "summary": "Tests a Grok pattern on some text",
+        "summary": "Test a Grok pattern",
+        "description": "Test a Grok pattern on one or more lines of text.\nThe API indicates whether the lines match the pattern together with the offsets and lengths of the matched substrings.",
+        "externalDocs": {
+          "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/grok.html"
+        },
         "operationId": "text-structure-test-grok-pattern-1",
         "parameters": [
           {
@@ -35259,8 +35648,8 @@
         "tags": [
           "transform"
         ],
-        "summary": "Upgrades all transforms",
-        "description": "This API identifies transforms that have a legacy configuration format and upgrades them to the latest version. It\nalso cleans up the internal data structures that store the transform state and checkpoints. The upgrade does not\naffect the source and destination indices. The upgrade also does not affect the roles that transforms use when\nElasticsearch security features are enabled; the role used to read source data and write to the destination index\nremains unchanged.",
+        "summary": "Upgrade all transforms",
+        "description": "Transforms are compatible across minor versions and between supported major versions.\nHowever, over time, the format of transform configuration information may change.\nThis API identifies transforms that have a legacy configuration format and upgrades them to the latest version.\nIt also cleans up the internal data structures that store the transform state and checkpoints.\nThe upgrade does not affect the source and destination indices.\nThe upgrade also does not affect the roles that transforms use when Elasticsearch security features are enabled; the role used to read source data and write to the destination index remains unchanged.\n\nIf a transform upgrade step fails, the upgrade stops and an error is returned about the underlying issue.\nResolve the issue then re-run the process again.\nA summary is returned when the upgrade is finished.\n\nTo ensure continuous transforms remain running during a major version upgrade of the cluster – for example, from 7.16 to 8.0 – it is recommended to upgrade transforms before upgrading the cluster.\nYou may want to perform a recent cluster backup prior to the upgrade.",
         "operationId": "transform-upgrade-transforms",
         "parameters": [
           {
@@ -36016,7 +36405,8 @@
         "tags": [
           "watcher"
         ],
-        "summary": "Acknowledges a watch, manually throttling the execution of the watch's actions",
+        "summary": "Acknowledge a watch",
+        "description": "Acknowledging a watch enables you to manually throttle the execution of the watch's actions.\n\nThe acknowledgement state of an action is stored in the `status.actions.<id>.ack.state` structure.\n\nIMPORTANT: If the specified watch is currently being executed, this API will return an error\nThe reason for this behavior is to prevent overwriting the watch status from a watch execution.",
         "operationId": "watcher-ack-watch",
         "parameters": [
           {
@@ -36033,7 +36423,8 @@
         "tags": [
           "watcher"
         ],
-        "summary": "Acknowledges a watch, manually throttling the execution of the watch's actions",
+        "summary": "Acknowledge a watch",
+        "description": "Acknowledging a watch enables you to manually throttle the execution of the watch's actions.\n\nThe acknowledgement state of an action is stored in the `status.actions.<id>.ack.state` structure.\n\nIMPORTANT: If the specified watch is currently being executed, this API will return an error\nThe reason for this behavior is to prevent overwriting the watch status from a watch execution.",
         "operationId": "watcher-ack-watch-1",
         "parameters": [
           {
@@ -36052,7 +36443,8 @@
         "tags": [
           "watcher"
         ],
-        "summary": "Acknowledges a watch, manually throttling the execution of the watch's actions",
+        "summary": "Acknowledge a watch",
+        "description": "Acknowledging a watch enables you to manually throttle the execution of the watch's actions.\n\nThe acknowledgement state of an action is stored in the `status.actions.<id>.ack.state` structure.\n\nIMPORTANT: If the specified watch is currently being executed, this API will return an error\nThe reason for this behavior is to prevent overwriting the watch status from a watch execution.",
         "operationId": "watcher-ack-watch-2",
         "parameters": [
           {
@@ -36072,7 +36464,8 @@
         "tags": [
           "watcher"
         ],
-        "summary": "Acknowledges a watch, manually throttling the execution of the watch's actions",
+        "summary": "Acknowledge a watch",
+        "description": "Acknowledging a watch enables you to manually throttle the execution of the watch's actions.\n\nThe acknowledgement state of an action is stored in the `status.actions.<id>.ack.state` structure.\n\nIMPORTANT: If the specified watch is currently being executed, this API will return an error\nThe reason for this behavior is to prevent overwriting the watch status from a watch execution.",
         "operationId": "watcher-ack-watch-3",
         "parameters": [
           {
@@ -36094,7 +36487,11 @@
         "tags": [
           "watcher"
         ],
-        "summary": "Activates a currently inactive watch",
+        "summary": "Activate a watch",
+        "description": "A watch can be either active or inactive.",
+        "externalDocs": {
+          "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/how-watcher-works.html"
+        },
         "operationId": "watcher-activate-watch",
         "parameters": [
           {
@@ -36111,7 +36508,11 @@
         "tags": [
           "watcher"
         ],
-        "summary": "Activates a currently inactive watch",
+        "summary": "Activate a watch",
+        "description": "A watch can be either active or inactive.",
+        "externalDocs": {
+          "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/how-watcher-works.html"
+        },
         "operationId": "watcher-activate-watch-1",
         "parameters": [
           {
@@ -36130,7 +36531,11 @@
         "tags": [
           "watcher"
         ],
-        "summary": "Deactivates a currently active watch",
+        "summary": "Deactivate a watch",
+        "description": "A watch can be either active or inactive.",
+        "externalDocs": {
+          "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/how-watcher-works.html"
+        },
         "operationId": "watcher-deactivate-watch",
         "parameters": [
           {
@@ -36147,7 +36552,11 @@
         "tags": [
           "watcher"
         ],
-        "summary": "Deactivates a currently active watch",
+        "summary": "Deactivate a watch",
+        "description": "A watch can be either active or inactive.",
+        "externalDocs": {
+          "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/how-watcher-works.html"
+        },
         "operationId": "watcher-deactivate-watch-1",
         "parameters": [
           {
@@ -36166,7 +36575,7 @@
         "tags": [
           "watcher"
         ],
-        "summary": "Retrieves a watch by its ID",
+        "summary": "Get a watch",
         "operationId": "watcher-get-watch",
         "parameters": [
           {
@@ -36226,7 +36635,8 @@
         "tags": [
           "watcher"
         ],
-        "summary": "Creates a new watch, or updates an existing one",
+        "summary": "Create or update a watch",
+        "description": "When a watch is registered, a new document that represents the watch is added to the `.watches` index and its trigger is immediately registered with the relevant trigger engine.\nTypically for the `schedule` trigger, the scheduler is the trigger engine.\n\nIMPORTANT: You must use Kibana or this API to create a watch.\nDo not add a watch directly to the `.watches` index by using the Elasticsearch index API.\nIf Elasticsearch security features are enabled, do not give users write privileges on the `.watches` index.\n\nWhen you add a watch you can also define its initial active state by setting the *active* parameter.\n\nWhen Elasticsearch security features are enabled, your watch can index or search only on indices for which the user that stored the watch has privileges.\nIf the user is able to read index `a`, but not index `b`, the same will apply when the watch runs.",
         "operationId": "watcher-put-watch",
         "parameters": [
           {
@@ -36258,7 +36668,8 @@
         "tags": [
           "watcher"
         ],
-        "summary": "Creates a new watch, or updates an existing one",
+        "summary": "Create or update a watch",
+        "description": "When a watch is registered, a new document that represents the watch is added to the `.watches` index and its trigger is immediately registered with the relevant trigger engine.\nTypically for the `schedule` trigger, the scheduler is the trigger engine.\n\nIMPORTANT: You must use Kibana or this API to create a watch.\nDo not add a watch directly to the `.watches` index by using the Elasticsearch index API.\nIf Elasticsearch security features are enabled, do not give users write privileges on the `.watches` index.\n\nWhen you add a watch you can also define its initial active state by setting the *active* parameter.\n\nWhen Elasticsearch security features are enabled, your watch can index or search only on indices for which the user that stored the watch has privileges.\nIf the user is able to read index `a`, but not index `b`, the same will apply when the watch runs.",
         "operationId": "watcher-put-watch-1",
         "parameters": [
           {
@@ -36290,7 +36701,8 @@
         "tags": [
           "watcher"
         ],
-        "summary": "Removes a watch from Watcher",
+        "summary": "Delete a watch",
+        "description": "When the watch is removed, the document representing the watch in the `.watches` index is gone and it will never be run again.\n\nDeleting a watch does not delete any watch execution records related to this watch from the watch history.\n\nIMPORTANT: Deleting a watch must be done by using only this API.\nDo not delete the watch directly from the `.watches` index using the Elasticsearch delete document API\nWhen Elasticsearch security features are enabled, make sure no write privileges are granted to anyone for the `.watches` index.",
         "operationId": "watcher-delete-watch",
         "parameters": [
           {
@@ -36340,8 +36752,8 @@
         "tags": [
           "watcher"
         ],
-        "summary": "This API can be used to force execution of the watch outside of its triggering logic or to simulate the watch execution for debugging purposes",
-        "description": "For testing and debugging purposes, you also have fine-grained control on how the watch runs. You can execute the watch without executing all of its actions or alternatively by simulating them. You can also force execution by ignoring the watch condition and control whether a watch record would be written to the watch history after execution.",
+        "summary": "Run a watch",
+        "description": "This API can be used to force execution of the watch outside of its triggering logic or to simulate the watch execution for debugging purposes.\n\nFor testing and debugging purposes, you also have fine-grained control on how the watch runs.\nYou can run the watch without running all of its actions or alternatively by simulating them.\nYou can also force execution by ignoring the watch condition and control whether a watch record would be written to the watch history after it runs.\n\nYou can use the run watch API to run watches that are not yet registered by specifying the watch definition inline.\nThis serves as great tool for testing and debugging your watches prior to adding them to Watcher.",
         "operationId": "watcher-execute-watch",
         "parameters": [
           {
@@ -36364,8 +36776,8 @@
         "tags": [
           "watcher"
         ],
-        "summary": "This API can be used to force execution of the watch outside of its triggering logic or to simulate the watch execution for debugging purposes",
-        "description": "For testing and debugging purposes, you also have fine-grained control on how the watch runs. You can execute the watch without executing all of its actions or alternatively by simulating them. You can also force execution by ignoring the watch condition and control whether a watch record would be written to the watch history after execution.",
+        "summary": "Run a watch",
+        "description": "This API can be used to force execution of the watch outside of its triggering logic or to simulate the watch execution for debugging purposes.\n\nFor testing and debugging purposes, you also have fine-grained control on how the watch runs.\nYou can run the watch without running all of its actions or alternatively by simulating them.\nYou can also force execution by ignoring the watch condition and control whether a watch record would be written to the watch history after it runs.\n\nYou can use the run watch API to run watches that are not yet registered by specifying the watch definition inline.\nThis serves as great tool for testing and debugging your watches prior to adding them to Watcher.",
         "operationId": "watcher-execute-watch-1",
         "parameters": [
           {
@@ -36390,8 +36802,8 @@
         "tags": [
           "watcher"
         ],
-        "summary": "This API can be used to force execution of the watch outside of its triggering logic or to simulate the watch execution for debugging purposes",
-        "description": "For testing and debugging purposes, you also have fine-grained control on how the watch runs. You can execute the watch without executing all of its actions or alternatively by simulating them. You can also force execution by ignoring the watch condition and control whether a watch record would be written to the watch history after execution.",
+        "summary": "Run a watch",
+        "description": "This API can be used to force execution of the watch outside of its triggering logic or to simulate the watch execution for debugging purposes.\n\nFor testing and debugging purposes, you also have fine-grained control on how the watch runs.\nYou can run the watch without running all of its actions or alternatively by simulating them.\nYou can also force execution by ignoring the watch condition and control whether a watch record would be written to the watch history after it runs.\n\nYou can use the run watch API to run watches that are not yet registered by specifying the watch definition inline.\nThis serves as great tool for testing and debugging your watches prior to adding them to Watcher.",
         "operationId": "watcher-execute-watch-2",
         "parameters": [
           {
@@ -36411,8 +36823,8 @@
         "tags": [
           "watcher"
         ],
-        "summary": "This API can be used to force execution of the watch outside of its triggering logic or to simulate the watch execution for debugging purposes",
-        "description": "For testing and debugging purposes, you also have fine-grained control on how the watch runs. You can execute the watch without executing all of its actions or alternatively by simulating them. You can also force execution by ignoring the watch condition and control whether a watch record would be written to the watch history after execution.",
+        "summary": "Run a watch",
+        "description": "This API can be used to force execution of the watch outside of its triggering logic or to simulate the watch execution for debugging purposes.\n\nFor testing and debugging purposes, you also have fine-grained control on how the watch runs.\nYou can run the watch without running all of its actions or alternatively by simulating them.\nYou can also force execution by ignoring the watch condition and control whether a watch record would be written to the watch history after it runs.\n\nYou can use the run watch API to run watches that are not yet registered by specifying the watch definition inline.\nThis serves as great tool for testing and debugging your watches prior to adding them to Watcher.",
         "operationId": "watcher-execute-watch-3",
         "parameters": [
           {
@@ -36434,7 +36846,8 @@
         "tags": [
           "watcher"
         ],
-        "summary": "Retrieves stored watches",
+        "summary": "Query watches",
+        "description": "Get all registered watches in a paginated manner and optionally filter watches by a query.",
         "operationId": "watcher-query-watches",
         "requestBody": {
           "$ref": "#/components/requestBodies/watcher.query_watches"
@@ -36450,7 +36863,8 @@
         "tags": [
           "watcher"
         ],
-        "summary": "Retrieves stored watches",
+        "summary": "Query watches",
+        "description": "Get all registered watches in a paginated manner and optionally filter watches by a query.",
         "operationId": "watcher-query-watches-1",
         "requestBody": {
           "$ref": "#/components/requestBodies/watcher.query_watches"
@@ -36468,7 +36882,8 @@
         "tags": [
           "watcher"
         ],
-        "summary": "Starts Watcher if it is not already running",
+        "summary": "Start the watch service",
+        "description": "Start the Watcher service if it is not already running.",
         "operationId": "watcher-start",
         "responses": {
           "200": {
@@ -36489,7 +36904,7 @@
         "tags": [
           "watcher"
         ],
-        "summary": "Retrieves the current Watcher metrics",
+        "summary": "Get Watcher statistics",
         "operationId": "watcher-stats",
         "parameters": [
           {
@@ -36512,7 +36927,7 @@
         "tags": [
           "watcher"
         ],
-        "summary": "Retrieves the current Watcher metrics",
+        "summary": "Get Watcher statistics",
         "operationId": "watcher-stats-1",
         "parameters": [
           {
@@ -36538,7 +36953,8 @@
         "tags": [
           "watcher"
         ],
-        "summary": "Stops Watcher if it is running",
+        "summary": "Stop the watch service",
+        "description": "Stop the Watcher service if it is running.",
         "operationId": "watcher-stop",
         "responses": {
           "200": {
@@ -36559,7 +36975,8 @@
         "tags": [
           "xpack"
         ],
-        "summary": "Provides general information about the installed X-Pack features",
+        "summary": "Get information",
+        "description": "The information provided by the API includes:\n\n* Build information including the build number and timestamp.\n* License information about the currently installed license.\n* Feature information for the features that are currently enabled and available under the current license.",
         "operationId": "xpack-info",
         "parameters": [
           {
@@ -36635,7 +37052,8 @@
         "tags": [
           "xpack"
         ],
-        "summary": "This API provides information about which features are currently enabled and available under the current license and some usage statistics",
+        "summary": "Get usage information",
+        "description": "Get information about the features that are currently enabled and available under the current license.\nThe API also provides some usage statistics.",
         "operationId": "xpack-usage",
         "parameters": [
           {
@@ -50345,17 +50763,6 @@
             "type": "string"
           }
         }
-      },
-      "cat.help:HelpRecord": {
-        "type": "object",
-        "properties": {
-          "endpoint": {
-            "type": "string"
-          }
-        },
-        "required": [
-          "endpoint"
-        ]
       },
       "_types:HealthStatus": {
         "type": "string",
@@ -65445,6 +65852,7 @@
             "type": "boolean"
           },
           "description": {
+            "description": "Human readable text that identifies the particular request that the task is performing.\nFor example, it might identify the search request being performed by a search task.\nOther kinds of tasks have different descriptions, like `_reindex` which has the source and the destination, or `_bulk` which just has the number of requests and the destination indices.\nMany requests will have only an empty description because more detailed information about the request is not easily available or particularly helpful in identifying the request.",
             "type": "string"
           },
           "headers": {
@@ -65469,7 +65877,7 @@
             "$ref": "#/components/schemas/_types:EpochTimeUnitMillis"
           },
           "status": {
-            "description": "Task status information can vary wildly from task to task.",
+            "description": "The internal status of the task, which varies from task to task.\nThe format also varies.\nWhile the goal is to keep the status for a particular task consistent from version to version, this is not always possible because sometimes the implementation changes.\nFields might be removed from the status for a particular request so any parsing you do of the status might break in minor releases.",
             "type": "object"
           },
           "type": {
@@ -70510,18 +70918,32 @@
         ]
       },
       "ingest._types:DatabaseConfiguration": {
-        "type": "object",
-        "properties": {
-          "name": {
-            "$ref": "#/components/schemas/_types:Name"
+        "description": "The configuration necessary to identify which IP geolocation provider to use to download a database, as well as any provider-specific configuration necessary for such downloading.\nAt present, the only supported providers are maxmind and ipinfo, and the maxmind provider requires that an account_id (string) is configured.\nA provider (either maxmind or ipinfo) must be specified. The web and local providers can be returned as read only configurations.",
+        "allOf": [
+          {
+            "type": "object",
+            "properties": {
+              "name": {
+                "$ref": "#/components/schemas/_types:Name"
+              }
+            },
+            "required": [
+              "name"
+            ]
           },
-          "maxmind": {
-            "$ref": "#/components/schemas/ingest._types:Maxmind"
+          {
+            "type": "object",
+            "properties": {
+              "maxmind": {
+                "$ref": "#/components/schemas/ingest._types:Maxmind"
+              },
+              "ipinfo": {
+                "$ref": "#/components/schemas/ingest._types:Ipinfo"
+              }
+            },
+            "minProperties": 1,
+            "maxProperties": 1
           }
-        },
-        "required": [
-          "name",
-          "maxmind"
         ]
       },
       "ingest._types:Maxmind": {
@@ -70533,6 +70955,66 @@
         },
         "required": [
           "account_id"
+        ]
+      },
+      "ingest._types:Ipinfo": {
+        "type": "object"
+      },
+      "ingest.get_ip_location_database:DatabaseConfigurationMetadata": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "$ref": "#/components/schemas/_types:Id"
+          },
+          "version": {
+            "$ref": "#/components/schemas/_types:VersionNumber"
+          },
+          "modified_date_millis": {
+            "$ref": "#/components/schemas/_types:EpochTimeUnitMillis"
+          },
+          "modified_date": {
+            "$ref": "#/components/schemas/_types:EpochTimeUnitMillis"
+          },
+          "database": {
+            "$ref": "#/components/schemas/ingest._types:DatabaseConfigurationFull"
+          }
+        },
+        "required": [
+          "id",
+          "version",
+          "database"
+        ]
+      },
+      "ingest._types:DatabaseConfigurationFull": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/ingest._types:DatabaseConfiguration"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "web": {
+                "$ref": "#/components/schemas/ingest._types:Web"
+              },
+              "local": {
+                "$ref": "#/components/schemas/ingest._types:Local"
+              }
+            }
+          }
+        ]
+      },
+      "ingest._types:Web": {
+        "type": "object"
+      },
+      "ingest._types:Local": {
+        "type": "object",
+        "properties": {
+          "type": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "type"
         ]
       },
       "ingest._types:Pipeline": {
@@ -91436,6 +91918,27 @@
           }
         }
       },
+      "ingest.get_ip_location_database#200": {
+        "description": "",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "databases": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/ingest.get_ip_location_database:DatabaseConfigurationMetadata"
+                  }
+                }
+              },
+              "required": [
+                "databases"
+              ]
+            }
+          }
+        }
+      },
       "ingest.get_pipeline#200": {
         "description": "",
         "content": {
@@ -94218,6 +94721,16 @@
         },
         "style": "form"
       },
+      "cat.aliases#master_timeout": {
+        "in": "query",
+        "name": "master_timeout",
+        "description": "Period to wait for a connection to the master node.",
+        "deprecated": false,
+        "schema": {
+          "$ref": "#/components/schemas/_types:Duration"
+        },
+        "style": "form"
+      },
       "cat.allocation#node_id": {
         "in": "path",
         "name": "node_id",
@@ -94249,6 +94762,16 @@
         },
         "style": "form"
       },
+      "cat.allocation#master_timeout": {
+        "in": "query",
+        "name": "master_timeout",
+        "description": "Period to wait for a connection to the master node.",
+        "deprecated": false,
+        "schema": {
+          "$ref": "#/components/schemas/_types:Duration"
+        },
+        "style": "form"
+      },
       "cat.component_templates#name": {
         "in": "path",
         "name": "name",
@@ -94267,6 +94790,16 @@
         "deprecated": false,
         "schema": {
           "type": "boolean"
+        },
+        "style": "form"
+      },
+      "cat.component_templates#master_timeout": {
+        "in": "query",
+        "name": "master_timeout",
+        "description": "Period to wait for a connection to the master node.",
+        "deprecated": false,
+        "schema": {
+          "$ref": "#/components/schemas/_types:Duration"
         },
         "style": "form"
       },
@@ -94383,6 +94916,16 @@
         },
         "style": "form"
       },
+      "cat.indices#master_timeout": {
+        "in": "query",
+        "name": "master_timeout",
+        "description": "Period to wait for a connection to the master node.",
+        "deprecated": false,
+        "schema": {
+          "$ref": "#/components/schemas/_types:Duration"
+        },
+        "style": "form"
+      },
       "cat.ml_data_frame_analytics#id": {
         "in": "path",
         "name": "id",
@@ -94440,7 +94983,7 @@
         "description": "Unit used to display time values.",
         "deprecated": false,
         "schema": {
-          "$ref": "#/components/schemas/_types:Duration"
+          "$ref": "#/components/schemas/_types:TimeUnit"
         },
         "style": "form"
       },
@@ -94627,6 +95170,16 @@
         },
         "style": "form"
       },
+      "cat.ml_trained_models#time": {
+        "in": "query",
+        "name": "time",
+        "description": "Unit used to display time values.",
+        "deprecated": false,
+        "schema": {
+          "$ref": "#/components/schemas/_types:TimeUnit"
+        },
+        "style": "form"
+      },
       "cat.recovery#index": {
         "in": "path",
         "name": "index",
@@ -94668,6 +95221,16 @@
         },
         "style": "form"
       },
+      "cat.recovery#time": {
+        "in": "query",
+        "name": "time",
+        "description": "Unit used to display time values.",
+        "deprecated": false,
+        "schema": {
+          "$ref": "#/components/schemas/_types:TimeUnit"
+        },
+        "style": "form"
+      },
       "cat.segments#index": {
         "in": "path",
         "name": "index",
@@ -94699,6 +95262,16 @@
         },
         "style": "form"
       },
+      "cat.segments#master_timeout": {
+        "in": "query",
+        "name": "master_timeout",
+        "description": "Period to wait for a connection to the master node.",
+        "deprecated": false,
+        "schema": {
+          "$ref": "#/components/schemas/_types:Duration"
+        },
+        "style": "form"
+      },
       "cat.shards#index": {
         "in": "path",
         "name": "index",
@@ -94717,6 +95290,26 @@
         "deprecated": false,
         "schema": {
           "$ref": "#/components/schemas/_types:Bytes"
+        },
+        "style": "form"
+      },
+      "cat.shards#master_timeout": {
+        "in": "query",
+        "name": "master_timeout",
+        "description": "Period to wait for a connection to the master node.",
+        "deprecated": false,
+        "schema": {
+          "$ref": "#/components/schemas/_types:Duration"
+        },
+        "style": "form"
+      },
+      "cat.shards#time": {
+        "in": "query",
+        "name": "time",
+        "description": "Unit used to display time values.",
+        "deprecated": false,
+        "schema": {
+          "$ref": "#/components/schemas/_types:TimeUnit"
         },
         "style": "form"
       },
@@ -94741,6 +95334,26 @@
         },
         "style": "form"
       },
+      "cat.snapshots#master_timeout": {
+        "in": "query",
+        "name": "master_timeout",
+        "description": "Period to wait for a connection to the master node.",
+        "deprecated": false,
+        "schema": {
+          "$ref": "#/components/schemas/_types:Duration"
+        },
+        "style": "form"
+      },
+      "cat.snapshots#time": {
+        "in": "query",
+        "name": "time",
+        "description": "Unit used to display time values.",
+        "deprecated": false,
+        "schema": {
+          "$ref": "#/components/schemas/_types:TimeUnit"
+        },
+        "style": "form"
+      },
       "cat.templates#name": {
         "in": "path",
         "name": "name",
@@ -94759,6 +95372,16 @@
         "deprecated": false,
         "schema": {
           "type": "boolean"
+        },
+        "style": "form"
+      },
+      "cat.templates#master_timeout": {
+        "in": "query",
+        "name": "master_timeout",
+        "description": "Period to wait for a connection to the master node.",
+        "deprecated": false,
+        "schema": {
+          "$ref": "#/components/schemas/_types:Duration"
         },
         "style": "form"
       },
@@ -94790,6 +95413,16 @@
         "deprecated": false,
         "schema": {
           "type": "boolean"
+        },
+        "style": "form"
+      },
+      "cat.thread_pool#master_timeout": {
+        "in": "query",
+        "name": "master_timeout",
+        "description": "Period to wait for a connection to the master node.",
+        "deprecated": false,
+        "schema": {
+          "$ref": "#/components/schemas/_types:Duration"
         },
         "style": "form"
       },
@@ -95528,6 +96161,26 @@
       "eql.search#allow_no_indices": {
         "in": "query",
         "name": "allow_no_indices",
+        "deprecated": false,
+        "schema": {
+          "type": "boolean"
+        },
+        "style": "form"
+      },
+      "eql.search#allow_partial_search_results": {
+        "in": "query",
+        "name": "allow_partial_search_results",
+        "description": "If true, returns partial results if there are shard failures. If false, returns an error with no partial results.",
+        "deprecated": false,
+        "schema": {
+          "type": "boolean"
+        },
+        "style": "form"
+      },
+      "eql.search#allow_partial_sequence_results": {
+        "in": "query",
+        "name": "allow_partial_sequence_results",
+        "description": "If true, sequence queries will return partial results in case of shard failures. If false, they will return no results at all.\nThis flag has effect only if allow_partial_search_results is true.",
         "deprecated": false,
         "schema": {
           "type": "boolean"
@@ -98571,6 +99224,27 @@
         "style": "simple"
       },
       "ingest.get_geoip_database#master_timeout": {
+        "in": "query",
+        "name": "master_timeout",
+        "description": "Period to wait for a connection to the master node.\nIf no response is received before the timeout expires, the request fails and returns an error.",
+        "deprecated": false,
+        "schema": {
+          "$ref": "#/components/schemas/_types:Duration"
+        },
+        "style": "form"
+      },
+      "ingest.get_ip_location_database#id": {
+        "in": "path",
+        "name": "id",
+        "description": "Comma-separated list of database configuration IDs to retrieve.\nWildcard (`*`) expressions are supported.\nTo get all database configurations, omit this parameter or use `*`.",
+        "required": true,
+        "deprecated": false,
+        "schema": {
+          "$ref": "#/components/schemas/_types:Ids"
+        },
+        "style": "simple"
+      },
+      "ingest.get_ip_location_database#master_timeout": {
         "in": "query",
         "name": "master_timeout",
         "description": "Period to wait for a connection to the master node.\nIf no response is received before the timeout expires, the request fails and returns an error.",
@@ -103320,6 +103994,12 @@
                 },
                 "wait_for_completion_timeout": {
                   "$ref": "#/components/schemas/_types:Duration"
+                },
+                "allow_partial_search_results": {
+                  "type": "boolean"
+                },
+                "allow_partial_sequence_results": {
+                  "type": "boolean"
                 },
                 "size": {
                   "$ref": "#/components/schemas/_types:uint"

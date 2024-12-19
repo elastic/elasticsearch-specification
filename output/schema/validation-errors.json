@@ -48,36 +48,15 @@
       ],
       "response": []
     },
-    "cat.count": {
-      "request": [
-        "Request: query parameter 'master_timeout' does not exist in the json spec"
-      ],
-      "response": []
-    },
-    "cat.fielddata": {
-      "request": [
-        "Request: query parameter 'master_timeout' does not exist in the json spec"
-      ],
-      "response": []
-    },
-    "cat.health": {
-      "request": [
-        "Request: query parameter 'master_timeout' does not exist in the json spec"
-      ],
-      "response": []
-    },
     "cat.help": {
       "request": [
-        "Request: query parameter 'format' does not exist in the json spec",
-        "Request: query parameter 'h' does not exist in the json spec",
-        "Request: query parameter 'master_timeout' does not exist in the json spec",
-        "Request: query parameter 'v' does not exist in the json spec"
+        "Request: missing json spec query parameter 'help'",
+        "Request: missing json spec query parameter 's'"
       ],
       "response": []
     },
     "cat.ml_data_frame_analytics": {
       "request": [
-        "Request: query parameter 'master_timeout' does not exist in the json spec",
         "request definition cat.ml_data_frame_analytics:Request / query - Property 'h' is already defined in an ancestor class",
         "request definition cat.ml_data_frame_analytics:Request / query - Property 's' is already defined in an ancestor class"
       ],
@@ -85,7 +64,6 @@
     },
     "cat.ml_datafeeds": {
       "request": [
-        "Request: query parameter 'master_timeout' does not exist in the json spec",
         "request definition cat.ml_datafeeds:Request / query - Property 'h' is already defined in an ancestor class",
         "request definition cat.ml_datafeeds:Request / query - Property 's' is already defined in an ancestor class"
       ],
@@ -93,7 +71,6 @@
     },
     "cat.ml_jobs": {
       "request": [
-        "Request: query parameter 'master_timeout' does not exist in the json spec",
         "request definition cat.ml_jobs:Request / query - Property 'h' is already defined in an ancestor class",
         "request definition cat.ml_jobs:Request / query - Property 's' is already defined in an ancestor class"
       ],
@@ -101,42 +78,14 @@
     },
     "cat.ml_trained_models": {
       "request": [
-        "Request: query parameter 'master_timeout' does not exist in the json spec",
-        "Request: missing json spec query parameter 'time'",
         "request definition cat.ml_trained_models:Request / query - Property 'h' is already defined in an ancestor class",
         "request definition cat.ml_trained_models:Request / query - Property 's' is already defined in an ancestor class"
       ],
       "response": []
     },
-    "cat.nodes": {
-      "request": [
-        "Request: missing json spec query parameter 'time'"
-      ],
-      "response": []
-    },
-    "cat.pending_tasks": {
-      "request": [
-        "Request: missing json spec query parameter 'time'"
-      ],
-      "response": []
-    },
-    "cat.plugins": {
-      "request": [
-        "Request: missing json spec query parameter 'include_bootstrap'"
-      ],
-      "response": []
-    },
     "cat.recovery": {
       "request": [
-        "Request: query parameter 'master_timeout' does not exist in the json spec",
-        "Request: missing json spec query parameter 'index'",
-        "Request: missing json spec query parameter 'time'"
-      ],
-      "response": []
-    },
-    "cat.repositories": {
-      "request": [
-        "Request: missing json spec query parameter 'local'"
+        "Request: missing json spec query parameter 'index'"
       ],
       "response": []
     },
@@ -147,30 +96,15 @@
       ],
       "response": []
     },
-    "cat.shards": {
-      "request": [
-        "Request: missing json spec query parameter 'time'"
-      ],
-      "response": []
-    },
-    "cat.snapshots": {
-      "request": [
-        "Request: missing json spec query parameter 'time'"
-      ],
-      "response": []
-    },
     "cat.tasks": {
       "request": [
-        "Request: query parameter 'node_id' does not exist in the json spec",
-        "Request: query parameter 'master_timeout' does not exist in the json spec",
-        "Request: missing json spec query parameter 'nodes'",
-        "Request: missing json spec query parameter 'time'"
+        "Request: query parameter 'timeout' does not exist in the json spec",
+        "Request: query parameter 'wait_for_completion' does not exist in the json spec"
       ],
       "response": []
     },
     "cat.transforms": {
       "request": [
-        "Request: query parameter 'master_timeout' does not exist in the json spec",
         "request definition cat.transforms:Request / query - Property 'h' is already defined in an ancestor class",
         "request definition cat.transforms:Request / query - Property 's' is already defined in an ancestor class"
       ],
@@ -372,6 +306,8 @@
     "eql.search": {
       "request": [
         "Request: query parameter 'allow_no_indices' does not exist in the json spec",
+        "Request: query parameter 'allow_partial_search_results' does not exist in the json spec",
+        "Request: query parameter 'allow_partial_sequence_results' does not exist in the json spec",
         "Request: query parameter 'expand_wildcards' does not exist in the json spec",
         "Request: query parameter 'ignore_unavailable' does not exist in the json spec"
       ],
@@ -553,7 +489,8 @@
     },
     "ingest.delete_ip_location_database": {
       "request": [
-        "Missing request & response"
+        "Request: query parameter 'master_timeout' does not exist in the json spec",
+        "Request: query parameter 'timeout' does not exist in the json spec"
       ],
       "response": []
     },
@@ -565,7 +502,7 @@
     },
     "ingest.get_ip_location_database": {
       "request": [
-        "Missing request & response"
+        "Request: query parameter 'master_timeout' does not exist in the json spec"
       ],
       "response": []
     },
@@ -578,7 +515,8 @@
     },
     "ingest.put_ip_location_database": {
       "request": [
-        "Missing request & response"
+        "Request: query parameter 'master_timeout' does not exist in the json spec",
+        "Request: query parameter 'timeout' does not exist in the json spec"
       ],
       "response": []
     },

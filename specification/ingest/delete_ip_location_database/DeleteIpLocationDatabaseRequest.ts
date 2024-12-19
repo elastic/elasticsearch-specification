@@ -18,18 +18,31 @@
  */
 
 import { RequestBase } from '@_types/Base'
-import { Name } from '@_types/common'
+import { Ids } from '@_types/common'
+import { Duration } from '@_types/Time'
 
 /**
- * Deactivate a watch.
- * A watch can be either active or inactive.
- * @rest_spec_name watcher.deactivate_watch
- * @availability stack stability=stable
- * @cluster_privileges manage_watcher
- * @ext_doc_id watcher-works
+ * Deletes an IP location database configuration.
+ * @rest_spec_name ingest.delete_ip_location_database
+ * @availability stack since=8.15.0 stability=stable
+ * @availability serverless visibility=private
  */
 export interface Request extends RequestBase {
   path_parts: {
-    watch_id: Name
+    /**
+     * A comma-separated list of IP location database configurations to delete
+     */
+    id: Ids
+  }
+  query_parameters: {
+    /**
+     * Period to wait for a connection to the master node.
+     * If no response is received before the timeout expires, the request fails and returns an error.
+     * @server_default 30s */
+    master_timeout?: Duration
+    /**
+     * Period to wait for a response. If no response is received before the timeout expires, the request fails and returns an error.
+     * @server_default 30s */
+    timeout?: Duration
   }
 }

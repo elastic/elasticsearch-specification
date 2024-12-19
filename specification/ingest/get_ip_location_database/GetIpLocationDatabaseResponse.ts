@@ -17,6 +17,18 @@
  * under the License.
  */
 
-export class HelpRecord {
-  endpoint: string
+import { DatabaseConfigurationFull } from '@ingest/_types/Database'
+import { Id, VersionNumber } from '@_types/common'
+import { EpochTime, UnitMillis } from '@_types/Time'
+
+export class Response {
+  body: { databases: DatabaseConfigurationMetadata[] }
+}
+
+class DatabaseConfigurationMetadata {
+  id: Id
+  version: VersionNumber
+  modified_date_millis?: EpochTime<UnitMillis>
+  modified_date?: EpochTime<UnitMillis>
+  database: DatabaseConfigurationFull
 }

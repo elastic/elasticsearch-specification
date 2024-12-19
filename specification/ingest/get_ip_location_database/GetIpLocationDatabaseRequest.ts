@@ -18,18 +18,29 @@
  */
 
 import { RequestBase } from '@_types/Base'
-import { Name } from '@_types/common'
+import { Ids } from '@_types/common'
+import { Duration } from '@_types/Time'
 
 /**
- * Deactivate a watch.
- * A watch can be either active or inactive.
- * @rest_spec_name watcher.deactivate_watch
- * @availability stack stability=stable
- * @cluster_privileges manage_watcher
- * @ext_doc_id watcher-works
+ * Returns information about one or more IP location database configurations.
+ * @rest_spec_name ingest.get_ip_location_database
+ * @availability stack since=8.15.0 stability=stable
+ * @availability serverless visibility=private
  */
 export interface Request extends RequestBase {
   path_parts: {
-    watch_id: Name
+    /**
+     * Comma-separated list of database configuration IDs to retrieve.
+     * Wildcard (`*`) expressions are supported.
+     * To get all database configurations, omit this parameter or use `*`.
+     */
+    id?: Ids
+  }
+  query_parameters: {
+    /**
+     * Period to wait for a connection to the master node.
+     * If no response is received before the timeout expires, the request fails and returns an error.
+     * @server_default 30s */
+    master_timeout?: Duration
   }
 }

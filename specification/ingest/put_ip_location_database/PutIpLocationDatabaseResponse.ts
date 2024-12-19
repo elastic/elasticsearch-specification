@@ -17,13 +17,8 @@
  * under the License.
  */
 
-import { RequestBase } from '@_types/Base'
+import { AcknowledgedResponseBase } from '@_types/Base'
 
-/**
- * Stop the watch service.
- * Stop the Watcher service if it is running.
- * @rest_spec_name watcher.stop
- * @availability stack stability=stable
- * @cluster_privileges manage_watcher
- */
-export interface Request extends RequestBase {}
+export class Response {
+  body: AcknowledgedResponseBase
+}
