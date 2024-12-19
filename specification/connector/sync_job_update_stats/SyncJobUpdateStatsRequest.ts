@@ -48,7 +48,7 @@ export interface Request extends RequestBase {
     /**
      * The number of documents the sync job deleted.
      */
-    deleted_document_count: integer
+    deleted_document_count: long
     /**
      * The number of documents the sync job indexed.
      */
