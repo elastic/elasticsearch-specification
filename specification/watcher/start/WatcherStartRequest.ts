@@ -20,7 +20,10 @@
 import { RequestBase } from '@_types/Base'
 
 /**
+ * Start the watch service.
+ * Start the Watcher service if it is not already running.
  * @rest_spec_name watcher.start
  * @availability stack stability=stable
+ * @cluster_privileges manage_watcher
  */
 export interface Request extends RequestBase {}
