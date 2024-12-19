@@ -18,9 +18,9 @@
  */
 
 import { RequestBase } from '@_types/Base'
-import { Duration } from '@_types/Time'
 import { Id, Metadata } from '@_types/common'
 import { integer, long } from '@_types/Numeric'
+import { Duration } from '@_types/Time'
 
 /**
  * Set the connector sync job stats.
