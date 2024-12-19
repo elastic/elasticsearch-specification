@@ -21,8 +21,16 @@ import { RequestBase } from '@_types/Base'
 import { Name, Names } from '@_types/common'
 
 /**
+ * Acknowledge a watch.
+ * Acknowledging a watch enables you to manually throttle the execution of the watch's actions.
+ *
+ * The acknowledgement state of an action is stored in the `status.actions.<id>.ack.state` structure.
+ *
+ * IMPORTANT: If the specified watch is currently being executed, this API will return an error
+ * The reason for this behavior is to prevent overwriting the watch status from a watch execution.
  * @rest_spec_name watcher.ack_watch
  * @availability stack stability=stable
+ * @cluster_privileges manage_watcher
  */
 export interface Request extends RequestBase {
   path_parts: {

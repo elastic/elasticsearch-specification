@@ -21,8 +21,10 @@ import { RequestBase } from '@_types/Base'
 import { WatcherMetric } from './types'
 
 /**
+ * Get Watcher statistics.
  * @rest_spec_name watcher.stats
  * @availability stack since=5.5.0 stability=stable
+ * @cluster_privileges monitor_watcher
  */
 export interface Request extends RequestBase {
   path_parts: {

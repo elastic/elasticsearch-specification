@@ -21,8 +21,10 @@ import { RequestBase } from '@_types/Base'
 import { Name } from '@_types/common'
 
 /**
+ * Get a watch.
  * @rest_spec_name watcher.get_watch
  * @availability stack since=5.6.0 stability=stable
+ * @cluster_privileges monitor_watcher
  */
 export interface Request extends RequestBase {
   path_parts: {
