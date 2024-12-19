@@ -243,12 +243,6 @@
       ],
       "response": []
     },
-    "connector.sync_job_claim": {
-      "request": [
-        "Missing request & response"
-      ],
-      "response": []
-    },
     "connector.sync_job_error": {
       "request": [
         "Missing request & response"
