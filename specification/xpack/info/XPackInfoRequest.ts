@@ -20,11 +20,16 @@
 import { RequestBase } from '@_types/Base'
 
 /**
- * Provides general information about the installed X-Pack features.
+ * Get information.
+ * The information provided by the API includes:
+ *
+ * * Build information including the build number and timestamp.
+ * * License information about the currently installed license.
+ * * Feature information for the features that are currently enabled and available under the current license.
  * @rest_spec_name xpack.info
  * @availability stack stability=stable
  * @availability serverless stability=stable visibility=private
- * @cluster_privileges monitor,manage
+ * @cluster_privileges monitor
  */
 export interface Request extends RequestBase {
   query_parameters: {
