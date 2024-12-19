@@ -26,8 +26,15 @@ import { RequestBase } from '@_types/Base'
 import { Id } from '@_types/common'
 
 /**
+ * Run a watch.
  * This API can be used to force execution of the watch outside of its triggering logic or to simulate the watch execution for debugging purposes.
- * For testing and debugging purposes, you also have fine-grained control on how the watch runs. You can execute the watch without executing all of its actions or alternatively by simulating them. You can also force execution by ignoring the watch condition and control whether a watch record would be written to the watch history after execution.
+ *
+ * For testing and debugging purposes, you also have fine-grained control on how the watch runs.
+ * You can run the watch without running all of its actions or alternatively by simulating them.
+ * You can also force execution by ignoring the watch condition and control whether a watch record would be written to the watch history after it runs.
+ *
+ * You can use the run watch API to run watches that are not yet registered by specifying the watch definition inline.
+ * This serves as great tool for testing and debugging your watches prior to adding them to Watcher.
  * @rest_spec_name watcher.execute_watch
  * @availability stack stability=stable
  * @cluster_privileges manage_watcher

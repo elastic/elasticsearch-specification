@@ -4935,6 +4935,65 @@
         "x-beta": true
       }
     },
+    "/_connector/_sync_job/{connector_sync_job_id}/_claim": {
+      "put": {
+        "tags": [
+          "connector"
+        ],
+        "summary": "Claim a connector sync job",
+        "description": "This action updates the job status to `in_progress` and sets the `last_seen` and `started_at` timestamps to the current time.\nAdditionally, it can set the `sync_cursor` property for the sync job.\n\nThis API is not intended for direct connector management by users.\nIt supports the implementation of services that utilize the connector protocol to communicate with Elasticsearch.\n\nTo sync data using self-managed connectors, you need to deploy the Elastic connector service on your own infrastructure.\nThis service runs automatically on Elastic Cloud for Elastic managed connectors.",
+        "operationId": "connector-sync-job-claim",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "connector_sync_job_id",
+            "description": "The unique identifier of the connector sync job.",
+            "required": true,
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/_types:Id"
+            },
+            "style": "simple"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "sync_cursor": {
+                    "description": "The cursor object from the last incremental sync job.\nThis should reference the `sync_cursor` field in the connector state for which the job runs.",
+                    "type": "object"
+                  },
+                  "worker_hostname": {
+                    "description": "The host name of the current system that will run the job.",
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "worker_hostname"
+                ]
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                }
+              }
+            }
+          }
+        },
+        "x-state": "Technical preview"
+      }
+    },
     "/_connector/_sync_job/{connector_sync_job_id}": {
       "get": {
         "tags": [
@@ -11375,7 +11434,7 @@
       },
       "delete": {
         "tags": [
-          "indices"
+          "data stream"
         ],
         "summary": "Delete data streams",
         "description": "Deletes one or more data streams and their backing indices.",
@@ -11795,7 +11854,7 @@
       },
       "put": {
         "tags": [
-          "indices"
+          "data stream"
         ],
         "summary": "Update data stream lifecycles",
         "description": "Update the data stream lifecycle of the specified data streams.",
@@ -12428,7 +12487,7 @@
     "/{index}/_downsample/{target_index}": {
       "post": {
         "tags": [
-          "indices"
+          "data stream"
         ],
         "summary": "Downsample an index",
         "description": "Aggregate a time series (TSDS) index and store pre-computed statistical summaries (`min`, `max`, `sum`, `value_count` and `avg`) for each metric field grouped by a configured time interval.\nFor example, a TSDS index that contains metrics sampled every 10 seconds can be downsampled to an hourly index.\nAll documents within an hour interval are summarized and stored as a single document in the downsample index.\n\nNOTE: Only indices in a time series data stream are supported.\nNeither field nor document level security can be defined on the source index.\nThe source index must be read only (`index.blocks.write: true`).",
@@ -12547,7 +12606,7 @@
     "/{index}/_lifecycle/explain": {
       "get": {
         "tags": [
-          "indices"
+          "data stream"
         ],
         "summary": "Get the status for a data stream lifecycle",
         "description": "Get information about an index or data stream's current data stream lifecycle status, such as time since index creation, time since rollover, the lifecycle configuration managing the index, or any errors encountered during lifecycle execution.",
@@ -13755,7 +13814,7 @@
     "/_data_stream/_promote/{name}": {
       "post": {
         "tags": [
-          "indices"
+          "data stream"
         ],
         "summary": "Promote a data stream",
         "description": "Promote a data stream from a replicated data stream managed by cross-cluster replication (CCR) to a regular data stream.\n\nWith CCR auto following, a data stream from a remote cluster can be replicated to the local cluster.\nThese data streams can't be rolled over in the local cluster.\nThese replicated data streams roll over only if the upstream data stream rolls over.\nIn the event that the remote cluster is no longer available, the data stream in the local cluster can be promoted to a regular data stream, which allows these data streams to be rolled over in the local cluster.\n\nNOTE: When promoting a data stream, ensure the local cluster has a data stream enabled index template that matches the data stream.\nIf this is missing, the data stream will not be able to roll over until a matching index template is created.\nThis will affect the lifecycle management of the data stream and interfere with the data stream size and retention.",
@@ -33694,7 +33753,8 @@
         "tags": [
           "tasks"
         ],
-        "summary": "Cancels a task, if it can be cancelled through an API",
+        "summary": "Cancel a task",
+        "description": "A task may continue to run for some time after it has been cancelled because it may not be able to safely stop its current activity straight away.\nIt is also possible that Elasticsearch must complete its work on other tasks before it can process the cancellation.\nThe get task information API will continue to list these cancelled tasks until they complete.\nThe cancelled flag in the response indicates that the cancellation command has been processed and the task will stop as soon as possible.\n\nTo troubleshoot why a cancelled task does not complete promptly, use the get task information API with the `?detailed` parameter to identify the other tasks the system is running.\nYou can also use the node hot threads API to obtain detailed information about the work the system is doing instead of completing the cancelled task.",
         "operationId": "tasks-cancel",
         "parameters": [
           {
@@ -33723,7 +33783,8 @@
         "tags": [
           "tasks"
         ],
-        "summary": "Cancels a task, if it can be cancelled through an API",
+        "summary": "Cancel a task",
+        "description": "A task may continue to run for some time after it has been cancelled because it may not be able to safely stop its current activity straight away.\nIt is also possible that Elasticsearch must complete its work on other tasks before it can process the cancellation.\nThe get task information API will continue to list these cancelled tasks until they complete.\nThe cancelled flag in the response indicates that the cancellation command has been processed and the task will stop as soon as possible.\n\nTo troubleshoot why a cancelled task does not complete promptly, use the get task information API with the `?detailed` parameter to identify the other tasks the system is running.\nYou can also use the node hot threads API to obtain detailed information about the work the system is doing instead of completing the cancelled task.",
         "operationId": "tasks-cancel-1",
         "parameters": [
           {
@@ -33756,7 +33817,7 @@
           "tasks"
         ],
         "summary": "Get task information",
-        "description": "Returns information about the tasks currently executing in the cluster.",
+        "description": "Get information about a task currently running in the cluster.",
         "operationId": "tasks-get",
         "parameters": [
           {
@@ -33829,7 +33890,8 @@
         "tags": [
           "tasks"
         ],
-        "summary": "The task management API returns information about tasks currently executing on one or more nodes in the cluster",
+        "summary": "Get all tasks",
+        "description": "Get information about the tasks currently running on one or more nodes in the cluster.",
         "operationId": "tasks-list",
         "parameters": [
           {
@@ -33855,7 +33917,7 @@
           {
             "in": "query",
             "name": "detailed",
-            "description": "If `true`, the response includes detailed information about shard recoveries.",
+            "description": "If `true`, the response includes detailed information about shard recoveries.\nThis information is useful to distinguish tasks from each other but is more costly to run.",
             "deprecated": false,
             "schema": {
               "type": "boolean"
@@ -36105,7 +36167,8 @@
         "tags": [
           "watcher"
         ],
-        "summary": "Acknowledges a watch, manually throttling the execution of the watch's actions",
+        "summary": "Acknowledge a watch",
+        "description": "Acknowledging a watch enables you to manually throttle the execution of the watch's actions.\n\nThe acknowledgement state of an action is stored in the `status.actions.<id>.ack.state` structure.\n\nIMPORTANT: If the specified watch is currently being executed, this API will return an error\nThe reason for this behavior is to prevent overwriting the watch status from a watch execution.",
         "operationId": "watcher-ack-watch",
         "parameters": [
           {
@@ -36122,7 +36185,8 @@
         "tags": [
           "watcher"
         ],
-        "summary": "Acknowledges a watch, manually throttling the execution of the watch's actions",
+        "summary": "Acknowledge a watch",
+        "description": "Acknowledging a watch enables you to manually throttle the execution of the watch's actions.\n\nThe acknowledgement state of an action is stored in the `status.actions.<id>.ack.state` structure.\n\nIMPORTANT: If the specified watch is currently being executed, this API will return an error\nThe reason for this behavior is to prevent overwriting the watch status from a watch execution.",
         "operationId": "watcher-ack-watch-1",
         "parameters": [
           {
@@ -36141,7 +36205,8 @@
         "tags": [
           "watcher"
         ],
-        "summary": "Acknowledges a watch, manually throttling the execution of the watch's actions",
+        "summary": "Acknowledge a watch",
+        "description": "Acknowledging a watch enables you to manually throttle the execution of the watch's actions.\n\nThe acknowledgement state of an action is stored in the `status.actions.<id>.ack.state` structure.\n\nIMPORTANT: If the specified watch is currently being executed, this API will return an error\nThe reason for this behavior is to prevent overwriting the watch status from a watch execution.",
         "operationId": "watcher-ack-watch-2",
         "parameters": [
           {
@@ -36161,7 +36226,8 @@
         "tags": [
           "watcher"
         ],
-        "summary": "Acknowledges a watch, manually throttling the execution of the watch's actions",
+        "summary": "Acknowledge a watch",
+        "description": "Acknowledging a watch enables you to manually throttle the execution of the watch's actions.\n\nThe acknowledgement state of an action is stored in the `status.actions.<id>.ack.state` structure.\n\nIMPORTANT: If the specified watch is currently being executed, this API will return an error\nThe reason for this behavior is to prevent overwriting the watch status from a watch execution.",
         "operationId": "watcher-ack-watch-3",
         "parameters": [
           {
@@ -36183,7 +36249,11 @@
         "tags": [
           "watcher"
         ],
-        "summary": "Activates a currently inactive watch",
+        "summary": "Activate a watch",
+        "description": "A watch can be either active or inactive.",
+        "externalDocs": {
+          "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/how-watcher-works.html"
+        },
         "operationId": "watcher-activate-watch",
         "parameters": [
           {
@@ -36200,7 +36270,11 @@
         "tags": [
           "watcher"
         ],
-        "summary": "Activates a currently inactive watch",
+        "summary": "Activate a watch",
+        "description": "A watch can be either active or inactive.",
+        "externalDocs": {
+          "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/how-watcher-works.html"
+        },
         "operationId": "watcher-activate-watch-1",
         "parameters": [
           {
@@ -36219,7 +36293,11 @@
         "tags": [
           "watcher"
         ],
-        "summary": "Deactivates a currently active watch",
+        "summary": "Deactivate a watch",
+        "description": "A watch can be either active or inactive.",
+        "externalDocs": {
+          "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/how-watcher-works.html"
+        },
         "operationId": "watcher-deactivate-watch",
         "parameters": [
           {
@@ -36236,7 +36314,11 @@
         "tags": [
           "watcher"
         ],
-        "summary": "Deactivates a currently active watch",
+        "summary": "Deactivate a watch",
+        "description": "A watch can be either active or inactive.",
+        "externalDocs": {
+          "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/how-watcher-works.html"
+        },
         "operationId": "watcher-deactivate-watch-1",
         "parameters": [
           {
@@ -36255,7 +36337,7 @@
         "tags": [
           "watcher"
         ],
-        "summary": "Retrieves a watch by its ID",
+        "summary": "Get a watch",
         "operationId": "watcher-get-watch",
         "parameters": [
           {
@@ -36315,7 +36397,8 @@
         "tags": [
           "watcher"
         ],
-        "summary": "Creates a new watch, or updates an existing one",
+        "summary": "Create or update a watch",
+        "description": "When a watch is registered, a new document that represents the watch is added to the `.watches` index and its trigger is immediately registered with the relevant trigger engine.\nTypically for the `schedule` trigger, the scheduler is the trigger engine.\n\nIMPORTANT: You must use Kibana or this API to create a watch.\nDo not add a watch directly to the `.watches` index by using the Elasticsearch index API.\nIf Elasticsearch security features are enabled, do not give users write privileges on the `.watches` index.\n\nWhen you add a watch you can also define its initial active state by setting the *active* parameter.\n\nWhen Elasticsearch security features are enabled, your watch can index or search only on indices for which the user that stored the watch has privileges.\nIf the user is able to read index `a`, but not index `b`, the same will apply when the watch runs.",
         "operationId": "watcher-put-watch",
         "parameters": [
           {
@@ -36347,7 +36430,8 @@
         "tags": [
           "watcher"
         ],
-        "summary": "Creates a new watch, or updates an existing one",
+        "summary": "Create or update a watch",
+        "description": "When a watch is registered, a new document that represents the watch is added to the `.watches` index and its trigger is immediately registered with the relevant trigger engine.\nTypically for the `schedule` trigger, the scheduler is the trigger engine.\n\nIMPORTANT: You must use Kibana or this API to create a watch.\nDo not add a watch directly to the `.watches` index by using the Elasticsearch index API.\nIf Elasticsearch security features are enabled, do not give users write privileges on the `.watches` index.\n\nWhen you add a watch you can also define its initial active state by setting the *active* parameter.\n\nWhen Elasticsearch security features are enabled, your watch can index or search only on indices for which the user that stored the watch has privileges.\nIf the user is able to read index `a`, but not index `b`, the same will apply when the watch runs.",
         "operationId": "watcher-put-watch-1",
         "parameters": [
           {
@@ -36379,7 +36463,8 @@
         "tags": [
           "watcher"
         ],
-        "summary": "Removes a watch from Watcher",
+        "summary": "Delete a watch",
+        "description": "When the watch is removed, the document representing the watch in the `.watches` index is gone and it will never be run again.\n\nDeleting a watch does not delete any watch execution records related to this watch from the watch history.\n\nIMPORTANT: Deleting a watch must be done by using only this API.\nDo not delete the watch directly from the `.watches` index using the Elasticsearch delete document API\nWhen Elasticsearch security features are enabled, make sure no write privileges are granted to anyone for the `.watches` index.",
         "operationId": "watcher-delete-watch",
         "parameters": [
           {
@@ -36429,8 +36514,8 @@
         "tags": [
           "watcher"
         ],
-        "summary": "This API can be used to force execution of the watch outside of its triggering logic or to simulate the watch execution for debugging purposes",
-        "description": "For testing and debugging purposes, you also have fine-grained control on how the watch runs. You can execute the watch without executing all of its actions or alternatively by simulating them. You can also force execution by ignoring the watch condition and control whether a watch record would be written to the watch history after execution.",
+        "summary": "Run a watch",
+        "description": "This API can be used to force execution of the watch outside of its triggering logic or to simulate the watch execution for debugging purposes.\n\nFor testing and debugging purposes, you also have fine-grained control on how the watch runs.\nYou can run the watch without running all of its actions or alternatively by simulating them.\nYou can also force execution by ignoring the watch condition and control whether a watch record would be written to the watch history after it runs.\n\nYou can use the run watch API to run watches that are not yet registered by specifying the watch definition inline.\nThis serves as great tool for testing and debugging your watches prior to adding them to Watcher.",
         "operationId": "watcher-execute-watch",
         "parameters": [
           {
@@ -36453,8 +36538,8 @@
         "tags": [
           "watcher"
         ],
-        "summary": "This API can be used to force execution of the watch outside of its triggering logic or to simulate the watch execution for debugging purposes",
-        "description": "For testing and debugging purposes, you also have fine-grained control on how the watch runs. You can execute the watch without executing all of its actions or alternatively by simulating them. You can also force execution by ignoring the watch condition and control whether a watch record would be written to the watch history after execution.",
+        "summary": "Run a watch",
+        "description": "This API can be used to force execution of the watch outside of its triggering logic or to simulate the watch execution for debugging purposes.\n\nFor testing and debugging purposes, you also have fine-grained control on how the watch runs.\nYou can run the watch without running all of its actions or alternatively by simulating them.\nYou can also force execution by ignoring the watch condition and control whether a watch record would be written to the watch history after it runs.\n\nYou can use the run watch API to run watches that are not yet registered by specifying the watch definition inline.\nThis serves as great tool for testing and debugging your watches prior to adding them to Watcher.",
         "operationId": "watcher-execute-watch-1",
         "parameters": [
           {
@@ -36479,8 +36564,8 @@
         "tags": [
           "watcher"
         ],
-        "summary": "This API can be used to force execution of the watch outside of its triggering logic or to simulate the watch execution for debugging purposes",
-        "description": "For testing and debugging purposes, you also have fine-grained control on how the watch runs. You can execute the watch without executing all of its actions or alternatively by simulating them. You can also force execution by ignoring the watch condition and control whether a watch record would be written to the watch history after execution.",
+        "summary": "Run a watch",
+        "description": "This API can be used to force execution of the watch outside of its triggering logic or to simulate the watch execution for debugging purposes.\n\nFor testing and debugging purposes, you also have fine-grained control on how the watch runs.\nYou can run the watch without running all of its actions or alternatively by simulating them.\nYou can also force execution by ignoring the watch condition and control whether a watch record would be written to the watch history after it runs.\n\nYou can use the run watch API to run watches that are not yet registered by specifying the watch definition inline.\nThis serves as great tool for testing and debugging your watches prior to adding them to Watcher.",
         "operationId": "watcher-execute-watch-2",
         "parameters": [
           {
@@ -36500,8 +36585,8 @@
         "tags": [
           "watcher"
         ],
-        "summary": "This API can be used to force execution of the watch outside of its triggering logic or to simulate the watch execution for debugging purposes",
-        "description": "For testing and debugging purposes, you also have fine-grained control on how the watch runs. You can execute the watch without executing all of its actions or alternatively by simulating them. You can also force execution by ignoring the watch condition and control whether a watch record would be written to the watch history after execution.",
+        "summary": "Run a watch",
+        "description": "This API can be used to force execution of the watch outside of its triggering logic or to simulate the watch execution for debugging purposes.\n\nFor testing and debugging purposes, you also have fine-grained control on how the watch runs.\nYou can run the watch without running all of its actions or alternatively by simulating them.\nYou can also force execution by ignoring the watch condition and control whether a watch record would be written to the watch history after it runs.\n\nYou can use the run watch API to run watches that are not yet registered by specifying the watch definition inline.\nThis serves as great tool for testing and debugging your watches prior to adding them to Watcher.",
         "operationId": "watcher-execute-watch-3",
         "parameters": [
           {
@@ -36523,7 +36608,8 @@
         "tags": [
           "watcher"
         ],
-        "summary": "Retrieves stored watches",
+        "summary": "Query watches",
+        "description": "Get all registered watches in a paginated manner and optionally filter watches by a query.",
         "operationId": "watcher-query-watches",
         "requestBody": {
           "$ref": "#/components/requestBodies/watcher.query_watches"
@@ -36539,7 +36625,8 @@
         "tags": [
           "watcher"
         ],
-        "summary": "Retrieves stored watches",
+        "summary": "Query watches",
+        "description": "Get all registered watches in a paginated manner and optionally filter watches by a query.",
         "operationId": "watcher-query-watches-1",
         "requestBody": {
           "$ref": "#/components/requestBodies/watcher.query_watches"
@@ -36557,7 +36644,8 @@
         "tags": [
           "watcher"
         ],
-        "summary": "Starts Watcher if it is not already running",
+        "summary": "Start the watch service",
+        "description": "Start the Watcher service if it is not already running.",
         "operationId": "watcher-start",
         "responses": {
           "200": {
@@ -36578,7 +36666,7 @@
         "tags": [
           "watcher"
         ],
-        "summary": "Retrieves the current Watcher metrics",
+        "summary": "Get Watcher statistics",
         "operationId": "watcher-stats",
         "parameters": [
           {
@@ -36601,7 +36689,7 @@
         "tags": [
           "watcher"
         ],
-        "summary": "Retrieves the current Watcher metrics",
+        "summary": "Get Watcher statistics",
         "operationId": "watcher-stats-1",
         "parameters": [
           {
@@ -36627,7 +36715,8 @@
         "tags": [
           "watcher"
         ],
-        "summary": "Stops Watcher if it is running",
+        "summary": "Stop the watch service",
+        "description": "Stop the Watcher service if it is running.",
         "operationId": "watcher-stop",
         "responses": {
           "200": {
@@ -65492,6 +65581,7 @@
             "type": "boolean"
           },
           "description": {
+            "description": "Human readable text that identifies the particular request that the task is performing.\nFor example, it might identify the search request being performed by a search task.\nOther kinds of tasks have different descriptions, like `_reindex` which has the source and the destination, or `_bulk` which just has the number of requests and the destination indices.\nMany requests will have only an empty description because more detailed information about the request is not easily available or particularly helpful in identifying the request.",
             "type": "string"
           },
           "headers": {
@@ -65516,7 +65606,7 @@
             "$ref": "#/components/schemas/_types:EpochTimeUnitMillis"
           },
           "status": {
-            "description": "Task status information can vary wildly from task to task.",
+            "description": "The internal status of the task, which varies from task to task.\nThe format also varies.\nWhile the goal is to keep the status for a particular task consistent from version to version, this is not always possible because sometimes the implementation changes.\nFields might be removed from the status for a particular request so any parsing you do of the status might break in minor releases.",
             "type": "object"
           },
           "type": {

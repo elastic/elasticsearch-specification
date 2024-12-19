@@ -476,7 +476,7 @@
       ],
       "response": []
     },
-    "connector.sync_job_claim": {
+    "connector.sync_job_error": {
       "request": [
         "Missing request & response"
       ],
