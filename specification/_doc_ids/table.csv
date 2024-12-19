@@ -18,6 +18,8 @@ autoscaling-get-autoscaling-capacity,https://www.elastic.co/guide/en/elasticsear
 autoscaling-get-autoscaling-policy,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/autoscaling-get-autoscaling-policy.html
 autoscaling-put-autoscaling-policy,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/autoscaling-put-autoscaling-policy.html
 avoid-index-pattern-collisions,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/index-templates.html#avoid-index-pattern-collisions
+behavioral-analytics-collection-event,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/post-analytics-collection-event.html
+behavioral-analytics-event-reference,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/behavioral-analytics-event-reference.html
 byte-units,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/api-conventions.html#byte-units
 bytes-processor,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/bytes-processor.html
 calendar-and-fixed-intervals,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/search-aggregations-bucket-datehistogram-aggregation.html#calendar_and_fixed_intervals
