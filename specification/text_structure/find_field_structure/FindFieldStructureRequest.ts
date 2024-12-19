@@ -85,7 +85,7 @@ interface Request extends RequestBase {
     /**
      * The name of the index that contains the analyzed field.
      */
-    index: string
+    index: IndexName
     /**
      * If the format is `delimited`, you can specify the character used to quote the values in each row if they contain newlines or the delimiter character.
      * Only a single character is supported.
