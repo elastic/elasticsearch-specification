@@ -4971,6 +4971,65 @@
         "x-state": "Technical preview"
       }
     },
+    "/_connector/_sync_job/{connector_sync_job_id}/_claim": {
+      "put": {
+        "tags": [
+          "connector"
+        ],
+        "summary": "Claim a connector sync job",
+        "description": "This action updates the job status to `in_progress` and sets the `last_seen` and `started_at` timestamps to the current time.\nAdditionally, it can set the `sync_cursor` property for the sync job.\n\nThis API is not intended for direct connector management by users.\nIt supports the implementation of services that utilize the connector protocol to communicate with Elasticsearch.\n\nTo sync data using self-managed connectors, you need to deploy the Elastic connector service on your own infrastructure.\nThis service runs automatically on Elastic Cloud for Elastic managed connectors.",
+        "operationId": "connector-sync-job-claim",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "connector_sync_job_id",
+            "description": "The unique identifier of the connector sync job.",
+            "required": true,
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/_types:Id"
+            },
+            "style": "simple"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "sync_cursor": {
+                    "description": "The cursor object from the last incremental sync job.\nThis should reference the `sync_cursor` field in the connector state for which the job runs.",
+                    "type": "object"
+                  },
+                  "worker_hostname": {
+                    "description": "The host name of the current system that will run the job.",
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "worker_hostname"
+                ]
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                }
+              }
+            }
+          }
+        },
+        "x-state": "Technical preview"
+      }
+    },
     "/_connector/_sync_job/{connector_sync_job_id}": {
       "get": {
         "tags": [
