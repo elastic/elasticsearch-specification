@@ -255,12 +255,6 @@
       ],
       "response": []
     },
-    "connector.sync_job_error": {
-      "request": [
-        "Missing request & response"
-      ],
-      "response": []
-    },
     "connector.sync_job_update_stats": {
       "request": [
         "Missing request & response"
