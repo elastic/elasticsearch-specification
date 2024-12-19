@@ -217,13 +217,28 @@ interface FeatureEnabled {
 }
 
 interface SyncRulesFeature {
+  /**
+   * Indicates whether advanced sync rules are enabled.
+   */
   advanced?: FeatureEnabled
+  /**
+   * Indicates whether basic sync rules are enabled.
+   */
   basic?: FeatureEnabled
 }
 
 export interface ConnectorFeatures {
+  /**
+   * Indicates whether document-level security is enabled.
+   */
   document_level_security?: FeatureEnabled
+  /**
+   * Indicates whether incremental syncs are enabled.
+   */
   incremental_sync?: FeatureEnabled
+  /**
+   *  Indicates whether managed connector API keys are enabled.
+   */
   native_connector_api_keys?: FeatureEnabled
   sync_rules?: SyncRulesFeature
 }
