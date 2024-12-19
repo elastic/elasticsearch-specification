@@ -10002,6 +10002,16 @@ export interface ConnectorSyncJobDeleteRequest extends RequestBase {
 
 export type ConnectorSyncJobDeleteResponse = AcknowledgedResponseBase
 
+export interface ConnectorSyncJobErrorRequest extends RequestBase {
+  connector_sync_job_id: Id
+  body?: {
+    error: string
+  }
+}
+
+export interface ConnectorSyncJobErrorResponse {
+}
+
 export interface ConnectorSyncJobGetRequest extends RequestBase {
   connector_sync_job_id: Id
 }
