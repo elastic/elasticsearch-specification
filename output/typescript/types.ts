@@ -12893,9 +12893,12 @@ export interface IngestDatabaseConfiguration {
   ipinfo?: IngestIpinfo
 }
 
-export interface IngestDatabaseConfigurationFull extends IngestDatabaseConfiguration {
+export interface IngestDatabaseConfigurationFull {
   web?: IngestWeb
   local?: IngestLocal
+  name: Name
+  maxmind?: IngestMaxmind
+  ipinfo?: IngestIpinfo
 }
 
 export interface IngestDateIndexNameProcessor extends IngestProcessorBase {
