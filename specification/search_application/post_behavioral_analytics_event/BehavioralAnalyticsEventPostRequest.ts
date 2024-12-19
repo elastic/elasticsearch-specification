@@ -16,6 +16,7 @@
  * specific language governing permissions and limitations
  * under the License.
  */
+import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 import { RequestBase } from '@_types/Base'
 import { Name } from '@_types/common'
 import { EventType } from '../_types/AnalyticsEvent'
@@ -39,7 +40,6 @@ export interface Request extends RequestBase {
      */
     event_type: EventType
   }
-}
   query_parameters: {
     /**
      * Whether the response type has to include more details
@@ -48,3 +48,4 @@ export interface Request extends RequestBase {
   }
   /** @codegen_name payload */
   body: UserDefinedValue
+}
