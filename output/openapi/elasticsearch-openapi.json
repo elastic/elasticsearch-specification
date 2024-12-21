@@ -8245,6 +8245,12 @@
             "$ref": "#/components/parameters/eql.search#allow_no_indices"
           },
           {
+            "$ref": "#/components/parameters/eql.search#allow_partial_search_results"
+          },
+          {
+            "$ref": "#/components/parameters/eql.search#allow_partial_sequence_results"
+          },
+          {
             "$ref": "#/components/parameters/eql.search#expand_wildcards"
           },
           {
@@ -8286,6 +8292,12 @@
           },
           {
             "$ref": "#/components/parameters/eql.search#allow_no_indices"
+          },
+          {
+            "$ref": "#/components/parameters/eql.search#allow_partial_search_results"
+          },
+          {
+            "$ref": "#/components/parameters/eql.search#allow_partial_sequence_results"
           },
           {
             "$ref": "#/components/parameters/eql.search#expand_wildcards"
@@ -66359,6 +66371,13 @@
           },
           "hits": {
             "$ref": "#/components/schemas/eql._types:EqlHits"
+          },
+          "shard_failures": {
+            "description": "Contains information about shard failures (if any), in case allow_partial_search_results=true",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/_types:ShardFailure"
+            }
           }
         },
         "required": [
@@ -96479,6 +96498,26 @@
         },
         "style": "form"
       },
+      "eql.search#allow_partial_search_results": {
+        "in": "query",
+        "name": "allow_partial_search_results",
+        "description": "If true, returns partial results if there are shard failures. If false, returns an error with no partial results.",
+        "deprecated": false,
+        "schema": {
+          "type": "boolean"
+        },
+        "style": "form"
+      },
+      "eql.search#allow_partial_sequence_results": {
+        "in": "query",
+        "name": "allow_partial_sequence_results",
+        "description": "If true, sequence queries will return partial results in case of shard failures. If false, they will return no results at all.\nThis flag has effect only if allow_partial_search_results is true.",
+        "deprecated": false,
+        "schema": {
+          "type": "boolean"
+        },
+        "style": "form"
+      },
       "eql.search#expand_wildcards": {
         "in": "query",
         "name": "expand_wildcards",
@@ -104315,6 +104354,12 @@
                 },
                 "wait_for_completion_timeout": {
                   "$ref": "#/components/schemas/_types:Duration"
+                },
+                "allow_partial_search_results": {
+                  "type": "boolean"
+                },
+                "allow_partial_sequence_results": {
+                  "type": "boolean"
                 },
                 "size": {
                   "$ref": "#/components/schemas/_types:uint"
