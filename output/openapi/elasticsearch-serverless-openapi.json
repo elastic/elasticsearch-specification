@@ -44475,6 +44475,13 @@
           },
           "hits": {
             "$ref": "#/components/schemas/eql._types:EqlHits"
+          },
+          "shard_failures": {
+            "description": "Contains information about shard failures (if any), in case allow_partial_search_results=true",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/_types:ShardFailure"
+            }
           }
         },
         "required": [

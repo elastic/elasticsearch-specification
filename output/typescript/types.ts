@@ -10312,6 +10312,7 @@ export interface EqlEqlSearchResponseBase<TEvent = unknown> {
   took?: DurationValue<UnitMillis>
   timed_out?: boolean
   hits: EqlEqlHits<TEvent>
+  shard_failures?: ShardFailure[]
 }
 
 export interface EqlHitsEvent<TEvent = unknown> {
