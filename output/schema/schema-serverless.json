@@ -117643,9 +117643,24 @@
               "namespace": "eql._types"
             }
           }
+        },
+        {
+          "description": "Contains information about shard failures (if any), in case allow_partial_search_results=true",
+          "name": "shard_failures",
+          "required": false,
+          "type": {
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "ShardFailure",
+                "namespace": "_types"
+              }
+            }
+          }
         }
       ],
-      "specLocation": "eql/_types/EqlSearchResponseBase.ts#L24-L49"
+      "specLocation": "eql/_types/EqlSearchResponseBase.ts#L25-L54"
     },
     {
       "generics": [
