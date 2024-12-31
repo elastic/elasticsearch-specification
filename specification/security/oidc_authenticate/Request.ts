@@ -23,7 +23,7 @@ import { RequestBase } from '@_types/Base'
  * Authenticate OpenID Connect.
  * Exchange an OpenID Connect authentication response message for an Elasticsearch internal access token and refresh token that can be subsequently used for authentication.
  *
- * Elasticsearch exposes all the necessary OpenID Connect related functionality via the OpenID Connect APIs.
+ * Elasticsearch exposes all the necessary OpenID Connect related functionality with the OpenID Connect APIs.
  * These APIs are used internally by Kibana in order to provide OpenID Connect based authentication, but can also be used by other, custom web applications or other clients.
  * @rest_spec_name security.oidc_authenticate
  * @availability stack stability=stable visibility=public

@@ -25,7 +25,8 @@ import { RequestBase } from '@_types/Base'
  *
  * The response of this API is a URL pointing to the Authorization Endpoint of the configured OpenID Connect Provider, which can be used to redirect the browser of the user in order to continue the authentication process.
  *
- * Elasticsearch exposes all the necessary OpenID Connect related functionality via the OpenID Connect APIs. These APIs are used internally by Kibana in order to provide OpenID Connect based authentication, but can also be used by other, custom web applications or other clients.
+ * Elasticsearch exposes all the necessary OpenID Connect related functionality with the OpenID Connect APIs.
+ * These APIs are used internally by Kibana in order to provide OpenID Connect based authentication, but can also be used by other, custom web applications or other clients.
  * @rest_spec_name security.oidc_prepare_authentication
  * @availability stack stability=stable visibility=public
  */

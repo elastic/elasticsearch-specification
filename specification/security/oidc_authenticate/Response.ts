@@ -21,9 +21,21 @@ import { integer } from '@_types/Numeric'
 
 export class Response {
   body: {
+    /**
+     * The Elasticsearch access token.
+     */
     access_token: string
+    /**
+     * The duration (in seconds) of the tokens.
+     */
     expires_in: integer
+    /**
+     * The Elasticsearch refresh token.
+     */
     refresh_token: string
+    /**
+     * The type of token.
+     */
     type: string
   }
 }

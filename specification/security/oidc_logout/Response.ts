@@ -19,12 +19,9 @@
 
 export class Response {
   body: {
-    nonce: string
-    realm: string
     /**
-     * A URI that points to the authorization endpoint of the OpenID Connect Provider with all the parameters of the authentication request as HTTP GET parameters.
+     * A URI that points to the end session endpoint of the OpenID Connect Provider with all the parameters of the logout request as HTTP GET parameters.
      */
     redirect: string
-    state: string
   }
 }
