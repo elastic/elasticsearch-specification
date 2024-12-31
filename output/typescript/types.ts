@@ -18572,6 +18572,20 @@ export interface SecurityGetServiceCredentialsResponse {
   nodes_credentials: SecurityGetServiceCredentialsNodesCredentials
 }
 
+export interface SecurityGetSettingsRequest extends RequestBase {
+  master_timeout?: Duration
+}
+
+export interface SecurityGetSettingsResponse {
+  security: SecurityGetSettingsSecuritySettings
+  'security-profile': Record<string, string>
+  'security-tokens': SecurityGetSettingsSecuritySettings
+}
+
+export interface SecurityGetSettingsSecuritySettings {
+  index?: IndicesIndexSettings
+}
+
 export type SecurityGetTokenAccessTokenGrantType = 'password' | 'client_credentials' | '_kerberos' | 'refresh_token'
 
 export interface SecurityGetTokenAuthenticatedUser extends SecurityUser {
@@ -19138,6 +19152,20 @@ export interface SecurityUpdateCrossClusterApiKeyRequest extends RequestBase {
 
 export interface SecurityUpdateCrossClusterApiKeyResponse {
   updated: boolean
+}
+
+export interface SecurityUpdateSettingsRequest extends RequestBase {
+  master_timeout?: Duration
+  timeout?: Duration
+  body?: {
+    security?: Record<string, string>
+    'security-profile'?: Record<string, string>
+    'security-tokens'?: Record<string, string>
+  }
+}
+
+export interface SecurityUpdateSettingsResponse {
+  acknowledged: boolean
 }
 
 export interface SecurityUpdateUserProfileDataRequest extends RequestBase {
