@@ -30817,7 +30817,7 @@
           "security"
         ],
         "summary": "Authenticate OpenID Connect",
-        "description": "Exchange an OpenID Connect authentication response message for an Elasticsearch internal access token and refresh token that can be subsequently used for authentication.\n\nElasticsearch exposes all the necessary OpenID Connect related functionality via the OpenID Connect APIs.\nThese APIs are used internally by Kibana in order to provide OpenID Connect based authentication, but can also be used by other, custom web applications or other clients.",
+        "description": "Exchange an OpenID Connect authentication response message for an Elasticsearch internal access token and refresh token that can be subsequently used for authentication.\n\nElasticsearch exposes all the necessary OpenID Connect related functionality with the OpenID Connect APIs.\nThese APIs are used internally by Kibana in order to provide OpenID Connect based authentication, but can also be used by other, custom web applications or other clients.",
         "operationId": "security-oidc-authenticate",
         "requestBody": {
           "content": {
@@ -30861,15 +30861,19 @@
                   "type": "object",
                   "properties": {
                     "access_token": {
+                      "description": "The Elasticsearch access token.",
                       "type": "string"
                     },
                     "expires_in": {
+                      "description": "The duration (in seconds) of the tokens.",
                       "type": "number"
                     },
                     "refresh_token": {
+                      "description": "The Elasticsearch refresh token.",
                       "type": "string"
                     },
                     "type": {
+                      "description": "The type of token.",
                       "type": "string"
                     }
                   },
@@ -30886,13 +30890,67 @@
         }
       }
     },
+    "/_security/oidc/logout": {
+      "post": {
+        "tags": [
+          "security"
+        ],
+        "summary": "Logout of OpenID Connect",
+        "description": "Invalidate an access token and a refresh token that were generated as a response to the `/_security/oidc/authenticate` API.\n\nIf the OpenID Connect authentication realm in Elasticsearch is accordingly configured, the response to this call will contain a URI pointing to the end session endpoint of the OpenID Connect Provider in order to perform single logout.\n\nElasticsearch exposes all the necessary OpenID Connect related functionality with the OpenID Connect APIs.\nThese APIs are used internally by Kibana in order to provide OpenID Connect based authentication, but can also be used by other, custom web applications or other clients.",
+        "operationId": "security-oidc-logout",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "access_token": {
+                    "description": "The access token to be invalidated.",
+                    "type": "string"
+                  },
+                  "refresh_token": {
+                    "description": "The refresh token to be invalidated.",
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "access_token"
+                ]
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "redirect": {
+                      "description": "A URI that points to the end session endpoint of the OpenID Connect Provider with all the parameters of the logout request as HTTP GET parameters.",
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "redirect"
+                  ]
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/_security/oidc/prepare": {
       "post": {
         "tags": [
           "security"
         ],
         "summary": "Prepare OpenID connect authentication",
-        "description": "Create an oAuth 2.0 authentication request as a URL string based on the configuration of the OpenID Connect authentication realm in Elasticsearch.\n\nThe response of this API is a URL pointing to the Authorization Endpoint of the configured OpenID Connect Provider, which can be used to redirect the browser of the user in order to continue the authentication process.\n\nElasticsearch exposes all the necessary OpenID Connect related functionality via the OpenID Connect APIs. These APIs are used internally by Kibana in order to provide OpenID Connect based authentication, but can also be used by other, custom web applications or other clients.",
+        "description": "Create an oAuth 2.0 authentication request as a URL string based on the configuration of the OpenID Connect authentication realm in Elasticsearch.\n\nThe response of this API is a URL pointing to the Authorization Endpoint of the configured OpenID Connect Provider, which can be used to redirect the browser of the user in order to continue the authentication process.\n\nElasticsearch exposes all the necessary OpenID Connect related functionality with the OpenID Connect APIs.\nThese APIs are used internally by Kibana in order to provide OpenID Connect based authentication, but can also be used by other, custom web applications or other clients.",
         "operationId": "security-oidc-prepare-authentication",
         "requestBody": {
           "content": {
@@ -30941,6 +30999,7 @@
                       "type": "string"
                     },
                     "redirect": {
+                      "description": "A URI that points to the authorization endpoint of the OpenID Connect Provider with all the parameters of the authentication request as HTTP GET parameters.",
                       "type": "string"
                     },
                     "state": {

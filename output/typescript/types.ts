@@ -18651,6 +18651,17 @@ export interface SecurityOidcAuthenticateResponse {
   type: string
 }
 
+export interface SecurityOidcLogoutRequest extends RequestBase {
+  body?: {
+    access_token: string
+    refresh_token?: string
+  }
+}
+
+export interface SecurityOidcLogoutResponse {
+  redirect: string
+}
+
 export interface SecurityOidcPrepareAuthenticationRequest extends RequestBase {
   body?: {
     iss?: string

@@ -27,6 +27,7 @@ import { RequestBase } from '@_types/Base'
  * These APIs are used internally by Kibana in order to provide OpenID Connect based authentication, but can also be used by other, custom web applications or other clients.
  * @rest_spec_name security.oidc_authenticate
  * @availability stack stability=stable visibility=public
+ * @doc_id security-api-oidc-authenticate
  */
 export interface Request extends RequestBase {
   body: {
