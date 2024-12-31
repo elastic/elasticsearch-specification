@@ -690,12 +690,6 @@
       ],
       "response": []
     },
-    "security.oidc_prepare_authentication": {
-      "request": [
-        "Missing request & response"
-      ],
-      "response": []
-    },
     "security.update_settings": {
       "request": [
         "Missing request & response"
