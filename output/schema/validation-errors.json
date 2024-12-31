@@ -437,12 +437,6 @@
       ],
       "response": []
     },
-    "watcher.update_settings": {
-      "request": [
-        "Missing request & response"
-      ],
-      "response": []
-    },
     "xpack.info": {
       "request": [
         "Request: query parameter 'human' does not exist in the json spec",

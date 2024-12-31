@@ -21187,6 +21187,16 @@ export interface WatcherStopRequest extends RequestBase {
 
 export type WatcherStopResponse = AcknowledgedResponseBase
 
+export interface WatcherUpdateSettingsRequest extends RequestBase {
+  master_timeout?: Duration
+  timeout?: Duration
+  body?: Record<string, string>
+}
+
+export interface WatcherUpdateSettingsResponse {
+  acknowledged: boolean
+}
+
 export interface XpackInfoBuildInformation {
   date: DateTime
   hash: string

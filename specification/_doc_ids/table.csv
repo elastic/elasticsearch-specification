@@ -735,4 +735,5 @@ watcher-api-query-watches,https://www.elastic.co/guide/en/elasticsearch/referenc
 watcher-api-start,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/watcher-api-start.html
 watcher-api-stats,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/watcher-api-stats.html
 watcher-api-stop,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/watcher-api-stop.html
+watcher-api-update-settings,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/watcher-api-update-settings.html
 xpack-rollup,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/xpack-rollup.html
