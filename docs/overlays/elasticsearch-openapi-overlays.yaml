@@ -392,3 +392,23 @@ actions:
           examples:
             indicesLegacyPutTemplateRequestExample1:
               $ref: "../../specification/indices/put_template/indicesPutTemplateRequestExample1.yaml"
+  - target: "$.paths['/_watcher/settings']['put']"
+    description: "Add request example for update watcher settings"
+    update:
+      requestBody: 
+        content: 
+          application/json: 
+            examples:
+              updateWatcherSettingsRequestExample1: 
+                $ref: "../../specification/watcher/update_settings/WatcherUpdateSettingsRequestExample1.yaml"
+  - target: "$.paths['/_watcher/settings']['get']"
+    description: "Add response example for get watcher settings"
+    update:
+      responses:
+        200:
+          content: 
+            application/json: 
+              examples:
+                updateWatcherSettingsRequestExample1: 
+                  $ref: "../../specification/watcher/get_settings/WatcherGetSettingsResponseExample1.yaml"
+              
