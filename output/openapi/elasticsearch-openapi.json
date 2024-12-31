@@ -15945,7 +15945,7 @@
           {
             "in": "query",
             "name": "timeout",
-            "description": "Period to wait for a response.\nIf no response is received before the timeout expires, the request fails and returns an error.\nA value of `-1` indicates that the request should never time out.",
+            "description": "The period to wait for a response.\nIf no response is received before the timeout expires, the request fails and returns an error.\nA value of `-1` indicates that the request should never time out.",
             "deprecated": false,
             "schema": {
               "$ref": "#/components/schemas/_types:Duration"
