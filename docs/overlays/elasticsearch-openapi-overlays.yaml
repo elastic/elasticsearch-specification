@@ -556,3 +556,14 @@ actions:
             examples:
               updateWatcherSettingsRequestExample1: 
                 $ref: "../../specification/watcher/update_settings/examples/request/WatcherUpdateSettingsRequestExample1.yaml"
+  - target: "$.paths['/_watcher/settings']['get']"
+    description: "Add response example for get watcher settings"
+    update:
+      responses:
+        200:
+          content: 
+            application/json: 
+              examples:
+                updateWatcherSettingsRequestExample1: 
+                  $ref: "../../specification/watcher/get_settings/examples/200_response/WatcherGetSettingsResponseExample1.yaml"
+              

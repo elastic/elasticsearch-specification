@@ -431,12 +431,6 @@
         "interface definition watcher._types:TriggerEventContainer - Property schedule is a single-variant and must be required"
       ]
     },
-    "watcher.get_settings": {
-      "request": [
-        "Missing request & response"
-      ],
-      "response": []
-    },
     "xpack.info": {
       "request": [
         "Request: query parameter 'human' does not exist in the json spec",

@@ -21084,6 +21084,14 @@ export interface WatcherExecuteWatchWatchRecord {
   status?: WatcherWatchStatus
 }
 
+export interface WatcherGetSettingsRequest extends RequestBase {
+  master_timeout?: Duration
+}
+
+export interface WatcherGetSettingsResponse {
+  index: IndicesIndexSettings
+}
+
 export interface WatcherGetWatchRequest extends RequestBase {
   id: Name
 }
