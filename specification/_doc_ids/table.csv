@@ -658,6 +658,7 @@ security-api-saml-prepare-authentication,https://www.elastic.co/guide/en/elastic
 security-api-saml-sp-metadata,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/security-api-saml-sp-metadata.html
 security-api-ssl,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/security-api-ssl.html
 security-privileges,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/security-privileges.html
+security-api-get-settings,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/security-api-get-settings.html
 service-accounts,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/service-accounts.html
 set-processor,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/set-processor.html
 shape,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/shape.html
