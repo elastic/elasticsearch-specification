@@ -16,11 +16,26 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-
-import { Actions } from '@security/put_privileges/types'
+import { IndexSettings } from '@indices/_types/IndexSettings'
 import { Dictionary } from '@spec_utils/Dictionary'
 
 export class Response {
-  /** @codegen_name privileges */
-  body: Dictionary<string, Dictionary<string, Actions>>
+  body: {
+    /**
+     * Settings for the index used for most security configuration, including native realm users and roles configured with the API.
+     */
+    security: SecuritySettings
+    /**
+     * Settings for the index used to store profile information.
+     */
+    'security-profile': Dictionary<string, string>
+    /**
+     * Settings for the index used to store tokens.
+     */
+    'security-tokens': SecuritySettings
+  }
+}
+
+export class SecuritySettings {
+  index?: IndexSettings
 }
