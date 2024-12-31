@@ -18646,6 +18646,10 @@ export interface SecurityOidcPrepareAuthenticationRequest extends RequestBase {
 }
 
 export interface SecurityOidcPrepareAuthenticationResponse {
+  nonce: string
+  realm: string
+  redirect: string
+  state: string
 }
 
 export interface SecurityPutPrivilegesActions {
