@@ -18635,6 +18635,22 @@ export interface SecurityInvalidateTokenResponse {
   previously_invalidated_tokens: long
 }
 
+export interface SecurityOidcAuthenticateRequest extends RequestBase {
+  body?: {
+    nonce: string
+    realm?: string
+    redirect_uri: string
+    state: string
+  }
+}
+
+export interface SecurityOidcAuthenticateResponse {
+  access_token: string
+  expires_in: integer
+  refresh_token: string
+  type: string
+}
+
 export interface SecurityOidcPrepareAuthenticationRequest extends RequestBase {
   body?: {
     iss?: string
