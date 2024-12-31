@@ -44,7 +44,7 @@ export interface Request extends RequestBase {
      */
     master_timeout?: Duration
     /**
-     * Period to wait for a response.
+     * The period to wait for a response.
      * If no response is received before the timeout expires, the request fails and returns an error.
      * A value of `-1` indicates that the request should never time out.
      * @server_default 30s */
