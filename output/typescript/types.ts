@@ -19484,6 +19484,113 @@ export interface SnapshotGetRepositoryRequest extends RequestBase {
 
 export type SnapshotGetRepositoryResponse = Record<string, SnapshotRepository>
 
+export interface SnapshotRepositoryAnalyzeBlobDetails {
+  name: string
+  overwritten: boolean
+  read_early: boolean
+  read_end: long
+  read_start: long
+  reads: SnapshotRepositoryAnalyzeReadBlobDetails
+  size: string
+  size_bytes: long
+}
+
+export interface SnapshotRepositoryAnalyzeDetailsInfo {
+  blob: SnapshotRepositoryAnalyzeBlobDetails
+  overwrite_elapsed?: string
+  overwrite_elapsed_nanos?: long
+  write_elapsed: string
+  write_elapsed_nanos: long
+  write_throttled: string
+  write_throttled_nanos: long
+  writer_node: SnapshotRepositoryAnalyzeNodeInfo
+}
+
+export interface SnapshotRepositoryAnalyzeNodeInfo {
+  id: Id
+  name: Name
+}
+
+export interface SnapshotRepositoryAnalyzeReadBlobDetails {
+  before_write_complete?: boolean
+  elapsed?: string
+  elapsed_nanos?: long
+  first_byte_time?: string
+  first_byte_time_nanos: long
+  found: boolean
+  node: SnapshotRepositoryAnalyzeNodeInfo
+  throttled?: string
+  throttled_nanos?: long
+}
+
+export interface SnapshotRepositoryAnalyzeRequest extends RequestBase {
+  name: Name
+  blob_count?: integer
+  concurrency?: integer
+  detailed?: boolean
+  early_read_node_count?: integer
+  max_blob_size?: ByteSize
+  max_total_data_size?: ByteSize
+  rare_action_probability?: double
+  rarely_abort_writes?: boolean
+  read_node_count?: integer
+  register_operation_count?: integer
+  seed?: integer
+  timeout?: Duration
+}
+
+export interface SnapshotRepositoryAnalyzeResponse {
+  blob_count: integer
+  blob_path: string
+  concurrency: integer
+  coordinating_node: SnapshotRepositoryAnalyzeNodeInfo
+  delete_elapsed: string
+  delete_elapsed_nanos: long
+  details: SnapshotRepositoryAnalyzeDetailsInfo
+  early_read_node_count: integer
+  issues_detected: string[]
+  listing_elapsed: string
+  listing_elapsed_nanos: long
+  max_blob_size: string
+  max_blob_size_bytes: long
+  max_total_data_size: string
+  max_total_data_size_bytes: long
+  rare_action_probability: double
+  read_node_count: integer
+  repository: string
+  seed: long
+  summary: SnapshotRepositoryAnalyzeSummaryInfo
+}
+
+export interface SnapshotRepositoryAnalyzeSummaryInfo {
+  read: SnapshotRepositoryAnalyzereadSummaryInfo
+  write: SnapshotRepositoryAnalyzewriteSummaryInfo
+}
+
+export interface SnapshotRepositoryAnalyzereadSummaryInfo {
+  count: integer
+  max_wait: string
+  max_wait_nanos: long
+  total_elapsed: string
+  total_elapsed_nanos: long
+  total_size: string
+  total_size_bytes: long
+  total_throttled: string
+  total_throttled_nanos: long
+  total_wait: string
+  total_wait_nanos: long
+}
+
+export interface SnapshotRepositoryAnalyzewriteSummaryInfo {
+  count: integer
+  total_elapsed: string
+  total_elapsed_nanos: long
+  total_size: string
+  total_size_bytes: long
+  total_throttled: string
+  total_throttled_nanos: long
+}
+
 export interface SnapshotRepositoryVerifyIntegrityRequest extends RequestBase {
   name: Names
   meta_thread_pool_concurrency?: integer
