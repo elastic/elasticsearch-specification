@@ -722,12 +722,6 @@
       ],
       "response": []
     },
-    "simulate.ingest": {
-      "request": [
-        "Missing request & response"
-      ],
-      "response": []
-    },
     "slm.put_lifecycle": {
       "request": [
         "Request: query parameter 'master_timeout' does not exist in the json spec",
