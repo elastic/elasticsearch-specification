@@ -8784,6 +8784,87 @@
         "x-state": "Added in 8.13.0"
       }
     },
+    "/_query/async/{id}": {
+      "get": {
+        "tags": [
+          "esql"
+        ],
+        "summary": "Get async ES|QL query results",
+        "description": "Get the current status and available results or stored results for an ES|QL asynchronous query.\nIf the Elasticsearch security features are enabled, only the user who first submitted the ES|QL query can retrieve the results using this API.",
+        "externalDocs": {
+          "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/esql.html"
+        },
+        "operationId": "esql-async-query-get",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "description": "The unique identifier of the query.\nA query ID is provided in the ES|QL async query API response for a query that does not complete in the designated time.\nA query ID is also provided when the request was submitted with the `keep_on_completion` parameter set to `true`.",
+            "required": true,
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/_types:Id"
+            },
+            "style": "simple"
+          },
+          {
+            "in": "query",
+            "name": "drop_null_columns",
+            "description": "Indicates whether columns that are entirely `null` will be removed from the `columns` and `values` portion of the results.\nIf `true`, the response will include an extra section under the name `all_columns` which has the name of all the columns.",
+            "deprecated": false,
+            "schema": {
+              "type": "boolean"
+            },
+            "style": "form"
+          },
+          {
+            "in": "query",
+            "name": "keep_alive",
+            "description": "The period for which the query and its results are stored in the cluster.\nWhen this period expires, the query and its results are deleted, even if the query is still ongoing.",
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/_types:Duration"
+            },
+            "style": "form"
+          },
+          {
+            "in": "query",
+            "name": "wait_for_completion_timeout",
+            "description": "The period to wait for the request to finish.\nBy default, the request waits for complete query results.\nIf the request completes during the period specified in this parameter, complete query results are returned.\nOtherwise, the response returns an `is_running` value of `true` and no results.",
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/_types:Duration"
+            },
+            "style": "form"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "columns": {
+                      "$ref": "#/components/schemas/_types:EsqlColumns"
+                    },
+                    "is_running": {
+                      "description": "Indicates whether the query is still running.\nIf the value is false, the async query has finished and the results are returned.",
+                      "type": "boolean"
+                    }
+                  },
+                  "required": [
+                    "is_running"
+                  ]
+                }
+              }
+            }
+          }
+        },
+        "x-state": "Added in 8.13.0"
+      }
+    },
     "/_query": {
       "post": {
         "tags": [

@@ -162,12 +162,6 @@
       ],
       "response": []
     },
-    "esql.async_query_get": {
-      "request": [
-        "Missing request & response"
-      ],
-      "response": []
-    },
     "fleet.delete_secret": {
       "request": [
         "Missing request & response"

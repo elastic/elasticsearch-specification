@@ -10532,6 +10532,18 @@ export interface EsqlAsyncQueryResponse {
   is_running: boolean
 }
 
+export interface EsqlAsyncQueryGetRequest extends RequestBase {
+  id: Id
+  drop_null_columns?: boolean
+  keep_alive?: Duration
+  wait_for_completion_timeout?: Duration
+}
+
+export interface EsqlAsyncQueryGetResponse {
+  columns?: EsqlColumns
+  is_running: boolean
+}
+
 export interface EsqlQueryRequest extends RequestBase {
   format?: EsqlEsqlFormat
   delimiter?: string
