@@ -18175,6 +18175,20 @@ export interface SecurityBulkPutRoleResponse {
   errors?: SecurityBulkError
 }
 
+export interface SecurityBulkUpdateApiKeysRequest extends RequestBase {
+  body?: {
+    expiration?: Duration
+    ids: string[]
+    metadata?: Metadata
+    role_descriptors?: Record<string, SecurityRoleDescriptor>
+  }
+}
+
+export interface SecurityBulkUpdateApiKeysResponse {
+  noops: integer[]
+  updated: string[]
+}
+
 export interface SecurityChangePasswordRequest extends RequestBase {
   username?: Username
   refresh?: Refresh

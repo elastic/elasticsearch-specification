@@ -28560,6 +28560,82 @@
         "x-state": "Added in 8.15.0"
       }
     },
+    "/_security/api_key/_bulk_update": {
+      "post": {
+        "tags": [
+          "security"
+        ],
+        "summary": "Bulk update API keys",
+        "description": "Update the attributes for multiple API keys.\n\nIMPORTANT: It is not possible to use an API key as the authentication credential for this API. To update API keys, the owner user's credentials are required.\n\nThis API is similar to the update API key API but enables you to apply the same update to multiple API keys in one API call. This operation can greatly improve performance over making individual updates.\n\nIt is not possible to update expired or invalidated API keys.\n\nThis API supports updates to API key access scope, metadata and expiration.\nThe access scope of each API key is derived from the `role_descriptors` you specify in the request and a snapshot of the owner user's permissions at the time of the request.\nThe snapshot of the owner's permissions is updated automatically on every call.\n\nIMPORTANT: If you don't specify `role_descriptors` in the request, a call to this API might still change an API key's access scope. This change can occur if the owner user's permissions have changed since the API key was created or last modified.\n\nA successful request returns a JSON structure that contains the IDs of all updated API keys, the IDs of API keys that already had the requested changes and did not require an update, and error details for any failed update.",
+        "operationId": "security-bulk-update-api-keys",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "expiration": {
+                    "$ref": "#/components/schemas/_types:Duration"
+                  },
+                  "ids": {
+                    "description": "The API key identifiers.",
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    }
+                  },
+                  "metadata": {
+                    "$ref": "#/components/schemas/_types:Metadata"
+                  },
+                  "role_descriptors": {
+                    "description": "The role descriptors to assign to the API keys.\nAn API key's effective permissions are an intersection of its assigned privileges and the point-in-time snapshot of permissions of the owner user.\nYou can assign new privileges by specifying them in this parameter.\nTo remove assigned privileges, supply the `role_descriptors` parameter as an empty object `{}`.\nIf an API key has no assigned privileges, it inherits the owner user's full permissions.\nThe snapshot of the owner's permissions is always updated, whether you supply the `role_descriptors` parameter.\nThe structure of a role descriptor is the same as the request for the create API keys API.",
+                    "type": "object",
+                    "additionalProperties": {
+                      "$ref": "#/components/schemas/security._types:RoleDescriptor"
+                    }
+                  }
+                },
+                "required": [
+                  "ids"
+                ]
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "noops": {
+                      "type": "array",
+                      "items": {
+                        "type": "number"
+                      }
+                    },
+                    "updated": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      }
+                    }
+                  },
+                  "required": [
+                    "noops",
+                    "updated"
+                  ]
+                }
+              }
+            }
+          }
+        },
+        "x-state": "Added in 8.5.0"
+      }
+    },
     "/_security/user/{username}/_password": {
       "put": {
         "tags": [
