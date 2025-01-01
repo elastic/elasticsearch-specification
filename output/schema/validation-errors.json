@@ -392,12 +392,6 @@
       ],
       "response": []
     },
-    "simulate.ingest": {
-      "request": [
-        "Missing request & response"
-      ],
-      "response": []
-    },
     "snapshot.delete": {
       "request": [
         "Request: missing json spec query parameter 'wait_for_completion'"

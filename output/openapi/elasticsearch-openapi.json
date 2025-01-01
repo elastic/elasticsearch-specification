@@ -32661,6 +32661,104 @@
         "x-state": "Added in 7.13.0"
       }
     },
+    "/_ingest/_simulate": {
+      "get": {
+        "tags": [
+          "ingest"
+        ],
+        "summary": "Simulate data ingestion",
+        "description": "Run ingest pipelines against a set of provided documents, optionally with substitute pipeline definitions, to simulate ingesting data into an index.\n\nThis API is meant to be used for troubleshooting or pipeline development, as it does not actually index any data into Elasticsearch.\n\nThe API runs the default and final pipeline for that index against a set of documents provided in the body of the request.\nIf a pipeline contains a reroute processor, it follows that reroute processor to the new index, running that index's pipelines as well the same way that a non-simulated ingest would.\nNo data is indexed into Elasticsearch.\nInstead, the transformed document is returned, along with the list of pipelines that have been run and the name of the index where the document would have been indexed if this were not a simulation.\nThe transformed document is validated against the mappings that would apply to this index, and any validation error is reported in the result.\n\nThis API differs from the simulate pipeline API in that you specify a single pipeline for that API, and it runs only that one pipeline.\nThe simulate pipeline API is more useful for developing a single pipeline, while the simulate ingest API is more useful for troubleshooting the interaction of the various pipelines that get applied when ingesting into an index.\n\nBy default, the pipeline definitions that are currently in the system are used.\nHowever, you can supply substitute pipeline definitions in the body of the request.\nThese will be used in place of the pipeline definitions that are already in the system. This can be used to replace existing pipeline definitions or to create new ones. The pipeline substitutions are used only within this request.",
+        "operationId": "simulate-ingest",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/simulate.ingest#pipeline"
+          }
+        ],
+        "requestBody": {
+          "$ref": "#/components/requestBodies/simulate.ingest"
+        },
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/simulate.ingest#200"
+          }
+        },
+        "x-state": "Technical preview"
+      },
+      "post": {
+        "tags": [
+          "ingest"
+        ],
+        "summary": "Simulate data ingestion",
+        "description": "Run ingest pipelines against a set of provided documents, optionally with substitute pipeline definitions, to simulate ingesting data into an index.\n\nThis API is meant to be used for troubleshooting or pipeline development, as it does not actually index any data into Elasticsearch.\n\nThe API runs the default and final pipeline for that index against a set of documents provided in the body of the request.\nIf a pipeline contains a reroute processor, it follows that reroute processor to the new index, running that index's pipelines as well the same way that a non-simulated ingest would.\nNo data is indexed into Elasticsearch.\nInstead, the transformed document is returned, along with the list of pipelines that have been run and the name of the index where the document would have been indexed if this were not a simulation.\nThe transformed document is validated against the mappings that would apply to this index, and any validation error is reported in the result.\n\nThis API differs from the simulate pipeline API in that you specify a single pipeline for that API, and it runs only that one pipeline.\nThe simulate pipeline API is more useful for developing a single pipeline, while the simulate ingest API is more useful for troubleshooting the interaction of the various pipelines that get applied when ingesting into an index.\n\nBy default, the pipeline definitions that are currently in the system are used.\nHowever, you can supply substitute pipeline definitions in the body of the request.\nThese will be used in place of the pipeline definitions that are already in the system. This can be used to replace existing pipeline definitions or to create new ones. The pipeline substitutions are used only within this request.",
+        "operationId": "simulate-ingest-1",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/simulate.ingest#pipeline"
+          }
+        ],
+        "requestBody": {
+          "$ref": "#/components/requestBodies/simulate.ingest"
+        },
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/simulate.ingest#200"
+          }
+        },
+        "x-state": "Technical preview"
+      }
+    },
+    "/_ingest/{index}/_simulate": {
+      "get": {
+        "tags": [
+          "ingest"
+        ],
+        "summary": "Simulate data ingestion",
+        "description": "Run ingest pipelines against a set of provided documents, optionally with substitute pipeline definitions, to simulate ingesting data into an index.\n\nThis API is meant to be used for troubleshooting or pipeline development, as it does not actually index any data into Elasticsearch.\n\nThe API runs the default and final pipeline for that index against a set of documents provided in the body of the request.\nIf a pipeline contains a reroute processor, it follows that reroute processor to the new index, running that index's pipelines as well the same way that a non-simulated ingest would.\nNo data is indexed into Elasticsearch.\nInstead, the transformed document is returned, along with the list of pipelines that have been run and the name of the index where the document would have been indexed if this were not a simulation.\nThe transformed document is validated against the mappings that would apply to this index, and any validation error is reported in the result.\n\nThis API differs from the simulate pipeline API in that you specify a single pipeline for that API, and it runs only that one pipeline.\nThe simulate pipeline API is more useful for developing a single pipeline, while the simulate ingest API is more useful for troubleshooting the interaction of the various pipelines that get applied when ingesting into an index.\n\nBy default, the pipeline definitions that are currently in the system are used.\nHowever, you can supply substitute pipeline definitions in the body of the request.\nThese will be used in place of the pipeline definitions that are already in the system. This can be used to replace existing pipeline definitions or to create new ones. The pipeline substitutions are used only within this request.",
+        "operationId": "simulate-ingest-2",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/simulate.ingest#index"
+          },
+          {
+            "$ref": "#/components/parameters/simulate.ingest#pipeline"
+          }
+        ],
+        "requestBody": {
+          "$ref": "#/components/requestBodies/simulate.ingest"
+        },
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/simulate.ingest#200"
+          }
+        },
+        "x-state": "Technical preview"
+      },
+      "post": {
+        "tags": [
+          "ingest"
+        ],
+        "summary": "Simulate data ingestion",
+        "description": "Run ingest pipelines against a set of provided documents, optionally with substitute pipeline definitions, to simulate ingesting data into an index.\n\nThis API is meant to be used for troubleshooting or pipeline development, as it does not actually index any data into Elasticsearch.\n\nThe API runs the default and final pipeline for that index against a set of documents provided in the body of the request.\nIf a pipeline contains a reroute processor, it follows that reroute processor to the new index, running that index's pipelines as well the same way that a non-simulated ingest would.\nNo data is indexed into Elasticsearch.\nInstead, the transformed document is returned, along with the list of pipelines that have been run and the name of the index where the document would have been indexed if this were not a simulation.\nThe transformed document is validated against the mappings that would apply to this index, and any validation error is reported in the result.\n\nThis API differs from the simulate pipeline API in that you specify a single pipeline for that API, and it runs only that one pipeline.\nThe simulate pipeline API is more useful for developing a single pipeline, while the simulate ingest API is more useful for troubleshooting the interaction of the various pipelines that get applied when ingesting into an index.\n\nBy default, the pipeline definitions that are currently in the system are used.\nHowever, you can supply substitute pipeline definitions in the body of the request.\nThese will be used in place of the pipeline definitions that are already in the system. This can be used to replace existing pipeline definitions or to create new ones. The pipeline substitutions are used only within this request.",
+        "operationId": "simulate-ingest-3",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/simulate.ingest#index"
+          },
+          {
+            "$ref": "#/components/parameters/simulate.ingest#pipeline"
+          }
+        ],
+        "requestBody": {
+          "$ref": "#/components/requestBodies/simulate.ingest"
+        },
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/simulate.ingest#200"
+          }
+        },
+        "x-state": "Technical preview"
+      }
+    },
     "/_slm/policy/{policy_id}": {
       "get": {
         "tags": [
@@ -74291,7 +74389,7 @@
           "version"
         ]
       },
-      "ingest.simulate:Document": {
+      "ingest._types:Document": {
         "type": "object",
         "properties": {
           "_id": {
@@ -74309,11 +74407,11 @@
           "_source"
         ]
       },
-      "ingest.simulate:SimulateDocumentResult": {
+      "ingest._types:SimulateDocumentResult": {
         "type": "object",
         "properties": {
           "doc": {
-            "$ref": "#/components/schemas/ingest.simulate:DocumentSimulation"
+            "$ref": "#/components/schemas/ingest._types:DocumentSimulation"
           },
           "error": {
             "$ref": "#/components/schemas/_types:ErrorCause"
@@ -74321,12 +74419,12 @@
           "processor_results": {
             "type": "array",
             "items": {
-              "$ref": "#/components/schemas/ingest.simulate:PipelineSimulation"
+              "$ref": "#/components/schemas/ingest._types:PipelineSimulation"
             }
           }
         }
       },
-      "ingest.simulate:DocumentSimulation": {
+      "ingest._types:DocumentSimulation": {
         "type": "object",
         "properties": {
           "_id": {
@@ -74336,7 +74434,7 @@
             "$ref": "#/components/schemas/_types:IndexName"
           },
           "_ingest": {
-            "$ref": "#/components/schemas/ingest.simulate:Ingest"
+            "$ref": "#/components/schemas/ingest._types:Ingest"
           },
           "_routing": {
             "description": "Value used to send the document to a specific primary shard.",
@@ -74363,11 +74461,11 @@
           "_source"
         ]
       },
-      "ingest.simulate:Ingest": {
+      "ingest._types:Ingest": {
         "type": "object",
         "properties": {
           "_redact": {
-            "$ref": "#/components/schemas/ingest.simulate:Redact"
+            "$ref": "#/components/schemas/ingest._types:Redact"
           },
           "timestamp": {
             "$ref": "#/components/schemas/_types:DateTime"
@@ -74380,7 +74478,7 @@
           "timestamp"
         ]
       },
-      "ingest.simulate:Redact": {
+      "ingest._types:Redact": {
         "type": "object",
         "properties": {
           "_is_redacted": {
@@ -74403,11 +74501,11 @@
           }
         ]
       },
-      "ingest.simulate:PipelineSimulation": {
+      "ingest._types:PipelineSimulation": {
         "type": "object",
         "properties": {
           "doc": {
-            "$ref": "#/components/schemas/ingest.simulate:DocumentSimulation"
+            "$ref": "#/components/schemas/ingest._types:DocumentSimulation"
           },
           "tag": {
             "type": "string"
@@ -93514,7 +93612,7 @@
                 "docs": {
                   "type": "array",
                   "items": {
-                    "$ref": "#/components/schemas/ingest.simulate:SimulateDocumentResult"
+                    "$ref": "#/components/schemas/ingest._types:SimulateDocumentResult"
                   }
                 }
               },
@@ -95201,6 +95299,27 @@
               },
               "required": [
                 "nodes"
+              ]
+            }
+          }
+        }
+      },
+      "simulate.ingest#200": {
+        "description": "",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "docs": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/ingest._types:SimulateDocumentResult"
+                  }
+                }
+              },
+              "required": [
+                "docs"
               ]
             }
           }
@@ -104496,6 +104615,27 @@
         },
         "style": "form"
       },
+      "simulate.ingest#index": {
+        "in": "path",
+        "name": "index",
+        "description": "The index to simulate ingesting into.\nThis value can be overridden by specifying an index on each document.\nIf you specify this parameter in the request path, it is used for any documents that do not explicitly specify an index argument.",
+        "required": true,
+        "deprecated": false,
+        "schema": {
+          "$ref": "#/components/schemas/_types:IndexName"
+        },
+        "style": "simple"
+      },
+      "simulate.ingest#pipeline": {
+        "in": "query",
+        "name": "pipeline",
+        "description": "The pipeline to use as the default pipeline.\nThis value can be used to override the default pipeline of the index.",
+        "deprecated": false,
+        "schema": {
+          "type": "string"
+        },
+        "style": "form"
+      },
       "slm.get_lifecycle#policy_id": {
         "in": "path",
         "name": "policy_id",
@@ -106387,7 +106527,7 @@
                   "description": "Sample documents to test in the pipeline.",
                   "type": "array",
                   "items": {
-                    "$ref": "#/components/schemas/ingest.simulate:Document"
+                    "$ref": "#/components/schemas/ingest._types:Document"
                   }
                 },
                 "pipeline": {
@@ -107748,6 +107888,52 @@
                   }
                 }
               }
+            }
+          }
+        },
+        "required": true
+      },
+      "simulate.ingest": {
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "component_template_substitutions": {
+                  "description": "A map of component template names to substitute component template definition objects.",
+                  "type": "object",
+                  "additionalProperties": {
+                    "$ref": "#/components/schemas/cluster._types:ComponentTemplateNode"
+                  }
+                },
+                "docs": {
+                  "description": "Sample documents to test in the pipeline.",
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/ingest._types:Document"
+                  }
+                },
+                "index_template_subtitutions": {
+                  "description": "A map of index template names to substitute index template definition objects.",
+                  "type": "object",
+                  "additionalProperties": {
+                    "$ref": "#/components/schemas/indices._types:IndexTemplate"
+                  }
+                },
+                "mapping_addition": {
+                  "$ref": "#/components/schemas/_types.mapping:TypeMapping"
+                },
+                "pipeline_substitutions": {
+                  "description": "Pipelines to test.\nIf you don’t specify the `pipeline` request path parameter, this parameter is required.\nIf you specify both this and the request path parameter, the API only uses the request path parameter.",
+                  "type": "object",
+                  "additionalProperties": {
+                    "$ref": "#/components/schemas/ingest._types:Pipeline"
+                  }
+                }
+              },
+              "required": [
+                "docs"
+              ]
             }
           }
         },

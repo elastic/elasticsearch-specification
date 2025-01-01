@@ -394,7 +394,6 @@ actions:
           examples:
             indicesLegacyPutTemplateRequestExample1:
               $ref: "../../specification/indices/put_template/indicesPutTemplateRequestExample1.yaml"
-
 ## Examples for behavioral analytics
   - target: "$.paths['/_application/analytics/{collection_name}/event/{event_type}']['post']"
     description: "Add examples for post analytics collection event operation"
@@ -416,6 +415,33 @@ actions:
               examples:
                 dataStreamLifecycleStatsResponseExample1:
                   $ref: "../../specification/indices/get_data_lifecycle_stats/examples/response/IndicesGetDataLifecycleStatsResponseExample1.yaml"
+## Examples for ingest
+  - target: "$.components['requestBodies']['simulate.ingest']"
+    description: "Add example for simulate ingest request"
+    update: 
+      content:
+        application/json:
+          examples:
+            simulateIngestRequestExample1:
+              $ref: "../../specification/simulate/ingest/SimulateIngestRequestExample1.yaml"
+            simulateIngestRequestExample2:
+              $ref: "../../specification/simulate/ingest/SimulateIngestRequestExample2.yaml"
+            simulateIngestRequestExample3:
+              $ref: "../../specification/simulate/ingest/SimulateIngestRequestExample3.yaml"
+            simulateIngestRequestExample4:
+              $ref: "../../specification/simulate/ingest/SimulateIngestRequestExample4.yaml"
+  - target: "$.components['responses']['simulate.ingest#200']"
+    description: "Add example for simulate ingest response"
+    update: 
+      content:
+        application/json:
+          examples:
+            simulateIngestResponseExample1:
+              $ref: "../../specification/simulate/ingest/SimulateIngestResponseExample1.yaml"
+            simulateIngestResponseExample2:
+              $ref: "../../specification/simulate/ingest/SimulateIngestResponseExample2.yaml"
+            simulateIngestResponseExample3:
+              $ref: "../../specification/simulate/ingest/SimulateIngestResponseExample3.yaml"
 ## Examples for licensing
   - target: "$.paths['/_license/basic_status']['get']"
     description: "Add example for get basic status response"
@@ -485,7 +511,7 @@ actions:
                 $ref: "../../specification/search_application/render_query/SearchApplicationsRenderQueryRequestExample1.yaml"
                 renderSearchApplicationQueryResponseExample1:
                   $ref: "../../specification/search_application/render_query/SearchApplicationsRenderQueryResponseExample1.yaml"
-
+# Examples for security
   - target: "$.paths['/_security/api_key/_bulk_update']['post']"
     description: "Add examples for bulk update API keys operation"
     update:
