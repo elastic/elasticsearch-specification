@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { SimulateDocumentResult } from './types'
+import { SimulateDocumentResult } from '../_types/Simulation'
 
 export class Response {
   body: { docs: SimulateDocumentResult[] }
