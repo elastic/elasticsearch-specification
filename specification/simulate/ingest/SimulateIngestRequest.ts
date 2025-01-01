@@ -48,6 +48,7 @@ import { TypeMapping } from '@_types/mapping/TypeMapping'
  * @availability stack since=8.12.0 stability=experimental visibility=public
  * @index_privileges index
  * @doc_tag ingest
+ * @doc_id simulate-ingest-api
  */
 export interface Request extends RequestBase {
   path_parts: {
