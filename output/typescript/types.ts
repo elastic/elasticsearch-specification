@@ -17747,6 +17747,14 @@ export interface SearchApplicationPutBehavioralAnalyticsRequest extends RequestB
 
 export type SearchApplicationPutBehavioralAnalyticsResponse = SearchApplicationPutBehavioralAnalyticsAnalyticsAcknowledgeResponseBase
 
+export interface SearchApplicationRenderQueryRequest extends RequestBase {
+  name: Name
+  body?: SearchApplicationSearchApplicationParameters
+}
+
+export interface SearchApplicationRenderQueryResponse {
+}
+
 export interface SearchApplicationSearchRequest extends RequestBase {
   name: Name
   typed_keys?: boolean

@@ -27176,6 +27176,52 @@
         "x-beta": true
       }
     },
+    "/_application/search_application/{name}/_render_query": {
+      "post": {
+        "tags": [
+          "search_application"
+        ],
+        "summary": "Render a search application query",
+        "description": "Generate an Elasticsearch query using the specified query parameters and the search template associated with the search application or a default template if none is specified.\nIf a parameter used in the search template is not specified in `params`, the parameter's default value will be used.\nThe API returns the specific Elasticsearch query that would be generated and run by calling the search application search API.\n\nYou must have `read` privileges on the backing alias of the search application.",
+        "operationId": "search-application-render-query",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "name",
+            "description": "The name of the search application to render teh query for.",
+            "required": true,
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/_types:Name"
+            },
+            "style": "simple"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/search_application._types:SearchApplicationParameters"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                }
+              }
+            }
+          }
+        },
+        "x-state": "Technical preview"
+      }
+    },
     "/_application/search_application/{name}/_search": {
       "get": {
         "tags": [
