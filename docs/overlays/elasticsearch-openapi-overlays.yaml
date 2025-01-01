@@ -394,6 +394,7 @@ actions:
           examples:
             indicesLegacyPutTemplateRequestExample1:
               $ref: "../../specification/indices/put_template/indicesPutTemplateRequestExample1.yaml"
+<<<<<<< HEAD
 ## Examples for behavioral analytics
   - target: "$.paths['/_application/analytics/{collection_name}/event/{event_type}']['post']"
     description: "Add examples for post analytics collection event operation"
@@ -418,10 +419,15 @@ actions:
 ## Examples for ingest
   - target: "$.components['requestBodies']['simulate.ingest']"
     description: "Add example for simulate ingest request"
+=======
+  - target: "$.components['requestBodies']['inference.stream_inference']"
+    description: "Add example for inference stream request"
+>>>>>>> dc0cd555b (Add inference.stream_inference)
     update: 
       content:
         application/json:
           examples:
+<<<<<<< HEAD
             simulateIngestRequestExample1:
               $ref: "../../specification/simulate/ingest/examples/request/SimulateIngestRequestExample1.yaml"
             simulateIngestRequestExample2:
@@ -567,3 +573,7 @@ actions:
                 updateWatcherSettingsRequestExample1: 
                   $ref: "../../specification/watcher/get_settings/examples/200_response/WatcherGetSettingsResponseExample1.yaml"
               
+=======
+            streamInferenceRequestExample1:
+              $ref: "../../specification/inference/stream_inference/StreamInferenceRequestExample1.yaml"
+>>>>>>> dc0cd555b (Add inference.stream_inference)
