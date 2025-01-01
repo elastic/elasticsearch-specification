@@ -297,12 +297,6 @@
       ],
       "response": []
     },
-    "esql.async_query_get": {
-      "request": [
-        "Missing request & response"
-      ],
-      "response": []
-    },
     "features.get_features": {
       "request": [
         "Request: missing json spec query parameter 'master_timeout'"
