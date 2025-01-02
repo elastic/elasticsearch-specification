@@ -17,10 +17,12 @@
  * under the License.
  */
 
+import { BulkError } from '@security/_types/Bulk'
 import { integer } from '@_types/Numeric'
 
 export class Response {
   body: {
+    errors?: BulkError
     noops: Array<integer>
     updated: Array<string>
   }

@@ -28611,6 +28611,9 @@
                 "schema": {
                   "type": "object",
                   "properties": {
+                    "errors": {
+                      "$ref": "#/components/schemas/security._types:BulkError"
+                    },
                     "noops": {
                       "type": "array",
                       "items": {
@@ -29549,7 +29552,7 @@
                 "type": "object",
                 "properties": {
                   "x509_certificate_chain": {
-                    "description": "The X509Certificate chain, which is represented as an ordered string array.\nEach string in the array is a base64-encoded (Section 4 of RFC4648 - not base64url-encoded) of the certificate's DER encoding.\n\nThe first element is the target certificate that contains the subject distinguished name that is requesting access. \nThis may be followed by additional certificates; each subsequent certificate is used to certify the previous one.",
+                    "description": "The X509Certificate chain, which is represented as an ordered string array.\nEach string in the array is a base64-encoded (Section 4 of RFC4648 - not base64url-encoded) of the certificate's DER encoding.\n\nThe first element is the target certificate that contains the subject distinguished name that is requesting access.\nThis may be followed by additional certificates; each subsequent certificate is used to certify the previous one.",
                     "type": "array",
                     "items": {
                       "type": "string"

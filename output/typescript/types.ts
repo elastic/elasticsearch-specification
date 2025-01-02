@@ -18185,6 +18185,7 @@ export interface SecurityBulkUpdateApiKeysRequest extends RequestBase {
 }
 
 export interface SecurityBulkUpdateApiKeysResponse {
+  errors?: SecurityBulkError
   noops: integer[]
   updated: string[]
 }
