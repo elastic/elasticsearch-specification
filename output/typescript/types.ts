@@ -12895,6 +12895,14 @@ export interface InferenceStreamInferenceRequest extends RequestBase {
 export interface InferenceStreamInferenceResponse {
 }
 
+export interface InferenceUpdateRequest extends RequestBase {
+  inference_id: Id
+  task_type?: InferenceTaskType
+  body?: InferenceInferenceEndpoint
+}
+
+export type InferenceUpdateResponse = InferenceInferenceEndpointInfo
+
 export interface IngestAppendProcessor extends IngestProcessorBase {
   field: Field
   value: any | any[]
