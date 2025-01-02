@@ -10492,6 +10492,12 @@ export interface EsqlAsyncQueryResponse {
   is_running: boolean
 }
 
+export interface EsqlAsyncQueryDeleteRequest extends RequestBase {
+  id: Id
+}
+
+export type EsqlAsyncQueryDeleteResponse = AcknowledgedResponseBase
+
 export interface EsqlAsyncQueryGetRequest extends RequestBase {
   id: Id
   drop_null_columns?: boolean
