@@ -790,24 +790,6 @@
       ],
       "response": []
     },
-    "security.oidc_authenticate": {
-      "request": [
-        "Missing request & response"
-      ],
-      "response": []
-    },
-    "security.oidc_logout": {
-      "request": [
-        "Missing request & response"
-      ],
-      "response": []
-    },
-    "security.oidc_prepare_authentication": {
-      "request": [
-        "Missing request & response"
-      ],
-      "response": []
-    },
     "security.update_settings": {
       "request": [
         "Missing request & response"
