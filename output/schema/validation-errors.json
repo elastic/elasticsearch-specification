@@ -634,6 +634,12 @@
       ],
       "response": []
     },
+    "security.delegate_pki": {
+      "request": [
+        "Request: should not have a body"
+      ],
+      "response": []
+    },
     "security.get_settings": {
       "request": [
         "Missing request & response"
