@@ -392,3 +392,19 @@ actions:
           examples:
             indicesLegacyPutTemplateRequestExample1:
               $ref: "../../specification/indices/put_template/indicesPutTemplateRequestExample1.yaml"
+  - target: "$.paths['/_security/delegate_pki']['post']"
+    description: "Add examples for delegate PKI operation"
+    update:
+      requestBody: 
+        content: 
+          application/json: 
+            examples: 
+              delegatePkiRequestExample1: 
+                $ref: "../../specification/security/delegate_pki/SecurityDelegatePkiRequestExample1.yaml"
+      responses:
+        200:
+          content:
+            application/json:
+              examples:
+                delegatePkiResponseExample1:
+                  $ref: "../../specification/security/delegate_pki/SecurityDelegatePkiResponseExample1.yaml"

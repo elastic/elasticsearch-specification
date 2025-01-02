@@ -18267,6 +18267,18 @@ export interface SecurityCreateServiceTokenToken {
   value: string
 }
 
+export interface SecurityDelegatePkiRequest extends RequestBase {
+  body?: {
+    x509_certificate_chain: string[]
+  }
+}
+
+export interface SecurityDelegatePkiResponse {
+  access_token: string
+  expires_in: integer
+  type: string
+}
+
 export interface SecurityDeletePrivilegesFoundStatus {
   found: boolean
 }
