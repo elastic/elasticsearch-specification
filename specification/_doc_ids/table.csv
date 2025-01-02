@@ -167,6 +167,7 @@ eql-syntax,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/eql-
 eql,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/eql.html
 esql,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/esql.html
 esql-async-query,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/esql-async-query-api.html
+esql-async-query-delete,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/esql-async-query-delete-api.html
 esql-async-query-get,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/esql-async-query-get-api.html
 esql-query,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/esql-rest.html
 esql-query-params,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/esql-rest.html#esql-rest-params

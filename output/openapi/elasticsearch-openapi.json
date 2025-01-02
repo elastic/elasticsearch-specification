@@ -8863,6 +8863,43 @@
           }
         },
         "x-state": "Added in 8.13.0"
+      },
+      "delete": {
+        "tags": [
+          "esql"
+        ],
+        "summary": "Delete an async ES|QL query",
+        "description": "If the query is still running, it is cancelled.\nOtherwise, the stored results are deleted.\n\nIf the Elasticsearch security features are enabled, only the following users can use this API to delete a query:\n\n* The authenticated user that submitted the original query request\n* Users with the `cancel_task` cluster privilege",
+        "externalDocs": {
+          "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/esql.html"
+        },
+        "operationId": "esql-async-query-delete",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "description": "The unique identifier of the query.\nA query ID is provided in the ES|QL async query API response for a query that does not complete in the designated time.\nA query ID is also provided when the request was submitted with the `keep_on_completion` parameter set to `true`.",
+            "required": true,
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/_types:Id"
+            },
+            "style": "simple"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/_types:AcknowledgedResponseBase"
+                }
+              }
+            }
+          }
+        },
+        "x-state": "Added in 8.13.0"
       }
     },
     "/_query": {
