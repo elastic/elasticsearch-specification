@@ -10475,6 +10475,7 @@
           {
             "in": "query",
             "name": "master_timeout",
+            "description": "Explicit operation timeout for connection to master node",
             "deprecated": false,
             "schema": {
               "$ref": "#/components/schemas/_types:Duration"
@@ -10484,6 +10485,7 @@
           {
             "in": "query",
             "name": "timeout",
+            "description": "Explicit operation timeout",
             "deprecated": false,
             "schema": {
               "$ref": "#/components/schemas/_types:Duration"
@@ -10518,6 +10520,7 @@
           {
             "in": "query",
             "name": "master_timeout",
+            "description": "Explicit operation timeout for connection to master node",
             "deprecated": false,
             "schema": {
               "$ref": "#/components/schemas/_types:Duration"
@@ -10527,6 +10530,7 @@
           {
             "in": "query",
             "name": "timeout",
+            "description": "Explicit operation timeout",
             "deprecated": false,
             "schema": {
               "$ref": "#/components/schemas/_types:Duration"
@@ -31753,6 +31757,12 @@
         "parameters": [
           {
             "$ref": "#/components/parameters/slm.get_lifecycle#policy_id"
+          },
+          {
+            "$ref": "#/components/parameters/slm.get_lifecycle#master_timeout"
+          },
+          {
+            "$ref": "#/components/parameters/slm.get_lifecycle#timeout"
           }
         ],
         "responses": {
@@ -31861,6 +31871,26 @@
               "$ref": "#/components/schemas/_types:Name"
             },
             "style": "simple"
+          },
+          {
+            "in": "query",
+            "name": "master_timeout",
+            "description": "Period to wait for a connection to the master node. If no response is received before the timeout expires, the request fails and returns an error.",
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/_types:Duration"
+            },
+            "style": "form"
+          },
+          {
+            "in": "query",
+            "name": "timeout",
+            "description": "Period to wait for a response. If no response is received before the timeout expires, the request fails and returns an error.",
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/_types:Duration"
+            },
+            "style": "form"
           }
         ],
         "responses": {
@@ -31897,6 +31927,26 @@
               "$ref": "#/components/schemas/_types:Name"
             },
             "style": "simple"
+          },
+          {
+            "in": "query",
+            "name": "master_timeout",
+            "description": "Period to wait for a connection to the master node. If no response is received before the timeout expires, the request fails and returns an error.",
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/_types:Duration"
+            },
+            "style": "form"
+          },
+          {
+            "in": "query",
+            "name": "timeout",
+            "description": "Period to wait for a response. If no response is received before the timeout expires, the request fails and returns an error.",
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/_types:Duration"
+            },
+            "style": "form"
           }
         ],
         "responses": {
@@ -31930,6 +31980,28 @@
         "summary": "Run a retention policy",
         "description": "Manually apply the retention policy to force immediate removal of snapshots that are expired according to the snapshot lifecycle policy retention rules.\nThe retention policy is normally applied according to its schedule.",
         "operationId": "slm-execute-retention",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "master_timeout",
+            "description": "Period to wait for a connection to the master node. If no response is received before the timeout expires, the request fails and returns an error.",
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/_types:Duration"
+            },
+            "style": "form"
+          },
+          {
+            "in": "query",
+            "name": "timeout",
+            "description": "Period to wait for a response. If no response is received before the timeout expires, the request fails and returns an error.",
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/_types:Duration"
+            },
+            "style": "form"
+          }
+        ],
         "responses": {
           "200": {
             "description": "",
@@ -31953,6 +32025,14 @@
         "summary": "Get policy information",
         "description": "Get snapshot lifecycle policy definitions and information about the latest snapshot attempts.",
         "operationId": "slm-get-lifecycle-1",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/slm.get_lifecycle#master_timeout"
+          },
+          {
+            "$ref": "#/components/parameters/slm.get_lifecycle#timeout"
+          }
+        ],
         "responses": {
           "200": {
             "$ref": "#/components/responses/slm.get_lifecycle#200"
@@ -31969,6 +32049,28 @@
         "summary": "Get snapshot lifecycle management statistics",
         "description": "Get global and policy-level statistics about actions taken by snapshot lifecycle management.",
         "operationId": "slm-get-stats",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "master_timeout",
+            "description": "Period to wait for a connection to the master node. If no response is received before the timeout expires, the request fails and returns an error.",
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/_types:Duration"
+            },
+            "style": "form"
+          },
+          {
+            "in": "query",
+            "name": "timeout",
+            "description": "Period to wait for a response. If no response is received before the timeout expires, the request fails and returns an error.",
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/_types:Duration"
+            },
+            "style": "form"
+          }
+        ],
         "responses": {
           "200": {
             "description": "",
@@ -32038,6 +32140,28 @@
         ],
         "summary": "Get the snapshot lifecycle management status",
         "operationId": "slm-get-status",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "master_timeout",
+            "description": "Period to wait for a connection to the master node. If no response is received before the timeout expires, the request fails and returns an error.",
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/_types:Duration"
+            },
+            "style": "form"
+          },
+          {
+            "in": "query",
+            "name": "timeout",
+            "description": "Period to wait for a response. If no response is received before the timeout expires, the request fails and returns an error.",
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/_types:Duration"
+            },
+            "style": "form"
+          }
+        ],
         "responses": {
           "200": {
             "description": "",
@@ -32069,6 +32193,28 @@
         "summary": "Start snapshot lifecycle management",
         "description": "Snapshot lifecycle management (SLM) starts automatically when a cluster is formed.\nManually starting SLM is necessary only if it has been stopped using the stop SLM API.",
         "operationId": "slm-start",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "master_timeout",
+            "description": "Period to wait for a connection to the master node. If no response is received before the timeout expires, the request fails and returns an error.",
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/_types:Duration"
+            },
+            "style": "form"
+          },
+          {
+            "in": "query",
+            "name": "timeout",
+            "description": "Period to wait for a response. If no response is received before the timeout expires, the request fails and returns an error.",
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/_types:Duration"
+            },
+            "style": "form"
+          }
+        ],
         "responses": {
           "200": {
             "description": "",
@@ -32092,6 +32238,28 @@
         "summary": "Stop snapshot lifecycle management",
         "description": "Stop all snapshot lifecycle management (SLM) operations and the SLM plugin.\nThis API is useful when you are performing maintenance on a cluster and need to prevent SLM from performing any actions on your data streams or indices.\nStopping SLM does not stop any snapshots that are in progress.\nYou can manually trigger snapshots with the run snapshot lifecycle policy API even if SLM is stopped.\n\nThe API returns a response as soon as the request is acknowledged, but the plugin might continue to run until in-progress operations complete and it can be safely stopped.\nUse the get snapshot lifecycle management status API to see if SLM is running.",
         "operationId": "slm-stop",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "master_timeout",
+            "description": "Period to wait for a connection to the master node. If no response is received before the timeout expires, the request fails and returns an error.",
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/_types:Duration"
+            },
+            "style": "form"
+          },
+          {
+            "in": "query",
+            "name": "timeout",
+            "description": "Period to wait for a response. If no response is received before the timeout expires, the request fails and returns an error.",
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/_types:Duration"
+            },
+            "style": "form"
+          }
+        ],
         "responses": {
           "200": {
             "description": "",
@@ -103284,6 +103452,26 @@
           "$ref": "#/components/schemas/_types:Names"
         },
         "style": "simple"
+      },
+      "slm.get_lifecycle#master_timeout": {
+        "in": "query",
+        "name": "master_timeout",
+        "description": "Period to wait for a connection to the master node. If no response is received before the timeout expires, the request fails and returns an error.",
+        "deprecated": false,
+        "schema": {
+          "$ref": "#/components/schemas/_types:Duration"
+        },
+        "style": "form"
+      },
+      "slm.get_lifecycle#timeout": {
+        "in": "query",
+        "name": "timeout",
+        "description": "Period to wait for a response. If no response is received before the timeout expires, the request fails and returns an error.",
+        "deprecated": false,
+        "schema": {
+          "$ref": "#/components/schemas/_types:Duration"
+        },
+        "style": "form"
       },
       "snapshot.create#repository": {
         "in": "path",
