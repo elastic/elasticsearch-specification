@@ -17,12 +17,11 @@
  * under the License.
  */
 
-import { SearchApplication } from '@search_application/_types/SearchApplication'
-import { long } from '@_types/Numeric'
+import { Script } from '@_types/Scripting'
 
-export class Response {
-  body: {
-    count: long
-    results: SearchApplication[]
-  }
+export class SearchApplicationTemplate {
+  /**
+   * The associated mustache template.
+   */
+  script: Script
 }
