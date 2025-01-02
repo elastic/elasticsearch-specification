@@ -17,6 +17,7 @@
  * under the License.
  */
 
+import { EsqlFormat } from '@esql/_types/QueryParameters'
 import { TableValuesContainer } from '@esql/_types/TableValuesContainer'
 import { Dictionary } from '@spec_utils/Dictionary'
 import { RequestBase } from '@_types/Base'
@@ -88,15 +89,4 @@ export interface Request extends RequestBase {
      */
     tables?: Dictionary<string, Dictionary<string, TableValuesContainer>>
   }
-}
-
-export enum EsqlFormat {
-  csv,
-  json,
-  tsv,
-  txt,
-  yaml,
-  cbor,
-  smile,
-  arrow
 }
