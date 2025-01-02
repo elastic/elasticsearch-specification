@@ -18375,8 +18375,9 @@ export interface SecurityGetBuiltinPrivilegesRequest extends RequestBase {
 }
 
 export interface SecurityGetBuiltinPrivilegesResponse {
-  cluster: string[]
+  cluster: SecurityClusterPrivilege[]
   index: IndexName[]
+  remote_cluster: SecurityRemoteClusterPrivilege[]
 }
 
 export interface SecurityGetPrivilegesRequest extends RequestBase {

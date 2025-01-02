@@ -29992,7 +29992,7 @@
                     "cluster": {
                       "type": "array",
                       "items": {
-                        "type": "string"
+                        "$ref": "#/components/schemas/security._types:ClusterPrivilege"
                       }
                     },
                     "index": {
@@ -30000,11 +30000,18 @@
                       "items": {
                         "$ref": "#/components/schemas/_types:IndexName"
                       }
+                    },
+                    "remote_cluster": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/security._types:RemoteClusterPrivilege"
+                      }
                     }
                   },
                   "required": [
                     "cluster",
-                    "index"
+                    "index",
+                    "remote_cluster"
                   ]
                 }
               }
