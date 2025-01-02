@@ -40637,6 +40637,9 @@
             "$ref": "#/components/schemas/_types.mapping:ObjectProperty"
           },
           {
+            "$ref": "#/components/schemas/_types.mapping:PassthroughObjectProperty"
+          },
+          {
             "$ref": "#/components/schemas/_types.mapping:SemanticTextProperty"
           },
           {
@@ -41722,6 +41725,33 @@
                 "enum": [
                   "object"
                 ]
+              }
+            }
+          }
+        ]
+      },
+      "_types.mapping:PassthroughObjectProperty": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/_types.mapping:CorePropertyBase"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "type": {
+                "type": "string",
+                "enum": [
+                  "passthrough"
+                ]
+              },
+              "enabled": {
+                "type": "boolean"
+              },
+              "priority": {
+                "type": "number"
+              },
+              "time_series_dimension": {
+                "type": "boolean"
               }
             }
           }
