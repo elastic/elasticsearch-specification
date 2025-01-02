@@ -392,3 +392,13 @@ actions:
           examples:
             indicesLegacyPutTemplateRequestExample1:
               $ref: "../../specification/indices/put_template/indicesPutTemplateRequestExample1.yaml"
+  - target: "$.paths['/_lifecycle/stats']['get']"
+    description: "Add examples for get features operation"
+    update:
+      responses:
+        200:
+          content:
+            application/json:
+              examples:
+                dataStreamLifecycleStatsResponseExample1:
+                  $ref: "../../specification/indices/get_data_lifecycle_stats/IndicesGetDataLifecycleStatsResponseExample1.yaml"
