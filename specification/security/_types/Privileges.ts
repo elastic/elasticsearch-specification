@@ -225,7 +225,7 @@ export class IndicesPrivileges {
   /**
    * A list of indices (or index name patterns) to which the permissions in this entry apply.
    */
-  names: IndexName | IndexName[]
+  names: IndexName[]
   /**
    * The index level privileges that owners of the role have on the specified indices.
    */
@@ -259,7 +259,7 @@ export class RemoteIndicesPrivileges {
   /**
    * A list of indices (or index name patterns) to which the permissions in this entry apply.
    */
-  names: IndexName | IndexName[]
+  names: IndexName[]
   /**
    * The index level privileges that owners of the role have on the specified indices.
    */
@@ -299,7 +299,7 @@ export class UserIndicesPrivileges {
   /**
    * A list of indices (or index name patterns) to which the permissions in this entry apply.
    */
-  names: IndexName | IndexName[]
+  names: IndexName[]
   /**
    * The index level privileges that owners of the role have on the specified indices.
    */
