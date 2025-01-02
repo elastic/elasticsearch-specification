@@ -38,7 +38,8 @@ import {
   AggregateMetricDoubleProperty,
   FlattenedProperty,
   NestedProperty,
-  ObjectProperty
+  ObjectProperty,
+  PassthroughObjectProperty
 } from './complex'
 import {
   BinaryProperty,
@@ -123,6 +124,7 @@ export type Property =
   | FlattenedProperty
   | NestedProperty
   | ObjectProperty
+  | PassthroughObjectProperty
   | SemanticTextProperty
   | SparseVectorProperty
 
@@ -178,6 +180,7 @@ export enum FieldType {
   completion,
   nested,
   object,
+  passthrough,
   version,
   murmur3,
   token_count,

@@ -48,6 +48,13 @@ export class ObjectProperty extends CorePropertyBase {
   type?: 'object'
 }
 
+export class PassthroughObjectProperty extends CorePropertyBase {
+  type?: 'passthrough'
+  enabled?: boolean
+  priority?: integer
+  time_series_dimension?: boolean
+}
+
 export class AggregateMetricDoubleProperty extends PropertyBase {
   type: 'aggregate_metric_double'
   default_metric: string
