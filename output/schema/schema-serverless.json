@@ -52801,6 +52801,9 @@
           "name": "object"
         },
         {
+          "name": "passthrough"
+        },
+        {
           "name": "version"
         },
         {
@@ -52901,7 +52904,7 @@
         "name": "FieldType",
         "namespace": "_types.mapping"
       },
-      "specLocation": "_types/mapping/Property.ts#L166-L213"
+      "specLocation": "_types/mapping/Property.ts#L168-L216"
     },
     {
       "kind": "enum",
@@ -86553,7 +86556,7 @@
         "name": "Property",
         "namespace": "_types.mapping"
       },
-      "specLocation": "_types/mapping/Property.ts#L96-L164",
+      "specLocation": "_types/mapping/Property.ts#L97-L166",
       "type": {
         "items": [
           {
@@ -86693,6 +86696,13 @@
             "kind": "instance_of",
             "type": {
               "name": "ObjectProperty",
+              "namespace": "_types.mapping"
+            }
+          },
+          {
+            "kind": "instance_of",
+            "type": {
+              "name": "PassthroughObjectProperty",
               "namespace": "_types.mapping"
             }
           },
@@ -87097,7 +87107,7 @@
           }
         }
       ],
-      "specLocation": "_types/mapping/Property.ts#L84-L94"
+      "specLocation": "_types/mapping/Property.ts#L85-L95"
     },
     {
       "inherits": {
@@ -88710,7 +88720,7 @@
           }
         }
       ],
-      "specLocation": "_types/mapping/complex.ts#L51-L56"
+      "specLocation": "_types/mapping/complex.ts#L59-L64"
     },
     {
       "inherits": {
@@ -88979,7 +88989,7 @@
           }
         }
       ],
-      "specLocation": "_types/mapping/complex.ts#L25-L36"
+      "specLocation": "_types/mapping/complex.ts#L26-L37"
     },
     {
       "inherits": {
@@ -89036,7 +89046,7 @@
           }
         }
       ],
-      "specLocation": "_types/mapping/complex.ts#L38-L43"
+      "specLocation": "_types/mapping/complex.ts#L39-L44"
     },
     {
       "inherits": {
@@ -89082,7 +89092,64 @@
           }
         }
       ],
-      "specLocation": "_types/mapping/complex.ts#L45-L49"
+      "specLocation": "_types/mapping/complex.ts#L46-L50"
+    },
+    {
+      "inherits": {
+        "type": {
+          "name": "CorePropertyBase",
+          "namespace": "_types.mapping"
+        }
+      },
+      "kind": "interface",
+      "name": {
+        "name": "PassthroughObjectProperty",
+        "namespace": "_types.mapping"
+      },
+      "properties": [
+        {
+          "name": "type",
+          "required": false,
+          "type": {
+            "kind": "literal_value",
+            "value": "passthrough"
+          }
+        },
+        {
+          "name": "enabled",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "_builtins"
+            }
+          }
+        },
+        {
+          "name": "priority",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "time_series_dimension",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "_builtins"
+            }
+          }
+        }
+      ],
+      "specLocation": "_types/mapping/complex.ts#L52-L57"
     },
     {
       "kind": "interface",
