@@ -88720,7 +88720,7 @@
           }
         }
       ],
-      "specLocation": "_types/mapping/complex.ts#L59-L64"
+      "specLocation": "_types/mapping/complex.ts#L58-L63"
     },
     {
       "inherits": {
@@ -88989,7 +88989,7 @@
           }
         }
       ],
-      "specLocation": "_types/mapping/complex.ts#L26-L37"
+      "specLocation": "_types/mapping/complex.ts#L25-L36"
     },
     {
       "inherits": {
@@ -89046,7 +89046,7 @@
           }
         }
       ],
-      "specLocation": "_types/mapping/complex.ts#L39-L44"
+      "specLocation": "_types/mapping/complex.ts#L38-L43"
     },
     {
       "inherits": {
@@ -89092,7 +89092,7 @@
           }
         }
       ],
-      "specLocation": "_types/mapping/complex.ts#L46-L50"
+      "specLocation": "_types/mapping/complex.ts#L45-L49"
     },
     {
       "inherits": {
@@ -89149,7 +89149,7 @@
           }
         }
       ],
-      "specLocation": "_types/mapping/complex.ts#L52-L57"
+      "specLocation": "_types/mapping/complex.ts#L51-L56"
     },
     {
       "kind": "interface",
