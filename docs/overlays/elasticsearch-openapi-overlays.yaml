@@ -413,6 +413,16 @@ actions:
               examples:
                 getLicenseResponseExample1:
                   $ref: "../../specification/license/get_trial_status/GetTrialLicenseStatusResponseExample1.yaml"
+  - target: "$.paths['/_license/start_basic']['post']"
+    description: "Add example for start basic response"
+    update: 
+      responses:
+        200:
+          content:
+            application/json:
+              examples:
+                startBasicLicenseResponseExample1:
+                  $ref: "../../specification/license/post_start_basic/StartBasicLicenseResponseExample1.yaml"
   - target: "$.paths['/_license/start_trial']['post']"
     description: "Add example for start trial response"
     update: 
