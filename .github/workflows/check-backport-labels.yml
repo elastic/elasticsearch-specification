@@ -53,7 +53,7 @@ jobs:
 
           echo "::endgroup::"
 
-          has_backport_label=false
+          has_exact_backport_label=false
           pr_majors=()
           pr_floating_majors=()
 
@@ -62,13 +62,14 @@ jobs:
           for pr_label in "${pr_labels[@]}"; do
             for backport_label in "${all_backport_labels[@]}"; do
               if [ "${pr_label}" = "${backport_label}" ]; then
-                has_backport_label=true
+                has_exact_backport_label=true
 
                 if [[ "${pr_label}" =~ ${backport_regex} ]]; then
                   major="${BASH_REMATCH[1]}"
                   minor="${BASH_REMATCH[2]}"
                   pr_majors+=("${major}")
                   if [ "${minor}" = "x" ]; then
+                    has_exact_backport_label=false
                     pr_floating_majors+=("${major}")
                   fi
                 fi
@@ -80,8 +81,10 @@ jobs:
 
           echo "::endgroup::"
 
-          if [ "${has_backport_label}" != true ]; then
-            echo "::error::No backport label found. Please add at least one of the 'backport {x}.{x}' labels or 'skip-backport', if this PR should not be backported."
+          if [ "${has_exact_backport_label}" != true ]; then
+            echo "::error::No exact backport label found. Please add at least one of the "\
+                 "'backport {major}.{minor}' labels or use 'skip-backport', "\
+                 "if this PR should not be backported."
             exit 1
           fi
 
