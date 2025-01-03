@@ -16,5 +16,5 @@ jobs:
       - name: "Check backport label"
         if: "!contains(github.event.pull_request.labels.*.name, 'backport')"
         run: |
-          echo "Please apply a backport label, or `skip-backport` if not backport is needed 
+          echo "Please apply a backport label, or `skip-backport` if not backport is needed"
           false
