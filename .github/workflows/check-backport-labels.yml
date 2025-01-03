@@ -66,13 +66,14 @@ jobs:
                 if [[ "${pr_label}" =~ ${backport_regex} ]]; then
                   major="${BASH_REMATCH[1]}"
                   minor="${BASH_REMATCH[2]}"
-                  pr_majors+=("${major}")
                   if [ "${minor}" != "x" ]; then
+                    pr_majors+=("${major}")
                     has_exact_backport_label=true
                   else
                     pr_floating_majors+=("${major}")
                   fi
                 else
+                  # Matches 'skip-backport'
                   has_exact_backport_label=true
                 fi
 
@@ -89,6 +90,9 @@ jobs:
                  "if this PR should not be backported."
             exit 1
           fi
+
+          # Validate that a floating backport label exists for each exact backport label major
+          # version.
 
           has_floating_backport_labels=true
 
@@ -121,3 +125,27 @@ jobs:
           if [ "${has_floating_backport_labels}" != true ]; then
             exit 1
           fi
+
+          # Validate that an exact backport label exists for each floating backport label major
+          # version.
+
+          has_exact_backports_labels=true
+
+          for pr_floating_major in "${pr_floating_majors[@]}"; do
+            exists_exact_major=false
+            for pr_major in "${pr_majors[@]}"; do
+              if [ "${pr_floating_major}" -eq "${pr_major}" ]; then
+                has_exact_major=true
+              fi
+            done
+
+            if [ "${has_exact_major}" != true ]; then
+              has_exact_backport_labels=false
+              echo "::error::Missing exact backport label for '${pr_floating_major}.x'"
+            fi
+          done
+
+          if [ "${has_exact_backport_labels}" != true ]; then
+            exit 1
+          fi
+
