@@ -4,7 +4,7 @@ description: A succesful response from `GET _cat/ml/anomaly_detectors?h=id,s,dpr
 # response_code: ''
 value: >
   id                        s dpr   mb
-  
+
   high_sum_total_sales closed 14022 1.5mb
 
   low_request_rate     closed 1216  40.5kb

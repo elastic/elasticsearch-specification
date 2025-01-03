@@ -10,5 +10,5 @@ value: >
   alias2 test1 *      -            -              -
 
   alias3 test1 -      1            1              -
-  
+
   alias4 test1 -      2            1,2            -
