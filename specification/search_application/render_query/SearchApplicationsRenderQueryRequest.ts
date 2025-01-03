@@ -16,9 +16,10 @@
  * specific language governing permissions and limitations
  * under the License.
  */
+import { Dictionary } from '@spec_utils/Dictionary'
+import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 import { RequestBase } from '@_types/Base'
 import { Name } from '@_types/common'
-import { SearchApplicationParameters } from '../_types/SearchApplicationParameters'
 
 /**
  * Render a search application query.
@@ -41,6 +42,7 @@ export interface Request extends RequestBase {
   /**
    * Contains parameters for a search application.
    */
-  /** @codegen_name search_application */
-  body: SearchApplicationParameters
+  body: {
+    params?: Dictionary<string, UserDefinedValue>
+  }
 }

@@ -27201,11 +27201,18 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/search_application._types:SearchApplicationParameters"
+                "type": "object",
+                "properties": {
+                  "params": {
+                    "type": "object",
+                    "additionalProperties": {
+                      "type": "object"
+                    }
+                  }
+                }
               }
             }
-          },
-          "required": true
+          }
         },
         "responses": {
           "200": {

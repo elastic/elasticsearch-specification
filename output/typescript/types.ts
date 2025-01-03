@@ -17756,7 +17756,9 @@ export type SearchApplicationPutBehavioralAnalyticsResponse = SearchApplicationP
 
 export interface SearchApplicationRenderQueryRequest extends RequestBase {
   name: Name
-  body?: SearchApplicationSearchApplicationParameters
+  body?: {
+    params?: Record<string, any>
+  }
 }
 
 export interface SearchApplicationRenderQueryResponse {
