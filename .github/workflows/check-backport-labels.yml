@@ -39,6 +39,7 @@ jobs:
 
             if [[ "${label}" =~ ${backport_regex} ]]; then
               major="${BASH_REMATCH[1]}"
+              minor="${BASH_REMATCH[2]}"
               all_backport_labels+=("${label}")
               echo "${label}"
 
