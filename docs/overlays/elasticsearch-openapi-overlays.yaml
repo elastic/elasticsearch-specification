@@ -392,3 +392,73 @@ actions:
           examples:
             indicesLegacyPutTemplateRequestExample1:
               $ref: "../../specification/indices/put_template/indicesPutTemplateRequestExample1.yaml"
+## Examples for licensing
+  - target: "$.paths['/_license/basic_status']['get']"
+    description: "Add example for get basic status response"
+    update: 
+      responses:
+        200:
+          content:
+            application/json:
+              examples:
+                getBasicStatusResponseExample1:
+                  $ref: "../../specification/license/get_basic_status/GetBasicLicenseStatusResponseExample1.yaml"
+  - target: "$.paths['/_license/trial_status']['get']"
+    description: "Add example for get trial status response"
+    update: 
+      responses:
+        200:
+          content:
+            application/json:
+              examples:
+                getLicenseResponseExample1:
+                  $ref: "../../specification/license/get_trial_status/GetTrialLicenseStatusResponseExample1.yaml"
+  - target: "$.paths['/_license/start_basic']['post']"
+    description: "Add example for start basic response"
+    update: 
+      responses:
+        200:
+          content:
+            application/json:
+              examples:
+                startBasicLicenseResponseExample1:
+                  $ref: "../../specification/license/post_start_basic/StartBasicLicenseResponseExample1.yaml"
+  - target: "$.paths['/_license/start_trial']['post']"
+    description: "Add example for start trial response"
+    update: 
+      responses:
+        200:
+          content:
+            application/json:
+              examples:
+                startTrialLicenseResponseExample1:
+                  $ref: "../../specification/license/post_start_trial/StartTrialLicenseResponseExample1.yaml"
+  - target: "$.components['requestBodies']['license.post']"
+    description: "Add examples for update license request"
+    update: 
+      content: 
+        application/json: 
+          examples: 
+            updateLicenseRequestExample1: 
+              $ref: "../../specification/license/post/PostLicenseRequestExample1.yaml"
+  - target: "$.components['responses']['license.post#200']"
+    description: "Add examples for update license response"
+    update: 
+      content:
+        application/json:
+          examples:
+            clusterHealthResponseExample1:
+              $ref: "../../specification/license/post/PostLicenseResponseExample1.yaml"
+## Examples for search applications
+  - target: "$.paths['/_application/search_application/{name}/_render_query']['post']"
+    description: "Add examples for render search application query operation"
+    update:
+      requestBody: 
+        content: 
+          application/json: 
+            examples:
+              renderSearchApplicationQueryRequestExample1: 
+                $ref: "../../specification/search_application/render_query/SearchApplicationsRenderQueryRequestExample1.yaml"
+                renderSearchApplicationQueryResponseExample1:
+                  $ref: "../../specification/search_application/render_query/SearchApplicationsRenderQueryResponseExample1.yaml"
+

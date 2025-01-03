@@ -1360,6 +1360,17 @@ actions:
           examples:
             getBehavioralAnalyticsCollectionsResponseExample1:
               $ref: "../../specification/search_application/get_behavioral_analytics/BehavioralAnalyticsGetResponseExample1.yaml"
+## Examples for licensing
+  - target: "$.paths['/_license']['get']"
+    description: "Add example for get license response"
+    update: 
+      responses:
+        200:
+          content:
+            application/json:
+              examples:
+                getLicenseResponseExample1:
+                  $ref: "../../specification/license/get/GetLicenseResponseExample1.yaml"
 ## Examples for search applications
   - target: "$.paths['/_application/search_application']['get']"
     description: "Add examples for get search applications operation"
