@@ -1,0 +1,5 @@
+summary: autoscaling/apis/put-autoscaling-policy.asciidoc:16
+method_request: PUT /_autoscaling/policy/<name>
+description: ''
+type: request
+value: "{\n  \"roles\": [],\n  \"deciders\": {\n    \"fixed\": {\n    }\n  }\n}"

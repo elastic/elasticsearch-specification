@@ -1351,3 +1351,12 @@ actions:
           examples:
             indicesRolloverResponseExample1:
               $ref: "../../specification/indices/rollover/indicesRolloverResponseExample1.yaml"
+## Examples for behavioral analytics
+  - target: "$.components['responses']['search_application.get_behavioral_analytics#200']"
+    description: "Add example for get behavioral analytics collections response"
+    update: 
+      content:
+        application/json:
+          examples:
+            searchApplicationsListResponseExample1:
+              $ref: "../../specification/search_application/list/SearchApplicationsListResponseExample1.yaml"
