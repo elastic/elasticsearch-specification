@@ -541,6 +541,7 @@ search-aggregations-metrics-valuecount-aggregation,https://www.elastic.co/guide/
 search-aggregations-metrics-weight-avg-aggregation,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/search-aggregations-metrics-weight-avg-aggregation.html
 search-aggregations-bucket-variablewidthhistogram-aggregation,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/search-aggregations-bucket-variablewidthhistogram-aggregation.html
 search-analyzer,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/search-analyzer.html
+search-render-query,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/search-application-render-query.html
 search-count,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/search-count.html
 search-explain,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/search-explain.html
 search-field-caps,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/search-field-caps.html

@@ -914,12 +914,6 @@
       ],
       "response": []
     },
-    "search_application.render_query": {
-      "request": [
-        "Missing request & response"
-      ],
-      "response": []
-    },
     "search_mvt": {
       "request": [
         "Request: query parameter 'grid_agg' does not exist in the json spec",
