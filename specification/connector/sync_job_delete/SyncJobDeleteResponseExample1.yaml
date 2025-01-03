@@ -1,0 +1,6 @@
+# summary: connector/apis/delete-connector-sync-job-api.asciidoc:51
+# description: ''
+# type: response
+# response_code: ''
+value:
+  acknowledged: true

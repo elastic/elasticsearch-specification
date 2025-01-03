@@ -1,0 +1,6 @@
+# summary: connector/apis/update-connector-status-api.asciidoc:83
+# description: ''
+# type: response
+# response_code: 200
+value:
+  result: updated

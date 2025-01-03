@@ -1,0 +1,6 @@
+# summary: connector/apis/update-connector-name-description-api.asciidoc:88
+# description: ''
+# type: response
+# response_code: 200
+value:
+  result: updated
