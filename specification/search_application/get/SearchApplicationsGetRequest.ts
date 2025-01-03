@@ -24,6 +24,7 @@ import { Name } from '@_types/common'
  * @rest_spec_name search_application.get
  * @availability stack since=8.8.0 stability=beta
  * @availability serverless stability=beta visibility=public
+ * @cluster_privileges manage_search_application
  */
 export interface Request extends RequestBase {
   path_parts: {
