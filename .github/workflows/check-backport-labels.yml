@@ -1,0 +1,20 @@
+name: Check
+
+on:
+  pull_request:
+    types: [labeled, unlabeled, opened, reopened, synchronize]
+
+permissions:
+  pull-requests: "read"
+
+jobs:
+  check-backport-label:
+    name: backport label 
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: "Check backport label"
+        if: "!contains(github.event.pull_request.labels.*.name, 'backport')"
+        run: |
+          echo "Please apply a backport label, or `skip-backport` if not backport is needed 
+          false
