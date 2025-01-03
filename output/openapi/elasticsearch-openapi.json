@@ -27148,7 +27148,8 @@
         "tags": [
           "search_application"
         ],
-        "summary": "Returns the existing search applications",
+        "summary": "Get search applications",
+        "description": "Get information about search applications.",
         "operationId": "search-application-list",
         "parameters": [
           {
