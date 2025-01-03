@@ -1351,3 +1351,54 @@ actions:
           examples:
             indicesRolloverResponseExample1:
               $ref: "../../specification/indices/rollover/indicesRolloverResponseExample1.yaml"
+## cat examples
+  - target: "$.components['responses']['cat.aliases#200']"
+    description: "Add example for cat aliases response"
+    update: 
+      content:
+        text/plain:
+          schema:
+            type: string
+          examples:
+            catAliasesResponseExample1:
+              $ref: "../../specification/cat/aliases/CatAliasesResponseExample1.yaml" 
+  - target: "$.components['responses']['cat.ml_datafeeds#200']"
+    description: "Add example for cat datafeeds response"
+    update: 
+      content:
+        text/plain:
+          schema:
+            type: string
+          examples:
+            catDatafeedsResponseExample1:
+              $ref: "../../specification/cat/ml_datafeeds/CatDatafeedsResponseExample1.yaml"
+  - target: "$.components['responses']['cat.ml_data_frame_analytics#200']"
+    description: "Add example for cat data frame analytics response"
+    update: 
+      content:
+        text/plain:
+          schema:
+            type: string
+          examples:
+            catDataFrameAnalyticsResponseExample1:
+              $ref: "../../specification/cat/ml_data_frame_analytics/CatDataFrameAnalyticsResponseExample1.yaml" 
+  - target: "$.components['responses']['cat.ml_jobs#200']"
+    description: "Add example for cat anomaly detectors response"
+    update: 
+      content:
+        text/plain:
+          schema:
+            type: string
+          examples:
+            catAnomalyDetectorsResponseExample1:
+              $ref: "../../specification/cat/ml_jobs/CatJobsResponseExample1.yaml"
+  - target: "$.components['responses']['cat.ml_trained_models#200']"
+    description: "Add example for cat trained models response"
+    update: 
+      content:
+        text/plain:
+          schema:
+            type: string
+          examples:
+            catTrainedModelsResponseExample1:
+              $ref: "../../specification/cat/ml_trained_models/CatTrainedModelsResponseExample1.yaml" 
