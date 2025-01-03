@@ -392,3 +392,13 @@ actions:
           examples:
             indicesLegacyPutTemplateRequestExample1:
               $ref: "../../specification/indices/put_template/indicesPutTemplateRequestExample1.yaml"
+## Examples for behavioral analytics
+  - target: "$.paths['/_application/analytics/{collection_name}/event/{event_type}']['post']"
+    description: "Add examples for post analytics collection event operation"
+    update: 
+      requestBody: 
+        content: 
+          application/json: 
+            examples: 
+              postBehavioralAnalyticsEventRequestExample1:
+                $ref: "../../specification/search_application/post_behavioral_analytics_event/BehavioralAnalyticsEventPostRequestExample1.yaml"
