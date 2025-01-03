@@ -14,13 +14,101 @@ jobs:
 
     steps:
       - name: "Check backport label"
-        if: "!contains(github.event.pull_request.labels.*.name, 'backport')"
+        env:
+          GH_TOKEN: ${{ github.token }}
         run: |
-          echo "Please apply a backport label, or "skip-backport" if no backport is needed"
-          echo "Current labels: ${{ toJSON(github.event.pull_request.labels.*.name) }}"
-          echo "${{ contains(github.event.pull_request.labels.*.name, 'backport') }}"
-          echo "${{ contains(github.event.pull_request.labels.*.name, 'skip-backport') }}"
-          echo "${{ endsWith(github.event.pull_request.labels.*.name, 'backport') }}"
-          echo "${{ startsWith(github.event.pull_request.labels.*.name, 'backport') }}"
-          echo "${{ github.event.pull_request.labels.*.name == 'skip-backport' }}"
-          exit 1
+          json_pr_labels='${{ toJSON(github.event.pull_request.labels) }}'
+          readarray -t pr_labels < <(echo "${json_pr_labels}" | jq -r -c '.[].name')
+
+          json_all_labels="$(gh label list --repo ${{ github.repository }} --json name --search "backport" --limit 1000)"
+          readarray -t all_labels < <(echo "${json_all_labels}" | jq -r -c '.[].name')
+
+          all_backport_labels=()
+          all_floating_majors=()
+
+          backport_regex="^backport ([0-9])+\.([0-9]+|x)$"
+
+          echo "::group::Available Labels"
+
+          for label in "${all_labels[@]}"; do
+            if [ "${label}" = "skip-backport" ]; then
+              all_backport_labels+=("${label}")
+              echo "${label}"
+              continue
+            fi
+
+            if [[ "${label}" =~ ${backport_regex} ]]; then
+              major="${BASH_REMATCH[1]}"
+              all_backport_labels+=("${label}")
+              echo "${label}"
+
+              if [[ "${label}" == *x ]]; then
+                all_floating_majors+=("${major}")
+              fi
+            fi
+          done
+
+          echo "::endgroup::"
+
+          has_backport_label=false
+          pr_majors=()
+          pr_floating_majors=()
+
+          echo "::group::Detected Labels"
+
+          for pr_label in "${pr_labels[@]}"; do
+            for backport_label in "${all_backport_labels[@]}"; do
+              if [ "${pr_label}" = "${backport_label}" ]; then
+                has_backport_label=true
+
+                if [[ "${pr_label}" =~ ${backport_regex} ]]; then
+                  major="${BASH_REMATCH[1]}"
+                  pr_majors+=("${major}")
+                  if [[ "${pr_label}" == *x ]]; then
+                    pr_floating_majors+=("${major}")
+                  fi
+                fi
+
+                echo "${pr_label}"
+              fi
+            done
+          done
+
+          echo "::endgroup::"
+
+          if [ "${has_backport_label}" != true ]; then
+            echo "::error::No backport label found."
+            exit 1
+          fi
+
+          has_floating_backport_labels=true
+
+          for pr_major in "${pr_majors[@]}"; do
+            exists_floating_major=false
+            for floating_major in "${all_floating_majors[@]}"; do
+              if [ "${pr_major}" -eq "${floating_major}" ]; then
+                exists_floating_major=true
+                break
+              fi
+            done
+
+            if [ "${exists_floating_major}" = false ]; then
+              continue
+            fi
+
+            has_floating_major=false
+            for pr_floating_major in "${pr_floating_majors[@]}"; do
+              if [ "${pr_major}" -eq "${pr_floating_major}" ]; then
+                has_floating_major=true
+              fi
+            done
+
+            if [ "${has_floating_major}" != true ]; then
+              has_floating_backport_labels=false
+              echo "::error::Missing floating backport label for '${pr_major}.x'"
+            fi
+          done
+
+          if [ "${has_floating_backport_labels}" != true ]; then
+            exit 1
+          fi
