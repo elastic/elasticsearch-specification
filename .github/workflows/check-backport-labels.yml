@@ -79,7 +79,7 @@ jobs:
           echo "::endgroup::"
 
           if [ "${has_backport_label}" != true ]; then
-            echo "::error::No backport label found."
+            echo "::error::No backport label found. Please add at least one of the 'backport {x}.{x}' labels or 'skip-backport', if this PR should not be backported."
             exit 1
           fi
 
