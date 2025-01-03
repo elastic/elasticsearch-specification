@@ -8002,6 +8002,14 @@
       "description": "Delete a search application.\nRemove a search application and its associated alias. Indices attached to the search application are not removed.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/delete-search-application.html",
       "name": "search_application.delete",
+      "privileges": {
+        "cluster": [
+          "manage_search_application"
+        ],
+        "index": [
+          "manage"
+        ]
+      },
       "request": {
         "name": "Request",
         "namespace": "search_application.delete"
@@ -8073,6 +8081,11 @@
       "description": "Get search application details.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/get-search-application.html",
       "name": "search_application.get",
+      "privileges": {
+        "cluster": [
+          "manage_search_application"
+        ]
+      },
       "request": {
         "name": "Request",
         "namespace": "search_application.get"
@@ -8147,9 +8160,14 @@
           "stability": "beta"
         }
       },
-      "description": "Returns the existing search applications.",
+      "description": "Get search applications.\nGet information about search applications.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/list-search-applications.html",
       "name": "search_application.list",
+      "privileges": {
+        "cluster": [
+          "manage_search_application"
+        ]
+      },
       "request": {
         "name": "Request",
         "namespace": "search_application.list"
@@ -8185,6 +8203,14 @@
       "description": "Create or update a search application.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/put-search-application.html",
       "name": "search_application.put",
+      "privileges": {
+        "cluster": [
+          "manage_search_application"
+        ],
+        "index": [
+          "manage"
+        ]
+      },
       "request": {
         "name": "Request",
         "namespace": "search_application.put"
@@ -37332,7 +37358,7 @@
         }
       ],
       "query": [],
-      "specLocation": "search_application/delete/SearchApplicationsDeleteRequest.ts#L22-L36"
+      "specLocation": "search_application/delete/SearchApplicationsDeleteRequest.ts#L22-L38"
     },
     {
       "body": {
@@ -37440,7 +37466,7 @@
         }
       ],
       "query": [],
-      "specLocation": "search_application/get/SearchApplicationsGetRequest.ts#L22-L35"
+      "specLocation": "search_application/get/SearchApplicationsGetRequest.ts#L22-L36"
     },
     {
       "body": {
@@ -37535,7 +37561,7 @@
       "body": {
         "kind": "no_body"
       },
-      "description": "Returns the existing search applications.",
+      "description": "Get search applications.\nGet information about search applications.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -37587,7 +37613,7 @@
           }
         }
       ],
-      "specLocation": "search_application/list/SearchApplicationsListRequest.ts#L22-L44"
+      "specLocation": "search_application/list/SearchApplicationsListRequest.ts#L22-L46"
     },
     {
       "body": {
@@ -37683,7 +37709,7 @@
           }
         }
       ],
-      "specLocation": "search_application/put/SearchApplicationsPutRequest.ts#L23-L48"
+      "specLocation": "search_application/put/SearchApplicationsPutRequest.ts#L23-L50"
     },
     {
       "body": {
