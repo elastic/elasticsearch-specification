@@ -42,7 +42,7 @@ jobs:
               all_backport_labels+=("${label}")
               echo "${label}"
 
-              if [[ "${label}" == *x ]]; then
+              if [ "${minor}" = "x" ]; then
                 all_floating_majors+=("${major}")
               fi
             fi
