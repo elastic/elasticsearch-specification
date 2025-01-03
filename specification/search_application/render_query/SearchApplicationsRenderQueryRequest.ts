@@ -29,6 +29,7 @@ import { SearchApplicationParameters } from '../_types/SearchApplicationParamete
  * You must have `read` privileges on the backing alias of the search application.
  * @rest_spec_name search_application.render_query
  * @availability stack since=8.9.0 stability=experimental visibility=public
+ * @doc_id search-render-query
  */
 export interface Request extends RequestBase {
   path_parts: {

@@ -392,6 +392,7 @@ actions:
           examples:
             indicesLegacyPutTemplateRequestExample1:
               $ref: "../../specification/indices/put_template/indicesPutTemplateRequestExample1.yaml"
+## Examples for search applications
   - target: "$.paths['/_application/search_application/{name}/_render_query']['post']"
     description: "Add examples for render search application query operation"
     update:
