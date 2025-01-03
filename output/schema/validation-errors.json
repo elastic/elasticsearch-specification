@@ -652,9 +652,9 @@
       ],
       "response": []
     },
-    "security.bulk_update_api_keys": {
+    "security.delegate_pki": {
       "request": [
-        "Missing request & response"
+        "Request: should not have a body"
       ],
       "response": []
     },

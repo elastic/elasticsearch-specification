@@ -1,0 +1,9 @@
+# summary:
+description: A successful response from updating two API keys.
+# type": "response",
+# response_code": 200,
+value:
+  updated:
+    - VuaCfGcBCdbkQm-e5aOx
+    - H3_AhoIBA9hmeQJdg7ij
+  noops: []
