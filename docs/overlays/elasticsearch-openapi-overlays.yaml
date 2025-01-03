@@ -392,3 +392,14 @@ actions:
           examples:
             indicesLegacyPutTemplateRequestExample1:
               $ref: "../../specification/indices/put_template/indicesPutTemplateRequestExample1.yaml"
+## Examples for licensing
+  - target: "$.paths['/_license/trial_status']['get']"
+    description: "Add example for get trial status response"
+    update: 
+      responses:
+        200:
+          content:
+            application/json:
+              examples:
+                getLicenseResponseExample1:
+                  $ref: "../../specification/license/get_trial_status/GetTrialLicenseStatusResponseExample1.yaml"
