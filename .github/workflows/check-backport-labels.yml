@@ -129,7 +129,7 @@ jobs:
           # Validate that an exact backport label exists for each floating backport label major
           # version.
 
-          has_exact_backports_labels=true
+          has_exact_backport_labels=true
 
           for pr_floating_major in "${pr_floating_majors[@]}"; do
             exists_exact_major=false
