@@ -449,3 +449,16 @@ actions:
           examples:
             clusterHealthResponseExample1:
               $ref: "../../specification/license/post/PostLicenseResponseExample1.yaml"
+## Examples for search applications
+  - target: "$.paths['/_application/search_application/{name}/_render_query']['post']"
+    description: "Add examples for render search application query operation"
+    update:
+      requestBody: 
+        content: 
+          application/json: 
+            examples:
+              renderSearchApplicationQueryRequestExample1: 
+                $ref: "../../specification/search_application/render_query/SearchApplicationsRenderQueryRequestExample1.yaml"
+                renderSearchApplicationQueryResponseExample1:
+                  $ref: "../../specification/search_application/render_query/SearchApplicationsRenderQueryResponseExample1.yaml"
+
