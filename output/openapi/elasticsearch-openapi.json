@@ -4976,6 +4976,65 @@
         "x-state": "Technical preview"
       }
     },
+    "/_connector/_sync_job/{connector_sync_job_id}/_claim": {
+      "put": {
+        "tags": [
+          "connector"
+        ],
+        "summary": "Claim a connector sync job",
+        "description": "This action updates the job status to `in_progress` and sets the `last_seen` and `started_at` timestamps to the current time.\nAdditionally, it can set the `sync_cursor` property for the sync job.\n\nThis API is not intended for direct connector management by users.\nIt supports the implementation of services that utilize the connector protocol to communicate with Elasticsearch.\n\nTo sync data using self-managed connectors, you need to deploy the Elastic connector service on your own infrastructure.\nThis service runs automatically on Elastic Cloud for Elastic managed connectors.",
+        "operationId": "connector-sync-job-claim",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "connector_sync_job_id",
+            "description": "The unique identifier of the connector sync job.",
+            "required": true,
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/_types:Id"
+            },
+            "style": "simple"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "sync_cursor": {
+                    "description": "The cursor object from the last incremental sync job.\nThis should reference the `sync_cursor` field in the connector state for which the job runs.",
+                    "type": "object"
+                  },
+                  "worker_hostname": {
+                    "description": "The host name of the current system that will run the job.",
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "worker_hostname"
+                ]
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                }
+              }
+            }
+          }
+        },
+        "x-state": "Technical preview"
+      }
+    },
     "/_connector/_sync_job/{connector_sync_job_id}": {
       "get": {
         "tags": [
@@ -5043,6 +5102,61 @@
           }
         },
         "x-beta": true
+      }
+    },
+    "/_connector/_sync_job/{connector_sync_job_id}/_error": {
+      "put": {
+        "tags": [
+          "connector"
+        ],
+        "summary": "Set a connector sync job error",
+        "description": "Set the `error` field for a connector sync job and set its `status` to `error`.\n\nTo sync data using self-managed connectors, you need to deploy the Elastic connector service on your own infrastructure.\nThis service runs automatically on Elastic Cloud for Elastic managed connectors.",
+        "operationId": "connector-sync-job-error",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "connector_sync_job_id",
+            "description": "The unique identifier for the connector sync job.",
+            "required": true,
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/_types:Id"
+            },
+            "style": "simple"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "error": {
+                    "description": "The error for the connector sync job error field.",
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "error"
+                ]
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                }
+              }
+            }
+          }
+        },
+        "x-state": "Technical preview"
       }
     },
     "/_connector/_sync_job": {
@@ -15661,8 +15775,8 @@
         "tags": [
           "ingest"
         ],
-        "summary": "Create or update GeoIP database configurations",
-        "description": "Create or update IP geolocation database configurations.",
+        "summary": "Create or update a GeoIP database configuration",
+        "description": "Refer to the create or update IP geolocation database configuration API.",
         "operationId": "ingest-put-geoip-database",
         "parameters": [
           {
@@ -15793,7 +15907,7 @@
         "tags": [
           "ingest"
         ],
-        "summary": "Returns information about one or more IP location database configurations",
+        "summary": "Get IP geolocation database configurations",
         "operationId": "ingest-get-ip-location-database-1",
         "parameters": [
           {
@@ -15814,13 +15928,13 @@
         "tags": [
           "ingest"
         ],
-        "summary": "Returns information about one or more IP location database configurations",
+        "summary": "Create or update an IP geolocation database configuration",
         "operationId": "ingest-put-ip-location-database",
         "parameters": [
           {
             "in": "path",
             "name": "id",
-            "description": "ID of the database configuration to create or update.",
+            "description": "The database configuration identifier.",
             "required": true,
             "deprecated": false,
             "schema": {
@@ -15831,7 +15945,7 @@
           {
             "in": "query",
             "name": "master_timeout",
-            "description": "Period to wait for a connection to the master node.\nIf no response is received before the timeout expires, the request fails and returns an error.",
+            "description": "The period to wait for a connection to the master node.\nIf no response is received before the timeout expires, the request fails and returns an error.\nA value of `-1` indicates that the request should never time out.",
             "deprecated": false,
             "schema": {
               "$ref": "#/components/schemas/_types:Duration"
@@ -15841,7 +15955,7 @@
           {
             "in": "query",
             "name": "timeout",
-            "description": "Period to wait for a response. If no response is received before the timeout expires, the request fails and returns an error.",
+            "description": "The period to wait for a response from all relevant nodes in the cluster after updating the cluster metadata.\nIf no response is received before the timeout expires, the cluster metadata update still applies but the response indicates that it was not completely acknowledged.\nA value of `-1` indicates that the request should never time out.",
             "deprecated": false,
             "schema": {
               "$ref": "#/components/schemas/_types:Duration"
@@ -15877,13 +15991,13 @@
         "tags": [
           "ingest"
         ],
-        "summary": "Deletes an IP location database configuration",
+        "summary": "Delete IP geolocation database configurations",
         "operationId": "ingest-delete-ip-location-database",
         "parameters": [
           {
             "in": "path",
             "name": "id",
-            "description": "A comma-separated list of IP location database configurations to delete",
+            "description": "A comma-separated list of IP location database configurations.",
             "required": true,
             "deprecated": false,
             "schema": {
@@ -15894,7 +16008,7 @@
           {
             "in": "query",
             "name": "master_timeout",
-            "description": "Period to wait for a connection to the master node.\nIf no response is received before the timeout expires, the request fails and returns an error.",
+            "description": "The period to wait for a connection to the master node.\nIf no response is received before the timeout expires, the request fails and returns an error.\nA value of `-1` indicates that the request should never time out.",
             "deprecated": false,
             "schema": {
               "$ref": "#/components/schemas/_types:Duration"
@@ -15904,7 +16018,7 @@
           {
             "in": "query",
             "name": "timeout",
-            "description": "Period to wait for a response. If no response is received before the timeout expires, the request fails and returns an error.",
+            "description": "The period to wait for a response.\nIf no response is received before the timeout expires, the request fails and returns an error.\nA value of `-1` indicates that the request should never time out.",
             "deprecated": false,
             "schema": {
               "$ref": "#/components/schemas/_types:Duration"
@@ -16189,7 +16303,7 @@
         "tags": [
           "ingest"
         ],
-        "summary": "Returns information about one or more IP location database configurations",
+        "summary": "Get IP geolocation database configurations",
         "operationId": "ingest-get-ip-location-database",
         "parameters": [
           {
@@ -27073,7 +27187,8 @@
         "tags": [
           "search_application"
         ],
-        "summary": "Returns the existing search applications",
+        "summary": "Get search applications",
+        "description": "Get information about search applications.",
         "operationId": "search-application-list",
         "parameters": [
           {
@@ -27135,6 +27250,59 @@
           }
         },
         "x-beta": true
+      }
+    },
+    "/_application/search_application/{name}/_render_query": {
+      "post": {
+        "tags": [
+          "search_application"
+        ],
+        "summary": "Render a search application query",
+        "description": "Generate an Elasticsearch query using the specified query parameters and the search template associated with the search application or a default template if none is specified.\nIf a parameter used in the search template is not specified in `params`, the parameter's default value will be used.\nThe API returns the specific Elasticsearch query that would be generated and run by calling the search application search API.\n\nYou must have `read` privileges on the backing alias of the search application.",
+        "operationId": "search-application-render-query",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "name",
+            "description": "The name of the search application to render teh query for.",
+            "required": true,
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/_types:Name"
+            },
+            "style": "simple"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "params": {
+                    "type": "object",
+                    "additionalProperties": {
+                      "type": "object"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                }
+              }
+            }
+          }
+        },
+        "x-state": "Technical preview"
       }
     },
     "/_application/search_application/{name}/_search": {
@@ -30770,6 +30938,214 @@
           }
         },
         "x-state": "Added in 8.3.0"
+      }
+    },
+    "/_security/oidc/authenticate": {
+      "post": {
+        "tags": [
+          "security"
+        ],
+        "summary": "Authenticate OpenID Connect",
+        "description": "Exchange an OpenID Connect authentication response message for an Elasticsearch internal access token and refresh token that can be subsequently used for authentication.\n\nElasticsearch exposes all the necessary OpenID Connect related functionality with the OpenID Connect APIs.\nThese APIs are used internally by Kibana in order to provide OpenID Connect based authentication, but can also be used by other, custom web applications or other clients.",
+        "operationId": "security-oidc-authenticate",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "nonce": {
+                    "description": "Associate a client session with an ID token and mitigate replay attacks.\nThis value needs to be the same as the one that was provided to the `/_security/oidc/prepare` API or the one that was generated by Elasticsearch and included in the response to that call.",
+                    "type": "string"
+                  },
+                  "realm": {
+                    "description": "The name of the OpenID Connect realm.\nThis property is useful in cases where multiple realms are defined.",
+                    "type": "string"
+                  },
+                  "redirect_uri": {
+                    "description": "The URL to which the OpenID Connect Provider redirected the User Agent in response to an authentication request after a successful authentication.\nThis URL must be provided as-is (URL encoded), taken from the body of the response or as the value of a location header in the response from the OpenID Connect Provider.",
+                    "type": "string"
+                  },
+                  "state": {
+                    "description": "Maintain state between the authentication request and the response.\nThis value needs to be the same as the one that was provided to the `/_security/oidc/prepare` API or the one that was generated by Elasticsearch and included in the response to that call.",
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "nonce",
+                  "redirect_uri",
+                  "state"
+                ]
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "access_token": {
+                      "description": "The Elasticsearch access token.",
+                      "type": "string"
+                    },
+                    "expires_in": {
+                      "description": "The duration (in seconds) of the tokens.",
+                      "type": "number"
+                    },
+                    "refresh_token": {
+                      "description": "The Elasticsearch refresh token.",
+                      "type": "string"
+                    },
+                    "type": {
+                      "description": "The type of token.",
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "access_token",
+                    "expires_in",
+                    "refresh_token",
+                    "type"
+                  ]
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/_security/oidc/logout": {
+      "post": {
+        "tags": [
+          "security"
+        ],
+        "summary": "Logout of OpenID Connect",
+        "description": "Invalidate an access token and a refresh token that were generated as a response to the `/_security/oidc/authenticate` API.\n\nIf the OpenID Connect authentication realm in Elasticsearch is accordingly configured, the response to this call will contain a URI pointing to the end session endpoint of the OpenID Connect Provider in order to perform single logout.\n\nElasticsearch exposes all the necessary OpenID Connect related functionality with the OpenID Connect APIs.\nThese APIs are used internally by Kibana in order to provide OpenID Connect based authentication, but can also be used by other, custom web applications or other clients.",
+        "operationId": "security-oidc-logout",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "access_token": {
+                    "description": "The access token to be invalidated.",
+                    "type": "string"
+                  },
+                  "refresh_token": {
+                    "description": "The refresh token to be invalidated.",
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "access_token"
+                ]
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "redirect": {
+                      "description": "A URI that points to the end session endpoint of the OpenID Connect Provider with all the parameters of the logout request as HTTP GET parameters.",
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "redirect"
+                  ]
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/_security/oidc/prepare": {
+      "post": {
+        "tags": [
+          "security"
+        ],
+        "summary": "Prepare OpenID connect authentication",
+        "description": "Create an oAuth 2.0 authentication request as a URL string based on the configuration of the OpenID Connect authentication realm in Elasticsearch.\n\nThe response of this API is a URL pointing to the Authorization Endpoint of the configured OpenID Connect Provider, which can be used to redirect the browser of the user in order to continue the authentication process.\n\nElasticsearch exposes all the necessary OpenID Connect related functionality with the OpenID Connect APIs.\nThese APIs are used internally by Kibana in order to provide OpenID Connect based authentication, but can also be used by other, custom web applications or other clients.",
+        "operationId": "security-oidc-prepare-authentication",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "iss": {
+                    "description": "In the case of a third party initiated single sign on, this is the issuer identifier for the OP that the RP is to send the authentication request to.\nIt cannot be specified when *realm* is specified.\nOne of *realm* or *iss* is required.",
+                    "type": "string"
+                  },
+                  "login_hint": {
+                    "description": "In the case of a third party initiated single sign on, it is a string value that is included in the authentication request as the *login_hint* parameter.\nThis parameter is not valid when *realm* is specified.",
+                    "type": "string"
+                  },
+                  "nonce": {
+                    "description": "The value used to associate a client session with an ID token and to mitigate replay attacks.\nIf the caller of the API does not provide a value, Elasticsearch will generate one with sufficient entropy and return it in the response.",
+                    "type": "string"
+                  },
+                  "realm": {
+                    "description": "The name of the OpenID Connect realm in Elasticsearch the configuration of which should be used in order to generate the authentication request.\nIt cannot be specified when *iss* is specified.\nOne of *realm* or *iss* is required.",
+                    "type": "string"
+                  },
+                  "state": {
+                    "description": "The value used to maintain state between the authentication request and the response, typically used as a Cross-Site Request Forgery mitigation.\nIf the caller of the API does not provide a value, Elasticsearch will generate one with sufficient entropy and return it in the response.",
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "nonce": {
+                      "type": "string"
+                    },
+                    "realm": {
+                      "type": "string"
+                    },
+                    "redirect": {
+                      "description": "A URI that points to the authorization endpoint of the OpenID Connect Provider with all the parameters of the authentication request as HTTP GET parameters.",
+                      "type": "string"
+                    },
+                    "state": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "nonce",
+                    "realm",
+                    "redirect",
+                    "state"
+                  ]
+                }
+              }
+            }
+          }
+        }
       }
     },
     "/_security/_query/api_key": {
@@ -60403,6 +60779,9 @@
             "$ref": "#/components/schemas/_types.mapping:ObjectProperty"
           },
           {
+            "$ref": "#/components/schemas/_types.mapping:PassthroughObjectProperty"
+          },
+          {
             "$ref": "#/components/schemas/_types.mapping:SemanticTextProperty"
           },
           {
@@ -61488,6 +61867,33 @@
                 "enum": [
                   "object"
                 ]
+              }
+            }
+          }
+        ]
+      },
+      "_types.mapping:PassthroughObjectProperty": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/_types.mapping:CorePropertyBase"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "type": {
+                "type": "string",
+                "enum": [
+                  "passthrough"
+                ]
+              },
+              "enabled": {
+                "type": "boolean"
+              },
+              "priority": {
+                "type": "number"
+              },
+              "time_series_dimension": {
+                "type": "boolean"
               }
             }
           }
@@ -66340,6 +66746,13 @@
           },
           "hits": {
             "$ref": "#/components/schemas/eql._types:EqlHits"
+          },
+          "shard_failures": {
+            "description": "Contains information about shard failures (if any), in case allow_partial_search_results=true",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/_types:ShardFailure"
+            }
           }
         },
         "required": [
@@ -71158,7 +71571,7 @@
         ]
       },
       "ingest._types:DatabaseConfiguration": {
-        "description": "The configuration necessary to identify which IP geolocation provider to use to download a database, as well as any provider-specific configuration necessary for such downloading.\nAt present, the only supported providers are maxmind and ipinfo, and the maxmind provider requires that an account_id (string) is configured.\nA provider (either maxmind or ipinfo) must be specified. The web and local providers can be returned as read only configurations.",
+        "description": "The configuration necessary to identify which IP geolocation provider to use to download a database, as well as any provider-specific configuration necessary for such downloading.\nAt present, the only supported providers are `maxmind` and `ipinfo`, and the `maxmind` provider requires that an `account_id` (string) is configured.\nA provider (either `maxmind` or `ipinfo`) must be specified. The web and local providers can be returned as read only configurations.",
         "allOf": [
           {
             "type": "object",
@@ -99554,7 +99967,7 @@
       "ingest.get_ip_location_database#master_timeout": {
         "in": "query",
         "name": "master_timeout",
-        "description": "Period to wait for a connection to the master node.\nIf no response is received before the timeout expires, the request fails and returns an error.",
+        "description": "The period to wait for a connection to the master node.\nIf no response is received before the timeout expires, the request fails and returns an error.\nA value of `-1` indicates that the request should never time out.",
         "deprecated": false,
         "schema": {
           "$ref": "#/components/schemas/_types:Duration"

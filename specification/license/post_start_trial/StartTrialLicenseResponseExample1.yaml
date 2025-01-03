@@ -1,0 +1,7 @@
+# summary:
+description: A successful response from `POST /_license/start_trial?acknowledge=true`.
+# type: response
+# response_code: 200
+value:
+  trial_was_started: true
+  acknowledged: true

@@ -1,0 +1,6 @@
+# summary: licensing/get-trial-status.asciidoc:47
+description: A successful response from `GET /_license/trial_status`.
+# type: response
+# response_code: 200
+value:
+  eligible_to_start_trial: true

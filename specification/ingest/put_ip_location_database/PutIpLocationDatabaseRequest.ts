@@ -23,26 +23,30 @@ import { Id } from '@_types/common'
 import { Duration } from '@_types/Time'
 
 /**
- * Returns information about one or more IP location database configurations.
+ * Create or update an IP geolocation database configuration.
  * @rest_spec_name ingest.put_ip_location_database
  * @availability stack since=8.15.0 stability=stable
  * @availability serverless visibility=private
+ * @cluster_privileges manage
  */
 export interface Request extends RequestBase {
   path_parts: {
     /**
-     * ID of the database configuration to create or update.
+     * The database configuration identifier.
      */
     id: Id
   }
   query_parameters: {
     /**
-     * Period to wait for a connection to the master node.
+     * The period to wait for a connection to the master node.
      * If no response is received before the timeout expires, the request fails and returns an error.
+     * A value of `-1` indicates that the request should never time out.
      * @server_default 30s */
     master_timeout?: Duration
     /**
-     * Period to wait for a response. If no response is received before the timeout expires, the request fails and returns an error.
+     * The period to wait for a response from all relevant nodes in the cluster after updating the cluster metadata.
+     * If no response is received before the timeout expires, the cluster metadata update still applies but the response indicates that it was not completely acknowledged.
+     * A value of `-1` indicates that the request should never time out.
      * @server_default 30s */
     timeout?: Duration
   }
