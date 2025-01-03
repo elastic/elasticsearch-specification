@@ -1358,9 +1358,19 @@ actions:
       content:
         application/json:
           examples:
-            searchApplicationsListResponseExample1:
-              $ref: "../../specification/search_application/list/SearchApplicationsListResponseExample1.yaml"
+            getBehavioralAnalyticsCollectionsResponseExample1:
+              $ref: "../../specification/search_application/get_behavioral_analytics/BehavioralAnalyticsGetResponseExample1.yaml"
 ## Examples for search applications
+  - target: "$.paths['/_application/search_application']['get']"
+    description: "Add examples for get search applications operation"
+    update: 
+      responses:
+        200: 
+          content: 
+            application/json: 
+              examples: 
+                getSearchApplicationsResponseExample1: 
+                  $ref: "../../specification/search_application/list/SearchApplicationsListResponseExample1.yaml"
   - target: "$.paths['/_application/search_application/{name}']['get']"
     description: "Add examples for get search application details operation"
     update: 
@@ -1369,7 +1379,7 @@ actions:
           content: 
             application/json: 
               examples: 
-                getSearchApplicationRequestExample1: 
+                getSearchApplicationResponseExample1: 
                   $ref: "../../specification/search_application/get/SearchApplicationGetResponseExample1.yaml"
   - target: "$.paths['/_application/search_application/{name}']['put']"
     description: "Add examples for create search application operation"
@@ -1380,3 +1390,11 @@ actions:
             examples: 
               putSearchApplicationRequestExample1: 
                 $ref: "../../specification/search_application/put/SearchApplicationPutRequestExample1.yaml"
+  - target: "$.components['requestBodies']['search_application.search']"
+    description: "Add example for search application search request"
+    update: 
+      content:
+        application/json:
+          examples:
+            searchApplicationSearchRequestExample1:
+              $ref: "../../specification/search_application/search/SearchApplicationsSearchRequestExample1.yaml"

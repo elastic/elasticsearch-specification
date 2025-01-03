@@ -1,8 +1,0 @@
-summary: search-application/apis/list-search-applications.asciidoc:108
-description: ''
-type: response
-response_code: ''
-value:
-  "{\n  \"count\": 2,\n  \"results\": [\n    {\n      \"name\": \"app-1\",\n\
-  \      \"updated_at_millis\": 1690981129366\n    },\n    {\n      \"name\": \"app-2\"\
-  ,\n      \"updated_at_millis\": 1691501823939\n    }\n  ]\n}"

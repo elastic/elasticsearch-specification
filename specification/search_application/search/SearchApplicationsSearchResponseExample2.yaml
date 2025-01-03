@@ -1,9 +1,0 @@
-summary: search-application/apis/search-application-search.asciidoc:166
-description: ''
-type: response
-response_code: ''
-value:
-  "{\n  \"took\": 5,\n  \"timed_out\": false,\n  \"_shards\": {\n    \"total\"\
-  : 1,\n    \"successful\": 1,\n    \"skipped\": 0,\n    \"failed\": 0\n  },\n  \"\
-  hits\": {\n    \"total\": {\n      \"value\": 1,\n      \"relation\": \"eq\"\n \
-  \   },\n    \"max_score\": 0.8630463,\n    \"hits\": ...\n  }\n}"

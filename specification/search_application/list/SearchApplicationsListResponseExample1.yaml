@@ -1,10 +1,8 @@
-# summary: behavioral-analytics/apis/list-analytics-collection.asciidoc:112
-description: A successful response from `GET _application/analytics/my*`
+# summary: search-application/apis/list-search-applications.asciidoc:108
+description: A succesful response from `GET _application/search_application?from=0&size=3&q=app*` returns the first three search applications whose names start with `app`.
 # type: response
 # response_code: ''
 value:
-  "{\n  \"my_analytics_collection\": {\n      \"event_data_stream\": {\n    \
-  \      \"name\": \"behavioral_analytics-events-my_analytics_collection\"\n     \
-  \ }\n  },\n  \"my_analytics_collection2\": {\n      \"event_data_stream\": {\n \
-  \         \"name\": \"behavioral_analytics-events-my_analytics_collection2\"\n \
-  \     }\n  }\n}"
+  "{\n  \"count\": 2,\n  \"results\": [\n    {\n      \"name\": \"app-1\",\n\
+  \      \"updated_at_millis\": 1690981129366\n    },\n    {\n      \"name\": \"app-2\"\
+  ,\n      \"updated_at_millis\": 1691501823939\n    }\n  ]\n}"
