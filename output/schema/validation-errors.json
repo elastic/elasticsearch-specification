@@ -617,12 +617,6 @@
       ],
       "response": []
     },
-    "search_application.post_behavioral_analytics_event": {
-      "request": [
-        "Missing request & response"
-      ],
-      "response": []
-    },
     "search_application.render_query": {
       "request": [
         "Missing request & response"
