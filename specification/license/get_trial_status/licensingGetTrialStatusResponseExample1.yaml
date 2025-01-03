@@ -1,0 +1,5 @@
+summary: licensing/get-trial-status.asciidoc:47
+description: ''
+type: response
+response_code: ''
+value: "{\n  \"eligible_to_start_trial\": true\n}"
