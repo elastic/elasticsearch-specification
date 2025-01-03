@@ -18,4 +18,8 @@ jobs:
         run: |
           echo "Please apply a backport label, or "skip-backport" if no backport is needed"
           echo "Current labels: ${{ toJSON(github.event.pull_request.labels.*.name) }}"
-          false
+          echo "${{ contains(github.event.pull_request.labels.*.name, 'backport') }}"
+          echo "${{ endsWith(github.event.pull_request.labels.*.name, 'backport') }}"
+          echo "${{ startsWith(github.event.pull_request.labels.*.name, 'backport') }}"
+          echo "${{ github.event.pull_request.labels.*.name == 'skip-backport') }}"
+          exit 1
