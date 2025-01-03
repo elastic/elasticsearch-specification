@@ -1,5 +1,0 @@
-summary: licensing/get-basic-status.asciidoc:42
-description: ''
-type: response
-response_code: ''
-value: "{\n  \"eligible_to_start_basic\": true\n}"
