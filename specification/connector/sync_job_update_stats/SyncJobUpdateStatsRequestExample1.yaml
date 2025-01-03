@@ -1,0 +1,10 @@
+# summary: connector/apis/set-connector-sync-job-stats-api.asciidoc:71
+# method_request: PUT _connector/_sync_job/my-connector-sync-job/_stats
+# description: ''
+# type: request
+value:
+  deleted_document_count: 10
+  indexed_document_count: 20
+  indexed_document_volume: 1000
+  total_document_count: 2000
+  last_seen: '2023-01-02T10:00:00Z'
