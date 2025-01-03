@@ -25,28 +25,23 @@ jobs:
           json_all_labels="$(gh label list --repo ${{ github.repository }} --json name --search "backport" --limit 1000)"
           readarray -t all_labels < <(echo "${json_all_labels}" | jq -r -c '.[].name')
 
-          all_backport_labels=()
-          all_floating_majors=()
+          declare -A all_backport_labels=()
+          declare -A all_floating_majors=()
 
           backport_regex="^backport ([0-9])+\.([0-9]+|x)$"
 
           echo "::group::Available Labels"
+          echo "skip-backport"
 
           for label in "${all_labels[@]}"; do
-            if [ "${label}" = "skip-backport" ]; then
-              all_backport_labels+=("${label}")
-              echo "${label}"
-              continue
-            fi
-
             if [[ "${label}" =~ ${backport_regex} ]]; then
               major="${BASH_REMATCH[1]}"
               minor="${BASH_REMATCH[2]}"
-              all_backport_labels+=("${label}")
+              all_backport_labels["${label}"]=1
               echo "${label}"
 
               if [ "${minor}" = "x" ]; then
-                all_floating_majors+=("${major}")
+                all_floating_majors["${major}"]=1
               fi
             fi
           done
@@ -54,98 +49,78 @@ jobs:
           echo "::endgroup::"
 
           has_exact_backport_label=false
-          pr_majors=()
-          pr_floating_majors=()
+          declare -A pr_exact_majors=()
+          declare -A pr_floating_majors=()
 
           echo "::group::Detected Labels"
 
           for pr_label in "${pr_labels[@]}"; do
-            for backport_label in "${all_backport_labels[@]}"; do
-              if [ "${pr_label}" = "${backport_label}" ]; then
+            if [ "${pr_label}" = "skip-backport" ]; then
+              has_exact_backport_label=true
+              echo "${pr_label}"
+              continue
+            fi
 
-                if [[ "${pr_label}" =~ ${backport_regex} ]]; then
-                  major="${BASH_REMATCH[1]}"
-                  minor="${BASH_REMATCH[2]}"
-                  if [ "${minor}" != "x" ]; then
-                    pr_majors+=("${major}")
-                    has_exact_backport_label=true
-                  else
-                    pr_floating_majors+=("${major}")
-                  fi
-                else
-                  # Matches 'skip-backport'
-                  has_exact_backport_label=true
-                fi
+            if [ -z "${all_backport_labels[${pr_label}]}" ]; then
+              continue
+            fi
 
-                echo "${pr_label}"
+            if [[ "${pr_label}" =~ ${backport_regex} ]]; then
+              major="${BASH_REMATCH[1]}"
+              minor="${BASH_REMATCH[2]}"
+              if [ "${minor}" != "x" ]; then
+                pr_exact_majors["${major}"]=1
+                has_exact_backport_label=true
+              else
+                pr_floating_majors["${major}"]=1
               fi
-            done
+            fi
+
+            echo "${pr_label}"
           done
 
           echo "::endgroup::"
 
           if [ "${has_exact_backport_label}" != true ]; then
             echo "::error::No exact backport label found. Please add at least one of the"\
-                 "'backport {major}.{minor}' labels or use 'skip-backport',"\
-                 "if this PR should not be backported."
+                  "'backport {major}.{minor}' labels or use 'skip-backport',"\
+                  "if this PR should not be backported."
             exit 1
           fi
 
           # Validate that a floating backport label exists for each exact backport label major
           # version.
 
-          has_floating_backport_labels=true
+          has_required_floating_labels=true
 
-          for pr_major in "${pr_majors[@]}"; do
-            exists_floating_major=false
-            for floating_major in "${all_floating_majors[@]}"; do
-              if [ "${pr_major}" -eq "${floating_major}" ]; then
-                exists_floating_major=true
-                break
-              fi
-            done
-
-            if [ "${exists_floating_major}" = false ]; then
+          for pr_major in "${!pr_exact_majors[@]}"; do
+            if [ -z "${all_floating_majors[${pr_major}]}" ]; then
+              # There is no floating version branch for the given major version.
               continue
             fi
 
-            has_floating_major=false
-            for pr_floating_major in "${pr_floating_majors[@]}"; do
-              if [ "${pr_major}" -eq "${pr_floating_major}" ]; then
-                has_floating_major=true
-              fi
-            done
-
-            if [ "${has_floating_major}" != true ]; then
-              has_floating_backport_labels=false
+            if [ -z "${pr_floating_majors[${pr_major}]}" ]; then
+              has_required_floating_labels=false
               echo "::error::Missing floating backport label for '${pr_major}.x'"
             fi
           done
 
-          if [ "${has_floating_backport_labels}" != true ]; then
+          if [ "${has_required_floating_labels}" != true ]; then
             exit 1
           fi
 
           # Validate that an exact backport label exists for each floating backport label major
           # version.
 
-          has_exact_backport_labels=true
+          has_required_exact_labels=true
 
-          for pr_floating_major in "${pr_floating_majors[@]}"; do
-            exists_exact_major=false
-            for pr_major in "${pr_majors[@]}"; do
-              if [ "${pr_floating_major}" -eq "${pr_major}" ]; then
-                has_exact_major=true
-              fi
-            done
-
-            if [ "${has_exact_major}" != true ]; then
-              has_exact_backport_labels=false
+          for pr_floating_major in "${!pr_floating_majors[@]}"; do
+            if [ -z "${pr_exact_majors[${pr_floating_major}]}" ]; then
+              has_required_exact_labels=false
               echo "::error::Missing exact backport label for '${pr_floating_major}.x'"
             fi
           done
 
-          if [ "${has_exact_backport_labels}" != true ]; then
+          if [ "${has_required_exact_labels}" != true ]; then
             exit 1
           fi
-
