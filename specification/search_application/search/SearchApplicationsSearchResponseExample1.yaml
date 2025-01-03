@@ -1,0 +1,8 @@
+summary: search-application/apis/search-application-search.asciidoc:141
+description: ''
+type: response
+response_code: ''
+value:
+  "{\n  \"from\": 0,\n  \"size\": 10,\n  \"query\": {\n    \"multi_match\": {\n\
+  \      \"query\": \"my first query\",\n      \"fields\": [\n        \"description^1.0\"\
+  ,\n        \"title^5.0\"\n      ]\n    }\n  },\n  \"explain\": false\n}"
