@@ -2,5 +2,6 @@
 # method_request: POST _connector/_sync_job
 # description: ''
 # type: request
-value: "{\n  \"id\": \"connector-id\",\n  \"job_type\": \"full\",\n  \"trigger_method\"\
+value:
+  "{\n  \"id\": \"connector-id\",\n  \"job_type\": \"full\",\n  \"trigger_method\"\
   : \"on_demand\"\n}"

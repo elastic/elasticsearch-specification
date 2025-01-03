@@ -2,5 +2,6 @@
 # method_request: PUT _connector/my-connector/_scheduling
 # description: ''
 # type: request
-value: "{\n    \"scheduling\": {\n        \"full\": {\n            \"enabled\": true,\n\
+value:
+  "{\n    \"scheduling\": {\n        \"full\": {\n            \"enabled\": true,\n\
   \            \"interval\": \"0 10 0 * * ?\"\n        }\n    }\n}"

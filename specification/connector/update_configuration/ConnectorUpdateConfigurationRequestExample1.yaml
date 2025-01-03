@@ -2,6 +2,7 @@
 # method_request: PUT _connector/my-spo-connector/_configuration
 # description: ''
 # type: request
-value: "{\n    \"values\": {\n        \"tenant_id\": \"my-tenant-id\",\n        \"\
+value:
+  "{\n    \"values\": {\n        \"tenant_id\": \"my-tenant-id\",\n        \"\
   tenant_name\": \"my-sharepoint-site\",\n        \"client_id\": \"foo\",\n      \
   \  \"secret_value\": \"bar\",\n        \"site_collections\": \"*\"\n    }\n}"
