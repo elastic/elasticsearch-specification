@@ -62,16 +62,18 @@ jobs:
           for pr_label in "${pr_labels[@]}"; do
             for backport_label in "${all_backport_labels[@]}"; do
               if [ "${pr_label}" = "${backport_label}" ]; then
-                has_exact_backport_label=true
 
                 if [[ "${pr_label}" =~ ${backport_regex} ]]; then
                   major="${BASH_REMATCH[1]}"
                   minor="${BASH_REMATCH[2]}"
                   pr_majors+=("${major}")
-                  if [ "${minor}" = "x" ]; then
-                    has_exact_backport_label=false
+                  if [ "${minor}" != "x" ]; then
+                    has_exact_backport_label=true
+                  else
                     pr_floating_majors+=("${major}")
                   fi
+                else
+                  has_exact_backport_label=true
                 fi
 
                 echo "${pr_label}"
