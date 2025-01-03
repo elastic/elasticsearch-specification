@@ -1360,6 +1360,57 @@ actions:
           examples:
             getBehavioralAnalyticsCollectionsResponseExample1:
               $ref: "../../specification/search_application/get_behavioral_analytics/examples/200_response/BehavioralAnalyticsGetResponseExample1.yaml"
+## Examples for cat
+  - target: "$.components['responses']['cat.aliases#200']"
+    description: "Add example for cat aliases response"
+    update: 
+      content:
+        text/plain:
+          schema:
+            type: string
+          examples:
+            catAliasesResponseExample1:
+              $ref: "../../specification/cat/aliases/examples/response/CatAliasesResponseExample1.yaml" 
+  - target: "$.components['responses']['cat.ml_datafeeds#200']"
+    description: "Add example for cat datafeeds response"
+    update: 
+      content:
+        text/plain:
+          schema:
+            type: string
+          examples:
+            catDatafeedsResponseExample1:
+              $ref: "../../specification/cat/ml_datafeeds/examples/response/CatDatafeedsResponseExample1.yaml"
+  - target: "$.components['responses']['cat.ml_data_frame_analytics#200']"
+    description: "Add example for cat data frame analytics response"
+    update: 
+      content:
+        text/plain:
+          schema:
+            type: string
+          examples:
+            catDataFrameAnalyticsResponseExample1:
+              $ref: "../../specification/cat/ml_data_frame_analytics/examples/response/CatDataFrameAnalyticsResponseExample1.yaml" 
+  - target: "$.components['responses']['cat.ml_jobs#200']"
+    description: "Add example for cat anomaly detectors response"
+    update: 
+      content:
+        text/plain:
+          schema:
+            type: string
+          examples:
+            catAnomalyDetectorsResponseExample1:
+              $ref: "../../specification/cat/ml_jobs/examples/response/CatJobsResponseExample1.yaml"
+  - target: "$.components['responses']['cat.ml_trained_models#200']"
+    description: "Add example for cat trained models response"
+    update: 
+      content:
+        text/plain:
+          schema:
+            type: string
+          examples:
+            catTrainedModelsResponseExample1:
+              $ref: "../../specification/cat/ml_trained_models/examples/response/CatTrainedModelsResponseExample1.yaml"
 ## Examples for licensing
   - target: "$.paths['/_license']['get']"
     description: "Add example for get license response"
