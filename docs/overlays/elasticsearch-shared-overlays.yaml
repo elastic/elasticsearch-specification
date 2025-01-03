@@ -1351,6 +1351,15 @@ actions:
           examples:
             indicesRolloverResponseExample1:
               $ref: "../../specification/indices/rollover/indicesRolloverResponseExample1.yaml"
+## Examples for behavioral analytics
+  - target: "$.components['responses']['search_application.get_behavioral_analytics#200']"
+    description: "Add example for get behavioral analytics collections response"
+    update: 
+      content:
+        application/json:
+          examples:
+            getBehavioralAnalyticsCollectionsResponseExample1:
+              $ref: "../../specification/search_application/get_behavioral_analytics/BehavioralAnalyticsGetResponseExample1.yaml"
 ## Examples for licensing
   - target: "$.paths['/_license']['get']"
     description: "Add example for get license response"
@@ -1362,3 +1371,41 @@ actions:
               examples:
                 getLicenseResponseExample1:
                   $ref: "../../specification/license/get/GetLicenseResponseExample1.yaml"
+## Examples for search applications
+  - target: "$.paths['/_application/search_application']['get']"
+    description: "Add examples for get search applications operation"
+    update: 
+      responses:
+        200: 
+          content: 
+            application/json: 
+              examples: 
+                getSearchApplicationsResponseExample1: 
+                  $ref: "../../specification/search_application/list/SearchApplicationsListResponseExample1.yaml"
+  - target: "$.paths['/_application/search_application/{name}']['get']"
+    description: "Add examples for get search application details operation"
+    update: 
+      responses:
+        200: 
+          content: 
+            application/json: 
+              examples: 
+                getSearchApplicationResponseExample1: 
+                  $ref: "../../specification/search_application/get/SearchApplicationGetResponseExample1.yaml"
+  - target: "$.paths['/_application/search_application/{name}']['put']"
+    description: "Add examples for create search application operation"
+    update: 
+      requestBody: 
+        content: 
+          application/json: 
+            examples: 
+              putSearchApplicationRequestExample1: 
+                $ref: "../../specification/search_application/put/SearchApplicationPutRequestExample1.yaml"
+  - target: "$.components['requestBodies']['search_application.search']"
+    description: "Add example for search application search request"
+    update: 
+      content:
+        application/json:
+          examples:
+            searchApplicationSearchRequestExample1:
+              $ref: "../../specification/search_application/search/SearchApplicationsSearchRequestExample1.yaml"
