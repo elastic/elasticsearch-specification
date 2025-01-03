@@ -88,6 +88,9 @@ cluster,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/cluster
 common-options,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/common-options.html
 community-id-processor,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/community-id-processor.html
 connector-sync-job-cancel,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/cancel-connector-sync-job-api.html
+connector-sync-job-checkin,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/check-in-connector-sync-job-api.html
+connector-sync-job-claim,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/claim-connector-sync-job-api.html
+connector-sync-job-error,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/set-connector-sync-job-error-api.html
 collapse-search-results,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/collapse-search-results.html
 connector-sync-job-delete,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/delete-connector-sync-job-api.html
 connector-sync-job-get,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/get-connector-sync-job-api.html
@@ -95,6 +98,7 @@ connector-sync-job-post,https://www.elastic.co/guide/en/elasticsearch/reference/
 connector-sync-job-list,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/list-connector-sync-jobs-api.html
 connector-checkin,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/check-in-connector-api.html
 connector-delete,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/delete-connector-api.html
+connector-features,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/update-connector-features-api.html
 connector-get,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/get-connector-api.html
 connector-last-sync,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/update-connector-last-sync-api.html
 connector-list,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/list-connector-api.html
@@ -168,6 +172,8 @@ explain-dfanalytics,https://www.elastic.co/guide/en/elasticsearch/reference/{bra
 fail-processor,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/fail-processor.html
 field-and-document-access-control,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/field-and-document-access-control.html
 field-usage-stats,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/field-usage-stats.html
+find-field-structure,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/find-field-structure.html
+find-message-structure,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/find-message-structure.html
 find-structure,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/find-structure.html
 fingerprint-processor,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/fingerprint-processor.html
 foreach-processor,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/foreach-processor.html
@@ -587,6 +593,9 @@ security-api-invalidate-api-key,https://www.elastic.co/guide/en/elasticsearch/re
 security-api-invalidate-token,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/security-api-invalidate-token.html
 security-api-kibana-enrollment,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/security-api-kibana-enrollment.html
 security-api-node-enrollment,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/security-api-node-enrollment.html
+security-api-oidc-authenticate,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/security-api-oidc-authenticate.html
+security-api-oidc-logout,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/security-api-oidc-logout.html
+security-api-oidc-prepare,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/security-api-oidc-prepare-authentication.html
 security-api-put-privileges,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/security-api-put-privileges.html
 security-api-put-role-mapping,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/security-api-put-role-mapping.html
 security-api-put-role,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/security-api-put-role.html

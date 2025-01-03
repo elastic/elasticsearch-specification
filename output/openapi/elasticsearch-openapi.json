@@ -4940,6 +4940,101 @@
         "x-beta": true
       }
     },
+    "/_connector/_sync_job/{connector_sync_job_id}/_check_in": {
+      "put": {
+        "tags": [
+          "connector"
+        ],
+        "summary": "Check in a connector sync job",
+        "description": "Check in a connector sync job and set the `last_seen` field to the current time before updating it in the internal index.\n\nTo sync data using self-managed connectors, you need to deploy the Elastic connector service on your own infrastructure.\nThis service runs automatically on Elastic Cloud for Elastic managed connectors.",
+        "operationId": "connector-sync-job-check-in",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "connector_sync_job_id",
+            "description": "The unique identifier of the connector sync job to be checked in.",
+            "required": true,
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/_types:Id"
+            },
+            "style": "simple"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                }
+              }
+            }
+          }
+        },
+        "x-state": "Technical preview"
+      }
+    },
+    "/_connector/_sync_job/{connector_sync_job_id}/_claim": {
+      "put": {
+        "tags": [
+          "connector"
+        ],
+        "summary": "Claim a connector sync job",
+        "description": "This action updates the job status to `in_progress` and sets the `last_seen` and `started_at` timestamps to the current time.\nAdditionally, it can set the `sync_cursor` property for the sync job.\n\nThis API is not intended for direct connector management by users.\nIt supports the implementation of services that utilize the connector protocol to communicate with Elasticsearch.\n\nTo sync data using self-managed connectors, you need to deploy the Elastic connector service on your own infrastructure.\nThis service runs automatically on Elastic Cloud for Elastic managed connectors.",
+        "operationId": "connector-sync-job-claim",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "connector_sync_job_id",
+            "description": "The unique identifier of the connector sync job.",
+            "required": true,
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/_types:Id"
+            },
+            "style": "simple"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "sync_cursor": {
+                    "description": "The cursor object from the last incremental sync job.\nThis should reference the `sync_cursor` field in the connector state for which the job runs.",
+                    "type": "object"
+                  },
+                  "worker_hostname": {
+                    "description": "The host name of the current system that will run the job.",
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "worker_hostname"
+                ]
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                }
+              }
+            }
+          }
+        },
+        "x-state": "Technical preview"
+      }
+    },
     "/_connector/_sync_job/{connector_sync_job_id}": {
       "get": {
         "tags": [
@@ -5007,6 +5102,61 @@
           }
         },
         "x-beta": true
+      }
+    },
+    "/_connector/_sync_job/{connector_sync_job_id}/_error": {
+      "put": {
+        "tags": [
+          "connector"
+        ],
+        "summary": "Set a connector sync job error",
+        "description": "Set the `error` field for a connector sync job and set its `status` to `error`.\n\nTo sync data using self-managed connectors, you need to deploy the Elastic connector service on your own infrastructure.\nThis service runs automatically on Elastic Cloud for Elastic managed connectors.",
+        "operationId": "connector-sync-job-error",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "connector_sync_job_id",
+            "description": "The unique identifier for the connector sync job.",
+            "required": true,
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/_types:Id"
+            },
+            "style": "simple"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "error": {
+                    "description": "The error for the connector sync job error field.",
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "error"
+                ]
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                }
+              }
+            }
+          }
+        },
+        "x-state": "Technical preview"
       }
     },
     "/_connector/_sync_job": {
@@ -5373,6 +5523,68 @@
                 },
                 "required": [
                   "error"
+                ]
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "result": {
+                      "$ref": "#/components/schemas/_types:Result"
+                    }
+                  },
+                  "required": [
+                    "result"
+                  ]
+                }
+              }
+            }
+          }
+        },
+        "x-state": "Technical preview"
+      }
+    },
+    "/_connector/{connector_id}/_features": {
+      "put": {
+        "tags": [
+          "connector"
+        ],
+        "summary": "Update the connector features",
+        "description": "Update the connector features in the connector document.\nThis API can be used to control the following aspects of a connector:\n\n* document-level security\n* incremental syncs\n* advanced sync rules\n* basic sync rules\n\nNormally, the running connector service automatically manages these features.\nHowever, you can use this API to override the default behavior.\n\nTo sync data using self-managed connectors, you need to deploy the Elastic connector service on your own infrastructure.\nThis service runs automatically on Elastic Cloud for Elastic managed connectors.",
+        "operationId": "connector-update-features",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "connector_id",
+            "description": "The unique identifier of the connector to be updated.",
+            "required": true,
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/_types:Id"
+            },
+            "style": "simple"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "features": {
+                    "$ref": "#/components/schemas/connector._types:ConnectorFeatures"
+                  }
+                },
+                "required": [
+                  "features"
                 ]
               }
             }
@@ -15488,8 +15700,8 @@
         "tags": [
           "ingest"
         ],
-        "summary": "Create or update GeoIP database configurations",
-        "description": "Create or update IP geolocation database configurations.",
+        "summary": "Create or update a GeoIP database configuration",
+        "description": "Refer to the create or update IP geolocation database configuration API.",
         "operationId": "ingest-put-geoip-database",
         "parameters": [
           {
@@ -15620,7 +15832,7 @@
         "tags": [
           "ingest"
         ],
-        "summary": "Returns information about one or more IP location database configurations",
+        "summary": "Get IP geolocation database configurations",
         "operationId": "ingest-get-ip-location-database-1",
         "parameters": [
           {
@@ -15641,13 +15853,13 @@
         "tags": [
           "ingest"
         ],
-        "summary": "Returns information about one or more IP location database configurations",
+        "summary": "Create or update an IP geolocation database configuration",
         "operationId": "ingest-put-ip-location-database",
         "parameters": [
           {
             "in": "path",
             "name": "id",
-            "description": "ID of the database configuration to create or update.",
+            "description": "The database configuration identifier.",
             "required": true,
             "deprecated": false,
             "schema": {
@@ -15658,7 +15870,7 @@
           {
             "in": "query",
             "name": "master_timeout",
-            "description": "Period to wait for a connection to the master node.\nIf no response is received before the timeout expires, the request fails and returns an error.",
+            "description": "The period to wait for a connection to the master node.\nIf no response is received before the timeout expires, the request fails and returns an error.\nA value of `-1` indicates that the request should never time out.",
             "deprecated": false,
             "schema": {
               "$ref": "#/components/schemas/_types:Duration"
@@ -15668,7 +15880,7 @@
           {
             "in": "query",
             "name": "timeout",
-            "description": "Period to wait for a response. If no response is received before the timeout expires, the request fails and returns an error.",
+            "description": "The period to wait for a response from all relevant nodes in the cluster after updating the cluster metadata.\nIf no response is received before the timeout expires, the cluster metadata update still applies but the response indicates that it was not completely acknowledged.\nA value of `-1` indicates that the request should never time out.",
             "deprecated": false,
             "schema": {
               "$ref": "#/components/schemas/_types:Duration"
@@ -15704,13 +15916,13 @@
         "tags": [
           "ingest"
         ],
-        "summary": "Deletes an IP location database configuration",
+        "summary": "Delete IP geolocation database configurations",
         "operationId": "ingest-delete-ip-location-database",
         "parameters": [
           {
             "in": "path",
             "name": "id",
-            "description": "A comma-separated list of IP location database configurations to delete",
+            "description": "A comma-separated list of IP location database configurations.",
             "required": true,
             "deprecated": false,
             "schema": {
@@ -15721,7 +15933,7 @@
           {
             "in": "query",
             "name": "master_timeout",
-            "description": "Period to wait for a connection to the master node.\nIf no response is received before the timeout expires, the request fails and returns an error.",
+            "description": "The period to wait for a connection to the master node.\nIf no response is received before the timeout expires, the request fails and returns an error.\nA value of `-1` indicates that the request should never time out.",
             "deprecated": false,
             "schema": {
               "$ref": "#/components/schemas/_types:Duration"
@@ -15731,7 +15943,7 @@
           {
             "in": "query",
             "name": "timeout",
-            "description": "Period to wait for a response. If no response is received before the timeout expires, the request fails and returns an error.",
+            "description": "The period to wait for a response.\nIf no response is received before the timeout expires, the request fails and returns an error.\nA value of `-1` indicates that the request should never time out.",
             "deprecated": false,
             "schema": {
               "$ref": "#/components/schemas/_types:Duration"
@@ -16016,7 +16228,7 @@
         "tags": [
           "ingest"
         ],
-        "summary": "Returns information about one or more IP location database configurations",
+        "summary": "Get IP geolocation database configurations",
         "operationId": "ingest-get-ip-location-database",
         "parameters": [
           {
@@ -30679,6 +30891,214 @@
         "x-state": "Added in 8.3.0"
       }
     },
+    "/_security/oidc/authenticate": {
+      "post": {
+        "tags": [
+          "security"
+        ],
+        "summary": "Authenticate OpenID Connect",
+        "description": "Exchange an OpenID Connect authentication response message for an Elasticsearch internal access token and refresh token that can be subsequently used for authentication.\n\nElasticsearch exposes all the necessary OpenID Connect related functionality with the OpenID Connect APIs.\nThese APIs are used internally by Kibana in order to provide OpenID Connect based authentication, but can also be used by other, custom web applications or other clients.",
+        "operationId": "security-oidc-authenticate",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "nonce": {
+                    "description": "Associate a client session with an ID token and mitigate replay attacks.\nThis value needs to be the same as the one that was provided to the `/_security/oidc/prepare` API or the one that was generated by Elasticsearch and included in the response to that call.",
+                    "type": "string"
+                  },
+                  "realm": {
+                    "description": "The name of the OpenID Connect realm.\nThis property is useful in cases where multiple realms are defined.",
+                    "type": "string"
+                  },
+                  "redirect_uri": {
+                    "description": "The URL to which the OpenID Connect Provider redirected the User Agent in response to an authentication request after a successful authentication.\nThis URL must be provided as-is (URL encoded), taken from the body of the response or as the value of a location header in the response from the OpenID Connect Provider.",
+                    "type": "string"
+                  },
+                  "state": {
+                    "description": "Maintain state between the authentication request and the response.\nThis value needs to be the same as the one that was provided to the `/_security/oidc/prepare` API or the one that was generated by Elasticsearch and included in the response to that call.",
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "nonce",
+                  "redirect_uri",
+                  "state"
+                ]
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "access_token": {
+                      "description": "The Elasticsearch access token.",
+                      "type": "string"
+                    },
+                    "expires_in": {
+                      "description": "The duration (in seconds) of the tokens.",
+                      "type": "number"
+                    },
+                    "refresh_token": {
+                      "description": "The Elasticsearch refresh token.",
+                      "type": "string"
+                    },
+                    "type": {
+                      "description": "The type of token.",
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "access_token",
+                    "expires_in",
+                    "refresh_token",
+                    "type"
+                  ]
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/_security/oidc/logout": {
+      "post": {
+        "tags": [
+          "security"
+        ],
+        "summary": "Logout of OpenID Connect",
+        "description": "Invalidate an access token and a refresh token that were generated as a response to the `/_security/oidc/authenticate` API.\n\nIf the OpenID Connect authentication realm in Elasticsearch is accordingly configured, the response to this call will contain a URI pointing to the end session endpoint of the OpenID Connect Provider in order to perform single logout.\n\nElasticsearch exposes all the necessary OpenID Connect related functionality with the OpenID Connect APIs.\nThese APIs are used internally by Kibana in order to provide OpenID Connect based authentication, but can also be used by other, custom web applications or other clients.",
+        "operationId": "security-oidc-logout",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "access_token": {
+                    "description": "The access token to be invalidated.",
+                    "type": "string"
+                  },
+                  "refresh_token": {
+                    "description": "The refresh token to be invalidated.",
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "access_token"
+                ]
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "redirect": {
+                      "description": "A URI that points to the end session endpoint of the OpenID Connect Provider with all the parameters of the logout request as HTTP GET parameters.",
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "redirect"
+                  ]
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/_security/oidc/prepare": {
+      "post": {
+        "tags": [
+          "security"
+        ],
+        "summary": "Prepare OpenID connect authentication",
+        "description": "Create an oAuth 2.0 authentication request as a URL string based on the configuration of the OpenID Connect authentication realm in Elasticsearch.\n\nThe response of this API is a URL pointing to the Authorization Endpoint of the configured OpenID Connect Provider, which can be used to redirect the browser of the user in order to continue the authentication process.\n\nElasticsearch exposes all the necessary OpenID Connect related functionality with the OpenID Connect APIs.\nThese APIs are used internally by Kibana in order to provide OpenID Connect based authentication, but can also be used by other, custom web applications or other clients.",
+        "operationId": "security-oidc-prepare-authentication",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "iss": {
+                    "description": "In the case of a third party initiated single sign on, this is the issuer identifier for the OP that the RP is to send the authentication request to.\nIt cannot be specified when *realm* is specified.\nOne of *realm* or *iss* is required.",
+                    "type": "string"
+                  },
+                  "login_hint": {
+                    "description": "In the case of a third party initiated single sign on, it is a string value that is included in the authentication request as the *login_hint* parameter.\nThis parameter is not valid when *realm* is specified.",
+                    "type": "string"
+                  },
+                  "nonce": {
+                    "description": "The value used to associate a client session with an ID token and to mitigate replay attacks.\nIf the caller of the API does not provide a value, Elasticsearch will generate one with sufficient entropy and return it in the response.",
+                    "type": "string"
+                  },
+                  "realm": {
+                    "description": "The name of the OpenID Connect realm in Elasticsearch the configuration of which should be used in order to generate the authentication request.\nIt cannot be specified when *iss* is specified.\nOne of *realm* or *iss* is required.",
+                    "type": "string"
+                  },
+                  "state": {
+                    "description": "The value used to maintain state between the authentication request and the response, typically used as a Cross-Site Request Forgery mitigation.\nIf the caller of the API does not provide a value, Elasticsearch will generate one with sufficient entropy and return it in the response.",
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "nonce": {
+                      "type": "string"
+                    },
+                    "realm": {
+                      "type": "string"
+                    },
+                    "redirect": {
+                      "description": "A URI that points to the authorization endpoint of the OpenID Connect Provider with all the parameters of the authentication request as HTTP GET parameters.",
+                      "type": "string"
+                    },
+                    "state": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "nonce",
+                    "realm",
+                    "redirect",
+                    "state"
+                  ]
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/_security/_query/api_key": {
       "get": {
         "tags": [
@@ -34312,6 +34732,343 @@
         }
       }
     },
+    "/_text_structure/find_field_structure": {
+      "get": {
+        "tags": [
+          "text_structure"
+        ],
+        "summary": "Find the structure of a text field",
+        "description": "Find the structure of a text field in an Elasticsearch index.",
+        "operationId": "text-structure-find-field-structure",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "column_names",
+            "description": "If `format` is set to `delimited`, you can specify the column names in a comma-separated list.\nIf this parameter is not specified, the structure finder uses the column names from the header row of the text.\nIf the text does not have a header row, columns are named \"column1\", \"column2\", \"column3\", for example.",
+            "deprecated": false,
+            "schema": {
+              "type": "string"
+            },
+            "style": "form"
+          },
+          {
+            "in": "query",
+            "name": "delimiter",
+            "description": "If you have set `format` to `delimited`, you can specify the character used to delimit the values in each row.\nOnly a single character is supported; the delimiter cannot have multiple characters.\nBy default, the API considers the following possibilities: comma, tab, semi-colon, and pipe (`|`).\nIn this default scenario, all rows must have the same number of fields for the delimited format to be detected.\nIf you specify a delimiter, up to 10% of the rows can have a different number of columns than the first row.",
+            "deprecated": false,
+            "schema": {
+              "type": "string"
+            },
+            "style": "form"
+          },
+          {
+            "in": "query",
+            "name": "documents_to_sample",
+            "description": "The number of documents to include in the structural analysis.\nThe minimum value is 2.",
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/_types:uint"
+            },
+            "style": "form"
+          },
+          {
+            "in": "query",
+            "name": "ecs_compatibility",
+            "description": "The mode of compatibility with ECS compliant Grok patterns.\nUse this parameter to specify whether to use ECS Grok patterns instead of legacy ones when the structure finder creates a Grok pattern.\nThis setting primarily has an impact when a whole message Grok pattern such as `%{CATALINALOG}` matches the input.\nIf the structure finder identifies a common structure but has no idea of the meaning then generic field names such as `path`, `ipaddress`, `field1`, and `field2` are used in the `grok_pattern` output.\nThe intention in that situation is that a user who knows the meanings will rename the fields before using them.",
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/text_structure._types:EcsCompatibilityType"
+            },
+            "style": "form"
+          },
+          {
+            "in": "query",
+            "name": "explain",
+            "description": "If true, the response includes a field named `explanation`, which is an array of strings that indicate how the structure finder produced its result.",
+            "deprecated": false,
+            "schema": {
+              "type": "boolean"
+            },
+            "style": "form"
+          },
+          {
+            "in": "query",
+            "name": "field",
+            "description": "The field that should be analyzed.",
+            "required": true,
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/_types:Field"
+            },
+            "style": "form"
+          },
+          {
+            "in": "query",
+            "name": "format",
+            "description": "The high level structure of the text.\nBy default, the API chooses the format.\nIn this default scenario, all rows must have the same number of fields for a delimited format to be detected.\nIf the format is set to delimited and the delimiter is not set, however, the API tolerates up to 5% of rows that have a different number of columns than the first row.",
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/text_structure._types:FormatType"
+            },
+            "style": "form"
+          },
+          {
+            "in": "query",
+            "name": "grok_pattern",
+            "description": "If the format is `semi_structured_text`, you can specify a Grok pattern that is used to extract fields from every message in the text.\nThe name of the timestamp field in the Grok pattern must match what is specified in the `timestamp_field` parameter.\nIf that parameter is not specified, the name of the timestamp field in the Grok pattern must match \"timestamp\".\nIf `grok_pattern` is not specified, the structure finder creates a Grok pattern.",
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/_types:GrokPattern"
+            },
+            "style": "form"
+          },
+          {
+            "in": "query",
+            "name": "index",
+            "description": "The name of the index that contains the analyzed field.",
+            "required": true,
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/_types:IndexName"
+            },
+            "style": "form"
+          },
+          {
+            "in": "query",
+            "name": "quote",
+            "description": "If the format is `delimited`, you can specify the character used to quote the values in each row if they contain newlines or the delimiter character.\nOnly a single character is supported.\nIf this parameter is not specified, the default value is a double quote (`\"`).\nIf your delimited text format does not use quoting, a workaround is to set this argument to a character that does not appear anywhere in the sample.",
+            "deprecated": false,
+            "schema": {
+              "type": "string"
+            },
+            "style": "form"
+          },
+          {
+            "in": "query",
+            "name": "should_trim_fields",
+            "description": "If the format is `delimited`, you can specify whether values between delimiters should have whitespace trimmed from them.\nIf this parameter is not specified and the delimiter is pipe (`|`), the default value is true.\nOtherwise, the default value is false.",
+            "deprecated": false,
+            "schema": {
+              "type": "boolean"
+            },
+            "style": "form"
+          },
+          {
+            "in": "query",
+            "name": "timeout",
+            "description": "The maximum amount of time that the structure analysis can take.\nIf the analysis is still running when the timeout expires, it will be stopped.",
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/_types:Duration"
+            },
+            "style": "form"
+          },
+          {
+            "in": "query",
+            "name": "timestamp_field",
+            "description": "The name of the field that contains the primary timestamp of each record in the text.\nIn particular, if the text was ingested into an index, this is the field that would be used to populate the `@timestamp` field.\n\nIf the format is `semi_structured_text`, this field must match the name of the appropriate extraction in the `grok_pattern`.\nTherefore, for semi-structured text, it is best not to specify this parameter unless `grok_pattern` is also specified.\n\nFor structured text, if you specify this parameter, the field must exist within the text.\n\nIf this parameter is not specified, the structure finder makes a decision about which field (if any) is the primary timestamp field.\nFor structured text, it is not compulsory to have a timestamp in the text.",
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/_types:Field"
+            },
+            "style": "form"
+          },
+          {
+            "in": "query",
+            "name": "timestamp_format",
+            "description": "The Java time format of the timestamp field in the text.\nOnly a subset of Java time format letter groups are supported:\n\n* `a`\n* `d`\n* `dd`\n* `EEE`\n* `EEEE`\n* `H`\n* `HH`\n* `h`\n* `M`\n* `MM`\n* `MMM`\n* `MMMM`\n* `mm`\n* `ss`\n* `XX`\n* `XXX`\n* `yy`\n* `yyyy`\n* `zzz`\n\nAdditionally `S` letter groups (fractional seconds) of length one to nine are supported providing they occur after `ss` and are separated from the `ss` by a period (`.`), comma (`,`), or colon (`:`).\nSpacing and punctuation is also permitted with the exception a question mark (`?`), newline, and carriage return, together with literal text enclosed in single quotes.\nFor example, `MM/dd HH.mm.ss,SSSSSS 'in' yyyy` is a valid override format.\n\nOne valuable use case for this parameter is when the format is semi-structured text, there are multiple timestamp formats in the text, and you know which format corresponds to the primary timestamp, but you do not want to specify the full `grok_pattern`.\nAnother is when the timestamp format is one that the structure finder does not consider by default.\n\nIf this parameter is not specified, the structure finder chooses the best format from a built-in set.\n\nIf the special value `null` is specified, the structure finder will not look for a primary timestamp in the text.\nWhen the format is semi-structured text, this will result in the structure finder treating the text as single-line messages.",
+            "deprecated": false,
+            "schema": {
+              "type": "string"
+            },
+            "style": "form"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "charset": {
+                      "type": "string"
+                    },
+                    "ecs_compatibility": {
+                      "$ref": "#/components/schemas/text_structure._types:EcsCompatibilityType"
+                    },
+                    "field_stats": {
+                      "type": "object",
+                      "additionalProperties": {
+                        "$ref": "#/components/schemas/text_structure._types:FieldStat"
+                      }
+                    },
+                    "format": {
+                      "$ref": "#/components/schemas/text_structure._types:FormatType"
+                    },
+                    "grok_pattern": {
+                      "$ref": "#/components/schemas/_types:GrokPattern"
+                    },
+                    "java_timestamp_formats": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      }
+                    },
+                    "joda_timestamp_formats": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      }
+                    },
+                    "ingest_pipeline": {
+                      "$ref": "#/components/schemas/ingest._types:PipelineConfig"
+                    },
+                    "mappings": {
+                      "$ref": "#/components/schemas/_types.mapping:TypeMapping"
+                    },
+                    "multiline_start_pattern": {
+                      "type": "string"
+                    },
+                    "need_client_timezone": {
+                      "type": "boolean"
+                    },
+                    "num_lines_analyzed": {
+                      "type": "number"
+                    },
+                    "num_messages_analyzed": {
+                      "type": "number"
+                    },
+                    "sample_start": {
+                      "type": "string"
+                    },
+                    "timestamp_field": {
+                      "$ref": "#/components/schemas/_types:Field"
+                    }
+                  },
+                  "required": [
+                    "charset",
+                    "field_stats",
+                    "format",
+                    "ingest_pipeline",
+                    "mappings",
+                    "need_client_timezone",
+                    "num_lines_analyzed",
+                    "num_messages_analyzed",
+                    "sample_start"
+                  ]
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/_text_structure/find_message_structure": {
+      "get": {
+        "tags": [
+          "text_structure"
+        ],
+        "summary": "Find the structure of text messages",
+        "description": "Find the structure of a list of text messages.\nThe messages must contain data that is suitable to be ingested into Elasticsearch.\n\nThis API provides a starting point for ingesting data into Elasticsearch in a format that is suitable for subsequent use with other Elastic Stack functionality.\nUse this API rather than the find text structure API if your input text has already been split up into separate messages by some other process.\nThe response from the API contains:\n\n* Sample messages.\n* Statistics that reveal the most common values for all fields detected within the text and basic numeric statistics for numeric fields.\n* Information about the structure of the text, which is useful when you write ingest configurations to index it or similarly formatted text.\nAppropriate mappings for an Elasticsearch index, which you could use to ingest the text.\n\nAll this information can be calculated by the structure finder with no guidance.\nHowever, you can optionally override some of the decisions about the text structure by specifying one or more query parameters.",
+        "operationId": "text-structure-find-message-structure",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/text_structure.find_message_structure#column_names"
+          },
+          {
+            "$ref": "#/components/parameters/text_structure.find_message_structure#delimiter"
+          },
+          {
+            "$ref": "#/components/parameters/text_structure.find_message_structure#ecs_compatibility"
+          },
+          {
+            "$ref": "#/components/parameters/text_structure.find_message_structure#explain"
+          },
+          {
+            "$ref": "#/components/parameters/text_structure.find_message_structure#format"
+          },
+          {
+            "$ref": "#/components/parameters/text_structure.find_message_structure#grok_pattern"
+          },
+          {
+            "$ref": "#/components/parameters/text_structure.find_message_structure#quote"
+          },
+          {
+            "$ref": "#/components/parameters/text_structure.find_message_structure#should_trim_fields"
+          },
+          {
+            "$ref": "#/components/parameters/text_structure.find_message_structure#timeout"
+          },
+          {
+            "$ref": "#/components/parameters/text_structure.find_message_structure#timestamp_field"
+          },
+          {
+            "$ref": "#/components/parameters/text_structure.find_message_structure#timestamp_format"
+          }
+        ],
+        "requestBody": {
+          "$ref": "#/components/requestBodies/text_structure.find_message_structure"
+        },
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/text_structure.find_message_structure#200"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "text_structure"
+        ],
+        "summary": "Find the structure of text messages",
+        "description": "Find the structure of a list of text messages.\nThe messages must contain data that is suitable to be ingested into Elasticsearch.\n\nThis API provides a starting point for ingesting data into Elasticsearch in a format that is suitable for subsequent use with other Elastic Stack functionality.\nUse this API rather than the find text structure API if your input text has already been split up into separate messages by some other process.\nThe response from the API contains:\n\n* Sample messages.\n* Statistics that reveal the most common values for all fields detected within the text and basic numeric statistics for numeric fields.\n* Information about the structure of the text, which is useful when you write ingest configurations to index it or similarly formatted text.\nAppropriate mappings for an Elasticsearch index, which you could use to ingest the text.\n\nAll this information can be calculated by the structure finder with no guidance.\nHowever, you can optionally override some of the decisions about the text structure by specifying one or more query parameters.",
+        "operationId": "text-structure-find-message-structure-1",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/text_structure.find_message_structure#column_names"
+          },
+          {
+            "$ref": "#/components/parameters/text_structure.find_message_structure#delimiter"
+          },
+          {
+            "$ref": "#/components/parameters/text_structure.find_message_structure#ecs_compatibility"
+          },
+          {
+            "$ref": "#/components/parameters/text_structure.find_message_structure#explain"
+          },
+          {
+            "$ref": "#/components/parameters/text_structure.find_message_structure#format"
+          },
+          {
+            "$ref": "#/components/parameters/text_structure.find_message_structure#grok_pattern"
+          },
+          {
+            "$ref": "#/components/parameters/text_structure.find_message_structure#quote"
+          },
+          {
+            "$ref": "#/components/parameters/text_structure.find_message_structure#should_trim_fields"
+          },
+          {
+            "$ref": "#/components/parameters/text_structure.find_message_structure#timeout"
+          },
+          {
+            "$ref": "#/components/parameters/text_structure.find_message_structure#timestamp_field"
+          },
+          {
+            "$ref": "#/components/parameters/text_structure.find_message_structure#timestamp_format"
+          }
+        ],
+        "requestBody": {
+          "$ref": "#/components/requestBodies/text_structure.find_message_structure"
+        },
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/text_structure.find_message_structure#200"
+          }
+        }
+      }
+    },
     "/_text_structure/find_structure": {
       "post": {
         "tags": [
@@ -34334,7 +35091,7 @@
           {
             "in": "query",
             "name": "column_names",
-            "description": "If you have set format to delimited, you can specify the column names in a comma-separated list. If this parameter is not specified, the structure finder uses the column names from the header row of the text. If the text does not have a header role, columns are named \"column1\", \"column2\", \"column3\", etc.",
+            "description": "If you have set format to delimited, you can specify the column names in a comma-separated list. If this parameter is not specified, the structure finder uses the column names from the header row of the text. If the text does not have a header role, columns are named \"column1\", \"column2\", \"column3\", for example.",
             "deprecated": false,
             "schema": {
               "type": "string"
@@ -34444,7 +35201,7 @@
           {
             "in": "query",
             "name": "timeout",
-            "description": "Sets the maximum amount of time that the structure analysis make take. If the analysis is still running when the timeout expires then it will be aborted.",
+            "description": "Sets the maximum amount of time that the structure analysis can take. If the analysis is still running when the timeout expires then it will be stopped.",
             "deprecated": false,
             "schema": {
               "$ref": "#/components/schemas/_types:Duration"
@@ -34508,7 +35265,7 @@
                     "field_stats": {
                       "type": "object",
                       "additionalProperties": {
-                        "$ref": "#/components/schemas/text_structure.find_structure:FieldStat"
+                        "$ref": "#/components/schemas/text_structure._types:FieldStat"
                       }
                     },
                     "sample_start": {
@@ -59973,6 +60730,9 @@
             "$ref": "#/components/schemas/_types.mapping:ObjectProperty"
           },
           {
+            "$ref": "#/components/schemas/_types.mapping:PassthroughObjectProperty"
+          },
+          {
             "$ref": "#/components/schemas/_types.mapping:SemanticTextProperty"
           },
           {
@@ -61058,6 +61818,33 @@
                 "enum": [
                   "object"
                 ]
+              }
+            }
+          }
+        ]
+      },
+      "_types.mapping:PassthroughObjectProperty": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/_types.mapping:CorePropertyBase"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "type": {
+                "type": "string",
+                "enum": [
+                  "passthrough"
+                ]
+              },
+              "enabled": {
+                "type": "boolean"
+              },
+              "priority": {
+                "type": "number"
+              },
+              "time_series_dimension": {
+                "type": "boolean"
               }
             }
           }
@@ -65910,6 +66697,13 @@
           },
           "hits": {
             "$ref": "#/components/schemas/eql._types:EqlHits"
+          },
+          "shard_failures": {
+            "description": "Contains information about shard failures (if any), in case allow_partial_search_results=true",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/_types:ShardFailure"
+            }
           }
         },
         "required": [
@@ -70728,7 +71522,7 @@
         ]
       },
       "ingest._types:DatabaseConfiguration": {
-        "description": "The configuration necessary to identify which IP geolocation provider to use to download a database, as well as any provider-specific configuration necessary for such downloading.\nAt present, the only supported providers are maxmind and ipinfo, and the maxmind provider requires that an account_id (string) is configured.\nA provider (either maxmind or ipinfo) must be specified. The web and local providers can be returned as read only configurations.",
+        "description": "The configuration necessary to identify which IP geolocation provider to use to download a database, as well as any provider-specific configuration necessary for such downloading.\nAt present, the only supported providers are `maxmind` and `ipinfo`, and the `maxmind` provider requires that an `account_id` (string) is configured.\nA provider (either `maxmind` or `ipinfo`) must be specified. The web and local providers can be returned as read only configurations.",
         "allOf": [
           {
             "type": "object",
@@ -86223,7 +87017,23 @@
           "none"
         ]
       },
-      "text_structure.find_structure:FieldStat": {
+      "text_structure._types:EcsCompatibilityType": {
+        "type": "string",
+        "enum": [
+          "disabled",
+          "v1"
+        ]
+      },
+      "text_structure._types:FormatType": {
+        "type": "string",
+        "enum": [
+          "delimited",
+          "ndjson",
+          "semi_structured_text",
+          "xml"
+        ]
+      },
+      "text_structure._types:FieldStat": {
         "type": "object",
         "properties": {
           "count": {
@@ -86235,7 +87045,7 @@
           "top_hits": {
             "type": "array",
             "items": {
-              "$ref": "#/components/schemas/text_structure.find_structure:TopHit"
+              "$ref": "#/components/schemas/text_structure._types:TopHit"
             }
           },
           "mean_value": {
@@ -86263,7 +87073,7 @@
           "top_hits"
         ]
       },
-      "text_structure.find_structure:TopHit": {
+      "text_structure._types:TopHit": {
         "type": "object",
         "properties": {
           "count": {
@@ -93686,6 +94496,83 @@
           }
         }
       },
+      "text_structure.find_message_structure#200": {
+        "description": "",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "charset": {
+                  "type": "string"
+                },
+                "ecs_compatibility": {
+                  "$ref": "#/components/schemas/text_structure._types:EcsCompatibilityType"
+                },
+                "field_stats": {
+                  "type": "object",
+                  "additionalProperties": {
+                    "$ref": "#/components/schemas/text_structure._types:FieldStat"
+                  }
+                },
+                "format": {
+                  "$ref": "#/components/schemas/text_structure._types:FormatType"
+                },
+                "grok_pattern": {
+                  "$ref": "#/components/schemas/_types:GrokPattern"
+                },
+                "java_timestamp_formats": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                },
+                "joda_timestamp_formats": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                },
+                "ingest_pipeline": {
+                  "$ref": "#/components/schemas/ingest._types:PipelineConfig"
+                },
+                "mappings": {
+                  "$ref": "#/components/schemas/_types.mapping:TypeMapping"
+                },
+                "multiline_start_pattern": {
+                  "type": "string"
+                },
+                "need_client_timezone": {
+                  "type": "boolean"
+                },
+                "num_lines_analyzed": {
+                  "type": "number"
+                },
+                "num_messages_analyzed": {
+                  "type": "number"
+                },
+                "sample_start": {
+                  "type": "string"
+                },
+                "timestamp_field": {
+                  "$ref": "#/components/schemas/_types:Field"
+                }
+              },
+              "required": [
+                "charset",
+                "field_stats",
+                "format",
+                "ingest_pipeline",
+                "mappings",
+                "need_client_timezone",
+                "num_lines_analyzed",
+                "num_messages_analyzed",
+                "sample_start"
+              ]
+            }
+          }
+        }
+      },
       "text_structure.test_grok_pattern#200": {
         "description": "",
         "content": {
@@ -99039,7 +99926,7 @@
       "ingest.get_ip_location_database#master_timeout": {
         "in": "query",
         "name": "master_timeout",
-        "description": "Period to wait for a connection to the master node.\nIf no response is received before the timeout expires, the request fails and returns an error.",
+        "description": "The period to wait for a connection to the master node.\nIf no response is received before the timeout expires, the request fails and returns an error.\nA value of `-1` indicates that the request should never time out.",
         "deprecated": false,
         "schema": {
           "$ref": "#/components/schemas/_types:Duration"
@@ -103067,6 +103954,116 @@
         },
         "style": "form"
       },
+      "text_structure.find_message_structure#column_names": {
+        "in": "query",
+        "name": "column_names",
+        "description": "If the format is `delimited`, you can specify the column names in a comma-separated list.\nIf this parameter is not specified, the structure finder uses the column names from the header row of the text.\nIf the text does not have a header role, columns are named \"column1\", \"column2\", \"column3\", for example.",
+        "deprecated": false,
+        "schema": {
+          "type": "string"
+        },
+        "style": "form"
+      },
+      "text_structure.find_message_structure#delimiter": {
+        "in": "query",
+        "name": "delimiter",
+        "description": "If you the format is `delimited`, you can specify the character used to delimit the values in each row.\nOnly a single character is supported; the delimiter cannot have multiple characters.\nBy default, the API considers the following possibilities: comma, tab, semi-colon, and pipe (`|`).\nIn this default scenario, all rows must have the same number of fields for the delimited format to be detected.\nIf you specify a delimiter, up to 10% of the rows can have a different number of columns than the first row.",
+        "deprecated": false,
+        "schema": {
+          "type": "string"
+        },
+        "style": "form"
+      },
+      "text_structure.find_message_structure#ecs_compatibility": {
+        "in": "query",
+        "name": "ecs_compatibility",
+        "description": "The mode of compatibility with ECS compliant Grok patterns.\nUse this parameter to specify whether to use ECS Grok patterns instead of legacy ones when the structure finder creates a Grok pattern.\nThis setting primarily has an impact when a whole message Grok pattern such as `%{CATALINALOG}` matches the input.\nIf the structure finder identifies a common structure but has no idea of meaning then generic field names such as `path`, `ipaddress`, `field1`, and `field2` are used in the `grok_pattern` output, with the intention that a user who knows the meanings rename these fields before using it.",
+        "deprecated": false,
+        "schema": {
+          "$ref": "#/components/schemas/text_structure._types:EcsCompatibilityType"
+        },
+        "style": "form"
+      },
+      "text_structure.find_message_structure#explain": {
+        "in": "query",
+        "name": "explain",
+        "description": "If this parameter is set to true, the response includes a field named `explanation`, which is an array of strings that indicate how the structure finder produced its result.",
+        "deprecated": false,
+        "schema": {
+          "type": "boolean"
+        },
+        "style": "form"
+      },
+      "text_structure.find_message_structure#format": {
+        "in": "query",
+        "name": "format",
+        "description": "The high level structure of the text.\nBy default, the API chooses the format.\nIn this default scenario, all rows must have the same number of fields for a delimited format to be detected.\nIf the format is `delimited` and the delimiter is not set, however, the API tolerates up to 5% of rows that have a different number of columns than the first row.",
+        "deprecated": false,
+        "schema": {
+          "$ref": "#/components/schemas/text_structure._types:FormatType"
+        },
+        "style": "form"
+      },
+      "text_structure.find_message_structure#grok_pattern": {
+        "in": "query",
+        "name": "grok_pattern",
+        "description": "If the format is `semi_structured_text`, you can specify a Grok pattern that is used to extract fields from every message in the text.\nThe name of the timestamp field in the Grok pattern must match what is specified in the `timestamp_field` parameter.\nIf that parameter is not specified, the name of the timestamp field in the Grok pattern must match \"timestamp\".\nIf `grok_pattern` is not specified, the structure finder creates a Grok pattern.",
+        "deprecated": false,
+        "schema": {
+          "$ref": "#/components/schemas/_types:GrokPattern"
+        },
+        "style": "form"
+      },
+      "text_structure.find_message_structure#quote": {
+        "in": "query",
+        "name": "quote",
+        "description": "If the format is `delimited`, you can specify the character used to quote the values in each row if they contain newlines or the delimiter character.\nOnly a single character is supported.\nIf this parameter is not specified, the default value is a double quote (`\"`).\nIf your delimited text format does not use quoting, a workaround is to set this argument to a character that does not appear anywhere in the sample.",
+        "deprecated": false,
+        "schema": {
+          "type": "string"
+        },
+        "style": "form"
+      },
+      "text_structure.find_message_structure#should_trim_fields": {
+        "in": "query",
+        "name": "should_trim_fields",
+        "description": "If the format is `delimited`, you can specify whether values between delimiters should have whitespace trimmed from them.\nIf this parameter is not specified and the delimiter is pipe (`|`), the default value is true.\nOtherwise, the default value is false.",
+        "deprecated": false,
+        "schema": {
+          "type": "boolean"
+        },
+        "style": "form"
+      },
+      "text_structure.find_message_structure#timeout": {
+        "in": "query",
+        "name": "timeout",
+        "description": "The maximum amount of time that the structure analysis can take.\nIf the analysis is still running when the timeout expires, it will be stopped.",
+        "deprecated": false,
+        "schema": {
+          "$ref": "#/components/schemas/_types:Duration"
+        },
+        "style": "form"
+      },
+      "text_structure.find_message_structure#timestamp_field": {
+        "in": "query",
+        "name": "timestamp_field",
+        "description": "The name of the field that contains the primary timestamp of each record in the text.\nIn particular, if the text was ingested into an index, this is the field that would be used to populate the `@timestamp` field.\n\nIf the format is `semi_structured_text`, this field must match the name of the appropriate extraction in the `grok_pattern`.\nTherefore, for semi-structured text, it is best not to specify this parameter unless `grok_pattern` is also specified.\n\nFor structured text, if you specify this parameter, the field must exist within the text.\n\nIf this parameter is not specified, the structure finder makes a decision about which field (if any) is the primary timestamp field.\nFor structured text, it is not compulsory to have a timestamp in the text.",
+        "deprecated": false,
+        "schema": {
+          "$ref": "#/components/schemas/_types:Field"
+        },
+        "style": "form"
+      },
+      "text_structure.find_message_structure#timestamp_format": {
+        "in": "query",
+        "name": "timestamp_format",
+        "description": "The Java time format of the timestamp field in the text.\nOnly a subset of Java time format letter groups are supported:\n\n* `a`\n* `d`\n* `dd`\n* `EEE`\n* `EEEE`\n* `H`\n* `HH`\n* `h`\n* `M`\n* `MM`\n* `MMM`\n* `MMMM`\n* `mm`\n* `ss`\n* `XX`\n* `XXX`\n* `yy`\n* `yyyy`\n* `zzz`\n\nAdditionally `S` letter groups (fractional seconds) of length one to nine are supported providing they occur after `ss` and are separated from the `ss` by a period (`.`), comma (`,`), or colon (`:`).\nSpacing and punctuation is also permitted with the exception a question mark (`?`), newline, and carriage return, together with literal text enclosed in single quotes.\nFor example, `MM/dd HH.mm.ss,SSSSSS 'in' yyyy` is a valid override format.\n\nOne valuable use case for this parameter is when the format is semi-structured text, there are multiple timestamp formats in the text, and you know which format corresponds to the primary timestamp, but you do not want to specify the full `grok_pattern`.\nAnother is when the timestamp format is one that the structure finder does not consider by default.\n\nIf this parameter is not specified, the structure finder chooses the best format from a built-in set.\n\nIf the special value `null` is specified, the structure finder will not look for a primary timestamp in the text.\nWhen the format is semi-structured text, this will result in the structure finder treating the text as single-line messages.",
+        "deprecated": false,
+        "schema": {
+          "type": "string"
+        },
+        "style": "form"
+      },
       "text_structure.test_grok_pattern#ecs_compatibility": {
         "in": "query",
         "name": "ecs_compatibility",
@@ -106016,6 +107013,28 @@
             }
           }
         }
+      },
+      "text_structure.find_message_structure": {
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "messages": {
+                  "description": "The list of messages you want to analyze.",
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                }
+              },
+              "required": [
+                "messages"
+              ]
+            }
+          }
+        },
+        "required": true
       },
       "text_structure.test_grok_pattern": {
         "content": {
