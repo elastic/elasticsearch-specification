@@ -1,0 +1,7 @@
+# summary:
+description: A successful response from `POST /_license/start_basic?acknowledge=true`. If you currently have a license with more features than a basic license and you start a basic license, you must pass the acknowledge parameter.
+# type: response
+# response_code: 200
+value:
+  basic_was_started: true
+  acknowledged: true

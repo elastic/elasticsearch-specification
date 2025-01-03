@@ -1351,3 +1351,14 @@ actions:
           examples:
             indicesRolloverResponseExample1:
               $ref: "../../specification/indices/rollover/indicesRolloverResponseExample1.yaml"
+## Examples for licensing
+  - target: "$.paths['/_license']['get']"
+    description: "Add example for get license response"
+    update: 
+      responses:
+        200:
+          content:
+            application/json:
+              examples:
+                getLicenseResponseExample1:
+                  $ref: "../../specification/license/get/GetLicenseResponseExample1.yaml"
