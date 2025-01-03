@@ -392,6 +392,16 @@ actions:
           examples:
             indicesLegacyPutTemplateRequestExample1:
               $ref: "../../specification/indices/put_template/indicesPutTemplateRequestExample1.yaml"
+## Examples for connectors
+  - target: "$.paths['/_connector/_sync_job/{connector_sync_job_id}/_stats']['put']"
+    description: "Add examples for set connector sync job stats operation"
+    update: 
+      requestBody:
+        content:
+          application/json:
+            examples:
+              connectorSyncJobUpdateStatsRequestExample1:
+                $ref: "../../specification/connector/sync_job_update_stats/SyncJobUpdateStatsRequestExample1.yaml"
 ## Examples for licensing
   - target: "$.paths['/_license/basic_status']['get']"
     description: "Add example for get basic status response"
