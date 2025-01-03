@@ -6,6 +6,7 @@ analysis-standard-analyzer,https://www.elastic.co/guide/en/elasticsearch/referen
 analysis-tokenfilters,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/analysis-tokenfilters.html
 analysis-tokenizers,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/analysis-tokenizers.html
 analysis,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/analysis.html
+analyze-repository,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/repo-analysis-api.html
 analyzer-anatomy,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/analyzer-anatomy.html
 api-date-math-index-names,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/api-conventions.html#api-date-math-index-names
 append-processor,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/append-processor.html
