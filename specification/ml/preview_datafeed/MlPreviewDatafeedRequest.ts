@@ -39,7 +39,7 @@ import { DateTime } from '@_types/Time'
  * @index_privileges read
  * @cluster_privileges manage_ml
  * @doc_tag ml anomaly
- * @doc_id apis
+ * @doc_id ml-preview-datafeed
  */
 export interface Request extends RequestBase {
   path_parts: {

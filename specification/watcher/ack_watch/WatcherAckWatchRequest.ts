@@ -31,7 +31,7 @@ import { Name, Names } from '@_types/common'
  * @rest_spec_name watcher.ack_watch
  * @availability stack stability=stable
  * @cluster_privileges manage_watcher
- * @doc_id apis
+ * @doc_id watcher-api-ack-watch
  */
 export interface Request extends RequestBase {
   path_parts: {

@@ -25,7 +25,7 @@ import { WatcherMetric } from './types'
  * @rest_spec_name watcher.stats
  * @availability stack since=5.5.0 stability=stable
  * @cluster_privileges monitor_watcher
- * @doc_id apis
+ * @doc_id watcher-api-stats
  */
 export interface Request extends RequestBase {
   path_parts: {

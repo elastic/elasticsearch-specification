@@ -28,7 +28,7 @@ import { CalendarEvent } from '../_types/CalendarEvent'
  * @availability serverless stability=stable visibility=public
  * @cluster_privileges manage_ml
  * @doc_tag ml anomaly
- * @doc_id apis
+ * @doc_id ml-post-calendar-event
  */
 export interface Request extends RequestBase {
   path_parts: {

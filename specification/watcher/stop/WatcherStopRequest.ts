@@ -25,6 +25,6 @@ import { RequestBase } from '@_types/Base'
  * @rest_spec_name watcher.stop
  * @availability stack stability=stable
  * @cluster_privileges manage_watcher
- * @doc_id apis
+ * @doc_id watcher-api-stop
  */
 export interface Request extends RequestBase {}

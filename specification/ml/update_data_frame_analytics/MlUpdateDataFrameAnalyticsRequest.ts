@@ -29,7 +29,7 @@ import { integer } from '@_types/Numeric'
  * @cluster_privileges manage_ml
  * @index_privileges read, create_index, manage, index, view_index_metadata
  * @doc_tag ml data frame
- * @doc_id apis
+ * @doc_id update-dfanalytics
  */
 export interface Request extends RequestBase {
   path_parts: {

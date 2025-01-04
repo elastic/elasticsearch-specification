@@ -28,7 +28,7 @@ import { Duration } from '@_types/Time'
  * @availability stack stability=stable
  * @availability serverless stability=stable visibility=private
  * @cluster_privileges monitor
- * @doc_id apis
+ * @doc_id usage-api
  */
 export interface Request extends RequestBase {
   query_parameters: {

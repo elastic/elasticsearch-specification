@@ -43,7 +43,7 @@ import { TransformContainer } from '@_types/Transform'
  * @rest_spec_name watcher.put_watch
  * @availability stack stability=stable
  * @cluster_privileges manage_watcher
- * @doc_id apis
+ * @doc_id watcher-api-put-watch
  */
 export interface Request extends RequestBase {
   path_parts: {

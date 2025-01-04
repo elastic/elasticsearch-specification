@@ -40,7 +40,7 @@ import { integer } from '@_types/Numeric'
  * @availability serverless stability=stable visibility=private
  * @cluster_privileges monitor_ml
  * @doc_tag ml data frame
- * @doc_id apis
+ * @doc_id explain-dfanalytics
  */
 export interface Request extends RequestBase {
   path_parts: {

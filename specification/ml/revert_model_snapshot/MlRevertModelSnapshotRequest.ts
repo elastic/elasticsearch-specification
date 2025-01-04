@@ -34,7 +34,7 @@ import { Id } from '@_types/common'
  * @availability serverless stability=stable visibility=private
  * @cluster_privileges manage_ml
  * @doc_tag ml anomaly
- * @doc_id apis
+ * @doc_id ml-revert-snapshot
  */
 export interface Request extends RequestBase {
   path_parts: {

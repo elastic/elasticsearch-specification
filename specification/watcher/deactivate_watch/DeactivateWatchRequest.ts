@@ -26,7 +26,7 @@ import { Name } from '@_types/common'
  * @rest_spec_name watcher.deactivate_watch
  * @availability stack stability=stable
  * @cluster_privileges manage_watcher
- * @doc_id apis
+ * @doc_id watcher-api-deactivate-watch
  * @ext_doc_id watcher-works
  */
 export interface Request extends RequestBase {
