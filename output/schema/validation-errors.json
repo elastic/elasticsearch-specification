@@ -617,18 +617,6 @@
       ],
       "response": []
     },
-    "search_application.post_behavioral_analytics_event": {
-      "request": [
-        "Missing request & response"
-      ],
-      "response": []
-    },
-    "search_application.render_query": {
-      "request": [
-        "Missing request & response"
-      ],
-      "response": []
-    },
     "search_mvt": {
       "request": [
         "Request: query parameter 'grid_agg' does not exist in the json spec",
@@ -675,24 +663,6 @@
     "security.grant_api_key": {
       "request": [
         "Request: missing json spec query parameter 'refresh'"
-      ],
-      "response": []
-    },
-    "security.oidc_authenticate": {
-      "request": [
-        "Missing request & response"
-      ],
-      "response": []
-    },
-    "security.oidc_logout": {
-      "request": [
-        "Missing request & response"
-      ],
-      "response": []
-    },
-    "security.oidc_prepare_authentication": {
-      "request": [
-        "Missing request & response"
       ],
       "response": []
     },

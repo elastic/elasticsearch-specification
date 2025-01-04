@@ -19,6 +19,8 @@ autoscaling-get-autoscaling-capacity,https://www.elastic.co/guide/en/elasticsear
 autoscaling-get-autoscaling-policy,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/autoscaling-get-autoscaling-policy.html
 autoscaling-put-autoscaling-policy,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/autoscaling-put-autoscaling-policy.html
 avoid-index-pattern-collisions,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/index-templates.html#avoid-index-pattern-collisions
+behavioral-analytics-collection-event,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/post-analytics-collection-event.html
+behavioral-analytics-event-reference,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/behavioral-analytics-event-reference.html
 byte-units,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/api-conventions.html#byte-units
 bytes-processor,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/bytes-processor.html
 calendar-and-fixed-intervals,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/search-aggregations-bucket-datehistogram-aggregation.html#calendar_and_fixed_intervals
@@ -542,6 +544,7 @@ search-aggregations-metrics-valuecount-aggregation,https://www.elastic.co/guide/
 search-aggregations-metrics-weight-avg-aggregation,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/search-aggregations-metrics-weight-avg-aggregation.html
 search-aggregations-bucket-variablewidthhistogram-aggregation,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/search-aggregations-bucket-variablewidthhistogram-aggregation.html
 search-analyzer,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/search-analyzer.html
+search-render-query,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/search-application-render-query.html
 search-count,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/search-count.html
 search-explain,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/search-explain.html
 search-field-caps,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/search-field-caps.html
@@ -592,6 +595,9 @@ security-api-invalidate-api-key,https://www.elastic.co/guide/en/elasticsearch/re
 security-api-invalidate-token,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/security-api-invalidate-token.html
 security-api-kibana-enrollment,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/security-api-kibana-enrollment.html
 security-api-node-enrollment,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/security-api-node-enrollment.html
+security-api-oidc-authenticate,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/security-api-oidc-authenticate.html
+security-api-oidc-logout,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/security-api-oidc-logout.html
+security-api-oidc-prepare,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/security-api-oidc-prepare-authentication.html
 security-api-put-privileges,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/security-api-put-privileges.html
 security-api-put-role-mapping,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/security-api-put-role-mapping.html
 security-api-put-role,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/security-api-put-role.html

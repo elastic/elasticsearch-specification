@@ -5525,7 +5525,7 @@ export interface MappingFieldNamesField {
   enabled: boolean
 }
 
-export type MappingFieldType = 'none' | 'geo_point' | 'geo_shape' | 'ip' | 'binary' | 'keyword' | 'text' | 'search_as_you_type' | 'date' | 'date_nanos' | 'boolean' | 'completion' | 'nested' | 'object' | 'version' | 'murmur3' | 'token_count' | 'percolator' | 'integer' | 'long' | 'short' | 'byte' | 'float' | 'half_float' | 'scaled_float' | 'double' | 'integer_range' | 'float_range' | 'long_range' | 'double_range' | 'date_range' | 'ip_range' | 'alias' | 'join' | 'rank_feature' | 'rank_features' | 'flattened' | 'shape' | 'histogram' | 'constant_keyword' | 'aggregate_metric_double' | 'dense_vector' | 'semantic_text' | 'sparse_vector' | 'match_only_text' | 'icu_collation_keyword'
+export type MappingFieldType = 'none' | 'geo_point' | 'geo_shape' | 'ip' | 'binary' | 'keyword' | 'text' | 'search_as_you_type' | 'date' | 'date_nanos' | 'boolean' | 'completion' | 'nested' | 'object' | 'passthrough' | 'version' | 'murmur3' | 'token_count' | 'percolator' | 'integer' | 'long' | 'short' | 'byte' | 'float' | 'half_float' | 'scaled_float' | 'double' | 'integer_range' | 'float_range' | 'long_range' | 'double_range' | 'date_range' | 'ip_range' | 'alias' | 'join' | 'rank_feature' | 'rank_features' | 'flattened' | 'shape' | 'histogram' | 'constant_keyword' | 'aggregate_metric_double' | 'dense_vector' | 'semantic_text' | 'sparse_vector' | 'match_only_text' | 'icu_collation_keyword'
 
 export interface MappingFlattenedProperty extends MappingPropertyBase {
   boost?: double
@@ -5702,6 +5702,13 @@ export interface MappingObjectProperty extends MappingCorePropertyBase {
 
 export type MappingOnScriptError = 'fail' | 'continue'
 
+export interface MappingPassthroughObjectProperty extends MappingCorePropertyBase {
+  type?: 'passthrough'
+  enabled?: boolean
+  priority?: integer
+  time_series_dimension?: boolean
+}
+
 export interface MappingPercolatorProperty extends MappingPropertyBase {
   type: 'percolator'
 }
@@ -5713,7 +5720,7 @@ export interface MappingPointProperty extends MappingDocValuesPropertyBase {
   type: 'point'
 }
 
-export type MappingProperty = MappingBinaryProperty | MappingBooleanProperty | MappingDynamicProperty | MappingJoinProperty | MappingKeywordProperty | MappingMatchOnlyTextProperty | MappingPercolatorProperty | MappingRankFeatureProperty | MappingRankFeaturesProperty | MappingSearchAsYouTypeProperty | MappingTextProperty | MappingVersionProperty | MappingWildcardProperty | MappingDateNanosProperty | MappingDateProperty | MappingAggregateMetricDoubleProperty | MappingDenseVectorProperty | MappingFlattenedProperty | MappingNestedProperty | MappingObjectProperty | MappingSemanticTextProperty | MappingSparseVectorProperty | MappingCompletionProperty | MappingConstantKeywordProperty | MappingFieldAliasProperty | MappingHistogramProperty | MappingIpProperty | MappingMurmur3HashProperty | MappingTokenCountProperty | MappingGeoPointProperty | MappingGeoShapeProperty | MappingPointProperty | MappingShapeProperty | MappingByteNumberProperty | MappingDoubleNumberProperty | MappingFloatNumberProperty | MappingHalfFloatNumberProperty | MappingIntegerNumberProperty | MappingLongNumberProperty | MappingScaledFloatNumberProperty | MappingShortNumberProperty | MappingUnsignedLongNumberProperty | MappingDateRangeProperty | MappingDoubleRangeProperty | MappingFloatRangeProperty | MappingIntegerRangeProperty | MappingIpRangeProperty | MappingLongRangeProperty | MappingIcuCollationProperty
+export type MappingProperty = MappingBinaryProperty | MappingBooleanProperty | MappingDynamicProperty | MappingJoinProperty | MappingKeywordProperty | MappingMatchOnlyTextProperty | MappingPercolatorProperty | MappingRankFeatureProperty | MappingRankFeaturesProperty | MappingSearchAsYouTypeProperty | MappingTextProperty | MappingVersionProperty | MappingWildcardProperty | MappingDateNanosProperty | MappingDateProperty | MappingAggregateMetricDoubleProperty | MappingDenseVectorProperty | MappingFlattenedProperty | MappingNestedProperty | MappingObjectProperty | MappingPassthroughObjectProperty | MappingSemanticTextProperty | MappingSparseVectorProperty | MappingCompletionProperty | MappingConstantKeywordProperty | MappingFieldAliasProperty | MappingHistogramProperty | MappingIpProperty | MappingMurmur3HashProperty | MappingTokenCountProperty | MappingGeoPointProperty | MappingGeoShapeProperty | MappingPointProperty | MappingShapeProperty | MappingByteNumberProperty | MappingDoubleNumberProperty | MappingFloatNumberProperty | MappingHalfFloatNumberProperty | MappingIntegerNumberProperty | MappingLongNumberProperty | MappingScaledFloatNumberProperty | MappingShortNumberProperty | MappingUnsignedLongNumberProperty | MappingDateRangeProperty | MappingDoubleRangeProperty | MappingFloatRangeProperty | MappingIntegerRangeProperty | MappingIpRangeProperty | MappingLongRangeProperty | MappingIcuCollationProperty
 
 export interface MappingPropertyBase {
   meta?: Record<string, string>
@@ -17677,6 +17684,8 @@ export interface SearchApplicationEventDataStream {
   name: IndexName
 }
 
+export type SearchApplicationEventType = 'page_view' | 'search' | 'search_click'
+
 export interface SearchApplicationSearchApplication extends SearchApplicationSearchApplicationParameters {
   name: Name
   updated_at_millis: EpochTime<UnitMillis>
@@ -17727,6 +17736,18 @@ export interface SearchApplicationListResponse {
   results: SearchApplicationSearchApplication[]
 }
 
+export interface SearchApplicationPostBehavioralAnalyticsEventRequest extends RequestBase {
+  collection_name: Name
+  event_type: SearchApplicationEventType
+  debug?: boolean
+  body?: any
+}
+
+export interface SearchApplicationPostBehavioralAnalyticsEventResponse {
+  accepted: boolean
+  event?: any
+}
+
 export interface SearchApplicationPutRequest extends RequestBase {
   name: Name
   create?: boolean
@@ -17746,6 +17767,16 @@ export interface SearchApplicationPutBehavioralAnalyticsRequest extends RequestB
 }
 
 export type SearchApplicationPutBehavioralAnalyticsResponse = SearchApplicationPutBehavioralAnalyticsAnalyticsAcknowledgeResponseBase
+
+export interface SearchApplicationRenderQueryRequest extends RequestBase {
+  name: Name
+  body?: {
+    params?: Record<string, any>
+  }
+}
+
+export interface SearchApplicationRenderQueryResponse {
+}
 
 export interface SearchApplicationSearchRequest extends RequestBase {
   name: Name
@@ -18633,6 +18664,50 @@ export interface SecurityInvalidateTokenResponse {
   error_details?: ErrorCause[]
   invalidated_tokens: long
   previously_invalidated_tokens: long
+}
+
+export interface SecurityOidcAuthenticateRequest extends RequestBase {
+  body?: {
+    nonce: string
+    realm?: string
+    redirect_uri: string
+    state: string
+  }
+}
+
+export interface SecurityOidcAuthenticateResponse {
+  access_token: string
+  expires_in: integer
+  refresh_token: string
+  type: string
+}
+
+export interface SecurityOidcLogoutRequest extends RequestBase {
+  body?: {
+    access_token: string
+    refresh_token?: string
+  }
+}
+
+export interface SecurityOidcLogoutResponse {
+  redirect: string
+}
+
+export interface SecurityOidcPrepareAuthenticationRequest extends RequestBase {
+  body?: {
+    iss?: string
+    login_hint?: string
+    nonce?: string
+    realm?: string
+    state?: string
+  }
+}
+
+export interface SecurityOidcPrepareAuthenticationResponse {
+  nonce: string
+  realm: string
+  redirect: string
+  state: string
 }
 
 export interface SecurityPutPrivilegesActions {
