@@ -33,6 +33,7 @@ import { RequestBase } from '@_types/Base'
  * @rest_spec_name security.delegate_pki
  * @availability stack since=7.4.0 stability=stable
  * @cluster_privileges all
+ * @doc_id security-api-delegate-pki
  * @ext_doc_id pki-realm
  */
 export interface Request extends RequestBase {
