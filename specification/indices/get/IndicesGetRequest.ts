@@ -23,12 +23,13 @@ import { Duration } from '@_types/Time'
 
 /**
  * Get index information.
- * Returns information about one or more indices. For data streams, the API returns information about the
+ * Get information about one or more indices. For data streams, the API returns information about the
  * stream’s backing indices.
  * @rest_spec_name indices.get
  * @availability stack stability=stable
  * @availability serverless stability=stable visibility=public
  * @index_privileges view_index_metadata, manage
+ * @doc_id indices-get-index
  */
 export interface Request extends RequestBase {
   path_parts: {

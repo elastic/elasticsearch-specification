@@ -41,7 +41,8 @@ import {
  * @rest_spec_name indices.stats
  * @availability stack since=1.3.0 stability=stable
  * @availability serverless stability=stable visibility=private
- * @index_privileges manage, monitor
+ * @index_privileges monitor
+ * @doc_id indices-stats
  */
 export interface Request extends RequestBase {
   path_parts: {

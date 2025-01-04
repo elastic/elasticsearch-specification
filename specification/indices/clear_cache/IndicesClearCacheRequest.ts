@@ -24,9 +24,14 @@ import { ExpandWildcards, Fields, Indices } from '@_types/common'
  * Clear the cache.
  * Clear the cache of one or more indices.
  * For data streams, the API clears the caches of the stream's backing indices.
+ *
+ * By default, the clear cache API clears all caches.
+ * To clear only specific caches, use the `fielddata`, `query`, or `request` parameters.
+ * To clear the cache only of specific fields, use the `fields` parameter.
  * @rest_spec_name indices.clear_cache
  * @availability stack stability=stable
  * @availability serverless stability=stable visibility=private
+ * @index_privileges manage
  */
 export interface Request extends RequestBase {
   path_parts: {

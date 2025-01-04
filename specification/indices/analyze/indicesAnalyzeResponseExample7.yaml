@@ -1,0 +1,36 @@
+# summary: ''
+description: A successful response for an analysis with `explain` set to `true`.
+# type: response
+# response_code: 200
+value:
+  detail:
+    custom_analyzer: true
+    charfilters: []
+    tokenizer:
+      name: standard
+      tokens:
+        - token: detailed
+          start_offset: 0
+          end_offset: 8
+          type: <ALPHANUM>
+          position: 0
+        - token: output
+          start_offset: 9
+          end_offset: 15
+          type: <ALPHANUM>
+          position: 1
+    tokenfilters:
+      - name: snowball
+        tokens:
+          - token: detail
+            start_offset: 0
+            end_offset: 8
+            type: <ALPHANUM>
+            position: 0
+            keyword: false
+          - token: output
+            start_offset: 9
+            end_offset: 15
+            type: <ALPHANUM>
+            position: 1
+            keyword: false

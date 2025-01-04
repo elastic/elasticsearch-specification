@@ -29,5 +29,7 @@ import { RequestBase } from '@_types/Base'
  * @rest_spec_name dangling_indices.list_dangling_indices
  * @availability stack since=7.9.0 stability=stable
  * @doc_tag indices
+ * @doc_id dangling-indices-list
+ * @cluster_privileges manage
  */
 export interface Request extends RequestBase {}

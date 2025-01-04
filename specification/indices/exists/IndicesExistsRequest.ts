@@ -22,10 +22,11 @@ import { ExpandWildcards, Indices } from '@_types/common'
 
 /**
  * Check indices.
- * Checks if one or more indices, index aliases, or data streams exist.
+ * Check if one or more indices, index aliases, or data streams exist.
  * @rest_spec_name indices.exists
  * @availability stack stability=stable
  * @availability serverless stability=stable visibility=public
+ * @doc_id indices-exists
  */
 export interface Request extends RequestBase {
   path_parts: {

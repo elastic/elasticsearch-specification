@@ -40,12 +40,14 @@ import { Duration } from '@_types/Time'
 
 /**
  * Update field mappings.
- * Adds new fields to an existing data stream or index.
+ * Add new fields to an existing data stream or index.
  * You can also use this API to change the search settings of existing fields.
  * For data streams, these changes are applied to all backing indices by default.
  * @rest_spec_name indices.put_mapping
  * @availability stack stability=stable
  * @availability serverless stability=stable visibility=public
+ * @doc_id indices-put-mapping
+ * @index_privileges manage
  */
 export interface Request extends RequestBase {
   path_parts: {

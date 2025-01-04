@@ -1,4 +1,4 @@
-summary: Create or update an index template.
+summary: Create an index template
 # method_request: PUT _template/template_1
 # description: ''
 # type: request

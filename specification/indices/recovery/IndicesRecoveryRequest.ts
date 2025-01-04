@@ -25,6 +25,8 @@ import { Indices } from '@_types/common'
  * Get information about ongoing and completed shard recoveries for one or more indices.
  * For data streams, the API returns information for the stream's backing indices.
  *
+ * All recoveries, whether ongoing or complete, are kept in the cluster state and may be reported on at any time.
+ *
  * Shard recovery is the process of initializing a shard copy, such as restoring a primary shard from a snapshot or creating a replica shard from a primary shard.
  * When a shard recovery completes, the recovered shard is available for search and indexing.
  *
@@ -45,6 +47,8 @@ import { Indices } from '@_types/common'
  * @rest_spec_name indices.recovery
  * @availability stack stability=stable
  * @availability serverless stability=stable visibility=private
+ * @index_privileges monitor
+ * @doc_id indices-recovery
  */
 export interface Request extends RequestBase {
   path_parts: {

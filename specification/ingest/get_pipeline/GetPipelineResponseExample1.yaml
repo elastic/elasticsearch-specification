@@ -1,5 +1,5 @@
-summary: A successful response for retrieving information about an ingest pipeline.
-# description: ''
+# summary:
+description: A successful response for retrieving information about an ingest pipeline.
 # type: response
 # response_code: 200
 value:

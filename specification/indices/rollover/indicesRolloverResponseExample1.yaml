@@ -1,10 +1,28 @@
-summary: A successful response for creating a new index for a data stream.
-# description: ''
+# summary:
+description: >
+  An abbreviated response from `GET /_segments`.
 # type: response
-response_code: 200
+# response_code: 200
 value:
-  "{\n  \"acknowledged\": true,\n  \"shards_acknowledged\": true,\n  \"old_index\"\
-  : \".ds-my-data-stream-2099.05.06-000001\",\n  \"new_index\": \".ds-my-data-stream-2099.05.07-000002\"\
-  ,\n  \"rolled_over\": true,\n  \"dry_run\": false,\n  \"lazy\": false,\n  \"conditions\"\
-  : {\n    \"[max_age: 7d]\": false,\n    \"[max_docs: 1000]\": true,\n    \"[max_primary_shard_size:\
-  \ 50gb]\": false,\n    \"[max_primary_shard_docs: 2000]\": false\n  }\n}"
+  _shards: {}
+  indices:
+    test:
+      shards:
+        0:
+          - routing:
+              state: STARTED
+              primary: true
+              node: zDC_RorJQCao9xf9pg3Fvw
+            num_committed_segments: 0
+            num_search_segments: 1
+            segments:
+              _0:
+                generation: 0
+                num_docs: 1
+                deleted_docs: 0
+                size_in_bytes: 3800
+                committed: false
+                search: true
+                version: '7.0.0'
+                compound: true
+                attributes: {}

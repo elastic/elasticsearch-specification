@@ -44,6 +44,7 @@ import { Duration } from '@_types/Time'
  * @rest_spec_name indices.close
  * @availability stack stability=stable
  * @availability serverless stability=stable visibility=private
+ * @index_privileges manage
  */
 export interface Request extends RequestBase {
   path_parts: {

@@ -22,10 +22,11 @@ import { Name } from '@_types/common'
 import { Duration } from '@_types/Time'
 
 /**
- * Deletes a legacy index template.
+ * Delete a legacy index template.
  * @rest_spec_name indices.delete_template
  * @availability stack stability=stable
- * @cluster_privileges manage_index_templates,manage
+ * @cluster_privileges manage_index_templates
+ * @doc_id indices-delete-template-v1
  */
 export interface Request extends RequestBase {
   path_parts: {

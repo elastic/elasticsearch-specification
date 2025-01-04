@@ -29,6 +29,8 @@ import { Duration } from '@_types/Time'
  * @rest_spec_name dangling_indices.import_dangling_index
  * @availability stack since=7.9.0 stability=stable
  * @doc_tag indices
+ * @doc_id dangling-index-import
+ * @cluster_privileges manage
  */
 export interface Request extends RequestBase {
   path_parts: {

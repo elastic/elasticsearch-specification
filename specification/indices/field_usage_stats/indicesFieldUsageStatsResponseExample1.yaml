@@ -1,0 +1,57 @@
+# summary: ''
+description: >
+  An abbreviated response from `GET /my-index-000001/_field_usage_stats`.
+  The `all_fields` object reports the sums of the usage counts for all fields in the index (on the listed shard).
+# type: response
+# response_code: 200
+value:
+  _shards:
+    total: 1
+    successful: 1
+    failed: 0
+  my-index-000001:
+    shards:
+      - tracking_id: MpOl0QlTQ4SYYhEe6KgJoQ
+        tracking_started_at_millis: 1625558985010
+        routing:
+          state: STARTED
+          primary: true
+          node: gA6KeeVzQkGURFCUyV-e8Q
+          relocating_node: null
+        stats:
+          all_fields:
+            any: '6'
+            inverted_index:
+              terms: 1
+              postings: 1
+              proximity: 1
+              positions: 0
+              term_frequencies: 1
+              offsets: 0
+              payloads: 0
+            stored_fields: 2
+            doc_values: 1
+            points: 0
+            norms: 1
+            term_vectors: 0
+            knn_vectors: 0
+          fields:
+            _id:
+              any: 1
+              inverted_index:
+                terms: 1
+                postings: 1
+                proximity: 1
+                positions: 0
+                term_frequencies: 1
+                offsets: 0
+                payloads: 0
+              stored_fields: 1
+              doc_values: 0
+              points: 0
+              norms: 0
+              term_vectors: 0
+              knn_vectors: 0
+            _source: {}
+            context: {}
+            message.keyword: {}
