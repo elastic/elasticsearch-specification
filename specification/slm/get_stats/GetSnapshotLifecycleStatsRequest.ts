@@ -26,6 +26,6 @@ import { RequestBase } from '@_types/Base'
  * @availability stack since=7.5.0 stability=stable
  * @availability serverless stability=stable visibility=private
  * @cluster_privileges manage_slm
- * @doc_id apis
+ * @doc_id slm-api-get-stats
  */
 export interface Request extends RequestBase {}

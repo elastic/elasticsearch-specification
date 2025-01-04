@@ -27,7 +27,7 @@ import { SynonymRule } from '../_types/SynonymRule'
  * @rest_spec_name synonyms.put_synonym
  * @availability stack since=8.10.0 stability=stable
  * @availability serverless stability=stable visibility=public
- * @doc_id apis
+ * @doc_id put-synonyms-set
  */
 export interface Request extends RequestBase {
   path_parts: {

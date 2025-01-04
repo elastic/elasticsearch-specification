@@ -134,6 +134,8 @@ delete-async-sql-search-api,https://www.elastic.co/guide/en/elasticsearch/refere
 delete-enrich-policy-api,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/delete-enrich-policy-api.html
 delete-license,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/delete-license.html
 delete-pipeline-api,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/delete-pipeline-api.html
+delete-synonym-rule,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/delete-synonym-rule.html
+delete-synonyms-set,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/delete-synonyms-set.html
 delete-trained-models-aliases,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/delete-trained-models-aliases.html
 delete-trained-models,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/delete-trained-models.html
 delete-transform,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/delete-transform.html
@@ -200,6 +202,8 @@ get-license,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/get
 get-ml-info,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/get-ml-info.html
 get-pipeline-api,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/get-pipeline-api.html
 get-repositories-metering-api,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/get-repositories-metering-api.html
+get-synonym-rule,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/get-synonym-rule.html
+get-synonyms-set,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/get-synonyms-set.html
 get-trained-models-stats,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/get-trained-models-stats.html
 get-trained-models,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/get-trained-models.html
 get-transform-stats,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/get-transform-stats.html
@@ -279,6 +283,7 @@ kv-processor,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/kv
 knn-inner-hits,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/knn-search.html#nested-knn-search-inner-hits
 license-management,https://www.elastic.co/guide/en/kibana/{branch}/managing-licenses.html
 list-analytics-collection,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/list-analytics-collection.html
+list-synonyms-sets,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/list-synonyms-sets.html
 logstash-api-delete-pipeline,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/logstash-api-delete-pipeline.html
 logstash-api-get-pipeline,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/logstash-api-get-pipeline.html
 logstash-api-put-pipeline,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/logstash-api-put-pipeline.html
@@ -378,6 +383,8 @@ put-analytics-collection,https://www.elastic.co/guide/en/elasticsearch/reference
 put-dfanalytics,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/put-dfanalytics.html
 put-enrich-policy-api,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/put-enrich-policy-api.html
 put-pipeline-api,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/put-pipeline-api.html
+put-synonym-rule,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/put-synonym-rule.html
+put-synonyms-set,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/put-synonyms-set.html
 put-trained-model-definition-part,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/put-trained-model-definition-part.html
 put-trained-model-vocabulary,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/put-trained-model-vocabulary.html
 put-trained-models-aliases,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/put-trained-models-aliases.html
@@ -468,6 +475,7 @@ rollup-stop-job,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}
 routing,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/docs-get.html#get-routing
 run-as-privilege,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/run-as-privilege.html
 runtime-search-request,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/runtime-search-request.html
+schedule-now-transform,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/schedule-now-transform.html
 script-processor,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/script-processor.html
 scroll-search-results,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/paginate-search-results.html#scroll-search-results
 search-aggregations,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/search-aggregations.html
@@ -654,6 +662,7 @@ supported-flags,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}
 tasks,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/tasks.html
 templating-role-query,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/field-and-document-access-control.html#templating-role-query
 terminate-processor,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/terminate-processor.html
+test-grok-pattern,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/test-grok-pattern.html
 time-value,https://github.com/elastic/elasticsearch/blob/{branch}/libs/core/src/main/java/org/elasticsearch/core/TimeValue.java
 trim-processor,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/trim-processor.html
 unfreeze-index-api,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/unfreeze-index-api.html

@@ -27,6 +27,7 @@ import { GrokPattern } from '@_types/common'
  * @rest_spec_name text_structure.test_grok_pattern
  * @availability stack since=8.13.0 stability=stable
  * @availability serverless stability=stable visibility=private
+ * @doc_id test-grok-pattern
  * @ext_doc_id grok
  */
 export interface Request extends RequestBase {

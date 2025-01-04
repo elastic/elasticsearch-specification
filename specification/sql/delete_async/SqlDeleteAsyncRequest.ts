@@ -27,7 +27,7 @@ import { Id } from '@_types/common'
  * @rest_spec_name sql.delete_async
  * @availability stack since=7.15.0 stability=stable
  * @availability serverless stability=stable visibility=public
- * @doc_id apis
+ * @doc_id delete-async-sql-search-api
  */
 export interface Request extends RequestBase {
   path_parts: {

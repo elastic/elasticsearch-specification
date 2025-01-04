@@ -27,7 +27,7 @@ import { Names } from '@_types/common'
  * @availability stack since=7.4.0 stability=stable
  * @availability serverless stability=stable visibility=private
  * @cluster_privileges manage_slm
- * @doc_id apis
+ * @doc_id slm-api-get-policy
  */
 export interface Request extends RequestBase {
   path_parts: {

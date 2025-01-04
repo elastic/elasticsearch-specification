@@ -24,7 +24,7 @@ import { RequestBase } from '@_types/Base'
  * @rest_spec_name sql.clear_cursor
  * @availability stack since=6.3.0 stability=stable
  * @availability serverless stability=stable visibility=public
- * @doc_id apis
+ * @doc_id clear-sql-cursor-api
  */
 export interface Request extends RequestBase {
   body: {
