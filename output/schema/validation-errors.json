@@ -43,6 +43,12 @@
       ],
       "response": []
     },
+    "bulk": {
+      "request": [
+        "Request: missing json spec query parameter 'type'"
+      ],
+      "response": []
+    },
     "capabilities": {
       "request": [
         "Missing request & response"
@@ -394,14 +400,18 @@
     "eql.search": {
       "request": [
         "Request: query parameter 'allow_no_indices' does not exist in the json spec",
-        "Request: query parameter 'allow_partial_search_results' does not exist in the json spec",
-        "Request: query parameter 'allow_partial_sequence_results' does not exist in the json spec",
         "Request: query parameter 'expand_wildcards' does not exist in the json spec",
         "Request: query parameter 'ignore_unavailable' does not exist in the json spec"
       ],
       "response": []
     },
     "esql.async_query": {
+      "request": [
+        "Missing request & response"
+      ],
+      "response": []
+    },
+    "esql.async_query_delete": {
       "request": [
         "Missing request & response"
       ],
@@ -524,6 +534,12 @@
       ],
       "response": []
     },
+    "indices.get_data_lifecycle_stats": {
+      "request": [
+        "Missing request & response"
+      ],
+      "response": []
+    },
     "indices.put_settings": {
       "request": [
         "Request: missing json spec query parameter 'reopen'"
@@ -563,6 +579,12 @@
       "response": []
     },
     "inference.stream_inference": {
+      "request": [
+        "Missing request & response"
+      ],
+      "response": []
+    },
+    "inference.update": {
       "request": [
         "Missing request & response"
       ],
@@ -635,6 +657,24 @@
         "Request: missing json spec query parameter 'type'",
         "Request: missing json spec query parameter 'master_timeout'",
         "Request: missing json spec query parameter 'timeout'"
+      ],
+      "response": []
+    },
+    "migrate.cancel_reindex": {
+      "request": [
+        "Missing request & response"
+      ],
+      "response": []
+    },
+    "migrate.get_reindex_status": {
+      "request": [
+        "Missing request & response"
+      ],
+      "response": []
+    },
+    "migrate.reindex": {
+      "request": [
+        "Missing request & response"
       ],
       "response": []
     },
@@ -764,6 +804,12 @@
       ],
       "response": []
     },
+    "security.delegate_pki": {
+      "request": [
+        "Missing request & response"
+      ],
+      "response": []
+    },
     "security.get_settings": {
       "request": [
         "Missing request & response"
@@ -816,10 +862,45 @@
       ],
       "response": []
     },
-    "slm.put_lifecycle": {
+    "slm.delete_lifecycle": {
       "request": [
-        "Request: query parameter 'master_timeout' does not exist in the json spec",
-        "Request: query parameter 'timeout' does not exist in the json spec"
+        "Request: missing json spec query parameter 'master_timeout'",
+        "Request: missing json spec query parameter 'timeout'"
+      ],
+      "response": []
+    },
+    "slm.execute_lifecycle": {
+      "request": [
+        "Request: missing json spec query parameter 'master_timeout'",
+        "Request: missing json spec query parameter 'timeout'"
+      ],
+      "response": []
+    },
+    "slm.execute_retention": {
+      "request": [
+        "Request: missing json spec query parameter 'master_timeout'",
+        "Request: missing json spec query parameter 'timeout'"
+      ],
+      "response": []
+    },
+    "slm.get_lifecycle": {
+      "request": [
+        "Request: missing json spec query parameter 'master_timeout'",
+        "Request: missing json spec query parameter 'timeout'"
+      ],
+      "response": []
+    },
+    "slm.get_stats": {
+      "request": [
+        "Request: missing json spec query parameter 'master_timeout'",
+        "Request: missing json spec query parameter 'timeout'"
+      ],
+      "response": []
+    },
+    "slm.get_status": {
+      "request": [
+        "Request: missing json spec query parameter 'master_timeout'",
+        "Request: missing json spec query parameter 'timeout'"
       ],
       "response": []
     },
