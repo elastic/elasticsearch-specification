@@ -28,6 +28,7 @@ import { Duration } from '@_types/Time'
  * @availability stack stability=stable
  * @availability serverless stability=stable visibility=public
  * @doc_tag script
+ * @doc_id apis
  */
 export interface Request extends RequestBase {
   path_parts: {

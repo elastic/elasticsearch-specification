@@ -51,6 +51,7 @@ import { Duration } from '@_types/Time'
  * @index_privileges read
  * @cluster_privileges manage_ml
  * @doc_tag ml anomaly
+ * @doc_id apis
  */
 export interface Request extends RequestBase {
   path_parts: {

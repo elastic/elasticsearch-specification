@@ -39,6 +39,7 @@ import { Operation } from './types'
  * @availability stack stability=stable
  * @availability serverless stability=stable visibility=public
  * @doc_tag document
+ * @doc_id apis
  */
 export interface Request extends RequestBase {
   path_parts: {

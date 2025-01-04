@@ -24,5 +24,6 @@ import { RequestBase } from '@_types/Base'
  * @rest_spec_name license.get_basic_status
  * @availability stack since=6.3.0 stability=stable
  * @cluster_privileges monitor
+ * @doc_id apis
  */
 export interface Request extends RequestBase {}

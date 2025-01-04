@@ -27,6 +27,7 @@ import { Names, Namespace, Service } from '@_types/common'
  * @rest_spec_name security.clear_cached_service_tokens
  * @availability stack stability=stable
  * @availability serverless stability=stable visibility=private
+ * @doc_id apis
  * @ext_doc_id service-accounts
  */
 export interface Request extends RequestBase {

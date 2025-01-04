@@ -30,6 +30,7 @@ import { Duration } from '@_types/Time'
  * @availability stack since=7.8.0 stability=stable
  * @availability serverless stability=stable visibility=public
  * @cluster_privileges manage_index_templates,manage
+ * @doc_id apis
  */
 export interface Request extends RequestBase {
   path_parts: {

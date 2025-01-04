@@ -28,6 +28,7 @@ import { integer, long } from '@_types/Numeric'
  * @availability serverless stability=stable visibility=public
  * @cluster_privileges manage_ml
  * @doc_tag ml trained model
+ * @doc_id apis
  */
 export interface Request extends RequestBase {
   path_parts: {

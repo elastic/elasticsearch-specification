@@ -25,5 +25,6 @@ import { RequestBase } from '@_types/Base'
  * @availability stack since=7.6.0 stability=stable
  * @availability serverless stability=stable visibility=private
  * @cluster_privileges read_slm
+ * @doc_id apis
  */
 export interface Request extends RequestBase {}

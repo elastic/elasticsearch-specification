@@ -38,6 +38,7 @@ import { Id } from '@_types/common'
  * @rest_spec_name watcher.execute_watch
  * @availability stack stability=stable
  * @cluster_privileges manage_watcher
+ * @doc_id apis
  */
 export interface Request extends RequestBase {
   path_parts: {

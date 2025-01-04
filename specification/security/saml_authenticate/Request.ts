@@ -27,6 +27,7 @@ import { Ids } from '@_types/common'
  * @rest_spec_name security.saml_authenticate
  * @availability stack since=7.5.0 stability=stable
  * @availability serverless stability=stable visibility=private
+ * @doc_id apis
  */
 export interface Request extends RequestBase {
   body: {

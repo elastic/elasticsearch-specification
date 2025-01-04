@@ -25,6 +25,7 @@ import { integer } from '@_types/Numeric'
  * @rest_spec_name query_rules.list_rulesets
  * @availability stack since=8.10.0 stability=stable
  * @availability serverless stability=stable visibility=public
+ * @doc_id apis
  */
 export interface Request extends RequestBase {
   query_parameters: {

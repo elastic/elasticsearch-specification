@@ -27,6 +27,7 @@ import { Duration } from '@_types/Time'
  * @rest_spec_name sql.get_async
  * @availability stack since=7.15.0 stability=stable
  * @availability serverless stability=stable visibility=public
+ * @doc_id apis
  */
 export interface Request extends RequestBase {
   path_parts: {

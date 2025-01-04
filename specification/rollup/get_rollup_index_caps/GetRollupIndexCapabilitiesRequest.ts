@@ -30,6 +30,7 @@ import { Ids } from '@_types/common'
  * @rest_spec_name rollup.get_rollup_index_caps
  * @availability stack since=6.4.0 stability=experimental
  * @index_privileges read
+ * @doc_id apis
  */
 export interface Request extends RequestBase {
   path_parts: {

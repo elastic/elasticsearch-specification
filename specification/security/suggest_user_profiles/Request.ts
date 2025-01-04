@@ -28,6 +28,7 @@ import { Hint } from './types'
  * @rest_spec_name security.suggest_user_profiles
  * @availability stack since=8.2.0 stability=stable
  * @availability serverless stability=stable visibility=private
+ * @doc_id apis
  */
 export interface Request extends RequestBase {
   query_parameters: {

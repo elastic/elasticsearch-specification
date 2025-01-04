@@ -41,6 +41,7 @@ import { Duration } from '@_types/Time'
  * @availability serverless stability=stable visibility=public
  * @doc_tag search
  * @ext_doc_id scroll-search-results
+ * @doc_id apis
  */
 export interface Request extends RequestBase {
   path_parts: {

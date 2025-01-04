@@ -25,6 +25,7 @@ import { Id } from '@_types/common'
  * @rest_spec_name query_rules.delete_rule
  * @availability stack since=8.15.0 stability=stable
  * @availability serverless stability=stable visibility=public
+ * @doc_id apis
  */
 export interface Request extends RequestBase {
   path_parts: {

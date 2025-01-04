@@ -27,6 +27,7 @@ import { ExpandWildcards, Fields, Indices } from '@_types/common'
  * @rest_spec_name indices.clear_cache
  * @availability stack stability=stable
  * @availability serverless stability=stable visibility=private
+ * @doc_id apis
  */
 export interface Request extends RequestBase {
   path_parts: {

@@ -28,6 +28,7 @@ import { integer } from '@_types/Numeric'
  * @availability stack since=7.5.0 stability=stable
  * @availability serverless stability=stable visibility=public
  * @cluster_privileges monitor_transform
+ * @doc_id apis
  */
 export interface Request extends RequestBase {
   path_parts: {

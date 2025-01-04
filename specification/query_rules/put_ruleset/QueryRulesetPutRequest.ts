@@ -25,6 +25,7 @@ import { QueryRule } from '../_types/QueryRuleset'
  * @rest_spec_name query_rules.put_ruleset
  * @availability stack since=8.10.0 stability=stable
  * @availability serverless stability=stable visibility=public
+ * @doc_id apis
  * @ext_doc_id query-rule
  */
 export interface Request extends RequestBase {

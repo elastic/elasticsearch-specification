@@ -25,6 +25,7 @@ import { Name } from '@_types/common'
  * @rest_spec_name watcher.get_watch
  * @availability stack since=5.6.0 stability=stable
  * @cluster_privileges monitor_watcher
+ * @doc_id apis
  */
 export interface Request extends RequestBase {
   path_parts: {

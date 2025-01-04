@@ -30,6 +30,7 @@ import { QueryContainer } from '@_types/query_dsl/abstractions'
  * It rewrites standard Query DSL into a format that matches the rollup documents then takes the response and rewrites it back to what a client would expect given the original query.
  * @rest_spec_name rollup.rollup_search
  * @availability stack since=6.3.0 stability=experimental
+ * @doc_id apis
  */
 export interface Request extends RequestBase {
   path_parts: {

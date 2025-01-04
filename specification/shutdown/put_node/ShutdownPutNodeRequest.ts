@@ -40,6 +40,7 @@ import { Type } from '../_types/types'
  * @rest_spec_name shutdown.put_node
  * @availability stack since=7.13.0 stability=stable
  * @cluster_privileges manage
+ * @doc_id apis
  */
 export interface Request extends RequestBase {
   path_parts: {

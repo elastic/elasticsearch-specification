@@ -51,6 +51,7 @@ import { Duration } from '@_types/Time'
  *
  * @rest_spec_name indices.clone
  * @availability stack since=7.4.0 stability=stable
+ * @doc_id apis
  */
 export interface Request extends RequestBase {
   path_parts: {

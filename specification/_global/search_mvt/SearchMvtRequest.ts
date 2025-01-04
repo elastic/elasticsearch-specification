@@ -38,6 +38,7 @@ import { ZoomLevel } from './_types/ZoomLevel'
  * @availability stack since=7.15.0 stability=stable
  * @availability serverless stability=stable visibility=public
  * @doc_tag search
+ * @doc_id apis
  *
  */
 export interface Request extends RequestBase {

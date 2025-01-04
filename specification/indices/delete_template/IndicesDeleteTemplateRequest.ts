@@ -26,6 +26,7 @@ import { Duration } from '@_types/Time'
  * @rest_spec_name indices.delete_template
  * @availability stack stability=stable
  * @cluster_privileges manage_index_templates,manage
+ * @doc_id apis
  */
 export interface Request extends RequestBase {
   path_parts: {

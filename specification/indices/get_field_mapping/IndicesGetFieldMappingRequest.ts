@@ -26,6 +26,7 @@ import { ExpandWildcards, Fields, Indices } from '@_types/common'
  * For data streams, the API retrieves field mappings for the stream’s backing indices.
  * @rest_spec_name indices.get_field_mapping
  * @availability stack stability=stable
+ * @doc_id apis
  */
 export interface Request extends RequestBase {
   path_parts: {

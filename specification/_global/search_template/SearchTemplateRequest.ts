@@ -35,6 +35,7 @@ import { Duration } from '@_types/Time'
  * @availability stack since=2.0.0 stability=stable
  * @availability serverless stability=stable visibility=public
  * @doc_tag search
+ * @doc_id apis
  * @ext_doc_id search-template
  */
 export interface Request extends RequestBase {

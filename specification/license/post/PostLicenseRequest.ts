@@ -32,6 +32,7 @@ import { RequestBase } from '@_types/Base'
  * @rest_spec_name license.post
  * @availability stack stability=stable
  * @cluster_privileges manage
+ * @doc_id apis
  */
 export interface Request extends RequestBase {
   query_parameters: {

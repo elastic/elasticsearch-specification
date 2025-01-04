@@ -27,6 +27,7 @@ import { StatsLevel } from '../_types/stats'
  * @availability stack since=7.10.0 stability=stable
  * @cluster_privileges manage
  * @index_privileges manage
+ * @doc_id apis
  */
 export interface Request extends RequestBase {
   path_parts: {

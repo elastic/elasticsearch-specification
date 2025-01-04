@@ -28,6 +28,7 @@ import { Names } from '@_types/common'
  * @availability stack stability=stable
  * @availability serverless stability=stable visibility=public
  * @cluster_privileges manage_security
+ * @doc_id apis
  */
 export interface Request extends RequestBase {
   path_parts: {

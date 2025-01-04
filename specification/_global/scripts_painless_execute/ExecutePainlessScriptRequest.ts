@@ -28,6 +28,7 @@ import { PainlessContextSetup } from './types'
  * @availability stack since=6.3.0 stability=experimental
  * @availability serverless stability=experimental visibility=public
  * @doc_tag script
+ * @doc_id apis
  */
 export interface Request extends RequestBase {
   body: {

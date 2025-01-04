@@ -27,6 +27,7 @@ import { Names } from '@_types/common'
  * @rest_spec_name security.clear_cached_roles
  * @availability stack stability=stable
  * @availability serverless stability=stable visibility=private
+ * @doc_id apis
  */
 export interface Request extends RequestBase {
   path_parts: {

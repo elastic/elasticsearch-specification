@@ -26,5 +26,6 @@ import { RequestBase } from '@_types/Base'
  * @rest_spec_name get_script_context
  * @availability stack stability=stable
  * @doc_tag script
+ * @doc_id apis
  */
 export interface Request extends RequestBase {}

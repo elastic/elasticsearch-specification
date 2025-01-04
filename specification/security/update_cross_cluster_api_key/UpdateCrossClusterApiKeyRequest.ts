@@ -29,6 +29,7 @@ import { Duration } from '@_types/Time'
  * @rest_spec_name security.update_cross_cluster_api_key
  * @availability stack stability=stable
  * @ext_doc_id remote-clusters-api-key
+ * @doc_id apis
  */
 export interface Request extends RequestBase {
   path_parts: {

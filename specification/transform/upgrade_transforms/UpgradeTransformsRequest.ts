@@ -39,6 +39,7 @@ import { Duration } from '@_types/Time'
  * @availability stack since=7.16.0 stability=stable
  * @availability serverless stability=stable visibility=private
  * @cluster_privileges manage_transform
+ * @doc_id apis
  */
 export interface Request extends RequestBase {
   query_parameters: {

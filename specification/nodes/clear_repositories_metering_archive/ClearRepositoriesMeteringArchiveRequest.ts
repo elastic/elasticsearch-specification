@@ -29,6 +29,7 @@ import { long } from '@_types/Numeric'
  * @availability serverless stability=experimental visibility=private
  * @cluster_privileges monitor, manage
  * @doc_tag cluster
+ * @doc_id apis
  */
 export interface Request extends RequestBase {
   path_parts: {

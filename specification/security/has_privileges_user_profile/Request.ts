@@ -29,6 +29,7 @@ import { PrivilegesCheck } from './types'
  * @availability stack since=8.3.0 stability=stable
  * @availability serverless stability=stable visibility=private
  * @cluster_privileges manage_user_profile
+ * @doc_id apis
  * @ext_doc_id user-profile
  */
 export interface Request extends RequestBase {

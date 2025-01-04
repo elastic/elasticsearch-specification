@@ -28,6 +28,7 @@ import { Sort, SortResults } from '@_types/sort'
  * @rest_spec_name watcher.query_watches
  * @availability stack since=7.11.0 stability=stable
  * @cluster_privileges monitor_watcher
+ * @doc_id apis
  */
 export interface Request extends RequestBase {
   body: {

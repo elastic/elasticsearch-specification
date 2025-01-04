@@ -60,6 +60,7 @@ import { Suggester } from './_types/suggester'
  * @availability stack stability=stable
  * @availability serverless stability=stable visibility=public
  * @index_privileges read
+ * @doc_id apis
  */
 export interface Request extends RequestBase {
   path_parts: {

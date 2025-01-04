@@ -26,6 +26,7 @@ import { Username } from '@_types/common'
  * Get information about users in the native realm and built-in users.
  * @rest_spec_name security.get_user
  * @availability stack stability=stable
+ * @doc_id apis
  */
 export interface Request extends RequestBase {
   path_parts: {

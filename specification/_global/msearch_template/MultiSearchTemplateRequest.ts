@@ -29,6 +29,7 @@ import { RequestItem } from './types'
  * @availability serverless stability=stable visibility=public
  * @index_privileges read
  * @doc_tag search
+ * @doc_id apis
  * @ext_doc_id search-templates
  */
 export interface Request extends RequestBase {

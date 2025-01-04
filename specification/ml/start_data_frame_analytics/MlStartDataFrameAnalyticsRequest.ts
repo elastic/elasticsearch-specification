@@ -40,6 +40,7 @@ import { Duration } from '@_types/Time'
  * @cluster_privileges manage_ml
  * @index_privileges create_index, index, manage, read, view_index_metadata
  * @doc_tag ml data frame
+ * @doc_id apis
  */
 export interface Request extends RequestBase {
   path_parts: {

@@ -27,6 +27,7 @@ import { Duration } from '@_types/Time'
  * @rest_spec_name searchable_snapshots.cache_stats
  * @availability stack since=7.13.0 stability=experimental
  * @cluster_privileges manage
+ * @doc_id apis
  */
 export interface Request extends RequestBase {
   path_parts: {

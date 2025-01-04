@@ -31,6 +31,7 @@ import { UserQueryContainer } from './types'
  * @availability stack since=8.14.0 stability=stable
  * @availability serverless stability=stable visibility=private
  * @cluster_privileges read_security
+ * @doc_id apis
  */
 export interface Request extends RequestBase {
   body: {

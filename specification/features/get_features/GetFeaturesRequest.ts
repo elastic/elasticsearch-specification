@@ -32,6 +32,7 @@ import { RequestBase } from '@_types/Base'
  * In order for a feature state to be listed in this API and recognized as a valid feature state by the create snapshot API, the plugin that defines that feature must be installed on the master node.
  * @rest_spec_name features.get_features
  * @availability stack since=7.12.0 stability=stable
+ * @doc_id apis
  * @ext_doc_id snapshot-create
  */
 export interface Request extends RequestBase {}

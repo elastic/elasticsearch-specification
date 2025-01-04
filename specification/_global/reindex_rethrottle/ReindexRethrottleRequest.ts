@@ -29,6 +29,7 @@ import { float } from '@_types/Numeric'
  * @availability stack since=2.4.0 stability=stable
  * @availability serverless stability=stable visibility=private
  * @doc_tag document
+ * @doc_id apis
  */
 export interface Request extends RequestBase {
   path_parts: {

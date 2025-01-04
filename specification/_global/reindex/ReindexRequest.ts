@@ -31,6 +31,7 @@ import { Destination, Source } from './types'
  * @availability stack since=2.3.0 stability=stable
  * @availability serverless stability=stable visibility=public
  * @doc_tag document
+ * @doc_id apis
  */
 export interface Request extends RequestBase {
   query_parameters: {

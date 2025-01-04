@@ -36,6 +36,7 @@ import { DateTime } from '@_types/Time'
  * @availability serverless stability=stable visibility=public
  * @cluster_privileges manage_ml
  * @doc_tag ml anomaly
+ * @doc_id apis
  */
 export interface Request extends RequestBase {
   path_parts: {

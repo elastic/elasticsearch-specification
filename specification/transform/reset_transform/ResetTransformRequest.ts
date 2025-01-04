@@ -29,6 +29,7 @@ import { Id } from '@_types/common'
  * @availability stack since=8.1.0 stability=stable
  * @availability serverless stability=stable visibility=public
  * @cluster_privileges manage_transform
+ * @doc_id apis
  */
 export interface Request extends RequestBase {
   path_parts: {

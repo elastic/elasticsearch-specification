@@ -31,6 +31,7 @@ import { Duration } from '@_types/Time'
  * @availability stack since=5.1.0 stability=stable
  * @availability serverless stability=stable visibility=public
  * @cluster_privileges monitor
+ * @doc_id apis
  */
 export interface Request extends CatRequestBase {
   path_parts: {

@@ -43,6 +43,7 @@ import { Duration } from '@_types/Time'
  * @availability stack since=7.13.0 stability=stable
  * @availability serverless stability=stable visibility=private
  * @cluster_privileges monitor_text_structure
+ * @doc_id apis
  */
 export interface Request<TJsonDocument> {
   query_parameters: {

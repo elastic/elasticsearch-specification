@@ -35,6 +35,7 @@ import { QueryContainer } from '@_types/query_dsl/abstractions'
  * @availability serverless stability=stable visibility=public
  * @index_privileges view_index_metadata,read,manage
  * @doc_tag search
+ * @doc_id apis
  */
 export interface Request extends RequestBase {
   path_parts: {

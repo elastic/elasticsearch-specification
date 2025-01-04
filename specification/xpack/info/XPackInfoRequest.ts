@@ -30,6 +30,7 @@ import { RequestBase } from '@_types/Base'
  * @availability stack stability=stable
  * @availability serverless stability=stable visibility=private
  * @cluster_privileges monitor
+ * @doc_id apis
  */
 export interface Request extends RequestBase {
   query_parameters: {

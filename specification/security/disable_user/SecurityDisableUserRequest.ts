@@ -26,6 +26,7 @@ import { Refresh, Username } from '@_types/common'
  * Disable users in the native realm.
  * @rest_spec_name security.disable_user
  * @availability stack stability=stable
+ * @doc_id apis
  */
 export interface Request extends RequestBase {
   path_parts: {
