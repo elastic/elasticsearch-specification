@@ -103351,6 +103351,28 @@
       "kind": "enum",
       "members": [
         {
+          "codegenName": "PageView",
+          "name": "page_view"
+        },
+        {
+          "codegenName": "Search",
+          "name": "search"
+        },
+        {
+          "codegenName": "SearchClick",
+          "name": "search_click"
+        }
+      ],
+      "name": {
+        "name": "EventType",
+        "namespace": "search_application._types"
+      },
+      "specLocation": "search_application/_types/AnalyticsEvent.ts#L22-L26"
+    },
+    {
+      "kind": "enum",
+      "members": [
+        {
           "name": "cluster"
         },
         {

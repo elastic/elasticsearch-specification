@@ -27191,6 +27191,86 @@
         "x-beta": true
       }
     },
+    "/_application/analytics/{collection_name}/event/{event_type}": {
+      "post": {
+        "tags": [
+          "analytics"
+        ],
+        "summary": "Create a behavioral analytics collection event",
+        "externalDocs": {
+          "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/behavioral-analytics-event-reference.html"
+        },
+        "operationId": "search-application-post-behavioral-analytics-event",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "collection_name",
+            "description": "The name of the behavioral analytics collection.",
+            "required": true,
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/_types:Name"
+            },
+            "style": "simple"
+          },
+          {
+            "in": "path",
+            "name": "event_type",
+            "description": "The analytics event type.",
+            "required": true,
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/search_application._types:EventType"
+            },
+            "style": "simple"
+          },
+          {
+            "in": "query",
+            "name": "debug",
+            "description": "Whether the response type has to include more details",
+            "deprecated": false,
+            "schema": {
+              "type": "boolean"
+            },
+            "style": "form"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "accepted": {
+                      "type": "boolean"
+                    },
+                    "event": {
+                      "type": "object"
+                    }
+                  },
+                  "required": [
+                    "accepted"
+                  ]
+                }
+              }
+            }
+          }
+        },
+        "x-state": "Technical preview"
+      }
+    },
     "/_application/search_application/{name}/_render_query": {
       "post": {
         "tags": [
@@ -83226,6 +83306,14 @@
           "name",
           "indices",
           "updated_at_millis"
+        ]
+      },
+      "search_application._types:EventType": {
+        "type": "string",
+        "enum": [
+          "page_view",
+          "search",
+          "search_click"
         ]
       },
       "search_application.put_behavioral_analytics:AnalyticsAcknowledgeResponseBase": {
