@@ -1,0 +1,14 @@
+summary: Multiple field mappings
+# indices/get-field-mapping.asciidoc:137
+description: >
+  A successful response from `GET publications/_mapping/field/author.id,abstract,name`.
+  The get field mapping API also supports wildcard notation.
+# type: response
+# response_code: ''
+value:
+  "{\n   \"publications\": {\n      \"mappings\": {\n        \"author.id\": {\n\
+  \           \"full_name\": \"author.id\",\n           \"mapping\": {\n         \
+  \     \"id\": {\n                 \"type\": \"text\"\n              }\n        \
+  \   }\n        },\n        \"abstract\": {\n           \"full_name\": \"abstract\"\
+  ,\n           \"mapping\": {\n              \"abstract\": {\n                 \"\
+  type\": \"text\"\n              }\n           }\n        }\n     }\n   }\n}"
