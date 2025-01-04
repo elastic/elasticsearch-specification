@@ -45,7 +45,7 @@ import { Duration } from '@_types/Time'
  * @availability stack since=0.0.0 stability=stable
  * @availability serverless stability=stable visibility=private
  * @cluster_privileges manage
- * @doc_id apis
+ * @doc_id snapshot-api-restore
  * @ext_doc_id restore-snapshot
  */
 export interface Request extends RequestBase {

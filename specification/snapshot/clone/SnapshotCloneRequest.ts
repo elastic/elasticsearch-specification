@@ -28,7 +28,7 @@ import { Duration } from '@_types/Time'
  * @availability stack since=7.10.0 stability=stable
  * @availability serverless stability=stable visibility=private
  * @cluster_privileges manage
- * @doc_id apis
+ * @doc_id snapshot-api-clone
  */
 export interface Request extends RequestBase {
   path_parts: {

@@ -8843,9 +8843,6 @@
         ],
         "summary": "Get the features",
         "description": "Get a list of features that can be included in snapshots using the `feature_states` field when creating a snapshot.\nYou can use this API to determine which feature states to include when taking a snapshot.\nBy default, all feature states are included in a snapshot if that snapshot includes the global state, or none if it does not.\n\nA feature state includes one or more system indices necessary for a given feature to function.\nIn order to ensure data integrity, all system indices that comprise a feature state are snapshotted and restored together.\n\nThe features listed by this API are a combination of built-in features and features defined by plugins.\nIn order for a feature state to be listed in this API and recognized as a valid feature state by the create snapshot API, the plugin that defines that feature must be installed on the master node.",
-        "externalDocs": {
-          "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/snapshots-take-snapshot.html"
-        },
         "operationId": "features-get-features",
         "responses": {
           "200": {
@@ -32818,9 +32815,6 @@
         ],
         "summary": "Create a snapshot",
         "description": "Take a snapshot of a cluster or of data streams and indices.",
-        "externalDocs": {
-          "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/snapshots-take-snapshot.html"
-        },
         "operationId": "snapshot-create",
         "parameters": [
           {
@@ -32852,9 +32846,6 @@
         ],
         "summary": "Create a snapshot",
         "description": "Take a snapshot of a cluster or of data streams and indices.",
-        "externalDocs": {
-          "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/snapshots-take-snapshot.html"
-        },
         "operationId": "snapshot-create-1",
         "parameters": [
           {
