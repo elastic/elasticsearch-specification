@@ -27,6 +27,7 @@ calendar-and-fixed-intervals,https://www.elastic.co/guide/en/elasticsearch/refer
 cat-alias,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/cat-alias.html
 cat-allocation,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/cat-allocation.html
 cat-anomaly-detectors,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/cat-anomaly-detectors.html
+cat-component-templates,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/cat-component-templates.html
 cat-count,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/cat-count.html
 cat-datafeeds,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/cat-datafeeds.html
 cat-dfanalytics,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/cat-dfanalytics.html
@@ -43,6 +44,7 @@ cat-repositories,https://www.elastic.co/guide/en/elasticsearch/reference/{branch
 cat-segments,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/cat-segments.html
 cat-shards,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/cat-shards.html
 cat-snapshots,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/cat-snapshots.html
+cat-tasks,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/cat-tasks.html
 cat-templates,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/cat-templates.html
 cat-thread-pool,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/cat-thread-pool.html
 cat-trained-model,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/cat-trained-model.html
@@ -76,6 +78,7 @@ cluster-info,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/cl
 cluster-name,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/important-settings.html#cluster-name
 cluster-nodes-hot-threads,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/cluster-nodes-hot-threads.html
 cluster-nodes-info,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/cluster-nodes-info.html
+cluster-nodes-reload-secure-settings,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/cluster-nodes-reload-secure-settings.html
 cluster-nodes-stats,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/cluster-nodes-stats.html
 cluster-nodes-usage,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/cluster-nodes-usage.html
 cluster-nodes,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/cluster.html#cluster-nodes
@@ -126,6 +129,7 @@ data-streams,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/da
 date-index-name-processor,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/date-index-name-processor.html
 dcg,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/search-rank-eval.html#_discounted_cumulative_gain_dcg
 defining-roles,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/defining-roles.html
+delete-analytics-collection,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/delete-analytics-collection.html
 delete-async-sql-search-api,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/delete-async-sql-search-api.html
 delete-enrich-policy-api,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/delete-enrich-policy-api.html
 delete-license,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/delete-license.html
@@ -206,6 +210,7 @@ graph-explore-api,https://www.elastic.co/guide/en/elasticsearch/reference/{branc
 grok,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/grok.html
 grok-processor,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/grok-processor.html
 gsub-processor,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/gsub-processor.html
+health-api,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/health-api.html
 ilm-delete-lifecycle,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/ilm-delete-lifecycle.html
 ilm-explain-lifecycle,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/ilm-explain-lifecycle.html
 ilm-get-lifecycle,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/ilm-get-lifecycle.html
@@ -273,6 +278,7 @@ k-recall,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/search
 kv-processor,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/kv-processor.html
 knn-inner-hits,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/knn-search.html#nested-knn-search-inner-hits
 license-management,https://www.elastic.co/guide/en/kibana/{branch}/managing-licenses.html
+list-analytics-collection,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/list-analytics-collection.html
 logstash-api-delete-pipeline,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/logstash-api-delete-pipeline.html
 logstash-api-get-pipeline,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/logstash-api-get-pipeline.html
 logstash-api-put-pipeline,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/logstash-api-put-pipeline.html
@@ -365,8 +371,10 @@ painless-contexts,https://www.elastic.co/guide/en/elasticsearch/painless/{branch
 painless-execute-api,https://www.elastic.co/guide/en/elasticsearch/painless/{branch}/painless-execute-api.html
 pipeline-processor,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/pipeline-processor.html
 point-in-time-api,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/point-in-time-api.html
+prevalidate-node-removal,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/prevalidate-node-removal-api.html
 preview-dfanalytics,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/preview-dfanalytics.html
 preview-transform,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/preview-transform.html
+put-analytics-collection,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/put-analytics-collection.html
 put-dfanalytics,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/put-dfanalytics.html
 put-enrich-policy-api,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/put-enrich-policy-api.html
 put-pipeline-api,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/put-pipeline-api.html
@@ -650,6 +658,7 @@ time-value,https://github.com/elastic/elasticsearch/blob/{branch}/libs/core/src/
 trim-processor,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/trim-processor.html
 unfreeze-index-api,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/unfreeze-index-api.html
 update-dfanalytics,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/update-dfanalytics.html
+update-desired-nodes,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/update-desired-nodes.html
 update-license,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/update-license.html
 update-transform,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/update-transform.html
 upgrade-transforms,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/upgrade-transforms.html
