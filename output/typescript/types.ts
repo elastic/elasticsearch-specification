@@ -17676,6 +17676,8 @@ export interface SearchApplicationEventDataStream {
   name: IndexName
 }
 
+export type SearchApplicationEventType = 'page_view' | 'search' | 'search_click'
+
 export interface SearchApplicationSearchApplication extends SearchApplicationSearchApplicationParameters {
   name: Name
   updated_at_millis: EpochTime<UnitMillis>
@@ -17724,6 +17726,18 @@ export interface SearchApplicationListRequest extends RequestBase {
 export interface SearchApplicationListResponse {
   count: long
   results: SearchApplicationSearchApplication[]
+}
+
+export interface SearchApplicationPostBehavioralAnalyticsEventRequest extends RequestBase {
+  collection_name: Name
+  event_type: SearchApplicationEventType
+  debug?: boolean
+  body?: any
+}
+
+export interface SearchApplicationPostBehavioralAnalyticsEventResponse {
+  accepted: boolean
+  event?: any
 }
 
 export interface SearchApplicationPutRequest extends RequestBase {
