@@ -119,7 +119,7 @@ import { Duration } from '@_types/Time'
  * @rest_spec_name snapshot.repository_analyze
  * @availability stack since=7.12.0 stability=stable visibility=public
  * @cluster_privileges manage
- * @ext_doc_id analyze-repository
+ * @doc_id analyze-repository
  */
 export interface Request extends RequestBase {
   path_parts: {
