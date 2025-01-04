@@ -258,11 +258,13 @@ indices-put-mapping,https://www.elastic.co/guide/en/elasticsearch/reference/{bra
 indices-recovery,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/indices-recovery.html
 indices-refresh,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/indices-refresh.html
 indices-reload-analyzers,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/indices-reload-analyzers.html
+indices-resolve-cluster-api,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/indices-resolve-cluster-api.html
 indices-resolve-index-api,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/indices-resolve-index-api.html
 indices-rollover-index,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/indices-rollover-index.html
 indices-segments,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/indices-segments.html
 indices-shards-stores,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/indices-shards-stores.html
 indices-shrink-index,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/indices-shrink-index.html
+indices-simulate-template,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/indices-simulate-template.html
 indices-split-index,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/indices-split-index.html
 indices-stats,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/indices-stats.html
 indices-template-exists-v1,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/indices-template-exists-v1.html

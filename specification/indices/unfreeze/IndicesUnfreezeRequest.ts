@@ -27,6 +27,7 @@ import { Duration } from '@_types/Time'
  * @rest_spec_name indices.unfreeze
  * @availability stack since=6.6.0 stability=stable
  * @index_privileges manage
+ * @doc_id unfreeze-index-api
  */
 export interface Request extends RequestBase {
   path_parts: {

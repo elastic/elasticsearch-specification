@@ -23,10 +23,12 @@ import { Duration } from '@_types/Time'
 
 /**
  * Simulate an index.
- * Returns the index configuration that would be applied to the specified index from an existing index template.
+ * Get the index configuration that would be applied to the specified index from an existing index template.
  * @rest_spec_name indices.simulate_index_template
  * @availability stack since=7.9.0 stability=stable
  * @availability serverless stability=stable visibility=public
+ * @doc_id indices-simulate-template
+ * @cluster_privileges manage_index_templates
  */
 export interface Request extends RequestBase {
   path_parts: {
