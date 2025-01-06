@@ -48,6 +48,7 @@ jobs:
 
           echo "::endgroup::"
 
+          has_skip_backport_label=false
           has_exact_backport_label=false
           declare -A pr_exact_majors=()
           declare -A pr_floating_majors=()
@@ -56,7 +57,7 @@ jobs:
 
           for pr_label in "${pr_labels[@]}"; do
             if [ "${pr_label}" = "skip-backport" ]; then
-              has_exact_backport_label=true
+              has_skip_backport_label=true
               echo "${pr_label}"
               continue
             fi
@@ -81,7 +82,13 @@ jobs:
 
           echo "::endgroup::"
 
-          if [ "${has_exact_backport_label}" != true ]; then
+          if [ "${has_skip_backport_label}" = true ] && [ "${has_exact_backport_label}" = true ]; then
+            echo "::error::The 'skip-backport' not be used in combination with another backport"\
+                  "label."
+            exit 1
+          fi
+
+          if [ "${has_skip_backport_label}" != true ] && [ "${has_exact_backport_label}" != true ]; then
             echo "::error::No exact backport label found. Please add at least one of the"\
                   "'backport {major}.{minor}' labels or use 'skip-backport',"\
                   "if this PR should not be backported."
