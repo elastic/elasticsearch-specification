@@ -30,10 +30,17 @@ export enum DeprecationLevel {
 }
 
 export class Deprecation {
+  /**
+   * Optional details about the deprecation warning.
+   */
   details?: string
   /** The level property describes the significance of the issue. */
   level: DeprecationLevel
+  /** Descriptive information about the deprecation warning. */
   message: string
+  /**
+   * A link to the breaking change documentation, where you can find more information about this change.
+   */
   url: string
   resolve_during_rolling_upgrade: boolean
   _meta?: Dictionary<string, UserDefinedValue>

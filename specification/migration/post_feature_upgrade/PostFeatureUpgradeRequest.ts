@@ -31,5 +31,6 @@ import { RequestBase } from '@_types/Base'
  * @availability stack since=7.16.0 stability=stable
  * @index_privileges manage
  * @cluster_privileges manage
+ * @doc_id migration-api-feature-upgrade
  */
 export interface Request extends RequestBase {}
