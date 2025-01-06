@@ -32,6 +32,15 @@ import { Duration } from '@_types/Time'
  * * The index must be read-only.
  * * The cluster health status must be green.
  *
+ * You can do make an index read-only with the following request using the add index block API:
+ *
+ * ```
+ * PUT /my_source_index/_block/write
+ * ```
+ *
+ * The current write index on a data stream cannot be split.
+ * In order to split the current write index, the data stream must first be rolled over so that a new write index is created and then the previous write index can be split.
+ *
  * The number of times the index can be split (and the number of shards that each original shard can be split into) is determined by the `index.number_of_routing_shards` setting.
  * The number of routing shards specifies the hashing space that is used internally to distribute documents across shards with consistent hashing.
  * For instance, a 5 shard index with `number_of_routing_shards` set to 30 (5 x 2 x 3) could be split by a factor of 2 or 3.

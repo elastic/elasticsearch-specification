@@ -296,6 +296,7 @@ logstash-logstash-settings-file,https://www.elastic.co/guide/en/logstash/{branch
 lowercase-processor,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/lowercase-processor.html
 mapping-date-format,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/mapping-date-format.html
 mapping-meta-field,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/mapping-meta-field.html
+mapping-params,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/mapping-params.html
 mapping-metadata,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/mapping-fields.html
 mapping-roles,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/mapping-roles.html
 mapping-settings-limit,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/mapping-settings-limit.html
