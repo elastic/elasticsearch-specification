@@ -23137,9 +23137,9 @@
     "/_ml/anomaly_detectors/_validate": {
       "post": {
         "tags": [
-          "ml"
+          "ml anomaly"
         ],
-        "summary": "Validates an anomaly detection job",
+        "summary": "Validate an anomaly detection job",
         "operationId": "ml-validate",
         "requestBody": {
           "content": {
