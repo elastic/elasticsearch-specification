@@ -27,7 +27,7 @@ import { Duration } from '@_types/Time'
  * @rest_spec_name indices.simulate_index_template
  * @availability stack since=7.9.0 stability=stable
  * @availability serverless stability=stable visibility=public
- * @doc_id indices-simulate-template
+ * @doc_id indices-simulate
  * @cluster_privileges manage_index_templates
  */
 export interface Request extends RequestBase {

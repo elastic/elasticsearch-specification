@@ -8251,7 +8251,7 @@
           "indices"
         ],
         "summary": "Simulate an index template",
-        "description": "Returns the index configuration that would be applied by a particular index template.",
+        "description": "Get the index configuration that would be applied by a particular index template.",
         "operationId": "indices-simulate-template",
         "parameters": [
           {
@@ -8280,7 +8280,7 @@
           "indices"
         ],
         "summary": "Simulate an index template",
-        "description": "Returns the index configuration that would be applied by a particular index template.",
+        "description": "Get the index configuration that would be applied by a particular index template.",
         "operationId": "indices-simulate-template-1",
         "parameters": [
           {
