@@ -1,0 +1,7 @@
+# summary: connector/apis/create-connector-api.asciidoc:126
+# description: ''
+# type: response
+# response_code: ''
+value:
+  result: created
+  id: my-connector
