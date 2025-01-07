@@ -56,7 +56,7 @@ export interface Request extends RequestBase {
     /**
      * The API key identifiers.
      */
-    ids: string[]
+    ids: string | string[]
     /**
      * Arbitrary nested metadata to associate with the API keys.
      * Within the `metadata` object, top-level keys beginning with an underscore (`_`) are reserved for system usage.
