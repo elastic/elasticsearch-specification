@@ -357,6 +357,9 @@ monitor-elasticsearch-cluster,https://www.elastic.co/guide/en/elasticsearch/refe
 multi-fields,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/multi-fields.html
 network-direction-processor,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/network-direction-processor.html
 node-roles,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/modules-node.html#node-roles
+nodes-api-shutdown-delete,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/delete-shutdown.html
+nodes-api-shutdown-status,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/get-shutdown.html
+nodes-api-shutdown,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/put-shutdown.html
 paginate-search-results,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/paginate-search-results.html
 painless-contexts,https://www.elastic.co/guide/en/elasticsearch/painless/{branch}/painless-contexts.html
 painless-execute-api,https://www.elastic.co/guide/en/elasticsearch/painless/{branch}/painless-execute-api.html
