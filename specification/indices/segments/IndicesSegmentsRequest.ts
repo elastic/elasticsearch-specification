@@ -27,6 +27,8 @@ import { ExpandWildcards, Indices } from '@_types/common'
  * @rest_spec_name indices.segments
  * @availability stack stability=stable
  * @availability serverless stability=stable visibility=private
+ * @doc_id indices-segments
+ * @index_privileges monitor
  */
 export interface Request extends RequestBase {
   path_parts: {
