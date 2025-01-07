@@ -33,6 +33,7 @@ import { TimeUnit } from '@_types/Time'
  * @rest_spec_name shutdown.get_node
  * @availability stack since=7.13.0 stability=stable
  * @cluster_privileges manage
+ * @doc_id nodes-api-shutdown-status
  */
 export interface Request extends RequestBase {
   path_parts: {
