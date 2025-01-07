@@ -25,10 +25,11 @@ import { RequestBase } from '@_types/Base'
  * Check which features need to be migrated and the status of any migrations that are in progress.
  *
  * TIP: This API is designed for indirect use by the Upgrade Assistant.
- * We strongly recommend you use the Upgrade Assistant.
+ * You are strongly recommended to use the Upgrade Assistant.
  * @rest_spec_name migration.get_feature_upgrade_status
  * @availability stack since=7.16.0 stability=stable
  * @index_privileges manage
  * @cluster_privileges manage
+ * @doc_id migration-api-feature-upgrade
  */
 export interface Request extends RequestBase {}

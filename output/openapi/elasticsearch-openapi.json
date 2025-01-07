@@ -17144,7 +17144,7 @@
           "migration"
         ],
         "summary": "Get deprecation information",
-        "description": "Get information about different cluster, node, and index level settings that use deprecated features that will be removed or changed in the next major version.\n\nTIP: This APIs is designed for indirect use by the Upgrade Assistant. We strongly recommend you use the Upgrade Assistant.",
+        "description": "Get information about different cluster, node, and index level settings that use deprecated features that will be removed or changed in the next major version.\n\nTIP: This APIs is designed for indirect use by the Upgrade Assistant.\nYou are strongly recommended to use the Upgrade Assistant.",
         "operationId": "migration-deprecations",
         "responses": {
           "200": {
@@ -17160,7 +17160,7 @@
           "migration"
         ],
         "summary": "Get deprecation information",
-        "description": "Get information about different cluster, node, and index level settings that use deprecated features that will be removed or changed in the next major version.\n\nTIP: This APIs is designed for indirect use by the Upgrade Assistant. We strongly recommend you use the Upgrade Assistant.",
+        "description": "Get information about different cluster, node, and index level settings that use deprecated features that will be removed or changed in the next major version.\n\nTIP: This APIs is designed for indirect use by the Upgrade Assistant.\nYou are strongly recommended to use the Upgrade Assistant.",
         "operationId": "migration-deprecations-1",
         "parameters": [
           {
@@ -17181,7 +17181,7 @@
           "migration"
         ],
         "summary": "Get feature migration information",
-        "description": "Version upgrades sometimes require changes to how features store configuration information and data in system indices.\nCheck which features need to be migrated and the status of any migrations that are in progress.\n\nTIP: This API is designed for indirect use by the Upgrade Assistant.\nWe strongly recommend you use the Upgrade Assistant.",
+        "description": "Version upgrades sometimes require changes to how features store configuration information and data in system indices.\nCheck which features need to be migrated and the status of any migrations that are in progress.\n\nTIP: This API is designed for indirect use by the Upgrade Assistant.\nYou are strongly recommended to use the Upgrade Assistant.",
         "operationId": "migration-get-feature-upgrade-status",
         "responses": {
           "200": {
@@ -74032,15 +74032,18 @@
         "type": "object",
         "properties": {
           "details": {
+            "description": "Optional details about the deprecation warning.",
             "type": "string"
           },
           "level": {
             "$ref": "#/components/schemas/migration.deprecations:DeprecationLevel"
           },
           "message": {
+            "description": "Descriptive information about the deprecation warning.",
             "type": "string"
           },
           "url": {
+            "description": "A link to the breaking change documentation, where you can find more information about this change.",
             "type": "string"
           },
           "resolve_during_rolling_upgrade": {
@@ -92753,12 +92756,14 @@
               "type": "object",
               "properties": {
                 "cluster_settings": {
+                  "description": "Cluster-level deprecation warnings.",
                   "type": "array",
                   "items": {
                     "$ref": "#/components/schemas/migration.deprecations:Deprecation"
                   }
                 },
                 "index_settings": {
+                  "description": "Index warnings are sectioned off per index and can be filtered using an index-pattern in the query.\nThis section includes warnings for the backing indices of data streams specified in the request path.",
                   "type": "object",
                   "additionalProperties": {
                     "type": "array",
@@ -92777,12 +92782,14 @@
                   }
                 },
                 "node_settings": {
+                  "description": "Node-level deprecation warnings.\nSince only a subset of your nodes might incorporate these settings, it is important to read the details section for more information about which nodes are affected.",
                   "type": "array",
                   "items": {
                     "$ref": "#/components/schemas/migration.deprecations:Deprecation"
                   }
                 },
                 "ml_settings": {
+                  "description": "Machine learning-related deprecation warnings.",
                   "type": "array",
                   "items": {
                     "$ref": "#/components/schemas/migration.deprecations:Deprecation"
