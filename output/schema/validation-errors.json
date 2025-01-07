@@ -355,12 +355,6 @@
       ],
       "response": []
     },
-    "connector.sync_job_update_stats": {
-      "request": [
-        "Missing request & response"
-      ],
-      "response": []
-    },
     "enrich.delete_policy": {
       "request": [
         "Request: missing json spec query parameter 'master_timeout'"
