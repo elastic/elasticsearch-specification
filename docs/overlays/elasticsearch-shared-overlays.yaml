@@ -1077,7 +1077,7 @@ actions:
         application/json:
           examples:
             asyncSearchSubmitRequestExample1:
-              $ref: "../../specification/async_search/submit/AsyncSearchSubmitRequestExample1.json"
+              $ref: "../../specification/async_search/submit/examples/request/AsyncSearchSubmitRequestExample1.yaml"
   - target: "$.components['responses']['async_search.submit#200']"
     description: "Add example for asynch search submit response"
     update: 
@@ -1085,7 +1085,7 @@ actions:
         application/json:
           examples:
             asyncSearchSubmitResponseExample1:
-              $ref: "../../specification/async_search/submit/AsyncSearchSubmitResponseExample1.json"
+              $ref: "../../specification/async_search/submit/examples/response/AsyncSearchSubmitResponseExample1.yaml"
   - target: "$.paths['/_transform/{transform_id}']['put']"
     description: "Add examples for create transform operation"
     update: 
@@ -1334,7 +1334,7 @@ actions:
             application/json:
               examples:
                 indicesResolveResponseExample1:
-                  $ref: "../../specification/indices/resolve_index/indicesResolveResponseExample1.yaml"
+                  $ref: "../../specification/indices/resolve_index/examples/response/ResolveIndexResponseExample1.yaml"
   - target: "$.components['requestBodies']['indices.rollover']"
     description: "Add example for rollover index request"
     update: 

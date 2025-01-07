@@ -89,7 +89,7 @@ actions:
         application/json: 
           examples: 
             clusterAllocationExplainRequestExample1: 
-              $ref: "../../specification/cluster/allocation_explain/clusterAllocationExplainRequestExample1.json"
+              $ref: "../../specification/cluster/allocation_explain/examples/request/clusterAllocationExplainRequestExample1.yaml"
   - target: "$.components['responses']['cluster.health#200']"
     description: "Add examples for cluster health operation"
     update: 
@@ -283,7 +283,7 @@ actions:
             application/json:
               examples:
                 indicesCloseResponseExample1:
-                  $ref: "../../specification/indices/close/indicesCloseResponseExample1.yaml"
+                  $ref: "../../specification/indices/close/examples/response/CloseIndexResponseExample1.yaml"
   - target: "$.components['responses']['indices.data_streams_stats#200']"
     description: "Add example for data stream stats response"
     update: 
