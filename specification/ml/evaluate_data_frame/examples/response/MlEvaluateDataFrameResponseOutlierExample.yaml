@@ -1,0 +1,32 @@
+summary: Outlier detection
+description: A successful response from `POST _ml/data_frame/_evaluate` to evaluate an outlier detection job.
+# type: response
+# response_code: 200
+value:
+  outlier_detection:
+    auc_roc:
+      value: 0.9258475774641445
+    confusion_matrix:
+      '0.25':
+        tp: 5
+        fp: 9
+        tn: 204
+        fn: 5
+      '0.5':
+        tp: 1
+        fp: 5
+        tn: 208
+        fn: 9
+      '0.75':
+        tp: 0
+        fp: 4
+        tn: 209
+        fn: 10
+    precision:
+      '0.25': 0.35714285714285715
+      '0.5': 0.16666666666666666
+      '0.75': 0
+    recall:
+      '0.25': 0.5
+      '0.5': 0.1
+      '0.75': 0
