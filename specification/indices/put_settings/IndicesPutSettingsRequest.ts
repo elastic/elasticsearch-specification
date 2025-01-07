@@ -24,12 +24,27 @@ import { Duration } from '@_types/Time'
 
 /**
  * Update index settings.
- * Changes dynamic index settings in real time. For data streams, index setting
- * changes are applied to all backing indices by default.
+ * Changes dynamic index settings in real time.
+ * For data streams, index setting changes are applied to all backing indices by default.
+ *
+ * To revert a setting to the default value, use a null value.
+ * The list of per-index settings that can be updated dynamically on live indices can be found in index module documentation.
+ * To preserve existing settings from being updated, set the `preserve_existing` parameter to `true`.
+ *
+ * NOTE: You can only define new analyzers on closed indices.
+ * To add an analyzer, you must close the index, define the analyzer, and reopen the index.
+ * You cannot close the write index of a data stream.
+ * To update the analyzer for a data stream's write index and future backing indices, update the analyzer in the index template used by the stream.
+ * Then roll over the data stream to apply the new analyzer to the stream's write index and future backing indices.
+ * This affects searches and any new data added to the stream after the rollover.
+ * However, it does not affect the data stream's backing indices or their existing data.
+ * To change the analyzer for existing backing indices, you must create a new data stream and reindex your data into it.
  * @rest_spec_name indices.put_settings
  * @availability stack stability=stable
  * @availability serverless stability=stable visibility=public
  * @index_privileges manage
+ * @doc_id indices-update-settings
+ * @ext_doc_id index-modules
  */
 export interface Request extends RequestBase {
   path_parts: {
