@@ -1,7 +1,11 @@
-summary: A successful response for retrieving information about ongoing and completed shard recoveries for an index.
-# description: ''
+summary: Get segment information
+description: >
+  A successful response from `GET /_recovery?human`, which gets information about ongoing and completed shard recoveries for all data streams and indices in a cluster.
+  This example includes information about a single index recovering a single shard.
+  The source of the recovery is a snapshot repository and the target of the recovery is the `my_es_node` node.
+  The response also includes the number and percentage of files and bytes recovered.
 # type: response
-response_code: 200
+# response_code: 200
 value:
   "{\n  \"index1\" : {\n    \"shards\" : [ {\n      \"id\" : 0,\n      \"type\"\
   \ : \"SNAPSHOT\",\n      \"stage\" : \"INDEX\",\n      \"primary\" : true,\n   \
