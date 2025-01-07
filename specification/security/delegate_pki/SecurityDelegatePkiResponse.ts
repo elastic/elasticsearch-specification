@@ -28,7 +28,7 @@ export class Response {
     /**
      * The amount of time (in seconds) before the token expires.
      */
-    expires_in: integer
+    expires_in: long
     /**
      * The type of token.
      */
