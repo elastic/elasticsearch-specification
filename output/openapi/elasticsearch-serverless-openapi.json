@@ -9605,7 +9605,7 @@
           "logstash"
         ],
         "summary": "Delete a Logstash pipeline",
-        "description": "Delete a pipeline that is used for Logstash Central Management.",
+        "description": "Delete a pipeline that is used for Logstash Central Management.\nIf the request succeeds, you receive an empty response with an appropriate status code.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/logstash/current/logstash-centralized-pipeline-management.html"
         },
