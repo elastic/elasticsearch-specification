@@ -288,7 +288,7 @@ mapping,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/mapping
 mean-reciprocal,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/search-rank-eval.html#_mean_reciprocal_rank
 migrate-index-allocation-filters,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/migrate-index-allocation-filters.html
 migration-api-deprecation,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/migration-api-deprecation.html
-migration-api-feature-upgrade,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/migration-api-feature-upgrade.html
+migration-api-feature-upgrade,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/feature-migration-api.html
 ml-apis,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/ml-apis.html
 ml-classification,https://www.elastic.co/guide/en/machine-learning/{branch}/ml-dfa-classification.html
 ml-close-job,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/ml-close-job.html

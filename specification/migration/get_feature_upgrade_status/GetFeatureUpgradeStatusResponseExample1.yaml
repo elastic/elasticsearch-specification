@@ -1,0 +1,36 @@
+# summary:
+description: A successful response from `GET /_migration/system_features`.
+# type: response
+# response_code: ''
+value:
+  "{\n  \"features\" : [\n    {\n      \"feature_name\" : \"async_search\",\n\
+  \      \"minimum_index_version\" : \"8100099\",\n      \"migration_status\" : \"\
+  NO_MIGRATION_NEEDED\",\n      \"indices\" : [ ]\n    },\n    {\n      \"feature_name\"\
+  \ : \"enrich\",\n      \"minimum_index_version\" : \"8100099\",\n      \"migration_status\"\
+  \ : \"NO_MIGRATION_NEEDED\",\n      \"indices\" : [ ]\n    },\n    {\n      \"feature_name\"\
+  \ : \"ent_search\",\n      \"minimum_index_version\" : \"8100099\",\n      \"migration_status\"\
+  \ : \"NO_MIGRATION_NEEDED\",\n      \"indices\" : [ ]\n    },\n    {\n      \"feature_name\"\
+  \ : \"fleet\",\n      \"minimum_index_version\" : \"8100099\",\n      \"migration_status\"\
+  \ : \"NO_MIGRATION_NEEDED\",\n      \"indices\" : [ ]\n    },\n    {\n      \"feature_name\"\
+  \ : \"geoip\",\n      \"minimum_index_version\" : \"8100099\",\n      \"migration_status\"\
+  \ : \"NO_MIGRATION_NEEDED\",\n      \"indices\" : [ ]\n    },\n    {\n      \"feature_name\"\
+  \ : \"kibana\",\n      \"minimum_index_version\" : \"8100099\",\n      \"migration_status\"\
+  \ : \"NO_MIGRATION_NEEDED\",\n      \"indices\" : [ ]\n    },\n    {\n      \"feature_name\"\
+  \ : \"logstash_management\",\n      \"minimum_index_version\" : \"8100099\",\n \
+  \     \"migration_status\" : \"NO_MIGRATION_NEEDED\",\n      \"indices\" : [ ]\n\
+  \    },\n    {\n      \"feature_name\" : \"machine_learning\",\n      \"minimum_index_version\"\
+  \ : \"8100099\",\n      \"migration_status\" : \"NO_MIGRATION_NEEDED\",\n      \"\
+  indices\" : [ ]\n    },\n    {\n      \"feature_name\" : \"searchable_snapshots\"\
+  ,\n      \"minimum_index_version\" : \"8100099\",\n      \"migration_status\" :\
+  \ \"NO_MIGRATION_NEEDED\",\n      \"indices\" : [ ]\n    },\n    {\n      \"feature_name\"\
+  \ : \"security\",\n      \"minimum_index_version\" : \"8100099\",\n      \"migration_status\"\
+  \ : \"NO_MIGRATION_NEEDED\",\n      \"indices\" : [ ]\n    },\n    {\n      \"feature_name\"\
+  \ : \"synonyms\",\n      \"minimum_index_version\" : \"8100099\",\n      \"migration_status\"\
+  \ : \"NO_MIGRATION_NEEDED\",\n      \"indices\" : [ ]\n    },\n    {\n      \"feature_name\"\
+  \ : \"tasks\",\n      \"minimum_index_version\" : \"8100099\",\n      \"migration_status\"\
+  \ : \"NO_MIGRATION_NEEDED\",\n      \"indices\" : [ ]\n    },\n    {\n      \"feature_name\"\
+  \ : \"transform\",\n      \"minimum_index_version\" : \"8100099\",\n      \"migration_status\"\
+  \ : \"NO_MIGRATION_NEEDED\",\n      \"indices\" : [ ]\n    },\n    {\n      \"feature_name\"\
+  \ : \"watcher\",\n      \"minimum_index_version\" : \"8100099\",\n      \"migration_status\"\
+  \ : \"NO_MIGRATION_NEEDED\",\n      \"indices\" : [ ]\n    }\n  ],\n  \"migration_status\"\
+  \ : \"NO_MIGRATION_NEEDED\"\n}"
