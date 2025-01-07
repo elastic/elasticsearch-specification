@@ -29593,6 +29593,9 @@
                     "type": {
                       "description": "The type of token.",
                       "type": "string"
+                    },
+                    "authentication": {
+                      "$ref": "#/components/schemas/security.delegate_pki:Authentication"
                     }
                   },
                   "required": [
@@ -84883,6 +84886,98 @@
         "required": [
           "name",
           "value"
+        ]
+      },
+      "security.delegate_pki:Authentication": {
+        "type": "object",
+        "properties": {
+          "username": {
+            "type": "string"
+          },
+          "roles": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "full_name": {
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "nullable": true,
+                "type": "string"
+              }
+            ]
+          },
+          "email": {
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "nullable": true,
+                "type": "string"
+              }
+            ]
+          },
+          "token": {
+            "type": "object",
+            "additionalProperties": {
+              "type": "string"
+            }
+          },
+          "metadata": {
+            "$ref": "#/components/schemas/_types:Metadata"
+          },
+          "enabled": {
+            "type": "boolean"
+          },
+          "authentication_realm": {
+            "$ref": "#/components/schemas/security.delegate_pki:AuthenticationRealm"
+          },
+          "lookup_realm": {
+            "$ref": "#/components/schemas/security.delegate_pki:AuthenticationRealm"
+          },
+          "authentication_type": {
+            "type": "string"
+          },
+          "api_key": {
+            "type": "object",
+            "additionalProperties": {
+              "type": "string"
+            }
+          }
+        },
+        "required": [
+          "username",
+          "roles",
+          "full_name",
+          "email",
+          "metadata",
+          "enabled",
+          "authentication_realm",
+          "lookup_realm",
+          "authentication_type"
+        ]
+      },
+      "security.delegate_pki:AuthenticationRealm": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "type": {
+            "type": "string"
+          },
+          "domain": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "name",
+          "type"
         ]
       },
       "security.delete_privileges:FoundStatus": {

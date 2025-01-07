@@ -17,6 +17,8 @@
  * under the License.
  */
 
+import { Dictionary } from '@spec_utils/Dictionary'
+import { Metadata } from '@_types/common'
 import { long } from '@_types/Numeric'
 
 export class Response {
@@ -33,5 +35,27 @@ export class Response {
      * The type of token.
      */
     type: string
+
+    authentication?: Authentication
   }
+}
+
+export class Authentication {
+  username: string
+  roles: string[]
+  full_name: string | null
+  email: string | null
+  token?: Dictionary<string, string>
+  metadata: Metadata
+  enabled: boolean
+  authentication_realm: AuthenticationRealm
+  lookup_realm: AuthenticationRealm
+  authentication_type: string
+  api_key?: Dictionary<string, string>
+}
+
+export class AuthenticationRealm {
+  name: string
+  type: string
+  domain?: string
 }
