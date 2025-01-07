@@ -10347,9 +10347,11 @@
                       "type": "boolean"
                     },
                     "removed_legacy_template": {
+                      "description": "The name of the legacy index template that was deleted.\nThis information is missing if no legacy index templates were deleted.",
                       "type": "string"
                     },
                     "migrated_ilm_policies": {
+                      "description": "The ILM policies that were updated.",
                       "type": "array",
                       "items": {
                         "type": "string"
@@ -10359,18 +10361,21 @@
                       "$ref": "#/components/schemas/_types:Indices"
                     },
                     "migrated_legacy_templates": {
+                      "description": "The legacy index templates that were updated to not contain custom routing settings for the provided data attribute.",
                       "type": "array",
                       "items": {
                         "type": "string"
                       }
                     },
                     "migrated_composable_templates": {
+                      "description": "The composable index templates that were updated to not contain custom routing settings for the provided data attribute.",
                       "type": "array",
                       "items": {
                         "type": "string"
                       }
                     },
                     "migrated_component_templates": {
+                      "description": "The component templates that were updated to not contain custom routing settings for the provided data attribute.",
                       "type": "array",
                       "items": {
                         "type": "string"
@@ -68817,9 +68822,11 @@
         "type": "object",
         "properties": {
           "action": {
+            "description": "The optional action to which the index will be moved.",
             "type": "string"
           },
           "name": {
+            "description": "The optional step name to which the index will be moved.",
             "type": "string"
           },
           "phase": {

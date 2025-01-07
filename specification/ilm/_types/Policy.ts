@@ -22,5 +22,8 @@ import { Phases } from './Phase'
 
 export class Policy {
   phases: Phases
+  /**
+   * Arbitrary metadata that is not automatically generated or used by Elasticsearch.
+   */
   _meta?: Metadata
 }

@@ -168,14 +168,14 @@ actions:
           application/json: 
             examples:
               putLifecycleRequestExample1: 
-                $ref: "../../specification/ilm/put_lifecycle/PutLifecycleRequestExample1.json"
+                $ref: "../../specification/ilm/put_lifecycle/examples/request/PutLifecycleRequestExample1.yaml"
       responses:
         200:
           content:
             application/json:
               examples:
                 putLifecycleResponseExample1:
-                  $ref: "../../specification/ilm/put_lifecycle/PutLifecycleResponseExample1.json"  
+                  $ref: "../../specification/ilm/put_lifecycle/examples/response/PutLifecycleResponseExample1.yaml"  
   - target: "$.components['responses']['ilm.get_lifecycle#200']"
     description: "Add examples for get lifecycle policy operation"
     update: 
@@ -192,14 +192,14 @@ actions:
           application/json: 
             examples: 
               migrateToDataTiersRequestExample1: 
-                $ref: "../../specification/ilm/migrate_to_data_tiers/MigrateToDataTiersRequestExample1.json"
+                $ref: "../../specification/ilm/migrate_to_data_tiers/examples/request/RequestExample1.yaml"
       responses:
         200:
           content:
             application/json:
               examples:
                 migrateToDataTiersResponseExample1:
-                  $ref: "../../specification/ilm/migrate_to_data_tiers/MigrateToDataTiersResponseExample1.json"
+                  $ref: "../../specification/ilm/migrate_to_data_tiers/examples/response/ResponseExample1.yaml"
   - target: "$.paths['/_ilm/move/{index}']['post']"
     description: "Add examples for move to lifecycle step operation"
     update:
@@ -208,14 +208,16 @@ actions:
           application/json: 
             examples:
               moveToStepRequestExample1: 
-                $ref: "../../specification/ilm/move_to_step/MoveToStepRequestExample1.json"
+                $ref: "../../specification/ilm/move_to_step/examples/request/MoveToStepRequestExample1.yaml"
+              moveToStepRequestExample2: 
+                $ref: "../../specification/ilm/move_to_step/examples/request/MoveToStepRequestExample2.yaml"
       responses:
         200:
           content:
             application/json:
               examples:
                 moveToStepResponseExample1:
-                  $ref: "../../specification/ilm/move_to_step/MoveToStepResponseExample1.json"
+                  $ref: "../../specification/ilm/move_to_step/examples/response/MoveToStepResponseExample1.yaml"
   - target: "$.paths['/_ilm/start']['post']"
     description: "Add examples for start index lifecycle management operation"
     update:
