@@ -7593,9 +7593,15 @@
           "stability": "stable"
         }
       },
-      "description": "Delete a query rule.\nDelete a query rule within a query ruleset.",
-      "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/delete-query-rule.html",
+      "description": "Delete a query rule.\nDelete a query rule within a query ruleset.\nThis is a destructive action that is only recoverable by re-adding the same rule with the create or update query rule API.",
+      "docId": "query-rule-delete",
+      "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/delete-query-rule.html",
       "name": "query_rules.delete_rule",
+      "privileges": {
+        "cluster": [
+          "manage_search_query_rules"
+        ]
+      },
       "request": {
         "name": "Request",
         "namespace": "query_rules.delete_rule"
@@ -7628,9 +7634,15 @@
           "stability": "stable"
         }
       },
-      "description": "Delete a query ruleset.",
-      "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/delete-query-ruleset.html",
+      "description": "Delete a query ruleset.\nRemove a query ruleset and its associated data.\nThis is a destructive action that is not recoverable.",
+      "docId": "query-ruleset-delete",
+      "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/delete-query-ruleset.html",
       "name": "query_rules.delete_ruleset",
+      "privileges": {
+        "cluster": [
+          "manage_search_query_rules"
+        ]
+      },
       "request": {
         "name": "Request",
         "namespace": "query_rules.delete_ruleset"
@@ -7664,10 +7676,16 @@
         }
       },
       "description": "Get a query rule.\nGet details about a query rule within a query ruleset.",
-      "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/get-query-rule.html",
+      "docId": "query-rule-get",
+      "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/get-query-rule.html",
       "extDocId": "query-rule",
       "extDocUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/search-using-query-rules.html",
       "name": "query_rules.get_rule",
+      "privileges": {
+        "cluster": [
+          "manage_search_query_rules"
+        ]
+      },
       "request": {
         "name": "Request",
         "namespace": "query_rules.get_rule"
@@ -7701,8 +7719,14 @@
         }
       },
       "description": "Get a query ruleset.\nGet details about a query ruleset.",
-      "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/get-query-ruleset.html",
+      "docId": "query-ruleset-get",
+      "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/get-query-ruleset.html",
       "name": "query_rules.get_ruleset",
+      "privileges": {
+        "cluster": [
+          "manage_search_query_rules"
+        ]
+      },
       "request": {
         "name": "Request",
         "namespace": "query_rules.get_ruleset"
@@ -7736,8 +7760,14 @@
         }
       },
       "description": "Get all query rulesets.\nGet summarized information about the query rulesets.",
-      "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/list-query-rulesets.html",
+      "docId": "query-ruleset-list",
+      "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/list-query-rulesets.html",
       "name": "query_rules.list_rulesets",
+      "privileges": {
+        "cluster": [
+          "manage_search_query_rules"
+        ]
+      },
       "request": {
         "name": "Request",
         "namespace": "query_rules.list_rulesets"
@@ -7770,9 +7800,15 @@
           "stability": "stable"
         }
       },
-      "description": "Create or update a query rule.\nCreate or update a query rule within a query ruleset.",
-      "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/put-query-rule.html",
+      "description": "Create or update a query rule.\nCreate or update a query rule within a query ruleset.\n\nIMPORTANT: Due to limitations within pinned queries, you can only pin documents using ids or docs, but cannot use both in single rule.\nIt is advised to use one or the other in query rulesets, to avoid errors.\nAdditionally, pinned queries have a maximum limit of 100 pinned hits.\nIf multiple matching rules pin more than 100 documents, only the first 100 documents are pinned in the order they are specified in the ruleset.",
+      "docId": "query-rule-put",
+      "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/put-query-rule.html",
       "name": "query_rules.put_rule",
+      "privileges": {
+        "cluster": [
+          "manage_search_query_rules"
+        ]
+      },
       "request": {
         "name": "Request",
         "namespace": "query_rules.put_rule"
@@ -7808,11 +7844,17 @@
           "stability": "stable"
         }
       },
-      "description": "Create or update a query ruleset.",
-      "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/put-query-ruleset.html",
+      "description": "Create or update a query ruleset.\nThere is a limit of 100 rules per ruleset.\nThis limit can be increased by using the `xpack.applications.rules.max_rules_per_ruleset` cluster setting.\n\nIMPORTANT: Due to limitations within pinned queries, you can only select documents using `ids` or `docs`, but cannot use both in single rule.\nIt is advised to use one or the other in query rulesets, to avoid errors.\nAdditionally, pinned queries have a maximum limit of 100 pinned hits.\nIf multiple matching rules pin more than 100 documents, only the first 100 documents are pinned in the order they are specified in the ruleset.",
+      "docId": "query-ruleset-put",
+      "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/put-query-ruleset.html",
       "extDocId": "query-rule",
       "extDocUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/search-using-query-rules.html",
       "name": "query_rules.put_ruleset",
+      "privileges": {
+        "cluster": [
+          "manage_search_query_rules"
+        ]
+      },
       "request": {
         "name": "Request",
         "namespace": "query_rules.put_ruleset"
@@ -7849,8 +7891,14 @@
         }
       },
       "description": "Test a query ruleset.\nEvaluate match criteria against a query ruleset to identify the rules that would match that criteria.",
-      "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/test-query-ruleset.html",
+      "docId": "query-ruleset-test",
+      "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/test-query-ruleset.html",
       "name": "query_rules.test",
+      "privileges": {
+        "cluster": [
+          "manage_search_query_rules"
+        ]
+      },
       "request": {
         "name": "Request",
         "namespace": "query_rules.test"
@@ -35107,7 +35155,7 @@
       "body": {
         "kind": "no_body"
       },
-      "description": "Delete a query rule.\nDelete a query rule within a query ruleset.",
+      "description": "Delete a query rule.\nDelete a query rule within a query ruleset.\nThis is a destructive action that is only recoverable by re-adding the same rule with the create or update query rule API.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -35146,7 +35194,7 @@
         }
       ],
       "query": [],
-      "specLocation": "query_rules/delete_rule/QueryRuleDeleteRequest.ts#L22-L41"
+      "specLocation": "query_rules/delete_rule/QueryRuleDeleteRequest.ts#L22-L44"
     },
     {
       "body": {
@@ -35173,7 +35221,7 @@
       "body": {
         "kind": "no_body"
       },
-      "description": "Delete a query ruleset.",
+      "description": "Delete a query ruleset.\nRemove a query ruleset and its associated data.\nThis is a destructive action that is not recoverable.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -35200,7 +35248,7 @@
         }
       ],
       "query": [],
-      "specLocation": "query_rules/delete_ruleset/QueryRulesetDeleteRequest.ts#L22-L35"
+      "specLocation": "query_rules/delete_ruleset/QueryRulesetDeleteRequest.ts#L22-L39"
     },
     {
       "body": {
@@ -35266,7 +35314,7 @@
         }
       ],
       "query": [],
-      "specLocation": "query_rules/get_rule/QueryRuleGetRequest.ts#L22-L42"
+      "specLocation": "query_rules/get_rule/QueryRuleGetRequest.ts#L22-L44"
     },
     {
       "body": {
@@ -35320,7 +35368,7 @@
         }
       ],
       "query": [],
-      "specLocation": "query_rules/get_ruleset/QueryRulesetGetRequest.ts#L22-L36"
+      "specLocation": "query_rules/get_ruleset/QueryRulesetGetRequest.ts#L22-L38"
     },
     {
       "body": {
@@ -35362,9 +35410,10 @@
       "path": [],
       "query": [
         {
-          "description": "Starting offset (default: 0)",
+          "description": "The offset from the first result to fetch.",
           "name": "from",
           "required": false,
+          "serverDefault": 0,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -35374,7 +35423,7 @@
           }
         },
         {
-          "description": "specifies a max number of results to get",
+          "description": "The maximum number of results to retrieve.",
           "name": "size",
           "required": false,
           "type": {
@@ -35386,7 +35435,7 @@
           }
         }
       ],
-      "specLocation": "query_rules/list_rulesets/QueryRulesetListRequest.ts#L22-L40"
+      "specLocation": "query_rules/list_rulesets/QueryRulesetListRequest.ts#L22-L43"
     },
     {
       "body": {
@@ -35434,6 +35483,7 @@
         "kind": "properties",
         "properties": [
           {
+            "description": "The type of rule.",
             "name": "type",
             "required": true,
             "type": {
@@ -35445,6 +35495,7 @@
             }
           },
           {
+            "description": "The criteria that must be met for the rule to be applied.\nIf multiple criteria are specified for a rule, all criteria must be met for the rule to be applied.",
             "name": "criteria",
             "required": true,
             "type": {
@@ -35471,6 +35522,7 @@
             }
           },
           {
+            "description": "The actions to take when the rule is matched.\nThe format of this action depends on the rule type.",
             "name": "actions",
             "required": true,
             "type": {
@@ -35494,7 +35546,7 @@
           }
         ]
       },
-      "description": "Create or update a query rule.\nCreate or update a query rule within a query ruleset.",
+      "description": "Create or update a query rule.\nCreate or update a query rule within a query ruleset.\n\nIMPORTANT: Due to limitations within pinned queries, you can only pin documents using ids or docs, but cannot use both in single rule.\nIt is advised to use one or the other in query rulesets, to avoid errors.\nAdditionally, pinned queries have a maximum limit of 100 pinned hits.\nIf multiple matching rules pin more than 100 documents, only the first 100 documents are pinned in the order they are specified in the ruleset.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -35508,7 +35560,7 @@
       },
       "path": [
         {
-          "description": "The unique identifier of the query ruleset containing the rule to be created or updated",
+          "description": "The unique identifier of the query ruleset containing the rule to be created or updated.",
           "name": "ruleset_id",
           "required": true,
           "type": {
@@ -35520,7 +35572,7 @@
           }
         },
         {
-          "description": "The unique identifier of the query rule within the specified ruleset to be created or updated",
+          "description": "The unique identifier of the query rule within the specified ruleset to be created or updated.",
           "name": "rule_id",
           "required": true,
           "type": {
@@ -35533,7 +35585,7 @@
         }
       ],
       "query": [],
-      "specLocation": "query_rules/put_rule/QueryRulePutRequest.ts#L28-L57"
+      "specLocation": "query_rules/put_rule/QueryRulePutRequest.ts#L28-L73"
     },
     {
       "body": {
@@ -35594,7 +35646,7 @@
           }
         ]
       },
-      "description": "Create or update a query ruleset.",
+      "description": "Create or update a query ruleset.\nThere is a limit of 100 rules per ruleset.\nThis limit can be increased by using the `xpack.applications.rules.max_rules_per_ruleset` cluster setting.\n\nIMPORTANT: Due to limitations within pinned queries, you can only select documents using `ids` or `docs`, but cannot use both in single rule.\nIt is advised to use one or the other in query rulesets, to avoid errors.\nAdditionally, pinned queries have a maximum limit of 100 pinned hits.\nIf multiple matching rules pin more than 100 documents, only the first 100 documents are pinned in the order they are specified in the ruleset.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -35608,7 +35660,7 @@
       },
       "path": [
         {
-          "description": "The unique identifier of the query ruleset to be created or updated",
+          "description": "The unique identifier of the query ruleset to be created or updated.",
           "name": "ruleset_id",
           "required": true,
           "type": {
@@ -35621,7 +35673,7 @@
         }
       ],
       "query": [],
-      "specLocation": "query_rules/put_ruleset/QueryRulesetPutRequest.ts#L23-L44"
+      "specLocation": "query_rules/put_ruleset/QueryRulesetPutRequest.ts#L23-L53"
     },
     {
       "body": {
@@ -35655,6 +35707,7 @@
         "kind": "properties",
         "properties": [
           {
+            "description": "The match criteria to apply to rules in the given query ruleset.\nMatch criteria should match the keys defined in the `criteria.metadata` field of the rule.",
             "name": "match_criteria",
             "required": true,
             "type": {
@@ -35701,7 +35754,7 @@
         }
       ],
       "query": [],
-      "specLocation": "query_rules/test/QueryRulesetTestRequest.ts#L24-L45"
+      "specLocation": "query_rules/test/QueryRulesetTestRequest.ts#L24-L51"
     },
     {
       "body": {
@@ -103282,7 +103335,7 @@
         "name": "QueryRuleCriteriaType",
         "namespace": "query_rules._types"
       },
-      "specLocation": "query_rules/_types/QueryRuleset.ts#L55-L68"
+      "specLocation": "query_rules/_types/QueryRuleset.ts#L95-L108"
     },
     {
       "kind": "enum",
@@ -103298,7 +103351,7 @@
         "name": "QueryRuleType",
         "namespace": "query_rules._types"
       },
-      "specLocation": "query_rules/_types/QueryRuleset.ts#L44-L47"
+      "specLocation": "query_rules/_types/QueryRuleset.ts#L60-L63"
     },
     {
       "kind": "enum",
@@ -138870,6 +138923,7 @@
       },
       "properties": [
         {
+          "description": "A unique identifier for the rule.",
           "name": "rule_id",
           "required": true,
           "type": {
@@ -138881,6 +138935,7 @@
           }
         },
         {
+          "description": "The type of rule.\n`pinned` will identify and pin specific documents to the top of search results.\n`exclude` will exclude specific documents from search results.",
           "name": "type",
           "required": true,
           "type": {
@@ -138892,6 +138947,7 @@
           }
         },
         {
+          "description": "The criteria that must be met for the rule to be applied.\nIf multiple criteria are specified for a rule, all criteria must be met for the rule to be applied.",
           "name": "criteria",
           "required": true,
           "type": {
@@ -138918,6 +138974,7 @@
           }
         },
         {
+          "description": "The actions to take when the rule is matched.\nThe format of this action depends on the rule type.",
           "name": "actions",
           "required": true,
           "type": {
@@ -138940,7 +138997,7 @@
           }
         }
       ],
-      "specLocation": "query_rules/_types/QueryRuleset.ts#L36-L42"
+      "specLocation": "query_rules/_types/QueryRuleset.ts#L36-L58"
     },
     {
       "kind": "interface",
@@ -138950,6 +139007,7 @@
       },
       "properties": [
         {
+          "description": "The type of criteria. The following criteria types are supported:\n\n* `always`: Matches all queries, regardless of input.\n* `contains`: Matches that contain this value anywhere in the field meet the criteria defined by the rule. Only applicable for string values.\n* `exact`: Only exact matches meet the criteria defined by the rule. Applicable for string or numerical values.\n* `fuzzy`: Exact matches or matches within the allowed Levenshtein Edit Distance meet the criteria defined by the rule. Only applicable for string values.\n* `gt`: Matches with a value greater than this value meet the criteria defined by the rule. Only applicable for numerical values.\n* `gte`: Matches with a value greater than or equal to this value meet the criteria defined by the rule. Only applicable for numerical values.\n* `lt`: Matches with a value less than this value meet the criteria defined by the rule. Only applicable for numerical values.\n* `lte`: Matches with a value less than or equal to this value meet the criteria defined by the rule. Only applicable for numerical values.\n* `prefix`: Matches that start with this value meet the criteria defined by the rule. Only applicable for string values.\n* `suffix`: Matches that end with this value meet the criteria defined by the rule. Only applicable for string values.",
           "name": "type",
           "required": true,
           "type": {
@@ -138961,6 +139019,7 @@
           }
         },
         {
+          "description": "The metadata field to match against.\nThis metadata will be used to match against `match_criteria` sent in the rule.\nIt is required for all criteria types except `always`.",
           "name": "metadata",
           "required": false,
           "type": {
@@ -138972,6 +139031,7 @@
           }
         },
         {
+          "description": "The values to match against the `metadata` field.\nOnly one value must match for the criteria to be met.\nIt is required for all criteria types except `always`.",
           "name": "values",
           "required": false,
           "type": {
@@ -138982,7 +139042,7 @@
           }
         }
       ],
-      "specLocation": "query_rules/_types/QueryRuleset.ts#L49-L53"
+      "specLocation": "query_rules/_types/QueryRuleset.ts#L65-L93"
     },
     {
       "kind": "interface",
@@ -138992,6 +139052,7 @@
       },
       "properties": [
         {
+          "description": "The unique document IDs of the documents to apply the rule to.\nOnly one of `ids` or `docs` may be specified and at least one must be specified.",
           "name": "ids",
           "required": false,
           "type": {
@@ -139006,6 +139067,7 @@
           }
         },
         {
+          "description": "The documents to apply the rule to.\nOnly one of `ids` or `docs` may be specified and at least one must be specified.\nThere is a maximum value of 100 documents in a rule.\nYou can specify the following attributes for each document:\n\n* `_index`: The index of the document to pin.\n* `_id`: The unique document ID.",
           "name": "docs",
           "required": false,
           "type": {
@@ -139020,7 +139082,7 @@
           }
         }
       ],
-      "specLocation": "query_rules/_types/QueryRuleset.ts#L70-L73"
+      "specLocation": "query_rules/_types/QueryRuleset.ts#L110-L126"
     },
     {
       "kind": "interface",
@@ -139030,7 +139092,7 @@
       },
       "properties": [
         {
-          "description": "Query Ruleset unique identifier",
+          "description": "A unique identifier for the ruleset.",
           "name": "ruleset_id",
           "required": true,
           "type": {
@@ -139042,7 +139104,7 @@
           }
         },
         {
-          "description": "Rules associated with the query ruleset",
+          "description": "Rules associated with the query ruleset.",
           "name": "rules",
           "required": true,
           "type": {
@@ -139067,7 +139129,7 @@
       },
       "properties": [
         {
-          "description": "Ruleset unique identifier",
+          "description": "A unique identifier for the ruleset.",
           "name": "ruleset_id",
           "required": true,
           "type": {
@@ -139079,7 +139141,7 @@
           }
         },
         {
-          "description": "The number of rules associated with this ruleset",
+          "description": "The number of rules associated with the ruleset.",
           "name": "rule_total_count",
           "required": true,
           "type": {
@@ -139091,7 +139153,7 @@
           }
         },
         {
-          "description": "A map of criteria type (e.g. exact) to the number of rules of that type",
+          "description": "A map of criteria type (for example, `exact`) to the number of rules of that type.\n\nNOTE: The counts in `rule_criteria_types_counts` may be larger than the value of `rule_total_count` because a rule may have multiple criteria.",
           "name": "rule_criteria_types_counts",
           "required": true,
           "type": {
@@ -139114,7 +139176,7 @@
           }
         },
         {
-          "description": "A map of rule type (e.g. pinned) to the number of rules of that type",
+          "description": "A map of rule type (for example, `pinned`) to the number of rules of that type.",
           "name": "rule_type_counts",
           "required": true,
           "type": {
@@ -139137,7 +139199,7 @@
           }
         }
       ],
-      "specLocation": "query_rules/list_rulesets/types.ts#L23-L42"
+      "specLocation": "query_rules/list_rulesets/types.ts#L23-L44"
     },
     {
       "kind": "interface",
