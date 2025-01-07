@@ -1153,9 +1153,9 @@ actions:
         application/json: 
           examples: 
             eqlSearchRequestExample1: 
-              $ref: "../../specification/eql/search/EqlSearchRequestExample1.json"
+              $ref: "../../specification/eql/search/examples/request/EqlSearchRequestExample1.yaml"
             eqlSearchRequestExample2: 
-              $ref: "../../specification/eql/search/EqlSearchRequestExample2.json"
+              $ref: "../../specification/eql/search/examples/request/EqlSearchRequestExample2.yaml"
   - target: "$.components['reponses']['eql.search#200']"
     description: "Add examples for EQL search operation"
     update: 
@@ -1163,7 +1163,7 @@ actions:
         application/json:
           examples:
             eqlSearchResponseExample2:
-              $ref: "../../specification/eql/search/EqlSearchResponseExample2.json"
+              $ref: "../../specification/eql/search/examples/response/EqlSearchResponseExample2.yaml"
   - target: "$.paths['/_query']['post']"
     description: "Add examples for ES|QL query operation"
     update: 

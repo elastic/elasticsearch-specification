@@ -106,7 +106,7 @@ actions:
           application/json: 
             examples: 
               clusterPutSettingsRequestExample1: 
-                $ref: "../../specification/cluster/put_settings/clusterPutSettingsRequestExample1.json"
+                $ref: "../../specification/cluster/put_settings/examples/request/ClusterPutSettingsRequestExample1.yaml"
   - target: "$.paths['/_cluster/reroute']['post']"
     description: "Add examples for cluster reroute operation"
     update: 
@@ -115,7 +115,7 @@ actions:
           application/json: 
             examples: 
               clusterRerouteRequestExample1: 
-                $ref: "../../specification/cluster/reroute/clusterRerouteRequestExample1.json"
+                $ref: "../../specification/cluster/reroute/examples/request/ClusterRerouteRequestExample1.yaml"
   - target: "$.components['requestBodies']['nodes.reload_secure_settings']"
     description: "Add examples for nodes reload secure settings operation"
     update: 
