@@ -14717,13 +14717,13 @@
           "query_rules"
         ],
         "summary": "Create or update a query rule",
-        "description": "Create or update a query rule within a query ruleset.",
+        "description": "Create or update a query rule within a query ruleset.\n\nIMPORTANT: Due to limitations within pinned queries, you can only pin documents using ids or docs, but cannot use both in single rule.\nIt is advised to use one or the other in query rulesets, to avoid errors.\nAdditionally, pinned queries have a maximum limit of 100 pinned hits.\nIf multiple matching rules pin more than 100 documents, only the first 100 documents are pinned in the order they are specified in the ruleset.",
         "operationId": "query-rules-put-rule",
         "parameters": [
           {
             "in": "path",
             "name": "ruleset_id",
-            "description": "The unique identifier of the query ruleset containing the rule to be created or updated",
+            "description": "The unique identifier of the query ruleset containing the rule to be created or updated.",
             "required": true,
             "deprecated": false,
             "schema": {
@@ -14734,7 +14734,7 @@
           {
             "in": "path",
             "name": "rule_id",
-            "description": "The unique identifier of the query rule within the specified ruleset to be created or updated",
+            "description": "The unique identifier of the query rule within the specified ruleset to be created or updated.",
             "required": true,
             "deprecated": false,
             "schema": {
@@ -14753,6 +14753,7 @@
                     "$ref": "#/components/schemas/query_rules._types:QueryRuleType"
                   },
                   "criteria": {
+                    "description": "The criteria that must be met for the rule to be applied.\nIf multiple criteria are specified for a rule, all criteria must be met for the rule to be applied.",
                     "oneOf": [
                       {
                         "$ref": "#/components/schemas/query_rules._types:QueryRuleCriteria"
@@ -14809,7 +14810,7 @@
           "query_rules"
         ],
         "summary": "Delete a query rule",
-        "description": "Delete a query rule within a query ruleset.",
+        "description": "Delete a query rule within a query ruleset.\nThis is a destructive action that is only recoverable by re-adding the same rule with the create or update query rule API.",
         "operationId": "query-rules-delete-rule",
         "parameters": [
           {
@@ -14890,6 +14891,7 @@
           "query_rules"
         ],
         "summary": "Create or update a query ruleset",
+        "description": "There is a limit of 100 rules per ruleset.\nThis limit can be increased by using the `xpack.applications.rules.max_rules_per_ruleset` cluster setting.\n\nIMPORTANT: Due to limitations within pinned queries, you can only select documents using `ids` or `docs`, but cannot use both in single rule.\nIt is advised to use one or the other in query rulesets, to avoid errors.\nAdditionally, pinned queries have a maximum limit of 100 pinned hits.\nIf multiple matching rules pin more than 100 documents, only the first 100 documents are pinned in the order they are specified in the ruleset.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/search-using-query-rules.html"
         },
@@ -14898,7 +14900,7 @@
           {
             "in": "path",
             "name": "ruleset_id",
-            "description": "The unique identifier of the query ruleset to be created or updated",
+            "description": "The unique identifier of the query ruleset to be created or updated.",
             "required": true,
             "deprecated": false,
             "schema": {
@@ -14962,6 +14964,7 @@
           "query_rules"
         ],
         "summary": "Delete a query ruleset",
+        "description": "Remove a query ruleset and its associated data.\nThis is a destructive action that is not recoverable.",
         "operationId": "query-rules-delete-ruleset",
         "parameters": [
           {
@@ -15003,7 +15006,7 @@
           {
             "in": "query",
             "name": "from",
-            "description": "Starting offset (default: 0)",
+            "description": "The offset from the first result to fetch.",
             "deprecated": false,
             "schema": {
               "type": "number"
@@ -15013,7 +15016,7 @@
           {
             "in": "query",
             "name": "size",
-            "description": "specifies a max number of results to get",
+            "description": "The maximum number of results to retrieve.",
             "deprecated": false,
             "schema": {
               "type": "number"
@@ -15079,6 +15082,7 @@
                 "type": "object",
                 "properties": {
                   "match_criteria": {
+                    "description": "The match criteria to apply to rules in the given query ruleset.\nMatch criteria should match the keys defined in the `criteria.metadata` field of the rule.",
                     "type": "object",
                     "additionalProperties": {
                       "type": "object"
@@ -53154,6 +53158,7 @@
             "$ref": "#/components/schemas/query_rules._types:QueryRuleType"
           },
           "criteria": {
+            "description": "The criteria that must be met for the rule to be applied.\nIf multiple criteria are specified for a rule, all criteria must be met for the rule to be applied.",
             "oneOf": [
               {
                 "$ref": "#/components/schemas/query_rules._types:QueryRuleCriteria"
@@ -53194,9 +53199,11 @@
             "$ref": "#/components/schemas/query_rules._types:QueryRuleCriteriaType"
           },
           "metadata": {
+            "description": "The metadata field to match against.\nThis metadata will be used to match against `match_criteria` sent in the rule.\nIt is required for all criteria types except `always`.",
             "type": "string"
           },
           "values": {
+            "description": "The values to match against the `metadata` field.\nOnly one value must match for the criteria to be met.\nIt is required for all criteria types except `always`.",
             "type": "array",
             "items": {
               "type": "object"
@@ -53228,12 +53235,14 @@
         "type": "object",
         "properties": {
           "ids": {
+            "description": "The unique document IDs of the documents to apply the rule to.\nOnly one of `ids` or `docs` may be specified and at least one must be specified.",
             "type": "array",
             "items": {
               "$ref": "#/components/schemas/_types:Id"
             }
           },
           "docs": {
+            "description": "The documents to apply the rule to.\nOnly one of `ids` or `docs` may be specified and at least one must be specified.\nThere is a maximum value of 100 documents in a rule.\nYou can specify the following attributes for each document:\n\n* `_index`: The index of the document to pin.\n* `_id`: The unique document ID.",
             "type": "array",
             "items": {
               "$ref": "#/components/schemas/_types.query_dsl:PinnedDoc"
@@ -53248,7 +53257,7 @@
             "$ref": "#/components/schemas/_types:Id"
           },
           "rules": {
-            "description": "Rules associated with the query ruleset",
+            "description": "Rules associated with the query ruleset.",
             "type": "array",
             "items": {
               "$ref": "#/components/schemas/query_rules._types:QueryRule"
@@ -53267,18 +53276,18 @@
             "$ref": "#/components/schemas/_types:Id"
           },
           "rule_total_count": {
-            "description": "The number of rules associated with this ruleset",
+            "description": "The number of rules associated with the ruleset.",
             "type": "number"
           },
           "rule_criteria_types_counts": {
-            "description": "A map of criteria type (e.g. exact) to the number of rules of that type",
+            "description": "A map of criteria type (for example, `exact`) to the number of rules of that type.\n\nNOTE: The counts in `rule_criteria_types_counts` may be larger than the value of `rule_total_count` because a rule may have multiple criteria.",
             "type": "object",
             "additionalProperties": {
               "type": "number"
             }
           },
           "rule_type_counts": {
-            "description": "A map of rule type (e.g. pinned) to the number of rules of that type",
+            "description": "A map of rule type (for example, `pinned`) to the number of rules of that type.",
             "type": "object",
             "additionalProperties": {
               "type": "number"
