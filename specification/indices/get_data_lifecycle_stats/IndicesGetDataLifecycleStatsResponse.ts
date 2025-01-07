@@ -29,7 +29,7 @@ export class Response {
     /**
      * Information about the data streams that are managed by the data stream lifecycle.
      */
-    data_streams: DataStreamStats
+    data_streams: DataStreamStats[]
     /**
      * The duration of the last data stream lifecycle execution.
      */
