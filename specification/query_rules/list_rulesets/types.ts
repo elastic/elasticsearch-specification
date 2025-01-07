@@ -22,21 +22,23 @@ import { integer } from '@_types/Numeric'
 
 export class QueryRulesetListItem {
   /**
-   * Ruleset unique identifier
+   * A unique identifier for the ruleset.
    */
   ruleset_id: Id
   /**
-   * The number of rules associated with this ruleset
+   * The number of rules associated with the ruleset.
    */
   rule_total_count: integer
 
   /**
-   * A map of criteria type (e.g. exact) to the number of rules of that type
+   * A map of criteria type (for example, `exact`) to the number of rules of that type.
+   *
+   * NOTE: The counts in `rule_criteria_types_counts` may be larger than the value of `rule_total_count` because a rule may have multiple criteria.
    */
   rule_criteria_types_counts: Dictionary<string, integer>
 
   /**
-   * A map of rule type (e.g. pinned) to the number of rules of that type
+   * A map of rule type (for example, `pinned`) to the number of rules of that type.
    */
   rule_type_counts: Dictionary<string, integer>
 }

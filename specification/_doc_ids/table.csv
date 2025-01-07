@@ -455,6 +455,14 @@ query-dsl-wildcard-query,https://www.elastic.co/guide/en/elasticsearch/reference
 query-dsl-wrapper-query,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/query-dsl-wrapper-query.html
 query-dsl,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/query-dsl.html
 query-rule,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/search-using-query-rules.html
+query-rule-delete,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/delete-query-rule.html
+query-rule-get,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/get-query-rule.html
+query-rule-put,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/put-query-rule.html
+query-ruleset-delete,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/delete-query-ruleset.html
+query-ruleset-get,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/get-query-ruleset.html
+query-ruleset-list,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/list-query-rulesets.html
+query-ruleset-put,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/put-query-ruleset.html
+query-ruleset-test,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/test-query-ruleset.html
 realtime,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/docs-get.html#realtime
 redact-processor,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/redact-processor.html
 regexp-syntax,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/regexp-syntax.html
