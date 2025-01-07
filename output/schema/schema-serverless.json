@@ -4688,8 +4688,9 @@
           "stability": "stable"
         }
       },
-      "description": "Delete a Logstash pipeline.\n\nDelete a pipeline that is used for Logstash Central Management.",
-      "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/logstash-api-delete-pipeline.html",
+      "description": "Delete a Logstash pipeline.\nDelete a pipeline that is used for Logstash Central Management.\nIf the request succeeds, you receive an empty response with an appropriate status code.",
+      "docId": "logstash-api-delete-pipeline",
+      "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/logstash-api-delete-pipeline.html",
       "extDocId": "logstash-centralized-pipeline-management",
       "extDocUrl": "https://www.elastic.co/guide/en/logstash/{branch}/logstash-centralized-pipeline-management.html",
       "name": "logstash.delete_pipeline",
@@ -4730,8 +4731,9 @@
           "stability": "stable"
         }
       },
-      "description": "Get Logstash pipelines.\n\nGet pipelines that are used for Logstash Central Management.",
-      "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/logstash-api-get-pipeline.html",
+      "description": "Get Logstash pipelines.\nGet pipelines that are used for Logstash Central Management.",
+      "docId": "logstash-api-get-pipeline",
+      "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/logstash-api-get-pipeline.html",
       "extDocId": "logstash-centralized-pipeline-management",
       "extDocUrl": "https://www.elastic.co/guide/en/logstash/{branch}/logstash-centralized-pipeline-management.html",
       "name": "logstash.get_pipeline",
@@ -4779,7 +4781,8 @@
         }
       },
       "description": "Create or update a Logstash pipeline.\n\nCreate a pipeline that is used for Logstash Central Management.\nIf the specified pipeline exists, it is replaced.",
-      "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/logstash-api-put-pipeline.html",
+      "docId": "logstash-api-put-pipeline",
+      "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/logstash-api-put-pipeline.html",
       "extDocId": "logstash-centralized-pipeline-management",
       "extDocUrl": "https://www.elastic.co/guide/en/logstash/{branch}/logstash-centralized-pipeline-management.html",
       "name": "logstash.put_pipeline",
@@ -25593,7 +25596,7 @@
       "body": {
         "kind": "no_body"
       },
-      "description": "Delete a Logstash pipeline.\n\nDelete a pipeline that is used for Logstash Central Management.",
+      "description": "Delete a Logstash pipeline.\nDelete a pipeline that is used for Logstash Central Management.\nIf the request succeeds, you receive an empty response with an appropriate status code.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -25620,7 +25623,7 @@
         }
       ],
       "query": [],
-      "specLocation": "logstash/delete_pipeline/LogstashDeletePipelineRequest.ts#L23-L40"
+      "specLocation": "logstash/delete_pipeline/LogstashDeletePipelineRequest.ts#L23-L41"
     },
     {
       "body": {
@@ -25640,7 +25643,7 @@
       "body": {
         "kind": "no_body"
       },
-      "description": "Get Logstash pipelines.\n\nGet pipelines that are used for Logstash Central Management.",
+      "description": "Get Logstash pipelines.\nGet pipelines that are used for Logstash Central Management.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -25740,7 +25743,7 @@
         }
       ],
       "query": [],
-      "specLocation": "logstash/put_pipeline/LogstashPutPipelineRequest.ts#L24-L44"
+      "specLocation": "logstash/put_pipeline/LogstashPutPipelineRequest.ts#L24-L45"
     },
     {
       "body": {
