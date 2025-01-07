@@ -23,7 +23,7 @@ import { integer } from '@_types/Numeric'
 export class Response {
   body: {
     errors?: BulkError
-    noops: Array<integer>
+    noops: string[]
     updated: Array<string>
   }
 }
