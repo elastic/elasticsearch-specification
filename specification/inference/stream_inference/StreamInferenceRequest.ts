@@ -52,6 +52,6 @@ export interface Request extends RequestBase {
      *
      * NOTE: Inference endpoints for the completion task type currently only support a single string as input.
      */
-    input: string
+    input: string | string[]
   }
 }

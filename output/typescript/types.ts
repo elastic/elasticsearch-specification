@@ -13009,7 +13009,7 @@ export interface InferenceStreamInferenceRequest extends RequestBase {
   inference_id: Id
   task_type?: InferenceTaskType
   body?: {
-    input: string
+    input: string | string[]
   }
 }
 

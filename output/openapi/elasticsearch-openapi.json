@@ -107410,7 +107410,17 @@
 =======
                 "input": {
                   "description": "The text on which you want to perform the inference task.\nIt can be a single string or an array.\n\nNOTE: Inference endpoints for the completion task type currently only support a single string as input.",
-                  "type": "string"
+                  "oneOf": [
+                    {
+                      "type": "string"
+                    },
+                    {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      }
+                    }
+                  ]
                 }
               },
               "required": [
