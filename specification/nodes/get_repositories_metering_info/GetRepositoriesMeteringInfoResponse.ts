@@ -24,7 +24,7 @@ import { Name } from '@_types/common'
 
 export class ResponseBase extends NodesResponseBase {
   /**
-   * Name of the cluster. Based on the [Cluster name setting](https://www.elastic.co/guide/en/elasticsearch/reference/current/important-settings.html#cluster-name).
+   * Name of the cluster. Based on the `cluster.name` setting.
    */
   cluster_name: Name
   /**

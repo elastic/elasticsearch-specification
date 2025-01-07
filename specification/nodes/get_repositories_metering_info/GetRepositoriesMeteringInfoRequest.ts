@@ -30,6 +30,7 @@ import { NodeIds } from '@_types/common'
  * @availability serverless stability=experimental visibility=private
  * @cluster_privileges monitor, manage
  * @doc_tag cluster
+ * @doc_id get-repositories-metering-api
  */
 export interface Request extends RequestBase {
   path_parts: {
