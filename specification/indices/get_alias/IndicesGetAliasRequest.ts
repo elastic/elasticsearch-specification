@@ -26,6 +26,8 @@ import { ExpandWildcards, Indices, Names } from '@_types/common'
  * @rest_spec_name indices.get_alias
  * @availability stack stability=stable
  * @availability serverless stability=stable visibility=public
+ * @doc_id indices-get-alias
+ * @index_privileges view_index_metadata
  */
 export interface Request extends RequestBase {
   path_parts: {
