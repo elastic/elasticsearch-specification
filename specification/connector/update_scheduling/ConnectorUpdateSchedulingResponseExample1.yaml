@@ -1,0 +1,6 @@
+# summary: connector/apis/update-connector-scheduling-api.asciidoc:110
+# description: ''
+# type: response
+# response_code: 200
+value:
+  result: updated
