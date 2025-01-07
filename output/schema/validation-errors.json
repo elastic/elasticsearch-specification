@@ -908,12 +908,6 @@
       ],
       "response": []
     },
-    "search_application.post_behavioral_analytics_event": {
-      "request": [
-        "Missing request & response"
-      ],
-      "response": []
-    },
     "search_mvt": {
       "request": [
         "Request: query parameter 'grid_agg' does not exist in the json spec",
