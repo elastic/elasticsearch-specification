@@ -594,6 +594,9 @@ security-api-invalidate-api-key,https://www.elastic.co/guide/en/elasticsearch/re
 security-api-invalidate-token,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/security-api-invalidate-token.html
 security-api-kibana-enrollment,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/security-api-kibana-enrollment.html
 security-api-node-enrollment,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/security-api-node-enrollment.html
+security-api-oidc-authenticate,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/security-api-oidc-authenticate.html
+security-api-oidc-logout,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/security-api-oidc-logout.html
+security-api-oidc-prepare,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/security-api-oidc-prepare-authentication.html
 security-api-put-privileges,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/security-api-put-privileges.html
 security-api-put-role-mapping,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/security-api-put-role-mapping.html
 security-api-put-role,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/security-api-put-role.html

@@ -21,8 +21,8 @@ import { Id, Name } from '@_types/common'
 
 /**
  * The configuration necessary to identify which IP geolocation provider to use to download a database, as well as any provider-specific configuration necessary for such downloading.
- * At present, the only supported providers are maxmind and ipinfo, and the maxmind provider requires that an account_id (string) is configured.
- * A provider (either maxmind or ipinfo) must be specified. The web and local providers can be returned as read only configurations.
+ * At present, the only supported providers are `maxmind` and `ipinfo`, and the `maxmind` provider requires that an `account_id` (string) is configured.
+ * A provider (either `maxmind` or `ipinfo`) must be specified. The web and local providers can be returned as read only configurations.
  * @variants container
  */
 export class DatabaseConfiguration {
