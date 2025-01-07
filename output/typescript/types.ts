@@ -18178,7 +18178,7 @@ export interface SecurityBulkPutRoleResponse {
 export interface SecurityBulkUpdateApiKeysRequest extends RequestBase {
   body?: {
     expiration?: Duration
-    ids: string[]
+    ids: string | string[]
     metadata?: Metadata
     role_descriptors?: Record<string, SecurityRoleDescriptor>
   }
@@ -18186,7 +18186,7 @@ export interface SecurityBulkUpdateApiKeysRequest extends RequestBase {
 
 export interface SecurityBulkUpdateApiKeysResponse {
   errors?: SecurityBulkError
-  noops: integer[]
+  noops: string[]
   updated: string[]
 }
 
@@ -18315,7 +18315,7 @@ export interface SecurityDelegatePkiRequest extends RequestBase {
 
 export interface SecurityDelegatePkiResponse {
   access_token: string
-  expires_in: integer
+  expires_in: long
   type: string
 }
 

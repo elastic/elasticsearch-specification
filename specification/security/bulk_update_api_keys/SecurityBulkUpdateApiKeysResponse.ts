@@ -18,7 +18,6 @@
  */
 
 import { BulkError } from '@security/_types/Bulk'
-import { integer } from '@_types/Numeric'
 
 export class Response {
   body: {

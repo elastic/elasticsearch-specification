@@ -28579,10 +28579,17 @@
                   },
                   "ids": {
                     "description": "The API key identifiers.",
-                    "type": "array",
-                    "items": {
-                      "type": "string"
-                    }
+                    "oneOf": [
+                      {
+                        "type": "string"
+                      },
+                      {
+                        "type": "array",
+                        "items": {
+                          "type": "string"
+                        }
+                      }
+                    ]
                   },
                   "metadata": {
                     "$ref": "#/components/schemas/_types:Metadata"
@@ -28617,7 +28624,7 @@
                     "noops": {
                       "type": "array",
                       "items": {
-                        "type": "number"
+                        "type": "string"
                       }
                     },
                     "updated": {
