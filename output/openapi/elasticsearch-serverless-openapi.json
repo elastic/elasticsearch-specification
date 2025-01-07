@@ -1496,7 +1496,7 @@
           "indices"
         ],
         "summary": "Get component templates",
-        "description": "Retrieves information about component templates.",
+        "description": "Get information about component templates.",
         "operationId": "cluster-get-component-template-1",
         "parameters": [
           {
@@ -1527,7 +1527,7 @@
           "indices"
         ],
         "summary": "Create or update a component template",
-        "description": "Creates or updates a component template.\nComponent templates are building blocks for constructing index templates that specify index mappings, settings, and aliases.\n\nAn index template can be composed of multiple component templates.\nTo use a component template, specify it in an index template’s `composed_of` list.\nComponent templates are only applied to new data streams and indices as part of a matching index template.\n\nSettings and mappings specified directly in the index template or the create index request override any settings or mappings specified in a component template.\n\nComponent templates are only used during index creation.\nFor data streams, this includes data stream creation and the creation of a stream’s backing indices.\nChanges to component templates do not affect existing indices, including a stream’s backing indices.\n\nYou can use C-style `/* *\\/` block comments in component templates.\nYou can include comments anywhere in the request body except before the opening curly bracket.",
+        "description": "Component templates are building blocks for constructing index templates that specify index mappings, settings, and aliases.\n\nAn index template can be composed of multiple component templates.\nTo use a component template, specify it in an index template’s `composed_of` list.\nComponent templates are only applied to new data streams and indices as part of a matching index template.\n\nSettings and mappings specified directly in the index template or the create index request override any settings or mappings specified in a component template.\n\nComponent templates are only used during index creation.\nFor data streams, this includes data stream creation and the creation of a stream’s backing indices.\nChanges to component templates do not affect existing indices, including a stream’s backing indices.\n\nYou can use C-style `/* *\\/` block comments in component templates.\nYou can include comments anywhere in the request body except before the opening curly bracket.\n\n**Applying component templates**\n\nYou cannot directly apply a component template to a data stream or index.\nTo be applied, a component template must be included in an index template's `composed_of` list.",
         "operationId": "cluster-put-component-template",
         "parameters": [
           {
@@ -1555,7 +1555,7 @@
           "indices"
         ],
         "summary": "Create or update a component template",
-        "description": "Creates or updates a component template.\nComponent templates are building blocks for constructing index templates that specify index mappings, settings, and aliases.\n\nAn index template can be composed of multiple component templates.\nTo use a component template, specify it in an index template’s `composed_of` list.\nComponent templates are only applied to new data streams and indices as part of a matching index template.\n\nSettings and mappings specified directly in the index template or the create index request override any settings or mappings specified in a component template.\n\nComponent templates are only used during index creation.\nFor data streams, this includes data stream creation and the creation of a stream’s backing indices.\nChanges to component templates do not affect existing indices, including a stream’s backing indices.\n\nYou can use C-style `/* *\\/` block comments in component templates.\nYou can include comments anywhere in the request body except before the opening curly bracket.",
+        "description": "Component templates are building blocks for constructing index templates that specify index mappings, settings, and aliases.\n\nAn index template can be composed of multiple component templates.\nTo use a component template, specify it in an index template’s `composed_of` list.\nComponent templates are only applied to new data streams and indices as part of a matching index template.\n\nSettings and mappings specified directly in the index template or the create index request override any settings or mappings specified in a component template.\n\nComponent templates are only used during index creation.\nFor data streams, this includes data stream creation and the creation of a stream’s backing indices.\nChanges to component templates do not affect existing indices, including a stream’s backing indices.\n\nYou can use C-style `/* *\\/` block comments in component templates.\nYou can include comments anywhere in the request body except before the opening curly bracket.\n\n**Applying component templates**\n\nYou cannot directly apply a component template to a data stream or index.\nTo be applied, a component template must be included in an index template's `composed_of` list.",
         "operationId": "cluster-put-component-template-1",
         "parameters": [
           {
@@ -1583,7 +1583,7 @@
           "indices"
         ],
         "summary": "Delete component templates",
-        "description": "Deletes component templates.\nComponent templates are building blocks for constructing index templates that specify index mappings, settings, and aliases.",
+        "description": "Component templates are building blocks for constructing index templates that specify index mappings, settings, and aliases.",
         "operationId": "cluster-delete-component-template",
         "parameters": [
           {
@@ -1689,7 +1689,7 @@
           "indices"
         ],
         "summary": "Get component templates",
-        "description": "Retrieves information about component templates.",
+        "description": "Get information about component templates.",
         "operationId": "cluster-get-component-template",
         "parameters": [
           {
@@ -6023,7 +6023,10 @@
           "indices"
         ],
         "summary": "Get tokens from text analysis",
-        "description": "The analyze API performs [analysis](https://www.elastic.co/guide/en/elasticsearch/reference/current/analysis.html) on a text string and returns the resulting tokens.",
+        "description": "The analyze API performs analysis on a text string and returns the resulting tokens.\n\nGenerating excessive amount of tokens may cause a node to run out of memory.\nThe `index.analyze.max_token_count` setting enables you to limit the number of tokens that can be produced.\nIf more than this limit of tokens gets generated, an error occurs.\nThe `_analyze` endpoint without a specified index will always use `10000` as its limit.",
+        "externalDocs": {
+          "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/analysis.html"
+        },
         "operationId": "indices-analyze",
         "requestBody": {
           "$ref": "#/components/requestBodies/indices.analyze"
@@ -6039,7 +6042,10 @@
           "indices"
         ],
         "summary": "Get tokens from text analysis",
-        "description": "The analyze API performs [analysis](https://www.elastic.co/guide/en/elasticsearch/reference/current/analysis.html) on a text string and returns the resulting tokens.",
+        "description": "The analyze API performs analysis on a text string and returns the resulting tokens.\n\nGenerating excessive amount of tokens may cause a node to run out of memory.\nThe `index.analyze.max_token_count` setting enables you to limit the number of tokens that can be produced.\nIf more than this limit of tokens gets generated, an error occurs.\nThe `_analyze` endpoint without a specified index will always use `10000` as its limit.",
+        "externalDocs": {
+          "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/analysis.html"
+        },
         "operationId": "indices-analyze-1",
         "requestBody": {
           "$ref": "#/components/requestBodies/indices.analyze"
@@ -6057,7 +6063,10 @@
           "indices"
         ],
         "summary": "Get tokens from text analysis",
-        "description": "The analyze API performs [analysis](https://www.elastic.co/guide/en/elasticsearch/reference/current/analysis.html) on a text string and returns the resulting tokens.",
+        "description": "The analyze API performs analysis on a text string and returns the resulting tokens.\n\nGenerating excessive amount of tokens may cause a node to run out of memory.\nThe `index.analyze.max_token_count` setting enables you to limit the number of tokens that can be produced.\nIf more than this limit of tokens gets generated, an error occurs.\nThe `_analyze` endpoint without a specified index will always use `10000` as its limit.",
+        "externalDocs": {
+          "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/analysis.html"
+        },
         "operationId": "indices-analyze-2",
         "parameters": [
           {
@@ -6078,7 +6087,10 @@
           "indices"
         ],
         "summary": "Get tokens from text analysis",
-        "description": "The analyze API performs [analysis](https://www.elastic.co/guide/en/elasticsearch/reference/current/analysis.html) on a text string and returns the resulting tokens.",
+        "description": "The analyze API performs analysis on a text string and returns the resulting tokens.\n\nGenerating excessive amount of tokens may cause a node to run out of memory.\nThe `index.analyze.max_token_count` setting enables you to limit the number of tokens that can be produced.\nIf more than this limit of tokens gets generated, an error occurs.\nThe `_analyze` endpoint without a specified index will always use `10000` as its limit.",
+        "externalDocs": {
+          "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/analysis.html"
+        },
         "operationId": "indices-analyze-3",
         "parameters": [
           {
@@ -6101,7 +6113,7 @@
           "indices"
         ],
         "summary": "Get index information",
-        "description": "Returns information about one or more indices. For data streams, the API returns information about the\nstream’s backing indices.",
+        "description": "Get information about one or more indices. For data streams, the API returns information about the\nstream’s backing indices.",
         "operationId": "indices-get",
         "parameters": [
           {
@@ -6217,7 +6229,7 @@
           "indices"
         ],
         "summary": "Create an index",
-        "description": "Creates a new index.",
+        "description": "You can use the create index API to add a new index to an Elasticsearch cluster.\nWhen creating an index, you can specify the following:\n\n* Settings for the index.\n* Mappings for fields in the index.\n* Index aliases\n\n**Wait for active shards**\n\nBy default, index creation will only return a response to the client when the primary copies of each shard have been started, or the request times out.\nThe index creation response will indicate what happened.\nFor example, `acknowledged` indicates whether the index was successfully created in the cluster, `while shards_acknowledged` indicates whether the requisite number of shard copies were started for each shard in the index before timing out.\nNote that it is still possible for either `acknowledged` or `shards_acknowledged` to be `false`, but for the index creation to be successful.\nThese values simply indicate whether the operation completed before the timeout.\nIf `acknowledged` is false, the request timed out before the cluster state was updated with the newly created index, but it probably will be created sometime soon.\nIf `shards_acknowledged` is false, then the request timed out before the requisite number of shards were started (by default just the primaries), even if the cluster state was successfully updated to reflect the newly created index (that is to say, `acknowledged` is `true`).\n\nYou can change the default of only waiting for the primary shards to start through the index setting `index.write.wait_for_active_shards`.\nNote that changing this setting will also affect the `wait_for_active_shards` value on all subsequent write operations.",
         "operationId": "indices-create",
         "parameters": [
           {
@@ -6320,7 +6332,7 @@
           "indices"
         ],
         "summary": "Delete indices",
-        "description": "Deletes one or more indices.",
+        "description": "Deleting an index deletes its documents, shards, and metadata.\nIt does not delete related Kibana components, such as data views, visualizations, or dashboards.\n\nYou cannot delete the current write index of a data stream.\nTo delete the index, you must roll over the data stream so a new write index is created.\nYou can then use the delete index API to delete the previous write index.",
         "operationId": "indices-delete",
         "parameters": [
           {
@@ -6403,7 +6415,7 @@
           "indices"
         ],
         "summary": "Check indices",
-        "description": "Checks if one or more indices, index aliases, or data streams exist.",
+        "description": "Check if one or more indices, index aliases, or data streams exist.",
         "operationId": "indices-exists",
         "parameters": [
           {
@@ -7139,7 +7151,7 @@
           "indices"
         ],
         "summary": "Get index templates",
-        "description": "Returns information about one or more index templates.",
+        "description": "Get information about one or more index templates.",
         "operationId": "indices-get-index-template-1",
         "parameters": [
           {
@@ -7170,7 +7182,7 @@
           "indices"
         ],
         "summary": "Create or update an index template",
-        "description": "Index templates define settings, mappings, and aliases that can be applied automatically to new indices.",
+        "description": "Index templates define settings, mappings, and aliases that can be applied automatically to new indices.\n\nElasticsearch applies templates to new indices based on an wildcard pattern that matches the index name.\nIndex templates are applied during data stream or index creation.\nFor data streams, these settings and mappings are applied when the stream's backing indices are created.\nSettings and mappings specified in a create index API request override any settings or mappings specified in an index template.\nChanges to index templates do not affect existing indices, including the existing backing indices of a data stream.\n\nYou can use C-style `/* *\\/` block comments in index templates.\nYou can include comments anywhere in the request body, except before the opening curly bracket.\n\n**Multiple matching templates**\n\nIf multiple index templates match the name of a new index or data stream, the template with the highest priority is used.\n\nMultiple templates with overlapping index patterns at the same priority are not allowed and an error will be thrown when attempting to create a template matching an existing index template at identical priorities.\n\n**Composing aliases, mappings, and settings**\n\nWhen multiple component templates are specified in the `composed_of` field for an index template, they are merged in the order specified, meaning that later component templates override earlier component templates.\nAny mappings, settings, or aliases from the parent index template are merged in next.\nFinally, any configuration on the index request itself is merged.\nMapping definitions are merged recursively, which means that later mapping components can introduce new field mappings and update the mapping configuration.\nIf a field mapping is already contained in an earlier component, its definition will be completely overwritten by the later one.\nThis recursive merging strategy applies not only to field mappings, but also root options like `dynamic_templates` and `meta`.\nIf an earlier component contains a `dynamic_templates` block, then by default new `dynamic_templates` entries are appended onto the end.\nIf an entry already exists with the same key, then it is overwritten by the new definition.",
         "operationId": "indices-put-index-template",
         "parameters": [
           {
@@ -7201,7 +7213,7 @@
           "indices"
         ],
         "summary": "Create or update an index template",
-        "description": "Index templates define settings, mappings, and aliases that can be applied automatically to new indices.",
+        "description": "Index templates define settings, mappings, and aliases that can be applied automatically to new indices.\n\nElasticsearch applies templates to new indices based on an wildcard pattern that matches the index name.\nIndex templates are applied during data stream or index creation.\nFor data streams, these settings and mappings are applied when the stream's backing indices are created.\nSettings and mappings specified in a create index API request override any settings or mappings specified in an index template.\nChanges to index templates do not affect existing indices, including the existing backing indices of a data stream.\n\nYou can use C-style `/* *\\/` block comments in index templates.\nYou can include comments anywhere in the request body, except before the opening curly bracket.\n\n**Multiple matching templates**\n\nIf multiple index templates match the name of a new index or data stream, the template with the highest priority is used.\n\nMultiple templates with overlapping index patterns at the same priority are not allowed and an error will be thrown when attempting to create a template matching an existing index template at identical priorities.\n\n**Composing aliases, mappings, and settings**\n\nWhen multiple component templates are specified in the `composed_of` field for an index template, they are merged in the order specified, meaning that later component templates override earlier component templates.\nAny mappings, settings, or aliases from the parent index template are merged in next.\nFinally, any configuration on the index request itself is merged.\nMapping definitions are merged recursively, which means that later mapping components can introduce new field mappings and update the mapping configuration.\nIf a field mapping is already contained in an earlier component, its definition will be completely overwritten by the later one.\nThis recursive merging strategy applies not only to field mappings, but also root options like `dynamic_templates` and `meta`.\nIf an earlier component contains a `dynamic_templates` block, then by default new `dynamic_templates` entries are appended onto the end.\nIf an entry already exists with the same key, then it is overwritten by the new definition.",
         "operationId": "indices-put-index-template-1",
         "parameters": [
           {
@@ -7547,7 +7559,7 @@
           "indices"
         ],
         "summary": "Get index templates",
-        "description": "Returns information about one or more index templates.",
+        "description": "Get information about one or more index templates.",
         "operationId": "indices-get-index-template",
         "parameters": [
           {
@@ -7577,7 +7589,7 @@
           "indices"
         ],
         "summary": "Get mapping definitions",
-        "description": "Retrieves mapping definitions for one or more indices.\nFor data streams, the API retrieves mappings for the stream’s backing indices.",
+        "description": "For data streams, the API retrieves mappings for the stream’s backing indices.",
         "operationId": "indices-get-mapping",
         "parameters": [
           {
@@ -7609,7 +7621,7 @@
           "indices"
         ],
         "summary": "Get mapping definitions",
-        "description": "Retrieves mapping definitions for one or more indices.\nFor data streams, the API retrieves mappings for the stream’s backing indices.",
+        "description": "For data streams, the API retrieves mappings for the stream’s backing indices.",
         "operationId": "indices-get-mapping-1",
         "parameters": [
           {
@@ -7642,7 +7654,10 @@
           "indices"
         ],
         "summary": "Update field mappings",
-        "description": "Adds new fields to an existing data stream or index.\nYou can also use this API to change the search settings of existing fields.\nFor data streams, these changes are applied to all backing indices by default.",
+        "description": "Add new fields to an existing data stream or index.\nYou can also use this API to change the search settings of existing fields and add new properties to existing object fields.\nFor data streams, these changes are applied to all backing indices by default.\n\n**Add multi-fields to an existing field**\n\nMulti-fields let you index the same field in different ways.\nYou can use this API to update the fields mapping parameter and enable multi-fields for an existing field.\nWARNING: If an index (or data stream) contains documents when you add a multi-field, those documents will not have values for the new multi-field.\nYou can populate the new multi-field with the update by query API.\n\n**Change supported mapping parameters for an existing field**\n\nThe documentation for each mapping parameter indicates whether you can update it for an existing field using this API.\nFor example, you can use the update mapping API to update the `ignore_above` parameter.\n\n**Change the mapping of an existing field**\n\nExcept for supported mapping parameters, you can't change the mapping or field type of an existing field.\nChanging an existing field could invalidate data that's already indexed.\n\nIf you need to change the mapping of a field in a data stream's backing indices, refer to documentation about modifying data streams.\nIf you need to change the mapping of a field in other indices, create a new index with the correct mapping and reindex your data into that index.\n\n**Rename a field**\n\nRenaming a field would invalidate data already indexed under the old field name.\nInstead, add an alias field to create an alternate field name.",
+        "externalDocs": {
+          "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/mapping-params.html"
+        },
         "operationId": "indices-put-mapping",
         "parameters": [
           {
@@ -7681,7 +7696,10 @@
           "indices"
         ],
         "summary": "Update field mappings",
-        "description": "Adds new fields to an existing data stream or index.\nYou can also use this API to change the search settings of existing fields.\nFor data streams, these changes are applied to all backing indices by default.",
+        "description": "Add new fields to an existing data stream or index.\nYou can also use this API to change the search settings of existing fields and add new properties to existing object fields.\nFor data streams, these changes are applied to all backing indices by default.\n\n**Add multi-fields to an existing field**\n\nMulti-fields let you index the same field in different ways.\nYou can use this API to update the fields mapping parameter and enable multi-fields for an existing field.\nWARNING: If an index (or data stream) contains documents when you add a multi-field, those documents will not have values for the new multi-field.\nYou can populate the new multi-field with the update by query API.\n\n**Change supported mapping parameters for an existing field**\n\nThe documentation for each mapping parameter indicates whether you can update it for an existing field using this API.\nFor example, you can use the update mapping API to update the `ignore_above` parameter.\n\n**Change the mapping of an existing field**\n\nExcept for supported mapping parameters, you can't change the mapping or field type of an existing field.\nChanging an existing field could invalidate data that's already indexed.\n\nIf you need to change the mapping of a field in a data stream's backing indices, refer to documentation about modifying data streams.\nIf you need to change the mapping of a field in other indices, create a new index with the correct mapping and reindex your data into that index.\n\n**Rename a field**\n\nRenaming a field would invalidate data already indexed under the old field name.\nInstead, add an alias field to create an alternate field name.",
+        "externalDocs": {
+          "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/mapping-params.html"
+        },
         "operationId": "indices-put-mapping-1",
         "parameters": [
           {
@@ -7722,7 +7740,7 @@
           "indices"
         ],
         "summary": "Get index settings",
-        "description": "Returns setting information for one or more indices. For data streams,\nreturns setting information for the stream’s backing indices.",
+        "description": "Get setting information for one or more indices.\nFor data streams, it returns setting information for the stream's backing indices.",
         "operationId": "indices-get-settings",
         "parameters": [
           {
@@ -7758,7 +7776,10 @@
           "indices"
         ],
         "summary": "Update index settings",
-        "description": "Changes dynamic index settings in real time. For data streams, index setting\nchanges are applied to all backing indices by default.",
+        "description": "Changes dynamic index settings in real time.\nFor data streams, index setting changes are applied to all backing indices by default.\n\nTo revert a setting to the default value, use a null value.\nThe list of per-index settings that can be updated dynamically on live indices can be found in index module documentation.\nTo preserve existing settings from being updated, set the `preserve_existing` parameter to `true`.\n\nNOTE: You can only define new analyzers on closed indices.\nTo add an analyzer, you must close the index, define the analyzer, and reopen the index.\nYou cannot close the write index of a data stream.\nTo update the analyzer for a data stream's write index and future backing indices, update the analyzer in the index template used by the stream.\nThen roll over the data stream to apply the new analyzer to the stream's write index and future backing indices.\nThis affects searches and any new data added to the stream after the rollover.\nHowever, it does not affect the data stream's backing indices or their existing data.\nTo change the analyzer for existing backing indices, you must create a new data stream and reindex your data into it.",
+        "externalDocs": {
+          "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/index-modules.html"
+        },
         "operationId": "indices-put-settings",
         "parameters": [
           {
@@ -7799,7 +7820,7 @@
           "indices"
         ],
         "summary": "Get index settings",
-        "description": "Returns setting information for one or more indices. For data streams,\nreturns setting information for the stream’s backing indices.",
+        "description": "Get setting information for one or more indices.\nFor data streams, it returns setting information for the stream's backing indices.",
         "operationId": "indices-get-settings-1",
         "parameters": [
           {
@@ -7838,7 +7859,10 @@
           "indices"
         ],
         "summary": "Update index settings",
-        "description": "Changes dynamic index settings in real time. For data streams, index setting\nchanges are applied to all backing indices by default.",
+        "description": "Changes dynamic index settings in real time.\nFor data streams, index setting changes are applied to all backing indices by default.\n\nTo revert a setting to the default value, use a null value.\nThe list of per-index settings that can be updated dynamically on live indices can be found in index module documentation.\nTo preserve existing settings from being updated, set the `preserve_existing` parameter to `true`.\n\nNOTE: You can only define new analyzers on closed indices.\nTo add an analyzer, you must close the index, define the analyzer, and reopen the index.\nYou cannot close the write index of a data stream.\nTo update the analyzer for a data stream's write index and future backing indices, update the analyzer in the index template used by the stream.\nThen roll over the data stream to apply the new analyzer to the stream's write index and future backing indices.\nThis affects searches and any new data added to the stream after the rollover.\nHowever, it does not affect the data stream's backing indices or their existing data.\nTo change the analyzer for existing backing indices, you must create a new data stream and reindex your data into it.",
+        "externalDocs": {
+          "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/index-modules.html"
+        },
         "operationId": "indices-put-settings-1",
         "parameters": [
           {
@@ -7882,7 +7906,7 @@
           "indices"
         ],
         "summary": "Get index settings",
-        "description": "Returns setting information for one or more indices. For data streams,\nreturns setting information for the stream’s backing indices.",
+        "description": "Get setting information for one or more indices.\nFor data streams, it returns setting information for the stream's backing indices.",
         "operationId": "indices-get-settings-2",
         "parameters": [
           {
@@ -7926,7 +7950,7 @@
           "indices"
         ],
         "summary": "Get index settings",
-        "description": "Returns setting information for one or more indices. For data streams,\nreturns setting information for the stream’s backing indices.",
+        "description": "Get setting information for one or more indices.\nFor data streams, it returns setting information for the stream's backing indices.",
         "operationId": "indices-get-settings-3",
         "parameters": [
           {
@@ -8068,7 +8092,7 @@
           "indices"
         ],
         "summary": "Create or update an index template",
-        "description": "Index templates define settings, mappings, and aliases that can be applied automatically to new indices.\nElasticsearch applies templates to new indices based on an index pattern that matches the index name.\n\nIMPORTANT: This documentation is about legacy index templates, which are deprecated and will be replaced by the composable templates introduced in Elasticsearch 7.8.\n\nComposable templates always take precedence over legacy templates.\nIf no composable template matches a new index, matching legacy templates are applied according to their order.\n\nIndex templates are only applied during index creation.\nChanges to index templates do not affect existing indices.\nSettings and mappings specified in create index API requests override any settings or mappings specified in an index template.",
+        "description": "Index templates define settings, mappings, and aliases that can be applied automatically to new indices.\nElasticsearch applies templates to new indices based on an index pattern that matches the index name.\n\nIMPORTANT: This documentation is about legacy index templates, which are deprecated and will be replaced by the composable templates introduced in Elasticsearch 7.8.\n\nComposable templates always take precedence over legacy templates.\nIf no composable template matches a new index, matching legacy templates are applied according to their order.\n\nIndex templates are only applied during index creation.\nChanges to index templates do not affect existing indices.\nSettings and mappings specified in create index API requests override any settings or mappings specified in an index template.\n\nYou can use C-style `/* *\\/` block comments in index templates.\nYou can include comments anywhere in the request body, except before the opening curly bracket.\n\n**Indices matching multiple templates**\n\nMultiple index templates can potentially match an index, in this case, both the settings and mappings are merged into the final configuration of the index.\nThe order of the merging can be controlled using the order parameter, with lower order being applied first, and higher orders overriding them.\nNOTE: Multiple matching templates with the same order value will result in a non-deterministic merging order.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/index-templates.html"
         },
@@ -8104,7 +8128,7 @@
           "indices"
         ],
         "summary": "Create or update an index template",
-        "description": "Index templates define settings, mappings, and aliases that can be applied automatically to new indices.\nElasticsearch applies templates to new indices based on an index pattern that matches the index name.\n\nIMPORTANT: This documentation is about legacy index templates, which are deprecated and will be replaced by the composable templates introduced in Elasticsearch 7.8.\n\nComposable templates always take precedence over legacy templates.\nIf no composable template matches a new index, matching legacy templates are applied according to their order.\n\nIndex templates are only applied during index creation.\nChanges to index templates do not affect existing indices.\nSettings and mappings specified in create index API requests override any settings or mappings specified in an index template.",
+        "description": "Index templates define settings, mappings, and aliases that can be applied automatically to new indices.\nElasticsearch applies templates to new indices based on an index pattern that matches the index name.\n\nIMPORTANT: This documentation is about legacy index templates, which are deprecated and will be replaced by the composable templates introduced in Elasticsearch 7.8.\n\nComposable templates always take precedence over legacy templates.\nIf no composable template matches a new index, matching legacy templates are applied according to their order.\n\nIndex templates are only applied during index creation.\nChanges to index templates do not affect existing indices.\nSettings and mappings specified in create index API requests override any settings or mappings specified in an index template.\n\nYou can use C-style `/* *\\/` block comments in index templates.\nYou can include comments anywhere in the request body, except before the opening curly bracket.\n\n**Indices matching multiple templates**\n\nMultiple index templates can potentially match an index, in this case, both the settings and mappings are merged into the final configuration of the index.\nThe order of the merging can be controlled using the order parameter, with lower order being applied first, and higher orders overriding them.\nNOTE: Multiple matching templates with the same order value will result in a non-deterministic merging order.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/index-templates.html"
         },
@@ -8142,7 +8166,7 @@
           "indices"
         ],
         "summary": "Refresh an index",
-        "description": "A refresh makes recent operations performed on one or more indices available for search.\nFor data streams, the API runs the refresh operation on the stream’s backing indices.",
+        "description": "A refresh makes recent operations performed on one or more indices available for search.\nFor data streams, the API runs the refresh operation on the stream’s backing indices.\n\nBy default, Elasticsearch periodically refreshes indices every second, but only on indices that have received one search request or more in the last 30 seconds.\nYou can change this default interval with the `index.refresh_interval` setting.\n\nRefresh requests are synchronous and do not return a response until the refresh operation completes.\n\nRefreshes are resource-intensive.\nTo ensure good cluster performance, it's recommended to wait for Elasticsearch's periodic refresh rather than performing an explicit refresh when possible.\n\nIf your application workflow indexes documents and then runs a search to retrieve the indexed document, it's recommended to use the index API's `refresh=wait_for` query parameter option.\nThis option ensures the indexing operation waits for a periodic refresh before running the search.",
         "operationId": "indices-refresh-1",
         "parameters": [
           {
@@ -8166,7 +8190,7 @@
           "indices"
         ],
         "summary": "Refresh an index",
-        "description": "A refresh makes recent operations performed on one or more indices available for search.\nFor data streams, the API runs the refresh operation on the stream’s backing indices.",
+        "description": "A refresh makes recent operations performed on one or more indices available for search.\nFor data streams, the API runs the refresh operation on the stream’s backing indices.\n\nBy default, Elasticsearch periodically refreshes indices every second, but only on indices that have received one search request or more in the last 30 seconds.\nYou can change this default interval with the `index.refresh_interval` setting.\n\nRefresh requests are synchronous and do not return a response until the refresh operation completes.\n\nRefreshes are resource-intensive.\nTo ensure good cluster performance, it's recommended to wait for Elasticsearch's periodic refresh rather than performing an explicit refresh when possible.\n\nIf your application workflow indexes documents and then runs a search to retrieve the indexed document, it's recommended to use the index API's `refresh=wait_for` query parameter option.\nThis option ensures the indexing operation waits for a periodic refresh before running the search.",
         "operationId": "indices-refresh",
         "parameters": [
           {
@@ -8192,7 +8216,7 @@
           "indices"
         ],
         "summary": "Refresh an index",
-        "description": "A refresh makes recent operations performed on one or more indices available for search.\nFor data streams, the API runs the refresh operation on the stream’s backing indices.",
+        "description": "A refresh makes recent operations performed on one or more indices available for search.\nFor data streams, the API runs the refresh operation on the stream’s backing indices.\n\nBy default, Elasticsearch periodically refreshes indices every second, but only on indices that have received one search request or more in the last 30 seconds.\nYou can change this default interval with the `index.refresh_interval` setting.\n\nRefresh requests are synchronous and do not return a response until the refresh operation completes.\n\nRefreshes are resource-intensive.\nTo ensure good cluster performance, it's recommended to wait for Elasticsearch's periodic refresh rather than performing an explicit refresh when possible.\n\nIf your application workflow indexes documents and then runs a search to retrieve the indexed document, it's recommended to use the index API's `refresh=wait_for` query parameter option.\nThis option ensures the indexing operation waits for a periodic refresh before running the search.",
         "operationId": "indices-refresh-3",
         "parameters": [
           {
@@ -8219,7 +8243,7 @@
           "indices"
         ],
         "summary": "Refresh an index",
-        "description": "A refresh makes recent operations performed on one or more indices available for search.\nFor data streams, the API runs the refresh operation on the stream’s backing indices.",
+        "description": "A refresh makes recent operations performed on one or more indices available for search.\nFor data streams, the API runs the refresh operation on the stream’s backing indices.\n\nBy default, Elasticsearch periodically refreshes indices every second, but only on indices that have received one search request or more in the last 30 seconds.\nYou can change this default interval with the `index.refresh_interval` setting.\n\nRefresh requests are synchronous and do not return a response until the refresh operation completes.\n\nRefreshes are resource-intensive.\nTo ensure good cluster performance, it's recommended to wait for Elasticsearch's periodic refresh rather than performing an explicit refresh when possible.\n\nIf your application workflow indexes documents and then runs a search to retrieve the indexed document, it's recommended to use the index API's `refresh=wait_for` query parameter option.\nThis option ensures the indexing operation waits for a periodic refresh before running the search.",
         "operationId": "indices-refresh-2",
         "parameters": [
           {
@@ -8339,7 +8363,7 @@
           "indices"
         ],
         "summary": "Roll over to a new index",
-        "description": "Creates a new index for a data stream or index alias.",
+        "description": "TIP: It is recommended to use the index lifecycle rollover action to automate rollovers.\n\nThe rollover API creates a new index for a data stream or index alias.\nThe API behavior depends on the rollover target.\n\n**Roll over a data stream**\n\nIf you roll over a data stream, the API creates a new write index for the stream.\nThe stream's previous write index becomes a regular backing index.\nA rollover also increments the data stream's generation.\n\n**Roll over an index alias with a write index**\n\nTIP: Prior to Elasticsearch 7.9, you'd typically use an index alias with a write index to manage time series data.\nData streams replace this functionality, require less maintenance, and automatically integrate with data tiers.\n\nIf an index alias points to multiple indices, one of the indices must be a write index.\nThe rollover API creates a new write index for the alias with `is_write_index` set to `true`.\nThe API also `sets is_write_index` to `false` for the previous write index.\n\n**Roll over an index alias with one index**\n\nIf you roll over an index alias that points to only one index, the API creates a new index for the alias and removes the original index from the alias.\n\nNOTE: A rollover creates a new index and is subject to the `wait_for_active_shards` setting.\n\n**Increment index names for an alias**\n\nWhen you roll over an index alias, you can specify a name for the new index.\nIf you don't specify a name and the current index ends with `-` and a number, such as `my-index-000001` or `my-index-3`, the new index name increments that number.\nFor example, if you roll over an alias with a current index of `my-index-000001`, the rollover creates a new index named `my-index-000002`.\nThis number is always six characters and zero-padded, regardless of the previous index's name.\n\nIf you use an index alias for time series data, you can use date math in the index name to track the rollover date.\nFor example, you can create an alias that points to an index named `<my-index-{now/d}-000001>`.\nIf you create the index on May 6, 2099, the index's name is `my-index-2099.05.06-000001`.\nIf you roll over the alias on May 7, 2099, the new index's name is `my-index-2099.05.07-000002`.",
         "operationId": "indices-rollover",
         "parameters": [
           {
@@ -8375,7 +8399,7 @@
           "indices"
         ],
         "summary": "Roll over to a new index",
-        "description": "Creates a new index for a data stream or index alias.",
+        "description": "TIP: It is recommended to use the index lifecycle rollover action to automate rollovers.\n\nThe rollover API creates a new index for a data stream or index alias.\nThe API behavior depends on the rollover target.\n\n**Roll over a data stream**\n\nIf you roll over a data stream, the API creates a new write index for the stream.\nThe stream's previous write index becomes a regular backing index.\nA rollover also increments the data stream's generation.\n\n**Roll over an index alias with a write index**\n\nTIP: Prior to Elasticsearch 7.9, you'd typically use an index alias with a write index to manage time series data.\nData streams replace this functionality, require less maintenance, and automatically integrate with data tiers.\n\nIf an index alias points to multiple indices, one of the indices must be a write index.\nThe rollover API creates a new write index for the alias with `is_write_index` set to `true`.\nThe API also `sets is_write_index` to `false` for the previous write index.\n\n**Roll over an index alias with one index**\n\nIf you roll over an index alias that points to only one index, the API creates a new index for the alias and removes the original index from the alias.\n\nNOTE: A rollover creates a new index and is subject to the `wait_for_active_shards` setting.\n\n**Increment index names for an alias**\n\nWhen you roll over an index alias, you can specify a name for the new index.\nIf you don't specify a name and the current index ends with `-` and a number, such as `my-index-000001` or `my-index-3`, the new index name increments that number.\nFor example, if you roll over an alias with a current index of `my-index-000001`, the rollover creates a new index named `my-index-000002`.\nThis number is always six characters and zero-padded, regardless of the previous index's name.\n\nIf you use an index alias for time series data, you can use date math in the index name to track the rollover date.\nFor example, you can create an alias that points to an index named `<my-index-{now/d}-000001>`.\nIf you create the index on May 6, 2099, the index's name is `my-index-2099.05.06-000001`.\nIf you roll over the alias on May 7, 2099, the new index's name is `my-index-2099.05.07-000002`.",
         "operationId": "indices-rollover-1",
         "parameters": [
           {
@@ -8414,7 +8438,7 @@
           "indices"
         ],
         "summary": "Simulate an index",
-        "description": "Returns the index configuration that would be applied to the specified index from an existing index template.",
+        "description": "Get the index configuration that would be applied to the specified index from an existing index template.",
         "operationId": "indices-simulate-index-template",
         "parameters": [
           {
@@ -8484,7 +8508,7 @@
           "indices"
         ],
         "summary": "Simulate an index template",
-        "description": "Returns the index configuration that would be applied by a particular index template.",
+        "description": "Get the index configuration that would be applied by a particular index template.",
         "operationId": "indices-simulate-template",
         "parameters": [
           {
@@ -8513,7 +8537,7 @@
           "indices"
         ],
         "summary": "Simulate an index template",
-        "description": "Returns the index configuration that would be applied by a particular index template.",
+        "description": "Get the index configuration that would be applied by a particular index template.",
         "operationId": "indices-simulate-template-1",
         "parameters": [
           {
