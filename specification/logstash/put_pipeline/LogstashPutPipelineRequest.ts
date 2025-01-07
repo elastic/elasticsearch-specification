@@ -30,6 +30,7 @@ import { Id } from '@_types/common'
  * @availability stack since=7.12.0 stability=stable
  * @availability serverless stability=stable visibility=public
  * @cluster_privileges manage_logstash_pipelines
+ * @doc_id logstash-api-put-pipeline
  * @ext_doc_id logstash-centralized-pipeline-management
  */
 export interface Request extends RequestBase {
