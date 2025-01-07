@@ -24,6 +24,6 @@ export class Response {
   body: {
     errors?: BulkError
     noops: string[]
-    updated: Array<string>
+    updated: string[]
   }
 }
