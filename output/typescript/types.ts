@@ -10086,11 +10086,11 @@ export interface ConnectorSyncJobPostResponse {
 export interface ConnectorSyncJobUpdateStatsRequest extends RequestBase {
   connector_sync_job_id: Id
   body?: {
-    deleted_document_count: integer
-    indexed_document_count: integer
-    indexed_document_volume: integer
-    last_seen?: integer
-    metadata?: Record<string, any>
+    deleted_document_count: long
+    indexed_document_count: long
+    indexed_document_volume: long
+    last_seen?: Duration
+    metadata?: Metadata
     total_document_count?: integer
   }
 }

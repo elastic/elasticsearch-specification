@@ -5352,15 +5352,10 @@
                     "type": "number"
                   },
                   "last_seen": {
-                    "description": "The timestamp to use in the `last_seen` property for the connector sync job.",
-                    "type": "number"
+                    "$ref": "#/components/schemas/_types:Duration"
                   },
                   "metadata": {
-                    "description": "The connector-specific metadata.",
-                    "type": "object",
-                    "additionalProperties": {
-                      "type": "object"
-                    }
+                    "$ref": "#/components/schemas/_types:Metadata"
                   },
                   "total_document_count": {
                     "description": "The total number of documents in the target index after the sync job finished.",

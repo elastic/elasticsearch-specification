@@ -16,11 +16,10 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-import { Dictionary } from '@spec_utils/Dictionary'
-import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 import { RequestBase } from '@_types/Base'
-import { Id } from '@_types/common'
-import { integer } from '@_types/Numeric'
+import { Id, Metadata } from '@_types/common'
+import { integer, long } from '@_types/Numeric'
+import { Duration } from '@_types/Time'
 
 /**
  * Set the connector sync job stats.
@@ -48,23 +47,23 @@ export interface Request extends RequestBase {
     /**
      * The number of documents the sync job deleted.
      */
-    deleted_document_count: integer
+    deleted_document_count: long
     /**
      * The number of documents the sync job indexed.
      */
-    indexed_document_count: integer
+    indexed_document_count: long
     /**
      * The total size of the data (in MiB) the sync job indexed.
      */
-    indexed_document_volume: integer
+    indexed_document_volume: long
     /**
      * The timestamp to use in the `last_seen` property for the connector sync job.
      */
-    last_seen?: integer
+    last_seen?: Duration
     /**
      * The connector-specific metadata.
      */
-    metadata?: Dictionary<string, UserDefinedValue>
+    metadata?: Metadata
     /**
      * The total number of documents in the target index after the sync job finished.
      */
