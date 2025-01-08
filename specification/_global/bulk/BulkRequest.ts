@@ -41,6 +41,16 @@ import { OperationContainer, UpdateAction } from './types'
  *
  */
 export interface Request<TDocument, TPartialDocument> extends RequestBase {
+  urls: [
+    {
+      path: '/_bulk'
+      methods: ['POST', 'PUT']
+    },
+    {
+      path: '/{index}/_bulk'
+      methods: ['POST', 'PUT']
+    }
+  ]
   path_parts: {
     /**
      * Name of the data stream, index, or index alias to perform bulk actions on.

@@ -11649,7 +11649,7 @@
           }
         }
       ],
-      "specLocation": "_global/bulk/BulkRequest.ts#L32-L115"
+      "specLocation": "_global/bulk/BulkRequest.ts#L32-L125"
     },
     {
       "body": {
@@ -12798,7 +12798,7 @@
         }
       ],
       "query": [],
-      "specLocation": "_global/clear_scroll/ClearScrollRequest.ts#L23-L48"
+      "specLocation": "_global/clear_scroll/ClearScrollRequest.ts#L23-L59"
     },
     {
       "body": {
