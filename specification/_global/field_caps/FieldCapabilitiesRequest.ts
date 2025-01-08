@@ -33,7 +33,7 @@ import { QueryContainer } from '@_types/query_dsl/abstractions'
  * @rest_spec_name field_caps
  * @availability stack since=5.4.0 stability=stable
  * @availability serverless stability=stable visibility=public
- * @index_privileges view_index_metadata,read,manage
+ * @index_privileges view_index_metadata,read
  * @doc_tag search
  */
 export interface Request extends RequestBase {

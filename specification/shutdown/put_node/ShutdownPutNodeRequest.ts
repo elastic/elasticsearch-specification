@@ -19,12 +19,15 @@
 
 import { RequestBase } from '@_types/Base'
 import { NodeId } from '@_types/common'
+import { TimeUnit } from '@_types/Time'
 import { Type } from '../_types/types'
 
 /**
  * Prepare a node to be shut down.
  *
  * NOTE: This feature is designed for indirect use by Elastic Cloud, Elastic Cloud Enterprise, and Elastic Cloud on Kubernetes. Direct use is not supported.
+ *
+ * If you specify a node that is offline, it will be prepared for shut down when it rejoins the cluster.
  *
  * If the operator privileges feature is enabled, you must be an operator to use this API.
  *
@@ -39,10 +42,31 @@ import { Type } from '../_types/types'
  * @rest_spec_name shutdown.put_node
  * @availability stack since=7.13.0 stability=stable
  * @cluster_privileges manage
+ * @doc_id nodes-api-shutdown
  */
 export interface Request extends RequestBase {
   path_parts: {
+    /**
+     * The node identifier.
+     * This parameter is not validated against the cluster's active nodes.
+     * This enables you to register a node for shut down while it is offline.
+     * No error is thrown if you specify an invalid node ID.
+     */
     node_id: NodeId
+  }
+  query_parameters: {
+    /**
+     * The period to wait for a connection to the master node.
+     * If no response is received before the timeout expires, the request fails and returns an error.
+     * @server_default 30s
+     */
+    master_timeout?: TimeUnit
+    /**
+     * The period to wait for a response.
+     * If no response is received before the timeout expires, the request fails and returns an error.
+     * @server_default 30s
+     */
+    timeout?: TimeUnit
   }
   body: {
     /**

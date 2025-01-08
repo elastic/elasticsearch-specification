@@ -30,10 +30,14 @@ import {
  * Get field usage information for each shard and field of an index.
  * Field usage statistics are automatically captured when queries are running on a cluster.
  * A shard-level search request that accesses a given field, even if multiple times during that request, is counted as a single use.
+ *
+ * The response body reports the per-shard usage count of the data structures that back the fields in the index.
+ * A given request will increment each count by a maximum value of 1, even if the request accesses the same field multiple times.
  * @rest_spec_name indices.field_usage_stats
  * @availability stack since=7.15.0 stability=experimental
  * @availability serverless stability=experimental visibility=private
  * @index_privileges manage
+ * @doc_id field-usage-stats
  */
 export interface Request extends RequestBase {
   path_parts: {

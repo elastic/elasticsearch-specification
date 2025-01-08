@@ -32,7 +32,7 @@ import { Duration } from '@_types/Time'
 export interface Request extends RequestBase {
   query_parameters: {
     /**
-     * Period to wait for a connection to the master node.
+     * Period to wait for a connection to the master node. If no response is received before the timeout expires, the request fails and returns an error.
      * @server_default 30s
      */
     master_timeout?: Duration

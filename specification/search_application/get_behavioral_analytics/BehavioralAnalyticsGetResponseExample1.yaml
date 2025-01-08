@@ -1,0 +1,10 @@
+# summary: behavioral-analytics/apis/list-analytics-collection.asciidoc:112
+description: A successful response from `GET _application/analytics/my*`
+# type: response
+# response_code: 200
+value:
+  "{\n  \"my_analytics_collection\": {\n      \"event_data_stream\": {\n    \
+  \      \"name\": \"behavioral_analytics-events-my_analytics_collection\"\n     \
+  \ }\n  },\n  \"my_analytics_collection2\": {\n      \"event_data_stream\": {\n \
+  \         \"name\": \"behavioral_analytics-events-my_analytics_collection2\"\n \
+  \     }\n  }\n}"

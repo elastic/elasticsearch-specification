@@ -5526,7 +5526,7 @@ export interface MappingFieldNamesField {
   enabled: boolean
 }
 
-export type MappingFieldType = 'none' | 'geo_point' | 'geo_shape' | 'ip' | 'binary' | 'keyword' | 'text' | 'search_as_you_type' | 'date' | 'date_nanos' | 'boolean' | 'completion' | 'nested' | 'object' | 'version' | 'murmur3' | 'token_count' | 'percolator' | 'integer' | 'long' | 'short' | 'byte' | 'float' | 'half_float' | 'scaled_float' | 'double' | 'integer_range' | 'float_range' | 'long_range' | 'double_range' | 'date_range' | 'ip_range' | 'alias' | 'join' | 'rank_feature' | 'rank_features' | 'flattened' | 'shape' | 'histogram' | 'constant_keyword' | 'aggregate_metric_double' | 'dense_vector' | 'semantic_text' | 'sparse_vector' | 'match_only_text' | 'icu_collation_keyword'
+export type MappingFieldType = 'none' | 'geo_point' | 'geo_shape' | 'ip' | 'binary' | 'keyword' | 'text' | 'search_as_you_type' | 'date' | 'date_nanos' | 'boolean' | 'completion' | 'nested' | 'object' | 'passthrough' | 'version' | 'murmur3' | 'token_count' | 'percolator' | 'integer' | 'long' | 'short' | 'byte' | 'float' | 'half_float' | 'scaled_float' | 'double' | 'integer_range' | 'float_range' | 'long_range' | 'double_range' | 'date_range' | 'ip_range' | 'alias' | 'join' | 'rank_feature' | 'rank_features' | 'flattened' | 'shape' | 'histogram' | 'constant_keyword' | 'aggregate_metric_double' | 'dense_vector' | 'semantic_text' | 'sparse_vector' | 'match_only_text' | 'icu_collation_keyword'
 
 export interface MappingFlattenedProperty extends MappingPropertyBase {
   boost?: double
@@ -5703,6 +5703,13 @@ export interface MappingObjectProperty extends MappingCorePropertyBase {
 
 export type MappingOnScriptError = 'fail' | 'continue'
 
+export interface MappingPassthroughObjectProperty extends MappingCorePropertyBase {
+  type?: 'passthrough'
+  enabled?: boolean
+  priority?: integer
+  time_series_dimension?: boolean
+}
+
 export interface MappingPercolatorProperty extends MappingPropertyBase {
   type: 'percolator'
 }
@@ -5714,7 +5721,7 @@ export interface MappingPointProperty extends MappingDocValuesPropertyBase {
   type: 'point'
 }
 
-export type MappingProperty = MappingBinaryProperty | MappingBooleanProperty | MappingDynamicProperty | MappingJoinProperty | MappingKeywordProperty | MappingMatchOnlyTextProperty | MappingPercolatorProperty | MappingRankFeatureProperty | MappingRankFeaturesProperty | MappingSearchAsYouTypeProperty | MappingTextProperty | MappingVersionProperty | MappingWildcardProperty | MappingDateNanosProperty | MappingDateProperty | MappingAggregateMetricDoubleProperty | MappingDenseVectorProperty | MappingFlattenedProperty | MappingNestedProperty | MappingObjectProperty | MappingSemanticTextProperty | MappingSparseVectorProperty | MappingCompletionProperty | MappingConstantKeywordProperty | MappingFieldAliasProperty | MappingHistogramProperty | MappingIpProperty | MappingMurmur3HashProperty | MappingTokenCountProperty | MappingGeoPointProperty | MappingGeoShapeProperty | MappingPointProperty | MappingShapeProperty | MappingByteNumberProperty | MappingDoubleNumberProperty | MappingFloatNumberProperty | MappingHalfFloatNumberProperty | MappingIntegerNumberProperty | MappingLongNumberProperty | MappingScaledFloatNumberProperty | MappingShortNumberProperty | MappingUnsignedLongNumberProperty | MappingDateRangeProperty | MappingDoubleRangeProperty | MappingFloatRangeProperty | MappingIntegerRangeProperty | MappingIpRangeProperty | MappingLongRangeProperty | MappingIcuCollationProperty
+export type MappingProperty = MappingBinaryProperty | MappingBooleanProperty | MappingDynamicProperty | MappingJoinProperty | MappingKeywordProperty | MappingMatchOnlyTextProperty | MappingPercolatorProperty | MappingRankFeatureProperty | MappingRankFeaturesProperty | MappingSearchAsYouTypeProperty | MappingTextProperty | MappingVersionProperty | MappingWildcardProperty | MappingDateNanosProperty | MappingDateProperty | MappingAggregateMetricDoubleProperty | MappingDenseVectorProperty | MappingFlattenedProperty | MappingNestedProperty | MappingObjectProperty | MappingPassthroughObjectProperty | MappingSemanticTextProperty | MappingSparseVectorProperty | MappingCompletionProperty | MappingConstantKeywordProperty | MappingFieldAliasProperty | MappingHistogramProperty | MappingIpProperty | MappingMurmur3HashProperty | MappingTokenCountProperty | MappingGeoPointProperty | MappingGeoShapeProperty | MappingPointProperty | MappingShapeProperty | MappingByteNumberProperty | MappingDoubleNumberProperty | MappingFloatNumberProperty | MappingHalfFloatNumberProperty | MappingIntegerNumberProperty | MappingLongNumberProperty | MappingScaledFloatNumberProperty | MappingShortNumberProperty | MappingUnsignedLongNumberProperty | MappingDateRangeProperty | MappingDoubleRangeProperty | MappingFloatRangeProperty | MappingIntegerRangeProperty | MappingIpRangeProperty | MappingLongRangeProperty | MappingIcuCollationProperty
 
 export interface MappingPropertyBase {
   meta?: Record<string, string>
@@ -10030,11 +10037,39 @@ export interface ConnectorSyncJobCancelResponse {
   result: Result
 }
 
+export interface ConnectorSyncJobCheckInRequest extends RequestBase {
+  connector_sync_job_id: Id
+}
+
+export interface ConnectorSyncJobCheckInResponse {
+}
+
+export interface ConnectorSyncJobClaimRequest extends RequestBase {
+  connector_sync_job_id: Id
+  body?: {
+    sync_cursor?: any
+    worker_hostname: string
+  }
+}
+
+export interface ConnectorSyncJobClaimResponse {
+}
+
 export interface ConnectorSyncJobDeleteRequest extends RequestBase {
   connector_sync_job_id: Id
 }
 
 export type ConnectorSyncJobDeleteResponse = AcknowledgedResponseBase
+
+export interface ConnectorSyncJobErrorRequest extends RequestBase {
+  connector_sync_job_id: Id
+  body?: {
+    error: string
+  }
+}
+
+export interface ConnectorSyncJobErrorResponse {
+}
 
 export interface ConnectorSyncJobGetRequest extends RequestBase {
   connector_sync_job_id: Id
@@ -10065,6 +10100,21 @@ export interface ConnectorSyncJobPostRequest extends RequestBase {
 
 export interface ConnectorSyncJobPostResponse {
   id: Id
+}
+
+export interface ConnectorSyncJobUpdateStatsRequest extends RequestBase {
+  connector_sync_job_id: Id
+  body?: {
+    deleted_document_count: long
+    indexed_document_count: long
+    indexed_document_volume: long
+    last_seen?: Duration
+    metadata?: Metadata
+    total_document_count?: integer
+  }
+}
+
+export interface ConnectorSyncJobUpdateStatsResponse {
 }
 
 export interface ConnectorUpdateActiveFilteringRequest extends RequestBase {
@@ -10107,6 +10157,17 @@ export interface ConnectorUpdateErrorRequest extends RequestBase {
 }
 
 export interface ConnectorUpdateErrorResponse {
+  result: Result
+}
+
+export interface ConnectorUpdateFeaturesRequest extends RequestBase {
+  connector_id: Id
+  body?: {
+    features: ConnectorConnectorFeatures
+  }
+}
+
+export interface ConnectorUpdateFeaturesResponse {
   result: Result
 }
 
@@ -10351,6 +10412,7 @@ export interface EqlEqlSearchResponseBase<TEvent = unknown> {
   took?: DurationValue<UnitMillis>
   timed_out?: boolean
   hits: EqlEqlHits<TEvent>
+  shard_failures?: ShardFailure[]
 }
 
 export interface EqlHitsEvent<TEvent = unknown> {
@@ -12919,9 +12981,12 @@ export interface IngestDatabaseConfiguration {
   ipinfo?: IngestIpinfo
 }
 
-export interface IngestDatabaseConfigurationFull extends IngestDatabaseConfiguration {
+export interface IngestDatabaseConfigurationFull {
   web?: IngestWeb
   local?: IngestLocal
+  name: Name
+  maxmind?: IngestMaxmind
+  ipinfo?: IngestIpinfo
 }
 
 export interface IngestDateIndexNameProcessor extends IngestProcessorBase {
@@ -17646,6 +17711,8 @@ export interface SearchApplicationEventDataStream {
   name: IndexName
 }
 
+export type SearchApplicationEventType = 'page_view' | 'search' | 'search_click'
+
 export interface SearchApplicationSearchApplication extends SearchApplicationSearchApplicationParameters {
   name: Name
   updated_at_millis: EpochTime<UnitMillis>
@@ -17696,6 +17763,18 @@ export interface SearchApplicationListResponse {
   results: SearchApplicationSearchApplication[]
 }
 
+export interface SearchApplicationPostBehavioralAnalyticsEventRequest extends RequestBase {
+  collection_name: Name
+  event_type: SearchApplicationEventType
+  debug?: boolean
+  body?: any
+}
+
+export interface SearchApplicationPostBehavioralAnalyticsEventResponse {
+  accepted: boolean
+  event?: any
+}
+
 export interface SearchApplicationPutRequest extends RequestBase {
   name: Name
   create?: boolean
@@ -17715,6 +17794,16 @@ export interface SearchApplicationPutBehavioralAnalyticsRequest extends RequestB
 }
 
 export type SearchApplicationPutBehavioralAnalyticsResponse = SearchApplicationPutBehavioralAnalyticsAnalyticsAcknowledgeResponseBase
+
+export interface SearchApplicationRenderQueryRequest extends RequestBase {
+  name: Name
+  body?: {
+    params?: Record<string, any>
+  }
+}
+
+export interface SearchApplicationRenderQueryResponse {
+}
 
 export interface SearchApplicationSearchRequest extends RequestBase {
   name: Name
@@ -18602,6 +18691,50 @@ export interface SecurityInvalidateTokenResponse {
   previously_invalidated_tokens: long
 }
 
+export interface SecurityOidcAuthenticateRequest extends RequestBase {
+  body?: {
+    nonce: string
+    realm?: string
+    redirect_uri: string
+    state: string
+  }
+}
+
+export interface SecurityOidcAuthenticateResponse {
+  access_token: string
+  expires_in: integer
+  refresh_token: string
+  type: string
+}
+
+export interface SecurityOidcLogoutRequest extends RequestBase {
+  body?: {
+    access_token: string
+    refresh_token?: string
+  }
+}
+
+export interface SecurityOidcLogoutResponse {
+  redirect: string
+}
+
+export interface SecurityOidcPrepareAuthenticationRequest extends RequestBase {
+  body?: {
+    iss?: string
+    login_hint?: string
+    nonce?: string
+    realm?: string
+    state?: string
+  }
+}
+
+export interface SecurityOidcPrepareAuthenticationResponse {
+  nonce: string
+  realm: string
+  redirect: string
+  state: string
+}
+
 export interface SecurityPutPrivilegesActions {
   actions: string[]
   application?: string
@@ -18989,6 +19122,8 @@ export type ShutdownGetNodeShutdownType = 'remove' | 'restart'
 
 export interface ShutdownPutNodeRequest extends RequestBase {
   node_id: NodeId
+  master_timeout?: TimeUnit
+  timeout?: TimeUnit
   body?: {
     type: ShutdownType
     reason: string
@@ -19066,12 +19201,16 @@ export interface SlmStatistics {
 
 export interface SlmDeleteLifecycleRequest extends RequestBase {
   policy_id: Name
+  master_timeout?: Duration
+  timeout?: Duration
 }
 
 export type SlmDeleteLifecycleResponse = AcknowledgedResponseBase
 
 export interface SlmExecuteLifecycleRequest extends RequestBase {
   policy_id: Name
+  master_timeout?: Duration
+  timeout?: Duration
 }
 
 export interface SlmExecuteLifecycleResponse {
@@ -19079,17 +19218,23 @@ export interface SlmExecuteLifecycleResponse {
 }
 
 export interface SlmExecuteRetentionRequest extends RequestBase {
+  master_timeout?: Duration
+  timeout?: Duration
 }
 
 export type SlmExecuteRetentionResponse = AcknowledgedResponseBase
 
 export interface SlmGetLifecycleRequest extends RequestBase {
   policy_id?: Names
+  master_timeout?: Duration
+  timeout?: Duration
 }
 
 export type SlmGetLifecycleResponse = Record<Id, SlmSnapshotLifecycle>
 
 export interface SlmGetStatsRequest extends RequestBase {
+  master_timeout?: Duration
+  timeout?: Duration
 }
 
 export interface SlmGetStatsResponse {
@@ -19106,6 +19251,8 @@ export interface SlmGetStatsResponse {
 }
 
 export interface SlmGetStatusRequest extends RequestBase {
+  master_timeout?: Duration
+  timeout?: Duration
 }
 
 export interface SlmGetStatusResponse {
@@ -19797,16 +19944,95 @@ export interface TasksListRequest extends RequestBase {
 
 export type TasksListResponse = TasksTaskListResponseBase
 
-export interface TextStructureFindStructureFieldStat {
+export type TextStructureEcsCompatibilityType = 'disabled' | 'v1'
+
+export interface TextStructureFieldStat {
   count: integer
   cardinality: integer
-  top_hits: TextStructureFindStructureTopHit[]
+  top_hits: TextStructureTopHit[]
   mean_value?: integer
   median_value?: integer
   max_value?: integer
   min_value?: integer
   earliest?: string
   latest?: string
+}
+
+export type TextStructureFormatType = 'delimited' | 'ndjson' | 'semi_structured_text' | 'xml'
+
+export interface TextStructureTopHit {
+  count: long
+  value: any
+}
+
+export interface TextStructureFindFieldStructureRequest extends RequestBase {
+  column_names?: string
+  delimiter?: string
+  documents_to_sample?: uint
+  ecs_compatibility?: TextStructureEcsCompatibilityType
+  explain?: boolean
+  field: Field
+  format?: TextStructureFormatType
+  grok_pattern?: GrokPattern
+  index: IndexName
+  quote?: string
+  should_trim_fields?: boolean
+  timeout?: Duration
+  timestamp_field?: Field
+  timestamp_format?: string
+}
+
+export interface TextStructureFindFieldStructureResponse {
+  charset: string
+  ecs_compatibility?: TextStructureEcsCompatibilityType
+  field_stats: Record<Field, TextStructureFieldStat>
+  format: TextStructureFormatType
+  grok_pattern?: GrokPattern
+  java_timestamp_formats?: string[]
+  joda_timestamp_formats?: string[]
+  ingest_pipeline: IngestPipelineConfig
+  mappings: MappingTypeMapping
+  multiline_start_pattern?: string
+  need_client_timezone: boolean
+  num_lines_analyzed: integer
+  num_messages_analyzed: integer
+  sample_start: string
+  timestamp_field?: Field
+}
+
+export interface TextStructureFindMessageStructureRequest extends RequestBase {
+  column_names?: string
+  delimiter?: string
+  ecs_compatibility?: TextStructureEcsCompatibilityType
+  explain?: boolean
+  format?: TextStructureFormatType
+  grok_pattern?: GrokPattern
+  quote?: string
+  should_trim_fields?: boolean
+  timeout?: Duration
+  timestamp_field?: Field
+  timestamp_format?: string
+  body?: {
+    messages: string[]
+  }
+}
+
+export interface TextStructureFindMessageStructureResponse {
+  charset: string
+  ecs_compatibility?: TextStructureEcsCompatibilityType
+  field_stats: Record<Field, TextStructureFieldStat>
+  format: TextStructureFormatType
+  grok_pattern?: GrokPattern
+  java_timestamp_formats?: string[]
+  joda_timestamp_formats?: string[]
+  ingest_pipeline: IngestPipelineConfig
+  mappings: MappingTypeMapping
+  multiline_start_pattern?: string
+  need_client_timezone: boolean
+  num_lines_analyzed: integer
+  num_messages_analyzed: integer
+  sample_start: string
+  timestamp_field?: Field
 }
 
 export interface TextStructureFindStructureRequest<TJsonDocument = unknown> {
@@ -19833,7 +20059,7 @@ export interface TextStructureFindStructureResponse {
   has_header_row?: boolean
   has_byte_order_marker: boolean
   format: string
-  field_stats: Record<Field, TextStructureFindStructureFieldStat>
+  field_stats: Record<Field, TextStructureFieldStat>
   sample_start: string
   num_messages_analyzed: integer
   mappings: MappingTypeMapping
@@ -19851,11 +20077,6 @@ export interface TextStructureFindStructureResponse {
   timestamp_field?: Field
   should_trim_fields?: boolean
   ingest_pipeline: IngestPipelineConfig
-}
-
-export interface TextStructureFindStructureTopHit {
-  count: long
-  value: any
 }
 
 export interface TextStructureTestGrokPatternMatchedField {
