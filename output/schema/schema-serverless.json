@@ -104411,6 +104411,9 @@
       },
       "properties": [
         {
+          "description": "The Azure repository type.",
+          "extDocId": "repository-azure",
+          "extDocUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/repository-azure.html",
           "name": "type",
           "required": true,
           "type": {
@@ -104419,6 +104422,7 @@
           }
         },
         {
+          "description": "The repository settings.",
           "name": "settings",
           "required": true,
           "type": {
@@ -104430,7 +104434,7 @@
           }
         }
       ],
-      "specLocation": "snapshot/_types/SnapshotRepository.ts#L40-L43"
+      "specLocation": "snapshot/_types/SnapshotRepository.ts#L40-L50"
     },
     {
       "kind": "interface",
@@ -104467,28 +104471,7 @@
       },
       "properties": [
         {
-          "name": "client",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "_builtins"
-            }
-          }
-        },
-        {
-          "name": "container",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "_builtins"
-            }
-          }
-        },
-        {
+          "description": "The path to the repository data within the container.\nIt defaults to the root directory.\n\nNOTE: Don't set `base_path` when configuring a snapshot repository for Elastic Cloud Enterprise.\nElastic Cloud Enterprise automatically generates the `base_path` for each deployment so that multiple deployments can share the same bucket.",
           "name": "base_path",
           "required": false,
           "type": {
@@ -104500,19 +104483,10 @@
           }
         },
         {
-          "name": "readonly",
+          "description": "The name of the Azure repository client to use.",
+          "name": "client",
           "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "boolean",
-              "namespace": "_builtins"
-            }
-          }
-        },
-        {
-          "name": "location_mode",
-          "required": false,
+          "serverDefault": "default",
           "type": {
             "kind": "instance_of",
             "type": {
@@ -104520,9 +104494,74 @@
               "namespace": "_builtins"
             }
           }
+        },
+        {
+          "description": "The Azure container.",
+          "name": "container",
+          "required": false,
+          "serverDefault": "elasticsearch-snapshots",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "_builtins"
+            }
+          }
+        },
+        {
+          "description": "The maxmimum batch size, between 1 and 256, used for `BlobBatch` requests.\nDefaults to 256 which is the maximum number supported by the Azure blob batch API.",
+          "name": "delete_objects_max_size",
+          "required": false,
+          "serverDefault": 256,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "Either `primary_only` or `secondary_only`.\nNote that if you set it to `secondary_only`, it will force `readonly` to `true`.",
+          "name": "location_mode",
+          "required": false,
+          "serverDefault": "primary_only",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "_builtins"
+            }
+          }
+        },
+        {
+          "description": "The maximum number of concurrent batch delete requests that will be submitted for any individual bulk delete with `BlobBatch`.\nNote that the effective number of concurrent deletes is further limited by the Azure client connection and event loop thread limits.\nDefaults to 10, minimum is 1, maximum is 100.",
+          "name": "max_concurrent_batch_deletes",
+          "required": false,
+          "serverDefault": 10,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "If `true`, the repository is read-only.\nThe cluster can retrieve and restore snapshots from the repository but not write to the repository or create snapshots in it.\n\nOnly a cluster with write access can create snapshots in the repository.\nAll other clusters connected to the repository should have the `readonly` parameter set to `true`.\nIf `false`, the cluster can write to the repository and create snapshots in it.\n\nIMPORTANT: If you register the same snapshot repository with multiple clusters, only one cluster should have write access to the repository.\nHaving multiple clusters write to the repository at the same time risks corrupting the contents of the repository.",
+          "name": "readonly",
+          "required": false,
+          "serverDefault": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "_builtins"
+            }
+          }
         }
       ],
-      "specLocation": "snapshot/_types/SnapshotRepository.ts#L77-L83"
+      "specLocation": "snapshot/_types/SnapshotRepository.ts#L145-L196"
     },
     {
       "kind": "interface",
@@ -104532,6 +104571,7 @@
       },
       "properties": [
         {
+          "description": "Big files can be broken down into multiple smaller blobs in the blob store during snapshotting.\nIt is not recommended to change this value from its default unless there is an explicit reason for limiting the size of blobs in the repository.\nSetting a value lower than the default can result in an increased number of API calls to the blob store during snapshot create and restore operations compared to using the default value and thus make both operations slower and more costly.\nSpecify the chunk size as a byte unit, for example: `10MB`, `5KB`, 500B.\nThe default varies by repository type.",
           "name": "chunk_size",
           "required": false,
           "type": {
@@ -104543,8 +104583,10 @@
           }
         },
         {
+          "description": "When set to `true`, metadata files are stored in compressed format.\nThis setting doesn't affect index files that are already compressed by default.",
           "name": "compress",
           "required": false,
+          "serverDefault": true,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -104554,6 +104596,7 @@
           }
         },
         {
+          "description": "The maximum snapshot restore rate per node.\nIt defaults to unlimited.\nNote that restores are also throttled through recovery settings.",
           "name": "max_restore_bytes_per_sec",
           "required": false,
           "type": {
@@ -104565,6 +104608,7 @@
           }
         },
         {
+          "description": "The maximum snapshot creation rate per node.\nIt defaults to 40mb per second.\nNote that if the recovery settings for managed services are set, then it defaults to unlimited, and the rate is additionally throttled through recovery settings.",
           "name": "max_snapshot_bytes_per_sec",
           "required": false,
           "type": {
@@ -104576,7 +104620,7 @@
           }
         }
       ],
-      "specLocation": "snapshot/_types/SnapshotRepository.ts#L70-L75"
+      "specLocation": "snapshot/_types/SnapshotRepository.ts#L116-L143"
     },
     {
       "inherits": {
@@ -104592,6 +104636,9 @@
       },
       "properties": [
         {
+          "description": "The Google Cloud Storage repository type.",
+          "extDocId": "repository-gcs",
+          "extDocUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/repository-gcs.html",
           "name": "type",
           "required": true,
           "type": {
@@ -104600,6 +104647,7 @@
           }
         },
         {
+          "description": "The repository settings.",
           "name": "settings",
           "required": true,
           "type": {
@@ -104611,7 +104659,7 @@
           }
         }
       ],
-      "specLocation": "snapshot/_types/SnapshotRepository.ts#L45-L48"
+      "specLocation": "snapshot/_types/SnapshotRepository.ts#L52-L62"
     },
     {
       "inherits": {
@@ -104627,6 +104675,7 @@
       },
       "properties": [
         {
+          "description": "The name of the bucket to be used for snapshots.",
           "name": "bucket",
           "required": true,
           "type": {
@@ -104638,7 +104687,12 @@
           }
         },
         {
-          "name": "client",
+          "deprecation": {
+            "description": "",
+            "version": "6.3.0"
+          },
+          "description": "The name used by the client when it uses the Google Cloud Storage service.",
+          "name": "application_name",
           "required": false,
           "type": {
             "kind": "instance_of",
@@ -104649,6 +104703,7 @@
           }
         },
         {
+          "description": "The path to the repository data within the bucket.\nIt defaults to the root of the bucket.\n\nNOTE: Don't set `base_path` when configuring a snapshot repository for Elastic Cloud Enterprise.\nElastic Cloud Enterprise automatically generates the `base_path` for each deployment so that multiple deployments can share the same bucket.",
           "name": "base_path",
           "required": false,
           "type": {
@@ -104660,19 +104715,10 @@
           }
         },
         {
-          "name": "readonly",
+          "description": "The name of the client to use to connect to Google Cloud Storage.",
+          "name": "client",
           "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "boolean",
-              "namespace": "_builtins"
-            }
-          }
-        },
-        {
-          "name": "application_name",
-          "required": false,
+          "serverDefault": "default",
           "type": {
             "kind": "instance_of",
             "type": {
@@ -104680,9 +104726,22 @@
               "namespace": "_builtins"
             }
           }
+        },
+        {
+          "description": "If `true`, the repository is read-only.\nThe cluster can retrieve and restore snapshots from the repository but not write to the repository or create snapshots in it.\n\nOnly a cluster with write access can create snapshots in the repository.\nAll other clusters connected to the repository should have the `readonly` parameter set to `true`.\n\nIf `false`, the cluster can write to the repository and create snapshots in it.\n\nIMPORTANT: If you register the same snapshot repository with multiple clusters, only one cluster should have write access to the repository.\nHaving multiple clusters write to the repository at the same time risks corrupting the contents of the repository.",
+          "name": "readonly",
+          "required": false,
+          "serverDefault": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "_builtins"
+            }
+          }
         }
       ],
-      "specLocation": "snapshot/_types/SnapshotRepository.ts#L85-L91"
+      "specLocation": "snapshot/_types/SnapshotRepository.ts#L198-L235"
     },
     {
       "inherits": {
@@ -104698,6 +104757,9 @@
       },
       "properties": [
         {
+          "description": "The S3 repository type.",
+          "extDocId": "repository-s3",
+          "extDocUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/repository-s3.html",
           "name": "type",
           "required": true,
           "type": {
@@ -104706,6 +104768,7 @@
           }
         },
         {
+          "description": "The repository settings.\n\nNOTE: In addition to the specified settings, you can also use all non-secure client settings in the repository settings.\nIn this case, the client settings found in the repository settings will be merged with those of the named client used by the repository.\nConflicts between client and repository settings are resolved by the repository settings taking precedence over client settings.",
           "name": "settings",
           "required": true,
           "type": {
@@ -104717,7 +104780,7 @@
           }
         }
       ],
-      "specLocation": "snapshot/_types/SnapshotRepository.ts#L50-L53"
+      "specLocation": "snapshot/_types/SnapshotRepository.ts#L64-L78"
     },
     {
       "inherits": {
@@ -104733,6 +104796,9 @@
       },
       "properties": [
         {
+          "description": "The name of the S3 bucket to use for snapshots.\nThe bucket name must adhere to Amazon's S3 bucket naming rules.",
+          "extDocId": "repository-s3-naming",
+          "extDocUrl": "https://docs.aws.amazon.com/AmazonS3/latest/userguide/BucketRestrictions.html#bucketnamingrules",
           "name": "bucket",
           "required": true,
           "type": {
@@ -104744,17 +104810,7 @@
           }
         },
         {
-          "name": "client",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "_builtins"
-            }
-          }
-        },
-        {
+          "description": "The path to the repository data within its bucket.\nIt defaults to an empty string, meaning that the repository is at the root of the bucket.\nThe value of this setting should not start or end with a forward slash (`/`).\n\nNOTE: Don't set base_path when configuring a snapshot repository for Elastic Cloud Enterprise.\nElastic Cloud Enterprise automatically generates the `base_path` for each deployment so that multiple deployments may share the same bucket.",
           "name": "base_path",
           "required": false,
           "type": {
@@ -104766,28 +104822,7 @@
           }
         },
         {
-          "name": "readonly",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "boolean",
-              "namespace": "_builtins"
-            }
-          }
-        },
-        {
-          "name": "server_side_encryption",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "boolean",
-              "namespace": "_builtins"
-            }
-          }
-        },
-        {
+          "description": "The minimum threshold below which the chunk is uploaded using a single request.\nBeyond this threshold, the S3 repository will use the AWS Multipart Upload API to split the chunk into several parts, each of `buffer_size` length, and to upload each part in its own request.\nNote that setting a buffer size lower than 5mb is not allowed since it will prevent the use of the Multipart API and may result in upload errors.\nIt is also not possible to set a buffer size greater than 5gb as it is the maximum upload size allowed by S3.\nDefaults to `100mb` or 5% of JVM heap, whichever is smaller.",
           "name": "buffer_size",
           "required": false,
           "type": {
@@ -104799,8 +104834,12 @@
           }
         },
         {
+          "description": "The S3 repository supports all S3 canned ACLs: `private`, `public-read`, `public-read-write`, `authenticated-read`, `log-delivery-write`, `bucket-owner-read`, `bucket-owner-full-control`.\nYou could specify a canned ACL using the `canned_acl` setting.\nWhen the S3 repository creates buckets and objects, it adds the canned ACL into the buckets and objects.",
+          "extDocId": "repository-s3-canned-acl",
+          "extDocUrl": "https://docs.aws.amazon.com/AmazonS3/latest/userguide/acl-overview.html#canned-acl",
           "name": "canned_acl",
           "required": false,
+          "serverDefault": "private",
           "type": {
             "kind": "instance_of",
             "type": {
@@ -104810,8 +104849,10 @@
           }
         },
         {
-          "name": "storage_class",
+          "description": "The name of the S3 client to use to connect to S3.",
+          "name": "client",
           "required": false,
+          "serverDefault": "default",
           "type": {
             "kind": "instance_of",
             "type": {
@@ -104819,9 +104860,143 @@
               "namespace": "_builtins"
             }
           }
+        },
+        {
+          "description": "The maxmimum batch size, between 1 and 1000, used for `DeleteObjects` requests.\nDefaults to 1000 which is the maximum number supported by the  AWS DeleteObjects API.",
+          "extDocId": "repository-s3-delete-objects",
+          "extDocUrl": "https://docs.aws.amazon.com/AmazonS3/latest/API/API_DeleteObjects.html",
+          "name": "delete_objects_max_size",
+          "required": false,
+          "serverDefault": 1000,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "The time to wait before trying again if an attempt to read a linearizable register fails.",
+          "name": "get_register_retry_delay",
+          "required": false,
+          "serverDefault": "5s",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Duration",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "The maximum number of parts that Elasticsearch will write during a multipart upload of a single object.\nFiles which are larger than `buffer_size × max_multipart_parts` will be chunked into several smaller objects.\nElasticsearch may also split a file across multiple objects to satisfy other constraints such as the `chunk_size` limit.\nDefaults to `10000` which is the maximum number of parts in a multipart upload in AWS S3.",
+          "name": "max_multipart_parts",
+          "required": false,
+          "serverDefault": 10000,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "The maximum number of possibly-dangling multipart uploads to clean up in each batch of snapshot deletions.\nDefaults to 1000 which is the maximum number supported by the AWS ListMultipartUploads API.\nIf set to `0`, Elasticsearch will not attempt to clean up dangling multipart uploads.",
+          "extDocId": "repository-s3-list-multipart",
+          "extDocUrl": "https://docs.aws.amazon.com/AmazonS3/latest/API/API_ListMultipartUploads.html",
+          "name": "max_multipart_upload_cleanup_size",
+          "required": false,
+          "serverDefault": 1000,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "If true, the repository is read-only.\nThe cluster can retrieve and restore snapshots from the repository but not write to the repository or create snapshots in it.\n\nOnly a cluster with write access can create snapshots in the repository.\nAll other clusters connected to the repository should have the `readonly` parameter set to `true`.\n\nIf `false`, the cluster can write to the repository and create snapshots in it.\n\nIMPORTANT: If you register the same snapshot repository with multiple clusters, only one cluster should have write access to the repository.\nHaving multiple clusters write to the repository at the same time risks corrupting the contents of the repository.",
+          "name": "readonly",
+          "required": false,
+          "serverDefault": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "_builtins"
+            }
+          }
+        },
+        {
+          "description": "When set to `true`m files are encrypted on server side using an AES256 algorithm.\nserver_default false",
+          "name": "server_side_encryption",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "_builtins"
+            }
+          }
+        },
+        {
+          "description": "The S3 storage class for objects written to the repository.\nValues may be `standard`, `reduced_redundancy`, `standard_ia`, `onezone_ia`, and `intelligent_tiering`.",
+          "extDocId": "repository-s3-storage-classes",
+          "extDocUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/repository-s3.html#repository-s3-storage-classes",
+          "name": "storage_class",
+          "required": false,
+          "serverDefault": "standard",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "_builtins"
+            }
+          }
+        },
+        {
+          "description": "The delay before the first retry and the amount the delay is incremented by on each subsequent retry.\nThe default is 50ms and the minimum is 0ms.",
+          "name": "throttled_delete_retry.delay_increment",
+          "required": false,
+          "serverDefault": "50ms",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Duration",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "The upper bound on how long the delays between retries will grow to.\nThe default is 5s and the minimum is 0ms.",
+          "name": "throttled_delete_retry.maximum_delay",
+          "required": false,
+          "serverDefault": "5s",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Duration",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "The number times to retry a throttled snapshot deletion.\nThe default is 10 and the minimum value is 0 which will disable retries altogether.\nNote that if retries are enabled in the Azure client, each of these retries comprises that many client-level retries.",
+          "name": "throttled_delete_retry.maximum_number_of_retries",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "_types"
+            }
+          }
         }
       ],
-      "specLocation": "snapshot/_types/SnapshotRepository.ts#L93-L102"
+      "specLocation": "snapshot/_types/SnapshotRepository.ts#L237-L346"
     },
     {
       "inherits": {
@@ -104837,6 +105012,9 @@
       },
       "properties": [
         {
+          "description": "The shared file system repository type.",
+          "extDocId": "repository-shared-fs",
+          "extDocUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/snapshots-filesystem-repository.html",
           "name": "type",
           "required": true,
           "type": {
@@ -104845,6 +105023,7 @@
           }
         },
         {
+          "description": "The repository settings.",
           "name": "settings",
           "required": true,
           "type": {
@@ -104856,7 +105035,7 @@
           }
         }
       ],
-      "specLocation": "snapshot/_types/SnapshotRepository.ts#L55-L58"
+      "specLocation": "snapshot/_types/SnapshotRepository.ts#L80-L90"
     },
     {
       "inherits": {
@@ -104872,6 +105051,7 @@
       },
       "properties": [
         {
+          "description": "The location of the shared filesystem used to store and retrieve snapshots.\nThis location must be registered in the `path.repo` setting on all master and data nodes in the cluster.\nUnlike `path.repo`, this setting supports only a single file path.",
           "name": "location",
           "required": true,
           "type": {
@@ -104883,8 +105063,10 @@
           }
         },
         {
+          "description": "The maximum number of snapshots the repository can contain.\nThe default is `Integer.MAX_VALUE`, which is 2^31-1 or `2147483647`.",
           "name": "max_number_of_snapshots",
           "required": false,
+          "serverDefault": 2147483647,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -104894,8 +105076,10 @@
           }
         },
         {
+          "description": "If `true`, the repository is read-only.\nThe cluster can retrieve and restore snapshots from the repository but not write to the repository or create snapshots in it.\n\nOnly a cluster with write access can create snapshots in the repository.\nAll other clusters connected to the repository should have the `readonly` parameter set to `true`.\n\nIf `false`, the cluster can write to the repository and create snapshots in it.\n\nIMPORTANT: If you register the same snapshot repository with multiple clusters, only one cluster should have write access to the repository.\nHaving multiple clusters write to the repository at the same time risks corrupting the contents of the repository.",
           "name": "readonly",
           "required": false,
+          "serverDefault": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -104905,7 +105089,7 @@
           }
         }
       ],
-      "specLocation": "snapshot/_types/SnapshotRepository.ts#L104-L108"
+      "specLocation": "snapshot/_types/SnapshotRepository.ts#L348-L375"
     },
     {
       "inherits": {
@@ -104921,6 +105105,9 @@
       },
       "properties": [
         {
+          "description": "The read-only URL repository type.",
+          "extDocId": "repository-read-only",
+          "extDocUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/snapshots-read-only-repository.html",
           "name": "type",
           "required": true,
           "type": {
@@ -104929,6 +105116,7 @@
           }
         },
         {
+          "description": "The repository settings.",
           "name": "settings",
           "required": true,
           "type": {
@@ -104940,7 +105128,7 @@
           }
         }
       ],
-      "specLocation": "snapshot/_types/SnapshotRepository.ts#L60-L63"
+      "specLocation": "snapshot/_types/SnapshotRepository.ts#L92-L102"
     },
     {
       "inherits": {
@@ -104956,8 +105144,10 @@
       },
       "properties": [
         {
+          "description": "The maximum number of retries for HTTP and HTTPS URLs.",
           "name": "http_max_retries",
           "required": false,
+          "serverDefault": 5,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -104967,8 +105157,10 @@
           }
         },
         {
+          "description": "The maximum wait time for data transfers over a connection.",
           "name": "http_socket_timeout",
           "required": false,
+          "serverDefault": "50s",
           "type": {
             "kind": "instance_of",
             "type": {
@@ -104978,8 +105170,10 @@
           }
         },
         {
+          "description": "The maximum number of snapshots the repository can contain.\nThe default is `Integer.MAX_VALUE`, which is 2^31-1 or `2147483647`.",
           "name": "max_number_of_snapshots",
           "required": false,
+          "serverDefault": 2147483647,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -104989,6 +105183,7 @@
           }
         },
         {
+          "description": "The URL location of the root of the shared filesystem repository.\nThe following protocols are supported:\n\n* `file`\n* `ftp`\n* `http`\n* `https`\n* `jar`\n\nURLs using the HTTP, HTTPS, or FTP protocols must be explicitly allowed with the `repositories.url.allowed_urls` cluster setting.\nThis setting supports wildcards in the place of a host, path, query, or fragment in the URL.\n\nURLs using the file protocol must point to the location of a shared filesystem accessible to all master and data nodes in the cluster.\nThis location must be registered in the `path.repo` setting.\nYou don't need to register URLs using the FTP, HTTP, HTTPS, or JAR protocols in the `path.repo` setting.",
           "name": "url",
           "required": true,
           "type": {
@@ -105000,7 +105195,7 @@
           }
         }
       ],
-      "specLocation": "snapshot/_types/SnapshotRepository.ts#L110-L115"
+      "specLocation": "snapshot/_types/SnapshotRepository.ts#L377-L412"
     },
     {
       "inherits": {
@@ -105016,6 +105211,9 @@
       },
       "properties": [
         {
+          "description": "The source-only repository type.",
+          "extDocId": "repository-source-only",
+          "extDocUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/snapshots-source-only-repository.html",
           "name": "type",
           "required": true,
           "type": {
@@ -105024,6 +105222,7 @@
           }
         },
         {
+          "description": "The repository settings.",
           "name": "settings",
           "required": true,
           "type": {
@@ -105035,7 +105234,7 @@
           }
         }
       ],
-      "specLocation": "snapshot/_types/SnapshotRepository.ts#L65-L68"
+      "specLocation": "snapshot/_types/SnapshotRepository.ts#L104-L114"
     },
     {
       "inherits": {
@@ -105051,6 +105250,7 @@
       },
       "properties": [
         {
+          "description": "The delegated repository type. For valid values, refer to the `type` parameter.\nSource repositories can use `settings` properties for its delegated repository type.",
           "name": "delegate_type",
           "required": false,
           "type": {
@@ -105062,8 +105262,10 @@
           }
         },
         {
+          "description": "The maximum number of snapshots the repository can contain.\nThe default is `Integer.MAX_VALUE`, which is 2^31-1 or `2147483647`.",
           "name": "max_number_of_snapshots",
           "required": false,
+          "serverDefault": 2147483647,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -105076,8 +105278,10 @@
           "aliases": [
             "readonly"
           ],
+          "description": "If `true`, the repository is read-only.\nThe cluster can retrieve and restore snapshots from the repository but not write to the repository or create snapshots in it.\n\nOnly a cluster with write access can create snapshots in the repository.\nAll other clusters connected to the repository should have the `readonly` parameter set to `true`.\n\nIf `false`, the cluster can write to the repository and create snapshots in it.\n\nIMPORTANT: If you register the same snapshot repository with multiple clusters, only one cluster should have write access to the repository.\nHaving multiple clusters write to the repository at the same time risks corrupting the contents of the repository.",
           "name": "read_only",
           "required": false,
+          "serverDefault": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -105087,29 +105291,29 @@
           }
         }
       ],
-      "specLocation": "snapshot/_types/SnapshotRepository.ts#L117-L124"
+      "specLocation": "snapshot/_types/SnapshotRepository.ts#L414-L441"
     },
     {
       "kind": "enum",
       "members": [
         {
-          "description": "Number of shards in the snapshot that were successfully stored in the repository.",
+          "description": "The number of shards in the snapshot that were successfully stored in the repository.",
           "name": "DONE"
         },
         {
-          "description": "Number of shards in the snapshot that were not successfully stored in the repository.",
+          "description": "The number of shards in the snapshot that were not successfully stored in the repository.",
           "name": "FAILURE"
         },
         {
-          "description": "Number of shards in the snapshot that are in the finalizing stage of being stored in the repository.",
+          "description": "The number of shards in the snapshot that are in the finalizing stage of being stored in the repository.",
           "name": "FINALIZE"
         },
         {
-          "description": "Number of shards in the snapshot that are in the initializing stage of being stored in the repository.",
+          "description": "The number of shards in the snapshot that are in the initializing stage of being stored in the repository.",
           "name": "INIT"
         },
         {
-          "description": "Number of shards in the snapshot that are in the started stage of being stored in the repository.",
+          "description": "The number of shards in the snapshot that are in the started stage of being stored in the repository.",
           "name": "STARTED"
         }
       ],
