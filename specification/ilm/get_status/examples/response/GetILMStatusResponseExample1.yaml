@@ -1,0 +1,8 @@
+# summary:
+description: A successful response when retrieving the current ILM status.
+# type: response
+# response_code: 200
+value: |-
+  {
+    "operation_mode": "RUNNING"
+  }
