@@ -1094,16 +1094,16 @@ actions:
           application/json: 
             examples: 
               createTransformRequestExample1: 
-                $ref: "../../specification/transform/put_transform/PutTransformRequestExample1.json"
+                $ref: "../../specification/transform/put_transform/examples/request/PutTransformRequestExample1.yaml"
               createTransformRequestExample2:
-                $ref: "../../specification/transform/put_transform/PutTransformRequestExample2.json"
+                $ref: "../../specification/transform/put_transform/examples/request/PutTransformRequestExample2.yaml"
       responses:
         200:
           content:
             application/json:
               examples:
                 createTransformResponseExample1:
-                  $ref: "../../specification/transform/put_transform/PutTransformResponseExample1.json"
+                  $ref: "../../specification/transform/put_transform/examples/response/PutTransformResponseExample1.yaml"
   - target: "$.components['requestBodies']['transform.preview_transform']"
     description: "Add examples for preview transform operation"
     update: 
@@ -1111,7 +1111,7 @@ actions:
         application/json: 
           examples: 
             previewTransformRequestExample1: 
-              $ref: "../../specification/transform/preview_transform/PreviewTransformRequestExample1.json"
+              $ref: "../../specification/transform/preview_transform/examples/request/PreviewTransformRequestExample1.yaml"
   - target: "$.components['responses']['transform.preview_transform#200']"
     description: "Add examples for preview transform operation"
     update: 
@@ -1119,7 +1119,7 @@ actions:
         application/json:
           examples:
             previewTransformResponseExample1:
-              $ref: "../../specification/transform/preview_transform/PreviewTransformResponseExample1.json"
+              $ref: "../../specification/transform/preview_transform/examples/response/PreviewTransformResponseExample1.yaml"
   - target: "$.paths['/_transform/{transform_id}/_update']['post']"
     description: "Add examples for update transform operation"
     update: 
@@ -1128,14 +1128,14 @@ actions:
           application/json: 
             examples: 
               updateTransformRequestExample1: 
-                $ref: "../../specification/transform/update_transform/UpdateTransformRequestExample1.json"
+                $ref: "../../specification/transform/update_transform/examples/request/UpdateTransformRequestExample1.yaml"
       responses:
         200:
           content:
             application/json:
               examples:
                 updateTransformResponseExample1:
-                  $ref: "../../specification/transform/update_transform/UpdateTransformResponseExample1.json"
+                  $ref: "../../specification/transform/update_transform/examples/response/UpdateTransformResponseExample1.yaml"
   - target: "$.paths['/_eql/search/status/{id}']['get']"
     description: "Add examples for get async EQL status operation"
     update: 
@@ -1145,7 +1145,7 @@ actions:
             application/json:
               examples:
                 eqlGetStatusResponseExample1:
-                  $ref: "../../specification/eql/get_status/EqlGetStatusResponseExample1.json"
+                  $ref: "../../specification/eql/get_status/examples/response/EqlGetStatusResponseExample1.yaml"
   - target: "$.components['requestBodies']['eql.search']"
     description: "Add examples for EQL search operation"
     update: 
