@@ -651,6 +651,7 @@ security-privileges,https://www.elastic.co/guide/en/elasticsearch/reference/{bra
 service-accounts,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/service-accounts.html
 set-processor,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/set-processor.html
 shape,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/shape.html
+simulate-ingest-api,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/simulate-ingest-api.html
 simulate-pipeline-api,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/simulate-pipeline-api.html
 slm-api-delete-policy,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/slm-api-delete-policy.html
 slm-api-execute-lifecycle,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/slm-api-execute-lifecycle.html

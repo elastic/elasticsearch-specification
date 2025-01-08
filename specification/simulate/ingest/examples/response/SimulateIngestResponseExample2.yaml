@@ -1,0 +1,26 @@
+summary: Use pipeline substitutions
+description: A successful response when the simulation uses pipeline substitutions.
+# type: response
+# response_code: 200
+value:
+  docs:
+    - doc:
+      _id: 123
+      _index: my-index
+      _version: -3
+      _source:
+        field2: value2
+        foo: BAR
+      executed_pipelines:
+        - my-pipeline
+        - my-final-pipeline
+    - doc:
+      _id: 456
+      _index: my-index
+      _version: -3
+      _source:
+        field2: value2
+        foo: RAB
+      executed_pipelines:
+        - my-pipeline
+        - my-final-pipeline
