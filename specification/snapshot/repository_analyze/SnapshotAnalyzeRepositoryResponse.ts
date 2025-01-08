@@ -275,7 +275,7 @@ export class BlobDetails {
   /**
    * The size of the blob.
    */
-  size: string
+  size: ByteSize
   /**
    * The size of the blob in bytes.
    */
