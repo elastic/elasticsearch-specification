@@ -116,6 +116,12 @@
       ],
       "response": []
     },
+    "cluster.put_component_template": {
+      "request": [
+        "Request: missing json spec query parameter 'timeout'"
+      ],
+      "response": []
+    },
     "connector.secret_delete": {
       "request": [
         "Missing request & response"

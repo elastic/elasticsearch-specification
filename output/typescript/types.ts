@@ -9307,7 +9307,6 @@ export interface ClusterPutComponentTemplateRequest extends RequestBase {
   name: Name
   create?: boolean
   master_timeout?: Duration
-  timeout?: Duration
   body?: {
     template: IndicesIndexState
     version?: VersionNumber

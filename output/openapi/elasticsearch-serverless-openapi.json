@@ -1526,9 +1526,6 @@
           },
           {
             "$ref": "#/components/parameters/cluster.put_component_template#master_timeout"
-          },
-          {
-            "$ref": "#/components/parameters/cluster.put_component_template#timeout"
           }
         ],
         "requestBody": {
@@ -1557,9 +1554,6 @@
           },
           {
             "$ref": "#/components/parameters/cluster.put_component_template#master_timeout"
-          },
-          {
-            "$ref": "#/components/parameters/cluster.put_component_template#timeout"
           }
         ],
         "requestBody": {
@@ -58463,16 +58457,6 @@
         "in": "query",
         "name": "master_timeout",
         "description": "Period to wait for a connection to the master node.\nIf no response is received before the timeout expires, the request fails and returns an error.",
-        "deprecated": false,
-        "schema": {
-          "$ref": "#/components/schemas/_types:Duration"
-        },
-        "style": "form"
-      },
-      "cluster.put_component_template#timeout": {
-        "in": "query",
-        "name": "timeout",
-        "description": "Period to wait for a response. If no response is received before the timeout expires, the request fails and returns an error.",
         "deprecated": false,
         "schema": {
           "$ref": "#/components/schemas/_types:Duration"

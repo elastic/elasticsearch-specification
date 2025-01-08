@@ -13473,22 +13473,9 @@
               "namespace": "_types"
             }
           }
-        },
-        {
-          "description": "Period to wait for a response. If no response is received before the timeout expires, the request fails and returns an error.",
-          "name": "timeout",
-          "required": false,
-          "serverDefault": "30s",
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "Duration",
-              "namespace": "_types"
-            }
-          }
         }
       ],
-      "specLocation": "cluster/put_component_template/ClusterPutComponentTemplateRequest.ts#L25-L104"
+      "specLocation": "cluster/put_component_template/ClusterPutComponentTemplateRequest.ts#L25-L99"
     },
     {
       "body": {
