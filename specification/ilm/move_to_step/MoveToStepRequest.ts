@@ -45,7 +45,13 @@ export interface Request extends RequestBase {
     index: IndexName
   }
   body: {
+    /**
+     * The step that the index is expected to be in.
+     */
     current_step: StepKey
+    /**
+     * The step that you want to run.
+     */
     next_step: StepKey
   }
 }

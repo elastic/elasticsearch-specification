@@ -26,8 +26,19 @@ import {
 /** @variants container */
 export class Response {
   body: {
+    /**
+     * Evaluation results for a classification analysis.
+     * It outputs a prediction that identifies to which of the classes each document belongs.
+     */
     classification?: DataframeClassificationSummary
+    /**
+     * Evaluation results for an outlier detection analysis.
+     * It outputs the probability that each document is an outlier.
+     */
     outlier_detection?: DataframeOutlierDetectionSummary
+    /**
+     * Evaluation results for a regression analysis which outputs a prediction of values.
+     */
     regression?: DataframeRegressionSummary
   }
 }
