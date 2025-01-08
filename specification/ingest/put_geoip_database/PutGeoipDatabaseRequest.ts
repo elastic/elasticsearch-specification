@@ -20,6 +20,7 @@
 import { Maxmind } from '@ingest/_types/Database'
 import { RequestBase } from '@_types/Base'
 import { Id, Name } from '@_types/common'
+import { Duration } from '@_types/Time'
 
 /**
  * Create or update a GeoIP database configuration.
@@ -34,6 +35,17 @@ export interface Request extends RequestBase {
      * ID of the database configuration to create or update.
      */
     id: Id
+  }
+  query_parameters: {
+    /**
+     * Period to wait for a connection to the master node.
+     * If no response is received before the timeout expires, the request fails and returns an error.
+     * @server_default 30s */
+    master_timeout?: Duration
+    /**
+     * Period to wait for a response. If no response is received before the timeout expires, the request fails and returns an error.
+     * @server_default 30s */
+    timeout?: Duration
   }
   body: {
     /** The provider-assigned name of the IP geolocation database to download. */

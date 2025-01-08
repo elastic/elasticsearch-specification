@@ -184,47 +184,6 @@
       ],
       "response": []
     },
-    "ilm.delete_lifecycle": {
-      "request": [
-        "Request: missing json spec query parameter 'master_timeout'",
-        "Request: missing json spec query parameter 'timeout'"
-      ],
-      "response": []
-    },
-    "ilm.explain_lifecycle": {
-      "request": [
-        "Request: missing json spec query parameter 'master_timeout'"
-      ],
-      "response": []
-    },
-    "ilm.get_lifecycle": {
-      "request": [
-        "Request: missing json spec query parameter 'master_timeout'",
-        "Request: missing json spec query parameter 'timeout'"
-      ],
-      "response": []
-    },
-    "ilm.put_lifecycle": {
-      "request": [
-        "Request: missing json spec query parameter 'master_timeout'",
-        "Request: missing json spec query parameter 'timeout'"
-      ],
-      "response": []
-    },
-    "ilm.start": {
-      "request": [
-        "Request: missing json spec query parameter 'master_timeout'",
-        "Request: missing json spec query parameter 'timeout'"
-      ],
-      "response": []
-    },
-    "ilm.stop": {
-      "request": [
-        "Request: missing json spec query parameter 'master_timeout'",
-        "Request: missing json spec query parameter 'timeout'"
-      ],
-      "response": []
-    },
     "index": {
       "request": [
         "Request: missing json spec query parameter 'require_data_stream'"
@@ -300,30 +259,17 @@
       ],
       "response": []
     },
-    "ingest.delete_geoip_database": {
-      "request": [
-        "Request: missing json spec query parameter 'master_timeout'",
-        "Request: missing json spec query parameter 'timeout'"
-      ],
-      "response": []
-    },
     "ingest.get_ip_location_database": {
       "request": [
         "Request: query parameter 'master_timeout' does not exist in the json spec"
       ],
       "response": []
     },
-    "ingest.put_geoip_database": {
-      "request": [
-        "Request: missing json spec query parameter 'master_timeout'",
-        "Request: missing json spec query parameter 'timeout'"
-      ],
-      "response": []
-    },
     "license.post_start_trial": {
       "request": [
         "Request: query parameter 'type_query_string' does not exist in the json spec",
-        "Request: missing json spec query parameter 'type'"
+        "Request: missing json spec query parameter 'type'",
+        "Request: missing json spec query parameter 'timeout'"
       ],
       "response": []
     },
@@ -432,6 +378,13 @@
       ],
       "response": []
     },
+    "shutdown.delete_node": {
+      "request": [
+        "Request: query parameter 'master_timeout' does not exist in the json spec",
+        "Request: query parameter 'timeout' does not exist in the json spec"
+      ],
+      "response": []
+    },
     "shutdown.put_node": {
       "request": [
         "Request: query parameter 'master_timeout' does not exist in the json spec",
@@ -442,13 +395,6 @@
     "simulate.ingest": {
       "request": [
         "Missing request & response"
-      ],
-      "response": []
-    },
-    "slm.put_lifecycle": {
-      "request": [
-        "Request: missing json spec query parameter 'master_timeout'",
-        "Request: missing json spec query parameter 'timeout'"
       ],
       "response": []
     },
@@ -494,6 +440,13 @@
     "watcher.update_settings": {
       "request": [
         "Missing request & response"
+      ],
+      "response": []
+    },
+    "xpack.info": {
+      "request": [
+        "Request: query parameter 'human' does not exist in the json spec",
+        "request definition xpack.info:Request / query - Property 'human' is already defined in an ancestor class"
       ],
       "response": []
     }

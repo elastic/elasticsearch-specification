@@ -10840,6 +10840,8 @@ export interface IlmWaitForSnapshotAction {
 
 export interface IlmDeleteLifecycleRequest extends RequestBase {
   name: Name
+  master_timeout?: TimeUnit
+  timeout?: TimeUnit
 }
 
 export type IlmDeleteLifecycleResponse = AcknowledgedResponseBase
@@ -10887,6 +10889,7 @@ export interface IlmExplainLifecycleRequest extends RequestBase {
   index: IndexName
   only_errors?: boolean
   only_managed?: boolean
+  master_timeout?: TimeUnit
 }
 
 export interface IlmExplainLifecycleResponse {
@@ -10901,6 +10904,8 @@ export interface IlmGetLifecycleLifecycle {
 
 export interface IlmGetLifecycleRequest extends RequestBase {
   name?: Name
+  master_timeout?: TimeUnit
+  timeout?: TimeUnit
 }
 
 export type IlmGetLifecycleResponse = Record<string, IlmGetLifecycleLifecycle>
@@ -10948,6 +10953,8 @@ export interface IlmMoveToStepStepKey {
 
 export interface IlmPutLifecycleRequest extends RequestBase {
   name: Name
+  master_timeout?: TimeUnit
+  timeout?: TimeUnit
   body?: {
     policy?: IlmPolicy
   }
@@ -10971,11 +10978,15 @@ export interface IlmRetryRequest extends RequestBase {
 export type IlmRetryResponse = AcknowledgedResponseBase
 
 export interface IlmStartRequest extends RequestBase {
+  master_timeout?: TimeUnit
+  timeout?: TimeUnit
 }
 
 export type IlmStartResponse = AcknowledgedResponseBase
 
 export interface IlmStopRequest extends RequestBase {
+  master_timeout?: TimeUnit
+  timeout?: TimeUnit
 }
 
 export type IlmStopResponse = AcknowledgedResponseBase
@@ -13389,6 +13400,8 @@ export interface IngestWeb {
 
 export interface IngestDeleteGeoipDatabaseRequest extends RequestBase {
   id: Ids
+  master_timeout?: Duration
+  timeout?: Duration
 }
 
 export type IngestDeleteGeoipDatabaseResponse = AcknowledgedResponseBase
@@ -13484,6 +13497,8 @@ export interface IngestProcessorGrokResponse {
 
 export interface IngestPutGeoipDatabaseRequest extends RequestBase {
   id: Id
+  master_timeout?: Duration
+  timeout?: Duration
   body?: {
     name: Name
     maxmind: IngestMaxmind
@@ -13676,7 +13691,6 @@ export interface LicensePostStartTrialRequest extends RequestBase {
   acknowledge?: boolean
   type_query_string?: string
   master_timeout?: Duration
-  timeout?: Duration
 }
 
 export interface LicensePostStartTrialResponse {
@@ -19080,6 +19094,8 @@ export type ShutdownType = 'restart' | 'remove' | 'replace'
 
 export interface ShutdownDeleteNodeRequest extends RequestBase {
   node_id: NodeId
+  master_timeout?: TimeUnit
+  timeout?: TimeUnit
 }
 
 export type ShutdownDeleteNodeResponse = AcknowledgedResponseBase
@@ -19261,6 +19277,8 @@ export interface SlmGetStatusResponse {
 
 export interface SlmPutLifecycleRequest extends RequestBase {
   policy_id: Name
+  master_timeout?: TimeUnit
+  timeout?: TimeUnit
   body?: {
     config?: SlmConfiguration
     name?: Name
@@ -21137,6 +21155,7 @@ export interface XpackInfoNativeCodeInformation {
 export interface XpackInfoRequest extends RequestBase {
   categories?: XpackInfoXPackCategory[]
   accept_enterprise?: boolean
+  human?: boolean
 }
 
 export interface XpackInfoResponse {

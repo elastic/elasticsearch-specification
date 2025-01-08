@@ -106349,7 +106349,7 @@
         "name": "XPackCategory",
         "namespace": "xpack.info"
       },
-      "specLocation": "xpack/info/XPackInfoRequest.ts#L44-L48"
+      "specLocation": "xpack/info/XPackInfoRequest.ts#L49-L53"
     },
     {
       "attachedBehaviors": [

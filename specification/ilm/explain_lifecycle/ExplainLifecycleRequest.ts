@@ -19,6 +19,7 @@
 
 import { RequestBase } from '@_types/Base'
 import { IndexName } from '@_types/common'
+import { TimeUnit } from '@_types/Time'
 
 /**
  * Explain the lifecycle state.
@@ -47,5 +48,10 @@ export interface Request extends RequestBase {
      * Filters the returned indices to only indices that are managed by ILM.
      */
     only_managed?: boolean
+    /**
+     * Period to wait for a connection to the master node. If no response is received before the timeout expires, the request fails and returns an error.
+     * @server_default 30s
+     */
+    master_timeout?: TimeUnit
   }
 }

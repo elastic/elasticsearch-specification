@@ -10259,6 +10259,12 @@
         "parameters": [
           {
             "$ref": "#/components/parameters/ilm.get_lifecycle#policy"
+          },
+          {
+            "$ref": "#/components/parameters/ilm.get_lifecycle#master_timeout"
+          },
+          {
+            "$ref": "#/components/parameters/ilm.get_lifecycle#timeout"
           }
         ],
         "responses": {
@@ -10289,6 +10295,26 @@
               "$ref": "#/components/schemas/_types:Name"
             },
             "style": "simple"
+          },
+          {
+            "in": "query",
+            "name": "master_timeout",
+            "description": "Period to wait for a connection to the master node. If no response is received before the timeout expires, the request fails and returns an error.",
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/_types:TimeUnit"
+            },
+            "style": "form"
+          },
+          {
+            "in": "query",
+            "name": "timeout",
+            "description": "Period to wait for a response. If no response is received before the timeout expires, the request fails and returns an error.",
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/_types:TimeUnit"
+            },
+            "style": "form"
           }
         ],
         "requestBody": {
@@ -10337,6 +10363,26 @@
               "$ref": "#/components/schemas/_types:Name"
             },
             "style": "simple"
+          },
+          {
+            "in": "query",
+            "name": "master_timeout",
+            "description": "Period to wait for a connection to the master node. If no response is received before the timeout expires, the request fails and returns an error.",
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/_types:TimeUnit"
+            },
+            "style": "form"
+          },
+          {
+            "in": "query",
+            "name": "timeout",
+            "description": "Period to wait for a response. If no response is received before the timeout expires, the request fails and returns an error.",
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/_types:TimeUnit"
+            },
+            "style": "form"
           }
         ],
         "responses": {
@@ -10393,6 +10439,16 @@
               "type": "boolean"
             },
             "style": "form"
+          },
+          {
+            "in": "query",
+            "name": "master_timeout",
+            "description": "Period to wait for a connection to the master node. If no response is received before the timeout expires, the request fails and returns an error.",
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/_types:TimeUnit"
+            },
+            "style": "form"
           }
         ],
         "responses": {
@@ -10428,6 +10484,14 @@
         ],
         "summary": "Get lifecycle policies",
         "operationId": "ilm-get-lifecycle-1",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/ilm.get_lifecycle#master_timeout"
+          },
+          {
+            "$ref": "#/components/parameters/ilm.get_lifecycle#timeout"
+          }
+        ],
         "responses": {
           "200": {
             "$ref": "#/components/responses/ilm.get_lifecycle#200"
@@ -10718,6 +10782,28 @@
         "summary": "Start the ILM plugin",
         "description": "Start the index lifecycle management plugin if it is currently stopped.\nILM is started automatically when the cluster is formed.\nRestarting ILM is necessary only when it has been stopped using the stop ILM API.",
         "operationId": "ilm-start",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "master_timeout",
+            "description": "Period to wait for a connection to the master node. If no response is received before the timeout expires, the request fails and returns an error.",
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/_types:TimeUnit"
+            },
+            "style": "form"
+          },
+          {
+            "in": "query",
+            "name": "timeout",
+            "description": "Period to wait for a response. If no response is received before the timeout expires, the request fails and returns an error.",
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/_types:TimeUnit"
+            },
+            "style": "form"
+          }
+        ],
         "responses": {
           "200": {
             "description": "",
@@ -10741,6 +10827,28 @@
         "summary": "Stop the ILM plugin",
         "description": "Halt all lifecycle management operations and stop the index lifecycle management plugin.\nThis is useful when you are performing maintenance on the cluster and need to prevent ILM from performing any actions on your indices.\n\nThe API returns as soon as the stop request has been acknowledged, but the plugin might continue to run until in-progress operations complete and the plugin can be safely stopped.\nUse the get ILM status API to check whether ILM is running.",
         "operationId": "ilm-stop",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "master_timeout",
+            "description": "Period to wait for a connection to the master node. If no response is received before the timeout expires, the request fails and returns an error.",
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/_types:TimeUnit"
+            },
+            "style": "form"
+          },
+          {
+            "in": "query",
+            "name": "timeout",
+            "description": "Period to wait for a response. If no response is received before the timeout expires, the request fails and returns an error.",
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/_types:TimeUnit"
+            },
+            "style": "form"
+          }
+        ],
         "responses": {
           "200": {
             "description": "",
@@ -15932,6 +16040,26 @@
               "$ref": "#/components/schemas/_types:Id"
             },
             "style": "simple"
+          },
+          {
+            "in": "query",
+            "name": "master_timeout",
+            "description": "Period to wait for a connection to the master node.\nIf no response is received before the timeout expires, the request fails and returns an error.",
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/_types:Duration"
+            },
+            "style": "form"
+          },
+          {
+            "in": "query",
+            "name": "timeout",
+            "description": "Period to wait for a response. If no response is received before the timeout expires, the request fails and returns an error.",
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/_types:Duration"
+            },
+            "style": "form"
           }
         ],
         "requestBody": {
@@ -15988,6 +16116,26 @@
               "$ref": "#/components/schemas/_types:Ids"
             },
             "style": "simple"
+          },
+          {
+            "in": "query",
+            "name": "master_timeout",
+            "description": "Period to wait for a connection to the master node.\nIf no response is received before the timeout expires, the request fails and returns an error.",
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/_types:Duration"
+            },
+            "style": "form"
+          },
+          {
+            "in": "query",
+            "name": "timeout",
+            "description": "Period to wait for a response. If no response is received before the timeout expires, the request fails and returns an error.",
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/_types:Duration"
+            },
+            "style": "form"
           }
         ],
         "responses": {
@@ -16964,16 +17112,6 @@
             "in": "query",
             "name": "master_timeout",
             "description": "Period to wait for a connection to the master node.",
-            "deprecated": false,
-            "schema": {
-              "$ref": "#/components/schemas/_types:Duration"
-            },
-            "style": "form"
-          },
-          {
-            "in": "query",
-            "name": "timeout",
-            "description": "Period to wait for a response. If no response is received before the timeout expires, the request fails and returns an error.",
             "deprecated": false,
             "schema": {
               "$ref": "#/components/schemas/_types:Duration"
@@ -32239,6 +32377,26 @@
               "$ref": "#/components/schemas/_types:NodeId"
             },
             "style": "simple"
+          },
+          {
+            "in": "query",
+            "name": "master_timeout",
+            "description": "Period to wait for a connection to the master node. If no response is received before the timeout expires, the request fails and returns an error.",
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/_types:TimeUnit"
+            },
+            "style": "form"
+          },
+          {
+            "in": "query",
+            "name": "timeout",
+            "description": "Period to wait for a response. If no response is received before the timeout expires, the request fails and returns an error.",
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/_types:TimeUnit"
+            },
+            "style": "form"
           }
         ],
         "responses": {
@@ -32321,6 +32479,26 @@
               "$ref": "#/components/schemas/_types:Name"
             },
             "style": "simple"
+          },
+          {
+            "in": "query",
+            "name": "master_timeout",
+            "description": "Period to wait for a connection to the master node. If no response is received before the timeout expires, the request fails and returns an error.",
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/_types:TimeUnit"
+            },
+            "style": "form"
+          },
+          {
+            "in": "query",
+            "name": "timeout",
+            "description": "Period to wait for a response. If no response is received before the timeout expires, the request fails and returns an error.",
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/_types:TimeUnit"
+            },
+            "style": "form"
           }
         ],
         "requestBody": {
@@ -37969,6 +38147,16 @@
             "in": "query",
             "name": "accept_enterprise",
             "description": "If this param is used it must be set to true",
+            "deprecated": false,
+            "schema": {
+              "type": "boolean"
+            },
+            "style": "form"
+          },
+          {
+            "in": "query",
+            "name": "human",
+            "description": "Defines whether additional human-readable information is included in the response. In particular, it adds descriptions and a tag line.",
             "deprecated": false,
             "schema": {
               "type": "boolean"
@@ -98267,6 +98455,26 @@
           "$ref": "#/components/schemas/_types:Name"
         },
         "style": "simple"
+      },
+      "ilm.get_lifecycle#master_timeout": {
+        "in": "query",
+        "name": "master_timeout",
+        "description": "Period to wait for a connection to the master node. If no response is received before the timeout expires, the request fails and returns an error.",
+        "deprecated": false,
+        "schema": {
+          "$ref": "#/components/schemas/_types:TimeUnit"
+        },
+        "style": "form"
+      },
+      "ilm.get_lifecycle#timeout": {
+        "in": "query",
+        "name": "timeout",
+        "description": "Period to wait for a response. If no response is received before the timeout expires, the request fails and returns an error.",
+        "deprecated": false,
+        "schema": {
+          "$ref": "#/components/schemas/_types:TimeUnit"
+        },
+        "style": "form"
       },
       "index#id": {
         "in": "path",
