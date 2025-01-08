@@ -30991,17 +30991,13 @@
                   "type": "object",
                   "properties": {
                     "security": {
-                      "$ref": "#/components/schemas/security.get_settings:SecuritySettings"
+                      "$ref": "#/components/schemas/security._types:SecuritySettings"
                     },
                     "security-profile": {
-                      "description": "Settings for the index used to store profile information.",
-                      "type": "object",
-                      "additionalProperties": {
-                        "type": "string"
-                      }
+                      "$ref": "#/components/schemas/security._types:SecuritySettings"
                     },
                     "security-tokens": {
-                      "$ref": "#/components/schemas/security.get_settings:SecuritySettings"
+                      "$ref": "#/components/schemas/security._types:SecuritySettings"
                     }
                   },
                   "required": [
@@ -31051,25 +31047,13 @@
                 "type": "object",
                 "properties": {
                   "security": {
-                    "description": "Settings for the index used for most security configuration, including native realm users and roles configured with the API.",
-                    "type": "object",
-                    "additionalProperties": {
-                      "type": "string"
-                    }
+                    "$ref": "#/components/schemas/security._types:SecuritySettings"
                   },
                   "security-profile": {
-                    "description": "Settings for the index used to store profile information.",
-                    "type": "object",
-                    "additionalProperties": {
-                      "type": "string"
-                    }
+                    "$ref": "#/components/schemas/security._types:SecuritySettings"
                   },
                   "security-tokens": {
-                    "description": "Settings for the index used to store tokens.",
-                    "type": "object",
-                    "additionalProperties": {
-                      "type": "string"
-                    }
+                    "$ref": "#/components/schemas/security._types:SecuritySettings"
                   }
                 }
               }
@@ -86321,7 +86305,7 @@
           "nodes"
         ]
       },
-      "security.get_settings:SecuritySettings": {
+      "security._types:SecuritySettings": {
         "type": "object",
         "properties": {
           "index": {

@@ -16,8 +16,7 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-import { IndexSettings } from '@indices/_types/IndexSettings'
-import { Dictionary } from '@spec_utils/Dictionary'
+import { SecuritySettings } from '@security/_types/SecuritySettings'
 
 export class Response {
   body: {
@@ -34,8 +33,4 @@ export class Response {
      */
     'security-tokens': SecuritySettings
   }
-}
-
-export class SecuritySettings {
-  index?: IndexSettings
 }

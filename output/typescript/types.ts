@@ -18100,6 +18100,10 @@ export interface SecuritySearchAccess {
   allow_restricted_indices?: boolean
 }
 
+export interface SecuritySecuritySettings {
+  index?: IndicesIndexSettings
+}
+
 export type SecurityTemplateFormat = 'string' | 'json'
 
 export interface SecurityUser {
@@ -18577,13 +18581,9 @@ export interface SecurityGetSettingsRequest extends RequestBase {
 }
 
 export interface SecurityGetSettingsResponse {
-  security: SecurityGetSettingsSecuritySettings
-  'security-profile': Record<string, string>
-  'security-tokens': SecurityGetSettingsSecuritySettings
-}
-
-export interface SecurityGetSettingsSecuritySettings {
-  index?: IndicesIndexSettings
+  security: SecuritySecuritySettings
+  'security-profile': SecuritySecuritySettings
+  'security-tokens': SecuritySecuritySettings
 }
 
 export type SecurityGetTokenAccessTokenGrantType = 'password' | 'client_credentials' | '_kerberos' | 'refresh_token'
@@ -19158,9 +19158,9 @@ export interface SecurityUpdateSettingsRequest extends RequestBase {
   master_timeout?: Duration
   timeout?: Duration
   body?: {
-    security?: Record<string, string>
-    'security-profile'?: Record<string, string>
-    'security-tokens'?: Record<string, string>
+    security?: SecuritySecuritySettings
+    'security-profile'?: SecuritySecuritySettings
+    'security-tokens'?: SecuritySecuritySettings
   }
 }
 

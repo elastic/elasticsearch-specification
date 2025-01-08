@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { Dictionary } from '@spec_utils/Dictionary'
+import { SecuritySettings } from '@security/_types/SecuritySettings'
 import { RequestBase } from '@_types/Base'
 import { Duration } from '@_types/Time'
 
