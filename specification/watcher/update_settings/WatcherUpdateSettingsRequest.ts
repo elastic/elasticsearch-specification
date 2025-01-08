@@ -17,14 +17,15 @@
  * under the License.
  */
 
-import { Dictionary } from '@spec_utils/Dictionary'
 import { RequestBase } from '@_types/Base'
+import { integer } from '@_types/Numeric'
 import { Duration } from '@_types/Time'
 
 /**
  * Update Watcher index settings.
  * Update settings for the Watcher internal index (`.watches`).
- * Only a subset of settings can be modified, for example `index.auto_expand_replicas` and `index.number_of_replicas`.
+ * Only a subset of settings can be modified.
+ * This includes `index.auto_expand_replicas` and `index.number_of_replicas`.
  * @rest_spec_name watcher.update_settings
  * @availability stack stability=stable visibility=public
  * @cluster_privileges manage_watcher
@@ -44,5 +45,8 @@ export interface Request extends RequestBase {
     timeout?: Duration
   }
   /** @codegen_name watcher_index_settings */
-  body: Dictionary<string, string>
+  body: {
+    'index.auto_expand_replicas'?: string
+    'index.number_of_replicas'?: integer
+  }
 }

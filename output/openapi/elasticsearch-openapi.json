@@ -38369,7 +38369,7 @@
           "watcher"
         ],
         "summary": "Update Watcher index settings",
-        "description": "Update settings for the Watcher internal index (`.watches`).\nOnly a subset of settings can be modified, for example `index.auto_expand_replicas` and `index.number_of_replicas`.",
+        "description": "Update settings for the Watcher internal index (`.watches`).\nOnly a subset of settings can be modified.\nThis includes `index.auto_expand_replicas` and `index.number_of_replicas`.",
         "operationId": "watcher-update-settings",
         "parameters": [
           {
@@ -38398,8 +38398,13 @@
             "application/json": {
               "schema": {
                 "type": "object",
-                "additionalProperties": {
-                  "type": "string"
+                "properties": {
+                  "index.auto_expand_replicas": {
+                    "type": "string"
+                  },
+                  "index.number_of_replicas": {
+                    "type": "number"
+                  }
                 }
               }
             }

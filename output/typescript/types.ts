@@ -21198,7 +21198,10 @@ export type WatcherStopResponse = AcknowledgedResponseBase
 export interface WatcherUpdateSettingsRequest extends RequestBase {
   master_timeout?: Duration
   timeout?: Duration
-  body?: Record<string, string>
+  body?: {
+    'index.auto_expand_replicas'?: string
+    'index.number_of_replicas'?: integer
+  }
 }
 
 export interface WatcherUpdateSettingsResponse {
