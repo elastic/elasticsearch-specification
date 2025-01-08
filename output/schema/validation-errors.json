@@ -43,6 +43,12 @@
       ],
       "response": []
     },
+    "bulk": {
+      "request": [
+        "Request: missing json spec query parameter 'type'"
+      ],
+      "response": []
+    },
     "capabilities": {
       "request": [
         "Missing request & response"
@@ -622,44 +628,8 @@
       ],
       "response": []
     },
-    "ilm.delete_lifecycle": {
-      "request": [
-        "Request: query parameter 'master_timeout' does not exist in the json spec",
-        "Request: query parameter 'timeout' does not exist in the json spec"
-      ],
-      "response": []
-    },
     "ilm.explain_lifecycle": {
       "request": [
-        "Request: query parameter 'master_timeout' does not exist in the json spec",
-        "Request: query parameter 'timeout' does not exist in the json spec"
-      ],
-      "response": []
-    },
-    "ilm.get_lifecycle": {
-      "request": [
-        "Request: query parameter 'master_timeout' does not exist in the json spec",
-        "Request: query parameter 'timeout' does not exist in the json spec"
-      ],
-      "response": []
-    },
-    "ilm.put_lifecycle": {
-      "request": [
-        "Request: query parameter 'master_timeout' does not exist in the json spec",
-        "Request: query parameter 'timeout' does not exist in the json spec"
-      ],
-      "response": []
-    },
-    "ilm.start": {
-      "request": [
-        "Request: query parameter 'master_timeout' does not exist in the json spec",
-        "Request: query parameter 'timeout' does not exist in the json spec"
-      ],
-      "response": []
-    },
-    "ilm.stop": {
-      "request": [
-        "Request: query parameter 'master_timeout' does not exist in the json spec",
         "Request: query parameter 'timeout' does not exist in the json spec"
       ],
       "response": []
@@ -741,20 +711,6 @@
       ],
       "response": []
     },
-    "ingest.delete_geoip_database": {
-      "request": [
-        "Request: query parameter 'master_timeout' does not exist in the json spec",
-        "Request: query parameter 'timeout' does not exist in the json spec"
-      ],
-      "response": []
-    },
-    "ingest.delete_ip_location_database": {
-      "request": [
-        "Request: query parameter 'master_timeout' does not exist in the json spec",
-        "Request: query parameter 'timeout' does not exist in the json spec"
-      ],
-      "response": []
-    },
     "ingest.get_geoip_database": {
       "request": [
         "Request: query parameter 'master_timeout' does not exist in the json spec"
@@ -764,20 +720,6 @@
     "ingest.get_ip_location_database": {
       "request": [
         "Request: query parameter 'master_timeout' does not exist in the json spec"
-      ],
-      "response": []
-    },
-    "ingest.put_geoip_database": {
-      "request": [
-        "Request: query parameter 'master_timeout' does not exist in the json spec",
-        "Request: query parameter 'timeout' does not exist in the json spec"
-      ],
-      "response": []
-    },
-    "ingest.put_ip_location_database": {
-      "request": [
-        "Request: query parameter 'master_timeout' does not exist in the json spec",
-        "Request: query parameter 'timeout' does not exist in the json spec"
       ],
       "response": []
     },
@@ -983,10 +925,45 @@
       ],
       "response": []
     },
-    "slm.put_lifecycle": {
+    "slm.delete_lifecycle": {
       "request": [
-        "Request: query parameter 'master_timeout' does not exist in the json spec",
-        "Request: query parameter 'timeout' does not exist in the json spec"
+        "Request: missing json spec query parameter 'master_timeout'",
+        "Request: missing json spec query parameter 'timeout'"
+      ],
+      "response": []
+    },
+    "slm.execute_lifecycle": {
+      "request": [
+        "Request: missing json spec query parameter 'master_timeout'",
+        "Request: missing json spec query parameter 'timeout'"
+      ],
+      "response": []
+    },
+    "slm.execute_retention": {
+      "request": [
+        "Request: missing json spec query parameter 'master_timeout'",
+        "Request: missing json spec query parameter 'timeout'"
+      ],
+      "response": []
+    },
+    "slm.get_lifecycle": {
+      "request": [
+        "Request: missing json spec query parameter 'master_timeout'",
+        "Request: missing json spec query parameter 'timeout'"
+      ],
+      "response": []
+    },
+    "slm.get_stats": {
+      "request": [
+        "Request: missing json spec query parameter 'master_timeout'",
+        "Request: missing json spec query parameter 'timeout'"
+      ],
+      "response": []
+    },
+    "slm.get_status": {
+      "request": [
+        "Request: missing json spec query parameter 'master_timeout'",
+        "Request: missing json spec query parameter 'timeout'"
       ],
       "response": []
     },
