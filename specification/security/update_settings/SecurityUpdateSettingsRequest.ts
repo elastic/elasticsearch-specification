@@ -56,6 +56,6 @@ export interface Request extends RequestBase {
     /**
      * Settings for the index used to store tokens.
      */
-    'security-tokens'?: Dictionary<string, string>
+    'security-tokens'?: SecuritySettings
   }
 }
