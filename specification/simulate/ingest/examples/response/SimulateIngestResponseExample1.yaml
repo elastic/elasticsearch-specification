@@ -1,0 +1,28 @@
+summary: Use an existing pipeline definition
+description: A successful response when the simulation uses pipeline definitions that are already in the system.
+# type: response
+# response_code: 200
+value:
+  docs:
+    - doc:
+      _id: 123
+      _index: my-index
+      _version: -3
+      _source:
+        field1: value1
+        field2: value2
+        foo: bar
+      executed_pipelines:
+        - my-pipeline
+        - my-final-pipeline
+    - doc:
+      _id: 456
+      _index: my-index
+      _version: -3,
+      _source:
+        field1: value1
+        field2: value2
+        foo: rab
+      executed_pipelines:
+        - my-pipeline
+        - my-final-pipeline
