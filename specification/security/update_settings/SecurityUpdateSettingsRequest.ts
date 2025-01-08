@@ -48,7 +48,7 @@ export interface Request extends RequestBase {
     /**
      * Settings for the index used for most security configuration, including native realm users and roles configured with the API.
      */
-    security?: Dictionary<string, string>
+    security?: SecuritySettings
     /**
      * Settings for the index used to store profile information.
      */
