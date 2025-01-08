@@ -19389,11 +19389,13 @@ export interface SnapshotAzureRepository extends SnapshotRepositoryBase {
 }
 
 export interface SnapshotAzureRepositorySettings extends SnapshotRepositorySettingsBase {
+  base_path?: string
   client?: string
   container?: string
-  base_path?: string
-  readonly?: boolean
+  delete_objects_max_size?: integer
   location_mode?: string
+  max_concurrent_batch_deletes?: integer
+  readonly?: boolean
 }
 
 export interface SnapshotFileCountSnapshotStats {
@@ -19408,10 +19410,10 @@ export interface SnapshotGcsRepository extends SnapshotRepositoryBase {
 
 export interface SnapshotGcsRepositorySettings extends SnapshotRepositorySettingsBase {
   bucket: string
-  client?: string
-  base_path?: string
-  readonly?: boolean
   application_name?: string
+  base_path?: string
+  client?: string
+  readonly?: boolean
 }
 
 export interface SnapshotIndexDetails {
@@ -19458,13 +19460,20 @@ export interface SnapshotS3Repository extends SnapshotRepositoryBase {
 
 export interface SnapshotS3RepositorySettings extends SnapshotRepositorySettingsBase {
   bucket: string
-  client?: string
   base_path?: string
-  readonly?: boolean
-  server_side_encryption?: boolean
   buffer_size?: ByteSize
   canned_acl?: string
+  client?: string
+  delete_objects_max_size?: integer
+  get_register_retry_delay?: Duration
+  max_multipart_parts?: integer
+  max_multipart_upload_cleanup_size?: integer
+  readonly?: boolean
+  server_side_encryption?: boolean
   storage_class?: string
+  'throttled_delete_retry.delay_increment'?: Duration
+  'throttled_delete_retry.maximum_delay'?: Duration
+  'throttled_delete_retry.maximum_number_of_retries'?: integer
 }
 
 export interface SnapshotShardsStats {

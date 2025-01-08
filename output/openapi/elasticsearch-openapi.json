@@ -33794,7 +33794,7 @@
           "snapshot"
         ],
         "summary": "Create or update a snapshot repository",
-        "description": "IMPORTANT: If you are migrating searchable snapshots, the repository name must be identical in the source and destination clusters.\nTo register a snapshot repository, the cluster's global metadata must be writeable.\nEnsure there are no cluster blocks (for example, `cluster.blocks.read_only` and `clsuter.blocks.read_only_allow_delete` settings) that prevent write access.",
+        "description": "IMPORTANT: If you are migrating searchable snapshots, the repository name must be identical in the source and destination clusters.\nTo register a snapshot repository, the cluster's global metadata must be writeable.\nEnsure there are no cluster blocks (for example, `cluster.blocks.read_only` and `clsuter.blocks.read_only_allow_delete` settings) that prevent write access.\n\nSeveral options for this API can be specified using a query parameter or a request body parameter.\nIf both parameters are specified, only the query parameter is used.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/snapshots-register-repository.html"
         },
@@ -33828,7 +33828,7 @@
           "snapshot"
         ],
         "summary": "Create or update a snapshot repository",
-        "description": "IMPORTANT: If you are migrating searchable snapshots, the repository name must be identical in the source and destination clusters.\nTo register a snapshot repository, the cluster's global metadata must be writeable.\nEnsure there are no cluster blocks (for example, `cluster.blocks.read_only` and `clsuter.blocks.read_only_allow_delete` settings) that prevent write access.",
+        "description": "IMPORTANT: If you are migrating searchable snapshots, the repository name must be identical in the source and destination clusters.\nTo register a snapshot repository, the cluster's global metadata must be writeable.\nEnsure there are no cluster blocks (for example, `cluster.blocks.read_only` and `clsuter.blocks.read_only_allow_delete` settings) that prevent write access.\n\nSeveral options for this API can be specified using a query parameter or a request body parameter.\nIf both parameters are specified, only the query parameter is used.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/snapshots-register-repository.html"
         },
@@ -87304,6 +87304,10 @@
             "type": "object",
             "properties": {
               "type": {
+                "externalDocs": {
+                  "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/repository-azure.html"
+                },
+                "description": "The Azure repository type.",
                 "type": "string",
                 "enum": [
                   "azure"
@@ -87328,20 +87332,33 @@
           {
             "type": "object",
             "properties": {
+              "base_path": {
+                "description": "The path to the repository data within the container.\nIt defaults to the root directory.\n\nNOTE: Don't set `base_path` when configuring a snapshot repository for Elastic Cloud Enterprise.\nElastic Cloud Enterprise automatically generates the `base_path` for each deployment so that multiple deployments can share the same bucket.",
+                "type": "string"
+              },
               "client": {
+                "description": "The name of the Azure repository client to use.",
                 "type": "string"
               },
               "container": {
+                "description": "The Azure container.",
                 "type": "string"
               },
-              "base_path": {
-                "type": "string"
-              },
-              "readonly": {
-                "type": "boolean"
+              "delete_objects_max_size": {
+                "description": "The maxmimum batch size, between 1 and 256, used for `BlobBatch` requests.\nDefaults to 256 which is the maximum number supported by the Azure blob batch API.",
+                "type": "number"
               },
               "location_mode": {
+                "description": "Either `primary_only` or `secondary_only`.\nNote that if you set it to `secondary_only`, it will force `readonly` to `true`.",
                 "type": "string"
+              },
+              "max_concurrent_batch_deletes": {
+                "description": "The maximum number of concurrent batch delete requests that will be submitted for any individual bulk delete with `BlobBatch`.\nNote that the effective number of concurrent deletes is further limited by the Azure client connection and event loop thread limits.\nDefaults to 10, minimum is 1, maximum is 100.",
+                "type": "number"
+              },
+              "readonly": {
+                "description": "If `true`, the repository is read-only.\nThe cluster can retrieve and restore snapshots from the repository but not write to the repository or create snapshots in it.\n\nOnly a cluster with write access can create snapshots in the repository.\nAll other clusters connected to the repository should have the `readonly` parameter set to `true`.\nIf `false`, the cluster can write to the repository and create snapshots in it.\n\nIMPORTANT: If you register the same snapshot repository with multiple clusters, only one cluster should have write access to the repository.\nHaving multiple clusters write to the repository at the same time risks corrupting the contents of the repository.",
+                "type": "boolean"
               }
             }
           }
@@ -87354,6 +87371,7 @@
             "$ref": "#/components/schemas/_types:ByteSize"
           },
           "compress": {
+            "description": "When set to `true`, metadata files are stored in compressed format.\nThis setting doesn't affect index files that are already compressed by default.",
             "type": "boolean"
           },
           "max_restore_bytes_per_sec": {
@@ -87381,6 +87399,10 @@
             "type": "object",
             "properties": {
               "type": {
+                "externalDocs": {
+                  "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/repository-gcs.html"
+                },
+                "description": "The Google Cloud Storage repository type.",
                 "type": "string",
                 "enum": [
                   "gcs"
@@ -87406,19 +87428,25 @@
             "type": "object",
             "properties": {
               "bucket": {
+                "description": "The name of the bucket to be used for snapshots.",
                 "type": "string"
               },
-              "client": {
+              "application_name": {
+                "deprecated": true,
+                "description": "The name used by the client when it uses the Google Cloud Storage service.",
                 "type": "string"
               },
               "base_path": {
+                "description": "The path to the repository data within the bucket.\nIt defaults to the root of the bucket.\n\nNOTE: Don't set `base_path` when configuring a snapshot repository for Elastic Cloud Enterprise.\nElastic Cloud Enterprise automatically generates the `base_path` for each deployment so that multiple deployments can share the same bucket.",
+                "type": "string"
+              },
+              "client": {
+                "description": "The name of the client to use to connect to Google Cloud Storage.",
                 "type": "string"
               },
               "readonly": {
+                "description": "If `true`, the repository is read-only.\nThe cluster can retrieve and restore snapshots from the repository but not write to the repository or create snapshots in it.\n\nOnly a cluster with write access can create snapshots in the repository.\nAll other clusters connected to the repository should have the `readonly` parameter set to `true`.\n\nIf `false`, the cluster can write to the repository and create snapshots in it.\n\nIMPORTANT: If you register the same snapshot repository with multiple clusters, only one cluster should have write access to the repository.\nHaving multiple clusters write to the repository at the same time risks corrupting the contents of the repository.",
                 "type": "boolean"
-              },
-              "application_name": {
-                "type": "string"
               }
             },
             "required": [
@@ -87436,6 +87464,10 @@
             "type": "object",
             "properties": {
               "type": {
+                "externalDocs": {
+                  "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/repository-s3.html"
+                },
+                "description": "The S3 repository type.",
                 "type": "string",
                 "enum": [
                   "s3"
@@ -87461,28 +87493,75 @@
             "type": "object",
             "properties": {
               "bucket": {
-                "type": "string"
-              },
-              "client": {
+                "externalDocs": {
+                  "url": "https://docs.aws.amazon.com/AmazonS3/latest/userguide/BucketRestrictions.html#bucketnamingrules"
+                },
+                "description": "The name of the S3 bucket to use for snapshots.\nThe bucket name must adhere to Amazon's S3 bucket naming rules.",
                 "type": "string"
               },
               "base_path": {
+                "description": "The path to the repository data within its bucket.\nIt defaults to an empty string, meaning that the repository is at the root of the bucket.\nThe value of this setting should not start or end with a forward slash (`/`).\n\nNOTE: Don't set base_path when configuring a snapshot repository for Elastic Cloud Enterprise.\nElastic Cloud Enterprise automatically generates the `base_path` for each deployment so that multiple deployments may share the same bucket.",
                 "type": "string"
-              },
-              "readonly": {
-                "type": "boolean"
-              },
-              "server_side_encryption": {
-                "type": "boolean"
               },
               "buffer_size": {
                 "$ref": "#/components/schemas/_types:ByteSize"
               },
               "canned_acl": {
+                "externalDocs": {
+                  "url": "https://docs.aws.amazon.com/AmazonS3/latest/userguide/acl-overview.html#canned-acl"
+                },
+                "description": "The S3 repository supports all S3 canned ACLs: `private`, `public-read`, `public-read-write`, `authenticated-read`, `log-delivery-write`, `bucket-owner-read`, `bucket-owner-full-control`.\nYou could specify a canned ACL using the `canned_acl` setting.\nWhen the S3 repository creates buckets and objects, it adds the canned ACL into the buckets and objects.",
                 "type": "string"
               },
-              "storage_class": {
+              "client": {
+                "description": "The name of the S3 client to use to connect to S3.",
                 "type": "string"
+              },
+              "delete_objects_max_size": {
+                "externalDocs": {
+                  "url": "https://docs.aws.amazon.com/AmazonS3/latest/API/API_DeleteObjects.html"
+                },
+                "description": "The maxmimum batch size, between 1 and 1000, used for `DeleteObjects` requests.\nDefaults to 1000 which is the maximum number supported by the  AWS DeleteObjects API.",
+                "type": "number"
+              },
+              "get_register_retry_delay": {
+                "$ref": "#/components/schemas/_types:Duration"
+              },
+              "max_multipart_parts": {
+                "description": "The maximum number of parts that Elasticsearch will write during a multipart upload of a single object.\nFiles which are larger than `buffer_size × max_multipart_parts` will be chunked into several smaller objects.\nElasticsearch may also split a file across multiple objects to satisfy other constraints such as the `chunk_size` limit.\nDefaults to `10000` which is the maximum number of parts in a multipart upload in AWS S3.",
+                "type": "number"
+              },
+              "max_multipart_upload_cleanup_size": {
+                "externalDocs": {
+                  "url": "https://docs.aws.amazon.com/AmazonS3/latest/API/API_ListMultipartUploads.html"
+                },
+                "description": "The maximum number of possibly-dangling multipart uploads to clean up in each batch of snapshot deletions.\nDefaults to 1000 which is the maximum number supported by the AWS ListMultipartUploads API.\nIf set to `0`, Elasticsearch will not attempt to clean up dangling multipart uploads.",
+                "type": "number"
+              },
+              "readonly": {
+                "description": "If true, the repository is read-only.\nThe cluster can retrieve and restore snapshots from the repository but not write to the repository or create snapshots in it.\n\nOnly a cluster with write access can create snapshots in the repository.\nAll other clusters connected to the repository should have the `readonly` parameter set to `true`.\n\nIf `false`, the cluster can write to the repository and create snapshots in it.\n\nIMPORTANT: If you register the same snapshot repository with multiple clusters, only one cluster should have write access to the repository.\nHaving multiple clusters write to the repository at the same time risks corrupting the contents of the repository.",
+                "type": "boolean"
+              },
+              "server_side_encryption": {
+                "description": "When set to `true`m files are encrypted on server side using an AES256 algorithm.\nserver_default false",
+                "type": "boolean"
+              },
+              "storage_class": {
+                "externalDocs": {
+                  "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/repository-s3.html#repository-s3-storage-classes"
+                },
+                "description": "The S3 storage class for objects written to the repository.\nValues may be `standard`, `reduced_redundancy`, `standard_ia`, `onezone_ia`, and `intelligent_tiering`.",
+                "type": "string"
+              },
+              "throttled_delete_retry.delay_increment": {
+                "$ref": "#/components/schemas/_types:Duration"
+              },
+              "throttled_delete_retry.maximum_delay": {
+                "$ref": "#/components/schemas/_types:Duration"
+              },
+              "throttled_delete_retry.maximum_number_of_retries": {
+                "description": "The number times to retry a throttled snapshot deletion.\nThe default is 10 and the minimum value is 0 which will disable retries altogether.\nNote that if retries are enabled in the Azure client, each of these retries comprises that many client-level retries.",
+                "type": "number"
               }
             },
             "required": [
@@ -87500,6 +87579,10 @@
             "type": "object",
             "properties": {
               "type": {
+                "externalDocs": {
+                  "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/snapshots-filesystem-repository.html"
+                },
+                "description": "The shared file system repository type.",
                 "type": "string",
                 "enum": [
                   "fs"
@@ -87525,12 +87608,15 @@
             "type": "object",
             "properties": {
               "location": {
+                "description": "The location of the shared filesystem used to store and retrieve snapshots.\nThis location must be registered in the `path.repo` setting on all master and data nodes in the cluster.\nUnlike `path.repo`, this setting supports only a single file path.",
                 "type": "string"
               },
               "max_number_of_snapshots": {
+                "description": "The maximum number of snapshots the repository can contain.\nThe default is `Integer.MAX_VALUE`, which is 2^31-1 or `2147483647`.",
                 "type": "number"
               },
               "readonly": {
+                "description": "If `true`, the repository is read-only.\nThe cluster can retrieve and restore snapshots from the repository but not write to the repository or create snapshots in it.\n\nOnly a cluster with write access can create snapshots in the repository.\nAll other clusters connected to the repository should have the `readonly` parameter set to `true`.\n\nIf `false`, the cluster can write to the repository and create snapshots in it.\n\nIMPORTANT: If you register the same snapshot repository with multiple clusters, only one cluster should have write access to the repository.\nHaving multiple clusters write to the repository at the same time risks corrupting the contents of the repository.",
                 "type": "boolean"
               }
             },
@@ -87549,6 +87635,10 @@
             "type": "object",
             "properties": {
               "type": {
+                "externalDocs": {
+                  "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/snapshots-read-only-repository.html"
+                },
+                "description": "The read-only URL repository type.",
                 "type": "string",
                 "enum": [
                   "url"
@@ -87574,15 +87664,18 @@
             "type": "object",
             "properties": {
               "http_max_retries": {
+                "description": "The maximum number of retries for HTTP and HTTPS URLs.",
                 "type": "number"
               },
               "http_socket_timeout": {
                 "$ref": "#/components/schemas/_types:Duration"
               },
               "max_number_of_snapshots": {
+                "description": "The maximum number of snapshots the repository can contain.\nThe default is `Integer.MAX_VALUE`, which is 2^31-1 or `2147483647`.",
                 "type": "number"
               },
               "url": {
+                "description": "The URL location of the root of the shared filesystem repository.\nThe following protocols are supported:\n\n* `file`\n* `ftp`\n* `http`\n* `https`\n* `jar`\n\nURLs using the HTTP, HTTPS, or FTP protocols must be explicitly allowed with the `repositories.url.allowed_urls` cluster setting.\nThis setting supports wildcards in the place of a host, path, query, or fragment in the URL.\n\nURLs using the file protocol must point to the location of a shared filesystem accessible to all master and data nodes in the cluster.\nThis location must be registered in the `path.repo` setting.\nYou don't need to register URLs using the FTP, HTTP, HTTPS, or JAR protocols in the `path.repo` setting.",
                 "type": "string"
               }
             },
@@ -87601,6 +87694,10 @@
             "type": "object",
             "properties": {
               "type": {
+                "externalDocs": {
+                  "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/snapshots-source-only-repository.html"
+                },
+                "description": "The source-only repository type.",
                 "type": "string",
                 "enum": [
                   "source"
@@ -87626,12 +87723,15 @@
             "type": "object",
             "properties": {
               "delegate_type": {
+                "description": "The delegated repository type. For valid values, refer to the `type` parameter.\nSource repositories can use `settings` properties for its delegated repository type.",
                 "type": "string"
               },
               "max_number_of_snapshots": {
+                "description": "The maximum number of snapshots the repository can contain.\nThe default is `Integer.MAX_VALUE`, which is 2^31-1 or `2147483647`.",
                 "type": "number"
               },
               "read_only": {
+                "description": "If `true`, the repository is read-only.\nThe cluster can retrieve and restore snapshots from the repository but not write to the repository or create snapshots in it.\n\nOnly a cluster with write access can create snapshots in the repository.\nAll other clusters connected to the repository should have the `readonly` parameter set to `true`.\n\nIf `false`, the cluster can write to the repository and create snapshots in it.\n\nIMPORTANT: If you register the same snapshot repository with multiple clusters, only one cluster should have write access to the repository.\nHaving multiple clusters write to the repository at the same time risks corrupting the contents of the repository.",
                 "type": "boolean"
               }
             }
@@ -104712,7 +104812,7 @@
       "snapshot.create_repository#repository": {
         "in": "path",
         "name": "repository",
-        "description": "A repository name",
+        "description": "The name of the snapshot repository to register or update.",
         "required": true,
         "deprecated": false,
         "schema": {
@@ -104723,7 +104823,7 @@
       "snapshot.create_repository#master_timeout": {
         "in": "query",
         "name": "master_timeout",
-        "description": "Explicit operation timeout for connection to master node",
+        "description": "The period to wait for the master node.\nIf the master node is not available before the timeout expires, the request fails and returns an error.\nTo indicate that the request should never timeout, set it to `-1`.",
         "deprecated": false,
         "schema": {
           "$ref": "#/components/schemas/_types:Duration"
@@ -104733,7 +104833,7 @@
       "snapshot.create_repository#timeout": {
         "in": "query",
         "name": "timeout",
-        "description": "Explicit operation timeout",
+        "description": "The period to wait for a response from all relevant nodes in the cluster after updating the cluster metadata.\nIf no response is received before the timeout expires, the cluster metadata update still applies but the response will indicate that it was not completely acknowledged.\nTo indicate that the request should never timeout, set it to `-1`.",
         "deprecated": false,
         "schema": {
           "$ref": "#/components/schemas/_types:Duration"
@@ -104743,7 +104843,7 @@
       "snapshot.create_repository#verify": {
         "in": "query",
         "name": "verify",
-        "description": "Whether to verify the repository after creation",
+        "description": "If `true`, the request verifies the repository is functional on all master and data nodes in the cluster.\nIf `false`, this verification is skipped.\nYou can also perform this verification with the verify snapshot repository API.",
         "deprecated": false,
         "schema": {
           "type": "boolean"
