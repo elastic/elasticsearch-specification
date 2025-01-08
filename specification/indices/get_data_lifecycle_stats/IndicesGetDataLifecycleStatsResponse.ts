@@ -33,7 +33,7 @@ export class Response {
     /**
      * The duration of the last data stream lifecycle execution.
      */
-    last_run_duration_in_millis?: long
+    last_run_duration_in_millis?: DurationValue<UnitMillis>
     /**
      * The time that passed between the start of the last two data stream lifecycle executions.
      * This value should amount approximately to `data_streams.lifecycle.poll_interval`.
