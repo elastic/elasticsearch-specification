@@ -17,8 +17,9 @@
  * under the License.
  */
 
-import { Id, Name } from '@_types/common'
+import { ByteSize, Id, Name } from '@_types/common'
 import { double, integer, long } from '@_types/Numeric'
+import { Duration, DurationValue, UnitNanos } from '@_types/Time'
 
 export class Response {
   body: {
@@ -41,11 +42,11 @@ export class Response {
     /**
      * The time it took to delete all the blobs in the container.
      */
-    delete_elapsed: string
+    delete_elapsed: Duration
     /**
      * The time it took to delete all the blobs in the container, in nanoseconds.
      */
-    delete_elapsed_nanos: long
+    delete_elapsed_nanos: DurationValue<UnitNanos>
     /**
      * A description of every read and write operation performed during the test.
      */
@@ -62,15 +63,15 @@ export class Response {
     /**
      * The time it took to retrieve a list of all the blobs in the container.
      */
-    listing_elapsed: string
+    listing_elapsed: Duration
     /**
      * The time it took to retrieve a list of all the blobs in the container, in nanoseconds.
      */
-    listing_elapsed_nanos: long
+    listing_elapsed_nanos: DurationValue<UnitNanos>
     /**
      * The limit on the size of a blob written during the test.
      */
-    max_blob_size: string
+    max_blob_size: ByteSize
     /**
      * The limit, in bytes, on the size of a blob written during the test.
      */
@@ -78,7 +79,7 @@ export class Response {
     /**
      * The limit on the total size of all blob written during the test.
      */
-    max_total_data_size: string
+    max_total_data_size: ByteSize
     /**
      * The limit, in bytes, on the total size of all blob written during the test.
      */
@@ -119,23 +120,23 @@ export class ReadSummaryInfo {
   /**
    * The maximum time spent waiting for the first byte of any read request to be received.
    */
-  max_wait: string
+  max_wait: Duration
   /**
    * The maximum time spent waiting for the first byte of any read request to be received, in nanoseconds.
    */
-  max_wait_nanos: long
+  max_wait_nanos: DurationValue<UnitNanos>
   /**
    * The total elapsed time spent on reading blobs in the test.
    */
-  total_elapsed: string
+  total_elapsed: Duration
   /**
    * The total elapsed time spent on reading blobs in the test, in nanoseconds.
    */
-  total_elapsed_nanos: long
+  total_elapsed_nanos: DurationValue<UnitNanos>
   /**
    * The total size of all the blobs or partial blobs read in the test.
    */
-  total_size: string
+  total_size: ByteSize
   /**
    * The total size of all the blobs or partial blobs read in the test, in bytes.
    */
@@ -143,19 +144,19 @@ export class ReadSummaryInfo {
   /**
    * The total time spent waiting due to the `max_restore_bytes_per_sec` or `indices.recovery.max_bytes_per_sec` throttles.
    */
-  total_throttled: string
+  total_throttled: Duration
   /**
    * The total time spent waiting due to the `max_restore_bytes_per_sec` or `indices.recovery.max_bytes_per_sec` throttles, in nanoseconds.
    */
-  total_throttled_nanos: long
+  total_throttled_nanos: DurationValue<UnitNanos>
   /**
    * The total time spent waiting for the first byte of each read request to be received.
    */
-  total_wait: string
+  total_wait: Duration
   /**
    * The total time spent waiting for the first byte of each read request to be received, in nanoseconds.
    */
-  total_wait_nanos: long
+  total_wait_nanos: DurationValue<UnitNanos>
 }
 
 export class WriteSummaryInfo {
@@ -166,15 +167,15 @@ export class WriteSummaryInfo {
   /**
    * The total elapsed time spent on writing blobs in the test.
    */
-  total_elapsed: string
+  total_elapsed: Duration
   /**
    * The total elapsed time spent on writing blobs in the test, in nanoseconds.
    */
-  total_elapsed_nanos: long
+  total_elapsed_nanos: DurationValue<UnitNanos>
   /**
    * The total size of all the blobs written in the test.
    */
-  total_size: string
+  total_size: ByteSize
   /**
    * The total size of all the blobs written in the test, in bytes.
    */
@@ -182,7 +183,7 @@ export class WriteSummaryInfo {
   /**
    * The total time spent waiting due to the `max_snapshot_bytes_per_sec` throttle.
    */
-  total_throttled: string
+  total_throttled: Duration
   /**
    * The total time spent waiting due to the `max_snapshot_bytes_per_sec` throttle, in nanoseconds.
    */
@@ -193,11 +194,11 @@ export class SummaryInfo {
   /**
    * A collection of statistics that summarise the results of the read operations in the test.
    */
-  read: readSummaryInfo
+  read: ReadSummaryInfo
   /**
    * A collection of statistics that summarise the results of the write operations in the test.
    */
-  write: writeSummaryInfo
+  write: WriteSummaryInfo
 }
 
 export class ReadBlobDetails {
@@ -209,22 +210,22 @@ export class ReadBlobDetails {
    * The length of time spent reading the blob.
    * If the blob was not found, this detail is omitted.
    */
-  elapsed?: string
+  elapsed?: Duration
   /**
    * The length of time spent reading the blob, in nanoseconds.
    * If the blob was not found, this detail is omitted.
    */
-  elapsed_nanos?: long
+  elapsed_nanos?: DurationValue<UnitNanos>
   /**
    * The length of time waiting for the first byte of the read operation to be received.
    * If the blob was not found, this detail is omitted.
    */
-  first_byte_time?: string
+  first_byte_time?: Duration
   /**
    * The length of time waiting for the first byte of the read operation to be received, in nanoseconds.
    * If the blob was not found, this detail is omitted.
    */
-  first_byte_time_nanos: long
+  first_byte_time_nanos: DurationValue<UnitNanos>
   /**
    * Indicates whether the blob was found by the read operation.
    * If the read was started before the write completed or the write was ended before completion, it might be false.
@@ -238,12 +239,12 @@ export class ReadBlobDetails {
    * The length of time spent waiting due to the `max_restore_bytes_per_sec` or `indices.recovery.max_bytes_per_sec` throttles during the read of the blob.
    * If the blob was not found, this detail is omitted.
    */
-  throttled?: string
+  throttled?: Duration
   /**
    * The length of time spent waiting due to the `max_restore_bytes_per_sec` or `indices.recovery.max_bytes_per_sec` throttles during the read of the blob, in nanoseconds.
    * If the blob was not found, this detail is omitted.
    */
-  throttled_nanos?: long
+  throttled_nanos?: DurationValue<UnitNanos>
 }
 
 export class BlobDetails {
@@ -279,7 +280,7 @@ export class BlobDetails {
   /**
    * The size of the blob in bytes.
    */
-  size_bytes: ByteSize
+  size_bytes: long
 }
 
 export class DetailsInfo {
@@ -291,28 +292,28 @@ export class DetailsInfo {
    * The elapsed time spent overwriting the blob.
    * If the blob was not overwritten, this information is omitted.
    */
-  overwrite_elapsed?: string
+  overwrite_elapsed?: Duration
   /**
    * The elapsed time spent overwriting the blob, in nanoseconds.
    * If the blob was not overwritten, this information is omitted.
    */
-  overwrite_elapsed_nanos?: long
+  overwrite_elapsed_nanos?: DurationValue<UnitNanos>
   /**
    * The elapsed time spent writing the blob.
    */
-  write_elapsed: string
+  write_elapsed: Duration
   /**
    * The elapsed time spent writing the blob, in nanoseconds.
    */
-  write_elapsed_nanos: long
+  write_elapsed_nanos: DurationValue<UnitNanos>
   /**
    * The length of time spent waiting for the `max_snapshot_bytes_per_sec` (or `indices.recovery.max_bytes_per_sec` if the recovery settings for managed services are set) throttle while writing the blob.
    */
-  write_throttled: string
+  write_throttled: Duration
   /**
    * The length of time spent waiting for the `max_snapshot_bytes_per_sec` (or `indices.recovery.max_bytes_per_sec` if the recovery settings for managed services are set) throttle while writing the blob, in nanoseconds.
    */
-  write_throttled_nanos: long
+  write_throttled_nanos: DurationValue<UnitNanos>
   /**
    * The node which wrote the blob and coordinated the read operations.
    */

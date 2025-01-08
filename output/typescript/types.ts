@@ -19566,18 +19566,18 @@ export interface SnapshotRepositoryAnalyzeBlobDetails {
   read_end: long
   read_start: long
   reads: SnapshotRepositoryAnalyzeReadBlobDetails
-  size: string
+  size: ByteSize
   size_bytes: long
 }
 
 export interface SnapshotRepositoryAnalyzeDetailsInfo {
   blob: SnapshotRepositoryAnalyzeBlobDetails
-  overwrite_elapsed?: string
-  overwrite_elapsed_nanos?: long
-  write_elapsed: string
-  write_elapsed_nanos: long
-  write_throttled: string
-  write_throttled_nanos: long
+  overwrite_elapsed?: Duration
+  overwrite_elapsed_nanos?: DurationValue<UnitNanos>
+  write_elapsed: Duration
+  write_elapsed_nanos: DurationValue<UnitNanos>
+  write_throttled: Duration
+  write_throttled_nanos: DurationValue<UnitNanos>
   writer_node: SnapshotRepositoryAnalyzeNodeInfo
 }
 
@@ -19588,14 +19588,28 @@ export interface SnapshotRepositoryAnalyzeNodeInfo {
 
 export interface SnapshotRepositoryAnalyzeReadBlobDetails {
   before_write_complete?: boolean
-  elapsed?: string
-  elapsed_nanos?: long
-  first_byte_time?: string
-  first_byte_time_nanos: long
+  elapsed?: Duration
+  elapsed_nanos?: DurationValue<UnitNanos>
+  first_byte_time?: Duration
+  first_byte_time_nanos: DurationValue<UnitNanos>
   found: boolean
   node: SnapshotRepositoryAnalyzeNodeInfo
-  throttled?: string
-  throttled_nanos?: long
+  throttled?: Duration
+  throttled_nanos?: DurationValue<UnitNanos>
+}
+
+export interface SnapshotRepositoryAnalyzeReadSummaryInfo {
+  count: integer
+  max_wait: Duration
+  max_wait_nanos: DurationValue<UnitNanos>
+  total_elapsed: Duration
+  total_elapsed_nanos: DurationValue<UnitNanos>
+  total_size: ByteSize
+  total_size_bytes: long
+  total_throttled: Duration
+  total_throttled_nanos: DurationValue<UnitNanos>
+  total_wait: Duration
+  total_wait_nanos: DurationValue<UnitNanos>
 }
 
 export interface SnapshotRepositoryAnalyzeRequest extends RequestBase {
@@ -19619,16 +19633,16 @@ export interface SnapshotRepositoryAnalyzeResponse {
   blob_path: string
   concurrency: integer
   coordinating_node: SnapshotRepositoryAnalyzeNodeInfo
-  delete_elapsed: string
-  delete_elapsed_nanos: long
+  delete_elapsed: Duration
+  delete_elapsed_nanos: DurationValue<UnitNanos>
   details: SnapshotRepositoryAnalyzeDetailsInfo
   early_read_node_count: integer
   issues_detected: string[]
-  listing_elapsed: string
-  listing_elapsed_nanos: long
-  max_blob_size: string
+  listing_elapsed: Duration
+  listing_elapsed_nanos: DurationValue<UnitNanos>
+  max_blob_size: ByteSize
   max_blob_size_bytes: long
-  max_total_data_size: string
+  max_total_data_size: ByteSize
   max_total_data_size_bytes: long
   rare_action_probability: double
   read_node_count: integer
@@ -19638,31 +19652,17 @@ export interface SnapshotRepositoryAnalyzeResponse {
 }
 
 export interface SnapshotRepositoryAnalyzeSummaryInfo {
-  read: SnapshotRepositoryAnalyzereadSummaryInfo
-  write: SnapshotRepositoryAnalyzewriteSummaryInfo
+  read: SnapshotRepositoryAnalyzeReadSummaryInfo
+  write: SnapshotRepositoryAnalyzeWriteSummaryInfo
 }
 
-export interface SnapshotRepositoryAnalyzereadSummaryInfo {
+export interface SnapshotRepositoryAnalyzeWriteSummaryInfo {
   count: integer
-  max_wait: string
-  max_wait_nanos: long
-  total_elapsed: string
-  total_elapsed_nanos: long
-  total_size: string
+  total_elapsed: Duration
+  total_elapsed_nanos: DurationValue<UnitNanos>
+  total_size: ByteSize
   total_size_bytes: long
-  total_throttled: string
-  total_throttled_nanos: long
-  total_wait: string
-  total_wait_nanos: long
-}
-
-export interface SnapshotRepositoryAnalyzewriteSummaryInfo {
-  count: integer
-  total_elapsed: string
-  total_elapsed_nanos: long
-  total_size: string
-  total_size_bytes: long
-  total_throttled: string
+  total_throttled: Duration
   total_throttled_nanos: long
 }
 

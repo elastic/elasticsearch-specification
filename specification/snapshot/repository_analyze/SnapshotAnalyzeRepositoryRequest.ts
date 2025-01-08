@@ -123,7 +123,10 @@ import { Duration } from '@_types/Time'
  */
 export interface Request extends RequestBase {
   path_parts: {
-    /** @codegen_name name */
+    /**
+     * The name of the repository.
+     * @codegen_name name
+     */
     repository: Name
   }
   query_parameters: {

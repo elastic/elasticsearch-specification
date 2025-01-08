@@ -33117,7 +33117,7 @@
           {
             "in": "path",
             "name": "repository",
-            "description": "A repository name",
+            "description": "The name of the repository.",
             "required": true,
             "deprecated": false,
             "schema": {
@@ -33270,12 +33270,10 @@
                       "$ref": "#/components/schemas/snapshot.repository_analyze:NodeInfo"
                     },
                     "delete_elapsed": {
-                      "description": "The time it took to delete all the blobs in the container.",
-                      "type": "string"
+                      "$ref": "#/components/schemas/_types:Duration"
                     },
                     "delete_elapsed_nanos": {
-                      "description": "The time it took to delete all the blobs in the container, in nanoseconds.",
-                      "type": "number"
+                      "$ref": "#/components/schemas/_types:DurationValueUnitNanos"
                     },
                     "details": {
                       "$ref": "#/components/schemas/snapshot.repository_analyze:DetailsInfo"
@@ -33292,24 +33290,20 @@
                       }
                     },
                     "listing_elapsed": {
-                      "description": "The time it took to retrieve a list of all the blobs in the container.",
-                      "type": "string"
+                      "$ref": "#/components/schemas/_types:Duration"
                     },
                     "listing_elapsed_nanos": {
-                      "description": "The time it took to retrieve a list of all the blobs in the container, in nanoseconds.",
-                      "type": "number"
+                      "$ref": "#/components/schemas/_types:DurationValueUnitNanos"
                     },
                     "max_blob_size": {
-                      "description": "The limit on the size of a blob written during the test.",
-                      "type": "string"
+                      "$ref": "#/components/schemas/_types:ByteSize"
                     },
                     "max_blob_size_bytes": {
                       "description": "The limit, in bytes, on the size of a blob written during the test.",
                       "type": "number"
                     },
                     "max_total_data_size": {
-                      "description": "The limit on the total size of all blob written during the test.",
-                      "type": "string"
+                      "$ref": "#/components/schemas/_types:ByteSize"
                     },
                     "max_total_data_size_bytes": {
                       "description": "The limit, in bytes, on the total size of all blob written during the test.",
@@ -86968,28 +86962,22 @@
             "$ref": "#/components/schemas/snapshot.repository_analyze:BlobDetails"
           },
           "overwrite_elapsed": {
-            "description": "The elapsed time spent overwriting the blob.\nIf the blob was not overwritten, this information is omitted.",
-            "type": "string"
+            "$ref": "#/components/schemas/_types:Duration"
           },
           "overwrite_elapsed_nanos": {
-            "description": "The elapsed time spent overwriting the blob, in nanoseconds.\nIf the blob was not overwritten, this information is omitted.",
-            "type": "number"
+            "$ref": "#/components/schemas/_types:DurationValueUnitNanos"
           },
           "write_elapsed": {
-            "description": "The elapsed time spent writing the blob.",
-            "type": "string"
+            "$ref": "#/components/schemas/_types:Duration"
           },
           "write_elapsed_nanos": {
-            "description": "The elapsed time spent writing the blob, in nanoseconds.",
-            "type": "number"
+            "$ref": "#/components/schemas/_types:DurationValueUnitNanos"
           },
           "write_throttled": {
-            "description": "The length of time spent waiting for the `max_snapshot_bytes_per_sec` (or `indices.recovery.max_bytes_per_sec` if the recovery settings for managed services are set) throttle while writing the blob.",
-            "type": "string"
+            "$ref": "#/components/schemas/_types:Duration"
           },
           "write_throttled_nanos": {
-            "description": "The length of time spent waiting for the `max_snapshot_bytes_per_sec` (or `indices.recovery.max_bytes_per_sec` if the recovery settings for managed services are set) throttle while writing the blob, in nanoseconds.",
-            "type": "number"
+            "$ref": "#/components/schemas/_types:DurationValueUnitNanos"
           },
           "writer_node": {
             "$ref": "#/components/schemas/snapshot.repository_analyze:NodeInfo"
@@ -87030,8 +87018,7 @@
             "$ref": "#/components/schemas/snapshot.repository_analyze:ReadBlobDetails"
           },
           "size": {
-            "description": "The size of the blob.",
-            "type": "string"
+            "$ref": "#/components/schemas/_types:ByteSize"
           },
           "size_bytes": {
             "description": "The size of the blob in bytes.",
@@ -87057,20 +87044,16 @@
             "type": "boolean"
           },
           "elapsed": {
-            "description": "The length of time spent reading the blob.\nIf the blob was not found, this detail is omitted.",
-            "type": "string"
+            "$ref": "#/components/schemas/_types:Duration"
           },
           "elapsed_nanos": {
-            "description": "The length of time spent reading the blob, in nanoseconds.\nIf the blob was not found, this detail is omitted.",
-            "type": "number"
+            "$ref": "#/components/schemas/_types:DurationValueUnitNanos"
           },
           "first_byte_time": {
-            "description": "The length of time waiting for the first byte of the read operation to be received.\nIf the blob was not found, this detail is omitted.",
-            "type": "string"
+            "$ref": "#/components/schemas/_types:Duration"
           },
           "first_byte_time_nanos": {
-            "description": "The length of time waiting for the first byte of the read operation to be received, in nanoseconds.\nIf the blob was not found, this detail is omitted.",
-            "type": "number"
+            "$ref": "#/components/schemas/_types:DurationValueUnitNanos"
           },
           "found": {
             "description": "Indicates whether the blob was found by the read operation.\nIf the read was started before the write completed or the write was ended before completion, it might be false.",
@@ -87080,12 +87063,10 @@
             "$ref": "#/components/schemas/snapshot.repository_analyze:NodeInfo"
           },
           "throttled": {
-            "description": "The length of time spent waiting due to the `max_restore_bytes_per_sec` or `indices.recovery.max_bytes_per_sec` throttles during the read of the blob.\nIf the blob was not found, this detail is omitted.",
-            "type": "string"
+            "$ref": "#/components/schemas/_types:Duration"
           },
           "throttled_nanos": {
-            "description": "The length of time spent waiting due to the `max_restore_bytes_per_sec` or `indices.recovery.max_bytes_per_sec` throttles during the read of the blob, in nanoseconds.\nIf the blob was not found, this detail is omitted.",
-            "type": "number"
+            "$ref": "#/components/schemas/_types:DurationValueUnitNanos"
           }
         },
         "required": [
@@ -87098,10 +87079,10 @@
         "type": "object",
         "properties": {
           "read": {
-            "$ref": "#/components/schemas/snapshot.repository_analyze:readSummaryInfo"
+            "$ref": "#/components/schemas/snapshot.repository_analyze:ReadSummaryInfo"
           },
           "write": {
-            "$ref": "#/components/schemas/snapshot.repository_analyze:writeSummaryInfo"
+            "$ref": "#/components/schemas/snapshot.repository_analyze:WriteSummaryInfo"
           }
         },
         "required": [
@@ -87109,7 +87090,7 @@
           "write"
         ]
       },
-      "snapshot.repository_analyze:readSummaryInfo": {
+      "snapshot.repository_analyze:ReadSummaryInfo": {
         "type": "object",
         "properties": {
           "count": {
@@ -87117,44 +87098,35 @@
             "type": "number"
           },
           "max_wait": {
-            "description": "The maximum time spent waiting for the first byte of any read request to be received.",
-            "type": "string"
+            "$ref": "#/components/schemas/_types:Duration"
           },
           "max_wait_nanos": {
-            "description": "The maximum time spent waiting for the first byte of any read request to be received, in nanoseconds.",
-            "type": "number"
+            "$ref": "#/components/schemas/_types:DurationValueUnitNanos"
           },
           "total_elapsed": {
-            "description": "The total elapsed time spent on reading blobs in the test.",
-            "type": "string"
+            "$ref": "#/components/schemas/_types:Duration"
           },
           "total_elapsed_nanos": {
-            "description": "The total elapsed time spent on reading blobs in the test, in nanoseconds.",
-            "type": "number"
+            "$ref": "#/components/schemas/_types:DurationValueUnitNanos"
           },
           "total_size": {
-            "description": "The total size of all the blobs or partial blobs read in the test.",
-            "type": "string"
+            "$ref": "#/components/schemas/_types:ByteSize"
           },
           "total_size_bytes": {
             "description": "The total size of all the blobs or partial blobs read in the test, in bytes.",
             "type": "number"
           },
           "total_throttled": {
-            "description": "The total time spent waiting due to the `max_restore_bytes_per_sec` or `indices.recovery.max_bytes_per_sec` throttles.",
-            "type": "string"
+            "$ref": "#/components/schemas/_types:Duration"
           },
           "total_throttled_nanos": {
-            "description": "The total time spent waiting due to the `max_restore_bytes_per_sec` or `indices.recovery.max_bytes_per_sec` throttles, in nanoseconds.",
-            "type": "number"
+            "$ref": "#/components/schemas/_types:DurationValueUnitNanos"
           },
           "total_wait": {
-            "description": "The total time spent waiting for the first byte of each read request to be received.",
-            "type": "string"
+            "$ref": "#/components/schemas/_types:Duration"
           },
           "total_wait_nanos": {
-            "description": "The total time spent waiting for the first byte of each read request to be received, in nanoseconds.",
-            "type": "number"
+            "$ref": "#/components/schemas/_types:DurationValueUnitNanos"
           }
         },
         "required": [
@@ -87171,7 +87143,7 @@
           "total_wait_nanos"
         ]
       },
-      "snapshot.repository_analyze:writeSummaryInfo": {
+      "snapshot.repository_analyze:WriteSummaryInfo": {
         "type": "object",
         "properties": {
           "count": {
@@ -87179,24 +87151,20 @@
             "type": "number"
           },
           "total_elapsed": {
-            "description": "The total elapsed time spent on writing blobs in the test.",
-            "type": "string"
+            "$ref": "#/components/schemas/_types:Duration"
           },
           "total_elapsed_nanos": {
-            "description": "The total elapsed time spent on writing blobs in the test, in nanoseconds.",
-            "type": "number"
+            "$ref": "#/components/schemas/_types:DurationValueUnitNanos"
           },
           "total_size": {
-            "description": "The total size of all the blobs written in the test.",
-            "type": "string"
+            "$ref": "#/components/schemas/_types:ByteSize"
           },
           "total_size_bytes": {
             "description": "The total size of all the blobs written in the test, in bytes.",
             "type": "number"
           },
           "total_throttled": {
-            "description": "The total time spent waiting due to the `max_snapshot_bytes_per_sec` throttle.",
-            "type": "string"
+            "$ref": "#/components/schemas/_types:Duration"
           },
           "total_throttled_nanos": {
             "description": "The total time spent waiting due to the `max_snapshot_bytes_per_sec` throttle, in nanoseconds.",
