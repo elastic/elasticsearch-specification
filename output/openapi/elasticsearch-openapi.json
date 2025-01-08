@@ -25982,6 +25982,7 @@
             "$ref": "#/components/responses/rollup.get_jobs#200"
           }
         },
+        "deprecated": true,
         "x-state": "Technical preview"
       },
       "put": {
@@ -26066,6 +26067,7 @@
             }
           }
         },
+        "deprecated": true,
         "x-state": "Technical preview"
       },
       "delete": {
@@ -26114,6 +26116,7 @@
             }
           }
         },
+        "deprecated": true,
         "x-state": "Technical preview"
       }
     },
@@ -26130,6 +26133,7 @@
             "$ref": "#/components/responses/rollup.get_jobs#200"
           }
         },
+        "deprecated": true,
         "x-state": "Technical preview"
       }
     },
@@ -26151,6 +26155,7 @@
             "$ref": "#/components/responses/rollup.get_rollup_caps#200"
           }
         },
+        "deprecated": true,
         "x-state": "Technical preview"
       }
     },
@@ -26167,6 +26172,7 @@
             "$ref": "#/components/responses/rollup.get_rollup_caps#200"
           }
         },
+        "deprecated": true,
         "x-state": "Technical preview"
       }
     },
@@ -26206,6 +26212,7 @@
             }
           }
         },
+        "deprecated": true,
         "x-state": "Technical preview"
       }
     },
@@ -26215,7 +26222,7 @@
           "rollup"
         ],
         "summary": "Search rolled-up data",
-        "description": "The rollup search endpoint is needed because, internally, rolled-up documents utilize a different document structure than the original data.\nIt rewrites standard Query DSL into a format that matches the rollup documents then takes the response and rewrites it back to what a client would expect given the original query.",
+        "description": "The rollup search endpoint is needed because, internally, rolled-up documents utilize a different document structure than the original data.\nIt rewrites standard Query DSL into a format that matches the rollup documents then takes the response and rewrites it back to what a client would expect given the original query.\n\nThe request body supports a subset of features from the regular search API.\nThe following functionality is not available:\n\n`size`: Because rollups work on pre-aggregated data, no search hits can be returned and so size must be set to zero or omitted entirely.\n`highlighter`, `suggestors`, `post_filter`, `profile`, `explain`: These are similarly disallowed.\n\n**Searching both historical rollup and non-rollup data**\n\nThe rollup search API has the capability to search across both \"live\" non-rollup data and the aggregated rollup data.\nThis is done by simply adding the live indices to the URI. For example:\n\n```\nGET sensor-1,sensor_rollup/_rollup_search\n{\n  \"size\": 0,\n  \"aggregations\": {\n     \"max_temperature\": {\n      \"max\": {\n        \"field\": \"temperature\"\n      }\n    }\n  }\n}\n```\n\nThe rollup search endpoint does two things when the search runs:\n\n* The original request is sent to the non-rollup index unaltered.\n* A rewritten version of the original request is sent to the rollup index.\n\nWhen the two responses are received, the endpoint rewrites the rollup response and merges the two together.\nDuring the merging process, if there is any overlap in buckets between the two responses, the buckets from the non-rollup index are used.",
         "operationId": "rollup-rollup-search",
         "parameters": [
           {
@@ -26236,6 +26243,7 @@
             "$ref": "#/components/responses/rollup.rollup_search#200"
           }
         },
+        "deprecated": true,
         "x-state": "Technical preview"
       },
       "post": {
@@ -26243,7 +26251,7 @@
           "rollup"
         ],
         "summary": "Search rolled-up data",
-        "description": "The rollup search endpoint is needed because, internally, rolled-up documents utilize a different document structure than the original data.\nIt rewrites standard Query DSL into a format that matches the rollup documents then takes the response and rewrites it back to what a client would expect given the original query.",
+        "description": "The rollup search endpoint is needed because, internally, rolled-up documents utilize a different document structure than the original data.\nIt rewrites standard Query DSL into a format that matches the rollup documents then takes the response and rewrites it back to what a client would expect given the original query.\n\nThe request body supports a subset of features from the regular search API.\nThe following functionality is not available:\n\n`size`: Because rollups work on pre-aggregated data, no search hits can be returned and so size must be set to zero or omitted entirely.\n`highlighter`, `suggestors`, `post_filter`, `profile`, `explain`: These are similarly disallowed.\n\n**Searching both historical rollup and non-rollup data**\n\nThe rollup search API has the capability to search across both \"live\" non-rollup data and the aggregated rollup data.\nThis is done by simply adding the live indices to the URI. For example:\n\n```\nGET sensor-1,sensor_rollup/_rollup_search\n{\n  \"size\": 0,\n  \"aggregations\": {\n     \"max_temperature\": {\n      \"max\": {\n        \"field\": \"temperature\"\n      }\n    }\n  }\n}\n```\n\nThe rollup search endpoint does two things when the search runs:\n\n* The original request is sent to the non-rollup index unaltered.\n* A rewritten version of the original request is sent to the rollup index.\n\nWhen the two responses are received, the endpoint rewrites the rollup response and merges the two together.\nDuring the merging process, if there is any overlap in buckets between the two responses, the buckets from the non-rollup index are used.",
         "operationId": "rollup-rollup-search-1",
         "parameters": [
           {
@@ -26264,6 +26272,7 @@
             "$ref": "#/components/responses/rollup.rollup_search#200"
           }
         },
+        "deprecated": true,
         "x-state": "Technical preview"
       }
     },
@@ -26308,6 +26317,7 @@
             }
           }
         },
+        "deprecated": true,
         "x-state": "Technical preview"
       }
     },
@@ -26317,7 +26327,7 @@
           "rollup"
         ],
         "summary": "Stop rollup jobs",
-        "description": "If you try to stop a job that does not exist, an exception occurs.\nIf you try to stop a job that is already stopped, nothing happens.",
+        "description": "If you try to stop a job that does not exist, an exception occurs.\nIf you try to stop a job that is already stopped, nothing happens.\n\nSince only a stopped job can be deleted, it can be useful to block the API until the indexer has fully stopped.\nThis is accomplished with the `wait_for_completion` query parameter, and optionally a timeout. For example:\n\n```\nPOST _rollup/job/sensor/_stop?wait_for_completion=true&timeout=10s\n```\nThe parameter blocks the API call from returning until either the job has moved to STOPPED or the specified time has elapsed.\nIf the specified time elapses without the job moving to STOPPED, a timeout exception occurs.",
         "operationId": "rollup-stop-job",
         "parameters": [
           {
@@ -26334,7 +26344,7 @@
           {
             "in": "query",
             "name": "timeout",
-            "description": "If `wait_for_completion` is `true`, the API blocks for (at maximum) the specified duration while waiting for the job to stop.\nIf more than `timeout` time has passed, the API throws a timeout exception.",
+            "description": "If `wait_for_completion` is `true`, the API blocks for (at maximum) the specified duration while waiting for the job to stop.\nIf more than `timeout` time has passed, the API throws a timeout exception.\nNOTE: Even if a timeout occurs, the stop request is still processing and eventually moves the job to STOPPED.\nThe timeout simply means the API call itself timed out while waiting for the status change.",
             "deprecated": false,
             "schema": {
               "$ref": "#/components/schemas/_types:Duration"
@@ -26372,6 +26382,7 @@
             }
           }
         },
+        "deprecated": true,
         "x-state": "Technical preview"
       }
     },
@@ -83595,6 +83606,7 @@
         "type": "object",
         "properties": {
           "rollup_jobs": {
+            "description": "There can be multiple, independent jobs configured for a single index or index pattern. Each of these jobs may have different configurations, so the API returns a list of all the various configurations available.",
             "type": "array",
             "items": {
               "$ref": "#/components/schemas/rollup.get_rollup_caps:RollupCapabilitySummary"
@@ -102705,7 +102717,7 @@
       "rollup.rollup_search#index": {
         "in": "path",
         "name": "index",
-        "description": "Enables searching rolled-up data using the standard Query DSL.",
+        "description": "A comma-separated list of data streams and indices used to limit the request.\nThis parameter has the following rules:\n\n* At least one data stream, index, or wildcard expression must be specified. This target can include a rollup or non-rollup index. For data streams, the stream's backing indices can only serve as non-rollup indices. Omitting the parameter or using `_all` are not permitted.\n* Multiple non-rollup indices may be specified.\n* Only one rollup index may be specified. If more than one are supplied, an exception occurs.\n* Wildcard expressions (`*`) may be used. If they match more than one rollup index, an exception occurs. However, you can use an expression to match multiple non-rollup indices or data streams.",
         "required": true,
         "deprecated": false,
         "schema": {
@@ -106652,6 +106664,9 @@
               "type": "object",
               "properties": {
                 "aggregations": {
+                  "externalDocs": {
+                    "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/rollup-agg-limitations.html"
+                  },
                   "description": "Specifies aggregations.",
                   "type": "object",
                   "additionalProperties": {
