@@ -47919,7 +47919,7 @@
           "version"
         ]
       },
-      "ingest.simulate:Document": {
+      "ingest._types:Document": {
         "type": "object",
         "properties": {
           "_id": {
@@ -47937,11 +47937,11 @@
           "_source"
         ]
       },
-      "ingest.simulate:SimulateDocumentResult": {
+      "ingest._types:SimulateDocumentResult": {
         "type": "object",
         "properties": {
           "doc": {
-            "$ref": "#/components/schemas/ingest.simulate:DocumentSimulation"
+            "$ref": "#/components/schemas/ingest._types:DocumentSimulation"
           },
           "error": {
             "$ref": "#/components/schemas/_types:ErrorCause"
@@ -47949,12 +47949,12 @@
           "processor_results": {
             "type": "array",
             "items": {
-              "$ref": "#/components/schemas/ingest.simulate:PipelineSimulation"
+              "$ref": "#/components/schemas/ingest._types:PipelineSimulation"
             }
           }
         }
       },
-      "ingest.simulate:DocumentSimulation": {
+      "ingest._types:DocumentSimulation": {
         "type": "object",
         "properties": {
           "_id": {
@@ -47964,7 +47964,7 @@
             "$ref": "#/components/schemas/_types:IndexName"
           },
           "_ingest": {
-            "$ref": "#/components/schemas/ingest.simulate:Ingest"
+            "$ref": "#/components/schemas/ingest._types:Ingest"
           },
           "_routing": {
             "description": "Value used to send the document to a specific primary shard.",
@@ -47991,11 +47991,11 @@
           "_source"
         ]
       },
-      "ingest.simulate:Ingest": {
+      "ingest._types:Ingest": {
         "type": "object",
         "properties": {
           "_redact": {
-            "$ref": "#/components/schemas/ingest.simulate:Redact"
+            "$ref": "#/components/schemas/ingest._types:Redact"
           },
           "timestamp": {
             "$ref": "#/components/schemas/_types:DateTime"
@@ -48008,7 +48008,7 @@
           "timestamp"
         ]
       },
-      "ingest.simulate:Redact": {
+      "ingest._types:Redact": {
         "type": "object",
         "properties": {
           "_is_redacted": {
@@ -48031,11 +48031,11 @@
           }
         ]
       },
-      "ingest.simulate:PipelineSimulation": {
+      "ingest._types:PipelineSimulation": {
         "type": "object",
         "properties": {
           "doc": {
-            "$ref": "#/components/schemas/ingest.simulate:DocumentSimulation"
+            "$ref": "#/components/schemas/ingest._types:DocumentSimulation"
           },
           "tag": {
             "type": "string"
@@ -56352,7 +56352,7 @@
                 "docs": {
                   "type": "array",
                   "items": {
-                    "$ref": "#/components/schemas/ingest.simulate:SimulateDocumentResult"
+                    "$ref": "#/components/schemas/ingest._types:SimulateDocumentResult"
                   }
                 }
               },
@@ -63366,7 +63366,7 @@
                   "description": "Sample documents to test in the pipeline.",
                   "type": "array",
                   "items": {
-                    "$ref": "#/components/schemas/ingest.simulate:Document"
+                    "$ref": "#/components/schemas/ingest._types:Document"
                   }
                 },
                 "pipeline": {

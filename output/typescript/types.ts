@@ -13041,6 +13041,24 @@ export interface IngestDissectProcessor extends IngestProcessorBase {
   pattern: string
 }
 
+export interface IngestDocument {
+  _id?: Id
+  _index?: IndexName
+  _source: any
+}
+
+export interface IngestDocumentSimulationKeys {
+  _id: Id
+  _index: IndexName
+  _ingest: IngestIngest
+  _routing?: string
+  _source: Record<string, any>
+  _version?: SpecUtilsStringified<VersionNumber>
+  _version_type?: VersionType
+}
+export type IngestDocumentSimulation = IngestDocumentSimulationKeys
+  & { [property: string]: string | Id | IndexName | IngestIngest | Record<string, any> | SpecUtilsStringified<VersionNumber> | VersionType }
+
 export interface IngestDotExpanderProcessor extends IngestProcessorBase {
   field: Field
   override?: boolean
@@ -13154,6 +13172,12 @@ export interface IngestInferenceProcessor extends IngestProcessorBase {
   inference_config?: IngestInferenceConfig
 }
 
+export interface IngestIngest {
+  _redact?: IngestRedact
+  timestamp: DateTime
+  pipeline?: Name
+}
+
 export interface IngestIpLocationProcessor extends IngestProcessorBase {
   database_file?: string
   field: Field
@@ -13241,6 +13265,16 @@ export interface IngestPipelineProcessor extends IngestProcessorBase {
   ignore_missing_pipeline?: boolean
 }
 
+export interface IngestPipelineSimulation {
+  doc?: IngestDocumentSimulation
+  tag?: string
+  processor_type?: string
+  status?: WatcherActionStatusOptions
+  description?: string
+  ignored_error?: ErrorCause
+  error?: ErrorCause
+}
+
 export interface IngestProcessorBase {
   description?: string
   if?: string
@@ -13295,6 +13329,10 @@ export interface IngestProcessorContainer {
   urldecode?: IngestUrlDecodeProcessor
   uri_parts?: IngestUriPartsProcessor
   user_agent?: IngestUserAgentProcessor
+}
+
+export interface IngestRedact {
+  _is_redacted: boolean
 }
 
 export interface IngestRedactProcessor extends IngestProcessorBase {
@@ -13354,6 +13392,12 @@ export interface IngestSetSecurityUserProcessor extends IngestProcessorBase {
 }
 
 export type IngestShapeType = 'geo_shape' | 'shape'
+
+export interface IngestSimulateDocumentResult {
+  doc?: IngestDocumentSimulation
+  error?: ErrorCause
+  processor_results?: IngestPipelineSimulation[]
+}
 
 export interface IngestSortProcessor extends IngestProcessorBase {
   field: Field
@@ -13548,61 +13592,17 @@ export interface IngestPutPipelineRequest extends RequestBase {
 
 export type IngestPutPipelineResponse = AcknowledgedResponseBase
 
-export interface IngestSimulateDocument {
-  _id?: Id
-  _index?: IndexName
-  _source: any
-}
-
-export interface IngestSimulateDocumentSimulationKeys {
-  _id: Id
-  _index: IndexName
-  _ingest: IngestSimulateIngest
-  _routing?: string
-  _source: Record<string, any>
-  _version?: SpecUtilsStringified<VersionNumber>
-  _version_type?: VersionType
-}
-export type IngestSimulateDocumentSimulation = IngestSimulateDocumentSimulationKeys
-  & { [property: string]: string | Id | IndexName | IngestSimulateIngest | Record<string, any> | SpecUtilsStringified<VersionNumber> | VersionType }
-
-export interface IngestSimulateIngest {
-  _redact?: IngestSimulateRedact
-  timestamp: DateTime
-  pipeline?: Name
-}
-
-export interface IngestSimulatePipelineSimulation {
-  doc?: IngestSimulateDocumentSimulation
-  tag?: string
-  processor_type?: string
-  status?: WatcherActionStatusOptions
-  description?: string
-  ignored_error?: ErrorCause
-  error?: ErrorCause
-}
-
-export interface IngestSimulateRedact {
-  _is_redacted: boolean
-}
-
 export interface IngestSimulateRequest extends RequestBase {
   id?: Id
   verbose?: boolean
   body?: {
-    docs: IngestSimulateDocument[]
+    docs: IngestDocument[]
     pipeline?: IngestPipeline
   }
 }
 
 export interface IngestSimulateResponse {
-  docs: IngestSimulateSimulateDocumentResult[]
-}
-
-export interface IngestSimulateSimulateDocumentResult {
-  doc?: IngestSimulateDocumentSimulation
-  error?: ErrorCause
-  processor_results?: IngestSimulatePipelineSimulation[]
+  docs: IngestSimulateDocumentResult[]
 }
 
 export interface LicenseLicense {
@@ -19212,6 +19212,22 @@ export interface ShutdownPutNodeRequest extends RequestBase {
 }
 
 export type ShutdownPutNodeResponse = AcknowledgedResponseBase
+
+export interface SimulateIngestRequest extends RequestBase {
+  index?: IndexName
+  pipeline?: PipelineName
+  body?: {
+    docs: IngestDocument[]
+    component_template_substitutions?: Record<string, ClusterComponentTemplateNode>
+    index_template_subtitutions?: Record<string, IndicesIndexTemplate>
+    mapping_addition?: MappingTypeMapping
+    pipeline_substitutions?: Record<string, IngestPipeline>
+  }
+}
+
+export interface SimulateIngestResponse {
+  docs: IngestSimulateDocumentResult[]
+}
 
 export interface SlmConfiguration {
   ignore_unavailable?: boolean
