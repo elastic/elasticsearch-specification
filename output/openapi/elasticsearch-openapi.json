@@ -33303,7 +33303,7 @@
           {
             "in": "path",
             "name": "repository",
-            "description": "Snapshot repository to clean up.",
+            "description": "The name of the snapshot repository to clean up.",
             "required": true,
             "deprecated": false,
             "schema": {
@@ -33314,7 +33314,7 @@
           {
             "in": "query",
             "name": "master_timeout",
-            "description": "Period to wait for a connection to the master node.",
+            "description": "The period to wait for a connection to the master node.\nIf the master node is not available before the timeout expires, the request fails and returns an error.\nTo indicate that the request should never timeout, set it to `-1`",
             "deprecated": false,
             "schema": {
               "$ref": "#/components/schemas/_types:Duration"
@@ -33324,7 +33324,7 @@
           {
             "in": "query",
             "name": "timeout",
-            "description": "Period to wait for a response.",
+            "description": "The period to wait for a response from all relevant nodes in the cluster after updating the cluster metadata.\nIf no response is received before the timeout expires, the cluster metadata update still applies but the response will indicate that it was not completely acknowledged.\nTo indicate that the request should never timeout, set it to `-1`.",
             "deprecated": false,
             "schema": {
               "$ref": "#/components/schemas/_types:Duration"
@@ -33367,7 +33367,7 @@
           {
             "in": "path",
             "name": "repository",
-            "description": "A repository name",
+            "description": "The name of the snapshot repository that both source and target snapshot belong to.",
             "required": true,
             "deprecated": false,
             "schema": {
@@ -33378,7 +33378,7 @@
           {
             "in": "path",
             "name": "snapshot",
-            "description": "The name of the snapshot to clone from",
+            "description": "The source snapshot name.",
             "required": true,
             "deprecated": false,
             "schema": {
@@ -33389,7 +33389,7 @@
           {
             "in": "path",
             "name": "target_snapshot",
-            "description": "The name of the cloned snapshot to create",
+            "description": "The target snapshot name.",
             "required": true,
             "deprecated": false,
             "schema": {
@@ -33400,7 +33400,17 @@
           {
             "in": "query",
             "name": "master_timeout",
-            "description": "Explicit operation timeout for connection to master node",
+            "description": "The period to wait for the master node.\nIf the master node is not available before the timeout expires, the request fails and returns an error.\nTo indicate that the request should never timeout, set it to `-1`.",
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/_types:Duration"
+            },
+            "style": "form"
+          },
+          {
+            "in": "query",
+            "name": "timeout",
+            "description": "The period of time to wait for a response.\nIf no response is received before the timeout expires, the request fails and returns an error.",
             "deprecated": false,
             "schema": {
               "$ref": "#/components/schemas/_types:Duration"
@@ -33415,6 +33425,7 @@
                 "type": "object",
                 "properties": {
                   "indices": {
+                    "description": "A comma-separated list of indices to include in the snapshot.\nMulti-target syntax is supported.",
                     "type": "string"
                   }
                 },
@@ -33447,12 +33458,13 @@
           "snapshot"
         ],
         "summary": "Get snapshot information",
+        "description": "NOTE: The `after` parameter and `next` field enable you to iterate through snapshots with some consistency guarantees regarding concurrent creation or deletion of snapshots.\nIt is guaranteed that any snapshot that exists at the beginning of the iteration and is not concurrently deleted will be seen during the iteration.\nSnapshots concurrently created may be seen during an iteration.",
         "operationId": "snapshot-get",
         "parameters": [
           {
             "in": "path",
             "name": "repository",
-            "description": "Comma-separated list of snapshot repository names used to limit the request. Wildcard (*) expressions are supported.",
+            "description": "A comma-separated list of snapshot repository names used to limit the request.\nWildcard (`*`) expressions are supported.",
             "required": true,
             "deprecated": false,
             "schema": {
@@ -33463,7 +33475,7 @@
           {
             "in": "path",
             "name": "snapshot",
-            "description": "Comma-separated list of snapshot names to retrieve. Also accepts wildcards (*).\n- To get information about all snapshots in a registered repository, use a wildcard (*) or _all.\n- To get information about any snapshots that are currently running, use _current.",
+            "description": "A comma-separated list of snapshot names to retrieve\nWildcards (`*`) are supported.\n\n* To get information about all snapshots in a registered repository, use a wildcard (`*`) or `_all`.\n* To get information about any snapshots that are currently running, use `_current`.",
             "required": true,
             "deprecated": false,
             "schema": {
@@ -33473,28 +33485,28 @@
           },
           {
             "in": "query",
+            "name": "after",
+            "description": "An offset identifier to start pagination from as returned by the next field in the response body.",
+            "deprecated": false,
+            "schema": {
+              "type": "string"
+            },
+            "style": "form"
+          },
+          {
+            "in": "query",
+            "name": "from_sort_value",
+            "description": "The value of the current sort column at which to start retrieval.\nIt can be a string `snapshot-` or a repository name when sorting by snapshot or repository name.\nIt can be a millisecond time value or a number when sorting by `index-` or shard count.",
+            "deprecated": false,
+            "schema": {
+              "type": "string"
+            },
+            "style": "form"
+          },
+          {
+            "in": "query",
             "name": "ignore_unavailable",
-            "description": "If false, the request returns an error for any snapshots that are unavailable.",
-            "deprecated": false,
-            "schema": {
-              "type": "boolean"
-            },
-            "style": "form"
-          },
-          {
-            "in": "query",
-            "name": "master_timeout",
-            "description": "Period to wait for a connection to the master node. If no response is received before the timeout expires, the request fails and returns an error.",
-            "deprecated": false,
-            "schema": {
-              "$ref": "#/components/schemas/_types:Duration"
-            },
-            "style": "form"
-          },
-          {
-            "in": "query",
-            "name": "verbose",
-            "description": "If true, returns additional information about each snapshot such as the version of Elasticsearch which took the snapshot, the start and end times of the snapshot, and the number of shards snapshotted.",
+            "description": "If `false`, the request returns an error for any snapshots that are unavailable.",
             "deprecated": false,
             "schema": {
               "type": "boolean"
@@ -33504,7 +33516,7 @@
           {
             "in": "query",
             "name": "index_details",
-            "description": "If true, returns additional information about each index in the snapshot comprising the number of shards in the index, the total size of the index in bytes, and the maximum number of segments per shard in the index. Defaults to false, meaning that this information is omitted.",
+            "description": "If `true`, the response includes additional information about each index in the snapshot comprising the number of shards in the index, the total size of the index in bytes, and the maximum number of segments per shard in the index.\nThe default is `false`, meaning that this information is omitted.",
             "deprecated": false,
             "schema": {
               "type": "boolean"
@@ -33514,7 +33526,7 @@
           {
             "in": "query",
             "name": "index_names",
-            "description": "If true, returns the name of each index in each snapshot.",
+            "description": "If `true`, the response includes the name of each index in each snapshot.",
             "deprecated": false,
             "schema": {
               "type": "boolean"
@@ -33524,7 +33536,7 @@
           {
             "in": "query",
             "name": "include_repository",
-            "description": "If true, returns the repository name in each snapshot.",
+            "description": "If `true`, the response includes the repository name in each snapshot.",
             "deprecated": false,
             "schema": {
               "type": "boolean"
@@ -33533,41 +33545,21 @@
           },
           {
             "in": "query",
-            "name": "sort",
-            "description": "Allows setting a sort order for the result. Defaults to start_time, i.e. sorting by snapshot start time stamp.",
+            "name": "master_timeout",
+            "description": "The period to wait for a connection to the master node.\nIf no response is received before the timeout expires, the request fails and returns an error.",
             "deprecated": false,
             "schema": {
-              "$ref": "#/components/schemas/snapshot._types:SnapshotSort"
-            },
-            "style": "form"
-          },
-          {
-            "in": "query",
-            "name": "size",
-            "description": "Maximum number of snapshots to return. Defaults to 0 which means return all that match the request without limit.",
-            "deprecated": false,
-            "schema": {
-              "type": "number"
+              "$ref": "#/components/schemas/_types:Duration"
             },
             "style": "form"
           },
           {
             "in": "query",
             "name": "order",
-            "description": "Sort order. Valid values are asc for ascending and desc for descending order. Defaults to asc, meaning ascending order.",
+            "description": "The sort order.\nValid values are `asc` for ascending and `desc` for descending order.\nThe default behavior is ascending order.",
             "deprecated": false,
             "schema": {
               "$ref": "#/components/schemas/_types:SortOrder"
-            },
-            "style": "form"
-          },
-          {
-            "in": "query",
-            "name": "after",
-            "description": "Offset identifier to start pagination from as returned by the next field in the response body.",
-            "deprecated": false,
-            "schema": {
-              "type": "string"
             },
             "style": "form"
           },
@@ -33583,21 +33575,41 @@
           },
           {
             "in": "query",
-            "name": "from_sort_value",
-            "description": "Value of the current sort column at which to start retrieval. Can either be a string snapshot- or repository name when sorting by snapshot or repository name, a millisecond time value or a number when sorting by index- or shard count.",
+            "name": "size",
+            "description": "The maximum number of snapshots to return.\nThe default is 0, which means to return all that match the request without limit.",
             "deprecated": false,
             "schema": {
-              "type": "string"
+              "type": "number"
             },
             "style": "form"
           },
           {
             "in": "query",
             "name": "slm_policy_filter",
-            "description": "Filter snapshots by a comma-separated list of SLM policy names that snapshots belong to. Also accepts wildcards (*) and combinations of wildcards followed by exclude patterns starting with -. To include snapshots not created by an SLM policy you can use the special pattern _none that will match all snapshots without an SLM policy.",
+            "description": "Filter snapshots by a comma-separated list of snapshot lifecycle management (SLM) policy names that snapshots belong to.\n\nYou can use wildcards (`*`) and combinations of wildcards followed by exclude patterns starting with `-`.\nFor example, the pattern `*,-policy-a-\\*` will return all snapshots except for those that were created by an SLM policy with a name starting with `policy-a-`.\nNote that the wildcard pattern `*` matches all snapshots created by an SLM policy but not those snapshots that were not created by an SLM policy.\nTo include snapshots that were not created by an SLM policy, you can use the special pattern `_none` that will match all snapshots without an SLM policy.",
             "deprecated": false,
             "schema": {
               "$ref": "#/components/schemas/_types:Name"
+            },
+            "style": "form"
+          },
+          {
+            "in": "query",
+            "name": "sort",
+            "description": "The sort order for the result.\nThe default behavior is sorting by snapshot start time stamp.",
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/snapshot._types:SnapshotSort"
+            },
+            "style": "form"
+          },
+          {
+            "in": "query",
+            "name": "verbose",
+            "description": "If `true`, returns additional information about each snapshot such as the version of Elasticsearch which took the snapshot, the start and end times of the snapshot, and the number of shards snapshotted.\n\nNOTE: The parameters `size`, `order`, `after`, `from_sort_value`, `offset`, `slm_policy_filter`, and `sort` are not supported when you set `verbose=false` and the sort order for requests with `verbose=false` is undefined.",
+            "deprecated": false,
+            "schema": {
+              "type": "boolean"
             },
             "style": "form"
           }
@@ -33610,6 +33622,18 @@
                 "schema": {
                   "type": "object",
                   "properties": {
+                    "remaining": {
+                      "description": "The number of remaining snapshots that were not returned due to size limits and that can be fetched by additional requests using the `next` field value.",
+                      "type": "number"
+                    },
+                    "total": {
+                      "description": "The total number of snapshots that match the request when ignoring the size limit or `after` query parameter.",
+                      "type": "number"
+                    },
+                    "next": {
+                      "description": "If the request contained a size limit and there might be more results, a `next` field will be added to the response.\nIt can be used as the `after` query parameter to fetch additional results.",
+                      "type": "string"
+                    },
                     "responses": {
                       "type": "array",
                       "items": {
@@ -33621,19 +33645,11 @@
                       "items": {
                         "$ref": "#/components/schemas/snapshot._types:SnapshotInfo"
                       }
-                    },
-                    "total": {
-                      "description": "The total number of snapshots that match the request when ignoring size limit or after query parameter.",
-                      "type": "number"
-                    },
-                    "remaining": {
-                      "description": "The number of remaining snapshots that were not returned due to size limits and that can be fetched by additional requests using the next field value.",
-                      "type": "number"
                     }
                   },
                   "required": [
-                    "total",
-                    "remaining"
+                    "remaining",
+                    "total"
                   ]
                 }
               }
@@ -33720,7 +33736,7 @@
           {
             "in": "path",
             "name": "repository",
-            "description": "A repository name",
+            "description": "The name of the repository to delete a snapshot from.",
             "required": true,
             "deprecated": false,
             "schema": {
@@ -33731,7 +33747,7 @@
           {
             "in": "path",
             "name": "snapshot",
-            "description": "A comma-separated list of snapshot names",
+            "description": "A comma-separated list of snapshot names to delete.\nIt also accepts wildcards (`*`).",
             "required": true,
             "deprecated": false,
             "schema": {
@@ -33742,7 +33758,7 @@
           {
             "in": "query",
             "name": "master_timeout",
-            "description": "Explicit operation timeout for connection to master node",
+            "description": "The period to wait for the master node.\nIf the master node is not available before the timeout expires, the request fails and returns an error.\nTo indicate that the request should never timeout, set it to `-1`.",
             "deprecated": false,
             "schema": {
               "$ref": "#/components/schemas/_types:Duration"
@@ -33794,7 +33810,7 @@
           "snapshot"
         ],
         "summary": "Create or update a snapshot repository",
-        "description": "IMPORTANT: If you are migrating searchable snapshots, the repository name must be identical in the source and destination clusters.\nTo register a snapshot repository, the cluster's global metadata must be writeable.\nEnsure there are no cluster blocks (for example, `cluster.blocks.read_only` and `clsuter.blocks.read_only_allow_delete` settings) that prevent write access.",
+        "description": "IMPORTANT: If you are migrating searchable snapshots, the repository name must be identical in the source and destination clusters.\nTo register a snapshot repository, the cluster's global metadata must be writeable.\nEnsure there are no cluster blocks (for example, `cluster.blocks.read_only` and `clsuter.blocks.read_only_allow_delete` settings) that prevent write access.\n\nSeveral options for this API can be specified using a query parameter or a request body parameter.\nIf both parameters are specified, only the query parameter is used.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/snapshots-register-repository.html"
         },
@@ -33828,7 +33844,7 @@
           "snapshot"
         ],
         "summary": "Create or update a snapshot repository",
-        "description": "IMPORTANT: If you are migrating searchable snapshots, the repository name must be identical in the source and destination clusters.\nTo register a snapshot repository, the cluster's global metadata must be writeable.\nEnsure there are no cluster blocks (for example, `cluster.blocks.read_only` and `clsuter.blocks.read_only_allow_delete` settings) that prevent write access.",
+        "description": "IMPORTANT: If you are migrating searchable snapshots, the repository name must be identical in the source and destination clusters.\nTo register a snapshot repository, the cluster's global metadata must be writeable.\nEnsure there are no cluster blocks (for example, `cluster.blocks.read_only` and `clsuter.blocks.read_only_allow_delete` settings) that prevent write access.\n\nSeveral options for this API can be specified using a query parameter or a request body parameter.\nIf both parameters are specified, only the query parameter is used.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/snapshots-register-repository.html"
         },
@@ -33868,7 +33884,7 @@
           {
             "in": "path",
             "name": "repository",
-            "description": "Name of the snapshot repository to unregister. Wildcard (`*`) patterns are supported.",
+            "description": "The ame of the snapshot repositories to unregister.\nWildcard (`*`) patterns are supported.",
             "required": true,
             "deprecated": false,
             "schema": {
@@ -33879,7 +33895,7 @@
           {
             "in": "query",
             "name": "master_timeout",
-            "description": "Explicit operation timeout for connection to master node",
+            "description": "The period to wait for the master node.\nIf the master node is not available before the timeout expires, the request fails and returns an error.\nTo indicate that the request should never timeout, set it to `-1`.",
             "deprecated": false,
             "schema": {
               "$ref": "#/components/schemas/_types:Duration"
@@ -33889,7 +33905,7 @@
           {
             "in": "query",
             "name": "timeout",
-            "description": "Explicit operation timeout",
+            "description": "The period to wait for a response from all relevant nodes in the cluster after updating the cluster metadata.\nIf no response is received before the timeout expires, the cluster metadata update still applies but the response will indicate that it was not completely acknowledged.\nTo indicate that the request should never timeout, set it to `-1`.",
             "deprecated": false,
             "schema": {
               "$ref": "#/components/schemas/_types:Duration"
@@ -33941,13 +33957,13 @@
           "snapshot"
         ],
         "summary": "Verify the repository integrity",
-        "description": "Verify the integrity of the contents of a snapshot repository.\n\nThis API enables you to perform a comprehensive check of the contents of a repository, looking for any anomalies in its data or metadata which might prevent you from restoring snapshots from the repository or which might cause future snapshot create or delete operations to fail.\n\nIf you suspect the integrity of the contents of one of your snapshot repositories, cease all write activity to this repository immediately, set its `read_only` option to `true`, and use this API to verify its integrity.\nUntil you do so:\n\n* It may not be possible to restore some snapshots from this repository.\n* Searchable snapshots may report errors when searched or may have unassigned shards.\n* Taking snapshots into this repository may fail or may appear to succeed but have created a snapshot which cannot be restored.\n* Deleting snapshots from this repository may fail or may appear to succeed but leave the underlying data on disk.\n* Continuing to write to the repository while it is in an invalid state may causing additional damage to its contents.\n\nIf the API finds any problems with the integrity of the contents of your repository, Elasticsearch will not be able to repair the damage.\nThe only way to bring the repository back into a fully working state after its contents have been damaged is by restoring its contents from a repository backup which was taken before the damage occurred.\nYou must also identify what caused the damage and take action to prevent it from happening again.\n\nIf you cannot restore a repository backup, register a new repository and use this for all future snapshot operations.\nIn some cases it may be possible to recover some of the contents of a damaged repository, either by restoring as many of its snapshots as needed and taking new snapshots of the restored data, or by using the reindex API to copy data from any searchable snapshots mounted from the damaged repository.\n\nAvoid all operations which write to the repository while the verify repository integrity API is running.\nIf something changes the repository contents while an integrity verification is running then Elasticsearch may incorrectly report having detected some anomalies in its contents due to the concurrent writes.\nIt may also incorrectly fail to report some anomalies that the concurrent writes prevented it from detecting.\n\nNOTE: This API is intended for exploratory use by humans. You should expect the request parameters and the response format to vary in future versions.\n\nNOTE: This API may not work correctly in a mixed-version cluster.",
+        "description": "Verify the integrity of the contents of a snapshot repository.\n\nThis API enables you to perform a comprehensive check of the contents of a repository, looking for any anomalies in its data or metadata which might prevent you from restoring snapshots from the repository or which might cause future snapshot create or delete operations to fail.\n\nIf you suspect the integrity of the contents of one of your snapshot repositories, cease all write activity to this repository immediately, set its `read_only` option to `true`, and use this API to verify its integrity.\nUntil you do so:\n\n* It may not be possible to restore some snapshots from this repository.\n* Searchable snapshots may report errors when searched or may have unassigned shards.\n* Taking snapshots into this repository may fail or may appear to succeed but have created a snapshot which cannot be restored.\n* Deleting snapshots from this repository may fail or may appear to succeed but leave the underlying data on disk.\n* Continuing to write to the repository while it is in an invalid state may causing additional damage to its contents.\n\nIf the API finds any problems with the integrity of the contents of your repository, Elasticsearch will not be able to repair the damage.\nThe only way to bring the repository back into a fully working state after its contents have been damaged is by restoring its contents from a repository backup which was taken before the damage occurred.\nYou must also identify what caused the damage and take action to prevent it from happening again.\n\nIf you cannot restore a repository backup, register a new repository and use this for all future snapshot operations.\nIn some cases it may be possible to recover some of the contents of a damaged repository, either by restoring as many of its snapshots as needed and taking new snapshots of the restored data, or by using the reindex API to copy data from any searchable snapshots mounted from the damaged repository.\n\nAvoid all operations which write to the repository while the verify repository integrity API is running.\nIf something changes the repository contents while an integrity verification is running then Elasticsearch may incorrectly report having detected some anomalies in its contents due to the concurrent writes.\nIt may also incorrectly fail to report some anomalies that the concurrent writes prevented it from detecting.\n\nNOTE: This API is intended for exploratory use by humans. You should expect the request parameters and the response format to vary in future versions.\n\nNOTE: This API may not work correctly in a mixed-version cluster.\n\nThe default values for the parameters of this API are designed to limit the impact of the integrity verification on other activities in your cluster.\nFor instance, by default it will only use at most half of the `snapshot_meta` threads to verify the integrity of each snapshot, allowing other snapshot operations to use the other half of this thread pool.\nIf you modify these parameters to speed up the verification process, you risk disrupting other snapshot-related operations in your cluster.\nFor large repositories, consider setting up a separate single-node Elasticsearch cluster just for running the integrity verification API.\n\nThe response exposes implementation details of the analysis which may change from version to version.\nThe response body format is therefore not considered stable and may be different in newer versions.",
         "operationId": "snapshot-repository-verify-integrity",
         "parameters": [
           {
             "in": "path",
             "name": "repository",
-            "description": "A repository name",
+            "description": "The name of the snapshot repository.",
             "required": true,
             "deprecated": false,
             "schema": {
@@ -33957,38 +33973,8 @@
           },
           {
             "in": "query",
-            "name": "meta_thread_pool_concurrency",
-            "description": "Number of threads to use for reading metadata",
-            "deprecated": false,
-            "schema": {
-              "type": "number"
-            },
-            "style": "form"
-          },
-          {
-            "in": "query",
             "name": "blob_thread_pool_concurrency",
-            "description": "Number of threads to use for reading blob contents",
-            "deprecated": false,
-            "schema": {
-              "type": "number"
-            },
-            "style": "form"
-          },
-          {
-            "in": "query",
-            "name": "snapshot_verification_concurrency",
-            "description": "Number of snapshots to verify concurrently",
-            "deprecated": false,
-            "schema": {
-              "type": "number"
-            },
-            "style": "form"
-          },
-          {
-            "in": "query",
-            "name": "index_verification_concurrency",
-            "description": "Number of indices to verify concurrently",
+            "description": "If `verify_blob_contents` is `true`, this parameter specifies how many blobs to verify at once.",
             "deprecated": false,
             "schema": {
               "type": "number"
@@ -33998,7 +33984,7 @@
           {
             "in": "query",
             "name": "index_snapshot_verification_concurrency",
-            "description": "Number of snapshots to verify concurrently within each index",
+            "description": "The maximum number of index snapshots to verify concurrently within each index verification.",
             "deprecated": false,
             "schema": {
               "type": "number"
@@ -34007,8 +33993,48 @@
           },
           {
             "in": "query",
+            "name": "index_verification_concurrency",
+            "description": "The number of indices to verify concurrently.\nThe default behavior is to use the entire `snapshot_meta` thread pool.",
+            "deprecated": false,
+            "schema": {
+              "type": "number"
+            },
+            "style": "form"
+          },
+          {
+            "in": "query",
+            "name": "max_bytes_per_sec",
+            "description": "If `verify_blob_contents` is `true`, this parameter specifies the maximum amount of data that Elasticsearch will read from the repository every second.",
+            "deprecated": false,
+            "schema": {
+              "type": "string"
+            },
+            "style": "form"
+          },
+          {
+            "in": "query",
             "name": "max_failed_shard_snapshots",
-            "description": "Maximum permitted number of failed shard snapshots",
+            "description": "The number of shard snapshot failures to track during integrity verification, in order to avoid excessive resource usage.\nIf your repository contains more than this number of shard snapshot failures, the verification will fail.",
+            "deprecated": false,
+            "schema": {
+              "type": "number"
+            },
+            "style": "form"
+          },
+          {
+            "in": "query",
+            "name": "meta_thread_pool_concurrency",
+            "description": "The maximum number of snapshot metadata operations to run concurrently.\nThe default behavior is to use at most half of the `snapshot_meta` thread pool at once.",
+            "deprecated": false,
+            "schema": {
+              "type": "number"
+            },
+            "style": "form"
+          },
+          {
+            "in": "query",
+            "name": "snapshot_verification_concurrency",
+            "description": "The number of snapshots to verify concurrently.\nThe default behavior is to use at most half of the `snapshot_meta` thread pool at once.",
             "deprecated": false,
             "schema": {
               "type": "number"
@@ -34018,20 +34044,10 @@
           {
             "in": "query",
             "name": "verify_blob_contents",
-            "description": "Whether to verify the contents of individual blobs",
+            "description": "Indicates whether to verify the checksum of every data blob in the repository.\nIf this feature is enabled, Elasticsearch will read the entire repository contents, which may be extremely slow and expensive.",
             "deprecated": false,
             "schema": {
               "type": "boolean"
-            },
-            "style": "form"
-          },
-          {
-            "in": "query",
-            "name": "max_bytes_per_sec",
-            "description": "Rate limit for individual blob verification",
-            "deprecated": false,
-            "schema": {
-              "type": "string"
             },
             "style": "form"
           }
@@ -34066,7 +34082,7 @@
           {
             "in": "path",
             "name": "repository",
-            "description": "A repository name",
+            "description": "The name of the repository to restore a snapshot from.",
             "required": true,
             "deprecated": false,
             "schema": {
@@ -34077,7 +34093,7 @@
           {
             "in": "path",
             "name": "snapshot",
-            "description": "A snapshot name",
+            "description": "The name of the snapshot to restore.",
             "required": true,
             "deprecated": false,
             "schema": {
@@ -34088,7 +34104,7 @@
           {
             "in": "query",
             "name": "master_timeout",
-            "description": "Explicit operation timeout for connection to master node",
+            "description": "The period to wait for the master node.\nIf the master node is not available before the timeout expires, the request fails and returns an error.\nTo indicate that the request should never timeout, set it to `-1`.",
             "deprecated": false,
             "schema": {
               "$ref": "#/components/schemas/_types:Duration"
@@ -34098,7 +34114,7 @@
           {
             "in": "query",
             "name": "wait_for_completion",
-            "description": "Should this request wait until the operation has completed before returning",
+            "description": "If `true`, the request returns a response when the restore operation completes.\nThe operation is complete when it finishes all attempts to recover primary shards for restored indices.\nThis applies even if one or more of the recovery attempts fail.\n\nIf `false`, the request returns a response when the restore operation initializes.",
             "deprecated": false,
             "schema": {
               "type": "boolean"
@@ -34113,24 +34129,32 @@
                 "type": "object",
                 "properties": {
                   "feature_states": {
+                    "externalDocs": {
+                      "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/snapshot-restore.html#feature-state"
+                    },
+                    "description": "The feature states to restore.\nIf `include_global_state` is `true`, the request restores all feature states in the snapshot by default.\nIf `include_global_state` is `false`, the request restores no feature states by default.\nNote that specifying an empty array will result in the default behavior.\nTo restore no feature states, regardless of the `include_global_state` value, specify an array containing only the value `none` (`[\"none\"]`).",
                     "type": "array",
                     "items": {
                       "type": "string"
                     }
                   },
                   "ignore_index_settings": {
+                    "description": "The index settings to not restore from the snapshot.\nYou can't use this option to ignore `index.number_of_shards`.\n\nFor data streams, this option applies only to restored backing indices.\nNew backing indices are configured using the data stream's matching index template.",
                     "type": "array",
                     "items": {
                       "type": "string"
                     }
                   },
                   "ignore_unavailable": {
+                    "description": "If `true`, the request ignores any index or data stream in indices that's missing from the snapshot.\nIf `false`, the request returns an error for any missing index or data stream.",
                     "type": "boolean"
                   },
                   "include_aliases": {
+                    "description": "If `true`, the request restores aliases for any restored data streams and indices.\nIf `false`, the request doesn’t restore aliases.",
                     "type": "boolean"
                   },
                   "include_global_state": {
+                    "description": "If `true`, restore the cluster state. The cluster state includes:\n\n* Persistent cluster settings\n* Index templates\n* Legacy index templates\n* Ingest pipelines\n* Index lifecycle management (ILM) policies\n* Stored scripts\n* For snapshots taken after 7.12.0, feature states\n\nIf `include_global_state` is `true`, the restore operation merges the legacy index templates in your cluster with the templates contained in the snapshot, replacing any existing ones whose name matches one in the snapshot.\nIt completely removes all persistent settings, non-legacy index templates, ingest pipelines, and ILM lifecycle policies that exist in your cluster and replaces them with the corresponding items from the snapshot.\n\nUse the `feature_states` parameter to configure how feature states are restored.\n\nIf `include_global_state` is `true` and a snapshot was created without a global state then the restore request will fail.",
                     "type": "boolean"
                   },
                   "index_settings": {
@@ -34140,12 +34164,18 @@
                     "$ref": "#/components/schemas/_types:Indices"
                   },
                   "partial": {
+                    "description": "If `false`, the entire restore operation will fail if one or more indices included in the snapshot do not have all primary shards available.\n\nIf true, it allows restoring a partial snapshot of indices with unavailable shards.\nOnly shards that were successfully included in the snapshot will be restored.\nAll missing shards will be recreated as empty.",
                     "type": "boolean"
                   },
                   "rename_pattern": {
+                    "externalDocs": {
+                      "url": "https://docs.oracle.com/javase/8/docs/api/java/util/regex/Matcher.html#appendReplacement-java.lang.StringBuffer-java.lang.String-"
+                    },
+                    "description": "A rename pattern to apply to restored data streams and indices.\nData streams and indices matching the rename pattern will be renamed according to `rename_replacement`.\n\nThe rename pattern is applied as defined by the regular expression that supports referencing the original text, according to the `appendReplacement` logic.",
                     "type": "string"
                   },
                   "rename_replacement": {
+                    "description": "The rename replacement string that is used with the `rename_pattern`.",
                     "type": "string"
                   }
                 }
@@ -34182,7 +34212,7 @@
           "snapshot"
         ],
         "summary": "Get the snapshot status",
-        "description": "Get a detailed description of the current state for each shard participating in the snapshot.\nNote that this API should be used only to obtain detailed shard-level information for ongoing snapshots.\nIf this detail is not needed or you want to obtain information about one or more existing snapshots, use the get snapshot API.\n\nWARNING: Using the API to return the status of any snapshots other than currently running snapshots can be expensive.\nThe API requires a read from the repository for each shard in each snapshot.\nFor example, if you have 100 snapshots with 1,000 shards each, an API request that includes all snapshots will require 100,000 reads (100 snapshots x 1,000 shards).\n\nDepending on the latency of your storage, such requests can take an extremely long time to return results.\nThese requests can also tax machine resources and, when using cloud storage, incur high processing costs.",
+        "description": "Get a detailed description of the current state for each shard participating in the snapshot.\n\nNote that this API should be used only to obtain detailed shard-level information for ongoing snapshots.\nIf this detail is not needed or you want to obtain information about one or more existing snapshots, use the get snapshot API.\n\nIf you omit the `<snapshot>` request path parameter, the request retrieves information only for currently running snapshots.\nThis usage is preferred.\nIf needed, you can specify `<repository>` and `<snapshot>` to retrieve information for specific snapshots, even if they're not currently running.\n\nWARNING: Using the API to return the status of any snapshots other than currently running snapshots can be expensive.\nThe API requires a read from the repository for each shard in each snapshot.\nFor example, if you have 100 snapshots with 1,000 shards each, an API request that includes all snapshots will require 100,000 reads (100 snapshots x 1,000 shards).\n\nDepending on the latency of your storage, such requests can take an extremely long time to return results.\nThese requests can also tax machine resources and, when using cloud storage, incur high processing costs.",
         "operationId": "snapshot-status",
         "parameters": [
           {
@@ -34206,7 +34236,7 @@
           "snapshot"
         ],
         "summary": "Get the snapshot status",
-        "description": "Get a detailed description of the current state for each shard participating in the snapshot.\nNote that this API should be used only to obtain detailed shard-level information for ongoing snapshots.\nIf this detail is not needed or you want to obtain information about one or more existing snapshots, use the get snapshot API.\n\nWARNING: Using the API to return the status of any snapshots other than currently running snapshots can be expensive.\nThe API requires a read from the repository for each shard in each snapshot.\nFor example, if you have 100 snapshots with 1,000 shards each, an API request that includes all snapshots will require 100,000 reads (100 snapshots x 1,000 shards).\n\nDepending on the latency of your storage, such requests can take an extremely long time to return results.\nThese requests can also tax machine resources and, when using cloud storage, incur high processing costs.",
+        "description": "Get a detailed description of the current state for each shard participating in the snapshot.\n\nNote that this API should be used only to obtain detailed shard-level information for ongoing snapshots.\nIf this detail is not needed or you want to obtain information about one or more existing snapshots, use the get snapshot API.\n\nIf you omit the `<snapshot>` request path parameter, the request retrieves information only for currently running snapshots.\nThis usage is preferred.\nIf needed, you can specify `<repository>` and `<snapshot>` to retrieve information for specific snapshots, even if they're not currently running.\n\nWARNING: Using the API to return the status of any snapshots other than currently running snapshots can be expensive.\nThe API requires a read from the repository for each shard in each snapshot.\nFor example, if you have 100 snapshots with 1,000 shards each, an API request that includes all snapshots will require 100,000 reads (100 snapshots x 1,000 shards).\n\nDepending on the latency of your storage, such requests can take an extremely long time to return results.\nThese requests can also tax machine resources and, when using cloud storage, incur high processing costs.",
         "operationId": "snapshot-status-1",
         "parameters": [
           {
@@ -34233,7 +34263,7 @@
           "snapshot"
         ],
         "summary": "Get the snapshot status",
-        "description": "Get a detailed description of the current state for each shard participating in the snapshot.\nNote that this API should be used only to obtain detailed shard-level information for ongoing snapshots.\nIf this detail is not needed or you want to obtain information about one or more existing snapshots, use the get snapshot API.\n\nWARNING: Using the API to return the status of any snapshots other than currently running snapshots can be expensive.\nThe API requires a read from the repository for each shard in each snapshot.\nFor example, if you have 100 snapshots with 1,000 shards each, an API request that includes all snapshots will require 100,000 reads (100 snapshots x 1,000 shards).\n\nDepending on the latency of your storage, such requests can take an extremely long time to return results.\nThese requests can also tax machine resources and, when using cloud storage, incur high processing costs.",
+        "description": "Get a detailed description of the current state for each shard participating in the snapshot.\n\nNote that this API should be used only to obtain detailed shard-level information for ongoing snapshots.\nIf this detail is not needed or you want to obtain information about one or more existing snapshots, use the get snapshot API.\n\nIf you omit the `<snapshot>` request path parameter, the request retrieves information only for currently running snapshots.\nThis usage is preferred.\nIf needed, you can specify `<repository>` and `<snapshot>` to retrieve information for specific snapshots, even if they're not currently running.\n\nWARNING: Using the API to return the status of any snapshots other than currently running snapshots can be expensive.\nThe API requires a read from the repository for each shard in each snapshot.\nFor example, if you have 100 snapshots with 1,000 shards each, an API request that includes all snapshots will require 100,000 reads (100 snapshots x 1,000 shards).\n\nDepending on the latency of your storage, such requests can take an extremely long time to return results.\nThese requests can also tax machine resources and, when using cloud storage, incur high processing costs.",
         "operationId": "snapshot-status-2",
         "parameters": [
           {
@@ -34272,7 +34302,7 @@
           {
             "in": "path",
             "name": "repository",
-            "description": "A repository name",
+            "description": "The name of the snapshot repository to verify.",
             "required": true,
             "deprecated": false,
             "schema": {
@@ -34283,7 +34313,7 @@
           {
             "in": "query",
             "name": "master_timeout",
-            "description": "Explicit operation timeout for connection to master node",
+            "description": "The period to wait for the master node.\nIf the master node is not available before the timeout expires, the request fails and returns an error.\nTo indicate that the request should never timeout, set it to `-1`.",
             "deprecated": false,
             "schema": {
               "$ref": "#/components/schemas/_types:Duration"
@@ -34293,7 +34323,7 @@
           {
             "in": "query",
             "name": "timeout",
-            "description": "Explicit operation timeout",
+            "description": "The period to wait for a response from all relevant nodes in the cluster after updating the cluster metadata.\nIf no response is received before the timeout expires, the cluster metadata update still applies but the response will indicate that it was not completely acknowledged.\nTo indicate that the request should never timeout, set it to `-1`.",
             "deprecated": false,
             "schema": {
               "$ref": "#/components/schemas/_types:Duration"
@@ -34310,6 +34340,7 @@
                   "type": "object",
                   "properties": {
                     "nodes": {
+                      "description": "Information about the nodes connected to the snapshot repository.\nThe key is the ID of the node.",
                       "type": "object",
                       "additionalProperties": {
                         "$ref": "#/components/schemas/snapshot.verify_repository:CompactNodeInfo"
@@ -87102,11 +87133,11 @@
         "type": "object",
         "properties": {
           "deleted_blobs": {
-            "description": "Number of binary large objects (blobs) removed during cleanup.",
+            "description": "The number of binary large objects (blobs) removed from the snapshot repository during cleanup operations.\nA non-zero value indicates that unreferenced blobs were found and subsequently cleaned up.",
             "type": "number"
           },
           "deleted_bytes": {
-            "description": "Number of bytes freed by cleanup operations.",
+            "description": "The number of bytes freed by cleanup operations.",
             "type": "number"
           }
         },
@@ -87304,6 +87335,10 @@
             "type": "object",
             "properties": {
               "type": {
+                "externalDocs": {
+                  "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/repository-azure.html"
+                },
+                "description": "The Azure repository type.",
                 "type": "string",
                 "enum": [
                   "azure"
@@ -87328,20 +87363,33 @@
           {
             "type": "object",
             "properties": {
+              "base_path": {
+                "description": "The path to the repository data within the container.\nIt defaults to the root directory.\n\nNOTE: Don't set `base_path` when configuring a snapshot repository for Elastic Cloud Enterprise.\nElastic Cloud Enterprise automatically generates the `base_path` for each deployment so that multiple deployments can share the same bucket.",
+                "type": "string"
+              },
               "client": {
+                "description": "The name of the Azure repository client to use.",
                 "type": "string"
               },
               "container": {
+                "description": "The Azure container.",
                 "type": "string"
               },
-              "base_path": {
-                "type": "string"
-              },
-              "readonly": {
-                "type": "boolean"
+              "delete_objects_max_size": {
+                "description": "The maxmimum batch size, between 1 and 256, used for `BlobBatch` requests.\nDefaults to 256 which is the maximum number supported by the Azure blob batch API.",
+                "type": "number"
               },
               "location_mode": {
+                "description": "Either `primary_only` or `secondary_only`.\nNote that if you set it to `secondary_only`, it will force `readonly` to `true`.",
                 "type": "string"
+              },
+              "max_concurrent_batch_deletes": {
+                "description": "The maximum number of concurrent batch delete requests that will be submitted for any individual bulk delete with `BlobBatch`.\nNote that the effective number of concurrent deletes is further limited by the Azure client connection and event loop thread limits.\nDefaults to 10, minimum is 1, maximum is 100.",
+                "type": "number"
+              },
+              "readonly": {
+                "description": "If `true`, the repository is read-only.\nThe cluster can retrieve and restore snapshots from the repository but not write to the repository or create snapshots in it.\n\nOnly a cluster with write access can create snapshots in the repository.\nAll other clusters connected to the repository should have the `readonly` parameter set to `true`.\nIf `false`, the cluster can write to the repository and create snapshots in it.\n\nIMPORTANT: If you register the same snapshot repository with multiple clusters, only one cluster should have write access to the repository.\nHaving multiple clusters write to the repository at the same time risks corrupting the contents of the repository.",
+                "type": "boolean"
               }
             }
           }
@@ -87354,6 +87402,7 @@
             "$ref": "#/components/schemas/_types:ByteSize"
           },
           "compress": {
+            "description": "When set to `true`, metadata files are stored in compressed format.\nThis setting doesn't affect index files that are already compressed by default.",
             "type": "boolean"
           },
           "max_restore_bytes_per_sec": {
@@ -87381,6 +87430,10 @@
             "type": "object",
             "properties": {
               "type": {
+                "externalDocs": {
+                  "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/repository-gcs.html"
+                },
+                "description": "The Google Cloud Storage repository type.",
                 "type": "string",
                 "enum": [
                   "gcs"
@@ -87406,19 +87459,25 @@
             "type": "object",
             "properties": {
               "bucket": {
+                "description": "The name of the bucket to be used for snapshots.",
                 "type": "string"
               },
-              "client": {
+              "application_name": {
+                "deprecated": true,
+                "description": "The name used by the client when it uses the Google Cloud Storage service.",
                 "type": "string"
               },
               "base_path": {
+                "description": "The path to the repository data within the bucket.\nIt defaults to the root of the bucket.\n\nNOTE: Don't set `base_path` when configuring a snapshot repository for Elastic Cloud Enterprise.\nElastic Cloud Enterprise automatically generates the `base_path` for each deployment so that multiple deployments can share the same bucket.",
+                "type": "string"
+              },
+              "client": {
+                "description": "The name of the client to use to connect to Google Cloud Storage.",
                 "type": "string"
               },
               "readonly": {
+                "description": "If `true`, the repository is read-only.\nThe cluster can retrieve and restore snapshots from the repository but not write to the repository or create snapshots in it.\n\nOnly a cluster with write access can create snapshots in the repository.\nAll other clusters connected to the repository should have the `readonly` parameter set to `true`.\n\nIf `false`, the cluster can write to the repository and create snapshots in it.\n\nIMPORTANT: If you register the same snapshot repository with multiple clusters, only one cluster should have write access to the repository.\nHaving multiple clusters write to the repository at the same time risks corrupting the contents of the repository.",
                 "type": "boolean"
-              },
-              "application_name": {
-                "type": "string"
               }
             },
             "required": [
@@ -87436,6 +87495,10 @@
             "type": "object",
             "properties": {
               "type": {
+                "externalDocs": {
+                  "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/repository-s3.html"
+                },
+                "description": "The S3 repository type.",
                 "type": "string",
                 "enum": [
                   "s3"
@@ -87461,28 +87524,75 @@
             "type": "object",
             "properties": {
               "bucket": {
-                "type": "string"
-              },
-              "client": {
+                "externalDocs": {
+                  "url": "https://docs.aws.amazon.com/AmazonS3/latest/userguide/BucketRestrictions.html#bucketnamingrules"
+                },
+                "description": "The name of the S3 bucket to use for snapshots.\nThe bucket name must adhere to Amazon's S3 bucket naming rules.",
                 "type": "string"
               },
               "base_path": {
+                "description": "The path to the repository data within its bucket.\nIt defaults to an empty string, meaning that the repository is at the root of the bucket.\nThe value of this setting should not start or end with a forward slash (`/`).\n\nNOTE: Don't set base_path when configuring a snapshot repository for Elastic Cloud Enterprise.\nElastic Cloud Enterprise automatically generates the `base_path` for each deployment so that multiple deployments may share the same bucket.",
                 "type": "string"
-              },
-              "readonly": {
-                "type": "boolean"
-              },
-              "server_side_encryption": {
-                "type": "boolean"
               },
               "buffer_size": {
                 "$ref": "#/components/schemas/_types:ByteSize"
               },
               "canned_acl": {
+                "externalDocs": {
+                  "url": "https://docs.aws.amazon.com/AmazonS3/latest/userguide/acl-overview.html#canned-acl"
+                },
+                "description": "The S3 repository supports all S3 canned ACLs: `private`, `public-read`, `public-read-write`, `authenticated-read`, `log-delivery-write`, `bucket-owner-read`, `bucket-owner-full-control`.\nYou could specify a canned ACL using the `canned_acl` setting.\nWhen the S3 repository creates buckets and objects, it adds the canned ACL into the buckets and objects.",
                 "type": "string"
               },
-              "storage_class": {
+              "client": {
+                "description": "The name of the S3 client to use to connect to S3.",
                 "type": "string"
+              },
+              "delete_objects_max_size": {
+                "externalDocs": {
+                  "url": "https://docs.aws.amazon.com/AmazonS3/latest/API/API_DeleteObjects.html"
+                },
+                "description": "The maxmimum batch size, between 1 and 1000, used for `DeleteObjects` requests.\nDefaults to 1000 which is the maximum number supported by the  AWS DeleteObjects API.",
+                "type": "number"
+              },
+              "get_register_retry_delay": {
+                "$ref": "#/components/schemas/_types:Duration"
+              },
+              "max_multipart_parts": {
+                "description": "The maximum number of parts that Elasticsearch will write during a multipart upload of a single object.\nFiles which are larger than `buffer_size × max_multipart_parts` will be chunked into several smaller objects.\nElasticsearch may also split a file across multiple objects to satisfy other constraints such as the `chunk_size` limit.\nDefaults to `10000` which is the maximum number of parts in a multipart upload in AWS S3.",
+                "type": "number"
+              },
+              "max_multipart_upload_cleanup_size": {
+                "externalDocs": {
+                  "url": "https://docs.aws.amazon.com/AmazonS3/latest/API/API_ListMultipartUploads.html"
+                },
+                "description": "The maximum number of possibly-dangling multipart uploads to clean up in each batch of snapshot deletions.\nDefaults to 1000 which is the maximum number supported by the AWS ListMultipartUploads API.\nIf set to `0`, Elasticsearch will not attempt to clean up dangling multipart uploads.",
+                "type": "number"
+              },
+              "readonly": {
+                "description": "If true, the repository is read-only.\nThe cluster can retrieve and restore snapshots from the repository but not write to the repository or create snapshots in it.\n\nOnly a cluster with write access can create snapshots in the repository.\nAll other clusters connected to the repository should have the `readonly` parameter set to `true`.\n\nIf `false`, the cluster can write to the repository and create snapshots in it.\n\nIMPORTANT: If you register the same snapshot repository with multiple clusters, only one cluster should have write access to the repository.\nHaving multiple clusters write to the repository at the same time risks corrupting the contents of the repository.",
+                "type": "boolean"
+              },
+              "server_side_encryption": {
+                "description": "When set to `true`m files are encrypted on server side using an AES256 algorithm.\nserver_default false",
+                "type": "boolean"
+              },
+              "storage_class": {
+                "externalDocs": {
+                  "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/repository-s3.html#repository-s3-storage-classes"
+                },
+                "description": "The S3 storage class for objects written to the repository.\nValues may be `standard`, `reduced_redundancy`, `standard_ia`, `onezone_ia`, and `intelligent_tiering`.",
+                "type": "string"
+              },
+              "throttled_delete_retry.delay_increment": {
+                "$ref": "#/components/schemas/_types:Duration"
+              },
+              "throttled_delete_retry.maximum_delay": {
+                "$ref": "#/components/schemas/_types:Duration"
+              },
+              "throttled_delete_retry.maximum_number_of_retries": {
+                "description": "The number times to retry a throttled snapshot deletion.\nThe default is 10 and the minimum value is 0 which will disable retries altogether.\nNote that if retries are enabled in the Azure client, each of these retries comprises that many client-level retries.",
+                "type": "number"
               }
             },
             "required": [
@@ -87500,6 +87610,10 @@
             "type": "object",
             "properties": {
               "type": {
+                "externalDocs": {
+                  "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/snapshots-filesystem-repository.html"
+                },
+                "description": "The shared file system repository type.",
                 "type": "string",
                 "enum": [
                   "fs"
@@ -87525,12 +87639,15 @@
             "type": "object",
             "properties": {
               "location": {
+                "description": "The location of the shared filesystem used to store and retrieve snapshots.\nThis location must be registered in the `path.repo` setting on all master and data nodes in the cluster.\nUnlike `path.repo`, this setting supports only a single file path.",
                 "type": "string"
               },
               "max_number_of_snapshots": {
+                "description": "The maximum number of snapshots the repository can contain.\nThe default is `Integer.MAX_VALUE`, which is 2^31-1 or `2147483647`.",
                 "type": "number"
               },
               "readonly": {
+                "description": "If `true`, the repository is read-only.\nThe cluster can retrieve and restore snapshots from the repository but not write to the repository or create snapshots in it.\n\nOnly a cluster with write access can create snapshots in the repository.\nAll other clusters connected to the repository should have the `readonly` parameter set to `true`.\n\nIf `false`, the cluster can write to the repository and create snapshots in it.\n\nIMPORTANT: If you register the same snapshot repository with multiple clusters, only one cluster should have write access to the repository.\nHaving multiple clusters write to the repository at the same time risks corrupting the contents of the repository.",
                 "type": "boolean"
               }
             },
@@ -87549,6 +87666,10 @@
             "type": "object",
             "properties": {
               "type": {
+                "externalDocs": {
+                  "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/snapshots-read-only-repository.html"
+                },
+                "description": "The read-only URL repository type.",
                 "type": "string",
                 "enum": [
                   "url"
@@ -87574,15 +87695,18 @@
             "type": "object",
             "properties": {
               "http_max_retries": {
+                "description": "The maximum number of retries for HTTP and HTTPS URLs.",
                 "type": "number"
               },
               "http_socket_timeout": {
                 "$ref": "#/components/schemas/_types:Duration"
               },
               "max_number_of_snapshots": {
+                "description": "The maximum number of snapshots the repository can contain.\nThe default is `Integer.MAX_VALUE`, which is 2^31-1 or `2147483647`.",
                 "type": "number"
               },
               "url": {
+                "description": "The URL location of the root of the shared filesystem repository.\nThe following protocols are supported:\n\n* `file`\n* `ftp`\n* `http`\n* `https`\n* `jar`\n\nURLs using the HTTP, HTTPS, or FTP protocols must be explicitly allowed with the `repositories.url.allowed_urls` cluster setting.\nThis setting supports wildcards in the place of a host, path, query, or fragment in the URL.\n\nURLs using the file protocol must point to the location of a shared filesystem accessible to all master and data nodes in the cluster.\nThis location must be registered in the `path.repo` setting.\nYou don't need to register URLs using the FTP, HTTP, HTTPS, or JAR protocols in the `path.repo` setting.",
                 "type": "string"
               }
             },
@@ -87601,6 +87725,10 @@
             "type": "object",
             "properties": {
               "type": {
+                "externalDocs": {
+                  "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/snapshots-source-only-repository.html"
+                },
+                "description": "The source-only repository type.",
                 "type": "string",
                 "enum": [
                   "source"
@@ -87626,12 +87754,15 @@
             "type": "object",
             "properties": {
               "delegate_type": {
+                "description": "The delegated repository type. For valid values, refer to the `type` parameter.\nSource repositories can use `settings` properties for its delegated repository type.",
                 "type": "string"
               },
               "max_number_of_snapshots": {
+                "description": "The maximum number of snapshots the repository can contain.\nThe default is `Integer.MAX_VALUE`, which is 2^31-1 or `2147483647`.",
                 "type": "number"
               },
               "read_only": {
+                "description": "If `true`, the repository is read-only.\nThe cluster can retrieve and restore snapshots from the repository but not write to the repository or create snapshots in it.\n\nOnly a cluster with write access can create snapshots in the repository.\nAll other clusters connected to the repository should have the `readonly` parameter set to `true`.\n\nIf `false`, the cluster can write to the repository and create snapshots in it.\n\nIMPORTANT: If you register the same snapshot repository with multiple clusters, only one cluster should have write access to the repository.\nHaving multiple clusters write to the repository at the same time risks corrupting the contents of the repository.",
                 "type": "boolean"
               }
             }
@@ -87696,6 +87827,7 @@
         "type": "object",
         "properties": {
           "include_global_state": {
+            "description": "Indicates whether the current cluster state is included in the snapshot.",
             "type": "boolean"
           },
           "indices": {
@@ -87705,15 +87837,18 @@
             }
           },
           "repository": {
+            "description": "The name of the repository that includes the snapshot.",
             "type": "string"
           },
           "shards_stats": {
             "$ref": "#/components/schemas/snapshot._types:ShardsStats"
           },
           "snapshot": {
+            "description": "The name of the snapshot.",
             "type": "string"
           },
           "state": {
+            "description": "The current snapshot state:\n\n* `FAILED`: The snapshot finished with an error and failed to store any data.\n* `STARTED`: The snapshot is currently running.\n* `SUCCESS`: The snapshot completed.",
             "type": "string"
           },
           "stats": {
@@ -87826,21 +87961,27 @@
         "type": "object",
         "properties": {
           "done": {
+            "description": "The number of shards that initialized, started, and finalized successfully.",
             "type": "number"
           },
           "failed": {
+            "description": "The number of shards that failed to be included in the snapshot.",
             "type": "number"
           },
           "finalizing": {
+            "description": "The number of shards that are finalizing but are not done.",
             "type": "number"
           },
           "initializing": {
+            "description": "The number of shards that are still initializing.",
             "type": "number"
           },
           "started": {
+            "description": "The number of shards that have started but are not finalized.",
             "type": "number"
           },
           "total": {
+            "description": "The total number of shards included in the snapshot.",
             "type": "number"
           }
         },
@@ -104670,7 +104811,7 @@
       "snapshot.create#repository": {
         "in": "path",
         "name": "repository",
-        "description": "Repository for the snapshot.",
+        "description": "The name of the repository for the snapshot.",
         "required": true,
         "deprecated": false,
         "schema": {
@@ -104681,7 +104822,7 @@
       "snapshot.create#snapshot": {
         "in": "path",
         "name": "snapshot",
-        "description": "Name of the snapshot. Must be unique in the repository.",
+        "description": "The name of the snapshot.\nIt supportes date math.\nIt must be unique in the repository.",
         "required": true,
         "deprecated": false,
         "schema": {
@@ -104692,7 +104833,7 @@
       "snapshot.create#master_timeout": {
         "in": "query",
         "name": "master_timeout",
-        "description": "Period to wait for a connection to the master node. If no response is received before the timeout expires, the request fails and returns an error.",
+        "description": "The period to wait for a connection to the master node.\nIf no response is received before the timeout expires, the request fails and returns an error.",
         "deprecated": false,
         "schema": {
           "$ref": "#/components/schemas/_types:Duration"
@@ -104702,7 +104843,7 @@
       "snapshot.create#wait_for_completion": {
         "in": "query",
         "name": "wait_for_completion",
-        "description": "If `true`, the request returns a response when the snapshot is complete. If `false`, the request returns a response when the snapshot initializes.",
+        "description": "If `true`, the request returns a response when the snapshot is complete.\nIf `false`, the request returns a response when the snapshot initializes.",
         "deprecated": false,
         "schema": {
           "type": "boolean"
@@ -104712,7 +104853,7 @@
       "snapshot.create_repository#repository": {
         "in": "path",
         "name": "repository",
-        "description": "A repository name",
+        "description": "The name of the snapshot repository to register or update.",
         "required": true,
         "deprecated": false,
         "schema": {
@@ -104723,7 +104864,7 @@
       "snapshot.create_repository#master_timeout": {
         "in": "query",
         "name": "master_timeout",
-        "description": "Explicit operation timeout for connection to master node",
+        "description": "The period to wait for the master node.\nIf the master node is not available before the timeout expires, the request fails and returns an error.\nTo indicate that the request should never timeout, set it to `-1`.",
         "deprecated": false,
         "schema": {
           "$ref": "#/components/schemas/_types:Duration"
@@ -104733,7 +104874,7 @@
       "snapshot.create_repository#timeout": {
         "in": "query",
         "name": "timeout",
-        "description": "Explicit operation timeout",
+        "description": "The period to wait for a response from all relevant nodes in the cluster after updating the cluster metadata.\nIf no response is received before the timeout expires, the cluster metadata update still applies but the response will indicate that it was not completely acknowledged.\nTo indicate that the request should never timeout, set it to `-1`.",
         "deprecated": false,
         "schema": {
           "$ref": "#/components/schemas/_types:Duration"
@@ -104743,7 +104884,7 @@
       "snapshot.create_repository#verify": {
         "in": "query",
         "name": "verify",
-        "description": "Whether to verify the repository after creation",
+        "description": "If `true`, the request verifies the repository is functional on all master and data nodes in the cluster.\nIf `false`, this verification is skipped.\nYou can also perform this verification with the verify snapshot repository API.",
         "deprecated": false,
         "schema": {
           "type": "boolean"
@@ -104753,7 +104894,7 @@
       "snapshot.get_repository#repository": {
         "in": "path",
         "name": "repository",
-        "description": "A comma-separated list of repository names",
+        "description": "A comma-separated list of snapshot repository names used to limit the request.\nWildcard (`*`) expressions are supported including combining wildcards with exclude patterns starting with `-`.\n\nTo get information about all snapshot repositories registered in the cluster, omit this parameter or use `*` or `_all`.",
         "required": true,
         "deprecated": false,
         "schema": {
@@ -104764,7 +104905,7 @@
       "snapshot.get_repository#local": {
         "in": "query",
         "name": "local",
-        "description": "Return local information, do not retrieve the state from master node (default: false)",
+        "description": "If `true`, the request gets information from the local node only.\nIf `false`, the request gets information from the master node.",
         "deprecated": false,
         "schema": {
           "type": "boolean"
@@ -104774,7 +104915,7 @@
       "snapshot.get_repository#master_timeout": {
         "in": "query",
         "name": "master_timeout",
-        "description": "Explicit operation timeout for connection to master node",
+        "description": "The period to wait for the master node.\nIf the master node is not available before the timeout expires, the request fails and returns an error.\nTo indicate that the request should never timeout, set it to `-1`.",
         "deprecated": false,
         "schema": {
           "$ref": "#/components/schemas/_types:Duration"
@@ -104784,7 +104925,7 @@
       "snapshot.status#repository": {
         "in": "path",
         "name": "repository",
-        "description": "A repository name",
+        "description": "The snapshot repository name used to limit the request.\nIt supports wildcards (`*`) if `<snapshot>` isn't specified.",
         "required": true,
         "deprecated": false,
         "schema": {
@@ -104795,7 +104936,7 @@
       "snapshot.status#snapshot": {
         "in": "path",
         "name": "snapshot",
-        "description": "A comma-separated list of snapshot names",
+        "description": "A comma-separated list of snapshots to retrieve status for.\nThe default is currently running snapshots.\nWildcards (`*`) are not supported.",
         "required": true,
         "deprecated": false,
         "schema": {
@@ -104806,7 +104947,7 @@
       "snapshot.status#ignore_unavailable": {
         "in": "query",
         "name": "ignore_unavailable",
-        "description": "Whether to ignore unavailable snapshots, defaults to false which means a SnapshotMissingException is thrown",
+        "description": "If `false`, the request returns an error for any snapshots that are unavailable.\nIf `true`, the request ignores snapshots that are unavailable, such as those that are corrupted or temporarily cannot be returned.",
         "deprecated": false,
         "schema": {
           "type": "boolean"
@@ -104816,7 +104957,7 @@
       "snapshot.status#master_timeout": {
         "in": "query",
         "name": "master_timeout",
-        "description": "Explicit operation timeout for connection to master node",
+        "description": "The period to wait for the master node.\nIf the master node is not available before the timeout expires, the request fails and returns an error.\nTo indicate that the request should never timeout, set it to `-1`.",
         "deprecated": false,
         "schema": {
           "$ref": "#/components/schemas/_types:Duration"
@@ -107945,29 +108086,35 @@
             "schema": {
               "type": "object",
               "properties": {
-                "ignore_unavailable": {
-                  "description": "If `true`, the request ignores data streams and indices in `indices` that are missing or closed. If `false`, the request returns an error for any data stream or index that is missing or closed.",
-                  "type": "boolean"
-                },
-                "include_global_state": {
-                  "description": "If `true`, the current cluster state is included in the snapshot. The cluster state includes persistent cluster settings, composable index templates, legacy index templates, ingest pipelines, and ILM policies. It also includes data stored in system indices, such as Watches and task records (configurable via `feature_states`).",
-                  "type": "boolean"
-                },
-                "indices": {
-                  "$ref": "#/components/schemas/_types:Indices"
+                "expand_wildcards": {
+                  "$ref": "#/components/schemas/_types:ExpandWildcards"
                 },
                 "feature_states": {
-                  "description": "Feature states to include in the snapshot. Each feature state includes one or more system indices containing related data. You can view a list of eligible features using the get features API. If `include_global_state` is `true`, all current feature states are included by default. If `include_global_state` is `false`, no feature states are included by default.",
+                  "externalDocs": {
+                    "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/snapshot-restore.html#feature-state"
+                  },
+                  "description": "The feature states to include in the snapshot.\nEach feature state includes one or more system indices containing related data.\nYou can view a list of eligible features using the get features API.\n\nIf `include_global_state` is `true`, all current feature states are included by default.\nIf `include_global_state` is `false`, no feature states are included by default.\n\nNote that specifying an empty array will result in the default behavior.\nTo exclude all feature states, regardless of the `include_global_state` value, specify an array with only the value `none` (`[\"none\"]`).",
                   "type": "array",
                   "items": {
                     "type": "string"
                   }
                 },
+                "ignore_unavailable": {
+                  "description": "If `true`, the request ignores data streams and indices in `indices` that are missing or closed.\nIf `false`, the request returns an error for any data stream or index that is missing or closed.",
+                  "type": "boolean"
+                },
+                "include_global_state": {
+                  "description": "If `true`, the current cluster state is included in the snapshot.\nThe cluster state includes persistent cluster settings, composable index templates, legacy index templates, ingest pipelines, and ILM policies.\nIt also includes data stored in system indices, such as Watches and task records (configurable via `feature_states`).",
+                  "type": "boolean"
+                },
+                "indices": {
+                  "$ref": "#/components/schemas/_types:Indices"
+                },
                 "metadata": {
                   "$ref": "#/components/schemas/_types:Metadata"
                 },
                 "partial": {
-                  "description": "If `true`, allows restoring a partial snapshot of indices with unavailable shards. Only shards that were successfully included in the snapshot will be restored. All missing shards will be recreated as empty. If `false`, the entire restore operation will fail if one or more indices included in the snapshot do not have all primary shards available.",
+                  "description": "If `true`, it enables you to restore a partial snapshot of indices with unavailable shards.\nOnly shards that were successfully included in the snapshot will be restored.\nAll missing shards will be recreated as empty.\n\nIf `false`, the entire restore operation will fail if one or more indices included in the snapshot do not have all primary shards available.",
                   "type": "boolean"
                 }
               }
