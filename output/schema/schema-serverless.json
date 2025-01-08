@@ -4578,9 +4578,15 @@
           "stability": "stable"
         }
       },
-      "description": "Get cluster info.\nReturns basic information about the cluster.",
-      "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/index.html",
+      "description": "Get cluster info.\nGet basic build, version, and cluster information.",
+      "docId": "api-root",
+      "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/rest-api-root.html",
       "name": "info",
+      "privileges": {
+        "cluster": [
+          "monitor"
+        ]
+      },
       "request": {
         "name": "Request",
         "namespace": "_global.info"
@@ -25472,7 +25478,7 @@
       "body": {
         "kind": "no_body"
       },
-      "description": "Get cluster info.\nReturns basic information about the cluster.",
+      "description": "Get cluster info.\nGet basic build, version, and cluster information.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -25486,13 +25492,14 @@
       },
       "path": [],
       "query": [],
-      "specLocation": "_global/info/RootNodeInfoRequest.ts#L22-L29"
+      "specLocation": "_global/info/RootNodeInfoRequest.ts#L22-L31"
     },
     {
       "body": {
         "kind": "properties",
         "properties": [
           {
+            "description": "The responding cluster's name.",
             "name": "cluster_name",
             "required": true,
             "type": {
@@ -25515,6 +25522,7 @@
             }
           },
           {
+            "description": "The responding node's name.",
             "name": "name",
             "required": true,
             "type": {
@@ -25537,6 +25545,7 @@
             }
           },
           {
+            "description": "The running version of Elasticsearch.",
             "name": "version",
             "required": true,
             "type": {
@@ -25554,7 +25563,7 @@
         "name": "Response",
         "namespace": "_global.info"
       },
-      "specLocation": "_global/info/RootNodeInfoResponse.ts#L23-L31"
+      "specLocation": "_global/info/RootNodeInfoResponse.ts#L23-L40"
     },
     {
       "attachedBehaviors": [
@@ -76563,7 +76572,7 @@
           }
         }
       ],
-      "specLocation": "_types/Base.ts#L76-L85"
+      "specLocation": "_types/Base.ts#L105-L114"
     },
     {
       "codegenNames": [
@@ -119519,7 +119528,7 @@
           }
         }
       ],
-      "specLocation": "_types/Base.ts#L87-L89"
+      "specLocation": "_types/Base.ts#L116-L118"
     },
     {
       "kind": "interface",
@@ -120606,7 +120615,7 @@
           }
         }
       ],
-      "specLocation": "_types/Base.ts#L91-L94"
+      "specLocation": "_types/Base.ts#L120-L123"
     },
     {
       "kind": "interface",
@@ -121753,6 +121762,7 @@
       },
       "properties": [
         {
+          "description": "The Elasticsearch Git commit's date.",
           "name": "build_date",
           "required": true,
           "type": {
@@ -121764,6 +121774,7 @@
           }
         },
         {
+          "description": "The build flavor. For example, `default`.",
           "name": "build_flavor",
           "required": true,
           "type": {
@@ -121775,6 +121786,7 @@
           }
         },
         {
+          "description": "The Elasticsearch Git commit's SHA hash.",
           "name": "build_hash",
           "required": true,
           "type": {
@@ -121786,6 +121798,7 @@
           }
         },
         {
+          "description": "Indicates whether the Elasticsearch build was a snapshot.",
           "name": "build_snapshot",
           "required": true,
           "type": {
@@ -121797,6 +121810,7 @@
           }
         },
         {
+          "description": "The build type that corresponds to how Elasticsearch was installed.\nFor example, `docker`, `rpm`, or `tar`.",
           "name": "build_type",
           "required": true,
           "type": {
@@ -121808,6 +121822,7 @@
           }
         },
         {
+          "description": "The version number of Elasticsearch's underlying Lucene software.",
           "name": "lucene_version",
           "required": true,
           "type": {
@@ -121819,6 +121834,7 @@
           }
         },
         {
+          "description": "The minimum index version with which the responding node can read from disk.",
           "name": "minimum_index_compatibility_version",
           "required": true,
           "type": {
@@ -121830,6 +121846,7 @@
           }
         },
         {
+          "description": "The minimum node version with which the responding node can communicate.\nAlso the minimum version from which you can perform a rolling upgrade.",
           "name": "minimum_wire_compatibility_version",
           "required": true,
           "type": {
@@ -121841,6 +121858,7 @@
           }
         },
         {
+          "description": "The Elasticsearch version number.",
           "name": "number",
           "required": true,
           "type": {
@@ -121852,7 +121870,7 @@
           }
         }
       ],
-      "specLocation": "_types/Base.ts#L54-L64"
+      "specLocation": "_types/Base.ts#L54-L93"
     },
     {
       "kind": "interface",
