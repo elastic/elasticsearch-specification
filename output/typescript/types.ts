@@ -11941,6 +11941,22 @@ export interface IndicesGetDataLifecycleResponse {
   data_streams: IndicesGetDataLifecycleDataStreamWithLifecycle[]
 }
 
+export interface IndicesGetDataLifecycleStatsDataStreamStats {
+  backing_indices_in_error: integer
+  backing_indices_in_total: integer
+  name: DataStreamName
+}
+
+export interface IndicesGetDataLifecycleStatsRequest extends RequestBase {
+}
+
+export interface IndicesGetDataLifecycleStatsResponse {
+  data_stream_count: integer
+  data_streams: IndicesGetDataLifecycleStatsDataStreamStats[]
+  last_run_duration_in_millis?: DurationValue<UnitMillis>
+  time_between_starts_in_millis?: DurationValue<UnitMillis>
+}
+
 export interface IndicesGetDataStreamRequest extends RequestBase {
   name?: DataStreamNames
   expand_wildcards?: ExpandWildcards
