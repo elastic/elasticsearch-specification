@@ -26,8 +26,19 @@ import { long } from '@_types/Numeric'
 import { Duration, DurationValue, UnitMillis } from '@_types/Time'
 
 export class RollupJob {
+  /**
+   * The rollup job configuration.
+   */
   config: RollupJobConfiguration
+  /**
+   * Transient statistics about the rollup job, such as how many documents have been processed and how many rollup summary docs have been indexed.
+   * These stats are not persisted.
+   * If a node is restarted, these stats are reset.
+   */
   stats: RollupJobStats
+  /**
+   * The current status of the indexer for the rollup job.
+   */
   status: RollupJobStatus
 }
 
