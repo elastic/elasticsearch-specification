@@ -27,6 +27,9 @@ import { Duration } from '@_types/Time'
  * IMPORTANT: If you are migrating searchable snapshots, the repository name must be identical in the source and destination clusters.
  * To register a snapshot repository, the cluster's global metadata must be writeable.
  * Ensure there are no cluster blocks (for example, `cluster.blocks.read_only` and `clsuter.blocks.read_only_allow_delete` settings) that prevent write access.
+ *
+ * Several options for this API can be specified using a query parameter or a request body parameter.
+ * If both parameters are specified, only the query parameter is used.
  * @rest_spec_name snapshot.create_repository
  * @availability stack since=0.0.0 stability=stable
  * @availability serverless stability=stable visibility=private
@@ -36,7 +39,10 @@ import { Duration } from '@_types/Time'
  */
 export interface Request extends RequestBase {
   path_parts: {
-    /** @codegen_name name */
+    /**
+     * The name of the snapshot repository to register or update.
+     * @codegen_name name
+     */
     repository: Name
   }
   query_parameters: {
