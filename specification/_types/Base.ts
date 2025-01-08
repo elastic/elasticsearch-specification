@@ -47,7 +47,6 @@ export class WriteResponseBase {
 export class AcknowledgedResponseBase {
   /** For a successful response, this value is always true. On failure, an exception is returned instead. */
   acknowledged: boolean
-  errors?: boolean
 }
 
 export class DynamicResponseBase {}

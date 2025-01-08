@@ -38506,9 +38506,6 @@
           "acknowledged": {
             "description": "For a successful response, this value is always true. On failure, an exception is returned instead.",
             "type": "boolean"
-          },
-          "errors": {
-            "type": "boolean"
           }
         },
         "required": [
@@ -69682,6 +69679,21 @@
           }
         ]
       },
+      "indices.delete_alias:IndicesAliasesResponseBody": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/_types:AcknowledgedResponseBase"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "errors": {
+                "type": "boolean"
+              }
+            }
+          }
+        ]
+      },
       "_types:DataStreamNames": {
         "oneOf": [
           {
@@ -92850,7 +92862,7 @@
         "content": {
           "application/json": {
             "schema": {
-              "$ref": "#/components/schemas/_types:AcknowledgedResponseBase"
+              "$ref": "#/components/schemas/indices.delete_alias:IndicesAliasesResponseBody"
             }
           }
         }

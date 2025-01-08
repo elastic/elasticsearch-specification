@@ -20778,8 +20778,8 @@
         "value": {
           "kind": "instance_of",
           "type": {
-            "name": "AcknowledgedResponseBase",
-            "namespace": "_types"
+            "name": "IndicesAliasesResponseBody",
+            "namespace": "indices.delete_alias"
           }
         }
       },
@@ -76508,7 +76508,7 @@
           }
         }
       ],
-      "specLocation": "_types/Base.ts#L77-L86"
+      "specLocation": "_types/Base.ts#L76-L85"
     },
     {
       "codegenNames": [
@@ -106454,20 +106454,9 @@
               "namespace": "_builtins"
             }
           }
-        },
-        {
-          "name": "errors",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "boolean",
-              "namespace": "_builtins"
-            }
-          }
         }
       ],
-      "specLocation": "_types/Base.ts#L47-L51"
+      "specLocation": "_types/Base.ts#L47-L50"
     },
     {
       "generics": [
@@ -119354,7 +119343,34 @@
           }
         }
       ],
-      "specLocation": "_types/Base.ts#L88-L90"
+      "specLocation": "_types/Base.ts#L87-L89"
+    },
+    {
+      "inherits": {
+        "type": {
+          "name": "AcknowledgedResponseBase",
+          "namespace": "_types"
+        }
+      },
+      "kind": "interface",
+      "name": {
+        "name": "IndicesAliasesResponseBody",
+        "namespace": "indices.delete_alias"
+      },
+      "properties": [
+        {
+          "name": "errors",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "_builtins"
+            }
+          }
+        }
+      ],
+      "specLocation": "indices/delete_alias/IndicesDeleteAliasResponse.ts#L26-L28"
     },
     {
       "kind": "interface",
@@ -120441,11 +120457,7 @@
           }
         }
       ],
-<<<<<<< HEAD
       "specLocation": "_types/Base.ts#L91-L94"
-=======
-      "specLocation": "_types/Base.ts#L92-L94"
->>>>>>> bd98e9504 (Fix indices.delete_api response)
     },
     {
       "kind": "interface",
@@ -121691,7 +121703,7 @@
           }
         }
       ],
-      "specLocation": "_types/Base.ts#L55-L65"
+      "specLocation": "_types/Base.ts#L54-L64"
     },
     {
       "kind": "interface",
