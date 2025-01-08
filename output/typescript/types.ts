@@ -19215,10 +19215,10 @@ export type ShutdownPutNodeResponse = AcknowledgedResponseBase
 
 export interface SimulateIngestRequest extends RequestBase {
   index?: IndexName
-  pipeline?: string
+  pipeline?: PipelineName
   body?: {
-    component_template_substitutions?: Record<string, ClusterComponentTemplateNode>
     docs: IngestDocument[]
+    component_template_substitutions?: Record<string, ClusterComponentTemplateNode>
     index_template_subtitutions?: Record<string, IndicesIndexTemplate>
     mapping_addition?: MappingTypeMapping
     pipeline_substitutions?: Record<string, IngestPipeline>

@@ -104632,7 +104632,7 @@
         "description": "The pipeline to use as the default pipeline.\nThis value can be used to override the default pipeline of the index.",
         "deprecated": false,
         "schema": {
-          "type": "string"
+          "$ref": "#/components/schemas/_types:PipelineName"
         },
         "style": "form"
       },
@@ -107899,18 +107899,18 @@
             "schema": {
               "type": "object",
               "properties": {
-                "component_template_substitutions": {
-                  "description": "A map of component template names to substitute component template definition objects.",
-                  "type": "object",
-                  "additionalProperties": {
-                    "$ref": "#/components/schemas/cluster._types:ComponentTemplateNode"
-                  }
-                },
                 "docs": {
                   "description": "Sample documents to test in the pipeline.",
                   "type": "array",
                   "items": {
                     "$ref": "#/components/schemas/ingest._types:Document"
+                  }
+                },
+                "component_template_substitutions": {
+                  "description": "A map of component template names to substitute component template definition objects.",
+                  "type": "object",
+                  "additionalProperties": {
+                    "$ref": "#/components/schemas/cluster._types:ComponentTemplateNode"
                   }
                 },
                 "index_template_subtitutions": {

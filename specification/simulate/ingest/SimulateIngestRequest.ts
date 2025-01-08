@@ -23,7 +23,7 @@ import { Pipeline } from '@ingest/_types/Pipeline'
 import { Document } from '@ingest/_types/Simulation'
 import { Dictionary } from '@spec_utils/Dictionary'
 import { RequestBase } from '@_types/Base'
-import { IndexName } from '@_types/common'
+import { IndexName, PipelineName } from '@_types/common'
 import { TypeMapping } from '@_types/mapping/TypeMapping'
 
 /**
@@ -64,17 +64,17 @@ export interface Request extends RequestBase {
      * The pipeline to use as the default pipeline.
      * This value can be used to override the default pipeline of the index.
      */
-    pipeline?: string
+    pipeline?: PipelineName
   }
   body: {
-    /**
-     * A map of component template names to substitute component template definition objects.
-     */
-    component_template_substitutions?: Dictionary<string, ComponentTemplateNode>
     /**
      * Sample documents to test in the pipeline.
      */
     docs: Document[]
+    /**
+     * A map of component template names to substitute component template definition objects.
+     */
+    component_template_substitutions?: Dictionary<string, ComponentTemplateNode>
     /**
      * A map of index template names to substitute index template definition objects.
      */
