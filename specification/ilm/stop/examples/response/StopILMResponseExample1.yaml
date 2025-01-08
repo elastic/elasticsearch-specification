@@ -1,0 +1,8 @@
+# summary:
+description: A successful response when stopping the ILM plugin.
+# type: response
+# response_code: 200
+value: |-
+  {
+    "acknowledged": true
+  }

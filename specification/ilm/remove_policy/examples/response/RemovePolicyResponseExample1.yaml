@@ -1,0 +1,9 @@
+# summary:
+description: A successful response when removing a lifecycle policy from an index.
+# type: response
+# response_code: 200
+value: |-
+  {
+    "has_failures" : false,
+    "failed_indexes" : []
+  }

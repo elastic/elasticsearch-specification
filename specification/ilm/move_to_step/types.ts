@@ -19,7 +19,13 @@
 
 export class StepKey {
   // action and name are optional in case they are used in next_step
+  /**
+   * The optional action to which the index will be moved.
+   */
   action?: string
+  /**
+   * The optional step name to which the index will be moved.
+   */
   name?: string
   phase: string
 }
