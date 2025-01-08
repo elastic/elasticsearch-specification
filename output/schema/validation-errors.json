@@ -726,12 +726,6 @@
       ],
       "response": []
     },
-    "simulate.ingest": {
-      "request": [
-        "Missing request & response"
-      ],
-      "response": []
-    },
     "snapshot.clone": {
       "request": [
         "Request: query parameter 'timeout' does not exist in the json spec"
