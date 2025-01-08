@@ -39,7 +39,7 @@ export class RepositoryBase {
 
 export class AzureRepository extends RepositoryBase {
   type: 'azure'
-  settings: AzureRepositorySettings
+  settings?: AzureRepositorySettings
 }
 
 export class GcsRepository extends RepositoryBase {
