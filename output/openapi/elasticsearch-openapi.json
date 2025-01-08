@@ -13277,12 +13277,10 @@
                       }
                     },
                     "last_run_duration_in_millis": {
-                      "description": "The duration of the last data stream lifecycle execution.",
-                      "type": "number"
+                      "$ref": "#/components/schemas/_types:DurationValueUnitMillis"
                     },
                     "time_between_starts_in_millis": {
-                      "description": "The time that passed between the start of the last two data stream lifecycle executions.\nThis value should amount approximately to `data_streams.lifecycle.poll_interval`.",
-                      "type": "number"
+                      "$ref": "#/components/schemas/_types:DurationValueUnitMillis"
                     }
                   },
                   "required": [

@@ -18,7 +18,8 @@
  */
 
 import { DataStreamName } from '@_types/common'
-import { integer, long } from '@_types/Numeric'
+import { DurationValue, UnitMillis } from '@_types/Time'
+import { integer } from '@_types/Numeric'
 
 export class Response {
   body: {
