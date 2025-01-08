@@ -52,7 +52,7 @@ export interface Request extends RequestBase {
     /**
      * Settings for the index used to store profile information.
      */
-    'security-profile'?: Dictionary<string, string>
+    'security-profile'?: SecuritySettings
     /**
      * Settings for the index used to store tokens.
      */
