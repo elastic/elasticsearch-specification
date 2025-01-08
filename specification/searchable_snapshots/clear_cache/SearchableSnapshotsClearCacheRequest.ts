@@ -42,7 +42,5 @@ export interface Request extends RequestBase {
     expand_wildcards?: ExpandWildcards
     allow_no_indices?: boolean
     ignore_unavailable?: boolean
-    pretty?: boolean
-    human?: boolean
   }
 }

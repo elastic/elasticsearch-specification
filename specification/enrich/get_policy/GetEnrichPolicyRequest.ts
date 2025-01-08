@@ -19,6 +19,7 @@
 
 import { RequestBase } from '@_types/Base'
 import { Names } from '@_types/common'
+import { Duration } from '@_types/Time'
 
 /**
  * Get an enrich policy.
@@ -34,5 +35,12 @@ export interface Request extends RequestBase {
      * To return information for all enrich policies, omit this parameter.
      */
     name?: Names
+  }
+  query_parameters: {
+    /**
+     * Period to wait for a connection to the master node.
+     * @server_default 30s
+     */
+    master_timeout?: Duration
   }
 }
