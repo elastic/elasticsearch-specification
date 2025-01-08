@@ -23,32 +23,32 @@ import { EpochTime, UnitMillis } from '@_types/Time'
 export class Response {
   body: {
     /**
-     * Identifier for the search.
-     */
-    id: string
-    /**
-     * If `true`, the search is still running. If `false`, the search has finished.
-     */
-    is_running: boolean
-    /**
-     * If `true`, the response does not contain complete search results. If `is_partial`
-     * is `true` and `is_running` is `true`, the search is still running. If `is_partial`
-     * is `true` but `is_running` is `false`, the results are partial due to a failure or
-     * timeout.
-     */
-    is_partial: boolean
-    /**
-     * Timestamp, in milliseconds since the Unix epoch, when the search started.
-     * The API only returns this property for running searches.
-     */
-    start_time_in_millis: EpochTime<UnitMillis>
-    /**
-     * Timestamp, in milliseconds since the Unix epoch, when Elasticsearch will delete
-     * the search and its results, even if the search is still running.
+     * The timestamp, in milliseconds since the Unix epoch, when Elasticsearch will delete the search and its results, even if the search is still running.
      */
     expiration_time_in_millis: EpochTime<UnitMillis>
     /**
-     * HTTP status code for the search. The API only returns this property for completed searches.
+     * The identifier for the search.
+     */
+    id: string
+    /**
+     * If `true`, the search is still running.
+     * If `false`, the search has finished.
+     */
+    is_running: boolean
+    /**
+     * If `true`, the response does not contain complete search results.
+     * If `is_partial` is `true` and `is_running` is `true`, the search is still running.
+     * If `is_partial` is `true` but `is_running` is `false`, the results are partial due to a failure or timeout.
+     */
+    is_partial: boolean
+    /**
+     * The timestamp, in milliseconds since the Unix epoch, when the search started.
+     * The API returns this property only for running searches.
+     */
+    start_time_in_millis: EpochTime<UnitMillis>
+    /**
+     * The HTTP status code for the search.
+     * The API returns this property only for completed searches.
      */
     completion_status?: uint
   }
