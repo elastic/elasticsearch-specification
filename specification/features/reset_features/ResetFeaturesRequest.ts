@@ -18,6 +18,7 @@
  */
 
 import { RequestBase } from '@_types/Base'
+import { Duration } from '@_types/Time'
 
 /**
  * Reset the features.
@@ -41,4 +42,12 @@ import { RequestBase } from '@_types/Base'
  * @availability stack since=7.12.0 stability=experimental
  * @availability serverless stability=experimental visibility=private
  */
-export interface Request extends RequestBase {}
+export interface Request extends RequestBase {
+  query_parameters: {
+    /**
+     * Period to wait for a connection to the master node.
+     * @server_default 30s
+     */
+    master_timeout?: Duration
+  }
+}

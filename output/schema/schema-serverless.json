@@ -16884,8 +16884,22 @@
           }
         }
       ],
-      "query": [],
-      "specLocation": "enrich/delete_policy/DeleteEnrichPolicyRequest.ts#L23-L37"
+      "query": [
+        {
+          "description": "Period to wait for a connection to the master node.",
+          "name": "master_timeout",
+          "required": false,
+          "serverDefault": "30s",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Duration",
+              "namespace": "_types"
+            }
+          }
+        }
+      ],
+      "specLocation": "enrich/delete_policy/DeleteEnrichPolicyRequest.ts#L24-L45"
     },
     {
       "body": {
@@ -16940,6 +16954,19 @@
       ],
       "query": [
         {
+          "description": "Period to wait for a connection to the master node.",
+          "name": "master_timeout",
+          "required": false,
+          "serverDefault": "30s",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Duration",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
           "description": "If `true`, the request blocks other enrich policy execution requests until complete.",
           "name": "wait_for_completion",
           "required": false,
@@ -16953,7 +16980,7 @@
           }
         }
       ],
-      "specLocation": "enrich/execute_policy/ExecuteEnrichPolicyRequest.ts#L23-L45"
+      "specLocation": "enrich/execute_policy/ExecuteEnrichPolicyRequest.ts#L24-L51"
     },
     {
       "body": {
@@ -17023,8 +17050,22 @@
           }
         }
       ],
-      "query": [],
-      "specLocation": "enrich/get_policy/GetEnrichPolicyRequest.ts#L23-L38"
+      "query": [
+        {
+          "description": "Period to wait for a connection to the master node.",
+          "name": "master_timeout",
+          "required": false,
+          "serverDefault": "30s",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Duration",
+              "namespace": "_types"
+            }
+          }
+        }
+      ],
+      "specLocation": "enrich/get_policy/GetEnrichPolicyRequest.ts#L24-L46"
     },
     {
       "body": {
@@ -17124,8 +17165,22 @@
           }
         }
       ],
-      "query": [],
-      "specLocation": "enrich/put_policy/PutEnrichPolicyRequest.ts#L24-L53"
+      "query": [
+        {
+          "description": "Period to wait for a connection to the master node.",
+          "name": "master_timeout",
+          "required": false,
+          "serverDefault": "30s",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Duration",
+              "namespace": "_types"
+            }
+          }
+        }
+      ],
+      "specLocation": "enrich/put_policy/PutEnrichPolicyRequest.ts#L25-L61"
     },
     {
       "body": {
@@ -26715,9 +26770,22 @@
               "namespace": "_builtins"
             }
           }
+        },
+        {
+          "description": "Period to wait for a response. If no response is received before the timeout expires, the request fails and returns an error.",
+          "name": "timeout",
+          "required": false,
+          "serverDefault": "30s",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Duration",
+              "namespace": "_types"
+            }
+          }
         }
       ],
-      "specLocation": "ml/delete_trained_model/MlDeleteTrainedModelRequest.ts#L23-L43"
+      "specLocation": "ml/delete_trained_model/MlDeleteTrainedModelRequest.ts#L24-L49"
     },
     {
       "body": {
@@ -43454,9 +43522,22 @@
               "namespace": "_builtins"
             }
           }
+        },
+        {
+          "description": "Period to wait for a response. If no response is received before the timeout expires, the request fails and returns an error.",
+          "name": "timeout",
+          "required": false,
+          "serverDefault": "30s",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Duration",
+              "namespace": "_types"
+            }
+          }
         }
       ],
-      "specLocation": "transform/reset_transform/ResetTransformRequest.ts#L23-L49"
+      "specLocation": "transform/reset_transform/ResetTransformRequest.ts#L24-L55"
     },
     {
       "body": {
