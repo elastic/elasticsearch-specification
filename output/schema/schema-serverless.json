@@ -103475,7 +103475,7 @@
         "name": "IndexingJobState",
         "namespace": "rollup.get_jobs"
       },
-      "specLocation": "rollup/get_jobs/types.ts#L66-L72"
+      "specLocation": "rollup/get_jobs/types.ts#L77-L83"
     },
     {
       "kind": "enum",
