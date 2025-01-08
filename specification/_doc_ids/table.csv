@@ -268,7 +268,7 @@ indices-rollover-index,https://www.elastic.co/guide/en/elasticsearch/reference/{
 indices-segments,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/indices-segments.html
 indices-shards-stores,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/indices-shards-stores.html
 indices-shrink-index,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/indices-shrink-index.html
-indices-simulate,https://www.elastic.co/guide/en/elasticsearch/reference/{master}/indices-simulate-index.html
+indices-simulate,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/indices-simulate-index.html
 indices-simulate-template,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/indices-simulate-template.html
 indices-split-index,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/indices-split-index.html
 indices-stats,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/indices-stats.html
@@ -705,6 +705,13 @@ start-trial,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/sta
 stop-dfanalytics,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/stop-dfanalytics.html
 stop-trained-model-deployment,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/stop-trained-model-deployment.html
 stop-transform,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/stop-transform.html
+synonym-rule-create,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/put-synonym-rule.html
+synonym-rule-delete,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/delete-synonym-rule.html
+synonym-rule-get,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/get-synonym-rule.html
+synonym-set-create,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/put-synonyms-set.html
+synonym-set-delete,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/delete-synonyms-set.html
+synonym-set-get,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/get-synonyms-set.html
+synonym-set-list,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/get-synonyms-set.html
 supported-flags,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/query-dsl-simple-query-string-query.html#supported-flags
 tasks,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/tasks.html
 templating-role-query,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/field-and-document-access-control.html#templating-role-query

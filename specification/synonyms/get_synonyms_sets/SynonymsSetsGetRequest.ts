@@ -25,6 +25,7 @@ import { integer } from '@_types/Numeric'
  * @rest_spec_name synonyms.get_synonyms_sets
  * @availability stack since=8.10.0 stability=stable
  * @availability serverless stability=stable visibility=public
+ * @doc_id synonym-set-list
  */
 export interface Request extends RequestBase {
   query_parameters: {

@@ -25,6 +25,7 @@ import { Id } from '@_types/common'
  * @rest_spec_name synonyms.get_synonym_rule
  * @availability stack since=8.10.0 stability=stable
  * @availability serverless stability=stable visibility=public
+ * @doc_id synonym-rule-get
  */
 export interface Request extends RequestBase {
   path_parts: {

@@ -24,6 +24,7 @@ import { Id } from '@_types/common'
  * @rest_spec_name synonyms.delete_synonym
  * @availability stack since=8.10.0 stability=stable
  * @availability serverless stability=stable visibility=public
+ * @doc_id synonym-set-delete
  */
 export interface Request extends RequestBase {
   path_parts: {
