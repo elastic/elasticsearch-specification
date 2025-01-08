@@ -13270,7 +13270,11 @@
                       "type": "number"
                     },
                     "data_streams": {
-                      "$ref": "#/components/schemas/indices.get_data_lifecycle_stats:DataStreamStats"
+                      "description": "Information about the data streams that are managed by the data stream lifecycle.",
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/indices.get_data_lifecycle_stats:DataStreamStats"
+                      }
                     },
                     "last_run_duration_in_millis": {
                       "description": "The duration of the last data stream lifecycle execution.",

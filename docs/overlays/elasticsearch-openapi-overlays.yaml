@@ -413,7 +413,7 @@ actions:
             application/json:
               examples:
                 dataStreamLifecycleStatsResponseExample1:
-                  $ref: "../../specification/indices/get_data_lifecycle_stats/IndicesGetDataLifecycleStatsResponseExample1.yaml"
+                  $ref: "../../specification/indices/get_data_lifecycle_stats/examples/response/IndicesGetDataLifecycleStatsResponseExample1.yaml"
 ## Examples for licensing
   - target: "$.paths['/_license/basic_status']['get']"
     description: "Add example for get basic status response"

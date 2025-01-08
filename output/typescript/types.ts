@@ -11930,7 +11930,7 @@ export interface IndicesGetDataLifecycleStatsRequest extends RequestBase {
 
 export interface IndicesGetDataLifecycleStatsResponse {
   data_stream_count: integer
-  data_streams: IndicesGetDataLifecycleStatsDataStreamStats
+  data_streams: IndicesGetDataLifecycleStatsDataStreamStats[]
   last_run_duration_in_millis?: long
   time_between_starts_in_millis?: long
 }
