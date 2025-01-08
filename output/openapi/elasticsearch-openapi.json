@@ -13276,6 +13276,52 @@
         }
       }
     },
+    "/_lifecycle/stats": {
+      "get": {
+        "tags": [
+          "data stream"
+        ],
+        "summary": "Get data stream lifecycle stats",
+        "description": "Get statistics about the data streams that are managed by a data stream lifecycle.",
+        "operationId": "indices-get-data-lifecycle-stats",
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data_stream_count": {
+                      "description": "The count of data streams currently being managed by the data stream lifecycle.",
+                      "type": "number"
+                    },
+                    "data_streams": {
+                      "description": "Information about the data streams that are managed by the data stream lifecycle.",
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/indices.get_data_lifecycle_stats:DataStreamStats"
+                      }
+                    },
+                    "last_run_duration_in_millis": {
+                      "$ref": "#/components/schemas/_types:DurationValueUnitMillis"
+                    },
+                    "time_between_starts_in_millis": {
+                      "$ref": "#/components/schemas/_types:DurationValueUnitMillis"
+                    }
+                  },
+                  "required": [
+                    "data_stream_count",
+                    "data_streams"
+                  ]
+                }
+              }
+            }
+          }
+        },
+        "x-state": "Added in 8.12.0"
+      }
+    },
     "/_data_stream": {
       "get": {
         "tags": [
@@ -69593,6 +69639,27 @@
           }
         },
         "required": [
+          "name"
+        ]
+      },
+      "indices.get_data_lifecycle_stats:DataStreamStats": {
+        "type": "object",
+        "properties": {
+          "backing_indices_in_error": {
+            "description": "The count of the backing indices for the data stream.",
+            "type": "number"
+          },
+          "backing_indices_in_total": {
+            "description": "The count of the backing indices for the data stream that have encountered an error.",
+            "type": "number"
+          },
+          "name": {
+            "$ref": "#/components/schemas/_types:DataStreamName"
+          }
+        },
+        "required": [
+          "backing_indices_in_error",
+          "backing_indices_in_total",
           "name"
         ]
       },
