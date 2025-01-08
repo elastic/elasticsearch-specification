@@ -576,12 +576,21 @@ export function modelProperty (declaration: PropertySignature | PropertyDeclarat
  * Pulls @deprecated from types and properties
  */
 function setDeprecated (type: model.BaseType | model.Property | model.EnumMember, tags: Record<string, string>, jsDocs: JSDoc[]): void {
+  const deprecation = parseDeprecation(tags, jsDocs)
+  if (deprecation != null) {
+    type.deprecation = deprecation
+  }
+}
+
+export function parseDeprecation (tags: Record<string, string>, jsDocs: JSDoc[]): model.Deprecation | undefined {
   if (tags.deprecated !== undefined) {
     const [version, ...description] = tags.deprecated.split(' ')
     assert(jsDocs, semver.valid(version), 'Invalid semver value')
-    type.deprecation = { version, description: description.join(' ') }
+    delete tags.deprecated
+    return { version, description: description.join(' ') }
+  } else {
+    return undefined
   }
-  delete tags.deprecated
 }
 
 /**
