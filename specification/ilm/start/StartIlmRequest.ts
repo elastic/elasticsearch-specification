@@ -18,7 +18,7 @@
  */
 
 import { RequestBase } from '@_types/Base'
-import { TimeUnit } from '@_types/Time'
+import { Duration } from '@_types/Time'
 
 /**
  * Start the ILM plugin.
@@ -35,11 +35,11 @@ export interface Request extends RequestBase {
      * Period to wait for a connection to the master node. If no response is received before the timeout expires, the request fails and returns an error.
      * @server_default 30s
      */
-    master_timeout?: TimeUnit
+    master_timeout?: Duration
     /**
      * Period to wait for a response. If no response is received before the timeout expires, the request fails and returns an error.
      * @server_default 30s
      */
-    timeout?: TimeUnit
+    timeout?: Duration
   }
 }

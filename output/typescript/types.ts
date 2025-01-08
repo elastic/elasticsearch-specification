@@ -10840,8 +10840,8 @@ export interface IlmWaitForSnapshotAction {
 
 export interface IlmDeleteLifecycleRequest extends RequestBase {
   name: Name
-  master_timeout?: TimeUnit
-  timeout?: TimeUnit
+  master_timeout?: Duration
+  timeout?: Duration
 }
 
 export type IlmDeleteLifecycleResponse = AcknowledgedResponseBase
@@ -10889,7 +10889,7 @@ export interface IlmExplainLifecycleRequest extends RequestBase {
   index: IndexName
   only_errors?: boolean
   only_managed?: boolean
-  master_timeout?: TimeUnit
+  master_timeout?: Duration
 }
 
 export interface IlmExplainLifecycleResponse {
@@ -10904,8 +10904,8 @@ export interface IlmGetLifecycleLifecycle {
 
 export interface IlmGetLifecycleRequest extends RequestBase {
   name?: Name
-  master_timeout?: TimeUnit
-  timeout?: TimeUnit
+  master_timeout?: Duration
+  timeout?: Duration
 }
 
 export type IlmGetLifecycleResponse = Record<string, IlmGetLifecycleLifecycle>
@@ -10953,8 +10953,8 @@ export interface IlmMoveToStepStepKey {
 
 export interface IlmPutLifecycleRequest extends RequestBase {
   name: Name
-  master_timeout?: TimeUnit
-  timeout?: TimeUnit
+  master_timeout?: Duration
+  timeout?: Duration
   body?: {
     policy?: IlmPolicy
   }
@@ -10978,15 +10978,15 @@ export interface IlmRetryRequest extends RequestBase {
 export type IlmRetryResponse = AcknowledgedResponseBase
 
 export interface IlmStartRequest extends RequestBase {
-  master_timeout?: TimeUnit
-  timeout?: TimeUnit
+  master_timeout?: Duration
+  timeout?: Duration
 }
 
 export type IlmStartResponse = AcknowledgedResponseBase
 
 export interface IlmStopRequest extends RequestBase {
-  master_timeout?: TimeUnit
-  timeout?: TimeUnit
+  master_timeout?: Duration
+  timeout?: Duration
 }
 
 export type IlmStopResponse = AcknowledgedResponseBase
@@ -19277,8 +19277,8 @@ export interface SlmGetStatusResponse {
 
 export interface SlmPutLifecycleRequest extends RequestBase {
   policy_id: Name
-  master_timeout?: TimeUnit
-  timeout?: TimeUnit
+  master_timeout?: Duration
+  timeout?: Duration
   body?: {
     config?: SlmConfiguration
     name?: Name
