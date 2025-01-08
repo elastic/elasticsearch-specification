@@ -19,7 +19,6 @@
 
 import { RequestBase } from '@_types/Base'
 import { Ids } from '@_types/common'
-import { Duration } from '@_types/Time'
 
 /**
  * Get GeoIP database configurations.
@@ -36,12 +35,5 @@ export interface Request extends RequestBase {
      * To get all database configurations, omit this parameter or use `*`.
      */
     id?: Ids
-  }
-  query_parameters: {
-    /**
-     * Period to wait for a connection to the master node.
-     * If no response is received before the timeout expires, the request fails and returns an error.
-     * @server_default 30s */
-    master_timeout?: Duration
   }
 }
