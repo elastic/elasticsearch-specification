@@ -52,14 +52,43 @@ export class AcknowledgedResponseBase {
 export class DynamicResponseBase {}
 
 export class ElasticsearchVersionInfo {
+  /**
+   * The Elasticsearch Git commit's date.
+   */
   build_date: DateTime
+  /**
+   * The build flavor. For example, `default`.
+   */
   build_flavor: string
+  /**
+   * The Elasticsearch Git commit's SHA hash.
+   */
   build_hash: string
+  /**
+   * Indicates whether the Elasticsearch build was a snapshot.
+   */
   build_snapshot: boolean
+  /**
+   * The build type that corresponds to how Elasticsearch was installed.
+   * For example, `docker`, `rpm`, or `tar`.
+   */
   build_type: string
+  /**
+   * The version number of Elasticsearch's underlying Lucene software.
+   */
   lucene_version: VersionString
+  /**
+   * The minimum index version with which the responding node can read from disk.
+   */
   minimum_index_compatibility_version: VersionString
+  /**
+   * The minimum node version with which the responding node can communicate.
+   * Also the minimum version from which you can perform a rolling upgrade.
+   */
   minimum_wire_compatibility_version: VersionString
+  /**
+   * The Elasticsearch version number.
+   */
   number: string
 }
 

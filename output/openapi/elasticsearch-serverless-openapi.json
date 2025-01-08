@@ -9065,7 +9065,7 @@
           "info"
         ],
         "summary": "Get cluster info",
-        "description": "Returns basic information about the cluster.",
+        "description": "Get basic build, version, and cluster information.",
         "operationId": "info",
         "responses": {
           "200": {
@@ -46165,15 +46165,19 @@
             "$ref": "#/components/schemas/_types:DateTime"
           },
           "build_flavor": {
+            "description": "The build flavor. For example, `default`.",
             "type": "string"
           },
           "build_hash": {
+            "description": "The Elasticsearch Git commit's SHA hash.",
             "type": "string"
           },
           "build_snapshot": {
+            "description": "Indicates whether the Elasticsearch build was a snapshot.",
             "type": "boolean"
           },
           "build_type": {
+            "description": "The build type that corresponds to how Elasticsearch was installed.\nFor example, `docker`, `rpm`, or `tar`.",
             "type": "string"
           },
           "lucene_version": {
@@ -46186,6 +46190,7 @@
             "$ref": "#/components/schemas/_types:VersionString"
           },
           "number": {
+            "description": "The Elasticsearch version number.",
             "type": "string"
           }
         },
