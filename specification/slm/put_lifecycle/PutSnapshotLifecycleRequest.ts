@@ -33,6 +33,7 @@ import { Duration } from '@_types/Time'
  * @availability serverless stability=stable visibility=private
  * @cluster_privileges manage_slm
  * @index_privileges manage
+ * @doc_id slm-api-put-policy
  */
 export interface Request extends RequestBase {
   path_parts: {
