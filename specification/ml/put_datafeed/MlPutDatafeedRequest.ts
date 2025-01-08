@@ -40,6 +40,8 @@ import { Duration } from '@_types/Time'
  * You can associate only one datafeed with each anomaly detection job.
  * The datafeed contains a query that runs at a defined interval (`frequency`).
  * If you are concerned about delayed data, you can add a delay (`query_delay') at each interval.
+ * By default, the datafeed uses the following query: `{"match_all": {"boost": 1}}`.
+ *
  * When Elasticsearch security features are enabled, your datafeed remembers which roles the user who created it had
  * at the time of creation and runs the query using those same roles. If you provide secondary authorization headers,
  * those credentials are used instead.
