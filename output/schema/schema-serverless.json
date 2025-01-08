@@ -6317,7 +6317,7 @@
           "stability": "stable"
         }
       },
-      "description": "Create a data frame analytics job.\nThis API creates a data frame analytics job that performs an analysis on the\nsource indices and stores the outcome in a destination index.",
+      "description": "Create a data frame analytics job.\nThis API creates a data frame analytics job that performs an analysis on the\nsource indices and stores the outcome in a destination index.\nBy default, the query used in the source configuration is `{\"match_all\": {}}`.\n\nIf the destination index does not exist, it is created automatically when you start the job.\n\nIf you supply only a subset of the regression or classification parameters, hyperparameter optimization occurs. It determines a value for each of the undefined parameters.",
       "docId": "put-dfanalytics",
       "docTag": "ml data frame",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/put-dfanalytics.html",
@@ -6369,7 +6369,7 @@
           "stability": "stable"
         }
       },
-      "description": "Create a datafeed.\nDatafeeds retrieve data from Elasticsearch for analysis by an anomaly detection job.\nYou can associate only one datafeed with each anomaly detection job.\nThe datafeed contains a query that runs at a defined interval (`frequency`).\nIf you are concerned about delayed data, you can add a delay (`query_delay`) at each interval.\nWhen Elasticsearch security features are enabled, your datafeed remembers which roles the user who created it had\nat the time of creation and runs the query using those same roles. If you provide secondary authorization headers,\nthose credentials are used instead.\nYou must use Kibana, this API, or the create anomaly detection jobs API to create a datafeed. Do not add a datafeed\ndirectly to the `.ml-config` index. Do not give users `write` privileges on the `.ml-config` index.",
+      "description": "Create a datafeed.\nDatafeeds retrieve data from Elasticsearch for analysis by an anomaly detection job.\nYou can associate only one datafeed with each anomaly detection job.\nThe datafeed contains a query that runs at a defined interval (`frequency`).\nIf you are concerned about delayed data, you can add a delay (`query_delay') at each interval.\nBy default, the datafeed uses the following query: `{\"match_all\": {\"boost\": 1}}`.\n\nWhen Elasticsearch security features are enabled, your datafeed remembers which roles the user who created it had\nat the time of creation and runs the query using those same roles. If you provide secondary authorization headers,\nthose credentials are used instead.\nYou must use Kibana, this API, or the create anomaly detection jobs API to create a datafeed. Do not add a datafeed\ndirectly to the `.ml-config` index. Do not give users `write` privileges on the `.ml-config` index.",
       "docTag": "ml anomaly",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/ml-put-datafeed.html",
       "name": "ml.put_datafeed",
@@ -6460,7 +6460,7 @@
           "stability": "stable"
         }
       },
-      "description": "Create an anomaly detection job.\nIf you include a `datafeed_config`, you must have read index privileges on the source index.",
+      "description": "Create an anomaly detection job.\nIf you include a `datafeed_config`, you must have read index privileges on the source index.\nIf you include a `datafeed_config` but do not provide a query, the datafeed uses `{\"match_all\": {\"boost\": 1}}`.",
       "docTag": "ml anomaly",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/ml-put-job.html",
       "name": "ml.put_job",
@@ -29720,7 +29720,7 @@
           }
         ]
       },
-      "description": "Create a data frame analytics job.\nThis API creates a data frame analytics job that performs an analysis on the\nsource indices and stores the outcome in a destination index.",
+      "description": "Create a data frame analytics job.\nThis API creates a data frame analytics job that performs an analysis on the\nsource indices and stores the outcome in a destination index.\nBy default, the query used in the source configuration is `{\"match_all\": {}}`.\n\nIf the destination index does not exist, it is created automatically when you start the job.\n\nIf you supply only a subset of the regression or classification parameters, hyperparameter optimization occurs. It determines a value for each of the undefined parameters.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -29747,7 +29747,7 @@
         }
       ],
       "query": [],
-      "specLocation": "ml/put_data_frame_analytics/MlPutDataFrameAnalyticsRequest.ts#L30-L144"
+      "specLocation": "ml/put_data_frame_analytics/MlPutDataFrameAnalyticsRequest.ts#L30-L149"
     },
     {
       "body": {
@@ -30126,7 +30126,7 @@
           }
         ]
       },
-      "description": "Create a datafeed.\nDatafeeds retrieve data from Elasticsearch for analysis by an anomaly detection job.\nYou can associate only one datafeed with each anomaly detection job.\nThe datafeed contains a query that runs at a defined interval (`frequency`).\nIf you are concerned about delayed data, you can add a delay (`query_delay`) at each interval.\nWhen Elasticsearch security features are enabled, your datafeed remembers which roles the user who created it had\nat the time of creation and runs the query using those same roles. If you provide secondary authorization headers,\nthose credentials are used instead.\nYou must use Kibana, this API, or the create anomaly detection jobs API to create a datafeed. Do not add a datafeed\ndirectly to the `.ml-config` index. Do not give users `write` privileges on the `.ml-config` index.",
+      "description": "Create a datafeed.\nDatafeeds retrieve data from Elasticsearch for analysis by an anomaly detection job.\nYou can associate only one datafeed with each anomaly detection job.\nThe datafeed contains a query that runs at a defined interval (`frequency`).\nIf you are concerned about delayed data, you can add a delay (`query_delay') at each interval.\nBy default, the datafeed uses the following query: `{\"match_all\": {\"boost\": 1}}`.\n\nWhen Elasticsearch security features are enabled, your datafeed remembers which roles the user who created it had\nat the time of creation and runs the query using those same roles. If you provide secondary authorization headers,\nthose credentials are used instead.\nYou must use Kibana, this API, or the create anomaly detection jobs API to create a datafeed. Do not add a datafeed\ndirectly to the `.ml-config` index. Do not give users `write` privileges on the `.ml-config` index.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -30210,7 +30210,7 @@
           }
         }
       ],
-      "specLocation": "ml/put_datafeed/MlPutDatafeedRequest.ts#L37-L175"
+      "specLocation": "ml/put_datafeed/MlPutDatafeedRequest.ts#L37-L177"
     },
     {
       "body": {
@@ -30737,7 +30737,7 @@
           }
         ]
       },
-      "description": "Create an anomaly detection job.\nIf you include a `datafeed_config`, you must have read index privileges on the source index.",
+      "description": "Create an anomaly detection job.\nIf you include a `datafeed_config`, you must have read index privileges on the source index.\nIf you include a `datafeed_config` but do not provide a query, the datafeed uses `{\"match_all\": {\"boost\": 1}}`.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -30821,7 +30821,7 @@
           }
         }
       ],
-      "specLocation": "ml/put_job/MlPutJobRequest.ts#L30-L148"
+      "specLocation": "ml/put_job/MlPutJobRequest.ts#L30-L149"
     },
     {
       "body": {
@@ -47721,6 +47721,7 @@
       "specLocation": "_types/aggregations/Aggregation.ts#L20-L20"
     },
     {
+      "description": "An Elasticsearch Query DSL (Domain Specific Language) object that defines a query.",
       "extDocId": "query-dsl",
       "extDocUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/query-dsl.html",
       "kind": "interface",
@@ -48782,7 +48783,7 @@
           }
         }
       ],
-      "specLocation": "_types/query_dsl/abstractions.ts#L102-L427",
+      "specLocation": "_types/query_dsl/abstractions.ts#L102-L428",
       "variants": {
         "kind": "container",
         "nonExhaustive": true
@@ -48961,7 +48962,7 @@
           }
         }
       ],
-      "specLocation": "_types/query_dsl/abstractions.ts#L452-L463"
+      "specLocation": "_types/query_dsl/abstractions.ts#L453-L464"
     },
     {
       "kind": "type_alias",
@@ -49307,7 +49308,7 @@
           }
         }
       ],
-      "specLocation": "_types/query_dsl/abstractions.ts#L465-L499"
+      "specLocation": "_types/query_dsl/abstractions.ts#L466-L500"
     },
     {
       "kind": "enum",
@@ -49323,7 +49324,7 @@
         "name": "CombinedFieldsOperator",
         "namespace": "_types.query_dsl"
       },
-      "specLocation": "_types/query_dsl/abstractions.ts#L512-L515"
+      "specLocation": "_types/query_dsl/abstractions.ts#L513-L516"
     },
     {
       "kind": "enum",
@@ -49341,7 +49342,7 @@
         "name": "CombinedFieldsZeroTerms",
         "namespace": "_types.query_dsl"
       },
-      "specLocation": "_types/query_dsl/abstractions.ts#L517-L526"
+      "specLocation": "_types/query_dsl/abstractions.ts#L518-L527"
     },
     {
       "extDocId": "query-dsl-constant-score-query",
@@ -51597,7 +51598,7 @@
           }
         }
       ],
-      "specLocation": "_types/query_dsl/abstractions.ts#L429-L446"
+      "specLocation": "_types/query_dsl/abstractions.ts#L430-L447"
     },
     {
       "kind": "enum",
@@ -52072,7 +52073,7 @@
         }
       ],
       "shortcutProperty": "field",
-      "specLocation": "_types/query_dsl/abstractions.ts#L528-L542"
+      "specLocation": "_types/query_dsl/abstractions.ts#L529-L543"
     },
     {
       "inherits": {
@@ -59118,7 +59119,7 @@
           }
         }
       ],
-      "specLocation": "_types/query_dsl/abstractions.ts#L501-L510"
+      "specLocation": "_types/query_dsl/abstractions.ts#L502-L511"
     },
     {
       "inherits": {
