@@ -158,7 +158,7 @@ export class ReadSummaryInfo {
   total_wait_nanos: long
 }
 
-export class writeSummaryInfo {
+export class WriteSummaryInfo {
   /**
    * The number of write operations performed in the test.
    */
