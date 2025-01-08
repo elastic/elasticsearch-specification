@@ -1334,7 +1334,7 @@ actions:
             application/json:
               examples:
                 indicesResolveResponseExample1:
-                  $ref: "../../specification/indices/resolve_index/indicesResolveResponseExample1.yaml"
+                  $ref: "../../specification/indices/resolve_index/ResolveIndexResponseExample1.yaml"
   - target: "$.components['requestBodies']['indices.rollover']"
     description: "Add example for rollover index request"
     update: 
