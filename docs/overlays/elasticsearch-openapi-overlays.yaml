@@ -473,3 +473,38 @@ actions:
                 $ref: "../../specification/search_application/render_query/SearchApplicationsRenderQueryRequestExample1.yaml"
                 renderSearchApplicationQueryResponseExample1:
                   $ref: "../../specification/search_application/render_query/SearchApplicationsRenderQueryResponseExample1.yaml"
+
+  - target: "$.paths['/_security/api_key/_bulk_update']['post']"
+    description: "Add examples for bulk update API keys operation"
+    update:
+      requestBody: 
+        content: 
+          application/json: 
+            examples: 
+              bulkUpdateApiKeysRequestExample1: 
+                $ref: "../../specification/security/bulk_update_api_keys/examples/request/SecurityBulkUpdateApiKeysRequestExample1.yaml"
+              bulkUpdateApiKeysRequestExample2: 
+                $ref: "../../specification/security/bulk_update_api_keys/examples/request/SecurityBulkUpdateApiKeysRequestExample2.yaml"
+      responses:
+        200:
+          content:
+            application/json:
+              examples:
+                bulkUpdateApiKeysResponseExample1:
+                  $ref: "../../specification/security/bulk_update_api_keys/examples/200_response/SecurityBulkUpdateApiKeysResponseExample1.yaml"
+  - target: "$.paths['/_security/delegate_pki']['post']"
+    description: "Add examples for delegate PKI operation"
+    update:
+      requestBody: 
+        content: 
+          application/json: 
+            examples: 
+              delegatePkiRequestExample1: 
+                $ref: "../../specification/security/delegate_pki/examples/request/SecurityDelegatePkiRequestExample1.yaml"
+      responses:
+        200:
+          content:
+            application/json:
+              examples:
+                delegatePkiResponseExample1:
+                  $ref: "../../specification/security/delegate_pki/examples/200_response/SecurityDelegatePkiResponseExample1.yaml"

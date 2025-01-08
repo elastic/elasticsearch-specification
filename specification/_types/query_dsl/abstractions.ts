@@ -100,6 +100,7 @@ import { TextExpansionQuery } from './TextExpansionQuery'
 import { WeightedTokensQuery } from './WeightedTokensQuery'
 
 /**
+ * An Elasticsearch Query DSL (Domain Specific Language) object that defines a query.
  * @variants container
  * @non_exhaustive
  * @ext_doc_id query-dsl

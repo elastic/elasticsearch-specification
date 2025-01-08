@@ -37,7 +37,6 @@ export interface Request extends RequestBase {
   }
   query_parameters: {
     master_timeout?: Duration
-    timeout?: Duration
   }
   body: {
     indices: string

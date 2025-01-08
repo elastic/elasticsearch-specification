@@ -18,6 +18,7 @@
  */
 
 import { RequestBase } from '@_types/Base'
+import { Duration } from '@_types/Time'
 
 /**
  * Get cross-cluster replication stats.
@@ -26,4 +27,17 @@ import { RequestBase } from '@_types/Base'
  * @availability stack since=6.5.0 stability=stable
  * @doc_id ccr-get-stats
  */
-export interface Request extends RequestBase {}
+export interface Request extends RequestBase {
+  query_parameters: {
+    /**
+     * Period to wait for a connection to the master node.
+     * @server_default 30s
+     */
+    master_timeout?: Duration
+    /**
+     * Period to wait for a response. If no response is received before the timeout expires, the request fails and returns an error.
+     * @server_default 30s
+     */
+    timeout?: Duration
+  }
+}
