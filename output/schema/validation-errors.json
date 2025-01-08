@@ -392,6 +392,12 @@
       ],
       "response": []
     },
+    "snapshot.clone": {
+      "request": [
+        "Request: query parameter 'timeout' does not exist in the json spec"
+      ],
+      "response": []
+    },
     "snapshot.delete": {
       "request": [
         "Request: missing json spec query parameter 'wait_for_completion'"
