@@ -279,7 +279,7 @@ export class BlobDetails {
   /**
    * The size of the blob in bytes.
    */
-  size_bytes: long
+  size_bytes: ByteSize
 }
 
 export class DetailsInfo {
