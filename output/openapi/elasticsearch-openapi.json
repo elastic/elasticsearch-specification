@@ -15991,7 +15991,7 @@
           "info"
         ],
         "summary": "Get cluster info",
-        "description": "Returns basic information about the cluster.",
+        "description": "Get basic build, version, and cluster information.",
         "operationId": "info",
         "responses": {
           "200": {
@@ -24417,7 +24417,7 @@
           {
             "in": "path",
             "name": "node_id",
-            "description": "Comma-separated list of node IDs or names used to limit returned information.\nAll the nodes selective options are explained [here](https://www.elastic.co/guide/en/elasticsearch/reference/current/cluster.html#cluster-nodes).",
+            "description": "Comma-separated list of node IDs or names used to limit returned information.",
             "required": true,
             "deprecated": false,
             "schema": {
@@ -24428,7 +24428,7 @@
           {
             "in": "path",
             "name": "max_archive_version",
-            "description": "Specifies the maximum [archive_version](https://www.elastic.co/guide/en/elasticsearch/reference/current/get-repositories-metering-api.html#get-repositories-metering-api-response-body) to be cleared from the archive.",
+            "description": "Specifies the maximum `archive_version` to be cleared from the archive.",
             "required": true,
             "deprecated": false,
             "schema": {
@@ -28298,6 +28298,9 @@
         ],
         "summary": "Get cache statistics",
         "description": "Get statistics about the shared cache for partially mounted indices.",
+        "externalDocs": {
+          "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/searchable-snapshots.html"
+        },
         "operationId": "searchable-snapshots-cache-stats",
         "parameters": [
           {
@@ -28319,6 +28322,9 @@
         ],
         "summary": "Get cache statistics",
         "description": "Get statistics about the shared cache for partially mounted indices.",
+        "externalDocs": {
+          "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/searchable-snapshots.html"
+        },
         "operationId": "searchable-snapshots-cache-stats-1",
         "parameters": [
           {
@@ -28343,6 +28349,9 @@
         ],
         "summary": "Clear the cache",
         "description": "Clear indices and data streams from the shared cache for partially mounted indices.",
+        "externalDocs": {
+          "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/searchable-snapshots.html"
+        },
         "operationId": "searchable-snapshots-clear-cache",
         "parameters": [
           {
@@ -28370,6 +28379,9 @@
         ],
         "summary": "Clear the cache",
         "description": "Clear indices and data streams from the shared cache for partially mounted indices.",
+        "externalDocs": {
+          "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/searchable-snapshots.html"
+        },
         "operationId": "searchable-snapshots-clear-cache-1",
         "parameters": [
           {
@@ -28405,7 +28417,7 @@
           {
             "in": "path",
             "name": "repository",
-            "description": "The name of the repository containing the snapshot of the index to mount",
+            "description": "The name of the repository containing the snapshot of the index to mount.",
             "required": true,
             "deprecated": false,
             "schema": {
@@ -28416,7 +28428,7 @@
           {
             "in": "path",
             "name": "snapshot",
-            "description": "The name of the snapshot of the index to mount",
+            "description": "The name of the snapshot of the index to mount.",
             "required": true,
             "deprecated": false,
             "schema": {
@@ -28427,7 +28439,7 @@
           {
             "in": "query",
             "name": "master_timeout",
-            "description": "Explicit operation timeout for connection to master node",
+            "description": "The period to wait for the master node.\nIf the master node is not available before the timeout expires, the request fails and returns an error.\nTo indicate that the request should never timeout, set it to `-1`.",
             "deprecated": false,
             "schema": {
               "$ref": "#/components/schemas/_types:Duration"
@@ -28437,7 +28449,7 @@
           {
             "in": "query",
             "name": "wait_for_completion",
-            "description": "Should this request wait until the operation has completed before returning",
+            "description": "If true, the request blocks until the operation is complete.",
             "deprecated": false,
             "schema": {
               "type": "boolean"
@@ -28447,7 +28459,7 @@
           {
             "in": "query",
             "name": "storage",
-            "description": "Selects the kind of local storage used to accelerate searches. Experimental, and defaults to `full_copy`",
+            "description": "The mount option for the searchable snapshot index.",
             "deprecated": false,
             "schema": {
               "type": "string"
@@ -28468,12 +28480,14 @@
                     "$ref": "#/components/schemas/_types:IndexName"
                   },
                   "index_settings": {
+                    "description": "The settings that should be added to the index when it is mounted.",
                     "type": "object",
                     "additionalProperties": {
                       "type": "object"
                     }
                   },
                   "ignore_index_settings": {
+                    "description": "The names of settings that should be removed from the index when it is mounted.",
                     "type": "array",
                     "items": {
                       "type": "string"
@@ -72212,15 +72226,19 @@
             "$ref": "#/components/schemas/_types:DateTime"
           },
           "build_flavor": {
+            "description": "The build flavor. For example, `default`.",
             "type": "string"
           },
           "build_hash": {
+            "description": "The Elasticsearch Git commit's SHA hash.",
             "type": "string"
           },
           "build_snapshot": {
+            "description": "Indicates whether the Elasticsearch build was a snapshot.",
             "type": "boolean"
           },
           "build_type": {
+            "description": "The build type that corresponds to how Elasticsearch was installed.\nFor example, `docker`, `rpm`, or `tar`.",
             "type": "string"
           },
           "lucene_version": {
@@ -72233,6 +72251,7 @@
             "$ref": "#/components/schemas/_types:VersionString"
           },
           "number": {
+            "description": "The Elasticsearch version number.",
             "type": "string"
           }
         },
@@ -103937,7 +103956,7 @@
       "searchable_snapshots.cache_stats#node_id": {
         "in": "path",
         "name": "node_id",
-        "description": "A comma-separated list of node IDs or names to limit the returned information; use `_local` to return information from the node you're connecting to, leave empty to get information from all nodes",
+        "description": "The names of the nodes in the cluster to target.",
         "required": true,
         "deprecated": false,
         "schema": {
@@ -103957,7 +103976,7 @@
       "searchable_snapshots.clear_cache#index": {
         "in": "path",
         "name": "index",
-        "description": "A comma-separated list of index names",
+        "description": "A comma-separated list of data streams, indices, and aliases to clear from the cache.\nIt supports wildcards (`*`).",
         "required": true,
         "deprecated": false,
         "schema": {
@@ -103998,7 +104017,7 @@
       "searchable_snapshots.stats#index": {
         "in": "path",
         "name": "index",
-        "description": "A comma-separated list of index names",
+        "description": "A comma-separated list of data streams and indices to retrieve statistics for.",
         "required": true,
         "deprecated": false,
         "schema": {
