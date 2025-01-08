@@ -423,13 +423,13 @@ actions:
         application/json:
           examples:
             simulateIngestRequestExample1:
-              $ref: "../../specification/simulate/ingest/SimulateIngestRequestExample1.yaml"
+              $ref: "../../specification/simulate/ingest/examples/request/SimulateIngestRequestExample1.yaml"
             simulateIngestRequestExample2:
-              $ref: "../../specification/simulate/ingest/SimulateIngestRequestExample2.yaml"
+              $ref: "../../specification/simulate/ingest/examples/request/SimulateIngestRequestExample2.yaml"
             simulateIngestRequestExample3:
-              $ref: "../../specification/simulate/ingest/SimulateIngestRequestExample3.yaml"
+              $ref: "../../specification/simulate/ingest/examples/request/SimulateIngestRequestExample3.yaml"
             simulateIngestRequestExample4:
-              $ref: "../../specification/simulate/ingest/SimulateIngestRequestExample4.yaml"
+              $ref: "../../specification/simulate/ingest/examples/request/SimulateIngestRequestExample4.yaml"
   - target: "$.components['responses']['simulate.ingest#200']"
     description: "Add example for simulate ingest response"
     update: 
@@ -437,11 +437,11 @@ actions:
         application/json:
           examples:
             simulateIngestResponseExample1:
-              $ref: "../../specification/simulate/ingest/SimulateIngestResponseExample1.yaml"
+              $ref: "../../specification/simulate/ingest/examples/response/SimulateIngestResponseExample1.yaml"
             simulateIngestResponseExample2:
-              $ref: "../../specification/simulate/ingest/SimulateIngestResponseExample2.yaml"
+              $ref: "../../specification/simulate/ingest/examples/response/SimulateIngestResponseExample2.yaml"
             simulateIngestResponseExample3:
-              $ref: "../../specification/simulate/ingest/SimulateIngestResponseExample3.yaml"
+              $ref: "../../specification/simulate/ingest/examples/response/SimulateIngestResponseExample3.yaml"
 ## Examples for licensing
   - target: "$.paths['/_license/basic_status']['get']"
     description: "Add example for get basic status response"
