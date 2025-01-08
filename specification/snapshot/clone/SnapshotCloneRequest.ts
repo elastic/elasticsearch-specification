@@ -38,14 +38,39 @@ export interface Request extends RequestBase {
     }
   ]
   path_parts: {
+    /**
+     * The name of the snapshot repository that both source and target snapshot belong to.
+     */
     repository: Name
+    /**
+     * The source snapshot name.
+     */
     snapshot: Name
+    /**
+     * The target snapshot name.
+     */
     target_snapshot: Name
   }
   query_parameters: {
+    /**
+     * The period to wait for the master node.
+     * If the master node is not available before the timeout expires, the request fails and returns an error.
+     * To indicate that the request should never timeout, set it to `-1`.
+     * @server_default 30s
+     */
     master_timeout?: Duration
+    /**
+     * The period of time to wait for a response.
+     * If no response is received before the timeout expires, the request fails and returns an error.
+     * @server_default 30s
+     */
+    timeout?: Duration
   }
   body: {
+    /**
+     * A comma-separated list of indices to include in the snapshot.
+     * Multi-target syntax is supported.
+     */
     indices: string
   }
 }

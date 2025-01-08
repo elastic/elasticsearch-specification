@@ -1,5 +1,12 @@
 {
-  "endpointErrors": {},
+  "endpointErrors": {
+    "snapshot.clone": {
+      "request": [
+        "Request: query parameter 'timeout' does not exist in the json spec"
+      ],
+      "response": []
+    }
+  },
   "generalErrors": [
     "Dangling type '_global.scripts_painless_execute:PainlessExecutionPosition'",
     "Dangling type '_global.scripts_painless_execute:PainlessScript'",

@@ -37,10 +37,23 @@ export interface Request extends RequestBase {
     }
   ]
   path_parts: {
+    /**
+     * The name of the repository to delete a snapshot from.
+     */
     repository: Name
+    /**
+     * A comma-separated list of snapshot names to delete.
+     * It also accepts wildcards (`*`).
+     */
     snapshot: Name
   }
   query_parameters: {
+    /**
+     * The period to wait for the master node.
+     * If the master node is not available before the timeout expires, the request fails and returns an error.
+     * To indicate that the request should never timeout, set it to `-1`.
+     * @server_default 30s
+     */
     master_timeout?: Duration
     /**
      * If `true`, the request returns a response when the matching snapshots are all deleted.

@@ -40,18 +40,22 @@ export interface Request extends RequestBase {
   ]
   path_parts: {
     /**
-     * Snapshot repository to clean up.
+     * The name of the snapshot repository to clean up.
      * @codegen_name name */
     repository: Name
   }
   query_parameters: {
     /**
-     * Period to wait for a connection to the master node.
+     * The period to wait for a connection to the master node.
+     * If the master node is not available before the timeout expires, the request fails and returns an error.
+     * To indicate that the request should never timeout, set it to `-1`
      * @server_default 30s
      */
     master_timeout?: Duration
     /**
-     * Period to wait for a response.
+     * The period to wait for a response from all relevant nodes in the cluster after updating the cluster metadata.
+     * If no response is received before the timeout expires, the cluster metadata update still applies but the response will indicate that it was not completely acknowledged.
+     * To indicate that the request should never timeout, set it to `-1`.
      * @server_default 30s
      */
     timeout?: Duration
