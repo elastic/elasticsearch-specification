@@ -1,0 +1,7 @@
+# summary:
+description: >
+  A successful response from `DELETE /_snapshot/my_repository/snapshot_2,snapshot_3`.
+  The request deletes `snapshot_2` and `snapshot_3` from the repository named `my_repository`.
+# type: response
+# response_code: ''
+value: "{\n  \"acknowledged\" : true\n}"

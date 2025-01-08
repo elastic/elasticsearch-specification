@@ -27,6 +27,7 @@ import { Duration } from '@_types/Time'
  * @availability stack stability=stable
  * @availability serverless stability=stable visibility=private
  * @cluster_privileges manage
+ * @doc_id snapshot-delete
  */
 export interface Request extends RequestBase {
   path_parts: {
