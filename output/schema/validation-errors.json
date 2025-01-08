@@ -352,12 +352,6 @@
       ],
       "response": []
     },
-    "security.bulk_update_api_keys": {
-      "request": [
-        "Missing request & response"
-      ],
-      "response": []
-    },
     "security.get_settings": {
       "request": [
         "Missing request & response"

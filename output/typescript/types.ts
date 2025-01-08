@@ -18198,6 +18198,21 @@ export interface SecurityBulkPutRoleResponse {
   errors?: SecurityBulkError
 }
 
+export interface SecurityBulkUpdateApiKeysRequest extends RequestBase {
+  body?: {
+    expiration?: Duration
+    ids: string | string[]
+    metadata?: Metadata
+    role_descriptors?: Record<string, SecurityRoleDescriptor>
+  }
+}
+
+export interface SecurityBulkUpdateApiKeysResponse {
+  errors?: SecurityBulkError
+  noops: string[]
+  updated: string[]
+}
+
 export interface SecurityChangePasswordRequest extends RequestBase {
   username?: Username
   refresh?: Refresh
@@ -18313,6 +18328,39 @@ export interface SecurityCreateServiceTokenResponse {
 export interface SecurityCreateServiceTokenToken {
   name: Name
   value: string
+}
+
+export interface SecurityDelegatePkiAuthentication {
+  username: string
+  roles: string[]
+  full_name: string | null
+  email: string | null
+  token?: Record<string, string>
+  metadata: Metadata
+  enabled: boolean
+  authentication_realm: SecurityDelegatePkiAuthenticationRealm
+  lookup_realm: SecurityDelegatePkiAuthenticationRealm
+  authentication_type: string
+  api_key?: Record<string, string>
+}
+
+export interface SecurityDelegatePkiAuthenticationRealm {
+  name: string
+  type: string
+  domain?: string
+}
+
+export interface SecurityDelegatePkiRequest extends RequestBase {
+  body?: {
+    x509_certificate_chain: string[]
+  }
+}
+
+export interface SecurityDelegatePkiResponse {
+  access_token: string
+  expires_in: long
+  type: string
+  authentication?: SecurityDelegatePkiAuthentication
 }
 
 export interface SecurityDeletePrivilegesFoundStatus {
