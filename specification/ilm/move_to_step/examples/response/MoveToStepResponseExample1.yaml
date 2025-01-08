@@ -1,0 +1,9 @@
+# summary:
+description: >
+  A successful response when running a specific step in a lifecycle policy.
+# type: response
+# response_code: 200
+value: |-
+  {
+    "acknowledged": true
+  }
