@@ -18,10 +18,28 @@
  */
 
 import { RequestBase } from '@_types/Base'
+import { Duration } from '@_types/Time'
 
 /**
+ * Start snapshot lifecycle management.
+ * Snapshot lifecycle management (SLM) starts automatically when a cluster is formed.
+ * Manually starting SLM is necessary only if it has been stopped using the stop SLM API.
  * @rest_spec_name slm.start
  * @availability stack since=7.6.0 stability=stable
  * @availability serverless stability=stable visibility=private
+ * @cluster_privileges manage_slm
  */
-export interface Request extends RequestBase {}
+export interface Request extends RequestBase {
+  query_parameters: {
+    /**
+     * Period to wait for a connection to the master node. If no response is received before the timeout expires, the request fails and returns an error.
+     * @server_default 30s
+     */
+    master_timeout?: Duration
+    /**
+     * Period to wait for a response. If no response is received before the timeout expires, the request fails and returns an error.
+     * @server_default 30s
+     */
+    timeout?: Duration
+  }
+}

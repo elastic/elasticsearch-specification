@@ -22,9 +22,13 @@ import { Name } from '@_types/common'
 import { Duration } from '@_types/Time'
 
 /**
+ * Clone a snapshot.
+ * Clone part of all of a snapshot into another snapshot in the same repository.
  * @rest_spec_name snapshot.clone
  * @availability stack since=7.10.0 stability=stable
  * @availability serverless stability=stable visibility=private
+ * @cluster_privileges manage
+ * @doc_id snapshot-clone
  */
 export interface Request extends RequestBase {
   path_parts: {
@@ -34,7 +38,6 @@ export interface Request extends RequestBase {
   }
   query_parameters: {
     master_timeout?: Duration
-    timeout?: Duration
   }
   body: {
     indices: string

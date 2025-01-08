@@ -43,19 +43,19 @@ actions:
             This API provides an alternative to relying solely on Kibana UI for connector and sync job management. The API comes with a set of validations and assertions to ensure that the state representation in the internal index remains valid.
           externalDocs:
             url: https://www.elastic.co/guide/en/elasticsearch/reference/master/es-connectors-tutorial-api.html
-            description: Connector API tutorial
+            description: Check out the connector API tutorial
         - name: ccr
           x-displayName: Cross-cluster replication
       # D
         - name: data stream
           x-displayName: Data stream
           externalDocs:
-            description: Data stream overview 
+            description: Learn more about data streams. 
             url: https://www.elastic.co/guide/en/elasticsearch/reference/master/data-streams.html
         - name: document
           x-displayName: Document
           externalDocs:
-            description: Reading and writing documents
+            description: Learn more about reading and writing documents.
             url: https://www.elastic.co/guide/en/elasticsearch/reference/master/docs-replication.html
       # E  
         - name: enrich
@@ -66,14 +66,14 @@ actions:
             Event Query Language (EQL) is a query language for event-based time series data, such as logs, metrics, and traces.
           externalDocs:
             url: https://www.elastic.co/guide/en/elasticsearch/reference/master/eql.html
-            description: EQL search
+            description: Learn more about EQL search.
         - name: esql
           x-displayName: ES|QL
           description: >
             The Elasticsearch Query Language (ES|QL) provides a powerful way to filter, transform, and analyze data stored in Elasticsearch, and in the future in other runtimes.
           externalDocs:
             url: https://www.elastic.co/guide/en/elasticsearch/reference/master/esql.html
-            description: ES|QL overview and tutorials
+            description: Learn more about ES|QL.
       # F
         - name: features
           description: The feature APIs enable you to introspect and manage features provided by Elasticsearch and Elasticsearch plugins.
@@ -87,7 +87,7 @@ actions:
             The graph explore API enables you to extract and summarize information about the documents and terms in an Elasticsearch data stream or index.
           externalDocs:
             url: https://www.elastic.co/guide/en/kibana/master/xpack-graph.html
-            description: Getting started with Graph
+            description: Get started with Graph.
       # I
         - name: indices
           x-displayName: Index
@@ -97,7 +97,7 @@ actions:
           x-displayName: Index lifecycle management
           externalDocs:
             url: https://www.elastic.co/guide/en/elasticsearch/reference/master/index-lifecycle-management.html
-            description: Manage the index lifecycle
+            description: Learn more about managing the index lifecycle.
         - name: inference
           x-displayName: Inference
           description: >
@@ -115,14 +115,14 @@ actions:
           description: Licensing APIs enable you to manage your licenses.
           externalDocs:
             url: https://www.elastic.co/subscriptions
-            description: For more information about the different types of licenses, refer to Elastic subscriptions
+            description: For more information about the different types of licenses, refer to Elastic subscriptions.
         - name: logstash
           x-displayName: Logstash
           description: >
             Logstash APIs enable you to manage pipelines that are used by Logstash Central Management.
           externalDocs:
             url: https://www.elastic.co/guide/en/logstash/master/logstash-centralized-pipeline-management.html
-            description: Centralized pipeline management
+            description: Learn more about centralized pipeline management.
       # M
         - name: ml
           x-displayName: Machine learning
@@ -131,19 +131,19 @@ actions:
           # description:
           externalDocs:
             url: https://www.elastic.co/guide/en/machine-learning/master/ml-ad-finding-anomalies.html
-            description: Finding anomalies
+            description: Learn more about finding anomalies.
         - name: ml data frame
           x-displayName: Machine learning data frame analytics
           # description:
           externalDocs:
             url: https://www.elastic.co/guide/en/machine-learning/master/ml-dfa-overview.html
-            description: Data frame analytics overview
+            description: Learn more about data frame analytics.
         - name: ml trained model
           x-displayName: Machine learning trained model
           # description:
           externalDocs:
             url: https://www.elastic.co/guide/en/machine-learning/master/ml-nlp-overview.html
-            description: Natural language processing overview
+            description: Learn more about natural language processing.
         - name: migration
           x-displayName: Migration
         - name: monitoring
@@ -163,7 +163,7 @@ actions:
             This allows pinning documents for only queries that match a specific term.
           externalDocs:
             url: https://www.elastic.co/guide/en/elasticsearch/reference/master/query-dsl-rule-query.html
-            description: Rule query
+            description: Learn more about the rule query.
       # R
         - name: rollup
           x-displayName: Rollup
@@ -184,21 +184,21 @@ actions:
             Snapshot and restore APIs enable you to set up snapshot repositories, manage snapshot backups, and restore snapshots to a running cluster.
           externalDocs:
             url: https://www.elastic.co/guide/en/elasticsearch/reference/master/snapshot-restore.html
-            description: Snapshot and restore
+            description: Learn more about snapshot and restore operations.
         - name: slm
           x-displayName: Snapshot lifecycle management
           description: >
             Snapshot lifecycle management (SLM) APIs enable you to set up policies to automatically take snapshots and control how long they are retained.
           externalDocs:
             url: https://www.elastic.co/guide/en/elasticsearch/reference/master/snapshots-take-snapshot.html
-            description: Create a snapshot
+            description: Learn more about creating a snapshot.
         - name: sql
           x-displayName: SQL
           description: >
             Elasticsearch's SQL APIs enable you to run SQL queries on Elasticsearch indices and data streams.
           externalDocs:
             url: https://www.elastic.co/guide/en/elasticsearch/reference/master/xpack-sql.html
-            description: An overview and tutorials for the Elasticsearch SQL features
+            description: Check out the overview and tutorials for the Elasticsearch SQL features.
         - name: synonyms
           x-displayName: Synonyms
           description: >
@@ -218,6 +218,11 @@ actions:
       # W
         - name: watcher
           x-displayName: Watcher
+          description: >
+            You can use Watcher to watch for changes or anomalies in your data and perform the necessary actions in response.
+          externalDocs:
+            url: https://www.elastic.co/guide/en/elasticsearch/reference/master/xpack-alerting.html
+            description: Learn more about Watcher.
 # Add x-model and/or abbreviate schemas that should point to other references
   - target: "$.components['schemas']['_types.query_dsl:QueryContainer']"
     description: Add x-model for the QueryContainer object
@@ -1072,7 +1077,7 @@ actions:
         application/json:
           examples:
             asyncSearchSubmitRequestExample1:
-              $ref: "../../specification/async_search/submit/AsyncSearchSubmitRequestExample1.json"
+              $ref: "../../specification/async_search/submit/examples/request/AsyncSearchSubmitRequestExample1.yaml"
   - target: "$.components['responses']['async_search.submit#200']"
     description: "Add example for asynch search submit response"
     update: 
@@ -1080,7 +1085,7 @@ actions:
         application/json:
           examples:
             asyncSearchSubmitResponseExample1:
-              $ref: "../../specification/async_search/submit/AsyncSearchSubmitResponseExample1.json"
+              $ref: "../../specification/async_search/submit/examples/response/AsyncSearchSubmitResponseExample1.yaml"
   - target: "$.paths['/_transform/{transform_id}']['put']"
     description: "Add examples for create transform operation"
     update: 
@@ -1089,16 +1094,16 @@ actions:
           application/json: 
             examples: 
               createTransformRequestExample1: 
-                $ref: "../../specification/transform/put_transform/PutTransformRequestExample1.json"
+                $ref: "../../specification/transform/put_transform/examples/request/PutTransformRequestExample1.yaml"
               createTransformRequestExample2:
-                $ref: "../../specification/transform/put_transform/PutTransformRequestExample2.json"
+                $ref: "../../specification/transform/put_transform/examples/request/PutTransformRequestExample2.yaml"
       responses:
         200:
           content:
             application/json:
               examples:
                 createTransformResponseExample1:
-                  $ref: "../../specification/transform/put_transform/PutTransformResponseExample1.json"
+                  $ref: "../../specification/transform/put_transform/examples/response/PutTransformResponseExample1.yaml"
   - target: "$.components['requestBodies']['transform.preview_transform']"
     description: "Add examples for preview transform operation"
     update: 
@@ -1106,7 +1111,7 @@ actions:
         application/json: 
           examples: 
             previewTransformRequestExample1: 
-              $ref: "../../specification/transform/preview_transform/PreviewTransformRequestExample1.json"
+              $ref: "../../specification/transform/preview_transform/examples/request/PreviewTransformRequestExample1.yaml"
   - target: "$.components['responses']['transform.preview_transform#200']"
     description: "Add examples for preview transform operation"
     update: 
@@ -1114,7 +1119,7 @@ actions:
         application/json:
           examples:
             previewTransformResponseExample1:
-              $ref: "../../specification/transform/preview_transform/PreviewTransformResponseExample1.json"
+              $ref: "../../specification/transform/preview_transform/examples/response/PreviewTransformResponseExample1.yaml"
   - target: "$.paths['/_transform/{transform_id}/_update']['post']"
     description: "Add examples for update transform operation"
     update: 
@@ -1123,14 +1128,14 @@ actions:
           application/json: 
             examples: 
               updateTransformRequestExample1: 
-                $ref: "../../specification/transform/update_transform/UpdateTransformRequestExample1.json"
+                $ref: "../../specification/transform/update_transform/examples/request/UpdateTransformRequestExample1.yaml"
       responses:
         200:
           content:
             application/json:
               examples:
                 updateTransformResponseExample1:
-                  $ref: "../../specification/transform/update_transform/UpdateTransformResponseExample1.json"
+                  $ref: "../../specification/transform/update_transform/examples/response/UpdateTransformResponseExample1.yaml"
   - target: "$.paths['/_eql/search/status/{id}']['get']"
     description: "Add examples for get async EQL status operation"
     update: 
@@ -1140,7 +1145,7 @@ actions:
             application/json:
               examples:
                 eqlGetStatusResponseExample1:
-                  $ref: "../../specification/eql/get_status/EqlGetStatusResponseExample1.json"
+                  $ref: "../../specification/eql/get_status/examples/response/EqlGetStatusResponseExample1.yaml"
   - target: "$.components['requestBodies']['eql.search']"
     description: "Add examples for EQL search operation"
     update: 
@@ -1148,9 +1153,9 @@ actions:
         application/json: 
           examples: 
             eqlSearchRequestExample1: 
-              $ref: "../../specification/eql/search/EqlSearchRequestExample1.json"
+              $ref: "../../specification/eql/search/examples/request/EqlSearchRequestExample1.yaml"
             eqlSearchRequestExample2: 
-              $ref: "../../specification/eql/search/EqlSearchRequestExample2.json"
+              $ref: "../../specification/eql/search/examples/request/EqlSearchRequestExample2.yaml"
   - target: "$.components['reponses']['eql.search#200']"
     description: "Add examples for EQL search operation"
     update: 
@@ -1158,7 +1163,7 @@ actions:
         application/json:
           examples:
             eqlSearchResponseExample2:
-              $ref: "../../specification/eql/search/EqlSearchResponseExample2.json"
+              $ref: "../../specification/eql/search/examples/response/EqlSearchResponseExample2.yaml"
   - target: "$.paths['/_query']['post']"
     description: "Add examples for ES|QL query operation"
     update: 
@@ -1167,7 +1172,7 @@ actions:
           application/json: 
             examples: 
               esqlQueryRequestExample1: 
-                $ref: "../../specification/esql/query/EsqlQueryApiRequestExample1.json"
+                $ref: "../../specification/esql/query/examples/request/QueryRequestExample1.yaml"
   - target: "$.components['requestBodies']['graph.explore']"
     description: "Add example for graph explore request"
     update: 
@@ -1175,7 +1180,7 @@ actions:
         application/json:
           examples:
             graphExploreRequestExample1:
-              $ref: "../../specification/graph/explore/graphExploreRequestExample1.json"
+              $ref: "../../specification/graph/explore/examples/request/GraphExploreRequestExample1.yaml"
   - target: "$.paths['/{index}/_block/{block}']['put']"
     description: "Add examples for add index block operation"
     update: 
@@ -1329,7 +1334,7 @@ actions:
             application/json:
               examples:
                 indicesResolveResponseExample1:
-                  $ref: "../../specification/indices/resolve_index/indicesResolveResponseExample1.yaml"
+                  $ref: "../../specification/indices/resolve_index/examples/response/ResolveIndexResponseExample1.yaml"
   - target: "$.components['requestBodies']['indices.rollover']"
     description: "Add example for rollover index request"
     update: 
@@ -1346,3 +1351,61 @@ actions:
           examples:
             indicesRolloverResponseExample1:
               $ref: "../../specification/indices/rollover/indicesRolloverResponseExample1.yaml"
+## Examples for behavioral analytics
+  - target: "$.components['responses']['search_application.get_behavioral_analytics#200']"
+    description: "Add example for get behavioral analytics collections response"
+    update: 
+      content:
+        application/json:
+          examples:
+            getBehavioralAnalyticsCollectionsResponseExample1:
+              $ref: "../../specification/search_application/get_behavioral_analytics/BehavioralAnalyticsGetResponseExample1.yaml"
+## Examples for licensing
+  - target: "$.paths['/_license']['get']"
+    description: "Add example for get license response"
+    update: 
+      responses:
+        200:
+          content:
+            application/json:
+              examples:
+                getLicenseResponseExample1:
+                  $ref: "../../specification/license/get/GetLicenseResponseExample1.yaml"
+## Examples for search applications
+  - target: "$.paths['/_application/search_application']['get']"
+    description: "Add examples for get search applications operation"
+    update: 
+      responses:
+        200: 
+          content: 
+            application/json: 
+              examples: 
+                getSearchApplicationsResponseExample1: 
+                  $ref: "../../specification/search_application/list/SearchApplicationsListResponseExample1.yaml"
+  - target: "$.paths['/_application/search_application/{name}']['get']"
+    description: "Add examples for get search application details operation"
+    update: 
+      responses:
+        200: 
+          content: 
+            application/json: 
+              examples: 
+                getSearchApplicationResponseExample1: 
+                  $ref: "../../specification/search_application/get/SearchApplicationGetResponseExample1.yaml"
+  - target: "$.paths['/_application/search_application/{name}']['put']"
+    description: "Add examples for create search application operation"
+    update: 
+      requestBody: 
+        content: 
+          application/json: 
+            examples: 
+              putSearchApplicationRequestExample1: 
+                $ref: "../../specification/search_application/put/SearchApplicationPutRequestExample1.yaml"
+  - target: "$.components['requestBodies']['search_application.search']"
+    description: "Add example for search application search request"
+    update: 
+      content:
+        application/json:
+          examples:
+            searchApplicationSearchRequestExample1:
+              $ref: "../../specification/search_application/search/SearchApplicationsSearchRequestExample1.yaml"

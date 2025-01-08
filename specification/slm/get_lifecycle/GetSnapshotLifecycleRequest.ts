@@ -19,14 +19,33 @@
 
 import { RequestBase } from '@_types/Base'
 import { Names } from '@_types/common'
+import { Duration } from '@_types/Time'
 
 /**
+ * Get policy information.
+ * Get snapshot lifecycle policy definitions and information about the latest snapshot attempts.
  * @rest_spec_name slm.get_lifecycle
  * @availability stack since=7.4.0 stability=stable
  * @availability serverless stability=stable visibility=private
+ * @cluster_privileges manage_slm
  */
 export interface Request extends RequestBase {
   path_parts: {
+    /*
+    A comma-separate list of snapshot lifecycle policy identifiers.
+    */
     policy_id?: Names
+  }
+  query_parameters: {
+    /**
+     * Period to wait for a connection to the master node. If no response is received before the timeout expires, the request fails and returns an error.
+     * @server_default 30s
+     */
+    master_timeout?: Duration
+    /**
+     * Period to wait for a response. If no response is received before the timeout expires, the request fails and returns an error.
+     * @server_default 30s
+     */
+    timeout?: Duration
   }
 }

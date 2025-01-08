@@ -1,0 +1,5 @@
+# summary:
+description: A successful response from `DELETE _rollup/job/sensor`.
+# type: response
+# response_code: ''
+value: "{\n  \"acknowledged\": true\n}"

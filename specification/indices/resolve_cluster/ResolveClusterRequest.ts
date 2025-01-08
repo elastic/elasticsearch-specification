@@ -38,8 +38,21 @@ import { ExpandWildcards, Names } from '@_types/common'
  * * Whether the search is likely to have errors returned when you do the cross-cluster search (including any authorization errors if you do not have permission to query the index).
  * * Cluster version information, including the Elasticsearch server version.
  *
+ * For example, `GET /_resolve/cluster/my-index-*,cluster*:my-index-*` returns information about the local cluster and all remotely configured clusters that start with the alias `cluster*`.
+ * Each cluster returns information about whether it has any indices, aliases or data streams that match `my-index-*`.
+ *
+ * **Advantages of using this endpoint before a cross-cluster search**
+ *
+ * You may want to exclude a cluster or index from a search when:
+ *
+ * * A remote cluster is not currently connected and is configured with `skip_unavailable=false`. Running a cross-cluster search under those conditions will cause the entire search to fail.
+ * * A cluster has no matching indices, aliases or data streams for the index expression (or your user does not have permissions to search them). For example, suppose your index expression is `logs*,remote1:logs*` and the remote1 cluster has no indices, aliases or data streams that match `logs*`. In that case, that cluster will return no results from that cluster if you include it in a cross-cluster search.
+ * * The index expression (combined with any query parameters you specify) will likely cause an exception to be thrown when you do the search. In these cases, the "error" field in the `_resolve/cluster` response will be present. (This is also where security/permission errors will be shown.)
+ * * A remote cluster is an older version that does not support the feature you want to use in your search.
  * @rest_spec_name indices.resolve_cluster
  * @availability stack since=8.13.0 stability=stable
+ * @doc_id indices-resolve-cluster-api
+ * @index_privileges view_index_metadata
  */
 export interface Request extends RequestBase {
   path_parts: {

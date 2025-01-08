@@ -19,6 +19,7 @@
 
 import { RequestBase } from '@_types/Base'
 import { Indices } from '@_types/common'
+import { Duration } from '@_types/Time'
 
 /**
  * Get follower information.
@@ -32,5 +33,12 @@ import { Indices } from '@_types/common'
 export interface Request extends RequestBase {
   path_parts: {
     index: Indices
+  }
+  query_parameters: {
+    /**
+     * Period to wait for a connection to the master node.
+     * @server_default 30s
+     */
+    master_timeout?: Duration
   }
 }

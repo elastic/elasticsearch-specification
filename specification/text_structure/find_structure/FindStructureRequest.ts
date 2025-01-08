@@ -22,15 +22,33 @@ import { uint } from '@_types/Numeric'
 import { Duration } from '@_types/Time'
 
 /**
+ * Find the structure of a text file.
+ * The text file must contain data that is suitable to be ingested into Elasticsearch.
+ *
+ * This API provides a starting point for ingesting data into Elasticsearch in a format that is suitable for subsequent use with other Elastic Stack functionality.
+ * Unlike other Elasticsearch endpoints, the data that is posted to this endpoint does not need to be UTF-8 encoded and in JSON format.
+ * It must, however, be text; binary text formats are not currently supported.
+ * The size is limited to the Elasticsearch HTTP receive buffer size, which defaults to 100 Mb.
+ *
+ * The response from the API contains:
+ *
+ * * A couple of messages from the beginning of the text.
+ * * Statistics that reveal the most common values for all fields detected within the text and basic numeric statistics for numeric fields.
+ * * Information about the structure of the text, which is useful when you write ingest configurations to index it or similarly formatted text.
+ * * Appropriate mappings for an Elasticsearch index, which you could use to ingest the text.
+ *
+ * All this information can be calculated by the structure finder with no guidance.
+ * However, you can optionally override some of the decisions about the text structure by specifying one or more query parameters.
  * @rest_spec_name text_structure.find_structure
  * @availability stack since=7.13.0 stability=stable
  * @availability serverless stability=stable visibility=private
+ * @cluster_privileges monitor_text_structure
  */
 export interface Request<TJsonDocument> {
   query_parameters: {
     /** The text’s character set. It must be a character set that is supported by the JVM that Elasticsearch uses. For example, UTF-8, UTF-16LE, windows-1252, or EUC-JP. If this parameter is not specified, the structure finder chooses an appropriate character set. */
     charset?: string
-    /** If you have set format to delimited, you can specify the column names in a comma-separated list. If this parameter is not specified, the structure finder uses the column names from the header row of the text. If the text does not have a header role, columns are named "column1", "column2", "column3", etc. */
+    /** If you have set format to delimited, you can specify the column names in a comma-separated list. If this parameter is not specified, the structure finder uses the column names from the header row of the text. If the text does not have a header role, columns are named "column1", "column2", "column3", for example. */
     column_names?: string
     /** If you have set format to delimited, you can specify the character used to delimit the values in each row. Only a single character is supported; the delimiter cannot have multiple characters. By default, the API considers the following possibilities: comma, tab, semi-colon, and pipe (|). In this default scenario, all rows must have the same number of fields for the delimited format to be detected. If you specify a delimiter, up to 10% of the rows can have a different number of columns than the first row. */
     delimiter?: string
@@ -38,6 +56,7 @@ export interface Request<TJsonDocument> {
     ecs_compatibility?: string
     /**
      * If this parameter is set to true, the response includes a field named explanation, which is an array of strings that indicate how the structure finder produced its result.
+     * If the structure finder produces unexpected results for some text, use this query parameter to help you determine why the returned structure was chosen.
      * @server_default false
      */
     explain?: boolean
@@ -62,7 +81,7 @@ export interface Request<TJsonDocument> {
     /** If you have set format to delimited, you can specify whether values between delimiters should have whitespace trimmed from them. If this parameter is not specified and the delimiter is pipe (|), the default value is true. Otherwise, the default value is false. */
     should_trim_fields?: boolean
     /**
-     * Sets the maximum amount of time that the structure analysis make take. If the analysis is still running when the timeout expires then it will be aborted.
+     * Sets the maximum amount of time that the structure analysis can take. If the analysis is still running when the timeout expires then it will be stopped.
      * @server_default 25s
      */
     timeout?: Duration

@@ -22,9 +22,14 @@ import { Indices, Metadata, Name } from '@_types/common'
 import { Duration } from '@_types/Time'
 
 /**
+ * Create a snapshot.
+ * Take a snapshot of a cluster or of data streams and indices.
  * @rest_spec_name snapshot.create
  * @availability stack since=0.0.0 stability=stable
  * @availability serverless stability=stable visibility=private
+ * @cluster_privileges create_snapshot
+ * @doc_id snapshot-create-api
+ * @ext_doc_id snapshot-create
  */
 export interface Request extends RequestBase {
   path_parts: {

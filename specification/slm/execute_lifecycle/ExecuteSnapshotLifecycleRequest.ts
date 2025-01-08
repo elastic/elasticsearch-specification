@@ -19,14 +19,31 @@
 
 import { RequestBase } from '@_types/Base'
 import { Name } from '@_types/common'
+import { Duration } from '@_types/Time'
 
 /**
+ * Run a policy.
+ * Immediately create a snapshot according to the snapshot lifecycle policy without waiting for the scheduled time.
+ * The snapshot policy is normally applied according to its schedule, but you might want to manually run a policy before performing an upgrade or other maintenance.
  * @rest_spec_name slm.execute_lifecycle
  * @availability stack since=7.4.0 stability=stable
  * @availability serverless stability=stable visibility=private
+ * @cluster_privileges manage_slm
  */
 export interface Request extends RequestBase {
   path_parts: {
     policy_id: Name
+  }
+  query_parameters: {
+    /**
+     * Period to wait for a connection to the master node. If no response is received before the timeout expires, the request fails and returns an error.
+     * @server_default 30s
+     */
+    master_timeout?: Duration
+    /**
+     * Period to wait for a response. If no response is received before the timeout expires, the request fails and returns an error.
+     * @server_default 30s
+     */
+    timeout?: Duration
   }
 }

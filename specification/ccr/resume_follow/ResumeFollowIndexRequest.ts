@@ -37,6 +37,13 @@ export interface Request extends RequestBase {
   path_parts: {
     index: IndexName
   }
+  query_parameters: {
+    /**
+     * Period to wait for a connection to the master node.
+     * @server_default 30s
+     */
+    master_timeout?: Duration
+  }
   body: {
     max_outstanding_read_requests?: long
     max_outstanding_write_requests?: long

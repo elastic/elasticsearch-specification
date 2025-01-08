@@ -18,6 +18,7 @@
  */
 
 import { RequestBase } from '@_types/Base'
+import { Duration } from '@_types/Time'
 
 /**
  * Start a trial.
@@ -30,10 +31,16 @@ import { RequestBase } from '@_types/Base'
  * @rest_spec_name license.post_start_trial
  * @availability stack since=6.1.0 stability=stable
  * @cluster_privileges manage
+ * @doc_id start-trial
  */
 export interface Request extends RequestBase {
   query_parameters: {
     acknowledge?: boolean
     type_query_string?: string
+    /**
+     * Period to wait for a connection to the master node.
+     * @server_default 30s
+     */
+    master_timeout?: Duration
   }
 }

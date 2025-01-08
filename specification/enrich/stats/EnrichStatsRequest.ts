@@ -18,6 +18,7 @@
  */
 
 import { RequestBase } from '@_types/Base'
+import { Duration } from '@_types/Time'
 
 /**
  * Get enrich stats.
@@ -26,4 +27,12 @@ import { RequestBase } from '@_types/Base'
  * @availability stack since=7.5.0 stability=stable
  * @availability serverless stability=stable visibility=private
  */
-export interface Request extends RequestBase {}
+export interface Request extends RequestBase {
+  query_parameters: {
+    /**
+     * Period to wait for a connection to the master node.
+     * @server_default 30s
+     */
+    master_timeout?: Duration
+  }
+}

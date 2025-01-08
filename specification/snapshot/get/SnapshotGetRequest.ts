@@ -25,9 +25,12 @@ import { SortOrder } from '@_types/sort'
 import { Duration } from '@_types/Time'
 
 /**
+ * Get snapshot information.
  * @rest_spec_name snapshot.get
  * @availability stack since=0.0.0 stability=stable
  * @availability serverless stability=stable visibility=private
+ * @cluster_privileges monitor_snapshot
+ * @doc_id snapshot-get
  */
 export interface Request extends RequestBase {
   path_parts: {

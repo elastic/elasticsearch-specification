@@ -22,9 +22,12 @@ import { Name } from '@_types/common'
 import { Duration } from '@_types/Time'
 
 /**
+ * Delete snapshots.
  * @rest_spec_name snapshot.delete
  * @availability stack stability=stable
  * @availability serverless stability=stable visibility=private
+ * @cluster_privileges manage
+ * @doc_id snapshot-delete
  */
 export interface Request extends RequestBase {
   path_parts: {

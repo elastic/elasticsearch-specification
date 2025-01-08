@@ -22,9 +22,12 @@ import { Names } from '@_types/common'
 import { Duration } from '@_types/Time'
 
 /**
+ * Get snapshot repository information.
  * @rest_spec_name snapshot.get_repository
  * @availability stack since=0.0.0 stability=stable
  * @availability serverless stability=stable visibility=private
+ * @cluster_privileges monitor_snapshot
+ * @doc_id snapshot-repo-get
  */
 export interface Request extends RequestBase {
   path_parts: {
