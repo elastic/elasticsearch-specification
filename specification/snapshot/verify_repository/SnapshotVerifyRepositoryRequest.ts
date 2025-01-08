@@ -28,6 +28,7 @@ import { Duration } from '@_types/Time'
  * @availability stack since=0.0.0 stability=stable
  * @availability serverless stability=stable visibility=private
  * @cluster_privileges manage
+ * @doc_id snapshot-repo-verify
  * @ext_doc_id verify-repository
  */
 export interface Request extends RequestBase {
