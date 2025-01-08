@@ -37,6 +37,8 @@ import { Duration } from '@_types/Time'
  * @rest_spec_name rollup.put_job
  * @availability stack since=6.3.0 stability=experimental
  * @cluster_privileges manage, manage_rollup
+ * @deprecated 8.11.0
+ * @doc_id rollup-put-job
  */
 export interface Request extends RequestBase {
   path_parts: {
