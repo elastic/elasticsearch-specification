@@ -383,6 +383,7 @@ paginate-search-results,https://www.elastic.co/guide/en/elasticsearch/reference/
 painless-contexts,https://www.elastic.co/guide/en/elasticsearch/painless/{branch}/painless-contexts.html
 painless-execute-api,https://www.elastic.co/guide/en/elasticsearch/painless/{branch}/painless-execute-api.html
 pipeline-processor,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/pipeline-processor.html
+pki-realm,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/pki-realm.html
 point-in-time-api,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/point-in-time-api.html
 preview-dfanalytics,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/preview-dfanalytics.html
 preview-transform,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/preview-transform.html
@@ -591,6 +592,7 @@ searchable-snapshots-apis,https://www.elastic.co/guide/en/elasticsearch/referenc
 search-templates,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/search-template.html
 secure-settings,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/secure-settings.html
 security-api-authenticate,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/security-api-authenticate.html
+security-api-bulk-update-key,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/security-api-bulk-update-api-keys.html
 security-api-change-password,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/security-api-change-password.html
 security-api-clear-api-key-cache,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/security-api-clear-api-key-cache.html
 security-api-clear-cache,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/security-api-clear-cache.html
@@ -599,6 +601,7 @@ security-api-clear-role-cache,https://www.elastic.co/guide/en/elasticsearch/refe
 security-api-clear-service-token-caches,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/security-api-clear-service-token-caches.html
 security-api-create-api-key,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/security-api-create-api-key.html
 security-api-create-service-token,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/security-api-create-service-token.html
+security-api-delegate-pki,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/security-api-delegate-pki-authentication.html
 security-api-delete-privilege,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/security-api-delete-privilege.html
 security-api-delete-role-mapping,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/security-api-delete-role-mapping.html
 security-api-delete-role,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/security-api-delete-role.html
