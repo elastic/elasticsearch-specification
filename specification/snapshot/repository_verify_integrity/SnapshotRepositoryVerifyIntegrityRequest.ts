@@ -53,6 +53,7 @@ import { integer } from '@_types/Numeric'
  * @rest_spec_name snapshot.repository_verify_integrity
  * @availability stack since=8.16.0 stability=experimental visibility=private
  * @cluster_privileges manage
+ * @doc_id snapshot-repo-verify-integrity
  */
 export interface Request extends RequestBase {
   path_parts: {
