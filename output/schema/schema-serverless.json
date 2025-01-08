@@ -27485,6 +27485,7 @@
         "kind": "properties",
         "properties": [
           {
+            "description": "Evaluation results for a classification analysis.\nIt outputs a prediction that identifies to which of the classes each document belongs.",
             "name": "classification",
             "required": false,
             "type": {
@@ -27496,6 +27497,7 @@
             }
           },
           {
+            "description": "Evaluation results for an outlier detection analysis.\nIt outputs the probability that each document is an outlier.",
             "name": "outlier_detection",
             "required": false,
             "type": {
@@ -27507,6 +27509,7 @@
             }
           },
           {
+            "description": "Evaluation results for a regression analysis which outputs a prediction of values.",
             "name": "regression",
             "required": false,
             "type": {
@@ -27524,7 +27527,7 @@
         "name": "Response",
         "namespace": "ml.evaluate_data_frame"
       },
-      "specLocation": "ml/evaluate_data_frame/MlEvaluateDataFrameResponse.ts#L26-L33"
+      "specLocation": "ml/evaluate_data_frame/MlEvaluateDataFrameResponse.ts#L26-L44"
     },
     {
       "attachedBehaviors": [
