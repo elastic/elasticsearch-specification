@@ -111,7 +111,7 @@ export class NodeInfo {
   name: Name
 }
 
-export class readSummaryInfo {
+export class ReadSummaryInfo {
   /**
    * The number of read operations performed in the test.
    */
