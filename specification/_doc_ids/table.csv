@@ -64,7 +64,6 @@ ccr-put-follow,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/
 ccr-resume-auto-follow-pattern,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/ccr-resume-auto-follow-pattern.html
 ccs-network-delays,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/modules-cross-cluster-search.html#ccs-network-delays
 clean-up-snapshot-repo,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/snapshots-register-repository.html#snapshots-repository-cleanup
-clean-up-snapshot-repo-api,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/clean-up-snapshot-repo-api.html
 clear-repositories-metering-archive-api,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/clear-repositories-metering-archive-api.html
 clear-scroll-api,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/clear-scroll-api.html
 clear-sql-cursor-api,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/clear-sql-cursor-api.html
@@ -384,6 +383,7 @@ paginate-search-results,https://www.elastic.co/guide/en/elasticsearch/reference/
 painless-contexts,https://www.elastic.co/guide/en/elasticsearch/painless/{branch}/painless-contexts.html
 painless-execute-api,https://www.elastic.co/guide/en/elasticsearch/painless/{branch}/painless-execute-api.html
 pipeline-processor,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/pipeline-processor.html
+pki-realm,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/pki-realm.html
 point-in-time-api,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/point-in-time-api.html
 preview-dfanalytics,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/preview-dfanalytics.html
 preview-transform,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/preview-transform.html
@@ -477,12 +477,14 @@ reroute-processor,https://www.elastic.co/guide/en/elasticsearch/reference/{branc
 render-search-template-api,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/render-search-template-api.html
 reset-transform,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/reset-transform.html
 restore-snapshot,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/snapshots-restore-snapshot.html
+rollup-agg-limitations,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/rollup-agg-limitations.html
 rollup-delete-job,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/rollup-delete-job.html
 rollup-get-job,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/rollup-get-job.html
 rollup-get-rollup-caps,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/rollup-get-rollup-caps.html
 rollup-get-rollup-index-caps,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/rollup-get-rollup-index-caps.html
 rollup-put-job,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/rollup-put-job.html
 rollup-search,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/rollup-search.html
+rollup-search-limitations,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/rollup-search-limitations.html
 rollup-start-job,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/rollup-start-job.html
 rollup-stop-job,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/rollup-stop-job.html
 routing,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/docs-get.html#get-routing
@@ -592,6 +594,7 @@ searchable-snapshots-apis,https://www.elastic.co/guide/en/elasticsearch/referenc
 search-templates,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/search-template.html
 secure-settings,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/secure-settings.html
 security-api-authenticate,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/security-api-authenticate.html
+security-api-bulk-update-key,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/security-api-bulk-update-api-keys.html
 security-api-change-password,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/security-api-change-password.html
 security-api-clear-api-key-cache,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/security-api-clear-api-key-cache.html
 security-api-clear-cache,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/security-api-clear-cache.html
@@ -600,6 +603,7 @@ security-api-clear-role-cache,https://www.elastic.co/guide/en/elasticsearch/refe
 security-api-clear-service-token-caches,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/security-api-clear-service-token-caches.html
 security-api-create-api-key,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/security-api-create-api-key.html
 security-api-create-service-token,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/security-api-create-service-token.html
+security-api-delegate-pki,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/security-api-delegate-pki-authentication.html
 security-api-delete-privilege,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/security-api-delete-privilege.html
 security-api-delete-role-mapping,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/security-api-delete-role-mapping.html
 security-api-delete-role,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/security-api-delete-role.html
@@ -652,7 +656,18 @@ slm-api-get-status,https://www.elastic.co/guide/en/elasticsearch/reference/{bran
 slm-api-put-policy,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/slm-api-put-policy.html
 slm-api-start,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/slm-api-start.html
 slm-api-stop,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/slm-api-stop.html
+snapshot-clone,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/clone-snapshot-api.html
 snapshot-create,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/snapshots-take-snapshot.html
+snapshot-create-api,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/create-snapshot-api.html
+snapshot-delete,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/delete-snapshot-api.html
+snapshot-get,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/get-snapshot-api.html
+snapshot-restore-api,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/restore-snapshot-api.html
+snapshot-status,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/get-snapshot-status-api.html
+snapshot-repo-cleanup,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/clean-up-snapshot-repo-api.html
+snapshot-repo-delete,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/delete-snapshot-repo-api.html
+snapshot-repo-get,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/get-snapshot-repo-api.html
+snapshot-repo-verify,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/verify-snapshot-repo-api.html
+snapshot-repo-verify-integrity,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/verify-repo-integrity-api.html
 sort-processor,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/sort-processor.html
 sort-search-results,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/sort-search-results.html
 sort-tiebreaker,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/eql.html#eql-search-specify-a-sort-tiebreaker

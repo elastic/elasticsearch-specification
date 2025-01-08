@@ -1,0 +1,8 @@
+# summary:
+description: A successful response from `GET /_snapshot/my_repository`.
+# type: response
+# response_code: ''
+value:
+  "{\n  \"my_repository\" : {\n    \"type\" : \"fs\",\n    \"uuid\" : \"0JLknrXbSUiVPuLakHjBrQ\"\
+  ,\n    \"settings\" : {\n      \"location\" : \"my_backup_location\"\n    }\n  }\n\
+  }"

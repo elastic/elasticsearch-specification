@@ -1,0 +1,117 @@
+# summary:
+description: An abbreviated response from `POST _transform/_preview` that contains a preview a transform that uses the pivot method.
+# type: response
+# response_code: 200
+value:
+  preview:
+    - max_price: 171
+      customer_id: '10'
+    - max_price: 233
+      customer_id: '11'
+    - max_price: 200
+      customer_id: '12'
+    - max_price: 301
+      customer_id: '13'
+    - max_price: 176
+      customer_id: '14'
+    - max_price: 2250
+      customer_id: '15'
+    - max_price: 170
+      customer_id: '16'
+    - max_price: 243
+      customer_id: '17'
+    - max_price: 154
+      customer_id: '18'
+    - max_price: 393
+      customer_id: '19'
+    - max_price: 165
+      customer_id: '20'
+    - max_price: 115
+      customer_id: '21'
+    - max_price: 192
+      customer_id: '22'
+    - max_price: 169
+      customer_id: '23'
+    - max_price: 230
+      customer_id: '24'
+    - max_price: 278
+      customer_id: '25'
+    - max_price: 200
+      customer_id: '26'
+    - max_price: 344
+      customer_id: '27'
+    - max_price: 175
+      customer_id: '28'
+    - max_price: 177
+      customer_id: '29'
+    - max_price: 190
+      customer_id: '30'
+    - max_price: 190
+      customer_id: '31'
+    - max_price: 205
+      customer_id: '32'
+    - max_price: 215
+      customer_id: '33'
+    - max_price: 270
+      customer_id: '34'
+    - max_price: 184
+      customer_id: '36'
+    - max_price: 222
+      customer_id: '37'
+    - max_price: 370
+      customer_id: '38'
+    - max_price: 240
+      customer_id: '39'
+    - max_price: 230
+      customer_id: '4'
+    - max_price: 229
+      customer_id: '41'
+    - max_price: 190
+      customer_id: '42'
+    - max_price: 150
+      customer_id: '43'
+    - max_price: 175
+      customer_id: '44'
+    - max_price: 190
+      customer_id: '45'
+    - max_price: 150
+      customer_id: '46'
+    - max_price: 310
+      customer_id: '48'
+    - max_price: 223
+      customer_id: '49'
+    - max_price: 283
+      customer_id: '5'
+    - max_price: 185
+      customer_id: '50'
+    - max_price: 190
+      customer_id: '51'
+    - max_price: 333
+      customer_id: '52'
+    - max_price: 165
+      customer_id: '6'
+    - max_price: 144
+      customer_id: '7'
+    - max_price: 198
+      customer_id: '8'
+    - max_price: 210
+      customer_id: '9'
+  generated_dest_index:
+    mappings:
+      _meta:
+        _transform:
+          transform: transform-preview
+          version:
+            created: 10.0.0
+          creation_date_in_millis: 1712948905889
+        created_by: transform
+      properties:
+        max_price:
+          type: half_float
+        customer_id:
+          type: keyword
+    settings:
+      index:
+        number_of_shards: '1'
+        auto_expand_replicas: 0-1
+    aliases: {}

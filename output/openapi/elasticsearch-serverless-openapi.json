@@ -4611,6 +4611,9 @@
         "parameters": [
           {
             "$ref": "#/components/parameters/enrich.get_policy#name"
+          },
+          {
+            "$ref": "#/components/parameters/enrich.get_policy#master_timeout"
           }
         ],
         "responses": {
@@ -4638,6 +4641,16 @@
               "$ref": "#/components/schemas/_types:Name"
             },
             "style": "simple"
+          },
+          {
+            "in": "query",
+            "name": "master_timeout",
+            "description": "Period to wait for a connection to the master node.",
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/_types:Duration"
+            },
+            "style": "form"
           }
         ],
         "requestBody": {
@@ -4693,6 +4706,16 @@
               "$ref": "#/components/schemas/_types:Name"
             },
             "style": "simple"
+          },
+          {
+            "in": "query",
+            "name": "master_timeout",
+            "description": "Period to wait for a connection to the master node.",
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/_types:Duration"
+            },
+            "style": "form"
           }
         ],
         "responses": {
@@ -4729,6 +4752,16 @@
               "$ref": "#/components/schemas/_types:Name"
             },
             "style": "simple"
+          },
+          {
+            "in": "query",
+            "name": "master_timeout",
+            "description": "Period to wait for a connection to the master node.",
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/_types:Duration"
+            },
+            "style": "form"
           },
           {
             "in": "query",
@@ -4772,6 +4805,11 @@
         "summary": "Get an enrich policy",
         "description": "Returns information about an enrich policy.",
         "operationId": "enrich-get-policy-1",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/enrich.get_policy#master_timeout"
+          }
+        ],
         "responses": {
           "200": {
             "$ref": "#/components/responses/enrich.get_policy#200"
@@ -10052,7 +10090,7 @@
           "ml data frame"
         ],
         "summary": "Create a data frame analytics job",
-        "description": "This API creates a data frame analytics job that performs an analysis on the\nsource indices and stores the outcome in a destination index.",
+        "description": "This API creates a data frame analytics job that performs an analysis on the\nsource indices and stores the outcome in a destination index.\nBy default, the query used in the source configuration is `{\"match_all\": {}}`.\n\nIf the destination index does not exist, it is created automatically when you start the job.\n\nIf you supply only a subset of the regression or classification parameters, hyperparameter optimization occurs. It determines a value for each of the undefined parameters.",
         "operationId": "ml-put-data-frame-analytics",
         "parameters": [
           {
@@ -10272,7 +10310,7 @@
           "ml anomaly"
         ],
         "summary": "Create a datafeed",
-        "description": "Datafeeds retrieve data from Elasticsearch for analysis by an anomaly detection job.\nYou can associate only one datafeed with each anomaly detection job.\nThe datafeed contains a query that runs at a defined interval (`frequency`).\nIf you are concerned about delayed data, you can add a delay (`query_delay`) at each interval.\nWhen Elasticsearch security features are enabled, your datafeed remembers which roles the user who created it had\nat the time of creation and runs the query using those same roles. If you provide secondary authorization headers,\nthose credentials are used instead.\nYou must use Kibana, this API, or the create anomaly detection jobs API to create a datafeed. Do not add a datafeed\ndirectly to the `.ml-config` index. Do not give users `write` privileges on the `.ml-config` index.",
+        "description": "Datafeeds retrieve data from Elasticsearch for analysis by an anomaly detection job.\nYou can associate only one datafeed with each anomaly detection job.\nThe datafeed contains a query that runs at a defined interval (`frequency`).\nIf you are concerned about delayed data, you can add a delay (`query_delay') at each interval.\nBy default, the datafeed uses the following query: `{\"match_all\": {\"boost\": 1}}`.\n\nWhen Elasticsearch security features are enabled, your datafeed remembers which roles the user who created it had\nat the time of creation and runs the query using those same roles. If you provide secondary authorization headers,\nthose credentials are used instead.\nYou must use Kibana, this API, or the create anomaly detection jobs API to create a datafeed. Do not add a datafeed\ndirectly to the `.ml-config` index. Do not give users `write` privileges on the `.ml-config` index.",
         "operationId": "ml-put-datafeed",
         "parameters": [
           {
@@ -10682,7 +10720,7 @@
           "ml anomaly"
         ],
         "summary": "Create an anomaly detection job",
-        "description": "If you include a `datafeed_config`, you must have read index privileges on the source index.",
+        "description": "If you include a `datafeed_config`, you must have read index privileges on the source index.\nIf you include a `datafeed_config` but do not provide a query, the datafeed uses `{\"match_all\": {\"boost\": 1}}`.",
         "operationId": "ml-put-job",
         "parameters": [
           {
@@ -11145,6 +11183,16 @@
             "deprecated": false,
             "schema": {
               "type": "boolean"
+            },
+            "style": "form"
+          },
+          {
+            "in": "query",
+            "name": "timeout",
+            "description": "Period to wait for a response. If no response is received before the timeout expires, the request fails and returns an error.",
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/_types:Duration"
             },
             "style": "form"
           }
@@ -19149,6 +19197,16 @@
               "type": "boolean"
             },
             "style": "form"
+          },
+          {
+            "in": "query",
+            "name": "timeout",
+            "description": "Period to wait for a response. If no response is received before the timeout expires, the request fails and returns an error.",
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/_types:Duration"
+            },
+            "style": "form"
           }
         ],
         "responses": {
@@ -25632,6 +25690,7 @@
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl.html"
         },
+        "description": "An Elasticsearch Query DSL (Domain Specific Language) object that defines a query.",
         "type": "object",
         "properties": {
           "bool": {
@@ -58669,6 +58728,16 @@
           "$ref": "#/components/schemas/_types:Names"
         },
         "style": "simple"
+      },
+      "enrich.get_policy#master_timeout": {
+        "in": "query",
+        "name": "master_timeout",
+        "description": "Period to wait for a connection to the master node.",
+        "deprecated": false,
+        "schema": {
+          "$ref": "#/components/schemas/_types:Duration"
+        },
+        "style": "form"
       },
       "eql.search#index": {
         "in": "path",

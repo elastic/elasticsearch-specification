@@ -30,6 +30,8 @@ import { Ids } from '@_types/common'
  * @rest_spec_name rollup.get_rollup_index_caps
  * @availability stack since=6.4.0 stability=experimental
  * @index_privileges read
+ * @deprecated 8.11.0
+ * @doc_id rollup-get-rollup-index-caps
  */
 export interface Request extends RequestBase {
   path_parts: {

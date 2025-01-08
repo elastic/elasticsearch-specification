@@ -28,6 +28,7 @@ import { Duration } from '@_types/Time'
  * @availability stack since=7.10.0 stability=stable
  * @availability serverless stability=stable visibility=private
  * @cluster_privileges manage
+ * @doc_id snapshot-clone
  */
 export interface Request extends RequestBase {
   path_parts: {
@@ -37,7 +38,6 @@ export interface Request extends RequestBase {
   }
   query_parameters: {
     master_timeout?: Duration
-    timeout?: Duration
   }
   body: {
     indices: string

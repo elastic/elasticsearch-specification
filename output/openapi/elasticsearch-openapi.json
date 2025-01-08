@@ -2424,6 +2424,9 @@
         "parameters": [
           {
             "$ref": "#/components/parameters/ccr.get_auto_follow_pattern#name"
+          },
+          {
+            "$ref": "#/components/parameters/ccr.get_auto_follow_pattern#master_timeout"
           }
         ],
         "responses": {
@@ -2454,6 +2457,16 @@
               "$ref": "#/components/schemas/_types:Name"
             },
             "style": "simple"
+          },
+          {
+            "in": "query",
+            "name": "master_timeout",
+            "description": "Period to wait for a connection to the master node.",
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/_types:Duration"
+            },
+            "style": "form"
           }
         ],
         "requestBody": {
@@ -2561,6 +2574,16 @@
               "$ref": "#/components/schemas/_types:Name"
             },
             "style": "simple"
+          },
+          {
+            "in": "query",
+            "name": "master_timeout",
+            "description": "Period to wait for a connection to the master node.",
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/_types:Duration"
+            },
+            "style": "form"
           }
         ],
         "responses": {
@@ -2597,6 +2620,16 @@
               "$ref": "#/components/schemas/_types:IndexName"
             },
             "style": "simple"
+          },
+          {
+            "in": "query",
+            "name": "master_timeout",
+            "description": "Period to wait for a connection to the master node.",
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/_types:Duration"
+            },
+            "style": "form"
           },
           {
             "in": "query",
@@ -2727,6 +2760,16 @@
               "$ref": "#/components/schemas/_types:Indices"
             },
             "style": "simple"
+          },
+          {
+            "in": "query",
+            "name": "master_timeout",
+            "description": "Period to wait for a connection to the master node.",
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/_types:Duration"
+            },
+            "style": "form"
           }
         ],
         "responses": {
@@ -2777,6 +2820,16 @@
               "$ref": "#/components/schemas/_types:Indices"
             },
             "style": "simple"
+          },
+          {
+            "in": "query",
+            "name": "timeout",
+            "description": "Period to wait for a response. If no response is received before the timeout expires, the request fails and returns an error.",
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/_types:Duration"
+            },
+            "style": "form"
           }
         ],
         "responses": {
@@ -2827,6 +2880,16 @@
               "$ref": "#/components/schemas/_types:IndexName"
             },
             "style": "simple"
+          },
+          {
+            "in": "query",
+            "name": "timeout",
+            "description": "Period to wait for a response. If no response is received before the timeout expires, the request fails and returns an error.",
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/_types:Duration"
+            },
+            "style": "form"
           }
         ],
         "requestBody": {
@@ -2887,6 +2950,11 @@
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/ccr-auto-follow.html"
         },
         "operationId": "ccr-get-auto-follow-pattern",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/ccr.get_auto_follow_pattern#master_timeout"
+          }
+        ],
         "responses": {
           "200": {
             "$ref": "#/components/responses/ccr.get_auto_follow_pattern#200"
@@ -2917,6 +2985,16 @@
               "$ref": "#/components/schemas/_types:Name"
             },
             "style": "simple"
+          },
+          {
+            "in": "query",
+            "name": "master_timeout",
+            "description": "Period to wait for a connection to the master node.",
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/_types:Duration"
+            },
+            "style": "form"
           }
         ],
         "responses": {
@@ -2953,6 +3031,16 @@
               "$ref": "#/components/schemas/_types:IndexName"
             },
             "style": "simple"
+          },
+          {
+            "in": "query",
+            "name": "master_timeout",
+            "description": "Period to wait for a connection to the master node.",
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/_types:Duration"
+            },
+            "style": "form"
           }
         ],
         "responses": {
@@ -2992,6 +3080,16 @@
               "$ref": "#/components/schemas/_types:Name"
             },
             "style": "simple"
+          },
+          {
+            "in": "query",
+            "name": "master_timeout",
+            "description": "Period to wait for a connection to the master node.",
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/_types:Duration"
+            },
+            "style": "form"
           }
         ],
         "responses": {
@@ -3031,6 +3129,16 @@
               "$ref": "#/components/schemas/_types:IndexName"
             },
             "style": "simple"
+          },
+          {
+            "in": "query",
+            "name": "master_timeout",
+            "description": "Period to wait for a connection to the master node.",
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/_types:Duration"
+            },
+            "style": "form"
           }
         ],
         "requestBody": {
@@ -3097,6 +3205,28 @@
         "summary": "Get cross-cluster replication stats",
         "description": "This API returns stats about auto-following and the same shard-level stats as the get follower stats API.",
         "operationId": "ccr-stats",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "master_timeout",
+            "description": "Period to wait for a connection to the master node.",
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/_types:Duration"
+            },
+            "style": "form"
+          },
+          {
+            "in": "query",
+            "name": "timeout",
+            "description": "Period to wait for a response. If no response is received before the timeout expires, the request fails and returns an error.",
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/_types:Duration"
+            },
+            "style": "form"
+          }
+        ],
         "responses": {
           "200": {
             "description": "",
@@ -3146,6 +3276,16 @@
               "$ref": "#/components/schemas/_types:IndexName"
             },
             "style": "simple"
+          },
+          {
+            "in": "query",
+            "name": "master_timeout",
+            "description": "Period to wait for a connection to the master node.",
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/_types:Duration"
+            },
+            "style": "form"
           }
         ],
         "responses": {
@@ -3396,6 +3536,9 @@
           },
           {
             "$ref": "#/components/parameters/cluster.allocation_explain#include_yes_decisions"
+          },
+          {
+            "$ref": "#/components/parameters/cluster.allocation_explain#master_timeout"
           }
         ],
         "requestBody": {
@@ -3421,6 +3564,9 @@
           },
           {
             "$ref": "#/components/parameters/cluster.allocation_explain#include_yes_decisions"
+          },
+          {
+            "$ref": "#/components/parameters/cluster.allocation_explain#master_timeout"
           }
         ],
         "requestBody": {
@@ -3661,6 +3807,16 @@
           },
           {
             "in": "query",
+            "name": "master_timeout",
+            "description": "Period to wait for a connection to the master node.",
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/_types:Duration"
+            },
+            "style": "form"
+          },
+          {
+            "in": "query",
             "name": "timeout",
             "description": "When adding a voting configuration exclusion, the API waits for the\nspecified nodes to be excluded from the voting configuration before\nreturning. If the timeout expires before the appropriate condition\nis satisfied, the request fails and returns an error.",
             "deprecated": false,
@@ -3691,6 +3847,16 @@
         },
         "operationId": "cluster-delete-voting-config-exclusions",
         "parameters": [
+          {
+            "in": "query",
+            "name": "master_timeout",
+            "description": "Period to wait for a connection to the master node.",
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/_types:Duration"
+            },
+            "style": "form"
+          },
           {
             "in": "query",
             "name": "wait_for_removal",
@@ -7933,6 +8099,9 @@
         "parameters": [
           {
             "$ref": "#/components/parameters/enrich.get_policy#name"
+          },
+          {
+            "$ref": "#/components/parameters/enrich.get_policy#master_timeout"
           }
         ],
         "responses": {
@@ -7960,6 +8129,16 @@
               "$ref": "#/components/schemas/_types:Name"
             },
             "style": "simple"
+          },
+          {
+            "in": "query",
+            "name": "master_timeout",
+            "description": "Period to wait for a connection to the master node.",
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/_types:Duration"
+            },
+            "style": "form"
           }
         ],
         "requestBody": {
@@ -8015,6 +8194,16 @@
               "$ref": "#/components/schemas/_types:Name"
             },
             "style": "simple"
+          },
+          {
+            "in": "query",
+            "name": "master_timeout",
+            "description": "Period to wait for a connection to the master node.",
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/_types:Duration"
+            },
+            "style": "form"
           }
         ],
         "responses": {
@@ -8051,6 +8240,16 @@
               "$ref": "#/components/schemas/_types:Name"
             },
             "style": "simple"
+          },
+          {
+            "in": "query",
+            "name": "master_timeout",
+            "description": "Period to wait for a connection to the master node.",
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/_types:Duration"
+            },
+            "style": "form"
           },
           {
             "in": "query",
@@ -8094,6 +8293,11 @@
         "summary": "Get an enrich policy",
         "description": "Returns information about an enrich policy.",
         "operationId": "enrich-get-policy-1",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/enrich.get_policy#master_timeout"
+          }
+        ],
         "responses": {
           "200": {
             "$ref": "#/components/responses/enrich.get_policy#200"
@@ -8110,6 +8314,18 @@
         "summary": "Get enrich stats",
         "description": "Returns enrich coordinator statistics and information about enrich policies that are currently executing.",
         "operationId": "enrich-stats",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "master_timeout",
+            "description": "Period to wait for a connection to the master node.",
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/_types:Duration"
+            },
+            "style": "form"
+          }
+        ],
         "responses": {
           "200": {
             "description": "",
@@ -8922,6 +9138,18 @@
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/snapshots-take-snapshot.html"
         },
         "operationId": "features-get-features",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "master_timeout",
+            "description": "Period to wait for a connection to the master node.",
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/_types:Duration"
+            },
+            "style": "form"
+          }
+        ],
         "responses": {
           "200": {
             "description": "",
@@ -8956,6 +9184,18 @@
         "summary": "Reset the features",
         "description": "Clear all of the state information stored in system indices by Elasticsearch features, including the security and machine learning indices.\n\nWARNING: Intended for development and testing use only. Do not reset features on a production cluster.\n\nReturn a cluster to the same state as a new installation by resetting the feature state for all Elasticsearch features.\nThis deletes all state information stored in system indices.\n\nThe response code is HTTP 200 if the state is successfully reset for all features.\nIt is HTTP 500 if the reset operation failed for any feature.\n\nNote that select features might provide a way to reset particular system indices.\nUsing this API resets all features, both those that are built-in and implemented as plugins.\n\nTo list the features that will be affected, use the get features API.\n\nIMPORTANT: The features installed on the node you submit this request to are the features that will be reset. Run on the master node if you have any doubts about which plugins are installed on individual nodes.",
         "operationId": "features-reset-features",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "master_timeout",
+            "description": "Period to wait for a connection to the master node.",
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/_types:Duration"
+            },
+            "style": "form"
+          }
+        ],
         "responses": {
           "200": {
             "description": "",
@@ -10203,16 +10443,6 @@
               "$ref": "#/components/schemas/_types:Duration"
             },
             "style": "form"
-          },
-          {
-            "in": "query",
-            "name": "timeout",
-            "description": "Period to wait for a response. If no response is received before the timeout expires, the request fails and returns an error.",
-            "deprecated": false,
-            "schema": {
-              "$ref": "#/components/schemas/_types:Duration"
-            },
-            "style": "form"
           }
         ],
         "responses": {
@@ -10347,9 +10577,11 @@
                       "type": "boolean"
                     },
                     "removed_legacy_template": {
+                      "description": "The name of the legacy index template that was deleted.\nThis information is missing if no legacy index templates were deleted.",
                       "type": "string"
                     },
                     "migrated_ilm_policies": {
+                      "description": "The ILM policies that were updated.",
                       "type": "array",
                       "items": {
                         "type": "string"
@@ -10359,18 +10591,21 @@
                       "$ref": "#/components/schemas/_types:Indices"
                     },
                     "migrated_legacy_templates": {
+                      "description": "The legacy index templates that were updated to not contain custom routing settings for the provided data attribute.",
                       "type": "array",
                       "items": {
                         "type": "string"
                       }
                     },
                     "migrated_composable_templates": {
+                      "description": "The composable index templates that were updated to not contain custom routing settings for the provided data attribute.",
                       "type": "array",
                       "items": {
                         "type": "string"
                       }
                     },
                     "migrated_component_templates": {
+                      "description": "The component templates that were updated to not contain custom routing settings for the provided data attribute.",
                       "type": "array",
                       "items": {
                         "type": "string"
@@ -10550,6 +10785,7 @@
           {
             "in": "query",
             "name": "master_timeout",
+            "description": "Period to wait for a connection to the master node. If no response is received before the timeout expires, the request fails and returns an error.",
             "deprecated": false,
             "schema": {
               "$ref": "#/components/schemas/_types:Duration"
@@ -10559,6 +10795,7 @@
           {
             "in": "query",
             "name": "timeout",
+            "description": "Period to wait for a response. If no response is received before the timeout expires, the request fails and returns an error.",
             "deprecated": false,
             "schema": {
               "$ref": "#/components/schemas/_types:Duration"
@@ -10593,6 +10830,7 @@
           {
             "in": "query",
             "name": "master_timeout",
+            "description": "Period to wait for a connection to the master node. If no response is received before the timeout expires, the request fails and returns an error.",
             "deprecated": false,
             "schema": {
               "$ref": "#/components/schemas/_types:Duration"
@@ -10602,6 +10840,7 @@
           {
             "in": "query",
             "name": "timeout",
+            "description": "Period to wait for a response. If no response is received before the timeout expires, the request fails and returns an error.",
             "deprecated": false,
             "schema": {
               "$ref": "#/components/schemas/_types:Duration"
@@ -12922,26 +13161,6 @@
             "deprecated": false,
             "schema": {
               "$ref": "#/components/schemas/_types:Fields"
-            },
-            "style": "form"
-          },
-          {
-            "in": "query",
-            "name": "master_timeout",
-            "description": "Period to wait for a connection to the master node.\nIf no response is received before the timeout expires, the request fails and returns an error.",
-            "deprecated": false,
-            "schema": {
-              "$ref": "#/components/schemas/_types:Duration"
-            },
-            "style": "form"
-          },
-          {
-            "in": "query",
-            "name": "timeout",
-            "description": "Period to wait for a response.\nIf no response is received before the timeout expires, the request fails and returns an error.",
-            "deprecated": false,
-            "schema": {
-              "$ref": "#/components/schemas/_types:Duration"
             },
             "style": "form"
           },
@@ -15839,9 +16058,6 @@
         "parameters": [
           {
             "$ref": "#/components/parameters/ingest.get_geoip_database#id"
-          },
-          {
-            "$ref": "#/components/parameters/ingest.get_geoip_database#master_timeout"
           }
         ],
         "responses": {
@@ -16365,11 +16581,6 @@
         "summary": "Get GeoIP database configurations",
         "description": "Get information about one or more IP geolocation database configurations.",
         "operationId": "ingest-get-geoip-database",
-        "parameters": [
-          {
-            "$ref": "#/components/parameters/ingest.get_geoip_database#master_timeout"
-          }
-        ],
         "responses": {
           "200": {
             "$ref": "#/components/responses/ingest.get_geoip_database#200"
@@ -16675,6 +16886,12 @@
         "parameters": [
           {
             "$ref": "#/components/parameters/license.post#acknowledge"
+          },
+          {
+            "$ref": "#/components/parameters/license.post#master_timeout"
+          },
+          {
+            "$ref": "#/components/parameters/license.post#timeout"
           }
         ],
         "requestBody": {
@@ -16696,6 +16913,12 @@
         "parameters": [
           {
             "$ref": "#/components/parameters/license.post#acknowledge"
+          },
+          {
+            "$ref": "#/components/parameters/license.post#master_timeout"
+          },
+          {
+            "$ref": "#/components/parameters/license.post#timeout"
           }
         ],
         "requestBody": {
@@ -16717,6 +16940,28 @@
           "url": "https://www.elastic.co/guide/en/kibana/current/managing-licenses.html"
         },
         "operationId": "license-delete",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "master_timeout",
+            "description": "Period to wait for a connection to the master node.",
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/_types:Duration"
+            },
+            "style": "form"
+          },
+          {
+            "in": "query",
+            "name": "timeout",
+            "description": "Period to wait for a response. If no response is received before the timeout expires, the request fails and returns an error.",
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/_types:Duration"
+            },
+            "style": "form"
+          }
+        ],
         "responses": {
           "200": {
             "description": "",
@@ -16809,6 +17054,26 @@
               "type": "boolean"
             },
             "style": "form"
+          },
+          {
+            "in": "query",
+            "name": "master_timeout",
+            "description": "Period to wait for a connection to the master node.",
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/_types:Duration"
+            },
+            "style": "form"
+          },
+          {
+            "in": "query",
+            "name": "timeout",
+            "description": "Period to wait for a response. If no response is received before the timeout expires, the request fails and returns an error.",
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/_types:Duration"
+            },
+            "style": "form"
           }
         ],
         "responses": {
@@ -16885,6 +17150,16 @@
             "deprecated": false,
             "schema": {
               "type": "string"
+            },
+            "style": "form"
+          },
+          {
+            "in": "query",
+            "name": "master_timeout",
+            "description": "Period to wait for a connection to the master node.",
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/_types:Duration"
             },
             "style": "form"
           }
@@ -17852,7 +18127,7 @@
           "ml data frame"
         ],
         "summary": "Create a data frame analytics job",
-        "description": "This API creates a data frame analytics job that performs an analysis on the\nsource indices and stores the outcome in a destination index.",
+        "description": "This API creates a data frame analytics job that performs an analysis on the\nsource indices and stores the outcome in a destination index.\nBy default, the query used in the source configuration is `{\"match_all\": {}}`.\n\nIf the destination index does not exist, it is created automatically when you start the job.\n\nIf you supply only a subset of the regression or classification parameters, hyperparameter optimization occurs. It determines a value for each of the undefined parameters.",
         "operationId": "ml-put-data-frame-analytics",
         "parameters": [
           {
@@ -18072,7 +18347,7 @@
           "ml anomaly"
         ],
         "summary": "Create a datafeed",
-        "description": "Datafeeds retrieve data from Elasticsearch for analysis by an anomaly detection job.\nYou can associate only one datafeed with each anomaly detection job.\nThe datafeed contains a query that runs at a defined interval (`frequency`).\nIf you are concerned about delayed data, you can add a delay (`query_delay`) at each interval.\nWhen Elasticsearch security features are enabled, your datafeed remembers which roles the user who created it had\nat the time of creation and runs the query using those same roles. If you provide secondary authorization headers,\nthose credentials are used instead.\nYou must use Kibana, this API, or the create anomaly detection jobs API to create a datafeed. Do not add a datafeed\ndirectly to the `.ml-config` index. Do not give users `write` privileges on the `.ml-config` index.",
+        "description": "Datafeeds retrieve data from Elasticsearch for analysis by an anomaly detection job.\nYou can associate only one datafeed with each anomaly detection job.\nThe datafeed contains a query that runs at a defined interval (`frequency`).\nIf you are concerned about delayed data, you can add a delay (`query_delay') at each interval.\nBy default, the datafeed uses the following query: `{\"match_all\": {\"boost\": 1}}`.\n\nWhen Elasticsearch security features are enabled, your datafeed remembers which roles the user who created it had\nat the time of creation and runs the query using those same roles. If you provide secondary authorization headers,\nthose credentials are used instead.\nYou must use Kibana, this API, or the create anomaly detection jobs API to create a datafeed. Do not add a datafeed\ndirectly to the `.ml-config` index. Do not give users `write` privileges on the `.ml-config` index.",
         "operationId": "ml-put-datafeed",
         "parameters": [
           {
@@ -18693,7 +18968,7 @@
           "ml anomaly"
         ],
         "summary": "Create an anomaly detection job",
-        "description": "If you include a `datafeed_config`, you must have read index privileges on the source index.",
+        "description": "If you include a `datafeed_config`, you must have read index privileges on the source index.\nIf you include a `datafeed_config` but do not provide a query, the datafeed uses `{\"match_all\": {\"boost\": 1}}`.",
         "operationId": "ml-put-job",
         "parameters": [
           {
@@ -19287,6 +19562,16 @@
             "deprecated": false,
             "schema": {
               "type": "boolean"
+            },
+            "style": "form"
+          },
+          {
+            "in": "query",
+            "name": "timeout",
+            "description": "Period to wait for a response. If no response is received before the timeout expires, the request fails and returns an error.",
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/_types:Duration"
             },
             "style": "form"
           }
@@ -20641,9 +20926,6 @@
         "operationId": "ml-get-memory-stats",
         "parameters": [
           {
-            "$ref": "#/components/parameters/ml.get_memory_stats#human"
-          },
-          {
             "$ref": "#/components/parameters/ml.get_memory_stats#master_timeout"
           },
           {
@@ -20669,9 +20951,6 @@
         "parameters": [
           {
             "$ref": "#/components/parameters/ml.get_memory_stats#node_id"
-          },
-          {
-            "$ref": "#/components/parameters/ml.get_memory_stats#human"
           },
           {
             "$ref": "#/components/parameters/ml.get_memory_stats#master_timeout"
@@ -24228,9 +24507,6 @@
             "$ref": "#/components/parameters/nodes.hot_threads#snapshots"
           },
           {
-            "$ref": "#/components/parameters/nodes.hot_threads#master_timeout"
-          },
-          {
             "$ref": "#/components/parameters/nodes.hot_threads#threads"
           },
           {
@@ -24272,9 +24548,6 @@
             "$ref": "#/components/parameters/nodes.hot_threads#snapshots"
           },
           {
-            "$ref": "#/components/parameters/nodes.hot_threads#master_timeout"
-          },
-          {
             "$ref": "#/components/parameters/nodes.hot_threads#threads"
           },
           {
@@ -24307,9 +24580,6 @@
             "$ref": "#/components/parameters/nodes.info#flat_settings"
           },
           {
-            "$ref": "#/components/parameters/nodes.info#master_timeout"
-          },
-          {
             "$ref": "#/components/parameters/nodes.info#timeout"
           }
         ],
@@ -24337,9 +24607,6 @@
             "$ref": "#/components/parameters/nodes.info#flat_settings"
           },
           {
-            "$ref": "#/components/parameters/nodes.info#master_timeout"
-          },
-          {
             "$ref": "#/components/parameters/nodes.info#timeout"
           }
         ],
@@ -24365,9 +24632,6 @@
           },
           {
             "$ref": "#/components/parameters/nodes.info#flat_settings"
-          },
-          {
-            "$ref": "#/components/parameters/nodes.info#master_timeout"
           },
           {
             "$ref": "#/components/parameters/nodes.info#timeout"
@@ -24398,9 +24662,6 @@
           },
           {
             "$ref": "#/components/parameters/nodes.info#flat_settings"
-          },
-          {
-            "$ref": "#/components/parameters/nodes.info#master_timeout"
           },
           {
             "$ref": "#/components/parameters/nodes.info#timeout"
@@ -24493,9 +24754,6 @@
             "$ref": "#/components/parameters/nodes.stats#level"
           },
           {
-            "$ref": "#/components/parameters/nodes.stats#master_timeout"
-          },
-          {
             "$ref": "#/components/parameters/nodes.stats#timeout"
           },
           {
@@ -24543,9 +24801,6 @@
             "$ref": "#/components/parameters/nodes.stats#level"
           },
           {
-            "$ref": "#/components/parameters/nodes.stats#master_timeout"
-          },
-          {
             "$ref": "#/components/parameters/nodes.stats#timeout"
           },
           {
@@ -24591,9 +24846,6 @@
           },
           {
             "$ref": "#/components/parameters/nodes.stats#level"
-          },
-          {
-            "$ref": "#/components/parameters/nodes.stats#master_timeout"
           },
           {
             "$ref": "#/components/parameters/nodes.stats#timeout"
@@ -24646,9 +24898,6 @@
             "$ref": "#/components/parameters/nodes.stats#level"
           },
           {
-            "$ref": "#/components/parameters/nodes.stats#master_timeout"
-          },
-          {
             "$ref": "#/components/parameters/nodes.stats#timeout"
           },
           {
@@ -24697,9 +24946,6 @@
           },
           {
             "$ref": "#/components/parameters/nodes.stats#level"
-          },
-          {
-            "$ref": "#/components/parameters/nodes.stats#master_timeout"
           },
           {
             "$ref": "#/components/parameters/nodes.stats#timeout"
@@ -24753,9 +24999,6 @@
           },
           {
             "$ref": "#/components/parameters/nodes.stats#level"
-          },
-          {
-            "$ref": "#/components/parameters/nodes.stats#master_timeout"
           },
           {
             "$ref": "#/components/parameters/nodes.stats#timeout"
@@ -25995,6 +26238,7 @@
             "$ref": "#/components/responses/rollup.get_jobs#200"
           }
         },
+        "deprecated": true,
         "x-state": "Technical preview"
       },
       "put": {
@@ -26079,6 +26323,7 @@
             }
           }
         },
+        "deprecated": true,
         "x-state": "Technical preview"
       },
       "delete": {
@@ -26127,6 +26372,7 @@
             }
           }
         },
+        "deprecated": true,
         "x-state": "Technical preview"
       }
     },
@@ -26143,6 +26389,7 @@
             "$ref": "#/components/responses/rollup.get_jobs#200"
           }
         },
+        "deprecated": true,
         "x-state": "Technical preview"
       }
     },
@@ -26164,6 +26411,7 @@
             "$ref": "#/components/responses/rollup.get_rollup_caps#200"
           }
         },
+        "deprecated": true,
         "x-state": "Technical preview"
       }
     },
@@ -26180,6 +26428,7 @@
             "$ref": "#/components/responses/rollup.get_rollup_caps#200"
           }
         },
+        "deprecated": true,
         "x-state": "Technical preview"
       }
     },
@@ -26219,6 +26468,7 @@
             }
           }
         },
+        "deprecated": true,
         "x-state": "Technical preview"
       }
     },
@@ -26228,7 +26478,7 @@
           "rollup"
         ],
         "summary": "Search rolled-up data",
-        "description": "The rollup search endpoint is needed because, internally, rolled-up documents utilize a different document structure than the original data.\nIt rewrites standard Query DSL into a format that matches the rollup documents then takes the response and rewrites it back to what a client would expect given the original query.",
+        "description": "The rollup search endpoint is needed because, internally, rolled-up documents utilize a different document structure than the original data.\nIt rewrites standard Query DSL into a format that matches the rollup documents then takes the response and rewrites it back to what a client would expect given the original query.\n\nThe request body supports a subset of features from the regular search API.\nThe following functionality is not available:\n\n`size`: Because rollups work on pre-aggregated data, no search hits can be returned and so size must be set to zero or omitted entirely.\n`highlighter`, `suggestors`, `post_filter`, `profile`, `explain`: These are similarly disallowed.\n\n**Searching both historical rollup and non-rollup data**\n\nThe rollup search API has the capability to search across both \"live\" non-rollup data and the aggregated rollup data.\nThis is done by simply adding the live indices to the URI. For example:\n\n```\nGET sensor-1,sensor_rollup/_rollup_search\n{\n  \"size\": 0,\n  \"aggregations\": {\n     \"max_temperature\": {\n      \"max\": {\n        \"field\": \"temperature\"\n      }\n    }\n  }\n}\n```\n\nThe rollup search endpoint does two things when the search runs:\n\n* The original request is sent to the non-rollup index unaltered.\n* A rewritten version of the original request is sent to the rollup index.\n\nWhen the two responses are received, the endpoint rewrites the rollup response and merges the two together.\nDuring the merging process, if there is any overlap in buckets between the two responses, the buckets from the non-rollup index are used.",
         "operationId": "rollup-rollup-search",
         "parameters": [
           {
@@ -26249,6 +26499,7 @@
             "$ref": "#/components/responses/rollup.rollup_search#200"
           }
         },
+        "deprecated": true,
         "x-state": "Technical preview"
       },
       "post": {
@@ -26256,7 +26507,7 @@
           "rollup"
         ],
         "summary": "Search rolled-up data",
-        "description": "The rollup search endpoint is needed because, internally, rolled-up documents utilize a different document structure than the original data.\nIt rewrites standard Query DSL into a format that matches the rollup documents then takes the response and rewrites it back to what a client would expect given the original query.",
+        "description": "The rollup search endpoint is needed because, internally, rolled-up documents utilize a different document structure than the original data.\nIt rewrites standard Query DSL into a format that matches the rollup documents then takes the response and rewrites it back to what a client would expect given the original query.\n\nThe request body supports a subset of features from the regular search API.\nThe following functionality is not available:\n\n`size`: Because rollups work on pre-aggregated data, no search hits can be returned and so size must be set to zero or omitted entirely.\n`highlighter`, `suggestors`, `post_filter`, `profile`, `explain`: These are similarly disallowed.\n\n**Searching both historical rollup and non-rollup data**\n\nThe rollup search API has the capability to search across both \"live\" non-rollup data and the aggregated rollup data.\nThis is done by simply adding the live indices to the URI. For example:\n\n```\nGET sensor-1,sensor_rollup/_rollup_search\n{\n  \"size\": 0,\n  \"aggregations\": {\n     \"max_temperature\": {\n      \"max\": {\n        \"field\": \"temperature\"\n      }\n    }\n  }\n}\n```\n\nThe rollup search endpoint does two things when the search runs:\n\n* The original request is sent to the non-rollup index unaltered.\n* A rewritten version of the original request is sent to the rollup index.\n\nWhen the two responses are received, the endpoint rewrites the rollup response and merges the two together.\nDuring the merging process, if there is any overlap in buckets between the two responses, the buckets from the non-rollup index are used.",
         "operationId": "rollup-rollup-search-1",
         "parameters": [
           {
@@ -26277,6 +26528,7 @@
             "$ref": "#/components/responses/rollup.rollup_search#200"
           }
         },
+        "deprecated": true,
         "x-state": "Technical preview"
       }
     },
@@ -26321,6 +26573,7 @@
             }
           }
         },
+        "deprecated": true,
         "x-state": "Technical preview"
       }
     },
@@ -26330,7 +26583,7 @@
           "rollup"
         ],
         "summary": "Stop rollup jobs",
-        "description": "If you try to stop a job that does not exist, an exception occurs.\nIf you try to stop a job that is already stopped, nothing happens.",
+        "description": "If you try to stop a job that does not exist, an exception occurs.\nIf you try to stop a job that is already stopped, nothing happens.\n\nSince only a stopped job can be deleted, it can be useful to block the API until the indexer has fully stopped.\nThis is accomplished with the `wait_for_completion` query parameter, and optionally a timeout. For example:\n\n```\nPOST _rollup/job/sensor/_stop?wait_for_completion=true&timeout=10s\n```\nThe parameter blocks the API call from returning until either the job has moved to STOPPED or the specified time has elapsed.\nIf the specified time elapses without the job moving to STOPPED, a timeout exception occurs.",
         "operationId": "rollup-stop-job",
         "parameters": [
           {
@@ -26347,7 +26600,7 @@
           {
             "in": "query",
             "name": "timeout",
-            "description": "If `wait_for_completion` is `true`, the API blocks for (at maximum) the specified duration while waiting for the job to stop.\nIf more than `timeout` time has passed, the API throws a timeout exception.",
+            "description": "If `wait_for_completion` is `true`, the API blocks for (at maximum) the specified duration while waiting for the job to stop.\nIf more than `timeout` time has passed, the API throws a timeout exception.\nNOTE: Even if a timeout occurs, the stop request is still processing and eventually moves the job to STOPPED.\nThe timeout simply means the API call itself timed out while waiting for the status change.",
             "deprecated": false,
             "schema": {
               "$ref": "#/components/schemas/_types:Duration"
@@ -26385,6 +26638,7 @@
             }
           }
         },
+        "deprecated": true,
         "x-state": "Technical preview"
       }
     },
@@ -27655,6 +27909,9 @@
             "$ref": "#/components/parameters/search_shards#local"
           },
           {
+            "$ref": "#/components/parameters/search_shards#master_timeout"
+          },
+          {
             "$ref": "#/components/parameters/search_shards#preference"
           },
           {
@@ -27686,6 +27943,9 @@
           },
           {
             "$ref": "#/components/parameters/search_shards#local"
+          },
+          {
+            "$ref": "#/components/parameters/search_shards#master_timeout"
           },
           {
             "$ref": "#/components/parameters/search_shards#preference"
@@ -27726,6 +27986,9 @@
             "$ref": "#/components/parameters/search_shards#local"
           },
           {
+            "$ref": "#/components/parameters/search_shards#master_timeout"
+          },
+          {
             "$ref": "#/components/parameters/search_shards#preference"
           },
           {
@@ -27760,6 +28023,9 @@
           },
           {
             "$ref": "#/components/parameters/search_shards#local"
+          },
+          {
+            "$ref": "#/components/parameters/search_shards#master_timeout"
           },
           {
             "$ref": "#/components/parameters/search_shards#preference"
@@ -28087,12 +28353,6 @@
           },
           {
             "$ref": "#/components/parameters/searchable_snapshots.clear_cache#ignore_unavailable"
-          },
-          {
-            "$ref": "#/components/parameters/searchable_snapshots.clear_cache#pretty"
-          },
-          {
-            "$ref": "#/components/parameters/searchable_snapshots.clear_cache#human"
           }
         ],
         "responses": {
@@ -28123,12 +28383,6 @@
           },
           {
             "$ref": "#/components/parameters/searchable_snapshots.clear_cache#ignore_unavailable"
-          },
-          {
-            "$ref": "#/components/parameters/searchable_snapshots.clear_cache#pretty"
-          },
-          {
-            "$ref": "#/components/parameters/searchable_snapshots.clear_cache#human"
           }
         ],
         "responses": {
@@ -28604,6 +28858,92 @@
           }
         },
         "x-state": "Added in 8.15.0"
+      }
+    },
+    "/_security/api_key/_bulk_update": {
+      "post": {
+        "tags": [
+          "security"
+        ],
+        "summary": "Bulk update API keys",
+        "description": "Update the attributes for multiple API keys.\n\nIMPORTANT: It is not possible to use an API key as the authentication credential for this API. To update API keys, the owner user's credentials are required.\n\nThis API is similar to the update API key API but enables you to apply the same update to multiple API keys in one API call. This operation can greatly improve performance over making individual updates.\n\nIt is not possible to update expired or invalidated API keys.\n\nThis API supports updates to API key access scope, metadata and expiration.\nThe access scope of each API key is derived from the `role_descriptors` you specify in the request and a snapshot of the owner user's permissions at the time of the request.\nThe snapshot of the owner's permissions is updated automatically on every call.\n\nIMPORTANT: If you don't specify `role_descriptors` in the request, a call to this API might still change an API key's access scope. This change can occur if the owner user's permissions have changed since the API key was created or last modified.\n\nA successful request returns a JSON structure that contains the IDs of all updated API keys, the IDs of API keys that already had the requested changes and did not require an update, and error details for any failed update.",
+        "operationId": "security-bulk-update-api-keys",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "expiration": {
+                    "$ref": "#/components/schemas/_types:Duration"
+                  },
+                  "ids": {
+                    "description": "The API key identifiers.",
+                    "oneOf": [
+                      {
+                        "type": "string"
+                      },
+                      {
+                        "type": "array",
+                        "items": {
+                          "type": "string"
+                        }
+                      }
+                    ]
+                  },
+                  "metadata": {
+                    "$ref": "#/components/schemas/_types:Metadata"
+                  },
+                  "role_descriptors": {
+                    "description": "The role descriptors to assign to the API keys.\nAn API key's effective permissions are an intersection of its assigned privileges and the point-in-time snapshot of permissions of the owner user.\nYou can assign new privileges by specifying them in this parameter.\nTo remove assigned privileges, supply the `role_descriptors` parameter as an empty object `{}`.\nIf an API key has no assigned privileges, it inherits the owner user's full permissions.\nThe snapshot of the owner's permissions is always updated, whether you supply the `role_descriptors` parameter.\nThe structure of a role descriptor is the same as the request for the create API keys API.",
+                    "type": "object",
+                    "additionalProperties": {
+                      "$ref": "#/components/schemas/security._types:RoleDescriptor"
+                    }
+                  }
+                },
+                "required": [
+                  "ids"
+                ]
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "errors": {
+                      "$ref": "#/components/schemas/security._types:BulkError"
+                    },
+                    "noops": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      }
+                    },
+                    "updated": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      }
+                    }
+                  },
+                  "required": [
+                    "noops",
+                    "updated"
+                  ]
+                }
+              }
+            }
+          }
+        },
+        "x-state": "Added in 8.5.0"
       }
     },
     "/_security/user/{username}/_password": {
@@ -29499,6 +29839,76 @@
             "$ref": "#/components/responses/security.create_service_token#200"
           }
         }
+      }
+    },
+    "/_security/delegate_pki": {
+      "post": {
+        "tags": [
+          "security"
+        ],
+        "summary": "Delegate PKI authentication",
+        "description": "This API implements the exchange of an X509Certificate chain for an Elasticsearch access token.\nThe certificate chain is validated, according to RFC 5280, by sequentially considering the trust configuration of every installed PKI realm that has `delegation.enabled` set to `true`.\nA successfully trusted client certificate is also subject to the validation of the subject distinguished name according to thw `username_pattern` of the respective realm.\n\nThis API is called by smart and trusted proxies, such as Kibana, which terminate the user's TLS session but still want to authenticate the user by using a PKI realm—-​as if the user connected directly to Elasticsearch.\n\nIMPORTANT: The association between the subject public key in the target certificate and the corresponding private key is not validated.\nThis is part of the TLS authentication process and it is delegated to the proxy that calls this API.\nThe proxy is trusted to have performed the TLS authentication and this API translates that authentication into an Elasticsearch access token.",
+        "externalDocs": {
+          "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/pki-realm.html"
+        },
+        "operationId": "security-delegate-pki",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "x509_certificate_chain": {
+                    "description": "The X509Certificate chain, which is represented as an ordered string array.\nEach string in the array is a base64-encoded (Section 4 of RFC4648 - not base64url-encoded) of the certificate's DER encoding.\n\nThe first element is the target certificate that contains the subject distinguished name that is requesting access.\nThis may be followed by additional certificates; each subsequent certificate is used to certify the previous one.",
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    }
+                  }
+                },
+                "required": [
+                  "x509_certificate_chain"
+                ]
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "access_token": {
+                      "description": "An access token associated with the subject distinguished name of the client's certificate.",
+                      "type": "string"
+                    },
+                    "expires_in": {
+                      "description": "The amount of time (in seconds) before the token expires.",
+                      "type": "number"
+                    },
+                    "type": {
+                      "description": "The type of token.",
+                      "type": "string"
+                    },
+                    "authentication": {
+                      "$ref": "#/components/schemas/security.delegate_pki:Authentication"
+                    }
+                  },
+                  "required": [
+                    "access_token",
+                    "expires_in",
+                    "type"
+                  ]
+                }
+              }
+            }
+          }
+        },
+        "x-state": "Added in 7.4.0"
       }
     },
     "/_security/privilege/{application}/{name}": {
@@ -32067,9 +32477,6 @@
           },
           {
             "$ref": "#/components/parameters/shutdown.get_node#master_timeout"
-          },
-          {
-            "$ref": "#/components/parameters/shutdown.get_node#timeout"
           }
         ],
         "responses": {
@@ -32230,9 +32637,6 @@
         "parameters": [
           {
             "$ref": "#/components/parameters/shutdown.get_node#master_timeout"
-          },
-          {
-            "$ref": "#/components/parameters/shutdown.get_node#timeout"
           }
         ],
         "responses": {
@@ -32254,6 +32658,12 @@
         "parameters": [
           {
             "$ref": "#/components/parameters/slm.get_lifecycle#policy_id"
+          },
+          {
+            "$ref": "#/components/parameters/slm.get_lifecycle#master_timeout"
+          },
+          {
+            "$ref": "#/components/parameters/slm.get_lifecycle#timeout"
           }
         ],
         "responses": {
@@ -32362,6 +32772,26 @@
               "$ref": "#/components/schemas/_types:Name"
             },
             "style": "simple"
+          },
+          {
+            "in": "query",
+            "name": "master_timeout",
+            "description": "Period to wait for a connection to the master node. If no response is received before the timeout expires, the request fails and returns an error.",
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/_types:Duration"
+            },
+            "style": "form"
+          },
+          {
+            "in": "query",
+            "name": "timeout",
+            "description": "Period to wait for a response. If no response is received before the timeout expires, the request fails and returns an error.",
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/_types:Duration"
+            },
+            "style": "form"
           }
         ],
         "responses": {
@@ -32398,6 +32828,26 @@
               "$ref": "#/components/schemas/_types:Name"
             },
             "style": "simple"
+          },
+          {
+            "in": "query",
+            "name": "master_timeout",
+            "description": "Period to wait for a connection to the master node. If no response is received before the timeout expires, the request fails and returns an error.",
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/_types:Duration"
+            },
+            "style": "form"
+          },
+          {
+            "in": "query",
+            "name": "timeout",
+            "description": "Period to wait for a response. If no response is received before the timeout expires, the request fails and returns an error.",
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/_types:Duration"
+            },
+            "style": "form"
           }
         ],
         "responses": {
@@ -32431,6 +32881,28 @@
         "summary": "Run a retention policy",
         "description": "Manually apply the retention policy to force immediate removal of snapshots that are expired according to the snapshot lifecycle policy retention rules.\nThe retention policy is normally applied according to its schedule.",
         "operationId": "slm-execute-retention",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "master_timeout",
+            "description": "Period to wait for a connection to the master node. If no response is received before the timeout expires, the request fails and returns an error.",
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/_types:Duration"
+            },
+            "style": "form"
+          },
+          {
+            "in": "query",
+            "name": "timeout",
+            "description": "Period to wait for a response. If no response is received before the timeout expires, the request fails and returns an error.",
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/_types:Duration"
+            },
+            "style": "form"
+          }
+        ],
         "responses": {
           "200": {
             "description": "",
@@ -32454,6 +32926,14 @@
         "summary": "Get policy information",
         "description": "Get snapshot lifecycle policy definitions and information about the latest snapshot attempts.",
         "operationId": "slm-get-lifecycle-1",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/slm.get_lifecycle#master_timeout"
+          },
+          {
+            "$ref": "#/components/parameters/slm.get_lifecycle#timeout"
+          }
+        ],
         "responses": {
           "200": {
             "$ref": "#/components/responses/slm.get_lifecycle#200"
@@ -32470,6 +32950,28 @@
         "summary": "Get snapshot lifecycle management statistics",
         "description": "Get global and policy-level statistics about actions taken by snapshot lifecycle management.",
         "operationId": "slm-get-stats",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "master_timeout",
+            "description": "Period to wait for a connection to the master node. If no response is received before the timeout expires, the request fails and returns an error.",
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/_types:Duration"
+            },
+            "style": "form"
+          },
+          {
+            "in": "query",
+            "name": "timeout",
+            "description": "Period to wait for a response. If no response is received before the timeout expires, the request fails and returns an error.",
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/_types:Duration"
+            },
+            "style": "form"
+          }
+        ],
         "responses": {
           "200": {
             "description": "",
@@ -32539,6 +33041,28 @@
         ],
         "summary": "Get the snapshot lifecycle management status",
         "operationId": "slm-get-status",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "master_timeout",
+            "description": "Period to wait for a connection to the master node. If no response is received before the timeout expires, the request fails and returns an error.",
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/_types:Duration"
+            },
+            "style": "form"
+          },
+          {
+            "in": "query",
+            "name": "timeout",
+            "description": "Period to wait for a response. If no response is received before the timeout expires, the request fails and returns an error.",
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/_types:Duration"
+            },
+            "style": "form"
+          }
+        ],
         "responses": {
           "200": {
             "description": "",
@@ -32570,6 +33094,28 @@
         "summary": "Start snapshot lifecycle management",
         "description": "Snapshot lifecycle management (SLM) starts automatically when a cluster is formed.\nManually starting SLM is necessary only if it has been stopped using the stop SLM API.",
         "operationId": "slm-start",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "master_timeout",
+            "description": "Period to wait for a connection to the master node. If no response is received before the timeout expires, the request fails and returns an error.",
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/_types:Duration"
+            },
+            "style": "form"
+          },
+          {
+            "in": "query",
+            "name": "timeout",
+            "description": "Period to wait for a response. If no response is received before the timeout expires, the request fails and returns an error.",
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/_types:Duration"
+            },
+            "style": "form"
+          }
+        ],
         "responses": {
           "200": {
             "description": "",
@@ -32593,6 +33139,28 @@
         "summary": "Stop snapshot lifecycle management",
         "description": "Stop all snapshot lifecycle management (SLM) operations and the SLM plugin.\nThis API is useful when you are performing maintenance on a cluster and need to prevent SLM from performing any actions on your data streams or indices.\nStopping SLM does not stop any snapshots that are in progress.\nYou can manually trigger snapshots with the run snapshot lifecycle policy API even if SLM is stopped.\n\nThe API returns a response as soon as the request is acknowledged, but the plugin might continue to run until in-progress operations complete and it can be safely stopped.\nUse the get snapshot lifecycle management status API to see if SLM is running.",
         "operationId": "slm-stop",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "master_timeout",
+            "description": "Period to wait for a connection to the master node. If no response is received before the timeout expires, the request fails and returns an error.",
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/_types:Duration"
+            },
+            "style": "form"
+          },
+          {
+            "in": "query",
+            "name": "timeout",
+            "description": "Period to wait for a response. If no response is received before the timeout expires, the request fails and returns an error.",
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/_types:Duration"
+            },
+            "style": "form"
+          }
+        ],
         "responses": {
           "200": {
             "description": "",
@@ -32721,15 +33289,6 @@
             "in": "query",
             "name": "master_timeout",
             "description": "Explicit operation timeout for connection to master node",
-            "deprecated": false,
-            "schema": {
-              "$ref": "#/components/schemas/_types:Duration"
-            },
-            "style": "form"
-          },
-          {
-            "in": "query",
-            "name": "timeout",
             "deprecated": false,
             "schema": {
               "$ref": "#/components/schemas/_types:Duration"
@@ -34629,16 +35188,6 @@
           },
           {
             "in": "query",
-            "name": "master_timeout",
-            "description": "Period to wait for a connection to the master node. If no response is received before the timeout expires, the request fails and returns an error.",
-            "deprecated": false,
-            "schema": {
-              "$ref": "#/components/schemas/_types:Duration"
-            },
-            "style": "form"
-          },
-          {
-            "in": "query",
             "name": "timeout",
             "description": "Period to wait for a response. If no response is received before the timeout expires, the request fails and returns an error.",
             "deprecated": false,
@@ -36061,6 +36610,16 @@
             "deprecated": false,
             "schema": {
               "type": "boolean"
+            },
+            "style": "form"
+          },
+          {
+            "in": "query",
+            "name": "timeout",
+            "description": "Period to wait for a response. If no response is received before the timeout expires, the request fails and returns an error.",
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/_types:Duration"
             },
             "style": "form"
           }
@@ -37665,6 +38224,18 @@
         "summary": "Start the watch service",
         "description": "Start the Watcher service if it is not already running.",
         "operationId": "watcher-start",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "master_timeout",
+            "description": "Period to wait for a connection to the master node.",
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/_types:Duration"
+            },
+            "style": "form"
+          }
+        ],
         "responses": {
           "200": {
             "description": "",
@@ -37736,6 +38307,18 @@
         "summary": "Stop the watch service",
         "description": "Stop the Watcher service if it is running.",
         "operationId": "watcher-stop",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "master_timeout",
+            "description": "Period to wait for a connection to the master node.",
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/_types:Duration"
+            },
+            "style": "form"
+          }
+        ],
         "responses": {
           "200": {
             "description": "",
@@ -43463,6 +44046,7 @@
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl.html"
         },
+        "description": "An Elasticsearch Query DSL (Domain Specific Language) object that defines a query.",
         "type": "object",
         "properties": {
           "bool": {
@@ -68863,9 +69447,11 @@
         "type": "object",
         "properties": {
           "action": {
+            "description": "The optional action to which the index will be moved.",
             "type": "string"
           },
           "name": {
+            "description": "The optional step name to which the index will be moved.",
             "type": "string"
           },
           "phase": {
@@ -83339,6 +83925,7 @@
         "type": "object",
         "properties": {
           "rollup_jobs": {
+            "description": "There can be multiple, independent jobs configured for a single index or index pattern. Each of these jobs may have different configurations, so the API returns a list of all the various configurations available.",
             "type": "array",
             "items": {
               "$ref": "#/components/schemas/rollup.get_rollup_caps:RollupCapabilitySummary"
@@ -84797,6 +85384,98 @@
         "required": [
           "name",
           "value"
+        ]
+      },
+      "security.delegate_pki:Authentication": {
+        "type": "object",
+        "properties": {
+          "username": {
+            "type": "string"
+          },
+          "roles": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "full_name": {
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "nullable": true,
+                "type": "string"
+              }
+            ]
+          },
+          "email": {
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "nullable": true,
+                "type": "string"
+              }
+            ]
+          },
+          "token": {
+            "type": "object",
+            "additionalProperties": {
+              "type": "string"
+            }
+          },
+          "metadata": {
+            "$ref": "#/components/schemas/_types:Metadata"
+          },
+          "enabled": {
+            "type": "boolean"
+          },
+          "authentication_realm": {
+            "$ref": "#/components/schemas/security.delegate_pki:AuthenticationRealm"
+          },
+          "lookup_realm": {
+            "$ref": "#/components/schemas/security.delegate_pki:AuthenticationRealm"
+          },
+          "authentication_type": {
+            "type": "string"
+          },
+          "api_key": {
+            "type": "object",
+            "additionalProperties": {
+              "type": "string"
+            }
+          }
+        },
+        "required": [
+          "username",
+          "roles",
+          "full_name",
+          "email",
+          "metadata",
+          "enabled",
+          "authentication_realm",
+          "lookup_realm",
+          "authentication_type"
+        ]
+      },
+      "security.delegate_pki:AuthenticationRealm": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "type": {
+            "type": "string"
+          },
+          "domain": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "name",
+          "type"
         ]
       },
       "security.delete_privileges:FoundStatus": {
@@ -96433,6 +97112,16 @@
         },
         "style": "simple"
       },
+      "ccr.get_auto_follow_pattern#master_timeout": {
+        "in": "query",
+        "name": "master_timeout",
+        "description": "Period to wait for a connection to the master node.",
+        "deprecated": false,
+        "schema": {
+          "$ref": "#/components/schemas/_types:Duration"
+        },
+        "style": "form"
+      },
       "clear_scroll#scroll_id": {
         "in": "path",
         "name": "scroll_id",
@@ -96461,6 +97150,16 @@
         "deprecated": false,
         "schema": {
           "type": "boolean"
+        },
+        "style": "form"
+      },
+      "cluster.allocation_explain#master_timeout": {
+        "in": "query",
+        "name": "master_timeout",
+        "description": "Period to wait for a connection to the master node.",
+        "deprecated": false,
+        "schema": {
+          "$ref": "#/components/schemas/_types:Duration"
         },
         "style": "form"
       },
@@ -97071,6 +97770,16 @@
           "$ref": "#/components/schemas/_types:Names"
         },
         "style": "simple"
+      },
+      "enrich.get_policy#master_timeout": {
+        "in": "query",
+        "name": "master_timeout",
+        "description": "Period to wait for a connection to the master node.",
+        "deprecated": false,
+        "schema": {
+          "$ref": "#/components/schemas/_types:Duration"
+        },
+        "style": "form"
       },
       "eql.search#index": {
         "in": "path",
@@ -100148,16 +100857,6 @@
         },
         "style": "simple"
       },
-      "ingest.get_geoip_database#master_timeout": {
-        "in": "query",
-        "name": "master_timeout",
-        "description": "Period to wait for a connection to the master node.\nIf no response is received before the timeout expires, the request fails and returns an error.",
-        "deprecated": false,
-        "schema": {
-          "$ref": "#/components/schemas/_types:Duration"
-        },
-        "style": "form"
-      },
       "ingest.get_ip_location_database#id": {
         "in": "path",
         "name": "id",
@@ -100259,6 +100958,26 @@
         "deprecated": false,
         "schema": {
           "type": "boolean"
+        },
+        "style": "form"
+      },
+      "license.post#master_timeout": {
+        "in": "query",
+        "name": "master_timeout",
+        "description": "Period to wait for a connection to the master node.",
+        "deprecated": false,
+        "schema": {
+          "$ref": "#/components/schemas/_types:Duration"
+        },
+        "style": "form"
+      },
+      "license.post#timeout": {
+        "in": "query",
+        "name": "timeout",
+        "description": "Period to wait for a response. If no response is received before the timeout expires, the request fails and returns an error.",
+        "deprecated": false,
+        "schema": {
+          "$ref": "#/components/schemas/_types:Duration"
         },
         "style": "form"
       },
@@ -101002,16 +101721,6 @@
           "$ref": "#/components/schemas/_types:Id"
         },
         "style": "simple"
-      },
-      "ml.get_memory_stats#human": {
-        "in": "query",
-        "name": "human",
-        "description": "Specify this query parameter to include the fields with units in the response. Otherwise only\nthe `_in_bytes` sizes are returned in the response.",
-        "deprecated": false,
-        "schema": {
-          "type": "boolean"
-        },
-        "style": "form"
       },
       "ml.get_memory_stats#master_timeout": {
         "in": "query",
@@ -101920,16 +102629,6 @@
         },
         "style": "form"
       },
-      "nodes.hot_threads#master_timeout": {
-        "in": "query",
-        "name": "master_timeout",
-        "description": "Period to wait for a connection to the master node. If no response\nis received before the timeout expires, the request fails and\nreturns an error.",
-        "deprecated": false,
-        "schema": {
-          "$ref": "#/components/schemas/_types:Duration"
-        },
-        "style": "form"
-      },
       "nodes.hot_threads#threads": {
         "in": "query",
         "name": "threads",
@@ -101999,16 +102698,6 @@
         "deprecated": false,
         "schema": {
           "type": "boolean"
-        },
-        "style": "form"
-      },
-      "nodes.info#master_timeout": {
-        "in": "query",
-        "name": "master_timeout",
-        "description": "Period to wait for a connection to the master node. If no response is received before the timeout expires, the request fails and returns an error.",
-        "deprecated": false,
-        "schema": {
-          "$ref": "#/components/schemas/_types:Duration"
         },
         "style": "form"
       },
@@ -102133,16 +102822,6 @@
         "deprecated": false,
         "schema": {
           "$ref": "#/components/schemas/_types:Level"
-        },
-        "style": "form"
-      },
-      "nodes.stats#master_timeout": {
-        "in": "query",
-        "name": "master_timeout",
-        "description": "Period to wait for a connection to the master node. If no response is received before the timeout expires, the request fails and returns an error.",
-        "deprecated": false,
-        "schema": {
-          "$ref": "#/components/schemas/_types:Duration"
         },
         "style": "form"
       },
@@ -102340,7 +103019,7 @@
       "rollup.rollup_search#index": {
         "in": "path",
         "name": "index",
-        "description": "Enables searching rolled-up data using the standard Query DSL.",
+        "description": "A comma-separated list of data streams and indices used to limit the request.\nThis parameter has the following rules:\n\n* At least one data stream, index, or wildcard expression must be specified. This target can include a rollup or non-rollup index. For data streams, the stream's backing indices can only serve as non-rollup indices. Omitting the parameter or using `_all` are not permitted.\n* Multiple non-rollup indices may be specified.\n* Only one rollup index may be specified. If more than one are supplied, an exception occurs.\n* Wildcard expressions (`*`) may be used. If they match more than one rollup index, an exception occurs. However, you can use an expression to match multiple non-rollup indices or data streams.",
         "required": true,
         "deprecated": false,
         "schema": {
@@ -103084,6 +103763,16 @@
         },
         "style": "form"
       },
+      "search_shards#master_timeout": {
+        "in": "query",
+        "name": "master_timeout",
+        "description": "Period to wait for a connection to the master node.",
+        "deprecated": false,
+        "schema": {
+          "$ref": "#/components/schemas/_types:Duration"
+        },
+        "style": "form"
+      },
       "search_shards#preference": {
         "in": "query",
         "name": "preference",
@@ -103300,24 +103989,6 @@
         "in": "query",
         "name": "ignore_unavailable",
         "description": "Whether specified concrete indices should be ignored when unavailable (missing or closed)",
-        "deprecated": false,
-        "schema": {
-          "type": "boolean"
-        },
-        "style": "form"
-      },
-      "searchable_snapshots.clear_cache#pretty": {
-        "in": "query",
-        "name": "pretty",
-        "deprecated": false,
-        "schema": {
-          "type": "boolean"
-        },
-        "style": "form"
-      },
-      "searchable_snapshots.clear_cache#human": {
-        "in": "query",
-        "name": "human",
         "deprecated": false,
         "schema": {
           "type": "boolean"
@@ -103806,16 +104477,6 @@
         },
         "style": "form"
       },
-      "shutdown.get_node#timeout": {
-        "in": "query",
-        "name": "timeout",
-        "description": "Period to wait for a response. If no response is received before the timeout expires, the request fails and returns an error.",
-        "deprecated": false,
-        "schema": {
-          "$ref": "#/components/schemas/_types:TimeUnit"
-        },
-        "style": "form"
-      },
       "slm.get_lifecycle#policy_id": {
         "in": "path",
         "name": "policy_id",
@@ -103826,6 +104487,26 @@
           "$ref": "#/components/schemas/_types:Names"
         },
         "style": "simple"
+      },
+      "slm.get_lifecycle#master_timeout": {
+        "in": "query",
+        "name": "master_timeout",
+        "description": "Period to wait for a connection to the master node. If no response is received before the timeout expires, the request fails and returns an error.",
+        "deprecated": false,
+        "schema": {
+          "$ref": "#/components/schemas/_types:Duration"
+        },
+        "style": "form"
+      },
+      "slm.get_lifecycle#timeout": {
+        "in": "query",
+        "name": "timeout",
+        "description": "Period to wait for a response. If no response is received before the timeout expires, the request fails and returns an error.",
+        "deprecated": false,
+        "schema": {
+          "$ref": "#/components/schemas/_types:Duration"
+        },
+        "style": "form"
       },
       "snapshot.create#repository": {
         "in": "path",
@@ -106257,6 +106938,9 @@
               "type": "object",
               "properties": {
                 "aggregations": {
+                  "externalDocs": {
+                    "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/rollup-agg-limitations.html"
+                  },
                   "description": "Specifies aggregations.",
                   "type": "object",
                   "additionalProperties": {
