@@ -1,4 +1,4 @@
-# summary: 
+# summary:
 # method_request: POST _transform/_preview
 description: Run `POST _transform/_preview` to preview a transform that uses the pivot method.
 # type: request

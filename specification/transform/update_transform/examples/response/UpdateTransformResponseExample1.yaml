@@ -1,4 +1,4 @@
-# summary: 
+# summary:
 description: A successful response when creating a transform.
 # type: response
 # response_code: 200
@@ -6,7 +6,7 @@ value:
   id: simple-kibana-ecomm-pivot
   authorization:
     roles:
-        - superuser
+      - superuser
   version: 10.0.0
   create_time: 1712951576767
   source:

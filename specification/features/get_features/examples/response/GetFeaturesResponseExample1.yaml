@@ -1,4 +1,4 @@
-# summary: 
+# summary:
 description: A successful response for retrieving a list of feature states that can be included when taking a snapshot.
 # type: response
 # response_code: 200

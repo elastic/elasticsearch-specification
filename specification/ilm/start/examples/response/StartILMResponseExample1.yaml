@@ -1,8 +1,8 @@
-# summary: 
+# summary:
 description: A successful response when stating the ILM plugin.
 # type: response
 # response_code: 200
 value: |-
-    {
-      "acknowledged": true
-    }
+  {
+    "acknowledged": true
+  }
