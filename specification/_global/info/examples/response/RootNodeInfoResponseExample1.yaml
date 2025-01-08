@@ -1,0 +1,19 @@
+# summary: ''
+description: A successful response from `GET /`s.
+# type: response
+# response_code: 200
+value:
+  name: instance-0000000000
+  cluster_name: my_test_cluster
+  cluster_uuid: 5QaxoN0pRZuOmWSxstBBwQ
+  version:
+    build_date: '2024-02-01T13:07:13.727175297Z'
+    minimum_wire_compatibility_version: 7.17.0
+    build_hash: 6185ba65d27469afabc9bc951cded6c17c21e3f3
+    number: 8.12.1
+    lucene_version: 9.9.2
+    minimum_index_compatibility_version: 7.0.0
+    build_flavor: default
+    build_snapshot: false
+    build_type: docker
+  tagline: 'You Know, for Search'

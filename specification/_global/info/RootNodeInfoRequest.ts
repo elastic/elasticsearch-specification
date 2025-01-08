@@ -21,9 +21,11 @@ import { RequestBase } from '@_types/Base'
 
 /**
  * Get cluster info.
- * Returns basic information about the cluster.
+ * Get basic build, version, and cluster information.
  * @rest_spec_name info
  * @availability stack stability=stable
  * @availability serverless stability=stable visibility=public
+ * @cluster_privileges monitor
+ * @doc_id api-root
  */
 export interface Request extends RequestBase {}
