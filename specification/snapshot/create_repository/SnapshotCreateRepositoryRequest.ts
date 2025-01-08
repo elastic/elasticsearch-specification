@@ -31,6 +31,7 @@ import { Duration } from '@_types/Time'
  * @availability stack since=0.0.0 stability=stable
  * @availability serverless stability=stable visibility=private
  * @cluster_privileges manage
+ * @doc_id snapshot-repo-create
  * @ext_doc_id register-repository
  */
 export interface Request extends RequestBase {
@@ -39,8 +40,26 @@ export interface Request extends RequestBase {
     repository: Name
   }
   query_parameters: {
+    /**
+     * The period to wait for the master node.
+     * If the master node is not available before the timeout expires, the request fails and returns an error.
+     * To indicate that the request should never timeout, set it to `-1`.
+     * @server_default 30s
+     */
     master_timeout?: Duration
+    /**
+     * The period to wait for a response from all relevant nodes in the cluster after updating the cluster metadata.
+     * If no response is received before the timeout expires, the cluster metadata update still applies but the response will indicate that it was not completely acknowledged.
+     * To indicate that the request should never timeout, set it to `-1`.
+     * @server_default 30s
+     */
     timeout?: Duration
+    /**
+     * If `true`, the request verifies the repository is functional on all master and data nodes in the cluster.
+     * If `false`, this verification is skipped.
+     * You can also perform this verification with the verify snapshot repository API.
+     * @server_default true
+     */
     verify?: boolean
   }
   /** @codegen_name repository */
