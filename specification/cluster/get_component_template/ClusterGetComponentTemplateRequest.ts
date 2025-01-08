@@ -23,7 +23,7 @@ import { Duration } from '@_types/Time'
 
 /**
  * Get component templates.
- * Retrieves information about component templates.
+ * Get information about component templates.
  * @rest_spec_name cluster.get_component_template
  * @availability stack since=7.8.0 stability=stable
  * @availability serverless stability=stable visibility=public

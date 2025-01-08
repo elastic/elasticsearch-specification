@@ -243,12 +243,6 @@
       ],
       "response": []
     },
-    "connector.sync_job_update_stats": {
-      "request": [
-        "Missing request & response"
-      ],
-      "response": []
-    },
     "enrich.delete_policy": {
       "request": [
         "Request: missing json spec query parameter 'master_timeout'"
@@ -614,18 +608,6 @@
     "search": {
       "request": [
         "interface definition _types:RankContainer - Property rrf is a single-variant and must be required"
-      ],
-      "response": []
-    },
-    "search_application.post_behavioral_analytics_event": {
-      "request": [
-        "Missing request & response"
-      ],
-      "response": []
-    },
-    "search_application.render_query": {
-      "request": [
-        "Missing request & response"
       ],
       "response": []
     },

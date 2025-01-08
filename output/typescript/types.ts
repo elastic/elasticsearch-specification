@@ -10083,6 +10083,21 @@ export interface ConnectorSyncJobPostResponse {
   id: Id
 }
 
+export interface ConnectorSyncJobUpdateStatsRequest extends RequestBase {
+  connector_sync_job_id: Id
+  body?: {
+    deleted_document_count: long
+    indexed_document_count: long
+    indexed_document_volume: long
+    last_seen?: Duration
+    metadata?: Metadata
+    total_document_count?: integer
+  }
+}
+
+export interface ConnectorSyncJobUpdateStatsResponse {
+}
+
 export interface ConnectorUpdateActiveFilteringRequest extends RequestBase {
   connector_id: Id
 }
@@ -17700,6 +17715,8 @@ export interface SearchApplicationEventDataStream {
   name: IndexName
 }
 
+export type SearchApplicationEventType = 'page_view' | 'search' | 'search_click'
+
 export interface SearchApplicationSearchApplication extends SearchApplicationSearchApplicationParameters {
   name: Name
   updated_at_millis: EpochTime<UnitMillis>
@@ -17750,6 +17767,18 @@ export interface SearchApplicationListResponse {
   results: SearchApplicationSearchApplication[]
 }
 
+export interface SearchApplicationPostBehavioralAnalyticsEventRequest extends RequestBase {
+  collection_name: Name
+  event_type: SearchApplicationEventType
+  debug?: boolean
+  body?: any
+}
+
+export interface SearchApplicationPostBehavioralAnalyticsEventResponse {
+  accepted: boolean
+  event?: any
+}
+
 export interface SearchApplicationPutRequest extends RequestBase {
   name: Name
   create?: boolean
@@ -17769,6 +17798,16 @@ export interface SearchApplicationPutBehavioralAnalyticsRequest extends RequestB
 }
 
 export type SearchApplicationPutBehavioralAnalyticsResponse = SearchApplicationPutBehavioralAnalyticsAnalyticsAcknowledgeResponseBase
+
+export interface SearchApplicationRenderQueryRequest extends RequestBase {
+  name: Name
+  body?: {
+    params?: Record<string, any>
+  }
+}
+
+export interface SearchApplicationRenderQueryResponse {
+}
 
 export interface SearchApplicationSearchRequest extends RequestBase {
   name: Name

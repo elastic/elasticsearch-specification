@@ -23,11 +23,12 @@ import { Duration } from '@_types/Time'
 
 /**
  * Get index templates.
- * Returns information about one or more index templates.
+ * Get information about one or more index templates.
  * @rest_spec_name indices.get_index_template
  * @availability stack since=7.9.0 stability=stable
  * @availability serverless stability=stable visibility=public
- * @cluster_privileges manage_index_templates,manage
+ * @cluster_privileges manage_index_templates
+ * @doc_id indices-get-template
  */
 export interface Request extends RequestBase {
   path_parts: {
