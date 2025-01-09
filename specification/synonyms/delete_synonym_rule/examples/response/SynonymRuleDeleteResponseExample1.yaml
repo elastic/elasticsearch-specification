@@ -1,0 +1,28 @@
+# summary:
+description: >
+  A successful response from `DELETE _synonyms/my-synonyms-set/test-1`.
+  All analyzers using this synonyms set will be reloaded automatically to reflect the rule being deleted.
+# type: response
+# response_code: ''
+value: |-
+  {
+    "result": "deleted",
+    "reload_analyzers_details": {
+      "_shards": {
+        "total": 2,
+        "successful": 1,
+        "failed": 0
+      },
+      "reload_details": [
+        {
+          "index": "test-index",
+          "reloaded_analyzers": [
+            "my_search_analyzer"
+          ],
+          "reloaded_node_ids": [
+            "1wYFZzq8Sxeu_Jvt9mlbkg"
+          ]
+        }
+      ]
+    }
+  }
