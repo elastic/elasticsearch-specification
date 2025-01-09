@@ -1,0 +1,5 @@
+# summary:
+description: A successful response from `GET _slm/status`.
+# type: response
+# response_code: ''
+value: "{\n  \"operation_mode\": \"RUNNING\"\n}"
