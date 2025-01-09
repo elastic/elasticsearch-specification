@@ -21068,7 +21068,8 @@ export interface WatcherPutWatchRequest extends RequestBase {
     condition?: WatcherConditionContainer
     input?: WatcherInputContainer
     metadata?: Metadata
-    throttle_period?: string
+    throttle_period?: Duration
+    throttle_period_in_millis?: DurationValue<UnitMillis>
     transform?: TransformContainer
     trigger?: WatcherTriggerContainer
   }
@@ -21140,6 +21141,7 @@ export interface WatcherStatsWatcherNodeStats {
 export type WatcherStatsWatcherState = 'stopped' | 'starting' | 'started' | 'stopping'
 
 export interface WatcherStopRequest extends RequestBase {
+  master_timeout?: Duration
 }
 
 export type WatcherStopResponse = AcknowledgedResponseBase
