@@ -1,7 +1,7 @@
 # summary:
 description: A successful response from `POST _watcher/watch/my_watch/_ack`.
 # type: response
-# response_code:
+# response_code: 200
 value: |-
   {
     "status": {
