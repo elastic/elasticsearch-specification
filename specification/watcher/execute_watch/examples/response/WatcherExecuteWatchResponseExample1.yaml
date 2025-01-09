@@ -2,7 +2,7 @@
 description: >
   A successful response from `POST _watcher/watch/my_watch/_execute`.
 # type: response
-# response_code:
+# response_code: 200
 value: |-
   {
     "_id": "my_watch_0-2015-06-02T23:17:55.124Z", 
