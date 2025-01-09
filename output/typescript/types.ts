@@ -21013,6 +21013,14 @@ export interface WatcherExecuteWatchWatchRecord {
   status?: WatcherWatchStatus
 }
 
+export interface WatcherGetSettingsRequest extends RequestBase {
+  master_timeout?: Duration
+}
+
+export interface WatcherGetSettingsResponse {
+  index: IndicesIndexSettings
+}
+
 export interface WatcherGetWatchRequest extends RequestBase {
   id: Name
 }
@@ -21113,6 +21121,19 @@ export interface WatcherStopRequest extends RequestBase {
 }
 
 export type WatcherStopResponse = AcknowledgedResponseBase
+
+export interface WatcherUpdateSettingsRequest extends RequestBase {
+  master_timeout?: Duration
+  timeout?: Duration
+  body?: {
+    'index.auto_expand_replicas'?: string
+    'index.number_of_replicas'?: integer
+  }
+}
+
+export interface WatcherUpdateSettingsResponse {
+  acknowledged: boolean
+}
 
 export interface XpackInfoBuildInformation {
   date: DateTime

@@ -964,12 +964,6 @@
         "interface definition watcher._types:TriggerEventContainer - Property schedule is a single-variant and must be required"
       ]
     },
-    "watcher.get_settings": {
-      "request": [
-        "Missing request & response"
-      ],
-      "response": []
-    },
     "watcher.start": {
       "request": [
         "Request: missing json spec query parameter 'master_timeout'"
@@ -979,12 +973,6 @@
     "watcher.stop": {
       "request": [
         "Request: missing json spec query parameter 'master_timeout'"
-      ],
-      "response": []
-    },
-    "watcher.update_settings": {
-      "request": [
-        "Missing request & response"
       ],
       "response": []
     },
