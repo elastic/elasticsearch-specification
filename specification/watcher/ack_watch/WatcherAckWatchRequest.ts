@@ -28,13 +28,24 @@ import { Name, Names } from '@_types/common'
  *
  * IMPORTANT: If the specified watch is currently being executed, this API will return an error
  * The reason for this behavior is to prevent overwriting the watch status from a watch execution.
+ *
+ * Acknowledging an action throttles further executions of that action until its `ack.state` is reset to `awaits_successful_execution`.
+ * This happens when the condition of the watch is not met (the condition evaluates to false).
  * @rest_spec_name watcher.ack_watch
  * @availability stack stability=stable
  * @cluster_privileges manage_watcher
+ * @doc_id watcher-api-ack-watch
  */
 export interface Request extends RequestBase {
   path_parts: {
+    /**
+     * The watch identifier.
+     */
     watch_id: Name
+    /**
+     * A comma-separated list of the action identifiers to acknowledge.
+     * If you omit this parameter, all of the actions of the watch are acknowledged.
+     */
     action_id?: Names
   }
 }
