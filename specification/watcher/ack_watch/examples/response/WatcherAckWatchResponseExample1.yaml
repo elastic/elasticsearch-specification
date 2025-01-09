@@ -1,0 +1,33 @@
+# summary:
+description: A successful response from `POST _watcher/watch/my_watch/_ack`.
+# type: response
+# response_code: 200
+value: |-
+  {
+    "status": {
+      "state": {
+        "active": true,
+        "timestamp": "2015-05-26T18:04:27.723Z"
+      },
+      "last_checked": "2015-05-26T18:04:27.753Z",
+      "last_met_condition": "2015-05-26T18:04:27.763Z",
+      "actions": {
+        "test_index": {
+          "ack" : {
+            "timestamp": "2015-05-26T18:04:27.713Z",
+            "state": "acked"
+          },
+          "last_execution" : {
+            "timestamp": "2015-05-25T18:04:27.733Z",
+            "successful": true
+          },
+          "last_successful_execution" : {
+            "timestamp": "2015-05-25T18:04:27.773Z",
+            "successful": true
+          }
+        }
+      },
+      "execution_state": "executed",
+      "version": 2
+    }
+  }

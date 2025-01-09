@@ -392,9 +392,9 @@
       ],
       "response": []
     },
-    "simulate.ingest": {
+    "snapshot.clone": {
       "request": [
-        "Missing request & response"
+        "Request: query parameter 'timeout' does not exist in the json spec"
       ],
       "response": []
     },
@@ -430,18 +430,6 @@
       "response": [
         "interface definition watcher._types:TriggerEventContainer - Property schedule is a single-variant and must be required"
       ]
-    },
-    "watcher.get_settings": {
-      "request": [
-        "Missing request & response"
-      ],
-      "response": []
-    },
-    "watcher.update_settings": {
-      "request": [
-        "Missing request & response"
-      ],
-      "response": []
     },
     "xpack.info": {
       "request": [

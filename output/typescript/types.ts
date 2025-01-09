@@ -11941,6 +11941,22 @@ export interface IndicesGetDataLifecycleResponse {
   data_streams: IndicesGetDataLifecycleDataStreamWithLifecycle[]
 }
 
+export interface IndicesGetDataLifecycleStatsDataStreamStats {
+  backing_indices_in_error: integer
+  backing_indices_in_total: integer
+  name: DataStreamName
+}
+
+export interface IndicesGetDataLifecycleStatsRequest extends RequestBase {
+}
+
+export interface IndicesGetDataLifecycleStatsResponse {
+  data_stream_count: integer
+  data_streams: IndicesGetDataLifecycleStatsDataStreamStats[]
+  last_run_duration_in_millis?: DurationValue<UnitMillis>
+  time_between_starts_in_millis?: DurationValue<UnitMillis>
+}
+
 export interface IndicesGetDataStreamRequest extends RequestBase {
   name?: DataStreamNames
   expand_wildcards?: ExpandWildcards
@@ -13025,6 +13041,24 @@ export interface IngestDissectProcessor extends IngestProcessorBase {
   pattern: string
 }
 
+export interface IngestDocument {
+  _id?: Id
+  _index?: IndexName
+  _source: any
+}
+
+export interface IngestDocumentSimulationKeys {
+  _id: Id
+  _index: IndexName
+  _ingest: IngestIngest
+  _routing?: string
+  _source: Record<string, any>
+  _version?: SpecUtilsStringified<VersionNumber>
+  _version_type?: VersionType
+}
+export type IngestDocumentSimulation = IngestDocumentSimulationKeys
+  & { [property: string]: string | Id | IndexName | IngestIngest | Record<string, any> | SpecUtilsStringified<VersionNumber> | VersionType }
+
 export interface IngestDotExpanderProcessor extends IngestProcessorBase {
   field: Field
   override?: boolean
@@ -13138,6 +13172,12 @@ export interface IngestInferenceProcessor extends IngestProcessorBase {
   inference_config?: IngestInferenceConfig
 }
 
+export interface IngestIngest {
+  _redact?: IngestRedact
+  timestamp: DateTime
+  pipeline?: Name
+}
+
 export interface IngestIpLocationProcessor extends IngestProcessorBase {
   database_file?: string
   field: Field
@@ -13225,6 +13265,16 @@ export interface IngestPipelineProcessor extends IngestProcessorBase {
   ignore_missing_pipeline?: boolean
 }
 
+export interface IngestPipelineSimulation {
+  doc?: IngestDocumentSimulation
+  tag?: string
+  processor_type?: string
+  status?: WatcherActionStatusOptions
+  description?: string
+  ignored_error?: ErrorCause
+  error?: ErrorCause
+}
+
 export interface IngestProcessorBase {
   description?: string
   if?: string
@@ -13279,6 +13329,10 @@ export interface IngestProcessorContainer {
   urldecode?: IngestUrlDecodeProcessor
   uri_parts?: IngestUriPartsProcessor
   user_agent?: IngestUserAgentProcessor
+}
+
+export interface IngestRedact {
+  _is_redacted: boolean
 }
 
 export interface IngestRedactProcessor extends IngestProcessorBase {
@@ -13338,6 +13392,12 @@ export interface IngestSetSecurityUserProcessor extends IngestProcessorBase {
 }
 
 export type IngestShapeType = 'geo_shape' | 'shape'
+
+export interface IngestSimulateDocumentResult {
+  doc?: IngestDocumentSimulation
+  error?: ErrorCause
+  processor_results?: IngestPipelineSimulation[]
+}
 
 export interface IngestSortProcessor extends IngestProcessorBase {
   field: Field
@@ -13532,61 +13592,17 @@ export interface IngestPutPipelineRequest extends RequestBase {
 
 export type IngestPutPipelineResponse = AcknowledgedResponseBase
 
-export interface IngestSimulateDocument {
-  _id?: Id
-  _index?: IndexName
-  _source: any
-}
-
-export interface IngestSimulateDocumentSimulationKeys {
-  _id: Id
-  _index: IndexName
-  _ingest: IngestSimulateIngest
-  _routing?: string
-  _source: Record<string, any>
-  _version?: SpecUtilsStringified<VersionNumber>
-  _version_type?: VersionType
-}
-export type IngestSimulateDocumentSimulation = IngestSimulateDocumentSimulationKeys
-  & { [property: string]: string | Id | IndexName | IngestSimulateIngest | Record<string, any> | SpecUtilsStringified<VersionNumber> | VersionType }
-
-export interface IngestSimulateIngest {
-  _redact?: IngestSimulateRedact
-  timestamp: DateTime
-  pipeline?: Name
-}
-
-export interface IngestSimulatePipelineSimulation {
-  doc?: IngestSimulateDocumentSimulation
-  tag?: string
-  processor_type?: string
-  status?: WatcherActionStatusOptions
-  description?: string
-  ignored_error?: ErrorCause
-  error?: ErrorCause
-}
-
-export interface IngestSimulateRedact {
-  _is_redacted: boolean
-}
-
 export interface IngestSimulateRequest extends RequestBase {
   id?: Id
   verbose?: boolean
   body?: {
-    docs: IngestSimulateDocument[]
+    docs: IngestDocument[]
     pipeline?: IngestPipeline
   }
 }
 
 export interface IngestSimulateResponse {
-  docs: IngestSimulateSimulateDocumentResult[]
-}
-
-export interface IngestSimulateSimulateDocumentResult {
-  doc?: IngestSimulateDocumentSimulation
-  error?: ErrorCause
-  processor_results?: IngestSimulatePipelineSimulation[]
+  docs: IngestSimulateDocumentResult[]
 }
 
 export interface LicenseLicense {
@@ -19197,6 +19213,22 @@ export interface ShutdownPutNodeRequest extends RequestBase {
 
 export type ShutdownPutNodeResponse = AcknowledgedResponseBase
 
+export interface SimulateIngestRequest extends RequestBase {
+  index?: IndexName
+  pipeline?: PipelineName
+  body?: {
+    docs: IngestDocument[]
+    component_template_substitutions?: Record<string, ClusterComponentTemplateNode>
+    index_template_subtitutions?: Record<string, IndicesIndexTemplate>
+    mapping_addition?: MappingTypeMapping
+    pipeline_substitutions?: Record<string, IngestPipeline>
+  }
+}
+
+export interface SimulateIngestResponse {
+  docs: IngestSimulateDocumentResult[]
+}
+
 export interface SlmConfiguration {
   ignore_unavailable?: boolean
   indices?: Indices
@@ -19357,11 +19389,13 @@ export interface SnapshotAzureRepository extends SnapshotRepositoryBase {
 }
 
 export interface SnapshotAzureRepositorySettings extends SnapshotRepositorySettingsBase {
+  base_path?: string
   client?: string
   container?: string
-  base_path?: string
-  readonly?: boolean
+  delete_objects_max_size?: integer
   location_mode?: string
+  max_concurrent_batch_deletes?: integer
+  readonly?: boolean
 }
 
 export interface SnapshotFileCountSnapshotStats {
@@ -19376,10 +19410,10 @@ export interface SnapshotGcsRepository extends SnapshotRepositoryBase {
 
 export interface SnapshotGcsRepositorySettings extends SnapshotRepositorySettingsBase {
   bucket: string
-  client?: string
-  base_path?: string
-  readonly?: boolean
   application_name?: string
+  base_path?: string
+  client?: string
+  readonly?: boolean
 }
 
 export interface SnapshotIndexDetails {
@@ -19426,13 +19460,20 @@ export interface SnapshotS3Repository extends SnapshotRepositoryBase {
 
 export interface SnapshotS3RepositorySettings extends SnapshotRepositorySettingsBase {
   bucket: string
-  client?: string
   base_path?: string
-  readonly?: boolean
-  server_side_encryption?: boolean
   buffer_size?: ByteSize
   canned_acl?: string
+  client?: string
+  delete_objects_max_size?: integer
+  get_register_retry_delay?: Duration
+  max_multipart_parts?: integer
+  max_multipart_upload_cleanup_size?: integer
+  readonly?: boolean
+  server_side_encryption?: boolean
   storage_class?: string
+  'throttled_delete_retry.delay_increment'?: Duration
+  'throttled_delete_retry.maximum_delay'?: Duration
+  'throttled_delete_retry.maximum_number_of_retries'?: integer
 }
 
 export interface SnapshotShardsStats {
@@ -19567,6 +19608,7 @@ export interface SnapshotCloneRequest extends RequestBase {
   snapshot: Name
   target_snapshot: Name
   master_timeout?: Duration
+  timeout?: Duration
   body?: {
     indices: string
   }
@@ -19580,10 +19622,11 @@ export interface SnapshotCreateRequest extends RequestBase {
   master_timeout?: Duration
   wait_for_completion?: boolean
   body?: {
+    expand_wildcards?: ExpandWildcards
+    feature_states?: string[]
     ignore_unavailable?: boolean
     include_global_state?: boolean
     indices?: Indices
-    feature_states?: string[]
     metadata?: Metadata
     partial?: boolean
   }
@@ -19623,26 +19666,27 @@ export type SnapshotDeleteRepositoryResponse = AcknowledgedResponseBase
 export interface SnapshotGetRequest extends RequestBase {
   repository: Name
   snapshot: Names
+  after?: string
+  from_sort_value?: string
   ignore_unavailable?: boolean
-  master_timeout?: Duration
-  verbose?: boolean
   index_details?: boolean
   index_names?: boolean
   include_repository?: boolean
-  sort?: SnapshotSnapshotSort
-  size?: integer
+  master_timeout?: Duration
   order?: SortOrder
-  after?: string
   offset?: integer
-  from_sort_value?: string
+  size?: integer
   slm_policy_filter?: Name
+  sort?: SnapshotSnapshotSort
+  verbose?: boolean
 }
 
 export interface SnapshotGetResponse {
+  remaining: integer
+  total: integer
+  next?: string
   responses?: SnapshotGetSnapshotResponseItem[]
   snapshots?: SnapshotSnapshotInfo[]
-  total: integer
-  remaining: integer
 }
 
 export interface SnapshotGetSnapshotResponseItem {
@@ -19661,14 +19705,14 @@ export type SnapshotGetRepositoryResponse = Record<string, SnapshotRepository>
 
 export interface SnapshotRepositoryVerifyIntegrityRequest extends RequestBase {
   name: Names
-  meta_thread_pool_concurrency?: integer
   blob_thread_pool_concurrency?: integer
-  snapshot_verification_concurrency?: integer
-  index_verification_concurrency?: integer
   index_snapshot_verification_concurrency?: integer
-  max_failed_shard_snapshots?: integer
-  verify_blob_contents?: boolean
+  index_verification_concurrency?: integer
   max_bytes_per_sec?: string
+  max_failed_shard_snapshots?: integer
+  meta_thread_pool_concurrency?: integer
+  snapshot_verification_concurrency?: integer
+  verify_blob_contents?: boolean
 }
 
 export type SnapshotRepositoryVerifyIntegrityResponse = any
@@ -21041,6 +21085,14 @@ export interface WatcherExecuteWatchWatchRecord {
   status?: WatcherWatchStatus
 }
 
+export interface WatcherGetSettingsRequest extends RequestBase {
+  master_timeout?: Duration
+}
+
+export interface WatcherGetSettingsResponse {
+  index: IndicesIndexSettings
+}
+
 export interface WatcherGetWatchRequest extends RequestBase {
   id: Name
 }
@@ -21066,7 +21118,8 @@ export interface WatcherPutWatchRequest extends RequestBase {
     condition?: WatcherConditionContainer
     input?: WatcherInputContainer
     metadata?: Metadata
-    throttle_period?: string
+    throttle_period?: Duration
+    throttle_period_in_millis?: DurationValue<UnitMillis>
     transform?: TransformContainer
     trigger?: WatcherTriggerContainer
   }
@@ -21143,6 +21196,19 @@ export interface WatcherStopRequest extends RequestBase {
 }
 
 export type WatcherStopResponse = AcknowledgedResponseBase
+
+export interface WatcherUpdateSettingsRequest extends RequestBase {
+  master_timeout?: Duration
+  timeout?: Duration
+  body?: {
+    'index.auto_expand_replicas'?: string
+    'index.number_of_replicas'?: integer
+  }
+}
+
+export interface WatcherUpdateSettingsResponse {
+  acknowledged: boolean
+}
 
 export interface XpackInfoBuildInformation {
   date: DateTime
