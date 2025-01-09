@@ -26029,7 +26029,7 @@
                 "kind": "instance_of",
                 "type": {
                   "name": "Document",
-                  "namespace": "ingest.simulate"
+                  "namespace": "ingest._types"
                 }
               }
             }
@@ -26103,7 +26103,7 @@
                 "kind": "instance_of",
                 "type": {
                   "name": "SimulateDocumentResult",
-                  "namespace": "ingest.simulate"
+                  "namespace": "ingest._types"
                 }
               }
             }
@@ -126316,7 +126316,7 @@
       "kind": "interface",
       "name": {
         "name": "Document",
-        "namespace": "ingest.simulate"
+        "namespace": "ingest._types"
       },
       "properties": [
         {
@@ -126352,13 +126352,13 @@
           }
         }
       ],
-      "specLocation": "ingest/simulate/types.ts#L62-L76"
+      "specLocation": "ingest/_types/Simulation.ts#L62-L76"
     },
     {
       "kind": "interface",
       "name": {
         "name": "SimulateDocumentResult",
-        "namespace": "ingest.simulate"
+        "namespace": "ingest._types"
       },
       "properties": [
         {
@@ -126368,7 +126368,7 @@
             "kind": "instance_of",
             "type": {
               "name": "DocumentSimulation",
-              "namespace": "ingest.simulate"
+              "namespace": "ingest._types"
             }
           }
         },
@@ -126392,13 +126392,13 @@
               "kind": "instance_of",
               "type": {
                 "name": "PipelineSimulation",
-                "namespace": "ingest.simulate"
+                "namespace": "ingest._types"
               }
             }
           }
         }
       ],
-      "specLocation": "ingest/simulate/types.ts#L46-L50"
+      "specLocation": "ingest/_types/Simulation.ts#L46-L50"
     },
     {
       "attachedBehaviors": [
@@ -126436,7 +126436,7 @@
       "kind": "interface",
       "name": {
         "name": "DocumentSimulation",
-        "namespace": "ingest.simulate"
+        "namespace": "ingest._types"
       },
       "properties": [
         {
@@ -126470,7 +126470,7 @@
             "kind": "instance_of",
             "type": {
               "name": "Ingest",
-              "namespace": "ingest.simulate"
+              "namespace": "ingest._types"
             }
           }
         },
@@ -126538,13 +126538,13 @@
           }
         }
       ],
-      "specLocation": "ingest/simulate/types.ts#L78-L108"
+      "specLocation": "ingest/_types/Simulation.ts#L78-L108"
     },
     {
       "kind": "interface",
       "name": {
         "name": "Ingest",
-        "namespace": "ingest.simulate"
+        "namespace": "ingest._types"
       },
       "properties": [
         {
@@ -126560,7 +126560,7 @@
             "kind": "instance_of",
             "type": {
               "name": "Redact",
-              "namespace": "ingest.simulate"
+              "namespace": "ingest._types"
             }
           }
         },
@@ -126587,13 +126587,13 @@
           }
         }
       ],
-      "specLocation": "ingest/simulate/types.ts#L29-L37"
+      "specLocation": "ingest/_types/Simulation.ts#L29-L37"
     },
     {
       "kind": "interface",
       "name": {
         "name": "Redact",
-        "namespace": "ingest.simulate"
+        "namespace": "ingest._types"
       },
       "properties": [
         {
@@ -126609,13 +126609,13 @@
           }
         }
       ],
-      "specLocation": "ingest/simulate/types.ts#L39-L44"
+      "specLocation": "ingest/_types/Simulation.ts#L39-L44"
     },
     {
       "kind": "interface",
       "name": {
         "name": "PipelineSimulation",
-        "namespace": "ingest.simulate"
+        "namespace": "ingest._types"
       },
       "properties": [
         {
@@ -126625,7 +126625,7 @@
             "kind": "instance_of",
             "type": {
               "name": "DocumentSimulation",
-              "namespace": "ingest.simulate"
+              "namespace": "ingest._types"
             }
           }
         },
@@ -126696,7 +126696,7 @@
           }
         }
       ],
-      "specLocation": "ingest/simulate/types.ts#L52-L60"
+      "specLocation": "ingest/_types/Simulation.ts#L52-L60"
     },
     {
       "kind": "interface",
