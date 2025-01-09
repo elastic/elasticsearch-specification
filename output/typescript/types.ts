@@ -21109,7 +21109,8 @@ export interface WatcherPutWatchRequest extends RequestBase {
     condition?: WatcherConditionContainer
     input?: WatcherInputContainer
     metadata?: Metadata
-    throttle_period?: string
+    throttle_period?: Duration
+    throttle_period_in_millis?: DurationValue<UnitMillis>
     transform?: TransformContainer
     trigger?: WatcherTriggerContainer
   }

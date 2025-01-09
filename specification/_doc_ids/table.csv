@@ -504,6 +504,7 @@ run-as-privilege,https://www.elastic.co/guide/en/elasticsearch/reference/{branch
 runtime-search-request,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/runtime-search-request.html
 script-processor,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/script-processor.html
 scroll-search-results,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/paginate-search-results.html#scroll-search-results
+search-after,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/paginate-search-results.html#search-after
 search-aggregations,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/search-aggregations.html
 search-aggregations-bucket-adjacency-matrix-aggregation,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/search-aggregations-bucket-adjacency-matrix-aggregation.html
 search-aggregations-bucket-autodatehistogram-aggregation,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/search-aggregations-bucket-autodatehistogram-aggregation.html
