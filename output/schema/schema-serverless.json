@@ -9002,7 +9002,8 @@
         }
       },
       "description": "Clear an SQL search cursor.",
-      "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/clear-sql-cursor-api.html",
+      "docId": "sql-clear-cursor-api",
+      "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/clear-sql-cursor-api.html",
       "name": "sql.clear_cursor",
       "request": {
         "name": "Request",
@@ -9039,9 +9040,15 @@
           "stability": "stable"
         }
       },
-      "description": "Delete an async SQL search.\nDelete an async SQL search or a stored synchronous SQL search.\nIf the search is still running, the API cancels it.",
-      "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/delete-async-sql-search-api.html",
+      "description": "Delete an async SQL search.\nDelete an async SQL search or a stored synchronous SQL search.\nIf the search is still running, the API cancels it.\n\nIf the Elasticsearch security features are enabled, only the following users can use this API to delete a search:\n\n* Users with the `cancel_task` cluster privilege.\n* The user who first submitted the search.",
+      "docId": "sql-delete-async-api",
+      "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/delete-async-sql-search-api.html",
       "name": "sql.delete_async",
+      "privileges": {
+        "cluster": [
+          "cancel_task"
+        ]
+      },
       "request": {
         "name": "Request",
         "namespace": "sql.delete_async"
@@ -9074,8 +9081,9 @@
           "stability": "stable"
         }
       },
-      "description": "Get async SQL search results.\nGet the current status and available results for an async SQL search or stored synchronous SQL search.",
-      "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/get-async-sql-search-api.html",
+      "description": "Get async SQL search results.\nGet the current status and available results for an async SQL search or stored synchronous SQL search.\n\nIf the Elasticsearch security features are enabled, only the user who first submitted the SQL search can retrieve the search using this API.",
+      "docId": "sql-async-search-api",
+      "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/get-async-sql-search-api.html",
       "name": "sql.get_async",
       "request": {
         "name": "Request",
@@ -9110,8 +9118,14 @@
         }
       },
       "description": "Get the async SQL search status.\nGet the current status of an async SQL search or a stored synchronous SQL search.",
-      "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/get-async-sql-search-status-api.html",
+      "docId": "sql-async-status-api",
+      "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/get-async-sql-search-status-api.html",
       "name": "sql.get_async_status",
+      "privileges": {
+        "cluster": [
+          "monitor"
+        ]
+      },
       "request": {
         "name": "Request",
         "namespace": "sql.get_async_status"
@@ -9145,8 +9159,14 @@
         }
       },
       "description": "Get SQL search results.\nRun an SQL request.",
-      "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/sql-search-api.html",
+      "docId": "sql-search-api",
+      "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/sql-search-api.html",
       "name": "sql.query",
+      "privileges": {
+        "index": [
+          "read"
+        ]
+      },
       "request": {
         "name": "Request",
         "namespace": "sql.query"
@@ -9183,9 +9203,15 @@
           "stability": "stable"
         }
       },
-      "description": "Translate SQL into Elasticsearch queries.\nTranslate an SQL search into a search API request containing Query DSL.",
-      "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/sql-translate-api.html",
+      "description": "Translate SQL into Elasticsearch queries.\nTranslate an SQL search into a search API request containing Query DSL.\nIt accepts the same request body parameters as the SQL search API, excluding `cursor`.",
+      "docId": "sql-translate-api",
+      "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/sql-translate-api.html",
       "name": "sql.translate",
+      "privileges": {
+        "index": [
+          "read"
+        ]
+      },
       "request": {
         "name": "Request",
         "namespace": "sql.translate"
@@ -40753,7 +40779,7 @@
       },
       "path": [],
       "query": [],
-      "specLocation": "sql/clear_cursor/ClearSqlCursorRequest.ts#L22-L35"
+      "specLocation": "sql/clear_cursor/ClearSqlCursorRequest.ts#L22-L36"
     },
     {
       "body": {
@@ -40786,7 +40812,7 @@
       "body": {
         "kind": "no_body"
       },
-      "description": "Delete an async SQL search.\nDelete an async SQL search or a stored synchronous SQL search.\nIf the search is still running, the API cancels it.",
+      "description": "Delete an async SQL search.\nDelete an async SQL search or a stored synchronous SQL search.\nIf the search is still running, the API cancels it.\n\nIf the Elasticsearch security features are enabled, only the following users can use this API to delete a search:\n\n* Users with the `cancel_task` cluster privilege.\n* The user who first submitted the search.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -40800,7 +40826,7 @@
       },
       "path": [
         {
-          "description": "Identifier for the search.",
+          "description": "The identifier for the search.",
           "name": "id",
           "required": true,
           "type": {
@@ -40813,7 +40839,7 @@
         }
       ],
       "query": [],
-      "specLocation": "sql/delete_async/SqlDeleteAsyncRequest.ts#L23-L38"
+      "specLocation": "sql/delete_async/SqlDeleteAsyncRequest.ts#L23-L45"
     },
     {
       "body": {
@@ -40840,7 +40866,7 @@
       "body": {
         "kind": "no_body"
       },
-      "description": "Get async SQL search results.\nGet the current status and available results for an async SQL search or stored synchronous SQL search.",
+      "description": "Get async SQL search results.\nGet the current status and available results for an async SQL search or stored synchronous SQL search.\n\nIf the Elasticsearch security features are enabled, only the user who first submitted the SQL search can retrieve the search using this API.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -40854,7 +40880,7 @@
       },
       "path": [
         {
-          "description": "Identifier for the search.",
+          "description": "The identifier for the search.",
           "name": "id",
           "required": true,
           "type": {
@@ -40868,7 +40894,7 @@
       ],
       "query": [
         {
-          "description": "Separator for CSV results. The API only supports this parameter for CSV responses.",
+          "description": "The separator for CSV results.\nThe API supports this parameter only for CSV responses.",
           "name": "delimiter",
           "required": false,
           "serverDefault": ",",
@@ -40881,7 +40907,7 @@
           }
         },
         {
-          "description": "Format for the response. You must specify a format using this parameter or the\nAccept HTTP header. If you specify both, the API uses this parameter.",
+          "description": "The format for the response.\nYou must specify a format using this parameter or the `Accept` HTTP header.\nIf you specify both, the API uses this parameter.",
           "name": "format",
           "required": false,
           "type": {
@@ -40893,7 +40919,7 @@
           }
         },
         {
-          "description": "Retention period for the search and its results. Defaults\nto the `keep_alive` period for the original SQL search.",
+          "description": "The retention period for the search and its results.\nIt defaults to the `keep_alive` period for the original SQL search.",
           "name": "keep_alive",
           "required": false,
           "type": {
@@ -40905,7 +40931,7 @@
           }
         },
         {
-          "description": "Period to wait for complete results. Defaults to no timeout,\nmeaning the request waits for complete search results.",
+          "description": "The period to wait for complete results.\nIt defaults to no timeout, meaning the request waits for complete search results.",
           "name": "wait_for_completion_timeout",
           "required": false,
           "type": {
@@ -40917,14 +40943,14 @@
           }
         }
       ],
-      "specLocation": "sql/get_async/SqlGetAsyncRequest.ts#L24-L60"
+      "specLocation": "sql/get_async/SqlGetAsyncRequest.ts#L24-L65"
     },
     {
       "body": {
         "kind": "properties",
         "properties": [
           {
-            "description": "Identifier for the search. This value is only returned for async and saved\nsynchronous searches. For CSV, TSV, and TXT responses, this value is returned\nin the `Async-ID` HTTP header.",
+            "description": "Identifier for the search.\nThis value is returned only for async and saved synchronous searches.\nFor CSV, TSV, and TXT responses, this value is returned in the `Async-ID` HTTP header.",
             "name": "id",
             "required": true,
             "type": {
@@ -40936,7 +40962,7 @@
             }
           },
           {
-            "description": "If `true`, the search is still running. If false, the search has finished.\nThis value is only returned for async and saved synchronous searches. For\nCSV, TSV, and TXT responses, this value is returned in the `Async-partial`\nHTTP header.",
+            "description": "If `true`, the search is still running.\nIf `false`, the search has finished.\nThis value is returned only for async and saved synchronous searches.\nFor CSV, TSV, and TXT responses, this value is returned in the `Async-partial` HTTP header.",
             "name": "is_running",
             "required": true,
             "type": {
@@ -40948,7 +40974,7 @@
             }
           },
           {
-            "description": "If `true`, the response does not contain complete search results. If `is_partial`\nis `true` and `is_running` is `true`, the search is still running. If `is_partial`\nis `true` but `is_running` is `false`, the results are partial due to a failure or\ntimeout. This value is only returned for async and saved synchronous searches.\nFor CSV, TSV, and TXT responses, this value is returned in the `Async-partial` HTTP header.",
+            "description": "If `true`, the response does not contain complete search results.\nIf `is_partial` is `true` and `is_running` is `true`, the search is still running.\nIf `is_partial` is `true` but `is_running` is `false`, the results are partial due to a failure or timeout.\nThis value is returned only for async and saved synchronous searches.\nFor CSV, TSV, and TXT responses, this value is returned in the `Async-partial` HTTP header.",
             "name": "is_partial",
             "required": true,
             "type": {
@@ -40975,7 +41001,7 @@
             }
           },
           {
-            "description": "Cursor for the next set of paginated results. For CSV, TSV, and\nTXT responses, this value is returned in the `Cursor` HTTP header.",
+            "description": "The cursor for the next set of paginated results.\nFor CSV, TSV, and TXT responses, this value is returned in the `Cursor` HTTP header.",
             "name": "cursor",
             "required": false,
             "type": {
@@ -40987,7 +41013,7 @@
             }
           },
           {
-            "description": "Values for the search results.",
+            "description": "The values for the search results.",
             "name": "rows",
             "required": true,
             "type": {
@@ -41031,7 +41057,7 @@
       },
       "path": [
         {
-          "description": "Identifier for the search.",
+          "description": "The identifier for the search.",
           "name": "id",
           "required": true,
           "type": {
@@ -41044,71 +41070,14 @@
         }
       ],
       "query": [],
-      "specLocation": "sql/get_async_status/SqlGetAsyncStatusRequest.ts#L23-L37"
+      "specLocation": "sql/get_async_status/SqlGetAsyncStatusRequest.ts#L23-L39"
     },
     {
       "body": {
         "kind": "properties",
         "properties": [
           {
-            "description": "Identifier for the search.",
-            "name": "id",
-            "required": true,
-            "type": {
-              "kind": "instance_of",
-              "type": {
-                "name": "string",
-                "namespace": "_builtins"
-              }
-            }
-          },
-          {
-            "description": "If `true`, the search is still running. If `false`, the search has finished.",
-            "name": "is_running",
-            "required": true,
-            "type": {
-              "kind": "instance_of",
-              "type": {
-                "name": "boolean",
-                "namespace": "_builtins"
-              }
-            }
-          },
-          {
-            "description": "If `true`, the response does not contain complete search results. If `is_partial`\nis `true` and `is_running` is `true`, the search is still running. If `is_partial`\nis `true` but `is_running` is `false`, the results are partial due to a failure or\ntimeout.",
-            "name": "is_partial",
-            "required": true,
-            "type": {
-              "kind": "instance_of",
-              "type": {
-                "name": "boolean",
-                "namespace": "_builtins"
-              }
-            }
-          },
-          {
-            "description": "Timestamp, in milliseconds since the Unix epoch, when the search started.\nThe API only returns this property for running searches.",
-            "name": "start_time_in_millis",
-            "required": true,
-            "type": {
-              "generics": [
-                {
-                  "kind": "instance_of",
-                  "type": {
-                    "name": "UnitMillis",
-                    "namespace": "_types"
-                  }
-                }
-              ],
-              "kind": "instance_of",
-              "type": {
-                "name": "EpochTime",
-                "namespace": "_types"
-              }
-            }
-          },
-          {
-            "description": "Timestamp, in milliseconds since the Unix epoch, when Elasticsearch will delete\nthe search and its results, even if the search is still running.",
+            "description": "The timestamp, in milliseconds since the Unix epoch, when Elasticsearch will delete the search and its results, even if the search is still running.",
             "name": "expiration_time_in_millis",
             "required": true,
             "type": {
@@ -41129,7 +41098,64 @@
             }
           },
           {
-            "description": "HTTP status code for the search. The API only returns this property for completed searches.",
+            "description": "The identifier for the search.",
+            "name": "id",
+            "required": true,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "_builtins"
+              }
+            }
+          },
+          {
+            "description": "If `true`, the search is still running.\nIf `false`, the search has finished.",
+            "name": "is_running",
+            "required": true,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "boolean",
+                "namespace": "_builtins"
+              }
+            }
+          },
+          {
+            "description": "If `true`, the response does not contain complete search results.\nIf `is_partial` is `true` and `is_running` is `true`, the search is still running.\nIf `is_partial` is `true` but `is_running` is `false`, the results are partial due to a failure or timeout.",
+            "name": "is_partial",
+            "required": true,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "boolean",
+                "namespace": "_builtins"
+              }
+            }
+          },
+          {
+            "description": "The timestamp, in milliseconds since the Unix epoch, when the search started.\nThe API returns this property only for running searches.",
+            "name": "start_time_in_millis",
+            "required": true,
+            "type": {
+              "generics": [
+                {
+                  "kind": "instance_of",
+                  "type": {
+                    "name": "UnitMillis",
+                    "namespace": "_types"
+                  }
+                }
+              ],
+              "kind": "instance_of",
+              "type": {
+                "name": "EpochTime",
+                "namespace": "_types"
+              }
+            }
+          },
+          {
+            "description": "The HTTP status code for the search.\nThe API returns this property only for completed searches.",
             "name": "completion_status",
             "required": false,
             "type": {
@@ -41157,7 +41183,20 @@
         "kind": "properties",
         "properties": [
           {
-            "description": "Default catalog (cluster) for queries. If unspecified, the queries execute on the data in the local cluster only.",
+            "description": "If `true`, the response has partial results when there are shard request timeouts or shard failures.\nIf `false`, the API returns an error with no partial results.",
+            "name": "allow_partial_search_results",
+            "required": false,
+            "serverDefault": false,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "boolean",
+                "namespace": "_builtins"
+              }
+            }
+          },
+          {
+            "description": "The default catalog (cluster) for queries.\nIf unspecified, the queries execute on the data in the local cluster only.",
             "name": "catalog",
             "required": false,
             "type": {
@@ -41169,7 +41208,9 @@
             }
           },
           {
-            "description": "If true, the results in a columnar fashion: one row represents all the values of a certain column from the current page of results.",
+            "description": "If `true`, the results are in a columnar fashion: one row represents all the values of a certain column from the current page of results.\nThe API supports this parameter only for CBOR, JSON, SMILE, and YAML responses.",
+            "extDocId": "sql-rest-columnar",
+            "extDocUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/sql-rest-columnar.html",
             "name": "columnar",
             "required": false,
             "serverDefault": false,
@@ -41182,7 +41223,7 @@
             }
           },
           {
-            "description": "Cursor used to retrieve a set of paginated results.\nIf you specify a cursor, the API only uses the `columnar` and `time_zone` request body parameters.\nIt ignores other request body parameters.",
+            "description": "The cursor used to retrieve a set of paginated results.\nIf you specify a cursor, the API only uses the `columnar` and `time_zone` request body parameters.\nIt ignores other request body parameters.",
             "name": "cursor",
             "required": false,
             "type": {
@@ -41194,7 +41235,7 @@
             }
           },
           {
-            "description": "The maximum number of rows (or entries) to return in one response",
+            "description": "The maximum number of rows (or entries) to return in one response.",
             "name": "fetch_size",
             "required": false,
             "serverDefault": 1000,
@@ -41207,9 +41248,22 @@
             }
           },
           {
-            "description": "Elasticsearch query DSL for additional filtering.",
-            "docId": "sql-rest-filtering",
-            "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/sql-rest-filtering.html",
+            "description": "If `false`, the API returns an exception when encountering multiple values for a field.\nIf `true`, the API is lenient and returns the first value from the array with no guarantee of consistent results.",
+            "name": "field_multi_value_leniency",
+            "required": false,
+            "serverDefault": false,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "boolean",
+                "namespace": "_builtins"
+              }
+            }
+          },
+          {
+            "description": "The Elasticsearch query DSL for additional filtering.",
+            "extDocId": "sql-rest-filtering",
+            "extDocUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/sql-rest-filtering.html",
             "name": "filter",
             "required": false,
             "serverDefault": "none",
@@ -41222,7 +41276,80 @@
             }
           },
           {
-            "description": "SQL query to run.",
+            "description": "If `true`, the search can run on frozen indices.",
+            "name": "index_using_frozen",
+            "required": false,
+            "serverDefault": false,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "boolean",
+                "namespace": "_builtins"
+              }
+            }
+          },
+          {
+            "description": "The retention period for an async or saved synchronous search.",
+            "name": "keep_alive",
+            "required": false,
+            "serverDefault": "5d",
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "Duration",
+                "namespace": "_types"
+              }
+            }
+          },
+          {
+            "description": "If `true`, Elasticsearch stores synchronous searches if you also specify the `wait_for_completion_timeout` parameter.\nIf `false`, Elasticsearch only stores async searches that don't finish before the `wait_for_completion_timeout`.",
+            "name": "keep_on_completion",
+            "required": false,
+            "serverDefault": false,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "boolean",
+                "namespace": "_builtins"
+              }
+            }
+          },
+          {
+            "description": "The minimum retention period for the scroll cursor.\nAfter this time period, a pagination request might fail because the scroll cursor is no longer available.\nSubsequent scroll requests prolong the lifetime of the scroll cursor by the duration of `page_timeout` in the scroll request.",
+            "name": "page_timeout",
+            "required": false,
+            "serverDefault": "45s",
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "Duration",
+                "namespace": "_types"
+              }
+            }
+          },
+          {
+            "description": "The values for parameters in the query.",
+            "name": "params",
+            "required": false,
+            "type": {
+              "key": {
+                "kind": "instance_of",
+                "type": {
+                  "name": "string",
+                  "namespace": "_builtins"
+                }
+              },
+              "kind": "dictionary_of",
+              "singleKey": false,
+              "value": {
+                "kind": "user_defined_value"
+              }
+            }
+          },
+          {
+            "description": "The SQL query to run.",
+            "extDocId": "sql-spec",
+            "extDocUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/sql-spec.html",
             "name": "query",
             "required": false,
             "type": {
@@ -41247,21 +41374,21 @@
             }
           },
           {
-            "description": "The timeout before a pagination request fails.",
-            "name": "page_timeout",
+            "description": "One or more runtime fields for the search request.\nThese fields take precedence over mapped fields with the same name.",
+            "name": "runtime_mappings",
             "required": false,
-            "serverDefault": "45s",
             "type": {
               "kind": "instance_of",
               "type": {
-                "name": "Duration",
-                "namespace": "_types"
+                "name": "RuntimeFields",
+                "namespace": "_types.mapping"
               }
             }
           },
           {
-            "description": "ISO-8601 time zone ID for the search.",
-            "docUrl": "https://docs.oracle.com/javase/8/docs/api/java/time/ZoneId.html",
+            "description": "The ISO-8601 time zone ID for the search.",
+            "extDocId": "time-zone-id",
+            "extDocUrl": "https://docs.oracle.com/javase/8/docs/api/java/time/ZoneId.html",
             "name": "time_zone",
             "required": false,
             "serverDefault": "Z",
@@ -41274,32 +41401,7 @@
             }
           },
           {
-            "description": "Throw an exception when encountering multiple values for a field (default) or be lenient and return the first value from the list (without any guarantees of what that will be - typically the first in natural ascending order).",
-            "name": "field_multi_value_leniency",
-            "required": false,
-            "serverDefault": false,
-            "type": {
-              "kind": "instance_of",
-              "type": {
-                "name": "boolean",
-                "namespace": "_builtins"
-              }
-            }
-          },
-          {
-            "description": "Defines one or more runtime fields in the search request. These fields take\nprecedence over mapped fields with the same name.",
-            "name": "runtime_mappings",
-            "required": false,
-            "type": {
-              "kind": "instance_of",
-              "type": {
-                "name": "RuntimeFields",
-                "namespace": "_types.mapping"
-              }
-            }
-          },
-          {
-            "description": "Period to wait for complete results. Defaults to no timeout, meaning the request waits for complete search results. If the search doesn’t finish within this period, the search becomes async.",
+            "description": "The period to wait for complete results.\nIt defaults to no timeout, meaning the request waits for complete search results.\nIf the search doesn't finish within this period, the search becomes async.\n\nTo save a synchronous search, you must specify this parameter and the `keep_on_completion` parameter.",
             "name": "wait_for_completion_timeout",
             "required": false,
             "type": {
@@ -41307,64 +41409,6 @@
               "type": {
                 "name": "Duration",
                 "namespace": "_types"
-              }
-            }
-          },
-          {
-            "description": "Values for parameters in the query.",
-            "name": "params",
-            "required": false,
-            "type": {
-              "key": {
-                "kind": "instance_of",
-                "type": {
-                  "name": "string",
-                  "namespace": "_builtins"
-                }
-              },
-              "kind": "dictionary_of",
-              "singleKey": false,
-              "value": {
-                "kind": "user_defined_value"
-              }
-            }
-          },
-          {
-            "description": "Retention period for an async or saved synchronous search.",
-            "name": "keep_alive",
-            "required": false,
-            "serverDefault": "5d",
-            "type": {
-              "kind": "instance_of",
-              "type": {
-                "name": "Duration",
-                "namespace": "_types"
-              }
-            }
-          },
-          {
-            "description": "If true, Elasticsearch stores synchronous searches if you also specify the wait_for_completion_timeout parameter. If false, Elasticsearch only stores async searches that don’t finish before the wait_for_completion_timeout.",
-            "name": "keep_on_completion",
-            "required": false,
-            "serverDefault": false,
-            "type": {
-              "kind": "instance_of",
-              "type": {
-                "name": "boolean",
-                "namespace": "_builtins"
-              }
-            }
-          },
-          {
-            "description": "If true, the search can run on frozen indices. Defaults to false.",
-            "name": "index_using_frozen",
-            "required": false,
-            "serverDefault": false,
-            "type": {
-              "kind": "instance_of",
-              "type": {
-                "name": "boolean",
-                "namespace": "_builtins"
               }
             }
           }
@@ -41385,9 +41429,9 @@
       "path": [],
       "query": [
         {
-          "description": "Format for the response.",
-          "docId": "sql-rest-format",
-          "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/sql-rest-format.html",
+          "description": "The format for the response.\nYou can also specify a format using the `Accept` HTTP header.\nIf you specify both this parameter and the `Accept` HTTP header, this parameter takes precedence.",
+          "extDocId": "sql-rest-format",
+          "extDocUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/sql-rest-format.html",
           "name": "format",
           "required": false,
           "type": {
@@ -41399,48 +41443,12 @@
           }
         }
       ],
-      "specLocation": "sql/query/QuerySqlRequest.ts#L28-L124"
+      "specLocation": "sql/query/QuerySqlRequest.ts#L28-L146"
     },
     {
       "body": {
         "kind": "properties",
         "properties": [
-          {
-            "description": "Identifier for the search. This value is only returned for async and saved\nsynchronous searches. For CSV, TSV, and TXT responses, this value is returned\nin the `Async-ID` HTTP header.",
-            "name": "id",
-            "required": false,
-            "type": {
-              "kind": "instance_of",
-              "type": {
-                "name": "Id",
-                "namespace": "_types"
-              }
-            }
-          },
-          {
-            "description": "If `true`, the search is still running. If false, the search has finished.\nThis value is only returned for async and saved synchronous searches. For\nCSV, TSV, and TXT responses, this value is returned in the `Async-partial`\nHTTP header.",
-            "name": "is_running",
-            "required": false,
-            "type": {
-              "kind": "instance_of",
-              "type": {
-                "name": "boolean",
-                "namespace": "_builtins"
-              }
-            }
-          },
-          {
-            "description": "If `true`, the response does not contain complete search results. If `is_partial`\nis `true` and `is_running` is `true`, the search is still running. If `is_partial`\nis `true` but `is_running` is `false`, the results are partial due to a failure or\ntimeout. This value is only returned for async and saved synchronous searches.\nFor CSV, TSV, and TXT responses, this value is returned in the `Async-partial` HTTP header.",
-            "name": "is_partial",
-            "required": false,
-            "type": {
-              "kind": "instance_of",
-              "type": {
-                "name": "boolean",
-                "namespace": "_builtins"
-              }
-            }
-          },
           {
             "description": "Column headings for the search results. Each object is a column.",
             "name": "columns",
@@ -41457,7 +41465,7 @@
             }
           },
           {
-            "description": "Cursor for the next set of paginated results. For CSV, TSV, and\nTXT responses, this value is returned in the `Cursor` HTTP header.",
+            "description": "The cursor for the next set of paginated results.\nFor CSV, TSV, and TXT responses, this value is returned in the `Cursor` HTTP header.",
             "name": "cursor",
             "required": false,
             "type": {
@@ -41469,7 +41477,43 @@
             }
           },
           {
-            "description": "Values for the search results.",
+            "description": "The identifier for the search.\nThis value is returned only for async and saved synchronous searches.\nFor CSV, TSV, and TXT responses, this value is returned in the `Async-ID` HTTP header.",
+            "name": "id",
+            "required": false,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "Id",
+                "namespace": "_types"
+              }
+            }
+          },
+          {
+            "description": "If `true`, the search is still running.\nIf `false`, the search has finished.\nThis value is returned only for async and saved synchronous searches.\nFor CSV, TSV, and TXT responses, this value is returned in the `Async-partial` HTTP header.",
+            "name": "is_running",
+            "required": false,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "boolean",
+                "namespace": "_builtins"
+              }
+            }
+          },
+          {
+            "description": "If `true`, the response does not contain complete search results.\nIf `is_partial` is `true` and `is_running` is `true`, the search is still running.\nIf `is_partial` is `true` but `is_running` is `false`, the results are partial due to a failure or timeout.\nThis value is returned only for async and saved synchronous searches.\nFor CSV, TSV, and TXT responses, this value is returned in the `Async-partial` HTTP header.",
+            "name": "is_partial",
+            "required": false,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "boolean",
+                "namespace": "_builtins"
+              }
+            }
+          },
+          {
+            "description": "The values for the search results.",
             "name": "rows",
             "required": true,
             "type": {
@@ -41513,9 +41557,9 @@
             }
           },
           {
-            "description": "Elasticsearch query DSL for additional filtering.",
-            "docId": "sql-rest-filtering",
-            "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/sql-rest-filtering.html",
+            "description": "The Elasticsearch query DSL for additional filtering.",
+            "extDocId": "sql-rest-filtering",
+            "extDocUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/sql-rest-filtering.html",
             "name": "filter",
             "required": false,
             "serverDefault": "none",
@@ -41528,7 +41572,7 @@
             }
           },
           {
-            "description": "SQL query to run.",
+            "description": "The SQL query to run.",
             "name": "query",
             "required": true,
             "type": {
@@ -41540,8 +41584,9 @@
             }
           },
           {
-            "description": "ISO-8601 time zone ID for the search.",
-            "docUrl": "https://docs.oracle.com/javase/8/docs/api/java/time/ZoneId.html",
+            "description": "The ISO-8601 time zone ID for the search.",
+            "extDocId": "time-zone-id",
+            "extDocUrl": "https://docs.oracle.com/javase/8/docs/api/java/time/ZoneId.html",
             "name": "time_zone",
             "required": false,
             "serverDefault": "Z",
@@ -41555,7 +41600,7 @@
           }
         ]
       },
-      "description": "Translate SQL into Elasticsearch queries.\nTranslate an SQL search into a search API request containing Query DSL.",
+      "description": "Translate SQL into Elasticsearch queries.\nTranslate an SQL search into a search API request containing Query DSL.\nIt accepts the same request body parameters as the SQL search API, excluding `cursor`.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -41569,7 +41614,7 @@
       },
       "path": [],
       "query": [],
-      "specLocation": "sql/translate/TranslateSqlRequest.ts#L25-L56"
+      "specLocation": "sql/translate/TranslateSqlRequest.ts#L25-L59"
     },
     {
       "body": {
@@ -105154,7 +105199,7 @@
         "name": "SqlFormat",
         "namespace": "sql.query"
       },
-      "specLocation": "sql/query/QuerySqlRequest.ts#L126-L134"
+      "specLocation": "sql/query/QuerySqlRequest.ts#L148-L156"
     },
     {
       "kind": "type_alias",
