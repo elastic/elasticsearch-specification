@@ -27,6 +27,8 @@ import { Name, Refresh } from '@_types/common'
  * @rest_spec_name security.delete_role
  * @availability stack stability=stable
  * @availability serverless stability=stable visibility=public
+ * @cluster_privileges manage_security
+ * @doc_id security-api-delete-role
  */
 export interface Request extends RequestBase {
   path_parts: {

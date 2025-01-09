@@ -27,6 +27,8 @@ import { Actions } from './types'
  * @rest_spec_name security.put_privileges
  * @availability stack since=6.4.0 stability=stable
  * @availability serverless stability=stable visibility=private
+ * @cluster_privileges manage_security
+ * @doc_id security-api-put-privileges
  * @ext_doc_id security-privileges
  */
 export interface Request extends RequestBase {

@@ -41,5 +41,6 @@ import { RequestBase } from '@_types/Base'
  * @availability stack since=6.2.0 stability=stable
  * @availability serverless stability=stable visibility=private
  * @doc_tag security
+ * @doc_id security-api-ssl
  */
 export interface Request extends RequestBase {}

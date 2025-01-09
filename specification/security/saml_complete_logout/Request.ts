@@ -27,6 +27,7 @@ import { Ids } from '@_types/common'
  * @rest_spec_name security.saml_complete_logout
  * @availability stack since=7.14.0 stability=stable
  * @availability serverless stability=stable visibility=private
+ * @doc_id security-api-saml-complete-logout
  */
 export interface Request extends RequestBase {
   body: {

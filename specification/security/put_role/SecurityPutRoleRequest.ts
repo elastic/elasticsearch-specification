@@ -39,6 +39,7 @@ import { Metadata, Name, Refresh } from '@_types/common'
  * @availability stack stability=stable
  * @availability serverless stability=stable visibility=public
  * @cluster_privileges manage_security
+ * @doc_id security-api-put-role
  * @ext_doc_id defining-roles
  */
 export interface Request extends RequestBase {
