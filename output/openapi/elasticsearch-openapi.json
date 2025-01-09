@@ -38113,7 +38113,7 @@
           {
             "in": "query",
             "name": "categories",
-            "description": "A comma-separated list of the information categories to include in the response. For example, `build,license,features`.",
+            "description": "A comma-separated list of the information categories to include in the response.\nFor example, `build,license,features`.",
             "deprecated": false,
             "schema": {
               "type": "array",
@@ -38136,7 +38136,7 @@
           {
             "in": "query",
             "name": "human",
-            "description": "Defines whether additional human-readable information is included in the response. In particular, it adds descriptions and a tag line.",
+            "description": "Defines whether additional human-readable information is included in the response.\nIn particular, it adds descriptions and a tag line.",
             "deprecated": false,
             "schema": {
               "type": "boolean"
@@ -38190,7 +38190,7 @@
           {
             "in": "query",
             "name": "master_timeout",
-            "description": "Period to wait for a connection to the master node. If no response is received before the timeout expires, the request fails and returns an error.",
+            "description": "The period to wait for a connection to the master node.\nIf no response is received before the timeout expires, the request fails and returns an error.\nTo indicate that the request should never timeout, set it to `-1`.",
             "deprecated": false,
             "schema": {
               "$ref": "#/components/schemas/_types:Duration"
