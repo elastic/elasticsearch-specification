@@ -32,7 +32,7 @@ import { Name } from '@_types/common'
 export interface Request extends RequestBase {
   path_parts: {
     /**
-     * The watch identifier
+     * The watch identifier.
      */
     watch_id: Name
   }
