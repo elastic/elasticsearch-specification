@@ -31,17 +31,21 @@ import { GrokPattern } from '@_types/common'
  */
 export interface Request extends RequestBase {
   query_parameters: {
-    /** The mode of compatibility with ECS compliant Grok patterns (disabled or v1, default: disabled). */
+    /**
+     * The mode of compatibility with ECS compliant Grok patterns.
+     * Use this parameter to specify whether to use ECS Grok patterns instead of legacy ones when the structure finder creates a Grok pattern.
+     * Valid values are `disabled` and `v1`.
+     * @server_default disabled
+     */
     ecs_compatibility?: string
   }
   body: {
     /**
-     * Grok pattern to run on the text.
+     * The Grok pattern to run on the text.
      */
     grok_pattern: GrokPattern
-
     /**
-     * Lines of text to run the Grok pattern on.
+     * The lines of text to run the Grok pattern on.
      */
     text: string[]
   }

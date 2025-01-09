@@ -35643,7 +35643,7 @@
           "text_structure"
         ],
         "summary": "Find the structure of a text field",
-        "description": "Find the structure of a text field in an Elasticsearch index.",
+        "description": "Find the structure of a text field in an Elasticsearch index.\n\nThis API provides a starting point for extracting further information from log messages already ingested into Elasticsearch.\nFor example, if you have ingested data into a very simple index that has just `@timestamp` and message fields, you can use this API to see what common structure exists in the message field.\n\nThe response from the API contains:\n\n* Sample messages.\n* Statistics that reveal the most common values for all fields detected within the text and basic numeric statistics for numeric fields.\n* Information about the structure of the text, which is useful when you write ingest configurations to index it or similarly formatted text.\n* Appropriate mappings for an Elasticsearch index, which you could use to ingest the text.\n\nAll this information can be calculated by the structure finder with no guidance.\nHowever, you can optionally override some of the decisions about the text structure by specifying one or more query parameters.\n\nIf the structure finder produces unexpected results, specify the `explain` query parameter and an explanation will appear in the response.\nIt helps determine why the returned structure was chosen.",
         "operationId": "text-structure-find-field-structure",
         "parameters": [
           {
@@ -35689,7 +35689,7 @@
           {
             "in": "query",
             "name": "explain",
-            "description": "If true, the response includes a field named `explanation`, which is an array of strings that indicate how the structure finder produced its result.",
+            "description": "If `true`, the response includes a field named `explanation`, which is an array of strings that indicate how the structure finder produced its result.",
             "deprecated": false,
             "schema": {
               "type": "boolean"
@@ -35751,7 +35751,7 @@
           {
             "in": "query",
             "name": "should_trim_fields",
-            "description": "If the format is `delimited`, you can specify whether values between delimiters should have whitespace trimmed from them.\nIf this parameter is not specified and the delimiter is pipe (`|`), the default value is true.\nOtherwise, the default value is false.",
+            "description": "If the format is `delimited`, you can specify whether values between delimiters should have whitespace trimmed from them.\nIf this parameter is not specified and the delimiter is pipe (`|`), the default value is true.\nOtherwise, the default value is `false`.",
             "deprecated": false,
             "schema": {
               "type": "boolean"
@@ -35876,7 +35876,7 @@
           "text_structure"
         ],
         "summary": "Find the structure of text messages",
-        "description": "Find the structure of a list of text messages.\nThe messages must contain data that is suitable to be ingested into Elasticsearch.\n\nThis API provides a starting point for ingesting data into Elasticsearch in a format that is suitable for subsequent use with other Elastic Stack functionality.\nUse this API rather than the find text structure API if your input text has already been split up into separate messages by some other process.\nThe response from the API contains:\n\n* Sample messages.\n* Statistics that reveal the most common values for all fields detected within the text and basic numeric statistics for numeric fields.\n* Information about the structure of the text, which is useful when you write ingest configurations to index it or similarly formatted text.\nAppropriate mappings for an Elasticsearch index, which you could use to ingest the text.\n\nAll this information can be calculated by the structure finder with no guidance.\nHowever, you can optionally override some of the decisions about the text structure by specifying one or more query parameters.",
+        "description": "Find the structure of a list of text messages.\nThe messages must contain data that is suitable to be ingested into Elasticsearch.\n\nThis API provides a starting point for ingesting data into Elasticsearch in a format that is suitable for subsequent use with other Elastic Stack functionality.\nUse this API rather than the find text structure API if your input text has already been split up into separate messages by some other process.\n\nThe response from the API contains:\n\n* Sample messages.\n* Statistics that reveal the most common values for all fields detected within the text and basic numeric statistics for numeric fields.\n* Information about the structure of the text, which is useful when you write ingest configurations to index it or similarly formatted text.\nAppropriate mappings for an Elasticsearch index, which you could use to ingest the text.\n\nAll this information can be calculated by the structure finder with no guidance.\nHowever, you can optionally override some of the decisions about the text structure by specifying one or more query parameters.\n\nIf the structure finder produces unexpected results, specify the `explain` query parameter and an explanation will appear in the response.\nIt helps determine why the returned structure was chosen.",
         "operationId": "text-structure-find-message-structure",
         "parameters": [
           {
@@ -35927,7 +35927,7 @@
           "text_structure"
         ],
         "summary": "Find the structure of text messages",
-        "description": "Find the structure of a list of text messages.\nThe messages must contain data that is suitable to be ingested into Elasticsearch.\n\nThis API provides a starting point for ingesting data into Elasticsearch in a format that is suitable for subsequent use with other Elastic Stack functionality.\nUse this API rather than the find text structure API if your input text has already been split up into separate messages by some other process.\nThe response from the API contains:\n\n* Sample messages.\n* Statistics that reveal the most common values for all fields detected within the text and basic numeric statistics for numeric fields.\n* Information about the structure of the text, which is useful when you write ingest configurations to index it or similarly formatted text.\nAppropriate mappings for an Elasticsearch index, which you could use to ingest the text.\n\nAll this information can be calculated by the structure finder with no guidance.\nHowever, you can optionally override some of the decisions about the text structure by specifying one or more query parameters.",
+        "description": "Find the structure of a list of text messages.\nThe messages must contain data that is suitable to be ingested into Elasticsearch.\n\nThis API provides a starting point for ingesting data into Elasticsearch in a format that is suitable for subsequent use with other Elastic Stack functionality.\nUse this API rather than the find text structure API if your input text has already been split up into separate messages by some other process.\n\nThe response from the API contains:\n\n* Sample messages.\n* Statistics that reveal the most common values for all fields detected within the text and basic numeric statistics for numeric fields.\n* Information about the structure of the text, which is useful when you write ingest configurations to index it or similarly formatted text.\nAppropriate mappings for an Elasticsearch index, which you could use to ingest the text.\n\nAll this information can be calculated by the structure finder with no guidance.\nHowever, you can optionally override some of the decisions about the text structure by specifying one or more query parameters.\n\nIf the structure finder produces unexpected results, specify the `explain` query parameter and an explanation will appear in the response.\nIt helps determine why the returned structure was chosen.",
         "operationId": "text-structure-find-message-structure-1",
         "parameters": [
           {
@@ -35986,7 +35986,7 @@
           {
             "in": "query",
             "name": "charset",
-            "description": "The text’s character set. It must be a character set that is supported by the JVM that Elasticsearch uses. For example, UTF-8, UTF-16LE, windows-1252, or EUC-JP. If this parameter is not specified, the structure finder chooses an appropriate character set.",
+            "description": "The text's character set.\nIt must be a character set that is supported by the JVM that Elasticsearch uses.\nFor example, `UTF-8`, `UTF-16LE`, `windows-1252`, or `EUC-JP`.\nIf this parameter is not specified, the structure finder chooses an appropriate character set.",
             "deprecated": false,
             "schema": {
               "type": "string"
@@ -35996,7 +35996,7 @@
           {
             "in": "query",
             "name": "column_names",
-            "description": "If you have set format to delimited, you can specify the column names in a comma-separated list. If this parameter is not specified, the structure finder uses the column names from the header row of the text. If the text does not have a header role, columns are named \"column1\", \"column2\", \"column3\", for example.",
+            "description": "If you have set format to `delimited`, you can specify the column names in a comma-separated list.\nIf this parameter is not specified, the structure finder uses the column names from the header row of the text.\nIf the text does not have a header role, columns are named \"column1\", \"column2\", \"column3\", for example.",
             "deprecated": false,
             "schema": {
               "type": "string"
@@ -36006,7 +36006,7 @@
           {
             "in": "query",
             "name": "delimiter",
-            "description": "If you have set format to delimited, you can specify the character used to delimit the values in each row. Only a single character is supported; the delimiter cannot have multiple characters. By default, the API considers the following possibilities: comma, tab, semi-colon, and pipe (|). In this default scenario, all rows must have the same number of fields for the delimited format to be detected. If you specify a delimiter, up to 10% of the rows can have a different number of columns than the first row.",
+            "description": "If you have set `format` to `delimited`, you can specify the character used to delimit the values in each row.\nOnly a single character is supported; the delimiter cannot have multiple characters.\nBy default, the API considers the following possibilities: comma, tab, semi-colon, and pipe (`|`).\nIn this default scenario, all rows must have the same number of fields for the delimited format to be detected.\nIf you specify a delimiter, up to 10% of the rows can have a different number of columns than the first row.",
             "deprecated": false,
             "schema": {
               "type": "string"
@@ -36016,7 +36016,7 @@
           {
             "in": "query",
             "name": "ecs_compatibility",
-            "description": "The mode of compatibility with ECS compliant Grok patterns (disabled or v1, default: disabled).",
+            "description": "The mode of compatibility with ECS compliant Grok patterns.\nUse this parameter to specify whether to use ECS Grok patterns instead of legacy ones when the structure finder creates a Grok pattern.\nValid values are `disabled` and `v1`.\nThis setting primarily has an impact when a whole message Grok pattern such as `%{CATALINALOG}` matches the input.\nIf the structure finder identifies a common structure but has no idea of meaning then generic field names such as `path`, `ipaddress`, `field1`, and `field2` are used in the `grok_pattern` output, with the intention that a user who knows the meanings rename these fields before using it.",
             "deprecated": false,
             "schema": {
               "type": "string"
@@ -36026,7 +36026,7 @@
           {
             "in": "query",
             "name": "explain",
-            "description": "If this parameter is set to true, the response includes a field named explanation, which is an array of strings that indicate how the structure finder produced its result.\nIf the structure finder produces unexpected results for some text, use this query parameter to help you determine why the returned structure was chosen.",
+            "description": "If this parameter is set to `true`, the response includes a field named explanation, which is an array of strings that indicate how the structure finder produced its result.\nIf the structure finder produces unexpected results for some text, use this query parameter to help you determine why the returned structure was chosen.",
             "deprecated": false,
             "schema": {
               "type": "boolean"
@@ -36036,7 +36036,7 @@
           {
             "in": "query",
             "name": "format",
-            "description": "The high level structure of the text. Valid values are ndjson, xml, delimited, and semi_structured_text. By default, the API chooses the format. In this default scenario, all rows must have the same number of fields for a delimited format to be detected. If the format is set to delimited and the delimiter is not set, however, the API tolerates up to 5% of rows that have a different number of columns than the first row.",
+            "description": "The high level structure of the text.\nValid values are `ndjson`, `xml`, `delimited`, and `semi_structured_text`.\nBy default, the API chooses the format.\nIn this default scenario, all rows must have the same number of fields for a delimited format to be detected.\nIf the format is set to `delimited` and the delimiter is not set, however, the API tolerates up to 5% of rows that have a different number of columns than the first row.",
             "deprecated": false,
             "schema": {
               "type": "string"
@@ -36046,7 +36046,7 @@
           {
             "in": "query",
             "name": "grok_pattern",
-            "description": "If you have set format to semi_structured_text, you can specify a Grok pattern that is used to extract fields from every message in the text. The name of the timestamp field in the Grok pattern must match what is specified in the timestamp_field parameter. If that parameter is not specified, the name of the timestamp field in the Grok pattern must match \"timestamp\". If grok_pattern is not specified, the structure finder creates a Grok pattern.",
+            "description": "If you have set `format` to `semi_structured_text`, you can specify a Grok pattern that is used to extract fields from every message in the text.\nThe name of the timestamp field in the Grok pattern must match what is specified in the `timestamp_field` parameter.\nIf that parameter is not specified, the name of the timestamp field in the Grok pattern must match \"timestamp\".\nIf `grok_pattern` is not specified, the structure finder creates a Grok pattern.",
             "deprecated": false,
             "schema": {
               "$ref": "#/components/schemas/_types:GrokPattern"
@@ -36056,7 +36056,7 @@
           {
             "in": "query",
             "name": "has_header_row",
-            "description": "If you have set format to delimited, you can use this parameter to indicate whether the column names are in the first row of the text. If this parameter is not specified, the structure finder guesses based on the similarity of the first row of the text to other rows.",
+            "description": "If you have set `format` to `delimited`, you can use this parameter to indicate whether the column names are in the first row of the text.\nIf this parameter is not specified, the structure finder guesses based on the similarity of the first row of the text to other rows.",
             "deprecated": false,
             "schema": {
               "type": "boolean"
@@ -36066,7 +36066,7 @@
           {
             "in": "query",
             "name": "line_merge_size_limit",
-            "description": "The maximum number of characters in a message when lines are merged to form messages while analyzing semi-structured text. If you have extremely long messages you may need to increase this, but be aware that this may lead to very long processing times if the way to group lines into messages is misdetected.",
+            "description": "The maximum number of characters in a message when lines are merged to form messages while analyzing semi-structured text.\nIf you have extremely long messages you may need to increase this, but be aware that this may lead to very long processing times if the way to group lines into messages is misdetected.",
             "deprecated": false,
             "schema": {
               "$ref": "#/components/schemas/_types:uint"
@@ -36076,7 +36076,7 @@
           {
             "in": "query",
             "name": "lines_to_sample",
-            "description": "The number of lines to include in the structural analysis, starting from the beginning of the text. The minimum is 2; If the value of this parameter is greater than the number of lines in the text, the analysis proceeds (as long as there are at least two lines in the text) for all of the lines.",
+            "description": "The number of lines to include in the structural analysis, starting from the beginning of the text.\nThe minimum is 2.\nIf the value of this parameter is greater than the number of lines in the text, the analysis proceeds (as long as there are at least two lines in the text) for all of the lines.\n\nNOTE: The number of lines and the variation of the lines affects the speed of the analysis.\nFor example, if you upload text where the first 1000 lines are all variations on the same message, the analysis will find more commonality than would be seen with a bigger sample.\nIf possible, however, it is more efficient to upload sample text with more variety in the first 1000 lines than to request analysis of 100000 lines to achieve some variety.",
             "deprecated": false,
             "schema": {
               "$ref": "#/components/schemas/_types:uint"
@@ -36086,7 +36086,7 @@
           {
             "in": "query",
             "name": "quote",
-            "description": "If you have set format to delimited, you can specify the character used to quote the values in each row if they contain newlines or the delimiter character. Only a single character is supported. If this parameter is not specified, the default value is a double quote (\"). If your delimited text format does not use quoting, a workaround is to set this argument to a character that does not appear anywhere in the sample.",
+            "description": "If you have set `format` to `delimited`, you can specify the character used to quote the values in each row if they contain newlines or the delimiter character.\nOnly a single character is supported.\nIf this parameter is not specified, the default value is a double quote (`\"`).\nIf your delimited text format does not use quoting, a workaround is to set this argument to a character that does not appear anywhere in the sample.",
             "deprecated": false,
             "schema": {
               "type": "string"
@@ -36096,7 +36096,7 @@
           {
             "in": "query",
             "name": "should_trim_fields",
-            "description": "If you have set format to delimited, you can specify whether values between delimiters should have whitespace trimmed from them. If this parameter is not specified and the delimiter is pipe (|), the default value is true. Otherwise, the default value is false.",
+            "description": "If you have set `format` to `delimited`, you can specify whether values between delimiters should have whitespace trimmed from them.\nIf this parameter is not specified and the delimiter is pipe (`|`), the default value is `true`.\nOtherwise, the default value is `false`.",
             "deprecated": false,
             "schema": {
               "type": "boolean"
@@ -36106,7 +36106,7 @@
           {
             "in": "query",
             "name": "timeout",
-            "description": "Sets the maximum amount of time that the structure analysis can take. If the analysis is still running when the timeout expires then it will be stopped.",
+            "description": "The maximum amount of time that the structure analysis can take.\nIf the analysis is still running when the timeout expires then it will be stopped.",
             "deprecated": false,
             "schema": {
               "$ref": "#/components/schemas/_types:Duration"
@@ -36116,7 +36116,7 @@
           {
             "in": "query",
             "name": "timestamp_field",
-            "description": "Optional parameter to specify the timestamp field in the file",
+            "description": "The name of the field that contains the primary timestamp of each record in the text.\nIn particular, if the text were ingested into an index, this is the field that would be used to populate the `@timestamp` field.\n\nIf the `format` is `semi_structured_text`, this field must match the name of the appropriate extraction in the `grok_pattern`.\nTherefore, for semi-structured text, it is best not to specify this parameter unless `grok_pattern` is also specified.\n\nFor structured text, if you specify this parameter, the field must exist within the text.\n\nIf this parameter is not specified, the structure finder makes a decision about which field (if any) is the primary timestamp field.\nFor structured text, it is not compulsory to have a timestamp in the text.",
             "deprecated": false,
             "schema": {
               "$ref": "#/components/schemas/_types:Field"
@@ -36126,7 +36126,7 @@
           {
             "in": "query",
             "name": "timestamp_format",
-            "description": "The Java time format of the timestamp field in the text.",
+            "description": "The Java time format of the timestamp field in the text.\n\nOnly a subset of Java time format letter groups are supported:\n\n* `a`\n* `d`\n* `dd`\n* `EEE`\n* `EEEE`\n* `H`\n* `HH`\n* `h`\n* `M`\n* `MM`\n* `MMM`\n* `MMMM`\n* `mm`\n* `ss`\n* `XX`\n* `XXX`\n* `yy`\n* `yyyy`\n* `zzz`\n\nAdditionally `S` letter groups (fractional seconds) of length one to nine are supported providing they occur after `ss` and separated from the `ss` by a `.`, `,` or `:`.\nSpacing and punctuation is also permitted with the exception of `?`, newline and carriage return, together with literal text enclosed in single quotes.\nFor example, `MM/dd HH.mm.ss,SSSSSS 'in' yyyy` is a valid override format.\n\nOne valuable use case for this parameter is when the format is semi-structured text, there are multiple timestamp formats in the text, and you know which format corresponds to the primary timestamp, but you do not want to specify the full `grok_pattern`.\nAnother is when the timestamp format is one that the structure finder does not consider by default.\n\nIf this parameter is not specified, the structure finder chooses the best format from a built-in set.\n\nIf the special value `null` is specified the structure finder will not look for a primary timestamp in the text.\nWhen the format is semi-structured text this will result in the structure finder treating the text as single-line messages.",
             "deprecated": false,
             "schema": {
               "type": "string"
@@ -36156,27 +36156,33 @@
                   "type": "object",
                   "properties": {
                     "charset": {
+                      "description": "The character encoding used to parse the text.",
                       "type": "string"
                     },
                     "has_header_row": {
                       "type": "boolean"
                     },
                     "has_byte_order_marker": {
+                      "description": "For UTF character encodings, it indicates whether the text begins with a byte order marker.",
                       "type": "boolean"
                     },
                     "format": {
+                      "description": "Valid values include `ndjson`, `xml`, `delimited`, and `semi_structured_text`.",
                       "type": "string"
                     },
                     "field_stats": {
+                      "description": "The most common values of each field, plus basic numeric statistics for the numeric `page_count` field.\nThis information may provide clues that the data needs to be cleaned or transformed prior to use by other Elastic Stack functionality.",
                       "type": "object",
                       "additionalProperties": {
                         "$ref": "#/components/schemas/text_structure._types:FieldStat"
                       }
                     },
                     "sample_start": {
+                      "description": "The first two messages in the text verbatim.\nThis may help diagnose parse errors or accidental uploads of the wrong text.",
                       "type": "string"
                     },
                     "num_messages_analyzed": {
+                      "description": "The number of distinct messages the lines contained.\nFor NDJSON, this value is the same as `num_lines_analyzed`.\nFor other text formats, messages can span several lines.",
                       "type": "number"
                     },
                     "mappings": {
@@ -36189,12 +36195,15 @@
                       "type": "string"
                     },
                     "need_client_timezone": {
+                      "description": "If a timestamp format is detected that does not include a timezone, `need_client_timezone` is `true`.\nThe server that parses the text must therefore be told the correct timezone by the client.",
                       "type": "boolean"
                     },
                     "num_lines_analyzed": {
+                      "description": "The number of lines of the text that were analyzed.",
                       "type": "number"
                     },
                     "column_names": {
+                      "description": "If `format` is `delimited`, the `column_names` field lists the column names in the order they appear in the sample.",
                       "type": "array",
                       "items": {
                         "type": "string"
@@ -36216,12 +36225,14 @@
                       "type": "string"
                     },
                     "java_timestamp_formats": {
+                      "description": "The Java time formats recognized in the time fields.\nElasticsearch mappings and ingest pipelines use this format.",
                       "type": "array",
                       "items": {
                         "type": "string"
                       }
                     },
                     "joda_timestamp_formats": {
+                      "description": "Information that is used to tell Logstash how to parse timestamps.",
                       "type": "array",
                       "items": {
                         "type": "string"
@@ -105263,7 +105274,7 @@
       "text_structure.find_message_structure#should_trim_fields": {
         "in": "query",
         "name": "should_trim_fields",
-        "description": "If the format is `delimited`, you can specify whether values between delimiters should have whitespace trimmed from them.\nIf this parameter is not specified and the delimiter is pipe (`|`), the default value is true.\nOtherwise, the default value is false.",
+        "description": "If the format is `delimited`, you can specify whether values between delimiters should have whitespace trimmed from them.\nIf this parameter is not specified and the delimiter is pipe (`|`), the default value is true.\nOtherwise, the default value is `false`.",
         "deprecated": false,
         "schema": {
           "type": "boolean"
@@ -105303,7 +105314,7 @@
       "text_structure.test_grok_pattern#ecs_compatibility": {
         "in": "query",
         "name": "ecs_compatibility",
-        "description": "The mode of compatibility with ECS compliant Grok patterns (disabled or v1, default: disabled).",
+        "description": "The mode of compatibility with ECS compliant Grok patterns.\nUse this parameter to specify whether to use ECS Grok patterns instead of legacy ones when the structure finder creates a Grok pattern.\nValid values are `disabled` and `v1`.",
         "deprecated": false,
         "schema": {
           "type": "string"
@@ -108337,7 +108348,7 @@
                   "$ref": "#/components/schemas/_types:GrokPattern"
                 },
                 "text": {
-                  "description": "Lines of text to run the Grok pattern on.",
+                  "description": "The lines of text to run the Grok pattern on.",
                   "type": "array",
                   "items": {
                     "type": "string"
