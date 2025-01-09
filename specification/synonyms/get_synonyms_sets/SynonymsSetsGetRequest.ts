@@ -25,17 +25,18 @@ import { integer } from '@_types/Numeric'
  * @rest_spec_name synonyms.get_synonyms_sets
  * @availability stack since=8.10.0 stability=stable
  * @availability serverless stability=stable visibility=public
+ * @cluster_privileges manage_search_synonyms
  * @doc_id synonym-set-list
  */
 export interface Request extends RequestBase {
   query_parameters: {
     /**
-     * Starting offset
+     * The starting offset for synonyms sets to retrieve.
      * @server_default 0
      */
     from?: integer
     /**
-     * specifies a max number of results to get
+     * The maximum number of synonyms sets to retrieve.
      * @server_default 10
      */
     size?: integer

@@ -25,17 +25,17 @@ import { Id } from '@_types/common'
  * @rest_spec_name synonyms.delete_synonym_rule
  * @availability stack since=8.10.0 stability=stable
  * @availability serverless stability=stable visibility=public
+ * @cluster_privileges manage_search_synonyms
  * @doc_id synonym-rule-delete
  */
 export interface Request extends RequestBase {
   path_parts: {
     /**
-     * The id of the synonym set to be updated
+     * The ID of the synonym set to update.
      */
     set_id: Id
-
     /**
-     * The id of the synonym rule to be deleted
+     * The ID of the synonym rule to delete.
      */
     rule_id: Id
   }

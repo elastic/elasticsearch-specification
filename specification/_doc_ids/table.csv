@@ -709,6 +709,7 @@ synonym-rule-create,https://www.elastic.co/guide/en/elasticsearch/reference/{bra
 synonym-rule-delete,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/delete-synonym-rule.html
 synonym-rule-get,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/get-synonym-rule.html
 synonym-set-create,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/put-synonyms-set.html
+synonym-set-define,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/analysis-synonym-graph-tokenfilter.html#analysis-synonym-graph-define-synonyms
 synonym-set-delete,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/delete-synonyms-set.html
 synonym-set-get,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/get-synonyms-set.html
 synonym-set-list,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/get-synonyms-set.html

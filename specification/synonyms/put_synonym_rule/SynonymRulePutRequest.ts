@@ -23,27 +23,32 @@ import { SynonymString } from '../_types/SynonymRule'
 /**
  * Create or update a synonym rule.
  * Create or update a synonym rule in a synonym set.
+ *
+ * If any of the synonym rules included is invalid, the API returns an error.
+ *
+ * When you update a synonym rule, all analyzers using the synonyms set will be reloaded automatically to reflect the new rule.
  * @rest_spec_name synonyms.put_synonym_rule
  * @availability stack since=8.10.0 stability=stable
  * @availability serverless stability=stable visibility=public
+ * @cluster_privileges manage_search_synonyms
  * @doc_id synonym-rule-create
  */
 export interface Request extends RequestBase {
   path_parts: {
     /**
-     * The id of the synonym set to be updated with the synonym rule
+     * The ID of the synonym set.
      */
     set_id: Id
-
     /**
-     * The id of the synonym rule to be updated or created
+     * The ID of the synonym rule to be updated or created.
      */
     rule_id: Id
   }
-  /**
-   * The synonym rule information to update
-   */
   body: {
+    /**
+     * The synonym rule information definition, which must be in Solr format.
+     * @ext_doc_id synonym-set-define
+     */
     synonyms: SynonymString
   }
 }
