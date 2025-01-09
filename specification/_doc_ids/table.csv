@@ -67,7 +67,6 @@ ccs-network-delays,https://www.elastic.co/guide/en/elasticsearch/reference/{bran
 clean-up-snapshot-repo,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/snapshots-register-repository.html#snapshots-repository-cleanup
 clear-repositories-metering-archive-api,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/clear-repositories-metering-archive-api.html
 clear-scroll-api,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/clear-scroll-api.html
-clear-sql-cursor-api,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/clear-sql-cursor-api.html
 cluster-allocation-explain,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/cluster-allocation-explain.html
 cluster-get-settings,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/cluster-get-settings.html
 cluster-health,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/cluster-health.html
@@ -130,7 +129,6 @@ data-streams,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/da
 date-index-name-processor,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/date-index-name-processor.html
 dcg,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/search-rank-eval.html#_discounted_cumulative_gain_dcg
 defining-roles,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/defining-roles.html
-delete-async-sql-search-api,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/delete-async-sql-search-api.html
 delete-enrich-policy-api,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/delete-enrich-policy-api.html
 delete-license,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/delete-license.html
 delete-pipeline-api,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/delete-pipeline-api.html
@@ -188,8 +186,6 @@ geo-shape,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/geo-s
 geo-grid-processor,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/ingest-geo-grid-processor.html
 geoip-processor,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/geoip-processor.html
 geoip-stats-api,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/geoip-stats-api.html
-get-async-sql-search-api,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/get-async-sql-search-api.html
-get-async-sql-search-status-api,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/get-async-sql-search-status-api.html
 get-basic-status,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/get-basic-status.html
 get-dfanalytics-stats,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/get-dfanalytics-stats.html
 get-dfanalytics,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/get-dfanalytics.html
@@ -478,6 +474,8 @@ reroute-processor,https://www.elastic.co/guide/en/elasticsearch/reference/{branc
 render-search-template-api,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/render-search-template-api.html
 reset-transform,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/reset-transform.html
 restore-snapshot,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/snapshots-restore-snapshot.html
+sql-delete-async-api,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/delete-async-sql-search-api.html
+sql-clear-cursor-api,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/clear-sql-cursor-api.html
 rollup-agg-limitations,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/rollup-agg-limitations.html
 rollup-delete-job,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/rollup-delete-job.html
 rollup-get-job,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/rollup-get-job.html
@@ -680,9 +678,13 @@ sort-search-results,https://www.elastic.co/guide/en/elasticsearch/reference/{bra
 sort-tiebreaker,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/eql.html#eql-search-specify-a-sort-tiebreaker
 query-dsl-sparse-vector-query,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/query-dsl-sparse-vector-query.html
 split-processor,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/split-processor.html
+sql-async-search-api,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/get-async-sql-search-api.html
+sql-async-status-api,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/get-async-sql-search-status-api.html
+sql-rest-columnar,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/sql-rest-columnar.html
 sql-rest-filtering,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/sql-rest-filtering.html
 sql-rest-format,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/sql-rest-format.html
 sql-search-api,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/sql-search-api.html
+sql-spec,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/sql-spec.html
 sql-translate-api,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/sql-translate-api.html
 start-basic,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/start-basic.html
 start-dfanalytics,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/start-dfanalytics.html
@@ -705,6 +707,7 @@ tasks,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/tasks.htm
 templating-role-query,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/field-and-document-access-control.html#templating-role-query
 terminate-processor,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/terminate-processor.html
 time-value,https://github.com/elastic/elasticsearch/blob/{branch}/libs/core/src/main/java/org/elasticsearch/core/TimeValue.java
+time-zone-id,https://docs.oracle.com/javase/8/docs/api/java/time/ZoneId.html
 trim-processor,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/trim-processor.html
 unfreeze-index-api,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/unfreeze-index-api.html
 update-dfanalytics,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/update-dfanalytics.html
