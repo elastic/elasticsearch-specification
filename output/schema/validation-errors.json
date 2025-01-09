@@ -970,12 +970,6 @@
       ],
       "response": []
     },
-    "watcher.stop": {
-      "request": [
-        "Request: missing json spec query parameter 'master_timeout'"
-      ],
-      "response": []
-    },
     "xpack.info": {
       "request": [
         "Request: query parameter 'human' does not exist in the json spec",

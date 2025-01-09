@@ -1,0 +1,10 @@
+# summary:
+description: A successful response from `DELETE _watcher/watch/my_watch`.
+# type: response
+# response_code: 200
+value: |-
+  {
+    "found": true,
+    "_id": "my_watch",
+    "_version": 2
+  }
