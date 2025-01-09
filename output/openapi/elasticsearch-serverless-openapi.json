@@ -8863,7 +8863,7 @@
           "info"
         ],
         "summary": "Get cluster info",
-        "description": "Returns basic information about the cluster.",
+        "description": "Get basic build, version, and cluster information.",
         "operationId": "info",
         "responses": {
           "200": {
@@ -17597,6 +17597,42 @@
         "x-state": "Added in 7.15.0"
       }
     },
+    "/_security/_query/role": {
+      "get": {
+        "tags": [
+          "security"
+        ],
+        "summary": "Find roles with a query",
+        "description": "Get roles in a paginated manner. You can optionally filter the results with a query.",
+        "operationId": "security-query-role",
+        "requestBody": {
+          "$ref": "#/components/requestBodies/security.query_role"
+        },
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/security.query_role#200"
+          }
+        },
+        "x-state": "Added in 8.15.0"
+      },
+      "post": {
+        "tags": [
+          "security"
+        ],
+        "summary": "Find roles with a query",
+        "description": "Get roles in a paginated manner. You can optionally filter the results with a query.",
+        "operationId": "security-query-role-1",
+        "requestBody": {
+          "$ref": "#/components/requestBodies/security.query_role"
+        },
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/security.query_role#200"
+          }
+        },
+        "x-state": "Added in 8.15.0"
+      }
+    },
     "/_security/api_key/{id}": {
       "put": {
         "tags": [
@@ -18023,7 +18059,7 @@
           {
             "in": "path",
             "name": "id",
-            "description": "\"The id of the synonyms set to be retrieved",
+            "description": "The synonyms set identifier to retrieve.",
             "required": true,
             "deprecated": false,
             "schema": {
@@ -18034,7 +18070,7 @@
           {
             "in": "query",
             "name": "from",
-            "description": "Starting offset for query rules to be retrieved",
+            "description": "The starting offset for query rules to retrieve.",
             "deprecated": false,
             "schema": {
               "type": "number"
@@ -18044,7 +18080,7 @@
           {
             "in": "query",
             "name": "size",
-            "description": "specifies a max number of query rules to retrieve",
+            "description": "The max number of query rules to retrieve.",
             "deprecated": false,
             "schema": {
               "type": "number"
@@ -18061,9 +18097,11 @@
                   "type": "object",
                   "properties": {
                     "count": {
+                      "description": "The total number of synonyms rules that the synonyms set contains.",
                       "type": "number"
                     },
                     "synonyms_set": {
+                      "description": "Synonym rule details.",
                       "type": "array",
                       "items": {
                         "$ref": "#/components/schemas/synonyms._types:SynonymRuleRead"
@@ -18086,13 +18124,13 @@
           "synonyms"
         ],
         "summary": "Create or update a synonym set",
-        "description": "Synonyms sets are limited to a maximum of 10,000 synonym rules per set.\nIf you need to manage more synonym rules, you can create multiple synonym sets.",
+        "description": "Synonyms sets are limited to a maximum of 10,000 synonym rules per set.\nIf you need to manage more synonym rules, you can create multiple synonym sets.\n\nWhen an existing synonyms set is updated, the search analyzers that use the synonyms set are reloaded automatically for all indices.\nThis is equivalent to invoking the reload search analyzers API for all indices that use the synonyms set.",
         "operationId": "synonyms-put-synonym",
         "parameters": [
           {
             "in": "path",
             "name": "id",
-            "description": "The id of the synonyms set to be created or updated",
+            "description": "The ID of the synonyms set to be created or updated.",
             "required": true,
             "deprecated": false,
             "schema": {
@@ -18108,7 +18146,7 @@
                 "type": "object",
                 "properties": {
                   "synonyms_set": {
-                    "description": "The synonym set information to update",
+                    "description": "The synonym rules definitions for the synonyms set.",
                     "oneOf": [
                       {
                         "$ref": "#/components/schemas/synonyms._types:SynonymRule"
@@ -18161,12 +18199,13 @@
           "synonyms"
         ],
         "summary": "Delete a synonym set",
+        "description": "You can only delete a synonyms set that is not in use by any index analyzer.\n\nSynonyms sets can be used in synonym graph token filters and synonym token filters.\nThese synonym filters can be used as part of search analyzers.\n\nAnalyzers need to be loaded when an index is restored (such as when a node starts, or the index becomes open).\nEven if the analyzer is not used on any field mapping, it still needs to be loaded on the index recovery phase.\n\nIf any analyzers cannot be loaded, the index becomes unavailable and the cluster status becomes red or yellow as index shards are not available.\nTo prevent that, synonyms sets that are used in analyzers can't be deleted.\nA delete request in this case will return a 400 response code.\n\nTo remove a synonyms set, you must first remove all indices that contain analyzers using it.\nYou can migrate an index by creating a new index that does not contain the token filter with the synonyms set, and use the reindex API in order to copy over the index data.\nOnce finished, you can delete the index.\nWhen the synonyms set is not used in analyzers, you will be able to delete it.",
         "operationId": "synonyms-delete-synonym",
         "parameters": [
           {
             "in": "path",
             "name": "id",
-            "description": "The id of the synonyms set to be deleted",
+            "description": "The synonyms set identifier to delete.",
             "required": true,
             "deprecated": false,
             "schema": {
@@ -18202,7 +18241,7 @@
           {
             "in": "path",
             "name": "set_id",
-            "description": "The id of the synonym set to retrieve the synonym rule from",
+            "description": "The ID of the synonym set to retrieve the synonym rule from.",
             "required": true,
             "deprecated": false,
             "schema": {
@@ -18213,7 +18252,7 @@
           {
             "in": "path",
             "name": "rule_id",
-            "description": "The id of the synonym rule to retrieve",
+            "description": "The ID of the synonym rule to retrieve.",
             "required": true,
             "deprecated": false,
             "schema": {
@@ -18241,13 +18280,13 @@
           "synonyms"
         ],
         "summary": "Create or update a synonym rule",
-        "description": "Create or update a synonym rule in a synonym set.",
+        "description": "Create or update a synonym rule in a synonym set.\n\nIf any of the synonym rules included is invalid, the API returns an error.\n\nWhen you update a synonym rule, all analyzers using the synonyms set will be reloaded automatically to reflect the new rule.",
         "operationId": "synonyms-put-synonym-rule",
         "parameters": [
           {
             "in": "path",
             "name": "set_id",
-            "description": "The id of the synonym set to be updated with the synonym rule",
+            "description": "The ID of the synonym set.",
             "required": true,
             "deprecated": false,
             "schema": {
@@ -18258,7 +18297,7 @@
           {
             "in": "path",
             "name": "rule_id",
-            "description": "The id of the synonym rule to be updated or created",
+            "description": "The ID of the synonym rule to be updated or created.",
             "required": true,
             "deprecated": false,
             "schema": {
@@ -18310,7 +18349,7 @@
           {
             "in": "path",
             "name": "set_id",
-            "description": "The id of the synonym set to be updated",
+            "description": "The ID of the synonym set to update.",
             "required": true,
             "deprecated": false,
             "schema": {
@@ -18321,7 +18360,7 @@
           {
             "in": "path",
             "name": "rule_id",
-            "description": "The id of the synonym rule to be deleted",
+            "description": "The ID of the synonym rule to delete.",
             "required": true,
             "deprecated": false,
             "schema": {
@@ -18357,7 +18396,7 @@
           {
             "in": "query",
             "name": "from",
-            "description": "Starting offset",
+            "description": "The starting offset for synonyms sets to retrieve.",
             "deprecated": false,
             "schema": {
               "type": "number"
@@ -18367,7 +18406,7 @@
           {
             "in": "query",
             "name": "size",
-            "description": "specifies a max number of results to get",
+            "description": "The maximum number of synonyms sets to retrieve.",
             "deprecated": false,
             "schema": {
               "type": "number"
@@ -18384,9 +18423,11 @@
                   "type": "object",
                   "properties": {
                     "count": {
+                      "description": "The total number of synonyms sets defined.",
                       "type": "number"
                     },
                     "results": {
+                      "description": "The identifier and total number of defined synonym rules for each synonyms set.",
                       "type": "array",
                       "items": {
                         "$ref": "#/components/schemas/synonyms.get_synonyms_sets:SynonymsSetItem"
@@ -46063,15 +46104,19 @@
             "$ref": "#/components/schemas/_types:DateTime"
           },
           "build_flavor": {
+            "description": "The build flavor. For example, `default`.",
             "type": "string"
           },
           "build_hash": {
+            "description": "The Elasticsearch Git commit's SHA hash.",
             "type": "string"
           },
           "build_snapshot": {
+            "description": "Indicates whether the Elasticsearch build was a snapshot.",
             "type": "boolean"
           },
           "build_type": {
+            "description": "The build type that corresponds to how Elasticsearch was installed.\nFor example, `docker`, `rpm`, or `tar`.",
             "type": "string"
           },
           "lucene_version": {
@@ -46084,6 +46129,7 @@
             "$ref": "#/components/schemas/_types:VersionString"
           },
           "number": {
+            "description": "The Elasticsearch version number.",
             "type": "string"
           }
         },
@@ -47914,7 +47960,7 @@
           "version"
         ]
       },
-      "ingest.simulate:Document": {
+      "ingest._types:Document": {
         "type": "object",
         "properties": {
           "_id": {
@@ -47932,11 +47978,11 @@
           "_source"
         ]
       },
-      "ingest.simulate:SimulateDocumentResult": {
+      "ingest._types:SimulateDocumentResult": {
         "type": "object",
         "properties": {
           "doc": {
-            "$ref": "#/components/schemas/ingest.simulate:DocumentSimulation"
+            "$ref": "#/components/schemas/ingest._types:DocumentSimulation"
           },
           "error": {
             "$ref": "#/components/schemas/_types:ErrorCause"
@@ -47944,12 +47990,12 @@
           "processor_results": {
             "type": "array",
             "items": {
-              "$ref": "#/components/schemas/ingest.simulate:PipelineSimulation"
+              "$ref": "#/components/schemas/ingest._types:PipelineSimulation"
             }
           }
         }
       },
-      "ingest.simulate:DocumentSimulation": {
+      "ingest._types:DocumentSimulation": {
         "type": "object",
         "properties": {
           "_id": {
@@ -47959,7 +48005,7 @@
             "$ref": "#/components/schemas/_types:IndexName"
           },
           "_ingest": {
-            "$ref": "#/components/schemas/ingest.simulate:Ingest"
+            "$ref": "#/components/schemas/ingest._types:Ingest"
           },
           "_routing": {
             "description": "Value used to send the document to a specific primary shard.",
@@ -47986,11 +48032,11 @@
           "_source"
         ]
       },
-      "ingest.simulate:Ingest": {
+      "ingest._types:Ingest": {
         "type": "object",
         "properties": {
           "_redact": {
-            "$ref": "#/components/schemas/ingest.simulate:Redact"
+            "$ref": "#/components/schemas/ingest._types:Redact"
           },
           "timestamp": {
             "$ref": "#/components/schemas/_types:DateTime"
@@ -48003,7 +48049,7 @@
           "timestamp"
         ]
       },
-      "ingest.simulate:Redact": {
+      "ingest._types:Redact": {
         "type": "object",
         "properties": {
           "_is_redacted": {
@@ -48026,11 +48072,11 @@
           }
         ]
       },
-      "ingest.simulate:PipelineSimulation": {
+      "ingest._types:PipelineSimulation": {
         "type": "object",
         "properties": {
           "doc": {
-            "$ref": "#/components/schemas/ingest.simulate:DocumentSimulation"
+            "$ref": "#/components/schemas/ingest._types:DocumentSimulation"
           },
           "tag": {
             "type": "string"
@@ -54951,6 +54997,98 @@
           }
         ]
       },
+      "security.query_role:RoleQueryContainer": {
+        "type": "object",
+        "properties": {
+          "bool": {
+            "$ref": "#/components/schemas/_types.query_dsl:BoolQuery"
+          },
+          "exists": {
+            "$ref": "#/components/schemas/_types.query_dsl:ExistsQuery"
+          },
+          "ids": {
+            "$ref": "#/components/schemas/_types.query_dsl:IdsQuery"
+          },
+          "match": {
+            "description": "Returns roles that match a provided text, number, date or boolean value.\nThe provided text is analyzed before matching.",
+            "type": "object",
+            "additionalProperties": {
+              "$ref": "#/components/schemas/_types.query_dsl:MatchQuery"
+            },
+            "minProperties": 1,
+            "maxProperties": 1
+          },
+          "match_all": {
+            "$ref": "#/components/schemas/_types.query_dsl:MatchAllQuery"
+          },
+          "prefix": {
+            "description": "Returns roles that contain a specific prefix in a provided field.",
+            "type": "object",
+            "additionalProperties": {
+              "$ref": "#/components/schemas/_types.query_dsl:PrefixQuery"
+            },
+            "minProperties": 1,
+            "maxProperties": 1
+          },
+          "range": {
+            "description": "Returns roles that contain terms within a provided range.",
+            "type": "object",
+            "additionalProperties": {
+              "$ref": "#/components/schemas/_types.query_dsl:RangeQuery"
+            },
+            "minProperties": 1,
+            "maxProperties": 1
+          },
+          "simple_query_string": {
+            "$ref": "#/components/schemas/_types.query_dsl:SimpleQueryStringQuery"
+          },
+          "term": {
+            "description": "Returns roles that contain an exact term in a provided field.\nTo return a document, the query term must exactly match the queried field's value, including whitespace and capitalization.",
+            "type": "object",
+            "additionalProperties": {
+              "$ref": "#/components/schemas/_types.query_dsl:TermQuery"
+            },
+            "minProperties": 1,
+            "maxProperties": 1
+          },
+          "terms": {
+            "$ref": "#/components/schemas/_types.query_dsl:TermsQuery"
+          },
+          "wildcard": {
+            "description": "Returns roles that contain terms matching a wildcard pattern.",
+            "type": "object",
+            "additionalProperties": {
+              "$ref": "#/components/schemas/_types.query_dsl:WildcardQuery"
+            },
+            "minProperties": 1,
+            "maxProperties": 1
+          }
+        },
+        "minProperties": 1,
+        "maxProperties": 1
+      },
+      "security.query_role:QueryRole": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/security._types:RoleDescriptor"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "_sort": {
+                "$ref": "#/components/schemas/_types:SortResults"
+              },
+              "name": {
+                "description": "Name of the role.",
+                "type": "string"
+              }
+            },
+            "required": [
+              "name"
+            ]
+          }
+        ]
+      },
       "sql:Column": {
         "type": "object",
         "properties": {
@@ -56347,7 +56485,7 @@
                 "docs": {
                   "type": "array",
                   "items": {
-                    "$ref": "#/components/schemas/ingest.simulate:SimulateDocumentResult"
+                    "$ref": "#/components/schemas/ingest._types:SimulateDocumentResult"
                   }
                 }
               },
@@ -57122,6 +57260,38 @@
                 "total",
                 "count",
                 "api_keys"
+              ]
+            }
+          }
+        }
+      },
+      "security.query_role#200": {
+        "description": "",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "total": {
+                  "description": "The total number of roles found.",
+                  "type": "number"
+                },
+                "count": {
+                  "description": "The number of roles returned in the response.",
+                  "type": "number"
+                },
+                "roles": {
+                  "description": "The list of roles.",
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/security.query_role:QueryRole"
+                  }
+                }
+              },
+              "required": [
+                "total",
+                "count",
+                "roles"
               ]
             }
           }
@@ -63361,7 +63531,7 @@
                   "description": "Sample documents to test in the pipeline.",
                   "type": "array",
                   "items": {
-                    "$ref": "#/components/schemas/ingest.simulate:Document"
+                    "$ref": "#/components/schemas/ingest._types:Document"
                   }
                 },
                 "pipeline": {
@@ -64090,6 +64260,34 @@
                 },
                 "query": {
                   "$ref": "#/components/schemas/security.query_api_keys:ApiKeyQueryContainer"
+                },
+                "from": {
+                  "description": "Starting document offset.\nBy default, you cannot page through more than 10,000 hits using the from and size parameters.\nTo page through more hits, use the `search_after` parameter.",
+                  "type": "number"
+                },
+                "sort": {
+                  "$ref": "#/components/schemas/_types:Sort"
+                },
+                "size": {
+                  "description": "The number of hits to return.\nBy default, you cannot page through more than 10,000 hits using the `from` and `size` parameters.\nTo page through more hits, use the `search_after` parameter.",
+                  "type": "number"
+                },
+                "search_after": {
+                  "$ref": "#/components/schemas/_types:SortResults"
+                }
+              }
+            }
+          }
+        }
+      },
+      "security.query_role": {
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "query": {
+                  "$ref": "#/components/schemas/security.query_role:RoleQueryContainer"
                 },
                 "from": {
                   "description": "Starting document offset.\nBy default, you cannot page through more than 10,000 hits using the from and size parameters.\nTo page through more hits, use the `search_after` parameter.",

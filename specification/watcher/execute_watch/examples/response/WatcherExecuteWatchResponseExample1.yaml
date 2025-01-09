@@ -1,0 +1,94 @@
+# summary:
+description: >
+  A successful response from `POST _watcher/watch/my_watch/_execute`.
+# type: response
+# response_code: 200
+value: |-
+  {
+    "_id": "my_watch_0-2015-06-02T23:17:55.124Z", 
+    "watch_record": { 
+      "@timestamp": "2015-06-02T23:17:55.124Z",
+      "watch_id": "my_watch",
+      "node": "my_node",
+      "messages": [],
+      "trigger_event": {
+        "type": "manual",
+        "triggered_time": "2015-06-02T23:17:55.124Z",
+        "manual": {
+          "schedule": {
+            "scheduled_time": "2015-06-02T23:17:55.124Z"
+          }
+        }
+      },
+      "state": "executed",
+      "status": {
+        "version": 1,
+        "execution_state": "executed",
+        "state": {
+          "active": true,
+          "timestamp": "2015-06-02T23:17:55.111Z"
+        },
+        "last_checked": "2015-06-02T23:17:55.124Z",
+        "last_met_condition": "2015-06-02T23:17:55.124Z",
+        "actions": {
+          "test_index": {
+            "ack": {
+              "timestamp": "2015-06-02T23:17:55.124Z",
+              "state": "ackable"
+            },
+            "last_execution": {
+              "timestamp": "2015-06-02T23:17:55.124Z",
+              "successful": true
+            },
+            "last_successful_execution": {
+              "timestamp": "2015-06-02T23:17:55.124Z",
+              "successful": true
+            }
+          }
+        }
+      },
+      "input": {
+        "simple": {
+          "payload": {
+            "send": "yes"
+          }
+        }
+      },
+      "condition": {
+        "always": {}
+      },
+      "result": { 
+        "execution_time": "2015-06-02T23:17:55.124Z",
+        "execution_duration": 12608,
+        "input": {
+          "type": "simple",
+          "payload": {
+            "foo": "bar"
+          },
+          "status": "success"
+        },
+        "condition": {
+          "type": "always",
+          "met": true,
+          "status": "success"
+        },
+        "actions": [
+          {
+            "id": "test_index",
+            "index": {
+              "response": {
+                "index": "test",
+                "version": 1,
+                "created": true,
+                "result": "created",
+                "id": "AVSHKzPa9zx62AzUzFXY"
+              }
+            },
+            "status": "success",
+            "type": "index"
+          }
+        ]
+      },
+      "user": "test_admin" 
+    }
+  }

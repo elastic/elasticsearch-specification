@@ -22,7 +22,13 @@ import { integer } from '@_types/Numeric'
 
 export class Response {
   body: {
+    /**
+     * The total number of synonyms sets defined.
+     */
     count: integer
+    /**
+     * The identifier and total number of defined synonym rules for each synonyms set.
+     */
     results: SynonymsSetItem[]
   }
 }

@@ -29,14 +29,30 @@ import { Duration } from '@_types/Time'
  * @availability stack since=0.0.0 stability=stable
  * @availability serverless stability=stable visibility=private
  * @cluster_privileges manage
+ * @doc_id snapshot-repo-delete
  */
 export interface Request extends RequestBase {
   path_parts: {
-    /** @codegen_name name */
+    /**
+     * The ame of the snapshot repositories to unregister.
+     * Wildcard (`*`) patterns are supported.
+     * @codegen_name name */
     repository: Names
   }
   query_parameters: {
+    /**
+     * The period to wait for the master node.
+     * If the master node is not available before the timeout expires, the request fails and returns an error.
+     * To indicate that the request should never timeout, set it to `-1`.
+     * @server_default 30s
+     */
     master_timeout?: Duration
+    /**
+     * The period to wait for a response from all relevant nodes in the cluster after updating the cluster metadata.
+     * If no response is received before the timeout expires, the cluster metadata update still applies but the response will indicate that it was not completely acknowledged.
+     * To indicate that the request should never timeout, set it to `-1`.
+     * @server_default 30s
+     */
     timeout?: Duration
   }
 }

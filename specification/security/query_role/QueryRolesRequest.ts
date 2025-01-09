@@ -28,7 +28,7 @@ import { RoleQueryContainer } from './types'
  * Get roles in a paginated manner. You can optionally filter the results with a query.
  * @rest_spec_name security.query_role
  * @availability stack since=8.15.0 stability=stable
- * @availability serverless stability=stable visibility=private
+ * @availability serverless stability=stable visibility=public
  * @cluster_privileges read_security
  */
 export interface Request extends RequestBase {

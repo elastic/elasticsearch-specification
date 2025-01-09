@@ -37,6 +37,8 @@ import { ExpandWildcards, Indices } from '@_types/common'
  * This ensures the synonym file is updated everywhere in the cluster in case shards are relocated in the future.
  * @rest_spec_name indices.reload_search_analyzers
  * @availability stack since=7.3.0 stability=stable
+ * @index_privileges manage
+ * @doc_id indices-reload-analyzers
  * @ext_doc_id search-analyzer
  */
 export interface Request extends RequestBase {

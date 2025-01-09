@@ -1,0 +1,8 @@
+# summary:
+description: A successful response with two index settings.
+# type: response
+# response_code: 200
+value:
+  index:
+    auto_expand_replicas: 0-4
+    number_of_replicas: 0

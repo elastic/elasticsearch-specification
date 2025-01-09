@@ -47,7 +47,9 @@ import { Id } from '@_types/common'
  * ```
  * @rest_spec_name rollup.delete_job
  * @availability stack since=6.3.0 stability=experimental
+ * @deprecated 8.11.0
  * @cluster_privileges manage_rollup
+ * @doc_id rollup-delete-job
  */
 export interface Request extends RequestBase {
   path_parts: {

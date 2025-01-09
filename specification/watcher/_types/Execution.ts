@@ -92,6 +92,12 @@ export class ExecutionResultInput {
 }
 
 export class ExecutionThreadPool {
+  /**
+   * The largest size of the execution thread pool, which indicates the largest number of concurrent running watches.
+   */
   max_size: long
+  /**
+   * The number of watches that were triggered and are currently queued.
+   */
   queue_size: long
 }
