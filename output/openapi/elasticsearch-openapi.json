@@ -34390,7 +34390,7 @@
           {
             "in": "path",
             "name": "id",
-            "description": "\"The id of the synonyms set to be retrieved",
+            "description": "The synonyms set identifier to retrieve.",
             "required": true,
             "deprecated": false,
             "schema": {
@@ -34401,7 +34401,7 @@
           {
             "in": "query",
             "name": "from",
-            "description": "Starting offset for query rules to be retrieved",
+            "description": "The starting offset for query rules to retrieve.",
             "deprecated": false,
             "schema": {
               "type": "number"
@@ -34411,7 +34411,7 @@
           {
             "in": "query",
             "name": "size",
-            "description": "specifies a max number of query rules to retrieve",
+            "description": "The max number of query rules to retrieve.",
             "deprecated": false,
             "schema": {
               "type": "number"
@@ -34428,9 +34428,11 @@
                   "type": "object",
                   "properties": {
                     "count": {
+                      "description": "The total number of synonyms rules that the synonyms set contains.",
                       "type": "number"
                     },
                     "synonyms_set": {
+                      "description": "Synonym rule details.",
                       "type": "array",
                       "items": {
                         "$ref": "#/components/schemas/synonyms._types:SynonymRuleRead"
@@ -34453,13 +34455,13 @@
           "synonyms"
         ],
         "summary": "Create or update a synonym set",
-        "description": "Synonyms sets are limited to a maximum of 10,000 synonym rules per set.\nIf you need to manage more synonym rules, you can create multiple synonym sets.",
+        "description": "Synonyms sets are limited to a maximum of 10,000 synonym rules per set.\nIf you need to manage more synonym rules, you can create multiple synonym sets.\n\nWhen an existing synonyms set is updated, the search analyzers that use the synonyms set are reloaded automatically for all indices.\nThis is equivalent to invoking the reload search analyzers API for all indices that use the synonyms set.",
         "operationId": "synonyms-put-synonym",
         "parameters": [
           {
             "in": "path",
             "name": "id",
-            "description": "The id of the synonyms set to be created or updated",
+            "description": "The ID of the synonyms set to be created or updated.",
             "required": true,
             "deprecated": false,
             "schema": {
@@ -34475,7 +34477,7 @@
                 "type": "object",
                 "properties": {
                   "synonyms_set": {
-                    "description": "The synonym set information to update",
+                    "description": "The synonym rules definitions for the synonyms set.",
                     "oneOf": [
                       {
                         "$ref": "#/components/schemas/synonyms._types:SynonymRule"
@@ -34528,12 +34530,13 @@
           "synonyms"
         ],
         "summary": "Delete a synonym set",
+        "description": "You can only delete a synonyms set that is not in use by any index analyzer.\n\nSynonyms sets can be used in synonym graph token filters and synonym token filters.\nThese synonym filters can be used as part of search analyzers.\n\nAnalyzers need to be loaded when an index is restored (such as when a node starts, or the index becomes open).\nEven if the analyzer is not used on any field mapping, it still needs to be loaded on the index recovery phase.\n\nIf any analyzers cannot be loaded, the index becomes unavailable and the cluster status becomes red or yellow as index shards are not available.\nTo prevent that, synonyms sets that are used in analyzers can't be deleted.\nA delete request in this case will return a 400 response code.\n\nTo remove a synonyms set, you must first remove all indices that contain analyzers using it.\nYou can migrate an index by creating a new index that does not contain the token filter with the synonyms set, and use the reindex API in order to copy over the index data.\nOnce finished, you can delete the index.\nWhen the synonyms set is not used in analyzers, you will be able to delete it.",
         "operationId": "synonyms-delete-synonym",
         "parameters": [
           {
             "in": "path",
             "name": "id",
-            "description": "The id of the synonyms set to be deleted",
+            "description": "The synonyms set identifier to delete.",
             "required": true,
             "deprecated": false,
             "schema": {
@@ -34569,7 +34572,7 @@
           {
             "in": "path",
             "name": "set_id",
-            "description": "The id of the synonym set to retrieve the synonym rule from",
+            "description": "The ID of the synonym set to retrieve the synonym rule from.",
             "required": true,
             "deprecated": false,
             "schema": {
@@ -34580,7 +34583,7 @@
           {
             "in": "path",
             "name": "rule_id",
-            "description": "The id of the synonym rule to retrieve",
+            "description": "The ID of the synonym rule to retrieve.",
             "required": true,
             "deprecated": false,
             "schema": {
@@ -34608,13 +34611,13 @@
           "synonyms"
         ],
         "summary": "Create or update a synonym rule",
-        "description": "Create or update a synonym rule in a synonym set.",
+        "description": "Create or update a synonym rule in a synonym set.\n\nIf any of the synonym rules included is invalid, the API returns an error.\n\nWhen you update a synonym rule, all analyzers using the synonyms set will be reloaded automatically to reflect the new rule.",
         "operationId": "synonyms-put-synonym-rule",
         "parameters": [
           {
             "in": "path",
             "name": "set_id",
-            "description": "The id of the synonym set to be updated with the synonym rule",
+            "description": "The ID of the synonym set.",
             "required": true,
             "deprecated": false,
             "schema": {
@@ -34625,7 +34628,7 @@
           {
             "in": "path",
             "name": "rule_id",
-            "description": "The id of the synonym rule to be updated or created",
+            "description": "The ID of the synonym rule to be updated or created.",
             "required": true,
             "deprecated": false,
             "schema": {
@@ -34677,7 +34680,7 @@
           {
             "in": "path",
             "name": "set_id",
-            "description": "The id of the synonym set to be updated",
+            "description": "The ID of the synonym set to update.",
             "required": true,
             "deprecated": false,
             "schema": {
@@ -34688,7 +34691,7 @@
           {
             "in": "path",
             "name": "rule_id",
-            "description": "The id of the synonym rule to be deleted",
+            "description": "The ID of the synonym rule to delete.",
             "required": true,
             "deprecated": false,
             "schema": {
@@ -34724,7 +34727,7 @@
           {
             "in": "query",
             "name": "from",
-            "description": "Starting offset",
+            "description": "The starting offset for synonyms sets to retrieve.",
             "deprecated": false,
             "schema": {
               "type": "number"
@@ -34734,7 +34737,7 @@
           {
             "in": "query",
             "name": "size",
-            "description": "specifies a max number of results to get",
+            "description": "The maximum number of synonyms sets to retrieve.",
             "deprecated": false,
             "schema": {
               "type": "number"
@@ -34751,9 +34754,11 @@
                   "type": "object",
                   "properties": {
                     "count": {
+                      "description": "The total number of synonyms sets defined.",
                       "type": "number"
                     },
                     "results": {
+                      "description": "The identifier and total number of defined synonym rules for each synonyms set.",
                       "type": "array",
                       "items": {
                         "$ref": "#/components/schemas/synonyms.get_synonyms_sets:SynonymsSetItem"

@@ -22,13 +22,13 @@ import { Result } from '@_types/Result'
 
 export class SynonymsUpdateResult {
   /**
-   * Update operation result
+   * The update operation result.
    */
   result: Result
 
   /**
    * Updating synonyms in a synonym set reloads the associated analyzers.
-   * This is the analyzers reloading result
+   * This information is the analyzers reloading result.
    */
   reload_analyzers_details: ReloadResult
 }
