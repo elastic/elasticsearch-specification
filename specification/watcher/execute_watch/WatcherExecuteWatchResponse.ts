@@ -21,5 +21,14 @@ import { Id } from '@_types/common'
 import { WatchRecord } from './types'
 
 export class Response {
-  body: { _id: Id; watch_record: WatchRecord }
+  body: {
+    /**
+     * The watch record identifier as it would be stored in the `.watcher-history` index.
+     */
+    _id: Id
+    /**
+     * The watch record document as it would be stored in the `.watcher-history` index.
+     */
+    watch_record: WatchRecord
+  }
 }

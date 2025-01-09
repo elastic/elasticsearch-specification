@@ -37553,7 +37553,7 @@
           "watcher"
         ],
         "summary": "Acknowledge a watch",
-        "description": "Acknowledging a watch enables you to manually throttle the execution of the watch's actions.\n\nThe acknowledgement state of an action is stored in the `status.actions.<id>.ack.state` structure.\n\nIMPORTANT: If the specified watch is currently being executed, this API will return an error\nThe reason for this behavior is to prevent overwriting the watch status from a watch execution.",
+        "description": "Acknowledging a watch enables you to manually throttle the execution of the watch's actions.\n\nThe acknowledgement state of an action is stored in the `status.actions.<id>.ack.state` structure.\n\nIMPORTANT: If the specified watch is currently being executed, this API will return an error\nThe reason for this behavior is to prevent overwriting the watch status from a watch execution.\n\nAcknowledging an action throttles further executions of that action until its `ack.state` is reset to `awaits_successful_execution`.\nThis happens when the condition of the watch is not met (the condition evaluates to false).",
         "operationId": "watcher-ack-watch",
         "parameters": [
           {
@@ -37571,7 +37571,7 @@
           "watcher"
         ],
         "summary": "Acknowledge a watch",
-        "description": "Acknowledging a watch enables you to manually throttle the execution of the watch's actions.\n\nThe acknowledgement state of an action is stored in the `status.actions.<id>.ack.state` structure.\n\nIMPORTANT: If the specified watch is currently being executed, this API will return an error\nThe reason for this behavior is to prevent overwriting the watch status from a watch execution.",
+        "description": "Acknowledging a watch enables you to manually throttle the execution of the watch's actions.\n\nThe acknowledgement state of an action is stored in the `status.actions.<id>.ack.state` structure.\n\nIMPORTANT: If the specified watch is currently being executed, this API will return an error\nThe reason for this behavior is to prevent overwriting the watch status from a watch execution.\n\nAcknowledging an action throttles further executions of that action until its `ack.state` is reset to `awaits_successful_execution`.\nThis happens when the condition of the watch is not met (the condition evaluates to false).",
         "operationId": "watcher-ack-watch-1",
         "parameters": [
           {
@@ -37591,7 +37591,7 @@
           "watcher"
         ],
         "summary": "Acknowledge a watch",
-        "description": "Acknowledging a watch enables you to manually throttle the execution of the watch's actions.\n\nThe acknowledgement state of an action is stored in the `status.actions.<id>.ack.state` structure.\n\nIMPORTANT: If the specified watch is currently being executed, this API will return an error\nThe reason for this behavior is to prevent overwriting the watch status from a watch execution.",
+        "description": "Acknowledging a watch enables you to manually throttle the execution of the watch's actions.\n\nThe acknowledgement state of an action is stored in the `status.actions.<id>.ack.state` structure.\n\nIMPORTANT: If the specified watch is currently being executed, this API will return an error\nThe reason for this behavior is to prevent overwriting the watch status from a watch execution.\n\nAcknowledging an action throttles further executions of that action until its `ack.state` is reset to `awaits_successful_execution`.\nThis happens when the condition of the watch is not met (the condition evaluates to false).",
         "operationId": "watcher-ack-watch-2",
         "parameters": [
           {
@@ -37612,7 +37612,7 @@
           "watcher"
         ],
         "summary": "Acknowledge a watch",
-        "description": "Acknowledging a watch enables you to manually throttle the execution of the watch's actions.\n\nThe acknowledgement state of an action is stored in the `status.actions.<id>.ack.state` structure.\n\nIMPORTANT: If the specified watch is currently being executed, this API will return an error\nThe reason for this behavior is to prevent overwriting the watch status from a watch execution.",
+        "description": "Acknowledging a watch enables you to manually throttle the execution of the watch's actions.\n\nThe acknowledgement state of an action is stored in the `status.actions.<id>.ack.state` structure.\n\nIMPORTANT: If the specified watch is currently being executed, this API will return an error\nThe reason for this behavior is to prevent overwriting the watch status from a watch execution.\n\nAcknowledging an action throttles further executions of that action until its `ack.state` is reset to `awaits_successful_execution`.\nThis happens when the condition of the watch is not met (the condition evaluates to false).",
         "operationId": "watcher-ack-watch-3",
         "parameters": [
           {
@@ -37728,7 +37728,7 @@
           {
             "in": "path",
             "name": "id",
-            "description": "Watch ID",
+            "description": "The watch identifier.",
             "required": true,
             "deprecated": false,
             "schema": {
@@ -37855,7 +37855,7 @@
           {
             "in": "path",
             "name": "id",
-            "description": "Watch ID",
+            "description": "The watch identifier.",
             "required": true,
             "deprecated": false,
             "schema": {
@@ -37900,7 +37900,7 @@
           "watcher"
         ],
         "summary": "Run a watch",
-        "description": "This API can be used to force execution of the watch outside of its triggering logic or to simulate the watch execution for debugging purposes.\n\nFor testing and debugging purposes, you also have fine-grained control on how the watch runs.\nYou can run the watch without running all of its actions or alternatively by simulating them.\nYou can also force execution by ignoring the watch condition and control whether a watch record would be written to the watch history after it runs.\n\nYou can use the run watch API to run watches that are not yet registered by specifying the watch definition inline.\nThis serves as great tool for testing and debugging your watches prior to adding them to Watcher.",
+        "description": "This API can be used to force execution of the watch outside of its triggering logic or to simulate the watch execution for debugging purposes.\n\nFor testing and debugging purposes, you also have fine-grained control on how the watch runs.\nYou can run the watch without running all of its actions or alternatively by simulating them.\nYou can also force execution by ignoring the watch condition and control whether a watch record would be written to the watch history after it runs.\n\nYou can use the run watch API to run watches that are not yet registered by specifying the watch definition inline.\nThis serves as great tool for testing and debugging your watches prior to adding them to Watcher.\n\nWhen Elasticsearch security features are enabled on your cluster, watches are run with the privileges of the user that stored the watches.\nIf your user is allowed to read index `a`, but not index `b`, then the exact same set of rules will apply during execution of a watch.\n\nWhen using the run watch API, the authorization data of the user that called the API will be used as a base, instead of the information who stored the watch.",
         "operationId": "watcher-execute-watch",
         "parameters": [
           {
@@ -37924,7 +37924,7 @@
           "watcher"
         ],
         "summary": "Run a watch",
-        "description": "This API can be used to force execution of the watch outside of its triggering logic or to simulate the watch execution for debugging purposes.\n\nFor testing and debugging purposes, you also have fine-grained control on how the watch runs.\nYou can run the watch without running all of its actions or alternatively by simulating them.\nYou can also force execution by ignoring the watch condition and control whether a watch record would be written to the watch history after it runs.\n\nYou can use the run watch API to run watches that are not yet registered by specifying the watch definition inline.\nThis serves as great tool for testing and debugging your watches prior to adding them to Watcher.",
+        "description": "This API can be used to force execution of the watch outside of its triggering logic or to simulate the watch execution for debugging purposes.\n\nFor testing and debugging purposes, you also have fine-grained control on how the watch runs.\nYou can run the watch without running all of its actions or alternatively by simulating them.\nYou can also force execution by ignoring the watch condition and control whether a watch record would be written to the watch history after it runs.\n\nYou can use the run watch API to run watches that are not yet registered by specifying the watch definition inline.\nThis serves as great tool for testing and debugging your watches prior to adding them to Watcher.\n\nWhen Elasticsearch security features are enabled on your cluster, watches are run with the privileges of the user that stored the watches.\nIf your user is allowed to read index `a`, but not index `b`, then the exact same set of rules will apply during execution of a watch.\n\nWhen using the run watch API, the authorization data of the user that called the API will be used as a base, instead of the information who stored the watch.",
         "operationId": "watcher-execute-watch-1",
         "parameters": [
           {
@@ -37950,7 +37950,7 @@
           "watcher"
         ],
         "summary": "Run a watch",
-        "description": "This API can be used to force execution of the watch outside of its triggering logic or to simulate the watch execution for debugging purposes.\n\nFor testing and debugging purposes, you also have fine-grained control on how the watch runs.\nYou can run the watch without running all of its actions or alternatively by simulating them.\nYou can also force execution by ignoring the watch condition and control whether a watch record would be written to the watch history after it runs.\n\nYou can use the run watch API to run watches that are not yet registered by specifying the watch definition inline.\nThis serves as great tool for testing and debugging your watches prior to adding them to Watcher.",
+        "description": "This API can be used to force execution of the watch outside of its triggering logic or to simulate the watch execution for debugging purposes.\n\nFor testing and debugging purposes, you also have fine-grained control on how the watch runs.\nYou can run the watch without running all of its actions or alternatively by simulating them.\nYou can also force execution by ignoring the watch condition and control whether a watch record would be written to the watch history after it runs.\n\nYou can use the run watch API to run watches that are not yet registered by specifying the watch definition inline.\nThis serves as great tool for testing and debugging your watches prior to adding them to Watcher.\n\nWhen Elasticsearch security features are enabled on your cluster, watches are run with the privileges of the user that stored the watches.\nIf your user is allowed to read index `a`, but not index `b`, then the exact same set of rules will apply during execution of a watch.\n\nWhen using the run watch API, the authorization data of the user that called the API will be used as a base, instead of the information who stored the watch.",
         "operationId": "watcher-execute-watch-2",
         "parameters": [
           {
@@ -37971,7 +37971,7 @@
           "watcher"
         ],
         "summary": "Run a watch",
-        "description": "This API can be used to force execution of the watch outside of its triggering logic or to simulate the watch execution for debugging purposes.\n\nFor testing and debugging purposes, you also have fine-grained control on how the watch runs.\nYou can run the watch without running all of its actions or alternatively by simulating them.\nYou can also force execution by ignoring the watch condition and control whether a watch record would be written to the watch history after it runs.\n\nYou can use the run watch API to run watches that are not yet registered by specifying the watch definition inline.\nThis serves as great tool for testing and debugging your watches prior to adding them to Watcher.",
+        "description": "This API can be used to force execution of the watch outside of its triggering logic or to simulate the watch execution for debugging purposes.\n\nFor testing and debugging purposes, you also have fine-grained control on how the watch runs.\nYou can run the watch without running all of its actions or alternatively by simulating them.\nYou can also force execution by ignoring the watch condition and control whether a watch record would be written to the watch history after it runs.\n\nYou can use the run watch API to run watches that are not yet registered by specifying the watch definition inline.\nThis serves as great tool for testing and debugging your watches prior to adding them to Watcher.\n\nWhen Elasticsearch security features are enabled on your cluster, watches are run with the privileges of the user that stored the watches.\nIf your user is allowed to read index `a`, but not index `b`, then the exact same set of rules will apply during execution of a watch.\n\nWhen using the run watch API, the authorization data of the user that called the API will be used as a base, instead of the information who stored the watch.",
         "operationId": "watcher-execute-watch-3",
         "parameters": [
           {
@@ -38104,7 +38104,7 @@
           "watcher"
         ],
         "summary": "Query watches",
-        "description": "Get all registered watches in a paginated manner and optionally filter watches by a query.",
+        "description": "Get all registered watches in a paginated manner and optionally filter watches by a query.\n\nNote that only the `_id` and `metadata.*` fields are queryable or sortable.",
         "operationId": "watcher-query-watches",
         "requestBody": {
           "$ref": "#/components/requestBodies/watcher.query_watches"
@@ -38121,7 +38121,7 @@
           "watcher"
         ],
         "summary": "Query watches",
-        "description": "Get all registered watches in a paginated manner and optionally filter watches by a query.",
+        "description": "Get all registered watches in a paginated manner and optionally filter watches by a query.\n\nNote that only the `_id` and `metadata.*` fields are queryable or sortable.",
         "operationId": "watcher-query-watches-1",
         "requestBody": {
           "$ref": "#/components/requestBodies/watcher.query_watches"
@@ -38162,6 +38162,7 @@
           "watcher"
         ],
         "summary": "Get Watcher statistics",
+        "description": "This API always returns basic metrics.\nYou retrieve more metrics by using the metric parameter.",
         "operationId": "watcher-stats",
         "parameters": [
           {
@@ -38185,6 +38186,7 @@
           "watcher"
         ],
         "summary": "Get Watcher statistics",
+        "description": "This API always returns basic metrics.\nYou retrieve more metrics by using the metric parameter.",
         "operationId": "watcher-stats-1",
         "parameters": [
           {
@@ -38213,6 +38215,18 @@
         "summary": "Stop the watch service",
         "description": "Stop the Watcher service if it is running.",
         "operationId": "watcher-stop",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "master_timeout",
+            "description": "The period to wait for the master node.\nIf the master node is not available before the timeout expires, the request fails and returns an error.\nTo indicate that the request should never timeout, set it to `-1`.",
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/_types:Duration"
+            },
+            "style": "form"
+          }
+        ],
         "responses": {
           "200": {
             "description": "",
@@ -90046,6 +90060,7 @@
         "type": "object",
         "properties": {
           "current_watches": {
+            "description": "The current executing watches metric gives insight into the watches that are currently being executed by Watcher.\nAdditional information is shared per watch that is currently executing.\nThis information includes the `watch_id`, the time its execution started and its current execution phase.\nTo include this metric, the `metric` option should be set to `current_watches` or `_all`.\nIn addition you can also specify the `emit_stacktraces=true` parameter, which adds stack traces for each watch that is being run.\nThese stack traces can give you more insight into an execution of a watch.",
             "type": "array",
             "items": {
               "$ref": "#/components/schemas/watcher.stats:WatchRecordStats"
@@ -90055,12 +90070,14 @@
             "$ref": "#/components/schemas/watcher._types:ExecutionThreadPool"
           },
           "queued_watches": {
+            "description": "Watcher moderates the execution of watches such that their execution won't put too much pressure on the node and its resources.\nIf too many watches trigger concurrently and there isn't enough capacity to run them all, some of the watches are queued, waiting for the current running watches to finish.s\nThe queued watches metric gives insight on these queued watches.\n\nTo include this metric, the `metric` option should include `queued_watches` or `_all`.",
             "type": "array",
             "items": {
               "$ref": "#/components/schemas/watcher.stats:WatchRecordQueuedStats"
             }
           },
           "watch_count": {
+            "description": "The number of watches currently registered.",
             "type": "number"
           },
           "watcher_state": {
@@ -90141,9 +90158,11 @@
         "type": "object",
         "properties": {
           "max_size": {
+            "description": "The largest size of the execution thread pool, which indicates the largest number of concurrent running watches.",
             "type": "number"
           },
           "queue_size": {
+            "description": "The number of watches that were triggered and are currently queued.",
             "type": "number"
           }
         },
@@ -95481,9 +95500,11 @@
               "type": "object",
               "properties": {
                 "count": {
+                  "description": "The total number of watches found.",
                   "type": "number"
                 },
                 "watches": {
+                  "description": "A list of watches based on the `from`, `size`, or `search_after` request body parameters.",
                   "type": "array",
                   "items": {
                     "$ref": "#/components/schemas/watcher._types:QueryWatch"
@@ -104916,7 +104937,7 @@
       "watcher.ack_watch#watch_id": {
         "in": "path",
         "name": "watch_id",
-        "description": "Watch ID",
+        "description": "The watch identifier.",
         "required": true,
         "deprecated": false,
         "schema": {
@@ -104927,7 +104948,7 @@
       "watcher.ack_watch#action_id": {
         "in": "path",
         "name": "action_id",
-        "description": "A comma-separated list of the action ids to be acked",
+        "description": "A comma-separated list of the action identifiers to acknowledge.\nIf you omit this parameter, all of the actions of the watch are acknowledged.",
         "required": true,
         "deprecated": false,
         "schema": {
@@ -104938,7 +104959,7 @@
       "watcher.activate_watch#watch_id": {
         "in": "path",
         "name": "watch_id",
-        "description": "Watch ID",
+        "description": "The watch identifier.",
         "required": true,
         "deprecated": false,
         "schema": {
@@ -104949,7 +104970,7 @@
       "watcher.deactivate_watch#watch_id": {
         "in": "path",
         "name": "watch_id",
-        "description": "Watch ID",
+        "description": "The watch identifier.",
         "required": true,
         "deprecated": false,
         "schema": {
@@ -104960,7 +104981,7 @@
       "watcher.execute_watch#id": {
         "in": "path",
         "name": "id",
-        "description": "Identifier for the watch.",
+        "description": "The watch identifier.",
         "required": true,
         "deprecated": false,
         "schema": {
@@ -104981,7 +105002,7 @@
       "watcher.put_watch#id": {
         "in": "path",
         "name": "id",
-        "description": "Watch ID",
+        "description": "The identifier for the watch.",
         "required": true,
         "deprecated": false,
         "schema": {
@@ -104992,7 +105013,7 @@
       "watcher.put_watch#active": {
         "in": "query",
         "name": "active",
-        "description": "Specify whether the watch is in/active by default",
+        "description": "The initial state of the watch.\nThe default value is `true`, which means the watch is active by default.",
         "deprecated": false,
         "schema": {
           "type": "boolean"
@@ -107886,7 +107907,7 @@
                   "type": "boolean"
                 },
                 "record_execution": {
-                  "description": "When set to `true`, the watch record representing the watch execution result is persisted to the `.watcher-history` index for the current time. In addition, the status of the watch is updated, possibly throttling subsequent executions. This can also be specified as an HTTP parameter.",
+                  "description": "When set to `true`, the watch record representing the watch execution result is persisted to the `.watcher-history` index for the current time.\nIn addition, the status of the watch is updated, possibly throttling subsequent runs.\nThis can also be specified as an HTTP parameter.",
                   "type": "boolean"
                 },
                 "simulated_actions": {
@@ -107910,6 +107931,7 @@
               "type": "object",
               "properties": {
                 "actions": {
+                  "description": "The list of actions that will be run if the condition matches.",
                   "type": "object",
                   "additionalProperties": {
                     "$ref": "#/components/schemas/watcher._types:Action"
@@ -107925,7 +107947,10 @@
                   "$ref": "#/components/schemas/_types:Metadata"
                 },
                 "throttle_period": {
-                  "type": "string"
+                  "$ref": "#/components/schemas/_types:Duration"
+                },
+                "throttle_period_in_millis": {
+                  "$ref": "#/components/schemas/_types:DurationValueUnitMillis"
                 },
                 "transform": {
                   "$ref": "#/components/schemas/_types:TransformContainer"
@@ -107945,11 +107970,11 @@
               "type": "object",
               "properties": {
                 "from": {
-                  "description": "The offset from the first result to fetch. Needs to be non-negative.",
+                  "description": "The offset from the first result to fetch.\nIt must be non-negative.",
                   "type": "number"
                 },
                 "size": {
-                  "description": "The number of hits to return. Needs to be non-negative.",
+                  "description": "The number of hits to return.\nIt must be non-negative.",
                   "type": "number"
                 },
                 "query": {
