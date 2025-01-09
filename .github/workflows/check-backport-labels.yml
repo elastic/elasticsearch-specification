@@ -115,19 +115,3 @@ jobs:
           if [ "${has_required_floating_labels}" != true ]; then
             exit 1
           fi
-
-          # Validate that an exact backport label exists for each floating backport label major
-          # version.
-
-          has_required_exact_labels=true
-
-          for pr_floating_major in "${!pr_floating_majors[@]}"; do
-            if [ -z "${pr_exact_majors[${pr_floating_major}]}" ]; then
-              has_required_exact_labels=false
-              echo "::error::Missing exact backport label for '${pr_floating_major}.x'"
-            fi
-          done
-
-          if [ "${has_required_exact_labels}" != true ]; then
-            exit 1
-          fi
