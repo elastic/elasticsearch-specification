@@ -22,7 +22,13 @@ import { SynonymRuleRead } from '../_types/SynonymRule'
 
 export class Response {
   body: {
+    /**
+     * The total number of synonyms rules that the synonyms set contains.
+     */
     count: integer
+    /**
+     * Synonym rule details.
+     */
     synonyms_set: SynonymRuleRead[]
   }
 }

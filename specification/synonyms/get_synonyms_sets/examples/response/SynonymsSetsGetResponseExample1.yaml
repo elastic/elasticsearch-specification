@@ -1,0 +1,9 @@
+# summary:
+description: A successful response from `GET _synonyms`.
+# type: response
+# response_code: ''
+value:
+  "{\n  \"count\": 3,\n  \"results\": [\n    {\n      \"synonyms_set\": \"ecommerce-synonyms\"\
+  ,\n      \"count\": 2\n    },\n    {\n      \"synonyms_set\": \"my-synonyms-set\"\
+  ,\n      \"count\": 3\n    },\n    {\n      \"synonyms_set\": \"new-ecommerce-synonyms\"\
+  ,\n      \"count\": 1\n    }\n  ]\n}"
