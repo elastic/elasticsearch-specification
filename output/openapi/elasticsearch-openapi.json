@@ -105407,7 +105407,7 @@
       "watcher.activate_watch#watch_id": {
         "in": "path",
         "name": "watch_id",
-        "description": "The watch identifier",
+        "description": "The watch identifier.",
         "required": true,
         "deprecated": false,
         "schema": {
