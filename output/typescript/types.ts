@@ -19776,42 +19776,43 @@ export interface SqlGetAsyncStatusRequest extends RequestBase {
 }
 
 export interface SqlGetAsyncStatusResponse {
+  expiration_time_in_millis: EpochTime<UnitMillis>
   id: string
   is_running: boolean
   is_partial: boolean
   start_time_in_millis: EpochTime<UnitMillis>
-  expiration_time_in_millis: EpochTime<UnitMillis>
   completion_status?: uint
 }
 
 export interface SqlQueryRequest extends RequestBase {
   format?: SqlQuerySqlFormat
   body?: {
+    allow_partial_search_results?: boolean
     catalog?: string
     columnar?: boolean
     cursor?: string
     fetch_size?: integer
-    filter?: QueryDslQueryContainer
-    query?: string
-    request_timeout?: Duration
-    page_timeout?: Duration
-    time_zone?: TimeZone
     field_multi_value_leniency?: boolean
-    runtime_mappings?: MappingRuntimeFields
-    wait_for_completion_timeout?: Duration
-    params?: Record<string, any>
+    filter?: QueryDslQueryContainer
+    index_using_frozen?: boolean
     keep_alive?: Duration
     keep_on_completion?: boolean
-    index_using_frozen?: boolean
+    page_timeout?: Duration
+    params?: Record<string, any>
+    query?: string
+    request_timeout?: Duration
+    runtime_mappings?: MappingRuntimeFields
+    time_zone?: TimeZone
+    wait_for_completion_timeout?: Duration
   }
 }
 
 export interface SqlQueryResponse {
+  columns?: SqlColumn[]
+  cursor?: string
   id?: Id
   is_running?: boolean
   is_partial?: boolean
-  columns?: SqlColumn[]
-  cursor?: string
   rows: SqlRow[]
 }
 
