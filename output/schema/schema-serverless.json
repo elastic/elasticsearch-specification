@@ -106250,7 +106250,7 @@
         "name": "WatcherMetric",
         "namespace": "watcher.stats"
       },
-      "specLocation": "watcher/stats/types.ts#L42-L48"
+      "specLocation": "watcher/stats/types.ts#L63-L69"
     },
     {
       "kind": "enum",
