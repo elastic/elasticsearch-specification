@@ -76,7 +76,7 @@ export interface Request extends RequestBase {
     fetch_size?: integer
     /**
      * If `false`, the API returns an exception when encountering multiple values for a field.
-     * If `true`, the API is lenient and returns the API returns the first value from the array with no guarantee of consistent results.
+     * If `true`, the API is lenient and returns the first value from the array with no guarantee of consistent results.
      * @server_default false
      */
     field_multi_value_leniency?: boolean
