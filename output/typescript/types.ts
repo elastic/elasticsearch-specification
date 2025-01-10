@@ -19817,42 +19817,43 @@ export interface SqlGetAsyncStatusRequest extends RequestBase {
 }
 
 export interface SqlGetAsyncStatusResponse {
+  expiration_time_in_millis: EpochTime<UnitMillis>
   id: string
   is_running: boolean
   is_partial: boolean
   start_time_in_millis: EpochTime<UnitMillis>
-  expiration_time_in_millis: EpochTime<UnitMillis>
   completion_status?: uint
 }
 
 export interface SqlQueryRequest extends RequestBase {
   format?: SqlQuerySqlFormat
   body?: {
+    allow_partial_search_results?: boolean
     catalog?: string
     columnar?: boolean
     cursor?: string
     fetch_size?: integer
-    filter?: QueryDslQueryContainer
-    query?: string
-    request_timeout?: Duration
-    page_timeout?: Duration
-    time_zone?: TimeZone
     field_multi_value_leniency?: boolean
-    runtime_mappings?: MappingRuntimeFields
-    wait_for_completion_timeout?: Duration
-    params?: Record<string, any>
+    filter?: QueryDslQueryContainer
+    index_using_frozen?: boolean
     keep_alive?: Duration
     keep_on_completion?: boolean
-    index_using_frozen?: boolean
+    page_timeout?: Duration
+    params?: Record<string, any>
+    query?: string
+    request_timeout?: Duration
+    runtime_mappings?: MappingRuntimeFields
+    time_zone?: TimeZone
+    wait_for_completion_timeout?: Duration
   }
 }
 
 export interface SqlQueryResponse {
+  columns?: SqlColumn[]
+  cursor?: string
   id?: Id
   is_running?: boolean
   is_partial?: boolean
-  columns?: SqlColumn[]
-  cursor?: string
   rows: SqlRow[]
 }
 
@@ -21084,6 +21085,14 @@ export interface WatcherExecuteWatchWatchRecord {
   status?: WatcherWatchStatus
 }
 
+export interface WatcherGetSettingsRequest extends RequestBase {
+  master_timeout?: Duration
+}
+
+export interface WatcherGetSettingsResponse {
+  index: IndicesIndexSettings
+}
+
 export interface WatcherGetWatchRequest extends RequestBase {
   id: Name
 }
@@ -21109,7 +21118,8 @@ export interface WatcherPutWatchRequest extends RequestBase {
     condition?: WatcherConditionContainer
     input?: WatcherInputContainer
     metadata?: Metadata
-    throttle_period?: string
+    throttle_period?: Duration
+    throttle_period_in_millis?: DurationValue<UnitMillis>
     transform?: TransformContainer
     trigger?: WatcherTriggerContainer
   }
@@ -21186,6 +21196,19 @@ export interface WatcherStopRequest extends RequestBase {
 }
 
 export type WatcherStopResponse = AcknowledgedResponseBase
+
+export interface WatcherUpdateSettingsRequest extends RequestBase {
+  master_timeout?: Duration
+  timeout?: Duration
+  body?: {
+    'index.auto_expand_replicas'?: string
+    'index.number_of_replicas'?: integer
+  }
+}
+
+export interface WatcherUpdateSettingsResponse {
+  acknowledged: boolean
+}
 
 export interface XpackInfoBuildInformation {
   date: DateTime

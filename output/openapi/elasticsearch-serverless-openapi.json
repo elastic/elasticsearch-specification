@@ -17597,6 +17597,42 @@
         "x-state": "Added in 7.15.0"
       }
     },
+    "/_security/_query/role": {
+      "get": {
+        "tags": [
+          "security"
+        ],
+        "summary": "Find roles with a query",
+        "description": "Get roles in a paginated manner. You can optionally filter the results with a query.",
+        "operationId": "security-query-role",
+        "requestBody": {
+          "$ref": "#/components/requestBodies/security.query_role"
+        },
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/security.query_role#200"
+          }
+        },
+        "x-state": "Added in 8.15.0"
+      },
+      "post": {
+        "tags": [
+          "security"
+        ],
+        "summary": "Find roles with a query",
+        "description": "Get roles in a paginated manner. You can optionally filter the results with a query.",
+        "operationId": "security-query-role-1",
+        "requestBody": {
+          "$ref": "#/components/requestBodies/security.query_role"
+        },
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/security.query_role#200"
+          }
+        },
+        "x-state": "Added in 8.15.0"
+      }
+    },
     "/_security/api_key/{id}": {
       "put": {
         "tags": [
@@ -17721,13 +17757,13 @@
           "sql"
         ],
         "summary": "Delete an async SQL search",
-        "description": "Delete an async SQL search or a stored synchronous SQL search.\nIf the search is still running, the API cancels it.",
+        "description": "Delete an async SQL search or a stored synchronous SQL search.\nIf the search is still running, the API cancels it.\n\nIf the Elasticsearch security features are enabled, only the following users can use this API to delete a search:\n\n* Users with the `cancel_task` cluster privilege.\n* The user who first submitted the search.",
         "operationId": "sql-delete-async",
         "parameters": [
           {
             "in": "path",
             "name": "id",
-            "description": "Identifier for the search.",
+            "description": "The identifier for the search.",
             "required": true,
             "deprecated": false,
             "schema": {
@@ -17757,13 +17793,13 @@
           "sql"
         ],
         "summary": "Get async SQL search results",
-        "description": "Get the current status and available results for an async SQL search or stored synchronous SQL search.",
+        "description": "Get the current status and available results for an async SQL search or stored synchronous SQL search.\n\nIf the Elasticsearch security features are enabled, only the user who first submitted the SQL search can retrieve the search using this API.",
         "operationId": "sql-get-async",
         "parameters": [
           {
             "in": "path",
             "name": "id",
-            "description": "Identifier for the search.",
+            "description": "The identifier for the search.",
             "required": true,
             "deprecated": false,
             "schema": {
@@ -17774,7 +17810,7 @@
           {
             "in": "query",
             "name": "delimiter",
-            "description": "Separator for CSV results. The API only supports this parameter for CSV responses.",
+            "description": "The separator for CSV results.\nThe API supports this parameter only for CSV responses.",
             "deprecated": false,
             "schema": {
               "type": "string"
@@ -17784,7 +17820,7 @@
           {
             "in": "query",
             "name": "format",
-            "description": "Format for the response. You must specify a format using this parameter or the\nAccept HTTP header. If you specify both, the API uses this parameter.",
+            "description": "The format for the response.\nYou must specify a format using this parameter or the `Accept` HTTP header.\nIf you specify both, the API uses this parameter.",
             "deprecated": false,
             "schema": {
               "type": "string"
@@ -17794,7 +17830,7 @@
           {
             "in": "query",
             "name": "keep_alive",
-            "description": "Retention period for the search and its results. Defaults\nto the `keep_alive` period for the original SQL search.",
+            "description": "The retention period for the search and its results.\nIt defaults to the `keep_alive` period for the original SQL search.",
             "deprecated": false,
             "schema": {
               "$ref": "#/components/schemas/_types:Duration"
@@ -17804,7 +17840,7 @@
           {
             "in": "query",
             "name": "wait_for_completion_timeout",
-            "description": "Period to wait for complete results. Defaults to no timeout,\nmeaning the request waits for complete search results.",
+            "description": "The period to wait for complete results.\nIt defaults to no timeout, meaning the request waits for complete search results.",
             "deprecated": false,
             "schema": {
               "$ref": "#/components/schemas/_types:Duration"
@@ -17824,11 +17860,11 @@
                       "$ref": "#/components/schemas/_types:Id"
                     },
                     "is_running": {
-                      "description": "If `true`, the search is still running. If false, the search has finished.\nThis value is only returned for async and saved synchronous searches. For\nCSV, TSV, and TXT responses, this value is returned in the `Async-partial`\nHTTP header.",
+                      "description": "If `true`, the search is still running.\nIf `false`, the search has finished.\nThis value is returned only for async and saved synchronous searches.\nFor CSV, TSV, and TXT responses, this value is returned in the `Async-partial` HTTP header.",
                       "type": "boolean"
                     },
                     "is_partial": {
-                      "description": "If `true`, the response does not contain complete search results. If `is_partial`\nis `true` and `is_running` is `true`, the search is still running. If `is_partial`\nis `true` but `is_running` is `false`, the results are partial due to a failure or\ntimeout. This value is only returned for async and saved synchronous searches.\nFor CSV, TSV, and TXT responses, this value is returned in the `Async-partial` HTTP header.",
+                      "description": "If `true`, the response does not contain complete search results.\nIf `is_partial` is `true` and `is_running` is `true`, the search is still running.\nIf `is_partial` is `true` but `is_running` is `false`, the results are partial due to a failure or timeout.\nThis value is returned only for async and saved synchronous searches.\nFor CSV, TSV, and TXT responses, this value is returned in the `Async-partial` HTTP header.",
                       "type": "boolean"
                     },
                     "columns": {
@@ -17839,11 +17875,11 @@
                       }
                     },
                     "cursor": {
-                      "description": "Cursor for the next set of paginated results. For CSV, TSV, and\nTXT responses, this value is returned in the `Cursor` HTTP header.",
+                      "description": "The cursor for the next set of paginated results.\nFor CSV, TSV, and TXT responses, this value is returned in the `Cursor` HTTP header.",
                       "type": "string"
                     },
                     "rows": {
-                      "description": "Values for the search results.",
+                      "description": "The values for the search results.",
                       "type": "array",
                       "items": {
                         "$ref": "#/components/schemas/sql:Row"
@@ -17876,7 +17912,7 @@
           {
             "in": "path",
             "name": "id",
-            "description": "Identifier for the search.",
+            "description": "The identifier for the search.",
             "required": true,
             "deprecated": false,
             "schema": {
@@ -17893,22 +17929,22 @@
                 "schema": {
                   "type": "object",
                   "properties": {
+                    "expiration_time_in_millis": {
+                      "$ref": "#/components/schemas/_types:EpochTimeUnitMillis"
+                    },
                     "id": {
-                      "description": "Identifier for the search.",
+                      "description": "The identifier for the search.",
                       "type": "string"
                     },
                     "is_running": {
-                      "description": "If `true`, the search is still running. If `false`, the search has finished.",
+                      "description": "If `true`, the search is still running.\nIf `false`, the search has finished.",
                       "type": "boolean"
                     },
                     "is_partial": {
-                      "description": "If `true`, the response does not contain complete search results. If `is_partial`\nis `true` and `is_running` is `true`, the search is still running. If `is_partial`\nis `true` but `is_running` is `false`, the results are partial due to a failure or\ntimeout.",
+                      "description": "If `true`, the response does not contain complete search results.\nIf `is_partial` is `true` and `is_running` is `true`, the search is still running.\nIf `is_partial` is `true` but `is_running` is `false`, the results are partial due to a failure or timeout.",
                       "type": "boolean"
                     },
                     "start_time_in_millis": {
-                      "$ref": "#/components/schemas/_types:EpochTimeUnitMillis"
-                    },
-                    "expiration_time_in_millis": {
                       "$ref": "#/components/schemas/_types:EpochTimeUnitMillis"
                     },
                     "completion_status": {
@@ -17916,11 +17952,11 @@
                     }
                   },
                   "required": [
+                    "expiration_time_in_millis",
                     "id",
                     "is_running",
                     "is_partial",
-                    "start_time_in_millis",
-                    "expiration_time_in_millis"
+                    "start_time_in_millis"
                   ]
                 }
               }
@@ -17982,7 +18018,7 @@
           "sql"
         ],
         "summary": "Translate SQL into Elasticsearch queries",
-        "description": "Translate an SQL search into a search API request containing Query DSL.",
+        "description": "Translate an SQL search into a search API request containing Query DSL.\nIt accepts the same request body parameters as the SQL search API, excluding `cursor`.",
         "operationId": "sql-translate-1",
         "requestBody": {
           "$ref": "#/components/requestBodies/sql.translate"
@@ -17999,7 +18035,7 @@
           "sql"
         ],
         "summary": "Translate SQL into Elasticsearch queries",
-        "description": "Translate an SQL search into a search API request containing Query DSL.",
+        "description": "Translate an SQL search into a search API request containing Query DSL.\nIt accepts the same request body parameters as the SQL search API, excluding `cursor`.",
         "operationId": "sql-translate",
         "requestBody": {
           "$ref": "#/components/requestBodies/sql.translate"
@@ -18023,7 +18059,7 @@
           {
             "in": "path",
             "name": "id",
-            "description": "\"The id of the synonyms set to be retrieved",
+            "description": "The synonyms set identifier to retrieve.",
             "required": true,
             "deprecated": false,
             "schema": {
@@ -18034,7 +18070,7 @@
           {
             "in": "query",
             "name": "from",
-            "description": "Starting offset for query rules to be retrieved",
+            "description": "The starting offset for query rules to retrieve.",
             "deprecated": false,
             "schema": {
               "type": "number"
@@ -18044,7 +18080,7 @@
           {
             "in": "query",
             "name": "size",
-            "description": "specifies a max number of query rules to retrieve",
+            "description": "The max number of query rules to retrieve.",
             "deprecated": false,
             "schema": {
               "type": "number"
@@ -18061,9 +18097,11 @@
                   "type": "object",
                   "properties": {
                     "count": {
+                      "description": "The total number of synonyms rules that the synonyms set contains.",
                       "type": "number"
                     },
                     "synonyms_set": {
+                      "description": "Synonym rule details.",
                       "type": "array",
                       "items": {
                         "$ref": "#/components/schemas/synonyms._types:SynonymRuleRead"
@@ -18086,13 +18124,13 @@
           "synonyms"
         ],
         "summary": "Create or update a synonym set",
-        "description": "Synonyms sets are limited to a maximum of 10,000 synonym rules per set.\nIf you need to manage more synonym rules, you can create multiple synonym sets.",
+        "description": "Synonyms sets are limited to a maximum of 10,000 synonym rules per set.\nIf you need to manage more synonym rules, you can create multiple synonym sets.\n\nWhen an existing synonyms set is updated, the search analyzers that use the synonyms set are reloaded automatically for all indices.\nThis is equivalent to invoking the reload search analyzers API for all indices that use the synonyms set.",
         "operationId": "synonyms-put-synonym",
         "parameters": [
           {
             "in": "path",
             "name": "id",
-            "description": "The id of the synonyms set to be created or updated",
+            "description": "The ID of the synonyms set to be created or updated.",
             "required": true,
             "deprecated": false,
             "schema": {
@@ -18108,7 +18146,7 @@
                 "type": "object",
                 "properties": {
                   "synonyms_set": {
-                    "description": "The synonym set information to update",
+                    "description": "The synonym rules definitions for the synonyms set.",
                     "oneOf": [
                       {
                         "$ref": "#/components/schemas/synonyms._types:SynonymRule"
@@ -18161,12 +18199,13 @@
           "synonyms"
         ],
         "summary": "Delete a synonym set",
+        "description": "You can only delete a synonyms set that is not in use by any index analyzer.\n\nSynonyms sets can be used in synonym graph token filters and synonym token filters.\nThese synonym filters can be used as part of search analyzers.\n\nAnalyzers need to be loaded when an index is restored (such as when a node starts, or the index becomes open).\nEven if the analyzer is not used on any field mapping, it still needs to be loaded on the index recovery phase.\n\nIf any analyzers cannot be loaded, the index becomes unavailable and the cluster status becomes red or yellow as index shards are not available.\nTo prevent that, synonyms sets that are used in analyzers can't be deleted.\nA delete request in this case will return a 400 response code.\n\nTo remove a synonyms set, you must first remove all indices that contain analyzers using it.\nYou can migrate an index by creating a new index that does not contain the token filter with the synonyms set, and use the reindex API in order to copy over the index data.\nOnce finished, you can delete the index.\nWhen the synonyms set is not used in analyzers, you will be able to delete it.",
         "operationId": "synonyms-delete-synonym",
         "parameters": [
           {
             "in": "path",
             "name": "id",
-            "description": "The id of the synonyms set to be deleted",
+            "description": "The synonyms set identifier to delete.",
             "required": true,
             "deprecated": false,
             "schema": {
@@ -18202,7 +18241,7 @@
           {
             "in": "path",
             "name": "set_id",
-            "description": "The id of the synonym set to retrieve the synonym rule from",
+            "description": "The ID of the synonym set to retrieve the synonym rule from.",
             "required": true,
             "deprecated": false,
             "schema": {
@@ -18213,7 +18252,7 @@
           {
             "in": "path",
             "name": "rule_id",
-            "description": "The id of the synonym rule to retrieve",
+            "description": "The ID of the synonym rule to retrieve.",
             "required": true,
             "deprecated": false,
             "schema": {
@@ -18241,13 +18280,13 @@
           "synonyms"
         ],
         "summary": "Create or update a synonym rule",
-        "description": "Create or update a synonym rule in a synonym set.",
+        "description": "Create or update a synonym rule in a synonym set.\n\nIf any of the synonym rules included is invalid, the API returns an error.\n\nWhen you update a synonym rule, all analyzers using the synonyms set will be reloaded automatically to reflect the new rule.",
         "operationId": "synonyms-put-synonym-rule",
         "parameters": [
           {
             "in": "path",
             "name": "set_id",
-            "description": "The id of the synonym set to be updated with the synonym rule",
+            "description": "The ID of the synonym set.",
             "required": true,
             "deprecated": false,
             "schema": {
@@ -18258,7 +18297,7 @@
           {
             "in": "path",
             "name": "rule_id",
-            "description": "The id of the synonym rule to be updated or created",
+            "description": "The ID of the synonym rule to be updated or created.",
             "required": true,
             "deprecated": false,
             "schema": {
@@ -18310,7 +18349,7 @@
           {
             "in": "path",
             "name": "set_id",
-            "description": "The id of the synonym set to be updated",
+            "description": "The ID of the synonym set to update.",
             "required": true,
             "deprecated": false,
             "schema": {
@@ -18321,7 +18360,7 @@
           {
             "in": "path",
             "name": "rule_id",
-            "description": "The id of the synonym rule to be deleted",
+            "description": "The ID of the synonym rule to delete.",
             "required": true,
             "deprecated": false,
             "schema": {
@@ -18357,7 +18396,7 @@
           {
             "in": "query",
             "name": "from",
-            "description": "Starting offset",
+            "description": "The starting offset for synonyms sets to retrieve.",
             "deprecated": false,
             "schema": {
               "type": "number"
@@ -18367,7 +18406,7 @@
           {
             "in": "query",
             "name": "size",
-            "description": "specifies a max number of results to get",
+            "description": "The maximum number of synonyms sets to retrieve.",
             "deprecated": false,
             "schema": {
               "type": "number"
@@ -18384,9 +18423,11 @@
                   "type": "object",
                   "properties": {
                     "count": {
+                      "description": "The total number of synonyms sets defined.",
                       "type": "number"
                     },
                     "results": {
+                      "description": "The identifier and total number of defined synonym rules for each synonyms set.",
                       "type": "array",
                       "items": {
                         "$ref": "#/components/schemas/synonyms.get_synonyms_sets:SynonymsSetItem"
@@ -54956,6 +54997,98 @@
           }
         ]
       },
+      "security.query_role:RoleQueryContainer": {
+        "type": "object",
+        "properties": {
+          "bool": {
+            "$ref": "#/components/schemas/_types.query_dsl:BoolQuery"
+          },
+          "exists": {
+            "$ref": "#/components/schemas/_types.query_dsl:ExistsQuery"
+          },
+          "ids": {
+            "$ref": "#/components/schemas/_types.query_dsl:IdsQuery"
+          },
+          "match": {
+            "description": "Returns roles that match a provided text, number, date or boolean value.\nThe provided text is analyzed before matching.",
+            "type": "object",
+            "additionalProperties": {
+              "$ref": "#/components/schemas/_types.query_dsl:MatchQuery"
+            },
+            "minProperties": 1,
+            "maxProperties": 1
+          },
+          "match_all": {
+            "$ref": "#/components/schemas/_types.query_dsl:MatchAllQuery"
+          },
+          "prefix": {
+            "description": "Returns roles that contain a specific prefix in a provided field.",
+            "type": "object",
+            "additionalProperties": {
+              "$ref": "#/components/schemas/_types.query_dsl:PrefixQuery"
+            },
+            "minProperties": 1,
+            "maxProperties": 1
+          },
+          "range": {
+            "description": "Returns roles that contain terms within a provided range.",
+            "type": "object",
+            "additionalProperties": {
+              "$ref": "#/components/schemas/_types.query_dsl:RangeQuery"
+            },
+            "minProperties": 1,
+            "maxProperties": 1
+          },
+          "simple_query_string": {
+            "$ref": "#/components/schemas/_types.query_dsl:SimpleQueryStringQuery"
+          },
+          "term": {
+            "description": "Returns roles that contain an exact term in a provided field.\nTo return a document, the query term must exactly match the queried field's value, including whitespace and capitalization.",
+            "type": "object",
+            "additionalProperties": {
+              "$ref": "#/components/schemas/_types.query_dsl:TermQuery"
+            },
+            "minProperties": 1,
+            "maxProperties": 1
+          },
+          "terms": {
+            "$ref": "#/components/schemas/_types.query_dsl:TermsQuery"
+          },
+          "wildcard": {
+            "description": "Returns roles that contain terms matching a wildcard pattern.",
+            "type": "object",
+            "additionalProperties": {
+              "$ref": "#/components/schemas/_types.query_dsl:WildcardQuery"
+            },
+            "minProperties": 1,
+            "maxProperties": 1
+          }
+        },
+        "minProperties": 1,
+        "maxProperties": 1
+      },
+      "security.query_role:QueryRole": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/security._types:RoleDescriptor"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "_sort": {
+                "$ref": "#/components/schemas/_types:SortResults"
+              },
+              "name": {
+                "description": "Name of the role.",
+                "type": "string"
+              }
+            },
+            "required": [
+              "name"
+            ]
+          }
+        ]
+      },
       "sql:Column": {
         "type": "object",
         "properties": {
@@ -57132,6 +57265,38 @@
           }
         }
       },
+      "security.query_role#200": {
+        "description": "",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "total": {
+                  "description": "The total number of roles found.",
+                  "type": "number"
+                },
+                "count": {
+                  "description": "The number of roles returned in the response.",
+                  "type": "number"
+                },
+                "roles": {
+                  "description": "The list of roles.",
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/security.query_role:QueryRole"
+                  }
+                }
+              },
+              "required": [
+                "total",
+                "count",
+                "roles"
+              ]
+            }
+          }
+        }
+      },
       "sql.query#200": {
         "description": "",
         "content": {
@@ -57139,17 +57304,6 @@
             "schema": {
               "type": "object",
               "properties": {
-                "id": {
-                  "$ref": "#/components/schemas/_types:Id"
-                },
-                "is_running": {
-                  "description": "If `true`, the search is still running. If false, the search has finished.\nThis value is only returned for async and saved synchronous searches. For\nCSV, TSV, and TXT responses, this value is returned in the `Async-partial`\nHTTP header.",
-                  "type": "boolean"
-                },
-                "is_partial": {
-                  "description": "If `true`, the response does not contain complete search results. If `is_partial`\nis `true` and `is_running` is `true`, the search is still running. If `is_partial`\nis `true` but `is_running` is `false`, the results are partial due to a failure or\ntimeout. This value is only returned for async and saved synchronous searches.\nFor CSV, TSV, and TXT responses, this value is returned in the `Async-partial` HTTP header.",
-                  "type": "boolean"
-                },
                 "columns": {
                   "description": "Column headings for the search results. Each object is a column.",
                   "type": "array",
@@ -57158,11 +57312,22 @@
                   }
                 },
                 "cursor": {
-                  "description": "Cursor for the next set of paginated results. For CSV, TSV, and\nTXT responses, this value is returned in the `Cursor` HTTP header.",
+                  "description": "The cursor for the next set of paginated results.\nFor CSV, TSV, and TXT responses, this value is returned in the `Cursor` HTTP header.",
                   "type": "string"
                 },
+                "id": {
+                  "$ref": "#/components/schemas/_types:Id"
+                },
+                "is_running": {
+                  "description": "If `true`, the search is still running.\nIf `false`, the search has finished.\nThis value is returned only for async and saved synchronous searches.\nFor CSV, TSV, and TXT responses, this value is returned in the `Async-partial` HTTP header.",
+                  "type": "boolean"
+                },
+                "is_partial": {
+                  "description": "If `true`, the response does not contain complete search results.\nIf `is_partial` is `true` and `is_running` is `true`, the search is still running.\nIf `is_partial` is `true` but `is_running` is `false`, the results are partial due to a failure or timeout.\nThis value is returned only for async and saved synchronous searches.\nFor CSV, TSV, and TXT responses, this value is returned in the `Async-partial` HTTP header.",
+                  "type": "boolean"
+                },
                 "rows": {
-                  "description": "Values for the search results.",
+                  "description": "The values for the search results.",
                   "type": "array",
                   "items": {
                     "$ref": "#/components/schemas/sql:Row"
@@ -62329,7 +62494,7 @@
       "sql.query#format": {
         "in": "query",
         "name": "format",
-        "description": "Format for the response.",
+        "description": "The format for the response.\nYou can also specify a format using the `Accept` HTTP header.\nIf you specify both this parameter and the `Accept` HTTP header, this parameter takes precedence.",
         "deprecated": false,
         "schema": {
           "$ref": "#/components/schemas/sql.query:SqlFormat"
@@ -64115,71 +64280,109 @@
           }
         }
       },
+      "security.query_role": {
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "query": {
+                  "$ref": "#/components/schemas/security.query_role:RoleQueryContainer"
+                },
+                "from": {
+                  "description": "Starting document offset.\nBy default, you cannot page through more than 10,000 hits using the from and size parameters.\nTo page through more hits, use the `search_after` parameter.",
+                  "type": "number"
+                },
+                "sort": {
+                  "$ref": "#/components/schemas/_types:Sort"
+                },
+                "size": {
+                  "description": "The number of hits to return.\nBy default, you cannot page through more than 10,000 hits using the `from` and `size` parameters.\nTo page through more hits, use the `search_after` parameter.",
+                  "type": "number"
+                },
+                "search_after": {
+                  "$ref": "#/components/schemas/_types:SortResults"
+                }
+              }
+            }
+          }
+        }
+      },
       "sql.query": {
         "content": {
           "application/json": {
             "schema": {
               "type": "object",
               "properties": {
+                "allow_partial_search_results": {
+                  "description": "If `true`, the response has partial results when there are shard request timeouts or shard failures.\nIf `false`, the API returns an error with no partial results.",
+                  "type": "boolean"
+                },
                 "catalog": {
-                  "description": "Default catalog (cluster) for queries. If unspecified, the queries execute on the data in the local cluster only.",
+                  "description": "The default catalog (cluster) for queries.\nIf unspecified, the queries execute on the data in the local cluster only.",
                   "type": "string"
                 },
                 "columnar": {
-                  "description": "If true, the results in a columnar fashion: one row represents all the values of a certain column from the current page of results.",
+                  "externalDocs": {
+                    "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/sql-rest-columnar.html"
+                  },
+                  "description": "If `true`, the results are in a columnar fashion: one row represents all the values of a certain column from the current page of results.\nThe API supports this parameter only for CBOR, JSON, SMILE, and YAML responses.",
                   "type": "boolean"
                 },
                 "cursor": {
-                  "description": "Cursor used to retrieve a set of paginated results.\nIf you specify a cursor, the API only uses the `columnar` and `time_zone` request body parameters.\nIt ignores other request body parameters.",
+                  "description": "The cursor used to retrieve a set of paginated results.\nIf you specify a cursor, the API only uses the `columnar` and `time_zone` request body parameters.\nIt ignores other request body parameters.",
                   "type": "string"
                 },
                 "fetch_size": {
-                  "description": "The maximum number of rows (or entries) to return in one response",
+                  "description": "The maximum number of rows (or entries) to return in one response.",
                   "type": "number"
+                },
+                "field_multi_value_leniency": {
+                  "description": "If `false`, the API returns an exception when encountering multiple values for a field.\nIf `true`, the API is lenient and returns the first value from the array with no guarantee of consistent results.",
+                  "type": "boolean"
                 },
                 "filter": {
                   "$ref": "#/components/schemas/_types.query_dsl:QueryContainer"
                 },
-                "query": {
-                  "description": "SQL query to run.",
-                  "type": "string"
-                },
-                "request_timeout": {
-                  "$ref": "#/components/schemas/_types:Duration"
-                },
-                "page_timeout": {
-                  "$ref": "#/components/schemas/_types:Duration"
-                },
-                "time_zone": {
-                  "$ref": "#/components/schemas/_types:TimeZone"
-                },
-                "field_multi_value_leniency": {
-                  "description": "Throw an exception when encountering multiple values for a field (default) or be lenient and return the first value from the list (without any guarantees of what that will be - typically the first in natural ascending order).",
+                "index_using_frozen": {
+                  "description": "If `true`, the search can run on frozen indices.",
                   "type": "boolean"
-                },
-                "runtime_mappings": {
-                  "$ref": "#/components/schemas/_types.mapping:RuntimeFields"
-                },
-                "wait_for_completion_timeout": {
-                  "$ref": "#/components/schemas/_types:Duration"
-                },
-                "params": {
-                  "description": "Values for parameters in the query.",
-                  "type": "object",
-                  "additionalProperties": {
-                    "type": "object"
-                  }
                 },
                 "keep_alive": {
                   "$ref": "#/components/schemas/_types:Duration"
                 },
                 "keep_on_completion": {
-                  "description": "If true, Elasticsearch stores synchronous searches if you also specify the wait_for_completion_timeout parameter. If false, Elasticsearch only stores async searches that don’t finish before the wait_for_completion_timeout.",
+                  "description": "If `true`, Elasticsearch stores synchronous searches if you also specify the `wait_for_completion_timeout` parameter.\nIf `false`, Elasticsearch only stores async searches that don't finish before the `wait_for_completion_timeout`.",
                   "type": "boolean"
                 },
-                "index_using_frozen": {
-                  "description": "If true, the search can run on frozen indices. Defaults to false.",
-                  "type": "boolean"
+                "page_timeout": {
+                  "$ref": "#/components/schemas/_types:Duration"
+                },
+                "params": {
+                  "description": "The values for parameters in the query.",
+                  "type": "object",
+                  "additionalProperties": {
+                    "type": "object"
+                  }
+                },
+                "query": {
+                  "externalDocs": {
+                    "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/sql-spec.html"
+                  },
+                  "description": "The SQL query to run.",
+                  "type": "string"
+                },
+                "request_timeout": {
+                  "$ref": "#/components/schemas/_types:Duration"
+                },
+                "runtime_mappings": {
+                  "$ref": "#/components/schemas/_types.mapping:RuntimeFields"
+                },
+                "time_zone": {
+                  "$ref": "#/components/schemas/_types:TimeZone"
+                },
+                "wait_for_completion_timeout": {
+                  "$ref": "#/components/schemas/_types:Duration"
                 }
               }
             }
@@ -64201,7 +64404,7 @@
                   "$ref": "#/components/schemas/_types.query_dsl:QueryContainer"
                 },
                 "query": {
-                  "description": "SQL query to run.",
+                  "description": "The SQL query to run.",
                   "type": "string"
                 },
                 "time_zone": {

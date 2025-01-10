@@ -32807,7 +32807,7 @@
           {
             "in": "query",
             "name": "master_timeout",
-            "description": "Period to wait for a connection to the master node. If no response is received before the timeout expires, the request fails and returns an error.",
+            "description": "The period to wait for a connection to the master node.\nIf no response is received before the timeout expires, the request fails and returns an error.\nTo indicate that the request should never timeout, set it to `-1`.",
             "deprecated": false,
             "schema": {
               "$ref": "#/components/schemas/_types:Duration"
@@ -32817,7 +32817,7 @@
           {
             "in": "query",
             "name": "timeout",
-            "description": "Period to wait for a response. If no response is received before the timeout expires, the request fails and returns an error.",
+            "description": "The period to wait for a response.\nIf no response is received before the timeout expires, the request fails and returns an error.\nTo indicate that the request should never timeout, set it to `-1`.",
             "deprecated": false,
             "schema": {
               "$ref": "#/components/schemas/_types:Duration"
@@ -32888,7 +32888,7 @@
           {
             "in": "query",
             "name": "master_timeout",
-            "description": "Period to wait for a connection to the master node. If no response is received before the timeout expires, the request fails and returns an error.",
+            "description": "The period to wait for a connection to the master node.\nIf no response is received before the timeout expires, the request fails and returns an error.",
             "deprecated": false,
             "schema": {
               "$ref": "#/components/schemas/_types:Duration"
@@ -32898,7 +32898,7 @@
           {
             "in": "query",
             "name": "timeout",
-            "description": "Period to wait for a response. If no response is received before the timeout expires, the request fails and returns an error.",
+            "description": "The period to wait for a response.\nIf no response is received before the timeout expires, the request fails and returns an error.",
             "deprecated": false,
             "schema": {
               "$ref": "#/components/schemas/_types:Duration"
@@ -32944,7 +32944,7 @@
           {
             "in": "query",
             "name": "master_timeout",
-            "description": "Period to wait for a connection to the master node. If no response is received before the timeout expires, the request fails and returns an error.",
+            "description": "The period to wait for a connection to the master node.\nIf no response is received before the timeout expires, the request fails and returns an error.",
             "deprecated": false,
             "schema": {
               "$ref": "#/components/schemas/_types:Duration"
@@ -32954,7 +32954,7 @@
           {
             "in": "query",
             "name": "timeout",
-            "description": "Period to wait for a response. If no response is received before the timeout expires, the request fails and returns an error.",
+            "description": "The period to wait for a response.\nIf no response is received before the timeout expires, the request fails and returns an error.",
             "deprecated": false,
             "schema": {
               "$ref": "#/components/schemas/_types:Duration"
@@ -32997,7 +32997,7 @@
           {
             "in": "query",
             "name": "master_timeout",
-            "description": "Period to wait for a connection to the master node. If no response is received before the timeout expires, the request fails and returns an error.",
+            "description": "The period to wait for a connection to the master node.\nIf no response is received before the timeout expires, the request fails and returns an error.",
             "deprecated": false,
             "schema": {
               "$ref": "#/components/schemas/_types:Duration"
@@ -33007,7 +33007,7 @@
           {
             "in": "query",
             "name": "timeout",
-            "description": "Period to wait for a response. If no response is received before the timeout expires, the request fails and returns an error.",
+            "description": "The period to wait for a response.\nIf no response is received before the timeout expires, the request fails and returns an error.",
             "deprecated": false,
             "schema": {
               "$ref": "#/components/schemas/_types:Duration"
@@ -33157,7 +33157,7 @@
           {
             "in": "query",
             "name": "master_timeout",
-            "description": "Period to wait for a connection to the master node. If no response is received before the timeout expires, the request fails and returns an error.",
+            "description": "The period to wait for a connection to the master node.\nIf no response is received before the timeout expires, the request fails and returns an error.\nTo indicate that the request should never timeout, set it to `-1`.",
             "deprecated": false,
             "schema": {
               "$ref": "#/components/schemas/_types:Duration"
@@ -33167,7 +33167,7 @@
           {
             "in": "query",
             "name": "timeout",
-            "description": "Period to wait for a response. If no response is received before the timeout expires, the request fails and returns an error.",
+            "description": "The period to wait for a response.\nIf no response is received before the timeout expires, the request fails and returns an error.\nTo indicate that the request should never timeout, set it to `-1`.",
             "deprecated": false,
             "schema": {
               "$ref": "#/components/schemas/_types:Duration"
@@ -33210,7 +33210,7 @@
           {
             "in": "query",
             "name": "master_timeout",
-            "description": "Period to wait for a connection to the master node. If no response is received before the timeout expires, the request fails and returns an error.",
+            "description": "The period to wait for a connection to the master node.\nIf no response is received before the timeout expires, the request fails and returns an error.\nTo indicate that the request should never timeout, set it to `-1`.",
             "deprecated": false,
             "schema": {
               "$ref": "#/components/schemas/_types:Duration"
@@ -33220,7 +33220,7 @@
           {
             "in": "query",
             "name": "timeout",
-            "description": "Period to wait for a response. If no response is received before the timeout expires, the request fails and returns an error.",
+            "description": "The period to wait for a response.\nIf no response is received before the timeout expires, the request fails and returns an error.\nTo indicate that the request should never timeout, set it to `-1`.",
             "deprecated": false,
             "schema": {
               "$ref": "#/components/schemas/_types:Duration"
@@ -33255,7 +33255,7 @@
           {
             "in": "query",
             "name": "master_timeout",
-            "description": "Period to wait for a connection to the master node. If no response is received before the timeout expires, the request fails and returns an error.",
+            "description": "The period to wait for a connection to the master node.\nIf no response is received before the timeout expires, the request fails and returns an error.\nTo indicate that the request should never timeout, set it to `-1`.",
             "deprecated": false,
             "schema": {
               "$ref": "#/components/schemas/_types:Duration"
@@ -33265,7 +33265,7 @@
           {
             "in": "query",
             "name": "timeout",
-            "description": "Period to wait for a response. If no response is received before the timeout expires, the request fails and returns an error.",
+            "description": "The period to wait for a response.\nIf no response is received before the timeout expires, the request fails and returns an error.\nTo indicate that the request should never timeout, set it to `-1`.",
             "deprecated": false,
             "schema": {
               "$ref": "#/components/schemas/_types:Duration"
@@ -34413,13 +34413,13 @@
           "sql"
         ],
         "summary": "Delete an async SQL search",
-        "description": "Delete an async SQL search or a stored synchronous SQL search.\nIf the search is still running, the API cancels it.",
+        "description": "Delete an async SQL search or a stored synchronous SQL search.\nIf the search is still running, the API cancels it.\n\nIf the Elasticsearch security features are enabled, only the following users can use this API to delete a search:\n\n* Users with the `cancel_task` cluster privilege.\n* The user who first submitted the search.",
         "operationId": "sql-delete-async",
         "parameters": [
           {
             "in": "path",
             "name": "id",
-            "description": "Identifier for the search.",
+            "description": "The identifier for the search.",
             "required": true,
             "deprecated": false,
             "schema": {
@@ -34449,13 +34449,13 @@
           "sql"
         ],
         "summary": "Get async SQL search results",
-        "description": "Get the current status and available results for an async SQL search or stored synchronous SQL search.",
+        "description": "Get the current status and available results for an async SQL search or stored synchronous SQL search.\n\nIf the Elasticsearch security features are enabled, only the user who first submitted the SQL search can retrieve the search using this API.",
         "operationId": "sql-get-async",
         "parameters": [
           {
             "in": "path",
             "name": "id",
-            "description": "Identifier for the search.",
+            "description": "The identifier for the search.",
             "required": true,
             "deprecated": false,
             "schema": {
@@ -34466,7 +34466,7 @@
           {
             "in": "query",
             "name": "delimiter",
-            "description": "Separator for CSV results. The API only supports this parameter for CSV responses.",
+            "description": "The separator for CSV results.\nThe API supports this parameter only for CSV responses.",
             "deprecated": false,
             "schema": {
               "type": "string"
@@ -34476,7 +34476,7 @@
           {
             "in": "query",
             "name": "format",
-            "description": "Format for the response. You must specify a format using this parameter or the\nAccept HTTP header. If you specify both, the API uses this parameter.",
+            "description": "The format for the response.\nYou must specify a format using this parameter or the `Accept` HTTP header.\nIf you specify both, the API uses this parameter.",
             "deprecated": false,
             "schema": {
               "type": "string"
@@ -34486,7 +34486,7 @@
           {
             "in": "query",
             "name": "keep_alive",
-            "description": "Retention period for the search and its results. Defaults\nto the `keep_alive` period for the original SQL search.",
+            "description": "The retention period for the search and its results.\nIt defaults to the `keep_alive` period for the original SQL search.",
             "deprecated": false,
             "schema": {
               "$ref": "#/components/schemas/_types:Duration"
@@ -34496,7 +34496,7 @@
           {
             "in": "query",
             "name": "wait_for_completion_timeout",
-            "description": "Period to wait for complete results. Defaults to no timeout,\nmeaning the request waits for complete search results.",
+            "description": "The period to wait for complete results.\nIt defaults to no timeout, meaning the request waits for complete search results.",
             "deprecated": false,
             "schema": {
               "$ref": "#/components/schemas/_types:Duration"
@@ -34516,11 +34516,11 @@
                       "$ref": "#/components/schemas/_types:Id"
                     },
                     "is_running": {
-                      "description": "If `true`, the search is still running. If false, the search has finished.\nThis value is only returned for async and saved synchronous searches. For\nCSV, TSV, and TXT responses, this value is returned in the `Async-partial`\nHTTP header.",
+                      "description": "If `true`, the search is still running.\nIf `false`, the search has finished.\nThis value is returned only for async and saved synchronous searches.\nFor CSV, TSV, and TXT responses, this value is returned in the `Async-partial` HTTP header.",
                       "type": "boolean"
                     },
                     "is_partial": {
-                      "description": "If `true`, the response does not contain complete search results. If `is_partial`\nis `true` and `is_running` is `true`, the search is still running. If `is_partial`\nis `true` but `is_running` is `false`, the results are partial due to a failure or\ntimeout. This value is only returned for async and saved synchronous searches.\nFor CSV, TSV, and TXT responses, this value is returned in the `Async-partial` HTTP header.",
+                      "description": "If `true`, the response does not contain complete search results.\nIf `is_partial` is `true` and `is_running` is `true`, the search is still running.\nIf `is_partial` is `true` but `is_running` is `false`, the results are partial due to a failure or timeout.\nThis value is returned only for async and saved synchronous searches.\nFor CSV, TSV, and TXT responses, this value is returned in the `Async-partial` HTTP header.",
                       "type": "boolean"
                     },
                     "columns": {
@@ -34531,11 +34531,11 @@
                       }
                     },
                     "cursor": {
-                      "description": "Cursor for the next set of paginated results. For CSV, TSV, and\nTXT responses, this value is returned in the `Cursor` HTTP header.",
+                      "description": "The cursor for the next set of paginated results.\nFor CSV, TSV, and TXT responses, this value is returned in the `Cursor` HTTP header.",
                       "type": "string"
                     },
                     "rows": {
-                      "description": "Values for the search results.",
+                      "description": "The values for the search results.",
                       "type": "array",
                       "items": {
                         "$ref": "#/components/schemas/sql:Row"
@@ -34568,7 +34568,7 @@
           {
             "in": "path",
             "name": "id",
-            "description": "Identifier for the search.",
+            "description": "The identifier for the search.",
             "required": true,
             "deprecated": false,
             "schema": {
@@ -34585,22 +34585,22 @@
                 "schema": {
                   "type": "object",
                   "properties": {
+                    "expiration_time_in_millis": {
+                      "$ref": "#/components/schemas/_types:EpochTimeUnitMillis"
+                    },
                     "id": {
-                      "description": "Identifier for the search.",
+                      "description": "The identifier for the search.",
                       "type": "string"
                     },
                     "is_running": {
-                      "description": "If `true`, the search is still running. If `false`, the search has finished.",
+                      "description": "If `true`, the search is still running.\nIf `false`, the search has finished.",
                       "type": "boolean"
                     },
                     "is_partial": {
-                      "description": "If `true`, the response does not contain complete search results. If `is_partial`\nis `true` and `is_running` is `true`, the search is still running. If `is_partial`\nis `true` but `is_running` is `false`, the results are partial due to a failure or\ntimeout.",
+                      "description": "If `true`, the response does not contain complete search results.\nIf `is_partial` is `true` and `is_running` is `true`, the search is still running.\nIf `is_partial` is `true` but `is_running` is `false`, the results are partial due to a failure or timeout.",
                       "type": "boolean"
                     },
                     "start_time_in_millis": {
-                      "$ref": "#/components/schemas/_types:EpochTimeUnitMillis"
-                    },
-                    "expiration_time_in_millis": {
                       "$ref": "#/components/schemas/_types:EpochTimeUnitMillis"
                     },
                     "completion_status": {
@@ -34608,11 +34608,11 @@
                     }
                   },
                   "required": [
+                    "expiration_time_in_millis",
                     "id",
                     "is_running",
                     "is_partial",
-                    "start_time_in_millis",
-                    "expiration_time_in_millis"
+                    "start_time_in_millis"
                   ]
                 }
               }
@@ -34674,7 +34674,7 @@
           "sql"
         ],
         "summary": "Translate SQL into Elasticsearch queries",
-        "description": "Translate an SQL search into a search API request containing Query DSL.",
+        "description": "Translate an SQL search into a search API request containing Query DSL.\nIt accepts the same request body parameters as the SQL search API, excluding `cursor`.",
         "operationId": "sql-translate-1",
         "requestBody": {
           "$ref": "#/components/requestBodies/sql.translate"
@@ -34691,7 +34691,7 @@
           "sql"
         ],
         "summary": "Translate SQL into Elasticsearch queries",
-        "description": "Translate an SQL search into a search API request containing Query DSL.",
+        "description": "Translate an SQL search into a search API request containing Query DSL.\nIt accepts the same request body parameters as the SQL search API, excluding `cursor`.",
         "operationId": "sql-translate",
         "requestBody": {
           "$ref": "#/components/requestBodies/sql.translate"
@@ -34741,7 +34741,7 @@
           {
             "in": "path",
             "name": "id",
-            "description": "\"The id of the synonyms set to be retrieved",
+            "description": "The synonyms set identifier to retrieve.",
             "required": true,
             "deprecated": false,
             "schema": {
@@ -34752,7 +34752,7 @@
           {
             "in": "query",
             "name": "from",
-            "description": "Starting offset for query rules to be retrieved",
+            "description": "The starting offset for query rules to retrieve.",
             "deprecated": false,
             "schema": {
               "type": "number"
@@ -34762,7 +34762,7 @@
           {
             "in": "query",
             "name": "size",
-            "description": "specifies a max number of query rules to retrieve",
+            "description": "The max number of query rules to retrieve.",
             "deprecated": false,
             "schema": {
               "type": "number"
@@ -34779,9 +34779,11 @@
                   "type": "object",
                   "properties": {
                     "count": {
+                      "description": "The total number of synonyms rules that the synonyms set contains.",
                       "type": "number"
                     },
                     "synonyms_set": {
+                      "description": "Synonym rule details.",
                       "type": "array",
                       "items": {
                         "$ref": "#/components/schemas/synonyms._types:SynonymRuleRead"
@@ -34804,13 +34806,13 @@
           "synonyms"
         ],
         "summary": "Create or update a synonym set",
-        "description": "Synonyms sets are limited to a maximum of 10,000 synonym rules per set.\nIf you need to manage more synonym rules, you can create multiple synonym sets.",
+        "description": "Synonyms sets are limited to a maximum of 10,000 synonym rules per set.\nIf you need to manage more synonym rules, you can create multiple synonym sets.\n\nWhen an existing synonyms set is updated, the search analyzers that use the synonyms set are reloaded automatically for all indices.\nThis is equivalent to invoking the reload search analyzers API for all indices that use the synonyms set.",
         "operationId": "synonyms-put-synonym",
         "parameters": [
           {
             "in": "path",
             "name": "id",
-            "description": "The id of the synonyms set to be created or updated",
+            "description": "The ID of the synonyms set to be created or updated.",
             "required": true,
             "deprecated": false,
             "schema": {
@@ -34826,7 +34828,7 @@
                 "type": "object",
                 "properties": {
                   "synonyms_set": {
-                    "description": "The synonym set information to update",
+                    "description": "The synonym rules definitions for the synonyms set.",
                     "oneOf": [
                       {
                         "$ref": "#/components/schemas/synonyms._types:SynonymRule"
@@ -34879,12 +34881,13 @@
           "synonyms"
         ],
         "summary": "Delete a synonym set",
+        "description": "You can only delete a synonyms set that is not in use by any index analyzer.\n\nSynonyms sets can be used in synonym graph token filters and synonym token filters.\nThese synonym filters can be used as part of search analyzers.\n\nAnalyzers need to be loaded when an index is restored (such as when a node starts, or the index becomes open).\nEven if the analyzer is not used on any field mapping, it still needs to be loaded on the index recovery phase.\n\nIf any analyzers cannot be loaded, the index becomes unavailable and the cluster status becomes red or yellow as index shards are not available.\nTo prevent that, synonyms sets that are used in analyzers can't be deleted.\nA delete request in this case will return a 400 response code.\n\nTo remove a synonyms set, you must first remove all indices that contain analyzers using it.\nYou can migrate an index by creating a new index that does not contain the token filter with the synonyms set, and use the reindex API in order to copy over the index data.\nOnce finished, you can delete the index.\nWhen the synonyms set is not used in analyzers, you will be able to delete it.",
         "operationId": "synonyms-delete-synonym",
         "parameters": [
           {
             "in": "path",
             "name": "id",
-            "description": "The id of the synonyms set to be deleted",
+            "description": "The synonyms set identifier to delete.",
             "required": true,
             "deprecated": false,
             "schema": {
@@ -34920,7 +34923,7 @@
           {
             "in": "path",
             "name": "set_id",
-            "description": "The id of the synonym set to retrieve the synonym rule from",
+            "description": "The ID of the synonym set to retrieve the synonym rule from.",
             "required": true,
             "deprecated": false,
             "schema": {
@@ -34931,7 +34934,7 @@
           {
             "in": "path",
             "name": "rule_id",
-            "description": "The id of the synonym rule to retrieve",
+            "description": "The ID of the synonym rule to retrieve.",
             "required": true,
             "deprecated": false,
             "schema": {
@@ -34959,13 +34962,13 @@
           "synonyms"
         ],
         "summary": "Create or update a synonym rule",
-        "description": "Create or update a synonym rule in a synonym set.",
+        "description": "Create or update a synonym rule in a synonym set.\n\nIf any of the synonym rules included is invalid, the API returns an error.\n\nWhen you update a synonym rule, all analyzers using the synonyms set will be reloaded automatically to reflect the new rule.",
         "operationId": "synonyms-put-synonym-rule",
         "parameters": [
           {
             "in": "path",
             "name": "set_id",
-            "description": "The id of the synonym set to be updated with the synonym rule",
+            "description": "The ID of the synonym set.",
             "required": true,
             "deprecated": false,
             "schema": {
@@ -34976,7 +34979,7 @@
           {
             "in": "path",
             "name": "rule_id",
-            "description": "The id of the synonym rule to be updated or created",
+            "description": "The ID of the synonym rule to be updated or created.",
             "required": true,
             "deprecated": false,
             "schema": {
@@ -35028,7 +35031,7 @@
           {
             "in": "path",
             "name": "set_id",
-            "description": "The id of the synonym set to be updated",
+            "description": "The ID of the synonym set to update.",
             "required": true,
             "deprecated": false,
             "schema": {
@@ -35039,7 +35042,7 @@
           {
             "in": "path",
             "name": "rule_id",
-            "description": "The id of the synonym rule to be deleted",
+            "description": "The ID of the synonym rule to delete.",
             "required": true,
             "deprecated": false,
             "schema": {
@@ -35075,7 +35078,7 @@
           {
             "in": "query",
             "name": "from",
-            "description": "Starting offset",
+            "description": "The starting offset for synonyms sets to retrieve.",
             "deprecated": false,
             "schema": {
               "type": "number"
@@ -35085,7 +35088,7 @@
           {
             "in": "query",
             "name": "size",
-            "description": "specifies a max number of results to get",
+            "description": "The maximum number of synonyms sets to retrieve.",
             "deprecated": false,
             "schema": {
               "type": "number"
@@ -35102,9 +35105,11 @@
                   "type": "object",
                   "properties": {
                     "count": {
+                      "description": "The total number of synonyms sets defined.",
                       "type": "number"
                     },
                     "results": {
+                      "description": "The identifier and total number of defined synonym rules for each synonyms set.",
                       "type": "array",
                       "items": {
                         "$ref": "#/components/schemas/synonyms.get_synonyms_sets:SynonymsSetItem"
@@ -35643,7 +35648,7 @@
           "text_structure"
         ],
         "summary": "Find the structure of a text field",
-        "description": "Find the structure of a text field in an Elasticsearch index.",
+        "description": "Find the structure of a text field in an Elasticsearch index.\n\nThis API provides a starting point for extracting further information from log messages already ingested into Elasticsearch.\nFor example, if you have ingested data into a very simple index that has just `@timestamp` and message fields, you can use this API to see what common structure exists in the message field.\n\nThe response from the API contains:\n\n* Sample messages.\n* Statistics that reveal the most common values for all fields detected within the text and basic numeric statistics for numeric fields.\n* Information about the structure of the text, which is useful when you write ingest configurations to index it or similarly formatted text.\n* Appropriate mappings for an Elasticsearch index, which you could use to ingest the text.\n\nAll this information can be calculated by the structure finder with no guidance.\nHowever, you can optionally override some of the decisions about the text structure by specifying one or more query parameters.\n\nIf the structure finder produces unexpected results, specify the `explain` query parameter and an explanation will appear in the response.\nIt helps determine why the returned structure was chosen.",
         "operationId": "text-structure-find-field-structure",
         "parameters": [
           {
@@ -35689,7 +35694,7 @@
           {
             "in": "query",
             "name": "explain",
-            "description": "If true, the response includes a field named `explanation`, which is an array of strings that indicate how the structure finder produced its result.",
+            "description": "If `true`, the response includes a field named `explanation`, which is an array of strings that indicate how the structure finder produced its result.",
             "deprecated": false,
             "schema": {
               "type": "boolean"
@@ -35751,7 +35756,7 @@
           {
             "in": "query",
             "name": "should_trim_fields",
-            "description": "If the format is `delimited`, you can specify whether values between delimiters should have whitespace trimmed from them.\nIf this parameter is not specified and the delimiter is pipe (`|`), the default value is true.\nOtherwise, the default value is false.",
+            "description": "If the format is `delimited`, you can specify whether values between delimiters should have whitespace trimmed from them.\nIf this parameter is not specified and the delimiter is pipe (`|`), the default value is true.\nOtherwise, the default value is `false`.",
             "deprecated": false,
             "schema": {
               "type": "boolean"
@@ -35876,7 +35881,7 @@
           "text_structure"
         ],
         "summary": "Find the structure of text messages",
-        "description": "Find the structure of a list of text messages.\nThe messages must contain data that is suitable to be ingested into Elasticsearch.\n\nThis API provides a starting point for ingesting data into Elasticsearch in a format that is suitable for subsequent use with other Elastic Stack functionality.\nUse this API rather than the find text structure API if your input text has already been split up into separate messages by some other process.\nThe response from the API contains:\n\n* Sample messages.\n* Statistics that reveal the most common values for all fields detected within the text and basic numeric statistics for numeric fields.\n* Information about the structure of the text, which is useful when you write ingest configurations to index it or similarly formatted text.\nAppropriate mappings for an Elasticsearch index, which you could use to ingest the text.\n\nAll this information can be calculated by the structure finder with no guidance.\nHowever, you can optionally override some of the decisions about the text structure by specifying one or more query parameters.",
+        "description": "Find the structure of a list of text messages.\nThe messages must contain data that is suitable to be ingested into Elasticsearch.\n\nThis API provides a starting point for ingesting data into Elasticsearch in a format that is suitable for subsequent use with other Elastic Stack functionality.\nUse this API rather than the find text structure API if your input text has already been split up into separate messages by some other process.\n\nThe response from the API contains:\n\n* Sample messages.\n* Statistics that reveal the most common values for all fields detected within the text and basic numeric statistics for numeric fields.\n* Information about the structure of the text, which is useful when you write ingest configurations to index it or similarly formatted text.\nAppropriate mappings for an Elasticsearch index, which you could use to ingest the text.\n\nAll this information can be calculated by the structure finder with no guidance.\nHowever, you can optionally override some of the decisions about the text structure by specifying one or more query parameters.\n\nIf the structure finder produces unexpected results, specify the `explain` query parameter and an explanation will appear in the response.\nIt helps determine why the returned structure was chosen.",
         "operationId": "text-structure-find-message-structure",
         "parameters": [
           {
@@ -35927,7 +35932,7 @@
           "text_structure"
         ],
         "summary": "Find the structure of text messages",
-        "description": "Find the structure of a list of text messages.\nThe messages must contain data that is suitable to be ingested into Elasticsearch.\n\nThis API provides a starting point for ingesting data into Elasticsearch in a format that is suitable for subsequent use with other Elastic Stack functionality.\nUse this API rather than the find text structure API if your input text has already been split up into separate messages by some other process.\nThe response from the API contains:\n\n* Sample messages.\n* Statistics that reveal the most common values for all fields detected within the text and basic numeric statistics for numeric fields.\n* Information about the structure of the text, which is useful when you write ingest configurations to index it or similarly formatted text.\nAppropriate mappings for an Elasticsearch index, which you could use to ingest the text.\n\nAll this information can be calculated by the structure finder with no guidance.\nHowever, you can optionally override some of the decisions about the text structure by specifying one or more query parameters.",
+        "description": "Find the structure of a list of text messages.\nThe messages must contain data that is suitable to be ingested into Elasticsearch.\n\nThis API provides a starting point for ingesting data into Elasticsearch in a format that is suitable for subsequent use with other Elastic Stack functionality.\nUse this API rather than the find text structure API if your input text has already been split up into separate messages by some other process.\n\nThe response from the API contains:\n\n* Sample messages.\n* Statistics that reveal the most common values for all fields detected within the text and basic numeric statistics for numeric fields.\n* Information about the structure of the text, which is useful when you write ingest configurations to index it or similarly formatted text.\nAppropriate mappings for an Elasticsearch index, which you could use to ingest the text.\n\nAll this information can be calculated by the structure finder with no guidance.\nHowever, you can optionally override some of the decisions about the text structure by specifying one or more query parameters.\n\nIf the structure finder produces unexpected results, specify the `explain` query parameter and an explanation will appear in the response.\nIt helps determine why the returned structure was chosen.",
         "operationId": "text-structure-find-message-structure-1",
         "parameters": [
           {
@@ -35986,7 +35991,7 @@
           {
             "in": "query",
             "name": "charset",
-            "description": "The text’s character set. It must be a character set that is supported by the JVM that Elasticsearch uses. For example, UTF-8, UTF-16LE, windows-1252, or EUC-JP. If this parameter is not specified, the structure finder chooses an appropriate character set.",
+            "description": "The text's character set.\nIt must be a character set that is supported by the JVM that Elasticsearch uses.\nFor example, `UTF-8`, `UTF-16LE`, `windows-1252`, or `EUC-JP`.\nIf this parameter is not specified, the structure finder chooses an appropriate character set.",
             "deprecated": false,
             "schema": {
               "type": "string"
@@ -35996,7 +36001,7 @@
           {
             "in": "query",
             "name": "column_names",
-            "description": "If you have set format to delimited, you can specify the column names in a comma-separated list. If this parameter is not specified, the structure finder uses the column names from the header row of the text. If the text does not have a header role, columns are named \"column1\", \"column2\", \"column3\", for example.",
+            "description": "If you have set format to `delimited`, you can specify the column names in a comma-separated list.\nIf this parameter is not specified, the structure finder uses the column names from the header row of the text.\nIf the text does not have a header role, columns are named \"column1\", \"column2\", \"column3\", for example.",
             "deprecated": false,
             "schema": {
               "type": "string"
@@ -36006,7 +36011,7 @@
           {
             "in": "query",
             "name": "delimiter",
-            "description": "If you have set format to delimited, you can specify the character used to delimit the values in each row. Only a single character is supported; the delimiter cannot have multiple characters. By default, the API considers the following possibilities: comma, tab, semi-colon, and pipe (|). In this default scenario, all rows must have the same number of fields for the delimited format to be detected. If you specify a delimiter, up to 10% of the rows can have a different number of columns than the first row.",
+            "description": "If you have set `format` to `delimited`, you can specify the character used to delimit the values in each row.\nOnly a single character is supported; the delimiter cannot have multiple characters.\nBy default, the API considers the following possibilities: comma, tab, semi-colon, and pipe (`|`).\nIn this default scenario, all rows must have the same number of fields for the delimited format to be detected.\nIf you specify a delimiter, up to 10% of the rows can have a different number of columns than the first row.",
             "deprecated": false,
             "schema": {
               "type": "string"
@@ -36016,7 +36021,7 @@
           {
             "in": "query",
             "name": "ecs_compatibility",
-            "description": "The mode of compatibility with ECS compliant Grok patterns (disabled or v1, default: disabled).",
+            "description": "The mode of compatibility with ECS compliant Grok patterns.\nUse this parameter to specify whether to use ECS Grok patterns instead of legacy ones when the structure finder creates a Grok pattern.\nValid values are `disabled` and `v1`.\nThis setting primarily has an impact when a whole message Grok pattern such as `%{CATALINALOG}` matches the input.\nIf the structure finder identifies a common structure but has no idea of meaning then generic field names such as `path`, `ipaddress`, `field1`, and `field2` are used in the `grok_pattern` output, with the intention that a user who knows the meanings rename these fields before using it.",
             "deprecated": false,
             "schema": {
               "type": "string"
@@ -36026,7 +36031,7 @@
           {
             "in": "query",
             "name": "explain",
-            "description": "If this parameter is set to true, the response includes a field named explanation, which is an array of strings that indicate how the structure finder produced its result.\nIf the structure finder produces unexpected results for some text, use this query parameter to help you determine why the returned structure was chosen.",
+            "description": "If this parameter is set to `true`, the response includes a field named explanation, which is an array of strings that indicate how the structure finder produced its result.\nIf the structure finder produces unexpected results for some text, use this query parameter to help you determine why the returned structure was chosen.",
             "deprecated": false,
             "schema": {
               "type": "boolean"
@@ -36036,7 +36041,7 @@
           {
             "in": "query",
             "name": "format",
-            "description": "The high level structure of the text. Valid values are ndjson, xml, delimited, and semi_structured_text. By default, the API chooses the format. In this default scenario, all rows must have the same number of fields for a delimited format to be detected. If the format is set to delimited and the delimiter is not set, however, the API tolerates up to 5% of rows that have a different number of columns than the first row.",
+            "description": "The high level structure of the text.\nValid values are `ndjson`, `xml`, `delimited`, and `semi_structured_text`.\nBy default, the API chooses the format.\nIn this default scenario, all rows must have the same number of fields for a delimited format to be detected.\nIf the format is set to `delimited` and the delimiter is not set, however, the API tolerates up to 5% of rows that have a different number of columns than the first row.",
             "deprecated": false,
             "schema": {
               "type": "string"
@@ -36046,7 +36051,7 @@
           {
             "in": "query",
             "name": "grok_pattern",
-            "description": "If you have set format to semi_structured_text, you can specify a Grok pattern that is used to extract fields from every message in the text. The name of the timestamp field in the Grok pattern must match what is specified in the timestamp_field parameter. If that parameter is not specified, the name of the timestamp field in the Grok pattern must match \"timestamp\". If grok_pattern is not specified, the structure finder creates a Grok pattern.",
+            "description": "If you have set `format` to `semi_structured_text`, you can specify a Grok pattern that is used to extract fields from every message in the text.\nThe name of the timestamp field in the Grok pattern must match what is specified in the `timestamp_field` parameter.\nIf that parameter is not specified, the name of the timestamp field in the Grok pattern must match \"timestamp\".\nIf `grok_pattern` is not specified, the structure finder creates a Grok pattern.",
             "deprecated": false,
             "schema": {
               "$ref": "#/components/schemas/_types:GrokPattern"
@@ -36056,7 +36061,7 @@
           {
             "in": "query",
             "name": "has_header_row",
-            "description": "If you have set format to delimited, you can use this parameter to indicate whether the column names are in the first row of the text. If this parameter is not specified, the structure finder guesses based on the similarity of the first row of the text to other rows.",
+            "description": "If you have set `format` to `delimited`, you can use this parameter to indicate whether the column names are in the first row of the text.\nIf this parameter is not specified, the structure finder guesses based on the similarity of the first row of the text to other rows.",
             "deprecated": false,
             "schema": {
               "type": "boolean"
@@ -36066,7 +36071,7 @@
           {
             "in": "query",
             "name": "line_merge_size_limit",
-            "description": "The maximum number of characters in a message when lines are merged to form messages while analyzing semi-structured text. If you have extremely long messages you may need to increase this, but be aware that this may lead to very long processing times if the way to group lines into messages is misdetected.",
+            "description": "The maximum number of characters in a message when lines are merged to form messages while analyzing semi-structured text.\nIf you have extremely long messages you may need to increase this, but be aware that this may lead to very long processing times if the way to group lines into messages is misdetected.",
             "deprecated": false,
             "schema": {
               "$ref": "#/components/schemas/_types:uint"
@@ -36076,7 +36081,7 @@
           {
             "in": "query",
             "name": "lines_to_sample",
-            "description": "The number of lines to include in the structural analysis, starting from the beginning of the text. The minimum is 2; If the value of this parameter is greater than the number of lines in the text, the analysis proceeds (as long as there are at least two lines in the text) for all of the lines.",
+            "description": "The number of lines to include in the structural analysis, starting from the beginning of the text.\nThe minimum is 2.\nIf the value of this parameter is greater than the number of lines in the text, the analysis proceeds (as long as there are at least two lines in the text) for all of the lines.\n\nNOTE: The number of lines and the variation of the lines affects the speed of the analysis.\nFor example, if you upload text where the first 1000 lines are all variations on the same message, the analysis will find more commonality than would be seen with a bigger sample.\nIf possible, however, it is more efficient to upload sample text with more variety in the first 1000 lines than to request analysis of 100000 lines to achieve some variety.",
             "deprecated": false,
             "schema": {
               "$ref": "#/components/schemas/_types:uint"
@@ -36086,7 +36091,7 @@
           {
             "in": "query",
             "name": "quote",
-            "description": "If you have set format to delimited, you can specify the character used to quote the values in each row if they contain newlines or the delimiter character. Only a single character is supported. If this parameter is not specified, the default value is a double quote (\"). If your delimited text format does not use quoting, a workaround is to set this argument to a character that does not appear anywhere in the sample.",
+            "description": "If you have set `format` to `delimited`, you can specify the character used to quote the values in each row if they contain newlines or the delimiter character.\nOnly a single character is supported.\nIf this parameter is not specified, the default value is a double quote (`\"`).\nIf your delimited text format does not use quoting, a workaround is to set this argument to a character that does not appear anywhere in the sample.",
             "deprecated": false,
             "schema": {
               "type": "string"
@@ -36096,7 +36101,7 @@
           {
             "in": "query",
             "name": "should_trim_fields",
-            "description": "If you have set format to delimited, you can specify whether values between delimiters should have whitespace trimmed from them. If this parameter is not specified and the delimiter is pipe (|), the default value is true. Otherwise, the default value is false.",
+            "description": "If you have set `format` to `delimited`, you can specify whether values between delimiters should have whitespace trimmed from them.\nIf this parameter is not specified and the delimiter is pipe (`|`), the default value is `true`.\nOtherwise, the default value is `false`.",
             "deprecated": false,
             "schema": {
               "type": "boolean"
@@ -36106,7 +36111,7 @@
           {
             "in": "query",
             "name": "timeout",
-            "description": "Sets the maximum amount of time that the structure analysis can take. If the analysis is still running when the timeout expires then it will be stopped.",
+            "description": "The maximum amount of time that the structure analysis can take.\nIf the analysis is still running when the timeout expires then it will be stopped.",
             "deprecated": false,
             "schema": {
               "$ref": "#/components/schemas/_types:Duration"
@@ -36116,7 +36121,7 @@
           {
             "in": "query",
             "name": "timestamp_field",
-            "description": "Optional parameter to specify the timestamp field in the file",
+            "description": "The name of the field that contains the primary timestamp of each record in the text.\nIn particular, if the text were ingested into an index, this is the field that would be used to populate the `@timestamp` field.\n\nIf the `format` is `semi_structured_text`, this field must match the name of the appropriate extraction in the `grok_pattern`.\nTherefore, for semi-structured text, it is best not to specify this parameter unless `grok_pattern` is also specified.\n\nFor structured text, if you specify this parameter, the field must exist within the text.\n\nIf this parameter is not specified, the structure finder makes a decision about which field (if any) is the primary timestamp field.\nFor structured text, it is not compulsory to have a timestamp in the text.",
             "deprecated": false,
             "schema": {
               "$ref": "#/components/schemas/_types:Field"
@@ -36126,7 +36131,7 @@
           {
             "in": "query",
             "name": "timestamp_format",
-            "description": "The Java time format of the timestamp field in the text.",
+            "description": "The Java time format of the timestamp field in the text.\n\nOnly a subset of Java time format letter groups are supported:\n\n* `a`\n* `d`\n* `dd`\n* `EEE`\n* `EEEE`\n* `H`\n* `HH`\n* `h`\n* `M`\n* `MM`\n* `MMM`\n* `MMMM`\n* `mm`\n* `ss`\n* `XX`\n* `XXX`\n* `yy`\n* `yyyy`\n* `zzz`\n\nAdditionally `S` letter groups (fractional seconds) of length one to nine are supported providing they occur after `ss` and separated from the `ss` by a `.`, `,` or `:`.\nSpacing and punctuation is also permitted with the exception of `?`, newline and carriage return, together with literal text enclosed in single quotes.\nFor example, `MM/dd HH.mm.ss,SSSSSS 'in' yyyy` is a valid override format.\n\nOne valuable use case for this parameter is when the format is semi-structured text, there are multiple timestamp formats in the text, and you know which format corresponds to the primary timestamp, but you do not want to specify the full `grok_pattern`.\nAnother is when the timestamp format is one that the structure finder does not consider by default.\n\nIf this parameter is not specified, the structure finder chooses the best format from a built-in set.\n\nIf the special value `null` is specified the structure finder will not look for a primary timestamp in the text.\nWhen the format is semi-structured text this will result in the structure finder treating the text as single-line messages.",
             "deprecated": false,
             "schema": {
               "type": "string"
@@ -36156,27 +36161,33 @@
                   "type": "object",
                   "properties": {
                     "charset": {
+                      "description": "The character encoding used to parse the text.",
                       "type": "string"
                     },
                     "has_header_row": {
                       "type": "boolean"
                     },
                     "has_byte_order_marker": {
+                      "description": "For UTF character encodings, it indicates whether the text begins with a byte order marker.",
                       "type": "boolean"
                     },
                     "format": {
+                      "description": "Valid values include `ndjson`, `xml`, `delimited`, and `semi_structured_text`.",
                       "type": "string"
                     },
                     "field_stats": {
+                      "description": "The most common values of each field, plus basic numeric statistics for the numeric `page_count` field.\nThis information may provide clues that the data needs to be cleaned or transformed prior to use by other Elastic Stack functionality.",
                       "type": "object",
                       "additionalProperties": {
                         "$ref": "#/components/schemas/text_structure._types:FieldStat"
                       }
                     },
                     "sample_start": {
+                      "description": "The first two messages in the text verbatim.\nThis may help diagnose parse errors or accidental uploads of the wrong text.",
                       "type": "string"
                     },
                     "num_messages_analyzed": {
+                      "description": "The number of distinct messages the lines contained.\nFor NDJSON, this value is the same as `num_lines_analyzed`.\nFor other text formats, messages can span several lines.",
                       "type": "number"
                     },
                     "mappings": {
@@ -36189,12 +36200,15 @@
                       "type": "string"
                     },
                     "need_client_timezone": {
+                      "description": "If a timestamp format is detected that does not include a timezone, `need_client_timezone` is `true`.\nThe server that parses the text must therefore be told the correct timezone by the client.",
                       "type": "boolean"
                     },
                     "num_lines_analyzed": {
+                      "description": "The number of lines of the text that were analyzed.",
                       "type": "number"
                     },
                     "column_names": {
+                      "description": "If `format` is `delimited`, the `column_names` field lists the column names in the order they appear in the sample.",
                       "type": "array",
                       "items": {
                         "type": "string"
@@ -36216,12 +36230,14 @@
                       "type": "string"
                     },
                     "java_timestamp_formats": {
+                      "description": "The Java time formats recognized in the time fields.\nElasticsearch mappings and ingest pipelines use this format.",
                       "type": "array",
                       "items": {
                         "type": "string"
                       }
                     },
                     "joda_timestamp_formats": {
+                      "description": "Information that is used to tell Logstash how to parse timestamps.",
                       "type": "array",
                       "items": {
                         "type": "string"
@@ -37888,7 +37904,7 @@
           "watcher"
         ],
         "summary": "Acknowledge a watch",
-        "description": "Acknowledging a watch enables you to manually throttle the execution of the watch's actions.\n\nThe acknowledgement state of an action is stored in the `status.actions.<id>.ack.state` structure.\n\nIMPORTANT: If the specified watch is currently being executed, this API will return an error\nThe reason for this behavior is to prevent overwriting the watch status from a watch execution.",
+        "description": "Acknowledging a watch enables you to manually throttle the execution of the watch's actions.\n\nThe acknowledgement state of an action is stored in the `status.actions.<id>.ack.state` structure.\n\nIMPORTANT: If the specified watch is currently being executed, this API will return an error\nThe reason for this behavior is to prevent overwriting the watch status from a watch execution.\n\nAcknowledging an action throttles further executions of that action until its `ack.state` is reset to `awaits_successful_execution`.\nThis happens when the condition of the watch is not met (the condition evaluates to false).",
         "operationId": "watcher-ack-watch",
         "parameters": [
           {
@@ -37906,7 +37922,7 @@
           "watcher"
         ],
         "summary": "Acknowledge a watch",
-        "description": "Acknowledging a watch enables you to manually throttle the execution of the watch's actions.\n\nThe acknowledgement state of an action is stored in the `status.actions.<id>.ack.state` structure.\n\nIMPORTANT: If the specified watch is currently being executed, this API will return an error\nThe reason for this behavior is to prevent overwriting the watch status from a watch execution.",
+        "description": "Acknowledging a watch enables you to manually throttle the execution of the watch's actions.\n\nThe acknowledgement state of an action is stored in the `status.actions.<id>.ack.state` structure.\n\nIMPORTANT: If the specified watch is currently being executed, this API will return an error\nThe reason for this behavior is to prevent overwriting the watch status from a watch execution.\n\nAcknowledging an action throttles further executions of that action until its `ack.state` is reset to `awaits_successful_execution`.\nThis happens when the condition of the watch is not met (the condition evaluates to false).",
         "operationId": "watcher-ack-watch-1",
         "parameters": [
           {
@@ -37926,7 +37942,7 @@
           "watcher"
         ],
         "summary": "Acknowledge a watch",
-        "description": "Acknowledging a watch enables you to manually throttle the execution of the watch's actions.\n\nThe acknowledgement state of an action is stored in the `status.actions.<id>.ack.state` structure.\n\nIMPORTANT: If the specified watch is currently being executed, this API will return an error\nThe reason for this behavior is to prevent overwriting the watch status from a watch execution.",
+        "description": "Acknowledging a watch enables you to manually throttle the execution of the watch's actions.\n\nThe acknowledgement state of an action is stored in the `status.actions.<id>.ack.state` structure.\n\nIMPORTANT: If the specified watch is currently being executed, this API will return an error\nThe reason for this behavior is to prevent overwriting the watch status from a watch execution.\n\nAcknowledging an action throttles further executions of that action until its `ack.state` is reset to `awaits_successful_execution`.\nThis happens when the condition of the watch is not met (the condition evaluates to false).",
         "operationId": "watcher-ack-watch-2",
         "parameters": [
           {
@@ -37947,7 +37963,7 @@
           "watcher"
         ],
         "summary": "Acknowledge a watch",
-        "description": "Acknowledging a watch enables you to manually throttle the execution of the watch's actions.\n\nThe acknowledgement state of an action is stored in the `status.actions.<id>.ack.state` structure.\n\nIMPORTANT: If the specified watch is currently being executed, this API will return an error\nThe reason for this behavior is to prevent overwriting the watch status from a watch execution.",
+        "description": "Acknowledging a watch enables you to manually throttle the execution of the watch's actions.\n\nThe acknowledgement state of an action is stored in the `status.actions.<id>.ack.state` structure.\n\nIMPORTANT: If the specified watch is currently being executed, this API will return an error\nThe reason for this behavior is to prevent overwriting the watch status from a watch execution.\n\nAcknowledging an action throttles further executions of that action until its `ack.state` is reset to `awaits_successful_execution`.\nThis happens when the condition of the watch is not met (the condition evaluates to false).",
         "operationId": "watcher-ack-watch-3",
         "parameters": [
           {
@@ -38063,7 +38079,7 @@
           {
             "in": "path",
             "name": "id",
-            "description": "Watch ID",
+            "description": "The watch identifier.",
             "required": true,
             "deprecated": false,
             "schema": {
@@ -38190,7 +38206,7 @@
           {
             "in": "path",
             "name": "id",
-            "description": "Watch ID",
+            "description": "The watch identifier.",
             "required": true,
             "deprecated": false,
             "schema": {
@@ -38235,7 +38251,7 @@
           "watcher"
         ],
         "summary": "Run a watch",
-        "description": "This API can be used to force execution of the watch outside of its triggering logic or to simulate the watch execution for debugging purposes.\n\nFor testing and debugging purposes, you also have fine-grained control on how the watch runs.\nYou can run the watch without running all of its actions or alternatively by simulating them.\nYou can also force execution by ignoring the watch condition and control whether a watch record would be written to the watch history after it runs.\n\nYou can use the run watch API to run watches that are not yet registered by specifying the watch definition inline.\nThis serves as great tool for testing and debugging your watches prior to adding them to Watcher.",
+        "description": "This API can be used to force execution of the watch outside of its triggering logic or to simulate the watch execution for debugging purposes.\n\nFor testing and debugging purposes, you also have fine-grained control on how the watch runs.\nYou can run the watch without running all of its actions or alternatively by simulating them.\nYou can also force execution by ignoring the watch condition and control whether a watch record would be written to the watch history after it runs.\n\nYou can use the run watch API to run watches that are not yet registered by specifying the watch definition inline.\nThis serves as great tool for testing and debugging your watches prior to adding them to Watcher.\n\nWhen Elasticsearch security features are enabled on your cluster, watches are run with the privileges of the user that stored the watches.\nIf your user is allowed to read index `a`, but not index `b`, then the exact same set of rules will apply during execution of a watch.\n\nWhen using the run watch API, the authorization data of the user that called the API will be used as a base, instead of the information who stored the watch.",
         "operationId": "watcher-execute-watch",
         "parameters": [
           {
@@ -38259,7 +38275,7 @@
           "watcher"
         ],
         "summary": "Run a watch",
-        "description": "This API can be used to force execution of the watch outside of its triggering logic or to simulate the watch execution for debugging purposes.\n\nFor testing and debugging purposes, you also have fine-grained control on how the watch runs.\nYou can run the watch without running all of its actions or alternatively by simulating them.\nYou can also force execution by ignoring the watch condition and control whether a watch record would be written to the watch history after it runs.\n\nYou can use the run watch API to run watches that are not yet registered by specifying the watch definition inline.\nThis serves as great tool for testing and debugging your watches prior to adding them to Watcher.",
+        "description": "This API can be used to force execution of the watch outside of its triggering logic or to simulate the watch execution for debugging purposes.\n\nFor testing and debugging purposes, you also have fine-grained control on how the watch runs.\nYou can run the watch without running all of its actions or alternatively by simulating them.\nYou can also force execution by ignoring the watch condition and control whether a watch record would be written to the watch history after it runs.\n\nYou can use the run watch API to run watches that are not yet registered by specifying the watch definition inline.\nThis serves as great tool for testing and debugging your watches prior to adding them to Watcher.\n\nWhen Elasticsearch security features are enabled on your cluster, watches are run with the privileges of the user that stored the watches.\nIf your user is allowed to read index `a`, but not index `b`, then the exact same set of rules will apply during execution of a watch.\n\nWhen using the run watch API, the authorization data of the user that called the API will be used as a base, instead of the information who stored the watch.",
         "operationId": "watcher-execute-watch-1",
         "parameters": [
           {
@@ -38285,7 +38301,7 @@
           "watcher"
         ],
         "summary": "Run a watch",
-        "description": "This API can be used to force execution of the watch outside of its triggering logic or to simulate the watch execution for debugging purposes.\n\nFor testing and debugging purposes, you also have fine-grained control on how the watch runs.\nYou can run the watch without running all of its actions or alternatively by simulating them.\nYou can also force execution by ignoring the watch condition and control whether a watch record would be written to the watch history after it runs.\n\nYou can use the run watch API to run watches that are not yet registered by specifying the watch definition inline.\nThis serves as great tool for testing and debugging your watches prior to adding them to Watcher.",
+        "description": "This API can be used to force execution of the watch outside of its triggering logic or to simulate the watch execution for debugging purposes.\n\nFor testing and debugging purposes, you also have fine-grained control on how the watch runs.\nYou can run the watch without running all of its actions or alternatively by simulating them.\nYou can also force execution by ignoring the watch condition and control whether a watch record would be written to the watch history after it runs.\n\nYou can use the run watch API to run watches that are not yet registered by specifying the watch definition inline.\nThis serves as great tool for testing and debugging your watches prior to adding them to Watcher.\n\nWhen Elasticsearch security features are enabled on your cluster, watches are run with the privileges of the user that stored the watches.\nIf your user is allowed to read index `a`, but not index `b`, then the exact same set of rules will apply during execution of a watch.\n\nWhen using the run watch API, the authorization data of the user that called the API will be used as a base, instead of the information who stored the watch.",
         "operationId": "watcher-execute-watch-2",
         "parameters": [
           {
@@ -38306,7 +38322,7 @@
           "watcher"
         ],
         "summary": "Run a watch",
-        "description": "This API can be used to force execution of the watch outside of its triggering logic or to simulate the watch execution for debugging purposes.\n\nFor testing and debugging purposes, you also have fine-grained control on how the watch runs.\nYou can run the watch without running all of its actions or alternatively by simulating them.\nYou can also force execution by ignoring the watch condition and control whether a watch record would be written to the watch history after it runs.\n\nYou can use the run watch API to run watches that are not yet registered by specifying the watch definition inline.\nThis serves as great tool for testing and debugging your watches prior to adding them to Watcher.",
+        "description": "This API can be used to force execution of the watch outside of its triggering logic or to simulate the watch execution for debugging purposes.\n\nFor testing and debugging purposes, you also have fine-grained control on how the watch runs.\nYou can run the watch without running all of its actions or alternatively by simulating them.\nYou can also force execution by ignoring the watch condition and control whether a watch record would be written to the watch history after it runs.\n\nYou can use the run watch API to run watches that are not yet registered by specifying the watch definition inline.\nThis serves as great tool for testing and debugging your watches prior to adding them to Watcher.\n\nWhen Elasticsearch security features are enabled on your cluster, watches are run with the privileges of the user that stored the watches.\nIf your user is allowed to read index `a`, but not index `b`, then the exact same set of rules will apply during execution of a watch.\n\nWhen using the run watch API, the authorization data of the user that called the API will be used as a base, instead of the information who stored the watch.",
         "operationId": "watcher-execute-watch-3",
         "parameters": [
           {
@@ -38323,13 +38339,123 @@
         }
       }
     },
+    "/_watcher/settings": {
+      "get": {
+        "tags": [
+          "watcher"
+        ],
+        "summary": "Get Watcher index settings",
+        "description": "Get settings for the Watcher internal index (`.watches`).\nOnly a subset of settings are shown, for example `index.auto_expand_replicas` and `index.number_of_replicas`.",
+        "operationId": "watcher-get-settings",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "master_timeout",
+            "description": "The period to wait for a connection to the master node.\nIf no response is received before the timeout expires, the request fails and returns an error.",
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/_types:Duration"
+            },
+            "style": "form"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "index": {
+                      "$ref": "#/components/schemas/indices._types:IndexSettings"
+                    }
+                  },
+                  "required": [
+                    "index"
+                  ]
+                }
+              }
+            }
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "watcher"
+        ],
+        "summary": "Update Watcher index settings",
+        "description": "Update settings for the Watcher internal index (`.watches`).\nOnly a subset of settings can be modified.\nThis includes `index.auto_expand_replicas` and `index.number_of_replicas`.",
+        "operationId": "watcher-update-settings",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "master_timeout",
+            "description": "The period to wait for a connection to the master node.\nIf no response is received before the timeout expires, the request fails and returns an error.",
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/_types:Duration"
+            },
+            "style": "form"
+          },
+          {
+            "in": "query",
+            "name": "timeout",
+            "description": "The period to wait for a response.\nIf no response is received before the timeout expires, the request fails and returns an error.",
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/_types:Duration"
+            },
+            "style": "form"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "index.auto_expand_replicas": {
+                    "type": "string"
+                  },
+                  "index.number_of_replicas": {
+                    "type": "number"
+                  }
+                }
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "acknowledged": {
+                      "type": "boolean"
+                    }
+                  },
+                  "required": [
+                    "acknowledged"
+                  ]
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/_watcher/_query/watches": {
       "get": {
         "tags": [
           "watcher"
         ],
         "summary": "Query watches",
-        "description": "Get all registered watches in a paginated manner and optionally filter watches by a query.",
+        "description": "Get all registered watches in a paginated manner and optionally filter watches by a query.\n\nNote that only the `_id` and `metadata.*` fields are queryable or sortable.",
         "operationId": "watcher-query-watches",
         "requestBody": {
           "$ref": "#/components/requestBodies/watcher.query_watches"
@@ -38346,7 +38472,7 @@
           "watcher"
         ],
         "summary": "Query watches",
-        "description": "Get all registered watches in a paginated manner and optionally filter watches by a query.",
+        "description": "Get all registered watches in a paginated manner and optionally filter watches by a query.\n\nNote that only the `_id` and `metadata.*` fields are queryable or sortable.",
         "operationId": "watcher-query-watches-1",
         "requestBody": {
           "$ref": "#/components/requestBodies/watcher.query_watches"
@@ -38399,6 +38525,7 @@
           "watcher"
         ],
         "summary": "Get Watcher statistics",
+        "description": "This API always returns basic metrics.\nYou retrieve more metrics by using the metric parameter.",
         "operationId": "watcher-stats",
         "parameters": [
           {
@@ -38422,6 +38549,7 @@
           "watcher"
         ],
         "summary": "Get Watcher statistics",
+        "description": "This API always returns basic metrics.\nYou retrieve more metrics by using the metric parameter.",
         "operationId": "watcher-stats-1",
         "parameters": [
           {
@@ -38454,7 +38582,7 @@
           {
             "in": "query",
             "name": "master_timeout",
-            "description": "Period to wait for a connection to the master node.",
+            "description": "The period to wait for the master node.\nIf the master node is not available before the timeout expires, the request fails and returns an error.\nTo indicate that the request should never timeout, set it to `-1`.",
             "deprecated": false,
             "schema": {
               "$ref": "#/components/schemas/_types:Duration"
@@ -38488,7 +38616,7 @@
           {
             "in": "query",
             "name": "categories",
-            "description": "A comma-separated list of the information categories to include in the response. For example, `build,license,features`.",
+            "description": "A comma-separated list of the information categories to include in the response.\nFor example, `build,license,features`.",
             "deprecated": false,
             "schema": {
               "type": "array",
@@ -38511,7 +38639,7 @@
           {
             "in": "query",
             "name": "human",
-            "description": "Defines whether additional human-readable information is included in the response. In particular, it adds descriptions and a tag line.",
+            "description": "Defines whether additional human-readable information is included in the response.\nIn particular, it adds descriptions and a tag line.",
             "deprecated": false,
             "schema": {
               "type": "boolean"
@@ -38565,7 +38693,7 @@
           {
             "in": "query",
             "name": "master_timeout",
-            "description": "Period to wait for a connection to the master node. If no response is received before the timeout expires, the request fails and returns an error.",
+            "description": "The period to wait for a connection to the master node.\nIf no response is received before the timeout expires, the request fails and returns an error.\nTo indicate that the request should never timeout, set it to `-1`.",
             "deprecated": false,
             "schema": {
               "$ref": "#/components/schemas/_types:Duration"
@@ -90510,6 +90638,7 @@
         "type": "object",
         "properties": {
           "current_watches": {
+            "description": "The current executing watches metric gives insight into the watches that are currently being executed by Watcher.\nAdditional information is shared per watch that is currently executing.\nThis information includes the `watch_id`, the time its execution started and its current execution phase.\nTo include this metric, the `metric` option should be set to `current_watches` or `_all`.\nIn addition you can also specify the `emit_stacktraces=true` parameter, which adds stack traces for each watch that is being run.\nThese stack traces can give you more insight into an execution of a watch.",
             "type": "array",
             "items": {
               "$ref": "#/components/schemas/watcher.stats:WatchRecordStats"
@@ -90519,12 +90648,14 @@
             "$ref": "#/components/schemas/watcher._types:ExecutionThreadPool"
           },
           "queued_watches": {
+            "description": "Watcher moderates the execution of watches such that their execution won't put too much pressure on the node and its resources.\nIf too many watches trigger concurrently and there isn't enough capacity to run them all, some of the watches are queued, waiting for the current running watches to finish.s\nThe queued watches metric gives insight on these queued watches.\n\nTo include this metric, the `metric` option should include `queued_watches` or `_all`.",
             "type": "array",
             "items": {
               "$ref": "#/components/schemas/watcher.stats:WatchRecordQueuedStats"
             }
           },
           "watch_count": {
+            "description": "The number of watches currently registered.",
             "type": "number"
           },
           "watcher_state": {
@@ -90605,9 +90736,11 @@
         "type": "object",
         "properties": {
           "max_size": {
+            "description": "The largest size of the execution thread pool, which indicates the largest number of concurrent running watches.",
             "type": "number"
           },
           "queue_size": {
+            "description": "The number of watches that were triggered and are currently queued.",
             "type": "number"
           }
         },
@@ -95549,17 +95682,6 @@
             "schema": {
               "type": "object",
               "properties": {
-                "id": {
-                  "$ref": "#/components/schemas/_types:Id"
-                },
-                "is_running": {
-                  "description": "If `true`, the search is still running. If false, the search has finished.\nThis value is only returned for async and saved synchronous searches. For\nCSV, TSV, and TXT responses, this value is returned in the `Async-partial`\nHTTP header.",
-                  "type": "boolean"
-                },
-                "is_partial": {
-                  "description": "If `true`, the response does not contain complete search results. If `is_partial`\nis `true` and `is_running` is `true`, the search is still running. If `is_partial`\nis `true` but `is_running` is `false`, the results are partial due to a failure or\ntimeout. This value is only returned for async and saved synchronous searches.\nFor CSV, TSV, and TXT responses, this value is returned in the `Async-partial` HTTP header.",
-                  "type": "boolean"
-                },
                 "columns": {
                   "description": "Column headings for the search results. Each object is a column.",
                   "type": "array",
@@ -95568,11 +95690,22 @@
                   }
                 },
                 "cursor": {
-                  "description": "Cursor for the next set of paginated results. For CSV, TSV, and\nTXT responses, this value is returned in the `Cursor` HTTP header.",
+                  "description": "The cursor for the next set of paginated results.\nFor CSV, TSV, and TXT responses, this value is returned in the `Cursor` HTTP header.",
                   "type": "string"
                 },
+                "id": {
+                  "$ref": "#/components/schemas/_types:Id"
+                },
+                "is_running": {
+                  "description": "If `true`, the search is still running.\nIf `false`, the search has finished.\nThis value is returned only for async and saved synchronous searches.\nFor CSV, TSV, and TXT responses, this value is returned in the `Async-partial` HTTP header.",
+                  "type": "boolean"
+                },
+                "is_partial": {
+                  "description": "If `true`, the response does not contain complete search results.\nIf `is_partial` is `true` and `is_running` is `true`, the search is still running.\nIf `is_partial` is `true` but `is_running` is `false`, the results are partial due to a failure or timeout.\nThis value is returned only for async and saved synchronous searches.\nFor CSV, TSV, and TXT responses, this value is returned in the `Async-partial` HTTP header.",
+                  "type": "boolean"
+                },
                 "rows": {
-                  "description": "Values for the search results.",
+                  "description": "The values for the search results.",
                   "type": "array",
                   "items": {
                     "$ref": "#/components/schemas/sql:Row"
@@ -95966,9 +96099,11 @@
               "type": "object",
               "properties": {
                 "count": {
+                  "description": "The total number of watches found.",
                   "type": "number"
                 },
                 "watches": {
+                  "description": "A list of watches based on the `from`, `size`, or `search_after` request body parameters.",
                   "type": "array",
                   "items": {
                     "$ref": "#/components/schemas/watcher._types:QueryWatch"
@@ -104791,7 +104926,7 @@
       "slm.get_lifecycle#master_timeout": {
         "in": "query",
         "name": "master_timeout",
-        "description": "Period to wait for a connection to the master node. If no response is received before the timeout expires, the request fails and returns an error.",
+        "description": "The period to wait for a connection to the master node.\nIf no response is received before the timeout expires, the request fails and returns an error.",
         "deprecated": false,
         "schema": {
           "$ref": "#/components/schemas/_types:Duration"
@@ -104801,7 +104936,7 @@
       "slm.get_lifecycle#timeout": {
         "in": "query",
         "name": "timeout",
-        "description": "Period to wait for a response. If no response is received before the timeout expires, the request fails and returns an error.",
+        "description": "The period to wait for a response.\nIf no response is received before the timeout expires, the request fails and returns an error.",
         "deprecated": false,
         "schema": {
           "$ref": "#/components/schemas/_types:Duration"
@@ -104967,7 +105102,7 @@
       "sql.query#format": {
         "in": "query",
         "name": "format",
-        "description": "Format for the response.",
+        "description": "The format for the response.\nYou can also specify a format using the `Accept` HTTP header.\nIf you specify both this parameter and the `Accept` HTTP header, this parameter takes precedence.",
         "deprecated": false,
         "schema": {
           "$ref": "#/components/schemas/sql.query:SqlFormat"
@@ -105254,7 +105389,7 @@
       "text_structure.find_message_structure#should_trim_fields": {
         "in": "query",
         "name": "should_trim_fields",
-        "description": "If the format is `delimited`, you can specify whether values between delimiters should have whitespace trimmed from them.\nIf this parameter is not specified and the delimiter is pipe (`|`), the default value is true.\nOtherwise, the default value is false.",
+        "description": "If the format is `delimited`, you can specify whether values between delimiters should have whitespace trimmed from them.\nIf this parameter is not specified and the delimiter is pipe (`|`), the default value is true.\nOtherwise, the default value is `false`.",
         "deprecated": false,
         "schema": {
           "type": "boolean"
@@ -105294,7 +105429,7 @@
       "text_structure.test_grok_pattern#ecs_compatibility": {
         "in": "query",
         "name": "ecs_compatibility",
-        "description": "The mode of compatibility with ECS compliant Grok patterns (disabled or v1, default: disabled).",
+        "description": "The mode of compatibility with ECS compliant Grok patterns.\nUse this parameter to specify whether to use ECS Grok patterns instead of legacy ones when the structure finder creates a Grok pattern.\nValid values are `disabled` and `v1`.",
         "deprecated": false,
         "schema": {
           "type": "string"
@@ -105376,7 +105511,7 @@
       "watcher.ack_watch#watch_id": {
         "in": "path",
         "name": "watch_id",
-        "description": "Watch ID",
+        "description": "The watch identifier.",
         "required": true,
         "deprecated": false,
         "schema": {
@@ -105387,7 +105522,7 @@
       "watcher.ack_watch#action_id": {
         "in": "path",
         "name": "action_id",
-        "description": "A comma-separated list of the action ids to be acked",
+        "description": "A comma-separated list of the action identifiers to acknowledge.\nIf you omit this parameter, all of the actions of the watch are acknowledged.",
         "required": true,
         "deprecated": false,
         "schema": {
@@ -105398,7 +105533,7 @@
       "watcher.activate_watch#watch_id": {
         "in": "path",
         "name": "watch_id",
-        "description": "Watch ID",
+        "description": "The watch identifier.",
         "required": true,
         "deprecated": false,
         "schema": {
@@ -105409,7 +105544,7 @@
       "watcher.deactivate_watch#watch_id": {
         "in": "path",
         "name": "watch_id",
-        "description": "Watch ID",
+        "description": "The watch identifier.",
         "required": true,
         "deprecated": false,
         "schema": {
@@ -105420,7 +105555,7 @@
       "watcher.execute_watch#id": {
         "in": "path",
         "name": "id",
-        "description": "Identifier for the watch.",
+        "description": "The watch identifier.",
         "required": true,
         "deprecated": false,
         "schema": {
@@ -105441,7 +105576,7 @@
       "watcher.put_watch#id": {
         "in": "path",
         "name": "id",
-        "description": "Watch ID",
+        "description": "The identifier for the watch.",
         "required": true,
         "deprecated": false,
         "schema": {
@@ -105452,7 +105587,7 @@
       "watcher.put_watch#active": {
         "in": "query",
         "name": "active",
-        "description": "Specify whether the watch is in/active by default",
+        "description": "The initial state of the watch.\nThe default value is `true`, which means the watch is active by default.",
         "deprecated": false,
         "schema": {
           "type": "boolean"
@@ -108138,65 +108273,75 @@
             "schema": {
               "type": "object",
               "properties": {
+                "allow_partial_search_results": {
+                  "description": "If `true`, the response has partial results when there are shard request timeouts or shard failures.\nIf `false`, the API returns an error with no partial results.",
+                  "type": "boolean"
+                },
                 "catalog": {
-                  "description": "Default catalog (cluster) for queries. If unspecified, the queries execute on the data in the local cluster only.",
+                  "description": "The default catalog (cluster) for queries.\nIf unspecified, the queries execute on the data in the local cluster only.",
                   "type": "string"
                 },
                 "columnar": {
-                  "description": "If true, the results in a columnar fashion: one row represents all the values of a certain column from the current page of results.",
+                  "externalDocs": {
+                    "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/sql-rest-columnar.html"
+                  },
+                  "description": "If `true`, the results are in a columnar fashion: one row represents all the values of a certain column from the current page of results.\nThe API supports this parameter only for CBOR, JSON, SMILE, and YAML responses.",
                   "type": "boolean"
                 },
                 "cursor": {
-                  "description": "Cursor used to retrieve a set of paginated results.\nIf you specify a cursor, the API only uses the `columnar` and `time_zone` request body parameters.\nIt ignores other request body parameters.",
+                  "description": "The cursor used to retrieve a set of paginated results.\nIf you specify a cursor, the API only uses the `columnar` and `time_zone` request body parameters.\nIt ignores other request body parameters.",
                   "type": "string"
                 },
                 "fetch_size": {
-                  "description": "The maximum number of rows (or entries) to return in one response",
+                  "description": "The maximum number of rows (or entries) to return in one response.",
                   "type": "number"
+                },
+                "field_multi_value_leniency": {
+                  "description": "If `false`, the API returns an exception when encountering multiple values for a field.\nIf `true`, the API is lenient and returns the first value from the array with no guarantee of consistent results.",
+                  "type": "boolean"
                 },
                 "filter": {
                   "$ref": "#/components/schemas/_types.query_dsl:QueryContainer"
                 },
-                "query": {
-                  "description": "SQL query to run.",
-                  "type": "string"
-                },
-                "request_timeout": {
-                  "$ref": "#/components/schemas/_types:Duration"
-                },
-                "page_timeout": {
-                  "$ref": "#/components/schemas/_types:Duration"
-                },
-                "time_zone": {
-                  "$ref": "#/components/schemas/_types:TimeZone"
-                },
-                "field_multi_value_leniency": {
-                  "description": "Throw an exception when encountering multiple values for a field (default) or be lenient and return the first value from the list (without any guarantees of what that will be - typically the first in natural ascending order).",
+                "index_using_frozen": {
+                  "description": "If `true`, the search can run on frozen indices.",
                   "type": "boolean"
-                },
-                "runtime_mappings": {
-                  "$ref": "#/components/schemas/_types.mapping:RuntimeFields"
-                },
-                "wait_for_completion_timeout": {
-                  "$ref": "#/components/schemas/_types:Duration"
-                },
-                "params": {
-                  "description": "Values for parameters in the query.",
-                  "type": "object",
-                  "additionalProperties": {
-                    "type": "object"
-                  }
                 },
                 "keep_alive": {
                   "$ref": "#/components/schemas/_types:Duration"
                 },
                 "keep_on_completion": {
-                  "description": "If true, Elasticsearch stores synchronous searches if you also specify the wait_for_completion_timeout parameter. If false, Elasticsearch only stores async searches that don’t finish before the wait_for_completion_timeout.",
+                  "description": "If `true`, Elasticsearch stores synchronous searches if you also specify the `wait_for_completion_timeout` parameter.\nIf `false`, Elasticsearch only stores async searches that don't finish before the `wait_for_completion_timeout`.",
                   "type": "boolean"
                 },
-                "index_using_frozen": {
-                  "description": "If true, the search can run on frozen indices. Defaults to false.",
-                  "type": "boolean"
+                "page_timeout": {
+                  "$ref": "#/components/schemas/_types:Duration"
+                },
+                "params": {
+                  "description": "The values for parameters in the query.",
+                  "type": "object",
+                  "additionalProperties": {
+                    "type": "object"
+                  }
+                },
+                "query": {
+                  "externalDocs": {
+                    "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/sql-spec.html"
+                  },
+                  "description": "The SQL query to run.",
+                  "type": "string"
+                },
+                "request_timeout": {
+                  "$ref": "#/components/schemas/_types:Duration"
+                },
+                "runtime_mappings": {
+                  "$ref": "#/components/schemas/_types.mapping:RuntimeFields"
+                },
+                "time_zone": {
+                  "$ref": "#/components/schemas/_types:TimeZone"
+                },
+                "wait_for_completion_timeout": {
+                  "$ref": "#/components/schemas/_types:Duration"
                 }
               }
             }
@@ -108218,7 +108363,7 @@
                   "$ref": "#/components/schemas/_types.query_dsl:QueryContainer"
                 },
                 "query": {
-                  "description": "SQL query to run.",
+                  "description": "The SQL query to run.",
                   "type": "string"
                 },
                 "time_zone": {
@@ -108328,7 +108473,7 @@
                   "$ref": "#/components/schemas/_types:GrokPattern"
                 },
                 "text": {
-                  "description": "Lines of text to run the Grok pattern on.",
+                  "description": "The lines of text to run the Grok pattern on.",
                   "type": "array",
                   "items": {
                     "type": "string"
@@ -108408,7 +108553,7 @@
                   "type": "boolean"
                 },
                 "record_execution": {
-                  "description": "When set to `true`, the watch record representing the watch execution result is persisted to the `.watcher-history` index for the current time. In addition, the status of the watch is updated, possibly throttling subsequent executions. This can also be specified as an HTTP parameter.",
+                  "description": "When set to `true`, the watch record representing the watch execution result is persisted to the `.watcher-history` index for the current time.\nIn addition, the status of the watch is updated, possibly throttling subsequent runs.\nThis can also be specified as an HTTP parameter.",
                   "type": "boolean"
                 },
                 "simulated_actions": {
@@ -108432,6 +108577,7 @@
               "type": "object",
               "properties": {
                 "actions": {
+                  "description": "The list of actions that will be run if the condition matches.",
                   "type": "object",
                   "additionalProperties": {
                     "$ref": "#/components/schemas/watcher._types:Action"
@@ -108447,7 +108593,10 @@
                   "$ref": "#/components/schemas/_types:Metadata"
                 },
                 "throttle_period": {
-                  "type": "string"
+                  "$ref": "#/components/schemas/_types:Duration"
+                },
+                "throttle_period_in_millis": {
+                  "$ref": "#/components/schemas/_types:DurationValueUnitMillis"
                 },
                 "transform": {
                   "$ref": "#/components/schemas/_types:TransformContainer"
@@ -108467,11 +108616,11 @@
               "type": "object",
               "properties": {
                 "from": {
-                  "description": "The offset from the first result to fetch. Needs to be non-negative.",
+                  "description": "The offset from the first result to fetch.\nIt must be non-negative.",
                   "type": "number"
                 },
                 "size": {
-                  "description": "The number of hits to return. Needs to be non-negative.",
+                  "description": "The number of hits to return.\nIt must be non-negative.",
                   "type": "number"
                 },
                 "query": {

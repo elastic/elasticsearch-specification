@@ -1,0 +1,6 @@
+# summary: ''
+description: A successful response from `POST _watcher/_stop`.
+# type: response
+# response_code: 200
+value:
+  acknowledged: true

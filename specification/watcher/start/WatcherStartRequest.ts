@@ -26,6 +26,7 @@ import { Duration } from '@_types/Time'
  * @rest_spec_name watcher.start
  * @availability stack stability=stable
  * @cluster_privileges manage_watcher
+ * @doc_id watcher-api-start
  */
 export interface Request extends RequestBase {
   query_parameters: {

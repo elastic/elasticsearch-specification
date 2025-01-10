@@ -26,10 +26,14 @@ import { Name } from '@_types/common'
  * @rest_spec_name watcher.activate_watch
  * @availability stack stability=stable
  * @cluster_privileges manage_watcher
+ * @doc_id watcher-api-activate-watch
  * @ext_doc_id watcher-works
  */
 export interface Request extends RequestBase {
   path_parts: {
+    /**
+     * The watch identifier.
+     */
     watch_id: Name
   }
 }
