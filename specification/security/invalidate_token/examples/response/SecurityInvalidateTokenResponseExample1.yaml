@@ -1,0 +1,30 @@
+# summary:
+description: >
+  A partially successful response from `DELETE /_security/oauth2/token`.
+  The response includes the number of the tokens that were invalidated, the number of errors that were encountered when invalidating the tokens, and details about these errors.
+# type: response
+# response_code:
+value: |-
+  {
+    "invalidated_tokens":9, 
+    "previously_invalidated_tokens":15, 
+    "error_count":2, 
+    "error_details":[ 
+      {
+        "type":"exception",
+        "reason":"Elasticsearch exception [type=exception, reason=foo]",
+        "caused_by":{
+          "type":"exception",
+          "reason":"Elasticsearch exception [type=illegal_argument_exception, reason=bar]"
+        }
+      },
+      {
+        "type":"exception",
+        "reason":"Elasticsearch exception [type=exception, reason=boo]",
+        "caused_by":{
+          "type":"exception",
+          "reason":"Elasticsearch exception [type=illegal_argument_exception, reason=far]"
+        }
+      }
+    ]
+  }

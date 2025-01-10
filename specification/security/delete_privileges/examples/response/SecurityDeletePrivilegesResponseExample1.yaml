@@ -1,0 +1,13 @@
+# summary:
+description: >
+  A successful response from `DELETE /_security/privilege/myapp/read`.
+# type: response
+# response_code:
+value: |-
+  {
+    "myapp": {
+      "read": {
+        "found" : true
+      }
+    }
+  }
