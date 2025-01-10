@@ -17,8 +17,8 @@
  * under the License.
  */
 
-import { UnifiedInferenceResult } from '@inference/_types/Results'
+import { StreamResult } from '@_types/Binary'
 
 export class Response {
-  body: UnifiedInferenceResult
+  body: StreamResult
 }
