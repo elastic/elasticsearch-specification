@@ -22,9 +22,12 @@ import { WatcherMetric } from './types'
 
 /**
  * Get Watcher statistics.
+ * This API always returns basic metrics.
+ * You retrieve more metrics by using the metric parameter.
  * @rest_spec_name watcher.stats
  * @availability stack since=5.5.0 stability=stable
  * @cluster_privileges monitor_watcher
+ * @doc_id watcher-api-stats
  */
 export interface Request extends RequestBase {
   path_parts: {

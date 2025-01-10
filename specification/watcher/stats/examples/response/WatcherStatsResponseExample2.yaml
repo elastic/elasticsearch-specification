@@ -1,0 +1,22 @@
+summary: Current watch metrics
+description: A successful response from `GET _watcher/stats?metric=current_watches`.
+# type: response
+# response_code: 200
+value: |-
+  {
+    "watcher_state": "started",
+    "watch_count": 2,
+    "execution_thread_pool": {
+        "queue_size": 1000,
+        "max_size": 20
+    },
+    "current_watches": [ 
+        {
+          "watch_id": "slow_condition", 
+          "watch_record_id": "slow_condition_3-2015-05-13T07:42:32.179Z", 
+          "triggered_time": "2015-05-12T11:53:51.800Z", 
+          "execution_time": "2015-05-13T07:42:32.179Z", 
+          "execution_phase": "condition" 
+        }
+    ]
+  }

@@ -25,6 +25,7 @@ import { TriggerContainer } from '@watcher/_types/Trigger'
 import { RequestBase } from '@_types/Base'
 import { Id, Metadata, SequenceNumber, VersionNumber } from '@_types/common'
 import { long } from '@_types/Numeric'
+import { Duration, DurationValue, UnitMillis } from '@_types/Time'
 import { TransformContainer } from '@_types/Transform'
 
 /**
@@ -43,24 +44,61 @@ import { TransformContainer } from '@_types/Transform'
  * @rest_spec_name watcher.put_watch
  * @availability stack stability=stable
  * @cluster_privileges manage_watcher
+ * @doc_id watcher-api-put-watch
  */
 export interface Request extends RequestBase {
   path_parts: {
+    /**
+     * The identifier for the watch.
+     */
     id: Id
   }
   query_parameters: {
+    /**
+     * The initial state of the watch.
+     * The default value is `true`, which means the watch is active by default.
+     * @server_default true
+     */
     active?: boolean
     if_primary_term?: long
     if_seq_no?: SequenceNumber
     version?: VersionNumber
   }
   body: {
+    /**
+     * The list of actions that will be run if the condition matches.
+     */
     actions?: Dictionary<string, Action>
+    /**
+     * The condition that defines if the actions should be run.
+     */
     condition?: ConditionContainer
+    /**
+     * The input that defines the input that loads the data for the watch.
+     */
     input?: InputContainer
+    /**
+     * Metadata JSON that will be copied into the history entries.
+     */
     metadata?: Metadata
-    throttle_period?: string
+    /**
+     * The minimum time between actions being run.
+     * The default is 5 seconds.
+     * This default can be changed in the config file with the setting `xpack.watcher.throttle.period.default_period`.
+     * If both this value and the `throttle_period_in_millis` parameter are specified, Watcher uses the last parameter included in the request.
+     */
+    throttle_period?: Duration
+    /**
+     * Minimum time in milliseconds between actions being run. Defaults to 5000. If both this value and the throttle_period parameter are specified, Watcher uses the last parameter included in the request.
+     */
+    throttle_period_in_millis?: DurationValue<UnitMillis>
+    /**
+     * The transform that processes the watch payload to prepare it for the watch actions.
+     */
     transform?: TransformContainer
+    /**
+     * The trigger that defines when the watch should run.
+     */
     trigger?: TriggerContainer
   }
 }

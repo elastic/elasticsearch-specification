@@ -20,7 +20,7 @@
 import { Pipeline } from '@ingest/_types/Pipeline'
 import { RequestBase } from '@_types/Base'
 import { Id } from '@_types/common'
-import { Document } from './types'
+import { Document } from '../_types/Simulation'
 
 /**
  * Simulate a pipeline.
