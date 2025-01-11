@@ -10573,7 +10573,6 @@
           {
             "in": "query",
             "name": "master_timeout",
-            "description": "Explicit operation timeout for connection to master node",
             "deprecated": false,
             "schema": {
               "$ref": "#/components/schemas/_types:Duration"
@@ -10583,7 +10582,6 @@
           {
             "in": "query",
             "name": "timeout",
-            "description": "Explicit operation timeout",
             "deprecated": false,
             "schema": {
               "$ref": "#/components/schemas/_types:Duration"
@@ -10618,7 +10616,6 @@
           {
             "in": "query",
             "name": "master_timeout",
-            "description": "Explicit operation timeout for connection to master node",
             "deprecated": false,
             "schema": {
               "$ref": "#/components/schemas/_types:Duration"
@@ -10628,7 +10625,6 @@
           {
             "in": "query",
             "name": "timeout",
-            "description": "Explicit operation timeout",
             "deprecated": false,
             "schema": {
               "$ref": "#/components/schemas/_types:Duration"
@@ -107955,7 +107951,7 @@
                   "type": "number"
                 },
                 "field_multi_value_leniency": {
-                  "description": "If `false`, the API returns an exception when encountering multiple values for a field.\nIf `true`, the API is lenient and returns the API returns the first value from the array with no guarantee of consistent results.",
+                  "description": "If `false`, the API returns an exception when encountering multiple values for a field.\nIf `true`, the API is lenient and returns the first value from the array with no guarantee of consistent results.",
                   "type": "boolean"
                 },
                 "filter": {
