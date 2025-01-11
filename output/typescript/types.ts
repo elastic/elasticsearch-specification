@@ -18100,6 +18100,10 @@ export interface SecuritySearchAccess {
   allow_restricted_indices?: boolean
 }
 
+export interface SecuritySecuritySettings {
+  index?: IndicesIndexSettings
+}
+
 export type SecurityTemplateFormat = 'string' | 'json'
 
 export interface SecurityUser {
@@ -18570,6 +18574,16 @@ export interface SecurityGetServiceCredentialsResponse {
   count: integer
   tokens: Record<string, Metadata>
   nodes_credentials: SecurityGetServiceCredentialsNodesCredentials
+}
+
+export interface SecurityGetSettingsRequest extends RequestBase {
+  master_timeout?: Duration
+}
+
+export interface SecurityGetSettingsResponse {
+  security: SecuritySecuritySettings
+  'security-profile': SecuritySecuritySettings
+  'security-tokens': SecuritySecuritySettings
 }
 
 export type SecurityGetTokenAccessTokenGrantType = 'password' | 'client_credentials' | '_kerberos' | 'refresh_token'
@@ -19138,6 +19152,20 @@ export interface SecurityUpdateCrossClusterApiKeyRequest extends RequestBase {
 
 export interface SecurityUpdateCrossClusterApiKeyResponse {
   updated: boolean
+}
+
+export interface SecurityUpdateSettingsRequest extends RequestBase {
+  master_timeout?: Duration
+  timeout?: Duration
+  body?: {
+    security?: SecuritySecuritySettings
+    'security-profile'?: SecuritySecuritySettings
+    'security-tokens'?: SecuritySecuritySettings
+  }
+}
+
+export interface SecurityUpdateSettingsResponse {
+  acknowledged: boolean
 }
 
 export interface SecurityUpdateUserProfileDataRequest extends RequestBase {
