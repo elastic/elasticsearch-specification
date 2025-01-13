@@ -572,8 +572,12 @@ actions:
               examples:
                 updateWatcherSettingsRequestExample1: 
                   $ref: "../../specification/watcher/get_settings/examples/200_response/WatcherGetSettingsResponseExample1.yaml"
-              
-=======
-            streamInferenceRequestExample1:
-              $ref: "../../specification/inference/stream_inference/StreamInferenceRequestExample1.yaml"
->>>>>>> dc0cd555b (Add inference.stream_inference)
+## Examples for inference
+- target: "$.components['requestBodies']['inference.stream_inference']"
+  description: "Add example for inference stream request"
+  update:
+    content:
+      application/json:
+        examples:
+          streamInferenceRequestExample1:
+            $ref: "../../specification/inference/stream_inference/example/request/StreamInferenceRequestExample1.yaml"
