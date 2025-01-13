@@ -30739,6 +30739,127 @@
         "x-state": "Added in 7.13.0"
       }
     },
+    "/_security/settings": {
+      "get": {
+        "tags": [
+          "security"
+        ],
+        "summary": "Get security index settings",
+        "description": "Get the user-configurable settings for the security internal index (`.security` and associated indices).",
+        "operationId": "security-get-settings",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "master_timeout",
+            "description": "Period to wait for a connection to the master node.\nIf no response is received before the timeout expires, the request fails and returns an error.",
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/_types:Duration"
+            },
+            "style": "form"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "security": {
+                      "$ref": "#/components/schemas/security._types:SecuritySettings"
+                    },
+                    "security-profile": {
+                      "$ref": "#/components/schemas/security._types:SecuritySettings"
+                    },
+                    "security-tokens": {
+                      "$ref": "#/components/schemas/security._types:SecuritySettings"
+                    }
+                  },
+                  "required": [
+                    "security",
+                    "security-profile",
+                    "security-tokens"
+                  ]
+                }
+              }
+            }
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "security"
+        ],
+        "summary": "Update security index settings",
+        "description": "Update the user-configurable settings for the security internal index (`.security` and associated indices). Only a subset of settings are allowed to be modified, for example `index.auto_expand_replicas` and `index.number_of_replicas`.\n\nIf a specific index is not in use on the system and settings are provided for it, the request will be rejected. This API does not yet support configuring the settings for indices before they are in use.",
+        "operationId": "security-update-settings",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "master_timeout",
+            "description": "The period to wait for a connection to the master node.\nIf no response is received before the timeout expires, the request fails and returns an error.",
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/_types:Duration"
+            },
+            "style": "form"
+          },
+          {
+            "in": "query",
+            "name": "timeout",
+            "description": "The period to wait for a response.\nIf no response is received before the timeout expires, the request fails and returns an error.",
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/_types:Duration"
+            },
+            "style": "form"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "security": {
+                    "$ref": "#/components/schemas/security._types:SecuritySettings"
+                  },
+                  "security-profile": {
+                    "$ref": "#/components/schemas/security._types:SecuritySettings"
+                  },
+                  "security-tokens": {
+                    "$ref": "#/components/schemas/security._types:SecuritySettings"
+                  }
+                }
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "acknowledged": {
+                      "type": "boolean"
+                    }
+                  },
+                  "required": [
+                    "acknowledged"
+                  ]
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/_security/oauth2/token": {
       "post": {
         "tags": [
@@ -85831,6 +85952,14 @@
         "required": [
           "nodes"
         ]
+      },
+      "security._types:SecuritySettings": {
+        "type": "object",
+        "properties": {
+          "index": {
+            "$ref": "#/components/schemas/indices._types:IndexSettings"
+          }
+        }
       },
       "security.get_token:AccessTokenGrantType": {
         "type": "string",
