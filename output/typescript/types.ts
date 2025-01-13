@@ -1887,6 +1887,7 @@ export interface SearchShardsRequest extends RequestBase {
   expand_wildcards?: ExpandWildcards
   ignore_unavailable?: boolean
   local?: boolean
+  master_timeout?: Duration
   preference?: string
   routing?: Routing
 }
@@ -8794,12 +8795,14 @@ export interface CcrShardStats {
 
 export interface CcrDeleteAutoFollowPatternRequest extends RequestBase {
   name: Name
+  master_timeout?: Duration
 }
 
 export type CcrDeleteAutoFollowPatternResponse = AcknowledgedResponseBase
 
 export interface CcrFollowRequest extends RequestBase {
   index: IndexName
+  master_timeout?: Duration
   wait_for_active_shards?: WaitForActiveShards
   body?: {
     data_stream_name?: string
@@ -8850,6 +8853,7 @@ export type CcrFollowInfoFollowerIndexStatus = 'active' | 'paused'
 
 export interface CcrFollowInfoRequest extends RequestBase {
   index: Indices
+  master_timeout?: Duration
 }
 
 export interface CcrFollowInfoResponse {
@@ -8858,6 +8862,7 @@ export interface CcrFollowInfoResponse {
 
 export interface CcrFollowStatsRequest extends RequestBase {
   index: Indices
+  timeout?: Duration
 }
 
 export interface CcrFollowStatsResponse {
@@ -8866,6 +8871,7 @@ export interface CcrFollowStatsResponse {
 
 export interface CcrForgetFollowerRequest extends RequestBase {
   index: IndexName
+  timeout?: Duration
   body?: {
     follower_cluster?: string
     follower_index?: IndexName
@@ -8894,6 +8900,7 @@ export interface CcrGetAutoFollowPatternAutoFollowPatternSummary {
 
 export interface CcrGetAutoFollowPatternRequest extends RequestBase {
   name?: Name
+  master_timeout?: Duration
 }
 
 export interface CcrGetAutoFollowPatternResponse {
@@ -8902,18 +8909,21 @@ export interface CcrGetAutoFollowPatternResponse {
 
 export interface CcrPauseAutoFollowPatternRequest extends RequestBase {
   name: Name
+  master_timeout?: Duration
 }
 
 export type CcrPauseAutoFollowPatternResponse = AcknowledgedResponseBase
 
 export interface CcrPauseFollowRequest extends RequestBase {
   index: IndexName
+  master_timeout?: Duration
 }
 
 export type CcrPauseFollowResponse = AcknowledgedResponseBase
 
 export interface CcrPutAutoFollowPatternRequest extends RequestBase {
   name: Name
+  master_timeout?: Duration
   body?: {
     remote_cluster: string
     follow_index_pattern?: IndexPattern
@@ -8937,12 +8947,14 @@ export type CcrPutAutoFollowPatternResponse = AcknowledgedResponseBase
 
 export interface CcrResumeAutoFollowPatternRequest extends RequestBase {
   name: Name
+  master_timeout?: Duration
 }
 
 export type CcrResumeAutoFollowPatternResponse = AcknowledgedResponseBase
 
 export interface CcrResumeFollowRequest extends RequestBase {
   index: IndexName
+  master_timeout?: Duration
   body?: {
     max_outstanding_read_requests?: long
     max_outstanding_write_requests?: long
@@ -8978,6 +8990,8 @@ export interface CcrStatsFollowStats {
 }
 
 export interface CcrStatsRequest extends RequestBase {
+  master_timeout?: Duration
+  timeout?: Duration
 }
 
 export interface CcrStatsResponse {
@@ -8987,6 +9001,7 @@ export interface CcrStatsResponse {
 
 export interface CcrUnfollowRequest extends RequestBase {
   index: IndexName
+  master_timeout?: Duration
 }
 
 export type CcrUnfollowResponse = AcknowledgedResponseBase
@@ -9077,6 +9092,7 @@ export interface ClusterAllocationExplainNodeDiskUsage {
 export interface ClusterAllocationExplainRequest extends RequestBase {
   include_disk_info?: boolean
   include_yes_decisions?: boolean
+  master_timeout?: Duration
   body?: {
     current_node?: string
     index?: IndexName
@@ -9141,6 +9157,7 @@ export interface ClusterDeleteComponentTemplateRequest extends RequestBase {
 export type ClusterDeleteComponentTemplateResponse = AcknowledgedResponseBase
 
 export interface ClusterDeleteVotingConfigExclusionsRequest extends RequestBase {
+  master_timeout?: Duration
   wait_for_removal?: boolean
 }
 
@@ -9273,6 +9290,7 @@ export interface ClusterPendingTasksResponse {
 export interface ClusterPostVotingConfigExclusionsRequest extends RequestBase {
   node_names?: Names
   node_ids?: Ids
+  master_timeout?: Duration
   timeout?: Duration
 }
 
@@ -10296,6 +10314,7 @@ export interface EnrichSummary {
 
 export interface EnrichDeletePolicyRequest extends RequestBase {
   name: Name
+  master_timeout?: Duration
 }
 
 export type EnrichDeletePolicyResponse = AcknowledgedResponseBase
@@ -10308,6 +10327,7 @@ export interface EnrichExecutePolicyExecuteEnrichPolicyStatus {
 
 export interface EnrichExecutePolicyRequest extends RequestBase {
   name: Name
+  master_timeout?: Duration
   wait_for_completion?: boolean
 }
 
@@ -10318,6 +10338,7 @@ export interface EnrichExecutePolicyResponse {
 
 export interface EnrichGetPolicyRequest extends RequestBase {
   name?: Names
+  master_timeout?: Duration
 }
 
 export interface EnrichGetPolicyResponse {
@@ -10326,6 +10347,7 @@ export interface EnrichGetPolicyResponse {
 
 export interface EnrichPutPolicyRequest extends RequestBase {
   name: Name
+  master_timeout?: Duration
   body?: {
     geo_match?: EnrichPolicy
     match?: EnrichPolicy
@@ -10360,6 +10382,7 @@ export interface EnrichStatsExecutingPolicy {
 }
 
 export interface EnrichStatsRequest extends RequestBase {
+  master_timeout?: Duration
 }
 
 export interface EnrichStatsResponse {
@@ -10499,6 +10522,7 @@ export interface FeaturesFeature {
 }
 
 export interface FeaturesGetFeaturesRequest extends RequestBase {
+  master_timeout?: Duration
 }
 
 export interface FeaturesGetFeaturesResponse {
@@ -10506,6 +10530,7 @@ export interface FeaturesGetFeaturesResponse {
 }
 
 export interface FeaturesResetFeaturesRequest extends RequestBase {
+  master_timeout?: Duration
 }
 
 export interface FeaturesResetFeaturesResponse {
@@ -10858,7 +10883,6 @@ export interface IlmExplainLifecycleRequest extends RequestBase {
   only_errors?: boolean
   only_managed?: boolean
   master_timeout?: Duration
-  timeout?: Duration
 }
 
 export interface IlmExplainLifecycleResponse {
@@ -11813,8 +11837,6 @@ export interface IndicesFieldUsageStatsRequest extends RequestBase {
   expand_wildcards?: ExpandWildcards
   ignore_unavailable?: boolean
   fields?: Fields
-  master_timeout?: Duration
-  timeout?: Duration
   wait_for_active_shards?: WaitForActiveShards
 }
 
@@ -13489,7 +13511,6 @@ export interface IngestGetGeoipDatabaseDatabaseConfigurationMetadata {
 
 export interface IngestGetGeoipDatabaseRequest extends RequestBase {
   id?: Ids
-  master_timeout?: Duration
 }
 
 export interface IngestGetGeoipDatabaseResponse {
@@ -13597,6 +13618,8 @@ export type LicenseLicenseStatus = 'active' | 'valid' | 'invalid' | 'expired'
 export type LicenseLicenseType = 'missing' | 'trial' | 'basic' | 'standard' | 'dev' | 'silver' | 'gold' | 'platinum' | 'enterprise'
 
 export interface LicenseDeleteRequest extends RequestBase {
+  master_timeout?: Duration
+  timeout?: Duration
 }
 
 export type LicenseDeleteResponse = AcknowledgedResponseBase
@@ -13646,6 +13669,8 @@ export interface LicensePostAcknowledgement {
 
 export interface LicensePostRequest extends RequestBase {
   acknowledge?: boolean
+  master_timeout?: Duration
+  timeout?: Duration
   body?: {
     license?: LicenseLicense
     licenses?: LicenseLicense[]
@@ -13660,6 +13685,8 @@ export interface LicensePostResponse {
 
 export interface LicensePostStartBasicRequest extends RequestBase {
   acknowledge?: boolean
+  master_timeout?: Duration
+  timeout?: Duration
 }
 
 export interface LicensePostStartBasicResponse {
@@ -13673,6 +13700,7 @@ export interface LicensePostStartBasicResponse {
 export interface LicensePostStartTrialRequest extends RequestBase {
   acknowledge?: boolean
   type_query_string?: string
+  master_timeout?: Duration
 }
 
 export interface LicensePostStartTrialResponse {
@@ -15186,6 +15214,7 @@ export type MlDeleteModelSnapshotResponse = AcknowledgedResponseBase
 export interface MlDeleteTrainedModelRequest extends RequestBase {
   model_id: Id
   force?: boolean
+  timeout?: Duration
 }
 
 export type MlDeleteTrainedModelResponse = AcknowledgedResponseBase
@@ -15579,7 +15608,6 @@ export interface MlGetMemoryStatsMemory {
 
 export interface MlGetMemoryStatsRequest extends RequestBase {
   node_id?: Id
-  human?: boolean
   master_timeout?: Duration
   timeout?: Duration
 }
@@ -16964,7 +16992,6 @@ export interface NodesHotThreadsRequest extends RequestBase {
   ignore_idle_threads?: boolean
   interval?: Duration
   snapshots?: long
-  master_timeout?: Duration
   threads?: long
   timeout?: Duration
   type?: ThreadType
@@ -17326,7 +17353,6 @@ export interface NodesInfoRequest extends RequestBase {
   node_id?: NodeIds
   metric?: Metrics
   flat_settings?: boolean
-  master_timeout?: Duration
   timeout?: Duration
 }
 
@@ -17362,7 +17388,6 @@ export interface NodesStatsRequest extends RequestBase {
   groups?: boolean
   include_segment_file_sizes?: boolean
   level?: Level
-  master_timeout?: Duration
   timeout?: Duration
   types?: string[]
   include_unloaded_segments?: boolean
@@ -17842,8 +17867,6 @@ export interface SearchableSnapshotsClearCacheRequest extends RequestBase {
   expand_wildcards?: ExpandWildcards
   allow_no_indices?: boolean
   ignore_unavailable?: boolean
-  pretty?: boolean
-  human?: boolean
 }
 
 export type SearchableSnapshotsClearCacheResponse = any
@@ -19182,7 +19205,6 @@ export interface ShutdownGetNodePluginsStatus {
 export interface ShutdownGetNodeRequest extends RequestBase {
   node_id?: NodeIds
   master_timeout?: TimeUnit
-  timeout?: TimeUnit
 }
 
 export interface ShutdownGetNodeResponse {
@@ -19597,7 +19619,6 @@ export interface SnapshotCloneRequest extends RequestBase {
   snapshot: Name
   target_snapshot: Name
   master_timeout?: Duration
-  timeout?: Duration
   body?: {
     indices: string
   }
@@ -20035,7 +20056,6 @@ export interface TasksListRequest extends RequestBase {
   group_by?: TasksGroupBy
   nodes?: NodeIds
   parent_task_id?: Id
-  master_timeout?: Duration
   timeout?: Duration
   wait_for_completion?: boolean
 }
@@ -20412,6 +20432,7 @@ export type TransformPutTransformResponse = AcknowledgedResponseBase
 export interface TransformResetTransformRequest extends RequestBase {
   transform_id: Id
   force?: boolean
+  timeout?: Duration
 }
 
 export type TransformResetTransformResponse = AcknowledgedResponseBase
@@ -21136,6 +21157,7 @@ export interface WatcherQueryWatchesResponse {
 }
 
 export interface WatcherStartRequest extends RequestBase {
+  master_timeout?: Duration
 }
 
 export type WatcherStartResponse = AcknowledgedResponseBase

@@ -4623,6 +4623,9 @@
         "parameters": [
           {
             "$ref": "#/components/parameters/enrich.get_policy#name"
+          },
+          {
+            "$ref": "#/components/parameters/enrich.get_policy#master_timeout"
           }
         ],
         "responses": {
@@ -4650,6 +4653,16 @@
               "$ref": "#/components/schemas/_types:Name"
             },
             "style": "simple"
+          },
+          {
+            "in": "query",
+            "name": "master_timeout",
+            "description": "Period to wait for a connection to the master node.",
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/_types:Duration"
+            },
+            "style": "form"
           }
         ],
         "requestBody": {
@@ -4705,6 +4718,16 @@
               "$ref": "#/components/schemas/_types:Name"
             },
             "style": "simple"
+          },
+          {
+            "in": "query",
+            "name": "master_timeout",
+            "description": "Period to wait for a connection to the master node.",
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/_types:Duration"
+            },
+            "style": "form"
           }
         ],
         "responses": {
@@ -4741,6 +4764,16 @@
               "$ref": "#/components/schemas/_types:Name"
             },
             "style": "simple"
+          },
+          {
+            "in": "query",
+            "name": "master_timeout",
+            "description": "Period to wait for a connection to the master node.",
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/_types:Duration"
+            },
+            "style": "form"
           },
           {
             "in": "query",
@@ -4784,6 +4817,11 @@
         "summary": "Get an enrich policy",
         "description": "Returns information about an enrich policy.",
         "operationId": "enrich-get-policy-1",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/enrich.get_policy#master_timeout"
+          }
+        ],
         "responses": {
           "200": {
             "$ref": "#/components/responses/enrich.get_policy#200"
@@ -4800,6 +4838,18 @@
         "summary": "Get enrich stats",
         "description": "Returns enrich coordinator statistics and information about enrich policies that are currently executing.",
         "operationId": "enrich-stats",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "master_timeout",
+            "description": "Period to wait for a connection to the master node.",
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/_types:Duration"
+            },
+            "style": "form"
+          }
+        ],
         "responses": {
           "200": {
             "description": "",
@@ -11390,6 +11440,16 @@
             "deprecated": false,
             "schema": {
               "type": "boolean"
+            },
+            "style": "form"
+          },
+          {
+            "in": "query",
+            "name": "timeout",
+            "description": "Period to wait for a response. If no response is received before the timeout expires, the request fails and returns an error.",
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/_types:Duration"
             },
             "style": "form"
           }
@@ -19225,6 +19285,16 @@
             "deprecated": false,
             "schema": {
               "type": "boolean"
+            },
+            "style": "form"
+          },
+          {
+            "in": "query",
+            "name": "timeout",
+            "description": "Period to wait for a response. If no response is received before the timeout expires, the request fails and returns an error.",
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/_types:Duration"
             },
             "style": "form"
           }
@@ -58788,6 +58858,16 @@
         },
         "style": "simple"
       },
+      "enrich.get_policy#master_timeout": {
+        "in": "query",
+        "name": "master_timeout",
+        "description": "Period to wait for a connection to the master node.",
+        "deprecated": false,
+        "schema": {
+          "$ref": "#/components/schemas/_types:Duration"
+        },
+        "style": "form"
+      },
       "eql.search#index": {
         "in": "path",
         "name": "index",
@@ -64230,7 +64310,7 @@
                   "type": "number"
                 },
                 "field_multi_value_leniency": {
-                  "description": "If `false`, the API returns an exception when encountering multiple values for a field.\nIf `true`, the API is lenient and returns the API returns the first value from the array with no guarantee of consistent results.",
+                  "description": "If `false`, the API returns an exception when encountering multiple values for a field.\nIf `true`, the API is lenient and returns the first value from the array with no guarantee of consistent results.",
                   "type": "boolean"
                 },
                 "filter": {

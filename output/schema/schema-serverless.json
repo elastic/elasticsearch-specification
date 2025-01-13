@@ -778,7 +778,7 @@
           "stability": "stable"
         }
       },
-      "description": "Delete component templates.\nDeletes component templates.\nComponent templates are building blocks for constructing index templates that specify index mappings, settings, and aliases.",
+      "description": "Delete component templates.\nComponent templates are building blocks for constructing index templates that specify index mappings, settings, and aliases.",
       "docId": "indices-component-template",
       "docTag": "indices",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/indices-component-template.html",
@@ -857,7 +857,7 @@
           "stability": "stable"
         }
       },
-      "description": "Get component templates.\nRetrieves information about component templates.",
+      "description": "Get component templates.\nGet information about component templates.",
       "docId": "indices-component-template",
       "docTag": "indices",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/indices-component-template.html",
@@ -941,7 +941,7 @@
           "stability": "stable"
         }
       },
-      "description": "Create or update a component template.\nCreates or updates a component template.\nComponent templates are building blocks for constructing index templates that specify index mappings, settings, and aliases.\n\nAn index template can be composed of multiple component templates.\nTo use a component template, specify it in an index template’s `composed_of` list.\nComponent templates are only applied to new data streams and indices as part of a matching index template.\n\nSettings and mappings specified directly in the index template or the create index request override any settings or mappings specified in a component template.\n\nComponent templates are only used during index creation.\nFor data streams, this includes data stream creation and the creation of a stream’s backing indices.\nChanges to component templates do not affect existing indices, including a stream’s backing indices.\n\nYou can use C-style `/* *\\/` block comments in component templates.\nYou can include comments anywhere in the request body except before the opening curly bracket.",
+      "description": "Create or update a component template.\nComponent templates are building blocks for constructing index templates that specify index mappings, settings, and aliases.\n\nAn index template can be composed of multiple component templates.\nTo use a component template, specify it in an index template’s `composed_of` list.\nComponent templates are only applied to new data streams and indices as part of a matching index template.\n\nSettings and mappings specified directly in the index template or the create index request override any settings or mappings specified in a component template.\n\nComponent templates are only used during index creation.\nFor data streams, this includes data stream creation and the creation of a stream’s backing indices.\nChanges to component templates do not affect existing indices, including a stream’s backing indices.\n\nYou can use C-style `/* *\\/` block comments in component templates.\nYou can include comments anywhere in the request body except before the opening curly bracket.\n\n**Applying component templates**\n\nYou cannot directly apply a component template to a data stream or index.\nTo be applied, a component template must be included in an index template's `composed_of` list.",
       "docId": "indices-component-template",
       "docTag": "indices",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/indices-component-template.html",
@@ -2588,8 +2588,7 @@
       "privileges": {
         "index": [
           "view_index_metadata",
-          "read",
-          "manage"
+          "read"
         ]
       },
       "request": {
@@ -2860,10 +2859,17 @@
           "stability": "stable"
         }
       },
-      "description": "Get tokens from text analysis.\nThe analyze API performs [analysis](https://www.elastic.co/guide/en/elasticsearch/reference/current/analysis.html) on a text string and returns the resulting tokens.",
+      "description": "Get tokens from text analysis.\nThe analyze API performs analysis on a text string and returns the resulting tokens.\n\nGenerating excessive amount of tokens may cause a node to run out of memory.\nThe `index.analyze.max_token_count` setting enables you to limit the number of tokens that can be produced.\nIf more than this limit of tokens gets generated, an error occurs.\nThe `_analyze` endpoint without a specified index will always use `10000` as its limit.",
       "docId": "indices-analyze",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/indices-analyze.html",
+      "extDocId": "analysis",
+      "extDocUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/analysis.html",
       "name": "indices.analyze",
+      "privileges": {
+        "index": [
+          "index"
+        ]
+      },
       "request": {
         "name": "Request",
         "namespace": "indices.analyze"
@@ -2906,7 +2912,7 @@
           "stability": "stable"
         }
       },
-      "description": "Create an index.\nCreates a new index.",
+      "description": "Create an index.\nYou can use the create index API to add a new index to an Elasticsearch cluster.\nWhen creating an index, you can specify the following:\n\n* Settings for the index.\n* Mappings for fields in the index.\n* Index aliases\n\n**Wait for active shards**\n\nBy default, index creation will only return a response to the client when the primary copies of each shard have been started, or the request times out.\nThe index creation response will indicate what happened.\nFor example, `acknowledged` indicates whether the index was successfully created in the cluster, `while shards_acknowledged` indicates whether the requisite number of shard copies were started for each shard in the index before timing out.\nNote that it is still possible for either `acknowledged` or `shards_acknowledged` to be `false`, but for the index creation to be successful.\nThese values simply indicate whether the operation completed before the timeout.\nIf `acknowledged` is false, the request timed out before the cluster state was updated with the newly created index, but it probably will be created sometime soon.\nIf `shards_acknowledged` is false, then the request timed out before the requisite number of shards were started (by default just the primaries), even if the cluster state was successfully updated to reflect the newly created index (that is to say, `acknowledged` is `true`).\n\nYou can change the default of only waiting for the primary shards to start through the index setting `index.write.wait_for_active_shards`.\nNote that changing this setting will also affect the `wait_for_active_shards` value on all subsequent write operations.",
       "docId": "indices-create-index",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/indices-create-index.html",
       "name": "indices.create",
@@ -3038,9 +3044,15 @@
           "stability": "stable"
         }
       },
-      "description": "Delete indices.\nDeletes one or more indices.",
-      "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/indices-delete-index.html",
+      "description": "Delete indices.\nDeleting an index deletes its documents, shards, and metadata.\nIt does not delete related Kibana components, such as data views, visualizations, or dashboards.\n\nYou cannot delete the current write index of a data stream.\nTo delete the index, you must roll over the data stream so a new write index is created.\nYou can then use the delete index API to delete the previous write index.",
+      "docId": "indices-delete-index",
+      "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/indices-delete-index.html",
       "name": "indices.delete",
+      "privileges": {
+        "index": [
+          "delete_index"
+        ]
+      },
       "request": {
         "name": "Request",
         "namespace": "indices.delete"
@@ -3073,8 +3085,14 @@
         }
       },
       "description": "Delete an alias.\nRemoves a data stream or index from an alias.",
-      "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/indices-aliases.html",
+      "docId": "indices-delete-alias",
+      "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/indices-delete-alias.html",
       "name": "indices.delete_alias",
+      "privileges": {
+        "index": [
+          "manage"
+        ]
+      },
       "request": {
         "name": "Request",
         "namespace": "indices.delete_alias"
@@ -3190,12 +3208,12 @@
         }
       },
       "description": "Delete an index template.\nThe provided <index-template> may contain multiple template names separated by a comma. If multiple template\nnames are specified then there is no wildcard support and the provided names should match completely with\nexisting templates.",
-      "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/indices-delete-template.html",
+      "docId": "indices-delete-template",
+      "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/indices-delete-template.html",
       "name": "indices.delete_index_template",
       "privileges": {
         "cluster": [
-          "manage_index_templates",
-          "manage"
+          "manage_index_templates"
         ]
       },
       "request": {
@@ -3229,8 +3247,9 @@
           "stability": "stable"
         }
       },
-      "description": "Check indices.\nChecks if one or more indices, index aliases, or data streams exist.",
-      "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/indices-exists.html",
+      "description": "Check indices.\nCheck if one or more indices, index aliases, or data streams exist.",
+      "docId": "indices-exists",
+      "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/indices-exists.html",
       "name": "indices.exists",
       "request": {
         "name": "Request",
@@ -3373,8 +3392,9 @@
           "stability": "stable"
         }
       },
-      "description": "Get index information.\nReturns information about one or more indices. For data streams, the API returns information about the\nstream’s backing indices.",
-      "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/indices-get-index.html",
+      "description": "Get index information.\nGet information about one or more indices. For data streams, the API returns information about the\nstream’s backing indices.",
+      "docId": "indices-get-index",
+      "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/indices-get-index.html",
       "name": "indices.get",
       "privileges": {
         "index": [
@@ -3414,8 +3434,14 @@
         }
       },
       "description": "Get aliases.\nRetrieves information for one or more data stream or index aliases.",
-      "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/indices-aliases.html",
+      "docId": "indices-get-alias",
+      "docUrl": "",
       "name": "indices.get_alias",
+      "privileges": {
+        "index": [
+          "view_index_metadata"
+        ]
+      },
       "request": {
         "name": "Request",
         "namespace": "indices.get_alias"
@@ -3549,13 +3575,13 @@
           "stability": "stable"
         }
       },
-      "description": "Get index templates.\nReturns information about one or more index templates.",
-      "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/indices-get-template.html",
+      "description": "Get index templates.\nGet information about one or more index templates.",
+      "docId": "indices-get-template",
+      "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/indices-get-template.html",
       "name": "indices.get_index_template",
       "privileges": {
         "cluster": [
-          "manage_index_templates",
-          "manage"
+          "manage_index_templates"
         ]
       },
       "request": {
@@ -3595,9 +3621,15 @@
           "stability": "stable"
         }
       },
-      "description": "Get mapping definitions.\nRetrieves mapping definitions for one or more indices.\nFor data streams, the API retrieves mappings for the stream’s backing indices.",
-      "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/indices-get-mapping.html",
+      "description": "Get mapping definitions.\nFor data streams, the API retrieves mappings for the stream’s backing indices.",
+      "docId": "indices-get-mapping",
+      "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/indices-get-mapping.html",
       "name": "indices.get_mapping",
+      "privileges": {
+        "index": [
+          "view_index_metadata"
+        ]
+      },
       "request": {
         "name": "Request",
         "namespace": "indices.get_mapping"
@@ -3635,14 +3667,13 @@
           "stability": "stable"
         }
       },
-      "description": "Get index settings.\nReturns setting information for one or more indices. For data streams,\nreturns setting information for the stream’s backing indices.",
-      "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/indices-get-settings.html",
+      "description": "Get index settings.\nGet setting information for one or more indices.\nFor data streams, it returns setting information for the stream's backing indices.",
+      "docId": "indices-get-settings",
+      "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/indices-get-settings.html",
       "name": "indices.get_settings",
       "privileges": {
         "index": [
-          "view_index_metadata",
-          "monitor",
-          "manage"
+          "view_index_metadata"
         ]
       },
       "request": {
@@ -3828,7 +3859,7 @@
         "name": "Request",
         "namespace": "indices.put_data_lifecycle"
       },
-      "requestBodyRequired": false,
+      "requestBodyRequired": true,
       "requestMediaType": [
         "application/json"
       ],
@@ -3859,9 +3890,14 @@
           "stability": "stable"
         }
       },
-      "description": "Create or update an index template.\nIndex templates define settings, mappings, and aliases that can be applied automatically to new indices.",
+      "description": "Create or update an index template.\nIndex templates define settings, mappings, and aliases that can be applied automatically to new indices.\n\nElasticsearch applies templates to new indices based on an wildcard pattern that matches the index name.\nIndex templates are applied during data stream or index creation.\nFor data streams, these settings and mappings are applied when the stream's backing indices are created.\nSettings and mappings specified in a create index API request override any settings or mappings specified in an index template.\nChanges to index templates do not affect existing indices, including the existing backing indices of a data stream.\n\nYou can use C-style `/* *\\/` block comments in index templates.\nYou can include comments anywhere in the request body, except before the opening curly bracket.\n\n**Multiple matching templates**\n\nIf multiple index templates match the name of a new index or data stream, the template with the highest priority is used.\n\nMultiple templates with overlapping index patterns at the same priority are not allowed and an error will be thrown when attempting to create a template matching an existing index template at identical priorities.\n\n**Composing aliases, mappings, and settings**\n\nWhen multiple component templates are specified in the `composed_of` field for an index template, they are merged in the order specified, meaning that later component templates override earlier component templates.\nAny mappings, settings, or aliases from the parent index template are merged in next.\nFinally, any configuration on the index request itself is merged.\nMapping definitions are merged recursively, which means that later mapping components can introduce new field mappings and update the mapping configuration.\nIf a field mapping is already contained in an earlier component, its definition will be completely overwritten by the later one.\nThis recursive merging strategy applies not only to field mappings, but also root options like `dynamic_templates` and `meta`.\nIf an earlier component contains a `dynamic_templates` block, then by default new `dynamic_templates` entries are appended onto the end.\nIf an entry already exists with the same key, then it is overwritten by the new definition.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/indices-put-template.html",
       "name": "indices.put_index_template",
+      "privileges": {
+        "cluster": [
+          "manage_index_templates"
+        ]
+      },
       "request": {
         "name": "Request",
         "namespace": "indices.put_index_template"
@@ -3897,9 +3933,17 @@
           "stability": "stable"
         }
       },
-      "description": "Update field mappings.\nAdds new fields to an existing data stream or index.\nYou can also use this API to change the search settings of existing fields.\nFor data streams, these changes are applied to all backing indices by default.",
-      "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/indices-put-mapping.html",
+      "description": "Update field mappings.\nAdd new fields to an existing data stream or index.\nYou can also use this API to change the search settings of existing fields and add new properties to existing object fields.\nFor data streams, these changes are applied to all backing indices by default.\n\n**Add multi-fields to an existing field**\n\nMulti-fields let you index the same field in different ways.\nYou can use this API to update the fields mapping parameter and enable multi-fields for an existing field.\nWARNING: If an index (or data stream) contains documents when you add a multi-field, those documents will not have values for the new multi-field.\nYou can populate the new multi-field with the update by query API.\n\n**Change supported mapping parameters for an existing field**\n\nThe documentation for each mapping parameter indicates whether you can update it for an existing field using this API.\nFor example, you can use the update mapping API to update the `ignore_above` parameter.\n\n**Change the mapping of an existing field**\n\nExcept for supported mapping parameters, you can't change the mapping or field type of an existing field.\nChanging an existing field could invalidate data that's already indexed.\n\nIf you need to change the mapping of a field in a data stream's backing indices, refer to documentation about modifying data streams.\nIf you need to change the mapping of a field in other indices, create a new index with the correct mapping and reindex your data into that index.\n\n**Rename a field**\n\nRenaming a field would invalidate data already indexed under the old field name.\nInstead, add an alias field to create an alternate field name.",
+      "docId": "indices-put-mapping",
+      "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/indices-put-mapping.html",
+      "extDocId": "mapping-params",
+      "extDocUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/mapping-params.html",
       "name": "indices.put_mapping",
+      "privileges": {
+        "index": [
+          "manage"
+        ]
+      },
       "request": {
         "name": "Request",
         "namespace": "indices.put_mapping"
@@ -3935,8 +3979,11 @@
           "stability": "stable"
         }
       },
-      "description": "Update index settings.\nChanges dynamic index settings in real time. For data streams, index setting\nchanges are applied to all backing indices by default.",
-      "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/indices-update-settings.html",
+      "description": "Update index settings.\nChanges dynamic index settings in real time.\nFor data streams, index setting changes are applied to all backing indices by default.\n\nTo revert a setting to the default value, use a null value.\nThe list of per-index settings that can be updated dynamically on live indices can be found in index module documentation.\nTo preserve existing settings from being updated, set the `preserve_existing` parameter to `true`.\n\nNOTE: You can only define new analyzers on closed indices.\nTo add an analyzer, you must close the index, define the analyzer, and reopen the index.\nYou cannot close the write index of a data stream.\nTo update the analyzer for a data stream's write index and future backing indices, update the analyzer in the index template used by the stream.\nThen roll over the data stream to apply the new analyzer to the stream's write index and future backing indices.\nThis affects searches and any new data added to the stream after the rollover.\nHowever, it does not affect the data stream's backing indices or their existing data.\nTo change the analyzer for existing backing indices, you must create a new data stream and reindex your data into it.",
+      "docId": "indices-update-settings",
+      "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/indices-update-settings.html",
+      "extDocId": "index-modules",
+      "extDocUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/index-modules.html",
       "name": "indices.put_settings",
       "privileges": {
         "index": [
@@ -3983,8 +4030,9 @@
           "stability": "stable"
         }
       },
-      "description": "Create or update an index template.\nIndex templates define settings, mappings, and aliases that can be applied automatically to new indices.\nElasticsearch applies templates to new indices based on an index pattern that matches the index name.\n\nIMPORTANT: This documentation is about legacy index templates, which are deprecated and will be replaced by the composable templates introduced in Elasticsearch 7.8.\n\nComposable templates always take precedence over legacy templates.\nIf no composable template matches a new index, matching legacy templates are applied according to their order.\n\nIndex templates are only applied during index creation.\nChanges to index templates do not affect existing indices.\nSettings and mappings specified in create index API requests override any settings or mappings specified in an index template.",
-      "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/indices-templates-v1.html",
+      "description": "Create or update an index template.\nIndex templates define settings, mappings, and aliases that can be applied automatically to new indices.\nElasticsearch applies templates to new indices based on an index pattern that matches the index name.\n\nIMPORTANT: This documentation is about legacy index templates, which are deprecated and will be replaced by the composable templates introduced in Elasticsearch 7.8.\n\nComposable templates always take precedence over legacy templates.\nIf no composable template matches a new index, matching legacy templates are applied according to their order.\n\nIndex templates are only applied during index creation.\nChanges to index templates do not affect existing indices.\nSettings and mappings specified in create index API requests override any settings or mappings specified in an index template.\n\nYou can use C-style `/* *\\/` block comments in index templates.\nYou can include comments anywhere in the request body, except before the opening curly bracket.\n\n**Indices matching multiple templates**\n\nMultiple index templates can potentially match an index, in this case, both the settings and mappings are merged into the final configuration of the index.\nThe order of the merging can be controlled using the order parameter, with lower order being applied first, and higher orders overriding them.\nNOTE: Multiple matching templates with the same order value will result in a non-deterministic merging order.",
+      "docId": "index-templates-v1",
+      "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/indices-templates-v1.html",
       "extDocId": "index-templates",
       "extDocUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/index-templates.html",
       "name": "indices.put_template",
@@ -4029,9 +4077,15 @@
           "stability": "stable"
         }
       },
-      "description": "Refresh an index.\nA refresh makes recent operations performed on one or more indices available for search.\nFor data streams, the API runs the refresh operation on the stream’s backing indices.",
-      "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/indices-refresh.html",
+      "description": "Refresh an index.\nA refresh makes recent operations performed on one or more indices available for search.\nFor data streams, the API runs the refresh operation on the stream’s backing indices.\n\nBy default, Elasticsearch periodically refreshes indices every second, but only on indices that have received one search request or more in the last 30 seconds.\nYou can change this default interval with the `index.refresh_interval` setting.\n\nRefresh requests are synchronous and do not return a response until the refresh operation completes.\n\nRefreshes are resource-intensive.\nTo ensure good cluster performance, it's recommended to wait for Elasticsearch's periodic refresh rather than performing an explicit refresh when possible.\n\nIf your application workflow indexes documents and then runs a search to retrieve the indexed document, it's recommended to use the index API's `refresh=wait_for` query parameter option.\nThis option ensures the indexing operation waits for a periodic refresh before running the search.",
+      "docId": "indices-refresh",
+      "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/indices-refresh.html",
       "name": "indices.refresh",
+      "privileges": {
+        "index": [
+          "maintenance"
+        ]
+      },
       "request": {
         "name": "Request",
         "namespace": "indices.refresh"
@@ -4073,8 +4127,14 @@
         }
       },
       "description": "Resolve indices.\nResolve the names and/or index patterns for indices, aliases, and data streams.\nMultiple patterns and remote clusters are supported.",
-      "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/indices-resolve-index-api.html",
+      "docId": "indices-resolve-index-api",
+      "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/indices-resolve-index-api.html",
       "name": "indices.resolve_index",
+      "privileges": {
+        "index": [
+          "view_index_metadata"
+        ]
+      },
       "request": {
         "name": "Request",
         "namespace": "indices.resolve_index"
@@ -4107,10 +4167,15 @@
           "stability": "stable"
         }
       },
-      "description": "Roll over to a new index.\nCreates a new index for a data stream or index alias.",
+      "description": "Roll over to a new index.\nTIP: It is recommended to use the index lifecycle rollover action to automate rollovers.\n\nThe rollover API creates a new index for a data stream or index alias.\nThe API behavior depends on the rollover target.\n\n**Roll over a data stream**\n\nIf you roll over a data stream, the API creates a new write index for the stream.\nThe stream's previous write index becomes a regular backing index.\nA rollover also increments the data stream's generation.\n\n**Roll over an index alias with a write index**\n\nTIP: Prior to Elasticsearch 7.9, you'd typically use an index alias with a write index to manage time series data.\nData streams replace this functionality, require less maintenance, and automatically integrate with data tiers.\n\nIf an index alias points to multiple indices, one of the indices must be a write index.\nThe rollover API creates a new write index for the alias with `is_write_index` set to `true`.\nThe API also `sets is_write_index` to `false` for the previous write index.\n\n**Roll over an index alias with one index**\n\nIf you roll over an index alias that points to only one index, the API creates a new index for the alias and removes the original index from the alias.\n\nNOTE: A rollover creates a new index and is subject to the `wait_for_active_shards` setting.\n\n**Increment index names for an alias**\n\nWhen you roll over an index alias, you can specify a name for the new index.\nIf you don't specify a name and the current index ends with `-` and a number, such as `my-index-000001` or `my-index-3`, the new index name increments that number.\nFor example, if you roll over an alias with a current index of `my-index-000001`, the rollover creates a new index named `my-index-000002`.\nThis number is always six characters and zero-padded, regardless of the previous index's name.\n\nIf you use an index alias for time series data, you can use date math in the index name to track the rollover date.\nFor example, you can create an alias that points to an index named `<my-index-{now/d}-000001>`.\nIf you create the index on May 6, 2099, the index's name is `my-index-2099.05.06-000001`.\nIf you roll over the alias on May 7, 2099, the new index's name is `my-index-2099.05.07-000002`.",
       "docId": "indices-rollover-index",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/indices-rollover-index.html",
       "name": "indices.rollover",
+      "privileges": {
+        "index": [
+          "manage"
+        ]
+      },
       "request": {
         "name": "Request",
         "namespace": "indices.rollover"
@@ -4152,9 +4217,15 @@
           "stability": "stable"
         }
       },
-      "description": "Simulate an index.\nReturns the index configuration that would be applied to the specified index from an existing index template.",
-      "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/indices-simulate-index.html",
+      "description": "Simulate an index.\nGet the index configuration that would be applied to the specified index from an existing index template.",
+      "docId": "indices-simulate",
+      "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/indices-simulate-index.html",
       "name": "indices.simulate_index_template",
+      "privileges": {
+        "cluster": [
+          "manage_index_templates"
+        ]
+      },
       "request": {
         "name": "Request",
         "namespace": "indices.simulate_index_template"
@@ -4189,13 +4260,13 @@
           "stability": "stable"
         }
       },
-      "description": "Simulate an index template.\nReturns the index configuration that would be applied by a particular index template.",
-      "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/indices-simulate-template.html",
+      "description": "Simulate an index template.\nGet the index configuration that would be applied by a particular index template.",
+      "docId": "indices-simulate-template",
+      "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/indices-simulate-template.html",
       "name": "indices.simulate_template",
       "privileges": {
         "cluster": [
-          "manage_index_templates",
-          "manage"
+          "manage_index_templates"
         ]
       },
       "request": {
@@ -4507,9 +4578,15 @@
           "stability": "stable"
         }
       },
-      "description": "Get cluster info.\nReturns basic information about the cluster.",
-      "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/index.html",
+      "description": "Get cluster info.\nGet basic build, version, and cluster information.",
+      "docId": "api-root",
+      "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/rest-api-root.html",
       "name": "info",
+      "privileges": {
+        "cluster": [
+          "monitor"
+        ]
+      },
       "request": {
         "name": "Request",
         "namespace": "_global.info"
@@ -4781,8 +4858,9 @@
           "stability": "stable"
         }
       },
-      "description": "Delete a Logstash pipeline.\n\nDelete a pipeline that is used for Logstash Central Management.",
-      "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/logstash-api-delete-pipeline.html",
+      "description": "Delete a Logstash pipeline.\nDelete a pipeline that is used for Logstash Central Management.\nIf the request succeeds, you receive an empty response with an appropriate status code.",
+      "docId": "logstash-api-delete-pipeline",
+      "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/logstash-api-delete-pipeline.html",
       "extDocId": "logstash-centralized-pipeline-management",
       "extDocUrl": "https://www.elastic.co/guide/en/logstash/{branch}/logstash-centralized-pipeline-management.html",
       "name": "logstash.delete_pipeline",
@@ -4823,8 +4901,9 @@
           "stability": "stable"
         }
       },
-      "description": "Get Logstash pipelines.\n\nGet pipelines that are used for Logstash Central Management.",
-      "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/logstash-api-get-pipeline.html",
+      "description": "Get Logstash pipelines.\nGet pipelines that are used for Logstash Central Management.",
+      "docId": "logstash-api-get-pipeline",
+      "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/logstash-api-get-pipeline.html",
       "extDocId": "logstash-centralized-pipeline-management",
       "extDocUrl": "https://www.elastic.co/guide/en/logstash/{branch}/logstash-centralized-pipeline-management.html",
       "name": "logstash.get_pipeline",
@@ -4872,7 +4951,8 @@
         }
       },
       "description": "Create or update a Logstash pipeline.\n\nCreate a pipeline that is used for Logstash Central Management.\nIf the specified pipeline exists, it is replaced.",
-      "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/logstash-api-put-pipeline.html",
+      "docId": "logstash-api-put-pipeline",
+      "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/logstash-api-put-pipeline.html",
       "extDocId": "logstash-centralized-pipeline-management",
       "extDocUrl": "https://www.elastic.co/guide/en/logstash/{branch}/logstash-centralized-pipeline-management.html",
       "name": "logstash.put_pipeline",
@@ -6407,7 +6487,7 @@
           "stability": "stable"
         }
       },
-      "description": "Create a data frame analytics job.\nThis API creates a data frame analytics job that performs an analysis on the\nsource indices and stores the outcome in a destination index.",
+      "description": "Create a data frame analytics job.\nThis API creates a data frame analytics job that performs an analysis on the\nsource indices and stores the outcome in a destination index.\nBy default, the query used in the source configuration is `{\"match_all\": {}}`.\n\nIf the destination index does not exist, it is created automatically when you start the job.\n\nIf you supply only a subset of the regression or classification parameters, hyperparameter optimization occurs. It determines a value for each of the undefined parameters.",
       "docId": "put-dfanalytics",
       "docTag": "ml data frame",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/put-dfanalytics.html",
@@ -6459,7 +6539,7 @@
           "stability": "stable"
         }
       },
-      "description": "Create a datafeed.\nDatafeeds retrieve data from Elasticsearch for analysis by an anomaly detection job.\nYou can associate only one datafeed with each anomaly detection job.\nThe datafeed contains a query that runs at a defined interval (`frequency`).\nIf you are concerned about delayed data, you can add a delay (`query_delay') at each interval.\nWhen Elasticsearch security features are enabled, your datafeed remembers which roles the user who created it had\nat the time of creation and runs the query using those same roles. If you provide secondary authorization headers,\nthose credentials are used instead.\nYou must use Kibana, this API, or the create anomaly detection jobs API to create a datafeed. Do not add a datafeed\ndirectly to the `.ml-config` index. Do not give users `write` privileges on the `.ml-config` index.",
+      "description": "Create a datafeed.\nDatafeeds retrieve data from Elasticsearch for analysis by an anomaly detection job.\nYou can associate only one datafeed with each anomaly detection job.\nThe datafeed contains a query that runs at a defined interval (`frequency`).\nIf you are concerned about delayed data, you can add a delay (`query_delay') at each interval.\nBy default, the datafeed uses the following query: `{\"match_all\": {\"boost\": 1}}`.\n\nWhen Elasticsearch security features are enabled, your datafeed remembers which roles the user who created it had\nat the time of creation and runs the query using those same roles. If you provide secondary authorization headers,\nthose credentials are used instead.\nYou must use Kibana, this API, or the create anomaly detection jobs API to create a datafeed. Do not add a datafeed\ndirectly to the `.ml-config` index. Do not give users `write` privileges on the `.ml-config` index.",
       "docTag": "ml anomaly",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/ml-put-datafeed.html",
       "name": "ml.put_datafeed",
@@ -6550,7 +6630,7 @@
           "stability": "stable"
         }
       },
-      "description": "Create an anomaly detection job.\nIf you include a `datafeed_config`, you must have read index privileges on the source index.",
+      "description": "Create an anomaly detection job.\nIf you include a `datafeed_config`, you must have read index privileges on the source index.\nIf you include a `datafeed_config` but do not provide a query, the datafeed uses `{\"match_all\": {\"boost\": 1}}`.",
       "docTag": "ml anomaly",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/ml-put-job.html",
       "name": "ml.put_job",
@@ -7590,9 +7670,15 @@
           "stability": "stable"
         }
       },
-      "description": "Delete a query rule.\nDelete a query rule within a query ruleset.",
-      "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/delete-query-rule.html",
+      "description": "Delete a query rule.\nDelete a query rule within a query ruleset.\nThis is a destructive action that is only recoverable by re-adding the same rule with the create or update query rule API.",
+      "docId": "query-rule-delete",
+      "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/delete-query-rule.html",
       "name": "query_rules.delete_rule",
+      "privileges": {
+        "cluster": [
+          "manage_search_query_rules"
+        ]
+      },
       "request": {
         "name": "Request",
         "namespace": "query_rules.delete_rule"
@@ -7625,9 +7711,15 @@
           "stability": "stable"
         }
       },
-      "description": "Delete a query ruleset.",
-      "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/delete-query-ruleset.html",
+      "description": "Delete a query ruleset.\nRemove a query ruleset and its associated data.\nThis is a destructive action that is not recoverable.",
+      "docId": "query-ruleset-delete",
+      "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/delete-query-ruleset.html",
       "name": "query_rules.delete_ruleset",
+      "privileges": {
+        "cluster": [
+          "manage_search_query_rules"
+        ]
+      },
       "request": {
         "name": "Request",
         "namespace": "query_rules.delete_ruleset"
@@ -7661,10 +7753,16 @@
         }
       },
       "description": "Get a query rule.\nGet details about a query rule within a query ruleset.",
-      "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/get-query-rule.html",
+      "docId": "query-rule-get",
+      "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/get-query-rule.html",
       "extDocId": "query-rule",
       "extDocUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/search-using-query-rules.html",
       "name": "query_rules.get_rule",
+      "privileges": {
+        "cluster": [
+          "manage_search_query_rules"
+        ]
+      },
       "request": {
         "name": "Request",
         "namespace": "query_rules.get_rule"
@@ -7698,8 +7796,14 @@
         }
       },
       "description": "Get a query ruleset.\nGet details about a query ruleset.",
-      "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/get-query-ruleset.html",
+      "docId": "query-ruleset-get",
+      "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/get-query-ruleset.html",
       "name": "query_rules.get_ruleset",
+      "privileges": {
+        "cluster": [
+          "manage_search_query_rules"
+        ]
+      },
       "request": {
         "name": "Request",
         "namespace": "query_rules.get_ruleset"
@@ -7733,8 +7837,14 @@
         }
       },
       "description": "Get all query rulesets.\nGet summarized information about the query rulesets.",
-      "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/list-query-rulesets.html",
+      "docId": "query-ruleset-list",
+      "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/list-query-rulesets.html",
       "name": "query_rules.list_rulesets",
+      "privileges": {
+        "cluster": [
+          "manage_search_query_rules"
+        ]
+      },
       "request": {
         "name": "Request",
         "namespace": "query_rules.list_rulesets"
@@ -7767,9 +7877,15 @@
           "stability": "stable"
         }
       },
-      "description": "Create or update a query rule.\nCreate or update a query rule within a query ruleset.",
-      "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/put-query-rule.html",
+      "description": "Create or update a query rule.\nCreate or update a query rule within a query ruleset.\n\nIMPORTANT: Due to limitations within pinned queries, you can only pin documents using ids or docs, but cannot use both in single rule.\nIt is advised to use one or the other in query rulesets, to avoid errors.\nAdditionally, pinned queries have a maximum limit of 100 pinned hits.\nIf multiple matching rules pin more than 100 documents, only the first 100 documents are pinned in the order they are specified in the ruleset.",
+      "docId": "query-rule-put",
+      "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/put-query-rule.html",
       "name": "query_rules.put_rule",
+      "privileges": {
+        "cluster": [
+          "manage_search_query_rules"
+        ]
+      },
       "request": {
         "name": "Request",
         "namespace": "query_rules.put_rule"
@@ -7805,11 +7921,17 @@
           "stability": "stable"
         }
       },
-      "description": "Create or update a query ruleset.",
-      "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/put-query-ruleset.html",
+      "description": "Create or update a query ruleset.\nThere is a limit of 100 rules per ruleset.\nThis limit can be increased by using the `xpack.applications.rules.max_rules_per_ruleset` cluster setting.\n\nIMPORTANT: Due to limitations within pinned queries, you can only select documents using `ids` or `docs`, but cannot use both in single rule.\nIt is advised to use one or the other in query rulesets, to avoid errors.\nAdditionally, pinned queries have a maximum limit of 100 pinned hits.\nIf multiple matching rules pin more than 100 documents, only the first 100 documents are pinned in the order they are specified in the ruleset.",
+      "docId": "query-ruleset-put",
+      "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/put-query-ruleset.html",
       "extDocId": "query-rule",
       "extDocUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/search-using-query-rules.html",
       "name": "query_rules.put_ruleset",
+      "privileges": {
+        "cluster": [
+          "manage_search_query_rules"
+        ]
+      },
       "request": {
         "name": "Request",
         "namespace": "query_rules.put_ruleset"
@@ -7846,8 +7968,14 @@
         }
       },
       "description": "Test a query ruleset.\nEvaluate match criteria against a query ruleset to identify the rules that would match that criteria.",
-      "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/test-query-ruleset.html",
+      "docId": "query-ruleset-test",
+      "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/test-query-ruleset.html",
       "name": "query_rules.test",
+      "privileges": {
+        "cluster": [
+          "manage_search_query_rules"
+        ]
+      },
       "request": {
         "name": "Request",
         "namespace": "query_rules.test"
@@ -8165,6 +8293,14 @@
       "description": "Delete a search application.\nRemove a search application and its associated alias. Indices attached to the search application are not removed.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/delete-search-application.html",
       "name": "search_application.delete",
+      "privileges": {
+        "cluster": [
+          "manage_search_application"
+        ],
+        "index": [
+          "manage"
+        ]
+      },
       "request": {
         "name": "Request",
         "namespace": "search_application.delete"
@@ -8236,6 +8372,11 @@
       "description": "Get search application details.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/get-search-application.html",
       "name": "search_application.get",
+      "privileges": {
+        "cluster": [
+          "manage_search_application"
+        ]
+      },
       "request": {
         "name": "Request",
         "namespace": "search_application.get"
@@ -8310,9 +8451,14 @@
           "stability": "beta"
         }
       },
-      "description": "Returns the existing search applications.",
+      "description": "Get search applications.\nGet information about search applications.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/list-search-applications.html",
       "name": "search_application.list",
+      "privileges": {
+        "cluster": [
+          "manage_search_application"
+        ]
+      },
       "request": {
         "name": "Request",
         "namespace": "search_application.list"
@@ -8348,6 +8494,14 @@
       "description": "Create or update a search application.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/put-search-application.html",
       "name": "search_application.put",
+      "privileges": {
+        "cluster": [
+          "manage_search_application"
+        ],
+        "index": [
+          "manage"
+        ]
+      },
       "request": {
         "name": "Request",
         "namespace": "search_application.put"
@@ -8848,7 +9002,8 @@
         }
       },
       "description": "Clear an SQL search cursor.",
-      "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/clear-sql-cursor-api.html",
+      "docId": "sql-clear-cursor-api",
+      "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/clear-sql-cursor-api.html",
       "name": "sql.clear_cursor",
       "request": {
         "name": "Request",
@@ -8885,9 +9040,15 @@
           "stability": "stable"
         }
       },
-      "description": "Delete an async SQL search.\nDelete an async SQL search or a stored synchronous SQL search.\nIf the search is still running, the API cancels it.",
-      "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/delete-async-sql-search-api.html",
+      "description": "Delete an async SQL search.\nDelete an async SQL search or a stored synchronous SQL search.\nIf the search is still running, the API cancels it.\n\nIf the Elasticsearch security features are enabled, only the following users can use this API to delete a search:\n\n* Users with the `cancel_task` cluster privilege.\n* The user who first submitted the search.",
+      "docId": "sql-delete-async-api",
+      "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/delete-async-sql-search-api.html",
       "name": "sql.delete_async",
+      "privileges": {
+        "cluster": [
+          "cancel_task"
+        ]
+      },
       "request": {
         "name": "Request",
         "namespace": "sql.delete_async"
@@ -8920,8 +9081,9 @@
           "stability": "stable"
         }
       },
-      "description": "Get async SQL search results.\nGet the current status and available results for an async SQL search or stored synchronous SQL search.",
-      "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/get-async-sql-search-api.html",
+      "description": "Get async SQL search results.\nGet the current status and available results for an async SQL search or stored synchronous SQL search.\n\nIf the Elasticsearch security features are enabled, only the user who first submitted the SQL search can retrieve the search using this API.",
+      "docId": "sql-async-search-api",
+      "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/get-async-sql-search-api.html",
       "name": "sql.get_async",
       "request": {
         "name": "Request",
@@ -8956,8 +9118,14 @@
         }
       },
       "description": "Get the async SQL search status.\nGet the current status of an async SQL search or a stored synchronous SQL search.",
-      "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/get-async-sql-search-status-api.html",
+      "docId": "sql-async-status-api",
+      "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/get-async-sql-search-status-api.html",
       "name": "sql.get_async_status",
+      "privileges": {
+        "cluster": [
+          "monitor"
+        ]
+      },
       "request": {
         "name": "Request",
         "namespace": "sql.get_async_status"
@@ -8991,8 +9159,14 @@
         }
       },
       "description": "Get SQL search results.\nRun an SQL request.",
-      "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/sql-search-api.html",
+      "docId": "sql-search-api",
+      "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/sql-search-api.html",
       "name": "sql.query",
+      "privileges": {
+        "index": [
+          "read"
+        ]
+      },
       "request": {
         "name": "Request",
         "namespace": "sql.query"
@@ -9029,9 +9203,15 @@
           "stability": "stable"
         }
       },
-      "description": "Translate SQL into Elasticsearch queries.\nTranslate an SQL search into a search API request containing Query DSL.",
-      "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/sql-translate-api.html",
+      "description": "Translate SQL into Elasticsearch queries.\nTranslate an SQL search into a search API request containing Query DSL.\nIt accepts the same request body parameters as the SQL search API, excluding `cursor`.",
+      "docId": "sql-translate-api",
+      "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/sql-translate-api.html",
       "name": "sql.translate",
+      "privileges": {
+        "index": [
+          "read"
+        ]
+      },
       "request": {
         "name": "Request",
         "namespace": "sql.translate"
@@ -9068,9 +9248,15 @@
           "stability": "stable"
         }
       },
-      "description": "Delete a synonym set.",
-      "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/delete-synonyms-set.html",
+      "description": "Delete a synonym set.\n\nYou can only delete a synonyms set that is not in use by any index analyzer.\n\nSynonyms sets can be used in synonym graph token filters and synonym token filters.\nThese synonym filters can be used as part of search analyzers.\n\nAnalyzers need to be loaded when an index is restored (such as when a node starts, or the index becomes open).\nEven if the analyzer is not used on any field mapping, it still needs to be loaded on the index recovery phase.\n\nIf any analyzers cannot be loaded, the index becomes unavailable and the cluster status becomes red or yellow as index shards are not available.\nTo prevent that, synonyms sets that are used in analyzers can't be deleted.\nA delete request in this case will return a 400 response code.\n\nTo remove a synonyms set, you must first remove all indices that contain analyzers using it.\nYou can migrate an index by creating a new index that does not contain the token filter with the synonyms set, and use the reindex API in order to copy over the index data.\nOnce finished, you can delete the index.\nWhen the synonyms set is not used in analyzers, you will be able to delete it.",
+      "docId": "synonym-set-delete",
+      "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/delete-synonyms-set.html",
       "name": "synonyms.delete_synonym",
+      "privileges": {
+        "cluster": [
+          "manage_search_synonyms"
+        ]
+      },
       "request": {
         "name": "Request",
         "namespace": "synonyms.delete_synonym"
@@ -9104,8 +9290,14 @@
         }
       },
       "description": "Delete a synonym rule.\nDelete a synonym rule from a synonym set.",
-      "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/delete-synonym-rule.html",
+      "docId": "synonym-rule-delete",
+      "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/delete-synonym-rule.html",
       "name": "synonyms.delete_synonym_rule",
+      "privileges": {
+        "cluster": [
+          "manage_search_synonyms"
+        ]
+      },
       "request": {
         "name": "Request",
         "namespace": "synonyms.delete_synonym_rule"
@@ -9142,8 +9334,14 @@
         }
       },
       "description": "Get a synonym set.",
-      "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/get-synonyms-set.html",
+      "docId": "synonym-set-get",
+      "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/get-synonyms-set.html",
       "name": "synonyms.get_synonym",
+      "privileges": {
+        "cluster": [
+          "manage_search_synonyms"
+        ]
+      },
       "request": {
         "name": "Request",
         "namespace": "synonyms.get_synonym"
@@ -9177,8 +9375,14 @@
         }
       },
       "description": "Get a synonym rule.\nGet a synonym rule from a synonym set.",
-      "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/get-synonym-rule.html",
+      "docId": "synonym-rule-get",
+      "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/get-synonym-rule.html",
       "name": "synonyms.get_synonym_rule",
+      "privileges": {
+        "cluster": [
+          "manage_search_synonyms"
+        ]
+      },
       "request": {
         "name": "Request",
         "namespace": "synonyms.get_synonym_rule"
@@ -9215,8 +9419,14 @@
         }
       },
       "description": "Get all synonym sets.\nGet a summary of all defined synonym sets.",
-      "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/list-synonyms-sets.html",
+      "docId": "synonym-set-list",
+      "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/get-synonyms-set.html",
       "name": "synonyms.get_synonyms_sets",
+      "privileges": {
+        "cluster": [
+          "manage_search_synonyms"
+        ]
+      },
       "request": {
         "name": "Request",
         "namespace": "synonyms.get_synonyms_sets"
@@ -9249,9 +9459,15 @@
           "stability": "stable"
         }
       },
-      "description": "Create or update a synonym set.\nSynonyms sets are limited to a maximum of 10,000 synonym rules per set.\nIf you need to manage more synonym rules, you can create multiple synonym sets.",
-      "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/put-synonyms-set.html",
+      "description": "Create or update a synonym set.\nSynonyms sets are limited to a maximum of 10,000 synonym rules per set.\nIf you need to manage more synonym rules, you can create multiple synonym sets.\n\nWhen an existing synonyms set is updated, the search analyzers that use the synonyms set are reloaded automatically for all indices.\nThis is equivalent to invoking the reload search analyzers API for all indices that use the synonyms set.",
+      "docId": "synonym-set-create",
+      "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/put-synonyms-set.html",
       "name": "synonyms.put_synonym",
+      "privileges": {
+        "cluster": [
+          "manage_search_synonyms"
+        ]
+      },
       "request": {
         "name": "Request",
         "namespace": "synonyms.put_synonym"
@@ -9287,9 +9503,15 @@
           "stability": "stable"
         }
       },
-      "description": "Create or update a synonym rule.\nCreate or update a synonym rule in a synonym set.",
-      "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/put-synonym-rule.html",
+      "description": "Create or update a synonym rule.\nCreate or update a synonym rule in a synonym set.\n\nIf any of the synonym rules included is invalid, the API returns an error.\n\nWhen you update a synonym rule, all analyzers using the synonyms set will be reloaded automatically to reflect the new rule.",
+      "docId": "synonym-rule-create",
+      "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/put-synonym-rule.html",
       "name": "synonyms.put_synonym_rule",
+      "privileges": {
+        "cluster": [
+          "manage_search_synonyms"
+        ]
+      },
       "request": {
         "name": "Request",
         "namespace": "synonyms.put_synonym_rule"
@@ -12850,7 +13072,7 @@
       "body": {
         "kind": "no_body"
       },
-      "description": "Delete component templates.\nDeletes component templates.\nComponent templates are building blocks for constructing index templates that specify index mappings, settings, and aliases.",
+      "description": "Delete component templates.\nComponent templates are building blocks for constructing index templates that specify index mappings, settings, and aliases.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -12904,7 +13126,7 @@
           }
         }
       ],
-      "specLocation": "cluster/delete_component_template/ClusterDeleteComponentTemplateRequest.ts#L24-L56"
+      "specLocation": "cluster/delete_component_template/ClusterDeleteComponentTemplateRequest.ts#L24-L55"
     },
     {
       "body": {
@@ -13005,7 +13227,7 @@
       "body": {
         "kind": "no_body"
       },
-      "description": "Get component templates.\nRetrieves information about component templates.",
+      "description": "Get component templates.\nGet information about component templates.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -13270,7 +13492,7 @@
             }
           },
           {
-            "description": "Optional user metadata about the component template.\nMay have any contents. This map is not automatically generated by Elasticsearch.\nThis information is stored in the cluster state, so keeping it short is preferable.\nTo unset `_meta`, replace the template without specifying this information.",
+            "description": "Optional user metadata about the component template.\nIt may have any contents. This map is not automatically generated by Elasticsearch.\nThis information is stored in the cluster state, so keeping it short is preferable.\nTo unset `_meta`, replace the template without specifying this information.",
             "name": "_meta",
             "required": false,
             "type": {
@@ -13295,7 +13517,7 @@
           }
         ]
       },
-      "description": "Create or update a component template.\nCreates or updates a component template.\nComponent templates are building blocks for constructing index templates that specify index mappings, settings, and aliases.\n\nAn index template can be composed of multiple component templates.\nTo use a component template, specify it in an index template’s `composed_of` list.\nComponent templates are only applied to new data streams and indices as part of a matching index template.\n\nSettings and mappings specified directly in the index template or the create index request override any settings or mappings specified in a component template.\n\nComponent templates are only used during index creation.\nFor data streams, this includes data stream creation and the creation of a stream’s backing indices.\nChanges to component templates do not affect existing indices, including a stream’s backing indices.\n\nYou can use C-style `/* *\\/` block comments in component templates.\nYou can include comments anywhere in the request body except before the opening curly bracket.",
+      "description": "Create or update a component template.\nComponent templates are building blocks for constructing index templates that specify index mappings, settings, and aliases.\n\nAn index template can be composed of multiple component templates.\nTo use a component template, specify it in an index template’s `composed_of` list.\nComponent templates are only applied to new data streams and indices as part of a matching index template.\n\nSettings and mappings specified directly in the index template or the create index request override any settings or mappings specified in a component template.\n\nComponent templates are only used during index creation.\nFor data streams, this includes data stream creation and the creation of a stream’s backing indices.\nChanges to component templates do not affect existing indices, including a stream’s backing indices.\n\nYou can use C-style `/* *\\/` block comments in component templates.\nYou can include comments anywhere in the request body except before the opening curly bracket.\n\n**Applying component templates**\n\nYou cannot directly apply a component template to a data stream or index.\nTo be applied, a component template must be included in an index template's `composed_of` list.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -13349,7 +13571,7 @@
           }
         }
       ],
-      "specLocation": "cluster/put_component_template/ClusterPutComponentTemplateRequest.ts#L25-L95"
+      "specLocation": "cluster/put_component_template/ClusterPutComponentTemplateRequest.ts#L25-L99"
     },
     {
       "body": {
@@ -16758,8 +16980,22 @@
           }
         }
       ],
-      "query": [],
-      "specLocation": "enrich/delete_policy/DeleteEnrichPolicyRequest.ts#L23-L37"
+      "query": [
+        {
+          "description": "Period to wait for a connection to the master node.",
+          "name": "master_timeout",
+          "required": false,
+          "serverDefault": "30s",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Duration",
+              "namespace": "_types"
+            }
+          }
+        }
+      ],
+      "specLocation": "enrich/delete_policy/DeleteEnrichPolicyRequest.ts#L24-L45"
     },
     {
       "body": {
@@ -16814,6 +17050,19 @@
       ],
       "query": [
         {
+          "description": "Period to wait for a connection to the master node.",
+          "name": "master_timeout",
+          "required": false,
+          "serverDefault": "30s",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Duration",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
           "description": "If `true`, the request blocks other enrich policy execution requests until complete.",
           "name": "wait_for_completion",
           "required": false,
@@ -16827,7 +17076,7 @@
           }
         }
       ],
-      "specLocation": "enrich/execute_policy/ExecuteEnrichPolicyRequest.ts#L23-L45"
+      "specLocation": "enrich/execute_policy/ExecuteEnrichPolicyRequest.ts#L24-L51"
     },
     {
       "body": {
@@ -16897,8 +17146,22 @@
           }
         }
       ],
-      "query": [],
-      "specLocation": "enrich/get_policy/GetEnrichPolicyRequest.ts#L23-L38"
+      "query": [
+        {
+          "description": "Period to wait for a connection to the master node.",
+          "name": "master_timeout",
+          "required": false,
+          "serverDefault": "30s",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Duration",
+              "namespace": "_types"
+            }
+          }
+        }
+      ],
+      "specLocation": "enrich/get_policy/GetEnrichPolicyRequest.ts#L24-L46"
     },
     {
       "body": {
@@ -16998,8 +17261,22 @@
           }
         }
       ],
-      "query": [],
-      "specLocation": "enrich/put_policy/PutEnrichPolicyRequest.ts#L24-L53"
+      "query": [
+        {
+          "description": "Period to wait for a connection to the master node.",
+          "name": "master_timeout",
+          "required": false,
+          "serverDefault": "30s",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Duration",
+              "namespace": "_types"
+            }
+          }
+        }
+      ],
+      "specLocation": "enrich/put_policy/PutEnrichPolicyRequest.ts#L25-L61"
     },
     {
       "body": {
@@ -17039,8 +17316,22 @@
         "namespace": "enrich.stats"
       },
       "path": [],
-      "query": [],
-      "specLocation": "enrich/stats/EnrichStatsRequest.ts#L22-L29"
+      "query": [
+        {
+          "description": "Period to wait for a connection to the master node.",
+          "name": "master_timeout",
+          "required": false,
+          "serverDefault": "30s",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Duration",
+              "namespace": "_types"
+            }
+          }
+        }
+      ],
+      "specLocation": "enrich/stats/EnrichStatsRequest.ts#L23-L38"
     },
     {
       "body": {
@@ -20160,7 +20451,7 @@
           }
         ]
       },
-      "description": "Get tokens from text analysis.\nThe analyze API performs [analysis](https://www.elastic.co/guide/en/elasticsearch/reference/current/analysis.html) on a text string and returns the resulting tokens.",
+      "description": "Get tokens from text analysis.\nThe analyze API performs analysis on a text string and returns the resulting tokens.\n\nGenerating excessive amount of tokens may cause a node to run out of memory.\nThe `index.analyze.max_token_count` setting enables you to limit the number of tokens that can be produced.\nIf more than this limit of tokens gets generated, an error occurs.\nThe `_analyze` endpoint without a specified index will always use `10000` as its limit.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -20189,7 +20480,7 @@
         }
       ],
       "query": [],
-      "specLocation": "indices/analyze/IndicesAnalyzeRequest.ts#L27-L93"
+      "specLocation": "indices/analyze/IndicesAnalyzeRequest.ts#L27-L100"
     },
     {
       "body": {
@@ -20287,7 +20578,7 @@
           }
         ]
       },
-      "description": "Create an index.\nCreates a new index.",
+      "description": "Create an index.\nYou can use the create index API to add a new index to an Elasticsearch cluster.\nWhen creating an index, you can specify the following:\n\n* Settings for the index.\n* Mappings for fields in the index.\n* Index aliases\n\n**Wait for active shards**\n\nBy default, index creation will only return a response to the client when the primary copies of each shard have been started, or the request times out.\nThe index creation response will indicate what happened.\nFor example, `acknowledged` indicates whether the index was successfully created in the cluster, `while shards_acknowledged` indicates whether the requisite number of shard copies were started for each shard in the index before timing out.\nNote that it is still possible for either `acknowledged` or `shards_acknowledged` to be `false`, but for the index creation to be successful.\nThese values simply indicate whether the operation completed before the timeout.\nIf `acknowledged` is false, the request timed out before the cluster state was updated with the newly created index, but it probably will be created sometime soon.\nIf `shards_acknowledged` is false, then the request timed out before the requisite number of shards were started (by default just the primaries), even if the cluster state was successfully updated to reflect the newly created index (that is to say, `acknowledged` is `true`).\n\nYou can change the default of only waiting for the primary shards to start through the index setting `index.write.wait_for_active_shards`.\nNote that changing this setting will also affect the `wait_for_active_shards` value on all subsequent write operations.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -20354,7 +20645,7 @@
           }
         }
       ],
-      "specLocation": "indices/create/IndicesCreateRequest.ts#L28-L82"
+      "specLocation": "indices/create/IndicesCreateRequest.ts#L28-L102"
     },
     {
       "body": {
@@ -20628,7 +20919,7 @@
       "body": {
         "kind": "no_body"
       },
-      "description": "Delete indices.\nDeletes one or more indices.",
+      "description": "Delete indices.\nDeleting an index deletes its documents, shards, and metadata.\nIt does not delete related Kibana components, such as data views, visualizations, or dashboards.\n\nYou cannot delete the current write index of a data stream.\nTo delete the index, you must roll over the data stream so a new write index is created.\nYou can then use the delete index API to delete the previous write index.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -20721,7 +21012,7 @@
           }
         }
       ],
-      "specLocation": "indices/delete/IndicesDeleteRequest.ts#L24-L74"
+      "specLocation": "indices/delete/IndicesDeleteRequest.ts#L24-L81"
     },
     {
       "body": {
@@ -20814,7 +21105,7 @@
           }
         }
       ],
-      "specLocation": "indices/delete_alias/IndicesDeleteAliasRequest.ts#L24-L58"
+      "specLocation": "indices/delete_alias/IndicesDeleteAliasRequest.ts#L24-L60"
     },
     {
       "body": {
@@ -21067,7 +21358,7 @@
           }
         }
       ],
-      "specLocation": "indices/delete_index_template/IndicesDeleteIndexTemplateRequest.ts#L24-L53"
+      "specLocation": "indices/delete_index_template/IndicesDeleteIndexTemplateRequest.ts#L24-L54"
     },
     {
       "body": {
@@ -21094,7 +21385,7 @@
       "body": {
         "kind": "no_body"
       },
-      "description": "Check indices.\nChecks if one or more indices, index aliases, or data streams exist.",
+      "description": "Check indices.\nCheck if one or more indices, index aliases, or data streams exist.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -21200,7 +21491,7 @@
           }
         }
       ],
-      "specLocation": "indices/exists/IndicesExistsRequest.ts#L23-L73"
+      "specLocation": "indices/exists/IndicesExistsRequest.ts#L23-L74"
     },
     {
       "body": {
@@ -21493,7 +21784,7 @@
       "body": {
         "kind": "no_body"
       },
-      "description": "Get index information.\nReturns information about one or more indices. For data streams, the API returns information about the\nstream’s backing indices.",
+      "description": "Get index information.\nGet information about one or more indices. For data streams, the API returns information about the\nstream’s backing indices.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -21631,7 +21922,7 @@
           }
         }
       ],
-      "specLocation": "indices/get/IndicesGetRequest.ts#L24-L89"
+      "specLocation": "indices/get/IndicesGetRequest.ts#L24-L90"
     },
     {
       "body": {
@@ -21765,7 +22056,7 @@
           }
         }
       ],
-      "specLocation": "indices/get_alias/IndicesGetAliasRequest.ts#L23-L72"
+      "specLocation": "indices/get_alias/IndicesGetAliasRequest.ts#L23-L74"
     },
     {
       "body": {
@@ -22060,7 +22351,7 @@
       "body": {
         "kind": "no_body"
       },
-      "description": "Get index templates.\nReturns information about one or more index templates.",
+      "description": "Get index templates.\nGet information about one or more index templates.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -22149,7 +22440,7 @@
           }
         }
       ],
-      "specLocation": "indices/get_index_template/IndicesGetIndexTemplateRequest.ts#L24-L61"
+      "specLocation": "indices/get_index_template/IndicesGetIndexTemplateRequest.ts#L24-L62"
     },
     {
       "body": {
@@ -22185,7 +22476,7 @@
       "body": {
         "kind": "no_body"
       },
-      "description": "Get mapping definitions.\nRetrieves mapping definitions for one or more indices.\nFor data streams, the API retrieves mappings for the stream’s backing indices.",
+      "description": "Get mapping definitions.\nFor data streams, the API retrieves mappings for the stream’s backing indices.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -22278,7 +22569,7 @@
           }
         }
       ],
-      "specLocation": "indices/get_mapping/IndicesGetMappingRequest.ts#L24-L73"
+      "specLocation": "indices/get_mapping/IndicesGetMappingRequest.ts#L24-L74"
     },
     {
       "body": {
@@ -22316,7 +22607,7 @@
       "body": {
         "kind": "no_body"
       },
-      "description": "Get index settings.\nReturns setting information for one or more indices. For data streams,\nreturns setting information for the stream’s backing indices.",
+      "description": "Get index settings.\nGet setting information for one or more indices.\nFor data streams, it returns setting information for the stream's backing indices.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -22447,7 +22738,7 @@
           }
         }
       ],
-      "specLocation": "indices/get_settings/IndicesGetSettingsRequest.ts#L24-L92"
+      "specLocation": "indices/get_settings/IndicesGetSettingsRequest.ts#L24-L93"
     },
     {
       "body": {
@@ -22779,33 +23070,15 @@
         "CommonQueryParameters"
       ],
       "body": {
-        "kind": "properties",
-        "properties": [
-          {
-            "description": "If defined, every document added to this data stream will be stored at least for this time frame.\nAny time after this duration the document could be deleted.\nWhen empty, every document in this data stream will be stored indefinitely.",
-            "name": "data_retention",
-            "required": false,
-            "type": {
-              "kind": "instance_of",
-              "type": {
-                "name": "Duration",
-                "namespace": "_types"
-              }
-            }
-          },
-          {
-            "description": "If defined, every backing index will execute the configured downsampling configuration after the backing\nindex is not the data stream write index anymore.",
-            "name": "downsampling",
-            "required": false,
-            "type": {
-              "kind": "instance_of",
-              "type": {
-                "name": "DataStreamLifecycleDownsampling",
-                "namespace": "indices._types"
-              }
-            }
+        "codegenName": "lifecycle",
+        "kind": "value",
+        "value": {
+          "kind": "instance_of",
+          "type": {
+            "name": "DataStreamLifecycle",
+            "namespace": "indices._types"
           }
-        ]
+        }
       },
       "description": "Update data stream lifecycles.\nUpdate the data stream lifecycle of the specified data streams.",
       "inherits": {
@@ -22874,7 +23147,7 @@
           }
         }
       ],
-      "specLocation": "indices/put_data_lifecycle/IndicesPutDataLifecycleRequest.ts#L25-L77"
+      "specLocation": "indices/put_data_lifecycle/IndicesPutDataLifecycleRequest.ts#L25-L68"
     },
     {
       "body": {
@@ -22965,7 +23238,7 @@
             }
           },
           {
-            "description": "Version number used to manage index templates externally.\nThis number is not automatically generated by Elasticsearch.",
+            "description": "Version number used to manage index templates externally.\nThis number is not automatically generated by Elasticsearch.\nExternal systems can use these version numbers to simplify template management.\nTo unset a version, replace the template without specifying one.",
             "name": "version",
             "required": false,
             "type": {
@@ -22977,7 +23250,7 @@
             }
           },
           {
-            "description": "Optional user metadata about the index template.\nMay have any contents.\nThis map is not automatically generated by Elasticsearch.",
+            "description": "Optional user metadata about the index template.\nIt may have any contents.\nIt is not automatically generated or used by Elasticsearch.\nThis user-defined object is stored in the cluster state, so keeping it short is preferable\nTo unset the metadata, replace the template without specifying it.",
             "docId": "mapping-meta-field",
             "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/mapping-meta-field.html",
             "name": "_meta",
@@ -23031,7 +23304,7 @@
           }
         ]
       },
-      "description": "Create or update an index template.\nIndex templates define settings, mappings, and aliases that can be applied automatically to new indices.",
+      "description": "Create or update an index template.\nIndex templates define settings, mappings, and aliases that can be applied automatically to new indices.\n\nElasticsearch applies templates to new indices based on an wildcard pattern that matches the index name.\nIndex templates are applied during data stream or index creation.\nFor data streams, these settings and mappings are applied when the stream's backing indices are created.\nSettings and mappings specified in a create index API request override any settings or mappings specified in an index template.\nChanges to index templates do not affect existing indices, including the existing backing indices of a data stream.\n\nYou can use C-style `/* *\\/` block comments in index templates.\nYou can include comments anywhere in the request body, except before the opening curly bracket.\n\n**Multiple matching templates**\n\nIf multiple index templates match the name of a new index or data stream, the template with the highest priority is used.\n\nMultiple templates with overlapping index patterns at the same priority are not allowed and an error will be thrown when attempting to create a template matching an existing index template at identical priorities.\n\n**Composing aliases, mappings, and settings**\n\nWhen multiple component templates are specified in the `composed_of` field for an index template, they are merged in the order specified, meaning that later component templates override earlier component templates.\nAny mappings, settings, or aliases from the parent index template are merged in next.\nFinally, any configuration on the index request itself is merged.\nMapping definitions are merged recursively, which means that later mapping components can introduce new field mappings and update the mapping configuration.\nIf a field mapping is already contained in an earlier component, its definition will be completely overwritten by the later one.\nThis recursive merging strategy applies not only to field mappings, but also root options like `dynamic_templates` and `meta`.\nIf an earlier component contains a `dynamic_templates` block, then by default new `dynamic_templates` entries are appended onto the end.\nIf an entry already exists with the same key, then it is overwritten by the new definition.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -23097,7 +23370,7 @@
           }
         }
       ],
-      "specLocation": "indices/put_index_template/IndicesPutIndexTemplateRequest.ts#L37-L119"
+      "specLocation": "indices/put_index_template/IndicesPutIndexTemplateRequest.ts#L37-L150"
     },
     {
       "body": {
@@ -23310,7 +23583,7 @@
           }
         ]
       },
-      "description": "Update field mappings.\nAdds new fields to an existing data stream or index.\nYou can also use this API to change the search settings of existing fields.\nFor data streams, these changes are applied to all backing indices by default.",
+      "description": "Update field mappings.\nAdd new fields to an existing data stream or index.\nYou can also use this API to change the search settings of existing fields and add new properties to existing object fields.\nFor data streams, these changes are applied to all backing indices by default.\n\n**Add multi-fields to an existing field**\n\nMulti-fields let you index the same field in different ways.\nYou can use this API to update the fields mapping parameter and enable multi-fields for an existing field.\nWARNING: If an index (or data stream) contains documents when you add a multi-field, those documents will not have values for the new multi-field.\nYou can populate the new multi-field with the update by query API.\n\n**Change supported mapping parameters for an existing field**\n\nThe documentation for each mapping parameter indicates whether you can update it for an existing field using this API.\nFor example, you can use the update mapping API to update the `ignore_above` parameter.\n\n**Change the mapping of an existing field**\n\nExcept for supported mapping parameters, you can't change the mapping or field type of an existing field.\nChanging an existing field could invalidate data that's already indexed.\n\nIf you need to change the mapping of a field in a data stream's backing indices, refer to documentation about modifying data streams.\nIf you need to change the mapping of a field in other indices, create a new index with the correct mapping and reindex your data into that index.\n\n**Rename a field**\n\nRenaming a field would invalidate data already indexed under the old field name.\nInstead, add an alias field to create an alternate field name.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -23416,7 +23689,7 @@
           }
         }
       ],
-      "specLocation": "indices/put_mapping/IndicesPutMappingRequest.ts#L41-L149"
+      "specLocation": "indices/put_mapping/IndicesPutMappingRequest.ts#L41-L177"
     },
     {
       "body": {
@@ -23451,7 +23724,7 @@
           }
         }
       },
-      "description": "Update index settings.\nChanges dynamic index settings in real time. For data streams, index setting\nchanges are applied to all backing indices by default.",
+      "description": "Update index settings.\nChanges dynamic index settings in real time.\nFor data streams, index setting changes are applied to all backing indices by default.\n\nTo revert a setting to the default value, use a null value.\nThe list of per-index settings that can be updated dynamically on live indices can be found in index module documentation.\nTo preserve existing settings from being updated, set the `preserve_existing` parameter to `true`.\n\nNOTE: You can only define new analyzers on closed indices.\nTo add an analyzer, you must close the index, define the analyzer, and reopen the index.\nYou cannot close the write index of a data stream.\nTo update the analyzer for a data stream's write index and future backing indices, update the analyzer in the index template used by the stream.\nThen roll over the data stream to apply the new analyzer to the stream's write index and future backing indices.\nThis affects searches and any new data added to the stream after the rollover.\nHowever, it does not affect the data stream's backing indices or their existing data.\nTo change the analyzer for existing backing indices, you must create a new data stream and reindex your data into it.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -23570,7 +23843,7 @@
           }
         }
       ],
-      "specLocation": "indices/put_settings/IndicesPutSettingsRequest.ts#L25-L93"
+      "specLocation": "indices/put_settings/IndicesPutSettingsRequest.ts#L25-L108"
     },
     {
       "body": {
@@ -23684,7 +23957,7 @@
             }
           },
           {
-            "description": "Version number used to manage index templates externally. This number\nis not automatically generated by Elasticsearch.",
+            "description": "Version number used to manage index templates externally. This number\nis not automatically generated by Elasticsearch.\nTo unset a version, replace the template without specifying one.",
             "name": "version",
             "required": false,
             "type": {
@@ -23697,7 +23970,7 @@
           }
         ]
       },
-      "description": "Create or update an index template.\nIndex templates define settings, mappings, and aliases that can be applied automatically to new indices.\nElasticsearch applies templates to new indices based on an index pattern that matches the index name.\n\nIMPORTANT: This documentation is about legacy index templates, which are deprecated and will be replaced by the composable templates introduced in Elasticsearch 7.8.\n\nComposable templates always take precedence over legacy templates.\nIf no composable template matches a new index, matching legacy templates are applied according to their order.\n\nIndex templates are only applied during index creation.\nChanges to index templates do not affect existing indices.\nSettings and mappings specified in create index API requests override any settings or mappings specified in an index template.",
+      "description": "Create or update an index template.\nIndex templates define settings, mappings, and aliases that can be applied automatically to new indices.\nElasticsearch applies templates to new indices based on an index pattern that matches the index name.\n\nIMPORTANT: This documentation is about legacy index templates, which are deprecated and will be replaced by the composable templates introduced in Elasticsearch 7.8.\n\nComposable templates always take precedence over legacy templates.\nIf no composable template matches a new index, matching legacy templates are applied according to their order.\n\nIndex templates are only applied during index creation.\nChanges to index templates do not affect existing indices.\nSettings and mappings specified in create index API requests override any settings or mappings specified in an index template.\n\nYou can use C-style `/* *\\/` block comments in index templates.\nYou can include comments anywhere in the request body, except before the opening curly bracket.\n\n**Indices matching multiple templates**\n\nMultiple index templates can potentially match an index, in this case, both the settings and mappings are merged into the final configuration of the index.\nThe order of the merging can be controlled using the order parameter, with lower order being applied first, and higher orders overriding them.\nNOTE: Multiple matching templates with the same order value will result in a non-deterministic merging order.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -23774,7 +24047,7 @@
           }
         }
       ],
-      "specLocation": "indices/put_template/IndicesPutTemplateRequest.ts#L29-L107"
+      "specLocation": "indices/put_template/IndicesPutTemplateRequest.ts#L29-L118"
     },
     {
       "body": {
@@ -23801,7 +24074,7 @@
       "body": {
         "kind": "no_body"
       },
-      "description": "Refresh an index.\nA refresh makes recent operations performed on one or more indices available for search.\nFor data streams, the API runs the refresh operation on the stream’s backing indices.",
+      "description": "Refresh an index.\nA refresh makes recent operations performed on one or more indices available for search.\nFor data streams, the API runs the refresh operation on the stream’s backing indices.\n\nBy default, Elasticsearch periodically refreshes indices every second, but only on indices that have received one search request or more in the last 30 seconds.\nYou can change this default interval with the `index.refresh_interval` setting.\n\nRefresh requests are synchronous and do not return a response until the refresh operation completes.\n\nRefreshes are resource-intensive.\nTo ensure good cluster performance, it's recommended to wait for Elasticsearch's periodic refresh rather than performing an explicit refresh when possible.\n\nIf your application workflow indexes documents and then runs a search to retrieve the indexed document, it's recommended to use the index API's `refresh=wait_for` query parameter option.\nThis option ensures the indexing operation waits for a periodic refresh before running the search.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -23868,7 +24141,7 @@
           }
         }
       ],
-      "specLocation": "indices/refresh/IndicesRefreshRequest.ts#L23-L61"
+      "specLocation": "indices/refresh/IndicesRefreshRequest.ts#L23-L74"
     },
     {
       "body": {
@@ -23962,7 +24235,7 @@
           }
         }
       ],
-      "specLocation": "indices/resolve_index/ResolveIndexRequest.ts#L23-L61"
+      "specLocation": "indices/resolve_index/ResolveIndexRequest.ts#L23-L63"
     },
     {
       "body": {
@@ -24094,7 +24367,7 @@
           }
         ]
       },
-      "description": "Roll over to a new index.\nCreates a new index for a data stream or index alias.",
+      "description": "Roll over to a new index.\nTIP: It is recommended to use the index lifecycle rollover action to automate rollovers.\n\nThe rollover API creates a new index for a data stream or index alias.\nThe API behavior depends on the rollover target.\n\n**Roll over a data stream**\n\nIf you roll over a data stream, the API creates a new write index for the stream.\nThe stream's previous write index becomes a regular backing index.\nA rollover also increments the data stream's generation.\n\n**Roll over an index alias with a write index**\n\nTIP: Prior to Elasticsearch 7.9, you'd typically use an index alias with a write index to manage time series data.\nData streams replace this functionality, require less maintenance, and automatically integrate with data tiers.\n\nIf an index alias points to multiple indices, one of the indices must be a write index.\nThe rollover API creates a new write index for the alias with `is_write_index` set to `true`.\nThe API also `sets is_write_index` to `false` for the previous write index.\n\n**Roll over an index alias with one index**\n\nIf you roll over an index alias that points to only one index, the API creates a new index for the alias and removes the original index from the alias.\n\nNOTE: A rollover creates a new index and is subject to the `wait_for_active_shards` setting.\n\n**Increment index names for an alias**\n\nWhen you roll over an index alias, you can specify a name for the new index.\nIf you don't specify a name and the current index ends with `-` and a number, such as `my-index-000001` or `my-index-3`, the new index name increments that number.\nFor example, if you roll over an alias with a current index of `my-index-000001`, the rollover creates a new index named `my-index-000002`.\nThis number is always six characters and zero-padded, regardless of the previous index's name.\n\nIf you use an index alias for time series data, you can use date math in the index name to track the rollover date.\nFor example, you can create an alias that points to an index named `<my-index-{now/d}-000001>`.\nIf you create the index on May 6, 2099, the index's name is `my-index-2099.05.06-000001`.\nIf you roll over the alias on May 7, 2099, the new index's name is `my-index-2099.05.07-000002`.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -24186,7 +24459,7 @@
           }
         }
       ],
-      "specLocation": "indices/rollover/IndicesRolloverRequest.ts#L29-L100"
+      "specLocation": "indices/rollover/IndicesRolloverRequest.ts#L29-L137"
     },
     {
       "body": {
@@ -24296,7 +24569,7 @@
       "body": {
         "kind": "no_body"
       },
-      "description": "Simulate an index.\nReturns the index configuration that would be applied to the specified index from an existing index template.",
+      "description": "Simulate an index.\nGet the index configuration that would be applied to the specified index from an existing index template.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -24359,7 +24632,7 @@
           }
         }
       ],
-      "specLocation": "indices/simulate_index_template/IndicesSimulateIndexTemplateRequest.ts#L24-L50"
+      "specLocation": "indices/simulate_index_template/IndicesSimulateIndexTemplateRequest.ts#L24-L52"
     },
     {
       "body": {
@@ -24538,7 +24811,7 @@
           }
         ]
       },
-      "description": "Simulate an index template.\nReturns the index configuration that would be applied by a particular index template.",
+      "description": "Simulate an index template.\nGet the index configuration that would be applied by a particular index template.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -24614,7 +24887,7 @@
           }
         }
       ],
-      "specLocation": "indices/simulate_template/IndicesSimulateTemplateRequest.ts#L27-L120"
+      "specLocation": "indices/simulate_template/IndicesSimulateTemplateRequest.ts#L27-L121"
     },
     {
       "body": {
@@ -25385,7 +25658,7 @@
       "body": {
         "kind": "no_body"
       },
-      "description": "Get cluster info.\nReturns basic information about the cluster.",
+      "description": "Get cluster info.\nGet basic build, version, and cluster information.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -25399,13 +25672,14 @@
       },
       "path": [],
       "query": [],
-      "specLocation": "_global/info/RootNodeInfoRequest.ts#L22-L29"
+      "specLocation": "_global/info/RootNodeInfoRequest.ts#L22-L31"
     },
     {
       "body": {
         "kind": "properties",
         "properties": [
           {
+            "description": "The responding cluster's name.",
             "name": "cluster_name",
             "required": true,
             "type": {
@@ -25428,6 +25702,7 @@
             }
           },
           {
+            "description": "The responding node's name.",
             "name": "name",
             "required": true,
             "type": {
@@ -25450,6 +25725,7 @@
             }
           },
           {
+            "description": "The running version of Elasticsearch.",
             "name": "version",
             "required": true,
             "type": {
@@ -25467,7 +25743,7 @@
         "name": "Response",
         "namespace": "_global.info"
       },
-      "specLocation": "_global/info/RootNodeInfoResponse.ts#L23-L31"
+      "specLocation": "_global/info/RootNodeInfoResponse.ts#L23-L40"
     },
     {
       "attachedBehaviors": [
@@ -25891,7 +26167,7 @@
                 "kind": "instance_of",
                 "type": {
                   "name": "Document",
-                  "namespace": "ingest.simulate"
+                  "namespace": "ingest._types"
                 }
               }
             }
@@ -25965,7 +26241,7 @@
                 "kind": "instance_of",
                 "type": {
                   "name": "SimulateDocumentResult",
-                  "namespace": "ingest.simulate"
+                  "namespace": "ingest._types"
                 }
               }
             }
@@ -26064,7 +26340,7 @@
       "body": {
         "kind": "no_body"
       },
-      "description": "Delete a Logstash pipeline.\n\nDelete a pipeline that is used for Logstash Central Management.",
+      "description": "Delete a Logstash pipeline.\nDelete a pipeline that is used for Logstash Central Management.\nIf the request succeeds, you receive an empty response with an appropriate status code.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -26091,7 +26367,7 @@
         }
       ],
       "query": [],
-      "specLocation": "logstash/delete_pipeline/LogstashDeletePipelineRequest.ts#L23-L40"
+      "specLocation": "logstash/delete_pipeline/LogstashDeletePipelineRequest.ts#L23-L41"
     },
     {
       "body": {
@@ -26111,7 +26387,7 @@
       "body": {
         "kind": "no_body"
       },
-      "description": "Get Logstash pipelines.\n\nGet pipelines that are used for Logstash Central Management.",
+      "description": "Get Logstash pipelines.\nGet pipelines that are used for Logstash Central Management.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -26211,7 +26487,7 @@
         }
       ],
       "query": [],
-      "specLocation": "logstash/put_pipeline/LogstashPutPipelineRequest.ts#L24-L44"
+      "specLocation": "logstash/put_pipeline/LogstashPutPipelineRequest.ts#L24-L45"
     },
     {
       "body": {
@@ -27135,9 +27411,22 @@
               "namespace": "_builtins"
             }
           }
+        },
+        {
+          "description": "Period to wait for a response. If no response is received before the timeout expires, the request fails and returns an error.",
+          "name": "timeout",
+          "required": false,
+          "serverDefault": "30s",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Duration",
+              "namespace": "_types"
+            }
+          }
         }
       ],
-      "specLocation": "ml/delete_trained_model/MlDeleteTrainedModelRequest.ts#L23-L43"
+      "specLocation": "ml/delete_trained_model/MlDeleteTrainedModelRequest.ts#L24-L49"
     },
     {
       "body": {
@@ -27398,6 +27687,7 @@
         "kind": "properties",
         "properties": [
           {
+            "description": "Evaluation results for a classification analysis.\nIt outputs a prediction that identifies to which of the classes each document belongs.",
             "name": "classification",
             "required": false,
             "type": {
@@ -27409,6 +27699,7 @@
             }
           },
           {
+            "description": "Evaluation results for an outlier detection analysis.\nIt outputs the probability that each document is an outlier.",
             "name": "outlier_detection",
             "required": false,
             "type": {
@@ -27420,6 +27711,7 @@
             }
           },
           {
+            "description": "Evaluation results for a regression analysis which outputs a prediction of values.",
             "name": "regression",
             "required": false,
             "type": {
@@ -27437,7 +27729,7 @@
         "name": "Response",
         "namespace": "ml.evaluate_data_frame"
       },
-      "specLocation": "ml/evaluate_data_frame/MlEvaluateDataFrameResponse.ts#L26-L33"
+      "specLocation": "ml/evaluate_data_frame/MlEvaluateDataFrameResponse.ts#L26-L44"
     },
     {
       "attachedBehaviors": [
@@ -30072,7 +30364,7 @@
           }
         ]
       },
-      "description": "Create a data frame analytics job.\nThis API creates a data frame analytics job that performs an analysis on the\nsource indices and stores the outcome in a destination index.",
+      "description": "Create a data frame analytics job.\nThis API creates a data frame analytics job that performs an analysis on the\nsource indices and stores the outcome in a destination index.\nBy default, the query used in the source configuration is `{\"match_all\": {}}`.\n\nIf the destination index does not exist, it is created automatically when you start the job.\n\nIf you supply only a subset of the regression or classification parameters, hyperparameter optimization occurs. It determines a value for each of the undefined parameters.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -30099,7 +30391,7 @@
         }
       ],
       "query": [],
-      "specLocation": "ml/put_data_frame_analytics/MlPutDataFrameAnalyticsRequest.ts#L30-L144"
+      "specLocation": "ml/put_data_frame_analytics/MlPutDataFrameAnalyticsRequest.ts#L30-L149"
     },
     {
       "body": {
@@ -30478,7 +30770,7 @@
           }
         ]
       },
-      "description": "Create a datafeed.\nDatafeeds retrieve data from Elasticsearch for analysis by an anomaly detection job.\nYou can associate only one datafeed with each anomaly detection job.\nThe datafeed contains a query that runs at a defined interval (`frequency`).\nIf you are concerned about delayed data, you can add a delay (`query_delay') at each interval.\nWhen Elasticsearch security features are enabled, your datafeed remembers which roles the user who created it had\nat the time of creation and runs the query using those same roles. If you provide secondary authorization headers,\nthose credentials are used instead.\nYou must use Kibana, this API, or the create anomaly detection jobs API to create a datafeed. Do not add a datafeed\ndirectly to the `.ml-config` index. Do not give users `write` privileges on the `.ml-config` index.",
+      "description": "Create a datafeed.\nDatafeeds retrieve data from Elasticsearch for analysis by an anomaly detection job.\nYou can associate only one datafeed with each anomaly detection job.\nThe datafeed contains a query that runs at a defined interval (`frequency`).\nIf you are concerned about delayed data, you can add a delay (`query_delay') at each interval.\nBy default, the datafeed uses the following query: `{\"match_all\": {\"boost\": 1}}`.\n\nWhen Elasticsearch security features are enabled, your datafeed remembers which roles the user who created it had\nat the time of creation and runs the query using those same roles. If you provide secondary authorization headers,\nthose credentials are used instead.\nYou must use Kibana, this API, or the create anomaly detection jobs API to create a datafeed. Do not add a datafeed\ndirectly to the `.ml-config` index. Do not give users `write` privileges on the `.ml-config` index.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -30562,7 +30854,7 @@
           }
         }
       ],
-      "specLocation": "ml/put_datafeed/MlPutDatafeedRequest.ts#L37-L175"
+      "specLocation": "ml/put_datafeed/MlPutDatafeedRequest.ts#L37-L177"
     },
     {
       "body": {
@@ -31089,7 +31381,7 @@
           }
         ]
       },
-      "description": "Create an anomaly detection job.\nIf you include a `datafeed_config`, you must have read index privileges on the source index.",
+      "description": "Create an anomaly detection job.\nIf you include a `datafeed_config`, you must have read index privileges on the source index.\nIf you include a `datafeed_config` but do not provide a query, the datafeed uses `{\"match_all\": {\"boost\": 1}}`.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -31173,7 +31465,7 @@
           }
         }
       ],
-      "specLocation": "ml/put_job/MlPutJobRequest.ts#L30-L148"
+      "specLocation": "ml/put_job/MlPutJobRequest.ts#L30-L149"
     },
     {
       "body": {
@@ -35139,7 +35431,7 @@
       "body": {
         "kind": "no_body"
       },
-      "description": "Delete a query rule.\nDelete a query rule within a query ruleset.",
+      "description": "Delete a query rule.\nDelete a query rule within a query ruleset.\nThis is a destructive action that is only recoverable by re-adding the same rule with the create or update query rule API.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -35178,7 +35470,7 @@
         }
       ],
       "query": [],
-      "specLocation": "query_rules/delete_rule/QueryRuleDeleteRequest.ts#L22-L41"
+      "specLocation": "query_rules/delete_rule/QueryRuleDeleteRequest.ts#L22-L44"
     },
     {
       "body": {
@@ -35205,7 +35497,7 @@
       "body": {
         "kind": "no_body"
       },
-      "description": "Delete a query ruleset.",
+      "description": "Delete a query ruleset.\nRemove a query ruleset and its associated data.\nThis is a destructive action that is not recoverable.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -35232,7 +35524,7 @@
         }
       ],
       "query": [],
-      "specLocation": "query_rules/delete_ruleset/QueryRulesetDeleteRequest.ts#L22-L35"
+      "specLocation": "query_rules/delete_ruleset/QueryRulesetDeleteRequest.ts#L22-L39"
     },
     {
       "body": {
@@ -35298,7 +35590,7 @@
         }
       ],
       "query": [],
-      "specLocation": "query_rules/get_rule/QueryRuleGetRequest.ts#L22-L42"
+      "specLocation": "query_rules/get_rule/QueryRuleGetRequest.ts#L22-L44"
     },
     {
       "body": {
@@ -35352,7 +35644,7 @@
         }
       ],
       "query": [],
-      "specLocation": "query_rules/get_ruleset/QueryRulesetGetRequest.ts#L22-L36"
+      "specLocation": "query_rules/get_ruleset/QueryRulesetGetRequest.ts#L22-L38"
     },
     {
       "body": {
@@ -35394,9 +35686,10 @@
       "path": [],
       "query": [
         {
-          "description": "Starting offset (default: 0)",
+          "description": "The offset from the first result to fetch.",
           "name": "from",
           "required": false,
+          "serverDefault": 0,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -35406,7 +35699,7 @@
           }
         },
         {
-          "description": "specifies a max number of results to get",
+          "description": "The maximum number of results to retrieve.",
           "name": "size",
           "required": false,
           "type": {
@@ -35418,7 +35711,7 @@
           }
         }
       ],
-      "specLocation": "query_rules/list_rulesets/QueryRulesetListRequest.ts#L22-L40"
+      "specLocation": "query_rules/list_rulesets/QueryRulesetListRequest.ts#L22-L43"
     },
     {
       "body": {
@@ -35466,6 +35759,7 @@
         "kind": "properties",
         "properties": [
           {
+            "description": "The type of rule.",
             "name": "type",
             "required": true,
             "type": {
@@ -35477,6 +35771,7 @@
             }
           },
           {
+            "description": "The criteria that must be met for the rule to be applied.\nIf multiple criteria are specified for a rule, all criteria must be met for the rule to be applied.",
             "name": "criteria",
             "required": true,
             "type": {
@@ -35503,6 +35798,7 @@
             }
           },
           {
+            "description": "The actions to take when the rule is matched.\nThe format of this action depends on the rule type.",
             "name": "actions",
             "required": true,
             "type": {
@@ -35526,7 +35822,7 @@
           }
         ]
       },
-      "description": "Create or update a query rule.\nCreate or update a query rule within a query ruleset.",
+      "description": "Create or update a query rule.\nCreate or update a query rule within a query ruleset.\n\nIMPORTANT: Due to limitations within pinned queries, you can only pin documents using ids or docs, but cannot use both in single rule.\nIt is advised to use one or the other in query rulesets, to avoid errors.\nAdditionally, pinned queries have a maximum limit of 100 pinned hits.\nIf multiple matching rules pin more than 100 documents, only the first 100 documents are pinned in the order they are specified in the ruleset.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -35540,7 +35836,7 @@
       },
       "path": [
         {
-          "description": "The unique identifier of the query ruleset containing the rule to be created or updated",
+          "description": "The unique identifier of the query ruleset containing the rule to be created or updated.",
           "name": "ruleset_id",
           "required": true,
           "type": {
@@ -35552,7 +35848,7 @@
           }
         },
         {
-          "description": "The unique identifier of the query rule within the specified ruleset to be created or updated",
+          "description": "The unique identifier of the query rule within the specified ruleset to be created or updated.",
           "name": "rule_id",
           "required": true,
           "type": {
@@ -35565,7 +35861,7 @@
         }
       ],
       "query": [],
-      "specLocation": "query_rules/put_rule/QueryRulePutRequest.ts#L28-L57"
+      "specLocation": "query_rules/put_rule/QueryRulePutRequest.ts#L28-L73"
     },
     {
       "body": {
@@ -35626,7 +35922,7 @@
           }
         ]
       },
-      "description": "Create or update a query ruleset.",
+      "description": "Create or update a query ruleset.\nThere is a limit of 100 rules per ruleset.\nThis limit can be increased by using the `xpack.applications.rules.max_rules_per_ruleset` cluster setting.\n\nIMPORTANT: Due to limitations within pinned queries, you can only select documents using `ids` or `docs`, but cannot use both in single rule.\nIt is advised to use one or the other in query rulesets, to avoid errors.\nAdditionally, pinned queries have a maximum limit of 100 pinned hits.\nIf multiple matching rules pin more than 100 documents, only the first 100 documents are pinned in the order they are specified in the ruleset.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -35640,7 +35936,7 @@
       },
       "path": [
         {
-          "description": "The unique identifier of the query ruleset to be created or updated",
+          "description": "The unique identifier of the query ruleset to be created or updated.",
           "name": "ruleset_id",
           "required": true,
           "type": {
@@ -35653,7 +35949,7 @@
         }
       ],
       "query": [],
-      "specLocation": "query_rules/put_ruleset/QueryRulesetPutRequest.ts#L23-L44"
+      "specLocation": "query_rules/put_ruleset/QueryRulesetPutRequest.ts#L23-L53"
     },
     {
       "body": {
@@ -35687,6 +35983,7 @@
         "kind": "properties",
         "properties": [
           {
+            "description": "The match criteria to apply to rules in the given query ruleset.\nMatch criteria should match the keys defined in the `criteria.metadata` field of the rule.",
             "name": "match_criteria",
             "required": true,
             "type": {
@@ -35733,7 +36030,7 @@
         }
       ],
       "query": [],
-      "specLocation": "query_rules/test/QueryRulesetTestRequest.ts#L24-L45"
+      "specLocation": "query_rules/test/QueryRulesetTestRequest.ts#L24-L51"
     },
     {
       "body": {
@@ -37911,7 +38208,7 @@
         }
       ],
       "query": [],
-      "specLocation": "search_application/delete/SearchApplicationsDeleteRequest.ts#L22-L36"
+      "specLocation": "search_application/delete/SearchApplicationsDeleteRequest.ts#L22-L38"
     },
     {
       "body": {
@@ -38019,7 +38316,7 @@
         }
       ],
       "query": [],
-      "specLocation": "search_application/get/SearchApplicationsGetRequest.ts#L22-L35"
+      "specLocation": "search_application/get/SearchApplicationsGetRequest.ts#L22-L36"
     },
     {
       "body": {
@@ -38114,7 +38411,7 @@
       "body": {
         "kind": "no_body"
       },
-      "description": "Returns the existing search applications.",
+      "description": "Get search applications.\nGet information about search applications.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -38166,7 +38463,7 @@
           }
         }
       ],
-      "specLocation": "search_application/list/SearchApplicationsListRequest.ts#L22-L44"
+      "specLocation": "search_application/list/SearchApplicationsListRequest.ts#L22-L46"
     },
     {
       "body": {
@@ -38191,8 +38488,8 @@
               "value": {
                 "kind": "instance_of",
                 "type": {
-                  "name": "SearchApplicationListItem",
-                  "namespace": "search_application.list"
+                  "name": "SearchApplication",
+                  "namespace": "search_application._types"
                 }
               }
             }
@@ -38204,7 +38501,7 @@
         "name": "Response",
         "namespace": "search_application.list"
       },
-      "specLocation": "search_application/list/SearchApplicationsListResponse.ts#L24-L29"
+      "specLocation": "search_application/list/SearchApplicationsListResponse.ts#L23-L28"
     },
     {
       "attachedBehaviors": [
@@ -38216,7 +38513,7 @@
         "value": {
           "kind": "instance_of",
           "type": {
-            "name": "SearchApplication",
+            "name": "SearchApplicationParameters",
             "namespace": "search_application._types"
           }
         }
@@ -38262,7 +38559,7 @@
           }
         }
       ],
-      "specLocation": "search_application/put/SearchApplicationsPutRequest.ts#L23-L48"
+      "specLocation": "search_application/put/SearchApplicationsPutRequest.ts#L23-L50"
     },
     {
       "body": {
@@ -40607,7 +40904,7 @@
       },
       "path": [],
       "query": [],
-      "specLocation": "sql/clear_cursor/ClearSqlCursorRequest.ts#L22-L35"
+      "specLocation": "sql/clear_cursor/ClearSqlCursorRequest.ts#L22-L36"
     },
     {
       "body": {
@@ -40640,7 +40937,7 @@
       "body": {
         "kind": "no_body"
       },
-      "description": "Delete an async SQL search.\nDelete an async SQL search or a stored synchronous SQL search.\nIf the search is still running, the API cancels it.",
+      "description": "Delete an async SQL search.\nDelete an async SQL search or a stored synchronous SQL search.\nIf the search is still running, the API cancels it.\n\nIf the Elasticsearch security features are enabled, only the following users can use this API to delete a search:\n\n* Users with the `cancel_task` cluster privilege.\n* The user who first submitted the search.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -40654,7 +40951,7 @@
       },
       "path": [
         {
-          "description": "Identifier for the search.",
+          "description": "The identifier for the search.",
           "name": "id",
           "required": true,
           "type": {
@@ -40667,7 +40964,7 @@
         }
       ],
       "query": [],
-      "specLocation": "sql/delete_async/SqlDeleteAsyncRequest.ts#L23-L38"
+      "specLocation": "sql/delete_async/SqlDeleteAsyncRequest.ts#L23-L45"
     },
     {
       "body": {
@@ -40694,7 +40991,7 @@
       "body": {
         "kind": "no_body"
       },
-      "description": "Get async SQL search results.\nGet the current status and available results for an async SQL search or stored synchronous SQL search.",
+      "description": "Get async SQL search results.\nGet the current status and available results for an async SQL search or stored synchronous SQL search.\n\nIf the Elasticsearch security features are enabled, only the user who first submitted the SQL search can retrieve the search using this API.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -40708,7 +41005,7 @@
       },
       "path": [
         {
-          "description": "Identifier for the search.",
+          "description": "The identifier for the search.",
           "name": "id",
           "required": true,
           "type": {
@@ -40722,7 +41019,7 @@
       ],
       "query": [
         {
-          "description": "Separator for CSV results. The API only supports this parameter for CSV responses.",
+          "description": "The separator for CSV results.\nThe API supports this parameter only for CSV responses.",
           "name": "delimiter",
           "required": false,
           "serverDefault": ",",
@@ -40735,7 +41032,7 @@
           }
         },
         {
-          "description": "Format for the response. You must specify a format using this parameter or the\nAccept HTTP header. If you specify both, the API uses this parameter.",
+          "description": "The format for the response.\nYou must specify a format using this parameter or the `Accept` HTTP header.\nIf you specify both, the API uses this parameter.",
           "name": "format",
           "required": false,
           "type": {
@@ -40747,7 +41044,7 @@
           }
         },
         {
-          "description": "Retention period for the search and its results. Defaults\nto the `keep_alive` period for the original SQL search.",
+          "description": "The retention period for the search and its results.\nIt defaults to the `keep_alive` period for the original SQL search.",
           "name": "keep_alive",
           "required": false,
           "type": {
@@ -40759,7 +41056,7 @@
           }
         },
         {
-          "description": "Period to wait for complete results. Defaults to no timeout,\nmeaning the request waits for complete search results.",
+          "description": "The period to wait for complete results.\nIt defaults to no timeout, meaning the request waits for complete search results.",
           "name": "wait_for_completion_timeout",
           "required": false,
           "type": {
@@ -40771,14 +41068,14 @@
           }
         }
       ],
-      "specLocation": "sql/get_async/SqlGetAsyncRequest.ts#L24-L60"
+      "specLocation": "sql/get_async/SqlGetAsyncRequest.ts#L24-L65"
     },
     {
       "body": {
         "kind": "properties",
         "properties": [
           {
-            "description": "Identifier for the search. This value is only returned for async and saved\nsynchronous searches. For CSV, TSV, and TXT responses, this value is returned\nin the `Async-ID` HTTP header.",
+            "description": "Identifier for the search.\nThis value is returned only for async and saved synchronous searches.\nFor CSV, TSV, and TXT responses, this value is returned in the `Async-ID` HTTP header.",
             "name": "id",
             "required": true,
             "type": {
@@ -40790,7 +41087,7 @@
             }
           },
           {
-            "description": "If `true`, the search is still running. If false, the search has finished.\nThis value is only returned for async and saved synchronous searches. For\nCSV, TSV, and TXT responses, this value is returned in the `Async-partial`\nHTTP header.",
+            "description": "If `true`, the search is still running.\nIf `false`, the search has finished.\nThis value is returned only for async and saved synchronous searches.\nFor CSV, TSV, and TXT responses, this value is returned in the `Async-partial` HTTP header.",
             "name": "is_running",
             "required": true,
             "type": {
@@ -40802,7 +41099,7 @@
             }
           },
           {
-            "description": "If `true`, the response does not contain complete search results. If `is_partial`\nis `true` and `is_running` is `true`, the search is still running. If `is_partial`\nis `true` but `is_running` is `false`, the results are partial due to a failure or\ntimeout. This value is only returned for async and saved synchronous searches.\nFor CSV, TSV, and TXT responses, this value is returned in the `Async-partial` HTTP header.",
+            "description": "If `true`, the response does not contain complete search results.\nIf `is_partial` is `true` and `is_running` is `true`, the search is still running.\nIf `is_partial` is `true` but `is_running` is `false`, the results are partial due to a failure or timeout.\nThis value is returned only for async and saved synchronous searches.\nFor CSV, TSV, and TXT responses, this value is returned in the `Async-partial` HTTP header.",
             "name": "is_partial",
             "required": true,
             "type": {
@@ -40829,7 +41126,7 @@
             }
           },
           {
-            "description": "Cursor for the next set of paginated results. For CSV, TSV, and\nTXT responses, this value is returned in the `Cursor` HTTP header.",
+            "description": "The cursor for the next set of paginated results.\nFor CSV, TSV, and TXT responses, this value is returned in the `Cursor` HTTP header.",
             "name": "cursor",
             "required": false,
             "type": {
@@ -40841,7 +41138,7 @@
             }
           },
           {
-            "description": "Values for the search results.",
+            "description": "The values for the search results.",
             "name": "rows",
             "required": true,
             "type": {
@@ -40885,7 +41182,7 @@
       },
       "path": [
         {
-          "description": "Identifier for the search.",
+          "description": "The identifier for the search.",
           "name": "id",
           "required": true,
           "type": {
@@ -40898,71 +41195,14 @@
         }
       ],
       "query": [],
-      "specLocation": "sql/get_async_status/SqlGetAsyncStatusRequest.ts#L23-L37"
+      "specLocation": "sql/get_async_status/SqlGetAsyncStatusRequest.ts#L23-L39"
     },
     {
       "body": {
         "kind": "properties",
         "properties": [
           {
-            "description": "Identifier for the search.",
-            "name": "id",
-            "required": true,
-            "type": {
-              "kind": "instance_of",
-              "type": {
-                "name": "string",
-                "namespace": "_builtins"
-              }
-            }
-          },
-          {
-            "description": "If `true`, the search is still running. If `false`, the search has finished.",
-            "name": "is_running",
-            "required": true,
-            "type": {
-              "kind": "instance_of",
-              "type": {
-                "name": "boolean",
-                "namespace": "_builtins"
-              }
-            }
-          },
-          {
-            "description": "If `true`, the response does not contain complete search results. If `is_partial`\nis `true` and `is_running` is `true`, the search is still running. If `is_partial`\nis `true` but `is_running` is `false`, the results are partial due to a failure or\ntimeout.",
-            "name": "is_partial",
-            "required": true,
-            "type": {
-              "kind": "instance_of",
-              "type": {
-                "name": "boolean",
-                "namespace": "_builtins"
-              }
-            }
-          },
-          {
-            "description": "Timestamp, in milliseconds since the Unix epoch, when the search started.\nThe API only returns this property for running searches.",
-            "name": "start_time_in_millis",
-            "required": true,
-            "type": {
-              "generics": [
-                {
-                  "kind": "instance_of",
-                  "type": {
-                    "name": "UnitMillis",
-                    "namespace": "_types"
-                  }
-                }
-              ],
-              "kind": "instance_of",
-              "type": {
-                "name": "EpochTime",
-                "namespace": "_types"
-              }
-            }
-          },
-          {
-            "description": "Timestamp, in milliseconds since the Unix epoch, when Elasticsearch will delete\nthe search and its results, even if the search is still running.",
+            "description": "The timestamp, in milliseconds since the Unix epoch, when Elasticsearch will delete the search and its results, even if the search is still running.",
             "name": "expiration_time_in_millis",
             "required": true,
             "type": {
@@ -40983,7 +41223,64 @@
             }
           },
           {
-            "description": "HTTP status code for the search. The API only returns this property for completed searches.",
+            "description": "The identifier for the search.",
+            "name": "id",
+            "required": true,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "_builtins"
+              }
+            }
+          },
+          {
+            "description": "If `true`, the search is still running.\nIf `false`, the search has finished.",
+            "name": "is_running",
+            "required": true,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "boolean",
+                "namespace": "_builtins"
+              }
+            }
+          },
+          {
+            "description": "If `true`, the response does not contain complete search results.\nIf `is_partial` is `true` and `is_running` is `true`, the search is still running.\nIf `is_partial` is `true` but `is_running` is `false`, the results are partial due to a failure or timeout.",
+            "name": "is_partial",
+            "required": true,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "boolean",
+                "namespace": "_builtins"
+              }
+            }
+          },
+          {
+            "description": "The timestamp, in milliseconds since the Unix epoch, when the search started.\nThe API returns this property only for running searches.",
+            "name": "start_time_in_millis",
+            "required": true,
+            "type": {
+              "generics": [
+                {
+                  "kind": "instance_of",
+                  "type": {
+                    "name": "UnitMillis",
+                    "namespace": "_types"
+                  }
+                }
+              ],
+              "kind": "instance_of",
+              "type": {
+                "name": "EpochTime",
+                "namespace": "_types"
+              }
+            }
+          },
+          {
+            "description": "The HTTP status code for the search.\nThe API returns this property only for completed searches.",
             "name": "completion_status",
             "required": false,
             "type": {
@@ -41011,7 +41308,20 @@
         "kind": "properties",
         "properties": [
           {
-            "description": "Default catalog (cluster) for queries. If unspecified, the queries execute on the data in the local cluster only.",
+            "description": "If `true`, the response has partial results when there are shard request timeouts or shard failures.\nIf `false`, the API returns an error with no partial results.",
+            "name": "allow_partial_search_results",
+            "required": false,
+            "serverDefault": false,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "boolean",
+                "namespace": "_builtins"
+              }
+            }
+          },
+          {
+            "description": "The default catalog (cluster) for queries.\nIf unspecified, the queries execute on the data in the local cluster only.",
             "name": "catalog",
             "required": false,
             "type": {
@@ -41023,7 +41333,9 @@
             }
           },
           {
-            "description": "If true, the results in a columnar fashion: one row represents all the values of a certain column from the current page of results.",
+            "description": "If `true`, the results are in a columnar fashion: one row represents all the values of a certain column from the current page of results.\nThe API supports this parameter only for CBOR, JSON, SMILE, and YAML responses.",
+            "extDocId": "sql-rest-columnar",
+            "extDocUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/sql-rest-columnar.html",
             "name": "columnar",
             "required": false,
             "serverDefault": false,
@@ -41036,7 +41348,7 @@
             }
           },
           {
-            "description": "Cursor used to retrieve a set of paginated results.\nIf you specify a cursor, the API only uses the `columnar` and `time_zone` request body parameters.\nIt ignores other request body parameters.",
+            "description": "The cursor used to retrieve a set of paginated results.\nIf you specify a cursor, the API only uses the `columnar` and `time_zone` request body parameters.\nIt ignores other request body parameters.",
             "name": "cursor",
             "required": false,
             "type": {
@@ -41048,7 +41360,7 @@
             }
           },
           {
-            "description": "The maximum number of rows (or entries) to return in one response",
+            "description": "The maximum number of rows (or entries) to return in one response.",
             "name": "fetch_size",
             "required": false,
             "serverDefault": 1000,
@@ -41061,9 +41373,22 @@
             }
           },
           {
-            "description": "Elasticsearch query DSL for additional filtering.",
-            "docId": "sql-rest-filtering",
-            "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/sql-rest-filtering.html",
+            "description": "If `false`, the API returns an exception when encountering multiple values for a field.\nIf `true`, the API is lenient and returns the first value from the array with no guarantee of consistent results.",
+            "name": "field_multi_value_leniency",
+            "required": false,
+            "serverDefault": false,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "boolean",
+                "namespace": "_builtins"
+              }
+            }
+          },
+          {
+            "description": "The Elasticsearch query DSL for additional filtering.",
+            "extDocId": "sql-rest-filtering",
+            "extDocUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/sql-rest-filtering.html",
             "name": "filter",
             "required": false,
             "serverDefault": "none",
@@ -41076,7 +41401,80 @@
             }
           },
           {
-            "description": "SQL query to run.",
+            "description": "If `true`, the search can run on frozen indices.",
+            "name": "index_using_frozen",
+            "required": false,
+            "serverDefault": false,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "boolean",
+                "namespace": "_builtins"
+              }
+            }
+          },
+          {
+            "description": "The retention period for an async or saved synchronous search.",
+            "name": "keep_alive",
+            "required": false,
+            "serverDefault": "5d",
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "Duration",
+                "namespace": "_types"
+              }
+            }
+          },
+          {
+            "description": "If `true`, Elasticsearch stores synchronous searches if you also specify the `wait_for_completion_timeout` parameter.\nIf `false`, Elasticsearch only stores async searches that don't finish before the `wait_for_completion_timeout`.",
+            "name": "keep_on_completion",
+            "required": false,
+            "serverDefault": false,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "boolean",
+                "namespace": "_builtins"
+              }
+            }
+          },
+          {
+            "description": "The minimum retention period for the scroll cursor.\nAfter this time period, a pagination request might fail because the scroll cursor is no longer available.\nSubsequent scroll requests prolong the lifetime of the scroll cursor by the duration of `page_timeout` in the scroll request.",
+            "name": "page_timeout",
+            "required": false,
+            "serverDefault": "45s",
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "Duration",
+                "namespace": "_types"
+              }
+            }
+          },
+          {
+            "description": "The values for parameters in the query.",
+            "name": "params",
+            "required": false,
+            "type": {
+              "key": {
+                "kind": "instance_of",
+                "type": {
+                  "name": "string",
+                  "namespace": "_builtins"
+                }
+              },
+              "kind": "dictionary_of",
+              "singleKey": false,
+              "value": {
+                "kind": "user_defined_value"
+              }
+            }
+          },
+          {
+            "description": "The SQL query to run.",
+            "extDocId": "sql-spec",
+            "extDocUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/sql-spec.html",
             "name": "query",
             "required": false,
             "type": {
@@ -41101,21 +41499,21 @@
             }
           },
           {
-            "description": "The timeout before a pagination request fails.",
-            "name": "page_timeout",
+            "description": "One or more runtime fields for the search request.\nThese fields take precedence over mapped fields with the same name.",
+            "name": "runtime_mappings",
             "required": false,
-            "serverDefault": "45s",
             "type": {
               "kind": "instance_of",
               "type": {
-                "name": "Duration",
-                "namespace": "_types"
+                "name": "RuntimeFields",
+                "namespace": "_types.mapping"
               }
             }
           },
           {
-            "description": "ISO-8601 time zone ID for the search.",
-            "docUrl": "https://docs.oracle.com/javase/8/docs/api/java/time/ZoneId.html",
+            "description": "The ISO-8601 time zone ID for the search.",
+            "extDocId": "time-zone-id",
+            "extDocUrl": "https://docs.oracle.com/javase/8/docs/api/java/time/ZoneId.html",
             "name": "time_zone",
             "required": false,
             "serverDefault": "Z",
@@ -41128,32 +41526,7 @@
             }
           },
           {
-            "description": "Throw an exception when encountering multiple values for a field (default) or be lenient and return the first value from the list (without any guarantees of what that will be - typically the first in natural ascending order).",
-            "name": "field_multi_value_leniency",
-            "required": false,
-            "serverDefault": false,
-            "type": {
-              "kind": "instance_of",
-              "type": {
-                "name": "boolean",
-                "namespace": "_builtins"
-              }
-            }
-          },
-          {
-            "description": "Defines one or more runtime fields in the search request. These fields take\nprecedence over mapped fields with the same name.",
-            "name": "runtime_mappings",
-            "required": false,
-            "type": {
-              "kind": "instance_of",
-              "type": {
-                "name": "RuntimeFields",
-                "namespace": "_types.mapping"
-              }
-            }
-          },
-          {
-            "description": "Period to wait for complete results. Defaults to no timeout, meaning the request waits for complete search results. If the search doesn’t finish within this period, the search becomes async.",
+            "description": "The period to wait for complete results.\nIt defaults to no timeout, meaning the request waits for complete search results.\nIf the search doesn't finish within this period, the search becomes async.\n\nTo save a synchronous search, you must specify this parameter and the `keep_on_completion` parameter.",
             "name": "wait_for_completion_timeout",
             "required": false,
             "type": {
@@ -41161,64 +41534,6 @@
               "type": {
                 "name": "Duration",
                 "namespace": "_types"
-              }
-            }
-          },
-          {
-            "description": "Values for parameters in the query.",
-            "name": "params",
-            "required": false,
-            "type": {
-              "key": {
-                "kind": "instance_of",
-                "type": {
-                  "name": "string",
-                  "namespace": "_builtins"
-                }
-              },
-              "kind": "dictionary_of",
-              "singleKey": false,
-              "value": {
-                "kind": "user_defined_value"
-              }
-            }
-          },
-          {
-            "description": "Retention period for an async or saved synchronous search.",
-            "name": "keep_alive",
-            "required": false,
-            "serverDefault": "5d",
-            "type": {
-              "kind": "instance_of",
-              "type": {
-                "name": "Duration",
-                "namespace": "_types"
-              }
-            }
-          },
-          {
-            "description": "If true, Elasticsearch stores synchronous searches if you also specify the wait_for_completion_timeout parameter. If false, Elasticsearch only stores async searches that don’t finish before the wait_for_completion_timeout.",
-            "name": "keep_on_completion",
-            "required": false,
-            "serverDefault": false,
-            "type": {
-              "kind": "instance_of",
-              "type": {
-                "name": "boolean",
-                "namespace": "_builtins"
-              }
-            }
-          },
-          {
-            "description": "If true, the search can run on frozen indices. Defaults to false.",
-            "name": "index_using_frozen",
-            "required": false,
-            "serverDefault": false,
-            "type": {
-              "kind": "instance_of",
-              "type": {
-                "name": "boolean",
-                "namespace": "_builtins"
               }
             }
           }
@@ -41239,9 +41554,9 @@
       "path": [],
       "query": [
         {
-          "description": "Format for the response.",
-          "docId": "sql-rest-format",
-          "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/sql-rest-format.html",
+          "description": "The format for the response.\nYou can also specify a format using the `Accept` HTTP header.\nIf you specify both this parameter and the `Accept` HTTP header, this parameter takes precedence.",
+          "extDocId": "sql-rest-format",
+          "extDocUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/sql-rest-format.html",
           "name": "format",
           "required": false,
           "type": {
@@ -41253,48 +41568,12 @@
           }
         }
       ],
-      "specLocation": "sql/query/QuerySqlRequest.ts#L28-L124"
+      "specLocation": "sql/query/QuerySqlRequest.ts#L28-L146"
     },
     {
       "body": {
         "kind": "properties",
         "properties": [
-          {
-            "description": "Identifier for the search. This value is only returned for async and saved\nsynchronous searches. For CSV, TSV, and TXT responses, this value is returned\nin the `Async-ID` HTTP header.",
-            "name": "id",
-            "required": false,
-            "type": {
-              "kind": "instance_of",
-              "type": {
-                "name": "Id",
-                "namespace": "_types"
-              }
-            }
-          },
-          {
-            "description": "If `true`, the search is still running. If false, the search has finished.\nThis value is only returned for async and saved synchronous searches. For\nCSV, TSV, and TXT responses, this value is returned in the `Async-partial`\nHTTP header.",
-            "name": "is_running",
-            "required": false,
-            "type": {
-              "kind": "instance_of",
-              "type": {
-                "name": "boolean",
-                "namespace": "_builtins"
-              }
-            }
-          },
-          {
-            "description": "If `true`, the response does not contain complete search results. If `is_partial`\nis `true` and `is_running` is `true`, the search is still running. If `is_partial`\nis `true` but `is_running` is `false`, the results are partial due to a failure or\ntimeout. This value is only returned for async and saved synchronous searches.\nFor CSV, TSV, and TXT responses, this value is returned in the `Async-partial` HTTP header.",
-            "name": "is_partial",
-            "required": false,
-            "type": {
-              "kind": "instance_of",
-              "type": {
-                "name": "boolean",
-                "namespace": "_builtins"
-              }
-            }
-          },
           {
             "description": "Column headings for the search results. Each object is a column.",
             "name": "columns",
@@ -41311,7 +41590,7 @@
             }
           },
           {
-            "description": "Cursor for the next set of paginated results. For CSV, TSV, and\nTXT responses, this value is returned in the `Cursor` HTTP header.",
+            "description": "The cursor for the next set of paginated results.\nFor CSV, TSV, and TXT responses, this value is returned in the `Cursor` HTTP header.",
             "name": "cursor",
             "required": false,
             "type": {
@@ -41323,7 +41602,43 @@
             }
           },
           {
-            "description": "Values for the search results.",
+            "description": "The identifier for the search.\nThis value is returned only for async and saved synchronous searches.\nFor CSV, TSV, and TXT responses, this value is returned in the `Async-ID` HTTP header.",
+            "name": "id",
+            "required": false,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "Id",
+                "namespace": "_types"
+              }
+            }
+          },
+          {
+            "description": "If `true`, the search is still running.\nIf `false`, the search has finished.\nThis value is returned only for async and saved synchronous searches.\nFor CSV, TSV, and TXT responses, this value is returned in the `Async-partial` HTTP header.",
+            "name": "is_running",
+            "required": false,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "boolean",
+                "namespace": "_builtins"
+              }
+            }
+          },
+          {
+            "description": "If `true`, the response does not contain complete search results.\nIf `is_partial` is `true` and `is_running` is `true`, the search is still running.\nIf `is_partial` is `true` but `is_running` is `false`, the results are partial due to a failure or timeout.\nThis value is returned only for async and saved synchronous searches.\nFor CSV, TSV, and TXT responses, this value is returned in the `Async-partial` HTTP header.",
+            "name": "is_partial",
+            "required": false,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "boolean",
+                "namespace": "_builtins"
+              }
+            }
+          },
+          {
+            "description": "The values for the search results.",
             "name": "rows",
             "required": true,
             "type": {
@@ -41367,9 +41682,9 @@
             }
           },
           {
-            "description": "Elasticsearch query DSL for additional filtering.",
-            "docId": "sql-rest-filtering",
-            "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/sql-rest-filtering.html",
+            "description": "The Elasticsearch query DSL for additional filtering.",
+            "extDocId": "sql-rest-filtering",
+            "extDocUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/sql-rest-filtering.html",
             "name": "filter",
             "required": false,
             "serverDefault": "none",
@@ -41382,7 +41697,7 @@
             }
           },
           {
-            "description": "SQL query to run.",
+            "description": "The SQL query to run.",
             "name": "query",
             "required": true,
             "type": {
@@ -41394,8 +41709,9 @@
             }
           },
           {
-            "description": "ISO-8601 time zone ID for the search.",
-            "docUrl": "https://docs.oracle.com/javase/8/docs/api/java/time/ZoneId.html",
+            "description": "The ISO-8601 time zone ID for the search.",
+            "extDocId": "time-zone-id",
+            "extDocUrl": "https://docs.oracle.com/javase/8/docs/api/java/time/ZoneId.html",
             "name": "time_zone",
             "required": false,
             "serverDefault": "Z",
@@ -41409,7 +41725,7 @@
           }
         ]
       },
-      "description": "Translate SQL into Elasticsearch queries.\nTranslate an SQL search into a search API request containing Query DSL.",
+      "description": "Translate SQL into Elasticsearch queries.\nTranslate an SQL search into a search API request containing Query DSL.\nIt accepts the same request body parameters as the SQL search API, excluding `cursor`.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -41423,7 +41739,7 @@
       },
       "path": [],
       "query": [],
-      "specLocation": "sql/translate/TranslateSqlRequest.ts#L25-L56"
+      "specLocation": "sql/translate/TranslateSqlRequest.ts#L25-L59"
     },
     {
       "body": {
@@ -41525,7 +41841,7 @@
       "body": {
         "kind": "no_body"
       },
-      "description": "Delete a synonym set.",
+      "description": "Delete a synonym set.\n\nYou can only delete a synonyms set that is not in use by any index analyzer.\n\nSynonyms sets can be used in synonym graph token filters and synonym token filters.\nThese synonym filters can be used as part of search analyzers.\n\nAnalyzers need to be loaded when an index is restored (such as when a node starts, or the index becomes open).\nEven if the analyzer is not used on any field mapping, it still needs to be loaded on the index recovery phase.\n\nIf any analyzers cannot be loaded, the index becomes unavailable and the cluster status becomes red or yellow as index shards are not available.\nTo prevent that, synonyms sets that are used in analyzers can't be deleted.\nA delete request in this case will return a 400 response code.\n\nTo remove a synonyms set, you must first remove all indices that contain analyzers using it.\nYou can migrate an index by creating a new index that does not contain the token filter with the synonyms set, and use the reindex API in order to copy over the index data.\nOnce finished, you can delete the index.\nWhen the synonyms set is not used in analyzers, you will be able to delete it.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -41539,7 +41855,7 @@
       },
       "path": [
         {
-          "description": "The id of the synonyms set to be deleted",
+          "description": "The synonyms set identifier to delete.",
           "name": "id",
           "required": true,
           "type": {
@@ -41552,7 +41868,7 @@
         }
       ],
       "query": [],
-      "specLocation": "synonyms/delete_synonym/SynonymsDeleteRequest.ts#L22-L35"
+      "specLocation": "synonyms/delete_synonym/SynonymsDeleteRequest.ts#L22-L54"
     },
     {
       "body": {
@@ -41593,7 +41909,7 @@
       },
       "path": [
         {
-          "description": "The id of the synonym set to be updated",
+          "description": "The ID of the synonym set to update.",
           "name": "set_id",
           "required": true,
           "type": {
@@ -41605,7 +41921,7 @@
           }
         },
         {
-          "description": "The id of the synonym rule to be deleted",
+          "description": "The ID of the synonym rule to delete.",
           "name": "rule_id",
           "required": true,
           "type": {
@@ -41618,7 +41934,7 @@
         }
       ],
       "query": [],
-      "specLocation": "synonyms/delete_synonym_rule/SynonymRuleDeleteRequest.ts#L22-L41"
+      "specLocation": "synonyms/delete_synonym_rule/SynonymRuleDeleteRequest.ts#L22-L42"
     },
     {
       "body": {
@@ -41659,7 +41975,7 @@
       },
       "path": [
         {
-          "description": "\"The id of the synonyms set to be retrieved",
+          "description": "The synonyms set identifier to retrieve.",
           "name": "id",
           "required": true,
           "type": {
@@ -41673,7 +41989,7 @@
       ],
       "query": [
         {
-          "description": "Starting offset for query rules to be retrieved",
+          "description": "The starting offset for query rules to retrieve.",
           "name": "from",
           "required": false,
           "serverDefault": 0,
@@ -41686,7 +42002,7 @@
           }
         },
         {
-          "description": "specifies a max number of query rules to retrieve",
+          "description": "The max number of query rules to retrieve.",
           "name": "size",
           "required": false,
           "serverDefault": 10,
@@ -41699,13 +42015,14 @@
           }
         }
       ],
-      "specLocation": "synonyms/get_synonym/SynonymsGetRequest.ts#L23-L48"
+      "specLocation": "synonyms/get_synonym/SynonymsGetRequest.ts#L23-L50"
     },
     {
       "body": {
         "kind": "properties",
         "properties": [
           {
+            "description": "The total number of synonyms rules that the synonyms set contains.",
             "name": "count",
             "required": true,
             "type": {
@@ -41717,6 +42034,7 @@
             }
           },
           {
+            "description": "Synonym rule details.",
             "name": "synonyms_set",
             "required": true,
             "type": {
@@ -41737,7 +42055,7 @@
         "name": "Response",
         "namespace": "synonyms.get_synonym"
       },
-      "specLocation": "synonyms/get_synonym/SynonymsGetResponse.ts#L23-L28"
+      "specLocation": "synonyms/get_synonym/SynonymsGetResponse.ts#L23-L34"
     },
     {
       "attachedBehaviors": [
@@ -41760,7 +42078,7 @@
       },
       "path": [
         {
-          "description": "The id of the synonym set to retrieve the synonym rule from",
+          "description": "The ID of the synonym set to retrieve the synonym rule from.",
           "name": "set_id",
           "required": true,
           "type": {
@@ -41772,7 +42090,7 @@
           }
         },
         {
-          "description": "The id of the synonym rule to retrieve",
+          "description": "The ID of the synonym rule to retrieve.",
           "name": "rule_id",
           "required": true,
           "type": {
@@ -41785,7 +42103,7 @@
         }
       ],
       "query": [],
-      "specLocation": "synonyms/get_synonym_rule/SynonymRuleGetRequest.ts#L22-L41"
+      "specLocation": "synonyms/get_synonym_rule/SynonymRuleGetRequest.ts#L22-L42"
     },
     {
       "body": {
@@ -41827,7 +42145,7 @@
       "path": [],
       "query": [
         {
-          "description": "Starting offset",
+          "description": "The starting offset for synonyms sets to retrieve.",
           "name": "from",
           "required": false,
           "serverDefault": 0,
@@ -41840,7 +42158,7 @@
           }
         },
         {
-          "description": "specifies a max number of results to get",
+          "description": "The maximum number of synonyms sets to retrieve.",
           "name": "size",
           "required": false,
           "serverDefault": 10,
@@ -41853,13 +42171,14 @@
           }
         }
       ],
-      "specLocation": "synonyms/get_synonyms_sets/SynonymsSetsGetRequest.ts#L22-L42"
+      "specLocation": "synonyms/get_synonyms_sets/SynonymsSetsGetRequest.ts#L22-L44"
     },
     {
       "body": {
         "kind": "properties",
         "properties": [
           {
+            "description": "The total number of synonyms sets defined.",
             "name": "count",
             "required": true,
             "type": {
@@ -41871,6 +42190,7 @@
             }
           },
           {
+            "description": "The identifier and total number of defined synonym rules for each synonyms set.",
             "name": "results",
             "required": true,
             "type": {
@@ -41891,7 +42211,7 @@
         "name": "Response",
         "namespace": "synonyms.get_synonyms_sets"
       },
-      "specLocation": "synonyms/get_synonyms_sets/SynonymsSetsGetResponse.ts#L23-L28"
+      "specLocation": "synonyms/get_synonyms_sets/SynonymsSetsGetResponse.ts#L23-L34"
     },
     {
       "attachedBehaviors": [
@@ -41901,7 +42221,7 @@
         "kind": "properties",
         "properties": [
           {
-            "description": "The synonym set information to update",
+            "description": "The synonym rules definitions for the synonyms set.",
             "name": "synonyms_set",
             "required": true,
             "type": {
@@ -41929,7 +42249,7 @@
           }
         ]
       },
-      "description": "Create or update a synonym set.\nSynonyms sets are limited to a maximum of 10,000 synonym rules per set.\nIf you need to manage more synonym rules, you can create multiple synonym sets.",
+      "description": "Create or update a synonym set.\nSynonyms sets are limited to a maximum of 10,000 synonym rules per set.\nIf you need to manage more synonym rules, you can create multiple synonym sets.\n\nWhen an existing synonyms set is updated, the search analyzers that use the synonyms set are reloaded automatically for all indices.\nThis is equivalent to invoking the reload search analyzers API for all indices that use the synonyms set.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -41943,7 +42263,7 @@
       },
       "path": [
         {
-          "description": "The id of the synonyms set to be created or updated",
+          "description": "The ID of the synonyms set to be created or updated.",
           "name": "id",
           "required": true,
           "type": {
@@ -41956,7 +42276,7 @@
         }
       ],
       "query": [],
-      "specLocation": "synonyms/put_synonym/SynonymsPutRequest.ts#L23-L44"
+      "specLocation": "synonyms/put_synonym/SynonymsPutRequest.ts#L23-L49"
     },
     {
       "body": {
@@ -42001,6 +42321,9 @@
         "kind": "properties",
         "properties": [
           {
+            "description": "The synonym rule information definition, which must be in Solr format.",
+            "extDocId": "synonym-set-define",
+            "extDocUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/analysis-synonym-graph-tokenfilter.html#analysis-synonym-graph-define-synonyms",
             "name": "synonyms",
             "required": true,
             "type": {
@@ -42013,7 +42336,7 @@
           }
         ]
       },
-      "description": "Create or update a synonym rule.\nCreate or update a synonym rule in a synonym set.",
+      "description": "Create or update a synonym rule.\nCreate or update a synonym rule in a synonym set.\n\nIf any of the synonym rules included is invalid, the API returns an error.\n\nWhen you update a synonym rule, all analyzers using the synonyms set will be reloaded automatically to reflect the new rule.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -42027,7 +42350,7 @@
       },
       "path": [
         {
-          "description": "The id of the synonym set to be updated with the synonym rule",
+          "description": "The ID of the synonym set.",
           "name": "set_id",
           "required": true,
           "type": {
@@ -42039,7 +42362,7 @@
           }
         },
         {
-          "description": "The id of the synonym rule to be updated or created",
+          "description": "The ID of the synonym rule to be updated or created.",
           "name": "rule_id",
           "required": true,
           "type": {
@@ -42052,7 +42375,7 @@
         }
       ],
       "query": [],
-      "specLocation": "synonyms/put_synonym_rule/SynonymRulePutRequest.ts#L23-L48"
+      "specLocation": "synonyms/put_synonym_rule/SynonymRulePutRequest.ts#L23-L54"
     },
     {
       "body": {
@@ -43499,9 +43822,22 @@
               "namespace": "_builtins"
             }
           }
+        },
+        {
+          "description": "Period to wait for a response. If no response is received before the timeout expires, the request fails and returns an error.",
+          "name": "timeout",
+          "required": false,
+          "serverDefault": "30s",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Duration",
+              "namespace": "_types"
+            }
+          }
         }
       ],
-      "specLocation": "transform/reset_transform/ResetTransformRequest.ts#L23-L49"
+      "specLocation": "transform/reset_transform/ResetTransformRequest.ts#L24-L55"
     },
     {
       "body": {
@@ -47685,6 +48021,7 @@
       "specLocation": "_types/aggregations/Aggregation.ts#L20-L20"
     },
     {
+      "description": "An Elasticsearch Query DSL (Domain Specific Language) object that defines a query.",
       "extDocId": "query-dsl",
       "extDocUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/query-dsl.html",
       "kind": "interface",
@@ -48746,7 +49083,7 @@
           }
         }
       ],
-      "specLocation": "_types/query_dsl/abstractions.ts#L102-L427",
+      "specLocation": "_types/query_dsl/abstractions.ts#L102-L428",
       "variants": {
         "kind": "container",
         "nonExhaustive": true
@@ -48925,7 +49262,7 @@
           }
         }
       ],
-      "specLocation": "_types/query_dsl/abstractions.ts#L452-L463"
+      "specLocation": "_types/query_dsl/abstractions.ts#L453-L464"
     },
     {
       "kind": "type_alias",
@@ -49271,7 +49608,7 @@
           }
         }
       ],
-      "specLocation": "_types/query_dsl/abstractions.ts#L465-L499"
+      "specLocation": "_types/query_dsl/abstractions.ts#L466-L500"
     },
     {
       "kind": "enum",
@@ -49287,7 +49624,7 @@
         "name": "CombinedFieldsOperator",
         "namespace": "_types.query_dsl"
       },
-      "specLocation": "_types/query_dsl/abstractions.ts#L512-L515"
+      "specLocation": "_types/query_dsl/abstractions.ts#L513-L516"
     },
     {
       "kind": "enum",
@@ -49305,7 +49642,7 @@
         "name": "CombinedFieldsZeroTerms",
         "namespace": "_types.query_dsl"
       },
-      "specLocation": "_types/query_dsl/abstractions.ts#L517-L526"
+      "specLocation": "_types/query_dsl/abstractions.ts#L518-L527"
     },
     {
       "extDocId": "query-dsl-constant-score-query",
@@ -51561,7 +51898,7 @@
           }
         }
       ],
-      "specLocation": "_types/query_dsl/abstractions.ts#L429-L446"
+      "specLocation": "_types/query_dsl/abstractions.ts#L430-L447"
     },
     {
       "kind": "enum",
@@ -52036,7 +52373,7 @@
         }
       ],
       "shortcutProperty": "field",
-      "specLocation": "_types/query_dsl/abstractions.ts#L528-L542"
+      "specLocation": "_types/query_dsl/abstractions.ts#L529-L543"
     },
     {
       "inherits": {
@@ -59082,7 +59419,7 @@
           }
         }
       ],
-      "specLocation": "_types/query_dsl/abstractions.ts#L501-L510"
+      "specLocation": "_types/query_dsl/abstractions.ts#L502-L511"
     },
     {
       "inherits": {
@@ -76471,7 +76808,7 @@
           }
         }
       ],
-      "specLocation": "_types/Base.ts#L76-L85"
+      "specLocation": "_types/Base.ts#L105-L114"
     },
     {
       "codegenNames": [
@@ -94840,7 +95177,7 @@
         "name": "Feature",
         "namespace": "indices.get"
       },
-      "specLocation": "indices/get/IndicesGetRequest.ts#L91-L95"
+      "specLocation": "indices/get/IndicesGetRequest.ts#L92-L96"
     },
     {
       "kind": "type_alias",
@@ -94848,7 +95185,7 @@
         "name": "Features",
         "namespace": "indices.get"
       },
-      "specLocation": "indices/get/IndicesGetRequest.ts#L96-L96",
+      "specLocation": "indices/get/IndicesGetRequest.ts#L97-L97",
       "type": {
         "items": [
           {
@@ -103476,7 +103813,7 @@
         "name": "QueryRuleCriteriaType",
         "namespace": "query_rules._types"
       },
-      "specLocation": "query_rules/_types/QueryRuleset.ts#L55-L68"
+      "specLocation": "query_rules/_types/QueryRuleset.ts#L95-L108"
     },
     {
       "kind": "enum",
@@ -103492,7 +103829,7 @@
         "name": "QueryRuleType",
         "namespace": "query_rules._types"
       },
-      "specLocation": "query_rules/_types/QueryRuleset.ts#L44-L47"
+      "specLocation": "query_rules/_types/QueryRuleset.ts#L60-L63"
     },
     {
       "kind": "enum",
@@ -103542,7 +103879,7 @@
         "name": "IndexingJobState",
         "namespace": "rollup.get_jobs"
       },
-      "specLocation": "rollup/get_jobs/types.ts#L66-L72"
+      "specLocation": "rollup/get_jobs/types.ts#L77-L83"
     },
     {
       "kind": "enum",
@@ -103768,7 +104105,7 @@
         "name": "IndexPrivilege",
         "namespace": "security._types"
       },
-      "specLocation": "security/_types/Privileges.ts#L362-L404"
+      "specLocation": "security/_types/Privileges.ts#L361-L403"
     },
     {
       "codegenNames": [
@@ -103782,7 +104119,7 @@
         "name": "IndicesPrivilegesQuery",
         "namespace": "security._types"
       },
-      "specLocation": "security/_types/Privileges.ts#L317-L325",
+      "specLocation": "security/_types/Privileges.ts#L316-L324",
       "type": {
         "items": [
           {
@@ -103832,7 +104169,7 @@
           }
         }
       ],
-      "specLocation": "security/_types/Privileges.ts#L327-L337"
+      "specLocation": "security/_types/Privileges.ts#L326-L336"
     },
     {
       "kind": "interface",
@@ -103920,7 +104257,7 @@
         }
       ],
       "shortcutProperty": "source",
-      "specLocation": "security/_types/Privileges.ts#L339-L357"
+      "specLocation": "security/_types/Privileges.ts#L338-L356"
     },
     {
       "codegenNames": [
@@ -103932,7 +104269,7 @@
         "name": "RoleTemplateInlineQuery",
         "namespace": "security._types"
       },
-      "specLocation": "security/_types/Privileges.ts#L359-L360",
+      "specLocation": "security/_types/Privileges.ts#L358-L359",
       "type": {
         "items": [
           {
@@ -103960,7 +104297,7 @@
         "name": "RemoteClusterPrivilege",
         "namespace": "security._types"
       },
-      "specLocation": "security/_types/Privileges.ts#L201-L214"
+      "specLocation": "security/_types/Privileges.ts#L201-L213"
     },
     {
       "isOpen": true,
@@ -105162,7 +105499,7 @@
         "name": "SqlFormat",
         "namespace": "sql.query"
       },
-      "specLocation": "sql/query/QuerySqlRequest.ts#L126-L134"
+      "specLocation": "sql/query/QuerySqlRequest.ts#L148-L156"
     },
     {
       "kind": "type_alias",
@@ -106259,7 +106596,7 @@
         "name": "WatcherMetric",
         "namespace": "watcher.stats"
       },
-      "specLocation": "watcher/stats/types.ts#L42-L48"
+      "specLocation": "watcher/stats/types.ts#L63-L69"
     },
     {
       "kind": "enum",
@@ -106300,7 +106637,7 @@
         "name": "XPackCategory",
         "namespace": "xpack.info"
       },
-      "specLocation": "xpack/info/XPackInfoRequest.ts#L49-L53"
+      "specLocation": "xpack/info/XPackInfoRequest.ts#L52-L56"
     },
     {
       "attachedBehaviors": [
@@ -115832,9 +116169,38 @@
     },
     {
       "description": "Data stream lifecycle with rollover can be used to display the configuration including the default rollover conditions,\nif asked.",
+      "inherits": {
+        "type": {
+          "name": "DataStreamLifecycle",
+          "namespace": "indices._types"
+        }
+      },
       "kind": "interface",
       "name": {
         "name": "DataStreamLifecycleWithRollover",
+        "namespace": "indices._types"
+      },
+      "properties": [
+        {
+          "description": "The conditions which will trigger the rollover of a backing index as configured by the cluster setting `cluster.lifecycle.default.rollover`.\nThis property is an implementation detail and it will only be retrieved when the query param `include_defaults` is set to true.\nThe contents of this field are subject to change.",
+          "name": "rollover",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "DataStreamLifecycleRolloverConditions",
+              "namespace": "indices._types"
+            }
+          }
+        }
+      ],
+      "specLocation": "indices/_types/DataStreamLifecycle.ts#L47-L58"
+    },
+    {
+      "description": "Data stream lifecycle denotes that a data stream is managed by the data stream lifecycle and contains the configuration.",
+      "kind": "interface",
+      "name": {
+        "name": "DataStreamLifecycle",
         "namespace": "indices._types"
       },
       "properties": [
@@ -115863,19 +116229,20 @@
           }
         },
         {
-          "description": "The conditions which will trigger the rollover of a backing index as configured by the cluster setting `cluster.lifecycle.default.rollover`.\nThis property is an implementation detail and it will only be retrieved when the query param `include_defaults` is set to true.\nThe contents of this field are subject to change.",
-          "name": "rollover",
+          "description": "If defined, it turns data stream lifecycle on/off (`true`/`false`) for this data stream. A data stream lifecycle\nthat's disabled (enabled: `false`) will have no effect on the data stream.",
+          "name": "enabled",
           "required": false,
+          "serverDefault": true,
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "DataStreamLifecycleRolloverConditions",
-              "namespace": "indices._types"
+              "name": "boolean",
+              "namespace": "_builtins"
             }
           }
         }
       ],
-      "specLocation": "indices/_types/DataStreamLifecycle.ts#L33-L55"
+      "specLocation": "indices/_types/DataStreamLifecycle.ts#L25-L45"
     },
     {
       "kind": "interface",
@@ -116076,7 +116443,7 @@
           }
         }
       ],
-      "specLocation": "indices/_types/DataStreamLifecycle.ts#L57-L69"
+      "specLocation": "indices/_types/DataStreamLifecycle.ts#L60-L72"
     },
     {
       "kind": "interface",
@@ -116259,39 +116626,6 @@
         }
       ],
       "specLocation": "indices/_types/Alias.ts#L23-L53"
-    },
-    {
-      "description": "Data stream lifecycle denotes that a data stream is managed by the data stream lifecycle and contains the configuration.",
-      "kind": "interface",
-      "name": {
-        "name": "DataStreamLifecycle",
-        "namespace": "indices._types"
-      },
-      "properties": [
-        {
-          "name": "data_retention",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "Duration",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "name": "downsampling",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "DataStreamLifecycleDownsampling",
-              "namespace": "indices._types"
-            }
-          }
-        }
-      ],
-      "specLocation": "indices/_types/DataStreamLifecycle.ts#L25-L31"
     },
     {
       "kind": "interface",
@@ -119601,7 +119935,7 @@
           }
         }
       ],
-      "specLocation": "_types/Base.ts#L87-L89"
+      "specLocation": "_types/Base.ts#L116-L118"
     },
     {
       "kind": "interface",
@@ -119786,7 +120120,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "DataStreamLifecycle",
+              "name": "DataStreamLifecycleWithRollover",
               "namespace": "indices._types"
             }
           }
@@ -120635,7 +120969,7 @@
           }
         }
       ],
-      "specLocation": "indices/put_index_template/IndicesPutIndexTemplateRequest.ts#L121-L143"
+      "specLocation": "indices/put_index_template/IndicesPutIndexTemplateRequest.ts#L152-L174"
     },
     {
       "kind": "interface",
@@ -120688,7 +121022,7 @@
           }
         }
       ],
-      "specLocation": "_types/Base.ts#L91-L94"
+      "specLocation": "_types/Base.ts#L120-L123"
     },
     {
       "kind": "interface",
@@ -121835,6 +122169,7 @@
       },
       "properties": [
         {
+          "description": "The Elasticsearch Git commit's date.",
           "name": "build_date",
           "required": true,
           "type": {
@@ -121846,6 +122181,7 @@
           }
         },
         {
+          "description": "The build flavor. For example, `default`.",
           "name": "build_flavor",
           "required": true,
           "type": {
@@ -121857,6 +122193,7 @@
           }
         },
         {
+          "description": "The Elasticsearch Git commit's SHA hash.",
           "name": "build_hash",
           "required": true,
           "type": {
@@ -121868,6 +122205,7 @@
           }
         },
         {
+          "description": "Indicates whether the Elasticsearch build was a snapshot.",
           "name": "build_snapshot",
           "required": true,
           "type": {
@@ -121879,6 +122217,7 @@
           }
         },
         {
+          "description": "The build type that corresponds to how Elasticsearch was installed.\nFor example, `docker`, `rpm`, or `tar`.",
           "name": "build_type",
           "required": true,
           "type": {
@@ -121890,6 +122229,7 @@
           }
         },
         {
+          "description": "The version number of Elasticsearch's underlying Lucene software.",
           "name": "lucene_version",
           "required": true,
           "type": {
@@ -121901,6 +122241,7 @@
           }
         },
         {
+          "description": "The minimum index version with which the responding node can read from disk.",
           "name": "minimum_index_compatibility_version",
           "required": true,
           "type": {
@@ -121912,6 +122253,7 @@
           }
         },
         {
+          "description": "The minimum node version with which the responding node can communicate.\nAlso the minimum version from which you can perform a rolling upgrade.",
           "name": "minimum_wire_compatibility_version",
           "required": true,
           "type": {
@@ -121923,6 +122265,7 @@
           }
         },
         {
+          "description": "The Elasticsearch version number.",
           "name": "number",
           "required": true,
           "type": {
@@ -121934,7 +122277,7 @@
           }
         }
       ],
-      "specLocation": "_types/Base.ts#L54-L64"
+      "specLocation": "_types/Base.ts#L54-L93"
     },
     {
       "kind": "interface",
@@ -126331,7 +126674,7 @@
       "kind": "interface",
       "name": {
         "name": "Document",
-        "namespace": "ingest.simulate"
+        "namespace": "ingest._types"
       },
       "properties": [
         {
@@ -126367,13 +126710,13 @@
           }
         }
       ],
-      "specLocation": "ingest/simulate/types.ts#L62-L76"
+      "specLocation": "ingest/_types/Simulation.ts#L62-L76"
     },
     {
       "kind": "interface",
       "name": {
         "name": "SimulateDocumentResult",
-        "namespace": "ingest.simulate"
+        "namespace": "ingest._types"
       },
       "properties": [
         {
@@ -126383,7 +126726,7 @@
             "kind": "instance_of",
             "type": {
               "name": "DocumentSimulation",
-              "namespace": "ingest.simulate"
+              "namespace": "ingest._types"
             }
           }
         },
@@ -126407,13 +126750,13 @@
               "kind": "instance_of",
               "type": {
                 "name": "PipelineSimulation",
-                "namespace": "ingest.simulate"
+                "namespace": "ingest._types"
               }
             }
           }
         }
       ],
-      "specLocation": "ingest/simulate/types.ts#L46-L50"
+      "specLocation": "ingest/_types/Simulation.ts#L46-L50"
     },
     {
       "attachedBehaviors": [
@@ -126451,7 +126794,7 @@
       "kind": "interface",
       "name": {
         "name": "DocumentSimulation",
-        "namespace": "ingest.simulate"
+        "namespace": "ingest._types"
       },
       "properties": [
         {
@@ -126485,7 +126828,7 @@
             "kind": "instance_of",
             "type": {
               "name": "Ingest",
-              "namespace": "ingest.simulate"
+              "namespace": "ingest._types"
             }
           }
         },
@@ -126553,13 +126896,13 @@
           }
         }
       ],
-      "specLocation": "ingest/simulate/types.ts#L78-L108"
+      "specLocation": "ingest/_types/Simulation.ts#L78-L108"
     },
     {
       "kind": "interface",
       "name": {
         "name": "Ingest",
-        "namespace": "ingest.simulate"
+        "namespace": "ingest._types"
       },
       "properties": [
         {
@@ -126575,7 +126918,7 @@
             "kind": "instance_of",
             "type": {
               "name": "Redact",
-              "namespace": "ingest.simulate"
+              "namespace": "ingest._types"
             }
           }
         },
@@ -126602,13 +126945,13 @@
           }
         }
       ],
-      "specLocation": "ingest/simulate/types.ts#L29-L37"
+      "specLocation": "ingest/_types/Simulation.ts#L29-L37"
     },
     {
       "kind": "interface",
       "name": {
         "name": "Redact",
-        "namespace": "ingest.simulate"
+        "namespace": "ingest._types"
       },
       "properties": [
         {
@@ -126624,13 +126967,13 @@
           }
         }
       ],
-      "specLocation": "ingest/simulate/types.ts#L39-L44"
+      "specLocation": "ingest/_types/Simulation.ts#L39-L44"
     },
     {
       "kind": "interface",
       "name": {
         "name": "PipelineSimulation",
-        "namespace": "ingest.simulate"
+        "namespace": "ingest._types"
       },
       "properties": [
         {
@@ -126640,7 +126983,7 @@
             "kind": "instance_of",
             "type": {
               "name": "DocumentSimulation",
-              "namespace": "ingest.simulate"
+              "namespace": "ingest._types"
             }
           }
         },
@@ -126711,7 +127054,7 @@
           }
         }
       ],
-      "specLocation": "ingest/simulate/types.ts#L52-L60"
+      "specLocation": "ingest/_types/Simulation.ts#L52-L60"
     },
     {
       "kind": "interface",
@@ -139101,6 +139444,7 @@
       },
       "properties": [
         {
+          "description": "A unique identifier for the rule.",
           "name": "rule_id",
           "required": true,
           "type": {
@@ -139112,6 +139456,7 @@
           }
         },
         {
+          "description": "The type of rule.\n`pinned` will identify and pin specific documents to the top of search results.\n`exclude` will exclude specific documents from search results.",
           "name": "type",
           "required": true,
           "type": {
@@ -139123,6 +139468,7 @@
           }
         },
         {
+          "description": "The criteria that must be met for the rule to be applied.\nIf multiple criteria are specified for a rule, all criteria must be met for the rule to be applied.",
           "name": "criteria",
           "required": true,
           "type": {
@@ -139149,6 +139495,7 @@
           }
         },
         {
+          "description": "The actions to take when the rule is matched.\nThe format of this action depends on the rule type.",
           "name": "actions",
           "required": true,
           "type": {
@@ -139171,7 +139518,7 @@
           }
         }
       ],
-      "specLocation": "query_rules/_types/QueryRuleset.ts#L36-L42"
+      "specLocation": "query_rules/_types/QueryRuleset.ts#L36-L58"
     },
     {
       "kind": "interface",
@@ -139181,6 +139528,7 @@
       },
       "properties": [
         {
+          "description": "The type of criteria. The following criteria types are supported:\n\n* `always`: Matches all queries, regardless of input.\n* `contains`: Matches that contain this value anywhere in the field meet the criteria defined by the rule. Only applicable for string values.\n* `exact`: Only exact matches meet the criteria defined by the rule. Applicable for string or numerical values.\n* `fuzzy`: Exact matches or matches within the allowed Levenshtein Edit Distance meet the criteria defined by the rule. Only applicable for string values.\n* `gt`: Matches with a value greater than this value meet the criteria defined by the rule. Only applicable for numerical values.\n* `gte`: Matches with a value greater than or equal to this value meet the criteria defined by the rule. Only applicable for numerical values.\n* `lt`: Matches with a value less than this value meet the criteria defined by the rule. Only applicable for numerical values.\n* `lte`: Matches with a value less than or equal to this value meet the criteria defined by the rule. Only applicable for numerical values.\n* `prefix`: Matches that start with this value meet the criteria defined by the rule. Only applicable for string values.\n* `suffix`: Matches that end with this value meet the criteria defined by the rule. Only applicable for string values.",
           "name": "type",
           "required": true,
           "type": {
@@ -139192,6 +139540,7 @@
           }
         },
         {
+          "description": "The metadata field to match against.\nThis metadata will be used to match against `match_criteria` sent in the rule.\nIt is required for all criteria types except `always`.",
           "name": "metadata",
           "required": false,
           "type": {
@@ -139203,6 +139552,7 @@
           }
         },
         {
+          "description": "The values to match against the `metadata` field.\nOnly one value must match for the criteria to be met.\nIt is required for all criteria types except `always`.",
           "name": "values",
           "required": false,
           "type": {
@@ -139213,7 +139563,7 @@
           }
         }
       ],
-      "specLocation": "query_rules/_types/QueryRuleset.ts#L49-L53"
+      "specLocation": "query_rules/_types/QueryRuleset.ts#L65-L93"
     },
     {
       "kind": "interface",
@@ -139223,6 +139573,7 @@
       },
       "properties": [
         {
+          "description": "The unique document IDs of the documents to apply the rule to.\nOnly one of `ids` or `docs` may be specified and at least one must be specified.",
           "name": "ids",
           "required": false,
           "type": {
@@ -139237,6 +139588,7 @@
           }
         },
         {
+          "description": "The documents to apply the rule to.\nOnly one of `ids` or `docs` may be specified and at least one must be specified.\nThere is a maximum value of 100 documents in a rule.\nYou can specify the following attributes for each document:\n\n* `_index`: The index of the document to pin.\n* `_id`: The unique document ID.",
           "name": "docs",
           "required": false,
           "type": {
@@ -139251,7 +139603,7 @@
           }
         }
       ],
-      "specLocation": "query_rules/_types/QueryRuleset.ts#L70-L73"
+      "specLocation": "query_rules/_types/QueryRuleset.ts#L110-L126"
     },
     {
       "kind": "interface",
@@ -139261,7 +139613,7 @@
       },
       "properties": [
         {
-          "description": "Query Ruleset unique identifier",
+          "description": "A unique identifier for the ruleset.",
           "name": "ruleset_id",
           "required": true,
           "type": {
@@ -139273,7 +139625,7 @@
           }
         },
         {
-          "description": "Rules associated with the query ruleset",
+          "description": "Rules associated with the query ruleset.",
           "name": "rules",
           "required": true,
           "type": {
@@ -139298,7 +139650,7 @@
       },
       "properties": [
         {
-          "description": "Ruleset unique identifier",
+          "description": "A unique identifier for the ruleset.",
           "name": "ruleset_id",
           "required": true,
           "type": {
@@ -139310,7 +139662,7 @@
           }
         },
         {
-          "description": "The number of rules associated with this ruleset",
+          "description": "The number of rules associated with the ruleset.",
           "name": "rule_total_count",
           "required": true,
           "type": {
@@ -139322,7 +139674,7 @@
           }
         },
         {
-          "description": "A map of criteria type (e.g. exact) to the number of rules of that type",
+          "description": "A map of criteria type (for example, `exact`) to the number of rules of that type.\n\nNOTE: The counts in `rule_criteria_types_counts` may be larger than the value of `rule_total_count` because a rule may have multiple criteria.",
           "name": "rule_criteria_types_counts",
           "required": true,
           "type": {
@@ -139345,7 +139697,7 @@
           }
         },
         {
-          "description": "A map of rule type (e.g. pinned) to the number of rules of that type",
+          "description": "A map of rule type (for example, `pinned`) to the number of rules of that type.",
           "name": "rule_type_counts",
           "required": true,
           "type": {
@@ -139368,7 +139720,7 @@
           }
         }
       ],
-      "specLocation": "query_rules/list_rulesets/types.ts#L23-L42"
+      "specLocation": "query_rules/list_rulesets/types.ts#L23-L44"
     },
     {
       "kind": "interface",
@@ -140807,6 +141159,12 @@
       "specLocation": "_types/Retriever.ts#L101-L110"
     },
     {
+      "inherits": {
+        "type": {
+          "name": "SearchApplicationParameters",
+          "namespace": "search_application._types"
+        }
+      },
       "kind": "interface",
       "name": {
         "name": "SearchApplication",
@@ -140814,7 +141172,7 @@
       },
       "properties": [
         {
-          "description": "Search Application name.",
+          "description": "Search Application name",
           "name": "name",
           "required": true,
           "type": {
@@ -140822,21 +141180,6 @@
             "type": {
               "name": "Name",
               "namespace": "_types"
-            }
-          }
-        },
-        {
-          "description": "Indices that are part of the Search Application.",
-          "name": "indices",
-          "required": true,
-          "type": {
-            "kind": "array_of",
-            "value": {
-              "kind": "instance_of",
-              "type": {
-                "name": "IndexName",
-                "namespace": "_types"
-              }
             }
           }
         },
@@ -140858,6 +141201,31 @@
             "type": {
               "name": "EpochTime",
               "namespace": "_types"
+            }
+          }
+        }
+      ],
+      "specLocation": "search_application/_types/SearchApplication.ts#L24-L33"
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "SearchApplicationParameters",
+        "namespace": "search_application._types"
+      },
+      "properties": [
+        {
+          "description": "Indices that are part of the Search Application.",
+          "name": "indices",
+          "required": true,
+          "type": {
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "IndexName",
+                "namespace": "_types"
+              }
             }
           }
         },
@@ -140886,7 +141254,7 @@
           }
         }
       ],
-      "specLocation": "search_application/_types/SearchApplication.ts#L24-L45"
+      "specLocation": "search_application/_types/SearchApplicationParameters.ts#L23-L36"
     },
     {
       "kind": "interface",
@@ -140908,7 +141276,7 @@
           }
         }
       ],
-      "specLocation": "search_application/_types/SearchApplication.ts#L47-L52"
+      "specLocation": "search_application/_types/SearchApplicationTemplate.ts#L22-L27"
     },
     {
       "kind": "interface",
@@ -140952,76 +141320,6 @@
         }
       ],
       "specLocation": "search_application/_types/BehavioralAnalytics.ts#L29-L31"
-    },
-    {
-      "kind": "interface",
-      "name": {
-        "name": "SearchApplicationListItem",
-        "namespace": "search_application.list"
-      },
-      "properties": [
-        {
-          "description": "Search Application name",
-          "name": "name",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "Name",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "description": "Indices that are part of the Search Application",
-          "name": "indices",
-          "required": true,
-          "type": {
-            "kind": "array_of",
-            "value": {
-              "kind": "instance_of",
-              "type": {
-                "name": "IndexName",
-                "namespace": "_types"
-              }
-            }
-          }
-        },
-        {
-          "description": "Last time the Search Application was updated",
-          "name": "updated_at_millis",
-          "required": true,
-          "type": {
-            "generics": [
-              {
-                "kind": "instance_of",
-                "type": {
-                  "name": "UnitMillis",
-                  "namespace": "_types"
-                }
-              }
-            ],
-            "kind": "instance_of",
-            "type": {
-              "name": "EpochTime",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "description": "Analytics collection associated to the Search Application",
-          "name": "analytics_collection_name",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "Name",
-              "namespace": "_types"
-            }
-          }
-        }
-      ],
-      "specLocation": "search_application/list/SearchApplicationsListResponse.ts#L31-L48"
     },
     {
       "inherits": {
@@ -141346,7 +141644,7 @@
           }
         }
       ],
-      "specLocation": "security/_types/Privileges.ts#L217-L243"
+      "specLocation": "security/_types/Privileges.ts#L216-L242"
     },
     {
       "kind": "interface",
@@ -141840,7 +142138,7 @@
           }
         }
       ],
-      "specLocation": "security/_types/Privileges.ts#L418-L428"
+      "specLocation": "security/_types/Privileges.ts#L417-L427"
     },
     {
       "kind": "interface",
@@ -141903,7 +142201,7 @@
           }
         }
       ],
-      "specLocation": "security/_types/Privileges.ts#L430-L450"
+      "specLocation": "security/_types/Privileges.ts#L429-L449"
     },
     {
       "kind": "interface",
@@ -142518,7 +142816,7 @@
       },
       "properties": [
         {
-          "description": "Update operation result",
+          "description": "The update operation result.",
           "name": "result",
           "required": true,
           "type": {
@@ -142530,7 +142828,7 @@
           }
         },
         {
-          "description": "Updating synonyms in a synonym set reloads the associated analyzers.\nThis is the analyzers reloading result",
+          "description": "Updating synonyms in a synonym set reloads the associated analyzers.\nThis information is the analyzers reloading result.",
           "name": "reload_analyzers_details",
           "required": true,
           "type": {
@@ -142669,6 +142967,8 @@
         },
         {
           "description": "Synonyms, in Solr format, that conform the synonym rule. See https://www.elastic.co/guide/en/elasticsearch/reference/current/analysis-synonym-graph-tokenfilter.html#_solr_synonyms_2",
+          "extDocId": "synonym-set-define",
+          "extDocUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/analysis-synonym-graph-tokenfilter.html#analysis-synonym-graph-define-synonyms",
           "name": "synonyms",
           "required": true,
           "type": {
@@ -142680,7 +142980,7 @@
           }
         }
       ],
-      "specLocation": "synonyms/_types/SynonymRule.ts#L38-L47"
+      "specLocation": "synonyms/_types/SynonymRule.ts#L40-L49"
     },
     {
       "kind": "interface",
@@ -142690,7 +142990,7 @@
       },
       "properties": [
         {
-          "description": "Synonym Rule identifier",
+          "description": "The identifier for the synonym rule.\nIf you do not specify a synonym rule ID when you create a rule, an identifier is created automatically by Elasticsearch.",
           "name": "id",
           "required": false,
           "type": {
@@ -142702,7 +143002,9 @@
           }
         },
         {
-          "description": "Synonyms, in Solr format, that conform the synonym rule. See https://www.elastic.co/guide/en/elasticsearch/reference/current/analysis-synonym-graph-tokenfilter.html#_solr_synonyms_2",
+          "description": "The synonyms that conform the synonym rule in Solr format.",
+          "extDocId": "synonym-set-define",
+          "extDocUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/analysis-synonym-graph-tokenfilter.html#analysis-synonym-graph-define-synonyms",
           "name": "synonyms",
           "required": true,
           "type": {
@@ -142714,7 +143016,7 @@
           }
         }
       ],
-      "specLocation": "synonyms/_types/SynonymRule.ts#L26-L35"
+      "specLocation": "synonyms/_types/SynonymRule.ts#L26-L37"
     },
     {
       "kind": "interface",
@@ -142748,7 +143050,7 @@
           }
         }
       ],
-      "specLocation": "synonyms/get_synonyms_sets/SynonymsSetsGetResponse.ts#L30-L39"
+      "specLocation": "synonyms/get_synonyms_sets/SynonymsSetsGetResponse.ts#L36-L45"
     },
     {
       "kind": "interface",

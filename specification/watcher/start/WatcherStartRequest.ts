@@ -18,6 +18,7 @@
  */
 
 import { RequestBase } from '@_types/Base'
+import { Duration } from '@_types/Time'
 
 /**
  * Start the watch service.
@@ -27,4 +28,12 @@ import { RequestBase } from '@_types/Base'
  * @cluster_privileges manage_watcher
  * @doc_id watcher-api-start
  */
-export interface Request extends RequestBase {}
+export interface Request extends RequestBase {
+  query_parameters: {
+    /**
+     * Period to wait for a connection to the master node.
+     * @server_default 30s
+     */
+    master_timeout?: Duration
+  }
+}
