@@ -4838,6 +4838,18 @@
         "summary": "Get enrich stats",
         "description": "Returns enrich coordinator statistics and information about enrich policies that are currently executing.",
         "operationId": "enrich-stats",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "master_timeout",
+            "description": "Period to wait for a connection to the master node.",
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/_types:Duration"
+            },
+            "style": "form"
+          }
+        ],
         "responses": {
           "200": {
             "description": "",

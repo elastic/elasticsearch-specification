@@ -104901,17 +104901,6 @@
         },
         "style": "form"
       },
-<<<<<<< HEAD
-      "shutdown.get_node#timeout": {
-        "in": "query",
-        "name": "timeout",
-        "description": "Period to wait for a response. If no response is received before the timeout expires, the request fails and returns an error.",
-        "deprecated": false,
-        "schema": {
-          "$ref": "#/components/schemas/_types:TimeUnit"
-        },
-        "style": "form"
-      },
       "simulate.ingest#index": {
         "in": "path",
         "name": "index",
@@ -104933,8 +104922,6 @@
         },
         "style": "form"
       },
-=======
->>>>>>> be1386ab9 (Fix common query parameters (#3297))
       "slm.get_lifecycle#policy_id": {
         "in": "path",
         "name": "policy_id",

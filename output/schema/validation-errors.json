@@ -492,18 +492,6 @@
       ],
       "response": []
     },
-<<<<<<< HEAD
-    "snapshot.clone": {
-      "request": [
-        "Request: query parameter 'timeout' does not exist in the json spec"
-=======
-    "simulate.ingest": {
-      "request": [
-        "Missing request & response"
->>>>>>> be1386ab9 (Fix common query parameters (#3297))
-      ],
-      "response": []
-    },
     "snapshot.delete": {
       "request": [
         "Request: missing json spec query parameter 'wait_for_completion'"
