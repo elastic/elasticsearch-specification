@@ -17,6 +17,8 @@
  * under the License.
  */
 
+import { StreamResult } from '@_types/Binary'
+
 export class Response {
-  body: {}
+  body: StreamResult
 }
