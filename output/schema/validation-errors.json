@@ -680,12 +680,6 @@
       ],
       "response": []
     },
-    "security.get_settings": {
-      "request": [
-        "Missing request & response"
-      ],
-      "response": []
-    },
     "security.get_user_privileges": {
       "request": [
         "Request: query parameter 'application' does not exist in the json spec",
@@ -697,12 +691,6 @@
     "security.grant_api_key": {
       "request": [
         "Request: missing json spec query parameter 'refresh'"
-      ],
-      "response": []
-    },
-    "security.update_settings": {
-      "request": [
-        "Missing request & response"
       ],
       "response": []
     },
