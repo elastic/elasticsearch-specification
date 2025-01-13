@@ -525,24 +525,6 @@
         "interface definition watcher._types:TriggerEventContainer - Property schedule is a single-variant and must be required"
       ]
     },
-<<<<<<< HEAD
-    "watcher.start": {
-      "request": [
-        "Request: missing json spec query parameter 'master_timeout'"
-=======
-    "watcher.get_settings": {
-      "request": [
-        "Missing request & response"
-      ],
-      "response": []
-    },
-    "watcher.update_settings": {
-      "request": [
-        "Missing request & response"
->>>>>>> b6a68ae73 (Fix common query parameters (#3297))
-      ],
-      "response": []
-    },
     "xpack.info": {
       "request": [
         "Request: query parameter 'human' does not exist in the json spec",
