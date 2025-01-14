@@ -2908,6 +2908,8 @@ export interface StoredScript {
   source: string
 }
 
+export type StreamResult = ArrayBuffer
+
 export type SuggestMode = 'missing' | 'popular' | 'always'
 
 export type SuggestionName = string
@@ -12937,6 +12939,72 @@ export interface InferencePutRequest extends RequestBase {
 
 export type InferencePutResponse = InferenceInferenceEndpointInfo
 
+export interface InferenceUnifiedInferenceCompletionTool {
+  type: string
+  function: InferenceUnifiedInferenceCompletionToolFunction
+}
+
+export interface InferenceUnifiedInferenceCompletionToolChoice {
+  type: string
+  function: InferenceUnifiedInferenceCompletionToolChoiceFunction
+}
+
+export interface InferenceUnifiedInferenceCompletionToolChoiceFunction {
+  name: string
+}
+
+export interface InferenceUnifiedInferenceCompletionToolFunction {
+  description?: string
+  name: string
+  parameters?: any
+  strict?: boolean
+}
+
+export type InferenceUnifiedInferenceCompletionToolType = string | InferenceUnifiedInferenceCompletionToolChoice
+
+export interface InferenceUnifiedInferenceContentObject {
+  text: string
+  type: string
+}
+
+export interface InferenceUnifiedInferenceMessage {
+  content?: InferenceUnifiedInferenceMessageContent
+  role: string
+  tool_call_id?: Id
+  tool_calls?: InferenceUnifiedInferenceToolCall[]
+}
+
+export type InferenceUnifiedInferenceMessageContent = string | InferenceUnifiedInferenceContentObject[]
+
+export interface InferenceUnifiedInferenceRequest extends RequestBase {
+  task_type?: InferenceTaskType
+  inference_id: Id
+  timeout?: Duration
+  body?: {
+    messages: InferenceUnifiedInferenceMessage[]
+    model?: string
+    max_completion_tokens?: long
+    stop?: string[]
+    temperature?: float
+    tool_choice?: InferenceUnifiedInferenceCompletionToolType
+    tools?: InferenceUnifiedInferenceCompletionTool[]
+    top_p?: float
+  }
+}
+
+export type InferenceUnifiedInferenceResponse = StreamResult
+
+export interface InferenceUnifiedInferenceToolCall {
+  id: Id
+  function: InferenceUnifiedInferenceToolCallFunction
+  type: string
+}
+
+export interface InferenceUnifiedInferenceToolCallFunction {
+  arguments: string
+  name: string
+}
+
 export interface IngestAppendProcessor extends IngestProcessorBase {
   field: Field
   value: any | any[]
@@ -18100,6 +18168,10 @@ export interface SecuritySearchAccess {
   allow_restricted_indices?: boolean
 }
 
+export interface SecuritySecuritySettings {
+  index?: IndicesIndexSettings
+}
+
 export type SecurityTemplateFormat = 'string' | 'json'
 
 export interface SecurityUser {
@@ -18570,6 +18642,16 @@ export interface SecurityGetServiceCredentialsResponse {
   count: integer
   tokens: Record<string, Metadata>
   nodes_credentials: SecurityGetServiceCredentialsNodesCredentials
+}
+
+export interface SecurityGetSettingsRequest extends RequestBase {
+  master_timeout?: Duration
+}
+
+export interface SecurityGetSettingsResponse {
+  security: SecuritySecuritySettings
+  'security-profile': SecuritySecuritySettings
+  'security-tokens': SecuritySecuritySettings
 }
 
 export type SecurityGetTokenAccessTokenGrantType = 'password' | 'client_credentials' | '_kerberos' | 'refresh_token'
@@ -19138,6 +19220,20 @@ export interface SecurityUpdateCrossClusterApiKeyRequest extends RequestBase {
 
 export interface SecurityUpdateCrossClusterApiKeyResponse {
   updated: boolean
+}
+
+export interface SecurityUpdateSettingsRequest extends RequestBase {
+  master_timeout?: Duration
+  timeout?: Duration
+  body?: {
+    security?: SecuritySecuritySettings
+    'security-profile'?: SecuritySecuritySettings
+    'security-tokens'?: SecuritySecuritySettings
+  }
+}
+
+export interface SecurityUpdateSettingsResponse {
+  acknowledged: boolean
 }
 
 export interface SecurityUpdateUserProfileDataRequest extends RequestBase {

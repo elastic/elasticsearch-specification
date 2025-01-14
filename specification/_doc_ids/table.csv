@@ -637,6 +637,7 @@ security-api-get-role-mapping,https://www.elastic.co/guide/en/elasticsearch/refe
 security-api-get-role,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/security-api-get-role.html
 security-api-get-service-accounts,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/security-api-get-service-accounts.html
 security-api-get-service-credentials,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/security-api-get-service-credentials.html
+security-api-get-settings,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/security-api-get-settings.html
 security-api-get-token,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/security-api-get-token.html
 security-api-get-user-privileges,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/security-api-get-user-privileges.html
 security-api-get-user-profile,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/security-api-get-user-profile.html
@@ -670,6 +671,7 @@ security-api-cross-cluster-key-update,https://www.elastic.co/guide/en/elasticsea
 security-api-update-key,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/security-api-update-api-key.html
 security-api-update-user-data,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/security-api-update-user-profile-data.html
 security-privileges,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/security-privileges.html
+security-api-update-settings,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/security-api-update-settings.html
 service-accounts,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/service-accounts.html
 set-processor,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/set-processor.html
 shape,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/shape.html
