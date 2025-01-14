@@ -21,12 +21,12 @@ import { Indices } from '@_types/common'
 
 export class CreateFrom {
   /**
-   * Reindex mode. Currently only 'upgrade' is supported.
+   * Mappings overrides to be applied to the destination index (optional)
    */
   mappings_override: string
   /**
-   * The source index or data stream (only data streams are currently supported).
+   * Settings overrides to be applied to the destination index (optional)
    */
-  settings_ovveride: string
+  settings_override: string
 }
 
