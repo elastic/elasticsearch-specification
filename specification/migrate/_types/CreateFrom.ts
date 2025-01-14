@@ -18,15 +18,17 @@
  */
 
 import { Indices } from '@_types/common'
+import { IndexSettings } from '@indices/_types/IndexSettings'
+import { TypeMapping } from '@_types/mapping/TypeMapping'
 
 export class CreateFrom {
   /**
    * Mappings overrides to be applied to the destination index (optional)
    */
-  mappings_override: string
+  mappings_override?: TypeMapping
   /**
    * Settings overrides to be applied to the destination index (optional)
    */
-  settings_override: string
+  settings_override?: IndexSettings
 }
 
