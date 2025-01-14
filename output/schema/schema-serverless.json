@@ -3435,7 +3435,7 @@
       },
       "description": "Get aliases.\nRetrieves information for one or more data stream or index aliases.",
       "docId": "indices-get-alias",
-      "docUrl": "",
+      "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/indices-get-alias.html",
       "name": "indices.get_alias",
       "privileges": {
         "index": [
