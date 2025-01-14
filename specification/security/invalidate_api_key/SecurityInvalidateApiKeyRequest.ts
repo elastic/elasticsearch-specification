@@ -35,6 +35,7 @@ import { Id, Name, Username } from '@_types/common'
  * @availability stack since=6.7.0 stability=stable
  * @availability serverless stability=stable visibility=public
  * @cluster_privileges manage_api_key, manage_own_api_key
+ * @doc_id security-api-invalidate-api-key
  */
 export interface Request extends RequestBase {
   body: {
