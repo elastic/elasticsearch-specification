@@ -31,6 +31,7 @@ import { ApiKeyAggregationContainer, ApiKeyQueryContainer } from './types'
  * @availability stack since=7.15.0 stability=stable
  * @availability serverless stability=stable visibility=public
  * @cluster_privileges manage_own_api_key, read_security
+ * @doc_id security-api-query-api-key
  */
 export interface Request extends RequestBase {
   query_parameters: {

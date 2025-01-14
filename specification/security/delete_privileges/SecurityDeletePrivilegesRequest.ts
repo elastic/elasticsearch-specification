@@ -25,6 +25,7 @@ import { Name, Names, Refresh } from '@_types/common'
  * @rest_spec_name security.delete_privileges
  * @availability stack since=6.4.0 stability=stable
  * @availability serverless stability=stable visibility=private
+ * @doc_id security-api-delete-privilege
  * @ext_doc_id security-privileges
  */
 export interface Request extends RequestBase {

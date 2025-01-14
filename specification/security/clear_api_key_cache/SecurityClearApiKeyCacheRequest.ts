@@ -29,6 +29,7 @@ import { Ids } from '@_types/common'
  * @availability stack since=7.10.0 stability=stable
  * @availability serverless stability=stable visibility=private
  * @cluster_privileges manage_security
+ * @doc_id security-api-clear-api-key-cache
  */
 export interface Request extends RequestBase {
   path_parts: {

@@ -28,6 +28,8 @@ import { Name } from '@_types/common'
  * @rest_spec_name security.clear_cached_privileges
  * @availability stack since=7.9.0 stability=stable
  * @availability serverless stability=stable visibility=private
+ * @cluster_privileges manage_security
+ * @doc_id security-api-clear-privilege-cache
  */
 export interface Request extends RequestBase {
   path_parts: {

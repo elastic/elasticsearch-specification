@@ -27,6 +27,8 @@ import { Metadata, Password, Refresh, Username } from '@_types/common'
  * To change a user’s password without updating any other fields, use the change password API.
  * @rest_spec_name security.put_user
  * @availability stack stability=stable
+ * @cluster_privileges manage_security
+ * @doc_id security-api-put-user
  */
 export interface Request extends RequestBase {
   path_parts: {

@@ -1,0 +1,22 @@
+# summary:
+description: >
+  A successful response from `PUT /_security/privilege`.
+  The `created` property indicates whether the privileges have been created or updated.
+# type: response
+# response_code:
+value: |-
+  {
+    "app02": {
+      "all": {
+        "created": true
+      }
+    },
+    "app01": {
+      "read": {
+        "created": true
+      },
+      "write": {
+        "created": true
+      }
+    }
+  }

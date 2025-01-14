@@ -27,6 +27,7 @@ import { Name } from '@_types/common'
  * @rest_spec_name security.saml_service_provider_metadata
  * @availability stack since=7.11.0 stability=stable
  * @availability serverless stability=stable visibility=private
+ * @doc_id security-api-saml-sp-metadata
  */
 export interface Request extends RequestBase {
   path_parts: {

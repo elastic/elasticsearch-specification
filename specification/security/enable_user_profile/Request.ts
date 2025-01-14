@@ -29,6 +29,7 @@ import { Refresh } from '@_types/common'
  * @availability stack since=8.2.0 stability=stable
  * @availability serverless stability=stable visibility=private
  * @cluster_privileges manage_user_profile
+ * @doc_id security-api-enable-user-profile
  */
 export interface Request extends RequestBase {
   path_parts: {
