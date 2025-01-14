@@ -672,6 +672,7 @@ security-api-update-key,https://www.elastic.co/guide/en/elasticsearch/reference/
 security-api-update-user-data,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/security-api-update-user-profile-data.html
 security-privileges,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/security-privileges.html
 security-api-update-settings,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/security-api-update-settings.html
+security-encrypt-internode,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/security-basic-setup.html#encrypt-internode-communication
 service-accounts,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/service-accounts.html
 set-processor,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/set-processor.html
 shape,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/shape.html
