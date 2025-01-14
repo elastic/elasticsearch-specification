@@ -30,6 +30,7 @@ import { RoleQueryContainer } from './types'
  * @availability stack since=8.15.0 stability=stable
  * @availability serverless stability=stable visibility=private
  * @cluster_privileges read_security
+ * @doc_id security-api-query-role
  */
 export interface Request extends RequestBase {
   body: {

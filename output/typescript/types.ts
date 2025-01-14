@@ -2899,6 +2899,8 @@ export interface StoredScript {
   source: string
 }
 
+export type StreamResult = ArrayBuffer
+
 export type SuggestMode = 'missing' | 'popular' | 'always'
 
 export type SuggestionName = string
@@ -12836,19 +12838,6 @@ export interface IndicesValidateQueryResponse {
   error?: string
 }
 
-export interface InferenceCompletionChoice {
-  delta: InferenceCompletionDelta
-  finish_reason?: string
-  index: number
-}
-
-export interface InferenceCompletionDelta {
-  content?: string
-  refusal?: string
-  role?: string
-  tool_calls?: InferenceResultToolCall[]
-}
-
 export interface InferenceCompletionResult {
   result: string
 }
@@ -12886,18 +12875,6 @@ export interface InferenceRankedDocument {
   text?: string
 }
 
-export interface InferenceResultFunctionCall {
-  arguments?: string
-  name?: string
-}
-
-export interface InferenceResultToolCall {
-  index: number
-  id?: string
-  function?: InferenceResultFunctionCall
-  type?: string
-}
-
 export type InferenceServiceSettings = any
 
 export interface InferenceSparseEmbeddingResult {
@@ -12916,20 +12893,6 @@ export interface InferenceTextEmbeddingByteResult {
 
 export interface InferenceTextEmbeddingResult {
   embedding: InferenceDenseVector
-}
-
-export interface InferenceUnifiedInferenceResult {
-  id: string
-  choices: InferenceCompletionChoice[]
-  model: string
-  object: string
-  usage?: InferenceUsage
-}
-
-export interface InferenceUsage {
-  completion_tokens: number
-  prompt_tokens: number
-  total_tokens: number
 }
 
 export interface InferenceDeleteRequest extends RequestBase {
@@ -12992,17 +12955,21 @@ export interface InferenceUnifiedInferenceCompletionToolFunction {
   strict?: boolean
 }
 
+export type InferenceUnifiedInferenceCompletionToolType = string | InferenceUnifiedInferenceCompletionToolChoice
+
 export interface InferenceUnifiedInferenceContentObject {
   text: string
   type: string
 }
 
 export interface InferenceUnifiedInferenceMessage {
-  content: string | InferenceUnifiedInferenceContentObject[]
+  content?: InferenceUnifiedInferenceMessageContent
   role: string
-  tool_call_id?: string
+  tool_call_id?: Id
   tool_calls?: InferenceUnifiedInferenceToolCall[]
 }
+
+export type InferenceUnifiedInferenceMessageContent = string | InferenceUnifiedInferenceContentObject[]
 
 export interface InferenceUnifiedInferenceRequest extends RequestBase {
   task_type?: InferenceTaskType
@@ -13011,19 +12978,19 @@ export interface InferenceUnifiedInferenceRequest extends RequestBase {
   body?: {
     messages: InferenceUnifiedInferenceMessage[]
     model?: string
-    max_completion_tokens?: number
+    max_completion_tokens?: long
     stop?: string[]
-    temperature?: number
-    tool_choice?: string | InferenceUnifiedInferenceCompletionToolChoice
+    temperature?: float
+    tool_choice?: InferenceUnifiedInferenceCompletionToolType
     tools?: InferenceUnifiedInferenceCompletionTool[]
-    top_p?: number
+    top_p?: float
   }
 }
 
-export type InferenceUnifiedInferenceResponse = InferenceUnifiedInferenceResult
+export type InferenceUnifiedInferenceResponse = StreamResult
 
 export interface InferenceUnifiedInferenceToolCall {
-  id: string
+  id: Id
   function: InferenceUnifiedInferenceToolCallFunction
   type: string
 }

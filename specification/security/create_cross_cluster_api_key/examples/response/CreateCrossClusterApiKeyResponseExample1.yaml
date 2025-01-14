@@ -1,0 +1,13 @@
+# summary:
+description: >
+  A successful response from `POST /_security/service/elastic/fleet-server/credential/token`.
+# type: response
+# response_code:
+value: |-
+  {
+    "created": true,
+    "token": {
+      "name": "Jk5J1HgBuyBK5TpDrdo4",
+      "value": "AAEAAWVsYXN0aWM...vZmxlZXQtc2VydmVyL3Rva2VuMTo3TFdaSDZ"
+    }
+  }

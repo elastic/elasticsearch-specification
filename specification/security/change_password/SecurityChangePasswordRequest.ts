@@ -26,6 +26,7 @@ import { Password, Refresh, Username } from '@_types/common'
  * Change the passwords of users in the native realm and built-in users.
  * @rest_spec_name security.change_password
  * @availability stack stability=stable
+ * @doc_id security-api-change-password
  */
 export interface Request extends RequestBase {
   path_parts: {

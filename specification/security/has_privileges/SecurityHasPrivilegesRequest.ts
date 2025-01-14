@@ -29,6 +29,7 @@ import { ApplicationPrivilegesCheck, IndexPrivilegesCheck } from './types'
  * @rest_spec_name security.has_privileges
  * @availability stack since=6.4.0 stability=stable
  * @availability serverless stability=stable visibility=public
+ * @doc_id security-api-has-privileges
  * @ext_doc_id security-privileges
  */
 export interface Request extends RequestBase {
