@@ -245,8 +245,7 @@ indices-downsample-data-stream,https://www.elastic.co/guide/en/elasticsearch/ref
 indices-exists,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/indices-exists.html
 indices-flush,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/indices-flush.html
 indices-forcemerge,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/indices-forcemerge.html
-indices-get-alias,
-https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/indices-get-alias.html
+indices-get-alias,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/indices-get-alias.html
 indices-get-field-mapping,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/indices-get-field-mapping.html
 indices-get-index,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/indices-get-index.html
 indices-get-mapping,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/indices-get-mapping.html
