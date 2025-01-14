@@ -18515,13 +18515,13 @@
           "tasks"
         ],
         "summary": "Get task information",
-        "description": "Get information about a task currently running in the cluster.",
+        "description": "Get information about a task currently running in the cluster.\n\nWARNING: The task management API is new and should still be considered a beta feature.\nThe API may change in ways that are not backwards compatible.\n\nIf the task identifier is not found, a 404 response code indicates that there are no resources that match the request.",
         "operationId": "tasks-get",
         "parameters": [
           {
             "in": "path",
             "name": "task_id",
-            "description": "ID of the task.",
+            "description": "The task identifier.",
             "required": true,
             "deprecated": false,
             "schema": {
@@ -18532,7 +18532,7 @@
           {
             "in": "query",
             "name": "timeout",
-            "description": "Period to wait for a response.\nIf no response is received before the timeout expires, the request fails and returns an error.",
+            "description": "The period to wait for a response.\nIf no response is received before the timeout expires, the request fails and returns an error.",
             "deprecated": false,
             "schema": {
               "$ref": "#/components/schemas/_types:Duration"
