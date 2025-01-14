@@ -13826,6 +13826,41 @@ export interface LogstashPutPipelineRequest extends RequestBase {
 
 export type LogstashPutPipelineResponse = boolean
 
+export interface MigrateIndex {
+  index: Indices
+}
+
+export interface MigrateMigrateReindex {
+  mode: string
+  source: MigrateIndex
+}
+
+export interface MigrateCancelReindexRequest extends RequestBase {
+  index: Indices
+}
+
+export type MigrateCancelReindexResponse = AcknowledgedResponseBase
+
+export interface MigrateCreateFromRequest extends RequestBase {
+  source: string
+  dest: string
+  body?: MigrateMigrateReindex
+}
+
+export type MigrateCreateFromResponse = AcknowledgedResponseBase
+
+export interface MigrateGetReindexStatusRequest extends RequestBase {
+  index: Indices
+}
+
+export type MigrateGetReindexStatusResponse = AcknowledgedResponseBase
+
+export interface MigrateReindexRequest extends RequestBase {
+  body?: MigrateMigrateReindex
+}
+
+export type MigrateReindexResponse = AcknowledgedResponseBase
+
 export interface MigrationDeprecationsDeprecation {
   details?: string
   level: MigrationDeprecationsDeprecationLevel

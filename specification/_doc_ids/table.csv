@@ -302,6 +302,7 @@ mapping-source-field,https://www.elastic.co/guide/en/elasticsearch/reference/{br
 mapping,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/mapping.html
 mapping,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/mapping.html
 mean-reciprocal,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/search-rank-eval.html#_mean_reciprocal_rank
+migrate,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/migrate-data-stream.html
 migrate-index-allocation-filters,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/migrate-index-allocation-filters.html
 migration-api-deprecation,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/migration-api-deprecation.html
 migration-api-feature-upgrade,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/feature-migration-api.html
