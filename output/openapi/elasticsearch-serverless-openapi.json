@@ -1326,6 +1326,9 @@
         ],
         "summary": "Clear a scrolling search",
         "description": "Clear the search context and results for a scrolling search.",
+        "externalDocs": {
+          "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/paginate-search-results.html#scroll-search-results"
+        },
         "operationId": "clear-scroll",
         "requestBody": {
           "$ref": "#/components/requestBodies/clear_scroll"
@@ -1410,6 +1413,9 @@
         ],
         "summary": "Clear a scrolling search",
         "description": "Clear the search context and results for a scrolling search.",
+        "externalDocs": {
+          "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/paginate-search-results.html#scroll-search-results"
+        },
         "operationId": "clear-scroll-1",
         "parameters": [
           {
@@ -1460,9 +1466,11 @@
                   "type": "object",
                   "properties": {
                     "succeeded": {
+                      "description": "If `true`, all search contexts associated with the point-in-time ID were successfully closed.",
                       "type": "boolean"
                     },
                     "num_freed": {
+                      "description": "The number of search contexts that were successfully closed.",
                       "type": "number"
                     }
                   },
@@ -3164,7 +3172,7 @@
           "search"
         ],
         "summary": "Count search results",
-        "description": "Get the number of documents matching a query.",
+        "description": "Get the number of documents matching a query.\n\nThe query can either be provided using a simple query string as a parameter or using the Query DSL defined within the request body.\nThe latter must be nested in a `query` key, which is the same as the search API.\n\nThe count API supports multi-target syntax. You can run a single count API search across multiple data streams and indices.\n\nThe operation is broadcast across all shards.\nFor each shard ID group, a replica is chosen and the search is run against it.\nThis means that replicas increase the scalability of the count.",
         "operationId": "count-1",
         "parameters": [
           {
@@ -3224,7 +3232,7 @@
           "search"
         ],
         "summary": "Count search results",
-        "description": "Get the number of documents matching a query.",
+        "description": "Get the number of documents matching a query.\n\nThe query can either be provided using a simple query string as a parameter or using the Query DSL defined within the request body.\nThe latter must be nested in a `query` key, which is the same as the search API.\n\nThe count API supports multi-target syntax. You can run a single count API search across multiple data streams and indices.\n\nThe operation is broadcast across all shards.\nFor each shard ID group, a replica is chosen and the search is run against it.\nThis means that replicas increase the scalability of the count.",
         "operationId": "count",
         "parameters": [
           {
@@ -3286,7 +3294,7 @@
           "search"
         ],
         "summary": "Count search results",
-        "description": "Get the number of documents matching a query.",
+        "description": "Get the number of documents matching a query.\n\nThe query can either be provided using a simple query string as a parameter or using the Query DSL defined within the request body.\nThe latter must be nested in a `query` key, which is the same as the search API.\n\nThe count API supports multi-target syntax. You can run a single count API search across multiple data streams and indices.\n\nThe operation is broadcast across all shards.\nFor each shard ID group, a replica is chosen and the search is run against it.\nThis means that replicas increase the scalability of the count.",
         "operationId": "count-3",
         "parameters": [
           {
@@ -3349,7 +3357,7 @@
           "search"
         ],
         "summary": "Count search results",
-        "description": "Get the number of documents matching a query.",
+        "description": "Get the number of documents matching a query.\n\nThe query can either be provided using a simple query string as a parameter or using the Query DSL defined within the request body.\nThe latter must be nested in a `query` key, which is the same as the search API.\n\nThe count API supports multi-target syntax. You can run a single count API search across multiple data streams and indices.\n\nThe operation is broadcast across all shards.\nFor each shard ID group, a replica is chosen and the search is run against it.\nThis means that replicas increase the scalability of the count.",
         "operationId": "count-2",
         "parameters": [
           {
@@ -56141,9 +56149,11 @@
               "type": "object",
               "properties": {
                 "succeeded": {
+                  "description": "If `true`, the request succeeded.\nThis does not indicate whether any scrolling search requests were cleared.",
                   "type": "boolean"
                 },
                 "num_freed": {
+                  "description": "The number of scrolling search requests cleared.",
                   "type": "number"
                 }
               },
@@ -58794,9 +58804,9 @@
       "clear_scroll#scroll_id": {
         "in": "path",
         "name": "scroll_id",
-        "description": "Comma-separated list of scroll IDs to clear.\nTo clear all scroll IDs, use `_all`.",
+        "description": "A comma-separated list of scroll IDs to clear.\nTo clear all scroll IDs, use `_all`.\nIMPORTANT: Scroll IDs can be long. It is recommended to specify scroll IDs in the request body parameter.",
         "required": true,
-        "deprecated": false,
+        "deprecated": true,
         "schema": {
           "$ref": "#/components/schemas/_types:ScrollIds"
         },
@@ -58898,7 +58908,7 @@
       "count#index": {
         "in": "path",
         "name": "index",
-        "description": "Comma-separated list of data streams, indices, and aliases to search.\nSupports wildcards (`*`).\nTo search all data streams and indices, omit this parameter or use `*` or `_all`.",
+        "description": "A comma-separated list of data streams, indices, and aliases to search.\nIt supports wildcards (`*`).\nTo search all data streams and indices, omit this parameter or use `*` or `_all`.",
         "required": true,
         "deprecated": false,
         "schema": {
@@ -58909,7 +58919,7 @@
       "count#allow_no_indices": {
         "in": "query",
         "name": "allow_no_indices",
-        "description": "If `false`, the request returns an error if any wildcard expression, index alias, or `_all` value targets only missing or closed indices.\nThis behavior applies even if the request targets other open indices.",
+        "description": "If `false`, the request returns an error if any wildcard expression, index alias, or `_all` value targets only missing or closed indices.\nThis behavior applies even if the request targets other open indices.\nFor example, a request targeting `foo*,bar*` returns an error if an index starts with `foo` but no index starts with `bar`.",
         "deprecated": false,
         "schema": {
           "type": "boolean"
@@ -58919,7 +58929,7 @@
       "count#analyzer": {
         "in": "query",
         "name": "analyzer",
-        "description": "Analyzer to use for the query string.\nThis parameter can only be used when the `q` query string parameter is specified.",
+        "description": "The analyzer to use for the query string.\nThis parameter can be used only when the `q` query string parameter is specified.",
         "deprecated": false,
         "schema": {
           "type": "string"
@@ -58929,7 +58939,7 @@
       "count#analyze_wildcard": {
         "in": "query",
         "name": "analyze_wildcard",
-        "description": "If `true`, wildcard and prefix queries are analyzed.\nThis parameter can only be used when the `q` query string parameter is specified.",
+        "description": "If `true`, wildcard and prefix queries are analyzed.\nThis parameter can be used only when the `q` query string parameter is specified.",
         "deprecated": false,
         "schema": {
           "type": "boolean"
@@ -58939,7 +58949,7 @@
       "count#default_operator": {
         "in": "query",
         "name": "default_operator",
-        "description": "The default operator for query string query: `AND` or `OR`.\nThis parameter can only be used when the `q` query string parameter is specified.",
+        "description": "The default operator for query string query: `AND` or `OR`.\nThis parameter can be used only when the `q` query string parameter is specified.",
         "deprecated": false,
         "schema": {
           "$ref": "#/components/schemas/_types.query_dsl:Operator"
@@ -58949,7 +58959,7 @@
       "count#df": {
         "in": "query",
         "name": "df",
-        "description": "Field to use as default where no field prefix is given in the query string.\nThis parameter can only be used when the `q` query string parameter is specified.",
+        "description": "The field to use as a default when no field prefix is given in the query string.\nThis parameter can be used only when the `q` query string parameter is specified.",
         "deprecated": false,
         "schema": {
           "type": "string"
@@ -58959,7 +58969,7 @@
       "count#expand_wildcards": {
         "in": "query",
         "name": "expand_wildcards",
-        "description": "Type of index that wildcard patterns can match.\nIf the request can target data streams, this argument determines whether wildcard expressions match hidden data streams.\nSupports comma-separated values, such as `open,hidden`.",
+        "description": "The type of index that wildcard patterns can match.\nIf the request can target data streams, this argument determines whether wildcard expressions match hidden data streams.\nIt supports comma-separated values, such as `open,hidden`.",
         "deprecated": false,
         "schema": {
           "$ref": "#/components/schemas/_types:ExpandWildcards"
@@ -58969,8 +58979,8 @@
       "count#ignore_throttled": {
         "in": "query",
         "name": "ignore_throttled",
-        "description": "If `true`, concrete, expanded or aliased indices are ignored when frozen.",
-        "deprecated": false,
+        "description": "If `true`, concrete, expanded, or aliased indices are ignored when frozen.",
+        "deprecated": true,
         "schema": {
           "type": "boolean"
         },
@@ -58989,7 +58999,7 @@
       "count#lenient": {
         "in": "query",
         "name": "lenient",
-        "description": "If `true`, format-based query failures (such as providing text to a numeric field) in the query string will be ignored.",
+        "description": "If `true`, format-based query failures (such as providing text to a numeric field) in the query string will be ignored.\nThis parameter can be used only when the `q` query string parameter is specified.",
         "deprecated": false,
         "schema": {
           "type": "boolean"
@@ -58999,7 +59009,7 @@
       "count#min_score": {
         "in": "query",
         "name": "min_score",
-        "description": "Sets the minimum `_score` value that documents must have to be included in the result.",
+        "description": "The minimum `_score` value that documents must have to be included in the result.",
         "deprecated": false,
         "schema": {
           "type": "number"
@@ -59009,7 +59019,7 @@
       "count#preference": {
         "in": "query",
         "name": "preference",
-        "description": "Specifies the node or shard the operation should be performed on.\nRandom by default.",
+        "description": "The node or shard the operation should be performed on.\nBy default, it is random.",
         "deprecated": false,
         "schema": {
           "type": "string"
@@ -59019,7 +59029,7 @@
       "count#routing": {
         "in": "query",
         "name": "routing",
-        "description": "Custom value used to route operations to a specific shard.",
+        "description": "A custom value used to route operations to a specific shard.",
         "deprecated": false,
         "schema": {
           "$ref": "#/components/schemas/_types:Routing"
@@ -59029,7 +59039,7 @@
       "count#terminate_after": {
         "in": "query",
         "name": "terminate_after",
-        "description": "Maximum number of documents to collect for each shard.\nIf a query reaches this limit, Elasticsearch terminates the query early.\nElasticsearch collects documents before sorting.",
+        "description": "The maximum number of documents to collect for each shard.\nIf a query reaches this limit, Elasticsearch terminates the query early.\nElasticsearch collects documents before sorting.\n\nIMPORTANT: Use with caution.\nElasticsearch applies this parameter to each shard handling the request.\nWhen possible, let Elasticsearch perform early termination automatically.\nAvoid specifying this parameter for requests that target data streams with backing indices across multiple data tiers.",
         "deprecated": false,
         "schema": {
           "type": "number"
@@ -59039,7 +59049,7 @@
       "count#q": {
         "in": "query",
         "name": "q",
-        "description": "Query in the Lucene query string syntax.",
+        "description": "The query in Lucene query string syntax.",
         "deprecated": false,
         "schema": {
           "type": "string"
