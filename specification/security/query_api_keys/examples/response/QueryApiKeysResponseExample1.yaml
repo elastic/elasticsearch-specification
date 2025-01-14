@@ -1,0 +1,53 @@
+summary: Query API keys by ID
+description: >
+  A successful response from `GET /_security/_query/api_key?with_limited_by=true`.
+  The `limited_by` details are the owner user's permissions associated with the API key.
+  It is a point-in-time snapshot captured at creation and subsequent updates.
+  An API key's effective permissions are an intersection of its assigned privileges and the owner user's permissions.
+# type: response
+# response_code:
+value: |-
+  {
+    "api_keys": [
+      {
+        "id": "VuaCfGcBCdbkQm-e5aOx",
+        "name": "application-key-1",
+        "creation": 1548550550158,
+        "expiration": 1548551550158,
+        "invalidated": false,
+        "username": "myuser",
+        "realm": "native1",
+        "realm_type": "native",
+        "metadata": {
+          "application": "my-application"
+        },
+        "role_descriptors": { },
+        "limited_by": [ 
+          {
+            "role-power-user": {
+              "cluster": [
+                "monitor"
+              ],
+              "indices": [
+                {
+                  "names": [
+                    "*"
+                  ],
+                  "privileges": [
+                    "read"
+                  ],
+                  "allow_restricted_indices": false
+                }
+              ],
+              "applications": [ ],
+              "run_as": [ ],
+              "metadata": { },
+              "transient_metadata": {
+                "enabled": true
+              }
+            }
+          }
+        ]
+      }
+    ]
+  }

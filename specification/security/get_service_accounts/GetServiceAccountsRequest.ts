@@ -28,6 +28,7 @@ import { Namespace, Service } from '@_types/common'
  * @availability stack since=7.13.0 stability=stable
  * @availability serverless stability=stable visibility=private
  * @cluster_privileges manage_service_account
+ * @doc_id security-api-get-service-accounts
  * @ext_doc_id service-accounts
  */
 export interface Request extends RequestBase {

@@ -34,6 +34,8 @@ import { Metadata, Name, Refresh } from '@_types/common'
  * @rest_spec_name security.put_role_mapping
  * @availability stack since=5.5.0 stability=stable
  * @availability serverless stability=stable visibility=private
+ * @cluster_privileges manage_security
+ * @doc_id security-api-put-role-mapping
  * @ext_doc_id mapping-roles
  */
 export interface Request extends RequestBase {

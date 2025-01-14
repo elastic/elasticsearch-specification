@@ -42,6 +42,7 @@ import { Duration } from '@_types/Time'
  * NOTE: This API cannot update REST API keys, which should be updated by either the update API key or bulk update API keys API.
  * @rest_spec_name security.update_cross_cluster_api_key
  * @availability stack stability=stable
+ * @cluster_privileges manage_security
  * @doc_id security-api-cross-cluster-key-update
  * @ext_doc_id remote-clusters-api-key
  */

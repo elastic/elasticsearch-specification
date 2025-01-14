@@ -26,6 +26,8 @@ import { Refresh, Username } from '@_types/common'
  * Enable users in the native realm.
  * @rest_spec_name security.enable_user
  * @availability stack stability=stable
+ * @cluster_privileges manage_security
+ * @doc_id security-api-enable-user
  */
 export interface Request extends RequestBase {
   path_parts: {
