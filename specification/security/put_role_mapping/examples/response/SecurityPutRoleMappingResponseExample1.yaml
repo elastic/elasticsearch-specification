@@ -1,0 +1,10 @@
+# summary:
+description: A successful response from `POST /_security/role_mapping/mapping1`.
+# type: response
+# response_code:
+value: |-
+  {
+    "role_mapping" : {
+      "created" : true 
+    }
+  }
