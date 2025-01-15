@@ -609,6 +609,7 @@ security-api-clear-role-cache,https://www.elastic.co/guide/en/elasticsearch/refe
 security-api-clear-service-token-caches,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/security-api-clear-service-token-caches.html
 security-api-create-api-key,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/security-api-create-api-key.html
 security-api-create-service-token,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/security-api-create-service-token.html
+security-api-cross-cluster-key-update,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/security-api-update-cross-cluster-api-key.html
 security-api-delegate-pki,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/security-api-delegate-pki-authentication.html
 security-api-delete-privilege,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/security-api-delete-privilege.html
 security-api-delete-role-mapping,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/security-api-delete-role-mapping.html
@@ -616,7 +617,9 @@ security-api-delete-role,https://www.elastic.co/guide/en/elasticsearch/reference
 security-api-delete-service-token,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/security-api-delete-service-token.html
 security-api-delete-user,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/security-api-delete-user.html
 security-api-disable-user,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/security-api-disable-user.html
+security-api-disable-user-profile,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/security-api-disable-user-profile.html
 security-api-enable-user,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/security-api-enable-user.html
+security-api-enable-user-profile,https://www.elastic.co/guide/en/elasticsearch/reference/current/security-api-enable-user-profile.html
 security-api-get-api-key,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/security-api-get-api-key.html
 security-api-get-builtin-privileges,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/security-api-get-builtin-privileges.html
 security-api-get-privileges,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/security-api-get-privileges.html
@@ -628,8 +631,10 @@ security-api-get-settings,https://www.elastic.co/guide/en/elasticsearch/referenc
 security-api-get-token,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/security-api-get-token.html
 security-api-get-user-privileges,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/security-api-get-user-privileges.html
 security-api-get-user,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/security-api-get-user.html
+security-api-get-user-profile,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/security-api-get-user-profile.html
 security-api-grant-api-key,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/security-api-grant-api-key.html
 security-api-has-privileges,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/security-api-has-privileges.html
+security-api-has-privileges-user-profile,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/security-api-has-privileges-user-profile.html
 security-api-invalidate-api-key,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/security-api-invalidate-api-key.html
 security-api-invalidate-token,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/security-api-invalidate-token.html
 security-api-kibana-enrollment,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/security-api-kibana-enrollment.html
@@ -649,8 +654,13 @@ security-api-saml-logout,https://www.elastic.co/guide/en/elasticsearch/reference
 security-api-saml-prepare-authentication,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/security-api-saml-prepare-authentication.html
 security-api-saml-sp-metadata,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/security-api-saml-sp-metadata.html
 security-api-ssl,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/security-api-ssl.html
-security-privileges,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/security-privileges.html
+security-api-suggest,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/security-api-suggest-user-profile.html
+security-api-update-key,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/security-api-update-api-key.html
 security-api-update-settings,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/security-api-update-settings.html
+security-api-update-user-data,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/security-api-update-user-profile-data.html
+security-encrypt-internode,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/security-basic-setup.html#encrypt-internode-communication
+security-privileges,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/security-privileges.html
+security-saml-guide,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/saml-guide-stack.html
 service-accounts,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/service-accounts.html
 set-processor,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/set-processor.html
 shape,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/shape.html
