@@ -1,0 +1,27 @@
+summary: Multiple successful operations
+# description: ''
+# type: response
+# response_code: ''
+value:
+  "{\n   \"took\": 30,\n   \"errors\": false,\n   \"items\": [\n      {\n   \
+  \      \"index\": {\n            \"_index\": \"test\",\n            \"_id\": \"\
+  1\",\n            \"_version\": 1,\n            \"result\": \"created\",\n     \
+  \       \"_shards\": {\n               \"total\": 2,\n               \"successful\"\
+  : 1,\n               \"failed\": 0\n            },\n            \"status\": 201,\n\
+  \            \"_seq_no\" : 0,\n            \"_primary_term\": 1\n         }\n  \
+  \    },\n      {\n         \"delete\": {\n            \"_index\": \"test\",\n  \
+  \          \"_id\": \"2\",\n            \"_version\": 1,\n            \"result\"\
+  : \"not_found\",\n            \"_shards\": {\n               \"total\": 2,\n   \
+  \            \"successful\": 1,\n               \"failed\": 0\n            },\n\
+  \            \"status\": 404,\n            \"_seq_no\" : 1,\n            \"_primary_term\"\
+  \ : 2\n         }\n      },\n      {\n         \"create\": {\n            \"_index\"\
+  : \"test\",\n            \"_id\": \"3\",\n            \"_version\": 1,\n       \
+  \     \"result\": \"created\",\n            \"_shards\": {\n               \"total\"\
+  : 2,\n               \"successful\": 1,\n               \"failed\": 0\n        \
+  \    },\n            \"status\": 201,\n            \"_seq_no\" : 2,\n          \
+  \  \"_primary_term\" : 3\n         }\n      },\n      {\n         \"update\": {\n\
+  \            \"_index\": \"test\",\n            \"_id\": \"1\",\n            \"\
+  _version\": 2,\n            \"result\": \"updated\",\n            \"_shards\": {\n\
+  \                \"total\": 2,\n                \"successful\": 1,\n           \
+  \     \"failed\": 0\n            },\n            \"status\": 200,\n            \"\
+  _seq_no\" : 3,\n            \"_primary_term\" : 4\n         }\n      }\n   ]\n}"
