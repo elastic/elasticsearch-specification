@@ -21,6 +21,7 @@ import assert from 'assert'
 import * as model from '../model/metamodel'
 import { JsonSpec } from '../model/json-spec'
 import { ValidationErrors } from '../validation-errors'
+import { deepEqual } from '../model/utils'
 
 // This code can be simplified once https://github.com/tc39/proposal-set-methods is available
 
@@ -46,6 +47,30 @@ export default async function validateRestSpec (model: model.Model, jsonSpec: Ma
       const spec = jsonSpec.get(endpoint.name)
       assert(spec, `Can't find the json spec for ${endpoint.name}`)
 
+      // Check URL paths and methods
+      if (spec.url.paths.length !== endpoint.urls.length) {
+        errors.addEndpointError(endpoint.name, 'request', `${endpoint.request.name}: different number of urls in the json spec`)
+      } else {
+        for (const modelUrl of endpoint.urls) {
+          // URL path
+          const restSpecUrl = spec.url.paths.find(path => path.path === modelUrl.path)
+          if (restSpecUrl == null) {
+            errors.addEndpointError(endpoint.name, 'request', `${endpoint.request.name}: url path '${modelUrl.path}' not found in the json spec`)
+          } else {
+            // URL methods
+            if (!deepEqual([...restSpecUrl.methods].sort(), [...modelUrl.methods].sort())) {
+              errors.addEndpointError(endpoint.name, 'request', `${modelUrl.path}: different http methods in the json spec`)
+            }
+
+            // Deprecation.
+            if ((restSpecUrl.deprecated != null) !== (modelUrl.deprecation != null)) {
+              errors.addEndpointError(endpoint.name, 'request', `${endpoint.request.name}: different deprecation in the json spec`)
+            }
+          }
+        }
+      }
+
+      // Check url parts
       const urlParts = Array.from(new Set(spec.url.paths
         .filter(path => path.parts != null)
         .flatMap(path => {
