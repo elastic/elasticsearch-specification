@@ -23,6 +23,7 @@ import { Duration } from '@_types/Time'
 
 /**
  * Update security index settings.
+ *
  * Update the user-configurable settings for the security internal index (`.security` and associated indices). Only a subset of settings are allowed to be modified, for example `index.auto_expand_replicas` and `index.number_of_replicas`.
  *
  * If a specific index is not in use on the system and settings are provided for it, the request will be rejected. This API does not yet support configuring the settings for indices before they are in use.

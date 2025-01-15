@@ -672,9 +672,10 @@ security-api-suggest,https://www.elastic.co/guide/en/elasticsearch/reference/{br
 security-api-cross-cluster-key-update,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/security-api-update-cross-cluster-api-key.html
 security-api-update-key,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/security-api-update-api-key.html
 security-api-update-user-data,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/security-api-update-user-profile-data.html
-security-privileges,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/security-privileges.html
 security-api-update-settings,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/security-api-update-settings.html
 security-encrypt-internode,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/security-basic-setup.html#encrypt-internode-communication
+security-privileges,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/security-privileges.html
+security-saml-guide,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/saml-guide-stack.html
 service-accounts,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/service-accounts.html
 set-processor,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/set-processor.html
 shape,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/shape.html

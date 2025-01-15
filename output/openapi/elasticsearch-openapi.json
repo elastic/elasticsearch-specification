@@ -28731,7 +28731,7 @@
           "security"
         ],
         "summary": "Activate a user profile",
-        "description": "Create or update a user profile on behalf of another user.",
+        "description": "Create or update a user profile on behalf of another user.\n\nNOTE: The user profile feature is designed only for use by Kibana and Elastic's Observability, Enterprise Search, and Elastic Security solutions.\nIndividual users and external applications should not call this API directly.\nThe calling application must have either an `access_token` or a combination of `username` and `password` for the user that the profile document is intended for.\nElastic reserves the right to change or remove this feature in future releases without prior notice.\n\nThis API creates or updates a profile document for end users with information that is extracted from the user's authentication object including `username`, `full_name,` `roles`, and the authentication realm.\nFor example, in the JWT `access_token` case, the profile user's `username` is extracted from the JWT token claim pointed to by the `claims.principal` setting of the JWT realm that authenticated the token.\n\nWhen updating a profile document, the API enables the document if it was disabled.\nAny updates do not change existing content for either the `labels` or `data` fields.",
         "operationId": "security-activate-user-profile",
         "requestBody": {
           "content": {
@@ -28740,15 +28740,18 @@
                 "type": "object",
                 "properties": {
                   "access_token": {
+                    "description": "The user's Elasticsearch access token or JWT.\nBoth `access` and `id` JWT token types are supported and they depend on the underlying JWT realm configuration.\nIf you specify the `access_token` grant type, this parameter is required.\nIt is not valid with other grant types.",
                     "type": "string"
                   },
                   "grant_type": {
                     "$ref": "#/components/schemas/security._types:GrantType"
                   },
                   "password": {
+                    "description": "The user's password.\nIf you specify the `password` grant type, this parameter is required.\nIt is not valid with other grant types.",
                     "type": "string"
                   },
                   "username": {
+                    "description": "The username that identifies the user.\nIf you specify the `password` grant type, this parameter is required.\nIt is not valid with other grant types.",
                     "type": "string"
                   }
                 },
@@ -30599,7 +30602,7 @@
           "security"
         ],
         "summary": "Disable a user profile",
-        "description": "Disable user profiles so that they are not visible in user profile searches.",
+        "description": "Disable user profiles so that they are not visible in user profile searches.\n\nNOTE: The user profile feature is designed only for use by Kibana and Elastic's Observability, Enterprise Search, and Elastic Security solutions.\nIndividual users and external applications should not call this API directly.\nElastic reserves the right to change or remove this feature in future releases without prior notice.\n\nWhen you activate a user profile, its automatically enabled and visible in user profile searches. You can use the disable user profile API to disable a user profile so it’s not visible in these searches.\nTo re-enable a disabled user profile, use the enable user profile API .",
         "operationId": "security-disable-user-profile",
         "parameters": [
           {
@@ -30621,7 +30624,7 @@
           "security"
         ],
         "summary": "Disable a user profile",
-        "description": "Disable user profiles so that they are not visible in user profile searches.",
+        "description": "Disable user profiles so that they are not visible in user profile searches.\n\nNOTE: The user profile feature is designed only for use by Kibana and Elastic's Observability, Enterprise Search, and Elastic Security solutions.\nIndividual users and external applications should not call this API directly.\nElastic reserves the right to change or remove this feature in future releases without prior notice.\n\nWhen you activate a user profile, its automatically enabled and visible in user profile searches. You can use the disable user profile API to disable a user profile so it’s not visible in these searches.\nTo re-enable a disabled user profile, use the enable user profile API .",
         "operationId": "security-disable-user-profile-1",
         "parameters": [
           {
@@ -30689,7 +30692,7 @@
           "security"
         ],
         "summary": "Enable a user profile",
-        "description": "Enable user profiles to make them visible in user profile searches.",
+        "description": "Enable user profiles to make them visible in user profile searches.\n\nNOTE: The user profile feature is designed only for use by Kibana and Elastic's Observability, Enterprise Search, and Elastic Security solutions.\nIndividual users and external applications should not call this API directly.\nElastic reserves the right to change or remove this feature in future releases without prior notice.\n\nWhen you activate a user profile, it's automatically enabled and visible in user profile searches.\nIf you later disable the user profile, you can use the enable user profile API to make the profile visible in these searches again.",
         "operationId": "security-enable-user-profile",
         "parameters": [
           {
@@ -30711,7 +30714,7 @@
           "security"
         ],
         "summary": "Enable a user profile",
-        "description": "Enable user profiles to make them visible in user profile searches.",
+        "description": "Enable user profiles to make them visible in user profile searches.\n\nNOTE: The user profile feature is designed only for use by Kibana and Elastic's Observability, Enterprise Search, and Elastic Security solutions.\nIndividual users and external applications should not call this API directly.\nElastic reserves the right to change or remove this feature in future releases without prior notice.\n\nWhen you activate a user profile, it's automatically enabled and visible in user profile searches.\nIf you later disable the user profile, you can use the enable user profile API to make the profile visible in these searches again.",
         "operationId": "security-enable-user-profile-1",
         "parameters": [
           {
@@ -31515,7 +31518,7 @@
           "security"
         ],
         "summary": "Get a user profile",
-        "description": "Get a user's profile using the unique profile ID.",
+        "description": "Get a user's profile using the unique profile ID.\n\nNOTE: The user profile feature is designed only for use by Kibana and Elastic's Observability, Enterprise Search, and Elastic Security solutions.\nIndividual users and external applications should not call this API directly.\nElastic reserves the right to change or remove this feature in future releases without prior notice.",
         "operationId": "security-get-user-profile",
         "parameters": [
           {
@@ -31542,7 +31545,7 @@
           {
             "in": "query",
             "name": "data",
-            "description": "List of filters for the `data` field of the profile document.\nTo return all content use `data=*`. To return a subset of content\nuse `data=<key>` to retrieve content nested under the specified `<key>`.\nBy default returns no `data` content.",
+            "description": "A comma-separated list of filters for the `data` field of the profile document.\nTo return all content use `data=*`.\nTo return a subset of content use `data=<key>` to retrieve content nested under the specified `<key>`.\nBy default returns no `data` content.",
             "deprecated": false,
             "schema": {
               "oneOf": [
@@ -31569,6 +31572,7 @@
                   "type": "object",
                   "properties": {
                     "profiles": {
+                      "description": "A successful call returns the JSON representation of the user profile and its internal versioning numbers.\nThe API returns an empty object if no profile document is found for the provided `uid`.\nThe content of the data field is not returned by default to avoid deserializing a potential large payload.",
                       "type": "array",
                       "items": {
                         "$ref": "#/components/schemas/security._types:UserProfileWithMetadata"
@@ -31770,7 +31774,7 @@
           "security"
         ],
         "summary": "Check user profile privileges",
-        "description": "Determine whether the users associated with the specified user profile IDs have all the requested privileges.",
+        "description": "Determine whether the users associated with the specified user profile IDs have all the requested privileges.\n\nNOTE: The user profile feature is designed only for use by Kibana and Elastic's Observability, Enterprise Search, and Elastic Security solutions. Individual users and external applications should not call this API directly.\nElastic reserves the right to change or remove this feature in future releases without prior notice.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/user-profile.html"
         },
@@ -31790,7 +31794,7 @@
           "security"
         ],
         "summary": "Check user profile privileges",
-        "description": "Determine whether the users associated with the specified user profile IDs have all the requested privileges.",
+        "description": "Determine whether the users associated with the specified user profile IDs have all the requested privileges.\n\nNOTE: The user profile feature is designed only for use by Kibana and Elastic's Observability, Enterprise Search, and Elastic Security solutions. Individual users and external applications should not call this API directly.\nElastic reserves the right to change or remove this feature in future releases without prior notice.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/user-profile.html"
         },
@@ -32160,7 +32164,10 @@
           "security"
         ],
         "summary": "Authenticate SAML",
-        "description": "Submits a SAML response message to Elasticsearch for consumption.",
+        "description": "Submit a SAML response message to Elasticsearch for consumption.\n\nNOTE: This API is intended for use by custom web applications other than Kibana.\nIf you are using Kibana, refer to the documentation for configuring SAML single-sign-on on the Elastic Stack.\n\nThe SAML message that is submitted can be:\n\n* A response to a SAML authentication request that was previously created using the SAML prepare authentication API.\n* An unsolicited SAML message in the case of an IdP-initiated single sign-on (SSO) flow.\n\nIn either case, the SAML message needs to be a base64 encoded XML document with a root element of `<Response>`.\n\nAfter successful validation, Elasticsearch responds with an Elasticsearch internal access token and refresh token that can be subsequently used for authentication.\nThis API endpoint essentially exchanges SAML responses that indicate successful authentication in the IdP for Elasticsearch access and refresh tokens, which can be used for authentication against Elasticsearch.",
+        "externalDocs": {
+          "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/saml-guide-stack.html"
+        },
         "operationId": "security-saml-authenticate",
         "requestBody": {
           "content": {
@@ -32169,7 +32176,7 @@
                 "type": "object",
                 "properties": {
                   "content": {
-                    "description": "The SAML response as it was sent by the user’s browser, usually a Base64 encoded XML document.",
+                    "description": "The SAML response as it was sent by the user's browser, usually a Base64 encoded XML document.",
                     "type": "string"
                   },
                   "ids": {
@@ -32198,18 +32205,23 @@
                   "type": "object",
                   "properties": {
                     "access_token": {
+                      "description": "The access token that was generated by Elasticsearch.",
                       "type": "string"
                     },
                     "username": {
+                      "description": "The authenticated user's name.",
                       "type": "string"
                     },
                     "expires_in": {
+                      "description": "The amount of time (in seconds) left until the token expires.",
                       "type": "number"
                     },
                     "refresh_token": {
+                      "description": "The refresh token that was generated by Elasticsearch.",
                       "type": "string"
                     },
                     "realm": {
+                      "description": "The name of the realm where the user was authenticated.",
                       "type": "string"
                     }
                   },
@@ -32234,7 +32246,10 @@
           "security"
         ],
         "summary": "Logout of SAML completely",
-        "description": "Verifies the logout response sent from the SAML IdP.",
+        "description": "Verifies the logout response sent from the SAML IdP.\n\nNOTE: This API is intended for use by custom web applications other than Kibana.\nIf you are using Kibana, refer to the documentation for configuring SAML single-sign-on on the Elastic Stack.\n\nThe SAML IdP may send a logout response back to the SP after handling the SP-initiated SAML Single Logout.\nThis API verifies the response by ensuring the content is relevant and validating its signature.\nAn empty response is returned if the verification process is successful.\nThe response can be sent by the IdP with either the HTTP-Redirect or the HTTP-Post binding.\nThe caller of this API must prepare the request accordingly so that this API can handle either of them.",
+        "externalDocs": {
+          "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/saml-guide-stack.html"
+        },
         "operationId": "security-saml-complete-logout",
         "requestBody": {
           "content": {
@@ -32284,7 +32299,10 @@
           "security"
         ],
         "summary": "Invalidate SAML",
-        "description": "Submits a SAML LogoutRequest message to Elasticsearch for consumption.",
+        "description": "Submit a SAML LogoutRequest message to Elasticsearch for consumption.\n\nNOTE: This API is intended for use by custom web applications other than Kibana.\nIf you are using Kibana, refer to the documentation for configuring SAML single-sign-on on the Elastic Stack.\n\nThe logout request comes from the SAML IdP during an IdP initiated Single Logout.\nThe custom web application can use this API to have Elasticsearch process the `LogoutRequest`.\nAfter successful validation of the request, Elasticsearch invalidates the access token and refresh token that corresponds to that specific SAML principal and provides a URL that contains a SAML LogoutResponse message.\nThus the user can be redirected back to their IdP.",
+        "externalDocs": {
+          "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/saml-guide-stack.html"
+        },
         "operationId": "security-saml-invalidate",
         "requestBody": {
           "content": {
@@ -32293,15 +32311,15 @@
                 "type": "object",
                 "properties": {
                   "acs": {
-                    "description": "The Assertion Consumer Service URL that matches the one of the SAML realm in Elasticsearch that should be used. You must specify either this parameter or the realm parameter.",
+                    "description": "The Assertion Consumer Service URL that matches the one of the SAML realm in Elasticsearch that should be used. You must specify either this parameter or the `realm` parameter.",
                     "type": "string"
                   },
                   "query_string": {
-                    "description": "The query part of the URL that the user was redirected to by the SAML IdP to initiate the Single Logout.\nThis query should include a single parameter named SAMLRequest that contains a SAML logout request that is deflated and Base64 encoded.\nIf the SAML IdP has signed the logout request, the URL should include two extra parameters named SigAlg and Signature that contain the algorithm used for the signature and the signature value itself.\nIn order for Elasticsearch to be able to verify the IdP’s signature, the value of the query_string field must be an exact match to the string provided by the browser.\nThe client application must not attempt to parse or process the string in any way.",
+                    "description": "The query part of the URL that the user was redirected to by the SAML IdP to initiate the Single Logout.\nThis query should include a single parameter named `SAMLRequest` that contains a SAML logout request that is deflated and Base64 encoded.\nIf the SAML IdP has signed the logout request, the URL should include two extra parameters named `SigAlg` and `Signature` that contain the algorithm used for the signature and the signature value itself.\nIn order for Elasticsearch to be able to verify the IdP's signature, the value of the `query_string` field must be an exact match to the string provided by the browser.\nThe client application must not attempt to parse or process the string in any way.",
                     "type": "string"
                   },
                   "realm": {
-                    "description": "The name of the SAML realm in Elasticsearch the configuration. You must specify either this parameter or the acs parameter.",
+                    "description": "The name of the SAML realm in Elasticsearch the configuration. You must specify either this parameter or the `acs` parameter.",
                     "type": "string"
                   }
                 },
@@ -32322,12 +32340,15 @@
                   "type": "object",
                   "properties": {
                     "invalidated": {
+                      "description": "The number of tokens that were invalidated as part of this logout.",
                       "type": "number"
                     },
                     "realm": {
+                      "description": "The realm name of the SAML realm in Elasticsearch that authenticated the user.",
                       "type": "string"
                     },
                     "redirect": {
+                      "description": "A SAML logout response as a parameter so that the user can be redirected back to the SAML IdP.",
                       "type": "string"
                     }
                   },
@@ -32350,7 +32371,10 @@
           "security"
         ],
         "summary": "Logout of SAML",
-        "description": "Submits a request to invalidate an access token and refresh token.",
+        "description": "Submits a request to invalidate an access token and refresh token.\n\nNOTE: This API is intended for use by custom web applications other than Kibana.\nIf you are using Kibana, refer to the documentation for configuring SAML single-sign-on on the Elastic Stack.\n\nThis API invalidates the tokens that were generated for a user by the SAML authenticate API.\nIf the SAML realm in Elasticsearch is configured accordingly and the SAML IdP supports this, the Elasticsearch response contains a URL to redirect the user to the IdP that contains a SAML logout request (starting an SP-initiated SAML Single Logout).",
+        "externalDocs": {
+          "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/saml-guide-stack.html"
+        },
         "operationId": "security-saml-logout",
         "requestBody": {
           "content": {
@@ -32359,7 +32383,7 @@
                 "type": "object",
                 "properties": {
                   "token": {
-                    "description": "The access token that was returned as a response to calling the SAML authenticate API.\nAlternatively, the most recent token that was received after refreshing the original one by using a refresh_token.",
+                    "description": "The access token that was returned as a response to calling the SAML authenticate API.\nAlternatively, the most recent token that was received after refreshing the original one by using a `refresh_token`.",
                     "type": "string"
                   },
                   "refresh_token": {
@@ -32384,6 +32408,7 @@
                   "type": "object",
                   "properties": {
                     "redirect": {
+                      "description": "A URL that contains a SAML logout request as a parameter.\nYou can use this URL to be redirected back to the SAML IdP and to initiate Single Logout.",
                       "type": "string"
                     }
                   },
@@ -32404,7 +32429,10 @@
           "security"
         ],
         "summary": "Prepare SAML authentication",
-        "description": "Creates a SAML authentication request (`<AuthnRequest>`) as a URL string, based on the configuration of the respective SAML realm in Elasticsearch.",
+        "description": "Create a SAML authentication request (`<AuthnRequest>`) as a URL string based on the configuration of the respective SAML realm in Elasticsearch.\n\nNOTE: This API is intended for use by custom web applications other than Kibana.\nIf you are using Kibana, refer to the documentation for configuring SAML single-sign-on on the Elastic Stack.\n\nThis API returns a URL pointing to the SAML Identity Provider.\nYou can use the URL to redirect the browser of the user in order to continue the authentication process.\nThe URL includes a single parameter named `SAMLRequest`, which contains a SAML Authentication request that is deflated and Base64 encoded.\nIf the configuration dictates that SAML authentication requests should be signed, the URL has two extra parameters named `SigAlg` and `Signature`.\nThese parameters contain the algorithm used for the signature and the signature value itself.\nIt also returns a random string that uniquely identifies this SAML Authentication request.\nThe caller of this API needs to store this identifier as it needs to be used in a following step of the authentication process.",
+        "externalDocs": {
+          "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/saml-guide-stack.html"
+        },
         "operationId": "security-saml-prepare-authentication",
         "requestBody": {
           "content": {
@@ -32413,15 +32441,15 @@
                 "type": "object",
                 "properties": {
                   "acs": {
-                    "description": "The Assertion Consumer Service URL that matches the one of the SAML realms in Elasticsearch.\nThe realm is used to generate the authentication request. You must specify either this parameter or the realm parameter.",
+                    "description": "The Assertion Consumer Service URL that matches the one of the SAML realms in Elasticsearch.\nThe realm is used to generate the authentication request. You must specify either this parameter or the `realm` parameter.",
                     "type": "string"
                   },
                   "realm": {
-                    "description": "The name of the SAML realm in Elasticsearch for which the configuration is used to generate the authentication request.\nYou must specify either this parameter or the acs parameter.",
+                    "description": "The name of the SAML realm in Elasticsearch for which the configuration is used to generate the authentication request.\nYou must specify either this parameter or the `acs` parameter.",
                     "type": "string"
                   },
                   "relay_state": {
-                    "description": "A string that will be included in the redirect URL that this API returns as the RelayState query parameter.\nIf the Authentication Request is signed, this value is used as part of the signature computation.",
+                    "description": "A string that will be included in the redirect URL that this API returns as the `RelayState` query parameter.\nIf the Authentication Request is signed, this value is used as part of the signature computation.",
                     "type": "string"
                   }
                 }
@@ -32442,9 +32470,11 @@
                       "$ref": "#/components/schemas/_types:Id"
                     },
                     "realm": {
+                      "description": "The name of the Elasticsearch realm that was used to construct the authentication request.",
                       "type": "string"
                     },
                     "redirect": {
+                      "description": "The URL to redirect the user to.",
                       "type": "string"
                     }
                   },
@@ -32467,7 +32497,7 @@
           "security"
         ],
         "summary": "Create SAML service provider metadata",
-        "description": "Generate SAML metadata for a SAML 2.0 Service Provider.",
+        "description": "Generate SAML metadata for a SAML 2.0 Service Provider.\n\nThe SAML 2.0 specification provides a mechanism for Service Providers to describe their capabilities and configuration using a metadata file.\nThis API generates Service Provider metadata based on the configuration of a SAML realm in Elasticsearch.",
         "operationId": "security-saml-service-provider-metadata",
         "parameters": [
           {
@@ -32491,6 +32521,7 @@
                   "type": "object",
                   "properties": {
                     "metadata": {
+                      "description": "An XML string that contains a SAML Service Provider's metadata for the realm.",
                       "type": "string"
                     }
                   },
@@ -32511,7 +32542,7 @@
           "security"
         ],
         "summary": "Suggest a user profile",
-        "description": "Get suggestions for user profiles that match specified search criteria.",
+        "description": "Get suggestions for user profiles that match specified search criteria.\n\nNOTE: The user profile feature is designed only for use by Kibana and Elastic's Observability, Enterprise Search, and Elastic Security solutions.\nIndividual users and external applications should not call this API directly.\nElastic reserves the right to change or remove this feature in future releases without prior notice.",
         "operationId": "security-suggest-user-profiles",
         "parameters": [
           {
@@ -32533,7 +32564,7 @@
           "security"
         ],
         "summary": "Suggest a user profile",
-        "description": "Get suggestions for user profiles that match specified search criteria.",
+        "description": "Get suggestions for user profiles that match specified search criteria.\n\nNOTE: The user profile feature is designed only for use by Kibana and Elastic's Observability, Enterprise Search, and Elastic Security solutions.\nIndividual users and external applications should not call this API directly.\nElastic reserves the right to change or remove this feature in future releases without prior notice.",
         "operationId": "security-suggest-user-profiles-1",
         "parameters": [
           {
@@ -32626,7 +32657,7 @@
           "security"
         ],
         "summary": "Update a cross-cluster API key",
-        "description": "Update the attributes of an existing cross-cluster API key, which is used for API key based remote cluster access.",
+        "description": "Update the attributes of an existing cross-cluster API key, which is used for API key based remote cluster access.\n\nTo use this API, you must have at least the `manage_security` cluster privilege.\nUsers can only update API keys that they created.\nTo update another user's API key, use the `run_as` feature to submit a request on behalf of another user.\n\nIMPORTANT: It's not possible to use an API key as the authentication credential for this API.\nTo update an API key, the owner user's credentials are required.\n\nIt's not possible to update expired API keys, or API keys that have been invalidated by the invalidate API key API.\n\nThis API supports updates to an API key's access scope, metadata, and expiration.\nThe owner user's information, such as the `username` and `realm`, is also updated automatically on every call.\n\nNOTE: This API cannot update REST API keys, which should be updated by either the update API key or bulk update API keys API.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/remote-clusters-api-key.html"
         },
@@ -32697,7 +32728,7 @@
           "security"
         ],
         "summary": "Update user profile data",
-        "description": "Update specific data for the user profile that is associated with a unique ID.",
+        "description": "Update specific data for the user profile that is associated with a unique ID.\n\nNOTE: The user profile feature is designed only for use by Kibana and Elastic's Observability, Enterprise Search, and Elastic Security solutions.\nIndividual users and external applications should not call this API directly.\nElastic reserves the right to change or remove this feature in future releases without prior notice.\n\nTo use this API, you must have one of the following privileges:\n\n* The `manage_user_profile` cluster privilege.\n* The `update_profile_data` global privilege for the namespaces that are referenced in the request.\n\nThis API updates the `labels` and `data` fields of an existing user profile document with JSON objects.\nNew keys and their values are added to the profile document and conflicting keys are replaced by data that's included in the request.\n\nFor both labels and data, content is namespaced by the top-level fields.\nThe `update_profile_data` global privilege grants privileges for updating only the allowed namespaces.",
         "operationId": "security-update-user-profile-data",
         "parameters": [
           {
@@ -32728,7 +32759,7 @@
           "security"
         ],
         "summary": "Update user profile data",
-        "description": "Update specific data for the user profile that is associated with a unique ID.",
+        "description": "Update specific data for the user profile that is associated with a unique ID.\n\nNOTE: The user profile feature is designed only for use by Kibana and Elastic's Observability, Enterprise Search, and Elastic Security solutions.\nIndividual users and external applications should not call this API directly.\nElastic reserves the right to change or remove this feature in future releases without prior notice.\n\nTo use this API, you must have one of the following privileges:\n\n* The `manage_user_profile` cluster privilege.\n* The `update_profile_data` global privilege for the namespaces that are referenced in the request.\n\nThis API updates the `labels` and `data` fields of an existing user profile document with JSON objects.\nNew keys and their values are added to the profile document and conflicting keys are replaced by data that's included in the request.\n\nFor both labels and data, content is namespaced by the top-level fields.\nThe `update_profile_data` global privilege grants privileges for updating only the allowed namespaces.",
         "operationId": "security-update-user-profile-data-1",
         "parameters": [
           {
@@ -87651,7 +87682,7 @@
         "type": "object",
         "properties": {
           "uids": {
-            "description": "A list of Profile UIDs to match against.",
+            "description": "A list of profile UIDs to match against.",
             "type": "array",
             "items": {
               "$ref": "#/components/schemas/security._types:UserProfileId"
@@ -96531,9 +96562,11 @@
                   "$ref": "#/components/schemas/security.suggest_user_profiles:TotalUserProfiles"
                 },
                 "took": {
+                  "description": "The number of milliseconds it took Elasticsearch to run the request.",
                   "type": "number"
                 },
                 "profiles": {
+                  "description": "A list of profile documents, ordered by relevance, that match the search criteria.",
                   "type": "array",
                   "items": {
                     "$ref": "#/components/schemas/security._types:UserProfile"
@@ -105617,7 +105650,7 @@
       "security.disable_user_profile#refresh": {
         "in": "query",
         "name": "refresh",
-        "description": "If 'true', Elasticsearch refreshes the affected shards to make this operation\nvisible to search, if 'wait_for' then wait for a refresh to make this operation\nvisible to search, if 'false' do nothing with refreshes.",
+        "description": "If 'true', Elasticsearch refreshes the affected shards to make this operation visible to search.\nIf 'wait_for', it waits for a refresh to make this operation visible to search.\nIf 'false', it does nothing with refreshes.",
         "deprecated": false,
         "schema": {
           "$ref": "#/components/schemas/_types:Refresh"
@@ -105648,7 +105681,7 @@
       "security.enable_user_profile#uid": {
         "in": "path",
         "name": "uid",
-        "description": "Unique identifier for the user profile.",
+        "description": "A unique identifier for the user profile.",
         "required": true,
         "deprecated": false,
         "schema": {
@@ -105659,7 +105692,7 @@
       "security.enable_user_profile#refresh": {
         "in": "query",
         "name": "refresh",
-        "description": "If 'true', Elasticsearch refreshes the affected shards to make this operation\nvisible to search, if 'wait_for' then wait for a refresh to make this operation\nvisible to search, if 'false' do nothing with refreshes.",
+        "description": "If 'true', Elasticsearch refreshes the affected shards to make this operation\nvisible to search.\nIf 'wait_for', it waits for a refresh to make this operation visible to search.\nIf 'false', nothing is done with refreshes.",
         "deprecated": false,
         "schema": {
           "$ref": "#/components/schemas/_types:Refresh"
@@ -105890,7 +105923,7 @@
       "security.suggest_user_profiles#data": {
         "in": "query",
         "name": "data",
-        "description": "List of filters for the `data` field of the profile document.\nTo return all content use `data=*`. To return a subset of content\nuse `data=<key>` to retrieve content nested under the specified `<key>`.\nBy default returns no `data` content.",
+        "description": "A comma-separated list of filters for the `data` field of the profile document.\nTo return all content use `data=*`.\nTo return a subset of content, use `data=<key>` to retrieve content nested under the specified `<key>`.\nBy default, the API returns no `data` content.\nIt is an error to specify `data` as both the query parameter and the request body field.",
         "deprecated": false,
         "schema": {
           "oneOf": [
@@ -105941,7 +105974,7 @@
       "security.update_user_profile_data#refresh": {
         "in": "query",
         "name": "refresh",
-        "description": "If 'true', Elasticsearch refreshes the affected shards to make this operation\nvisible to search, if 'wait_for' then wait for a refresh to make this operation\nvisible to search, if 'false' do nothing with refreshes.",
+        "description": "If 'true', Elasticsearch refreshes the affected shards to make this operation\nvisible to search.\nIf 'wait_for', it waits for a refresh to make this operation visible to search.\nIf 'false', nothing is done with refreshes.",
         "deprecated": false,
         "schema": {
           "$ref": "#/components/schemas/_types:Refresh"
@@ -109284,15 +109317,15 @@
               "type": "object",
               "properties": {
                 "name": {
-                  "description": "Query string used to match name-related fields in user profile documents.\nName-related fields are the user's `username`, `full_name`, and `email`.",
+                  "description": "A query string used to match name-related fields in user profile documents.\nName-related fields are the user's `username`, `full_name`, and `email`.",
                   "type": "string"
                 },
                 "size": {
-                  "description": "Number of profiles to return.",
+                  "description": "The number of profiles to return.",
                   "type": "number"
                 },
                 "data": {
-                  "description": "List of filters for the `data` field of the profile document.\nTo return all content use `data=*`. To return a subset of content\nuse `data=<key>` to retrieve content nested under the specified `<key>`.\nBy default returns no `data` content.",
+                  "description": "A comma-separated list of filters for the `data` field of the profile document.\nTo return all content use `data=*`.\nTo return a subset of content, use `data=<key>` to retrieve content nested under the specified `<key>`.\nBy default, the API returns no `data` content.\nIt is an error to specify `data` as both the query parameter and the request body field.",
                   "oneOf": [
                     {
                       "type": "string"
@@ -109320,14 +109353,14 @@
               "type": "object",
               "properties": {
                 "labels": {
-                  "description": "Searchable data that you want to associate with the user profile. This\nfield supports a nested data structure.",
+                  "description": "Searchable data that you want to associate with the user profile.\nThis field supports a nested data structure.\nWithin the labels object, top-level keys cannot begin with an underscore (`_`) or contain a period (`.`).",
                   "type": "object",
                   "additionalProperties": {
                     "type": "object"
                   }
                 },
                 "data": {
-                  "description": "Non-searchable data that you want to associate with the user profile.\nThis field supports a nested data structure.",
+                  "description": "Non-searchable data that you want to associate with the user profile.\nThis field supports a nested data structure.\nWithin the `data` object, top-level keys cannot begin with an underscore (`_`) or contain a period (`.`).\nThe data object is not searchable, but can be retrieved with the get user profile API.",
                   "type": "object",
                   "additionalProperties": {
                     "type": "object"

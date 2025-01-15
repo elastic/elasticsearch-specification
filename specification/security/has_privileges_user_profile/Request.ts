@@ -25,6 +25,9 @@ import { PrivilegesCheck } from './types'
  * Check user profile privileges.
  *
  * Determine whether the users associated with the specified user profile IDs have all the requested privileges.
+ *
+ * NOTE: The user profile feature is designed only for use by Kibana and Elastic's Observability, Enterprise Search, and Elastic Security solutions. Individual users and external applications should not call this API directly.
+ * Elastic reserves the right to change or remove this feature in future releases without prior notice.
  * @rest_spec_name security.has_privileges_user_profile
  * @availability stack since=8.3.0 stability=stable
  * @availability serverless stability=stable visibility=private
@@ -44,6 +47,9 @@ export interface Request extends RequestBase {
      * A list of profile IDs. The privileges are checked for associated users of the profiles.
      */
     uids: UserProfileId[]
+    /**
+     * An object containing all the privileges to be checked.
+     */
     privileges: PrivilegesCheck
   }
 }
