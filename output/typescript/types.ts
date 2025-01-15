@@ -6994,7 +6994,7 @@ export type CatAllocationResponse = CatAllocationAllocationRecord[]
 
 export interface CatComponentTemplatesComponentTemplate {
   name: string
-  version: string
+  version: string | null
   alias_count: string
   mapping_count: string
   settings_count: string
