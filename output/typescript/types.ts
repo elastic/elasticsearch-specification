@@ -12934,6 +12934,16 @@ export interface InferencePutRequest extends RequestBase {
 
 export type InferencePutResponse = InferenceInferenceEndpointInfo
 
+export interface InferenceStreamInferenceRequest extends RequestBase {
+  inference_id: Id
+  task_type?: InferenceTaskType
+  body?: {
+    input: string | string[]
+  }
+}
+
+export type InferenceStreamInferenceResponse = StreamResult
+
 export interface InferenceUnifiedInferenceCompletionTool {
   type: string
   function: InferenceUnifiedInferenceCompletionToolFunction
@@ -12999,6 +13009,14 @@ export interface InferenceUnifiedInferenceToolCallFunction {
   arguments: string
   name: string
 }
+
+export interface InferenceUpdateRequest extends RequestBase {
+  inference_id: Id
+  task_type?: InferenceTaskType
+  body?: InferenceInferenceEndpoint
+}
+
+export type InferenceUpdateResponse = InferenceInferenceEndpointInfo
 
 export interface IngestAppendProcessor extends IngestProcessorBase {
   field: Field

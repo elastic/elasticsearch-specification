@@ -271,6 +271,8 @@ indices-template-exists-v1,https://www.elastic.co/guide/en/elasticsearch/referen
 indices-templates,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/indices-templates.html
 indices-update-settings,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/indices-update-settings.html
 infer-trained-model-deployment,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/infer-trained-model-deployment.html
+inference-api-stream,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/stream-inference-api.html
+inference-api-update,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/update-inference-api.html
 inference-processor,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/inference-processor.html
 info-api,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/info-api.html
 ingest,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/ingest.html

@@ -371,12 +371,6 @@
       ],
       "response": []
     },
-    "inference.stream_inference": {
-      "request": [
-        "Missing request & response"
-      ],
-      "response": []
-    },
     "ingest.get_ip_location_database": {
       "request": [
         "Request: query parameter 'master_timeout' does not exist in the json spec"
