@@ -1,0 +1,61 @@
+# summary:
+description: >
+  A successful response from `POST /_security/profile/_suggest`.
+  User `jacknich` is ranked highest because the profile matches both the `uids` and `labels` hints in the request.
+  User `jackspa` is ranked second because the profile matches only the `uids` hint.
+  User `jackrea` is ranked lowest because the profile does not match any hints.
+  However, it is not excluded from the response because it matches the `name` query.
+# type: response
+# response_code:
+value: |-
+  {
+    "took": 30,
+    "total": {
+      "value": 3,
+      "relation": "eq"
+    },
+    "profiles": [
+      {
+        "uid": "u_79HkWkwmnBH5gqFKwoxggWPjEBOur1zLPXQPEl1VBW0_0",
+        "user": {
+          "username": "jacknich",    
+          "roles": [ "admin", "other_role1" ],
+          "realm_name": "native",
+          "email" : "jacknich@example.com",
+          "full_name": "Jack Nicholson"
+        },
+        "labels": {
+          "direction": "north"
+        },
+        "data": {}
+      },
+      {
+        "uid": "u_8RKO7AKfEbSiIHZkZZ2LJy2MUSDPWDr3tMI_CkIGApU_0",
+        "user": {
+          "username": "jackspa",    
+          "roles": [ "user" ],
+          "realm_name": "native",
+          "email" : "jackspa@example.com",
+          "full_name": "Jack Sparrow"
+        },
+        "labels": {
+          "direction": "south"
+        },
+        "data": {}
+      },
+      {
+        "uid": "u_P_0BMHgaOK3p7k-PFWUCbw9dQ-UFjt01oWJ_Dp2PmPc_0",
+        "user": {
+          "username": "jackrea",    
+          "roles": [ "admin" ],
+          "realm_name": "native",
+          "email" : "jackrea@example.com",
+          "full_name": "Jack Reacher"
+        },
+        "labels": {
+          "direction": "west"
+        },
+        "data": {}
+      }
+    ]
+  }

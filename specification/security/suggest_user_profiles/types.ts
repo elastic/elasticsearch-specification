@@ -22,7 +22,7 @@ import { Dictionary } from '@spec_utils/Dictionary'
 
 export class Hint {
   /**
-   * A list of Profile UIDs to match against.
+   * A list of profile UIDs to match against.
    */
   uids?: UserProfileId[]
   /**

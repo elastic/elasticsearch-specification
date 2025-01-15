@@ -28731,7 +28731,7 @@
           "security"
         ],
         "summary": "Activate a user profile",
-        "description": "Create or update a user profile on behalf of another user.",
+        "description": "Create or update a user profile on behalf of another user.\n\nNOTE: The user profile feature is designed only for use by Kibana and Elastic's Observability, Enterprise Search, and Elastic Security solutions.\nIndividual users and external applications should not call this API directly.\nThe calling application must have either an `access_token` or a combination of `username` and `password` for the user that the profile document is intended for.\nElastic reserves the right to change or remove this feature in future releases without prior notice.\n\nThis API creates or updates a profile document for end users with information that is extracted from the user's authentication object including `username`, `full_name,` `roles`, and the authentication realm.\nFor example, in the JWT `access_token` case, the profile user's `username` is extracted from the JWT token claim pointed to by the `claims.principal` setting of the JWT realm that authenticated the token.\n\nWhen updating a profile document, the API enables the document if it was disabled.\nAny updates do not change existing content for either the `labels` or `data` fields.",
         "operationId": "security-activate-user-profile",
         "requestBody": {
           "content": {
@@ -28740,15 +28740,18 @@
                 "type": "object",
                 "properties": {
                   "access_token": {
+                    "description": "The user's Elasticsearch access token or JWT.\nBoth `access` and `id` JWT token types are supported and they depend on the underlying JWT realm configuration.\nIf you specify the `access_token` grant type, this parameter is required.\nIt is not valid with other grant types.",
                     "type": "string"
                   },
                   "grant_type": {
                     "$ref": "#/components/schemas/security._types:GrantType"
                   },
                   "password": {
+                    "description": "The user's password.\nIf you specify the `password` grant type, this parameter is required.\nIt is not valid with other grant types.",
                     "type": "string"
                   },
                   "username": {
+                    "description": "The username that identifies the user.\nIf you specify the `password` grant type, this parameter is required.\nIt is not valid with other grant types.",
                     "type": "string"
                   }
                 },
@@ -30599,7 +30602,7 @@
           "security"
         ],
         "summary": "Disable a user profile",
-        "description": "Disable user profiles so that they are not visible in user profile searches.",
+        "description": "Disable user profiles so that they are not visible in user profile searches.\n\nNOTE: The user profile feature is designed only for use by Kibana and Elastic's Observability, Enterprise Search, and Elastic Security solutions.\nIndividual users and external applications should not call this API directly.\nElastic reserves the right to change or remove this feature in future releases without prior notice.\n\nWhen you activate a user profile, its automatically enabled and visible in user profile searches. You can use the disable user profile API to disable a user profile so it’s not visible in these searches.\nTo re-enable a disabled user profile, use the enable user profile API .",
         "operationId": "security-disable-user-profile",
         "parameters": [
           {
@@ -30621,7 +30624,7 @@
           "security"
         ],
         "summary": "Disable a user profile",
-        "description": "Disable user profiles so that they are not visible in user profile searches.",
+        "description": "Disable user profiles so that they are not visible in user profile searches.\n\nNOTE: The user profile feature is designed only for use by Kibana and Elastic's Observability, Enterprise Search, and Elastic Security solutions.\nIndividual users and external applications should not call this API directly.\nElastic reserves the right to change or remove this feature in future releases without prior notice.\n\nWhen you activate a user profile, its automatically enabled and visible in user profile searches. You can use the disable user profile API to disable a user profile so it’s not visible in these searches.\nTo re-enable a disabled user profile, use the enable user profile API .",
         "operationId": "security-disable-user-profile-1",
         "parameters": [
           {
@@ -30689,7 +30692,7 @@
           "security"
         ],
         "summary": "Enable a user profile",
-        "description": "Enable user profiles to make them visible in user profile searches.",
+        "description": "Enable user profiles to make them visible in user profile searches.\n\nNOTE: The user profile feature is designed only for use by Kibana and Elastic's Observability, Enterprise Search, and Elastic Security solutions.\nIndividual users and external applications should not call this API directly.\nElastic reserves the right to change or remove this feature in future releases without prior notice.\n\nWhen you activate a user profile, it's automatically enabled and visible in user profile searches.\nIf you later disable the user profile, you can use the enable user profile API to make the profile visible in these searches again.",
         "operationId": "security-enable-user-profile",
         "parameters": [
           {
@@ -30711,7 +30714,7 @@
           "security"
         ],
         "summary": "Enable a user profile",
-        "description": "Enable user profiles to make them visible in user profile searches.",
+        "description": "Enable user profiles to make them visible in user profile searches.\n\nNOTE: The user profile feature is designed only for use by Kibana and Elastic's Observability, Enterprise Search, and Elastic Security solutions.\nIndividual users and external applications should not call this API directly.\nElastic reserves the right to change or remove this feature in future releases without prior notice.\n\nWhen you activate a user profile, it's automatically enabled and visible in user profile searches.\nIf you later disable the user profile, you can use the enable user profile API to make the profile visible in these searches again.",
         "operationId": "security-enable-user-profile-1",
         "parameters": [
           {
@@ -31515,7 +31518,7 @@
           "security"
         ],
         "summary": "Get a user profile",
-        "description": "Get a user's profile using the unique profile ID.",
+        "description": "Get a user's profile using the unique profile ID.\n\nNOTE: The user profile feature is designed only for use by Kibana and Elastic's Observability, Enterprise Search, and Elastic Security solutions.\nIndividual users and external applications should not call this API directly.\nElastic reserves the right to change or remove this feature in future releases without prior notice.",
         "operationId": "security-get-user-profile",
         "parameters": [
           {
@@ -31542,7 +31545,7 @@
           {
             "in": "query",
             "name": "data",
-            "description": "List of filters for the `data` field of the profile document.\nTo return all content use `data=*`. To return a subset of content\nuse `data=<key>` to retrieve content nested under the specified `<key>`.\nBy default returns no `data` content.",
+            "description": "A comma-separated list of filters for the `data` field of the profile document.\nTo return all content use `data=*`.\nTo return a subset of content use `data=<key>` to retrieve content nested under the specified `<key>`.\nBy default returns no `data` content.",
             "deprecated": false,
             "schema": {
               "oneOf": [
@@ -31569,6 +31572,7 @@
                   "type": "object",
                   "properties": {
                     "profiles": {
+                      "description": "A successful call returns the JSON representation of the user profile and its internal versioning numbers.\nThe API returns an empty object if no profile document is found for the provided `uid`.\nThe content of the data field is not returned by default to avoid deserializing a potential large payload.",
                       "type": "array",
                       "items": {
                         "$ref": "#/components/schemas/security._types:UserProfileWithMetadata"
@@ -31770,7 +31774,7 @@
           "security"
         ],
         "summary": "Check user profile privileges",
-        "description": "Determine whether the users associated with the specified user profile IDs have all the requested privileges.",
+        "description": "Determine whether the users associated with the specified user profile IDs have all the requested privileges.\n\nNOTE: The user profile feature is designed only for use by Kibana and Elastic's Observability, Enterprise Search, and Elastic Security solutions. Individual users and external applications should not call this API directly.\nElastic reserves the right to change or remove this feature in future releases without prior notice.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/user-profile.html"
         },
@@ -31790,7 +31794,7 @@
           "security"
         ],
         "summary": "Check user profile privileges",
-        "description": "Determine whether the users associated with the specified user profile IDs have all the requested privileges.",
+        "description": "Determine whether the users associated with the specified user profile IDs have all the requested privileges.\n\nNOTE: The user profile feature is designed only for use by Kibana and Elastic's Observability, Enterprise Search, and Elastic Security solutions. Individual users and external applications should not call this API directly.\nElastic reserves the right to change or remove this feature in future releases without prior notice.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/user-profile.html"
         },
@@ -32511,7 +32515,7 @@
           "security"
         ],
         "summary": "Suggest a user profile",
-        "description": "Get suggestions for user profiles that match specified search criteria.",
+        "description": "Get suggestions for user profiles that match specified search criteria.\n\nNOTE: The user profile feature is designed only for use by Kibana and Elastic's Observability, Enterprise Search, and Elastic Security solutions.\nIndividual users and external applications should not call this API directly.\nElastic reserves the right to change or remove this feature in future releases without prior notice.",
         "operationId": "security-suggest-user-profiles",
         "parameters": [
           {
@@ -32533,7 +32537,7 @@
           "security"
         ],
         "summary": "Suggest a user profile",
-        "description": "Get suggestions for user profiles that match specified search criteria.",
+        "description": "Get suggestions for user profiles that match specified search criteria.\n\nNOTE: The user profile feature is designed only for use by Kibana and Elastic's Observability, Enterprise Search, and Elastic Security solutions.\nIndividual users and external applications should not call this API directly.\nElastic reserves the right to change or remove this feature in future releases without prior notice.",
         "operationId": "security-suggest-user-profiles-1",
         "parameters": [
           {
@@ -32626,7 +32630,7 @@
           "security"
         ],
         "summary": "Update a cross-cluster API key",
-        "description": "Update the attributes of an existing cross-cluster API key, which is used for API key based remote cluster access.",
+        "description": "Update the attributes of an existing cross-cluster API key, which is used for API key based remote cluster access.\n\nTo use this API, you must have at least the `manage_security` cluster privilege.\nUsers can only update API keys that they created.\nTo update another user's API key, use the `run_as` feature to submit a request on behalf of another user.\n\nIMPORTANT: It's not possible to use an API key as the authentication credential for this API.\nTo update an API key, the owner user's credentials are required.\n\nIt's not possible to update expired API keys, or API keys that have been invalidated by the invalidate API key API.\n\nThis API supports updates to an API key's access scope, metadata, and expiration.\nThe owner user's information, such as the `username` and `realm`, is also updated automatically on every call.\n\nNOTE: This API cannot update REST API keys, which should be updated by either the update API key or bulk update API keys API.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/remote-clusters-api-key.html"
         },
@@ -32697,7 +32701,7 @@
           "security"
         ],
         "summary": "Update user profile data",
-        "description": "Update specific data for the user profile that is associated with a unique ID.",
+        "description": "Update specific data for the user profile that is associated with a unique ID.\n\nNOTE: The user profile feature is designed only for use by Kibana and Elastic's Observability, Enterprise Search, and Elastic Security solutions.\nIndividual users and external applications should not call this API directly.\nElastic reserves the right to change or remove this feature in future releases without prior notice.\n\nTo use this API, you must have one of the following privileges:\n\n* The `manage_user_profile` cluster privilege.\n* The `update_profile_data` global privilege for the namespaces that are referenced in the request.\n\nThis API updates the `labels` and `data` fields of an existing user profile document with JSON objects.\nNew keys and their values are added to the profile document and conflicting keys are replaced by data that's included in the request.\n\nFor both labels and data, content is namespaced by the top-level fields.\nThe `update_profile_data` global privilege grants privileges for updating only the allowed namespaces.",
         "operationId": "security-update-user-profile-data",
         "parameters": [
           {
@@ -32728,7 +32732,7 @@
           "security"
         ],
         "summary": "Update user profile data",
-        "description": "Update specific data for the user profile that is associated with a unique ID.",
+        "description": "Update specific data for the user profile that is associated with a unique ID.\n\nNOTE: The user profile feature is designed only for use by Kibana and Elastic's Observability, Enterprise Search, and Elastic Security solutions.\nIndividual users and external applications should not call this API directly.\nElastic reserves the right to change or remove this feature in future releases without prior notice.\n\nTo use this API, you must have one of the following privileges:\n\n* The `manage_user_profile` cluster privilege.\n* The `update_profile_data` global privilege for the namespaces that are referenced in the request.\n\nThis API updates the `labels` and `data` fields of an existing user profile document with JSON objects.\nNew keys and their values are added to the profile document and conflicting keys are replaced by data that's included in the request.\n\nFor both labels and data, content is namespaced by the top-level fields.\nThe `update_profile_data` global privilege grants privileges for updating only the allowed namespaces.",
         "operationId": "security-update-user-profile-data-1",
         "parameters": [
           {
@@ -87651,7 +87655,7 @@
         "type": "object",
         "properties": {
           "uids": {
-            "description": "A list of Profile UIDs to match against.",
+            "description": "A list of profile UIDs to match against.",
             "type": "array",
             "items": {
               "$ref": "#/components/schemas/security._types:UserProfileId"
@@ -96531,9 +96535,11 @@
                   "$ref": "#/components/schemas/security.suggest_user_profiles:TotalUserProfiles"
                 },
                 "took": {
+                  "description": "The number of milliseconds it took Elasticsearch to run the request.",
                   "type": "number"
                 },
                 "profiles": {
+                  "description": "A list of profile documents, ordered by relevance, that match the search criteria.",
                   "type": "array",
                   "items": {
                     "$ref": "#/components/schemas/security._types:UserProfile"
@@ -105617,7 +105623,7 @@
       "security.disable_user_profile#refresh": {
         "in": "query",
         "name": "refresh",
-        "description": "If 'true', Elasticsearch refreshes the affected shards to make this operation\nvisible to search, if 'wait_for' then wait for a refresh to make this operation\nvisible to search, if 'false' do nothing with refreshes.",
+        "description": "If 'true', Elasticsearch refreshes the affected shards to make this operation visible to search.\nIf 'wait_for', it waits for a refresh to make this operation visible to search.\nIf 'false', it does nothing with refreshes.",
         "deprecated": false,
         "schema": {
           "$ref": "#/components/schemas/_types:Refresh"
@@ -105648,7 +105654,7 @@
       "security.enable_user_profile#uid": {
         "in": "path",
         "name": "uid",
-        "description": "Unique identifier for the user profile.",
+        "description": "A unique identifier for the user profile.",
         "required": true,
         "deprecated": false,
         "schema": {
@@ -105659,7 +105665,7 @@
       "security.enable_user_profile#refresh": {
         "in": "query",
         "name": "refresh",
-        "description": "If 'true', Elasticsearch refreshes the affected shards to make this operation\nvisible to search, if 'wait_for' then wait for a refresh to make this operation\nvisible to search, if 'false' do nothing with refreshes.",
+        "description": "If 'true', Elasticsearch refreshes the affected shards to make this operation\nvisible to search.\nIf 'wait_for', it waits for a refresh to make this operation visible to search.\nIf 'false', nothing is done with refreshes.",
         "deprecated": false,
         "schema": {
           "$ref": "#/components/schemas/_types:Refresh"
@@ -105890,7 +105896,7 @@
       "security.suggest_user_profiles#data": {
         "in": "query",
         "name": "data",
-        "description": "List of filters for the `data` field of the profile document.\nTo return all content use `data=*`. To return a subset of content\nuse `data=<key>` to retrieve content nested under the specified `<key>`.\nBy default returns no `data` content.",
+        "description": "A comma-separated list of filters for the `data` field of the profile document.\nTo return all content use `data=*`.\nTo return a subset of content, use `data=<key>` to retrieve content nested under the specified `<key>`.\nBy default, the API returns no `data` content.\nIt is an error to specify `data` as both the query parameter and the request body field.",
         "deprecated": false,
         "schema": {
           "oneOf": [
@@ -105941,7 +105947,7 @@
       "security.update_user_profile_data#refresh": {
         "in": "query",
         "name": "refresh",
-        "description": "If 'true', Elasticsearch refreshes the affected shards to make this operation\nvisible to search, if 'wait_for' then wait for a refresh to make this operation\nvisible to search, if 'false' do nothing with refreshes.",
+        "description": "If 'true', Elasticsearch refreshes the affected shards to make this operation\nvisible to search.\nIf 'wait_for', it waits for a refresh to make this operation visible to search.\nIf 'false', nothing is done with refreshes.",
         "deprecated": false,
         "schema": {
           "$ref": "#/components/schemas/_types:Refresh"
@@ -109284,15 +109290,15 @@
               "type": "object",
               "properties": {
                 "name": {
-                  "description": "Query string used to match name-related fields in user profile documents.\nName-related fields are the user's `username`, `full_name`, and `email`.",
+                  "description": "A query string used to match name-related fields in user profile documents.\nName-related fields are the user's `username`, `full_name`, and `email`.",
                   "type": "string"
                 },
                 "size": {
-                  "description": "Number of profiles to return.",
+                  "description": "The number of profiles to return.",
                   "type": "number"
                 },
                 "data": {
-                  "description": "List of filters for the `data` field of the profile document.\nTo return all content use `data=*`. To return a subset of content\nuse `data=<key>` to retrieve content nested under the specified `<key>`.\nBy default returns no `data` content.",
+                  "description": "A comma-separated list of filters for the `data` field of the profile document.\nTo return all content use `data=*`.\nTo return a subset of content, use `data=<key>` to retrieve content nested under the specified `<key>`.\nBy default, the API returns no `data` content.\nIt is an error to specify `data` as both the query parameter and the request body field.",
                   "oneOf": [
                     {
                       "type": "string"
@@ -109320,14 +109326,14 @@
               "type": "object",
               "properties": {
                 "labels": {
-                  "description": "Searchable data that you want to associate with the user profile. This\nfield supports a nested data structure.",
+                  "description": "Searchable data that you want to associate with the user profile.\nThis field supports a nested data structure.\nWithin the labels object, top-level keys cannot begin with an underscore (`_`) or contain a period (`.`).",
                   "type": "object",
                   "additionalProperties": {
                     "type": "object"
                   }
                 },
                 "data": {
-                  "description": "Non-searchable data that you want to associate with the user profile.\nThis field supports a nested data structure.",
+                  "description": "Non-searchable data that you want to associate with the user profile.\nThis field supports a nested data structure.\nWithin the `data` object, top-level keys cannot begin with an underscore (`_`) or contain a period (`.`).\nThe data object is not searchable, but can be retrieved with the get user profile API.",
                   "type": "object",
                   "additionalProperties": {
                     "type": "object"
