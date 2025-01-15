@@ -103753,7 +103753,7 @@
           "name": "password"
         },
         {
-          "description": "In this type of grant, you must supply an access token that was created by the Elasticsearch token service.",
+          "description": "In this type of grant, you must supply an access token that was created by the Elasticsearch token service.\nIf you are activating a user profile, you can alternatively supply a JWT (either a JWT `access_token` or a JWT `id_token`).",
           "name": "access_token"
         }
       ],
@@ -103761,7 +103761,7 @@
         "name": "GrantType",
         "namespace": "security._types"
       },
-      "specLocation": "security/_types/GrantType.ts#L20-L29"
+      "specLocation": "security/_types/GrantType.ts#L20-L30"
     },
     {
       "isOpen": true,
