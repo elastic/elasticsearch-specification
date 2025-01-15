@@ -33950,6 +33950,260 @@
         "x-state": "Added in 0.0.0"
       }
     },
+    "/_snapshot/{repository}/_analyze": {
+      "post": {
+        "tags": [
+          "snapshot"
+        ],
+        "summary": "Analyze a snapshot repository",
+        "description": "Analyze the performance characteristics and any incorrect behaviour found in a repository.\n\nThe response exposes implementation details of the analysis which may change from version to version.\nThe response body format is therefore not considered stable and may be different in newer versions.\n\nThere are a large number of third-party storage systems available, not all of which are suitable for use as a snapshot repository by Elasticsearch.\nSome storage systems behave incorrectly, or perform poorly, especially when accessed concurrently by multiple clients as the nodes of an Elasticsearch cluster do. This API performs a collection of read and write operations on your repository which are designed to detect incorrect behaviour and to measure the performance characteristics of your storage system.\n\nThe default values for the parameters are deliberately low to reduce the impact of running an analysis inadvertently and to provide a sensible starting point for your investigations.\nRun your first analysis with the default parameter values to check for simple problems.\nIf successful, run a sequence of increasingly large analyses until you encounter a failure or you reach a `blob_count` of at least `2000`, a `max_blob_size` of at least `2gb`, a `max_total_data_size` of at least `1tb`, and a `register_operation_count` of at least `100`.\nAlways specify a generous timeout, possibly `1h` or longer, to allow time for each analysis to run to completion.\nPerform the analyses using a multi-node cluster of a similar size to your production cluster so that it can detect any problems that only arise when the repository is accessed by many nodes at once.\n\nIf the analysis fails, Elasticsearch detected that your repository behaved unexpectedly.\nThis usually means you are using a third-party storage system with an incorrect or incompatible implementation of the API it claims to support.\nIf so, this storage system is not suitable for use as a snapshot repository.\nYou will need to work with the supplier of your storage system to address the incompatibilities that Elasticsearch detects.\n\nIf the analysis is successful, the API returns details of the testing process, optionally including how long each operation took.\nYou can use this information to determine the performance of your storage system.\nIf any operation fails or returns an incorrect result, the API returns an error.\nIf the API returns an error, it may not have removed all the data it wrote to the repository.\nThe error will indicate the location of any leftover data and this path is also recorded in the Elasticsearch logs.\nYou should verify that this location has been cleaned up correctly.\nIf there is still leftover data at the specified location, you should manually remove it.\n\nIf the connection from your client to Elasticsearch is closed while the client is waiting for the result of the analysis, the test is cancelled.\nSome clients are configured to close their connection if no response is received within a certain timeout.\nAn analysis takes a long time to complete so you might need to relax any such client-side timeouts.\nOn cancellation the analysis attempts to clean up the data it was writing, but it may not be able to remove it all.\nThe path to the leftover data is recorded in the Elasticsearch logs.\nYou should verify that this location has been cleaned up correctly.\nIf there is still leftover data at the specified location, you should manually remove it.\n\nIf the analysis is successful then it detected no incorrect behaviour, but this does not mean that correct behaviour is guaranteed.\nThe analysis attempts to detect common bugs but it does not offer 100% coverage.\nAdditionally, it does not test the following:\n\n* Your repository must perform durable writes. Once a blob has been written it must remain in place until it is deleted, even after a power loss or similar disaster.\n* Your repository must not suffer from silent data corruption. Once a blob has been written, its contents must remain unchanged until it is deliberately modified or deleted.\n* Your repository must behave correctly even if connectivity from the cluster is disrupted. Reads and writes may fail in this case, but they must not return incorrect results.\n\nIMPORTANT: An analysis writes a substantial amount of data to your repository and then reads it back again.\nThis consumes bandwidth on the network between the cluster and the repository, and storage space and I/O bandwidth on the repository itself.\nYou must ensure this load does not affect other users of these systems.\nAnalyses respect the repository settings `max_snapshot_bytes_per_sec` and `max_restore_bytes_per_sec` if available and the cluster setting `indices.recovery.max_bytes_per_sec` which you can use to limit the bandwidth they consume.\n\nNOTE: This API is intended for exploratory use by humans. You should expect the request parameters and the response format to vary in future versions.\n\nNOTE: Different versions of Elasticsearch may perform different checks for repository compatibility, with newer versions typically being stricter than older ones.\nA storage system that passes repository analysis with one version of Elasticsearch may fail with a different version.\nThis indicates it behaves incorrectly in ways that the former version did not detect.\nYou must work with the supplier of your storage system to address the incompatibilities detected by the repository analysis API in any version of Elasticsearch.\n\nNOTE: This API may not work correctly in a mixed-version cluster.\n\n*Implementation details*\n\nNOTE: This section of documentation describes how the repository analysis API works in this version of Elasticsearch, but you should expect the implementation to vary between versions. The request parameters and response format depend on details of the implementation so may also be different in newer versions.\n\nThe analysis comprises a number of blob-level tasks, as set by the `blob_count` parameter and a number of compare-and-exchange operations on linearizable registers, as set by the `register_operation_count` parameter.\nThese tasks are distributed over the data and master-eligible nodes in the cluster for execution.\n\nFor most blob-level tasks, the executing node first writes a blob to the repository and then instructs some of the other nodes in the cluster to attempt to read the data it just wrote.\nThe size of the blob is chosen randomly, according to the `max_blob_size` and `max_total_data_size` parameters.\nIf any of these reads fails then the repository does not implement the necessary read-after-write semantics that Elasticsearch requires.\n\nFor some blob-level tasks, the executing node will instruct some of its peers to attempt to read the data before the writing process completes.\nThese reads are permitted to fail, but must not return partial data.\nIf any read returns partial data then the repository does not implement the necessary atomicity semantics that Elasticsearch requires.\n\nFor some blob-level tasks, the executing node will overwrite the blob while its peers are reading it.\nIn this case the data read may come from either the original or the overwritten blob, but the read operation must not return partial data or a mix of data from the two blobs.\nIf any of these reads returns partial data or a mix of the two blobs then the repository does not implement the necessary atomicity semantics that Elasticsearch requires for overwrites.\n\nThe executing node will use a variety of different methods to write the blob.\nFor instance, where applicable, it will use both single-part and multi-part uploads.\nSimilarly, the reading nodes will use a variety of different methods to read the data back again.\nFor instance they may read the entire blob from start to end or may read only a subset of the data.\n\nFor some blob-level tasks, the executing node will cancel the write before it is complete.\nIn this case, it still instructs some of the other nodes in the cluster to attempt to read the blob but all of these reads must fail to find the blob.\n\nLinearizable registers are special blobs that Elasticsearch manipulates using an atomic compare-and-exchange operation.\nThis operation ensures correct and strongly-consistent behavior even when the blob is accessed by multiple nodes at the same time.\nThe detailed implementation of the compare-and-exchange operation on linearizable registers varies by repository type.\nRepository analysis verifies that that uncontended compare-and-exchange operations on a linearizable register blob always succeed.\nRepository analysis also verifies that contended operations either succeed or report the contention but do not return incorrect results.\nIf an operation fails due to contention, Elasticsearch retries the operation until it succeeds.\nMost of the compare-and-exchange operations performed by repository analysis atomically increment a counter which is represented as an 8-byte blob.\nSome operations also verify the behavior on small blobs with sizes other than 8 bytes.",
+        "operationId": "snapshot-repository-analyze",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "repository",
+            "description": "The name of the repository.",
+            "required": true,
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/_types:Name"
+            },
+            "style": "simple"
+          },
+          {
+            "in": "query",
+            "name": "blob_count",
+            "description": "The total number of blobs to write to the repository during the test.\nFor realistic experiments, you should set it to at least `2000`.",
+            "deprecated": false,
+            "schema": {
+              "type": "number"
+            },
+            "style": "form"
+          },
+          {
+            "in": "query",
+            "name": "concurrency",
+            "description": "The number of operations to run concurrently during the test.",
+            "deprecated": false,
+            "schema": {
+              "type": "number"
+            },
+            "style": "form"
+          },
+          {
+            "in": "query",
+            "name": "detailed",
+            "description": "Indicates whether to return detailed results, including timing information for every operation performed during the analysis.\nIf false, it returns only a summary of the analysis.",
+            "deprecated": false,
+            "schema": {
+              "type": "boolean"
+            },
+            "style": "form"
+          },
+          {
+            "in": "query",
+            "name": "early_read_node_count",
+            "description": "The number of nodes on which to perform an early read operation while writing each blob.\nEarly read operations are only rarely performed.",
+            "deprecated": false,
+            "schema": {
+              "type": "number"
+            },
+            "style": "form"
+          },
+          {
+            "in": "query",
+            "name": "max_blob_size",
+            "description": "The maximum size of a blob to be written during the test.\nFor realistic experiments, you should set it to at least `2gb`.",
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/_types:ByteSize"
+            },
+            "style": "form"
+          },
+          {
+            "in": "query",
+            "name": "max_total_data_size",
+            "description": "An upper limit on the total size of all the blobs written during the test.\nFor realistic experiments, you should set it to at least `1tb`.",
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/_types:ByteSize"
+            },
+            "style": "form"
+          },
+          {
+            "in": "query",
+            "name": "rare_action_probability",
+            "description": "The probability of performing a rare action such as an early read, an overwrite, or an aborted write on each blob.",
+            "deprecated": false,
+            "schema": {
+              "type": "number"
+            },
+            "style": "form"
+          },
+          {
+            "in": "query",
+            "name": "rarely_abort_writes",
+            "description": "Indicates whether to rarely cancel writes before they complete.",
+            "deprecated": false,
+            "schema": {
+              "type": "boolean"
+            },
+            "style": "form"
+          },
+          {
+            "in": "query",
+            "name": "read_node_count",
+            "description": "The number of nodes on which to read a blob after writing.",
+            "deprecated": false,
+            "schema": {
+              "type": "number"
+            },
+            "style": "form"
+          },
+          {
+            "in": "query",
+            "name": "register_operation_count",
+            "description": "The minimum number of linearizable register operations to perform in total.\nFor realistic experiments, you should set it to at least `100`.",
+            "deprecated": false,
+            "schema": {
+              "type": "number"
+            },
+            "style": "form"
+          },
+          {
+            "in": "query",
+            "name": "seed",
+            "description": "The seed for the pseudo-random number generator used to generate the list of operations performed during the test.\nTo repeat the same set of operations in multiple experiments, use the same seed in each experiment.\nNote that the operations are performed concurrently so might not always happen in the same order on each run.",
+            "deprecated": false,
+            "schema": {
+              "type": "number"
+            },
+            "style": "form"
+          },
+          {
+            "in": "query",
+            "name": "timeout",
+            "description": "The period of time to wait for the test to complete.\nIf no response is received before the timeout expires, the test is cancelled and returns an error.",
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/_types:Duration"
+            },
+            "style": "form"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "blob_count": {
+                      "description": "The number of blobs written to the repository during the test.",
+                      "type": "number"
+                    },
+                    "blob_path": {
+                      "description": "The path in the repository under which all the blobs were written during the test.",
+                      "type": "string"
+                    },
+                    "concurrency": {
+                      "description": "The number of write operations performed concurrently during the test.",
+                      "type": "number"
+                    },
+                    "coordinating_node": {
+                      "$ref": "#/components/schemas/snapshot.repository_analyze:NodeInfo"
+                    },
+                    "delete_elapsed": {
+                      "$ref": "#/components/schemas/_types:Duration"
+                    },
+                    "delete_elapsed_nanos": {
+                      "$ref": "#/components/schemas/_types:DurationValueUnitNanos"
+                    },
+                    "details": {
+                      "$ref": "#/components/schemas/snapshot.repository_analyze:DetailsInfo"
+                    },
+                    "early_read_node_count": {
+                      "description": "The limit on the number of nodes on which early read operations were performed after writing each blob.",
+                      "type": "number"
+                    },
+                    "issues_detected": {
+                      "description": "A list of correctness issues detected, which is empty if the API succeeded.\nIt is included to emphasize that a successful response does not guarantee correct behaviour in future.",
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      }
+                    },
+                    "listing_elapsed": {
+                      "$ref": "#/components/schemas/_types:Duration"
+                    },
+                    "listing_elapsed_nanos": {
+                      "$ref": "#/components/schemas/_types:DurationValueUnitNanos"
+                    },
+                    "max_blob_size": {
+                      "$ref": "#/components/schemas/_types:ByteSize"
+                    },
+                    "max_blob_size_bytes": {
+                      "description": "The limit, in bytes, on the size of a blob written during the test.",
+                      "type": "number"
+                    },
+                    "max_total_data_size": {
+                      "$ref": "#/components/schemas/_types:ByteSize"
+                    },
+                    "max_total_data_size_bytes": {
+                      "description": "The limit, in bytes, on the total size of all blob written during the test.",
+                      "type": "number"
+                    },
+                    "rare_action_probability": {
+                      "description": "The probability of performing rare actions during the test.",
+                      "type": "number"
+                    },
+                    "read_node_count": {
+                      "description": "The limit on the number of nodes on which read operations were performed after writing each blob.",
+                      "type": "number"
+                    },
+                    "repository": {
+                      "description": "The name of the repository that was the subject of the analysis.",
+                      "type": "string"
+                    },
+                    "seed": {
+                      "description": "The seed for the pseudo-random number generator used to generate the operations used during the test.",
+                      "type": "number"
+                    },
+                    "summary": {
+                      "$ref": "#/components/schemas/snapshot.repository_analyze:SummaryInfo"
+                    }
+                  },
+                  "required": [
+                    "blob_count",
+                    "blob_path",
+                    "concurrency",
+                    "coordinating_node",
+                    "delete_elapsed",
+                    "delete_elapsed_nanos",
+                    "details",
+                    "early_read_node_count",
+                    "issues_detected",
+                    "listing_elapsed",
+                    "listing_elapsed_nanos",
+                    "max_blob_size",
+                    "max_blob_size_bytes",
+                    "max_total_data_size",
+                    "max_total_data_size_bytes",
+                    "rare_action_probability",
+                    "read_node_count",
+                    "repository",
+                    "seed",
+                    "summary"
+                  ]
+                }
+              }
+            }
+          }
+        },
+        "x-state": "Added in 7.12.0"
+      }
+    },
     "/_snapshot/{repository}/_verify_integrity": {
       "post": {
         "tags": [
@@ -87717,6 +87971,247 @@
         },
         "required": [
           "repository"
+        ]
+      },
+      "snapshot.repository_analyze:NodeInfo": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "$ref": "#/components/schemas/_types:Id"
+          },
+          "name": {
+            "$ref": "#/components/schemas/_types:Name"
+          }
+        },
+        "required": [
+          "id",
+          "name"
+        ]
+      },
+      "snapshot.repository_analyze:DetailsInfo": {
+        "type": "object",
+        "properties": {
+          "blob": {
+            "$ref": "#/components/schemas/snapshot.repository_analyze:BlobDetails"
+          },
+          "overwrite_elapsed": {
+            "$ref": "#/components/schemas/_types:Duration"
+          },
+          "overwrite_elapsed_nanos": {
+            "$ref": "#/components/schemas/_types:DurationValueUnitNanos"
+          },
+          "write_elapsed": {
+            "$ref": "#/components/schemas/_types:Duration"
+          },
+          "write_elapsed_nanos": {
+            "$ref": "#/components/schemas/_types:DurationValueUnitNanos"
+          },
+          "write_throttled": {
+            "$ref": "#/components/schemas/_types:Duration"
+          },
+          "write_throttled_nanos": {
+            "$ref": "#/components/schemas/_types:DurationValueUnitNanos"
+          },
+          "writer_node": {
+            "$ref": "#/components/schemas/snapshot.repository_analyze:NodeInfo"
+          }
+        },
+        "required": [
+          "blob",
+          "write_elapsed",
+          "write_elapsed_nanos",
+          "write_throttled",
+          "write_throttled_nanos",
+          "writer_node"
+        ]
+      },
+      "snapshot.repository_analyze:BlobDetails": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "description": "The name of the blob.",
+            "type": "string"
+          },
+          "overwritten": {
+            "description": "Indicates whether the blob was overwritten while the read operations were ongoing.\n  /**",
+            "type": "boolean"
+          },
+          "read_early": {
+            "type": "boolean"
+          },
+          "read_end": {
+            "description": "The position, in bytes, at which read operations completed.",
+            "type": "number"
+          },
+          "read_start": {
+            "description": "The position, in bytes, at which read operations started.",
+            "type": "number"
+          },
+          "reads": {
+            "$ref": "#/components/schemas/snapshot.repository_analyze:ReadBlobDetails"
+          },
+          "size": {
+            "$ref": "#/components/schemas/_types:ByteSize"
+          },
+          "size_bytes": {
+            "description": "The size of the blob in bytes.",
+            "type": "number"
+          }
+        },
+        "required": [
+          "name",
+          "overwritten",
+          "read_early",
+          "read_end",
+          "read_start",
+          "reads",
+          "size",
+          "size_bytes"
+        ]
+      },
+      "snapshot.repository_analyze:ReadBlobDetails": {
+        "type": "object",
+        "properties": {
+          "before_write_complete": {
+            "description": "Indicates whether the read operation may have started before the write operation was complete.",
+            "type": "boolean"
+          },
+          "elapsed": {
+            "$ref": "#/components/schemas/_types:Duration"
+          },
+          "elapsed_nanos": {
+            "$ref": "#/components/schemas/_types:DurationValueUnitNanos"
+          },
+          "first_byte_time": {
+            "$ref": "#/components/schemas/_types:Duration"
+          },
+          "first_byte_time_nanos": {
+            "$ref": "#/components/schemas/_types:DurationValueUnitNanos"
+          },
+          "found": {
+            "description": "Indicates whether the blob was found by the read operation.\nIf the read was started before the write completed or the write was ended before completion, it might be false.",
+            "type": "boolean"
+          },
+          "node": {
+            "$ref": "#/components/schemas/snapshot.repository_analyze:NodeInfo"
+          },
+          "throttled": {
+            "$ref": "#/components/schemas/_types:Duration"
+          },
+          "throttled_nanos": {
+            "$ref": "#/components/schemas/_types:DurationValueUnitNanos"
+          }
+        },
+        "required": [
+          "first_byte_time_nanos",
+          "found",
+          "node"
+        ]
+      },
+      "snapshot.repository_analyze:SummaryInfo": {
+        "type": "object",
+        "properties": {
+          "read": {
+            "$ref": "#/components/schemas/snapshot.repository_analyze:ReadSummaryInfo"
+          },
+          "write": {
+            "$ref": "#/components/schemas/snapshot.repository_analyze:WriteSummaryInfo"
+          }
+        },
+        "required": [
+          "read",
+          "write"
+        ]
+      },
+      "snapshot.repository_analyze:ReadSummaryInfo": {
+        "type": "object",
+        "properties": {
+          "count": {
+            "description": "The number of read operations performed in the test.",
+            "type": "number"
+          },
+          "max_wait": {
+            "$ref": "#/components/schemas/_types:Duration"
+          },
+          "max_wait_nanos": {
+            "$ref": "#/components/schemas/_types:DurationValueUnitNanos"
+          },
+          "total_elapsed": {
+            "$ref": "#/components/schemas/_types:Duration"
+          },
+          "total_elapsed_nanos": {
+            "$ref": "#/components/schemas/_types:DurationValueUnitNanos"
+          },
+          "total_size": {
+            "$ref": "#/components/schemas/_types:ByteSize"
+          },
+          "total_size_bytes": {
+            "description": "The total size of all the blobs or partial blobs read in the test, in bytes.",
+            "type": "number"
+          },
+          "total_throttled": {
+            "$ref": "#/components/schemas/_types:Duration"
+          },
+          "total_throttled_nanos": {
+            "$ref": "#/components/schemas/_types:DurationValueUnitNanos"
+          },
+          "total_wait": {
+            "$ref": "#/components/schemas/_types:Duration"
+          },
+          "total_wait_nanos": {
+            "$ref": "#/components/schemas/_types:DurationValueUnitNanos"
+          }
+        },
+        "required": [
+          "count",
+          "max_wait",
+          "max_wait_nanos",
+          "total_elapsed",
+          "total_elapsed_nanos",
+          "total_size",
+          "total_size_bytes",
+          "total_throttled",
+          "total_throttled_nanos",
+          "total_wait",
+          "total_wait_nanos"
+        ]
+      },
+      "snapshot.repository_analyze:WriteSummaryInfo": {
+        "type": "object",
+        "properties": {
+          "count": {
+            "description": "The number of write operations performed in the test.",
+            "type": "number"
+          },
+          "total_elapsed": {
+            "$ref": "#/components/schemas/_types:Duration"
+          },
+          "total_elapsed_nanos": {
+            "$ref": "#/components/schemas/_types:DurationValueUnitNanos"
+          },
+          "total_size": {
+            "$ref": "#/components/schemas/_types:ByteSize"
+          },
+          "total_size_bytes": {
+            "description": "The total size of all the blobs written in the test, in bytes.",
+            "type": "number"
+          },
+          "total_throttled": {
+            "$ref": "#/components/schemas/_types:Duration"
+          },
+          "total_throttled_nanos": {
+            "description": "The total time spent waiting due to the `max_snapshot_bytes_per_sec` throttle, in nanoseconds.",
+            "type": "number"
+          }
+        },
+        "required": [
+          "count",
+          "total_elapsed",
+          "total_elapsed_nanos",
+          "total_size",
+          "total_size_bytes",
+          "total_throttled",
+          "total_throttled_nanos"
         ]
       },
       "snapshot.restore:SnapshotRestore": {
