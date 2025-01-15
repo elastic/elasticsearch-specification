@@ -107504,11 +107504,23 @@
           "name": "version",
           "required": true,
           "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "_builtins"
-            }
+            "items": [
+              {
+                "kind": "instance_of",
+                "type": {
+                  "name": "string",
+                  "namespace": "_builtins"
+                }
+              },
+              {
+                "kind": "instance_of",
+                "type": {
+                  "name": "null",
+                  "namespace": "_builtins"
+                }
+              }
+            ],
+            "kind": "union_of"
           }
         },
         {
