@@ -2898,6 +2898,8 @@ export interface StoredScript {
   source: string
 }
 
+export type StreamResult = ArrayBuffer
+
 export type SuggestMode = 'missing' | 'popular' | 'always'
 
 export type SuggestionName = string
@@ -12892,6 +12894,24 @@ export interface InferencePutRequest extends RequestBase {
 }
 
 export type InferencePutResponse = InferenceInferenceEndpointInfo
+
+export interface InferenceStreamInferenceRequest extends RequestBase {
+  inference_id: Id
+  task_type?: InferenceTaskType
+  body?: {
+    input: string | string[]
+  }
+}
+
+export type InferenceStreamInferenceResponse = StreamResult
+
+export interface InferenceUpdateRequest extends RequestBase {
+  inference_id: Id
+  task_type?: InferenceTaskType
+  body?: InferenceInferenceEndpoint
+}
+
+export type InferenceUpdateResponse = InferenceInferenceEndpointInfo
 
 export interface IngestAppendProcessor extends IngestProcessorBase {
   field: Field

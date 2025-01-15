@@ -78050,6 +78050,21 @@
     {
       "kind": "type_alias",
       "name": {
+        "name": "StreamResult",
+        "namespace": "_types"
+      },
+      "specLocation": "_types/Binary.ts#L27-L27",
+      "type": {
+        "kind": "instance_of",
+        "type": {
+          "name": "binary",
+          "namespace": "_builtins"
+        }
+      }
+    },
+    {
+      "kind": "type_alias",
+      "name": {
         "name": "TaskId",
         "namespace": "_types"
       },

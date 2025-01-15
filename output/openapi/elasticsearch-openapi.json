@@ -15777,6 +15777,108 @@
         "x-state": "Added in 8.11.0"
       }
     },
+    "/_inference/{inference_id}/_stream": {
+      "post": {
+        "tags": [
+          "inference"
+        ],
+        "summary": "Perform streaming inference",
+        "description": "Get real-time responses for completion tasks by delivering answers incrementally, reducing response times during computation.\nThis API works only with the completion task type.\n\nIMPORTANT: The inference APIs enable you to use certain services, such as built-in machine learning models (ELSER, E5), models uploaded through Eland, Cohere, OpenAI, Azure, Google AI Studio, Google Vertex AI, Anthropic, Watsonx.ai, or Hugging Face. For built-in models and models uploaded through Eland, the inference APIs offer an alternative way to use and manage trained models. However, if you do not plan to use the inference APIs to use these models or if you want to use non-NLP models, use the machine learning trained model APIs.\n\nThis API requires the `monitor_inference` cluster privilege (the built-in `inference_admin` and `inference_user` roles grant this privilege). You must use a client that supports streaming.",
+        "operationId": "inference-stream-inference",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/inference.stream_inference#inference_id"
+          }
+        ],
+        "requestBody": {
+          "$ref": "#/components/requestBodies/inference.stream_inference"
+        },
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/inference.stream_inference#200"
+          }
+        },
+        "x-state": "Added in 8.16.0"
+      }
+    },
+    "/_inference/{task_type}/{inference_id}/_stream": {
+      "post": {
+        "tags": [
+          "inference"
+        ],
+        "summary": "Perform streaming inference",
+        "description": "Get real-time responses for completion tasks by delivering answers incrementally, reducing response times during computation.\nThis API works only with the completion task type.\n\nIMPORTANT: The inference APIs enable you to use certain services, such as built-in machine learning models (ELSER, E5), models uploaded through Eland, Cohere, OpenAI, Azure, Google AI Studio, Google Vertex AI, Anthropic, Watsonx.ai, or Hugging Face. For built-in models and models uploaded through Eland, the inference APIs offer an alternative way to use and manage trained models. However, if you do not plan to use the inference APIs to use these models or if you want to use non-NLP models, use the machine learning trained model APIs.\n\nThis API requires the `monitor_inference` cluster privilege (the built-in `inference_admin` and `inference_user` roles grant this privilege). You must use a client that supports streaming.",
+        "operationId": "inference-stream-inference-1",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/inference.stream_inference#task_type"
+          },
+          {
+            "$ref": "#/components/parameters/inference.stream_inference#inference_id"
+          }
+        ],
+        "requestBody": {
+          "$ref": "#/components/requestBodies/inference.stream_inference"
+        },
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/inference.stream_inference#200"
+          }
+        },
+        "x-state": "Added in 8.16.0"
+      }
+    },
+    "/_inference/{inference_id}/_update": {
+      "post": {
+        "tags": [
+          "inference"
+        ],
+        "summary": "Update an inference endpoint",
+        "description": "Modify `task_settings`, secrets (within `service_settings`), or `num_allocations` for an inference endpoint, depending on the specific endpoint service and `task_type`.\n\nIMPORTANT: The inference APIs enable you to use certain services, such as built-in machine learning models (ELSER, E5), models uploaded through Eland, Cohere, OpenAI, Azure, Google AI Studio, Google Vertex AI, Anthropic, Watsonx.ai, or Hugging Face.\nFor built-in models and models uploaded through Eland, the inference APIs offer an alternative way to use and manage trained models.\nHowever, if you do not plan to use the inference APIs to use these models or if you want to use non-NLP models, use the machine learning trained model APIs.",
+        "operationId": "inference-update",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/inference.update#inference_id"
+          }
+        ],
+        "requestBody": {
+          "$ref": "#/components/requestBodies/inference.update"
+        },
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/inference.update#200"
+          }
+        },
+        "x-state": "Added in 8.17.0"
+      }
+    },
+    "/_inference/{task_type}/{inference_id}/_update": {
+      "post": {
+        "tags": [
+          "inference"
+        ],
+        "summary": "Update an inference endpoint",
+        "description": "Modify `task_settings`, secrets (within `service_settings`), or `num_allocations` for an inference endpoint, depending on the specific endpoint service and `task_type`.\n\nIMPORTANT: The inference APIs enable you to use certain services, such as built-in machine learning models (ELSER, E5), models uploaded through Eland, Cohere, OpenAI, Azure, Google AI Studio, Google Vertex AI, Anthropic, Watsonx.ai, or Hugging Face.\nFor built-in models and models uploaded through Eland, the inference APIs offer an alternative way to use and manage trained models.\nHowever, if you do not plan to use the inference APIs to use these models or if you want to use non-NLP models, use the machine learning trained model APIs.",
+        "operationId": "inference-update-1",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/inference.update#task_type"
+          },
+          {
+            "$ref": "#/components/parameters/inference.update#inference_id"
+          }
+        ],
+        "requestBody": {
+          "$ref": "#/components/requestBodies/inference.update"
+        },
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/inference.update#200"
+          }
+        },
+        "x-state": "Added in 8.17.0"
+      }
+    },
     "/": {
       "get": {
         "tags": [
@@ -72245,6 +72347,9 @@
           "score"
         ]
       },
+      "_types:StreamResult": {
+        "type": "object"
+      },
       "_types:ElasticsearchVersionInfo": {
         "type": "object",
         "properties": {
@@ -93485,6 +93590,26 @@
           }
         }
       },
+      "inference.stream_inference#200": {
+        "description": "",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/_types:StreamResult"
+            }
+          }
+        }
+      },
+      "inference.update#200": {
+        "description": "",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/inference._types:InferenceEndpointInfo"
+            }
+          }
+        }
+      },
       "ingest.get_geoip_database#200": {
         "description": "",
         "content": {
@@ -100912,6 +101037,50 @@
         },
         "style": "simple"
       },
+      "inference.stream_inference#inference_id": {
+        "in": "path",
+        "name": "inference_id",
+        "description": "The unique identifier for the inference endpoint.",
+        "required": true,
+        "deprecated": false,
+        "schema": {
+          "$ref": "#/components/schemas/_types:Id"
+        },
+        "style": "simple"
+      },
+      "inference.stream_inference#task_type": {
+        "in": "path",
+        "name": "task_type",
+        "description": "The type of task that the model performs.",
+        "required": true,
+        "deprecated": false,
+        "schema": {
+          "$ref": "#/components/schemas/inference._types:TaskType"
+        },
+        "style": "simple"
+      },
+      "inference.update#inference_id": {
+        "in": "path",
+        "name": "inference_id",
+        "description": "The unique identifier of the inference endpoint.",
+        "required": true,
+        "deprecated": false,
+        "schema": {
+          "$ref": "#/components/schemas/_types:Id"
+        },
+        "style": "simple"
+      },
+      "inference.update#task_type": {
+        "in": "path",
+        "name": "task_type",
+        "description": "The type of inference task that the model performs.",
+        "required": true,
+        "deprecated": false,
+        "schema": {
+          "$ref": "#/components/schemas/inference._types:TaskType"
+        },
+        "style": "simple"
+      },
       "ingest.get_geoip_database#id": {
         "in": "path",
         "name": "id",
@@ -106484,6 +106653,44 @@
         }
       },
       "inference.put": {
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/inference._types:InferenceEndpoint"
+            }
+          }
+        },
+        "required": true
+      },
+      "inference.stream_inference": {
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "input": {
+                  "description": "The text on which you want to perform the inference task.\nIt can be a single string or an array.\n\nNOTE: Inference endpoints for the completion task type currently only support a single string as input.",
+                  "oneOf": [
+                    {
+                      "type": "string"
+                    },
+                    {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      }
+                    }
+                  ]
+                }
+              },
+              "required": [
+                "input"
+              ]
+            }
+          }
+        }
+      },
+      "inference.update": {
         "content": {
           "application/json": {
             "schema": {
