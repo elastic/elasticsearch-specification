@@ -52515,7 +52515,15 @@
             "type": "string"
           },
           "version": {
-            "type": "string"
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "nullable": true,
+                "type": "string"
+              }
+            ]
           },
           "alias_count": {
             "type": "string"
