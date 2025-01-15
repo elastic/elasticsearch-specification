@@ -41,6 +41,7 @@ import { ApiKeyGrantType, GrantApiKey } from './types'
  * @availability stack since=7.9.0 stability=stable
  * @availability serverless stability=stable visibility=private
  * @cluster_privileges grant_api_key
+ * @doc_id security-api-grant-api-key
  */
 export interface Request extends RequestBase {
   body: {

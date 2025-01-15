@@ -1,4 +1,5 @@
 # summary:
+<<<<<<< HEAD
 # method_request: POST /_security/profile/_activate
 description: >
   Run `POST /_security/profile/_activate` to activate a user profile.
@@ -8,4 +9,19 @@ value: |-
     "grant_type": "password",
     "username" : "jacknich",
     "password" : "l0ng-r4nd0m-p@ssw0rd"
+=======
+# method_request: POST /_security/user/jacknich
+description: >
+  Run `POST /_security/user/jacknich` to create a user.
+# type: request
+value: |-
+  {
+    "password" : "l0ng-r4nd0m-p@ssw0rd",
+    "roles" : [ "admin", "other_role1" ],
+    "full_name" : "Jack Nicholson",
+    "email" : "jacknich@example.com",
+    "metadata" : {
+      "intelligence" : 7
+    }
+>>>>>>> fb93809aa (Add security API examples (#3490))
   }

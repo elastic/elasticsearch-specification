@@ -34980,6 +34980,9 @@
         ],
         "summary": "Get SSL certificates",
         "description": "Get information about the X.509 certificates that are used to encrypt communications in the cluster.\nThe API returns a list that includes certificates from all TLS contexts including:\n\n- Settings for transport and HTTP interfaces\n- TLS settings that are used within authentication realms\n- TLS settings for remote monitoring exporters\n\nThe list includes certificates that are used for configuring trust, such as those configured in the `xpack.security.transport.ssl.truststore` and `xpack.security.transport.ssl.certificate_authorities` settings.\nIt also includes certificates that are used for configuring server identity, such as `xpack.security.http.ssl.keystore` and `xpack.security.http.ssl.certificate settings`.\n\nThe list does not include certificates that are sourced from the default SSL context of the Java Runtime Environment (JRE), even if those certificates are in use within Elasticsearch.\n\nNOTE: When a PKCS#11 token is configured as the truststore of the JRE, the API returns all the certificates that are included in the PKCS#11 token irrespective of whether these are used in the Elasticsearch TLS configuration.\n\nIf Elasticsearch is configured to use a keystore or truststore, the API output includes all certificates in that store, even though some of the certificates might not be in active use within the cluster.",
+        "externalDocs": {
+          "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/security-basic-setup.html#encrypt-internode-communication"
+        },
         "operationId": "ssl-certificates",
         "responses": {
           "200": {
@@ -88517,6 +88520,7 @@
         "type": "object",
         "properties": {
           "alias": {
+            "description": "If the path refers to a container file (a jks keystore, or a PKCS#12 file), it is the alias of the certificate.\nOtherwise, it is null.",
             "oneOf": [
               {
                 "type": "string"
@@ -88531,21 +88535,27 @@
             "$ref": "#/components/schemas/_types:DateTime"
           },
           "format": {
+            "description": "The format of the file.\nValid values include `jks`, `PKCS12`, and `PEM`.",
             "type": "string"
           },
           "has_private_key": {
+            "description": "Indicates whether Elasticsearch has access to the private key for this certificate.",
             "type": "boolean"
           },
           "issuer": {
+            "description": "The Distinguished Name of the certificate's issuer.",
             "type": "string"
           },
           "path": {
+            "description": "The path to the certificate, as configured in the `elasticsearch.yml` file.",
             "type": "string"
           },
           "serial_number": {
+            "description": "The hexadecimal representation of the certificate's serial number.",
             "type": "string"
           },
           "subject_dn": {
+            "description": "The Distinguished Name of the certificate's subject.",
             "type": "string"
           }
         },
