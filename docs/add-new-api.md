@@ -166,3 +166,35 @@ class Response {
   ]
 }
 ```
+
+### Add endpoint request and response examples
+
+Add an `examples` folder and `request` and `xxx_response` subfolders (where `xxx` is the relevant response code).
+
+These examples are for use in the API documentation and must adhere to the [OpenAPI 3.0 Example object specification](https://spec.openapis.org/oas/v3.0.3#example-object). They must have a `value` field that contains the request or response body.
+If there are multiple examples for the endpoint, they must each have a brief `summary` field, which is used as the label for the example. You can also optionaly provide an explanation in a `description` field.
+
+For example:
+
+```yaml
+summary: Sequence query
+# method_request: GET /my-data-stream/_eql/search
+# type: request
+description: >
+  Run `GET /my-data-stream/_eql/search` to search for a sequence of events.
+  The sequence starts with an event with an `event.category` of `file`, a `file.name` of `cmd.exe`, and a `process.pid` other than `2013`.
+  It is followed by an event with an `event.category` of `process` and a `process.executable` that contains the substring `regsvr32`.
+  These events must also share the same `process.pid` value.
+value: |-
+  {
+    "query": """
+      sequence by process.pid
+        [ file where file.name == "cmd.exe" and process.pid != 2013 ]
+        [ process where stringContains(process.executable, "regsvr32") ]
+    """
+  }
+```
+
+NOTE: A good example covers a very common use case or demonstrates a more complex but critical use case.
+It involves realistic data sets ( rather than generic "hello world" values).
+If it requires detailed setup or explanations, however, it is more appropriate for coverage in longer-form narrative documentation.
