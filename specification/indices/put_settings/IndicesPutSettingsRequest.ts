@@ -47,6 +47,16 @@ import { Duration } from '@_types/Time'
  * @ext_doc_id index-modules
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_settings'
+      methods: ['PUT']
+    },
+    {
+      path: '/{index}/_settings'
+      methods: ['PUT']
+    }
+  ]
   path_parts: {
     /**
      * Comma-separated list of data streams, indices, and aliases used to limit

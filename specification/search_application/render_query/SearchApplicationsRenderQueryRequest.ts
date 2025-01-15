@@ -33,6 +33,12 @@ import { Name } from '@_types/common'
  * @doc_id search-render-query
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_application/search_application/{name}/_render_query'
+      methods: ['POST']
+    }
+  ]
   path_parts: {
     /**
      * The name of the search application to render teh query for.

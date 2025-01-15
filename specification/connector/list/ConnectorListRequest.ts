@@ -30,6 +30,12 @@ import { integer } from '@_types/Numeric'
  * @doc_id connector-list
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_connector'
+      methods: ['GET']
+    }
+  ]
   query_parameters: {
     /**
      * Starting offset (default: 0)

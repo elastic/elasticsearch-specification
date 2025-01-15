@@ -52,6 +52,12 @@ import { Id } from '@_types/common'
  * @doc_id rollup-delete-job
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_rollup/job/{id}'
+      methods: ['DELETE']
+    }
+  ]
   path_parts: {
     /**
      * Identifier for the job.

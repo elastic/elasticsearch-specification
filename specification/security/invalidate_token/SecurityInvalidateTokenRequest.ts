@@ -35,6 +35,12 @@ import { Name, Username } from '@_types/common'
  * @doc_id security-api-invalidate-token
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_security/oauth2/token'
+      methods: ['DELETE']
+    }
+  ]
   body: {
     token?: string
     refresh_token?: string

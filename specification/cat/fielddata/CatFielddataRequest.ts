@@ -31,6 +31,16 @@ import { Bytes, Fields } from '@_types/common'
  * @cluster_privileges monitor
  */
 export interface Request extends CatRequestBase {
+  urls: [
+    {
+      path: '/_cat/fielddata'
+      methods: ['GET']
+    },
+    {
+      path: '/_cat/fielddata/{fields}'
+      methods: ['GET']
+    }
+  ]
   path_parts: {
     /**
      * Comma-separated list of fields used to limit returned information.

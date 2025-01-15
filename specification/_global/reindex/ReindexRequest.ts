@@ -33,6 +33,12 @@ import { Destination, Source } from './types'
  * @doc_tag document
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_reindex'
+      methods: ['POST']
+    }
+  ]
   query_parameters: {
     /**
      * If `true`, the request refreshes affected shards to make this operation visible to search.

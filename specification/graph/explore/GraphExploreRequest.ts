@@ -39,6 +39,12 @@ import { Hop } from '../_types/Hop'
  * @ext_doc_id graph
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/{index}/_graph/explore'
+      methods: ['GET', 'POST']
+    }
+  ]
   path_parts: {
     /**
      * Name of the index.

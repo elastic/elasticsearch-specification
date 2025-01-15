@@ -40,6 +40,16 @@ import { ShardStoreStatus } from './types'
  * @doc_id indices-shards-stores
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_shard_stores'
+      methods: ['GET']
+    },
+    {
+      path: '/{index}/_shard_stores'
+      methods: ['GET']
+    }
+  ]
   path_parts: {
     /**
      * List of data streams, indices, and aliases used to limit the request.

@@ -29,6 +29,12 @@ import { Duration } from '@_types/Time'
  * @availability serverless stability=stable visibility=public
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/{index}/_block/{block}'
+      methods: ['PUT']
+    }
+  ]
   path_parts: {
     index: IndexName
     block: IndicesBlockOptions

@@ -30,6 +30,12 @@ import { Duration } from '@_types/Time'
  * @doc_id tasks
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_tasks/{task_id}'
+      methods: ['GET']
+    }
+  ]
   path_parts: {
     /**
      * ID of the task.

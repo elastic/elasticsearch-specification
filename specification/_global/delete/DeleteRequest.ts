@@ -40,6 +40,12 @@ import { Duration } from '@_types/Time'
  * @doc_tag document
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/{index}/_doc/{id}'
+      methods: ['DELETE']
+    }
+  ]
   path_parts: {
     /**
      * Unique identifier for the document.

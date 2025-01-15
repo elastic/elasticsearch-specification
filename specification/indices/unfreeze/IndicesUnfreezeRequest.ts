@@ -31,6 +31,13 @@ import { Duration } from '@_types/Time'
  * @deprecated 7.14.0
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      /** @deprecated 7.14.0 Frozen indices are deprecated because they provide no benefit given improvements in heap memory utilization. They will be removed in a future release. */
+      path: '/{index}/_unfreeze'
+      methods: ['POST']
+    }
+  ]
   path_parts: {
     /**
      * Identifier for the index.

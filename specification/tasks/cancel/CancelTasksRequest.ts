@@ -35,6 +35,16 @@ import { TaskId } from '@_types/common'
  * @doc_id tasks
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_tasks/_cancel'
+      methods: ['POST']
+    },
+    {
+      path: '/_tasks/{task_id}/_cancel'
+      methods: ['POST']
+    }
+  ]
   path_parts: {
     /**
      * ID of the task.

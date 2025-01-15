@@ -32,6 +32,12 @@ import { Duration } from '@_types/Time'
  * @doc_id ccr-put-follow
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/{index}/_ccr/follow'
+      methods: ['PUT']
+    }
+  ]
   path_parts: {
     /**
      * The name of the follower index.

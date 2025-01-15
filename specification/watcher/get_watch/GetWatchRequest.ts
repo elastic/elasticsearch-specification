@@ -28,6 +28,12 @@ import { Name } from '@_types/common'
  * @doc_id watcher-api-get-watch
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_watcher/watch/{id}'
+      methods: ['GET']
+    }
+  ]
   path_parts: {
     /**
      * The watch identifier.

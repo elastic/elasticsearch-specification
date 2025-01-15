@@ -33,6 +33,16 @@ import { Duration, TimeUnit } from '@_types/Time'
  * @index_privileges monitor
  */
 export interface Request extends CatRequestBase {
+  urls: [
+    {
+      path: '/_cat/shards'
+      methods: ['GET']
+    },
+    {
+      path: '/_cat/shards/{index}'
+      methods: ['GET']
+    }
+  ]
   path_parts: {
     /**
      * A comma-separated list of data streams, indices, and aliases used to limit the request.

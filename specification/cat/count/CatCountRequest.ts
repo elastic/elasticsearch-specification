@@ -34,6 +34,16 @@ import { Indices } from '@_types/common'
  * @index_privileges read
  */
 export interface Request extends CatRequestBase {
+  urls: [
+    {
+      path: '/_cat/count'
+      methods: ['GET']
+    },
+    {
+      path: '/_cat/count/{index}'
+      methods: ['GET']
+    }
+  ]
   path_parts: {
     /**
      * Comma-separated list of data streams, indices, and aliases used to limit the request.

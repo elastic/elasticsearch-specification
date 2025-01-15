@@ -71,6 +71,16 @@ import { Duration } from '@_types/Time'
 //  * 2 added parameters: wait_for_completion_timeout, keep_on_completion
 //  * 2 removed parameters: scroll, pre_filter_shard_size
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_async_search'
+      methods: ['POST']
+    },
+    {
+      path: '/{index}/_async_search'
+      methods: ['POST']
+    }
+  ]
   path_parts: {
     index?: Indices
   }

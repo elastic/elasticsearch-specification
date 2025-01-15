@@ -35,6 +35,12 @@ import { Duration } from '@_types/Time'
  * @cluster_privileges manage
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_license/start_basic'
+      methods: ['POST']
+    }
+  ]
   query_parameters: {
     acknowledge?: boolean
     /**

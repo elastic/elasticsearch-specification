@@ -31,6 +31,16 @@ import { Duration } from '@_types/Time'
  * @doc_tag script
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_scripts/{id}'
+      methods: ['PUT', 'POST']
+    },
+    {
+      path: '/_scripts/{id}/{context}'
+      methods: ['PUT', 'POST']
+    }
+  ]
   path_parts: {
     /**
      * Identifier for the stored script or search template.

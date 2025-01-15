@@ -32,6 +32,12 @@ import { Duration } from '@_types/Time'
  * @doc_id sql-async-search-api
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_sql/async/{id}'
+      methods: ['GET']
+    }
+  ]
   path_parts: {
     /**
      * The identifier for the search.

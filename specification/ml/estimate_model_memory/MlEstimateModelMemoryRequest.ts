@@ -35,6 +35,12 @@ import { long } from '@_types/Numeric'
  * @doc_tag ml anomaly
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_ml/anomaly_detectors/_estimate_model_memory'
+      methods: ['POST']
+    }
+  ]
   body: {
     /**
      * For a list of the properties that you can specify in the

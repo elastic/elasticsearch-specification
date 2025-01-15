@@ -31,6 +31,16 @@ import { DataframePreviewConfig } from './types'
  * @doc_tag ml data frame
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_ml/data_frame/analytics/_preview'
+      methods: ['GET', 'POST']
+    },
+    {
+      path: '/_ml/data_frame/analytics/{id}/_preview'
+      methods: ['GET', 'POST']
+    }
+  ]
   path_parts: {
     /**
      * Identifier for the data frame analytics job.

@@ -31,6 +31,12 @@ import { float } from '@_types/Numeric'
  * @doc_tag document
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_reindex/{task_id}/_rethrottle'
+      methods: ['POST']
+    }
+  ]
   path_parts: {
     /**
      * Identifier for the task.

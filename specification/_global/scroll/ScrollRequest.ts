@@ -43,6 +43,17 @@ import { Duration } from '@_types/Time'
  * @ext_doc_id scroll-search-results
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_search/scroll'
+      methods: ['GET', 'POST']
+    },
+    {
+      /** @deprecated 7.0.0 A scroll id can be quite large and should be specified as part of the body */
+      path: '/_search/scroll/{scroll_id}'
+      methods: ['GET', 'POST']
+    }
+  ]
   path_parts: {
     /** @deprecated 7.0.0 */
     scroll_id?: ScrollId

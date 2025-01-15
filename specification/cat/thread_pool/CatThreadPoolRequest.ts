@@ -32,6 +32,16 @@ import { Duration, TimeUnit } from '@_types/Time'
  * @cluster_privileges monitor
  */
 export interface Request extends CatRequestBase {
+  urls: [
+    {
+      path: '/_cat/thread_pool'
+      methods: ['GET']
+    },
+    {
+      path: '/_cat/thread_pool/{thread_pool_patterns}'
+      methods: ['GET']
+    }
+  ]
   path_parts: {
     /**
      * A comma-separated list of thread pool names used to limit the request.

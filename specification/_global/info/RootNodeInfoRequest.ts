@@ -28,4 +28,11 @@ import { RequestBase } from '@_types/Base'
  * @cluster_privileges monitor
  * @doc_id api-root
  */
-export interface Request extends RequestBase {}
+export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/'
+      methods: ['GET']
+    }
+  ]
+}

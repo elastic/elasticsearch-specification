@@ -30,6 +30,12 @@ import { Id } from '@_types/common'
  * @doc_tag ml anomaly
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_ml/filters/{filter_id}/_update'
+      methods: ['POST']
+    }
+  ]
   path_parts: {
     /**
      * A string that uniquely identifies a filter.

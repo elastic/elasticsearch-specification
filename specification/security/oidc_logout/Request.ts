@@ -32,6 +32,12 @@ import { RequestBase } from '@_types/Base'
  * @doc_id security-api-oidc-logout
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_security/oidc/logout'
+      methods: ['POST']
+    }
+  ]
   body: {
     /**
      * The access token to be invalidated.

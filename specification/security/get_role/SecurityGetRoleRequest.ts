@@ -33,6 +33,16 @@ import { Names } from '@_types/common'
  * @doc_id security-api-get-role
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_security/role/{name}'
+      methods: ['GET']
+    },
+    {
+      path: '/_security/role'
+      methods: ['GET']
+    }
+  ]
   path_parts: {
     /**
      * The name of the role. You can specify multiple roles as a comma-separated list. If you do not specify this parameter, the API returns information about all roles.

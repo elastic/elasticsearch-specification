@@ -29,6 +29,12 @@ import { Id } from '@_types/common'
  * @doc_id connector-get
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_connector/{connector_id}'
+      methods: ['GET']
+    }
+  ]
   path_parts: {
     /**
      * The unique identifier of the connector

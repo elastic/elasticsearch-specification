@@ -34,6 +34,12 @@ import { Duration } from '@_types/Time'
  * @doc_id connector-sync-job-stats
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_connector/_sync_job/{connector_sync_job_id}/_stats'
+      methods: ['PUT']
+    }
+  ]
   /**
    * The sync job to be created
    */

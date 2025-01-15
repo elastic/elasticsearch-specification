@@ -30,6 +30,12 @@ import { Duration } from '@_types/Time'
  * @availability serverless visibility=private
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_ingest/geoip/database/{id}'
+      methods: ['PUT']
+    }
+  ]
   path_parts: {
     /**
      * ID of the database configuration to create or update.

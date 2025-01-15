@@ -35,6 +35,12 @@ import { Name } from '@_types/common'
  * @doc_id watcher-api-delete-watch
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_watcher/watch/{id}'
+      methods: ['DELETE']
+    }
+  ]
   path_parts: {
     /**
      * The watch identifier.

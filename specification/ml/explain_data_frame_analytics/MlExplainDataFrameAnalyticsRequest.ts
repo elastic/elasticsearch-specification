@@ -42,6 +42,16 @@ import { integer } from '@_types/Numeric'
  * @doc_tag ml data frame
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_ml/data_frame/analytics/_explain'
+      methods: ['GET', 'POST']
+    },
+    {
+      path: '/_ml/data_frame/analytics/{id}/_explain'
+      methods: ['GET', 'POST']
+    }
+  ]
   path_parts: {
     /**
      * Identifier for the data frame analytics job. This identifier can contain

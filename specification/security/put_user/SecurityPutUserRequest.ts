@@ -31,6 +31,12 @@ import { Metadata, Password, Refresh, Username } from '@_types/common'
  * @doc_id security-api-put-user
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_security/user/{username}'
+      methods: ['PUT', 'POST']
+    }
+  ]
   path_parts: {
     username: Username
   }

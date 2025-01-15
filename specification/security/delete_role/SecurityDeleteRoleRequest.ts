@@ -31,6 +31,12 @@ import { Name, Refresh } from '@_types/common'
  * @doc_id security-api-delete-role
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_security/role/{name}'
+      methods: ['DELETE']
+    }
+  ]
   path_parts: {
     name: Name
   }

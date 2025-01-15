@@ -40,6 +40,12 @@ import { Duration } from '@_types/Time'
  * @doc_tag data stream
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_data_stream/_migrate/{name}'
+      methods: ['POST']
+    }
+  ]
   path_parts: {
     /** Name of the index alias to convert to a data stream. */
     name: IndexName

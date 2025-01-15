@@ -26,4 +26,11 @@ import { RequestBase } from '@_types/Base'
  * @availability stack since=6.6.0 stability=stable
  * @cluster_privileges read_ilm
  */
-export interface Request extends RequestBase {}
+export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_ilm/status'
+      methods: ['GET']
+    }
+  ]
+}

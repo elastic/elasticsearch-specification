@@ -40,6 +40,12 @@ import { Duration } from '@_types/Time'
  * @cluster_privileges manage_ml
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_ml/set_upgrade_mode'
+      methods: ['POST']
+    }
+  ]
   query_parameters: {
     /**
      * When `true`, it enables `upgrade_mode` which temporarily halts all job

@@ -53,6 +53,20 @@ import { Duration } from '@_types/Time'
  * @doc_id cluster-state
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_cluster/state'
+      methods: ['GET']
+    },
+    {
+      path: '/_cluster/state/{metric}'
+      methods: ['GET']
+    },
+    {
+      path: '/_cluster/state/{metric}/{index}'
+      methods: ['GET']
+    }
+  ]
   path_parts: {
     metric?: Metrics
     index?: Indices

@@ -31,6 +31,16 @@ import { ExpandWildcards, Indices } from '@_types/common'
  * @index_privileges monitor
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_segments'
+      methods: ['GET']
+    },
+    {
+      path: '/{index}/_segments'
+      methods: ['GET']
+    }
+  ]
   path_parts: {
     /**
      * Comma-separated list of data streams, indices, and aliases used to limit the request.

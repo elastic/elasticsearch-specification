@@ -40,6 +40,16 @@ import { TextToAnalyze } from './types'
  * @index_privileges index
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_analyze'
+      methods: ['GET', 'POST']
+    },
+    {
+      path: '/{index}/_analyze'
+      methods: ['GET', 'POST']
+    }
+  ]
   path_parts: {
     /**
      * Index used to derive the analyzer.

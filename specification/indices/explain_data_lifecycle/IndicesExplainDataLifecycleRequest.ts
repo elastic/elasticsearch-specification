@@ -30,6 +30,12 @@ import { Duration } from '@_types/Time'
  * @doc_tag data stream
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/{index}/_lifecycle/explain'
+      methods: ['GET']
+    }
+  ]
   path_parts: {
     index: Indices
   }

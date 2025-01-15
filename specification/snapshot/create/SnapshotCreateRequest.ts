@@ -32,6 +32,12 @@ import { Duration } from '@_types/Time'
  * @ext_doc_id snapshot-create
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_snapshot/{repository}/{snapshot}'
+      methods: ['PUT', 'POST']
+    }
+  ]
   path_parts: {
     /**
      * Repository for the snapshot.

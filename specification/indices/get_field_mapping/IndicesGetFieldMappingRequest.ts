@@ -32,6 +32,16 @@ import { ExpandWildcards, Fields, Indices } from '@_types/common'
  * @doc_id indices-get-field-mapping
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_mapping/field/{fields}'
+      methods: ['GET']
+    },
+    {
+      path: '/{index}/_mapping/field/{fields}'
+      methods: ['GET']
+    }
+  ]
   path_parts: {
     /**
      * Comma-separated list or wildcard expression of fields used to limit returned information.

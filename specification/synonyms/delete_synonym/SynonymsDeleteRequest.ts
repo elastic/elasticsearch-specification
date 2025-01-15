@@ -45,6 +45,12 @@ import { Id } from '@_types/common'
  * @doc_id synonym-set-delete
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_synonyms/{id}'
+      methods: ['DELETE']
+    }
+  ]
   path_parts: {
     /**
      * The synonyms set identifier to delete.

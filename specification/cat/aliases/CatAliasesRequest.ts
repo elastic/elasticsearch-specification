@@ -34,6 +34,16 @@ import { Duration } from '@_types/Time'
  * @index_privileges view_index_metadata
  */
 export interface Request extends CatRequestBase {
+  urls: [
+    {
+      path: '/_cat/aliases'
+      methods: ['GET']
+    },
+    {
+      path: '/_cat/aliases/{name}'
+      methods: ['GET']
+    }
+  ]
   path_parts: {
     /** A comma-separated list of aliases to retrieve. Supports wildcards (`*`).  To retrieve all aliases, omit this parameter or use `*` or `_all`. */
     name?: Names

@@ -28,6 +28,12 @@ import { Checkpoint } from '../_types/Checkpoints'
  * @availability serverless stability=stable visibility=private
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/{index}/_fleet/global_checkpoints'
+      methods: ['GET']
+    }
+  ]
   path_parts: {
     /**
      * A single index or index alias that resolves to a single index.

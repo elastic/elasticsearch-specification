@@ -49,6 +49,12 @@ import { Duration } from '@_types/Time'
  * @ext_doc_id restore-snapshot
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_snapshot/{repository}/{snapshot}/_restore'
+      methods: ['POST']
+    }
+  ]
   path_parts: {
     repository: Name
     snapshot: Name

@@ -38,6 +38,12 @@ import { TimeUnit } from '@_types/Time'
  * @cluster_privileges monitor
  */
 export interface Request extends CatRequestBase {
+  urls: [
+    {
+      path: '/_cat/health'
+      methods: ['GET']
+    }
+  ]
   query_parameters: {
     /**
      * The unit used to display time values.

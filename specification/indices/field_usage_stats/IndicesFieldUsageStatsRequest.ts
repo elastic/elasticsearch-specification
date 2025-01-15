@@ -40,6 +40,12 @@ import {
  * @doc_id field-usage-stats
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/{index}/_field_usage_stats'
+      methods: ['GET']
+    }
+  ]
   path_parts: {
     /**
      * Comma-separated list or wildcard expression of index names used to limit the request.

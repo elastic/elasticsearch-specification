@@ -28,6 +28,16 @@ import { Duration } from '@_types/Time'
  * @cluster_privileges manage_ilm, read_ilm
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_ilm/policy/{policy}'
+      methods: ['GET']
+    },
+    {
+      path: '/_ilm/policy'
+      methods: ['GET']
+    }
+  ]
   path_parts: {
     /**
      * Identifier for the policy.

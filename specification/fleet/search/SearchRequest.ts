@@ -61,6 +61,12 @@ import { Checkpoint } from '../_types/Checkpoints'
  * @index_privileges read
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/{index}/_fleet/_fleet_search'
+      methods: ['GET', 'POST']
+    }
+  ]
   path_parts: {
     /**
      * A single target to search. If the target is an index alias, it must resolve to a single index.

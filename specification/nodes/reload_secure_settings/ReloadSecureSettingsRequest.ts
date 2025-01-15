@@ -36,6 +36,16 @@ import { Duration } from '@_types/Time'
  * @doc_tag cluster
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_nodes/reload_secure_settings'
+      methods: ['POST']
+    },
+    {
+      path: '/_nodes/{node_id}/reload_secure_settings'
+      methods: ['POST']
+    }
+  ]
   path_parts: {
     /**
      * The names of particular nodes in the cluster to target.

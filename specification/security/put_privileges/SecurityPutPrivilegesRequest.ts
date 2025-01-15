@@ -32,6 +32,12 @@ import { Actions } from './types'
  * @ext_doc_id security-privileges
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_security/privilege'
+      methods: ['PUT', 'POST']
+    }
+  ]
   query_parameters: {
     refresh?: Refresh
   }

@@ -42,6 +42,12 @@ import { ExpandWildcards, Indices } from '@_types/common'
  * @ext_doc_id search-analyzer
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/{index}/_reload_search_analyzers'
+      methods: ['GET', 'POST']
+    }
+  ]
   path_parts: {
     index: Indices
   }

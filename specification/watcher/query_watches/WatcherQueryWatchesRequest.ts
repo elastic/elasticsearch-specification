@@ -33,6 +33,12 @@ import { Sort, SortResults } from '@_types/sort'
  * @doc_id watcher-api-query-watches
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_watcher/_query/watches'
+      methods: ['GET', 'POST']
+    }
+  ]
   body: {
     /**
      * The offset from the first result to fetch.

@@ -29,6 +29,12 @@ import { Name } from '@_types/common'
  * @index_privileges manage
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_application/search_application/{name}'
+      methods: ['DELETE']
+    }
+  ]
   path_parts: {
     /**
      * The name of the search application to delete

@@ -41,6 +41,12 @@ import { Duration } from '@_types/Time'
  * @cluster_privileges manage_transform
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_transform/_upgrade'
+      methods: ['POST']
+    }
+  ]
   query_parameters: {
     /**
      * When true, the request checks for updates but does not run them.

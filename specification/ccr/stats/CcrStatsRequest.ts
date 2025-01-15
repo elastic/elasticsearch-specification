@@ -28,6 +28,12 @@ import { Duration } from '@_types/Time'
  * @doc_id ccr-get-stats
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_ccr/stats'
+      methods: ['GET']
+    }
+  ]
   query_parameters: {
     /**
      * Period to wait for a connection to the master node.

@@ -41,6 +41,12 @@ import { ZoomLevel } from './_types/ZoomLevel'
  *
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/{index}/_mvt/{field}/{zoom}/{x}/{y}'
+      methods: ['POST', 'GET']
+    }
+  ]
   path_parts: {
     /* List of indices, data streams, or aliases to search */
     index: Indices

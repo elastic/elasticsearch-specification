@@ -32,6 +32,12 @@ import { Duration } from '@_types/Time'
  * @doc_id slm-api-execute-lifecycle
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_slm/policy/{policy_id}/_execute'
+      methods: ['PUT']
+    }
+  ]
   path_parts: {
     policy_id: Name
   }

@@ -29,6 +29,12 @@ import { Duration } from '@_types/Time'
  * @cluster_privileges manage
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_ingest/ip_location/database/{id}'
+      methods: ['DELETE']
+    }
+  ]
   path_parts: {
     /**
      * A comma-separated list of IP location database configurations.

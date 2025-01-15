@@ -34,6 +34,12 @@ import { UserQueryContainer } from './types'
  * @doc_id security-api-query-user
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_security/_query/user'
+      methods: ['GET', 'POST']
+    }
+  ]
   body: {
     /**
      * A query to filter which users to return.

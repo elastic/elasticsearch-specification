@@ -29,6 +29,12 @@ import { SearchApplicationParameters } from '../_types/SearchApplicationParamete
  * @index_privileges manage
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_application/search_application/{name}'
+      methods: ['PUT']
+    }
+  ]
   path_parts: {
     /**
      * The name of the search application to be created or updated.

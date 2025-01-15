@@ -36,6 +36,16 @@ import { TimeUnit } from '@_types/Time'
  * @doc_id nodes-api-shutdown-status
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_nodes/shutdown'
+      methods: ['GET']
+    },
+    {
+      path: '/_nodes/{node_id}/shutdown'
+      methods: ['GET']
+    }
+  ]
   path_parts: {
     node_id?: NodeIds
   }

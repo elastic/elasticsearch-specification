@@ -45,6 +45,12 @@ import { Type } from '../_types/types'
  * @doc_id nodes-api-shutdown
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_nodes/{node_id}/shutdown'
+      methods: ['PUT']
+    }
+  ]
   path_parts: {
     /**
      * The node identifier.

@@ -29,6 +29,12 @@ import { RequestBase } from '@_types/Base'
  * @doc_id security-api-saml-logout
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_security/saml/logout'
+      methods: ['POST']
+    }
+  ]
   body: {
     /**
      * The access token that was returned as a response to calling the SAML authenticate API.
