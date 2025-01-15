@@ -24,6 +24,7 @@ export enum GrantType {
   password,
   /**
    * In this type of grant, you must supply an access token that was created by the Elasticsearch token service.
+   * If you are activating a user profile, you can alternatively supply a JWT (either a JWT `access_token` or a JWT `id_token`).
    */
   access_token
 }

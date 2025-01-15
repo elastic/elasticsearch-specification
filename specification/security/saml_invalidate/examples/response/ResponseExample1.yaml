@@ -1,0 +1,10 @@
+# summary:
+description: A successful response from `POST /_security/saml/invalidate`.
+# type: response
+# response_code:
+value: |-
+  {
+    "redirect" : "https://my-idp.org/logout/SAMLResponse=....",
+    "invalidated" : 2,
+    "realm" : "saml1"
+  }
