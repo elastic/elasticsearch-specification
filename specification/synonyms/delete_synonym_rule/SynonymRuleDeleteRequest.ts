@@ -29,6 +29,12 @@ import { Id } from '@_types/common'
  * @doc_id synonym-rule-delete
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_synonyms/{set_id}/{rule_id}'
+      methods: ['DELETE']
+    }
+  ]
   path_parts: {
     /**
      * The ID of the synonym set to update.

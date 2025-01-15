@@ -46,6 +46,12 @@ import { Duration } from '@_types/Time'
  * @ext_doc_id add-nodes
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_cluster/voting_config_exclusions'
+      methods: ['POST']
+    }
+  ]
   query_parameters: {
     /**
      * A comma-separated list of the names of the nodes to exclude from the

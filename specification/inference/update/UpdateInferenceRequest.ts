@@ -36,6 +36,16 @@ import { Id } from '@_types/common'
  * @doc_id inference-api-update
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_inference/{inference_id}/_update'
+      methods: ['POST']
+    },
+    {
+      path: '/_inference/{task_type}/{inference_id}/_update'
+      methods: ['POST']
+    }
+  ]
   path_parts: {
     /**
      * The unique identifier of the inference endpoint.

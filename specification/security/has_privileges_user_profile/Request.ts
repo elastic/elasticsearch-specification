@@ -33,6 +33,12 @@ import { PrivilegesCheck } from './types'
  * @ext_doc_id user-profile
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_security/profile/_has_privileges'
+      methods: ['GET', 'POST']
+    }
+  ]
   body: {
     /**
      * A list of profile IDs. The privileges are checked for associated users of the profiles.

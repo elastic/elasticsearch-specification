@@ -48,6 +48,12 @@ import { EcsCompatibilityType, FormatType } from '../_types/Structure'
  * @doc_id find-message-structure
  */
 interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_text_structure/find_message_structure'
+      methods: ['GET', 'POST']
+    }
+  ]
   query_parameters: {
     /** If the format is `delimited`, you can specify the column names in a comma-separated list.
      * If this parameter is not specified, the structure finder uses the column names from the header row of the text.

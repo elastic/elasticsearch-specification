@@ -31,6 +31,16 @@ import { ExpandWildcards, Indices } from '@_types/common'
  * @ext_doc_id searchable-snapshots
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_searchable_snapshots/cache/clear'
+      methods: ['POST']
+    },
+    {
+      path: '/{index}/_searchable_snapshots/cache/clear'
+      methods: ['POST']
+    }
+  ]
   path_parts: {
     /**
      * A comma-separated list of data streams, indices, and aliases to clear from the cache.

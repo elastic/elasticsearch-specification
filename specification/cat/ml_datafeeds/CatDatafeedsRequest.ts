@@ -39,6 +39,16 @@ import { TimeUnit } from '@_types/Time'
  * @doc_id cat-datafeeds
  */
 export interface Request extends CatRequestBase {
+  urls: [
+    {
+      path: '/_cat/ml/datafeeds'
+      methods: ['GET']
+    },
+    {
+      path: '/_cat/ml/datafeeds/{datafeed_id}'
+      methods: ['GET']
+    }
+  ]
   path_parts: {
     /**
      * A numerical character string that uniquely identifies the datafeed.

@@ -30,4 +30,11 @@ import { RequestBase } from '@_types/Base'
  * @availability serverless stability=stable visibility=public
  * @ext_doc_id grok-processor
  */
-export interface Request extends RequestBase {}
+export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_ingest/processor/grok'
+      methods: ['GET']
+    }
+  ]
+}

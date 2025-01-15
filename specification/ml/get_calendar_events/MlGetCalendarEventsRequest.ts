@@ -31,6 +31,12 @@ import { DateTime } from '@_types/Time'
  * @doc_tag ml anomaly
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_ml/calendars/{calendar_id}/events'
+      methods: ['GET']
+    }
+  ]
   path_parts: {
     /** A string that uniquely identifies a calendar. You can get information for multiple calendars by using a comma-separated list of ids or a wildcard expression. You can get information for all calendars by using `_all` or `*` or by omitting the calendar identifier.*/
     calendar_id: Id

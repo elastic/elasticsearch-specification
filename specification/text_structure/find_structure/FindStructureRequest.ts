@@ -46,6 +46,12 @@ import { Duration } from '@_types/Time'
  * @doc_id find-structure
  */
 export interface Request<TJsonDocument> {
+  urls: [
+    {
+      path: '/_text_structure/find_structure'
+      methods: ['POST']
+    }
+  ]
   query_parameters: {
     /**
      * The text's character set.

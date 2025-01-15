@@ -32,6 +32,16 @@ import { RankEvalMetric, RankEvalRequestItem } from './types'
  * @doc_tag search
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_rank_eval'
+      methods: ['GET', 'POST']
+    },
+    {
+      path: '/{index}/_rank_eval'
+      methods: ['GET', 'POST']
+    }
+  ]
   path_parts: {
     /**
      * Comma-separated list of data streams, indices, and index aliases used to limit the request. Wildcard (`*`) expressions are supported.

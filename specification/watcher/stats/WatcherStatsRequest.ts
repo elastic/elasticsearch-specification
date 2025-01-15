@@ -30,6 +30,16 @@ import { WatcherMetric } from './types'
  * @doc_id watcher-api-stats
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_watcher/stats'
+      methods: ['GET']
+    },
+    {
+      path: '/_watcher/stats/{metric}'
+      methods: ['GET']
+    }
+  ]
   path_parts: {
     /**
      * Defines which additional metrics are included in the response.

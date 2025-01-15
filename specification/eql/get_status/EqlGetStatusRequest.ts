@@ -29,6 +29,12 @@ import { Id } from '@_types/common'
  * @availability serverless stability=stable visibility=public
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_eql/search/status/{id}'
+      methods: ['GET']
+    }
+  ]
   path_parts: {
     /** Identifier for the search. */
     id: Id

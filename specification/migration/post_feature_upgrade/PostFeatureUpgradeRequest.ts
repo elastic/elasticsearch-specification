@@ -33,4 +33,11 @@ import { RequestBase } from '@_types/Base'
  * @cluster_privileges manage
  * @doc_id migration-api-feature-upgrade
  */
-export interface Request extends RequestBase {}
+export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_migration/system_features'
+      methods: ['POST']
+    }
+  ]
+}

@@ -34,6 +34,12 @@ import { Ids } from '@_types/common'
  * @doc_id rollup-get-rollup-index-caps
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/{index}/_rollup/data'
+      methods: ['GET']
+    }
+  ]
   path_parts: {
     /**
      * Data stream or index to check for rollup capabilities.

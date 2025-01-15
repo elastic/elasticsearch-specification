@@ -31,6 +31,12 @@ import { Duration } from '@_types/Time'
  * @doc_id snapshot-clone
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_snapshot/{repository}/{snapshot}/_clone/{target_snapshot}'
+      methods: ['PUT']
+    }
+  ]
   path_parts: {
     repository: Name
     snapshot: Name

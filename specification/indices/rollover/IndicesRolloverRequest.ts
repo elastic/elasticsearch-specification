@@ -72,6 +72,16 @@ import { RolloverConditions } from './types'
  * @index_privileges manage
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/{alias}/_rollover'
+      methods: ['POST']
+    },
+    {
+      path: '/{alias}/_rollover/{new_index}'
+      methods: ['POST']
+    }
+  ]
   path_parts: {
     /**
      * Name of the data stream or index alias to roll over.

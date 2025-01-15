@@ -29,6 +29,12 @@ import { Duration } from '@_types/Time'
  * @availability serverless stability=stable visibility=public
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_data_stream/{name}/_lifecycle'
+      methods: ['DELETE']
+    }
+  ]
   path_parts: {
     name: DataStreamNames
   }

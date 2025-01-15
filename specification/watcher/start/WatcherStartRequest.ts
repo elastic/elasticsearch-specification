@@ -29,6 +29,12 @@ import { Duration } from '@_types/Time'
  * @doc_id watcher-api-start
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_watcher/_start'
+      methods: ['POST']
+    }
+  ]
   query_parameters: {
     /**
      * Period to wait for a connection to the master node.

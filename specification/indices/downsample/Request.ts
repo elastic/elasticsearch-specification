@@ -37,6 +37,12 @@ import { IndexName } from '@_types/common'
  * @doc_tag data stream
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/{index}/_downsample/{target_index}'
+      methods: ['POST']
+    }
+  ]
   path_parts: {
     /**
      * Name of the time series index to downsample.

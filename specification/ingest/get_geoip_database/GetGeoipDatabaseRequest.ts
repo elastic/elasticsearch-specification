@@ -28,6 +28,16 @@ import { Ids } from '@_types/common'
  * @availability serverless visibility=private
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_ingest/geoip/database'
+      methods: ['GET']
+    },
+    {
+      path: '/_ingest/geoip/database/{id}'
+      methods: ['GET']
+    }
+  ]
   path_parts: {
     /**
      * Comma-separated list of database configuration IDs to retrieve.

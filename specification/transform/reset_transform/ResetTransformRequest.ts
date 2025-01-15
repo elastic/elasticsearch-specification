@@ -32,6 +32,12 @@ import { Duration } from '@_types/Time'
  * @cluster_privileges manage_transform
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_transform/{transform_id}/_reset'
+      methods: ['POST']
+    }
+  ]
   path_parts: {
     /**
      * Identifier for the transform. This identifier can contain lowercase alphanumeric characters (a-z and 0-9),

@@ -35,6 +35,16 @@ import { Id } from '@_types/common'
  * @doc_id inference-api-stream
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_inference/{inference_id}/_stream'
+      methods: ['POST']
+    },
+    {
+      path: '/_inference/{task_type}/{inference_id}/_stream'
+      methods: ['POST']
+    }
+  ]
   path_parts: {
     /**
      * The unique identifier for the inference endpoint.

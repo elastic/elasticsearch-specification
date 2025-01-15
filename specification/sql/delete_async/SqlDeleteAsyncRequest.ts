@@ -36,6 +36,12 @@ import { Id } from '@_types/common'
  * @doc_id sql-delete-async-api
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_sql/async/delete/{id}'
+      methods: ['DELETE']
+    }
+  ]
   path_parts: {
     /**
      * The identifier for the search.

@@ -45,6 +45,12 @@ import { Id, Name } from '@_types/common'
  * @doc_tag ml trained model
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_ml/trained_models/{model_id}/model_aliases/{model_alias}'
+      methods: ['PUT']
+    }
+  ]
   path_parts: {
     /**
      * The alias to create or update. This value cannot end in numbers.

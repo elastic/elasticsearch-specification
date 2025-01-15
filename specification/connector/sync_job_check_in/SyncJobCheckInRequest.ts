@@ -30,6 +30,12 @@ import { Id } from '@_types/common'
  * @doc_id connector-sync-job-checkin
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_connector/_sync_job/{connector_sync_job_id}/_check_in'
+      methods: ['PUT']
+    }
+  ]
   path_parts: {
     /**
      * The unique identifier of the connector sync job to be checked in.

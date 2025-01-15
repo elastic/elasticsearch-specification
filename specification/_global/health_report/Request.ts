@@ -45,6 +45,16 @@ import { Duration } from '@_types/Time'
  * @availability serverless stability=stable visibility=private
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_health_report'
+      methods: ['GET']
+    },
+    {
+      path: '/_health_report/{feature}'
+      methods: ['GET']
+    }
+  ]
   path_parts: {
     /**
      * A feature of the cluster, as returned by the top-level health report API.

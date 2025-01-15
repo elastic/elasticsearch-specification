@@ -31,6 +31,16 @@ import { Duration } from '@_types/Time'
  * @doc_id slm-api-get-policy
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_slm/policy/{policy_id}'
+      methods: ['GET']
+    },
+    {
+      path: '/_slm/policy'
+      methods: ['GET']
+    }
+  ]
   path_parts: {
     /*
     A comma-separate list of snapshot lifecycle policy identifiers.

@@ -35,6 +35,12 @@ import { ExpandWildcards, Indices } from '@_types/common'
  * @availability serverless stability=experimental visibility=private
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/{index}/_disk_usage'
+      methods: ['POST']
+    }
+  ]
   path_parts: {
     /**
      * Comma-separated list of data streams, indices, and aliases used to limit the request.

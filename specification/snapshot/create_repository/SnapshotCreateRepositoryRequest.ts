@@ -34,6 +34,12 @@ import { Duration } from '@_types/Time'
  * @ext_doc_id register-repository
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_snapshot/{repository}'
+      methods: ['PUT', 'POST']
+    }
+  ]
   path_parts: {
     /** @codegen_name name */
     repository: Name

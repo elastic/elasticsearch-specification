@@ -30,6 +30,12 @@ import { Refresh, Username } from '@_types/common'
  * @doc_id security-api-delete-user
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_security/user/{username}'
+      methods: ['DELETE']
+    }
+  ]
   path_parts: {
     username: Username
   }

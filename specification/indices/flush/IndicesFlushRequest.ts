@@ -39,6 +39,16 @@ import { ExpandWildcards, Indices } from '@_types/common'
  * @index_privileges maintenance
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_flush'
+      methods: ['POST', 'GET']
+    },
+    {
+      path: '/{index}/_flush'
+      methods: ['POST', 'GET']
+    }
+  ]
   path_parts: {
     /**
      * Comma-separated list of data streams, indices, and aliases to flush.

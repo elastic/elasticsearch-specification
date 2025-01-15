@@ -29,6 +29,16 @@ import { Duration } from '@_types/Time'
  * @cluster_privileges manage
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_ingest/ip_location/database'
+      methods: ['GET']
+    },
+    {
+      path: '/_ingest/ip_location/database/{id}'
+      methods: ['GET']
+    }
+  ]
   path_parts: {
     /**
      * Comma-separated list of database configuration IDs to retrieve.

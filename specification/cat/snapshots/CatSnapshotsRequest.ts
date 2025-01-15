@@ -32,6 +32,16 @@ import { Duration, TimeUnit } from '@_types/Time'
  * @cluster_privileges monitor_snapshot
  */
 export interface Request extends CatRequestBase {
+  urls: [
+    {
+      path: '/_cat/snapshots'
+      methods: ['GET']
+    },
+    {
+      path: '/_cat/snapshots/{repository}'
+      methods: ['GET']
+    }
+  ]
   path_parts: {
     /**
      * A comma-separated list of snapshot repositories used to limit the request.

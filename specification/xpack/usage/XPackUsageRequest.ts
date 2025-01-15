@@ -31,6 +31,12 @@ import { Duration } from '@_types/Time'
  * @doc_id usage-api
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_xpack/usage'
+      methods: ['GET']
+    }
+  ]
   query_parameters: {
     /**
      * The period to wait for a connection to the master node.

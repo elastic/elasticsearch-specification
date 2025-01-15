@@ -30,6 +30,12 @@ import { Name } from '@_types/common'
  * @doc_id security-api-saml-sp-metadata
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_security/saml/metadata/{realm_name}'
+      methods: ['GET']
+    }
+  ]
   path_parts: {
     /** The name of the SAML realm in Elasticsearch. */
     realm_name: Name

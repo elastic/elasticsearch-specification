@@ -37,6 +37,12 @@ import { RequestBase } from '@_types/Base'
  * @ext_doc_id pki-realm
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_security/delegate_pki'
+      methods: ['POST']
+    }
+  ]
   body: {
     /**
      * The X509Certificate chain, which is represented as an ordered string array.

@@ -32,6 +32,17 @@ import { Duration } from '@_types/Time'
  * @doc_tag ml trained model
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_ml/trained_models/{model_id}/_infer'
+      methods: ['POST']
+    },
+    {
+      /** @deprecated 8.3.0 /_ml/trained_models/{model_id}/deployment/_infer is deprecated. Use /_ml/trained_models/{model_id}/_infer instead */
+      path: '/_ml/trained_models/{model_id}/deployment/_infer'
+      methods: ['POST']
+    }
+  ]
   path_parts: {
     /**
      * The unique identifier of the trained model.

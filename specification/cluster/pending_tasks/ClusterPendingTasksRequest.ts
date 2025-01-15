@@ -34,6 +34,12 @@ import { Duration } from '@_types/Time'
  * @doc_id cluster-pending
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_cluster/pending_tasks'
+      methods: ['GET']
+    }
+  ]
   query_parameters: {
     /**
      * If `true`, the request retrieves information from the local node only.

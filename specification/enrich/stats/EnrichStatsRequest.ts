@@ -28,6 +28,12 @@ import { Duration } from '@_types/Time'
  * @availability serverless stability=stable visibility=public
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_enrich/_stats'
+      methods: ['GET']
+    }
+  ]
   query_parameters: {
     /**
      * Period to wait for a connection to the master node.

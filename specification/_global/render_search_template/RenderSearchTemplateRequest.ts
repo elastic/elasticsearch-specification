@@ -32,6 +32,16 @@ import { Id } from '@_types/common'
  * @doc_tag search
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_render/template'
+      methods: ['GET', 'POST']
+    },
+    {
+      path: '/_render/template/{id}'
+      methods: ['GET', 'POST']
+    }
+  ]
   path_parts: {
     /**
      * ID of the search template to render.

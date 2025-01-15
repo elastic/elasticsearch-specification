@@ -33,6 +33,32 @@ import { Duration } from '@_types/Time'
  * @doc_tag cluster
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_nodes/stats'
+      methods: ['GET']
+    },
+    {
+      path: '/_nodes/{node_id}/stats'
+      methods: ['GET']
+    },
+    {
+      path: '/_nodes/stats/{metric}'
+      methods: ['GET']
+    },
+    {
+      path: '/_nodes/{node_id}/stats/{metric}'
+      methods: ['GET']
+    },
+    {
+      path: '/_nodes/stats/{metric}/{index_metric}'
+      methods: ['GET']
+    },
+    {
+      path: '/_nodes/{node_id}/stats/{metric}/{index_metric}'
+      methods: ['GET']
+    }
+  ]
   path_parts: {
     /** Comma-separated list of node IDs or names used to limit returned information. */
     node_id?: NodeIds

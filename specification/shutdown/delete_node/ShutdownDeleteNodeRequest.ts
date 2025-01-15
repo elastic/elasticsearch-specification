@@ -37,6 +37,12 @@ import { TimeUnit } from '@_types/Time'
  * @doc_id nodes-api-shutdown-delete
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_nodes/{node_id}/shutdown'
+      methods: ['DELETE']
+    }
+  ]
   path_parts: {
     node_id: NodeId
   }

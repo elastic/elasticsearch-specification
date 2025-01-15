@@ -30,6 +30,12 @@ import { Duration } from '@_types/Time'
  * @ext_doc_id ccr-auto-follow
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_ccr/auto_follow/{name}'
+      methods: ['DELETE']
+    }
+  ]
   path_parts: {
     name: Name
   }

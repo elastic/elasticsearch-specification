@@ -32,6 +32,12 @@ import { Duration } from '@_types/Time'
  * @doc_id slm-api-delete-policy
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_slm/policy/{policy_id}'
+      methods: ['DELETE']
+    }
+  ]
   path_parts: {
     policy_id: Name
   }

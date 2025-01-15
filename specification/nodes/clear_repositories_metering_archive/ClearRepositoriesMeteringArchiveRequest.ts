@@ -32,6 +32,12 @@ import { long } from '@_types/Numeric'
  * @doc_id clear-repositories-metering-archive-api
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_nodes/{node_id}/_repositories_metering/{max_archive_version}'
+      methods: ['DELETE']
+    }
+  ]
   path_parts: {
     /**
      * Comma-separated list of node IDs or names used to limit returned information.

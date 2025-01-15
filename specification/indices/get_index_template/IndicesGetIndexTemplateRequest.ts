@@ -31,6 +31,16 @@ import { Duration } from '@_types/Time'
  * @doc_id indices-get-template
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_index_template'
+      methods: ['GET']
+    },
+    {
+      path: '/_index_template/{name}'
+      methods: ['GET']
+    }
+  ]
   path_parts: {
     /** Comma-separated list of index template names used to limit the request. Wildcard (*) expressions are supported. */
     name?: Name

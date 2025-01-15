@@ -43,6 +43,12 @@ import { Metadata, Name, Refresh } from '@_types/common'
  * @ext_doc_id defining-roles
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_security/role/{name}'
+      methods: ['PUT', 'POST']
+    }
+  ]
   path_parts: {
     /**
      * The name of the role.

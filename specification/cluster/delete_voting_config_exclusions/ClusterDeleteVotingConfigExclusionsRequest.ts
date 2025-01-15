@@ -29,6 +29,12 @@ import { Duration } from '@_types/Time'
  * @ext_doc_id add-nodes
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_cluster/voting_config_exclusions'
+      methods: ['DELETE']
+    }
+  ]
   query_parameters: {
     /**
      * Period to wait for a connection to the master node.

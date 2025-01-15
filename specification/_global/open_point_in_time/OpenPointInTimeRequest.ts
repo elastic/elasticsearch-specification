@@ -42,6 +42,12 @@ import { Duration } from '@_types/Time'
  * @doc_tag search
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/{index}/_pit'
+      methods: ['POST']
+    }
+  ]
   path_parts: {
     index: Indices
   }

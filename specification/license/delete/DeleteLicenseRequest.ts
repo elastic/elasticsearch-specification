@@ -31,6 +31,12 @@ import { Duration } from '@_types/Time'
  * @ext_doc_id license-management
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_license'
+      methods: ['DELETE']
+    }
+  ]
   query_parameters: {
     /**
      * Period to wait for a connection to the master node.

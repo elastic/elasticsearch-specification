@@ -30,6 +30,12 @@ import { Duration, TimeUnit } from '@_types/Time'
  * @cluster_privileges monitor
  */
 export interface Request extends CatRequestBase {
+  urls: [
+    {
+      path: '/_cat/pending_tasks'
+      methods: ['GET']
+    }
+  ]
   query_parameters: {
     /**
      * If `true`, the request computes the list of selected nodes from the

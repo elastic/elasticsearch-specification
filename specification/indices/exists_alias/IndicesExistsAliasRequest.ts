@@ -28,6 +28,16 @@ import { ExpandWildcards, Indices, Names } from '@_types/common'
  * @availability serverless stability=stable visibility=public
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_alias/{name}'
+      methods: ['HEAD']
+    },
+    {
+      path: '/{index}/_alias/{name}'
+      methods: ['HEAD']
+    }
+  ]
   path_parts: {
     /**
      * Comma-separated list of aliases to check. Supports wildcards (`*`).

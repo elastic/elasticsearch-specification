@@ -30,6 +30,12 @@ import { Ids } from '@_types/common'
  * @doc_id security-api-saml-complete-logout
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_security/saml/complete_logout'
+      methods: ['POST']
+    }
+  ]
   body: {
     /** The name of the SAML realm in Elasticsearch for which the configuration is used to verify the logout response. */
     realm: string

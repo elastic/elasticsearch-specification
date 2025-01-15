@@ -30,6 +30,12 @@ import { PainlessContextSetup } from './types'
  * @doc_tag script
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_scripts/painless/_execute'
+      methods: ['GET', 'POST']
+    }
+  ]
   body: {
     /**
      * The context that the script should run in.

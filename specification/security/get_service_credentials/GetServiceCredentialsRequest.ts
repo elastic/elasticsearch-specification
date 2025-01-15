@@ -30,6 +30,12 @@ import { Name, Namespace } from '@_types/common'
  * @ext_doc_id service-accounts
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_security/service/{namespace}/{service}/credential'
+      methods: ['GET']
+    }
+  ]
   path_parts: {
     /**
      * Name of the namespace.

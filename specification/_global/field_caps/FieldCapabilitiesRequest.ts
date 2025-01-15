@@ -37,6 +37,16 @@ import { QueryContainer } from '@_types/query_dsl/abstractions'
  * @doc_tag search
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_field_caps'
+      methods: ['GET', 'POST']
+    },
+    {
+      path: '/{index}/_field_caps'
+      methods: ['GET', 'POST']
+    }
+  ]
   path_parts: {
     /**
      * Comma-separated list of data streams, indices, and aliases used to limit the request. Supports wildcards (*). To target all data streams and indices, omit this parameter or use * or _all.

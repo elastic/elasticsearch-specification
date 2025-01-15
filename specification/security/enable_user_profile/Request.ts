@@ -32,6 +32,12 @@ import { Refresh } from '@_types/common'
  * @doc_id security-api-enable-user-profile
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_security/profile/{uid}/_enable'
+      methods: ['PUT', 'POST']
+    }
+  ]
   path_parts: {
     /**
      * Unique identifier for the user profile.

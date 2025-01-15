@@ -33,6 +33,12 @@ import { RoleQueryContainer } from './types'
  * @doc_id security-api-query-role
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_security/_query/role'
+      methods: ['GET', 'POST']
+    }
+  ]
   body: {
     /**
      * A query to filter which roles to return.

@@ -30,6 +30,12 @@ import { Duration, TimeUnit } from '@_types/Time'
  * @cluster_privileges monitor
  */
 export interface Request extends CatRequestBase {
+  urls: [
+    {
+      path: '/_cat/tasks'
+      methods: ['GET']
+    }
+  ]
   query_parameters: {
     /**
      * The task action names, which are used to limit the response.

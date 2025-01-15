@@ -34,6 +34,12 @@ import { Duration } from '@_types/Time'
  * @ext_doc_id ccr
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/{index}/_ccr/unfollow'
+      methods: ['POST']
+    }
+  ]
   path_parts: {
     index: IndexName
   }

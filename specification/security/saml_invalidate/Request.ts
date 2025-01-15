@@ -29,6 +29,12 @@ import { RequestBase } from '@_types/Base'
  * @doc_id security-api-saml-invalidate
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_security/saml/invalidate'
+      methods: ['POST']
+    }
+  ]
   body: {
     /** The Assertion Consumer Service URL that matches the one of the SAML realm in Elasticsearch that should be used. You must specify either this parameter or the realm parameter. */
     acs?: string

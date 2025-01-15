@@ -30,6 +30,12 @@ import { Name } from '@_types/common'
  * @ext_doc_id watcher-works
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_watcher/watch/{watch_id}/_deactivate'
+      methods: ['PUT', 'POST']
+    }
+  ]
   path_parts: {
     /**
      * The watch identifier.

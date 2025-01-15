@@ -30,6 +30,12 @@ import { Duration } from '@_types/Time'
  * @doc_id snapshot-delete
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_snapshot/{repository}/{snapshot}'
+      methods: ['DELETE']
+    }
+  ]
   path_parts: {
     repository: Name
     snapshot: Name

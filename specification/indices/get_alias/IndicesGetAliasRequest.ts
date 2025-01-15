@@ -30,6 +30,24 @@ import { ExpandWildcards, Indices, Names } from '@_types/common'
  * @index_privileges view_index_metadata
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_alias'
+      methods: ['GET']
+    },
+    {
+      path: '/_alias/{name}'
+      methods: ['GET']
+    },
+    {
+      path: '/{index}/_alias/{name}'
+      methods: ['GET']
+    },
+    {
+      path: '/{index}/_alias'
+      methods: ['GET']
+    }
+  ]
   path_parts: {
     /**
      * Comma-separated list of aliases to retrieve.

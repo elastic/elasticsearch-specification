@@ -29,6 +29,12 @@ import { ExpandWildcards, Indices } from '@_types/common'
  * @doc_id indices-exists
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/{index}'
+      methods: ['HEAD']
+    }
+  ]
   path_parts: {
     /**
      * Comma-separated list of data streams, indices, and aliases. Supports wildcards (`*`).

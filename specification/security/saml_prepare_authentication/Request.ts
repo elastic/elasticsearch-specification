@@ -29,6 +29,12 @@ import { RequestBase } from '@_types/Base'
  * @doc_id security-api-saml-prepare-authentication
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_security/saml/prepare'
+      methods: ['POST']
+    }
+  ]
   body: {
     /**
      * The Assertion Consumer Service URL that matches the one of the SAML realms in Elasticsearch.

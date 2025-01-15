@@ -32,4 +32,11 @@ import { RequestBase } from '@_types/Base'
  * @doc_id dangling-indices-list
  * @cluster_privileges manage
  */
-export interface Request extends RequestBase {}
+export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_dangling'
+      methods: ['GET']
+    }
+  ]
+}

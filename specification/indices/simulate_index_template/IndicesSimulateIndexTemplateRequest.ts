@@ -31,6 +31,12 @@ import { Duration } from '@_types/Time'
  * @cluster_privileges manage_index_templates
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_index_template/_simulate_index/{name}'
+      methods: ['POST']
+    }
+  ]
   path_parts: {
     /** Name of the index to simulate */
     name: Name

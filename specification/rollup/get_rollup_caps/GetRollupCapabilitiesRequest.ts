@@ -37,6 +37,16 @@ import { Id } from '@_types/common'
  * @doc_id rollup-get-rollup-caps
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_rollup/data/{id}'
+      methods: ['GET']
+    },
+    {
+      path: '/_rollup/data'
+      methods: ['GET']
+    }
+  ]
   path_parts: {
     /**
      * Index, indices or index-pattern to return rollup capabilities for.

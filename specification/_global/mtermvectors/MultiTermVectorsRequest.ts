@@ -41,6 +41,16 @@ import { Operation } from './types'
  * @doc_tag document
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_mtermvectors'
+      methods: ['GET', 'POST']
+    },
+    {
+      path: '/{index}/_mtermvectors'
+      methods: ['GET', 'POST']
+    }
+  ]
   path_parts: {
     /**
      * Name of the index that contains the documents.

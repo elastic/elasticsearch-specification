@@ -35,6 +35,16 @@ import { Operation } from './types'
  * @doc_tag document
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_mget'
+      methods: ['GET', 'POST']
+    },
+    {
+      path: '/{index}/_mget'
+      methods: ['GET', 'POST']
+    }
+  ]
   path_parts: {
     /**
      * Name of the index to retrieve documents from when `ids` are specified, or when a document in the `docs` array does not specify an index.

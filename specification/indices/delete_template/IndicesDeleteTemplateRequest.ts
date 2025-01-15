@@ -29,6 +29,12 @@ import { Duration } from '@_types/Time'
  * @doc_id indices-delete-template-v1
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_template/{name}'
+      methods: ['DELETE']
+    }
+  ]
   path_parts: {
     /**
      * The name of the legacy index template to delete.

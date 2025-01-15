@@ -30,6 +30,16 @@ import { Username } from '@_types/common'
  * @doc_id security-api-get-user
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_security/user/{username}'
+      methods: ['GET']
+    },
+    {
+      path: '/_security/user'
+      methods: ['GET']
+    }
+  ]
   path_parts: {
     /** An identifier for the user. You can specify multiple usernames as a comma-separated list. If you omit this parameter, the API retrieves information about all users. */
     username?: Username | Username[]

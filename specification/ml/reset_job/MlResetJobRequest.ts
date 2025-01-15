@@ -33,6 +33,12 @@ import { Id } from '@_types/common'
  * @doc_tag ml anomaly
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_ml/anomaly_detectors/{job_id}/_reset'
+      methods: ['POST']
+    }
+  ]
   path_parts: {
     /**
      * The ID of the job to reset.

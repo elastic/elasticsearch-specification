@@ -30,4 +30,11 @@ import { RequestBase } from '@_types/Base'
  * @doc_id security-api-get-builtin-privileges
  * @ext_doc_id security-privileges
  */
-export interface Request extends RequestBase {}
+export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_security/privilege/_builtin'
+      methods: ['GET']
+    }
+  ]
+}

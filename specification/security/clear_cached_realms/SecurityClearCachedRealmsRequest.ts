@@ -30,6 +30,12 @@ import { Names } from '@_types/common'
  * @doc_id security-api-clear-cache
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_security/realm/{realms}/_clear_cache'
+      methods: ['POST']
+    }
+  ]
   path_parts: {
     realms: Names
   }
