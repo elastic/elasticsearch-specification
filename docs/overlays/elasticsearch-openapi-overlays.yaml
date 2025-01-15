@@ -141,7 +141,7 @@ actions:
             application/json:
               examples:
                 getTasksResponseExample1:
-                  $ref: "../../specification/tasks/get/examples/response/GetTaskResponseExample1.yaml"
+                  $ref: "../../specification/tasks/get/examples/200_response/GetTaskResponseExample1.yaml"
   - target: "$.components['responses']['nodes.info#200']"
     description: "Add response examples for nodes info"
     update: 
