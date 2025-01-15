@@ -9562,10 +9562,15 @@
           "stability": "experimental"
         }
       },
-      "description": "Get task information.\nGet information about a task currently running in the cluster.",
+      "description": "Get task information.\nGet information about a task currently running in the cluster.\n\nWARNING: The task management API is new and should still be considered a beta feature.\nThe API may change in ways that are not backwards compatible.\n\nIf the task identifier is not found, a 404 response code indicates that there are no resources that match the request.",
       "docId": "tasks",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/tasks.html",
       "name": "tasks.get",
+      "privileges": {
+        "cluster": [
+          "monitor"
+        ]
+      },
       "request": {
         "name": "Request",
         "namespace": "tasks.get"
@@ -42308,7 +42313,7 @@
       "body": {
         "kind": "no_body"
       },
-      "description": "Get task information.\nGet information about a task currently running in the cluster.",
+      "description": "Get task information.\nGet information about a task currently running in the cluster.\n\nWARNING: The task management API is new and should still be considered a beta feature.\nThe API may change in ways that are not backwards compatible.\n\nIf the task identifier is not found, a 404 response code indicates that there are no resources that match the request.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -42322,7 +42327,7 @@
       },
       "path": [
         {
-          "description": "ID of the task.",
+          "description": "The task identifier.",
           "name": "task_id",
           "required": true,
           "type": {
@@ -42336,7 +42341,7 @@
       ],
       "query": [
         {
-          "description": "Period to wait for a response.\nIf no response is received before the timeout expires, the request fails and returns an error.",
+          "description": "The period to wait for a response.\nIf no response is received before the timeout expires, the request fails and returns an error.",
           "name": "timeout",
           "required": false,
           "serverDefault": "30s",
@@ -42362,7 +42367,7 @@
           }
         }
       ],
-      "specLocation": "tasks/get/GetTaskRequest.ts#L24-L52"
+      "specLocation": "tasks/get/GetTaskRequest.ts#L24-L58"
     },
     {
       "body": {
@@ -105267,11 +105272,11 @@
       "kind": "enum",
       "members": [
         {
-          "description": "Node ID",
+          "description": "Group tasks by node ID.",
           "name": "nodes"
         },
         {
-          "description": "Parent task ID",
+          "description": "Group tasks by parent task ID.",
           "name": "parents"
         },
         {
