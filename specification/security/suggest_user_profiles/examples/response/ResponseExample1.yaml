@@ -1,61 +1,10 @@
 # summary:
 description: >
-  A successful response from `POST /_security/profile/_suggest`.
-  User `jacknich` is ranked highest because the profile matches both the `uids` and `labels` hints in the request.
-  User `jackspa` is ranked second because the profile matches only the `uids` hint.
-  User `jackrea` is ranked lowest because the profile does not match any hints.
-  However, it is not excluded from the response because it matches the `name` query.
+  A successful response from `GET /_security/saml/metadata/saml1`.
+  It contains the SAML metadata that was generated for the SAML realm as an XML string.
 # type: response
 # response_code:
 value: |-
   {
-    "took": 30,
-    "total": {
-      "value": 3,
-      "relation": "eq"
-    },
-    "profiles": [
-      {
-        "uid": "u_79HkWkwmnBH5gqFKwoxggWPjEBOur1zLPXQPEl1VBW0_0",
-        "user": {
-          "username": "jacknich",    
-          "roles": [ "admin", "other_role1" ],
-          "realm_name": "native",
-          "email" : "jacknich@example.com",
-          "full_name": "Jack Nicholson"
-        },
-        "labels": {
-          "direction": "north"
-        },
-        "data": {}
-      },
-      {
-        "uid": "u_8RKO7AKfEbSiIHZkZZ2LJy2MUSDPWDr3tMI_CkIGApU_0",
-        "user": {
-          "username": "jackspa",    
-          "roles": [ "user" ],
-          "realm_name": "native",
-          "email" : "jackspa@example.com",
-          "full_name": "Jack Sparrow"
-        },
-        "labels": {
-          "direction": "south"
-        },
-        "data": {}
-      },
-      {
-        "uid": "u_P_0BMHgaOK3p7k-PFWUCbw9dQ-UFjt01oWJ_Dp2PmPc_0",
-        "user": {
-          "username": "jackrea",    
-          "roles": [ "admin" ],
-          "realm_name": "native",
-          "email" : "jackrea@example.com",
-          "full_name": "Jack Reacher"
-        },
-        "labels": {
-          "direction": "west"
-        },
-        "data": {}
-      }
-    ]
+      "metadata" : "<?xml version=\"1.0\" encoding=\"UTF-8\"?><md:EntityDescriptor xmlns:md=\"urn:oasis:names:tc:SAML:2.0:metadata\" entityID=\"https://kibana.org\"><md:SPSSODescriptor AuthnRequestsSigned=\"false\" WantAssertionsSigned=\"true\" protocolSupportEnumeration=\"urn:oasis:names:tc:SAML:2.0:protocol\"><md:SingleLogoutService Binding=\"urn:oasis:names:tc:SAML:2.0:bindings:HTTP-Redirect\" Location=\"https://kibana.org/logout\"/><md:AssertionConsumerService Binding=\"urn:oasis:names:tc:SAML:2.0:bindings:HTTP-POST\" Location=\"https://kibana.org/api/security/saml/callback\" index=\"1\" isDefault=\"true\"/></md:SPSSODescriptor></md:EntityDescriptor>"
   }
