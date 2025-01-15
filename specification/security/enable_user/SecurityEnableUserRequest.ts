@@ -30,6 +30,12 @@ import { Refresh, Username } from '@_types/common'
  * @doc_id security-api-enable-user
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_security/user/{username}/_enable'
+      methods: ['PUT', 'POST']
+    }
+  ]
   path_parts: {
     username: Username
   }

@@ -29,6 +29,12 @@ import { Duration } from '@_types/Time'
  * @cluster_privileges read_security
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_security/settings'
+      methods: ['GET']
+    }
+  ]
   query_parameters: {
     /**
      * Period to wait for a connection to the master node.

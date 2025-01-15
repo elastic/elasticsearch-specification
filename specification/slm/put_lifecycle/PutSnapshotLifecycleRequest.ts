@@ -36,6 +36,12 @@ import { Duration } from '@_types/Time'
  * @doc_id slm-api-put-policy
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_slm/policy/{policy_id}'
+      methods: ['PUT']
+    }
+  ]
   path_parts: {
     /**
      * The identifier for the snapshot lifecycle policy you want to create or update.

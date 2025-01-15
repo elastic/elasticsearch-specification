@@ -30,6 +30,12 @@ import { Duration } from '@_types/Time'
  * @availability serverless stability=stable visibility=public
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_eql/search/{id}'
+      methods: ['GET']
+    }
+  ]
   path_parts: {
     /**
      * Identifier for the search.

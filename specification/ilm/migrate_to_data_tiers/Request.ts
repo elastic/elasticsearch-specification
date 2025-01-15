@@ -39,6 +39,12 @@ import { RequestBase } from '@_types/Base'
  * @ext_doc_id migrate-index-allocation-filters
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_ilm/migrate_to_data_tiers'
+      methods: ['POST']
+    }
+  ]
   query_parameters: {
     /**
      * If true, simulates the migration from node attributes based allocation filters to data tiers, but does not perform the migration.

@@ -32,6 +32,12 @@ import { Duration } from '@_types/Time'
  * @doc_tag indices
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_component_template/{name}'
+      methods: ['DELETE']
+    }
+  ]
   path_parts: {
     /**
      * Comma-separated list or wildcard expression of component template names used to limit the request.

@@ -32,6 +32,20 @@ import { Namespace, Service } from '@_types/common'
  * @ext_doc_id service-accounts
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_security/service/{namespace}/{service}'
+      methods: ['GET']
+    },
+    {
+      path: '/_security/service/{namespace}'
+      methods: ['GET']
+    },
+    {
+      path: '/_security/service'
+      methods: ['GET']
+    }
+  ]
   path_parts: {
     /**
      * Name of the namespace. Omit this parameter to retrieve information about all service accounts. If you omit this parameter, you must also omit the `service` parameter.

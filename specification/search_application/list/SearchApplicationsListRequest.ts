@@ -28,6 +28,12 @@ import { integer } from '@_types/Numeric'
  * @cluster_privileges manage_search_application
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_application/search_application'
+      methods: ['GET']
+    }
+  ]
   query_parameters: {
     /**
      * Query in the Lucene query string syntax.

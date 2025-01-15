@@ -31,6 +31,12 @@ import { Duration } from '@_types/Time'
  * @ext_doc_id autoscaling
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_autoscaling/policy/{name}'
+      methods: ['GET']
+    }
+  ]
   path_parts: {
     name: Name
   }

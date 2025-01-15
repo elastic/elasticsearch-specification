@@ -32,6 +32,12 @@ import { Id, Name } from '@_types/common'
  * @doc_tag ml trained model
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_ml/trained_models/{model_id}/model_aliases/{model_alias}'
+      methods: ['DELETE']
+    }
+  ]
   path_parts: {
     /**
      * The model alias to delete.

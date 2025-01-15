@@ -39,6 +39,16 @@ import { Duration } from '@_types/Time'
  * @doc_tag ml anomaly
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_ml/_delete_expired_data/{job_id}'
+      methods: ['DELETE']
+    },
+    {
+      path: '/_ml/_delete_expired_data'
+      methods: ['DELETE']
+    }
+  ]
   path_parts: {
     /**
      * Identifier for an anomaly detection job. It can be a job identifier, a

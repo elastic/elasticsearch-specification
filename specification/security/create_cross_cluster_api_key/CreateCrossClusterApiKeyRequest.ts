@@ -47,6 +47,12 @@ import { Duration } from '@_types/Time'
  * @ext_doc_id remote-clusters-api-key
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_security/cross_cluster/api_key'
+      methods: ['POST']
+    }
+  ]
   body: {
     /**
      * The access to be granted to this API key.

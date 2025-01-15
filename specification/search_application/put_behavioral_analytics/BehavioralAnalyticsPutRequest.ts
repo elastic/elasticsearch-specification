@@ -27,6 +27,12 @@ import { Name } from '@_types/common'
  * @doc_tag analytics
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_application/analytics/{name}'
+      methods: ['PUT']
+    }
+  ]
   path_parts: {
     /**
      * The name of the analytics collection to be created or updated.

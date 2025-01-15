@@ -47,6 +47,12 @@ import { TransformContainer } from '@_types/Transform'
  * @doc_id watcher-api-put-watch
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_watcher/watch/{id}'
+      methods: ['PUT', 'POST']
+    }
+  ]
   path_parts: {
     /**
      * The identifier for the watch.

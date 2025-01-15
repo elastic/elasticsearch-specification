@@ -42,6 +42,12 @@ import { DateTime } from '@_types/Time'
  * @doc_tag ml anomaly
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_ml/anomaly_detectors/{job_id}/results/records'
+      methods: ['GET', 'POST']
+    }
+  ]
   path_parts: {
     /**
      * Identifier for the anomaly detection job.

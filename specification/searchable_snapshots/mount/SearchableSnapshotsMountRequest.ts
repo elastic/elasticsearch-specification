@@ -35,6 +35,12 @@ import { Duration } from '@_types/Time'
  * @doc_id searchable-snapshots-api-mount-snapshot
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_snapshot/{repository}/{snapshot}/_mount'
+      methods: ['POST']
+    }
+  ]
   path_parts: {
     /**
      * The name of the repository containing the snapshot of the index to mount.

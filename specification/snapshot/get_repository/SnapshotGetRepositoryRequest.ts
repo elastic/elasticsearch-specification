@@ -30,6 +30,16 @@ import { Duration } from '@_types/Time'
  * @doc_id snapshot-repo-get
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_snapshot'
+      methods: ['GET']
+    },
+    {
+      path: '/_snapshot/{repository}'
+      methods: ['GET']
+    }
+  ]
   path_parts: {
     /**
      * A comma-separated list of snapshot repository names used to limit the request.

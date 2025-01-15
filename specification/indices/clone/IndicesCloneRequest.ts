@@ -75,6 +75,12 @@ import { Duration } from '@_types/Time'
  * @index_privileges manage
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/{index}/_clone/{target}'
+      methods: ['PUT', 'POST']
+    }
+  ]
   path_parts: {
     /**
      * Name of the source index to clone.

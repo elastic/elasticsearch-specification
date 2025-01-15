@@ -31,6 +31,12 @@ import { Names } from '@_types/common'
  * @doc_id security-api-clear-role-cache
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_security/role/{name}/_clear_cache'
+      methods: ['POST']
+    }
+  ]
   path_parts: {
     name: Names
   }

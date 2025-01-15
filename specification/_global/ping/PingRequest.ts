@@ -27,4 +27,11 @@ import { RequestBase } from '@_types/Base'
  * @availability serverless stability=stable visibility=public
  * @doc_tag cluster
  */
-export interface Request extends RequestBase {}
+export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/'
+      methods: ['HEAD']
+    }
+  ]
+}

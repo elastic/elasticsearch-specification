@@ -39,6 +39,16 @@ import { Id } from '@_types/common'
  * @cluster_privileges manage_inference
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_inference/{inference_id}'
+      methods: ['PUT']
+    },
+    {
+      path: '/_inference/{task_type}/{inference_id}'
+      methods: ['PUT']
+    }
+  ]
   path_parts: {
     /**
      * The task type

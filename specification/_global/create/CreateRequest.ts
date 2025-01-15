@@ -39,6 +39,12 @@ import { Duration } from '@_types/Time'
  * @doc_tag document
  */
 export interface Request<TDocument> extends RequestBase {
+  urls: [
+    {
+      path: '/{index}/_create/{id}'
+      methods: ['PUT', 'POST']
+    }
+  ]
   path_parts: {
     /**
      * Unique identifier for the document.

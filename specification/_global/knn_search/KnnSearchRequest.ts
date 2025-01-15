@@ -43,6 +43,12 @@ import { Query } from './_types/Knn'
  * @doc_tag search
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/{index}/_knn_search'
+      methods: ['GET', 'POST']
+    }
+  ]
   path_parts: {
     /**
      * A comma-separated list of index names to search;

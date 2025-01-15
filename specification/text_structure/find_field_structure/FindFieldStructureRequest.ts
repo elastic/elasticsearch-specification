@@ -48,6 +48,12 @@ import { EcsCompatibilityType, FormatType } from '../_types/Structure'
  * @doc_id find-field-structure
  */
 interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_text_structure/find_field_structure'
+      methods: ['GET']
+    }
+  ]
   query_parameters: {
     /**
      * If `format` is set to `delimited`, you can specify the column names in a comma-separated list.

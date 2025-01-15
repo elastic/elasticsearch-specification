@@ -32,6 +32,16 @@ import { Duration } from '@_types/Time'
  * @cluster_privileges monitor
  */
 export interface Request extends CatRequestBase {
+  urls: [
+    {
+      path: '/_cat/allocation'
+      methods: ['GET']
+    },
+    {
+      path: '/_cat/allocation/{node_id}'
+      methods: ['GET']
+    }
+  ]
   path_parts: {
     /** Comma-separated list of node identifiers or names used to limit the returned information. */
     node_id?: NodeIds

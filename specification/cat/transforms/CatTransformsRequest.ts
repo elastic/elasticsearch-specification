@@ -37,6 +37,16 @@ import { TimeUnit } from '@_types/Time'
  * @cluster_privileges monitor_transform
  */
 export interface Request extends CatRequestBase {
+  urls: [
+    {
+      path: '/_cat/transforms'
+      methods: ['GET']
+    },
+    {
+      path: '/_cat/transforms/{transform_id}'
+      methods: ['GET']
+    }
+  ]
   path_parts: {
     /**
      * A transform identifier or a wildcard expression.

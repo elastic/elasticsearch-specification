@@ -46,6 +46,12 @@ import { Duration } from '@_types/Time'
  * @cluster_privileges manage_own_api_key
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_security/api_key/_bulk_update'
+      methods: ['POST']
+    }
+  ]
   body: {
     /**
      * Expiration time for the API keys.

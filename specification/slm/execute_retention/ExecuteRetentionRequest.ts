@@ -31,6 +31,12 @@ import { Duration } from '@_types/Time'
  * @doc_id slm-api-execute-retention
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_slm/_execute_retention'
+      methods: ['POST']
+    }
+  ]
   query_parameters: {
     /**
      * The period to wait for a connection to the master node.

@@ -33,6 +33,12 @@ import { Duration } from '@_types/Time'
  * @doc_id indices-delete-template
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_index_template/{name}'
+      methods: ['DELETE']
+    }
+  ]
   path_parts: {
     /**
      * Comma-separated list of index template names used to limit the request. Wildcard (*) expressions are supported.

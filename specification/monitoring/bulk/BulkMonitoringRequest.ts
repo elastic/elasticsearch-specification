@@ -28,6 +28,17 @@ import { Duration } from '@_types/Time'
  * @availability stack since=6.3.0 stability=stable visibility=private
  */
 export interface Request<TDocument, TPartialDocument> extends RequestBase {
+  urls: [
+    {
+      path: '/_monitoring/bulk'
+      methods: ['POST', 'PUT']
+    },
+    {
+      /** @deprecated 7.0.0 Specifying types in urls has been deprecated */
+      path: '/_monitoring/{type}/bulk'
+      methods: ['POST', 'PUT']
+    }
+  ]
   path_parts: {
     /**
      * @deprecated 7.0.0

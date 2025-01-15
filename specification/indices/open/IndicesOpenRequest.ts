@@ -52,6 +52,12 @@ import { Duration } from '@_types/Time'
  * @index_privileges manage
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/{index}/_open'
+      methods: ['POST']
+    }
+  ]
   path_parts: {
     /**
      * Comma-separated list of data streams, indices, and aliases used to limit the request.

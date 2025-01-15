@@ -33,6 +33,16 @@ import { Duration } from '@_types/Time'
  * @cluster_privileges monitor
  */
 export interface Request extends CatRequestBase {
+  urls: [
+    {
+      path: '/_cat/templates'
+      methods: ['GET']
+    },
+    {
+      path: '/_cat/templates/{name}'
+      methods: ['GET']
+    }
+  ]
   path_parts: {
     /**
      * The name of the template to return.

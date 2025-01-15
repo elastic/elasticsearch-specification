@@ -55,6 +55,12 @@ import { Duration } from '@_types/Time'
  * @index_privileges create_index, manage
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/{index}'
+      methods: ['PUT']
+    }
+  ]
   path_parts: {
     /**
      * Name of the index you wish to create.

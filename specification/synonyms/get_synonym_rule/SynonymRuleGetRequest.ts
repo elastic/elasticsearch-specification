@@ -29,6 +29,12 @@ import { Id } from '@_types/common'
  * @doc_id synonym-rule-get
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_synonyms/{set_id}/{rule_id}'
+      methods: ['GET']
+    }
+  ]
   path_parts: {
     /**
      * The ID of the synonym set to retrieve the synonym rule from.

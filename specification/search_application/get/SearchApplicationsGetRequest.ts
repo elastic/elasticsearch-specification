@@ -27,6 +27,12 @@ import { Name } from '@_types/common'
  * @cluster_privileges manage_search_application
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_application/search_application/{name}'
+      methods: ['GET']
+    }
+  ]
   path_parts: {
     /**
      * The name of the search application

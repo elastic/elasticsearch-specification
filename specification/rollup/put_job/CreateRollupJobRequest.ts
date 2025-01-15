@@ -41,6 +41,12 @@ import { Duration } from '@_types/Time'
  * @doc_id rollup-put-job
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_rollup/job/{id}'
+      methods: ['PUT']
+    }
+  ]
   path_parts: {
     /**
      * Identifier for the rollup job. This can be any alphanumeric string and uniquely identifies the

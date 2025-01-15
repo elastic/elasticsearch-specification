@@ -30,6 +30,12 @@ import { Duration } from '@_types/Time'
  * @doc_id cluster-get-settings
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_cluster/settings'
+      methods: ['GET']
+    }
+  ]
   query_parameters: {
     /**
      * If `true`, returns settings in flat format.

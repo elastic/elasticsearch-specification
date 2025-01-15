@@ -30,6 +30,16 @@ import { StatsLevel } from '../_types/stats'
  * @doc_id searchable-snapshots-api-stats
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_searchable_snapshots/stats'
+      methods: ['GET']
+    },
+    {
+      path: '/{index}/_searchable_snapshots/stats'
+      methods: ['GET']
+    }
+  ]
   path_parts: {
     /**
      * A comma-separated list of data streams and indices to retrieve statistics for.

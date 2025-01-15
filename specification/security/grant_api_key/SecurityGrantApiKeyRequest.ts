@@ -44,6 +44,12 @@ import { ApiKeyGrantType, GrantApiKey } from './types'
  * @doc_id security-api-grant-api-key
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_security/api_key/grant'
+      methods: ['POST']
+    }
+  ]
   body: {
     /**
      * Defines the API key.

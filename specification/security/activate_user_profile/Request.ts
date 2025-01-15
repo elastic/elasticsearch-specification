@@ -31,6 +31,12 @@ import { RequestBase } from '@_types/Base'
  * @doc_id security-api-activate-user-profile
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_security/profile/_activate'
+      methods: ['POST']
+    }
+  ]
   body: {
     access_token?: string
     grant_type: GrantType

@@ -27,4 +27,11 @@ import { RequestBase } from '@_types/Base'
  * @availability stack since=8.0.0 stability=stable
  * @doc_id security-api-kibana-enrollment
  */
-export interface Request extends RequestBase {}
+export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_security/enroll/kibana'
+      methods: ['GET']
+    }
+  ]
+}

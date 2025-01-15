@@ -30,6 +30,16 @@ import { Duration } from '@_types/Time'
  * @availability serverless stability=stable visibility=public
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_inference/{inference_id}'
+      methods: ['POST']
+    },
+    {
+      path: '/_inference/{task_type}/{inference_id}'
+      methods: ['POST']
+    }
+  ]
   path_parts: {
     /**
      * The task type

@@ -25,4 +25,11 @@ import { RequestBase } from '@_types/Base'
  * @availability stack since=6.3.0 stability=stable
  * @cluster_privileges monitor
  */
-export interface Request extends RequestBase {}
+export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_license/basic_status'
+      methods: ['GET']
+    }
+  ]
+}

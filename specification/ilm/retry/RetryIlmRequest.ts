@@ -30,6 +30,12 @@ import { IndexName } from '@_types/common'
  * @index_privileges manage_ilm
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/{index}/_ilm/retry'
+      methods: ['POST']
+    }
+  ]
   path_parts: {
     index: IndexName
   }

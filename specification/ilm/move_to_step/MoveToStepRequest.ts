@@ -41,6 +41,12 @@ import { StepKey } from './types'
  * @index_privileges manage_ilm
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_ilm/move/{index}'
+      methods: ['POST']
+    }
+  ]
   path_parts: {
     index: IndexName
   }

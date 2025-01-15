@@ -31,6 +31,16 @@ import { integer } from '@_types/Numeric'
  * @doc_tag ml anomaly
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_ml/anomaly_detectors/{job_id}/results/categories/{category_id}'
+      methods: ['GET', 'POST']
+    },
+    {
+      path: '/_ml/anomaly_detectors/{job_id}/results/categories'
+      methods: ['GET', 'POST']
+    }
+  ]
   path_parts: {
     /**
      * Identifier for the anomaly detection job.

@@ -64,6 +64,12 @@ import { Duration } from '@_types/Time'
  * @index_privileges manage
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/{index}/_split/{target}'
+      methods: ['PUT', 'POST']
+    }
+  ]
   path_parts: {
     /**
      * Name of the source index to split.

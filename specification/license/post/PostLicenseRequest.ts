@@ -35,6 +35,12 @@ import { Duration } from '@_types/Time'
  * @cluster_privileges manage
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_license'
+      methods: ['PUT', 'POST']
+    }
+  ]
   query_parameters: {
     /**
      * Specifies whether you acknowledge the license changes.

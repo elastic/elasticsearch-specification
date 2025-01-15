@@ -31,6 +31,12 @@ import { Duration } from '@_types/Time'
  * @doc_tag data stream
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_data_stream/{name}/_lifecycle'
+      methods: ['PUT']
+    }
+  ]
   path_parts: {
     /**
      * Comma-separated list of data streams used to limit the request.

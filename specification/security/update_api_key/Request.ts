@@ -46,6 +46,12 @@ import { Duration } from '@_types/Time'
  * @doc_id security-api-update-key
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_security/api_key/{id}'
+      methods: ['PUT']
+    }
+  ]
   path_parts: {
     /**
      * The ID of the API key to update.

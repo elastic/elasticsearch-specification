@@ -38,6 +38,12 @@ import { Duration } from '@_types/Time'
  * @doc_tag data stream
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_data_stream/_promote/{name}'
+      methods: ['POST']
+    }
+  ]
   path_parts: {
     name: IndexName
   }

@@ -31,6 +31,16 @@ import { Duration } from '@_types/Time'
  * @cluster_privileges monitor_ml
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_ml/memory/_stats'
+      methods: ['GET']
+    },
+    {
+      path: '/_ml/memory/{node_id}/_stats'
+      methods: ['GET']
+    }
+  ]
   path_parts: {
     /**
      * The names of particular nodes in the cluster to target. For example, `nodeId1,nodeId2` or

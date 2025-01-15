@@ -30,6 +30,12 @@ import { Id } from '@_types/common'
  * @ext_doc_id query-rule
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_query_rules/{ruleset_id}/_rule/{rule_id}'
+      methods: ['GET']
+    }
+  ]
   path_parts: {
     /**
      * The unique identifier of the query ruleset containing the rule to retrieve

@@ -42,6 +42,12 @@ import { Duration } from '@_types/Time'
  *
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_rollup/job/{id}/_stop'
+      methods: ['POST']
+    }
+  ]
   path_parts: {
     /**
      * Identifier for the rollup job.

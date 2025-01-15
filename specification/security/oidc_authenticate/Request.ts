@@ -30,6 +30,12 @@ import { RequestBase } from '@_types/Base'
  * @doc_id security-api-oidc-authenticate
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_security/oidc/authenticate'
+      methods: ['POST']
+    }
+  ]
   body: {
     /**
      * Associate a client session with an ID token and mitigate replay attacks.

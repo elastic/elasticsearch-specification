@@ -44,6 +44,12 @@ import { Duration } from '@_types/Time'
  * @doc_tag document
  */
 export interface Request<TDocument, TPartialDocument> extends RequestBase {
+  urls: [
+    {
+      path: '/{index}/_update/{id}'
+      methods: ['POST']
+    }
+  ]
   path_parts: {
     id: Id
     index: IndexName

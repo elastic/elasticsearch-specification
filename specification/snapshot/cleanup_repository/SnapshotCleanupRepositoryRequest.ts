@@ -32,6 +32,12 @@ import { Duration } from '@_types/Time'
  * @ext_doc_id clean-up-snapshot-repo
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_snapshot/{repository}/_cleanup'
+      methods: ['POST']
+    }
+  ]
   path_parts: {
     /**
      * The name of the snapshot repository to clean up.

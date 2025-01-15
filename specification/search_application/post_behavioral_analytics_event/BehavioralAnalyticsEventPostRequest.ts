@@ -30,6 +30,12 @@ import { EventType } from '../_types/AnalyticsEvent'
  * @ext_doc_id behavioral-analytics-event-reference
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_application/analytics/{collection_name}/event/{event_type}'
+      methods: ['POST']
+    }
+  ]
   path_parts: {
     /**
      * The name of the behavioral analytics collection.

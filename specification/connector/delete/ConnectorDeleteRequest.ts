@@ -32,6 +32,12 @@ import { Id } from '@_types/common'
  * @doc_id connector-delete
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_connector/{connector_id}'
+      methods: ['DELETE']
+    }
+  ]
   path_parts: {
     /**
      * The unique identifier of the connector to be deleted

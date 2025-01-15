@@ -34,6 +34,12 @@ import { SynonymRule } from '../_types/SynonymRule'
  * @doc_id synonym-set-create
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_synonyms/{id}'
+      methods: ['PUT']
+    }
+  ]
   path_parts: {
     /**
      * The ID of the synonyms set to be created or updated.

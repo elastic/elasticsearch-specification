@@ -27,6 +27,12 @@ import { RequestBase } from '@_types/Base'
  * @doc_id sql-clear-cursor-api
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_sql/close'
+      methods: ['POST']
+    }
+  ]
   body: {
     /**
      * Cursor to clear.

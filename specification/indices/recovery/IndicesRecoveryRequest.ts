@@ -51,6 +51,16 @@ import { Indices } from '@_types/common'
  * @doc_id indices-recovery
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_recovery'
+      methods: ['GET']
+    },
+    {
+      path: '/{index}/_recovery'
+      methods: ['GET']
+    }
+  ]
   path_parts: {
     /**
      * Comma-separated list of data streams, indices, and aliases used to limit the request.

@@ -42,6 +42,12 @@ import { Duration } from '@_types/Time'
  * @doc_tag document
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/{index}/_delete_by_query'
+      methods: ['POST']
+    }
+  ]
   path_parts: {
     /**
      * Comma-separated list of data streams, indices, and aliases to search.

@@ -31,6 +31,12 @@ import { Duration } from '@_types/Time'
  * @availability serverless stability=stable visibility=public
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_enrich/policy/{name}'
+      methods: ['PUT']
+    }
+  ]
   path_parts: {
     /**
      * Name of the enrich policy to create or update.

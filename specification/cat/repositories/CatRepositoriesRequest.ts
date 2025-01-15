@@ -31,6 +31,12 @@ import { Duration } from '@_types/Time'
  * @cluster_privileges monitor_snapshot
  */
 export interface Request extends CatRequestBase {
+  urls: [
+    {
+      path: '/_cat/repositories'
+      methods: ['GET']
+    }
+  ]
   query_parameters: {
     /**
      * If `true`, the request computes the list of selected nodes from the

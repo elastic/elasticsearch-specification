@@ -30,6 +30,12 @@ import { RequestBase } from '@_types/Base'
  * @availability serverless stability=stable visibility=public
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_license'
+      methods: ['GET']
+    }
+  ]
   query_parameters: {
     /**
      * If `true`, this parameter returns enterprise for Enterprise license types. If `false`, this parameter returns platinum for both platinum and enterprise license types. This behavior is maintained for backwards compatibility.

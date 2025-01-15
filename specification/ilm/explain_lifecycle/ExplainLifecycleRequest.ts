@@ -32,6 +32,12 @@ import { Duration } from '@_types/Time'
  * @index_privileges view_index_metadata,manage_ilm
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/{index}/_ilm/explain'
+      methods: ['GET']
+    }
+  ]
   path_parts: {
     /**
      * Comma-separated list of data streams, indices, and aliases to target. Supports wildcards (`*`).

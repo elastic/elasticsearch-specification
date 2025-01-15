@@ -28,6 +28,12 @@ import { Name } from '@_types/common'
  * @doc_id security-api-get-user-privileges
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_security/user/_privileges'
+      methods: ['GET']
+    }
+  ]
   query_parameters: {
     /** The name of the application. Application privileges are always associated with exactly one application. If you do not specify this parameter, the API returns information about all privileges for all applications. */
     application?: Name

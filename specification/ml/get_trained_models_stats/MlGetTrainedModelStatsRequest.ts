@@ -32,6 +32,16 @@ import { integer } from '@_types/Numeric'
  * @doc_tag ml trained model
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_ml/trained_models/{model_id}/_stats'
+      methods: ['GET']
+    },
+    {
+      path: '/_ml/trained_models/_stats'
+      methods: ['GET']
+    }
+  ]
   path_parts: {
     /**
      * The unique identifier of the trained model or a model alias. It can be a

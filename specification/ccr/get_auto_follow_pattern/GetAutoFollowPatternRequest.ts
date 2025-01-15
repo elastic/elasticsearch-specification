@@ -30,6 +30,16 @@ import { Duration } from '@_types/Time'
  * @ext_doc_id ccr-auto-follow
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_ccr/auto_follow'
+      methods: ['GET']
+    },
+    {
+      path: '/_ccr/auto_follow/{name}'
+      methods: ['GET']
+    }
+  ]
   path_parts: {
     /** Specifies the auto-follow pattern collection that you want to retrieve. If you do not specify a name, the API returns information for all collections. */
     name?: Name

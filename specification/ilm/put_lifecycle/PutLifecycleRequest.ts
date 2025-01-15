@@ -34,6 +34,12 @@ import { Duration } from '@_types/Time'
  * @ext_doc_id ilm-index-lifecycle
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_ilm/policy/{policy}'
+      methods: ['PUT']
+    }
+  ]
   path_parts: {
     /**
      * Identifier for the policy.

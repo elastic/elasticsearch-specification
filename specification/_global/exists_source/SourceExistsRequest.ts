@@ -37,6 +37,12 @@ import {
  * @doc_tag document
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/{index}/_source/{id}'
+      methods: ['HEAD']
+    }
+  ]
   path_parts: {
     /**
      * Identifier of the document.

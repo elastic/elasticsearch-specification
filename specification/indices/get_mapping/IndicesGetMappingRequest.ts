@@ -31,6 +31,16 @@ import { Duration } from '@_types/Time'
  * @index_privileges view_index_metadata
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_mapping'
+      methods: ['GET']
+    },
+    {
+      path: '/{index}/_mapping'
+      methods: ['GET']
+    }
+  ]
   path_parts: {
     /**
      * Comma-separated list of data streams, indices, and aliases used to limit the request.

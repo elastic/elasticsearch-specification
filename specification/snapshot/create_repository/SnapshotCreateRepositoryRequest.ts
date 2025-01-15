@@ -38,6 +38,12 @@ import { Duration } from '@_types/Time'
  * @ext_doc_id register-repository
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_snapshot/{repository}'
+      methods: ['PUT', 'POST']
+    }
+  ]
   path_parts: {
     /**
      * The name of the snapshot repository to register or update.

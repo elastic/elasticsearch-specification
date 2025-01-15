@@ -30,6 +30,12 @@ import { Duration } from '@_types/Time'
  * @cluster_privileges manage_ilm
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_ilm/start'
+      methods: ['POST']
+    }
+  ]
   query_parameters: {
     /**
      * Period to wait for a connection to the master node. If no response is received before the timeout expires, the request fails and returns an error.

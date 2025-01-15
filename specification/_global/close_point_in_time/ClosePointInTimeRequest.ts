@@ -34,6 +34,12 @@ import { Id } from '@_types/common'
  * @doc_tag search
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_pit'
+      methods: ['DELETE']
+    }
+  ]
   body: {
     /**
      * The ID of the point-in-time.

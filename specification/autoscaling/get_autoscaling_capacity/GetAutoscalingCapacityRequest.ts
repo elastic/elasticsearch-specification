@@ -41,6 +41,12 @@ import { Duration } from '@_types/Time'
  * @ext_doc_id autoscaling
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_autoscaling/capacity'
+      methods: ['GET']
+    }
+  ]
   query_parameters: {
     /**
      * Period to wait for a connection to the master node.

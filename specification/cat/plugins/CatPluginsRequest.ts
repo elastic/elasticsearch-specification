@@ -31,6 +31,12 @@ import { Duration } from '@_types/Time'
  * @cluster_privileges monitor
  */
 export interface Request extends CatRequestBase {
+  urls: [
+    {
+      path: '/_cat/plugins'
+      methods: ['GET']
+    }
+  ]
   query_parameters: {
     /**
      * Include bootstrap plugins in the response

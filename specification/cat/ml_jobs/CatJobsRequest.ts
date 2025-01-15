@@ -39,6 +39,16 @@ import { TimeUnit } from '@_types/Time'
  * @doc_id cat-anomaly-detectors
  */
 export interface Request extends CatRequestBase {
+  urls: [
+    {
+      path: '/_cat/ml/anomaly_detectors'
+      methods: ['GET']
+    },
+    {
+      path: '/_cat/ml/anomaly_detectors/{job_id}'
+      methods: ['GET']
+    }
+  ]
   path_parts: {
     /**
      * Identifier for the anomaly detection job.

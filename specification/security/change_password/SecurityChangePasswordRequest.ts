@@ -29,6 +29,16 @@ import { Password, Refresh, Username } from '@_types/common'
  * @doc_id security-api-change-password
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_security/user/{username}/_password'
+      methods: ['PUT', 'POST']
+    },
+    {
+      path: '/_security/user/_password'
+      methods: ['PUT', 'POST']
+    }
+  ]
   path_parts: {
     /**
      * The user whose password you want to change. If you do not specify this

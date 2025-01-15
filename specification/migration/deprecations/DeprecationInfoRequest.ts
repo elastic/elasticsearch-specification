@@ -32,6 +32,16 @@ import { IndexName } from '@_types/common'
  * @doc_id migration-api-deprecation
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_migration/deprecations'
+      methods: ['GET']
+    },
+    {
+      path: '/{index}/_migration/deprecations'
+      methods: ['GET']
+    }
+  ]
   path_parts: {
     /** Comma-separate list of data streams or indices to check. Wildcard (*) expressions are supported. */
     index?: IndexName

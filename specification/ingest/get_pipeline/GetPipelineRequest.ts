@@ -31,6 +31,16 @@ import { Duration } from '@_types/Time'
  * @ext_doc_id ingest
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_ingest/pipeline'
+      methods: ['GET']
+    },
+    {
+      path: '/_ingest/pipeline/{id}'
+      methods: ['GET']
+    }
+  ]
   path_parts: {
     /**
      * Comma-separated list of pipeline IDs to retrieve.

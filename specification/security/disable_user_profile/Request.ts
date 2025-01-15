@@ -31,6 +31,12 @@ import { Refresh } from '@_types/common'
  * @cluster_privileges manage_user_profile
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_security/profile/{uid}/_disable'
+      methods: ['PUT', 'POST']
+    }
+  ]
   path_parts: {
     /**
      * Unique identifier for the user profile.

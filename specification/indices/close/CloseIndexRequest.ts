@@ -47,6 +47,12 @@ import { Duration } from '@_types/Time'
  * @index_privileges manage
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/{index}/_close'
+      methods: ['POST']
+    }
+  ]
   path_parts: {
     /**
      * Comma-separated list or wildcard expression of index names used to limit the request.

@@ -32,6 +32,12 @@ import { Duration } from '@_types/Time'
  * @doc_id watcher-api-update-settings
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_watcher/settings'
+      methods: ['PUT']
+    }
+  ]
   query_parameters: {
     /**
      * The period to wait for a connection to the master node.

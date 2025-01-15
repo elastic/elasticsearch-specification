@@ -29,6 +29,12 @@ import { Duration } from '@_types/Time'
  * @availability serverless visibility=private
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_ingest/geoip/database/{id}'
+      methods: ['DELETE']
+    }
+  ]
   path_parts: {
     /**
      * A comma-separated list of geoip database configurations to delete

@@ -29,6 +29,12 @@ import { ClusterInfoTargets } from '@_types/common'
  * @doc_id cluster-info
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_info/{target}'
+      methods: ['GET']
+    }
+  ]
   path_parts: {
     /** Limits the information returned to the specific target. Supports a comma-separated list, such as http,ingest. */
     target: ClusterInfoTargets

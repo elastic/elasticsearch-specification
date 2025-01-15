@@ -31,6 +31,16 @@ import { Document } from '../_types/Simulation'
  * @availability serverless stability=stable visibility=public
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_ingest/pipeline/_simulate'
+      methods: ['GET', 'POST']
+    },
+    {
+      path: '/_ingest/pipeline/{id}/_simulate'
+      methods: ['GET', 'POST']
+    }
+  ]
   path_parts: {
     /**
      * Pipeline to test.

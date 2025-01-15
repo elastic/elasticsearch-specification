@@ -38,6 +38,12 @@ import { Duration } from '@_types/Time'
  * @doc_id security-api-create-api-key
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_security/api_key'
+      methods: ['PUT', 'POST']
+    }
+  ]
   query_parameters: {
     refresh?: Refresh
   }
