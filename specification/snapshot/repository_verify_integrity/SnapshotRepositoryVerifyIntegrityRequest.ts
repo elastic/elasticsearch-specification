@@ -64,6 +64,12 @@ import { integer } from '@_types/Numeric'
  * @doc_id snapshot-repo-verify-integrity
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_snapshot/{repository}/_verify_integrity'
+      methods: ['POST']
+    }
+  ]
   path_parts: {
     /**
      * The name of the snapshot repository.

@@ -34,6 +34,12 @@ import { Duration } from '@_types/Time'
  * @cluster_privileges manage_transform
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_transform/{transform_id}/_schedule_now'
+      methods: ['POST']
+    }
+  ]
   path_parts: {
     /**
      * Identifier for the transform.

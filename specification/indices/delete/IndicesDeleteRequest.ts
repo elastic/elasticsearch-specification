@@ -36,6 +36,12 @@ import { Duration } from '@_types/Time'
  * @index_privileges delete_index
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/{index}'
+      methods: ['DELETE']
+    }
+  ]
   path_parts: {
     /**
      * Comma-separated list of indices to delete.

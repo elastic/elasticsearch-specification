@@ -33,6 +33,12 @@ import { RequestBase } from '@_types/Base'
  * @doc_id info-api
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_xpack'
+      methods: ['GET']
+    }
+  ]
   query_parameters: {
     /**
      * A comma-separated list of the information categories to include in the response.

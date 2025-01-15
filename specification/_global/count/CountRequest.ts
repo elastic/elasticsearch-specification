@@ -32,6 +32,16 @@ import { Operator } from '@_types/query_dsl/Operator'
  * @doc_tag search
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_count'
+      methods: ['POST', 'GET']
+    },
+    {
+      path: '/{index}/_count'
+      methods: ['POST', 'GET']
+    }
+  ]
   path_parts: {
     /**
      * Comma-separated list of data streams, indices, and aliases to search.

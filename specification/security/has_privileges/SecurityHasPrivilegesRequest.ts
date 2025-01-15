@@ -33,6 +33,16 @@ import { ApplicationPrivilegesCheck, IndexPrivilegesCheck } from './types'
  * @ext_doc_id security-privileges
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_security/user/_has_privileges'
+      methods: ['GET', 'POST']
+    },
+    {
+      path: '/_security/user/{user}/_has_privileges'
+      methods: ['GET', 'POST']
+    }
+  ]
   path_parts: {
     user?: Name
   }

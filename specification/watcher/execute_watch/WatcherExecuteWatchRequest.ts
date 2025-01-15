@@ -46,6 +46,16 @@ import { Id } from '@_types/common'
  * @doc_id watcher-api-execute-watch
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_watcher/watch/{id}/_execute'
+      methods: ['PUT', 'POST']
+    },
+    {
+      path: '/_watcher/watch/_execute'
+      methods: ['PUT', 'POST']
+    }
+  ]
   path_parts: {
     /**
      * The watch identifier.

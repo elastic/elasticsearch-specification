@@ -34,6 +34,12 @@ import { SyncStatus } from '../_types/Connector'
  * @doc_id connector-last-sync
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_connector/{connector_id}/_last_sync'
+      methods: ['PUT']
+    }
+  ]
   path_parts: {
     /**
      * The unique identifier of the connector to be updated

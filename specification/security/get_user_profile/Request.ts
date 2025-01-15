@@ -31,6 +31,12 @@ import { RequestBase } from '@_types/Base'
  * @doc_id security-api-get-user-profile
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_security/profile/{uid}'
+      methods: ['GET']
+    }
+  ]
   path_parts: {
     /**
      * A unique identifier for the user profile.

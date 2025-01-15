@@ -35,6 +35,12 @@ import { Duration, TimeZone } from '@_types/Time'
  * @doc_id sql-search-api
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_sql'
+      methods: ['POST', 'GET']
+    }
+  ]
   query_parameters: {
     /**
      * The format for the response.

@@ -34,6 +34,12 @@ import { SynonymString } from '../_types/SynonymRule'
  * @doc_id synonym-rule-create
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_synonyms/{set_id}/{rule_id}'
+      methods: ['PUT']
+    }
+  ]
   path_parts: {
     /**
      * The ID of the synonym set.

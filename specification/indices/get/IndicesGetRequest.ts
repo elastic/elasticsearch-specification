@@ -32,6 +32,12 @@ import { Duration } from '@_types/Time'
  * @doc_id indices-get-index
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/{index}'
+      methods: ['GET']
+    }
+  ]
   path_parts: {
     /**
      * Comma-separated list of data streams, indices, and index aliases used to limit the request.

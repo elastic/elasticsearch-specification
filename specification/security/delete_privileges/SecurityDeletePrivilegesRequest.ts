@@ -29,6 +29,12 @@ import { Name, Names, Refresh } from '@_types/common'
  * @ext_doc_id security-privileges
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_security/privilege/{application}/{name}'
+      methods: ['DELETE']
+    }
+  ]
   path_parts: {
     application: Name
     name: Names

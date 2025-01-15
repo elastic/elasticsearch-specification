@@ -34,6 +34,16 @@ import { Duration } from '@_types/Time'
  * @doc_id indices-simulate-template
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_index_template/_simulate'
+      methods: ['POST']
+    },
+    {
+      path: '/_index_template/_simulate/{name}'
+      methods: ['POST']
+    }
+  ]
   path_parts: {
     /**
      * Name of the index template to simulate. To test a template configuration before you add it to the cluster, omit

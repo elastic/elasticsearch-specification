@@ -31,6 +31,12 @@ import { Duration } from '@_types/Time'
  * @ext_doc_id ccr
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/{index}/_ccr/info'
+      methods: ['GET']
+    }
+  ]
   path_parts: {
     index: Indices
   }

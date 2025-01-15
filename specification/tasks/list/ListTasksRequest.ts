@@ -32,6 +32,12 @@ import { Duration } from '@_types/Time'
  * @doc_id tasks
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_tasks'
+      methods: ['GET']
+    }
+  ]
   query_parameters: {
     /**
      * Comma-separated list or wildcard expression of actions used to limit the request.

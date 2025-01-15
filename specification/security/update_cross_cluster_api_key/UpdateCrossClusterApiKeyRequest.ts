@@ -33,6 +33,12 @@ import { Duration } from '@_types/Time'
  * @ext_doc_id remote-clusters-api-key
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_security/cross_cluster/api_key/{id}'
+      methods: ['PUT']
+    }
+  ]
   path_parts: {
     /**
      * The ID of the cross-cluster API key to update.

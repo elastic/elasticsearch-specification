@@ -32,6 +32,12 @@ import { Operator } from '@_types/query_dsl/Operator'
  * @doc_tag search
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/{index}/_explain/{id}'
+      methods: ['GET', 'POST']
+    }
+  ]
   path_parts: {
     /**
      * Defines the document ID.

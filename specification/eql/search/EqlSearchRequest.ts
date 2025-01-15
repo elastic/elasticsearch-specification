@@ -35,6 +35,12 @@ import { ResultPosition } from './types'
  * @ext_doc_id eql
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/{index}/_eql/search'
+      methods: ['GET', 'POST']
+    }
+  ]
   path_parts: {
     index: Indices
   }

@@ -31,6 +31,12 @@ import { Id } from '@_types/common'
  * @doc_id connector-update-api-key-id
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_connector/{connector_id}/_api_key_id'
+      methods: ['PUT']
+    }
+  ]
   path_parts: {
     /**
      * The unique identifier of the connector to be updated

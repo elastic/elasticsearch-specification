@@ -37,6 +37,16 @@ import { Name, Names } from '@_types/common'
  * @doc_id watcher-api-ack-watch
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_watcher/watch/{watch_id}/_ack'
+      methods: ['PUT', 'POST']
+    },
+    {
+      path: '/_watcher/watch/{watch_id}/_ack/{action_id}'
+      methods: ['PUT', 'POST']
+    }
+  ]
   path_parts: {
     /**
      * The watch identifier.

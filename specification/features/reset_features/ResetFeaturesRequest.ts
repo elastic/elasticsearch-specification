@@ -43,6 +43,12 @@ import { Duration } from '@_types/Time'
  * @availability serverless stability=experimental visibility=private
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_features/_reset'
+      methods: ['POST']
+    }
+  ]
   query_parameters: {
     /**
      * Period to wait for a connection to the master node.

@@ -34,6 +34,12 @@ import { Duration } from '@_types/Time'
  * @doc_id cluster-allocation-explain
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_cluster/allocation/explain'
+      methods: ['GET', 'POST']
+    }
+  ]
   query_parameters: {
     /**
      * If true, returns information about disk usage and shard sizes.

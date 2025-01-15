@@ -45,4 +45,11 @@ import { RequestBase } from '@_types/Base'
  * @doc_id security-api-ssl
  * @ext_doc_id security-encrypt-internode
  */
-export interface Request extends RequestBase {}
+export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_ssl/certificates'
+      methods: ['GET']
+    }
+  ]
+}

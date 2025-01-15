@@ -33,6 +33,16 @@ import { Duration } from '@_types/Time'
  * @cluster_privileges manage_index_templates
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_template'
+      methods: ['GET']
+    },
+    {
+      path: '/_template/{name}'
+      methods: ['GET']
+    }
+  ]
   path_parts: {
     /**
      * Comma-separated list of index template names used to limit the request.

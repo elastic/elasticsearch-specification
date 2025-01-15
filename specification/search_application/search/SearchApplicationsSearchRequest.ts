@@ -30,6 +30,12 @@ import { Name } from '@_types/common'
  * @availability serverless stability=beta visibility=public
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_application/search_application/{name}/_search'
+      methods: ['GET', 'POST']
+    }
+  ]
   path_parts: {
     /**
      * The name of the search application to be searched.

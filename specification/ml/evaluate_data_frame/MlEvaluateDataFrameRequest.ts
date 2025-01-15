@@ -35,6 +35,12 @@ import { QueryContainer } from '@_types/query_dsl/abstractions'
  * @doc_tag ml data frame
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_ml/data_frame/_evaluate'
+      methods: ['POST']
+    }
+  ]
   body: {
     /**
      * Defines the type of evaluation you want to perform.

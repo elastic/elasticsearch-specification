@@ -39,6 +39,12 @@ import { Metadata, Name, Refresh } from '@_types/common'
  * @ext_doc_id mapping-roles
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_security/role_mapping/{name}'
+      methods: ['PUT', 'POST']
+    }
+  ]
   path_parts: {
     name: Name
   }

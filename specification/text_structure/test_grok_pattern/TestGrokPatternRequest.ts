@@ -30,6 +30,12 @@ import { GrokPattern } from '@_types/common'
  * @ext_doc_id grok
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_text_structure/test_grok_pattern'
+      methods: ['GET', 'POST']
+    }
+  ]
   query_parameters: {
     /**
      * The mode of compatibility with ECS compliant Grok patterns.

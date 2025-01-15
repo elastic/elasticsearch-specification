@@ -43,6 +43,12 @@ import { Command } from './types'
  * @doc_id cluster-reroute
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_cluster/reroute'
+      methods: ['POST']
+    }
+  ]
   query_parameters: {
     /**
      * If true, then the request simulates the operation.

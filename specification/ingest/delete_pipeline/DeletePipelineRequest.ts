@@ -30,6 +30,12 @@ import { Duration } from '@_types/Time'
  * @ext_doc_id ingest
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_ingest/pipeline/{id}'
+      methods: ['DELETE']
+    }
+  ]
   path_parts: {
     /**
      * Pipeline ID or wildcard expression of pipeline IDs used to limit the request.

@@ -33,6 +33,12 @@ import { TimeZone } from '@_types/Time'
  * @doc_id sql-translate-api
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_sql/translate'
+      methods: ['POST', 'GET']
+    }
+  ]
   body: {
     /**
      * The maximum number of rows (or entries) to return in one response.

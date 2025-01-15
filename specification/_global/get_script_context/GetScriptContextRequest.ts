@@ -27,4 +27,11 @@ import { RequestBase } from '@_types/Base'
  * @availability stack stability=stable
  * @doc_tag script
  */
-export interface Request extends RequestBase {}
+export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_script_context'
+      methods: ['GET']
+    }
+  ]
+}

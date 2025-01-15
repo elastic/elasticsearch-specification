@@ -31,6 +31,16 @@ import { Ids } from '@_types/common'
  * @ext_doc_id logstash-centralized-pipeline-management
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_logstash/pipeline'
+      methods: ['GET']
+    },
+    {
+      path: '/_logstash/pipeline/{id}'
+      methods: ['GET']
+    }
+  ]
   path_parts: {
     /**
      * A comma-separated list of pipeline identifiers.

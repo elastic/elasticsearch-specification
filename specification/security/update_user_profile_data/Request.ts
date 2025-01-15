@@ -35,6 +35,12 @@ import { long } from '@_types/Numeric'
  * @doc_id security-api-update-user-data
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_security/profile/{uid}/_data'
+      methods: ['PUT', 'POST']
+    }
+  ]
   path_parts: {
     /**
      * A unique identifier for the user profile.

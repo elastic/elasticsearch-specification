@@ -45,6 +45,24 @@ import {
  * @doc_id indices-stats
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_stats'
+      methods: ['GET']
+    },
+    {
+      path: '/_stats/{metric}'
+      methods: ['GET']
+    },
+    {
+      path: '/{index}/_stats'
+      methods: ['GET']
+    },
+    {
+      path: '/{index}/_stats/{metric}'
+      methods: ['GET']
+    }
+  ]
   path_parts: {
     metric?: Metrics
     index?: Indices

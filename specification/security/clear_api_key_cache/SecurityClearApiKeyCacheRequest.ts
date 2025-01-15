@@ -32,6 +32,12 @@ import { Ids } from '@_types/common'
  * @doc_id security-api-clear-api-key-cache
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_security/api_key/{ids}/_clear_cache'
+      methods: ['POST']
+    }
+  ]
   path_parts: {
     /**
      * Comma-separated list of API key IDs to evict from the API key cache.

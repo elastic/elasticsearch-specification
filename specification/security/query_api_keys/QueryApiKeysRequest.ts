@@ -34,6 +34,12 @@ import { ApiKeyAggregationContainer, ApiKeyQueryContainer } from './types'
  * @doc_id security-api-query-api-key
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_security/_query/api_key'
+      methods: ['GET', 'POST']
+    }
+  ]
   query_parameters: {
     /**
      * Return the snapshot of the owner user's role descriptors associated with the API key.

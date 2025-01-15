@@ -29,6 +29,12 @@ import { Duration } from '@_types/Time'
  * @doc_id slm-api-get-status
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_slm/status'
+      methods: ['GET']
+    }
+  ]
   query_parameters: {
     /**
      * The period to wait for a connection to the master node.

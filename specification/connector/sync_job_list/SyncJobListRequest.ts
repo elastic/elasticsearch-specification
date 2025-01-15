@@ -32,6 +32,12 @@ import { SyncJobType } from '../_types/SyncJob'
  * @doc_id connector-sync-job-list
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_connector/_sync_job'
+      methods: ['GET']
+    }
+  ]
   query_parameters: {
     /**
      * Starting offset (default: 0)

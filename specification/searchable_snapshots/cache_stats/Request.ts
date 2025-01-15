@@ -31,6 +31,16 @@ import { Duration } from '@_types/Time'
  * @ext_doc_id searchable-snapshots
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_searchable_snapshots/cache/stats'
+      methods: ['GET']
+    },
+    {
+      path: '/_searchable_snapshots/{node_id}/cache/stats'
+      methods: ['GET']
+    }
+  ]
   path_parts: {
     /**
      * The names of the nodes in the cluster to target.

@@ -32,6 +32,12 @@ import { Duration } from '@_types/Time'
  * @doc_id ccr-post-pause-follow
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/{index}/_ccr/pause_follow'
+      methods: ['POST']
+    }
+  ]
   path_parts: {
     index: IndexName
   }

@@ -34,6 +34,16 @@ import { ExpandWildcards, Fields, Indices } from '@_types/common'
  * @index_privileges manage
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_cache/clear'
+      methods: ['POST']
+    },
+    {
+      path: '/{index}/_cache/clear'
+      methods: ['POST']
+    }
+  ]
   path_parts: {
     /**
      * Comma-separated list of data streams, indices, and aliases used to limit the request.

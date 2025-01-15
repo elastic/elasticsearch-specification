@@ -32,6 +32,16 @@ import { Name, Namespace, Refresh, Service } from '@_types/common'
  * @ext_doc_id service-accounts
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_security/service/{namespace}/{service}/credential/token/{name}'
+      methods: ['PUT', 'POST']
+    },
+    {
+      path: '/_security/service/{namespace}/{service}/credential/token'
+      methods: ['POST']
+    }
+  ]
   path_parts: {
     namespace: Namespace
     service: Service

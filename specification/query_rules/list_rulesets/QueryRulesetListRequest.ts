@@ -29,6 +29,12 @@ import { integer } from '@_types/Numeric'
  * @doc_id query-ruleset-list
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_query_rules'
+      methods: ['GET']
+    }
+  ]
   query_parameters: {
     /**
      * The offset from the first result to fetch.

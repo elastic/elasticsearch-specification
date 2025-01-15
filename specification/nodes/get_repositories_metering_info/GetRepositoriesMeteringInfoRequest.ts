@@ -33,6 +33,12 @@ import { NodeIds } from '@_types/common'
  * @doc_id get-repositories-metering-api
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_nodes/{node_id}/_repositories_metering'
+      methods: ['GET']
+    }
+  ]
   path_parts: {
     /**
      * Comma-separated list of node IDs or names used to limit returned information.

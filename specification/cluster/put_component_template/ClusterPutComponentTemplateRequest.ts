@@ -51,6 +51,12 @@ import { Duration } from '@_types/Time'
  * @doc_tag indices
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_component_template/{name}'
+      methods: ['PUT', 'POST']
+    }
+  ]
   path_parts: {
     /**
      * Name of the component template to create.

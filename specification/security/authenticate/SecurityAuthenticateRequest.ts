@@ -31,4 +31,11 @@ import { RequestBase } from '@_types/Base'
  * @availability serverless stability=stable visibility=public
  * @doc_id security-api-authenticate
  */
-export interface Request extends RequestBase {}
+export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_security/_authenticate'
+      methods: ['GET']
+    }
+  ]
+}

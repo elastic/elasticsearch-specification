@@ -37,6 +37,16 @@ import { TimeUnit } from '@_types/Time'
  * @cluster_privileges monitor_ml
  */
 export interface Request extends CatRequestBase {
+  urls: [
+    {
+      path: '/_cat/ml/trained_models'
+      methods: ['GET']
+    },
+    {
+      path: '/_cat/ml/trained_models/{model_id}'
+      methods: ['GET']
+    }
+  ]
   path_parts: {
     /**
      * A unique identifier for the trained model.

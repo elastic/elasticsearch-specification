@@ -32,6 +32,16 @@ import { Duration } from '@_types/Time'
  * @doc_tag search
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_search_shards'
+      methods: ['GET', 'POST']
+    },
+    {
+      path: '/{index}/_search_shards'
+      methods: ['GET', 'POST']
+    }
+  ]
   path_parts: {
     /**
      * Returns the indices and shards that a search request would be executed against.

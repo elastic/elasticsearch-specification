@@ -30,6 +30,12 @@ import { Ids } from '@_types/common'
  * @doc_id security-api-saml-authenticate
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_security/saml/authenticate'
+      methods: ['POST']
+    }
+  ]
   body: {
     /** The SAML response as it was sent by the user’s browser, usually a Base64 encoded XML document. */
     content: string

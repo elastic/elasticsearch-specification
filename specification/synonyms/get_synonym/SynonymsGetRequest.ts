@@ -29,6 +29,12 @@ import { integer } from '@_types/Numeric'
  * @doc_id synonym-set-get
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_synonyms/{id}'
+      methods: ['GET']
+    }
+  ]
   path_parts: {
     /**
      * The synonyms set identifier to retrieve.

@@ -32,6 +32,12 @@ import { Hint } from './types'
  * @doc_id security-api-suggest
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_security/profile/_suggest'
+      methods: ['GET', 'POST']
+    }
+  ]
   query_parameters: {
     /**
      * List of filters for the `data` field of the profile document.

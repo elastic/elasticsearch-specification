@@ -32,6 +32,12 @@ import { Name } from '@_types/common'
  * @doc_id security-api-clear-privilege-cache
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_security/privilege/{application}/_clear_cache'
+      methods: ['POST']
+    }
+  ]
   path_parts: {
     application: Name
   }

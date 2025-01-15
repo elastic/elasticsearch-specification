@@ -33,6 +33,12 @@ import { AccessTokenGrantType } from './types'
  * @doc_id security-api-get-token
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_security/oauth2/token'
+      methods: ['POST']
+    }
+  ]
   body: {
     grant_type?: AccessTokenGrantType
     scope?: string

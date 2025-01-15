@@ -55,6 +55,12 @@ import { Duration } from '@_types/Time'
  * @ext_doc_id index-templates
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_template/{name}'
+      methods: ['PUT', 'POST']
+    }
+  ]
   path_parts: {
     name: Name
   }

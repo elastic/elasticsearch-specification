@@ -44,6 +44,16 @@ import { Duration } from '@_types/Time'
  * @index_privileges read, view_index_metadata
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_transform/{transform_id}/_preview'
+      methods: ['GET', 'POST']
+    },
+    {
+      path: '/_transform/_preview'
+      methods: ['GET', 'POST']
+    }
+  ]
   path_parts: {
     /**
      * Identifier for the transform to preview. If you specify this path parameter, you cannot provide transform

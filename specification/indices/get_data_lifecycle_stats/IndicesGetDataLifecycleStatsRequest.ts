@@ -28,4 +28,11 @@ import { RequestBase } from '@_types/Base'
  * @doc_tag data stream
  * @doc_id data-stream-lifecycle-stats
  */
-export interface Request extends RequestBase {}
+export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_lifecycle/stats'
+      methods: ['GET']
+    }
+  ]
+}

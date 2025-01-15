@@ -67,6 +67,12 @@ import { QueryContainer } from '@_types/query_dsl/abstractions'
  * @doc_id rollup-search
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/{index}/_rollup_search'
+      methods: ['GET', 'POST']
+    }
+  ]
   path_parts: {
     /**
      * A comma-separated list of data streams and indices used to limit the request.

@@ -31,6 +31,12 @@ import { Id } from '@_types/common'
  * @doc_id connector-sync-job-error
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_connector/_sync_job/{connector_sync_job_id}/_error'
+      methods: ['PUT']
+    }
+  ]
   path_parts: {
     /**
      * The unique identifier for the connector sync job.

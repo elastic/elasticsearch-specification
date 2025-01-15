@@ -51,6 +51,16 @@ import { TypeMapping } from '@_types/mapping/TypeMapping'
  * @doc_id simulate-ingest-api
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_ingest/_simulate'
+      methods: ['GET', 'POST']
+    },
+    {
+      path: '/_ingest/{index}/_simulate'
+      methods: ['GET', 'POST']
+    }
+  ]
   path_parts: {
     /**
      * The index to simulate ingesting into.

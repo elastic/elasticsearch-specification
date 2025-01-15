@@ -36,6 +36,16 @@ import { TimeUnit } from '@_types/Time'
  * @cluster_privileges monitor_ml
  */
 export interface Request extends CatRequestBase {
+  urls: [
+    {
+      path: '/_cat/ml/data_frame/analytics'
+      methods: ['GET']
+    },
+    {
+      path: '/_cat/ml/data_frame/analytics/{id}'
+      methods: ['GET']
+    }
+  ]
   path_parts: {
     id?: Id
   }

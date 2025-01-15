@@ -37,6 +37,12 @@ import { QueryRule } from '../_types/QueryRuleset'
  * @ext_doc_id query-rule
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_query_rules/{ruleset_id}'
+      methods: ['PUT']
+    }
+  ]
   path_parts: {
     /**
      * The unique identifier of the query ruleset to be created or updated.

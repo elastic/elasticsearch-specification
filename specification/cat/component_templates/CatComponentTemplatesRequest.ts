@@ -33,6 +33,16 @@ import { Duration } from '@_types/Time'
  * @cluster_privileges monitor
  */
 export interface Request extends CatRequestBase {
+  urls: [
+    {
+      path: '/_cat/component_templates'
+      methods: ['GET']
+    },
+    {
+      path: '/_cat/component_templates/{name}'
+      methods: ['GET']
+    }
+  ]
   path_parts: {
     /** The name of the component template. Accepts wildcard expressions. If omitted, all component templates are returned. */
     name?: string

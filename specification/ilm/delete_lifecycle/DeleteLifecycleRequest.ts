@@ -29,6 +29,12 @@ import { Duration } from '@_types/Time'
  * @cluster_privileges manage_ilm
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_ilm/policy/{policy}'
+      methods: ['DELETE']
+    }
+  ]
   path_parts: {
     /**
      * Identifier for the policy.

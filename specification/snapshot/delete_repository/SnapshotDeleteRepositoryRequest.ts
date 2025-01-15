@@ -32,6 +32,12 @@ import { Duration } from '@_types/Time'
  * @doc_id snapshot-repo-delete
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_snapshot/{repository}'
+      methods: ['DELETE']
+    }
+  ]
   path_parts: {
     /**
      * The ame of the snapshot repositories to unregister.

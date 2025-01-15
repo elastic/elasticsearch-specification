@@ -31,6 +31,12 @@ import { Refresh } from '@_types/common'
  * @cluster_privileges manage_security
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_security/role'
+      methods: ['DELETE']
+    }
+  ]
   query_parameters: {
     refresh?: Refresh
   }

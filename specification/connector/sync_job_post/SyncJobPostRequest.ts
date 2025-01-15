@@ -30,6 +30,12 @@ import { SyncJobTriggerMethod, SyncJobType } from '../_types/SyncJob'
  * @doc_id connector-sync-job-post
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_connector/_sync_job'
+      methods: ['POST']
+    }
+  ]
   /**
    * The sync job to be created
    */

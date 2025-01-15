@@ -30,6 +30,20 @@ import { Name, Names } from '@_types/common'
  * @ext_doc_id security-privileges
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_security/privilege'
+      methods: ['GET']
+    },
+    {
+      path: '/_security/privilege/{application}'
+      methods: ['GET']
+    },
+    {
+      path: '/_security/privilege/{application}/{name}'
+      methods: ['GET']
+    }
+  ]
   path_parts: {
     application?: Name
     name?: Names

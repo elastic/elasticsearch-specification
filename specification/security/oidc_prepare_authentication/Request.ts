@@ -32,6 +32,12 @@ import { RequestBase } from '@_types/Base'
  * @doc_id security-api-oidc-prepare
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_security/oidc/prepare'
+      methods: ['POST']
+    }
+  ]
   body: {
     /**
      * In the case of a third party initiated single sign on, this is the issuer identifier for the OP that the RP is to send the authentication request to.

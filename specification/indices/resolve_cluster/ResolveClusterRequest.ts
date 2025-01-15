@@ -55,6 +55,12 @@ import { ExpandWildcards, Names } from '@_types/common'
  * @index_privileges view_index_metadata
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_resolve/cluster/{name}'
+      methods: ['GET']
+    }
+  ]
   path_parts: {
     /**
      * Comma-separated name(s) or index pattern(s) of the indices, aliases, and data streams to resolve.

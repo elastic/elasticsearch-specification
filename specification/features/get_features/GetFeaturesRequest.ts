@@ -36,6 +36,12 @@ import { Duration } from '@_types/Time'
  * @ext_doc_id snapshot-create
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_features'
+      methods: ['GET']
+    }
+  ]
   query_parameters: {
     /**
      * Period to wait for a connection to the master node.

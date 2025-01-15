@@ -31,6 +31,12 @@ import { Id } from '@_types/common'
  * @doc_id rollup-start-job
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_rollup/job/{id}/_start'
+      methods: ['POST']
+    }
+  ]
   path_parts: {
     /**
      * Identifier for the rollup job.
