@@ -22,6 +22,10 @@ import { TaskId } from '@_types/common'
 
 /**
  * Cancel a task.
+ *
+ * WARNING: The task management API is new and should still be considered a beta feature.
+ * The API may change in ways that are not backwards compatible.
+ *
  * A task may continue to run for some time after it has been cancelled because it may not be able to safely stop its current activity straight away.
  * It is also possible that Elasticsearch must complete its work on other tasks before it can process the cancellation.
  * The get task information API will continue to list these cancelled tasks until they complete.
@@ -32,6 +36,7 @@ import { TaskId } from '@_types/common'
  * @rest_spec_name tasks.cancel
  * @availability stack since=2.3.0 stability=experimental
  * @availability serverless stability=experimental visibility=private
+ * @cluster_privileges manage
  * @doc_id tasks
  */
 export interface Request extends RequestBase {
@@ -47,23 +52,27 @@ export interface Request extends RequestBase {
   ]
   path_parts: {
     /**
-     * ID of the task.
+     * The task identifier.
      */
     task_id?: TaskId
   }
   query_parameters: {
     /**
-     * Comma-separated list or wildcard expression of actions used to limit the request.
+     * A comma-separated list or wildcard expression of actions that is used to limit the request.
      */
     actions?: string | string[]
     /**
-     * Comma-separated list of node IDs or names used to limit the request.
+     * A comma-separated list of node IDs or names that is used to limit the request.
      */
     nodes?: string[]
     /**
-     * Parent task ID used to limit the tasks.
+     * A parent task ID that is used to limit the tasks.
      */
     parent_task_id?: string
+    /**
+     * If true, the request blocks until all found tasks are complete.
+     * @server_default false
+     */
     wait_for_completion?: boolean
   }
 }
