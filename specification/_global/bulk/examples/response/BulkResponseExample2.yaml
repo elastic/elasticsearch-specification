@@ -1,0 +1,24 @@
+summary: Failed actions
+description: >
+  If you run `POST /_bulk` with operations that update non-existent documents, the operations cannot complete successfully.
+  The API returns a response with an `errors` property value `true`.
+  The response also includes an error object for any failed operations.
+  The error object contains additional information about the failure, such as the error type and reason.
+# type: response
+# response_code: ''
+value:
+  "{\n  \"took\": 486,\n  \"errors\": true,\n  \"items\": [\n    {\n      \"\
+  update\": {\n        \"_index\": \"index1\",\n        \"_id\": \"5\",\n        \"\
+  status\": 404,\n        \"error\": {\n          \"type\": \"document_missing_exception\"\
+  ,\n          \"reason\": \"[5]: document missing\",\n          \"index_uuid\": \"\
+  aAsFqTI0Tc2W0LCWgPNrOA\",\n          \"shard\": \"0\",\n          \"index\": \"\
+  index1\"\n        }\n      }\n    },\n    {\n      \"update\": {\n        \"_index\"\
+  : \"index1\",\n        \"_id\": \"6\",\n        \"status\": 404,\n        \"error\"\
+  : {\n          \"type\": \"document_missing_exception\",\n          \"reason\":\
+  \ \"[6]: document missing\",\n          \"index_uuid\": \"aAsFqTI0Tc2W0LCWgPNrOA\"\
+  ,\n          \"shard\": \"0\",\n          \"index\": \"index1\"\n        }\n   \
+  \   }\n    },\n    {\n      \"create\": {\n        \"_index\": \"index1\",\n   \
+  \     \"_id\": \"7\",\n        \"_version\": 1,\n        \"result\": \"created\"\
+  ,\n        \"_shards\": {\n          \"total\": 2,\n          \"successful\": 1,\n\
+  \          \"failed\": 0\n        },\n        \"_seq_no\": 0,\n        \"_primary_term\"\
+  : 1,\n        \"status\": 201\n      }\n    }\n  ]\n}"

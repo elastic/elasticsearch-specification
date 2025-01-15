@@ -36,7 +36,7 @@ export class ErrorCause
    */
   type: string
   /**
-   * A human-readable explanation of the error, in english
+   * A human-readable explanation of the error, in English.
    */
   reason?: string
   /**
