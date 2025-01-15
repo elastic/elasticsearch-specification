@@ -44,6 +44,7 @@ Request definitions are slighly different from other definitions.
 It is required that the request definition is named `Request`.
 A request definition is an interface and should contains three top level keys:
 
+- `urls`: the URL paths templates and allowed HTTP methods
 - `path_parts`: the path parameters (eg: `indices`, `id`...)
 - `query_parameters`: the query parameters (eg: `timeout`, `pipeline`...)
 - `body`: the body parameters (eg: `query` or user defined entities)
@@ -67,6 +68,12 @@ Following you can find a template valid for any request definition.
  * @availability stack since=1.2.3 stability=stable|beta|experimental
  */
 interface Request extends RequestBase {
+  urls: [
+    {
+      path: "/path/with/{parts}"
+      methods: ["POST"]
+    }
+  ]
   path_parts: {
 
   }
@@ -86,6 +93,12 @@ In some cases, the request could take one or more generics, in such case the def
  * @availability stack since=1.2.3 stability=stable|beta|experimental
  */
 interface Request<Generic> extends RequestBase {
+  urls: [
+    {
+      path: "/path/with/{parts}"
+      methods: ["POST"]
+    }
+  ]
   path_parts: {
 
   }

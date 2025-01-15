@@ -31,6 +31,17 @@ import { ScrollIds } from '@_types/common'
  * @doc_tag search
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_search/scroll'
+      methods: ['DELETE']
+    },
+    {
+      /** @deprecated 7.0.0 A scroll id can be quite large and should be specified as part of the body */
+      path: '/_search/scroll/{scroll_id}'
+      methods: ['DELETE']
+    }
+  ]
   path_parts: {
     /**
      * Comma-separated list of scroll IDs to clear.
