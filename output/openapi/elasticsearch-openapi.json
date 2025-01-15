@@ -35713,7 +35713,7 @@
           "tasks"
         ],
         "summary": "Cancel a task",
-        "description": "A task may continue to run for some time after it has been cancelled because it may not be able to safely stop its current activity straight away.\nIt is also possible that Elasticsearch must complete its work on other tasks before it can process the cancellation.\nThe get task information API will continue to list these cancelled tasks until they complete.\nThe cancelled flag in the response indicates that the cancellation command has been processed and the task will stop as soon as possible.\n\nTo troubleshoot why a cancelled task does not complete promptly, use the get task information API with the `?detailed` parameter to identify the other tasks the system is running.\nYou can also use the node hot threads API to obtain detailed information about the work the system is doing instead of completing the cancelled task.",
+        "description": "WARNING: The task management API is new and should still be considered a beta feature.\nThe API may change in ways that are not backwards compatible.\n\nA task may continue to run for some time after it has been cancelled because it may not be able to safely stop its current activity straight away.\nIt is also possible that Elasticsearch must complete its work on other tasks before it can process the cancellation.\nThe get task information API will continue to list these cancelled tasks until they complete.\nThe cancelled flag in the response indicates that the cancellation command has been processed and the task will stop as soon as possible.\n\nTo troubleshoot why a cancelled task does not complete promptly, use the get task information API with the `?detailed` parameter to identify the other tasks the system is running.\nYou can also use the node hot threads API to obtain detailed information about the work the system is doing instead of completing the cancelled task.",
         "operationId": "tasks-cancel",
         "parameters": [
           {
@@ -35743,7 +35743,7 @@
           "tasks"
         ],
         "summary": "Cancel a task",
-        "description": "A task may continue to run for some time after it has been cancelled because it may not be able to safely stop its current activity straight away.\nIt is also possible that Elasticsearch must complete its work on other tasks before it can process the cancellation.\nThe get task information API will continue to list these cancelled tasks until they complete.\nThe cancelled flag in the response indicates that the cancellation command has been processed and the task will stop as soon as possible.\n\nTo troubleshoot why a cancelled task does not complete promptly, use the get task information API with the `?detailed` parameter to identify the other tasks the system is running.\nYou can also use the node hot threads API to obtain detailed information about the work the system is doing instead of completing the cancelled task.",
+        "description": "WARNING: The task management API is new and should still be considered a beta feature.\nThe API may change in ways that are not backwards compatible.\n\nA task may continue to run for some time after it has been cancelled because it may not be able to safely stop its current activity straight away.\nIt is also possible that Elasticsearch must complete its work on other tasks before it can process the cancellation.\nThe get task information API will continue to list these cancelled tasks until they complete.\nThe cancelled flag in the response indicates that the cancellation command has been processed and the task will stop as soon as possible.\n\nTo troubleshoot why a cancelled task does not complete promptly, use the get task information API with the `?detailed` parameter to identify the other tasks the system is running.\nYou can also use the node hot threads API to obtain detailed information about the work the system is doing instead of completing the cancelled task.",
         "operationId": "tasks-cancel-1",
         "parameters": [
           {
@@ -35776,13 +35776,13 @@
           "tasks"
         ],
         "summary": "Get task information",
-        "description": "Get information about a task currently running in the cluster.",
+        "description": "Get information about a task currently running in the cluster.\n\nWARNING: The task management API is new and should still be considered a beta feature.\nThe API may change in ways that are not backwards compatible.\n\nIf the task identifier is not found, a 404 response code indicates that there are no resources that match the request.",
         "operationId": "tasks-get",
         "parameters": [
           {
             "in": "path",
             "name": "task_id",
-            "description": "ID of the task.",
+            "description": "The task identifier.",
             "required": true,
             "deprecated": false,
             "schema": {
@@ -35793,7 +35793,7 @@
           {
             "in": "query",
             "name": "timeout",
-            "description": "Period to wait for a response.\nIf no response is received before the timeout expires, the request fails and returns an error.",
+            "description": "The period to wait for a response.\nIf no response is received before the timeout expires, the request fails and returns an error.",
             "deprecated": false,
             "schema": {
               "$ref": "#/components/schemas/_types:Duration"
@@ -35850,13 +35850,13 @@
           "tasks"
         ],
         "summary": "Get all tasks",
-        "description": "Get information about the tasks currently running on one or more nodes in the cluster.",
+        "description": "Get information about the tasks currently running on one or more nodes in the cluster.\n\nWARNING: The task management API is new and should still be considered a beta feature.\nThe API may change in ways that are not backwards compatible.\n\n**Identifying running tasks**\n\nThe `X-Opaque-Id header`, when provided on the HTTP request header, is going to be returned as a header in the response as well as in the headers field for in the task information.\nThis enables you to track certain calls or associate certain tasks with the client that started them.\nFor example:\n\n```\ncurl -i -H \"X-Opaque-Id: 123456\" \"http://localhost:9200/_tasks?group_by=parents\"\n```\n\nThe API returns the following result:\n\n```\nHTTP/1.1 200 OK\nX-Opaque-Id: 123456\ncontent-type: application/json; charset=UTF-8\ncontent-length: 831\n\n{\n  \"tasks\" : {\n    \"u5lcZHqcQhu-rUoFaqDphA:45\" : {\n      \"node\" : \"u5lcZHqcQhu-rUoFaqDphA\",\n      \"id\" : 45,\n      \"type\" : \"transport\",\n      \"action\" : \"cluster:monitor/tasks/lists\",\n      \"start_time_in_millis\" : 1513823752749,\n      \"running_time_in_nanos\" : 293139,\n      \"cancellable\" : false,\n      \"headers\" : {\n        \"X-Opaque-Id\" : \"123456\"\n      },\n      \"children\" : [\n        {\n          \"node\" : \"u5lcZHqcQhu-rUoFaqDphA\",\n          \"id\" : 46,\n          \"type\" : \"direct\",\n          \"action\" : \"cluster:monitor/tasks/lists[n]\",\n          \"start_time_in_millis\" : 1513823752750,\n          \"running_time_in_nanos\" : 92133,\n          \"cancellable\" : false,\n          \"parent_task_id\" : \"u5lcZHqcQhu-rUoFaqDphA:45\",\n          \"headers\" : {\n            \"X-Opaque-Id\" : \"123456\"\n          }\n        }\n      ]\n    }\n  }\n }\n```\nIn this example, `X-Opaque-Id: 123456` is the ID as a part of the response header.\nThe `X-Opaque-Id` in the task `headers` is the ID for the task that was initiated by the REST request.\nThe `X-Opaque-Id` in the children `headers` is the child task of the task that was initiated by the REST request.",
         "operationId": "tasks-list",
         "parameters": [
           {
             "in": "query",
             "name": "actions",
-            "description": "Comma-separated list or wildcard expression of actions used to limit the request.",
+            "description": "A comma-separated list or wildcard expression of actions used to limit the request.\nFor example, you can use `cluser:*` to retrieve all cluster-related tasks.",
             "deprecated": false,
             "schema": {
               "oneOf": [
@@ -35876,7 +35876,7 @@
           {
             "in": "query",
             "name": "detailed",
-            "description": "If `true`, the response includes detailed information about shard recoveries.\nThis information is useful to distinguish tasks from each other but is more costly to run.",
+            "description": "If `true`, the response includes detailed information about the running tasks.\nThis information is useful to distinguish tasks from each other but is more costly to run.",
             "deprecated": false,
             "schema": {
               "type": "boolean"
@@ -35886,7 +35886,7 @@
           {
             "in": "query",
             "name": "group_by",
-            "description": "Key used to group tasks in the response.",
+            "description": "A key that is used to group tasks in the response.\nThe task lists can be grouped either by nodes or by parent tasks.",
             "deprecated": false,
             "schema": {
               "$ref": "#/components/schemas/tasks._types:GroupBy"
@@ -35896,7 +35896,7 @@
           {
             "in": "query",
             "name": "nodes",
-            "description": "Comma-separated list of node IDs or names used to limit returned information.",
+            "description": "A comma-separated list of node IDs or names that is used to limit the returned information.",
             "deprecated": false,
             "schema": {
               "$ref": "#/components/schemas/_types:NodeIds"
@@ -35906,7 +35906,7 @@
           {
             "in": "query",
             "name": "parent_task_id",
-            "description": "Parent task ID used to limit returned information. To return all tasks, omit this parameter or use a value of `-1`.",
+            "description": "A parent task identifier that is used to limit returned information.\nTo return all tasks, omit this parameter or use a value of `-1`.\nIf the parent task is not found, the API does not return a 404 response code.",
             "deprecated": false,
             "schema": {
               "$ref": "#/components/schemas/_types:Id"
@@ -35916,7 +35916,7 @@
           {
             "in": "query",
             "name": "timeout",
-            "description": "Period to wait for a response. If no response is received before the timeout expires, the request fails and returns an error.",
+            "description": "The period to wait for each node to respond.\nIf a node does not respond before its timeout expires, the response does not include its information.\nHowever, timed out nodes are included in the `node_failures` property.",
             "deprecated": false,
             "schema": {
               "$ref": "#/components/schemas/_types:Duration"
@@ -106114,7 +106114,7 @@
       "tasks.cancel#task_id": {
         "in": "path",
         "name": "task_id",
-        "description": "ID of the task.",
+        "description": "The task identifier.",
         "required": true,
         "deprecated": false,
         "schema": {
@@ -106125,7 +106125,7 @@
       "tasks.cancel#actions": {
         "in": "query",
         "name": "actions",
-        "description": "Comma-separated list or wildcard expression of actions used to limit the request.",
+        "description": "A comma-separated list or wildcard expression of actions that is used to limit the request.",
         "deprecated": false,
         "schema": {
           "oneOf": [
@@ -106145,7 +106145,7 @@
       "tasks.cancel#nodes": {
         "in": "query",
         "name": "nodes",
-        "description": "Comma-separated list of node IDs or names used to limit the request.",
+        "description": "A comma-separated list of node IDs or names that is used to limit the request.",
         "deprecated": false,
         "schema": {
           "type": "array",
@@ -106158,7 +106158,7 @@
       "tasks.cancel#parent_task_id": {
         "in": "query",
         "name": "parent_task_id",
-        "description": "Parent task ID used to limit the tasks.",
+        "description": "A parent task ID that is used to limit the tasks.",
         "deprecated": false,
         "schema": {
           "type": "string"
@@ -106168,7 +106168,7 @@
       "tasks.cancel#wait_for_completion": {
         "in": "query",
         "name": "wait_for_completion",
-        "description": "Should the request block until the cancellation of the task and its descendant tasks is completed. Defaults to false",
+        "description": "If true, the request blocks until all found tasks are complete.",
         "deprecated": false,
         "schema": {
           "type": "boolean"
