@@ -1190,7 +1190,7 @@ actions:
             application/json:
               examples:
                 indicesAddBlockResponseExample1:
-                  $ref: "../../specification/indices/add_block/IndicesAddBlockResponseExample1.yaml"
+                  $ref: "../../specification/indices/add_block/examples/response/IndicesAddBlockResponseExample1.yaml"
   - target: "$.components['requestBodies']['indices.analyze']"
     description: "Add example for analyze API request"
     update: 
@@ -1198,7 +1198,7 @@ actions:
         application/json:
           examples:
             indicesAnalyzeRequestExample1:
-              $ref: "../../specification/indices/analyze/indicesAnalyzeRequestExample1.yaml"
+              $ref: "../../specification/indices/analyze/examples/request/indicesAnalyzeRequestExample1.yaml"
   - target: "$.paths['/{index}']['put']"
     description: "Add examples for create index request"
     update: 
@@ -1207,9 +1207,9 @@ actions:
           application/json:
             examples:
               indicesCreateRequestExample1:
-                $ref: "../../specification/indices/create/indicesCreateRequestExample1.yaml"
+                $ref: "../../specification/indices/create/examples/request/indicesCreateRequestExample1.yaml"
               indicesCreateRequestExample2:
-                $ref: "../../specification/indices/create/indicesCreateRequestExample2.yaml"
+                $ref: "../../specification/indices/create/examples/request/indicesCreateRequestExample2.yaml"
   - target: "$.paths['/_data_stream/{name}/_lifecycle']['delete']"
     description: "Add example for delete data stream lifecycle response"
     update: 
@@ -1219,7 +1219,7 @@ actions:
             application/json:
               examples:
                 indicesDeleteDataLifecycleResponseExample1:
-                  $ref: "../../specification/indices/delete_data_lifecycle/IndicesDeleteDataLifecycleResponseExample1.yaml"
+                  $ref: "../../specification/indices/delete_data_lifecycle/examples/200_response/IndicesDeleteDataLifecycleResponseExample1.yaml"
   - target: "$.paths['/_data_stream/{name}/_lifecycle']['get']"
     description: "Add example for get data stream lifecycle response"
     update: 
@@ -1229,7 +1229,7 @@ actions:
             application/json:
               examples:
                 indicesGetDataLifecycleResponseExample1:
-                  $ref: "../../specification/indices/get_data_lifecycle/IndicesGetDataLifecycleResponseExample1.yaml"
+                  $ref: "../../specification/indices/get_data_lifecycle/examples/response/IndicesGetDataLifecycleResponseExample1.yaml"
   - target: "$.components['responses']['indices.get_data_stream#200']"
     description: "Add example for get data stream response"
     update: 
@@ -1237,7 +1237,7 @@ actions:
         application/json:
           examples:
             indicesGetDataStreamResponseExample:
-              $ref: "../../specification/indices/get_data_stream/indicesGetDataStreamResponseExample1.yaml"
+              $ref: "../../specification/indices/get_data_stream/examples/200_response/indicesGetDataStreamResponseExample1.yaml"
   - target: "$.paths['/_data_stream/{name}/_lifecycle']['put']"
     description: "Add examples update data stream lifecycle request and response"
     update: 
@@ -1246,16 +1246,16 @@ actions:
           application/json: 
             examples: 
               indicesPutDataLifecycleRequestExample1: 
-                $ref: "../../specification/indices/put_data_lifecycle/IndicesPutDataLifecycleRequestExample1.yaml"
+                $ref: "../../specification/indices/put_data_lifecycle/examples/request/IndicesPutDataLifecycleRequestExample1.yaml"
               indicesPutLifecycleRequestExample2:
-                $ref: "../../specification/indices/put_data_lifecycle/IndicesPutDataLifecycleRequestExample2.yaml"
+                $ref: "../../specification/indices/put_data_lifecycle/examples/request/IndicesPutDataLifecycleRequestExample2.yaml"
       responses:
         200:
           content:
             application/json:
               examples:
                 indicesPutDataLifecycleResponseExample1:
-                  $ref: "../../specification/indices/put_data_lifecycle/IndicesPutDataLifecycleResponseExample1.yaml"
+                  $ref: "../../specification/indices/put_data_lifecycle/examples/200_response/IndicesPutDataLifecycleResponseExample1.yaml"
   - target: "$.paths['/{index}/_lifecycle/explain']['get']"
     description: "Add example for explain data stream lifecycle response"
     update: 
@@ -1265,7 +1265,7 @@ actions:
             application/json:
               examples:
                 indicesExplainDataLifecycleResponseExample:
-                  $ref: "../../specification/indices/explain_data_lifecycle/IndicesExplainDataLifecycleResponseExample1.yaml"
+                  $ref: "../../specification/indices/explain_data_lifecycle/examples/response/IndicesExplainDataLifecycleResponseExample1.yaml"
   - target: "$.components['responses']['ingest.get_pipeline#200']"
     description: "Add example for get pipeline response"
     update: 
@@ -1273,7 +1273,7 @@ actions:
         application/json:
           examples:
             indicesGetDataStreamResponseExample:
-              $ref: "../../specification/ingest/get_pipeline/GetPipelineResponseExample1.yaml"
+              $ref: "../../specification/ingest/get_pipeline/examples/200_response/GetPipelineResponseExample1.yaml"
   - target: "$.paths['/_ingest/pipeline/{id}']['put']"
     description: "Add examples for create pipeline"
     update: 
@@ -1282,9 +1282,9 @@ actions:
           application/json: 
             examples: 
               putPipelineRequestExample1: 
-                $ref: "../../specification/ingest/put_pipeline/PutPipelineRequestExample1.yaml"
+                $ref: "../../specification/ingest/put_pipeline/examples/request/PutPipelineRequestExample1.yaml"
               putPipelineRequestExample2: 
-                $ref: "../../specification/ingest/put_pipeline/PutPipelineRequestExample2.yaml"
+                $ref: "../../specification/ingest/put_pipeline/examples/request/PutPipelineRequestExample2.yaml"
   - target: "$.components['requestBodies']['ingest.simulate']"
     description: "Add example for simulate pipeline request"
     update: 
@@ -1308,7 +1308,7 @@ actions:
         application/json:
           examples:
             indicesPutIndexTemplateRequestExample1:
-              $ref: "../../specification/indices/put_index_template/indicesPutIndexTemplateRequestExample1.yaml"
+              $ref: "../../specification/indices/put_index_template/examples/request/indicesPutIndexTemplateRequestExample1.yaml"
   - target: "$.components['requestBodies']['indices.put_mapping']"
     description: "Add example for update mapping request"
     update: 
@@ -1316,7 +1316,7 @@ actions:
         application/json:
           examples:
             indicesPutSettingRequestExample1:
-              $ref: "../../specification/indices/put_mapping/indicesPutMappingRequestExample1.yaml"
+              $ref: "../../specification/indices/put_mapping/examples/request/indicesPutMappingRequestExample1.yaml"
   - target: "$.components['requestBodies']['indices.put_settings']"
     description: "Add example for update index settings request"
     update: 
@@ -1324,7 +1324,7 @@ actions:
         application/json:
           examples:
             indicesPutSettingRequestExample1:
-              $ref: "../../specification/indices/put_settings/IndicesPutSettingsRequestExample1.yaml"
+              $ref: "../../specification/indices/put_settings/examples/request/IndicesPutSettingsRequestExample1.yaml"
   - target: "$.paths['/_resolve/index/{name}']['get']"
     description: "Add examples for resolve index operation"
     update: 
@@ -1342,7 +1342,7 @@ actions:
         application/json:
           examples:
             indicesRolloverRequestExample1:
-              $ref: "../../specification/indices/rollover/indicesRolloverRequestExample1.yaml"
+              $ref: "../../specification/indices/rollover/examples/request/indicesRolloverRequestExample1.yaml"
   - target: "$.components['responses']['indices.rollover#200']"
     description: "Add example for rollover index response"
     update: 
@@ -1350,7 +1350,7 @@ actions:
         application/json:
           examples:
             indicesRolloverResponseExample1:
-              $ref: "../../specification/indices/rollover/indicesRolloverResponseExample1.yaml"
+              $ref: "../../specification/indices/rollover/examples/200_response/indicesRolloverResponseExample1.yaml"
 ## Examples for behavioral analytics
   - target: "$.components['responses']['search_application.get_behavioral_analytics#200']"
     description: "Add example for get behavioral analytics collections response"
@@ -1359,7 +1359,7 @@ actions:
         application/json:
           examples:
             getBehavioralAnalyticsCollectionsResponseExample1:
-              $ref: "../../specification/search_application/get_behavioral_analytics/BehavioralAnalyticsGetResponseExample1.yaml"
+              $ref: "../../specification/search_application/get_behavioral_analytics/examples/200_response/BehavioralAnalyticsGetResponseExample1.yaml"
 ## Examples for licensing
   - target: "$.paths['/_license']['get']"
     description: "Add example for get license response"
@@ -1370,7 +1370,7 @@ actions:
             application/json:
               examples:
                 getLicenseResponseExample1:
-                  $ref: "../../specification/license/get/GetLicenseResponseExample1.yaml"
+                  $ref: "../../specification/license/get/examples/response/GetLicenseResponseExample1.yaml"
 ## Examples for search applications
   - target: "$.paths['/_application/search_application']['get']"
     description: "Add examples for get search applications operation"
@@ -1381,7 +1381,7 @@ actions:
             application/json: 
               examples: 
                 getSearchApplicationsResponseExample1: 
-                  $ref: "../../specification/search_application/list/SearchApplicationsListResponseExample1.yaml"
+                  $ref: "../../specification/search_application/list/examples/200_response/SearchApplicationsListResponseExample1.yaml"
   - target: "$.paths['/_application/search_application/{name}']['get']"
     description: "Add examples for get search application details operation"
     update: 
@@ -1391,7 +1391,7 @@ actions:
             application/json: 
               examples: 
                 getSearchApplicationResponseExample1: 
-                  $ref: "../../specification/search_application/get/SearchApplicationGetResponseExample1.yaml"
+                  $ref: "../../specification/search_application/get/examples/200_response/SearchApplicationGetResponseExample1.yaml"
   - target: "$.paths['/_application/search_application/{name}']['put']"
     description: "Add examples for create search application operation"
     update: 
@@ -1400,7 +1400,7 @@ actions:
           application/json: 
             examples: 
               putSearchApplicationRequestExample1: 
-                $ref: "../../specification/search_application/put/SearchApplicationPutRequestExample1.yaml"
+                $ref: "../../specification/search_application/put/examples/request/SearchApplicationPutRequestExample1.yaml"
   - target: "$.components['requestBodies']['search_application.search']"
     description: "Add example for search application search request"
     update: 
@@ -1408,4 +1408,4 @@ actions:
         application/json:
           examples:
             searchApplicationSearchRequestExample1:
-              $ref: "../../specification/search_application/search/SearchApplicationsSearchRequestExample1.yaml"
+              $ref: "../../specification/search_application/search/examples/request/SearchApplicationsSearchRequestExample1.yaml"
