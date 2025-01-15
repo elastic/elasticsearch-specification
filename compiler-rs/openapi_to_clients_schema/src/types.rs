@@ -121,7 +121,7 @@ fn generate_type_for_schema(
         })
     }
     if let Some(ref docs) = data.external_docs {
-        base.ext_doc_url = Some(docs.ext_docs_url.clone())
+        base.ext_doc_url = Some(docs.url.clone())
     }
 
     // TODO: data.readonly/writeonly -> OverloadOf?
@@ -402,6 +402,8 @@ fn generate_interface_def(
             required: required.contains(&name),
             doc_id: None,
             doc_url: None,
+            ext_doc_id: None,
+            ext_doc_url: None,
             codegen_name: None, // FIXME: extension in workplace search
             description: None,
             aliases: Vec::default(),
