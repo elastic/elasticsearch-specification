@@ -494,7 +494,7 @@
     },
     "snapshot.repository_analyze": {
       "request": [
-        "Missing request & response"
+        "Request: query parameter 'register_operation_count' does not exist in the json spec"
       ],
       "response": []
     },
