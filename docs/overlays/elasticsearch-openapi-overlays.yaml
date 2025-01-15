@@ -149,7 +149,7 @@ actions:
         application/json:
           examples:
             nodesInfoResponseExample1:
-              $ref: "../../specification/nodes/info/nodesInfoResponseExample1.yaml"
+              $ref: "../../specification/nodes/info/examples/200_response/nodesInfoResponseExample1.yaml"
   - target: "$.paths['/_ilm/policy/{policy}']['delete']"
     description: "Add examples for delete lifecycle policy operation"
     update:
@@ -275,7 +275,7 @@ actions:
         application/json: 
           examples: 
             indicesCloneRequestExample1: 
-              $ref: "../../specification/indices/clone/indicesCloneRequestExample1.yaml"
+              $ref: "../../specification/indices/clone/examples/request/indicesCloneRequestExample1.yaml"
   - target: "$.paths['/{index}/_close']['post']"
     description: "Add examples for close index response"
     update:
@@ -293,7 +293,7 @@ actions:
         application/json:
           examples:
             indicesDataStreamStatsResponseExample1:
-              $ref: "../../specification/indices/data_streams_stats/indicesDataStreamStatsResponseExample1.yaml"
+              $ref: "../../specification/indices/data_streams_stats/examples/200_response/indicesDataStreamStatsResponseExample1.yaml"
   - target: "$.paths['/{index}/_open']['post']"
     description: "Add examples for open index response"
     update:
@@ -303,7 +303,7 @@ actions:
             application/json:
               examples:
                 indicesOpenResponseExample1:
-                  $ref: "../../specification/indices/open/indicesOpenResponseExample1.yaml"
+                  $ref: "../../specification/indices/open/examples/200_response/indicesOpenResponseExample1.yaml"
   - target: "$.paths['/_autoscaling/policy/{name}']['delete']"
     description: "Add examples for delete autoscaling policy response"
     update:
@@ -313,7 +313,7 @@ actions:
             application/json:
               examples:
                 deleteAutoscalingPolicyResponseExample1:
-                  $ref: "../../specification/autoscaling/delete_autoscaling_policy/autoscalingApisDeleteAutoscalingPolicyResponseExample1.yaml"
+                  $ref: "../../specification/autoscaling/delete_autoscaling_policy/examples/response/DeleteAutoscalingPolicyResponseExample1.yaml"
   - target: "$.paths['/_autoscaling/capacity']['get']"
     description: "Add examples for get autoscaling capacity response"
     update:
@@ -323,7 +323,7 @@ actions:
             application/json:
               examples:
                 getAutoscalingCapacityResponseExample1:
-                  $ref: "../../specification/autoscaling/get_autoscaling_capacity/autoscalingApisGetAutoscalingCapacityResponseExample1.yaml"
+                  $ref: "../../specification/autoscaling/get_autoscaling_capacity/examples/200_response/GetAutoscalingCapacityResponseExample1.yaml"
   - target: "$.paths['/_autoscaling/policy/{name}']['get']"
     description: "Add examples for get autoscaling policy response"
     update:
@@ -333,7 +333,7 @@ actions:
             application/json:
               examples:
                 getAutoscalingPolicyResponseExample1:
-                  $ref: "../../specification/autoscaling/get_autoscaling_policy/autoscalingApisGetAutoscalingPolicyResponseExample1.yaml"
+                  $ref: "../../specification/autoscaling/get_autoscaling_policy/examples/200_response/GetAutoscalingPolicyResponseExample1.yaml"
   - target: "$.paths['/_autoscaling/policy/{name}']['put']"
     description: "Add examples for create autoscaling policy operation"
     update:
@@ -342,16 +342,16 @@ actions:
           application/json: 
             examples:
               createAutoscalingPolicyRequestExample1: 
-                $ref: "../../specification/autoscaling/put_autoscaling_policy/autoscalingApisPutAutoscalingPolicyRequestExample1.yaml"
+                $ref: "../../specification/autoscaling/put_autoscaling_policy/examples/request/PutAutoscalingPolicyRequestExample1.yaml"
               createAutoscalingPolicyRequestExample2: 
-                $ref: "../../specification/autoscaling/put_autoscaling_policy/autoscalingApisPutAutoscalingPolicyRequestExample2.yaml"
+                $ref: "../../specification/autoscaling/put_autoscaling_policy/examples/request/PutAutoscalingPolicyRequestExample2.yaml"
       responses:
         200:
           content:
             application/json:
               examples:
                 createAutoscalingPolicyResponseExample1:
-                  $ref: "../../specification/autoscaling/put_autoscaling_policy/autoscalingApisPutAutoscalingPolicyResponseExample1.yaml"
+                  $ref: "../../specification/autoscaling/put_autoscaling_policy/examples/200_response/PutAutoscalingPolicyResponseExample1.yaml"
   - target: "$.components['responses']['indices.recovery#200']"
     description: "Add example for get index recovery response"
     update: 
@@ -359,7 +359,7 @@ actions:
         application/json:
           examples:
             getIndicesRecoveryResponseExample1:
-                  $ref: "../../specification/indices/recovery/indicesRecoveryResponseExample1.yaml"
+                  $ref: "../../specification/indices/recovery/examples/200_response/indicesRecoveryResponseExample1.yaml"
   - target: "$.paths['/_resolve/cluster/{name}']['get']"
     description: "Add examples for resolve cluster operation"
     update: 
@@ -369,7 +369,7 @@ actions:
             application/json:
               examples:
                 resolveClusterResponseExample1:
-                  $ref: "../../specification/indices/resolve_cluster/ResolveClusterResponseExample1.yaml"
+                  $ref: "../../specification/indices/resolve_cluster/examples/200_response/ResolveClusterResponseExample1.yaml"
   - target: "$.components['requestBodies']['indices.shrink']"
     description: "Add example for shrink index request"
     update: 
@@ -377,7 +377,7 @@ actions:
         application/json:
           examples:
             indicesShrinkRequestExample1:
-              $ref: "../../specification/indices/shrink/indicesShrinkRequestExample1.yaml"
+              $ref: "../../specification/indices/shrink/examples/request/indicesShrinkRequestExample1.yaml"
   - target: "$.components['requestBodies']['indices.split']"
     description: "Add example for split index request"
     update: 
@@ -385,7 +385,7 @@ actions:
         application/json:
           examples:
             indicesSplitRequestExample1:
-              $ref: "../../specification/indices/split/indicesSplitRequestExample1.yaml"
+              $ref: "../../specification/indices/split/examples/request/indicesSplitRequestExample1.yaml"
   - target: "$.components['requestBodies']['indices.put_template']"
     description: "Add example for legacy create template request"
     update: 
@@ -393,7 +393,7 @@ actions:
         application/json:
           examples:
             indicesLegacyPutTemplateRequestExample1:
-              $ref: "../../specification/indices/put_template/indicesPutTemplateRequestExample1.yaml"
+              $ref: "../../specification/indices/put_template/examples/request/indicesPutTemplateRequestExample1.yaml"
 ## Examples for behavioral analytics
   - target: "$.paths['/_application/analytics/{collection_name}/event/{event_type}']['post']"
     description: "Add examples for post analytics collection event operation"
@@ -403,7 +403,7 @@ actions:
           application/json: 
             examples: 
               postBehavioralAnalyticsEventRequestExample1:
-                $ref: "../../specification/search_application/post_behavioral_analytics_event/BehavioralAnalyticsEventPostRequestExample1.yaml"
+                $ref: "../../specification/search_application/post_behavioral_analytics_event/examples/request/BehavioralAnalyticsEventPostRequestExample1.yaml"
 ## Examples for indices
   - target: "$.paths['/_lifecycle/stats']['get']"
     description: "Add examples for get lifecycle stats operation"
@@ -452,7 +452,7 @@ actions:
             application/json:
               examples:
                 getBasicStatusResponseExample1:
-                  $ref: "../../specification/license/get_basic_status/GetBasicLicenseStatusResponseExample1.yaml"
+                  $ref: "../../specification/license/get_basic_status/examples/200_response/GetBasicLicenseStatusResponseExample1.yaml"
   - target: "$.paths['/_license/trial_status']['get']"
     description: "Add example for get trial status response"
     update: 
@@ -462,7 +462,7 @@ actions:
             application/json:
               examples:
                 getLicenseResponseExample1:
-                  $ref: "../../specification/license/get_trial_status/GetTrialLicenseStatusResponseExample1.yaml"
+                  $ref: "../../specification/license/get_trial_status/examples/200_response/GetTrialLicenseStatusResponseExample1.yaml"
   - target: "$.paths['/_license/start_basic']['post']"
     description: "Add example for start basic response"
     update: 
@@ -472,7 +472,7 @@ actions:
             application/json:
               examples:
                 startBasicLicenseResponseExample1:
-                  $ref: "../../specification/license/post_start_basic/StartBasicLicenseResponseExample1.yaml"
+                  $ref: "../../specification/license/post_start_basic/examples/200_response/StartBasicLicenseResponseExample1.yaml"
   - target: "$.paths['/_license/start_trial']['post']"
     description: "Add example for start trial response"
     update: 
@@ -482,7 +482,7 @@ actions:
             application/json:
               examples:
                 startTrialLicenseResponseExample1:
-                  $ref: "../../specification/license/post_start_trial/StartTrialLicenseResponseExample1.yaml"
+                  $ref: "../../specification/license/post_start_trial/examples/200_response/StartTrialLicenseResponseExample1.yaml"
   - target: "$.components['requestBodies']['license.post']"
     description: "Add examples for update license request"
     update: 
@@ -490,7 +490,7 @@ actions:
         application/json: 
           examples: 
             updateLicenseRequestExample1: 
-              $ref: "../../specification/license/post/PostLicenseRequestExample1.yaml"
+              $ref: "../../specification/license/post/examples/request/PostLicenseRequestExample1.yaml"
   - target: "$.components['responses']['license.post#200']"
     description: "Add examples for update license response"
     update: 
@@ -498,7 +498,7 @@ actions:
         application/json:
           examples:
             clusterHealthResponseExample1:
-              $ref: "../../specification/license/post/PostLicenseResponseExample1.yaml"
+              $ref: "../../specification/license/post/examples/200_response/PostLicenseResponseExample1.yaml"
 ## Examples for search applications
   - target: "$.paths['/_application/search_application/{name}/_render_query']['post']"
     description: "Add examples for render search application query operation"
@@ -508,9 +508,9 @@ actions:
           application/json: 
             examples:
               renderSearchApplicationQueryRequestExample1: 
-                $ref: "../../specification/search_application/render_query/SearchApplicationsRenderQueryRequestExample1.yaml"
+                $ref: "../../specification/search_application/render_query/examples/request/SearchApplicationsRenderQueryRequestExample1.yaml"
                 renderSearchApplicationQueryResponseExample1:
-                  $ref: "../../specification/search_application/render_query/SearchApplicationsRenderQueryResponseExample1.yaml"
+                  $ref: "../../specification/search_application/render_query/examples/request/SearchApplicationsRenderQueryResponseExample1.yaml"
 # Examples for security
   - target: "$.paths['/_security/api_key/_bulk_update']['post']"
     description: "Add examples for bulk update API keys operation"
