@@ -17,7 +17,6 @@
  * under the License.
  */
 
-import { Indices } from '@_types/common'
 import { IndexSettings } from '@indices/_types/IndexSettings'
 import { TypeMapping } from '@_types/mapping/TypeMapping'
 
@@ -31,4 +30,3 @@ export class CreateFrom {
    */
   settings_override?: IndexSettings
 }
-

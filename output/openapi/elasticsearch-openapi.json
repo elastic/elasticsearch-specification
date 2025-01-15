@@ -17565,6 +17565,161 @@
         "x-state": "Added in 1.3.0"
       }
     },
+    "/_migration/reindex/{index}/_cancel": {
+      "post": {
+        "tags": [
+          "cancel_reindex"
+        ],
+        "summary": "This API cancels a migration reindex attempt for a data stream or index",
+        "operationId": "migrate-cancel-reindex",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "index",
+            "description": "The index or data stream name",
+            "required": true,
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/_types:Indices"
+            },
+            "style": "simple"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/_types:AcknowledgedResponseBase"
+                }
+              }
+            }
+          }
+        },
+        "x-state": "Technical preview"
+      }
+    },
+    "/_create_from/{source}/{dest}": {
+      "put": {
+        "tags": [
+          "create_from"
+        ],
+        "summary": "This API creates a destination from a source index",
+        "description": "It copies the mappings and settings from the source index while allowing request settings and mappings to override the source values.",
+        "operationId": "migrate-create-from",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/migrate.create_from#source"
+          },
+          {
+            "$ref": "#/components/parameters/migrate.create_from#dest"
+          }
+        ],
+        "requestBody": {
+          "$ref": "#/components/requestBodies/migrate.create_from"
+        },
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/migrate.create_from#200"
+          }
+        },
+        "x-state": "Technical preview"
+      },
+      "post": {
+        "tags": [
+          "create_from"
+        ],
+        "summary": "This API creates a destination from a source index",
+        "description": "It copies the mappings and settings from the source index while allowing request settings and mappings to override the source values.",
+        "operationId": "migrate-create-from-1",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/migrate.create_from#source"
+          },
+          {
+            "$ref": "#/components/parameters/migrate.create_from#dest"
+          }
+        ],
+        "requestBody": {
+          "$ref": "#/components/requestBodies/migrate.create_from"
+        },
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/migrate.create_from#200"
+          }
+        },
+        "x-state": "Technical preview"
+      }
+    },
+    "/_migration/reindex/{index}/_status": {
+      "get": {
+        "tags": [
+          "get_reindex_status"
+        ],
+        "summary": "This API returns the status of a migration reindex attempt for a data stream or index",
+        "operationId": "migrate-get-reindex-status",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "index",
+            "description": "The index or data stream name",
+            "required": true,
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/_types:Indices"
+            },
+            "style": "simple"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/_types:AcknowledgedResponseBase"
+                }
+              }
+            }
+          }
+        },
+        "x-state": "Technical preview"
+      }
+    },
+    "/_migration/reindex": {
+      "post": {
+        "tags": [
+          "reindex"
+        ],
+        "summary": "\"This API reindexes all legacy backing indices for a data stream",
+        "description": "It does this in a persistent task. The persistent task id is returned immediately, and the reindexing work is completed in that task",
+        "operationId": "migrate-reindex",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/migrate._types:MigrateReindex"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/_types:AcknowledgedResponseBase"
+                }
+              }
+            }
+          }
+        },
+        "x-state": "Technical preview"
+      }
+    },
     "/_migration/deprecations": {
       "get": {
         "tags": [
@@ -75382,6 +75537,33 @@
           "_index"
         ]
       },
+      "migrate._types:MigrateReindex": {
+        "type": "object",
+        "properties": {
+          "mode": {
+            "description": "Reindex mode. Currently only 'upgrade' is supported.",
+            "type": "string"
+          },
+          "source": {
+            "$ref": "#/components/schemas/migrate._types:Index"
+          }
+        },
+        "required": [
+          "mode",
+          "source"
+        ]
+      },
+      "migrate._types:Index": {
+        "type": "object",
+        "properties": {
+          "index": {
+            "$ref": "#/components/schemas/_types:Indices"
+          }
+        },
+        "required": [
+          "index"
+        ]
+      },
       "migration.deprecations:Deprecation": {
         "type": "object",
         "properties": {
@@ -94366,6 +94548,16 @@
           }
         }
       },
+      "migrate.create_from#200": {
+        "description": "",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/_types:AcknowledgedResponseBase"
+            }
+          }
+        }
+      },
       "migration.deprecations#200": {
         "description": "",
         "content": {
@@ -101906,6 +102098,28 @@
         },
         "style": "form"
       },
+      "migrate.create_from#source": {
+        "in": "path",
+        "name": "source",
+        "description": "The source index or data stream name",
+        "required": true,
+        "deprecated": false,
+        "schema": {
+          "type": "string"
+        },
+        "style": "simple"
+      },
+      "migrate.create_from#dest": {
+        "in": "path",
+        "name": "dest",
+        "description": "The destination index or data stream name",
+        "required": true,
+        "deprecated": false,
+        "schema": {
+          "type": "string"
+        },
+        "style": "simple"
+      },
       "migration.deprecations#index": {
         "in": "path",
         "name": "index",
@@ -107356,6 +107570,16 @@
                   "$ref": "#/components/schemas/_types:Ids"
                 }
               }
+            }
+          }
+        },
+        "required": true
+      },
+      "migrate.create_from": {
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/migrate._types:MigrateReindex"
             }
           }
         },

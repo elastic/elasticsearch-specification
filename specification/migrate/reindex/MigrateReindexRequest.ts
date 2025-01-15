@@ -17,9 +17,8 @@
  * under the License.
  */
 
-import { MigrateReindex } from '../_types/MigrateReindex'
 import { RequestBase } from '@_types/Base'
-import { Indices } from '@_types/common'
+import { MigrateReindex } from '../_types/MigrateReindex'
 
 /**
  * "This API reindexes all legacy backing indices for a data stream. It does this in a persistent task. The persistent task id is returned immediately, and the reindexing work is completed in that task

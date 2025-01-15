@@ -17,9 +17,8 @@
  * under the License.
  */
 
-import { MigrateReindex } from '../_types/MigrateReindex'
 import { RequestBase } from '@_types/Base'
-import { Indices } from '@_types/common'
+import { MigrateReindex } from '../_types/MigrateReindex'
 
 /**
  * This API creates a destination from a source index. It copies the mappings and settings from the source index while allowing request settings and mappings to override the source values.
@@ -33,10 +32,10 @@ import { Indices } from '@_types/common'
 export interface Request extends RequestBase {
   path_parts: {
     /** The source index or data stream name */
-    source: string,
+    source: string
     /** The destination index or data stream name */
     dest: string
-  },
+  }
   /** @codegen_name create_from */
   body: MigrateReindex
 }
