@@ -17,8 +17,12 @@
  * under the License.
  */
 
-import { AcknowledgedResponseBase } from '@_types/Base'
+import { IndexName } from '@_types/common'
 
 export class Response {
-  body: AcknowledgedResponseBase
+  body: {
+    acknowledged: boolean
+    index: IndexName
+    shards_acknowledged: boolean
+  }
 }

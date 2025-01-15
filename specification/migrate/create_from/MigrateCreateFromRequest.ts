@@ -18,7 +18,7 @@
  */
 
 import { RequestBase } from '@_types/Base'
-import { MigrateReindex } from '../_types/MigrateReindex'
+import { CreateFrom } from '../_types/CreateFrom'
 
 /**
  * This API creates a destination from a source index. It copies the mappings and settings from the source index while allowing request settings and mappings to override the source values.
@@ -37,5 +37,5 @@ export interface Request extends RequestBase {
     dest: string
   }
   /** @codegen_name create_from */
-  body: MigrateReindex
+  body: CreateFrom
 }

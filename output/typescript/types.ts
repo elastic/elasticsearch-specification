@@ -13826,6 +13826,11 @@ export interface LogstashPutPipelineRequest extends RequestBase {
 
 export type LogstashPutPipelineResponse = boolean
 
+export interface MigrateCreateFrom {
+  mappings_override?: MappingTypeMapping
+  settings_override?: IndicesIndexSettings
+}
+
 export interface MigrateIndex {
   index: Indices
 }
@@ -13844,10 +13849,14 @@ export type MigrateCancelReindexResponse = AcknowledgedResponseBase
 export interface MigrateCreateFromRequest extends RequestBase {
   source: string
   dest: string
-  body?: MigrateMigrateReindex
+  body?: MigrateCreateFrom
 }
 
-export type MigrateCreateFromResponse = AcknowledgedResponseBase
+export interface MigrateCreateFromResponse {
+  acknowledged: boolean
+  index: IndexName
+  shards_acknowledged: boolean
+}
 
 export interface MigrateGetReindexStatusRequest extends RequestBase {
   index: Indices

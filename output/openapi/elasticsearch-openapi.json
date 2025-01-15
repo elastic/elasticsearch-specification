@@ -75537,6 +75537,17 @@
           "_index"
         ]
       },
+      "migrate._types:CreateFrom": {
+        "type": "object",
+        "properties": {
+          "mappings_override": {
+            "$ref": "#/components/schemas/_types.mapping:TypeMapping"
+          },
+          "settings_override": {
+            "$ref": "#/components/schemas/indices._types:IndexSettings"
+          }
+        }
+      },
       "migrate._types:MigrateReindex": {
         "type": "object",
         "properties": {
@@ -94553,7 +94564,23 @@
         "content": {
           "application/json": {
             "schema": {
-              "$ref": "#/components/schemas/_types:AcknowledgedResponseBase"
+              "type": "object",
+              "properties": {
+                "acknowledged": {
+                  "type": "boolean"
+                },
+                "index": {
+                  "$ref": "#/components/schemas/_types:IndexName"
+                },
+                "shards_acknowledged": {
+                  "type": "boolean"
+                }
+              },
+              "required": [
+                "acknowledged",
+                "index",
+                "shards_acknowledged"
+              ]
             }
           }
         }
@@ -107579,7 +107606,7 @@
         "content": {
           "application/json": {
             "schema": {
-              "$ref": "#/components/schemas/migrate._types:MigrateReindex"
+              "$ref": "#/components/schemas/migrate._types:CreateFrom"
             }
           }
         },
