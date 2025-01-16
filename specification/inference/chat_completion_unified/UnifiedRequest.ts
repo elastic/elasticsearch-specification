@@ -24,8 +24,8 @@ import { float, long } from '@_types/Numeric'
 import { Duration } from '@_types/Time'
 
 /**
- * Perform inference on the service using the Unified Schema
- * @rest_spec_name inference.unified_inference
+ * Perform chat completion inference
+ * @rest_spec_name inference.chat_completion_unified
  * @availability stack since=8.18.0 stability=stable visibility=public
  * @availability serverless stability=stable visibility=public
  */

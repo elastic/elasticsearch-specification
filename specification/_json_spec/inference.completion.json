@@ -1,5 +1,5 @@
 {
-  "inference.inference": {
+  "inference.completion": {
     "documentation": {
       "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/post-inference-api.html",
       "description": "Perform completion inference"
