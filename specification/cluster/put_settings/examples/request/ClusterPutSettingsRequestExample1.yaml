@@ -1,4 +1,4 @@
-# summary:
+summary: A simple setting
 # method_request: PUT /_cluster/settings
 description: An example of a persistent update.
 # type: request
