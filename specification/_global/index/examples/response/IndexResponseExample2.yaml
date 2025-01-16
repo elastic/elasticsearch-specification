@@ -1,0 +1,18 @@
+summary: Define document IDs
+description: A successful response from `PUT my-index-000001/_doc/1`.
+# type: response
+# response_code: 200
+value: |-
+  {
+    "_shards": {
+      "total": 2,
+      "failed": 0,
+      "successful": 2
+    },
+    "_index": "my-index-000001",
+    "_id": "1",
+    "_version": 1,
+    "_seq_no": 0,
+    "_primary_term": 1,
+    "result": "created"
+  }
