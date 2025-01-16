@@ -74,7 +74,7 @@ import { Duration } from '@_types/Time'
  * **Optimistic concurrency control**
  *
  * Index operations can be made conditional and only be performed if the last modification to the document was assigned the sequence number and primary term specified by the `if_seq_no` and `if_primary_term` parameters.
- * If a mismatch is detected, the operation will result in a `VersionConflictException` and a status code of 409.
+ * If a mismatch is detected, the operation will result in a `VersionConflictException` and a status code of `409`.
  *
  * **Routing**
  *
