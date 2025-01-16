@@ -17,7 +17,6 @@
  * under the License.
  */
 
-import { TaskType } from '@inference/_types/TaskType'
 import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 import { RequestBase } from '@_types/Base'
 import { Id } from '@_types/common'
@@ -33,19 +32,11 @@ import { Duration } from '@_types/Time'
 export interface Request extends RequestBase {
   urls: [
     {
-      path: '/_inference/{inference_id}/_unified'
-      methods: ['POST']
-    },
-    {
-      path: '/_inference/{task_type}/{inference_id}/_unified'
+      path: '/_inference/chat_completion/{inference_id}/_unified'
       methods: ['POST']
     }
   ]
   path_parts: {
-    /**
-     * The task type
-     */
-    task_type?: TaskType
     /**
      * The inference Id
      */

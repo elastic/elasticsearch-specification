@@ -38,6 +38,14 @@ export class SparseEmbeddingResult {
 }
 
 /**
+ * The response format for the sparse embedding request.
+ */
+export class SparseEmbeddingInferenceResult {
+  // TODO should we make this optional if we ever support multiple encoding types? So we can make it a variant
+  sparse_embedding: Array<SparseEmbeddingResult>
+}
+
+/**
  * Text Embedding results containing bytes are represented as Dense
  * Vectors of bytes.
  */
@@ -58,10 +66,26 @@ export class TextEmbeddingResult {
 }
 
 /**
+ * TextEmbeddingInferenceResult is an aggregation of mutually exclusive text_embedding variants
+ * @variants container
+ */
+export class TextEmbeddingInferenceResult {
+  text_embedding_bytes?: Array<TextEmbeddingByteResult>
+  text_embedding?: Array<TextEmbeddingResult>
+}
+
+/**
  * The completion result object
  */
 export class CompletionResult {
   result: string
+}
+
+/**
+ * Defines the completion result.
+ */
+export class CompletionInferenceResult {
+  completion: Array<CompletionResult>
 }
 
 /**
@@ -74,6 +98,13 @@ export class RankedDocument {
   index: integer
   score: float
   text?: string
+}
+
+/**
+ * Defines the response for a rerank request.
+ */
+export class RerankedInferenceResult {
+  rerank: Array<RankedDocument>
 }
 
 /**

@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { TaskType } from '@inference/_types/TaskType'
+import { TaskSettings } from '@inference/_types/Services'
 import { RequestBase } from '@_types/Base'
 import { Id } from '@_types/common'
 
@@ -37,11 +37,7 @@ import { Id } from '@_types/common'
 export interface Request extends RequestBase {
   urls: [
     {
-      path: '/_inference/{inference_id}/_stream'
-      methods: ['POST']
-    },
-    {
-      path: '/_inference/{task_type}/{inference_id}/_stream'
+      path: '/_inference/completion/{inference_id}/_stream'
       methods: ['POST']
     }
   ]
@@ -50,10 +46,6 @@ export interface Request extends RequestBase {
      * The unique identifier for the inference endpoint.
      */
     inference_id: Id
-    /**
-     * The type of task that the model performs.
-     */
-    task_type?: TaskType
   }
   body: {
     /**
@@ -63,5 +55,9 @@ export interface Request extends RequestBase {
      * NOTE: Inference endpoints for the completion task type currently only support a single string as input.
      */
     input: string | string[]
+    /**
+     * Optional task settings
+     */
+    task_settings?: TaskSettings
   }
 }
