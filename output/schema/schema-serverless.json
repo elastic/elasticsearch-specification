@@ -18146,7 +18146,7 @@
             "kind": "instance_of",
             "type": {
               "name": "EsqlFormat",
-              "namespace": "esql.query"
+              "namespace": "esql._types"
             }
           }
         },
@@ -18176,7 +18176,7 @@
           }
         }
       ],
-      "specLocation": "esql/query/QueryRequest.ts#L26-L91"
+      "specLocation": "esql/query/QueryRequest.ts#L27-L92"
     },
     {
       "body": {
@@ -93698,6 +93698,40 @@
       "specLocation": "eql/search/types.ts#L20-L32"
     },
     {
+      "kind": "enum",
+      "members": [
+        {
+          "name": "csv"
+        },
+        {
+          "name": "json"
+        },
+        {
+          "name": "tsv"
+        },
+        {
+          "name": "txt"
+        },
+        {
+          "name": "yaml"
+        },
+        {
+          "name": "cbor"
+        },
+        {
+          "name": "smile"
+        },
+        {
+          "name": "arrow"
+        }
+      ],
+      "name": {
+        "name": "EsqlFormat",
+        "namespace": "esql._types"
+      },
+      "specLocation": "esql/_types/QueryParameters.ts#L20-L29"
+    },
+    {
       "kind": "type_alias",
       "name": {
         "name": "TableValuesIntegerValue",
@@ -93816,40 +93850,6 @@
         ],
         "kind": "union_of"
       }
-    },
-    {
-      "kind": "enum",
-      "members": [
-        {
-          "name": "csv"
-        },
-        {
-          "name": "json"
-        },
-        {
-          "name": "tsv"
-        },
-        {
-          "name": "txt"
-        },
-        {
-          "name": "yaml"
-        },
-        {
-          "name": "cbor"
-        },
-        {
-          "name": "smile"
-        },
-        {
-          "name": "arrow"
-        }
-      ],
-      "name": {
-        "name": "EsqlFormat",
-        "namespace": "esql.query"
-      },
-      "specLocation": "esql/query/QueryRequest.ts#L93-L102"
     },
     {
       "kind": "type_alias",
