@@ -1,0 +1,10 @@
+summary: Detect noop updates
+description: >
+  By default updates that don't change anything detect that they don't change anything and return `"result": "noop"`.
+# type: response
+# response_code: ''
+value:
+  "{\n   \"_shards\": {\n        \"total\": 0,\n        \"successful\": 0,\n\
+  \        \"failed\": 0\n   },\n   \"_index\": \"test\",\n   \"_id\": \"1\",\n  \
+  \ \"_version\": 2,\n   \"_primary_term\": 1,\n   \"_seq_no\": 1,\n   \"result\"\
+  : \"noop\"\n}"

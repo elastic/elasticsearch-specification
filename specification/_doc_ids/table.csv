@@ -140,16 +140,13 @@ dissect-processor,https://www.elastic.co/guide/en/elasticsearch/reference/{branc
 distance-units,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/api-conventions.html#distance-units
 docs-bulk,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/docs-bulk.html
 docs-delete-by-query,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/docs-delete-by-query.html
-docs-delete-by-query,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/docs-delete-by-query.html
 docs-delete,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/docs-delete.html
 docs-get,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/docs-get.html
-docs-get,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/docs-get.html
-docs-index_,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/docs-index_.html
+docs-index,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/docs-index_.html
 docs-multi-get,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/docs-multi-get.html
 docs-multi-termvectors,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/docs-multi-termvectors.html
 docs-reindex,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/docs-reindex.html
 docs-termvectors,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/docs-termvectors.html
-docs-update-by-query,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/docs-update-by-query.html
 docs-update-by-query,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/docs-update-by-query.html
 docs-update,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/docs-update.html
 document-input-parameters,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/query-dsl-mlt-query.html#_document_input_parameters
@@ -381,6 +378,7 @@ node-roles,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/modu
 nodes-api-shutdown-delete,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/delete-shutdown.html
 nodes-api-shutdown-status,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/get-shutdown.html
 nodes-api-shutdown,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/put-shutdown.html
+optimistic-concurrency,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/optimistic-concurrency-control.html
 paginate-search-results,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/paginate-search-results.html
 painless-contexts,https://www.elastic.co/guide/en/elasticsearch/painless/{branch}/painless-contexts.html
 painless-execute-api,https://www.elastic.co/guide/en/elasticsearch/painless/{branch}/painless-execute-api.html
@@ -673,6 +671,7 @@ set-processor,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/s
 shape,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/shape.html
 simulate-ingest-api,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/simulate-ingest-api.html
 simulate-pipeline-api,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/simulate-pipeline-api.html
+slice-scroll,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/paginate-search-results.html#slice-scroll
 slm-api-delete-policy,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/slm-api-delete-policy.html
 slm-api-execute-lifecycle,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/slm-api-execute-lifecycle.html
 slm-api-execute-retention,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/slm-api-execute-retention.html
