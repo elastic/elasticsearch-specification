@@ -404,6 +404,16 @@ actions:
             examples: 
               postBehavioralAnalyticsEventRequestExample1:
                 $ref: "../../specification/search_application/post_behavioral_analytics_event/examples/request/BehavioralAnalyticsEventPostRequestExample1.yaml"
+## Examples for esql
+  - target: "$.paths['/_query/async']['post']"
+    description: "Add examples for async esql query operation"
+    update:
+      requestBody: 
+        content: 
+          application/json: 
+            examples:
+              esqlAsyncQueryRequestExample1:
+                 $ref: "../../specification/esql/async_query/examples/request/AsyncQueryRequestExample1.yaml"
 ## Examples for indices
   - target: "$.paths['/_lifecycle/stats']['get']"
     description: "Add examples for get lifecycle stats operation"
