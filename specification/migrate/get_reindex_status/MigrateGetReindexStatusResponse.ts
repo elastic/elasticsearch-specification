@@ -17,8 +17,31 @@
  * under the License.
  */
 
-import { AcknowledgedResponseBase } from '@_types/Base'
+import { integer, long } from '@_types/Numeric'
+import { DateTime, EpochTime, UnitMillis } from '@_types/Time'
 
 export class Response {
-  body: AcknowledgedResponseBase
+  body: {
+    start_time?: DateTime
+    start_time_millis: EpochTime<UnitMillis>
+    complete: boolean
+    total_indices_in_data_stream: integer
+    total_indices_requiring_upgrade: integer
+    successes: integer
+    in_progress: Array<StatusInProgress>
+    pending: integer
+    errors: Array<StatusError>
+    exception?: string
+  }
+}
+
+export class StatusInProgress {
+  index: string
+  total_doc_count: long
+  reindexed_doc_count: long
+}
+
+export class StatusError {
+  index: string
+  message: string
 }

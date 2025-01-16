@@ -17678,7 +17678,55 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/_types:AcknowledgedResponseBase"
+                  "type": "object",
+                  "properties": {
+                    "start_time": {
+                      "$ref": "#/components/schemas/_types:DateTime"
+                    },
+                    "start_time_millis": {
+                      "$ref": "#/components/schemas/_types:EpochTimeUnitMillis"
+                    },
+                    "complete": {
+                      "type": "boolean"
+                    },
+                    "total_indices_in_data_stream": {
+                      "type": "number"
+                    },
+                    "total_indices_requiring_upgrade": {
+                      "type": "number"
+                    },
+                    "successes": {
+                      "type": "number"
+                    },
+                    "in_progress": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/migrate.get_reindex_status:StatusInProgress"
+                      }
+                    },
+                    "pending": {
+                      "type": "number"
+                    },
+                    "errors": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/migrate.get_reindex_status:StatusError"
+                      }
+                    },
+                    "exception": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "start_time_millis",
+                    "complete",
+                    "total_indices_in_data_stream",
+                    "total_indices_requiring_upgrade",
+                    "successes",
+                    "in_progress",
+                    "pending",
+                    "errors"
+                  ]
                 }
               }
             }
@@ -17699,7 +17747,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/migrate._types:MigrateReindex"
+                "$ref": "#/components/schemas/migrate.reindex:MigrateReindex"
               }
             }
           },
@@ -75537,7 +75585,7 @@
           "_index"
         ]
       },
-      "migrate._types:CreateFrom": {
+      "migrate.create_from:CreateFrom": {
         "type": "object",
         "properties": {
           "mappings_override": {
@@ -75548,15 +75596,48 @@
           }
         }
       },
-      "migrate._types:MigrateReindex": {
+      "migrate.get_reindex_status:StatusInProgress": {
+        "type": "object",
+        "properties": {
+          "index": {
+            "type": "string"
+          },
+          "total_doc_count": {
+            "type": "number"
+          },
+          "reindexed_doc_count": {
+            "type": "number"
+          }
+        },
+        "required": [
+          "index",
+          "total_doc_count",
+          "reindexed_doc_count"
+        ]
+      },
+      "migrate.get_reindex_status:StatusError": {
+        "type": "object",
+        "properties": {
+          "index": {
+            "type": "string"
+          },
+          "message": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "index",
+          "message"
+        ]
+      },
+      "migrate.reindex:MigrateReindex": {
         "type": "object",
         "properties": {
           "mode": {
-            "description": "Reindex mode. Currently only 'upgrade' is supported.",
-            "type": "string"
+            "$ref": "#/components/schemas/migrate.reindex:ModeEnum"
           },
           "source": {
-            "$ref": "#/components/schemas/migrate._types:Index"
+            "$ref": "#/components/schemas/migrate.reindex:SourceIndex"
           }
         },
         "required": [
@@ -75564,11 +75645,17 @@
           "source"
         ]
       },
-      "migrate._types:Index": {
+      "migrate.reindex:ModeEnum": {
+        "type": "string",
+        "enum": [
+          "upgrade"
+        ]
+      },
+      "migrate.reindex:SourceIndex": {
         "type": "object",
         "properties": {
           "index": {
-            "$ref": "#/components/schemas/_types:Indices"
+            "$ref": "#/components/schemas/_types:IndexName"
           }
         },
         "required": [
@@ -102132,7 +102219,7 @@
         "required": true,
         "deprecated": false,
         "schema": {
-          "type": "string"
+          "$ref": "#/components/schemas/_types:IndexName"
         },
         "style": "simple"
       },
@@ -102143,7 +102230,7 @@
         "required": true,
         "deprecated": false,
         "schema": {
-          "type": "string"
+          "$ref": "#/components/schemas/_types:IndexName"
         },
         "style": "simple"
       },
@@ -107606,7 +107693,7 @@
         "content": {
           "application/json": {
             "schema": {
-              "$ref": "#/components/schemas/migrate._types:CreateFrom"
+              "$ref": "#/components/schemas/migrate.create_from:CreateFrom"
             }
           }
         },

@@ -13853,7 +13853,29 @@ export interface MigrateGetReindexStatusRequest extends RequestBase {
   index: Indices
 }
 
-export type MigrateGetReindexStatusResponse = AcknowledgedResponseBase
+export interface MigrateGetReindexStatusResponse {
+  start_time?: DateTime
+  start_time_millis: EpochTime<UnitMillis>
+  complete: boolean
+  total_indices_in_data_stream: integer
+  total_indices_requiring_upgrade: integer
+  successes: integer
+  in_progress: MigrateGetReindexStatusStatusInProgress[]
+  pending: integer
+  errors: MigrateGetReindexStatusStatusError[]
+  exception?: string
+}
+
+export interface MigrateGetReindexStatusStatusError {
+  index: string
+  message: string
+}
+
+export interface MigrateGetReindexStatusStatusInProgress {
+  index: string
+  total_doc_count: long
+  reindexed_doc_count: long
+}
 
 export interface MigrateReindexMigrateReindex {
   mode: MigrateReindexModeEnum

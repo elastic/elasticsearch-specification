@@ -17,9 +17,9 @@
  * under the License.
  */
 
-import { IndexName } from '@_types/common'
-import { RequestBase } from '@_types/Base'
 import { IndexSettings } from '@indices/_types/IndexSettings'
+import { RequestBase } from '@_types/Base'
+import { IndexName } from '@_types/common'
 import { TypeMapping } from '@_types/mapping/TypeMapping'
 
 /**
@@ -41,7 +41,6 @@ export interface Request extends RequestBase {
   /** @codegen_name create_from */
   body: CreateFrom
 }
-
 
 export class CreateFrom {
   /**

@@ -17,8 +17,8 @@
  * under the License.
  */
 
-import { IndexName } from '@_types/common'
 import { RequestBase } from '@_types/Base'
+import { IndexName } from '@_types/common'
 
 /**
  * "This API reindexes all legacy backing indices for a data stream. It does this in a persistent task. The persistent task id is returned immediately, and the reindexing work is completed in that task
