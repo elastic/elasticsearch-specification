@@ -17,8 +17,8 @@
  * under the License.
  */
 
+import { IndexName } from '@_types/common'
 import { RequestBase } from '@_types/Base'
-import { MigrateReindex } from '../_types/MigrateReindex'
 
 /**
  * "This API reindexes all legacy backing indices for a data stream. It does this in a persistent task. The persistent task id is returned immediately, and the reindexing work is completed in that task
@@ -31,4 +31,23 @@ import { MigrateReindex } from '../_types/MigrateReindex'
 export interface Request extends RequestBase {
   /** @codegen_name reindex */
   body: MigrateReindex
+}
+
+export class MigrateReindex {
+  /**
+   * Reindex mode. Currently only 'upgrade' is supported.
+   */
+  mode: ModeEnum
+  /**
+   * The source index or data stream (only data streams are currently supported).
+   */
+  source: SourceIndex
+}
+
+export class SourceIndex {
+  index: IndexName
+}
+
+enum ModeEnum {
+  upgrade
 }

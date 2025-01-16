@@ -13826,30 +13826,21 @@ export interface LogstashPutPipelineRequest extends RequestBase {
 
 export type LogstashPutPipelineResponse = boolean
 
-export interface MigrateCreateFrom {
-  mappings_override?: MappingTypeMapping
-  settings_override?: IndicesIndexSettings
-}
-
-export interface MigrateIndex {
-  index: Indices
-}
-
-export interface MigrateMigrateReindex {
-  mode: string
-  source: MigrateIndex
-}
-
 export interface MigrateCancelReindexRequest extends RequestBase {
   index: Indices
 }
 
 export type MigrateCancelReindexResponse = AcknowledgedResponseBase
 
+export interface MigrateCreateFromCreateFrom {
+  mappings_override?: MappingTypeMapping
+  settings_override?: IndicesIndexSettings
+}
+
 export interface MigrateCreateFromRequest extends RequestBase {
-  source: string
-  dest: string
-  body?: MigrateCreateFrom
+  source: IndexName
+  dest: IndexName
+  body?: MigrateCreateFromCreateFrom
 }
 
 export interface MigrateCreateFromResponse {
@@ -13864,11 +13855,22 @@ export interface MigrateGetReindexStatusRequest extends RequestBase {
 
 export type MigrateGetReindexStatusResponse = AcknowledgedResponseBase
 
+export interface MigrateReindexMigrateReindex {
+  mode: MigrateReindexModeEnum
+  source: MigrateReindexSourceIndex
+}
+
+export type MigrateReindexModeEnum = 'upgrade'
+
 export interface MigrateReindexRequest extends RequestBase {
-  body?: MigrateMigrateReindex
+  body?: MigrateReindexMigrateReindex
 }
 
 export type MigrateReindexResponse = AcknowledgedResponseBase
+
+export interface MigrateReindexSourceIndex {
+  index: IndexName
+}
 
 export interface MigrationDeprecationsDeprecation {
   details?: string

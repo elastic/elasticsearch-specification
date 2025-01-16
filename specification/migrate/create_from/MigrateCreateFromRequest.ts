@@ -17,8 +17,10 @@
  * under the License.
  */
 
+import { IndexName } from '@_types/common'
 import { RequestBase } from '@_types/Base'
-import { CreateFrom } from '../_types/CreateFrom'
+import { IndexSettings } from '@indices/_types/IndexSettings'
+import { TypeMapping } from '@_types/mapping/TypeMapping'
 
 /**
  * This API creates a destination from a source index. It copies the mappings and settings from the source index while allowing request settings and mappings to override the source values.
@@ -32,10 +34,22 @@ import { CreateFrom } from '../_types/CreateFrom'
 export interface Request extends RequestBase {
   path_parts: {
     /** The source index or data stream name */
-    source: string
+    source: IndexName
     /** The destination index or data stream name */
-    dest: string
+    dest: IndexName
   }
   /** @codegen_name create_from */
   body: CreateFrom
+}
+
+
+export class CreateFrom {
+  /**
+   * Mappings overrides to be applied to the destination index (optional)
+   */
+  mappings_override?: TypeMapping
+  /**
+   * Settings overrides to be applied to the destination index (optional)
+   */
+  settings_override?: IndexSettings
 }
