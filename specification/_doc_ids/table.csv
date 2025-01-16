@@ -144,7 +144,7 @@ docs-delete-by-query,https://www.elastic.co/guide/en/elasticsearch/reference/{br
 docs-delete,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/docs-delete.html
 docs-get,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/docs-get.html
 docs-get,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/docs-get.html
-docs-index_,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/docs-index_.html
+docs-index,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/docs-index_.html
 docs-multi-get,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/docs-multi-get.html
 docs-multi-termvectors,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/docs-multi-termvectors.html
 docs-reindex,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/docs-reindex.html
@@ -378,6 +378,7 @@ node-roles,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/modu
 nodes-api-shutdown-delete,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/delete-shutdown.html
 nodes-api-shutdown-status,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/get-shutdown.html
 nodes-api-shutdown,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/put-shutdown.html
+optimistic-concurrency,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/optimistic-concurrency-control.html
 paginate-search-results,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/paginate-search-results.html
 painless-contexts,https://www.elastic.co/guide/en/elasticsearch/painless/{branch}/painless-contexts.html
 painless-execute-api,https://www.elastic.co/guide/en/elasticsearch/painless/{branch}/painless-execute-api.html
