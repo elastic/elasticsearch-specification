@@ -8397,6 +8397,278 @@
         "x-state": "Added in 7.9.0"
       }
     },
+    "/_query/async": {
+      "post": {
+        "tags": [
+          "esql"
+        ],
+        "summary": "Run an async ES|QL query",
+        "description": "Asynchronously run an ES|QL (Elasticsearch query language) query, monitor its progress, and retrieve results when they become available.\n\nThe API accepts the same parameters and request body as the synchronous query API, along with additional async related properties.",
+        "externalDocs": {
+          "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/esql.html"
+        },
+        "operationId": "esql-async-query",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "delimiter",
+            "description": "The character to use between values within a CSV row.\nIt is valid only for the CSV format.",
+            "deprecated": false,
+            "schema": {
+              "type": "string"
+            },
+            "style": "form"
+          },
+          {
+            "in": "query",
+            "name": "drop_null_columns",
+            "description": "Indicates whether columns that are entirely `null` will be removed from the `columns` and `values` portion of the results.\nIf `true`, the response will include an extra section under the name `all_columns` which has the name of all the columns.",
+            "deprecated": false,
+            "schema": {
+              "type": "boolean"
+            },
+            "style": "form"
+          },
+          {
+            "in": "query",
+            "name": "format",
+            "description": "A short version of the Accept header, for example `json` or `yaml`.",
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/esql._types:EsqlFormat"
+            },
+            "style": "form"
+          },
+          {
+            "in": "query",
+            "name": "keep_alive",
+            "description": "The period for which the query and its results are stored in the cluster.\nThe default period is five days.\nWhen this period expires, the query and its results are deleted, even if the query is still ongoing.\nIf the `keep_on_completion` parameter is false, Elasticsearch only stores async queries that do not complete within the period set by the `wait_for_completion_timeout` parameter, regardless of this value.",
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/_types:Duration"
+            },
+            "style": "form"
+          },
+          {
+            "in": "query",
+            "name": "keep_on_completion",
+            "description": "Indicates whether the query and its results are stored in the cluster.\nIf false, the query and its results are stored in the cluster only if the request does not complete during the period set by the `wait_for_completion_timeout` parameter.",
+            "deprecated": false,
+            "schema": {
+              "type": "boolean"
+            },
+            "style": "form"
+          },
+          {
+            "in": "query",
+            "name": "wait_for_completion_timeout",
+            "description": "The period to wait for the request to finish.\nBy default, the request waits for 1 second for the query results.\nIf the query completes during this period, results are returned\nOtherwise, a query ID is returned that can later be used to retrieve the results.",
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/_types:Duration"
+            },
+            "style": "form"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "columnar": {
+                    "description": "By default, ES|QL returns results as rows. For example, FROM returns each individual document as one row. For the JSON, YAML, CBOR and smile formats, ES|QL can return the results in a columnar fashion where one row represents all the values of a certain column in the results.",
+                    "type": "boolean"
+                  },
+                  "filter": {
+                    "$ref": "#/components/schemas/_types.query_dsl:QueryContainer"
+                  },
+                  "locale": {
+                    "type": "string"
+                  },
+                  "params": {
+                    "description": "To avoid any attempts of hacking or code injection, extract the values in a separate list of parameters. Use question mark placeholders (?) in the query string for each of the parameters.",
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/components/schemas/_types:FieldValue"
+                    }
+                  },
+                  "profile": {
+                    "description": "If provided and `true` the response will include an extra `profile` object\nwith information on how the query was executed. This information is for human debugging\nand its format can change at any time but it can give some insight into the performance\nof each part of the query.",
+                    "type": "boolean"
+                  },
+                  "query": {
+                    "description": "The ES|QL query API accepts an ES|QL query string in the query parameter, runs it, and returns the results.",
+                    "type": "string"
+                  },
+                  "tables": {
+                    "description": "Tables to use with the LOOKUP operation. The top level key is the table\nname and the next level key is the column name.",
+                    "type": "object",
+                    "additionalProperties": {
+                      "type": "object",
+                      "additionalProperties": {
+                        "$ref": "#/components/schemas/esql._types:TableValuesContainer"
+                      }
+                    }
+                  }
+                },
+                "required": [
+                  "query"
+                ]
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "columns": {
+                      "$ref": "#/components/schemas/_types:EsqlColumns"
+                    },
+                    "id": {
+                      "description": "A query identifier that is provided only when one of the following conditions is met:\n\n* A query request does not return complete results during the period specified in the `wait_for_completion_timeout` parameter.\n* The `keep_on_completion` parameter value is true.\n\nYou can use this ID with the `GET /_query/async/<id>` API to get the current status and available results for the query.",
+                      "type": "string"
+                    },
+                    "is_running": {
+                      "description": "Indicates whether the query is still running.\nIf the value is false, the async query has finished and the results are returned.",
+                      "type": "boolean"
+                    }
+                  },
+                  "required": [
+                    "is_running"
+                  ]
+                }
+              }
+            }
+          }
+        },
+        "x-state": "Added in 8.13.0"
+      }
+    },
+    "/_query/async/{id}": {
+      "get": {
+        "tags": [
+          "esql"
+        ],
+        "summary": "Get async ES|QL query results",
+        "description": "Get the current status and available results or stored results for an ES|QL asynchronous query.\nIf the Elasticsearch security features are enabled, only the user who first submitted the ES|QL query can retrieve the results using this API.",
+        "externalDocs": {
+          "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/esql.html"
+        },
+        "operationId": "esql-async-query-get",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "description": "The unique identifier of the query.\nA query ID is provided in the ES|QL async query API response for a query that does not complete in the designated time.\nA query ID is also provided when the request was submitted with the `keep_on_completion` parameter set to `true`.",
+            "required": true,
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/_types:Id"
+            },
+            "style": "simple"
+          },
+          {
+            "in": "query",
+            "name": "drop_null_columns",
+            "description": "Indicates whether columns that are entirely `null` will be removed from the `columns` and `values` portion of the results.\nIf `true`, the response will include an extra section under the name `all_columns` which has the name of all the columns.",
+            "deprecated": false,
+            "schema": {
+              "type": "boolean"
+            },
+            "style": "form"
+          },
+          {
+            "in": "query",
+            "name": "keep_alive",
+            "description": "The period for which the query and its results are stored in the cluster.\nWhen this period expires, the query and its results are deleted, even if the query is still ongoing.",
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/_types:Duration"
+            },
+            "style": "form"
+          },
+          {
+            "in": "query",
+            "name": "wait_for_completion_timeout",
+            "description": "The period to wait for the request to finish.\nBy default, the request waits for complete query results.\nIf the request completes during the period specified in this parameter, complete query results are returned.\nOtherwise, the response returns an `is_running` value of `true` and no results.",
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/_types:Duration"
+            },
+            "style": "form"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "columns": {
+                      "$ref": "#/components/schemas/_types:EsqlColumns"
+                    },
+                    "is_running": {
+                      "description": "Indicates whether the query is still running.\nIf the value is false, the async query has finished and the results are returned.",
+                      "type": "boolean"
+                    }
+                  },
+                  "required": [
+                    "is_running"
+                  ]
+                }
+              }
+            }
+          }
+        },
+        "x-state": "Added in 8.13.0"
+      },
+      "delete": {
+        "tags": [
+          "esql"
+        ],
+        "summary": "Delete an async ES|QL query",
+        "description": "If the query is still running, it is cancelled.\nOtherwise, the stored results are deleted.\n\nIf the Elasticsearch security features are enabled, only the following users can use this API to delete a query:\n\n* The authenticated user that submitted the original query request\n* Users with the `cancel_task` cluster privilege",
+        "externalDocs": {
+          "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/esql.html"
+        },
+        "operationId": "esql-async-query-delete",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "description": "The unique identifier of the query.\nA query ID is provided in the ES|QL async query API response for a query that does not complete in the designated time.\nA query ID is also provided when the request was submitted with the `keep_on_completion` parameter set to `true`.",
+            "required": true,
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/_types:Id"
+            },
+            "style": "simple"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/_types:AcknowledgedResponseBase"
+                }
+              }
+            }
+          }
+        },
+        "x-state": "Added in 8.13.0"
+      }
+    },
     "/_query": {
       "post": {
         "tags": [
@@ -8415,7 +8687,7 @@
             "description": "A short version of the Accept header, e.g. json, yaml.",
             "deprecated": false,
             "schema": {
-              "$ref": "#/components/schemas/esql.query:EsqlFormat"
+              "$ref": "#/components/schemas/esql._types:EsqlFormat"
             },
             "style": "form"
           },
@@ -68071,7 +68343,7 @@
           "head"
         ]
       },
-      "esql.query:EsqlFormat": {
+      "esql._types:EsqlFormat": {
         "type": "string",
         "enum": [
           "csv",

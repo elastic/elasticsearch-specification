@@ -5110,7 +5110,7 @@
             "description": "A short version of the Accept header, e.g. json, yaml.",
             "deprecated": false,
             "schema": {
-              "$ref": "#/components/schemas/esql.query:EsqlFormat"
+              "$ref": "#/components/schemas/esql._types:EsqlFormat"
             },
             "style": "form"
           },
@@ -44617,7 +44617,7 @@
           "head"
         ]
       },
-      "esql.query:EsqlFormat": {
+      "esql._types:EsqlFormat": {
         "type": "string",
         "enum": [
           "csv",
