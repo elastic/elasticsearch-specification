@@ -268,13 +268,9 @@
     },
     "esql.async_query": {
       "request": [
-        "Missing request & response"
-      ],
-      "response": []
-    },
-    "esql.async_query_get": {
-      "request": [
-        "Missing request & response"
+        "Request: query parameter 'keep_alive' does not exist in the json spec",
+        "Request: query parameter 'keep_on_completion' does not exist in the json spec",
+        "Request: query parameter 'wait_for_completion_timeout' does not exist in the json spec"
       ],
       "response": []
     },
