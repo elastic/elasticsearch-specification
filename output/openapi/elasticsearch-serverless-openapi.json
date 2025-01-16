@@ -3522,13 +3522,13 @@
           "document"
         ],
         "summary": "Get a document by its ID",
-        "description": "Retrieves the document with the specified ID from an index.",
+        "description": "Get a document and its source or stored fields from an index.\n\nBy default, this API is realtime and is not affected by the refresh rate of the index (when data will become visible for search).\nIn the case where stored fields are requested with the `stored_fields` parameter and the document has been updated but is not yet refreshed, the API will have to parse and analyze the source to extract the stored fields.\nTo turn off realtime behavior, set the `realtime` parameter to false.\n\n**Source filtering**\n\nBy default, the API returns the contents of the `_source` field unless you have used the `stored_fields` parameter or the `_source` field is turned off.\nYou can turn off `_source` retrieval by using the `_source` parameter:\n\n```\nGET my-index-000001/_doc/0?_source=false\n```\n\nIf you only need one or two fields from the `_source`, use the `_source_includes` or `_source_excludes` parameters to include or filter out particular fields.\nThis can be helpful with large documents where partial retrieval can save on network overhead\nBoth parameters take a comma separated list of fields or wildcard expressions.\nFor example:\n\n```\nGET my-index-000001/_doc/0?_source_includes=*.id&_source_excludes=entities\n```\n\nIf you only want to specify includes, you can use a shorter notation:\n\n```\nGET my-index-000001/_doc/0?_source=*.id\n```\n\n**Routing**\n\nIf routing is used during indexing, the routing value also needs to be specified to retrieve a document.\nFor example:\n\n```\nGET my-index-000001/_doc/2?routing=user1\n```\n\nThis request gets the document with ID 2, but it is routed based on the user.\nThe document is not fetched if the correct routing is not specified.\n\n**Distributed**\n\nThe GET operation is hashed into a specific shard ID.\nIt is then redirected to one of the replicas within that shard ID and returns the result.\nThe replicas are the primary shard and its replicas within that shard ID group.\nThis means that the more replicas you have, the better your GET scaling will be.\n\n**Versioning support**\n\nYou can use the `version` parameter to retrieve the document only if its current version is equal to the specified one.\n\nInternally, Elasticsearch has marked the old document as deleted and added an entirely new document.\nThe old version of the document doesn't disappear immediately, although you won't be able to access it.\nElasticsearch cleans up deleted documents in the background as you continue to index more data.",
         "operationId": "get",
         "parameters": [
           {
             "in": "path",
             "name": "index",
-            "description": "Name of the index that contains the document.",
+            "description": "The name of the index that contains the document.",
             "required": true,
             "deprecated": false,
             "schema": {
@@ -3539,7 +3539,7 @@
           {
             "in": "path",
             "name": "id",
-            "description": "Unique identifier of the document.",
+            "description": "A unique document identifier.",
             "required": true,
             "deprecated": false,
             "schema": {
@@ -3550,7 +3550,7 @@
           {
             "in": "query",
             "name": "preference",
-            "description": "Specifies the node or shard the operation should be performed on. Random by default.",
+            "description": "The node or shard the operation should be performed on.\nBy default, the operation is randomized between the shard replicas.\n\nIf it is set to `_local`, the operation will prefer to be run on a local allocated shard when possible.\nIf it is set to a custom value, the value is used to guarantee that the same shards will be used for the same custom value.\nThis can help with \"jumping values\" when hitting different shards in different refresh states.\nA sample value can be something like the web session ID or the user name.",
             "deprecated": false,
             "schema": {
               "type": "string"
@@ -3570,7 +3570,7 @@
           {
             "in": "query",
             "name": "refresh",
-            "description": "If true, Elasticsearch refreshes the affected shards to make this operation visible to search. If false, do nothing with refreshes.",
+            "description": "If `true`, the request refreshes the relevant shards before retrieving the document.\nSetting it to `true` should be done after careful thought and verification that this does not cause a heavy load on the system (and slow down indexing).",
             "deprecated": false,
             "schema": {
               "type": "boolean"
@@ -3580,7 +3580,7 @@
           {
             "in": "query",
             "name": "routing",
-            "description": "Target the specified primary shard.",
+            "description": "A custom value used to route operations to a specific shard.",
             "deprecated": false,
             "schema": {
               "$ref": "#/components/schemas/_types:Routing"
@@ -3590,7 +3590,7 @@
           {
             "in": "query",
             "name": "_source",
-            "description": "True or false to return the _source field or not, or a list of fields to return.",
+            "description": "Indicates whether to return the `_source` field (`true` or `false`) or lists the fields to return.",
             "deprecated": false,
             "schema": {
               "$ref": "#/components/schemas/_global.search._types:SourceConfigParam"
@@ -3600,7 +3600,7 @@
           {
             "in": "query",
             "name": "_source_excludes",
-            "description": "A comma-separated list of source fields to exclude in the response.",
+            "description": "A comma-separated list of source fields to exclude from the response.\nYou can also use this parameter to exclude fields from the subset specified in `_source_includes` query parameter.\nIf the `_source` parameter is `false`, this parameter is ignored.",
             "deprecated": false,
             "schema": {
               "$ref": "#/components/schemas/_types:Fields"
@@ -3610,7 +3610,7 @@
           {
             "in": "query",
             "name": "_source_includes",
-            "description": "A comma-separated list of source fields to include in the response.",
+            "description": "A comma-separated list of source fields to include in the response.\nIf this parameter is specified, only these source fields are returned.\nYou can exclude fields from this subset using the `_source_excludes` query parameter.\nIf the `_source` parameter is `false`, this parameter is ignored.",
             "deprecated": false,
             "schema": {
               "$ref": "#/components/schemas/_types:Fields"
@@ -3620,7 +3620,7 @@
           {
             "in": "query",
             "name": "stored_fields",
-            "description": "List of stored fields to return as part of a hit.\nIf no fields are specified, no stored fields are included in the response.\nIf this field is specified, the `_source` parameter defaults to false.",
+            "description": "A comma-separated list of stored fields to return as part of a hit.\nIf no fields are specified, no stored fields are included in the response.\nIf this field is specified, the `_source` parameter defaults to `false`.\nOnly leaf fields can be retrieved with the `stored_field` option.\nObject fields can't be returned;​if specified, the request fails.",
             "deprecated": false,
             "schema": {
               "$ref": "#/components/schemas/_types:Fields"
@@ -3630,7 +3630,7 @@
           {
             "in": "query",
             "name": "version",
-            "description": "Explicit version number for concurrency control. The specified version must match the current version of the document for the request to succeed.",
+            "description": "The version number for concurrency control.\nIt must match the current version of the document for the request to succeed.",
             "deprecated": false,
             "schema": {
               "$ref": "#/components/schemas/_types:VersionNumber"
@@ -3640,7 +3640,7 @@
           {
             "in": "query",
             "name": "version_type",
-            "description": "Specific version type: internal, external, external_gte.",
+            "description": "The version type.",
             "deprecated": false,
             "schema": {
               "$ref": "#/components/schemas/_types:VersionType"
@@ -3910,13 +3910,13 @@
           "document"
         ],
         "summary": "Check a document",
-        "description": "Checks if a specified document exists.",
+        "description": "Verify that a document exists.\nFor example, check to see if a document with the `_id` 0 exists:\n\n```\nHEAD my-index-000001/_doc/0\n```\n\nIf the document exists, the API returns a status code of `200 - OK`.\nIf the document doesn’t exist, the API returns `404 - Not Found`.\n\n**Versioning support**\n\nYou can use the `version` parameter to check the document only if its current version is equal to the specified one.\n\nInternally, Elasticsearch has marked the old document as deleted and added an entirely new document.\nThe old version of the document doesn't disappear immediately, although you won't be able to access it.\nElasticsearch cleans up deleted documents in the background as you continue to index more data.",
         "operationId": "exists",
         "parameters": [
           {
             "in": "path",
             "name": "index",
-            "description": "Comma-separated list of data streams, indices, and aliases.\nSupports wildcards (`*`).",
+            "description": "A comma-separated list of data streams, indices, and aliases.\nIt supports wildcards (`*`).",
             "required": true,
             "deprecated": false,
             "schema": {
@@ -3927,7 +3927,7 @@
           {
             "in": "path",
             "name": "id",
-            "description": "Identifier of the document.",
+            "description": "A unique document identifier.",
             "required": true,
             "deprecated": false,
             "schema": {
@@ -3938,7 +3938,7 @@
           {
             "in": "query",
             "name": "preference",
-            "description": "Specifies the node or shard the operation should be performed on.\nRandom by default.",
+            "description": "The node or shard the operation should be performed on.\nBy default, the operation is randomized between the shard replicas.\n\nIf it is set to `_local`, the operation will prefer to be run on a local allocated shard when possible.\nIf it is set to a custom value, the value is used to guarantee that the same shards will be used for the same custom value.\nThis can help with \"jumping values\" when hitting different shards in different refresh states.\nA sample value can be something like the web session ID or the user name.",
             "deprecated": false,
             "schema": {
               "type": "string"
@@ -3958,7 +3958,7 @@
           {
             "in": "query",
             "name": "refresh",
-            "description": "If `true`, Elasticsearch refreshes all shards involved in the delete by query after the request completes.",
+            "description": "If `true`, the request refreshes the relevant shards before retrieving the document.\nSetting it to `true` should be done after careful thought and verification that this does not cause a heavy load on the system (and slow down indexing).",
             "deprecated": false,
             "schema": {
               "type": "boolean"
@@ -3968,7 +3968,7 @@
           {
             "in": "query",
             "name": "routing",
-            "description": "Target the specified primary shard.",
+            "description": "A custom value used to route operations to a specific shard.",
             "deprecated": false,
             "schema": {
               "$ref": "#/components/schemas/_types:Routing"
@@ -3978,7 +3978,7 @@
           {
             "in": "query",
             "name": "_source",
-            "description": "`true` or `false` to return the `_source` field or not, or a list of fields to return.",
+            "description": "Indicates whether to return the `_source` field (`true` or `false`) or lists the fields to return.",
             "deprecated": false,
             "schema": {
               "$ref": "#/components/schemas/_global.search._types:SourceConfigParam"
@@ -3988,7 +3988,7 @@
           {
             "in": "query",
             "name": "_source_excludes",
-            "description": "A comma-separated list of source fields to exclude in the response.",
+            "description": "A comma-separated list of source fields to exclude from the response.\nYou can also use this parameter to exclude fields from the subset specified in `_source_includes` query parameter.\nIf the `_source` parameter is `false`, this parameter is ignored.",
             "deprecated": false,
             "schema": {
               "$ref": "#/components/schemas/_types:Fields"
@@ -3998,7 +3998,7 @@
           {
             "in": "query",
             "name": "_source_includes",
-            "description": "A comma-separated list of source fields to include in the response.",
+            "description": "A comma-separated list of source fields to include in the response.\nIf this parameter is specified, only these source fields are returned.\nYou can exclude fields from this subset using the `_source_excludes` query parameter.\nIf the `_source` parameter is `false`, this parameter is ignored.",
             "deprecated": false,
             "schema": {
               "$ref": "#/components/schemas/_types:Fields"
@@ -4008,7 +4008,7 @@
           {
             "in": "query",
             "name": "stored_fields",
-            "description": "List of stored fields to return as part of a hit.\nIf no fields are specified, no stored fields are included in the response.\nIf this field is specified, the `_source` parameter defaults to false.",
+            "description": "A comma-separated list of stored fields to return as part of a hit.\nIf no fields are specified, no stored fields are included in the response.\nIf this field is specified, the `_source` parameter defaults to `false`.",
             "deprecated": false,
             "schema": {
               "$ref": "#/components/schemas/_types:Fields"
@@ -4028,7 +4028,7 @@
           {
             "in": "query",
             "name": "version_type",
-            "description": "Specific version type: `external`, `external_gte`.",
+            "description": "The version type.",
             "deprecated": false,
             "schema": {
               "$ref": "#/components/schemas/_types:VersionType"
@@ -5205,13 +5205,16 @@
           "document"
         ],
         "summary": "Get a document's source",
-        "description": "Returns the source of a document.",
+        "description": "Get the source of a document.\nFor example:\n\n```\nGET my-index-000001/_source/1\n```\n\nYou can use the source filtering parameters to control which parts of the `_source` are returned:\n\n```\nGET my-index-000001/_source/1/?_source_includes=*.id&_source_excludes=entities\n```",
+        "externalDocs": {
+          "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/mapping-source-field.html"
+        },
         "operationId": "get-source",
         "parameters": [
           {
             "in": "path",
             "name": "index",
-            "description": "Name of the index that contains the document.",
+            "description": "The name of the index that contains the document.",
             "required": true,
             "deprecated": false,
             "schema": {
@@ -5222,7 +5225,7 @@
           {
             "in": "path",
             "name": "id",
-            "description": "Unique identifier of the document.",
+            "description": "A unique document identifier.",
             "required": true,
             "deprecated": false,
             "schema": {
@@ -5233,7 +5236,7 @@
           {
             "in": "query",
             "name": "preference",
-            "description": "Specifies the node or shard the operation should be performed on. Random by default.",
+            "description": "The node or shard the operation should be performed on.\nBy default, the operation is randomized between the shard replicas.",
             "deprecated": false,
             "schema": {
               "type": "string"
@@ -5243,7 +5246,7 @@
           {
             "in": "query",
             "name": "realtime",
-            "description": "Boolean) If true, the request is real-time as opposed to near-real-time.",
+            "description": "If `true`, the request is real-time as opposed to near-real-time.",
             "deprecated": false,
             "schema": {
               "type": "boolean"
@@ -5253,7 +5256,7 @@
           {
             "in": "query",
             "name": "refresh",
-            "description": "If true, Elasticsearch refreshes the affected shards to make this operation visible to search. If false, do nothing with refreshes.",
+            "description": "If `true`, the request refreshes the relevant shards before retrieving the document.\nSetting it to `true` should be done after careful thought and verification that this does not cause a heavy load on the system (and slow down indexing).",
             "deprecated": false,
             "schema": {
               "type": "boolean"
@@ -5263,7 +5266,7 @@
           {
             "in": "query",
             "name": "routing",
-            "description": "Target the specified primary shard.",
+            "description": "A custom value used to route operations to a specific shard.",
             "deprecated": false,
             "schema": {
               "$ref": "#/components/schemas/_types:Routing"
@@ -5273,7 +5276,7 @@
           {
             "in": "query",
             "name": "_source",
-            "description": "True or false to return the _source field or not, or a list of fields to return.",
+            "description": "Indicates whether to return the `_source` field (`true` or `false`) or lists the fields to return.",
             "deprecated": false,
             "schema": {
               "$ref": "#/components/schemas/_global.search._types:SourceConfigParam"
@@ -5303,6 +5306,7 @@
           {
             "in": "query",
             "name": "stored_fields",
+            "description": "A comma-separated list of stored fields to return as part of a hit.",
             "deprecated": false,
             "schema": {
               "$ref": "#/components/schemas/_types:Fields"
@@ -5312,7 +5316,7 @@
           {
             "in": "query",
             "name": "version",
-            "description": "Explicit version number for concurrency control. The specified version must match the current version of the document for the request to succeed.",
+            "description": "The version number for concurrency control.\nIt must match the current version of the document for the request to succeed.",
             "deprecated": false,
             "schema": {
               "$ref": "#/components/schemas/_types:VersionNumber"
@@ -5322,7 +5326,7 @@
           {
             "in": "query",
             "name": "version_type",
-            "description": "Specific version type: internal, external, external_gte.",
+            "description": "The version type.",
             "deprecated": false,
             "schema": {
               "$ref": "#/components/schemas/_types:VersionType"
@@ -5348,13 +5352,16 @@
           "document"
         ],
         "summary": "Check for a document source",
-        "description": "Checks if a document's `_source` is stored.",
+        "description": "Check whether a document source exists in an index.\nFor example:\n\n```\nHEAD my-index-000001/_source/1\n```\n\nA document's source is not available if it is disabled in the mapping.",
+        "externalDocs": {
+          "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/mapping-source-field.html"
+        },
         "operationId": "exists-source",
         "parameters": [
           {
             "in": "path",
             "name": "index",
-            "description": "Comma-separated list of data streams, indices, and aliases.\nSupports wildcards (`*`).",
+            "description": "A comma-separated list of data streams, indices, and aliases.\nIt supports wildcards (`*`).",
             "required": true,
             "deprecated": false,
             "schema": {
@@ -5365,7 +5372,7 @@
           {
             "in": "path",
             "name": "id",
-            "description": "Identifier of the document.",
+            "description": "A unique identifier for the document.",
             "required": true,
             "deprecated": false,
             "schema": {
@@ -5376,7 +5383,7 @@
           {
             "in": "query",
             "name": "preference",
-            "description": "Specifies the node or shard the operation should be performed on.\nRandom by default.",
+            "description": "The node or shard the operation should be performed on.\nBy default, the operation is randomized between the shard replicas.",
             "deprecated": false,
             "schema": {
               "type": "string"
@@ -5386,7 +5393,7 @@
           {
             "in": "query",
             "name": "realtime",
-            "description": "If true, the request is real-time as opposed to near-real-time.",
+            "description": "If `true`, the request is real-time as opposed to near-real-time.",
             "deprecated": false,
             "schema": {
               "type": "boolean"
@@ -5396,7 +5403,7 @@
           {
             "in": "query",
             "name": "refresh",
-            "description": "If `true`, Elasticsearch refreshes all shards involved in the delete by query after the request completes.",
+            "description": "If `true`, the request refreshes the relevant shards before retrieving the document.\nSetting it to `true` should be done after careful thought and verification that this does not cause a heavy load on the system (and slow down indexing).",
             "deprecated": false,
             "schema": {
               "type": "boolean"
@@ -5406,7 +5413,7 @@
           {
             "in": "query",
             "name": "routing",
-            "description": "Target the specified primary shard.",
+            "description": "A custom value used to route operations to a specific shard.",
             "deprecated": false,
             "schema": {
               "$ref": "#/components/schemas/_types:Routing"
@@ -5416,7 +5423,7 @@
           {
             "in": "query",
             "name": "_source",
-            "description": "`true` or `false` to return the `_source` field or not, or a list of fields to return.",
+            "description": "Indicates whether to return the `_source` field (`true` or `false`) or lists the fields to return.",
             "deprecated": false,
             "schema": {
               "$ref": "#/components/schemas/_global.search._types:SourceConfigParam"
@@ -5446,7 +5453,7 @@
           {
             "in": "query",
             "name": "version",
-            "description": "Explicit version number for concurrency control.\nThe specified version must match the current version of the document for the request to succeed.",
+            "description": "The version number for concurrency control.\nIt must match the current version of the document for the request to succeed.",
             "deprecated": false,
             "schema": {
               "$ref": "#/components/schemas/_types:VersionNumber"
@@ -5456,7 +5463,7 @@
           {
             "in": "query",
             "name": "version_type",
-            "description": "Specific version type: `external`, `external_gte`.",
+            "description": "The version type.",
             "deprecated": false,
             "schema": {
               "$ref": "#/components/schemas/_types:VersionType"
@@ -44845,6 +44852,7 @@
             "$ref": "#/components/schemas/_types:IndexName"
           },
           "fields": {
+            "description": "If the `stored_fields` parameter is set to `true` and `found` is `true`, it contains the document fields stored in the index.",
             "type": "object",
             "additionalProperties": {
               "type": "object"
@@ -44857,21 +44865,25 @@
             }
           },
           "found": {
+            "description": "Indicates whether the document exists.",
             "type": "boolean"
           },
           "_id": {
             "$ref": "#/components/schemas/_types:Id"
           },
           "_primary_term": {
+            "description": "The primary term assigned to the document for the indexing operation.",
             "type": "number"
           },
           "_routing": {
+            "description": "The explicit routing, if set.",
             "type": "string"
           },
           "_seq_no": {
             "$ref": "#/components/schemas/_types:SequenceNumber"
           },
           "_source": {
+            "description": "If `found` is `true`, it contains the document data formatted in JSON.\nIf the `_source` parameter is set to `false` or the `stored_fields` parameter is set to `true`, it is excluded.",
             "type": "object"
           },
           "_version": {

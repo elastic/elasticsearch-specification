@@ -143,7 +143,6 @@ docs-delete-by-query,https://www.elastic.co/guide/en/elasticsearch/reference/{br
 docs-delete-by-query,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/docs-delete-by-query.html
 docs-delete,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/docs-delete.html
 docs-get,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/docs-get.html
-docs-get,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/docs-get.html
 docs-index,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/docs-index_.html
 docs-multi-get,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/docs-multi-get.html
 docs-multi-termvectors,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/docs-multi-termvectors.html
