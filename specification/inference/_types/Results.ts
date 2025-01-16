@@ -108,18 +108,6 @@ export class RerankedInferenceResult {
 }
 
 /**
- * InferenceResult is an aggregation of mutually exclusive variants
- * @variants container
- */
-export class InferenceResult {
-  text_embedding_bytes?: Array<TextEmbeddingByteResult>
-  text_embedding?: Array<TextEmbeddingResult>
-  sparse_embedding?: Array<SparseEmbeddingResult>
-  completion?: Array<CompletionResult>
-  rerank?: Array<RankedDocument>
-}
-
-/**
  * Acknowledged response. For dry_run, contains the list of pipelines which reference the inference endpoint
  */
 export class DeleteInferenceEndpointResult extends AcknowledgedResponseBase {
