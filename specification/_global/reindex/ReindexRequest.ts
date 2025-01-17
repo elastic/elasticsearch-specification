@@ -96,7 +96,7 @@ import { Destination, Source } from './types'
  * done
  * ```
  *
- * ** Throttling**
+ * **Throttling**
  *
  * Set `requests_per_second` to any positive decimal number (`1.4`, `6`, `1000`, for example) to throttle the rate at which reindex issues batches of index operations.
  * Requests are throttled by padding each batch with a wait time.
