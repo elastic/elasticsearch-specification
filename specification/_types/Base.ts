@@ -34,12 +34,34 @@ import { DateTime } from './Time'
 export class RequestBase implements CommonQueryParameters {}
 
 export class WriteResponseBase {
+  /**
+   * The unique identifier for the added document.
+   */
   _id: Id
+  /**
+   * The name of the index the document was added to.
+   */
   _index: IndexName
+  /**
+   * The primary term assigned to the document for the indexing operation.
+   */
   _primary_term?: long
+  /**
+   * The result of the indexing operation: `created` or `updated`.
+   */
   result: Result
+  /**
+   * The sequence number assigned to the document for the indexing operation.
+   * Sequence numbers are used to ensure an older version of a document doesn't overwrite a newer version.
+   */
   _seq_no?: SequenceNumber
+  /**
+   * Information about the replication process of the operation.
+   */
   _shards: ShardStatistics
+  /**
+   * The document version, which is incremented each time the document is updated.
+   */
   _version: VersionNumber
   forced_refresh?: boolean
 }
