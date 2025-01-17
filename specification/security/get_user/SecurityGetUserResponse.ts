@@ -21,6 +21,10 @@ import { User } from '@security/_types/User'
 import { Dictionary } from '@spec_utils/Dictionary'
 
 export class Response {
-  /** @codegen_name users */
+  /**
+   * A successful call returns an array of users with the JSON representation of the users.
+   * Note that user passwords are not included.
+   * If the user is not defined in the native realm, a 404 response code occurs.
+   * @codegen_name users */
   body: Dictionary<string, User>
 }

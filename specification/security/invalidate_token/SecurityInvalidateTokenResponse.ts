@@ -21,10 +21,26 @@ import { ErrorCause } from '@_types/Errors'
 import { long } from '@_types/Numeric'
 
 export class Response {
+  /**
+   * A successful call returns a JSON structure that contains the number of tokens that were invalidated, the number of tokens that had already been invalidated, and potentially a list of errors encountered while invalidating specific tokens.
+   */
   body: {
+    /**
+     * The number of errors that were encountered when invalidating the tokens.
+     */
     error_count: long
+    /**
+     * Details about the errors.
+     * This field is not present in the response when `error_count` is `0`.
+     */
     error_details?: ErrorCause[]
+    /**
+     * The number of the tokens that were invalidated as part of this request.
+     */
     invalidated_tokens: long
+    /**
+     * The number of tokens that were already invalidated.
+     */
     previously_invalidated_tokens: long
   }
 }

@@ -18,5 +18,11 @@
  */
 
 export class Response {
-  body: { found: boolean }
+  body: {
+    /**
+     * If the role is successfully deleted, `found` is `true`.
+     * Otherwise, `found` is `false`.
+     */
+    found: boolean
+  }
 }

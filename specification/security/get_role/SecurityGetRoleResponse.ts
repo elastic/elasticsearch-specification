@@ -21,6 +21,11 @@ import { Dictionary } from '@spec_utils/Dictionary'
 import { Role } from './types'
 
 export class Response {
-  /** @codegen_name roles */
+  /**
+   * A successful call returns an array of roles with the JSON representation of the role.
+   * The returned role format is a simple extension of the role definition format, only adding an extra field `transient_metadata.enabled`.
+   * This field is false in case the role is automatically disabled, for example when the license level does not allow some permissions that the role grants.
+   * If the role is not defined in the native realm, the request returns 404.
+   * @codegen_name roles */
   body: Dictionary<string, Role>
 }

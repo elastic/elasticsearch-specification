@@ -21,6 +21,7 @@ import { RequestBase } from '@_types/Base'
 
 /**
  * Authenticate OpenID Connect.
+ *
  * Exchange an OpenID Connect authentication response message for an Elasticsearch internal access token and refresh token that can be subsequently used for authentication.
  *
  * Elasticsearch exposes all the necessary OpenID Connect related functionality with the OpenID Connect APIs.

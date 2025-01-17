@@ -22,7 +22,13 @@ import { Duration } from '@_types/Time'
 
 /**
  * Get security index settings.
+ *
  * Get the user-configurable settings for the security internal index (`.security` and associated indices).
+ * Only a subset of the index settings — those that are user-configurable—will be shown.
+ * This includes:
+ *
+ * * `index.auto_expand_replicas`
+ * * `index.number_of_replicas`
  * @rest_spec_name security.get_settings
  * @availability stack stability=stable visibility=public
  * @doc_id security-api-get-settings

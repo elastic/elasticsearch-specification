@@ -31,7 +31,7 @@ export class Response {
      */
     count: integer
     /**
-     * A list of user information.
+     * A list of users that match the query.
      */
     users: QueryUser[]
   }

@@ -21,6 +21,9 @@ import { Dictionary } from '@spec_utils/Dictionary'
 import { RoleDescriptorWrapper } from './types'
 
 export class Response {
-  /** @codegen_name service_accoutns */
+  /**
+   * A successful call returns a JSON object of service accounts.
+   * The API returns an empty object if no service account is found.
+   * @codegen_name service_accoutns */
   body: Dictionary<string, RoleDescriptorWrapper>
 }

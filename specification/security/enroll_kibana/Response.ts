@@ -20,11 +20,22 @@
 export class Response {
   body: {
     token: Token
+    /**
+     * The CA certificate used to sign the node certificates that Elasticsearch uses for TLS on the HTTP layer.
+     * The certificate is returned as a Base64 encoded string of the ASN.1 DER encoding of the certificate.
+     */
     http_ca: string
   }
 }
 
 export class Token {
+  /**
+   * The name of the bearer token for the `elastic/kibana` service account.
+   */
   name: string
+  /**
+   * The value of the bearer token for the `elastic/kibana` service account.
+   * Use this value to authenticate the service account with Elasticsearch.
+   */
   value: string
 }

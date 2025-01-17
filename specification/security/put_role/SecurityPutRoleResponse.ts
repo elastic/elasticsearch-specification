@@ -20,5 +20,10 @@
 import { CreatedStatus } from '@security/_types/CreatedStatus'
 
 export class Response {
-  body: { role: CreatedStatus }
+  body: {
+    /**
+     * When an existing role is updated, `created` is set to `false`.
+     */
+    role: CreatedStatus
+  }
 }

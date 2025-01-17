@@ -1,0 +1,27 @@
+summary: Query users by role prefix
+description: >
+  A successful response from `POST /_security/_query/user?with_profile_uid=true` that contains users that have roles that are prefixed with `other`.
+  It also includes the user `profile_uid` in the response.
+# type: response
+# response_code:
+value: |-
+  {
+      "total": 1,
+      "count": 1,
+      "users": [
+          {
+              "username": "jacknich",
+              "roles": [
+                  "admin",
+                  "other_role1"
+              ],
+              "full_name": "Jack Nicholson",
+              "email": "jacknich@example.com",
+              "metadata": {
+                  "intelligence": 7
+              },
+              "enabled": true,
+              "profile_uid": "u_79HkWkwmnBH5gqFKwoxggWPjEBOur1zLPXQPEl1VBW0_0"
+          }
+      ]
+  }
