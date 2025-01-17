@@ -41,4 +41,10 @@ export interface Request extends RequestBase {
      */
     connector_id: Id
   }
+  query_parameters: {
+    /**
+     * A flag to indicate if the desired connector should be fetched even if it was soft-deleted
+     */
+    include_deleted?: boolean
+  }
 }
