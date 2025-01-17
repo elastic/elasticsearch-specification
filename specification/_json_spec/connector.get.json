@@ -25,9 +25,9 @@
     },
     "params": {
       "include_deleted": {
-	"type": "boolean",
-	"default": false,
-	"description": "A flag to indicate if the desired connector should be fetched even if it was soft-deleted"
+        "type": "boolean",
+        "default": false,
+        "description": "A flag to indicate if the desired connector should be fetched even if it was soft-deleted"
       }
     }
   }

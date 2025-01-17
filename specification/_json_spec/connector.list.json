@@ -45,9 +45,9 @@
         "description": "A search string for querying connectors, filtering results by matching against connector names, descriptions, and index names"
       },
       "include_deleted": {
-	"type": "boolean",
-	"default": false,
-	"description": "A flag that indicates whether a soft-deleted connectors will be fetched"
+        "type": "boolean",
+        "default": false,
+        "description": "A flag that indicates whether a soft-deleted connectors will be fetched"
       }
     }
   }
