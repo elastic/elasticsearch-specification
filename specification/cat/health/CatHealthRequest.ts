@@ -22,7 +22,8 @@ import { TimeUnit } from '@_types/Time'
 
 /**
  * Get the cluster health status.
- * IMPORTANT: cat APIs are only intended for human consumption using the command line or Kibana console.
+ *
+ * IMPORTANT: CAT APIs are only intended for human consumption using the command line or Kibana console.
  * They are not intended for use by applications. For application consumption, use the cluster health API.
  * This API is often used to check malfunctioning clusters.
  * To help you track cluster health alongside log files and alerting systems, the API returns timestamps in two formats:

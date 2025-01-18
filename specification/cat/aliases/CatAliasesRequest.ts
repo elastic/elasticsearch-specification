@@ -53,12 +53,12 @@ export interface Request extends CatRequestBase {
     /**
      * The type of index that wildcard patterns can match.
      * If the request can target data streams, this argument determines whether wildcard expressions match hidden data streams.
-     * It supports comma-separated values, such as `open,hidden`. 
+     * It supports comma-separated values, such as `open,hidden`.
      */
     expand_wildcards?: ExpandWildcards
     /**
      * The period to wait for a connection to the master node.
-     * If the master node is not available before the timeout expires, the request fails and returns an error. 
+     * If the master node is not available before the timeout expires, the request fails and returns an error.
      * To indicated that the request should never timeout, you can set it to `-1`.
      * @server_default 30s
      */
