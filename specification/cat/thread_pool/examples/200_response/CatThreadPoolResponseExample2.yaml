@@ -1,0 +1,10 @@
+summary: Explicit columns
+description: >
+  A successful response from `GET /_cat/thread_pool/generic?v=true&h=id,name,active,rejected,completed`.
+  It returns the `id`, `name`, `active`, `rejected`, and `completed` columns.
+  It also limits returned information to the generic thread pool.
+# type: response
+# response_code: 200
+value: |-
+  id                     name    active rejected completed
+  0EWUhXeBQtaVGlexUeVwMg generic      0        0        70

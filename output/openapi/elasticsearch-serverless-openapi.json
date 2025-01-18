@@ -672,7 +672,7 @@
           "cat"
         ],
         "summary": "Get aliases",
-        "description": "Retrieves the cluster’s index aliases, including filter and routing information.\nThe API does not return data stream aliases.\n\nCAT APIs are only intended for human consumption using the command line or the Kibana console. They are not intended for use by applications. For application consumption, use the aliases API.",
+        "description": "Get the cluster's index aliases, including filter and routing information.\nThis API does not return data stream aliases.\n\nIMPORTANT: CAT APIs are only intended for human consumption using the command line or the Kibana console. They are not intended for use by applications. For application consumption, use the aliases API.",
         "operationId": "cat-aliases",
         "parameters": [
           {
@@ -695,7 +695,7 @@
           "cat"
         ],
         "summary": "Get aliases",
-        "description": "Retrieves the cluster’s index aliases, including filter and routing information.\nThe API does not return data stream aliases.\n\nCAT APIs are only intended for human consumption using the command line or the Kibana console. They are not intended for use by applications. For application consumption, use the aliases API.",
+        "description": "Get the cluster's index aliases, including filter and routing information.\nThis API does not return data stream aliases.\n\nIMPORTANT: CAT APIs are only intended for human consumption using the command line or the Kibana console. They are not intended for use by applications. For application consumption, use the aliases API.",
         "operationId": "cat-aliases-1",
         "parameters": [
           {
@@ -58376,7 +58376,7 @@
       "cat.aliases#expand_wildcards": {
         "in": "query",
         "name": "expand_wildcards",
-        "description": "Whether to expand wildcard expression to concrete indices that are open, closed or both.",
+        "description": "The type of index that wildcard patterns can match.\nIf the request can target data streams, this argument determines whether wildcard expressions match hidden data streams.\nIt supports comma-separated values, such as `open,hidden`.",
         "deprecated": false,
         "schema": {
           "$ref": "#/components/schemas/_types:ExpandWildcards"
@@ -58386,7 +58386,7 @@
       "cat.aliases#master_timeout": {
         "in": "query",
         "name": "master_timeout",
-        "description": "Period to wait for a connection to the master node.",
+        "description": "The period to wait for a connection to the master node.\nIf the master node is not available before the timeout expires, the request fails and returns an error. \nTo indicated that the request should never timeout, you can set it to `-1`.",
         "deprecated": false,
         "schema": {
           "$ref": "#/components/schemas/_types:Duration"
