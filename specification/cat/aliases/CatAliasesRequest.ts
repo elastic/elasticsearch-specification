@@ -23,10 +23,11 @@ import { Duration } from '@_types/Time'
 
 /**
  * Get aliases.
- * Retrieves the cluster’s index aliases, including filter and routing information.
- * The API does not return data stream aliases.
  *
- * CAT APIs are only intended for human consumption using the command line or the Kibana console. They are not intended for use by applications. For application consumption, use the aliases API.
+ * Get the cluster's index aliases, including filter and routing information.
+ * This API does not return data stream aliases.
+ *
+ * IMPORTANT: CAT APIs are only intended for human consumption using the command line or the Kibana console. They are not intended for use by applications. For application consumption, use the aliases API.
  * @rest_spec_name cat.aliases
  * @availability stack stability=stable
  * @availability serverless stability=stable visibility=public
@@ -49,9 +50,16 @@ export interface Request extends CatRequestBase {
     name?: Names
   }
   query_parameters: {
+    /**
+     * The type of index that wildcard patterns can match.
+     * If the request can target data streams, this argument determines whether wildcard expressions match hidden data streams.
+     * It supports comma-separated values, such as `open,hidden`.
+     */
     expand_wildcards?: ExpandWildcards
     /**
-     * Period to wait for a connection to the master node.
+     * The period to wait for a connection to the master node.
+     * If the master node is not available before the timeout expires, the request fails and returns an error.
+     * To indicated that the request should never timeout, you can set it to `-1`.
      * @server_default 30s
      */
     master_timeout?: Duration

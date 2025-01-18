@@ -22,6 +22,7 @@ import { Duration, TimeUnit } from '@_types/Time'
 
 /**
  * Get pending task information.
+ *
  * Get information about cluster-level changes that have not yet taken effect.
  * IMPORTANT: cat APIs are only intended for human consumption using the command line or Kibana console. They are not intended for use by applications. For application consumption, use the pending cluster tasks API.
  * @rest_spec_name cat.pending_tasks

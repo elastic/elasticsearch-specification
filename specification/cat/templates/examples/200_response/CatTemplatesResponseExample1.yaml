@@ -1,0 +1,10 @@
+# summary:
+description: >
+  A successful response from `GET _cat/templates/my-template-*?v=true&s=name`.
+# type: response
+# response_code: 200
+value: |-
+  name          index_patterns order version composed_of
+  my-template-0 [te*]          500           []
+  my-template-1 [tea*]         501           []
+  my-template-2 [teak*]        502   7       []

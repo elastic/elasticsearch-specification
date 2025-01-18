@@ -1,0 +1,8 @@
+# summary:
+description: >
+  A successful response from `GET /_cat/master?v=true`.
+# type: response
+# response_code:
+value: |-
+  id                     host      ip        node
+  YzWoH_2BT-6UjVGDyPdqYg 127.0.0.1 127.0.0.1 YzWoH_2

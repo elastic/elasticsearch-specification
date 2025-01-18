@@ -28,6 +28,7 @@ calendar-and-fixed-intervals,https://www.elastic.co/guide/en/elasticsearch/refer
 cat-alias,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/cat-alias.html
 cat-allocation,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/cat-allocation.html
 cat-anomaly-detectors,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/cat-anomaly-detectors.html
+cat-component-templates,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/cat-component-templates.html
 cat-count,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/cat-count.html
 cat-datafeeds,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/cat-datafeeds.html
 cat-dfanalytics,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/cat-dfanalytics.html

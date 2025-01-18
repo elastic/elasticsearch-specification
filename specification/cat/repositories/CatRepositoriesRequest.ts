@@ -22,6 +22,7 @@ import { Duration } from '@_types/Time'
 
 /**
  * Get snapshot repository information.
+ *
  * Get a list of snapshot repositories for a cluster.
  * IMPORTANT: cat APIs are only intended for human consumption using the command line or Kibana console. They are not intended for use by applications. For application consumption, use the get snapshot repository API.
  * @rest_spec_name cat.repositories

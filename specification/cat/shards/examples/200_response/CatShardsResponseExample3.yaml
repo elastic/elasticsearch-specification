@@ -1,0 +1,8 @@
+summary: A relocating shard
+description: >
+  A successful response from `GET _cat/shards`.
+  The `RELOCATING` value in the `state` column indicates the index shard is relocating.
+# type: response
+# response_code: 200
+value: |-
+  my-index-000001 0 p RELOCATING 3014 31.1mb 192.168.56.10 H5dfFeA -> -> 192.168.56.30 bGG90GE

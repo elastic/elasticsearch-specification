@@ -24,9 +24,10 @@ import { TimeUnit } from '@_types/Time'
 
 /**
  * Get trained models.
- * Returns configuration and usage information about inference trained models.
  *
- * CAT APIs are only intended for human consumption using the Kibana
+ * Get configuration and usage information about inference trained models.
+ *
+ * IMPORTANT: CAT APIs are only intended for human consumption using the Kibana
  * console or command line. They are not intended for use by applications. For
  * application consumption, use the get trained models statistics API.
  *

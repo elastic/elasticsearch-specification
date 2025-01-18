@@ -1,0 +1,9 @@
+summary: No ongoing recoveries
+description: >
+  A successful response from `GET _cat/recovery?v=true`.
+  In this example, the source and target nodes are the same because the recovery type is `store`, meaning they were read from local storage on node start.
+# type: response
+# response_code: 200
+value: |-
+  index             shard time type  stage source_host source_node target_host target_node repository snapshot files files_recovered files_percent files_total bytes bytes_recovered bytes_percent bytes_total translog_ops translog_ops_recovered translog_ops_percent
+  my-index-000001   0     13ms store done  n/a         n/a         127.0.0.1   node-0      n/a        n/a      0     0               100%          13          0b    0b              100%          9928b       0            0                      100.0%

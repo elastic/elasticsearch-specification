@@ -1,0 +1,11 @@
+# summary:
+description: A successful response from `GET _cat/ml/data_frame/analytics?v=true`.
+# type: response
+# response_code: 200
+value: |-
+  id               create_time              type             state
+  classifier_job_1 2020-02-12T11:49:09.594Z classification stopped
+  classifier_job_2 2020-02-12T11:49:14.479Z classification stopped
+  classifier_job_3 2020-02-12T11:49:16.928Z classification stopped
+  classifier_job_4 2020-02-12T11:49:19.127Z classification stopped
+  classifier_job_5 2020-02-12T11:49:21.349Z classification stopped

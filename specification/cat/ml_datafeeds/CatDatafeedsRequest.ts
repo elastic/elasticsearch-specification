@@ -23,12 +23,13 @@ import { TimeUnit } from '@_types/Time'
 
 /**
  * Get datafeeds.
- * Returns configuration and usage information about datafeeds.
+ *
+ * Get configuration and usage information about datafeeds.
  * This API returns a maximum of 10,000 datafeeds.
  * If the Elasticsearch security features are enabled, you must have `monitor_ml`, `monitor`, `manage_ml`, or `manage`
  * cluster privileges to use this API.
  *
- * CAT APIs are only intended for human consumption using the Kibana
+ * IMPORTANT: CAT APIs are only intended for human consumption using the Kibana
  * console or command line. They are not intended for use by applications. For
  * application consumption, use the get datafeed statistics API.
  *
