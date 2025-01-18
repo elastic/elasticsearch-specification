@@ -10833,7 +10833,7 @@ export interface IlmMigrateAction {
 
 export interface IlmPhase {
   actions?: IlmActions
-  min_age?: Duration | long
+  min_age?: Duration
 }
 
 export interface IlmPhases {
@@ -21749,7 +21749,7 @@ export interface XpackUsageIlm {
 
 export interface XpackUsageIlmPolicyStatistics {
   indices_managed: integer
-  phases: IlmPhases
+  phases: XpackUsagePhases
 }
 
 export interface XpackUsageInvocations {
@@ -21859,6 +21859,19 @@ export interface XpackUsageMlJobForecasts {
 export interface XpackUsageMonitoring extends XpackUsageBase {
   collection_enabled: boolean
   enabled_exporters: Record<string, long>
+}
+
+export interface XpackUsagePhase {
+  actions: string[]
+  min_age: DurationValue<UnitMillis>
+}
+
+export interface XpackUsagePhases {
+  cold?: XpackUsagePhase
+  delete?: XpackUsagePhase
+  frozen?: XpackUsagePhase
+  hot?: XpackUsagePhase
+  warm?: XpackUsagePhase
 }
 
 export interface XpackUsageQuery {
