@@ -19,7 +19,7 @@
 
 import { FieldCollapse } from '@global/search/_types/FieldCollapse'
 import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
-import { QueryVector, QueryVectorBuilder } from '@_types/Knn'
+import {QueryVector, QueryVectorBuilder, RescoreVector} from '@_types/Knn'
 import { float, integer } from '@_types/Numeric'
 import { Sort, SortResults } from '@_types/sort'
 import { Id } from './common'
@@ -74,6 +74,8 @@ export class KnnRetriever extends RetrieverBase {
   num_candidates: integer
   /** The minimum similarity required for a document to be considered a match.  */
   similarity?: float
+  /** Apply oversampling and rescoring to quantized vectors */
+  rescore_vector?: RescoreVector
 }
 
 export class RRFRetriever extends RetrieverBase {

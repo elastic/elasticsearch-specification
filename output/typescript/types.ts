@@ -2510,6 +2510,7 @@ export interface KnnRetriever extends RetrieverBase {
   k: integer
   num_candidates: integer
   similarity?: float
+  rescore_vector?: RescoreVector
 }
 
 export interface KnnSearch {
