@@ -23,7 +23,8 @@ import { Duration, TimeUnit } from '@_types/Time'
 
 /**
  * Get index information.
- * Returns high-level information about indices in a cluster, including backing indices for data streams.
+ *
+ * Get high-level information about indices in a cluster, including backing indices for data streams.
  *
  * Use this request to get the following information for each index in a cluster:
  * - shard count

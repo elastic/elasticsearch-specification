@@ -22,8 +22,11 @@ import { Bytes, NodeIds } from '@_types/common'
 import { Duration } from '@_types/Time'
 
 /**
- * Provides a snapshot of the number of shards allocated to each data node and their disk space.
- * IMPORTANT: cat APIs are only intended for human consumption using the command line or Kibana console. They are not intended for use by applications.
+ * Get shard allocation information.
+ *
+ * Get a snapshot of the number of shards allocated to each data node and their disk space.
+ *
+ * IMPORTANT: CAT APIs are only intended for human consumption using the command line or Kibana console. They are not intended for use by applications.
  * @rest_spec_name cat.allocation
  * @availability stack stability=stable
  * @availability serverless stability=stable visibility=private
@@ -42,7 +45,7 @@ export interface Request extends CatRequestBase {
     }
   ]
   path_parts: {
-    /** Comma-separated list of node identifiers or names used to limit the returned information. */
+    /** A comma-separated list of node identifiers or names used to limit the returned information. */
     node_id?: NodeIds
   }
   query_parameters: {

@@ -22,15 +22,17 @@ import { Duration } from '@_types/Time'
 
 /**
  * Get component templates.
- * Returns information about component templates in a cluster.
+ *
+ * Get information about component templates in a cluster.
  * Component templates are building blocks for constructing index templates that specify index mappings, settings, and aliases.
  *
- * CAT APIs are only intended for human consumption using the command line or Kibana console.
+ * IMPORTANT: CAT APIs are only intended for human consumption using the command line or Kibana console.
  * They are not intended for use by applications. For application consumption, use the get component template API.
  * @rest_spec_name cat.component_templates
  * @availability stack since=5.1.0 stability=stable
  * @availability serverless stability=stable visibility=public
  * @cluster_privileges monitor
+ * @doc_id cat-component-templates
  */
 export interface Request extends CatRequestBase {
   urls: [
@@ -44,7 +46,10 @@ export interface Request extends CatRequestBase {
     }
   ]
   path_parts: {
-    /** The name of the component template. Accepts wildcard expressions. If omitted, all component templates are returned. */
+    /**
+     * The name of the component template.
+     * It accepts wildcard expressions.
+     * If it is omitted, all component templates are returned. */
     name?: string
   }
   query_parameters: {
@@ -57,7 +62,7 @@ export interface Request extends CatRequestBase {
      */
     local?: boolean
     /**
-     * Period to wait for a connection to the master node.
+     * The period to wait for a connection to the master node.
      * @server_default 30s
      */
     master_timeout?: Duration
