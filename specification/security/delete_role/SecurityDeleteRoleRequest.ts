@@ -24,6 +24,8 @@ import { Name, Refresh } from '@_types/common'
  * Delete roles.
  *
  * Delete roles in the native realm.
+ * The role management APIs are generally the preferred way to manage roles, rather than using file-based role management.
+ * The delete roles API cannot remove roles that are defined in roles files.
  * @rest_spec_name security.delete_role
  * @availability stack stability=stable
  * @availability serverless stability=stable visibility=private
@@ -38,6 +40,7 @@ export interface Request extends RequestBase {
     }
   ]
   path_parts: {
+    /** The name of the role. */
     name: Name
   }
   query_parameters: {

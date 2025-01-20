@@ -20,6 +20,9 @@
 import { Token } from './types'
 
 export class Response {
+  /**
+   * A successful create service account token API call returns a JSON structure that contains the service account token, its name, and its secret value.
+   */
   body: {
     created: boolean
     token: Token

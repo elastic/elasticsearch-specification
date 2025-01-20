@@ -39,6 +39,11 @@ export interface Request extends RequestBase {
     }
   ]
   path_parts: {
+    /**
+     * A comma-separated list of applications.
+     * To clear all applications, use an asterism (`*`).
+     * It does not support other wildcard patterns.
+     */
     application: Name
   }
 }

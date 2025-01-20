@@ -37,6 +37,9 @@ export interface Request extends RequestBase {
     }
   ]
   path_parts: {
+    /**
+     * An identifier for the user.
+     */
     username: Username
   }
   query_parameters: {
