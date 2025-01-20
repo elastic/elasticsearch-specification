@@ -47369,6 +47369,9 @@
               "similarity": {
                 "description": "The minimum similarity for a vector to be considered a match",
                 "type": "number"
+              },
+              "rescore_vector": {
+                "$ref": "#/components/schemas/_types:RescoreVector"
               }
             },
             "required": [
@@ -47406,6 +47409,18 @@
         "required": [
           "model_id",
           "model_text"
+        ]
+      },
+      "_types:RescoreVector": {
+        "type": "object",
+        "properties": {
+          "oversample": {
+            "description": "Applies the specified oversample factor to k on the approximate kNN search",
+            "type": "number"
+          }
+        },
+        "required": [
+          "oversample"
         ]
       },
       "_types.query_dsl:MatchQuery": {
@@ -52356,6 +52371,9 @@
           },
           "inner_hits": {
             "$ref": "#/components/schemas/_global.search._types:InnerHits"
+          },
+          "rescore_vector": {
+            "$ref": "#/components/schemas/_types:RescoreVector"
           }
         },
         "required": [
@@ -85711,6 +85729,9 @@
               "similarity": {
                 "description": "The minimum similarity required for a document to be considered a match.",
                 "type": "number"
+              },
+              "rescore_vector": {
+                "$ref": "#/components/schemas/_types:RescoreVector"
               }
             },
             "required": [
