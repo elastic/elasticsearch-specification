@@ -75,7 +75,7 @@ import { Duration } from '@_types/Time'
  *
  * NOTE: Data streams do not support custom routing unless they were created with the `allow_custom_routing` setting enabled in the template.
  *
- * ** Distributed**
+ * **Distributed**
  *
  * The index operation is directed to the primary shard based on its route and performed on the actual node containing this shard.
  * After the primary shard completes the operation, if needed, the update is distributed to applicable replicas.
