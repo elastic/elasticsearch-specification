@@ -12793,21 +12793,6 @@ export interface IndicesStatsShardsTotalStats {
   total_count: long
 }
 
-export interface IndicesUnfreezeRequest extends RequestBase {
-  index: IndexName
-  allow_no_indices?: boolean
-  expand_wildcards?: ExpandWildcards
-  ignore_unavailable?: boolean
-  master_timeout?: Duration
-  timeout?: Duration
-  wait_for_active_shards?: string
-}
-
-export interface IndicesUnfreezeResponse {
-  acknowledged: boolean
-  shards_acknowledged: boolean
-}
-
 export interface IndicesUpdateAliasesAction {
   add?: IndicesUpdateAliasesAddAction
   remove?: IndicesUpdateAliasesRemoveAction
