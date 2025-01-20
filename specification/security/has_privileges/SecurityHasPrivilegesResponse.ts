@@ -22,6 +22,9 @@ import { IndexName, Username } from '@_types/common'
 import { ApplicationsPrivileges, Privileges } from './types'
 
 export class Response {
+  /**
+   * A successful call returns a JSON structure that shows whether each specified privilege is assigned to the user.
+   */
   body: {
     application: ApplicationsPrivileges
     cluster: Dictionary<string, boolean>
