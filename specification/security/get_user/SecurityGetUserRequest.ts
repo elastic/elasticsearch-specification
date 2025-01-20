@@ -36,7 +36,7 @@ export interface Request extends RequestBase {
   }
   query_parameters: {
     /**
-     * If true will return the User Profile ID for a user, if any.
+     * Determines whether to retrieve the user profile UID, if it exists, for the users.
      * @server_default false
      * @availability stack since=8.5.0
      * @availability serverless

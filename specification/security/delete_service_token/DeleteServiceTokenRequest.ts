@@ -33,8 +33,17 @@ import { Name, Namespace, Refresh, Service } from '@_types/common'
  */
 export interface Request extends RequestBase {
   path_parts: {
+    /**
+     * The namespace, which is a top-level grouping of service accounts.
+     */
     namespace: Namespace
+    /**
+     * The service name.
+     */
     service: Service
+    /**
+     * The name of the service account token.
+     */
     name: Name
   }
   query_parameters: {

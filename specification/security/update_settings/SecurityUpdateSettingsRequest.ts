@@ -24,9 +24,12 @@ import { Duration } from '@_types/Time'
 /**
  * Update security index settings.
  *
- * Update the user-configurable settings for the security internal index (`.security` and associated indices). Only a subset of settings are allowed to be modified, for example `index.auto_expand_replicas` and `index.number_of_replicas`.
+ * Update the user-configurable settings for the security internal index (`.security` and associated indices). Only a subset of settings are allowed to be modified. This includes `index.auto_expand_replicas` and `index.number_of_replicas`.
  *
- * If a specific index is not in use on the system and settings are provided for it, the request will be rejected. This API does not yet support configuring the settings for indices before they are in use.
+ * NOTE: If `index.auto_expand_replicas` is set, `index.number_of_replicas` will be ignored during updates.
+ *
+ * If a specific index is not in use on the system and settings are provided for it, the request will be rejected.
+ * This API does not yet support configuring the settings for indices before they are in use.
  * @rest_spec_name security.update_settings
  * @availability stack stability=stable visibility=public
  * @cluster_privileges manage_security

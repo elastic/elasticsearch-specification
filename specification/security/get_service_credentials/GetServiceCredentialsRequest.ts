@@ -22,6 +22,13 @@ import { Name, Namespace } from '@_types/common'
 
 /**
  * Get service account credentials.
+ *
+ * To use this API, you must have at least the `read_security` cluster privilege (or a greater privilege such as `manage_service_account` or `manage_security`).
+ *
+ * The response includes service account tokens that were created with the create service account tokens API as well as file-backed tokens from all nodes of the cluster.
+ *
+ * NOTE: For tokens backed by the `service_tokens` file, the API collects them from all nodes of the cluster.
+ * Tokens with the same name from different nodes are assumed to be the same token and are only counted once towards the total number of service tokens.
  * @rest_spec_name security.get_service_credentials
  * @availability stack since=7.13.0 stability=stable
  * @availability serverless stability=stable visibility=private
@@ -32,11 +39,11 @@ import { Name, Namespace } from '@_types/common'
 export interface Request extends RequestBase {
   path_parts: {
     /**
-     * Name of the namespace.
+     * The name of the namespace.
      */
     namespace: Namespace
     /**
-     * Name of the service name.
+     * The service name.
      */
     service: Name
   }
