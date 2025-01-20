@@ -744,7 +744,6 @@ terminate-processor,https://www.elastic.co/guide/en/elasticsearch/reference/{bra
 time-value,https://github.com/elastic/elasticsearch/blob/{branch}/libs/core/src/main/java/org/elasticsearch/core/TimeValue.java
 time-zone-id,https://docs.oracle.com/javase/8/docs/api/java/time/ZoneId.html
 trim-processor,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/trim-processor.html
-unfreeze-index-api,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/unfreeze-index-api.html
 update-dfanalytics,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/update-dfanalytics.html
 update-license,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/update-license.html
 update-transform,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/update-transform.html
