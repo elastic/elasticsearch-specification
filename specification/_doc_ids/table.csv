@@ -479,8 +479,7 @@ reroute-processor,https://www.elastic.co/guide/en/elasticsearch/reference/{branc
 render-search-template-api,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/render-search-template-api.html
 reset-transform,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/reset-transform.html
 restore-snapshot,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/snapshots-restore-snapshot.html
-sql-delete-async-api,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/delete-async-sql-search-api.html
-sql-clear-cursor-api,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/clear-sql-cursor-api.html
+role-restriction,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/role-restriction.html
 rollup-agg-limitations,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/rollup-agg-limitations.html
 rollup-delete-job,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/rollup-delete-job.html
 rollup-get-job,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/rollup-get-job.html
@@ -665,9 +664,14 @@ security-api-cross-cluster-key-update,https://www.elastic.co/guide/en/elasticsea
 security-api-update-key,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/security-api-update-api-key.html
 security-api-update-user-data,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/security-api-update-user-profile-data.html
 security-api-update-settings,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/security-api-update-settings.html
+security-application-privileges,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/security-privileges.html#application-privileges
+security-encrypt-http,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/security-basic-setup-https.html#encrypt-http-communication
 security-encrypt-internode,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/security-basic-setup.html#encrypt-internode-communication
 security-privileges,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/security-privileges.html
 security-saml-guide,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/saml-guide-stack.html
+security-settings-api-keys,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/security-settings.html#api-key-service-settings
+security-settings-hashing,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/security-settings.html#hashing-settings
+security-user-cache,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/controlling-user-cache.html
 service-accounts,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/service-accounts.html
 set-processor,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/set-processor.html
 shape,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/shape.html
@@ -702,6 +706,8 @@ query-dsl-sparse-vector-query,https://www.elastic.co/guide/en/elasticsearch/refe
 split-processor,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/split-processor.html
 sql-async-search-api,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/get-async-sql-search-api.html
 sql-async-status-api,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/get-async-sql-search-status-api.html
+sql-clear-cursor-api,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/clear-sql-cursor-api.html
+sql-delete-async-api,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/delete-async-sql-search-api.html
 sql-rest-columnar,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/sql-rest-columnar.html
 sql-rest-filtering,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/sql-rest-filtering.html
 sql-rest-format,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/sql-rest-format.html

@@ -18,5 +18,11 @@
  */
 
 export class Response {
-  body: { found: boolean }
+  body: {
+    /**
+     * If the user is successfully deleted, the request returns `{"found": true}`.
+     * Otherwise, `found` is set to `false`.
+     */
+    found: boolean
+  }
 }

@@ -45,7 +45,9 @@ export interface Request extends RequestBase {
   ]
   path_parts: {
     /**
-     * The name of the role. You can specify multiple roles as a comma-separated list. If you do not specify this parameter, the API returns information about all roles.
+     * The name of the role.
+     * You can specify multiple roles as a comma-separated list.
+     * If you do not specify this parameter, the API returns information about all roles.
      */
     name?: Names
   }

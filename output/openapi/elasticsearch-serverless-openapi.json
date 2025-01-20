@@ -17500,7 +17500,10 @@
           "security"
         ],
         "summary": "Create an API key",
-        "description": "Create an API key for access without requiring basic authentication.\nA successful request returns a JSON structure that contains the API key, its unique id, and its name.\nIf applicable, it also returns expiration information for the API key in milliseconds.\nNOTE: By default, API keys never expire. You can specify expiration information when you create the API keys.",
+        "description": "Create an API key for access without requiring basic authentication.\n\nIMPORTANT: If the credential that is used to authenticate this request is an API key, the derived API key cannot have any privileges.\nIf you specify privileges, the API returns an error.\n\nA successful request returns a JSON structure that contains the API key, its unique id, and its name.\nIf applicable, it also returns expiration information for the API key in milliseconds.\n\nNOTE: By default, API keys never expire. You can specify expiration information when you create the API keys.\n\nThe API keys are created by the Elasticsearch API key service, which is automatically enabled.\nTo configure or turn off the API key service, refer to API key service setting documentation.",
+        "externalDocs": {
+          "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/security-settings.html#api-key-service-settings"
+        },
         "operationId": "security-create-api-key",
         "parameters": [
           {
@@ -17522,7 +17525,10 @@
           "security"
         ],
         "summary": "Create an API key",
-        "description": "Create an API key for access without requiring basic authentication.\nA successful request returns a JSON structure that contains the API key, its unique id, and its name.\nIf applicable, it also returns expiration information for the API key in milliseconds.\nNOTE: By default, API keys never expire. You can specify expiration information when you create the API keys.",
+        "description": "Create an API key for access without requiring basic authentication.\n\nIMPORTANT: If the credential that is used to authenticate this request is an API key, the derived API key cannot have any privileges.\nIf you specify privileges, the API returns an error.\n\nA successful request returns a JSON structure that contains the API key, its unique id, and its name.\nIf applicable, it also returns expiration information for the API key in milliseconds.\n\nNOTE: By default, API keys never expire. You can specify expiration information when you create the API keys.\n\nThe API keys are created by the Elasticsearch API key service, which is automatically enabled.\nTo configure or turn off the API key service, refer to API key service setting documentation.",
+        "externalDocs": {
+          "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/security-settings.html#api-key-service-settings"
+        },
         "operationId": "security-create-api-key-1",
         "parameters": [
           {
@@ -17544,7 +17550,7 @@
           "security"
         ],
         "summary": "Invalidate API keys",
-        "description": "This API invalidates API keys created by the create API key or grant API key APIs.\nInvalidated API keys fail authentication, but they can still be viewed using the get API key information and query API key information APIs, for at least the configured retention period, until they are automatically deleted.\nThe `manage_api_key` privilege allows deleting any API keys.\nThe `manage_own_api_key` only allows deleting API keys that are owned by the user.\nIn addition, with the `manage_own_api_key` privilege, an invalidation request must be issued in one of the three formats:\n- Set the parameter `owner=true`.\n- Or, set both `username` and `realm_name` to match the user’s identity.\n- Or, if the request is issued by an API key, that is to say an API key invalidates itself, specify its ID in the `ids` field.",
+        "description": "This API invalidates API keys created by the create API key or grant API key APIs.\nInvalidated API keys fail authentication, but they can still be viewed using the get API key information and query API key information APIs, for at least the configured retention period, until they are automatically deleted.\n\nTo use this API, you must have at least the `manage_security`, `manage_api_key`, or `manage_own_api_key` cluster privileges.\nThe `manage_security` privilege allows deleting any API key, including both REST and cross cluster API keys.\nThe `manage_api_key` privilege allows deleting any REST API key, but not cross cluster API keys.\nThe `manage_own_api_key` only allows deleting REST API keys that are owned by the user.\nIn addition, with the `manage_own_api_key` privilege, an invalidation request must be issued in one of the three formats:\n\n- Set the parameter `owner=true`.\n- Or, set both `username` and `realm_name` to match the user's identity.\n- Or, if the request is issued by an API key, that is to say an API key invalidates itself, specify its ID in the `ids` field.",
         "operationId": "security-invalidate-api-key",
         "requestBody": {
           "content": {
@@ -17566,7 +17572,7 @@
                     "$ref": "#/components/schemas/_types:Name"
                   },
                   "owner": {
-                    "description": "Can be used to query API keys owned by the currently authenticated user.\nThe `realm_name` or `username` parameters cannot be specified when this parameter is set to `true` as they are assumed to be the currently authenticated ones.",
+                    "description": "Query API keys owned by the currently authenticated user.\nThe `realm_name` or `username` parameters cannot be specified when this parameter is set to `true` as they are assumed to be the currently authenticated ones.\n\nNOTE: At least one of `ids`, `name`, `username`, and `realm_name` must be specified if `owner` is `false`.",
                     "type": "boolean"
                   },
                   "realm_name": {
@@ -17591,21 +17597,25 @@
                   "type": "object",
                   "properties": {
                     "error_count": {
+                      "description": "The number of errors that were encountered when invalidating the API keys.",
                       "type": "number"
                     },
                     "error_details": {
+                      "description": "Details about the errors.\nThis field is not present in the response when `error_count` is `0`.",
                       "type": "array",
                       "items": {
                         "$ref": "#/components/schemas/_types:ErrorCause"
                       }
                     },
                     "invalidated_api_keys": {
+                      "description": "The IDs of the API keys that were invalidated as part of this request.",
                       "type": "array",
                       "items": {
                         "type": "string"
                       }
                     },
                     "previously_invalidated_api_keys": {
+                      "description": "The IDs of the API keys that were already invalidated.",
                       "type": "array",
                       "items": {
                         "type": "string"
@@ -17631,7 +17641,7 @@
           "security"
         ],
         "summary": "Check user privileges",
-        "description": "Determine whether the specified user has a specified list of privileges.",
+        "description": "Determine whether the specified user has a specified list of privileges.\nAll users can use this API, but only to determine their own privileges.\nTo check the privileges of other users, you must use the run as feature.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/security-privileges.html"
         },
@@ -17651,7 +17661,7 @@
           "security"
         ],
         "summary": "Check user privileges",
-        "description": "Determine whether the specified user has a specified list of privileges.",
+        "description": "Determine whether the specified user has a specified list of privileges.\nAll users can use this API, but only to determine their own privileges.\nTo check the privileges of other users, you must use the run as feature.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/security-privileges.html"
         },
@@ -17673,7 +17683,7 @@
           "security"
         ],
         "summary": "Check user privileges",
-        "description": "Determine whether the specified user has a specified list of privileges.",
+        "description": "Determine whether the specified user has a specified list of privileges.\nAll users can use this API, but only to determine their own privileges.\nTo check the privileges of other users, you must use the run as feature.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/security-privileges.html"
         },
@@ -17698,7 +17708,7 @@
           "security"
         ],
         "summary": "Check user privileges",
-        "description": "Determine whether the specified user has a specified list of privileges.",
+        "description": "Determine whether the specified user has a specified list of privileges.\nAll users can use this API, but only to determine their own privileges.\nTo check the privileges of other users, you must use the run as feature.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/security-privileges.html"
         },
@@ -17725,7 +17735,7 @@
           "security"
         ],
         "summary": "Find API keys with a query",
-        "description": "Get a paginated list of API keys and their information. You can optionally filter the results with a query.",
+        "description": "Get a paginated list of API keys and their information.\nYou can optionally filter the results with a query.\n\nTo use this API, you must have at least the `manage_own_api_key` or the `read_security` cluster privileges.\nIf you have only the `manage_own_api_key` privilege, this API returns only the API keys that you own.\nIf you have the `read_security`, `manage_api_key`, or greater privileges (including `manage_security`), this API returns all API keys regardless of ownership.",
         "operationId": "security-query-api-keys",
         "parameters": [
           {
@@ -17753,7 +17763,7 @@
           "security"
         ],
         "summary": "Find API keys with a query",
-        "description": "Get a paginated list of API keys and their information. You can optionally filter the results with a query.",
+        "description": "Get a paginated list of API keys and their information.\nYou can optionally filter the results with a query.\n\nTo use this API, you must have at least the `manage_own_api_key` or the `read_security` cluster privileges.\nIf you have only the `manage_own_api_key` privilege, this API returns only the API keys that you own.\nIf you have the `read_security`, `manage_api_key`, or greater privileges (including `manage_security`), this API returns all API keys regardless of ownership.",
         "operationId": "security-query-api-keys-1",
         "parameters": [
           {
@@ -17783,7 +17793,7 @@
           "security"
         ],
         "summary": "Update an API key",
-        "description": "Updates attributes of an existing API key.\nUsers can only update API keys that they created or that were granted to them.\nUse this API to update API keys created by the create API Key or grant API Key APIs.\nIf you need to apply the same update to many API keys, you can use bulk update API Keys to reduce overhead.\nIt’s not possible to update expired API keys, or API keys that have been invalidated by invalidate API Key.\nThis API supports updates to an API key’s access scope and metadata.\nThe access scope of an API key is derived from the `role_descriptors` you specify in the request, and a snapshot of the owner user’s permissions at the time of the request.\nThe snapshot of the owner’s permissions is updated automatically on every call.\nIf you don’t specify `role_descriptors` in the request, a call to this API might still change the API key’s access scope.\nThis change can occur if the owner user’s permissions have changed since the API key was created or last modified.\nTo update another user’s API key, use the `run_as` feature to submit a request on behalf of another user.\nIMPORTANT: It’s not possible to use an API key as the authentication credential for this API.\nTo update an API key, the owner user’s credentials are required.",
+        "description": "Update attributes of an existing API key.\nThis API supports updates to an API key's access scope, expiration, and metadata.\n\nTo use this API, you must have at least the `manage_own_api_key` cluster privilege.\nUsers can only update API keys that they created or that were granted to them.\nTo update another user’s API key, use the `run_as` feature to submit a request on behalf of another user.\n\nIMPORTANT: It's not possible to use an API key as the authentication credential for this API. The owner user’s credentials are required.\n\nUse this API to update API keys created by the create API key or grant API Key APIs.\nIf you need to apply the same update to many API keys, you can use the bulk update API keys API to reduce overhead.\nIt's not possible to update expired API keys or API keys that have been invalidated by the invalidate API key API.\n\nThe access scope of an API key is derived from the `role_descriptors` you specify in the request and a snapshot of the owner user's permissions at the time of the request.\nThe snapshot of the owner's permissions is updated automatically on every call.\n\nIMPORTANT: If you don't specify `role_descriptors` in the request, a call to this API might still change the API key's access scope.\nThis change can occur if the owner user's permissions have changed since the API key was created or last modified.",
         "operationId": "security-update-api-key",
         "parameters": [
           {
@@ -17805,7 +17815,7 @@
                 "type": "object",
                 "properties": {
                   "role_descriptors": {
-                    "description": "An array of role descriptors for this API key. This parameter is optional. When it is not specified or is an empty array, then the API key will have a point in time snapshot of permissions of the authenticated user. If you supply role descriptors then the resultant permissions would be an intersection of API keys permissions and authenticated user’s permissions thereby limiting the access scope for API keys. The structure of role descriptor is the same as the request for create role API. For more details, see create or update roles API.",
+                    "description": "The role descriptors to assign to this API key.\nThe API key's effective permissions are an intersection of its assigned privileges and the point in time snapshot of permissions of the owner user.\nYou can assign new privileges by specifying them in this parameter.\nTo remove assigned privileges, you can supply an empty `role_descriptors` parameter, that is to say, an empty object `{}`.\nIf an API key has no assigned privileges, it inherits the owner user's full permissions.\nThe snapshot of the owner's permissions is always updated, whether you supply the `role_descriptors` parameter or not.\nThe structure of a role descriptor is the same as the request for the create API keys API.",
                     "type": "object",
                     "additionalProperties": {
                       "$ref": "#/components/schemas/security._types:RoleDescriptor"
@@ -17831,7 +17841,7 @@
                   "type": "object",
                   "properties": {
                     "updated": {
-                      "description": "If `true`, the API key was updated.\nIf `false`, the API key didn’t change because no change was detected.",
+                      "description": "If `true`, the API key was updated.\nIf `false`, the API key didn't change because no change was detected.",
                       "type": "boolean"
                     }
                   },
@@ -54724,7 +54734,10 @@
             "$ref": "#/components/schemas/_types:Metadata"
           },
           "run_as": {
-            "description": "A list of users that the API keys can impersonate. *Note*: in Serverless, the run-as feature is disabled. For API compatibility, you can still specify an empty `run_as` field, but a non-empty list will be rejected.",
+            "externalDocs": {
+              "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/run-as-privilege.html"
+            },
+            "description": "A list of users that the API keys can impersonate.\nNOTE: In Elastic Cloud Serverless, the run-as feature is disabled.\nFor API compatibility, you can still specify an empty `run_as` field, but a non-empty list will be rejected.",
             "type": "array",
             "items": {
               "type": "string"
@@ -54943,6 +54956,7 @@
         "type": "object",
         "properties": {
           "workflows": {
+            "description": "A list of workflows to which the API key is restricted.\nNOTE: In order to use a role restriction, an API key must be created with a single role descriptor.",
             "type": "array",
             "items": {
               "$ref": "#/components/schemas/security._types:RestrictionWorkflow"
@@ -55132,14 +55146,14 @@
             "type": "string"
           },
           "privileges": {
-            "description": "A list of the privileges that you want to check for the specified resources. May be either application privilege names, or the names of actions that are granted by those privileges",
+            "description": "A list of the privileges that you want to check for the specified resources.\nIt may be either application privilege names or the names of actions that are granted by those privileges",
             "type": "array",
             "items": {
               "type": "string"
             }
           },
           "resources": {
-            "description": "A list of resource names against which the privileges should be checked",
+            "description": "A list of resource names against which the privileges should be checked.",
             "type": "array",
             "items": {
               "type": "string"
@@ -55166,7 +55180,7 @@
             }
           },
           "allow_restricted_indices": {
-            "description": "This needs to be set to true (default is false) if using wildcards or regexps for patterns that cover restricted indices.\nImplicitly, restricted indices do not match index patterns because restricted indices usually have limited privileges and including them in pattern tests would render most such tests false.\nIf restricted indices are explicitly included in the names list, privileges will be checked against them regardless of the value of allow_restricted_indices.",
+            "description": "This needs to be set to `true` (default is `false`) if using wildcards or regexps for patterns that cover restricted indices.\nImplicitly, restricted indices do not match index patterns because restricted indices usually have limited privileges and including them in pattern tests would render most such tests false.\nIf restricted indices are explicitly included in the names list, privileges will be checked against them regardless of the value of `allow_restricted_indices`.",
             "type": "boolean"
           }
         },
@@ -62825,7 +62839,7 @@
       "security.query_api_keys#with_limited_by": {
         "in": "query",
         "name": "with_limited_by",
-        "description": "Return the snapshot of the owner user's role descriptors associated with the API key.\nAn API key's actual permission is the intersection of its assigned role descriptors and the owner user's role descriptors.",
+        "description": "Return the snapshot of the owner user's role descriptors associated with the API key.\nAn API key's actual permission is the intersection of its assigned role descriptors and the owner user's role descriptors (effectively limited by it).\nAn API key cannot retrieve any API key’s limited-by role descriptors (including itself) unless it has `manage_api_key` or higher privileges.",
         "deprecated": false,
         "schema": {
           "type": "boolean"
@@ -62835,7 +62849,7 @@
       "security.query_api_keys#with_profile_uid": {
         "in": "query",
         "name": "with_profile_uid",
-        "description": "Determines whether to also retrieve the profile uid, for the API key owner principal, if it exists.",
+        "description": "Determines whether to also retrieve the profile UID for the API key owner principal.\nIf it exists, the profile UID is returned under the `profile_uid` response field for each API key.",
         "deprecated": false,
         "schema": {
           "type": "boolean"
@@ -64606,7 +64620,10 @@
                   "$ref": "#/components/schemas/_types:Name"
                 },
                 "role_descriptors": {
-                  "description": "An array of role descriptors for this API key. This parameter is optional. When it is not specified or is an empty array, then the API key will have a point in time snapshot of permissions of the authenticated user. If you supply role descriptors then the resultant permissions would be an intersection of API keys permissions and authenticated user’s permissions thereby limiting the access scope for API keys. The structure of role descriptor is the same as the request for create role API. For more details, see create or update roles API.",
+                  "externalDocs": {
+                    "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/security-api-put-role.html"
+                  },
+                  "description": "An array of role descriptors for this API key.\nWhen it is not specified or it is an empty array, the API key will have a point in time snapshot of permissions of the authenticated user.\nIf you supply role descriptors, the resultant permissions are an intersection of API keys permissions and the authenticated user's permissions thereby limiting the access scope for API keys.\nThe structure of role descriptor is the same as the request for the create role API.\nFor more details, refer to the create or update roles API.\n\nNOTE: Due to the way in which this permission intersection is calculated, it is not possible to create an API key that is a child of another API key, unless the derived key is created without any privileges.\nIn this case, you must explicitly specify a role descriptor with no privileges.\nThe derived API key can be used for authentication; it will not have authority to call Elasticsearch APIs.",
                   "type": "object",
                   "additionalProperties": {
                     "$ref": "#/components/schemas/security._types:RoleDescriptor"
@@ -64669,14 +64686,14 @@
                   "$ref": "#/components/schemas/security.query_api_keys:ApiKeyQueryContainer"
                 },
                 "from": {
-                  "description": "Starting document offset.\nBy default, you cannot page through more than 10,000 hits using the from and size parameters.\nTo page through more hits, use the `search_after` parameter.",
+                  "description": "The starting document offset.\nIt must not be negative.\nBy default, you cannot page through more than 10,000 hits using the `from` and `size` parameters.\nTo page through more hits, use the `search_after` parameter.",
                   "type": "number"
                 },
                 "sort": {
                   "$ref": "#/components/schemas/_types:Sort"
                 },
                 "size": {
-                  "description": "The number of hits to return.\nBy default, you cannot page through more than 10,000 hits using the `from` and `size` parameters.\nTo page through more hits, use the `search_after` parameter.",
+                  "description": "The number of hits to return.\nIt must not be negative.\nThe `size` parameter can be set to `0`, in which case no API key matches are returned, only the aggregation results.\nBy default, you cannot page through more than 10,000 hits using the `from` and `size` parameters.\nTo page through more hits, use the `search_after` parameter.",
                   "type": "number"
                 },
                 "search_after": {
