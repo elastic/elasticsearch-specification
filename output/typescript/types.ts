@@ -2491,6 +2491,7 @@ export interface KnnQuery extends QueryDslQueryBase {
   k?: integer
   filter?: QueryDslQueryContainer | QueryDslQueryContainer[]
   similarity?: float
+  rescore_vector?: RescoreVector
 }
 
 export interface KnnRetriever extends RetrieverBase {
@@ -2500,6 +2501,7 @@ export interface KnnRetriever extends RetrieverBase {
   k: integer
   num_candidates: integer
   similarity?: float
+  rescore_vector?: RescoreVector
 }
 
 export interface KnnSearch {
@@ -2512,6 +2514,7 @@ export interface KnnSearch {
   filter?: QueryDslQueryContainer | QueryDslQueryContainer[]
   similarity?: float
   inner_hits?: SearchInnerHits
+  rescore_vector?: RescoreVector
 }
 
 export interface LatLonGeoLocation {
@@ -2690,6 +2693,10 @@ export interface RequestCacheStats {
   memory_size?: string
   memory_size_in_bytes: long
   miss_count: long
+}
+
+export interface RescoreVector {
+  oversample: float
 }
 
 export type Result = 'created' | 'updated' | 'deleted' | 'not_found' | 'noop'
