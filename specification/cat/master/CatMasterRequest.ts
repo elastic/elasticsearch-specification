@@ -21,7 +21,10 @@ import { CatRequestBase } from '@cat/_types/CatBase'
 import { Duration } from '@_types/Time'
 
 /**
- * Returns information about the master node, including the ID, bound IP address, and name.
+ * Get master node information.
+ *
+ * Get information about the master node, including the ID, bound IP address, and name.
+ *
  * IMPORTANT: cat APIs are only intended for human consumption using the command line or Kibana console. They are not intended for use by applications. For application consumption, use the nodes info API.
  * @rest_spec_name cat.master
  * @availability stack stability=stable
