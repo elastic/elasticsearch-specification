@@ -217,7 +217,7 @@ export enum RemoteClusterPrivilege {
 export class IndicesPrivileges {
   /**
    * The document fields that the owners of the role have read access to.
-   * @doc_id field-and-document-access-control
+   * @ext_doc_id field-and-document-access-control
    */
   field_security?: FieldSecurity
   // We're using IndexName | IndexName[] instead of Indices in this file on purpose:
@@ -253,7 +253,7 @@ export class RemoteIndicesPrivileges {
   clusters: Names
   /**
    * The document fields that the owners of the role have read access to.
-   * @doc_id field-and-document-access-control
+   * @ext_doc_id field-and-document-access-control
    */
   field_security?: FieldSecurity
   /**
@@ -293,7 +293,7 @@ export class RemoteClusterPrivileges {
 export class UserIndicesPrivileges {
   /**
    * The document fields that the owners of the role have read access to.
-   * @doc_id field-and-document-access-control
+   * @ext_doc_id field-and-document-access-control
    */
   field_security?: FieldSecurity[]
   /**
@@ -430,7 +430,7 @@ export class ReplicationAccess {
 export class SearchAccess {
   /**
    * The document fields that the owners of the role have read access to.
-   * @doc_id field-and-document-access-control
+   * @ext_doc_id field-and-document-access-control
    */
   field_security?: FieldSecurity
   /**

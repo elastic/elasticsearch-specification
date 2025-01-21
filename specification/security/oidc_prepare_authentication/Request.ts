@@ -21,6 +21,7 @@ import { RequestBase } from '@_types/Base'
 
 /**
  * Prepare OpenID connect authentication.
+ *
  * Create an oAuth 2.0 authentication request as a URL string based on the configuration of the OpenID Connect authentication realm in Elasticsearch.
  *
  * The response of this API is a URL pointing to the Authorization Endpoint of the configured OpenID Connect Provider, which can be used to redirect the browser of the user in order to continue the authentication process.

@@ -26,12 +26,19 @@ import { ApiKeyGrantType, GrantApiKey } from './types'
  *
  * Create an API key on behalf of another user.
  * This API is similar to the create API keys API, however it creates the API key for a user that is different than the user that runs the API.
- * The caller must have authentication credentials (either an access token, or a username and password) for the user on whose behalf the API key will be created.
- * It is not possible to use this API to create an API key without that user’s credentials.
+ * The caller must have authentication credentials for the user on whose behalf the API key will be created.
+ * It is not possible to use this API to create an API key without that user's credentials.
+ * The supported user authentication credential types are:
+ *
+ * * username and password
+ * * Elasticsearch access tokens
+ * * JWTs
+ *
  * The user, for whom the authentication credentials is provided, can optionally "run as" (impersonate) another user.
  * In this case, the API key will be created on behalf of the impersonated user.
  *
  * This API is intended be used by applications that need to create and manage API keys for end users, but cannot guarantee that those users have permission to create API keys on their own behalf.
+ * The API keys are created by the Elasticsearch API key service, which is automatically enabled.
  *
  * A successful grant API key API call returns a JSON structure that contains the API key, its unique id, and its name.
  * If applicable, it also returns expiration information for the API key in milliseconds.
@@ -46,7 +53,7 @@ import { ApiKeyGrantType, GrantApiKey } from './types'
 export interface Request extends RequestBase {
   body: {
     /**
-     * Defines the API key.
+     * The API key.
      */
     api_key: GrantApiKey
     /**
@@ -54,7 +61,7 @@ export interface Request extends RequestBase {
      */
     grant_type: ApiKeyGrantType
     /**
-     * The user’s access token.
+     * The user's access token.
      * If you specify the `access_token` grant type, this parameter is required.
      * It is not valid with other grant types.
      */
@@ -66,7 +73,8 @@ export interface Request extends RequestBase {
      */
     username?: Username
     /**
-     * The user’s password. If you specify the `password` grant type, this parameter is required.
+     * The user's password.
+     * If you specify the `password` grant type, this parameter is required.
      * It is not valid with other grant types.
      */
     password?: Password
