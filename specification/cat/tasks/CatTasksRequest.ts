@@ -22,6 +22,7 @@ import { Duration, TimeUnit } from '@_types/Time'
 
 /**
  * Get task information.
+ *
  * Get information about tasks currently running in the cluster.
  * IMPORTANT: cat APIs are only intended for human consumption using the command line or Kibana console. They are not intended for use by applications. For application consumption, use the task management API.
  * @rest_spec_name cat.tasks

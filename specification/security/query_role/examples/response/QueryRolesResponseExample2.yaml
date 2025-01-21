@@ -1,0 +1,43 @@
+summary: Query roles by description
+description: >
+  A successful response from `POST /_security/_query/role`.
+# type: response
+# response_code:
+value: |-
+  {
+      "total": 2,
+      "count": 1,
+      "roles": [
+          {
+            "name" : "my_user_role",
+            "cluster" : [ ],
+            "indices" : [
+              {
+                "names" : [
+                  "index1",
+                  "index2"
+                ],
+                "privileges" : [
+                  "all"
+                ],
+                "field_security" : {
+                  "grant" : [
+                    "title",
+                    "body"
+                  ]
+                },
+                "allow_restricted_indices" : false
+              }
+            ],
+            "applications" : [ ],
+            "run_as" : [ ],
+            "metadata" : {
+              "version" : 1
+            },
+            "transient_metadata" : {
+              "enabled" : true
+            },
+            "description" : "Grants user access to some indicies."
+          }
+      ]
+  }

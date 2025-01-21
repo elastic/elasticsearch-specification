@@ -2500,6 +2500,7 @@ export interface KnnQuery extends QueryDslQueryBase {
   k?: integer
   filter?: QueryDslQueryContainer | QueryDslQueryContainer[]
   similarity?: float
+  rescore_vector?: RescoreVector
 }
 
 export interface KnnRetriever extends RetrieverBase {
@@ -2509,6 +2510,7 @@ export interface KnnRetriever extends RetrieverBase {
   k: integer
   num_candidates: integer
   similarity?: float
+  rescore_vector?: RescoreVector
 }
 
 export interface KnnSearch {
@@ -2521,6 +2523,7 @@ export interface KnnSearch {
   filter?: QueryDslQueryContainer | QueryDslQueryContainer[]
   similarity?: float
   inner_hits?: SearchInnerHits
+  rescore_vector?: RescoreVector
 }
 
 export interface LatLonGeoLocation {
@@ -2699,6 +2702,10 @@ export interface RequestCacheStats {
   memory_size?: string
   memory_size_in_bytes: long
   miss_count: long
+}
+
+export interface RescoreVector {
+  oversample: float
 }
 
 export type Result = 'created' | 'updated' | 'deleted' | 'not_found' | 'noop'
@@ -12795,21 +12802,6 @@ export interface IndicesStatsShardStats {
 
 export interface IndicesStatsShardsTotalStats {
   total_count: long
-}
-
-export interface IndicesUnfreezeRequest extends RequestBase {
-  index: IndexName
-  allow_no_indices?: boolean
-  expand_wildcards?: ExpandWildcards
-  ignore_unavailable?: boolean
-  master_timeout?: Duration
-  timeout?: Duration
-  wait_for_active_shards?: string
-}
-
-export interface IndicesUnfreezeResponse {
-  acknowledged: boolean
-  shards_acknowledged: boolean
 }
 
 export interface IndicesUpdateAliasesAction {

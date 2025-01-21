@@ -1,0 +1,10 @@
+summary: A snapshot recovery
+description: >
+  A successful response from `GET _cat/recovery?v=true&h=i,s,t,ty,st,rep,snap,f,fp,b,bp`.
+  You can restore backups of an index using the snapshot and restore API.
+  You can use the cat recovery API to get information about a snapshot recovery.
+# type: response
+# response_code: 200
+value: |-
+  i               s t      ty       st    rep     snap   f  fp   b     bp
+  my-index-000001 0 1978ms snapshot done  my-repo snap-1 79 8.0% 12086 9.0%
