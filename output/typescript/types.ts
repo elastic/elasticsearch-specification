@@ -9721,7 +9721,7 @@ export interface ConnectorConnector {
   api_key_secret_id?: string
   configuration: ConnectorConnectorConfiguration
   custom_scheduling: ConnectorConnectorCustomScheduling
-  deleted?: boolean
+  deleted: boolean
   description?: string
   error?: string | null
   features?: ConnectorConnectorFeatures

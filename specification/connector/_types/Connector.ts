@@ -254,7 +254,7 @@ export interface Connector {
   api_key_secret_id?: string
   configuration: ConnectorConfiguration
   custom_scheduling: ConnectorCustomScheduling
-  deleted?: boolean
+  deleted: boolean
   description?: string
   error?: string | null
   features?: ConnectorFeatures

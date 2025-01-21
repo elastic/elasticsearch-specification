@@ -50,7 +50,8 @@ export interface Request extends RequestBase {
      */
     delete_sync_jobs?: boolean
     /**
-     * A flag indicating if the connector should be hard deleted. Defaults to false.
+     * A flag indicating if the connector should be hard deleted.
+     * @server_default false
      */
     hard?: boolean
   }

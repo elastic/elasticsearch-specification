@@ -58,7 +58,8 @@ export interface Request extends RequestBase {
      */
     service_type?: Names
     /**
-     * A flag to indicate if the desired connector should be fetched even if it was solf-deleted"
+     * A flag to indicate if the desired connector should be fetched, even if it was soft-deleted.
+     * @server_default false
      */
     include_deleted?: boolean
     /**
