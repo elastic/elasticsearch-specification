@@ -212,7 +212,7 @@ export enum ExpandWildcard {
   open,
   /** Match closed, non-hidden indices. Also matches any non-hidden data stream. Data streams cannot be closed. */
   closed,
-  /** Match hidden data streams and hidden indices. Must be combined with open, closed, or both. */
+  /** Match hidden data streams and hidden indices. Must be combined with `open`, `closed`, or `both`. */
   hidden,
   /** Wildcard expressions are not accepted. */
   none
