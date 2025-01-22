@@ -9721,6 +9721,7 @@ export interface ConnectorConnector {
   api_key_secret_id?: string
   configuration: ConnectorConnectorConfiguration
   custom_scheduling: ConnectorConnectorCustomScheduling
+  deleted: boolean
   description?: string
   error?: string | null
   features?: ConnectorConnectorFeatures
@@ -9958,12 +9959,14 @@ export interface ConnectorCheckInResponse {
 export interface ConnectorDeleteRequest extends RequestBase {
   connector_id: Id
   delete_sync_jobs?: boolean
+  hard?: boolean
 }
 
 export type ConnectorDeleteResponse = AcknowledgedResponseBase
 
 export interface ConnectorGetRequest extends RequestBase {
   connector_id: Id
+  include_deleted?: boolean
 }
 
 export type ConnectorGetResponse = ConnectorConnector
@@ -9996,6 +9999,7 @@ export interface ConnectorListRequest extends RequestBase {
   index_name?: Indices
   connector_name?: Names
   service_type?: Names
+  include_deleted?: boolean
   query?: string
 }
 
