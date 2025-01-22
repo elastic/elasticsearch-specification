@@ -237,8 +237,7 @@
     },
     "indices.rollover": {
       "request": [
-        "Request: missing json spec query parameter 'lazy'",
-        "Request: missing json spec query parameter 'target_failure_store'"
+        "Request: missing json spec query parameter 'lazy'"
       ],
       "response": []
     },
@@ -264,8 +263,7 @@
     "license.post_start_trial": {
       "request": [
         "Request: query parameter 'type_query_string' does not exist in the json spec",
-        "Request: missing json spec query parameter 'type'",
-        "Request: missing json spec query parameter 'timeout'"
+        "Request: missing json spec query parameter 'type'"
       ],
       "response": []
     },
@@ -356,20 +354,6 @@
       ],
       "response": []
     },
-    "shutdown.delete_node": {
-      "request": [
-        "Request: query parameter 'master_timeout' does not exist in the json spec",
-        "Request: query parameter 'timeout' does not exist in the json spec"
-      ],
-      "response": []
-    },
-    "shutdown.put_node": {
-      "request": [
-        "Request: query parameter 'master_timeout' does not exist in the json spec",
-        "Request: query parameter 'timeout' does not exist in the json spec"
-      ],
-      "response": []
-    },
     "snapshot.clone": {
       "request": [
         "Request: query parameter 'timeout' does not exist in the json spec"
@@ -411,7 +395,6 @@
     },
     "xpack.info": {
       "request": [
-        "Request: query parameter 'human' does not exist in the json spec",
         "request definition xpack.info:Request / query - Property 'human' is already defined in an ancestor class"
       ],
       "response": []
