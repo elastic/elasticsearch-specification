@@ -17996,7 +17996,7 @@
     "/_migration/reindex/{index}/_cancel": {
       "post": {
         "tags": [
-          "cancel_reindex"
+          "migration"
         ],
         "summary": "This API cancels a migration reindex attempt for a data stream or index",
         "operationId": "migrate-cancel-reindex",
@@ -18031,7 +18031,7 @@
     "/_create_from/{source}/{dest}": {
       "put": {
         "tags": [
-          "create_from"
+          "migration"
         ],
         "summary": "This API creates a destination from a source index",
         "description": "It copies the mappings and settings from the source index while allowing request settings and mappings to override the source values.",
@@ -18056,7 +18056,7 @@
       },
       "post": {
         "tags": [
-          "create_from"
+          "migration"
         ],
         "summary": "This API creates a destination from a source index",
         "description": "It copies the mappings and settings from the source index while allowing request settings and mappings to override the source values.",
@@ -18083,7 +18083,7 @@
     "/_migration/reindex/{index}/_status": {
       "get": {
         "tags": [
-          "get_reindex_status"
+          "migration"
         ],
         "summary": "This API returns the status of a migration reindex attempt for a data stream or index",
         "operationId": "migrate-get-reindex-status",
@@ -18166,7 +18166,7 @@
     "/_migration/reindex": {
       "post": {
         "tags": [
-          "reindex"
+          "migration"
         ],
         "summary": "\"This API reindexes all legacy backing indices for a data stream",
         "description": "It does this in a persistent task. The persistent task id is returned immediately, and the reindexing work is completed in that task",
