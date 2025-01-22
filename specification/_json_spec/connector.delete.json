@@ -24,15 +24,15 @@
       ]
     },
     "params": {
+      "hard": {
+        "type": "boolean",
+        "default": false,
+        "description": "If true, the connector doc is deleted. If false, connector doc is marked as deleted (soft-deleted)."
+      },
       "delete_sync_jobs": {
         "type": "boolean",
         "default": false,
         "description": "Determines whether associated sync jobs are also deleted."
-      },
-      "hard": {
-        "type": "boolean",
-        "default": false,
-        "description": "A flag indicating if this should be a hard delete. Defaults to false."
       }
     }
   }

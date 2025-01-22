@@ -47,7 +47,7 @@
       "include_deleted": {
         "type": "boolean",
         "default": false,
-        "description": "A flag that indicates whether a soft-deleted connectors will be fetched"
+        "description": "A flag indicating whether to return connectors that have been soft-deleted."
       }
     }
   }
