@@ -4718,6 +4718,16 @@
               "$ref": "#/components/schemas/_types:Id"
             },
             "style": "simple"
+          },
+          {
+            "in": "query",
+            "name": "include_deleted",
+            "description": "A flag to indicate if the desired connector should be fetched, even if it was soft-deleted.",
+            "deprecated": false,
+            "schema": {
+              "type": "boolean"
+            },
+            "style": "form"
           }
         ],
         "responses": {
@@ -4778,6 +4788,16 @@
             "in": "query",
             "name": "delete_sync_jobs",
             "description": "A flag indicating if associated sync jobs should be also removed. Defaults to false.",
+            "deprecated": false,
+            "schema": {
+              "type": "boolean"
+            },
+            "style": "form"
+          },
+          {
+            "in": "query",
+            "name": "hard",
+            "description": "A flag indicating if the connector should be hard deleted.",
             "deprecated": false,
             "schema": {
               "type": "boolean"
@@ -4948,6 +4968,16 @@
             "deprecated": false,
             "schema": {
               "$ref": "#/components/schemas/_types:Names"
+            },
+            "style": "form"
+          },
+          {
+            "in": "query",
+            "name": "include_deleted",
+            "description": "A flag to indicate if the desired connector should be fetched, even if it was soft-deleted.",
+            "deprecated": false,
+            "schema": {
+              "type": "boolean"
             },
             "style": "form"
           },
@@ -67486,6 +67516,9 @@
           "custom_scheduling": {
             "$ref": "#/components/schemas/connector._types:ConnectorCustomScheduling"
           },
+          "deleted": {
+            "type": "boolean"
+          },
           "description": {
             "type": "string"
           },
@@ -67587,6 +67620,7 @@
         "required": [
           "configuration",
           "custom_scheduling",
+          "deleted",
           "filtering",
           "is_native",
           "scheduling",
