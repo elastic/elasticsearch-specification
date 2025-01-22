@@ -11470,7 +11470,8 @@
         "tags": [
           "migration"
         ],
-        "summary": "This API cancels a migration reindex attempt for a data stream or index",
+        "summary": "Cancel a reindex operation",
+        "description": "Cancel a migration reindex attempt for a data stream or index.",
         "operationId": "indices-cancel-migrate-reindex",
         "parameters": [
           {
@@ -12302,8 +12303,8 @@
         "tags": [
           "migration"
         ],
-        "summary": "This API creates a destination from a source index",
-        "description": "It copies the mappings and settings from the source index while allowing request settings and mappings to override the source values.",
+        "summary": "Create a destination from a source index",
+        "description": "This API copies the mappings and settings from the source index while allowing request settings and mappings to override the source values.",
         "operationId": "indices-create-from",
         "parameters": [
           {
@@ -12327,8 +12328,8 @@
         "tags": [
           "migration"
         ],
-        "summary": "This API creates a destination from a source index",
-        "description": "It copies the mappings and settings from the source index while allowing request settings and mappings to override the source values.",
+        "summary": "Create a destination from a source index",
+        "description": "This API copies the mappings and settings from the source index while allowing request settings and mappings to override the source values.",
         "operationId": "indices-create-from-1",
         "parameters": [
           {
@@ -14230,13 +14231,14 @@
         "tags": [
           "migration"
         ],
-        "summary": "This API returns the status of a migration reindex attempt for a data stream or index",
+        "summary": "Get the reindexing status",
+        "description": "Get the status of a migration reindex attempt for a data stream or index.",
         "operationId": "indices-get-migrate-reindex-status",
         "parameters": [
           {
             "in": "path",
             "name": "index",
-            "description": "The index or data stream name",
+            "description": "The index or data stream name.",
             "required": true,
             "deprecated": false,
             "schema": {
@@ -14593,8 +14595,8 @@
         "tags": [
           "migration"
         ],
-        "summary": "\"This API reindexes all legacy backing indices for a data stream",
-        "description": "It does this in a persistent task. The persistent task id is returned immediately, and the reindexing work is completed in that task",
+        "summary": "Reindex legacy backing indices",
+        "description": "Reindex all legacy backing indices for a data stream.\nThis operation occurs in a persistent task.\nThe persistent task ID is returned immediately and the reindexing work is completed in that task.",
         "operationId": "indices-migrate-reindex",
         "requestBody": {
           "content": {

@@ -21,8 +21,9 @@ import { RequestBase } from '@_types/Base'
 import { Indices } from '@_types/common'
 
 /**
- * This API cancels a migration reindex attempt for a data stream or index
+ * Cancel a reindex operation.
  *
+ * Cancel a migration reindex attempt for a data stream or index.
  * @rest_spec_name indices.cancel_migrate_reindex
  * @availability stack since=8.18.0 stability=experimental
  * @availability serverless stability=experimental visibility=private
