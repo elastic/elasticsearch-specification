@@ -27,7 +27,7 @@ import { Indices } from '@_types/common'
  * @availability stack since=8.18.0 stability=experimental
  * @availability serverless stability=experimental visibility=private
  * @doc_id migrate
- * @doc_tag get_reindex_status
+ * @doc_tag migration
  */
 export interface Request extends RequestBase {
   path_parts: {
