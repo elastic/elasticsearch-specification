@@ -26,7 +26,7 @@ import { IndexName } from '@_types/common'
  * @rest_spec_name migrate.reindex
  * @availability stack since=8.18.0 stability=experimental
  * @doc_id migrate
- * @doc_tag reindex
+ * @doc_tag migration
  */
 export interface Request extends RequestBase {
   /** @codegen_name reindex */
