@@ -519,8 +519,6 @@ actions:
             examples:
               renderSearchApplicationQueryRequestExample1: 
                 $ref: "../../specification/search_application/render_query/examples/request/SearchApplicationsRenderQueryRequestExample1.yaml"
-                renderSearchApplicationQueryResponseExample1:
-                  $ref: "../../specification/search_application/render_query/examples/request/SearchApplicationsRenderQueryResponseExample1.yaml"
 # Examples for security
   - target: "$.paths['/_security/api_key/_bulk_update']['post']"
     description: "Add examples for bulk update API keys operation"
