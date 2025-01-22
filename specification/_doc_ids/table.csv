@@ -66,6 +66,7 @@ ccr-put-auto-follow-pattern,https://www.elastic.co/guide/en/elasticsearch/refere
 ccr-put-follow,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/ccr-put-follow.html
 ccr-resume-auto-follow-pattern,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/ccr-resume-auto-follow-pattern.html
 ccs-network-delays,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/modules-cross-cluster-search.html#ccs-network-delays
+ccs-privileges,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/remote-clusters-cert.html#remote-clusters-privileges-ccs
 clean-up-snapshot-repo,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/snapshots-register-repository.html#snapshots-repository-cleanup
 clear-repositories-metering-archive-api,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/clear-repositories-metering-archive-api.html
 clear-scroll-api,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/clear-scroll-api.html
@@ -151,6 +152,7 @@ docs-termvectors,https://www.elastic.co/guide/en/elasticsearch/reference/{branch
 docs-update-by-query,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/docs-update-by-query.html
 docs-update,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/docs-update.html
 document-input-parameters,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/query-dsl-mlt-query.html#_document_input_parameters
+docvalue-fields,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/search-fields.html#docvalue-fields
 dot-expand-processor,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/dot-expand-processor.html
 drop-processor,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/drop-processor.html
 enrich-processor,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/enrich-processor.html
@@ -286,6 +288,7 @@ json-processor,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/
 k-precision,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/search-rank-eval.html#k-precision
 k-recall,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/search-rank-eval.html#k-recall
 kv-processor,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/kv-processor.html
+knn-approximate,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/knn-search.html#approximate-knn
 knn-inner-hits,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/knn-search.html#nested-knn-search-inner-hits
 license-management,https://www.elastic.co/guide/en/kibana/{branch}/managing-licenses.html
 logstash-api-delete-pipeline,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/logstash-api-delete-pipeline.html
@@ -450,6 +453,7 @@ query-dsl-span-not-query,https://www.elastic.co/guide/en/elasticsearch/reference
 query-dsl-span-or-query,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/query-dsl-span-or-query.html
 query-dsl-span-term-query,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/query-dsl-span-term-query.html
 query-dsl-span-within-query,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/query-dsl-span-within-query.html
+query-dsl-sparse-vector-query,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/query-dsl-sparse-vector-query.html
 query-dsl-term-query,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/query-dsl-term-query.html
 query-dsl-terms-query,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/query-dsl-terms-query.html
 query-dsl-terms-set-query,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/query-dsl-terms-set-query.html
@@ -472,6 +476,7 @@ redact-processor,https://www.elastic.co/guide/en/elasticsearch/reference/{branch
 regexp-syntax,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/regexp-syntax.html
 register-repository,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/snapshots-register-repository.html
 registered-domain-processor,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/registered-domain-processor.html
+relevance-scores,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/query-filter-context.html#relevance-scores
 remove-processor,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/remove-processor.html
 remote-clusters-api-key,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/remote-clusters-api-key.html
 rename-processor,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/rename-processor.html
@@ -686,6 +691,7 @@ security-user-cache,https://www.elastic.co/guide/en/elasticsearch/reference/{bra
 service-accounts,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/service-accounts.html
 set-processor,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/set-processor.html
 shape,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/shape.html
+shard-request-cache,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/shard-request-cache.html
 simulate-ingest-api,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/simulate-ingest-api.html
 simulate-pipeline-api,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/simulate-pipeline-api.html
 slice-scroll,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/paginate-search-results.html#slice-scroll
@@ -716,7 +722,7 @@ snapshot-restore-feature-state,https://www.elastic.co/guide/en/elasticsearch/ref
 sort-processor,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/sort-processor.html
 sort-search-results,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/sort-search-results.html
 sort-tiebreaker,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/eql.html#eql-search-specify-a-sort-tiebreaker
-query-dsl-sparse-vector-query,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/query-dsl-sparse-vector-query.html
+source-filtering,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/search-fields.html#source-filtering
 split-processor,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/split-processor.html
 sql-async-search-api,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/get-async-sql-search-api.html
 sql-async-status-api,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/get-async-sql-search-status-api.html
@@ -736,6 +742,7 @@ start-trial,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/sta
 stop-dfanalytics,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/stop-dfanalytics.html
 stop-trained-model-deployment,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/stop-trained-model-deployment.html
 stop-transform,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/stop-transform.html
+stored-fields,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/search-fields.html#stored-fields
 synonym-rule-create,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/put-synonym-rule.html
 synonym-rule-delete,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/delete-synonym-rule.html
 synonym-rule-get,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/get-synonym-rule.html
