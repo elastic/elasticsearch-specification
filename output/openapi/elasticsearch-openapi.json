@@ -76367,6 +76367,10 @@
           },
           "settings_override": {
             "$ref": "#/components/schemas/indices._types:IndexSettings"
+          },
+          "remove_index_blocks": {
+            "description": "If index blocks should be removed when creating destination index (optional)",
+            "type": "boolean"
           }
         }
       },
