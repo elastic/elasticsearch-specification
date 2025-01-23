@@ -11628,6 +11628,12 @@ export interface IndicesAnalyzeTokenDetail {
   tokens: IndicesAnalyzeExplainAnalyzeToken[]
 }
 
+export interface IndicesCancelMigrateReindexRequest extends RequestBase {
+  index: Indices
+}
+
+export type IndicesCancelMigrateReindexResponse = AcknowledgedResponseBase
+
 export interface IndicesClearCacheRequest extends RequestBase {
   index?: Indices
   allow_no_indices?: boolean
@@ -11709,6 +11715,24 @@ export interface IndicesCreateDataStreamRequest extends RequestBase {
 }
 
 export type IndicesCreateDataStreamResponse = AcknowledgedResponseBase
+
+export interface IndicesCreateFromCreateFrom {
+  mappings_override?: MappingTypeMapping
+  settings_override?: IndicesIndexSettings
+  remove_index_blocks?: boolean
+}
+
+export interface IndicesCreateFromRequest extends RequestBase {
+  source: IndexName
+  dest: IndexName
+  body?: IndicesCreateFromCreateFrom
+}
+
+export interface IndicesCreateFromResponse {
+  acknowledged: boolean
+  index: IndexName
+  shards_acknowledged: boolean
+}
 
 export interface IndicesDataStreamsStatsDataStreamsStatsItem {
   backing_indices: integer
@@ -12073,6 +12097,34 @@ export interface IndicesGetMappingRequest extends RequestBase {
 
 export type IndicesGetMappingResponse = Record<IndexName, IndicesGetMappingIndexMappingRecord>
 
+export interface IndicesGetMigrateReindexStatusRequest extends RequestBase {
+  index: Indices
+}
+
+export interface IndicesGetMigrateReindexStatusResponse {
+  start_time?: DateTime
+  start_time_millis: EpochTime<UnitMillis>
+  complete: boolean
+  total_indices_in_data_stream: integer
+  total_indices_requiring_upgrade: integer
+  successes: integer
+  in_progress: IndicesGetMigrateReindexStatusStatusInProgress[]
+  pending: integer
+  errors: IndicesGetMigrateReindexStatusStatusError[]
+  exception?: string
+}
+
+export interface IndicesGetMigrateReindexStatusStatusError {
+  index: string
+  message: string
+}
+
+export interface IndicesGetMigrateReindexStatusStatusInProgress {
+  index: string
+  total_doc_count: long
+  reindexed_doc_count: long
+}
+
 export interface IndicesGetSettingsRequest extends RequestBase {
   index?: Indices
   name?: Names
@@ -12095,6 +12147,23 @@ export interface IndicesGetTemplateRequest extends RequestBase {
 }
 
 export type IndicesGetTemplateResponse = Record<string, IndicesTemplateMapping>
+
+export interface IndicesMigrateReindexMigrateReindex {
+  mode: IndicesMigrateReindexModeEnum
+  source: IndicesMigrateReindexSourceIndex
+}
+
+export type IndicesMigrateReindexModeEnum = 'upgrade'
+
+export interface IndicesMigrateReindexRequest extends RequestBase {
+  body?: IndicesMigrateReindexMigrateReindex
+}
+
+export type IndicesMigrateReindexResponse = AcknowledgedResponseBase
+
+export interface IndicesMigrateReindexSourceIndex {
+  index: IndexName
+}
 
 export interface IndicesMigrateToDataStreamRequest extends RequestBase {
   name: IndexName
@@ -13881,75 +13950,6 @@ export interface LogstashPutPipelineRequest extends RequestBase {
 }
 
 export type LogstashPutPipelineResponse = boolean
-
-export interface MigrateCancelReindexRequest extends RequestBase {
-  index: Indices
-}
-
-export type MigrateCancelReindexResponse = AcknowledgedResponseBase
-
-export interface MigrateCreateFromCreateFrom {
-  mappings_override?: MappingTypeMapping
-  settings_override?: IndicesIndexSettings
-  remove_index_blocks?: boolean
-}
-
-export interface MigrateCreateFromRequest extends RequestBase {
-  source: IndexName
-  dest: IndexName
-  body?: MigrateCreateFromCreateFrom
-}
-
-export interface MigrateCreateFromResponse {
-  acknowledged: boolean
-  index: IndexName
-  shards_acknowledged: boolean
-}
-
-export interface MigrateGetReindexStatusRequest extends RequestBase {
-  index: Indices
-}
-
-export interface MigrateGetReindexStatusResponse {
-  start_time?: DateTime
-  start_time_millis: EpochTime<UnitMillis>
-  complete: boolean
-  total_indices_in_data_stream: integer
-  total_indices_requiring_upgrade: integer
-  successes: integer
-  in_progress: MigrateGetReindexStatusStatusInProgress[]
-  pending: integer
-  errors: MigrateGetReindexStatusStatusError[]
-  exception?: string
-}
-
-export interface MigrateGetReindexStatusStatusError {
-  index: string
-  message: string
-}
-
-export interface MigrateGetReindexStatusStatusInProgress {
-  index: string
-  total_doc_count: long
-  reindexed_doc_count: long
-}
-
-export interface MigrateReindexMigrateReindex {
-  mode: MigrateReindexModeEnum
-  source: MigrateReindexSourceIndex
-}
-
-export type MigrateReindexModeEnum = 'upgrade'
-
-export interface MigrateReindexRequest extends RequestBase {
-  body?: MigrateReindexMigrateReindex
-}
-
-export type MigrateReindexResponse = AcknowledgedResponseBase
-
-export interface MigrateReindexSourceIndex {
-  index: IndexName
-}
 
 export interface MigrationDeprecationsDeprecation {
   details?: string
