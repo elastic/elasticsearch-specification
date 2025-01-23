@@ -1,0 +1,44 @@
+summary: Get details about a delete by query
+description: >
+  A successful response from `GET _tasks?detailed=true&actions=*/delete/byquery`, which gets the status of a delete by query operation.
+  The `status` object contains the actual status.
+  `total` is the total number of operations that the reindex expects to perform.
+  You can estimate the progress by adding the `updated`, `created`, and `deleted` fields.
+  The request will finish when their sum is equal to the `total` field.
+# type: response
+# response_code: ''
+value: |-
+  {
+    "nodes" : {
+      "r1A2WoRbTwKZ516z6NEs5A" : {
+        "name" : "r1A2WoR",
+        "transport_address" : "127.0.0.1:9300",
+        "host" : "127.0.0.1",
+        "ip" : "127.0.0.1:9300",
+        "attributes" : {
+          "testattr" : "test",
+          "portsfile" : "true"
+        },
+        "tasks" : {
+          "r1A2WoRbTwKZ516z6NEs5A:36619" : {
+            "node" : "r1A2WoRbTwKZ516z6NEs5A",
+            "id" : 36619,
+            "type" : "transport",
+            "action" : "indices:data/write/delete/byquery",
+            "status" : {    
+              "total" : 6154,
+              "updated" : 0,
+              "created" : 0,
+              "deleted" : 3500,
+              "batches" : 36,
+              "version_conflicts" : 0,
+              "noops" : 0,
+              "retries": 0,
+              "throttled_millis": 0
+            },
+            "description" : ""
+          }
+        }
+      }
+    }
+  }
