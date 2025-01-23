@@ -30,6 +30,7 @@ import { float } from '@_types/Numeric'
  * @availability stack since=6.5.0 stability=stable
  * @availability serverless stability=stable visibility=private
  * @doc_tag document
+ * @doc_id docs-delete-by-query-rethrottle
  */
 export interface Request extends RequestBase {
   path_parts: {
@@ -41,6 +42,7 @@ export interface Request extends RequestBase {
   query_parameters: {
     /**
      * The throttle for this request in sub-requests per second.
+     * To disable throttling, set it to `-1`.
      */
     requests_per_second?: float
   }
