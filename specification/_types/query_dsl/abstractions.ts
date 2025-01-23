@@ -532,11 +532,11 @@ export enum CombinedFieldsZeroTerms {
  */
 export class FieldAndFormat {
   /**
-   * Wildcard pattern. The request returns values for field names matching this pattern.
+   * A wildcard pattern. The request returns values for field names matching this pattern.
    */
   field: Field
   /**
-   * Format in which the values are returned.
+   * The format in which the values are returned.
    */
   format?: string
   include_unmapped?: boolean
