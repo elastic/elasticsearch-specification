@@ -141,6 +141,7 @@ dissect-processor,https://www.elastic.co/guide/en/elasticsearch/reference/{branc
 distance-units,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/api-conventions.html#distance-units
 docs-bulk,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/docs-bulk.html
 docs-delete-by-query,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/docs-delete-by-query.html
+docs-delete-by-query-rethrottle,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/docs-delete-by-query.html#docs-delete-by-query-rethrottle
 docs-delete,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/docs-delete.html
 docs-get,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/docs-get.html
 docs-index,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/docs-index_.html
