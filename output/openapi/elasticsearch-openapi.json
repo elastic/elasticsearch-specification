@@ -11445,6 +11445,41 @@
         }
       }
     },
+    "/_migration/reindex/{index}/_cancel": {
+      "post": {
+        "tags": [
+          "migration"
+        ],
+        "summary": "This API cancels a migration reindex attempt for a data stream or index",
+        "operationId": "indices-cancel-migrate-reindex",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "index",
+            "description": "The index or data stream name",
+            "required": true,
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/_types:Indices"
+            },
+            "style": "simple"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/_types:AcknowledgedResponseBase"
+                }
+              }
+            }
+          }
+        },
+        "x-state": "Technical preview"
+      }
+    },
     "/_cache/clear": {
       "post": {
         "tags": [
@@ -12240,6 +12275,58 @@
           }
         },
         "x-state": "Added in 7.9.0"
+      }
+    },
+    "/_create_from/{source}/{dest}": {
+      "put": {
+        "tags": [
+          "migration"
+        ],
+        "summary": "This API creates a destination from a source index",
+        "description": "It copies the mappings and settings from the source index while allowing request settings and mappings to override the source values.",
+        "operationId": "indices-create-from",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/indices.create_from#source"
+          },
+          {
+            "$ref": "#/components/parameters/indices.create_from#dest"
+          }
+        ],
+        "requestBody": {
+          "$ref": "#/components/requestBodies/indices.create_from"
+        },
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/indices.create_from#200"
+          }
+        },
+        "x-state": "Technical preview"
+      },
+      "post": {
+        "tags": [
+          "migration"
+        ],
+        "summary": "This API creates a destination from a source index",
+        "description": "It copies the mappings and settings from the source index while allowing request settings and mappings to override the source values.",
+        "operationId": "indices-create-from-1",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/indices.create_from#source"
+          },
+          {
+            "$ref": "#/components/parameters/indices.create_from#dest"
+          }
+        ],
+        "requestBody": {
+          "$ref": "#/components/requestBodies/indices.create_from"
+        },
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/indices.create_from#200"
+          }
+        },
+        "x-state": "Technical preview"
       }
     },
     "/_data_stream/_stats": {
@@ -14118,6 +14205,89 @@
         }
       }
     },
+    "/_migration/reindex/{index}/_status": {
+      "get": {
+        "tags": [
+          "migration"
+        ],
+        "summary": "This API returns the status of a migration reindex attempt for a data stream or index",
+        "operationId": "indices-get-migrate-reindex-status",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "index",
+            "description": "The index or data stream name",
+            "required": true,
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/_types:Indices"
+            },
+            "style": "simple"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "start_time": {
+                      "$ref": "#/components/schemas/_types:DateTime"
+                    },
+                    "start_time_millis": {
+                      "$ref": "#/components/schemas/_types:EpochTimeUnitMillis"
+                    },
+                    "complete": {
+                      "type": "boolean"
+                    },
+                    "total_indices_in_data_stream": {
+                      "type": "number"
+                    },
+                    "total_indices_requiring_upgrade": {
+                      "type": "number"
+                    },
+                    "successes": {
+                      "type": "number"
+                    },
+                    "in_progress": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/indices.get_migrate_reindex_status:StatusInProgress"
+                      }
+                    },
+                    "pending": {
+                      "type": "number"
+                    },
+                    "errors": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/indices.get_migrate_reindex_status:StatusError"
+                      }
+                    },
+                    "exception": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "start_time_millis",
+                    "complete",
+                    "total_indices_in_data_stream",
+                    "total_indices_requiring_upgrade",
+                    "successes",
+                    "in_progress",
+                    "pending",
+                    "errors"
+                  ]
+                }
+              }
+            }
+          }
+        },
+        "x-state": "Technical preview"
+      }
+    },
     "/_settings": {
       "get": {
         "tags": [
@@ -14396,6 +14566,39 @@
             "$ref": "#/components/responses/indices.get_template#200"
           }
         }
+      }
+    },
+    "/_migration/reindex": {
+      "post": {
+        "tags": [
+          "migration"
+        ],
+        "summary": "\"This API reindexes all legacy backing indices for a data stream",
+        "description": "It does this in a persistent task. The persistent task id is returned immediately, and the reindexing work is completed in that task",
+        "operationId": "indices-migrate-reindex",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/indices.migrate_reindex:MigrateReindex"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/_types:AcknowledgedResponseBase"
+                }
+              }
+            }
+          }
+        },
+        "x-state": "Technical preview"
       }
     },
     "/_data_stream/_migrate/{name}": {
@@ -17991,209 +18194,6 @@
           }
         },
         "x-state": "Added in 1.3.0"
-      }
-    },
-    "/_migration/reindex/{index}/_cancel": {
-      "post": {
-        "tags": [
-          "migration"
-        ],
-        "summary": "This API cancels a migration reindex attempt for a data stream or index",
-        "operationId": "migrate-cancel-reindex",
-        "parameters": [
-          {
-            "in": "path",
-            "name": "index",
-            "description": "The index or data stream name",
-            "required": true,
-            "deprecated": false,
-            "schema": {
-              "$ref": "#/components/schemas/_types:Indices"
-            },
-            "style": "simple"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/_types:AcknowledgedResponseBase"
-                }
-              }
-            }
-          }
-        },
-        "x-state": "Technical preview"
-      }
-    },
-    "/_create_from/{source}/{dest}": {
-      "put": {
-        "tags": [
-          "migration"
-        ],
-        "summary": "This API creates a destination from a source index",
-        "description": "It copies the mappings and settings from the source index while allowing request settings and mappings to override the source values.",
-        "operationId": "migrate-create-from",
-        "parameters": [
-          {
-            "$ref": "#/components/parameters/migrate.create_from#source"
-          },
-          {
-            "$ref": "#/components/parameters/migrate.create_from#dest"
-          }
-        ],
-        "requestBody": {
-          "$ref": "#/components/requestBodies/migrate.create_from"
-        },
-        "responses": {
-          "200": {
-            "$ref": "#/components/responses/migrate.create_from#200"
-          }
-        },
-        "x-state": "Technical preview"
-      },
-      "post": {
-        "tags": [
-          "migration"
-        ],
-        "summary": "This API creates a destination from a source index",
-        "description": "It copies the mappings and settings from the source index while allowing request settings and mappings to override the source values.",
-        "operationId": "migrate-create-from-1",
-        "parameters": [
-          {
-            "$ref": "#/components/parameters/migrate.create_from#source"
-          },
-          {
-            "$ref": "#/components/parameters/migrate.create_from#dest"
-          }
-        ],
-        "requestBody": {
-          "$ref": "#/components/requestBodies/migrate.create_from"
-        },
-        "responses": {
-          "200": {
-            "$ref": "#/components/responses/migrate.create_from#200"
-          }
-        },
-        "x-state": "Technical preview"
-      }
-    },
-    "/_migration/reindex/{index}/_status": {
-      "get": {
-        "tags": [
-          "migration"
-        ],
-        "summary": "This API returns the status of a migration reindex attempt for a data stream or index",
-        "operationId": "migrate-get-reindex-status",
-        "parameters": [
-          {
-            "in": "path",
-            "name": "index",
-            "description": "The index or data stream name",
-            "required": true,
-            "deprecated": false,
-            "schema": {
-              "$ref": "#/components/schemas/_types:Indices"
-            },
-            "style": "simple"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "properties": {
-                    "start_time": {
-                      "$ref": "#/components/schemas/_types:DateTime"
-                    },
-                    "start_time_millis": {
-                      "$ref": "#/components/schemas/_types:EpochTimeUnitMillis"
-                    },
-                    "complete": {
-                      "type": "boolean"
-                    },
-                    "total_indices_in_data_stream": {
-                      "type": "number"
-                    },
-                    "total_indices_requiring_upgrade": {
-                      "type": "number"
-                    },
-                    "successes": {
-                      "type": "number"
-                    },
-                    "in_progress": {
-                      "type": "array",
-                      "items": {
-                        "$ref": "#/components/schemas/migrate.get_reindex_status:StatusInProgress"
-                      }
-                    },
-                    "pending": {
-                      "type": "number"
-                    },
-                    "errors": {
-                      "type": "array",
-                      "items": {
-                        "$ref": "#/components/schemas/migrate.get_reindex_status:StatusError"
-                      }
-                    },
-                    "exception": {
-                      "type": "string"
-                    }
-                  },
-                  "required": [
-                    "start_time_millis",
-                    "complete",
-                    "total_indices_in_data_stream",
-                    "total_indices_requiring_upgrade",
-                    "successes",
-                    "in_progress",
-                    "pending",
-                    "errors"
-                  ]
-                }
-              }
-            }
-          }
-        },
-        "x-state": "Technical preview"
-      }
-    },
-    "/_migration/reindex": {
-      "post": {
-        "tags": [
-          "migration"
-        ],
-        "summary": "\"This API reindexes all legacy backing indices for a data stream",
-        "description": "It does this in a persistent task. The persistent task id is returned immediately, and the reindexing work is completed in that task",
-        "operationId": "migrate-reindex",
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/migrate.reindex:MigrateReindex"
-              }
-            }
-          },
-          "required": true
-        },
-        "responses": {
-          "200": {
-            "description": "",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/_types:AcknowledgedResponseBase"
-                }
-              }
-            }
-          }
-        },
-        "x-state": "Technical preview"
       }
     },
     "/_migration/deprecations": {
@@ -71124,6 +71124,21 @@
           "failures"
         ]
       },
+      "indices.create_from:CreateFrom": {
+        "type": "object",
+        "properties": {
+          "mappings_override": {
+            "$ref": "#/components/schemas/_types.mapping:TypeMapping"
+          },
+          "settings_override": {
+            "$ref": "#/components/schemas/indices._types:IndexSettings"
+          },
+          "remove_index_blocks": {
+            "description": "If index blocks should be removed when creating destination index (optional)",
+            "type": "boolean"
+          }
+        }
+      },
       "indices.data_streams_stats:DataStreamsStatsItem": {
         "type": "object",
         "properties": {
@@ -71600,6 +71615,40 @@
           "mappings"
         ]
       },
+      "indices.get_migrate_reindex_status:StatusInProgress": {
+        "type": "object",
+        "properties": {
+          "index": {
+            "type": "string"
+          },
+          "total_doc_count": {
+            "type": "number"
+          },
+          "reindexed_doc_count": {
+            "type": "number"
+          }
+        },
+        "required": [
+          "index",
+          "total_doc_count",
+          "reindexed_doc_count"
+        ]
+      },
+      "indices.get_migrate_reindex_status:StatusError": {
+        "type": "object",
+        "properties": {
+          "index": {
+            "type": "string"
+          },
+          "message": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "index",
+          "message"
+        ]
+      },
       "indices._types:TemplateMapping": {
         "type": "object",
         "properties": {
@@ -71637,6 +71686,38 @@
           "mappings",
           "order",
           "settings"
+        ]
+      },
+      "indices.migrate_reindex:MigrateReindex": {
+        "type": "object",
+        "properties": {
+          "mode": {
+            "$ref": "#/components/schemas/indices.migrate_reindex:ModeEnum"
+          },
+          "source": {
+            "$ref": "#/components/schemas/indices.migrate_reindex:SourceIndex"
+          }
+        },
+        "required": [
+          "mode",
+          "source"
+        ]
+      },
+      "indices.migrate_reindex:ModeEnum": {
+        "type": "string",
+        "enum": [
+          "upgrade"
+        ]
+      },
+      "indices.migrate_reindex:SourceIndex": {
+        "type": "object",
+        "properties": {
+          "index": {
+            "$ref": "#/components/schemas/_types:IndexName"
+          }
+        },
+        "required": [
+          "index"
         ]
       },
       "indices.modify_data_stream:Action": {
@@ -76357,87 +76438,6 @@
           "error",
           "_id",
           "_index"
-        ]
-      },
-      "migrate.create_from:CreateFrom": {
-        "type": "object",
-        "properties": {
-          "mappings_override": {
-            "$ref": "#/components/schemas/_types.mapping:TypeMapping"
-          },
-          "settings_override": {
-            "$ref": "#/components/schemas/indices._types:IndexSettings"
-          },
-          "remove_index_blocks": {
-            "description": "If index blocks should be removed when creating destination index (optional)",
-            "type": "boolean"
-          }
-        }
-      },
-      "migrate.get_reindex_status:StatusInProgress": {
-        "type": "object",
-        "properties": {
-          "index": {
-            "type": "string"
-          },
-          "total_doc_count": {
-            "type": "number"
-          },
-          "reindexed_doc_count": {
-            "type": "number"
-          }
-        },
-        "required": [
-          "index",
-          "total_doc_count",
-          "reindexed_doc_count"
-        ]
-      },
-      "migrate.get_reindex_status:StatusError": {
-        "type": "object",
-        "properties": {
-          "index": {
-            "type": "string"
-          },
-          "message": {
-            "type": "string"
-          }
-        },
-        "required": [
-          "index",
-          "message"
-        ]
-      },
-      "migrate.reindex:MigrateReindex": {
-        "type": "object",
-        "properties": {
-          "mode": {
-            "$ref": "#/components/schemas/migrate.reindex:ModeEnum"
-          },
-          "source": {
-            "$ref": "#/components/schemas/migrate.reindex:SourceIndex"
-          }
-        },
-        "required": [
-          "mode",
-          "source"
-        ]
-      },
-      "migrate.reindex:ModeEnum": {
-        "type": "string",
-        "enum": [
-          "upgrade"
-        ]
-      },
-      "migrate.reindex:SourceIndex": {
-        "type": "object",
-        "properties": {
-          "index": {
-            "$ref": "#/components/schemas/_types:IndexName"
-          }
-        },
-        "required": [
-          "index"
         ]
       },
       "migration.deprecations:Deprecation": {
@@ -94815,6 +94815,32 @@
           }
         }
       },
+      "indices.create_from#200": {
+        "description": "",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "acknowledged": {
+                  "type": "boolean"
+                },
+                "index": {
+                  "$ref": "#/components/schemas/_types:IndexName"
+                },
+                "shards_acknowledged": {
+                  "type": "boolean"
+                }
+              },
+              "required": [
+                "acknowledged",
+                "index",
+                "shards_acknowledged"
+              ]
+            }
+          }
+        }
+      },
       "indices.data_streams_stats#200": {
         "description": "",
         "content": {
@@ -95564,32 +95590,6 @@
               },
               "required": [
                 "docs"
-              ]
-            }
-          }
-        }
-      },
-      "migrate.create_from#200": {
-        "description": "",
-        "content": {
-          "application/json": {
-            "schema": {
-              "type": "object",
-              "properties": {
-                "acknowledged": {
-                  "type": "boolean"
-                },
-                "index": {
-                  "$ref": "#/components/schemas/_types:IndexName"
-                },
-                "shards_acknowledged": {
-                  "type": "boolean"
-                }
-              },
-              "required": [
-                "acknowledged",
-                "index",
-                "shards_acknowledged"
               ]
             }
           }
@@ -101112,6 +101112,28 @@
         },
         "style": "form"
       },
+      "indices.create_from#source": {
+        "in": "path",
+        "name": "source",
+        "description": "The source index or data stream name",
+        "required": true,
+        "deprecated": false,
+        "schema": {
+          "$ref": "#/components/schemas/_types:IndexName"
+        },
+        "style": "simple"
+      },
+      "indices.create_from#dest": {
+        "in": "path",
+        "name": "dest",
+        "description": "The destination index or data stream name",
+        "required": true,
+        "deprecated": false,
+        "schema": {
+          "$ref": "#/components/schemas/_types:IndexName"
+        },
+        "style": "simple"
+      },
       "indices.data_streams_stats#name": {
         "in": "path",
         "name": "name",
@@ -103219,28 +103241,6 @@
           "$ref": "#/components/schemas/_types:Fields"
         },
         "style": "form"
-      },
-      "migrate.create_from#source": {
-        "in": "path",
-        "name": "source",
-        "description": "The source index or data stream name",
-        "required": true,
-        "deprecated": false,
-        "schema": {
-          "$ref": "#/components/schemas/_types:IndexName"
-        },
-        "style": "simple"
-      },
-      "migrate.create_from#dest": {
-        "in": "path",
-        "name": "dest",
-        "description": "The destination index or data stream name",
-        "required": true,
-        "deprecated": false,
-        "schema": {
-          "$ref": "#/components/schemas/_types:IndexName"
-        },
-        "style": "simple"
       },
       "migration.deprecations#index": {
         "in": "path",
@@ -108138,6 +108138,16 @@
           }
         }
       },
+      "indices.create_from": {
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/indices.create_from:CreateFrom"
+            }
+          }
+        },
+        "required": true
+      },
       "indices.put_alias": {
         "content": {
           "application/json": {
@@ -108740,16 +108750,6 @@
                   "$ref": "#/components/schemas/_types:Ids"
                 }
               }
-            }
-          }
-        },
-        "required": true
-      },
-      "migrate.create_from": {
-        "content": {
-          "application/json": {
-            "schema": {
-              "$ref": "#/components/schemas/migrate.create_from:CreateFrom"
             }
           }
         },
