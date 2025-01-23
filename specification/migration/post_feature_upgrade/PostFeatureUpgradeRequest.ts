@@ -20,8 +20,24 @@
 import { RequestBase } from '@_types/Base'
 
 /**
+ * Start the feature migration.
+ * Version upgrades sometimes require changes to how features store configuration information and data in system indices.
+ * This API starts the automatic migration process.
+ *
+ * Some functionality might be temporarily unavailable during the migration process.
+ *
+ * TIP: The API is designed for indirect use by the Upgrade Assistant. We strongly recommend you use the Upgrade Assistant.
  * @rest_spec_name migration.post_feature_upgrade
  * @availability stack since=7.16.0 stability=stable
  * @index_privileges manage
+ * @cluster_privileges manage
+ * @doc_id migration-api-feature-upgrade
  */
-export interface Request extends RequestBase {}
+export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_migration/system_features'
+      methods: ['POST']
+    }
+  ]
+}

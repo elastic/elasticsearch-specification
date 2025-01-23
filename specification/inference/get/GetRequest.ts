@@ -28,6 +28,20 @@ import { Id } from '@_types/common'
  * @availability serverless stability=stable visibility=public
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_inference'
+      methods: ['GET']
+    },
+    {
+      path: '/_inference/{inference_id}'
+      methods: ['GET']
+    },
+    {
+      path: '/_inference/{task_type}/{inference_id}'
+      methods: ['GET']
+    }
+  ]
   path_parts: {
     /**
      * The task type

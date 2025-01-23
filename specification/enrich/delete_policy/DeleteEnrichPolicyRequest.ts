@@ -19,6 +19,7 @@
 
 import { RequestBase } from '@_types/Base'
 import { Name } from '@_types/common'
+import { Duration } from '@_types/Time'
 
 /**
  * Delete an enrich policy.
@@ -28,10 +29,23 @@ import { Name } from '@_types/common'
  * @availability serverless stability=stable visibility=public
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_enrich/policy/{name}'
+      methods: ['DELETE']
+    }
+  ]
   path_parts: {
     /**
      * Enrich policy to delete.
      */
     name: Name
+  }
+  query_parameters: {
+    /**
+     * Period to wait for a connection to the master node.
+     * @server_default 30s
+     */
+    master_timeout?: Duration
   }
 }

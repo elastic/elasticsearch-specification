@@ -1,0 +1,11 @@
+# summary: licensing/get-license.asciidoc:61
+description: A successful response from `GET /_license`.
+# type: response
+# response_code: ''
+value:
+  "{\n  \"license\" : {\n    \"status\" : \"active\",\n    \"uid\" : \"cbff45e7-c553-41f7-ae4f-9205eabd80xx\"\
+  ,\n    \"type\" : \"trial\",\n    \"issue_date\" : \"2018-10-20T22:05:12.332Z\"\
+  ,\n    \"issue_date_in_millis\" : 1540073112332,\n    \"expiry_date\" : \"2018-11-19T22:05:12.332Z\"\
+  ,\n    \"expiry_date_in_millis\" : 1542665112332,\n    \"max_nodes\" : 1000,\n \
+  \   \"max_resource_units\" : null,\n    \"issued_to\" : \"test\",\n    \"issuer\"\
+  \ : \"elasticsearch\",\n    \"start_date_in_millis\" : -1\n  }\n}"

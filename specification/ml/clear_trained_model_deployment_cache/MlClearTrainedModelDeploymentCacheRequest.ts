@@ -33,6 +33,12 @@ import { Id } from '@_types/common'
  * @doc_tag ml trained model
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_ml/trained_models/{model_id}/deployment/cache/_clear'
+      methods: ['POST']
+    }
+  ]
   path_parts: {
     /**
      * The unique identifier of the trained model.

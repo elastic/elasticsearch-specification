@@ -1,0 +1,33 @@
+# summary:
+description: A succesful response for explaining a data frame analytics job configuration.
+# type: response
+# response_code: 200
+value:
+  field_selection:
+    - field: number_of_bedrooms
+      mappings_types:
+        - integer
+      is_included: true
+      is_required: false
+      feature_type: numerical
+    - field: postcode
+      mappings_types:
+        - text
+      is_included: false
+      is_required: false
+      reason: '[postcode.keyword] is preferred because it is aggregatable'
+    - field: postcode.keyword
+      mappings_types:
+        - keyword
+      is_included: true
+      is_required: false
+      feature_type: categorical
+    - field: price
+      mappings_types:
+        - float
+      is_included: true
+      is_required: true
+      feature_type: numerical
+  memory_estimation:
+    expected_memory_without_disk: 128MB
+    expected_memory_with_disk: 32MB

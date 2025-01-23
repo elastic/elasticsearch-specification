@@ -19,9 +19,11 @@
 
 import { CatRequestBase } from '@cat/_types/CatBase'
 import { Bytes } from '@_types/common'
+import { Duration, TimeUnit } from '@_types/Time'
 
 /**
  * Get node information.
+ *
  * Get information about the nodes in a cluster.
  * IMPORTANT: cat APIs are only intended for human consumption using the command line or Kibana console. They are not intended for use by applications. For application consumption, use the nodes info API.
  * @rest_spec_name cat.nodes
@@ -31,6 +33,12 @@ import { Bytes } from '@_types/common'
  * @cluster_privileges monitor
  */
 export interface Request extends CatRequestBase {
+  urls: [
+    {
+      path: '/_cat/nodes'
+      methods: ['GET']
+    }
+  ]
   query_parameters: {
     /**
      * The unit used to display byte values.
@@ -46,5 +54,14 @@ export interface Request extends CatRequestBase {
      * @server_default false
      */
     include_unloaded_segments?: boolean
+    /**
+     * Period to wait for a connection to the master node.
+     * @server_default 30s
+     */
+    master_timeout?: Duration
+    /**
+     * Unit used to display time values.
+     */
+    time?: TimeUnit
   }
 }

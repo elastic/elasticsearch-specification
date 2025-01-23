@@ -26,11 +26,33 @@ import { Duration } from '@_types/Time'
  * Update a cross-cluster API key.
  *
  * Update the attributes of an existing cross-cluster API key, which is used for API key based remote cluster access.
+ *
+ * To use this API, you must have at least the `manage_security` cluster privilege.
+ * Users can only update API keys that they created.
+ * To update another user's API key, use the `run_as` feature to submit a request on behalf of another user.
+ *
+ * IMPORTANT: It's not possible to use an API key as the authentication credential for this API.
+ * To update an API key, the owner user's credentials are required.
+ *
+ * It's not possible to update expired API keys, or API keys that have been invalidated by the invalidate API key API.
+ *
+ * This API supports updates to an API key's access scope, metadata, and expiration.
+ * The owner user's information, such as the `username` and `realm`, is also updated automatically on every call.
+ *
+ * NOTE: This API cannot update REST API keys, which should be updated by either the update API key or bulk update API keys API.
  * @rest_spec_name security.update_cross_cluster_api_key
  * @availability stack stability=stable
+ * @cluster_privileges manage_security
+ * @doc_id security-api-cross-cluster-key-update
  * @ext_doc_id remote-clusters-api-key
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_security/cross_cluster/api_key/{id}'
+      methods: ['PUT']
+    }
+  ]
   path_parts: {
     /**
      * The ID of the cross-cluster API key to update.
@@ -46,7 +68,7 @@ export interface Request extends RequestBase {
      */
     access: Access
     /**
-     * Expiration time for the API key.
+     * The expiration time for the API key.
      * By default, API keys never expire. This property can be omitted to leave the value unchanged.
      */
     expiration?: Duration

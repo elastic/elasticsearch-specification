@@ -1,0 +1,8 @@
+# summary:
+description: A successful response from `POST /_security/oidc/logout`, which contains the URI pointing to the End Session Endpoint of the OpenID Connect Provider with all the parameters of the Logout Request as HTTP GET parameters.
+# type: response
+# response_code:
+value: |-
+  {
+    "redirect" : "https://op-provider.org/logout?id_token_hint=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c&post_logout_redirect_uri=http%3A%2F%2Foidc-kibana.elastic.co%2Floggedout&state=lGYK0EcSLjqH6pkT5EVZjC6eIW5YCGgywj2sxROO"
+  }

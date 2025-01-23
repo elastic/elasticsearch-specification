@@ -19,9 +19,11 @@
 
 import { CatRequestBase } from '@cat/_types/CatBase'
 import { Bytes, Indices } from '@_types/common'
+import { Duration } from '@_types/Time'
 
 /**
  * Get segment information.
+ *
  * Get low-level information about the Lucene segments in index shards.
  * For data streams, the API returns information about the backing indices.
  * IMPORTANT: cat APIs are only intended for human consumption using the command line or Kibana console. They are not intended for use by applications. For application consumption, use the index segments API.
@@ -33,6 +35,16 @@ import { Bytes, Indices } from '@_types/common'
  * @index_privileges monitor
  */
 export interface Request extends CatRequestBase {
+  urls: [
+    {
+      path: '/_cat/segments'
+      methods: ['GET']
+    },
+    {
+      path: '/_cat/segments/{index}'
+      methods: ['GET']
+    }
+  ]
   path_parts: {
     /**
      * A comma-separated list of data streams, indices, and aliases used to limit the request.
@@ -54,5 +66,10 @@ export interface Request extends CatRequestBase {
      * @server_default false
      */
     local?: boolean
+    /**
+     * Period to wait for a connection to the master node.
+     * @server_default 30s
+     */
+    master_timeout?: Duration
   }
 }

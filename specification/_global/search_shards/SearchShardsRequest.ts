@@ -19,6 +19,7 @@
 
 import { RequestBase } from '@_types/Base'
 import { ExpandWildcards, Indices, Routing } from '@_types/common'
+import { Duration } from '@_types/Time'
 
 /**
  * Get the search shards.
@@ -31,6 +32,16 @@ import { ExpandWildcards, Indices, Routing } from '@_types/common'
  * @doc_tag search
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_search_shards'
+      methods: ['GET', 'POST']
+    },
+    {
+      path: '/{index}/_search_shards'
+      methods: ['GET', 'POST']
+    }
+  ]
   path_parts: {
     /**
      * Returns the indices and shards that a search request would be executed against.
@@ -63,6 +74,11 @@ export interface Request extends RequestBase {
      * @server_default false
      */
     local?: boolean
+    /**
+     * Period to wait for a connection to the master node.
+     * @server_default 30s
+     */
+    master_timeout?: Duration
     /**
      * Specifies the node or shard the operation should be performed on.
      * Random by default.

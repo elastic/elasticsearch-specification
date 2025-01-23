@@ -19,11 +19,12 @@
 
 import { CatRequestBase } from '@cat/_types/CatBase'
 import { Bytes, ExpandWildcards, HealthStatus, Indices } from '@_types/common'
-import { TimeUnit } from '@_types/Time'
+import { Duration, TimeUnit } from '@_types/Time'
 
 /**
  * Get index information.
- * Returns high-level information about indices in a cluster, including backing indices for data streams.
+ *
+ * Get high-level information about indices in a cluster, including backing indices for data streams.
  *
  * Use this request to get the following information for each index in a cluster:
  * - shard count
@@ -45,6 +46,16 @@ import { TimeUnit } from '@_types/Time'
  * @index_privileges monitor
  */
 export interface Request extends CatRequestBase {
+  urls: [
+    {
+      path: '/_cat/indices'
+      methods: ['GET']
+    },
+    {
+      path: '/_cat/indices/{index}'
+      methods: ['GET']
+    }
+  ]
   path_parts: {
     /**
      * Comma-separated list of data streams, indices, and aliases used to limit the request.
@@ -73,5 +84,10 @@ export interface Request extends CatRequestBase {
     pri?: boolean
     /** The unit used to display time values. */
     time?: TimeUnit
+    /**
+     * Period to wait for a connection to the master node.
+     * @server_default 30s
+     */
+    master_timeout?: Duration
   }
 }

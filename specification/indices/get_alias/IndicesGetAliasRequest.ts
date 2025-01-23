@@ -27,8 +27,28 @@ import { Duration } from '@_types/Time'
  * @rest_spec_name indices.get_alias
  * @availability stack stability=stable
  * @availability serverless stability=stable visibility=public
+ * @doc_id indices-get-alias
+ * @index_privileges view_index_metadata
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_alias'
+      methods: ['GET']
+    },
+    {
+      path: '/_alias/{name}'
+      methods: ['GET']
+    },
+    {
+      path: '/{index}/_alias/{name}'
+      methods: ['GET']
+    },
+    {
+      path: '/{index}/_alias'
+      methods: ['GET']
+    }
+  ]
   path_parts: {
     /**
      * Comma-separated list of aliases to retrieve.

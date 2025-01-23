@@ -25,8 +25,16 @@ import { Id } from '@_types/common'
  * @rest_spec_name query_rules.get_ruleset
  * @availability stack since=8.10.0 stability=stable
  * @availability serverless stability=stable visibility=public
+ * @cluster_privileges manage_search_query_rules
+ * @doc_id query-ruleset-get
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_query_rules/{ruleset_id}'
+      methods: ['GET']
+    }
+  ]
   path_parts: {
     /**
      * The unique identifier of the query ruleset

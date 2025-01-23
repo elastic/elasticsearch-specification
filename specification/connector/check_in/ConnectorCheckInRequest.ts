@@ -29,6 +29,12 @@ import { Id } from '@_types/common'
  * @doc_id connector-checkin
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_connector/{connector_id}/_check_in'
+      methods: ['PUT']
+    }
+  ]
   path_parts: {
     /**
      * The unique identifier of the connector to be checked in

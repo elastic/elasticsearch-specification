@@ -33,6 +33,12 @@ import { DateTime } from '@_types/Time'
  * @doc_tag ml anomaly
  */
 export interface Request<TData> extends RequestBase {
+  urls: [
+    {
+      path: '/_ml/anomaly_detectors/{job_id}/_data'
+      methods: ['POST']
+    }
+  ]
   path_parts: {
     /**
      * Identifier for the anomaly detection job. The job must have a state of open to receive and process the data.

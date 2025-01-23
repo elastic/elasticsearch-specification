@@ -47,6 +47,12 @@ import { Duration } from '@_types/Time'
  * @doc_id cluster-update-settings
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_cluster/settings'
+      methods: ['PUT']
+    }
+  ]
   query_parameters: {
     flat_settings?: boolean
     /** @server_default 30s */

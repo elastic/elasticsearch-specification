@@ -36,31 +36,9 @@
       ],
       "response": []
     },
-    "async_search.get": {
-      "request": [],
-      "response": [
-        "type_alias definition _types:EpochTime / instance_of - No type definition for '_types.EpochTime:Unit'",
-        "type_alias definition _types.aggregations:Buckets / union_of / dictionary_of / instance_of - No type definition for '_types.aggregations.Buckets:TBucket'",
-        "type_alias definition _types.aggregations:Buckets / union_of / array_of / instance_of - No type definition for '_types.aggregations.Buckets:TBucket'",
-        "type_alias definition _spec_utils:Void / instance_of - No type definition for '_builtins:void'",
-        "type_alias definition _types:DurationValue / instance_of - No type definition for '_types.DurationValue:Unit'",
-        "type_alias definition _global.search._types:Suggest - A tagged union should not have generic parameters",
-        "type_alias definition _global.search._types:Suggest / instance_of / Generics / instance_of - No type definition for '_global.search._types.Suggest:TDocument'",
-        "type_alias definition _global.search._types:Suggest - Expected 1 generic parameters but got 0"
-      ]
-    },
     "async_search.submit": {
       "request": [
-        "interface definition _types:QueryVectorBuilder - Property text_embedding is a single-variant and must be required",
-        "type_alias definition _spec_utils:PipeSeparatedFlags / union_of / instance_of - No type definition for '_spec_utils.PipeSeparatedFlags:T'"
-      ],
-      "response": []
-    },
-    "bulk": {
-      "request": [
-        "Request: missing json spec query parameter 'type'",
-        "Request: missing json spec query parameter 'require_data_stream'",
-        "Request: missing json spec query parameter 'list_executed_pipelines'"
+        "interface definition _types:QueryVectorBuilder - Property text_embedding is a single-variant and must be required"
       ],
       "response": []
     },
@@ -70,302 +48,71 @@
       ],
       "response": []
     },
-    "cat.aliases": {
-      "request": [
-        "request definition cat.aliases:Request / body - A request with inherited properties must have a PropertyBody"
-      ],
-      "response": []
-    },
-    "cat.allocation": {
-      "request": [
-        "request definition cat.allocation:Request / body - A request with inherited properties must have a PropertyBody"
-      ],
-      "response": [
-        "type_alias definition _spec_utils:Stringified / union_of / instance_of - No type definition for '_spec_utils.Stringified:T'"
-      ]
-    },
-    "cat.component_templates": {
-      "request": [
-        "request definition cat.component_templates:Request / body - A request with inherited properties must have a PropertyBody"
-      ],
-      "response": []
-    },
-    "cat.count": {
-      "request": [
-        "Request: query parameter 'master_timeout' does not exist in the json spec",
-        "request definition cat.count:Request / body - A request with inherited properties must have a PropertyBody"
-      ],
-      "response": []
-    },
-    "cat.fielddata": {
-      "request": [
-        "Request: query parameter 'master_timeout' does not exist in the json spec",
-        "request definition cat.fielddata:Request / body - A request with inherited properties must have a PropertyBody"
-      ],
-      "response": []
-    },
-    "cat.health": {
-      "request": [
-        "Request: query parameter 'master_timeout' does not exist in the json spec",
-        "request definition cat.health:Request / body - A request with inherited properties must have a PropertyBody"
-      ],
-      "response": []
-    },
     "cat.help": {
       "request": [
-        "Request: query parameter 'format' does not exist in the json spec",
-        "Request: query parameter 'h' does not exist in the json spec",
-        "Request: query parameter 'master_timeout' does not exist in the json spec",
-        "Request: query parameter 'v' does not exist in the json spec",
-        "request definition cat.help:Request / body - A request with inherited properties must have a PropertyBody"
-      ],
-      "response": []
-    },
-    "cat.indices": {
-      "request": [
-        "request definition cat.indices:Request / body - A request with inherited properties must have a PropertyBody"
-      ],
-      "response": []
-    },
-    "cat.master": {
-      "request": [
-        "request definition cat.master:Request / body - A request with inherited properties must have a PropertyBody"
+        "Request: missing json spec query parameter 'help'",
+        "Request: missing json spec query parameter 's'"
       ],
       "response": []
     },
     "cat.ml_data_frame_analytics": {
       "request": [
-        "Request: query parameter 'master_timeout' does not exist in the json spec",
         "request definition cat.ml_data_frame_analytics:Request / query - Property 'h' is already defined in an ancestor class",
-        "request definition cat.ml_data_frame_analytics:Request / query - Property 's' is already defined in an ancestor class",
-        "request definition cat.ml_data_frame_analytics:Request / body - A request with inherited properties must have a PropertyBody"
+        "request definition cat.ml_data_frame_analytics:Request / query - Property 's' is already defined in an ancestor class"
       ],
       "response": []
     },
     "cat.ml_datafeeds": {
       "request": [
-        "Request: query parameter 'master_timeout' does not exist in the json spec",
         "request definition cat.ml_datafeeds:Request / query - Property 'h' is already defined in an ancestor class",
-        "request definition cat.ml_datafeeds:Request / query - Property 's' is already defined in an ancestor class",
-        "request definition cat.ml_datafeeds:Request / body - A request with inherited properties must have a PropertyBody"
+        "request definition cat.ml_datafeeds:Request / query - Property 's' is already defined in an ancestor class"
       ],
       "response": []
     },
     "cat.ml_jobs": {
       "request": [
-        "Request: query parameter 'master_timeout' does not exist in the json spec",
         "request definition cat.ml_jobs:Request / query - Property 'h' is already defined in an ancestor class",
-        "request definition cat.ml_jobs:Request / query - Property 's' is already defined in an ancestor class",
-        "request definition cat.ml_jobs:Request / body - A request with inherited properties must have a PropertyBody"
+        "request definition cat.ml_jobs:Request / query - Property 's' is already defined in an ancestor class"
       ],
       "response": []
     },
     "cat.ml_trained_models": {
       "request": [
-        "Request: query parameter 'master_timeout' does not exist in the json spec",
-        "Request: missing json spec query parameter 'time'",
         "request definition cat.ml_trained_models:Request / query - Property 'h' is already defined in an ancestor class",
-        "request definition cat.ml_trained_models:Request / query - Property 's' is already defined in an ancestor class",
-        "request definition cat.ml_trained_models:Request / body - A request with inherited properties must have a PropertyBody"
-      ],
-      "response": []
-    },
-    "cat.nodeattrs": {
-      "request": [
-        "request definition cat.nodeattrs:Request / body - A request with inherited properties must have a PropertyBody"
-      ],
-      "response": []
-    },
-    "cat.nodes": {
-      "request": [
-        "Request: missing json spec query parameter 'time'",
-        "request definition cat.nodes:Request / body - A request with inherited properties must have a PropertyBody"
-      ],
-      "response": []
-    },
-    "cat.pending_tasks": {
-      "request": [
-        "Request: missing json spec query parameter 'time'",
-        "request definition cat.pending_tasks:Request / body - A request with inherited properties must have a PropertyBody"
-      ],
-      "response": []
-    },
-    "cat.plugins": {
-      "request": [
-        "Request: missing json spec query parameter 'include_bootstrap'",
-        "request definition cat.plugins:Request / body - A request with inherited properties must have a PropertyBody"
+        "request definition cat.ml_trained_models:Request / query - Property 's' is already defined in an ancestor class"
       ],
       "response": []
     },
     "cat.recovery": {
       "request": [
-        "Request: query parameter 'master_timeout' does not exist in the json spec",
-        "Request: missing json spec query parameter 'index'",
-        "Request: missing json spec query parameter 'time'",
-        "request definition cat.recovery:Request / body - A request with inherited properties must have a PropertyBody"
-      ],
-      "response": []
-    },
-    "cat.repositories": {
-      "request": [
-        "Request: missing json spec query parameter 'local'",
-        "request definition cat.repositories:Request / body - A request with inherited properties must have a PropertyBody"
+        "Request: missing json spec query parameter 'index'"
       ],
       "response": []
     },
     "cat.segments": {
       "request": [
         "Request: query parameter 'local' does not exist in the json spec",
-        "Request: query parameter 'master_timeout' does not exist in the json spec",
-        "request definition cat.segments:Request / body - A request with inherited properties must have a PropertyBody"
-      ],
-      "response": []
-    },
-    "cat.shards": {
-      "request": [
-        "Request: missing json spec query parameter 'time'",
-        "request definition cat.shards:Request / body - A request with inherited properties must have a PropertyBody"
-      ],
-      "response": []
-    },
-    "cat.snapshots": {
-      "request": [
-        "Request: missing json spec query parameter 'time'",
-        "request definition cat.snapshots:Request / body - A request with inherited properties must have a PropertyBody"
+        "Request: query parameter 'master_timeout' does not exist in the json spec"
       ],
       "response": []
     },
     "cat.tasks": {
       "request": [
-        "Request: query parameter 'node_id' does not exist in the json spec",
-        "Request: query parameter 'master_timeout' does not exist in the json spec",
-        "Request: missing json spec query parameter 'nodes'",
-        "Request: missing json spec query parameter 'time'",
-        "request definition cat.tasks:Request / body - A request with inherited properties must have a PropertyBody"
-      ],
-      "response": []
-    },
-    "cat.templates": {
-      "request": [
-        "request definition cat.templates:Request / body - A request with inherited properties must have a PropertyBody"
-      ],
-      "response": []
-    },
-    "cat.thread_pool": {
-      "request": [
-        "request definition cat.thread_pool:Request / body - A request with inherited properties must have a PropertyBody"
+        "Request: query parameter 'timeout' does not exist in the json spec",
+        "Request: query parameter 'wait_for_completion' does not exist in the json spec"
       ],
       "response": []
     },
     "cat.transforms": {
       "request": [
-        "Request: query parameter 'master_timeout' does not exist in the json spec",
         "request definition cat.transforms:Request / query - Property 'h' is already defined in an ancestor class",
-        "request definition cat.transforms:Request / query - Property 's' is already defined in an ancestor class",
-        "request definition cat.transforms:Request / body - A request with inherited properties must have a PropertyBody"
-      ],
-      "response": []
-    },
-    "ccr.delete_auto_follow_pattern": {
-      "request": [
-        "Request: missing json spec query parameter 'master_timeout'"
-      ],
-      "response": []
-    },
-    "ccr.follow": {
-      "request": [
-        "Request: missing json spec query parameter 'master_timeout'"
-      ],
-      "response": []
-    },
-    "ccr.follow_info": {
-      "request": [
-        "Request: missing json spec query parameter 'master_timeout'"
-      ],
-      "response": []
-    },
-    "ccr.follow_stats": {
-      "request": [
-        "Request: missing json spec query parameter 'timeout'"
-      ],
-      "response": []
-    },
-    "ccr.forget_follower": {
-      "request": [
-        "Request: missing json spec query parameter 'timeout'"
-      ],
-      "response": []
-    },
-    "ccr.get_auto_follow_pattern": {
-      "request": [
-        "Request: missing json spec query parameter 'master_timeout'"
-      ],
-      "response": []
-    },
-    "ccr.pause_auto_follow_pattern": {
-      "request": [
-        "Request: missing json spec query parameter 'master_timeout'"
-      ],
-      "response": []
-    },
-    "ccr.pause_follow": {
-      "request": [
-        "Request: missing json spec query parameter 'master_timeout'"
-      ],
-      "response": []
-    },
-    "ccr.put_auto_follow_pattern": {
-      "request": [
-        "Request: missing json spec query parameter 'master_timeout'"
-      ],
-      "response": []
-    },
-    "ccr.resume_auto_follow_pattern": {
-      "request": [
-        "Request: missing json spec query parameter 'master_timeout'"
-      ],
-      "response": []
-    },
-    "ccr.resume_follow": {
-      "request": [
-        "Request: missing json spec query parameter 'master_timeout'"
-      ],
-      "response": []
-    },
-    "ccr.stats": {
-      "request": [
-        "Request: missing json spec query parameter 'timeout'",
-        "Request: missing json spec query parameter 'master_timeout'"
-      ],
-      "response": []
-    },
-    "ccr.unfollow": {
-      "request": [
-        "Request: missing json spec query parameter 'master_timeout'"
-      ],
-      "response": []
-    },
-    "cluster.allocation_explain": {
-      "request": [
-        "Request: missing json spec query parameter 'master_timeout'"
-      ],
-      "response": []
-    },
-    "cluster.delete_voting_config_exclusions": {
-      "request": [
-        "Request: missing json spec query parameter 'master_timeout'"
+        "request definition cat.transforms:Request / query - Property 's' is already defined in an ancestor class"
       ],
       "response": []
     },
     "cluster.get_component_template": {
       "request": [
         "Request: query parameter 'flat_settings' does not exist in the json spec"
-      ],
-      "response": []
-    },
-    "cluster.post_voting_config_exclusions": {
-      "request": [
-        "Request: missing json spec query parameter 'master_timeout'"
       ],
       "response": []
     },
@@ -399,72 +146,6 @@
       ],
       "response": []
     },
-    "connector.sync_job_check_in": {
-      "request": [
-        "Missing request & response"
-      ],
-      "response": []
-    },
-    "connector.sync_job_claim": {
-      "request": [
-        "Missing request & response"
-      ],
-      "response": []
-    },
-    "connector.sync_job_error": {
-      "request": [
-        "Missing request & response"
-      ],
-      "response": []
-    },
-    "connector.sync_job_update_stats": {
-      "request": [
-        "Missing request & response"
-      ],
-      "response": []
-    },
-    "connector.update_error": {
-      "request": [
-        "type_alias definition _spec_utils:WithNullValue / union_of / instance_of - No type definition for '_spec_utils.WithNullValue:T'"
-      ],
-      "response": []
-    },
-    "connector.update_features": {
-      "request": [
-        "Missing request & response"
-      ],
-      "response": []
-    },
-    "enrich.delete_policy": {
-      "request": [
-        "Request: missing json spec query parameter 'master_timeout'"
-      ],
-      "response": []
-    },
-    "enrich.execute_policy": {
-      "request": [
-        "Request: missing json spec query parameter 'master_timeout'"
-      ],
-      "response": []
-    },
-    "enrich.get_policy": {
-      "request": [
-        "Request: missing json spec query parameter 'master_timeout'"
-      ],
-      "response": []
-    },
-    "enrich.put_policy": {
-      "request": [
-        "Request: missing json spec query parameter 'master_timeout'"
-      ],
-      "response": []
-    },
-    "enrich.stats": {
-      "request": [
-        "Request: missing json spec query parameter 'master_timeout'"
-      ],
-      "response": []
-    },
     "eql.search": {
       "request": [
         "Request: query parameter 'allow_no_indices' does not exist in the json spec",
@@ -475,31 +156,9 @@
     },
     "esql.async_query": {
       "request": [
-        "Missing request & response"
-      ],
-      "response": []
-    },
-    "esql.async_query_get": {
-      "request": [
-        "Missing request & response"
-      ],
-      "response": []
-    },
-    "esql.query": {
-      "request": [],
-      "response": [
-        "type_alias definition _types:EsqlColumns / instance_of - No type definition for '_builtins:binary'"
-      ]
-    },
-    "features.get_features": {
-      "request": [
-        "Request: missing json spec query parameter 'master_timeout'"
-      ],
-      "response": []
-    },
-    "features.reset_features": {
-      "request": [
-        "Request: missing json spec query parameter 'master_timeout'"
+        "Request: query parameter 'keep_alive' does not exist in the json spec",
+        "Request: query parameter 'keep_on_completion' does not exist in the json spec",
+        "Request: query parameter 'wait_for_completion_timeout' does not exist in the json spec"
       ],
       "response": []
     },
@@ -515,12 +174,6 @@
       ],
       "response": []
     },
-    "fleet.msearch": {
-      "request": [],
-      "response": [
-        "type_alias definition _global.msearch:ResponseItem / union_of / instance_of / Generics / instance_of - No type definition for '_global.msearch.ResponseItem:TDocument'"
-      ]
-    },
     "fleet.post_secret": {
       "request": [
         "Missing request & response"
@@ -530,48 +183,6 @@
     "get_source": {
       "request": [
         "Request: query parameter 'stored_fields' does not exist in the json spec"
-      ],
-      "response": []
-    },
-    "ilm.delete_lifecycle": {
-      "request": [
-        "Request: query parameter 'master_timeout' does not exist in the json spec",
-        "Request: query parameter 'timeout' does not exist in the json spec"
-      ],
-      "response": []
-    },
-    "ilm.explain_lifecycle": {
-      "request": [
-        "Request: query parameter 'master_timeout' does not exist in the json spec",
-        "Request: query parameter 'timeout' does not exist in the json spec"
-      ],
-      "response": []
-    },
-    "ilm.get_lifecycle": {
-      "request": [
-        "Request: query parameter 'master_timeout' does not exist in the json spec",
-        "Request: query parameter 'timeout' does not exist in the json spec"
-      ],
-      "response": []
-    },
-    "ilm.put_lifecycle": {
-      "request": [
-        "Request: query parameter 'master_timeout' does not exist in the json spec",
-        "Request: query parameter 'timeout' does not exist in the json spec"
-      ],
-      "response": []
-    },
-    "ilm.start": {
-      "request": [
-        "Request: query parameter 'master_timeout' does not exist in the json spec",
-        "Request: query parameter 'timeout' does not exist in the json spec"
-      ],
-      "response": []
-    },
-    "ilm.stop": {
-      "request": [
-        "Request: query parameter 'master_timeout' does not exist in the json spec",
-        "Request: query parameter 'timeout' does not exist in the json spec"
       ],
       "response": []
     },
@@ -602,8 +213,6 @@
     },
     "indices.field_usage_stats": {
       "request": [
-        "Request: query parameter 'master_timeout' does not exist in the json spec",
-        "Request: query parameter 'timeout' does not exist in the json spec",
         "Request: query parameter 'wait_for_active_shards' does not exist in the json spec"
       ],
       "response": []
@@ -628,8 +237,7 @@
     },
     "indices.rollover": {
       "request": [
-        "Request: missing json spec query parameter 'lazy'",
-        "Request: missing json spec query parameter 'target_failure_store'"
+        "Request: missing json spec query parameter 'lazy'"
       ],
       "response": []
     },
@@ -646,111 +254,16 @@
       ],
       "response": []
     },
-    "inference.stream_inference": {
-      "request": [
-        "Missing request & response"
-      ],
-      "response": []
-    },
-    "ingest.delete_geoip_database": {
-      "request": [
-        "Request: query parameter 'master_timeout' does not exist in the json spec",
-        "Request: query parameter 'timeout' does not exist in the json spec"
-      ],
-      "response": []
-    },
-    "ingest.delete_ip_location_database": {
-      "request": [
-        "Missing request & response"
-      ],
-      "response": []
-    },
-    "ingest.get_geoip_database": {
-      "request": [
-        "Request: query parameter 'master_timeout' does not exist in the json spec"
-      ],
-      "response": []
-    },
     "ingest.get_ip_location_database": {
       "request": [
-        "Missing request & response"
-      ],
-      "response": []
-    },
-    "ingest.put_geoip_database": {
-      "request": [
-        "Request: query parameter 'master_timeout' does not exist in the json spec",
-        "Request: query parameter 'timeout' does not exist in the json spec"
-      ],
-      "response": []
-    },
-    "ingest.put_ip_location_database": {
-      "request": [
-        "Missing request & response"
-      ],
-      "response": []
-    },
-    "license.delete": {
-      "request": [
-        "Request: missing json spec query parameter 'master_timeout'",
-        "Request: missing json spec query parameter 'timeout'"
-      ],
-      "response": []
-    },
-    "license.post": {
-      "request": [
-        "Request: missing json spec query parameter 'master_timeout'",
-        "Request: missing json spec query parameter 'timeout'"
-      ],
-      "response": []
-    },
-    "license.post_start_basic": {
-      "request": [
-        "Request: missing json spec query parameter 'master_timeout'",
-        "Request: missing json spec query parameter 'timeout'"
+        "Request: query parameter 'master_timeout' does not exist in the json spec"
       ],
       "response": []
     },
     "license.post_start_trial": {
       "request": [
         "Request: query parameter 'type_query_string' does not exist in the json spec",
-        "Request: missing json spec query parameter 'type'",
-        "Request: missing json spec query parameter 'master_timeout'",
-        "Request: missing json spec query parameter 'timeout'"
-      ],
-      "response": []
-    },
-    "mget": {
-      "request": [],
-      "response": [
-        "type_alias definition _global.mget:ResponseItem / union_of / instance_of / Generics / instance_of - No type definition for '_global.mget.ResponseItem:TDocument'"
-      ]
-    },
-    "ml.delete_trained_model": {
-      "request": [
-        "Request: missing json spec query parameter 'timeout'"
-      ],
-      "response": []
-    },
-    "ml.get_memory_stats": {
-      "request": [
-        "Request: query parameter 'human' does not exist in the json spec",
-        "request definition ml.get_memory_stats:Request / query - Property 'human' is already defined in an ancestor class"
-      ],
-      "response": []
-    },
-    "ml.get_trained_models": {
-      "request": [
-        "Request: missing json spec query parameter 'include_model_definition'"
-      ],
-      "response": []
-    },
-    "ml.put_job": {
-      "request": [
-        "Request: missing json spec query parameter 'ignore_unavailable'",
-        "Request: missing json spec query parameter 'allow_no_indices'",
-        "Request: missing json spec query parameter 'ignore_throttled'",
-        "Request: missing json spec query parameter 'expand_wildcards'"
+        "Request: missing json spec query parameter 'type'"
       ],
       "response": []
     },
@@ -768,24 +281,6 @@
         "Request: query parameter 'ignore_unavailable' does not exist in the json spec",
         "Request: query parameter 'include_named_queries_score' does not exist in the json spec",
         "Request: query parameter 'routing' does not exist in the json spec"
-      ],
-      "response": []
-    },
-    "nodes.hot_threads": {
-      "request": [
-        "Request: query parameter 'master_timeout' does not exist in the json spec"
-      ],
-      "response": []
-    },
-    "nodes.info": {
-      "request": [
-        "Request: query parameter 'master_timeout' does not exist in the json spec"
-      ],
-      "response": []
-    },
-    "nodes.stats": {
-      "request": [
-        "Request: query parameter 'master_timeout' does not exist in the json spec"
       ],
       "response": []
     },
@@ -832,52 +327,16 @@
       ],
       "response": []
     },
-    "search_application.post_behavioral_analytics_event": {
-      "request": [
-        "Missing request & response"
-      ],
-      "response": []
-    },
-    "search_application.render_query": {
-      "request": [
-        "Missing request & response"
-      ],
-      "response": []
-    },
     "search_mvt": {
       "request": [
         "Request: query parameter 'grid_agg' does not exist in the json spec",
         "Request: missing json spec query parameter 'track_total_hits'"
       ],
-      "response": [
-        "type_alias definition _types:MapboxVectorTiles / instance_of - No type definition for '_builtins:binary'"
-      ]
-    },
-    "search_shards": {
-      "request": [
-        "Request: missing json spec query parameter 'master_timeout'"
-      ],
       "response": []
     },
     "searchable_snapshots.clear_cache": {
       "request": [
-        "Request: query parameter 'pretty' does not exist in the json spec",
-        "Request: query parameter 'human' does not exist in the json spec",
-        "Request: missing json spec query parameter 'index'",
-        "request definition searchable_snapshots.clear_cache:Request / query - Property 'pretty' is already defined in an ancestor class",
-        "request definition searchable_snapshots.clear_cache:Request / query - Property 'human' is already defined in an ancestor class"
-      ],
-      "response": []
-    },
-    "security.bulk_update_api_keys": {
-      "request": [
-        "Missing request & response"
-      ],
-      "response": []
-    },
-    "security.get_settings": {
-      "request": [
-        "Missing request & response"
+        "Request: missing json spec query parameter 'index'"
       ],
       "response": []
     },
@@ -895,77 +354,6 @@
       ],
       "response": []
     },
-    "security.oidc_authenticate": {
-      "request": [
-        "Missing request & response"
-      ],
-      "response": []
-    },
-    "security.oidc_logout": {
-      "request": [
-        "Missing request & response"
-      ],
-      "response": []
-    },
-    "security.oidc_prepare_authentication": {
-      "request": [
-        "Missing request & response"
-      ],
-      "response": []
-    },
-    "security.update_settings": {
-      "request": [
-        "Missing request & response"
-      ],
-      "response": []
-    },
-    "shutdown.delete_node": {
-      "request": [
-        "Request: query parameter 'master_timeout' does not exist in the json spec",
-        "Request: query parameter 'timeout' does not exist in the json spec"
-      ],
-      "response": []
-    },
-    "shutdown.get_node": {
-      "request": [
-        "Request: query parameter 'timeout' does not exist in the json spec"
-      ],
-      "response": []
-    },
-    "shutdown.put_node": {
-      "request": [
-        "Request: query parameter 'master_timeout' does not exist in the json spec",
-        "Request: query parameter 'timeout' does not exist in the json spec"
-      ],
-      "response": []
-    },
-    "simulate.ingest": {
-      "request": [
-        "Missing request & response"
-      ],
-      "response": []
-    },
-    "slm.put_lifecycle": {
-      "request": [
-        "Request: query parameter 'master_timeout' does not exist in the json spec",
-        "Request: query parameter 'timeout' does not exist in the json spec"
-      ],
-      "response": []
-    },
-    "slm.start": {
-      "request": [
-        "Request: missing json spec query parameter 'master_timeout'",
-        "Request: missing json spec query parameter 'timeout'"
-      ],
-      "response": []
-    },
-    "slm.stop": {
-      "request": [
-        "Request: missing json spec query parameter 'master_timeout'",
-        "Request: missing json spec query parameter 'timeout'"
-      ],
-      "response": []
-    },
     "snapshot.clone": {
       "request": [
         "Request: query parameter 'timeout' does not exist in the json spec"
@@ -980,25 +368,7 @@
     },
     "snapshot.repository_analyze": {
       "request": [
-        "Missing request & response"
-      ],
-      "response": []
-    },
-    "tasks.list": {
-      "request": [
-        "Request: query parameter 'master_timeout' does not exist in the json spec"
-      ],
-      "response": []
-    },
-    "text_structure.find_field_structure": {
-      "request": [
-        "Missing request & response"
-      ],
-      "response": []
-    },
-    "text_structure.find_message_structure": {
-      "request": [
-        "Missing request & response"
+        "Request: query parameter 'register_operation_count' does not exist in the json spec"
       ],
       "response": []
     },
@@ -1015,12 +385,6 @@
         "interface definition transform._types:SyncContainer - Property time is a single-variant and must be required"
       ]
     },
-    "transform.reset_transform": {
-      "request": [
-        "Request: missing json spec query parameter 'timeout'"
-      ],
-      "response": []
-    },
     "watcher.execute_watch": {
       "request": [
         "interface definition watcher._types:TriggerContainer - Property schedule is a single-variant and must be required"
@@ -1029,33 +393,8 @@
         "interface definition watcher._types:TriggerEventContainer - Property schedule is a single-variant and must be required"
       ]
     },
-    "watcher.get_settings": {
-      "request": [
-        "Missing request & response"
-      ],
-      "response": []
-    },
-    "watcher.start": {
-      "request": [
-        "Request: missing json spec query parameter 'master_timeout'"
-      ],
-      "response": []
-    },
-    "watcher.stop": {
-      "request": [
-        "Request: missing json spec query parameter 'master_timeout'"
-      ],
-      "response": []
-    },
-    "watcher.update_settings": {
-      "request": [
-        "Missing request & response"
-      ],
-      "response": []
-    },
     "xpack.info": {
       "request": [
-        "Request: query parameter 'human' does not exist in the json spec",
         "request definition xpack.info:Request / query - Property 'human' is already defined in an ancestor class"
       ],
       "response": []

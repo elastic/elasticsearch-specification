@@ -22,7 +22,9 @@ import { Bytes, Fields } from '@_types/common'
 
 /**
  * Get field data cache information.
+ *
  * Get the amount of heap memory currently used by the field data cache on every data node in the cluster.
+ *
  * IMPORTANT: cat APIs are only intended for human consumption using the command line or Kibana console.
  * They are not intended for use by applications. For application consumption, use the nodes stats API.
  * @rest_spec_name cat.fielddata
@@ -32,6 +34,16 @@ import { Bytes, Fields } from '@_types/common'
  * @cluster_privileges monitor
  */
 export interface Request extends CatRequestBase {
+  urls: [
+    {
+      path: '/_cat/fielddata'
+      methods: ['GET']
+    },
+    {
+      path: '/_cat/fielddata/{fields}'
+      methods: ['GET']
+    }
+  ]
   path_parts: {
     /**
      * Comma-separated list of fields used to limit returned information.

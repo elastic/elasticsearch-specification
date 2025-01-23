@@ -40,6 +40,16 @@ import { Filter } from './types'
  * @doc_tag document
  */
 export interface Request<TDocument> extends RequestBase {
+  urls: [
+    {
+      path: '/{index}/_termvectors/{id}'
+      methods: ['GET', 'POST']
+    },
+    {
+      path: '/{index}/_termvectors'
+      methods: ['GET', 'POST']
+    }
+  ]
   path_parts: {
     /**
      * Name of the index that contains the document.

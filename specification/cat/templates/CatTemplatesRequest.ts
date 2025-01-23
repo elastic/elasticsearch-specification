@@ -19,9 +19,11 @@
 
 import { CatRequestBase } from '@cat/_types/CatBase'
 import { Name } from '@_types/common'
+import { Duration } from '@_types/Time'
 
 /**
  * Get index template information.
+ *
  * Get information about the index templates in a cluster.
  * You can use index templates to apply index settings and field mappings to new indices at creation.
  * IMPORTANT: cat APIs are only intended for human consumption using the command line or Kibana console. They are not intended for use by applications. For application consumption, use the get index template API.
@@ -32,6 +34,16 @@ import { Name } from '@_types/common'
  * @cluster_privileges monitor
  */
 export interface Request extends CatRequestBase {
+  urls: [
+    {
+      path: '/_cat/templates'
+      methods: ['GET']
+    },
+    {
+      path: '/_cat/templates/{name}'
+      methods: ['GET']
+    }
+  ]
   path_parts: {
     /**
      * The name of the template to return.
@@ -48,5 +60,10 @@ export interface Request extends CatRequestBase {
      * @server_default false
      */
     local?: boolean
+    /**
+     * Period to wait for a connection to the master node.
+     * @server_default 30s
+     */
+    master_timeout?: Duration
   }
 }

@@ -1,0 +1,21 @@
+summary: A response with errors
+description: >
+  A partially successful response from `DELETE /_security/role`.
+  If part of a request fails or is invalid, the response includes `errors`.
+# type: response
+# response_code:
+value: |-
+  {
+    "deleted": [
+        "my_admin_role"
+    ],
+    "errors": {
+        "count": 1,
+        "details": {
+            "superuser": {
+                "type": "illegal_argument_exception",
+                "reason": "role [superuser] is reserved and cannot be deleted"
+            }
+        }
+    }
+  }

@@ -23,7 +23,7 @@ import { Duration } from '@_types/Time'
 
 /**
  * Get component templates.
- * Retrieves information about component templates.
+ * Get information about component templates.
  * @rest_spec_name cluster.get_component_template
  * @availability stack since=7.8.0 stability=stable
  * @availability serverless stability=stable visibility=public
@@ -32,6 +32,16 @@ import { Duration } from '@_types/Time'
  * @doc_tag indices
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_component_template'
+      methods: ['GET']
+    },
+    {
+      path: '/_component_template/{name}'
+      methods: ['GET']
+    }
+  ]
   path_parts: {
     /**
      * Comma-separated list of component template names used to limit the request.

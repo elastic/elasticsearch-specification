@@ -18,6 +18,7 @@
  */
 
 import { RequestBase } from '@_types/Base'
+import { Duration } from '@_types/Time'
 
 /**
  * Clear cluster voting config exclusions.
@@ -28,7 +29,18 @@ import { RequestBase } from '@_types/Base'
  * @ext_doc_id add-nodes
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_cluster/voting_config_exclusions'
+      methods: ['DELETE']
+    }
+  ]
   query_parameters: {
+    /**
+     * Period to wait for a connection to the master node.
+     * @server_default 30s
+     */
+    master_timeout?: Duration
     /**
      * Specifies whether to wait for all excluded nodes to be removed from the
      * cluster before clearing the voting configuration exclusions list.

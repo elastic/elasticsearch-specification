@@ -30,8 +30,15 @@ import { Id, Name, Username } from '@_types/common'
  * @availability stack since=6.7.0 stability=stable
  * @availability serverless stability=stable visibility=public
  * @cluster_privileges manage_own_api_key, read_security
+ * @doc_id security-api-get-api-key
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_security/api_key'
+      methods: ['GET']
+    }
+  ]
   query_parameters: {
     /**
      * An API key id.

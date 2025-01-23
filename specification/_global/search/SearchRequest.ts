@@ -56,16 +56,42 @@ import { Suggester } from './_types/suggester'
  * Get search hits that match the query defined in the request.
  * You can provide search queries using the `q` query string parameter or the request body.
  * If both are specified, only the query parameter is used.
+ *
+ * If the Elasticsearch security features are enabled, you must have the read index privilege for the target data stream, index, or alias. For cross-cluster search, refer to the documentation about configuring CCS privileges.
+ * To search a point in time (PIT) for an alias, you must have the `read` index privilege for the alias's data streams or indices.
+ *
+ * **Search slicing**
+ *
+ * When paging through a large number of documents, it can be helpful to split the search into multiple slices to consume them independently with the `slice` and `pit` properties.
+ * By default the splitting is done first on the shards, then locally on each shard.
+ * The local splitting partitions the shard into contiguous ranges based on Lucene document IDs.
+ *
+ * For instance if the number of shards is equal to 2 and you request 4 slices, the slices 0 and 2 are assigned to the first shard and the slices 1 and 3 are assigned to the second shard.
+ *
+ * IMPORTANT: The same point-in-time ID should be used for all slices.
+ * If different PIT IDs are used, slices can overlap and miss documents.
+ * This situation can occur because the splitting criterion is based on Lucene document IDs, which are not stable across changes to the index.
  * @rest_spec_name search
  * @availability stack stability=stable
  * @availability serverless stability=stable visibility=public
  * @index_privileges read
+ * @ext_doc_id ccs-privileges
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_search'
+      methods: ['GET', 'POST']
+    },
+    {
+      path: '/{index}/_search'
+      methods: ['GET', 'POST']
+    }
+  ]
   path_parts: {
     /**
-     * Comma-separated list of data streams, indices, and aliases to search.
-     * Supports wildcards (`*`).
+     * A comma-separated list of data streams, indices, and aliases to search.
+     * It supports wildcards (`*`).
      * To search all data streams and indices, omit this parameter or use `*` or `_all`.
      */
     index?: Indices
@@ -79,62 +105,68 @@ export interface Request extends RequestBase {
      */
     allow_no_indices?: boolean
     /**
-     * If true, returns partial results if there are shard request timeouts or shard failures. If false, returns an error with no partial results.
+     * If `true` and there are shard request timeouts or shard failures, the request returns partial results.
+     * If `false`, it returns an error with no partial results.
+     *
+     * To override the default behavior, you can set the `search.default_allow_partial_results` cluster setting to `false`.
      * @server_default true
      */
     allow_partial_search_results?: boolean
     /**
-     * Analyzer to use for the query string.
-     * This parameter can only be used when the q query string parameter is specified.
+     * The analyzer to use for the query string.
+     * This parameter can be used only when the `q` query string parameter is specified.
      */
     analyzer?: string
     /**
-     *  If true, wildcard and prefix queries are analyzed.
-     * This parameter can only be used when the q query string parameter is specified.
+     * If `true`, wildcard and prefix queries are analyzed.
+     * This parameter can be used only when the `q` query string parameter is specified.
      * @server_default false
      */
     analyze_wildcard?: boolean
     /**
      * The number of shard results that should be reduced at once on the coordinating node.
-     * This value should be used as a protection mechanism to reduce the memory overhead per search request if the potential number of shards in the request can be large.
+     * If the potential number of shards in the request can be large, this value should be used as a protection mechanism to reduce the memory overhead per search request.
      * @server_default 512
      */
     batched_reduce_size?: long
     /**
-     * If true, network round-trips between the coordinating node and the remote clusters are minimized when executing cross-cluster search (CCS) requests.
-     * @doc_id ccs-network-delays
+     * If `true`, network round-trips between the coordinating node and the remote clusters are minimized when running cross-cluster search (CCS) requests.
+     * @ext_doc_id ccs-network-delays
      * @server_default true
      */
     ccs_minimize_roundtrips?: boolean
     /**
-     * The default operator for query string query: AND or OR.
-     * This parameter can only be used when the `q` query string parameter is specified.
+     * The default operator for the query string query: `AND` or `OR`.
+     * This parameter can be used only when the `q` query string parameter is specified.
      * @server_default OR
      */
     default_operator?: Operator
     /**
-     * Field to use as default where no field prefix is given in the query string.
-     * This parameter can only be used when the q query string parameter is specified.
+     * The field to use as a default when no field prefix is given in the query string.
+     * This parameter can be used only when the `q` query string parameter is specified.
      */
     df?: string
     /**
-     * A comma-separated list of fields to return as the docvalue representation for each hit.
+     * A comma-separated list of fields to return as the docvalue representation of a field for each hit.
+     * @ext_doc_id docvalue-fields
      */
     docvalue_fields?: Fields
     /**
-     * Type of index that wildcard patterns can match.
+     * The type of index that wildcard patterns can match.
      * If the request can target data streams, this argument determines whether wildcard expressions match hidden data streams.
-     * Supports comma-separated values, such as `open,hidden`.
+     * It supports comma-separated values such as `open,hidden`.
+     * @server_default open
      */
     expand_wildcards?: ExpandWildcards
     /**
-     * If `true`, returns detailed information about score computation as part of a hit.
+     * If `true`, the request returns detailed information about score computation as part of a hit.
      * @server_default false
      */
     explain?: boolean
     /**
      * If `true`, concrete, expanded or aliased indices will be ignored when frozen.
      * @server_default true
+     * @deprecated 7.16.0
      */
     ignore_throttled?: boolean
     /**
@@ -143,9 +175,8 @@ export interface Request extends RequestBase {
      */
     ignore_unavailable?: boolean
     /**
-     * Indicates whether hit.matched_queries should be rendered as a map that includes
-     * the name of the matched query associated with its score (true)
-     * or as an array containing the name of the matched queries (false)
+     * If `true`, the response includes the score contribution from any named queries.
+     *
      * This functionality reruns each named query on every hit in a search response.
      * Typically, this adds a small overhead to a request.
      * However, using computationally expensive named queries on a large number of hits may add significant overhead.
@@ -154,54 +185,59 @@ export interface Request extends RequestBase {
     include_named_queries_score?: boolean
     /**
      *  If `true`, format-based query failures (such as providing text to a numeric field) in the query string will be ignored.
-     * This parameter can only be used when the `q` query string parameter is specified.
+     * This parameter can be used only when the `q` query string parameter is specified.
      * @server_default false
      */
     lenient?: boolean
     /**
-     * Defines the number of concurrent shard requests per node this search executes concurrently.
+     * The number of concurrent shard requests per node that the search runs concurrently.
      * This value should be used to limit the impact of the search on the cluster in order to limit the number of concurrent shard requests.
      * @server_default 5
      */
     max_concurrent_shard_requests?: long
     /**
-     * Nodes and shards used for the search.
-     * By default, Elasticsearch selects from eligible nodes and shards using adaptive replica selection, accounting for allocation awareness. Valid values are:
-     * `_only_local` to run the search only on shards on the local node;
-     * `_local` to, if possible, run the search on shards on the local node, or if not, select shards using the default method;
-     * `_only_nodes:<node-id>,<node-id>` to run the search on only the specified nodes IDs, where, if suitable shards exist on more than one selected node, use shards on those nodes using the default method, or if none of the specified nodes are available, select shards from any available node using the default method;
-     * `_prefer_nodes:<node-id>,<node-id>` to if possible, run the search on the specified nodes IDs, or if not, select shards using the default method;
-     * `_shards:<shard>,<shard>` to run the search only on the specified shards;
+     * The nodes and shards used for the search.
+     * By default, Elasticsearch selects from eligible nodes and shards using adaptive replica selection, accounting for allocation awareness.
+     * Valid values are:
+     *
+     * * `_only_local` to run the search only on shards on the local node.
+     * * `_local` to, if possible, run the search on shards on the local node, or if not, select shards using the default method.
+     * * `_only_nodes:<node-id>,<node-id>` to run the search on only the specified nodes IDs. If suitable shards exist on more than one selected node, use shards on those nodes using the default method. If none of the specified nodes are available, select shards from any available node using the default method.
+     * * `_prefer_nodes:<node-id>,<node-id>` to if possible, run the search on the specified nodes IDs. If not, select shards using the default method.
+     * `_shards:<shard>,<shard>` to run the search only on the specified shards. You can combine this value with other `preference` values. However, the `_shards` value must come first. For example: `_shards:2,3|_local`.
      * `<custom-string>` (any string that does not start with `_`) to route searches with the same `<custom-string>` to the same shards in the same order.
      */
     preference?: string
     /**
-     * Defines a threshold that enforces a pre-filter roundtrip to prefilter search shards based on query rewriting if the number of shards the search request expands to exceeds the threshold.
+     * A threshold that enforces a pre-filter roundtrip to prefilter search shards based on query rewriting if the number of shards the search request expands to exceeds the threshold.
      * This filter roundtrip can limit the number of shards significantly if for instance a shard can not match any documents based on its rewrite method (if date filters are mandatory to match but the shard bounds and the query are disjoint).
      * When unspecified, the pre-filter phase is executed if any of these conditions is met:
-     * the request targets more than 128 shards;
-     * the request targets one or more read-only index;
-     * the primary sort of the query targets an indexed field.
+     *
+     * * The request targets more than 128 shards.
+     * * The request targets one or more read-only index.
+     * * The primary sort of the query targets an indexed field.
      */
     pre_filter_shard_size?: long
     /**
      * If `true`, the caching of search results is enabled for requests where `size` is `0`.
-     * Defaults to index level settings.
+     * It defaults to index level settings.
+     * @ext_doc_id shard-request-cache
      */
     request_cache?: boolean
     /**
-     * Custom value used to route operations to a specific shard.
+     * A custom value that is used to route operations to a specific shard.
      */
     routing?: Routing
     /**
-     * Period to retain the search context for scrolling. See Scroll search results.
+     * The period to retain the search context for scrolling.
      * By default, this value cannot exceed `1d` (24 hours).
-     * You can change this limit using the `search.max_keep_alive` cluster-level setting.
-     * @doc_id scroll-search-results
+     * You can change this limit by using the `search.max_keep_alive` cluster-level setting.
+     * @ext_doc_id scroll-search-results
      */
     scroll?: Duration
     /**
-     * How distributed term frequencies are calculated for relevance scoring.
+     * Indicates how distributed term frequencies are calculated for relevance scoring.
+     * @ext_doc_id relevance-scores
      */
     search_type?: SearchType
     /**
@@ -213,33 +249,35 @@ export interface Request extends RequestBase {
      * If no fields are specified, no stored fields are included in the response.
      * If this field is specified, the `_source` parameter defaults to `false`.
      * You can pass `_source: true` to return both source fields and stored fields in the search response.
+     * @ext_doc_id stored-fields
      */
     stored_fields?: Fields
     /**
-     * Specifies which field to use for suggestions.
+     * The field to use for suggestions.
      */
     suggest_field?: Field
     /**
-     * Specifies the suggest mode.
-     * This parameter can only be used when the `suggest_field` and `suggest_text` query string parameters are specified.
+     * The suggest mode.
+     * This parameter can be used only when the `suggest_field` and `suggest_text` query string parameters are specified.
      * @server_default missing
      */
     suggest_mode?: SuggestMode
     /**
-     * Number of suggestions to return.
-     * This parameter can only be used when the `suggest_field` and `suggest_text` query string parameters are specified.
+     * The number of suggestions to return.
+     * This parameter can be used only when the `suggest_field` and `suggest_text` query string parameters are specified.
      */
     suggest_size?: long
     /**
      * The source text for which the suggestions should be returned.
-     * This parameter can only be used when the `suggest_field` and `suggest_text` query string parameters are specified.
+     * This parameter can be used only when the `suggest_field` and `suggest_text` query string parameters are specified.
      */
     suggest_text?: string
     /**
-     * Maximum number of documents to collect for each shard.
+     * The maximum number of documents to collect for each shard.
      * If a query reaches this limit, Elasticsearch terminates the query early.
      * Elasticsearch collects documents before sorting.
-     * Use with caution.
+     *
+     * IMPORTANT: Use with caution.
      * Elasticsearch applies this parameter to each shard handling the request.
      * When possible, let Elasticsearch perform early termination automatically.
      * Avoid specifying this parameter for requests that target data streams with backing indices across multiple data tiers.
@@ -248,25 +286,26 @@ export interface Request extends RequestBase {
      */
     terminate_after?: long
     /**
-     * Specifies the period of time to wait for a response from each shard.
+     * The period of time to wait for a response from each shard.
      * If no response is received before the timeout expires, the request fails and returns an error.
+     * It defaults to no timeout.
      */
     timeout?: Duration
     /**
-     * Number of hits matching the query to count accurately.
+     * The number of hits matching the query to count accurately.
      * If `true`, the exact number of hits is returned at the cost of some performance.
      * If `false`, the response does not include the total number of hits matching the query.
      * @server_default 10000
      */
     track_total_hits?: TrackHits
     /**
-     * If `true`, calculate and return document scores, even if the scores are not used for sorting.
+     * If `true`, the request calculates and returns document scores, even if the scores are not used for sorting.
      * @server_default false
      */
     track_scores?: boolean
     /**
      * If `true`, aggregation and suggester names are be prefixed by their respective types in the response.
-     * @server_default true
+     * @server_default false
      */
     typed_keys?: boolean
     /**
@@ -275,17 +314,18 @@ export interface Request extends RequestBase {
      */
     rest_total_hits_as_int?: boolean
     /**
-     * If `true`, returns document version as part of a hit.
+     * If `true`, the request returns the document version as part of a hit.
      * @server_default false
      */
     version?: boolean
     /**
-     * Indicates which source fields are returned for matching documents.
+     * The source fields that are returned for matching documents.
      * These fields are returned in the `hits._source` property of the search response.
      * Valid values are:
-     * `true` to return the entire document source;
-     * `false` to not return the document source;
-     * `<string>` to return the source fields that are specified as a comma-separated list (supports wildcard (`*`) patterns).
+     *
+     * * `true` to return the entire document source.
+     * * `false` to not return the document source.
+     * * `<string>` to return the source fields that are specified as a comma-separated list that supports wildcard (`*`) patterns.
      * @server_default true
      */
     _source?: SourceConfigParam
@@ -303,32 +343,35 @@ export interface Request extends RequestBase {
      */
     _source_includes?: Fields
     /**
-     * If `true`, returns sequence number and primary term of the last modification of each hit.
+     * If `true`, the request returns the sequence number and primary term of the last modification of each hit.
+     * @ext_doc_id optimistic-concurrency
      */
     seq_no_primary_term?: boolean
     /**
-     * Query in the Lucene query string syntax using query parameter search.
+     * A query in the Lucene query string syntax.
      * Query parameter searches do not support the full Elasticsearch Query DSL but are handy for testing.
+     *
+     * IMPORTANT: This parameter overrides the query parameter in the request body.
+     * If both parameters are specified, documents matching the query request body parameter are not returned.
      */
     q?: string
     /**
-     * Defines the number of hits to return.
+     * The number of hits to return.
      * By default, you cannot page through more than 10,000 hits using the `from` and `size` parameters.
      * To page through more hits, use the `search_after` parameter.
      * @server_default 10
      */
     size?: integer
     /**
-     * Starting document offset.
-     * Needs to be non-negative.
+     * The starting document offset, which must be non-negative.
      * By default, you cannot page through more than 10,000 hits using the `from` and `size` parameters.
      * To page through more hits, use the `search_after` parameter.
      * @server_default 0
      */
     from?: integer
     /**
-     * A comma-separated list of <field>:<direction> pairs.
-     * @doc_id sort-search-results
+     * A comma-separated list of `<field>:<direction>` pairs.
+     * @ext_doc_id sort-search-results
      */
     sort?: string | string[]
     /**
@@ -350,7 +393,7 @@ export interface Request extends RequestBase {
      */
     collapse?: FieldCollapse
     /**
-     * If true, returns detailed information about score computation as part of a hit.
+     * If `true`, the request returns detailed information about score computation as part of a hit.
      * @server_default false
      */
     explain?: boolean
@@ -359,8 +402,7 @@ export interface Request extends RequestBase {
      */
     ext?: Dictionary<string, UserDefinedValue>
     /**
-     * Starting document offset.
-     * Needs to be non-negative.
+     * The starting document offset, which must be non-negative.
      * By default, you cannot page through more than 10,000 hits using the `from` and `size` parameters.
      * To page through more hits, use the `search_after` parameter.
      * @server_default 0
@@ -378,27 +420,33 @@ export interface Request extends RequestBase {
      */
     track_total_hits?: TrackHits
     /**
-     * Boosts the _score of documents from specified indices.
+     * Boost the `_score` of documents from specified indices.
+     * The boost value is the factor by which scores are multiplied.
+     * A boost value greater than `1.0` increases the score.
+     * A boost value between `0` and `1.0` decreases the score.
+     * @ext_doc_id relevance-scores
      */
     indices_boost?: Array<Dictionary<IndexName, double>>
     /**
-     * Array of wildcard (`*`) patterns.
+     * An array of wildcard (`*`) field patterns.
      * The request returns doc values for field names matching these patterns in the `hits.fields` property of the response.
+     * @ext_doc_id docvalue-fields
      */
     docvalue_fields?: FieldAndFormat[]
     /**
-     * Defines the approximate kNN search to run.
+     * The approximate kNN search to run.
      * @availability stack since=8.4.0
      * @availability serverless
+     * @ext_doc_id knn-approximate
      */
     knn?: KnnSearch | KnnSearch[]
     /**
-     * Defines the Reciprocal Rank Fusion (RRF) to use.
+     * The Reciprocal Rank Fusion (RRF) to use.
      * @availability stack since=8.8.0
      */
     rank?: RankContainer
     /**
-     * Minimum `_score` for matching documents.
+     * The minimum `_score` for matching documents.
      * Documents with a lower `_score` are not included in the search results.
      */
     min_score?: double
@@ -415,7 +463,8 @@ export interface Request extends RequestBase {
      */
     profile?: boolean
     /**
-     * Defines the search definition using the Query DSL.
+     * The search definition using the Query DSL.
+     * @ext_doc_id query-dsl
      */
     query?: QueryContainer
     /**
@@ -423,7 +472,8 @@ export interface Request extends RequestBase {
      */
     rescore?: Rescore | Rescore[]
     /**
-     * A retriever is a specification to describe top documents returned from a search. A retriever replaces other elements of the search API that also return top documents such as query and knn.
+     * A retriever is a specification to describe top documents returned from a search.
+     * A retriever replaces other elements of the search API that also return top documents such as `query` and `knn`.
      * @availability stack since=8.14.0 stability=stable
      * @availability serverless stability=stable
      */
@@ -437,28 +487,31 @@ export interface Request extends RequestBase {
      */
     search_after?: SortResults
     /**
-     * The number of hits to return.
+     * The number of hits to return, which must not be negative.
      * By default, you cannot page through more than 10,000 hits using the `from` and `size` parameters.
-     * To page through more hits, use the `search_after` parameter.
+     * To page through more hits, use the `search_after` property.
      * @server_default 10
      */
     size?: integer
     /**
-     * Can be used to split a scrolled search into multiple slices that can be consumed independently.
+     * Split a scrolled search into multiple slices that can be consumed independently.
      */
     slice?: SlicedScroll
     /**
      * A comma-separated list of <field>:<direction> pairs.
-     * @doc_id sort-search-results
+     * @ext_doc_id sort-search-results
      */
     sort?: Sort
     /**
-     * Indicates which source fields are returned for matching documents.
-     * These fields are returned in the hits._source property of the search response.
+     * The source fields that are returned for matching documents.
+     * These fields are returned in the `hits._source` property of the search response.
+     * If the `stored_fields` property is specified, the `_source` property defaults to `false`.
+     * Otherwise, it defaults to `true`.
+     * @ext_doc_id source-filtering
      */
     _source?: SourceConfig
     /**
-     * Array of wildcard (`*`) patterns.
+     * An array of wildcard (`*`) field patterns.
      * The request returns values for field names matching these patterns in the `hits.fields` property of the response.
      */
     fields?: Array<FieldAndFormat>
@@ -467,56 +520,61 @@ export interface Request extends RequestBase {
      */
     suggest?: Suggester
     /**
-     * Maximum number of documents to collect for each shard.
+     * The maximum number of documents to collect for each shard.
      * If a query reaches this limit, Elasticsearch terminates the query early.
      * Elasticsearch collects documents before sorting.
-     * Use with caution.
-     * Elasticsearch applies this parameter to each shard handling the request.
+     *
+     * IMPORTANT: Use with caution.
+     * Elasticsearch applies this property to each shard handling the request.
      * When possible, let Elasticsearch perform early termination automatically.
-     * Avoid specifying this parameter for requests that target data streams with backing indices across multiple data tiers.
+     * Avoid specifying this property for requests that target data streams with backing indices across multiple data tiers.
+     *
      * If set to `0` (default), the query does not terminate early.
      * @server_default 0
      */
     terminate_after?: long
     /**
-     * Specifies the period of time to wait for a response from each shard.
+     * The period of time to wait for a response from each shard.
      * If no response is received before the timeout expires, the request fails and returns an error.
      * Defaults to no timeout.
      */
     timeout?: string
     /**
-     * If true, calculate and return document scores, even if the scores are not used for sorting.
+     * If `true`, calculate and return document scores, even if the scores are not used for sorting.
      * @server_default false
      */
     track_scores?: boolean
     /**
-     * If true, returns document version as part of a hit.
+     * If `true`, the request returns the document version as part of a hit.
      * @server_default false
      */
     version?: boolean
     /**
-     * If `true`, returns sequence number and primary term of the last modification of each hit.
+     * If `true`, the request returns sequence number and primary term of the last modification of each hit.
+     * @ext_doc_id optimistic-concurrency
      */
     seq_no_primary_term?: boolean
     /**
-     * List of stored fields to return as part of a hit.
+     * A comma-separated list of stored fields to return as part of a hit.
      * If no fields are specified, no stored fields are included in the response.
-     * If this field is specified, the `_source` parameter defaults to `false`.
+     * If this field is specified, the `_source` property defaults to `false`.
      * You can pass `_source: true` to return both source fields and stored fields in the search response.
+     * @ext_doc_id stored-fields
      */
     stored_fields?: Fields
     /**
-     * Limits the search to a point in time (PIT).
+     * Limit the search to a point in time (PIT).
      * If you provide a PIT, you cannot specify an `<index>` in the request path.
      */
     pit?: PointInTimeReference
     /**
-     * Defines one or more runtime fields in the search request.
+     * One or more runtime fields in the search request.
      * These fields take precedence over mapped fields with the same name.
+     * @ext_doc_id runtime-search-request
      */
     runtime_mappings?: RuntimeFields
     /**
-     * Stats groups to associate with the search.
+     * The stats groups to associate with the search.
      * Each group maintains a statistics aggregation for its associated searches.
      * You can retrieve these stats using the indices stats API.
      */

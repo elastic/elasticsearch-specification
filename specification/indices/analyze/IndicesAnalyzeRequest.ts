@@ -26,13 +26,30 @@ import { TextToAnalyze } from './types'
 
 /**
  * Get tokens from text analysis.
- * The analyze API performs [analysis](https://www.elastic.co/guide/en/elasticsearch/reference/current/analysis.html) on a text string and returns the resulting tokens.
+ * The analyze API performs analysis on a text string and returns the resulting tokens.
+ *
+ * Generating excessive amount of tokens may cause a node to run out of memory.
+ * The `index.analyze.max_token_count` setting enables you to limit the number of tokens that can be produced.
+ * If more than this limit of tokens gets generated, an error occurs.
+ * The `_analyze` endpoint without a specified index will always use `10000` as its limit.
  * @doc_id indices-analyze
+ * @ext_doc_id analysis
  * @rest_spec_name indices.analyze
  * @availability stack stability=stable
  * @availability serverless stability=stable visibility=public
+ * @index_privileges index
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_analyze'
+      methods: ['GET', 'POST']
+    },
+    {
+      path: '/{index}/_analyze'
+      methods: ['GET', 'POST']
+    }
+  ]
   path_parts: {
     /**
      * Index used to derive the analyzer.

@@ -30,7 +30,7 @@ import {
   DurationValue,
   UnitFloatMillis
 } from '@_types/Time'
-import { DiscoveryNode } from './DiscoveryNode'
+import { DiscoveryNodeCompact } from './DiscoveryNode'
 import { ModelSizeStats } from './Model'
 
 export enum JobState {
@@ -310,7 +310,7 @@ export class JobStats {
    * This information is available only for open jobs.
    * @availability stack
    */
-  node?: DiscoveryNode
+  node?: DiscoveryNodeCompact
   /**
    * For open jobs only, the elapsed time for which the job has been open.
    */

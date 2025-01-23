@@ -28,29 +28,51 @@ import {
 /**
  * Create or update a query rule.
  * Create or update a query rule within a query ruleset.
+ *
+ * IMPORTANT: Due to limitations within pinned queries, you can only pin documents using ids or docs, but cannot use both in single rule.
+ * It is advised to use one or the other in query rulesets, to avoid errors.
+ * Additionally, pinned queries have a maximum limit of 100 pinned hits.
+ * If multiple matching rules pin more than 100 documents, only the first 100 documents are pinned in the order they are specified in the ruleset.
  * @rest_spec_name query_rules.put_rule
  * @availability stack since=8.15.0 stability=stable
  * @availability serverless stability=stable visibility=public
+ * @cluster_privileges manage_search_query_rules
+ * @doc_id query-rule-put
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_query_rules/{ruleset_id}/_rule/{rule_id}'
+      methods: ['PUT']
+    }
+  ]
   path_parts: {
     /**
-     * The unique identifier of the query ruleset containing the rule to be created or updated
+     * The unique identifier of the query ruleset containing the rule to be created or updated.
      */
     ruleset_id: Id
 
     /**
-     * The unique identifier of the query rule within the specified ruleset to be created or updated
+     * The unique identifier of the query rule within the specified ruleset to be created or updated.
      */
     rule_id: Id
   }
   /**
-   * The query rule information
+   * The query rule information.
    */
   /** @codegen_name query_rule */
   body: {
+    /** The type of rule. */
     type: QueryRuleType
+    /**
+     * The criteria that must be met for the rule to be applied.
+     * If multiple criteria are specified for a rule, all criteria must be met for the rule to be applied.
+     */
     criteria: QueryRuleCriteria | QueryRuleCriteria[]
+    /**
+     * The actions to take when the rule is matched.
+     * The format of this action depends on the rule type.
+     */
     actions: QueryRuleActions
     priority?: integer
   }

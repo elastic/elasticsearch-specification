@@ -26,13 +26,24 @@ import { Duration } from '@_types/Time'
 
 /**
  * Simulate an index template.
- * Returns the index configuration that would be applied by a particular index template.
+ * Get the index configuration that would be applied by a particular index template.
  * @rest_spec_name indices.simulate_template
  * @availability stack stability=stable
  * @availability serverless stability=stable visibility=public
- * @cluster_privileges manage_index_templates,manage
+ * @cluster_privileges manage_index_templates
+ * @doc_id indices-simulate-template
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_index_template/_simulate'
+      methods: ['POST']
+    },
+    {
+      path: '/_index_template/_simulate/{name}'
+      methods: ['POST']
+    }
+  ]
   path_parts: {
     /**
      * Name of the index template to simulate. To test a template configuration before you add it to the cluster, omit

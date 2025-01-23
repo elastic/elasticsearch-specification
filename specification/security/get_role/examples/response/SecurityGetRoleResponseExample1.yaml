@@ -1,0 +1,30 @@
+# summary:
+description: >
+  A successful response from `GET /_security/role/my_admin_role`.
+  The response contains information about the `my_admin_role` role in the native realm.
+# type: response
+# response_code:
+value: |-
+  {
+    "my_admin_role": {
+      "description": "Grants full access to all management features within the cluster.",
+      "cluster" : [ "all" ],
+      "indices" : [
+        {
+          "names" : [ "index1", "index2" ],
+          "privileges" : [ "all" ],
+          "allow_restricted_indices" : false,
+          "field_security" : {
+            "grant" : [ "title", "body" ]}
+        }
+      ],
+      "applications" : [ ],
+      "run_as" : [ "other_user" ],
+      "metadata" : {
+        "version" : 1
+      },
+      "transient_metadata": {
+        "enabled": true
+      }
+    }
+  }

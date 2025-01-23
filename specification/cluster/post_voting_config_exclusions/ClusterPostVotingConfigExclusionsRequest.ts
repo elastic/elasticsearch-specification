@@ -46,6 +46,12 @@ import { Duration } from '@_types/Time'
  * @ext_doc_id add-nodes
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_cluster/voting_config_exclusions'
+      methods: ['POST']
+    }
+  ]
   query_parameters: {
     /**
      * A comma-separated list of the names of the nodes to exclude from the
@@ -57,6 +63,11 @@ export interface Request extends RequestBase {
      * from the voting configuration. If specified, you may not also specify node_names.
      */
     node_ids?: Ids
+    /**
+     * Period to wait for a connection to the master node.
+     * @server_default 30s
+     */
+    master_timeout?: Duration
     /**
      * When adding a voting configuration exclusion, the API waits for the
      * specified nodes to be excluded from the voting configuration before

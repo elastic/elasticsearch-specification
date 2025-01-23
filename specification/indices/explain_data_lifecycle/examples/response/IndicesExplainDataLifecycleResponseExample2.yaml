@@ -1,0 +1,12 @@
+summary: Successful response with error messages
+description: The API reports any errors related to the lifecycle execution for the target index.
+# type: response
+# response_code: ''
+value:
+  "{\n  \"indices\": {\n    \".ds-metrics-2023.03.22-000001\": {\n      \"index\"\
+  \ : \".ds-metrics-2023.03.22-000001\",\n      \"managed_by_lifecycle\" : true,\n\
+  \      \"index_creation_date_millis\" : 1679475563571,\n      \"time_since_index_creation\"\
+  \ : \"843ms\",\n      \"lifecycle\" : {\n        \"enabled\": true\n      },\n \
+  \     \"error\": \"{\\\"type\\\":\\\"validation_exception\\\",\\\"reason\\\":\\\"\
+  Validation Failed: 1: this action would add [2] shards, but this cluster\ncurrently\
+  \ has [4]/[3] maximum normal shards open;\\\"}\"\n  }\n}"

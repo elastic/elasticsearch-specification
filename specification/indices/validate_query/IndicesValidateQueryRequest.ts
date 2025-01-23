@@ -30,6 +30,16 @@ import { Operator } from '@_types/query_dsl/Operator'
  * @availability serverless stability=stable visibility=public
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_validate/query'
+      methods: ['GET', 'POST']
+    },
+    {
+      path: '/{index}/_validate/query'
+      methods: ['GET', 'POST']
+    }
+  ]
   path_parts: {
     /**
      * Comma-separated list of data streams, indices, and aliases to search.

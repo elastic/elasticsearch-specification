@@ -32,6 +32,12 @@ import { Id } from '@_types/common'
  * @doc_id connector-delete
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_connector/{connector_id}'
+      methods: ['DELETE']
+    }
+  ]
   path_parts: {
     /**
      * The unique identifier of the connector to be deleted
@@ -43,5 +49,10 @@ export interface Request extends RequestBase {
      * A flag indicating if associated sync jobs should be also removed. Defaults to false.
      */
     delete_sync_jobs?: boolean
+    /**
+     * A flag indicating if the connector should be hard deleted.
+     * @server_default false
+     */
+    hard?: boolean
   }
 }

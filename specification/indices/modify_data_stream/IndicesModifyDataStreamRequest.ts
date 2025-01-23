@@ -29,6 +29,12 @@ import { Action } from './types'
  * @doc_tag data stream
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_data_stream/_modify'
+      methods: ['POST']
+    }
+  ]
   body: {
     /**
      * Actions to perform.

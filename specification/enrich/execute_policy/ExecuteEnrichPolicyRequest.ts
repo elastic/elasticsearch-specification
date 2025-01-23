@@ -19,6 +19,7 @@
 
 import { RequestBase } from '@_types/Base'
 import { Name } from '@_types/common'
+import { Duration } from '@_types/Time'
 
 /**
  * Run an enrich policy.
@@ -29,6 +30,12 @@ import { Name } from '@_types/common'
  * @availability serverless stability=stable visibility=public
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_enrich/policy/{name}/_execute'
+      methods: ['PUT']
+    }
+  ]
   path_parts: {
     /**
      * Enrich policy to execute.
@@ -36,6 +43,11 @@ export interface Request extends RequestBase {
     name: Name
   }
   query_parameters: {
+    /**
+     * Period to wait for a connection to the master node.
+     * @server_default 30s
+     */
+    master_timeout?: Duration
     /**
      * If `true`, the request blocks other enrich policy execution requests until complete.
      * @server_default true

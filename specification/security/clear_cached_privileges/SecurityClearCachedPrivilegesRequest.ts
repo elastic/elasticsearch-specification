@@ -28,9 +28,22 @@ import { Name } from '@_types/common'
  * @rest_spec_name security.clear_cached_privileges
  * @availability stack since=7.9.0 stability=stable
  * @availability serverless stability=stable visibility=private
+ * @cluster_privileges manage_security
+ * @doc_id security-api-clear-privilege-cache
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_security/privilege/{application}/_clear_cache'
+      methods: ['POST']
+    }
+  ]
   path_parts: {
+    /**
+     * A comma-separated list of applications.
+     * To clear all applications, use an asterism (`*`).
+     * It does not support other wildcard patterns.
+     */
     application: Name
   }
 }

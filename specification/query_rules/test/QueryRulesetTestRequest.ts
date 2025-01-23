@@ -27,8 +27,16 @@ import { Id } from '@_types/common'
  * @rest_spec_name query_rules.test
  * @availability stack since=8.10.0 stability=stable
  * @availability serverless stability=stable visibility=public
+ * @cluster_privileges manage_search_query_rules
+ * @doc_id query-ruleset-test
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_query_rules/{ruleset_id}/_test'
+      methods: ['POST']
+    }
+  ]
   path_parts: {
     /**
      * The unique identifier of the query ruleset to be created or updated
@@ -40,6 +48,10 @@ export interface Request extends RequestBase {
    */
   /** @codegen_name match_criteria */
   body: {
+    /**
+     * The match criteria to apply to rules in the given query ruleset.
+     * Match criteria should match the keys defined in the `criteria.metadata` field of the rule.
+     */
     match_criteria: Dictionary<string, UserDefinedValue>
   }
 }

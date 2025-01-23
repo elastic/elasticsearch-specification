@@ -31,6 +31,16 @@ import { integer } from '@_types/Numeric'
  * @doc_tag ml trained model
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_ml/trained_models/{model_id}'
+      methods: ['GET']
+    },
+    {
+      path: '/_ml/trained_models'
+      methods: ['GET']
+    }
+  ]
   path_parts: {
     /**
      * The unique identifier of the trained model or a model alias.
@@ -77,6 +87,13 @@ export interface Request extends RequestBase {
      * body.
      */
     include?: Include
+
+    /**
+     * parameter is deprecated! Use [include=definition] instead
+     * @deprecated 7.10.0
+     */
+    include_model_definition?: boolean
+
     /**
      * Specifies the maximum number of models to obtain.
      * @server_default 100

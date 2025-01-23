@@ -28,4 +28,11 @@ import { RequestBase } from '@_types/Base'
  * @availability serverless stability=stable visibility=private
  * @ext_doc_id geoip-processor
  */
-export interface Request extends RequestBase {}
+export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_ingest/geoip/stats'
+      methods: ['GET']
+    }
+  ]
+}

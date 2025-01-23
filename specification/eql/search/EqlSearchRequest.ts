@@ -35,6 +35,12 @@ import { ResultPosition } from './types'
  * @ext_doc_id eql
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/{index}/_eql/search'
+      methods: ['GET', 'POST']
+    }
+  ]
   path_parts: {
     index: Indices
   }
@@ -43,6 +49,17 @@ export interface Request extends RequestBase {
      * @server_default true
      */
     allow_no_indices?: boolean
+    /**
+     * If true, returns partial results if there are shard failures. If false, returns an error with no partial results.
+     * @server_default false
+     */
+    allow_partial_search_results?: boolean
+    /**
+     * If true, sequence queries will return partial results in case of shard failures. If false, they will return no results at all.
+     * This flag has effect only if allow_partial_search_results is true.
+     * @server_default false
+     */
+    allow_partial_sequence_results?: boolean
     /**
      * @server_default open
      */
@@ -100,6 +117,8 @@ export interface Request extends RequestBase {
     keep_alive?: Duration
     keep_on_completion?: boolean
     wait_for_completion_timeout?: Duration
+    allow_partial_search_results?: boolean
+    allow_partial_sequence_results?: boolean
     /**
      * For basic queries, the maximum number of matching events to return. Defaults to 10
      * @doc_id eql-basic-syntax

@@ -20,7 +20,7 @@
 import { Pipeline } from '@ingest/_types/Pipeline'
 import { RequestBase } from '@_types/Base'
 import { Id } from '@_types/common'
-import { Document } from './types'
+import { Document } from '../_types/Simulation'
 
 /**
  * Simulate a pipeline.
@@ -31,6 +31,16 @@ import { Document } from './types'
  * @availability serverless stability=stable visibility=public
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_ingest/pipeline/_simulate'
+      methods: ['GET', 'POST']
+    },
+    {
+      path: '/_ingest/pipeline/{id}/_simulate'
+      methods: ['GET', 'POST']
+    }
+  ]
   path_parts: {
     /**
      * Pipeline to test.

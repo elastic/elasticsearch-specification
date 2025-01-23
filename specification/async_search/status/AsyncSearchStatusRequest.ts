@@ -33,6 +33,12 @@ import { Duration } from '@_types/Time'
  * @doc_tag search
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_async_search/status/{id}'
+      methods: ['GET']
+    }
+  ]
   path_parts: {
     /** A unique identifier for the async search. */
     id: Id

@@ -30,6 +30,16 @@ import { Duration } from '@_types/Time'
  * @availability serverless stability=stable visibility=public
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/{index}/_alias/{name}'
+      methods: ['PUT', 'POST']
+    },
+    {
+      path: '/{index}/_aliases/{name}'
+      methods: ['PUT', 'POST']
+    }
+  ]
   path_parts: {
     /**
      * Comma-separated list of data streams or indices to add.

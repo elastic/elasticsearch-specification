@@ -19,10 +19,11 @@
 
 import { CatRequestBase } from '@cat/_types/CatBase'
 import { Names } from '@_types/common'
-import { TimeUnit } from '@_types/Time'
+import { Duration, TimeUnit } from '@_types/Time'
 
 /**
  * Get thread pool statistics.
+ *
  * Get thread pool statistics for each node in a cluster.
  * Returned information includes all built-in thread pools and custom thread pools.
  * IMPORTANT: cat APIs are only intended for human consumption using the command line or Kibana console. They are not intended for use by applications. For application consumption, use the nodes info API.
@@ -33,6 +34,16 @@ import { TimeUnit } from '@_types/Time'
  * @cluster_privileges monitor
  */
 export interface Request extends CatRequestBase {
+  urls: [
+    {
+      path: '/_cat/thread_pool'
+      methods: ['GET']
+    },
+    {
+      path: '/_cat/thread_pool/{thread_pool_patterns}'
+      methods: ['GET']
+    }
+  ]
   path_parts: {
     /**
      * A comma-separated list of thread pool names used to limit the request.
@@ -53,5 +64,10 @@ export interface Request extends CatRequestBase {
      * @server_default false
      */
     local?: boolean
+    /**
+     * Period to wait for a connection to the master node.
+     * @server_default 30s
+     */
+    master_timeout?: Duration
   }
 }

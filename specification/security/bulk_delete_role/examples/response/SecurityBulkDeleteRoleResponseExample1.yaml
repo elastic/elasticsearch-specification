@@ -1,0 +1,11 @@
+summary: A successful response
+description: A successful response from `DELETE /_security/role`.
+# type: response
+# response_code:
+value: |-
+  {
+    "deleted": [
+        "my_admin_role",
+        "my_user_role"
+    ]
+  }

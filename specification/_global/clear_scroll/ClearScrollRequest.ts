@@ -22,25 +22,38 @@ import { ScrollIds } from '@_types/common'
 
 /**
  * Clear a scrolling search.
- *
  * Clear the search context and results for a scrolling search.
  * @rest_spec_name clear_scroll
  * @availability stack stability=stable
  * @availability serverless stability=stable visibility=public
  * @doc_id clear-scroll-api
  * @doc_tag search
+ * @ext_doc_id scroll-search-results
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_search/scroll'
+      methods: ['DELETE']
+    },
+    {
+      /** @deprecated 7.0.0 A scroll id can be quite large and should be specified as part of the body */
+      path: '/_search/scroll/{scroll_id}'
+      methods: ['DELETE']
+    }
+  ]
   path_parts: {
     /**
-     * Comma-separated list of scroll IDs to clear.
+     * A comma-separated list of scroll IDs to clear.
      * To clear all scroll IDs, use `_all`.
+     * IMPORTANT: Scroll IDs can be long. It is recommended to specify scroll IDs in the request body parameter.
+     * @deprecated 7.0.0
      */
     scroll_id?: ScrollIds
   }
   body: {
     /**
-     * Scroll IDs to clear.
+     * The scroll IDs to clear.
      * To clear all scroll IDs, use `_all`.
      */
     scroll_id?: ScrollIds

@@ -23,14 +23,33 @@ import { Duration } from '@_types/Time'
 
 /**
  * Get index settings.
- * Returns setting information for one or more indices. For data streams,
- * returns setting information for the stream’s backing indices.
+ * Get setting information for one or more indices.
+ * For data streams, it returns setting information for the stream's backing indices.
  * @rest_spec_name indices.get_settings
  * @availability stack stability=stable
  * @availability serverless stability=stable visibility=public
- * @index_privileges view_index_metadata, monitor, manage
+ * @index_privileges view_index_metadata
+ * @doc_id indices-get-settings
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_settings'
+      methods: ['GET']
+    },
+    {
+      path: '/{index}/_settings'
+      methods: ['GET']
+    },
+    {
+      path: '/{index}/_settings/{name}'
+      methods: ['GET']
+    },
+    {
+      path: '/_settings/{name}'
+      methods: ['GET']
+    }
+  ]
   path_parts: {
     /**
      * Comma-separated list of data streams, indices, and aliases used to limit
