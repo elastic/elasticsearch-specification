@@ -21,7 +21,7 @@ import { RequestBase } from '@_types/Base'
 import { Indices } from '@_types/common'
 
 /**
- * Cancel a reindex operation.
+ * Cancel a migration reindex operation.
  *
  * Cancel a migration reindex attempt for a data stream or index.
  * @rest_spec_name indices.cancel_migrate_reindex

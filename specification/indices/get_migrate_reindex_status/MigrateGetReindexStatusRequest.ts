@@ -21,7 +21,7 @@ import { RequestBase } from '@_types/Base'
 import { Indices } from '@_types/common'
 
 /**
- * Get the reindexing status.
+ * Get the migration reindexing status.
  *
  * Get the status of a migration reindex attempt for a data stream or index.
  * @rest_spec_name indices.get_migrate_reindex_status
