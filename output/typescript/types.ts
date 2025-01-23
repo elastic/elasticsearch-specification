@@ -13891,6 +13891,7 @@ export type MigrateCancelReindexResponse = AcknowledgedResponseBase
 export interface MigrateCreateFromCreateFrom {
   mappings_override?: MappingTypeMapping
   settings_override?: IndicesIndexSettings
+  remove_index_blocks?: boolean
 }
 
 export interface MigrateCreateFromRequest extends RequestBase {
