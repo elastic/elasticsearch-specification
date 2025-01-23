@@ -367,10 +367,6 @@ export class Flattened extends Base {
   field_count: integer
 }
 
-export class FrozenIndices extends Base {
-  indices_count: long
-}
-
 export class JobUsage {
   count: integer
   created_by: Dictionary<string, long>
