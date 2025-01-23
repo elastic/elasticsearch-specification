@@ -53,6 +53,7 @@ export class CreateFrom {
   settings_override?: IndexSettings
   /**
    * If index blocks should be removed when creating destination index (optional)
+   * @server_default false
    */
   remove_index_blocks?: boolean
 }
