@@ -21560,7 +21560,6 @@ export interface XpackInfoFeatures {
   enterprise_search: XpackInfoFeature
   eql: XpackInfoFeature
   esql: XpackInfoFeature
-  frozen_indices: XpackInfoFeature
   graph: XpackInfoFeature
   ilm: XpackInfoFeature
   logstash: XpackInfoFeature
@@ -21729,10 +21728,6 @@ export interface XpackUsageFeatureToggle {
 
 export interface XpackUsageFlattened extends XpackUsageBase {
   field_count: integer
-}
-
-export interface XpackUsageFrozenIndices extends XpackUsageBase {
-  indices_count: long
 }
 
 export interface XpackUsageHealthStatistics extends XpackUsageBase {
@@ -21910,7 +21905,6 @@ export interface XpackUsageResponse {
   enrich?: XpackUsageBase
   eql: XpackUsageEql
   flattened?: XpackUsageFlattened
-  frozen_indices: XpackUsageFrozenIndices
   graph: XpackUsageBase
   health_api?: XpackUsageHealthStatistics
   ilm: XpackUsageIlm

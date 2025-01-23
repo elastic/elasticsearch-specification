@@ -39810,9 +39810,6 @@
                     "flattened": {
                       "$ref": "#/components/schemas/xpack.usage:Flattened"
                     },
-                    "frozen_indices": {
-                      "$ref": "#/components/schemas/xpack.usage:FrozenIndices"
-                    },
                     "graph": {
                       "$ref": "#/components/schemas/xpack.usage:Base"
                     },
@@ -39870,7 +39867,6 @@
                     "ccr",
                     "data_tiers",
                     "eql",
-                    "frozen_indices",
                     "graph",
                     "ilm",
                     "logstash",
@@ -92435,9 +92431,6 @@
           "esql": {
             "$ref": "#/components/schemas/xpack.info:Feature"
           },
-          "frozen_indices": {
-            "$ref": "#/components/schemas/xpack.info:Feature"
-          },
           "graph": {
             "$ref": "#/components/schemas/xpack.info:Feature"
           },
@@ -92503,7 +92496,6 @@
           "enterprise_search",
           "eql",
           "esql",
-          "frozen_indices",
           "graph",
           "ilm",
           "logstash",
@@ -93130,24 +93122,6 @@
             },
             "required": [
               "field_count"
-            ]
-          }
-        ]
-      },
-      "xpack.usage:FrozenIndices": {
-        "allOf": [
-          {
-            "$ref": "#/components/schemas/xpack.usage:Base"
-          },
-          {
-            "type": "object",
-            "properties": {
-              "indices_count": {
-                "type": "number"
-              }
-            },
-            "required": [
-              "indices_count"
             ]
           }
         ]
