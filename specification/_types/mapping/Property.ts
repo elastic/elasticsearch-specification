@@ -74,6 +74,7 @@ import { DynamicMapping } from './dynamic-template'
 import {
   CompletionProperty,
   ConstantKeywordProperty,
+  CountedKeywordProperty,
   FieldAliasProperty,
   HistogramProperty,
   IcuCollationProperty,
@@ -131,6 +132,7 @@ export type Property =
   // structured
   | CompletionProperty
   | ConstantKeywordProperty
+  | CountedKeywordProperty
   | FieldAliasProperty
   | HistogramProperty
   | IpProperty
@@ -207,6 +209,7 @@ export enum FieldType {
   shape,
   histogram,
   constant_keyword,
+  counted_keyword,
   aggregate_metric_double,
   dense_vector,
   semantic_text,

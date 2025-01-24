@@ -63010,6 +63010,9 @@
             "$ref": "#/components/schemas/_types.mapping:ConstantKeywordProperty"
           },
           {
+            "$ref": "#/components/schemas/_types.mapping:CountedKeywordProperty"
+          },
+          {
             "$ref": "#/components/schemas/_types.mapping:FieldAliasProperty"
           },
           {
@@ -64246,6 +64249,30 @@
                 "enum": [
                   "constant_keyword"
                 ]
+              }
+            },
+            "required": [
+              "type"
+            ]
+          }
+        ]
+      },
+      "_types.mapping:CountedKeywordProperty": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/_types.mapping:PropertyBase"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "type": {
+                "type": "string",
+                "enum": [
+                  "counted_keyword"
+                ]
+              },
+              "index": {
+                "type": "boolean"
               }
             },
             "required": [
