@@ -1140,6 +1140,8 @@ export interface RenderSearchTemplateResponse {
   template_output: Record<string, any>
 }
 
+export type ScriptsPainlessExecutePainlessContext = 'painless_test' | 'filter' | 'score' | 'boolean_field' | 'date_field' | 'double_field' | 'geo_point_field' | 'ip_field' | 'keyword_field' | 'long_field' | 'composite_field'
+
 export interface ScriptsPainlessExecutePainlessContextSetup {
   document: any
   index: IndexName
@@ -1148,7 +1150,7 @@ export interface ScriptsPainlessExecutePainlessContextSetup {
 
 export interface ScriptsPainlessExecuteRequest extends RequestBase {
   body?: {
-    context?: string
+    context?: ScriptsPainlessExecutePainlessContext
     context_setup?: ScriptsPainlessExecutePainlessContextSetup
     script?: Script | string
   }
