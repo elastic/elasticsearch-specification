@@ -1,10 +1,16 @@
 summary: Upsert
 # method_request: POST test/_update/1
 description: >
-  Run `POST test/_update/1` to perfom an upsert.
-  If the document does not already exist, the contents of the upsert element are inserted as a new document. If the document exists, the script is run.
+  Run `POST test/_update/1` to perfom update and insert actions in a single request.
+  In this example, if the product with ID 1 exists, its price will be updated to 100.
+  If the product does not exist, a new document with ID 1 and a price of 50 will be inserted.
 # type: request
 value:
-  "{\n  \"script\": {\n    \"source\": \"ctx._source.counter += params.count\"\
-  ,\n    \"lang\": \"painless\",\n    \"params\": {\n      \"count\": 4\n    }\n \
-  \ },\n  \"upsert\": {\n    \"counter\": 1\n  }\n}"
+  {
+    "doc": {
+      "product_price": 100
+    },
+    "upsert": {
+      "product_price": 50
+    }
+  }
