@@ -27,7 +27,7 @@ import { Operator } from '@_types/query_dsl/Operator'
  * Count search results.
  * Get the number of documents matching a query.
  *
- * The query can be provided using either a simple query string as a parameter, or using Query DSL defined within the request body.
+ * The query can be provided either by using a simple query string as a parameter, or by defining Query DSL within the request body.
  * The query is optional. When no query is provided, the API uses `match_all` to count all the documents.
  *
  * The count API supports multi-target syntax. You can run a single count API search across multiple data streams and indices.
