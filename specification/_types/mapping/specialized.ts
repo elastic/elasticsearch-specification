@@ -52,6 +52,15 @@ export class ConstantKeywordProperty extends PropertyBase {
   type: 'constant_keyword'
 }
 
+export class CountedKeywordProperty extends PropertyBase {
+  type: 'counted_keyword'
+  /*
+   * Set to false to reduce disk usage for use cases where indexed fields are not required.
+   * @server_default true
+   */
+  index?: boolean
+}
+
 export class FieldAliasProperty extends PropertyBase {
   path?: Field
   type: 'alias'
