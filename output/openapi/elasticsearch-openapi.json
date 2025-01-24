@@ -38069,13 +38069,13 @@
           "document"
         ],
         "summary": "Update documents",
-        "description": "Updates documents that match the specified query.\nIf no query is specified, performs an update on every document in the data stream or index without modifying the source, which is useful for picking up mapping changes.",
+        "description": "Updates documents that match the specified query.\nIf no query is specified, performs an update on every document in the data stream or index without modifying the source, which is useful for picking up mapping changes.\n\nIf the Elasticsearch security features are enabled, you must have the following index privileges for the target data stream, index, or alias:\n\n* `read`\n* `index` or `write`\n\nYou can specify the query criteria in the request URI or the request body using the same syntax as the search API.\n\nWhen you submit an update by query request, Elasticsearch gets a snapshot of the data stream or index when it begins processing the request and updates matching documents using internal versioning.\nWhen the versions match, the document is updated and the version number is incremented.\nIf a document changes between the time that the snapshot is taken and the update operation is processed, it results in a version conflict and the operation fails.\nYou can opt to count version conflicts instead of halting and returning by setting `conflicts` to `proceed`.\nNote that if you opt to count version conflicts, the operation could attempt to update more documents from the source than `max_docs` until it has successfully updated `max_docs` documents or it has gone through every document in the source query.\n\nNOTE: Documents with a version equal to 0 cannot be updated using update by query because internal versioning does not support 0 as a valid version number.\n\nWhile processing an update by query request, Elasticsearch performs multiple search requests sequentially to find all of the matching documents.\nA bulk update request is performed for each batch of matching documents.\nAny query or update failures cause the update by query request to fail and the failures are shown in the response.\nAny update requests that completed successfully still stick, they are not rolled back.\n\n**Throttling update requests**\n\nTo control the rate at which update by query issues batches of update operations, you can set `requests_per_second` to any positive decimal number.\nThis pads each batch with a wait time to throttle the rate.\nSet `requests_per_second` to `-1` to turn off throttling.\n\nThrottling uses a wait time between batches so that the internal scroll requests can be given a timeout that takes the request padding into account.\nThe padding time is the difference between the batch size divided by the `requests_per_second` and the time spent writing.\nBy default the batch size is 1000, so if `requests_per_second` is set to `500`:\n\n```\ntarget_time = 1000 / 500 per second = 2 seconds\nwait_time = target_time - write_time = 2 seconds - .5 seconds = 1.5 seconds\n```\n\nSince the batch is issued as a single _bulk request, large batch sizes cause Elasticsearch to create many requests and wait before starting the next set.\nThis is \"bursty\" instead of \"smooth\".\n\n**Slicing**\n\nUpdate by query supports sliced scroll to parallelize the update process.\nThis can improve efficiency and provide a convenient way to break the request down into smaller parts.\n\nSetting `slices` to `auto` chooses a reasonable number for most data streams and indices.\nThis setting will use one slice per shard, up to a certain limit.\nIf there are multiple source data streams or indices, it will choose the number of slices based on the index or backing index with the smallest number of shards.\n\nAdding `slices` to `_update_by_query` just automates the manual process of creating sub-requests, which means it has some quirks:\n\n* You can see these requests in the tasks APIs. These sub-requests are \"child\" tasks of the task for the request with slices.\n* Fetching the status of the task for the request with `slices` only contains the status of completed slices.\n* These sub-requests are individually addressable for things like cancellation and rethrottling.\n* Rethrottling the request with `slices` will rethrottle the unfinished sub-request proportionally.\n* Canceling the request with slices will cancel each sub-request.\n* Due to the nature of slices each sub-request won't get a perfectly even portion of the documents. All documents will be addressed, but some slices may be larger than others. Expect larger slices to have a more even distribution.\n* Parameters like `requests_per_second` and `max_docs` on a request with slices are distributed proportionally to each sub-request. Combine that with the point above about distribution being uneven and you should conclude that using `max_docs` with `slices` might not result in exactly `max_docs` documents being updated.\n* Each sub-request gets a slightly different snapshot of the source data stream or index though these are all taken at approximately the same time.\n\nIf you're slicing manually or otherwise tuning automatic slicing, keep in mind that:\n\n* Query performance is most efficient when the number of slices is equal to the number of shards in the index or backing index. If that number is large (for example, 500), choose a lower number as too many slices hurts performance. Setting slices higher than the number of shards generally does not improve efficiency and adds overhead.\n* Update performance scales linearly across available resources with the number of slices.\n\nWhether query or update performance dominates the runtime depends on the documents being reindexed and cluster resources.\n\n**Update the document source**\n\nUpdate by query supports scripts to update the document source.\nAs with the update API, you can set `ctx.op` to change the operation that is performed.\n\nSet `ctx.op = \"noop\"` if your script decides that it doesn't have to make any changes.\nThe update by query operation skips updating the document and increments the `noop` counter.\n\nSet `ctx.op = \"delete\"` if your script decides that the document should be deleted.\nThe update by query operation deletes the document and increments the `deleted` counter.\n\nUpdate by query supports only `index`, `noop`, and `delete`.\nSetting `ctx.op` to anything else is an error.\nSetting any other field in `ctx` is an error.\nThis API enables you to only modify the source of matching documents; you cannot move them.",
         "operationId": "update-by-query",
         "parameters": [
           {
             "in": "path",
             "name": "index",
-            "description": "Comma-separated list of data streams, indices, and aliases to search.\nSupports wildcards (`*`).\nTo search all data streams or indices, omit this parameter or use `*` or `_all`.",
+            "description": "A comma-separated list of data streams, indices, and aliases to search.\nIt supports wildcards (`*`).\nTo search all data streams or indices, omit this parameter or use `*` or `_all`.",
             "required": true,
             "deprecated": false,
             "schema": {
@@ -38096,7 +38096,7 @@
           {
             "in": "query",
             "name": "analyzer",
-            "description": "Analyzer to use for the query string.",
+            "description": "The analyzer to use for the query string.\nThis parameter can be used only when the `q` query string parameter is specified.",
             "deprecated": false,
             "schema": {
               "type": "string"
@@ -38106,7 +38106,7 @@
           {
             "in": "query",
             "name": "analyze_wildcard",
-            "description": "If `true`, wildcard and prefix queries are analyzed.",
+            "description": "If `true`, wildcard and prefix queries are analyzed.\nThis parameter can be used only when the `q` query string parameter is specified.",
             "deprecated": false,
             "schema": {
               "type": "boolean"
@@ -38116,7 +38116,7 @@
           {
             "in": "query",
             "name": "conflicts",
-            "description": "What to do if update by query hits version conflicts: `abort` or `proceed`.",
+            "description": "The preferred behavior when update by query hits version conflicts: `abort` or `proceed`.",
             "deprecated": false,
             "schema": {
               "$ref": "#/components/schemas/_types:Conflicts"
@@ -38126,7 +38126,7 @@
           {
             "in": "query",
             "name": "default_operator",
-            "description": "The default operator for query string query: `AND` or `OR`.",
+            "description": "The default operator for query string query: `AND` or `OR`.\nThis parameter can be used only when the `q` query string parameter is specified.",
             "deprecated": false,
             "schema": {
               "$ref": "#/components/schemas/_types.query_dsl:Operator"
@@ -38136,7 +38136,7 @@
           {
             "in": "query",
             "name": "df",
-            "description": "Field to use as default where no field prefix is given in the query string.",
+            "description": "The field to use as default where no field prefix is given in the query string.\nThis parameter can be used only when the `q` query string parameter is specified.",
             "deprecated": false,
             "schema": {
               "type": "string"
@@ -38146,7 +38146,7 @@
           {
             "in": "query",
             "name": "expand_wildcards",
-            "description": "Type of index that wildcard patterns can match.\nIf the request can target data streams, this argument determines whether wildcard expressions match hidden data streams.\nSupports comma-separated values, such as `open,hidden`.\nValid values are: `all`, `open`, `closed`, `hidden`, `none`.",
+            "description": "The type of index that wildcard patterns can match.\nIf the request can target data streams, this argument determines whether wildcard expressions match hidden data streams.\nIt supports comma-separated values, such as `open,hidden`.\nValid values are: `all`, `open`, `closed`, `hidden`, `none`.",
             "deprecated": false,
             "schema": {
               "$ref": "#/components/schemas/_types:ExpandWildcards"
@@ -38176,7 +38176,7 @@
           {
             "in": "query",
             "name": "lenient",
-            "description": "If `true`, format-based query failures (such as providing text to a numeric field) in the query string will be ignored.",
+            "description": "If `true`, format-based query failures (such as providing text to a numeric field) in the query string will be ignored.\nThis parameter can be used only when the `q` query string parameter is specified.",
             "deprecated": false,
             "schema": {
               "type": "boolean"
@@ -38186,7 +38186,7 @@
           {
             "in": "query",
             "name": "max_docs",
-            "description": "Maximum number of documents to process.\nDefaults to all documents.",
+            "description": "The maximum number of documents to process.\nIt defaults to all documents.\nWhen set to a value less then or equal to `scroll_size` then a scroll will not be used to retrieve the results for the operation.",
             "deprecated": false,
             "schema": {
               "type": "number"
@@ -38196,7 +38196,7 @@
           {
             "in": "query",
             "name": "pipeline",
-            "description": "ID of the pipeline to use to preprocess incoming documents.\nIf the index has a default ingest pipeline specified, then setting the value to `_none` disables the default ingest pipeline for this request.\nIf a final pipeline is configured it will always run, regardless of the value of this parameter.",
+            "description": "The ID of the pipeline to use to preprocess incoming documents.\nIf the index has a default ingest pipeline specified, then setting the value to `_none` disables the default ingest pipeline for this request.\nIf a final pipeline is configured it will always run, regardless of the value of this parameter.",
             "deprecated": false,
             "schema": {
               "type": "string"
@@ -38206,7 +38206,7 @@
           {
             "in": "query",
             "name": "preference",
-            "description": "Specifies the node or shard the operation should be performed on.\nRandom by default.",
+            "description": "The node or shard the operation should be performed on.\nIt is random by default.",
             "deprecated": false,
             "schema": {
               "type": "string"
@@ -38216,7 +38216,7 @@
           {
             "in": "query",
             "name": "q",
-            "description": "Query in the Lucene query string syntax.",
+            "description": "A query in the Lucene query string syntax.",
             "deprecated": false,
             "schema": {
               "type": "string"
@@ -38226,7 +38226,7 @@
           {
             "in": "query",
             "name": "refresh",
-            "description": "If `true`, Elasticsearch refreshes affected shards to make the operation visible to search.",
+            "description": "If `true`, Elasticsearch refreshes affected shards to make the operation visible to search after the request completes.\nThis is different than the update API's `refresh` parameter, which causes just the shard that received the request to be refreshed.",
             "deprecated": false,
             "schema": {
               "type": "boolean"
@@ -38236,7 +38236,7 @@
           {
             "in": "query",
             "name": "request_cache",
-            "description": "If `true`, the request cache is used for this request.",
+            "description": "If `true`, the request cache is used for this request.\nIt defaults to the index-level setting.",
             "deprecated": false,
             "schema": {
               "type": "boolean"
@@ -38256,7 +38256,7 @@
           {
             "in": "query",
             "name": "routing",
-            "description": "Custom value used to route operations to a specific shard.",
+            "description": "A custom value used to route operations to a specific shard.",
             "deprecated": false,
             "schema": {
               "$ref": "#/components/schemas/_types:Routing"
@@ -38266,7 +38266,7 @@
           {
             "in": "query",
             "name": "scroll",
-            "description": "Period to retain the search context for scrolling.",
+            "description": "The period to retain the search context for scrolling.",
             "deprecated": false,
             "schema": {
               "$ref": "#/components/schemas/_types:Duration"
@@ -38276,7 +38276,7 @@
           {
             "in": "query",
             "name": "scroll_size",
-            "description": "Size of the scroll request that powers the operation.",
+            "description": "The size of the scroll request that powers the operation.",
             "deprecated": false,
             "schema": {
               "type": "number"
@@ -38286,7 +38286,7 @@
           {
             "in": "query",
             "name": "search_timeout",
-            "description": "Explicit timeout for each search request.",
+            "description": "An explicit timeout for each search request.\nBy default, there is no timeout.",
             "deprecated": false,
             "schema": {
               "$ref": "#/components/schemas/_types:Duration"
@@ -38296,7 +38296,7 @@
           {
             "in": "query",
             "name": "search_type",
-            "description": "The type of the search operation. Available options: `query_then_fetch`, `dfs_query_then_fetch`.",
+            "description": "The type of the search operation. Available options include `query_then_fetch` and `dfs_query_then_fetch`.",
             "deprecated": false,
             "schema": {
               "$ref": "#/components/schemas/_types:SearchType"
@@ -38329,7 +38329,7 @@
           {
             "in": "query",
             "name": "stats",
-            "description": "Specific `tag` of the request for logging and statistical purposes.",
+            "description": "The specific `tag` of the request for logging and statistical purposes.",
             "deprecated": false,
             "schema": {
               "type": "array",
@@ -38342,7 +38342,7 @@
           {
             "in": "query",
             "name": "terminate_after",
-            "description": "Maximum number of documents to collect for each shard.\nIf a query reaches this limit, Elasticsearch terminates the query early.\nElasticsearch collects documents before sorting.\nUse with caution.\nElasticsearch applies this parameter to each shard handling the request.\nWhen possible, let Elasticsearch perform early termination automatically.\nAvoid specifying this parameter for requests that target data streams with backing indices across multiple data tiers.",
+            "description": "The maximum number of documents to collect for each shard.\nIf a query reaches this limit, Elasticsearch terminates the query early.\nElasticsearch collects documents before sorting.\n\nIMPORTANT: Use with caution.\nElasticsearch applies this parameter to each shard handling the request.\nWhen possible, let Elasticsearch perform early termination automatically.\nAvoid specifying this parameter for requests that target data streams with backing indices across multiple data tiers.",
             "deprecated": false,
             "schema": {
               "type": "number"
@@ -38352,7 +38352,7 @@
           {
             "in": "query",
             "name": "timeout",
-            "description": "Period each update request waits for the following operations: dynamic mapping updates, waiting for active shards.",
+            "description": "The period each update request waits for the following operations: dynamic mapping updates, waiting for active shards.\nBy default, it is one minute.\nThis guarantees Elasticsearch waits for at least the timeout before failing.\nThe actual wait time could be longer, particularly when multiple waits occur.",
             "deprecated": false,
             "schema": {
               "$ref": "#/components/schemas/_types:Duration"
@@ -38382,7 +38382,7 @@
           {
             "in": "query",
             "name": "wait_for_active_shards",
-            "description": "The number of shard copies that must be active before proceeding with the operation.\nSet to `all` or any positive integer up to the total number of shards in the index (`number_of_replicas+1`).",
+            "description": "The number of shard copies that must be active before proceeding with the operation.\nSet to `all` or any positive integer up to the total number of shards in the index (`number_of_replicas+1`).\nThe `timeout` parameter controls how long each write request waits for unavailable shards to become available.\nBoth work exactly the way they work in the bulk API.",
             "deprecated": false,
             "schema": {
               "$ref": "#/components/schemas/_types:WaitForActiveShards"
@@ -38392,7 +38392,7 @@
           {
             "in": "query",
             "name": "wait_for_completion",
-            "description": "If `true`, the request blocks until the operation is complete.",
+            "description": "If `true`, the request blocks until the operation is complete.\nIf `false`, Elasticsearch performs some preflight checks, launches the request, and returns a task ID that you can use to cancel or get the status of the task.\nElasticsearch creates a record of this task as a document at `.tasks/task/${taskId}`.",
             "deprecated": false,
             "schema": {
               "type": "boolean"
@@ -38436,21 +38436,26 @@
                   "type": "object",
                   "properties": {
                     "batches": {
+                      "description": "The number of scroll responses pulled back by the update by query.",
                       "type": "number"
                     },
                     "failures": {
+                      "description": "Array of failures if there were any unrecoverable errors during the process.\nIf this is non-empty then the request ended because of those failures.\nUpdate by query is implemented using batches.\nAny failure causes the entire process to end, but all failures in the current batch are collected into the array.\nYou can use the `conflicts` option to prevent reindex from ending when version conflicts occur.",
                       "type": "array",
                       "items": {
                         "$ref": "#/components/schemas/_types:BulkIndexByScrollFailure"
                       }
                     },
                     "noops": {
+                      "description": "The number of documents that were ignored because the script used for the update by query returned a noop value for `ctx.op`.",
                       "type": "number"
                     },
                     "deleted": {
+                      "description": "The number of documents that were successfully deleted.",
                       "type": "number"
                     },
                     "requests_per_second": {
+                      "description": "The number of requests per second effectively run during the update by query.",
                       "type": "number"
                     },
                     "retries": {
@@ -38460,18 +38465,22 @@
                       "$ref": "#/components/schemas/_types:TaskId"
                     },
                     "timed_out": {
+                      "description": "If true, some requests timed out during the update by query.",
                       "type": "boolean"
                     },
                     "took": {
                       "$ref": "#/components/schemas/_types:DurationValueUnitMillis"
                     },
                     "total": {
+                      "description": "The number of documents that were successfully processed.",
                       "type": "number"
                     },
                     "updated": {
+                      "description": "The number of documents that were successfully updated.",
                       "type": "number"
                     },
                     "version_conflicts": {
+                      "description": "The number of version conflicts that the update by query hit.",
                       "type": "number"
                     },
                     "throttled": {
@@ -38518,7 +38527,7 @@
           {
             "in": "query",
             "name": "requests_per_second",
-            "description": "The throttle for this request in sub-requests per second.",
+            "description": "The throttle for this request in sub-requests per second.\nTo turn off throttling, set it to `-1`.",
             "deprecated": false,
             "schema": {
               "type": "number"
