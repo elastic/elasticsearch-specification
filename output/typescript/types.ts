@@ -6789,6 +6789,7 @@ export interface AsyncSearchStatusStatusResponseBase extends AsyncSearchAsyncSea
 export interface AsyncSearchSubmitRequest extends RequestBase {
   index?: Indices
   wait_for_completion_timeout?: Duration
+  keep_alive?: Duration
   keep_on_completion?: boolean
   allow_no_indices?: boolean
   allow_partial_search_results?: boolean
