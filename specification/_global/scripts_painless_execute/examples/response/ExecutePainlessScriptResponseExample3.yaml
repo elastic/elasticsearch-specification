@@ -1,0 +1,8 @@
+summary: Score context
+description: A successful response from `POST /_scripts/painless/_execute` with a `score` context.
+# type: response
+# response_code: ''
+value: |-
+  {
+    "result": 0.8
+  }

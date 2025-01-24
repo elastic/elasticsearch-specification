@@ -168,6 +168,9 @@
             "$ref": "#/components/parameters/async_search.submit#wait_for_completion_timeout"
           },
           {
+            "$ref": "#/components/parameters/async_search.submit#keep_alive"
+          },
+          {
             "$ref": "#/components/parameters/async_search.submit#keep_on_completion"
           },
           {
@@ -316,6 +319,9 @@
           },
           {
             "$ref": "#/components/parameters/async_search.submit#wait_for_completion_timeout"
+          },
+          {
+            "$ref": "#/components/parameters/async_search.submit#keep_alive"
           },
           {
             "$ref": "#/components/parameters/async_search.submit#keep_on_completion"
@@ -15719,7 +15725,7 @@
           "script"
         ],
         "summary": "Run a script",
-        "description": "Runs a script and returns a result.",
+        "description": "Runs a script and returns a result.\nUse this API to build and test scripts, such as when defining a script for a runtime field.\nThis API requires very few dependencies and is especially useful if you don't have permissions to write documents on a cluster.\n\nThe API uses several _contexts_, which control how scripts are run, what variables are available at runtime, and what the return type is.\n\nEach context requires a script, but additional parameters depend on the context you're using for that script.",
         "operationId": "scripts-painless-execute",
         "requestBody": {
           "$ref": "#/components/requestBodies/scripts_painless_execute"
@@ -15736,7 +15742,7 @@
           "script"
         ],
         "summary": "Run a script",
-        "description": "Runs a script and returns a result.",
+        "description": "Runs a script and returns a result.\nUse this API to build and test scripts, such as when defining a script for a runtime field.\nThis API requires very few dependencies and is especially useful if you don't have permissions to write documents on a cluster.\n\nThe API uses several _contexts_, which control how scripts are run, what variables are available at runtime, and what the return type is.\n\nEach context requires a script, but additional parameters depend on the context you're using for that script.",
         "operationId": "scripts-painless-execute-1",
         "requestBody": {
           "$ref": "#/components/requestBodies/scripts_painless_execute"
@@ -35931,6 +35937,17 @@
           "rollover_alias": {
             "description": "The index alias to update when the index rolls over. Specify when using a policy that contains a rollover action.\nWhen the index rolls over, the alias is updated to reflect that the index is no longer the write index. For more\ninformation about rolling indices, see Rollover.",
             "type": "string"
+          },
+          "prefer_ilm": {
+            "description": "Preference for the system that manages a data stream backing index (preferring ILM when both ILM and DLM are\napplicable for an index).",
+            "oneOf": [
+              {
+                "type": "boolean"
+              },
+              {
+                "type": "string"
+              }
+            ]
           }
         }
       },
@@ -40966,6 +40983,9 @@
             "$ref": "#/components/schemas/_types.mapping:ConstantKeywordProperty"
           },
           {
+            "$ref": "#/components/schemas/_types.mapping:CountedKeywordProperty"
+          },
+          {
             "$ref": "#/components/schemas/_types.mapping:FieldAliasProperty"
           },
           {
@@ -42202,6 +42222,30 @@
                 "enum": [
                   "constant_keyword"
                 ]
+              }
+            },
+            "required": [
+              "type"
+            ]
+          }
+        ]
+      },
+      "_types.mapping:CountedKeywordProperty": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/_types.mapping:PropertyBase"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "type": {
+                "type": "string",
+                "enum": [
+                  "counted_keyword"
+                ]
+              },
+              "index": {
+                "type": "boolean"
               }
             },
             "required": [
@@ -54166,11 +54210,27 @@
       "_types:Password": {
         "type": "string"
       },
+      "_global.scripts_painless_execute:PainlessContext": {
+        "type": "string",
+        "enum": [
+          "painless_test",
+          "filter",
+          "score",
+          "boolean_field",
+          "date_field",
+          "double_field",
+          "geo_point_field",
+          "ip_field",
+          "keyword_field",
+          "long_field",
+          "composite_field"
+        ]
+      },
       "_global.scripts_painless_execute:PainlessContextSetup": {
         "type": "object",
         "properties": {
           "document": {
-            "description": "Document that’s temporarily indexed in-memory and accessible from the script.",
+            "description": "Document that's temporarily indexed in-memory and accessible from the script.",
             "type": "object"
           },
           "index": {
@@ -57906,6 +57966,16 @@
         "in": "query",
         "name": "wait_for_completion_timeout",
         "description": "Blocks and waits until the search is completed up to a certain timeout.\nWhen the async search completes within the timeout, the response won’t include the ID as the results are not stored in the cluster.",
+        "deprecated": false,
+        "schema": {
+          "$ref": "#/components/schemas/_types:Duration"
+        },
+        "style": "form"
+      },
+      "async_search.submit#keep_alive": {
+        "in": "query",
+        "name": "keep_alive",
+        "description": "Specifies how long the async search needs to be available.\nOngoing async searches and any saved search results are deleted after this period.",
         "deprecated": false,
         "schema": {
           "$ref": "#/components/schemas/_types:Duration"
@@ -64290,8 +64360,7 @@
               "type": "object",
               "properties": {
                 "context": {
-                  "description": "The context that the script should run in.",
-                  "type": "string"
+                  "$ref": "#/components/schemas/_global.scripts_painless_execute:PainlessContext"
                 },
                 "context_setup": {
                   "$ref": "#/components/schemas/_global.scripts_painless_execute:PainlessContextSetup"

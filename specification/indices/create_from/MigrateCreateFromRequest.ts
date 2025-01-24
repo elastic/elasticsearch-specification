@@ -23,8 +23,9 @@ import { IndexName } from '@_types/common'
 import { TypeMapping } from '@_types/mapping/TypeMapping'
 
 /**
- * This API creates a destination from a source index. It copies the mappings and settings from the source index while allowing request settings and mappings to override the source values.
+ * Create an index from a source index.
  *
+ * Copy the mappings and settings from the source index to a destination index while allowing request settings and mappings to override the source values.
  * @rest_spec_name indices.create_from
  * @availability stack since=8.18.0 stability=experimental
  * @availability serverless stability=experimental visibility=private
