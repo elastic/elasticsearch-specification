@@ -61753,8 +61753,18 @@
           "dimension_fields": {
             "$ref": "#/components/schemas/indices._types:MappingLimitSettingsDimensionFields"
           },
+          "source": {
+            "$ref": "#/components/schemas/indices._types:MappingLimitSettingsSourceFields"
+          },
           "ignore_malformed": {
-            "type": "boolean"
+            "oneOf": [
+              {
+                "type": "boolean"
+              },
+              {
+                "type": "string"
+              }
+            ]
           }
         }
       },
@@ -61829,6 +61839,25 @@
             "type": "number"
           }
         }
+      },
+      "indices._types:MappingLimitSettingsSourceFields": {
+        "type": "object",
+        "properties": {
+          "mode": {
+            "$ref": "#/components/schemas/indices._types:SourceMode"
+          }
+        },
+        "required": [
+          "mode"
+        ]
+      },
+      "indices._types:SourceMode": {
+        "type": "string",
+        "enum": [
+          "disabled",
+          "stored",
+          "synthetic"
+        ]
       },
       "indices._types:IndexingSlowlogSettings": {
         "type": "object",
@@ -63170,8 +63199,19 @@
             "additionalProperties": {
               "$ref": "#/components/schemas/_types.mapping:Property"
             }
+          },
+          "synthetic_source_keep": {
+            "$ref": "#/components/schemas/_types.mapping:SyntheticSourceKeepEnum"
           }
         }
+      },
+      "_types.mapping:SyntheticSourceKeepEnum": {
+        "type": "string",
+        "enum": [
+          "none",
+          "arrays",
+          "all"
+        ]
       },
       "_types.mapping:BooleanProperty": {
         "allOf": [
