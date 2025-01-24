@@ -426,7 +426,7 @@ export class MappingLimitSettings {
   nested_objects?: MappingLimitSettingsNestedObjects
   field_name_length?: MappingLimitSettingsFieldNameLength
   dimension_fields?: MappingLimitSettingsDimensionFields
-  'source.mode'?: SourceMode
+  source?: MappingLimitSettingsSourceFields
   ignore_malformed?: boolean | string
 }
 
@@ -492,6 +492,10 @@ export class MappingLimitSettingsDimensionFields {
    * Elastic will work to fix any issues, but features in technical preview are not subject to the support SLA of official GA features.
    */
   limit?: long
+}
+
+export class MappingLimitSettingsSourceFields {
+  mode: SourceMode
 }
 
 export enum SourceMode {

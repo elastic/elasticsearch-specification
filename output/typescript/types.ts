@@ -11363,7 +11363,7 @@ export interface IndicesMappingLimitSettings {
   nested_objects?: IndicesMappingLimitSettingsNestedObjects
   field_name_length?: IndicesMappingLimitSettingsFieldNameLength
   dimension_fields?: IndicesMappingLimitSettingsDimensionFields
-  'source.mode'?: IndicesSourceMode
+  source?: IndicesMappingLimitSettingsSourceFields
   ignore_malformed?: boolean | string
 }
 
@@ -11385,6 +11385,10 @@ export interface IndicesMappingLimitSettingsNestedFields {
 
 export interface IndicesMappingLimitSettingsNestedObjects {
   limit?: long
+}
+
+export interface IndicesMappingLimitSettingsSourceFields {
+  mode: IndicesSourceMode
 }
 
 export interface IndicesMappingLimitSettingsTotalFields {
