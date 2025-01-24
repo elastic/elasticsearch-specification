@@ -38,7 +38,12 @@
     },
     "async_search.submit": {
       "request": [
+<<<<<<< HEAD
         "Request: query parameter 'min_compatible_shard_node' does not exist in the json spec",
+||||||| parent of c3c2156ab (Add back keep_alive to async_search.submit (#3601))
+=======
+        "Request: query parameter 'keep_alive' does not exist in the json spec",
+>>>>>>> c3c2156ab (Add back keep_alive to async_search.submit (#3601))
         "interface definition _types:QueryVectorBuilder - Property text_embedding is a single-variant and must be required"
       ],
       "response": []
