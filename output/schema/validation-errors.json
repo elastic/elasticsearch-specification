@@ -38,6 +38,7 @@
     },
     "async_search.submit": {
       "request": [
+        "Request: query parameter 'keep_alive' does not exist in the json spec",
         "interface definition _types:QueryVectorBuilder - Property text_embedding is a single-variant and must be required"
       ],
       "response": []
