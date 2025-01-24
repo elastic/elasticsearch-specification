@@ -168,6 +168,9 @@
             "$ref": "#/components/parameters/async_search.submit#wait_for_completion_timeout"
           },
           {
+            "$ref": "#/components/parameters/async_search.submit#keep_alive"
+          },
+          {
             "$ref": "#/components/parameters/async_search.submit#keep_on_completion"
           },
           {
@@ -316,6 +319,9 @@
           },
           {
             "$ref": "#/components/parameters/async_search.submit#wait_for_completion_timeout"
+          },
+          {
+            "$ref": "#/components/parameters/async_search.submit#keep_alive"
           },
           {
             "$ref": "#/components/parameters/async_search.submit#keep_on_completion"
@@ -62951,6 +62957,9 @@
             "$ref": "#/components/schemas/_types.mapping:ConstantKeywordProperty"
           },
           {
+            "$ref": "#/components/schemas/_types.mapping:CountedKeywordProperty"
+          },
+          {
             "$ref": "#/components/schemas/_types.mapping:FieldAliasProperty"
           },
           {
@@ -64198,6 +64207,30 @@
                 "enum": [
                   "constant_keyword"
                 ]
+              }
+            },
+            "required": [
+              "type"
+            ]
+          }
+        ]
+      },
+      "_types.mapping:CountedKeywordProperty": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/_types.mapping:PropertyBase"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "type": {
+                "type": "string",
+                "enum": [
+                  "counted_keyword"
+                ]
+              },
+              "index": {
+                "type": "boolean"
               }
             },
             "required": [
@@ -97945,6 +97978,16 @@
         "in": "query",
         "name": "wait_for_completion_timeout",
         "description": "Blocks and waits until the search is completed up to a certain timeout.\nWhen the async search completes within the timeout, the response won’t include the ID as the results are not stored in the cluster.",
+        "deprecated": false,
+        "schema": {
+          "$ref": "#/components/schemas/_types:Duration"
+        },
+        "style": "form"
+      },
+      "async_search.submit#keep_alive": {
+        "in": "query",
+        "name": "keep_alive",
+        "description": "Specifies how long the async search needs to be available.\nOngoing async searches and any saved search results are deleted after this period.",
         "deprecated": false,
         "schema": {
           "$ref": "#/components/schemas/_types:Duration"
