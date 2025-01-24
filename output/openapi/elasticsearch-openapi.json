@@ -38461,7 +38461,7 @@
                     "$ref": "#/components/schemas/_global.search._types:SourceConfig"
                   },
                   "upsert": {
-                    "description": "If the document does not already exist, the contents of 'upsert' are inserted as a new document.\nIf the document exists, the 'script' is run.",
+                    "description": "Upserts are powerful operations that enable you to perform both update and insert actions in a single request.\nIf the document does not already exist, the contents of 'upsert' are inserted as a new document.\nIf the document exists, the script is run.",
                     "type": "object"
                   }
                 }

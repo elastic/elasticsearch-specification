@@ -5,12 +5,4 @@ description: >
   In this example, if the product with ID 1 exists, its price will be updated to 100.
   If the product does not exist, a new document with ID 1 and a price of 50 will be inserted.
 # type: request
-value:
-  {
-    "doc": {
-      "product_price": 100
-    },
-    "upsert": {
-      "product_price": 50
-    }
-  }
+value: { 'doc': { 'product_price': 100 }, 'upsert': { 'product_price': 50 } }
