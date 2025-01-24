@@ -57083,6 +57083,17 @@
           "rollover_alias": {
             "description": "The index alias to update when the index rolls over. Specify when using a policy that contains a rollover action.\nWhen the index rolls over, the alias is updated to reflect that the index is no longer the write index. For more\ninformation about rolling indices, see Rollover.",
             "type": "string"
+          },
+          "prefer_ilm": {
+            "description": "Preference for the system that manages a data stream backing index (preferring ILM when both ILM and DLM are\napplicable for an index).",
+            "oneOf": [
+              {
+                "type": "boolean"
+              },
+              {
+                "type": "string"
+              }
+            ]
           }
         }
       },

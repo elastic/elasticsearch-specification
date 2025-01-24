@@ -306,6 +306,12 @@ export class IndexSettingsLifecycle {
    * @server_default
    */
   rollover_alias?: string
+  /**
+   * Preference for the system that manages a data stream backing index (preferring ILM when both ILM and DLM are
+   * applicable for an index).
+   * @server_default true
+   */
+  prefer_ilm?: boolean | string
 }
 
 export class IndexSettingsLifecycleStep {
