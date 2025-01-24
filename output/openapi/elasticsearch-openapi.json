@@ -61654,8 +61654,8 @@
           "dimension_fields": {
             "$ref": "#/components/schemas/indices._types:MappingLimitSettingsDimensionFields"
           },
-          "source": {
-            "$ref": "#/components/schemas/indices._types:MappingLimitSettingsSourceFields"
+          "source.mode": {
+            "$ref": "#/components/schemas/indices._types:SourceMode"
           },
           "ignore_malformed": {
             "oneOf": [
@@ -61740,17 +61740,6 @@
             "type": "number"
           }
         }
-      },
-      "indices._types:MappingLimitSettingsSourceFields": {
-        "type": "object",
-        "properties": {
-          "mode": {
-            "$ref": "#/components/schemas/indices._types:SourceMode"
-          }
-        },
-        "required": [
-          "mode"
-        ]
       },
       "indices._types:SourceMode": {
         "type": "string",
