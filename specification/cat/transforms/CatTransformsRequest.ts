@@ -23,8 +23,9 @@ import { integer } from '@_types/Numeric'
 import { TimeUnit } from '@_types/Time'
 
 /**
- * Get transforms.
- * Returns configuration and usage information about transforms.
+ * Get transform information.
+ *
+ * Get configuration and usage information about transforms.
  *
  * CAT APIs are only intended for human consumption using the Kibana
  * console or command line. They are not intended for use by applications. For
@@ -37,6 +38,16 @@ import { TimeUnit } from '@_types/Time'
  * @cluster_privileges monitor_transform
  */
 export interface Request extends CatRequestBase {
+  urls: [
+    {
+      path: '/_cat/transforms'
+      methods: ['GET']
+    },
+    {
+      path: '/_cat/transforms/{transform_id}'
+      methods: ['GET']
+    }
+  ]
   path_parts: {
     /**
      * A transform identifier or a wildcard expression.

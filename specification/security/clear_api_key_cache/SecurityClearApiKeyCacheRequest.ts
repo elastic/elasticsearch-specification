@@ -29,8 +29,15 @@ import { Ids } from '@_types/common'
  * @availability stack since=7.10.0 stability=stable
  * @availability serverless stability=stable visibility=private
  * @cluster_privileges manage_security
+ * @doc_id security-api-clear-api-key-cache
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_security/api_key/{ids}/_clear_cache'
+      methods: ['POST']
+    }
+  ]
   path_parts: {
     /**
      * Comma-separated list of API key IDs to evict from the API key cache.

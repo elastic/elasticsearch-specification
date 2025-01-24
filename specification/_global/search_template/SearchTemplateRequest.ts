@@ -38,6 +38,16 @@ import { Duration } from '@_types/Time'
  * @ext_doc_id search-template
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_search/template'
+      methods: ['GET', 'POST']
+    },
+    {
+      path: '/{index}/_search/template'
+      methods: ['GET', 'POST']
+    }
+  ]
   path_parts: {
     /**
      * Comma-separated list of data streams, indices,

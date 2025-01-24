@@ -22,11 +22,19 @@ import { Name } from '@_types/common'
 import { Duration } from '@_types/Time'
 
 /**
+ * Check index templates.
+ * Check whether index templates exist.
  * @rest_spec_name indices.exists_index_template
  * @availability stack stability=stable
  * @availability serverless stability=stable visibility=public
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_index_template/{name}'
+      methods: ['HEAD']
+    }
+  ]
   path_parts: {
     /** Comma-separated list of index template names used to limit the request. Wildcard (*) expressions are supported. */
     name: Name

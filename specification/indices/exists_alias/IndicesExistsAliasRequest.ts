@@ -19,6 +19,7 @@
 
 import { RequestBase } from '@_types/Base'
 import { ExpandWildcards, Indices, Names } from '@_types/common'
+import { Duration } from '@_types/Time'
 
 /**
  * Check aliases.
@@ -28,6 +29,16 @@ import { ExpandWildcards, Indices, Names } from '@_types/common'
  * @availability serverless stability=stable visibility=public
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_alias/{name}'
+      methods: ['HEAD']
+    },
+    {
+      path: '/{index}/_alias/{name}'
+      methods: ['HEAD']
+    }
+  ]
   path_parts: {
     /**
      * Comma-separated list of aliases to check. Supports wildcards (`*`).
@@ -59,5 +70,11 @@ export interface Request extends RequestBase {
      * @server_default false
      */
     ignore_unavailable?: boolean
+    /**
+     * Period to wait for a connection to the master node.
+     * If no response is received before the timeout expires, the request fails and returns an error.
+     * @server_default 30s
+     */
+    master_timeout?: Duration
   }
 }

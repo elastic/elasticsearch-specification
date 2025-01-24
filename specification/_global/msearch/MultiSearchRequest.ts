@@ -47,6 +47,16 @@ import { RequestItem } from './types'
  * @doc_tag search
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_msearch'
+      methods: ['GET', 'POST']
+    },
+    {
+      path: '/{index}/_msearch'
+      methods: ['GET', 'POST']
+    }
+  ]
   path_parts: {
     /**
      * Comma-separated list of data streams, indices, and index aliases to search.

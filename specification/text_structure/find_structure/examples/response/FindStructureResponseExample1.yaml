@@ -1,0 +1,75 @@
+# summary:
+description: A successful response from `POST _text_structure/find_structure`.
+# type: response
+# response_code: ''
+value:
+  "{\n  \"num_lines_analyzed\" : 24,\n  \"num_messages_analyzed\" : 24,\n  \"\
+  sample_start\" : \"{\\\"name\\\": \\\"Leviathan Wakes\\\", \\\"author\\\": \\\"\
+  James S.A. Corey\\\", \\\"release_date\\\": \\\"2011-06-02\\\", \\\"page_count\\\
+  \": 561}\\n{\\\"name\\\": \\\"Hyperion\\\", \\\"author\\\": \\\"Dan Simmons\\\"\
+  , \\\"release_date\\\": \\\"1989-05-26\\\", \\\"page_count\\\": 482}\\n\",\n  \"\
+  charset\" : \"UTF-8\",\n  \"has_byte_order_marker\" : false,\n  \"format\" : \"\
+  ndjson\",\n  \"ecs_compatibility\" : \"disabled\",\n  \"timestamp_field\" : \"release_date\"\
+  ,\n  \"joda_timestamp_formats\" : [\n    \"ISO8601\"\n  ],\n  \"java_timestamp_formats\"\
+  \ : [\n    \"ISO8601\"\n  ],\n  \"need_client_timezone\" : true,\n  \"mappings\"\
+  \ : {\n    \"properties\" : {\n      \"@timestamp\" : {\n        \"type\" : \"date\"\
+  \n      },\n      \"author\" : {\n        \"type\" : \"keyword\"\n      },\n   \
+  \   \"name\" : {\n        \"type\" : \"keyword\"\n      },\n      \"page_count\"\
+  \ : {\n        \"type\" : \"long\"\n      },\n      \"release_date\" : {\n     \
+  \   \"type\" : \"date\",\n        \"format\" : \"iso8601\"\n      }\n    }\n  },\n\
+  \  \"ingest_pipeline\" : {\n    \"description\" : \"Ingest pipeline created by text\
+  \ structure finder\",\n    \"processors\" : [\n      {\n        \"date\" : {\n \
+  \         \"field\" : \"release_date\",\n          \"timezone\" : \"{{ event.timezone\
+  \ }}\",\n          \"formats\" : [\n            \"ISO8601\"\n          ]\n     \
+  \   }\n      }\n    ]\n  },\n  \"field_stats\" : {\n    \"author\" : {\n      \"\
+  count\" : 24,\n      \"cardinality\" : 20,\n      \"top_hits\" : [\n        {\n\
+  \          \"value\" : \"Frank Herbert\",\n          \"count\" : 4\n        },\n\
+  \        {\n          \"value\" : \"Robert A. Heinlein\",\n          \"count\" :\
+  \ 2\n        },\n        {\n          \"value\" : \"Alastair Reynolds\",\n     \
+  \     \"count\" : 1\n        },\n        {\n          \"value\" : \"Aldous Huxley\"\
+  ,\n          \"count\" : 1\n        },\n        {\n          \"value\" : \"Dan Simmons\"\
+  ,\n          \"count\" : 1\n        },\n        {\n          \"value\" : \"Douglas\
+  \ Adams\",\n          \"count\" : 1\n        },\n        {\n          \"value\"\
+  \ : \"George Orwell\",\n          \"count\" : 1\n        },\n        {\n       \
+  \   \"value\" : \"Iain M. Banks\",\n          \"count\" : 1\n        },\n      \
+  \  {\n          \"value\" : \"Isaac Asimov\",\n          \"count\" : 1\n       \
+  \ },\n        {\n          \"value\" : \"James S.A. Corey\",\n          \"count\"\
+  \ : 1\n        }\n      ]\n    },\n    \"name\" : {\n      \"count\" : 24,\n   \
+  \   \"cardinality\" : 24,\n      \"top_hits\" : [\n        {\n          \"value\"\
+  \ : \"1984\",\n          \"count\" : 1\n        },\n        {\n          \"value\"\
+  \ : \"A Fire Upon the Deep\",\n          \"count\" : 1\n        },\n        {\n\
+  \          \"value\" : \"Brave New World\",\n          \"count\" : 1\n        },\n\
+  \        {\n          \"value\" : \"Children of Dune\",\n          \"count\" : 1\n\
+  \        },\n        {\n          \"value\" : \"Consider Phlebas\",\n          \"\
+  count\" : 1\n        },\n        {\n          \"value\" : \"Dune\",\n          \"\
+  count\" : 1\n        },\n        {\n          \"value\" : \"Dune Messiah\",\n  \
+  \        \"count\" : 1\n        },\n        {\n          \"value\" : \"Ender's Game\"\
+  ,\n          \"count\" : 1\n        },\n        {\n          \"value\" : \"Fahrenheit\
+  \ 451\",\n          \"count\" : 1\n        },\n        {\n          \"value\" :\
+  \ \"Foundation\",\n          \"count\" : 1\n        }\n      ]\n    },\n    \"page_count\"\
+  \ : {\n      \"count\" : 24,\n      \"cardinality\" : 24,\n      \"min_value\" :\
+  \ 180,\n      \"max_value\" : 768,\n      \"mean_value\" : 387.0833333333333,\n\
+  \      \"median_value\" : 329.5,\n      \"top_hits\" : [\n        {\n          \"\
+  value\" : 180,\n          \"count\" : 1\n        },\n        {\n          \"value\"\
+  \ : 208,\n          \"count\" : 1\n        },\n        {\n          \"value\" :\
+  \ 224,\n          \"count\" : 1\n        },\n        {\n          \"value\" : 227,\n\
+  \          \"count\" : 1\n        },\n        {\n          \"value\" : 268,\n  \
+  \        \"count\" : 1\n        },\n        {\n          \"value\" : 271,\n    \
+  \      \"count\" : 1\n        },\n        {\n          \"value\" : 275,\n      \
+  \    \"count\" : 1\n        },\n        {\n          \"value\" : 288,\n        \
+  \  \"count\" : 1\n        },\n        {\n          \"value\" : 304,\n          \"\
+  count\" : 1\n        },\n        {\n          \"value\" : 311,\n          \"count\"\
+  \ : 1\n        }\n      ]\n    },\n    \"release_date\" : {\n      \"count\" : 24,\n\
+  \      \"cardinality\" : 20,\n      \"earliest\" : \"1932-06-01\",\n      \"latest\"\
+  \ : \"2011-06-02\",\n      \"top_hits\" : [\n        {\n          \"value\" : \"\
+  1985-06-01\",\n          \"count\" : 3\n        },\n        {\n          \"value\"\
+  \ : \"1969-06-01\",\n          \"count\" : 2\n        },\n        {\n          \"\
+  value\" : \"1992-06-01\",\n          \"count\" : 2\n        },\n        {\n    \
+  \      \"value\" : \"1932-06-01\",\n          \"count\" : 1\n        },\n      \
+  \  {\n          \"value\" : \"1951-06-01\",\n          \"count\" : 1\n        },\n\
+  \        {\n          \"value\" : \"1953-10-15\",\n          \"count\" : 1\n   \
+  \     },\n        {\n          \"value\" : \"1959-12-01\",\n          \"count\"\
+  \ : 1\n        },\n        {\n          \"value\" : \"1965-06-01\",\n          \"\
+  count\" : 1\n        },\n        {\n          \"value\" : \"1966-04-01\",\n    \
+  \      \"count\" : 1\n        },\n        {\n          \"value\" : \"1969-10-15\"\
+  ,\n          \"count\" : 1\n        }\n      ]\n    }\n  }\n}"

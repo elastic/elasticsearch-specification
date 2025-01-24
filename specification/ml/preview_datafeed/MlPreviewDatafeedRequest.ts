@@ -41,6 +41,16 @@ import { DateTime } from '@_types/Time'
  * @doc_tag ml anomaly
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_ml/datafeeds/{datafeed_id}/_preview'
+      methods: ['GET', 'POST']
+    },
+    {
+      path: '/_ml/datafeeds/_preview'
+      methods: ['GET', 'POST']
+    }
+  ]
   path_parts: {
     /**
      * A numerical character string that uniquely identifies the datafeed. This identifier can contain lowercase

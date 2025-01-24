@@ -305,7 +305,7 @@ If you are using MacOS, run the following command to fix the issue:
 brew install coreutils
 ```
 
-### I need to modify che compiler, help!
+### I need to modify the compiler, help!
 
 Take a look at the [compiler documentation](./docs/compiler.md).
 

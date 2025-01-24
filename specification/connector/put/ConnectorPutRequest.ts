@@ -27,6 +27,16 @@ import { Id, IndexName } from '@_types/common'
  * @doc_id connector-put
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_connector/{connector_id}'
+      methods: ['PUT']
+    },
+    {
+      path: '/_connector'
+      methods: ['PUT']
+    }
+  ]
   path_parts: {
     /**
      * The unique identifier of the connector to be created or updated. ID is auto-generated if not provided.

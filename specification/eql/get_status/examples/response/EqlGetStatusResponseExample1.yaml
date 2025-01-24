@@ -1,0 +1,12 @@
+# summary:
+description: A successful response for getting status information for an async EQL search.
+# type: response
+# response_code: 200
+value: >-
+  {
+    "id": "FmNJRUZ1YWZCU3dHY1BIOUhaenVSRkEaaXFlZ3h4c1RTWFNocDdnY2FSaERnUTozNDE=",
+    "is_running" : true,
+    "is_partial" : true,
+    "start_time_in_millis" : 1611690235000,
+    "expiration_time_in_millis" : 1611690295000
+  }

@@ -31,6 +31,16 @@ import { integer } from '@_types/Numeric'
  * @doc_tag ml anomaly
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_ml/filters'
+      methods: ['GET']
+    },
+    {
+      path: '/_ml/filters/{filter_id}'
+      methods: ['GET']
+    }
+  ]
   path_parts: {
     /**
      * A string that uniquely identifies a filter.

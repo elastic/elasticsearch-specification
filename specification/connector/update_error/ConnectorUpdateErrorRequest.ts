@@ -32,6 +32,12 @@ import { Id } from '@_types/common'
  * @doc_id connector-update-error
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_connector/{connector_id}/_error'
+      methods: ['PUT']
+    }
+  ]
   path_parts: {
     /**
      * The unique identifier of the connector to be updated

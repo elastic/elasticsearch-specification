@@ -19,6 +19,7 @@
 
 import { RequestBase } from '@_types/Base'
 import { Id } from '@_types/common'
+import { Duration } from '@_types/Time'
 
 /**
  * Reset a transform.
@@ -31,6 +32,12 @@ import { Id } from '@_types/common'
  * @cluster_privileges manage_transform
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_transform/{transform_id}/_reset'
+      methods: ['POST']
+    }
+  ]
   path_parts: {
     /**
      * Identifier for the transform. This identifier can contain lowercase alphanumeric characters (a-z and 0-9),
@@ -45,5 +52,10 @@ export interface Request extends RequestBase {
      * @server_default false
      */
     force?: boolean
+    /**
+     * Period to wait for a response. If no response is received before the timeout expires, the request fails and returns an error.
+     * @server_default 30s
+     */
+    timeout?: Duration
   }
 }

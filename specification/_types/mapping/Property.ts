@@ -38,7 +38,8 @@ import {
   AggregateMetricDoubleProperty,
   FlattenedProperty,
   NestedProperty,
-  ObjectProperty
+  ObjectProperty,
+  PassthroughObjectProperty
 } from './complex'
 import {
   BinaryProperty,
@@ -73,6 +74,7 @@ import { DynamicMapping } from './dynamic-template'
 import {
   CompletionProperty,
   ConstantKeywordProperty,
+  CountedKeywordProperty,
   FieldAliasProperty,
   HistogramProperty,
   IcuCollationProperty,
@@ -123,12 +125,14 @@ export type Property =
   | FlattenedProperty
   | NestedProperty
   | ObjectProperty
+  | PassthroughObjectProperty
   | SemanticTextProperty
   | SparseVectorProperty
 
   // structured
   | CompletionProperty
   | ConstantKeywordProperty
+  | CountedKeywordProperty
   | FieldAliasProperty
   | HistogramProperty
   | IpProperty
@@ -178,6 +182,7 @@ export enum FieldType {
   completion,
   nested,
   object,
+  passthrough,
   version,
   murmur3,
   token_count,
@@ -204,6 +209,7 @@ export enum FieldType {
   shape,
   histogram,
   constant_keyword,
+  counted_keyword,
   aggregate_metric_double,
   dense_vector,
   semantic_text,

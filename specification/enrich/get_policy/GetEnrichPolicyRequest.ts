@@ -19,6 +19,7 @@
 
 import { RequestBase } from '@_types/Base'
 import { Names } from '@_types/common'
+import { Duration } from '@_types/Time'
 
 /**
  * Get an enrich policy.
@@ -28,11 +29,28 @@ import { Names } from '@_types/common'
  * @availability serverless stability=stable visibility=public
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_enrich/policy/{name}'
+      methods: ['GET']
+    },
+    {
+      path: '/_enrich/policy'
+      methods: ['GET']
+    }
+  ]
   path_parts: {
     /**
      * Comma-separated list of enrich policy names used to limit the request.
      * To return information for all enrich policies, omit this parameter.
      */
     name?: Names
+  }
+  query_parameters: {
+    /**
+     * Period to wait for a connection to the master node.
+     * @server_default 30s
+     */
+    master_timeout?: Duration
   }
 }

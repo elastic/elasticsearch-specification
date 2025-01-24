@@ -24,8 +24,15 @@ import { Name } from '@_types/common'
  * @rest_spec_name search_application.get
  * @availability stack since=8.8.0 stability=beta
  * @availability serverless stability=beta visibility=public
+ * @cluster_privileges manage_search_application
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_application/search_application/{name}'
+      methods: ['GET']
+    }
+  ]
   path_parts: {
     /**
      * The name of the search application

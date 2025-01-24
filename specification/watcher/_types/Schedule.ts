@@ -81,6 +81,7 @@ export enum Month {
  * @variants container
  */
 export class ScheduleContainer {
+  timezone?: string
   cron?: CronExpression
   daily?: DailySchedule
   hourly?: HourlySchedule

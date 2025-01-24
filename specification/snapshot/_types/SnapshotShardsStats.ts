@@ -20,10 +20,28 @@
 import { long } from '@_types/Numeric'
 
 export class ShardsStats {
+  /**
+   * The number of shards that initialized, started, and finalized successfully.
+   */
   done: long
+  /**
+   * The number of shards that failed to be included in the snapshot.
+   */
   failed: long
+  /**
+   * The number of shards that are finalizing but are not done.
+   */
   finalizing: long
+  /**
+   * The number of shards that are still initializing.
+   */
   initializing: long
+  /**
+   * The number of shards that have started but are not finalized.
+   */
   started: long
+  /**
+   * The total number of shards included in the snapshot.
+   */
   total: long
 }

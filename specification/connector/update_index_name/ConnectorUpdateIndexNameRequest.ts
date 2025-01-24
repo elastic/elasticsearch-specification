@@ -30,6 +30,12 @@ import { Id, IndexName } from '@_types/common'
  * @doc_id connector-update-index-name
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_connector/{connector_id}/_index_name'
+      methods: ['PUT']
+    }
+  ]
   path_parts: {
     /**
      * The unique identifier of the connector to be updated

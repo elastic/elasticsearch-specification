@@ -39,11 +39,21 @@ export class SnapshotLifecycle {
   in_progress?: InProgress
   last_failure?: Invocation
   last_success?: Invocation
+  /**
+   * The last time the policy was modified.
+   */
   modified_date?: DateTime
   modified_date_millis: EpochTime<UnitMillis>
+  /**
+   * The next time the policy will run.
+   */
   next_execution?: DateTime
   next_execution_millis: EpochTime<UnitMillis>
   policy: Policy
+  /**
+   * The version of the snapshot policy.
+   * Only the latest version is stored and incremented when the policy is updated.
+   */
   version: VersionNumber
   stats: Statistics
 }

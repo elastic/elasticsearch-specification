@@ -30,6 +30,12 @@ import { Id } from '@_types/common'
  * @doc_tag ml anomaly
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_ml/datafeeds/{datafeed_id}'
+      methods: ['DELETE']
+    }
+  ]
   path_parts: {
     /**
      * A numerical character string that uniquely identifies the datafeed. This

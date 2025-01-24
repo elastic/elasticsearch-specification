@@ -24,11 +24,20 @@ import { integer, long } from '@_types/Numeric'
 import { Duration } from '@_types/Time'
 
 /**
+ * Create a follower.
+ * Create a cross-cluster replication follower index that follows a specific leader index.
+ * When the API returns, the follower index exists and cross-cluster replication starts replicating operations from the leader index to the follower index.
  * @rest_spec_name ccr.follow
  * @availability stack since=6.5.0 stability=stable
  * @doc_id ccr-put-follow
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/{index}/_ccr/follow'
+      methods: ['PUT']
+    }
+  ]
   path_parts: {
     /**
      * The name of the follower index.
@@ -36,6 +45,11 @@ export interface Request extends RequestBase {
     index: IndexName
   }
   query_parameters: {
+    /**
+     * Period to wait for a connection to the master node.
+     * @server_default 30s
+     */
+    master_timeout?: Duration
     /**
      * Specifies the number of shards to wait on being active before responding. This defaults to waiting on none of the shards to be
      * active.

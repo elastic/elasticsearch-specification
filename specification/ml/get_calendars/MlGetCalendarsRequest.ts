@@ -31,6 +31,16 @@ import { integer } from '@_types/Numeric'
  * @doc_tag ml anomaly
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_ml/calendars'
+      methods: ['GET', 'POST']
+    },
+    {
+      path: '/_ml/calendars/{calendar_id}'
+      methods: ['GET', 'POST']
+    }
+  ]
   path_parts: {
     /** A string that uniquely identifies a calendar. You can get information for multiple calendars by using a comma-separated list of ids or a wildcard expression. You can get information for all calendars by using `_all` or `*` or by omitting the calendar identifier.*/
     calendar_id?: Id

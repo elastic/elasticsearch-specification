@@ -19,9 +19,12 @@
 
 import { CatRequestBase } from '@cat/_types/CatBase'
 import { Bytes, Indices } from '@_types/common'
+import { TimeUnit } from '@_types/Time'
 
 /**
- * Returns information about ongoing and completed shard recoveries.
+ * Get shard recovery information.
+ *
+ * Get information about ongoing and completed shard recoveries.
  * Shard recovery is the process of initializing a shard copy, such as restoring a primary shard from a snapshot or syncing a replica shard from a primary shard. When a shard recovery completes, the recovered shard is available for search and indexing.
  * For data streams, the API returns information about the stream’s backing indices.
  * IMPORTANT: cat APIs are only intended for human consumption using the command line or Kibana console. They are not intended for use by applications. For application consumption, use the index recovery API.
@@ -33,6 +36,16 @@ import { Bytes, Indices } from '@_types/common'
  * @index_privileges monitor
  */
 export interface Request extends CatRequestBase {
+  urls: [
+    {
+      path: '/_cat/recovery'
+      methods: ['GET']
+    },
+    {
+      path: '/_cat/recovery/{index}'
+      methods: ['GET']
+    }
+  ]
   path_parts: {
     /**
      * A comma-separated list of data streams, indices, and aliases used to limit the request.
@@ -55,5 +68,9 @@ export interface Request extends CatRequestBase {
      * @server_default false
      */
     detailed?: boolean
+    /**
+     * Unit used to display time values.
+     */
+    time?: TimeUnit
   }
 }

@@ -24,11 +24,34 @@ import { ExpandWildcards, Indices } from '@_types/common'
  * Refresh an index.
  * A refresh makes recent operations performed on one or more indices available for search.
  * For data streams, the API runs the refresh operation on the stream’s backing indices.
+ *
+ * By default, Elasticsearch periodically refreshes indices every second, but only on indices that have received one search request or more in the last 30 seconds.
+ * You can change this default interval with the `index.refresh_interval` setting.
+ *
+ * Refresh requests are synchronous and do not return a response until the refresh operation completes.
+ *
+ * Refreshes are resource-intensive.
+ * To ensure good cluster performance, it's recommended to wait for Elasticsearch's periodic refresh rather than performing an explicit refresh when possible.
+ *
+ * If your application workflow indexes documents and then runs a search to retrieve the indexed document, it's recommended to use the index API's `refresh=wait_for` query parameter option.
+ * This option ensures the indexing operation waits for a periodic refresh before running the search.
  * @rest_spec_name indices.refresh
  * @availability stack stability=stable
  * @availability serverless stability=stable visibility=public
+ * @doc_id indices-refresh
+ * @index_privileges maintenance
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_refresh'
+      methods: ['POST', 'GET']
+    },
+    {
+      path: '/{index}/_refresh'
+      methods: ['POST', 'GET']
+    }
+  ]
   path_parts: {
     /**
      * Comma-separated list of data streams, indices, and aliases used to limit the request.

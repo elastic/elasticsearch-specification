@@ -19,14 +19,31 @@
 
 import { RequestBase } from '@_types/Base'
 import { Name } from '@_types/common'
+import { Duration } from '@_types/Time'
 
 /**
+ * Delete auto-follow patterns.
+ * Delete a collection of cross-cluster replication auto-follow patterns.
  * @rest_spec_name ccr.delete_auto_follow_pattern
  * @availability stack since=6.5.0 stability=stable
  * @doc_id ccr-delete-auto-follow-pattern
+ * @ext_doc_id ccr-auto-follow
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_ccr/auto_follow/{name}'
+      methods: ['DELETE']
+    }
+  ]
   path_parts: {
     name: Name
+  }
+  query_parameters: {
+    /**
+     * Period to wait for a connection to the master node.
+     * @server_default 30s
+     */
+    master_timeout?: Duration
   }
 }

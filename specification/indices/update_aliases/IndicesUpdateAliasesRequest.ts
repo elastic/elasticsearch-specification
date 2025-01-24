@@ -29,6 +29,12 @@ import { Action } from './types'
  * @availability serverless stability=stable visibility=public
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_aliases'
+      methods: ['POST']
+    }
+  ]
   query_parameters: {
     /**
      * Period to wait for a connection to the master node.

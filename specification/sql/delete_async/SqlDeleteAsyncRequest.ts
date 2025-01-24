@@ -21,14 +21,30 @@ import { RequestBase } from '@_types/Base'
 import { Id } from '@_types/common'
 
 /**
+ * Delete an async SQL search.
+ * Delete an async SQL search or a stored synchronous SQL search.
+ * If the search is still running, the API cancels it.
+ *
+ * If the Elasticsearch security features are enabled, only the following users can use this API to delete a search:
+ *
+ * * Users with the `cancel_task` cluster privilege.
+ * * The user who first submitted the search.
  * @rest_spec_name sql.delete_async
  * @availability stack since=7.15.0 stability=stable
  * @availability serverless stability=stable visibility=public
+ * @cluster_privileges cancel_task
+ * @doc_id sql-delete-async-api
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_sql/async/delete/{id}'
+      methods: ['DELETE']
+    }
+  ]
   path_parts: {
     /**
-     * Identifier for the search.
+     * The identifier for the search.
      */
     id: Id
   }

@@ -44,6 +44,12 @@ import { Duration } from '@_types/Time'
  * @index_privileges read, index, view_index_metadata
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_transform/{transform_id}/_update'
+      methods: ['POST']
+    }
+  ]
   path_parts: {
     /**
      * Identifier for the transform.

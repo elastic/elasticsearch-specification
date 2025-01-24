@@ -22,13 +22,20 @@ import { Id } from '@_types/common'
 import { Duration } from '@_types/Time'
 
 /**
- * Returns the current status and available results for an async EQL search or a stored synchronous EQL search.
+ * Get async EQL search results.
+ * Get the current status and available results for an async EQL search or a stored synchronous EQL search.
  * @doc_id eql-async-search-api
  * @rest_spec_name eql.get
  * @availability stack since=7.9.0 stability=stable
  * @availability serverless stability=stable visibility=public
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_eql/search/{id}'
+      methods: ['GET']
+    }
+  ]
   path_parts: {
     /**
      * Identifier for the search.

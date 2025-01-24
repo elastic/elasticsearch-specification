@@ -29,15 +29,26 @@ import { long } from '@_types/Numeric'
 import { Checkpoint } from '../_types/Checkpoints'
 
 /**
- * Executes several [fleet searches](https://www.elastic.co/guide/en/elasticsearch/reference/current/fleet-search.html) with a single API request.
- * The API follows the same structure as the [multi search](https://www.elastic.co/guide/en/elasticsearch/reference/current/search-multi-search.html) API. However, similar to the fleet search API, it
- * supports the wait_for_checkpoints parameter.
+ * Run multiple Fleet searches.
+ * Run several Fleet searches with a single API request.
+ * The API follows the same structure as the multi search API.
+ * However, similar to the Fleet search API, it supports the `wait_for_checkpoints` parameter.
  * @rest_spec_name fleet.msearch
  * @availability stack since=7.16.0 stability=experimental
  * @availability serverless stability=experimental visibility=private
  * @index_privileges read
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_fleet/_fleet_msearch'
+      methods: ['GET', 'POST']
+    },
+    {
+      path: '/{index}/_fleet/_fleet_msearch'
+      methods: ['GET', 'POST']
+    }
+  ]
   path_parts: {
     /**
      * A single target to search. If the target is an index alias, it must resolve to a single index.

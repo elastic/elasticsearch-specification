@@ -1,0 +1,10 @@
+summary: Default columns
+description: >
+  A successful response from `GET /_cat/nodeattrs?v=true`.
+  The `node`, `host`, and `ip` columns provide basic information about each node.
+  The `attr` and `value` columns return custom node attributes, one per line.
+# type: response
+# response_code: 200
+value: |-
+  node    host      ip        attr     value
+  node-0 127.0.0.1 127.0.0.1 testattr test

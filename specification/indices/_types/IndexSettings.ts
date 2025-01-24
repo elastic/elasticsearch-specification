@@ -306,6 +306,12 @@ export class IndexSettingsLifecycle {
    * @server_default
    */
   rollover_alias?: string
+  /**
+   * Preference for the system that manages a data stream backing index (preferring ILM when both ILM and DLM are
+   * applicable for an index).
+   * @server_default true
+   */
+  prefer_ilm?: boolean | string
 }
 
 export class IndexSettingsLifecycleStep {
@@ -430,7 +436,7 @@ export class MappingLimitSettingsTotalFields {
    * degradations and memory issues, especially in clusters with a high load or few resources.
    * @server_default 1000
    */
-  limit?: long
+  limit?: long | string
   /**
    * This setting determines what happens when a dynamically mapped field would exceed the total fields limit. When set
    * to false (the default), the index request of the document that tries to add a dynamic field to the mapping will fail
@@ -439,7 +445,7 @@ export class MappingLimitSettingsTotalFields {
    * The fields that were not added to the mapping will be added to the _ignored field.
    * @server_default false
    */
-  ignore_dynamic_beyond_limit?: boolean
+  ignore_dynamic_beyond_limit?: boolean | string
 }
 
 export class MappingLimitSettingsDepth {

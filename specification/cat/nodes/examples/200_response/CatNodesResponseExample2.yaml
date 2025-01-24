@@ -1,0 +1,9 @@
+summary: Explicit columns
+description: >
+  A successful response from `GET /_cat/nodes?v=true&h=id,ip,port,v,m`.
+  It returns the `id`, `ip`, `port`, `v` (version), and `m` (master) columns.
+# type: response
+# response_code:
+value: |-
+  id   ip        port  v         m
+  veJR 127.0.0.1 59938 8.17.0 *

@@ -30,6 +30,12 @@ import { integer } from '@_types/Numeric'
  * @doc_id connector-list
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_connector'
+      methods: ['GET']
+    }
+  ]
   query_parameters: {
     /**
      * Starting offset (default: 0)
@@ -51,6 +57,11 @@ export interface Request extends RequestBase {
      * A comma-separated list of connector service types to fetch connector documents for
      */
     service_type?: Names
+    /**
+     * A flag to indicate if the desired connector should be fetched, even if it was soft-deleted.
+     * @server_default false
+     */
+    include_deleted?: boolean
     /**
      * A wildcard query string that filters connectors with matching name, description or index name
      */

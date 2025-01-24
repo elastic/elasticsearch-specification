@@ -53,7 +53,7 @@ async function run () {
       per_page: 100
     })
     if (data.length > 0) {
-      files.push(...data.map(entry => entry.filename))
+      files.push(...data.filter(entry => entry.status !== 'deleted').map(entry => entry.filename))
       page += 1
     } else {
       break

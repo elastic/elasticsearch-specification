@@ -22,7 +22,7 @@ import { Metrics, NodeIds } from '@_types/common'
 import { Duration } from '@_types/Time'
 
 /**
- * Returns information on the usage of features.
+ * Get feature usage information.
  * @rest_spec_name nodes.usage
  * @availability stack since=6.0.0 stability=stable
  * @availability serverless stability=stable visibility=private
@@ -31,6 +31,24 @@ import { Duration } from '@_types/Time'
  * @doc_tag cluster
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_nodes/usage'
+      methods: ['GET']
+    },
+    {
+      path: '/_nodes/{node_id}/usage'
+      methods: ['GET']
+    },
+    {
+      path: '/_nodes/usage/{metric}'
+      methods: ['GET']
+    },
+    {
+      path: '/_nodes/{node_id}/usage/{metric}'
+      methods: ['GET']
+    }
+  ]
   path_parts: {
     node_id?: NodeIds
     /**

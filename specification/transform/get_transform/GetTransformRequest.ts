@@ -30,6 +30,16 @@ import { integer } from '@_types/Numeric'
  * @cluster_privileges monitor_transform
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_transform/{transform_id}'
+      methods: ['GET']
+    },
+    {
+      path: '/_transform'
+      methods: ['GET']
+    }
+  ]
   path_parts: {
     /**
      * Identifier for the transform. It can be a transform identifier or a

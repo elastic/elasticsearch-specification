@@ -34,6 +34,16 @@ import { Ids } from '@_types/common'
  * @doc_tag ml anomaly
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_ml/datafeeds/{datafeed_id}'
+      methods: ['GET']
+    },
+    {
+      path: '/_ml/datafeeds'
+      methods: ['GET']
+    }
+  ]
   path_parts: {
     /**
      * Identifier for the datafeed. It can be a datafeed identifier or a

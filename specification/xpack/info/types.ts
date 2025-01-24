@@ -55,7 +55,6 @@ export class Features {
    * @availability stack since=8.14.0
    */
   esql: Feature
-  frozen_indices: Feature
   graph: Feature
   ilm: Feature
   logstash: Feature

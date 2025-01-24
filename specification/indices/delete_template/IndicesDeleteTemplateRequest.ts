@@ -22,12 +22,19 @@ import { Name } from '@_types/common'
 import { Duration } from '@_types/Time'
 
 /**
- * Deletes a legacy index template.
+ * Delete a legacy index template.
  * @rest_spec_name indices.delete_template
  * @availability stack stability=stable
- * @cluster_privileges manage_index_templates,manage
+ * @cluster_privileges manage_index_templates
+ * @doc_id indices-delete-template-v1
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_template/{name}'
+      methods: ['DELETE']
+    }
+  ]
   path_parts: {
     /**
      * The name of the legacy index template to delete.

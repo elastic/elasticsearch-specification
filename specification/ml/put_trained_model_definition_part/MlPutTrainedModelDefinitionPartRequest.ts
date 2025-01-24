@@ -30,6 +30,12 @@ import { integer, long } from '@_types/Numeric'
  * @doc_tag ml trained model
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_ml/trained_models/{model_id}/definition/{part}'
+      methods: ['PUT']
+    }
+  ]
   path_parts: {
     /**
      * The unique identifier of the trained model.

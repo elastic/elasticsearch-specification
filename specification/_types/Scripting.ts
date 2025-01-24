@@ -46,7 +46,7 @@ export enum ScriptLanguage {
 
 export class StoredScript {
   /**
-   * Specifies the language the script is written in.
+   * The language the script is written in.
    */
   lang: ScriptLanguage
   options?: Dictionary<string, string>

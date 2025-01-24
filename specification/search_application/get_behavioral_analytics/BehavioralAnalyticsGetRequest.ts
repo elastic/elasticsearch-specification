@@ -27,6 +27,16 @@ import { Name } from '@_types/common'
  * @doc_tag analytics
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_application/analytics'
+      methods: ['GET']
+    },
+    {
+      path: '/_application/analytics/{name}'
+      methods: ['GET']
+    }
+  ]
   path_parts: {
     /**
      * A list of analytics collections to limit the returned information

@@ -31,6 +31,12 @@ import { IndexName } from '@_types/common'
  * @doc_id connector-post
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_connector'
+      methods: ['POST']
+    }
+  ]
   /**
    * The connector document to be created
    */

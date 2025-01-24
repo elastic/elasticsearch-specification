@@ -20,12 +20,22 @@ import { RequestBase } from '@_types/Base'
 import { Id } from '@_types/common'
 
 /**
- * Deletes a query ruleset.
+ * Delete a query ruleset.
+ * Remove a query ruleset and its associated data.
+ * This is a destructive action that is not recoverable.
  * @rest_spec_name query_rules.delete_ruleset
  * @availability stack since=8.10.0 stability=stable
  * @availability serverless stability=stable visibility=public
+ * @cluster_privileges manage_search_query_rules
+ * @doc_id query-ruleset-delete
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_query_rules/{ruleset_id}'
+      methods: ['DELETE']
+    }
+  ]
   path_parts: {
     /**
      * The unique identifier of the query ruleset to delete
