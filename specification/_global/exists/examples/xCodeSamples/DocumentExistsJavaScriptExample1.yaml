@@ -1,0 +1,8 @@
+lang: JavaScript
+# label:
+source: |
+  const response = await client.exists({
+    index: "my-index-000001",
+    id: 0,
+  });
+  console.log(response);
