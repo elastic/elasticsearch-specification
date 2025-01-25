@@ -151,6 +151,7 @@ docs-multi-termvectors,https://www.elastic.co/guide/en/elasticsearch/reference/{
 docs-reindex,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/docs-reindex.html
 docs-termvectors,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/docs-termvectors.html
 docs-update-by-query,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/docs-update-by-query.html
+docs-update-by-query-rethrottle,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/docs-update-by-query.html#docs-update-by-query-rethrottle
 docs-update,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/docs-update.html
 document-input-parameters,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/query-dsl-mlt-query.html#_document_input_parameters
 docvalue-fields,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/search-fields.html#docvalue-fields
