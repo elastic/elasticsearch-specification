@@ -34,6 +34,10 @@ export class ComponentTemplateNode {
   version?: VersionNumber
   /** @doc_id mapping-meta-field */
   _meta?: Metadata
+  /*
+   * @server_default false
+   */
+  deprecated?: boolean
 }
 
 export class ComponentTemplateSummary {
