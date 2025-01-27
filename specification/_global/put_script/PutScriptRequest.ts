@@ -62,7 +62,7 @@ export interface Request extends RequestBase {
      * To prevent errors, the API immediately compiles the script or template in this context.
      * If you specify both this and the `<context>` path parameter, the API uses the request path parameter.
      */
-    context?: string
+    context?: Name
     /**
      * The period to wait for a connection to the master node.
      * If no response is received before the timeout expires, the request fails and returns an error.

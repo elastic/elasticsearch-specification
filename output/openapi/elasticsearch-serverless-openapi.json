@@ -4509,7 +4509,7 @@
           {
             "in": "path",
             "name": "id",
-            "description": "Identifier for the stored script or search template.",
+            "description": "The identifier for the stored script or search template.",
             "required": true,
             "deprecated": false,
             "schema": {
@@ -4520,7 +4520,7 @@
           {
             "in": "query",
             "name": "master_timeout",
-            "description": "Specify timeout for connection to master",
+            "description": "The period to wait for the master node.\nIf the master node is not available before the timeout expires, the request fails and returns an error.\nIt can also be set to `-1` to indicate that the request should never timeout.",
             "deprecated": false,
             "schema": {
               "$ref": "#/components/schemas/_types:Duration"
@@ -4562,10 +4562,16 @@
         ],
         "summary": "Create or update a script or search template",
         "description": "Creates or updates a stored script or search template.",
+        "externalDocs": {
+          "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/search-template.html"
+        },
         "operationId": "put-script",
         "parameters": [
           {
             "$ref": "#/components/parameters/put_script#id"
+          },
+          {
+            "$ref": "#/components/parameters/put_script#context_"
           },
           {
             "$ref": "#/components/parameters/put_script#master_timeout"
@@ -4589,10 +4595,16 @@
         ],
         "summary": "Create or update a script or search template",
         "description": "Creates or updates a stored script or search template.",
+        "externalDocs": {
+          "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/search-template.html"
+        },
         "operationId": "put-script-1",
         "parameters": [
           {
             "$ref": "#/components/parameters/put_script#id"
+          },
+          {
+            "$ref": "#/components/parameters/put_script#context_"
           },
           {
             "$ref": "#/components/parameters/put_script#master_timeout"
@@ -4621,7 +4633,7 @@
           {
             "in": "path",
             "name": "id",
-            "description": "Identifier for the stored script or search template.",
+            "description": "The identifier for the stored script or search template.",
             "required": true,
             "deprecated": false,
             "schema": {
@@ -4632,7 +4644,7 @@
           {
             "in": "query",
             "name": "master_timeout",
-            "description": "Period to wait for a connection to the master node.\nIf no response is received before the timeout expires, the request fails and returns an error.",
+            "description": "The period to wait for a connection to the master node.\nIf no response is received before the timeout expires, the request fails and returns an error.\nIt can also be set to `-1` to indicate that the request should never timeout.",
             "deprecated": false,
             "schema": {
               "$ref": "#/components/schemas/_types:Duration"
@@ -4642,7 +4654,7 @@
           {
             "in": "query",
             "name": "timeout",
-            "description": "Period to wait for a response.\nIf no response is received before the timeout expires, the request fails and returns an error.",
+            "description": "The period to wait for a response.\nIf no response is received before the timeout expires, the request fails and returns an error.\nIt can also be set to `-1` to indicate that the request should never timeout.",
             "deprecated": false,
             "schema": {
               "$ref": "#/components/schemas/_types:Duration"
@@ -14785,6 +14797,9 @@
         ],
         "summary": "Create or update a script or search template",
         "description": "Creates or updates a stored script or search template.",
+        "externalDocs": {
+          "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/search-template.html"
+        },
         "operationId": "put-script-2",
         "parameters": [
           {
@@ -14792,6 +14807,9 @@
           },
           {
             "$ref": "#/components/parameters/put_script#context"
+          },
+          {
+            "$ref": "#/components/parameters/put_script#context_"
           },
           {
             "$ref": "#/components/parameters/put_script#master_timeout"
@@ -14815,6 +14833,9 @@
         ],
         "summary": "Create or update a script or search template",
         "description": "Creates or updates a stored script or search template.",
+        "externalDocs": {
+          "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/search-template.html"
+        },
         "operationId": "put-script-3",
         "parameters": [
           {
@@ -14822,6 +14843,9 @@
           },
           {
             "$ref": "#/components/parameters/put_script#context"
+          },
+          {
+            "$ref": "#/components/parameters/put_script#context_"
           },
           {
             "$ref": "#/components/parameters/put_script#master_timeout"
@@ -45099,7 +45123,7 @@
             }
           },
           "source": {
-            "description": "The script source.",
+            "description": "The script source.\nFor search templates, an object containing the search template.",
             "type": "string"
           }
         },
@@ -62056,7 +62080,7 @@
       "put_script#id": {
         "in": "path",
         "name": "id",
-        "description": "Identifier for the stored script or search template.\nMust be unique within the cluster.",
+        "description": "The identifier for the stored script or search template.\nIt must be unique within the cluster.",
         "required": true,
         "deprecated": false,
         "schema": {
@@ -62067,7 +62091,7 @@
       "put_script#context": {
         "in": "path",
         "name": "context",
-        "description": "Context in which the script or search template should run.\nTo prevent errors, the API immediately compiles the script or template in this context.",
+        "description": "The context in which the script or search template should run.\nTo prevent errors, the API immediately compiles the script or template in this context.",
         "required": true,
         "deprecated": false,
         "schema": {
@@ -62075,10 +62099,20 @@
         },
         "style": "simple"
       },
+      "put_script#context_": {
+        "in": "query",
+        "name": "context",
+        "description": "The context in which the script or search template should run.\nTo prevent errors, the API immediately compiles the script or template in this context.\nIf you specify both this and the `<context>` path parameter, the API uses the request path parameter.",
+        "deprecated": false,
+        "schema": {
+          "$ref": "#/components/schemas/_types:Name"
+        },
+        "style": "form"
+      },
       "put_script#master_timeout": {
         "in": "query",
         "name": "master_timeout",
-        "description": "Period to wait for a connection to the master node.\nIf no response is received before the timeout expires, the request fails and returns an error.",
+        "description": "The period to wait for a connection to the master node.\nIf no response is received before the timeout expires, the request fails and returns an error.\nIt can also be set to `-1` to indicate that the request should never timeout.",
         "deprecated": false,
         "schema": {
           "$ref": "#/components/schemas/_types:Duration"
@@ -62088,7 +62122,7 @@
       "put_script#timeout": {
         "in": "query",
         "name": "timeout",
-        "description": "Period to wait for a response.\nIf no response is received before the timeout expires, the request fails and returns an error.",
+        "description": "The period to wait for a response.\nIf no response is received before the timeout expires, the request fails and returns an error.\nIt can also be set to `-1` to indicate that the request should never timeout.",
         "deprecated": false,
         "schema": {
           "$ref": "#/components/schemas/_types:Duration"

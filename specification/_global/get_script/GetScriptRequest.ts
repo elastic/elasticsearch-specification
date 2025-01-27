@@ -48,7 +48,7 @@ export interface Request extends RequestBase {
      * The period to wait for the master node.
      * If the master node is not available before the timeout expires, the request fails and returns an error.
      * It can also be set to `-1` to indicate that the request should never timeout.
-     * @server_default 
+     * @server_default
      */
     master_timeout?: Duration
   }
