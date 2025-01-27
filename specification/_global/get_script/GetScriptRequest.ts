@@ -27,6 +27,7 @@ import { Duration } from '@_types/Time'
  * @rest_spec_name get_script
  * @availability stack stability=stable
  * @availability serverless stability=stable visibility=public
+ * @cluster_privileges manage
  * @doc_tag script
  */
 export interface Request extends RequestBase {
@@ -38,12 +39,17 @@ export interface Request extends RequestBase {
   ]
   path_parts: {
     /**
-     * Identifier for the stored script or search template.
+     * The identifier for the stored script or search template.
      */
     id: Id
   }
   query_parameters: {
-    /** Specify timeout for connection to master */
+    /**
+     * The period to wait for the master node.
+     * If the master node is not available before the timeout expires, the request fails and returns an error.
+     * It can also be set to `-1` to indicate that the request should never timeout.
+     * @server_default
+     */
     master_timeout?: Duration
   }
 }
