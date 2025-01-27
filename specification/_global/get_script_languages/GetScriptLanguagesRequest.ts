@@ -25,7 +25,9 @@ import { RequestBase } from '@_types/Base'
  * Get a list of available script types, languages, and contexts.
  * @rest_spec_name get_script_languages
  * @availability stack stability=stable
+ * @cluster_privileges manage
  * @doc_tag script
+ * @doc_id script-languages
  */
 export interface Request extends RequestBase {
   urls: [
