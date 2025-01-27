@@ -300,6 +300,7 @@ logstash-centralized-pipeline-management,https://www.elastic.co/guide/en/logstas
 logstash-configuration-file-structure,https://www.elastic.co/guide/en/logstash/{branch}/configuration-file-structure.html
 logstash-logstash-settings-file,https://www.elastic.co/guide/en/logstash/{branch}/logstash-settings-file.html
 lowercase-processor,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/lowercase-processor.html
+mapbox-vector-tile,https://github.com/mapbox/vector-tile-spec/blob/master/README.md
 mapping-date-format,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/mapping-date-format.html
 mapping-meta-field,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/mapping-meta-field.html
 mapping-params,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/mapping-params.html
@@ -504,6 +505,7 @@ script-delete,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/d
 script-languages,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/get-script-languages-api.html
 script-processor,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/script-processor.html
 script-put,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/create-stored-script-api.html
+scroll-api,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/scroll-api.html
 scroll-search-results,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/paginate-search-results.html#scroll-search-results
 search-after,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/paginate-search-results.html#search-after
 search-aggregations,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/search-aggregations.html
@@ -592,8 +594,9 @@ search-render-query,https://www.elastic.co/guide/en/elasticsearch/reference/{bra
 search-count,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/search-count.html
 search-explain,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/search-explain.html
 search-field-caps,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/search-field-caps.html
+search-knn,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/knn-search-api.html
 search-multi-search,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/search-multi-search.html
-search-multi-search,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/search-multi-search.html
+search-multi-search-template,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/multi-search-template.html
 search-rank-eval,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/search-rank-eval.html
 search-rank-eval,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/search-rank-eval.html
 search-request-body,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/search-request-body.html

@@ -36,6 +36,11 @@ import { Operation } from './types'
  * You can specify the index in the request body or request URI.
  * The response contains a `docs` array with all the fetched termvectors.
  * Each element has the structure provided by the termvectors API.
+ *
+ * **Artificial documents**
+ *
+ * You can also use `mtermvectors` to generate term vectors for artificial documents provided in the body of the request.
+ * The mapping used is determined by the specified `_index`.
  * @rest_spec_name mtermvectors
  * @availability stack stability=stable
  * @availability serverless stability=stable visibility=public

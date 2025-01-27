@@ -1,0 +1,36 @@
+summary: Get unmapped fields
+# type: "response"
+description: >
+  A successful response from `GET _field_caps?fields=rating,title&include_unmapped`.
+  The response contains an entry for each field that is present in some indices but not all.
+  For example, the `rating` and `title` fields are unmapped in `index5`.
+# response_code: 200,
+value: |-
+  {
+    "indices": [ "index1", "index2", "index3", "index4", "index5" ],
+    "fields": {
+      "rating": {                                   
+        "long": {
+          "metadata_field": false,
+          "searchable": true,
+          "aggregatable": false,
+          "indices": [ "index1", "index2" ],
+          "non_aggregatable_indices": [ "index1" ]  
+        },
+        "keyword": {
+          "metadata_field": false,
+          "searchable": false,
+          "aggregatable": true,
+          "indices": [ "index3", "index4" ],
+          "non_searchable_indices": [ "index4" ]    
+        }
+      },
+      "title": {                                    
+        "text": {
+          "metadata_field": false,
+          "searchable": true,
+          "aggregatable": false
+        }
+      }
+    }
+  }
