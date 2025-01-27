@@ -195,6 +195,8 @@ find-field-structure,https://www.elastic.co/guide/en/elasticsearch/reference/{br
 find-message-structure,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/find-message-structure.html
 find-structure,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/find-structure.html
 fingerprint-processor,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/fingerprint-processor.html
+fleet-multi-search,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/fleet-multi-search.html
+fleet-search,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/fleet-search.html
 foreach-processor,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/foreach-processor.html
 fuzziness,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/common-options.html#fuzziness
 gap-policy,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/search-aggregations-pipeline.html#gap-policy

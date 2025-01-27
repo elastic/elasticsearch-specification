@@ -26,7 +26,7 @@ import { Duration } from '@_types/Time'
  * @rest_spec_name ilm.get_lifecycle
  * @availability stack since=6.6.0 stability=stable
  * @cluster_privileges manage_ilm, read_ilm
- * @doc_id apis
+ * @doc_id ilm-get-lifecycle
  */
 export interface Request extends RequestBase {
   urls: [
