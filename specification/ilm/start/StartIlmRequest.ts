@@ -28,7 +28,7 @@ import { Duration } from '@_types/Time'
  * @rest_spec_name ilm.start
  * @availability stack since=6.6.0 stability=stable
  * @cluster_privileges manage_ilm
- * @doc_id apis
+ * @doc_id ilm-start
  */
 export interface Request extends RequestBase {
   urls: [

@@ -11280,13 +11280,13 @@
           "indices"
         ],
         "summary": "Add an index block",
-        "description": "Limits the operations allowed on an index by blocking specific operation types.",
+        "description": "Add an index block to an index.\nIndex blocks limit the operations allowed on an index by blocking specific operation types.",
         "operationId": "indices-add-block",
         "parameters": [
           {
             "in": "path",
             "name": "index",
-            "description": "A comma separated list of indices to add a block to",
+            "description": "A comma-separated list or wildcard expression of index names used to limit the request.\nBy default, you must explicitly name the indices you are adding blocks to.\nTo allow the adding of blocks to indices with `_all`, `*`, or other wildcard expressions, change the `action.destructive_requires_name` setting to `false`.\nYou can update this setting in the `elasticsearch.yml` file or by using the cluster update settings API.",
             "required": true,
             "deprecated": false,
             "schema": {
@@ -11297,7 +11297,7 @@
           {
             "in": "path",
             "name": "block",
-            "description": "The block to add (one of read, write, read_only or metadata)",
+            "description": "The block type to add to the index.",
             "required": true,
             "deprecated": false,
             "schema": {
@@ -11308,7 +11308,7 @@
           {
             "in": "query",
             "name": "allow_no_indices",
-            "description": "Whether to ignore if a wildcard indices expression resolves into no concrete indices. (This includes `_all` string or when no indices have been specified)",
+            "description": "If `false`, the request returns an error if any wildcard expression, index alias, or `_all` value targets only missing or closed indices.\nThis behavior applies even if the request targets other open indices.\nFor example, a request targeting `foo*,bar*` returns an error if an index starts with `foo` but no index starts with `bar`.",
             "deprecated": false,
             "schema": {
               "type": "boolean"
@@ -11318,7 +11318,7 @@
           {
             "in": "query",
             "name": "expand_wildcards",
-            "description": "Whether to expand wildcard expression to concrete indices that are open, closed or both.",
+            "description": "The type of index that wildcard patterns can match.\nIf the request can target data streams, this argument determines whether wildcard expressions match hidden data streams.\nIt supports comma-separated values, such as `open,hidden`.",
             "deprecated": false,
             "schema": {
               "$ref": "#/components/schemas/_types:ExpandWildcards"
@@ -11328,7 +11328,7 @@
           {
             "in": "query",
             "name": "ignore_unavailable",
-            "description": "Whether specified concrete indices should be ignored when unavailable (missing or closed)",
+            "description": "If `false`, the request returns an error if it targets a missing or closed index.",
             "deprecated": false,
             "schema": {
               "type": "boolean"
@@ -11338,7 +11338,7 @@
           {
             "in": "query",
             "name": "master_timeout",
-            "description": "Specify timeout for connection to master",
+            "description": "The period to wait for the master node.\nIf the master node is not available before the timeout expires, the request fails and returns an error.\nIt can also be set to `-1` to indicate that the request should never timeout.",
             "deprecated": false,
             "schema": {
               "$ref": "#/components/schemas/_types:Duration"
@@ -11348,7 +11348,7 @@
           {
             "in": "query",
             "name": "timeout",
-            "description": "Explicit operation timeout",
+            "description": "The period to wait for a response from all relevant nodes in the cluster after updating the cluster metadata.\nIf no response is received before the timeout expires, the cluster metadata update still applies but the response will indicate that it was not completely acknowledged.\nIt can also be set to `-1` to indicate that the request should never timeout.",
             "deprecated": false,
             "schema": {
               "$ref": "#/components/schemas/_types:Duration"
@@ -12209,7 +12209,7 @@
           "data stream"
         ],
         "summary": "Create a data stream",
-        "description": "Creates a data stream.\nYou must have a matching index template with data stream enabled.",
+        "description": "You must have a matching index template with data stream enabled.",
         "operationId": "indices-create-data-stream",
         "parameters": [
           {
@@ -12371,7 +12371,7 @@
           "data stream"
         ],
         "summary": "Get data stream stats",
-        "description": "Retrieves statistics for one or more data streams.",
+        "description": "Get statistics for one or more data streams.",
         "operationId": "indices-data-streams-stats",
         "parameters": [
           {
@@ -12392,7 +12392,7 @@
           "data stream"
         ],
         "summary": "Get data stream stats",
-        "description": "Retrieves statistics for one or more data streams.",
+        "description": "Get statistics for one or more data streams.",
         "operationId": "indices-data-streams-stats-1",
         "parameters": [
           {
@@ -12536,7 +12536,7 @@
           "indices"
         ],
         "summary": "Check aliases",
-        "description": "Checks if one or more data stream or index aliases exist.",
+        "description": "Check if one or more data stream or index aliases exist.",
         "operationId": "indices-exists-alias-1",
         "parameters": [
           {
@@ -13454,7 +13454,7 @@
           "indices"
         ],
         "summary": "Check aliases",
-        "description": "Checks if one or more data stream or index aliases exist.",
+        "description": "Check if one or more data stream or index aliases exist.",
         "operationId": "indices-exists-alias",
         "parameters": [
           {

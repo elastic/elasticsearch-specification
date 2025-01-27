@@ -22,13 +22,14 @@ import { ExpandWildcards, IndexName } from '@_types/common'
 
 /**
  * Get data stream stats.
- * Retrieves statistics for one or more data streams.
+ *
+ * Get statistics for one or more data streams.
  * @rest_spec_name indices.data_streams_stats
  * @availability stack since=7.9.0 stability=stable
  * @availability serverless stability=stable visibility=private
  * @index_privileges monitor
  * @doc_tag data stream
- * @doc_id apis
+ * @doc_id data-stream-stats-api
  */
 export interface Request extends RequestBase {
   urls: [

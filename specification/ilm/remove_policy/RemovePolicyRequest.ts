@@ -27,7 +27,7 @@ import { IndexName } from '@_types/common'
  * @rest_spec_name ilm.remove_policy
  * @availability stack since=6.6.0 stability=stable
  * @index_privileges manage_ilm
- * @doc_id apis
+ * @doc_id ilm-remove-policy
  */
 export interface Request extends RequestBase {
   urls: [

@@ -131,8 +131,11 @@ dangling-index-delete,https://www.elastic.co/guide/en/elasticsearch/reference/{b
 dangling-index-import,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/dangling-index-import.html
 dangling-indices-list,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/dangling-indices-list.html
 data-processor,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/date-processor.html
+data-stream-delete,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/indices-delete-data-stream.html
+data-stream-delete-lifecycle,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/data-streams-delete-lifecycle.html
 data-stream-lifecycle-stats,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/data-streams-get-lifecycle-stats.html
 data-stream-path-param,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/indices-create-data-stream.html#indices-create-data-stream-api-path-params
+data-stream-stats-api,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/data-stream-stats-api.html
 data-streams,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/data-streams.html
 date-index-name-processor,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/date-index-name-processor.html
 dcg,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/search-rank-eval.html#_discounted_cumulative_gain_dcg
@@ -240,6 +243,7 @@ ilm-retry-policy,https://www.elastic.co/guide/en/elasticsearch/reference/{branch
 ilm-start,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/ilm-start.html
 ilm-stop,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/ilm-stop.html
 important-settings,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/important-settings.html
+index-block-add,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/index-modules-blocks.html#add-index-block
 index-modules-blocks,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/index-modules-blocks.html
 index-modules-settings,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/index-modules.html#index-modules-settings
 index-modules-slowlog-slowlog,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/index-modules-slowlog.html#index-slow-log
