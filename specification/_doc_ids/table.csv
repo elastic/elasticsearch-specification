@@ -596,6 +596,7 @@ search-request-body,https://www.elastic.co/guide/en/elasticsearch/reference/{bra
 search-search,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/search-search.html
 search-shards,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/search-shards.html
 search-template,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/search-template.html
+search-template-api,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/search-template-api.html
 search-terms-enum,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/search-terms-enum.html
 search-validate,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/search-validate.html
 search-vector-tile-api,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/search-vector-tile-api.html
