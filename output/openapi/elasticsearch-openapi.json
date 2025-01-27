@@ -91224,19 +91224,33 @@
             "$ref": "#/components/schemas/_types:Id"
           },
           "bcc": {
-            "type": "array",
-            "items": {
-              "type": "string"
-            }
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              }
+            ]
           },
           "body": {
             "$ref": "#/components/schemas/watcher._types:EmailBody"
           },
           "cc": {
-            "type": "array",
-            "items": {
-              "type": "string"
-            }
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              }
+            ]
           },
           "from": {
             "type": "string"
@@ -91245,10 +91259,17 @@
             "$ref": "#/components/schemas/watcher._types:EmailPriority"
           },
           "reply_to": {
-            "type": "array",
-            "items": {
-              "type": "string"
-            }
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              }
+            ]
           },
           "sent_date": {
             "$ref": "#/components/schemas/_types:DateTime"
@@ -91257,10 +91278,17 @@
             "type": "string"
           },
           "to": {
-            "type": "array",
-            "items": {
-              "type": "string"
-            }
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              }
+            ]
           },
           "attachments": {
             "type": "object",
