@@ -28,6 +28,7 @@ import { ExpandWildcards, IndexName } from '@_types/common'
  * @availability serverless stability=stable visibility=private
  * @index_privileges monitor
  * @doc_tag data stream
+ * @doc_id apis
  */
 export interface Request extends RequestBase {
   urls: [

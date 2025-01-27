@@ -33,7 +33,7 @@ import { Duration } from '@_types/Time'
  * In order for a feature state to be listed in this API and recognized as a valid feature state by the create snapshot API, the plugin that defines that feature must be installed on the master node.
  * @rest_spec_name features.get_features
  * @availability stack since=7.12.0 stability=stable
- * @ext_doc_id snapshot-create
+ * @doc_id get-features-api
  */
 export interface Request extends RequestBase {
   urls: [

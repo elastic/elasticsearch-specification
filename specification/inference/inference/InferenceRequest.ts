@@ -28,6 +28,7 @@ import { Duration } from '@_types/Time'
  * @rest_spec_name inference.inference
  * @availability stack since=8.11.0 stability=stable visibility=public
  * @availability serverless stability=stable visibility=public
+ * @doc_id apis
  */
 export interface Request extends RequestBase {
   urls: [

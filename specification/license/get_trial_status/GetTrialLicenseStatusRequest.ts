@@ -24,6 +24,7 @@ import { RequestBase } from '@_types/Base'
  * @rest_spec_name license.get_trial_status
  * @availability stack since=6.1.0 stability=stable
  * @cluster_privileges monitor
+ * @doc_id apis
  */
 export interface Request extends RequestBase {
   urls: [

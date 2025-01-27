@@ -25,6 +25,7 @@ import { RequestBase } from '@_types/Base'
  * @rest_spec_name ilm.get_status
  * @availability stack since=6.6.0 stability=stable
  * @cluster_privileges read_ilm
+ * @doc_id apis
  */
 export interface Request extends RequestBase {
   urls: [

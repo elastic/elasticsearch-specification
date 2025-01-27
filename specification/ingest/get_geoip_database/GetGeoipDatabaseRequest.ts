@@ -26,6 +26,7 @@ import { Ids } from '@_types/common'
  * @rest_spec_name ingest.get_geoip_database
  * @availability stack since=8.15.0 stability=stable
  * @availability serverless visibility=private
+ * @doc_id apis
  */
 export interface Request extends RequestBase {
   urls: [

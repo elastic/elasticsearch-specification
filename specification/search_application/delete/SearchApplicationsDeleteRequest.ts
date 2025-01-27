@@ -27,6 +27,7 @@ import { Name } from '@_types/common'
  * @availability serverless stability=beta visibility=public
  * @cluster_privileges manage_search_application
  * @index_privileges manage
+ * @doc_id apis
  */
 export interface Request extends RequestBase {
   urls: [

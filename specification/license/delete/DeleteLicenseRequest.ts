@@ -28,6 +28,7 @@ import { Duration } from '@_types/Time'
  * @rest_spec_name license.delete
  * @availability stack stability=stable
  * @cluster_privileges manage
+ * @doc_id apis
  * @ext_doc_id license-management
  */
 export interface Request extends RequestBase {

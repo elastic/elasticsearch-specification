@@ -12482,7 +12482,7 @@
           "ml data frame"
         ],
         "summary": "Preview features used by data frame analytics",
-        "description": "Previews the extracted features used by a data frame analytics config.",
+        "description": "Preview the extracted features used by a data frame analytics config.",
         "operationId": "ml-preview-data-frame-analytics",
         "requestBody": {
           "$ref": "#/components/requestBodies/ml.preview_data_frame_analytics"
@@ -12499,7 +12499,7 @@
           "ml data frame"
         ],
         "summary": "Preview features used by data frame analytics",
-        "description": "Previews the extracted features used by a data frame analytics config.",
+        "description": "Preview the extracted features used by a data frame analytics config.",
         "operationId": "ml-preview-data-frame-analytics-1",
         "requestBody": {
           "$ref": "#/components/requestBodies/ml.preview_data_frame_analytics"
@@ -12518,7 +12518,7 @@
           "ml data frame"
         ],
         "summary": "Preview features used by data frame analytics",
-        "description": "Previews the extracted features used by a data frame analytics config.",
+        "description": "Preview the extracted features used by a data frame analytics config.",
         "operationId": "ml-preview-data-frame-analytics-2",
         "parameters": [
           {
@@ -12540,7 +12540,7 @@
           "ml data frame"
         ],
         "summary": "Preview features used by data frame analytics",
-        "description": "Previews the extracted features used by a data frame analytics config.",
+        "description": "Preview the extracted features used by a data frame analytics config.",
         "operationId": "ml-preview-data-frame-analytics-3",
         "parameters": [
           {
@@ -18996,7 +18996,7 @@
           "transform"
         ],
         "summary": "Get transforms",
-        "description": "Retrieves configuration information for transforms.",
+        "description": "Get configuration information for transforms.",
         "operationId": "transform-get-transform",
         "parameters": [
           {
@@ -19128,7 +19128,6 @@
           "transform"
         ],
         "summary": "Delete a transform",
-        "description": "Deletes a transform.",
         "operationId": "transform-delete-transform",
         "parameters": [
           {
@@ -19194,7 +19193,7 @@
           "transform"
         ],
         "summary": "Get transforms",
-        "description": "Retrieves configuration information for transforms.",
+        "description": "Get configuration information for transforms.",
         "operationId": "transform-get-transform-1",
         "parameters": [
           {
@@ -19224,7 +19223,7 @@
           "transform"
         ],
         "summary": "Get transform stats",
-        "description": "Retrieves usage information for transforms.",
+        "description": "Get usage information for transforms.",
         "operationId": "transform-get-transform-stats",
         "parameters": [
           {

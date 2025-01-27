@@ -28,6 +28,7 @@ import { IndexName } from '@_types/common'
  * @rest_spec_name ilm.retry
  * @availability stack since=6.6.0 stability=stable
  * @index_privileges manage_ilm
+ * @doc_id apis
  */
 export interface Request extends RequestBase {
   urls: [

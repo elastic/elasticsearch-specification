@@ -28,6 +28,7 @@ import { RequestBase } from '@_types/Base'
  * @rest_spec_name license.get
  * @availability stack stability=stable
  * @availability serverless stability=stable visibility=public
+ * @doc_id apis
  */
 export interface Request extends RequestBase {
   urls: [

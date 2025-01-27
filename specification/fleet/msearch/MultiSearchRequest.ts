@@ -37,6 +37,7 @@ import { Checkpoint } from '../_types/Checkpoints'
  * @availability stack since=7.16.0 stability=experimental
  * @availability serverless stability=experimental visibility=private
  * @index_privileges read
+ * @doc_id apis
  */
 export interface Request extends RequestBase {
   urls: [

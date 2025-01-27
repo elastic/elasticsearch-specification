@@ -33,7 +33,7 @@ import { RequestBase } from '@_types/Base'
  * If the configuration dictates that SAML authentication requests should be signed, the URL has two extra parameters named `SigAlg` and `Signature`.
  * These parameters contain the algorithm used for the signature and the signature value itself.
  * It also returns a random string that uniquely identifies this SAML Authentication request.
- * The caller of this API needs to store this identifier as it needs to be used in a following step of the authentication process.
+ * The caller of thsis API needs to store this identifier as it needs to be used in a following step of the authentication process.
  * @rest_spec_name security.saml_prepare_authentication
  * @availability stack since=7.5.0 stability=stable
  * @availability serverless stability=stable visibility=private

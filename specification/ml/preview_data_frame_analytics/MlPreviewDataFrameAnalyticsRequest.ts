@@ -23,12 +23,13 @@ import { DataframePreviewConfig } from './types'
 
 /**
  * Preview features used by data frame analytics.
- * Previews the extracted features used by a data frame analytics config.
+ * Preview the extracted features used by a data frame analytics config.
  * @rest_spec_name ml.preview_data_frame_analytics
  * @availability stack since=7.13.0 stability=stable
  * @availability serverless stability=stable visibility=public
  * @cluster_privileges monitor_ml
  * @doc_tag ml data frame
+ * @doc_id preview-dfanalytics
  */
 export interface Request extends RequestBase {
   urls: [

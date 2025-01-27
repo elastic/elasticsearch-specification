@@ -29,6 +29,7 @@ import { integer } from '@_types/Numeric'
  * @availability serverless stability=stable visibility=public
  * @cluster_privileges monitor_ml
  * @doc_tag ml anomaly
+ * @doc_id ml-get-calendar
  */
 export interface Request extends RequestBase {
   urls: [

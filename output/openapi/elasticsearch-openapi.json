@@ -9489,9 +9489,6 @@
         ],
         "summary": "Get the features",
         "description": "Get a list of features that can be included in snapshots using the `feature_states` field when creating a snapshot.\nYou can use this API to determine which feature states to include when taking a snapshot.\nBy default, all feature states are included in a snapshot if that snapshot includes the global state, or none if it does not.\n\nA feature state includes one or more system indices necessary for a given feature to function.\nIn order to ensure data integrity, all system indices that comprise a feature state are snapshotted and restored together.\n\nThe features listed by this API are a combination of built-in features and features defined by plugins.\nIn order for a feature state to be listed in this API and recognized as a valid feature state by the create snapshot API, the plugin that defines that feature must be installed on the master node.",
-        "externalDocs": {
-          "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/snapshots-take-snapshot.html"
-        },
         "operationId": "features-get-features",
         "parameters": [
           {
@@ -22322,7 +22319,7 @@
           "ml data frame"
         ],
         "summary": "Preview features used by data frame analytics",
-        "description": "Previews the extracted features used by a data frame analytics config.",
+        "description": "Preview the extracted features used by a data frame analytics config.",
         "operationId": "ml-preview-data-frame-analytics",
         "requestBody": {
           "$ref": "#/components/requestBodies/ml.preview_data_frame_analytics"
@@ -22339,7 +22336,7 @@
           "ml data frame"
         ],
         "summary": "Preview features used by data frame analytics",
-        "description": "Previews the extracted features used by a data frame analytics config.",
+        "description": "Preview the extracted features used by a data frame analytics config.",
         "operationId": "ml-preview-data-frame-analytics-1",
         "requestBody": {
           "$ref": "#/components/requestBodies/ml.preview_data_frame_analytics"
@@ -22358,7 +22355,7 @@
           "ml data frame"
         ],
         "summary": "Preview features used by data frame analytics",
-        "description": "Previews the extracted features used by a data frame analytics config.",
+        "description": "Preview the extracted features used by a data frame analytics config.",
         "operationId": "ml-preview-data-frame-analytics-2",
         "parameters": [
           {
@@ -22380,7 +22377,7 @@
           "ml data frame"
         ],
         "summary": "Preview features used by data frame analytics",
-        "description": "Previews the extracted features used by a data frame analytics config.",
+        "description": "Preview the extracted features used by a data frame analytics config.",
         "operationId": "ml-preview-data-frame-analytics-3",
         "parameters": [
           {
@@ -24105,7 +24102,7 @@
           "ml anomaly"
         ],
         "summary": "Upgrade a snapshot",
-        "description": "Upgrades an anomaly detection model snapshot to the latest major version.\nOver time, older snapshot formats are deprecated and removed. Anomaly\ndetection jobs support only snapshots that are from the current or previous\nmajor version.\nThis API provides a means to upgrade a snapshot to the current major version.\nThis aids in preparing the cluster for an upgrade to the next major version.\nOnly one snapshot per anomaly detection job can be upgraded at a time and the\nupgraded snapshot cannot be the current snapshot of the anomaly detection\njob.",
+        "description": "Upgrade an anomaly detection model snapshot to the latest major version.\nOver time, older snapshot formats are deprecated and removed. Anomaly\ndetection jobs support only snapshots that are from the current or previous\nmajor version.\nThis API provides a means to upgrade a snapshot to the current major version.\nThis aids in preparing the cluster for an upgrade to the next major version.\nOnly one snapshot per anomaly detection job can be upgraded at a time and the\nupgraded snapshot cannot be the current snapshot of the anomaly detection\njob.",
         "operationId": "ml-upgrade-job-snapshot",
         "parameters": [
           {
@@ -30955,7 +30952,7 @@
         "tags": [
           "security"
         ],
-        "summary": "Get users",
+        "summary": "Get users.s\n",
         "description": "Get information about users in the native realm and built-in users.",
         "operationId": "security-get-user",
         "parameters": [
@@ -31945,7 +31942,7 @@
         "tags": [
           "security"
         ],
-        "summary": "Get users",
+        "summary": "Get users.s\n",
         "description": "Get information about users in the native realm and built-in users.",
         "operationId": "security-get-user-1",
         "parameters": [
@@ -32978,7 +32975,7 @@
           "security"
         ],
         "summary": "Prepare SAML authentication",
-        "description": "Create a SAML authentication request (`<AuthnRequest>`) as a URL string based on the configuration of the respective SAML realm in Elasticsearch.\n\nNOTE: This API is intended for use by custom web applications other than Kibana.\nIf you are using Kibana, refer to the documentation for configuring SAML single-sign-on on the Elastic Stack.\n\nThis API returns a URL pointing to the SAML Identity Provider.\nYou can use the URL to redirect the browser of the user in order to continue the authentication process.\nThe URL includes a single parameter named `SAMLRequest`, which contains a SAML Authentication request that is deflated and Base64 encoded.\nIf the configuration dictates that SAML authentication requests should be signed, the URL has two extra parameters named `SigAlg` and `Signature`.\nThese parameters contain the algorithm used for the signature and the signature value itself.\nIt also returns a random string that uniquely identifies this SAML Authentication request.\nThe caller of this API needs to store this identifier as it needs to be used in a following step of the authentication process.",
+        "description": "Create a SAML authentication request (`<AuthnRequest>`) as a URL string based on the configuration of the respective SAML realm in Elasticsearch.\n\nNOTE: This API is intended for use by custom web applications other than Kibana.\nIf you are using Kibana, refer to the documentation for configuring SAML single-sign-on on the Elastic Stack.\n\nThis API returns a URL pointing to the SAML Identity Provider.\nYou can use the URL to redirect the browser of the user in order to continue the authentication process.\nThe URL includes a single parameter named `SAMLRequest`, which contains a SAML Authentication request that is deflated and Base64 encoded.\nIf the configuration dictates that SAML authentication requests should be signed, the URL has two extra parameters named `SigAlg` and `Signature`.\nThese parameters contain the algorithm used for the signature and the signature value itself.\nIt also returns a random string that uniquely identifies this SAML Authentication request.\nThe caller of thsis API needs to store this identifier as it needs to be used in a following step of the authentication process.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/saml-guide-stack.html"
         },
@@ -37446,7 +37443,7 @@
           "transform"
         ],
         "summary": "Get transforms",
-        "description": "Retrieves configuration information for transforms.",
+        "description": "Get configuration information for transforms.",
         "operationId": "transform-get-transform",
         "parameters": [
           {
@@ -37578,7 +37575,6 @@
           "transform"
         ],
         "summary": "Delete a transform",
-        "description": "Deletes a transform.",
         "operationId": "transform-delete-transform",
         "parameters": [
           {
@@ -37644,7 +37640,7 @@
           "transform"
         ],
         "summary": "Get transforms",
-        "description": "Retrieves configuration information for transforms.",
+        "description": "Get configuration information for transforms.",
         "operationId": "transform-get-transform-1",
         "parameters": [
           {
@@ -37674,7 +37670,7 @@
           "transform"
         ],
         "summary": "Get transform stats",
-        "description": "Retrieves usage information for transforms.",
+        "description": "Get usage information for transforms.",
         "operationId": "transform-get-transform-stats",
         "parameters": [
           {

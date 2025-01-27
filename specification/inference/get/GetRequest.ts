@@ -26,6 +26,7 @@ import { Id } from '@_types/common'
  * @rest_spec_name inference.get
  * @availability stack since=8.11.0 stability=stable visibility=public
  * @availability serverless stability=stable visibility=public
+ * @doc_id apis
  */
 export interface Request extends RequestBase {
   urls: [
