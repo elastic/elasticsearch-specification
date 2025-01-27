@@ -20925,15 +20925,15 @@ export type WatcherDay = 'sunday' | 'monday' | 'tuesday' | 'wednesday' | 'thursd
 
 export interface WatcherEmail {
   id?: Id
-  bcc?: string[]
+  bcc?: string | string[]
   body?: WatcherEmailBody
-  cc?: string[]
+  cc?: string | string[]
   from?: string
   priority?: WatcherEmailPriority
-  reply_to?: string[]
+  reply_to?: string | string[]
   sent_date?: DateTime
   subject: string
-  to: string[]
+  to: string | string[]
   attachments?: Record<string, WatcherEmailAttachmentContainer>
 }
 
