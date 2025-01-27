@@ -1,0 +1,39 @@
+summary: Terms filtering
+description: A successful response from `GET /my-index-000001/_termvectors` with a `filter` in the request body.
+# type: response
+# response_code: ''
+value: |-
+  {
+    "_index": "imdb",
+    "_version": 0,
+    "found": true,
+    "term_vectors": {
+        "plot": {
+          "field_statistics": {
+              "sum_doc_freq": 3384269,
+              "doc_count": 176214,
+              "sum_ttf": 3753460
+          },
+          "terms": {
+              "armored": {
+                "doc_freq": 27,
+                "ttf": 27,
+                "term_freq": 1,
+                "score": 9.74725
+              },
+              "industrialist": {
+                "doc_freq": 88,
+                "ttf": 88,
+                "term_freq": 1,
+                "score": 8.590818
+              },
+              "stark": {
+                "doc_freq": 44,
+                "ttf": 47,
+                "term_freq": 1,
+                "score": 9.272792
+              }
+          }
+        }
+    }
+  }

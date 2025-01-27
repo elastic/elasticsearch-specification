@@ -29,7 +29,9 @@ import { Id } from '@_types/common'
  * @rest_spec_name render_search_template
  * @availability stack stability=stable
  * @availability serverless stability=stable visibility=public
+ * @index_privileges read
  * @doc_tag search
+ * @doc_id render-search-template-api
  */
 export interface Request extends RequestBase {
   urls: [
@@ -44,12 +46,18 @@ export interface Request extends RequestBase {
   ]
   path_parts: {
     /**
-     * ID of the search template to render.
+     * The ID of the search template to render.
      * If no `source` is specified, this or the `id` request body parameter is required.
      */
     id?: Id
   }
   body: {
+    /**
+     * The ID of the search template to render.
+     * If no `source` is specified, this or the `<template-id>` request path parameter is required.
+     * If you specify both this parameter and the `<template-id>` parameter, the API uses only `<template-id>`.
+     */
+    id?: Id
     file?: string
     /**
      * Key-value pairs used to replace Mustache variables in the template.
@@ -59,7 +67,7 @@ export interface Request extends RequestBase {
     params?: Dictionary<string, UserDefinedValue>
     /**
      * An inline search template.
-     * Supports the same parameters as the search API's request body.
+     * It supports the same parameters as the search API's request body.
      * These parameters also support Mustache variables.
      * If no `id` or `<templated-id>` is specified, this parameter is required.
      */
