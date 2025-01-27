@@ -35345,6 +35345,9 @@
           },
           "_meta": {
             "$ref": "#/components/schemas/_types:Metadata"
+          },
+          "deprecated": {
+            "type": "boolean"
           }
         },
         "required": [

@@ -9043,6 +9043,7 @@ export interface ClusterComponentTemplateNode {
   template: ClusterComponentTemplateSummary
   version?: VersionNumber
   _meta?: Metadata
+  deprecated?: boolean
 }
 
 export interface ClusterComponentTemplateSummary {
