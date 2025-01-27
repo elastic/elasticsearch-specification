@@ -6474,7 +6474,7 @@
           "search"
         ],
         "summary": "Count search results",
-        "description": "Get the number of documents matching a query.\n\nThe query can either be provided using a simple query string as a parameter or using the Query DSL defined within the request body.\nThe latter must be nested in a `query` key, which is the same as the search API.\n\nThe count API supports multi-target syntax. You can run a single count API search across multiple data streams and indices.\n\nThe operation is broadcast across all shards.\nFor each shard ID group, a replica is chosen and the search is run against it.\nThis means that replicas increase the scalability of the count.",
+        "description": "Get the number of documents matching a query.\n\nThe query can be provided either by using a simple query string as a parameter, or by defining Query DSL within the request body.\nThe query is optional. When no query is provided, the API uses `match_all` to count all the documents.\n\nThe count API supports multi-target syntax. You can run a single count API search across multiple data streams and indices.\n\nThe operation is broadcast across all shards.\nFor each shard ID group, a replica is chosen and the search is run against it.\nThis means that replicas increase the scalability of the count.",
         "operationId": "count-1",
         "parameters": [
           {
@@ -6534,7 +6534,7 @@
           "search"
         ],
         "summary": "Count search results",
-        "description": "Get the number of documents matching a query.\n\nThe query can either be provided using a simple query string as a parameter or using the Query DSL defined within the request body.\nThe latter must be nested in a `query` key, which is the same as the search API.\n\nThe count API supports multi-target syntax. You can run a single count API search across multiple data streams and indices.\n\nThe operation is broadcast across all shards.\nFor each shard ID group, a replica is chosen and the search is run against it.\nThis means that replicas increase the scalability of the count.",
+        "description": "Get the number of documents matching a query.\n\nThe query can be provided either by using a simple query string as a parameter, or by defining Query DSL within the request body.\nThe query is optional. When no query is provided, the API uses `match_all` to count all the documents.\n\nThe count API supports multi-target syntax. You can run a single count API search across multiple data streams and indices.\n\nThe operation is broadcast across all shards.\nFor each shard ID group, a replica is chosen and the search is run against it.\nThis means that replicas increase the scalability of the count.",
         "operationId": "count",
         "parameters": [
           {
@@ -6596,7 +6596,7 @@
           "search"
         ],
         "summary": "Count search results",
-        "description": "Get the number of documents matching a query.\n\nThe query can either be provided using a simple query string as a parameter or using the Query DSL defined within the request body.\nThe latter must be nested in a `query` key, which is the same as the search API.\n\nThe count API supports multi-target syntax. You can run a single count API search across multiple data streams and indices.\n\nThe operation is broadcast across all shards.\nFor each shard ID group, a replica is chosen and the search is run against it.\nThis means that replicas increase the scalability of the count.",
+        "description": "Get the number of documents matching a query.\n\nThe query can be provided either by using a simple query string as a parameter, or by defining Query DSL within the request body.\nThe query is optional. When no query is provided, the API uses `match_all` to count all the documents.\n\nThe count API supports multi-target syntax. You can run a single count API search across multiple data streams and indices.\n\nThe operation is broadcast across all shards.\nFor each shard ID group, a replica is chosen and the search is run against it.\nThis means that replicas increase the scalability of the count.",
         "operationId": "count-3",
         "parameters": [
           {
@@ -6659,7 +6659,7 @@
           "search"
         ],
         "summary": "Count search results",
-        "description": "Get the number of documents matching a query.\n\nThe query can either be provided using a simple query string as a parameter or using the Query DSL defined within the request body.\nThe latter must be nested in a `query` key, which is the same as the search API.\n\nThe count API supports multi-target syntax. You can run a single count API search across multiple data streams and indices.\n\nThe operation is broadcast across all shards.\nFor each shard ID group, a replica is chosen and the search is run against it.\nThis means that replicas increase the scalability of the count.",
+        "description": "Get the number of documents matching a query.\n\nThe query can be provided either by using a simple query string as a parameter, or by defining Query DSL within the request body.\nThe query is optional. When no query is provided, the API uses `match_all` to count all the documents.\n\nThe count API supports multi-target syntax. You can run a single count API search across multiple data streams and indices.\n\nThe operation is broadcast across all shards.\nFor each shard ID group, a replica is chosen and the search is run against it.\nThis means that replicas increase the scalability of the count.",
         "operationId": "count-2",
         "parameters": [
           {
@@ -99959,7 +99959,7 @@
       "count#q": {
         "in": "query",
         "name": "q",
-        "description": "The query in Lucene query string syntax.",
+        "description": "The query in Lucene query string syntax. This parameter cannot be used with a request body.",
         "deprecated": false,
         "schema": {
           "type": "string"
