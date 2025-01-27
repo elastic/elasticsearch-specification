@@ -499,7 +499,11 @@ rollup-stop-job,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}
 routing,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/docs-get.html#get-routing
 run-as-privilege,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/run-as-privilege.html
 runtime-search-request,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/runtime-search-request.html
+script-contexts,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/get-script-contexts-api.html
+script-delete,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/delete-stored-script-api.html
+script-languages,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/get-script-languages-api.html
 script-processor,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/script-processor.html
+script-put,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/create-stored-script-api.html
 scroll-search-results,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/paginate-search-results.html#scroll-search-results
 search-after,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/paginate-search-results.html#search-after
 search-aggregations,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/search-aggregations.html
