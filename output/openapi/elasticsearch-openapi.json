@@ -24784,7 +24784,7 @@
           "document"
         ],
         "summary": "Get multiple term vectors",
-        "description": "You can specify existing documents by index and ID or provide artificial documents in the body of the request.\nYou can specify the index in the request body or request URI.\nThe response contains a `docs` array with all the fetched termvectors.\nEach element has the structure provided by the termvectors API.",
+        "description": "Get multiple term vectors with a single request.\nYou can specify existing documents by index and ID or provide artificial documents in the body of the request.\nYou can specify the index in the request body or request URI.\nThe response contains a `docs` array with all the fetched termvectors.\nEach element has the structure provided by the termvectors API.",
         "operationId": "mtermvectors",
         "parameters": [
           {
@@ -24838,7 +24838,7 @@
           "document"
         ],
         "summary": "Get multiple term vectors",
-        "description": "You can specify existing documents by index and ID or provide artificial documents in the body of the request.\nYou can specify the index in the request body or request URI.\nThe response contains a `docs` array with all the fetched termvectors.\nEach element has the structure provided by the termvectors API.",
+        "description": "Get multiple term vectors with a single request.\nYou can specify existing documents by index and ID or provide artificial documents in the body of the request.\nYou can specify the index in the request body or request URI.\nThe response contains a `docs` array with all the fetched termvectors.\nEach element has the structure provided by the termvectors API.",
         "operationId": "mtermvectors-1",
         "parameters": [
           {
@@ -24894,7 +24894,7 @@
           "document"
         ],
         "summary": "Get multiple term vectors",
-        "description": "You can specify existing documents by index and ID or provide artificial documents in the body of the request.\nYou can specify the index in the request body or request URI.\nThe response contains a `docs` array with all the fetched termvectors.\nEach element has the structure provided by the termvectors API.",
+        "description": "Get multiple term vectors with a single request.\nYou can specify existing documents by index and ID or provide artificial documents in the body of the request.\nYou can specify the index in the request body or request URI.\nThe response contains a `docs` array with all the fetched termvectors.\nEach element has the structure provided by the termvectors API.",
         "operationId": "mtermvectors-2",
         "parameters": [
           {
@@ -24951,7 +24951,7 @@
           "document"
         ],
         "summary": "Get multiple term vectors",
-        "description": "You can specify existing documents by index and ID or provide artificial documents in the body of the request.\nYou can specify the index in the request body or request URI.\nThe response contains a `docs` array with all the fetched termvectors.\nEach element has the structure provided by the termvectors API.",
+        "description": "Get multiple term vectors with a single request.\nYou can specify existing documents by index and ID or provide artificial documents in the body of the request.\nYou can specify the index in the request body or request URI.\nThe response contains a `docs` array with all the fetched termvectors.\nEach element has the structure provided by the termvectors API.",
         "operationId": "mtermvectors-3",
         "parameters": [
           {
@@ -36503,7 +36503,7 @@
           "document"
         ],
         "summary": "Get term vector information",
-        "description": "Get information and statistics about terms in the fields of a particular document.",
+        "description": "Get information and statistics about terms in the fields of a particular document.\n\nYou can retrieve term vectors for documents stored in the index or for artificial documents passed in the body of the request.\nYou can specify the fields you are interested in through the `fields` parameter or by adding the fields to the request body.\nFor example:\n\n```\nGET /my-index-000001/_termvectors/1?fields=message\n```\n\nFields can be specified using wildcards, similar to the multi match query.\n\nTerm vectors are real-time by default, not near real-time.\nThis can be changed by setting `realtime` parameter to `false`.\n\nYou can request three types of values: _term information_, _term statistics_, and _field statistics_.\nBy default, all term information and field statistics are returned for all fields but term statistics are excluded.\n\n**Term information**\n\n* term frequency in the field (always returned)\n* term positions (`positions: true`)\n* start and end offsets (`offsets: true`)\n* term payloads (`payloads: true`), as base64 encoded bytes\n\nIf the requested information wasn't stored in the index, it will be computed on the fly if possible.\nAdditionally, term vectors could be computed for documents not even existing in the index, but instead provided by the user.\n\n> warn\n> Start and end offsets assume UTF-16 encoding is being used. If you want to use these offsets in order to get the original text that produced this token, you should make sure that the string you are taking a sub-string of is also encoded using UTF-16.\n\n**Behaviour**\n\nThe term and field statistics are not accurate.\nDeleted documents are not taken into account.\nThe information is only retrieved for the shard the requested document resides in.\nThe term and field statistics are therefore only useful as relative measures whereas the absolute numbers have no meaning in this context.\nBy default, when requesting term vectors of artificial documents, a shard to get the statistics from is randomly selected.\nUse `routing` only to hit a particular shard.",
         "operationId": "termvectors",
         "parameters": [
           {
@@ -36560,7 +36560,7 @@
           "document"
         ],
         "summary": "Get term vector information",
-        "description": "Get information and statistics about terms in the fields of a particular document.",
+        "description": "Get information and statistics about terms in the fields of a particular document.\n\nYou can retrieve term vectors for documents stored in the index or for artificial documents passed in the body of the request.\nYou can specify the fields you are interested in through the `fields` parameter or by adding the fields to the request body.\nFor example:\n\n```\nGET /my-index-000001/_termvectors/1?fields=message\n```\n\nFields can be specified using wildcards, similar to the multi match query.\n\nTerm vectors are real-time by default, not near real-time.\nThis can be changed by setting `realtime` parameter to `false`.\n\nYou can request three types of values: _term information_, _term statistics_, and _field statistics_.\nBy default, all term information and field statistics are returned for all fields but term statistics are excluded.\n\n**Term information**\n\n* term frequency in the field (always returned)\n* term positions (`positions: true`)\n* start and end offsets (`offsets: true`)\n* term payloads (`payloads: true`), as base64 encoded bytes\n\nIf the requested information wasn't stored in the index, it will be computed on the fly if possible.\nAdditionally, term vectors could be computed for documents not even existing in the index, but instead provided by the user.\n\n> warn\n> Start and end offsets assume UTF-16 encoding is being used. If you want to use these offsets in order to get the original text that produced this token, you should make sure that the string you are taking a sub-string of is also encoded using UTF-16.\n\n**Behaviour**\n\nThe term and field statistics are not accurate.\nDeleted documents are not taken into account.\nThe information is only retrieved for the shard the requested document resides in.\nThe term and field statistics are therefore only useful as relative measures whereas the absolute numbers have no meaning in this context.\nBy default, when requesting term vectors of artificial documents, a shard to get the statistics from is randomly selected.\nUse `routing` only to hit a particular shard.",
         "operationId": "termvectors-1",
         "parameters": [
           {
@@ -36619,7 +36619,7 @@
           "document"
         ],
         "summary": "Get term vector information",
-        "description": "Get information and statistics about terms in the fields of a particular document.",
+        "description": "Get information and statistics about terms in the fields of a particular document.\n\nYou can retrieve term vectors for documents stored in the index or for artificial documents passed in the body of the request.\nYou can specify the fields you are interested in through the `fields` parameter or by adding the fields to the request body.\nFor example:\n\n```\nGET /my-index-000001/_termvectors/1?fields=message\n```\n\nFields can be specified using wildcards, similar to the multi match query.\n\nTerm vectors are real-time by default, not near real-time.\nThis can be changed by setting `realtime` parameter to `false`.\n\nYou can request three types of values: _term information_, _term statistics_, and _field statistics_.\nBy default, all term information and field statistics are returned for all fields but term statistics are excluded.\n\n**Term information**\n\n* term frequency in the field (always returned)\n* term positions (`positions: true`)\n* start and end offsets (`offsets: true`)\n* term payloads (`payloads: true`), as base64 encoded bytes\n\nIf the requested information wasn't stored in the index, it will be computed on the fly if possible.\nAdditionally, term vectors could be computed for documents not even existing in the index, but instead provided by the user.\n\n> warn\n> Start and end offsets assume UTF-16 encoding is being used. If you want to use these offsets in order to get the original text that produced this token, you should make sure that the string you are taking a sub-string of is also encoded using UTF-16.\n\n**Behaviour**\n\nThe term and field statistics are not accurate.\nDeleted documents are not taken into account.\nThe information is only retrieved for the shard the requested document resides in.\nThe term and field statistics are therefore only useful as relative measures whereas the absolute numbers have no meaning in this context.\nBy default, when requesting term vectors of artificial documents, a shard to get the statistics from is randomly selected.\nUse `routing` only to hit a particular shard.",
         "operationId": "termvectors-2",
         "parameters": [
           {
@@ -36673,7 +36673,7 @@
           "document"
         ],
         "summary": "Get term vector information",
-        "description": "Get information and statistics about terms in the fields of a particular document.",
+        "description": "Get information and statistics about terms in the fields of a particular document.\n\nYou can retrieve term vectors for documents stored in the index or for artificial documents passed in the body of the request.\nYou can specify the fields you are interested in through the `fields` parameter or by adding the fields to the request body.\nFor example:\n\n```\nGET /my-index-000001/_termvectors/1?fields=message\n```\n\nFields can be specified using wildcards, similar to the multi match query.\n\nTerm vectors are real-time by default, not near real-time.\nThis can be changed by setting `realtime` parameter to `false`.\n\nYou can request three types of values: _term information_, _term statistics_, and _field statistics_.\nBy default, all term information and field statistics are returned for all fields but term statistics are excluded.\n\n**Term information**\n\n* term frequency in the field (always returned)\n* term positions (`positions: true`)\n* start and end offsets (`offsets: true`)\n* term payloads (`payloads: true`), as base64 encoded bytes\n\nIf the requested information wasn't stored in the index, it will be computed on the fly if possible.\nAdditionally, term vectors could be computed for documents not even existing in the index, but instead provided by the user.\n\n> warn\n> Start and end offsets assume UTF-16 encoding is being used. If you want to use these offsets in order to get the original text that produced this token, you should make sure that the string you are taking a sub-string of is also encoded using UTF-16.\n\n**Behaviour**\n\nThe term and field statistics are not accurate.\nDeleted documents are not taken into account.\nThe information is only retrieved for the shard the requested document resides in.\nThe term and field statistics are therefore only useful as relative measures whereas the absolute numbers have no meaning in this context.\nBy default, when requesting term vectors of artificial documents, a shard to get the statistics from is randomly selected.\nUse `routing` only to hit a particular shard.",
         "operationId": "termvectors-3",
         "parameters": [
           {
@@ -82041,11 +82041,11 @@
             "type": "number"
           },
           "max_num_terms": {
-            "description": "Maximum number of terms that must be returned per field.",
+            "description": "The maximum number of terms that must be returned per field.",
             "type": "number"
           },
           "max_term_freq": {
-            "description": "Ignore words with more than this frequency in the source doc.\nDefaults to unbounded.",
+            "description": "Ignore words with more than this frequency in the source doc.\nIt defaults to unbounded.",
             "type": "number"
           },
           "max_word_length": {
@@ -104798,7 +104798,7 @@
       "mtermvectors#index": {
         "in": "path",
         "name": "index",
-        "description": "Name of the index that contains the documents.",
+        "description": "The name of the index that contains the documents.",
         "required": true,
         "deprecated": false,
         "schema": {
@@ -104822,7 +104822,7 @@
       "mtermvectors#fields": {
         "in": "query",
         "name": "fields",
-        "description": "Comma-separated list or wildcard expressions of fields to include in the statistics.\nUsed as the default list unless a specific field list is provided in the `completion_fields` or `fielddata_fields` parameters.",
+        "description": "A comma-separated list or wildcard expressions of fields to include in the statistics.\nIt is used as the default list unless a specific field list is provided in the `completion_fields` or `fielddata_fields` parameters.",
         "deprecated": false,
         "schema": {
           "$ref": "#/components/schemas/_types:Fields"
@@ -104872,7 +104872,7 @@
       "mtermvectors#preference": {
         "in": "query",
         "name": "preference",
-        "description": "Specifies the node or shard the operation should be performed on.\nRandom by default.",
+        "description": "The node or shard the operation should be performed on.\nIt is random by default.",
         "deprecated": false,
         "schema": {
           "type": "string"
@@ -104892,7 +104892,7 @@
       "mtermvectors#routing": {
         "in": "query",
         "name": "routing",
-        "description": "Custom value used to route operations to a specific shard.",
+        "description": "A custom value used to route operations to a specific shard.",
         "deprecated": false,
         "schema": {
           "$ref": "#/components/schemas/_types:Routing"
@@ -104922,7 +104922,7 @@
       "mtermvectors#version_type": {
         "in": "query",
         "name": "version_type",
-        "description": "Specific version type.",
+        "description": "The version type.",
         "deprecated": false,
         "schema": {
           "$ref": "#/components/schemas/_types:VersionType"
@@ -107114,7 +107114,7 @@
       "termvectors#index": {
         "in": "path",
         "name": "index",
-        "description": "Name of the index that contains the document.",
+        "description": "The name of the index that contains the document.",
         "required": true,
         "deprecated": false,
         "schema": {
@@ -107125,7 +107125,7 @@
       "termvectors#id": {
         "in": "path",
         "name": "id",
-        "description": "Unique identifier of the document.",
+        "description": "A unique identifier for the document.",
         "required": true,
         "deprecated": false,
         "schema": {
@@ -107136,7 +107136,7 @@
       "termvectors#fields": {
         "in": "query",
         "name": "fields",
-        "description": "Comma-separated list or wildcard expressions of fields to include in the statistics.\nUsed as the default list unless a specific field list is provided in the `completion_fields` or `fielddata_fields` parameters.",
+        "description": "A comma-separated list or wildcard expressions of fields to include in the statistics.\nIt is used as the default list unless a specific field list is provided in the `completion_fields` or `fielddata_fields` parameters.",
         "deprecated": false,
         "schema": {
           "$ref": "#/components/schemas/_types:Fields"
@@ -107146,7 +107146,7 @@
       "termvectors#field_statistics": {
         "in": "query",
         "name": "field_statistics",
-        "description": "If `true`, the response includes the document count, sum of document frequencies, and sum of total term frequencies.",
+        "description": "If `true`, the response includes:\n\n* The document count (how many documents contain this field).\n* The sum of document frequencies (the sum of document frequencies for all terms in this field).\n* The sum of total term frequencies (the sum of total term frequencies of each term in this field).",
         "deprecated": false,
         "schema": {
           "type": "boolean"
@@ -107186,7 +107186,7 @@
       "termvectors#preference": {
         "in": "query",
         "name": "preference",
-        "description": "Specifies the node or shard the operation should be performed on.\nRandom by default.",
+        "description": "The node or shard the operation should be performed on.\nIt is random by default.",
         "deprecated": false,
         "schema": {
           "type": "string"
@@ -107206,7 +107206,7 @@
       "termvectors#routing": {
         "in": "query",
         "name": "routing",
-        "description": "Custom value used to route operations to a specific shard.",
+        "description": "A custom value that is used to route operations to a specific shard.",
         "deprecated": false,
         "schema": {
           "$ref": "#/components/schemas/_types:Routing"
@@ -107216,7 +107216,7 @@
       "termvectors#term_statistics": {
         "in": "query",
         "name": "term_statistics",
-        "description": "If `true`, the response includes term frequency and document frequency.",
+        "description": "If `true`, the response includes:\n\n* The total term frequency (how often a term occurs in all documents).\n* The document frequency (the number of documents containing the current term).\n\nBy default these values are not returned since term statistics can have a serious performance impact.",
         "deprecated": false,
         "schema": {
           "type": "boolean"
@@ -107236,7 +107236,7 @@
       "termvectors#version_type": {
         "in": "query",
         "name": "version_type",
-        "description": "Specific version type.",
+        "description": "The version type.",
         "deprecated": false,
         "schema": {
           "$ref": "#/components/schemas/_types:VersionType"
@@ -109295,14 +109295,14 @@
               "type": "object",
               "properties": {
                 "docs": {
-                  "description": "Array of existing or artificial documents.",
+                  "description": "An array of existing or artificial documents.",
                   "type": "array",
                   "items": {
                     "$ref": "#/components/schemas/_global.mtermvectors:Operation"
                   }
                 },
                 "ids": {
-                  "description": "Simplified syntax to specify documents by their ID if they're in the same index.",
+                  "description": "A simplified syntax to specify documents by their ID if they're in the same index.",
                   "type": "array",
                   "items": {
                     "$ref": "#/components/schemas/_types:Id"
@@ -110490,7 +110490,7 @@
                   "$ref": "#/components/schemas/_global.termvectors:Filter"
                 },
                 "per_field_analyzer": {
-                  "description": "Overrides the default per-field analyzer.",
+                  "description": "Override the default per-field analyzer.\nThis is useful in order to generate term vectors in any fashion, especially when using artificial documents.\nWhen providing an analyzer for a field that already stores term vectors, the term vectors will be regenerated.",
                   "type": "object",
                   "additionalProperties": {
                     "type": "string"
