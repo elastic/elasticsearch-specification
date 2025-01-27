@@ -73,7 +73,7 @@ export interface Request extends RequestBase {
     /**
      * Indicates which source fields are returned for matching documents. These
      * fields are returned in the `hits._source` property of the search response.
-     * @default_server true
+     * @server_default true
      */
     _source?: SourceConfig
     /**

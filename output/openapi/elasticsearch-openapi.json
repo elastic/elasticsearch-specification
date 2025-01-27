@@ -17388,7 +17388,7 @@
           "search"
         ],
         "summary": "Run a knn search",
-        "description": "NOTE: The kNN search API has been replaced by the `knn` option in the search API.\n\nPerform a k-nearest neighbor (kNN) search on a dense_vector field and return the matching documents.\nGiven a query vector, the API finds the k closest vectors and returns those documents as search hits.\n\nElasticsearch uses the HNSW algorithm to support efficient kNN search.\nLike most kNN algorithms, HNSW is an approximate method that sacrifices result accuracy for improved search speed.\nThis means the results returned are not always the true k closest neighbors.\n\nThe kNN search API supports restricting the search using a filter.\nThe search will return the top k documents that also match the filter query.",
+        "description": "NOTE: The kNN search API has been replaced by the `knn` option in the search API.\n\nPerform a k-nearest neighbor (kNN) search on a dense_vector field and return the matching documents.\nGiven a query vector, the API finds the k closest vectors and returns those documents as search hits.\n\nElasticsearch uses the HNSW algorithm to support efficient kNN search.\nLike most kNN algorithms, HNSW is an approximate method that sacrifices result accuracy for improved search speed.\nThis means the results returned are not always the true k closest neighbors.\n\nThe kNN search API supports restricting the search using a filter.\nThe search will return the top k documents that also match the filter query.\n\nA kNN search response has the exact same structure as a search API response.\nHowever, certain sections have a meaning specific to kNN search:\n\n* The document `_score` is determined by the similarity between the query and document vector.\n* The `hits.total` object contains the total number of nearest neighbor candidates considered, which is `num_candidates * num_shards`. The `hits.total.relation` will always be `eq`, indicating an exact value.",
         "operationId": "knn-search",
         "parameters": [
           {
@@ -17414,7 +17414,7 @@
           "search"
         ],
         "summary": "Run a knn search",
-        "description": "NOTE: The kNN search API has been replaced by the `knn` option in the search API.\n\nPerform a k-nearest neighbor (kNN) search on a dense_vector field and return the matching documents.\nGiven a query vector, the API finds the k closest vectors and returns those documents as search hits.\n\nElasticsearch uses the HNSW algorithm to support efficient kNN search.\nLike most kNN algorithms, HNSW is an approximate method that sacrifices result accuracy for improved search speed.\nThis means the results returned are not always the true k closest neighbors.\n\nThe kNN search API supports restricting the search using a filter.\nThe search will return the top k documents that also match the filter query.",
+        "description": "NOTE: The kNN search API has been replaced by the `knn` option in the search API.\n\nPerform a k-nearest neighbor (kNN) search on a dense_vector field and return the matching documents.\nGiven a query vector, the API finds the k closest vectors and returns those documents as search hits.\n\nElasticsearch uses the HNSW algorithm to support efficient kNN search.\nLike most kNN algorithms, HNSW is an approximate method that sacrifices result accuracy for improved search speed.\nThis means the results returned are not always the true k closest neighbors.\n\nThe kNN search API supports restricting the search using a filter.\nThe search will return the top k documents that also match the filter query.\n\nA kNN search response has the exact same structure as a search API response.\nHowever, certain sections have a meaning specific to kNN search:\n\n* The document `_score` is determined by the similarity between the query and document vector.\n* The `hits.total` object contains the total number of nearest neighbor candidates considered, which is `num_candidates * num_shards`. The `hits.total.relation` will always be `eq`, indicating an exact value.",
         "operationId": "knn-search-1",
         "parameters": [
           {
@@ -17933,7 +17933,7 @@
           "document"
         ],
         "summary": "Get multiple documents",
-        "description": "Get multiple JSON documents by ID from one or more indices.\nIf you specify an index in the request URI, you only need to specify the document IDs in the request body.\nTo ensure fast responses, this multi get (mget) API responds with partial results if one or more shards fail.",
+        "description": "Get multiple JSON documents by ID from one or more indices.\nIf you specify an index in the request URI, you only need to specify the document IDs in the request body.\nTo ensure fast responses, this multi get (mget) API responds with partial results if one or more shards fail.\n\n**Filter source fields**\n\nBy default, the `_source` field is returned for every document (if stored).\nUse the `_source` and `_source_include` or `source_exclude` attributes to filter what fields are returned for a particular document.\nYou can include the `_source`, `_source_includes`, and `_source_excludes` query parameters in the request URI to specify the defaults to use when there are no per-document instructions.\n\n**Get stored fields**\n\nUse the `stored_fields` attribute to specify the set of stored fields you want to retrieve.\nAny requested fields that are not stored are ignored.\nYou can include the `stored_fields` query parameter in the request URI to specify the defaults to use when there are no per-document instructions.",
         "operationId": "mget",
         "parameters": [
           {
@@ -17979,7 +17979,7 @@
           "document"
         ],
         "summary": "Get multiple documents",
-        "description": "Get multiple JSON documents by ID from one or more indices.\nIf you specify an index in the request URI, you only need to specify the document IDs in the request body.\nTo ensure fast responses, this multi get (mget) API responds with partial results if one or more shards fail.",
+        "description": "Get multiple JSON documents by ID from one or more indices.\nIf you specify an index in the request URI, you only need to specify the document IDs in the request body.\nTo ensure fast responses, this multi get (mget) API responds with partial results if one or more shards fail.\n\n**Filter source fields**\n\nBy default, the `_source` field is returned for every document (if stored).\nUse the `_source` and `_source_include` or `source_exclude` attributes to filter what fields are returned for a particular document.\nYou can include the `_source`, `_source_includes`, and `_source_excludes` query parameters in the request URI to specify the defaults to use when there are no per-document instructions.\n\n**Get stored fields**\n\nUse the `stored_fields` attribute to specify the set of stored fields you want to retrieve.\nAny requested fields that are not stored are ignored.\nYou can include the `stored_fields` query parameter in the request URI to specify the defaults to use when there are no per-document instructions.",
         "operationId": "mget-1",
         "parameters": [
           {
@@ -18027,7 +18027,7 @@
           "document"
         ],
         "summary": "Get multiple documents",
-        "description": "Get multiple JSON documents by ID from one or more indices.\nIf you specify an index in the request URI, you only need to specify the document IDs in the request body.\nTo ensure fast responses, this multi get (mget) API responds with partial results if one or more shards fail.",
+        "description": "Get multiple JSON documents by ID from one or more indices.\nIf you specify an index in the request URI, you only need to specify the document IDs in the request body.\nTo ensure fast responses, this multi get (mget) API responds with partial results if one or more shards fail.\n\n**Filter source fields**\n\nBy default, the `_source` field is returned for every document (if stored).\nUse the `_source` and `_source_include` or `source_exclude` attributes to filter what fields are returned for a particular document.\nYou can include the `_source`, `_source_includes`, and `_source_excludes` query parameters in the request URI to specify the defaults to use when there are no per-document instructions.\n\n**Get stored fields**\n\nUse the `stored_fields` attribute to specify the set of stored fields you want to retrieve.\nAny requested fields that are not stored are ignored.\nYou can include the `stored_fields` query parameter in the request URI to specify the defaults to use when there are no per-document instructions.",
         "operationId": "mget-2",
         "parameters": [
           {
@@ -18076,7 +18076,7 @@
           "document"
         ],
         "summary": "Get multiple documents",
-        "description": "Get multiple JSON documents by ID from one or more indices.\nIf you specify an index in the request URI, you only need to specify the document IDs in the request body.\nTo ensure fast responses, this multi get (mget) API responds with partial results if one or more shards fail.",
+        "description": "Get multiple JSON documents by ID from one or more indices.\nIf you specify an index in the request URI, you only need to specify the document IDs in the request body.\nTo ensure fast responses, this multi get (mget) API responds with partial results if one or more shards fail.\n\n**Filter source fields**\n\nBy default, the `_source` field is returned for every document (if stored).\nUse the `_source` and `_source_include` or `source_exclude` attributes to filter what fields are returned for a particular document.\nYou can include the `_source`, `_source_includes`, and `_source_excludes` query parameters in the request URI to specify the defaults to use when there are no per-document instructions.\n\n**Get stored fields**\n\nUse the `stored_fields` attribute to specify the set of stored fields you want to retrieve.\nAny requested fields that are not stored are ignored.\nYou can include the `stored_fields` query parameter in the request URI to specify the defaults to use when there are no per-document instructions.",
         "operationId": "mget-3",
         "parameters": [
           {
@@ -24642,6 +24642,7 @@
           "search"
         ],
         "summary": "Run multiple templated searches",
+        "description": "Run multiple templated searches with a single request.\nIf you are providing a text file or text input to `curl`, use the `--data-binary` flag instead of `-d` to preserve newlines.\nFor example:\n\n```\n$ cat requests\n{ \"index\": \"my-index\" }\n{ \"id\": \"my-search-template\", \"params\": { \"query_string\": \"hello world\", \"from\": 0, \"size\": 10 }}\n{ \"index\": \"my-other-index\" }\n{ \"id\": \"my-other-search-template\", \"params\": { \"query_type\": \"match_all\" }}\n\n$ curl -H \"Content-Type: application/x-ndjson\" -XGET localhost:9200/_msearch/template --data-binary \"@requests\"; echo\n```",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/search-template.html"
         },
@@ -24678,6 +24679,7 @@
           "search"
         ],
         "summary": "Run multiple templated searches",
+        "description": "Run multiple templated searches with a single request.\nIf you are providing a text file or text input to `curl`, use the `--data-binary` flag instead of `-d` to preserve newlines.\nFor example:\n\n```\n$ cat requests\n{ \"index\": \"my-index\" }\n{ \"id\": \"my-search-template\", \"params\": { \"query_string\": \"hello world\", \"from\": 0, \"size\": 10 }}\n{ \"index\": \"my-other-index\" }\n{ \"id\": \"my-other-search-template\", \"params\": { \"query_type\": \"match_all\" }}\n\n$ curl -H \"Content-Type: application/x-ndjson\" -XGET localhost:9200/_msearch/template --data-binary \"@requests\"; echo\n```",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/search-template.html"
         },
@@ -24716,6 +24718,7 @@
           "search"
         ],
         "summary": "Run multiple templated searches",
+        "description": "Run multiple templated searches with a single request.\nIf you are providing a text file or text input to `curl`, use the `--data-binary` flag instead of `-d` to preserve newlines.\nFor example:\n\n```\n$ cat requests\n{ \"index\": \"my-index\" }\n{ \"id\": \"my-search-template\", \"params\": { \"query_string\": \"hello world\", \"from\": 0, \"size\": 10 }}\n{ \"index\": \"my-other-index\" }\n{ \"id\": \"my-other-search-template\", \"params\": { \"query_type\": \"match_all\" }}\n\n$ curl -H \"Content-Type: application/x-ndjson\" -XGET localhost:9200/_msearch/template --data-binary \"@requests\"; echo\n```",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/search-template.html"
         },
@@ -24755,6 +24758,7 @@
           "search"
         ],
         "summary": "Run multiple templated searches",
+        "description": "Run multiple templated searches with a single request.\nIf you are providing a text file or text input to `curl`, use the `--data-binary` flag instead of `-d` to preserve newlines.\nFor example:\n\n```\n$ cat requests\n{ \"index\": \"my-index\" }\n{ \"id\": \"my-search-template\", \"params\": { \"query_string\": \"hello world\", \"from\": 0, \"size\": 10 }}\n{ \"index\": \"my-other-index\" }\n{ \"id\": \"my-other-search-template\", \"params\": { \"query_type\": \"match_all\" }}\n\n$ curl -H \"Content-Type: application/x-ndjson\" -XGET localhost:9200/_msearch/template --data-binary \"@requests\"; echo\n```",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/search-template.html"
         },
@@ -82005,7 +82009,7 @@
             "type": "boolean"
           },
           "source": {
-            "description": "An inline search template. Supports the same parameters as the search API's\nrequest body. Also supports Mustache variables. If no id is specified, this\nparameter is required.",
+            "description": "An inline search template. Supports the same parameters as the search API's\nrequest body. It also supports Mustache variables. If no `id` is specified, this\nparameter is required.",
             "type": "string"
           }
         }
@@ -95776,7 +95780,7 @@
               "type": "object",
               "properties": {
                 "took": {
-                  "description": "Milliseconds it took Elasticsearch to execute the request.",
+                  "description": "The milliseconds it took Elasticsearch to run the request.",
                   "type": "number"
                 },
                 "timed_out": {
@@ -95790,14 +95794,14 @@
                   "$ref": "#/components/schemas/_global.search._types:HitsMetadata"
                 },
                 "fields": {
-                  "description": "Contains field values for the documents. These fields\nmust be specified in the request using the `fields` parameter.",
+                  "description": "The field values for the documents. These fields\nmust be specified in the request using the `fields` parameter.",
                   "type": "object",
                   "additionalProperties": {
                     "type": "object"
                   }
                 },
                 "max_score": {
-                  "description": "Highest returned document score. This value is null for requests\nthat do not sort by score.",
+                  "description": "The highest returned document score. This value is null for requests\nthat do not sort by score.",
                   "type": "number"
                 }
               },
@@ -95857,6 +95861,7 @@
               "type": "object",
               "properties": {
                 "docs": {
+                  "description": "The response includes a docs array that contains the documents in the order specified in the request.\nThe structure of the returned documents is similar to that returned by the get API.\nIf there is a failure getting a particular document, the error is included in place of the document.",
                   "type": "array",
                   "items": {
                     "$ref": "#/components/schemas/_global.mget:ResponseItem"
@@ -103329,7 +103334,7 @@
       "knn_search#index": {
         "in": "path",
         "name": "index",
-        "description": "A comma-separated list of index names to search;\nuse `_all` or to perform the operation on all indices",
+        "description": "A comma-separated list of index names to search;\nuse `_all` or to perform the operation on all indices.",
         "required": true,
         "deprecated": false,
         "schema": {
@@ -103340,7 +103345,7 @@
       "knn_search#routing": {
         "in": "query",
         "name": "routing",
-        "description": "A comma-separated list of specific routing values",
+        "description": "A comma-separated list of specific routing values.",
         "deprecated": false,
         "schema": {
           "$ref": "#/components/schemas/_types:Routing"
@@ -104792,7 +104797,7 @@
       "msearch_template#index": {
         "in": "path",
         "name": "index",
-        "description": "Comma-separated list of data streams, indices, and aliases to search.\nSupports wildcards (`*`).\nTo search all data streams and indices, omit this parameter or use `*`.",
+        "description": "A comma-separated list of data streams, indices, and aliases to search.\nIt supports wildcards (`*`).\nTo search all data streams and indices, omit this parameter or use `*`.",
         "required": true,
         "deprecated": false,
         "schema": {
@@ -104813,7 +104818,7 @@
       "msearch_template#max_concurrent_searches": {
         "in": "query",
         "name": "max_concurrent_searches",
-        "description": "Maximum number of concurrent searches the API can run.",
+        "description": "The maximum number of concurrent searches the API can run.",
         "deprecated": false,
         "schema": {
           "type": "number"
@@ -104823,7 +104828,7 @@
       "msearch_template#search_type": {
         "in": "query",
         "name": "search_type",
-        "description": "The type of the search operation.\nAvailable options: `query_then_fetch`, `dfs_query_then_fetch`.",
+        "description": "The type of the search operation.",
         "deprecated": false,
         "schema": {
           "$ref": "#/components/schemas/_types:SearchType"
@@ -108922,7 +108927,7 @@
                   "$ref": "#/components/schemas/_global.search._types:SourceConfig"
                 },
                 "docvalue_fields": {
-                  "description": "The request returns doc values for field names matching these patterns\nin the hits.fields property of the response. Accepts wildcard (*) patterns.",
+                  "description": "The request returns doc values for field names matching these patterns\nin the `hits.fields` property of the response.\nIt accepts wildcard (`*`) patterns.",
                   "type": "array",
                   "items": {
                     "$ref": "#/components/schemas/_types.query_dsl:FieldAndFormat"
@@ -108935,7 +108940,7 @@
                   "$ref": "#/components/schemas/_types:Fields"
                 },
                 "filter": {
-                  "description": "Query to filter the documents that can match. The kNN search will return the top\n`k` documents that also match this filter. The value can be a single query or a\nlist of queries. If `filter` isn't provided, all documents are allowed to match.",
+                  "description": "A query to filter the documents that can match. The kNN search will return the top\n`k` documents that also match this filter. The value can be a single query or a\nlist of queries. If `filter` isn't provided, all documents are allowed to match.",
                   "oneOf": [
                     {
                       "$ref": "#/components/schemas/_types.query_dsl:QueryContainer"

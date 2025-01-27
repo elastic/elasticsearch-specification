@@ -45,7 +45,7 @@ import { Operation } from './types'
  * @availability serverless stability=stable visibility=public
  * @index_privileges read
  * @doc_tag document
- * @eoc_id docs-multi-get
+ * @doc_id docs-multi-get
  */
 export interface Request extends RequestBase {
   urls: [

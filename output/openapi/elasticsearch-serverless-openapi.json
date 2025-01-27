@@ -9593,7 +9593,7 @@
           "document"
         ],
         "summary": "Get multiple documents",
-        "description": "Get multiple JSON documents by ID from one or more indices.\nIf you specify an index in the request URI, you only need to specify the document IDs in the request body.\nTo ensure fast responses, this multi get (mget) API responds with partial results if one or more shards fail.",
+        "description": "Get multiple JSON documents by ID from one or more indices.\nIf you specify an index in the request URI, you only need to specify the document IDs in the request body.\nTo ensure fast responses, this multi get (mget) API responds with partial results if one or more shards fail.\n\n**Filter source fields**\n\nBy default, the `_source` field is returned for every document (if stored).\nUse the `_source` and `_source_include` or `source_exclude` attributes to filter what fields are returned for a particular document.\nYou can include the `_source`, `_source_includes`, and `_source_excludes` query parameters in the request URI to specify the defaults to use when there are no per-document instructions.\n\n**Get stored fields**\n\nUse the `stored_fields` attribute to specify the set of stored fields you want to retrieve.\nAny requested fields that are not stored are ignored.\nYou can include the `stored_fields` query parameter in the request URI to specify the defaults to use when there are no per-document instructions.",
         "operationId": "mget",
         "parameters": [
           {
@@ -9636,7 +9636,7 @@
           "document"
         ],
         "summary": "Get multiple documents",
-        "description": "Get multiple JSON documents by ID from one or more indices.\nIf you specify an index in the request URI, you only need to specify the document IDs in the request body.\nTo ensure fast responses, this multi get (mget) API responds with partial results if one or more shards fail.",
+        "description": "Get multiple JSON documents by ID from one or more indices.\nIf you specify an index in the request URI, you only need to specify the document IDs in the request body.\nTo ensure fast responses, this multi get (mget) API responds with partial results if one or more shards fail.\n\n**Filter source fields**\n\nBy default, the `_source` field is returned for every document (if stored).\nUse the `_source` and `_source_include` or `source_exclude` attributes to filter what fields are returned for a particular document.\nYou can include the `_source`, `_source_includes`, and `_source_excludes` query parameters in the request URI to specify the defaults to use when there are no per-document instructions.\n\n**Get stored fields**\n\nUse the `stored_fields` attribute to specify the set of stored fields you want to retrieve.\nAny requested fields that are not stored are ignored.\nYou can include the `stored_fields` query parameter in the request URI to specify the defaults to use when there are no per-document instructions.",
         "operationId": "mget-1",
         "parameters": [
           {
@@ -9681,7 +9681,7 @@
           "document"
         ],
         "summary": "Get multiple documents",
-        "description": "Get multiple JSON documents by ID from one or more indices.\nIf you specify an index in the request URI, you only need to specify the document IDs in the request body.\nTo ensure fast responses, this multi get (mget) API responds with partial results if one or more shards fail.",
+        "description": "Get multiple JSON documents by ID from one or more indices.\nIf you specify an index in the request URI, you only need to specify the document IDs in the request body.\nTo ensure fast responses, this multi get (mget) API responds with partial results if one or more shards fail.\n\n**Filter source fields**\n\nBy default, the `_source` field is returned for every document (if stored).\nUse the `_source` and `_source_include` or `source_exclude` attributes to filter what fields are returned for a particular document.\nYou can include the `_source`, `_source_includes`, and `_source_excludes` query parameters in the request URI to specify the defaults to use when there are no per-document instructions.\n\n**Get stored fields**\n\nUse the `stored_fields` attribute to specify the set of stored fields you want to retrieve.\nAny requested fields that are not stored are ignored.\nYou can include the `stored_fields` query parameter in the request URI to specify the defaults to use when there are no per-document instructions.",
         "operationId": "mget-2",
         "parameters": [
           {
@@ -9727,7 +9727,7 @@
           "document"
         ],
         "summary": "Get multiple documents",
-        "description": "Get multiple JSON documents by ID from one or more indices.\nIf you specify an index in the request URI, you only need to specify the document IDs in the request body.\nTo ensure fast responses, this multi get (mget) API responds with partial results if one or more shards fail.",
+        "description": "Get multiple JSON documents by ID from one or more indices.\nIf you specify an index in the request URI, you only need to specify the document IDs in the request body.\nTo ensure fast responses, this multi get (mget) API responds with partial results if one or more shards fail.\n\n**Filter source fields**\n\nBy default, the `_source` field is returned for every document (if stored).\nUse the `_source` and `_source_include` or `source_exclude` attributes to filter what fields are returned for a particular document.\nYou can include the `_source`, `_source_includes`, and `_source_excludes` query parameters in the request URI to specify the defaults to use when there are no per-document instructions.\n\n**Get stored fields**\n\nUse the `stored_fields` attribute to specify the set of stored fields you want to retrieve.\nAny requested fields that are not stored are ignored.\nYou can include the `stored_fields` query parameter in the request URI to specify the defaults to use when there are no per-document instructions.",
         "operationId": "mget-3",
         "parameters": [
           {
@@ -14293,6 +14293,7 @@
           "search"
         ],
         "summary": "Run multiple templated searches",
+        "description": "Run multiple templated searches with a single request.\nIf you are providing a text file or text input to `curl`, use the `--data-binary` flag instead of `-d` to preserve newlines.\nFor example:\n\n```\n$ cat requests\n{ \"index\": \"my-index\" }\n{ \"id\": \"my-search-template\", \"params\": { \"query_string\": \"hello world\", \"from\": 0, \"size\": 10 }}\n{ \"index\": \"my-other-index\" }\n{ \"id\": \"my-other-search-template\", \"params\": { \"query_type\": \"match_all\" }}\n\n$ curl -H \"Content-Type: application/x-ndjson\" -XGET localhost:9200/_msearch/template --data-binary \"@requests\"; echo\n```",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/search-template.html"
         },
@@ -14329,6 +14330,7 @@
           "search"
         ],
         "summary": "Run multiple templated searches",
+        "description": "Run multiple templated searches with a single request.\nIf you are providing a text file or text input to `curl`, use the `--data-binary` flag instead of `-d` to preserve newlines.\nFor example:\n\n```\n$ cat requests\n{ \"index\": \"my-index\" }\n{ \"id\": \"my-search-template\", \"params\": { \"query_string\": \"hello world\", \"from\": 0, \"size\": 10 }}\n{ \"index\": \"my-other-index\" }\n{ \"id\": \"my-other-search-template\", \"params\": { \"query_type\": \"match_all\" }}\n\n$ curl -H \"Content-Type: application/x-ndjson\" -XGET localhost:9200/_msearch/template --data-binary \"@requests\"; echo\n```",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/search-template.html"
         },
@@ -14367,6 +14369,7 @@
           "search"
         ],
         "summary": "Run multiple templated searches",
+        "description": "Run multiple templated searches with a single request.\nIf you are providing a text file or text input to `curl`, use the `--data-binary` flag instead of `-d` to preserve newlines.\nFor example:\n\n```\n$ cat requests\n{ \"index\": \"my-index\" }\n{ \"id\": \"my-search-template\", \"params\": { \"query_string\": \"hello world\", \"from\": 0, \"size\": 10 }}\n{ \"index\": \"my-other-index\" }\n{ \"id\": \"my-other-search-template\", \"params\": { \"query_type\": \"match_all\" }}\n\n$ curl -H \"Content-Type: application/x-ndjson\" -XGET localhost:9200/_msearch/template --data-binary \"@requests\"; echo\n```",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/search-template.html"
         },
@@ -14406,6 +14409,7 @@
           "search"
         ],
         "summary": "Run multiple templated searches",
+        "description": "Run multiple templated searches with a single request.\nIf you are providing a text file or text input to `curl`, use the `--data-binary` flag instead of `-d` to preserve newlines.\nFor example:\n\n```\n$ cat requests\n{ \"index\": \"my-index\" }\n{ \"id\": \"my-search-template\", \"params\": { \"query_string\": \"hello world\", \"from\": 0, \"size\": 10 }}\n{ \"index\": \"my-other-index\" }\n{ \"id\": \"my-other-search-template\", \"params\": { \"query_type\": \"match_all\" }}\n\n$ curl -H \"Content-Type: application/x-ndjson\" -XGET localhost:9200/_msearch/template --data-binary \"@requests\"; echo\n```",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/search-template.html"
         },
@@ -53543,7 +53547,7 @@
             "type": "boolean"
           },
           "source": {
-            "description": "An inline search template. Supports the same parameters as the search API's\nrequest body. Also supports Mustache variables. If no id is specified, this\nparameter is required.",
+            "description": "An inline search template. Supports the same parameters as the search API's\nrequest body. It also supports Mustache variables. If no `id` is specified, this\nparameter is required.",
             "type": "string"
           }
         }
@@ -57047,6 +57051,7 @@
               "type": "object",
               "properties": {
                 "docs": {
+                  "description": "The response includes a docs array that contains the documents in the order specified in the request.\nThe structure of the returned documents is similar to that returned by the get API.\nIf there is a failure getting a particular document, the error is included in place of the document.",
                   "type": "array",
                   "items": {
                     "$ref": "#/components/schemas/_global.mget:ResponseItem"
@@ -61888,7 +61893,7 @@
       "msearch_template#index": {
         "in": "path",
         "name": "index",
-        "description": "Comma-separated list of data streams, indices, and aliases to search.\nSupports wildcards (`*`).\nTo search all data streams and indices, omit this parameter or use `*`.",
+        "description": "A comma-separated list of data streams, indices, and aliases to search.\nIt supports wildcards (`*`).\nTo search all data streams and indices, omit this parameter or use `*`.",
         "required": true,
         "deprecated": false,
         "schema": {
@@ -61909,7 +61914,7 @@
       "msearch_template#max_concurrent_searches": {
         "in": "query",
         "name": "max_concurrent_searches",
-        "description": "Maximum number of concurrent searches the API can run.",
+        "description": "The maximum number of concurrent searches the API can run.",
         "deprecated": false,
         "schema": {
           "type": "number"
@@ -61919,7 +61924,7 @@
       "msearch_template#search_type": {
         "in": "query",
         "name": "search_type",
-        "description": "The type of the search operation.\nAvailable options: `query_then_fetch`, `dfs_query_then_fetch`.",
+        "description": "The type of the search operation.",
         "deprecated": false,
         "schema": {
           "$ref": "#/components/schemas/_types:SearchType"
