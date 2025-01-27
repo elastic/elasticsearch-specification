@@ -28,38 +28,49 @@ import { Duration } from '@_types/Time'
  * @rest_spec_name put_script
  * @availability stack stability=stable
  * @availability serverless stability=stable visibility=public
+ * @cluster_privileges manage
  * @doc_tag script
+ * @doc_id script-put
+ * @ext_doc_id search-template
  */
 export interface Request extends RequestBase {
   path_parts: {
     /**
-     * Identifier for the stored script or search template.
-     * Must be unique within the cluster.
+     * The identifier for the stored script or search template.
+     * It must be unique within the cluster.
      */
     id: Id
     /**
-     * Context in which the script or search template should run.
+     * The context in which the script or search template should run.
      * To prevent errors, the API immediately compiles the script or template in this context.
      */
     context?: Name
   }
   query_parameters: {
     /**
-     * Period to wait for a connection to the master node.
+     * The context in which the script or search template should run.
+     * To prevent errors, the API immediately compiles the script or template in this context.
+     * If you specify both this and the `<context>` path parameter, the API uses the request path parameter.
+     */
+    context?: Name
+    /**
+     * The period to wait for a connection to the master node.
      * If no response is received before the timeout expires, the request fails and returns an error.
+     * It can also be set to `-1` to indicate that the request should never timeout.
      * @server_default 30s
      */
     master_timeout?: Duration
     /**
-     * Period to wait for a response.
+     * The period to wait for a response.
      * If no response is received before the timeout expires, the request fails and returns an error.
+     * It can also be set to `-1` to indicate that the request should never timeout.
      * @server_default 30s
      */
     timeout?: Duration
   }
   body: {
     /**
-     * Contains the script or search template, its parameters, and its language.
+     * The script or search template, its parameters, and its language.
      */
     script: StoredScript
   }
