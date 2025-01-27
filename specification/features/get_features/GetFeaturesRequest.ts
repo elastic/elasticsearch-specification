@@ -34,6 +34,7 @@ import { Duration } from '@_types/Time'
  * @rest_spec_name features.get_features
  * @availability stack since=7.12.0 stability=stable
  * @doc_id get-features-api
+ * @ext_doc_id snapshot-create
  */
 export interface Request extends RequestBase {
   urls: [

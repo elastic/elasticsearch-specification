@@ -26,7 +26,7 @@ import { Id } from '@_types/common'
  * @rest_spec_name inference.delete
  * @availability stack since=8.11.0 stability=stable visibility=public
  * @availability serverless stability=stable visibility=public
- * @doc_id apis
+ * @doc_id inference-api-delete
  */
 export interface Request extends RequestBase {
   urls: [
@@ -46,19 +46,19 @@ export interface Request extends RequestBase {
     task_type?: TaskType
 
     /**
-     * The inference Id
+     * The inference identifier.
      */
     inference_id: Id
   }
   query_parameters: {
     /**
-     * When true, the endpoint is not deleted, and a list of ingest processors which reference this endpoint is returned
+     * When true, the endpoint is not deleted and a list of ingest processors which reference this endpoint is returned.
      * @server_default false
      */
     dry_run?: boolean
 
     /**
-     * When true, the inference endpoint is forcefully deleted even if it is still being used by ingest processors or semantic text fields
+     * When true, the inference endpoint is forcefully deleted even if it is still being used by ingest processors or semantic text fields.
      * @server_default false
      */
     force?: boolean

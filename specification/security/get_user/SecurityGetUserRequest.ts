@@ -21,7 +21,7 @@ import { RequestBase } from '@_types/Base'
 import { Username } from '@_types/common'
 
 /**
- * Get users.s
+ * Get users.
  *
  * Get information about users in the native realm and built-in users.
  * @rest_spec_name security.get_user
