@@ -237,15 +237,15 @@ export class DataEmailAttachment {
 
 export class Email {
   id?: Id
-  bcc?: string[]
+  bcc?: string | string[]
   body?: EmailBody
-  cc?: string[]
+  cc?: string | string[]
   from?: string
   priority?: EmailPriority
-  reply_to?: string[]
+  reply_to?: string | string[]
   sent_date?: DateTime
   subject: string
-  to: string[]
+  to: string | string[]
   attachments?: Dictionary<string, EmailAttachmentContainer>
 }
 
