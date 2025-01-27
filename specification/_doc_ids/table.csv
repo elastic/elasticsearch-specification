@@ -604,8 +604,9 @@ search-render-query,https://www.elastic.co/guide/en/elasticsearch/reference/{bra
 search-count,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/search-count.html
 search-explain,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/search-explain.html
 search-field-caps,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/search-field-caps.html
+search-knn,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/knn-search-api.html
 search-multi-search,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/search-multi-search.html
-search-multi-search,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/search-multi-search.html
+search-multi-search-template,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/multi-search-template.html
 search-rank-eval,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/search-rank-eval.html
 search-rank-eval,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/search-rank-eval.html
 search-request-body,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/search-request-body.html

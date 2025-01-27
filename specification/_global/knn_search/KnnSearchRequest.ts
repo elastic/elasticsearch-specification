@@ -37,10 +37,17 @@ import { Query } from './_types/Knn'
  *
  * The kNN search API supports restricting the search using a filter.
  * The search will return the top k documents that also match the filter query.
+ *
+ * A kNN search response has the exact same structure as a search API response.
+ * However, certain sections have a meaning specific to kNN search:
+ *
+ * * The document `_score` is determined by the similarity between the query and document vector.
+ * * The `hits.total` object contains the total number of nearest neighbor candidates considered, which is `num_candidates * num_shards`. The `hits.total.relation` will always be `eq`, indicating an exact value.
  * @rest_spec_name knn_search
  * @availability stack since=8.0.0 stability=experimental
  * @deprecated 8.4.0 The kNN search API has been replaced by the `knn` option in the search API.
  * @doc_tag search
+ * @doc_id search-knn
  */
 export interface Request extends RequestBase {
   urls: [
@@ -52,41 +59,44 @@ export interface Request extends RequestBase {
   path_parts: {
     /**
      * A comma-separated list of index names to search;
-     * use `_all` or to perform the operation on all indices
+     * use `_all` or to perform the operation on all indices.
      */
     index: Indices
   }
   query_parameters: {
     /**
-     * A comma-separated list of specific routing values
+     * A comma-separated list of specific routing values.
      */
     routing?: Routing
   }
   body: {
     /**
      * Indicates which source fields are returned for matching documents. These
-     * fields are returned in the hits._source property of the search response.
+     * fields are returned in the `hits._source` property of the search response.
+     * @default_server true
      */
     _source?: SourceConfig
     /**
      * The request returns doc values for field names matching these patterns
-     * in the hits.fields property of the response. Accepts wildcard (*) patterns.
+     * in the `hits.fields` property of the response.
+     * It accepts wildcard (`*`) patterns.
      */
     docvalue_fields?: FieldAndFormat[]
     /**
-     * List of stored fields to return as part of a hit. If no fields are specified,
-     * no stored fields are included in the response. If this field is specified, the _source
-     * parameter defaults to false. You can pass _source: true to return both source fields
+     * A list of stored fields to return as part of a hit. If no fields are specified,
+     * no stored fields are included in the response. If this field is specified, the `_source`
+     * parameter defaults to `false`. You can pass `_source: true` to return both source fields
      * and stored fields in the search response.
      */
     stored_fields?: Fields
     /**
      * The request returns values for field names matching these patterns
-     * in the hits.fields property of the response. Accepts wildcard (*) patterns.
+     * in the `hits.fields` property of the response.
+     * It accepts wildcard (`*`) patterns.
      */
     fields?: Fields
     /**
-     * Query to filter the documents that can match. The kNN search will return the top
+     * A query to filter the documents that can match. The kNN search will return the top
      * `k` documents that also match this filter. The value can be a single query or a
      * list of queries. If `filter` isn't provided, all documents are allowed to match.
      * @availability stack since=8.2.0
@@ -94,7 +104,7 @@ export interface Request extends RequestBase {
      */
     filter?: QueryContainer | QueryContainer[]
     /**
-     * kNN query to execute
+     * The kNN query to run.
      * @ext_doc_id query-dsl-knn-query
      */
     knn: Query
