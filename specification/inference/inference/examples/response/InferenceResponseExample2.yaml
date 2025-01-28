@@ -1,0 +1,45 @@
+summary: Rerank task
+description: >
+  A successful response from `POST _inference/rerank/cohere_rerank`.
+# type: "response"
+# response_code:
+value: |-
+  {
+    "rerank": [
+      {
+        "index": "2",
+        "relevance_score": "0.011597361",
+        "text": "leia"
+      },
+      {
+        "index": "0",
+        "relevance_score": "0.006338922",
+        "text": "luke"
+      },
+      {
+        "index": "5",
+        "relevance_score": "0.0016166499",
+        "text": "star"
+      },
+      {
+        "index": "4",
+        "relevance_score": "0.0011695103",
+        "text": "r2d2"
+      },
+      {
+        "index": "1",
+        "relevance_score": "5.614787E-4",
+        "text": "like"
+      },
+      {
+        "index": "6",
+        "relevance_score": "3.7850367E-4",
+        "text": "wars"
+      },
+      {
+        "index": "3",
+        "relevance_score": "1.2508839E-5",
+        "text": "chewy"
+      }
+    ]
+  }

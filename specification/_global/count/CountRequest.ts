@@ -27,8 +27,8 @@ import { Operator } from '@_types/query_dsl/Operator'
  * Count search results.
  * Get the number of documents matching a query.
  *
- * The query can either be provided using a simple query string as a parameter or using the Query DSL defined within the request body.
- * The latter must be nested in a `query` key, which is the same as the search API.
+ * The query can be provided either by using a simple query string as a parameter, or by defining Query DSL within the request body.
+ * The query is optional. When no query is provided, the API uses `match_all` to count all the documents.
  *
  * The count API supports multi-target syntax. You can run a single count API search across multiple data streams and indices.
  *
@@ -140,14 +140,14 @@ export interface Request extends RequestBase {
      */
     terminate_after?: long
     /**
-     * The query in Lucene query string syntax.
+     * The query in Lucene query string syntax. This parameter cannot be used with a request body.
      */
     q?: string
   }
   body: {
     /**
-     * Defines the search definition using the Query DSL.
-     * The query is optional, and when not provided, it will use `match_all` to count all the docs.
+     * Defines the search query using Query DSL. A request body query cannot be used
+     * with the `q` query string parameter.
      */
     query?: QueryContainer
   }

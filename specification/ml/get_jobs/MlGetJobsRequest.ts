@@ -31,6 +31,7 @@ import { Ids } from '@_types/common'
  * @availability serverless stability=stable visibility=public
  * @cluster_privileges monitor_ml
  * @doc_tag ml anomaly
+ * @doc_id ml-get-job
  */
 export interface Request extends RequestBase {
   urls: [

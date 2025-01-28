@@ -1130,6 +1130,7 @@ export interface ReindexRethrottleResponse {
 export interface RenderSearchTemplateRequest extends RequestBase {
   id?: Id
   body?: {
+    id?: Id
     file?: string
     params?: Record<string, any>
     source?: string
@@ -5408,6 +5409,11 @@ export interface MappingCorePropertyBase extends MappingPropertyBase {
   store?: boolean
 }
 
+export interface MappingCountedKeywordProperty extends MappingPropertyBase {
+  type: 'counted_keyword'
+  index?: boolean
+}
+
 export interface MappingDataStreamTimestamp {
   enabled: boolean
 }
@@ -5528,7 +5534,7 @@ export interface MappingFieldNamesField {
   enabled: boolean
 }
 
-export type MappingFieldType = 'none' | 'geo_point' | 'geo_shape' | 'ip' | 'binary' | 'keyword' | 'text' | 'search_as_you_type' | 'date' | 'date_nanos' | 'boolean' | 'completion' | 'nested' | 'object' | 'passthrough' | 'version' | 'murmur3' | 'token_count' | 'percolator' | 'integer' | 'long' | 'short' | 'byte' | 'float' | 'half_float' | 'scaled_float' | 'double' | 'integer_range' | 'float_range' | 'long_range' | 'double_range' | 'date_range' | 'ip_range' | 'alias' | 'join' | 'rank_feature' | 'rank_features' | 'flattened' | 'shape' | 'histogram' | 'constant_keyword' | 'aggregate_metric_double' | 'dense_vector' | 'semantic_text' | 'sparse_vector' | 'match_only_text' | 'icu_collation_keyword'
+export type MappingFieldType = 'none' | 'geo_point' | 'geo_shape' | 'ip' | 'binary' | 'keyword' | 'text' | 'search_as_you_type' | 'date' | 'date_nanos' | 'boolean' | 'completion' | 'nested' | 'object' | 'passthrough' | 'version' | 'murmur3' | 'token_count' | 'percolator' | 'integer' | 'long' | 'short' | 'byte' | 'float' | 'half_float' | 'scaled_float' | 'double' | 'integer_range' | 'float_range' | 'long_range' | 'double_range' | 'date_range' | 'ip_range' | 'alias' | 'join' | 'rank_feature' | 'rank_features' | 'flattened' | 'shape' | 'histogram' | 'constant_keyword' | 'counted_keyword' | 'aggregate_metric_double' | 'dense_vector' | 'semantic_text' | 'sparse_vector' | 'match_only_text' | 'icu_collation_keyword'
 
 export interface MappingFlattenedProperty extends MappingPropertyBase {
   boost?: double
@@ -5723,7 +5729,7 @@ export interface MappingPointProperty extends MappingDocValuesPropertyBase {
   type: 'point'
 }
 
-export type MappingProperty = MappingBinaryProperty | MappingBooleanProperty | MappingDynamicProperty | MappingJoinProperty | MappingKeywordProperty | MappingMatchOnlyTextProperty | MappingPercolatorProperty | MappingRankFeatureProperty | MappingRankFeaturesProperty | MappingSearchAsYouTypeProperty | MappingTextProperty | MappingVersionProperty | MappingWildcardProperty | MappingDateNanosProperty | MappingDateProperty | MappingAggregateMetricDoubleProperty | MappingDenseVectorProperty | MappingFlattenedProperty | MappingNestedProperty | MappingObjectProperty | MappingPassthroughObjectProperty | MappingSemanticTextProperty | MappingSparseVectorProperty | MappingCompletionProperty | MappingConstantKeywordProperty | MappingFieldAliasProperty | MappingHistogramProperty | MappingIpProperty | MappingMurmur3HashProperty | MappingTokenCountProperty | MappingGeoPointProperty | MappingGeoShapeProperty | MappingPointProperty | MappingShapeProperty | MappingByteNumberProperty | MappingDoubleNumberProperty | MappingFloatNumberProperty | MappingHalfFloatNumberProperty | MappingIntegerNumberProperty | MappingLongNumberProperty | MappingScaledFloatNumberProperty | MappingShortNumberProperty | MappingUnsignedLongNumberProperty | MappingDateRangeProperty | MappingDoubleRangeProperty | MappingFloatRangeProperty | MappingIntegerRangeProperty | MappingIpRangeProperty | MappingLongRangeProperty | MappingIcuCollationProperty
+export type MappingProperty = MappingBinaryProperty | MappingBooleanProperty | MappingDynamicProperty | MappingJoinProperty | MappingKeywordProperty | MappingMatchOnlyTextProperty | MappingPercolatorProperty | MappingRankFeatureProperty | MappingRankFeaturesProperty | MappingSearchAsYouTypeProperty | MappingTextProperty | MappingVersionProperty | MappingWildcardProperty | MappingDateNanosProperty | MappingDateProperty | MappingAggregateMetricDoubleProperty | MappingDenseVectorProperty | MappingFlattenedProperty | MappingNestedProperty | MappingObjectProperty | MappingPassthroughObjectProperty | MappingSemanticTextProperty | MappingSparseVectorProperty | MappingCompletionProperty | MappingConstantKeywordProperty | MappingCountedKeywordProperty | MappingFieldAliasProperty | MappingHistogramProperty | MappingIpProperty | MappingMurmur3HashProperty | MappingTokenCountProperty | MappingGeoPointProperty | MappingGeoShapeProperty | MappingPointProperty | MappingShapeProperty | MappingByteNumberProperty | MappingDoubleNumberProperty | MappingFloatNumberProperty | MappingHalfFloatNumberProperty | MappingIntegerNumberProperty | MappingLongNumberProperty | MappingScaledFloatNumberProperty | MappingShortNumberProperty | MappingUnsignedLongNumberProperty | MappingDateRangeProperty | MappingDoubleRangeProperty | MappingFloatRangeProperty | MappingIntegerRangeProperty | MappingIpRangeProperty | MappingLongRangeProperty | MappingIcuCollationProperty
 
 export interface MappingPropertyBase {
   meta?: Record<string, string>
@@ -5731,6 +5737,7 @@ export interface MappingPropertyBase {
   ignore_above?: integer
   dynamic?: MappingDynamicMapping
   fields?: Record<PropertyName, MappingProperty>
+  synthetic_source_keep?: MappingSyntheticSourceKeepEnum
 }
 
 export interface MappingRangePropertyBase extends MappingDocValuesPropertyBase {
@@ -5836,6 +5843,8 @@ export interface MappingSuggestContext {
   type: string
   precision?: integer | string
 }
+
+export type MappingSyntheticSourceKeepEnum = 'none' | 'arrays' | 'all'
 
 export type MappingTermVectorOption = 'no' | 'yes' | 'with_offsets' | 'with_positions' | 'with_positions_offsets' | 'with_positions_offsets_payloads' | 'with_positions_payloads'
 
@@ -9026,6 +9035,7 @@ export interface ClusterComponentTemplateNode {
   template: ClusterComponentTemplateSummary
   version?: VersionNumber
   _meta?: Metadata
+  deprecated?: boolean
 }
 
 export interface ClusterComponentTemplateSummary {
@@ -11270,6 +11280,7 @@ export interface IndicesIndexSettingsLifecycle {
   parse_origination_date?: boolean
   step?: IndicesIndexSettingsLifecycleStep
   rollover_alias?: string
+  prefer_ilm?: boolean | string
 }
 
 export interface IndicesIndexSettingsLifecycleStep {
@@ -11349,7 +11360,8 @@ export interface IndicesMappingLimitSettings {
   nested_objects?: IndicesMappingLimitSettingsNestedObjects
   field_name_length?: IndicesMappingLimitSettingsFieldNameLength
   dimension_fields?: IndicesMappingLimitSettingsDimensionFields
-  ignore_malformed?: boolean
+  source?: IndicesMappingLimitSettingsSourceFields
+  ignore_malformed?: boolean | string
 }
 
 export interface IndicesMappingLimitSettingsDepth {
@@ -11370,6 +11382,10 @@ export interface IndicesMappingLimitSettingsNestedFields {
 
 export interface IndicesMappingLimitSettingsNestedObjects {
   limit?: long
+}
+
+export interface IndicesMappingLimitSettingsSourceFields {
+  mode: IndicesSourceMode
 }
 
 export interface IndicesMappingLimitSettingsTotalFields {
@@ -11498,6 +11514,8 @@ export interface IndicesSoftDeletes {
   enabled?: boolean
   retention_lease?: IndicesRetentionLease
 }
+
+export type IndicesSourceMode = 'disabled' | 'stored' | 'synthetic'
 
 export interface IndicesStorage {
   type: IndicesStorageType
@@ -20919,15 +20937,15 @@ export type WatcherDay = 'sunday' | 'monday' | 'tuesday' | 'wednesday' | 'thursd
 
 export interface WatcherEmail {
   id?: Id
-  bcc?: string[]
+  bcc?: string | string[]
   body?: WatcherEmailBody
-  cc?: string[]
+  cc?: string | string[]
   from?: string
   priority?: WatcherEmailPriority
-  reply_to?: string[]
+  reply_to?: string | string[]
   sent_date?: DateTime
   subject: string
-  to: string[]
+  to: string | string[]
   attachments?: Record<string, WatcherEmailAttachmentContainer>
 }
 

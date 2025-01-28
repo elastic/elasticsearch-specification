@@ -28,6 +28,7 @@ import { integer } from '@_types/Numeric'
  * @availability serverless stability=stable visibility=public
  * @cluster_privileges monitor_ml
  * @doc_tag ml data frame
+ * @doc_id get-dfanalytics-stats
  */
 export interface Request extends RequestBase {
   urls: [

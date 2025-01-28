@@ -32,6 +32,7 @@ import { ExpandWildcards, Fields, Indices } from '@_types/common'
  * @availability stack stability=stable
  * @availability serverless stability=stable visibility=private
  * @index_privileges manage
+ * @doc_id indices-clearcache
  */
 export interface Request extends RequestBase {
   urls: [

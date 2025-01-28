@@ -37,6 +37,7 @@ import { Id } from '@_types/common'
  * @availability stack since=8.11.0 stability=stable visibility=public
  * @availability serverless stability=stable visibility=public
  * @cluster_privileges manage_inference
+ * @doc_id inference-api-put
  */
 export interface Request extends RequestBase {
   urls: [

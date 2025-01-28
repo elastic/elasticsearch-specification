@@ -21,13 +21,16 @@ import { RequestBase } from '@_types/Base'
 
 /**
  * Get license information.
+ *
  * Get information about your Elastic license including its type, its status, when it was issued, and when it expires.
  *
- * NOTE: If the master node is generating a new cluster state, the get license API may return a `404 Not Found` response.
- * If you receive an unexpected 404 response after cluster startup, wait a short period and retry the request.
+ * >info
+ * > If the master node is generating a new cluster state, the get license API may return a `404 Not Found` response.
+ * > If you receive an unexpected 404 response after cluster startup, wait a short period and retry the request.
  * @rest_spec_name license.get
  * @availability stack stability=stable
  * @availability serverless stability=stable visibility=public
+ * @doc_id get-license
  */
 export interface Request extends RequestBase {
   urls: [

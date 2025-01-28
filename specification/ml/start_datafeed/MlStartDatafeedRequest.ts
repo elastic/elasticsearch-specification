@@ -40,6 +40,7 @@ import { DateTime, Duration } from '@_types/Time'
  * @availability serverless stability=stable visibility=public
  * @cluster_privileges manage_ml
  * @doc_tag ml anomaly
+ * @doc_id ml-start-datafeed
  */
 export interface Request extends RequestBase {
   urls: [
