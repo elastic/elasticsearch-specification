@@ -1756,6 +1756,16 @@ actions:
                 $ref: "../../specification/indices/create/examples/request/indicesCreateRequestExample1.yaml"
               indicesCreateRequestExample2:
                 $ref: "../../specification/indices/create/examples/request/indicesCreateRequestExample2.yaml"
+  - target: "$.components['requestBodies']['cluster.put_component_template']"
+    description: "Add example for put component template request"
+    update: 
+      content:
+        application/json:
+          examples:
+            clusterPutComponentTemplateRequestExample1:
+              $ref: "../../specification/cluster/put_component_template/examples/request/ClusterPutComponentTemplateRequestExample1.yaml"
+            clusterPutComponentTemplateRequestExample2:
+              $ref: "../../specification/cluster/put_component_template/examples/request/ClusterPutComponentTemplateRequestExample2.yaml"
 ## Examples for info
   - target: "$.paths['/']['get']"
     description: "Add examples for cluster info"
