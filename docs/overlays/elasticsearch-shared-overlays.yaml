@@ -1697,6 +1697,28 @@ actions:
               examples: 
                 deleteDocumentResponseExample1: 
                   $ref: "../../specification/_global/delete/examples/response/DeleteResponseExample1.yaml"
+  - target: "$.paths['/{index}/_delete_by_query']['post']"
+    description: "Add examples delete by query operation"
+    update:
+      requestBody:
+        content:
+          application/json:
+            examples:
+              deleteByQueryRequestExample1:
+                $ref: "../../specification/_global/delete_by_query/examples/request/DeleteByQueryRequestExample1.yaml"
+              deleteByQueryRequestExample2:
+                $ref: "../../specification/_global/delete_by_query/examples/request/DeleteByQueryRequestExample2.yaml"
+              deleteByQueryRequestExample3:
+                $ref: "../../specification/_global/delete_by_query/examples/request/DeleteByQueryRequestExample3.yaml"
+              deleteByQueryRequestExample4:
+                $ref: "../../specification/_global/delete_by_query/examples/request/DeleteByQueryRequestExample4.yaml"
+      responses:
+        200: 
+          content: 
+            application/json: 
+              examples: 
+                deleteDocumentResponseExample1: 
+                  $ref: "../../specification/_global/delete_by_query/examples/response/DeleteByQueryResponseExample1.yaml"
 ## Examples for licensing
   - target: "$.paths['/_license']['get']"
     description: "Add example for get license response"
@@ -1749,6 +1771,22 @@ actions:
           examples:
             countResponseExample1:
               $ref: "../../specification/_global/count/examples/200_response/CountResponseExample1.yaml"
+  - target: "$.components['requestBodies']['explain']"
+    description: "Add example for explain request"
+    update: 
+      content:
+        application/json:
+          examples:
+            explainRequestExample1:
+              $ref: "../../specification/_global/explain/examples/request/ExplainRequestExample1.yaml"
+  - target: "$.components['responses']['explain#200']"
+    description: "Add example for explain response"
+    update: 
+      content:
+        application/json:
+          examples:
+            explainResponseExample1:
+              $ref: "../../specification/_global/explain/examples/response/ExplainResponseExample1.yaml"
 ## Examples for search applications
   - target: "$.paths['/_application/search_application']['get']"
     description: "Add examples for get search applications operation"
