@@ -1810,6 +1810,57 @@ actions:
                 $ref: "../../specification/_global/reindex/examples/request/ReindexRequestExample11.yaml"
               reindexRequestExample12:
                 $ref: "../../specification/_global/reindex/examples/request/ReindexRequestExample12.yaml"
+  - target: "$.paths['/{index}/_update/{id}']['post']"
+    description: "Add examples for update document operation"
+    update:
+      requestBody:
+        content:
+          application/json:
+            examples:
+              updateRequestExample1:
+                $ref: "../../specification/_global/update/examples/request/UpdateRequestExample1.yaml"
+              updateRequestExample2:
+                $ref: "../../specification/_global/update/examples/request/UpdateRequestExample2.yaml"
+              updateRequestExample3:
+                $ref: "../../specification/_global/update/examples/request/UpdateRequestExample3.yaml"
+              updateRequestExample4:
+                $ref: "../../specification/_global/update/examples/request/UpdateRequestExample4.yaml"
+              updateRequestExample5:
+                $ref: "../../specification/_global/update/examples/request/UpdateRequestExample5.yaml"
+              updateRequestExample6:
+                $ref: "../../specification/_global/update/examples/request/UpdateRequestExample6.yaml"
+              updateRequestExample7:
+                $ref: "../../specification/_global/update/examples/request/UpdateRequestExample7.yaml"
+              updateRequestExample8:
+                $ref: "../../specification/_global/update/examples/request/UpdateRequestExample8.yaml"
+              updateRequestExample9:
+                $ref: "../../specification/_global/update/examples/request/UpdateRequestExample9.yaml"
+              updateRequestExample10:
+                $ref: "../../specification/_global/update/examples/request/UpdateRequestExample10.yaml"
+              updateRequestExample11:
+                $ref: "../../specification/_global/update/examples/request/UpdateRequestExample11.yaml"
+      responses:
+        200: 
+          content:
+            application/json:
+              examples:
+                updateResponseExample1: 
+                  $ref: "../../specification/_global/update/examples/response/UpdateResponseExample1.yaml"
+  - target: "$.paths['/{index}/_update_by_query']['post']"
+    description: "Add examples for update by query operation"
+    update:
+      requestBody:
+        content:
+          application/json:
+            examples:
+              updateByQueryRequestExample1:
+                $ref: "../../specification/_global/update_by_query/examples/request/UpdateByQueryRequestExample1.yaml"
+              updateByQueryRequestExample2:
+                $ref: "../../specification/_global/update_by_query/examples/request/UpdateByQueryRequestExample2.yaml"
+              updateByQueryRequestExample3:
+                $ref: "../../specification/_global/update_by_query/examples/request/UpdateByQueryRequestExample3.yaml"
+              updateByQueryRequestExample4:
+                $ref: "../../specification/_global/update_by_query/examples/request/UpdateByQueryRequestExample4.yaml"
 ## Examples for info
   - target: "$.paths['/']['get']"
     description: "Add examples for cluster info"
