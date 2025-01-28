@@ -1690,6 +1690,15 @@ actions:
               examples:
                 getLicenseResponseExample1:
                   $ref: "../../specification/license/get/examples/response/GetLicenseResponseExample1.yaml"
+## Examples for search
+  - target: "$.components['requestBodies']['clear_scroll']"
+    description: "Add example for clear scroll request"
+    update: 
+      content:
+        application/json:
+          examples:
+            ClearScrollRequestExample1:
+              $ref: "../../specification/_global/clear_scroll/examples/request/ClearScrollRequestExample1.yaml"
 ## Examples for search applications
   - target: "$.paths['/_application/search_application']['get']"
     description: "Add examples for get search applications operation"
