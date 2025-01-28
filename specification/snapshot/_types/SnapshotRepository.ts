@@ -314,8 +314,8 @@ export class S3RepositorySettings extends RepositorySettingsBase {
    */
   readonly?: boolean
   /**
-   * When set to `true`m files are encrypted on server side using an AES256 algorithm.
-   * server_default false
+   * When set to `true`, files are encrypted on server side using an AES256 algorithm.
+   * @server_default false
    */
   server_side_encryption?: boolean
   /**
