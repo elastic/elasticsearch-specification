@@ -38,6 +38,7 @@ import { Duration } from '@_types/Time'
  * @availability stack since=6.7.0 stability=stable
  * @availability serverless stability=stable visibility=private
  * @cluster_privileges manage_ml
+ * @doc_id ml-set-upgrade-mode
  */
 export interface Request extends RequestBase {
   urls: [

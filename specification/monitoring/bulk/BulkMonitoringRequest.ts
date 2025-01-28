@@ -26,6 +26,7 @@ import { Duration } from '@_types/Time'
  * This API is used by the monitoring features to send monitoring data.
  * @rest_spec_name monitoring.bulk
  * @availability stack since=6.3.0 stability=stable visibility=private
+ * @doc_id apis
  */
 export interface Request<TDocument, TPartialDocument> extends RequestBase {
   urls: [

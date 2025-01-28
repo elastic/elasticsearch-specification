@@ -24,11 +24,14 @@ import { Document } from '../_types/Simulation'
 
 /**
  * Simulate a pipeline.
+ *
  * Run an ingest pipeline against a set of provided documents.
  * You can either specify an existing pipeline to use with the provided documents or supply a pipeline definition in the body of the request.
  * @rest_spec_name ingest.simulate
  * @availability stack since=5.0.0 stability=stable
  * @availability serverless stability=stable visibility=public
+ * @cluster_privileges read_pipeline
+ * @doc_id simulate-pipeline-api
  */
 export interface Request extends RequestBase {
   urls: [
@@ -43,8 +46,8 @@ export interface Request extends RequestBase {
   ]
   path_parts: {
     /**
-     * Pipeline to test.
-     * If you don’t specify a `pipeline` in the request body, this parameter is required.
+     * The pipeline to test.
+     * If you don't specify a `pipeline` in the request body, this parameter is required.
      */
     id?: Id
   }
@@ -60,8 +63,8 @@ export interface Request extends RequestBase {
      */
     docs: Document[]
     /**
-     * Pipeline to test.
-     * If you don’t specify the `pipeline` request path parameter, this parameter is required.
+     * The pipeline to test.
+     * If you don't specify the `pipeline` request path parameter, this parameter is required.
      * If you specify both this and the request path parameter, the API only uses the request path parameter.
      */
     pipeline?: Pipeline

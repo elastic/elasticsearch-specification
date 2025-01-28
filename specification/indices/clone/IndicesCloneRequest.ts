@@ -73,6 +73,7 @@ import { Duration } from '@_types/Time'
  * @rest_spec_name indices.clone
  * @availability stack since=7.4.0 stability=stable
  * @index_privileges manage
+ * @doc_id indices-clone-index
  */
 export interface Request extends RequestBase {
   urls: [

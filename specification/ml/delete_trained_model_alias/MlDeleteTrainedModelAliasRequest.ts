@@ -30,6 +30,7 @@ import { Id, Name } from '@_types/common'
  * @availability serverless stability=stable visibility=public
  * @cluster_privileges manage_ml
  * @doc_tag ml trained model
+ * @doc_id delete-trained-models-aliases
  */
 export interface Request extends RequestBase {
   urls: [

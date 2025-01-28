@@ -24,10 +24,19 @@ import { Id } from '@_types/common'
 import { Duration } from '@_types/Time'
 
 /**
- * Perform inference on the service
+ * Perform inference on the service.
+ *
+ * This API enables you to use machine learning models to perform specific tasks on data that you provide as an input.
+ * It returns a response with the results of the tasks.
+ * The inference endpoint you use can perform one specific task that has been defined when the endpoint was created with the create inference API.
+ *
+ * > info
+ * > The inference APIs enable you to use certain services, such as built-in machine learning models (ELSER, E5), models uploaded through Eland, Cohere, OpenAI, Azure, Google AI Studio, Google Vertex AI, Anthropic, Watsonx.ai, or Hugging Face. For built-in models and models uploaded through Eland, the inference APIs offer an alternative way to use and manage trained models. However, if you do not plan to use the inference APIs to use these models or if you want to use non-NLP models, use the machine learning trained model APIs.
  * @rest_spec_name inference.inference
  * @availability stack since=8.11.0 stability=stable visibility=public
  * @availability serverless stability=stable visibility=public
+ * @cluster_privileges monitor_inference
+ * @doc_id inference-api-post
  */
 export interface Request extends RequestBase {
   urls: [
@@ -42,34 +51,38 @@ export interface Request extends RequestBase {
   ]
   path_parts: {
     /**
-     * The task type
+     * The type of inference task that the model performs.
      */
     task_type?: TaskType
     /**
-     * The inference Id
+     * The unique identifier for the inference endpoint.
      */
     inference_id: Id
   }
   query_parameters: {
     /**
-     * Specifies the amount of time to wait for the inference request to complete.
+     * The amount of time to wait for the inference request to complete.
      * @server_default 30s
      */
     timeout?: Duration
   }
   body: {
     /**
-     * Query input, required for rerank task.
-     * Not required for other tasks.
+     * The query input, which is required only for the `rerank` task.
+     * It is not required for other tasks.
      */
     query?: string
     /**
-     * Inference input.
-     * Either a string or an array of strings.
+     * The text on which you want to perform the inference task.
+     * It can be a single string or an array.
+     *
+     * > info
+     * > Inference endpoints for the `completion` task type currently only support a single string as input.
      */
     input: string | Array<string>
     /**
-     * Optional task settings
+     * Task settings for the individual inference request.
+     * These settings are specific to the task type you specified and override the task settings specified when initializing the service.
      */
     task_settings?: TaskSettings
   }

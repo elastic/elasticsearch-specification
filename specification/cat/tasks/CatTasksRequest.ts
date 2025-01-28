@@ -28,7 +28,7 @@ import { Duration, TimeUnit } from '@_types/Time'
  * @rest_spec_name cat.tasks
  * @availability stack since=5.0.0 stability=experimental
  * @availability serverless stability=experimental visibility=private
- * @doc_id tasks
+ * @doc_id cat-tasks
  * @cluster_privileges monitor
  */
 export interface Request extends CatRequestBase {
