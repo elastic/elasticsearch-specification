@@ -39,7 +39,9 @@ import { Duration } from '@_types/Time'
  * @rest_spec_name scroll
  * @availability stack stability=stable
  * @availability serverless stability=stable visibility=public
+ * @index_privileges read
  * @doc_tag search
+ * @doc_id scroll-api
  * @ext_doc_id scroll-search-results
  */
 export interface Request extends RequestBase {
@@ -49,7 +51,7 @@ export interface Request extends RequestBase {
   }
   query_parameters: {
     /**
-     * Period to retain the search context for scrolling.
+     * The period to retain the search context for scrolling.
      * @doc_id scroll-search-results
      * @server_default 1d
      */
@@ -64,12 +66,12 @@ export interface Request extends RequestBase {
   }
   body: {
     /**
-     * Period to retain the search context for scrolling.
+     * The period to retain the search context for scrolling.
      * @doc_id scroll-search-results
      * @server_default 1d
      */
     scroll?: Duration
-    /** Scroll ID of the search. */
+    /** The scroll ID of the search. */
     scroll_id: ScrollId
   }
 }
