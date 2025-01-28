@@ -2004,6 +2004,66 @@ actions:
           examples:
             searchMvtResponseExample1:
               $ref: "../../specification/_global/search_mvt/examples/response/SearchMvtResponseExample1.yaml"
+  - target: "$.components['responses']['search_shards#200']"
+    description: "Add example for search shards response"
+    update: 
+      content:
+        application/json:
+          examples:
+            searchShardsResponseExample1:
+              $ref: "../../specification/_global/search_shards/examples/response/SearchShardsResponseExample1.yaml"
+  - target: "$.components['requestBodies']['search_template']"
+    description: "Add example for search template request"
+    update: 
+      content:
+        application/json:
+          examples:
+            searchTemplateRequestExample1:
+              $ref: "../../specification/_global/search_template/examples/request/SearchTemplateRequestExample1.yaml"
+  - target: "$.components['requestBodies']['terms_enum']"
+    description: "Add example for terms enum request"
+    update: 
+      content:
+        application/json:
+          examples:
+            termsEnumRequestExample1:
+              $ref: "../../specification/_global/terms_enum/examples/request/TermsEnumRequestExample1.yaml"
+  - target: "$.components['responses']['terms_enum#200']"
+    description: "Add example for terms enum response"
+    update: 
+      content:
+        application/json:
+          examples:
+            termsEnumResponseExample1:
+              $ref: "../../specification/_global/terms_enum/examples/response/TermsEnumResponseExample1.yaml"
+  - target: "$.components['requestBodies']['termvectors']"
+    description: "Add example for term vectors request"
+    update: 
+      content:
+        application/json:
+          examples:
+            termVectorsRequestExample1:
+              $ref: "../../specification/_global/termvectors/examples/request/TermVectorsRequestExample1.yaml"
+            termVectorsRequestExample2:
+              $ref: "../../specification/_global/termvectors/examples/request/TermVectorsRequestExample2.yaml"
+            termVectorsRequestExample3:
+              $ref: "../../specification/_global/termvectors/examples/request/TermVectorsRequestExample3.yaml"
+            termVectorsRequestExample4:
+              $ref: "../../specification/_global/termvectors/examples/request/TermVectorsRequestExample4.yaml"
+            termVectorsRequestExample5:
+              $ref: "../../specification/_global/termvectors/examples/request/TermVectorsRequestExample5.yaml"
+  - target: "$.components['responses']['termvectors#200']"
+    description: "Add example for term vectors response"
+    update: 
+      content:
+        application/json:
+          examples:
+            termVectorsResponseExample1:
+              $ref: "../../specification/_global/termvectors/examples/response/TermVectorsResponseExample1.yaml"
+            termVectorsResponseExample2:
+              $ref: "../../specification/_global/termvectors/examples/response/TermVectorsResponseExample2.yaml"
+            termVectorsResponseExample3:
+              $ref: "../../specification/_global/termvectors/examples/response/TermVectorsResponseExample3.yaml"
 ## Examples for search applications
   - target: "$.paths['/_application/search_application']['get']"
     description: "Add examples for get search applications operation"
