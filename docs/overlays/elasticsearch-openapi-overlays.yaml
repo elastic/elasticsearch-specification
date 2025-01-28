@@ -82,40 +82,6 @@ actions:
               examples:
                 resetFeaturesResponseExample1:
                   $ref: "../../specification/features/reset_features/examples/response/ResetFeaturesResponseExample1.yaml"
-  - target: "$.components['requestBodies']['cluster.allocation_explain']"
-    description: "Add examples for cluster allocation explain operation"
-    update: 
-      content: 
-        application/json: 
-          examples: 
-            clusterAllocationExplainRequestExample1: 
-              $ref: "../../specification/cluster/allocation_explain/examples/request/clusterAllocationExplainRequestExample1.yaml"
-  - target: "$.components['responses']['cluster.health#200']"
-    description: "Add examples for cluster health operation"
-    update: 
-      content:
-        application/json:
-          examples:
-            clusterHealthResponseExample1:
-              $ref: "../../specification/cluster/health/examples/response/clusterHealthResponseExample1.yaml"
-  - target: "$.paths['/_cluster/settings']['put']"
-    description: "Add examples for cluster update settings operation"
-    update: 
-      requestBody: 
-        content: 
-          application/json: 
-            examples: 
-              clusterPutSettingsRequestExample1: 
-                $ref: "../../specification/cluster/put_settings/examples/request/ClusterPutSettingsRequestExample1.yaml"
-  - target: "$.paths['/_cluster/reroute']['post']"
-    description: "Add examples for cluster reroute operation"
-    update: 
-      requestBody: 
-        content: 
-          application/json: 
-            examples: 
-              clusterRerouteRequestExample1: 
-                $ref: "../../specification/cluster/reroute/examples/request/ClusterRerouteRequestExample1.yaml"
   - target: "$.components['requestBodies']['nodes.reload_secure_settings']"
     description: "Add examples for nodes reload secure settings operation"
     update: 
@@ -404,6 +370,51 @@ actions:
             examples: 
               postBehavioralAnalyticsEventRequestExample1:
                 $ref: "../../specification/search_application/post_behavioral_analytics_event/examples/request/BehavioralAnalyticsEventPostRequestExample1.yaml"
+## Examples for cluster
+  - target: "$.components['requestBodies']['cluster.allocation_explain']"
+    description: "Add example for cluster allocation exaplain request"
+    update:
+      content:
+        application/json:
+          examples:
+            clusterAllocationExplainRequestExample1:
+              $ref: "../../specification/cluster/allocation_explain/examples/request/ClusterAllocationExplainRequestExample1.yaml"
+  - target: "$.components['requestBodies']['cluster.allocation_explain']"
+    description: "Add examples for cluster allocation explain operation"
+    update: 
+      content: 
+        application/json: 
+          examples: 
+            clusterAllocationExplainRequestExample1: 
+              $ref: "../../specification/cluster/allocation_explain/examples/request/clusterAllocationExplainRequestExample1.yaml"
+  - target: "$.components['responses']['cluster.health#200']"
+    description: "Add examples for cluster health operation"
+    update: 
+      content:
+        application/json:
+          examples:
+            clusterHealthResponseExample1:
+              $ref: "../../specification/cluster/health/examples/response/clusterHealthResponseExample1.yaml"
+  - target: "$.paths['/_cluster/settings']['put']"
+    description: "Add examples for cluster update settings operation"
+    update: 
+      requestBody: 
+        content: 
+          application/json: 
+            examples: 
+              clusterPutSettingsRequestExample1: 
+                $ref: "../../specification/cluster/put_settings/examples/request/ClusterPutSettingsRequestExample1.yaml"
+              clusterPutSettingsRequestExample2: 
+                $ref: "../../specification/cluster/put_settings/examples/request/ClusterPutSettingsRequestExample2.yaml"
+  - target: "$.paths['/_cluster/reroute']['post']"
+    description: "Add examples for cluster reroute operation"
+    update: 
+      requestBody: 
+        content: 
+          application/json: 
+            examples: 
+              clusterRerouteRequestExample1: 
+                $ref: "../../specification/cluster/reroute/examples/request/ClusterRerouteRequestExample1.yaml"
 ## Examples for esql
   - target: "$.paths['/_query/async']['post']"
     description: "Add examples for async esql query operation"
@@ -425,6 +436,15 @@ actions:
               examples:
                 dataStreamLifecycleStatsResponseExample1:
                   $ref: "../../specification/indices/get_data_lifecycle_stats/examples/response/IndicesGetDataLifecycleStatsResponseExample1.yaml"
+## Examples for inference
+  - target: "$.components['requestBodies']['inference.stream_inference']"
+    description: "Add example for inference stream request"
+    update:
+      content:
+        application/json:
+          examples:
+            streamInferenceRequestExample1:
+              $ref: "../../specification/inference/stream_inference/examples/request/StreamInferenceRequestExample1.yaml"
 ## Examples for ingest
   - target: "$.components['requestBodies']['simulate.ingest']"
     description: "Add example for simulate ingest request"
@@ -574,12 +594,4 @@ actions:
               examples:
                 updateWatcherSettingsRequestExample1: 
                   $ref: "../../specification/watcher/get_settings/examples/200_response/WatcherGetSettingsResponseExample1.yaml"
-## Examples for inference
-  - target: "$.components['requestBodies']['inference.stream_inference']"
-    description: "Add example for inference stream request"
-    update:
-      content:
-        application/json:
-          examples:
-            streamInferenceRequestExample1:
-              $ref: "../../specification/inference/stream_inference/examples/request/StreamInferenceRequestExample1.yaml"
+

@@ -24,6 +24,7 @@ import { Duration } from '@_types/Time'
 
 /**
  * Update the cluster settings.
+ *
  * Configure and update dynamic settings on a running cluster.
  * You can also configure dynamic settings locally on an unstarted or shut down node in `elasticsearch.yml`.
  *
