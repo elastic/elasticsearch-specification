@@ -1779,6 +1779,37 @@ actions:
               $ref: "../../specification/_global/mtermvectors/examples/request/MultiTermVectorsRequestExample2.yaml"
             multiTermVectorsRequestExample3:
               $ref: "../../specification/_global/mtermvectors/examples/request/MultiTermVectorsRequestExample3.yaml"
+  - target: "$.paths['/_reindex']['post']"
+    description: "Add examples for reindex operation"
+    update:
+      requestBody:
+        content:
+          application/json:
+            examples:
+              reindexRequestExample1:
+                $ref: "../../specification/_global/reindex/examples/request/ReindexRequestExample1.yaml"
+              reindexRequestExample2:
+                $ref: "../../specification/_global/reindex/examples/request/ReindexRequestExample2.yaml"
+              reindexRequestExample3:
+                $ref: "../../specification/_global/reindex/examples/request/ReindexRequestExample3.yaml"
+              reindexRequestExample4:
+                $ref: "../../specification/_global/reindex/examples/request/ReindexRequestExample4.yaml"
+              reindexRequestExample5:
+                $ref: "../../specification/_global/reindex/examples/request/ReindexRequestExample5.yaml"
+              reindexRequestExample6:
+                $ref: "../../specification/_global/reindex/examples/request/ReindexRequestExample6.yaml"
+              reindexRequestExample7:
+                $ref: "../../specification/_global/reindex/examples/request/ReindexRequestExample7.yaml"
+              reindexRequestExample8:
+                $ref: "../../specification/_global/reindex/examples/request/ReindexRequestExample8.yaml"
+              reindexRequestExample9:
+                $ref: "../../specification/_global/reindex/examples/request/ReindexRequestExample9.yaml"
+              reindexRequestExample10:
+                $ref: "../../specification/_global/reindex/examples/request/ReindexRequestExample10.yaml"
+              reindexRequestExample11:
+                $ref: "../../specification/_global/reindex/examples/request/ReindexRequestExample11.yaml"
+              reindexRequestExample12:
+                $ref: "../../specification/_global/reindex/examples/request/ReindexRequestExample12.yaml"
 ## Examples for info
   - target: "$.paths['/']['get']"
     description: "Add examples for cluster info"
@@ -1812,6 +1843,30 @@ actions:
               $ref: "../../specification/_global/put_script/examples/request/PutScriptRequestExample1.yaml"
             putScriptRequestExample2:
               $ref: "../../specification/_global/put_script/examples/request/PutScriptRequestExample2.yaml"
+  - target: "$.components['requestBodies']['scripts_painless_execute']"
+    description: "Add example for run painless script request"
+    update: 
+      content:
+        application/json:
+          examples:
+            runPainlessScriptRequestExample1:
+              $ref: "../../specification/_global/scripts_painless_execute/examples/request/ExecutePainlessScriptRequestExample1.yaml"
+            runPainlessScriptRequestExample2:
+              $ref: "../../specification/_global/scripts_painless_execute/examples/request/ExecutePainlessScriptRequestExample2.yaml"
+            runPainlessScriptRequestExample3:
+              $ref: "../../specification/_global/scripts_painless_execute/examples/request/ExecutePainlessScriptRequestExample3.yaml"
+  - target: "$.components['responses']['scripts_painless_execute#200']"
+    description: "Add example for run painless script response"
+    update: 
+      content:
+        application/json:
+          examples:
+            runPainlessScriptResponseExample1:
+              $ref: "../../specification/_global/scripts_painless_execute/examples/response/ExecutePainlessScriptResponseExample1.yaml"
+            runPainlessScriptResponseExample2:
+              $ref: "../../specification/_global/scripts_painless_execute/examples/response/ExecutePainlessScriptResponseExample2.yaml"
+            runPainlessScriptResponseExample3:
+              $ref: "../../specification/_global/scripts_painless_execute/examples/response/ExecutePainlessScriptResponseExample3.yaml"
 ## Examples for search
   - target: "$.components['requestBodies']['clear_scroll']"
     description: "Add example for clear scroll request"
@@ -1905,6 +1960,50 @@ actions:
               examples: 
                 openPointInTimeResponseExample1: 
                   $ref: "../../specification/_global/open_point_in_time/examples/response/OpenPointInTimeResponseExample1.yaml"
+  - target: "$.components['requestBodies']['scroll']"
+    description: "Add example for scroll request"
+    update: 
+      content:
+        application/json:
+          examples:
+            scrollRequestExample1:
+              $ref: "../../specification/_global/scroll/examples/request/ScrollRequestExample1.yaml"
+  - target: "$.components['requestBodies']['search']"
+    description: "Add example for search request"
+    update: 
+      content:
+        application/json:
+          examples:
+            searchRequestExample1:
+              $ref: "../../specification/_global/search/examples/request/SearchRequestExample1.yaml"
+            searchRequestExample2:
+              $ref: "../../specification/_global/search/examples/request/SearchRequestExample2.yaml"
+            searchRequestExample3:
+              $ref: "../../specification/_global/search/examples/request/SearchRequestExample3.yaml"
+  - target: "$.components['responses']['search#200']"
+    description: "Add example for search response"
+    update: 
+      content:
+        application/json:
+          examples:
+            searchResponseExample1:
+              $ref: "../../specification/_global/search/examples/200_response/SearchResponseExample1.yaml"
+  - target: "$.components['requestBodies']['search_mvt']"
+    description: "Add example for search MVT request"
+    update: 
+      content:
+        application/json:
+          examples:
+            searchMvtRequestExample1:
+              $ref: "../../specification/_global/search_mvt/examples/request/SearchMvtRequestExample1.yaml"
+  - target: "$.components['responses']['search_mvt#200']"
+    description: "Add example for search MVT response"
+    update: 
+      content:
+        application/json:
+          examples:
+            searchMvtResponseExample1:
+              $ref: "../../specification/_global/search_mvt/examples/response/SearchMvtResponseExample1.yaml"
 ## Examples for search applications
   - target: "$.paths['/_application/search_application']['get']"
     description: "Add examples for get search applications operation"
