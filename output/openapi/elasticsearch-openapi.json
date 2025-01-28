@@ -9489,6 +9489,9 @@
         ],
         "summary": "Get the features",
         "description": "Get a list of features that can be included in snapshots using the `feature_states` field when creating a snapshot.\nYou can use this API to determine which feature states to include when taking a snapshot.\nBy default, all feature states are included in a snapshot if that snapshot includes the global state, or none if it does not.\n\nA feature state includes one or more system indices necessary for a given feature to function.\nIn order to ensure data integrity, all system indices that comprise a feature state are snapshotted and restored together.\n\nThe features listed by this API are a combination of built-in features and features defined by plugins.\nIn order for a feature state to be listed in this API and recognized as a valid feature state by the create snapshot API, the plugin that defines that feature must be installed on the master node.",
+        "externalDocs": {
+          "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/snapshots-take-snapshot.html"
+        },
         "operationId": "features-get-features",
         "parameters": [
           {
@@ -12178,7 +12181,7 @@
           "data stream"
         ],
         "summary": "Get data streams",
-        "description": "Retrieves information about one or more data streams.",
+        "description": "Get information about one or more data streams.",
         "operationId": "indices-get-data-stream-1",
         "parameters": [
           {
@@ -12660,7 +12663,7 @@
           "data stream"
         ],
         "summary": "Get data stream lifecycles",
-        "description": "Retrieves the data stream lifecycle configuration of one or more data streams.",
+        "description": "Get the data stream lifecycle configuration of one or more data streams.",
         "operationId": "indices-get-data-lifecycle",
         "parameters": [
           {
@@ -13963,7 +13966,7 @@
           "data stream"
         ],
         "summary": "Get data streams",
-        "description": "Retrieves information about one or more data streams.",
+        "description": "Get information about one or more data streams.",
         "operationId": "indices-get-data-stream",
         "parameters": [
           {
@@ -16275,6 +16278,7 @@
           "inference"
         ],
         "summary": "Perform inference on the service",
+        "description": "This API enables you to use machine learning models to perform specific tasks on data that you provide as an input.\nIt returns a response with the results of the tasks.\nThe inference endpoint you use can perform one specific task that has been defined when the endpoint was created with the create inference API.\n\n> info\n> The inference APIs enable you to use certain services, such as built-in machine learning models (ELSER, E5), models uploaded through Eland, Cohere, OpenAI, Azure, Google AI Studio, Google Vertex AI, Anthropic, Watsonx.ai, or Hugging Face. For built-in models and models uploaded through Eland, the inference APIs offer an alternative way to use and manage trained models. However, if you do not plan to use the inference APIs to use these models or if you want to use non-NLP models, use the machine learning trained model APIs.",
         "operationId": "inference-inference",
         "parameters": [
           {
@@ -16371,6 +16375,7 @@
           "inference"
         ],
         "summary": "Perform inference on the service",
+        "description": "This API enables you to use machine learning models to perform specific tasks on data that you provide as an input.\nIt returns a response with the results of the tasks.\nThe inference endpoint you use can perform one specific task that has been defined when the endpoint was created with the create inference API.\n\n> info\n> The inference APIs enable you to use certain services, such as built-in machine learning models (ELSER, E5), models uploaded through Eland, Cohere, OpenAI, Azure, Google AI Studio, Google Vertex AI, Anthropic, Watsonx.ai, or Hugging Face. For built-in models and models uploaded through Eland, the inference APIs offer an alternative way to use and manage trained models. However, if you do not plan to use the inference APIs to use these models or if you want to use non-NLP models, use the machine learning trained model APIs.",
         "operationId": "inference-inference-1",
         "parameters": [
           {
@@ -16773,7 +16778,7 @@
           {
             "in": "query",
             "name": "master_timeout",
-            "description": "Period to wait for a connection to the master node.\nIf no response is received before the timeout expires, the request fails and returns an error.",
+            "description": "The period to wait for a connection to the master node.\nIf no response is received before the timeout expires, the request fails and returns an error.",
             "deprecated": false,
             "schema": {
               "$ref": "#/components/schemas/_types:Duration"
@@ -16783,7 +16788,7 @@
           {
             "in": "query",
             "name": "timeout",
-            "description": "Period to wait for a response. If no response is received before the timeout expires, the request fails and returns an error.",
+            "description": "The period to wait for a response. If no response is received before the timeout expires, the request fails and returns an error.",
             "deprecated": false,
             "schema": {
               "$ref": "#/components/schemas/_types:Duration"
@@ -17439,7 +17444,7 @@
           "license"
         ],
         "summary": "Get license information",
-        "description": "Get information about your Elastic license including its type, its status, when it was issued, and when it expires.\n\nNOTE: If the master node is generating a new cluster state, the get license API may return a `404 Not Found` response.\nIf you receive an unexpected 404 response after cluster startup, wait a short period and retry the request.",
+        "description": "Get information about your Elastic license including its type, its status, when it was issued, and when it expires.\n\n>info\n> If the master node is generating a new cluster state, the get license API may return a `404 Not Found` response.\n> If you receive an unexpected 404 response after cluster startup, wait a short period and retry the request.",
         "operationId": "license-get",
         "parameters": [
           {
@@ -17552,7 +17557,7 @@
           {
             "in": "query",
             "name": "master_timeout",
-            "description": "Period to wait for a connection to the master node.",
+            "description": "The period to wait for a connection to the master node.",
             "deprecated": false,
             "schema": {
               "$ref": "#/components/schemas/_types:Duration"
@@ -17562,7 +17567,7 @@
           {
             "in": "query",
             "name": "timeout",
-            "description": "Period to wait for a response. If no response is received before the timeout expires, the request fails and returns an error.",
+            "description": "The period to wait for a response. If no response is received before the timeout expires, the request fails and returns an error.",
             "deprecated": false,
             "schema": {
               "$ref": "#/components/schemas/_types:Duration"
@@ -28040,7 +28045,7 @@
           {
             "in": "path",
             "name": "name",
-            "description": "The name of the search application to delete",
+            "description": "The name of the search application to delete.",
             "required": true,
             "deprecated": false,
             "schema": {
@@ -30952,7 +30957,7 @@
         "tags": [
           "security"
         ],
-        "summary": "Get users.s\n",
+        "summary": "Get users",
         "description": "Get information about users in the native realm and built-in users.",
         "operationId": "security-get-user",
         "parameters": [
@@ -31942,7 +31947,7 @@
         "tags": [
           "security"
         ],
-        "summary": "Get users.s\n",
+        "summary": "Get users",
         "description": "Get information about users in the native realm and built-in users.",
         "operationId": "security-get-user-1",
         "parameters": [
@@ -32975,7 +32980,7 @@
           "security"
         ],
         "summary": "Prepare SAML authentication",
-        "description": "Create a SAML authentication request (`<AuthnRequest>`) as a URL string based on the configuration of the respective SAML realm in Elasticsearch.\n\nNOTE: This API is intended for use by custom web applications other than Kibana.\nIf you are using Kibana, refer to the documentation for configuring SAML single-sign-on on the Elastic Stack.\n\nThis API returns a URL pointing to the SAML Identity Provider.\nYou can use the URL to redirect the browser of the user in order to continue the authentication process.\nThe URL includes a single parameter named `SAMLRequest`, which contains a SAML Authentication request that is deflated and Base64 encoded.\nIf the configuration dictates that SAML authentication requests should be signed, the URL has two extra parameters named `SigAlg` and `Signature`.\nThese parameters contain the algorithm used for the signature and the signature value itself.\nIt also returns a random string that uniquely identifies this SAML Authentication request.\nThe caller of thsis API needs to store this identifier as it needs to be used in a following step of the authentication process.",
+        "description": "Create a SAML authentication request (`<AuthnRequest>`) as a URL string based on the configuration of the respective SAML realm in Elasticsearch.\n\nNOTE: This API is intended for use by custom web applications other than Kibana.\nIf you are using Kibana, refer to the documentation for configuring SAML single-sign-on on the Elastic Stack.\n\nThis API returns a URL pointing to the SAML Identity Provider.\nYou can use the URL to redirect the browser of the user in order to continue the authentication process.\nThe URL includes a single parameter named `SAMLRequest`, which contains a SAML Authentication request that is deflated and Base64 encoded.\nIf the configuration dictates that SAML authentication requests should be signed, the URL has two extra parameters named `SigAlg` and `Signature`.\nThese parameters contain the algorithm used for the signature and the signature value itself.\nIt also returns a random string that uniquely identifies this SAML Authentication request.\nThe caller of this API needs to store this identifier as it needs to be used in a following step of the authentication process.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/saml-guide-stack.html"
         },
@@ -103070,7 +103075,7 @@
       "inference.delete#inference_id": {
         "in": "path",
         "name": "inference_id",
-        "description": "The inference Id",
+        "description": "The inference identifier.",
         "required": true,
         "deprecated": false,
         "schema": {
@@ -103081,7 +103086,7 @@
       "inference.delete#dry_run": {
         "in": "query",
         "name": "dry_run",
-        "description": "When true, the endpoint is not deleted, and a list of ingest processors which reference this endpoint is returned",
+        "description": "When true, the endpoint is not deleted and a list of ingest processors which reference this endpoint is returned.",
         "deprecated": false,
         "schema": {
           "type": "boolean"
@@ -103091,7 +103096,7 @@
       "inference.delete#force": {
         "in": "query",
         "name": "force",
-        "description": "When true, the inference endpoint is forcefully deleted even if it is still being used by ingest processors or semantic text fields",
+        "description": "When true, the inference endpoint is forcefully deleted even if it is still being used by ingest processors or semantic text fields.",
         "deprecated": false,
         "schema": {
           "type": "boolean"
@@ -103123,7 +103128,7 @@
       "inference.inference#task_type": {
         "in": "path",
         "name": "task_type",
-        "description": "The task type",
+        "description": "The type of inference task that the model performs.",
         "required": true,
         "deprecated": false,
         "schema": {
@@ -103134,7 +103139,7 @@
       "inference.inference#inference_id": {
         "in": "path",
         "name": "inference_id",
-        "description": "The inference Id",
+        "description": "The unique identifier for the inference endpoint.",
         "required": true,
         "deprecated": false,
         "schema": {
@@ -103145,7 +103150,7 @@
       "inference.inference#timeout": {
         "in": "query",
         "name": "timeout",
-        "description": "Specifies the amount of time to wait for the inference request to complete.",
+        "description": "The amount of time to wait for the inference request to complete.",
         "deprecated": false,
         "schema": {
           "$ref": "#/components/schemas/_types:Duration"
@@ -103253,7 +103258,7 @@
       "ingest.get_geoip_database#id": {
         "in": "path",
         "name": "id",
-        "description": "Comma-separated list of database configuration IDs to retrieve.\nWildcard (`*`) expressions are supported.\nTo get all database configurations, omit this parameter or use `*`.",
+        "description": "A comma-separated list of database configuration IDs to retrieve.\nWildcard (`*`) expressions are supported.\nTo get all database configurations, omit this parameter or use `*`.",
         "required": true,
         "deprecated": false,
         "schema": {
@@ -103316,7 +103321,7 @@
       "ingest.simulate#id": {
         "in": "path",
         "name": "id",
-        "description": "Pipeline to test.\nIf you don’t specify a `pipeline` in the request body, this parameter is required.",
+        "description": "The pipeline to test.\nIf you don't specify a `pipeline` in the request body, this parameter is required.",
         "required": true,
         "deprecated": false,
         "schema": {
@@ -103368,7 +103373,7 @@
       "license.post#master_timeout": {
         "in": "query",
         "name": "master_timeout",
-        "description": "Period to wait for a connection to the master node.",
+        "description": "The period to wait for a connection to the master node.",
         "deprecated": false,
         "schema": {
           "$ref": "#/components/schemas/_types:Duration"
@@ -103378,7 +103383,7 @@
       "license.post#timeout": {
         "in": "query",
         "name": "timeout",
-        "description": "Period to wait for a response. If no response is received before the timeout expires, the request fails and returns an error.",
+        "description": "The period to wait for a response. If no response is received before the timeout expires, the request fails and returns an error.",
         "deprecated": false,
         "schema": {
           "$ref": "#/components/schemas/_types:Duration"
@@ -108765,11 +108770,11 @@
               "type": "object",
               "properties": {
                 "query": {
-                  "description": "Query input, required for rerank task.\nNot required for other tasks.",
+                  "description": "The query input, which is required only for the `rerank` task.\nIt is not required for other tasks.",
                   "type": "string"
                 },
                 "input": {
-                  "description": "Inference input.\nEither a string or an array of strings.",
+                  "description": "The text on which you want to perform the inference task.\nIt can be a single string or an array.\n\n> info\n> Inference endpoints for the `completion` task type currently only support a single string as input.",
                   "oneOf": [
                     {
                       "type": "string"

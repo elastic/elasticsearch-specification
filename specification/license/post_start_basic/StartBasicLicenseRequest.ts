@@ -34,7 +34,7 @@ import { Duration } from '@_types/Time'
  * @rest_spec_name license.post_start_basic
  * @availability stack since=6.3.0 stability=stable
  * @cluster_privileges manage
- * @doc_id start-basic,
+ * @doc_id start-basic
  */
 export interface Request extends RequestBase {
   urls: [
