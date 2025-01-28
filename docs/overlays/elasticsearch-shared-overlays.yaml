@@ -1652,6 +1652,33 @@ actions:
               examples:
                 catTasksResponseExample1: 
                   $ref: "../../specification/cat/tasks/examples/200_response/CatTasksResponseExample1.yaml"
+## Examples for documents
+  - target: "$.components['requestBodies']['bulk']"
+    description: "Add example for bulk index or delete documents"
+    update: 
+      content:
+        application/json:
+          examples:
+            bulkDocumentRequestExample1:
+              $ref: "../../specification/_global/bulk/examples/request/BulkRequestExample1.yaml"
+            bulkDocumentRequestExample2:
+              $ref: "../../specification/_global/bulk/examples/request/BulkRequestExample2.yaml"
+            bulkDocumentRequestExample3:
+              $ref: "../../specification/_global/bulk/examples/request/BulkRequestExample3.yaml"
+            bulkDocumentRequestExample4:
+              $ref: "../../specification/_global/bulk/examples/request/BulkRequestExample4.yaml"
+  - target: "$.components['responses']['bulk#200']"
+    description: "Add example for bulk indext or delete documents response"
+    update: 
+      content:
+        application/json:
+          examples:
+            bulkDocumentResponseExample1:
+              $ref: "../../specification/_global/bulk/examples/response/BulkResponseExample1.yaml"
+            bulkDocumentResponseExample2:
+              $ref: "../../specification/_global/bulk/examples/response/BulkResponseExample2.yaml"
+            bulkDocumentResponseExample3:
+              $ref: "../../specification/_global/bulk/examples/response/BulkResponseExample3.yaml"
 ## Examples for licensing
   - target: "$.paths['/_license']['get']"
     description: "Add example for get license response"
