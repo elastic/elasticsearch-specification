@@ -28,6 +28,7 @@ import { Duration } from '@_types/Time'
  * @rest_spec_name inference.chat_completion_unified
  * @availability stack since=8.18.0 stability=stable visibility=public
  * @availability serverless stability=stable visibility=public
+ * @doc_id inference-api-chat-completion
  */
 export interface Request extends RequestBase {
   urls: [

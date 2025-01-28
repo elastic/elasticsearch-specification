@@ -311,6 +311,7 @@ inference-api-get,https://www.elastic.co/guide/en/elasticsearch/reference/{branc
 inference-api-post,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/post-inference-api.html
 inference-api-put,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/put-inference-api.html
 inference-api-stream,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/stream-inference-api.html
+inference-api-chat-completion,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/chat-completion-inference-api.html
 inference-api-update,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/update-inference-api.html
 inference-processor,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/inference-processor.html
 info-api,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/info-api.html
