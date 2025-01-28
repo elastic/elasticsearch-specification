@@ -1719,6 +1719,20 @@ actions:
               examples: 
                 deleteDocumentResponseExample1: 
                   $ref: "../../specification/_global/delete_by_query/examples/response/DeleteByQueryResponseExample1.yaml"
+  - target: "$.paths['/{index}/_doc/{id}']['get']"
+    description: "Add examples for get document operation"
+    update: 
+      responses:
+        200: 
+          content: 
+            application/json: 
+              examples: 
+                getDocumentResponseExample1: 
+                  $ref: "../../specification/_global/get/examples/response/GetResponseExample1.yaml"
+                getDocumentResponseExample2: 
+                  $ref: "../../specification/_global/get/examples/response/GetResponseExample2.yaml"
+                getDocumentResponseExample3: 
+                  $ref: "../../specification/_global/get/examples/response/GetResponseExample3.yaml"
 ## Examples for licensing
   - target: "$.paths['/_license']['get']"
     description: "Add example for get license response"
@@ -1787,6 +1801,24 @@ actions:
           examples:
             explainResponseExample1:
               $ref: "../../specification/_global/explain/examples/response/ExplainResponseExample1.yaml"
+  - target: "$.components['requestBodies']['field_caps']"
+    description: "Add example for field capabilities request"
+    update: 
+      content:
+        application/json:
+          examples:
+            fieldCapabilitiesRequestExample1:
+              $ref: "../../specification/_global/field_caps/examples/request/FieldCapabilitiesRequestExample1.yaml"
+  - target: "$.components['responses']['field_caps#200']"
+    description: "Add example for field capabilities response"
+    update: 
+      content:
+        application/json:
+          examples:
+            fieldCapabilitiesResponseExample1:
+              $ref: "../../specification/_global/field_caps/examples/response/FieldCapabilitiesResponseExample1.yaml"
+            fieldCapabilitiesResponseExample2:
+              $ref: "../../specification/_global/field_caps/examples/response/FieldCapabilitiesResponseExample2.yaml"
 ## Examples for search applications
   - target: "$.paths['/_application/search_application']['get']"
     description: "Add examples for get search applications operation"
