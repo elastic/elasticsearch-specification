@@ -10572,6 +10572,18 @@ export interface EsqlAsyncQueryGetRequest extends RequestBase {
 export interface EsqlAsyncQueryGetResponse {
   columns?: EsqlColumns
   is_running: boolean
+  is_partial: boolean
+}
+
+export interface EsqlAsyncQueryStopRequest extends RequestBase {
+  id: Id
+  drop_null_columns?: boolean
+}
+
+export interface EsqlAsyncQueryStopResponse {
+  columns?: EsqlColumns
+  is_running: boolean
+  is_partial: boolean
 }
 
 export interface EsqlQueryRequest extends RequestBase {

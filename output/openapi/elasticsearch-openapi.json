@@ -8920,10 +8920,15 @@
                     "is_running": {
                       "description": "Indicates whether the query is still running.\nIf the value is false, the async query has finished and the results are returned.",
                       "type": "boolean"
+                    },
+                    "is_partial": {
+                      "description": "Indicates whether the query returned partial result, e.g. because if was stopped.",
+                      "type": "boolean"
                     }
                   },
                   "required": [
-                    "is_running"
+                    "is_running",
+                    "is_partial"
                   ]
                 }
               }
@@ -8968,6 +8973,72 @@
           }
         },
         "x-state": "Added in 8.13.0"
+      }
+    },
+    "/_query/async/{id}/stop": {
+      "post": {
+        "tags": [
+          "esql"
+        ],
+        "summary": "Stop async ES|QL query",
+        "description": "Interrupts the query execution and returns the results so far.\nIf the Elasticsearch security features are enabled, only the user who first submitted the ES|QL query can stop it.",
+        "externalDocs": {
+          "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/esql.html"
+        },
+        "operationId": "esql-async-query-stop",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "description": "The unique identifier of the query.\nA query ID is provided in the ES|QL async query API response for a query that does not complete in the designated time.\nA query ID is also provided when the request was submitted with the `keep_on_completion` parameter set to `true`.",
+            "required": true,
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/_types:Id"
+            },
+            "style": "simple"
+          },
+          {
+            "in": "query",
+            "name": "drop_null_columns",
+            "description": "Indicates whether columns that are entirely `null` will be removed from the `columns` and `values` portion of the results.\nIf `true`, the response will include an extra section under the name `all_columns` which has the name of all the columns.",
+            "deprecated": false,
+            "schema": {
+              "type": "boolean"
+            },
+            "style": "form"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "columns": {
+                      "$ref": "#/components/schemas/_types:EsqlColumns"
+                    },
+                    "is_running": {
+                      "description": "Indicates whether the query is still running.\nFor stopped query results, this will always be false.",
+                      "type": "boolean"
+                    },
+                    "is_partial": {
+                      "description": "Indicates whether the query returned partial result, e.g. because if was stopped.\nThis will be false if the query completed before the stop command was issued.",
+                      "type": "boolean"
+                    }
+                  },
+                  "required": [
+                    "is_running",
+                    "is_partial"
+                  ]
+                }
+              }
+            }
+          }
+        },
+        "x-state": "Added in 8.18.0"
       }
     },
     "/_query": {

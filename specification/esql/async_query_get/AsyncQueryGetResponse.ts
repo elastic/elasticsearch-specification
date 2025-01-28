@@ -27,5 +27,9 @@ export class Response {
      * If the value is false, the async query has finished and the results are returned.
      */
     is_running: boolean
+    /**
+     * Indicates whether the query returned partial result, e.g. because if was stopped.
+     */
+    is_partial: boolean
   }
 }
