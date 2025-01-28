@@ -1,0 +1,8 @@
+summary: Test context
+description: A successful response from `POST /_scripts/painless/_execute` with a `painless_test` context.
+# type: response
+# response_code: ''
+value: |-
+  {
+    "result": "0.1"
+  }

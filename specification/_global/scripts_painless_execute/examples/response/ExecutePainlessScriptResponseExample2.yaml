@@ -1,0 +1,8 @@
+summary: Filter context
+description: A successful response from `POST /_scripts/painless/_execute` with a `filter` context.
+# type: response
+# response_code: ''
+value: |-
+  {
+    "result": true
+  }
