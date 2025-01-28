@@ -494,6 +494,16 @@ actions:
           examples:
             indicesLegacyPutTemplateRequestExample1:
               $ref: "../../specification/indices/put_template/examples/request/indicesPutTemplateRequestExample1.yaml"
+  - target: "$.paths['/_lifecycle/stats']['get']"
+    description: "Add examples for get lifecycle stats operation"
+    update:
+      responses:
+        200:
+          content:
+            application/json:
+              examples:
+                dataStreamLifecycleStatsResponseExample1:
+                  $ref: "../../specification/indices/get_data_lifecycle_stats/examples/response/IndicesGetDataLifecycleStatsResponseExample1.yaml"
 ## Examples for inference
   - target: "$.components['requestBodies']['inference.stream_inference']"
     description: "Add example for inference stream request"
