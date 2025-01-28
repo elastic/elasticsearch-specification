@@ -1679,6 +1679,24 @@ actions:
               $ref: "../../specification/_global/bulk/examples/response/BulkResponseExample2.yaml"
             bulkDocumentResponseExample3:
               $ref: "../../specification/_global/bulk/examples/response/BulkResponseExample3.yaml"
+  - target: "$.components['requestBodies']['create']"
+    description: "Add example for create documents"
+    update: 
+      content:
+        application/json:
+          examples:
+            createDocumentRequestExample1:
+              $ref: "../../specification/_global/create/examples/request/CreateRequestExample1.yaml"
+  - target: "$.paths['/{index}/_doc/{id}']['delete']"
+    description: "Add examples for delete document operation"
+    update: 
+      responses:
+        200: 
+          content: 
+            application/json: 
+              examples: 
+                deleteDocumentResponseExample1: 
+                  $ref: "../../specification/_global/delete/examples/response/DeleteResponseExample1.yaml"
 ## Examples for licensing
   - target: "$.paths['/_license']['get']"
     description: "Add example for get license response"
@@ -1701,7 +1719,13 @@ actions:
               $ref: "../../specification/_global/clear_scroll/examples/request/ClearScrollRequestExample1.yaml"
   - target: "$.paths['/_pit']['delete']"
     description: "Add examples for close PIT operation"
-    update: 
+    update:
+      requestBody:
+        content:
+          application/json:
+            examples:
+              closePointInTimeRequestExample1: 
+                $ref: "../../specification/_global/close_point_in_time/examples/request/ClosePointInTimeRequestExample1.yaml"
       responses:
         200: 
           content: 
@@ -1709,6 +1733,22 @@ actions:
               examples: 
                 closePointInTimeResponseExample1: 
                   $ref: "../../specification/_global/close_point_in_time/examples/200_response/ClosePointInTimeResponseExample1.yaml"
+  - target: "$.components['requestBodies']['count']"
+    description: "Add example for count request"
+    update: 
+      content:
+        application/json:
+          examples:
+            countRequestExample1:
+              $ref: "../../specification/_global/count/examples/request/CountRequestExample1.yaml"
+  - target: "$.components['responses']['count#200']"
+    description: "Add example for count response"
+    update: 
+      content:
+        application/json:
+          examples:
+            countResponseExample1:
+              $ref: "../../specification/_global/count/examples/200_response/CountResponseExample1.yaml"
 ## Examples for search applications
   - target: "$.paths['/_application/search_application']['get']"
     description: "Add examples for get search applications operation"
