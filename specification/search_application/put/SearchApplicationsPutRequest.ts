@@ -27,7 +27,7 @@ import { SearchApplicationParameters } from '../_types/SearchApplicationParamete
  * @availability serverless stability=beta visibility=public
  * @cluster_privileges manage_search_application
  * @index_privileges manage
- * @doc_id apis
+ * @doc_id search-application-put
  */
 export interface Request extends RequestBase {
   urls: [

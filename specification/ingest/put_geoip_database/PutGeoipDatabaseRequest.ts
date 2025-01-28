@@ -24,6 +24,7 @@ import { Duration } from '@_types/Time'
 
 /**
  * Create or update a GeoIP database configuration.
+ *
  * Refer to the create or update IP geolocation database configuration API.
  * @rest_spec_name ingest.put_geoip_database
  * @availability stack since=8.15.0 stability=stable

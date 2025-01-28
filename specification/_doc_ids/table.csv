@@ -303,6 +303,7 @@ infer-trained-model-deployment,https://www.elastic.co/guide/en/elasticsearch/ref
 inference-api-delete,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/delete-inference-api.html
 inference-api-get,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/get-inference-api.html
 inference-api-post,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/post-inference-api.html
+inference-api-put,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/put-inference-api.html
 inference-api-stream,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/stream-inference-api.html
 inference-api-update,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/update-inference-api.html
 inference-processor,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/inference-processor.html
@@ -311,6 +312,9 @@ ingest,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/ingest.h
 ingest-circle-processor,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/ingest-circle-processor.html
 ingest-node-set-security-user-processor,https://www.elastic.co/guide/en/elasticsearch/reference/{banch}/ingest-node-set-security-user-processor.html
 inner-hits,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/inner-hits.html
+ip-location-delete-database,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/delete-ip-location-database-api.html
+ip-location-get-database,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/get-ip-location-database-api.html
+ip-location-put-database,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/put-ip-location-database-api.html
 join-processor,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/join-processor.html
 json-processor,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/json-processor.html
 k-precision,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/search-rank-eval.html#k-precision
@@ -638,6 +642,10 @@ search-aggregations-metrics-valuecount-aggregation,https://www.elastic.co/guide/
 search-aggregations-metrics-weight-avg-aggregation,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/search-aggregations-metrics-weight-avg-aggregation.html
 search-aggregations-bucket-variablewidthhistogram-aggregation,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/search-aggregations-bucket-variablewidthhistogram-aggregation.html
 search-analyzer,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/search-analyzer.html
+search-application-delete,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/delete-search-application.html
+search-application-get,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/get-search-application.html
+search-application-put,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/put-search-application.html
+search-application-search,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/search-application-search.html
 search-render-query,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/search-application-render-query.html
 search-count,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/search-count.html
 search-explain,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/search-explain.html
