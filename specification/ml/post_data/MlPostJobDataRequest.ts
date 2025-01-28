@@ -31,6 +31,7 @@ import { DateTime } from '@_types/Time'
  * @deprecated 7.11.0 Posting data directly to anomaly detection jobs is deprecated, in a future major version a datafeed will be required.
  * @cluster_privileges manage_ml
  * @doc_tag ml anomaly
+ * @doc_id ml-post-data
  */
 export interface Request<TData> extends RequestBase {
   urls: [

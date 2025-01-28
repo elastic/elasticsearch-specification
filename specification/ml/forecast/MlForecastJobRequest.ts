@@ -34,6 +34,7 @@ import { Duration } from '@_types/Time'
  * @availability serverless stability=stable visibility=private
  * @cluster_privileges manage_ml
  * @doc_tag ml anomaly
+ * @doc_id ml-forecast
  */
 export interface Request extends RequestBase {
   urls: [

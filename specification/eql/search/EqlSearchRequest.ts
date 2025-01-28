@@ -32,6 +32,7 @@ import { ResultPosition } from './types'
  * @rest_spec_name eql.search
  * @availability stack since=7.9.0 stability=stable
  * @availability serverless stability=stable visibility=public
+ * @doc_id eql-search-api
  * @ext_doc_id eql
  */
 export interface Request extends RequestBase {

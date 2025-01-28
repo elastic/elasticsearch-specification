@@ -28,6 +28,7 @@ import { Id } from '@_types/common'
  * @availability serverless stability=stable visibility=private
  * @cluster_privileges manage_ml
  * @doc_tag ml anomaly
+ * @doc_id ml-update-snapshot
  */
 export interface Request extends RequestBase {
   urls: [

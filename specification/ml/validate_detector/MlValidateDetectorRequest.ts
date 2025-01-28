@@ -26,6 +26,7 @@ import { RequestBase } from '@_types/Base'
  * @availability stack since=5.4.0 stability=stable visibility=private
  * @availability serverless stability=stable visibility=private
  * @doc_tag ml anomaly
+ * @doc_id apis
  */
 export interface Request extends RequestBase {
   urls: [

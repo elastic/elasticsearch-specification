@@ -9740,8 +9740,8 @@
         "tags": [
           "fleet"
         ],
-        "summary": "Returns the current global checkpoints for an index",
-        "description": "This API is design for internal use by the fleet server project.",
+        "summary": "Get global checkpoints",
+        "description": "Get the current global checkpoints for an index.\nThis API is designed for internal use by the Fleet server project.",
         "operationId": "fleet-global-checkpoints",
         "parameters": [
           {
@@ -11265,13 +11265,13 @@
           "indices"
         ],
         "summary": "Add an index block",
-        "description": "Limits the operations allowed on an index by blocking specific operation types.",
+        "description": "Add an index block to an index.\nIndex blocks limit the operations allowed on an index by blocking specific operation types.",
         "operationId": "indices-add-block",
         "parameters": [
           {
             "in": "path",
             "name": "index",
-            "description": "A comma separated list of indices to add a block to",
+            "description": "A comma-separated list or wildcard expression of index names used to limit the request.\nBy default, you must explicitly name the indices you are adding blocks to.\nTo allow the adding of blocks to indices with `_all`, `*`, or other wildcard expressions, change the `action.destructive_requires_name` setting to `false`.\nYou can update this setting in the `elasticsearch.yml` file or by using the cluster update settings API.",
             "required": true,
             "deprecated": false,
             "schema": {
@@ -11282,7 +11282,7 @@
           {
             "in": "path",
             "name": "block",
-            "description": "The block to add (one of read, write, read_only or metadata)",
+            "description": "The block type to add to the index.",
             "required": true,
             "deprecated": false,
             "schema": {
@@ -11293,7 +11293,7 @@
           {
             "in": "query",
             "name": "allow_no_indices",
-            "description": "Whether to ignore if a wildcard indices expression resolves into no concrete indices. (This includes `_all` string or when no indices have been specified)",
+            "description": "If `false`, the request returns an error if any wildcard expression, index alias, or `_all` value targets only missing or closed indices.\nThis behavior applies even if the request targets other open indices.\nFor example, a request targeting `foo*,bar*` returns an error if an index starts with `foo` but no index starts with `bar`.",
             "deprecated": false,
             "schema": {
               "type": "boolean"
@@ -11303,7 +11303,7 @@
           {
             "in": "query",
             "name": "expand_wildcards",
-            "description": "Whether to expand wildcard expression to concrete indices that are open, closed or both.",
+            "description": "The type of index that wildcard patterns can match.\nIf the request can target data streams, this argument determines whether wildcard expressions match hidden data streams.\nIt supports comma-separated values, such as `open,hidden`.",
             "deprecated": false,
             "schema": {
               "$ref": "#/components/schemas/_types:ExpandWildcards"
@@ -11313,7 +11313,7 @@
           {
             "in": "query",
             "name": "ignore_unavailable",
-            "description": "Whether specified concrete indices should be ignored when unavailable (missing or closed)",
+            "description": "If `false`, the request returns an error if it targets a missing or closed index.",
             "deprecated": false,
             "schema": {
               "type": "boolean"
@@ -11323,7 +11323,7 @@
           {
             "in": "query",
             "name": "master_timeout",
-            "description": "Specify timeout for connection to master",
+            "description": "The period to wait for the master node.\nIf the master node is not available before the timeout expires, the request fails and returns an error.\nIt can also be set to `-1` to indicate that the request should never timeout.",
             "deprecated": false,
             "schema": {
               "$ref": "#/components/schemas/_types:Duration"
@@ -11333,7 +11333,7 @@
           {
             "in": "query",
             "name": "timeout",
-            "description": "Explicit operation timeout",
+            "description": "The period to wait for a response from all relevant nodes in the cluster after updating the cluster metadata.\nIf no response is received before the timeout expires, the cluster metadata update still applies but the response will indicate that it was not completely acknowledged.\nIt can also be set to `-1` to indicate that the request should never timeout.",
             "deprecated": false,
             "schema": {
               "$ref": "#/components/schemas/_types:Duration"
@@ -12163,7 +12163,7 @@
           "data stream"
         ],
         "summary": "Get data streams",
-        "description": "Retrieves information about one or more data streams.",
+        "description": "Get information about one or more data streams.",
         "operationId": "indices-get-data-stream-1",
         "parameters": [
           {
@@ -12194,7 +12194,7 @@
           "data stream"
         ],
         "summary": "Create a data stream",
-        "description": "Creates a data stream.\nYou must have a matching index template with data stream enabled.",
+        "description": "You must have a matching index template with data stream enabled.",
         "operationId": "indices-create-data-stream",
         "parameters": [
           {
@@ -12356,7 +12356,7 @@
           "data stream"
         ],
         "summary": "Get data stream stats",
-        "description": "Retrieves statistics for one or more data streams.",
+        "description": "Get statistics for one or more data streams.",
         "operationId": "indices-data-streams-stats",
         "parameters": [
           {
@@ -12377,7 +12377,7 @@
           "data stream"
         ],
         "summary": "Get data stream stats",
-        "description": "Retrieves statistics for one or more data streams.",
+        "description": "Get statistics for one or more data streams.",
         "operationId": "indices-data-streams-stats-1",
         "parameters": [
           {
@@ -12521,7 +12521,7 @@
           "indices"
         ],
         "summary": "Check aliases",
-        "description": "Checks if one or more data stream or index aliases exist.",
+        "description": "Check if one or more data stream or index aliases exist.",
         "operationId": "indices-exists-alias-1",
         "parameters": [
           {
@@ -12645,7 +12645,7 @@
           "data stream"
         ],
         "summary": "Get data stream lifecycles",
-        "description": "Retrieves the data stream lifecycle configuration of one or more data streams.",
+        "description": "Get the data stream lifecycle configuration of one or more data streams.",
         "operationId": "indices-get-data-lifecycle",
         "parameters": [
           {
@@ -13439,7 +13439,7 @@
           "indices"
         ],
         "summary": "Check aliases",
-        "description": "Checks if one or more data stream or index aliases exist.",
+        "description": "Check if one or more data stream or index aliases exist.",
         "operationId": "indices-exists-alias",
         "parameters": [
           {
@@ -13948,7 +13948,7 @@
           "data stream"
         ],
         "summary": "Get data streams",
-        "description": "Retrieves information about one or more data streams.",
+        "description": "Get information about one or more data streams.",
         "operationId": "indices-get-data-stream",
         "parameters": [
           {
@@ -16375,6 +16375,7 @@
           "inference"
         ],
         "summary": "Perform inference on the service",
+        "description": "This API enables you to use machine learning models to perform specific tasks on data that you provide as an input.\nIt returns a response with the results of the tasks.\nThe inference endpoint you use can perform one specific task that has been defined when the endpoint was created with the create inference API.\n\n> info\n> The inference APIs enable you to use certain services, such as built-in machine learning models (ELSER, E5), models uploaded through Eland, Cohere, OpenAI, Azure, Google AI Studio, Google Vertex AI, Anthropic, Watsonx.ai, or Hugging Face. For built-in models and models uploaded through Eland, the inference APIs offer an alternative way to use and manage trained models. However, if you do not plan to use the inference APIs to use these models or if you want to use non-NLP models, use the machine learning trained model APIs.",
         "operationId": "inference-inference",
         "parameters": [
           {
@@ -16471,6 +16472,7 @@
           "inference"
         ],
         "summary": "Perform inference on the service",
+        "description": "This API enables you to use machine learning models to perform specific tasks on data that you provide as an input.\nIt returns a response with the results of the tasks.\nThe inference endpoint you use can perform one specific task that has been defined when the endpoint was created with the create inference API.\n\n> info\n> The inference APIs enable you to use certain services, such as built-in machine learning models (ELSER, E5), models uploaded through Eland, Cohere, OpenAI, Azure, Google AI Studio, Google Vertex AI, Anthropic, Watsonx.ai, or Hugging Face. For built-in models and models uploaded through Eland, the inference APIs offer an alternative way to use and manage trained models. However, if you do not plan to use the inference APIs to use these models or if you want to use non-NLP models, use the machine learning trained model APIs.",
         "operationId": "inference-inference-1",
         "parameters": [
           {
@@ -16873,7 +16875,7 @@
           {
             "in": "query",
             "name": "master_timeout",
-            "description": "Period to wait for a connection to the master node.\nIf no response is received before the timeout expires, the request fails and returns an error.",
+            "description": "The period to wait for a connection to the master node.\nIf no response is received before the timeout expires, the request fails and returns an error.",
             "deprecated": false,
             "schema": {
               "$ref": "#/components/schemas/_types:Duration"
@@ -16883,7 +16885,7 @@
           {
             "in": "query",
             "name": "timeout",
-            "description": "Period to wait for a response. If no response is received before the timeout expires, the request fails and returns an error.",
+            "description": "The period to wait for a response. If no response is received before the timeout expires, the request fails and returns an error.",
             "deprecated": false,
             "schema": {
               "$ref": "#/components/schemas/_types:Duration"
@@ -17539,7 +17541,7 @@
           "license"
         ],
         "summary": "Get license information",
-        "description": "Get information about your Elastic license including its type, its status, when it was issued, and when it expires.\n\nNOTE: If the master node is generating a new cluster state, the get license API may return a `404 Not Found` response.\nIf you receive an unexpected 404 response after cluster startup, wait a short period and retry the request.",
+        "description": "Get information about your Elastic license including its type, its status, when it was issued, and when it expires.\n\n>info\n> If the master node is generating a new cluster state, the get license API may return a `404 Not Found` response.\n> If you receive an unexpected 404 response after cluster startup, wait a short period and retry the request.",
         "operationId": "license-get",
         "parameters": [
           {
@@ -17652,7 +17654,7 @@
           {
             "in": "query",
             "name": "master_timeout",
-            "description": "Period to wait for a connection to the master node.",
+            "description": "The period to wait for a connection to the master node.",
             "deprecated": false,
             "schema": {
               "$ref": "#/components/schemas/_types:Duration"
@@ -17662,7 +17664,7 @@
           {
             "in": "query",
             "name": "timeout",
-            "description": "Period to wait for a response. If no response is received before the timeout expires, the request fails and returns an error.",
+            "description": "The period to wait for a response. If no response is received before the timeout expires, the request fails and returns an error.",
             "deprecated": false,
             "schema": {
               "$ref": "#/components/schemas/_types:Duration"
@@ -22419,7 +22421,7 @@
           "ml data frame"
         ],
         "summary": "Preview features used by data frame analytics",
-        "description": "Previews the extracted features used by a data frame analytics config.",
+        "description": "Preview the extracted features used by a data frame analytics config.",
         "operationId": "ml-preview-data-frame-analytics",
         "requestBody": {
           "$ref": "#/components/requestBodies/ml.preview_data_frame_analytics"
@@ -22436,7 +22438,7 @@
           "ml data frame"
         ],
         "summary": "Preview features used by data frame analytics",
-        "description": "Previews the extracted features used by a data frame analytics config.",
+        "description": "Preview the extracted features used by a data frame analytics config.",
         "operationId": "ml-preview-data-frame-analytics-1",
         "requestBody": {
           "$ref": "#/components/requestBodies/ml.preview_data_frame_analytics"
@@ -22455,7 +22457,7 @@
           "ml data frame"
         ],
         "summary": "Preview features used by data frame analytics",
-        "description": "Previews the extracted features used by a data frame analytics config.",
+        "description": "Preview the extracted features used by a data frame analytics config.",
         "operationId": "ml-preview-data-frame-analytics-2",
         "parameters": [
           {
@@ -22477,7 +22479,7 @@
           "ml data frame"
         ],
         "summary": "Preview features used by data frame analytics",
-        "description": "Previews the extracted features used by a data frame analytics config.",
+        "description": "Preview the extracted features used by a data frame analytics config.",
         "operationId": "ml-preview-data-frame-analytics-3",
         "parameters": [
           {
@@ -24202,7 +24204,7 @@
           "ml anomaly"
         ],
         "summary": "Upgrade a snapshot",
-        "description": "Upgrades an anomaly detection model snapshot to the latest major version.\nOver time, older snapshot formats are deprecated and removed. Anomaly\ndetection jobs support only snapshots that are from the current or previous\nmajor version.\nThis API provides a means to upgrade a snapshot to the current major version.\nThis aids in preparing the cluster for an upgrade to the next major version.\nOnly one snapshot per anomaly detection job can be upgraded at a time and the\nupgraded snapshot cannot be the current snapshot of the anomaly detection\njob.",
+        "description": "Upgrade an anomaly detection model snapshot to the latest major version.\nOver time, older snapshot formats are deprecated and removed. Anomaly\ndetection jobs support only snapshots that are from the current or previous\nmajor version.\nThis API provides a means to upgrade a snapshot to the current major version.\nThis aids in preparing the cluster for an upgrade to the next major version.\nOnly one snapshot per anomaly detection job can be upgraded at a time and the\nupgraded snapshot cannot be the current snapshot of the anomaly detection\njob.",
         "operationId": "ml-upgrade-job-snapshot",
         "parameters": [
           {
@@ -28152,7 +28154,7 @@
           {
             "in": "path",
             "name": "name",
-            "description": "The name of the search application to delete",
+            "description": "The name of the search application to delete.",
             "required": true,
             "deprecated": false,
             "schema": {
@@ -37524,7 +37526,7 @@
           "transform"
         ],
         "summary": "Get transforms",
-        "description": "Retrieves configuration information for transforms.",
+        "description": "Get configuration information for transforms.",
         "operationId": "transform-get-transform",
         "parameters": [
           {
@@ -37656,7 +37658,6 @@
           "transform"
         ],
         "summary": "Delete a transform",
-        "description": "Deletes a transform.",
         "operationId": "transform-delete-transform",
         "parameters": [
           {
@@ -37722,7 +37723,7 @@
           "transform"
         ],
         "summary": "Get transforms",
-        "description": "Retrieves configuration information for transforms.",
+        "description": "Get configuration information for transforms.",
         "operationId": "transform-get-transform-1",
         "parameters": [
           {
@@ -37752,7 +37753,7 @@
           "transform"
         ],
         "summary": "Get transform stats",
-        "description": "Retrieves usage information for transforms.",
+        "description": "Get usage information for transforms.",
         "operationId": "transform-get-transform-stats",
         "parameters": [
           {
@@ -102961,7 +102962,7 @@
       "inference.delete#inference_id": {
         "in": "path",
         "name": "inference_id",
-        "description": "The inference Id",
+        "description": "The inference identifier.",
         "required": true,
         "deprecated": false,
         "schema": {
@@ -102972,7 +102973,7 @@
       "inference.delete#dry_run": {
         "in": "query",
         "name": "dry_run",
-        "description": "When true, the endpoint is not deleted, and a list of ingest processors which reference this endpoint is returned",
+        "description": "When true, the endpoint is not deleted and a list of ingest processors which reference this endpoint is returned.",
         "deprecated": false,
         "schema": {
           "type": "boolean"
@@ -102982,7 +102983,7 @@
       "inference.delete#force": {
         "in": "query",
         "name": "force",
-        "description": "When true, the inference endpoint is forcefully deleted even if it is still being used by ingest processors or semantic text fields",
+        "description": "When true, the inference endpoint is forcefully deleted even if it is still being used by ingest processors or semantic text fields.",
         "deprecated": false,
         "schema": {
           "type": "boolean"
@@ -103014,7 +103015,7 @@
       "inference.inference#task_type": {
         "in": "path",
         "name": "task_type",
-        "description": "The task type",
+        "description": "The type of inference task that the model performs.",
         "required": true,
         "deprecated": false,
         "schema": {
@@ -103025,7 +103026,7 @@
       "inference.inference#inference_id": {
         "in": "path",
         "name": "inference_id",
-        "description": "The inference Id",
+        "description": "The unique identifier for the inference endpoint.",
         "required": true,
         "deprecated": false,
         "schema": {
@@ -103036,7 +103037,7 @@
       "inference.inference#timeout": {
         "in": "query",
         "name": "timeout",
-        "description": "Specifies the amount of time to wait for the inference request to complete.",
+        "description": "The amount of time to wait for the inference request to complete.",
         "deprecated": false,
         "schema": {
           "$ref": "#/components/schemas/_types:Duration"
@@ -103144,7 +103145,7 @@
       "ingest.get_geoip_database#id": {
         "in": "path",
         "name": "id",
-        "description": "Comma-separated list of database configuration IDs to retrieve.\nWildcard (`*`) expressions are supported.\nTo get all database configurations, omit this parameter or use `*`.",
+        "description": "A comma-separated list of database configuration IDs to retrieve.\nWildcard (`*`) expressions are supported.\nTo get all database configurations, omit this parameter or use `*`.",
         "required": true,
         "deprecated": false,
         "schema": {
@@ -103207,7 +103208,7 @@
       "ingest.simulate#id": {
         "in": "path",
         "name": "id",
-        "description": "Pipeline to test.\nIf you don’t specify a `pipeline` in the request body, this parameter is required.",
+        "description": "The pipeline to test.\nIf you don't specify a `pipeline` in the request body, this parameter is required.",
         "required": true,
         "deprecated": false,
         "schema": {
@@ -103259,7 +103260,7 @@
       "license.post#master_timeout": {
         "in": "query",
         "name": "master_timeout",
-        "description": "Period to wait for a connection to the master node.",
+        "description": "The period to wait for a connection to the master node.",
         "deprecated": false,
         "schema": {
           "$ref": "#/components/schemas/_types:Duration"
@@ -103269,7 +103270,7 @@
       "license.post#timeout": {
         "in": "query",
         "name": "timeout",
-        "description": "Period to wait for a response. If no response is received before the timeout expires, the request fails and returns an error.",
+        "description": "The period to wait for a response. If no response is received before the timeout expires, the request fails and returns an error.",
         "deprecated": false,
         "schema": {
           "$ref": "#/components/schemas/_types:Duration"
@@ -108666,11 +108667,11 @@
               "type": "object",
               "properties": {
                 "query": {
-                  "description": "Query input, required for rerank task.\nNot required for other tasks.",
+                  "description": "The query input, which is required only for the `rerank` task.\nIt is not required for other tasks.",
                   "type": "string"
                 },
                 "input": {
-                  "description": "Inference input.\nEither a string or an array of strings.",
+                  "description": "The text on which you want to perform the inference task.\nIt can be a single string or an array.\n\n> info\n> Inference endpoints for the `completion` task type currently only support a single string as input.",
                   "oneOf": [
                     {
                       "type": "string"

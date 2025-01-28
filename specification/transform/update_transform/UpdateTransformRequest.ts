@@ -42,6 +42,7 @@ import { Duration } from '@_types/Time'
  * @availability serverless stability=stable visibility=public
  * @cluster_privileges manage_transform
  * @index_privileges read, index, view_index_metadata
+ * @doc_id update-transform
  */
 export interface Request extends RequestBase {
   urls: [

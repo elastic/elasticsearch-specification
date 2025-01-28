@@ -34,6 +34,7 @@ import { Duration } from '@_types/Time'
  * @rest_spec_name nodes.reload_secure_settings
  * @availability stack since=6.5.0 stability=stable
  * @doc_tag cluster
+ * @doc_id cluster-nodes-reload-secure-settings
  */
 export interface Request extends RequestBase {
   urls: [
