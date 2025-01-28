@@ -28,7 +28,7 @@ export class Response {
      */
     is_running: boolean
     /**
-     * Indicates whether the query returned partial result, e.g. because if was stopped.
+     * Indicates whether the query returned partial result.
      * This will be false if the query completed before the stop command was issued.
      */
     is_partial: boolean

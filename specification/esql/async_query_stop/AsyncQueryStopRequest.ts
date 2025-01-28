@@ -22,7 +22,8 @@ import { Id } from '@_types/common'
 
 /**
  * Stop async ES|QL query.
- * Interrupts the query execution and returns the results so far.
+ *
+ * This API interrupts the query execution and returns the results so far.
  * If the Elasticsearch security features are enabled, only the user who first submitted the ES|QL query can stop it.
  * @rest_spec_name esql.async_query_stop
  * @availability stack since=8.18.0 stability=stable visibility=public

@@ -8922,7 +8922,7 @@
                       "type": "boolean"
                     },
                     "is_partial": {
-                      "description": "Indicates whether the query returned partial result, e.g. because if was stopped.",
+                      "description": "Indicates whether the query returned partial result.\nFor example, this can occur because the query was stopped.",
                       "type": "boolean"
                     }
                   },
@@ -8981,7 +8981,7 @@
           "esql"
         ],
         "summary": "Stop async ES|QL query",
-        "description": "Interrupts the query execution and returns the results so far.\nIf the Elasticsearch security features are enabled, only the user who first submitted the ES|QL query can stop it.",
+        "description": "This API interrupts the query execution and returns the results so far.\nIf the Elasticsearch security features are enabled, only the user who first submitted the ES|QL query can stop it.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/esql.html"
         },
@@ -9025,7 +9025,7 @@
                       "type": "boolean"
                     },
                     "is_partial": {
-                      "description": "Indicates whether the query returned partial result, e.g. because if was stopped.\nThis will be false if the query completed before the stop command was issued.",
+                      "description": "Indicates whether the query returned partial result.\nThis will be false if the query completed before the stop command was issued.",
                       "type": "boolean"
                     }
                   },
