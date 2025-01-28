@@ -1733,6 +1733,63 @@ actions:
                   $ref: "../../specification/_global/get/examples/response/GetResponseExample2.yaml"
                 getDocumentResponseExample3: 
                   $ref: "../../specification/_global/get/examples/response/GetResponseExample3.yaml"
+  - target: "$.components['requestBodies']['index']"
+    description: "Add example for index request"
+    update: 
+      content:
+        application/json:
+          examples:
+            indexRequestExample1:
+              $ref: "../../specification/_global/index/examples/request/IndexRequestExample1.yaml"
+            indexRequestExample2:
+              $ref: "../../specification/_global/index/examples/request/IndexRequestExample2.yaml"
+  - target: "$.components['responses']['index#200']"
+    description: "Add example for index response"
+    update: 
+      content:
+        application/json:
+          examples:
+            indexResponseExample1:
+              $ref: "../../specification/_global/index/examples/response/IndexResponseExample1.yaml"
+            indexResponseExample2:
+              $ref: "../../specification/_global/index/examples/response/IndexResponseExample2.yaml"
+  - target: "$.components['requestBodies']['mget']"
+    description: "Add example for mget request"
+    update: 
+      content:
+        application/json:
+          examples:
+            mgetRequestExample1:
+              $ref: "../../specification/_global/mget/examples/request/MultiGetRequestExample1.yaml"
+            mgetRequestExample2:
+              $ref: "../../specification/_global/mget/examples/request/MultiGetRequestExample2.yaml"
+            mgetRequestExample3:
+              $ref: "../../specification/_global/mget/examples/request/MultiGetRequestExample3.yaml"
+            mgetRequestExample4:
+              $ref: "../../specification/_global/mget/examples/request/MultiGetRequestExample4.yaml"
+  - target: "$.components['requestBodies']['mtermvectors']"
+    description: "Add example for multi term vectors request"
+    update: 
+      content:
+        application/json:
+          examples:
+            multiTermVectorsRequestExample1:
+              $ref: "../../specification/_global/mtermvectors/examples/request/MultiTermVectorsRequestExample1.yaml"
+            multiTermVectorsRequestExample2:
+              $ref: "../../specification/_global/mtermvectors/examples/request/MultiTermVectorsRequestExample2.yaml"
+            multiTermVectorsRequestExample3:
+              $ref: "../../specification/_global/mtermvectors/examples/request/MultiTermVectorsRequestExample3.yaml"
+## Examples for info
+  - target: "$.paths['/']['get']"
+    description: "Add examples for cluster info"
+    update: 
+      responses:
+        200: 
+          content:
+            application/json:
+              examples:
+                catMasterResponseExample1: 
+                  $ref: "../../specification/_global/info/examples/response/RootNodeInfoResponseExample1.yaml"
 ## Examples for licensing
   - target: "$.paths['/_license']['get']"
     description: "Add example for get license response"
@@ -1744,6 +1801,17 @@ actions:
               examples:
                 getLicenseResponseExample1:
                   $ref: "../../specification/license/get/examples/response/GetLicenseResponseExample1.yaml"
+## Examples for script
+  - target: "$.components['requestBodies']['put_script']"
+    description: "Add example for create script request"
+    update: 
+      content:
+        application/json:
+          examples:
+            putScriptRequestExample1:
+              $ref: "../../specification/_global/put_script/examples/request/PutScriptRequestExample1.yaml"
+            putScriptRequestExample2:
+              $ref: "../../specification/_global/put_script/examples/request/PutScriptRequestExample2.yaml"
 ## Examples for search
   - target: "$.components['requestBodies']['clear_scroll']"
     description: "Add example for clear scroll request"
@@ -1819,6 +1887,24 @@ actions:
               $ref: "../../specification/_global/field_caps/examples/response/FieldCapabilitiesResponseExample1.yaml"
             fieldCapabilitiesResponseExample2:
               $ref: "../../specification/_global/field_caps/examples/response/FieldCapabilitiesResponseExample2.yaml"
+  - target: "$.components['requestBodies']['msearch_template']"
+    description: "Add example for multi search template request"
+    update: 
+      content:
+        application/json:
+          examples:
+            multiSearchTemplateRequestExample1:
+              $ref: "../../specification/_global/msearch_template/examples/request/MultiSearchTemplateRequestExample1.yaml"
+  - target: "$.paths['/{index}/_pit']['post']"
+    description: "Add examples for open PIT operation"
+    update:
+      responses:
+        200: 
+          content: 
+            application/json: 
+              examples: 
+                openPointInTimeResponseExample1: 
+                  $ref: "../../specification/_global/open_point_in_time/examples/response/OpenPointInTimeResponseExample1.yaml"
 ## Examples for search applications
   - target: "$.paths['/_application/search_application']['get']"
     description: "Add examples for get search applications operation"
