@@ -29,6 +29,7 @@ import { Duration } from '@_types/Time'
  * @availability serverless stability=stable visibility=public
  * @cluster_privileges manage
  * @doc_tag script
+ * @doc_id script-get
  */
 export interface Request extends RequestBase {
   urls: [

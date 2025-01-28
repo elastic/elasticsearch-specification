@@ -23,7 +23,7 @@ import { Duration } from '@_types/Time'
 
 /**
  * Upgrade a snapshot.
- * Upgrades an anomaly detection model snapshot to the latest major version.
+ * Upgrade an anomaly detection model snapshot to the latest major version.
  * Over time, older snapshot formats are deprecated and removed. Anomaly
  * detection jobs support only snapshots that are from the current or previous
  * major version.
@@ -37,6 +37,7 @@ import { Duration } from '@_types/Time'
  * @availability serverless stability=stable visibility=private
  * @cluster_privileges manage_ml
  * @doc_tag ml anomaly
+ * @doc_id ml-upgrade-job-model-snapshot
  */
 export interface Request extends RequestBase {
   urls: [

@@ -36,6 +36,7 @@ import { Definition, Input } from './types'
  * @availability serverless stability=stable visibility=public
  * @cluster_privileges manage_ml
  * @doc_tag ml trained model
+ * @doc_id put-trained-models
  */
 export interface Request extends RequestBase {
   urls: [

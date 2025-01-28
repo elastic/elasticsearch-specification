@@ -23,9 +23,14 @@ import { Duration } from '@_types/Time'
 import { Checkpoint } from '../_types/Checkpoints'
 
 /**
+ * Get global checkpoints.
+ *
+ * Get the current global checkpoints for an index.
+ * This API is designed for internal use by the Fleet server project.
  * @rest_spec_name fleet.global_checkpoints
  * @availability stack since=7.13.0 stability=stable
  * @availability serverless stability=stable visibility=private
+ * @doc_id get-global-checkpoints
  */
 export interface Request extends RequestBase {
   urls: [
