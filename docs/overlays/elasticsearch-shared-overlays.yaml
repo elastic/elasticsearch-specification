@@ -2381,3 +2381,13 @@ actions:
               examples:
                 updateTransformResponseExample1:
                   $ref: "../../specification/transform/update_transform/examples/response/UpdateTransformResponseExample1.yaml"
+## xCodeSamples
+  - target: "$.paths['/{index}/_doc/{id}']['head']"
+    description: "Add xCodeSamples for check document operation"
+    update: 
+      x-codeSamples:
+        - $ref: "../../specification/_global/exists/examples/xCodeSamples/DocumentExistsConsoleExample1.yaml"
+        - $ref: "../../specification/_global/exists/examples/xCodeSamples/DocumentExistsCurlExample1.yaml"
+        - $ref: "../../specification/_global/exists/examples/xCodeSamples/DocumentExistsJavaScriptExample1.yaml"
+        - $ref: "../../specification/_global/exists/examples/xCodeSamples/DocumentExistsPythonExample1.yaml"
+        - $ref: "../../specification/_global/exists/examples/xCodeSamples/DocumentExistsRubyExample1.yaml"
