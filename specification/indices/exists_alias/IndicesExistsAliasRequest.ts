@@ -28,7 +28,7 @@ import { Duration } from '@_types/Time'
  * @rest_spec_name indices.exists_alias
  * @availability stack stability=stable
  * @availability serverless stability=stable visibility=public
- * @doc_id apis
+ * @doc_id indices-aliases-exist
  */
 export interface Request extends RequestBase {
   urls: [

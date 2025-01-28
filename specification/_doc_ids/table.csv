@@ -175,6 +175,7 @@ drop-processor,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/
 enrich-processor,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/enrich-processor.html
 enrich-stats-api,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/enrich-stats-api.html
 eql-async-search-api,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/get-async-eql-search-api.html
+eql-async-search-delete,https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-eql-delete
 eql-async-search-status-api,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/get-async-eql-status-api.html
 eql-basic-syntax,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/eql-syntax.html#eql-basic-syntax
 eql-search-api,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/eql-search-api.html
@@ -208,6 +209,9 @@ fuzziness,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/commo
 gap-policy,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/search-aggregations-pipeline.html#gap-policy
 geo-shape,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/geo-shape.html
 geo-grid-processor,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/ingest-geo-grid-processor.html
+geoip-delete-database,https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ingest-delete-geoip-database
+geoip-get-database,https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ingest-get-geoip-database
+geoip-put-database,https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ingest-put-geoip-database
 geoip-processor,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/geoip-processor.html
 geoip-stats-api,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/geoip-stats-api.html
 get-basic-status,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/get-basic-status.html
@@ -255,8 +259,10 @@ index,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/index.htm
 indexing-buffer,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/indexing-buffer.html
 index-modules-merge,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/index-modules-merge.html
 index-templates,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/index-templates.html
+index-templates-exist,https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-exists-index-template
 index-templates-v1,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/indices-templates-v1.html
 indices-aliases,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/indices-aliases.html
+indices-aliases-exist,https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-exists-alias
 indices-analyze,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/indices-analyze.html
 indices-clearcache,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/indices-clearcache.html
 indices-clone-index,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/indices-clone-index.html
