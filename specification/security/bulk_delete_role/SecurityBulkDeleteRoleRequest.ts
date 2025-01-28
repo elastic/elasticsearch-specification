@@ -29,7 +29,7 @@ import { Refresh } from '@_types/common'
  * @availability stack since=8.15.0 stability=stable
  * @availability serverless stability=stable visibility=private
  * @cluster_privileges manage_security
- * @doc_id apis
+ * @doc_id security-api-bulk-delete-role
  */
 export interface Request extends RequestBase {
   urls: [

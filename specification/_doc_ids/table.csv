@@ -664,6 +664,8 @@ search-templates,https://www.elastic.co/guide/en/elasticsearch/reference/{branch
 secure-settings,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/secure-settings.html
 security-api-activate-user-profile,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/security-api-activate-user-profile.html
 security-api-authenticate,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/security-api-authenticate.html
+security-api-bulk-delete-role,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/security-api-bulk-delete-role.html
+security-api-bulk-put-role,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/security-api-bulk-put-role.html
 security-api-bulk-update-key,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/security-api-bulk-update-api-keys.html
 security-api-change-password,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/security-api-change-password.html
 security-api-clear-api-key-cache,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/security-api-clear-api-key-cache.html

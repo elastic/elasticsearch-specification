@@ -22,6 +22,7 @@ import { Duration } from '@_types/Time'
 
 /**
  * Start a basic license.
+ *
  * Start an indefinite basic license, which gives access to all the basic features.
  *
  * NOTE: In order to start a basic license, you must not currently have a basic license.
@@ -33,7 +34,7 @@ import { Duration } from '@_types/Time'
  * @rest_spec_name license.post_start_basic
  * @availability stack since=6.3.0 stability=stable
  * @cluster_privileges manage
- * @doc_id apis
+ * @doc_id start-basic,
  */
 export interface Request extends RequestBase {
   urls: [
