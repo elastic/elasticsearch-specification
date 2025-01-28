@@ -31,6 +31,7 @@ import { Duration } from '@_types/Time'
 
 /**
  * Get the cluster health status.
+ *
  * You can also use the API to get the health status of only specified data streams and indices.
  * For data streams, the API retrieves the health status of the stream’s backing indices.
  *
