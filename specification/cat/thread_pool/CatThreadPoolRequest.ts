@@ -23,6 +23,7 @@ import { Duration, TimeUnit } from '@_types/Time'
 
 /**
  * Get thread pool statistics.
+ *
  * Get thread pool statistics for each node in a cluster.
  * Returned information includes all built-in thread pools and custom thread pools.
  * IMPORTANT: cat APIs are only intended for human consumption using the command line or Kibana console. They are not intended for use by applications. For application consumption, use the nodes info API.

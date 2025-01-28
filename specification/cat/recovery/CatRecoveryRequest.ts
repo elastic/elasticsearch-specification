@@ -23,6 +23,7 @@ import { TimeUnit } from '@_types/Time'
 
 /**
  * Get shard recovery information.
+ *
  * Get information about ongoing and completed shard recoveries.
  * Shard recovery is the process of initializing a shard copy, such as restoring a primary shard from a snapshot or syncing a replica shard from a primary shard. When a shard recovery completes, the recovered shard is available for search and indexing.
  * For data streams, the API returns information about the stream’s backing indices.

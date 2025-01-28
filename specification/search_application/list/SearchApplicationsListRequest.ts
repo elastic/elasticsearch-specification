@@ -26,6 +26,7 @@ import { integer } from '@_types/Numeric'
  * @availability stack since=8.8.0 stability=beta
  * @availability serverless stability=beta visibility=public
  * @cluster_privileges manage_search_application
+ * @doc_id list-analytics-collection
  */
 export interface Request extends RequestBase {
   urls: [

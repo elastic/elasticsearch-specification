@@ -25,7 +25,7 @@ import { ShardStatistics } from '@_types/Stats'
 
 export class Response<TDocument> {
   body: {
-    /** Milliseconds it took Elasticsearch to execute the request. */
+    /** The milliseconds it took Elasticsearch to run the request. */
     took: long
     /**
      * If true, the request timed out before completion;
@@ -33,20 +33,20 @@ export class Response<TDocument> {
      */
     timed_out: boolean
     /**
-     * Contains a count of shards used for the request.
+     * A count of shards used for the request.
      */
     _shards: ShardStatistics
     /**
-     * Contains returned documents and metadata.
+     * The returned documents and metadata.
      */
     hits: HitsMetadata<TDocument>
     /**
-     * Contains field values for the documents. These fields
+     * The field values for the documents. These fields
      * must be specified in the request using the `fields` parameter.
      */
     fields?: Dictionary<string, UserDefinedValue>
     /**
-     * Highest returned document score. This value is null for requests
+     * The highest returned document score. This value is null for requests
      * that do not sort by score.
      */
     max_score?: double

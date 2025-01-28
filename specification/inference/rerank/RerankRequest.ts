@@ -27,6 +27,8 @@ import { Duration } from '@_types/Time'
  * @rest_spec_name inference.rerank
  * @availability stack since=8.11.0 stability=stable visibility=public
  * @availability serverless stability=stable visibility=public
+ * @cluster_privileges monitor_inference
+ * @doc_id inference-api-post
  */
 export interface Request extends RequestBase {
   urls: [
@@ -37,13 +39,13 @@ export interface Request extends RequestBase {
   ]
   path_parts: {
     /**
-     * The inference Id
+     * The unique identifier for the inference endpoint.
      */
     inference_id: Id
   }
   query_parameters: {
     /**
-     * Specifies the amount of time to wait for the inference request to complete.
+     * The amount of time to wait for the inference request to complete.
      * @server_default 30s
      */
     timeout?: Duration
@@ -54,12 +56,16 @@ export interface Request extends RequestBase {
      */
     query: string
     /**
-     * Inference input.
-     * Either a string or an array of strings.
+     * The text on which you want to perform the inference task.
+     * It can be a single string or an array.
+     *
+     * > info
+     * > Inference endpoints for the `completion` task type currently only support a single string as input.
      */
     input: string | Array<string>
     /**
-     * Optional task settings
+     * Task settings for the individual inference request.
+     * These settings are specific to the task type you specified and override the task settings specified when initializing the service.
      */
     task_settings?: TaskSettings
   }

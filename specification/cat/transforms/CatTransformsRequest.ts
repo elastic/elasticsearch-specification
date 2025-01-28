@@ -24,6 +24,7 @@ import { TimeUnit } from '@_types/Time'
 
 /**
  * Get transform information.
+ *
  * Get configuration and usage information about transforms.
  *
  * CAT APIs are only intended for human consumption using the Kibana

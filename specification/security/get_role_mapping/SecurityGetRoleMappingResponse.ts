@@ -21,6 +21,9 @@ import { RoleMapping } from '@security/_types/RoleMapping'
 import { Dictionary } from '@spec_utils/Dictionary'
 
 export class Response {
-  /** @codegen_name role_mappings */
+  /**
+   * A successful call retrieves an object, where the keys are the names of the request mappings and the values are the JSON representation of those mappings.
+   * If there is no mapping with the requested name, the response will have status code 404.
+   * @codegen_name role_mappings */
   body: Dictionary<string, RoleMapping>
 }

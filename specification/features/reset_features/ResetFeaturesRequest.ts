@@ -41,6 +41,7 @@ import { Duration } from '@_types/Time'
  * @rest_spec_name features.reset_features
  * @availability stack since=7.12.0 stability=experimental
  * @availability serverless stability=experimental visibility=private
+ * @doc_id features-reset
  */
 export interface Request extends RequestBase {
   urls: [

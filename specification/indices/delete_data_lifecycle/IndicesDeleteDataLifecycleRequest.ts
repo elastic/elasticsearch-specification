@@ -27,6 +27,7 @@ import { Duration } from '@_types/Time'
  * @rest_spec_name indices.delete_data_lifecycle
  * @availability stack since=8.11.0 stability=stable
  * @availability serverless stability=stable visibility=private
+ * @doc_id data-stream-delete-lifecycle
  */
 export interface Request extends RequestBase {
   urls: [

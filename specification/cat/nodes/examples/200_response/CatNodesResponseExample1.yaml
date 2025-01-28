@@ -1,0 +1,10 @@
+summary: Default columns
+description: >
+  A successful response from `GET /_cat/nodes?v=true`.
+  The `ip`, `heap.percent`, `ram.percent`, `cpu`, and `load_*` columns provide the IP addresses and performance information of each node.
+  The `node.role`, `master`, and `name` columns provide information useful for monitoring an entire cluster, particularly large ones.
+# type: response
+# response_code: 200
+value: |-
+  ip        heap.percent ram.percent cpu load_1m load_5m load_15m node.role master name
+  127.0.0.1           65          99  42    3.07                  dim       *      mJw06l1

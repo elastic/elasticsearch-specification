@@ -74,6 +74,7 @@ import { DynamicMapping } from './dynamic-template'
 import {
   CompletionProperty,
   ConstantKeywordProperty,
+  CountedKeywordProperty,
   FieldAliasProperty,
   HistogramProperty,
   IcuCollationProperty,
@@ -92,6 +93,27 @@ export class PropertyBase {
   ignore_above?: integer
   dynamic?: DynamicMapping
   fields?: Dictionary<PropertyName, Property>
+  synthetic_source_keep?: SyntheticSourceKeepEnum
+}
+
+export enum SyntheticSourceKeepEnum {
+  /**
+   * Synthetic source diverges from the original source (default)
+   */
+  none,
+  /**
+   * Arrays of the corresponding field or object preserve the original element ordering and duplicate elements.
+   * The synthetic source fragment for such arrays is not guaranteed to match the original source exactly,
+   * e.g. array [1, 2, [5], [[4, [3]]], 5] may appear as-is or in an equivalent format like [1, 2, 5, 4, 3, 5].
+   * The exact format may change in the future, in an effort to reduce the storage overhead of this option.
+   */
+  arrays,
+  /**
+   * The source for both singleton instances and arrays of the corresponding field or object gets recorded.
+   * When applied to objects, the source of all sub-objects and sub-fields gets captured.
+   * Furthermore, the original source of arrays gets captured and appears in synthetic source with no modifications.
+   */
+  all
 }
 
 /**
@@ -131,6 +153,7 @@ export type Property =
   // structured
   | CompletionProperty
   | ConstantKeywordProperty
+  | CountedKeywordProperty
   | FieldAliasProperty
   | HistogramProperty
   | IpProperty
@@ -207,6 +230,7 @@ export enum FieldType {
   shape,
   histogram,
   constant_keyword,
+  counted_keyword,
   aggregate_metric_double,
   dense_vector,
   semantic_text,

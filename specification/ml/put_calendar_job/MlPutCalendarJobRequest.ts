@@ -27,6 +27,7 @@ import { Id, Ids } from '@_types/common'
  * @availability serverless stability=stable visibility=public
  * @cluster_privileges manage_ml
  * @doc_tag ml anomaly
+ * @doc_id ml-put-calendar-job
  */
 export interface Request extends RequestBase {
   urls: [

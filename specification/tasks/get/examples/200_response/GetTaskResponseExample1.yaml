@@ -1,5 +1,6 @@
-# summary:
-description: A successful response when requesting information about the tasks currently executing in the cluster.
+summary: Get cluster actions
+description: >
+  A successful response from `GET _tasks?actions=cluster:*`, which retrieves all cluster-related tasks.
 # type: response
 # response_code: ''
 value: |-

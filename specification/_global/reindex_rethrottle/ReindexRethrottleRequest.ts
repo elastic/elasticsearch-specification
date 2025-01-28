@@ -25,10 +25,20 @@ import { float } from '@_types/Numeric'
  * Throttle a reindex operation.
  *
  * Change the number of requests per second for a particular reindex operation.
+ * For example:
+ *
+ * ```
+ * POST _reindex/r1A2WoRbTwKZ516z6NEs5A:36619/_rethrottle?requests_per_second=-1
+ * ```
+ *
+ * Rethrottling that speeds up the query takes effect immediately.
+ * Rethrottling that slows down the query will take effect after completing the current batch.
+ * This behavior prevents scroll timeouts.
  * @rest_spec_name reindex_rethrottle
  * @availability stack since=2.4.0 stability=stable
  * @availability serverless stability=stable visibility=private
  * @doc_tag document
+ * @doc_id docs-reindex
  */
 export interface Request extends RequestBase {
   urls: [
@@ -39,13 +49,14 @@ export interface Request extends RequestBase {
   ]
   path_parts: {
     /**
-     * Identifier for the task.
+     * The task identifier, which can be found by using the tasks API.
      */
     task_id: Id
   }
   query_parameters: {
     /**
      * The throttle for this request in sub-requests per second.
+     * It can be either `-1` to turn off throttling or any decimal number like `1.7` or `12` to throttle to that level.
      */
     requests_per_second?: float
   }

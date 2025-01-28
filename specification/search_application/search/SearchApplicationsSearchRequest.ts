@@ -28,6 +28,7 @@ import { Name } from '@_types/common'
  * @rest_spec_name search_application.search
  * @availability stack since=8.8.0 stability=beta
  * @availability serverless stability=beta visibility=public
+ * @doc_id search-application-search
  */
 export interface Request extends RequestBase {
   urls: [

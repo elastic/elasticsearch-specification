@@ -1140,6 +1140,7 @@ export interface ReindexRethrottleResponse {
 export interface RenderSearchTemplateRequest extends RequestBase {
   id?: Id
   body?: {
+    id?: Id
     file?: string
     params?: Record<string, any>
     source?: string
@@ -1150,6 +1151,8 @@ export interface RenderSearchTemplateResponse {
   template_output: Record<string, any>
 }
 
+export type ScriptsPainlessExecutePainlessContext = 'painless_test' | 'filter' | 'score' | 'boolean_field' | 'date_field' | 'double_field' | 'geo_point_field' | 'ip_field' | 'keyword_field' | 'long_field' | 'composite_field'
+
 export interface ScriptsPainlessExecutePainlessContextSetup {
   document: any
   index: IndexName
@@ -1158,7 +1161,7 @@ export interface ScriptsPainlessExecutePainlessContextSetup {
 
 export interface ScriptsPainlessExecuteRequest extends RequestBase {
   body?: {
-    context?: string
+    context?: ScriptsPainlessExecutePainlessContext
     context_setup?: ScriptsPainlessExecutePainlessContextSetup
     script?: Script | string
   }
@@ -2500,6 +2503,7 @@ export interface KnnQuery extends QueryDslQueryBase {
   k?: integer
   filter?: QueryDslQueryContainer | QueryDslQueryContainer[]
   similarity?: float
+  rescore_vector?: RescoreVector
 }
 
 export interface KnnRetriever extends RetrieverBase {
@@ -2509,6 +2513,7 @@ export interface KnnRetriever extends RetrieverBase {
   k: integer
   num_candidates: integer
   similarity?: float
+  rescore_vector?: RescoreVector
 }
 
 export interface KnnSearch {
@@ -2521,6 +2526,7 @@ export interface KnnSearch {
   filter?: QueryDslQueryContainer | QueryDslQueryContainer[]
   similarity?: float
   inner_hits?: SearchInnerHits
+  rescore_vector?: RescoreVector
 }
 
 export interface LatLonGeoLocation {
@@ -2699,6 +2705,10 @@ export interface RequestCacheStats {
   memory_size?: string
   memory_size_in_bytes: long
   miss_count: long
+}
+
+export interface RescoreVector {
+  oversample: float
 }
 
 export type Result = 'created' | 'updated' | 'deleted' | 'not_found' | 'noop'
@@ -5408,6 +5418,11 @@ export interface MappingCorePropertyBase extends MappingPropertyBase {
   store?: boolean
 }
 
+export interface MappingCountedKeywordProperty extends MappingPropertyBase {
+  type: 'counted_keyword'
+  index?: boolean
+}
+
 export interface MappingDataStreamTimestamp {
   enabled: boolean
 }
@@ -5528,7 +5543,7 @@ export interface MappingFieldNamesField {
   enabled: boolean
 }
 
-export type MappingFieldType = 'none' | 'geo_point' | 'geo_shape' | 'ip' | 'binary' | 'keyword' | 'text' | 'search_as_you_type' | 'date' | 'date_nanos' | 'boolean' | 'completion' | 'nested' | 'object' | 'passthrough' | 'version' | 'murmur3' | 'token_count' | 'percolator' | 'integer' | 'long' | 'short' | 'byte' | 'float' | 'half_float' | 'scaled_float' | 'double' | 'integer_range' | 'float_range' | 'long_range' | 'double_range' | 'date_range' | 'ip_range' | 'alias' | 'join' | 'rank_feature' | 'rank_features' | 'flattened' | 'shape' | 'histogram' | 'constant_keyword' | 'aggregate_metric_double' | 'dense_vector' | 'semantic_text' | 'sparse_vector' | 'match_only_text' | 'icu_collation_keyword'
+export type MappingFieldType = 'none' | 'geo_point' | 'geo_shape' | 'ip' | 'binary' | 'keyword' | 'text' | 'search_as_you_type' | 'date' | 'date_nanos' | 'boolean' | 'completion' | 'nested' | 'object' | 'passthrough' | 'version' | 'murmur3' | 'token_count' | 'percolator' | 'integer' | 'long' | 'short' | 'byte' | 'float' | 'half_float' | 'scaled_float' | 'double' | 'integer_range' | 'float_range' | 'long_range' | 'double_range' | 'date_range' | 'ip_range' | 'alias' | 'join' | 'rank_feature' | 'rank_features' | 'flattened' | 'shape' | 'histogram' | 'constant_keyword' | 'counted_keyword' | 'aggregate_metric_double' | 'dense_vector' | 'semantic_text' | 'sparse_vector' | 'match_only_text' | 'icu_collation_keyword'
 
 export interface MappingFlattenedProperty extends MappingPropertyBase {
   boost?: double
@@ -5723,7 +5738,7 @@ export interface MappingPointProperty extends MappingDocValuesPropertyBase {
   type: 'point'
 }
 
-export type MappingProperty = MappingBinaryProperty | MappingBooleanProperty | MappingDynamicProperty | MappingJoinProperty | MappingKeywordProperty | MappingMatchOnlyTextProperty | MappingPercolatorProperty | MappingRankFeatureProperty | MappingRankFeaturesProperty | MappingSearchAsYouTypeProperty | MappingTextProperty | MappingVersionProperty | MappingWildcardProperty | MappingDateNanosProperty | MappingDateProperty | MappingAggregateMetricDoubleProperty | MappingDenseVectorProperty | MappingFlattenedProperty | MappingNestedProperty | MappingObjectProperty | MappingPassthroughObjectProperty | MappingSemanticTextProperty | MappingSparseVectorProperty | MappingCompletionProperty | MappingConstantKeywordProperty | MappingFieldAliasProperty | MappingHistogramProperty | MappingIpProperty | MappingMurmur3HashProperty | MappingTokenCountProperty | MappingGeoPointProperty | MappingGeoShapeProperty | MappingPointProperty | MappingShapeProperty | MappingByteNumberProperty | MappingDoubleNumberProperty | MappingFloatNumberProperty | MappingHalfFloatNumberProperty | MappingIntegerNumberProperty | MappingLongNumberProperty | MappingScaledFloatNumberProperty | MappingShortNumberProperty | MappingUnsignedLongNumberProperty | MappingDateRangeProperty | MappingDoubleRangeProperty | MappingFloatRangeProperty | MappingIntegerRangeProperty | MappingIpRangeProperty | MappingLongRangeProperty | MappingIcuCollationProperty
+export type MappingProperty = MappingBinaryProperty | MappingBooleanProperty | MappingDynamicProperty | MappingJoinProperty | MappingKeywordProperty | MappingMatchOnlyTextProperty | MappingPercolatorProperty | MappingRankFeatureProperty | MappingRankFeaturesProperty | MappingSearchAsYouTypeProperty | MappingTextProperty | MappingVersionProperty | MappingWildcardProperty | MappingDateNanosProperty | MappingDateProperty | MappingAggregateMetricDoubleProperty | MappingDenseVectorProperty | MappingFlattenedProperty | MappingNestedProperty | MappingObjectProperty | MappingPassthroughObjectProperty | MappingSemanticTextProperty | MappingSparseVectorProperty | MappingCompletionProperty | MappingConstantKeywordProperty | MappingCountedKeywordProperty | MappingFieldAliasProperty | MappingHistogramProperty | MappingIpProperty | MappingMurmur3HashProperty | MappingTokenCountProperty | MappingGeoPointProperty | MappingGeoShapeProperty | MappingPointProperty | MappingShapeProperty | MappingByteNumberProperty | MappingDoubleNumberProperty | MappingFloatNumberProperty | MappingHalfFloatNumberProperty | MappingIntegerNumberProperty | MappingLongNumberProperty | MappingScaledFloatNumberProperty | MappingShortNumberProperty | MappingUnsignedLongNumberProperty | MappingDateRangeProperty | MappingDoubleRangeProperty | MappingFloatRangeProperty | MappingIntegerRangeProperty | MappingIpRangeProperty | MappingLongRangeProperty | MappingIcuCollationProperty
 
 export interface MappingPropertyBase {
   meta?: Record<string, string>
@@ -5731,6 +5746,7 @@ export interface MappingPropertyBase {
   ignore_above?: integer
   dynamic?: MappingDynamicMapping
   fields?: Record<PropertyName, MappingProperty>
+  synthetic_source_keep?: MappingSyntheticSourceKeepEnum
 }
 
 export interface MappingRangePropertyBase extends MappingDocValuesPropertyBase {
@@ -5836,6 +5852,8 @@ export interface MappingSuggestContext {
   type: string
   precision?: integer | string
 }
+
+export type MappingSyntheticSourceKeepEnum = 'none' | 'arrays' | 'all'
 
 export type MappingTermVectorOption = 'no' | 'yes' | 'with_offsets' | 'with_positions' | 'with_positions_offsets' | 'with_positions_offsets_payloads' | 'with_positions_payloads'
 
@@ -6773,6 +6791,7 @@ export interface AsyncSearchStatusStatusResponseBase extends AsyncSearchAsyncSea
 export interface AsyncSearchSubmitRequest extends RequestBase {
   index?: Indices
   wait_for_completion_timeout?: Duration
+  keep_alive?: Duration
   keep_on_completion?: boolean
   allow_no_indices?: boolean
   allow_partial_search_results?: boolean
@@ -9024,6 +9043,7 @@ export interface ClusterComponentTemplateNode {
   template: ClusterComponentTemplateSummary
   version?: VersionNumber
   _meta?: Metadata
+  deprecated?: boolean
 }
 
 export interface ClusterComponentTemplateSummary {
@@ -9714,6 +9734,7 @@ export interface ConnectorConnector {
   api_key_secret_id?: string
   configuration: ConnectorConnectorConfiguration
   custom_scheduling: ConnectorConnectorCustomScheduling
+  deleted: boolean
   description?: string
   error?: string | null
   features?: ConnectorConnectorFeatures
@@ -9951,12 +9972,14 @@ export interface ConnectorCheckInResponse {
 export interface ConnectorDeleteRequest extends RequestBase {
   connector_id: Id
   delete_sync_jobs?: boolean
+  hard?: boolean
 }
 
 export type ConnectorDeleteResponse = AcknowledgedResponseBase
 
 export interface ConnectorGetRequest extends RequestBase {
   connector_id: Id
+  include_deleted?: boolean
 }
 
 export type ConnectorGetResponse = ConnectorConnector
@@ -9989,6 +10012,7 @@ export interface ConnectorListRequest extends RequestBase {
   index_name?: Indices
   connector_name?: Names
   service_type?: Names
+  include_deleted?: boolean
   query?: string
 }
 
@@ -10491,6 +10515,8 @@ export type EqlSearchResponse<TEvent = unknown> = EqlEqlSearchResponseBase<TEven
 
 export type EqlSearchResultPosition = 'tail' | 'head'
 
+export type EsqlEsqlFormat = 'csv' | 'json' | 'tsv' | 'txt' | 'yaml' | 'cbor' | 'smile' | 'arrow'
+
 export interface EsqlTableValuesContainer {
   integer?: EsqlTableValuesIntegerValue[]
   keyword?: EsqlTableValuesKeywordValue[]
@@ -10506,10 +10532,50 @@ export type EsqlTableValuesLongDouble = double | double[]
 
 export type EsqlTableValuesLongValue = long | long[]
 
-export type EsqlQueryEsqlFormat = 'csv' | 'json' | 'tsv' | 'txt' | 'yaml' | 'cbor' | 'smile' | 'arrow'
+export interface EsqlAsyncQueryRequest extends RequestBase {
+  delimiter?: string
+  drop_null_columns?: boolean
+  format?: EsqlEsqlFormat
+  keep_alive?: Duration
+  keep_on_completion?: boolean
+  wait_for_completion_timeout?: Duration
+  body?: {
+    columnar?: boolean
+    filter?: QueryDslQueryContainer
+    locale?: string
+    params?: FieldValue[]
+    profile?: boolean
+    query: string
+    tables?: Record<string, Record<string, EsqlTableValuesContainer>>
+  }
+}
+
+export interface EsqlAsyncQueryResponse {
+  columns?: EsqlColumns
+  id?: string
+  is_running: boolean
+}
+
+export interface EsqlAsyncQueryDeleteRequest extends RequestBase {
+  id: Id
+}
+
+export type EsqlAsyncQueryDeleteResponse = AcknowledgedResponseBase
+
+export interface EsqlAsyncQueryGetRequest extends RequestBase {
+  id: Id
+  drop_null_columns?: boolean
+  keep_alive?: Duration
+  wait_for_completion_timeout?: Duration
+}
+
+export interface EsqlAsyncQueryGetResponse {
+  columns?: EsqlColumns
+  is_running: boolean
+}
 
 export interface EsqlQueryRequest extends RequestBase {
-  format?: EsqlQueryEsqlFormat
+  format?: EsqlEsqlFormat
   delimiter?: string
   drop_null_columns?: boolean
   body?: {
@@ -10791,7 +10857,7 @@ export interface IlmMigrateAction {
 
 export interface IlmPhase {
   actions?: IlmActions
-  min_age?: Duration | long
+  min_age?: Duration
 }
 
 export interface IlmPhases {
@@ -11225,6 +11291,7 @@ export interface IndicesIndexSettingsLifecycle {
   parse_origination_date?: boolean
   step?: IndicesIndexSettingsLifecycleStep
   rollover_alias?: string
+  prefer_ilm?: boolean | string
 }
 
 export interface IndicesIndexSettingsLifecycleStep {
@@ -11304,7 +11371,8 @@ export interface IndicesMappingLimitSettings {
   nested_objects?: IndicesMappingLimitSettingsNestedObjects
   field_name_length?: IndicesMappingLimitSettingsFieldNameLength
   dimension_fields?: IndicesMappingLimitSettingsDimensionFields
-  ignore_malformed?: boolean
+  source?: IndicesMappingLimitSettingsSourceFields
+  ignore_malformed?: boolean | string
 }
 
 export interface IndicesMappingLimitSettingsDepth {
@@ -11325,6 +11393,10 @@ export interface IndicesMappingLimitSettingsNestedFields {
 
 export interface IndicesMappingLimitSettingsNestedObjects {
   limit?: long
+}
+
+export interface IndicesMappingLimitSettingsSourceFields {
+  mode: IndicesSourceMode
 }
 
 export interface IndicesMappingLimitSettingsTotalFields {
@@ -11454,6 +11526,8 @@ export interface IndicesSoftDeletes {
   retention_lease?: IndicesRetentionLease
 }
 
+export type IndicesSourceMode = 'disabled' | 'stored' | 'synthetic'
+
 export interface IndicesStorage {
   type: IndicesStorageType
   allow_mmap?: boolean
@@ -11575,6 +11649,12 @@ export interface IndicesAnalyzeTokenDetail {
   tokens: IndicesAnalyzeExplainAnalyzeToken[]
 }
 
+export interface IndicesCancelMigrateReindexRequest extends RequestBase {
+  index: Indices
+}
+
+export type IndicesCancelMigrateReindexResponse = AcknowledgedResponseBase
+
 export interface IndicesClearCacheRequest extends RequestBase {
   index?: Indices
   allow_no_indices?: boolean
@@ -11656,6 +11736,24 @@ export interface IndicesCreateDataStreamRequest extends RequestBase {
 }
 
 export type IndicesCreateDataStreamResponse = AcknowledgedResponseBase
+
+export interface IndicesCreateFromCreateFrom {
+  mappings_override?: MappingTypeMapping
+  settings_override?: IndicesIndexSettings
+  remove_index_blocks?: boolean
+}
+
+export interface IndicesCreateFromRequest extends RequestBase {
+  source: IndexName
+  dest: IndexName
+  body?: IndicesCreateFromCreateFrom
+}
+
+export interface IndicesCreateFromResponse {
+  acknowledged: boolean
+  index: IndexName
+  shards_acknowledged: boolean
+}
 
 export interface IndicesDataStreamsStatsDataStreamsStatsItem {
   backing_indices: integer
@@ -12020,6 +12118,34 @@ export interface IndicesGetMappingRequest extends RequestBase {
 
 export type IndicesGetMappingResponse = Record<IndexName, IndicesGetMappingIndexMappingRecord>
 
+export interface IndicesGetMigrateReindexStatusRequest extends RequestBase {
+  index: Indices
+}
+
+export interface IndicesGetMigrateReindexStatusResponse {
+  start_time?: DateTime
+  start_time_millis: EpochTime<UnitMillis>
+  complete: boolean
+  total_indices_in_data_stream: integer
+  total_indices_requiring_upgrade: integer
+  successes: integer
+  in_progress: IndicesGetMigrateReindexStatusStatusInProgress[]
+  pending: integer
+  errors: IndicesGetMigrateReindexStatusStatusError[]
+  exception?: string
+}
+
+export interface IndicesGetMigrateReindexStatusStatusError {
+  index: string
+  message: string
+}
+
+export interface IndicesGetMigrateReindexStatusStatusInProgress {
+  index: string
+  total_doc_count: long
+  reindexed_doc_count: long
+}
+
 export interface IndicesGetSettingsRequest extends RequestBase {
   index?: Indices
   name?: Names
@@ -12042,6 +12168,23 @@ export interface IndicesGetTemplateRequest extends RequestBase {
 }
 
 export type IndicesGetTemplateResponse = Record<string, IndicesTemplateMapping>
+
+export interface IndicesMigrateReindexMigrateReindex {
+  mode: IndicesMigrateReindexModeEnum
+  source: IndicesMigrateReindexSourceIndex
+}
+
+export type IndicesMigrateReindexModeEnum = 'upgrade'
+
+export interface IndicesMigrateReindexRequest extends RequestBase {
+  body?: IndicesMigrateReindexMigrateReindex
+}
+
+export type IndicesMigrateReindexResponse = AcknowledgedResponseBase
+
+export interface IndicesMigrateReindexSourceIndex {
+  index: IndexName
+}
 
 export interface IndicesMigrateToDataStreamRequest extends RequestBase {
   name: IndexName
@@ -12749,21 +12892,6 @@ export interface IndicesStatsShardStats {
 
 export interface IndicesStatsShardsTotalStats {
   total_count: long
-}
-
-export interface IndicesUnfreezeRequest extends RequestBase {
-  index: IndexName
-  allow_no_indices?: boolean
-  expand_wildcards?: ExpandWildcards
-  ignore_unavailable?: boolean
-  master_timeout?: Duration
-  timeout?: Duration
-  wait_for_active_shards?: string
-}
-
-export interface IndicesUnfreezeResponse {
-  acknowledged: boolean
-  shards_acknowledged: boolean
 }
 
 export interface IndicesUpdateAliasesAction {
@@ -20859,15 +20987,15 @@ export type WatcherDay = 'sunday' | 'monday' | 'tuesday' | 'wednesday' | 'thursd
 
 export interface WatcherEmail {
   id?: Id
-  bcc?: string[]
+  bcc?: string | string[]
   body?: WatcherEmailBody
-  cc?: string[]
+  cc?: string | string[]
   from?: string
   priority?: WatcherEmailPriority
-  reply_to?: string[]
+  reply_to?: string | string[]
   sent_date?: DateTime
   subject: string
-  to: string[]
+  to: string | string[]
   attachments?: Record<string, WatcherEmailAttachmentContainer>
 }
 
@@ -21493,7 +21621,6 @@ export interface XpackInfoFeatures {
   enterprise_search: XpackInfoFeature
   eql: XpackInfoFeature
   esql: XpackInfoFeature
-  frozen_indices: XpackInfoFeature
   graph: XpackInfoFeature
   ilm: XpackInfoFeature
   logstash: XpackInfoFeature
@@ -21664,10 +21791,6 @@ export interface XpackUsageFlattened extends XpackUsageBase {
   field_count: integer
 }
 
-export interface XpackUsageFrozenIndices extends XpackUsageBase {
-  indices_count: long
-}
-
 export interface XpackUsageHealthStatistics extends XpackUsageBase {
   invocations: XpackUsageInvocations
 }
@@ -21679,7 +21802,7 @@ export interface XpackUsageIlm {
 
 export interface XpackUsageIlmPolicyStatistics {
   indices_managed: integer
-  phases: IlmPhases
+  phases: XpackUsagePhases
 }
 
 export interface XpackUsageInvocations {
@@ -21791,6 +21914,19 @@ export interface XpackUsageMonitoring extends XpackUsageBase {
   enabled_exporters: Record<string, long>
 }
 
+export interface XpackUsagePhase {
+  actions: string[]
+  min_age: DurationValue<UnitMillis>
+}
+
+export interface XpackUsagePhases {
+  cold?: XpackUsagePhase
+  delete?: XpackUsagePhase
+  frozen?: XpackUsagePhase
+  hot?: XpackUsagePhase
+  warm?: XpackUsagePhase
+}
+
 export interface XpackUsageQuery {
   count?: integer
   failed?: integer
@@ -21830,7 +21966,6 @@ export interface XpackUsageResponse {
   enrich?: XpackUsageBase
   eql: XpackUsageEql
   flattened?: XpackUsageFlattened
-  frozen_indices: XpackUsageFrozenIndices
   graph: XpackUsageBase
   health_api?: XpackUsageHealthStatistics
   ilm: XpackUsageIlm
