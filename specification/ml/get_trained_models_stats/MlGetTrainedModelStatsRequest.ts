@@ -30,6 +30,7 @@ import { integer } from '@_types/Numeric'
  * @availability serverless stability=stable visibility=public
  * @cluster_privileges monitor_ml
  * @doc_tag ml trained model
+ * @doc_id get-trained-models-stats
  */
 export interface Request extends RequestBase {
   urls: [

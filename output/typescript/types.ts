@@ -1130,6 +1130,7 @@ export interface ReindexRethrottleResponse {
 export interface RenderSearchTemplateRequest extends RequestBase {
   id?: Id
   body?: {
+    id?: Id
     file?: string
     params?: Record<string, any>
     source?: string
@@ -5734,6 +5735,7 @@ export interface MappingPropertyBase {
   ignore_above?: integer
   dynamic?: MappingDynamicMapping
   fields?: Record<PropertyName, MappingProperty>
+  synthetic_source_keep?: MappingSyntheticSourceKeepEnum
 }
 
 export interface MappingRangePropertyBase extends MappingDocValuesPropertyBase {
@@ -5839,6 +5841,8 @@ export interface MappingSuggestContext {
   type: string
   precision?: integer | string
 }
+
+export type MappingSyntheticSourceKeepEnum = 'none' | 'arrays' | 'all'
 
 export type MappingTermVectorOption = 'no' | 'yes' | 'with_offsets' | 'with_positions' | 'with_positions_offsets' | 'with_positions_offsets_payloads' | 'with_positions_payloads'
 
@@ -9029,6 +9033,7 @@ export interface ClusterComponentTemplateNode {
   template: ClusterComponentTemplateSummary
   version?: VersionNumber
   _meta?: Metadata
+  deprecated?: boolean
 }
 
 export interface ClusterComponentTemplateSummary {
@@ -11353,7 +11358,8 @@ export interface IndicesMappingLimitSettings {
   nested_objects?: IndicesMappingLimitSettingsNestedObjects
   field_name_length?: IndicesMappingLimitSettingsFieldNameLength
   dimension_fields?: IndicesMappingLimitSettingsDimensionFields
-  ignore_malformed?: boolean
+  source?: IndicesMappingLimitSettingsSourceFields
+  ignore_malformed?: boolean | string
 }
 
 export interface IndicesMappingLimitSettingsDepth {
@@ -11374,6 +11380,10 @@ export interface IndicesMappingLimitSettingsNestedFields {
 
 export interface IndicesMappingLimitSettingsNestedObjects {
   limit?: long
+}
+
+export interface IndicesMappingLimitSettingsSourceFields {
+  mode: IndicesSourceMode
 }
 
 export interface IndicesMappingLimitSettingsTotalFields {
@@ -11502,6 +11512,8 @@ export interface IndicesSoftDeletes {
   enabled?: boolean
   retention_lease?: IndicesRetentionLease
 }
+
+export type IndicesSourceMode = 'disabled' | 'stored' | 'synthetic'
 
 export interface IndicesStorage {
   type: IndicesStorageType
@@ -20923,15 +20935,15 @@ export type WatcherDay = 'sunday' | 'monday' | 'tuesday' | 'wednesday' | 'thursd
 
 export interface WatcherEmail {
   id?: Id
-  bcc?: string[]
+  bcc?: string | string[]
   body?: WatcherEmailBody
-  cc?: string[]
+  cc?: string | string[]
   from?: string
   priority?: WatcherEmailPriority
-  reply_to?: string[]
+  reply_to?: string | string[]
   sent_date?: DateTime
   subject: string
-  to: string[]
+  to: string | string[]
   attachments?: Record<string, WatcherEmailAttachmentContainer>
 }
 

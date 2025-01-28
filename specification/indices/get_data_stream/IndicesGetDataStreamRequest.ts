@@ -23,12 +23,14 @@ import { Duration } from '@_types/Time'
 
 /**
  * Get data streams.
- * Retrieves information about one or more data streams.
+ *
+ * Get information about one or more data streams.
  * @rest_spec_name indices.get_data_stream
  * @availability stack since=7.9.0 stability=stable
  * @availability serverless stability=stable visibility=public
  * @index_privileges view_index_metadata
  * @doc_tag data stream
+ * @doc_id data-stream-get
  */
 export interface Request extends RequestBase {
   urls: [

@@ -25,6 +25,7 @@ import { Name } from '@_types/common'
  * @availability stack since=8.8.0 stability=experimental
  * @availability serverless stability=experimental visibility=public
  * @doc_tag analytics
+ * @doc_id list-analytics-collection
  */
 export interface Request extends RequestBase {
   urls: [

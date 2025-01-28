@@ -22,12 +22,14 @@ import { Duration } from '@_types/Time'
 
 /**
  * Delete the license.
+ *
  * When the license expires, your subscription level reverts to Basic.
  *
  * If the operator privileges feature is enabled, only operator users can use this API.
  * @rest_spec_name license.delete
  * @availability stack stability=stable
  * @cluster_privileges manage
+ * @doc_id delete-license
  * @ext_doc_id license-management
  */
 export interface Request extends RequestBase {
@@ -39,12 +41,12 @@ export interface Request extends RequestBase {
   ]
   query_parameters: {
     /**
-     * Period to wait for a connection to the master node.
+     * The period to wait for a connection to the master node.
      * @server_default 30s
      */
     master_timeout?: Duration
     /**
-     * Period to wait for a response. If no response is received before the timeout expires, the request fails and returns an error.
+     * The period to wait for a response. If no response is received before the timeout expires, the request fails and returns an error.
      * @server_default 30s
      */
     timeout?: Duration
