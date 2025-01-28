@@ -27,16 +27,15 @@ import { Duration } from '@_types/Time'
  * Get terms in an index.
  *
  * Discover terms that match a partial string in an index.
- * This "terms enum" API is designed for low-latency look-ups used in auto-complete scenarios.
+ * This API is designed for low-latency look-ups used in auto-complete scenarios.
  *
- * If the `complete` property in the response is false, the returned terms set may be incomplete and should be treated as approximate.
- * This can occur due to a few reasons, such as a request timeout or a node error.
- *
- * NOTE: The terms enum API may return terms from deleted documents. Deleted documents are initially only marked as deleted. It is not until their segments are merged that documents are actually deleted. Until that happens, the terms enum API will return terms from these documents.
+ * > info
+ * > The terms enum API may return terms from deleted documents. Deleted documents are initially only marked as deleted. It is not until their segments are merged that documents are actually deleted. Until that happens, the terms enum API will return terms from these documents.
  * @rest_spec_name terms_enum
  * @availability stack since=7.14.0 stability=stable
  * @availability serverless stability=stable visibility=public
  * @doc_tag search
+ * @doc_id search-terms-enum
  */
 export interface Request extends RequestBase {
   urls: [
@@ -46,36 +45,49 @@ export interface Request extends RequestBase {
     }
   ]
   path_parts: {
-    /** Comma-separated list of data streams, indices, and index aliases to search. Wildcard (*) expressions are supported. */
+    /**
+     * A comma-separated list of data streams, indices, and index aliases to search.
+     * Wildcard (`*`) expressions are supported.
+     * To search all data streams or indices, omit this parameter or use `*`  or `_all`.
+     */
     index: IndexName
   }
   body: {
     /** The string to match at the start of indexed terms. If not provided, all terms in the field are considered. */
     field: Field
     /**
-     * How many matching terms to return.
+     * The number of matching terms to return.
      * @server_default 10
      */
     size?: integer
     /**
-     * The maximum length of time to spend collecting results. Defaults to "1s" (one second). If the timeout is exceeded the complete flag set to false in the response and the results may be partial or empty.
+     * The maximum length of time to spend collecting results.
+     * If the timeout is exceeded the `complete` flag set to `false` in the response and the results may be partial or empty.
      * @server_default 1s
      */
     timeout?: Duration
     /**
-     * When true the provided search string is matched against index terms without case sensitivity.
+     * When `true`, the provided search string is matched against index terms without case sensitivity.
      * @server_default false
      */
     case_insensitive?: boolean
     /**
-     * Allows to filter an index shard if the provided query rewrites to match_none.
+     * Filter an index shard if the provided query rewrites to `match_none`.
      * @doc_id query-dsl
      */
     index_filter?: QueryContainer
     /**
-     * The string after which terms in the index should be returned. Allows for a form of pagination if the last result from one request is passed as the search_after parameter for a subsequent request.
+     * The string to match at the start of indexed terms.
+     * If it is not provided, all terms in the field are considered.
+     *
+     * > info
+     * > The prefix string cannot be larger than the largest possible keyword value, which is Lucene's term byte-length limit of 32766.
      */
     string?: string
+    /**
+     * The string after which terms in the index should be returned.
+     * It allows for a form of pagination if the last result from one request is passed as the `search_after` parameter for a subsequent request.
+     */
     search_after?: string
   }
 }
