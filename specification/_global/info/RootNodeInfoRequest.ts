@@ -27,6 +27,7 @@ import { RequestBase } from '@_types/Base'
  * @availability serverless stability=stable visibility=public
  * @cluster_privileges monitor
  * @doc_id api-root
+ * @doc_tag info
  */
 export interface Request extends RequestBase {
   urls: [
