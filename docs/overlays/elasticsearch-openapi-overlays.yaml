@@ -121,6 +121,71 @@ actions:
             examples: 
               postBehavioralAnalyticsEventRequestExample1:
                 $ref: "../../specification/search_application/post_behavioral_analytics_event/examples/request/BehavioralAnalyticsEventPostRequestExample1.yaml"
+## Examples for ccr
+  - target: "$.paths['/{index}/_ccr/follow']['put']"
+    description: "Add examples for create follower operation"
+    update: 
+      requestBody: 
+        content: 
+          application/json: 
+            examples: 
+              createFollowIndexRequestExample1: 
+                $ref: "../../specification/ccr/follow/examples/request/CreateFollowIndexRequestExample1.yaml"
+      responses:
+        200:
+          content:
+            application/json:
+              examples:
+                createFollowIndexResponseExample1:
+                  $ref: "../../specification/ccr/follow/examples/response/CreateFollowIndexResponseExample1.yaml"
+  - target: "$.paths['/{index}/_ccr/forget_follower']['post']"
+    description: "Add examples for forget follower operation"
+    update: 
+      requestBody: 
+        content: 
+          application/json: 
+            examples: 
+              createFollowIndexRequestExample1: 
+                $ref: "../../specification/ccr/forget_follower/examples/request/ForgetFollowerIndexRequestExample1.yaml"
+      responses:
+        200:
+          content:
+            application/json:
+              examples:
+                createFollowIndexResponseExample1:
+                  $ref: "../../specification/ccr/forget_follower/examples/response/ForgetFollowerIndexResponseExample1.yaml"
+  - target: "$.paths['/_ccr/auto_follow/{name}']['put']"
+    description: "Add examples for create auto-follow pattern operation"
+    update: 
+      requestBody: 
+        content: 
+          application/json: 
+            examples: 
+              putAutoFollowPatternRequestExample1: 
+                $ref: "../../specification/ccr/put_auto_follow_pattern/examples/request/PutAutoFollowPatternRequestExample1.yaml"
+      responses:
+        200:
+          content:
+            application/json:
+              examples:
+                putAutoFollowPatternResponseExample1:
+                  $ref: "../../specification/ccr/put_auto_follow_pattern/examples/response/PutAutoFollowPatternResponseExample1.yaml"
+  - target: "$.paths['/{index}/_ccr/resume_follow']['post']"
+    description: "Add examples for resume a follower operation"
+    update: 
+      requestBody: 
+        content: 
+          application/json: 
+            examples: 
+              resumeFollowIndexRequestExample1: 
+                $ref: "../../specification/ccr/resume_follow/examples/request/ResumeFollowIndexRequestExample1.yaml"
+      responses:
+        200:
+          content:
+            application/json:
+              examples:
+                resumeFollowIndexResponseExample1:
+                  $ref: "../../specification/ccr/resume_follow/examples/response/ResumeFollowIndexResponseExample1.yaml"
 ## Examples for cluster
   - target: "$.components['requestBodies']['cluster.allocation_explain']"
     description: "Add example for cluster allocation exaplain request"
