@@ -62,6 +62,145 @@ actions:
         - basicAuth: []
         - bearerAuth: []
 # Examples that apply only to the Elasticsearch OpenAPI document
+## Examples for autoscaling
+  - target: "$.paths['/_autoscaling/policy/{name}']['delete']"
+    description: "Add examples for delete autoscaling policy response"
+    update:
+      responses:
+        200:
+          content:
+            application/json:
+              examples:
+                deleteAutoscalingPolicyResponseExample1:
+                  $ref: "../../specification/autoscaling/delete_autoscaling_policy/examples/response/DeleteAutoscalingPolicyResponseExample1.yaml"
+  - target: "$.paths['/_autoscaling/capacity']['get']"
+    description: "Add examples for get autoscaling capacity response"
+    update:
+      responses:
+        200:
+          content:
+            application/json:
+              examples:
+                getAutoscalingCapacityResponseExample1:
+                  $ref: "../../specification/autoscaling/get_autoscaling_capacity/examples/200_response/GetAutoscalingCapacityResponseExample1.yaml"
+  - target: "$.paths['/_autoscaling/policy/{name}']['get']"
+    description: "Add examples for get autoscaling policy response"
+    update:
+      responses:
+        200:
+          content:
+            application/json:
+              examples:
+                getAutoscalingPolicyResponseExample1:
+                  $ref: "../../specification/autoscaling/get_autoscaling_policy/examples/200_response/GetAutoscalingPolicyResponseExample1.yaml"
+  - target: "$.paths['/_autoscaling/policy/{name}']['put']"
+    description: "Add examples for create autoscaling policy operation"
+    update:
+      requestBody: 
+        content: 
+          application/json: 
+            examples:
+              createAutoscalingPolicyRequestExample1: 
+                $ref: "../../specification/autoscaling/put_autoscaling_policy/examples/request/PutAutoscalingPolicyRequestExample1.yaml"
+              createAutoscalingPolicyRequestExample2: 
+                $ref: "../../specification/autoscaling/put_autoscaling_policy/examples/request/PutAutoscalingPolicyRequestExample2.yaml"
+      responses:
+        200:
+          content:
+            application/json:
+              examples:
+                createAutoscalingPolicyResponseExample1:
+                  $ref: "../../specification/autoscaling/put_autoscaling_policy/examples/200_response/PutAutoscalingPolicyResponseExample1.yaml"
+## Examples for behavioral analytics
+  - target: "$.paths['/_application/analytics/{collection_name}/event/{event_type}']['post']"
+    description: "Add examples for post analytics collection event operation"
+    update: 
+      requestBody: 
+        content: 
+          application/json: 
+            examples: 
+              postBehavioralAnalyticsEventRequestExample1:
+                $ref: "../../specification/search_application/post_behavioral_analytics_event/examples/request/BehavioralAnalyticsEventPostRequestExample1.yaml"
+## Examples for cluster
+  - target: "$.components['requestBodies']['cluster.allocation_explain']"
+    description: "Add example for cluster allocation exaplain request"
+    update:
+      content:
+        application/json:
+          examples:
+            clusterAllocationExplainRequestExample1:
+              $ref: "../../specification/cluster/allocation_explain/examples/request/ClusterAllocationExplainRequestExample1.yaml"
+  - target: "$.components['requestBodies']['cluster.allocation_explain']"
+    description: "Add examples for cluster allocation explain operation"
+    update: 
+      content: 
+        application/json: 
+          examples: 
+            clusterAllocationExplainRequestExample1: 
+              $ref: "../../specification/cluster/allocation_explain/examples/request/clusterAllocationExplainRequestExample1.yaml"
+  - target: "$.components['responses']['cluster.health#200']"
+    description: "Add examples for cluster health operation"
+    update: 
+      content:
+        application/json:
+          examples:
+            clusterHealthResponseExample1:
+              $ref: "../../specification/cluster/health/examples/response/clusterHealthResponseExample1.yaml"
+  - target: "$.paths['/_cluster/settings']['put']"
+    description: "Add examples for cluster update settings operation"
+    update: 
+      requestBody: 
+        content: 
+          application/json: 
+            examples: 
+              clusterPutSettingsRequestExample1: 
+                $ref: "../../specification/cluster/put_settings/examples/request/ClusterPutSettingsRequestExample1.yaml"
+              clusterPutSettingsRequestExample2: 
+                $ref: "../../specification/cluster/put_settings/examples/request/ClusterPutSettingsRequestExample2.yaml"
+  - target: "$.paths['/_cluster/reroute']['post']"
+    description: "Add examples for cluster reroute operation"
+    update: 
+      requestBody: 
+        content: 
+          application/json: 
+            examples: 
+              clusterRerouteRequestExample1: 
+                $ref: "../../specification/cluster/reroute/examples/request/ClusterRerouteRequestExample1.yaml"
+  - target: "$.components['requestBodies']['nodes.reload_secure_settings']"
+    description: "Add examples for nodes reload secure settings operation"
+    update: 
+      content: 
+        application/json: 
+          examples: 
+            clusterNodesReloadSecureSettingsRequestExample1: 
+              $ref: "../../specification/nodes/reload_secure_settings/examples/request/ReloadSecureSettingsRequestExample1.yaml"
+  - target: "$.components['responses']['nodes.reload_secure_settings#200']"
+    description: "Add response examples for nodes reload secure settings operation"
+    update: 
+      content:
+        application/json:
+          examples:
+            clusterNodesReloadSecureSettingsResponseExample1:
+              $ref: "../../specification/nodes/reload_secure_settings/examples/response/ReloadSecureSettingsResponseExample1.yaml"
+  - target: "$.components['responses']['nodes.info#200']"
+    description: "Add response examples for nodes info"
+    update: 
+      content:
+        application/json:
+          examples:
+            nodesInfoResponseExample1:
+              $ref: "../../specification/nodes/info/examples/200_response/nodesInfoResponseExample1.yaml"
+## Examples for esql
+  - target: "$.paths['/_query/async']['post']"
+    description: "Add examples for async esql query operation"
+    update:
+      requestBody: 
+        content: 
+          application/json: 
+            examples:
+              esqlAsyncQueryRequestExample1:
+                 $ref: "../../specification/esql/async_query/examples/request/AsyncQueryRequestExample1.yaml"
+## Examples for features
   - target: "$.paths['/_features']['get']"
     description: "Add examples for get features operation"
     update:
@@ -82,40 +221,7 @@ actions:
               examples:
                 resetFeaturesResponseExample1:
                   $ref: "../../specification/features/reset_features/examples/response/ResetFeaturesResponseExample1.yaml"
-  - target: "$.components['requestBodies']['nodes.reload_secure_settings']"
-    description: "Add examples for nodes reload secure settings operation"
-    update: 
-      content: 
-        application/json: 
-          examples: 
-            clusterNodesReloadSecureSettingsRequestExample1: 
-              $ref: "../../specification/nodes/reload_secure_settings/examples/request/ReloadSecureSettingsRequestExample1.yaml"
-  - target: "$.components['responses']['nodes.reload_secure_settings#200']"
-    description: "Add response examples for nodes reload secure settings operation"
-    update: 
-      content:
-        application/json:
-          examples:
-            clusterNodesReloadSecureSettingsResponseExample1:
-              $ref: "../../specification/nodes/reload_secure_settings/examples/response/ReloadSecureSettingsResponseExample1.yaml"
-  - target: "$.paths['/_tasks']['get']"
-    description: "Add examples for task management operation"
-    update:
-      responses:
-        200:
-          content:
-            application/json:
-              examples:
-                getTasksResponseExample1:
-                  $ref: "../../specification/tasks/get/examples/200_response/GetTaskResponseExample1.yaml"
-  - target: "$.components['responses']['nodes.info#200']"
-    description: "Add response examples for nodes info"
-    update: 
-      content:
-        application/json:
-          examples:
-            nodesInfoResponseExample1:
-              $ref: "../../specification/nodes/info/examples/200_response/nodesInfoResponseExample1.yaml"
+## Examples for ilm
   - target: "$.paths['/_ilm/policy/{policy}']['delete']"
     description: "Add examples for delete lifecycle policy operation"
     update:
@@ -234,6 +340,17 @@ actions:
               examples:
                 removePolicyResponseExample1:
                   $ref: "../../specification/ilm/remove_policy/examples/response/RemovePolicyResponseExample1.yaml"
+## Examples for indices
+  - target: "$.paths['/_lifecycle/stats']['get']"
+    description: "Add examples for get lifecycle stats operation"
+    update:
+      responses:
+        200:
+          content:
+            application/json:
+              examples:
+                dataStreamLifecycleStatsResponseExample1:
+                  $ref: "../../specification/indices/get_data_lifecycle_stats/examples/response/IndicesGetDataLifecycleStatsResponseExample1.yaml"
   - target: "$.components['requestBodies']['indices.clone']"
     description: "Add examples for clone index request"
     update: 
@@ -270,54 +387,6 @@ actions:
               examples:
                 indicesOpenResponseExample1:
                   $ref: "../../specification/indices/open/examples/200_response/indicesOpenResponseExample1.yaml"
-  - target: "$.paths['/_autoscaling/policy/{name}']['delete']"
-    description: "Add examples for delete autoscaling policy response"
-    update:
-      responses:
-        200:
-          content:
-            application/json:
-              examples:
-                deleteAutoscalingPolicyResponseExample1:
-                  $ref: "../../specification/autoscaling/delete_autoscaling_policy/examples/response/DeleteAutoscalingPolicyResponseExample1.yaml"
-  - target: "$.paths['/_autoscaling/capacity']['get']"
-    description: "Add examples for get autoscaling capacity response"
-    update:
-      responses:
-        200:
-          content:
-            application/json:
-              examples:
-                getAutoscalingCapacityResponseExample1:
-                  $ref: "../../specification/autoscaling/get_autoscaling_capacity/examples/200_response/GetAutoscalingCapacityResponseExample1.yaml"
-  - target: "$.paths['/_autoscaling/policy/{name}']['get']"
-    description: "Add examples for get autoscaling policy response"
-    update:
-      responses:
-        200:
-          content:
-            application/json:
-              examples:
-                getAutoscalingPolicyResponseExample1:
-                  $ref: "../../specification/autoscaling/get_autoscaling_policy/examples/200_response/GetAutoscalingPolicyResponseExample1.yaml"
-  - target: "$.paths['/_autoscaling/policy/{name}']['put']"
-    description: "Add examples for create autoscaling policy operation"
-    update:
-      requestBody: 
-        content: 
-          application/json: 
-            examples:
-              createAutoscalingPolicyRequestExample1: 
-                $ref: "../../specification/autoscaling/put_autoscaling_policy/examples/request/PutAutoscalingPolicyRequestExample1.yaml"
-              createAutoscalingPolicyRequestExample2: 
-                $ref: "../../specification/autoscaling/put_autoscaling_policy/examples/request/PutAutoscalingPolicyRequestExample2.yaml"
-      responses:
-        200:
-          content:
-            application/json:
-              examples:
-                createAutoscalingPolicyResponseExample1:
-                  $ref: "../../specification/autoscaling/put_autoscaling_policy/examples/200_response/PutAutoscalingPolicyResponseExample1.yaml"
   - target: "$.components['responses']['indices.recovery#200']"
     description: "Add example for get index recovery response"
     update: 
@@ -360,82 +429,6 @@ actions:
           examples:
             indicesLegacyPutTemplateRequestExample1:
               $ref: "../../specification/indices/put_template/examples/request/indicesPutTemplateRequestExample1.yaml"
-## Examples for behavioral analytics
-  - target: "$.paths['/_application/analytics/{collection_name}/event/{event_type}']['post']"
-    description: "Add examples for post analytics collection event operation"
-    update: 
-      requestBody: 
-        content: 
-          application/json: 
-            examples: 
-              postBehavioralAnalyticsEventRequestExample1:
-                $ref: "../../specification/search_application/post_behavioral_analytics_event/examples/request/BehavioralAnalyticsEventPostRequestExample1.yaml"
-## Examples for cluster
-  - target: "$.components['requestBodies']['cluster.allocation_explain']"
-    description: "Add example for cluster allocation exaplain request"
-    update:
-      content:
-        application/json:
-          examples:
-            clusterAllocationExplainRequestExample1:
-              $ref: "../../specification/cluster/allocation_explain/examples/request/ClusterAllocationExplainRequestExample1.yaml"
-  - target: "$.components['requestBodies']['cluster.allocation_explain']"
-    description: "Add examples for cluster allocation explain operation"
-    update: 
-      content: 
-        application/json: 
-          examples: 
-            clusterAllocationExplainRequestExample1: 
-              $ref: "../../specification/cluster/allocation_explain/examples/request/clusterAllocationExplainRequestExample1.yaml"
-  - target: "$.components['responses']['cluster.health#200']"
-    description: "Add examples for cluster health operation"
-    update: 
-      content:
-        application/json:
-          examples:
-            clusterHealthResponseExample1:
-              $ref: "../../specification/cluster/health/examples/response/clusterHealthResponseExample1.yaml"
-  - target: "$.paths['/_cluster/settings']['put']"
-    description: "Add examples for cluster update settings operation"
-    update: 
-      requestBody: 
-        content: 
-          application/json: 
-            examples: 
-              clusterPutSettingsRequestExample1: 
-                $ref: "../../specification/cluster/put_settings/examples/request/ClusterPutSettingsRequestExample1.yaml"
-              clusterPutSettingsRequestExample2: 
-                $ref: "../../specification/cluster/put_settings/examples/request/ClusterPutSettingsRequestExample2.yaml"
-  - target: "$.paths['/_cluster/reroute']['post']"
-    description: "Add examples for cluster reroute operation"
-    update: 
-      requestBody: 
-        content: 
-          application/json: 
-            examples: 
-              clusterRerouteRequestExample1: 
-                $ref: "../../specification/cluster/reroute/examples/request/ClusterRerouteRequestExample1.yaml"
-## Examples for esql
-  - target: "$.paths['/_query/async']['post']"
-    description: "Add examples for async esql query operation"
-    update:
-      requestBody: 
-        content: 
-          application/json: 
-            examples:
-              esqlAsyncQueryRequestExample1:
-                 $ref: "../../specification/esql/async_query/examples/request/AsyncQueryRequestExample1.yaml"
-## Examples for indices
-  - target: "$.paths['/_lifecycle/stats']['get']"
-    description: "Add examples for get lifecycle stats operation"
-    update:
-      responses:
-        200:
-          content:
-            application/json:
-              examples:
-                dataStreamLifecycleStatsResponseExample1:
-                  $ref: "../../specification/indices/get_data_lifecycle_stats/examples/response/IndicesGetDataLifecycleStatsResponseExample1.yaml"
 ## Examples for inference
   - target: "$.components['requestBodies']['inference.stream_inference']"
     description: "Add example for inference stream request"
@@ -539,7 +532,7 @@ actions:
             examples:
               renderSearchApplicationQueryRequestExample1: 
                 $ref: "../../specification/search_application/render_query/examples/request/SearchApplicationsRenderQueryRequestExample1.yaml"
-# Examples for security
+## Examples for security
   - target: "$.paths['/_security/api_key/_bulk_update']['post']"
     description: "Add examples for bulk update API keys operation"
     update:
@@ -574,6 +567,17 @@ actions:
               examples:
                 delegatePkiResponseExample1:
                   $ref: "../../specification/security/delegate_pki/examples/200_response/SecurityDelegatePkiResponseExample1.yaml"
+## Examples for tasks
+  - target: "$.paths['/_tasks']['get']"
+    description: "Add examples for task management operation"
+    update:
+      responses:
+        200:
+          content:
+            application/json:
+              examples:
+                getTasksResponseExample1:
+                  $ref: "../../specification/tasks/get/examples/200_response/GetTaskResponseExample1.yaml"
 ## Examples for watcher
   - target: "$.paths['/_watcher/settings']['put']"
     description: "Add request example for update watcher settings"
