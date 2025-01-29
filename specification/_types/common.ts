@@ -89,7 +89,6 @@ export type GrokPattern = string
 /** @doc_id modules-node */
 export type NodeName = string
 
-/** @doc_id data-stream-path-param  */
 export type DataStreamName = string
 
 export type DataStreamNames = DataStreamName | DataStreamName[]
