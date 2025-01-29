@@ -2315,7 +2315,7 @@ export interface ErrorResponseBase {
   status: integer
 }
 
-export type EsqlColumns = ArrayBuffer
+export type EsqlResult = ArrayBuffer
 
 export type ExpandWildcard = 'all' | 'open' | 'closed' | 'hidden' | 'none'
 
@@ -10503,8 +10503,6 @@ export type EqlSearchResponse<TEvent = unknown> = EqlEqlSearchResponseBase<TEven
 
 export type EqlSearchResultPosition = 'tail' | 'head'
 
-export type EsqlEsqlFormat = 'csv' | 'json' | 'tsv' | 'txt' | 'yaml' | 'cbor' | 'smile' | 'arrow'
-
 export interface EsqlTableValuesContainer {
   integer?: EsqlTableValuesIntegerValue[]
   keyword?: EsqlTableValuesKeywordValue[]
@@ -10523,7 +10521,7 @@ export type EsqlTableValuesLongValue = long | long[]
 export interface EsqlAsyncQueryRequest extends RequestBase {
   delimiter?: string
   drop_null_columns?: boolean
-  format?: EsqlEsqlFormat
+  format?: EsqlQueryEsqlFormat
   keep_alive?: Duration
   keep_on_completion?: boolean
   wait_for_completion_timeout?: Duration
@@ -10538,11 +10536,7 @@ export interface EsqlAsyncQueryRequest extends RequestBase {
   }
 }
 
-export interface EsqlAsyncQueryResponse {
-  columns?: EsqlColumns
-  id?: string
-  is_running: boolean
-}
+export type EsqlAsyncQueryResponse = EsqlResult
 
 export interface EsqlAsyncQueryDeleteRequest extends RequestBase {
   id: Id
@@ -10557,13 +10551,12 @@ export interface EsqlAsyncQueryGetRequest extends RequestBase {
   wait_for_completion_timeout?: Duration
 }
 
-export interface EsqlAsyncQueryGetResponse {
-  columns?: EsqlColumns
-  is_running: boolean
-}
+export type EsqlAsyncQueryGetResponse = EsqlResult
+
+export type EsqlQueryEsqlFormat = 'csv' | 'json' | 'tsv' | 'txt' | 'yaml' | 'cbor' | 'smile' | 'arrow'
 
 export interface EsqlQueryRequest extends RequestBase {
-  format?: EsqlEsqlFormat
+  format?: EsqlQueryEsqlFormat
   delimiter?: string
   drop_null_columns?: boolean
   body?: {
@@ -10577,7 +10570,7 @@ export interface EsqlQueryRequest extends RequestBase {
   }
 }
 
-export type EsqlQueryResponse = EsqlColumns
+export type EsqlQueryResponse = EsqlResult
 
 export interface FeaturesFeature {
   name: string
