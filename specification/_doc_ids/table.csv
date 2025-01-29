@@ -413,6 +413,7 @@ ml-update-snapshot,https://www.elastic.co/guide/en/elasticsearch/reference/{bran
 ml-upgrade-job-model-snapshot,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/ml-upgrade-job-model-snapshot.html
 modules-cluster,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/modules-cluster.html
 modules-cross-cluster-search,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/modules-cross-cluster-search.html
+modules-cross-cluster-optional,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/modules-cross-cluster-search.html#skip-unavailable-clusters
 modules-discovery-hosts-providers,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/modules-discovery-hosts-providers.html
 modules-fielddata,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/modules-fielddata.html
 modules-gateway-dangling-indices,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/modules-gateway-dangling-indices.html
