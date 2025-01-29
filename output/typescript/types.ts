@@ -10567,6 +10567,13 @@ export interface EsqlAsyncQueryGetRequest extends RequestBase {
 
 export type EsqlAsyncQueryGetResponse = EsqlResult
 
+export interface EsqlAsyncQueryStopRequest extends RequestBase {
+  id: Id
+  drop_null_columns?: boolean
+}
+
+export type EsqlAsyncQueryStopResponse = EsqlResult
+
 export interface EsqlQueryRequest extends RequestBase {
   format?: EsqlEsqlFormat
   delimiter?: string
