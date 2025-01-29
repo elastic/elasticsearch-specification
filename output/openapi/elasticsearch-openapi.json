@@ -8803,23 +8803,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "type": "object",
-                  "properties": {
-                    "columns": {
-                      "$ref": "#/components/schemas/_types:EsqlColumns"
-                    },
-                    "id": {
-                      "description": "A query identifier that is provided only when one of the following conditions is met:\n\n* A query request does not return complete results during the period specified in the `wait_for_completion_timeout` parameter.\n* The `keep_on_completion` parameter value is true.\n\nYou can use this ID with the `GET /_query/async/<id>` API to get the current status and available results for the query.",
-                      "type": "string"
-                    },
-                    "is_running": {
-                      "description": "Indicates whether the query is still running.\nIf the value is false, the async query has finished and the results are returned.",
-                      "type": "boolean"
-                    }
-                  },
-                  "required": [
-                    "is_running"
-                  ]
+                  "$ref": "#/components/schemas/_types:EsqlResult"
                 }
               }
             }
@@ -8888,19 +8872,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "type": "object",
-                  "properties": {
-                    "columns": {
-                      "$ref": "#/components/schemas/_types:EsqlColumns"
-                    },
-                    "is_running": {
-                      "description": "Indicates whether the query is still running.\nIf the value is false, the async query has finished and the results are returned.",
-                      "type": "boolean"
-                    }
-                  },
-                  "required": [
-                    "is_running"
-                  ]
+                  "$ref": "#/components/schemas/_types:EsqlResult"
                 }
               }
             }
@@ -9045,7 +9017,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/_types:EsqlColumns"
+                  "$ref": "#/components/schemas/_types:EsqlResult"
                 }
               }
             }
@@ -69272,7 +69244,7 @@
           }
         ]
       },
-      "_types:EsqlColumns": {
+      "_types:EsqlResult": {
         "type": "object"
       },
       "_types:InlineGet": {

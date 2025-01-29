@@ -17,9 +17,9 @@
  * under the License.
  */
 
-import { EsqlColumns } from '@_types/Binary'
+import { EsqlResult } from '@_types/Binary'
 
 export class Response {
   /** @codegen_name data */
-  body: EsqlColumns
+  body: EsqlResult
 }
