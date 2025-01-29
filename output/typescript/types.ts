@@ -10553,6 +10553,13 @@ export interface EsqlAsyncQueryGetRequest extends RequestBase {
 
 export type EsqlAsyncQueryGetResponse = EsqlResult
 
+export interface EsqlAsyncQueryStopRequest extends RequestBase {
+  id: Id
+  drop_null_columns?: boolean
+}
+
+export type EsqlAsyncQueryStopResponse = EsqlResult
+
 export type EsqlQueryEsqlFormat = 'csv' | 'json' | 'tsv' | 'txt' | 'yaml' | 'cbor' | 'smile' | 'arrow'
 
 export interface EsqlQueryRequest extends RequestBase {
