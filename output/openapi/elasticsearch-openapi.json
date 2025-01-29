@@ -95951,6 +95951,7 @@
                   }
                 },
                 "templates": {
+                  "description": "Template warnings are sectioned off per template and include deprecations for both component templates and\nindex templates.",
                   "type": "object",
                   "additionalProperties": {
                     "type": "array",
@@ -95960,6 +95961,7 @@
                   }
                 },
                 "ilm_policies": {
+                  "description": "ILM policy warnings are sectioned off per policy.",
                   "type": "object",
                   "additionalProperties": {
                     "type": "array",
