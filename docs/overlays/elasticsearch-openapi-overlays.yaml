@@ -260,6 +260,34 @@ actions:
           examples:
             nodesInfoResponseExample1:
               $ref: "../../specification/nodes/info/examples/200_response/nodesInfoResponseExample1.yaml"
+## Examples for connectors
+  - target: "$.paths['/_connector/_sync_job/{connector_sync_job_id}/_error']['put']"
+    description: "Add examples for connector job sync error operation"
+    update:
+      requestBody: 
+        content: 
+          application/json: 
+            examples:
+              syncJobErrorRequestExample1:
+                 $ref: "../../specification/connector/sync_job_error/examples/request/SyncJobErrorRequestExample1.yaml"
+  - target: "$.paths['/_connector/{connector_id}/_features']['put']"
+    description: "Add examples for update connector features"
+    update: 
+      requestBody: 
+        content: 
+          application/json: 
+            examples: 
+              connectorUpdateFeaturesRequestExample1: 
+                $ref: "../../specification/connector/update_features/examples/request/ConnectorUpdateFeaturesRequestExample1.yaml"
+              connectorUpdateFeaturesRequestExample2: 
+                $ref: "../../specification/connector/update_features/examples/request/ConnectorUpdateFeaturesRequestExample2.yaml"
+      responses:
+        200:
+          content:
+            application/json:
+              examples:
+                connectorUpdateFeaturesResponseExample1:
+                  $ref: "../../specification/connector/update_features/examples/response/ConnectorUpdateFeaturesResponseExample1.yaml"
 ## Examples for esql
   - target: "$.paths['/_query/async']['post']"
     description: "Add examples for async esql query operation"

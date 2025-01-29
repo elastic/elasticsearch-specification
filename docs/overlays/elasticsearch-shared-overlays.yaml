@@ -1350,6 +1350,230 @@ actions:
               examples:
                 catTasksResponseExample1: 
                   $ref: "../../specification/cat/tasks/examples/200_response/CatTasksResponseExample1.yaml"
+## Examples for connectors
+  - target: "$.paths['/_connector/{connector_id}/_check_in']['put']"
+    description: "Add example for check in connector response"
+    update: 
+      responses:
+        200:
+          content:
+            application/json:
+              examples:
+                connectorCheckInResponseExample1:
+                  $ref: "../../specification/connector/check_in/examples/response/ConnectorCheckInResponseExample1.yaml"
+  - target: "$.paths['/_connector/{connector_id}']['delete']"
+    description: "Add example for delete connector response"
+    update: 
+      responses:
+        200:
+          content:
+            application/json:
+              examples:
+                connectorDeleteResponseExample1:
+                  $ref: "../../specification/connector/delete/examples/response/ConnectorDeleteResponseExample1.yaml"
+  - target: "$.components['requestBodies']['connector.put']"
+    description: "Add example for create connector request"
+    update: 
+      content:
+        application/json:
+          examples:
+            connectorPutRequestExample1:
+              $ref: "../../specification/connector/put/examples/request/ConnectorPutRequestExample1.yaml"
+            connectorPutRequestExample2:
+              $ref: "../../specification/connector/put/examples/request/ConnectorPutRequestExample2.yaml"
+  - target: "$.components['responses']['connector.put#200']"
+    description: "Add example for create connector response"
+    update: 
+      content:
+        application/json:
+          examples:
+            connectorPutResponseExample:
+              $ref: "../../specification/connector/put/examples/response/ConnectorPutResponseExample1.yaml"
+  - target: "$.paths['/_connector/_sync_job/{connector_sync_job_id}']['delete']"
+    description: "Add example for delete sync job response"
+    update: 
+      responses:
+        200:
+          content:
+            application/json:
+              examples:
+                syncJobDeleteResponseExample1:
+                  $ref: "../../specification/connector/sync_job_delete/examples/response/SyncJobDeleteResponseExample1.yaml"
+  - target: "$.paths['/_connector/_sync_job']['post']"
+    description: "Add example for create sync job"
+    update: 
+      requestBody:
+        content:
+          application/json:
+            examples:
+              syncJobPostRequestExample1:
+                $ref: "../../specification/connector/sync_job_post/examples/request/SyncJobPostRequestExample1.yaml"
+  - target: "$.paths['/_connector/{connector_id}/_api_key_id']['put']"
+    description: "Add examples for update connector API key ID"
+    update: 
+      requestBody: 
+        content: 
+          application/json: 
+            examples: 
+              connectorUpdateApiKeyIdRequestExample1: 
+                $ref: "../../specification/connector/update_api_key_id/examples/request/ConnectorUpdateApiKeyIDRequestExample1.yaml"
+      responses:
+        200:
+          content:
+            application/json:
+              examples:
+                connectorUpdateApiKeyIdResponseExample1:
+                  $ref: "../../specification/connector/update_api_key_id/examples/response/ConnectorUpdateApiKeyIDResponseExample1.yaml"
+  - target: "$.paths['/_connector/{connector_id}/_configuration']['put']"
+    description: "Add examples for update connector configuration"
+    update: 
+      requestBody: 
+        content: 
+          application/json: 
+            examples: 
+              connectorUpdateConfigurationRequestExample1: 
+                $ref: "../../specification/connector/update_configuration/examples/request/ConnectorUpdateConfigurationRequestExample1.yaml"
+              connectorUpdateConfigurationRequestExample2: 
+                $ref: "../../specification/connector/update_configuration/examples/request/ConnectorUpdateConfigurationRequestExample2.yaml"
+      responses:
+        200:
+          content:
+            application/json:
+              examples:
+                connectorUpdateConfigurationResponseExample1:
+                  $ref: "../../specification/connector/update_configuration/examples/response/ConnectorUpdateConfigurationResponseExample1.yaml"
+  - target: "$.paths['/_connector/{connector_id}/_error']['put']"
+    description: "Add examples for update connector error field"
+    update: 
+      requestBody: 
+        content: 
+          application/json: 
+            examples: 
+              connectorUpdateConfigurationRequestExample1: 
+                $ref: "../../specification/connector/update_error/examples/request/ConnectorUpdateErrorRequestExample1.yaml"
+      responses:
+        200:
+          content:
+            application/json:
+              examples:
+                connectorUpdateErrorResponseExample1:
+                  $ref: "../../specification/connector/update_error/examples/response/ConnectorUpdateErrorResponseExample1.yaml"
+  - target: "$.paths['/_connector/{connector_id}/_filtering']['put']"
+    description: "Add examples for update connector filtering"
+    update: 
+      requestBody: 
+        content: 
+          application/json: 
+            examples: 
+              connectorUpdateFilteringRequestExample1: 
+                $ref: "../../specification/connector/update_filtering/examples/request/ConnectorUpdateFilteringRequestExample1.yaml"
+              connectorUpdateFilteringRequestExample2: 
+                $ref: "../../specification/connector/update_filtering/examples/request/ConnectorUpdateFilteringRequestExample2.yaml"
+      responses:
+        200:
+          content:
+            application/json:
+              examples:
+                connectorUpdateFilteringResponseExample1:
+                  $ref: "../../specification/connector/update_filtering/examples/response/ConnectorUpdateFilteringResponseExample1.yaml"
+  - target: "$.paths['/_connector/{connector_id}/_index_name']['put']"
+    description: "Add examples for update connector index name"
+    update: 
+      requestBody: 
+        content: 
+          application/json: 
+            examples: 
+              connectorUpdateIndexNameRequestExample1: 
+                $ref: "../../specification/connector/update_index_name/examples/request/ConnectorUpdateIndexNameRequestExample1.yaml"
+      responses:
+        200:
+          content:
+            application/json:
+              examples:
+                connectorUpdateIndexNameResponseExample1:
+                  $ref: "../../specification/connector/update_index_name/examples/response/ConnectorUpdateIndexNameResponseExample1.yaml"
+  - target: "$.paths['/_connector/{connector_id}/_name']['put']"
+    description: "Add examples for update connector name"
+    update: 
+      requestBody: 
+        content: 
+          application/json: 
+            examples: 
+              connectorUpdateNameRequestExample1: 
+                $ref: "../../specification/connector/update_name/examples/request/ConnectorUpdateNameRequestExample1.yaml"
+      responses:
+        200:
+          content:
+            application/json:
+              examples:
+                connectorUpdateNameResponseExample1:
+                  $ref: "../../specification/connector/update_name/examples/response/ConnectorUpdateNameResponseExample1.yaml"
+  - target: "$.paths['/_connector/{connector_id}/_pipeline']['put']"
+    description: "Add examples for update connector pipeline"
+    update: 
+      requestBody: 
+        content: 
+          application/json: 
+            examples: 
+              connectorUpdatePipelineRequestExample1: 
+                $ref: "../../specification/connector/update_pipeline/examples/request/ConnectorUpdatePipelineRequestExample1.yaml"
+      responses:
+        200:
+          content:
+            application/json:
+              examples:
+                connectorUpdatePipelineResponseExample1:
+                  $ref: "../../specification/connector/update_pipeline/examples/response/ConnectorUpdatePipelineResponseExample1.yaml"
+  - target: "$.paths['/_connector/{connector_id}/_scheduling']['put']"
+    description: "Add examples for update connector scheduling"
+    update: 
+      requestBody: 
+        content: 
+          application/json: 
+            examples: 
+              connectorUpdateSchedulingRequestExample1: 
+                $ref: "../../specification/connector/update_scheduling/examples/request/ConnectorUpdateSchedulingRequestExample1.yaml"
+              connectorUpdateSchedulingRequestExample2: 
+                $ref: "../../specification/connector/update_scheduling/examples/request/ConnectorUpdateSchedulingRequestExample2.yaml"
+      responses:
+        200:
+          content:
+            application/json:
+              examples:
+                connectorUpdateSchedulingResponseExample1:
+                  $ref: "../../specification/connector/update_scheduling/examples/response/ConnectorUpdateSchedulingResponseExample1.yaml"
+  - target: "$.paths['/_connector/{connector_id}/_service_type']['put']"
+    description: "Add examples for update connector service type"
+    update: 
+      requestBody: 
+        content: 
+          application/json: 
+            examples: 
+              connectorUpdateServiceTypeRequestExample1: 
+                $ref: "../../specification/connector/update_service_type/examples/request/ConnectorUpdateServiceTypeRequestExample1.yaml"
+      responses:
+        200:
+          content:
+            application/json:
+              examples:
+                connectorUpdateServiceTypeResponseExample1:
+                  $ref: "../../specification/connector/update_service_type/examples/response/ConnectorUpdateServiceTypeResponseExample1.yaml"
+  - target: "$.paths['/_connector/{connector_id}/_status']['put']"
+    description: "Add examples for update connector status"
+    update: 
+      requestBody: 
+        content: 
+          application/json: 
+            examples: 
+              connectorUpdateStatusRequestExample1: 
+                $ref: "../../specification/connector/update_status/examples/request/ConnectorUpdateStatusRequestExample1.yaml"
+      responses:
+        200:
+          content:
+            application/json:
+              examples:
+                connectorUpdateStatusResponseExample1:
+                  $ref: "../../specification/connector/update_status/examples/response/ConnectorUpdateStatusResponseExample1.yaml"
 ## Examples for data streams
   - target: "$.paths['/_data_stream/{name}/_lifecycle']['delete']"
     description: "Add example for delete data stream lifecycle response"
