@@ -121,6 +121,19 @@ actions:
             examples: 
               postBehavioralAnalyticsEventRequestExample1:
                 $ref: "../../specification/search_application/post_behavioral_analytics_event/examples/request/BehavioralAnalyticsEventPostRequestExample1.yaml"
+## Examples for cat
+  - target: "$.components['responses']['cat.thread_pool#200']"
+    description: "Add example for cat thread pool response"
+    update: 
+      content:
+        text/plain:
+          schema:
+            type: string
+          examples:
+            catThreadPoolResponseExample1:
+              $ref: "../../specification/cat/thread_pool/examples/200_response/CatThreadPoolResponseExample1.yaml"
+            catThreadPoolResponseExample2:
+              $ref: "../../specification/cat/thread_pool/examples/200_response/CatThreadPoolResponseExample2.yaml"
 ## Examples for ccr
   - target: "$.paths['/{index}/_ccr/follow']['put']"
     description: "Add examples for create follower operation"
@@ -145,14 +158,14 @@ actions:
         content: 
           application/json: 
             examples: 
-              createFollowIndexRequestExample1: 
+              forgetFollowerRequestExample1: 
                 $ref: "../../specification/ccr/forget_follower/examples/request/ForgetFollowerIndexRequestExample1.yaml"
       responses:
         200:
           content:
             application/json:
               examples:
-                createFollowIndexResponseExample1:
+                forgetFollowerResponseExample1:
                   $ref: "../../specification/ccr/forget_follower/examples/response/ForgetFollowerIndexResponseExample1.yaml"
   - target: "$.paths['/_ccr/auto_follow/{name}']['put']"
     description: "Add examples for create auto-follow pattern operation"
@@ -247,7 +260,7 @@ actions:
               $ref: "../../specification/nodes/info/examples/200_response/nodesInfoResponseExample1.yaml"
   - target: "$.paths['/_resolve/cluster/{name}']['get']"
     description: "Add examples for resolve cluster operation"
-    update: 
+    update:      
       responses:
         200:
           content:
@@ -255,6 +268,34 @@ actions:
               examples:
                 resolveClusterResponseExample1:
                   $ref: "../../specification/indices/resolve_cluster/examples/200_response/ResolveClusterResponseExample1.yaml"
+## Examples for connectors
+  - target: "$.paths['/_connector/_sync_job/{connector_sync_job_id}/_error']['put']"
+    description: "Add examples for connector job sync error operation"
+    update:
+      requestBody: 
+        content: 
+          application/json: 
+            examples:
+              syncJobErrorRequestExample1:
+                 $ref: "../../specification/connector/sync_job_error/examples/request/SyncJobErrorRequestExample1.yaml"
+  - target: "$.paths['/_connector/{connector_id}/_features']['put']"
+    description: "Add examples for update connector features"
+    update: 
+      requestBody: 
+        content: 
+          application/json: 
+            examples: 
+              connectorUpdateFeaturesRequestExample1: 
+                $ref: "../../specification/connector/update_features/examples/request/ConnectorUpdateFeaturesRequestExample1.yaml"
+              connectorUpdateFeaturesRequestExample2: 
+                $ref: "../../specification/connector/update_features/examples/request/ConnectorUpdateFeaturesRequestExample2.yaml"
+      responses:
+        200:
+          content:
+            application/json:
+              examples:
+                connectorUpdateFeaturesResponseExample1:
+                  $ref: "../../specification/connector/update_features/examples/response/ConnectorUpdateFeaturesResponseExample1.yaml"
 ## Examples for esql
   - target: "$.paths['/_query/async']['post']"
     description: "Add examples for async esql query operation"
