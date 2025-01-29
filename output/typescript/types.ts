@@ -10503,8 +10503,6 @@ export type EqlSearchResponse<TEvent = unknown> = EqlEqlSearchResponseBase<TEven
 
 export type EqlSearchResultPosition = 'tail' | 'head'
 
-export type EsqlEsqlFormat = 'csv' | 'json' | 'tsv' | 'txt' | 'yaml' | 'cbor' | 'smile' | 'arrow'
-
 export interface EsqlTableValuesContainer {
   integer?: EsqlTableValuesIntegerValue[]
   keyword?: EsqlTableValuesKeywordValue[]
@@ -10523,7 +10521,7 @@ export type EsqlTableValuesLongValue = long | long[]
 export interface EsqlAsyncQueryRequest extends RequestBase {
   delimiter?: string
   drop_null_columns?: boolean
-  format?: EsqlEsqlFormat
+  format?: EsqlQueryEsqlFormat
   keep_alive?: Duration
   keep_on_completion?: boolean
   wait_for_completion_timeout?: Duration
@@ -10555,8 +10553,10 @@ export interface EsqlAsyncQueryGetRequest extends RequestBase {
 
 export type EsqlAsyncQueryGetResponse = EsqlResult
 
+export type EsqlQueryEsqlFormat = 'csv' | 'json' | 'tsv' | 'txt' | 'yaml' | 'cbor' | 'smile' | 'arrow'
+
 export interface EsqlQueryRequest extends RequestBase {
-  format?: EsqlEsqlFormat
+  format?: EsqlQueryEsqlFormat
   delimiter?: string
   drop_null_columns?: boolean
   body?: {
