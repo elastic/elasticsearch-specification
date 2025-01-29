@@ -37,7 +37,7 @@ value: |-
     "cluster_three": {
       "connected": false,
       "skip_unavailable": false,
-      "error": "Request timed out before receiving a response from the remote cluster"  (4)
+      "error": "Request timed out before receiving a response from the remote cluster"
     },
     "oldcluster": {
       "connected": true,
