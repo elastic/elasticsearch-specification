@@ -5223,7 +5223,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/_types:EsqlColumns"
+                  "$ref": "#/components/schemas/_types:EsqlResult"
                 }
               }
             }
@@ -44875,7 +44875,7 @@
           }
         ]
       },
-      "_types:EsqlColumns": {
+      "_types:EsqlResult": {
         "type": "object"
       },
       "_types:InlineGet": {
