@@ -10565,26 +10565,14 @@ export interface EsqlAsyncQueryGetRequest extends RequestBase {
   wait_for_completion_timeout?: Duration
 }
 
-<<<<<<< HEAD
-export interface EsqlAsyncQueryGetResponse {
-  columns?: EsqlColumns
-  is_running: boolean
-  is_partial: boolean
-}
+export type EsqlAsyncQueryGetResponse = EsqlResult
 
 export interface EsqlAsyncQueryStopRequest extends RequestBase {
   id: Id
   drop_null_columns?: boolean
 }
 
-export interface EsqlAsyncQueryStopResponse {
-  columns?: EsqlColumns
-  is_running: boolean
-  is_partial: boolean
-}
-=======
-export type EsqlAsyncQueryGetResponse = EsqlResult
->>>>>>> main
+export type EsqlAsyncQueryStopResponse = EsqlResult
 
 export interface EsqlQueryRequest extends RequestBase {
   format?: EsqlEsqlFormat

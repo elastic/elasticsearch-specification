@@ -8896,28 +8896,7 @@
             "content": {
               "application/json": {
                 "schema": {
-<<<<<<< HEAD
-                  "type": "object",
-                  "properties": {
-                    "columns": {
-                      "$ref": "#/components/schemas/_types:EsqlColumns"
-                    },
-                    "is_running": {
-                      "description": "Indicates whether the query is still running.\nIf the value is false, the async query has finished and the results are returned.",
-                      "type": "boolean"
-                    },
-                    "is_partial": {
-                      "description": "Indicates whether the query returned partial result.\nFor example, this can occur because the query was stopped.",
-                      "type": "boolean"
-                    }
-                  },
-                  "required": [
-                    "is_running",
-                    "is_partial"
-                  ]
-=======
                   "$ref": "#/components/schemas/_types:EsqlResult"
->>>>>>> main
                 }
               }
             }
@@ -9003,24 +8982,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "type": "object",
-                  "properties": {
-                    "columns": {
-                      "$ref": "#/components/schemas/_types:EsqlColumns"
-                    },
-                    "is_running": {
-                      "description": "Indicates whether the query is still running.\nFor stopped query results, this will always be false.",
-                      "type": "boolean"
-                    },
-                    "is_partial": {
-                      "description": "Indicates whether the query returned partial result.\nThis will be false if the query completed before the stop command was issued.",
-                      "type": "boolean"
-                    }
-                  },
-                  "required": [
-                    "is_running",
-                    "is_partial"
-                  ]
+                  "$ref": "#/components/schemas/_types:EsqlResult"
                 }
               }
             }

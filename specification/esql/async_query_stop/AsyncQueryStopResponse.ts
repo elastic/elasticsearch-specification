@@ -17,20 +17,8 @@
  * under the License.
  */
 
-import { EsqlColumns } from '@_types/Binary'
+import { EsqlResult } from '@_types/Binary'
 
 export class Response {
-  body: {
-    columns?: EsqlColumns
-    /**
-     * Indicates whether the query is still running.
-     * For stopped query results, this will always be false.
-     */
-    is_running: boolean
-    /**
-     * Indicates whether the query returned partial result.
-     * This will be false if the query completed before the stop command was issued.
-     */
-    is_partial: boolean
-  }
+  body: EsqlResult
 }
