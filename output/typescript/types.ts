@@ -9366,6 +9366,7 @@ export interface ClusterRemoteInfoClusterRemoteProxyInfo {
   server_name: string
   num_proxy_sockets_connected: integer
   max_proxy_socket_connections: integer
+  cluster_credentials?: string
 }
 
 export interface ClusterRemoteInfoClusterRemoteSniffInfo {

@@ -78,4 +78,6 @@ export class ClusterRemoteProxyInfo {
   num_proxy_sockets_connected: integer
   /** The maximum number of socket connections to the remote cluster when proxy mode is configured. */
   max_proxy_socket_connections: integer
+  /** This field presents and has value of ::es_redacted:: only when the remote cluster is configured with the API key based model. Otherwise, the field is not present. */
+  cluster_credentials?: string
 }
