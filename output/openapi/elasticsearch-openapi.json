@@ -95949,6 +95949,24 @@
                   "items": {
                     "$ref": "#/components/schemas/migration.deprecations:Deprecation"
                   }
+                },
+                "templates": {
+                  "type": "object",
+                  "additionalProperties": {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/components/schemas/migration.deprecations:Deprecation"
+                    }
+                  }
+                },
+                "ilm_policies": {
+                  "type": "object",
+                  "additionalProperties": {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/components/schemas/migration.deprecations:Deprecation"
+                    }
+                  }
                 }
               },
               "required": [
@@ -95956,7 +95974,9 @@
                 "index_settings",
                 "data_streams",
                 "node_settings",
-                "ml_settings"
+                "ml_settings",
+                "templates",
+                "ilm_policies"
               ]
             }
           }
