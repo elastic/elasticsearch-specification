@@ -1242,18 +1242,6 @@ actions:
           examples:
             catTemplatesResponseExample1:
               $ref: "../../specification/cat/templates/examples/200_response/CatTemplatesResponseExample1.yaml"
-  - target: "$.components['responses']['cat.thread_pool#200']"
-    description: "Add example for cat thread pool response"
-    update: 
-      content:
-        text/plain:
-          schema:
-            type: string
-          examples:
-            catThreadPoolResponseExample1:
-              $ref: "../../specification/cat/thread_pool/examples/200_response/CatThreadPoolResponseExample1.yaml"
-            catThreadPoolResponseExample2:
-              $ref: "../../specification/cat/thread_pool/examples/200_response/CatThreadPoolResponseExample2.yaml"
   - target: "$.components['responses']['cat.transforms#200']"
     description: "Add example for cat transforms response"
     update: 
@@ -1272,7 +1260,7 @@ actions:
               schema:
                 type: string
               examples:
-                catMasterResponseExample1: 
+                catHealthResponseExample1: 
                   $ref: "../../specification/cat/health/examples/200_response/CatHealthResponseExample1.yaml"
   - target: "$.paths['/_cat/master']['get']"
     description: "Add examples for cat master operation"
@@ -1775,7 +1763,7 @@ actions:
           content:
             application/json:
               examples:
-                catMasterResponseExample1: 
+                clusterInfoResponseExample1: 
                   $ref: "../../specification/_global/info/examples/response/RootNodeInfoResponseExample1.yaml"
 ## Examples for ingest
   - target: "$.components['responses']['ingest.get_pipeline#200']"
