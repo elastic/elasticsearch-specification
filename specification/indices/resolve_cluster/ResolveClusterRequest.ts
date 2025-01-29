@@ -18,6 +18,7 @@
  */
 
 import { RequestBase } from '@_types/Base'
+import { Duration } from '@_types/Time'
 import { ExpandWildcards, Names } from '@_types/common'
 
 /**
@@ -41,6 +42,13 @@ import { ExpandWildcards, Names } from '@_types/common'
  *
  * For example, `GET /_resolve/cluster/my-index-*,cluster*:my-index-*` returns information about the local cluster and all remotely configured clusters that start with the alias `cluster*`.
  * Each cluster returns information about whether it has any indices, aliases or data streams that match `my-index-*`.
+ *
+ * ## Note on backwards compatibility
+ * The ability to query without an index expression was added in version 8.18, so when
+ * querying remote clusters older than that, the local cluster will send the index
+ * expression `dummy*` to those remote clusters. Thus, if an errors occur, you may see a reference
+ * to that index expression even though you didn't request it. If it causes a problem, you can
+ * instead include an index expression like `*:*` to bypass the issue.
  *
  * ## Advantages of using this endpoint before a cross-cluster search
  *
@@ -68,6 +76,10 @@ import { ExpandWildcards, Names } from '@_types/common'
 export interface Request extends RequestBase {
   urls: [
     {
+      path: '/_resolve/cluster'
+      methods: ['GET']
+    },
+    {
       path: '/_resolve/cluster/{name}'
       methods: ['GET']
     }
@@ -76,14 +88,19 @@ export interface Request extends RequestBase {
     /**
      * A comma-separated list of names or index patterns for the indices, aliases, and data streams to resolve.
      * Resources on remote clusters can be specified using the `<cluster>`:`<name>` syntax.
+     * Index and cluster exclusions (e.g., `-cluster1:*`) are also supported.
+     * If no index expression is specified, information about all remote clusters configured on the local cluster
+     * is returned without doing any index matching
      */
-    name: Names
+    name?: Names
   }
   query_parameters: {
     /**
      * If false, the request returns an error if any wildcard expression, index alias, or `_all` value targets only missing
      * or closed indices. This behavior applies even if the request targets other open indices. For example, a request
      * targeting `foo*,bar*` returns an error if an index starts with `foo` but no index starts with `bar`.
+     * Note: only supported when specifying an index expression. You will get an error if you specify index options to the
+     * _resolve/cluster API endpoint that takes no index expression.
      * @server_default true
      */
     allow_no_indices?: boolean // default: true
@@ -92,19 +109,36 @@ export interface Request extends RequestBase {
      * If the request can target data streams, this argument determines whether wildcard expressions match hidden data streams.
      * Supports comma-separated values, such as `open,hidden`.
      * Valid values are: `all`, `open`, `closed`, `hidden`, `none`.
+     * Note: only supported when specifying an index expression. You will get an error if you specify index options to the
+     * _resolve/cluster API endpoint that takes no index expression.
      * @server_default open
      */
     expand_wildcards?: ExpandWildcards
     /**
      * If true, concrete, expanded, or aliased indices are ignored when frozen.
+     * Note: only supported when specifying an index expression. You will get an error if you specify index options to the
+     * _resolve/cluster API endpoint that takes no index expression.
      * @server_default false
      * @deprecated 7.16.0
      */
     ignore_throttled?: boolean // default: false
     /**
      * If false, the request returns an error if it targets a missing or closed index.
+     * Note: only supported when specifying an index expression. You will get an error if you specify index options to the
+     * _resolve/cluster API endpoint that takes no index expression.
      * @server_default false
      */
     ignore_unavailable?: boolean // default: false
+    /**
+     * Specify a max wait time for remote clusters to respond.
+     * If a remote cluster does not respond within this timeout period, the API response
+     * will show the cluster as not connected and include an error message that the
+     * request timed out.
+     *
+     * The default timeout is unset and the query can take
+     * as long as the networking layer is configured to wait for remote clusters that are
+     * not responding (typically 30 seconds).
+     */
+    timeout?: Duration // default: unset
   }
 }

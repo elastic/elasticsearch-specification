@@ -12482,11 +12482,12 @@ export interface IndicesReloadSearchAnalyzersRequest extends RequestBase {
 export type IndicesReloadSearchAnalyzersResponse = IndicesReloadSearchAnalyzersReloadResult
 
 export interface IndicesResolveClusterRequest extends RequestBase {
-  name: Names
+  name?: Names
   allow_no_indices?: boolean
   expand_wildcards?: ExpandWildcards
   ignore_throttled?: boolean
   ignore_unavailable?: boolean
+  timeout?: Duration
 }
 
 export interface IndicesResolveClusterResolveClusterInfo {
