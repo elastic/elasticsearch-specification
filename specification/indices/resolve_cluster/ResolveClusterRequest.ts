@@ -18,8 +18,8 @@
  */
 
 import { RequestBase } from '@_types/Base'
-import { Duration } from '@_types/Time'
 import { ExpandWildcards, Names } from '@_types/common'
+import { Duration } from '@_types/Time'
 
 /**
  * Resolve the cluster.
