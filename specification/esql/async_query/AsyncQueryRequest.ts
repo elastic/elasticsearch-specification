@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { EsqlFormat } from '@esql/_types/QueryParameters'
+import { EsqlFormat } from '@esql/query/QueryParameters'
 import { TableValuesContainer } from '@esql/_types/TableValuesContainer'
 import { Dictionary } from '@spec_utils/Dictionary'
 import { RequestBase } from '@_types/Base'
