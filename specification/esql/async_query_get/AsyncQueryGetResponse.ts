@@ -17,20 +17,8 @@
  * under the License.
  */
 
-import { EsqlColumns } from '@_types/Binary'
+import { EsqlResult } from '@_types/Binary'
 
 export class Response {
-  body: {
-    columns?: EsqlColumns
-    /**
-     * Indicates whether the query is still running.
-     * If the value is false, the async query has finished and the results are returned.
-     */
-    is_running: boolean
-    /**
-     * Indicates whether the query returned partial result.
-     * For example, this can occur because the query was stopped.
-     */
-    is_partial: boolean
-  }
+  body: EsqlResult
 }

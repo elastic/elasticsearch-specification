@@ -2324,7 +2324,7 @@ export interface ErrorResponseBase {
   status: integer
 }
 
-export type EsqlColumns = ArrayBuffer
+export type EsqlResult = ArrayBuffer
 
 export type ExpandWildcard = 'all' | 'open' | 'closed' | 'hidden' | 'none'
 
@@ -10550,11 +10550,7 @@ export interface EsqlAsyncQueryRequest extends RequestBase {
   }
 }
 
-export interface EsqlAsyncQueryResponse {
-  columns?: EsqlColumns
-  id?: string
-  is_running: boolean
-}
+export type EsqlAsyncQueryResponse = EsqlResult
 
 export interface EsqlAsyncQueryDeleteRequest extends RequestBase {
   id: Id
@@ -10569,6 +10565,7 @@ export interface EsqlAsyncQueryGetRequest extends RequestBase {
   wait_for_completion_timeout?: Duration
 }
 
+<<<<<<< HEAD
 export interface EsqlAsyncQueryGetResponse {
   columns?: EsqlColumns
   is_running: boolean
@@ -10585,6 +10582,9 @@ export interface EsqlAsyncQueryStopResponse {
   is_running: boolean
   is_partial: boolean
 }
+=======
+export type EsqlAsyncQueryGetResponse = EsqlResult
+>>>>>>> main
 
 export interface EsqlQueryRequest extends RequestBase {
   format?: EsqlEsqlFormat
@@ -10601,7 +10601,7 @@ export interface EsqlQueryRequest extends RequestBase {
   }
 }
 
-export type EsqlQueryResponse = EsqlColumns
+export type EsqlQueryResponse = EsqlResult
 
 export interface FeaturesFeature {
   name: string
