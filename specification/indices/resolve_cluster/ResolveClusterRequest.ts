@@ -140,4 +140,5 @@ export interface Request extends RequestBase {
      * not responding (typically 30 seconds).
      */
     timeout?: Duration
+  }
 }
