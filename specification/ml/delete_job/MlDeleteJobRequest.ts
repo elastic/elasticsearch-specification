@@ -22,6 +22,7 @@ import { Id } from '@_types/common'
 
 /**
  * Delete an anomaly detection job.
+ *
  * All job configuration, model state and results are deleted.
  * It is not currently possible to delete multiple jobs using wildcards or a
  * comma separated list. If you delete a job that has a datafeed, the request

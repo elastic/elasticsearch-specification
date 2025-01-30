@@ -2036,6 +2036,185 @@ actions:
               examples:
                 getLicenseResponseExample1:
                   $ref: "../../specification/license/get/examples/response/GetLicenseResponseExample1.yaml"
+## Examples for machine learning
+  - target: "$.paths['/_ml/data_frame/_evaluate']['post']"
+    description: "Add examples for evaluate data frame analytics"
+    update: 
+      requestBody: 
+        content: 
+          application/json: 
+            examples: 
+              mlDataFrameAnalyticsEvaluateRequestExample1: 
+                $ref: "../../specification/ml/evaluate_data_frame/examples/request/MlEvaluateDataFrameRequestExample1.yaml"
+              mlDataFrameAnalyticsEvaluateRequestExample2: 
+                $ref: "../../specification/ml/evaluate_data_frame/examples/request/MlEvaluateDataFrameRequestExample2.yaml"
+              mlDataFrameAnalyticsEvaluateRequestExample3: 
+                $ref: "../../specification/ml/evaluate_data_frame/examples/request/MlEvaluateDataFrameRequestExample3.yaml"
+              mlDataFrameAnalyticsEvaluateRequestExample4: 
+                $ref: "../../specification/ml/evaluate_data_frame/examples/request/MlEvaluateDataFrameRequestExample4.yaml"
+              mlDataFrameAnalyticsEvaluateRequestExample5: 
+                $ref: "../../specification/ml/evaluate_data_frame/examples/request/MlEvaluateDataFrameRequestExample5.yaml"
+      responses:
+        200:
+          content:
+            application/json:
+              examples:
+                mlDataFrameAnalyticsEvaluateResponseExample1:
+                  $ref: "../../specification/ml/evaluate_data_frame/examples/response/MlEvaluateDataFrameResponseExample1.yaml"
+                mlDataFrameAnalyticsEvaluateResponseExample2:
+                  $ref: "../../specification/ml/evaluate_data_frame/examples/response/MlEvaluateDataFrameResponseExample2.yaml"
+                mlDataFrameAnalyticsEvaluateResponseExample3:
+                  $ref: "../../specification/ml/evaluate_data_frame/examples/response/MlEvaluateDataFrameResponseExample3.yaml"
+  - target: "$.paths['/_ml/anomaly_detectors/_estimate_model_memory']['post']"
+    description: "Add examples for estimate anomaly job model memory"
+    update: 
+      requestBody: 
+        content: 
+          application/json: 
+            examples: 
+              mlAnomalyJobEstimateRequestExample1: 
+                $ref: "../../specification/ml/estimate_model_memory/examples/request/MlEstimatemodelMemoryRequestExample1.yaml"
+      responses:
+        200:
+          content:
+            application/json:
+              examples:
+                mlAnomalyJobEstimateResponseExample1:
+                  $ref: "../../specification/ml/estimate_model_memory/examples/response/MlEstimateModelMemoryResponseExample1.yaml"
+  - target: "$.paths['/_ml/anomaly_detectors/{job_id}']['put']"
+    description: "Add examples for create anomaly detection job"
+    update: 
+      requestBody: 
+        content: 
+          application/json: 
+            examples: 
+              mlAnomalyJobCreateRequestExample1: 
+                $ref: "../../specification/ml/put_job/examples/request/MlPutJobRequestExample1.yaml"
+      responses:
+        200:
+          content:
+            application/json:
+              examples:
+                mlAnomalyJobCreateResponseExample1:
+                  $ref: "../../specification/ml/put_job/examples/200_response/MlPutJobResponseExample1.yaml"
+  - target: "$.paths['/_ml/anomaly_detectors/{job_id}/_open']['post']"
+    description: "Add examples for open anomaly detection job"
+    update: 
+      requestBody: 
+        content: 
+          application/json: 
+            examples: 
+              mlAnomalyJobOpenRequestExample1: 
+                $ref: "../../specification/ml/open_job/examples/request/MlOpenJobRequestExample1.yaml"
+      responses:
+        200:
+          content:
+            application/json:
+              examples:
+                mlAnomalyJobCreateResponseExample1:
+                  $ref: "../../specification/ml/open_job/examples/200_response/MlOpenJobResponseExample1.yaml"
+  - target: "$.paths['/_ml/trained_models/{model_id}/model_aliases/{model_alias}']['delete']"
+    description: "Add examples for delete trained model alias"
+    update: 
+      responses:
+        200:
+          content:
+            application/json:
+              examples:
+                mlTrainedModelAliasDeleteResponseExample1:
+                  $ref: "../../specification/ml/delete_trained_model_alias/examples/response/MlDeleteTrainedModelAliasResponseExample1.yaml"
+  - target: "$.paths['/_ml/trained_models/{model_id}']['delete']"
+    description: "Add examples for delete trained model"
+    update: 
+      responses:
+        200:
+          content:
+            application/json:
+              examples:
+                mlTrainedModelDeleteResponseExample1:
+                  $ref: "../../specification/ml/delete_trained_model/examples/response/MlDeleteTrainedModelResponseExample1.yaml"
+  - target: "$.paths['/_ml/anomaly_detectors/{job_id}']['delete']"
+    description: "Add examples for delete anomaly detection job"
+    update: 
+      responses:
+        200:
+          content:
+            application/json:
+              examples:
+                mlAnomalyJobDeleteResponseExample1:
+                  $ref: "../../specification/ml/delete_job/examples/response/MlDeleteJobResponseExample1.yaml"
+                mlAnomalyJobDeleteResponseExample2:
+                  $ref: "../../specification/ml/delete_job/examples/response/MlDeleteJobResponseExample2.yaml"
+  - target: "$.paths['/_ml/filters/{filter_id}']['delete']"
+    description: "Add examples for delete filter"
+    update: 
+      responses:
+        200:
+          content:
+            application/json:
+              examples:
+                mlFilterDeleteResponseExample1:
+                  $ref: "../../specification/ml/delete_filter/examples/response/MlDeleteFilterResponseExample1.yaml"
+  - target: "$.paths['/_ml/datafeeds/{datafeed_id}']['delete']"
+    description: "Add examples for delete data feed"
+    update: 
+      responses:
+        200:
+          content:
+            application/json:
+              examples:
+                mlDatafeedDeleteResponseExample1:
+                  $ref: "../../specification/ml/delete_datafeed/examples/response/MlDeleteDatafeedResponseExample1.yaml"
+  - target: "$.paths['/_ml/data_frame/analytics/{id}']['delete']"
+    description: "Add examples for delete data frame analytics job"
+    update: 
+      responses:
+        200:
+          content:
+            application/json:
+              examples:
+                mlDataFrameAnalyticsDeleteResponseExample1:
+                  $ref: "../../specification/ml/delete_data_frame_analytics/examples/response/MlDeleteDataFrameAnalyticsResponseExample1.yaml"
+  - target: "$.paths['/_ml/calendars/{calendar_id}/jobs/{job_id}']['delete']"
+    description: "Add examples for delete anomaly jobs from calendar"
+    update: 
+      responses:
+        200:
+          content:
+            application/json:
+              examples:
+                mlCalendarJobDeleteResponseExample1:
+                  $ref: "../../specification/ml/delete_calendar_job/examples/response/MlDeleteCalendarJobResponseExample1.yaml"
+  - target: "$.paths['/_ml/calendars/{calendar_id}/events/{event_id}']['delete']"
+    description: "Add examples for delete event from calendar"
+    update: 
+      responses:
+        200:
+          content:
+            application/json:
+              examples:
+                mlCalendarEventDeleteResponseExample1:
+                  $ref: "../../specification/ml/delete_calendar_event/examples/response/MlDeleteCalendarEventResponseExample1.yaml"
+  - target: "$.paths['/_ml/calendars/{calendar_id}']['delete']"
+    description: "Add examples for delete event from calendar"
+    update: 
+      responses:
+        200:
+          content:
+            application/json:
+              examples:
+                mlCalendarDeleteResponseExample1:
+                  $ref: "../../specification/ml/delete_calendar/examples/response/MlDeleteCalendarResponseExample1.yaml"
+  - target: "$.paths['/_ml/anomaly_detectors/{job_id}/_close']['post']"
+    description: "Add examples for close anomaly job"
+    update: 
+      responses:
+        200:
+          content:
+            application/json:
+              examples:
+                mlAnomalyJobCloseResponseExample1:
+                  $ref: "../../specification/ml/close_job/examples/response/MlCloseJobResponseExample1.yaml"
 ## Examples for script
   - target: "$.components['requestBodies']['put_script']"
     description: "Add example for create script request"

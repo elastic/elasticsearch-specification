@@ -1,0 +1,8 @@
+summary: Delete job asynchronously
+description: >
+  A successful response when deleting an anomaly detection job asynchronously.
+  When the `wait_for_completion` query parameter is set to `false`, the response contains an identifier for the job deletion task.
+# type: response
+# response_code: 200
+value:
+  task: 'oTUltX4IQMOUUVeiohTt8A:39'
