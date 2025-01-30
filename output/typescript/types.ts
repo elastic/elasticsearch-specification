@@ -19764,12 +19764,7 @@ export interface SnapshotRepositoryAnalyzeDetailsInfo {
   write_elapsed_nanos: DurationValue<UnitNanos>
   write_throttled: Duration
   write_throttled_nanos: DurationValue<UnitNanos>
-  writer_node: SnapshotRepositoryAnalyzeNodeInfo
-}
-
-export interface SnapshotRepositoryAnalyzeNodeInfo {
-  id: Id
-  name: Name
+  writer_node: SnapshotRepositoryAnalyzeSnapshotNodeInfo
 }
 
 export interface SnapshotRepositoryAnalyzeReadBlobDetails {
@@ -19779,7 +19774,7 @@ export interface SnapshotRepositoryAnalyzeReadBlobDetails {
   first_byte_time?: Duration
   first_byte_time_nanos: DurationValue<UnitNanos>
   found: boolean
-  node: SnapshotRepositoryAnalyzeNodeInfo
+  node: SnapshotRepositoryAnalyzeSnapshotNodeInfo
   throttled?: Duration
   throttled_nanos?: DurationValue<UnitNanos>
 }
@@ -19818,7 +19813,7 @@ export interface SnapshotRepositoryAnalyzeResponse {
   blob_count: integer
   blob_path: string
   concurrency: integer
-  coordinating_node: SnapshotRepositoryAnalyzeNodeInfo
+  coordinating_node: SnapshotRepositoryAnalyzeSnapshotNodeInfo
   delete_elapsed: Duration
   delete_elapsed_nanos: DurationValue<UnitNanos>
   details: SnapshotRepositoryAnalyzeDetailsInfo
@@ -19835,6 +19830,11 @@ export interface SnapshotRepositoryAnalyzeResponse {
   repository: string
   seed: long
   summary: SnapshotRepositoryAnalyzeSummaryInfo
+}
+
+export interface SnapshotRepositoryAnalyzeSnapshotNodeInfo {
+  id: Id
+  name: Name
 }
 
 export interface SnapshotRepositoryAnalyzeSummaryInfo {
