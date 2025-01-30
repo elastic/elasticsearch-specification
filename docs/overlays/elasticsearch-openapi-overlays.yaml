@@ -621,6 +621,22 @@ actions:
             clusterHealthResponseExample1:
               $ref: "../../specification/license/post/examples/200_response/PostLicenseResponseExample1.yaml"
 ## Examples for machine learning
+  - target: "$.components['requestBodies']['ml.explain_data_frame_analytics']"
+    description: "Add examples for explain dataframe analytics"
+    update: 
+      content: 
+        application/json: 
+          examples: 
+            mlDataFrameAnalyticsExplainRequestExample1: 
+              $ref: "../../specification/ml/explain_data_frame_analytics/examples/request/MlExplainDataFrameAnalyticsRequestExample1.yaml"
+  - target: "$.components['responses']['ml.explain_data_frame_analytics#200']"
+    description: "Add examples for explain dataframe analytics response"
+    update: 
+      content:
+        application/json:
+          examples:
+            mlDataFrameAnalyticsExplainResponseExample1:
+              $ref: "../../specification/ml/explain_data_frame_analytics/examples/response/MlExplainDataFrameAnalyticsResponseExample1.yaml"
   - target: "$.paths['/_ml/trained_models/{model_id}/deployment/cache/_clear']['post']"
     description: "Add examples for clear trained model cache"
     update: 

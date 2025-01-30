@@ -2037,6 +2037,50 @@ actions:
                 getLicenseResponseExample1:
                   $ref: "../../specification/license/get/examples/response/GetLicenseResponseExample1.yaml"
 ## Examples for machine learning
+  - target: "$.paths['/_ml/data_frame/_evaluate']['post']"
+    description: "Add examples for evaluate data frame analytics"
+    update: 
+      requestBody: 
+        content: 
+          application/json: 
+            examples: 
+              mlDataFrameAnalyticsEvaluateRequestExample1: 
+                $ref: "../../specification/ml/evaluate_data_frame/examples/request/MlEvaluateDataFrameRequestExample1.yaml"
+              mlDataFrameAnalyticsEvaluateRequestExample2: 
+                $ref: "../../specification/ml/evaluate_data_frame/examples/request/MlEvaluateDataFrameRequestExample2.yaml"
+              mlDataFrameAnalyticsEvaluateRequestExample3: 
+                $ref: "../../specification/ml/evaluate_data_frame/examples/request/MlEvaluateDataFrameRequestExample3.yaml"
+              mlDataFrameAnalyticsEvaluateRequestExample4: 
+                $ref: "../../specification/ml/evaluate_data_frame/examples/request/MlEvaluateDataFrameRequestExample4.yaml"
+              mlDataFrameAnalyticsEvaluateRequestExample5: 
+                $ref: "../../specification/ml/evaluate_data_frame/examples/request/MlEvaluateDataFrameRequestExample5.yaml"
+      responses:
+        200:
+          content:
+            application/json:
+              examples:
+                mlDataFrameAnalyticsEvaluateResponseExample1:
+                  $ref: "../../specification/ml/evaluate_data_frame/examples/response/MlEvaluateDataFrameResponseExample1.yaml"
+                mlDataFrameAnalyticsEvaluateResponseExample2:
+                  $ref: "../../specification/ml/evaluate_data_frame/examples/response/MlEvaluateDataFrameResponseExample2.yaml"
+                mlDataFrameAnalyticsEvaluateResponseExample3:
+                  $ref: "../../specification/ml/evaluate_data_frame/examples/response/MlEvaluateDataFrameResponseExample3.yaml"
+  - target: "$.paths['/_ml/anomaly_detectors/_estimate_model_memory']['post']"
+    description: "Add examples for estimate anomaly job model memory"
+    update: 
+      requestBody: 
+        content: 
+          application/json: 
+            examples: 
+              mlAnomalyJobEstimateRequestExample1: 
+                $ref: "../../specification/ml/estimate_model_memory/examples/request/MlEstimatemodelMemoryRequestExample1.yaml"
+      responses:
+        200:
+          content:
+            application/json:
+              examples:
+                mlAnomalyJobEstimateResponseExample1:
+                  $ref: "../../specification/ml/estimate_model_memory/examples/response/MlEstimateModelMemoryResponseExample1.yaml"
   - target: "$.paths['/_ml/anomaly_detectors/{job_id}']['put']"
     description: "Add examples for create anomaly detection job"
     update: 

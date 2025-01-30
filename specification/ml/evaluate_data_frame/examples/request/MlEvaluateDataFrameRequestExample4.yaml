@@ -5,7 +5,7 @@ description: >
   The term query in the body limits evaluation to be performed on the test split only.
   The `actual_field` contains the ground truth for house prices.
   The `predicted_field` contains the house price calculated by the regression analysis.
-type: request
+# type: request
 value:
   index: house_price_predictions
   query:
