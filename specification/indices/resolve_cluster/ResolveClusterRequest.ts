@@ -103,7 +103,7 @@ export interface Request extends RequestBase {
      * options to the `_resolve/cluster` API endpoint that takes no index expression.
      * @server_default true
      */
-    allow_no_indices?: boolean // default: true
+    allow_no_indices?: boolean
     /**
      * Type of index that wildcard patterns can match.
      * If the request can target data streams, this argument determines whether wildcard expressions match hidden data streams.
@@ -121,14 +121,14 @@ export interface Request extends RequestBase {
      * @server_default false
      * @deprecated 7.16.0
      */
-    ignore_throttled?: boolean // default: false
+    ignore_throttled?: boolean
     /**
      * If false, the request returns an error if it targets a missing or closed index.
      * NOTE: This option is only supported when specifying an index expression. You will get an error if you specify index
      * options to the `_resolve/cluster` API endpoint that takes no index expression.
      * @server_default false
      */
-    ignore_unavailable?: boolean // default: false
+    ignore_unavailable?: boolean
     /**
      * The maximum time to wait for remote clusters to respond.
      * If a remote cluster does not respond within this timeout period, the API response
