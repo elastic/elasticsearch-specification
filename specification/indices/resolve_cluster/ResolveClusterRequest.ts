@@ -99,8 +99,8 @@ export interface Request extends RequestBase {
      * If false, the request returns an error if any wildcard expression, index alias, or `_all` value targets only missing
      * or closed indices. This behavior applies even if the request targets other open indices. For example, a request
      * targeting `foo*,bar*` returns an error if an index starts with `foo` but no index starts with `bar`.
-     * Note: only supported when specifying an index expression. You will get an error if you specify index options to the
-     * _resolve/cluster API endpoint that takes no index expression.
+     * NOTE: This option is only supported when specifying an index expression. You will get an error if you specify index
+     * options to the `_resolve/cluster` API endpoint that takes no index expression.
      * @server_default true
      */
     allow_no_indices?: boolean // default: true
@@ -109,28 +109,28 @@ export interface Request extends RequestBase {
      * If the request can target data streams, this argument determines whether wildcard expressions match hidden data streams.
      * Supports comma-separated values, such as `open,hidden`.
      * Valid values are: `all`, `open`, `closed`, `hidden`, `none`.
-     * Note: only supported when specifying an index expression. You will get an error if you specify index options to the
-     * _resolve/cluster API endpoint that takes no index expression.
+     * NOTE: This option is only supported when specifying an index expression. You will get an error if you specify index
+     * options to the `_resolve/cluster` API endpoint that takes no index expression.
      * @server_default open
      */
     expand_wildcards?: ExpandWildcards
     /**
      * If true, concrete, expanded, or aliased indices are ignored when frozen.
-     * Note: only supported when specifying an index expression. You will get an error if you specify index options to the
-     * _resolve/cluster API endpoint that takes no index expression.
+     * NOTE: This option is only supported when specifying an index expression. You will get an error if you specify index
+     * options to the `_resolve/cluster` API endpoint that takes no index expression.
      * @server_default false
      * @deprecated 7.16.0
      */
     ignore_throttled?: boolean // default: false
     /**
      * If false, the request returns an error if it targets a missing or closed index.
-     * Note: only supported when specifying an index expression. You will get an error if you specify index options to the
-     * _resolve/cluster API endpoint that takes no index expression.
+     * NOTE: This option is only supported when specifying an index expression. You will get an error if you specify index
+     * options to the `_resolve/cluster` API endpoint that takes no index expression.
      * @server_default false
      */
     ignore_unavailable?: boolean // default: false
     /**
-     * Specify a max wait time for remote clusters to respond.
+     * The maximum time to wait for remote clusters to respond.
      * If a remote cluster does not respond within this timeout period, the API response
      * will show the cluster as not connected and include an error message that the
      * request timed out.
@@ -139,6 +139,5 @@ export interface Request extends RequestBase {
      * as long as the networking layer is configured to wait for remote clusters that are
      * not responding (typically 30 seconds).
      */
-    timeout?: Duration // default: unset
-  }
+    timeout?: Duration
 }
