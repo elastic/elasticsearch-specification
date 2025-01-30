@@ -9358,6 +9358,7 @@ export interface ClusterRemoteInfoClusterRemoteProxyInfo {
   server_name: string
   num_proxy_sockets_connected: integer
   max_proxy_socket_connections: integer
+  cluster_credentials?: string
 }
 
 export interface ClusterRemoteInfoClusterRemoteSniffInfo {
@@ -12471,11 +12472,12 @@ export interface IndicesReloadSearchAnalyzersRequest extends RequestBase {
 export type IndicesReloadSearchAnalyzersResponse = IndicesReloadSearchAnalyzersReloadResult
 
 export interface IndicesResolveClusterRequest extends RequestBase {
-  name: Names
+  name?: Names
   allow_no_indices?: boolean
   expand_wildcards?: ExpandWildcards
   ignore_throttled?: boolean
   ignore_unavailable?: boolean
+  timeout?: Duration
 }
 
 export interface IndicesResolveClusterResolveClusterInfo {
