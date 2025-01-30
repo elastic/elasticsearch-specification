@@ -236,14 +236,6 @@
       ],
       "response": []
     },
-    "indices.resolve_cluster": {
-      "request": [
-        "Request: different number of urls in the json spec",
-        "Request: path parameter 'name' is required in the json spec",
-        "Request: query parameter 'timeout' does not exist in the json spec"
-      ],
-      "response": []
-    },
     "indices.rollover": {
       "request": [
         "Request: missing json spec query parameter 'lazy'"
