@@ -34994,7 +34994,7 @@
                       "type": "number"
                     },
                     "coordinating_node": {
-                      "$ref": "#/components/schemas/snapshot.repository_analyze:NodeInfo"
+                      "$ref": "#/components/schemas/snapshot.repository_analyze:SnapshotNodeInfo"
                     },
                     "delete_elapsed": {
                       "$ref": "#/components/schemas/_types:Duration"
@@ -89479,7 +89479,7 @@
           "repository"
         ]
       },
-      "snapshot.repository_analyze:NodeInfo": {
+      "snapshot.repository_analyze:SnapshotNodeInfo": {
         "type": "object",
         "properties": {
           "id": {
@@ -89519,7 +89519,7 @@
             "$ref": "#/components/schemas/_types:DurationValueUnitNanos"
           },
           "writer_node": {
-            "$ref": "#/components/schemas/snapshot.repository_analyze:NodeInfo"
+            "$ref": "#/components/schemas/snapshot.repository_analyze:SnapshotNodeInfo"
           }
         },
         "required": [
@@ -89599,7 +89599,7 @@
             "type": "boolean"
           },
           "node": {
-            "$ref": "#/components/schemas/snapshot.repository_analyze:NodeInfo"
+            "$ref": "#/components/schemas/snapshot.repository_analyze:SnapshotNodeInfo"
           },
           "throttled": {
             "$ref": "#/components/schemas/_types:Duration"
