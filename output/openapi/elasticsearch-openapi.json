@@ -18623,7 +18623,7 @@
           "ml anomaly"
         ],
         "summary": "Delete a calendar",
-        "description": "Removes all scheduled events from a calendar, then deletes it.",
+        "description": "Remove all scheduled events from a calendar, then delete it.",
         "operationId": "ml-delete-calendar",
         "parameters": [
           {
@@ -19326,7 +19326,7 @@
           "ml anomaly"
         ],
         "summary": "Delete expired ML data",
-        "description": "Deletes all job results, model snapshots and forecast data that have exceeded\ntheir retention days period. Machine learning state documents that are not\nassociated with any job are also deleted.\nYou can limit the request to a single or set of anomaly detection jobs by\nusing a job identifier, a group name, a comma-separated list of jobs, or a\nwildcard expression. You can delete expired data for all anomaly detection\njobs by using _all, by specifying * as the <job_id>, or by omitting the\n<job_id>.",
+        "description": "Delete all job results, model snapshots and forecast data that have exceeded\ntheir retention days period. Machine learning state documents that are not\nassociated with any job are also deleted.\nYou can limit the request to a single or set of anomaly detection jobs by\nusing a job identifier, a group name, a comma-separated list of jobs, or a\nwildcard expression. You can delete expired data for all anomaly detection\njobs by using `_all`, by specifying `*` as the `<job_id>`, or by omitting the\n`<job_id>`.",
         "operationId": "ml-delete-expired-data",
         "parameters": [
           {
@@ -19356,7 +19356,7 @@
           "ml anomaly"
         ],
         "summary": "Delete expired ML data",
-        "description": "Deletes all job results, model snapshots and forecast data that have exceeded\ntheir retention days period. Machine learning state documents that are not\nassociated with any job are also deleted.\nYou can limit the request to a single or set of anomaly detection jobs by\nusing a job identifier, a group name, a comma-separated list of jobs, or a\nwildcard expression. You can delete expired data for all anomaly detection\njobs by using _all, by specifying * as the <job_id>, or by omitting the\n<job_id>.",
+        "description": "Delete all job results, model snapshots and forecast data that have exceeded\ntheir retention days period. Machine learning state documents that are not\nassociated with any job are also deleted.\nYou can limit the request to a single or set of anomaly detection jobs by\nusing a job identifier, a group name, a comma-separated list of jobs, or a\nwildcard expression. You can delete expired data for all anomaly detection\njobs by using `_all`, by specifying `*` as the `<job_id>`, or by omitting the\n`<job_id>`.",
         "operationId": "ml-delete-expired-data-1",
         "parameters": [
           {
@@ -20430,7 +20430,7 @@
           "ml anomaly"
         ],
         "summary": "Estimate job model memory usage",
-        "description": "Makes an estimation of the memory usage for an anomaly detection job model.\nIt is based on analysis configuration details for the job and cardinality\nestimates for the fields it references.",
+        "description": "Make an estimation of the memory usage for an anomaly detection job model.\nThe estimate is based on analysis configuration details for the job and cardinality\nestimates for the fields it references.",
         "operationId": "ml-estimate-model-memory",
         "requestBody": {
           "content": {
