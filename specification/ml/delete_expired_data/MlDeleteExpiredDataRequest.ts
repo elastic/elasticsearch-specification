@@ -24,14 +24,15 @@ import { Duration } from '@_types/Time'
 
 /**
  * Delete expired ML data.
- * Deletes all job results, model snapshots and forecast data that have exceeded
+ *
+ * Delete all job results, model snapshots and forecast data that have exceeded
  * their retention days period. Machine learning state documents that are not
  * associated with any job are also deleted.
  * You can limit the request to a single or set of anomaly detection jobs by
  * using a job identifier, a group name, a comma-separated list of jobs, or a
  * wildcard expression. You can delete expired data for all anomaly detection
- * jobs by using _all, by specifying * as the <job_id>, or by omitting the
- * <job_id>.
+ * jobs by using `_all`, by specifying `*` as the `<job_id>`, or by omitting the
+ * `<job_id>`.
  * @rest_spec_name ml.delete_expired_data
  * @availability stack since=5.4.0 stability=stable
  * @availability serverless stability=stable visibility=private

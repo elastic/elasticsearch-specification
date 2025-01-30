@@ -620,6 +620,43 @@ actions:
           examples:
             clusterHealthResponseExample1:
               $ref: "../../specification/license/post/examples/200_response/PostLicenseResponseExample1.yaml"
+## Examples for machine learning
+  - target: "$.paths['/_ml/trained_models/{model_id}/deployment/cache/_clear']['post']"
+    description: "Add examples for clear trained model cache"
+    update: 
+      responses:
+        200:
+          content:
+            application/json:
+              examples:
+                mlTrainedModelClearResponseExample1:
+                  $ref: "../../specification/ml/clear_trained_model_deployment_cache/examples/response/MlClearTrainedModelDeploymentCacheResponseExample1.yaml"
+  - target: "$.paths['/_ml/anomaly_detectors/{job_id}/model_snapshots/{snapshot_id}']['delete']"
+    description: "Add examples for delete trained model snapshot"
+    update: 
+      responses:
+        200:
+          content:
+            application/json:
+              examples:
+                mlTrainedModelSnapshotDeleteResponseExample1:
+                  $ref: "../../specification/ml/delete_model_snapshot/examples/response/MlDeleteModelSnapshotResponseExample1.yaml"
+  - target: "$.components['responses']['ml.delete_forecast#200']"
+    description: "Add examples for delete forecast"
+    update: 
+        content:
+          application/json:
+            examples:
+              mlForecastDeleteResponseExample1:
+                $ref: "../../specification/ml/delete_forecast/examples/response/MlDeleteForecastResponseExample1.yaml"
+  - target: "$.components['responses']['ml.delete_expired_data#200']"
+    description: "Add examples for delete expired data"
+    update: 
+        content:
+          application/json:
+            examples:
+              mlExpiredDataDeleteResponseExample1:
+                $ref: "../../specification/ml/delete_expired_data/examples/response/MlDeleteExpiredDataResponseExample1.yaml"
 ## Examples for search applications
   - target: "$.paths['/_application/search_application/{name}/_render_query']['post']"
     description: "Add examples for render search application query operation"
