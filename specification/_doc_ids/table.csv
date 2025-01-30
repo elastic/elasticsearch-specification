@@ -156,7 +156,7 @@ dissect-processor,https://www.elastic.co/guide/en/elasticsearch/reference/curren
 distance-units,https://www.elastic.co/guide/en/elasticsearch/reference/current/api-conventions.html#distance-units
 docs-bulk,https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-bulk
 docs-delete-by-query,https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-delete-by-query
-docs-delete-by-query-rethrottle,https://www.elastic.co/guide/en/elasticsearch/reference/current/docs-delete-by-query.html#docs-delete-by-query-rethrottle
+docs-delete-by-query-rethrottle,https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-delete-by-query-rethrottle
 docs-delete,https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-delete
 docs-get,https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-get
 docs-index,https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-create
@@ -165,7 +165,7 @@ docs-multi-termvectors,https://www.elastic.co/docs/api/doc/elasticsearch/operati
 docs-reindex,https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-reindex
 docs-termvectors,https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-termvectors
 docs-update-by-query,https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-update-by-query
-docs-update-by-query-rethrottle,https://www.elastic.co/guide/en/elasticsearch/reference/current/docs-update-by-query.html#docs-update-by-query-rethrottle
+docs-update-by-query-rethrottle,https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-update-by-query-rethrottle
 docs-update,https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-update
 document-input-parameters,https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-mlt-query.html#_document_input_parameters
 docvalue-fields,https://www.elastic.co/guide/en/elasticsearch/reference/current/search-fields.html#docvalue-fields
@@ -250,7 +250,7 @@ ilm-retry-policy,https://www.elastic.co/docs/api/doc/elasticsearch/operation/ope
 ilm-start,https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ilm-start
 ilm-stop,https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ilm-stop
 important-settings,https://www.elastic.co/guide/en/elasticsearch/reference/current/important-settings.html
-index-block-add,https://www.elastic.co/guide/en/elasticsearch/reference/current/index-modules-blocks.html#add-index-block
+index-block-add,https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-add-block
 index-modules-blocks,https://www.elastic.co/guide/en/elasticsearch/reference/current/index-modules-blocks.html
 index-modules-settings,https://www.elastic.co/guide/en/elasticsearch/reference/current/index-modules.html#index-modules-settings
 index-modules-slowlog-slowlog,https://www.elastic.co/guide/en/elasticsearch/reference/current/index-modules-slowlog.html#index-slow-log
