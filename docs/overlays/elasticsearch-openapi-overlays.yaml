@@ -494,14 +494,13 @@ actions:
   - target: "$.components['responses']['indices.resolve_cluster#200']"
     description: "Add examples for resolve cluster operation"
     update: 
-      responses:
-        content:
-          application/json:
-            examples:
-              resolveClusterResponseExample1:
-                $ref: "../../specification/indices/resolve_cluster/examples/200_response/ResolveClusterResponseExample1.yaml"
-              resolveClusterResponseExample2:
-                $ref: "../../specification/indices/resolve_cluster/examples/200_response/ResolveClusterResponseExample2.yaml"
+      content:
+        application/json:
+          examples:
+            resolveClusterResponseExample1:
+              $ref: "../../specification/indices/resolve_cluster/examples/200_response/ResolveClusterResponseExample1.yaml"
+            resolveClusterResponseExample2:
+              $ref: "../../specification/indices/resolve_cluster/examples/200_response/ResolveClusterResponseExample2.yaml"
   - target: "$.components['requestBodies']['indices.shrink']"
     description: "Add example for shrink index request"
     update: 
