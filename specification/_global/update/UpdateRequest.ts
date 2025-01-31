@@ -180,8 +180,9 @@ export interface Request<TDocument, TPartialDocument> extends RequestBase {
      */
     _source?: SourceConfig
     /**
+     * Upserts are powerful operations that enable you to perform both update and insert actions in a single request.
      * If the document does not already exist, the contents of 'upsert' are inserted as a new document.
-     * If the document exists, the 'script' is run.
+     * If the document exists, the script is run.
      * @prop_serializer SourceFormatter`1
      */
     upsert?: TDocument
