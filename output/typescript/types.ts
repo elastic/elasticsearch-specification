@@ -19448,14 +19448,14 @@ export interface ShutdownPutNodeRequest extends RequestBase {
 
 export type ShutdownPutNodeResponse = AcknowledgedResponseBase
 
-export interface SimulateIngestDocumentSimulationKeys {
+export interface SimulateIngestIngestDocumentSimulationKeys {
   _id: Id
   _index: IndexName
   _source: Record<string, any>
-  _version?: SpecUtilsStringified<VersionNumber>
+  _version: SpecUtilsStringified<VersionNumber>
   executed_pipelines: string[]
 }
-export type SimulateIngestDocumentSimulation = SimulateIngestDocumentSimulationKeys
+export type SimulateIngestIngestDocumentSimulation = SimulateIngestIngestDocumentSimulationKeys
   & { [property: string]: string | Id | IndexName | Record<string, any> | SpecUtilsStringified<VersionNumber> | string[] }
 
 export interface SimulateIngestRequest extends RequestBase {
@@ -19471,11 +19471,11 @@ export interface SimulateIngestRequest extends RequestBase {
 }
 
 export interface SimulateIngestResponse {
-  docs: SimulateIngestSimulateDocumentResult[]
+  docs: SimulateIngestSimulateIngestDocumentResult[]
 }
 
-export interface SimulateIngestSimulateDocumentResult {
-  doc?: SimulateIngestDocumentSimulation
+export interface SimulateIngestSimulateIngestDocumentResult {
+  doc?: SimulateIngestIngestDocumentSimulation
   error?: ErrorCause
 }
 
