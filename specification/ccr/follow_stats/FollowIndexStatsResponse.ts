@@ -20,5 +20,8 @@
 import { FollowIndexStats } from '@ccr/_types/FollowIndexStats'
 
 export class Response {
-  body: { indices: FollowIndexStats[] }
+  body: {
+    /** An array of follower index statistics. */
+    indices: FollowIndexStats[]
+  }
 }
