@@ -66189,7 +66189,7 @@
             "type": "number"
           },
           "cluster_credentials": {
-            "description": "This field presents and has value of ::es_redacted:: only when the remote cluster is configured with the API key based model. Otherwise, the field is not present.",
+            "description": "This field is present and has a value of `::es_redacted::` only when the remote cluster is configured with the API key based model. Otherwise, the field is not present.",
             "type": "string"
           }
         },
