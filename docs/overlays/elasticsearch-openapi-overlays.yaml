@@ -561,16 +561,17 @@ actions:
           examples:
             getIndicesRecoveryResponseExample1:
                   $ref: "../../specification/indices/recovery/examples/200_response/indicesRecoveryResponseExample1.yaml"
-  - target: "$.paths['/_resolve/cluster/{name}']['get']"
+  - target: "$.components['responses']['indices.resolve_cluster#200']"
     description: "Add examples for resolve cluster operation"
     update: 
       responses:
-        200:
-          content:
-            application/json:
-              examples:
-                resolveClusterResponseExample1:
-                  $ref: "../../specification/indices/resolve_cluster/examples/200_response/ResolveClusterResponseExample1.yaml"
+        content:
+          application/json:
+            examples:
+              resolveClusterResponseExample1:
+                $ref: "../../specification/indices/resolve_cluster/examples/200_response/ResolveClusterResponseExample1.yaml"
+              resolveClusterResponseExample2:
+                $ref: "../../specification/indices/resolve_cluster/examples/200_response/ResolveClusterResponseExample2.yaml"
   - target: "$.components['requestBodies']['indices.shrink']"
     description: "Add example for shrink index request"
     update: 
