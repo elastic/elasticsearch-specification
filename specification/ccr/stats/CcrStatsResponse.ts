@@ -21,7 +21,9 @@ import { AutoFollowStats, FollowStats } from './types.ts'
 
 export class Response {
   body: {
+    /** Statistics for the auto-follow coordinator. */
     auto_follow_stats: AutoFollowStats
+    /** Shard-level statistics for follower indices. */
     follow_stats: FollowStats
   }
 }
