@@ -66189,7 +66189,7 @@
             "type": "number"
           },
           "cluster_credentials": {
-            "description": "This field presents and has value of ::es_redacted:: only when the remote cluster is configured with the API key based model. Otherwise, the field is not present.",
+            "description": "This field is present and has a value of `::es_redacted::` only when the remote cluster is configured with the API key based model. Otherwise, the field is not present.",
             "type": "string"
           }
         },
@@ -108130,9 +108130,11 @@
                   "$ref": "#/components/schemas/_types:Duration"
                 },
                 "allow_partial_search_results": {
+                  "description": "Allow query execution also in case of shard failures.\nIf true, the query will keep running and will return results based on the available shards.\nFor sequences, the behavior can be further refined using allow_partial_sequence_results",
                   "type": "boolean"
                 },
                 "allow_partial_sequence_results": {
+                  "description": "This flag applies only to sequences and has effect only if allow_partial_search_results=true.\nIf true, the sequence query will return results based on the available shards, ignoring the others.\nIf false, the sequence query will return successfully, but will always have empty results.",
                   "type": "boolean"
                 },
                 "size": {
