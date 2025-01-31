@@ -40528,9 +40528,9 @@
       "indices._types:SourceMode": {
         "type": "string",
         "enum": [
-          "disabled",
-          "stored",
-          "synthetic"
+          "DISABLED",
+          "STORED",
+          "SYNTHETIC"
         ]
       },
       "indices._types:IndexingSlowlogSettings": {
