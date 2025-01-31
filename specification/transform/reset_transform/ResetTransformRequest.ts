@@ -23,7 +23,7 @@ import { Duration } from '@_types/Time'
 
 /**
  * Reset a transform.
- * Resets a transform.
+ *
  * Before you can reset it, you must stop it; alternatively, use the `force` query parameter.
  * If the destination index was created by the transform, it is deleted.
  * @rest_spec_name transform.reset_transform
