@@ -82,7 +82,6 @@ export interface Request extends RequestBase {
     typed_keys?: boolean
   }
   /**
-   * @codegen_name search_templates
    * The request body must be newline-delimited JSON (NDJSON) in the following format:
    *
    * ```
@@ -100,6 +99,8 @@ export interface Request extends RequestBase {
    * It is required for each search body but can be empty `({})` or a blank line.
    *
    * The `<body>` contains the parameters for the search.
+   *
+   * @codegen_name search_templates
    */
   body: Array<RequestItem>
 }
