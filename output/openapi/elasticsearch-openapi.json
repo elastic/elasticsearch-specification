@@ -2819,7 +2819,7 @@
           {
             "in": "path",
             "name": "index",
-            "description": "A comma-separated list of index patterns; use `_all` to perform the operation on all indices",
+            "description": "A comma-delimited list of index patterns.",
             "required": true,
             "deprecated": false,
             "schema": {
@@ -2830,7 +2830,7 @@
           {
             "in": "query",
             "name": "timeout",
-            "description": "Period to wait for a response. If no response is received before the timeout expires, the request fails and returns an error.",
+            "description": "The period to wait for a response.\nIf no response is received before the timeout expires, the request fails and returns an error.",
             "deprecated": false,
             "schema": {
               "$ref": "#/components/schemas/_types:Duration"
@@ -2847,6 +2847,7 @@
                   "type": "object",
                   "properties": {
                     "indices": {
+                      "description": "An array of follower index statistics.",
                       "type": "array",
                       "items": {
                         "$ref": "#/components/schemas/ccr._types:FollowIndexStats"
@@ -2984,7 +2985,7 @@
           {
             "in": "path",
             "name": "name",
-            "description": "The name of the auto follow pattern that should pause discovering new indices to follow.",
+            "description": "The name of the auto-follow pattern to pause.",
             "required": true,
             "deprecated": false,
             "schema": {
@@ -2995,7 +2996,7 @@
           {
             "in": "query",
             "name": "master_timeout",
-            "description": "Period to wait for a connection to the master node.",
+            "description": "The period to wait for a connection to the master node.\nIf the master node is not available before the timeout expires, the request fails and returns an error.\nIt can also be set to `-1` to indicate that the request should never timeout.",
             "deprecated": false,
             "schema": {
               "$ref": "#/components/schemas/_types:Duration"
@@ -3030,7 +3031,7 @@
           {
             "in": "path",
             "name": "index",
-            "description": "The name of the follower index that should pause following its leader index.",
+            "description": "The name of the follower index.",
             "required": true,
             "deprecated": false,
             "schema": {
@@ -3041,7 +3042,7 @@
           {
             "in": "query",
             "name": "master_timeout",
-            "description": "Period to wait for a connection to the master node.",
+            "description": "The period to wait for a connection to the master node.\nIf the master node is not available before the timeout expires, the request fails and returns an error.\nIt can also be set to `-1` to indicate that the request should never timeout.",
             "deprecated": false,
             "schema": {
               "$ref": "#/components/schemas/_types:Duration"
@@ -3079,7 +3080,7 @@
           {
             "in": "path",
             "name": "name",
-            "description": "The name of the auto follow pattern to resume discovering new indices to follow.",
+            "description": "The name of the auto-follow pattern to resume.",
             "required": true,
             "deprecated": false,
             "schema": {
@@ -3090,7 +3091,7 @@
           {
             "in": "query",
             "name": "master_timeout",
-            "description": "Period to wait for a connection to the master node.",
+            "description": "The period to wait for a connection to the master node.\nIf the master node is not available before the timeout expires, the request fails and returns an error.\nIt can also be set to `-1` to indicate that the request should never timeout.",
             "deprecated": false,
             "schema": {
               "$ref": "#/components/schemas/_types:Duration"
@@ -3215,7 +3216,7 @@
           {
             "in": "query",
             "name": "master_timeout",
-            "description": "Period to wait for a connection to the master node.",
+            "description": "The period to wait for a connection to the master node.\nIf the master node is not available before the timeout expires, the request fails and returns an error.\nIt can also be set to `-1` to indicate that the request should never timeout.",
             "deprecated": false,
             "schema": {
               "$ref": "#/components/schemas/_types:Duration"
@@ -3225,7 +3226,7 @@
           {
             "in": "query",
             "name": "timeout",
-            "description": "Period to wait for a response. If no response is received before the timeout expires, the request fails and returns an error.",
+            "description": "The period to wait for a response. If no response is received before the timeout expires, the request fails and returns an error.",
             "deprecated": false,
             "schema": {
               "$ref": "#/components/schemas/_types:Duration"
@@ -3266,7 +3267,7 @@
           "ccr"
         ],
         "summary": "Unfollow an index",
-        "description": "Convert a cross-cluster replication follower index to a regular index.\nThe API stops the following task associated with a follower index and removes index metadata and settings associated with cross-cluster replication.\nThe follower index must be paused and closed before you call the unfollow API.\n\nNOTE: Currently cross-cluster replication does not support converting an existing regular index to a follower index. Converting a follower index to a regular index is an irreversible operation.",
+        "description": "Convert a cross-cluster replication follower index to a regular index.\nThe API stops the following task associated with a follower index and removes index metadata and settings associated with cross-cluster replication.\nThe follower index must be paused and closed before you call the unfollow API.\n\n> info\n> Currently cross-cluster replication does not support converting an existing regular index to a follower index. Converting a follower index to a regular index is an irreversible operation.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/xpack-ccr.html"
         },
@@ -3275,7 +3276,7 @@
           {
             "in": "path",
             "name": "index",
-            "description": "The name of the follower index that should be turned into a regular index.",
+            "description": "The name of the follower index.",
             "required": true,
             "deprecated": false,
             "schema": {
@@ -3286,7 +3287,7 @@
           {
             "in": "query",
             "name": "master_timeout",
-            "description": "Period to wait for a connection to the master node.",
+            "description": "The period to wait for a connection to the master node.\nIf the master node is not available before the timeout expires, the request fails and returns an error.\nIt can also be set to `-1` to indicate that the request should never timeout.",
             "deprecated": false,
             "schema": {
               "$ref": "#/components/schemas/_types:Duration"
@@ -61991,6 +61992,7 @@
             "$ref": "#/components/schemas/_types:IndexName"
           },
           "shards": {
+            "description": "An array of shard-level following task statistics.",
             "type": "array",
             "items": {
               "$ref": "#/components/schemas/ccr._types:ShardStats"
@@ -62006,12 +62008,15 @@
         "type": "object",
         "properties": {
           "bytes_read": {
+            "description": "The total of transferred bytes read from the leader.\nThis is only an estimate and does not account for compression if enabled.",
             "type": "number"
           },
           "failed_read_requests": {
+            "description": "The number of failed reads.",
             "type": "number"
           },
           "failed_write_requests": {
+            "description": "The number of failed bulk write requests on the follower.",
             "type": "number"
           },
           "fatal_exception": {
@@ -62021,9 +62026,11 @@
             "$ref": "#/components/schemas/_types:VersionNumber"
           },
           "follower_global_checkpoint": {
+            "description": "The current global checkpoint on the follower.\nThe difference between the `leader_global_checkpoint` and the `follower_global_checkpoint` is an indication of how much the follower is lagging the leader.",
             "type": "number"
           },
           "follower_index": {
+            "description": "The name of the follower index.",
             "type": "string"
           },
           "follower_mapping_version": {
@@ -62039,42 +62046,53 @@
             "$ref": "#/components/schemas/_types:SequenceNumber"
           },
           "leader_global_checkpoint": {
+            "description": "The current global checkpoint on the leader known to the follower task.",
             "type": "number"
           },
           "leader_index": {
+            "description": "The name of the index in the leader cluster being followed.",
             "type": "string"
           },
           "leader_max_seq_no": {
             "$ref": "#/components/schemas/_types:SequenceNumber"
           },
           "operations_read": {
+            "description": "The total number of operations read from the leader.",
             "type": "number"
           },
           "operations_written": {
+            "description": "The number of operations written on the follower.",
             "type": "number"
           },
           "outstanding_read_requests": {
+            "description": "The number of active read requests from the follower.",
             "type": "number"
           },
           "outstanding_write_requests": {
+            "description": "The number of active bulk write requests on the follower.",
             "type": "number"
           },
           "read_exceptions": {
+            "description": "An array of objects representing failed reads.",
             "type": "array",
             "items": {
               "$ref": "#/components/schemas/ccr._types:ReadException"
             }
           },
           "remote_cluster": {
+            "description": "The remote cluster containing the leader index.",
             "type": "string"
           },
           "shard_id": {
+            "description": "The numerical shard ID, with values from 0 to one less than the number of replicas.",
             "type": "number"
           },
           "successful_read_requests": {
+            "description": "The number of successful fetches.",
             "type": "number"
           },
           "successful_write_requests": {
+            "description": "The number of bulk write requests run on the follower.",
             "type": "number"
           },
           "time_since_last_read": {
@@ -62102,6 +62120,7 @@
             "$ref": "#/components/schemas/_types:DurationValueUnitMillis"
           },
           "write_buffer_operation_count": {
+            "description": "The number of write operations queued on the follower.",
             "type": "number"
           },
           "write_buffer_size_in_bytes": {
@@ -62149,6 +62168,7 @@
             "$ref": "#/components/schemas/_types:SequenceNumber"
           },
           "retries": {
+            "description": "The number of times the batch has been retried.",
             "type": "number"
           }
         },
@@ -62224,15 +62244,19 @@
             }
           },
           "number_of_failed_follow_indices": {
+            "description": "The number of indices that the auto-follow coordinator failed to automatically follow.\nThe causes of recent failures are captured in the logs of the elected master node and in the `auto_follow_stats.recent_auto_follow_errors` field.",
             "type": "number"
           },
           "number_of_failed_remote_cluster_state_requests": {
+            "description": "The number of times that the auto-follow coordinator failed to retrieve the cluster state from a remote cluster registered in a collection of auto-follow patterns.",
             "type": "number"
           },
           "number_of_successful_follow_indices": {
+            "description": "The number of indices that the auto-follow coordinator successfully followed.",
             "type": "number"
           },
           "recent_auto_follow_errors": {
+            "description": "An array of objects representing failures by the auto-follow coordinator.",
             "type": "array",
             "items": {
               "$ref": "#/components/schemas/_types:ErrorCause"
@@ -99480,7 +99504,7 @@
       "ccr.get_auto_follow_pattern#name": {
         "in": "path",
         "name": "name",
-        "description": "Specifies the auto-follow pattern collection that you want to retrieve. If you do not specify a name, the API returns information for all collections.",
+        "description": "The auto-follow pattern collection that you want to retrieve.\nIf you do not specify a name, the API returns information for all collections.",
         "required": true,
         "deprecated": false,
         "schema": {
@@ -99491,7 +99515,7 @@
       "ccr.get_auto_follow_pattern#master_timeout": {
         "in": "query",
         "name": "master_timeout",
-        "description": "Period to wait for a connection to the master node.",
+        "description": "The period to wait for a connection to the master node.\nIf the master node is not available before the timeout expires, the request fails and returns an error.\nIt can also be set to `-1` to indicate that the request should never timeout.",
         "deprecated": false,
         "schema": {
           "$ref": "#/components/schemas/_types:Duration"
