@@ -795,6 +795,17 @@ actions:
               examples:
                 getTasksResponseExample1:
                   $ref: "../../specification/tasks/get/examples/200_response/GetTaskResponseExample1.yaml"
+## Examples for transforms
+  - target: "$.paths['/_transform/_upgrade']['post']"
+    description: "Add examples for transform upgrade"
+    update:
+      responses:
+        200:
+          content:
+            application/json:
+              examples:
+                transformUpgradeResponseExample1:
+                  $ref: "../../specification/transform/upgrade_transforms/examples/response/UpgradeTransformResponseExample1.yaml"
 ## Examples for watcher
   - target: "$.paths['/_watcher/settings']['put']"
     description: "Add request example for update watcher settings"
