@@ -88564,18 +88564,15 @@
           "replace"
         ]
       },
-      "simulate.ingest:SimulateDocumentResult": {
+      "simulate.ingest:SimulateIngestDocumentResult": {
         "type": "object",
         "properties": {
           "doc": {
-            "$ref": "#/components/schemas/simulate.ingest:DocumentSimulation"
-          },
-          "error": {
-            "$ref": "#/components/schemas/_types:ErrorCause"
+            "$ref": "#/components/schemas/simulate.ingest:IngestDocumentSimulation"
           }
         }
       },
-      "simulate.ingest:DocumentSimulation": {
+      "simulate.ingest:IngestDocumentSimulation": {
         "type": "object",
         "properties": {
           "_id": {
@@ -88600,12 +88597,26 @@
             "items": {
               "type": "string"
             }
+          },
+          "ignored_fields": {
+            "description": "A list of the fields that would be ignored at the indexing step. For example, a field whose\nvalue is larger than the allowed limit would make it through all of the pipoelines, but\nwould not be indexed into Elasticsearch.",
+            "type": "array",
+            "items": {
+              "type": "object",
+              "additionalProperties": {
+                "type": "string"
+              }
+            }
+          },
+          "error": {
+            "$ref": "#/components/schemas/_types:ErrorCause"
           }
         },
         "required": [
           "_id",
           "_index",
           "_source",
+          "_version",
           "executed_pipelines"
         ]
       },
@@ -97491,7 +97502,7 @@
                 "docs": {
                   "type": "array",
                   "items": {
-                    "$ref": "#/components/schemas/simulate.ingest:SimulateDocumentResult"
+                    "$ref": "#/components/schemas/simulate.ingest:SimulateIngestDocumentResult"
                   }
                 }
               },
