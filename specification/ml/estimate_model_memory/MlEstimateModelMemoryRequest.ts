@@ -25,8 +25,9 @@ import { long } from '@_types/Numeric'
 
 /**
  * Estimate job model memory usage.
- * Makes an estimation of the memory usage for an anomaly detection job model.
- * It is based on analysis configuration details for the job and cardinality
+ *
+ * Make an estimation of the memory usage for an anomaly detection job model.
+ * The estimate is based on analysis configuration details for the job and cardinality
  * estimates for the fields it references.
  * @rest_spec_name ml.estimate_model_memory
  * @availability stack since=7.7.0 stability=stable

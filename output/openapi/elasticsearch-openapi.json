@@ -4340,7 +4340,10 @@
           "cluster"
         ],
         "summary": "Get remote cluster information",
-        "description": "Get all of the configured remote cluster information.\nThis API returns connection and endpoint information keyed by the configured remote cluster alias.",
+        "description": "Get information about configured remote clusters.\nThe API returns connection and endpoint information keyed by the configured remote cluster alias.\n\n> info\n> This API returns information that reflects current state on the local cluster.\n> The `connected` field does not necessarily reflect whether a remote cluster is down or unavailable, only whether there is currently an open connection to it.\n> Elasticsearch does not spontaneously try to reconnect to a disconnected remote cluster.\n> To trigger a reconnection, attempt a cross-cluster search, ES|QL cross-cluster search, or try the [resolve cluster endpoint](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-resolve-cluster).",
+        "externalDocs": {
+          "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/modules-cross-cluster-search.html"
+        },
         "operationId": "cluster-remote-info",
         "responses": {
           "200": {
@@ -15117,80 +15120,70 @@
         "x-state": "Added in 7.3.0"
       }
     },
+    "/_resolve/cluster": {
+      "get": {
+        "tags": [
+          "indices"
+        ],
+        "summary": "Resolve the cluster",
+        "description": "Resolve the specified index expressions to return information about each cluster, including the local \"querying\" cluster, if included.\nIf no index expression is provided, the API will return information about all the remote clusters that are configured on the querying cluster.\n\nThis endpoint is useful before doing a cross-cluster search in order to determine which remote clusters should be included in a search.\n\nYou use the same index expression with this endpoint as you would for cross-cluster search.\nIndex and cluster exclusions are also supported with this endpoint.\n\nFor each cluster in the index expression, information is returned about:\n\n* Whether the querying (\"local\") cluster is currently connected to each remote cluster specified in the index expression. Note that this endpoint actively attempts to contact the remote clusters, unlike the `remote/info` endpoint.\n* Whether each remote cluster is configured with `skip_unavailable` as `true` or `false`.\n* Whether there are any indices, aliases, or data streams on that cluster that match the index expression.\n* Whether the search is likely to have errors returned when you do the cross-cluster search (including any authorization errors if you do not have permission to query the index).\n* Cluster version information, including the Elasticsearch server version.\n\nFor example, `GET /_resolve/cluster/my-index-*,cluster*:my-index-*` returns information about the local cluster and all remotely configured clusters that start with the alias `cluster*`.\nEach cluster returns information about whether it has any indices, aliases or data streams that match `my-index-*`.\n\n## Note on backwards compatibility\nThe ability to query without an index expression was added in version 8.18, so when\nquerying remote clusters older than that, the local cluster will send the index\nexpression `dummy*` to those remote clusters. Thus, if an errors occur, you may see a reference\nto that index expression even though you didn't request it. If it causes a problem, you can\ninstead include an index expression like `*:*` to bypass the issue.\n\n## Advantages of using this endpoint before a cross-cluster search\n\nYou may want to exclude a cluster or index from a search when:\n\n* A remote cluster is not currently connected and is configured with `skip_unavailable=false`. Running a cross-cluster search under those conditions will cause the entire search to fail.\n* A cluster has no matching indices, aliases or data streams for the index expression (or your user does not have permissions to search them). For example, suppose your index expression is `logs*,remote1:logs*` and the remote1 cluster has no indices, aliases or data streams that match `logs*`. In that case, that cluster will return no results from that cluster if you include it in a cross-cluster search.\n* The index expression (combined with any query parameters you specify) will likely cause an exception to be thrown when you do the search. In these cases, the \"error\" field in the `_resolve/cluster` response will be present. (This is also where security/permission errors will be shown.)\n* A remote cluster is an older version that does not support the feature you want to use in your search.\n\n## Test availability of remote clusters\n\nThe `remote/info` endpoint is commonly used to test whether the \"local\" cluster (the cluster being queried) is connected to its remote clusters, but it does not necessarily reflect whether the remote cluster is available or not.\nThe remote cluster may be available, while the local cluster is not currently connected to it.\n\nYou can use the `_resolve/cluster` API to attempt to reconnect to remote clusters.\nFor example with `GET _resolve/cluster` or `GET _resolve/cluster/*:*`.\nThe `connected` field in the response will indicate whether it was successful.\nIf a connection was (re-)established, this will also cause the `remote/info` endpoint to now indicate a connected status.",
+        "operationId": "indices-resolve-cluster",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/indices.resolve_cluster#allow_no_indices"
+          },
+          {
+            "$ref": "#/components/parameters/indices.resolve_cluster#expand_wildcards"
+          },
+          {
+            "$ref": "#/components/parameters/indices.resolve_cluster#ignore_throttled"
+          },
+          {
+            "$ref": "#/components/parameters/indices.resolve_cluster#ignore_unavailable"
+          },
+          {
+            "$ref": "#/components/parameters/indices.resolve_cluster#timeout"
+          }
+        ],
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/indices.resolve_cluster#200"
+          }
+        },
+        "x-state": "Added in 8.13.0"
+      }
+    },
     "/_resolve/cluster/{name}": {
       "get": {
         "tags": [
           "indices"
         ],
         "summary": "Resolve the cluster",
-        "description": "Resolve the specified index expressions to return information about each cluster, including the local cluster, if included.\nMultiple patterns and remote clusters are supported.\n\nThis endpoint is useful before doing a cross-cluster search in order to determine which remote clusters should be included in a search.\n\nYou use the same index expression with this endpoint as you would for cross-cluster search.\nIndex and cluster exclusions are also supported with this endpoint.\n\nFor each cluster in the index expression, information is returned about:\n\n* Whether the querying (\"local\") cluster is currently connected to each remote cluster in the index expression scope.\n* Whether each remote cluster is configured with `skip_unavailable` as `true` or `false`.\n* Whether there are any indices, aliases, or data streams on that cluster that match the index expression.\n* Whether the search is likely to have errors returned when you do the cross-cluster search (including any authorization errors if you do not have permission to query the index).\n* Cluster version information, including the Elasticsearch server version.\n\nFor example, `GET /_resolve/cluster/my-index-*,cluster*:my-index-*` returns information about the local cluster and all remotely configured clusters that start with the alias `cluster*`.\nEach cluster returns information about whether it has any indices, aliases or data streams that match `my-index-*`.\n\n**Advantages of using this endpoint before a cross-cluster search**\n\nYou may want to exclude a cluster or index from a search when:\n\n* A remote cluster is not currently connected and is configured with `skip_unavailable=false`. Running a cross-cluster search under those conditions will cause the entire search to fail.\n* A cluster has no matching indices, aliases or data streams for the index expression (or your user does not have permissions to search them). For example, suppose your index expression is `logs*,remote1:logs*` and the remote1 cluster has no indices, aliases or data streams that match `logs*`. In that case, that cluster will return no results from that cluster if you include it in a cross-cluster search.\n* The index expression (combined with any query parameters you specify) will likely cause an exception to be thrown when you do the search. In these cases, the \"error\" field in the `_resolve/cluster` response will be present. (This is also where security/permission errors will be shown.)\n* A remote cluster is an older version that does not support the feature you want to use in your search.",
-        "operationId": "indices-resolve-cluster",
+        "description": "Resolve the specified index expressions to return information about each cluster, including the local \"querying\" cluster, if included.\nIf no index expression is provided, the API will return information about all the remote clusters that are configured on the querying cluster.\n\nThis endpoint is useful before doing a cross-cluster search in order to determine which remote clusters should be included in a search.\n\nYou use the same index expression with this endpoint as you would for cross-cluster search.\nIndex and cluster exclusions are also supported with this endpoint.\n\nFor each cluster in the index expression, information is returned about:\n\n* Whether the querying (\"local\") cluster is currently connected to each remote cluster specified in the index expression. Note that this endpoint actively attempts to contact the remote clusters, unlike the `remote/info` endpoint.\n* Whether each remote cluster is configured with `skip_unavailable` as `true` or `false`.\n* Whether there are any indices, aliases, or data streams on that cluster that match the index expression.\n* Whether the search is likely to have errors returned when you do the cross-cluster search (including any authorization errors if you do not have permission to query the index).\n* Cluster version information, including the Elasticsearch server version.\n\nFor example, `GET /_resolve/cluster/my-index-*,cluster*:my-index-*` returns information about the local cluster and all remotely configured clusters that start with the alias `cluster*`.\nEach cluster returns information about whether it has any indices, aliases or data streams that match `my-index-*`.\n\n## Note on backwards compatibility\nThe ability to query without an index expression was added in version 8.18, so when\nquerying remote clusters older than that, the local cluster will send the index\nexpression `dummy*` to those remote clusters. Thus, if an errors occur, you may see a reference\nto that index expression even though you didn't request it. If it causes a problem, you can\ninstead include an index expression like `*:*` to bypass the issue.\n\n## Advantages of using this endpoint before a cross-cluster search\n\nYou may want to exclude a cluster or index from a search when:\n\n* A remote cluster is not currently connected and is configured with `skip_unavailable=false`. Running a cross-cluster search under those conditions will cause the entire search to fail.\n* A cluster has no matching indices, aliases or data streams for the index expression (or your user does not have permissions to search them). For example, suppose your index expression is `logs*,remote1:logs*` and the remote1 cluster has no indices, aliases or data streams that match `logs*`. In that case, that cluster will return no results from that cluster if you include it in a cross-cluster search.\n* The index expression (combined with any query parameters you specify) will likely cause an exception to be thrown when you do the search. In these cases, the \"error\" field in the `_resolve/cluster` response will be present. (This is also where security/permission errors will be shown.)\n* A remote cluster is an older version that does not support the feature you want to use in your search.\n\n## Test availability of remote clusters\n\nThe `remote/info` endpoint is commonly used to test whether the \"local\" cluster (the cluster being queried) is connected to its remote clusters, but it does not necessarily reflect whether the remote cluster is available or not.\nThe remote cluster may be available, while the local cluster is not currently connected to it.\n\nYou can use the `_resolve/cluster` API to attempt to reconnect to remote clusters.\nFor example with `GET _resolve/cluster` or `GET _resolve/cluster/*:*`.\nThe `connected` field in the response will indicate whether it was successful.\nIf a connection was (re-)established, this will also cause the `remote/info` endpoint to now indicate a connected status.",
+        "operationId": "indices-resolve-cluster-1",
         "parameters": [
           {
-            "in": "path",
-            "name": "name",
-            "description": "Comma-separated name(s) or index pattern(s) of the indices, aliases, and data streams to resolve.\nResources on remote clusters can be specified using the `<cluster>`:`<name>` syntax.",
-            "required": true,
-            "deprecated": false,
-            "schema": {
-              "$ref": "#/components/schemas/_types:Names"
-            },
-            "style": "simple"
+            "$ref": "#/components/parameters/indices.resolve_cluster#name"
           },
           {
-            "in": "query",
-            "name": "allow_no_indices",
-            "description": "If false, the request returns an error if any wildcard expression, index alias, or _all value targets only missing\nor closed indices. This behavior applies even if the request targets other open indices. For example, a request\ntargeting foo*,bar* returns an error if an index starts with foo but no index starts with bar.",
-            "deprecated": false,
-            "schema": {
-              "type": "boolean"
-            },
-            "style": "form"
+            "$ref": "#/components/parameters/indices.resolve_cluster#allow_no_indices"
           },
           {
-            "in": "query",
-            "name": "expand_wildcards",
-            "description": "Type of index that wildcard patterns can match.\nIf the request can target data streams, this argument determines whether wildcard expressions match hidden data streams.\nSupports comma-separated values, such as `open,hidden`.\nValid values are: `all`, `open`, `closed`, `hidden`, `none`.",
-            "deprecated": false,
-            "schema": {
-              "$ref": "#/components/schemas/_types:ExpandWildcards"
-            },
-            "style": "form"
+            "$ref": "#/components/parameters/indices.resolve_cluster#expand_wildcards"
           },
           {
-            "in": "query",
-            "name": "ignore_throttled",
-            "description": "If true, concrete, expanded or aliased indices are ignored when frozen. Defaults to false.",
-            "deprecated": false,
-            "schema": {
-              "type": "boolean"
-            },
-            "style": "form"
+            "$ref": "#/components/parameters/indices.resolve_cluster#ignore_throttled"
           },
           {
-            "in": "query",
-            "name": "ignore_unavailable",
-            "description": "If false, the request returns an error if it targets a missing or closed index. Defaults to false.",
-            "deprecated": false,
-            "schema": {
-              "type": "boolean"
-            },
-            "style": "form"
+            "$ref": "#/components/parameters/indices.resolve_cluster#ignore_unavailable"
+          },
+          {
+            "$ref": "#/components/parameters/indices.resolve_cluster#timeout"
           }
         ],
         "responses": {
           "200": {
-            "description": "",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "additionalProperties": {
-                    "$ref": "#/components/schemas/indices.resolve_cluster:ResolveClusterInfo"
-                  }
-                }
-              }
-            }
+            "$ref": "#/components/responses/indices.resolve_cluster#200"
           }
         },
         "x-state": "Added in 8.13.0"
@@ -18623,7 +18616,7 @@
           "ml anomaly"
         ],
         "summary": "Delete a calendar",
-        "description": "Removes all scheduled events from a calendar, then deletes it.",
+        "description": "Remove all scheduled events from a calendar, then delete it.",
         "operationId": "ml-delete-calendar",
         "parameters": [
           {
@@ -19326,7 +19319,7 @@
           "ml anomaly"
         ],
         "summary": "Delete expired ML data",
-        "description": "Deletes all job results, model snapshots and forecast data that have exceeded\ntheir retention days period. Machine learning state documents that are not\nassociated with any job are also deleted.\nYou can limit the request to a single or set of anomaly detection jobs by\nusing a job identifier, a group name, a comma-separated list of jobs, or a\nwildcard expression. You can delete expired data for all anomaly detection\njobs by using _all, by specifying * as the <job_id>, or by omitting the\n<job_id>.",
+        "description": "Delete all job results, model snapshots and forecast data that have exceeded\ntheir retention days period. Machine learning state documents that are not\nassociated with any job are also deleted.\nYou can limit the request to a single or set of anomaly detection jobs by\nusing a job identifier, a group name, a comma-separated list of jobs, or a\nwildcard expression. You can delete expired data for all anomaly detection\njobs by using `_all`, by specifying `*` as the `<job_id>`, or by omitting the\n`<job_id>`.",
         "operationId": "ml-delete-expired-data",
         "parameters": [
           {
@@ -19356,7 +19349,7 @@
           "ml anomaly"
         ],
         "summary": "Delete expired ML data",
-        "description": "Deletes all job results, model snapshots and forecast data that have exceeded\ntheir retention days period. Machine learning state documents that are not\nassociated with any job are also deleted.\nYou can limit the request to a single or set of anomaly detection jobs by\nusing a job identifier, a group name, a comma-separated list of jobs, or a\nwildcard expression. You can delete expired data for all anomaly detection\njobs by using _all, by specifying * as the <job_id>, or by omitting the\n<job_id>.",
+        "description": "Delete all job results, model snapshots and forecast data that have exceeded\ntheir retention days period. Machine learning state documents that are not\nassociated with any job are also deleted.\nYou can limit the request to a single or set of anomaly detection jobs by\nusing a job identifier, a group name, a comma-separated list of jobs, or a\nwildcard expression. You can delete expired data for all anomaly detection\njobs by using `_all`, by specifying `*` as the `<job_id>`, or by omitting the\n`<job_id>`.",
         "operationId": "ml-delete-expired-data-1",
         "parameters": [
           {
@@ -20430,7 +20423,7 @@
           "ml anomaly"
         ],
         "summary": "Estimate job model memory usage",
-        "description": "Makes an estimation of the memory usage for an anomaly detection job model.\nIt is based on analysis configuration details for the job and cardinality\nestimates for the fields it references.",
+        "description": "Make an estimation of the memory usage for an anomaly detection job model.\nThe estimate is based on analysis configuration details for the job and cardinality\nestimates for the fields it references.",
         "operationId": "ml-estimate-model-memory",
         "requestBody": {
           "content": {
@@ -35087,7 +35080,7 @@
                       "type": "number"
                     },
                     "coordinating_node": {
-                      "$ref": "#/components/schemas/snapshot.repository_analyze:NodeInfo"
+                      "$ref": "#/components/schemas/snapshot.repository_analyze:SnapshotNodeInfo"
                     },
                     "delete_elapsed": {
                       "$ref": "#/components/schemas/_types:Duration"
@@ -66116,27 +66109,33 @@
         "type": "object",
         "properties": {
           "mode": {
+            "description": "The connection mode for the remote cluster.",
             "type": "string",
             "enum": [
               "sniff"
             ]
           },
           "connected": {
+            "description": "If it is `true`, there is at least one open connection to the remote cluster.\nIf it is `false`, it means that the cluster no longer has an open connection to the remote cluster.\nIt does not necessarily mean that the remote cluster is down or unavailable, just that at some point a connection was lost.",
             "type": "boolean"
           },
           "max_connections_per_cluster": {
+            "description": "The maximum number of connections maintained for the remote cluster when sniff mode is configured.",
             "type": "number"
           },
           "num_nodes_connected": {
+            "description": "The number of connected nodes in the remote cluster when sniff mode is configured.",
             "type": "number"
           },
           "initial_connect_timeout": {
             "$ref": "#/components/schemas/_types:Duration"
           },
           "skip_unavailable": {
+            "description": "If `true`, cross-cluster search skips the remote cluster when its nodes are unavailable during the search and ignores errors returned by the remote cluster.",
             "type": "boolean"
           },
           "seeds": {
+            "description": "The initial seed transport addresses of the remote cluster when sniff mode is configured.",
             "type": "array",
             "items": {
               "type": "string"
@@ -66157,31 +66156,41 @@
         "type": "object",
         "properties": {
           "mode": {
+            "description": "The connection mode for the remote cluster.",
             "type": "string",
             "enum": [
               "proxy"
             ]
           },
           "connected": {
+            "description": "If it is `true`, there is at least one open connection to the remote cluster.\nIf it is `false`, it means that the cluster no longer has an open connection to the remote cluster.\nIt does not necessarily mean that the remote cluster is down or unavailable, just that at some point a connection was lost.",
             "type": "boolean"
           },
           "initial_connect_timeout": {
             "$ref": "#/components/schemas/_types:Duration"
           },
           "skip_unavailable": {
+            "description": "If `true`, cross-cluster search skips the remote cluster when its nodes are unavailable during the search and ignores errors returned by the remote cluster.",
             "type": "boolean"
           },
           "proxy_address": {
+            "description": "The address for remote connections when proxy mode is configured.",
             "type": "string"
           },
           "server_name": {
             "type": "string"
           },
           "num_proxy_sockets_connected": {
+            "description": "The number of open socket connections to the remote cluster when proxy mode is configured.",
             "type": "number"
           },
           "max_proxy_socket_connections": {
+            "description": "The maximum number of socket connections to the remote cluster when proxy mode is configured.",
             "type": "number"
+          },
+          "cluster_credentials": {
+            "description": "This field presents and has value of ::es_redacted:: only when the remote cluster is configured with the API key based model. Otherwise, the field is not present.",
+            "type": "string"
           }
         },
         "required": [
@@ -89391,7 +89400,7 @@
           "repository"
         ]
       },
-      "snapshot.repository_analyze:NodeInfo": {
+      "snapshot.repository_analyze:SnapshotNodeInfo": {
         "type": "object",
         "properties": {
           "id": {
@@ -89431,7 +89440,7 @@
             "$ref": "#/components/schemas/_types:DurationValueUnitNanos"
           },
           "writer_node": {
-            "$ref": "#/components/schemas/snapshot.repository_analyze:NodeInfo"
+            "$ref": "#/components/schemas/snapshot.repository_analyze:SnapshotNodeInfo"
           }
         },
         "required": [
@@ -89511,7 +89520,7 @@
             "type": "boolean"
           },
           "node": {
-            "$ref": "#/components/schemas/snapshot.repository_analyze:NodeInfo"
+            "$ref": "#/components/schemas/snapshot.repository_analyze:SnapshotNodeInfo"
           },
           "throttled": {
             "$ref": "#/components/schemas/_types:Duration"
@@ -95342,6 +95351,19 @@
           }
         }
       },
+      "indices.resolve_cluster#200": {
+        "description": "",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "additionalProperties": {
+                "$ref": "#/components/schemas/indices.resolve_cluster:ResolveClusterInfo"
+              }
+            }
+          }
+        }
+      },
       "indices.rollover#200": {
         "description": "",
         "content": {
@@ -95875,6 +95897,7 @@
                   }
                 },
                 "templates": {
+                  "description": "Template warnings are sectioned off per template and include deprecations for both component templates and\nindex templates.",
                   "type": "object",
                   "additionalProperties": {
                     "type": "array",
@@ -95884,6 +95907,7 @@
                   }
                 },
                 "ilm_policies": {
+                  "description": "ILM policy warnings are sectioned off per policy.",
                   "type": "object",
                   "additionalProperties": {
                     "type": "array",
@@ -102479,6 +102503,67 @@
         "deprecated": false,
         "schema": {
           "type": "boolean"
+        },
+        "style": "form"
+      },
+      "indices.resolve_cluster#name": {
+        "in": "path",
+        "name": "name",
+        "description": "A comma-separated list of names or index patterns for the indices, aliases, and data streams to resolve.\nResources on remote clusters can be specified using the `<cluster>`:`<name>` syntax.\nIndex and cluster exclusions (e.g., `-cluster1:*`) are also supported.\nIf no index expression is specified, information about all remote clusters configured on the local cluster\nis returned without doing any index matching",
+        "required": true,
+        "deprecated": false,
+        "schema": {
+          "$ref": "#/components/schemas/_types:Names"
+        },
+        "style": "simple"
+      },
+      "indices.resolve_cluster#allow_no_indices": {
+        "in": "query",
+        "name": "allow_no_indices",
+        "description": "If false, the request returns an error if any wildcard expression, index alias, or `_all` value targets only missing\nor closed indices. This behavior applies even if the request targets other open indices. For example, a request\ntargeting `foo*,bar*` returns an error if an index starts with `foo` but no index starts with `bar`.\nNOTE: This option is only supported when specifying an index expression. You will get an error if you specify index\noptions to the `_resolve/cluster` API endpoint that takes no index expression.",
+        "deprecated": false,
+        "schema": {
+          "type": "boolean"
+        },
+        "style": "form"
+      },
+      "indices.resolve_cluster#expand_wildcards": {
+        "in": "query",
+        "name": "expand_wildcards",
+        "description": "Type of index that wildcard patterns can match.\nIf the request can target data streams, this argument determines whether wildcard expressions match hidden data streams.\nSupports comma-separated values, such as `open,hidden`.\nValid values are: `all`, `open`, `closed`, `hidden`, `none`.\nNOTE: This option is only supported when specifying an index expression. You will get an error if you specify index\noptions to the `_resolve/cluster` API endpoint that takes no index expression.",
+        "deprecated": false,
+        "schema": {
+          "$ref": "#/components/schemas/_types:ExpandWildcards"
+        },
+        "style": "form"
+      },
+      "indices.resolve_cluster#ignore_throttled": {
+        "in": "query",
+        "name": "ignore_throttled",
+        "description": "If true, concrete, expanded, or aliased indices are ignored when frozen.\nNOTE: This option is only supported when specifying an index expression. You will get an error if you specify index\noptions to the `_resolve/cluster` API endpoint that takes no index expression.",
+        "deprecated": true,
+        "schema": {
+          "type": "boolean"
+        },
+        "style": "form"
+      },
+      "indices.resolve_cluster#ignore_unavailable": {
+        "in": "query",
+        "name": "ignore_unavailable",
+        "description": "If false, the request returns an error if it targets a missing or closed index.\nNOTE: This option is only supported when specifying an index expression. You will get an error if you specify index\noptions to the `_resolve/cluster` API endpoint that takes no index expression.",
+        "deprecated": false,
+        "schema": {
+          "type": "boolean"
+        },
+        "style": "form"
+      },
+      "indices.resolve_cluster#timeout": {
+        "in": "query",
+        "name": "timeout",
+        "description": "The maximum time to wait for remote clusters to respond.\nIf a remote cluster does not respond within this timeout period, the API response\nwill show the cluster as not connected and include an error message that the\nrequest timed out.\n\nThe default timeout is unset and the query can take\nas long as the networking layer is configured to wait for remote clusters that are\nnot responding (typically 30 seconds).",
+        "deprecated": false,
+        "schema": {
+          "$ref": "#/components/schemas/_types:Duration"
         },
         "style": "form"
       },
