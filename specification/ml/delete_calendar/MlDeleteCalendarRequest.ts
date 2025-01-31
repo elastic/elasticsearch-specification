@@ -22,7 +22,8 @@ import { Id } from '@_types/common'
 
 /**
  * Delete a calendar.
- * Removes all scheduled events from a calendar, then deletes it.
+ *
+ * Remove all scheduled events from a calendar, then delete it.
  * @rest_spec_name ml.delete_calendar
  * @availability stack since=6.2.0 stability=stable
  * @availability serverless stability=stable visibility=public

@@ -9998,7 +9998,7 @@
           "ml anomaly"
         ],
         "summary": "Delete a calendar",
-        "description": "Removes all scheduled events from a calendar, then deletes it.",
+        "description": "Remove all scheduled events from a calendar, then delete it.",
         "operationId": "ml-delete-calendar",
         "parameters": [
           {
@@ -11463,7 +11463,7 @@
           "ml anomaly"
         ],
         "summary": "Estimate job model memory usage",
-        "description": "Makes an estimation of the memory usage for an anomaly detection job model.\nIt is based on analysis configuration details for the job and cardinality\nestimates for the fields it references.",
+        "description": "Make an estimation of the memory usage for an anomaly detection job model.\nThe estimate is based on analysis configuration details for the job and cardinality\nestimates for the fields it references.",
         "operationId": "ml-estimate-model-memory",
         "requestBody": {
           "content": {
