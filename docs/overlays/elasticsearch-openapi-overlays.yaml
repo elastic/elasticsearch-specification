@@ -199,6 +199,74 @@ actions:
               examples:
                 resumeFollowIndexResponseExample1:
                   $ref: "../../specification/ccr/resume_follow/examples/response/ResumeFollowIndexResponseExample1.yaml"
+  - target: "$.paths['/{index}/_ccr/unfollow']['post']"
+    description: "Add examples for unfollow an index"
+    update: 
+      responses:
+        200:
+          content:
+            application/json:
+              examples:
+                ccrUnfollowIndexResponseExample1:
+                  $ref: "../../specification/ccr/unfollow/examples/response/UnfollowIndexResponseExample1.yaml"
+  - target: "$.paths['/_ccr/stats']['get']"
+    description: "Add examples for get ccr stats"
+    update: 
+      responses:
+        200:
+          content:
+            application/json:
+              examples:
+                ccrStatsResponseExample1:
+                  $ref: "../../specification/ccr/stats/examples/response/CcrStatsResponseExample1.yaml"
+  - target: "$.paths['/_ccr/auto_follow/{name}/resume']['post']"
+    description: "Add examples for resume auto-follow pattern"
+    update: 
+      responses:
+        200:
+          content:
+            application/json:
+              examples:
+                ccrResumeAutoFollowResponseExample1:
+                  $ref: "../../specification/ccr/resume_auto_follow_pattern/examples/response/ResumeAutoFollowPatternResponseExample1.yaml"
+  - target: "$.paths['/{index}/_ccr/pause_follow']['post']"
+    description: "Add examples for resume auto-follow pattern"
+    update: 
+      responses:
+        200:
+          content:
+            application/json:
+              examples:
+                ccrPauseFollowResponseExample1:
+                  $ref: "../../specification/ccr/pause_follow/examples/response/PauseFollowIndexResponseExample1.yaml"
+  - target: "$.paths['/_ccr/auto_follow/{name}/pause']['post']"
+    description: "Add examples for pause auto-follow pattern"
+    update: 
+      responses:
+        200:
+          content:
+            application/json:
+              examples:
+                ccrPauseAutoFollowPatternResponseExample1:
+                  $ref: "../../specification/ccr/pause_auto_follow_pattern/examples/response/PauseAutoFollowPatternResponseExample1.yaml"
+  - target: "$.components['responses']['ccr.get_auto_follow_pattern#200']"
+    description: "Add examples for get auto-follow pattern"
+    update: 
+      content:
+        application/json:
+          examples:
+            ccrPauseAutoFollowPatternResponseExample1:
+              $ref: "../../specification/ccr/get_auto_follow_pattern/examples/response/GetAutoFollowPatternResponseExample1.yaml"
+  - target: "$.paths['/{index}/_ccr/stats']['get']"
+    description: "Add examples for get follower stats"
+    update: 
+      responses:
+        200:
+          content:
+            application/json:
+              examples:
+                ccrFollowerStatsResponseExample1:
+                  $ref: "../../specification/ccr/follow_stats/examples/response/FollowIndexStatsResponseExample1.yaml"
 ## Examples for cluster
   - target: "$.components['requestBodies']['cluster.allocation_explain']"
     description: "Add examples for cluster allocation explain operation"
@@ -496,14 +564,13 @@ actions:
   - target: "$.components['responses']['indices.resolve_cluster#200']"
     description: "Add examples for resolve cluster operation"
     update: 
-      responses:
-        content:
-          application/json:
-            examples:
-              resolveClusterResponseExample1:
-                $ref: "../../specification/indices/resolve_cluster/examples/200_response/ResolveClusterResponseExample1.yaml"
-              resolveClusterResponseExample2:
-                $ref: "../../specification/indices/resolve_cluster/examples/200_response/ResolveClusterResponseExample2.yaml"
+      content:
+        application/json:
+          examples:
+            resolveClusterResponseExample1:
+              $ref: "../../specification/indices/resolve_cluster/examples/200_response/ResolveClusterResponseExample1.yaml"
+            resolveClusterResponseExample2:
+              $ref: "../../specification/indices/resolve_cluster/examples/200_response/ResolveClusterResponseExample2.yaml"
   - target: "$.components['requestBodies']['indices.shrink']"
     description: "Add example for shrink index request"
     update: 
