@@ -2463,6 +2463,30 @@ actions:
           examples:
             asyncSearchSubmitResponseExample1:
               $ref: "../../specification/async_search/submit/examples/response/AsyncSearchSubmitResponseExample1.yaml"
+  - target: "$.paths['/_async_search/status/{id}']['get']"
+    description: "Add examples for get async search status"
+    update: 
+      responses:
+        200:
+          content:
+            application/json:
+              examples:
+                asyncSearchStatusResponseExample1:
+                  $ref: "../../specification/async_search/status/examples/response/AsyncSearchStatusResponseExample1.yaml"
+                asyncSearchStatusResponseExample2:
+                  $ref: "../../specification/async_search/status/examples/response/AsyncSearchStatusResponseExample2.yaml"
+                asyncSearchStatusResponseExample3:
+                  $ref: "../../specification/async_search/status/examples/response/AsyncSearchStatusResponseExample3.yaml"
+  - target: "$.paths['/_async_search/{id}']['get']"
+    description: "Add examples for get async search"
+    update: 
+      responses:
+        200:
+          content:
+            application/json:
+              examples:
+                asyncSearchResponseExample1:
+                  $ref: "../../specification/async_search/get/examples/response/AsyncSearchGetResponseExample1.yaml"
 ## Examples for search applications
   - target: "$.paths['/_application/search_application']['get']"
     description: "Add examples for get search applications operation"
