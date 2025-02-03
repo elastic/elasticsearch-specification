@@ -267,6 +267,28 @@ actions:
               examples:
                 ccrFollowerStatsResponseExample1:
                   $ref: "../../specification/ccr/follow_stats/examples/response/FollowIndexStatsResponseExample1.yaml"
+  - target: "$.paths['/{index}/_ccr/info']['get']"
+    description: "Add examples for get follower info"
+    update: 
+      responses:
+        200:
+          content:
+            application/json:
+              examples:
+                ccrFollowerInfoResponseExample1:
+                  $ref: "../../specification/ccr/follow_info/examples/response/FollowInfoResponseExample1.yaml"
+                ccrFollowerInfoResponseExample2:
+                  $ref: "../../specification/ccr/follow_info/examples/response/FollowInfoResponseExample2.yaml"
+  - target: "$.paths['/_ccr/auto_follow/{name}']['delete']"
+    description: "Add examples for delete auto follow pattern"
+    update: 
+      responses:
+        200:
+          content:
+            application/json:
+              examples:
+                ccrAutoFollowPatternDeleteResponseExample1:
+                  $ref: "../../specification/ccr/delete_auto_follow_pattern/examples/response/DeleteAutoFollowPatternResponseExample1.yaml"
 ## Examples for cluster
   - target: "$.components['requestBodies']['cluster.allocation_explain']"
     description: "Add examples for cluster allocation explain operation"

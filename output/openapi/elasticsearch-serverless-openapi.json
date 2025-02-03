@@ -32,7 +32,7 @@
           {
             "in": "query",
             "name": "keep_alive",
-            "description": "Specifies how long the async search should be available in the cluster.\nWhen not specified, the `keep_alive` set with the corresponding submit async request will be used.\nOtherwise, it is possible to override the value and extend the validity of the request.\nWhen this period expires, the search, if still running, is cancelled.\nIf the search is completed, its saved results are deleted.",
+            "description": "The length of time that the async search should be available in the cluster.\nWhen not specified, the `keep_alive` set with the corresponding submit async request will be used.\nOtherwise, it is possible to override the value and extend the validity of the request.\nWhen this period expires, the search, if still running, is cancelled.\nIf the search is completed, its saved results are deleted.",
             "deprecated": false,
             "schema": {
               "$ref": "#/components/schemas/_types:Duration"
@@ -115,7 +115,7 @@
           "search"
         ],
         "summary": "Get the async search status",
-        "description": "Get the status of a previously submitted async search request given its identifier, without retrieving search results.\nIf the Elasticsearch security features are enabled, use of this API is restricted to the `monitoring_user` role.",
+        "description": "Get the status of a previously submitted async search request given its identifier, without retrieving search results.\nIf the Elasticsearch security features are enabled, the access to the status of a specific async search is restricted to:\n\n* The user or API key that submitted the original async search request.\n* Users that have the `monitor` cluster privilege or greater privileges.",
         "operationId": "async-search-status",
         "parameters": [
           {
@@ -132,7 +132,7 @@
           {
             "in": "query",
             "name": "keep_alive",
-            "description": "Specifies how long the async search needs to be available.\nOngoing async searches and any saved search results are deleted after this period.",
+            "description": "The length of time that the async search needs to be available.\nOngoing async searches and any saved search results are deleted after this period.",
             "deprecated": false,
             "schema": {
               "$ref": "#/components/schemas/_types:Duration"
@@ -20522,7 +20522,7 @@
         "type": "object",
         "properties": {
           "aggregations": {
-            "description": "Partial aggregations results, coming from the shards that have already completed the execution of the query.",
+            "description": "Partial aggregations results, coming from the shards that have already completed running the query.",
             "type": "object",
             "additionalProperties": {
               "$ref": "#/components/schemas/_types.aggregations:Aggregate"
@@ -25505,7 +25505,7 @@
             "type": "boolean"
           },
           "is_running": {
-            "description": "Indicates whether the search is still running or has completed.\nNOTE: If the search failed after some shards returned their results or the node that is coordinating the async search dies, results may be partial even though `is_running` is `false`.",
+            "description": "Indicates whether the search is still running or has completed.\n\n> info\n> If the search failed after some shards returned their results or the node that is coordinating the async search dies, results may be partial even though `is_running` is `false`.",
             "type": "boolean"
           },
           "expiration_time": {
@@ -25560,7 +25560,7 @@
                 "$ref": "#/components/schemas/_types:ClusterStatistics"
               },
               "completion_status": {
-                "description": "If the async search completed, this field shows the status code of the search.\nFor example, 200 indicates that the async search was successfully completed.\n503 indicates that the async search was completed with an error.",
+                "description": "If the async search completed, this field shows the status code of the search.\nFor example, `200` indicates that the async search was successfully completed.\n`503` indicates that the async search was completed with an error.",
                 "type": "number"
               }
             },
