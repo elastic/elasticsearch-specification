@@ -2560,6 +2560,74 @@ actions:
               examples:
                 updateTransformResponseExample1:
                   $ref: "../../specification/transform/update_transform/examples/response/UpdateTransformResponseExample1.yaml"
+  - target: "$.paths['/_transform/{transform_id}/_stop']['post']"
+    description: "Add examples for transform stop"
+    update:
+      responses:
+        200:
+          content:
+            application/json:
+              examples:
+                transformStopResponseExample1:
+                  $ref: "../../specification/transform/stop_transform/examples/response/StopTransformResponseExample1.yaml"
+  - target: "$.paths['/_transform/{transform_id}/_start']['post']"
+    description: "Add examples for transform start"
+    update:
+      responses:
+        200:
+          content:
+            application/json:
+              examples:
+                transformStartResponseExample1:
+                  $ref: "../../specification/transform/start_transform/examples/response/StartTransformResponseExample1.yaml"
+  - target: "$.paths['/_transform/{transform_id}/_schedule_now']['post']"
+    description: "Add examples for transform schedule now"
+    update:
+      responses:
+        200:
+          content:
+            application/json:
+              examples:
+                transformScheduleNowResponseExample1:
+                  $ref: "../../specification/transform/schedule_now_transform/examples/response/ScheduleNowTransformResponseExample1.yaml"
+  - target: "$.paths['/_transform/{transform_id}/_reset']['post']"
+    description: "Add examples for transform reset"
+    update:
+      responses:
+        200:
+          content:
+            application/json:
+              examples:
+                transformResetResponseExample1:
+                  $ref: "../../specification/transform/reset_transform/examples/response/ResetTransformResponseExample1.yaml"
+  - target: "$.paths['/_transform/{transform_id}/_stats']['get']"
+    description: "Add examples for transform get stats"
+    update:
+      responses:
+        200:
+          content:
+            application/json:
+              examples:
+                transformGetStatsResponseExample1:
+                  $ref: "../../specification/transform/get_transform_stats/examples/response/GetTransformStatsResponseExample1.yaml"
+  - target: "$.paths['/_transform/{transform_id}']['delete']"
+    description: "Add examples for transform delete"
+    update:
+      responses:
+        200:
+          content:
+            application/json:
+              examples:
+                transformDeleteResponseExample1:
+                  $ref: "../../specification/transform/delete_transform/examples/response/DeleteTransformResponseExample1.yaml"
+  - target: "$.components['transform.get_transform#200']"
+    description: "Add examples for transform get"
+    update:
+      content:
+        application/json:
+          examples:
+            transformGetResponseExample1:
+              $ref: "../../specification/transform/get_transform/examples/response/GetTransformResponseExample1.yaml"
 ## xCodeSamples
   - target: "$.paths['/{index}/_doc/{id}']['head']"
     description: "Add xCodeSamples for check document operation"
