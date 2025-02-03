@@ -2573,7 +2573,7 @@
           {
             "in": "path",
             "name": "name",
-            "description": "The name of the auto follow pattern.",
+            "description": "The auto-follow pattern collection to delete.",
             "required": true,
             "deprecated": false,
             "schema": {
@@ -2584,7 +2584,7 @@
           {
             "in": "query",
             "name": "master_timeout",
-            "description": "Period to wait for a connection to the master node.",
+            "description": "The period to wait for a connection to the master node.\nIf the master node is not available before the timeout expires, the request fails and returns an error.\nIt can also be set to `-1` to indicate that the request should never timeout.",
             "deprecated": false,
             "schema": {
               "$ref": "#/components/schemas/_types:Duration"
@@ -2759,7 +2759,7 @@
           {
             "in": "path",
             "name": "index",
-            "description": "A comma-separated list of index patterns; use `_all` to perform the operation on all indices",
+            "description": "A comma-delimited list of follower index patterns.",
             "required": true,
             "deprecated": false,
             "schema": {
@@ -2770,7 +2770,7 @@
           {
             "in": "query",
             "name": "master_timeout",
-            "description": "Period to wait for a connection to the master node.",
+            "description": "The period to wait for a connection to the master node.\nIf the master node is not available before the timeout expires, the request fails and returns an error.\nIt can also be set to `-1` to indicate that the request should never timeout.",
             "deprecated": false,
             "schema": {
               "$ref": "#/components/schemas/_types:Duration"

@@ -22,10 +22,15 @@ import { integer, long } from '@_types/Numeric'
 import { Duration } from '@_types/Time'
 
 export class FollowerIndex {
+  /** The name of the follower index. */
   follower_index: IndexName
+  /** The name of the index in the leader cluster that is followed. */
   leader_index: IndexName
+  /** An object that encapsulates cross-cluster replication parameters. If the follower index's status is paused, this object is omitted. */
   parameters?: FollowerIndexParameters
+  /** The remote cluster that contains the leader index. */
   remote_cluster: Name
+  /** The status of the index following: `active` or `paused`. */
   status: FollowerIndexStatus
 }
 
