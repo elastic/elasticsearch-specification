@@ -30,7 +30,9 @@ export class AsyncSearchResponseBase {
   is_partial: boolean
   /**
    * Indicates whether the search is still running or has completed.
-   * NOTE: If the search failed after some shards returned their results or the node that is coordinating the async search dies, results may be partial even though `is_running` is `false`.
+   *
+   * > info
+   * > If the search failed after some shards returned their results or the node that is coordinating the async search dies, results may be partial even though `is_running` is `false`.
    */
   is_running: boolean
   /**
@@ -41,8 +43,8 @@ export class AsyncSearchResponseBase {
   start_time?: DateTime
   start_time_in_millis: EpochTime<UnitMillis>
   /**
-   * Indicates when the async search completed. Only present
-   * when the search has completed.
+   * Indicates when the async search completed.
+   * It is present only when the search has completed.
    */
   completion_time?: DateTime
   completion_time_in_millis?: EpochTime<UnitMillis>
