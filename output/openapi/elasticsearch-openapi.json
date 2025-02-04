@@ -88681,7 +88681,7 @@
             }
           },
           "ignored_fields": {
-            "description": "A list of the fields that would be ignored at the indexing step. For example, a field whose\nvalue is larger than the allowed limit would make it through all of the pipoelines, but\nwould not be indexed into Elasticsearch.",
+            "description": "A list of the fields that would be ignored at the indexing step. For example, a field whose\nvalue is larger than the allowed limit would make it through all of the pipelines, but\nwould not be indexed into Elasticsearch.",
             "type": "array",
             "items": {
               "type": "object",
