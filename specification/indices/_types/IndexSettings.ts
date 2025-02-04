@@ -170,6 +170,7 @@ export class IndexSettings
 
 /**
  * @variants internal tag='type'
+ * @non_exhaustive
  */
 export type SettingsSimilarity =
   | SettingsSimilarityBm25
