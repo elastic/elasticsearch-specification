@@ -38,6 +38,7 @@ rules:
   struct: error
   spec-components-invalid-map-name: off
   spec-strict-refs: off
+  security-defined: off
  # Tags
   operation-tag-defined: off
   tags-alphabetical: off

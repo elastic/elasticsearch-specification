@@ -68,7 +68,7 @@ overlay-docs: ## Apply overlays to OpenAPI documents
 	rm output/openapi/elasticsearch-openapi.tmp*.json
 
 lint-docs: ## Lint the OpenAPI documents after overlays
-	@npx @redocly/cli lint "output/openapi/elasticsearch-*.examples.json" --config "docs/linters/redocly.yaml" --format stylish --max-problems 500
+	@npx @redocly/cli lint "output/openapi/elasticsearch-*.json" --config "docs/linters/redocly.yaml" --format stylish --max-problems 500
 
 lint-docs-stateful: ## Lint only the elasticsearch-openapi.examples.json file
 	@npx @redocly/cli lint "output/openapi/elasticsearch-openapi.examples.json" --config "docs/linters/redocly.yaml" --format stylish --max-problems 500
