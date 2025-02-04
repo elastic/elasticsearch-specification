@@ -88646,6 +88646,62 @@
           "replace"
         ]
       },
+      "simulate.ingest:SimulateIngestDocumentResult": {
+        "type": "object",
+        "properties": {
+          "doc": {
+            "$ref": "#/components/schemas/simulate.ingest:IngestDocumentSimulation"
+          }
+        }
+      },
+      "simulate.ingest:IngestDocumentSimulation": {
+        "type": "object",
+        "properties": {
+          "_id": {
+            "$ref": "#/components/schemas/_types:Id"
+          },
+          "_index": {
+            "$ref": "#/components/schemas/_types:IndexName"
+          },
+          "_source": {
+            "description": "JSON body for the document.",
+            "type": "object",
+            "additionalProperties": {
+              "type": "object"
+            }
+          },
+          "_version": {
+            "$ref": "#/components/schemas/_spec_utils:StringifiedVersionNumber"
+          },
+          "executed_pipelines": {
+            "description": "A list of the names of the pipelines executed on this document.",
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "ignored_fields": {
+            "description": "A list of the fields that would be ignored at the indexing step. For example, a field whose\nvalue is larger than the allowed limit would make it through all of the pipoelines, but\nwould not be indexed into Elasticsearch.",
+            "type": "array",
+            "items": {
+              "type": "object",
+              "additionalProperties": {
+                "type": "string"
+              }
+            }
+          },
+          "error": {
+            "$ref": "#/components/schemas/_types:ErrorCause"
+          }
+        },
+        "required": [
+          "_id",
+          "_index",
+          "_source",
+          "_version",
+          "executed_pipelines"
+        ]
+      },
       "slm._types:SnapshotLifecycle": {
         "type": "object",
         "properties": {
@@ -97563,7 +97619,7 @@
                 "docs": {
                   "type": "array",
                   "items": {
-                    "$ref": "#/components/schemas/ingest._types:SimulateDocumentResult"
+                    "$ref": "#/components/schemas/simulate.ingest:SimulateIngestDocumentResult"
                   }
                 }
               },
