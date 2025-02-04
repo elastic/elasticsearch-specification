@@ -38,7 +38,7 @@ export class Response {
     /**
      * The node that coordinated the analysis and performed the final cleanup.
      */
-    coordinating_node: NodeInfo
+    coordinating_node: SnapshotNodeInfo
     /**
      * The time it took to delete all the blobs in the container.
      */
@@ -107,7 +107,7 @@ export class Response {
   }
 }
 
-export class NodeInfo {
+export class SnapshotNodeInfo {
   id: Id
   name: Name
 }
@@ -234,7 +234,7 @@ export class ReadBlobDetails {
   /**
    * The node that performed the read operation.
    */
-  node: NodeInfo
+  node: SnapshotNodeInfo
   /**
    * The length of time spent waiting due to the `max_restore_bytes_per_sec` or `indices.recovery.max_bytes_per_sec` throttles during the read of the blob.
    * If the blob was not found, this detail is omitted.
@@ -317,5 +317,5 @@ export class DetailsInfo {
   /**
    * The node which wrote the blob and coordinated the read operations.
    */
-  writer_node: NodeInfo
+  writer_node: SnapshotNodeInfo
 }

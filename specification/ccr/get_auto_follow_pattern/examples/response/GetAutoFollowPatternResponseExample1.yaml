@@ -1,0 +1,25 @@
+# summary:
+description: A successful response from `GET /_ccr/auto_follow/my_auto_follow_pattern`, which gets auto-follow patterns.
+# type: response
+# response_code: 200
+value: |-
+  {
+    "patterns": [
+      {
+        "name": "my_auto_follow_pattern",
+        "pattern": {
+          "active": true,
+          "remote_cluster" : "remote_cluster",
+          "leader_index_patterns" :
+          [
+            "leader_index*"
+          ],
+          "leader_index_exclusion_patterns":
+          [
+            "leader_index_001"
+          ],
+          "follow_index_pattern" : "{{leader_index}}-follower"
+        }
+      }
+    ]
+  }

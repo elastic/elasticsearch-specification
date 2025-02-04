@@ -23,6 +23,7 @@ import { Duration } from '@_types/Time'
 
 /**
  * Open anomaly detection jobs.
+ *
  * An anomaly detection job must be opened to be ready to receive and analyze
  * data. It can be opened and closed multiple times throughout its lifecycle.
  * When you open a new job, it starts with an empty model.

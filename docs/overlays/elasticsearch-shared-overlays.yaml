@@ -1242,18 +1242,6 @@ actions:
           examples:
             catTemplatesResponseExample1:
               $ref: "../../specification/cat/templates/examples/200_response/CatTemplatesResponseExample1.yaml"
-  - target: "$.components['responses']['cat.thread_pool#200']"
-    description: "Add example for cat thread pool response"
-    update: 
-      content:
-        text/plain:
-          schema:
-            type: string
-          examples:
-            catThreadPoolResponseExample1:
-              $ref: "../../specification/cat/thread_pool/examples/200_response/CatThreadPoolResponseExample1.yaml"
-            catThreadPoolResponseExample2:
-              $ref: "../../specification/cat/thread_pool/examples/200_response/CatThreadPoolResponseExample2.yaml"
   - target: "$.components['responses']['cat.transforms#200']"
     description: "Add example for cat transforms response"
     update: 
@@ -1272,7 +1260,7 @@ actions:
               schema:
                 type: string
               examples:
-                catMasterResponseExample1: 
+                catHealthResponseExample1: 
                   $ref: "../../specification/cat/health/examples/200_response/CatHealthResponseExample1.yaml"
   - target: "$.paths['/_cat/master']['get']"
     description: "Add examples for cat master operation"
@@ -1362,6 +1350,230 @@ actions:
               examples:
                 catTasksResponseExample1: 
                   $ref: "../../specification/cat/tasks/examples/200_response/CatTasksResponseExample1.yaml"
+## Examples for connectors
+  - target: "$.paths['/_connector/{connector_id}/_check_in']['put']"
+    description: "Add example for check in connector response"
+    update: 
+      responses:
+        200:
+          content:
+            application/json:
+              examples:
+                connectorCheckInResponseExample1:
+                  $ref: "../../specification/connector/check_in/examples/response/ConnectorCheckInResponseExample1.yaml"
+  - target: "$.paths['/_connector/{connector_id}']['delete']"
+    description: "Add example for delete connector response"
+    update: 
+      responses:
+        200:
+          content:
+            application/json:
+              examples:
+                connectorDeleteResponseExample1:
+                  $ref: "../../specification/connector/delete/examples/response/ConnectorDeleteResponseExample1.yaml"
+  - target: "$.components['requestBodies']['connector.put']"
+    description: "Add example for create connector request"
+    update: 
+      content:
+        application/json:
+          examples:
+            connectorPutRequestExample1:
+              $ref: "../../specification/connector/put/examples/request/ConnectorPutRequestExample1.yaml"
+            connectorPutRequestExample2:
+              $ref: "../../specification/connector/put/examples/request/ConnectorPutRequestExample2.yaml"
+  - target: "$.components['responses']['connector.put#200']"
+    description: "Add example for create connector response"
+    update: 
+      content:
+        application/json:
+          examples:
+            connectorPutResponseExample:
+              $ref: "../../specification/connector/put/examples/response/ConnectorPutResponseExample1.yaml"
+  - target: "$.paths['/_connector/_sync_job/{connector_sync_job_id}']['delete']"
+    description: "Add example for delete sync job response"
+    update: 
+      responses:
+        200:
+          content:
+            application/json:
+              examples:
+                syncJobDeleteResponseExample1:
+                  $ref: "../../specification/connector/sync_job_delete/examples/response/SyncJobDeleteResponseExample1.yaml"
+  - target: "$.paths['/_connector/_sync_job']['post']"
+    description: "Add example for create sync job"
+    update: 
+      requestBody:
+        content:
+          application/json:
+            examples:
+              syncJobPostRequestExample1:
+                $ref: "../../specification/connector/sync_job_post/examples/request/SyncJobPostRequestExample1.yaml"
+  - target: "$.paths['/_connector/{connector_id}/_api_key_id']['put']"
+    description: "Add examples for update connector API key ID"
+    update: 
+      requestBody: 
+        content: 
+          application/json: 
+            examples: 
+              connectorUpdateApiKeyIdRequestExample1: 
+                $ref: "../../specification/connector/update_api_key_id/examples/request/ConnectorUpdateApiKeyIDRequestExample1.yaml"
+      responses:
+        200:
+          content:
+            application/json:
+              examples:
+                connectorUpdateApiKeyIdResponseExample1:
+                  $ref: "../../specification/connector/update_api_key_id/examples/response/ConnectorUpdateApiKeyIDResponseExample1.yaml"
+  - target: "$.paths['/_connector/{connector_id}/_configuration']['put']"
+    description: "Add examples for update connector configuration"
+    update: 
+      requestBody: 
+        content: 
+          application/json: 
+            examples: 
+              connectorUpdateConfigurationRequestExample1: 
+                $ref: "../../specification/connector/update_configuration/examples/request/ConnectorUpdateConfigurationRequestExample1.yaml"
+              connectorUpdateConfigurationRequestExample2: 
+                $ref: "../../specification/connector/update_configuration/examples/request/ConnectorUpdateConfigurationRequestExample2.yaml"
+      responses:
+        200:
+          content:
+            application/json:
+              examples:
+                connectorUpdateConfigurationResponseExample1:
+                  $ref: "../../specification/connector/update_configuration/examples/response/ConnectorUpdateConfigurationResponseExample1.yaml"
+  - target: "$.paths['/_connector/{connector_id}/_error']['put']"
+    description: "Add examples for update connector error field"
+    update: 
+      requestBody: 
+        content: 
+          application/json: 
+            examples: 
+              connectorUpdateConfigurationRequestExample1: 
+                $ref: "../../specification/connector/update_error/examples/request/ConnectorUpdateErrorRequestExample1.yaml"
+      responses:
+        200:
+          content:
+            application/json:
+              examples:
+                connectorUpdateErrorResponseExample1:
+                  $ref: "../../specification/connector/update_error/examples/response/ConnectorUpdateErrorResponseExample1.yaml"
+  - target: "$.paths['/_connector/{connector_id}/_filtering']['put']"
+    description: "Add examples for update connector filtering"
+    update: 
+      requestBody: 
+        content: 
+          application/json: 
+            examples: 
+              connectorUpdateFilteringRequestExample1: 
+                $ref: "../../specification/connector/update_filtering/examples/request/ConnectorUpdateFilteringRequestExample1.yaml"
+              connectorUpdateFilteringRequestExample2: 
+                $ref: "../../specification/connector/update_filtering/examples/request/ConnectorUpdateFilteringRequestExample2.yaml"
+      responses:
+        200:
+          content:
+            application/json:
+              examples:
+                connectorUpdateFilteringResponseExample1:
+                  $ref: "../../specification/connector/update_filtering/examples/response/ConnectorUpdateFilteringResponseExample1.yaml"
+  - target: "$.paths['/_connector/{connector_id}/_index_name']['put']"
+    description: "Add examples for update connector index name"
+    update: 
+      requestBody: 
+        content: 
+          application/json: 
+            examples: 
+              connectorUpdateIndexNameRequestExample1: 
+                $ref: "../../specification/connector/update_index_name/examples/request/ConnectorUpdateIndexNameRequestExample1.yaml"
+      responses:
+        200:
+          content:
+            application/json:
+              examples:
+                connectorUpdateIndexNameResponseExample1:
+                  $ref: "../../specification/connector/update_index_name/examples/response/ConnectorUpdateIndexNameResponseExample1.yaml"
+  - target: "$.paths['/_connector/{connector_id}/_name']['put']"
+    description: "Add examples for update connector name"
+    update: 
+      requestBody: 
+        content: 
+          application/json: 
+            examples: 
+              connectorUpdateNameRequestExample1: 
+                $ref: "../../specification/connector/update_name/examples/request/ConnectorUpdateNameRequestExample1.yaml"
+      responses:
+        200:
+          content:
+            application/json:
+              examples:
+                connectorUpdateNameResponseExample1:
+                  $ref: "../../specification/connector/update_name/examples/response/ConnectorUpdateNameResponseExample1.yaml"
+  - target: "$.paths['/_connector/{connector_id}/_pipeline']['put']"
+    description: "Add examples for update connector pipeline"
+    update: 
+      requestBody: 
+        content: 
+          application/json: 
+            examples: 
+              connectorUpdatePipelineRequestExample1: 
+                $ref: "../../specification/connector/update_pipeline/examples/request/ConnectorUpdatePipelineRequestExample1.yaml"
+      responses:
+        200:
+          content:
+            application/json:
+              examples:
+                connectorUpdatePipelineResponseExample1:
+                  $ref: "../../specification/connector/update_pipeline/examples/response/ConnectorUpdatePipelineResponseExample1.yaml"
+  - target: "$.paths['/_connector/{connector_id}/_scheduling']['put']"
+    description: "Add examples for update connector scheduling"
+    update: 
+      requestBody: 
+        content: 
+          application/json: 
+            examples: 
+              connectorUpdateSchedulingRequestExample1: 
+                $ref: "../../specification/connector/update_scheduling/examples/request/ConnectorUpdateSchedulingRequestExample1.yaml"
+              connectorUpdateSchedulingRequestExample2: 
+                $ref: "../../specification/connector/update_scheduling/examples/request/ConnectorUpdateSchedulingRequestExample2.yaml"
+      responses:
+        200:
+          content:
+            application/json:
+              examples:
+                connectorUpdateSchedulingResponseExample1:
+                  $ref: "../../specification/connector/update_scheduling/examples/response/ConnectorUpdateSchedulingResponseExample1.yaml"
+  - target: "$.paths['/_connector/{connector_id}/_service_type']['put']"
+    description: "Add examples for update connector service type"
+    update: 
+      requestBody: 
+        content: 
+          application/json: 
+            examples: 
+              connectorUpdateServiceTypeRequestExample1: 
+                $ref: "../../specification/connector/update_service_type/examples/request/ConnectorUpdateServiceTypeRequestExample1.yaml"
+      responses:
+        200:
+          content:
+            application/json:
+              examples:
+                connectorUpdateServiceTypeResponseExample1:
+                  $ref: "../../specification/connector/update_service_type/examples/response/ConnectorUpdateServiceTypeResponseExample1.yaml"
+  - target: "$.paths['/_connector/{connector_id}/_status']['put']"
+    description: "Add examples for update connector status"
+    update: 
+      requestBody: 
+        content: 
+          application/json: 
+            examples: 
+              connectorUpdateStatusRequestExample1: 
+                $ref: "../../specification/connector/update_status/examples/request/ConnectorUpdateStatusRequestExample1.yaml"
+      responses:
+        200:
+          content:
+            application/json:
+              examples:
+                connectorUpdateStatusResponseExample1:
+                  $ref: "../../specification/connector/update_status/examples/response/ConnectorUpdateStatusResponseExample1.yaml"
 ## Examples for data streams
   - target: "$.paths['/_data_stream/{name}/_lifecycle']['delete']"
     description: "Add example for delete data stream lifecycle response"
@@ -1775,7 +1987,7 @@ actions:
           content:
             application/json:
               examples:
-                catMasterResponseExample1: 
+                clusterInfoResponseExample1: 
                   $ref: "../../specification/_global/info/examples/response/RootNodeInfoResponseExample1.yaml"
 ## Examples for ingest
   - target: "$.components['responses']['ingest.get_pipeline#200']"
@@ -1824,6 +2036,185 @@ actions:
               examples:
                 getLicenseResponseExample1:
                   $ref: "../../specification/license/get/examples/response/GetLicenseResponseExample1.yaml"
+## Examples for machine learning
+  - target: "$.paths['/_ml/data_frame/_evaluate']['post']"
+    description: "Add examples for evaluate data frame analytics"
+    update: 
+      requestBody: 
+        content: 
+          application/json: 
+            examples: 
+              mlDataFrameAnalyticsEvaluateRequestExample1: 
+                $ref: "../../specification/ml/evaluate_data_frame/examples/request/MlEvaluateDataFrameRequestExample1.yaml"
+              mlDataFrameAnalyticsEvaluateRequestExample2: 
+                $ref: "../../specification/ml/evaluate_data_frame/examples/request/MlEvaluateDataFrameRequestExample2.yaml"
+              mlDataFrameAnalyticsEvaluateRequestExample3: 
+                $ref: "../../specification/ml/evaluate_data_frame/examples/request/MlEvaluateDataFrameRequestExample3.yaml"
+              mlDataFrameAnalyticsEvaluateRequestExample4: 
+                $ref: "../../specification/ml/evaluate_data_frame/examples/request/MlEvaluateDataFrameRequestExample4.yaml"
+              mlDataFrameAnalyticsEvaluateRequestExample5: 
+                $ref: "../../specification/ml/evaluate_data_frame/examples/request/MlEvaluateDataFrameRequestExample5.yaml"
+      responses:
+        200:
+          content:
+            application/json:
+              examples:
+                mlDataFrameAnalyticsEvaluateResponseExample1:
+                  $ref: "../../specification/ml/evaluate_data_frame/examples/response/MlEvaluateDataFrameResponseExample1.yaml"
+                mlDataFrameAnalyticsEvaluateResponseExample2:
+                  $ref: "../../specification/ml/evaluate_data_frame/examples/response/MlEvaluateDataFrameResponseExample2.yaml"
+                mlDataFrameAnalyticsEvaluateResponseExample3:
+                  $ref: "../../specification/ml/evaluate_data_frame/examples/response/MlEvaluateDataFrameResponseExample3.yaml"
+  - target: "$.paths['/_ml/anomaly_detectors/_estimate_model_memory']['post']"
+    description: "Add examples for estimate anomaly job model memory"
+    update: 
+      requestBody: 
+        content: 
+          application/json: 
+            examples: 
+              mlAnomalyJobEstimateRequestExample1: 
+                $ref: "../../specification/ml/estimate_model_memory/examples/request/MlEstimatemodelMemoryRequestExample1.yaml"
+      responses:
+        200:
+          content:
+            application/json:
+              examples:
+                mlAnomalyJobEstimateResponseExample1:
+                  $ref: "../../specification/ml/estimate_model_memory/examples/response/MlEstimateModelMemoryResponseExample1.yaml"
+  - target: "$.paths['/_ml/anomaly_detectors/{job_id}']['put']"
+    description: "Add examples for create anomaly detection job"
+    update: 
+      requestBody: 
+        content: 
+          application/json: 
+            examples: 
+              mlAnomalyJobCreateRequestExample1: 
+                $ref: "../../specification/ml/put_job/examples/request/MlPutJobRequestExample1.yaml"
+      responses:
+        200:
+          content:
+            application/json:
+              examples:
+                mlAnomalyJobCreateResponseExample1:
+                  $ref: "../../specification/ml/put_job/examples/200_response/MlPutJobResponseExample1.yaml"
+  - target: "$.paths['/_ml/anomaly_detectors/{job_id}/_open']['post']"
+    description: "Add examples for open anomaly detection job"
+    update: 
+      requestBody: 
+        content: 
+          application/json: 
+            examples: 
+              mlAnomalyJobOpenRequestExample1: 
+                $ref: "../../specification/ml/open_job/examples/request/MlOpenJobRequestExample1.yaml"
+      responses:
+        200:
+          content:
+            application/json:
+              examples:
+                mlAnomalyJobCreateResponseExample1:
+                  $ref: "../../specification/ml/open_job/examples/200_response/MlOpenJobResponseExample1.yaml"
+  - target: "$.paths['/_ml/trained_models/{model_id}/model_aliases/{model_alias}']['delete']"
+    description: "Add examples for delete trained model alias"
+    update: 
+      responses:
+        200:
+          content:
+            application/json:
+              examples:
+                mlTrainedModelAliasDeleteResponseExample1:
+                  $ref: "../../specification/ml/delete_trained_model_alias/examples/response/MlDeleteTrainedModelAliasResponseExample1.yaml"
+  - target: "$.paths['/_ml/trained_models/{model_id}']['delete']"
+    description: "Add examples for delete trained model"
+    update: 
+      responses:
+        200:
+          content:
+            application/json:
+              examples:
+                mlTrainedModelDeleteResponseExample1:
+                  $ref: "../../specification/ml/delete_trained_model/examples/response/MlDeleteTrainedModelResponseExample1.yaml"
+  - target: "$.paths['/_ml/anomaly_detectors/{job_id}']['delete']"
+    description: "Add examples for delete anomaly detection job"
+    update: 
+      responses:
+        200:
+          content:
+            application/json:
+              examples:
+                mlAnomalyJobDeleteResponseExample1:
+                  $ref: "../../specification/ml/delete_job/examples/response/MlDeleteJobResponseExample1.yaml"
+                mlAnomalyJobDeleteResponseExample2:
+                  $ref: "../../specification/ml/delete_job/examples/response/MlDeleteJobResponseExample2.yaml"
+  - target: "$.paths['/_ml/filters/{filter_id}']['delete']"
+    description: "Add examples for delete filter"
+    update: 
+      responses:
+        200:
+          content:
+            application/json:
+              examples:
+                mlFilterDeleteResponseExample1:
+                  $ref: "../../specification/ml/delete_filter/examples/response/MlDeleteFilterResponseExample1.yaml"
+  - target: "$.paths['/_ml/datafeeds/{datafeed_id}']['delete']"
+    description: "Add examples for delete data feed"
+    update: 
+      responses:
+        200:
+          content:
+            application/json:
+              examples:
+                mlDatafeedDeleteResponseExample1:
+                  $ref: "../../specification/ml/delete_datafeed/examples/response/MlDeleteDatafeedResponseExample1.yaml"
+  - target: "$.paths['/_ml/data_frame/analytics/{id}']['delete']"
+    description: "Add examples for delete data frame analytics job"
+    update: 
+      responses:
+        200:
+          content:
+            application/json:
+              examples:
+                mlDataFrameAnalyticsDeleteResponseExample1:
+                  $ref: "../../specification/ml/delete_data_frame_analytics/examples/response/MlDeleteDataFrameAnalyticsResponseExample1.yaml"
+  - target: "$.paths['/_ml/calendars/{calendar_id}/jobs/{job_id}']['delete']"
+    description: "Add examples for delete anomaly jobs from calendar"
+    update: 
+      responses:
+        200:
+          content:
+            application/json:
+              examples:
+                mlCalendarJobDeleteResponseExample1:
+                  $ref: "../../specification/ml/delete_calendar_job/examples/response/MlDeleteCalendarJobResponseExample1.yaml"
+  - target: "$.paths['/_ml/calendars/{calendar_id}/events/{event_id}']['delete']"
+    description: "Add examples for delete event from calendar"
+    update: 
+      responses:
+        200:
+          content:
+            application/json:
+              examples:
+                mlCalendarEventDeleteResponseExample1:
+                  $ref: "../../specification/ml/delete_calendar_event/examples/response/MlDeleteCalendarEventResponseExample1.yaml"
+  - target: "$.paths['/_ml/calendars/{calendar_id}']['delete']"
+    description: "Add examples for delete event from calendar"
+    update: 
+      responses:
+        200:
+          content:
+            application/json:
+              examples:
+                mlCalendarDeleteResponseExample1:
+                  $ref: "../../specification/ml/delete_calendar/examples/response/MlDeleteCalendarResponseExample1.yaml"
+  - target: "$.paths['/_ml/anomaly_detectors/{job_id}/_close']['post']"
+    description: "Add examples for close anomaly job"
+    update: 
+      responses:
+        200:
+          content:
+            application/json:
+              examples:
+                mlAnomalyJobCloseResponseExample1:
+                  $ref: "../../specification/ml/close_job/examples/response/MlCloseJobResponseExample1.yaml"
 ## Examples for script
   - target: "$.components['requestBodies']['put_script']"
     description: "Add example for create script request"
@@ -2072,6 +2463,30 @@ actions:
           examples:
             asyncSearchSubmitResponseExample1:
               $ref: "../../specification/async_search/submit/examples/response/AsyncSearchSubmitResponseExample1.yaml"
+  - target: "$.paths['/_async_search/status/{id}']['get']"
+    description: "Add examples for get async search status"
+    update: 
+      responses:
+        200:
+          content:
+            application/json:
+              examples:
+                asyncSearchStatusResponseExample1:
+                  $ref: "../../specification/async_search/status/examples/response/AsyncSearchStatusResponseExample1.yaml"
+                asyncSearchStatusResponseExample2:
+                  $ref: "../../specification/async_search/status/examples/response/AsyncSearchStatusResponseExample2.yaml"
+                asyncSearchStatusResponseExample3:
+                  $ref: "../../specification/async_search/status/examples/response/AsyncSearchStatusResponseExample3.yaml"
+  - target: "$.paths['/_async_search/{id}']['get']"
+    description: "Add examples for get async search"
+    update: 
+      responses:
+        200:
+          content:
+            application/json:
+              examples:
+                asyncSearchResponseExample1:
+                  $ref: "../../specification/async_search/get/examples/response/AsyncSearchGetResponseExample1.yaml"
 ## Examples for search applications
   - target: "$.paths['/_application/search_application']['get']"
     description: "Add examples for get search applications operation"
@@ -2169,6 +2584,74 @@ actions:
               examples:
                 updateTransformResponseExample1:
                   $ref: "../../specification/transform/update_transform/examples/response/UpdateTransformResponseExample1.yaml"
+  - target: "$.paths['/_transform/{transform_id}/_stop']['post']"
+    description: "Add examples for transform stop"
+    update:
+      responses:
+        200:
+          content:
+            application/json:
+              examples:
+                transformStopResponseExample1:
+                  $ref: "../../specification/transform/stop_transform/examples/response/StopTransformResponseExample1.yaml"
+  - target: "$.paths['/_transform/{transform_id}/_start']['post']"
+    description: "Add examples for transform start"
+    update:
+      responses:
+        200:
+          content:
+            application/json:
+              examples:
+                transformStartResponseExample1:
+                  $ref: "../../specification/transform/start_transform/examples/response/StartTransformResponseExample1.yaml"
+  - target: "$.paths['/_transform/{transform_id}/_schedule_now']['post']"
+    description: "Add examples for transform schedule now"
+    update:
+      responses:
+        200:
+          content:
+            application/json:
+              examples:
+                transformScheduleNowResponseExample1:
+                  $ref: "../../specification/transform/schedule_now_transform/examples/response/ScheduleNowTransformResponseExample1.yaml"
+  - target: "$.paths['/_transform/{transform_id}/_reset']['post']"
+    description: "Add examples for transform reset"
+    update:
+      responses:
+        200:
+          content:
+            application/json:
+              examples:
+                transformResetResponseExample1:
+                  $ref: "../../specification/transform/reset_transform/examples/response/ResetTransformResponseExample1.yaml"
+  - target: "$.paths['/_transform/{transform_id}/_stats']['get']"
+    description: "Add examples for transform get stats"
+    update:
+      responses:
+        200:
+          content:
+            application/json:
+              examples:
+                transformGetStatsResponseExample1:
+                  $ref: "../../specification/transform/get_transform_stats/examples/response/GetTransformStatsResponseExample1.yaml"
+  - target: "$.paths['/_transform/{transform_id}']['delete']"
+    description: "Add examples for transform delete"
+    update:
+      responses:
+        200:
+          content:
+            application/json:
+              examples:
+                transformDeleteResponseExample1:
+                  $ref: "../../specification/transform/delete_transform/examples/response/DeleteTransformResponseExample1.yaml"
+  - target: "$.components['transform.get_transform#200']"
+    description: "Add examples for transform get"
+    update:
+      content:
+        application/json:
+          examples:
+            transformGetResponseExample1:
+              $ref: "../../specification/transform/get_transform/examples/response/GetTransformResponseExample1.yaml"
 ## xCodeSamples
   - target: "$.paths['/{index}/_doc/{id}']['head']"
     description: "Add xCodeSamples for check document operation"
