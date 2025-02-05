@@ -13026,7 +13026,7 @@ export type InferenceSparseVector = Record<string, float>
 
 export type InferenceTaskSettings = any
 
-export type InferenceTaskType = 'sparse_embedding' | 'text_embedding' | 'rerank' | 'completion'
+export type InferenceTaskType = 'sparse_embedding' | 'text_embedding' | 'rerank' | 'completion' | 'chat_completion'
 
 export interface InferenceTextEmbeddingByteResult {
   embedding: InferenceDenseByteVector
