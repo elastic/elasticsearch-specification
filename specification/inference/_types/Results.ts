@@ -39,10 +39,9 @@ export class SparseEmbeddingResult {
 
 /**
  * The response format for the sparse embedding request.
- * @variants container
  */
 export class SparseEmbeddingInferenceResult {
-  sparse_embedding?: Array<SparseEmbeddingResult>
+  sparse_embedding: Array<SparseEmbeddingResult>
 }
 
 /**
