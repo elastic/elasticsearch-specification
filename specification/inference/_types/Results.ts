@@ -39,10 +39,10 @@ export class SparseEmbeddingResult {
 
 /**
  * The response format for the sparse embedding request.
+ * @variants container
  */
 export class SparseEmbeddingInferenceResult {
-  // TODO should we make this optional if we ever support multiple encoding types? So we can make it a variant
-  sparse_embedding: Array<SparseEmbeddingResult>
+  sparse_embedding?: Array<SparseEmbeddingResult>
 }
 
 /**
