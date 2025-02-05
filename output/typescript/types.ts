@@ -11353,20 +11353,21 @@ export interface MlAnomaly {
 }
 
 export interface MlAnomalyCause {
-  actual: double[]
-  by_field_name: Name
-  by_field_value: string
-  correlated_by_field_value: string
-  field_name: Field
-  function: string
-  function_description: string
-  influencers: MlInfluence[]
-  over_field_name: Name
-  over_field_value: string
-  partition_field_name: string
-  partition_field_value: string
+  actual?: double[]
+  by_field_name?: Name
+  by_field_value?: string
+  correlated_by_field_value?: string
+  field_name?: Field
+  function?: string
+  function_description?: string
+  geo_results?: MlGeoResults
+  influencers?: MlInfluence[]
+  over_field_name?: Name
+  over_field_value?: string
+  partition_field_name?: string
+  partition_field_value?: string
   probability: double
-  typical: double[]
+  typical?: double[]
 }
 
 export type MlAppliesTo = 'actual' | 'typical' | 'diff_from_typical' | 'time'
@@ -11836,6 +11837,11 @@ export interface MlFilterRef {
 }
 
 export type MlFilterType = 'include' | 'exclude'
+
+export interface MlGeoResults {
+  actual_point?: string
+  typical_point?: string
+}
 
 export interface MlHyperparameter {
   absolute_importance?: double
