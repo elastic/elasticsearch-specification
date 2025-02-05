@@ -13,7 +13,7 @@
     "url": {
       "paths": [
         {
-          "path": "/_inference/chat_completion/{inference_id}/_unified",
+          "path": "/_inference/chat_completion/{inference_id}/_stream",
           "methods": ["POST"],
           "parts": {
             "inference_id": {

@@ -13002,18 +13002,6 @@ export interface InferenceInferenceEndpointInfo extends InferenceInferenceEndpoi
   task_type: InferenceTaskType
 }
 
-<<<<<<< HEAD
-=======
-export interface InferenceInferenceResult {
-  text_embedding_bytes?: InferenceTextEmbeddingByteResult[]
-  text_embedding_bits?: InferenceTextEmbeddingByteResult[]
-  text_embedding?: InferenceTextEmbeddingResult[]
-  sparse_embedding?: InferenceSparseEmbeddingResult[]
-  completion?: InferenceCompletionResult[]
-  rerank?: InferenceRankedDocument[]
-}
-
->>>>>>> 962b9735af01f0c709d563dc9ec280ea5111cacf
 export interface InferenceRankedDocument {
   index: integer
   score: float
@@ -13046,6 +13034,7 @@ export interface InferenceTextEmbeddingByteResult {
 
 export interface InferenceTextEmbeddingInferenceResult {
   text_embedding_bytes?: InferenceTextEmbeddingByteResult[]
+  text_embedding_bits?: InferenceTextEmbeddingByteResult[]
   text_embedding?: InferenceTextEmbeddingResult[]
 }
 
