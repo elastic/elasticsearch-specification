@@ -71,6 +71,7 @@ export class TextEmbeddingResult {
  */
 export class TextEmbeddingInferenceResult {
   text_embedding_bytes?: Array<TextEmbeddingByteResult>
+  text_embedding_bits?: Array<TextEmbeddingByteResult>
   text_embedding?: Array<TextEmbeddingResult>
 }
 

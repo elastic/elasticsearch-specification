@@ -32,7 +32,7 @@
           {
             "in": "query",
             "name": "keep_alive",
-            "description": "Specifies how long the async search should be available in the cluster.\nWhen not specified, the `keep_alive` set with the corresponding submit async request will be used.\nOtherwise, it is possible to override the value and extend the validity of the request.\nWhen this period expires, the search, if still running, is cancelled.\nIf the search is completed, its saved results are deleted.",
+            "description": "The length of time that the async search should be available in the cluster.\nWhen not specified, the `keep_alive` set with the corresponding submit async request will be used.\nOtherwise, it is possible to override the value and extend the validity of the request.\nWhen this period expires, the search, if still running, is cancelled.\nIf the search is completed, its saved results are deleted.",
             "deprecated": false,
             "schema": {
               "$ref": "#/components/schemas/_types:Duration"
@@ -115,7 +115,7 @@
           "search"
         ],
         "summary": "Get the async search status",
-        "description": "Get the status of a previously submitted async search request given its identifier, without retrieving search results.\nIf the Elasticsearch security features are enabled, use of this API is restricted to the `monitoring_user` role.",
+        "description": "Get the status of a previously submitted async search request given its identifier, without retrieving search results.\nIf the Elasticsearch security features are enabled, the access to the status of a specific async search is restricted to:\n\n* The user or API key that submitted the original async search request.\n* Users that have the `monitor` cluster privilege or greater privileges.",
         "operationId": "async-search-status",
         "parameters": [
           {
@@ -132,7 +132,7 @@
           {
             "in": "query",
             "name": "keep_alive",
-            "description": "Specifies how long the async search needs to be available.\nOngoing async searches and any saved search results are deleted after this period.",
+            "description": "The length of time that the async search needs to be available.\nOngoing async searches and any saved search results are deleted after this period.",
             "deprecated": false,
             "schema": {
               "$ref": "#/components/schemas/_types:Duration"
@@ -5247,7 +5247,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/_types:EsqlColumns"
+                  "$ref": "#/components/schemas/_types:EsqlResult"
                 }
               }
             }
@@ -9998,7 +9998,7 @@
           "ml anomaly"
         ],
         "summary": "Delete a calendar",
-        "description": "Removes all scheduled events from a calendar, then deletes it.",
+        "description": "Remove all scheduled events from a calendar, then delete it.",
         "operationId": "ml-delete-calendar",
         "parameters": [
           {
@@ -11463,7 +11463,7 @@
           "ml anomaly"
         ],
         "summary": "Estimate job model memory usage",
-        "description": "Makes an estimation of the memory usage for an anomaly detection job model.\nIt is based on analysis configuration details for the job and cardinality\nestimates for the fields it references.",
+        "description": "Make an estimation of the memory usage for an anomaly detection job model.\nThe estimate is based on analysis configuration details for the job and cardinality\nestimates for the fields it references.",
         "operationId": "ml-estimate-model-memory",
         "requestBody": {
           "content": {
@@ -18071,7 +18071,7 @@
                       "description": "Column headings for the search results. Each object is a column.",
                       "type": "array",
                       "items": {
-                        "$ref": "#/components/schemas/sql:Column"
+                        "$ref": "#/components/schemas/sql._types:Column"
                       }
                     },
                     "cursor": {
@@ -18082,7 +18082,7 @@
                       "description": "The values for the search results.",
                       "type": "array",
                       "items": {
-                        "$ref": "#/components/schemas/sql:Row"
+                        "$ref": "#/components/schemas/sql._types:Row"
                       }
                     }
                   },
@@ -19414,7 +19414,7 @@
           "transform"
         ],
         "summary": "Reset a transform",
-        "description": "Resets a transform.\nBefore you can reset it, you must stop it; alternatively, use the `force` query parameter.\nIf the destination index was created by the transform, it is deleted.",
+        "description": "Before you can reset it, you must stop it; alternatively, use the `force` query parameter.\nIf the destination index was created by the transform, it is deleted.",
         "operationId": "transform-reset-transform",
         "parameters": [
           {
@@ -19470,7 +19470,7 @@
           "transform"
         ],
         "summary": "Schedule a transform to start now",
-        "description": "Instantly runs a transform to process data.\n\nIf you _schedule_now a transform, it will process the new data instantly,\nwithout waiting for the configured frequency interval. After _schedule_now API is called,\nthe transform will be processed again at now + frequency unless _schedule_now API\nis called again in the meantime.",
+        "description": "Instantly run a transform to process data.\nIf you run this API, the transform will process the new data instantly,\nwithout waiting for the configured frequency interval. After the API is called,\nthe transform will be processed again at `now + frequency` unless the API\nis called again in the meantime.",
         "operationId": "transform-schedule-now-transform",
         "parameters": [
           {
@@ -19516,7 +19516,7 @@
           "transform"
         ],
         "summary": "Start a transform",
-        "description": "Starts a transform.\n\nWhen you start a transform, it creates the destination index if it does not already exist. The `number_of_shards` is\nset to `1` and the `auto_expand_replicas` is set to `0-1`. If it is a pivot transform, it deduces the mapping\ndefinitions for the destination index from the source indices and the transform aggregations. If fields in the\ndestination index are derived from scripts (as in the case of `scripted_metric` or `bucket_script` aggregations),\nthe transform uses dynamic mappings unless an index template exists. If it is a latest transform, it does not deduce\nmapping definitions; it uses dynamic mappings. To use explicit mappings, create the destination index before you\nstart the transform. Alternatively, you can create an index template, though it does not affect the deduced mappings\nin a pivot transform.\n\nWhen the transform starts, a series of validations occur to ensure its success. If you deferred validation when you\ncreated the transform, they occur when you start the transform—​with the exception of privilege checks. When\nElasticsearch security features are enabled, the transform remembers which roles the user that created it had at the\ntime of creation and uses those same roles. If those roles do not have the required privileges on the source and\ndestination indices, the transform fails when it attempts unauthorized operations.",
+        "description": "When you start a transform, it creates the destination index if it does not already exist. The `number_of_shards` is\nset to `1` and the `auto_expand_replicas` is set to `0-1`. If it is a pivot transform, it deduces the mapping\ndefinitions for the destination index from the source indices and the transform aggregations. If fields in the\ndestination index are derived from scripts (as in the case of `scripted_metric` or `bucket_script` aggregations),\nthe transform uses dynamic mappings unless an index template exists. If it is a latest transform, it does not deduce\nmapping definitions; it uses dynamic mappings. To use explicit mappings, create the destination index before you\nstart the transform. Alternatively, you can create an index template, though it does not affect the deduced mappings\nin a pivot transform.\n\nWhen the transform starts, a series of validations occur to ensure its success. If you deferred validation when you\ncreated the transform, they occur when you start the transform—​with the exception of privilege checks. When\nElasticsearch security features are enabled, the transform remembers which roles the user that created it had at the\ntime of creation and uses those same roles. If those roles do not have the required privileges on the source and\ndestination indices, the transform fails when it attempts unauthorized operations.",
         "operationId": "transform-start-transform",
         "parameters": [
           {
@@ -20512,7 +20512,7 @@
         "type": "object",
         "properties": {
           "aggregations": {
-            "description": "Partial aggregations results, coming from the shards that have already completed the execution of the query.",
+            "description": "Partial aggregations results, coming from the shards that have already completed running the query.",
             "type": "object",
             "additionalProperties": {
               "$ref": "#/components/schemas/_types.aggregations:Aggregate"
@@ -25495,7 +25495,7 @@
             "type": "boolean"
           },
           "is_running": {
-            "description": "Indicates whether the search is still running or has completed.\nNOTE: If the search failed after some shards returned their results or the node that is coordinating the async search dies, results may be partial even though `is_running` is `false`.",
+            "description": "Indicates whether the search is still running or has completed.\n\n> info\n> If the search failed after some shards returned their results or the node that is coordinating the async search dies, results may be partial even though `is_running` is `false`.",
             "type": "boolean"
           },
           "expiration_time": {
@@ -25550,7 +25550,7 @@
                 "$ref": "#/components/schemas/_types:ClusterStatistics"
               },
               "completion_status": {
-                "description": "If the async search completed, this field shows the status code of the search.\nFor example, 200 indicates that the async search was successfully completed.\n503 indicates that the async search was completed with an error.",
+                "description": "If the async search completed, this field shows the status code of the search.\nFor example, `200` indicates that the async search was successfully completed.\n`503` indicates that the async search was completed with an error.",
                 "type": "number"
               }
             },
@@ -28709,8 +28709,7 @@
           }
         },
         "required": [
-          "_id",
-          "_index"
+          "_id"
         ]
       },
       "_types.query_dsl:PrefixQuery": {
@@ -29738,7 +29737,7 @@
             "type": "object",
             "properties": {
               "value": {
-                "type": "string"
+                "$ref": "#/components/schemas/_types:FieldValue"
               }
             },
             "required": [
@@ -36334,26 +36333,23 @@
             "$ref": "#/components/schemas/_types:VersionString"
           },
           "max_output_size": {
+            "description": "The maximum token size to emit. Tokens larger than this size will be discarded.\nDefaults to `255`",
             "type": "number"
           },
-          "preserve_original": {
-            "type": "boolean"
-          },
           "separator": {
+            "description": "The character to use to concatenate the terms.\nDefaults to a space.",
             "type": "string"
           },
           "stopwords": {
             "$ref": "#/components/schemas/_types.analysis:StopWords"
           },
           "stopwords_path": {
+            "description": "The path to a file containing stop words.",
             "type": "string"
           }
         },
         "required": [
-          "type",
-          "max_output_size",
-          "preserve_original",
-          "separator"
+          "type"
         ]
       },
       "_types.analysis:KeywordAnalyzer": {
@@ -36496,21 +36492,27 @@
             "$ref": "#/components/schemas/_types:VersionString"
           },
           "flags": {
+            "description": "Java regular expression flags. Flags should be pipe-separated, eg \"CASE_INSENSITIVE|COMMENTS\".",
             "type": "string"
           },
           "lowercase": {
+            "description": "Should terms be lowercased or not.\nDefaults to `true`.",
             "type": "boolean"
           },
           "pattern": {
+            "description": "A Java regular expression.\nDefaults to `\\W+`.",
             "type": "string"
           },
           "stopwords": {
             "$ref": "#/components/schemas/_types.analysis:StopWords"
+          },
+          "stopwords_path": {
+            "description": "The path to a file containing stop words.",
+            "type": "string"
           }
         },
         "required": [
-          "type",
-          "pattern"
+          "type"
         ]
       },
       "_types.analysis:SimpleAnalyzer": {
@@ -36540,10 +36542,15 @@
             ]
           },
           "max_token_length": {
+            "description": "The maximum token length. If a token is seen that exceeds this length then it is split at `max_token_length` intervals.\nDefaults to `255`.",
             "type": "number"
           },
           "stopwords": {
             "$ref": "#/components/schemas/_types.analysis:StopWords"
+          },
+          "stopwords_path": {
+            "description": "The path to a file containing stop words.",
+            "type": "string"
           }
         },
         "required": [
@@ -36566,6 +36573,7 @@
             "$ref": "#/components/schemas/_types.analysis:StopWords"
           },
           "stopwords_path": {
+            "description": "The path to a file containing stop words.",
             "type": "string"
           }
         },
@@ -40667,9 +40675,9 @@
       "indices._types:SourceMode": {
         "type": "string",
         "enum": [
-          "disabled",
-          "stored",
-          "synthetic"
+          "DISABLED",
+          "STORED",
+          "SYNTHETIC"
         ]
       },
       "indices._types:IndexingSlowlogSettings": {
@@ -44980,7 +44988,7 @@
           }
         ]
       },
-      "_types:EsqlColumns": {
+      "_types:EsqlResult": {
         "type": "object"
       },
       "_types:InlineGet": {
@@ -45164,7 +45172,6 @@
           }
         },
         "required": [
-          "query",
           "vertices"
         ]
       },
@@ -45216,7 +45223,6 @@
           }
         },
         "required": [
-          "boost",
           "term"
         ]
       },
@@ -46314,6 +46320,12 @@
               "$ref": "#/components/schemas/inference._types:TextEmbeddingByteResult"
             }
           },
+          "text_embedding_bits": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/inference._types:TextEmbeddingByteResult"
+            }
+          },
           "text_embedding": {
             "type": "array",
             "items": {
@@ -46866,8 +46878,7 @@
             "type": "string"
           },
           "if": {
-            "description": "Conditionally execute the processor.",
-            "type": "string"
+            "$ref": "#/components/schemas/_types:Script"
           },
           "ignore_failure": {
             "description": "Ignore failures for the processor.",
@@ -47211,7 +47222,6 @@
               }
             },
             "required": [
-              "date_formats",
               "date_rounding",
               "field"
             ]
@@ -50014,11 +50024,7 @@
               "type": "string"
             }
           }
-        },
-        "required": [
-          "includes",
-          "excludes"
-        ]
+        }
       },
       "ml._types:DataframeAnalyticsAuthorization": {
         "type": "object",
@@ -55615,7 +55621,7 @@
           }
         ]
       },
-      "sql:Column": {
+      "sql._types:Column": {
         "type": "object",
         "properties": {
           "name": {
@@ -55630,7 +55636,7 @@
           "type"
         ]
       },
-      "sql:Row": {
+      "sql._types:Row": {
         "type": "array",
         "items": {
           "type": "object"
@@ -57850,7 +57856,7 @@
                   "description": "Column headings for the search results. Each object is a column.",
                   "type": "array",
                   "items": {
-                    "$ref": "#/components/schemas/sql:Column"
+                    "$ref": "#/components/schemas/sql._types:Column"
                   }
                 },
                 "cursor": {
@@ -57872,7 +57878,7 @@
                   "description": "The values for the search results.",
                   "type": "array",
                   "items": {
-                    "$ref": "#/components/schemas/sql:Row"
+                    "$ref": "#/components/schemas/sql._types:Row"
                   }
                 }
               },
@@ -63647,9 +63653,11 @@
                   "$ref": "#/components/schemas/_types:Duration"
                 },
                 "allow_partial_search_results": {
+                  "description": "Allow query execution also in case of shard failures.\nIf true, the query will keep running and will return results based on the available shards.\nFor sequences, the behavior can be further refined using allow_partial_sequence_results",
                   "type": "boolean"
                 },
                 "allow_partial_sequence_results": {
+                  "description": "This flag applies only to sequences and has effect only if allow_partial_search_results=true.\nIf true, the sequence query will return results based on the available shards, ignoring the others.\nIf false, the sequence query will return successfully, but will always have empty results.",
                   "type": "boolean"
                 },
                 "size": {
@@ -64809,7 +64817,7 @@
                 },
                 "role_descriptors": {
                   "externalDocs": {
-                    "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/security-api-put-role.html"
+                    "url": "https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-security-put-role"
                   },
                   "description": "An array of role descriptors for this API key.\nWhen it is not specified or it is an empty array, the API key will have a point in time snapshot of permissions of the authenticated user.\nIf you supply role descriptors, the resultant permissions are an intersection of API keys permissions and the authenticated user's permissions thereby limiting the access scope for API keys.\nThe structure of role descriptor is the same as the request for the create role API.\nFor more details, refer to the create or update roles API.\n\nNOTE: Due to the way in which this permission intersection is calculated, it is not possible to create an API key that is a child of another API key, unless the derived key is created without any privileges.\nIn this case, you must explicitly specify a role descriptor with no privileges.\nThe derived API key can be used for authentication; it will not have authority to call Elasticsearch APIs.",
                   "type": "object",

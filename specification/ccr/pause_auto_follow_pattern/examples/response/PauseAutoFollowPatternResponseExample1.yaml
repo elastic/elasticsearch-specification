@@ -1,0 +1,8 @@
+# summary:
+description: A successful response from `POST /_ccr/auto_follow/my_auto_follow_pattern/pause`, which pauses an auto-follow pattern.
+# type: response
+# response_code: 200
+value: |-
+  {
+    "acknowledged" : true
+  }

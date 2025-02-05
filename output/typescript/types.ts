@@ -2324,7 +2324,7 @@ export interface ErrorResponseBase {
   status: integer
 }
 
-export type EsqlColumns = ArrayBuffer
+export type EsqlResult = ArrayBuffer
 
 export type ExpandWildcard = 'all' | 'open' | 'closed' | 'hidden' | 'none'
 
@@ -4660,9 +4660,8 @@ export interface AnalysisEstonianAnalyzer {
 export interface AnalysisFingerprintAnalyzer {
   type: 'fingerprint'
   version?: VersionString
-  max_output_size: integer
-  preserve_original: boolean
-  separator: string
+  max_output_size?: integer
+  separator?: string
   stopwords?: AnalysisStopWords
   stopwords_path?: string
 }
@@ -5026,8 +5025,9 @@ export interface AnalysisPatternAnalyzer {
   version?: VersionString
   flags?: string
   lowercase?: boolean
-  pattern: string
+  pattern?: string
   stopwords?: AnalysisStopWords
+  stopwords_path?: string
 }
 
 export interface AnalysisPatternCaptureTokenFilter extends AnalysisTokenFilterBase {
@@ -5184,6 +5184,7 @@ export interface AnalysisStandardAnalyzer {
   type: 'standard'
   max_token_length?: integer
   stopwords?: AnalysisStopWords
+  stopwords_path?: string
 }
 
 export interface AnalysisStandardTokenizer extends AnalysisTokenizerBase {
@@ -6355,7 +6356,7 @@ export interface QueryDslPercolateQuery extends QueryDslQueryBase {
 
 export interface QueryDslPinnedDoc {
   _id: Id
-  _index: IndexName
+  _index?: IndexName
 }
 
 export interface QueryDslPinnedQuery extends QueryDslQueryBase {
@@ -6425,7 +6426,7 @@ export interface QueryDslQueryContainer {
   span_near?: QueryDslSpanNearQuery
   span_not?: QueryDslSpanNotQuery
   span_or?: QueryDslSpanOrQuery
-  span_term?: Partial<Record<Field, QueryDslSpanTermQuery | string>>
+  span_term?: Partial<Record<Field, QueryDslSpanTermQuery | FieldValue>>
   span_within?: QueryDslSpanWithinQuery
   sparse_vector?: QueryDslSparseVectorQuery
   term?: Partial<Record<Field, QueryDslTermQuery | FieldValue>>
@@ -6627,12 +6628,13 @@ export interface QueryDslSpanQuery {
   span_near?: QueryDslSpanNearQuery
   span_not?: QueryDslSpanNotQuery
   span_or?: QueryDslSpanOrQuery
-  span_term?: Partial<Record<Field, QueryDslSpanTermQuery | string>>
+  span_term?: Partial<Record<Field, QueryDslSpanTermQuery | FieldValue>>
   span_within?: QueryDslSpanWithinQuery
 }
 
 export interface QueryDslSpanTermQuery extends QueryDslQueryBase {
-  value: string
+  value: FieldValue
+  term: FieldValue
 }
 
 export interface QueryDslSpanWithinQuery extends QueryDslQueryBase {
@@ -9366,6 +9368,7 @@ export interface ClusterRemoteInfoClusterRemoteProxyInfo {
   server_name: string
   num_proxy_sockets_connected: integer
   max_proxy_socket_connections: integer
+  cluster_credentials?: string
 }
 
 export interface ClusterRemoteInfoClusterRemoteSniffInfo {
@@ -10550,11 +10553,7 @@ export interface EsqlAsyncQueryRequest extends RequestBase {
   }
 }
 
-export interface EsqlAsyncQueryResponse {
-  columns?: EsqlColumns
-  id?: string
-  is_running: boolean
-}
+export type EsqlAsyncQueryResponse = EsqlResult
 
 export interface EsqlAsyncQueryDeleteRequest extends RequestBase {
   id: Id
@@ -10569,10 +10568,14 @@ export interface EsqlAsyncQueryGetRequest extends RequestBase {
   wait_for_completion_timeout?: Duration
 }
 
-export interface EsqlAsyncQueryGetResponse {
-  columns?: EsqlColumns
-  is_running: boolean
+export type EsqlAsyncQueryGetResponse = EsqlResult
+
+export interface EsqlAsyncQueryStopRequest extends RequestBase {
+  id: Id
+  drop_null_columns?: boolean
 }
+
+export type EsqlAsyncQueryStopResponse = EsqlResult
 
 export interface EsqlQueryRequest extends RequestBase {
   format?: EsqlEsqlFormat
@@ -10589,7 +10592,7 @@ export interface EsqlQueryRequest extends RequestBase {
   }
 }
 
-export type EsqlQueryResponse = EsqlColumns
+export type EsqlQueryResponse = EsqlResult
 
 export interface FeaturesFeature {
   name: string
@@ -10763,7 +10766,7 @@ export interface GraphExploreControls {
 
 export interface GraphHop {
   connections?: GraphHop
-  query: QueryDslQueryContainer
+  query?: QueryDslQueryContainer
   vertices: GraphVertexDefinition[]
 }
 
@@ -10782,14 +10785,14 @@ export interface GraphVertex {
 export interface GraphVertexDefinition {
   exclude?: string[]
   field: Field
-  include?: GraphVertexInclude[]
+  include?: (GraphVertexInclude | string)[]
   min_doc_count?: long
   shard_min_doc_count?: long
   size?: integer
 }
 
 export interface GraphVertexInclude {
-  boost: double
+  boost?: double
   term: string
 }
 
@@ -11526,7 +11529,7 @@ export interface IndicesSoftDeletes {
   retention_lease?: IndicesRetentionLease
 }
 
-export type IndicesSourceMode = 'disabled' | 'stored' | 'synthetic'
+export type IndicesSourceMode = 'DISABLED' | 'STORED' | 'SYNTHETIC'
 
 export interface IndicesStorage {
   type: IndicesStorageType
@@ -12482,11 +12485,12 @@ export interface IndicesReloadSearchAnalyzersRequest extends RequestBase {
 export type IndicesReloadSearchAnalyzersResponse = IndicesReloadSearchAnalyzersReloadResult
 
 export interface IndicesResolveClusterRequest extends RequestBase {
-  name: Names
+  name?: Names
   allow_no_indices?: boolean
   expand_wildcards?: ExpandWildcards
   ignore_throttled?: boolean
   ignore_unavailable?: boolean
+  timeout?: Duration
 }
 
 export interface IndicesResolveClusterResolveClusterInfo {
@@ -12998,6 +13002,18 @@ export interface InferenceInferenceEndpointInfo extends InferenceInferenceEndpoi
   task_type: InferenceTaskType
 }
 
+<<<<<<< HEAD
+=======
+export interface InferenceInferenceResult {
+  text_embedding_bytes?: InferenceTextEmbeddingByteResult[]
+  text_embedding_bits?: InferenceTextEmbeddingByteResult[]
+  text_embedding?: InferenceTextEmbeddingResult[]
+  sparse_embedding?: InferenceSparseEmbeddingResult[]
+  completion?: InferenceCompletionResult[]
+  rerank?: InferenceRankedDocument[]
+}
+
+>>>>>>> 962b9735af01f0c709d563dc9ec280ea5111cacf
 export interface InferenceRankedDocument {
   index: integer
   score: float
@@ -13270,7 +13286,7 @@ export interface IngestDatabaseConfigurationFull {
 }
 
 export interface IngestDateIndexNameProcessor extends IngestProcessorBase {
-  date_formats: string[]
+  date_formats?: string[]
   date_rounding: string
   field: Field
   index_name_format?: string
@@ -13531,7 +13547,7 @@ export interface IngestPipelineSimulation {
 
 export interface IngestProcessorBase {
   description?: string
-  if?: string
+  if?: Script | string
   ignore_failure?: boolean
   on_failure?: IngestProcessorContainer[]
   tag?: string
@@ -14033,6 +14049,8 @@ export interface MigrationDeprecationsResponse {
   data_streams: Record<string, MigrationDeprecationsDeprecation[]>
   node_settings: MigrationDeprecationsDeprecation[]
   ml_settings: MigrationDeprecationsDeprecation[]
+  templates: Record<string, MigrationDeprecationsDeprecation[]>
+  ilm_policies: Record<string, MigrationDeprecationsDeprecation[]>
 }
 
 export interface MigrationGetFeatureUpgradeStatusMigrationFeature {
@@ -14394,8 +14412,8 @@ export interface MlDataframeAnalysis {
 }
 
 export interface MlDataframeAnalysisAnalyzedFields {
-  includes: string[]
-  excludes: string[]
+  includes?: string[]
+  excludes?: string[]
 }
 
 export interface MlDataframeAnalysisClassification extends MlDataframeAnalysis {
@@ -19495,6 +19513,20 @@ export interface ShutdownPutNodeRequest extends RequestBase {
 
 export type ShutdownPutNodeResponse = AcknowledgedResponseBase
 
+export type SimulateIngestIgnoredFieldKey = 'field'
+
+export interface SimulateIngestIngestDocumentSimulationKeys {
+  _id: Id
+  _index: IndexName
+  _source: Record<string, any>
+  _version: SpecUtilsStringified<VersionNumber>
+  executed_pipelines: string[]
+  ignored_fields?: Record<SimulateIngestIgnoredFieldKey, string>[]
+  error?: ErrorCause
+}
+export type SimulateIngestIngestDocumentSimulation = SimulateIngestIngestDocumentSimulationKeys
+  & { [property: string]: string | Id | IndexName | Record<string, any> | SpecUtilsStringified<VersionNumber> | string[] | Record<SimulateIngestIgnoredFieldKey, string>[] | ErrorCause }
+
 export interface SimulateIngestRequest extends RequestBase {
   index?: IndexName
   pipeline?: PipelineName
@@ -19508,7 +19540,11 @@ export interface SimulateIngestRequest extends RequestBase {
 }
 
 export interface SimulateIngestResponse {
-  docs: IngestSimulateDocumentResult[]
+  docs: SimulateIngestSimulateIngestDocumentResult[]
+}
+
+export interface SimulateIngestSimulateIngestDocumentResult {
+  doc?: SimulateIngestIngestDocumentSimulation
 }
 
 export interface SlmConfiguration {
@@ -19667,7 +19703,7 @@ export type SlmStopResponse = AcknowledgedResponseBase
 
 export interface SnapshotAzureRepository extends SnapshotRepositoryBase {
   type: 'azure'
-  settings: SnapshotAzureRepositorySettings
+  settings?: SnapshotAzureRepositorySettings
 }
 
 export interface SnapshotAzureRepositorySettings extends SnapshotRepositorySettingsBase {
@@ -20004,12 +20040,7 @@ export interface SnapshotRepositoryAnalyzeDetailsInfo {
   write_elapsed_nanos: DurationValue<UnitNanos>
   write_throttled: Duration
   write_throttled_nanos: DurationValue<UnitNanos>
-  writer_node: SnapshotRepositoryAnalyzeNodeInfo
-}
-
-export interface SnapshotRepositoryAnalyzeNodeInfo {
-  id: Id
-  name: Name
+  writer_node: SnapshotRepositoryAnalyzeSnapshotNodeInfo
 }
 
 export interface SnapshotRepositoryAnalyzeReadBlobDetails {
@@ -20019,7 +20050,7 @@ export interface SnapshotRepositoryAnalyzeReadBlobDetails {
   first_byte_time?: Duration
   first_byte_time_nanos: DurationValue<UnitNanos>
   found: boolean
-  node: SnapshotRepositoryAnalyzeNodeInfo
+  node: SnapshotRepositoryAnalyzeSnapshotNodeInfo
   throttled?: Duration
   throttled_nanos?: DurationValue<UnitNanos>
 }
@@ -20058,7 +20089,7 @@ export interface SnapshotRepositoryAnalyzeResponse {
   blob_count: integer
   blob_path: string
   concurrency: integer
-  coordinating_node: SnapshotRepositoryAnalyzeNodeInfo
+  coordinating_node: SnapshotRepositoryAnalyzeSnapshotNodeInfo
   delete_elapsed: Duration
   delete_elapsed_nanos: DurationValue<UnitNanos>
   details: SnapshotRepositoryAnalyzeDetailsInfo
@@ -20075,6 +20106,11 @@ export interface SnapshotRepositoryAnalyzeResponse {
   repository: string
   seed: long
   summary: SnapshotRepositoryAnalyzeSummaryInfo
+}
+
+export interface SnapshotRepositoryAnalyzeSnapshotNodeInfo {
+  id: Id
+  name: Name
 }
 
 export interface SnapshotRepositoryAnalyzeSummaryInfo {

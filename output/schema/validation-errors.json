@@ -255,6 +255,13 @@
       ],
       "response": []
     },
+    "inference.update": {
+      "request": [
+        "/_inference/{inference_id}/_update: different http methods in the json spec",
+        "/_inference/{task_type}/{inference_id}/_update: different http methods in the json spec"
+      ],
+      "response": []
+    },
     "ingest.get_ip_location_database": {
       "request": [
         "Request: query parameter 'master_timeout' does not exist in the json spec"
