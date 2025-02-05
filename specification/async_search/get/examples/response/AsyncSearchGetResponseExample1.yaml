@@ -1,0 +1,37 @@
+# summary:
+description: A succesful response from `GET /_async_search/FmRldE8zREVEUzA2ZVpUeGs2ejJFUFEaMkZ5QTVrSTZSaVN3WlNFVmtlWHJsdzoxMDc=`.
+# type: response
+# response_code: 200
+value: |-
+  {
+    "id" : "FmRldE8zREVEUzA2ZVpUeGs2ejJFUFEaMkZ5QTVrSTZSaVN3WlNFVmtlWHJsdzoxMDc=",
+    "is_partial" : false, 
+    "is_running" : false, 
+    "start_time_in_millis" : 1583945890986,
+    "expiration_time_in_millis" : 1584377890986, 
+    "completion_time_in_millis" : 1583945903130, 
+    "response" : {
+      "took" : 12144,
+      "timed_out" : false,
+      "num_reduce_phases" : 46, 
+      "_shards" : {
+        "total" : 562,
+        "successful" : 188, 
+        "skipped" : 0,
+        "failed" : 0
+      },
+      "hits" : {
+        "total" : {
+          "value" : 456433,
+          "relation" : "eq"
+        },
+        "max_score" : null,
+        "hits" : [ ]
+      },
+      "aggregations" : { 
+        "sale_date" :  {
+          "buckets" : []
+        }
+      }
+    }
+  }
