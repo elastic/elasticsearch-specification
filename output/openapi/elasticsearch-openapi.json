@@ -35656,7 +35656,7 @@
                       "description": "Column headings for the search results. Each object is a column.",
                       "type": "array",
                       "items": {
-                        "$ref": "#/components/schemas/sql:Column"
+                        "$ref": "#/components/schemas/sql._types:Column"
                       }
                     },
                     "cursor": {
@@ -35667,7 +35667,7 @@
                       "description": "The values for the search results.",
                       "type": "array",
                       "items": {
-                        "$ref": "#/components/schemas/sql:Row"
+                        "$ref": "#/components/schemas/sql._types:Row"
                       }
                     }
                   },
@@ -48223,8 +48223,7 @@
           }
         },
         "required": [
-          "_id",
-          "_index"
+          "_id"
         ]
       },
       "_types.query_dsl:PrefixQuery": {
@@ -49252,7 +49251,7 @@
             "type": "object",
             "properties": {
               "value": {
-                "type": "string"
+                "$ref": "#/components/schemas/_types:FieldValue"
               }
             },
             "required": [
@@ -57498,26 +57497,23 @@
             "$ref": "#/components/schemas/_types:VersionString"
           },
           "max_output_size": {
+            "description": "The maximum token size to emit. Tokens larger than this size will be discarded.\nDefaults to `255`",
             "type": "number"
           },
-          "preserve_original": {
-            "type": "boolean"
-          },
           "separator": {
+            "description": "The character to use to concatenate the terms.\nDefaults to a space.",
             "type": "string"
           },
           "stopwords": {
             "$ref": "#/components/schemas/_types.analysis:StopWords"
           },
           "stopwords_path": {
+            "description": "The path to a file containing stop words.",
             "type": "string"
           }
         },
         "required": [
-          "type",
-          "max_output_size",
-          "preserve_original",
-          "separator"
+          "type"
         ]
       },
       "_types.analysis:KeywordAnalyzer": {
@@ -57660,21 +57656,27 @@
             "$ref": "#/components/schemas/_types:VersionString"
           },
           "flags": {
+            "description": "Java regular expression flags. Flags should be pipe-separated, eg \"CASE_INSENSITIVE|COMMENTS\".",
             "type": "string"
           },
           "lowercase": {
+            "description": "Should terms be lowercased or not.\nDefaults to `true`.",
             "type": "boolean"
           },
           "pattern": {
+            "description": "A Java regular expression.\nDefaults to `\\W+`.",
             "type": "string"
           },
           "stopwords": {
             "$ref": "#/components/schemas/_types.analysis:StopWords"
+          },
+          "stopwords_path": {
+            "description": "The path to a file containing stop words.",
+            "type": "string"
           }
         },
         "required": [
-          "type",
-          "pattern"
+          "type"
         ]
       },
       "_types.analysis:SimpleAnalyzer": {
@@ -57704,10 +57706,15 @@
             ]
           },
           "max_token_length": {
+            "description": "The maximum token length. If a token is seen that exceeds this length then it is split at `max_token_length` intervals.\nDefaults to `255`.",
             "type": "number"
           },
           "stopwords": {
             "$ref": "#/components/schemas/_types.analysis:StopWords"
+          },
+          "stopwords_path": {
+            "description": "The path to a file containing stop words.",
+            "type": "string"
           }
         },
         "required": [
@@ -57730,6 +57737,7 @@
             "$ref": "#/components/schemas/_types.analysis:StopWords"
           },
           "stopwords_path": {
+            "description": "The path to a file containing stop words.",
             "type": "string"
           }
         },
@@ -69842,7 +69850,6 @@
           }
         },
         "required": [
-          "query",
           "vertices"
         ]
       },
@@ -69894,7 +69901,6 @@
           }
         },
         "required": [
-          "boost",
           "term"
         ]
       },
@@ -73736,6 +73742,12 @@
               "$ref": "#/components/schemas/inference._types:TextEmbeddingByteResult"
             }
           },
+          "text_embedding_bits": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/inference._types:TextEmbeddingByteResult"
+            }
+          },
           "text_embedding": {
             "type": "array",
             "items": {
@@ -74497,8 +74509,7 @@
             "type": "string"
           },
           "if": {
-            "description": "Conditionally execute the processor.",
-            "type": "string"
+            "$ref": "#/components/schemas/_types:Script"
           },
           "ignore_failure": {
             "description": "Ignore failures for the processor.",
@@ -74842,7 +74853,6 @@
               }
             },
             "required": [
-              "date_formats",
               "date_rounding",
               "field"
             ]
@@ -77431,11 +77441,7 @@
               "type": "string"
             }
           }
-        },
-        "required": [
-          "includes",
-          "excludes"
-        ]
+        }
       },
       "ml._types:DataframeAnalyticsDestination": {
         "type": "object",
@@ -88646,6 +88652,62 @@
           "replace"
         ]
       },
+      "simulate.ingest:SimulateIngestDocumentResult": {
+        "type": "object",
+        "properties": {
+          "doc": {
+            "$ref": "#/components/schemas/simulate.ingest:IngestDocumentSimulation"
+          }
+        }
+      },
+      "simulate.ingest:IngestDocumentSimulation": {
+        "type": "object",
+        "properties": {
+          "_id": {
+            "$ref": "#/components/schemas/_types:Id"
+          },
+          "_index": {
+            "$ref": "#/components/schemas/_types:IndexName"
+          },
+          "_source": {
+            "description": "JSON body for the document.",
+            "type": "object",
+            "additionalProperties": {
+              "type": "object"
+            }
+          },
+          "_version": {
+            "$ref": "#/components/schemas/_spec_utils:StringifiedVersionNumber"
+          },
+          "executed_pipelines": {
+            "description": "A list of the names of the pipelines executed on this document.",
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "ignored_fields": {
+            "description": "A list of the fields that would be ignored at the indexing step. For example, a field whose\nvalue is larger than the allowed limit would make it through all of the pipelines, but\nwould not be indexed into Elasticsearch.",
+            "type": "array",
+            "items": {
+              "type": "object",
+              "additionalProperties": {
+                "type": "string"
+              }
+            }
+          },
+          "error": {
+            "$ref": "#/components/schemas/_types:ErrorCause"
+          }
+        },
+        "required": [
+          "_id",
+          "_index",
+          "_source",
+          "_version",
+          "executed_pipelines"
+        ]
+      },
       "slm._types:SnapshotLifecycle": {
         "type": "object",
         "properties": {
@@ -89060,8 +89122,7 @@
               }
             },
             "required": [
-              "type",
-              "settings"
+              "type"
             ]
           }
         ]
@@ -89998,7 +90059,7 @@
           "name"
         ]
       },
-      "sql:Column": {
+      "sql._types:Column": {
         "type": "object",
         "properties": {
           "name": {
@@ -90013,7 +90074,7 @@
           "type"
         ]
       },
-      "sql:Row": {
+      "sql._types:Row": {
         "type": "array",
         "items": {
           "type": "object"
@@ -97563,7 +97624,7 @@
                 "docs": {
                   "type": "array",
                   "items": {
-                    "$ref": "#/components/schemas/ingest._types:SimulateDocumentResult"
+                    "$ref": "#/components/schemas/simulate.ingest:SimulateIngestDocumentResult"
                   }
                 }
               },
@@ -97661,7 +97722,7 @@
                   "description": "Column headings for the search results. Each object is a column.",
                   "type": "array",
                   "items": {
-                    "$ref": "#/components/schemas/sql:Column"
+                    "$ref": "#/components/schemas/sql._types:Column"
                   }
                 },
                 "cursor": {
@@ -97683,7 +97744,7 @@
                   "description": "The values for the search results.",
                   "type": "array",
                   "items": {
-                    "$ref": "#/components/schemas/sql:Row"
+                    "$ref": "#/components/schemas/sql._types:Row"
                   }
                 }
               },
