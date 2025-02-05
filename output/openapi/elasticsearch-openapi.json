@@ -79918,6 +79918,9 @@
           "function_description": {
             "type": "string"
           },
+          "geo_results": {
+            "$ref": "#/components/schemas/ml._types:GeoResults"
+          },
           "influencers": {
             "type": "array",
             "items": {
@@ -79947,21 +79950,21 @@
           }
         },
         "required": [
-          "actual",
-          "by_field_name",
-          "by_field_value",
-          "correlated_by_field_value",
-          "field_name",
-          "function",
-          "function_description",
-          "influencers",
-          "over_field_name",
-          "over_field_value",
-          "partition_field_name",
-          "partition_field_value",
-          "probability",
-          "typical"
+          "probability"
         ]
+      },
+      "ml._types:GeoResults": {
+        "type": "object",
+        "properties": {
+          "actual_point": {
+            "description": "The actual value for the bucket formatted as a `geo_point`.",
+            "type": "string"
+          },
+          "typical_point": {
+            "description": "The typical value for the bucket formatted as a `geo_point`.",
+            "type": "string"
+          }
+        }
       },
       "ml._types:Influence": {
         "type": "object",
@@ -79979,23 +79982,6 @@
         "required": [
           "influencer_field_name",
           "influencer_field_values"
-        ]
-      },
-      "ml._types:GeoResults": {
-        "type": "object",
-        "properties": {
-          "actual_point": {
-            "description": "The actual value for the bucket formatted as a `geo_point`.",
-            "type": "string"
-          },
-          "typical_point": {
-            "description": "The typical value for the bucket formatted as a `geo_point`.",
-            "type": "string"
-          }
-        },
-        "required": [
-          "actual_point",
-          "typical_point"
         ]
       },
       "ml._types:Include": {
