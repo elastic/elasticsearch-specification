@@ -19461,19 +19461,17 @@ export interface ShutdownPutNodeRequest extends RequestBase {
 
 export type ShutdownPutNodeResponse = AcknowledgedResponseBase
 
-export type SimulateIngestIgnoredFieldKey = 'field'
-
 export interface SimulateIngestIngestDocumentSimulationKeys {
   _id: Id
   _index: IndexName
   _source: Record<string, any>
   _version: SpecUtilsStringified<VersionNumber>
   executed_pipelines: string[]
-  ignored_fields?: Record<SimulateIngestIgnoredFieldKey, string>[]
+  ignored_fields?: Record<string, string>[]
   error?: ErrorCause
 }
 export type SimulateIngestIngestDocumentSimulation = SimulateIngestIngestDocumentSimulationKeys
-  & { [property: string]: string | Id | IndexName | Record<string, any> | SpecUtilsStringified<VersionNumber> | string[] | Record<SimulateIngestIgnoredFieldKey, string>[] | ErrorCause }
+  & { [property: string]: string | Id | IndexName | Record<string, any> | SpecUtilsStringified<VersionNumber> | string[] | Record<string, string>[] | ErrorCause }
 
 export interface SimulateIngestRequest extends RequestBase {
   index?: IndexName
