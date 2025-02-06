@@ -47,6 +47,7 @@ export type BulkOperationType = 'index' | 'create' | 'update' | 'delete'
 
 export interface BulkRequest<TDocument = unknown, TPartialDocument = unknown> extends RequestBase {
   index?: IndexName
+  include_source_on_error?: boolean
   list_executed_pipelines?: boolean
   pipeline?: string
   refresh?: Refresh
@@ -155,6 +156,7 @@ export interface CountResponse {
 export interface CreateRequest<TDocument = unknown> extends RequestBase {
   id: Id
   index: IndexName
+  include_source_on_error?: boolean
   pipeline?: string
   refresh?: Refresh
   routing?: Routing
@@ -653,6 +655,7 @@ export interface IndexRequest<TDocument = unknown> extends RequestBase {
   index: IndexName
   if_primary_term?: long
   if_seq_no?: SequenceNumber
+  include_source_on_error?: boolean
   op_type?: OpType
   pipeline?: string
   refresh?: Refresh
@@ -2058,6 +2061,7 @@ export interface UpdateRequest<TDocument = unknown, TPartialDocument = unknown> 
   index: IndexName
   if_primary_term?: long
   if_seq_no?: SequenceNumber
+  include_source_on_error?: boolean
   lang?: string
   refresh?: Refresh
   require_alias?: boolean
