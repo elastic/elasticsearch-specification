@@ -4664,9 +4664,8 @@ export interface AnalysisEstonianAnalyzer {
 export interface AnalysisFingerprintAnalyzer {
   type: 'fingerprint'
   version?: VersionString
-  max_output_size: integer
-  preserve_original: boolean
-  separator: string
+  max_output_size?: integer
+  separator?: string
   stopwords?: AnalysisStopWords
   stopwords_path?: string
 }
@@ -5030,8 +5029,9 @@ export interface AnalysisPatternAnalyzer {
   version?: VersionString
   flags?: string
   lowercase?: boolean
-  pattern: string
+  pattern?: string
   stopwords?: AnalysisStopWords
+  stopwords_path?: string
 }
 
 export interface AnalysisPatternCaptureTokenFilter extends AnalysisTokenFilterBase {
@@ -5188,6 +5188,7 @@ export interface AnalysisStandardAnalyzer {
   type: 'standard'
   max_token_length?: integer
   stopwords?: AnalysisStopWords
+  stopwords_path?: string
 }
 
 export interface AnalysisStandardTokenizer extends AnalysisTokenizerBase {
@@ -6359,7 +6360,7 @@ export interface QueryDslPercolateQuery extends QueryDslQueryBase {
 
 export interface QueryDslPinnedDoc {
   _id: Id
-  _index: IndexName
+  _index?: IndexName
 }
 
 export interface QueryDslPinnedQuery extends QueryDslQueryBase {
@@ -6429,7 +6430,7 @@ export interface QueryDslQueryContainer {
   span_near?: QueryDslSpanNearQuery
   span_not?: QueryDslSpanNotQuery
   span_or?: QueryDslSpanOrQuery
-  span_term?: Partial<Record<Field, QueryDslSpanTermQuery | string>>
+  span_term?: Partial<Record<Field, QueryDslSpanTermQuery | FieldValue>>
   span_within?: QueryDslSpanWithinQuery
   sparse_vector?: QueryDslSparseVectorQuery
   term?: Partial<Record<Field, QueryDslTermQuery | FieldValue>>
@@ -6631,12 +6632,13 @@ export interface QueryDslSpanQuery {
   span_near?: QueryDslSpanNearQuery
   span_not?: QueryDslSpanNotQuery
   span_or?: QueryDslSpanOrQuery
-  span_term?: Partial<Record<Field, QueryDslSpanTermQuery | string>>
+  span_term?: Partial<Record<Field, QueryDslSpanTermQuery | FieldValue>>
   span_within?: QueryDslSpanWithinQuery
 }
 
 export interface QueryDslSpanTermQuery extends QueryDslQueryBase {
-  value: string
+  value: FieldValue
+  term: FieldValue
 }
 
 export interface QueryDslSpanWithinQuery extends QueryDslQueryBase {
@@ -10768,7 +10770,7 @@ export interface GraphExploreControls {
 
 export interface GraphHop {
   connections?: GraphHop
-  query: QueryDslQueryContainer
+  query?: QueryDslQueryContainer
   vertices: GraphVertexDefinition[]
 }
 
@@ -10787,14 +10789,14 @@ export interface GraphVertex {
 export interface GraphVertexDefinition {
   exclude?: string[]
   field: Field
-  include?: GraphVertexInclude[]
+  include?: (GraphVertexInclude | string)[]
   min_doc_count?: long
   shard_min_doc_count?: long
   size?: integer
 }
 
 export interface GraphVertexInclude {
-  boost: double
+  boost?: double
   term: string
 }
 
@@ -13002,6 +13004,7 @@ export interface InferenceInferenceEndpointInfo extends InferenceInferenceEndpoi
 
 export interface InferenceInferenceResult {
   text_embedding_bytes?: InferenceTextEmbeddingByteResult[]
+  text_embedding_bits?: InferenceTextEmbeddingByteResult[]
   text_embedding?: InferenceTextEmbeddingResult[]
   sparse_embedding?: InferenceSparseEmbeddingResult[]
   completion?: InferenceCompletionResult[]
@@ -13236,7 +13239,7 @@ export interface IngestDatabaseConfigurationFull {
 }
 
 export interface IngestDateIndexNameProcessor extends IngestProcessorBase {
-  date_formats: string[]
+  date_formats?: string[]
   date_rounding: string
   field: Field
   index_name_format?: string
@@ -13497,7 +13500,7 @@ export interface IngestPipelineSimulation {
 
 export interface IngestProcessorBase {
   description?: string
-  if?: string
+  if?: Script | string
   ignore_failure?: boolean
   on_failure?: IngestProcessorContainer[]
   tag?: string
@@ -14109,20 +14112,21 @@ export interface MlAnomaly {
 }
 
 export interface MlAnomalyCause {
-  actual: double[]
-  by_field_name: Name
-  by_field_value: string
-  correlated_by_field_value: string
-  field_name: Field
-  function: string
-  function_description: string
-  influencers: MlInfluence[]
-  over_field_name: Name
-  over_field_value: string
-  partition_field_name: string
-  partition_field_value: string
+  actual?: double[]
+  by_field_name?: Name
+  by_field_value?: string
+  correlated_by_field_value?: string
+  field_name?: Field
+  function?: string
+  function_description?: string
+  geo_results?: MlGeoResults
+  influencers?: MlInfluence[]
+  over_field_name?: Name
+  over_field_value?: string
+  partition_field_name?: string
+  partition_field_value?: string
   probability: double
-  typical: double[]
+  typical?: double[]
 }
 
 export interface MlAnomalyExplanation {
@@ -14362,8 +14366,8 @@ export interface MlDataframeAnalysis {
 }
 
 export interface MlDataframeAnalysisAnalyzedFields {
-  includes: string[]
-  excludes: string[]
+  includes?: string[]
+  excludes?: string[]
 }
 
 export interface MlDataframeAnalysisClassification extends MlDataframeAnalysis {
@@ -14694,8 +14698,8 @@ export interface MlFilterRef {
 export type MlFilterType = 'include' | 'exclude'
 
 export interface MlGeoResults {
-  actual_point: string
-  typical_point: string
+  actual_point?: string
+  typical_point?: string
 }
 
 export interface MlHyperparameter {
@@ -19463,6 +19467,18 @@ export interface ShutdownPutNodeRequest extends RequestBase {
 
 export type ShutdownPutNodeResponse = AcknowledgedResponseBase
 
+export interface SimulateIngestIngestDocumentSimulationKeys {
+  _id: Id
+  _index: IndexName
+  _source: Record<string, any>
+  _version: SpecUtilsStringified<VersionNumber>
+  executed_pipelines: string[]
+  ignored_fields?: Record<string, string>[]
+  error?: ErrorCause
+}
+export type SimulateIngestIngestDocumentSimulation = SimulateIngestIngestDocumentSimulationKeys
+  & { [property: string]: string | Id | IndexName | Record<string, any> | SpecUtilsStringified<VersionNumber> | string[] | Record<string, string>[] | ErrorCause }
+
 export interface SimulateIngestRequest extends RequestBase {
   index?: IndexName
   pipeline?: PipelineName
@@ -19476,7 +19492,11 @@ export interface SimulateIngestRequest extends RequestBase {
 }
 
 export interface SimulateIngestResponse {
-  docs: IngestSimulateDocumentResult[]
+  docs: SimulateIngestSimulateIngestDocumentResult[]
+}
+
+export interface SimulateIngestSimulateIngestDocumentResult {
+  doc?: SimulateIngestIngestDocumentSimulation
 }
 
 export interface SlmConfiguration {
@@ -19635,7 +19655,7 @@ export type SlmStopResponse = AcknowledgedResponseBase
 
 export interface SnapshotAzureRepository extends SnapshotRepositoryBase {
   type: 'azure'
-  settings: SnapshotAzureRepositorySettings
+  settings?: SnapshotAzureRepositorySettings
 }
 
 export interface SnapshotAzureRepositorySettings extends SnapshotRepositorySettingsBase {

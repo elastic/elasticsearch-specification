@@ -46,7 +46,7 @@ export class AzureRepository extends RepositoryBase {
   /**
    * The repository settings.
    */
-  settings: AzureRepositorySettings
+  settings?: AzureRepositorySettings
 }
 
 export class GcsRepository extends RepositoryBase {

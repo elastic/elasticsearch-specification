@@ -32,7 +32,7 @@
           {
             "in": "query",
             "name": "keep_alive",
-            "description": "Specifies how long the async search should be available in the cluster.\nWhen not specified, the `keep_alive` set with the corresponding submit async request will be used.\nOtherwise, it is possible to override the value and extend the validity of the request.\nWhen this period expires, the search, if still running, is cancelled.\nIf the search is completed, its saved results are deleted.",
+            "description": "The length of time that the async search should be available in the cluster.\nWhen not specified, the `keep_alive` set with the corresponding submit async request will be used.\nOtherwise, it is possible to override the value and extend the validity of the request.\nWhen this period expires, the search, if still running, is cancelled.\nIf the search is completed, its saved results are deleted.",
             "deprecated": false,
             "schema": {
               "$ref": "#/components/schemas/_types:Duration"
@@ -115,7 +115,7 @@
           "search"
         ],
         "summary": "Get the async search status",
-        "description": "Get the status of a previously submitted async search request given its identifier, without retrieving search results.\nIf the Elasticsearch security features are enabled, use of this API is restricted to the `monitoring_user` role.",
+        "description": "Get the status of a previously submitted async search request given its identifier, without retrieving search results.\nIf the Elasticsearch security features are enabled, the access to the status of a specific async search is restricted to:\n\n* The user or API key that submitted the original async search request.\n* Users that have the `monitor` cluster privilege or greater privileges.",
         "operationId": "async-search-status",
         "parameters": [
           {
@@ -132,7 +132,7 @@
           {
             "in": "query",
             "name": "keep_alive",
-            "description": "Specifies how long the async search needs to be available.\nOngoing async searches and any saved search results are deleted after this period.",
+            "description": "The length of time that the async search needs to be available.\nOngoing async searches and any saved search results are deleted after this period.",
             "deprecated": false,
             "schema": {
               "$ref": "#/components/schemas/_types:Duration"
@@ -18098,7 +18098,7 @@
                       "description": "Column headings for the search results. Each object is a column.",
                       "type": "array",
                       "items": {
-                        "$ref": "#/components/schemas/sql:Column"
+                        "$ref": "#/components/schemas/sql._types:Column"
                       }
                     },
                     "cursor": {
@@ -18109,7 +18109,7 @@
                       "description": "The values for the search results.",
                       "type": "array",
                       "items": {
-                        "$ref": "#/components/schemas/sql:Row"
+                        "$ref": "#/components/schemas/sql._types:Row"
                       }
                     }
                   },
@@ -20549,7 +20549,7 @@
         "type": "object",
         "properties": {
           "aggregations": {
-            "description": "Partial aggregations results, coming from the shards that have already completed the execution of the query.",
+            "description": "Partial aggregations results, coming from the shards that have already completed running the query.",
             "type": "object",
             "additionalProperties": {
               "$ref": "#/components/schemas/_types.aggregations:Aggregate"
@@ -25532,7 +25532,7 @@
             "type": "boolean"
           },
           "is_running": {
-            "description": "Indicates whether the search is still running or has completed.\nNOTE: If the search failed after some shards returned their results or the node that is coordinating the async search dies, results may be partial even though `is_running` is `false`.",
+            "description": "Indicates whether the search is still running or has completed.\n\n> info\n> If the search failed after some shards returned their results or the node that is coordinating the async search dies, results may be partial even though `is_running` is `false`.",
             "type": "boolean"
           },
           "expiration_time": {
@@ -25587,7 +25587,7 @@
                 "$ref": "#/components/schemas/_types:ClusterStatistics"
               },
               "completion_status": {
-                "description": "If the async search completed, this field shows the status code of the search.\nFor example, 200 indicates that the async search was successfully completed.\n503 indicates that the async search was completed with an error.",
+                "description": "If the async search completed, this field shows the status code of the search.\nFor example, `200` indicates that the async search was successfully completed.\n`503` indicates that the async search was completed with an error.",
                 "type": "number"
               }
             },
@@ -28746,8 +28746,7 @@
           }
         },
         "required": [
-          "_id",
-          "_index"
+          "_id"
         ]
       },
       "_types.query_dsl:PrefixQuery": {
@@ -29775,7 +29774,7 @@
             "type": "object",
             "properties": {
               "value": {
-                "type": "string"
+                "$ref": "#/components/schemas/_types:FieldValue"
               }
             },
             "required": [
@@ -36371,26 +36370,23 @@
             "$ref": "#/components/schemas/_types:VersionString"
           },
           "max_output_size": {
+            "description": "The maximum token size to emit. Tokens larger than this size will be discarded.\nDefaults to `255`",
             "type": "number"
           },
-          "preserve_original": {
-            "type": "boolean"
-          },
           "separator": {
+            "description": "The character to use to concatenate the terms.\nDefaults to a space.",
             "type": "string"
           },
           "stopwords": {
             "$ref": "#/components/schemas/_types.analysis:StopWords"
           },
           "stopwords_path": {
+            "description": "The path to a file containing stop words.",
             "type": "string"
           }
         },
         "required": [
-          "type",
-          "max_output_size",
-          "preserve_original",
-          "separator"
+          "type"
         ]
       },
       "_types.analysis:KeywordAnalyzer": {
@@ -36533,21 +36529,27 @@
             "$ref": "#/components/schemas/_types:VersionString"
           },
           "flags": {
+            "description": "Java regular expression flags. Flags should be pipe-separated, eg \"CASE_INSENSITIVE|COMMENTS\".",
             "type": "string"
           },
           "lowercase": {
+            "description": "Should terms be lowercased or not.\nDefaults to `true`.",
             "type": "boolean"
           },
           "pattern": {
+            "description": "A Java regular expression.\nDefaults to `\\W+`.",
             "type": "string"
           },
           "stopwords": {
             "$ref": "#/components/schemas/_types.analysis:StopWords"
+          },
+          "stopwords_path": {
+            "description": "The path to a file containing stop words.",
+            "type": "string"
           }
         },
         "required": [
-          "type",
-          "pattern"
+          "type"
         ]
       },
       "_types.analysis:SimpleAnalyzer": {
@@ -36577,10 +36579,15 @@
             ]
           },
           "max_token_length": {
+            "description": "The maximum token length. If a token is seen that exceeds this length then it is split at `max_token_length` intervals.\nDefaults to `255`.",
             "type": "number"
           },
           "stopwords": {
             "$ref": "#/components/schemas/_types.analysis:StopWords"
+          },
+          "stopwords_path": {
+            "description": "The path to a file containing stop words.",
+            "type": "string"
           }
         },
         "required": [
@@ -36603,6 +36610,7 @@
             "$ref": "#/components/schemas/_types.analysis:StopWords"
           },
           "stopwords_path": {
+            "description": "The path to a file containing stop words.",
             "type": "string"
           }
         },
@@ -45201,7 +45209,6 @@
           }
         },
         "required": [
-          "query",
           "vertices"
         ]
       },
@@ -45253,7 +45260,6 @@
           }
         },
         "required": [
-          "boost",
           "term"
         ]
       },
@@ -46351,6 +46357,12 @@
               "$ref": "#/components/schemas/inference._types:TextEmbeddingByteResult"
             }
           },
+          "text_embedding_bits": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/inference._types:TextEmbeddingByteResult"
+            }
+          },
           "text_embedding": {
             "type": "array",
             "items": {
@@ -46903,8 +46915,7 @@
             "type": "string"
           },
           "if": {
-            "description": "Conditionally execute the processor.",
-            "type": "string"
+            "$ref": "#/components/schemas/_types:Script"
           },
           "ignore_failure": {
             "description": "Ignore failures for the processor.",
@@ -47248,7 +47259,6 @@
               }
             },
             "required": [
-              "date_formats",
               "date_rounding",
               "field"
             ]
@@ -50051,11 +50061,7 @@
               "type": "string"
             }
           }
-        },
-        "required": [
-          "includes",
-          "excludes"
-        ]
+        }
       },
       "ml._types:DataframeAnalyticsAuthorization": {
         "type": "object",
@@ -55652,7 +55658,7 @@
           }
         ]
       },
-      "sql:Column": {
+      "sql._types:Column": {
         "type": "object",
         "properties": {
           "name": {
@@ -55667,7 +55673,7 @@
           "type"
         ]
       },
-      "sql:Row": {
+      "sql._types:Row": {
         "type": "array",
         "items": {
           "type": "object"
@@ -57887,7 +57893,7 @@
                   "description": "Column headings for the search results. Each object is a column.",
                   "type": "array",
                   "items": {
-                    "$ref": "#/components/schemas/sql:Column"
+                    "$ref": "#/components/schemas/sql._types:Column"
                   }
                 },
                 "cursor": {
@@ -57909,7 +57915,7 @@
                   "description": "The values for the search results.",
                   "type": "array",
                   "items": {
-                    "$ref": "#/components/schemas/sql:Row"
+                    "$ref": "#/components/schemas/sql._types:Row"
                   }
                 }
               },

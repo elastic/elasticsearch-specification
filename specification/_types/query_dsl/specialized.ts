@@ -274,7 +274,7 @@ export class PinnedDoc {
   /**
    * The index that contains the document.
    */
-  _index: IndexName
+  _index?: IndexName
 }
 
 export class RankFeatureFunction {}
