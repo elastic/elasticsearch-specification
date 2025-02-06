@@ -1,0 +1,6 @@
+# summary:
+description: A successful response when deleting an existing model snapshot.
+# type: response
+# response_code: 200
+value:
+  acknowledged: true
