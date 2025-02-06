@@ -48,6 +48,7 @@ export class ResponseItem {
    * The HTTP status code returned for the operation.
    */
   status: integer
+  failure_store?: FailureStoreStatus
   /**
    * Additional information about the failed operation.
    * The property is returned only for failed operations.
@@ -80,6 +81,13 @@ export class ResponseItem {
   _version?: VersionNumber
   forced_refresh?: boolean
   get?: InlineGet<Dictionary<string, UserDefinedValue>>
+}
+
+export enum FailureStoreStatus {
+  not_applicable_or_unknown,
+  used,
+  not_enabled,
+  failed
 }
 
 export enum OperationType {
