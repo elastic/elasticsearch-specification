@@ -27,7 +27,7 @@ to install and configure Node.js in your development environment.
 You can install Node.js with [`nvm`](https://github.com/nvm-sh/nvm):
 
 ```sh
-curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.1/install.sh | bash
 ```
 
 Once the installation is completed, install Node.js with `nvm`:
