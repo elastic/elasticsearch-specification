@@ -197,6 +197,11 @@ export interface Request<TDocument> extends RequestBase {
      */
     if_seq_no?: SequenceNumber
     /**
+     * True or false if to include the document source in the error message in case of parsing errors.
+     * @server_default false
+     */
+    include_source_on_error?: boolean
+    /**
      * Set to `create` to only index the document if it does not already exist (put if absent).
      * If a document with the specified `_id` already exists, the indexing operation will fail.
      * The behavior is the same as using the `<index>/_create` endpoint.
