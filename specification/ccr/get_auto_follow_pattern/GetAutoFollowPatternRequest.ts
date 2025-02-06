@@ -23,9 +23,11 @@ import { Duration } from '@_types/Time'
 
 /**
  * Get auto-follow patterns.
+ *
  * Get cross-cluster replication auto-follow patterns.
  * @rest_spec_name ccr.get_auto_follow_pattern
  * @availability stack since=6.5.0 stability=stable
+ * @cluster_privileges manage_ccr
  * @doc_id ccr-get-auto-follow-pattern
  * @ext_doc_id ccr-auto-follow
  */
@@ -41,12 +43,16 @@ export interface Request extends RequestBase {
     }
   ]
   path_parts: {
-    /** Specifies the auto-follow pattern collection that you want to retrieve. If you do not specify a name, the API returns information for all collections. */
+    /**
+     * The auto-follow pattern collection that you want to retrieve.
+     * If you do not specify a name, the API returns information for all collections. */
     name?: Name
   }
   query_parameters: {
     /**
-     * Period to wait for a connection to the master node.
+     * The period to wait for a connection to the master node.
+     * If the master node is not available before the timeout expires, the request fails and returns an error.
+     * It can also be set to `-1` to indicate that the request should never timeout.
      * @server_default 30s
      */
     master_timeout?: Duration
