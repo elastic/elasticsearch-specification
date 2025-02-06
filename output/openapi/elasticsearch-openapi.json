@@ -8839,6 +8839,10 @@
                         "$ref": "#/components/schemas/esql._types:TableValuesContainer"
                       }
                     }
+                  },
+                  "include_ccs_metadata": {
+                    "description": "If provided and `true`, the response will include an extra `_clusters` object with information\nabout the clusters that participated in the search along with info such as shards count.",
+                    "type": "boolean"
                   }
                 },
                 "required": [
@@ -9102,6 +9106,10 @@
                         "$ref": "#/components/schemas/esql._types:TableValuesContainer"
                       }
                     }
+                  },
+                  "include_ccs_metadata": {
+                    "description": "If provided and `true`, the response will include an extra `_clusters` object with information\nabout the clusters that participated in the search along with info such as shards count.",
+                    "type": "boolean"
                   }
                 },
                 "required": [

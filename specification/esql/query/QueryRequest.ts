@@ -94,5 +94,10 @@ export interface Request extends RequestBase {
      * name and the next level key is the column name.
      */
     tables?: Dictionary<string, Dictionary<string, TableValuesContainer>>
+    /**
+     * If provided and `true`, the response will include an extra `_clusters` object with information
+     * about the clusters that participated in the search along with info such as shards count.
+     */
+    include_ccs_metadata?: boolean
   }
 }
