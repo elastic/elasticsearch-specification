@@ -11725,6 +11725,7 @@
             }
           }
         },
+        "deprecated": true,
         "x-state": "Added in 5.4.0"
       }
     },
