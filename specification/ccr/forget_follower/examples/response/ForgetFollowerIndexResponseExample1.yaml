@@ -1,4 +1,4 @@
-summary:
+# summary:
 description: >
   A successful response for removing the follower retention leases from the leader index.
 # type: "response"
