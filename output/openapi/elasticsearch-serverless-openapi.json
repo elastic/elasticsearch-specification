@@ -3483,6 +3483,9 @@
             "$ref": "#/components/parameters/create#id"
           },
           {
+            "$ref": "#/components/parameters/create#include_source_on_error"
+          },
+          {
             "$ref": "#/components/parameters/create#pipeline"
           },
           {
@@ -3530,6 +3533,9 @@
           },
           {
             "$ref": "#/components/parameters/create#id"
+          },
+          {
+            "$ref": "#/components/parameters/create#include_source_on_error"
           },
           {
             "$ref": "#/components/parameters/create#pipeline"
@@ -3733,6 +3739,9 @@
             "$ref": "#/components/parameters/index#if_seq_no"
           },
           {
+            "$ref": "#/components/parameters/index#include_source_on_error"
+          },
+          {
             "$ref": "#/components/parameters/index#op_type"
           },
           {
@@ -3791,6 +3800,9 @@
           },
           {
             "$ref": "#/components/parameters/index#if_seq_no"
+          },
+          {
+            "$ref": "#/components/parameters/index#include_source_on_error"
           },
           {
             "$ref": "#/components/parameters/index#op_type"
@@ -5936,6 +5948,9 @@
           },
           {
             "$ref": "#/components/parameters/index#if_seq_no"
+          },
+          {
+            "$ref": "#/components/parameters/index#include_source_on_error"
           },
           {
             "$ref": "#/components/parameters/index#op_type"
@@ -19867,6 +19882,16 @@
             "deprecated": false,
             "schema": {
               "$ref": "#/components/schemas/_types:SequenceNumber"
+            },
+            "style": "form"
+          },
+          {
+            "in": "query",
+            "name": "include_source_on_error",
+            "description": "True or false if to include the document source in the error message in case of parsing errors.",
+            "deprecated": false,
+            "schema": {
+              "type": "boolean"
             },
             "style": "form"
           },
@@ -59393,6 +59418,16 @@
         },
         "style": "simple"
       },
+      "create#include_source_on_error": {
+        "in": "query",
+        "name": "include_source_on_error",
+        "description": "True or false if to include the document source in the error message in case of parsing errors.",
+        "deprecated": false,
+        "schema": {
+          "type": "boolean"
+        },
+        "style": "form"
+      },
       "create#pipeline": {
         "in": "query",
         "name": "pipeline",
@@ -59879,6 +59914,16 @@
         "deprecated": false,
         "schema": {
           "$ref": "#/components/schemas/_types:SequenceNumber"
+        },
+        "style": "form"
+      },
+      "index#include_source_on_error": {
+        "in": "query",
+        "name": "include_source_on_error",
+        "description": "True or false if to include the document source in the error message in case of parsing errors.",
+        "deprecated": false,
+        "schema": {
+          "type": "boolean"
         },
         "style": "form"
       },

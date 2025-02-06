@@ -92,6 +92,11 @@ export interface Request<TDocument, TPartialDocument> extends RequestBase {
      */
     if_seq_no?: SequenceNumber
     /**
+     * True or false if to include the document source in the error message in case of parsing errors.
+     * @server_default false
+     */
+    include_source_on_error?: boolean
+    /**
      * The script language.
      * @server_default painless
      */
