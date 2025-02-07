@@ -95,8 +95,10 @@ export interface Request extends RequestBase {
      */
     tables?: Dictionary<string, Dictionary<string, TableValuesContainer>>
     /**
-     * If provided and `true`, the response will include an extra `_clusters` object with information
-     * about the clusters that participated in the search along with info such as shards count.
+     * When set to `true` and performing a cross-cluster query, the response will include an extra `_clusters`
+     * object with information about the clusters that participated in the search along with info such as shards
+     * count.
+     * @server_default false
      */
     include_ccs_metadata?: boolean
   }
