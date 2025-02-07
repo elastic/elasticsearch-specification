@@ -11,6 +11,8 @@ class ExampleStats:
     num_endpoints_with_only_response_examples: int = 0
     num_endpoints_with_both_request_and_response_examples: int = 0
     num_endpoints_with_non_200_response_code_examples: int = 0
+    num_request_examples: int = 0
+    num_response_examples: int = 0
     max_examples_per_endpoint: int = 0
 
 class ExamplesStatsGenerator:
@@ -37,6 +39,9 @@ class ExamplesStatsGenerator:
                 stats.num_endpoints_with_both_request_and_response_examples += 1
             else:
                 stats.num_endpoints_with_no_examples += 1
+
+            stats.num_request_examples += endpoint_info.num_request_examples
+            stats.num_response_examples += endpoint_info.num_response_examples
 
             non_200_response_codes = endpoint_info.examples_response_codes - {"200"}
             if len(non_200_response_codes) > 0:
