@@ -72,7 +72,7 @@ export class CompletionResult {
  */
 export class RankedDocument {
   index: integer
-  score: float
+  relevance_score: float
   text?: string
 }
 
