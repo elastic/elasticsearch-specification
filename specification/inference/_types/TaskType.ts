@@ -24,5 +24,6 @@ export enum TaskType {
   sparse_embedding,
   text_embedding,
   rerank,
-  completion
+  completion,
+  chat_completion
 }
