@@ -46624,7 +46624,7 @@
           "index": {
             "type": "number"
           },
-          "score": {
+          "relevance_score": {
             "type": "number"
           },
           "text": {
@@ -46633,7 +46633,7 @@
         },
         "required": [
           "index",
-          "score"
+          "relevance_score"
         ]
       },
       "inference.unified_inference:Message": {

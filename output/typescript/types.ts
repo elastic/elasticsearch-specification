@@ -13018,7 +13018,7 @@ export interface InferenceInferenceResult {
 
 export interface InferenceRankedDocument {
   index: integer
-  score: float
+  relevance_score: float
   text?: string
 }
 
