@@ -10544,7 +10544,7 @@ export interface EsqlAsyncQueryRequest extends RequestBase {
     columnar?: boolean
     filter?: QueryDslQueryContainer
     locale?: string
-    params?: any[]
+    params?: FieldValue[]
     profile?: boolean
     query: string
     tables?: Record<string, Record<string, EsqlTableValuesContainer>>
@@ -10583,7 +10583,7 @@ export interface EsqlQueryRequest extends RequestBase {
     columnar?: boolean
     filter?: QueryDslQueryContainer
     locale?: string
-    params?: any[]
+    params?: FieldValue[]
     profile?: boolean
     query: string
     tables?: Record<string, Record<string, EsqlTableValuesContainer>>
