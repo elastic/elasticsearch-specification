@@ -20679,6 +20679,7 @@
             }
           }
         },
+        "deprecated": true,
         "x-state": "Added in 5.4.0"
       }
     },
@@ -41495,9 +41496,6 @@
           {
             "nullable": true,
             "type": "string"
-          },
-          {
-            "type": "object"
           }
         ]
       },
@@ -43232,7 +43230,7 @@
             "additionalProperties": {
               "type": "array",
               "items": {
-                "$ref": "#/components/schemas/_types:FieldValue"
+                "type": "object"
               }
             }
           },
@@ -53107,6 +53105,9 @@
             "description": "The HTTP status code returned for the operation.",
             "type": "number"
           },
+          "failure_store": {
+            "$ref": "#/components/schemas/_global.bulk:FailureStoreStatus"
+          },
           "error": {
             "$ref": "#/components/schemas/_types:ErrorCause"
           },
@@ -53137,6 +53138,15 @@
         "required": [
           "_index",
           "status"
+        ]
+      },
+      "_global.bulk:FailureStoreStatus": {
+        "type": "string",
+        "enum": [
+          "not_applicable_or_unknown",
+          "used",
+          "not_enabled",
+          "failed"
         ]
       },
       "_types:InlineGetDictUserDefined": {
@@ -70727,6 +70737,21 @@
           "policy": {
             "$ref": "#/components/schemas/_types:Name"
           },
+          "previous_step_info": {
+            "type": "object",
+            "additionalProperties": {
+              "type": "object"
+            }
+          },
+          "repository_name": {
+            "type": "string"
+          },
+          "snapshot_name": {
+            "type": "string"
+          },
+          "shrink_index_name": {
+            "type": "string"
+          },
           "step": {
             "$ref": "#/components/schemas/_types:Name"
           },
@@ -70750,14 +70775,17 @@
           }
         },
         "required": [
+          "index",
           "managed",
-          "phase",
-          "policy"
+          "phase"
         ]
       },
       "ilm.explain_lifecycle:LifecycleExplainPhaseExecution": {
         "type": "object",
         "properties": {
+          "phase_definition": {
+            "$ref": "#/components/schemas/ilm._types:Phase"
+          },
           "policy": {
             "$ref": "#/components/schemas/_types:Name"
           },
@@ -70773,77 +70801,6 @@
           "version",
           "modified_date_in_millis"
         ]
-      },
-      "ilm.explain_lifecycle:LifecycleExplainUnmanaged": {
-        "type": "object",
-        "properties": {
-          "index": {
-            "$ref": "#/components/schemas/_types:IndexName"
-          },
-          "managed": {
-            "type": "string",
-            "enum": [
-              "false"
-            ]
-          }
-        },
-        "required": [
-          "index",
-          "managed"
-        ]
-      },
-      "ilm.get_lifecycle:Lifecycle": {
-        "type": "object",
-        "properties": {
-          "modified_date": {
-            "$ref": "#/components/schemas/_types:DateTime"
-          },
-          "policy": {
-            "$ref": "#/components/schemas/ilm._types:Policy"
-          },
-          "version": {
-            "$ref": "#/components/schemas/_types:VersionNumber"
-          }
-        },
-        "required": [
-          "modified_date",
-          "policy",
-          "version"
-        ]
-      },
-      "ilm._types:Policy": {
-        "type": "object",
-        "properties": {
-          "phases": {
-            "$ref": "#/components/schemas/ilm._types:Phases"
-          },
-          "_meta": {
-            "$ref": "#/components/schemas/_types:Metadata"
-          }
-        },
-        "required": [
-          "phases"
-        ]
-      },
-      "ilm._types:Phases": {
-        "type": "object",
-        "properties": {
-          "cold": {
-            "$ref": "#/components/schemas/ilm._types:Phase"
-          },
-          "delete": {
-            "$ref": "#/components/schemas/ilm._types:Phase"
-          },
-          "frozen": {
-            "$ref": "#/components/schemas/ilm._types:Phase"
-          },
-          "hot": {
-            "$ref": "#/components/schemas/ilm._types:Phase"
-          },
-          "warm": {
-            "$ref": "#/components/schemas/ilm._types:Phase"
-          }
-        }
       },
       "ilm._types:Phase": {
         "type": "object",
@@ -71054,6 +71011,77 @@
         "required": [
           "policy"
         ]
+      },
+      "ilm.explain_lifecycle:LifecycleExplainUnmanaged": {
+        "type": "object",
+        "properties": {
+          "index": {
+            "$ref": "#/components/schemas/_types:IndexName"
+          },
+          "managed": {
+            "type": "string",
+            "enum": [
+              "false"
+            ]
+          }
+        },
+        "required": [
+          "index",
+          "managed"
+        ]
+      },
+      "ilm.get_lifecycle:Lifecycle": {
+        "type": "object",
+        "properties": {
+          "modified_date": {
+            "$ref": "#/components/schemas/_types:DateTime"
+          },
+          "policy": {
+            "$ref": "#/components/schemas/ilm._types:Policy"
+          },
+          "version": {
+            "$ref": "#/components/schemas/_types:VersionNumber"
+          }
+        },
+        "required": [
+          "modified_date",
+          "policy",
+          "version"
+        ]
+      },
+      "ilm._types:Policy": {
+        "type": "object",
+        "properties": {
+          "phases": {
+            "$ref": "#/components/schemas/ilm._types:Phases"
+          },
+          "_meta": {
+            "$ref": "#/components/schemas/_types:Metadata"
+          }
+        },
+        "required": [
+          "phases"
+        ]
+      },
+      "ilm._types:Phases": {
+        "type": "object",
+        "properties": {
+          "cold": {
+            "$ref": "#/components/schemas/ilm._types:Phase"
+          },
+          "delete": {
+            "$ref": "#/components/schemas/ilm._types:Phase"
+          },
+          "frozen": {
+            "$ref": "#/components/schemas/ilm._types:Phase"
+          },
+          "hot": {
+            "$ref": "#/components/schemas/ilm._types:Phase"
+          },
+          "warm": {
+            "$ref": "#/components/schemas/ilm._types:Phase"
+          }
+        }
       },
       "ilm.move_to_step:StepKey": {
         "type": "object",
@@ -73892,7 +73920,7 @@
           "index": {
             "type": "number"
           },
-          "score": {
+          "relevance_score": {
             "type": "number"
           },
           "text": {
@@ -73901,7 +73929,7 @@
         },
         "required": [
           "index",
-          "score"
+          "relevance_score"
         ]
       },
       "_types:StreamResult": {

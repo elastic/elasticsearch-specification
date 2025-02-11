@@ -23,6 +23,8 @@ export interface BulkCreateOperation extends BulkWriteOperation {
 export interface BulkDeleteOperation extends BulkOperationBase {
 }
 
+export type BulkFailureStoreStatus = 'not_applicable_or_unknown' | 'used' | 'not_enabled' | 'failed'
+
 export interface BulkIndexOperation extends BulkWriteOperation {
 }
 
@@ -73,6 +75,7 @@ export interface BulkResponseItem {
   _id?: string | null
   _index: string
   status: integer
+  failure_store?: BulkFailureStoreStatus
   error?: ErrorCause
   _primary_term?: long
   result?: string
@@ -1542,7 +1545,7 @@ export interface SearchHit<TDocument = unknown> {
   matched_queries?: string[] | Record<string, double>
   _nested?: SearchNestedIdentity
   _ignored?: string[]
-  ignored_field_values?: Record<string, FieldValue[]>
+  ignored_field_values?: Record<string, any[]>
   _shard?: string
   _node?: string
   _routing?: string
@@ -2358,7 +2361,7 @@ export interface FieldSort {
 
 export type FieldSortNumericType = 'long' | 'double' | 'date' | 'date_nanos'
 
-export type FieldValue = long | double | string | boolean | null | any
+export type FieldValue = long | double | string | boolean | null
 
 export interface FielddataStats {
   evictions?: long
@@ -10931,7 +10934,7 @@ export interface IlmExplainLifecycleLifecycleExplainManaged {
   age?: Duration
   failed_step?: Name
   failed_step_retry_count?: integer
-  index?: IndexName
+  index: IndexName
   index_creation_date?: DateTime
   index_creation_date_millis?: EpochTime<UnitMillis>
   is_auto_retryable_error?: boolean
@@ -10941,7 +10944,11 @@ export interface IlmExplainLifecycleLifecycleExplainManaged {
   phase: Name
   phase_time?: DateTime
   phase_time_millis?: EpochTime<UnitMillis>
-  policy: Name
+  policy?: Name
+  previous_step_info?: Record<string, any>
+  repository_name?: string
+  snapshot_name?: string
+  shrink_index_name?: string
   step?: Name
   step_info?: Record<string, any>
   step_time?: DateTime
@@ -10951,6 +10958,7 @@ export interface IlmExplainLifecycleLifecycleExplainManaged {
 }
 
 export interface IlmExplainLifecycleLifecycleExplainPhaseExecution {
+  phase_definition?: IlmPhase
   policy: Name
   version: VersionNumber
   modified_date_in_millis: EpochTime<UnitMillis>
@@ -13015,7 +13023,7 @@ export interface InferenceInferenceResult {
 
 export interface InferenceRankedDocument {
   index: integer
-  score: float
+  relevance_score: float
   text?: string
 }
 

@@ -11729,6 +11729,7 @@
             }
           }
         },
+        "deprecated": true,
         "x-state": "Added in 5.4.0"
       }
     },
@@ -21980,9 +21981,6 @@
           {
             "nullable": true,
             "type": "string"
-          },
-          {
-            "type": "object"
           }
         ]
       },
@@ -23717,7 +23715,7 @@
             "additionalProperties": {
               "type": "array",
               "items": {
-                "$ref": "#/components/schemas/_types:FieldValue"
+                "type": "object"
               }
             }
           },
@@ -33447,6 +33445,9 @@
             "description": "The HTTP status code returned for the operation.",
             "type": "number"
           },
+          "failure_store": {
+            "$ref": "#/components/schemas/_global.bulk:FailureStoreStatus"
+          },
           "error": {
             "$ref": "#/components/schemas/_types:ErrorCause"
           },
@@ -33477,6 +33478,15 @@
         "required": [
           "_index",
           "status"
+        ]
+      },
+      "_global.bulk:FailureStoreStatus": {
+        "type": "string",
+        "enum": [
+          "not_applicable_or_unknown",
+          "used",
+          "not_enabled",
+          "failed"
         ]
       },
       "_types:InlineGetDictUserDefined": {
@@ -46466,7 +46476,7 @@
           "index": {
             "type": "number"
           },
-          "score": {
+          "relevance_score": {
             "type": "number"
           },
           "text": {
@@ -46475,7 +46485,7 @@
         },
         "required": [
           "index",
-          "score"
+          "relevance_score"
         ]
       },
       "inference.unified_inference:Message": {
