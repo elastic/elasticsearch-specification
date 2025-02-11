@@ -10557,6 +10557,7 @@ export interface EsqlAsyncQueryRequest extends RequestBase {
     profile?: boolean
     query: string
     tables?: Record<string, Record<string, EsqlTableValuesContainer>>
+    include_ccs_metadata?: boolean
   }
 }
 
@@ -10596,6 +10597,7 @@ export interface EsqlQueryRequest extends RequestBase {
     profile?: boolean
     query: string
     tables?: Record<string, Record<string, EsqlTableValuesContainer>>
+    include_ccs_metadata?: boolean
   }
 }
 
