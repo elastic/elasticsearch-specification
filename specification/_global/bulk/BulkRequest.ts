@@ -167,7 +167,7 @@ export interface Request<TDocument, TPartialDocument> extends RequestBase {
   query_parameters: {
     /**
      * True or false if to include the document source in the error message in case of parsing errors.
-     * @server_default false
+     * @server_default true
      */
     include_source_on_error?: boolean
     /**
