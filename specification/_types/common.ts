@@ -24,17 +24,11 @@ import { double, integer, long } from './Numeric'
 
 /**
  * A field value.
- * @codegen_names long, double, string, boolean, null, any
+ * @codegen_names long, double, string, boolean, null
  */
 // Note: the ending `UserDefinedValue` includes all other union members, but we keep them explicit so that
 // code generators can provide direct access to scalar values, which are the most common use case.
-export type FieldValue =
-  | long
-  | double
-  | string
-  | boolean
-  | null
-  | UserDefinedValue
+export type FieldValue = long | double | string | boolean | null
 
 /**
  * A scalar value.
