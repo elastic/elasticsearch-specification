@@ -19,23 +19,37 @@
 
 /* global argv, path, cd */
 
-'use strict'
+import { dirname } from 'path'
+import { fileURLToPath } from 'url'
+import 'zx/globals'
+import assert from 'assert'
+import * as core from '@actions/core'
+import { copyFile } from 'fs/promises'
+import * as github from '@actions/github'
+import specification from '../../output/schema/schema.json' assert { type: 'json' }
+import { run as getReport } from '../../../clients-flight-recorder/scripts/types-validator/index.js'
+import {
+  getNamespace,
+  getName
+} from '../../../clients-flight-recorder/scripts/types-validator/utils.js'
 
-require('zx/globals')
-const assert = require('assert')
-const core = require('@actions/core')
-const { copyFile } = require('fs/promises')
-const github = require('@actions/github')
+const __dirname = dirname(fileURLToPath(import.meta.url))
+
 const octokit = github.getOctokit(argv.token)
-const specification = require('../../output/schema/schema.json')
-const getReport = require('../../../clients-flight-recorder/scripts/types-validator')
-const { getNamespace, getName } = require('../../../clients-flight-recorder/scripts/types-validator/utils')
 
 const privateNames = ['_global']
 const tick = '`'
-const tsValidationPath = path.join(__dirname, '..', '..', '..', 'clients-flight-recorder', 'scripts', 'types-validator')
+const tsValidationPath = path.join(
+  __dirname,
+  '..',
+  '..',
+  '..',
+  'clients-flight-recorder',
+  'scripts',
+  'types-validator'
+)
 
-async function run () {
+async function run() {
   await copyFile(
     path.join(__dirname, '..', '..', 'output', 'typescript', 'types.ts'),
     path.join(tsValidationPath, 'types.ts')
@@ -53,14 +67,20 @@ async function run () {
       per_page: 100
     })
     if (data.length > 0) {
-      files.push(...data.filter(entry => entry.status !== 'deleted').map(entry => entry.filename))
+      files.push(
+        ...data
+          .filter((entry) => entry.status !== 'deleted')
+          .map((entry) => entry.filename)
+      )
       page += 1
     } else {
       break
     }
   }
 
-  const specFiles = files.filter(file => file.includes('specification') && !file.includes('compiler/test'))
+  const specFiles = files.filter(
+    (file) => file.includes('specification') && !file.includes('compiler/test')
+  )
   const table = []
 
   cd(tsValidationPath)
@@ -163,7 +183,7 @@ function generateResponse (r) {
   return `${r.passingResponse}/${r.totalResponse}`
 }
 
-run().catch(err => {
+run().catch((err) => {
   core.error(err)
   process.exit(1)
 })
