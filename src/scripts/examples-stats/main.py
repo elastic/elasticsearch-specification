@@ -2,7 +2,6 @@
 
 import os
 from constants import DEFAULT_SPEC_PATH
-from EndpointPathsFinder import EndpointPathsFinder
 from ExamplesInfoGenerator import ExamplesInfoGenerator, ExamplesInfo, ExampleStats
 
 def print_stats(stats: ExampleStats):
