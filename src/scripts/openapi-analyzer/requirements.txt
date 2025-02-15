@@ -1,0 +1,2 @@
+
+openapi-pydantic==0.5.1
