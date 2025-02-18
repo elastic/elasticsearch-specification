@@ -12829,11 +12829,22 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/indices._types:DataStreamLifecycle"
+                "type": "object",
+                "properties": {
+                  "data_retention": {
+                    "$ref": "#/components/schemas/_types:Duration"
+                  },
+                  "downsampling": {
+                    "$ref": "#/components/schemas/indices._types:DataStreamLifecycleDownsampling"
+                  },
+                  "enabled": {
+                    "description": "If defined, it turns data stream lifecycle on/off (`true`/`false`) for this data stream. A data stream lifecycle\nthat's disabled (enabled: `false`) will have no effect on the data stream.",
+                    "type": "boolean"
+                  }
+                }
               }
             }
-          },
-          "required": true
+          }
         },
         "responses": {
           "200": {
@@ -53193,6 +53204,9 @@
             "description": "The HTTP status code returned for the operation.",
             "type": "number"
           },
+          "failure_store": {
+            "$ref": "#/components/schemas/_global.bulk:FailureStoreStatus"
+          },
           "error": {
             "$ref": "#/components/schemas/_types:ErrorCause"
           },
@@ -53223,6 +53237,15 @@
         "required": [
           "_index",
           "status"
+        ]
+      },
+      "_global.bulk:FailureStoreStatus": {
+        "type": "string",
+        "enum": [
+          "not_applicable_or_unknown",
+          "used",
+          "not_enabled",
+          "failed"
         ]
       },
       "_types:InlineGetDictUserDefined": {
@@ -73943,7 +73966,7 @@
           "index": {
             "type": "number"
           },
-          "score": {
+          "relevance_score": {
             "type": "number"
           },
           "text": {
@@ -73952,7 +73975,7 @@
         },
         "required": [
           "index",
-          "score"
+          "relevance_score"
         ]
       },
       "_types:StreamResult": {
@@ -88742,7 +88765,7 @@
             }
           },
           "ignored_fields": {
-            "description": "A list of the fields that would be ignored at the indexing step. For example, a field whose\nvalue is larger than the allowed limit would make it through all of the pipoelines, but\nwould not be indexed into Elasticsearch.",
+            "description": "A list of the fields that would be ignored at the indexing step. For example, a field whose\nvalue is larger than the allowed limit would make it through all of the pipelines, but\nwould not be indexed into Elasticsearch.",
             "type": "array",
             "items": {
               "type": "object",
