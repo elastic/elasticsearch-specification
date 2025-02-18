@@ -94720,7 +94720,7 @@
         "name": "ServiceSettings",
         "namespace": "inference._types"
       },
-      "specLocation": "inference/_types/Services.ts#L55-L55",
+      "specLocation": "inference/_types/Services.ts#L92-L92",
       "type": {
         "kind": "user_defined_value"
       }
@@ -94758,7 +94758,7 @@
         "name": "TaskSettings",
         "namespace": "inference._types"
       },
-      "specLocation": "inference/_types/Services.ts#L57-L57",
+      "specLocation": "inference/_types/Services.ts#L94-L94",
       "type": {
         "kind": "user_defined_value"
       }
@@ -121215,7 +121215,7 @@
           }
         }
       ],
-      "specLocation": "inference/_types/Services.ts#L41-L53"
+      "specLocation": "inference/_types/Services.ts#L46-L58"
     },
     {
       "description": "Configuration options when storing the inference endpoint",
@@ -121225,6 +121225,18 @@
         "namespace": "inference._types"
       },
       "properties": [
+        {
+          "description": "Chunking configuration object",
+          "name": "chunking_settings",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "InferenceChunkingSettings",
+              "namespace": "inference._types"
+            }
+          }
+        },
         {
           "description": "The service type",
           "name": "service",
@@ -121262,7 +121274,76 @@
           }
         }
       ],
-      "specLocation": "inference/_types/Services.ts#L23-L39"
+      "specLocation": "inference/_types/Services.ts#L24-L44"
+    },
+    {
+      "description": "Chunking configuration object",
+      "inherits": {
+        "type": {
+          "name": "InferenceEndpoint",
+          "namespace": "inference._types"
+        }
+      },
+      "kind": "interface",
+      "name": {
+        "name": "InferenceChunkingSettings",
+        "namespace": "inference._types"
+      },
+      "properties": [
+        {
+          "description": "Specifies the maximum size of a chunk in words\nThis value cannot be higher than `300` or lower than `20` (for `sentence` strategy) or `10` (for `word` strategy)",
+          "name": "max_chunk_size",
+          "required": false,
+          "serverDefault": 250,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "Specifies the number of overlapping words for chunks\nOnly for `word` chunking strategy\nThis value cannot be higher than the half of `max_chunk_size`",
+          "name": "overlap",
+          "required": false,
+          "serverDefault": 100,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "Specifies the number of overlapping sentences for chunks\nOnly for `sentence` chunking strategy\nIt can be either `1` or `0`",
+          "name": "sentence_overlap",
+          "required": false,
+          "serverDefault": 1,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "Specifies the chunking strategy\nIt could be either `sentence` or `word`",
+          "name": "strategy",
+          "required": false,
+          "serverDefault": "sentence",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "_builtins"
+            }
+          }
+        }
+      ],
+      "specLocation": "inference/_types/Services.ts#L60-L90"
     },
     {
       "description": "InferenceResult is an aggregation of mutually exclusive variants",
