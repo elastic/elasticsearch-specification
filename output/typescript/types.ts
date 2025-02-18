@@ -12272,7 +12272,11 @@ export interface IndicesPutDataLifecycleRequest extends RequestBase {
   expand_wildcards?: ExpandWildcards
   master_timeout?: Duration
   timeout?: Duration
-  body?: IndicesDataStreamLifecycle
+  body?: {
+    data_retention?: Duration
+    downsampling?: IndicesDataStreamLifecycleDownsampling
+    enabled?: boolean
+  }
 }
 
 export type IndicesPutDataLifecycleResponse = AcknowledgedResponseBase
