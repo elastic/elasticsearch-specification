@@ -18,13 +18,17 @@
  */
 
 import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
-import { TaskType } from '../_types/TaskType'
 import { integer } from '@_types/Numeric'
+import { TaskType } from '../_types/TaskType'
 
 /**
  * Configuration options when storing the inference endpoint
  */
 export class InferenceEndpoint {
+  /**
+   * Chunking configuration object
+   */
+  chunking_settings?: InferenceChunkingSettings
   /**
    * The service type
    */
@@ -77,10 +81,11 @@ export class InferenceChunkingSettings extends InferenceEndpoint {
    * @server_default 1
    */
   sentence_overlap?: integer
- /**
-  * Specifies the chunking strategy
-  * It could be either `sentence` or `word`
-  */ 
+  /**
+   * Specifies the chunking strategy
+   * It could be either `sentence` or `word`
+   * @server_default sentence
+   */
   strategy?: string
 }
 
