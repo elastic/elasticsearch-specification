@@ -11003,6 +11003,7 @@ export interface IlmGetStatusResponse {
 
 export interface IlmMigrateToDataTiersRequest extends RequestBase {
   dry_run?: boolean
+  master_timeout?: Duration
   body?: {
     legacy_template_to_delete?: string
     node_attribute?: string
