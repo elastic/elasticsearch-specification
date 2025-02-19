@@ -73835,6 +73835,9 @@
       "inference._types:InferenceEndpoint": {
         "type": "object",
         "properties": {
+          "chunking_settings": {
+            "$ref": "#/components/schemas/inference._types:InferenceChunkingSettings"
+          },
           "service": {
             "description": "The service type",
             "type": "string"
@@ -73849,6 +73852,34 @@
         "required": [
           "service",
           "service_settings"
+        ]
+      },
+      "inference._types:InferenceChunkingSettings": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/inference._types:InferenceEndpoint"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "max_chunk_size": {
+                "description": "Specifies the maximum size of a chunk in words\nThis value cannot be higher than `300` or lower than `20` (for `sentence` strategy) or `10` (for `word` strategy)",
+                "type": "number"
+              },
+              "overlap": {
+                "description": "Specifies the number of overlapping words for chunks\nOnly for `word` chunking strategy\nThis value cannot be higher than the half of `max_chunk_size`",
+                "type": "number"
+              },
+              "sentence_overlap": {
+                "description": "Specifies the number of overlapping sentences for chunks\nOnly for `sentence` chunking strategy\nIt can be either `1` or `0`",
+                "type": "number"
+              },
+              "strategy": {
+                "description": "Specifies the chunking strategy\nIt could be either `sentence` or `word`",
+                "type": "string"
+              }
+            }
+          }
         ]
       },
       "inference._types:ServiceSettings": {
