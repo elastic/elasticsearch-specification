@@ -7191,11 +7191,22 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/indices._types:DataStreamLifecycle"
+                "type": "object",
+                "properties": {
+                  "data_retention": {
+                    "$ref": "#/components/schemas/_types:Duration"
+                  },
+                  "downsampling": {
+                    "$ref": "#/components/schemas/indices._types:DataStreamLifecycleDownsampling"
+                  },
+                  "enabled": {
+                    "description": "If defined, it turns data stream lifecycle on/off (`true`/`false`) for this data stream. A data stream lifecycle\nthat's disabled (enabled: `false`) will have no effect on the data stream.",
+                    "type": "boolean"
+                  }
+                }
               }
             }
-          },
-          "required": true
+          }
         },
         "responses": {
           "200": {
@@ -33461,6 +33472,9 @@
             "description": "The HTTP status code returned for the operation.",
             "type": "number"
           },
+          "failure_store": {
+            "$ref": "#/components/schemas/_global.bulk:FailureStoreStatus"
+          },
           "error": {
             "$ref": "#/components/schemas/_types:ErrorCause"
           },
@@ -33491,6 +33505,15 @@
         "required": [
           "_index",
           "status"
+        ]
+      },
+      "_global.bulk:FailureStoreStatus": {
+        "type": "string",
+        "enum": [
+          "not_applicable_or_unknown",
+          "used",
+          "not_enabled",
+          "failed"
         ]
       },
       "_types:InlineGetDictUserDefined": {
