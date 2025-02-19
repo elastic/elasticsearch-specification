@@ -29,7 +29,7 @@ spec:
     metadata:
       name: Kibana type checks
     spec:
-      repository: elasticsearch-specification
+      repository: elastic/elasticsearch-specification
       pipeline_file: .buildkite/kibana.yml
       provider_settings:
         trigger_mode: none
