@@ -27,9 +27,15 @@ import { ExpandWildcards, Indices } from '@_types/common'
  * @availability stack since=7.10.0 stability=experimental
  * @cluster_privileges manage
  * @index_privileges manage
+ * @doc_id searchable-snapshots-api-clear-cache
+ * @ext_doc_id searchable-snapshots
  */
 export interface Request extends RequestBase {
   path_parts: {
+    /**
+     * A comma-separated list of data streams, indices, and aliases to clear from the cache.
+     * It supports wildcards (`*`).
+     */
     index?: Indices
   }
   query_parameters: {

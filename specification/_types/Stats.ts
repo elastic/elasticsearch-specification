@@ -52,13 +52,16 @@ export class ClusterDetails {
 }
 
 export class ShardStatistics {
+  /**
+   * The number of shards the operation or search attempted to run on but failed.
+   */
   failed: uint
   /**
-   * Indicates how many shards have successfully run the search.
+   * The number of shards the operation or search succeeded on.
    */
   successful: uint
   /**
-   * Indicates how many shards the search will run on overall.
+   * The number of shards the operation or search will run on overall.
    */
   total: uint
   failures?: ShardFailure[]

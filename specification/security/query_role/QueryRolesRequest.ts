@@ -25,11 +25,16 @@ import { RoleQueryContainer } from './types'
 /**
  * Find roles with a query.
  *
- * Get roles in a paginated manner. You can optionally filter the results with a query.
+ * Get roles in a paginated manner.
+ * The role management APIs are generally the preferred way to manage roles, rather than using file-based role management.
+ * The query roles API does not retrieve roles that are defined in roles files, nor built-in ones.
+ * You can optionally filter the results with a query.
+ * Also, the results can be paginated and sorted.
  * @rest_spec_name security.query_role
  * @availability stack since=8.15.0 stability=stable
  * @availability serverless stability=stable visibility=private
  * @cluster_privileges read_security
+ * @doc_id security-api-query-role
  */
 export interface Request extends RequestBase {
   body: {
@@ -39,30 +44,35 @@ export interface Request extends RequestBase {
      * The query supports a subset of query types, including `match_all`, `bool`, `term`, `terms`, `match`,
      * `ids`, `prefix`, `wildcard`, `exists`, `range`, and `simple_query_string`.
      * You can query the following information associated with roles: `name`, `description`, `metadata`,
-     * `applications.application`, `applications.privileges`, `applications.resources`.
+     * `applications.application`, `applications.privileges`, and `applications.resources`.
      */
     query?: RoleQueryContainer
     /**
-     * Starting document offset.
-     * By default, you cannot page through more than 10,000 hits using the from and size parameters.
+     * The starting document offset.
+     * It must not be negative.
+     * By default, you cannot page through more than 10,000 hits using the `from` and `size` parameters.
      * To page through more hits, use the `search_after` parameter.
      * @server_default 0
      */
     from?: integer
     /**
-     * All public fields of a role are eligible for sorting.
+     * The sort definition.
+     * You can sort on `username`, `roles`, or `enabled`.
      * In addition, sort can also be applied to the `_doc` field to sort by index order.
-     * @doc_id sort-search-results */
+     * @doc_id sort-search-results
+     */
     sort?: Sort
     /**
      * The number of hits to return.
+     * It must not be negative.
      * By default, you cannot page through more than 10,000 hits using the `from` and `size` parameters.
      * To page through more hits, use the `search_after` parameter.
      * @server_default 10
      */
     size?: integer
     /**
-     * Search after definition
+     * The search after definition.
+     * @ext_doc_id search-after
      */
     search_after?: SortResults
   }

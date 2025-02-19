@@ -1,0 +1,8 @@
+# summary:
+description: A succesful response from `GET _cat/component_templates/my-template-*?v=true&s=name`.
+# type: response
+# response_code: ''
+value: |-
+  name          version alias_count mapping_count settings_count metadata_count included_in
+  my-template-1         0           0             1              0              [my-index-template]
+  my-template-2         0           3             0              0              [my-index-template]

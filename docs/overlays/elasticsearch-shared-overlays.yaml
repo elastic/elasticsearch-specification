@@ -170,6 +170,11 @@ actions:
       # S
         - name: script
           x-displayName: Script
+          description: >
+            Use the script support APIs to get a list of supported script contexts and languages.
+            Use the stored script APIs to manage stored scripts and search templates.
+          externalDocs:
+            url: https://www.elastic.co/guide/en/elasticsearch/reference/master/modules-scripting.html
         - name: search
           x-displayName: Search
         - name: search_application
@@ -1077,7 +1082,7 @@ actions:
         application/json:
           examples:
             asyncSearchSubmitRequestExample1:
-              $ref: "../../specification/async_search/submit/AsyncSearchSubmitRequestExample1.json"
+              $ref: "../../specification/async_search/submit/examples/request/AsyncSearchSubmitRequestExample1.yaml"
   - target: "$.components['responses']['async_search.submit#200']"
     description: "Add example for asynch search submit response"
     update: 
@@ -1085,7 +1090,7 @@ actions:
         application/json:
           examples:
             asyncSearchSubmitResponseExample1:
-              $ref: "../../specification/async_search/submit/AsyncSearchSubmitResponseExample1.json"
+              $ref: "../../specification/async_search/submit/examples/response/AsyncSearchSubmitResponseExample1.yaml"
   - target: "$.paths['/_transform/{transform_id}']['put']"
     description: "Add examples for create transform operation"
     update: 
@@ -1094,16 +1099,16 @@ actions:
           application/json: 
             examples: 
               createTransformRequestExample1: 
-                $ref: "../../specification/transform/put_transform/PutTransformRequestExample1.json"
+                $ref: "../../specification/transform/put_transform/examples/request/PutTransformRequestExample1.yaml"
               createTransformRequestExample2:
-                $ref: "../../specification/transform/put_transform/PutTransformRequestExample2.json"
+                $ref: "../../specification/transform/put_transform/examples/request/PutTransformRequestExample2.yaml"
       responses:
         200:
           content:
             application/json:
               examples:
                 createTransformResponseExample1:
-                  $ref: "../../specification/transform/put_transform/PutTransformResponseExample1.json"
+                  $ref: "../../specification/transform/put_transform/examples/response/PutTransformResponseExample1.yaml"
   - target: "$.components['requestBodies']['transform.preview_transform']"
     description: "Add examples for preview transform operation"
     update: 
@@ -1111,7 +1116,7 @@ actions:
         application/json: 
           examples: 
             previewTransformRequestExample1: 
-              $ref: "../../specification/transform/preview_transform/PreviewTransformRequestExample1.json"
+              $ref: "../../specification/transform/preview_transform/examples/request/PreviewTransformRequestExample1.yaml"
   - target: "$.components['responses']['transform.preview_transform#200']"
     description: "Add examples for preview transform operation"
     update: 
@@ -1119,7 +1124,7 @@ actions:
         application/json:
           examples:
             previewTransformResponseExample1:
-              $ref: "../../specification/transform/preview_transform/PreviewTransformResponseExample1.json"
+              $ref: "../../specification/transform/preview_transform/examples/response/PreviewTransformResponseExample1.yaml"
   - target: "$.paths['/_transform/{transform_id}/_update']['post']"
     description: "Add examples for update transform operation"
     update: 
@@ -1128,14 +1133,14 @@ actions:
           application/json: 
             examples: 
               updateTransformRequestExample1: 
-                $ref: "../../specification/transform/update_transform/UpdateTransformRequestExample1.json"
+                $ref: "../../specification/transform/update_transform/examples/request/UpdateTransformRequestExample1.yaml"
       responses:
         200:
           content:
             application/json:
               examples:
                 updateTransformResponseExample1:
-                  $ref: "../../specification/transform/update_transform/UpdateTransformResponseExample1.json"
+                  $ref: "../../specification/transform/update_transform/examples/response/UpdateTransformResponseExample1.yaml"
   - target: "$.paths['/_eql/search/status/{id}']['get']"
     description: "Add examples for get async EQL status operation"
     update: 
@@ -1145,7 +1150,7 @@ actions:
             application/json:
               examples:
                 eqlGetStatusResponseExample1:
-                  $ref: "../../specification/eql/get_status/EqlGetStatusResponseExample1.json"
+                  $ref: "../../specification/eql/get_status/examples/response/EqlGetStatusResponseExample1.yaml"
   - target: "$.components['requestBodies']['eql.search']"
     description: "Add examples for EQL search operation"
     update: 
@@ -1153,9 +1158,9 @@ actions:
         application/json: 
           examples: 
             eqlSearchRequestExample1: 
-              $ref: "../../specification/eql/search/EqlSearchRequestExample1.json"
+              $ref: "../../specification/eql/search/examples/request/EqlSearchRequestExample1.yaml"
             eqlSearchRequestExample2: 
-              $ref: "../../specification/eql/search/EqlSearchRequestExample2.json"
+              $ref: "../../specification/eql/search/examples/request/EqlSearchRequestExample2.yaml"
   - target: "$.components['reponses']['eql.search#200']"
     description: "Add examples for EQL search operation"
     update: 
@@ -1163,7 +1168,7 @@ actions:
         application/json:
           examples:
             eqlSearchResponseExample2:
-              $ref: "../../specification/eql/search/EqlSearchResponseExample2.json"
+              $ref: "../../specification/eql/search/examples/response/EqlSearchResponseExample2.yaml"
   - target: "$.paths['/_query']['post']"
     description: "Add examples for ES|QL query operation"
     update: 
@@ -1172,7 +1177,7 @@ actions:
           application/json: 
             examples: 
               esqlQueryRequestExample1: 
-                $ref: "../../specification/esql/query/EsqlQueryApiRequestExample1.json"
+                $ref: "../../specification/esql/query/examples/request/QueryRequestExample1.yaml"
   - target: "$.components['requestBodies']['graph.explore']"
     description: "Add example for graph explore request"
     update: 
@@ -1180,7 +1185,7 @@ actions:
         application/json:
           examples:
             graphExploreRequestExample1:
-              $ref: "../../specification/graph/explore/graphExploreRequestExample1.json"
+              $ref: "../../specification/graph/explore/examples/request/GraphExploreRequestExample1.yaml"
   - target: "$.paths['/{index}/_block/{block}']['put']"
     description: "Add examples for add index block operation"
     update: 
@@ -1190,7 +1195,7 @@ actions:
             application/json:
               examples:
                 indicesAddBlockResponseExample1:
-                  $ref: "../../specification/indices/add_block/IndicesAddBlockResponseExample1.yaml"
+                  $ref: "../../specification/indices/add_block/examples/response/IndicesAddBlockResponseExample1.yaml"
   - target: "$.components['requestBodies']['indices.analyze']"
     description: "Add example for analyze API request"
     update: 
@@ -1198,7 +1203,7 @@ actions:
         application/json:
           examples:
             indicesAnalyzeRequestExample1:
-              $ref: "../../specification/indices/analyze/indicesAnalyzeRequestExample1.yaml"
+              $ref: "../../specification/indices/analyze/examples/request/indicesAnalyzeRequestExample1.yaml"
   - target: "$.paths['/{index}']['put']"
     description: "Add examples for create index request"
     update: 
@@ -1207,9 +1212,9 @@ actions:
           application/json:
             examples:
               indicesCreateRequestExample1:
-                $ref: "../../specification/indices/create/indicesCreateRequestExample1.yaml"
+                $ref: "../../specification/indices/create/examples/request/indicesCreateRequestExample1.yaml"
               indicesCreateRequestExample2:
-                $ref: "../../specification/indices/create/indicesCreateRequestExample2.yaml"
+                $ref: "../../specification/indices/create/examples/request/indicesCreateRequestExample2.yaml"
   - target: "$.paths['/_data_stream/{name}/_lifecycle']['delete']"
     description: "Add example for delete data stream lifecycle response"
     update: 
@@ -1219,7 +1224,7 @@ actions:
             application/json:
               examples:
                 indicesDeleteDataLifecycleResponseExample1:
-                  $ref: "../../specification/indices/delete_data_lifecycle/IndicesDeleteDataLifecycleResponseExample1.yaml"
+                  $ref: "../../specification/indices/delete_data_lifecycle/examples/200_response/IndicesDeleteDataLifecycleResponseExample1.yaml"
   - target: "$.paths['/_data_stream/{name}/_lifecycle']['get']"
     description: "Add example for get data stream lifecycle response"
     update: 
@@ -1229,7 +1234,7 @@ actions:
             application/json:
               examples:
                 indicesGetDataLifecycleResponseExample1:
-                  $ref: "../../specification/indices/get_data_lifecycle/IndicesGetDataLifecycleResponseExample1.yaml"
+                  $ref: "../../specification/indices/get_data_lifecycle/examples/response/IndicesGetDataLifecycleResponseExample1.yaml"
   - target: "$.components['responses']['indices.get_data_stream#200']"
     description: "Add example for get data stream response"
     update: 
@@ -1237,7 +1242,7 @@ actions:
         application/json:
           examples:
             indicesGetDataStreamResponseExample:
-              $ref: "../../specification/indices/get_data_stream/indicesGetDataStreamResponseExample1.yaml"
+              $ref: "../../specification/indices/get_data_stream/examples/200_response/indicesGetDataStreamResponseExample1.yaml"
   - target: "$.paths['/_data_stream/{name}/_lifecycle']['put']"
     description: "Add examples update data stream lifecycle request and response"
     update: 
@@ -1246,16 +1251,16 @@ actions:
           application/json: 
             examples: 
               indicesPutDataLifecycleRequestExample1: 
-                $ref: "../../specification/indices/put_data_lifecycle/IndicesPutDataLifecycleRequestExample1.yaml"
+                $ref: "../../specification/indices/put_data_lifecycle/examples/request/IndicesPutDataLifecycleRequestExample1.yaml"
               indicesPutLifecycleRequestExample2:
-                $ref: "../../specification/indices/put_data_lifecycle/IndicesPutDataLifecycleRequestExample2.yaml"
+                $ref: "../../specification/indices/put_data_lifecycle/examples/request/IndicesPutDataLifecycleRequestExample2.yaml"
       responses:
         200:
           content:
             application/json:
               examples:
                 indicesPutDataLifecycleResponseExample1:
-                  $ref: "../../specification/indices/put_data_lifecycle/IndicesPutDataLifecycleResponseExample1.yaml"
+                  $ref: "../../specification/indices/put_data_lifecycle/examples/200_response/IndicesPutDataLifecycleResponseExample1.yaml"
   - target: "$.paths['/{index}/_lifecycle/explain']['get']"
     description: "Add example for explain data stream lifecycle response"
     update: 
@@ -1265,7 +1270,7 @@ actions:
             application/json:
               examples:
                 indicesExplainDataLifecycleResponseExample:
-                  $ref: "../../specification/indices/explain_data_lifecycle/IndicesExplainDataLifecycleResponseExample1.yaml"
+                  $ref: "../../specification/indices/explain_data_lifecycle/examples/response/IndicesExplainDataLifecycleResponseExample1.yaml"
   - target: "$.components['responses']['ingest.get_pipeline#200']"
     description: "Add example for get pipeline response"
     update: 
@@ -1273,7 +1278,7 @@ actions:
         application/json:
           examples:
             indicesGetDataStreamResponseExample:
-              $ref: "../../specification/ingest/get_pipeline/GetPipelineResponseExample1.yaml"
+              $ref: "../../specification/ingest/get_pipeline/examples/200_response/GetPipelineResponseExample1.yaml"
   - target: "$.paths['/_ingest/pipeline/{id}']['put']"
     description: "Add examples for create pipeline"
     update: 
@@ -1282,9 +1287,9 @@ actions:
           application/json: 
             examples: 
               putPipelineRequestExample1: 
-                $ref: "../../specification/ingest/put_pipeline/PutPipelineRequestExample1.yaml"
+                $ref: "../../specification/ingest/put_pipeline/examples/request/PutPipelineRequestExample1.yaml"
               putPipelineRequestExample2: 
-                $ref: "../../specification/ingest/put_pipeline/PutPipelineRequestExample2.yaml"
+                $ref: "../../specification/ingest/put_pipeline/examples/request/PutPipelineRequestExample2.yaml"
   - target: "$.components['requestBodies']['ingest.simulate']"
     description: "Add example for simulate pipeline request"
     update: 
@@ -1292,7 +1297,7 @@ actions:
         application/json:
           examples:
             simulatePipelineRequestExample1:
-              $ref: "../../specification/ingest/simulate/SimulatePipelineRequestExample1.yaml"
+              $ref: "../../specification/ingest/simulate/examples/request/SimulatePipelineRequestExample1.yaml"
   - target: "$.components['responses']['ingest.simulate#200']"
     description: "Add example for simulate pipeline response"
     update: 
@@ -1300,7 +1305,7 @@ actions:
         application/json:
           examples:
             simulatePipelineResponseExample1:
-              $ref: "../../specification/ingest/simulate/SimulatePipelineResponseExample1.yaml"
+              $ref: "../../specification/ingest/simulate/examples/response/SimulatePipelineResponseExample1.yaml"
   - target: "$.components['requestBodies']['indices.put_index_template']"
     description: "Add example for create index template request"
     update: 
@@ -1308,7 +1313,7 @@ actions:
         application/json:
           examples:
             indicesPutIndexTemplateRequestExample1:
-              $ref: "../../specification/indices/put_index_template/indicesPutIndexTemplateRequestExample1.yaml"
+              $ref: "../../specification/indices/put_index_template/examples/request/indicesPutIndexTemplateRequestExample1.yaml"
   - target: "$.components['requestBodies']['indices.put_mapping']"
     description: "Add example for update mapping request"
     update: 
@@ -1316,7 +1321,7 @@ actions:
         application/json:
           examples:
             indicesPutSettingRequestExample1:
-              $ref: "../../specification/indices/put_mapping/indicesPutMappingRequestExample1.yaml"
+              $ref: "../../specification/indices/put_mapping/examples/request/indicesPutMappingRequestExample1.yaml"
   - target: "$.components['requestBodies']['indices.put_settings']"
     description: "Add example for update index settings request"
     update: 
@@ -1324,7 +1329,7 @@ actions:
         application/json:
           examples:
             indicesPutSettingRequestExample1:
-              $ref: "../../specification/indices/put_settings/IndicesPutSettingsRequestExample1.yaml"
+              $ref: "../../specification/indices/put_settings/examples/request/IndicesPutSettingsRequestExample1.yaml"
   - target: "$.paths['/_resolve/index/{name}']['get']"
     description: "Add examples for resolve index operation"
     update: 
@@ -1334,7 +1339,7 @@ actions:
             application/json:
               examples:
                 indicesResolveResponseExample1:
-                  $ref: "../../specification/indices/resolve_index/indicesResolveResponseExample1.yaml"
+                  $ref: "../../specification/indices/resolve_index/examples/response/ResolveIndexResponseExample1.yaml"
   - target: "$.components['requestBodies']['indices.rollover']"
     description: "Add example for rollover index request"
     update: 
@@ -1342,7 +1347,7 @@ actions:
         application/json:
           examples:
             indicesRolloverRequestExample1:
-              $ref: "../../specification/indices/rollover/indicesRolloverRequestExample1.yaml"
+              $ref: "../../specification/indices/rollover/examples/request/indicesRolloverRequestExample1.yaml"
   - target: "$.components['responses']['indices.rollover#200']"
     description: "Add example for rollover index response"
     update: 
@@ -1350,7 +1355,7 @@ actions:
         application/json:
           examples:
             indicesRolloverResponseExample1:
-              $ref: "../../specification/indices/rollover/indicesRolloverResponseExample1.yaml"
+              $ref: "../../specification/indices/rollover/examples/200_response/indicesRolloverResponseExample1.yaml"
 ## Examples for behavioral analytics
   - target: "$.components['responses']['search_application.get_behavioral_analytics#200']"
     description: "Add example for get behavioral analytics collections response"
@@ -1359,7 +1364,294 @@ actions:
         application/json:
           examples:
             getBehavioralAnalyticsCollectionsResponseExample1:
-              $ref: "../../specification/search_application/get_behavioral_analytics/BehavioralAnalyticsGetResponseExample1.yaml"
+              $ref: "../../specification/search_application/get_behavioral_analytics/examples/200_response/BehavioralAnalyticsGetResponseExample1.yaml"
+## Examples for cat
+  - target: "$.components['responses']['cat.aliases#200']"
+    description: "Add example for cat aliases response"
+    update: 
+      content:
+        text/plain:
+          schema:
+            type: string
+          examples:
+            catAliasesResponseExample1:
+              $ref: "../../specification/cat/aliases/examples/200_response/CatAliasesResponseExample1.yaml"
+  - target: "$.components['responses']['cat.allocation#200']"
+    description: "Add example for cat allocation response"
+    update: 
+      content:
+        text/plain:
+          schema:
+            type: string
+          examples:
+            catAllocationResponseExample1:
+              $ref: "../../specification/cat/allocation/examples/200_response/CatAllocationResponseExample1.yaml"
+  - target: "$.components['responses']['cat.component_templates#200']"
+    description: "Add example for cat component templates response"
+    update: 
+      content:
+        text/plain:
+          schema:
+            type: string
+          examples:
+            catComponentTemplatesResponseExample1:
+              $ref: "../../specification/cat/component_templates/examples/200_response/CatComponentTemplatesResponseExample1.yaml"
+  - target: "$.components['responses']['cat.count#200']"
+    description: "Add example for cat count response"
+    update: 
+      content:
+        text/plain:
+          schema:
+            type: string
+          examples:
+            catCountResponseExample1:
+              $ref: "../../specification/cat/count/examples/200_response/CatCountResponseExample1.yaml"
+            catCountResponseExample2:
+              $ref: "../../specification/cat/count/examples/200_response/CatCountResponseExample2.yaml" 
+  - target: "$.components['responses']['cat.fielddata#200']"
+    description: "Add example for cat fielddata response"
+    update: 
+      content:
+        text/plain:
+          schema:
+            type: string
+          examples:
+            catFieldDataResponseExample1:
+              $ref: "../../specification/cat/fielddata/examples/200_response/CatFielddataResponseExample1.yaml"
+            catFieldDataResponseExample2:
+              $ref: "../../specification/cat/fielddata/examples/200_response/CatFielddataResponseExample2.yaml" 
+  - target: "$.components['responses']['cat.indices#200']"
+    description: "Add example for cat indices response"
+    update: 
+      content:
+        text/plain:
+          schema:
+            type: string
+          examples:
+            catIndicesResponseExample1:
+              $ref: "../../specification/cat/indices/examples/200_response/CatIndicesResponseExample1.yaml" 
+  - target: "$.components['responses']['cat.ml_datafeeds#200']"
+    description: "Add example for cat datafeeds response"
+    update: 
+      content:
+        text/plain:
+          schema:
+            type: string
+          examples:
+            catDatafeedsResponseExample1:
+              $ref: "../../specification/cat/ml_datafeeds/examples/200_response/CatDatafeedsResponseExample1.yaml"
+  - target: "$.components['responses']['cat.ml_data_frame_analytics#200']"
+    description: "Add example for cat data frame analytics response"
+    update: 
+      content:
+        text/plain:
+          schema:
+            type: string
+          examples:
+            catDataFrameAnalyticsResponseExample1:
+              $ref: "../../specification/cat/ml_data_frame_analytics/examples/200_response/CatDataFrameAnalyticsResponseExample1.yaml" 
+  - target: "$.components['responses']['cat.ml_jobs#200']"
+    description: "Add example for cat anomaly detectors response"
+    update: 
+      content:
+        text/plain:
+          schema:
+            type: string
+          examples:
+            catAnomalyDetectorsResponseExample1:
+              $ref: "../../specification/cat/ml_jobs/examples/200_response/CatJobsResponseExample1.yaml"
+  - target: "$.components['responses']['cat.ml_trained_models#200']"
+    description: "Add example for cat trained models response"
+    update: 
+      content:
+        text/plain:
+          schema:
+            type: string
+          examples:
+            catTrainedModelsResponseExample1:
+              $ref: "../../specification/cat/ml_trained_models/examples/200_response/CatTrainedModelsResponseExample1.yaml"
+  - target: "$.components['responses']['cat.recovery#200']"
+    description: "Add example for cat recovery response"
+    update: 
+      content:
+        text/plain:
+          schema:
+            type: string
+          examples:
+            catRecoveryResponseExample1:
+              $ref: "../../specification/cat/recovery/examples/200_response/CatRecoveryResponseExample1.yaml"
+            catRecoveryResponseExample2:
+              $ref: "../../specification/cat/recovery/examples/200_response/CatRecoveryResponseExample2.yaml"
+            catRecoveryResponseExample3:
+              $ref: "../../specification/cat/recovery/examples/200_response/CatRecoveryResponseExample3.yaml"
+  - target: "$.components['responses']['cat.segments#200']"
+    description: "Add example for cat segments response"
+    update: 
+      content:
+        text/plain:
+          schema:
+            type: string
+          examples:
+            catSegmentsResponseExample1:
+              $ref: "../../specification/cat/segments/examples/200_response/CatSegmentsResponseExample1.yaml"
+  - target: "$.components['responses']['cat.shards#200']"
+    description: "Add example for cat shards response"
+    update: 
+      content:
+        text/plain:
+          schema:
+            type: string
+          examples:
+            catShardsResponseExample1:
+              $ref: "../../specification/cat/shards/examples/200_response/CatShardsResponseExample1.yaml"
+            catShardsResponseExample2:
+              $ref: "../../specification/cat/shards/examples/200_response/CatShardsResponseExample2.yaml"
+            catShardsResponseExample3:
+              $ref: "../../specification/cat/shards/examples/200_response/CatShardsResponseExample3.yaml"
+            catShardsResponseExample4:
+              $ref: "../../specification/cat/shards/examples/200_response/CatShardsResponseExample4.yaml"
+            catShardsResponseExample5:
+              $ref: "../../specification/cat/shards/examples/200_response/CatShardsResponseExample5.yaml"
+  - target: "$.components['responses']['cat.snapshots#200']"
+    description: "Add example for cat snapshot response"
+    update: 
+      content:
+        text/plain:
+          schema:
+            type: string
+          examples:
+            catSnapshotsResponseExample1:
+              $ref: "../../specification/cat/snapshots/examples/200_response/CatSnapshotsResponseExample1.yaml"
+  - target: "$.components['responses']['cat.templates#200']"
+    description: "Add example for cat templates response"
+    update: 
+      content:
+        text/plain:
+          schema:
+            type: string
+          examples:
+            catTemplatesResponseExample1:
+              $ref: "../../specification/cat/templates/examples/200_response/CatTemplatesResponseExample1.yaml"
+  - target: "$.components['responses']['cat.thread_pool#200']"
+    description: "Add example for cat thread pool response"
+    update: 
+      content:
+        text/plain:
+          schema:
+            type: string
+          examples:
+            catThreadPoolResponseExample1:
+              $ref: "../../specification/cat/thread_pool/examples/200_response/CatThreadPoolResponseExample1.yaml"
+            catThreadPoolResponseExample2:
+              $ref: "../../specification/cat/thread_pool/examples/200_response/CatThreadPoolResponseExample2.yaml"
+  - target: "$.components['responses']['cat.transforms#200']"
+    description: "Add example for cat transforms response"
+    update: 
+      content:
+        application/json:
+          examples:
+            catTransformsResponseExample1:
+              $ref: "../../specification/cat/transforms/examples/200_response/CatTransformsResponseExample1.yaml"
+  - target: "$.paths['/_cat/health']['get']"
+    description: "Add examples for cat health operation"
+    update: 
+      responses:
+        200: 
+          content:
+            text/plain:
+              schema:
+                type: string
+              examples:
+                catMasterResponseExample1: 
+                  $ref: "../../specification/cat/health/examples/200_response/CatHealthResponseExample1.yaml"
+  - target: "$.paths['/_cat/master']['get']"
+    description: "Add examples for cat master operation"
+    update: 
+      responses:
+        200: 
+          content:
+            text/plain:
+              schema:
+                type: string
+              examples:
+                catMasterResponseExample1: 
+                  $ref: "../../specification/cat/master/examples/200_response/CatMasterResponseExample1.yaml"
+  - target: "$.paths['/_cat/nodeattrs']['get']"
+    description: "Add examples for cat node attributes operation"
+    update: 
+      responses:
+        200: 
+          content:
+            text/plain:
+              schema:
+                type: string
+              examples:
+                catNodeAttributesResponseExample1: 
+                  $ref: "../../specification/cat/nodeattrs/examples/200_response/CatNodeAttributesResponseExample1.yaml"
+                catNodeAttributesResponseExample2: 
+                  $ref: "../../specification/cat/nodeattrs/examples/200_response/CatNodeAttributesResponseExample2.yaml"
+  - target: "$.paths['/_cat/nodes']['get']"
+    description: "Add examples for cat nodes operation"
+    update: 
+      responses:
+        200: 
+          content:
+            text/plain:
+              schema:
+                type: string
+              examples:
+                catNodesResponseExample1: 
+                  $ref: "../../specification/cat/nodes/examples/200_response/CatNodesResponseExample1.yaml"
+                catNodesResponseExample2: 
+                  $ref: "../../specification/cat/nodes/examples/200_response/CatNodesResponseExample2.yaml"
+  - target: "$.paths['/_cat/pending_tasks']['get']"
+    description: "Add examples for cat pending tasks operation"
+    update: 
+      responses:
+        200: 
+          content:
+            text/plain:
+              schema:
+                type: string
+              examples:
+                catPendingTasksResponseExample1: 
+                  $ref: "../../specification/cat/pending_tasks/examples/200_response/CatPendingTasksResponseExample1.yaml"
+  - target: "$.paths['/_cat/plugins']['get']"
+    description: "Add examples for cat plugins operation"
+    update: 
+      responses:
+        200: 
+          content:
+            text/plain:
+              schema:
+                type: string
+              examples:
+                catPluginsResponseExample1: 
+                  $ref: "../../specification/cat/plugins/examples/200_response/CatPluginsResponseExample1.yaml"
+  - target: "$.paths['/_cat/repositories']['get']"
+    description: "Add examples for cat repositories operation"
+    update: 
+      responses:
+        200: 
+          content:
+            text/plain:
+              schema:
+                type: string
+              examples:
+                catRepositoriesResponseExample1: 
+                  $ref: "../../specification/cat/repositories/examples/200_response/CatRepositoriesResponseExample1.yaml"
+  - target: "$.paths['/_cat/tasks']['get']"
+    description: "Add examples for cat tasks operation"
+    update: 
+      responses:
+        200: 
+          content:
+            text/plain:
+              schema:
+                type: string
+              examples:
+                catTasksResponseExample1: 
+                  $ref: "../../specification/cat/tasks/examples/200_response/CatTasksResponseExample1.yaml"
 ## Examples for licensing
   - target: "$.paths['/_license']['get']"
     description: "Add example for get license response"
@@ -1370,7 +1662,7 @@ actions:
             application/json:
               examples:
                 getLicenseResponseExample1:
-                  $ref: "../../specification/license/get/GetLicenseResponseExample1.yaml"
+                  $ref: "../../specification/license/get/examples/response/GetLicenseResponseExample1.yaml"
 ## Examples for search applications
   - target: "$.paths['/_application/search_application']['get']"
     description: "Add examples for get search applications operation"
@@ -1381,7 +1673,7 @@ actions:
             application/json: 
               examples: 
                 getSearchApplicationsResponseExample1: 
-                  $ref: "../../specification/search_application/list/SearchApplicationsListResponseExample1.yaml"
+                  $ref: "../../specification/search_application/list/examples/200_response/SearchApplicationsListResponseExample1.yaml"
   - target: "$.paths['/_application/search_application/{name}']['get']"
     description: "Add examples for get search application details operation"
     update: 
@@ -1391,7 +1683,7 @@ actions:
             application/json: 
               examples: 
                 getSearchApplicationResponseExample1: 
-                  $ref: "../../specification/search_application/get/SearchApplicationGetResponseExample1.yaml"
+                  $ref: "../../specification/search_application/get/examples/200_response/SearchApplicationGetResponseExample1.yaml"
   - target: "$.paths['/_application/search_application/{name}']['put']"
     description: "Add examples for create search application operation"
     update: 
@@ -1400,7 +1692,7 @@ actions:
           application/json: 
             examples: 
               putSearchApplicationRequestExample1: 
-                $ref: "../../specification/search_application/put/SearchApplicationPutRequestExample1.yaml"
+                $ref: "../../specification/search_application/put/examples/request/SearchApplicationPutRequestExample1.yaml"
   - target: "$.components['requestBodies']['search_application.search']"
     description: "Add example for search application search request"
     update: 
@@ -1408,4 +1700,4 @@ actions:
         application/json:
           examples:
             searchApplicationSearchRequestExample1:
-              $ref: "../../specification/search_application/search/SearchApplicationsSearchRequestExample1.yaml"
+              $ref: "../../specification/search_application/search/examples/request/SearchApplicationsSearchRequestExample1.yaml"

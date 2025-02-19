@@ -144,7 +144,7 @@ export type ApiKeyAggregate =
  */
 export class ApiKeyQueryContainer {
   /**
-   * matches documents matching boolean combinations of other queries.
+   * Matches documents matching boolean combinations of other queries.
    * @doc_id query-dsl-bool-query
    */
   bool?: BoolQuery

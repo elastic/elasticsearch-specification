@@ -1,0 +1,13 @@
+# summary:
+description: >
+  A successful response from `POST /_security/oidc/prepare`.
+  It contains the URI pointing to the Authorization Endpoint of the OpenID Connect Provider with all the parameters of the Authentication Request as HTTP GET parameters.
+# type: response
+# response_code:
+value: |-
+  {
+    "redirect" : "http://127.0.0.1:8080/c2id-login?scope=openid&response_type=id_token&redirect_uri=https%3A%2F%2Fmy.fantastic.rp%2Fcb&state=4dbrihtIAt3wBTwo6DxK-vdk-sSyDBV8Yf0AjdkdT5I&nonce=WaBPH0KqPVdG5HHdSxPRjfoZbXMCicm5v1OiAj0DUFM&client_id=elasticsearch-rp",
+    "state" : "4dbrihtIAt3wBTwo6DxK-vdk-sSyDBV8Yf0AjdkdT5I",
+    "nonce" : "WaBPH0KqPVdG5HHdSxPRjfoZbXMCicm5v1OiAj0DUFM",
+    "realm" : "oidc1"
+  }

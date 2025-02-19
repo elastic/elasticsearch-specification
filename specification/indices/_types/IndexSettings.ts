@@ -170,6 +170,7 @@ export class IndexSettings
 
 /**
  * @variants internal tag='type'
+ * @non_exhaustive
  */
 export type SettingsSimilarity =
   | SettingsSimilarityBm25
@@ -306,6 +307,12 @@ export class IndexSettingsLifecycle {
    * @server_default
    */
   rollover_alias?: string
+  /**
+   * Preference for the system that manages a data stream backing index (preferring ILM when both ILM and DLM are
+   * applicable for an index).
+   * @server_default true
+   */
+  prefer_ilm?: boolean | string
 }
 
 export class IndexSettingsLifecycleStep {
@@ -420,7 +427,8 @@ export class MappingLimitSettings {
   nested_objects?: MappingLimitSettingsNestedObjects
   field_name_length?: MappingLimitSettingsFieldNameLength
   dimension_fields?: MappingLimitSettingsDimensionFields
-  ignore_malformed?: boolean
+  source?: MappingLimitSettingsSourceFields
+  ignore_malformed?: boolean | string
 }
 
 export class MappingLimitSettingsTotalFields {
@@ -485,6 +493,16 @@ export class MappingLimitSettingsDimensionFields {
    * Elastic will work to fix any issues, but features in technical preview are not subject to the support SLA of official GA features.
    */
   limit?: long
+}
+
+export class MappingLimitSettingsSourceFields {
+  mode: SourceMode
+}
+
+export enum SourceMode {
+  DISABLED,
+  STORED,
+  SYNTHETIC
 }
 
 export class SlowlogSettings {

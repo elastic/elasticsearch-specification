@@ -27,9 +27,14 @@ import { Duration } from '@_types/Time'
  * @rest_spec_name searchable_snapshots.cache_stats
  * @availability stack since=7.13.0 stability=experimental
  * @cluster_privileges manage
+ * @doc_id searchable-snapshots-api-cache-stats
+ * @ext_doc_id searchable-snapshots
  */
 export interface Request extends RequestBase {
   path_parts: {
+    /**
+     * The names of the nodes in the cluster to target.
+     */
     node_id?: NodeIds
   }
   query_parameters: {

@@ -67,12 +67,12 @@ export class CompletionResult {
 /**
  * The rerank result object representing a single ranked document
  * id: the original index of the document in the request
- * score: the score of the document relative to the query
+ * relevance_score: the relevance_score of the document relative to the query
  * text: Optional, the text of the document, if requested
  */
 export class RankedDocument {
   index: integer
-  score: float
+  relevance_score: float
   text?: string
 }
 

@@ -29,12 +29,15 @@ import { Names } from '@_types/common'
  * @rest_spec_name security.get_role
  * @availability stack stability=stable
  * @availability serverless stability=stable visibility=private
- * @cluster_privileges manage_security
+ * @cluster_privileges read_security
+ * @doc_id security-api-get-role
  */
 export interface Request extends RequestBase {
   path_parts: {
     /**
-     * The name of the role. You can specify multiple roles as a comma-separated list. If you do not specify this parameter, the API returns information about all roles.
+     * The name of the role.
+     * You can specify multiple roles as a comma-separated list.
+     * If you do not specify this parameter, the API returns information about all roles.
      */
     name?: Names
   }

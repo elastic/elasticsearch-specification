@@ -24,11 +24,18 @@ import { Refresh, Username } from '@_types/common'
  * Disable users.
  *
  * Disable users in the native realm.
+ * By default, when you create users, they are enabled.
+ * You can use this API to revoke a user's access to Elasticsearch.
  * @rest_spec_name security.disable_user
  * @availability stack stability=stable
+ * @cluster_privileges manage_security
+ * @doc_id security-api-disable-user
  */
 export interface Request extends RequestBase {
   path_parts: {
+    /**
+     * An identifier for the user.
+     */
     username: Username
   }
   query_parameters: {

@@ -26,9 +26,14 @@ import { Refresh, Username } from '@_types/common'
  * Delete users from the native realm.
  * @rest_spec_name security.delete_user
  * @availability stack stability=stable
+ * @cluster_privileges manage_security
+ * @doc_id security-api-delete-user
  */
 export interface Request extends RequestBase {
   path_parts: {
+    /**
+     * An identifier for the user.
+     */
     username: Username
   }
   query_parameters: {

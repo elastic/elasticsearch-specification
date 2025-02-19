@@ -24,11 +24,17 @@ import { Refresh, Username } from '@_types/common'
  * Enable users.
  *
  * Enable users in the native realm.
+ * By default, when you create users, they are enabled.
  * @rest_spec_name security.enable_user
  * @availability stack stability=stable
+ * @cluster_privileges manage_security
+ * @doc_id security-api-enable-user
  */
 export interface Request extends RequestBase {
   path_parts: {
+    /**
+     * An identifier for the user.
+     */
     username: Username
   }
   query_parameters: {

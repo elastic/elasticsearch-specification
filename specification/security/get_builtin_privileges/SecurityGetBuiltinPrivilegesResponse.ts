@@ -25,8 +25,18 @@ import { Indices } from '@_types/common'
 
 export class Response {
   body: {
+    /**
+     * The list of cluster privileges that are understood by this version of Elasticsearch.
+     */
     cluster: ClusterPrivilege[]
+    /**
+     * The list of index privileges that are understood by this version of Elasticsearch.
+     */
     index: Indices
+    /**
+     * The list of remote_cluster privileges that are understood by this version of Elasticsearch.
+     * @availability stack since=8.15.0
+     */
     remote_cluster: RemoteClusterPrivilege[]
   }
 }

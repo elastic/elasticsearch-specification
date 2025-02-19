@@ -29,16 +29,17 @@ import { long } from '@_types/Numeric'
  * @availability serverless stability=experimental visibility=private
  * @cluster_privileges monitor, manage
  * @doc_tag cluster
+ * @doc_id clear-repositories-metering-archive-api
  */
 export interface Request extends RequestBase {
   path_parts: {
     /**
      * Comma-separated list of node IDs or names used to limit returned information.
-     * All the nodes selective options are explained [here](https://www.elastic.co/guide/en/elasticsearch/reference/current/cluster.html#cluster-nodes).
+     * @ext_doc_id cluster-nodes
      */
     node_id: NodeIds
     /**
-     * Specifies the maximum [archive_version](https://www.elastic.co/guide/en/elasticsearch/reference/current/get-repositories-metering-api.html#get-repositories-metering-api-response-body) to be cleared from the archive.
+     * Specifies the maximum `archive_version` to be cleared from the archive.
      */
     max_archive_version: long
   }
