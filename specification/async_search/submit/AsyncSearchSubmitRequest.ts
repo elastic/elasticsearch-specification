@@ -68,7 +68,7 @@ import { Duration } from '@_types/Time'
  * @doc_tag search
  */
 // NOTE: this is a SearchRequest with:
-//  * 2 added parameters: wait_for_completion_timeout, keep_on_completion
+//  * 2 added parameters: wait_for_completion_timeout, keep_on_completion and keep_alive
 //  * 2 removed parameters: scroll, pre_filter_shard_size
 export interface Request extends RequestBase {
   path_parts: {
@@ -81,6 +81,12 @@ export interface Request extends RequestBase {
      * @server_default 1s
      */
     wait_for_completion_timeout?: Duration
+    /**
+     * Specifies how long the async search needs to be available.
+     * Ongoing async searches and any saved search results are deleted after this period.
+     * @server_default 5d
+     */
+    keep_alive?: Duration
     /**
      * If `true`, results are stored for later retrieval when the search completes within the `wait_for_completion_timeout`.
      * @server_default false
