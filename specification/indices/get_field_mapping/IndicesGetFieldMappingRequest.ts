@@ -80,10 +80,5 @@ export interface Request extends RequestBase {
      * @server_default false
      */
     include_defaults?: boolean
-    /**
-     * If `true`, the request retrieves information from the local node only.
-     * @server_default false
-     */
-    local?: boolean
   }
 }

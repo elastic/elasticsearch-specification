@@ -12094,7 +12094,6 @@ export interface IndicesGetFieldMappingRequest extends RequestBase {
   expand_wildcards?: ExpandWildcards
   ignore_unavailable?: boolean
   include_defaults?: boolean
-  local?: boolean
 }
 
 export type IndicesGetFieldMappingResponse = Record<IndexName, IndicesGetFieldMappingTypeFieldMappings>
