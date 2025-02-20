@@ -69,6 +69,10 @@ export interface Request extends CatRequestBase {
      */
     detailed?: boolean
     /**
+     * Comma-separated list or wildcard expression of index names to limit the returned information
+     */
+    index?: Indices
+    /**
      * List of columns to appear in the response. Supports simple wildcards.
      */
     h?: Names
