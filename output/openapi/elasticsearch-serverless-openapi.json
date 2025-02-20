@@ -16635,6 +16635,7 @@
             "$ref": "#/components/responses/search_application.get_behavioral_analytics#200"
           }
         },
+        "deprecated": true,
         "x-state": "Technical preview"
       },
       "put": {
@@ -16668,6 +16669,7 @@
             }
           }
         },
+        "deprecated": true,
         "x-state": "Technical preview"
       },
       "delete": {
@@ -16702,6 +16704,7 @@
             }
           }
         },
+        "deprecated": true,
         "x-state": "Technical preview"
       }
     },
@@ -16717,6 +16720,7 @@
             "$ref": "#/components/responses/search_application.get_behavioral_analytics#200"
           }
         },
+        "deprecated": true,
         "x-state": "Technical preview"
       }
     },
