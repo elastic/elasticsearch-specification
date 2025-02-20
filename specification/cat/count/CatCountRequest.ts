@@ -18,7 +18,7 @@
  */
 
 import { CatRequestBase } from '@cat/_types/CatBase'
-import { Indices } from '@_types/common'
+import { Indices, Names } from '@_types/common'
 
 /**
  * Get a document count.
@@ -52,5 +52,17 @@ export interface Request extends CatRequestBase {
      * To target all data streams and indices, omit this parameter or use `*` or `_all`.
      */
     index?: Indices
+  }
+  query_parameters: {
+    /**
+     * List of columns to appear in the response. Supports simple wildcards.
+     */
+    h?: Names
+    /**
+     * List of columns that determine how the table should be sorted.
+     * Sorting defaults to ascending and can be changed by setting `:asc`
+     * or `:desc` as a suffix to the column name.
+     */
+    s?: Names
   }
 }

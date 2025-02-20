@@ -18,6 +18,7 @@
  */
 
 import { CatRequestBase } from '@cat/_types/CatBase'
+import { Names } from '@_types/common'
 import { TimeUnit } from '@_types/Time'
 
 /**
@@ -55,5 +56,15 @@ export interface Request extends CatRequestBase {
      * @server_default true
      */
     ts?: boolean
+    /**
+     * List of columns to appear in the response. Supports simple wildcards.
+     */
+    h?: Names
+    /**
+     * List of columns that determine how the table should be sorted.
+     * Sorting defaults to ascending and can be changed by setting `:asc`
+     * or `:desc` as a suffix to the column name.
+     */
+    s?: Names
   }
 }
