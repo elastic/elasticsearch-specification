@@ -694,6 +694,12 @@
         "operationId": "cat-aliases",
         "parameters": [
           {
+            "$ref": "#/components/parameters/cat.aliases#h"
+          },
+          {
+            "$ref": "#/components/parameters/cat.aliases#s"
+          },
+          {
             "$ref": "#/components/parameters/cat.aliases#expand_wildcards"
           },
           {
@@ -720,6 +726,12 @@
             "$ref": "#/components/parameters/cat.aliases#name"
           },
           {
+            "$ref": "#/components/parameters/cat.aliases#h"
+          },
+          {
+            "$ref": "#/components/parameters/cat.aliases#s"
+          },
+          {
             "$ref": "#/components/parameters/cat.aliases#expand_wildcards"
           },
           {
@@ -742,6 +754,12 @@
         "description": "Get information about component templates in a cluster.\nComponent templates are building blocks for constructing index templates that specify index mappings, settings, and aliases.\n\nIMPORTANT: CAT APIs are only intended for human consumption using the command line or Kibana console.\nThey are not intended for use by applications. For application consumption, use the get component template API.",
         "operationId": "cat-component-templates",
         "parameters": [
+          {
+            "$ref": "#/components/parameters/cat.component_templates#h"
+          },
+          {
+            "$ref": "#/components/parameters/cat.component_templates#s"
+          },
           {
             "$ref": "#/components/parameters/cat.component_templates#local"
           },
@@ -770,6 +788,12 @@
             "$ref": "#/components/parameters/cat.component_templates#name"
           },
           {
+            "$ref": "#/components/parameters/cat.component_templates#h"
+          },
+          {
+            "$ref": "#/components/parameters/cat.component_templates#s"
+          },
+          {
             "$ref": "#/components/parameters/cat.component_templates#local"
           },
           {
@@ -792,6 +816,14 @@
         "summary": "Get a document count",
         "description": "Get quick access to a document count for a data stream, an index, or an entire cluster.\nThe document count only includes live documents, not deleted documents which have not yet been removed by the merge process.\n\nIMPORTANT: CAT APIs are only intended for human consumption using the command line or Kibana console.\nThey are not intended for use by applications. For application consumption, use the count API.",
         "operationId": "cat-count",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/cat.count#h"
+          },
+          {
+            "$ref": "#/components/parameters/cat.count#s"
+          }
+        ],
         "responses": {
           "200": {
             "$ref": "#/components/responses/cat.count#200"
@@ -810,6 +842,12 @@
         "parameters": [
           {
             "$ref": "#/components/parameters/cat.count#index"
+          },
+          {
+            "$ref": "#/components/parameters/cat.count#h"
+          },
+          {
+            "$ref": "#/components/parameters/cat.count#s"
           }
         ],
         "responses": {
@@ -870,6 +908,12 @@
           },
           {
             "$ref": "#/components/parameters/cat.indices#master_timeout"
+          },
+          {
+            "$ref": "#/components/parameters/cat.indices#h"
+          },
+          {
+            "$ref": "#/components/parameters/cat.indices#s"
           }
         ],
         "responses": {
@@ -911,6 +955,12 @@
           },
           {
             "$ref": "#/components/parameters/cat.indices#master_timeout"
+          },
+          {
+            "$ref": "#/components/parameters/cat.indices#h"
+          },
+          {
+            "$ref": "#/components/parameters/cat.indices#s"
           }
         ],
         "responses": {
@@ -58735,6 +58785,26 @@
         },
         "style": "simple"
       },
+      "cat.aliases#h": {
+        "in": "query",
+        "name": "h",
+        "description": "List of columns to appear in the response. Supports simple wildcards.",
+        "deprecated": false,
+        "schema": {
+          "$ref": "#/components/schemas/_types:Names"
+        },
+        "style": "form"
+      },
+      "cat.aliases#s": {
+        "in": "query",
+        "name": "s",
+        "description": "List of columns that determine how the table should be sorted.\nSorting defaults to ascending and can be changed by setting `:asc`\nor `:desc` as a suffix to the column name.",
+        "deprecated": false,
+        "schema": {
+          "$ref": "#/components/schemas/_types:Names"
+        },
+        "style": "form"
+      },
       "cat.aliases#expand_wildcards": {
         "in": "query",
         "name": "expand_wildcards",
@@ -58766,6 +58836,26 @@
         },
         "style": "simple"
       },
+      "cat.component_templates#h": {
+        "in": "query",
+        "name": "h",
+        "description": "List of columns to appear in the response. Supports simple wildcards.",
+        "deprecated": false,
+        "schema": {
+          "$ref": "#/components/schemas/_types:Names"
+        },
+        "style": "form"
+      },
+      "cat.component_templates#s": {
+        "in": "query",
+        "name": "s",
+        "description": "List of columns that determine how the table should be sorted.\nSorting defaults to ascending and can be changed by setting `:asc`\nor `:desc` as a suffix to the column name.",
+        "deprecated": false,
+        "schema": {
+          "$ref": "#/components/schemas/_types:Names"
+        },
+        "style": "form"
+      },
       "cat.component_templates#local": {
         "in": "query",
         "name": "local",
@@ -58796,6 +58886,26 @@
           "$ref": "#/components/schemas/_types:Indices"
         },
         "style": "simple"
+      },
+      "cat.count#h": {
+        "in": "query",
+        "name": "h",
+        "description": "List of columns to appear in the response. Supports simple wildcards.",
+        "deprecated": false,
+        "schema": {
+          "$ref": "#/components/schemas/_types:Names"
+        },
+        "style": "form"
+      },
+      "cat.count#s": {
+        "in": "query",
+        "name": "s",
+        "description": "List of columns that determine how the table should be sorted.\nSorting defaults to ascending and can be changed by setting `:asc`\nor `:desc` as a suffix to the column name.",
+        "deprecated": false,
+        "schema": {
+          "$ref": "#/components/schemas/_types:Names"
+        },
+        "style": "form"
       },
       "cat.indices#index": {
         "in": "path",
@@ -58875,6 +58985,26 @@
         "deprecated": false,
         "schema": {
           "$ref": "#/components/schemas/_types:Duration"
+        },
+        "style": "form"
+      },
+      "cat.indices#h": {
+        "in": "query",
+        "name": "h",
+        "description": "List of columns to appear in the response. Supports simple wildcards.",
+        "deprecated": false,
+        "schema": {
+          "$ref": "#/components/schemas/_types:Names"
+        },
+        "style": "form"
+      },
+      "cat.indices#s": {
+        "in": "query",
+        "name": "s",
+        "description": "List of columns that determine how the table should be sorted.\nSorting defaults to ascending and can be changed by setting `:asc`\nor `:desc` as a suffix to the column name.",
+        "deprecated": false,
+        "schema": {
+          "$ref": "#/components/schemas/_types:Names"
         },
         "style": "form"
       },
