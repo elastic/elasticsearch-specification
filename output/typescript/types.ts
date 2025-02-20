@@ -6980,6 +6980,8 @@ export interface CatAliasesAliasesRecord {
 
 export interface CatAliasesRequest extends CatCatRequestBase {
   name?: Names
+  h?: Names
+  s?: Names
   expand_wildcards?: ExpandWildcards
   local?: boolean
   master_timeout?: Duration
@@ -7026,6 +7028,8 @@ export interface CatAllocationAllocationRecord {
 export interface CatAllocationRequest extends CatCatRequestBase {
   node_id?: NodeIds
   bytes?: Bytes
+  h?: Names
+  s?: Names
   local?: boolean
   master_timeout?: Duration
 }
@@ -7044,6 +7048,8 @@ export interface CatComponentTemplatesComponentTemplate {
 
 export interface CatComponentTemplatesRequest extends CatCatRequestBase {
   name?: string
+  h?: Names
+  s?: Names
   local?: boolean
   master_timeout?: Duration
 }
@@ -7066,6 +7072,8 @@ export interface CatCountCountRecord {
 
 export interface CatCountRequest extends CatCatRequestBase {
   index?: Indices
+  h?: Names
+  s?: Names
 }
 
 export type CatCountResponse = CatCountCountRecord[]
@@ -7085,6 +7093,8 @@ export interface CatFielddataFielddataRecord {
 export interface CatFielddataRequest extends CatCatRequestBase {
   fields?: Fields
   bytes?: Bytes
+  h?: Names
+  s?: Names
 }
 
 export type CatFielddataResponse = CatFielddataFielddataRecord[]
@@ -7145,6 +7155,8 @@ export interface CatHealthHealthRecord {
 export interface CatHealthRequest extends CatCatRequestBase {
   time?: TimeUnit
   ts?: boolean
+  h?: Names
+  s?: Names
 }
 
 export type CatHealthResponse = CatHealthHealthRecord[]
@@ -7455,6 +7467,8 @@ export interface CatIndicesRequest extends CatCatRequestBase {
   pri?: boolean
   time?: TimeUnit
   master_timeout?: Duration
+  h?: Names
+  s?: Names
 }
 
 export type CatIndicesResponse = CatIndicesIndicesRecord[]
@@ -7469,6 +7483,8 @@ export interface CatMasterMasterRecord {
 }
 
 export interface CatMasterRequest extends CatCatRequestBase {
+  h?: Names
+  s?: Names
   local?: boolean
   master_timeout?: Duration
 }
@@ -7839,6 +7855,8 @@ export interface CatNodeattrsNodeAttributesRecord {
 }
 
 export interface CatNodeattrsRequest extends CatCatRequestBase {
+  h?: Names
+  s?: Names
   local?: boolean
   master_timeout?: Duration
 }
@@ -8119,6 +8137,8 @@ export interface CatNodesRequest extends CatCatRequestBase {
   bytes?: Bytes
   full_id?: boolean | string
   include_unloaded_segments?: boolean
+  h?: Names
+  s?: Names
   master_timeout?: Duration
   time?: TimeUnit
 }
@@ -8137,6 +8157,8 @@ export interface CatPendingTasksPendingTasksRecord {
 }
 
 export interface CatPendingTasksRequest extends CatCatRequestBase {
+  h?: Names
+  s?: Names
   local?: boolean
   master_timeout?: Duration
   time?: TimeUnit
@@ -8159,6 +8181,8 @@ export interface CatPluginsPluginsRecord {
 }
 
 export interface CatPluginsRequest extends CatCatRequestBase {
+  h?: Names
+  s?: Names
   include_bootstrap?: boolean
   local?: boolean
   master_timeout?: Duration
@@ -8229,6 +8253,8 @@ export interface CatRecoveryRequest extends CatCatRequestBase {
   active_only?: boolean
   bytes?: Bytes
   detailed?: boolean
+  h?: Names
+  s?: Names
   time?: TimeUnit
 }
 
@@ -8242,6 +8268,8 @@ export interface CatRepositoriesRepositoriesRecord {
 }
 
 export interface CatRepositoriesRequest extends CatCatRequestBase {
+  h?: Names
+  s?: Names
   local?: boolean
   master_timeout?: Duration
 }
@@ -8251,6 +8279,8 @@ export type CatRepositoriesResponse = CatRepositoriesRepositoriesRecord[]
 export interface CatSegmentsRequest extends CatCatRequestBase {
   index?: Indices
   bytes?: Bytes
+  h?: Names
+  s?: Names
   local?: boolean
   master_timeout?: Duration
 }
@@ -8302,6 +8332,8 @@ export interface CatSegmentsSegmentsRecord {
 export interface CatShardsRequest extends CatCatRequestBase {
   index?: Indices
   bytes?: Bytes
+  h?: Names
+  s?: Names
   master_timeout?: Duration
   time?: TimeUnit
 }
@@ -8526,6 +8558,8 @@ export interface CatShardsShardsRecord {
 export interface CatSnapshotsRequest extends CatCatRequestBase {
   repository?: Names
   ignore_unavailable?: boolean
+  h?: Names
+  s?: Names
   master_timeout?: Duration
   time?: TimeUnit
 }
@@ -8571,6 +8605,8 @@ export interface CatTasksRequest extends CatCatRequestBase {
   detailed?: boolean
   nodes?: string[]
   parent_task_id?: string
+  h?: Names
+  s?: Names
   time?: TimeUnit
   timeout?: Duration
   wait_for_completion?: boolean
@@ -8615,6 +8651,8 @@ export interface CatTasksTasksRecord {
 
 export interface CatTemplatesRequest extends CatCatRequestBase {
   name?: Name
+  h?: Names
+  s?: Names
   local?: boolean
   master_timeout?: Duration
 }
@@ -8637,6 +8675,8 @@ export interface CatTemplatesTemplatesRecord {
 
 export interface CatThreadPoolRequest extends CatCatRequestBase {
   thread_pool_patterns?: Names
+  h?: Names
+  s?: Names
   time?: TimeUnit
   local?: boolean
   master_timeout?: Duration
@@ -22133,9 +22173,7 @@ export interface SpecUtilsCommonQueryParameters {
 
 export interface SpecUtilsCommonCatQueryParameters {
   format?: string
-  h?: Names
   help?: boolean
-  s?: Names
   v?: boolean
 }
 

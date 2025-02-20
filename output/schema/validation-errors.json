@@ -78,32 +78,24 @@
     },
     "cat.ml_data_frame_analytics": {
       "request": [
-        "request definition cat.ml_data_frame_analytics:Request / query - Property 'h' is already defined in an ancestor class",
-        "request definition cat.ml_data_frame_analytics:Request / query - Property 's' is already defined in an ancestor class",
         "request definition cat.ml_data_frame_analytics:Request / body - A request with inherited properties must have a PropertyBody"
       ],
       "response": []
     },
     "cat.ml_datafeeds": {
       "request": [
-        "request definition cat.ml_datafeeds:Request / query - Property 'h' is already defined in an ancestor class",
-        "request definition cat.ml_datafeeds:Request / query - Property 's' is already defined in an ancestor class",
         "request definition cat.ml_datafeeds:Request / body - A request with inherited properties must have a PropertyBody"
       ],
       "response": []
     },
     "cat.ml_jobs": {
       "request": [
-        "request definition cat.ml_jobs:Request / query - Property 'h' is already defined in an ancestor class",
-        "request definition cat.ml_jobs:Request / query - Property 's' is already defined in an ancestor class",
         "request definition cat.ml_jobs:Request / body - A request with inherited properties must have a PropertyBody"
       ],
       "response": []
     },
     "cat.ml_trained_models": {
       "request": [
-        "request definition cat.ml_trained_models:Request / query - Property 'h' is already defined in an ancestor class",
-        "request definition cat.ml_trained_models:Request / query - Property 's' is already defined in an ancestor class",
         "request definition cat.ml_trained_models:Request / body - A request with inherited properties must have a PropertyBody"
       ],
       "response": []
@@ -187,8 +179,6 @@
     },
     "cat.transforms": {
       "request": [
-        "request definition cat.transforms:Request / query - Property 'h' is already defined in an ancestor class",
-        "request definition cat.transforms:Request / query - Property 's' is already defined in an ancestor class",
         "request definition cat.transforms:Request / body - A request with inherited properties must have a PropertyBody"
       ],
       "response": []
