@@ -28,6 +28,7 @@ import { EventType } from '../_types/AnalyticsEvent'
  * @doc_tag analytics
  * @doc_id behavioral-analytics-collection-event
  * @ext_doc_id behavioral-analytics-event-reference
+ * @deprecated 9.0.0
  */
 export interface Request extends RequestBase {
   urls: [
