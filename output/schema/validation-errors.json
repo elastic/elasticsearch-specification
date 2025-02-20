@@ -217,12 +217,6 @@
       ],
       "response": []
     },
-    "indices.get_field_mapping": {
-      "request": [
-        "Request: query parameter 'local' does not exist in the json spec"
-      ],
-      "response": []
-    },
     "indices.put_settings": {
       "request": [
         "Request: missing json spec query parameter 'reopen'"

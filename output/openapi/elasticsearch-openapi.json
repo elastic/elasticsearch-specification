@@ -14094,9 +14094,6 @@
           },
           {
             "$ref": "#/components/parameters/indices.get_field_mapping#include_defaults"
-          },
-          {
-            "$ref": "#/components/parameters/indices.get_field_mapping#local"
           }
         ],
         "responses": {
@@ -14132,9 +14129,6 @@
           },
           {
             "$ref": "#/components/parameters/indices.get_field_mapping#include_defaults"
-          },
-          {
-            "$ref": "#/components/parameters/indices.get_field_mapping#local"
           }
         ],
         "responses": {
@@ -102131,16 +102125,6 @@
         "in": "query",
         "name": "include_defaults",
         "description": "If `true`, return all default settings in the response.",
-        "deprecated": false,
-        "schema": {
-          "type": "boolean"
-        },
-        "style": "form"
-      },
-      "indices.get_field_mapping#local": {
-        "in": "query",
-        "name": "local",
-        "description": "If `true`, the request retrieves information from the local node only.",
         "deprecated": false,
         "schema": {
           "type": "boolean"
