@@ -60,6 +60,16 @@ export interface Request extends CatRequestBase {
      */
     ignore_unavailable?: boolean
     /**
+     * List of columns to appear in the response. Supports simple wildcards.
+     */
+    h?: Names
+    /**
+     * List of columns that determine how the table should be sorted.
+     * Sorting defaults to ascending and can be changed by setting `:asc`
+     * or `:desc` as a suffix to the column name.
+     */
+    s?: Names
+    /**
      * Period to wait for a connection to the master node.
      * @server_default 30s
      */
