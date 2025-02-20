@@ -44,6 +44,12 @@
       ],
       "response": []
     },
+    "bulk": {
+      "request": [
+        "Request: missing json spec query parameter 'type'"
+      ],
+      "response": []
+    },
     "capabilities": {
       "request": [
         "Missing request & response"
