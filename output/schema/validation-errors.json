@@ -55,34 +55,6 @@
       ],
       "response": []
     },
-    "cat.ml_data_frame_analytics": {
-      "request": [
-        "request definition cat.ml_data_frame_analytics:Request / query - Property 'h' is already defined in an ancestor class",
-        "request definition cat.ml_data_frame_analytics:Request / query - Property 's' is already defined in an ancestor class"
-      ],
-      "response": []
-    },
-    "cat.ml_datafeeds": {
-      "request": [
-        "request definition cat.ml_datafeeds:Request / query - Property 'h' is already defined in an ancestor class",
-        "request definition cat.ml_datafeeds:Request / query - Property 's' is already defined in an ancestor class"
-      ],
-      "response": []
-    },
-    "cat.ml_jobs": {
-      "request": [
-        "request definition cat.ml_jobs:Request / query - Property 'h' is already defined in an ancestor class",
-        "request definition cat.ml_jobs:Request / query - Property 's' is already defined in an ancestor class"
-      ],
-      "response": []
-    },
-    "cat.ml_trained_models": {
-      "request": [
-        "request definition cat.ml_trained_models:Request / query - Property 'h' is already defined in an ancestor class",
-        "request definition cat.ml_trained_models:Request / query - Property 's' is already defined in an ancestor class"
-      ],
-      "response": []
-    },
     "cat.recovery": {
       "request": [
         "Request: missing json spec query parameter 'index'"
@@ -100,13 +72,6 @@
       "request": [
         "Request: query parameter 'timeout' does not exist in the json spec",
         "Request: query parameter 'wait_for_completion' does not exist in the json spec"
-      ],
-      "response": []
-    },
-    "cat.transforms": {
-      "request": [
-        "request definition cat.transforms:Request / query - Property 'h' is already defined in an ancestor class",
-        "request definition cat.transforms:Request / query - Property 's' is already defined in an ancestor class"
       ],
       "response": []
     },
