@@ -82,6 +82,7 @@ export class RankedDocument {
  */
 export class InferenceResult {
   text_embedding_bytes?: Array<TextEmbeddingByteResult>
+  text_embedding_bits?: Array<TextEmbeddingByteResult>
   text_embedding?: Array<TextEmbeddingResult>
   sparse_embedding?: Array<SparseEmbeddingResult>
   completion?: Array<CompletionResult>
