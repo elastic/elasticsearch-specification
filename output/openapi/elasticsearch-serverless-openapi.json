@@ -13155,7 +13155,7 @@
           {
             "in": "query",
             "name": "number_of_allocations",
-            "description": "The number of model allocations on each node where the model is deployed.\nAll allocations on a node share the same copy of the model in memory but use\na separate set of threads to evaluate the model.\nIncreasing this value generally increases the throughput.\nIf this setting is greater than the number of hardware threads\nit will automatically be changed to a value less than the number of hardware threads.",
+            "description": "The number of model allocations on each node where the model is deployed.\nAll allocations on a node share the same copy of the model in memory but use\na separate set of threads to evaluate the model.\nIncreasing this value generally increases the throughput.\nIf this setting is greater than the number of hardware threads\nit will automatically be changed to a value less than the number of hardware threads.\nIf adaptive_allocations is enabled, do not set this value, because it’s automatically set.",
             "deprecated": false,
             "schema": {
               "type": "number"
@@ -13213,6 +13213,20 @@
             "style": "form"
           }
         ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "adaptive_allocations": {
+                    "$ref": "#/components/schemas/ml._types:AdaptiveAllocationsSettings"
+                  }
+                }
+              }
+            }
+          }
+        },
         "responses": {
           "200": {
             "description": "",
@@ -14107,8 +14121,11 @@
                 "type": "object",
                 "properties": {
                   "number_of_allocations": {
-                    "description": "The number of model allocations on each node where the model is deployed.\nAll allocations on a node share the same copy of the model in memory but use\na separate set of threads to evaluate the model.\nIncreasing this value generally increases the throughput.\nIf this setting is greater than the number of hardware threads\nit will automatically be changed to a value less than the number of hardware threads.",
+                    "description": "The number of model allocations on each node where the model is deployed.\nAll allocations on a node share the same copy of the model in memory but use\na separate set of threads to evaluate the model.\nIncreasing this value generally increases the throughput.\nIf this setting is greater than the number of hardware threads\nit will automatically be changed to a value less than the number of hardware threads.\nIf adaptive_allocations is enabled, do not set this value, because it’s automatically set.",
                     "type": "number"
+                  },
+                  "adaptive_allocations": {
+                    "$ref": "#/components/schemas/ml._types:AdaptiveAllocationsSettings"
                   }
                 }
               }
@@ -52116,12 +52133,15 @@
         "type": "object",
         "properties": {
           "enabled": {
+            "description": "If true, adaptive_allocations is enabled",
             "type": "boolean"
           },
           "min_number_of_allocations": {
+            "description": "Specifies the minimum number of allocations to scale to.\nIf set, it must be greater than or equal to 0.\nIf not defined, the deployment scales to 0.",
             "type": "number"
           },
           "max_number_of_allocations": {
+            "description": "Specifies the maximum number of allocations to scale to.\nIf set, it must be greater than or equal to min_number_of_allocations.",
             "type": "number"
           }
         },
