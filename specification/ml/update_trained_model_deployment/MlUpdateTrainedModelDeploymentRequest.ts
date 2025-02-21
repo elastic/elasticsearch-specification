@@ -17,6 +17,7 @@
  * under the License.
  */
 
+import { AdaptiveAllocationsSettings } from '@ml/_types/TrainedModel'
 import { RequestBase } from '@_types/Base'
 import { Id } from '@_types/common'
 import { integer } from '@_types/Numeric'
@@ -63,8 +64,15 @@ export interface Request extends RequestBase {
      * Increasing this value generally increases the throughput.
      * If this setting is greater than the number of hardware threads
      * it will automatically be changed to a value less than the number of hardware threads.
+     * If adaptive_allocations is enabled, do not set this value, because it’s automatically set.
      * @server_default 1
      */
     number_of_allocations?: integer
+    /**
+     * Adaptive allocations configuration. When enabled, the number of allocations
+     * is set based on the current load.
+     * If adaptive_allocations is enabled, do not set the number of allocations manually.
+     */
+    adaptive_allocations?: AdaptiveAllocationsSettings
   }
 }
