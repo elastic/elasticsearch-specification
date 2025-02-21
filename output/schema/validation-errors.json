@@ -2,7 +2,6 @@
   "endpointErrors": {
     "async_search.submit": {
       "request": [
-        "Request: query parameter 'keep_alive' does not exist in the json spec",
         "Request: query parameter 'min_compatible_shard_node' does not exist in the json spec",
         "interface definition _types:QueryVectorBuilder - Property text_embedding is a single-variant and must be required"
       ],
@@ -365,6 +364,13 @@
     "indices.simulate_template": {
       "request": [
         "Request: missing json spec query parameter 'cause'"
+      ],
+      "response": []
+    },
+    "inference.update": {
+      "request": [
+        "/_inference/{inference_id}/_update: different http methods in the json spec",
+        "/_inference/{task_type}/{inference_id}/_update: different http methods in the json spec"
       ],
       "response": []
     },
