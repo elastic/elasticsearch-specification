@@ -482,16 +482,14 @@ impl TypeDefinition {
     }
 }
 
-/**
- * The Example type is used for both requests and responses
- * This type definition is taken from the OpenAPI spec
- *     https://spec.openapis.org/oas/v3.1.0#example-object
- * With the exception of using String as the 'value' type.
- * This type matches the 'Example' type in metamodel.ts. The
- * data serialized by the Typescript code in schema.json, 
- * needs to be deserialized into this equivalent type.
- * The OpenAPI v3 spec also defines the 'Example' type, so
- * to distinguish them, this type is called SchemaExample.
+/// The Example type is used for both requests and responses.
+///
+/// This type definition is taken from the OpenAPI spec
+///     https://spec.openapis.org/oas/v3.1.0#example-object
+/// with the exception of using String as the 'value' type.
+///
+/// The OpenAPI v3 spec also defines the 'Example' type, so
+/// to distinguish them, this type is called SchemaExample.
  */
 #[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct SchemaExample {
