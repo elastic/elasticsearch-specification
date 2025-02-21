@@ -146,7 +146,7 @@ class BaseExamplesProcessor {
         // Convert to prettified JSON string
         example.value = JSON.stringify(example.value, null, 2)
       }
-      examples[exampleName] = example
+      examples.set(exampleName, example)
     }
     return examples
   }
@@ -189,7 +189,10 @@ class RequestExamplesProcessor extends BaseExamplesProcessor {
     const examplesRequestSubfolder = this.getExamplesRequestSubfolder(examplesFolder)
     // If there is an examples/request folder, add the request examples to the model.
     if (examplesRequestSubfolder !== undefined) {
-      requestDefinition.examples = this.getExampleMap(examplesRequestSubfolder)
+      const examples = this.getExampleMap(examplesRequestSubfolder)
+      if (examples.size > 0) {
+        requestDefinition.examples = Object.fromEntries(examples)
+      }
     }
   }
 }
@@ -223,7 +226,7 @@ class ResponseExamplesProcessor extends BaseExamplesProcessor {
     const subfolders = this.getSubfolders(examplesSubfolder)
     // If we have a "response" subfolder, stop there and return.
     // We should not have a mix of response and {nnn}_response folders.
-    if ('response' in subfolders) {
+    if (subfolders.includes('response')) {
       const responseSubfolder = path.join(examplesSubfolder, 'response')
       return new Map([['200', responseSubfolder]])
     }
@@ -255,7 +258,10 @@ class ResponseExamplesProcessor extends BaseExamplesProcessor {
     // If there is an examples/response or examples/200_response folder,
     // add the response examples to the model.
     if (examples200ResponseSubfolder !== undefined) {
-      responseDefinition.examples = this.getExampleMap(examples200ResponseSubfolder)
+      const examples = this.getExampleMap(examples200ResponseSubfolder)
+      if (examples.size > 0) {
+        responseDefinition.examples = Object.fromEntries(examples)
+      }
     }
   }
 }
