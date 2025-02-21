@@ -39,11 +39,11 @@ export interface Request extends RequestBase {
   urls: [
     {
       path: '/_inference/{inference_id}/_update'
-      methods: ['POST']
+      methods: ['PUT']
     },
     {
       path: '/_inference/{task_type}/{inference_id}/_update'
-      methods: ['POST']
+      methods: ['PUT']
     }
   ]
   path_parts: {

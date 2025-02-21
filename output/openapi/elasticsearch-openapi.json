@@ -17018,7 +17018,7 @@
       }
     },
     "/_inference/{inference_id}/_update": {
-      "post": {
+      "put": {
         "tags": [
           "inference"
         ],
@@ -17042,7 +17042,7 @@
       }
     },
     "/_inference/{task_type}/{inference_id}/_update": {
-      "post": {
+      "put": {
         "tags": [
           "inference"
         ],
