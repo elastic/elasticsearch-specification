@@ -1525,6 +1525,12 @@
                     "succeeded",
                     "num_freed"
                   ]
+                },
+                "examples": {
+                  "ClosePointInTimeResponseExample1": {
+                    "description": "A successful response from `DELETE /_pit`.",
+                    "value": "{\n  \"succeeded\": true, \n  \"num_freed\": 3     \n}"
+                  }
                 }
               }
             }
@@ -7768,6 +7774,12 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/_types:AcknowledgedResponseBase"
+                },
+                "examples": {
+                  "IndicesPutDataLifecycleResponseExample1": {
+                    "description": "A successful response for configuring a data stream lifecycle.",
+                    "value": "{\n  \"acknowledged\": true\n}"
+                  }
                 }
               }
             }
@@ -8679,6 +8691,12 @@
                   "required": [
                     "template"
                   ]
+                },
+                "examples": {
+                  "indicesSimulateIndexTemplateResponseExample1": {
+                    "description": "A successful response from `POST /_index_template/_simulate_index/my-index-000001`.",
+                    "value": "{\n  \"template\" : {\n    \"settings\" : {\n      \"index\" : {\n        \"number_of_shards\" : \"2\",\n        \"number_of_replicas\" : \"0\",\n        \"routing\" : {\n          \"allocation\" : {\n            \"include\" : {\n              \"_tier_preference\" : \"data_content\"\n            }\n          }\n        }\n      }\n    },\n    \"mappings\" : {\n      \"properties\" : {\n        \"@timestamp\" : {\n          \"type\" : \"date\"\n        }\n      }\n    },\n    \"aliases\" : { }\n  },\n  \"overlapping\" : [\n    {\n      \"name\" : \"template_1\",\n      \"index_patterns\" : [\n        \"my-index-*\"\n      ]\n    }\n  ]\n}"
+                  }
                 }
               }
             }
@@ -11461,6 +11479,12 @@
                     "model_snapshot_retention_days",
                     "results_index_name"
                   ]
+                },
+                "examples": {
+                  "MlPutJobResponseExample1": {
+                    "description": "A successful response when creating an anomaly detection job and datafeed.",
+                    "value": "{\n  \"job_id\": \"test-job1\",\n  \"job_type\": \"anomaly_detector\",\n  \"job_version\": \"8.4.0\",\n  \"create_time\": 1656087283340,\n  \"datafeed_config\": {\n    \"datafeed_id\": \"datafeed-test-job1\",\n    \"job_id\": \"test-job1\",\n    \"authorization\": {\n      \"roles\": [\n        \"superuser\"\n      ]\n    },\n    \"query_delay\": \"61499ms\",\n    \"chunking_config\": {\n      \"mode\": \"auto\"\n    },\n    \"indices_options\": {\n      \"expand_wildcards\": [\n        \"open\"\n      ],\n      \"ignore_unavailable\": false,\n      \"allow_no_indices\": true,\n      \"ignore_throttled\": true\n    },\n    \"query\": {\n      \"bool\": {\n        \"must\": [\n          {\n            \"match_all\": {}\n          }\n        ]\n      }\n    },\n    \"indices\": [\n      \"kibana_sample_data_logs\"\n    ],\n    \"scroll_size\": 1000,\n    \"delayed_data_check_config\": {\n      \"enabled\": true\n    },\n    \"runtime_mappings\": {\n      \"hour_of_day\": {\n        \"type\": \"long\",\n        \"script\": {\n          \"source\": \"emit(doc['timestamp'].value.getHour());\"\n        }\n      }\n    }\n  },\n  \"analysis_config\": {\n    \"bucket_span\": \"15m\",\n    \"detectors\": [\n      {\n        \"detector_description\": \"Sum of bytes\",\n        \"function\": \"sum\",\n        \"field_name\": \"bytes\",\n        \"detector_index\": 0\n      }\n    ],\n    \"influencers\": [],\n    \"model_prune_window\": \"30d\"\n  },\n  \"analysis_limits\": {\n    \"model_memory_limit\": \"11mb\",\n    \"categorization_examples_limit\": 4\n  },\n  \"data_description\": {\n    \"time_field\": \"timestamp\",\n    \"time_format\": \"epoch_ms\"\n  },\n  \"model_plot_config\": {\n    \"enabled\": true,\n    \"annotations_enabled\": true\n  },\n  \"model_snapshot_retention_days\": 10,\n  \"daily_model_snapshot_retention_after_days\": 1,\n  \"results_index_name\": \"custom-test-job1\",\n  \"allow_lazy_open\": false\n}"
+                  }
                 }
               }
             }
@@ -12941,6 +12965,12 @@
                     "opened",
                     "node"
                   ]
+                },
+                "examples": {
+                  "MlOpenJobResponseExample1": {
+                    "description": "A successful response when opening an anomaly detection job.",
+                    "value": "{\n  \"opened\": true,\n  \"node\": \"node-1\"\n}"
+                  }
                 }
               }
             }
@@ -17008,6 +17038,12 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/search_application._types:SearchApplication"
+                },
+                "examples": {
+                  "SearchApplicationGetResponseExample1": {
+                    "description": "A sucessful response from `GET _application/search_application/my-app/`.",
+                    "value": "{\n  \"name\": \"my-app\",\n  \"indices\": [ \"index1\", \"index2\" ],\n  \"updated_at_millis\": 1682105622204,\n  \"template\": {\n    \"script\": {\n      \"source\": {\n        \"query\": {\n          \"query_string\": {\n            \"query\": \"{{query_string}}\",\n            \"default_field\": \"{{default_field}}\"\n          }\n        }\n      },\n      \"lang\": \"mustache\",\n      \"options\": {\n        \"content_type\": \"application/json;charset=utf-8\"\n      },\n      \"params\": {\n        \"query_string\": \"*\",\n        \"default_field\": \"*\"\n      }\n    }\n  }\n}"
+                  }
                 }
               }
             }
@@ -17281,6 +17317,12 @@
                     "count",
                     "results"
                   ]
+                },
+                "examples": {
+                  "SearchApplicationsListResponseExample1": {
+                    "description": "A succesful response from `GET _application/search_application?from=0&size=3&q=app*` returns the first three search applications whose names start with `app`.",
+                    "value": "{\n  \"count\": 2,\n  \"results\": [\n    {\n      \"name\": \"app-1\",\n      \"updated_at_millis\": 1690981129366\n    },\n    {\n      \"name\": \"app-2\",\n      \"updated_at_millis\": 1691501823939\n    }\n  ]\n}"
+                  }
                 }
               }
             }
@@ -19434,6 +19476,18 @@
                     "completed",
                     "task"
                   ]
+                },
+                "examples": {
+                  "GetTaskResponseExample1": {
+                    "summary": "Get cluster actions",
+                    "description": "A successful response from `GET _tasks?actions=cluster:*`, which retrieves all cluster-related tasks.\n",
+                    "value": "{\n  \"nodes\" : {\n    \"oTUltX4IQMOUUVeiohTt8A\" : {\n      \"name\" : \"H5dfFeA\",\n      \"transport_address\" : \"127.0.0.1:9300\",\n      \"host\" : \"127.0.0.1\",\n      \"ip\" : \"127.0.0.1:9300\",\n      \"tasks\" : {\n        \"oTUltX4IQMOUUVeiohTt8A:124\" : {\n          \"node\" : \"oTUltX4IQMOUUVeiohTt8A\",\n          \"id\" : 124,\n          \"type\" : \"direct\",\n          \"action\" : \"cluster:monitor/tasks/lists[n]\",\n          \"start_time_in_millis\" : 1458585884904,\n          \"running_time_in_nanos\" : 47402,\n          \"cancellable\" : false,\n          \"parent_task_id\" : \"oTUltX4IQMOUUVeiohTt8A:123\"\n        },\n        \"oTUltX4IQMOUUVeiohTt8A:123\" : {\n          \"node\" : \"oTUltX4IQMOUUVeiohTt8A\",\n          \"id\" : 123,\n          \"type\" : \"transport\",\n          \"action\" : \"cluster:monitor/tasks/lists\",\n          \"start_time_in_millis\" : 1458585884904,\n          \"running_time_in_nanos\" : 236042,\n          \"cancellable\" : false\n        }\n      }\n    }\n  }\n}"
+                  },
+                  "GetTaskResponseExample2": {
+                    "summary": "Get details about a delete by query",
+                    "description": "A successful response from `GET _tasks?detailed=true&actions=*/delete/byquery`, which gets the status of a delete by query operation. The `status` object contains the actual status. `total` is the total number of operations that the reindex expects to perform. You can estimate the progress by adding the `updated`, `created`, and `deleted` fields. The request will finish when their sum is equal to the `total` field.\n",
+                    "value": "{\n  \"nodes\" : {\n    \"r1A2WoRbTwKZ516z6NEs5A\" : {\n      \"name\" : \"r1A2WoR\",\n      \"transport_address\" : \"127.0.0.1:9300\",\n      \"host\" : \"127.0.0.1\",\n      \"ip\" : \"127.0.0.1:9300\",\n      \"attributes\" : {\n        \"testattr\" : \"test\",\n        \"portsfile\" : \"true\"\n      },\n      \"tasks\" : {\n        \"r1A2WoRbTwKZ516z6NEs5A:36619\" : {\n          \"node\" : \"r1A2WoRbTwKZ516z6NEs5A\",\n          \"id\" : 36619,\n          \"type\" : \"transport\",\n          \"action\" : \"indices:data/write/delete/byquery\",\n          \"status\" : {    \n            \"total\" : 6154,\n            \"updated\" : 0,\n            \"created\" : 0,\n            \"deleted\" : 3500,\n            \"batches\" : 36,\n            \"version_conflicts\" : 0,\n            \"noops\" : 0,\n            \"retries\": 0,\n            \"throttled_millis\": 0\n          },\n          \"description\" : \"\"\n        }\n      }\n    }\n  }\n}"
+                  }
                 }
               }
             }
@@ -57238,6 +57292,12 @@
               "items": {
                 "$ref": "#/components/schemas/cat.aliases:AliasesRecord"
               }
+            },
+            "examples": {
+              "CatAliasesResponseExample1": {
+                "description": "A successful response from `GET _cat/aliases?v=true`. This response shows that `alias2` has configured a filter and `alias3` and `alias4` have routing configurations.\n",
+                "value": "alias  index filter routing.index routing.search is_write_index\nalias1 test1 -      -            -              -\nalias2 test1 *      -            -              -\nalias3 test1 -      1            1              -\nalias4 test1 -      2            1,2            -"
+              }
             }
           }
         }
@@ -57250,6 +57310,12 @@
               "type": "array",
               "items": {
                 "$ref": "#/components/schemas/cat.component_templates:ComponentTemplate"
+              }
+            },
+            "examples": {
+              "CatComponentTemplatesResponseExample1": {
+                "description": "A successful response from `GET _cat/aliases?v=true`. This response shows that `alias2` has configured a filter and `alias3` and `alias4` have routing configurations.\n",
+                "value": "alias  index filter routing.index routing.search is_write_index\nalias1 test1 -      -            -              -\nalias2 test1 *      -            -              -\nalias3 test1 -      1            1              -\nalias4 test1 -      2            1,2            -"
               }
             }
           }
@@ -57264,6 +57330,18 @@
               "items": {
                 "$ref": "#/components/schemas/cat.count:CountRecord"
               }
+            },
+            "examples": {
+              "CatCountResponseExample1": {
+                "summary": "Single data stream or index count",
+                "description": "A successful response from `GET /_cat/count/my-index-000001?v=true`. It retrieves the document count for the `my-index-000001` data stream or index.\n",
+                "value": "epoch      timestamp count\n1475868259 15:24:20  120"
+              },
+              "CatCountResponseExample2": {
+                "summary": "All data streams and indices count",
+                "description": "A successful response from `GET /_cat/count?v=true`. It retrieves the document count for all data streams and indices in the cluster.\n",
+                "value": "epoch      timestamp count\n1475868259 15:24:20  121"
+              }
             }
           }
         }
@@ -57276,6 +57354,12 @@
               "type": "array",
               "items": {
                 "$ref": "#/components/schemas/cat.indices:IndicesRecord"
+              }
+            },
+            "examples": {
+              "CatIndicesResponseExample1": {
+                "description": "A successful response from `GET /_cat/indices/my-index-*?v=true&s=index`.\n",
+                "value": "health status index            uuid                   pri rep docs.count docs.deleted store.size pri.store.size dataset.size\nyellow open   my-index-000001  u8FNjxh8Rfy_awN11oDKYQ   1   1       1200            0     88.1kb         88.1kb       88.1kb\ngreen  open   my-index-000002  nYFWZEO7TUiOjLQXBaYJpA   1   0          0            0       260b           260b         260b"
               }
             }
           }
@@ -57290,6 +57374,12 @@
               "items": {
                 "$ref": "#/components/schemas/cat.ml_data_frame_analytics:DataFrameAnalyticsRecord"
               }
+            },
+            "examples": {
+              "CatDataframeanalyticsResponseExample1": {
+                "description": "A successful response from `GET _cat/ml/data_frame/analytics?v=true`.",
+                "value": "id               create_time              type             state\nclassifier_job_1 2020-02-12T11:49:09.594Z classification stopped\nclassifier_job_2 2020-02-12T11:49:14.479Z classification stopped\nclassifier_job_3 2020-02-12T11:49:16.928Z classification stopped\nclassifier_job_4 2020-02-12T11:49:19.127Z classification stopped\nclassifier_job_5 2020-02-12T11:49:21.349Z classification stopped"
+              }
             }
           }
         }
@@ -57302,6 +57392,12 @@
               "type": "array",
               "items": {
                 "$ref": "#/components/schemas/cat.ml_datafeeds:DatafeedsRecord"
+              }
+            },
+            "examples": {
+              "CatDatafeedsResponseExample1": {
+                "description": "A successful response from `GET _cat/ml/datafeeds?v=true`.",
+                "value": "id                              state buckets.count search.count\ndatafeed-high_sum_total_sales stopped 743          7\ndatafeed-low_request_rate     stopped 1457         3\ndatafeed-response_code_rates  stopped 1460         18\ndatafeed-url_scanning         stopped 1460         18"
               }
             }
           }
@@ -57316,6 +57412,12 @@
               "items": {
                 "$ref": "#/components/schemas/cat.ml_jobs:JobsRecord"
               }
+            },
+            "examples": {
+              "CatJobsResponseExample1": {
+                "description": "A succesful response from `GET _cat/component_templates/my-template-*?v=true&s=name`.",
+                "value": "name          version alias_count mapping_count settings_count metadata_count included_in\nmy-template-1         0           0             1              0              [my-index-template]\nmy-template-2         0           3             0              0              [my-index-template]"
+              }
             }
           }
         }
@@ -57329,6 +57431,12 @@
               "items": {
                 "$ref": "#/components/schemas/cat.ml_trained_models:TrainedModelsRecord"
               }
+            },
+            "examples": {
+              "CatTrainedModelsResponseExample1": {
+                "description": "A successful response from `GET _cat/ml/trained_models?h=c,o,l,ct,v&v=true`.",
+                "value": "id                           created_by operations license  create_time              version\nddddd-1580216177138              _xpack 196        PLATINUM 2020-01-28T12:56:17.138Z 8.0.0\nflight-regress-1580215685537     _xpack 102        PLATINUM 2020-01-28T12:48:05.537Z 8.0.0\nlang_ident_model_1               _xpack 39629      BASIC    2019-12-05T12:28:34.594Z 7.6.0"
+              }
             }
           }
         }
@@ -57341,6 +57449,12 @@
               "type": "array",
               "items": {
                 "$ref": "#/components/schemas/cat.transforms:TransformsRecord"
+              }
+            },
+            "examples": {
+              "CatTransformsResponseExample1": {
+                "description": "A successful response from `GET /_cat/transforms?v=true&format=json`.",
+                "value": "[\n  {\n    \"id\" : \"ecommerce_transform\",\n    \"state\" : \"started\",\n    \"checkpoint\" : \"1\",\n    \"documents_processed\" : \"705\",\n    \"checkpoint_progress\" : \"100.00\",\n    \"changes_last_detection_time\" : null\n  }\n]"
               }
             }
           }
@@ -57446,6 +57560,12 @@
                 "count",
                 "_shards"
               ]
+            },
+            "examples": {
+              "CountResponseExample1": {
+                "description": "A successful response from `GET /my-index-000001/_count?q=user:kimchy`.",
+                "value": "{\n  \"count\": 1,\n  \"_shards\": {\n    \"total\": 1,\n    \"successful\": 1,\n    \"skipped\": 0,\n    \"failed\": 0\n  }\n}"
+              }
             }
           }
         }
@@ -57658,6 +57778,12 @@
                   }
                 }
               }
+            },
+            "examples": {
+              "indicesAnalyzeResponseExample7": {
+                "description": "A successful response for an analysis with `explain` set to `true`.",
+                "value": "{\n  \"detail\": {\n    \"custom_analyzer\": true,\n    \"charfilters\": [],\n    \"tokenizer\": {\n      \"name\": \"standard\",\n      \"tokens\": [\n        {\n          \"token\": \"detailed\",\n          \"start_offset\": 0,\n          \"end_offset\": 8,\n          \"type\": \"<ALPHANUM>\",\n          \"position\": 0\n        },\n        {\n          \"token\": \"output\",\n          \"start_offset\": 9,\n          \"end_offset\": 15,\n          \"type\": \"<ALPHANUM>\",\n          \"position\": 1\n        }\n      ]\n    },\n    \"tokenfilters\": [\n      {\n        \"name\": \"snowball\",\n        \"tokens\": [\n          {\n            \"token\": \"detail\",\n            \"start_offset\": 0,\n            \"end_offset\": 8,\n            \"type\": \"<ALPHANUM>\",\n            \"position\": 0,\n            \"keyword\": false\n          },\n          {\n            \"token\": \"output\",\n            \"start_offset\": 9,\n            \"end_offset\": 15,\n            \"type\": \"<ALPHANUM>\",\n            \"position\": 1,\n            \"keyword\": false\n          }\n        ]\n      }\n    ]\n  }\n}"
+              }
             }
           }
         }
@@ -57708,6 +57834,12 @@
               "required": [
                 "data_streams"
               ]
+            },
+            "examples": {
+              "indicesGetDataStreamResponseExample1": {
+                "description": "A successful response for retrieving information about a data stream.",
+                "value": "{\n  \"data_streams\": [\n    {\n      \"name\": \"my-data-stream\",\n      \"timestamp_field\": {\n        \"name\": \"@timestamp\"\n      },\n      \"indices\": [\n        {\n          \"index_name\": \".ds-my-data-stream-2099.03.07-000001\",\n          \"index_uuid\": \"xCEhwsp8Tey0-FLNFYVwSg\",\n          \"prefer_ilm\": true,\n          \"ilm_policy\": \"my-lifecycle-policy\",\n          \"managed_by\": \"Index Lifecycle Management\"\n        },\n        {\n          \"index_name\": \".ds-my-data-stream-2099.03.08-000002\",\n          \"index_uuid\": \"PA_JquKGSiKcAKBA8DJ5gw\",\n          \"prefer_ilm\": true,\n          \"ilm_policy\": \"my-lifecycle-policy\",\n          \"managed_by\": \"Index Lifecycle Management\"\n        }\n      ],\n      \"generation\": 2,\n      \"_meta\": {\n        \"my-meta-field\": \"foo\"\n      },\n      \"status\": \"GREEN\",\n      \"next_generation_managed_by\": \"Index Lifecycle Management\",\n      \"prefer_ilm\": true,\n      \"template\": \"my-index-template\",\n      \"ilm_policy\": \"my-lifecycle-policy\",\n      \"hidden\": false,\n      \"system\": false,\n      \"allow_custom_routing\": false,\n      \"replicated\": false,\n      \"rollover_on_write\": false\n    },\n    {\n      \"name\": \"my-data-stream-two\",\n      \"timestamp_field\": {\n        \"name\": \"@timestamp\"\n      },\n      \"indices\": [\n        {\n          \"index_name\": \".ds-my-data-stream-two-2099.03.08-000001\",\n          \"index_uuid\": \"3liBu2SYS5axasRt6fUIpA\",\n          \"prefer_ilm\": true,\n          \"ilm_policy\": \"my-lifecycle-policy\",\n          \"managed_by\": \"Index Lifecycle Management\"\n        }\n      ],\n      \"generation\": 1,\n      \"_meta\": {\n        \"my-meta-field\": \"foo\"\n      },\n      \"status\": \"YELLOW\",\n      \"next_generation_managed_by\": \"Index Lifecycle Management\",\n      \"prefer_ilm\": true,\n      \"template\": \"my-index-template\",\n      \"ilm_policy\": \"my-lifecycle-policy\",\n      \"hidden\": false,\n      \"system\": false,\n      \"allow_custom_routing\": false,\n      \"replicated\": false,\n      \"rollover_on_write\": false\n    }\n  ]\n}"
+              }
             }
           }
         }
@@ -57850,6 +57982,12 @@
                 "rolled_over",
                 "shards_acknowledged"
               ]
+            },
+            "examples": {
+              "indicesRolloverResponseExample1": {
+                "description": "An abbreviated response from `GET /_segments`.\n",
+                "value": "{\n  \"_shards\": {},\n  \"indices\": {\n    \"test\": {\n      \"shards\": {\n        \"0\": [\n          {\n            \"routing\": {\n              \"state\": \"STARTED\",\n              \"primary\": true,\n              \"node\": \"zDC_RorJQCao9xf9pg3Fvw\"\n            },\n            \"num_committed_segments\": 0,\n            \"num_search_segments\": 1,\n            \"segments\": {\n              \"_0\": {\n                \"generation\": 0,\n                \"num_docs\": 1,\n                \"deleted_docs\": 0,\n                \"size_in_bytes\": 3800,\n                \"committed\": false,\n                \"search\": true,\n                \"version\": \"7.0.0\",\n                \"compound\": true,\n                \"attributes\": {}\n              }\n            }\n          }\n        ]\n      }\n    }\n  }\n}"
+              }
             }
           }
         }
@@ -57874,6 +58012,12 @@
               "required": [
                 "template"
               ]
+            },
+            "examples": {
+              "indicesSimulateTemplateResponseExample2": {
+                "description": "A successful response from `POST /_index_template/_simulate` with a template configuration in the request body. The response shows any overlapping templates with a lower priority.\n",
+                "value": "{\n  \"template\" : {\n    \"settings\" : {\n      \"index\" : {\n        \"number_of_replicas\" : \"1\",\n        \"routing\" : {\n          \"allocation\" : {\n            \"include\" : {\n              \"_tier_preference\" : \"data_content\"\n            }\n          }\n        }\n      }\n    },\n    \"mappings\" : {\n      \"properties\" : {\n        \"@timestamp\" : {\n          \"type\" : \"date\"\n        }\n      }\n    },\n    \"aliases\" : { }\n  },\n  \"overlapping\" : [\n    {\n      \"name\" : \"final-template\",\n      \"index_patterns\" : [\n        \"my-index-*\"\n      ]\n    }\n  ]\n}"
+              }
             }
           }
         }
@@ -58000,6 +58144,12 @@
               "additionalProperties": {
                 "$ref": "#/components/schemas/ingest._types:Pipeline"
               }
+            },
+            "examples": {
+              "GetPipelineResponseExample1": {
+                "description": "A successful response for retrieving information about an ingest pipeline.",
+                "value": "{\n  \"my-pipeline-id\" : {\n    \"description\" : \"describe pipeline\",\n    \"version\" : 123,\n    \"processors\" : [\n      {\n        \"set\" : {\n          \"field\" : \"foo\",\n          \"value\" : \"bar\"\n        }\n      }\n    ]\n  }\n}"
+              }
             }
           }
         }
@@ -58039,6 +58189,12 @@
               "type": "object",
               "additionalProperties": {
                 "$ref": "#/components/schemas/logstash._types:Pipeline"
+              }
+            },
+            "examples": {
+              "LogstashGetPipelineResponseExample1": {
+                "description": "A successful response from `GET _logstash/pipeline/my_pipeline`.\n",
+                "value": "{\n  \"my_pipeline\": {\n    \"description\": \"Sample pipeline for illustration purposes\",\n    \"last_modified\": \"2021-01-02T02:50:51.250Z\",\n    \"pipeline_metadata\": {\n      \"type\": \"logstash_pipeline\",\n      \"version\": \"1\"\n    },\n    \"username\": \"elastic\",\n    \"pipeline\": \"input {}\\\\n filter { grok {} }\\\\n output {}\",\n    \"pipeline_settings\": {\n      \"pipeline.workers\": 1,\n      \"pipeline.batch.size\": 125,\n      \"pipeline.batch.delay\": 50,\n      \"queue.type\": \"memory\",\n      \"queue.max_bytes\": \"1gb\",\n      \"queue.checkpoint.writes\": 1024\n    }\n  }\n}"
               }
             }
           }
@@ -58563,6 +58719,12 @@
           "application/json": {
             "schema": {
               "$ref": "#/components/schemas/_global.search:ResponseBody"
+            },
+            "examples": {
+              "SearchResponseExample1": {
+                "description": "An abbreviated response from `GET /my-index-000001/_search?from=40&size=20` with a simple term query.\n",
+                "value": "{\n  \"took\": 5,\n  \"timed_out\": false,\n  \"_shards\": {\n    \"total\": 1,\n    \"successful\": 1,\n    \"skipped\": 0,\n    \"failed\": 0\n  },\n  \"hits\": {\n    \"total\": {\n      \"value\": 20,\n      \"relation\": \"eq\"\n    },\n    \"max_score\": 1.3862942,\n    \"hits\": [\n      {\n        \"_index\": \"my-index-000001\",\n        \"_id\": \"0\",\n        \"_score\": 1.3862942,\n        \"_source\": {\n          \"@timestamp\": \"2099-11-15T14:12:12\",\n          \"http\": {\n            \"request\": {\n              \"method\": \"get\"\n            },\n            \"response\": {\n              \"status_code\": 200,\n              \"bytes\": 1070000\n            },\n            \"version\": \"1.1\"\n          },\n          \"source\": {\n            \"ip\": \"127.0.0.1\"\n          },\n          \"message\": \"GET /search HTTP/1.1 200 1070000\",\n          \"user\": {\n            \"id\": \"kimchy\"\n          }\n        }\n      }\n    ]\n  }\n}"
+              }
             }
           }
         }
@@ -58575,6 +58737,12 @@
               "type": "object",
               "additionalProperties": {
                 "$ref": "#/components/schemas/search_application._types:AnalyticsCollection"
+              }
+            },
+            "examples": {
+              "BehavioralAnalyticsGetResponseExample1": {
+                "description": "A successful response from `GET _application/analytics/my*`",
+                "value": "{\n  \"my_analytics_collection\": {\n      \"event_data_stream\": {\n          \"name\": \"behavioral_analytics-events-my_analytics_collection\"\n      }\n  },\n  \"my_analytics_collection2\": {\n      \"event_data_stream\": {\n          \"name\": \"behavioral_analytics-events-my_analytics_collection2\"\n      }\n  }\n}"
               }
             }
           }
