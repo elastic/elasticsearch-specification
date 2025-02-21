@@ -19,12 +19,6 @@
       ],
       "response": []
     },
-    "cat.recovery": {
-      "request": [
-        "Request: missing json spec query parameter 'index'"
-      ],
-      "response": []
-    },
     "cat.segments": {
       "request": [
         "Request: query parameter 'local' does not exist in the json spec",
