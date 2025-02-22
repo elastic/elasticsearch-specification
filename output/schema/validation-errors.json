@@ -38,7 +38,6 @@
     },
     "async_search.submit": {
       "request": [
-        "Request: query parameter 'keep_alive' does not exist in the json spec",
         "Request: query parameter 'min_compatible_shard_node' does not exist in the json spec",
         "interface definition _types:QueryVectorBuilder - Property text_embedding is a single-variant and must be required"
       ],
@@ -739,8 +738,7 @@
       "request": [
         "Request: query parameter 'type_query_string' does not exist in the json spec",
         "Request: missing json spec query parameter 'type'",
-        "Request: missing json spec query parameter 'master_timeout'",
-        "Request: missing json spec query parameter 'timeout'"
+        "Request: missing json spec query parameter 'master_timeout'"
       ],
       "response": []
     },
@@ -866,22 +864,8 @@
       ],
       "response": []
     },
-    "shutdown.delete_node": {
-      "request": [
-        "Request: query parameter 'master_timeout' does not exist in the json spec",
-        "Request: query parameter 'timeout' does not exist in the json spec"
-      ],
-      "response": []
-    },
     "shutdown.get_node": {
       "request": [
-        "Request: query parameter 'timeout' does not exist in the json spec"
-      ],
-      "response": []
-    },
-    "shutdown.put_node": {
-      "request": [
-        "Request: query parameter 'master_timeout' does not exist in the json spec",
         "Request: query parameter 'timeout' does not exist in the json spec"
       ],
       "response": []
@@ -945,7 +929,6 @@
     },
     "xpack.info": {
       "request": [
-        "Request: query parameter 'human' does not exist in the json spec",
         "request definition xpack.info:Request / query - Property 'human' is already defined in an ancestor class"
       ],
       "response": []
