@@ -2,7 +2,6 @@
   "endpointErrors": {
     "async_search.submit": {
       "request": [
-        "Request: query parameter 'keep_alive' does not exist in the json spec",
         "interface definition _types:QueryVectorBuilder - Property text_embedding is a single-variant and must be required"
       ],
       "response": []
@@ -13,30 +12,9 @@
       ],
       "response": []
     },
-    "cat.help": {
-      "request": [
-        "Request: missing json spec query parameter 'help'",
-        "Request: missing json spec query parameter 's'"
-      ],
-      "response": []
-    },
     "cat.recovery": {
       "request": [
         "Request: missing json spec query parameter 'index'"
-      ],
-      "response": []
-    },
-    "cat.segments": {
-      "request": [
-        "Request: query parameter 'local' does not exist in the json spec",
-        "Request: query parameter 'master_timeout' does not exist in the json spec"
-      ],
-      "response": []
-    },
-    "cat.tasks": {
-      "request": [
-        "Request: query parameter 'timeout' does not exist in the json spec",
-        "Request: query parameter 'wait_for_completion' does not exist in the json spec"
       ],
       "response": []
     },
@@ -116,6 +94,12 @@
       ],
       "response": []
     },
+    "ilm.migrate_to_data_tiers": {
+      "request": [
+        "Request: missing json spec query parameter 'master_timeout'"
+      ],
+      "response": []
+    },
     "index": {
       "request": [
         "Request: missing json spec query parameter 'require_data_stream'"
@@ -162,6 +146,14 @@
     "indices.reload_search_analyzers": {
       "request": [
         "Request: missing json spec query parameter 'resource'"
+      ],
+      "response": []
+    },
+    "indices.resolve_cluster": {
+      "request": [
+        "Request: different number of urls in the json spec",
+        "Request: path parameter 'name' is required in the json spec",
+        "Request: query parameter 'timeout' does not exist in the json spec"
       ],
       "response": []
     },
