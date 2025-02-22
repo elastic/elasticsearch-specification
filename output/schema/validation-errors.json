@@ -56,13 +56,6 @@
       ],
       "response": []
     },
-    "cat.help": {
-      "request": [
-        "Request: missing json spec query parameter 'help'",
-        "Request: missing json spec query parameter 's'"
-      ],
-      "response": []
-    },
     "cat.indices": {
       "request": [
         "request definition cat.indices:Request / body - A request with inherited properties must have a PropertyBody"
@@ -138,8 +131,6 @@
     },
     "cat.segments": {
       "request": [
-        "Request: query parameter 'local' does not exist in the json spec",
-        "Request: query parameter 'master_timeout' does not exist in the json spec",
         "request definition cat.segments:Request / body - A request with inherited properties must have a PropertyBody"
       ],
       "response": []
@@ -158,8 +149,6 @@
     },
     "cat.tasks": {
       "request": [
-        "Request: query parameter 'timeout' does not exist in the json spec",
-        "Request: query parameter 'wait_for_completion' does not exist in the json spec",
         "request definition cat.tasks:Request / body - A request with inherited properties must have a PropertyBody"
       ],
       "response": []
