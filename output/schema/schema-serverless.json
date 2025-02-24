@@ -117321,20 +117321,9 @@
               "namespace": "_types"
             }
           }
-        },
-        {
-          "name": "type",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "_builtins"
-            }
-          }
         }
       ],
-      "specLocation": "_types/Errors.ts#L60-L66"
+      "specLocation": "_types/Errors.ts#L60-L65"
     },
     {
       "kind": "interface",
