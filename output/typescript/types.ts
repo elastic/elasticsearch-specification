@@ -2180,7 +2180,6 @@ export interface BulkIndexByScrollFailure {
   id: Id
   index: IndexName
   status: integer
-  type: string
 }
 
 export interface BulkStats {
