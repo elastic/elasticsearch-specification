@@ -22,6 +22,7 @@ import { ByteSize, Id } from '@_types/common'
 import { integer } from '@_types/Numeric'
 import { Duration } from '@_types/Time'
 import {
+  AdaptiveAllocationsSettings,
   DeploymentAllocationState,
   TrainingPriority
 } from '../_types/TrainedModel'
@@ -68,6 +69,7 @@ export interface Request extends RequestBase {
      * Increasing this value generally increases the throughput.
      * If this setting is greater than the number of hardware threads
      * it will automatically be changed to a value less than the number of hardware threads.
+     * If adaptive_allocations is enabled, do not set this value, because it’s automatically set.
      * @server_default 1
      */
     number_of_allocations?: integer
@@ -97,5 +99,13 @@ export interface Request extends RequestBase {
      * @server_default started
      */
     wait_for?: DeploymentAllocationState
+  }
+  body: {
+    /**
+     * Adaptive allocations configuration. When enabled, the number of allocations
+     * is set based on the current load.
+     * If adaptive_allocations is enabled, do not set the number of allocations manually.
+     */
+    adaptive_allocations?: AdaptiveAllocationsSettings
   }
 }
