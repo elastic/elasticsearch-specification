@@ -32,7 +32,7 @@
           {
             "in": "query",
             "name": "keep_alive",
-            "description": "Specifies how long the async search should be available in the cluster.\nWhen not specified, the `keep_alive` set with the corresponding submit async request will be used.\nOtherwise, it is possible to override the value and extend the validity of the request.\nWhen this period expires, the search, if still running, is cancelled.\nIf the search is completed, its saved results are deleted.",
+            "description": "The length of time that the async search should be available in the cluster.\nWhen not specified, the `keep_alive` set with the corresponding submit async request will be used.\nOtherwise, it is possible to override the value and extend the validity of the request.\nWhen this period expires, the search, if still running, is cancelled.\nIf the search is completed, its saved results are deleted.",
             "deprecated": false,
             "schema": {
               "$ref": "#/components/schemas/_types:Duration"
@@ -115,7 +115,7 @@
           "search"
         ],
         "summary": "Get the async search status",
-        "description": "Get the status of a previously submitted async search request given its identifier, without retrieving search results.\nIf the Elasticsearch security features are enabled, use of this API is restricted to the `monitoring_user` role.",
+        "description": "Get the status of a previously submitted async search request given its identifier, without retrieving search results.\nIf the Elasticsearch security features are enabled, the access to the status of a specific async search is restricted to:\n\n* The user or API key that submitted the original async search request.\n* Users that have the `monitor` cluster privilege or greater privileges.",
         "operationId": "async-search-status",
         "parameters": [
           {
@@ -132,7 +132,7 @@
           {
             "in": "query",
             "name": "keep_alive",
-            "description": "Specifies how long the async search needs to be available.\nOngoing async searches and any saved search results are deleted after this period.",
+            "description": "The length of time that the async search needs to be available.\nOngoing async searches and any saved search results are deleted after this period.",
             "deprecated": false,
             "schema": {
               "$ref": "#/components/schemas/_types:Duration"
@@ -2080,6 +2080,9 @@
             "$ref": "#/components/parameters/cat.recovery#detailed"
           },
           {
+            "$ref": "#/components/parameters/cat.recovery#index_"
+          },
+          {
             "$ref": "#/components/parameters/cat.recovery#h"
           },
           {
@@ -2116,6 +2119,9 @@
           },
           {
             "$ref": "#/components/parameters/cat.recovery#detailed"
+          },
+          {
+            "$ref": "#/components/parameters/cat.recovery#index_"
           },
           {
             "$ref": "#/components/parameters/cat.recovery#h"
@@ -2891,7 +2897,7 @@
           {
             "in": "path",
             "name": "name",
-            "description": "The name of the auto follow pattern.",
+            "description": "The auto-follow pattern collection to delete.",
             "required": true,
             "deprecated": false,
             "schema": {
@@ -2902,7 +2908,7 @@
           {
             "in": "query",
             "name": "master_timeout",
-            "description": "Period to wait for a connection to the master node.",
+            "description": "The period to wait for a connection to the master node.\nIf the master node is not available before the timeout expires, the request fails and returns an error.\nIt can also be set to `-1` to indicate that the request should never timeout.",
             "deprecated": false,
             "schema": {
               "$ref": "#/components/schemas/_types:Duration"
@@ -3077,7 +3083,7 @@
           {
             "in": "path",
             "name": "index",
-            "description": "A comma-separated list of index patterns; use `_all` to perform the operation on all indices",
+            "description": "A comma-delimited list of follower index patterns.",
             "required": true,
             "deprecated": false,
             "schema": {
@@ -3088,7 +3094,7 @@
           {
             "in": "query",
             "name": "master_timeout",
-            "description": "Period to wait for a connection to the master node.",
+            "description": "The period to wait for a connection to the master node.\nIf the master node is not available before the timeout expires, the request fails and returns an error.\nIt can also be set to `-1` to indicate that the request should never timeout.",
             "deprecated": false,
             "schema": {
               "$ref": "#/components/schemas/_types:Duration"
@@ -3137,7 +3143,7 @@
           {
             "in": "path",
             "name": "index",
-            "description": "A comma-separated list of index patterns; use `_all` to perform the operation on all indices",
+            "description": "A comma-delimited list of index patterns.",
             "required": true,
             "deprecated": false,
             "schema": {
@@ -3148,7 +3154,7 @@
           {
             "in": "query",
             "name": "timeout",
-            "description": "Period to wait for a response. If no response is received before the timeout expires, the request fails and returns an error.",
+            "description": "The period to wait for a response.\nIf no response is received before the timeout expires, the request fails and returns an error.",
             "deprecated": false,
             "schema": {
               "$ref": "#/components/schemas/_types:Duration"
@@ -3165,6 +3171,7 @@
                   "type": "object",
                   "properties": {
                     "indices": {
+                      "description": "An array of follower index statistics.",
                       "type": "array",
                       "items": {
                         "$ref": "#/components/schemas/ccr._types:FollowIndexStats"
@@ -3302,7 +3309,7 @@
           {
             "in": "path",
             "name": "name",
-            "description": "The name of the auto follow pattern that should pause discovering new indices to follow.",
+            "description": "The name of the auto-follow pattern to pause.",
             "required": true,
             "deprecated": false,
             "schema": {
@@ -3313,7 +3320,7 @@
           {
             "in": "query",
             "name": "master_timeout",
-            "description": "Period to wait for a connection to the master node.",
+            "description": "The period to wait for a connection to the master node.\nIf the master node is not available before the timeout expires, the request fails and returns an error.\nIt can also be set to `-1` to indicate that the request should never timeout.",
             "deprecated": false,
             "schema": {
               "$ref": "#/components/schemas/_types:Duration"
@@ -3348,7 +3355,7 @@
           {
             "in": "path",
             "name": "index",
-            "description": "The name of the follower index that should pause following its leader index.",
+            "description": "The name of the follower index.",
             "required": true,
             "deprecated": false,
             "schema": {
@@ -3359,7 +3366,7 @@
           {
             "in": "query",
             "name": "master_timeout",
-            "description": "Period to wait for a connection to the master node.",
+            "description": "The period to wait for a connection to the master node.\nIf the master node is not available before the timeout expires, the request fails and returns an error.\nIt can also be set to `-1` to indicate that the request should never timeout.",
             "deprecated": false,
             "schema": {
               "$ref": "#/components/schemas/_types:Duration"
@@ -3397,7 +3404,7 @@
           {
             "in": "path",
             "name": "name",
-            "description": "The name of the auto follow pattern to resume discovering new indices to follow.",
+            "description": "The name of the auto-follow pattern to resume.",
             "required": true,
             "deprecated": false,
             "schema": {
@@ -3408,7 +3415,7 @@
           {
             "in": "query",
             "name": "master_timeout",
-            "description": "Period to wait for a connection to the master node.",
+            "description": "The period to wait for a connection to the master node.\nIf the master node is not available before the timeout expires, the request fails and returns an error.\nIt can also be set to `-1` to indicate that the request should never timeout.",
             "deprecated": false,
             "schema": {
               "$ref": "#/components/schemas/_types:Duration"
@@ -3533,7 +3540,7 @@
           {
             "in": "query",
             "name": "master_timeout",
-            "description": "Period to wait for a connection to the master node.",
+            "description": "The period to wait for a connection to the master node.\nIf the master node is not available before the timeout expires, the request fails and returns an error.\nIt can also be set to `-1` to indicate that the request should never timeout.",
             "deprecated": false,
             "schema": {
               "$ref": "#/components/schemas/_types:Duration"
@@ -3543,7 +3550,7 @@
           {
             "in": "query",
             "name": "timeout",
-            "description": "Period to wait for a response. If no response is received before the timeout expires, the request fails and returns an error.",
+            "description": "The period to wait for a response. If no response is received before the timeout expires, the request fails and returns an error.",
             "deprecated": false,
             "schema": {
               "$ref": "#/components/schemas/_types:Duration"
@@ -3584,7 +3591,7 @@
           "ccr"
         ],
         "summary": "Unfollow an index",
-        "description": "Convert a cross-cluster replication follower index to a regular index.\nThe API stops the following task associated with a follower index and removes index metadata and settings associated with cross-cluster replication.\nThe follower index must be paused and closed before you call the unfollow API.\n\nNOTE: Currently cross-cluster replication does not support converting an existing regular index to a follower index. Converting a follower index to a regular index is an irreversible operation.",
+        "description": "Convert a cross-cluster replication follower index to a regular index.\nThe API stops the following task associated with a follower index and removes index metadata and settings associated with cross-cluster replication.\nThe follower index must be paused and closed before you call the unfollow API.\n\n> info\n> Currently cross-cluster replication does not support converting an existing regular index to a follower index. Converting a follower index to a regular index is an irreversible operation.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/xpack-ccr.html"
         },
@@ -3593,7 +3600,7 @@
           {
             "in": "path",
             "name": "index",
-            "description": "The name of the follower index that should be turned into a regular index.",
+            "description": "The name of the follower index.",
             "required": true,
             "deprecated": false,
             "schema": {
@@ -3604,7 +3611,7 @@
           {
             "in": "query",
             "name": "master_timeout",
-            "description": "Period to wait for a connection to the master node.",
+            "description": "The period to wait for a connection to the master node.\nIf the master node is not available before the timeout expires, the request fails and returns an error.\nIt can also be set to `-1` to indicate that the request should never timeout.",
             "deprecated": false,
             "schema": {
               "$ref": "#/components/schemas/_types:Duration"
@@ -28469,6 +28476,7 @@
             "$ref": "#/components/responses/search_application.get_behavioral_analytics#200"
           }
         },
+        "deprecated": true,
         "x-state": "Technical preview"
       },
       "put": {
@@ -28502,6 +28510,7 @@
             }
           }
         },
+        "deprecated": true,
         "x-state": "Technical preview"
       },
       "delete": {
@@ -28536,6 +28545,7 @@
             }
           }
         },
+        "deprecated": true,
         "x-state": "Technical preview"
       }
     },
@@ -28551,6 +28561,7 @@
             "$ref": "#/components/responses/search_application.get_behavioral_analytics#200"
           }
         },
+        "deprecated": true,
         "x-state": "Technical preview"
       }
     },
@@ -28701,6 +28712,7 @@
             }
           }
         },
+        "deprecated": true,
         "x-state": "Technical preview"
       }
     },
@@ -36024,7 +36036,7 @@
                       "description": "Column headings for the search results. Each object is a column.",
                       "type": "array",
                       "items": {
-                        "$ref": "#/components/schemas/sql:Column"
+                        "$ref": "#/components/schemas/sql._types:Column"
                       }
                     },
                     "cursor": {
@@ -36035,7 +36047,7 @@
                       "description": "The values for the search results.",
                       "type": "array",
                       "items": {
-                        "$ref": "#/components/schemas/sql:Row"
+                        "$ref": "#/components/schemas/sql._types:Row"
                       }
                     }
                   },
@@ -40401,7 +40413,7 @@
         "type": "object",
         "properties": {
           "aggregations": {
-            "description": "Partial aggregations results, coming from the shards that have already completed the execution of the query.",
+            "description": "Partial aggregations results, coming from the shards that have already completed running the query.",
             "type": "object",
             "additionalProperties": {
               "$ref": "#/components/schemas/_types.aggregations:Aggregate"
@@ -41828,9 +41840,6 @@
           {
             "nullable": true,
             "type": "string"
-          },
-          {
-            "type": "object"
           }
         ]
       },
@@ -43565,7 +43574,7 @@
             "additionalProperties": {
               "type": "array",
               "items": {
-                "$ref": "#/components/schemas/_types:FieldValue"
+                "type": "object"
               }
             }
           },
@@ -45384,7 +45393,7 @@
             "type": "boolean"
           },
           "is_running": {
-            "description": "Indicates whether the search is still running or has completed.\nNOTE: If the search failed after some shards returned their results or the node that is coordinating the async search dies, results may be partial even though `is_running` is `false`.",
+            "description": "Indicates whether the search is still running or has completed.\n\n> info\n> If the search failed after some shards returned their results or the node that is coordinating the async search dies, results may be partial even though `is_running` is `false`.",
             "type": "boolean"
           },
           "expiration_time": {
@@ -45439,7 +45448,7 @@
                 "$ref": "#/components/schemas/_types:ClusterStatistics"
               },
               "completion_status": {
-                "description": "If the async search completed, this field shows the status code of the search.\nFor example, 200 indicates that the async search was successfully completed.\n503 indicates that the async search was completed with an error.",
+                "description": "If the async search completed, this field shows the status code of the search.\nFor example, `200` indicates that the async search was successfully completed.\n`503` indicates that the async search was completed with an error.",
                 "type": "number"
               }
             },
@@ -48601,8 +48610,7 @@
           }
         },
         "required": [
-          "_id",
-          "_index"
+          "_id"
         ]
       },
       "_types.query_dsl:PrefixQuery": {
@@ -49630,7 +49638,7 @@
             "type": "object",
             "properties": {
               "value": {
-                "type": "string"
+                "$ref": "#/components/schemas/_types:FieldValue"
               }
             },
             "required": [
@@ -53441,6 +53449,9 @@
             "description": "The HTTP status code returned for the operation.",
             "type": "number"
           },
+          "failure_store": {
+            "$ref": "#/components/schemas/_global.bulk:FailureStoreStatus"
+          },
           "error": {
             "$ref": "#/components/schemas/_types:ErrorCause"
           },
@@ -53471,6 +53482,15 @@
         "required": [
           "_index",
           "status"
+        ]
+      },
+      "_global.bulk:FailureStoreStatus": {
+        "type": "string",
+        "enum": [
+          "not_applicable_or_unknown",
+          "used",
+          "not_enabled",
+          "failed"
         ]
       },
       "_types:InlineGetDictUserDefined": {
@@ -57876,26 +57896,23 @@
             "$ref": "#/components/schemas/_types:VersionString"
           },
           "max_output_size": {
+            "description": "The maximum token size to emit. Tokens larger than this size will be discarded.\nDefaults to `255`",
             "type": "number"
           },
-          "preserve_original": {
-            "type": "boolean"
-          },
           "separator": {
+            "description": "The character to use to concatenate the terms.\nDefaults to a space.",
             "type": "string"
           },
           "stopwords": {
             "$ref": "#/components/schemas/_types.analysis:StopWords"
           },
           "stopwords_path": {
+            "description": "The path to a file containing stop words.",
             "type": "string"
           }
         },
         "required": [
-          "type",
-          "max_output_size",
-          "preserve_original",
-          "separator"
+          "type"
         ]
       },
       "_types.analysis:KeywordAnalyzer": {
@@ -58038,21 +58055,27 @@
             "$ref": "#/components/schemas/_types:VersionString"
           },
           "flags": {
+            "description": "Java regular expression flags. Flags should be pipe-separated, eg \"CASE_INSENSITIVE|COMMENTS\".",
             "type": "string"
           },
           "lowercase": {
+            "description": "Should terms be lowercased or not.\nDefaults to `true`.",
             "type": "boolean"
           },
           "pattern": {
+            "description": "A Java regular expression.\nDefaults to `\\W+`.",
             "type": "string"
           },
           "stopwords": {
             "$ref": "#/components/schemas/_types.analysis:StopWords"
+          },
+          "stopwords_path": {
+            "description": "The path to a file containing stop words.",
+            "type": "string"
           }
         },
         "required": [
-          "type",
-          "pattern"
+          "type"
         ]
       },
       "_types.analysis:SimpleAnalyzer": {
@@ -58082,10 +58105,15 @@
             ]
           },
           "max_token_length": {
+            "description": "The maximum token length. If a token is seen that exceeds this length then it is split at `max_token_length` intervals.\nDefaults to `255`.",
             "type": "number"
           },
           "stopwords": {
             "$ref": "#/components/schemas/_types.analysis:StopWords"
+          },
+          "stopwords_path": {
+            "description": "The path to a file containing stop words.",
+            "type": "string"
           }
         },
         "required": [
@@ -58108,6 +58136,7 @@
             "$ref": "#/components/schemas/_types.analysis:StopWords"
           },
           "stopwords_path": {
+            "description": "The path to a file containing stop words.",
             "type": "string"
           }
         },
@@ -62370,6 +62399,7 @@
             "$ref": "#/components/schemas/_types:IndexName"
           },
           "shards": {
+            "description": "An array of shard-level following task statistics.",
             "type": "array",
             "items": {
               "$ref": "#/components/schemas/ccr._types:ShardStats"
@@ -62385,12 +62415,15 @@
         "type": "object",
         "properties": {
           "bytes_read": {
+            "description": "The total of transferred bytes read from the leader.\nThis is only an estimate and does not account for compression if enabled.",
             "type": "number"
           },
           "failed_read_requests": {
+            "description": "The number of failed reads.",
             "type": "number"
           },
           "failed_write_requests": {
+            "description": "The number of failed bulk write requests on the follower.",
             "type": "number"
           },
           "fatal_exception": {
@@ -62400,9 +62433,11 @@
             "$ref": "#/components/schemas/_types:VersionNumber"
           },
           "follower_global_checkpoint": {
+            "description": "The current global checkpoint on the follower.\nThe difference between the `leader_global_checkpoint` and the `follower_global_checkpoint` is an indication of how much the follower is lagging the leader.",
             "type": "number"
           },
           "follower_index": {
+            "description": "The name of the follower index.",
             "type": "string"
           },
           "follower_mapping_version": {
@@ -62418,42 +62453,53 @@
             "$ref": "#/components/schemas/_types:SequenceNumber"
           },
           "leader_global_checkpoint": {
+            "description": "The current global checkpoint on the leader known to the follower task.",
             "type": "number"
           },
           "leader_index": {
+            "description": "The name of the index in the leader cluster being followed.",
             "type": "string"
           },
           "leader_max_seq_no": {
             "$ref": "#/components/schemas/_types:SequenceNumber"
           },
           "operations_read": {
+            "description": "The total number of operations read from the leader.",
             "type": "number"
           },
           "operations_written": {
+            "description": "The number of operations written on the follower.",
             "type": "number"
           },
           "outstanding_read_requests": {
+            "description": "The number of active read requests from the follower.",
             "type": "number"
           },
           "outstanding_write_requests": {
+            "description": "The number of active bulk write requests on the follower.",
             "type": "number"
           },
           "read_exceptions": {
+            "description": "An array of objects representing failed reads.",
             "type": "array",
             "items": {
               "$ref": "#/components/schemas/ccr._types:ReadException"
             }
           },
           "remote_cluster": {
+            "description": "The remote cluster containing the leader index.",
             "type": "string"
           },
           "shard_id": {
+            "description": "The numerical shard ID, with values from 0 to one less than the number of replicas.",
             "type": "number"
           },
           "successful_read_requests": {
+            "description": "The number of successful fetches.",
             "type": "number"
           },
           "successful_write_requests": {
+            "description": "The number of bulk write requests run on the follower.",
             "type": "number"
           },
           "time_since_last_read": {
@@ -62481,6 +62527,7 @@
             "$ref": "#/components/schemas/_types:DurationValueUnitMillis"
           },
           "write_buffer_operation_count": {
+            "description": "The number of write operations queued on the follower.",
             "type": "number"
           },
           "write_buffer_size_in_bytes": {
@@ -62528,6 +62575,7 @@
             "$ref": "#/components/schemas/_types:SequenceNumber"
           },
           "retries": {
+            "description": "The number of times the batch has been retried.",
             "type": "number"
           }
         },
@@ -62603,15 +62651,19 @@
             }
           },
           "number_of_failed_follow_indices": {
+            "description": "The number of indices that the auto-follow coordinator failed to automatically follow.\nThe causes of recent failures are captured in the logs of the elected master node and in the `auto_follow_stats.recent_auto_follow_errors` field.",
             "type": "number"
           },
           "number_of_failed_remote_cluster_state_requests": {
+            "description": "The number of times that the auto-follow coordinator failed to retrieve the cluster state from a remote cluster registered in a collection of auto-follow patterns.",
             "type": "number"
           },
           "number_of_successful_follow_indices": {
+            "description": "The number of indices that the auto-follow coordinator successfully followed.",
             "type": "number"
           },
           "recent_auto_follow_errors": {
+            "description": "An array of objects representing failures by the auto-follow coordinator.",
             "type": "array",
             "items": {
               "$ref": "#/components/schemas/_types:ErrorCause"
@@ -66486,7 +66538,7 @@
             "type": "number"
           },
           "cluster_credentials": {
-            "description": "This field presents and has value of ::es_redacted:: only when the remote cluster is configured with the API key based model. Otherwise, the field is not present.",
+            "description": "This field is present and has a value of `::es_redacted::` only when the remote cluster is configured with the API key based model. Otherwise, the field is not present.",
             "type": "string"
           }
         },
@@ -70197,7 +70249,6 @@
           }
         },
         "required": [
-          "query",
           "vertices"
         ]
       },
@@ -70249,7 +70300,6 @@
           }
         },
         "required": [
-          "boost",
           "term"
         ]
       },
@@ -74140,6 +74190,12 @@
               "$ref": "#/components/schemas/inference._types:TextEmbeddingByteResult"
             }
           },
+          "text_embedding_bits": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/inference._types:TextEmbeddingByteResult"
+            }
+          },
           "text_embedding": {
             "type": "array",
             "items": {
@@ -74239,7 +74295,7 @@
           "index": {
             "type": "number"
           },
-          "score": {
+          "relevance_score": {
             "type": "number"
           },
           "text": {
@@ -74248,7 +74304,7 @@
         },
         "required": [
           "index",
-          "score"
+          "relevance_score"
         ]
       },
       "_types:StreamResult": {
@@ -74901,8 +74957,7 @@
             "type": "string"
           },
           "if": {
-            "description": "Conditionally execute the processor.",
-            "type": "string"
+            "$ref": "#/components/schemas/_types:Script"
           },
           "ignore_failure": {
             "description": "Ignore failures for the processor.",
@@ -75246,7 +75301,6 @@
               }
             },
             "required": [
-              "date_formats",
               "date_rounding",
               "field"
             ]
@@ -77835,11 +77889,7 @@
               "type": "string"
             }
           }
-        },
-        "required": [
-          "includes",
-          "excludes"
-        ]
+        }
       },
       "ml._types:DataframeAnalyticsDestination": {
         "type": "object",
@@ -89074,7 +89124,7 @@
             }
           },
           "ignored_fields": {
-            "description": "A list of the fields that would be ignored at the indexing step. For example, a field whose\nvalue is larger than the allowed limit would make it through all of the pipoelines, but\nwould not be indexed into Elasticsearch.",
+            "description": "A list of the fields that would be ignored at the indexing step. For example, a field whose\nvalue is larger than the allowed limit would make it through all of the pipelines, but\nwould not be indexed into Elasticsearch.",
             "type": "array",
             "items": {
               "type": "object",
@@ -89509,8 +89559,7 @@
               }
             },
             "required": [
-              "type",
-              "settings"
+              "type"
             ]
           }
         ]
@@ -90447,7 +90496,7 @@
           "name"
         ]
       },
-      "sql:Column": {
+      "sql._types:Column": {
         "type": "object",
         "properties": {
           "name": {
@@ -90462,7 +90511,7 @@
           "type"
         ]
       },
-      "sql:Row": {
+      "sql._types:Row": {
         "type": "array",
         "items": {
           "type": "object"
@@ -98110,7 +98159,7 @@
                   "description": "Column headings for the search results. Each object is a column.",
                   "type": "array",
                   "items": {
-                    "$ref": "#/components/schemas/sql:Column"
+                    "$ref": "#/components/schemas/sql._types:Column"
                   }
                 },
                 "cursor": {
@@ -98132,7 +98181,7 @@
                   "description": "The values for the search results.",
                   "type": "array",
                   "items": {
-                    "$ref": "#/components/schemas/sql:Row"
+                    "$ref": "#/components/schemas/sql._types:Row"
                   }
                 }
               },
@@ -99804,6 +99853,16 @@
         },
         "style": "form"
       },
+      "cat.recovery#index_": {
+        "in": "query",
+        "name": "index",
+        "description": "Comma-separated list or wildcard expression of index names to limit the returned information",
+        "deprecated": false,
+        "schema": {
+          "$ref": "#/components/schemas/_types:Indices"
+        },
+        "style": "form"
+      },
       "cat.recovery#h": {
         "in": "query",
         "name": "h",
@@ -100203,7 +100262,7 @@
       "ccr.get_auto_follow_pattern#name": {
         "in": "path",
         "name": "name",
-        "description": "Specifies the auto-follow pattern collection that you want to retrieve. If you do not specify a name, the API returns information for all collections.",
+        "description": "The auto-follow pattern collection that you want to retrieve.\nIf you do not specify a name, the API returns information for all collections.",
         "required": true,
         "deprecated": false,
         "schema": {
@@ -100214,7 +100273,7 @@
       "ccr.get_auto_follow_pattern#master_timeout": {
         "in": "query",
         "name": "master_timeout",
-        "description": "Period to wait for a connection to the master node.",
+        "description": "The period to wait for a connection to the master node.\nIf the master node is not available before the timeout expires, the request fails and returns an error.\nIt can also be set to `-1` to indicate that the request should never timeout.",
         "deprecated": false,
         "schema": {
           "$ref": "#/components/schemas/_types:Duration"

@@ -16651,6 +16651,7 @@
             "$ref": "#/components/responses/search_application.get_behavioral_analytics#200"
           }
         },
+        "deprecated": true,
         "x-state": "Technical preview"
       },
       "put": {
@@ -16684,6 +16685,7 @@
             }
           }
         },
+        "deprecated": true,
         "x-state": "Technical preview"
       },
       "delete": {
@@ -16718,6 +16720,7 @@
             }
           }
         },
+        "deprecated": true,
         "x-state": "Technical preview"
       }
     },
@@ -16733,6 +16736,7 @@
             "$ref": "#/components/responses/search_application.get_behavioral_analytics#200"
           }
         },
+        "deprecated": true,
         "x-state": "Technical preview"
       }
     },
@@ -22058,9 +22062,6 @@
           {
             "nullable": true,
             "type": "string"
-          },
-          {
-            "type": "object"
           }
         ]
       },
@@ -23795,7 +23796,7 @@
             "additionalProperties": {
               "type": "array",
               "items": {
-                "$ref": "#/components/schemas/_types:FieldValue"
+                "type": "object"
               }
             }
           },
@@ -33525,6 +33526,9 @@
             "description": "The HTTP status code returned for the operation.",
             "type": "number"
           },
+          "failure_store": {
+            "$ref": "#/components/schemas/_global.bulk:FailureStoreStatus"
+          },
           "error": {
             "$ref": "#/components/schemas/_types:ErrorCause"
           },
@@ -33555,6 +33559,15 @@
         "required": [
           "_index",
           "status"
+        ]
+      },
+      "_global.bulk:FailureStoreStatus": {
+        "type": "string",
+        "enum": [
+          "not_applicable_or_unknown",
+          "used",
+          "not_enabled",
+          "failed"
         ]
       },
       "_types:InlineGetDictUserDefined": {
