@@ -23,11 +23,13 @@
 
 let ora
 let closest
+let minimist
 try {
   require('zx/globals')
   ora = require('ora')
   const fl = require('fastest-levenshtein')
   closest = fl.closest
+  minimist = require('minimist')
 } catch (err) {
   console.log('It looks like you didn\'t install the project dependencies, please run \'make setup\'')
   process.exit(1)
@@ -56,30 +58,34 @@ const apis = require('../output/schema/schema.json')
   .map(endpoint => endpoint.name)
 
 async function run () {
+  const options = minimist(process.argv.slice(2), {
+    string: ['api', 'type', 'branch'],
+    boolean: ['cache']
+  })
+
   spinner.text = 'Checking requirements'
 
-  const noCache = argv.cache === false
+  const noCache = options.cache === false
   const metadata = await readMetadata()
   const lastRun = metadata.lastRun ? new Date(metadata.lastRun) : new Date(0)
   const isStale = lastRun.getTime() + DAY < Date.now()
 
-  if (typeof argv.api !== 'string') {
+  if (options.api === '') {
     spinner.fail('You must specify the api, for example: \'make validate api=index type=request branch=main\'')
     process.exit(1)
   }
 
-  if (!apis.includes(argv.api)) {
-    spinner.fail(`The api '${argv.api}' does not exists, did you mean '${closest(argv.api, apis)}'?`)
+  if (!apis.includes(options.api)) {
+    spinner.fail(`The api '${options.api}' does not exists, did you mean '${closest(options.api, apis)}'?`)
     process.exit(1)
   }
-
-  // if true it's because the make target wasn't configured with a type argument
-  if (argv.type !== true && argv.type !== 'request' && argv.type !== 'response') {
+  // if the empty string it's because the make target wasn't configured with a type argument
+  if (options.type !== '' && options.type !== 'request' && options.type !== 'response') {
     spinner.fail('You must specify the type (request or response), for example: \'make validate api=index type=request branch=main\'')
     process.exit(1)
   }
 
-  if (typeof argv.branch !== 'string' && typeof argv.branch !== 'number') {
+  if (options.branch === '') {
     spinner.fail('You must specify the branch, for example: \'make validate api=index type=request branch=main\'')
     process.exit(1)
   }
@@ -166,8 +172,7 @@ async function run () {
 
   spinner.text = 'Running validations'
 
-  const branchArg = argv.branch.toString()
-  const branchName = branchArg.startsWith('7.') ? '7.x' : branchArg
+  const branchName = options.branch.startsWith('7.') ? '7.x' : options.branch
 
   if (noCache || isStale || metadata.branchName !== branchName) {
     metadata.lastRun = new Date()
@@ -177,20 +182,20 @@ async function run () {
     await $`node ${path.join(uploadRecordingsPath, 'download.js')} --branch ${branchName} --git`
 
     spinner.text = 'Fetching artifacts'
-    await $`node ${path.join(cloneEsPath, 'index.js')} --branch ${argv['branch']}`
+    await $`node ${path.join(cloneEsPath, 'index.js')} --branch ${branchName}`
   }
 
   cd(tsValidationPath)
   spinner.text = 'Validating endpoints'
   // the ts validator will copy types.ts and schema.json autonomously
   const flags = ['--verbose']
-  if (argv.type === true) {
+  if (options.type === '') {
     flags.push('--request')
     flags.push('--response')
   } else {
-    flags.push(`--${argv.type}`)
+    flags.push(`--${options.type}`)
   }
-  const output = await $`node ${path.join(tsValidationPath, 'index.js')} --api ${argv.api} --branch ${branchName} ${flags}`
+  const output = await $`node ${path.join(tsValidationPath, 'index.js')} --api ${options.api} --branch ${branchName} ${flags}`
 
   cd(path.join(compilerPath, '..'))
   if (output.exitCode === 0) {
