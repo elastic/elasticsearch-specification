@@ -135,9 +135,7 @@ export interface Request extends RequestBase {
     /**
      * Specify dynamic templates for the mapping.
      */
-    dynamic_templates?:
-      | Dictionary<string, DynamicTemplate>
-      | Dictionary<string, DynamicTemplate>[]
+    dynamic_templates?: Dictionary<string, DynamicTemplate>[]
     /**
      * Control whether field names are enabled for the index.
      */
