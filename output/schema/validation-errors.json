@@ -126,7 +126,6 @@
     },
     "cat.recovery": {
       "request": [
-        "Request: missing json spec query parameter 'index'",
         "request definition cat.recovery:Request / body - A request with inherited properties must have a PropertyBody"
       ],
       "response": []

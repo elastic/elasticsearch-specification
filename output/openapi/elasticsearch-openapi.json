@@ -2092,6 +2092,9 @@
             "$ref": "#/components/parameters/cat.recovery#detailed"
           },
           {
+            "$ref": "#/components/parameters/cat.recovery#index_"
+          },
+          {
             "$ref": "#/components/parameters/cat.recovery#h"
           },
           {
@@ -2128,6 +2131,9 @@
           },
           {
             "$ref": "#/components/parameters/cat.recovery#detailed"
+          },
+          {
+            "$ref": "#/components/parameters/cat.recovery#index_"
           },
           {
             "$ref": "#/components/parameters/cat.recovery#h"
@@ -99786,6 +99792,16 @@
         "deprecated": false,
         "schema": {
           "type": "boolean"
+        },
+        "style": "form"
+      },
+      "cat.recovery#index_": {
+        "in": "query",
+        "name": "index",
+        "description": "Comma-separated list or wildcard expression of index names to limit the returned information",
+        "deprecated": false,
+        "schema": {
+          "$ref": "#/components/schemas/_types:Indices"
         },
         "style": "form"
       },
