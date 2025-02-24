@@ -69147,17 +69147,13 @@
           },
           "status": {
             "type": "number"
-          },
-          "type": {
-            "type": "string"
           }
         },
         "required": [
           "cause",
           "id",
           "index",
-          "status",
-          "type"
+          "status"
         ]
       },
       "_types:Retries": {
