@@ -62,7 +62,6 @@ export class BulkIndexByScrollFailure {
   id: Id
   index: IndexName
   status: integer
-  type: string
 }
 
 export class TaskFailure {
