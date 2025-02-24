@@ -63422,23 +63422,13 @@
                 },
                 "dynamic_templates": {
                   "description": "Specify dynamic templates for the mapping.",
-                  "oneOf": [
-                    {
-                      "type": "object",
-                      "additionalProperties": {
-                        "$ref": "#/components/schemas/_types.mapping:DynamicTemplate"
-                      }
-                    },
-                    {
-                      "type": "array",
-                      "items": {
-                        "type": "object",
-                        "additionalProperties": {
-                          "$ref": "#/components/schemas/_types.mapping:DynamicTemplate"
-                        }
-                      }
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "additionalProperties": {
+                      "$ref": "#/components/schemas/_types.mapping:DynamicTemplate"
                     }
-                  ]
+                  }
                 },
                 "_field_names": {
                   "$ref": "#/components/schemas/_types.mapping:FieldNamesField"
