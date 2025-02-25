@@ -11570,7 +11570,7 @@ export interface IndicesSoftDeletes {
   retention_lease?: IndicesRetentionLease
 }
 
-export type IndicesSourceMode = 'DISABLED' | 'STORED' | 'SYNTHETIC'
+export type IndicesSourceMode = 'disabled' | 'stored' | 'synthetic'
 
 export interface IndicesStorage {
   type: IndicesStorageType
