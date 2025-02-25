@@ -35605,8 +35605,7 @@
                 "type": "string"
               },
               {
-                "nullable": true,
-                "type": "string"
+                "$ref": "#/components/schemas/_spec_utils:NullValue"
               }
             ]
           },
@@ -35876,6 +35875,11 @@
             "type": "string"
           }
         ]
+      },
+      "_spec_utils:NullValue": {
+        "nullable": true,
+        "description": "A `null` value that is to be interpreted as an actual value, unless other uses of `null` that are equivalent\nto a missing value. It is used for exemple in settings, where using the `NullValue` for a setting will reset\nit to its default value.",
+        "type": "string"
       },
       "indices._types:Merge": {
         "type": "object",
@@ -44728,11 +44732,6 @@
           "on_demand",
           "scheduled"
         ]
-      },
-      "_spec_utils:NullValue": {
-        "nullable": true,
-        "description": "A `null` value that is to be interpreted as an actual value, unless other uses of `null` that are equivalent\nto a missing value. It is used for exemple in settings, where using the `NullValue` for a setting will reset\nit to its default value.",
-        "type": "string"
       },
       "_types:WriteResponseBase": {
         "type": "object",
