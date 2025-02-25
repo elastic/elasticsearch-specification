@@ -28,10 +28,10 @@ export class Response {
 }
 
 export enum MigrationStatus {
-  NO_MIGRATION_NEEDED,
-  MIGRATION_NEEDED,
-  IN_PROGRESS,
-  ERROR
+  no_migration_needed,
+  migration_needed,
+  in_progress,
+  error
 }
 
 export class MigrationFeature {

@@ -22,8 +22,8 @@ export class ExecuteEnrichPolicyStatus {
 }
 
 export enum EnrichPolicyPhase {
-  SCHEDULED,
-  RUNNING,
-  COMPLETE,
-  FAILED
+  scheduled,
+  running,
+  complete,
+  failed,
 }

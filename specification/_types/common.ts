@@ -235,14 +235,6 @@ export enum HealthStatus {
   red
 }
 
-export enum HttpMethod {
-  GET,
-  POST,
-  PUT,
-  DELETE,
-  HEAD
-}
-
 export enum Level {
   cluster,
   indices,

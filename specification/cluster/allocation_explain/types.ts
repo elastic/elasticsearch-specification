@@ -31,10 +31,10 @@ export class AllocationDecision {
 }
 
 export enum AllocationExplainDecision {
-  NO,
-  YES,
-  THROTTLE,
-  ALWAYS
+  no,
+  yes,
+  throttle,
+  always
 }
 
 export class AllocationStore {
@@ -117,12 +117,12 @@ export class NodeAllocationExplanation {
 }
 
 export enum StoreCopy {
-  NONE,
-  AVAILABLE,
-  CORRUPT,
-  IO_ERROR,
-  STALE,
-  UNKNOWN
+  none,
+  available,
+  corrupt,
+  io_error,
+  stale,
+  unknown
 }
 
 export class UnassignedInformation {
@@ -139,19 +139,19 @@ export class UnassignedInformation {
  * @doc_id cat-shards
  */
 export enum UnassignedInformationReason {
-  INDEX_CREATED,
-  CLUSTER_RECOVERED,
-  INDEX_REOPENED,
-  DANGLING_INDEX_IMPORTED,
-  NEW_INDEX_RESTORED,
-  EXISTING_INDEX_RESTORED,
-  REPLICA_ADDED,
-  ALLOCATION_FAILED,
-  NODE_LEFT,
-  REROUTE_CANCELLED,
-  REINITIALIZED,
-  REALLOCATED_REPLICA,
-  PRIMARY_FAILED,
-  FORCED_EMPTY_PRIMARY,
-  MANUAL_ALLOCATION
+  index_created,
+  cluster_recovered,
+  index_reopened,
+  dangling_index_imported,
+  new_index_restored,
+  existing_index_restored,
+  replica_added,
+  allocation_failed,
+  node_left,
+  reroute_cancelled,
+  reinitialized,
+  reallocated_replica,
+  primary_failed,
+  forced_empty_primary,
+  manual_allocation
 }

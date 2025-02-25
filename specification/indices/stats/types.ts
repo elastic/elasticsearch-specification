@@ -167,10 +167,10 @@ export class ShardRouting {
 }
 
 export enum ShardRoutingState {
-  UNASSIGNED,
-  INITIALIZING,
-  STARTED,
-  RELOCATING
+  unassigned,
+  initializing,
+  started,
+  relocating
 }
 
 export class ShardSequenceNumber {
