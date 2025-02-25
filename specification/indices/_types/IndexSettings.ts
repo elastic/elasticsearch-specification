@@ -46,6 +46,7 @@ import {
 } from '@_types/Similarity'
 import { DateTime, Duration, EpochTime, UnitMillis } from '@_types/Time'
 import { IndexSegmentSort } from './IndexSegmentSort'
+import {WithNullValue} from "@spec_utils/utils";
 
 export class SoftDeletes {
   /**
@@ -95,7 +96,7 @@ export class IndexSettings
   /** @server_default false */
   hidden?: boolean | string // TODO should be bool only
   /** @server_default false */
-  auto_expand_replicas?: string
+  auto_expand_replicas?: WithNullValue<string>
   merge?: Merge
   search?: SettingsSearch
   /** @server_default 1s */

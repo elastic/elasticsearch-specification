@@ -41,7 +41,8 @@ export class Role {
    */
   remote_cluster?: RemoteClusterPrivileges[]
   metadata: Metadata
-  run_as: string[]
+  description?: string
+  run_as?: string[]
   transient_metadata?: Dictionary<string, UserDefinedValue>
   applications: ApplicationPrivileges[]
   role_templates?: RoleTemplate[]

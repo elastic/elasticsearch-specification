@@ -35600,7 +35600,15 @@
             ]
           },
           "auto_expand_replicas": {
-            "type": "string"
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "nullable": true,
+                "type": "string"
+              }
+            ]
           },
           "merge": {
             "$ref": "#/components/schemas/indices._types:Merge"
@@ -55333,6 +55341,9 @@
           "metadata": {
             "$ref": "#/components/schemas/_types:Metadata"
           },
+          "description": {
+            "type": "string"
+          },
           "run_as": {
             "type": "array",
             "items": {
@@ -55377,7 +55388,6 @@
           "cluster",
           "indices",
           "metadata",
-          "run_as",
           "applications"
         ]
       },
