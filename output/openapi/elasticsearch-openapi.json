@@ -49368,19 +49368,19 @@
       "_types.query_dsl:SimpleQueryStringFlag": {
         "type": "string",
         "enum": [
-          "NONE",
-          "AND",
-          "NOT",
-          "OR",
-          "PREFIX",
-          "PHRASE",
-          "PRECEDENCE",
-          "ESCAPE",
-          "WHITESPACE",
-          "FUZZY",
-          "NEAR",
-          "SLOP",
-          "ALL"
+          "none",
+          "and",
+          "not",
+          "or",
+          "prefix",
+          "phrase",
+          "precedence",
+          "escape",
+          "whitespace",
+          "fuzzy",
+          "near",
+          "slop",
+          "all"
         ]
       },
       "_types.query_dsl:SpanContainingQuery": {
@@ -62736,10 +62736,10 @@
       "cluster.allocation_explain:AllocationExplainDecision": {
         "type": "string",
         "enum": [
-          "NO",
-          "YES",
-          "THROTTLE",
-          "ALWAYS"
+          "no",
+          "yes",
+          "throttle",
+          "always"
         ]
       },
       "cluster.allocation_explain:ClusterInfo": {
@@ -63034,21 +63034,21 @@
       "cluster.allocation_explain:UnassignedInformationReason": {
         "type": "string",
         "enum": [
-          "INDEX_CREATED",
-          "CLUSTER_RECOVERED",
-          "INDEX_REOPENED",
-          "DANGLING_INDEX_IMPORTED",
-          "NEW_INDEX_RESTORED",
-          "EXISTING_INDEX_RESTORED",
-          "REPLICA_ADDED",
-          "ALLOCATION_FAILED",
-          "NODE_LEFT",
-          "REROUTE_CANCELLED",
-          "REINITIALIZED",
-          "REALLOCATED_REPLICA",
-          "PRIMARY_FAILED",
-          "FORCED_EMPTY_PRIMARY",
-          "MANUAL_ALLOCATION"
+          "index_created",
+          "cluster_recovered",
+          "index_reopened",
+          "dangling_index_imported",
+          "new_index_restored",
+          "existing_index_restored",
+          "replica_added",
+          "allocation_failed",
+          "node_left",
+          "reroute_cancelled",
+          "reinitialized",
+          "reallocated_replica",
+          "primary_failed",
+          "forced_empty_primary",
+          "manual_allocation"
         ]
       },
       "cluster._types:ComponentTemplate": {
@@ -69285,10 +69285,10 @@
       "enrich.execute_policy:EnrichPolicyPhase": {
         "type": "string",
         "enum": [
-          "SCHEDULED",
-          "RUNNING",
-          "COMPLETE",
-          "FAILED"
+          "scheduled",
+          "running",
+          "complete",
+          "failed"
         ]
       },
       "enrich._types:Summary": {
@@ -70859,9 +70859,9 @@
       "_types:LifecycleOperationMode": {
         "type": "string",
         "enum": [
-          "RUNNING",
-          "STOPPING",
-          "STOPPED"
+          "running",
+          "stopping",
+          "stopped"
         ]
       },
       "_global.health_report:SlmIndicator": {
@@ -73880,10 +73880,10 @@
       "indices.stats:ShardRoutingState": {
         "type": "string",
         "enum": [
-          "UNASSIGNED",
-          "INITIALIZING",
-          "STARTED",
-          "RELOCATING"
+          "unassigned",
+          "initializing",
+          "started",
+          "relocating"
         ]
       },
       "indices.stats:ShardSequenceNumber": {
@@ -77085,10 +77085,10 @@
       "migration.get_feature_upgrade_status:MigrationStatus": {
         "type": "string",
         "enum": [
-          "NO_MIGRATION_NEEDED",
-          "MIGRATION_NEEDED",
-          "IN_PROGRESS",
-          "ERROR"
+          "no_migration_needed",
+          "migration_needed",
+          "in_progress",
+          "error"
         ]
       },
       "migration.get_feature_upgrade_status:MigrationFeatureIndexInfo": {
@@ -90333,11 +90333,11 @@
       "snapshot._types:ShardsStatsStage": {
         "type": "string",
         "enum": [
-          "DONE",
-          "FAILURE",
-          "FINALIZE",
-          "INIT",
-          "STARTED"
+          "done",
+          "failure",
+          "finalize",
+          "init",
+          "started"
         ]
       },
       "snapshot._types:ShardsStatsSummary": {

@@ -25,5 +25,5 @@ export enum EnrichPolicyPhase {
   scheduled,
   running,
   complete,
-  failed,
+  failed
 }
