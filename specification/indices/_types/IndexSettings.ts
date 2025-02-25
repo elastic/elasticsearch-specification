@@ -501,9 +501,9 @@ export class MappingLimitSettingsSourceFields {
 }
 
 export enum SourceMode {
-  DISABLED,
-  STORED,
-  SYNTHETIC
+  disabled,
+  stored,
+  synthetic
 }
 
 export class SlowlogSettings {
