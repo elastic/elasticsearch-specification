@@ -2543,7 +2543,7 @@ export interface LatLonGeoLocation {
 
 export type Level = 'cluster' | 'indices' | 'shards'
 
-export type LifecycleOperationMode = 'running' | 'stopping' | 'stopped'
+export type LifecycleOperationMode = 'RUNNING' | 'STOPPING' | 'STOPPED'
 
 export type MapboxVectorTiles = ArrayBuffer
 
@@ -6567,7 +6567,7 @@ export interface QueryDslShapeQueryKeys extends QueryDslQueryBase {
 export type QueryDslShapeQuery = QueryDslShapeQueryKeys
   & { [property: string]: QueryDslShapeFieldQuery | boolean | float | string }
 
-export type QueryDslSimpleQueryStringFlag = 'none' | 'and' | 'not' | 'or' | 'prefix' | 'phrase' | 'precedence' | 'escape' | 'whitespace' | 'fuzzy' | 'near' | 'slop' | 'all'
+export type QueryDslSimpleQueryStringFlag = 'NONE' | 'AND' | 'NOT' | 'OR' | 'PREFIX' | 'PHRASE' | 'PRECEDENCE' | 'ESCAPE' | 'WHITESPACE' | 'FUZZY' | 'NEAR' | 'SLOP' | 'ALL'
 
 export type QueryDslSimpleQueryStringFlags = SpecUtilsPipeSeparatedFlags<QueryDslSimpleQueryStringFlag>
 
@@ -9110,7 +9110,7 @@ export interface ClusterAllocationExplainAllocationDecision {
   explanation: string
 }
 
-export type ClusterAllocationExplainAllocationExplainDecision = 'no' | 'yes' | 'throttle' | 'always'
+export type ClusterAllocationExplainAllocationExplainDecision = 'NO' | 'YES' | 'THROTTLE' | 'ALWAYS'
 
 export interface ClusterAllocationExplainAllocationStore {
   allocation_id: string
@@ -9224,7 +9224,7 @@ export interface ClusterAllocationExplainUnassignedInformation {
   allocation_status?: string
 }
 
-export type ClusterAllocationExplainUnassignedInformationReason = 'index_created' | 'cluster_recovered' | 'index_reopened' | 'dangling_index_imported' | 'new_index_restored' | 'existing_index_restored' | 'replica_added' | 'allocation_failed' | 'node_left' | 'reroute_cancelled' | 'reinitialized' | 'reallocated_replica' | 'primary_failed' | 'forced_empty_primary' | 'manual_allocation'
+export type ClusterAllocationExplainUnassignedInformationReason = 'INDEX_CREATED' | 'CLUSTER_RECOVERED' | 'INDEX_REOPENED' | 'DANGLING_INDEX_IMPORTED' | 'NEW_INDEX_RESTORED' | 'EXISTING_INDEX_RESTORED' | 'REPLICA_ADDED' | 'ALLOCATION_FAILED' | 'NODE_LEFT' | 'REROUTE_CANCELLED' | 'REINITIALIZED' | 'REALLOCATED_REPLICA' | 'PRIMARY_FAILED' | 'FORCED_EMPTY_PRIMARY' | 'MANUAL_ALLOCATION'
 
 export interface ClusterDeleteComponentTemplateRequest extends RequestBase {
   name: Names
@@ -10402,7 +10402,7 @@ export interface EnrichDeletePolicyRequest extends RequestBase {
 
 export type EnrichDeletePolicyResponse = AcknowledgedResponseBase
 
-export type EnrichExecutePolicyEnrichPolicyPhase = 'scheduled' | 'running' | 'complete' | 'failed'
+export type EnrichExecutePolicyEnrichPolicyPhase = 'SCHEDULED' | 'RUNNING' | 'COMPLETE' | 'FAILED'
 
 export interface EnrichExecutePolicyExecuteEnrichPolicyStatus {
   phase: EnrichExecutePolicyEnrichPolicyPhase
@@ -12915,7 +12915,7 @@ export interface IndicesStatsShardRouting {
   state: IndicesStatsShardRoutingState
 }
 
-export type IndicesStatsShardRoutingState = 'unassigned' | 'initializing' | 'started' | 'relocating'
+export type IndicesStatsShardRoutingState = 'UNASSIGNED' | 'INITIALIZING' | 'STARTED' | 'RELOCATING'
 
 export interface IndicesStatsShardSequenceNumber {
   global_checkpoint: long
@@ -14081,7 +14081,7 @@ export interface MigrationGetFeatureUpgradeStatusMigrationFeatureIndexInfo {
   failure_cause?: ErrorCause
 }
 
-export type MigrationGetFeatureUpgradeStatusMigrationStatus = 'no_migration_needed' | 'migration_needed' | 'in_progress' | 'error'
+export type MigrationGetFeatureUpgradeStatusMigrationStatus = 'NO_MIGRATION_NEEDED' | 'MIGRATION_NEEDED' | 'IN_PROGRESS' | 'ERROR'
 
 export interface MigrationGetFeatureUpgradeStatusRequest extends RequestBase {
 }
@@ -19817,7 +19817,7 @@ export interface SnapshotShardsStats {
   total: long
 }
 
-export type SnapshotShardsStatsStage = 'done' | 'failure' | 'finalize' | 'init' | 'started'
+export type SnapshotShardsStatsStage = 'DONE' | 'FAILURE' | 'FINALIZE' | 'INIT' | 'STARTED'
 
 export interface SnapshotShardsStatsSummary {
   incremental: SnapshotShardsStatsSummaryItem

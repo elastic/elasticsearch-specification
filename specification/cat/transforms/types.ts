@@ -197,12 +197,12 @@ export class TransformsRecord {
 }
 
 export enum TransformState {
-  started,
-  indexing,
-  aborting,
-  stopping,
-  stopped,
-  failed
+  STARTED,
+  INDEXING,
+  ABORTING,
+  STOPPING,
+  STOPPED,
+  FAILED
 }
 
 export enum TransformType {

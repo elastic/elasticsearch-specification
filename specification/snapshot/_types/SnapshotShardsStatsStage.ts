@@ -19,13 +19,13 @@
 
 export enum ShardsStatsStage {
   /** The number of shards in the snapshot that were successfully stored in the repository. */
-  done,
+  DONE,
   /** The number of shards in the snapshot that were not successfully stored in the repository. */
-  failure,
+  FAILURE,
   /** The number of shards in the snapshot that are in the finalizing stage of being stored in the repository. */
-  finalize,
+  FINALIZE,
   /** The number of shards in the snapshot that are in the initializing stage of being stored in the repository. */
-  init,
+  INIT,
   /** The number of shards in the snapshot that are in the started stage of being stored in the repository. */
-  started
+  STARTED
 }

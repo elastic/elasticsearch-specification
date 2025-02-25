@@ -29590,19 +29590,19 @@
       "_types.query_dsl:SimpleQueryStringFlag": {
         "type": "string",
         "enum": [
-          "none",
-          "and",
-          "not",
-          "or",
-          "prefix",
-          "phrase",
-          "precedence",
-          "escape",
-          "whitespace",
-          "fuzzy",
-          "near",
-          "slop",
-          "all"
+          "NONE",
+          "AND",
+          "NOT",
+          "OR",
+          "PREFIX",
+          "PHRASE",
+          "PRECEDENCE",
+          "ESCAPE",
+          "WHITESPACE",
+          "FUZZY",
+          "NEAR",
+          "SLOP",
+          "ALL"
         ]
       },
       "_types.query_dsl:SpanContainingQuery": {
@@ -44834,10 +44834,10 @@
       "enrich.execute_policy:EnrichPolicyPhase": {
         "type": "string",
         "enum": [
-          "scheduled",
-          "running",
-          "complete",
-          "failed"
+          "SCHEDULED",
+          "RUNNING",
+          "COMPLETE",
+          "FAILED"
         ]
       },
       "enrich._types:Summary": {

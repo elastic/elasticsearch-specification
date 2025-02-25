@@ -18,7 +18,7 @@
  */
 
 export enum LifecycleOperationMode {
-  running,
-  stopping,
-  stopped
+  RUNNING,
+  STOPPING,
+  STOPPED
 }

@@ -730,57 +730,57 @@ export enum SimpleQueryStringFlag {
   /**
    * Disables all operators.
    */
-  none,
+  NONE,
   /**
    * Enables the `+` AND operator.
    */
-  and,
+  AND,
   /**
    * Enables the `-` NOT operator.
    */
-  not,
+  NOT,
   /**
    * Enables the `\|` OR operator.
    */
-  or,
+  OR,
   /**
    * Enables the `*` prefix operator.
    */
-  prefix,
+  PREFIX,
   /**
    * Enables the `"` quotes operator used to search for phrases.
    */
-  phrase,
+  PHRASE,
   /**
    * Enables the `(` and `)` operators to control operator precedence.
    */
-  precedence,
+  PRECEDENCE,
   /**
    * Enables `\` as an escape character.
    */
-  escape,
+  ESCAPE,
   /**
    * Enables whitespace as split characters.
    */
-  whitespace,
+  WHITESPACE,
   /**
    * Enables the `~N` operator after a word, where `N` is an integer denoting the allowed edit distance for matching.
    */
-  fuzzy,
+  FUZZY,
   /**
    * Enables the `~N` operator, after a phrase where `N` is the maximum number of positions allowed between matching tokens.
    * Synonymous to `SLOP`.
    */
-  near,
+  NEAR,
   /**
    * Enables the `~N` operator, after a phrase where `N` is maximum number of positions allowed between matching tokens.
    * Synonymous to `NEAR`.
    */
-  slop,
+  SLOP,
   /**
    * Enables all optional operators.
    */
-  all
+  ALL
 }
 
 /**

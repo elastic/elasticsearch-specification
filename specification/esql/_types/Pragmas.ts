@@ -18,7 +18,7 @@
  */
 
 export enum DataPartitioning {
-  shard,
-  segment,
-  doc
+  SHARD,
+  SEGMENT,
+  DOC
 }
