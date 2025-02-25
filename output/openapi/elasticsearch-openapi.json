@@ -31602,6 +31602,12 @@
                         "type": "string"
                       }
                     },
+                    "remote_cluster": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/security._types:RemoteClusterPrivileges"
+                      }
+                    },
                     "global": {
                       "type": "array",
                       "items": {
@@ -31612,6 +31618,12 @@
                       "type": "array",
                       "items": {
                         "$ref": "#/components/schemas/security._types:UserIndicesPrivileges"
+                      }
+                    },
+                    "remote_indices": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/security._types:RemoteUserIndicesPrivileges"
                       }
                     },
                     "run_as": {
@@ -56967,7 +56979,14 @@
             ]
           },
           "auto_expand_replicas": {
-            "type": "string"
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "$ref": "#/components/schemas/_spec_utils:NullValue"
+              }
+            ]
           },
           "merge": {
             "$ref": "#/components/schemas/indices._types:Merge"
@@ -57235,6 +57254,11 @@
             "type": "string"
           }
         ]
+      },
+      "_spec_utils:NullValue": {
+        "nullable": true,
+        "description": "A `null` value that is to be interpreted as an actual value, unless other uses of `null` that are equivalent\nto a missing value. It is used for exemple in settings, where using the `NullValue` for a setting will reset\nit to its default value.",
+        "type": "string"
       },
       "indices._types:Merge": {
         "type": "object",
@@ -67960,11 +67984,6 @@
           "on_demand",
           "scheduled"
         ]
-      },
-      "_spec_utils:NullValue": {
-        "nullable": true,
-        "description": "A `null` value that is to be interpreted as an actual value, unless other uses of `null` that are equivalent\nto a missing value. It is used for exemple in settings, where using the `NullValue` for a setting will reset\nit to its default value.",
-        "type": "string"
       },
       "_types:WriteResponseBase": {
         "type": "object",
@@ -86606,6 +86625,9 @@
           "metadata": {
             "$ref": "#/components/schemas/_types:Metadata"
           },
+          "description": {
+            "type": "string"
+          },
           "run_as": {
             "type": "array",
             "items": {
@@ -86650,7 +86672,6 @@
           "cluster",
           "indices",
           "metadata",
-          "run_as",
           "applications"
         ]
       },
@@ -87052,6 +87073,27 @@
           "names",
           "privileges",
           "allow_restricted_indices"
+        ]
+      },
+      "security._types:RemoteUserIndicesPrivileges": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/security._types:UserIndicesPrivileges"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "clusters": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              }
+            },
+            "required": [
+              "clusters"
+            ]
+          }
         ]
       },
       "security.get_user_profile:GetUserProfileErrors": {
