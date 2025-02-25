@@ -314,6 +314,10 @@ export class UserIndicesPrivileges {
   allow_restricted_indices: boolean
 }
 
+export class RemoteUserIndicesPrivileges extends UserIndicesPrivileges {
+  clusters: string[]
+}
+
 /**
  * While creating or updating a role you can provide either a JSON structure or a string to the API.
  * However, the response provided by Elasticsearch will only be string with a json-as-text content.
