@@ -11042,6 +11042,7 @@ export interface IlmGetStatusResponse {
 
 export interface IlmMigrateToDataTiersRequest extends RequestBase {
   dry_run?: boolean
+  master_timeout?: Duration
   body?: {
     legacy_template_to_delete?: string
     node_attribute?: string
@@ -12360,7 +12361,7 @@ export interface IndicesPutMappingRequest extends RequestBase {
     date_detection?: boolean
     dynamic?: MappingDynamicMapping
     dynamic_date_formats?: string[]
-    dynamic_templates?: Record<string, MappingDynamicTemplate> | Record<string, MappingDynamicTemplate>[]
+    dynamic_templates?: Record<string, MappingDynamicTemplate>[]
     _field_names?: MappingFieldNamesField
     _meta?: Metadata
     numeric_detection?: boolean

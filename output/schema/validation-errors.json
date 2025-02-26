@@ -2,7 +2,6 @@
   "endpointErrors": {
     "async_search.submit": {
       "request": [
-        "Request: query parameter 'keep_alive' does not exist in the json spec",
         "interface definition _types:QueryVectorBuilder - Property text_embedding is a single-variant and must be required"
       ],
       "response": []
@@ -10,27 +9,6 @@
     "capabilities": {
       "request": [
         "Missing request & response"
-      ],
-      "response": []
-    },
-    "cat.help": {
-      "request": [
-        "Request: missing json spec query parameter 'help'",
-        "Request: missing json spec query parameter 's'"
-      ],
-      "response": []
-    },
-    "cat.segments": {
-      "request": [
-        "Request: query parameter 'local' does not exist in the json spec",
-        "Request: query parameter 'master_timeout' does not exist in the json spec"
-      ],
-      "response": []
-    },
-    "cat.tasks": {
-      "request": [
-        "Request: query parameter 'timeout' does not exist in the json spec",
-        "Request: query parameter 'wait_for_completion' does not exist in the json spec"
       ],
       "response": []
     },
