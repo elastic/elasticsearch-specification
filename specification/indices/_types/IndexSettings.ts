@@ -22,6 +22,7 @@ import { AdditionalProperties } from '@spec_utils/behaviors'
 import { Dictionary } from '@spec_utils/Dictionary'
 import { Stringified } from '@spec_utils/Stringified'
 import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
+import { WithNullValue } from '@spec_utils/utils'
 import { Analyzer } from '@_types/analysis/analyzers'
 import { CharFilter } from '@_types/analysis/char_filters'
 import { Normalizer } from '@_types/analysis/normalizers'
@@ -95,7 +96,7 @@ export class IndexSettings
   /** @server_default false */
   hidden?: boolean | string // TODO should be bool only
   /** @server_default false */
-  auto_expand_replicas?: string
+  auto_expand_replicas?: WithNullValue<string>
   merge?: Merge
   search?: SettingsSearch
   /** @server_default 1s */
@@ -170,6 +171,7 @@ export class IndexSettings
 
 /**
  * @variants internal tag='type'
+ * @non_exhaustive
  */
 export type SettingsSimilarity =
   | SettingsSimilarityBm25
@@ -499,9 +501,9 @@ export class MappingLimitSettingsSourceFields {
 }
 
 export enum SourceMode {
-  DISABLED,
-  STORED,
-  SYNTHETIC
+  disabled,
+  stored,
+  synthetic
 }
 
 export class SlowlogSettings {

@@ -52,13 +52,13 @@ export interface Request extends RequestBase {
     allow_no_indices?: boolean
     /**
      * If true, returns partial results if there are shard failures. If false, returns an error with no partial results.
-     * @server_default false
+     * @server_default true
      */
     allow_partial_search_results?: boolean
     /**
      * If true, sequence queries will return partial results in case of shard failures. If false, they will return no results at all.
      * This flag has effect only if allow_partial_search_results is true.
-     * @server_default false
+     * @server_default true
      */
     allow_partial_sequence_results?: boolean
     /**

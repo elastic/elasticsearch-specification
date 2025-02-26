@@ -23,6 +23,8 @@ export interface BulkCreateOperation extends BulkWriteOperation {
 export interface BulkDeleteOperation extends BulkOperationBase {
 }
 
+export type BulkFailureStoreStatus = 'not_applicable_or_unknown' | 'used' | 'not_enabled' | 'failed'
+
 export interface BulkIndexOperation extends BulkWriteOperation {
 }
 
@@ -47,6 +49,7 @@ export type BulkOperationType = 'index' | 'create' | 'update' | 'delete'
 
 export interface BulkRequest<TDocument = unknown, TPartialDocument = unknown> extends RequestBase {
   index?: IndexName
+  include_source_on_error?: boolean
   list_executed_pipelines?: boolean
   pipeline?: string
   refresh?: Refresh
@@ -72,6 +75,7 @@ export interface BulkResponseItem {
   _id?: string | null
   _index: string
   status: integer
+  failure_store?: BulkFailureStoreStatus
   error?: ErrorCause
   _primary_term?: long
   result?: string
@@ -155,6 +159,7 @@ export interface CountResponse {
 export interface CreateRequest<TDocument = unknown> extends RequestBase {
   id: Id
   index: IndexName
+  include_source_on_error?: boolean
   pipeline?: string
   refresh?: Refresh
   routing?: Routing
@@ -643,6 +648,7 @@ export interface IndexRequest<TDocument = unknown> extends RequestBase {
   index: IndexName
   if_primary_term?: long
   if_seq_no?: SequenceNumber
+  include_source_on_error?: boolean
   op_type?: OpType
   pipeline?: string
   refresh?: Refresh
@@ -2049,6 +2055,7 @@ export interface UpdateRequest<TDocument = unknown, TPartialDocument = unknown> 
   index: IndexName
   if_primary_term?: long
   if_seq_no?: SequenceNumber
+  include_source_on_error?: boolean
   lang?: string
   refresh?: Refresh
   require_alias?: boolean
@@ -2180,7 +2187,6 @@ export interface BulkIndexByScrollFailure {
   id: Id
   index: IndexName
   status: integer
-  type: string
 }
 
 export interface BulkStats {
@@ -6782,6 +6788,7 @@ export interface AsyncSearchStatusStatusResponseBase extends AsyncSearchAsyncSea
 export interface AsyncSearchSubmitRequest extends RequestBase {
   index?: Indices
   wait_for_completion_timeout?: Duration
+  keep_alive?: Duration
   keep_on_completion?: boolean
   allow_no_indices?: boolean
   allow_partial_search_results?: boolean
@@ -6972,6 +6979,8 @@ export interface CatAliasesAliasesRecord {
 
 export interface CatAliasesRequest extends CatCatRequestBase {
   name?: Names
+  h?: Names
+  s?: Names
   expand_wildcards?: ExpandWildcards
   local?: boolean
   master_timeout?: Duration
@@ -7018,6 +7027,8 @@ export interface CatAllocationAllocationRecord {
 export interface CatAllocationRequest extends CatCatRequestBase {
   node_id?: NodeIds
   bytes?: Bytes
+  h?: Names
+  s?: Names
   local?: boolean
   master_timeout?: Duration
 }
@@ -7036,6 +7047,8 @@ export interface CatComponentTemplatesComponentTemplate {
 
 export interface CatComponentTemplatesRequest extends CatCatRequestBase {
   name?: string
+  h?: Names
+  s?: Names
   local?: boolean
   master_timeout?: Duration
 }
@@ -7058,6 +7071,8 @@ export interface CatCountCountRecord {
 
 export interface CatCountRequest extends CatCatRequestBase {
   index?: Indices
+  h?: Names
+  s?: Names
 }
 
 export type CatCountResponse = CatCountCountRecord[]
@@ -7077,6 +7092,8 @@ export interface CatFielddataFielddataRecord {
 export interface CatFielddataRequest extends CatCatRequestBase {
   fields?: Fields
   bytes?: Bytes
+  h?: Names
+  s?: Names
 }
 
 export type CatFielddataResponse = CatFielddataFielddataRecord[]
@@ -7137,6 +7154,8 @@ export interface CatHealthHealthRecord {
 export interface CatHealthRequest extends CatCatRequestBase {
   time?: TimeUnit
   ts?: boolean
+  h?: Names
+  s?: Names
 }
 
 export type CatHealthResponse = CatHealthHealthRecord[]
@@ -7447,6 +7466,8 @@ export interface CatIndicesRequest extends CatCatRequestBase {
   pri?: boolean
   time?: TimeUnit
   master_timeout?: Duration
+  h?: Names
+  s?: Names
 }
 
 export type CatIndicesResponse = CatIndicesIndicesRecord[]
@@ -7461,6 +7482,8 @@ export interface CatMasterMasterRecord {
 }
 
 export interface CatMasterRequest extends CatCatRequestBase {
+  h?: Names
+  s?: Names
   local?: boolean
   master_timeout?: Duration
 }
@@ -7831,6 +7854,8 @@ export interface CatNodeattrsNodeAttributesRecord {
 }
 
 export interface CatNodeattrsRequest extends CatCatRequestBase {
+  h?: Names
+  s?: Names
   local?: boolean
   master_timeout?: Duration
 }
@@ -8111,6 +8136,8 @@ export interface CatNodesRequest extends CatCatRequestBase {
   bytes?: Bytes
   full_id?: boolean | string
   include_unloaded_segments?: boolean
+  h?: Names
+  s?: Names
   master_timeout?: Duration
   time?: TimeUnit
 }
@@ -8129,6 +8156,8 @@ export interface CatPendingTasksPendingTasksRecord {
 }
 
 export interface CatPendingTasksRequest extends CatCatRequestBase {
+  h?: Names
+  s?: Names
   local?: boolean
   master_timeout?: Duration
   time?: TimeUnit
@@ -8151,6 +8180,8 @@ export interface CatPluginsPluginsRecord {
 }
 
 export interface CatPluginsRequest extends CatCatRequestBase {
+  h?: Names
+  s?: Names
   include_bootstrap?: boolean
   local?: boolean
   master_timeout?: Duration
@@ -8221,6 +8252,8 @@ export interface CatRecoveryRequest extends CatCatRequestBase {
   active_only?: boolean
   bytes?: Bytes
   detailed?: boolean
+  h?: Names
+  s?: Names
   time?: TimeUnit
 }
 
@@ -8234,6 +8267,8 @@ export interface CatRepositoriesRepositoriesRecord {
 }
 
 export interface CatRepositoriesRequest extends CatCatRequestBase {
+  h?: Names
+  s?: Names
   local?: boolean
   master_timeout?: Duration
 }
@@ -8243,6 +8278,8 @@ export type CatRepositoriesResponse = CatRepositoriesRepositoriesRecord[]
 export interface CatSegmentsRequest extends CatCatRequestBase {
   index?: Indices
   bytes?: Bytes
+  h?: Names
+  s?: Names
   local?: boolean
   master_timeout?: Duration
 }
@@ -8294,6 +8331,8 @@ export interface CatSegmentsSegmentsRecord {
 export interface CatShardsRequest extends CatCatRequestBase {
   index?: Indices
   bytes?: Bytes
+  h?: Names
+  s?: Names
   master_timeout?: Duration
   time?: TimeUnit
 }
@@ -8518,6 +8557,8 @@ export interface CatShardsShardsRecord {
 export interface CatSnapshotsRequest extends CatCatRequestBase {
   repository?: Names
   ignore_unavailable?: boolean
+  h?: Names
+  s?: Names
   master_timeout?: Duration
   time?: TimeUnit
 }
@@ -8563,6 +8604,8 @@ export interface CatTasksRequest extends CatCatRequestBase {
   detailed?: boolean
   nodes?: string[]
   parent_task_id?: string
+  h?: Names
+  s?: Names
   time?: TimeUnit
   timeout?: Duration
   wait_for_completion?: boolean
@@ -8607,6 +8650,8 @@ export interface CatTasksTasksRecord {
 
 export interface CatTemplatesRequest extends CatCatRequestBase {
   name?: Name
+  h?: Names
+  s?: Names
   local?: boolean
   master_timeout?: Duration
 }
@@ -8629,6 +8674,8 @@ export interface CatTemplatesTemplatesRecord {
 
 export interface CatThreadPoolRequest extends CatCatRequestBase {
   thread_pool_patterns?: Names
+  h?: Names
+  s?: Names
   time?: TimeUnit
   local?: boolean
   master_timeout?: Duration
@@ -10534,6 +10581,7 @@ export interface EsqlAsyncQueryRequest extends RequestBase {
     profile?: boolean
     query: string
     tables?: Record<string, Record<string, EsqlTableValuesContainer>>
+    include_ccs_metadata?: boolean
   }
 }
 
@@ -10575,6 +10623,7 @@ export interface EsqlQueryRequest extends RequestBase {
     profile?: boolean
     query: string
     tables?: Record<string, Record<string, EsqlTableValuesContainer>>
+    include_ccs_metadata?: boolean
   }
 }
 
@@ -10912,7 +10961,7 @@ export interface IlmExplainLifecycleLifecycleExplainManaged {
   age?: Duration
   failed_step?: Name
   failed_step_retry_count?: integer
-  index?: IndexName
+  index: IndexName
   index_creation_date?: DateTime
   index_creation_date_millis?: EpochTime<UnitMillis>
   is_auto_retryable_error?: boolean
@@ -10922,7 +10971,11 @@ export interface IlmExplainLifecycleLifecycleExplainManaged {
   phase: Name
   phase_time?: DateTime
   phase_time_millis?: EpochTime<UnitMillis>
-  policy: Name
+  policy?: Name
+  previous_step_info?: Record<string, any>
+  repository_name?: string
+  snapshot_name?: string
+  shrink_index_name?: string
   step?: Name
   step_info?: Record<string, any>
   step_time?: DateTime
@@ -10932,6 +10985,7 @@ export interface IlmExplainLifecycleLifecycleExplainManaged {
 }
 
 export interface IlmExplainLifecycleLifecycleExplainPhaseExecution {
+  phase_definition?: IlmPhase
   policy: Name
   version: VersionNumber
   modified_date_in_millis: EpochTime<UnitMillis>
@@ -11219,7 +11273,7 @@ export interface IndicesIndexSettingsKeys {
   routing_partition_size?: SpecUtilsStringified<integer>
   load_fixed_bitset_filters_eagerly?: boolean
   hidden?: boolean | string
-  auto_expand_replicas?: string
+  auto_expand_replicas?: SpecUtilsWithNullValue<string>
   merge?: IndicesMerge
   search?: IndicesSettingsSearch
   refresh_interval?: Duration
@@ -11516,7 +11570,7 @@ export interface IndicesSoftDeletes {
   retention_lease?: IndicesRetentionLease
 }
 
-export type IndicesSourceMode = 'DISABLED' | 'STORED' | 'SYNTHETIC'
+export type IndicesSourceMode = 'disabled' | 'stored' | 'synthetic'
 
 export interface IndicesStorage {
   type: IndicesStorageType
@@ -12245,7 +12299,11 @@ export interface IndicesPutDataLifecycleRequest extends RequestBase {
   expand_wildcards?: ExpandWildcards
   master_timeout?: Duration
   timeout?: Duration
-  body?: IndicesDataStreamLifecycle
+  body?: {
+    data_retention?: Duration
+    downsampling?: IndicesDataStreamLifecycleDownsampling
+    enabled?: boolean
+  }
 }
 
 export type IndicesPutDataLifecycleResponse = AcknowledgedResponseBase
@@ -12290,7 +12348,7 @@ export interface IndicesPutMappingRequest extends RequestBase {
     date_detection?: boolean
     dynamic?: MappingDynamicMapping
     dynamic_date_formats?: string[]
-    dynamic_templates?: Record<string, MappingDynamicTemplate> | Record<string, MappingDynamicTemplate>[]
+    dynamic_templates?: Record<string, MappingDynamicTemplate>[]
     _field_names?: MappingFieldNamesField
     _meta?: Metadata
     numeric_detection?: boolean
@@ -12990,7 +13048,15 @@ export type InferenceDenseByteVector = byte[]
 
 export type InferenceDenseVector = float[]
 
+export interface InferenceInferenceChunkingSettings extends InferenceInferenceEndpoint {
+  max_chunk_size?: integer
+  overlap?: integer
+  sentence_overlap?: integer
+  strategy?: string
+}
+
 export interface InferenceInferenceEndpoint {
+  chunking_settings?: InferenceInferenceChunkingSettings
   service: string
   service_settings: InferenceServiceSettings
   task_settings?: InferenceTaskSettings
@@ -13011,7 +13077,7 @@ export interface InferenceInferenceResult {
 
 export interface InferenceRankedDocument {
   index: integer
-  score: float
+  relevance_score: float
   text?: string
 }
 
@@ -14110,20 +14176,21 @@ export interface MlAnomaly {
 }
 
 export interface MlAnomalyCause {
-  actual: double[]
-  by_field_name: Name
-  by_field_value: string
-  correlated_by_field_value: string
-  field_name: Field
-  function: string
-  function_description: string
-  influencers: MlInfluence[]
-  over_field_name: Name
-  over_field_value: string
-  partition_field_name: string
-  partition_field_value: string
+  actual?: double[]
+  by_field_name?: Name
+  by_field_value?: string
+  correlated_by_field_value?: string
+  field_name?: Field
+  function?: string
+  function_description?: string
+  geo_results?: MlGeoResults
+  influencers?: MlInfluence[]
+  over_field_name?: Name
+  over_field_value?: string
+  partition_field_name?: string
+  partition_field_value?: string
   probability: double
-  typical: double[]
+  typical?: double[]
 }
 
 export interface MlAnomalyExplanation {
@@ -14692,8 +14759,8 @@ export interface MlFilterRef {
 export type MlFilterType = 'include' | 'exclude'
 
 export interface MlGeoResults {
-  actual_point: string
-  typical_point: string
+  actual_point?: string
+  typical_point?: string
 }
 
 export interface MlHyperparameter {
@@ -16455,6 +16522,9 @@ export interface MlStartTrainedModelDeploymentRequest extends RequestBase {
   threads_per_allocation?: integer
   timeout?: Duration
   wait_for?: MlDeploymentAllocationState
+  body?: {
+    adaptive_allocations?: MlAdaptiveAllocationsSettings
+  }
 }
 
 export interface MlStartTrainedModelDeploymentResponse {
@@ -16644,6 +16714,7 @@ export interface MlUpdateTrainedModelDeploymentRequest extends RequestBase {
   number_of_allocations?: integer
   body?: {
     number_of_allocations?: integer
+    adaptive_allocations?: MlAdaptiveAllocationsSettings
   }
 }
 
@@ -18238,6 +18309,10 @@ export interface SecurityRemoteIndicesPrivileges {
   allow_restricted_indices?: boolean
 }
 
+export interface SecurityRemoteUserIndicesPrivileges extends SecurityUserIndicesPrivileges {
+  clusters: string[]
+}
+
 export interface SecurityReplicationAccess {
   names: IndexName | IndexName[]
   allow_restricted_indices?: boolean
@@ -18751,7 +18826,8 @@ export interface SecurityGetRoleRole {
   remote_indices?: SecurityRemoteIndicesPrivileges[]
   remote_cluster?: SecurityRemoteClusterPrivileges[]
   metadata: Metadata
-  run_as: string[]
+  description?: string
+  run_as?: string[]
   transient_metadata?: Record<string, any>
   applications: SecurityApplicationPrivileges[]
   role_templates?: SecurityRoleTemplate[]
@@ -18862,8 +18938,10 @@ export interface SecurityGetUserPrivilegesRequest extends RequestBase {
 export interface SecurityGetUserPrivilegesResponse {
   applications: SecurityApplicationPrivileges[]
   cluster: string[]
+  remote_cluster?: SecurityRemoteClusterPrivileges[]
   global: SecurityGlobalPrivilege[]
   indices: SecurityUserIndicesPrivileges[]
+  remote_indices?: SecurityRemoteUserIndicesPrivileges[]
   run_as: string[]
 }
 
@@ -19461,6 +19539,18 @@ export interface ShutdownPutNodeRequest extends RequestBase {
 
 export type ShutdownPutNodeResponse = AcknowledgedResponseBase
 
+export interface SimulateIngestIngestDocumentSimulationKeys {
+  _id: Id
+  _index: IndexName
+  _source: Record<string, any>
+  _version: SpecUtilsStringified<VersionNumber>
+  executed_pipelines: string[]
+  ignored_fields?: Record<string, string>[]
+  error?: ErrorCause
+}
+export type SimulateIngestIngestDocumentSimulation = SimulateIngestIngestDocumentSimulationKeys
+  & { [property: string]: string | Id | IndexName | Record<string, any> | SpecUtilsStringified<VersionNumber> | string[] | Record<string, string>[] | ErrorCause }
+
 export interface SimulateIngestRequest extends RequestBase {
   index?: IndexName
   pipeline?: PipelineName
@@ -19474,7 +19564,11 @@ export interface SimulateIngestRequest extends RequestBase {
 }
 
 export interface SimulateIngestResponse {
-  docs: IngestSimulateDocumentResult[]
+  docs: SimulateIngestSimulateIngestDocumentResult[]
+}
+
+export interface SimulateIngestSimulateIngestDocumentResult {
+  doc?: SimulateIngestIngestDocumentSimulation
 }
 
 export interface SlmConfiguration {
@@ -22089,9 +22183,7 @@ export interface SpecUtilsCommonQueryParameters {
 
 export interface SpecUtilsCommonCatQueryParameters {
   format?: string
-  h?: Names
   help?: boolean
-  s?: Names
   v?: boolean
 }
 
