@@ -12,27 +12,6 @@
       ],
       "response": []
     },
-    "cat.help": {
-      "request": [
-        "Request: missing json spec query parameter 'help'",
-        "Request: missing json spec query parameter 's'"
-      ],
-      "response": []
-    },
-    "cat.segments": {
-      "request": [
-        "Request: query parameter 'local' does not exist in the json spec",
-        "Request: query parameter 'master_timeout' does not exist in the json spec"
-      ],
-      "response": []
-    },
-    "cat.tasks": {
-      "request": [
-        "Request: query parameter 'timeout' does not exist in the json spec",
-        "Request: query parameter 'wait_for_completion' does not exist in the json spec"
-      ],
-      "response": []
-    },
     "cluster.get_component_template": {
       "request": [
         "Request: query parameter 'flat_settings' does not exist in the json spec"
