@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { EsqlFormat } from '@esql/_types/QueryParameters'
+import { EsqlFormat } from '@esql/query/QueryParameters'
 import { TableValuesContainer } from '@esql/_types/TableValuesContainer'
 import { Dictionary } from '@spec_utils/Dictionary'
 import { RequestBase } from '@_types/Base'
@@ -94,5 +94,12 @@ export interface Request extends RequestBase {
      * name and the next level key is the column name.
      */
     tables?: Dictionary<string, Dictionary<string, TableValuesContainer>>
+    /**
+     * When set to `true` and performing a cross-cluster query, the response will include an extra `_clusters`
+     * object with information about the clusters that participated in the search along with info such as shards
+     * count.
+     * @server_default false
+     */
+    include_ccs_metadata?: boolean
   }
 }

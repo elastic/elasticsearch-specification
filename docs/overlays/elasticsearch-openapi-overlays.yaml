@@ -62,26 +62,234 @@ actions:
         - basicAuth: []
         - bearerAuth: []
 # Examples that apply only to the Elasticsearch OpenAPI document
-  - target: "$.paths['/_features']['get']"
-    description: "Add examples for get features operation"
+## Examples for autoscaling
+  - target: "$.paths['/_autoscaling/policy/{name}']['delete']"
+    description: "Add examples for delete autoscaling policy response"
     update:
       responses:
         200:
           content:
             application/json:
               examples:
-                getFeaturesResponseExample1:
-                  $ref: "../../specification/features/get_features/examples/response/GetFeaturesResponseExample1.yaml"
-  - target: "$.paths['/_features/_reset']['post']"
-    description: "Add examples for reset features operation"
+                deleteAutoscalingPolicyResponseExample1:
+                  $ref: "../../specification/autoscaling/delete_autoscaling_policy/examples/response/DeleteAutoscalingPolicyResponseExample1.yaml"
+  - target: "$.paths['/_autoscaling/capacity']['get']"
+    description: "Add examples for get autoscaling capacity response"
     update:
       responses:
         200:
           content:
             application/json:
               examples:
-                resetFeaturesResponseExample1:
-                  $ref: "../../specification/features/reset_features/examples/response/ResetFeaturesResponseExample1.yaml"
+                getAutoscalingCapacityResponseExample1:
+                  $ref: "../../specification/autoscaling/get_autoscaling_capacity/examples/200_response/GetAutoscalingCapacityResponseExample1.yaml"
+  - target: "$.paths['/_autoscaling/policy/{name}']['get']"
+    description: "Add examples for get autoscaling policy response"
+    update:
+      responses:
+        200:
+          content:
+            application/json:
+              examples:
+                getAutoscalingPolicyResponseExample1:
+                  $ref: "../../specification/autoscaling/get_autoscaling_policy/examples/200_response/GetAutoscalingPolicyResponseExample1.yaml"
+  - target: "$.paths['/_autoscaling/policy/{name}']['put']"
+    description: "Add examples for create autoscaling policy operation"
+    update:
+      requestBody: 
+        content: 
+          application/json: 
+            examples:
+              createAutoscalingPolicyRequestExample1: 
+                $ref: "../../specification/autoscaling/put_autoscaling_policy/examples/request/PutAutoscalingPolicyRequestExample1.yaml"
+              createAutoscalingPolicyRequestExample2: 
+                $ref: "../../specification/autoscaling/put_autoscaling_policy/examples/request/PutAutoscalingPolicyRequestExample2.yaml"
+      responses:
+        200:
+          content:
+            application/json:
+              examples:
+                createAutoscalingPolicyResponseExample1:
+                  $ref: "../../specification/autoscaling/put_autoscaling_policy/examples/200_response/PutAutoscalingPolicyResponseExample1.yaml"
+## Examples for behavioral analytics
+  - target: "$.paths['/_application/analytics/{collection_name}/event/{event_type}']['post']"
+    description: "Add examples for post analytics collection event operation"
+    update: 
+      requestBody: 
+        content: 
+          application/json: 
+            examples: 
+              postBehavioralAnalyticsEventRequestExample1:
+                $ref: "../../specification/search_application/post_behavioral_analytics_event/examples/request/BehavioralAnalyticsEventPostRequestExample1.yaml"
+## Examples for cat
+  - target: "$.components['responses']['cat.thread_pool#200']"
+    description: "Add example for cat thread pool response"
+    update: 
+      content:
+        text/plain:
+          schema:
+            type: string
+          examples:
+            catThreadPoolResponseExample1:
+              $ref: "../../specification/cat/thread_pool/examples/200_response/CatThreadPoolResponseExample1.yaml"
+            catThreadPoolResponseExample2:
+              $ref: "../../specification/cat/thread_pool/examples/200_response/CatThreadPoolResponseExample2.yaml"
+## Examples for ccr
+  - target: "$.paths['/{index}/_ccr/follow']['put']"
+    description: "Add examples for create follower operation"
+    update: 
+      requestBody: 
+        content: 
+          application/json: 
+            examples: 
+              createFollowIndexRequestExample1: 
+                $ref: "../../specification/ccr/follow/examples/request/CreateFollowIndexRequestExample1.yaml"
+      responses:
+        200:
+          content:
+            application/json:
+              examples:
+                createFollowIndexResponseExample1:
+                  $ref: "../../specification/ccr/follow/examples/response/CreateFollowIndexResponseExample1.yaml"
+  - target: "$.paths['/{index}/_ccr/forget_follower']['post']"
+    description: "Add examples for forget follower operation"
+    update: 
+      requestBody: 
+        content: 
+          application/json: 
+            examples: 
+              forgetFollowerRequestExample1: 
+                $ref: "../../specification/ccr/forget_follower/examples/request/ForgetFollowerIndexRequestExample1.yaml"
+      responses:
+        200:
+          content:
+            application/json:
+              examples:
+                forgetFollowerResponseExample1:
+                  $ref: "../../specification/ccr/forget_follower/examples/response/ForgetFollowerIndexResponseExample1.yaml"
+  - target: "$.paths['/_ccr/auto_follow/{name}']['put']"
+    description: "Add examples for create auto-follow pattern operation"
+    update: 
+      requestBody: 
+        content: 
+          application/json: 
+            examples: 
+              putAutoFollowPatternRequestExample1: 
+                $ref: "../../specification/ccr/put_auto_follow_pattern/examples/request/PutAutoFollowPatternRequestExample1.yaml"
+      responses:
+        200:
+          content:
+            application/json:
+              examples:
+                putAutoFollowPatternResponseExample1:
+                  $ref: "../../specification/ccr/put_auto_follow_pattern/examples/response/PutAutoFollowPatternResponseExample1.yaml"
+  - target: "$.paths['/{index}/_ccr/resume_follow']['post']"
+    description: "Add examples for resume a follower operation"
+    update: 
+      requestBody: 
+        content: 
+          application/json: 
+            examples: 
+              resumeFollowIndexRequestExample1: 
+                $ref: "../../specification/ccr/resume_follow/examples/request/ResumeFollowIndexRequestExample1.yaml"
+      responses:
+        200:
+          content:
+            application/json:
+              examples:
+                resumeFollowIndexResponseExample1:
+                  $ref: "../../specification/ccr/resume_follow/examples/response/ResumeFollowIndexResponseExample1.yaml"
+  - target: "$.paths['/{index}/_ccr/unfollow']['post']"
+    description: "Add examples for unfollow an index"
+    update: 
+      responses:
+        200:
+          content:
+            application/json:
+              examples:
+                ccrUnfollowIndexResponseExample1:
+                  $ref: "../../specification/ccr/unfollow/examples/response/UnfollowIndexResponseExample1.yaml"
+  - target: "$.paths['/_ccr/stats']['get']"
+    description: "Add examples for get ccr stats"
+    update: 
+      responses:
+        200:
+          content:
+            application/json:
+              examples:
+                ccrStatsResponseExample1:
+                  $ref: "../../specification/ccr/stats/examples/response/CcrStatsResponseExample1.yaml"
+  - target: "$.paths['/_ccr/auto_follow/{name}/resume']['post']"
+    description: "Add examples for resume auto-follow pattern"
+    update: 
+      responses:
+        200:
+          content:
+            application/json:
+              examples:
+                ccrResumeAutoFollowResponseExample1:
+                  $ref: "../../specification/ccr/resume_auto_follow_pattern/examples/response/ResumeAutoFollowPatternResponseExample1.yaml"
+  - target: "$.paths['/{index}/_ccr/pause_follow']['post']"
+    description: "Add examples for resume auto-follow pattern"
+    update: 
+      responses:
+        200:
+          content:
+            application/json:
+              examples:
+                ccrPauseFollowResponseExample1:
+                  $ref: "../../specification/ccr/pause_follow/examples/response/PauseFollowIndexResponseExample1.yaml"
+  - target: "$.paths['/_ccr/auto_follow/{name}/pause']['post']"
+    description: "Add examples for pause auto-follow pattern"
+    update: 
+      responses:
+        200:
+          content:
+            application/json:
+              examples:
+                ccrPauseAutoFollowPatternResponseExample1:
+                  $ref: "../../specification/ccr/pause_auto_follow_pattern/examples/response/PauseAutoFollowPatternResponseExample1.yaml"
+  - target: "$.components['responses']['ccr.get_auto_follow_pattern#200']"
+    description: "Add examples for get auto-follow pattern"
+    update: 
+      content:
+        application/json:
+          examples:
+            ccrPauseAutoFollowPatternResponseExample1:
+              $ref: "../../specification/ccr/get_auto_follow_pattern/examples/response/GetAutoFollowPatternResponseExample1.yaml"
+  - target: "$.paths['/{index}/_ccr/stats']['get']"
+    description: "Add examples for get follower stats"
+    update: 
+      responses:
+        200:
+          content:
+            application/json:
+              examples:
+                ccrFollowerStatsResponseExample1:
+                  $ref: "../../specification/ccr/follow_stats/examples/response/FollowIndexStatsResponseExample1.yaml"
+  - target: "$.paths['/{index}/_ccr/info']['get']"
+    description: "Add examples for get follower info"
+    update: 
+      responses:
+        200:
+          content:
+            application/json:
+              examples:
+                ccrFollowerInfoResponseExample1:
+                  $ref: "../../specification/ccr/follow_info/examples/response/FollowInfoResponseExample1.yaml"
+                ccrFollowerInfoResponseExample2:
+                  $ref: "../../specification/ccr/follow_info/examples/response/FollowInfoResponseExample2.yaml"
+  - target: "$.paths['/_ccr/auto_follow/{name}']['delete']"
+    description: "Add examples for delete auto follow pattern"
+    update: 
+      responses:
+        200:
+          content:
+            application/json:
+              examples:
+                ccrAutoFollowPatternDeleteResponseExample1:
+                  $ref: "../../specification/ccr/delete_auto_follow_pattern/examples/response/DeleteAutoFollowPatternResponseExample1.yaml"
+## Examples for cluster
   - target: "$.components['requestBodies']['cluster.allocation_explain']"
     description: "Add examples for cluster allocation explain operation"
     update: 
@@ -132,16 +340,6 @@ actions:
           examples:
             clusterNodesReloadSecureSettingsResponseExample1:
               $ref: "../../specification/nodes/reload_secure_settings/examples/response/ReloadSecureSettingsResponseExample1.yaml"
-  - target: "$.paths['/_tasks']['get']"
-    description: "Add examples for task management operation"
-    update:
-      responses:
-        200:
-          content:
-            application/json:
-              examples:
-                getTasksResponseExample1:
-                  $ref: "../../specification/tasks/get/examples/200_response/GetTaskResponseExample1.yaml"
   - target: "$.components['responses']['nodes.info#200']"
     description: "Add response examples for nodes info"
     update: 
@@ -150,6 +348,66 @@ actions:
           examples:
             nodesInfoResponseExample1:
               $ref: "../../specification/nodes/info/examples/200_response/nodesInfoResponseExample1.yaml"
+## Examples for connectors
+  - target: "$.paths['/_connector/_sync_job/{connector_sync_job_id}/_error']['put']"
+    description: "Add examples for connector job sync error operation"
+    update:
+      requestBody: 
+        content: 
+          application/json: 
+            examples:
+              syncJobErrorRequestExample1:
+                 $ref: "../../specification/connector/sync_job_error/examples/request/SyncJobErrorRequestExample1.yaml"
+  - target: "$.paths['/_connector/{connector_id}/_features']['put']"
+    description: "Add examples for update connector features"
+    update: 
+      requestBody: 
+        content: 
+          application/json: 
+            examples: 
+              connectorUpdateFeaturesRequestExample1: 
+                $ref: "../../specification/connector/update_features/examples/request/ConnectorUpdateFeaturesRequestExample1.yaml"
+              connectorUpdateFeaturesRequestExample2: 
+                $ref: "../../specification/connector/update_features/examples/request/ConnectorUpdateFeaturesRequestExample2.yaml"
+      responses:
+        200:
+          content:
+            application/json:
+              examples:
+                connectorUpdateFeaturesResponseExample1:
+                  $ref: "../../specification/connector/update_features/examples/response/ConnectorUpdateFeaturesResponseExample1.yaml"
+## Examples for esql
+  - target: "$.paths['/_query/async']['post']"
+    description: "Add examples for async esql query operation"
+    update:
+      requestBody: 
+        content: 
+          application/json: 
+            examples:
+              esqlAsyncQueryRequestExample1:
+                 $ref: "../../specification/esql/async_query/examples/request/AsyncQueryRequestExample1.yaml"
+## Examples for features
+  - target: "$.paths['/_features']['get']"
+    description: "Add examples for get features operation"
+    update:
+      responses:
+        200:
+          content:
+            application/json:
+              examples:
+                getFeaturesResponseExample1:
+                  $ref: "../../specification/features/get_features/examples/response/GetFeaturesResponseExample1.yaml"
+  - target: "$.paths['/_features/_reset']['post']"
+    description: "Add examples for reset features operation"
+    update:
+      responses:
+        200:
+          content:
+            application/json:
+              examples:
+                resetFeaturesResponseExample1:
+                  $ref: "../../specification/features/reset_features/examples/response/ResetFeaturesResponseExample1.yaml"
+## Examples for ilm
   - target: "$.paths['/_ilm/policy/{policy}']['delete']"
     description: "Add examples for delete lifecycle policy operation"
     update:
@@ -268,6 +526,17 @@ actions:
               examples:
                 removePolicyResponseExample1:
                   $ref: "../../specification/ilm/remove_policy/examples/response/RemovePolicyResponseExample1.yaml"
+## Examples for indices
+  - target: "$.paths['/_lifecycle/stats']['get']"
+    description: "Add examples for get lifecycle stats operation"
+    update:
+      responses:
+        200:
+          content:
+            application/json:
+              examples:
+                dataStreamLifecycleStatsResponseExample1:
+                  $ref: "../../specification/indices/get_data_lifecycle_stats/examples/response/IndicesGetDataLifecycleStatsResponseExample1.yaml"
   - target: "$.components['requestBodies']['indices.clone']"
     description: "Add examples for clone index request"
     update: 
@@ -304,54 +573,6 @@ actions:
               examples:
                 indicesOpenResponseExample1:
                   $ref: "../../specification/indices/open/examples/200_response/indicesOpenResponseExample1.yaml"
-  - target: "$.paths['/_autoscaling/policy/{name}']['delete']"
-    description: "Add examples for delete autoscaling policy response"
-    update:
-      responses:
-        200:
-          content:
-            application/json:
-              examples:
-                deleteAutoscalingPolicyResponseExample1:
-                  $ref: "../../specification/autoscaling/delete_autoscaling_policy/examples/response/DeleteAutoscalingPolicyResponseExample1.yaml"
-  - target: "$.paths['/_autoscaling/capacity']['get']"
-    description: "Add examples for get autoscaling capacity response"
-    update:
-      responses:
-        200:
-          content:
-            application/json:
-              examples:
-                getAutoscalingCapacityResponseExample1:
-                  $ref: "../../specification/autoscaling/get_autoscaling_capacity/examples/200_response/GetAutoscalingCapacityResponseExample1.yaml"
-  - target: "$.paths['/_autoscaling/policy/{name}']['get']"
-    description: "Add examples for get autoscaling policy response"
-    update:
-      responses:
-        200:
-          content:
-            application/json:
-              examples:
-                getAutoscalingPolicyResponseExample1:
-                  $ref: "../../specification/autoscaling/get_autoscaling_policy/examples/200_response/GetAutoscalingPolicyResponseExample1.yaml"
-  - target: "$.paths['/_autoscaling/policy/{name}']['put']"
-    description: "Add examples for create autoscaling policy operation"
-    update:
-      requestBody: 
-        content: 
-          application/json: 
-            examples:
-              createAutoscalingPolicyRequestExample1: 
-                $ref: "../../specification/autoscaling/put_autoscaling_policy/examples/request/PutAutoscalingPolicyRequestExample1.yaml"
-              createAutoscalingPolicyRequestExample2: 
-                $ref: "../../specification/autoscaling/put_autoscaling_policy/examples/request/PutAutoscalingPolicyRequestExample2.yaml"
-      responses:
-        200:
-          content:
-            application/json:
-              examples:
-                createAutoscalingPolicyResponseExample1:
-                  $ref: "../../specification/autoscaling/put_autoscaling_policy/examples/200_response/PutAutoscalingPolicyResponseExample1.yaml"
   - target: "$.components['responses']['indices.recovery#200']"
     description: "Add example for get index recovery response"
     update: 
@@ -360,16 +581,16 @@ actions:
           examples:
             getIndicesRecoveryResponseExample1:
                   $ref: "../../specification/indices/recovery/examples/200_response/indicesRecoveryResponseExample1.yaml"
-  - target: "$.paths['/_resolve/cluster/{name}']['get']"
+  - target: "$.components['responses']['indices.resolve_cluster#200']"
     description: "Add examples for resolve cluster operation"
     update: 
-      responses:
-        200:
-          content:
-            application/json:
-              examples:
-                resolveClusterResponseExample1:
-                  $ref: "../../specification/indices/resolve_cluster/examples/200_response/ResolveClusterResponseExample1.yaml"
+      content:
+        application/json:
+          examples:
+            resolveClusterResponseExample1:
+              $ref: "../../specification/indices/resolve_cluster/examples/200_response/ResolveClusterResponseExample1.yaml"
+            resolveClusterResponseExample2:
+              $ref: "../../specification/indices/resolve_cluster/examples/200_response/ResolveClusterResponseExample2.yaml"
   - target: "$.components['requestBodies']['indices.shrink']"
     description: "Add example for shrink index request"
     update: 
@@ -394,37 +615,15 @@ actions:
           examples:
             indicesLegacyPutTemplateRequestExample1:
               $ref: "../../specification/indices/put_template/examples/request/indicesPutTemplateRequestExample1.yaml"
-## Examples for behavioral analytics
-  - target: "$.paths['/_application/analytics/{collection_name}/event/{event_type}']['post']"
-    description: "Add examples for post analytics collection event operation"
-    update: 
-      requestBody: 
-        content: 
-          application/json: 
-            examples: 
-              postBehavioralAnalyticsEventRequestExample1:
-                $ref: "../../specification/search_application/post_behavioral_analytics_event/examples/request/BehavioralAnalyticsEventPostRequestExample1.yaml"
-## Examples for esql
-  - target: "$.paths['/_query/async']['post']"
-    description: "Add examples for async esql query operation"
+## Examples for inference
+  - target: "$.components['requestBodies']['inference.stream_inference']"
+    description: "Add example for inference stream request"
     update:
-      requestBody: 
-        content: 
-          application/json: 
-            examples:
-              esqlAsyncQueryRequestExample1:
-                 $ref: "../../specification/esql/async_query/examples/request/AsyncQueryRequestExample1.yaml"
-## Examples for indices
-  - target: "$.paths['/_lifecycle/stats']['get']"
-    description: "Add examples for get lifecycle stats operation"
-    update:
-      responses:
-        200:
-          content:
-            application/json:
-              examples:
-                dataStreamLifecycleStatsResponseExample1:
-                  $ref: "../../specification/indices/get_data_lifecycle_stats/examples/response/IndicesGetDataLifecycleStatsResponseExample1.yaml"
+      content:
+        application/json:
+          examples:
+            streamInferenceRequestExample1:
+              $ref: "../../specification/inference/stream_inference/examples/request/StreamInferenceRequestExample1.yaml"
 ## Examples for ingest
   - target: "$.components['requestBodies']['simulate.ingest']"
     description: "Add example for simulate ingest request"
@@ -509,6 +708,59 @@ actions:
           examples:
             clusterHealthResponseExample1:
               $ref: "../../specification/license/post/examples/200_response/PostLicenseResponseExample1.yaml"
+## Examples for machine learning
+  - target: "$.components['requestBodies']['ml.explain_data_frame_analytics']"
+    description: "Add examples for explain dataframe analytics"
+    update: 
+      content: 
+        application/json: 
+          examples: 
+            mlDataFrameAnalyticsExplainRequestExample1: 
+              $ref: "../../specification/ml/explain_data_frame_analytics/examples/request/MlExplainDataFrameAnalyticsRequestExample1.yaml"
+  - target: "$.components['responses']['ml.explain_data_frame_analytics#200']"
+    description: "Add examples for explain dataframe analytics response"
+    update: 
+      content:
+        application/json:
+          examples:
+            mlDataFrameAnalyticsExplainResponseExample1:
+              $ref: "../../specification/ml/explain_data_frame_analytics/examples/response/MlExplainDataFrameAnalyticsResponseExample1.yaml"
+  - target: "$.paths['/_ml/trained_models/{model_id}/deployment/cache/_clear']['post']"
+    description: "Add examples for clear trained model cache"
+    update: 
+      responses:
+        200:
+          content:
+            application/json:
+              examples:
+                mlTrainedModelClearResponseExample1:
+                  $ref: "../../specification/ml/clear_trained_model_deployment_cache/examples/response/MlClearTrainedModelDeploymentCacheResponseExample1.yaml"
+  - target: "$.paths['/_ml/anomaly_detectors/{job_id}/model_snapshots/{snapshot_id}']['delete']"
+    description: "Add examples for delete trained model snapshot"
+    update: 
+      responses:
+        200:
+          content:
+            application/json:
+              examples:
+                mlTrainedModelSnapshotDeleteResponseExample1:
+                  $ref: "../../specification/ml/delete_model_snapshot/examples/response/MlDeleteModelSnapshotResponseExample1.yaml"
+  - target: "$.components['responses']['ml.delete_forecast#200']"
+    description: "Add examples for delete forecast"
+    update: 
+        content:
+          application/json:
+            examples:
+              mlForecastDeleteResponseExample1:
+                $ref: "../../specification/ml/delete_forecast/examples/response/MlDeleteForecastResponseExample1.yaml"
+  - target: "$.components['responses']['ml.delete_expired_data#200']"
+    description: "Add examples for delete expired data"
+    update: 
+        content:
+          application/json:
+            examples:
+              mlExpiredDataDeleteResponseExample1:
+                $ref: "../../specification/ml/delete_expired_data/examples/response/MlDeleteExpiredDataResponseExample1.yaml"
 ## Examples for search applications
   - target: "$.paths['/_application/search_application/{name}/_render_query']['post']"
     description: "Add examples for render search application query operation"
@@ -519,7 +771,7 @@ actions:
             examples:
               renderSearchApplicationQueryRequestExample1: 
                 $ref: "../../specification/search_application/render_query/examples/request/SearchApplicationsRenderQueryRequestExample1.yaml"
-# Examples for security
+## Examples for security
   - target: "$.paths['/_security/api_key/_bulk_update']['post']"
     description: "Add examples for bulk update API keys operation"
     update:
@@ -554,6 +806,28 @@ actions:
               examples:
                 delegatePkiResponseExample1:
                   $ref: "../../specification/security/delegate_pki/examples/200_response/SecurityDelegatePkiResponseExample1.yaml"
+## Examples for tasks
+  - target: "$.paths['/_tasks']['get']"
+    description: "Add examples for task management operation"
+    update:
+      responses:
+        200:
+          content:
+            application/json:
+              examples:
+                getTasksResponseExample1:
+                  $ref: "../../specification/tasks/get/examples/200_response/GetTaskResponseExample1.yaml"
+## Examples for transforms
+  - target: "$.paths['/_transform/_upgrade']['post']"
+    description: "Add examples for transform upgrade"
+    update:
+      responses:
+        200:
+          content:
+            application/json:
+              examples:
+                transformUpgradeResponseExample1:
+                  $ref: "../../specification/transform/upgrade_transforms/examples/response/UpgradeTransformResponseExample1.yaml"
 ## Examples for watcher
   - target: "$.paths['/_watcher/settings']['put']"
     description: "Add request example for update watcher settings"
@@ -574,12 +848,3 @@ actions:
               examples:
                 updateWatcherSettingsRequestExample1: 
                   $ref: "../../specification/watcher/get_settings/examples/200_response/WatcherGetSettingsResponseExample1.yaml"
-## Examples for inference
-  - target: "$.components['requestBodies']['inference.stream_inference']"
-    description: "Add example for inference stream request"
-    update:
-      content:
-        application/json:
-          examples:
-            streamInferenceRequestExample1:
-              $ref: "../../specification/inference/stream_inference/examples/request/StreamInferenceRequestExample1.yaml"

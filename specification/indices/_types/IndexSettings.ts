@@ -22,6 +22,7 @@ import { AdditionalProperties } from '@spec_utils/behaviors'
 import { Dictionary } from '@spec_utils/Dictionary'
 import { Stringified } from '@spec_utils/Stringified'
 import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
+import { WithNullValue } from '@spec_utils/utils'
 import { Analyzer } from '@_types/analysis/analyzers'
 import { CharFilter } from '@_types/analysis/char_filters'
 import { Normalizer } from '@_types/analysis/normalizers'
@@ -95,7 +96,7 @@ export class IndexSettings
   /** @server_default false */
   hidden?: boolean | string // TODO should be bool only
   /** @server_default false */
-  auto_expand_replicas?: string
+  auto_expand_replicas?: WithNullValue<string>
   merge?: Merge
   search?: SettingsSearch
   /** @server_default 1s */
@@ -170,6 +171,7 @@ export class IndexSettings
 
 /**
  * @variants internal tag='type'
+ * @non_exhaustive
  */
 export type SettingsSimilarity =
   | SettingsSimilarityBm25
@@ -306,6 +308,12 @@ export class IndexSettingsLifecycle {
    * @server_default
    */
   rollover_alias?: string
+  /**
+   * Preference for the system that manages a data stream backing index (preferring ILM when both ILM and DLM are
+   * applicable for an index).
+   * @server_default true
+   */
+  prefer_ilm?: boolean | string
 }
 
 export class IndexSettingsLifecycleStep {
@@ -420,7 +428,8 @@ export class MappingLimitSettings {
   nested_objects?: MappingLimitSettingsNestedObjects
   field_name_length?: MappingLimitSettingsFieldNameLength
   dimension_fields?: MappingLimitSettingsDimensionFields
-  ignore_malformed?: boolean
+  source?: MappingLimitSettingsSourceFields
+  ignore_malformed?: boolean | string
 }
 
 export class MappingLimitSettingsTotalFields {
@@ -485,6 +494,16 @@ export class MappingLimitSettingsDimensionFields {
    * Elastic will work to fix any issues, but features in technical preview are not subject to the support SLA of official GA features.
    */
   limit?: long
+}
+
+export class MappingLimitSettingsSourceFields {
+  mode: SourceMode
+}
+
+export enum SourceMode {
+  disabled,
+  stored,
+  synthetic
 }
 
 export class SlowlogSettings {

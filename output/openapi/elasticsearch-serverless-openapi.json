@@ -32,7 +32,7 @@
           {
             "in": "query",
             "name": "keep_alive",
-            "description": "Specifies how long the async search should be available in the cluster.\nWhen not specified, the `keep_alive` set with the corresponding submit async request will be used.\nOtherwise, it is possible to override the value and extend the validity of the request.\nWhen this period expires, the search, if still running, is cancelled.\nIf the search is completed, its saved results are deleted.",
+            "description": "The length of time that the async search should be available in the cluster.\nWhen not specified, the `keep_alive` set with the corresponding submit async request will be used.\nOtherwise, it is possible to override the value and extend the validity of the request.\nWhen this period expires, the search, if still running, is cancelled.\nIf the search is completed, its saved results are deleted.",
             "deprecated": false,
             "schema": {
               "$ref": "#/components/schemas/_types:Duration"
@@ -115,7 +115,7 @@
           "search"
         ],
         "summary": "Get the async search status",
-        "description": "Get the status of a previously submitted async search request given its identifier, without retrieving search results.\nIf the Elasticsearch security features are enabled, use of this API is restricted to the `monitoring_user` role.",
+        "description": "Get the status of a previously submitted async search request given its identifier, without retrieving search results.\nIf the Elasticsearch security features are enabled, the access to the status of a specific async search is restricted to:\n\n* The user or API key that submitted the original async search request.\n* Users that have the `monitor` cluster privilege or greater privileges.",
         "operationId": "async-search-status",
         "parameters": [
           {
@@ -132,7 +132,7 @@
           {
             "in": "query",
             "name": "keep_alive",
-            "description": "Specifies how long the async search needs to be available.\nOngoing async searches and any saved search results are deleted after this period.",
+            "description": "The length of time that the async search needs to be available.\nOngoing async searches and any saved search results are deleted after this period.",
             "deprecated": false,
             "schema": {
               "$ref": "#/components/schemas/_types:Duration"
@@ -166,6 +166,9 @@
         "parameters": [
           {
             "$ref": "#/components/parameters/async_search.submit#wait_for_completion_timeout"
+          },
+          {
+            "$ref": "#/components/parameters/async_search.submit#keep_alive"
           },
           {
             "$ref": "#/components/parameters/async_search.submit#keep_on_completion"
@@ -321,6 +324,9 @@
             "$ref": "#/components/parameters/async_search.submit#wait_for_completion_timeout"
           },
           {
+            "$ref": "#/components/parameters/async_search.submit#keep_alive"
+          },
+          {
             "$ref": "#/components/parameters/async_search.submit#keep_on_completion"
           },
           {
@@ -468,6 +474,9 @@
         "operationId": "bulk-1",
         "parameters": [
           {
+            "$ref": "#/components/parameters/bulk#include_source_on_error"
+          },
+          {
             "$ref": "#/components/parameters/bulk#list_executed_pipelines"
           },
           {
@@ -518,6 +527,9 @@
         "description": "Perform multiple `index`, `create`, `delete`, and `update` actions in a single request.\nThis reduces overhead and can greatly increase indexing speed.\n\nIf the Elasticsearch security features are enabled, you must have the following index privileges for the target data stream, index, or index alias:\n\n* To use the `create` action, you must have the `create_doc`, `create`, `index`, or `write` index privilege. Data streams support only the `create` action.\n* To use the `index` action, you must have the `create`, `index`, or `write` index privilege.\n* To use the `delete` action, you must have the `delete` or `write` index privilege.\n* To use the `update` action, you must have the `index` or `write` index privilege.\n* To automatically create a data stream or index with a bulk API request, you must have the `auto_configure`, `create_index`, or `manage` index privilege.\n* To make the result of a bulk operation visible to search using the `refresh` parameter, you must have the `maintenance` or `manage` index privilege.\n\nAutomatic data stream creation requires a matching index template with data stream enabled.\n\nThe actions are specified in the request body using a newline delimited JSON (NDJSON) structure:\n\n```\naction_and_meta_data\\n\noptional_source\\n\naction_and_meta_data\\n\noptional_source\\n\n....\naction_and_meta_data\\n\noptional_source\\n\n```\n\nThe `index` and `create` actions expect a source on the next line and have the same semantics as the `op_type` parameter in the standard index API.\nA `create` action fails if a document with the same ID already exists in the target\nAn `index` action adds or replaces a document as necessary.\n\nNOTE: Data streams support only the `create` action.\nTo update or delete a document in a data stream, you must target the backing index containing the document.\n\nAn `update` action expects that the partial doc, upsert, and script and its options are specified on the next line.\n\nA `delete` action does not expect a source on the next line and has the same semantics as the standard delete API.\n\nNOTE: The final line of data must end with a newline character (`\\n`).\nEach newline character may be preceded by a carriage return (`\\r`).\nWhen sending NDJSON data to the `_bulk` endpoint, use a `Content-Type` header of `application/json` or `application/x-ndjson`.\nBecause this format uses literal newline characters (`\\n`) as delimiters, make sure that the JSON actions and sources are not pretty printed.\n\nIf you provide a target in the request path, it is used for any actions that don't explicitly specify an `_index` argument.\n\nA note on the format: the idea here is to make processing as fast as possible.\nAs some of the actions are redirected to other shards on other nodes, only `action_meta_data` is parsed on the receiving node side.\n\nClient libraries using this protocol should try and strive to do something similar on the client side, and reduce buffering as much as possible.\n\nThere is no \"correct\" number of actions to perform in a single bulk request.\nExperiment with different settings to find the optimal size for your particular workload.\nNote that Elasticsearch limits the maximum size of a HTTP request to 100mb by default so clients must ensure that no request exceeds this size.\nIt is not possible to index a single document that exceeds the size limit, so you must pre-process any such documents into smaller pieces before sending them to Elasticsearch.\nFor instance, split documents into pages or chapters before indexing them, or store raw binary data in a system outside Elasticsearch and replace the raw data with a link to the external system in the documents that you send to Elasticsearch.\n\n**Client suppport for bulk requests**\n\nSome of the officially supported clients provide helpers to assist with bulk requests and reindexing:\n\n* Go: Check out `esutil.BulkIndexer`\n* Perl: Check out `Search::Elasticsearch::Client::5_0::Bulk` and `Search::Elasticsearch::Client::5_0::Scroll`\n* Python: Check out `elasticsearch.helpers.*`\n* JavaScript: Check out `client.helpers.*`\n* .NET: Check out `BulkAllObservable`\n* PHP: Check out bulk indexing.\n\n**Submitting bulk requests with cURL**\n\nIf you're providing text file input to `curl`, you must use the `--data-binary` flag instead of plain `-d`.\nThe latter doesn't preserve newlines. For example:\n\n```\n$ cat requests\n{ \"index\" : { \"_index\" : \"test\", \"_id\" : \"1\" } }\n{ \"field1\" : \"value1\" }\n$ curl -s -H \"Content-Type: application/x-ndjson\" -XPOST localhost:9200/_bulk --data-binary \"@requests\"; echo\n{\"took\":7, \"errors\": false, \"items\":[{\"index\":{\"_index\":\"test\",\"_id\":\"1\",\"_version\":1,\"result\":\"created\",\"forced_refresh\":false}}]}\n```\n\n**Optimistic concurrency control**\n\nEach `index` and `delete` action within a bulk API call may include the `if_seq_no` and `if_primary_term` parameters in their respective action and meta data lines.\nThe `if_seq_no` and `if_primary_term` parameters control how operations are run, based on the last modification to existing documents. See Optimistic concurrency control for more details.\n\n**Versioning**\n\nEach bulk item can include the version value using the `version` field.\nIt automatically follows the behavior of the index or delete operation based on the `_version` mapping.\nIt also support the `version_type`.\n\n**Routing**\n\nEach bulk item can include the routing value using the `routing` field.\nIt automatically follows the behavior of the index or delete operation based on the `_routing` mapping.\n\nNOTE: Data streams do not support custom routing unless they were created with the `allow_custom_routing` setting enabled in the template.\n\n**Wait for active shards**\n\nWhen making bulk calls, you can set the `wait_for_active_shards` parameter to require a minimum number of shard copies to be active before starting to process the bulk request.\n\n**Refresh**\n\nControl when the changes made by this request are visible to search.\n\nNOTE: Only the shards that receive the bulk request will be affected by refresh.\nImagine a `_bulk?refresh=wait_for` request with three documents in it that happen to be routed to different shards in an index with five shards.\nThe request will only wait for those three shards to refresh.\nThe other two shards that make up the index do not participate in the `_bulk` request at all.",
         "operationId": "bulk",
         "parameters": [
+          {
+            "$ref": "#/components/parameters/bulk#include_source_on_error"
+          },
           {
             "$ref": "#/components/parameters/bulk#list_executed_pipelines"
           },
@@ -575,6 +587,9 @@
             "$ref": "#/components/parameters/bulk#index"
           },
           {
+            "$ref": "#/components/parameters/bulk#include_source_on_error"
+          },
+          {
             "$ref": "#/components/parameters/bulk#list_executed_pipelines"
           },
           {
@@ -627,6 +642,9 @@
         "parameters": [
           {
             "$ref": "#/components/parameters/bulk#index"
+          },
+          {
+            "$ref": "#/components/parameters/bulk#include_source_on_error"
           },
           {
             "$ref": "#/components/parameters/bulk#list_executed_pipelines"
@@ -682,6 +700,12 @@
         "operationId": "cat-aliases",
         "parameters": [
           {
+            "$ref": "#/components/parameters/cat.aliases#h"
+          },
+          {
+            "$ref": "#/components/parameters/cat.aliases#s"
+          },
+          {
             "$ref": "#/components/parameters/cat.aliases#expand_wildcards"
           },
           {
@@ -711,6 +735,12 @@
             "$ref": "#/components/parameters/cat.aliases#name"
           },
           {
+            "$ref": "#/components/parameters/cat.aliases#h"
+          },
+          {
+            "$ref": "#/components/parameters/cat.aliases#s"
+          },
+          {
             "$ref": "#/components/parameters/cat.aliases#expand_wildcards"
           },
           {
@@ -736,6 +766,12 @@
         "description": "Get information about component templates in a cluster.\nComponent templates are building blocks for constructing index templates that specify index mappings, settings, and aliases.\n\nIMPORTANT: CAT APIs are only intended for human consumption using the command line or Kibana console.\nThey are not intended for use by applications. For application consumption, use the get component template API.",
         "operationId": "cat-component-templates",
         "parameters": [
+          {
+            "$ref": "#/components/parameters/cat.component_templates#h"
+          },
+          {
+            "$ref": "#/components/parameters/cat.component_templates#s"
+          },
           {
             "$ref": "#/components/parameters/cat.component_templates#local"
           },
@@ -764,6 +800,12 @@
             "$ref": "#/components/parameters/cat.component_templates#name"
           },
           {
+            "$ref": "#/components/parameters/cat.component_templates#h"
+          },
+          {
+            "$ref": "#/components/parameters/cat.component_templates#s"
+          },
+          {
             "$ref": "#/components/parameters/cat.component_templates#local"
           },
           {
@@ -786,6 +828,14 @@
         "summary": "Get a document count",
         "description": "Get quick access to a document count for a data stream, an index, or an entire cluster.\nThe document count only includes live documents, not deleted documents which have not yet been removed by the merge process.\n\nIMPORTANT: CAT APIs are only intended for human consumption using the command line or Kibana console.\nThey are not intended for use by applications. For application consumption, use the count API.",
         "operationId": "cat-count",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/cat.count#h"
+          },
+          {
+            "$ref": "#/components/parameters/cat.count#s"
+          }
+        ],
         "responses": {
           "200": {
             "$ref": "#/components/responses/cat.count#200"
@@ -804,6 +854,12 @@
         "parameters": [
           {
             "$ref": "#/components/parameters/cat.count#index"
+          },
+          {
+            "$ref": "#/components/parameters/cat.count#h"
+          },
+          {
+            "$ref": "#/components/parameters/cat.count#s"
           }
         ],
         "responses": {
@@ -864,6 +920,12 @@
           },
           {
             "$ref": "#/components/parameters/cat.indices#master_timeout"
+          },
+          {
+            "$ref": "#/components/parameters/cat.indices#h"
+          },
+          {
+            "$ref": "#/components/parameters/cat.indices#s"
           }
         ],
         "responses": {
@@ -905,6 +967,12 @@
           },
           {
             "$ref": "#/components/parameters/cat.indices#master_timeout"
+          },
+          {
+            "$ref": "#/components/parameters/cat.indices#h"
+          },
+          {
+            "$ref": "#/components/parameters/cat.indices#s"
           }
         ],
         "responses": {
@@ -3184,7 +3252,7 @@
           "search"
         ],
         "summary": "Count search results",
-        "description": "Get the number of documents matching a query.\n\nThe query can either be provided using a simple query string as a parameter or using the Query DSL defined within the request body.\nThe latter must be nested in a `query` key, which is the same as the search API.\n\nThe count API supports multi-target syntax. You can run a single count API search across multiple data streams and indices.\n\nThe operation is broadcast across all shards.\nFor each shard ID group, a replica is chosen and the search is run against it.\nThis means that replicas increase the scalability of the count.",
+        "description": "Get the number of documents matching a query.\n\nThe query can be provided either by using a simple query string as a parameter, or by defining Query DSL within the request body.\nThe query is optional. When no query is provided, the API uses `match_all` to count all the documents.\n\nThe count API supports multi-target syntax. You can run a single count API search across multiple data streams and indices.\n\nThe operation is broadcast across all shards.\nFor each shard ID group, a replica is chosen and the search is run against it.\nThis means that replicas increase the scalability of the count.",
         "operationId": "count-1",
         "parameters": [
           {
@@ -3244,7 +3312,7 @@
           "search"
         ],
         "summary": "Count search results",
-        "description": "Get the number of documents matching a query.\n\nThe query can either be provided using a simple query string as a parameter or using the Query DSL defined within the request body.\nThe latter must be nested in a `query` key, which is the same as the search API.\n\nThe count API supports multi-target syntax. You can run a single count API search across multiple data streams and indices.\n\nThe operation is broadcast across all shards.\nFor each shard ID group, a replica is chosen and the search is run against it.\nThis means that replicas increase the scalability of the count.",
+        "description": "Get the number of documents matching a query.\n\nThe query can be provided either by using a simple query string as a parameter, or by defining Query DSL within the request body.\nThe query is optional. When no query is provided, the API uses `match_all` to count all the documents.\n\nThe count API supports multi-target syntax. You can run a single count API search across multiple data streams and indices.\n\nThe operation is broadcast across all shards.\nFor each shard ID group, a replica is chosen and the search is run against it.\nThis means that replicas increase the scalability of the count.",
         "operationId": "count",
         "parameters": [
           {
@@ -3306,7 +3374,7 @@
           "search"
         ],
         "summary": "Count search results",
-        "description": "Get the number of documents matching a query.\n\nThe query can either be provided using a simple query string as a parameter or using the Query DSL defined within the request body.\nThe latter must be nested in a `query` key, which is the same as the search API.\n\nThe count API supports multi-target syntax. You can run a single count API search across multiple data streams and indices.\n\nThe operation is broadcast across all shards.\nFor each shard ID group, a replica is chosen and the search is run against it.\nThis means that replicas increase the scalability of the count.",
+        "description": "Get the number of documents matching a query.\n\nThe query can be provided either by using a simple query string as a parameter, or by defining Query DSL within the request body.\nThe query is optional. When no query is provided, the API uses `match_all` to count all the documents.\n\nThe count API supports multi-target syntax. You can run a single count API search across multiple data streams and indices.\n\nThe operation is broadcast across all shards.\nFor each shard ID group, a replica is chosen and the search is run against it.\nThis means that replicas increase the scalability of the count.",
         "operationId": "count-3",
         "parameters": [
           {
@@ -3369,7 +3437,7 @@
           "search"
         ],
         "summary": "Count search results",
-        "description": "Get the number of documents matching a query.\n\nThe query can either be provided using a simple query string as a parameter or using the Query DSL defined within the request body.\nThe latter must be nested in a `query` key, which is the same as the search API.\n\nThe count API supports multi-target syntax. You can run a single count API search across multiple data streams and indices.\n\nThe operation is broadcast across all shards.\nFor each shard ID group, a replica is chosen and the search is run against it.\nThis means that replicas increase the scalability of the count.",
+        "description": "Get the number of documents matching a query.\n\nThe query can be provided either by using a simple query string as a parameter, or by defining Query DSL within the request body.\nThe query is optional. When no query is provided, the API uses `match_all` to count all the documents.\n\nThe count API supports multi-target syntax. You can run a single count API search across multiple data streams and indices.\n\nThe operation is broadcast across all shards.\nFor each shard ID group, a replica is chosen and the search is run against it.\nThis means that replicas increase the scalability of the count.",
         "operationId": "count-2",
         "parameters": [
           {
@@ -3447,6 +3515,9 @@
             "$ref": "#/components/parameters/create#id"
           },
           {
+            "$ref": "#/components/parameters/create#include_source_on_error"
+          },
+          {
             "$ref": "#/components/parameters/create#pipeline"
           },
           {
@@ -3494,6 +3565,9 @@
           },
           {
             "$ref": "#/components/parameters/create#id"
+          },
+          {
+            "$ref": "#/components/parameters/create#include_source_on_error"
           },
           {
             "$ref": "#/components/parameters/create#pipeline"
@@ -3697,6 +3771,9 @@
             "$ref": "#/components/parameters/index#if_seq_no"
           },
           {
+            "$ref": "#/components/parameters/index#include_source_on_error"
+          },
+          {
             "$ref": "#/components/parameters/index#op_type"
           },
           {
@@ -3755,6 +3832,9 @@
           },
           {
             "$ref": "#/components/parameters/index#if_seq_no"
+          },
+          {
+            "$ref": "#/components/parameters/index#include_source_on_error"
           },
           {
             "$ref": "#/components/parameters/index#op_type"
@@ -4485,7 +4565,7 @@
           {
             "in": "path",
             "name": "id",
-            "description": "Identifier for the stored script or search template.",
+            "description": "The identifier for the stored script or search template.",
             "required": true,
             "deprecated": false,
             "schema": {
@@ -4496,7 +4576,7 @@
           {
             "in": "query",
             "name": "master_timeout",
-            "description": "Specify timeout for connection to master",
+            "description": "The period to wait for the master node.\nIf the master node is not available before the timeout expires, the request fails and returns an error.\nIt can also be set to `-1` to indicate that the request should never timeout.",
             "deprecated": false,
             "schema": {
               "$ref": "#/components/schemas/_types:Duration"
@@ -4538,10 +4618,16 @@
         ],
         "summary": "Create or update a script or search template",
         "description": "Creates or updates a stored script or search template.",
+        "externalDocs": {
+          "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/search-template.html"
+        },
         "operationId": "put-script",
         "parameters": [
           {
             "$ref": "#/components/parameters/put_script#id"
+          },
+          {
+            "$ref": "#/components/parameters/put_script#context_"
           },
           {
             "$ref": "#/components/parameters/put_script#master_timeout"
@@ -4565,10 +4651,16 @@
         ],
         "summary": "Create or update a script or search template",
         "description": "Creates or updates a stored script or search template.",
+        "externalDocs": {
+          "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/search-template.html"
+        },
         "operationId": "put-script-1",
         "parameters": [
           {
             "$ref": "#/components/parameters/put_script#id"
+          },
+          {
+            "$ref": "#/components/parameters/put_script#context_"
           },
           {
             "$ref": "#/components/parameters/put_script#master_timeout"
@@ -4597,7 +4689,7 @@
           {
             "in": "path",
             "name": "id",
-            "description": "Identifier for the stored script or search template.",
+            "description": "The identifier for the stored script or search template.",
             "required": true,
             "deprecated": false,
             "schema": {
@@ -4608,7 +4700,7 @@
           {
             "in": "query",
             "name": "master_timeout",
-            "description": "Period to wait for a connection to the master node.\nIf no response is received before the timeout expires, the request fails and returns an error.",
+            "description": "The period to wait for a connection to the master node.\nIf no response is received before the timeout expires, the request fails and returns an error.\nIt can also be set to `-1` to indicate that the request should never timeout.",
             "deprecated": false,
             "schema": {
               "$ref": "#/components/schemas/_types:Duration"
@@ -4618,7 +4710,7 @@
           {
             "in": "query",
             "name": "timeout",
-            "description": "Period to wait for a response.\nIf no response is received before the timeout expires, the request fails and returns an error.",
+            "description": "The period to wait for a response.\nIf no response is received before the timeout expires, the request fails and returns an error.\nIt can also be set to `-1` to indicate that the request should never timeout.",
             "deprecated": false,
             "schema": {
               "$ref": "#/components/schemas/_types:Duration"
@@ -5192,7 +5284,7 @@
             "description": "A short version of the Accept header, e.g. json, yaml.",
             "deprecated": false,
             "schema": {
-              "$ref": "#/components/schemas/esql._types:EsqlFormat"
+              "$ref": "#/components/schemas/esql.query:EsqlFormat"
             },
             "style": "form"
           },
@@ -5257,6 +5349,10 @@
                         "$ref": "#/components/schemas/esql._types:TableValuesContainer"
                       }
                     }
+                  },
+                  "include_ccs_metadata": {
+                    "description": "When set to `true` and performing a cross-cluster query, the response will include an extra `_clusters`\nobject with information about the clusters that participated in the search along with info such as shards\ncount.",
+                    "type": "boolean"
                   }
                 },
                 "required": [
@@ -5273,7 +5369,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/_types:EsqlColumns"
+                  "$ref": "#/components/schemas/_types:EsqlResult"
                 }
               }
             }
@@ -5570,7 +5666,7 @@
           "search"
         ],
         "summary": "Explain a document match result",
-        "description": "Returns information about why a specific document matches, or doesn’t match, a query.",
+        "description": "Get information about why a specific document matches, or doesn't match, a query.\nIt computes a score explanation for a query and a specific document.",
         "operationId": "explain",
         "parameters": [
           {
@@ -5630,7 +5726,7 @@
           "search"
         ],
         "summary": "Explain a document match result",
-        "description": "Returns information about why a specific document matches, or doesn’t match, a query.",
+        "description": "Get information about why a specific document matches, or doesn't match, a query.\nIt computes a score explanation for a query and a specific document.",
         "operationId": "explain-1",
         "parameters": [
           {
@@ -5952,6 +6048,9 @@
             "$ref": "#/components/parameters/index#if_seq_no"
           },
           {
+            "$ref": "#/components/parameters/index#include_source_on_error"
+          },
+          {
             "$ref": "#/components/parameters/index#op_type"
           },
           {
@@ -5995,13 +6094,13 @@
           "indices"
         ],
         "summary": "Add an index block",
-        "description": "Limits the operations allowed on an index by blocking specific operation types.",
+        "description": "Add an index block to an index.\nIndex blocks limit the operations allowed on an index by blocking specific operation types.",
         "operationId": "indices-add-block",
         "parameters": [
           {
             "in": "path",
             "name": "index",
-            "description": "A comma separated list of indices to add a block to",
+            "description": "A comma-separated list or wildcard expression of index names used to limit the request.\nBy default, you must explicitly name the indices you are adding blocks to.\nTo allow the adding of blocks to indices with `_all`, `*`, or other wildcard expressions, change the `action.destructive_requires_name` setting to `false`.\nYou can update this setting in the `elasticsearch.yml` file or by using the cluster update settings API.",
             "required": true,
             "deprecated": false,
             "schema": {
@@ -6012,7 +6111,7 @@
           {
             "in": "path",
             "name": "block",
-            "description": "The block to add (one of read, write, read_only or metadata)",
+            "description": "The block type to add to the index.",
             "required": true,
             "deprecated": false,
             "schema": {
@@ -6023,7 +6122,7 @@
           {
             "in": "query",
             "name": "allow_no_indices",
-            "description": "Whether to ignore if a wildcard indices expression resolves into no concrete indices. (This includes `_all` string or when no indices have been specified)",
+            "description": "If `false`, the request returns an error if any wildcard expression, index alias, or `_all` value targets only missing or closed indices.\nThis behavior applies even if the request targets other open indices.\nFor example, a request targeting `foo*,bar*` returns an error if an index starts with `foo` but no index starts with `bar`.",
             "deprecated": false,
             "schema": {
               "type": "boolean"
@@ -6033,7 +6132,7 @@
           {
             "in": "query",
             "name": "expand_wildcards",
-            "description": "Whether to expand wildcard expression to concrete indices that are open, closed or both.",
+            "description": "The type of index that wildcard patterns can match.\nIf the request can target data streams, this argument determines whether wildcard expressions match hidden data streams.\nIt supports comma-separated values, such as `open,hidden`.",
             "deprecated": false,
             "schema": {
               "$ref": "#/components/schemas/_types:ExpandWildcards"
@@ -6043,7 +6142,7 @@
           {
             "in": "query",
             "name": "ignore_unavailable",
-            "description": "Whether specified concrete indices should be ignored when unavailable (missing or closed)",
+            "description": "If `false`, the request returns an error if it targets a missing or closed index.",
             "deprecated": false,
             "schema": {
               "type": "boolean"
@@ -6053,7 +6152,7 @@
           {
             "in": "query",
             "name": "master_timeout",
-            "description": "Specify timeout for connection to master",
+            "description": "The period to wait for the master node.\nIf the master node is not available before the timeout expires, the request fails and returns an error.\nIt can also be set to `-1` to indicate that the request should never timeout.",
             "deprecated": false,
             "schema": {
               "$ref": "#/components/schemas/_types:Duration"
@@ -6063,7 +6162,7 @@
           {
             "in": "query",
             "name": "timeout",
-            "description": "Explicit operation timeout",
+            "description": "The period to wait for a response from all relevant nodes in the cluster after updating the cluster metadata.\nIf no response is received before the timeout expires, the cluster metadata update still applies but the response will indicate that it was not completely acknowledged.\nIt can also be set to `-1` to indicate that the request should never timeout.",
             "deprecated": false,
             "schema": {
               "$ref": "#/components/schemas/_types:Duration"
@@ -6594,7 +6693,7 @@
           "data stream"
         ],
         "summary": "Get data streams",
-        "description": "Retrieves information about one or more data streams.",
+        "description": "Get information about one or more data streams.",
         "operationId": "indices-get-data-stream-1",
         "parameters": [
           {
@@ -6625,7 +6724,7 @@
           "data stream"
         ],
         "summary": "Create a data stream",
-        "description": "Creates a data stream.\nYou must have a matching index template with data stream enabled.",
+        "description": "You must have a matching index template with data stream enabled.",
         "operationId": "indices-create-data-stream",
         "parameters": [
           {
@@ -6735,7 +6834,7 @@
           "data stream"
         ],
         "summary": "Get data stream stats",
-        "description": "Retrieves statistics for one or more data streams.",
+        "description": "Get statistics for one or more data streams.",
         "operationId": "indices-data-streams-stats",
         "parameters": [
           {
@@ -6756,7 +6855,7 @@
           "data stream"
         ],
         "summary": "Get data stream stats",
-        "description": "Retrieves statistics for one or more data streams.",
+        "description": "Get statistics for one or more data streams.",
         "operationId": "indices-data-streams-stats-1",
         "parameters": [
           {
@@ -6900,7 +6999,7 @@
           "indices"
         ],
         "summary": "Check aliases",
-        "description": "Checks if one or more data stream or index aliases exist.",
+        "description": "Check if one or more data stream or index aliases exist.",
         "operationId": "indices-exists-alias-1",
         "parameters": [
           {
@@ -7024,7 +7123,7 @@
           "data stream"
         ],
         "summary": "Get data stream lifecycles",
-        "description": "Retrieves the data stream lifecycle configuration of one or more data streams.",
+        "description": "Get the data stream lifecycle configuration of one or more data streams.",
         "operationId": "indices-get-data-lifecycle",
         "parameters": [
           {
@@ -7148,11 +7247,22 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/indices._types:DataStreamLifecycle"
+                "type": "object",
+                "properties": {
+                  "data_retention": {
+                    "$ref": "#/components/schemas/_types:Duration"
+                  },
+                  "downsampling": {
+                    "$ref": "#/components/schemas/indices._types:DataStreamLifecycleDownsampling"
+                  },
+                  "enabled": {
+                    "description": "If defined, it turns data stream lifecycle on/off (`true`/`false`) for this data stream. A data stream lifecycle\nthat's disabled (enabled: `false`) will have no effect on the data stream.",
+                    "type": "boolean"
+                  }
+                }
               }
             }
-          },
-          "required": true
+          }
         },
         "responses": {
           "200": {
@@ -7457,7 +7567,7 @@
           "indices"
         ],
         "summary": "Check aliases",
-        "description": "Checks if one or more data stream or index aliases exist.",
+        "description": "Check if one or more data stream or index aliases exist.",
         "operationId": "indices-exists-alias",
         "parameters": [
           {
@@ -7617,7 +7727,7 @@
           "data stream"
         ],
         "summary": "Get data streams",
-        "description": "Retrieves information about one or more data streams.",
+        "description": "Get information about one or more data streams.",
         "operationId": "indices-get-data-stream",
         "parameters": [
           {
@@ -8991,6 +9101,7 @@
           "inference"
         ],
         "summary": "Perform inference on the service",
+        "description": "This API enables you to use machine learning models to perform specific tasks on data that you provide as an input.\nIt returns a response with the results of the tasks.\nThe inference endpoint you use can perform one specific task that has been defined when the endpoint was created with the create inference API.\n\n> info\n> The inference APIs enable you to use certain services, such as built-in machine learning models (ELSER, E5), models uploaded through Eland, Cohere, OpenAI, Azure, Google AI Studio, Google Vertex AI, Anthropic, Watsonx.ai, or Hugging Face. For built-in models and models uploaded through Eland, the inference APIs offer an alternative way to use and manage trained models. However, if you do not plan to use the inference APIs to use these models or if you want to use non-NLP models, use the machine learning trained model APIs.",
         "operationId": "inference-inference",
         "parameters": [
           {
@@ -9087,6 +9198,7 @@
           "inference"
         ],
         "summary": "Perform inference on the service",
+        "description": "This API enables you to use machine learning models to perform specific tasks on data that you provide as an input.\nIt returns a response with the results of the tasks.\nThe inference endpoint you use can perform one specific task that has been defined when the endpoint was created with the create inference API.\n\n> info\n> The inference APIs enable you to use certain services, such as built-in machine learning models (ELSER, E5), models uploaded through Eland, Cohere, OpenAI, Azure, Google AI Studio, Google Vertex AI, Anthropic, Watsonx.ai, or Hugging Face. For built-in models and models uploaded through Eland, the inference APIs offer an alternative way to use and manage trained models. However, if you do not plan to use the inference APIs to use these models or if you want to use non-NLP models, use the machine learning trained model APIs.",
         "operationId": "inference-inference-1",
         "parameters": [
           {
@@ -9631,7 +9743,7 @@
           "license"
         ],
         "summary": "Get license information",
-        "description": "Get information about your Elastic license including its type, its status, when it was issued, and when it expires.\n\nNOTE: If the master node is generating a new cluster state, the get license API may return a `404 Not Found` response.\nIf you receive an unexpected 404 response after cluster startup, wait a short period and retry the request.",
+        "description": "Get information about your Elastic license including its type, its status, when it was issued, and when it expires.\n\n>info\n> If the master node is generating a new cluster state, the get license API may return a `404 Not Found` response.\n> If you receive an unexpected 404 response after cluster startup, wait a short period and retry the request.",
         "operationId": "license-get",
         "parameters": [
           {
@@ -9802,7 +9914,7 @@
           "document"
         ],
         "summary": "Get multiple documents",
-        "description": "Get multiple JSON documents by ID from one or more indices.\nIf you specify an index in the request URI, you only need to specify the document IDs in the request body.\nTo ensure fast responses, this multi get (mget) API responds with partial results if one or more shards fail.",
+        "description": "Get multiple JSON documents by ID from one or more indices.\nIf you specify an index in the request URI, you only need to specify the document IDs in the request body.\nTo ensure fast responses, this multi get (mget) API responds with partial results if one or more shards fail.\n\n**Filter source fields**\n\nBy default, the `_source` field is returned for every document (if stored).\nUse the `_source` and `_source_include` or `source_exclude` attributes to filter what fields are returned for a particular document.\nYou can include the `_source`, `_source_includes`, and `_source_excludes` query parameters in the request URI to specify the defaults to use when there are no per-document instructions.\n\n**Get stored fields**\n\nUse the `stored_fields` attribute to specify the set of stored fields you want to retrieve.\nAny requested fields that are not stored are ignored.\nYou can include the `stored_fields` query parameter in the request URI to specify the defaults to use when there are no per-document instructions.",
         "operationId": "mget",
         "parameters": [
           {
@@ -9845,7 +9957,7 @@
           "document"
         ],
         "summary": "Get multiple documents",
-        "description": "Get multiple JSON documents by ID from one or more indices.\nIf you specify an index in the request URI, you only need to specify the document IDs in the request body.\nTo ensure fast responses, this multi get (mget) API responds with partial results if one or more shards fail.",
+        "description": "Get multiple JSON documents by ID from one or more indices.\nIf you specify an index in the request URI, you only need to specify the document IDs in the request body.\nTo ensure fast responses, this multi get (mget) API responds with partial results if one or more shards fail.\n\n**Filter source fields**\n\nBy default, the `_source` field is returned for every document (if stored).\nUse the `_source` and `_source_include` or `source_exclude` attributes to filter what fields are returned for a particular document.\nYou can include the `_source`, `_source_includes`, and `_source_excludes` query parameters in the request URI to specify the defaults to use when there are no per-document instructions.\n\n**Get stored fields**\n\nUse the `stored_fields` attribute to specify the set of stored fields you want to retrieve.\nAny requested fields that are not stored are ignored.\nYou can include the `stored_fields` query parameter in the request URI to specify the defaults to use when there are no per-document instructions.",
         "operationId": "mget-1",
         "parameters": [
           {
@@ -9890,7 +10002,7 @@
           "document"
         ],
         "summary": "Get multiple documents",
-        "description": "Get multiple JSON documents by ID from one or more indices.\nIf you specify an index in the request URI, you only need to specify the document IDs in the request body.\nTo ensure fast responses, this multi get (mget) API responds with partial results if one or more shards fail.",
+        "description": "Get multiple JSON documents by ID from one or more indices.\nIf you specify an index in the request URI, you only need to specify the document IDs in the request body.\nTo ensure fast responses, this multi get (mget) API responds with partial results if one or more shards fail.\n\n**Filter source fields**\n\nBy default, the `_source` field is returned for every document (if stored).\nUse the `_source` and `_source_include` or `source_exclude` attributes to filter what fields are returned for a particular document.\nYou can include the `_source`, `_source_includes`, and `_source_excludes` query parameters in the request URI to specify the defaults to use when there are no per-document instructions.\n\n**Get stored fields**\n\nUse the `stored_fields` attribute to specify the set of stored fields you want to retrieve.\nAny requested fields that are not stored are ignored.\nYou can include the `stored_fields` query parameter in the request URI to specify the defaults to use when there are no per-document instructions.",
         "operationId": "mget-2",
         "parameters": [
           {
@@ -9936,7 +10048,7 @@
           "document"
         ],
         "summary": "Get multiple documents",
-        "description": "Get multiple JSON documents by ID from one or more indices.\nIf you specify an index in the request URI, you only need to specify the document IDs in the request body.\nTo ensure fast responses, this multi get (mget) API responds with partial results if one or more shards fail.",
+        "description": "Get multiple JSON documents by ID from one or more indices.\nIf you specify an index in the request URI, you only need to specify the document IDs in the request body.\nTo ensure fast responses, this multi get (mget) API responds with partial results if one or more shards fail.\n\n**Filter source fields**\n\nBy default, the `_source` field is returned for every document (if stored).\nUse the `_source` and `_source_include` or `source_exclude` attributes to filter what fields are returned for a particular document.\nYou can include the `_source`, `_source_includes`, and `_source_excludes` query parameters in the request URI to specify the defaults to use when there are no per-document instructions.\n\n**Get stored fields**\n\nUse the `stored_fields` attribute to specify the set of stored fields you want to retrieve.\nAny requested fields that are not stored are ignored.\nYou can include the `stored_fields` query parameter in the request URI to specify the defaults to use when there are no per-document instructions.",
         "operationId": "mget-3",
         "parameters": [
           {
@@ -10205,7 +10317,7 @@
           "ml anomaly"
         ],
         "summary": "Delete a calendar",
-        "description": "Removes all scheduled events from a calendar, then deletes it.",
+        "description": "Remove all scheduled events from a calendar, then delete it.",
         "operationId": "ml-delete-calendar",
         "parameters": [
           {
@@ -11670,7 +11782,7 @@
           "ml anomaly"
         ],
         "summary": "Estimate job model memory usage",
-        "description": "Makes an estimation of the memory usage for an anomaly detection job model.\nIt is based on analysis configuration details for the job and cardinality\nestimates for the fields it references.",
+        "description": "Make an estimation of the memory usage for an anomaly detection job model.\nThe estimate is based on analysis configuration details for the job and cardinality\nestimates for the fields it references.",
         "operationId": "ml-estimate-model-memory",
         "requestBody": {
           "content": {
@@ -12691,7 +12803,7 @@
           "ml data frame"
         ],
         "summary": "Preview features used by data frame analytics",
-        "description": "Previews the extracted features used by a data frame analytics config.",
+        "description": "Preview the extracted features used by a data frame analytics config.",
         "operationId": "ml-preview-data-frame-analytics",
         "requestBody": {
           "$ref": "#/components/requestBodies/ml.preview_data_frame_analytics"
@@ -12708,7 +12820,7 @@
           "ml data frame"
         ],
         "summary": "Preview features used by data frame analytics",
-        "description": "Previews the extracted features used by a data frame analytics config.",
+        "description": "Preview the extracted features used by a data frame analytics config.",
         "operationId": "ml-preview-data-frame-analytics-1",
         "requestBody": {
           "$ref": "#/components/requestBodies/ml.preview_data_frame_analytics"
@@ -12727,7 +12839,7 @@
           "ml data frame"
         ],
         "summary": "Preview features used by data frame analytics",
-        "description": "Previews the extracted features used by a data frame analytics config.",
+        "description": "Preview the extracted features used by a data frame analytics config.",
         "operationId": "ml-preview-data-frame-analytics-2",
         "parameters": [
           {
@@ -12749,7 +12861,7 @@
           "ml data frame"
         ],
         "summary": "Preview features used by data frame analytics",
-        "description": "Previews the extracted features used by a data frame analytics config.",
+        "description": "Preview the extracted features used by a data frame analytics config.",
         "operationId": "ml-preview-data-frame-analytics-3",
         "parameters": [
           {
@@ -13270,7 +13382,7 @@
           {
             "in": "query",
             "name": "number_of_allocations",
-            "description": "The number of model allocations on each node where the model is deployed.\nAll allocations on a node share the same copy of the model in memory but use\na separate set of threads to evaluate the model.\nIncreasing this value generally increases the throughput.\nIf this setting is greater than the number of hardware threads\nit will automatically be changed to a value less than the number of hardware threads.",
+            "description": "The number of model allocations on each node where the model is deployed.\nAll allocations on a node share the same copy of the model in memory but use\na separate set of threads to evaluate the model.\nIncreasing this value generally increases the throughput.\nIf this setting is greater than the number of hardware threads\nit will automatically be changed to a value less than the number of hardware threads.\nIf adaptive_allocations is enabled, do not set this value, because it’s automatically set.",
             "deprecated": false,
             "schema": {
               "type": "number"
@@ -13328,6 +13440,20 @@
             "style": "form"
           }
         ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "adaptive_allocations": {
+                    "$ref": "#/components/schemas/ml._types:AdaptiveAllocationsSettings"
+                  }
+                }
+              }
+            }
+          }
+        },
         "responses": {
           "200": {
             "description": "",
@@ -14222,8 +14348,11 @@
                 "type": "object",
                 "properties": {
                   "number_of_allocations": {
-                    "description": "The number of model allocations on each node where the model is deployed.\nAll allocations on a node share the same copy of the model in memory but use\na separate set of threads to evaluate the model.\nIncreasing this value generally increases the throughput.\nIf this setting is greater than the number of hardware threads\nit will automatically be changed to a value less than the number of hardware threads.",
+                    "description": "The number of model allocations on each node where the model is deployed.\nAll allocations on a node share the same copy of the model in memory but use\na separate set of threads to evaluate the model.\nIncreasing this value generally increases the throughput.\nIf this setting is greater than the number of hardware threads\nit will automatically be changed to a value less than the number of hardware threads.\nIf adaptive_allocations is enabled, do not set this value, because it’s automatically set.",
                     "type": "number"
+                  },
+                  "adaptive_allocations": {
+                    "$ref": "#/components/schemas/ml._types:AdaptiveAllocationsSettings"
                   }
                 }
               }
@@ -14502,6 +14631,7 @@
           "search"
         ],
         "summary": "Run multiple templated searches",
+        "description": "Run multiple templated searches with a single request.\nIf you are providing a text file or text input to `curl`, use the `--data-binary` flag instead of `-d` to preserve newlines.\nFor example:\n\n```\n$ cat requests\n{ \"index\": \"my-index\" }\n{ \"id\": \"my-search-template\", \"params\": { \"query_string\": \"hello world\", \"from\": 0, \"size\": 10 }}\n{ \"index\": \"my-other-index\" }\n{ \"id\": \"my-other-search-template\", \"params\": { \"query_type\": \"match_all\" }}\n\n$ curl -H \"Content-Type: application/x-ndjson\" -XGET localhost:9200/_msearch/template --data-binary \"@requests\"; echo\n```",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/search-template.html"
         },
@@ -14538,6 +14668,7 @@
           "search"
         ],
         "summary": "Run multiple templated searches",
+        "description": "Run multiple templated searches with a single request.\nIf you are providing a text file or text input to `curl`, use the `--data-binary` flag instead of `-d` to preserve newlines.\nFor example:\n\n```\n$ cat requests\n{ \"index\": \"my-index\" }\n{ \"id\": \"my-search-template\", \"params\": { \"query_string\": \"hello world\", \"from\": 0, \"size\": 10 }}\n{ \"index\": \"my-other-index\" }\n{ \"id\": \"my-other-search-template\", \"params\": { \"query_type\": \"match_all\" }}\n\n$ curl -H \"Content-Type: application/x-ndjson\" -XGET localhost:9200/_msearch/template --data-binary \"@requests\"; echo\n```",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/search-template.html"
         },
@@ -14576,6 +14707,7 @@
           "search"
         ],
         "summary": "Run multiple templated searches",
+        "description": "Run multiple templated searches with a single request.\nIf you are providing a text file or text input to `curl`, use the `--data-binary` flag instead of `-d` to preserve newlines.\nFor example:\n\n```\n$ cat requests\n{ \"index\": \"my-index\" }\n{ \"id\": \"my-search-template\", \"params\": { \"query_string\": \"hello world\", \"from\": 0, \"size\": 10 }}\n{ \"index\": \"my-other-index\" }\n{ \"id\": \"my-other-search-template\", \"params\": { \"query_type\": \"match_all\" }}\n\n$ curl -H \"Content-Type: application/x-ndjson\" -XGET localhost:9200/_msearch/template --data-binary \"@requests\"; echo\n```",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/search-template.html"
         },
@@ -14615,6 +14747,7 @@
           "search"
         ],
         "summary": "Run multiple templated searches",
+        "description": "Run multiple templated searches with a single request.\nIf you are providing a text file or text input to `curl`, use the `--data-binary` flag instead of `-d` to preserve newlines.\nFor example:\n\n```\n$ cat requests\n{ \"index\": \"my-index\" }\n{ \"id\": \"my-search-template\", \"params\": { \"query_string\": \"hello world\", \"from\": 0, \"size\": 10 }}\n{ \"index\": \"my-other-index\" }\n{ \"id\": \"my-other-search-template\", \"params\": { \"query_type\": \"match_all\" }}\n\n$ curl -H \"Content-Type: application/x-ndjson\" -XGET localhost:9200/_msearch/template --data-binary \"@requests\"; echo\n```",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/search-template.html"
         },
@@ -14656,7 +14789,7 @@
           "document"
         ],
         "summary": "Get multiple term vectors",
-        "description": "You can specify existing documents by index and ID or provide artificial documents in the body of the request.\nYou can specify the index in the request body or request URI.\nThe response contains a `docs` array with all the fetched termvectors.\nEach element has the structure provided by the termvectors API.",
+        "description": "Get multiple term vectors with a single request.\nYou can specify existing documents by index and ID or provide artificial documents in the body of the request.\nYou can specify the index in the request body or request URI.\nThe response contains a `docs` array with all the fetched termvectors.\nEach element has the structure provided by the termvectors API.\n\n**Artificial documents**\n\nYou can also use `mtermvectors` to generate term vectors for artificial documents provided in the body of the request.\nThe mapping used is determined by the specified `_index`.",
         "operationId": "mtermvectors",
         "parameters": [
           {
@@ -14710,7 +14843,7 @@
           "document"
         ],
         "summary": "Get multiple term vectors",
-        "description": "You can specify existing documents by index and ID or provide artificial documents in the body of the request.\nYou can specify the index in the request body or request URI.\nThe response contains a `docs` array with all the fetched termvectors.\nEach element has the structure provided by the termvectors API.",
+        "description": "Get multiple term vectors with a single request.\nYou can specify existing documents by index and ID or provide artificial documents in the body of the request.\nYou can specify the index in the request body or request URI.\nThe response contains a `docs` array with all the fetched termvectors.\nEach element has the structure provided by the termvectors API.\n\n**Artificial documents**\n\nYou can also use `mtermvectors` to generate term vectors for artificial documents provided in the body of the request.\nThe mapping used is determined by the specified `_index`.",
         "operationId": "mtermvectors-1",
         "parameters": [
           {
@@ -14766,7 +14899,7 @@
           "document"
         ],
         "summary": "Get multiple term vectors",
-        "description": "You can specify existing documents by index and ID or provide artificial documents in the body of the request.\nYou can specify the index in the request body or request URI.\nThe response contains a `docs` array with all the fetched termvectors.\nEach element has the structure provided by the termvectors API.",
+        "description": "Get multiple term vectors with a single request.\nYou can specify existing documents by index and ID or provide artificial documents in the body of the request.\nYou can specify the index in the request body or request URI.\nThe response contains a `docs` array with all the fetched termvectors.\nEach element has the structure provided by the termvectors API.\n\n**Artificial documents**\n\nYou can also use `mtermvectors` to generate term vectors for artificial documents provided in the body of the request.\nThe mapping used is determined by the specified `_index`.",
         "operationId": "mtermvectors-2",
         "parameters": [
           {
@@ -14823,7 +14956,7 @@
           "document"
         ],
         "summary": "Get multiple term vectors",
-        "description": "You can specify existing documents by index and ID or provide artificial documents in the body of the request.\nYou can specify the index in the request body or request URI.\nThe response contains a `docs` array with all the fetched termvectors.\nEach element has the structure provided by the termvectors API.",
+        "description": "Get multiple term vectors with a single request.\nYou can specify existing documents by index and ID or provide artificial documents in the body of the request.\nYou can specify the index in the request body or request URI.\nThe response contains a `docs` array with all the fetched termvectors.\nEach element has the structure provided by the termvectors API.\n\n**Artificial documents**\n\nYou can also use `mtermvectors` to generate term vectors for artificial documents provided in the body of the request.\nThe mapping used is determined by the specified `_index`.",
         "operationId": "mtermvectors-3",
         "parameters": [
           {
@@ -15006,6 +15139,9 @@
         ],
         "summary": "Create or update a script or search template",
         "description": "Creates or updates a stored script or search template.",
+        "externalDocs": {
+          "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/search-template.html"
+        },
         "operationId": "put-script-2",
         "parameters": [
           {
@@ -15013,6 +15149,9 @@
           },
           {
             "$ref": "#/components/parameters/put_script#context"
+          },
+          {
+            "$ref": "#/components/parameters/put_script#context_"
           },
           {
             "$ref": "#/components/parameters/put_script#master_timeout"
@@ -15036,6 +15175,9 @@
         ],
         "summary": "Create or update a script or search template",
         "description": "Creates or updates a stored script or search template.",
+        "externalDocs": {
+          "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/search-template.html"
+        },
         "operationId": "put-script-3",
         "parameters": [
           {
@@ -15043,6 +15185,9 @@
           },
           {
             "$ref": "#/components/parameters/put_script#context"
+          },
+          {
+            "$ref": "#/components/parameters/put_script#context_"
           },
           {
             "$ref": "#/components/parameters/put_script#master_timeout"
@@ -15946,7 +16091,7 @@
           "script"
         ],
         "summary": "Run a script",
-        "description": "Runs a script and returns a result.",
+        "description": "Runs a script and returns a result.\nUse this API to build and test scripts, such as when defining a script for a runtime field.\nThis API requires very few dependencies and is especially useful if you don't have permissions to write documents on a cluster.\n\nThe API uses several _contexts_, which control how scripts are run, what variables are available at runtime, and what the return type is.\n\nEach context requires a script, but additional parameters depend on the context you're using for that script.",
         "operationId": "scripts-painless-execute",
         "requestBody": {
           "$ref": "#/components/requestBodies/scripts_painless_execute"
@@ -15963,7 +16108,7 @@
           "script"
         ],
         "summary": "Run a script",
-        "description": "Runs a script and returns a result.",
+        "description": "Runs a script and returns a result.\nUse this API to build and test scripts, such as when defining a script for a runtime field.\nThis API requires very few dependencies and is especially useful if you don't have permissions to write documents on a cluster.\n\nThe API uses several _contexts_, which control how scripts are run, what variables are available at runtime, and what the return type is.\n\nEach context requires a script, but additional parameters depend on the context you're using for that script.",
         "operationId": "scripts-painless-execute-1",
         "requestBody": {
           "$ref": "#/components/requestBodies/scripts_painless_execute"
@@ -16704,7 +16849,7 @@
           {
             "in": "path",
             "name": "name",
-            "description": "The name of the search application to delete",
+            "description": "The name of the search application to delete.",
             "required": true,
             "deprecated": false,
             "schema": {
@@ -16958,7 +17103,10 @@
           "search"
         ],
         "summary": "Search a vector tile",
-        "description": "Search a vector tile for geospatial values.",
+        "description": "Search a vector tile for geospatial values.\nBefore using this API, you should be familiar with the Mapbox vector tile specification.\nThe API returns results as a binary mapbox vector tile.\n\nInternally, Elasticsearch translates a vector tile search API request into a search containing:\n\n* A `geo_bounding_box` query on the `<field>`. The query uses the `<zoom>/<x>/<y>` tile as a bounding box.\n* A `geotile_grid` or `geohex_grid` aggregation on the `<field>`. The `grid_agg` parameter determines the aggregation type. The aggregation uses the `<zoom>/<x>/<y>` tile as a bounding box.\n* Optionally, a `geo_bounds` aggregation on the `<field>`. The search only includes this aggregation if the `exact_bounds` parameter is `true`.\n* If the optional parameter `with_labels` is `true`, the internal search will include a dynamic runtime field that calls the `getLabelPosition` function of the geometry doc value. This enables the generation of new point features containing suggested geometry labels, so that, for example, multi-polygons will have only one label.\n\nFor example, Elasticsearch may translate a vector tile search API request with a `grid_agg` argument of `geotile` and an `exact_bounds` argument of `true` into the following search\n\n```\nGET my-index/_search\n{\n  \"size\": 10000,\n  \"query\": {\n    \"geo_bounding_box\": {\n      \"my-geo-field\": {\n        \"top_left\": {\n          \"lat\": -40.979898069620134,\n          \"lon\": -45\n        },\n        \"bottom_right\": {\n          \"lat\": -66.51326044311186,\n          \"lon\": 0\n        }\n      }\n    }\n  },\n  \"aggregations\": {\n    \"grid\": {\n      \"geotile_grid\": {\n        \"field\": \"my-geo-field\",\n        \"precision\": 11,\n        \"size\": 65536,\n        \"bounds\": {\n          \"top_left\": {\n            \"lat\": -40.979898069620134,\n            \"lon\": -45\n          },\n          \"bottom_right\": {\n            \"lat\": -66.51326044311186,\n            \"lon\": 0\n          }\n        }\n      }\n    },\n    \"bounds\": {\n      \"geo_bounds\": {\n        \"field\": \"my-geo-field\",\n        \"wrap_longitude\": false\n      }\n    }\n  }\n}\n```\n\nThe API returns results as a binary Mapbox vector tile.\nMapbox vector tiles are encoded as Google Protobufs (PBF). By default, the tile contains three layers:\n\n* A `hits` layer containing a feature for each `<field>` value matching the `geo_bounding_box` query.\n* An `aggs` layer containing a feature for each cell of the `geotile_grid` or `geohex_grid`. The layer only contains features for cells with matching data.\n* A meta layer containing:\n  * A feature containing a bounding box. By default, this is the bounding box of the tile.\n  * Value ranges for any sub-aggregations on the `geotile_grid` or `geohex_grid`.\n  * Metadata for the search.\n\nThe API only returns features that can display at its zoom level.\nFor example, if a polygon feature has no area at its zoom level, the API omits it.\nThe API returns errors as UTF-8 encoded JSON.\n\nIMPORTANT: You can specify several options for this API as either a query parameter or request body parameter.\nIf you specify both parameters, the query parameter takes precedence.\n\n**Grid precision for geotile**\n\nFor a `grid_agg` of `geotile`, you can use cells in the `aggs` layer as tiles for lower zoom levels.\n`grid_precision` represents the additional zoom levels available through these cells. The final precision is computed by as follows: `<zoom> + grid_precision`.\nFor example, if `<zoom>` is 7 and `grid_precision` is 8, then the `geotile_grid` aggregation will use a precision of 15.\nThe maximum final precision is 29.\nThe `grid_precision` also determines the number of cells for the grid as follows: `(2^grid_precision) x (2^grid_precision)`.\nFor example, a value of 8 divides the tile into a grid of 256 x 256 cells.\nThe `aggs` layer only contains features for cells with matching data.\n\n**Grid precision for geohex**\n\nFor a `grid_agg` of `geohex`, Elasticsearch uses `<zoom>` and `grid_precision` to calculate a final precision as follows: `<zoom> + grid_precision`.\n\nThis precision determines the H3 resolution of the hexagonal cells produced by the `geohex` aggregation.\nThe following table maps the H3 resolution for each precision.\nFor example, if `<zoom>` is 3 and `grid_precision` is 3, the precision is 6.\nAt a precision of 6, hexagonal cells have an H3 resolution of 2.\nIf `<zoom>` is 3 and `grid_precision` is 4, the precision is 7.\nAt a precision of 7, hexagonal cells have an H3 resolution of 3.\n\n| Precision | Unique tile bins | H3 resolution | Unique hex bins |\tRatio |\n| --------- | ---------------- | ------------- | ----------------| ----- |\n| 1  | 4                  | 0  | 122             | 30.5           |\n| 2  | 16                 | 0  | 122             | 7.625          |\n| 3  | 64                 | 1  | 842             | 13.15625       |\n| 4  | 256                | 1  | 842             | 3.2890625      |\n| 5  | 1024               | 2  | 5882            | 5.744140625    |\n| 6  | 4096               | 2  | 5882            | 1.436035156    |\n| 7  | 16384              | 3  | 41162           | 2.512329102    |\n| 8  | 65536              | 3  | 41162           | 0.6280822754   |\n| 9  | 262144             | 4  | 288122          | 1.099098206    |\n| 10 | 1048576            | 4  | 288122          | 0.2747745514   |\n| 11 | 4194304            | 5  | 2016842         | 0.4808526039   |\n| 12 | 16777216           | 6  | 14117882        | 0.8414913416   |\n| 13 | 67108864           | 6  | 14117882        | 0.2103728354   |\n| 14 | 268435456          | 7  | 98825162        | 0.3681524172   |\n| 15 | 1073741824         | 8  | 691776122       | 0.644266719    |\n| 16 | 4294967296         | 8  | 691776122       | 0.1610666797   |\n| 17 | 17179869184        | 9  | 4842432842      | 0.2818666889   |\n| 18 | 68719476736        | 10 | 33897029882     | 0.4932667053   |\n| 19 | 274877906944       | 11 | 237279209162    | 0.8632167343   |\n| 20 | 1099511627776      | 11 | 237279209162    | 0.2158041836   |\n| 21 | 4398046511104      | 12 | 1660954464122   | 0.3776573213   |\n| 22 | 17592186044416     | 13 | 11626681248842  | 0.6609003122   |\n| 23 | 70368744177664     | 13 | 11626681248842  | 0.165225078    |\n| 24 | 281474976710656    | 14 | 81386768741882  | 0.2891438866   |\n| 25 | 1125899906842620   | 15 | 569707381193162 | 0.5060018015   |\n| 26 | 4503599627370500   | 15 | 569707381193162 | 0.1265004504   |\n| 27 | 18014398509482000  | 15 | 569707381193162 | 0.03162511259  |\n| 28 | 72057594037927900  | 15 | 569707381193162 | 0.007906278149 |\n| 29 | 288230376151712000 | 15 | 569707381193162 | 0.001976569537 |\n\nHexagonal cells don't align perfectly on a vector tile.\nSome cells may intersect more than one vector tile.\nTo compute the H3 resolution for each precision, Elasticsearch compares the average density of hexagonal bins at each resolution with the average density of tile bins at each zoom level.\nElasticsearch uses the H3 resolution that is closest to the corresponding geotile density.",
+        "externalDocs": {
+          "url": "https://github.com/mapbox/vector-tile-spec/blob/master/README.md"
+        },
         "operationId": "search-mvt-1",
         "parameters": [
           {
@@ -17013,7 +17161,10 @@
           "search"
         ],
         "summary": "Search a vector tile",
-        "description": "Search a vector tile for geospatial values.",
+        "description": "Search a vector tile for geospatial values.\nBefore using this API, you should be familiar with the Mapbox vector tile specification.\nThe API returns results as a binary mapbox vector tile.\n\nInternally, Elasticsearch translates a vector tile search API request into a search containing:\n\n* A `geo_bounding_box` query on the `<field>`. The query uses the `<zoom>/<x>/<y>` tile as a bounding box.\n* A `geotile_grid` or `geohex_grid` aggregation on the `<field>`. The `grid_agg` parameter determines the aggregation type. The aggregation uses the `<zoom>/<x>/<y>` tile as a bounding box.\n* Optionally, a `geo_bounds` aggregation on the `<field>`. The search only includes this aggregation if the `exact_bounds` parameter is `true`.\n* If the optional parameter `with_labels` is `true`, the internal search will include a dynamic runtime field that calls the `getLabelPosition` function of the geometry doc value. This enables the generation of new point features containing suggested geometry labels, so that, for example, multi-polygons will have only one label.\n\nFor example, Elasticsearch may translate a vector tile search API request with a `grid_agg` argument of `geotile` and an `exact_bounds` argument of `true` into the following search\n\n```\nGET my-index/_search\n{\n  \"size\": 10000,\n  \"query\": {\n    \"geo_bounding_box\": {\n      \"my-geo-field\": {\n        \"top_left\": {\n          \"lat\": -40.979898069620134,\n          \"lon\": -45\n        },\n        \"bottom_right\": {\n          \"lat\": -66.51326044311186,\n          \"lon\": 0\n        }\n      }\n    }\n  },\n  \"aggregations\": {\n    \"grid\": {\n      \"geotile_grid\": {\n        \"field\": \"my-geo-field\",\n        \"precision\": 11,\n        \"size\": 65536,\n        \"bounds\": {\n          \"top_left\": {\n            \"lat\": -40.979898069620134,\n            \"lon\": -45\n          },\n          \"bottom_right\": {\n            \"lat\": -66.51326044311186,\n            \"lon\": 0\n          }\n        }\n      }\n    },\n    \"bounds\": {\n      \"geo_bounds\": {\n        \"field\": \"my-geo-field\",\n        \"wrap_longitude\": false\n      }\n    }\n  }\n}\n```\n\nThe API returns results as a binary Mapbox vector tile.\nMapbox vector tiles are encoded as Google Protobufs (PBF). By default, the tile contains three layers:\n\n* A `hits` layer containing a feature for each `<field>` value matching the `geo_bounding_box` query.\n* An `aggs` layer containing a feature for each cell of the `geotile_grid` or `geohex_grid`. The layer only contains features for cells with matching data.\n* A meta layer containing:\n  * A feature containing a bounding box. By default, this is the bounding box of the tile.\n  * Value ranges for any sub-aggregations on the `geotile_grid` or `geohex_grid`.\n  * Metadata for the search.\n\nThe API only returns features that can display at its zoom level.\nFor example, if a polygon feature has no area at its zoom level, the API omits it.\nThe API returns errors as UTF-8 encoded JSON.\n\nIMPORTANT: You can specify several options for this API as either a query parameter or request body parameter.\nIf you specify both parameters, the query parameter takes precedence.\n\n**Grid precision for geotile**\n\nFor a `grid_agg` of `geotile`, you can use cells in the `aggs` layer as tiles for lower zoom levels.\n`grid_precision` represents the additional zoom levels available through these cells. The final precision is computed by as follows: `<zoom> + grid_precision`.\nFor example, if `<zoom>` is 7 and `grid_precision` is 8, then the `geotile_grid` aggregation will use a precision of 15.\nThe maximum final precision is 29.\nThe `grid_precision` also determines the number of cells for the grid as follows: `(2^grid_precision) x (2^grid_precision)`.\nFor example, a value of 8 divides the tile into a grid of 256 x 256 cells.\nThe `aggs` layer only contains features for cells with matching data.\n\n**Grid precision for geohex**\n\nFor a `grid_agg` of `geohex`, Elasticsearch uses `<zoom>` and `grid_precision` to calculate a final precision as follows: `<zoom> + grid_precision`.\n\nThis precision determines the H3 resolution of the hexagonal cells produced by the `geohex` aggregation.\nThe following table maps the H3 resolution for each precision.\nFor example, if `<zoom>` is 3 and `grid_precision` is 3, the precision is 6.\nAt a precision of 6, hexagonal cells have an H3 resolution of 2.\nIf `<zoom>` is 3 and `grid_precision` is 4, the precision is 7.\nAt a precision of 7, hexagonal cells have an H3 resolution of 3.\n\n| Precision | Unique tile bins | H3 resolution | Unique hex bins |\tRatio |\n| --------- | ---------------- | ------------- | ----------------| ----- |\n| 1  | 4                  | 0  | 122             | 30.5           |\n| 2  | 16                 | 0  | 122             | 7.625          |\n| 3  | 64                 | 1  | 842             | 13.15625       |\n| 4  | 256                | 1  | 842             | 3.2890625      |\n| 5  | 1024               | 2  | 5882            | 5.744140625    |\n| 6  | 4096               | 2  | 5882            | 1.436035156    |\n| 7  | 16384              | 3  | 41162           | 2.512329102    |\n| 8  | 65536              | 3  | 41162           | 0.6280822754   |\n| 9  | 262144             | 4  | 288122          | 1.099098206    |\n| 10 | 1048576            | 4  | 288122          | 0.2747745514   |\n| 11 | 4194304            | 5  | 2016842         | 0.4808526039   |\n| 12 | 16777216           | 6  | 14117882        | 0.8414913416   |\n| 13 | 67108864           | 6  | 14117882        | 0.2103728354   |\n| 14 | 268435456          | 7  | 98825162        | 0.3681524172   |\n| 15 | 1073741824         | 8  | 691776122       | 0.644266719    |\n| 16 | 4294967296         | 8  | 691776122       | 0.1610666797   |\n| 17 | 17179869184        | 9  | 4842432842      | 0.2818666889   |\n| 18 | 68719476736        | 10 | 33897029882     | 0.4932667053   |\n| 19 | 274877906944       | 11 | 237279209162    | 0.8632167343   |\n| 20 | 1099511627776      | 11 | 237279209162    | 0.2158041836   |\n| 21 | 4398046511104      | 12 | 1660954464122   | 0.3776573213   |\n| 22 | 17592186044416     | 13 | 11626681248842  | 0.6609003122   |\n| 23 | 70368744177664     | 13 | 11626681248842  | 0.165225078    |\n| 24 | 281474976710656    | 14 | 81386768741882  | 0.2891438866   |\n| 25 | 1125899906842620   | 15 | 569707381193162 | 0.5060018015   |\n| 26 | 4503599627370500   | 15 | 569707381193162 | 0.1265004504   |\n| 27 | 18014398509482000  | 15 | 569707381193162 | 0.03162511259  |\n| 28 | 72057594037927900  | 15 | 569707381193162 | 0.007906278149 |\n| 29 | 288230376151712000 | 15 | 569707381193162 | 0.001976569537 |\n\nHexagonal cells don't align perfectly on a vector tile.\nSome cells may intersect more than one vector tile.\nTo compute the H3 resolution for each precision, Elasticsearch compares the average density of hexagonal bins at each resolution with the average density of tile bins at each zoom level.\nElasticsearch uses the H3 resolution that is closest to the corresponding geotile density.",
+        "externalDocs": {
+          "url": "https://github.com/mapbox/vector-tile-spec/blob/master/README.md"
+        },
         "operationId": "search-mvt",
         "parameters": [
           {
@@ -18700,7 +18851,7 @@
           "search"
         ],
         "summary": "Get terms in an index",
-        "description": "Discover terms that match a partial string in an index.\nThis \"terms enum\" API is designed for low-latency look-ups used in auto-complete scenarios.\n\nIf the `complete` property in the response is false, the returned terms set may be incomplete and should be treated as approximate.\nThis can occur due to a few reasons, such as a request timeout or a node error.\n\nNOTE: The terms enum API may return terms from deleted documents. Deleted documents are initially only marked as deleted. It is not until their segments are merged that documents are actually deleted. Until that happens, the terms enum API will return terms from these documents.",
+        "description": "Discover terms that match a partial string in an index.\nThis API is designed for low-latency look-ups used in auto-complete scenarios.\n\n> info\n> The terms enum API may return terms from deleted documents. Deleted documents are initially only marked as deleted. It is not until their segments are merged that documents are actually deleted. Until that happens, the terms enum API will return terms from these documents.",
         "operationId": "terms-enum",
         "parameters": [
           {
@@ -18722,7 +18873,7 @@
           "search"
         ],
         "summary": "Get terms in an index",
-        "description": "Discover terms that match a partial string in an index.\nThis \"terms enum\" API is designed for low-latency look-ups used in auto-complete scenarios.\n\nIf the `complete` property in the response is false, the returned terms set may be incomplete and should be treated as approximate.\nThis can occur due to a few reasons, such as a request timeout or a node error.\n\nNOTE: The terms enum API may return terms from deleted documents. Deleted documents are initially only marked as deleted. It is not until their segments are merged that documents are actually deleted. Until that happens, the terms enum API will return terms from these documents.",
+        "description": "Discover terms that match a partial string in an index.\nThis API is designed for low-latency look-ups used in auto-complete scenarios.\n\n> info\n> The terms enum API may return terms from deleted documents. Deleted documents are initially only marked as deleted. It is not until their segments are merged that documents are actually deleted. Until that happens, the terms enum API will return terms from these documents.",
         "operationId": "terms-enum-1",
         "parameters": [
           {
@@ -18746,7 +18897,7 @@
           "document"
         ],
         "summary": "Get term vector information",
-        "description": "Get information and statistics about terms in the fields of a particular document.",
+        "description": "Get information and statistics about terms in the fields of a particular document.\n\nYou can retrieve term vectors for documents stored in the index or for artificial documents passed in the body of the request.\nYou can specify the fields you are interested in through the `fields` parameter or by adding the fields to the request body.\nFor example:\n\n```\nGET /my-index-000001/_termvectors/1?fields=message\n```\n\nFields can be specified using wildcards, similar to the multi match query.\n\nTerm vectors are real-time by default, not near real-time.\nThis can be changed by setting `realtime` parameter to `false`.\n\nYou can request three types of values: _term information_, _term statistics_, and _field statistics_.\nBy default, all term information and field statistics are returned for all fields but term statistics are excluded.\n\n**Term information**\n\n* term frequency in the field (always returned)\n* term positions (`positions: true`)\n* start and end offsets (`offsets: true`)\n* term payloads (`payloads: true`), as base64 encoded bytes\n\nIf the requested information wasn't stored in the index, it will be computed on the fly if possible.\nAdditionally, term vectors could be computed for documents not even existing in the index, but instead provided by the user.\n\n> warn\n> Start and end offsets assume UTF-16 encoding is being used. If you want to use these offsets in order to get the original text that produced this token, you should make sure that the string you are taking a sub-string of is also encoded using UTF-16.\n\n**Behaviour**\n\nThe term and field statistics are not accurate.\nDeleted documents are not taken into account.\nThe information is only retrieved for the shard the requested document resides in.\nThe term and field statistics are therefore only useful as relative measures whereas the absolute numbers have no meaning in this context.\nBy default, when requesting term vectors of artificial documents, a shard to get the statistics from is randomly selected.\nUse `routing` only to hit a particular shard.",
         "operationId": "termvectors",
         "parameters": [
           {
@@ -18803,7 +18954,7 @@
           "document"
         ],
         "summary": "Get term vector information",
-        "description": "Get information and statistics about terms in the fields of a particular document.",
+        "description": "Get information and statistics about terms in the fields of a particular document.\n\nYou can retrieve term vectors for documents stored in the index or for artificial documents passed in the body of the request.\nYou can specify the fields you are interested in through the `fields` parameter or by adding the fields to the request body.\nFor example:\n\n```\nGET /my-index-000001/_termvectors/1?fields=message\n```\n\nFields can be specified using wildcards, similar to the multi match query.\n\nTerm vectors are real-time by default, not near real-time.\nThis can be changed by setting `realtime` parameter to `false`.\n\nYou can request three types of values: _term information_, _term statistics_, and _field statistics_.\nBy default, all term information and field statistics are returned for all fields but term statistics are excluded.\n\n**Term information**\n\n* term frequency in the field (always returned)\n* term positions (`positions: true`)\n* start and end offsets (`offsets: true`)\n* term payloads (`payloads: true`), as base64 encoded bytes\n\nIf the requested information wasn't stored in the index, it will be computed on the fly if possible.\nAdditionally, term vectors could be computed for documents not even existing in the index, but instead provided by the user.\n\n> warn\n> Start and end offsets assume UTF-16 encoding is being used. If you want to use these offsets in order to get the original text that produced this token, you should make sure that the string you are taking a sub-string of is also encoded using UTF-16.\n\n**Behaviour**\n\nThe term and field statistics are not accurate.\nDeleted documents are not taken into account.\nThe information is only retrieved for the shard the requested document resides in.\nThe term and field statistics are therefore only useful as relative measures whereas the absolute numbers have no meaning in this context.\nBy default, when requesting term vectors of artificial documents, a shard to get the statistics from is randomly selected.\nUse `routing` only to hit a particular shard.",
         "operationId": "termvectors-1",
         "parameters": [
           {
@@ -18862,7 +19013,7 @@
           "document"
         ],
         "summary": "Get term vector information",
-        "description": "Get information and statistics about terms in the fields of a particular document.",
+        "description": "Get information and statistics about terms in the fields of a particular document.\n\nYou can retrieve term vectors for documents stored in the index or for artificial documents passed in the body of the request.\nYou can specify the fields you are interested in through the `fields` parameter or by adding the fields to the request body.\nFor example:\n\n```\nGET /my-index-000001/_termvectors/1?fields=message\n```\n\nFields can be specified using wildcards, similar to the multi match query.\n\nTerm vectors are real-time by default, not near real-time.\nThis can be changed by setting `realtime` parameter to `false`.\n\nYou can request three types of values: _term information_, _term statistics_, and _field statistics_.\nBy default, all term information and field statistics are returned for all fields but term statistics are excluded.\n\n**Term information**\n\n* term frequency in the field (always returned)\n* term positions (`positions: true`)\n* start and end offsets (`offsets: true`)\n* term payloads (`payloads: true`), as base64 encoded bytes\n\nIf the requested information wasn't stored in the index, it will be computed on the fly if possible.\nAdditionally, term vectors could be computed for documents not even existing in the index, but instead provided by the user.\n\n> warn\n> Start and end offsets assume UTF-16 encoding is being used. If you want to use these offsets in order to get the original text that produced this token, you should make sure that the string you are taking a sub-string of is also encoded using UTF-16.\n\n**Behaviour**\n\nThe term and field statistics are not accurate.\nDeleted documents are not taken into account.\nThe information is only retrieved for the shard the requested document resides in.\nThe term and field statistics are therefore only useful as relative measures whereas the absolute numbers have no meaning in this context.\nBy default, when requesting term vectors of artificial documents, a shard to get the statistics from is randomly selected.\nUse `routing` only to hit a particular shard.",
         "operationId": "termvectors-2",
         "parameters": [
           {
@@ -18916,7 +19067,7 @@
           "document"
         ],
         "summary": "Get term vector information",
-        "description": "Get information and statistics about terms in the fields of a particular document.",
+        "description": "Get information and statistics about terms in the fields of a particular document.\n\nYou can retrieve term vectors for documents stored in the index or for artificial documents passed in the body of the request.\nYou can specify the fields you are interested in through the `fields` parameter or by adding the fields to the request body.\nFor example:\n\n```\nGET /my-index-000001/_termvectors/1?fields=message\n```\n\nFields can be specified using wildcards, similar to the multi match query.\n\nTerm vectors are real-time by default, not near real-time.\nThis can be changed by setting `realtime` parameter to `false`.\n\nYou can request three types of values: _term information_, _term statistics_, and _field statistics_.\nBy default, all term information and field statistics are returned for all fields but term statistics are excluded.\n\n**Term information**\n\n* term frequency in the field (always returned)\n* term positions (`positions: true`)\n* start and end offsets (`offsets: true`)\n* term payloads (`payloads: true`), as base64 encoded bytes\n\nIf the requested information wasn't stored in the index, it will be computed on the fly if possible.\nAdditionally, term vectors could be computed for documents not even existing in the index, but instead provided by the user.\n\n> warn\n> Start and end offsets assume UTF-16 encoding is being used. If you want to use these offsets in order to get the original text that produced this token, you should make sure that the string you are taking a sub-string of is also encoded using UTF-16.\n\n**Behaviour**\n\nThe term and field statistics are not accurate.\nDeleted documents are not taken into account.\nThe information is only retrieved for the shard the requested document resides in.\nThe term and field statistics are therefore only useful as relative measures whereas the absolute numbers have no meaning in this context.\nBy default, when requesting term vectors of artificial documents, a shard to get the statistics from is randomly selected.\nUse `routing` only to hit a particular shard.",
         "operationId": "termvectors-3",
         "parameters": [
           {
@@ -18972,7 +19123,7 @@
           "transform"
         ],
         "summary": "Get transforms",
-        "description": "Retrieves configuration information for transforms.",
+        "description": "Get configuration information for transforms.",
         "operationId": "transform-get-transform",
         "parameters": [
           {
@@ -19104,7 +19255,6 @@
           "transform"
         ],
         "summary": "Delete a transform",
-        "description": "Deletes a transform.",
         "operationId": "transform-delete-transform",
         "parameters": [
           {
@@ -19170,7 +19320,7 @@
           "transform"
         ],
         "summary": "Get transforms",
-        "description": "Retrieves configuration information for transforms.",
+        "description": "Get configuration information for transforms.",
         "operationId": "transform-get-transform-1",
         "parameters": [
           {
@@ -19200,7 +19350,7 @@
           "transform"
         ],
         "summary": "Get transform stats",
-        "description": "Retrieves usage information for transforms.",
+        "description": "Get usage information for transforms.",
         "operationId": "transform-get-transform-stats",
         "parameters": [
           {
@@ -19389,7 +19539,7 @@
           "transform"
         ],
         "summary": "Reset a transform",
-        "description": "Resets a transform.\nBefore you can reset it, you must stop it; alternatively, use the `force` query parameter.\nIf the destination index was created by the transform, it is deleted.",
+        "description": "Before you can reset it, you must stop it; alternatively, use the `force` query parameter.\nIf the destination index was created by the transform, it is deleted.",
         "operationId": "transform-reset-transform",
         "parameters": [
           {
@@ -19445,7 +19595,7 @@
           "transform"
         ],
         "summary": "Schedule a transform to start now",
-        "description": "Instantly runs a transform to process data.\n\nIf you _schedule_now a transform, it will process the new data instantly,\nwithout waiting for the configured frequency interval. After _schedule_now API is called,\nthe transform will be processed again at now + frequency unless _schedule_now API\nis called again in the meantime.",
+        "description": "Instantly run a transform to process data.\nIf you run this API, the transform will process the new data instantly,\nwithout waiting for the configured frequency interval. After the API is called,\nthe transform will be processed again at `now + frequency` unless the API\nis called again in the meantime.",
         "operationId": "transform-schedule-now-transform",
         "parameters": [
           {
@@ -19491,7 +19641,7 @@
           "transform"
         ],
         "summary": "Start a transform",
-        "description": "Starts a transform.\n\nWhen you start a transform, it creates the destination index if it does not already exist. The `number_of_shards` is\nset to `1` and the `auto_expand_replicas` is set to `0-1`. If it is a pivot transform, it deduces the mapping\ndefinitions for the destination index from the source indices and the transform aggregations. If fields in the\ndestination index are derived from scripts (as in the case of `scripted_metric` or `bucket_script` aggregations),\nthe transform uses dynamic mappings unless an index template exists. If it is a latest transform, it does not deduce\nmapping definitions; it uses dynamic mappings. To use explicit mappings, create the destination index before you\nstart the transform. Alternatively, you can create an index template, though it does not affect the deduced mappings\nin a pivot transform.\n\nWhen the transform starts, a series of validations occur to ensure its success. If you deferred validation when you\ncreated the transform, they occur when you start the transform—​with the exception of privilege checks. When\nElasticsearch security features are enabled, the transform remembers which roles the user that created it had at the\ntime of creation and uses those same roles. If those roles do not have the required privileges on the source and\ndestination indices, the transform fails when it attempts unauthorized operations.",
+        "description": "When you start a transform, it creates the destination index if it does not already exist. The `number_of_shards` is\nset to `1` and the `auto_expand_replicas` is set to `0-1`. If it is a pivot transform, it deduces the mapping\ndefinitions for the destination index from the source indices and the transform aggregations. If fields in the\ndestination index are derived from scripts (as in the case of `scripted_metric` or `bucket_script` aggregations),\nthe transform uses dynamic mappings unless an index template exists. If it is a latest transform, it does not deduce\nmapping definitions; it uses dynamic mappings. To use explicit mappings, create the destination index before you\nstart the transform. Alternatively, you can create an index template, though it does not affect the deduced mappings\nin a pivot transform.\n\nWhen the transform starts, a series of validations occur to ensure its success. If you deferred validation when you\ncreated the transform, they occur when you start the transform—​with the exception of privilege checks. When\nElasticsearch security features are enabled, the transform remembers which roles the user that created it had at the\ntime of creation and uses those same roles. If those roles do not have the required privileges on the source and\ndestination indices, the transform fails when it attempts unauthorized operations.",
         "operationId": "transform-start-transform",
         "parameters": [
           {
@@ -19835,6 +19985,16 @@
           },
           {
             "in": "query",
+            "name": "include_source_on_error",
+            "description": "True or false if to include the document source in the error message in case of parsing errors.",
+            "deprecated": false,
+            "schema": {
+              "type": "boolean"
+            },
+            "style": "form"
+          },
+          {
+            "in": "query",
             "name": "lang",
             "description": "The script language.",
             "deprecated": false,
@@ -19992,13 +20152,13 @@
           "document"
         ],
         "summary": "Update documents",
-        "description": "Updates documents that match the specified query.\nIf no query is specified, performs an update on every document in the data stream or index without modifying the source, which is useful for picking up mapping changes.",
+        "description": "Updates documents that match the specified query.\nIf no query is specified, performs an update on every document in the data stream or index without modifying the source, which is useful for picking up mapping changes.\n\nIf the Elasticsearch security features are enabled, you must have the following index privileges for the target data stream, index, or alias:\n\n* `read`\n* `index` or `write`\n\nYou can specify the query criteria in the request URI or the request body using the same syntax as the search API.\n\nWhen you submit an update by query request, Elasticsearch gets a snapshot of the data stream or index when it begins processing the request and updates matching documents using internal versioning.\nWhen the versions match, the document is updated and the version number is incremented.\nIf a document changes between the time that the snapshot is taken and the update operation is processed, it results in a version conflict and the operation fails.\nYou can opt to count version conflicts instead of halting and returning by setting `conflicts` to `proceed`.\nNote that if you opt to count version conflicts, the operation could attempt to update more documents from the source than `max_docs` until it has successfully updated `max_docs` documents or it has gone through every document in the source query.\n\nNOTE: Documents with a version equal to 0 cannot be updated using update by query because internal versioning does not support 0 as a valid version number.\n\nWhile processing an update by query request, Elasticsearch performs multiple search requests sequentially to find all of the matching documents.\nA bulk update request is performed for each batch of matching documents.\nAny query or update failures cause the update by query request to fail and the failures are shown in the response.\nAny update requests that completed successfully still stick, they are not rolled back.\n\n**Throttling update requests**\n\nTo control the rate at which update by query issues batches of update operations, you can set `requests_per_second` to any positive decimal number.\nThis pads each batch with a wait time to throttle the rate.\nSet `requests_per_second` to `-1` to turn off throttling.\n\nThrottling uses a wait time between batches so that the internal scroll requests can be given a timeout that takes the request padding into account.\nThe padding time is the difference between the batch size divided by the `requests_per_second` and the time spent writing.\nBy default the batch size is 1000, so if `requests_per_second` is set to `500`:\n\n```\ntarget_time = 1000 / 500 per second = 2 seconds\nwait_time = target_time - write_time = 2 seconds - .5 seconds = 1.5 seconds\n```\n\nSince the batch is issued as a single _bulk request, large batch sizes cause Elasticsearch to create many requests and wait before starting the next set.\nThis is \"bursty\" instead of \"smooth\".\n\n**Slicing**\n\nUpdate by query supports sliced scroll to parallelize the update process.\nThis can improve efficiency and provide a convenient way to break the request down into smaller parts.\n\nSetting `slices` to `auto` chooses a reasonable number for most data streams and indices.\nThis setting will use one slice per shard, up to a certain limit.\nIf there are multiple source data streams or indices, it will choose the number of slices based on the index or backing index with the smallest number of shards.\n\nAdding `slices` to `_update_by_query` just automates the manual process of creating sub-requests, which means it has some quirks:\n\n* You can see these requests in the tasks APIs. These sub-requests are \"child\" tasks of the task for the request with slices.\n* Fetching the status of the task for the request with `slices` only contains the status of completed slices.\n* These sub-requests are individually addressable for things like cancellation and rethrottling.\n* Rethrottling the request with `slices` will rethrottle the unfinished sub-request proportionally.\n* Canceling the request with slices will cancel each sub-request.\n* Due to the nature of slices each sub-request won't get a perfectly even portion of the documents. All documents will be addressed, but some slices may be larger than others. Expect larger slices to have a more even distribution.\n* Parameters like `requests_per_second` and `max_docs` on a request with slices are distributed proportionally to each sub-request. Combine that with the point above about distribution being uneven and you should conclude that using `max_docs` with `slices` might not result in exactly `max_docs` documents being updated.\n* Each sub-request gets a slightly different snapshot of the source data stream or index though these are all taken at approximately the same time.\n\nIf you're slicing manually or otherwise tuning automatic slicing, keep in mind that:\n\n* Query performance is most efficient when the number of slices is equal to the number of shards in the index or backing index. If that number is large (for example, 500), choose a lower number as too many slices hurts performance. Setting slices higher than the number of shards generally does not improve efficiency and adds overhead.\n* Update performance scales linearly across available resources with the number of slices.\n\nWhether query or update performance dominates the runtime depends on the documents being reindexed and cluster resources.\n\n**Update the document source**\n\nUpdate by query supports scripts to update the document source.\nAs with the update API, you can set `ctx.op` to change the operation that is performed.\n\nSet `ctx.op = \"noop\"` if your script decides that it doesn't have to make any changes.\nThe update by query operation skips updating the document and increments the `noop` counter.\n\nSet `ctx.op = \"delete\"` if your script decides that the document should be deleted.\nThe update by query operation deletes the document and increments the `deleted` counter.\n\nUpdate by query supports only `index`, `noop`, and `delete`.\nSetting `ctx.op` to anything else is an error.\nSetting any other field in `ctx` is an error.\nThis API enables you to only modify the source of matching documents; you cannot move them.",
         "operationId": "update-by-query",
         "parameters": [
           {
             "in": "path",
             "name": "index",
-            "description": "Comma-separated list of data streams, indices, and aliases to search.\nSupports wildcards (`*`).\nTo search all data streams or indices, omit this parameter or use `*` or `_all`.",
+            "description": "A comma-separated list of data streams, indices, and aliases to search.\nIt supports wildcards (`*`).\nTo search all data streams or indices, omit this parameter or use `*` or `_all`.",
             "required": true,
             "deprecated": false,
             "schema": {
@@ -20019,7 +20179,7 @@
           {
             "in": "query",
             "name": "analyzer",
-            "description": "Analyzer to use for the query string.",
+            "description": "The analyzer to use for the query string.\nThis parameter can be used only when the `q` query string parameter is specified.",
             "deprecated": false,
             "schema": {
               "type": "string"
@@ -20029,7 +20189,7 @@
           {
             "in": "query",
             "name": "analyze_wildcard",
-            "description": "If `true`, wildcard and prefix queries are analyzed.",
+            "description": "If `true`, wildcard and prefix queries are analyzed.\nThis parameter can be used only when the `q` query string parameter is specified.",
             "deprecated": false,
             "schema": {
               "type": "boolean"
@@ -20039,7 +20199,7 @@
           {
             "in": "query",
             "name": "conflicts",
-            "description": "What to do if update by query hits version conflicts: `abort` or `proceed`.",
+            "description": "The preferred behavior when update by query hits version conflicts: `abort` or `proceed`.",
             "deprecated": false,
             "schema": {
               "$ref": "#/components/schemas/_types:Conflicts"
@@ -20049,7 +20209,7 @@
           {
             "in": "query",
             "name": "default_operator",
-            "description": "The default operator for query string query: `AND` or `OR`.",
+            "description": "The default operator for query string query: `AND` or `OR`.\nThis parameter can be used only when the `q` query string parameter is specified.",
             "deprecated": false,
             "schema": {
               "$ref": "#/components/schemas/_types.query_dsl:Operator"
@@ -20059,7 +20219,7 @@
           {
             "in": "query",
             "name": "df",
-            "description": "Field to use as default where no field prefix is given in the query string.",
+            "description": "The field to use as default where no field prefix is given in the query string.\nThis parameter can be used only when the `q` query string parameter is specified.",
             "deprecated": false,
             "schema": {
               "type": "string"
@@ -20069,7 +20229,7 @@
           {
             "in": "query",
             "name": "expand_wildcards",
-            "description": "Type of index that wildcard patterns can match.\nIf the request can target data streams, this argument determines whether wildcard expressions match hidden data streams.\nSupports comma-separated values, such as `open,hidden`.\nValid values are: `all`, `open`, `closed`, `hidden`, `none`.",
+            "description": "The type of index that wildcard patterns can match.\nIf the request can target data streams, this argument determines whether wildcard expressions match hidden data streams.\nIt supports comma-separated values, such as `open,hidden`.\nValid values are: `all`, `open`, `closed`, `hidden`, `none`.",
             "deprecated": false,
             "schema": {
               "$ref": "#/components/schemas/_types:ExpandWildcards"
@@ -20099,7 +20259,7 @@
           {
             "in": "query",
             "name": "lenient",
-            "description": "If `true`, format-based query failures (such as providing text to a numeric field) in the query string will be ignored.",
+            "description": "If `true`, format-based query failures (such as providing text to a numeric field) in the query string will be ignored.\nThis parameter can be used only when the `q` query string parameter is specified.",
             "deprecated": false,
             "schema": {
               "type": "boolean"
@@ -20109,7 +20269,7 @@
           {
             "in": "query",
             "name": "max_docs",
-            "description": "Maximum number of documents to process.\nDefaults to all documents.",
+            "description": "The maximum number of documents to process.\nIt defaults to all documents.\nWhen set to a value less then or equal to `scroll_size` then a scroll will not be used to retrieve the results for the operation.",
             "deprecated": false,
             "schema": {
               "type": "number"
@@ -20119,7 +20279,7 @@
           {
             "in": "query",
             "name": "pipeline",
-            "description": "ID of the pipeline to use to preprocess incoming documents.\nIf the index has a default ingest pipeline specified, then setting the value to `_none` disables the default ingest pipeline for this request.\nIf a final pipeline is configured it will always run, regardless of the value of this parameter.",
+            "description": "The ID of the pipeline to use to preprocess incoming documents.\nIf the index has a default ingest pipeline specified, then setting the value to `_none` disables the default ingest pipeline for this request.\nIf a final pipeline is configured it will always run, regardless of the value of this parameter.",
             "deprecated": false,
             "schema": {
               "type": "string"
@@ -20129,7 +20289,7 @@
           {
             "in": "query",
             "name": "preference",
-            "description": "Specifies the node or shard the operation should be performed on.\nRandom by default.",
+            "description": "The node or shard the operation should be performed on.\nIt is random by default.",
             "deprecated": false,
             "schema": {
               "type": "string"
@@ -20139,7 +20299,7 @@
           {
             "in": "query",
             "name": "q",
-            "description": "Query in the Lucene query string syntax.",
+            "description": "A query in the Lucene query string syntax.",
             "deprecated": false,
             "schema": {
               "type": "string"
@@ -20149,7 +20309,7 @@
           {
             "in": "query",
             "name": "refresh",
-            "description": "If `true`, Elasticsearch refreshes affected shards to make the operation visible to search.",
+            "description": "If `true`, Elasticsearch refreshes affected shards to make the operation visible to search after the request completes.\nThis is different than the update API's `refresh` parameter, which causes just the shard that received the request to be refreshed.",
             "deprecated": false,
             "schema": {
               "type": "boolean"
@@ -20159,7 +20319,7 @@
           {
             "in": "query",
             "name": "request_cache",
-            "description": "If `true`, the request cache is used for this request.",
+            "description": "If `true`, the request cache is used for this request.\nIt defaults to the index-level setting.",
             "deprecated": false,
             "schema": {
               "type": "boolean"
@@ -20179,7 +20339,7 @@
           {
             "in": "query",
             "name": "routing",
-            "description": "Custom value used to route operations to a specific shard.",
+            "description": "A custom value used to route operations to a specific shard.",
             "deprecated": false,
             "schema": {
               "$ref": "#/components/schemas/_types:Routing"
@@ -20189,7 +20349,7 @@
           {
             "in": "query",
             "name": "scroll",
-            "description": "Period to retain the search context for scrolling.",
+            "description": "The period to retain the search context for scrolling.",
             "deprecated": false,
             "schema": {
               "$ref": "#/components/schemas/_types:Duration"
@@ -20199,7 +20359,7 @@
           {
             "in": "query",
             "name": "scroll_size",
-            "description": "Size of the scroll request that powers the operation.",
+            "description": "The size of the scroll request that powers the operation.",
             "deprecated": false,
             "schema": {
               "type": "number"
@@ -20209,7 +20369,7 @@
           {
             "in": "query",
             "name": "search_timeout",
-            "description": "Explicit timeout for each search request.",
+            "description": "An explicit timeout for each search request.\nBy default, there is no timeout.",
             "deprecated": false,
             "schema": {
               "$ref": "#/components/schemas/_types:Duration"
@@ -20219,7 +20379,7 @@
           {
             "in": "query",
             "name": "search_type",
-            "description": "The type of the search operation. Available options: `query_then_fetch`, `dfs_query_then_fetch`.",
+            "description": "The type of the search operation. Available options include `query_then_fetch` and `dfs_query_then_fetch`.",
             "deprecated": false,
             "schema": {
               "$ref": "#/components/schemas/_types:SearchType"
@@ -20252,7 +20412,7 @@
           {
             "in": "query",
             "name": "stats",
-            "description": "Specific `tag` of the request for logging and statistical purposes.",
+            "description": "The specific `tag` of the request for logging and statistical purposes.",
             "deprecated": false,
             "schema": {
               "type": "array",
@@ -20265,7 +20425,7 @@
           {
             "in": "query",
             "name": "terminate_after",
-            "description": "Maximum number of documents to collect for each shard.\nIf a query reaches this limit, Elasticsearch terminates the query early.\nElasticsearch collects documents before sorting.\nUse with caution.\nElasticsearch applies this parameter to each shard handling the request.\nWhen possible, let Elasticsearch perform early termination automatically.\nAvoid specifying this parameter for requests that target data streams with backing indices across multiple data tiers.",
+            "description": "The maximum number of documents to collect for each shard.\nIf a query reaches this limit, Elasticsearch terminates the query early.\nElasticsearch collects documents before sorting.\n\nIMPORTANT: Use with caution.\nElasticsearch applies this parameter to each shard handling the request.\nWhen possible, let Elasticsearch perform early termination automatically.\nAvoid specifying this parameter for requests that target data streams with backing indices across multiple data tiers.",
             "deprecated": false,
             "schema": {
               "type": "number"
@@ -20275,7 +20435,7 @@
           {
             "in": "query",
             "name": "timeout",
-            "description": "Period each update request waits for the following operations: dynamic mapping updates, waiting for active shards.",
+            "description": "The period each update request waits for the following operations: dynamic mapping updates, waiting for active shards.\nBy default, it is one minute.\nThis guarantees Elasticsearch waits for at least the timeout before failing.\nThe actual wait time could be longer, particularly when multiple waits occur.",
             "deprecated": false,
             "schema": {
               "$ref": "#/components/schemas/_types:Duration"
@@ -20305,7 +20465,7 @@
           {
             "in": "query",
             "name": "wait_for_active_shards",
-            "description": "The number of shard copies that must be active before proceeding with the operation.\nSet to `all` or any positive integer up to the total number of shards in the index (`number_of_replicas+1`).",
+            "description": "The number of shard copies that must be active before proceeding with the operation.\nSet to `all` or any positive integer up to the total number of shards in the index (`number_of_replicas+1`).\nThe `timeout` parameter controls how long each write request waits for unavailable shards to become available.\nBoth work exactly the way they work in the bulk API.",
             "deprecated": false,
             "schema": {
               "$ref": "#/components/schemas/_types:WaitForActiveShards"
@@ -20315,7 +20475,7 @@
           {
             "in": "query",
             "name": "wait_for_completion",
-            "description": "If `true`, the request blocks until the operation is complete.",
+            "description": "If `true`, the request blocks until the operation is complete.\nIf `false`, Elasticsearch performs some preflight checks, launches the request, and returns a task ID that you can use to cancel or get the status of the task.\nElasticsearch creates a record of this task as a document at `.tasks/task/${taskId}`.",
             "deprecated": false,
             "schema": {
               "type": "boolean"
@@ -20359,21 +20519,26 @@
                   "type": "object",
                   "properties": {
                     "batches": {
+                      "description": "The number of scroll responses pulled back by the update by query.",
                       "type": "number"
                     },
                     "failures": {
+                      "description": "Array of failures if there were any unrecoverable errors during the process.\nIf this is non-empty then the request ended because of those failures.\nUpdate by query is implemented using batches.\nAny failure causes the entire process to end, but all failures in the current batch are collected into the array.\nYou can use the `conflicts` option to prevent reindex from ending when version conflicts occur.",
                       "type": "array",
                       "items": {
                         "$ref": "#/components/schemas/_types:BulkIndexByScrollFailure"
                       }
                     },
                     "noops": {
+                      "description": "The number of documents that were ignored because the script used for the update by query returned a noop value for `ctx.op`.",
                       "type": "number"
                     },
                     "deleted": {
+                      "description": "The number of documents that were successfully deleted.",
                       "type": "number"
                     },
                     "requests_per_second": {
+                      "description": "The number of requests per second effectively run during the update by query.",
                       "type": "number"
                     },
                     "retries": {
@@ -20383,18 +20548,22 @@
                       "$ref": "#/components/schemas/_types:TaskId"
                     },
                     "timed_out": {
+                      "description": "If true, some requests timed out during the update by query.",
                       "type": "boolean"
                     },
                     "took": {
                       "$ref": "#/components/schemas/_types:DurationValueUnitMillis"
                     },
                     "total": {
+                      "description": "The number of documents that were successfully processed.",
                       "type": "number"
                     },
                     "updated": {
+                      "description": "The number of documents that were successfully updated.",
                       "type": "number"
                     },
                     "version_conflicts": {
+                      "description": "The number of version conflicts that the update by query hit.",
                       "type": "number"
                     },
                     "throttled": {
@@ -20478,7 +20647,7 @@
         "type": "object",
         "properties": {
           "aggregations": {
-            "description": "Partial aggregations results, coming from the shards that have already completed the execution of the query.",
+            "description": "Partial aggregations results, coming from the shards that have already completed running the query.",
             "type": "object",
             "additionalProperties": {
               "$ref": "#/components/schemas/_types.aggregations:Aggregate"
@@ -25461,7 +25630,7 @@
             "type": "boolean"
           },
           "is_running": {
-            "description": "Indicates whether the search is still running or has completed.\nNOTE: If the search failed after some shards returned their results or the node that is coordinating the async search dies, results may be partial even though `is_running` is `false`.",
+            "description": "Indicates whether the search is still running or has completed.\n\n> info\n> If the search failed after some shards returned their results or the node that is coordinating the async search dies, results may be partial even though `is_running` is `false`.",
             "type": "boolean"
           },
           "expiration_time": {
@@ -25516,7 +25685,7 @@
                 "$ref": "#/components/schemas/_types:ClusterStatistics"
               },
               "completion_status": {
-                "description": "If the async search completed, this field shows the status code of the search.\nFor example, 200 indicates that the async search was successfully completed.\n503 indicates that the async search was completed with an error.",
+                "description": "If the async search completed, this field shows the status code of the search.\nFor example, `200` indicates that the async search was successfully completed.\n`503` indicates that the async search was completed with an error.",
                 "type": "number"
               }
             },
@@ -33376,6 +33545,9 @@
             "description": "The HTTP status code returned for the operation.",
             "type": "number"
           },
+          "failure_store": {
+            "$ref": "#/components/schemas/_global.bulk:FailureStoreStatus"
+          },
           "error": {
             "$ref": "#/components/schemas/_types:ErrorCause"
           },
@@ -33406,6 +33578,15 @@
         "required": [
           "_index",
           "status"
+        ]
+      },
+      "_global.bulk:FailureStoreStatus": {
+        "type": "string",
+        "enum": [
+          "not_applicable_or_unknown",
+          "used",
+          "not_enabled",
+          "failed"
         ]
       },
       "_types:InlineGetDictUserDefined": {
@@ -35322,6 +35503,9 @@
           },
           "_meta": {
             "$ref": "#/components/schemas/_types:Metadata"
+          },
+          "deprecated": {
+            "type": "boolean"
           }
         },
         "required": [
@@ -35431,7 +35615,14 @@
             ]
           },
           "auto_expand_replicas": {
-            "type": "string"
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "$ref": "#/components/schemas/_spec_utils:NullValue"
+              }
+            ]
           },
           "merge": {
             "$ref": "#/components/schemas/indices._types:Merge"
@@ -35700,6 +35891,11 @@
           }
         ]
       },
+      "_spec_utils:NullValue": {
+        "nullable": true,
+        "description": "A `null` value that is to be interpreted as an actual value, unless other uses of `null` that are equivalent\nto a missing value. It is used for exemple in settings, where using the `NullValue` for a setting will reset\nit to its default value.",
+        "type": "string"
+      },
       "indices._types:Merge": {
         "type": "object",
         "properties": {
@@ -35947,6 +36143,17 @@
           "rollover_alias": {
             "description": "The index alias to update when the index rolls over. Specify when using a policy that contains a rollover action.\nWhen the index rolls over, the alias is updated to reflect that the index is no longer the write index. For more\ninformation about rolling indices, see Rollover.",
             "type": "string"
+          },
+          "prefer_ilm": {
+            "description": "Preference for the system that manages a data stream backing index (preferring ILM when both ILM and DLM are\napplicable for an index).",
+            "oneOf": [
+              {
+                "type": "boolean"
+              },
+              {
+                "type": "string"
+              }
+            ]
           }
         }
       },
@@ -40518,8 +40725,18 @@
           "dimension_fields": {
             "$ref": "#/components/schemas/indices._types:MappingLimitSettingsDimensionFields"
           },
+          "source": {
+            "$ref": "#/components/schemas/indices._types:MappingLimitSettingsSourceFields"
+          },
           "ignore_malformed": {
-            "type": "boolean"
+            "oneOf": [
+              {
+                "type": "boolean"
+              },
+              {
+                "type": "string"
+              }
+            ]
           }
         }
       },
@@ -40594,6 +40811,25 @@
             "type": "number"
           }
         }
+      },
+      "indices._types:MappingLimitSettingsSourceFields": {
+        "type": "object",
+        "properties": {
+          "mode": {
+            "$ref": "#/components/schemas/indices._types:SourceMode"
+          }
+        },
+        "required": [
+          "mode"
+        ]
+      },
+      "indices._types:SourceMode": {
+        "type": "string",
+        "enum": [
+          "disabled",
+          "stored",
+          "synthetic"
+        ]
       },
       "indices._types:IndexingSlowlogSettings": {
         "type": "object",
@@ -40982,6 +41218,9 @@
             "$ref": "#/components/schemas/_types.mapping:ConstantKeywordProperty"
           },
           {
+            "$ref": "#/components/schemas/_types.mapping:CountedKeywordProperty"
+          },
+          {
             "$ref": "#/components/schemas/_types.mapping:FieldAliasProperty"
           },
           {
@@ -41139,8 +41378,19 @@
             "additionalProperties": {
               "$ref": "#/components/schemas/_types.mapping:Property"
             }
+          },
+          "synthetic_source_keep": {
+            "$ref": "#/components/schemas/_types.mapping:SyntheticSourceKeepEnum"
           }
         }
+      },
+      "_types.mapping:SyntheticSourceKeepEnum": {
+        "type": "string",
+        "enum": [
+          "none",
+          "arrays",
+          "all"
+        ]
       },
       "_types.mapping:BooleanProperty": {
         "allOf": [
@@ -42218,6 +42468,30 @@
                 "enum": [
                   "constant_keyword"
                 ]
+              }
+            },
+            "required": [
+              "type"
+            ]
+          }
+        ]
+      },
+      "_types.mapping:CountedKeywordProperty": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/_types.mapping:PropertyBase"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "type": {
+                "type": "string",
+                "enum": [
+                  "counted_keyword"
+                ]
+              },
+              "index": {
+                "type": "boolean"
               }
             },
             "required": [
@@ -44461,11 +44735,6 @@
           "scheduled"
         ]
       },
-      "_spec_utils:NullValue": {
-        "nullable": true,
-        "description": "A `null` value that is to be interpreted as an actual value, unless other uses of `null` that are equivalent\nto a missing value. It is used for exemple in settings, where using the `NullValue` for a setting will reset\nit to its default value.",
-        "type": "string"
-      },
       "_types:WriteResponseBase": {
         "type": "object",
         "properties": {
@@ -44541,17 +44810,13 @@
           },
           "status": {
             "type": "number"
-          },
-          "type": {
-            "type": "string"
           }
         },
         "required": [
           "cause",
           "id",
           "index",
-          "status",
-          "type"
+          "status"
         ]
       },
       "_types:Retries": {
@@ -44905,7 +45170,7 @@
           "head"
         ]
       },
-      "esql._types:EsqlFormat": {
+      "esql.query:EsqlFormat": {
         "type": "string",
         "enum": [
           "csv",
@@ -45001,7 +45266,7 @@
           }
         ]
       },
-      "_types:EsqlColumns": {
+      "_types:EsqlResult": {
         "type": "object"
       },
       "_types:InlineGet": {
@@ -45158,7 +45423,7 @@
             }
           },
           "source": {
-            "description": "The script source.",
+            "description": "The script source.\nFor search templates, an object containing the search template.",
             "type": "string"
           }
         },
@@ -46331,6 +46596,9 @@
       "inference._types:InferenceEndpoint": {
         "type": "object",
         "properties": {
+          "chunking_settings": {
+            "$ref": "#/components/schemas/inference._types:InferenceChunkingSettings"
+          },
           "service": {
             "description": "The service type",
             "type": "string"
@@ -46345,6 +46613,34 @@
         "required": [
           "service",
           "service_settings"
+        ]
+      },
+      "inference._types:InferenceChunkingSettings": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/inference._types:InferenceEndpoint"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "max_chunk_size": {
+                "description": "Specifies the maximum size of a chunk in words\nThis value cannot be higher than `300` or lower than `20` (for `sentence` strategy) or `10` (for `word` strategy)",
+                "type": "number"
+              },
+              "overlap": {
+                "description": "Specifies the number of overlapping words for chunks\nOnly for `word` chunking strategy\nThis value cannot be higher than the half of `max_chunk_size`",
+                "type": "number"
+              },
+              "sentence_overlap": {
+                "description": "Specifies the number of overlapping sentences for chunks\nOnly for `sentence` chunking strategy\nIt can be either `1` or `0`",
+                "type": "number"
+              },
+              "strategy": {
+                "description": "Specifies the chunking strategy\nIt could be either `sentence` or `word`",
+                "type": "string"
+              }
+            }
+          }
         ]
       },
       "inference._types:ServiceSettings": {
@@ -46462,7 +46758,7 @@
           "index": {
             "type": "number"
           },
-          "score": {
+          "relevance_score": {
             "type": "number"
           },
           "text": {
@@ -46471,7 +46767,7 @@
         },
         "required": [
           "index",
-          "score"
+          "relevance_score"
         ]
       },
       "inference.unified_inference:Message": {
@@ -52014,12 +52310,15 @@
         "type": "object",
         "properties": {
           "enabled": {
+            "description": "If true, adaptive_allocations is enabled",
             "type": "boolean"
           },
           "min_number_of_allocations": {
+            "description": "Specifies the minimum number of allocations to scale to.\nIf set, it must be greater than or equal to 0.\nIf not defined, the deployment scales to 0.",
             "type": "number"
           },
           "max_number_of_allocations": {
+            "description": "Specifies the maximum number of allocations to scale to.\nIf set, it must be greater than or equal to min_number_of_allocations.",
             "type": "number"
           }
         },
@@ -53591,7 +53890,7 @@
             "type": "boolean"
           },
           "source": {
-            "description": "An inline search template. Supports the same parameters as the search API's\nrequest body. Also supports Mustache variables. If no id is specified, this\nparameter is required.",
+            "description": "An inline search template. Supports the same parameters as the search API's\nrequest body. It also supports Mustache variables. If no `id` is specified, this\nparameter is required.",
             "type": "string"
           }
         }
@@ -53654,11 +53953,11 @@
             "type": "number"
           },
           "max_num_terms": {
-            "description": "Maximum number of terms that must be returned per field.",
+            "description": "The maximum number of terms that must be returned per field.",
             "type": "number"
           },
           "max_term_freq": {
-            "description": "Ignore words with more than this frequency in the source doc.\nDefaults to unbounded.",
+            "description": "Ignore words with more than this frequency in the source doc.\nIt defaults to unbounded.",
             "type": "number"
           },
           "max_word_length": {
@@ -54334,11 +54633,27 @@
       "_types:Password": {
         "type": "string"
       },
+      "_global.scripts_painless_execute:PainlessContext": {
+        "type": "string",
+        "enum": [
+          "painless_test",
+          "filter",
+          "score",
+          "boolean_field",
+          "date_field",
+          "double_field",
+          "geo_point_field",
+          "ip_field",
+          "keyword_field",
+          "long_field",
+          "composite_field"
+        ]
+      },
       "_global.scripts_painless_execute:PainlessContextSetup": {
         "type": "object",
         "properties": {
           "document": {
-            "description": "Document that’s temporarily indexed in-memory and accessible from the script.",
+            "description": "Document that's temporarily indexed in-memory and accessible from the script.",
             "type": "object"
           },
           "index": {
@@ -56877,6 +57192,7 @@
               "type": "object",
               "properties": {
                 "docs": {
+                  "description": "The response includes a docs array that contains the documents in the order specified in the request.\nThe structure of the returned documents is similar to that returned by the get API.\nIf there is a failure getting a particular document, the error is included in place of the document.",
                   "type": "array",
                   "items": {
                     "$ref": "#/components/schemas/_global.mget:ResponseItem"
@@ -57691,6 +58007,7 @@
                   }
                 },
                 "complete": {
+                  "description": "If `false`, the returned terms set may be incomplete and should be treated as approximate.\nThis can occur due to a few reasons, such as a request timeout or a node error.",
                   "type": "boolean"
                 }
               },
@@ -57809,6 +58126,16 @@
         "in": "query",
         "name": "wait_for_completion_timeout",
         "description": "Blocks and waits until the search is completed up to a certain timeout.\nWhen the async search completes within the timeout, the response won’t include the ID as the results are not stored in the cluster.",
+        "deprecated": false,
+        "schema": {
+          "$ref": "#/components/schemas/_types:Duration"
+        },
+        "style": "form"
+      },
+      "async_search.submit#keep_alive": {
+        "in": "query",
+        "name": "keep_alive",
+        "description": "Specifies how long the async search needs to be available.\nOngoing async searches and any saved search results are deleted after this period.",
         "deprecated": false,
         "schema": {
           "$ref": "#/components/schemas/_types:Duration"
@@ -58258,6 +58585,16 @@
         },
         "style": "simple"
       },
+      "bulk#include_source_on_error": {
+        "in": "query",
+        "name": "include_source_on_error",
+        "description": "True or false if to include the document source in the error message in case of parsing errors.",
+        "deprecated": false,
+        "schema": {
+          "type": "boolean"
+        },
+        "style": "form"
+      },
       "bulk#list_executed_pipelines": {
         "in": "query",
         "name": "list_executed_pipelines",
@@ -58379,6 +58716,26 @@
         },
         "style": "simple"
       },
+      "cat.aliases#h": {
+        "in": "query",
+        "name": "h",
+        "description": "List of columns to appear in the response. Supports simple wildcards.",
+        "deprecated": false,
+        "schema": {
+          "$ref": "#/components/schemas/_types:Names"
+        },
+        "style": "form"
+      },
+      "cat.aliases#s": {
+        "in": "query",
+        "name": "s",
+        "description": "List of columns that determine how the table should be sorted.\nSorting defaults to ascending and can be changed by setting `:asc`\nor `:desc` as a suffix to the column name.",
+        "deprecated": false,
+        "schema": {
+          "$ref": "#/components/schemas/_types:Names"
+        },
+        "style": "form"
+      },
       "cat.aliases#expand_wildcards": {
         "in": "query",
         "name": "expand_wildcards",
@@ -58420,6 +58777,26 @@
         },
         "style": "simple"
       },
+      "cat.component_templates#h": {
+        "in": "query",
+        "name": "h",
+        "description": "List of columns to appear in the response. Supports simple wildcards.",
+        "deprecated": false,
+        "schema": {
+          "$ref": "#/components/schemas/_types:Names"
+        },
+        "style": "form"
+      },
+      "cat.component_templates#s": {
+        "in": "query",
+        "name": "s",
+        "description": "List of columns that determine how the table should be sorted.\nSorting defaults to ascending and can be changed by setting `:asc`\nor `:desc` as a suffix to the column name.",
+        "deprecated": false,
+        "schema": {
+          "$ref": "#/components/schemas/_types:Names"
+        },
+        "style": "form"
+      },
       "cat.component_templates#local": {
         "in": "query",
         "name": "local",
@@ -58450,6 +58827,26 @@
           "$ref": "#/components/schemas/_types:Indices"
         },
         "style": "simple"
+      },
+      "cat.count#h": {
+        "in": "query",
+        "name": "h",
+        "description": "List of columns to appear in the response. Supports simple wildcards.",
+        "deprecated": false,
+        "schema": {
+          "$ref": "#/components/schemas/_types:Names"
+        },
+        "style": "form"
+      },
+      "cat.count#s": {
+        "in": "query",
+        "name": "s",
+        "description": "List of columns that determine how the table should be sorted.\nSorting defaults to ascending and can be changed by setting `:asc`\nor `:desc` as a suffix to the column name.",
+        "deprecated": false,
+        "schema": {
+          "$ref": "#/components/schemas/_types:Names"
+        },
+        "style": "form"
       },
       "cat.indices#index": {
         "in": "path",
@@ -58529,6 +58926,26 @@
         "deprecated": false,
         "schema": {
           "$ref": "#/components/schemas/_types:Duration"
+        },
+        "style": "form"
+      },
+      "cat.indices#h": {
+        "in": "query",
+        "name": "h",
+        "description": "List of columns to appear in the response. Supports simple wildcards.",
+        "deprecated": false,
+        "schema": {
+          "$ref": "#/components/schemas/_types:Names"
+        },
+        "style": "form"
+      },
+      "cat.indices#s": {
+        "in": "query",
+        "name": "s",
+        "description": "List of columns that determine how the table should be sorted.\nSorting defaults to ascending and can be changed by setting `:asc`\nor `:desc` as a suffix to the column name.",
+        "deprecated": false,
+        "schema": {
+          "$ref": "#/components/schemas/_types:Names"
         },
         "style": "form"
       },
@@ -59105,7 +59522,7 @@
       "count#q": {
         "in": "query",
         "name": "q",
-        "description": "The query in Lucene query string syntax.",
+        "description": "The query in Lucene query string syntax. This parameter cannot be used with a request body.",
         "deprecated": false,
         "schema": {
           "type": "string"
@@ -59133,6 +59550,16 @@
           "$ref": "#/components/schemas/_types:IndexName"
         },
         "style": "simple"
+      },
+      "create#include_source_on_error": {
+        "in": "query",
+        "name": "include_source_on_error",
+        "description": "True or false if to include the document source in the error message in case of parsing errors.",
+        "deprecated": false,
+        "schema": {
+          "type": "boolean"
+        },
+        "style": "form"
       },
       "create#pipeline": {
         "in": "query",
@@ -59317,7 +59744,7 @@
       "explain#id": {
         "in": "path",
         "name": "id",
-        "description": "Defines the document ID.",
+        "description": "The document identifier.",
         "required": true,
         "deprecated": false,
         "schema": {
@@ -59328,7 +59755,7 @@
       "explain#index": {
         "in": "path",
         "name": "index",
-        "description": "Index names used to limit the request.\nOnly a single index name can be provided to this parameter.",
+        "description": "Index names that are used to limit the request.\nOnly a single index name can be provided to this parameter.",
         "required": true,
         "deprecated": false,
         "schema": {
@@ -59339,7 +59766,7 @@
       "explain#analyzer": {
         "in": "query",
         "name": "analyzer",
-        "description": "Analyzer to use for the query string.\nThis parameter can only be used when the `q` query string parameter is specified.",
+        "description": "The analyzer to use for the query string.\nThis parameter can be used only when the `q` query string parameter is specified.",
         "deprecated": false,
         "schema": {
           "type": "string"
@@ -59349,7 +59776,7 @@
       "explain#analyze_wildcard": {
         "in": "query",
         "name": "analyze_wildcard",
-        "description": "If `true`, wildcard and prefix queries are analyzed.",
+        "description": "If `true`, wildcard and prefix queries are analyzed.\nThis parameter can be used only when the `q` query string parameter is specified.",
         "deprecated": false,
         "schema": {
           "type": "boolean"
@@ -59359,7 +59786,7 @@
       "explain#default_operator": {
         "in": "query",
         "name": "default_operator",
-        "description": "The default operator for query string query: `AND` or `OR`.",
+        "description": "The default operator for query string query: `AND` or `OR`.\nThis parameter can be used only when the `q` query string parameter is specified.",
         "deprecated": false,
         "schema": {
           "$ref": "#/components/schemas/_types.query_dsl:Operator"
@@ -59369,7 +59796,7 @@
       "explain#df": {
         "in": "query",
         "name": "df",
-        "description": "Field to use as default where no field prefix is given in the query string.",
+        "description": "The field to use as default where no field prefix is given in the query string.\nThis parameter can be used only when the `q` query string parameter is specified.",
         "deprecated": false,
         "schema": {
           "type": "string"
@@ -59379,7 +59806,7 @@
       "explain#lenient": {
         "in": "query",
         "name": "lenient",
-        "description": "If `true`, format-based query failures (such as providing text to a numeric field) in the query string will be ignored.",
+        "description": "If `true`, format-based query failures (such as providing text to a numeric field) in the query string will be ignored.\nThis parameter can be used only when the `q` query string parameter is specified.",
         "deprecated": false,
         "schema": {
           "type": "boolean"
@@ -59389,7 +59816,7 @@
       "explain#preference": {
         "in": "query",
         "name": "preference",
-        "description": "Specifies the node or shard the operation should be performed on.\nRandom by default.",
+        "description": "The node or shard the operation should be performed on.\nIt is random by default.",
         "deprecated": false,
         "schema": {
           "type": "string"
@@ -59399,7 +59826,7 @@
       "explain#routing": {
         "in": "query",
         "name": "routing",
-        "description": "Custom value used to route operations to a specific shard.",
+        "description": "A custom value used to route operations to a specific shard.",
         "deprecated": false,
         "schema": {
           "$ref": "#/components/schemas/_types:Routing"
@@ -59409,7 +59836,7 @@
       "explain#_source": {
         "in": "query",
         "name": "_source",
-        "description": "True or false to return the `_source` field or not, or a list of fields to return.",
+        "description": "`True` or `false` to return the `_source` field or not or a list of fields to return.",
         "deprecated": false,
         "schema": {
           "$ref": "#/components/schemas/_global.search._types:SourceConfigParam"
@@ -59419,7 +59846,7 @@
       "explain#_source_excludes": {
         "in": "query",
         "name": "_source_excludes",
-        "description": "A comma-separated list of source fields to exclude from the response.",
+        "description": "A comma-separated list of source fields to exclude from the response.\nYou can also use this parameter to exclude fields from the subset specified in `_source_includes` query parameter.\nIf the `_source` parameter is `false`, this parameter is ignored.",
         "deprecated": false,
         "schema": {
           "$ref": "#/components/schemas/_types:Fields"
@@ -59429,7 +59856,7 @@
       "explain#_source_includes": {
         "in": "query",
         "name": "_source_includes",
-        "description": "A comma-separated list of source fields to include in the response.",
+        "description": "A comma-separated list of source fields to include in the response.\nIf this parameter is specified, only these source fields are returned.\nYou can exclude fields from this subset using the `_source_excludes` query parameter.\nIf the `_source` parameter is `false`, this parameter is ignored.",
         "deprecated": false,
         "schema": {
           "$ref": "#/components/schemas/_types:Fields"
@@ -59449,7 +59876,7 @@
       "explain#q": {
         "in": "query",
         "name": "q",
-        "description": "Query in the Lucene query string syntax.",
+        "description": "The query in the Lucene query string syntax.",
         "deprecated": false,
         "schema": {
           "type": "string"
@@ -59459,7 +59886,7 @@
       "field_caps#index": {
         "in": "path",
         "name": "index",
-        "description": "Comma-separated list of data streams, indices, and aliases used to limit the request. Supports wildcards (*). To target all data streams and indices, omit this parameter or use * or _all.",
+        "description": "A comma-separated list of data streams, indices, and aliases used to limit the request. Supports wildcards (*). To target all data streams and indices, omit this parameter or use * or _all.",
         "required": true,
         "deprecated": false,
         "schema": {
@@ -59480,7 +59907,7 @@
       "field_caps#expand_wildcards": {
         "in": "query",
         "name": "expand_wildcards",
-        "description": "Type of index that wildcard patterns can match. If the request can target data streams, this argument determines whether wildcard expressions match hidden data streams. Supports comma-separated values, such as `open,hidden`.",
+        "description": "The type of index that wildcard patterns can match. If the request can target data streams, this argument determines whether wildcard expressions match hidden data streams. Supports comma-separated values, such as `open,hidden`.",
         "deprecated": false,
         "schema": {
           "$ref": "#/components/schemas/_types:ExpandWildcards"
@@ -59490,7 +59917,7 @@
       "field_caps#fields": {
         "in": "query",
         "name": "fields",
-        "description": "Comma-separated list of fields to retrieve capabilities for. Wildcard (`*`) expressions are supported.",
+        "description": "A comma-separated list of fields to retrieve capabilities for. Wildcard (`*`) expressions are supported.",
         "deprecated": false,
         "schema": {
           "$ref": "#/components/schemas/_types:Fields"
@@ -59520,7 +59947,7 @@
       "field_caps#filters": {
         "in": "query",
         "name": "filters",
-        "description": "An optional set of filters: can include +metadata,-metadata,-nested,-multifield,-parent",
+        "description": "A comma-separated list of filters to apply to the response.",
         "deprecated": false,
         "schema": {
           "type": "string"
@@ -59530,7 +59957,7 @@
       "field_caps#types": {
         "in": "query",
         "name": "types",
-        "description": "Only return results for fields that have one of the types in the list",
+        "description": "A comma-separated list of field types to include.\nAny fields that do not match one of these types will be excluded from the results.\nIt defaults to empty, meaning that all field types are returned.",
         "deprecated": false,
         "schema": {
           "type": "array",
@@ -59620,6 +60047,16 @@
         "deprecated": false,
         "schema": {
           "$ref": "#/components/schemas/_types:SequenceNumber"
+        },
+        "style": "form"
+      },
+      "index#include_source_on_error": {
+        "in": "query",
+        "name": "include_source_on_error",
+        "description": "True or false if to include the document source in the error message in case of parsing errors.",
+        "deprecated": false,
+        "schema": {
+          "type": "boolean"
         },
         "style": "form"
       },
@@ -60740,7 +61177,7 @@
       "inference.delete#inference_id": {
         "in": "path",
         "name": "inference_id",
-        "description": "The inference Id",
+        "description": "The inference identifier.",
         "required": true,
         "deprecated": false,
         "schema": {
@@ -60751,7 +61188,7 @@
       "inference.delete#dry_run": {
         "in": "query",
         "name": "dry_run",
-        "description": "When true, the endpoint is not deleted, and a list of ingest processors which reference this endpoint is returned",
+        "description": "When true, the endpoint is not deleted and a list of ingest processors which reference this endpoint is returned.",
         "deprecated": false,
         "schema": {
           "type": "boolean"
@@ -60761,7 +61198,7 @@
       "inference.delete#force": {
         "in": "query",
         "name": "force",
-        "description": "When true, the inference endpoint is forcefully deleted even if it is still being used by ingest processors or semantic text fields",
+        "description": "When true, the inference endpoint is forcefully deleted even if it is still being used by ingest processors or semantic text fields.",
         "deprecated": false,
         "schema": {
           "type": "boolean"
@@ -60793,7 +61230,7 @@
       "inference.inference#task_type": {
         "in": "path",
         "name": "task_type",
-        "description": "The task type",
+        "description": "The type of inference task that the model performs.",
         "required": true,
         "deprecated": false,
         "schema": {
@@ -60804,7 +61241,7 @@
       "inference.inference#inference_id": {
         "in": "path",
         "name": "inference_id",
-        "description": "The inference Id",
+        "description": "The unique identifier for the inference endpoint.",
         "required": true,
         "deprecated": false,
         "schema": {
@@ -60815,7 +61252,7 @@
       "inference.inference#timeout": {
         "in": "query",
         "name": "timeout",
-        "description": "Specifies the amount of time to wait for the inference request to complete.",
+        "description": "The amount of time to wait for the inference request to complete.",
         "deprecated": false,
         "schema": {
           "$ref": "#/components/schemas/_types:Duration"
@@ -60910,7 +61347,7 @@
       "ingest.simulate#id": {
         "in": "path",
         "name": "id",
-        "description": "Pipeline to test.\nIf you don’t specify a `pipeline` in the request body, this parameter is required.",
+        "description": "The pipeline to test.\nIf you don't specify a `pipeline` in the request body, this parameter is required.",
         "required": true,
         "deprecated": false,
         "schema": {
@@ -61735,7 +62172,7 @@
       "msearch_template#index": {
         "in": "path",
         "name": "index",
-        "description": "Comma-separated list of data streams, indices, and aliases to search.\nSupports wildcards (`*`).\nTo search all data streams and indices, omit this parameter or use `*`.",
+        "description": "A comma-separated list of data streams, indices, and aliases to search.\nIt supports wildcards (`*`).\nTo search all data streams and indices, omit this parameter or use `*`.",
         "required": true,
         "deprecated": false,
         "schema": {
@@ -61756,7 +62193,7 @@
       "msearch_template#max_concurrent_searches": {
         "in": "query",
         "name": "max_concurrent_searches",
-        "description": "Maximum number of concurrent searches the API can run.",
+        "description": "The maximum number of concurrent searches the API can run.",
         "deprecated": false,
         "schema": {
           "type": "number"
@@ -61766,7 +62203,7 @@
       "msearch_template#search_type": {
         "in": "query",
         "name": "search_type",
-        "description": "The type of the search operation.\nAvailable options: `query_then_fetch`, `dfs_query_then_fetch`.",
+        "description": "The type of the search operation.",
         "deprecated": false,
         "schema": {
           "$ref": "#/components/schemas/_types:SearchType"
@@ -61796,7 +62233,7 @@
       "mtermvectors#index": {
         "in": "path",
         "name": "index",
-        "description": "Name of the index that contains the documents.",
+        "description": "The name of the index that contains the documents.",
         "required": true,
         "deprecated": false,
         "schema": {
@@ -61820,7 +62257,7 @@
       "mtermvectors#fields": {
         "in": "query",
         "name": "fields",
-        "description": "Comma-separated list or wildcard expressions of fields to include in the statistics.\nUsed as the default list unless a specific field list is provided in the `completion_fields` or `fielddata_fields` parameters.",
+        "description": "A comma-separated list or wildcard expressions of fields to include in the statistics.\nIt is used as the default list unless a specific field list is provided in the `completion_fields` or `fielddata_fields` parameters.",
         "deprecated": false,
         "schema": {
           "$ref": "#/components/schemas/_types:Fields"
@@ -61870,7 +62307,7 @@
       "mtermvectors#preference": {
         "in": "query",
         "name": "preference",
-        "description": "Specifies the node or shard the operation should be performed on.\nRandom by default.",
+        "description": "The node or shard the operation should be performed on.\nIt is random by default.",
         "deprecated": false,
         "schema": {
           "type": "string"
@@ -61890,7 +62327,7 @@
       "mtermvectors#routing": {
         "in": "query",
         "name": "routing",
-        "description": "Custom value used to route operations to a specific shard.",
+        "description": "A custom value used to route operations to a specific shard.",
         "deprecated": false,
         "schema": {
           "$ref": "#/components/schemas/_types:Routing"
@@ -61920,7 +62357,7 @@
       "mtermvectors#version_type": {
         "in": "query",
         "name": "version_type",
-        "description": "Specific version type.",
+        "description": "The version type.",
         "deprecated": false,
         "schema": {
           "$ref": "#/components/schemas/_types:VersionType"
@@ -61930,7 +62367,7 @@
       "put_script#id": {
         "in": "path",
         "name": "id",
-        "description": "Identifier for the stored script or search template.\nMust be unique within the cluster.",
+        "description": "The identifier for the stored script or search template.\nIt must be unique within the cluster.",
         "required": true,
         "deprecated": false,
         "schema": {
@@ -61941,7 +62378,7 @@
       "put_script#context": {
         "in": "path",
         "name": "context",
-        "description": "Context in which the script or search template should run.\nTo prevent errors, the API immediately compiles the script or template in this context.",
+        "description": "The context in which the script or search template should run.\nTo prevent errors, the API immediately compiles the script or template in this context.",
         "required": true,
         "deprecated": false,
         "schema": {
@@ -61949,10 +62386,20 @@
         },
         "style": "simple"
       },
+      "put_script#context_": {
+        "in": "query",
+        "name": "context",
+        "description": "The context in which the script or search template should run.\nTo prevent errors, the API immediately compiles the script or template in this context.\nIf you specify both this and the `<context>` path parameter, the API uses the request path parameter.",
+        "deprecated": false,
+        "schema": {
+          "$ref": "#/components/schemas/_types:Name"
+        },
+        "style": "form"
+      },
       "put_script#master_timeout": {
         "in": "query",
         "name": "master_timeout",
-        "description": "Period to wait for a connection to the master node.\nIf no response is received before the timeout expires, the request fails and returns an error.",
+        "description": "The period to wait for a connection to the master node.\nIf no response is received before the timeout expires, the request fails and returns an error.\nIt can also be set to `-1` to indicate that the request should never timeout.",
         "deprecated": false,
         "schema": {
           "$ref": "#/components/schemas/_types:Duration"
@@ -61962,7 +62409,7 @@
       "put_script#timeout": {
         "in": "query",
         "name": "timeout",
-        "description": "Period to wait for a response.\nIf no response is received before the timeout expires, the request fails and returns an error.",
+        "description": "The period to wait for a response.\nIf no response is received before the timeout expires, the request fails and returns an error.\nIt can also be set to `-1` to indicate that the request should never timeout.",
         "deprecated": false,
         "schema": {
           "$ref": "#/components/schemas/_types:Duration"
@@ -61972,7 +62419,7 @@
       "rank_eval#index": {
         "in": "path",
         "name": "index",
-        "description": "Comma-separated list of data streams, indices, and index aliases used to limit the request. Wildcard (`*`) expressions are supported.\nTo target all data streams and indices in a cluster, omit this parameter or use `_all` or `*`.",
+        "description": "A  comma-separated list of data streams, indices, and index aliases used to limit the request.\nWildcard (`*`) expressions are supported.\nTo target all data streams and indices in a cluster, omit this parameter or use `_all` or `*`.",
         "required": true,
         "deprecated": false,
         "schema": {
@@ -62023,7 +62470,7 @@
       "render_search_template#id": {
         "in": "path",
         "name": "id",
-        "description": "ID of the search template to render.\nIf no `source` is specified, this or the `id` request body parameter is required.",
+        "description": "The ID of the search template to render.\nIf no `source` is specified, this or the `id` request body parameter is required.",
         "required": true,
         "deprecated": false,
         "schema": {
@@ -62045,7 +62492,7 @@
       "scroll#scroll": {
         "in": "query",
         "name": "scroll",
-        "description": "Period to retain the search context for scrolling.",
+        "description": "The period to retain the search context for scrolling.",
         "deprecated": false,
         "schema": {
           "$ref": "#/components/schemas/_types:Duration"
@@ -62629,7 +63076,7 @@
       "search_mvt#exact_bounds": {
         "in": "query",
         "name": "exact_bounds",
-        "description": "If false, the meta layer’s feature is the bounding box of the tile.\nIf true, the meta layer’s feature is a bounding box resulting from a\ngeo_bounds aggregation. The aggregation runs on <field> values that intersect\nthe <zoom>/<x>/<y> tile with wrap_longitude set to false. The resulting\nbounding box may be larger than the vector tile.",
+        "description": "If `false`, the meta layer's feature is the bounding box of the tile.\nIf true, the meta layer's feature is a bounding box resulting from a\ngeo_bounds aggregation. The aggregation runs on <field> values that intersect\nthe <zoom>/<x>/<y> tile with wrap_longitude set to false. The resulting\nbounding box may be larger than the vector tile.",
         "deprecated": false,
         "schema": {
           "type": "boolean"
@@ -62639,7 +63086,7 @@
       "search_mvt#extent": {
         "in": "query",
         "name": "extent",
-        "description": "Size, in pixels, of a side of the tile. Vector tiles are square with equal sides.",
+        "description": "The size, in pixels, of a side of the tile. Vector tiles are square with equal sides.",
         "deprecated": false,
         "schema": {
           "type": "number"
@@ -62659,7 +63106,7 @@
       "search_mvt#grid_precision": {
         "in": "query",
         "name": "grid_precision",
-        "description": "Additional zoom levels available through the aggs layer. For example, if <zoom> is 7\nand grid_precision is 8, you can zoom in up to level 15. Accepts 0-8. If 0, results\ndon’t include the aggs layer.",
+        "description": "Additional zoom levels available through the aggs layer. For example, if <zoom> is 7\nand grid_precision is 8, you can zoom in up to level 15. Accepts 0-8. If 0, results\ndon't include the aggs layer.",
         "deprecated": false,
         "schema": {
           "type": "number"
@@ -62679,7 +63126,7 @@
       "search_mvt#size": {
         "in": "query",
         "name": "size",
-        "description": "Maximum number of features to return in the hits layer. Accepts 0-10000.\nIf 0, results don’t include the hits layer.",
+        "description": "Maximum number of features to return in the hits layer. Accepts 0-10000.\nIf 0, results don't include the hits layer.",
         "deprecated": false,
         "schema": {
           "type": "number"
@@ -62689,7 +63136,7 @@
       "search_mvt#with_labels": {
         "in": "query",
         "name": "with_labels",
-        "description": "If `true`, the hits and aggs layers will contain additional point features representing\nsuggested label positions for the original features.",
+        "description": "If `true`, the hits and aggs layers will contain additional point features representing\nsuggested label positions for the original features.\n\n* `Point` and `MultiPoint` features will have one of the points selected.\n* `Polygon` and `MultiPolygon` features will have a single point generated, either the centroid, if it is within the polygon, or another point within the polygon selected from the sorted triangle-tree.\n* `LineString` features will likewise provide a roughly central point selected from the triangle-tree.\n* The aggregation results will provide one central point for each aggregation bucket.\n\nAll attributes from the original features will also be copied to the new label features.\nIn addition, the new features will be distinguishable using the tag `_mvt_label_position`.",
         "deprecated": false,
         "schema": {
           "type": "boolean"
@@ -62699,7 +63146,7 @@
       "search_template#index": {
         "in": "path",
         "name": "index",
-        "description": "Comma-separated list of data streams, indices,\nand aliases to search. Supports wildcards (*).",
+        "description": "A comma-separated list of data streams, indices, and aliases to search.\nIt supports wildcards (`*`).",
         "required": true,
         "deprecated": false,
         "schema": {
@@ -62730,7 +63177,7 @@
       "search_template#expand_wildcards": {
         "in": "query",
         "name": "expand_wildcards",
-        "description": "Type of index that wildcard patterns can match.\nIf the request can target data streams, this argument determines whether wildcard expressions match hidden data streams.\nSupports comma-separated values, such as `open,hidden`.\nValid values are: `all`, `open`, `closed`, `hidden`, `none`.",
+        "description": "The type of index that wildcard patterns can match.\nIf the request can target data streams, this argument determines whether wildcard expressions match hidden data streams.\nSupports comma-separated values, such as `open,hidden`.\nValid values are: `all`, `open`, `closed`, `hidden`, `none`.",
         "deprecated": false,
         "schema": {
           "$ref": "#/components/schemas/_types:ExpandWildcards"
@@ -62751,7 +63198,7 @@
         "in": "query",
         "name": "ignore_throttled",
         "description": "If `true`, specified concrete, expanded, or aliased indices are not included in the response when throttled.",
-        "deprecated": false,
+        "deprecated": true,
         "schema": {
           "type": "boolean"
         },
@@ -62770,7 +63217,7 @@
       "search_template#preference": {
         "in": "query",
         "name": "preference",
-        "description": "Specifies the node or shard the operation should be performed on.\nRandom by default.",
+        "description": "The node or shard the operation should be performed on.\nIt is random by default.",
         "deprecated": false,
         "schema": {
           "type": "string"
@@ -62790,7 +63237,7 @@
       "search_template#routing": {
         "in": "query",
         "name": "routing",
-        "description": "Custom value used to route operations to a specific shard.",
+        "description": "A custom value used to route operations to a specific shard.",
         "deprecated": false,
         "schema": {
           "$ref": "#/components/schemas/_types:Routing"
@@ -62820,7 +63267,7 @@
       "search_template#rest_total_hits_as_int": {
         "in": "query",
         "name": "rest_total_hits_as_int",
-        "description": "If true, hits.total are rendered as an integer in the response.",
+        "description": "If `true`, `hits.total` is rendered as an integer in the response.\nIf `false`, it is rendered as an object.",
         "deprecated": false,
         "schema": {
           "type": "boolean"
@@ -62901,7 +63348,7 @@
       "terms_enum#index": {
         "in": "path",
         "name": "index",
-        "description": "Comma-separated list of data streams, indices, and index aliases to search. Wildcard (*) expressions are supported.",
+        "description": "A comma-separated list of data streams, indices, and index aliases to search.\nWildcard (`*`) expressions are supported.\nTo search all data streams or indices, omit this parameter or use `*`  or `_all`.",
         "required": true,
         "deprecated": false,
         "schema": {
@@ -62912,7 +63359,7 @@
       "termvectors#index": {
         "in": "path",
         "name": "index",
-        "description": "Name of the index that contains the document.",
+        "description": "The name of the index that contains the document.",
         "required": true,
         "deprecated": false,
         "schema": {
@@ -62923,7 +63370,7 @@
       "termvectors#id": {
         "in": "path",
         "name": "id",
-        "description": "Unique identifier of the document.",
+        "description": "A unique identifier for the document.",
         "required": true,
         "deprecated": false,
         "schema": {
@@ -62934,7 +63381,7 @@
       "termvectors#fields": {
         "in": "query",
         "name": "fields",
-        "description": "Comma-separated list or wildcard expressions of fields to include in the statistics.\nUsed as the default list unless a specific field list is provided in the `completion_fields` or `fielddata_fields` parameters.",
+        "description": "A comma-separated list or wildcard expressions of fields to include in the statistics.\nIt is used as the default list unless a specific field list is provided in the `completion_fields` or `fielddata_fields` parameters.",
         "deprecated": false,
         "schema": {
           "$ref": "#/components/schemas/_types:Fields"
@@ -62944,7 +63391,7 @@
       "termvectors#field_statistics": {
         "in": "query",
         "name": "field_statistics",
-        "description": "If `true`, the response includes the document count, sum of document frequencies, and sum of total term frequencies.",
+        "description": "If `true`, the response includes:\n\n* The document count (how many documents contain this field).\n* The sum of document frequencies (the sum of document frequencies for all terms in this field).\n* The sum of total term frequencies (the sum of total term frequencies of each term in this field).",
         "deprecated": false,
         "schema": {
           "type": "boolean"
@@ -62984,7 +63431,7 @@
       "termvectors#preference": {
         "in": "query",
         "name": "preference",
-        "description": "Specifies the node or shard the operation should be performed on.\nRandom by default.",
+        "description": "The node or shard the operation should be performed on.\nIt is random by default.",
         "deprecated": false,
         "schema": {
           "type": "string"
@@ -63004,7 +63451,7 @@
       "termvectors#routing": {
         "in": "query",
         "name": "routing",
-        "description": "Custom value used to route operations to a specific shard.",
+        "description": "A custom value that is used to route operations to a specific shard.",
         "deprecated": false,
         "schema": {
           "$ref": "#/components/schemas/_types:Routing"
@@ -63014,7 +63461,7 @@
       "termvectors#term_statistics": {
         "in": "query",
         "name": "term_statistics",
-        "description": "If `true`, the response includes term frequency and document frequency.",
+        "description": "If `true`, the response includes:\n\n* The total term frequency (how often a term occurs in all documents).\n* The document frequency (the number of documents containing the current term).\n\nBy default these values are not returned since term statistics can have a serious performance impact.",
         "deprecated": false,
         "schema": {
           "type": "boolean"
@@ -63034,7 +63481,7 @@
       "termvectors#version_type": {
         "in": "query",
         "name": "version_type",
-        "description": "Specific version type.",
+        "description": "The version type.",
         "deprecated": false,
         "schema": {
           "$ref": "#/components/schemas/_types:VersionType"
@@ -63449,9 +63896,11 @@
                   "$ref": "#/components/schemas/_types:Duration"
                 },
                 "allow_partial_search_results": {
+                  "description": "Allow query execution also in case of shard failures.\nIf true, the query will keep running and will return results based on the available shards.\nFor sequences, the behavior can be further refined using allow_partial_sequence_results",
                   "type": "boolean"
                 },
                 "allow_partial_sequence_results": {
+                  "description": "This flag applies only to sequences and has effect only if allow_partial_search_results=true.\nIf true, the sequence query will return results based on the available shards, ignoring the others.\nIf false, the sequence query will return successfully, but will always have empty results.",
                   "type": "boolean"
                 },
                 "size": {
@@ -63716,23 +64165,13 @@
                 },
                 "dynamic_templates": {
                   "description": "Specify dynamic templates for the mapping.",
-                  "oneOf": [
-                    {
-                      "type": "object",
-                      "additionalProperties": {
-                        "$ref": "#/components/schemas/_types.mapping:DynamicTemplate"
-                      }
-                    },
-                    {
-                      "type": "array",
-                      "items": {
-                        "type": "object",
-                        "additionalProperties": {
-                          "$ref": "#/components/schemas/_types.mapping:DynamicTemplate"
-                        }
-                      }
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "additionalProperties": {
+                      "$ref": "#/components/schemas/_types.mapping:DynamicTemplate"
                     }
-                  ]
+                  }
                 },
                 "_field_names": {
                   "$ref": "#/components/schemas/_types.mapping:FieldNamesField"
@@ -63926,11 +64365,11 @@
               "type": "object",
               "properties": {
                 "query": {
-                  "description": "Query input, required for rerank task.\nNot required for other tasks.",
+                  "description": "The query input, which is required only for the `rerank` task.\nIt is not required for other tasks.",
                   "type": "string"
                 },
                 "input": {
-                  "description": "Inference input.\nEither a string or an array of strings.",
+                  "description": "The text on which you want to perform the inference task.\nIt can be a single string or an array.\n\n> info\n> Inference endpoints for the `completion` task type currently only support a single string as input.",
                   "oneOf": [
                     {
                       "type": "string"
@@ -64214,14 +64653,14 @@
               "type": "object",
               "properties": {
                 "docs": {
-                  "description": "Array of existing or artificial documents.",
+                  "description": "An array of existing or artificial documents.",
                   "type": "array",
                   "items": {
                     "$ref": "#/components/schemas/_global.mtermvectors:Operation"
                   }
                 },
                 "ids": {
-                  "description": "Simplified syntax to specify documents by their ID if they're in the same index.",
+                  "description": "A simplified syntax to specify documents by their ID if they're in the same index.",
                   "type": "array",
                   "items": {
                     "$ref": "#/components/schemas/_types:Id"
@@ -64281,6 +64720,9 @@
             "schema": {
               "type": "object",
               "properties": {
+                "id": {
+                  "$ref": "#/components/schemas/_types:Id"
+                },
                 "file": {
                   "type": "string"
                 },
@@ -64292,7 +64734,7 @@
                   }
                 },
                 "source": {
-                  "description": "An inline search template.\nSupports the same parameters as the search API's request body.\nThese parameters also support Mustache variables.\nIf no `id` or `<templated-id>` is specified, this parameter is required.",
+                  "description": "An inline search template.\nIt supports the same parameters as the search API's request body.\nThese parameters also support Mustache variables.\nIf no `id` or `<templated-id>` is specified, this parameter is required.",
                   "type": "string"
                 }
               }
@@ -64307,8 +64749,7 @@
               "type": "object",
               "properties": {
                 "context": {
-                  "description": "The context that the script should run in.",
-                  "type": "string"
+                  "$ref": "#/components/schemas/_global.scripts_painless_execute:PainlessContext"
                 },
                 "context_setup": {
                   "$ref": "#/components/schemas/_global.scripts_painless_execute:PainlessContextSetup"
@@ -64551,22 +64992,22 @@
               "type": "object",
               "properties": {
                 "aggs": {
-                  "description": "Sub-aggregations for the geotile_grid.\n\nSupports the following aggregation types:\n- avg\n- cardinality\n- max\n- min\n- sum",
+                  "description": "Sub-aggregations for the geotile_grid.\n\nIt supports the following aggregation types:\n\n- `avg`\n- `boxplot`\n- `cardinality`\n- `extended stats`\n- `max`\n- `median absolute deviation`\n- `min`\n- `percentile`\n- `percentile-rank`\n- `stats`\n- `sum`\n- `value count`\n\nThe aggregation names can't start with `_mvt_`. The `_mvt_` prefix is reserved for internal aggregations.",
                   "type": "object",
                   "additionalProperties": {
                     "$ref": "#/components/schemas/_types.aggregations:AggregationContainer"
                   }
                 },
                 "buffer": {
-                  "description": "Size, in pixels, of a clipping buffer outside the tile. This allows renderers\nto avoid outline artifacts from geometries that extend past the extent of the tile.",
+                  "description": "The size, in pixels, of a clipping buffer outside the tile. This allows renderers\nto avoid outline artifacts from geometries that extend past the extent of the tile.",
                   "type": "number"
                 },
                 "exact_bounds": {
-                  "description": "If false, the meta layer’s feature is the bounding box of the tile.\nIf true, the meta layer’s feature is a bounding box resulting from a\ngeo_bounds aggregation. The aggregation runs on <field> values that intersect\nthe <zoom>/<x>/<y> tile with wrap_longitude set to false. The resulting\nbounding box may be larger than the vector tile.",
+                  "description": "If `false`, the meta layer's feature is the bounding box of the tile.\nIf `true`, the meta layer's feature is a bounding box resulting from a\n`geo_bounds` aggregation. The aggregation runs on <field> values that intersect\nthe `<zoom>/<x>/<y>` tile with `wrap_longitude` set to `false`. The resulting\nbounding box may be larger than the vector tile.",
                   "type": "boolean"
                 },
                 "extent": {
-                  "description": "Size, in pixels, of a side of the tile. Vector tiles are square with equal sides.",
+                  "description": "The size, in pixels, of a side of the tile. Vector tiles are square with equal sides.",
                   "type": "number"
                 },
                 "fields": {
@@ -64576,7 +65017,7 @@
                   "$ref": "#/components/schemas/_global.search_mvt._types:GridAggregationType"
                 },
                 "grid_precision": {
-                  "description": "Additional zoom levels available through the aggs layer. For example, if <zoom> is 7\nand grid_precision is 8, you can zoom in up to level 15. Accepts 0-8. If 0, results\ndon’t include the aggs layer.",
+                  "description": "Additional zoom levels available through the aggs layer. For example, if `<zoom>` is `7`\nand `grid_precision` is `8`, you can zoom in up to level 15. Accepts 0-8. If 0, results\ndon't include the aggs layer.",
                   "type": "number"
                 },
                 "grid_type": {
@@ -64589,7 +65030,7 @@
                   "$ref": "#/components/schemas/_types.mapping:RuntimeFields"
                 },
                 "size": {
-                  "description": "Maximum number of features to return in the hits layer. Accepts 0-10000.\nIf 0, results don’t include the hits layer.",
+                  "description": "The maximum number of features to return in the hits layer. Accepts 0-10000.\nIf 0, results don't include the hits layer.",
                   "type": "number"
                 },
                 "sort": {
@@ -64599,7 +65040,7 @@
                   "$ref": "#/components/schemas/_global.search._types:TrackHits"
                 },
                 "with_labels": {
-                  "description": "If `true`, the hits and aggs layers will contain additional point features representing\nsuggested label positions for the original features.",
+                  "description": "If `true`, the hits and aggs layers will contain additional point features representing\nsuggested label positions for the original features.\n\n* `Point` and `MultiPoint` features will have one of the points selected.\n* `Polygon` and `MultiPolygon` features will have a single point generated, either the centroid, if it is within the polygon, or another point within the polygon selected from the sorted triangle-tree.\n* `LineString` features will likewise provide a roughly central point selected from the triangle-tree.\n* The aggregation results will provide one central point for each aggregation bucket.\n\nAll attributes from the original features will also be copied to the new label features.\nIn addition, the new features will be distinguishable using the tag `_mvt_label_position`.",
                   "type": "boolean"
                 }
               }
@@ -64614,7 +65055,7 @@
               "type": "object",
               "properties": {
                 "explain": {
-                  "description": "If `true`, returns detailed information about score calculation as part of each hit.",
+                  "description": "If `true`, returns detailed information about score calculation as part of each hit.\nIf you specify both this and the `explain` query parameter, the API uses only the query parameter.",
                   "type": "boolean"
                 },
                 "id": {
@@ -64632,7 +65073,7 @@
                   "type": "boolean"
                 },
                 "source": {
-                  "description": "An inline search template. Supports the same parameters as the search API's\nrequest body. Also supports Mustache variables. If no id is specified, this\nparameter is required.",
+                  "description": "An inline search template. Supports the same parameters as the search API's\nrequest body. It also supports Mustache variables. If no `id` is specified, this\nparameter is required.",
                   "type": "string"
                 }
               }
@@ -64859,24 +65300,25 @@
                   "$ref": "#/components/schemas/_types:Field"
                 },
                 "size": {
-                  "description": "How many matching terms to return.",
+                  "description": "The number of matching terms to return.",
                   "type": "number"
                 },
                 "timeout": {
                   "$ref": "#/components/schemas/_types:Duration"
                 },
                 "case_insensitive": {
-                  "description": "When true the provided search string is matched against index terms without case sensitivity.",
+                  "description": "When `true`, the provided search string is matched against index terms without case sensitivity.",
                   "type": "boolean"
                 },
                 "index_filter": {
                   "$ref": "#/components/schemas/_types.query_dsl:QueryContainer"
                 },
                 "string": {
-                  "description": "The string after which terms in the index should be returned. Allows for a form of pagination if the last result from one request is passed as the search_after parameter for a subsequent request.",
+                  "description": "The string to match at the start of indexed terms.\nIf it is not provided, all terms in the field are considered.\n\n> info\n> The prefix string cannot be larger than the largest possible keyword value, which is Lucene's term byte-length limit of 32766.",
                   "type": "string"
                 },
                 "search_after": {
+                  "description": "The string after which terms in the index should be returned.\nIt allows for a form of pagination if the last result from one request is passed as the `search_after` parameter for a subsequent request.",
                   "type": "string"
                 }
               },
@@ -64901,7 +65343,7 @@
                   "$ref": "#/components/schemas/_global.termvectors:Filter"
                 },
                 "per_field_analyzer": {
-                  "description": "Overrides the default per-field analyzer.",
+                  "description": "Override the default per-field analyzer.\nThis is useful in order to generate term vectors in any fashion, especially when using artificial documents.\nWhen providing an analyzer for a field that already stores term vectors, the term vectors will be regenerated.",
                   "type": "object",
                   "additionalProperties": {
                     "type": "string"

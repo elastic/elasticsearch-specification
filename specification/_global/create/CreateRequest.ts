@@ -132,6 +132,11 @@ export interface Request<TDocument> extends RequestBase {
   }
   query_parameters: {
     /**
+     * True or false if to include the document source in the error message in case of parsing errors.
+     * @server_default true
+     */
+    include_source_on_error?: boolean
+    /**
      * The ID of the pipeline to use to preprocess incoming documents.
      * If the index has a default ingest pipeline specified, setting the value to `_none` turns off the default ingest pipeline for this request.
      * If a final pipeline is configured, it will always run regardless of the value of this parameter.

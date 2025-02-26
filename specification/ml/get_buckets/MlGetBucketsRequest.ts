@@ -31,6 +31,7 @@ import { DateTime } from '@_types/Time'
  * @availability serverless stability=stable visibility=private
  * @cluster_privileges monitor_ml
  * @doc_tag ml anomaly
+ * @doc_id ml-get-bucket
  */
 export interface Request extends RequestBase {
   urls: [

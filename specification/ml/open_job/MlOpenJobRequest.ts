@@ -23,6 +23,7 @@ import { Duration } from '@_types/Time'
 
 /**
  * Open anomaly detection jobs.
+ *
  * An anomaly detection job must be opened to be ready to receive and analyze
  * data. It can be opened and closed multiple times throughout its lifecycle.
  * When you open a new job, it starts with an empty model.
@@ -34,6 +35,7 @@ import { Duration } from '@_types/Time'
  * @availability serverless stability=stable visibility=public
  * @cluster_privileges manage_ml
  * @doc_tag ml anomaly
+ * @doc_id ml-open-job
  */
 export interface Request extends RequestBase {
   urls: [

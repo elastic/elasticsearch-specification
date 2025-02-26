@@ -27,6 +27,7 @@ import { Duration } from '@_types/Time'
  * @rest_spec_name ilm.delete_lifecycle
  * @availability stack since=6.6.0 stability=stable
  * @cluster_privileges manage_ilm
+ * @doc_id ilm-delete-lifecycle
  */
 export interface Request extends RequestBase {
   urls: [
