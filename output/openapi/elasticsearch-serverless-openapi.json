@@ -41123,7 +41123,7 @@
                 "$ref": "#/components/schemas/_types.mapping:Property"
               },
               "runtime": {
-                "$ref": "#/components/schemas/_types.mapping:Property"
+                "$ref": "#/components/schemas/_types.mapping:RuntimeField"
               }
             },
             "minProperties": 1,
