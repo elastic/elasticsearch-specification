@@ -32,7 +32,7 @@
           {
             "in": "query",
             "name": "keep_alive",
-            "description": "Specifies how long the async search should be available in the cluster.\nWhen not specified, the `keep_alive` set with the corresponding submit async request will be used.\nOtherwise, it is possible to override the value and extend the validity of the request.\nWhen this period expires, the search, if still running, is cancelled.\nIf the search is completed, its saved results are deleted.",
+            "description": "The length of time that the async search should be available in the cluster.\nWhen not specified, the `keep_alive` set with the corresponding submit async request will be used.\nOtherwise, it is possible to override the value and extend the validity of the request.\nWhen this period expires, the search, if still running, is cancelled.\nIf the search is completed, its saved results are deleted.",
             "deprecated": false,
             "schema": {
               "$ref": "#/components/schemas/_types:Duration"
@@ -115,7 +115,7 @@
           "search"
         ],
         "summary": "Get the async search status",
-        "description": "Get the status of a previously submitted async search request given its identifier, without retrieving search results.\nIf the Elasticsearch security features are enabled, use of this API is restricted to the `monitoring_user` role.",
+        "description": "Get the status of a previously submitted async search request given its identifier, without retrieving search results.\nIf the Elasticsearch security features are enabled, the access to the status of a specific async search is restricted to:\n\n* The user or API key that submitted the original async search request.\n* Users that have the `monitor` cluster privilege or greater privileges.",
         "operationId": "async-search-status",
         "parameters": [
           {
@@ -132,7 +132,7 @@
           {
             "in": "query",
             "name": "keep_alive",
-            "description": "Specifies how long the async search needs to be available.\nOngoing async searches and any saved search results are deleted after this period.",
+            "description": "The length of time that the async search needs to be available.\nOngoing async searches and any saved search results are deleted after this period.",
             "deprecated": false,
             "schema": {
               "$ref": "#/components/schemas/_types:Duration"
@@ -166,6 +166,9 @@
         "parameters": [
           {
             "$ref": "#/components/parameters/async_search.submit#wait_for_completion_timeout"
+          },
+          {
+            "$ref": "#/components/parameters/async_search.submit#keep_alive"
           },
           {
             "$ref": "#/components/parameters/async_search.submit#keep_on_completion"
@@ -319,6 +322,9 @@
           },
           {
             "$ref": "#/components/parameters/async_search.submit#wait_for_completion_timeout"
+          },
+          {
+            "$ref": "#/components/parameters/async_search.submit#keep_alive"
           },
           {
             "$ref": "#/components/parameters/async_search.submit#keep_on_completion"
@@ -690,6 +696,9 @@
         "operationId": "bulk-1",
         "parameters": [
           {
+            "$ref": "#/components/parameters/bulk#include_source_on_error"
+          },
+          {
             "$ref": "#/components/parameters/bulk#list_executed_pipelines"
           },
           {
@@ -740,6 +749,9 @@
         "description": "Perform multiple `index`, `create`, `delete`, and `update` actions in a single request.\nThis reduces overhead and can greatly increase indexing speed.\n\nIf the Elasticsearch security features are enabled, you must have the following index privileges for the target data stream, index, or index alias:\n\n* To use the `create` action, you must have the `create_doc`, `create`, `index`, or `write` index privilege. Data streams support only the `create` action.\n* To use the `index` action, you must have the `create`, `index`, or `write` index privilege.\n* To use the `delete` action, you must have the `delete` or `write` index privilege.\n* To use the `update` action, you must have the `index` or `write` index privilege.\n* To automatically create a data stream or index with a bulk API request, you must have the `auto_configure`, `create_index`, or `manage` index privilege.\n* To make the result of a bulk operation visible to search using the `refresh` parameter, you must have the `maintenance` or `manage` index privilege.\n\nAutomatic data stream creation requires a matching index template with data stream enabled.\n\nThe actions are specified in the request body using a newline delimited JSON (NDJSON) structure:\n\n```\naction_and_meta_data\\n\noptional_source\\n\naction_and_meta_data\\n\noptional_source\\n\n....\naction_and_meta_data\\n\noptional_source\\n\n```\n\nThe `index` and `create` actions expect a source on the next line and have the same semantics as the `op_type` parameter in the standard index API.\nA `create` action fails if a document with the same ID already exists in the target\nAn `index` action adds or replaces a document as necessary.\n\nNOTE: Data streams support only the `create` action.\nTo update or delete a document in a data stream, you must target the backing index containing the document.\n\nAn `update` action expects that the partial doc, upsert, and script and its options are specified on the next line.\n\nA `delete` action does not expect a source on the next line and has the same semantics as the standard delete API.\n\nNOTE: The final line of data must end with a newline character (`\\n`).\nEach newline character may be preceded by a carriage return (`\\r`).\nWhen sending NDJSON data to the `_bulk` endpoint, use a `Content-Type` header of `application/json` or `application/x-ndjson`.\nBecause this format uses literal newline characters (`\\n`) as delimiters, make sure that the JSON actions and sources are not pretty printed.\n\nIf you provide a target in the request path, it is used for any actions that don't explicitly specify an `_index` argument.\n\nA note on the format: the idea here is to make processing as fast as possible.\nAs some of the actions are redirected to other shards on other nodes, only `action_meta_data` is parsed on the receiving node side.\n\nClient libraries using this protocol should try and strive to do something similar on the client side, and reduce buffering as much as possible.\n\nThere is no \"correct\" number of actions to perform in a single bulk request.\nExperiment with different settings to find the optimal size for your particular workload.\nNote that Elasticsearch limits the maximum size of a HTTP request to 100mb by default so clients must ensure that no request exceeds this size.\nIt is not possible to index a single document that exceeds the size limit, so you must pre-process any such documents into smaller pieces before sending them to Elasticsearch.\nFor instance, split documents into pages or chapters before indexing them, or store raw binary data in a system outside Elasticsearch and replace the raw data with a link to the external system in the documents that you send to Elasticsearch.\n\n**Client suppport for bulk requests**\n\nSome of the officially supported clients provide helpers to assist with bulk requests and reindexing:\n\n* Go: Check out `esutil.BulkIndexer`\n* Perl: Check out `Search::Elasticsearch::Client::5_0::Bulk` and `Search::Elasticsearch::Client::5_0::Scroll`\n* Python: Check out `elasticsearch.helpers.*`\n* JavaScript: Check out `client.helpers.*`\n* .NET: Check out `BulkAllObservable`\n* PHP: Check out bulk indexing.\n\n**Submitting bulk requests with cURL**\n\nIf you're providing text file input to `curl`, you must use the `--data-binary` flag instead of plain `-d`.\nThe latter doesn't preserve newlines. For example:\n\n```\n$ cat requests\n{ \"index\" : { \"_index\" : \"test\", \"_id\" : \"1\" } }\n{ \"field1\" : \"value1\" }\n$ curl -s -H \"Content-Type: application/x-ndjson\" -XPOST localhost:9200/_bulk --data-binary \"@requests\"; echo\n{\"took\":7, \"errors\": false, \"items\":[{\"index\":{\"_index\":\"test\",\"_id\":\"1\",\"_version\":1,\"result\":\"created\",\"forced_refresh\":false}}]}\n```\n\n**Optimistic concurrency control**\n\nEach `index` and `delete` action within a bulk API call may include the `if_seq_no` and `if_primary_term` parameters in their respective action and meta data lines.\nThe `if_seq_no` and `if_primary_term` parameters control how operations are run, based on the last modification to existing documents. See Optimistic concurrency control for more details.\n\n**Versioning**\n\nEach bulk item can include the version value using the `version` field.\nIt automatically follows the behavior of the index or delete operation based on the `_version` mapping.\nIt also support the `version_type`.\n\n**Routing**\n\nEach bulk item can include the routing value using the `routing` field.\nIt automatically follows the behavior of the index or delete operation based on the `_routing` mapping.\n\nNOTE: Data streams do not support custom routing unless they were created with the `allow_custom_routing` setting enabled in the template.\n\n**Wait for active shards**\n\nWhen making bulk calls, you can set the `wait_for_active_shards` parameter to require a minimum number of shard copies to be active before starting to process the bulk request.\n\n**Refresh**\n\nControl when the changes made by this request are visible to search.\n\nNOTE: Only the shards that receive the bulk request will be affected by refresh.\nImagine a `_bulk?refresh=wait_for` request with three documents in it that happen to be routed to different shards in an index with five shards.\nThe request will only wait for those three shards to refresh.\nThe other two shards that make up the index do not participate in the `_bulk` request at all.",
         "operationId": "bulk",
         "parameters": [
+          {
+            "$ref": "#/components/parameters/bulk#include_source_on_error"
+          },
           {
             "$ref": "#/components/parameters/bulk#list_executed_pipelines"
           },
@@ -797,6 +809,9 @@
             "$ref": "#/components/parameters/bulk#index"
           },
           {
+            "$ref": "#/components/parameters/bulk#include_source_on_error"
+          },
+          {
             "$ref": "#/components/parameters/bulk#list_executed_pipelines"
           },
           {
@@ -849,6 +864,9 @@
         "parameters": [
           {
             "$ref": "#/components/parameters/bulk#index"
+          },
+          {
+            "$ref": "#/components/parameters/bulk#include_source_on_error"
           },
           {
             "$ref": "#/components/parameters/bulk#list_executed_pipelines"
@@ -904,6 +922,12 @@
         "operationId": "cat-aliases",
         "parameters": [
           {
+            "$ref": "#/components/parameters/cat.aliases#h"
+          },
+          {
+            "$ref": "#/components/parameters/cat.aliases#s"
+          },
+          {
             "$ref": "#/components/parameters/cat.aliases#expand_wildcards"
           },
           {
@@ -931,6 +955,12 @@
         "parameters": [
           {
             "$ref": "#/components/parameters/cat.aliases#name"
+          },
+          {
+            "$ref": "#/components/parameters/cat.aliases#h"
+          },
+          {
+            "$ref": "#/components/parameters/cat.aliases#s"
           },
           {
             "$ref": "#/components/parameters/cat.aliases#expand_wildcards"
@@ -962,6 +992,12 @@
             "$ref": "#/components/parameters/cat.allocation#bytes"
           },
           {
+            "$ref": "#/components/parameters/cat.allocation#h"
+          },
+          {
+            "$ref": "#/components/parameters/cat.allocation#s"
+          },
+          {
             "$ref": "#/components/parameters/cat.allocation#local"
           },
           {
@@ -991,6 +1027,12 @@
             "$ref": "#/components/parameters/cat.allocation#bytes"
           },
           {
+            "$ref": "#/components/parameters/cat.allocation#h"
+          },
+          {
+            "$ref": "#/components/parameters/cat.allocation#s"
+          },
+          {
             "$ref": "#/components/parameters/cat.allocation#local"
           },
           {
@@ -1013,6 +1055,12 @@
         "description": "Get information about component templates in a cluster.\nComponent templates are building blocks for constructing index templates that specify index mappings, settings, and aliases.\n\nIMPORTANT: CAT APIs are only intended for human consumption using the command line or Kibana console.\nThey are not intended for use by applications. For application consumption, use the get component template API.",
         "operationId": "cat-component-templates",
         "parameters": [
+          {
+            "$ref": "#/components/parameters/cat.component_templates#h"
+          },
+          {
+            "$ref": "#/components/parameters/cat.component_templates#s"
+          },
           {
             "$ref": "#/components/parameters/cat.component_templates#local"
           },
@@ -1041,6 +1089,12 @@
             "$ref": "#/components/parameters/cat.component_templates#name"
           },
           {
+            "$ref": "#/components/parameters/cat.component_templates#h"
+          },
+          {
+            "$ref": "#/components/parameters/cat.component_templates#s"
+          },
+          {
             "$ref": "#/components/parameters/cat.component_templates#local"
           },
           {
@@ -1063,6 +1117,14 @@
         "summary": "Get a document count",
         "description": "Get quick access to a document count for a data stream, an index, or an entire cluster.\nThe document count only includes live documents, not deleted documents which have not yet been removed by the merge process.\n\nIMPORTANT: CAT APIs are only intended for human consumption using the command line or Kibana console.\nThey are not intended for use by applications. For application consumption, use the count API.",
         "operationId": "cat-count",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/cat.count#h"
+          },
+          {
+            "$ref": "#/components/parameters/cat.count#s"
+          }
+        ],
         "responses": {
           "200": {
             "$ref": "#/components/responses/cat.count#200"
@@ -1081,6 +1143,12 @@
         "parameters": [
           {
             "$ref": "#/components/parameters/cat.count#index"
+          },
+          {
+            "$ref": "#/components/parameters/cat.count#h"
+          },
+          {
+            "$ref": "#/components/parameters/cat.count#s"
           }
         ],
         "responses": {
@@ -1104,6 +1172,12 @@
           },
           {
             "$ref": "#/components/parameters/cat.fielddata#fields_"
+          },
+          {
+            "$ref": "#/components/parameters/cat.fielddata#h"
+          },
+          {
+            "$ref": "#/components/parameters/cat.fielddata#s"
           }
         ],
         "responses": {
@@ -1130,6 +1204,12 @@
           },
           {
             "$ref": "#/components/parameters/cat.fielddata#fields_"
+          },
+          {
+            "$ref": "#/components/parameters/cat.fielddata#h"
+          },
+          {
+            "$ref": "#/components/parameters/cat.fielddata#s"
           }
         ],
         "responses": {
@@ -1165,6 +1245,26 @@
             "deprecated": false,
             "schema": {
               "type": "boolean"
+            },
+            "style": "form"
+          },
+          {
+            "in": "query",
+            "name": "h",
+            "description": "List of columns to appear in the response. Supports simple wildcards.",
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/_types:Names"
+            },
+            "style": "form"
+          },
+          {
+            "in": "query",
+            "name": "s",
+            "description": "List of columns that determine how the table should be sorted.\nSorting defaults to ascending and can be changed by setting `:asc`\nor `:desc` as a suffix to the column name.",
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/_types:Names"
             },
             "style": "form"
           }
@@ -1237,6 +1337,12 @@
           },
           {
             "$ref": "#/components/parameters/cat.indices#master_timeout"
+          },
+          {
+            "$ref": "#/components/parameters/cat.indices#h"
+          },
+          {
+            "$ref": "#/components/parameters/cat.indices#s"
           }
         ],
         "responses": {
@@ -1278,6 +1384,12 @@
           },
           {
             "$ref": "#/components/parameters/cat.indices#master_timeout"
+          },
+          {
+            "$ref": "#/components/parameters/cat.indices#h"
+          },
+          {
+            "$ref": "#/components/parameters/cat.indices#s"
           }
         ],
         "responses": {
@@ -1296,6 +1408,26 @@
         "description": "Get information about the master node, including the ID, bound IP address, and name.\n\nIMPORTANT: cat APIs are only intended for human consumption using the command line or Kibana console. They are not intended for use by applications. For application consumption, use the nodes info API.",
         "operationId": "cat-master",
         "parameters": [
+          {
+            "in": "query",
+            "name": "h",
+            "description": "List of columns to appear in the response. Supports simple wildcards.",
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/_types:Names"
+            },
+            "style": "form"
+          },
+          {
+            "in": "query",
+            "name": "s",
+            "description": "List of columns that determine how the table should be sorted.\nSorting defaults to ascending and can be changed by setting `:asc`\nor `:desc` as a suffix to the column name.",
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/_types:Names"
+            },
+            "style": "form"
+          },
           {
             "in": "query",
             "name": "local",
@@ -1627,6 +1759,26 @@
         "parameters": [
           {
             "in": "query",
+            "name": "h",
+            "description": "List of columns to appear in the response. Supports simple wildcards.",
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/_types:Names"
+            },
+            "style": "form"
+          },
+          {
+            "in": "query",
+            "name": "s",
+            "description": "List of columns that determine how the table should be sorted.\nSorting defaults to ascending and can be changed by setting `:asc`\nor `:desc` as a suffix to the column name.",
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/_types:Names"
+            },
+            "style": "form"
+          },
+          {
+            "in": "query",
             "name": "local",
             "description": "If `true`, the request computes the list of selected nodes from the\nlocal cluster state. If `false` the list of selected nodes are computed\nfrom the cluster state of the master node. In both cases the coordinating\nnode will send requests for further information to each selected node.",
             "deprecated": false,
@@ -1711,6 +1863,26 @@
           },
           {
             "in": "query",
+            "name": "h",
+            "description": "List of columns to appear in the response. Supports simple wildcards.",
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/_types:Names"
+            },
+            "style": "form"
+          },
+          {
+            "in": "query",
+            "name": "s",
+            "description": "List of columns that determine how the table should be sorted.\nSorting defaults to ascending and can be changed by setting `:asc`\nor `:desc` as a suffix to the column name.",
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/_types:Names"
+            },
+            "style": "form"
+          },
+          {
+            "in": "query",
             "name": "master_timeout",
             "description": "Period to wait for a connection to the master node.",
             "deprecated": false,
@@ -1756,6 +1928,26 @@
         "description": "Get information about cluster-level changes that have not yet taken effect.\nIMPORTANT: cat APIs are only intended for human consumption using the command line or Kibana console. They are not intended for use by applications. For application consumption, use the pending cluster tasks API.",
         "operationId": "cat-pending-tasks",
         "parameters": [
+          {
+            "in": "query",
+            "name": "h",
+            "description": "List of columns to appear in the response. Supports simple wildcards.",
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/_types:Names"
+            },
+            "style": "form"
+          },
+          {
+            "in": "query",
+            "name": "s",
+            "description": "List of columns that determine how the table should be sorted.\nSorting defaults to ascending and can be changed by setting `:asc`\nor `:desc` as a suffix to the column name.",
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/_types:Names"
+            },
+            "style": "form"
+          },
           {
             "in": "query",
             "name": "local",
@@ -1813,6 +2005,26 @@
         "description": "Get a list of plugins running on each node of a cluster.\nIMPORTANT: cat APIs are only intended for human consumption using the command line or Kibana console. They are not intended for use by applications. For application consumption, use the nodes info API.",
         "operationId": "cat-plugins",
         "parameters": [
+          {
+            "in": "query",
+            "name": "h",
+            "description": "List of columns to appear in the response. Supports simple wildcards.",
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/_types:Names"
+            },
+            "style": "form"
+          },
+          {
+            "in": "query",
+            "name": "s",
+            "description": "List of columns that determine how the table should be sorted.\nSorting defaults to ascending and can be changed by setting `:asc`\nor `:desc` as a suffix to the column name.",
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/_types:Names"
+            },
+            "style": "form"
+          },
           {
             "in": "query",
             "name": "include_bootstrap",
@@ -1880,6 +2092,15 @@
             "$ref": "#/components/parameters/cat.recovery#detailed"
           },
           {
+            "$ref": "#/components/parameters/cat.recovery#index_"
+          },
+          {
+            "$ref": "#/components/parameters/cat.recovery#h"
+          },
+          {
+            "$ref": "#/components/parameters/cat.recovery#s"
+          },
+          {
             "$ref": "#/components/parameters/cat.recovery#time"
           }
         ],
@@ -1912,6 +2133,15 @@
             "$ref": "#/components/parameters/cat.recovery#detailed"
           },
           {
+            "$ref": "#/components/parameters/cat.recovery#index_"
+          },
+          {
+            "$ref": "#/components/parameters/cat.recovery#h"
+          },
+          {
+            "$ref": "#/components/parameters/cat.recovery#s"
+          },
+          {
             "$ref": "#/components/parameters/cat.recovery#time"
           }
         ],
@@ -1931,6 +2161,26 @@
         "description": "Get a list of snapshot repositories for a cluster.\nIMPORTANT: cat APIs are only intended for human consumption using the command line or Kibana console. They are not intended for use by applications. For application consumption, use the get snapshot repository API.",
         "operationId": "cat-repositories",
         "parameters": [
+          {
+            "in": "query",
+            "name": "h",
+            "description": "List of columns to appear in the response. Supports simple wildcards.",
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/_types:Names"
+            },
+            "style": "form"
+          },
+          {
+            "in": "query",
+            "name": "s",
+            "description": "List of columns that determine how the table should be sorted.\nSorting defaults to ascending and can be changed by setting `:asc`\nor `:desc` as a suffix to the column name.",
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/_types:Names"
+            },
+            "style": "form"
+          },
           {
             "in": "query",
             "name": "local",
@@ -1983,6 +2233,12 @@
             "$ref": "#/components/parameters/cat.segments#bytes"
           },
           {
+            "$ref": "#/components/parameters/cat.segments#h"
+          },
+          {
+            "$ref": "#/components/parameters/cat.segments#s"
+          },
+          {
             "$ref": "#/components/parameters/cat.segments#local"
           },
           {
@@ -2012,6 +2268,12 @@
             "$ref": "#/components/parameters/cat.segments#bytes"
           },
           {
+            "$ref": "#/components/parameters/cat.segments#h"
+          },
+          {
+            "$ref": "#/components/parameters/cat.segments#s"
+          },
+          {
             "$ref": "#/components/parameters/cat.segments#local"
           },
           {
@@ -2036,6 +2298,12 @@
         "parameters": [
           {
             "$ref": "#/components/parameters/cat.shards#bytes"
+          },
+          {
+            "$ref": "#/components/parameters/cat.shards#h"
+          },
+          {
+            "$ref": "#/components/parameters/cat.shards#s"
           },
           {
             "$ref": "#/components/parameters/cat.shards#master_timeout"
@@ -2067,6 +2335,12 @@
             "$ref": "#/components/parameters/cat.shards#bytes"
           },
           {
+            "$ref": "#/components/parameters/cat.shards#h"
+          },
+          {
+            "$ref": "#/components/parameters/cat.shards#s"
+          },
+          {
             "$ref": "#/components/parameters/cat.shards#master_timeout"
           },
           {
@@ -2091,6 +2365,12 @@
         "parameters": [
           {
             "$ref": "#/components/parameters/cat.snapshots#ignore_unavailable"
+          },
+          {
+            "$ref": "#/components/parameters/cat.snapshots#h"
+          },
+          {
+            "$ref": "#/components/parameters/cat.snapshots#s"
           },
           {
             "$ref": "#/components/parameters/cat.snapshots#master_timeout"
@@ -2121,6 +2401,12 @@
           },
           {
             "$ref": "#/components/parameters/cat.snapshots#ignore_unavailable"
+          },
+          {
+            "$ref": "#/components/parameters/cat.snapshots#h"
+          },
+          {
+            "$ref": "#/components/parameters/cat.snapshots#s"
           },
           {
             "$ref": "#/components/parameters/cat.snapshots#master_timeout"
@@ -2194,6 +2480,26 @@
           },
           {
             "in": "query",
+            "name": "h",
+            "description": "List of columns to appear in the response. Supports simple wildcards.",
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/_types:Names"
+            },
+            "style": "form"
+          },
+          {
+            "in": "query",
+            "name": "s",
+            "description": "List of columns that determine how the table should be sorted.\nSorting defaults to ascending and can be changed by setting `:asc`\nor `:desc` as a suffix to the column name.",
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/_types:Names"
+            },
+            "style": "form"
+          },
+          {
+            "in": "query",
             "name": "time",
             "description": "Unit used to display time values.",
             "deprecated": false,
@@ -2251,6 +2557,12 @@
         "operationId": "cat-templates",
         "parameters": [
           {
+            "$ref": "#/components/parameters/cat.templates#h"
+          },
+          {
+            "$ref": "#/components/parameters/cat.templates#s"
+          },
+          {
             "$ref": "#/components/parameters/cat.templates#local"
           },
           {
@@ -2278,6 +2590,12 @@
             "$ref": "#/components/parameters/cat.templates#name"
           },
           {
+            "$ref": "#/components/parameters/cat.templates#h"
+          },
+          {
+            "$ref": "#/components/parameters/cat.templates#s"
+          },
+          {
             "$ref": "#/components/parameters/cat.templates#local"
           },
           {
@@ -2301,6 +2619,12 @@
         "description": "Get thread pool statistics for each node in a cluster.\nReturned information includes all built-in thread pools and custom thread pools.\nIMPORTANT: cat APIs are only intended for human consumption using the command line or Kibana console. They are not intended for use by applications. For application consumption, use the nodes info API.",
         "operationId": "cat-thread-pool",
         "parameters": [
+          {
+            "$ref": "#/components/parameters/cat.thread_pool#h"
+          },
+          {
+            "$ref": "#/components/parameters/cat.thread_pool#s"
+          },
           {
             "$ref": "#/components/parameters/cat.thread_pool#time"
           },
@@ -2329,6 +2653,12 @@
         "parameters": [
           {
             "$ref": "#/components/parameters/cat.thread_pool#thread_pool_patterns"
+          },
+          {
+            "$ref": "#/components/parameters/cat.thread_pool#h"
+          },
+          {
+            "$ref": "#/components/parameters/cat.thread_pool#s"
           },
           {
             "$ref": "#/components/parameters/cat.thread_pool#time"
@@ -2579,7 +2909,7 @@
           {
             "in": "path",
             "name": "name",
-            "description": "The name of the auto follow pattern.",
+            "description": "The auto-follow pattern collection to delete.",
             "required": true,
             "deprecated": false,
             "schema": {
@@ -2590,7 +2920,7 @@
           {
             "in": "query",
             "name": "master_timeout",
-            "description": "Period to wait for a connection to the master node.",
+            "description": "The period to wait for a connection to the master node.\nIf the master node is not available before the timeout expires, the request fails and returns an error.\nIt can also be set to `-1` to indicate that the request should never timeout.",
             "deprecated": false,
             "schema": {
               "$ref": "#/components/schemas/_types:Duration"
@@ -2765,7 +3095,7 @@
           {
             "in": "path",
             "name": "index",
-            "description": "A comma-separated list of index patterns; use `_all` to perform the operation on all indices",
+            "description": "A comma-delimited list of follower index patterns.",
             "required": true,
             "deprecated": false,
             "schema": {
@@ -2776,7 +3106,7 @@
           {
             "in": "query",
             "name": "master_timeout",
-            "description": "Period to wait for a connection to the master node.",
+            "description": "The period to wait for a connection to the master node.\nIf the master node is not available before the timeout expires, the request fails and returns an error.\nIt can also be set to `-1` to indicate that the request should never timeout.",
             "deprecated": false,
             "schema": {
               "$ref": "#/components/schemas/_types:Duration"
@@ -2825,7 +3155,7 @@
           {
             "in": "path",
             "name": "index",
-            "description": "A comma-separated list of index patterns; use `_all` to perform the operation on all indices",
+            "description": "A comma-delimited list of index patterns.",
             "required": true,
             "deprecated": false,
             "schema": {
@@ -2836,7 +3166,7 @@
           {
             "in": "query",
             "name": "timeout",
-            "description": "Period to wait for a response. If no response is received before the timeout expires, the request fails and returns an error.",
+            "description": "The period to wait for a response.\nIf no response is received before the timeout expires, the request fails and returns an error.",
             "deprecated": false,
             "schema": {
               "$ref": "#/components/schemas/_types:Duration"
@@ -2853,6 +3183,7 @@
                   "type": "object",
                   "properties": {
                     "indices": {
+                      "description": "An array of follower index statistics.",
                       "type": "array",
                       "items": {
                         "$ref": "#/components/schemas/ccr._types:FollowIndexStats"
@@ -2990,7 +3321,7 @@
           {
             "in": "path",
             "name": "name",
-            "description": "The name of the auto follow pattern that should pause discovering new indices to follow.",
+            "description": "The name of the auto-follow pattern to pause.",
             "required": true,
             "deprecated": false,
             "schema": {
@@ -3001,7 +3332,7 @@
           {
             "in": "query",
             "name": "master_timeout",
-            "description": "Period to wait for a connection to the master node.",
+            "description": "The period to wait for a connection to the master node.\nIf the master node is not available before the timeout expires, the request fails and returns an error.\nIt can also be set to `-1` to indicate that the request should never timeout.",
             "deprecated": false,
             "schema": {
               "$ref": "#/components/schemas/_types:Duration"
@@ -3036,7 +3367,7 @@
           {
             "in": "path",
             "name": "index",
-            "description": "The name of the follower index that should pause following its leader index.",
+            "description": "The name of the follower index.",
             "required": true,
             "deprecated": false,
             "schema": {
@@ -3047,7 +3378,7 @@
           {
             "in": "query",
             "name": "master_timeout",
-            "description": "Period to wait for a connection to the master node.",
+            "description": "The period to wait for a connection to the master node.\nIf the master node is not available before the timeout expires, the request fails and returns an error.\nIt can also be set to `-1` to indicate that the request should never timeout.",
             "deprecated": false,
             "schema": {
               "$ref": "#/components/schemas/_types:Duration"
@@ -3085,7 +3416,7 @@
           {
             "in": "path",
             "name": "name",
-            "description": "The name of the auto follow pattern to resume discovering new indices to follow.",
+            "description": "The name of the auto-follow pattern to resume.",
             "required": true,
             "deprecated": false,
             "schema": {
@@ -3096,7 +3427,7 @@
           {
             "in": "query",
             "name": "master_timeout",
-            "description": "Period to wait for a connection to the master node.",
+            "description": "The period to wait for a connection to the master node.\nIf the master node is not available before the timeout expires, the request fails and returns an error.\nIt can also be set to `-1` to indicate that the request should never timeout.",
             "deprecated": false,
             "schema": {
               "$ref": "#/components/schemas/_types:Duration"
@@ -3221,7 +3552,7 @@
           {
             "in": "query",
             "name": "master_timeout",
-            "description": "Period to wait for a connection to the master node.",
+            "description": "The period to wait for a connection to the master node.\nIf the master node is not available before the timeout expires, the request fails and returns an error.\nIt can also be set to `-1` to indicate that the request should never timeout.",
             "deprecated": false,
             "schema": {
               "$ref": "#/components/schemas/_types:Duration"
@@ -3231,7 +3562,7 @@
           {
             "in": "query",
             "name": "timeout",
-            "description": "Period to wait for a response. If no response is received before the timeout expires, the request fails and returns an error.",
+            "description": "The period to wait for a response. If no response is received before the timeout expires, the request fails and returns an error.",
             "deprecated": false,
             "schema": {
               "$ref": "#/components/schemas/_types:Duration"
@@ -3272,7 +3603,7 @@
           "ccr"
         ],
         "summary": "Unfollow an index",
-        "description": "Convert a cross-cluster replication follower index to a regular index.\nThe API stops the following task associated with a follower index and removes index metadata and settings associated with cross-cluster replication.\nThe follower index must be paused and closed before you call the unfollow API.\n\nNOTE: Currently cross-cluster replication does not support converting an existing regular index to a follower index. Converting a follower index to a regular index is an irreversible operation.",
+        "description": "Convert a cross-cluster replication follower index to a regular index.\nThe API stops the following task associated with a follower index and removes index metadata and settings associated with cross-cluster replication.\nThe follower index must be paused and closed before you call the unfollow API.\n\n> info\n> Currently cross-cluster replication does not support converting an existing regular index to a follower index. Converting a follower index to a regular index is an irreversible operation.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/xpack-ccr.html"
         },
@@ -3281,7 +3612,7 @@
           {
             "in": "path",
             "name": "index",
-            "description": "The name of the follower index that should be turned into a regular index.",
+            "description": "The name of the follower index.",
             "required": true,
             "deprecated": false,
             "schema": {
@@ -3292,7 +3623,7 @@
           {
             "in": "query",
             "name": "master_timeout",
-            "description": "Period to wait for a connection to the master node.",
+            "description": "The period to wait for a connection to the master node.\nIf the master node is not available before the timeout expires, the request fails and returns an error.\nIt can also be set to `-1` to indicate that the request should never timeout.",
             "deprecated": false,
             "schema": {
               "$ref": "#/components/schemas/_types:Duration"
@@ -4340,7 +4671,10 @@
           "cluster"
         ],
         "summary": "Get remote cluster information",
-        "description": "Get all of the configured remote cluster information.\nThis API returns connection and endpoint information keyed by the configured remote cluster alias.",
+        "description": "Get information about configured remote clusters.\nThe API returns connection and endpoint information keyed by the configured remote cluster alias.\n\n> info\n> This API returns information that reflects current state on the local cluster.\n> The `connected` field does not necessarily reflect whether a remote cluster is down or unavailable, only whether there is currently an open connection to it.\n> Elasticsearch does not spontaneously try to reconnect to a disconnected remote cluster.\n> To trigger a reconnection, attempt a cross-cluster search, ES|QL cross-cluster search, or try the [resolve cluster endpoint](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-resolve-cluster).",
+        "externalDocs": {
+          "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/modules-cross-cluster-search.html"
+        },
         "operationId": "cluster-remote-info",
         "responses": {
           "200": {
@@ -6713,6 +7047,9 @@
             "$ref": "#/components/parameters/create#id"
           },
           {
+            "$ref": "#/components/parameters/create#include_source_on_error"
+          },
+          {
             "$ref": "#/components/parameters/create#pipeline"
           },
           {
@@ -6760,6 +7097,9 @@
           },
           {
             "$ref": "#/components/parameters/create#id"
+          },
+          {
+            "$ref": "#/components/parameters/create#include_source_on_error"
           },
           {
             "$ref": "#/components/parameters/create#pipeline"
@@ -7139,6 +7479,9 @@
             "$ref": "#/components/parameters/index#if_seq_no"
           },
           {
+            "$ref": "#/components/parameters/index#include_source_on_error"
+          },
+          {
             "$ref": "#/components/parameters/index#op_type"
           },
           {
@@ -7197,6 +7540,9 @@
           },
           {
             "$ref": "#/components/parameters/index#if_seq_no"
+          },
+          {
+            "$ref": "#/components/parameters/index#include_source_on_error"
           },
           {
             "$ref": "#/components/parameters/index#op_type"
@@ -8787,6 +9133,10 @@
                         "$ref": "#/components/schemas/esql._types:TableValuesContainer"
                       }
                     }
+                  },
+                  "include_ccs_metadata": {
+                    "description": "When set to `true` and performing a cross-cluster query, the response will include an extra `_clusters`\nobject with information about the clusters that participated in the search along with info such as shards\ncount.",
+                    "type": "boolean"
                   }
                 },
                 "required": [
@@ -9050,6 +9400,10 @@
                         "$ref": "#/components/schemas/esql._types:TableValuesContainer"
                       }
                     }
+                  },
+                  "include_ccs_metadata": {
+                    "description": "When set to `true` and performing a cross-cluster query, the response will include an extra `_clusters`\nobject with information about the clusters that participated in the search along with info such as shards\ncount.",
+                    "type": "boolean"
                   }
                 },
                 "required": [
@@ -11243,6 +11597,9 @@
             "$ref": "#/components/parameters/index#if_seq_no"
           },
           {
+            "$ref": "#/components/parameters/index#include_source_on_error"
+          },
+          {
             "$ref": "#/components/parameters/index#op_type"
           },
           {
@@ -12790,11 +13147,22 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/indices._types:DataStreamLifecycle"
+                "type": "object",
+                "properties": {
+                  "data_retention": {
+                    "$ref": "#/components/schemas/_types:Duration"
+                  },
+                  "downsampling": {
+                    "$ref": "#/components/schemas/indices._types:DataStreamLifecycleDownsampling"
+                  },
+                  "enabled": {
+                    "description": "If defined, it turns data stream lifecycle on/off (`true`/`false`) for this data stream. A data stream lifecycle\nthat's disabled (enabled: `false`) will have no effect on the data stream.",
+                    "type": "boolean"
+                  }
+                }
               }
             }
-          },
-          "required": true
+          }
         },
         "responses": {
           "200": {
@@ -15117,80 +15485,70 @@
         "x-state": "Added in 7.3.0"
       }
     },
+    "/_resolve/cluster": {
+      "get": {
+        "tags": [
+          "indices"
+        ],
+        "summary": "Resolve the cluster",
+        "description": "Resolve the specified index expressions to return information about each cluster, including the local \"querying\" cluster, if included.\nIf no index expression is provided, the API will return information about all the remote clusters that are configured on the querying cluster.\n\nThis endpoint is useful before doing a cross-cluster search in order to determine which remote clusters should be included in a search.\n\nYou use the same index expression with this endpoint as you would for cross-cluster search.\nIndex and cluster exclusions are also supported with this endpoint.\n\nFor each cluster in the index expression, information is returned about:\n\n* Whether the querying (\"local\") cluster is currently connected to each remote cluster specified in the index expression. Note that this endpoint actively attempts to contact the remote clusters, unlike the `remote/info` endpoint.\n* Whether each remote cluster is configured with `skip_unavailable` as `true` or `false`.\n* Whether there are any indices, aliases, or data streams on that cluster that match the index expression.\n* Whether the search is likely to have errors returned when you do the cross-cluster search (including any authorization errors if you do not have permission to query the index).\n* Cluster version information, including the Elasticsearch server version.\n\nFor example, `GET /_resolve/cluster/my-index-*,cluster*:my-index-*` returns information about the local cluster and all remotely configured clusters that start with the alias `cluster*`.\nEach cluster returns information about whether it has any indices, aliases or data streams that match `my-index-*`.\n\n## Note on backwards compatibility\nThe ability to query without an index expression was added in version 8.18, so when\nquerying remote clusters older than that, the local cluster will send the index\nexpression `dummy*` to those remote clusters. Thus, if an errors occur, you may see a reference\nto that index expression even though you didn't request it. If it causes a problem, you can\ninstead include an index expression like `*:*` to bypass the issue.\n\n## Advantages of using this endpoint before a cross-cluster search\n\nYou may want to exclude a cluster or index from a search when:\n\n* A remote cluster is not currently connected and is configured with `skip_unavailable=false`. Running a cross-cluster search under those conditions will cause the entire search to fail.\n* A cluster has no matching indices, aliases or data streams for the index expression (or your user does not have permissions to search them). For example, suppose your index expression is `logs*,remote1:logs*` and the remote1 cluster has no indices, aliases or data streams that match `logs*`. In that case, that cluster will return no results from that cluster if you include it in a cross-cluster search.\n* The index expression (combined with any query parameters you specify) will likely cause an exception to be thrown when you do the search. In these cases, the \"error\" field in the `_resolve/cluster` response will be present. (This is also where security/permission errors will be shown.)\n* A remote cluster is an older version that does not support the feature you want to use in your search.\n\n## Test availability of remote clusters\n\nThe `remote/info` endpoint is commonly used to test whether the \"local\" cluster (the cluster being queried) is connected to its remote clusters, but it does not necessarily reflect whether the remote cluster is available or not.\nThe remote cluster may be available, while the local cluster is not currently connected to it.\n\nYou can use the `_resolve/cluster` API to attempt to reconnect to remote clusters.\nFor example with `GET _resolve/cluster` or `GET _resolve/cluster/*:*`.\nThe `connected` field in the response will indicate whether it was successful.\nIf a connection was (re-)established, this will also cause the `remote/info` endpoint to now indicate a connected status.",
+        "operationId": "indices-resolve-cluster",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/indices.resolve_cluster#allow_no_indices"
+          },
+          {
+            "$ref": "#/components/parameters/indices.resolve_cluster#expand_wildcards"
+          },
+          {
+            "$ref": "#/components/parameters/indices.resolve_cluster#ignore_throttled"
+          },
+          {
+            "$ref": "#/components/parameters/indices.resolve_cluster#ignore_unavailable"
+          },
+          {
+            "$ref": "#/components/parameters/indices.resolve_cluster#timeout"
+          }
+        ],
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/indices.resolve_cluster#200"
+          }
+        },
+        "x-state": "Added in 8.13.0"
+      }
+    },
     "/_resolve/cluster/{name}": {
       "get": {
         "tags": [
           "indices"
         ],
         "summary": "Resolve the cluster",
-        "description": "Resolve the specified index expressions to return information about each cluster, including the local cluster, if included.\nMultiple patterns and remote clusters are supported.\n\nThis endpoint is useful before doing a cross-cluster search in order to determine which remote clusters should be included in a search.\n\nYou use the same index expression with this endpoint as you would for cross-cluster search.\nIndex and cluster exclusions are also supported with this endpoint.\n\nFor each cluster in the index expression, information is returned about:\n\n* Whether the querying (\"local\") cluster is currently connected to each remote cluster in the index expression scope.\n* Whether each remote cluster is configured with `skip_unavailable` as `true` or `false`.\n* Whether there are any indices, aliases, or data streams on that cluster that match the index expression.\n* Whether the search is likely to have errors returned when you do the cross-cluster search (including any authorization errors if you do not have permission to query the index).\n* Cluster version information, including the Elasticsearch server version.\n\nFor example, `GET /_resolve/cluster/my-index-*,cluster*:my-index-*` returns information about the local cluster and all remotely configured clusters that start with the alias `cluster*`.\nEach cluster returns information about whether it has any indices, aliases or data streams that match `my-index-*`.\n\n**Advantages of using this endpoint before a cross-cluster search**\n\nYou may want to exclude a cluster or index from a search when:\n\n* A remote cluster is not currently connected and is configured with `skip_unavailable=false`. Running a cross-cluster search under those conditions will cause the entire search to fail.\n* A cluster has no matching indices, aliases or data streams for the index expression (or your user does not have permissions to search them). For example, suppose your index expression is `logs*,remote1:logs*` and the remote1 cluster has no indices, aliases or data streams that match `logs*`. In that case, that cluster will return no results from that cluster if you include it in a cross-cluster search.\n* The index expression (combined with any query parameters you specify) will likely cause an exception to be thrown when you do the search. In these cases, the \"error\" field in the `_resolve/cluster` response will be present. (This is also where security/permission errors will be shown.)\n* A remote cluster is an older version that does not support the feature you want to use in your search.",
-        "operationId": "indices-resolve-cluster",
+        "description": "Resolve the specified index expressions to return information about each cluster, including the local \"querying\" cluster, if included.\nIf no index expression is provided, the API will return information about all the remote clusters that are configured on the querying cluster.\n\nThis endpoint is useful before doing a cross-cluster search in order to determine which remote clusters should be included in a search.\n\nYou use the same index expression with this endpoint as you would for cross-cluster search.\nIndex and cluster exclusions are also supported with this endpoint.\n\nFor each cluster in the index expression, information is returned about:\n\n* Whether the querying (\"local\") cluster is currently connected to each remote cluster specified in the index expression. Note that this endpoint actively attempts to contact the remote clusters, unlike the `remote/info` endpoint.\n* Whether each remote cluster is configured with `skip_unavailable` as `true` or `false`.\n* Whether there are any indices, aliases, or data streams on that cluster that match the index expression.\n* Whether the search is likely to have errors returned when you do the cross-cluster search (including any authorization errors if you do not have permission to query the index).\n* Cluster version information, including the Elasticsearch server version.\n\nFor example, `GET /_resolve/cluster/my-index-*,cluster*:my-index-*` returns information about the local cluster and all remotely configured clusters that start with the alias `cluster*`.\nEach cluster returns information about whether it has any indices, aliases or data streams that match `my-index-*`.\n\n## Note on backwards compatibility\nThe ability to query without an index expression was added in version 8.18, so when\nquerying remote clusters older than that, the local cluster will send the index\nexpression `dummy*` to those remote clusters. Thus, if an errors occur, you may see a reference\nto that index expression even though you didn't request it. If it causes a problem, you can\ninstead include an index expression like `*:*` to bypass the issue.\n\n## Advantages of using this endpoint before a cross-cluster search\n\nYou may want to exclude a cluster or index from a search when:\n\n* A remote cluster is not currently connected and is configured with `skip_unavailable=false`. Running a cross-cluster search under those conditions will cause the entire search to fail.\n* A cluster has no matching indices, aliases or data streams for the index expression (or your user does not have permissions to search them). For example, suppose your index expression is `logs*,remote1:logs*` and the remote1 cluster has no indices, aliases or data streams that match `logs*`. In that case, that cluster will return no results from that cluster if you include it in a cross-cluster search.\n* The index expression (combined with any query parameters you specify) will likely cause an exception to be thrown when you do the search. In these cases, the \"error\" field in the `_resolve/cluster` response will be present. (This is also where security/permission errors will be shown.)\n* A remote cluster is an older version that does not support the feature you want to use in your search.\n\n## Test availability of remote clusters\n\nThe `remote/info` endpoint is commonly used to test whether the \"local\" cluster (the cluster being queried) is connected to its remote clusters, but it does not necessarily reflect whether the remote cluster is available or not.\nThe remote cluster may be available, while the local cluster is not currently connected to it.\n\nYou can use the `_resolve/cluster` API to attempt to reconnect to remote clusters.\nFor example with `GET _resolve/cluster` or `GET _resolve/cluster/*:*`.\nThe `connected` field in the response will indicate whether it was successful.\nIf a connection was (re-)established, this will also cause the `remote/info` endpoint to now indicate a connected status.",
+        "operationId": "indices-resolve-cluster-1",
         "parameters": [
           {
-            "in": "path",
-            "name": "name",
-            "description": "Comma-separated name(s) or index pattern(s) of the indices, aliases, and data streams to resolve.\nResources on remote clusters can be specified using the `<cluster>`:`<name>` syntax.",
-            "required": true,
-            "deprecated": false,
-            "schema": {
-              "$ref": "#/components/schemas/_types:Names"
-            },
-            "style": "simple"
+            "$ref": "#/components/parameters/indices.resolve_cluster#name"
           },
           {
-            "in": "query",
-            "name": "allow_no_indices",
-            "description": "If false, the request returns an error if any wildcard expression, index alias, or _all value targets only missing\nor closed indices. This behavior applies even if the request targets other open indices. For example, a request\ntargeting foo*,bar* returns an error if an index starts with foo but no index starts with bar.",
-            "deprecated": false,
-            "schema": {
-              "type": "boolean"
-            },
-            "style": "form"
+            "$ref": "#/components/parameters/indices.resolve_cluster#allow_no_indices"
           },
           {
-            "in": "query",
-            "name": "expand_wildcards",
-            "description": "Type of index that wildcard patterns can match.\nIf the request can target data streams, this argument determines whether wildcard expressions match hidden data streams.\nSupports comma-separated values, such as `open,hidden`.\nValid values are: `all`, `open`, `closed`, `hidden`, `none`.",
-            "deprecated": false,
-            "schema": {
-              "$ref": "#/components/schemas/_types:ExpandWildcards"
-            },
-            "style": "form"
+            "$ref": "#/components/parameters/indices.resolve_cluster#expand_wildcards"
           },
           {
-            "in": "query",
-            "name": "ignore_throttled",
-            "description": "If true, concrete, expanded or aliased indices are ignored when frozen. Defaults to false.",
-            "deprecated": false,
-            "schema": {
-              "type": "boolean"
-            },
-            "style": "form"
+            "$ref": "#/components/parameters/indices.resolve_cluster#ignore_throttled"
           },
           {
-            "in": "query",
-            "name": "ignore_unavailable",
-            "description": "If false, the request returns an error if it targets a missing or closed index. Defaults to false.",
-            "deprecated": false,
-            "schema": {
-              "type": "boolean"
-            },
-            "style": "form"
+            "$ref": "#/components/parameters/indices.resolve_cluster#ignore_unavailable"
+          },
+          {
+            "$ref": "#/components/parameters/indices.resolve_cluster#timeout"
           }
         ],
         "responses": {
           "200": {
-            "description": "",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "additionalProperties": {
-                    "$ref": "#/components/schemas/indices.resolve_cluster:ResolveClusterInfo"
-                  }
-                }
-              }
-            }
+            "$ref": "#/components/responses/indices.resolve_cluster#200"
           }
         },
         "x-state": "Added in 8.13.0"
@@ -18623,7 +18981,7 @@
           "ml anomaly"
         ],
         "summary": "Delete a calendar",
-        "description": "Removes all scheduled events from a calendar, then deletes it.",
+        "description": "Remove all scheduled events from a calendar, then delete it.",
         "operationId": "ml-delete-calendar",
         "parameters": [
           {
@@ -19326,7 +19684,7 @@
           "ml anomaly"
         ],
         "summary": "Delete expired ML data",
-        "description": "Deletes all job results, model snapshots and forecast data that have exceeded\ntheir retention days period. Machine learning state documents that are not\nassociated with any job are also deleted.\nYou can limit the request to a single or set of anomaly detection jobs by\nusing a job identifier, a group name, a comma-separated list of jobs, or a\nwildcard expression. You can delete expired data for all anomaly detection\njobs by using _all, by specifying * as the <job_id>, or by omitting the\n<job_id>.",
+        "description": "Delete all job results, model snapshots and forecast data that have exceeded\ntheir retention days period. Machine learning state documents that are not\nassociated with any job are also deleted.\nYou can limit the request to a single or set of anomaly detection jobs by\nusing a job identifier, a group name, a comma-separated list of jobs, or a\nwildcard expression. You can delete expired data for all anomaly detection\njobs by using `_all`, by specifying `*` as the `<job_id>`, or by omitting the\n`<job_id>`.",
         "operationId": "ml-delete-expired-data",
         "parameters": [
           {
@@ -19356,7 +19714,7 @@
           "ml anomaly"
         ],
         "summary": "Delete expired ML data",
-        "description": "Deletes all job results, model snapshots and forecast data that have exceeded\ntheir retention days period. Machine learning state documents that are not\nassociated with any job are also deleted.\nYou can limit the request to a single or set of anomaly detection jobs by\nusing a job identifier, a group name, a comma-separated list of jobs, or a\nwildcard expression. You can delete expired data for all anomaly detection\njobs by using _all, by specifying * as the <job_id>, or by omitting the\n<job_id>.",
+        "description": "Delete all job results, model snapshots and forecast data that have exceeded\ntheir retention days period. Machine learning state documents that are not\nassociated with any job are also deleted.\nYou can limit the request to a single or set of anomaly detection jobs by\nusing a job identifier, a group name, a comma-separated list of jobs, or a\nwildcard expression. You can delete expired data for all anomaly detection\njobs by using `_all`, by specifying `*` as the `<job_id>`, or by omitting the\n`<job_id>`.",
         "operationId": "ml-delete-expired-data-1",
         "parameters": [
           {
@@ -20430,7 +20788,7 @@
           "ml anomaly"
         ],
         "summary": "Estimate job model memory usage",
-        "description": "Makes an estimation of the memory usage for an anomaly detection job model.\nIt is based on analysis configuration details for the job and cardinality\nestimates for the fields it references.",
+        "description": "Make an estimation of the memory usage for an anomaly detection job model.\nThe estimate is based on analysis configuration details for the job and cardinality\nestimates for the fields it references.",
         "operationId": "ml-estimate-model-memory",
         "requestBody": {
           "content": {
@@ -23156,7 +23514,7 @@
           {
             "in": "query",
             "name": "number_of_allocations",
-            "description": "The number of model allocations on each node where the model is deployed.\nAll allocations on a node share the same copy of the model in memory but use\na separate set of threads to evaluate the model.\nIncreasing this value generally increases the throughput.\nIf this setting is greater than the number of hardware threads\nit will automatically be changed to a value less than the number of hardware threads.",
+            "description": "The number of model allocations on each node where the model is deployed.\nAll allocations on a node share the same copy of the model in memory but use\na separate set of threads to evaluate the model.\nIncreasing this value generally increases the throughput.\nIf this setting is greater than the number of hardware threads\nit will automatically be changed to a value less than the number of hardware threads.\nIf adaptive_allocations is enabled, do not set this value, because it’s automatically set.",
             "deprecated": false,
             "schema": {
               "type": "number"
@@ -23214,6 +23572,20 @@
             "style": "form"
           }
         ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "adaptive_allocations": {
+                    "$ref": "#/components/schemas/ml._types:AdaptiveAllocationsSettings"
+                  }
+                }
+              }
+            }
+          }
+        },
         "responses": {
           "200": {
             "description": "",
@@ -24187,8 +24559,11 @@
                 "type": "object",
                 "properties": {
                   "number_of_allocations": {
-                    "description": "The number of model allocations on each node where the model is deployed.\nAll allocations on a node share the same copy of the model in memory but use\na separate set of threads to evaluate the model.\nIncreasing this value generally increases the throughput.\nIf this setting is greater than the number of hardware threads\nit will automatically be changed to a value less than the number of hardware threads.",
+                    "description": "The number of model allocations on each node where the model is deployed.\nAll allocations on a node share the same copy of the model in memory but use\na separate set of threads to evaluate the model.\nIncreasing this value generally increases the throughput.\nIf this setting is greater than the number of hardware threads\nit will automatically be changed to a value less than the number of hardware threads.\nIf adaptive_allocations is enabled, do not set this value, because it’s automatically set.",
                     "type": "number"
+                  },
+                  "adaptive_allocations": {
+                    "$ref": "#/components/schemas/ml._types:AdaptiveAllocationsSettings"
                   }
                 }
               }
@@ -32159,6 +32534,12 @@
                         "type": "string"
                       }
                     },
+                    "remote_cluster": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/security._types:RemoteClusterPrivileges"
+                      }
+                    },
                     "global": {
                       "type": "array",
                       "items": {
@@ -32169,6 +32550,12 @@
                       "type": "array",
                       "items": {
                         "$ref": "#/components/schemas/security._types:UserIndicesPrivileges"
+                      }
+                    },
+                    "remote_indices": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/security._types:RemoteUserIndicesPrivileges"
                       }
                     },
                     "run_as": {
@@ -37963,7 +38350,7 @@
           "transform"
         ],
         "summary": "Reset a transform",
-        "description": "Resets a transform.\nBefore you can reset it, you must stop it; alternatively, use the `force` query parameter.\nIf the destination index was created by the transform, it is deleted.",
+        "description": "Before you can reset it, you must stop it; alternatively, use the `force` query parameter.\nIf the destination index was created by the transform, it is deleted.",
         "operationId": "transform-reset-transform",
         "parameters": [
           {
@@ -38019,7 +38406,7 @@
           "transform"
         ],
         "summary": "Schedule a transform to start now",
-        "description": "Instantly runs a transform to process data.\n\nIf you _schedule_now a transform, it will process the new data instantly,\nwithout waiting for the configured frequency interval. After _schedule_now API is called,\nthe transform will be processed again at now + frequency unless _schedule_now API\nis called again in the meantime.",
+        "description": "Instantly run a transform to process data.\nIf you run this API, the transform will process the new data instantly,\nwithout waiting for the configured frequency interval. After the API is called,\nthe transform will be processed again at `now + frequency` unless the API\nis called again in the meantime.",
         "operationId": "transform-schedule-now-transform",
         "parameters": [
           {
@@ -38065,7 +38452,7 @@
           "transform"
         ],
         "summary": "Start a transform",
-        "description": "Starts a transform.\n\nWhen you start a transform, it creates the destination index if it does not already exist. The `number_of_shards` is\nset to `1` and the `auto_expand_replicas` is set to `0-1`. If it is a pivot transform, it deduces the mapping\ndefinitions for the destination index from the source indices and the transform aggregations. If fields in the\ndestination index are derived from scripts (as in the case of `scripted_metric` or `bucket_script` aggregations),\nthe transform uses dynamic mappings unless an index template exists. If it is a latest transform, it does not deduce\nmapping definitions; it uses dynamic mappings. To use explicit mappings, create the destination index before you\nstart the transform. Alternatively, you can create an index template, though it does not affect the deduced mappings\nin a pivot transform.\n\nWhen the transform starts, a series of validations occur to ensure its success. If you deferred validation when you\ncreated the transform, they occur when you start the transform—​with the exception of privilege checks. When\nElasticsearch security features are enabled, the transform remembers which roles the user that created it had at the\ntime of creation and uses those same roles. If those roles do not have the required privileges on the source and\ndestination indices, the transform fails when it attempts unauthorized operations.",
+        "description": "When you start a transform, it creates the destination index if it does not already exist. The `number_of_shards` is\nset to `1` and the `auto_expand_replicas` is set to `0-1`. If it is a pivot transform, it deduces the mapping\ndefinitions for the destination index from the source indices and the transform aggregations. If fields in the\ndestination index are derived from scripts (as in the case of `scripted_metric` or `bucket_script` aggregations),\nthe transform uses dynamic mappings unless an index template exists. If it is a latest transform, it does not deduce\nmapping definitions; it uses dynamic mappings. To use explicit mappings, create the destination index before you\nstart the transform. Alternatively, you can create an index template, though it does not affect the deduced mappings\nin a pivot transform.\n\nWhen the transform starts, a series of validations occur to ensure its success. If you deferred validation when you\ncreated the transform, they occur when you start the transform—​with the exception of privilege checks. When\nElasticsearch security features are enabled, the transform remembers which roles the user that created it had at the\ntime of creation and uses those same roles. If those roles do not have the required privileges on the source and\ndestination indices, the transform fails when it attempts unauthorized operations.",
         "operationId": "transform-start-transform",
         "parameters": [
           {
@@ -38468,6 +38855,16 @@
             "deprecated": false,
             "schema": {
               "$ref": "#/components/schemas/_types:SequenceNumber"
+            },
+            "style": "form"
+          },
+          {
+            "in": "query",
+            "name": "include_source_on_error",
+            "description": "True or false if to include the document source in the error message in case of parsing errors.",
+            "deprecated": false,
+            "schema": {
+              "type": "boolean"
             },
             "style": "form"
           },
@@ -40111,7 +40508,7 @@
         "type": "object",
         "properties": {
           "aggregations": {
-            "description": "Partial aggregations results, coming from the shards that have already completed the execution of the query.",
+            "description": "Partial aggregations results, coming from the shards that have already completed running the query.",
             "type": "object",
             "additionalProperties": {
               "$ref": "#/components/schemas/_types.aggregations:Aggregate"
@@ -45094,7 +45491,7 @@
             "type": "boolean"
           },
           "is_running": {
-            "description": "Indicates whether the search is still running or has completed.\nNOTE: If the search failed after some shards returned their results or the node that is coordinating the async search dies, results may be partial even though `is_running` is `false`.",
+            "description": "Indicates whether the search is still running or has completed.\n\n> info\n> If the search failed after some shards returned their results or the node that is coordinating the async search dies, results may be partial even though `is_running` is `false`.",
             "type": "boolean"
           },
           "expiration_time": {
@@ -45149,7 +45546,7 @@
                 "$ref": "#/components/schemas/_types:ClusterStatistics"
               },
               "completion_status": {
-                "description": "If the async search completed, this field shows the status code of the search.\nFor example, 200 indicates that the async search was successfully completed.\n503 indicates that the async search was completed with an error.",
+                "description": "If the async search completed, this field shows the status code of the search.\nFor example, `200` indicates that the async search was successfully completed.\n`503` indicates that the async search was completed with an error.",
                 "type": "number"
               }
             },
@@ -53154,6 +53551,9 @@
             "description": "The HTTP status code returned for the operation.",
             "type": "number"
           },
+          "failure_store": {
+            "$ref": "#/components/schemas/_global.bulk:FailureStoreStatus"
+          },
           "error": {
             "$ref": "#/components/schemas/_types:ErrorCause"
           },
@@ -53184,6 +53584,15 @@
         "required": [
           "_index",
           "status"
+        ]
+      },
+      "_global.bulk:FailureStoreStatus": {
+        "type": "string",
+        "enum": [
+          "not_applicable_or_unknown",
+          "used",
+          "not_enabled",
+          "failed"
         ]
       },
       "_types:InlineGetDictUserDefined": {
@@ -56720,7 +57129,14 @@
             ]
           },
           "auto_expand_replicas": {
-            "type": "string"
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "$ref": "#/components/schemas/_spec_utils:NullValue"
+              }
+            ]
           },
           "merge": {
             "$ref": "#/components/schemas/indices._types:Merge"
@@ -56988,6 +57404,11 @@
             "type": "string"
           }
         ]
+      },
+      "_spec_utils:NullValue": {
+        "nullable": true,
+        "description": "A `null` value that is to be interpreted as an actual value, unless other uses of `null` that are equivalent\nto a missing value. It is used for exemple in settings, where using the `NullValue` for a setting will reset\nit to its default value.",
+        "type": "string"
       },
       "indices._types:Merge": {
         "type": "object",
@@ -62080,6 +62501,7 @@
             "$ref": "#/components/schemas/_types:IndexName"
           },
           "shards": {
+            "description": "An array of shard-level following task statistics.",
             "type": "array",
             "items": {
               "$ref": "#/components/schemas/ccr._types:ShardStats"
@@ -62095,12 +62517,15 @@
         "type": "object",
         "properties": {
           "bytes_read": {
+            "description": "The total of transferred bytes read from the leader.\nThis is only an estimate and does not account for compression if enabled.",
             "type": "number"
           },
           "failed_read_requests": {
+            "description": "The number of failed reads.",
             "type": "number"
           },
           "failed_write_requests": {
+            "description": "The number of failed bulk write requests on the follower.",
             "type": "number"
           },
           "fatal_exception": {
@@ -62110,9 +62535,11 @@
             "$ref": "#/components/schemas/_types:VersionNumber"
           },
           "follower_global_checkpoint": {
+            "description": "The current global checkpoint on the follower.\nThe difference between the `leader_global_checkpoint` and the `follower_global_checkpoint` is an indication of how much the follower is lagging the leader.",
             "type": "number"
           },
           "follower_index": {
+            "description": "The name of the follower index.",
             "type": "string"
           },
           "follower_mapping_version": {
@@ -62128,42 +62555,53 @@
             "$ref": "#/components/schemas/_types:SequenceNumber"
           },
           "leader_global_checkpoint": {
+            "description": "The current global checkpoint on the leader known to the follower task.",
             "type": "number"
           },
           "leader_index": {
+            "description": "The name of the index in the leader cluster being followed.",
             "type": "string"
           },
           "leader_max_seq_no": {
             "$ref": "#/components/schemas/_types:SequenceNumber"
           },
           "operations_read": {
+            "description": "The total number of operations read from the leader.",
             "type": "number"
           },
           "operations_written": {
+            "description": "The number of operations written on the follower.",
             "type": "number"
           },
           "outstanding_read_requests": {
+            "description": "The number of active read requests from the follower.",
             "type": "number"
           },
           "outstanding_write_requests": {
+            "description": "The number of active bulk write requests on the follower.",
             "type": "number"
           },
           "read_exceptions": {
+            "description": "An array of objects representing failed reads.",
             "type": "array",
             "items": {
               "$ref": "#/components/schemas/ccr._types:ReadException"
             }
           },
           "remote_cluster": {
+            "description": "The remote cluster containing the leader index.",
             "type": "string"
           },
           "shard_id": {
+            "description": "The numerical shard ID, with values from 0 to one less than the number of replicas.",
             "type": "number"
           },
           "successful_read_requests": {
+            "description": "The number of successful fetches.",
             "type": "number"
           },
           "successful_write_requests": {
+            "description": "The number of bulk write requests run on the follower.",
             "type": "number"
           },
           "time_since_last_read": {
@@ -62191,6 +62629,7 @@
             "$ref": "#/components/schemas/_types:DurationValueUnitMillis"
           },
           "write_buffer_operation_count": {
+            "description": "The number of write operations queued on the follower.",
             "type": "number"
           },
           "write_buffer_size_in_bytes": {
@@ -62238,6 +62677,7 @@
             "$ref": "#/components/schemas/_types:SequenceNumber"
           },
           "retries": {
+            "description": "The number of times the batch has been retried.",
             "type": "number"
           }
         },
@@ -62313,15 +62753,19 @@
             }
           },
           "number_of_failed_follow_indices": {
+            "description": "The number of indices that the auto-follow coordinator failed to automatically follow.\nThe causes of recent failures are captured in the logs of the elected master node and in the `auto_follow_stats.recent_auto_follow_errors` field.",
             "type": "number"
           },
           "number_of_failed_remote_cluster_state_requests": {
+            "description": "The number of times that the auto-follow coordinator failed to retrieve the cluster state from a remote cluster registered in a collection of auto-follow patterns.",
             "type": "number"
           },
           "number_of_successful_follow_indices": {
+            "description": "The number of indices that the auto-follow coordinator successfully followed.",
             "type": "number"
           },
           "recent_auto_follow_errors": {
+            "description": "An array of objects representing failures by the auto-follow coordinator.",
             "type": "array",
             "items": {
               "$ref": "#/components/schemas/_types:ErrorCause"
@@ -66116,27 +66560,33 @@
         "type": "object",
         "properties": {
           "mode": {
+            "description": "The connection mode for the remote cluster.",
             "type": "string",
             "enum": [
               "sniff"
             ]
           },
           "connected": {
+            "description": "If it is `true`, there is at least one open connection to the remote cluster.\nIf it is `false`, it means that the cluster no longer has an open connection to the remote cluster.\nIt does not necessarily mean that the remote cluster is down or unavailable, just that at some point a connection was lost.",
             "type": "boolean"
           },
           "max_connections_per_cluster": {
+            "description": "The maximum number of connections maintained for the remote cluster when sniff mode is configured.",
             "type": "number"
           },
           "num_nodes_connected": {
+            "description": "The number of connected nodes in the remote cluster when sniff mode is configured.",
             "type": "number"
           },
           "initial_connect_timeout": {
             "$ref": "#/components/schemas/_types:Duration"
           },
           "skip_unavailable": {
+            "description": "If `true`, cross-cluster search skips the remote cluster when its nodes are unavailable during the search and ignores errors returned by the remote cluster.",
             "type": "boolean"
           },
           "seeds": {
+            "description": "The initial seed transport addresses of the remote cluster when sniff mode is configured.",
             "type": "array",
             "items": {
               "type": "string"
@@ -66157,31 +66607,41 @@
         "type": "object",
         "properties": {
           "mode": {
+            "description": "The connection mode for the remote cluster.",
             "type": "string",
             "enum": [
               "proxy"
             ]
           },
           "connected": {
+            "description": "If it is `true`, there is at least one open connection to the remote cluster.\nIf it is `false`, it means that the cluster no longer has an open connection to the remote cluster.\nIt does not necessarily mean that the remote cluster is down or unavailable, just that at some point a connection was lost.",
             "type": "boolean"
           },
           "initial_connect_timeout": {
             "$ref": "#/components/schemas/_types:Duration"
           },
           "skip_unavailable": {
+            "description": "If `true`, cross-cluster search skips the remote cluster when its nodes are unavailable during the search and ignores errors returned by the remote cluster.",
             "type": "boolean"
           },
           "proxy_address": {
+            "description": "The address for remote connections when proxy mode is configured.",
             "type": "string"
           },
           "server_name": {
             "type": "string"
           },
           "num_proxy_sockets_connected": {
+            "description": "The number of open socket connections to the remote cluster when proxy mode is configured.",
             "type": "number"
           },
           "max_proxy_socket_connections": {
+            "description": "The maximum number of socket connections to the remote cluster when proxy mode is configured.",
             "type": "number"
+          },
+          "cluster_credentials": {
+            "description": "This field is present and has a value of `::es_redacted::` only when the remote cluster is configured with the API key based model. Otherwise, the field is not present.",
+            "type": "string"
           }
         },
         "required": [
@@ -68608,11 +69068,6 @@
           "scheduled"
         ]
       },
-      "_spec_utils:NullValue": {
-        "nullable": true,
-        "description": "A `null` value that is to be interpreted as an actual value, unless other uses of `null` that are equivalent\nto a missing value. It is used for exemple in settings, where using the `NullValue` for a setting will reset\nit to its default value.",
-        "type": "string"
-      },
       "_types:WriteResponseBase": {
         "type": "object",
         "properties": {
@@ -68711,17 +69166,13 @@
           },
           "status": {
             "type": "number"
-          },
-          "type": {
-            "type": "string"
           }
         },
         "required": [
           "cause",
           "id",
           "index",
-          "status",
-          "type"
+          "status"
         ]
       },
       "_types:Retries": {
@@ -70688,6 +71139,21 @@
           "policy": {
             "$ref": "#/components/schemas/_types:Name"
           },
+          "previous_step_info": {
+            "type": "object",
+            "additionalProperties": {
+              "type": "object"
+            }
+          },
+          "repository_name": {
+            "type": "string"
+          },
+          "snapshot_name": {
+            "type": "string"
+          },
+          "shrink_index_name": {
+            "type": "string"
+          },
           "step": {
             "$ref": "#/components/schemas/_types:Name"
           },
@@ -70711,14 +71177,17 @@
           }
         },
         "required": [
+          "index",
           "managed",
-          "phase",
-          "policy"
+          "phase"
         ]
       },
       "ilm.explain_lifecycle:LifecycleExplainPhaseExecution": {
         "type": "object",
         "properties": {
+          "phase_definition": {
+            "$ref": "#/components/schemas/ilm._types:Phase"
+          },
           "policy": {
             "$ref": "#/components/schemas/_types:Name"
           },
@@ -70734,77 +71203,6 @@
           "version",
           "modified_date_in_millis"
         ]
-      },
-      "ilm.explain_lifecycle:LifecycleExplainUnmanaged": {
-        "type": "object",
-        "properties": {
-          "index": {
-            "$ref": "#/components/schemas/_types:IndexName"
-          },
-          "managed": {
-            "type": "string",
-            "enum": [
-              "false"
-            ]
-          }
-        },
-        "required": [
-          "index",
-          "managed"
-        ]
-      },
-      "ilm.get_lifecycle:Lifecycle": {
-        "type": "object",
-        "properties": {
-          "modified_date": {
-            "$ref": "#/components/schemas/_types:DateTime"
-          },
-          "policy": {
-            "$ref": "#/components/schemas/ilm._types:Policy"
-          },
-          "version": {
-            "$ref": "#/components/schemas/_types:VersionNumber"
-          }
-        },
-        "required": [
-          "modified_date",
-          "policy",
-          "version"
-        ]
-      },
-      "ilm._types:Policy": {
-        "type": "object",
-        "properties": {
-          "phases": {
-            "$ref": "#/components/schemas/ilm._types:Phases"
-          },
-          "_meta": {
-            "$ref": "#/components/schemas/_types:Metadata"
-          }
-        },
-        "required": [
-          "phases"
-        ]
-      },
-      "ilm._types:Phases": {
-        "type": "object",
-        "properties": {
-          "cold": {
-            "$ref": "#/components/schemas/ilm._types:Phase"
-          },
-          "delete": {
-            "$ref": "#/components/schemas/ilm._types:Phase"
-          },
-          "frozen": {
-            "$ref": "#/components/schemas/ilm._types:Phase"
-          },
-          "hot": {
-            "$ref": "#/components/schemas/ilm._types:Phase"
-          },
-          "warm": {
-            "$ref": "#/components/schemas/ilm._types:Phase"
-          }
-        }
       },
       "ilm._types:Phase": {
         "type": "object",
@@ -71015,6 +71413,77 @@
         "required": [
           "policy"
         ]
+      },
+      "ilm.explain_lifecycle:LifecycleExplainUnmanaged": {
+        "type": "object",
+        "properties": {
+          "index": {
+            "$ref": "#/components/schemas/_types:IndexName"
+          },
+          "managed": {
+            "type": "string",
+            "enum": [
+              "false"
+            ]
+          }
+        },
+        "required": [
+          "index",
+          "managed"
+        ]
+      },
+      "ilm.get_lifecycle:Lifecycle": {
+        "type": "object",
+        "properties": {
+          "modified_date": {
+            "$ref": "#/components/schemas/_types:DateTime"
+          },
+          "policy": {
+            "$ref": "#/components/schemas/ilm._types:Policy"
+          },
+          "version": {
+            "$ref": "#/components/schemas/_types:VersionNumber"
+          }
+        },
+        "required": [
+          "modified_date",
+          "policy",
+          "version"
+        ]
+      },
+      "ilm._types:Policy": {
+        "type": "object",
+        "properties": {
+          "phases": {
+            "$ref": "#/components/schemas/ilm._types:Phases"
+          },
+          "_meta": {
+            "$ref": "#/components/schemas/_types:Metadata"
+          }
+        },
+        "required": [
+          "phases"
+        ]
+      },
+      "ilm._types:Phases": {
+        "type": "object",
+        "properties": {
+          "cold": {
+            "$ref": "#/components/schemas/ilm._types:Phase"
+          },
+          "delete": {
+            "$ref": "#/components/schemas/ilm._types:Phase"
+          },
+          "frozen": {
+            "$ref": "#/components/schemas/ilm._types:Phase"
+          },
+          "hot": {
+            "$ref": "#/components/schemas/ilm._types:Phase"
+          },
+          "warm": {
+            "$ref": "#/components/schemas/ilm._types:Phase"
+          }
+        }
       },
       "ilm.move_to_step:StepKey": {
         "type": "object",
@@ -73716,6 +74185,9 @@
       "inference._types:InferenceEndpoint": {
         "type": "object",
         "properties": {
+          "chunking_settings": {
+            "$ref": "#/components/schemas/inference._types:InferenceChunkingSettings"
+          },
           "service": {
             "description": "The service type",
             "type": "string"
@@ -73730,6 +74202,34 @@
         "required": [
           "service",
           "service_settings"
+        ]
+      },
+      "inference._types:InferenceChunkingSettings": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/inference._types:InferenceEndpoint"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "max_chunk_size": {
+                "description": "Specifies the maximum size of a chunk in words\nThis value cannot be higher than `300` or lower than `20` (for `sentence` strategy) or `10` (for `word` strategy)",
+                "type": "number"
+              },
+              "overlap": {
+                "description": "Specifies the number of overlapping words for chunks\nOnly for `word` chunking strategy\nThis value cannot be higher than the half of `max_chunk_size`",
+                "type": "number"
+              },
+              "sentence_overlap": {
+                "description": "Specifies the number of overlapping sentences for chunks\nOnly for `sentence` chunking strategy\nIt can be either `1` or `0`",
+                "type": "number"
+              },
+              "strategy": {
+                "description": "Specifies the chunking strategy\nIt could be either `sentence` or `word`",
+                "type": "string"
+              }
+            }
+          }
         ]
       },
       "inference._types:ServiceSettings": {
@@ -73847,7 +74347,7 @@
           "index": {
             "type": "number"
           },
-          "score": {
+          "relevance_score": {
             "type": "number"
           },
           "text": {
@@ -73856,7 +74356,7 @@
         },
         "required": [
           "index",
-          "score"
+          "relevance_score"
         ]
       },
       "_types:StreamResult": {
@@ -79885,6 +80385,9 @@
           "function_description": {
             "type": "string"
           },
+          "geo_results": {
+            "$ref": "#/components/schemas/ml._types:GeoResults"
+          },
           "influencers": {
             "type": "array",
             "items": {
@@ -79914,21 +80417,21 @@
           }
         },
         "required": [
-          "actual",
-          "by_field_name",
-          "by_field_value",
-          "correlated_by_field_value",
-          "field_name",
-          "function",
-          "function_description",
-          "influencers",
-          "over_field_name",
-          "over_field_value",
-          "partition_field_name",
-          "partition_field_value",
-          "probability",
-          "typical"
+          "probability"
         ]
+      },
+      "ml._types:GeoResults": {
+        "type": "object",
+        "properties": {
+          "actual_point": {
+            "description": "The actual value for the bucket formatted as a `geo_point`.",
+            "type": "string"
+          },
+          "typical_point": {
+            "description": "The typical value for the bucket formatted as a `geo_point`.",
+            "type": "string"
+          }
+        }
       },
       "ml._types:Influence": {
         "type": "object",
@@ -79946,23 +80449,6 @@
         "required": [
           "influencer_field_name",
           "influencer_field_values"
-        ]
-      },
-      "ml._types:GeoResults": {
-        "type": "object",
-        "properties": {
-          "actual_point": {
-            "description": "The actual value for the bucket formatted as a `geo_point`.",
-            "type": "string"
-          },
-          "typical_point": {
-            "description": "The typical value for the bucket formatted as a `geo_point`.",
-            "type": "string"
-          }
-        },
-        "required": [
-          "actual_point",
-          "typical_point"
         ]
       },
       "ml._types:Include": {
@@ -80728,12 +81214,15 @@
         "type": "object",
         "properties": {
           "enabled": {
+            "description": "If true, adaptive_allocations is enabled",
             "type": "boolean"
           },
           "min_number_of_allocations": {
+            "description": "Specifies the minimum number of allocations to scale to.\nIf set, it must be greater than or equal to 0.\nIf not defined, the deployment scales to 0.",
             "type": "number"
           },
           "max_number_of_allocations": {
+            "description": "Specifies the maximum number of allocations to scale to.\nIf set, it must be greater than or equal to min_number_of_allocations.",
             "type": "number"
           }
         },
@@ -87473,6 +87962,9 @@
           "metadata": {
             "$ref": "#/components/schemas/_types:Metadata"
           },
+          "description": {
+            "type": "string"
+          },
           "run_as": {
             "type": "array",
             "items": {
@@ -87517,7 +88009,6 @@
           "cluster",
           "indices",
           "metadata",
-          "run_as",
           "applications"
         ]
       },
@@ -87912,6 +88403,27 @@
           "names",
           "privileges",
           "allow_restricted_indices"
+        ]
+      },
+      "security._types:RemoteUserIndicesPrivileges": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/security._types:UserIndicesPrivileges"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "clusters": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              }
+            },
+            "required": [
+              "clusters"
+            ]
+          }
         ]
       },
       "security.get_user_profile:GetUserProfileErrors": {
@@ -88623,6 +89135,62 @@
           "restart",
           "remove",
           "replace"
+        ]
+      },
+      "simulate.ingest:SimulateIngestDocumentResult": {
+        "type": "object",
+        "properties": {
+          "doc": {
+            "$ref": "#/components/schemas/simulate.ingest:IngestDocumentSimulation"
+          }
+        }
+      },
+      "simulate.ingest:IngestDocumentSimulation": {
+        "type": "object",
+        "properties": {
+          "_id": {
+            "$ref": "#/components/schemas/_types:Id"
+          },
+          "_index": {
+            "$ref": "#/components/schemas/_types:IndexName"
+          },
+          "_source": {
+            "description": "JSON body for the document.",
+            "type": "object",
+            "additionalProperties": {
+              "type": "object"
+            }
+          },
+          "_version": {
+            "$ref": "#/components/schemas/_spec_utils:StringifiedVersionNumber"
+          },
+          "executed_pipelines": {
+            "description": "A list of the names of the pipelines executed on this document.",
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "ignored_fields": {
+            "description": "A list of the fields that would be ignored at the indexing step. For example, a field whose\nvalue is larger than the allowed limit would make it through all of the pipelines, but\nwould not be indexed into Elasticsearch.",
+            "type": "array",
+            "items": {
+              "type": "object",
+              "additionalProperties": {
+                "type": "string"
+              }
+            }
+          },
+          "error": {
+            "$ref": "#/components/schemas/_types:ErrorCause"
+          }
+        },
+        "required": [
+          "_id",
+          "_index",
+          "_source",
+          "_version",
+          "executed_pipelines"
         ]
       },
       "slm._types:SnapshotLifecycle": {
@@ -95342,6 +95910,19 @@
           }
         }
       },
+      "indices.resolve_cluster#200": {
+        "description": "",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "additionalProperties": {
+                "$ref": "#/components/schemas/indices.resolve_cluster:ResolveClusterInfo"
+              }
+            }
+          }
+        }
+      },
       "indices.rollover#200": {
         "description": "",
         "content": {
@@ -97441,7 +98022,7 @@
                 "docs": {
                   "type": "array",
                   "items": {
-                    "$ref": "#/components/schemas/ingest._types:SimulateDocumentResult"
+                    "$ref": "#/components/schemas/simulate.ingest:SimulateIngestDocumentResult"
                   }
                 }
               },
@@ -98028,6 +98609,16 @@
         },
         "style": "form"
       },
+      "async_search.submit#keep_alive": {
+        "in": "query",
+        "name": "keep_alive",
+        "description": "Specifies how long the async search needs to be available.\nOngoing async searches and any saved search results are deleted after this period.",
+        "deprecated": false,
+        "schema": {
+          "$ref": "#/components/schemas/_types:Duration"
+        },
+        "style": "form"
+      },
       "async_search.submit#keep_on_completion": {
         "in": "query",
         "name": "keep_on_completion",
@@ -98471,6 +99062,16 @@
         },
         "style": "simple"
       },
+      "bulk#include_source_on_error": {
+        "in": "query",
+        "name": "include_source_on_error",
+        "description": "True or false if to include the document source in the error message in case of parsing errors.",
+        "deprecated": false,
+        "schema": {
+          "type": "boolean"
+        },
+        "style": "form"
+      },
       "bulk#list_executed_pipelines": {
         "in": "query",
         "name": "list_executed_pipelines",
@@ -98592,6 +99193,26 @@
         },
         "style": "simple"
       },
+      "cat.aliases#h": {
+        "in": "query",
+        "name": "h",
+        "description": "List of columns to appear in the response. Supports simple wildcards.",
+        "deprecated": false,
+        "schema": {
+          "$ref": "#/components/schemas/_types:Names"
+        },
+        "style": "form"
+      },
+      "cat.aliases#s": {
+        "in": "query",
+        "name": "s",
+        "description": "List of columns that determine how the table should be sorted.\nSorting defaults to ascending and can be changed by setting `:asc`\nor `:desc` as a suffix to the column name.",
+        "deprecated": false,
+        "schema": {
+          "$ref": "#/components/schemas/_types:Names"
+        },
+        "style": "form"
+      },
       "cat.aliases#expand_wildcards": {
         "in": "query",
         "name": "expand_wildcards",
@@ -98643,6 +99264,26 @@
         },
         "style": "form"
       },
+      "cat.allocation#h": {
+        "in": "query",
+        "name": "h",
+        "description": "List of columns to appear in the response. Supports simple wildcards.",
+        "deprecated": false,
+        "schema": {
+          "$ref": "#/components/schemas/_types:Names"
+        },
+        "style": "form"
+      },
+      "cat.allocation#s": {
+        "in": "query",
+        "name": "s",
+        "description": "List of columns that determine how the table should be sorted.\nSorting defaults to ascending and can be changed by setting `:asc`\nor `:desc` as a suffix to the column name.",
+        "deprecated": false,
+        "schema": {
+          "$ref": "#/components/schemas/_types:Names"
+        },
+        "style": "form"
+      },
       "cat.allocation#local": {
         "in": "query",
         "name": "local",
@@ -98673,6 +99314,26 @@
           "type": "string"
         },
         "style": "simple"
+      },
+      "cat.component_templates#h": {
+        "in": "query",
+        "name": "h",
+        "description": "List of columns to appear in the response. Supports simple wildcards.",
+        "deprecated": false,
+        "schema": {
+          "$ref": "#/components/schemas/_types:Names"
+        },
+        "style": "form"
+      },
+      "cat.component_templates#s": {
+        "in": "query",
+        "name": "s",
+        "description": "List of columns that determine how the table should be sorted.\nSorting defaults to ascending and can be changed by setting `:asc`\nor `:desc` as a suffix to the column name.",
+        "deprecated": false,
+        "schema": {
+          "$ref": "#/components/schemas/_types:Names"
+        },
+        "style": "form"
       },
       "cat.component_templates#local": {
         "in": "query",
@@ -98705,6 +99366,26 @@
         },
         "style": "simple"
       },
+      "cat.count#h": {
+        "in": "query",
+        "name": "h",
+        "description": "List of columns to appear in the response. Supports simple wildcards.",
+        "deprecated": false,
+        "schema": {
+          "$ref": "#/components/schemas/_types:Names"
+        },
+        "style": "form"
+      },
+      "cat.count#s": {
+        "in": "query",
+        "name": "s",
+        "description": "List of columns that determine how the table should be sorted.\nSorting defaults to ascending and can be changed by setting `:asc`\nor `:desc` as a suffix to the column name.",
+        "deprecated": false,
+        "schema": {
+          "$ref": "#/components/schemas/_types:Names"
+        },
+        "style": "form"
+      },
       "cat.fielddata#fields": {
         "in": "path",
         "name": "fields",
@@ -98733,6 +99414,26 @@
         "deprecated": false,
         "schema": {
           "$ref": "#/components/schemas/_types:Fields"
+        },
+        "style": "form"
+      },
+      "cat.fielddata#h": {
+        "in": "query",
+        "name": "h",
+        "description": "List of columns to appear in the response. Supports simple wildcards.",
+        "deprecated": false,
+        "schema": {
+          "$ref": "#/components/schemas/_types:Names"
+        },
+        "style": "form"
+      },
+      "cat.fielddata#s": {
+        "in": "query",
+        "name": "s",
+        "description": "List of columns that determine how the table should be sorted.\nSorting defaults to ascending and can be changed by setting `:asc`\nor `:desc` as a suffix to the column name.",
+        "deprecated": false,
+        "schema": {
+          "$ref": "#/components/schemas/_types:Names"
         },
         "style": "form"
       },
@@ -98814,6 +99515,26 @@
         "deprecated": false,
         "schema": {
           "$ref": "#/components/schemas/_types:Duration"
+        },
+        "style": "form"
+      },
+      "cat.indices#h": {
+        "in": "query",
+        "name": "h",
+        "description": "List of columns to appear in the response. Supports simple wildcards.",
+        "deprecated": false,
+        "schema": {
+          "$ref": "#/components/schemas/_types:Names"
+        },
+        "style": "form"
+      },
+      "cat.indices#s": {
+        "in": "query",
+        "name": "s",
+        "description": "List of columns that determine how the table should be sorted.\nSorting defaults to ascending and can be changed by setting `:asc`\nor `:desc` as a suffix to the column name.",
+        "deprecated": false,
+        "schema": {
+          "$ref": "#/components/schemas/_types:Names"
         },
         "style": "form"
       },
@@ -99112,6 +99833,36 @@
         },
         "style": "form"
       },
+      "cat.recovery#index_": {
+        "in": "query",
+        "name": "index",
+        "description": "Comma-separated list or wildcard expression of index names to limit the returned information",
+        "deprecated": false,
+        "schema": {
+          "$ref": "#/components/schemas/_types:Indices"
+        },
+        "style": "form"
+      },
+      "cat.recovery#h": {
+        "in": "query",
+        "name": "h",
+        "description": "List of columns to appear in the response. Supports simple wildcards.",
+        "deprecated": false,
+        "schema": {
+          "$ref": "#/components/schemas/_types:Names"
+        },
+        "style": "form"
+      },
+      "cat.recovery#s": {
+        "in": "query",
+        "name": "s",
+        "description": "List of columns that determine how the table should be sorted.\nSorting defaults to ascending and can be changed by setting `:asc`\nor `:desc` as a suffix to the column name.",
+        "deprecated": false,
+        "schema": {
+          "$ref": "#/components/schemas/_types:Names"
+        },
+        "style": "form"
+      },
       "cat.recovery#time": {
         "in": "query",
         "name": "time",
@@ -99140,6 +99891,26 @@
         "deprecated": false,
         "schema": {
           "$ref": "#/components/schemas/_types:Bytes"
+        },
+        "style": "form"
+      },
+      "cat.segments#h": {
+        "in": "query",
+        "name": "h",
+        "description": "List of columns to appear in the response. Supports simple wildcards.",
+        "deprecated": false,
+        "schema": {
+          "$ref": "#/components/schemas/_types:Names"
+        },
+        "style": "form"
+      },
+      "cat.segments#s": {
+        "in": "query",
+        "name": "s",
+        "description": "List of columns that determine how the table should be sorted.\nSorting defaults to ascending and can be changed by setting `:asc`\nor `:desc` as a suffix to the column name.",
+        "deprecated": false,
+        "schema": {
+          "$ref": "#/components/schemas/_types:Names"
         },
         "style": "form"
       },
@@ -99184,6 +99955,26 @@
         },
         "style": "form"
       },
+      "cat.shards#h": {
+        "in": "query",
+        "name": "h",
+        "description": "List of columns to appear in the response. Supports simple wildcards.",
+        "deprecated": false,
+        "schema": {
+          "$ref": "#/components/schemas/_types:Names"
+        },
+        "style": "form"
+      },
+      "cat.shards#s": {
+        "in": "query",
+        "name": "s",
+        "description": "List of columns that determine how the table should be sorted.\nSorting defaults to ascending and can be changed by setting `:asc`\nor `:desc` as a suffix to the column name.",
+        "deprecated": false,
+        "schema": {
+          "$ref": "#/components/schemas/_types:Names"
+        },
+        "style": "form"
+      },
       "cat.shards#master_timeout": {
         "in": "query",
         "name": "master_timeout",
@@ -99225,6 +100016,26 @@
         },
         "style": "form"
       },
+      "cat.snapshots#h": {
+        "in": "query",
+        "name": "h",
+        "description": "List of columns to appear in the response. Supports simple wildcards.",
+        "deprecated": false,
+        "schema": {
+          "$ref": "#/components/schemas/_types:Names"
+        },
+        "style": "form"
+      },
+      "cat.snapshots#s": {
+        "in": "query",
+        "name": "s",
+        "description": "List of columns that determine how the table should be sorted.\nSorting defaults to ascending and can be changed by setting `:asc`\nor `:desc` as a suffix to the column name.",
+        "deprecated": false,
+        "schema": {
+          "$ref": "#/components/schemas/_types:Names"
+        },
+        "style": "form"
+      },
       "cat.snapshots#master_timeout": {
         "in": "query",
         "name": "master_timeout",
@@ -99256,6 +100067,26 @@
         },
         "style": "simple"
       },
+      "cat.templates#h": {
+        "in": "query",
+        "name": "h",
+        "description": "List of columns to appear in the response. Supports simple wildcards.",
+        "deprecated": false,
+        "schema": {
+          "$ref": "#/components/schemas/_types:Names"
+        },
+        "style": "form"
+      },
+      "cat.templates#s": {
+        "in": "query",
+        "name": "s",
+        "description": "List of columns that determine how the table should be sorted.\nSorting defaults to ascending and can be changed by setting `:asc`\nor `:desc` as a suffix to the column name.",
+        "deprecated": false,
+        "schema": {
+          "$ref": "#/components/schemas/_types:Names"
+        },
+        "style": "form"
+      },
       "cat.templates#local": {
         "in": "query",
         "name": "local",
@@ -99286,6 +100117,26 @@
           "$ref": "#/components/schemas/_types:Names"
         },
         "style": "simple"
+      },
+      "cat.thread_pool#h": {
+        "in": "query",
+        "name": "h",
+        "description": "List of columns to appear in the response. Supports simple wildcards.",
+        "deprecated": false,
+        "schema": {
+          "$ref": "#/components/schemas/_types:Names"
+        },
+        "style": "form"
+      },
+      "cat.thread_pool#s": {
+        "in": "query",
+        "name": "s",
+        "description": "List of columns that determine how the table should be sorted.\nSorting defaults to ascending and can be changed by setting `:asc`\nor `:desc` as a suffix to the column name.",
+        "deprecated": false,
+        "schema": {
+          "$ref": "#/components/schemas/_types:Names"
+        },
+        "style": "form"
       },
       "cat.thread_pool#time": {
         "in": "query",
@@ -99391,7 +100242,7 @@
       "ccr.get_auto_follow_pattern#name": {
         "in": "path",
         "name": "name",
-        "description": "Specifies the auto-follow pattern collection that you want to retrieve. If you do not specify a name, the API returns information for all collections.",
+        "description": "The auto-follow pattern collection that you want to retrieve.\nIf you do not specify a name, the API returns information for all collections.",
         "required": true,
         "deprecated": false,
         "schema": {
@@ -99402,7 +100253,7 @@
       "ccr.get_auto_follow_pattern#master_timeout": {
         "in": "query",
         "name": "master_timeout",
-        "description": "Period to wait for a connection to the master node.",
+        "description": "The period to wait for a connection to the master node.\nIf the master node is not available before the timeout expires, the request fails and returns an error.\nIt can also be set to `-1` to indicate that the request should never timeout.",
         "deprecated": false,
         "schema": {
           "$ref": "#/components/schemas/_types:Duration"
@@ -99976,6 +100827,16 @@
           "$ref": "#/components/schemas/_types:IndexName"
         },
         "style": "simple"
+      },
+      "create#include_source_on_error": {
+        "in": "query",
+        "name": "include_source_on_error",
+        "description": "True or false if to include the document source in the error message in case of parsing errors.",
+        "deprecated": false,
+        "schema": {
+          "type": "boolean"
+        },
+        "style": "form"
       },
       "create#pipeline": {
         "in": "query",
@@ -101130,6 +101991,16 @@
         "deprecated": false,
         "schema": {
           "$ref": "#/components/schemas/_types:SequenceNumber"
+        },
+        "style": "form"
+      },
+      "index#include_source_on_error": {
+        "in": "query",
+        "name": "include_source_on_error",
+        "description": "True or false if to include the document source in the error message in case of parsing errors.",
+        "deprecated": false,
+        "schema": {
+          "type": "boolean"
         },
         "style": "form"
       },
@@ -102481,6 +103352,67 @@
         "deprecated": false,
         "schema": {
           "type": "boolean"
+        },
+        "style": "form"
+      },
+      "indices.resolve_cluster#name": {
+        "in": "path",
+        "name": "name",
+        "description": "A comma-separated list of names or index patterns for the indices, aliases, and data streams to resolve.\nResources on remote clusters can be specified using the `<cluster>`:`<name>` syntax.\nIndex and cluster exclusions (e.g., `-cluster1:*`) are also supported.\nIf no index expression is specified, information about all remote clusters configured on the local cluster\nis returned without doing any index matching",
+        "required": true,
+        "deprecated": false,
+        "schema": {
+          "$ref": "#/components/schemas/_types:Names"
+        },
+        "style": "simple"
+      },
+      "indices.resolve_cluster#allow_no_indices": {
+        "in": "query",
+        "name": "allow_no_indices",
+        "description": "If false, the request returns an error if any wildcard expression, index alias, or `_all` value targets only missing\nor closed indices. This behavior applies even if the request targets other open indices. For example, a request\ntargeting `foo*,bar*` returns an error if an index starts with `foo` but no index starts with `bar`.\nNOTE: This option is only supported when specifying an index expression. You will get an error if you specify index\noptions to the `_resolve/cluster` API endpoint that takes no index expression.",
+        "deprecated": false,
+        "schema": {
+          "type": "boolean"
+        },
+        "style": "form"
+      },
+      "indices.resolve_cluster#expand_wildcards": {
+        "in": "query",
+        "name": "expand_wildcards",
+        "description": "Type of index that wildcard patterns can match.\nIf the request can target data streams, this argument determines whether wildcard expressions match hidden data streams.\nSupports comma-separated values, such as `open,hidden`.\nValid values are: `all`, `open`, `closed`, `hidden`, `none`.\nNOTE: This option is only supported when specifying an index expression. You will get an error if you specify index\noptions to the `_resolve/cluster` API endpoint that takes no index expression.",
+        "deprecated": false,
+        "schema": {
+          "$ref": "#/components/schemas/_types:ExpandWildcards"
+        },
+        "style": "form"
+      },
+      "indices.resolve_cluster#ignore_throttled": {
+        "in": "query",
+        "name": "ignore_throttled",
+        "description": "If true, concrete, expanded, or aliased indices are ignored when frozen.\nNOTE: This option is only supported when specifying an index expression. You will get an error if you specify index\noptions to the `_resolve/cluster` API endpoint that takes no index expression.",
+        "deprecated": true,
+        "schema": {
+          "type": "boolean"
+        },
+        "style": "form"
+      },
+      "indices.resolve_cluster#ignore_unavailable": {
+        "in": "query",
+        "name": "ignore_unavailable",
+        "description": "If false, the request returns an error if it targets a missing or closed index.\nNOTE: This option is only supported when specifying an index expression. You will get an error if you specify index\noptions to the `_resolve/cluster` API endpoint that takes no index expression.",
+        "deprecated": false,
+        "schema": {
+          "type": "boolean"
+        },
+        "style": "form"
+      },
+      "indices.resolve_cluster#timeout": {
+        "in": "query",
+        "name": "timeout",
+        "description": "The maximum time to wait for remote clusters to respond.\nIf a remote cluster does not respond within this timeout period, the API response\nwill show the cluster as not connected and include an error message that the\nrequest timed out.\n\nThe default timeout is unset and the query can take\nas long as the networking layer is configured to wait for remote clusters that are\nnot responding (typically 30 seconds).",
+        "deprecated": false,
+        "schema": {
+          "$ref": "#/components/schemas/_types:Duration"
         },
         "style": "form"
       },
@@ -108047,9 +108979,11 @@
                   "$ref": "#/components/schemas/_types:Duration"
                 },
                 "allow_partial_search_results": {
+                  "description": "Allow query execution also in case of shard failures.\nIf true, the query will keep running and will return results based on the available shards.\nFor sequences, the behavior can be further refined using allow_partial_sequence_results",
                   "type": "boolean"
                 },
                 "allow_partial_sequence_results": {
+                  "description": "This flag applies only to sequences and has effect only if allow_partial_search_results=true.\nIf true, the sequence query will return results based on the available shards, ignoring the others.\nIf false, the sequence query will return successfully, but will always have empty results.",
                   "type": "boolean"
                 },
                 "size": {
@@ -108515,23 +109449,13 @@
                 },
                 "dynamic_templates": {
                   "description": "Specify dynamic templates for the mapping.",
-                  "oneOf": [
-                    {
-                      "type": "object",
-                      "additionalProperties": {
-                        "$ref": "#/components/schemas/_types.mapping:DynamicTemplate"
-                      }
-                    },
-                    {
-                      "type": "array",
-                      "items": {
-                        "type": "object",
-                        "additionalProperties": {
-                          "$ref": "#/components/schemas/_types.mapping:DynamicTemplate"
-                        }
-                      }
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "additionalProperties": {
+                      "$ref": "#/components/schemas/_types.mapping:DynamicTemplate"
                     }
-                  ]
+                  }
                 },
                 "_field_names": {
                   "$ref": "#/components/schemas/_types.mapping:FieldNamesField"

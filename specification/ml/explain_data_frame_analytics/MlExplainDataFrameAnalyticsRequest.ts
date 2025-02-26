@@ -29,6 +29,7 @@ import { integer } from '@_types/Numeric'
 
 /**
  * Explain data frame analytics config.
+ *
  * This API provides explanations for a data frame analytics config that either
  * exists already or one that has not been created yet. The following
  * explanations are provided:

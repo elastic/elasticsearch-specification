@@ -22,6 +22,7 @@ import { Duration } from '@_types/Time'
 
 /**
  * Upgrade all transforms.
+ *
  * Transforms are compatible across minor versions and between supported major versions.
  * However, over time, the format of transform configuration information may change.
  * This API identifies transforms that have a legacy configuration format and upgrades them to the latest version.

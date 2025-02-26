@@ -32,7 +32,7 @@
           {
             "in": "query",
             "name": "keep_alive",
-            "description": "Specifies how long the async search should be available in the cluster.\nWhen not specified, the `keep_alive` set with the corresponding submit async request will be used.\nOtherwise, it is possible to override the value and extend the validity of the request.\nWhen this period expires, the search, if still running, is cancelled.\nIf the search is completed, its saved results are deleted.",
+            "description": "The length of time that the async search should be available in the cluster.\nWhen not specified, the `keep_alive` set with the corresponding submit async request will be used.\nOtherwise, it is possible to override the value and extend the validity of the request.\nWhen this period expires, the search, if still running, is cancelled.\nIf the search is completed, its saved results are deleted.",
             "deprecated": false,
             "schema": {
               "$ref": "#/components/schemas/_types:Duration"
@@ -115,7 +115,7 @@
           "search"
         ],
         "summary": "Get the async search status",
-        "description": "Get the status of a previously submitted async search request given its identifier, without retrieving search results.\nIf the Elasticsearch security features are enabled, use of this API is restricted to the `monitoring_user` role.",
+        "description": "Get the status of a previously submitted async search request given its identifier, without retrieving search results.\nIf the Elasticsearch security features are enabled, the access to the status of a specific async search is restricted to:\n\n* The user or API key that submitted the original async search request.\n* Users that have the `monitor` cluster privilege or greater privileges.",
         "operationId": "async-search-status",
         "parameters": [
           {
@@ -132,7 +132,7 @@
           {
             "in": "query",
             "name": "keep_alive",
-            "description": "Specifies how long the async search needs to be available.\nOngoing async searches and any saved search results are deleted after this period.",
+            "description": "The length of time that the async search needs to be available.\nOngoing async searches and any saved search results are deleted after this period.",
             "deprecated": false,
             "schema": {
               "$ref": "#/components/schemas/_types:Duration"
@@ -166,6 +166,9 @@
         "parameters": [
           {
             "$ref": "#/components/parameters/async_search.submit#wait_for_completion_timeout"
+          },
+          {
+            "$ref": "#/components/parameters/async_search.submit#keep_alive"
           },
           {
             "$ref": "#/components/parameters/async_search.submit#keep_on_completion"
@@ -321,6 +324,9 @@
             "$ref": "#/components/parameters/async_search.submit#wait_for_completion_timeout"
           },
           {
+            "$ref": "#/components/parameters/async_search.submit#keep_alive"
+          },
+          {
             "$ref": "#/components/parameters/async_search.submit#keep_on_completion"
           },
           {
@@ -468,6 +474,9 @@
         "operationId": "bulk-1",
         "parameters": [
           {
+            "$ref": "#/components/parameters/bulk#include_source_on_error"
+          },
+          {
             "$ref": "#/components/parameters/bulk#list_executed_pipelines"
           },
           {
@@ -518,6 +527,9 @@
         "description": "Perform multiple `index`, `create`, `delete`, and `update` actions in a single request.\nThis reduces overhead and can greatly increase indexing speed.\n\nIf the Elasticsearch security features are enabled, you must have the following index privileges for the target data stream, index, or index alias:\n\n* To use the `create` action, you must have the `create_doc`, `create`, `index`, or `write` index privilege. Data streams support only the `create` action.\n* To use the `index` action, you must have the `create`, `index`, or `write` index privilege.\n* To use the `delete` action, you must have the `delete` or `write` index privilege.\n* To use the `update` action, you must have the `index` or `write` index privilege.\n* To automatically create a data stream or index with a bulk API request, you must have the `auto_configure`, `create_index`, or `manage` index privilege.\n* To make the result of a bulk operation visible to search using the `refresh` parameter, you must have the `maintenance` or `manage` index privilege.\n\nAutomatic data stream creation requires a matching index template with data stream enabled.\n\nThe actions are specified in the request body using a newline delimited JSON (NDJSON) structure:\n\n```\naction_and_meta_data\\n\noptional_source\\n\naction_and_meta_data\\n\noptional_source\\n\n....\naction_and_meta_data\\n\noptional_source\\n\n```\n\nThe `index` and `create` actions expect a source on the next line and have the same semantics as the `op_type` parameter in the standard index API.\nA `create` action fails if a document with the same ID already exists in the target\nAn `index` action adds or replaces a document as necessary.\n\nNOTE: Data streams support only the `create` action.\nTo update or delete a document in a data stream, you must target the backing index containing the document.\n\nAn `update` action expects that the partial doc, upsert, and script and its options are specified on the next line.\n\nA `delete` action does not expect a source on the next line and has the same semantics as the standard delete API.\n\nNOTE: The final line of data must end with a newline character (`\\n`).\nEach newline character may be preceded by a carriage return (`\\r`).\nWhen sending NDJSON data to the `_bulk` endpoint, use a `Content-Type` header of `application/json` or `application/x-ndjson`.\nBecause this format uses literal newline characters (`\\n`) as delimiters, make sure that the JSON actions and sources are not pretty printed.\n\nIf you provide a target in the request path, it is used for any actions that don't explicitly specify an `_index` argument.\n\nA note on the format: the idea here is to make processing as fast as possible.\nAs some of the actions are redirected to other shards on other nodes, only `action_meta_data` is parsed on the receiving node side.\n\nClient libraries using this protocol should try and strive to do something similar on the client side, and reduce buffering as much as possible.\n\nThere is no \"correct\" number of actions to perform in a single bulk request.\nExperiment with different settings to find the optimal size for your particular workload.\nNote that Elasticsearch limits the maximum size of a HTTP request to 100mb by default so clients must ensure that no request exceeds this size.\nIt is not possible to index a single document that exceeds the size limit, so you must pre-process any such documents into smaller pieces before sending them to Elasticsearch.\nFor instance, split documents into pages or chapters before indexing them, or store raw binary data in a system outside Elasticsearch and replace the raw data with a link to the external system in the documents that you send to Elasticsearch.\n\n**Client suppport for bulk requests**\n\nSome of the officially supported clients provide helpers to assist with bulk requests and reindexing:\n\n* Go: Check out `esutil.BulkIndexer`\n* Perl: Check out `Search::Elasticsearch::Client::5_0::Bulk` and `Search::Elasticsearch::Client::5_0::Scroll`\n* Python: Check out `elasticsearch.helpers.*`\n* JavaScript: Check out `client.helpers.*`\n* .NET: Check out `BulkAllObservable`\n* PHP: Check out bulk indexing.\n\n**Submitting bulk requests with cURL**\n\nIf you're providing text file input to `curl`, you must use the `--data-binary` flag instead of plain `-d`.\nThe latter doesn't preserve newlines. For example:\n\n```\n$ cat requests\n{ \"index\" : { \"_index\" : \"test\", \"_id\" : \"1\" } }\n{ \"field1\" : \"value1\" }\n$ curl -s -H \"Content-Type: application/x-ndjson\" -XPOST localhost:9200/_bulk --data-binary \"@requests\"; echo\n{\"took\":7, \"errors\": false, \"items\":[{\"index\":{\"_index\":\"test\",\"_id\":\"1\",\"_version\":1,\"result\":\"created\",\"forced_refresh\":false}}]}\n```\n\n**Optimistic concurrency control**\n\nEach `index` and `delete` action within a bulk API call may include the `if_seq_no` and `if_primary_term` parameters in their respective action and meta data lines.\nThe `if_seq_no` and `if_primary_term` parameters control how operations are run, based on the last modification to existing documents. See Optimistic concurrency control for more details.\n\n**Versioning**\n\nEach bulk item can include the version value using the `version` field.\nIt automatically follows the behavior of the index or delete operation based on the `_version` mapping.\nIt also support the `version_type`.\n\n**Routing**\n\nEach bulk item can include the routing value using the `routing` field.\nIt automatically follows the behavior of the index or delete operation based on the `_routing` mapping.\n\nNOTE: Data streams do not support custom routing unless they were created with the `allow_custom_routing` setting enabled in the template.\n\n**Wait for active shards**\n\nWhen making bulk calls, you can set the `wait_for_active_shards` parameter to require a minimum number of shard copies to be active before starting to process the bulk request.\n\n**Refresh**\n\nControl when the changes made by this request are visible to search.\n\nNOTE: Only the shards that receive the bulk request will be affected by refresh.\nImagine a `_bulk?refresh=wait_for` request with three documents in it that happen to be routed to different shards in an index with five shards.\nThe request will only wait for those three shards to refresh.\nThe other two shards that make up the index do not participate in the `_bulk` request at all.",
         "operationId": "bulk",
         "parameters": [
+          {
+            "$ref": "#/components/parameters/bulk#include_source_on_error"
+          },
           {
             "$ref": "#/components/parameters/bulk#list_executed_pipelines"
           },
@@ -575,6 +587,9 @@
             "$ref": "#/components/parameters/bulk#index"
           },
           {
+            "$ref": "#/components/parameters/bulk#include_source_on_error"
+          },
+          {
             "$ref": "#/components/parameters/bulk#list_executed_pipelines"
           },
           {
@@ -627,6 +642,9 @@
         "parameters": [
           {
             "$ref": "#/components/parameters/bulk#index"
+          },
+          {
+            "$ref": "#/components/parameters/bulk#include_source_on_error"
           },
           {
             "$ref": "#/components/parameters/bulk#list_executed_pipelines"
@@ -682,6 +700,12 @@
         "operationId": "cat-aliases",
         "parameters": [
           {
+            "$ref": "#/components/parameters/cat.aliases#h"
+          },
+          {
+            "$ref": "#/components/parameters/cat.aliases#s"
+          },
+          {
             "$ref": "#/components/parameters/cat.aliases#expand_wildcards"
           },
           {
@@ -711,6 +735,12 @@
             "$ref": "#/components/parameters/cat.aliases#name"
           },
           {
+            "$ref": "#/components/parameters/cat.aliases#h"
+          },
+          {
+            "$ref": "#/components/parameters/cat.aliases#s"
+          },
+          {
             "$ref": "#/components/parameters/cat.aliases#expand_wildcards"
           },
           {
@@ -736,6 +766,12 @@
         "description": "Get information about component templates in a cluster.\nComponent templates are building blocks for constructing index templates that specify index mappings, settings, and aliases.\n\nIMPORTANT: CAT APIs are only intended for human consumption using the command line or Kibana console.\nThey are not intended for use by applications. For application consumption, use the get component template API.",
         "operationId": "cat-component-templates",
         "parameters": [
+          {
+            "$ref": "#/components/parameters/cat.component_templates#h"
+          },
+          {
+            "$ref": "#/components/parameters/cat.component_templates#s"
+          },
           {
             "$ref": "#/components/parameters/cat.component_templates#local"
           },
@@ -764,6 +800,12 @@
             "$ref": "#/components/parameters/cat.component_templates#name"
           },
           {
+            "$ref": "#/components/parameters/cat.component_templates#h"
+          },
+          {
+            "$ref": "#/components/parameters/cat.component_templates#s"
+          },
+          {
             "$ref": "#/components/parameters/cat.component_templates#local"
           },
           {
@@ -786,6 +828,14 @@
         "summary": "Get a document count",
         "description": "Get quick access to a document count for a data stream, an index, or an entire cluster.\nThe document count only includes live documents, not deleted documents which have not yet been removed by the merge process.\n\nIMPORTANT: CAT APIs are only intended for human consumption using the command line or Kibana console.\nThey are not intended for use by applications. For application consumption, use the count API.",
         "operationId": "cat-count",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/cat.count#h"
+          },
+          {
+            "$ref": "#/components/parameters/cat.count#s"
+          }
+        ],
         "responses": {
           "200": {
             "$ref": "#/components/responses/cat.count#200"
@@ -804,6 +854,12 @@
         "parameters": [
           {
             "$ref": "#/components/parameters/cat.count#index"
+          },
+          {
+            "$ref": "#/components/parameters/cat.count#h"
+          },
+          {
+            "$ref": "#/components/parameters/cat.count#s"
           }
         ],
         "responses": {
@@ -864,6 +920,12 @@
           },
           {
             "$ref": "#/components/parameters/cat.indices#master_timeout"
+          },
+          {
+            "$ref": "#/components/parameters/cat.indices#h"
+          },
+          {
+            "$ref": "#/components/parameters/cat.indices#s"
           }
         ],
         "responses": {
@@ -905,6 +967,12 @@
           },
           {
             "$ref": "#/components/parameters/cat.indices#master_timeout"
+          },
+          {
+            "$ref": "#/components/parameters/cat.indices#h"
+          },
+          {
+            "$ref": "#/components/parameters/cat.indices#s"
           }
         ],
         "responses": {
@@ -3447,6 +3515,9 @@
             "$ref": "#/components/parameters/create#id"
           },
           {
+            "$ref": "#/components/parameters/create#include_source_on_error"
+          },
+          {
             "$ref": "#/components/parameters/create#pipeline"
           },
           {
@@ -3494,6 +3565,9 @@
           },
           {
             "$ref": "#/components/parameters/create#id"
+          },
+          {
+            "$ref": "#/components/parameters/create#include_source_on_error"
           },
           {
             "$ref": "#/components/parameters/create#pipeline"
@@ -3697,6 +3771,9 @@
             "$ref": "#/components/parameters/index#if_seq_no"
           },
           {
+            "$ref": "#/components/parameters/index#include_source_on_error"
+          },
+          {
             "$ref": "#/components/parameters/index#op_type"
           },
           {
@@ -3755,6 +3832,9 @@
           },
           {
             "$ref": "#/components/parameters/index#if_seq_no"
+          },
+          {
+            "$ref": "#/components/parameters/index#include_source_on_error"
           },
           {
             "$ref": "#/components/parameters/index#op_type"
@@ -5269,6 +5349,10 @@
                         "$ref": "#/components/schemas/esql._types:TableValuesContainer"
                       }
                     }
+                  },
+                  "include_ccs_metadata": {
+                    "description": "When set to `true` and performing a cross-cluster query, the response will include an extra `_clusters`\nobject with information about the clusters that participated in the search along with info such as shards\ncount.",
+                    "type": "boolean"
                   }
                 },
                 "required": [
@@ -5962,6 +6046,9 @@
           },
           {
             "$ref": "#/components/parameters/index#if_seq_no"
+          },
+          {
+            "$ref": "#/components/parameters/index#include_source_on_error"
           },
           {
             "$ref": "#/components/parameters/index#op_type"
@@ -7160,11 +7247,22 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/indices._types:DataStreamLifecycle"
+                "type": "object",
+                "properties": {
+                  "data_retention": {
+                    "$ref": "#/components/schemas/_types:Duration"
+                  },
+                  "downsampling": {
+                    "$ref": "#/components/schemas/indices._types:DataStreamLifecycleDownsampling"
+                  },
+                  "enabled": {
+                    "description": "If defined, it turns data stream lifecycle on/off (`true`/`false`) for this data stream. A data stream lifecycle\nthat's disabled (enabled: `false`) will have no effect on the data stream.",
+                    "type": "boolean"
+                  }
+                }
               }
             }
-          },
-          "required": true
+          }
         },
         "responses": {
           "200": {
@@ -10219,7 +10317,7 @@
           "ml anomaly"
         ],
         "summary": "Delete a calendar",
-        "description": "Removes all scheduled events from a calendar, then deletes it.",
+        "description": "Remove all scheduled events from a calendar, then delete it.",
         "operationId": "ml-delete-calendar",
         "parameters": [
           {
@@ -11684,7 +11782,7 @@
           "ml anomaly"
         ],
         "summary": "Estimate job model memory usage",
-        "description": "Makes an estimation of the memory usage for an anomaly detection job model.\nIt is based on analysis configuration details for the job and cardinality\nestimates for the fields it references.",
+        "description": "Make an estimation of the memory usage for an anomaly detection job model.\nThe estimate is based on analysis configuration details for the job and cardinality\nestimates for the fields it references.",
         "operationId": "ml-estimate-model-memory",
         "requestBody": {
           "content": {
@@ -13284,7 +13382,7 @@
           {
             "in": "query",
             "name": "number_of_allocations",
-            "description": "The number of model allocations on each node where the model is deployed.\nAll allocations on a node share the same copy of the model in memory but use\na separate set of threads to evaluate the model.\nIncreasing this value generally increases the throughput.\nIf this setting is greater than the number of hardware threads\nit will automatically be changed to a value less than the number of hardware threads.",
+            "description": "The number of model allocations on each node where the model is deployed.\nAll allocations on a node share the same copy of the model in memory but use\na separate set of threads to evaluate the model.\nIncreasing this value generally increases the throughput.\nIf this setting is greater than the number of hardware threads\nit will automatically be changed to a value less than the number of hardware threads.\nIf adaptive_allocations is enabled, do not set this value, because it’s automatically set.",
             "deprecated": false,
             "schema": {
               "type": "number"
@@ -13342,6 +13440,20 @@
             "style": "form"
           }
         ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "adaptive_allocations": {
+                    "$ref": "#/components/schemas/ml._types:AdaptiveAllocationsSettings"
+                  }
+                }
+              }
+            }
+          }
+        },
         "responses": {
           "200": {
             "description": "",
@@ -14236,8 +14348,11 @@
                 "type": "object",
                 "properties": {
                   "number_of_allocations": {
-                    "description": "The number of model allocations on each node where the model is deployed.\nAll allocations on a node share the same copy of the model in memory but use\na separate set of threads to evaluate the model.\nIncreasing this value generally increases the throughput.\nIf this setting is greater than the number of hardware threads\nit will automatically be changed to a value less than the number of hardware threads.",
+                    "description": "The number of model allocations on each node where the model is deployed.\nAll allocations on a node share the same copy of the model in memory but use\na separate set of threads to evaluate the model.\nIncreasing this value generally increases the throughput.\nIf this setting is greater than the number of hardware threads\nit will automatically be changed to a value less than the number of hardware threads.\nIf adaptive_allocations is enabled, do not set this value, because it’s automatically set.",
                     "type": "number"
+                  },
+                  "adaptive_allocations": {
+                    "$ref": "#/components/schemas/ml._types:AdaptiveAllocationsSettings"
                   }
                 }
               }
@@ -19424,7 +19539,7 @@
           "transform"
         ],
         "summary": "Reset a transform",
-        "description": "Resets a transform.\nBefore you can reset it, you must stop it; alternatively, use the `force` query parameter.\nIf the destination index was created by the transform, it is deleted.",
+        "description": "Before you can reset it, you must stop it; alternatively, use the `force` query parameter.\nIf the destination index was created by the transform, it is deleted.",
         "operationId": "transform-reset-transform",
         "parameters": [
           {
@@ -19480,7 +19595,7 @@
           "transform"
         ],
         "summary": "Schedule a transform to start now",
-        "description": "Instantly runs a transform to process data.\n\nIf you _schedule_now a transform, it will process the new data instantly,\nwithout waiting for the configured frequency interval. After _schedule_now API is called,\nthe transform will be processed again at now + frequency unless _schedule_now API\nis called again in the meantime.",
+        "description": "Instantly run a transform to process data.\nIf you run this API, the transform will process the new data instantly,\nwithout waiting for the configured frequency interval. After the API is called,\nthe transform will be processed again at `now + frequency` unless the API\nis called again in the meantime.",
         "operationId": "transform-schedule-now-transform",
         "parameters": [
           {
@@ -19526,7 +19641,7 @@
           "transform"
         ],
         "summary": "Start a transform",
-        "description": "Starts a transform.\n\nWhen you start a transform, it creates the destination index if it does not already exist. The `number_of_shards` is\nset to `1` and the `auto_expand_replicas` is set to `0-1`. If it is a pivot transform, it deduces the mapping\ndefinitions for the destination index from the source indices and the transform aggregations. If fields in the\ndestination index are derived from scripts (as in the case of `scripted_metric` or `bucket_script` aggregations),\nthe transform uses dynamic mappings unless an index template exists. If it is a latest transform, it does not deduce\nmapping definitions; it uses dynamic mappings. To use explicit mappings, create the destination index before you\nstart the transform. Alternatively, you can create an index template, though it does not affect the deduced mappings\nin a pivot transform.\n\nWhen the transform starts, a series of validations occur to ensure its success. If you deferred validation when you\ncreated the transform, they occur when you start the transform—​with the exception of privilege checks. When\nElasticsearch security features are enabled, the transform remembers which roles the user that created it had at the\ntime of creation and uses those same roles. If those roles do not have the required privileges on the source and\ndestination indices, the transform fails when it attempts unauthorized operations.",
+        "description": "When you start a transform, it creates the destination index if it does not already exist. The `number_of_shards` is\nset to `1` and the `auto_expand_replicas` is set to `0-1`. If it is a pivot transform, it deduces the mapping\ndefinitions for the destination index from the source indices and the transform aggregations. If fields in the\ndestination index are derived from scripts (as in the case of `scripted_metric` or `bucket_script` aggregations),\nthe transform uses dynamic mappings unless an index template exists. If it is a latest transform, it does not deduce\nmapping definitions; it uses dynamic mappings. To use explicit mappings, create the destination index before you\nstart the transform. Alternatively, you can create an index template, though it does not affect the deduced mappings\nin a pivot transform.\n\nWhen the transform starts, a series of validations occur to ensure its success. If you deferred validation when you\ncreated the transform, they occur when you start the transform—​with the exception of privilege checks. When\nElasticsearch security features are enabled, the transform remembers which roles the user that created it had at the\ntime of creation and uses those same roles. If those roles do not have the required privileges on the source and\ndestination indices, the transform fails when it attempts unauthorized operations.",
         "operationId": "transform-start-transform",
         "parameters": [
           {
@@ -19865,6 +19980,16 @@
             "deprecated": false,
             "schema": {
               "$ref": "#/components/schemas/_types:SequenceNumber"
+            },
+            "style": "form"
+          },
+          {
+            "in": "query",
+            "name": "include_source_on_error",
+            "description": "True or false if to include the document source in the error message in case of parsing errors.",
+            "deprecated": false,
+            "schema": {
+              "type": "boolean"
             },
             "style": "form"
           },
@@ -20522,7 +20647,7 @@
         "type": "object",
         "properties": {
           "aggregations": {
-            "description": "Partial aggregations results, coming from the shards that have already completed the execution of the query.",
+            "description": "Partial aggregations results, coming from the shards that have already completed running the query.",
             "type": "object",
             "additionalProperties": {
               "$ref": "#/components/schemas/_types.aggregations:Aggregate"
@@ -25505,7 +25630,7 @@
             "type": "boolean"
           },
           "is_running": {
-            "description": "Indicates whether the search is still running or has completed.\nNOTE: If the search failed after some shards returned their results or the node that is coordinating the async search dies, results may be partial even though `is_running` is `false`.",
+            "description": "Indicates whether the search is still running or has completed.\n\n> info\n> If the search failed after some shards returned their results or the node that is coordinating the async search dies, results may be partial even though `is_running` is `false`.",
             "type": "boolean"
           },
           "expiration_time": {
@@ -25560,7 +25685,7 @@
                 "$ref": "#/components/schemas/_types:ClusterStatistics"
               },
               "completion_status": {
-                "description": "If the async search completed, this field shows the status code of the search.\nFor example, 200 indicates that the async search was successfully completed.\n503 indicates that the async search was completed with an error.",
+                "description": "If the async search completed, this field shows the status code of the search.\nFor example, `200` indicates that the async search was successfully completed.\n`503` indicates that the async search was completed with an error.",
                 "type": "number"
               }
             },
@@ -33420,6 +33545,9 @@
             "description": "The HTTP status code returned for the operation.",
             "type": "number"
           },
+          "failure_store": {
+            "$ref": "#/components/schemas/_global.bulk:FailureStoreStatus"
+          },
           "error": {
             "$ref": "#/components/schemas/_types:ErrorCause"
           },
@@ -33450,6 +33578,15 @@
         "required": [
           "_index",
           "status"
+        ]
+      },
+      "_global.bulk:FailureStoreStatus": {
+        "type": "string",
+        "enum": [
+          "not_applicable_or_unknown",
+          "used",
+          "not_enabled",
+          "failed"
         ]
       },
       "_types:InlineGetDictUserDefined": {
@@ -35478,7 +35615,14 @@
             ]
           },
           "auto_expand_replicas": {
-            "type": "string"
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "$ref": "#/components/schemas/_spec_utils:NullValue"
+              }
+            ]
           },
           "merge": {
             "$ref": "#/components/schemas/indices._types:Merge"
@@ -35746,6 +35890,11 @@
             "type": "string"
           }
         ]
+      },
+      "_spec_utils:NullValue": {
+        "nullable": true,
+        "description": "A `null` value that is to be interpreted as an actual value, unless other uses of `null` that are equivalent\nto a missing value. It is used for exemple in settings, where using the `NullValue` for a setting will reset\nit to its default value.",
+        "type": "string"
       },
       "indices._types:Merge": {
         "type": "object",
@@ -44586,11 +44735,6 @@
           "scheduled"
         ]
       },
-      "_spec_utils:NullValue": {
-        "nullable": true,
-        "description": "A `null` value that is to be interpreted as an actual value, unless other uses of `null` that are equivalent\nto a missing value. It is used for exemple in settings, where using the `NullValue` for a setting will reset\nit to its default value.",
-        "type": "string"
-      },
       "_types:WriteResponseBase": {
         "type": "object",
         "properties": {
@@ -44666,17 +44810,13 @@
           },
           "status": {
             "type": "number"
-          },
-          "type": {
-            "type": "string"
           }
         },
         "required": [
           "cause",
           "id",
           "index",
-          "status",
-          "type"
+          "status"
         ]
       },
       "_types:Retries": {
@@ -46456,6 +46596,9 @@
       "inference._types:InferenceEndpoint": {
         "type": "object",
         "properties": {
+          "chunking_settings": {
+            "$ref": "#/components/schemas/inference._types:InferenceChunkingSettings"
+          },
           "service": {
             "description": "The service type",
             "type": "string"
@@ -46470,6 +46613,34 @@
         "required": [
           "service",
           "service_settings"
+        ]
+      },
+      "inference._types:InferenceChunkingSettings": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/inference._types:InferenceEndpoint"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "max_chunk_size": {
+                "description": "Specifies the maximum size of a chunk in words\nThis value cannot be higher than `300` or lower than `20` (for `sentence` strategy) or `10` (for `word` strategy)",
+                "type": "number"
+              },
+              "overlap": {
+                "description": "Specifies the number of overlapping words for chunks\nOnly for `word` chunking strategy\nThis value cannot be higher than the half of `max_chunk_size`",
+                "type": "number"
+              },
+              "sentence_overlap": {
+                "description": "Specifies the number of overlapping sentences for chunks\nOnly for `sentence` chunking strategy\nIt can be either `1` or `0`",
+                "type": "number"
+              },
+              "strategy": {
+                "description": "Specifies the chunking strategy\nIt could be either `sentence` or `word`",
+                "type": "string"
+              }
+            }
+          }
         ]
       },
       "inference._types:ServiceSettings": {
@@ -46587,7 +46758,7 @@
           "index": {
             "type": "number"
           },
-          "score": {
+          "relevance_score": {
             "type": "number"
           },
           "text": {
@@ -46596,7 +46767,7 @@
         },
         "required": [
           "index",
-          "score"
+          "relevance_score"
         ]
       },
       "inference.unified_inference:Message": {
@@ -52139,12 +52310,15 @@
         "type": "object",
         "properties": {
           "enabled": {
+            "description": "If true, adaptive_allocations is enabled",
             "type": "boolean"
           },
           "min_number_of_allocations": {
+            "description": "Specifies the minimum number of allocations to scale to.\nIf set, it must be greater than or equal to 0.\nIf not defined, the deployment scales to 0.",
             "type": "number"
           },
           "max_number_of_allocations": {
+            "description": "Specifies the maximum number of allocations to scale to.\nIf set, it must be greater than or equal to min_number_of_allocations.",
             "type": "number"
           }
         },
@@ -57958,6 +58132,16 @@
         },
         "style": "form"
       },
+      "async_search.submit#keep_alive": {
+        "in": "query",
+        "name": "keep_alive",
+        "description": "Specifies how long the async search needs to be available.\nOngoing async searches and any saved search results are deleted after this period.",
+        "deprecated": false,
+        "schema": {
+          "$ref": "#/components/schemas/_types:Duration"
+        },
+        "style": "form"
+      },
       "async_search.submit#keep_on_completion": {
         "in": "query",
         "name": "keep_on_completion",
@@ -58401,6 +58585,16 @@
         },
         "style": "simple"
       },
+      "bulk#include_source_on_error": {
+        "in": "query",
+        "name": "include_source_on_error",
+        "description": "True or false if to include the document source in the error message in case of parsing errors.",
+        "deprecated": false,
+        "schema": {
+          "type": "boolean"
+        },
+        "style": "form"
+      },
       "bulk#list_executed_pipelines": {
         "in": "query",
         "name": "list_executed_pipelines",
@@ -58522,6 +58716,26 @@
         },
         "style": "simple"
       },
+      "cat.aliases#h": {
+        "in": "query",
+        "name": "h",
+        "description": "List of columns to appear in the response. Supports simple wildcards.",
+        "deprecated": false,
+        "schema": {
+          "$ref": "#/components/schemas/_types:Names"
+        },
+        "style": "form"
+      },
+      "cat.aliases#s": {
+        "in": "query",
+        "name": "s",
+        "description": "List of columns that determine how the table should be sorted.\nSorting defaults to ascending and can be changed by setting `:asc`\nor `:desc` as a suffix to the column name.",
+        "deprecated": false,
+        "schema": {
+          "$ref": "#/components/schemas/_types:Names"
+        },
+        "style": "form"
+      },
       "cat.aliases#expand_wildcards": {
         "in": "query",
         "name": "expand_wildcards",
@@ -58563,6 +58777,26 @@
         },
         "style": "simple"
       },
+      "cat.component_templates#h": {
+        "in": "query",
+        "name": "h",
+        "description": "List of columns to appear in the response. Supports simple wildcards.",
+        "deprecated": false,
+        "schema": {
+          "$ref": "#/components/schemas/_types:Names"
+        },
+        "style": "form"
+      },
+      "cat.component_templates#s": {
+        "in": "query",
+        "name": "s",
+        "description": "List of columns that determine how the table should be sorted.\nSorting defaults to ascending and can be changed by setting `:asc`\nor `:desc` as a suffix to the column name.",
+        "deprecated": false,
+        "schema": {
+          "$ref": "#/components/schemas/_types:Names"
+        },
+        "style": "form"
+      },
       "cat.component_templates#local": {
         "in": "query",
         "name": "local",
@@ -58593,6 +58827,26 @@
           "$ref": "#/components/schemas/_types:Indices"
         },
         "style": "simple"
+      },
+      "cat.count#h": {
+        "in": "query",
+        "name": "h",
+        "description": "List of columns to appear in the response. Supports simple wildcards.",
+        "deprecated": false,
+        "schema": {
+          "$ref": "#/components/schemas/_types:Names"
+        },
+        "style": "form"
+      },
+      "cat.count#s": {
+        "in": "query",
+        "name": "s",
+        "description": "List of columns that determine how the table should be sorted.\nSorting defaults to ascending and can be changed by setting `:asc`\nor `:desc` as a suffix to the column name.",
+        "deprecated": false,
+        "schema": {
+          "$ref": "#/components/schemas/_types:Names"
+        },
+        "style": "form"
       },
       "cat.indices#index": {
         "in": "path",
@@ -58672,6 +58926,26 @@
         "deprecated": false,
         "schema": {
           "$ref": "#/components/schemas/_types:Duration"
+        },
+        "style": "form"
+      },
+      "cat.indices#h": {
+        "in": "query",
+        "name": "h",
+        "description": "List of columns to appear in the response. Supports simple wildcards.",
+        "deprecated": false,
+        "schema": {
+          "$ref": "#/components/schemas/_types:Names"
+        },
+        "style": "form"
+      },
+      "cat.indices#s": {
+        "in": "query",
+        "name": "s",
+        "description": "List of columns that determine how the table should be sorted.\nSorting defaults to ascending and can be changed by setting `:asc`\nor `:desc` as a suffix to the column name.",
+        "deprecated": false,
+        "schema": {
+          "$ref": "#/components/schemas/_types:Names"
         },
         "style": "form"
       },
@@ -59277,6 +59551,16 @@
         },
         "style": "simple"
       },
+      "create#include_source_on_error": {
+        "in": "query",
+        "name": "include_source_on_error",
+        "description": "True or false if to include the document source in the error message in case of parsing errors.",
+        "deprecated": false,
+        "schema": {
+          "type": "boolean"
+        },
+        "style": "form"
+      },
       "create#pipeline": {
         "in": "query",
         "name": "pipeline",
@@ -59763,6 +60047,16 @@
         "deprecated": false,
         "schema": {
           "$ref": "#/components/schemas/_types:SequenceNumber"
+        },
+        "style": "form"
+      },
+      "index#include_source_on_error": {
+        "in": "query",
+        "name": "include_source_on_error",
+        "description": "True or false if to include the document source in the error message in case of parsing errors.",
+        "deprecated": false,
+        "schema": {
+          "type": "boolean"
         },
         "style": "form"
       },
@@ -63602,9 +63896,11 @@
                   "$ref": "#/components/schemas/_types:Duration"
                 },
                 "allow_partial_search_results": {
+                  "description": "Allow query execution also in case of shard failures.\nIf true, the query will keep running and will return results based on the available shards.\nFor sequences, the behavior can be further refined using allow_partial_sequence_results",
                   "type": "boolean"
                 },
                 "allow_partial_sequence_results": {
+                  "description": "This flag applies only to sequences and has effect only if allow_partial_search_results=true.\nIf true, the sequence query will return results based on the available shards, ignoring the others.\nIf false, the sequence query will return successfully, but will always have empty results.",
                   "type": "boolean"
                 },
                 "size": {
@@ -63869,23 +64165,13 @@
                 },
                 "dynamic_templates": {
                   "description": "Specify dynamic templates for the mapping.",
-                  "oneOf": [
-                    {
-                      "type": "object",
-                      "additionalProperties": {
-                        "$ref": "#/components/schemas/_types.mapping:DynamicTemplate"
-                      }
-                    },
-                    {
-                      "type": "array",
-                      "items": {
-                        "type": "object",
-                        "additionalProperties": {
-                          "$ref": "#/components/schemas/_types.mapping:DynamicTemplate"
-                        }
-                      }
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "additionalProperties": {
+                      "$ref": "#/components/schemas/_types.mapping:DynamicTemplate"
                     }
-                  ]
+                  }
                 },
                 "_field_names": {
                   "$ref": "#/components/schemas/_types.mapping:FieldNamesField"
