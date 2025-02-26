@@ -29,6 +29,7 @@ import { integer } from '@_types/Numeric'
 
 /**
  * Explain data frame analytics config.
+ *
  * This API provides explanations for a data frame analytics config that either
  * exists already or one that has not been created yet. The following
  * explanations are provided:
@@ -40,6 +41,7 @@ import { integer } from '@_types/Numeric'
  * @availability serverless stability=stable visibility=private
  * @cluster_privileges monitor_ml
  * @doc_tag ml data frame
+ * @doc_id explain-dfanalytics
  */
 export interface Request extends RequestBase {
   urls: [

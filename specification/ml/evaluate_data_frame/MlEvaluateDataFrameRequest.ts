@@ -24,6 +24,7 @@ import { QueryContainer } from '@_types/query_dsl/abstractions'
 
 /**
  * Evaluate data frame analytics.
+ *
  * The API packages together commonly used evaluation metrics for various types
  * of machine learning features. This has been designed for use on indexes
  * created by data frame analytics. Evaluation requires both a ground truth
@@ -33,6 +34,7 @@ import { QueryContainer } from '@_types/query_dsl/abstractions'
  * @availability serverless stability=stable visibility=public
  * @cluster_privileges monitor_ml
  * @doc_tag ml data frame
+ * @doc_id evaluate-dfanalytics
  */
 export interface Request extends RequestBase {
   urls: [

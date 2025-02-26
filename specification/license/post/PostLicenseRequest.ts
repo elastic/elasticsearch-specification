@@ -23,6 +23,7 @@ import { Duration } from '@_types/Time'
 
 /**
  * Update the license.
+ *
  * You can update your license at runtime without shutting down your nodes.
  * License updates take effect immediately.
  * If the license you are installing does not support all of the features that were available with your previous license, however, you are notified in the response.
@@ -33,6 +34,7 @@ import { Duration } from '@_types/Time'
  * @rest_spec_name license.post
  * @availability stack stability=stable
  * @cluster_privileges manage
+ * @doc_id update-license
  */
 export interface Request extends RequestBase {
   urls: [
@@ -48,12 +50,12 @@ export interface Request extends RequestBase {
      */
     acknowledge?: boolean
     /**
-     * Period to wait for a connection to the master node.
+     * The period to wait for a connection to the master node.
      * @server_default 30s
      */
     master_timeout?: Duration
     /**
-     * Period to wait for a response. If no response is received before the timeout expires, the request fails and returns an error.
+     * The period to wait for a response. If no response is received before the timeout expires, the request fails and returns an error.
      * @server_default 30s
      */
     timeout?: Duration

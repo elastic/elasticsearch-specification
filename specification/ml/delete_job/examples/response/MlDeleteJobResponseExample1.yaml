@@ -1,0 +1,6 @@
+summary: Delete job
+description: A successful response when deleting an anomaly detection job.
+# type: response
+# response_code: 200
+value:
+  acknowledged: true

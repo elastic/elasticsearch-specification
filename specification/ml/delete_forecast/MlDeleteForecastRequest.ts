@@ -23,6 +23,7 @@ import { Duration } from '@_types/Time'
 
 /**
  * Delete forecasts from a job.
+ *
  * By default, forecasts are retained for 14 days. You can specify a
  * different retention period with the `expires_in` parameter in the forecast
  * jobs API. The delete forecast API enables you to delete one or more
@@ -32,6 +33,7 @@ import { Duration } from '@_types/Time'
  * @availability serverless stability=stable visibility=private
  * @cluster_privileges manage_ml
  * @doc_tag ml anomaly
+ * @doc_id ml-delete-forecast
  */
 export interface Request extends RequestBase {
   urls: [

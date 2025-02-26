@@ -43,6 +43,7 @@ import { Duration } from '@_types/Time'
  * @rest_spec_name health_report
  * @availability stack since=8.7.0 stability=stable
  * @availability serverless stability=stable visibility=private
+ * @doc_id health-api
  */
 export interface Request extends RequestBase {
   urls: [

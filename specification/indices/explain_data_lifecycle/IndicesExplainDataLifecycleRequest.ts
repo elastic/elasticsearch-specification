@@ -28,6 +28,7 @@ import { Duration } from '@_types/Time'
  * @availability stack since=8.11.0 stability=stable
  * @availability serverless stability=stable visibility=public
  * @doc_tag data stream
+ * @doc_id data-stream-explain-lifecycle
  */
 export interface Request extends RequestBase {
   urls: [

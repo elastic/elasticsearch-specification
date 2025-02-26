@@ -1,5 +1,5 @@
 summary: Dynamic templates
-method_request: POST /_bulk
+# method_request: POST /_bulk
 description: >
   Run `POST /_bulk` to perform a bulk request that consists of index and create actions with the `dynamic_templates` parameter.
   The bulk request creates two new fields `work_location` and `home_location` with type `geo_point` according to the `dynamic_templates` parameter.

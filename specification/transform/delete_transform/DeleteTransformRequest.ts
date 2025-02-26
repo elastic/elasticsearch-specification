@@ -23,11 +23,11 @@ import { Duration } from '@_types/Time'
 
 /**
  * Delete a transform.
- * Deletes a transform.
  * @rest_spec_name transform.delete_transform
  * @availability stack since=7.5.0 stability=stable
  * @availability serverless stability=stable visibility=public
  * @cluster_privileges manage_transform
+ * @doc_id delete-transform
  */
 export interface Request extends RequestBase {
   urls: [

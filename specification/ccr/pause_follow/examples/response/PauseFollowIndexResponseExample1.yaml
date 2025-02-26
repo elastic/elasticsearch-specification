@@ -1,0 +1,8 @@
+# summary:
+description: A successful response from `POST /follower_index/_ccr/pause_follow`, which pauses a follower index.
+# type: response
+# response_code: 200
+value: |-
+  {
+    "acknowledged" : true
+  }
