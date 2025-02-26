@@ -88,12 +88,6 @@
       ],
       "response": []
     },
-    "ilm.migrate_to_data_tiers": {
-      "request": [
-        "Request: missing json spec query parameter 'master_timeout'"
-      ],
-      "response": []
-    },
     "index": {
       "request": [
         "Request: missing json spec query parameter 'require_data_stream'"

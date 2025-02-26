@@ -18,6 +18,7 @@
  */
 
 import { RequestBase } from '@_types/Base'
+import { Duration } from '@_types/Time'
 
 /**
  * Migrate to data tiers routing.
@@ -53,6 +54,13 @@ export interface Request extends RequestBase {
      * @server_default false
      */
     dry_run?: boolean
+    /**
+     * The period to wait for a connection to the master node.
+     * If no response is received before the timeout expires, the request fails and returns an error.
+     * It can also be set to `-1` to indicate that the request should never timeout.
+     * @server_default 30s
+     */
+    master_timeout?: Duration
   }
   body: {
     legacy_template_to_delete?: string
