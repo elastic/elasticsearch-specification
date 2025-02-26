@@ -166,6 +166,11 @@ export interface Request<TDocument, TPartialDocument> extends RequestBase {
   }
   query_parameters: {
     /**
+     * True or false if to include the document source in the error message in case of parsing errors.
+     * @server_default true
+     */
+    include_source_on_error?: boolean
+    /**
      * If `true`, the response will include the ingest pipelines that were run for each index or create.
      * @server_default false
      */

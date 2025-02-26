@@ -107,8 +107,20 @@ export class TrainedModelDeploymentStats {
 }
 
 export class AdaptiveAllocationsSettings {
+  /**
+   * If true, adaptive_allocations is enabled
+   */
   enabled: boolean
+  /**
+   * Specifies the minimum number of allocations to scale to.
+   * If set, it must be greater than or equal to 0.
+   * If not defined, the deployment scales to 0.
+   */
   min_number_of_allocations?: integer
+  /**
+   * Specifies the maximum number of allocations to scale to.
+   * If set, it must be greater than or equal to min_number_of_allocations.
+   */
   max_number_of_allocations?: integer
 }
 
