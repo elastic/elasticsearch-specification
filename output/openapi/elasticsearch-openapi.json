@@ -88406,24 +88406,62 @@
         ]
       },
       "security._types:RemoteUserIndicesPrivileges": {
-        "allOf": [
-          {
-            "$ref": "#/components/schemas/security._types:UserIndicesPrivileges"
+        "type": "object",
+        "properties": {
+          "field_security": {
+            "externalDocs": {
+              "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/field-and-document-access-control.html"
+            },
+            "description": "The document fields that the owners of the role have read access to.",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/security._types:FieldSecurity"
+            }
           },
-          {
-            "type": "object",
-            "properties": {
-              "clusters": {
+          "names": {
+            "description": "A list of indices (or index name patterns) to which the permissions in this entry apply.",
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/_types:IndexName"
+              },
+              {
                 "type": "array",
                 "items": {
-                  "type": "string"
+                  "$ref": "#/components/schemas/_types:IndexName"
                 }
               }
-            },
-            "required": [
-              "clusters"
             ]
+          },
+          "privileges": {
+            "description": "The index level privileges that owners of the role have on the specified indices.",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/security._types:IndexPrivilege"
+            }
+          },
+          "query": {
+            "description": "Search queries that define the documents the user has access to. A document within the specified indices must match these queries for it to be accessible by the owners of the role.",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/security._types:IndicesPrivilegesQuery"
+            }
+          },
+          "allow_restricted_indices": {
+            "description": "Set to `true` if using wildcard or regular expressions for patterns that cover restricted indices. Implicitly, restricted indices have limited privileges that can cause pattern tests to fail. If restricted indices are explicitly included in the `names` list, Elasticsearch checks privileges against these indices regardless of the value set for `allow_restricted_indices`.",
+            "type": "boolean"
+          },
+          "clusters": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
           }
+        },
+        "required": [
+          "names",
+          "privileges",
+          "allow_restricted_indices",
+          "clusters"
         ]
       },
       "security.get_user_profile:GetUserProfileErrors": {
