@@ -46659,6 +46659,12 @@
               "$ref": "#/components/schemas/inference._types:TextEmbeddingByteResult"
             }
           },
+          "text_embedding_bits": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/inference._types:TextEmbeddingByteResult"
+            }
+          },
           "text_embedding": {
             "type": "array",
             "items": {
