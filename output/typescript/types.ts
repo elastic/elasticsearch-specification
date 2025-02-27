@@ -18309,7 +18309,12 @@ export interface SecurityRemoteIndicesPrivileges {
   allow_restricted_indices?: boolean
 }
 
-export interface SecurityRemoteUserIndicesPrivileges extends SecurityUserIndicesPrivileges {
+export interface SecurityRemoteUserIndicesPrivileges {
+  field_security?: SecurityFieldSecurity[]
+  names: IndexName | IndexName[]
+  privileges: SecurityIndexPrivilege[]
+  query?: SecurityIndicesPrivilegesQuery[]
+  allow_restricted_indices: boolean
   clusters: string[]
 }
 
