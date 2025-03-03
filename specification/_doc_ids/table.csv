@@ -1,5 +1,7 @@
 apis,https://www.elastic.co/docs/api/doc/elasticsearch
 add-nodes,https://www.elastic.co/guide/en/elasticsearch/reference/current/add-elasticsearch-nodes.html
+alias-update,https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-put-alias
+aliases-update,https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-update-aliases
 analysis-analyzers,https://www.elastic.co/guide/en/elasticsearch/reference/current/analysis-analyzers.html
 analysis-charfilters,https://www.elastic.co/guide/en/elasticsearch/reference/current/analysis-charfilters.html
 analysis-normalizers,https://www.elastic.co/guide/en/elasticsearch/reference/current/analysis-normalizers.html
@@ -137,7 +139,11 @@ data-stream-explain-lifecycle,https://www.elastic.co/docs/api/doc/elasticsearch/
 data-stream-get,https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-get-data-stream
 data-stream-get-lifecycle,https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-get-data-lifecycle
 data-stream-lifecycle-stats,https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-get-data-lifecycle-stats
+data-stream-migrate,https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-migrate-to-data-stream
+data-stream-promote,https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-promote-data-stream
+data-stream-put-lifecycle,https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-put-data-lifecycle
 data-stream-stats-api,https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-data-streams-stats-1
+data-stream-update,https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-modify-data-stream
 data-streams,https://www.elastic.co/guide/en/elasticsearch/reference/current/data-streams.html
 date-index-name-processor,https://www.elastic.co/guide/en/elasticsearch/reference/current/date-index-name-processor.html
 dcg,https://www.elastic.co/guide/en/elasticsearch/reference/current/search-rank-eval.html#_discounted_cumulative_gain_dcg
@@ -260,6 +266,7 @@ indexing-buffer,https://www.elastic.co/guide/en/elasticsearch/reference/current/
 index-modules-merge,https://www.elastic.co/guide/en/elasticsearch/reference/current/index-modules-merge.html
 index-templates,https://www.elastic.co/guide/en/elasticsearch/reference/current/index-templates.html
 index-templates-exist,https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-exists-index-template
+index-templates-put,https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-put-index-template
 index-templates-v1,https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-put-template
 indices-aliases,https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-update-aliases
 indices-aliases-exist,https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-exists-alias
