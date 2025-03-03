@@ -38,6 +38,7 @@ import { Duration } from '@_types/Time'
  * @availability serverless stability=stable visibility=public
  * @index_privileges manage
  * @doc_tag data stream
+ * @doc_id data-stream-migrate
  */
 export interface Request extends RequestBase {
   urls: [
