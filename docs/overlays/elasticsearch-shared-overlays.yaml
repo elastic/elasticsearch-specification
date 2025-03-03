@@ -174,7 +174,7 @@ actions:
             Use the script support APIs to get a list of supported script contexts and languages.
             Use the stored script APIs to manage stored scripts and search templates.
           externalDocs:
-            url: https://www.elastic.co/guide/en/elasticsearch/reference/master/modules-scripting.html
+            url: https://www.elastic.co/guide/en/elasticsearch/reference/current/modules-scripting.html
         - name: search
           x-displayName: Search
         - name: search_application
