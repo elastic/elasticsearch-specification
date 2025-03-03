@@ -151,7 +151,7 @@ endpoint of Elasticsearch and the respective type mapping. For example:
         "application/json"
       ],
       "description": "Creates or updates a document in an index.",
-      "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/docs-index_.html",
+      "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/docs-index_.html",
       "name": "index",
       "request": {
         "name": "Request",
