@@ -23,9 +23,12 @@ import {
   Distance,
   GeoBounds,
   GeoDistanceType,
+  GeoHash,
+  GeoHexCell,
   GeoLocation,
   GeoShape,
-  GeoShapeRelation
+  GeoShapeRelation,
+  GeoTile
 } from '@_types/Geo'
 import { FieldLookup, QueryBase } from './abstractions'
 
@@ -90,6 +93,13 @@ export class GeoDistanceQuery
    * @server_default false
    */
   ignore_unmapped?: boolean
+}
+
+/** @variants container */
+export class GeoGridQuery extends QueryBase {
+  geogrid?: GeoTile
+  geohash?: GeoHash
+  geohex?: GeoHexCell
 }
 
 export class GeoPolygonPoints {
