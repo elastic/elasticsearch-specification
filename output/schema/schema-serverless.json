@@ -47774,6 +47774,29 @@
           }
         },
         {
+          "description": "Matches `geo_point` and `geo_shape` values that intersect a grid cell from a GeoGrid aggregation.",
+          "name": "geo_grid",
+          "required": false,
+          "type": {
+            "key": {
+              "kind": "instance_of",
+              "type": {
+                "name": "Field",
+                "namespace": "_types"
+              }
+            },
+            "kind": "dictionary_of",
+            "singleKey": true,
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "GeoGridQuery",
+                "namespace": "_types.query_dsl"
+              }
+            }
+          }
+        },
+        {
           "deprecation": {
             "description": "Use geo-shape instead.",
             "version": "7.12.0"
@@ -48629,7 +48652,7 @@
           }
         }
       ],
-      "specLocation": "_types/query_dsl/abstractions.ts#L102-L427",
+      "specLocation": "_types/query_dsl/abstractions.ts#L103-L433",
       "variants": {
         "kind": "container",
         "nonExhaustive": true
@@ -48808,7 +48831,7 @@
           }
         }
       ],
-      "specLocation": "_types/query_dsl/abstractions.ts#L452-L463"
+      "specLocation": "_types/query_dsl/abstractions.ts#L458-L469"
     },
     {
       "kind": "type_alias",
@@ -49154,7 +49177,7 @@
           }
         }
       ],
-      "specLocation": "_types/query_dsl/abstractions.ts#L465-L499"
+      "specLocation": "_types/query_dsl/abstractions.ts#L471-L505"
     },
     {
       "kind": "enum",
@@ -49170,7 +49193,7 @@
         "name": "CombinedFieldsOperator",
         "namespace": "_types.query_dsl"
       },
-      "specLocation": "_types/query_dsl/abstractions.ts#L512-L515"
+      "specLocation": "_types/query_dsl/abstractions.ts#L518-L521"
     },
     {
       "kind": "enum",
@@ -49188,7 +49211,7 @@
         "name": "CombinedFieldsZeroTerms",
         "namespace": "_types.query_dsl"
       },
-      "specLocation": "_types/query_dsl/abstractions.ts#L517-L526"
+      "specLocation": "_types/query_dsl/abstractions.ts#L523-L532"
     },
     {
       "extDocId": "query-dsl-constant-score-query",
@@ -50686,7 +50709,7 @@
           }
         }
       ],
-      "specLocation": "_types/query_dsl/geo.ts#L32-L54"
+      "specLocation": "_types/query_dsl/geo.ts#L35-L57"
     },
     {
       "codegenNames": [
@@ -51010,7 +51033,7 @@
         "name": "GeoExecution",
         "namespace": "_types.query_dsl"
       },
-      "specLocation": "_types/query_dsl/geo.ts#L56-L59"
+      "specLocation": "_types/query_dsl/geo.ts#L59-L62"
     },
     {
       "kind": "enum",
@@ -51031,7 +51054,7 @@
         "name": "GeoValidationMethod",
         "namespace": "_types.query_dsl"
       },
-      "specLocation": "_types/query_dsl/geo.ts#L163-L173"
+      "specLocation": "_types/query_dsl/geo.ts#L173-L183"
     },
     {
       "attachedBehaviors": [
@@ -51133,7 +51156,7 @@
           }
         }
       ],
-      "specLocation": "_types/query_dsl/geo.ts#L61-L93"
+      "specLocation": "_types/query_dsl/geo.ts#L64-L96"
     },
     {
       "kind": "type_alias",
@@ -51167,6 +51190,90 @@
         "namespace": "_types"
       },
       "specLocation": "_types/Geo.ts#L42-L51"
+    },
+    {
+      "inherits": {
+        "type": {
+          "name": "QueryBase",
+          "namespace": "_types.query_dsl"
+        }
+      },
+      "kind": "interface",
+      "name": {
+        "name": "GeoGridQuery",
+        "namespace": "_types.query_dsl"
+      },
+      "properties": [
+        {
+          "name": "geogrid",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "GeoTile",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "geohash",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "GeoHash",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "geohex",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "GeoHexCell",
+              "namespace": "_types"
+            }
+          }
+        }
+      ],
+      "specLocation": "_types/query_dsl/geo.ts#L98-L103",
+      "variants": {
+        "kind": "container"
+      }
+    },
+    {
+      "description": "A map tile reference, represented as `{zoom}/{x}/{y}`",
+      "kind": "type_alias",
+      "name": {
+        "name": "GeoTile",
+        "namespace": "_types"
+      },
+      "specLocation": "_types/Geo.ts#L93-L94",
+      "type": {
+        "kind": "instance_of",
+        "type": {
+          "name": "string",
+          "namespace": "_builtins"
+        }
+      }
+    },
+    {
+      "description": "A map hex cell (H3) reference",
+      "kind": "type_alias",
+      "name": {
+        "name": "GeoHexCell",
+        "namespace": "_types"
+      },
+      "specLocation": "_types/Geo.ts#L96-L97",
+      "type": {
+        "kind": "instance_of",
+        "type": {
+          "name": "string",
+          "namespace": "_builtins"
+        }
+      }
     },
     {
       "attachedBehaviors": [
@@ -51242,7 +51349,7 @@
           }
         }
       ],
-      "specLocation": "_types/query_dsl/geo.ts#L99-L111"
+      "specLocation": "_types/query_dsl/geo.ts#L109-L121"
     },
     {
       "kind": "interface",
@@ -51266,7 +51373,7 @@
           }
         }
       ],
-      "specLocation": "_types/query_dsl/geo.ts#L95-L97"
+      "specLocation": "_types/query_dsl/geo.ts#L105-L107"
     },
     {
       "attachedBehaviors": [
@@ -51328,7 +51435,7 @@
           }
         }
       ],
-      "specLocation": "_types/query_dsl/geo.ts#L131-L147"
+      "specLocation": "_types/query_dsl/geo.ts#L141-L157"
     },
     {
       "kind": "interface",
@@ -51374,7 +51481,7 @@
           }
         }
       ],
-      "specLocation": "_types/query_dsl/geo.ts#L118-L129"
+      "specLocation": "_types/query_dsl/geo.ts#L128-L139"
     },
     {
       "description": "A GeoJson shape, that can also use Elasticsearch's `envelope` extension.",
@@ -51444,7 +51551,7 @@
           }
         }
       ],
-      "specLocation": "_types/query_dsl/abstractions.ts#L429-L446"
+      "specLocation": "_types/query_dsl/abstractions.ts#L435-L452"
     },
     {
       "kind": "enum",
@@ -51919,7 +52026,7 @@
         }
       ],
       "shortcutProperty": "field",
-      "specLocation": "_types/query_dsl/abstractions.ts#L528-L542"
+      "specLocation": "_types/query_dsl/abstractions.ts#L534-L548"
     },
     {
       "inherits": {
@@ -58962,7 +59069,7 @@
           }
         }
       ],
-      "specLocation": "_types/query_dsl/abstractions.ts#L501-L510"
+      "specLocation": "_types/query_dsl/abstractions.ts#L507-L516"
     },
     {
       "inherits": {
@@ -76944,38 +77051,6 @@
         "kind": "instance_of",
         "type": {
           "name": "binary",
-          "namespace": "_builtins"
-        }
-      }
-    },
-    {
-      "description": "A map hex cell (H3) reference",
-      "kind": "type_alias",
-      "name": {
-        "name": "GeoHexCell",
-        "namespace": "_types"
-      },
-      "specLocation": "_types/Geo.ts#L96-L97",
-      "type": {
-        "kind": "instance_of",
-        "type": {
-          "name": "string",
-          "namespace": "_builtins"
-        }
-      }
-    },
-    {
-      "description": "A map tile reference, represented as `{zoom}/{x}/{y}`",
-      "kind": "type_alias",
-      "name": {
-        "name": "GeoTile",
-        "namespace": "_types"
-      },
-      "specLocation": "_types/Geo.ts#L93-L94",
-      "type": {
-        "kind": "instance_of",
-        "type": {
-          "name": "string",
           "namespace": "_builtins"
         }
       }

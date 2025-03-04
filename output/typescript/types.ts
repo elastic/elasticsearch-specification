@@ -6041,6 +6041,12 @@ export type QueryDslGeoDistanceQuery = QueryDslGeoDistanceQueryKeys
 
 export type QueryDslGeoExecution = 'memory' | 'indexed'
 
+export interface QueryDslGeoGridQuery extends QueryDslQueryBase {
+  geogrid?: GeoTile
+  geohash?: GeoHash
+  geohex?: GeoHexCell
+}
+
 export interface QueryDslGeoPolygonPoints {
   points: GeoLocation[]
 }
@@ -6336,6 +6342,7 @@ export interface QueryDslQueryContainer {
   fuzzy?: Partial<Record<Field, QueryDslFuzzyQuery | string | double | boolean>>
   geo_bounding_box?: QueryDslGeoBoundingBoxQuery
   geo_distance?: QueryDslGeoDistanceQuery
+  geo_grid?: Partial<Record<Field, QueryDslGeoGridQuery>>
   geo_polygon?: QueryDslGeoPolygonQuery
   geo_shape?: QueryDslGeoShapeQuery
   has_child?: QueryDslHasChildQuery

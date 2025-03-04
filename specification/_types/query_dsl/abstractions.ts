@@ -48,6 +48,7 @@ import {
 import {
   GeoBoundingBoxQuery,
   GeoDistanceQuery,
+  GeoGridQuery,
   GeoPolygonQuery,
   GeoShapeQuery
 } from './geo'
@@ -166,6 +167,11 @@ export class QueryContainer {
    * @ext_doc_id query-dsl-geo-distance-query
    */
   geo_distance?: GeoDistanceQuery
+
+  /**
+   * Matches `geo_point` and `geo_shape` values that intersect a grid cell from a GeoGrid aggregation.
+   */
+  geo_grid?: SingleKeyDictionary<Field, GeoGridQuery>
   /**
    * @deprecated 7.12.0 Use geo-shape instead.
    */
