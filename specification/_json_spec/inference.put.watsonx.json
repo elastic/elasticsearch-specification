@@ -1,5 +1,5 @@
 {
-  "inference.put": {
+  "inference.put_watsonx": {
     "documentation": {
       "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/infer-service-watsonx-ai.html",
       "description": "Configure a Watsonx inference endpoint"
