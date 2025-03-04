@@ -43,15 +43,3 @@ spec:
           branch: 'main'
           cronline: '0 4 * * *'
           message: 'Daily run for main branch'
-        Daily 8.x:
-          branch: '8.x'
-          cronline: '0 4 * * *'
-          message: 'Daily run for 8.x branch'
-        Daily 8.17:
-          branch: '8.17'
-          cronline: '0 4 * * *'
-          message: 'Daily run for 8.17 branch'
-        Daily 8.18:
-          branch: '8.18'
-          cronline: '0 4 * * *'
-          message: 'Daily run for 8.18 branch'
