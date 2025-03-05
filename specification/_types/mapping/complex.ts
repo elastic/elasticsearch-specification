@@ -21,6 +21,7 @@ import { TimeSeriesMetricType } from '@_types/mapping/TimeSeriesMetricType'
 import { double, integer } from '@_types/Numeric'
 import { CorePropertyBase, IndexOptions } from './core'
 import { PropertyBase } from './Property'
+import { Subobjects } from './TypeMapping'
 
 export class FlattenedProperty extends PropertyBase {
   boost?: double
@@ -44,7 +45,7 @@ export class NestedProperty extends CorePropertyBase {
 
 export class ObjectProperty extends CorePropertyBase {
   enabled?: boolean
-  subobjects?: boolean
+  subobjects?: Subobjects
   type?: 'object'
 }
 
