@@ -51,7 +51,7 @@ export interface Request extends RequestBase {
      * The task type.
      * The only valid task type for the model to perform is `text_embedding`.
      */
-    task_type?: WatsonxTaskType
+    task_type: WatsonxTaskType
     /**
      * The unique identifier of the inference endpoint.
      */

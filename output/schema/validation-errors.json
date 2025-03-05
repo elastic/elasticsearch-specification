@@ -156,12 +156,6 @@
       ],
       "response": []
     },
-    "inference.put_watsonx": {
-      "request": [
-        "Request: path parameter 'task_type' is required in the json spec"
-      ],
-      "response": []
-    },
     "inference.update": {
       "request": [
         "/_inference/{inference_id}/_update: different http methods in the json spec",

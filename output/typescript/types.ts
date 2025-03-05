@@ -13149,7 +13149,7 @@ export interface InferencePutRequest extends RequestBase {
 export type InferencePutResponse = InferenceInferenceEndpointInfo
 
 export interface InferencePutWatsonxRequest extends RequestBase {
-  task_type?: InferencePutWatsonxWatsonxTaskType
+  task_type: InferencePutWatsonxWatsonxTaskType
   watsonx_inference_id: Id
   body?: {
     service: InferencePutWatsonxServiceType
