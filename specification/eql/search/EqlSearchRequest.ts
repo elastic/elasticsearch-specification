@@ -52,7 +52,7 @@ export interface Request extends RequestBase {
     allow_no_indices?: boolean
     /**
      * If true, returns partial results if there are shard failures. If false, returns an error with no partial results.
-     * @server_default false
+     * @server_default true
      */
     allow_partial_search_results?: boolean
     /**

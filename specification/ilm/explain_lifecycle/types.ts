@@ -17,6 +17,7 @@
  * under the License.
  */
 
+import { Phase } from '@ilm/_types/Phase'
 import { Dictionary } from '@spec_utils/Dictionary'
 import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 import { IndexName, Name, VersionNumber } from '@_types/common'
@@ -31,7 +32,7 @@ export class LifecycleExplainManaged {
   age?: Duration
   failed_step?: Name
   failed_step_retry_count?: integer
-  index?: IndexName
+  index: IndexName
   index_creation_date?: DateTime
   index_creation_date_millis?: EpochTime<UnitMillis>
   is_auto_retryable_error?: boolean
@@ -41,7 +42,11 @@ export class LifecycleExplainManaged {
   phase: Name
   phase_time?: DateTime
   phase_time_millis?: EpochTime<UnitMillis>
-  policy: Name
+  policy?: Name
+  previous_step_info?: Dictionary<string, UserDefinedValue>
+  repository_name?: string
+  snapshot_name?: string
+  shrink_index_name?: string
   step?: Name
   step_info?: Dictionary<string, UserDefinedValue>
   step_time?: DateTime
@@ -62,6 +67,7 @@ export type LifecycleExplain =
   | LifecycleExplainUnmanaged
 
 export class LifecycleExplainPhaseExecution {
+  phase_definition?: Phase
   policy: Name
   version: VersionNumber
   modified_date_in_millis: EpochTime<UnitMillis>

@@ -27,7 +27,7 @@ to install and configure Node.js in your development environment.
 You can install Node.js with [`nvm`](https://github.com/nvm-sh/nvm):
 
 ```sh
-curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.1/install.sh | bash
 ```
 
 Once the installation is completed, install Node.js with `nvm`:
@@ -51,6 +51,20 @@ $ make generate
 
 # the generated output can be found in ./output/schema/schema.json
 $ cat output/schema/schema.json
+```
+
+## How to generate the OpenAPI representation
+
+Follow the steps to generate the JSON representation, then:
+
+```
+# Generate the OpenAPI representation
+$ make transform-to-openapi
+
+# Apply fixes
+$ make overlay-docs
+
+# The generated output can be found in ./output/openapi/
 ```
 
 ## Make Targets
@@ -151,7 +165,7 @@ endpoint of Elasticsearch and the respective type mapping. For example:
         "application/json"
       ],
       "description": "Creates or updates a document in an index.",
-      "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/docs-index_.html",
+      "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/docs-index_.html",
       "name": "index",
       "request": {
         "name": "Request",

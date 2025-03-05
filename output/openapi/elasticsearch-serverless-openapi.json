@@ -468,6 +468,9 @@
         "operationId": "bulk-1",
         "parameters": [
           {
+            "$ref": "#/components/parameters/bulk#include_source_on_error"
+          },
+          {
             "$ref": "#/components/parameters/bulk#list_executed_pipelines"
           },
           {
@@ -518,6 +521,9 @@
         "description": "Perform multiple `index`, `create`, `delete`, and `update` actions in a single request.\nThis reduces overhead and can greatly increase indexing speed.\n\nIf the Elasticsearch security features are enabled, you must have the following index privileges for the target data stream, index, or index alias:\n\n* To use the `create` action, you must have the `create_doc`, `create`, `index`, or `write` index privilege. Data streams support only the `create` action.\n* To use the `index` action, you must have the `create`, `index`, or `write` index privilege.\n* To use the `delete` action, you must have the `delete` or `write` index privilege.\n* To use the `update` action, you must have the `index` or `write` index privilege.\n* To automatically create a data stream or index with a bulk API request, you must have the `auto_configure`, `create_index`, or `manage` index privilege.\n* To make the result of a bulk operation visible to search using the `refresh` parameter, you must have the `maintenance` or `manage` index privilege.\n\nAutomatic data stream creation requires a matching index template with data stream enabled.\n\nThe actions are specified in the request body using a newline delimited JSON (NDJSON) structure:\n\n```\naction_and_meta_data\\n\noptional_source\\n\naction_and_meta_data\\n\noptional_source\\n\n....\naction_and_meta_data\\n\noptional_source\\n\n```\n\nThe `index` and `create` actions expect a source on the next line and have the same semantics as the `op_type` parameter in the standard index API.\nA `create` action fails if a document with the same ID already exists in the target\nAn `index` action adds or replaces a document as necessary.\n\nNOTE: Data streams support only the `create` action.\nTo update or delete a document in a data stream, you must target the backing index containing the document.\n\nAn `update` action expects that the partial doc, upsert, and script and its options are specified on the next line.\n\nA `delete` action does not expect a source on the next line and has the same semantics as the standard delete API.\n\nNOTE: The final line of data must end with a newline character (`\\n`).\nEach newline character may be preceded by a carriage return (`\\r`).\nWhen sending NDJSON data to the `_bulk` endpoint, use a `Content-Type` header of `application/json` or `application/x-ndjson`.\nBecause this format uses literal newline characters (`\\n`) as delimiters, make sure that the JSON actions and sources are not pretty printed.\n\nIf you provide a target in the request path, it is used for any actions that don't explicitly specify an `_index` argument.\n\nA note on the format: the idea here is to make processing as fast as possible.\nAs some of the actions are redirected to other shards on other nodes, only `action_meta_data` is parsed on the receiving node side.\n\nClient libraries using this protocol should try and strive to do something similar on the client side, and reduce buffering as much as possible.\n\nThere is no \"correct\" number of actions to perform in a single bulk request.\nExperiment with different settings to find the optimal size for your particular workload.\nNote that Elasticsearch limits the maximum size of a HTTP request to 100mb by default so clients must ensure that no request exceeds this size.\nIt is not possible to index a single document that exceeds the size limit, so you must pre-process any such documents into smaller pieces before sending them to Elasticsearch.\nFor instance, split documents into pages or chapters before indexing them, or store raw binary data in a system outside Elasticsearch and replace the raw data with a link to the external system in the documents that you send to Elasticsearch.\n\n**Client suppport for bulk requests**\n\nSome of the officially supported clients provide helpers to assist with bulk requests and reindexing:\n\n* Go: Check out `esutil.BulkIndexer`\n* Perl: Check out `Search::Elasticsearch::Client::5_0::Bulk` and `Search::Elasticsearch::Client::5_0::Scroll`\n* Python: Check out `elasticsearch.helpers.*`\n* JavaScript: Check out `client.helpers.*`\n* .NET: Check out `BulkAllObservable`\n* PHP: Check out bulk indexing.\n\n**Submitting bulk requests with cURL**\n\nIf you're providing text file input to `curl`, you must use the `--data-binary` flag instead of plain `-d`.\nThe latter doesn't preserve newlines. For example:\n\n```\n$ cat requests\n{ \"index\" : { \"_index\" : \"test\", \"_id\" : \"1\" } }\n{ \"field1\" : \"value1\" }\n$ curl -s -H \"Content-Type: application/x-ndjson\" -XPOST localhost:9200/_bulk --data-binary \"@requests\"; echo\n{\"took\":7, \"errors\": false, \"items\":[{\"index\":{\"_index\":\"test\",\"_id\":\"1\",\"_version\":1,\"result\":\"created\",\"forced_refresh\":false}}]}\n```\n\n**Optimistic concurrency control**\n\nEach `index` and `delete` action within a bulk API call may include the `if_seq_no` and `if_primary_term` parameters in their respective action and meta data lines.\nThe `if_seq_no` and `if_primary_term` parameters control how operations are run, based on the last modification to existing documents. See Optimistic concurrency control for more details.\n\n**Versioning**\n\nEach bulk item can include the version value using the `version` field.\nIt automatically follows the behavior of the index or delete operation based on the `_version` mapping.\nIt also support the `version_type`.\n\n**Routing**\n\nEach bulk item can include the routing value using the `routing` field.\nIt automatically follows the behavior of the index or delete operation based on the `_routing` mapping.\n\nNOTE: Data streams do not support custom routing unless they were created with the `allow_custom_routing` setting enabled in the template.\n\n**Wait for active shards**\n\nWhen making bulk calls, you can set the `wait_for_active_shards` parameter to require a minimum number of shard copies to be active before starting to process the bulk request.\n\n**Refresh**\n\nControl when the changes made by this request are visible to search.\n\nNOTE: Only the shards that receive the bulk request will be affected by refresh.\nImagine a `_bulk?refresh=wait_for` request with three documents in it that happen to be routed to different shards in an index with five shards.\nThe request will only wait for those three shards to refresh.\nThe other two shards that make up the index do not participate in the `_bulk` request at all.",
         "operationId": "bulk",
         "parameters": [
+          {
+            "$ref": "#/components/parameters/bulk#include_source_on_error"
+          },
           {
             "$ref": "#/components/parameters/bulk#list_executed_pipelines"
           },
@@ -575,6 +581,9 @@
             "$ref": "#/components/parameters/bulk#index"
           },
           {
+            "$ref": "#/components/parameters/bulk#include_source_on_error"
+          },
+          {
             "$ref": "#/components/parameters/bulk#list_executed_pipelines"
           },
           {
@@ -627,6 +636,9 @@
         "parameters": [
           {
             "$ref": "#/components/parameters/bulk#index"
+          },
+          {
+            "$ref": "#/components/parameters/bulk#include_source_on_error"
           },
           {
             "$ref": "#/components/parameters/bulk#list_executed_pipelines"
@@ -682,6 +694,12 @@
         "operationId": "cat-aliases",
         "parameters": [
           {
+            "$ref": "#/components/parameters/cat.aliases#h"
+          },
+          {
+            "$ref": "#/components/parameters/cat.aliases#s"
+          },
+          {
             "$ref": "#/components/parameters/cat.aliases#expand_wildcards"
           },
           {
@@ -708,6 +726,12 @@
             "$ref": "#/components/parameters/cat.aliases#name"
           },
           {
+            "$ref": "#/components/parameters/cat.aliases#h"
+          },
+          {
+            "$ref": "#/components/parameters/cat.aliases#s"
+          },
+          {
             "$ref": "#/components/parameters/cat.aliases#expand_wildcards"
           },
           {
@@ -730,6 +754,12 @@
         "description": "Get information about component templates in a cluster.\nComponent templates are building blocks for constructing index templates that specify index mappings, settings, and aliases.\n\nIMPORTANT: CAT APIs are only intended for human consumption using the command line or Kibana console.\nThey are not intended for use by applications. For application consumption, use the get component template API.",
         "operationId": "cat-component-templates",
         "parameters": [
+          {
+            "$ref": "#/components/parameters/cat.component_templates#h"
+          },
+          {
+            "$ref": "#/components/parameters/cat.component_templates#s"
+          },
           {
             "$ref": "#/components/parameters/cat.component_templates#local"
           },
@@ -758,6 +788,12 @@
             "$ref": "#/components/parameters/cat.component_templates#name"
           },
           {
+            "$ref": "#/components/parameters/cat.component_templates#h"
+          },
+          {
+            "$ref": "#/components/parameters/cat.component_templates#s"
+          },
+          {
             "$ref": "#/components/parameters/cat.component_templates#local"
           },
           {
@@ -780,6 +816,14 @@
         "summary": "Get a document count",
         "description": "Get quick access to a document count for a data stream, an index, or an entire cluster.\nThe document count only includes live documents, not deleted documents which have not yet been removed by the merge process.\n\nIMPORTANT: CAT APIs are only intended for human consumption using the command line or Kibana console.\nThey are not intended for use by applications. For application consumption, use the count API.",
         "operationId": "cat-count",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/cat.count#h"
+          },
+          {
+            "$ref": "#/components/parameters/cat.count#s"
+          }
+        ],
         "responses": {
           "200": {
             "$ref": "#/components/responses/cat.count#200"
@@ -798,6 +842,12 @@
         "parameters": [
           {
             "$ref": "#/components/parameters/cat.count#index"
+          },
+          {
+            "$ref": "#/components/parameters/cat.count#h"
+          },
+          {
+            "$ref": "#/components/parameters/cat.count#s"
           }
         ],
         "responses": {
@@ -858,6 +908,12 @@
           },
           {
             "$ref": "#/components/parameters/cat.indices#master_timeout"
+          },
+          {
+            "$ref": "#/components/parameters/cat.indices#h"
+          },
+          {
+            "$ref": "#/components/parameters/cat.indices#s"
           }
         ],
         "responses": {
@@ -899,6 +955,12 @@
           },
           {
             "$ref": "#/components/parameters/cat.indices#master_timeout"
+          },
+          {
+            "$ref": "#/components/parameters/cat.indices#h"
+          },
+          {
+            "$ref": "#/components/parameters/cat.indices#s"
           }
         ],
         "responses": {
@@ -3471,6 +3533,9 @@
             "$ref": "#/components/parameters/create#id"
           },
           {
+            "$ref": "#/components/parameters/create#include_source_on_error"
+          },
+          {
             "$ref": "#/components/parameters/create#pipeline"
           },
           {
@@ -3518,6 +3583,9 @@
           },
           {
             "$ref": "#/components/parameters/create#id"
+          },
+          {
+            "$ref": "#/components/parameters/create#include_source_on_error"
           },
           {
             "$ref": "#/components/parameters/create#pipeline"
@@ -3721,6 +3789,9 @@
             "$ref": "#/components/parameters/index#if_seq_no"
           },
           {
+            "$ref": "#/components/parameters/index#include_source_on_error"
+          },
+          {
             "$ref": "#/components/parameters/index#op_type"
           },
           {
@@ -3779,6 +3850,9 @@
           },
           {
             "$ref": "#/components/parameters/index#if_seq_no"
+          },
+          {
+            "$ref": "#/components/parameters/index#include_source_on_error"
           },
           {
             "$ref": "#/components/parameters/index#op_type"
@@ -5231,6 +5305,10 @@
                         "$ref": "#/components/schemas/esql._types:TableValuesContainer"
                       }
                     }
+                  },
+                  "include_ccs_metadata": {
+                    "description": "When set to `true` and performing a cross-cluster query, the response will include an extra `_clusters`\nobject with information about the clusters that participated in the search along with info such as shards\ncount.",
+                    "type": "boolean"
                   }
                 },
                 "required": [
@@ -5924,6 +6002,9 @@
           },
           {
             "$ref": "#/components/parameters/index#if_seq_no"
+          },
+          {
+            "$ref": "#/components/parameters/index#include_source_on_error"
           },
           {
             "$ref": "#/components/parameters/index#op_type"
@@ -7455,11 +7536,22 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/indices._types:DataStreamLifecycle"
+                "type": "object",
+                "properties": {
+                  "data_retention": {
+                    "$ref": "#/components/schemas/_types:Duration"
+                  },
+                  "downsampling": {
+                    "$ref": "#/components/schemas/indices._types:DataStreamLifecycleDownsampling"
+                  },
+                  "enabled": {
+                    "description": "If defined, it turns data stream lifecycle on/off (`true`/`false`) for this data stream. A data stream lifecycle\nthat's disabled (enabled: `false`) will have no effect on the data stream.",
+                    "type": "boolean"
+                  }
+                }
               }
             }
-          },
-          "required": true
+          }
         },
         "responses": {
           "200": {
@@ -8943,6 +9035,74 @@
           }
         },
         "x-state": "Added in 8.11.0"
+      }
+    },
+    "/_inference/{task_type}/{watsonx_inference_id}": {
+      "put": {
+        "tags": [
+          "inference"
+        ],
+        "summary": "Create a Watsonx inference endpoint",
+        "description": "Creates an inference endpoint to perform an inference task with the `watsonxai` service.\nYou need an IBM Cloud Databases for Elasticsearch deployment to use the `watsonxai` inference service.\nYou can provision one through the IBM catalog, the Cloud Databases CLI plug-in, the Cloud Databases API, or Terraform.\n\nWhen you create an inference endpoint, the associated machine learning model is automatically deployed if it is not already running.\nAfter creating the endpoint, wait for the model deployment to complete before using it.\nTo verify the deployment status, use the get trained model statistics API.\nLook for `\"state\": \"fully_allocated\"` in the response and ensure that the `\"allocation_count\"` matches the `\"target_allocation_count\"`.\nAvoid creating multiple endpoints for the same model unless required, as each endpoint consumes significant resources.",
+        "operationId": "inference-put-watsonx",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "task_type",
+            "description": "The task type.\nThe only valid task type for the model to perform is `text_embedding`.",
+            "required": true,
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/inference.put_watsonx:WatsonxTaskType"
+            },
+            "style": "simple"
+          },
+          {
+            "in": "path",
+            "name": "watsonx_inference_id",
+            "description": "The unique identifier of the inference endpoint.",
+            "required": true,
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/_types:Id"
+            },
+            "style": "simple"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "service": {
+                    "$ref": "#/components/schemas/inference.put_watsonx:ServiceType"
+                  },
+                  "service_settings": {
+                    "$ref": "#/components/schemas/inference.put_watsonx:WatsonxServiceSettings"
+                  }
+                },
+                "required": [
+                  "service",
+                  "service_settings"
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/inference._types:InferenceEndpointInfo"
+                }
+              }
+            }
+          }
+        },
+        "x-state": "Added in 8.16.0"
       }
     },
     "/_inference/{inference_id}/_unified": {
@@ -11176,9 +11336,6 @@
             "$ref": "#/components/parameters/ml.get_trained_models#include"
           },
           {
-            "$ref": "#/components/parameters/ml.get_trained_models#include_model_definition"
-          },
-          {
             "$ref": "#/components/parameters/ml.get_trained_models#size"
           },
           {
@@ -11698,6 +11855,7 @@
             }
           }
         },
+        "deprecated": true,
         "x-state": "Added in 5.4.0"
       }
     },
@@ -12280,9 +12438,6 @@
             "$ref": "#/components/parameters/ml.get_trained_models#include"
           },
           {
-            "$ref": "#/components/parameters/ml.get_trained_models#include_model_definition"
-          },
-          {
             "$ref": "#/components/parameters/ml.get_trained_models#size"
           },
           {
@@ -12363,44 +12518,76 @@
         "operationId": "ml-infer-trained-model",
         "parameters": [
           {
-            "$ref": "#/components/parameters/ml.infer_trained_model#model_id"
+            "in": "path",
+            "name": "model_id",
+            "description": "The unique identifier of the trained model.",
+            "required": true,
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/_types:Id"
+            },
+            "style": "simple"
           },
           {
-            "$ref": "#/components/parameters/ml.infer_trained_model#timeout"
+            "in": "query",
+            "name": "timeout",
+            "description": "Controls the amount of time to wait for inference results.",
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/_types:Duration"
+            },
+            "style": "form"
           }
         ],
         "requestBody": {
-          "$ref": "#/components/requestBodies/ml.infer_trained_model"
-        },
-        "responses": {
-          "200": {
-            "$ref": "#/components/responses/ml.infer_trained_model#200"
-          }
-        },
-        "x-state": "Added in 8.3.0"
-      }
-    },
-    "/_ml/trained_models/{model_id}/deployment/_infer": {
-      "post": {
-        "tags": [
-          "ml trained model"
-        ],
-        "summary": "Evaluate a trained model",
-        "operationId": "ml-infer-trained-model-1",
-        "parameters": [
-          {
-            "$ref": "#/components/parameters/ml.infer_trained_model#model_id"
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "docs": {
+                    "description": "An array of objects to pass to the model for inference. The objects should contain a fields matching your\nconfigured trained model input. Typically, for NLP models, the field name is `text_field`.\nCurrently, for NLP models, only a single value is allowed.",
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "additionalProperties": {
+                        "type": "object"
+                      }
+                    }
+                  },
+                  "inference_config": {
+                    "$ref": "#/components/schemas/ml._types:InferenceConfigUpdateContainer"
+                  }
+                },
+                "required": [
+                  "docs"
+                ]
+              }
+            }
           },
-          {
-            "$ref": "#/components/parameters/ml.infer_trained_model#timeout"
-          }
-        ],
-        "requestBody": {
-          "$ref": "#/components/requestBodies/ml.infer_trained_model"
+          "required": true
         },
         "responses": {
           "200": {
-            "$ref": "#/components/responses/ml.infer_trained_model#200"
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "inference_results": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/ml._types:InferenceResponseResult"
+                      }
+                    }
+                  },
+                  "required": [
+                    "inference_results"
+                  ]
+                }
+              }
+            }
           }
         },
         "x-state": "Added in 8.3.0"
@@ -13063,7 +13250,7 @@
           {
             "in": "query",
             "name": "number_of_allocations",
-            "description": "The number of model allocations on each node where the model is deployed.\nAll allocations on a node share the same copy of the model in memory but use\na separate set of threads to evaluate the model.\nIncreasing this value generally increases the throughput.\nIf this setting is greater than the number of hardware threads\nit will automatically be changed to a value less than the number of hardware threads.",
+            "description": "The number of model allocations on each node where the model is deployed.\nAll allocations on a node share the same copy of the model in memory but use\na separate set of threads to evaluate the model.\nIncreasing this value generally increases the throughput.\nIf this setting is greater than the number of hardware threads\nit will automatically be changed to a value less than the number of hardware threads.\nIf adaptive_allocations is enabled, do not set this value, because it’s automatically set.",
             "deprecated": false,
             "schema": {
               "type": "number"
@@ -13121,6 +13308,20 @@
             "style": "form"
           }
         ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "adaptive_allocations": {
+                    "$ref": "#/components/schemas/ml._types:AdaptiveAllocationsSettings"
+                  }
+                }
+              }
+            }
+          }
+        },
         "responses": {
           "200": {
             "description": "",
@@ -14015,8 +14216,11 @@
                 "type": "object",
                 "properties": {
                   "number_of_allocations": {
-                    "description": "The number of model allocations on each node where the model is deployed.\nAll allocations on a node share the same copy of the model in memory but use\na separate set of threads to evaluate the model.\nIncreasing this value generally increases the throughput.\nIf this setting is greater than the number of hardware threads\nit will automatically be changed to a value less than the number of hardware threads.",
+                    "description": "The number of model allocations on each node where the model is deployed.\nAll allocations on a node share the same copy of the model in memory but use\na separate set of threads to evaluate the model.\nIncreasing this value generally increases the throughput.\nIf this setting is greater than the number of hardware threads\nit will automatically be changed to a value less than the number of hardware threads.\nIf adaptive_allocations is enabled, do not set this value, because it’s automatically set.",
                     "type": "number"
+                  },
+                  "adaptive_allocations": {
+                    "$ref": "#/components/schemas/ml._types:AdaptiveAllocationsSettings"
                   }
                 }
               }
@@ -16542,6 +16746,7 @@
             "$ref": "#/components/responses/search_application.get_behavioral_analytics#200"
           }
         },
+        "deprecated": true,
         "x-state": "Technical preview"
       },
       "put": {
@@ -16575,6 +16780,7 @@
             }
           }
         },
+        "deprecated": true,
         "x-state": "Technical preview"
       },
       "delete": {
@@ -16609,6 +16815,7 @@
             }
           }
         },
+        "deprecated": true,
         "x-state": "Technical preview"
       }
     },
@@ -16624,6 +16831,7 @@
             "$ref": "#/components/responses/search_application.get_behavioral_analytics#200"
           }
         },
+        "deprecated": true,
         "x-state": "Technical preview"
       }
     },
@@ -19860,6 +20068,16 @@
           },
           {
             "in": "query",
+            "name": "include_source_on_error",
+            "description": "True or false if to include the document source in the error message in case of parsing errors.",
+            "deprecated": false,
+            "schema": {
+              "type": "boolean"
+            },
+            "style": "form"
+          },
+          {
+            "in": "query",
             "name": "lang",
             "description": "The script language.",
             "deprecated": false,
@@ -21939,9 +22157,6 @@
           {
             "nullable": true,
             "type": "string"
-          },
-          {
-            "type": "object"
           }
         ]
       },
@@ -23676,7 +23891,7 @@
             "additionalProperties": {
               "type": "array",
               "items": {
-                "$ref": "#/components/schemas/_types:FieldValue"
+                "type": "object"
               }
             }
           },
@@ -25993,6 +26208,15 @@
           "geo_distance": {
             "$ref": "#/components/schemas/_types.query_dsl:GeoDistanceQuery"
           },
+          "geo_grid": {
+            "description": "Matches `geo_point` and `geo_shape` values that intersect a grid cell from a GeoGrid aggregation.",
+            "type": "object",
+            "additionalProperties": {
+              "$ref": "#/components/schemas/_types.query_dsl:GeoGridQuery"
+            },
+            "minProperties": 1,
+            "maxProperties": 1
+          },
           "geo_polygon": {
             "$ref": "#/components/schemas/_types.query_dsl:GeoPolygonQuery"
           },
@@ -27106,6 +27330,29 @@
         "enum": [
           "arc",
           "plane"
+        ]
+      },
+      "_types.query_dsl:GeoGridQuery": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/_types.query_dsl:QueryBase"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "geogrid": {
+                "$ref": "#/components/schemas/_types:GeoTile"
+              },
+              "geohash": {
+                "$ref": "#/components/schemas/_types:GeoHash"
+              },
+              "geohex": {
+                "$ref": "#/components/schemas/_types:GeoHexCell"
+              }
+            },
+            "minProperties": 1,
+            "maxProperties": 1
+          }
         ]
       },
       "_types.query_dsl:GeoPolygonQuery": {
@@ -33406,6 +33653,9 @@
             "description": "The HTTP status code returned for the operation.",
             "type": "number"
           },
+          "failure_store": {
+            "$ref": "#/components/schemas/_global.bulk:FailureStoreStatus"
+          },
           "error": {
             "$ref": "#/components/schemas/_types:ErrorCause"
           },
@@ -33436,6 +33686,15 @@
         "required": [
           "_index",
           "status"
+        ]
+      },
+      "_global.bulk:FailureStoreStatus": {
+        "type": "string",
+        "enum": [
+          "not_applicable_or_unknown",
+          "used",
+          "not_enabled",
+          "failed"
         ]
       },
       "_types:InlineGetDictUserDefined": {
@@ -35467,7 +35726,14 @@
             ]
           },
           "auto_expand_replicas": {
-            "type": "string"
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "$ref": "#/components/schemas/_spec_utils:NullValue"
+              }
+            ]
           },
           "merge": {
             "$ref": "#/components/schemas/indices._types:Merge"
@@ -35735,6 +36001,11 @@
             "type": "string"
           }
         ]
+      },
+      "_spec_utils:NullValue": {
+        "nullable": true,
+        "description": "A `null` value that is to be interpreted as an actual value, unless other uses of `null` that are equivalent\nto a missing value. It is used for exemple in settings, where using the `NullValue` for a setting will reset\nit to its default value.",
+        "type": "string"
       },
       "indices._types:Merge": {
         "type": "object",
@@ -40675,9 +40946,9 @@
       "indices._types:SourceMode": {
         "type": "string",
         "enum": [
-          "DISABLED",
-          "STORED",
-          "SYNTHETIC"
+          "disabled",
+          "stored",
+          "synthetic"
         ]
       },
       "indices._types:IndexingSlowlogSettings": {
@@ -40820,7 +41091,7 @@
             "type": "boolean"
           },
           "subobjects": {
-            "type": "boolean"
+            "$ref": "#/components/schemas/_types.mapping:Subobjects"
           },
           "_data_stream_timestamp": {
             "$ref": "#/components/schemas/_types.mapping:DataStreamTimestamp"
@@ -40978,7 +41249,7 @@
                 "$ref": "#/components/schemas/_types.mapping:Property"
               },
               "runtime": {
-                "$ref": "#/components/schemas/_types.mapping:Property"
+                "$ref": "#/components/schemas/_types.mapping:RuntimeField"
               }
             },
             "minProperties": 1,
@@ -42147,7 +42418,7 @@
                 "type": "boolean"
               },
               "subobjects": {
-                "type": "boolean"
+                "$ref": "#/components/schemas/_types.mapping:Subobjects"
               },
               "type": {
                 "type": "string",
@@ -42157,6 +42428,13 @@
               }
             }
           }
+        ]
+      },
+      "_types.mapping:Subobjects": {
+        "type": "string",
+        "enum": [
+          "true",
+          "false"
         ]
       },
       "_types.mapping:PassthroughObjectProperty": {
@@ -44588,11 +44866,6 @@
           "scheduled"
         ]
       },
-      "_spec_utils:NullValue": {
-        "nullable": true,
-        "description": "A `null` value that is to be interpreted as an actual value, unless other uses of `null` that are equivalent\nto a missing value. It is used for exemple in settings, where using the `NullValue` for a setting will reset\nit to its default value.",
-        "type": "string"
-      },
       "_types:WriteResponseBase": {
         "type": "object",
         "properties": {
@@ -44668,17 +44941,13 @@
           },
           "status": {
             "type": "number"
-          },
-          "type": {
-            "type": "string"
           }
         },
         "required": [
           "cause",
           "id",
           "index",
-          "status",
-          "type"
+          "status"
         ]
       },
       "_types:Retries": {
@@ -46288,6 +46557,9 @@
       "inference._types:InferenceEndpoint": {
         "type": "object",
         "properties": {
+          "chunking_settings": {
+            "$ref": "#/components/schemas/inference._types:InferenceChunkingSettings"
+          },
           "service": {
             "description": "The service type",
             "type": "string"
@@ -46302,6 +46574,34 @@
         "required": [
           "service",
           "service_settings"
+        ]
+      },
+      "inference._types:InferenceChunkingSettings": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/inference._types:InferenceEndpoint"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "max_chunk_size": {
+                "description": "Specifies the maximum size of a chunk in words\nThis value cannot be higher than `300` or lower than `20` (for `sentence` strategy) or `10` (for `word` strategy)",
+                "type": "number"
+              },
+              "overlap": {
+                "description": "Specifies the number of overlapping words for chunks\nOnly for `word` chunking strategy\nThis value cannot be higher than the half of `max_chunk_size`",
+                "type": "number"
+              },
+              "sentence_overlap": {
+                "description": "Specifies the number of overlapping sentences for chunks\nOnly for `sentence` chunking strategy\nIt can be either `1` or `0`",
+                "type": "number"
+              },
+              "strategy": {
+                "description": "Specifies the chunking strategy\nIt could be either `sentence` or `word`",
+                "type": "string"
+              }
+            }
+          }
         ]
       },
       "inference._types:ServiceSettings": {
@@ -46425,7 +46725,7 @@
           "index": {
             "type": "number"
           },
-          "score": {
+          "relevance_score": {
             "type": "number"
           },
           "text": {
@@ -46434,8 +46734,73 @@
         },
         "required": [
           "index",
-          "score"
+          "relevance_score"
         ]
+      },
+      "inference.put_watsonx:WatsonxTaskType": {
+        "type": "string",
+        "enum": [
+          "text_embedding"
+        ]
+      },
+      "inference.put_watsonx:ServiceType": {
+        "type": "string",
+        "enum": [
+          "watsonxai"
+        ]
+      },
+      "inference.put_watsonx:WatsonxServiceSettings": {
+        "type": "object",
+        "properties": {
+          "api_key": {
+            "externalDocs": {
+              "url": "https://cloud.ibm.com/iam/apikeys"
+            },
+            "description": "A valid API key of your Watsonx account.\nYou can find your Watsonx API keys or you can create a new one on the API keys page.\n\nIMPORTANT: You need to provide the API key only once, during the inference model creation.\nThe get inference endpoint API does not retrieve your API key.\nAfter creating the inference model, you cannot change the associated API key.\nIf you want to use a different API key, delete the inference model and recreate it with the same name and the updated API key.",
+            "type": "string"
+          },
+          "api_version": {
+            "externalDocs": {
+              "url": "https://cloud.ibm.com/apidocs/watsonx-ai#active-version-dates"
+            },
+            "description": "A version parameter that takes a version date in the format of `YYYY-MM-DD`.\nFor the active version data parameters, refer to the Wastonx documentation.",
+            "type": "string"
+          },
+          "model_id": {
+            "externalDocs": {
+              "url": "https://www.ibm.com/products/watsonx-ai/foundation-models"
+            },
+            "description": "The name of the model to use for the inference task.\nRefer to the IBM Embedding Models section in the Watsonx documentation for the list of available text embedding models.",
+            "type": "string"
+          },
+          "project_id": {
+            "description": "The identifier of the IBM Cloud project to use for the inference task.",
+            "type": "string"
+          },
+          "rate_limit": {
+            "$ref": "#/components/schemas/inference._types:RateLimitSetting"
+          },
+          "url": {
+            "description": "The URL of the inference endpoint that you created on Watsonx.",
+            "type": "string"
+          }
+        },
+        "required": [
+          "api_key",
+          "api_version",
+          "model_id",
+          "project_id",
+          "url"
+        ]
+      },
+      "inference._types:RateLimitSetting": {
+        "type": "object",
+        "properties": {
+          "requests_per_minute": {
+            "description": "The number of requests allowed per minute.",
+            "type": "number"
+          }
+        }
       },
       "inference.unified_inference:Message": {
         "type": "object",
@@ -51983,12 +52348,15 @@
         "type": "object",
         "properties": {
           "enabled": {
+            "description": "If true, adaptive_allocations is enabled",
             "type": "boolean"
           },
           "min_number_of_allocations": {
+            "description": "Specifies the minimum number of allocations to scale to.\nIf set, it must be greater than or equal to 0.\nIf not defined, the deployment scales to 0.",
             "type": "number"
           },
           "max_number_of_allocations": {
+            "description": "Specifies the maximum number of allocations to scale to.\nIf set, it must be greater than or equal to min_number_of_allocations.",
             "type": "number"
           }
         },
@@ -55170,6 +55538,9 @@
           "metadata": {
             "$ref": "#/components/schemas/_types:Metadata"
           },
+          "description": {
+            "type": "string"
+          },
           "run_as": {
             "type": "array",
             "items": {
@@ -55214,7 +55585,6 @@
           "cluster",
           "indices",
           "metadata",
-          "run_as",
           "applications"
         ]
       },
@@ -57359,27 +57729,6 @@
           }
         }
       },
-      "ml.infer_trained_model#200": {
-        "description": "",
-        "content": {
-          "application/json": {
-            "schema": {
-              "type": "object",
-              "properties": {
-                "inference_results": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/ml._types:InferenceResponseResult"
-                  }
-                }
-              },
-              "required": [
-                "inference_results"
-              ]
-            }
-          }
-        }
-      },
       "ml.preview_data_frame_analytics#200": {
         "description": "",
         "content": {
@@ -58511,6 +58860,16 @@
         },
         "style": "simple"
       },
+      "bulk#include_source_on_error": {
+        "in": "query",
+        "name": "include_source_on_error",
+        "description": "True or false if to include the document source in the error message in case of parsing errors.",
+        "deprecated": false,
+        "schema": {
+          "type": "boolean"
+        },
+        "style": "form"
+      },
       "bulk#list_executed_pipelines": {
         "in": "query",
         "name": "list_executed_pipelines",
@@ -58632,6 +58991,26 @@
         },
         "style": "simple"
       },
+      "cat.aliases#h": {
+        "in": "query",
+        "name": "h",
+        "description": "List of columns to appear in the response. Supports simple wildcards.",
+        "deprecated": false,
+        "schema": {
+          "$ref": "#/components/schemas/_types:Names"
+        },
+        "style": "form"
+      },
+      "cat.aliases#s": {
+        "in": "query",
+        "name": "s",
+        "description": "List of columns that determine how the table should be sorted.\nSorting defaults to ascending and can be changed by setting `:asc`\nor `:desc` as a suffix to the column name.",
+        "deprecated": false,
+        "schema": {
+          "$ref": "#/components/schemas/_types:Names"
+        },
+        "style": "form"
+      },
       "cat.aliases#expand_wildcards": {
         "in": "query",
         "name": "expand_wildcards",
@@ -58663,6 +59042,26 @@
         },
         "style": "simple"
       },
+      "cat.component_templates#h": {
+        "in": "query",
+        "name": "h",
+        "description": "List of columns to appear in the response. Supports simple wildcards.",
+        "deprecated": false,
+        "schema": {
+          "$ref": "#/components/schemas/_types:Names"
+        },
+        "style": "form"
+      },
+      "cat.component_templates#s": {
+        "in": "query",
+        "name": "s",
+        "description": "List of columns that determine how the table should be sorted.\nSorting defaults to ascending and can be changed by setting `:asc`\nor `:desc` as a suffix to the column name.",
+        "deprecated": false,
+        "schema": {
+          "$ref": "#/components/schemas/_types:Names"
+        },
+        "style": "form"
+      },
       "cat.component_templates#local": {
         "in": "query",
         "name": "local",
@@ -58693,6 +59092,26 @@
           "$ref": "#/components/schemas/_types:Indices"
         },
         "style": "simple"
+      },
+      "cat.count#h": {
+        "in": "query",
+        "name": "h",
+        "description": "List of columns to appear in the response. Supports simple wildcards.",
+        "deprecated": false,
+        "schema": {
+          "$ref": "#/components/schemas/_types:Names"
+        },
+        "style": "form"
+      },
+      "cat.count#s": {
+        "in": "query",
+        "name": "s",
+        "description": "List of columns that determine how the table should be sorted.\nSorting defaults to ascending and can be changed by setting `:asc`\nor `:desc` as a suffix to the column name.",
+        "deprecated": false,
+        "schema": {
+          "$ref": "#/components/schemas/_types:Names"
+        },
+        "style": "form"
       },
       "cat.indices#index": {
         "in": "path",
@@ -58772,6 +59191,26 @@
         "deprecated": false,
         "schema": {
           "$ref": "#/components/schemas/_types:Duration"
+        },
+        "style": "form"
+      },
+      "cat.indices#h": {
+        "in": "query",
+        "name": "h",
+        "description": "List of columns to appear in the response. Supports simple wildcards.",
+        "deprecated": false,
+        "schema": {
+          "$ref": "#/components/schemas/_types:Names"
+        },
+        "style": "form"
+      },
+      "cat.indices#s": {
+        "in": "query",
+        "name": "s",
+        "description": "List of columns that determine how the table should be sorted.\nSorting defaults to ascending and can be changed by setting `:asc`\nor `:desc` as a suffix to the column name.",
+        "deprecated": false,
+        "schema": {
+          "$ref": "#/components/schemas/_types:Names"
         },
         "style": "form"
       },
@@ -59377,6 +59816,16 @@
         },
         "style": "simple"
       },
+      "create#include_source_on_error": {
+        "in": "query",
+        "name": "include_source_on_error",
+        "description": "True or false if to include the document source in the error message in case of parsing errors.",
+        "deprecated": false,
+        "schema": {
+          "type": "boolean"
+        },
+        "style": "form"
+      },
       "create#pipeline": {
         "in": "query",
         "name": "pipeline",
@@ -59863,6 +60312,16 @@
         "deprecated": false,
         "schema": {
           "$ref": "#/components/schemas/_types:SequenceNumber"
+        },
+        "style": "form"
+      },
+      "index#include_source_on_error": {
+        "in": "query",
+        "name": "include_source_on_error",
+        "description": "True or false if to include the document source in the error message in case of parsing errors.",
+        "deprecated": false,
+        "schema": {
+          "type": "boolean"
         },
         "style": "form"
       },
@@ -61619,16 +62078,6 @@
         },
         "style": "form"
       },
-      "ml.get_trained_models#include_model_definition": {
-        "in": "query",
-        "name": "include_model_definition",
-        "description": "parameter is deprecated! Use [include=definition] instead",
-        "deprecated": true,
-        "schema": {
-          "type": "boolean"
-        },
-        "style": "form"
-      },
       "ml.get_trained_models#size": {
         "in": "query",
         "name": "size",
@@ -61697,27 +62146,6 @@
         "deprecated": false,
         "schema": {
           "type": "number"
-        },
-        "style": "form"
-      },
-      "ml.infer_trained_model#model_id": {
-        "in": "path",
-        "name": "model_id",
-        "description": "The unique identifier of the trained model.",
-        "required": true,
-        "deprecated": false,
-        "schema": {
-          "$ref": "#/components/schemas/_types:Id"
-        },
-        "style": "simple"
-      },
-      "ml.infer_trained_model#timeout": {
-        "in": "query",
-        "name": "timeout",
-        "description": "Controls the amount of time to wait for inference results.",
-        "deprecated": false,
-        "schema": {
-          "$ref": "#/components/schemas/_types:Duration"
         },
         "style": "form"
       },
@@ -63922,23 +64350,13 @@
                 },
                 "dynamic_templates": {
                   "description": "Specify dynamic templates for the mapping.",
-                  "oneOf": [
-                    {
-                      "type": "object",
-                      "additionalProperties": {
-                        "$ref": "#/components/schemas/_types.mapping:DynamicTemplate"
-                      }
-                    },
-                    {
-                      "type": "array",
-                      "items": {
-                        "type": "object",
-                        "additionalProperties": {
-                          "$ref": "#/components/schemas/_types.mapping:DynamicTemplate"
-                        }
-                      }
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "additionalProperties": {
+                      "$ref": "#/components/schemas/_types.mapping:DynamicTemplate"
                     }
-                  ]
+                  }
                 },
                 "_field_names": {
                   "$ref": "#/components/schemas/_types.mapping:FieldNamesField"
@@ -64281,34 +64699,6 @@
             }
           }
         }
-      },
-      "ml.infer_trained_model": {
-        "content": {
-          "application/json": {
-            "schema": {
-              "type": "object",
-              "properties": {
-                "docs": {
-                  "description": "An array of objects to pass to the model for inference. The objects should contain a fields matching your\nconfigured trained model input. Typically, for NLP models, the field name is `text_field`.\nCurrently, for NLP models, only a single value is allowed.",
-                  "type": "array",
-                  "items": {
-                    "type": "object",
-                    "additionalProperties": {
-                      "type": "object"
-                    }
-                  }
-                },
-                "inference_config": {
-                  "$ref": "#/components/schemas/ml._types:InferenceConfigUpdateContainer"
-                }
-              },
-              "required": [
-                "docs"
-              ]
-            }
-          }
-        },
-        "required": true
       },
       "ml.preview_data_frame_analytics": {
         "content": {

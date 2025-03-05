@@ -26,6 +26,7 @@ import { Name } from '@_types/common'
  * @availability serverless stability=experimental visibility=public
  * @doc_tag analytics
  * @doc_id list-analytics-collection
+ * @deprecated 9.0.0
  */
 export interface Request extends RequestBase {
   urls: [

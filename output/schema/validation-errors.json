@@ -1,44 +1,7 @@
 {
   "endpointErrors": {
-    "_internal.delete_desired_balance": {
-      "request": [
-        "Missing request & response"
-      ],
-      "response": []
-    },
-    "_internal.delete_desired_nodes": {
-      "request": [
-        "Missing request & response"
-      ],
-      "response": []
-    },
-    "_internal.get_desired_balance": {
-      "request": [
-        "Missing request & response"
-      ],
-      "response": []
-    },
-    "_internal.get_desired_nodes": {
-      "request": [
-        "Missing request & response"
-      ],
-      "response": []
-    },
-    "_internal.prevalidate_node_removal": {
-      "request": [
-        "Missing request & response"
-      ],
-      "response": []
-    },
-    "_internal.update_desired_nodes": {
-      "request": [
-        "Missing request & response"
-      ],
-      "response": []
-    },
     "async_search.submit": {
       "request": [
-        "Request: query parameter 'keep_alive' does not exist in the json spec",
         "interface definition _types:QueryVectorBuilder - Property text_embedding is a single-variant and must be required"
       ],
       "response": []
@@ -46,68 +9,6 @@
     "capabilities": {
       "request": [
         "Missing request & response"
-      ],
-      "response": []
-    },
-    "cat.help": {
-      "request": [
-        "Request: missing json spec query parameter 'help'",
-        "Request: missing json spec query parameter 's'"
-      ],
-      "response": []
-    },
-    "cat.ml_data_frame_analytics": {
-      "request": [
-        "request definition cat.ml_data_frame_analytics:Request / query - Property 'h' is already defined in an ancestor class",
-        "request definition cat.ml_data_frame_analytics:Request / query - Property 's' is already defined in an ancestor class"
-      ],
-      "response": []
-    },
-    "cat.ml_datafeeds": {
-      "request": [
-        "request definition cat.ml_datafeeds:Request / query - Property 'h' is already defined in an ancestor class",
-        "request definition cat.ml_datafeeds:Request / query - Property 's' is already defined in an ancestor class"
-      ],
-      "response": []
-    },
-    "cat.ml_jobs": {
-      "request": [
-        "request definition cat.ml_jobs:Request / query - Property 'h' is already defined in an ancestor class",
-        "request definition cat.ml_jobs:Request / query - Property 's' is already defined in an ancestor class"
-      ],
-      "response": []
-    },
-    "cat.ml_trained_models": {
-      "request": [
-        "request definition cat.ml_trained_models:Request / query - Property 'h' is already defined in an ancestor class",
-        "request definition cat.ml_trained_models:Request / query - Property 's' is already defined in an ancestor class"
-      ],
-      "response": []
-    },
-    "cat.recovery": {
-      "request": [
-        "Request: missing json spec query parameter 'index'"
-      ],
-      "response": []
-    },
-    "cat.segments": {
-      "request": [
-        "Request: query parameter 'local' does not exist in the json spec",
-        "Request: query parameter 'master_timeout' does not exist in the json spec"
-      ],
-      "response": []
-    },
-    "cat.tasks": {
-      "request": [
-        "Request: query parameter 'timeout' does not exist in the json spec",
-        "Request: query parameter 'wait_for_completion' does not exist in the json spec"
-      ],
-      "response": []
-    },
-    "cat.transforms": {
-      "request": [
-        "request definition cat.transforms:Request / query - Property 'h' is already defined in an ancestor class",
-        "request definition cat.transforms:Request / query - Property 's' is already defined in an ancestor class"
       ],
       "response": []
     },
@@ -268,12 +169,6 @@
       ],
       "response": []
     },
-    "ml.stop_datafeed": {
-      "request": [
-        "Request: missing json spec query parameter 'allow_no_datafeeds'"
-      ],
-      "response": []
-    },
     "msearch": {
       "request": [
         "Request: query parameter 'allow_no_indices' does not exist in the json spec",
@@ -282,30 +177,6 @@
         "Request: query parameter 'ignore_unavailable' does not exist in the json spec",
         "Request: query parameter 'include_named_queries_score' does not exist in the json spec",
         "Request: query parameter 'routing' does not exist in the json spec"
-      ],
-      "response": []
-    },
-    "profiling.flamegraph": {
-      "request": [
-        "Missing request & response"
-      ],
-      "response": []
-    },
-    "profiling.stacktraces": {
-      "request": [
-        "Missing request & response"
-      ],
-      "response": []
-    },
-    "profiling.status": {
-      "request": [
-        "Missing request & response"
-      ],
-      "response": []
-    },
-    "profiling.topn_functions": {
-      "request": [
-        "Missing request & response"
       ],
       "response": []
     },
