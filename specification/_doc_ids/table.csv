@@ -317,6 +317,7 @@ inference-api-delete,https://www.elastic.co/docs/api/doc/elasticsearch/operation
 inference-api-get,https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-inference-get
 inference-api-post,https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-inference-inference
 inference-api-put,https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-inference-put
+inference-api-put-watsonx,https://www.elastic.co/guide/en/elasticsearch/reference/current/infer-service-watsonx-ai.html
 inference-api-stream,https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-inference-stream-inference
 inference-api-update,https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-inference-update
 inference-processor,https://www.elastic.co/guide/en/elasticsearch/reference/current/inference-processor.html
@@ -854,4 +855,7 @@ watcher-api-start,https://www.elastic.co/docs/api/doc/elasticsearch/operation/op
 watcher-api-stats,https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-watcher-stats
 watcher-api-stop,https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-watcher-stop
 watcher-api-update-settings,https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-watcher-update-settings
+watsonx-api-keys,https://cloud.ibm.com/iam/apikeys
+watsonx-api-models,https://www.ibm.com/products/watsonx-ai/foundation-models
+watsonx-api-version,https://cloud.ibm.com/apidocs/watsonx-ai#active-version-dates
 xpack-rollup,https://www.elastic.co/guide/en/elasticsearch/reference/current/xpack-rollup.html

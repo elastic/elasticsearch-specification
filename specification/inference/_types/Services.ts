@@ -92,3 +92,10 @@ export class InferenceChunkingSettings extends InferenceEndpoint {
 export type ServiceSettings = UserDefinedValue
 
 export type TaskSettings = UserDefinedValue
+
+export class RateLimitSetting {
+  /**
+   * The number of requests allowed per minute.
+   */
+  requests_per_minute?: integer
+}
