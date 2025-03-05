@@ -11207,9 +11207,6 @@
             "$ref": "#/components/parameters/ml.get_trained_models#include"
           },
           {
-            "$ref": "#/components/parameters/ml.get_trained_models#include_model_definition"
-          },
-          {
             "$ref": "#/components/parameters/ml.get_trained_models#size"
           },
           {
@@ -12312,9 +12309,6 @@
             "$ref": "#/components/parameters/ml.get_trained_models#include"
           },
           {
-            "$ref": "#/components/parameters/ml.get_trained_models#include_model_definition"
-          },
-          {
             "$ref": "#/components/parameters/ml.get_trained_models#size"
           },
           {
@@ -12395,44 +12389,76 @@
         "operationId": "ml-infer-trained-model",
         "parameters": [
           {
-            "$ref": "#/components/parameters/ml.infer_trained_model#model_id"
+            "in": "path",
+            "name": "model_id",
+            "description": "The unique identifier of the trained model.",
+            "required": true,
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/_types:Id"
+            },
+            "style": "simple"
           },
           {
-            "$ref": "#/components/parameters/ml.infer_trained_model#timeout"
+            "in": "query",
+            "name": "timeout",
+            "description": "Controls the amount of time to wait for inference results.",
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/_types:Duration"
+            },
+            "style": "form"
           }
         ],
         "requestBody": {
-          "$ref": "#/components/requestBodies/ml.infer_trained_model"
-        },
-        "responses": {
-          "200": {
-            "$ref": "#/components/responses/ml.infer_trained_model#200"
-          }
-        },
-        "x-state": "Added in 8.3.0"
-      }
-    },
-    "/_ml/trained_models/{model_id}/deployment/_infer": {
-      "post": {
-        "tags": [
-          "ml trained model"
-        ],
-        "summary": "Evaluate a trained model",
-        "operationId": "ml-infer-trained-model-1",
-        "parameters": [
-          {
-            "$ref": "#/components/parameters/ml.infer_trained_model#model_id"
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "docs": {
+                    "description": "An array of objects to pass to the model for inference. The objects should contain a fields matching your\nconfigured trained model input. Typically, for NLP models, the field name is `text_field`.\nCurrently, for NLP models, only a single value is allowed.",
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "additionalProperties": {
+                        "type": "object"
+                      }
+                    }
+                  },
+                  "inference_config": {
+                    "$ref": "#/components/schemas/ml._types:InferenceConfigUpdateContainer"
+                  }
+                },
+                "required": [
+                  "docs"
+                ]
+              }
+            }
           },
-          {
-            "$ref": "#/components/parameters/ml.infer_trained_model#timeout"
-          }
-        ],
-        "requestBody": {
-          "$ref": "#/components/requestBodies/ml.infer_trained_model"
+          "required": true
         },
         "responses": {
           "200": {
-            "$ref": "#/components/responses/ml.infer_trained_model#200"
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "inference_results": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/ml._types:InferenceResponseResult"
+                      }
+                    }
+                  },
+                  "required": [
+                    "inference_results"
+                  ]
+                }
+              }
+            }
           }
         },
         "x-state": "Added in 8.3.0"
@@ -57410,27 +57436,6 @@
           }
         }
       },
-      "ml.infer_trained_model#200": {
-        "description": "",
-        "content": {
-          "application/json": {
-            "schema": {
-              "type": "object",
-              "properties": {
-                "inference_results": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/ml._types:InferenceResponseResult"
-                  }
-                }
-              },
-              "required": [
-                "inference_results"
-              ]
-            }
-          }
-        }
-      },
       "ml.preview_data_frame_analytics#200": {
         "description": "",
         "content": {
@@ -61700,16 +61705,6 @@
         },
         "style": "form"
       },
-      "ml.get_trained_models#include_model_definition": {
-        "in": "query",
-        "name": "include_model_definition",
-        "description": "parameter is deprecated! Use [include=definition] instead",
-        "deprecated": true,
-        "schema": {
-          "type": "boolean"
-        },
-        "style": "form"
-      },
       "ml.get_trained_models#size": {
         "in": "query",
         "name": "size",
@@ -61778,27 +61773,6 @@
         "deprecated": false,
         "schema": {
           "type": "number"
-        },
-        "style": "form"
-      },
-      "ml.infer_trained_model#model_id": {
-        "in": "path",
-        "name": "model_id",
-        "description": "The unique identifier of the trained model.",
-        "required": true,
-        "deprecated": false,
-        "schema": {
-          "$ref": "#/components/schemas/_types:Id"
-        },
-        "style": "simple"
-      },
-      "ml.infer_trained_model#timeout": {
-        "in": "query",
-        "name": "timeout",
-        "description": "Controls the amount of time to wait for inference results.",
-        "deprecated": false,
-        "schema": {
-          "$ref": "#/components/schemas/_types:Duration"
         },
         "style": "form"
       },
@@ -64362,34 +64336,6 @@
             }
           }
         }
-      },
-      "ml.infer_trained_model": {
-        "content": {
-          "application/json": {
-            "schema": {
-              "type": "object",
-              "properties": {
-                "docs": {
-                  "description": "An array of objects to pass to the model for inference. The objects should contain a fields matching your\nconfigured trained model input. Typically, for NLP models, the field name is `text_field`.\nCurrently, for NLP models, only a single value is allowed.",
-                  "type": "array",
-                  "items": {
-                    "type": "object",
-                    "additionalProperties": {
-                      "type": "object"
-                    }
-                  }
-                },
-                "inference_config": {
-                  "$ref": "#/components/schemas/ml._types:InferenceConfigUpdateContainer"
-                }
-              },
-              "required": [
-                "docs"
-              ]
-            }
-          }
-        },
-        "required": true
       },
       "ml.preview_data_frame_analytics": {
         "content": {
