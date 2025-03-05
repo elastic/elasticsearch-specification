@@ -5721,7 +5721,7 @@ export interface MappingNumberPropertyBase extends MappingDocValuesPropertyBase 
 
 export interface MappingObjectProperty extends MappingCorePropertyBase {
   enabled?: boolean
-  subobjects?: boolean
+  subobjects?: MappingSubobjects
   type?: 'object'
 }
 
@@ -5853,6 +5853,8 @@ export interface MappingSparseVectorProperty extends MappingPropertyBase {
   type: 'sparse_vector'
 }
 
+export type MappingSubobjects = boolean | 'true' | 'false' | 'auto'
+
 export interface MappingSuggestContext {
   name: Name
   path?: Field
@@ -5915,7 +5917,7 @@ export interface MappingTypeMapping {
   _source?: MappingSourceField
   runtime?: Record<string, MappingRuntimeField>
   enabled?: boolean
-  subobjects?: boolean
+  subobjects?: MappingSubobjects
   _data_stream_timestamp?: MappingDataStreamTimestamp
 }
 
