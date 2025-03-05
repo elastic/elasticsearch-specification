@@ -45995,6 +45995,15 @@
           "geo_distance": {
             "$ref": "#/components/schemas/_types.query_dsl:GeoDistanceQuery"
           },
+          "geo_grid": {
+            "description": "Matches `geo_point` and `geo_shape` values that intersect a grid cell from a GeoGrid aggregation.",
+            "type": "object",
+            "additionalProperties": {
+              "$ref": "#/components/schemas/_types.query_dsl:GeoGridQuery"
+            },
+            "minProperties": 1,
+            "maxProperties": 1
+          },
           "geo_polygon": {
             "$ref": "#/components/schemas/_types.query_dsl:GeoPolygonQuery"
           },
@@ -47108,6 +47117,29 @@
         "enum": [
           "arc",
           "plane"
+        ]
+      },
+      "_types.query_dsl:GeoGridQuery": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/_types.query_dsl:QueryBase"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "geogrid": {
+                "$ref": "#/components/schemas/_types:GeoTile"
+              },
+              "geohash": {
+                "$ref": "#/components/schemas/_types:GeoHash"
+              },
+              "geohex": {
+                "$ref": "#/components/schemas/_types:GeoHexCell"
+              }
+            },
+            "minProperties": 1,
+            "maxProperties": 1
+          }
         ]
       },
       "_types.query_dsl:GeoPolygonQuery": {
@@ -63304,7 +63336,7 @@
             "type": "boolean"
           },
           "subobjects": {
-            "type": "boolean"
+            "$ref": "#/components/schemas/_types.mapping:Subobjects"
           },
           "_data_stream_timestamp": {
             "$ref": "#/components/schemas/_types.mapping:DataStreamTimestamp"
@@ -64631,7 +64663,7 @@
                 "type": "boolean"
               },
               "subobjects": {
-                "type": "boolean"
+                "$ref": "#/components/schemas/_types.mapping:Subobjects"
               },
               "type": {
                 "type": "string",
@@ -64641,6 +64673,14 @@
               }
             }
           }
+        ]
+      },
+      "_types.mapping:Subobjects": {
+        "type": "string",
+        "enum": [
+          "true",
+          "false",
+          "auto"
         ]
       },
       "_types.mapping:PassthroughObjectProperty": {
