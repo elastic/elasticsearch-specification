@@ -53,6 +53,20 @@ $ make generate
 $ cat output/schema/schema.json
 ```
 
+## How to generate the OpenAPI representation
+
+Follow the steps to generate the JSON representation, then:
+
+```
+# Generate the OpenAPI representation
+$ make transform-to-openapi
+
+# Apply fixes
+$ make overlay-docs
+
+# The generated output can be found in ./output/openapi/
+```
+
 ## Make Targets
 
 ```
