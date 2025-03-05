@@ -63336,7 +63336,7 @@
             "type": "boolean"
           },
           "subobjects": {
-            "type": "boolean"
+            "$ref": "#/components/schemas/_types.mapping:Subobjects"
           },
           "_data_stream_timestamp": {
             "$ref": "#/components/schemas/_types.mapping:DataStreamTimestamp"
@@ -64663,7 +64663,7 @@
                 "type": "boolean"
               },
               "subobjects": {
-                "type": "boolean"
+                "$ref": "#/components/schemas/_types.mapping:Subobjects"
               },
               "type": {
                 "type": "string",
@@ -64673,6 +64673,14 @@
               }
             }
           }
+        ]
+      },
+      "_types.mapping:Subobjects": {
+        "type": "string",
+        "enum": [
+          "true",
+          "false",
+          "auto"
         ]
       },
       "_types.mapping:PassthroughObjectProperty": {
