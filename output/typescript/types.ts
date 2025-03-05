@@ -16015,7 +16015,6 @@ export interface MlGetTrainedModelsRequest extends RequestBase {
   exclude_generated?: boolean
   from?: integer
   include?: MlInclude
-  include_model_definition?: boolean
   size?: integer
   tags?: string | string[]
 }
