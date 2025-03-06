@@ -109422,7 +109422,7 @@
                     "$ref": "#/components/schemas/cluster._types:ComponentTemplateNode"
                   }
                 },
-                "index_template_subtitutions": {
+                "index_template_substitutions": {
                   "description": "A map of index template names to substitute index template definition objects.",
                   "type": "object",
                   "additionalProperties": {
