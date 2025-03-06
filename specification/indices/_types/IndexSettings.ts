@@ -80,9 +80,15 @@ export class IndexSettings
   routing_path?: string | string[]
   soft_deletes?: SoftDeletes
   sort?: IndexSegmentSort
-  /** @server_default 1 */
+  /**
+   * @server_default 1
+   * @availability stack
+   * */
   number_of_shards?: integer | string // TODO: should be only int
-  /** @server_default 0 */
+  /**
+   * @server_default 0
+   * @availability stack
+   * */
   number_of_replicas?: integer | string // TODO: should be only int
   number_of_routing_shards?: integer
   /** @server_default false */
