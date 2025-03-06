@@ -13109,7 +13109,6 @@ export interface InferenceTextEmbeddingByteResult {
 
 export interface InferenceTextEmbeddingInferenceResult {
   text_embedding_bytes?: InferenceTextEmbeddingByteResult[]
-  text_embedding_bits?: InferenceTextEmbeddingByteResult[]
   text_embedding?: InferenceTextEmbeddingResult[]
 }
 
