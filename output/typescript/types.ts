@@ -13035,6 +13035,10 @@ export interface IndicesValidateQueryResponse {
   error?: string
 }
 
+export interface InferenceCompletionInferenceResult {
+  completion: InferenceCompletionResult[]
+}
+
 export interface InferenceCompletionResult {
   result: string
 }
@@ -13066,15 +13070,6 @@ export interface InferenceInferenceEndpointInfo extends InferenceInferenceEndpoi
   task_type: InferenceTaskType
 }
 
-export interface InferenceInferenceResult {
-  text_embedding_bytes?: InferenceTextEmbeddingByteResult[]
-  text_embedding_bits?: InferenceTextEmbeddingByteResult[]
-  text_embedding?: InferenceTextEmbeddingResult[]
-  sparse_embedding?: InferenceSparseEmbeddingResult[]
-  completion?: InferenceCompletionResult[]
-  rerank?: InferenceRankedDocument[]
-}
-
 export interface InferenceRankedDocument {
   index: integer
   relevance_score: float
@@ -13085,7 +13080,15 @@ export interface InferenceRateLimitSetting {
   requests_per_minute?: integer
 }
 
+export interface InferenceRerankedInferenceResult {
+  rerank: InferenceRankedDocument[]
+}
+
 export type InferenceServiceSettings = any
+
+export interface InferenceSparseEmbeddingInferenceResult {
+  sparse_embedding: InferenceSparseEmbeddingResult[]
+}
 
 export interface InferenceSparseEmbeddingResult {
   embedding: InferenceSparseVector
@@ -13095,15 +13098,97 @@ export type InferenceSparseVector = Record<string, float>
 
 export type InferenceTaskSettings = any
 
-export type InferenceTaskType = 'sparse_embedding' | 'text_embedding' | 'rerank' | 'completion'
+export type InferenceTaskType = 'sparse_embedding' | 'text_embedding' | 'rerank' | 'completion' | 'chat_completion'
 
 export interface InferenceTextEmbeddingByteResult {
   embedding: InferenceDenseByteVector
 }
 
+export interface InferenceTextEmbeddingInferenceResult {
+  text_embedding_bytes?: InferenceTextEmbeddingByteResult[]
+  text_embedding_bits?: InferenceTextEmbeddingByteResult[]
+  text_embedding?: InferenceTextEmbeddingResult[]
+}
+
 export interface InferenceTextEmbeddingResult {
   embedding: InferenceDenseVector
 }
+
+export interface InferenceChatCompletionUnifiedCompletionTool {
+  type: string
+  function: InferenceChatCompletionUnifiedCompletionToolFunction
+}
+
+export interface InferenceChatCompletionUnifiedCompletionToolChoice {
+  type: string
+  function: InferenceChatCompletionUnifiedCompletionToolChoiceFunction
+}
+
+export interface InferenceChatCompletionUnifiedCompletionToolChoiceFunction {
+  name: string
+}
+
+export interface InferenceChatCompletionUnifiedCompletionToolFunction {
+  description?: string
+  name: string
+  parameters?: any
+  strict?: boolean
+}
+
+export type InferenceChatCompletionUnifiedCompletionToolType = string | InferenceChatCompletionUnifiedCompletionToolChoice
+
+export interface InferenceChatCompletionUnifiedContentObject {
+  text: string
+  type: string
+}
+
+export interface InferenceChatCompletionUnifiedMessage {
+  content?: InferenceChatCompletionUnifiedMessageContent
+  role: string
+  tool_call_id?: Id
+  tool_calls?: InferenceChatCompletionUnifiedToolCall[]
+}
+
+export type InferenceChatCompletionUnifiedMessageContent = string | InferenceChatCompletionUnifiedContentObject[]
+
+export interface InferenceChatCompletionUnifiedRequest extends RequestBase {
+  inference_id: Id
+  timeout?: Duration
+  body?: {
+    messages: InferenceChatCompletionUnifiedMessage[]
+    model?: string
+    max_completion_tokens?: long
+    stop?: string[]
+    temperature?: float
+    tool_choice?: InferenceChatCompletionUnifiedCompletionToolType
+    tools?: InferenceChatCompletionUnifiedCompletionTool[]
+    top_p?: float
+  }
+}
+
+export type InferenceChatCompletionUnifiedResponse = StreamResult
+
+export interface InferenceChatCompletionUnifiedToolCall {
+  id: Id
+  function: InferenceChatCompletionUnifiedToolCallFunction
+  type: string
+}
+
+export interface InferenceChatCompletionUnifiedToolCallFunction {
+  arguments: string
+  name: string
+}
+
+export interface InferenceCompletionRequest extends RequestBase {
+  inference_id: Id
+  timeout?: Duration
+  body?: {
+    input: string | string[]
+    task_settings?: InferenceTaskSettings
+  }
+}
+
+export type InferenceCompletionResponse = InferenceCompletionInferenceResult
 
 export interface InferenceDeleteRequest extends RequestBase {
   task_type?: InferenceTaskType
@@ -13122,19 +13207,6 @@ export interface InferenceGetRequest extends RequestBase {
 export interface InferenceGetResponse {
   endpoints: InferenceInferenceEndpointInfo[]
 }
-
-export interface InferenceInferenceRequest extends RequestBase {
-  task_type?: InferenceTaskType
-  inference_id: Id
-  timeout?: Duration
-  body?: {
-    query?: string
-    input: string | string[]
-    task_settings?: InferenceTaskSettings
-  }
-}
-
-export type InferenceInferenceResponse = InferenceInferenceResult
 
 export interface InferencePutRequest extends RequestBase {
   task_type?: InferenceTaskType
@@ -13168,81 +13240,49 @@ export interface InferencePutWatsonxWatsonxServiceSettings {
 
 export type InferencePutWatsonxWatsonxTaskType = 'text_embedding'
 
-export interface InferenceStreamInferenceRequest extends RequestBase {
-  inference_id: Id
-  task_type?: InferenceTaskType
-  body?: {
-    input: string | string[]
-  }
-}
-
-export type InferenceStreamInferenceResponse = StreamResult
-
-export interface InferenceUnifiedInferenceCompletionTool {
-  type: string
-  function: InferenceUnifiedInferenceCompletionToolFunction
-}
-
-export interface InferenceUnifiedInferenceCompletionToolChoice {
-  type: string
-  function: InferenceUnifiedInferenceCompletionToolChoiceFunction
-}
-
-export interface InferenceUnifiedInferenceCompletionToolChoiceFunction {
-  name: string
-}
-
-export interface InferenceUnifiedInferenceCompletionToolFunction {
-  description?: string
-  name: string
-  parameters?: any
-  strict?: boolean
-}
-
-export type InferenceUnifiedInferenceCompletionToolType = string | InferenceUnifiedInferenceCompletionToolChoice
-
-export interface InferenceUnifiedInferenceContentObject {
-  text: string
-  type: string
-}
-
-export interface InferenceUnifiedInferenceMessage {
-  content?: InferenceUnifiedInferenceMessageContent
-  role: string
-  tool_call_id?: Id
-  tool_calls?: InferenceUnifiedInferenceToolCall[]
-}
-
-export type InferenceUnifiedInferenceMessageContent = string | InferenceUnifiedInferenceContentObject[]
-
-export interface InferenceUnifiedInferenceRequest extends RequestBase {
-  task_type?: InferenceTaskType
+export interface InferenceRerankRequest extends RequestBase {
   inference_id: Id
   timeout?: Duration
   body?: {
-    messages: InferenceUnifiedInferenceMessage[]
-    model?: string
-    max_completion_tokens?: long
-    stop?: string[]
-    temperature?: float
-    tool_choice?: InferenceUnifiedInferenceCompletionToolType
-    tools?: InferenceUnifiedInferenceCompletionTool[]
-    top_p?: float
+    query: string
+    input: string | string[]
+    task_settings?: InferenceTaskSettings
   }
 }
 
-export type InferenceUnifiedInferenceResponse = StreamResult
+export type InferenceRerankResponse = InferenceRerankedInferenceResult
 
-export interface InferenceUnifiedInferenceToolCall {
-  id: Id
-  function: InferenceUnifiedInferenceToolCallFunction
-  type: string
+export interface InferenceSparseEmbeddingRequest extends RequestBase {
+  inference_id: Id
+  timeout?: Duration
+  body?: {
+    input: string | string[]
+    task_settings?: InferenceTaskSettings
+  }
 }
 
-export interface InferenceUnifiedInferenceToolCallFunction {
-  arguments: string
-  name: string
+export type InferenceSparseEmbeddingResponse = InferenceSparseEmbeddingInferenceResult
+
+export interface InferenceStreamCompletionRequest extends RequestBase {
+  inference_id: Id
+  body?: {
+    input: string | string[]
+    task_settings?: InferenceTaskSettings
+  }
 }
+
+export type InferenceStreamCompletionResponse = StreamResult
+
+export interface InferenceTextEmbeddingRequest extends RequestBase {
+  inference_id: Id
+  timeout?: Duration
+  body?: {
+    input: string | string[]
+    task_settings?: InferenceTaskSettings
+  }
+}
+
+export type InferenceTextEmbeddingResponse = InferenceTextEmbeddingInferenceResult
 
 export interface InferenceUpdateRequest extends RequestBase {
   inference_id: Id
