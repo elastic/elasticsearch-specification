@@ -13087,6 +13087,10 @@ export interface InferenceRankedDocument {
   text?: string
 }
 
+export interface InferenceRateLimitSetting {
+  requests_per_minute?: integer
+}
+
 export type InferenceServiceSettings = any
 
 export interface InferenceSparseEmbeddingResult {
@@ -13145,6 +13149,30 @@ export interface InferencePutRequest extends RequestBase {
 }
 
 export type InferencePutResponse = InferenceInferenceEndpointInfo
+
+export interface InferencePutWatsonxRequest extends RequestBase {
+  task_type: InferencePutWatsonxWatsonxTaskType
+  watsonx_inference_id: Id
+  body?: {
+    service: InferencePutWatsonxServiceType
+    service_settings: InferencePutWatsonxWatsonxServiceSettings
+  }
+}
+
+export type InferencePutWatsonxResponse = InferenceInferenceEndpointInfo
+
+export type InferencePutWatsonxServiceType = 'watsonxai'
+
+export interface InferencePutWatsonxWatsonxServiceSettings {
+  api_key: string
+  api_version: string
+  model_id: string
+  project_id: string
+  rate_limit?: InferenceRateLimitSetting
+  url: string
+}
+
+export type InferencePutWatsonxWatsonxTaskType = 'text_embedding'
 
 export interface InferenceStreamInferenceRequest extends RequestBase {
   inference_id: Id
@@ -16014,7 +16042,6 @@ export interface MlGetTrainedModelsRequest extends RequestBase {
   exclude_generated?: boolean
   from?: integer
   include?: MlInclude
-  include_model_definition?: boolean
   size?: integer
   tags?: string | string[]
 }
