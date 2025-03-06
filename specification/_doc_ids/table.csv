@@ -321,6 +321,7 @@ inference-api-put,https://www.elastic.co/guide/en/elasticsearch/reference/{branc
 inference-api-put-watsonx,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/infer-service-watsonx-ai.html
 inference-api-stream,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/stream-inference-api.html
 inference-api-update,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/update-inference-api.html
+inference-api-chat-completion,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/chat-completion-inference-api.html
 inference-processor,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/inference-processor.html
 info-api,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/info-api.html
 ingest,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/ingest.html
