@@ -88,7 +88,7 @@ export interface Request extends RequestBase {
     /**
      * A map of index template names to substitute index template definition objects.
      */
-    index_template_subtitutions?: Dictionary<string, IndexTemplate>
+    index_template_substitutions?: Dictionary<string, IndexTemplate>
     mapping_addition?: TypeMapping
     /**
      * Pipelines to test.

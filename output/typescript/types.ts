@@ -19593,7 +19593,7 @@ export interface SimulateIngestRequest extends RequestBase {
   body?: {
     docs: IngestDocument[]
     component_template_substitutions?: Record<string, ClusterComponentTemplateNode>
-    index_template_subtitutions?: Record<string, IndicesIndexTemplate>
+    index_template_substitutions?: Record<string, IndicesIndexTemplate>
     mapping_addition?: MappingTypeMapping
     pipeline_substitutions?: Record<string, IngestPipeline>
   }
