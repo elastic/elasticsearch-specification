@@ -5812,6 +5812,7 @@ export interface MappingSemanticTextProperty {
   type: 'semantic_text'
   meta?: Record<string, string>
   inference_id: Id
+  search_inference_id?: Id
 }
 
 export interface MappingShapeProperty extends MappingDocValuesPropertyBase {
