@@ -57846,9 +57846,6 @@
             "$ref": "#/components/schemas/_types.analysis:KeywordAnalyzer"
           },
           {
-            "$ref": "#/components/schemas/_types.analysis:LanguageAnalyzer"
-          },
-          {
             "$ref": "#/components/schemas/_types.analysis:NoriAnalyzer"
           },
           {
@@ -58085,79 +58082,6 @@
         },
         "required": [
           "type"
-        ]
-      },
-      "_types.analysis:LanguageAnalyzer": {
-        "type": "object",
-        "properties": {
-          "type": {
-            "type": "string",
-            "enum": [
-              "language"
-            ]
-          },
-          "version": {
-            "$ref": "#/components/schemas/_types:VersionString"
-          },
-          "language": {
-            "$ref": "#/components/schemas/_types.analysis:Language"
-          },
-          "stem_exclusion": {
-            "type": "array",
-            "items": {
-              "type": "string"
-            }
-          },
-          "stopwords": {
-            "$ref": "#/components/schemas/_types.analysis:StopWords"
-          },
-          "stopwords_path": {
-            "type": "string"
-          }
-        },
-        "required": [
-          "type",
-          "language",
-          "stem_exclusion"
-        ]
-      },
-      "_types.analysis:Language": {
-        "type": "string",
-        "enum": [
-          "Arabic",
-          "Armenian",
-          "Basque",
-          "Brazilian",
-          "Bulgarian",
-          "Catalan",
-          "Chinese",
-          "Cjk",
-          "Czech",
-          "Danish",
-          "Dutch",
-          "English",
-          "Estonian",
-          "Finnish",
-          "French",
-          "Galician",
-          "German",
-          "Greek",
-          "Hindi",
-          "Hungarian",
-          "Indonesian",
-          "Irish",
-          "Italian",
-          "Latvian",
-          "Norwegian",
-          "Persian",
-          "Portuguese",
-          "Romanian",
-          "Russian",
-          "Sorani",
-          "Spanish",
-          "Swedish",
-          "Turkish",
-          "Thai"
         ]
       },
       "_types.analysis:NoriAnalyzer": {
@@ -64406,6 +64330,12 @@
               "index": {
                 "type": "boolean"
               },
+              "script": {
+                "$ref": "#/components/schemas/_types:Script"
+              },
+              "on_script_error": {
+                "$ref": "#/components/schemas/_types.mapping:OnScriptError"
+              },
               "null_value": {
                 "$ref": "#/components/schemas/_types:DateTime"
               },
@@ -64447,6 +64377,12 @@
               },
               "index": {
                 "type": "boolean"
+              },
+              "script": {
+                "$ref": "#/components/schemas/_types:Script"
+              },
+              "on_script_error": {
+                "$ref": "#/components/schemas/_types.mapping:OnScriptError"
               },
               "null_value": {
                 "$ref": "#/components/schemas/_types:DateTime"
