@@ -35680,26 +35680,6 @@
           "sort": {
             "$ref": "#/components/schemas/indices._types:IndexSegmentSort"
           },
-          "number_of_shards": {
-            "oneOf": [
-              {
-                "type": "number"
-              },
-              {
-                "type": "string"
-              }
-            ]
-          },
-          "number_of_replicas": {
-            "oneOf": [
-              {
-                "type": "number"
-              },
-              {
-                "type": "string"
-              }
-            ]
-          },
           "number_of_routing_shards": {
             "type": "number"
           },
