@@ -4468,7 +4468,7 @@ export interface AggregationsWeightedAverageValue {
 export interface AggregationsWeightedAvgAggregate extends AggregationsSingleMetricAggregateBase {
 }
 
-export type AnalysisAnalyzer = AnalysisCustomAnalyzer | AnalysisFingerprintAnalyzer | AnalysisKeywordAnalyzer | AnalysisLanguageAnalyzer | AnalysisNoriAnalyzer | AnalysisPatternAnalyzer | AnalysisSimpleAnalyzer | AnalysisStandardAnalyzer | AnalysisStopAnalyzer | AnalysisWhitespaceAnalyzer | AnalysisIcuAnalyzer | AnalysisKuromojiAnalyzer | AnalysisSnowballAnalyzer | AnalysisArabicAnalyzer | AnalysisArmenianAnalyzer | AnalysisBasqueAnalyzer | AnalysisBengaliAnalyzer | AnalysisBrazilianAnalyzer | AnalysisBulgarianAnalyzer | AnalysisCatalanAnalyzer | AnalysisChineseAnalyzer | AnalysisCjkAnalyzer | AnalysisCzechAnalyzer | AnalysisDanishAnalyzer | AnalysisDutchAnalyzer | AnalysisEnglishAnalyzer | AnalysisEstonianAnalyzer | AnalysisFinnishAnalyzer | AnalysisFrenchAnalyzer | AnalysisGalicianAnalyzer | AnalysisGermanAnalyzer | AnalysisGreekAnalyzer | AnalysisHindiAnalyzer | AnalysisHungarianAnalyzer | AnalysisIndonesianAnalyzer | AnalysisIrishAnalyzer | AnalysisItalianAnalyzer | AnalysisLatvianAnalyzer | AnalysisLithuanianAnalyzer | AnalysisNorwegianAnalyzer | AnalysisPersianAnalyzer | AnalysisPortugueseAnalyzer | AnalysisRomanianAnalyzer | AnalysisRussianAnalyzer | AnalysisSerbianAnalyzer | AnalysisSoraniAnalyzer | AnalysisSpanishAnalyzer | AnalysisSwedishAnalyzer | AnalysisTurkishAnalyzer | AnalysisThaiAnalyzer
+export type AnalysisAnalyzer = AnalysisCustomAnalyzer | AnalysisFingerprintAnalyzer | AnalysisKeywordAnalyzer | AnalysisNoriAnalyzer | AnalysisPatternAnalyzer | AnalysisSimpleAnalyzer | AnalysisStandardAnalyzer | AnalysisStopAnalyzer | AnalysisWhitespaceAnalyzer | AnalysisIcuAnalyzer | AnalysisKuromojiAnalyzer | AnalysisSnowballAnalyzer | AnalysisArabicAnalyzer | AnalysisArmenianAnalyzer | AnalysisBasqueAnalyzer | AnalysisBengaliAnalyzer | AnalysisBrazilianAnalyzer | AnalysisBulgarianAnalyzer | AnalysisCatalanAnalyzer | AnalysisChineseAnalyzer | AnalysisCjkAnalyzer | AnalysisCzechAnalyzer | AnalysisDanishAnalyzer | AnalysisDutchAnalyzer | AnalysisEnglishAnalyzer | AnalysisEstonianAnalyzer | AnalysisFinnishAnalyzer | AnalysisFrenchAnalyzer | AnalysisGalicianAnalyzer | AnalysisGermanAnalyzer | AnalysisGreekAnalyzer | AnalysisHindiAnalyzer | AnalysisHungarianAnalyzer | AnalysisIndonesianAnalyzer | AnalysisIrishAnalyzer | AnalysisItalianAnalyzer | AnalysisLatvianAnalyzer | AnalysisLithuanianAnalyzer | AnalysisNorwegianAnalyzer | AnalysisPersianAnalyzer | AnalysisPortugueseAnalyzer | AnalysisRomanianAnalyzer | AnalysisRussianAnalyzer | AnalysisSerbianAnalyzer | AnalysisSoraniAnalyzer | AnalysisSpanishAnalyzer | AnalysisSwedishAnalyzer | AnalysisTurkishAnalyzer | AnalysisThaiAnalyzer
 
 export interface AnalysisArabicAnalyzer {
   type: 'arabic'
@@ -4902,17 +4902,6 @@ export interface AnalysisKuromojiTokenizer extends AnalysisTokenizerBase {
   user_dictionary?: string
   user_dictionary_rules?: string[]
   discard_compound_token?: boolean
-}
-
-export type AnalysisLanguage = 'Arabic' | 'Armenian' | 'Basque' | 'Brazilian' | 'Bulgarian' | 'Catalan' | 'Chinese' | 'Cjk' | 'Czech' | 'Danish' | 'Dutch' | 'English' | 'Estonian' | 'Finnish' | 'French' | 'Galician' | 'German' | 'Greek' | 'Hindi' | 'Hungarian' | 'Indonesian' | 'Irish' | 'Italian' | 'Latvian' | 'Norwegian' | 'Persian' | 'Portuguese' | 'Romanian' | 'Russian' | 'Sorani' | 'Spanish' | 'Swedish' | 'Turkish' | 'Thai'
-
-export interface AnalysisLanguageAnalyzer {
-  type: 'language'
-  version?: VersionString
-  language: AnalysisLanguage
-  stem_exclusion: string[]
-  stopwords?: AnalysisStopWords
-  stopwords_path?: string
 }
 
 export interface AnalysisLatvianAnalyzer {
