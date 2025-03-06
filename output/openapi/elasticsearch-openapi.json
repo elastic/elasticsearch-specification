@@ -64453,6 +64453,12 @@
               "index": {
                 "type": "boolean"
               },
+              "script": {
+                "$ref": "#/components/schemas/_types:Script"
+              },
+              "on_script_error": {
+                "$ref": "#/components/schemas/_types.mapping:OnScriptError"
+              },
               "null_value": {
                 "$ref": "#/components/schemas/_types:DateTime"
               },
@@ -64494,6 +64500,12 @@
               },
               "index": {
                 "type": "boolean"
+              },
+              "script": {
+                "$ref": "#/components/schemas/_types:Script"
+              },
+              "on_script_error": {
+                "$ref": "#/components/schemas/_types.mapping:OnScriptError"
               },
               "null_value": {
                 "$ref": "#/components/schemas/_types:DateTime"
