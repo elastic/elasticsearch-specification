@@ -69,6 +69,8 @@ export class DateProperty extends DocValuesPropertyBase {
   format?: string
   ignore_malformed?: boolean
   index?: boolean
+  script?: Script
+  on_script_error?: OnScriptError
   null_value?: DateTime
   precision_step?: integer
   locale?: string
@@ -80,6 +82,8 @@ export class DateNanosProperty extends DocValuesPropertyBase {
   format?: string
   ignore_malformed?: boolean
   index?: boolean
+  script?: Script
+  on_script_error?: OnScriptError
   null_value?: DateTime
   precision_step?: integer
   type: 'date_nanos'
