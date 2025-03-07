@@ -490,7 +490,7 @@ impl TypeDefinition {
 ///
 /// The OpenAPI v3 spec also defines the 'Example' type, so
 /// to distinguish them, this type is called SchemaExample.
- */
+
 #[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct SchemaExample {
     pub summary: Option<String>,
