@@ -67,6 +67,12 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/async_search._types:AsyncSearchDocumentResponseBase"
+                },
+                "examples": {
+                  "AsyncSearchGetResponseExample1": {
+                    "description": "A succesful response from `GET /_async_search/FmRldE8zREVEUzA2ZVpUeGs2ejJFUFEaMkZ5QTVrSTZSaVN3WlNFVmtlWHJsdzoxMDc=`.",
+                    "value": "{\n  \"id\" : \"FmRldE8zREVEUzA2ZVpUeGs2ejJFUFEaMkZ5QTVrSTZSaVN3WlNFVmtlWHJsdzoxMDc=\",\n  \"is_partial\" : false, \n  \"is_running\" : false, \n  \"start_time_in_millis\" : 1583945890986,\n  \"expiration_time_in_millis\" : 1584377890986, \n  \"completion_time_in_millis\" : 1583945903130, \n  \"response\" : {\n    \"took\" : 12144,\n    \"timed_out\" : false,\n    \"num_reduce_phases\" : 46, \n    \"_shards\" : {\n      \"total\" : 562,\n      \"successful\" : 188, \n      \"skipped\" : 0,\n      \"failed\" : 0\n    },\n    \"hits\" : {\n      \"total\" : {\n        \"value\" : 456433,\n        \"relation\" : \"eq\"\n      },\n      \"max_score\" : null,\n      \"hits\" : [ ]\n    },\n    \"aggregations\" : { \n      \"sale_date\" :  {\n        \"buckets\" : []\n      }\n    }\n  }\n}"
+                  }
                 }
               }
             }
@@ -147,6 +153,23 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/async_search.status:StatusResponseBase"
+                },
+                "examples": {
+                  "AsyncSearchStatusResponseExample1": {
+                    "summary": "An active async search",
+                    "description": "A succesful response from `GET /_async_search/status/FmRldE8zREVEUzA2ZVpUeGs2ejJFUFEaMkZ5QTVrSTZSaVN3WlNFVmtlWHJsdzoxMDc=`, which retrieves the status of a previously submitted async search without the results.",
+                    "value": "{\n  \"id\" : \"FmRldE8zREVEUzA2ZVpUeGs2ejJFUFEaMkZ5QTVrSTZSaVN3WlNFVmtlWHJsdzoxMDc=\",\n  \"is_running\" : true,\n  \"is_partial\" : true,\n  \"start_time_in_millis\" : 1583945890986,\n  \"expiration_time_in_millis\" : 1584377890986,\n  \"_shards\" : {\n      \"total\" : 562,\n      \"successful\" : 188, \n      \"skipped\" : 0,\n      \"failed\" : 0\n  }\n}"
+                  },
+                  "AsyncSearchStatusResponseExample2": {
+                    "summary": "A completed async search",
+                    "description": "A succesful response from `GET /_async_search/status/FmRldE8zREVEUzA2ZVpUeGs2ejJFUFEaMkZ5QTVrSTZSaVN3WlNFVmtlWHJsdzoxMDc=` for an async search that has completed. The status response has an additional `completion_status` field that shows the status code of the completed async search.\n",
+                    "value": "{\n  \"id\" : \"FmRldE8zREVEUzA2ZVpUeGs2ejJFUFEaMkZ5QTVrSTZSaVN3WlNFVmtlWHJsdzoxMDc=\",\n  \"is_running\" : false,\n  \"is_partial\" : false,\n  \"start_time_in_millis\" : 1583945890986,\n  \"expiration_time_in_millis\" : 1584377890986,\n  \"_shards\" : {\n      \"total\" : 562,\n      \"successful\" : 562,\n      \"skipped\" : 0,\n      \"failed\" : 0\n  },\n\"completion_status\" : 200 \n}"
+                  },
+                  "AsyncSearchStatusResponseExample3": {
+                    "summary": "A failed async search",
+                    "description": "A response from `GET /_async_search/status/FmRldE8zREVEUzA2ZVpUeGs2ejJFUFEaMkZ5QTVrSTZSaVN3WlNFVmtlWHJsdzoxMDc=` for an async search that has completed with an error. The status response has an additional `completion_status` field that shows the status code of the completed async search.\n",
+                    "value": "{\n  \"id\" : \"FmRldE8zREVEUzA2ZVpUeGs2ejJFUFEaMkZ5QTVrSTZSaVN3WlNFVmtlWHJsdzoxMDc=\",\n  \"is_running\" : false,\n  \"is_partial\" : true,\n  \"start_time_in_millis\" : 1583945890986,\n  \"expiration_time_in_millis\" : 1584377890986,\n  \"_shards\" : {\n      \"total\" : 562,\n      \"successful\" : 450,\n      \"skipped\" : 0,\n      \"failed\" : 112\n  },\n\"completion_status\" : 503 \n}"
+                  }
                 }
               }
             }
@@ -1884,6 +1907,11 @@
                   "required": [
                     "result"
                   ]
+                },
+                "examples": {
+                  "ConnectorCheckInResponseExample1": {
+                    "value": "{\n    \"result\": \"updated\"\n}"
+                  }
                 }
               }
             }
@@ -2005,6 +2033,11 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/_types:AcknowledgedResponseBase"
+                },
+                "examples": {
+                  "ConnectorDeleteResponseExample1": {
+                    "value": "{\n    \"acknowledged\": true\n}"
+                  }
                 }
               }
             }
@@ -2306,6 +2339,11 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/_types:AcknowledgedResponseBase"
+                },
+                "examples": {
+                  "SyncJobDeleteResponseExample1": {
+                    "value": "{\n  \"acknowledged\": true\n}"
+                  }
                 }
               }
             }
@@ -2575,6 +2613,11 @@
                   "required": [
                     "result"
                   ]
+                },
+                "examples": {
+                  "ConnectorUpdateAPIKeyIDResponseExample1": {
+                    "value": "{\n  \"result\": \"updated\"\n}"
+                  }
                 }
               }
             }
@@ -2648,6 +2691,11 @@
                   "required": [
                     "result"
                   ]
+                },
+                "examples": {
+                  "ConnectorUpdateConfigurationResponseExample1": {
+                    "value": "{\n  \"result\": \"updated\"\n}"
+                  }
                 }
               }
             }
@@ -2722,6 +2770,11 @@
                   "required": [
                     "result"
                   ]
+                },
+                "examples": {
+                  "ConnectorUpdateErrorResponseExample1": {
+                    "value": "{\n  \"result\": \"updated\"\n}"
+                  }
                 }
               }
             }
@@ -2801,6 +2854,11 @@
                   "required": [
                     "result"
                   ]
+                },
+                "examples": {
+                  "ConnectorUpdateFilteringResponseExample1": {
+                    "value": "{\n  \"result\": \"updated\"\n}"
+                  }
                 }
               }
             }
@@ -2937,6 +2995,11 @@
                   "required": [
                     "result"
                   ]
+                },
+                "examples": {
+                  "ConnectorUpdateIndexNameResponseExample1": {
+                    "value": "{\n  \"result\": \"updated\"\n}"
+                  }
                 }
               }
             }
@@ -3003,6 +3066,11 @@
                   "required": [
                     "result"
                   ]
+                },
+                "examples": {
+                  "ConnectorUpdateNameResponseExample1": {
+                    "value": "{\n  \"result\": \"updated\"\n}"
+                  }
                 }
               }
             }
@@ -3131,6 +3199,11 @@
                   "required": [
                     "result"
                   ]
+                },
+                "examples": {
+                  "ConnectorUpdatePipelineResponseExample1": {
+                    "value": "{\n  \"result\": \"updated\"\n}"
+                  }
                 }
               }
             }
@@ -3200,6 +3273,11 @@
                   "required": [
                     "result"
                   ]
+                },
+                "examples": {
+                  "ConnectorUpdateSchedulingResponseExample1": {
+                    "value": "{\n  \"result\": \"updated\"\n}"
+                  }
                 }
               }
             }
@@ -3266,6 +3344,11 @@
                   "required": [
                     "result"
                   ]
+                },
+                "examples": {
+                  "ConnectorUpdateServiceTypeResponseExample1": {
+                    "value": "{\n  \"result\": \"updated\"\n}"
+                  }
                 }
               }
             }
@@ -3332,6 +3415,11 @@
                   "required": [
                     "result"
                   ]
+                },
+                "examples": {
+                  "ConnectorUpdateStatusResponseExample1": {
+                    "value": "{\n  \"result\": \"updated\"\n}"
+                  }
                 }
               }
             }
@@ -3835,6 +3923,23 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/_global.get:GetResult"
+                },
+                "examples": {
+                  "GetResponseExample1": {
+                    "summary": "Get a document",
+                    "description": "A successful response from `GET my-index-000001/_doc/0`. It retrieves the JSON document with the `_id` 0 from the `my-index-000001` index.\n",
+                    "value": "{\n  \"_index\": \"my-index-000001\",\n  \"_id\": \"0\",\n  \"_version\": 1,\n  \"_seq_no\": 0,\n  \"_primary_term\": 1,\n  \"found\": true,\n  \"_source\": {\n    \"@timestamp\": \"2099-11-15T14:12:12\",\n    \"http\": {\n      \"request\": {\n        \"method\": \"get\"\n      },\n      \"response\": {\n        \"status_code\": 200,\n        \"bytes\": 1070000\n      },\n      \"version\": \"1.1\"\n    },\n    \"source\": {\n      \"ip\": \"127.0.0.1\"\n    },\n    \"message\": \"GET /search HTTP/1.1 200 1070000\",\n    \"user\": {\n      \"id\": \"kimchy\"\n    }\n  }\n}"
+                  },
+                  "GetResponseExample2": {
+                    "summary": "Get stored fields",
+                    "description": "A successful response from `GET my-index-000001/_doc/1?stored_fields=tags,counter`, which retrieves a set of stored fields. Field values fetched from the document itself are always returned as an array. Any requested fields that are not stored (such as the counter field in this example) are ignored.\n",
+                    "value": "{\n  \"_index\": \"my-index-000001\",\n  \"_id\": \"1\",\n  \"_version\": 1,\n  \"_seq_no\" : 22,\n  \"_primary_term\" : 1,\n  \"found\": true,\n  \"fields\": {\n      \"tags\": [\n        \"production\"\n      ]\n  }\n}"
+                  },
+                  "GetResponseExample3": {
+                    "summary": "Get metadata fields",
+                    "description": "A successful response from `GET my-index-000001/_doc/2?routing=user1&stored_fields=tags,counter`, which retrieves the `_routing` metadata field.\n",
+                    "value": "{\n  \"_index\": \"my-index-000001\",\n  \"_id\": \"2\",\n  \"_version\": 1,\n  \"_seq_no\" : 13,\n  \"_primary_term\" : 1,\n  \"_routing\": \"user1\",\n  \"found\": true,\n  \"fields\": {\n      \"tags\": [\n        \"env2\"\n      ]\n  }\n}"
+                  }
                 }
               }
             }
@@ -4085,6 +4190,12 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/_types:WriteResponseBase"
+                },
+                "examples": {
+                  "DeleteResponseExample1": {
+                    "description": "A successful response from `DELETE /my-index-000001/_doc/1`, which deletes the JSON document 1 from the `my-index-000001` index.",
+                    "value": "{\n  \"_shards\": {\n    \"total\": 2,\n    \"failed\": 0,\n    \"successful\": 2\n  },\n  \"_index\": \"my-index-000001\",\n  \"_id\": \"1\",\n  \"_version\": 2,\n  \"_primary_term\": 1,\n  \"_seq_no\": 5,\n  \"result\": \"deleted\"\n}"
+                  }
                 }
               }
             }
@@ -4661,6 +4772,12 @@
                       "type": "number"
                     }
                   }
+                },
+                "examples": {
+                  "DeleteByQueryResponseExample1": {
+                    "description": "A successful response from `POST /my-index-000001/_delete_by_query`.",
+                    "value": "{\n  \"took\" : 147,\n  \"timed_out\": false,\n  \"total\": 119,\n  \"deleted\": 119,\n  \"batches\": 1,\n  \"version_conflicts\": 0,\n  \"noops\": 0,\n  \"retries\": {\n    \"bulk\": 0,\n    \"search\": 0\n  },\n  \"throttled_millis\": 0,\n  \"requests_per_second\": -1.0,\n  \"throttled_until_millis\": 0,\n  \"failures\" : [ ]\n}"
+                  }
                 }
               }
             }
@@ -5212,6 +5329,12 @@
                     "is_partial",
                     "is_running"
                   ]
+                },
+                "examples": {
+                  "EqlGetStatusResponseExample1": {
+                    "description": "A successful response for getting status information for an async EQL search.",
+                    "value": "{\n  \"id\": \"FmNJRUZ1YWZCU3dHY1BIOUhaenVSRkEaaXFlZ3h4c1RTWFNocDdnY2FSaERnUTozNDE=\",\n  \"is_running\" : true,\n  \"is_partial\" : true,\n  \"start_time_in_millis\" : 1611690235000,\n  \"expiration_time_in_millis\" : 1611690295000\n}"
+                  }
                 }
               }
             }
@@ -6256,6 +6379,12 @@
                     "shards_acknowledged",
                     "indices"
                   ]
+                },
+                "examples": {
+                  "IndicesAddBlockResponseExample1": {
+                    "description": "A successful response from `PUT /my-index-000001/_block/write`, which adds an index block to an index.'",
+                    "value": "{\n  \"acknowledged\" : true,\n  \"shards_acknowledged\" : true,\n  \"indices\" : [ {\n    \"name\" : \"my-index-000001\",\n    \"blocked\" : true\n  } ]\n}"
+                  }
                 }
               }
             }
@@ -7458,6 +7587,18 @@
                   "required": [
                     "indices"
                   ]
+                },
+                "examples": {
+                  "IndicesExplainDataLifecycleResponseExample1": {
+                    "summary": "Successful response",
+                    "description": "A successful response from `GET .ds-metrics-2023.03.22-000001/_lifecycle/explain`, which retrieves  the lifecycle status for a data stream backing index. If the index is managed by a data stream lifecycle, the API will show the `managed_by_lifecycle` field set to `true` and the rest of the response will contain information about the lifecycle execution status for this index.\n",
+                    "value": "{\n  \"indices\": {\n    \".ds-metrics-2023.03.22-000001\": {\n      \"index\" : \".ds-metrics-2023.03.22-000001\",\n      \"managed_by_lifecycle\" : true,\n      \"index_creation_date_millis\" : 1679475563571,\n      \"time_since_index_creation\" : \"843ms\",\n      \"rollover_date_millis\" : 1679475564293,\n      \"time_since_rollover\" : \"121ms\",\n      \"lifecycle\" : { },\n      \"generation_time\" : \"121ms\"\n  }\n}"
+                  },
+                  "IndicesExplainDataLifecycleResponseExample2": {
+                    "summary": "Successful response with error messages",
+                    "description": "The API reports any errors related to the lifecycle execution for the target index.",
+                    "value": "{\n  \"indices\": {\n    \".ds-metrics-2023.03.22-000001\": {\n      \"index\" : \".ds-metrics-2023.03.22-000001\",\n      \"managed_by_lifecycle\" : true,\n      \"index_creation_date_millis\" : 1679475563571,\n      \"time_since_index_creation\" : \"843ms\",\n      \"lifecycle\" : {\n        \"enabled\": true\n      },\n      \"error\": \"{\\\"type\\\":\\\"validation_exception\\\",\\\"reason\\\":\\\"Validation Failed: 1: this action would add [2] shards, but this cluster\ncurrently has [4]/[3] maximum normal shards open;\\\"}\"\n  }\n}"
+                  }
                 }
               }
             }
@@ -7596,6 +7737,12 @@
                   "required": [
                     "data_streams"
                   ]
+                },
+                "examples": {
+                  "IndicesGetDataLifecycleResponseExample1": {
+                    "description": "A successful response from `GET _lifecycle/stats?human&pretty`.",
+                    "value": "{\n  \"data_streams\": [\n    {\n      \"name\": \"my-data-stream-1\",\n      \"lifecycle\": {\n        \"enabled\": true,\n        \"data_retention\": \"7d\"\n      }\n    },\n    {\n      \"name\": \"my-data-stream-2\",\n      \"lifecycle\": {\n        \"enabled\": true,\n        \"data_retention\": \"7d\"\n      }\n    }\n  ]\n}"
+                  }
                 }
               }
             }
@@ -8458,6 +8605,12 @@
                     "aliases",
                     "data_streams"
                   ]
+                },
+                "examples": {
+                  "ResolveIndexResponseExample1": {
+                    "description": "A successful response from `GET /_resolve/index/f*,remoteCluster1:bar*?expand_wildcards=all`.",
+                    "value": "{\n  \"indices\": [\n    {\n      \"name\": \"foo_closed\",\n      \"attributes\": [\n        \"closed\"\n      ]\n    },\n    {\n      \"name\": \"freeze-index\",\n      \"aliases\": [\n        \"f-alias\"\n      ],\n      \"attributes\": [\n        \"open\"\n      ]\n    },\n    {\n      \"name\": \"remoteCluster1:bar-01\",\n      \"attributes\": [\n        \"open\"\n      ]\n    }\n  ],\n  \"aliases\": [\n    {\n      \"name\": \"f-alias\",\n      \"indices\": [\n        \"freeze-index\",\n        \"my-index-000001\"\n      ]\n    }\n  ],\n  \"data_streams\": [\n    {\n      \"name\": \"foo\",\n      \"backing_indices\": [\n        \".ds-foo-2099.03.07-000001\"\n      ],\n      \"timestamp_field\": \"@timestamp\"\n    }\n  ]\n}"
+                  }
                 }
               }
             }
@@ -9723,6 +9876,12 @@
                     "tagline",
                     "version"
                   ]
+                },
+                "examples": {
+                  "RootNodeInfoResponseExample1": {
+                    "description": "A successful response from `GET /`s.",
+                    "value": "{\n  \"name\": \"instance-0000000000\",\n  \"cluster_name\": \"my_test_cluster\",\n  \"cluster_uuid\": \"5QaxoN0pRZuOmWSxstBBwQ\",\n  \"version\": {\n    \"build_date\": \"2024-02-01T13:07:13.727175297Z\",\n    \"minimum_wire_compatibility_version\": \"7.17.0\",\n    \"build_hash\": \"6185ba65d27469afabc9bc951cded6c17c21e3f3\",\n    \"number\": \"8.12.1\",\n    \"lucene_version\": \"9.9.2\",\n    \"minimum_index_compatibility_version\": \"7.0.0\",\n    \"build_flavor\": \"default\",\n    \"build_snapshot\": false,\n    \"build_type\": \"docker\"\n  },\n  \"tagline\": \"You Know, for Search\"\n}"
+                  }
                 }
               }
             }
@@ -10158,6 +10317,12 @@
                   "required": [
                     "license"
                   ]
+                },
+                "examples": {
+                  "GetLicenseResponseExample1": {
+                    "description": "A successful response from `GET /_license`.",
+                    "value": "{\n  \"license\" : {\n    \"status\" : \"active\",\n    \"uid\" : \"cbff45e7-c553-41f7-ae4f-9205eabd80xx\",\n    \"type\" : \"trial\",\n    \"issue_date\" : \"2018-10-20T22:05:12.332Z\",\n    \"issue_date_in_millis\" : 1540073112332,\n    \"expiry_date\" : \"2018-11-19T22:05:12.332Z\",\n    \"expiry_date_in_millis\" : 1542665112332,\n    \"max_nodes\" : 1000,\n    \"max_resource_units\" : null,\n    \"issued_to\" : \"test\",\n    \"issuer\" : \"elasticsearch\",\n    \"start_date_in_millis\" : -1\n  }\n}"
+                  }
                 }
               }
             }
@@ -10561,6 +10726,12 @@
                   "required": [
                     "closed"
                   ]
+                },
+                "examples": {
+                  "MlCloseJobResponseExample1": {
+                    "description": "A successful response when closing anomaly detection jobs.",
+                    "value": "{\n  \"closed\": true\n}"
+                  }
                 }
               }
             }
@@ -10722,6 +10893,12 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/_types:AcknowledgedResponseBase"
+                },
+                "examples": {
+                  "MlDeleteCalendarResponseExample1": {
+                    "description": "A successful response when deleting a calendar.",
+                    "value": "{\n  \"acknowledged\": true\n}"
+                  }
                 }
               }
             }
@@ -10768,6 +10945,12 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/_types:AcknowledgedResponseBase"
+                },
+                "examples": {
+                  "MlDeleteCalendarEventResponseExample1": {
+                    "description": "A successful response when deleting a calendar event.",
+                    "value": "{\n  \"acknowledged\": true\n}"
+                  }
                 }
               }
             }
@@ -10890,6 +11073,12 @@
                     "calendar_id",
                     "job_ids"
                   ]
+                },
+                "examples": {
+                  "MlDeleteCalendarJobResponseExample1": {
+                    "description": "A successful response when deleting an anomaly detection job from a calendar.",
+                    "value": "{\n  \"calendar_id\": \"planned-outages\",\n  \"job_ids\": []\n}"
+                  }
                 }
               }
             }
@@ -11116,6 +11305,12 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/_types:AcknowledgedResponseBase"
+                },
+                "examples": {
+                  "MlDeleteDataFrameAnalyticsResponseExample1": {
+                    "description": "A successful response when deleting a data frame analytics job.",
+                    "value": "{\n  \"acknowledged\": true\n}"
+                  }
                 }
               }
             }
@@ -11389,6 +11584,12 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/_types:AcknowledgedResponseBase"
+                },
+                "examples": {
+                  "MlDeleteDatafeedResponseExample1": {
+                    "description": "A successful response when deleting a datafeed.",
+                    "value": "{\n  \"acknowledged\": true\n}"
+                  }
                 }
               }
             }
@@ -11526,6 +11727,12 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/_types:AcknowledgedResponseBase"
+                },
+                "examples": {
+                  "MlDeleteFilterResponseExample1": {
+                    "description": "A successful response when deleting a filter.",
+                    "value": "{\n  \"acknowledged\": true\n}"
+                  }
                 }
               }
             }
@@ -11855,6 +12062,18 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/_types:AcknowledgedResponseBase"
+                },
+                "examples": {
+                  "MlDeleteJobResponseExample1": {
+                    "summary": "Delete job",
+                    "description": "A successful response when deleting an anomaly detection job.",
+                    "value": "{\n  \"acknowledged\": true\n}"
+                  },
+                  "MlDeleteJobResponseExample2": {
+                    "summary": "Delete job asynchronously",
+                    "description": "A successful response when deleting an anomaly detection job asynchronously. When the `wait_for_completion` query parameter is set to `false`, the response contains an identifier for the job deletion task.\n",
+                    "value": "{\n  \"task\": \"oTUltX4IQMOUUVeiohTt8A:39\"\n}"
+                  }
                 }
               }
             }
@@ -12058,6 +12277,12 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/_types:AcknowledgedResponseBase"
+                },
+                "examples": {
+                  "MlDeleteTrainedModelResponseExample1": {
+                    "description": "A successful response when deleting an existing trained inference model.",
+                    "value": "{\n  \"acknowledged\": true\n}"
+                  }
                 }
               }
             }
@@ -12160,6 +12385,12 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/_types:AcknowledgedResponseBase"
+                },
+                "examples": {
+                  "MlDeleteTrainedModelAliasResponseExample1": {
+                    "description": "A successful response when deleting a trained model alias.",
+                    "value": "{\n  \"acknowledged\": true\n}"
+                  }
                 }
               }
             }
@@ -12226,6 +12457,12 @@
                   "required": [
                     "model_memory_estimate"
                   ]
+                },
+                "examples": {
+                  "MlEstimateModelMemoryResponseExample1": {
+                    "description": "A successful response from `POST _ml/anomaly_detectors/_estimate_model_memory`.",
+                    "value": "{\n  \"model_memory_estimate\": \"21mb\"\n}"
+                  }
                 }
               }
             }
@@ -12311,6 +12548,23 @@
                     "regression": {
                       "$ref": "#/components/schemas/ml.evaluate_data_frame:DataframeRegressionSummary"
                     }
+                  }
+                },
+                "examples": {
+                  "MlEvaluateDataFrameResponseExample1": {
+                    "summary": "Classification example 1",
+                    "description": "A succesful response from `POST _ml/data_frame/_evaluate` to evaluate a classification analysis job for an annotated index. The `actual_class` contains the name of the class the analysis tried to predict. The `actual_class_doc_count` is the number of documents in the index belonging to the `actual_class`. The `predicted_classes` object contains the list of the predicted classes and the number of predictions associated with the class.\n",
+                    "value": "{\n  \"classification\": {\n    \"multiclass_confusion_matrix\": {\n      \"confusion_matrix\": [\n        {\n          \"actual_class\": \"cat\",\n          \"actual_class_doc_count\": 12,\n          \"predicted_classes\": [\n            {\n              \"predicted_class\": \"cat\",\n              \"count\": 12\n            },\n            {\n              \"predicted_class\": \"dog\",\n              \"count\": 0\n            }\n          ],\n          \"other_predicted_class_doc_count\": 0\n        },\n        {\n          \"actual_class\": \"dog\",\n          \"actual_class_doc_count\": 11,\n          \"predicted_classes\": [\n            {\n              \"predicted_class\": \"dog\",\n              \"count\": 7\n            },\n            {\n              \"predicted_class\": \"cat\",\n              \"count\": 4\n            }\n          ],\n          \"other_predicted_class_doc_count\": 0\n        }\n      ],\n      \"other_actual_class_count\": 0\n    }\n  }\n}"
+                  },
+                  "MlEvaluateDataFrameResponseExample2": {
+                    "summary": "Classification example 2",
+                    "description": "A succesful response from `POST _ml/data_frame/_evaluate` to evaluate a classification analysis job with the AUC ROC metrics for an annotated index.\n",
+                    "value": "{\n  \"classification\": {\n    \"auc_roc\": {\n      \"value\": 0.8941788639536681\n    }\n  }\n}"
+                  },
+                  "MlEvaluateDataFrameResponseExample3": {
+                    "summary": "Outlier detection",
+                    "description": "A successful response from `POST _ml/data_frame/_evaluate` to evaluate an outlier detection job.",
+                    "value": "{\n  \"outlier_detection\": {\n    \"auc_roc\": {\n      \"value\": 0.9258475774641445\n    },\n    \"confusion_matrix\": {\n      \"0.25\": {\n        \"tp\": 5,\n        \"fp\": 9,\n        \"tn\": 204,\n        \"fn\": 5\n      },\n      \"0.5\": {\n        \"tp\": 1,\n        \"fp\": 5,\n        \"tn\": 208,\n        \"fn\": 9\n      },\n      \"0.75\": {\n        \"tp\": 0,\n        \"fp\": 4,\n        \"tn\": 209,\n        \"fn\": 10\n      }\n    },\n    \"precision\": {\n      \"0.25\": 0.35714285714285715,\n      \"0.5\": 0.16666666666666666,\n      \"0.75\": 0\n    },\n    \"recall\": {\n      \"0.25\": 0.5,\n      \"0.5\": 0.1,\n      \"0.75\": 0\n    }\n  }\n}"
                   }
                 }
               }
@@ -15591,6 +15845,12 @@
                     "_shards",
                     "id"
                   ]
+                },
+                "examples": {
+                  "OpenPointInTimeResponseExample1": {
+                    "description": "A successful response from `POST /my-index-000001/_pit?keep_alive=1m&allow_partial_search_results=true`. It includes a summary of the total number of shards, as well as the number of successful shards when creating the PIT.\n",
+                    "value": "{\n  \"id\": \"46ToAwMDaWR5BXV1aWQyKwZub2RlXzMAAAAAAAAAACoBYwADaWR4BXV1aWQxAgZub2RlXzEAAAAAAAAAAAEBYQADaWR5BXV1aWQyKgZub2RlXzIAAAAAAAAAAAwBYgACBXV1aWQyAAAFdXVpZDEAAQltYXRjaF9hbGw_gAAAAA=\",\n  \"_shards\": {\n    \"total\": 10,\n    \"successful\": 10,\n    \"skipped\": 0,\n    \"failed\": 0\n  }\n}"
+                  }
                 }
               }
             }
@@ -15715,6 +15975,12 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/query_rules._types:QueryRule"
+                },
+                "examples": {
+                  "QueryRuleGetResponseExample1": {
+                    "description": "A successful response from `GET _query_rules/my-ruleset/_rule/my-rule1`.",
+                    "value": "{\n  \"rule_id\": \"my-rule1\",\n  \"type\": \"pinned\",\n  \"criteria\": [\n    {\n      \"type\": \"contains\",\n      \"metadata\": \"query_string\",\n      \"values\": [\n        \"pugs\",\n        \"puggles\"\n      ]\n    }\n  ],\n  \"actions\": {\n    \"ids\": [\n      \"id1\",\n      \"id2\"\n    ]\n  }\n}"
+                  }
                 }
               }
             }
@@ -15895,6 +16161,12 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/query_rules._types:QueryRuleset"
+                },
+                "examples": {
+                  "QueryRulesetGetResponseExample1": {
+                    "description": "A successful response from `GET _query_rules/my-ruleset/`.",
+                    "value": "{\n    \"ruleset_id\": \"my-ruleset\",\n    \"rules\": [\n        {\n            \"rule_id\": \"my-rule1\",\n            \"type\": \"pinned\",\n            \"criteria\": [\n                {\n                    \"type\": \"contains\",\n                    \"metadata\": \"query_string\",\n                    \"values\": [ \"pugs\", \"puggles\" ]\n                }\n            ],\n            \"actions\": {\n                \"ids\": [\n                    \"id1\",\n                    \"id2\"\n                ]\n            }\n        },\n        {\n            \"rule_id\": \"my-rule2\",\n            \"type\": \"pinned\",\n            \"criteria\": [\n                {\n                    \"type\": \"fuzzy\",\n                    \"metadata\": \"query_string\",\n                    \"values\": [ \"rescue dogs\" ]\n                }\n            ],\n            \"actions\": {\n                \"docs\": [\n                    {\n                        \"_index\": \"index1\",\n                        \"_id\": \"id3\"\n                    },\n                    {\n                        \"_index\": \"index2\",\n                        \"_id\": \"id4\"\n                    }\n                ]\n            }\n        }\n    ]\n}"
+                  }
                 }
               }
             }
@@ -16068,6 +16340,12 @@
                     "count",
                     "results"
                   ]
+                },
+                "examples": {
+                  "QueryRulesetListResponseExample1": {
+                    "description": "A successful response from `GET _query_rules/?from=0&size=3`.",
+                    "value": "{\n    \"count\": 3,\n    \"results\": [\n        {\n            \"ruleset_id\": \"ruleset-1\",\n            \"rule_total_count\": 1,\n            \"rule_criteria_types_counts\": {\n                \"exact\": 1\n            }\n        },\n        {\n            \"ruleset_id\": \"ruleset-2\",\n            \"rule_total_count\": 2,\n            \"rule_criteria_types_counts\": {\n                \"exact\": 1,\n                \"fuzzy\": 1\n            }\n        },\n        {\n            \"ruleset_id\": \"ruleset-3\",\n            \"rule_total_count\": 3,\n            \"rule_criteria_types_counts\": {\n                \"exact\": 1,\n                \"fuzzy\": 2\n            }\n        }\n    ]\n}"
+                  }
                 }
               }
             }
@@ -16147,6 +16425,12 @@
                     "total_matched_rules",
                     "matched_rules"
                   ]
+                },
+                "examples": {
+                  "QueryRulesetTestResponseExample1": {
+                    "description": "A successful response from `POST _query_rules/my-ruleset/_test`.",
+                    "value": "{\n  \"total_matched_rules\": 1,\n  \"matched_rules\": [\n    {\n      \"ruleset_id\": \"my-ruleset\",\n      \"rule_id\": \"my-rule1\"\n    }\n  ]\n}"
+                  }
                 }
               }
             }
@@ -18105,6 +18389,12 @@
                     "enabled",
                     "authentication_type"
                   ]
+                },
+                "examples": {
+                  "SecurityAuthenticateResponseExample1": {
+                    "description": "A successful response from `GET /_security/_authenticate`.",
+                    "value": "{\n  \"username\": \"rdeniro\",\n  \"roles\": [\n    \"admin\"\n  ],\n  \"full_name\": null,\n  \"email\":  null,\n  \"metadata\": { },\n  \"enabled\": true,\n  \"authentication_realm\": {\n    \"name\" : \"file\",\n    \"type\" : \"file\"\n  },\n  \"lookup_realm\": {\n    \"name\" : \"file\",\n    \"type\" : \"file\"\n  },\n  \"authentication_type\": \"realm\"\n}"
+                  }
                 }
               }
             }
@@ -18221,6 +18511,18 @@
                   "required": [
                     "api_keys"
                   ]
+                },
+                "examples": {
+                  "SecurityGetApiKeyResponseExample1": {
+                    "summary": "Get a key by ID",
+                    "description": "A successful response from `GET /_security/api_key?id=VuaCfGcBCdbkQm-e5aOx&with_limited_by=true`.",
+                    "value": "{\n  \"api_keys\": [ \n    {\n      \"id\": \"VuaCfGcBCdbkQm-e5aOx\", \n      \"name\": \"my-api-key\", \n      \"creation\": 1548550550158, \n      \"expiration\": 1548551550158, \n      \"invalidated\": false, \n      \"username\": \"myuser\", \n      \"realm\": \"native1\", \n      \"realm_type\": \"native\",\n      \"metadata\": { \n        \"application\": \"myapp\"\n      },\n      \"role_descriptors\": { }, \n      \"limited_by\": [  \n        {\n          \"role-power-user\": {\n            \"cluster\": [\n              \"monitor\"\n            ],\n            \"indices\": [\n              {\n                \"names\": [\n                  \"*\"\n                ],\n                \"privileges\": [\n                  \"read\"\n                ],\n                \"allow_restricted_indices\": false\n              }\n            ],\n            \"applications\": [ ],\n            \"run_as\": [ ],\n            \"metadata\": { },\n            \"transient_metadata\": {\n              \"enabled\": true\n            }\n          }\n        }\n      ]\n    }\n  ]\n}"
+                  },
+                  "SecurityGetApiKeyResponseExample2": {
+                    "summary": "Get all keys for a user",
+                    "description": "A successful response from `GET /_security/api_key?username=myuser&realm_name=native1`. The response contains all API keys for the user `myuser` in the `native1` realm.\n",
+                    "value": "{\n  \"api_keys\": [\n    {\n      \"id\": \"0GF5GXsBCXxz2eDxWwFN\",\n      \"name\": \"hadoop_myuser_key\",\n      \"creation\": 1548550550158,\n      \"expiration\": 1548551550158,\n      \"invalidated\": false,\n      \"username\": \"myuser\",\n      \"realm\": \"native1\",\n      \"realm_type\": \"native\",\n      \"metadata\": {\n        \"application\": \"myapp\"\n      },\n      \"role_descriptors\": {\n        \"role-a\": {\n          \"cluster\": [\n            \"monitor\"\n          ],\n          \"indices\": [\n            {\n              \"names\": [\n                \"index-a\"\n              ],\n              \"privileges\": [\n                \"read\"\n              ],\n              \"allow_restricted_indices\": false\n            }\n          ],\n          \"applications\": [ ],\n          \"run_as\": [ ],\n          \"metadata\": { },\n          \"transient_metadata\": {\n            \"enabled\": true\n          }\n        }\n      }\n    },\n    {\n      \"id\": \"6wHJmcQpReKBa42EHV5SBw\",\n      \"name\": \"api-key-name-2\",\n      \"creation\": 1548550550158,\n      \"invalidated\": false,\n      \"username\": \"user-y\",\n      \"realm\": \"realm-2\",\n      \"metadata\": {},\n      \"role_descriptors\": { }\n    }\n  ]\n}"
+                  }
                 }
               }
             }
@@ -18392,6 +18694,12 @@
                     "invalidated_api_keys",
                     "previously_invalidated_api_keys"
                   ]
+                },
+                "examples": {
+                  "SecurityInvalidateApiKeyResponseExample1": {
+                    "description": "A successful response from `DELETE /_security/api_key`.\n",
+                    "value": "{\n  \"invalidated_api_keys\": [ \n    \"api-key-id-1\"\n  ],\n  \"previously_invalidated_api_keys\": [ \n    \"api-key-id-2\",\n    \"api-key-id-3\"\n  ],\n  \"error_count\": 2, \n  \"error_details\": [ \n    {\n      \"type\": \"exception\",\n      \"reason\": \"error occurred while invalidating api keys\",\n      \"caused_by\": {\n        \"type\": \"illegal_argument_exception\",\n        \"reason\": \"invalid api key id\"\n      }\n    },\n    {\n      \"type\": \"exception\",\n      \"reason\": \"error occurred while invalidating api keys\",\n      \"caused_by\": {\n        \"type\": \"illegal_argument_exception\",\n        \"reason\": \"invalid api key id\"\n      }\n    }\n  ]\n}"
+                  }
                 }
               }
             }
@@ -18519,6 +18827,12 @@
                   "required": [
                     "found"
                   ]
+                },
+                "examples": {
+                  "SecurityDeleteRoleResponseExample1": {
+                    "description": "A successful response from `DELETE /_security/role/my_admin_role`. If the role is successfully deleted, `found` is set to `true`.\n",
+                    "value": "{\n  \"found\" : true\n}"
+                  }
                 }
               }
             }
@@ -18564,6 +18878,12 @@
                     "cluster",
                     "index"
                   ]
+                },
+                "examples": {
+                  "SecurityGetBuiltinPrivilegesResponseExample1": {
+                    "description": "A successful response from `GET /_security/privilege/_builtin`.",
+                    "value": "{\n  \"cluster\" : [\n    \"all\",\n    \"cancel_task\",\n    \"create_snapshot\",\n    \"cross_cluster_replication\",\n    \"cross_cluster_search\",\n    \"delegate_pki\",\n    \"grant_api_key\",\n    \"manage\",\n    \"manage_api_key\",\n    \"manage_autoscaling\",\n    \"manage_behavioral_analytics\",\n    \"manage_ccr\",\n    \"manage_connector\",\n    \"manage_data_frame_transforms\",\n    \"manage_data_stream_global_retention\",\n    \"manage_enrich\",\n    \"manage_ilm\",\n    \"manage_index_templates\",\n    \"manage_inference\",\n    \"manage_ingest_pipelines\",\n    \"manage_logstash_pipelines\",\n    \"manage_ml\",\n    \"manage_oidc\",\n    \"manage_own_api_key\",\n    \"manage_pipeline\",\n    \"manage_rollup\",\n    \"manage_saml\",\n    \"manage_search_application\",\n    \"manage_search_query_rules\",\n    \"manage_search_synonyms\",\n    \"manage_security\",\n    \"manage_service_account\",\n    \"manage_slm\",\n    \"manage_token\",\n    \"manage_transform\",\n    \"manage_user_profile\",\n    \"manage_watcher\",\n    \"monitor\",\n    \"monitor_connector\",\n    \"monitor_data_frame_transforms\",\n    \"monitor_data_stream_global_retention\",\n    \"monitor_enrich\",\n    \"monitor_inference\",\n    \"monitor_ml\",\n    \"monitor_rollup\",\n    \"monitor_snapshot\",\n    \"monitor_stats\",\n    \"monitor_text_structure\",\n    \"monitor_transform\",\n    \"monitor_watcher\",\n    \"none\",\n    \"post_behavioral_analytics_event\",\n    \"read_ccr\",\n    \"read_connector_secrets\",\n    \"read_fleet_secrets\",\n    \"read_ilm\",\n    \"read_pipeline\",\n    \"read_security\",\n    \"read_slm\",\n    \"transport_client\",\n    \"write_connector_secrets\",\n    \"write_fleet_secrets\"\n  ],\n  \"index\" : [\n    \"all\",\n    \"auto_configure\",\n    \"create\",\n    \"create_doc\",\n    \"create_index\",\n    \"cross_cluster_replication\",\n    \"cross_cluster_replication_internal\",\n    \"delete\",\n    \"delete_index\",\n    \"index\",\n    \"maintenance\",\n    \"manage\",\n    \"manage_data_stream_lifecycle\",\n    \"manage_follow_index\",\n    \"manage_ilm\",\n    \"manage_leader_index\",\n    \"monitor\",\n    \"none\",\n    \"read\",\n    \"read_cross_cluster\",\n    \"view_index_metadata\",\n    \"write\"\n  ],\n  \"remote_cluster\" : [\n    \"monitor_enrich\",\n    \"monitor_stats\"\n  ]\n}"
+                  }
                 }
               }
             }
@@ -18848,6 +19168,13 @@
                   "required": [
                     "updated"
                   ]
+                },
+                "examples": {
+                  "ResponseExample1": {
+                    "summary": "Update role and metadata",
+                    "description": "A successful response from `PUT /_security/api_key/VuaCfGcBCdbkQm-e5aOx`. The API key's effective permissions after the update will be the intersection of the supplied role descriptors and the owner user's permissions.\n",
+                    "value": "{\n  \"updated\": true\n}"
+                  }
                 }
               }
             }
@@ -19272,6 +19599,12 @@
                     "count",
                     "synonyms_set"
                   ]
+                },
+                "examples": {
+                  "SynonymsGetResponseExample1": {
+                    "description": "A successful response from `GET _synonyms/my-synonyms-set`.",
+                    "value": "{\n  \"count\": 3,\n  \"synonyms_set\": [\n    {\n      \"id\": \"test-1\",\n      \"synonyms\": \"hello, hi\"\n    },\n    {\n      \"id\": \"test-2\",\n      \"synonyms\": \"bye, goodbye\"\n    },\n    {\n      \"id\": \"test-3\",\n      \"synonyms\": \"test => check\"\n    }\n  ]\n}"
+                  }
                 }
               }
             }
@@ -19428,6 +19761,12 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/synonyms._types:SynonymRuleRead"
+                },
+                "examples": {
+                  "SynonymRuleGetResponseExample1": {
+                    "description": "A successful response from `GET _synonyms/my-synonyms-set/test-1`.",
+                    "value": "{\n  \"id\": \"test-1\",\n  \"synonyms\": \"hello, hi\"\n}"
+                  }
                 }
               }
             }
@@ -19498,6 +19837,12 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/synonyms._types:SynonymsUpdateResult"
+                },
+                "examples": {
+                  "SynonymRuleResponseExample1": {
+                    "description": "A successful response from `PUT _synonyms/my-synonyms-set/test-1`.\n",
+                    "value": "{\n  \"result\": \"updated\",\n  \"reload_analyzers_details\": {\n    \"_shards\": {\n      \"total\": 2,\n      \"successful\": 1,\n      \"failed\": 0\n    },\n    \"reload_details\": [\n      {\n        \"index\": \"test-index\",\n        \"reloaded_analyzers\": [\n          \"my_search_analyzer\"\n        ],\n        \"reloaded_node_ids\": [\n          \"1wYFZzq8Sxeu_Jvt9mlbkg\"\n        ]\n      }\n    ]\n  }\n}"
+                  }
                 }
               }
             }
@@ -19543,6 +19888,12 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/synonyms._types:SynonymsUpdateResult"
+                },
+                "examples": {
+                  "SynonymRuleDeleteResponseExample1": {
+                    "description": "A successful response from `DELETE _synonyms/my-synonyms-set/test-1`. All analyzers using this synonyms set will be reloaded automatically to reflect the rule being deleted.\n",
+                    "value": "{\n  \"result\": \"deleted\",\n  \"reload_analyzers_details\": {\n    \"_shards\": {\n      \"total\": 2,\n      \"successful\": 1,\n      \"failed\": 0\n    },\n    \"reload_details\": [\n      {\n        \"index\": \"test-index\",\n        \"reloaded_analyzers\": [\n          \"my_search_analyzer\"\n        ],\n        \"reloaded_node_ids\": [\n          \"1wYFZzq8Sxeu_Jvt9mlbkg\"\n        ]\n      }\n    ]\n  }\n}"
+                  }
                 }
               }
             }
@@ -19605,6 +19956,12 @@
                     "count",
                     "results"
                   ]
+                },
+                "examples": {
+                  "SynonymsSetsGetResponseExample1": {
+                    "description": "A successful response from `GET _synonyms`.",
+                    "value": "{\n  \"count\": 3,\n  \"results\": [\n    {\n      \"synonyms_set\": \"ecommerce-synonyms\",\n      \"count\": 2\n    },\n    {\n      \"synonyms_set\": \"my-synonyms-set\",\n      \"count\": 3\n    },\n    {\n      \"synonyms_set\": \"new-ecommerce-synonyms\",\n      \"count\": 1\n    }\n  ]\n}"
+                  }
                 }
               }
             }
@@ -20109,6 +20466,12 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/_types:AcknowledgedResponseBase"
+                },
+                "examples": {
+                  "PutTransformResponseExample1": {
+                    "description": "A successful response when creating a transform.",
+                    "value": "{\n  \"acknowledged\": true\n}"
+                  }
                 }
               }
             }
@@ -20172,6 +20535,12 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/_types:AcknowledgedResponseBase"
+                },
+                "examples": {
+                  "DeleteTransformResponseExample1": {
+                    "description": "A successful response when the transform is deleted.",
+                    "value": "{\n  \"acknowledged\": true\n}"
+                  }
                 }
               }
             }
@@ -20293,6 +20662,12 @@
                     "count",
                     "transforms"
                   ]
+                },
+                "examples": {
+                  "GetTransformStatsResponseExample1": {
+                    "description": "A successful response that contains usage information for a transform.",
+                    "value": "{\n  \"count\": 1,\n  \"transforms\": [\n    {\n      \"id\": \"ecommerce-customer-transform\",\n      \"state\": \"started\",\n      \"node\": {\n        \"id\": \"cpTIGMsVQ8Gqwqlxxxxxxx\",\n        \"name\": \"my.home\",\n        \"ephemeral_id\": \"5-L21nFsQxxxxxxxxxx-xx\",\n        \"transport_address\": \"127.0.0.1:9300\",\n        \"attributes\": {}\n      },\n      \"stats\": {\n        \"pages_processed\": 78,\n        \"documents_processed\": 6027,\n        \"documents_indexed\": 68,\n        \"documents_deleted\": 22,\n        \"delete_time_in_ms\": 214,\n        \"trigger_count\": 168,\n        \"index_time_in_ms\": 412,\n        \"index_total\": 20,\n        \"index_failures\": 0,\n        \"search_time_in_ms\": 353,\n        \"search_total\": 78,\n        \"search_failures\": 0,\n        \"processing_time_in_ms\": 8,\n        \"processing_total\": 78,\n        \"exponential_avg_checkpoint_duration_ms\": 97.30637923893185,\n        \"exponential_avg_documents_indexed\": 2.2064915040974062,\n        \"exponential_avg_documents_processed\": 179.89419945785045\n      },\n      \"checkpointing\": {\n        \"last\": {\n          \"checkpoint\": 20,\n          \"timestamp_millis\": 1585344558220,\n          \"time_upper_bound_millis\": 1585344498220\n        },\n        \"changes_last_detected_at\": 1585344558219\n      },\n      \"health\": {\n        \"status\": \"green\"\n      }\n    }\n  ]\n}"
+                  }
                 }
               }
             }
@@ -20447,6 +20822,12 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/_types:AcknowledgedResponseBase"
+                },
+                "examples": {
+                  "ResetTransformResponseExample1": {
+                    "description": "A successful response when the transform is reset.",
+                    "value": "{\n  \"acknowledged\": true\n}"
+                  }
                 }
               }
             }
@@ -20493,6 +20874,12 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/_types:AcknowledgedResponseBase"
+                },
+                "examples": {
+                  "ScheduleNowTransformResponseExample1": {
+                    "description": "A successful response when the transform is scheduled to run now.",
+                    "value": "{\n  \"acknowledged\": true\n}"
+                  }
                 }
               }
             }
@@ -20549,6 +20936,12 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/_types:AcknowledgedResponseBase"
+                },
+                "examples": {
+                  "StartTransformResponseExample1": {
+                    "description": "A successful response when a transform starts.",
+                    "value": "{\n  \"acknowledged\": true\n}"
+                  }
                 }
               }
             }
@@ -20635,6 +21028,12 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/_types:AcknowledgedResponseBase"
+                },
+                "examples": {
+                  "StopTransformResponseExample1": {
+                    "description": "A successful response when a transform stops.",
+                    "value": "{\n  \"acknowledged\": true\n}"
+                  }
                 }
               }
             }
@@ -20796,6 +21195,12 @@
                     "source",
                     "version"
                   ]
+                },
+                "examples": {
+                  "UpdateTransformResponseExample1": {
+                    "description": "A successful response when creating a transform.",
+                    "value": "{\n  \"id\": \"simple-kibana-ecomm-pivot\",\n  \"authorization\": {\n    \"roles\": [\n      \"superuser\"\n    ]\n  },\n  \"version\": \"10.0.0\",\n  \"create_time\": 1712951576767,\n  \"source\": {\n    \"index\": [\n      \"kibana_sample_data_ecommerce\"\n    ],\n    \"query\": {\n      \"term\": {\n        \"geoip.continent_name\": {\n          \"value\": \"Asia\"\n        }\n      }\n    }\n  },\n  \"dest\": {\n    \"index\": \"kibana_sample_data_ecommerce_transform_v2\",\n    \"pipeline\": \"add_timestamp_pipeline\"\n  },\n  \"frequency\": \"15m\",\n  \"sync\": {\n    \"time\": {\n      \"field\": \"order_date\",\n      \"delay\": \"120s\"\n    }\n  },\n  \"pivot\": {\n    \"group_by\": {\n      \"customer_id\": {\n        \"terms\": {\n          \"field\": \"customer_id\",\n          \"missing_bucket\": true\n        }\n      }\n    },\n    \"aggregations\": {\n      \"max_price\": {\n        \"max\": {\n          \"field\": \"taxful_total_price\"\n        }\n      }\n    }\n  },\n  \"description\": \"Maximum priced ecommerce data by customer_id in Asia\",\n  \"settings\": {},\n  \"retention_policy\": {\n    \"time\": {\n      \"field\": \"order_date\",\n      \"max_age\": \"30d\"\n    }\n  }\n}"
+                  }
                 }
               }
             }
@@ -21068,6 +21473,13 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/_global.update:UpdateWriteResponseBase"
+                },
+                "examples": {
+                  "UpdateResponseExample1": {
+                    "summary": "Detect noop updates",
+                    "description": "By default updates that don't change anything detect that they don't change anything and return `\"result\": \"noop\"`.\n",
+                    "value": "{\n   \"_shards\": {\n        \"total\": 0,\n        \"successful\": 0,\n        \"failed\": 0\n   },\n   \"_index\": \"test\",\n   \"_id\": \"1\",\n   \"_version\": 2,\n   \"_primary_term\": 1,\n   \"_seq_no\": 1,\n   \"result\": \"noop\"\n}"
+                  }
                 }
               }
             }
@@ -57511,6 +57923,12 @@
           "application/json": {
             "schema": {
               "$ref": "#/components/schemas/async_search._types:AsyncSearchDocumentResponseBase"
+            },
+            "examples": {
+              "AsyncSearchSubmitResponseExample1": {
+                "description": "A successful response when performing search asynchronously.",
+                "value": "{\n  \"id\" : \"FmRldE8zREVEUzA2ZVpUeGs2ejJFUFEaMkZ5QTVrSTZSaVN3WlNFVmtlWHJsdzoxMDc=\",\n  \"is_partial\" : true,\n  \"is_running\" : true,\n  \"start_time_in_millis\" : 1583945890986,\n  \"expiration_time_in_millis\" : 1584377890986,\n  \"response\" : {\n    \"took\" : 1122,\n    \"timed_out\" : false,\n    \"num_reduce_phases\" : 0,\n    \"_shards\" : {\n      \"total\" : 562,\n      \"successful\" : 3,\n      \"skipped\" : 0,\n      \"failed\" : 0\n    },\n    \"hits\" : {\n      \"total\" : {\n        \"value\" : 157483,\n        \"relation\" : \"gte\"\n      },\n      \"max_score\" : null,\n      \"hits\" : [ ]\n    }\n  }\n}"
+              }
             }
           }
         }
@@ -57551,6 +57969,22 @@
                 "items",
                 "took"
               ]
+            },
+            "examples": {
+              "BulkResponseExample1": {
+                "summary": "Multiple successful operations",
+                "value": "{\n   \"took\": 30,\n   \"errors\": false,\n   \"items\": [\n      {\n         \"index\": {\n            \"_index\": \"test\",\n            \"_id\": \"1\",\n            \"_version\": 1,\n            \"result\": \"created\",\n            \"_shards\": {\n               \"total\": 2,\n               \"successful\": 1,\n               \"failed\": 0\n            },\n            \"status\": 201,\n            \"_seq_no\" : 0,\n            \"_primary_term\": 1\n         }\n      },\n      {\n         \"delete\": {\n            \"_index\": \"test\",\n            \"_id\": \"2\",\n            \"_version\": 1,\n            \"result\": \"not_found\",\n            \"_shards\": {\n               \"total\": 2,\n               \"successful\": 1,\n               \"failed\": 0\n            },\n            \"status\": 404,\n            \"_seq_no\" : 1,\n            \"_primary_term\" : 2\n         }\n      },\n      {\n         \"create\": {\n            \"_index\": \"test\",\n            \"_id\": \"3\",\n            \"_version\": 1,\n            \"result\": \"created\",\n            \"_shards\": {\n               \"total\": 2,\n               \"successful\": 1,\n               \"failed\": 0\n            },\n            \"status\": 201,\n            \"_seq_no\" : 2,\n            \"_primary_term\" : 3\n         }\n      },\n      {\n         \"update\": {\n            \"_index\": \"test\",\n            \"_id\": \"1\",\n            \"_version\": 2,\n            \"result\": \"updated\",\n            \"_shards\": {\n                \"total\": 2,\n                \"successful\": 1,\n                \"failed\": 0\n            },\n            \"status\": 200,\n            \"_seq_no\" : 3,\n            \"_primary_term\" : 4\n         }\n      }\n   ]\n}"
+              },
+              "BulkResponseExample2": {
+                "summary": "Failed actions",
+                "description": "If you run `POST /_bulk` with operations that update non-existent documents, the operations cannot complete successfully. The API returns a response with an `errors` property value `true`. The response also includes an error object for any failed operations. The error object contains additional information about the failure, such as the error type and reason.\n",
+                "value": "{\n  \"took\": 486,\n  \"errors\": true,\n  \"items\": [\n    {\n      \"update\": {\n        \"_index\": \"index1\",\n        \"_id\": \"5\",\n        \"status\": 404,\n        \"error\": {\n          \"type\": \"document_missing_exception\",\n          \"reason\": \"[5]: document missing\",\n          \"index_uuid\": \"aAsFqTI0Tc2W0LCWgPNrOA\",\n          \"shard\": \"0\",\n          \"index\": \"index1\"\n        }\n      }\n    },\n    {\n      \"update\": {\n        \"_index\": \"index1\",\n        \"_id\": \"6\",\n        \"status\": 404,\n        \"error\": {\n          \"type\": \"document_missing_exception\",\n          \"reason\": \"[6]: document missing\",\n          \"index_uuid\": \"aAsFqTI0Tc2W0LCWgPNrOA\",\n          \"shard\": \"0\",\n          \"index\": \"index1\"\n        }\n      }\n    },\n    {\n      \"create\": {\n        \"_index\": \"index1\",\n        \"_id\": \"7\",\n        \"_version\": 1,\n        \"result\": \"created\",\n        \"_shards\": {\n          \"total\": 2,\n          \"successful\": 1,\n          \"failed\": 0\n        },\n        \"_seq_no\": 0,\n        \"_primary_term\": 1,\n        \"status\": 201\n      }\n    }\n  ]\n}"
+              },
+              "BulkResponseExample3": {
+                "summary": "Filter for failed operations",
+                "description": "An example response from `POST /_bulk?filter_path=items.*.error`, which returns only information about failed operations.\n",
+                "value": "{\n  \"items\": [\n    {\n      \"update\": {\n        \"error\": {\n          \"type\": \"document_missing_exception\",\n          \"reason\": \"[5]: document missing\",\n          \"index_uuid\": \"aAsFqTI0Tc2W0LCWgPNrOA\",\n          \"shard\": \"0\",\n          \"index\": \"index1\"\n        }\n      }\n    },\n    {\n      \"update\": {\n        \"error\": {\n          \"type\": \"document_missing_exception\",\n          \"reason\": \"[6]: document missing\",\n          \"index_uuid\": \"aAsFqTI0Tc2W0LCWgPNrOA\",\n          \"shard\": \"0\",\n          \"index\": \"index1\"\n        }\n      }\n    }\n  ]\n}"
+              }
             }
           }
         }
@@ -57805,6 +58239,11 @@
                 "result",
                 "id"
               ]
+            },
+            "examples": {
+              "ConnectorPutResponseExample1": {
+                "value": "{\n  \"result\": \"created\",\n  \"id\": \"my-connector\"\n}"
+              }
             }
           }
         }
@@ -57874,6 +58313,13 @@
           "application/json": {
             "schema": {
               "$ref": "#/components/schemas/eql._types:EqlSearchResponseBase"
+            },
+            "examples": {
+              "EqlSearchResponseExample2": {
+                "summary": "A successful response for performing search with an EQL query.",
+                "description": "",
+                "value": "{\n  \"is_partial\": false,\n  \"is_running\": false,\n  \"took\": 6,\n  \"timed_out\": false,\n  \"hits\": {\n    \"total\": {\n      \"value\": 1,\n      \"relation\": \"eq\"\n    },\n    \"sequences\": [\n      {\n        \"join_keys\": [\n          2012\n        ],\n        \"events\": [\n          {\n            \"_index\": \".ds-my-data-stream-2099.12.07-000001\",\n            \"_id\": \"AtOJ4UjUBAAx3XR5kcCM\",\n            \"_source\": {\n              \"@timestamp\": \"2099-12-06T11:04:07.000Z\",\n              \"event\": {\n                \"category\": \"file\",\n                \"id\": \"dGCHwoeS\",\n                \"sequence\": 2\n              },\n              \"file\": {\n                \"accessed\": \"2099-12-07T11:07:08.000Z\",\n                \"name\": \"cmd.exe\",\n                \"path\": \"C:\\\\Windows\\\\System32\\\\cmd.exe\",\n                \"type\": \"file\",\n                \"size\": 16384\n              },\n              \"process\": {\n                \"pid\": 2012,\n                \"name\": \"cmd.exe\",\n                \"executable\": \"C:\\\\Windows\\\\System32\\\\cmd.exe\"\n              }\n            }\n          },\n          {\n            \"_index\": \".ds-my-data-stream-2099.12.07-000001\",\n            \"_id\": \"OQmfCaduce8zoHT93o4H\",\n            \"_source\": {\n              \"@timestamp\": \"2099-12-07T11:07:09.000Z\",\n              \"event\": {\n                \"category\": \"process\",\n                \"id\": \"aR3NWVOs\",\n                \"sequence\": 4\n              },\n              \"process\": {\n                \"pid\": 2012,\n                \"name\": \"regsvr32.exe\",\n                \"command_line\": \"regsvr32.exe  /s /u /i:https://...RegSvr32.sct scrobj.dll\",\n                \"executable\": \"C:\\\\Windows\\\\System32\\\\regsvr32.exe\"\n              }\n            }\n          }\n        ]\n      }\n    ]\n  }\n}"
+              }
             }
           }
         }
@@ -57906,6 +58352,12 @@
                 "_id",
                 "matched"
               ]
+            },
+            "examples": {
+              "ExplainResponseExample1": {
+                "description": "A successful response from `GET /my-index-000001/_explain/0`.",
+                "value": "{\n  \"_index\":\"my-index-000001\",\n  \"_id\":\"0\",\n  \"matched\":true,\n  \"explanation\":{\n      \"value\":1.6943598,\n      \"description\":\"weight(message:elasticsearch in 0) [PerFieldSimilarity], result of:\",\n      \"details\":[\n        {\n            \"value\":1.6943598,\n            \"description\":\"score(freq=1.0), computed as boost * idf * tf from:\",\n            \"details\":[\n              {\n                  \"value\":2.2,\n                  \"description\":\"boost\",\n                  \"details\":[]\n              },\n              {\n                  \"value\":1.3862944,\n                  \"description\":\"idf, computed as log(1 + (N - n + 0.5) / (n + 0.5)) from:\",\n                  \"details\":[\n                    {\n                        \"value\":1,\n                        \"description\":\"n, number of documents containing term\",\n                        \"details\":[]\n                    },\n                    {\n                        \"value\":5,\n                        \"description\":\"N, total number of documents with field\",\n                        \"details\":[]\n                    }\n                  ]\n              },\n              {\n                  \"value\":0.5555556,\n                  \"description\":\"tf, computed as freq / (freq + k1 * (1 - b + b * dl / avgdl)) from:\",\n                  \"details\":[\n                    {\n                        \"value\":1.0,\n                        \"description\":\"freq, occurrences of term within document\",\n                        \"details\":[]\n                    },\n                    {\n                        \"value\":1.2,\n                        \"description\":\"k1, term saturation parameter\",\n                        \"details\":[]\n                    },\n                    {\n                        \"value\":0.75,\n                        \"description\":\"b, length normalization parameter\",\n                        \"details\":[]\n                    },\n                    {\n                        \"value\":3.0,\n                        \"description\":\"dl, length of field\",\n                        \"details\":[]\n                    },\n                    {\n                        \"value\":5.4,\n                        \"description\":\"avgdl, average length of field\",\n                        \"details\":[]\n                    }\n                  ]\n              }\n            ]\n        }\n      ]\n  }\n}"
+              }
             }
           }
         }
@@ -57934,6 +58386,18 @@
                 "indices",
                 "fields"
               ]
+            },
+            "examples": {
+              "FieldCapabilitiesResponseExample1": {
+                "summary": "Get two fields",
+                "description": "A successful response from `GET _field_caps?fields=rating,title`. The field `rating` is defined as a long in `index1` and `index2` and as a `keyword` in `index3` and `index4`. The field `rating` is not aggregatable in `index1`. The field `rating` is not searchable in `index4`. The field `title` is defined as text in all indices.\n",
+                "value": "{\n  \"indices\": [ \"index1\", \"index2\", \"index3\", \"index4\", \"index5\" ],\n  \"fields\": {\n    \"rating\": {                                   \n      \"long\": {\n        \"metadata_field\": false,\n        \"searchable\": true,\n        \"aggregatable\": false,\n        \"indices\": [ \"index1\", \"index2\" ],\n        \"non_aggregatable_indices\": [ \"index1\" ]  \n      },\n      \"keyword\": {\n        \"metadata_field\": false,\n        \"searchable\": false,\n        \"aggregatable\": true,\n        \"indices\": [ \"index3\", \"index4\" ],\n        \"non_searchable_indices\": [ \"index4\" ]    \n      }\n    },\n    \"title\": {                                    \n      \"text\": {\n        \"metadata_field\": false,\n        \"searchable\": true,\n        \"aggregatable\": false\n      }\n    }\n  }\n}"
+              },
+              "FieldCapabilitiesResponseExample2": {
+                "summary": "Get unmapped fields",
+                "description": "A successful response from `GET _field_caps?fields=rating,title&include_unmapped`. The response contains an entry for each field that is present in some indices but not all. For example, the `rating` and `title` fields are unmapped in `index5`.\n",
+                "value": "{\n  \"indices\": [ \"index1\", \"index2\", \"index3\", \"index4\", \"index5\" ],\n  \"fields\": {\n    \"rating\": {                                   \n      \"long\": {\n        \"metadata_field\": false,\n        \"searchable\": true,\n        \"aggregatable\": false,\n        \"indices\": [ \"index1\", \"index2\" ],\n        \"non_aggregatable_indices\": [ \"index1\" ]  \n      },\n      \"keyword\": {\n        \"metadata_field\": false,\n        \"searchable\": false,\n        \"aggregatable\": true,\n        \"indices\": [ \"index3\", \"index4\" ],\n        \"non_searchable_indices\": [ \"index4\" ]    \n      }\n    },\n    \"title\": {                                    \n      \"text\": {\n        \"metadata_field\": false,\n        \"searchable\": true,\n        \"aggregatable\": false\n      }\n    }\n  }\n}"
+              }
             }
           }
         }
@@ -57987,6 +58451,18 @@
           "application/json": {
             "schema": {
               "$ref": "#/components/schemas/_types:WriteResponseBase"
+            },
+            "examples": {
+              "IndexResponseExample1": {
+                "summary": "Automate document IDs",
+                "description": "A successful response from `POST my-index-000001/_doc/`, which contains an automated document ID.",
+                "value": "{\n  \"_shards\": {\n    \"total\": 2,\n    \"failed\": 0,\n    \"successful\": 2\n  },\n  \"_index\": \"my-index-000001\",\n  \"_id\": \"W0tpsmIBdwcYyG50zbta\",\n  \"_version\": 1,\n  \"_seq_no\": 0,\n  \"_primary_term\": 1,\n  \"result\": \"created\"\n}"
+              },
+              "IndexResponseExample2": {
+                "summary": "Define document IDs",
+                "description": "A successful response from `PUT my-index-000001/_doc/1`.",
+                "value": "{\n  \"_shards\": {\n    \"total\": 2,\n    \"failed\": 0,\n    \"successful\": 2\n  },\n  \"_index\": \"my-index-000001\",\n  \"_id\": \"1\",\n  \"_version\": 1,\n  \"_seq_no\": 0,\n  \"_primary_term\": 1,\n  \"result\": \"created\"\n}"
+              }
             }
           }
         }
@@ -58359,6 +58835,12 @@
               "required": [
                 "docs"
               ]
+            },
+            "examples": {
+              "SimulatePipelineResponseExample1": {
+                "description": "A successful response for running an ingest pipeline against a set of provided documents.",
+                "value": "{\n   \"docs\": [\n      {\n         \"doc\": {\n            \"_id\": \"id\",\n            \"_index\": \"index\",\n            \"_version\": \"-3\",\n            \"_source\": {\n               \"field2\": \"_value\",\n               \"foo\": \"bar\"\n            },\n            \"_ingest\": {\n               \"timestamp\": \"2017-05-04T22:30:03.187Z\"\n            }\n         }\n      },\n      {\n         \"doc\": {\n            \"_id\": \"id\",\n            \"_index\": \"index\",\n            \"_version\": \"-3\",\n            \"_source\": {\n               \"field2\": \"_value\",\n               \"foo\": \"rab\"\n            },\n            \"_ingest\": {\n               \"timestamp\": \"2017-05-04T22:30:03.188Z\"\n            }\n         }\n      }\n   ]\n}"
+              }
             }
           }
         }
@@ -58843,6 +59325,23 @@
               "required": [
                 "result"
               ]
+            },
+            "examples": {
+              "ExecutePainlessScriptResponseExample1": {
+                "summary": "Test context",
+                "description": "A successful response from `POST /_scripts/painless/_execute` with a `painless_test` context.",
+                "value": "{\n  \"result\": \"0.1\"\n}"
+              },
+              "ExecutePainlessScriptResponseExample2": {
+                "summary": "Filter context",
+                "description": "A successful response from `POST /_scripts/painless/_execute` with a `filter` context.",
+                "value": "{\n  \"result\": true\n}"
+              },
+              "ExecutePainlessScriptResponseExample3": {
+                "summary": "Score context",
+                "description": "A successful response from `POST /_scripts/painless/_execute` with a `score` context.",
+                "value": "{\n  \"result\": 0.8\n}"
+              }
             }
           }
         }
@@ -58908,6 +59407,12 @@
           "application/json": {
             "schema": {
               "$ref": "#/components/schemas/_types:MapboxVectorTiles"
+            },
+            "examples": {
+              "SearchMvtResponseExample1": {
+                "description": "A successful response from `GET museums/_mvt/location/13/4207/2692`. It returns results as a binary vector tile. When decoded into JSON, the tile contains the following data.\n",
+                "value": "{\n  \"hits\": {\n    \"extent\": 4096,\n    \"version\": 2,\n    \"features\": [\n      {\n        \"geometry\": {\n          \"type\": \"Point\",\n          \"coordinates\": [\n            3208,\n            3864\n          ]\n        },\n        \"properties\": {\n          \"_id\": \"1\",\n          \"_index\": \"museums\",\n          \"name\": \"NEMO Science Museum\",\n          \"price\": 1750\n        },\n        \"type\": 1\n      },\n      {\n        \"geometry\": {\n          \"type\": \"Point\",\n          \"coordinates\": [\n            3429,\n            3496\n          ]\n        },\n        \"properties\": {\n          \"_id\": \"3\",\n          \"_index\": \"museums\",\n          \"name\": \"Nederlands Scheepvaartmuseum\",\n          \"price\": 1650\n        },\n        \"type\": 1\n      },\n      {\n        \"geometry\": {\n          \"type\": \"Point\",\n          \"coordinates\": [\n            3429,\n            3496\n          ]\n        },\n        \"properties\": {\n          \"_id\": \"4\",\n          \"_index\": \"museums\",\n          \"name\": \"Amsterdam Centre for Architecture\",\n          \"price\": 0\n        },\n        \"type\": 1\n      }\n    ]\n  },\n  \"aggs\": {\n    \"extent\": 4096,\n    \"version\": 2,\n    \"features\": [\n      {\n        \"geometry\": {\n          \"type\": \"Polygon\",\n          \"coordinates\": [\n            [\n              [\n                3072,\n                3072\n              ],\n              [\n                4096,\n                3072\n              ],\n              [\n                4096,\n                4096\n              ],\n              [\n                3072,\n                4096\n              ],\n              [\n                3072,\n                3072\n              ]\n            ]\n          ]\n        },\n        \"properties\": {\n          \"_count\": 3,\n          \"max_price.value\": 1750.0,\n          \"min_price.value\": 0.0,\n          \"avg_price.value\": 1133.3333333333333\n        },\n        \"type\": 3\n      }\n    ]\n  },\n  \"meta\": {\n    \"extent\": 4096,\n    \"version\": 2,\n    \"features\": [\n      {\n        \"geometry\": {\n          \"type\": \"Polygon\",\n          \"coordinates\": [\n            [\n              [\n                0,\n                0\n              ],\n              [\n                4096,\n                0\n              ],\n              [\n                4096,\n                4096\n              ],\n              [\n                0,\n                4096\n              ],\n              [\n                0,\n                0\n              ]\n            ]\n          ]\n        },\n        \"properties\": {\n          \"_shards.failed\": 0,\n          \"_shards.skipped\": 0,\n          \"_shards.successful\": 1,\n          \"_shards.total\": 1,\n          \"aggregations._count.avg\": 3.0,\n          \"aggregations._count.count\": 1,\n          \"aggregations._count.max\": 3.0,\n          \"aggregations._count.min\": 3.0,\n          \"aggregations._count.sum\": 3.0,\n          \"aggregations.avg_price.avg\": 1133.3333333333333,\n          \"aggregations.avg_price.count\": 1,\n          \"aggregations.avg_price.max\": 1133.3333333333333,\n          \"aggregations.avg_price.min\": 1133.3333333333333,\n          \"aggregations.avg_price.sum\": 1133.3333333333333,\n          \"aggregations.max_price.avg\": 1750.0,\n          \"aggregations.max_price.count\": 1,\n          \"aggregations.max_price.max\": 1750.0,\n          \"aggregations.max_price.min\": 1750.0,\n          \"aggregations.max_price.sum\": 1750.0,\n          \"aggregations.min_price.avg\": 0.0,\n          \"aggregations.min_price.count\": 1,\n          \"aggregations.min_price.max\": 0.0,\n          \"aggregations.min_price.min\": 0.0,\n          \"aggregations.min_price.sum\": 0.0,\n          \"hits.max_score\": 0.0,\n          \"hits.total.relation\": \"eq\",\n          \"hits.total.value\": 3,\n          \"timed_out\": false,\n          \"took\": 2\n        },\n        \"type\": 3\n      }\n    ]\n  }\n}"
+              }
             }
           }
         }
@@ -59016,6 +59521,12 @@
                 "name",
                 "encoded"
               ]
+            },
+            "examples": {
+              "SecurityCreateApiKeyResponseExample1": {
+                "description": "A successful response from `POST /_security/api_key`.",
+                "value": "{\n  \"id\": \"VuaCfGcBCdbkQm-e5aOx\",        \n  \"name\": \"my-api-key\",\n  \"expiration\": 1544068612110,         \n  \"api_key\": \"ui2lp2axTNmsyakw9tvNnw\", \n  \"encoded\": \"VnVhQ2ZHY0JDZGJrUW0tZTVhT3g6dWkybHAyYXhUTm1zeWFrdzl0dk5udw==\"  \n}"
+              }
             }
           }
         }
@@ -59028,6 +59539,12 @@
               "type": "object",
               "additionalProperties": {
                 "$ref": "#/components/schemas/security.get_role:Role"
+              }
+            },
+            "examples": {
+              "SecurityGetRoleResponseExample1": {
+                "description": "A successful response from `GET /_security/role/my_admin_role`. The response contains information about the `my_admin_role` role in the native realm.\n",
+                "value": "{\n  \"my_admin_role\": {\n    \"description\": \"Grants full access to all management features within the cluster.\",\n    \"cluster\" : [ \"all\" ],\n    \"indices\" : [\n      {\n        \"names\" : [ \"index1\", \"index2\" ],\n        \"privileges\" : [ \"all\" ],\n        \"allow_restricted_indices\" : false,\n        \"field_security\" : {\n          \"grant\" : [ \"title\", \"body\" ]}\n      }\n    ],\n    \"applications\" : [ ],\n    \"run_as\" : [ \"other_user\" ],\n    \"metadata\" : {\n      \"version\" : 1\n    },\n    \"transient_metadata\": {\n      \"enabled\": true\n    }\n  }\n}"
               }
             }
           }
@@ -59069,6 +59586,12 @@
                 "index",
                 "username"
               ]
+            },
+            "examples": {
+              "SecurityHasPrivilegesResponseExample1": {
+                "description": "A successful response from `GET /_security/user/_has_privileges`, which lists the privileges for the `rdeniro` user.",
+                "value": "{\n  \"username\": \"rdeniro\",\n  \"has_all_requested\" : false,\n  \"cluster\" : {\n    \"monitor\" : true,\n    \"manage\" : false\n  },\n  \"index\" : {\n    \"suppliers\" : {\n      \"read\" : true\n    },\n    \"products\" : {\n      \"read\" : true\n    },\n    \"inventory\" : {\n      \"read\" : true,\n      \"write\" : false\n    }\n  },\n  \"application\" : {\n    \"inventory_manager\" : {\n      \"product/1852563\" : {\n        \"read\": false,\n        \"data:write/inventory\": false\n      }\n    }\n  }\n}"
+              }
             }
           }
         }
@@ -59087,6 +59610,12 @@
               "required": [
                 "role"
               ]
+            },
+            "examples": {
+              "SecurityPutRoleResponseExample1": {
+                "description": "A successful response from `POST /_security/role/my_admin_role`.",
+                "value": "{\n  \"role\": {\n    \"created\": true \n  }\n}"
+              }
             }
           }
         }
@@ -59126,6 +59655,23 @@
                 "count",
                 "api_keys"
               ]
+            },
+            "examples": {
+              "QueryApiKeysResponseExample1": {
+                "summary": "Query API keys by ID",
+                "description": "A successful response from `GET /_security/_query/api_key?with_limited_by=true`. The `limited_by` details are the owner user's permissions associated with the API key. It is a point-in-time snapshot captured at creation and subsequent updates. An API key's effective permissions are an intersection of its assigned privileges and the owner user's permissions.\n",
+                "value": "{\n  \"api_keys\": [\n    {\n      \"id\": \"VuaCfGcBCdbkQm-e5aOx\",\n      \"name\": \"application-key-1\",\n      \"creation\": 1548550550158,\n      \"expiration\": 1548551550158,\n      \"invalidated\": false,\n      \"username\": \"myuser\",\n      \"realm\": \"native1\",\n      \"realm_type\": \"native\",\n      \"metadata\": {\n        \"application\": \"my-application\"\n      },\n      \"role_descriptors\": { },\n      \"limited_by\": [ \n        {\n          \"role-power-user\": {\n            \"cluster\": [\n              \"monitor\"\n            ],\n            \"indices\": [\n              {\n                \"names\": [\n                  \"*\"\n                ],\n                \"privileges\": [\n                  \"read\"\n                ],\n                \"allow_restricted_indices\": false\n              }\n            ],\n            \"applications\": [ ],\n            \"run_as\": [ ],\n            \"metadata\": { },\n            \"transient_metadata\": {\n              \"enabled\": true\n            }\n          }\n        }\n      ]\n    }\n  ]\n}"
+              },
+              "QueryApiKeysResponseExample2": {
+                "summary": "Query API keys with pagination",
+                "description": "An abbreviated response from `GET /_security/_query/api_key` that contains a list of matched API keys along with their sort values. The first sort value is creation time, which is displayed in `date_time` format. The second sort value is the API key name.\n",
+                "value": "{\n  \"total\": 100,\n  \"count\": 10,\n  \"api_keys\": [\n    {\n      \"id\": \"CLXgVnsBOGkf8IyjcXU7\",\n      \"name\": \"app1-key-79\",\n      \"creation\": 1629250154811,\n      \"invalidated\": false,\n      \"username\": \"org-admin-user\",\n      \"realm\": \"native1\",\n      \"metadata\": {\n        \"environment\": \"production\"\n      },\n      \"role_descriptors\": { },\n      \"_sort\": [\n        \"2021-08-18T01:29:14.811Z\",  \n        \"app1-key-79\"  \n      ]\n    },\n    {\n      \"id\": \"BrXgVnsBOGkf8IyjbXVB\",\n      \"name\": \"app1-key-78\",\n      \"creation\": 1629250153794,\n      \"invalidated\": false,\n      \"username\": \"org-admin-user\",\n      \"realm\": \"native1\",\n      \"metadata\": {\n        \"environment\": \"production\"\n      },\n      \"role_descriptors\": { },\n      \"_sort\": [\n        \"2021-08-18T01:29:13.794Z\",\n        \"app1-key-78\"\n      ]\n    }\n  ]\n}"
+              },
+              "QueryApiKeysResponseExample3": {
+                "summary": "Query all API keys",
+                "description": "A successful response from `GET /_security/_query/api_key`. It includes the role descriptors that are assigned to each API key when it was created or last updated. Note that an API key's effective permissions are an intersection of its assigned privileges and the point-in-time snapshot of the owner user's permissions. An empty role descriptors object means the API key inherits the owner user's permissions.\n",
+                "value": "{\n  \"total\": 3,\n  \"count\": 3,\n  \"api_keys\": [ \n    {\n      \"id\": \"nkvrGXsB8w290t56q3Rg\",\n      \"name\": \"my-api-key-1\",\n      \"creation\": 1628227480421,\n      \"expiration\": 1629091480421,\n      \"invalidated\": false,\n      \"username\": \"elastic\",\n      \"realm\": \"reserved\",\n      \"realm_type\": \"reserved\",\n      \"metadata\": {\n        \"letter\": \"a\"\n      },\n      \"role_descriptors\": { \n        \"role-a\": {\n          \"cluster\": [\n            \"monitor\"\n          ],\n          \"indices\": [\n            {\n              \"names\": [\n                \"index-a\"\n              ],\n              \"privileges\": [\n                \"read\"\n              ],\n              \"allow_restricted_indices\": false\n            }\n          ],\n          \"applications\": [ ],\n          \"run_as\": [ ],\n          \"metadata\": { },\n          \"transient_metadata\": {\n            \"enabled\": true\n          }\n        }\n      }\n    },\n    {\n      \"id\": \"oEvrGXsB8w290t5683TI\",\n      \"name\": \"my-api-key-2\",\n      \"creation\": 1628227498953,\n      \"expiration\": 1628313898953,\n      \"invalidated\": false,\n      \"username\": \"elastic\",\n      \"realm\": \"reserved\",\n      \"metadata\": {\n        \"letter\": \"b\"\n      },\n      \"role_descriptors\": { } \n    }\n  ]\n}"
+              }
             }
           }
         }
@@ -59158,6 +59704,18 @@
                 "count",
                 "roles"
               ]
+            },
+            "examples": {
+              "QueryRolesResponseExample1": {
+                "summary": "Query roles by name",
+                "description": "A successful response from `POST /_security/_query/role`. It returns a JSON structure that contains the information retrieved for one or more roles.\n",
+                "value": "{\n    \"total\": 2,\n    \"count\": 2,\n    \"roles\": [ \n        {\n          \"name\" : \"my_admin_role\",\n          \"cluster\" : [\n            \"all\"\n          ],\n          \"indices\" : [\n            {\n              \"names\" : [\n                \"index1\",\n                \"index2\"\n              ],\n              \"privileges\" : [\n                \"all\"\n              ],\n              \"field_security\" : {\n                \"grant\" : [\n                  \"title\",\n                  \"body\"\n                ]\n              },\n              \"allow_restricted_indices\" : false\n            }\n          ],\n          \"applications\" : [ ],\n          \"run_as\" : [\n            \"other_user\"\n          ],\n          \"metadata\" : {\n            \"version\" : 1\n          },\n          \"transient_metadata\" : {\n            \"enabled\" : true\n          },\n          \"description\" : \"Grants full access to all management features within the cluster.\",\n          \"_sort\" : [\n            \"my_admin_role\"\n          ]\n        },\n        {\n          \"name\" : \"my_user_role\",\n          \"cluster\" : [ ],\n          \"indices\" : [\n            {\n              \"names\" : [\n                \"index1\",\n                \"index2\"\n              ],\n              \"privileges\" : [\n                \"all\"\n              ],\n              \"field_security\" : {\n                \"grant\" : [\n                  \"title\",\n                  \"body\"\n                ]\n              },\n              \"allow_restricted_indices\" : false\n            }\n          ],\n          \"applications\" : [ ],\n          \"run_as\" : [ ],\n          \"metadata\" : {\n            \"version\" : 1\n          },\n          \"transient_metadata\" : {\n            \"enabled\" : true\n          },\n          \"description\" : \"Grants user access to some indicies.\",\n          \"_sort\" : [\n            \"my_user_role\"\n          ]\n        }\n    ]\n}"
+              },
+              "QueryRolesResponseExample2": {
+                "summary": "Query roles by description",
+                "description": "A successful response from `POST /_security/_query/role`.\n",
+                "value": "{\n    \"total\": 2,\n    \"count\": 1,\n    \"roles\": [\n        {\n          \"name\" : \"my_user_role\",\n          \"cluster\" : [ ],\n          \"indices\" : [\n            {\n              \"names\" : [\n                \"index1\",\n                \"index2\"\n              ],\n              \"privileges\" : [\n                \"all\"\n              ],\n              \"field_security\" : {\n                \"grant\" : [\n                  \"title\",\n                  \"body\"\n                ]\n              },\n              \"allow_restricted_indices\" : false\n            }\n          ],\n          \"applications\" : [ ],\n          \"run_as\" : [ ],\n          \"metadata\" : {\n            \"version\" : 1\n          },\n          \"transient_metadata\" : {\n            \"enabled\" : true\n          },\n          \"description\" : \"Grants user access to some indicies.\"\n        }\n    ]\n}"
+              }
             }
           }
         }
@@ -59268,6 +59826,12 @@
                 "terms",
                 "complete"
               ]
+            },
+            "examples": {
+              "TermsEnumResponseExample1": {
+                "description": "A successful response from `POST stackoverflow/_terms_enum`.",
+                "value": "{\n  \"_shards\": {\n    \"total\": 1,\n    \"successful\": 1,\n    \"failed\": 0\n  },\n  \"terms\": [\n    \"kibana\"\n  ],\n  \"complete\" : true\n}"
+              }
             }
           }
         }
@@ -59307,6 +59871,23 @@
                 "took",
                 "_version"
               ]
+            },
+            "examples": {
+              "TermVectorsResponseExample1": {
+                "summary": "Return stored term vectors",
+                "description": "A successful response from `GET /my-index-000001/_termvectors/1`.",
+                "value": "{\n  \"_index\": \"my-index-000001\",\n  \"_id\": \"1\",\n  \"_version\": 1,\n  \"found\": true,\n  \"took\": 6,\n  \"term_vectors\": {\n    \"text\": {\n      \"field_statistics\": {\n        \"sum_doc_freq\": 4,\n        \"doc_count\": 2,\n        \"sum_ttf\": 6\n      },\n      \"terms\": {\n        \"test\": {\n          \"doc_freq\": 2,\n          \"ttf\": 4,\n          \"term_freq\": 3,\n          \"tokens\": [\n            {\n              \"position\": 0,\n              \"start_offset\": 0,\n              \"end_offset\": 4,\n              \"payload\": \"d29yZA==\"\n            },\n            {\n              \"position\": 1,\n              \"start_offset\": 5,\n              \"end_offset\": 9,\n              \"payload\": \"d29yZA==\"\n            },\n            {\n              \"position\": 2,\n              \"start_offset\": 10,\n              \"end_offset\": 14,\n              \"payload\": \"d29yZA==\"\n            }\n          ]\n        }\n      }\n    }\n  }\n}"
+              },
+              "TermVectorsResponseExample2": {
+                "summary": "Per-field analyzer",
+                "description": "A successful response from `GET /my-index-000001/_termvectors` with `per_field_analyzer` in the request body.",
+                "value": "{\n  \"_index\": \"my-index-000001\",\n  \"_version\": 0,\n  \"found\": true,\n  \"took\": 6,\n  \"term_vectors\": {\n    \"fullname\": {\n      \"field_statistics\": {\n          \"sum_doc_freq\": 2,\n          \"doc_count\": 4,\n          \"sum_ttf\": 4\n      },\n      \"terms\": {\n          \"John Doe\": {\n            \"term_freq\": 1,\n            \"tokens\": [\n                {\n                  \"position\": 0,\n                  \"start_offset\": 0,\n                  \"end_offset\": 8\n                }\n            ]\n          }\n      }\n    }\n  }\n}"
+              },
+              "TermVectorsResponseExample3": {
+                "summary": "Terms filtering",
+                "description": "A successful response from `GET /my-index-000001/_termvectors` with a `filter` in the request body.",
+                "value": "{\n  \"_index\": \"imdb\",\n  \"_version\": 0,\n  \"found\": true,\n  \"term_vectors\": {\n      \"plot\": {\n        \"field_statistics\": {\n            \"sum_doc_freq\": 3384269,\n            \"doc_count\": 176214,\n            \"sum_ttf\": 3753460\n        },\n        \"terms\": {\n            \"armored\": {\n              \"doc_freq\": 27,\n              \"ttf\": 27,\n              \"term_freq\": 1,\n              \"score\": 9.74725\n            },\n            \"industrialist\": {\n              \"doc_freq\": 88,\n              \"ttf\": 88,\n              \"term_freq\": 1,\n              \"score\": 8.590818\n            },\n            \"stark\": {\n              \"doc_freq\": 44,\n              \"ttf\": 47,\n              \"term_freq\": 1,\n              \"score\": 9.272792\n            }\n        }\n      }\n  }\n}"
+              }
             }
           }
         }
@@ -59332,6 +59913,12 @@
                 "count",
                 "transforms"
               ]
+            },
+            "examples": {
+              "GetTransformResponseExample1": {
+                "description": "A successful response that contains configuration information for a transform.",
+                "value": "{\n  \"count\": 1,\n  \"transforms\": [\n    {\n      \"id\": \"ecommerce_transform1\",\n      \"authorization\": {\n        \"roles\": [\n          \"superuser\"\n        ]\n      },\n      \"version\": \"8.4.0\",\n      \"create_time\": 1656023416565,\n      \"source\": {\n        \"index\": [\n          \"kibana_sample_data_ecommerce\"\n        ],\n        \"query\": {\n          \"term\": {\n            \"geoip.continent_name\": {\n              \"value\": \"Asia\"\n            }\n          }\n        }\n      },\n      \"dest\": {\n        \"index\": \"kibana_sample_data_ecommerce_transform1\",\n        \"pipeline\": \"add_timestamp_pipeline\"\n      },\n      \"frequency\": \"5m\",\n      \"sync\": {\n        \"time\": {\n          \"field\": \"order_date\",\n          \"delay\": \"60s\"\n        }\n      },\n      \"pivot\": {\n        \"group_by\": {\n          \"customer_id\": {\n            \"terms\": {\n              \"field\": \"customer_id\"\n            }\n          }\n        },\n        \"aggregations\": {\n          \"max_price\": {\n            \"max\": {\n              \"field\": \"taxful_total_price\"\n            }\n          }\n        }\n      },\n      \"description\": \"Maximum priced ecommerce data by customer_id in Asia\",\n      \"settings\": {},\n      \"retention_policy\": {\n        \"time\": {\n          \"field\": \"order_date\",\n          \"max_age\": \"30d\"\n        }\n      }\n    }\n  ]\n}"
+              }
             }
           }
         }
@@ -59357,6 +59944,12 @@
                 "generated_dest_index",
                 "preview"
               ]
+            },
+            "examples": {
+              "PreviewTransformResponseExample1": {
+                "description": "An abbreviated response from `POST _transform/_preview` that contains a preview a transform that uses the pivot method.",
+                "value": "{\n  \"preview\": [\n    {\n      \"max_price\": 171,\n      \"customer_id\": \"10\"\n    },\n    {\n      \"max_price\": 233,\n      \"customer_id\": \"11\"\n    },\n    {\n      \"max_price\": 200,\n      \"customer_id\": \"12\"\n    },\n    {\n      \"max_price\": 301,\n      \"customer_id\": \"13\"\n    },\n    {\n      \"max_price\": 176,\n      \"customer_id\": \"14\"\n    },\n    {\n      \"max_price\": 2250,\n      \"customer_id\": \"15\"\n    },\n    {\n      \"max_price\": 170,\n      \"customer_id\": \"16\"\n    },\n    {\n      \"max_price\": 243,\n      \"customer_id\": \"17\"\n    },\n    {\n      \"max_price\": 154,\n      \"customer_id\": \"18\"\n    },\n    {\n      \"max_price\": 393,\n      \"customer_id\": \"19\"\n    },\n    {\n      \"max_price\": 165,\n      \"customer_id\": \"20\"\n    },\n    {\n      \"max_price\": 115,\n      \"customer_id\": \"21\"\n    },\n    {\n      \"max_price\": 192,\n      \"customer_id\": \"22\"\n    },\n    {\n      \"max_price\": 169,\n      \"customer_id\": \"23\"\n    },\n    {\n      \"max_price\": 230,\n      \"customer_id\": \"24\"\n    },\n    {\n      \"max_price\": 278,\n      \"customer_id\": \"25\"\n    },\n    {\n      \"max_price\": 200,\n      \"customer_id\": \"26\"\n    },\n    {\n      \"max_price\": 344,\n      \"customer_id\": \"27\"\n    },\n    {\n      \"max_price\": 175,\n      \"customer_id\": \"28\"\n    },\n    {\n      \"max_price\": 177,\n      \"customer_id\": \"29\"\n    },\n    {\n      \"max_price\": 190,\n      \"customer_id\": \"30\"\n    },\n    {\n      \"max_price\": 190,\n      \"customer_id\": \"31\"\n    },\n    {\n      \"max_price\": 205,\n      \"customer_id\": \"32\"\n    },\n    {\n      \"max_price\": 215,\n      \"customer_id\": \"33\"\n    },\n    {\n      \"max_price\": 270,\n      \"customer_id\": \"34\"\n    },\n    {\n      \"max_price\": 184,\n      \"customer_id\": \"36\"\n    },\n    {\n      \"max_price\": 222,\n      \"customer_id\": \"37\"\n    },\n    {\n      \"max_price\": 370,\n      \"customer_id\": \"38\"\n    },\n    {\n      \"max_price\": 240,\n      \"customer_id\": \"39\"\n    },\n    {\n      \"max_price\": 230,\n      \"customer_id\": \"4\"\n    },\n    {\n      \"max_price\": 229,\n      \"customer_id\": \"41\"\n    },\n    {\n      \"max_price\": 190,\n      \"customer_id\": \"42\"\n    },\n    {\n      \"max_price\": 150,\n      \"customer_id\": \"43\"\n    },\n    {\n      \"max_price\": 175,\n      \"customer_id\": \"44\"\n    },\n    {\n      \"max_price\": 190,\n      \"customer_id\": \"45\"\n    },\n    {\n      \"max_price\": 150,\n      \"customer_id\": \"46\"\n    },\n    {\n      \"max_price\": 310,\n      \"customer_id\": \"48\"\n    },\n    {\n      \"max_price\": 223,\n      \"customer_id\": \"49\"\n    },\n    {\n      \"max_price\": 283,\n      \"customer_id\": \"5\"\n    },\n    {\n      \"max_price\": 185,\n      \"customer_id\": \"50\"\n    },\n    {\n      \"max_price\": 190,\n      \"customer_id\": \"51\"\n    },\n    {\n      \"max_price\": 333,\n      \"customer_id\": \"52\"\n    },\n    {\n      \"max_price\": 165,\n      \"customer_id\": \"6\"\n    },\n    {\n      \"max_price\": 144,\n      \"customer_id\": \"7\"\n    },\n    {\n      \"max_price\": 198,\n      \"customer_id\": \"8\"\n    },\n    {\n      \"max_price\": 210,\n      \"customer_id\": \"9\"\n    }\n  ],\n  \"generated_dest_index\": {\n    \"mappings\": {\n      \"_meta\": {\n        \"_transform\": {\n          \"transform\": \"transform-preview\",\n          \"version\": {\n            \"created\": \"10.0.0\"\n          },\n          \"creation_date_in_millis\": 1712948905889\n        },\n        \"created_by\": \"transform\"\n      },\n      \"properties\": {\n        \"max_price\": {\n          \"type\": \"half_float\"\n        },\n        \"customer_id\": {\n          \"type\": \"keyword\"\n        }\n      }\n    },\n    \"settings\": {\n      \"index\": {\n        \"number_of_shards\": \"1\",\n        \"auto_expand_replicas\": \"0-1\"\n      }\n    },\n    \"aliases\": {}\n  }\n}"
+              }
             }
           }
         }
