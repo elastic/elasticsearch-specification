@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { Dictionary } from '@spec_utils/Dictionary'
+import { Dictionary, SingleKeyDictionary } from '@spec_utils/Dictionary'
 import { Metadata, PropertyName } from '@_types/common'
 import { DynamicMapping, DynamicTemplate } from './dynamic-template'
 import {
@@ -36,7 +36,7 @@ export class TypeMapping {
   date_detection?: boolean
   dynamic?: DynamicMapping
   dynamic_date_formats?: string[]
-  dynamic_templates?: Dictionary<string, DynamicTemplate>[]
+  dynamic_templates?: SingleKeyDictionary<string, DynamicTemplate>[]
   _field_names?: FieldNamesField
   index_field?: IndexField
   /** @doc_id mapping-meta-field */
