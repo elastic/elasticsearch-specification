@@ -9037,6 +9037,74 @@
         "x-state": "Added in 8.11.0"
       }
     },
+    "/_inference/{task_type}/{watsonx_inference_id}": {
+      "put": {
+        "tags": [
+          "inference"
+        ],
+        "summary": "Create a Watsonx inference endpoint",
+        "description": "Creates an inference endpoint to perform an inference task with the `watsonxai` service.\nYou need an IBM Cloud Databases for Elasticsearch deployment to use the `watsonxai` inference service.\nYou can provision one through the IBM catalog, the Cloud Databases CLI plug-in, the Cloud Databases API, or Terraform.\n\nWhen you create an inference endpoint, the associated machine learning model is automatically deployed if it is not already running.\nAfter creating the endpoint, wait for the model deployment to complete before using it.\nTo verify the deployment status, use the get trained model statistics API.\nLook for `\"state\": \"fully_allocated\"` in the response and ensure that the `\"allocation_count\"` matches the `\"target_allocation_count\"`.\nAvoid creating multiple endpoints for the same model unless required, as each endpoint consumes significant resources.",
+        "operationId": "inference-put-watsonx",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "task_type",
+            "description": "The task type.\nThe only valid task type for the model to perform is `text_embedding`.",
+            "required": true,
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/inference.put_watsonx:WatsonxTaskType"
+            },
+            "style": "simple"
+          },
+          {
+            "in": "path",
+            "name": "watsonx_inference_id",
+            "description": "The unique identifier of the inference endpoint.",
+            "required": true,
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/_types:Id"
+            },
+            "style": "simple"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "service": {
+                    "$ref": "#/components/schemas/inference.put_watsonx:ServiceType"
+                  },
+                  "service_settings": {
+                    "$ref": "#/components/schemas/inference.put_watsonx:WatsonxServiceSettings"
+                  }
+                },
+                "required": [
+                  "service",
+                  "service_settings"
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/inference._types:InferenceEndpointInfo"
+                }
+              }
+            }
+          }
+        },
+        "x-state": "Added in 8.16.0"
+      }
+    },
     "/_inference/{inference_id}/_unified": {
       "post": {
         "tags": [
@@ -11268,9 +11336,6 @@
             "$ref": "#/components/parameters/ml.get_trained_models#include"
           },
           {
-            "$ref": "#/components/parameters/ml.get_trained_models#include_model_definition"
-          },
-          {
             "$ref": "#/components/parameters/ml.get_trained_models#size"
           },
           {
@@ -12372,9 +12437,6 @@
             "$ref": "#/components/parameters/ml.get_trained_models#include"
           },
           {
-            "$ref": "#/components/parameters/ml.get_trained_models#include_model_definition"
-          },
-          {
             "$ref": "#/components/parameters/ml.get_trained_models#size"
           },
           {
@@ -12455,44 +12517,76 @@
         "operationId": "ml-infer-trained-model",
         "parameters": [
           {
-            "$ref": "#/components/parameters/ml.infer_trained_model#model_id"
+            "in": "path",
+            "name": "model_id",
+            "description": "The unique identifier of the trained model.",
+            "required": true,
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/_types:Id"
+            },
+            "style": "simple"
           },
           {
-            "$ref": "#/components/parameters/ml.infer_trained_model#timeout"
+            "in": "query",
+            "name": "timeout",
+            "description": "Controls the amount of time to wait for inference results.",
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/_types:Duration"
+            },
+            "style": "form"
           }
         ],
         "requestBody": {
-          "$ref": "#/components/requestBodies/ml.infer_trained_model"
-        },
-        "responses": {
-          "200": {
-            "$ref": "#/components/responses/ml.infer_trained_model#200"
-          }
-        },
-        "x-state": "Added in 8.3.0"
-      }
-    },
-    "/_ml/trained_models/{model_id}/deployment/_infer": {
-      "post": {
-        "tags": [
-          "ml trained model"
-        ],
-        "summary": "Evaluate a trained model",
-        "operationId": "ml-infer-trained-model-1",
-        "parameters": [
-          {
-            "$ref": "#/components/parameters/ml.infer_trained_model#model_id"
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "docs": {
+                    "description": "An array of objects to pass to the model for inference. The objects should contain a fields matching your\nconfigured trained model input. Typically, for NLP models, the field name is `text_field`.\nCurrently, for NLP models, only a single value is allowed.",
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "additionalProperties": {
+                        "type": "object"
+                      }
+                    }
+                  },
+                  "inference_config": {
+                    "$ref": "#/components/schemas/ml._types:InferenceConfigUpdateContainer"
+                  }
+                },
+                "required": [
+                  "docs"
+                ]
+              }
+            }
           },
-          {
-            "$ref": "#/components/parameters/ml.infer_trained_model#timeout"
-          }
-        ],
-        "requestBody": {
-          "$ref": "#/components/requestBodies/ml.infer_trained_model"
+          "required": true
         },
         "responses": {
           "200": {
-            "$ref": "#/components/responses/ml.infer_trained_model#200"
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "inference_results": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/ml._types:InferenceResponseResult"
+                      }
+                    }
+                  },
+                  "required": [
+                    "inference_results"
+                  ]
+                }
+              }
+            }
           }
         },
         "x-state": "Added in 8.3.0"
@@ -35585,26 +35679,6 @@
           "sort": {
             "$ref": "#/components/schemas/indices._types:IndexSegmentSort"
           },
-          "number_of_shards": {
-            "oneOf": [
-              {
-                "type": "number"
-              },
-              {
-                "type": "string"
-              }
-            ]
-          },
-          "number_of_replicas": {
-            "oneOf": [
-              {
-                "type": "number"
-              },
-              {
-                "type": "string"
-              }
-            ]
-          },
           "number_of_routing_shards": {
             "type": "number"
           },
@@ -36304,9 +36378,6 @@
             "$ref": "#/components/schemas/_types.analysis:KeywordAnalyzer"
           },
           {
-            "$ref": "#/components/schemas/_types.analysis:LanguageAnalyzer"
-          },
-          {
             "$ref": "#/components/schemas/_types.analysis:NoriAnalyzer"
           },
           {
@@ -36543,79 +36614,6 @@
         },
         "required": [
           "type"
-        ]
-      },
-      "_types.analysis:LanguageAnalyzer": {
-        "type": "object",
-        "properties": {
-          "type": {
-            "type": "string",
-            "enum": [
-              "language"
-            ]
-          },
-          "version": {
-            "$ref": "#/components/schemas/_types:VersionString"
-          },
-          "language": {
-            "$ref": "#/components/schemas/_types.analysis:Language"
-          },
-          "stem_exclusion": {
-            "type": "array",
-            "items": {
-              "type": "string"
-            }
-          },
-          "stopwords": {
-            "$ref": "#/components/schemas/_types.analysis:StopWords"
-          },
-          "stopwords_path": {
-            "type": "string"
-          }
-        },
-        "required": [
-          "type",
-          "language",
-          "stem_exclusion"
-        ]
-      },
-      "_types.analysis:Language": {
-        "type": "string",
-        "enum": [
-          "Arabic",
-          "Armenian",
-          "Basque",
-          "Brazilian",
-          "Bulgarian",
-          "Catalan",
-          "Chinese",
-          "Cjk",
-          "Czech",
-          "Danish",
-          "Dutch",
-          "English",
-          "Estonian",
-          "Finnish",
-          "French",
-          "Galician",
-          "German",
-          "Greek",
-          "Hindi",
-          "Hungarian",
-          "Indonesian",
-          "Irish",
-          "Italian",
-          "Latvian",
-          "Norwegian",
-          "Persian",
-          "Portuguese",
-          "Romanian",
-          "Russian",
-          "Sorani",
-          "Spanish",
-          "Swedish",
-          "Turkish",
-          "Thai"
         ]
       },
       "_types.analysis:NoriAnalyzer": {
@@ -40996,7 +40994,7 @@
             "type": "boolean"
           },
           "subobjects": {
-            "type": "boolean"
+            "$ref": "#/components/schemas/_types.mapping:Subobjects"
           },
           "_data_stream_timestamp": {
             "$ref": "#/components/schemas/_types.mapping:DataStreamTimestamp"
@@ -42323,7 +42321,7 @@
                 "type": "boolean"
               },
               "subobjects": {
-                "type": "boolean"
+                "$ref": "#/components/schemas/_types.mapping:Subobjects"
               },
               "type": {
                 "type": "string",
@@ -42333,6 +42331,13 @@
               }
             }
           }
+        ]
+      },
+      "_types.mapping:Subobjects": {
+        "type": "string",
+        "enum": [
+          "true",
+          "false"
         ]
       },
       "_types.mapping:PassthroughObjectProperty": {
@@ -46634,6 +46639,71 @@
           "index",
           "relevance_score"
         ]
+      },
+      "inference.put_watsonx:WatsonxTaskType": {
+        "type": "string",
+        "enum": [
+          "text_embedding"
+        ]
+      },
+      "inference.put_watsonx:ServiceType": {
+        "type": "string",
+        "enum": [
+          "watsonxai"
+        ]
+      },
+      "inference.put_watsonx:WatsonxServiceSettings": {
+        "type": "object",
+        "properties": {
+          "api_key": {
+            "externalDocs": {
+              "url": "https://cloud.ibm.com/iam/apikeys"
+            },
+            "description": "A valid API key of your Watsonx account.\nYou can find your Watsonx API keys or you can create a new one on the API keys page.\n\nIMPORTANT: You need to provide the API key only once, during the inference model creation.\nThe get inference endpoint API does not retrieve your API key.\nAfter creating the inference model, you cannot change the associated API key.\nIf you want to use a different API key, delete the inference model and recreate it with the same name and the updated API key.",
+            "type": "string"
+          },
+          "api_version": {
+            "externalDocs": {
+              "url": "https://cloud.ibm.com/apidocs/watsonx-ai#active-version-dates"
+            },
+            "description": "A version parameter that takes a version date in the format of `YYYY-MM-DD`.\nFor the active version data parameters, refer to the Wastonx documentation.",
+            "type": "string"
+          },
+          "model_id": {
+            "externalDocs": {
+              "url": "https://www.ibm.com/products/watsonx-ai/foundation-models"
+            },
+            "description": "The name of the model to use for the inference task.\nRefer to the IBM Embedding Models section in the Watsonx documentation for the list of available text embedding models.",
+            "type": "string"
+          },
+          "project_id": {
+            "description": "The identifier of the IBM Cloud project to use for the inference task.",
+            "type": "string"
+          },
+          "rate_limit": {
+            "$ref": "#/components/schemas/inference._types:RateLimitSetting"
+          },
+          "url": {
+            "description": "The URL of the inference endpoint that you created on Watsonx.",
+            "type": "string"
+          }
+        },
+        "required": [
+          "api_key",
+          "api_version",
+          "model_id",
+          "project_id",
+          "url"
+        ]
+      },
+      "inference._types:RateLimitSetting": {
+        "type": "object",
+        "properties": {
+          "requests_per_minute": {
+            "description": "The number of requests allowed per minute.",
+            "type": "number"
+          }
+        }
       },
       "inference.unified_inference:Message": {
         "type": "object",
@@ -57562,27 +57632,6 @@
           }
         }
       },
-      "ml.infer_trained_model#200": {
-        "description": "",
-        "content": {
-          "application/json": {
-            "schema": {
-              "type": "object",
-              "properties": {
-                "inference_results": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/ml._types:InferenceResponseResult"
-                  }
-                }
-              },
-              "required": [
-                "inference_results"
-              ]
-            }
-          }
-        }
-      },
       "ml.preview_data_frame_analytics#200": {
         "description": "",
         "content": {
@@ -61932,16 +61981,6 @@
         },
         "style": "form"
       },
-      "ml.get_trained_models#include_model_definition": {
-        "in": "query",
-        "name": "include_model_definition",
-        "description": "parameter is deprecated! Use [include=definition] instead",
-        "deprecated": true,
-        "schema": {
-          "type": "boolean"
-        },
-        "style": "form"
-      },
       "ml.get_trained_models#size": {
         "in": "query",
         "name": "size",
@@ -62010,27 +62049,6 @@
         "deprecated": false,
         "schema": {
           "type": "number"
-        },
-        "style": "form"
-      },
-      "ml.infer_trained_model#model_id": {
-        "in": "path",
-        "name": "model_id",
-        "description": "The unique identifier of the trained model.",
-        "required": true,
-        "deprecated": false,
-        "schema": {
-          "$ref": "#/components/schemas/_types:Id"
-        },
-        "style": "simple"
-      },
-      "ml.infer_trained_model#timeout": {
-        "in": "query",
-        "name": "timeout",
-        "description": "Controls the amount of time to wait for inference results.",
-        "deprecated": false,
-        "schema": {
-          "$ref": "#/components/schemas/_types:Duration"
         },
         "style": "form"
       },
@@ -64584,34 +64602,6 @@
             }
           }
         }
-      },
-      "ml.infer_trained_model": {
-        "content": {
-          "application/json": {
-            "schema": {
-              "type": "object",
-              "properties": {
-                "docs": {
-                  "description": "An array of objects to pass to the model for inference. The objects should contain a fields matching your\nconfigured trained model input. Typically, for NLP models, the field name is `text_field`.\nCurrently, for NLP models, only a single value is allowed.",
-                  "type": "array",
-                  "items": {
-                    "type": "object",
-                    "additionalProperties": {
-                      "type": "object"
-                    }
-                  }
-                },
-                "inference_config": {
-                  "$ref": "#/components/schemas/ml._types:InferenceConfigUpdateContainer"
-                }
-              },
-              "required": [
-                "docs"
-              ]
-            }
-          }
-        },
-        "required": true
       },
       "ml.preview_data_frame_analytics": {
         "content": {
