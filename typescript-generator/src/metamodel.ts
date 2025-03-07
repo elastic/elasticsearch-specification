@@ -301,7 +301,7 @@ export class Request extends BaseType {
   body: Body
   behaviors?: Behavior[]
   attachedBehaviors?: string[]
-  examples?: Map<string, Example>
+  examples?: Record<string, Example>
 }
 
 /**
