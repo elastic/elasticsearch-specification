@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { Dictionary } from '@spec_utils/Dictionary'
+import { Dictionary, SingleKeyDictionary } from '@spec_utils/Dictionary'
 import { RequestBase } from '@_types/Base'
 import {
   ExpandWildcards,
@@ -141,7 +141,7 @@ export interface Request extends RequestBase {
     /**
      * Specify dynamic templates for the mapping.
      */
-    dynamic_templates?: Dictionary<string, DynamicTemplate>[]
+    dynamic_templates?: SingleKeyDictionary<string, DynamicTemplate>[]
     /**
      * Control whether field names are enabled for the index.
      */
