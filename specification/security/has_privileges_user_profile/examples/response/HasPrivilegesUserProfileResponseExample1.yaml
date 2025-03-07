@@ -1,0 +1,18 @@
+# summary:
+description: >
+  A response from `POST /_security/profile/_has_privileges` that indicates only one of the three users has all the privileges and one of them is not found.
+# type: response
+# response_code:
+value: |-
+  {
+    "has_privilege_uids": ["u_rzRnxDgEHIH0GOUoFkZr5Y27YUwSk19Joiq=g4OCxxB_1"],
+    "errors": {
+      "count": 1,
+      "details": {
+        "u_does-not-exist_0": {
+          "type": "resource_not_found_exception",
+          "reason": "profile document not found"
+        }
+      }
+    }
+  }

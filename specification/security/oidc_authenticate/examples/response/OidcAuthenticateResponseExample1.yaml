@@ -1,0 +1,13 @@
+# summary:
+description: >
+  A successful response from `POST /_security/oidc/authenticate`.
+  It contains the access and refresh tokens that were generated, the token duration (in seconds), and the type.
+# type: response
+# response_code:
+value: |-
+  {
+    "access_token" : "dGhpcyBpcyBub3QgYSByZWFsIHRva2VuIGJ1dCBpdCBpcyBvbmx5IHRlc3QgZGF0YS4gZG8gbm90IHRyeSB0byByZWFkIHRva2VuIQ==",
+    "type" : "Bearer",
+    "expires_in" : 1200,
+    "refresh_token": "vLBPvmAB6KvwvJZr27cS"
+  }

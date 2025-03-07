@@ -1,0 +1,9 @@
+# summary:
+description: >
+  A successful response from `POST /_security/profile/u_P_0BMHgaOK3p7k-PFWUCbw9dQ-UFjt01oWJ_Dp2PmPc_0/_data`, which indicates that the request is acknowledged.
+# type: response
+# response_code:
+value: |-
+  {
+    "acknowledged": true
+  }

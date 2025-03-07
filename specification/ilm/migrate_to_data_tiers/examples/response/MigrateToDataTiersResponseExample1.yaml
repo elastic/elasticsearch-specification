@@ -1,0 +1,15 @@
+# summary:
+description: >
+  A successful response when migrating indices, ILMs, and templates from custom node attributes to data tiers.
+# type: response
+# response_code: 200
+value: |-
+  {
+    "dry_run": false,
+    "removed_legacy_template":"global-template",
+    "migrated_ilm_policies":["policy_with_allocate_action"],
+    "migrated_indices":["warm-index-to-migrate-000001"],
+    "migrated_legacy_templates":["a-legacy-template"],
+    "migrated_composable_templates":["a-composable-template"],
+    "migrated_component_templates":["a-component-template"]
+  }
