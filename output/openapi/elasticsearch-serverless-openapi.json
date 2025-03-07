@@ -41255,7 +41255,9 @@
               "type": "object",
               "additionalProperties": {
                 "$ref": "#/components/schemas/_types.mapping:DynamicTemplate"
-              }
+              },
+              "minProperties": 1,
+              "maxProperties": 1
             }
           },
           "_field_names": {
@@ -64512,7 +64514,9 @@
                     "type": "object",
                     "additionalProperties": {
                       "$ref": "#/components/schemas/_types.mapping:DynamicTemplate"
-                    }
+                    },
+                    "minProperties": 1,
+                    "maxProperties": 1
                   }
                 },
                 "_field_names": {
