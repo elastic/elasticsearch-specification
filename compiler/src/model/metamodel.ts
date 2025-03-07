@@ -88,6 +88,7 @@ export class DictionaryOf {
   key: ValueOf
   value: ValueOf
   singleKey: boolean
+  ordered: boolean
 }
 
 /**

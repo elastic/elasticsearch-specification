@@ -20,3 +20,5 @@
 export class Dictionary<TKey, TValue> {}
 
 export class SingleKeyDictionary<TKey, TValue> {}
+
+export class OrderedDictionary<TKey, TValue> {}
