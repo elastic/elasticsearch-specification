@@ -1,0 +1,10 @@
+# summary:
+description: A successful response from `POST /_security/saml/prepare`.
+# type: response
+# response_code:
+value: |-
+  {
+    "redirect": "https://my-idp.org/login?SAMLRequest=fVJdc6IwFP0rmbwDgUKLGbFDtc462%2B06FX3Yl50rBJsKCZsbrPbXL6J22hdfk%2FNx7zl3eL%2BvK7ITBqVWCfVdRolQuS6k2iR0mU2dmN6Phgh1FTQ8be2rehH%2FWoGWdESF%2FPST0NYorgElcgW1QG5zvkh%2FPfHAZbwx2upcV5SkiMLYzmqsFba1MAthdjIXy5enhL5a23DPOyo6W7kGBa7cwhZ2gO7G8OiW%2BR400kORt0bag7fzezAlk24eqcD2OxxlsNN5O3MdsW9c6CZnbq7rntF4d3s0D7BaHTZhIWN52P%2BcjiuGRbDU6cdj%2BEjJbJLQv4N4ADdhxBiEZbQuWclY4Q8iABbCXczCdSiKMAC%2FgyO2YqbQgrIJDZg%2FcFjsMD%2Fzb3gUcBa5sR%2F9oWR%2BzuJBqlPG14Jbn0DIf2TZ3Jn%2FXmSUrC5ddQB6bob37uZrJdeF4dIDHV3iuhb70Ptq83kOz53ubDLXlcwPJK0q%2FT42AqxIaAkVCkqm2tRgr49yfJGFU%2FZQ3hy3QyuUpd7obPv97kb%2FAQ%3D%3D"}",
+    "realm": "saml1",
+    "id": "_989a34500a4f5bf0f00d195aa04a7804b4ed42a1"
+  }
