@@ -396,17 +396,17 @@ export default async function validateModel (apiModel: model.Model, restSpec: Ma
     const inheritedProps = inheritedProperties(typeDef)
 
     context.push('path')
-    validateProperties(typeDef.path, openGenerics, inheritedProps)
+    validateProperties(fqn(typeDef.name), typeDef.path, openGenerics, inheritedProps)
     context.pop()
 
     context.push('query')
-    validateProperties(typeDef.query, openGenerics, inheritedProps)
+    validateProperties(fqn(typeDef.name), typeDef.query, openGenerics, inheritedProps)
     context.pop()
 
     context.push('body')
     switch (typeDef.body.kind) {
       case 'properties':
-        validateProperties(typeDef.body.properties, openGenerics, inheritedProps)
+        validateProperties(fqn(typeDef.name), typeDef.body.properties, openGenerics, inheritedProps)
         break
       case 'value':
         validateValueOf(typeDef.body.value, openGenerics)
@@ -433,7 +433,7 @@ export default async function validateModel (apiModel: model.Model, restSpec: Ma
 
     switch (typeDef.body.kind) {
       case 'properties':
-        validateProperties(typeDef.body.properties, openGenerics, inheritedProperties(typeDef))
+        validateProperties(fqn(typeDef.name), typeDef.body.properties, openGenerics, inheritedProperties(typeDef))
         break
       case 'value':
         validateValueOf(typeDef.body.value, openGenerics)
@@ -507,7 +507,7 @@ export default async function validateModel (apiModel: model.Model, restSpec: Ma
 
     validateInherits(typeDef.inherits, openGenerics)
     validateBehaviors(typeDef, openGenerics)
-    validateProperties(typeDef.properties, openGenerics, inheritedProperties(typeDef))
+    validateProperties(fqn(typeDef.name), typeDef.properties, openGenerics, inheritedProperties(typeDef))
 
     if (typeDef.variants?.kind === 'container') {
       const variants = typeDef.properties.filter(prop => !(prop.containerProperty ?? false))
@@ -747,7 +747,7 @@ export default async function validateModel (apiModel: model.Model, restSpec: Ma
     return false
   }
 
-  function validateProperties (props: model.Property[], openGenerics: Set<string>, inheritedProperties: Set<string>): void {
+  function validateProperties (type: string, props: model.Property[], openGenerics: Set<string>, inheritedProperties: Set<string>): void {
     const allIdentifiers = new Set<string>()
     const allNames = new Set<string>()
 
@@ -773,6 +773,13 @@ export default async function validateModel (apiModel: model.Model, restSpec: Ma
       }
 
       context.push(`Property '${prop.name}'`)
+
+      if (prop.type.kind === 'dictionary_of' && prop.type.ordered) {
+        if (prop.name !== 'aggregations') {
+          modelError(`OrderedDictionary can not be used for property '${prop.name}' on type '${type}'.`)
+        }
+      }
+
       validateValueOf(prop.type, openGenerics)
       validateValueOfJsonEvents(prop.type)
       context.pop()

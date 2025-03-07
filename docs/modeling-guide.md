@@ -24,9 +24,23 @@ For example:
 ```json
 {
   "property1": "type",
-  "property2": "other-type",
+  "property2": "other-type"
 }
 ```
+
+### OrderedDictionary
+
+Represents a dynamic key value map that preserves the order of items:
+
+```ts
+property: OrderedDictionary<string, TypeDefinition>
+```
+
+The JSON specification and most dictionary implementations do not make guarantees about item ordering. 
+`OrderedDictionary` can be used to express this fact in the Elasticsearch specification.
+
+> [!WARNING]
+> This type should only be used for legacy types and should otherwise be avoided as far as possible.
 
 ### SingleKeyDictionary
 
