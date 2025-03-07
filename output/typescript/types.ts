@@ -4459,7 +4459,7 @@ export interface AggregationsWeightedAverageValue {
 export interface AggregationsWeightedAvgAggregate extends AggregationsSingleMetricAggregateBase {
 }
 
-export type AnalysisAnalyzer = AnalysisCustomAnalyzer | AnalysisFingerprintAnalyzer | AnalysisKeywordAnalyzer | AnalysisLanguageAnalyzer | AnalysisNoriAnalyzer | AnalysisPatternAnalyzer | AnalysisSimpleAnalyzer | AnalysisStandardAnalyzer | AnalysisStopAnalyzer | AnalysisWhitespaceAnalyzer | AnalysisIcuAnalyzer | AnalysisKuromojiAnalyzer | AnalysisSnowballAnalyzer | AnalysisArabicAnalyzer | AnalysisArmenianAnalyzer | AnalysisBasqueAnalyzer | AnalysisBengaliAnalyzer | AnalysisBrazilianAnalyzer | AnalysisBulgarianAnalyzer | AnalysisCatalanAnalyzer | AnalysisChineseAnalyzer | AnalysisCjkAnalyzer | AnalysisCzechAnalyzer | AnalysisDanishAnalyzer | AnalysisDutchAnalyzer | AnalysisEnglishAnalyzer | AnalysisEstonianAnalyzer | AnalysisFinnishAnalyzer | AnalysisFrenchAnalyzer | AnalysisGalicianAnalyzer | AnalysisGermanAnalyzer | AnalysisGreekAnalyzer | AnalysisHindiAnalyzer | AnalysisHungarianAnalyzer | AnalysisIndonesianAnalyzer | AnalysisIrishAnalyzer | AnalysisItalianAnalyzer | AnalysisLatvianAnalyzer | AnalysisLithuanianAnalyzer | AnalysisNorwegianAnalyzer | AnalysisPersianAnalyzer | AnalysisPortugueseAnalyzer | AnalysisRomanianAnalyzer | AnalysisRussianAnalyzer | AnalysisSerbianAnalyzer | AnalysisSoraniAnalyzer | AnalysisSpanishAnalyzer | AnalysisSwedishAnalyzer | AnalysisTurkishAnalyzer | AnalysisThaiAnalyzer
+export type AnalysisAnalyzer = AnalysisCustomAnalyzer | AnalysisFingerprintAnalyzer | AnalysisKeywordAnalyzer | AnalysisNoriAnalyzer | AnalysisPatternAnalyzer | AnalysisSimpleAnalyzer | AnalysisStandardAnalyzer | AnalysisStopAnalyzer | AnalysisWhitespaceAnalyzer | AnalysisIcuAnalyzer | AnalysisKuromojiAnalyzer | AnalysisSnowballAnalyzer | AnalysisArabicAnalyzer | AnalysisArmenianAnalyzer | AnalysisBasqueAnalyzer | AnalysisBengaliAnalyzer | AnalysisBrazilianAnalyzer | AnalysisBulgarianAnalyzer | AnalysisCatalanAnalyzer | AnalysisChineseAnalyzer | AnalysisCjkAnalyzer | AnalysisCzechAnalyzer | AnalysisDanishAnalyzer | AnalysisDutchAnalyzer | AnalysisEnglishAnalyzer | AnalysisEstonianAnalyzer | AnalysisFinnishAnalyzer | AnalysisFrenchAnalyzer | AnalysisGalicianAnalyzer | AnalysisGermanAnalyzer | AnalysisGreekAnalyzer | AnalysisHindiAnalyzer | AnalysisHungarianAnalyzer | AnalysisIndonesianAnalyzer | AnalysisIrishAnalyzer | AnalysisItalianAnalyzer | AnalysisLatvianAnalyzer | AnalysisLithuanianAnalyzer | AnalysisNorwegianAnalyzer | AnalysisPersianAnalyzer | AnalysisPortugueseAnalyzer | AnalysisRomanianAnalyzer | AnalysisRussianAnalyzer | AnalysisSerbianAnalyzer | AnalysisSoraniAnalyzer | AnalysisSpanishAnalyzer | AnalysisSwedishAnalyzer | AnalysisTurkishAnalyzer | AnalysisThaiAnalyzer
 
 export interface AnalysisArabicAnalyzer {
   type: 'arabic'
@@ -4894,17 +4894,6 @@ export interface AnalysisKuromojiTokenizer extends AnalysisTokenizerBase {
   user_dictionary?: string
   user_dictionary_rules?: string[]
   discard_compound_token?: boolean
-}
-
-export type AnalysisLanguage = 'Arabic' | 'Armenian' | 'Basque' | 'Brazilian' | 'Bulgarian' | 'Catalan' | 'Chinese' | 'Cjk' | 'Czech' | 'Danish' | 'Dutch' | 'English' | 'Estonian' | 'Finnish' | 'French' | 'Galician' | 'German' | 'Greek' | 'Hindi' | 'Hungarian' | 'Indonesian' | 'Irish' | 'Italian' | 'Latvian' | 'Norwegian' | 'Persian' | 'Portuguese' | 'Romanian' | 'Russian' | 'Sorani' | 'Spanish' | 'Swedish' | 'Turkish' | 'Thai'
-
-export interface AnalysisLanguageAnalyzer {
-  type: 'language'
-  version?: VersionString
-  language: AnalysisLanguage
-  stem_exclusion: string[]
-  stopwords?: AnalysisStopWords
-  stopwords_path?: string
 }
 
 export interface AnalysisLatvianAnalyzer {
@@ -5429,6 +5418,8 @@ export interface MappingDateNanosProperty extends MappingDocValuesPropertyBase {
   format?: string
   ignore_malformed?: boolean
   index?: boolean
+  script?: Script | string
+  on_script_error?: MappingOnScriptError
   null_value?: DateTime
   precision_step?: integer
   type: 'date_nanos'
@@ -5440,6 +5431,8 @@ export interface MappingDateProperty extends MappingDocValuesPropertyBase {
   format?: string
   ignore_malformed?: boolean
   index?: boolean
+  script?: Script | string
+  on_script_error?: MappingOnScriptError
   null_value?: DateTime
   precision_step?: integer
   locale?: string
@@ -5711,7 +5704,7 @@ export interface MappingNumberPropertyBase extends MappingDocValuesPropertyBase 
 
 export interface MappingObjectProperty extends MappingCorePropertyBase {
   enabled?: boolean
-  subobjects?: boolean
+  subobjects?: MappingSubobjects
   type?: 'object'
 }
 
@@ -5843,6 +5836,8 @@ export interface MappingSparseVectorProperty extends MappingPropertyBase {
   type: 'sparse_vector'
 }
 
+export type MappingSubobjects = boolean | 'true' | 'false' | 'auto'
+
 export interface MappingSuggestContext {
   name: Name
   path?: Field
@@ -5905,7 +5900,7 @@ export interface MappingTypeMapping {
   _source?: MappingSourceField
   runtime?: Record<string, MappingRuntimeField>
   enabled?: boolean
-  subobjects?: boolean
+  subobjects?: MappingSubobjects
   _data_stream_timestamp?: MappingDataStreamTimestamp
 }
 
@@ -13088,6 +13083,10 @@ export interface InferenceRankedDocument {
   text?: string
 }
 
+export interface InferenceRateLimitSetting {
+  requests_per_minute?: integer
+}
+
 export type InferenceServiceSettings = any
 
 export interface InferenceSparseEmbeddingResult {
@@ -13146,6 +13145,30 @@ export interface InferencePutRequest extends RequestBase {
 }
 
 export type InferencePutResponse = InferenceInferenceEndpointInfo
+
+export interface InferencePutWatsonxRequest extends RequestBase {
+  task_type: InferencePutWatsonxWatsonxTaskType
+  watsonx_inference_id: Id
+  body?: {
+    service: InferencePutWatsonxServiceType
+    service_settings: InferencePutWatsonxWatsonxServiceSettings
+  }
+}
+
+export type InferencePutWatsonxResponse = InferenceInferenceEndpointInfo
+
+export type InferencePutWatsonxServiceType = 'watsonxai'
+
+export interface InferencePutWatsonxWatsonxServiceSettings {
+  api_key: string
+  api_version: string
+  model_id: string
+  project_id: string
+  rate_limit?: InferenceRateLimitSetting
+  url: string
+}
+
+export type InferencePutWatsonxWatsonxTaskType = 'text_embedding'
 
 export interface InferenceStreamInferenceRequest extends RequestBase {
   inference_id: Id
@@ -19569,7 +19592,7 @@ export interface SimulateIngestRequest extends RequestBase {
   body?: {
     docs: IngestDocument[]
     component_template_substitutions?: Record<string, ClusterComponentTemplateNode>
-    index_template_subtitutions?: Record<string, IndicesIndexTemplate>
+    index_template_substitutions?: Record<string, IndicesIndexTemplate>
     mapping_addition?: MappingTypeMapping
     pipeline_substitutions?: Record<string, IngestPipeline>
   }

@@ -1,5 +1,7 @@
 apis,https://www.elastic.co/docs/api/doc/elasticsearch/v8
 add-nodes,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/add-elasticsearch-nodes.html
+alias-update,https://www.elastic.co/docs/api/doc/elasticsearch/v8/operation/operation-indices-put-alias
+aliases-update,https://www.elastic.co/docs/api/doc/elasticsearch/v8/operation/operation-indices-update-aliases
 analysis-analyzers,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/analysis-analyzers.html
 analysis-charfilters,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/analysis-charfilters.html
 analysis-normalizers,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/analysis-normalizers.html
@@ -138,7 +140,11 @@ data-stream-get,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}
 data-stream-get-lifecycle,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/data-streams-get-lifecycle.html
 data-stream-lifecycle-stats,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/data-streams-get-lifecycle-stats.html
 data-stream-path-param,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/indices-create-data-stream.html#indices-create-data-stream-api-path-params
+data-stream-migrate,https://www.elastic.co/docs/api/doc/elasticsearch/v8/operation/operation-indices-migrate-to-data-stream
+data-stream-promote,https://www.elastic.co/docs/api/doc/elasticsearch/v8/operation/operation-indices-promote-data-stream
+data-stream-put-lifecycle,https://www.elastic.co/docs/api/doc/elasticsearch/v8/operation/operation-indices-put-data-lifecycle
 data-stream-stats-api,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/data-stream-stats-api.html
+data-stream-update,https://www.elastic.co/docs/api/doc/elasticsearch/v8/operation/operation-indices-modify-data-stream
 data-streams,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/data-streams.html
 date-index-name-processor,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/date-index-name-processor.html
 dcg,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/search-rank-eval.html#_discounted_cumulative_gain_dcg
@@ -261,6 +267,7 @@ indexing-buffer,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}
 index-modules-merge,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/index-modules-merge.html
 index-templates,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/index-templates.html
 index-templates-exist,https://www.elastic.co/docs/api/doc/elasticsearch/v8/operation/operation-indices-exists-index-template
+index-templates-put,https://www.elastic.co/docs/api/doc/elasticsearch/v8/operation/operation-indices-put-index-template
 index-templates-v1,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/indices-templates-v1.html
 indices-aliases,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/indices-aliases.html
 indices-aliases-exist,https://www.elastic.co/docs/api/doc/elasticsearch/v8/operation/operation-indices-exists-alias
@@ -311,6 +318,7 @@ inference-api-delete,https://www.elastic.co/guide/en/elasticsearch/reference/{br
 inference-api-get,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/get-inference-api.html
 inference-api-post,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/post-inference-api.html
 inference-api-put,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/put-inference-api.html
+inference-api-put-watsonx,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/infer-service-watsonx-ai.html
 inference-api-stream,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/stream-inference-api.html
 inference-api-update,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/update-inference-api.html
 inference-processor,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/inference-processor.html
@@ -835,4 +843,7 @@ watcher-api-start,https://www.elastic.co/guide/en/elasticsearch/reference/{branc
 watcher-api-stats,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/watcher-api-stats.html
 watcher-api-stop,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/watcher-api-stop.html
 watcher-api-update-settings,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/watcher-api-update-settings.html
+watsonx-api-keys,https://cloud.ibm.com/iam/apikeys
+watsonx-api-models,https://www.ibm.com/products/watsonx-ai/foundation-models
+watsonx-api-version,https://cloud.ibm.com/apidocs/watsonx-ai#active-version-dates
 xpack-rollup,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/xpack-rollup.html

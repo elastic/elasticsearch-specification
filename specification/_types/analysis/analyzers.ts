@@ -21,7 +21,7 @@ import { VersionString } from '@_types/common'
 import { integer } from '@_types/Numeric'
 import { IcuAnalyzer } from './icu-plugin'
 import { KuromojiAnalyzer } from './kuromoji-plugin'
-import { Language, SnowballLanguage } from './languages'
+import { SnowballLanguage } from './languages'
 import { NoriDecompoundMode } from './nori-plugin'
 import { StopWords } from './StopWords'
 
@@ -47,15 +47,6 @@ export class FingerprintAnalyzer {
 export class KeywordAnalyzer {
   type: 'keyword'
   version?: VersionString
-}
-
-export class LanguageAnalyzer {
-  type: 'language'
-  version?: VersionString
-  language: Language
-  stem_exclusion: string[]
-  stopwords?: StopWords
-  stopwords_path?: string
 }
 
 export class ArabicAnalyzer {
@@ -364,7 +355,6 @@ export type Analyzer =
   | CustomAnalyzer
   | FingerprintAnalyzer
   | KeywordAnalyzer
-  | LanguageAnalyzer
   | NoriAnalyzer
   | PatternAnalyzer
   | SimpleAnalyzer
