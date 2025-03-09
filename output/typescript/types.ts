@@ -18324,12 +18324,6 @@ export interface SecurityCreatedStatus {
   created: boolean
 }
 
-export interface SecurityFieldRule {
-  username?: Names
-  dn?: Names
-  groups?: Names
-}
-
 export interface SecurityFieldSecurity {
   except?: Fields
   grant?: Fields
@@ -18439,7 +18433,7 @@ export interface SecurityRoleMapping {
 export interface SecurityRoleMappingRule {
   any?: SecurityRoleMappingRule[]
   all?: SecurityRoleMappingRule[]
-  field?: SecurityFieldRule
+  field?: Partial<Record<Field, FieldValue | FieldValue[]>>
   except?: SecurityRoleMappingRule
 }
 
