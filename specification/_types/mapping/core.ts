@@ -215,7 +215,7 @@ export class SemanticTextProperty {
    * This parameter cannot be updated. Use the Create inference API to create the endpoint.
    * If `search_inference_id` is specified, the inference endpoint will only be used at index time.
    */
-  inference_id: Id
+  inference_id?: Id
   /**
    * Inference endpoint that will be used to generate embeddings at query time.
    * You can update this parameter by using the Update mapping API. Use the Create inference API to create the endpoint.
