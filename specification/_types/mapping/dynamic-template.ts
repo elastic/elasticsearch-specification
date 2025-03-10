@@ -18,13 +18,14 @@
  */
 
 import { Property } from './Property'
+import { RuntimeField } from './RuntimeFields'
 
 /**
  * @variants container
  */
 export class DynamicTemplate {
   mapping?: Property
-  runtime?: Property
+  runtime?: RuntimeField
   /** @variant container_property */
   match?: string | string[]
   /** @variant container_property */

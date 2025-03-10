@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { TaskType } from '@inference/_types/TaskType'
+import { TaskSettings } from '@inference/_types/Services'
 import { RequestBase } from '@_types/Base'
 import { Id } from '@_types/common'
 
@@ -29,7 +29,7 @@ import { Id } from '@_types/common'
  * IMPORTANT: The inference APIs enable you to use certain services, such as built-in machine learning models (ELSER, E5), models uploaded through Eland, Cohere, OpenAI, Azure, Google AI Studio, Google Vertex AI, Anthropic, Watsonx.ai, or Hugging Face. For built-in models and models uploaded through Eland, the inference APIs offer an alternative way to use and manage trained models. However, if you do not plan to use the inference APIs to use these models or if you want to use non-NLP models, use the machine learning trained model APIs.
  *
  * This API requires the `monitor_inference` cluster privilege (the built-in `inference_admin` and `inference_user` roles grant this privilege). You must use a client that supports streaming.
- * @rest_spec_name inference.stream_inference
+ * @rest_spec_name inference.stream_completion
  * @availability stack since=8.16.0 stability=stable visibility=public
  * @cluster_privileges monitor_inference
  * @doc_id inference-api-stream
@@ -37,11 +37,7 @@ import { Id } from '@_types/common'
 export interface Request extends RequestBase {
   urls: [
     {
-      path: '/_inference/{inference_id}/_stream'
-      methods: ['POST']
-    },
-    {
-      path: '/_inference/{task_type}/{inference_id}/_stream'
+      path: '/_inference/completion/{inference_id}/_stream'
       methods: ['POST']
     }
   ]
@@ -50,10 +46,6 @@ export interface Request extends RequestBase {
      * The unique identifier for the inference endpoint.
      */
     inference_id: Id
-    /**
-     * The type of task that the model performs.
-     */
-    task_type?: TaskType
   }
   body: {
     /**
@@ -63,5 +55,9 @@ export interface Request extends RequestBase {
      * NOTE: Inference endpoints for the completion task type currently only support a single string as input.
      */
     input: string | string[]
+    /**
+     * Optional task settings
+     */
+    task_settings?: TaskSettings
   }
 }

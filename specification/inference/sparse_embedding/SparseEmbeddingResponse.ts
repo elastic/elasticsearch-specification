@@ -17,8 +17,8 @@
  * under the License.
  */
 
-import { InferenceResult } from '@inference/_types/Results'
+import { SparseEmbeddingInferenceResult } from '@inference/_types/Results'
 
 export class Response {
-  body: InferenceResult
+  body: SparseEmbeddingInferenceResult
 }

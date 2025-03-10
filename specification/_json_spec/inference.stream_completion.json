@@ -1,8 +1,8 @@
 {
-  "inference.stream_inference": {
+  "inference.stream_completion": {
     "documentation": {
       "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/post-stream-inference-api.html",
-      "description": "Perform streaming inference"
+      "description": "Perform streaming completion inference"
     },
     "stability": "stable",
     "visibility": "public",
@@ -13,23 +13,9 @@
     "url": {
       "paths": [
         {
-          "path": "/_inference/{inference_id}/_stream",
+          "path": "/_inference/completion/{inference_id}/_stream",
           "methods": ["POST"],
           "parts": {
-            "inference_id": {
-              "type": "string",
-              "description": "The inference Id"
-            }
-          }
-        },
-        {
-          "path": "/_inference/{task_type}/{inference_id}/_stream",
-          "methods": ["POST"],
-          "parts": {
-            "task_type": {
-              "type": "string",
-              "description": "The task type"
-            },
             "inference_id": {
               "type": "string",
               "description": "The inference Id"

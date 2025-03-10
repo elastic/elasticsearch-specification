@@ -17,7 +17,6 @@
  * under the License.
  */
 
-import { TaskType } from '@inference/_types/TaskType'
 import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 import { RequestBase } from '@_types/Base'
 import { Id } from '@_types/common'
@@ -25,27 +24,20 @@ import { float, long } from '@_types/Numeric'
 import { Duration } from '@_types/Time'
 
 /**
- * Perform inference on the service using the Unified Schema
- * @rest_spec_name inference.unified_inference
+ * Perform chat completion inference
+ * @rest_spec_name inference.chat_completion_unified
  * @availability stack since=8.18.0 stability=stable visibility=public
  * @availability serverless stability=stable visibility=public
+ * @doc_id inference-api-chat-completion
  */
 export interface Request extends RequestBase {
   urls: [
     {
-      path: '/_inference/{inference_id}/_unified'
-      methods: ['POST']
-    },
-    {
-      path: '/_inference/{task_type}/{inference_id}/_unified'
+      path: '/_inference/chat_completion/{inference_id}/_stream'
       methods: ['POST']
     }
   ]
   path_parts: {
-    /**
-     * The task type
-     */
-    task_type?: TaskType
     /**
      * The inference Id
      */

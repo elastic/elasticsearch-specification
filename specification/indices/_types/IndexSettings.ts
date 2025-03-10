@@ -22,6 +22,7 @@ import { AdditionalProperties } from '@spec_utils/behaviors'
 import { Dictionary } from '@spec_utils/Dictionary'
 import { Stringified } from '@spec_utils/Stringified'
 import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
+import { WithNullValue } from '@spec_utils/utils'
 import { Analyzer } from '@_types/analysis/analyzers'
 import { CharFilter } from '@_types/analysis/char_filters'
 import { Normalizer } from '@_types/analysis/normalizers'
@@ -79,9 +80,15 @@ export class IndexSettings
   routing_path?: string | string[]
   soft_deletes?: SoftDeletes
   sort?: IndexSegmentSort
-  /** @server_default 1 */
+  /**
+   * @server_default 1
+   * @availability stack
+   * */
   number_of_shards?: integer | string // TODO: should be only int
-  /** @server_default 0 */
+  /**
+   * @server_default 0
+   * @availability stack
+   * */
   number_of_replicas?: integer | string // TODO: should be only int
   number_of_routing_shards?: integer
   /** @server_default false */
@@ -95,7 +102,7 @@ export class IndexSettings
   /** @server_default false */
   hidden?: boolean | string // TODO should be bool only
   /** @server_default false */
-  auto_expand_replicas?: string
+  auto_expand_replicas?: WithNullValue<string>
   merge?: Merge
   search?: SettingsSearch
   /** @server_default 1s */
@@ -170,6 +177,7 @@ export class IndexSettings
 
 /**
  * @variants internal tag='type'
+ * @non_exhaustive
  */
 export type SettingsSimilarity =
   | SettingsSimilarityBm25
@@ -499,9 +507,9 @@ export class MappingLimitSettingsSourceFields {
 }
 
 export enum SourceMode {
-  DISABLED,
-  STORED,
-  SYNTHETIC
+  disabled,
+  stored,
+  synthetic
 }
 
 export class SlowlogSettings {

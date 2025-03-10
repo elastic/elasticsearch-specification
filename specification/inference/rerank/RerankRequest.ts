@@ -18,21 +18,13 @@
  */
 
 import { TaskSettings } from '@inference/_types/Services'
-import { TaskType } from '@inference/_types/TaskType'
 import { RequestBase } from '@_types/Base'
 import { Id } from '@_types/common'
 import { Duration } from '@_types/Time'
 
 /**
- * Perform inference on the service.
- *
- * This API enables you to use machine learning models to perform specific tasks on data that you provide as an input.
- * It returns a response with the results of the tasks.
- * The inference endpoint you use can perform one specific task that has been defined when the endpoint was created with the create inference API.
- *
- * > info
- * > The inference APIs enable you to use certain services, such as built-in machine learning models (ELSER, E5), models uploaded through Eland, Cohere, OpenAI, Azure, Google AI Studio, Google Vertex AI, Anthropic, Watsonx.ai, or Hugging Face. For built-in models and models uploaded through Eland, the inference APIs offer an alternative way to use and manage trained models. However, if you do not plan to use the inference APIs to use these models or if you want to use non-NLP models, use the machine learning trained model APIs.
- * @rest_spec_name inference.inference
+ * Perform rereanking inference on the service
+ * @rest_spec_name inference.rerank
  * @availability stack since=8.11.0 stability=stable visibility=public
  * @availability serverless stability=stable visibility=public
  * @cluster_privileges monitor_inference
@@ -41,19 +33,11 @@ import { Duration } from '@_types/Time'
 export interface Request extends RequestBase {
   urls: [
     {
-      path: '/_inference/{inference_id}'
-      methods: ['POST']
-    },
-    {
-      path: '/_inference/{task_type}/{inference_id}'
+      path: '/_inference/rerank/{inference_id}'
       methods: ['POST']
     }
   ]
   path_parts: {
-    /**
-     * The type of inference task that the model performs.
-     */
-    task_type?: TaskType
     /**
      * The unique identifier for the inference endpoint.
      */
@@ -68,10 +52,9 @@ export interface Request extends RequestBase {
   }
   body: {
     /**
-     * The query input, which is required only for the `rerank` task.
-     * It is not required for other tasks.
+     * Query input.
      */
-    query?: string
+    query: string
     /**
      * The text on which you want to perform the inference task.
      * It can be a single string or an array.
