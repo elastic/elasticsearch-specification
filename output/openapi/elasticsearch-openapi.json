@@ -88546,26 +88546,25 @@
             }
           },
           "field": {
-            "$ref": "#/components/schemas/security._types:FieldRule"
+            "type": "object",
+            "additionalProperties": {
+              "oneOf": [
+                {
+                  "$ref": "#/components/schemas/_types:FieldValue"
+                },
+                {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/_types:FieldValue"
+                  }
+                }
+              ]
+            },
+            "minProperties": 1,
+            "maxProperties": 1
           },
           "except": {
             "$ref": "#/components/schemas/security._types:RoleMappingRule"
-          }
-        },
-        "minProperties": 1,
-        "maxProperties": 1
-      },
-      "security._types:FieldRule": {
-        "type": "object",
-        "properties": {
-          "username": {
-            "$ref": "#/components/schemas/_types:Names"
-          },
-          "dn": {
-            "$ref": "#/components/schemas/_types:Names"
-          },
-          "groups": {
-            "$ref": "#/components/schemas/_types:Names"
           }
         },
         "minProperties": 1,
