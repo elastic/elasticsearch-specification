@@ -5811,7 +5811,7 @@ export interface MappingSearchAsYouTypeProperty extends MappingCorePropertyBase 
 export interface MappingSemanticTextProperty {
   type: 'semantic_text'
   meta?: Record<string, string>
-  inference_id: Id
+  inference_id?: Id
   search_inference_id?: Id
 }
 

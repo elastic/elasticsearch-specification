@@ -64690,8 +64690,7 @@
           }
         },
         "required": [
-          "type",
-          "inference_id"
+          "type"
         ]
       },
       "_types.mapping:SparseVectorProperty": {

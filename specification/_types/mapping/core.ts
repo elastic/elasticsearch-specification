@@ -211,9 +211,10 @@ export class SemanticTextProperty {
   type: 'semantic_text'
   meta?: Dictionary<string, string>
   /**
-   * Inference endpoint that will be used to generate embeddings for the field. By default, `.elser-2-elasticsearch` is used.
+   * Inference endpoint that will be used to generate embeddings for the field.
    * This parameter cannot be updated. Use the Create inference API to create the endpoint.
    * If `search_inference_id` is specified, the inference endpoint will only be used at index time.
+   * @server_default .elser-2-elasticsearch
    */
   inference_id?: Id
   /**
