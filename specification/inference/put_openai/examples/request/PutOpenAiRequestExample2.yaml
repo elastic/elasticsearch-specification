@@ -3,10 +3,10 @@ description: Run `PUT _inference/completion/openai-completion` to create an infe
 # method_request: "PUT _inference/completion/openai-completion"
 # type: "request"
 value: |-
-    {
-        "service": "openai",
-        "service_settings": {
-            "api_key": "<api_key>",
-            "model_id": "gpt-3.5-turbo"
-        }
-    }
+  {
+      "service": "openai",
+      "service_settings": {
+          "api_key": "OpenAI-API-Key",
+          "model_id": "gpt-3.5-turbo"
+      }
+  }

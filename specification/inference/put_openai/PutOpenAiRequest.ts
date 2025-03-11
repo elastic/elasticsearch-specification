@@ -17,7 +17,10 @@
  * under the License.
  */
 
-import { InferenceChunkingSettings, RateLimitSetting } from '@inference/_types/Services'
+import {
+  InferenceChunkingSettings,
+  RateLimitSetting
+} from '@inference/_types/Services'
 import { RequestBase } from '@_types/Base'
 import { Id } from '@_types/common'
 import { integer } from '@_types/Numeric'
@@ -46,7 +49,6 @@ export interface Request extends RequestBase {
     }
   ]
   path_parts: {
-    
     /**
      * The type of the inference task that the model will perform.
      * NOTE: The `chat_completion` task type only supports streaming and only through the _stream API.
@@ -140,4 +142,3 @@ export class OpenAITaskSettings {
    */
   user?: string
 }
-
