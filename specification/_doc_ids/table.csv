@@ -317,10 +317,12 @@ inference-api-delete,https://www.elastic.co/docs/api/doc/elasticsearch/operation
 inference-api-get,https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-inference-get
 inference-api-post,https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-inference-inference
 inference-api-put,https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-inference-put
-inference-api-put-watsonx,https://www.elastic.co/guide/en/elasticsearch/reference/current/infer-service-watsonx-ai.html
+inference-api-put-openai,https://www.elastic.co/guide/en/elasticsearch/reference/current/infer-service-openai.html
+inference-api-put-watsonx,https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-inference-put-watsonx
 inference-api-stream,https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-inference-stream-inference
 inference-api-chat-completion,https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-inference-unified-inference
 inference-api-update,https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-inference-update
+inference-chunking,https://www.elastic.co/guide/en/elasticsearch/reference/current/inference-apis.html#infer-chunking-config
 inference-processor,https://www.elastic.co/guide/en/elasticsearch/reference/current/inference-processor.html
 info-api,https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-info
 ingest,https://www.elastic.co/guide/en/elasticsearch/reference/current/ingest.html
@@ -435,6 +437,8 @@ node-roles,https://www.elastic.co/guide/en/elasticsearch/reference/current/modul
 nodes-api-shutdown-delete,https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-shutdown-delete-node
 nodes-api-shutdown-status,https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-shutdown-get-node
 nodes-api-shutdown,https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-shutdown-put-node
+openai-api-keys,https://platform.openai.com/api-keys
+openai-models,https://platform.openai.com/docs/guides/embeddings/what-are-embeddings
 optimistic-concurrency,https://www.elastic.co/guide/en/elasticsearch/reference/current/optimistic-concurrency-control.html
 paginate-search-results,https://www.elastic.co/guide/en/elasticsearch/reference/current/paginate-search-results.html
 painless-contexts,https://www.elastic.co/guide/en/elasticsearch/painless/current/painless-contexts.html
