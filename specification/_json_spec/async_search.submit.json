@@ -118,11 +118,6 @@
         "type": "string",
         "description": "Specify the node or shard the operation should be performed on (default: random)"
       },
-      "pre_filter_shard_size": {
-        "type": "number",
-        "default": 1,
-        "description": "Cannot be changed: this is to enforce the execution of a pre-filter roundtrip to retrieve statistics from each shard so that the ones that surely don’t hold any document matching the query get skipped."
-      },
       "rest_total_hits_as_int": {
         "type": "boolean",
         "description": "Indicates whether hits.total should be rendered as an integer or an object in the rest search response",

@@ -42,8 +42,19 @@ import { Duration } from '@_types/Time'
  * @availability serverless stability=stable visibility=public
  * @cluster_privileges manage_transform
  * @index_privileges read, view_index_metadata
+ * @doc_id preview-transform
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_transform/{transform_id}/_preview'
+      methods: ['GET', 'POST']
+    },
+    {
+      path: '/_transform/_preview'
+      methods: ['GET', 'POST']
+    }
+  ]
   path_parts: {
     /**
      * Identifier for the transform to preview. If you specify this path parameter, you cannot provide transform

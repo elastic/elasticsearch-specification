@@ -577,6 +577,7 @@ class Foo {
 
 The server side default value if the property is not specified.
 Default values can only be specified on optional properties.
+They appear in the generated documentation and do not affect clients.
 
 ```ts
 class Foo {

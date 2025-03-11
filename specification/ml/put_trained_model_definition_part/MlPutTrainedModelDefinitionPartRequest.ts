@@ -28,8 +28,15 @@ import { integer, long } from '@_types/Numeric'
  * @availability serverless stability=stable visibility=public
  * @cluster_privileges manage_ml
  * @doc_tag ml trained model
+ * @doc_id put-trained-model-definition-part
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_ml/trained_models/{model_id}/definition/{part}'
+      methods: ['PUT']
+    }
+  ]
   path_parts: {
     /**
      * The unique identifier of the trained model.

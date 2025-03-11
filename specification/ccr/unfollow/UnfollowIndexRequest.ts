@@ -19,14 +19,41 @@
 
 import { RequestBase } from '@_types/Base'
 import { IndexName } from '@_types/common'
+import { Duration } from '@_types/Time'
 
 /**
+ * Unfollow an index.
+ *
+ * Convert a cross-cluster replication follower index to a regular index.
+ * The API stops the following task associated with a follower index and removes index metadata and settings associated with cross-cluster replication.
+ * The follower index must be paused and closed before you call the unfollow API.
+ *
+ * > info
+ * > Currently cross-cluster replication does not support converting an existing regular index to a follower index. Converting a follower index to a regular index is an irreversible operation.
  * @rest_spec_name ccr.unfollow
  * @availability stack since=6.5.0 stability=stable
+ * @index_privileges manage_follow_index
  * @doc_id ccr-post-unfollow
+ * @ext_doc_id ccr
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/{index}/_ccr/unfollow'
+      methods: ['POST']
+    }
+  ]
   path_parts: {
+    /** The name of the follower index. */
     index: IndexName
+  }
+  query_parameters: {
+    /**
+     * The period to wait for a connection to the master node.
+     * If the master node is not available before the timeout expires, the request fails and returns an error.
+     * It can also be set to `-1` to indicate that the request should never timeout.
+     * @server_default 30s
+     */
+    master_timeout?: Duration
   }
 }

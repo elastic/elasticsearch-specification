@@ -21,7 +21,7 @@ import {
   AnalysisMemoryLimit,
   PerPartitionCategorization
 } from '@ml/_types/Analysis'
-import { Detector } from '@ml/_types/Detector'
+import { DetectorUpdate } from '@ml/_types/Detector'
 import { ModelPlotConfig } from '@ml/_types/ModelPlot'
 import { Dictionary } from '@spec_utils/Dictionary'
 import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
@@ -38,8 +38,15 @@ import { Duration } from '@_types/Time'
  * @availability serverless stability=stable visibility=public
  * @cluster_privileges manage_ml
  * @doc_tag ml anomaly
+ * @doc_id ml-update-job
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_ml/anomaly_detectors/{job_id}/_update'
+      methods: ['POST']
+    }
+  ]
   path_parts: {
     /**
      * Identifier for the job.
@@ -131,7 +138,7 @@ export interface Request extends RequestBase {
     /**
      * An array of detector update objects.
      */
-    detectors?: Detector[]
+    detectors?: DetectorUpdate[]
     /**
      * Settings related to how categorization interacts with partition fields.
      */

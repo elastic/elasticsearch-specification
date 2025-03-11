@@ -1,0 +1,125 @@
+# summary:
+description: A successful response from `GET /_xpack`.
+# type: response
+# response_code: 200
+value: |-
+  {
+    "build" : {
+        "hash" : "2798b1a3ce779b3611bb53a0082d4d741e4d3168",
+        "date" : "2015-04-07T13:34:42Z"
+    },
+    "license" : {
+        "uid" : "893361dc-9749-4997-93cb-xxx",
+        "type" : "trial",
+        "mode" : "trial",
+        "status" : "active",
+        "expiry_date_in_millis" : 1542665112332
+    },
+    "features" : {
+        "ccr" : {
+          "available" : true,
+          "enabled" : true
+        },
+      "aggregate_metric" : {
+            "available" : true,
+            "enabled" : true
+        },
+        "analytics" : {
+            "available" : true,
+            "enabled" : true
+        },
+        "archive" : {
+            "available" : true,
+            "enabled" : true
+        },
+        "enrich" : {
+            "available" : true,
+            "enabled" : true
+        },
+        "graph" : {
+          "available" : true,
+          "enabled" : true
+        },
+        "ilm" : {
+          "available" : true,
+          "enabled" : true
+        },
+        "logstash" : {
+          "available" : true,
+          "enabled" : true
+        },
+        "ml" : {
+          "available" : true,
+          "enabled" : true
+        },
+        "esql" : {
+          "available" : true,
+          "enabled" : true
+        },
+        "monitoring" : {
+          "available" : true,
+          "enabled" : true
+        },
+        "rollup": {
+          "available": true,
+          "enabled": true
+        },
+        "searchable_snapshots" : {
+          "available" : true,
+          "enabled" : true
+        },
+        "security" : {
+          "available" : true,
+          "enabled" : true
+        },
+        "slm" : {
+          "available" : true,
+          "enabled" : true
+        },
+        "spatial" : {
+          "available" : true,
+          "enabled" : true
+        },
+        "eql" : {
+          "available" : true,
+          "enabled" : true
+        },
+        "sql" : {
+          "available" : true,
+          "enabled" : true
+        },
+        "transform" : {
+          "available" : true,
+          "enabled" : true
+        },
+        "voting_only" : {
+          "available" : true,
+          "enabled" : true
+        },
+        "watcher" : {
+          "available" : true,
+          "enabled" : true
+        },
+        "data_streams" : {
+          "available" : true,
+          "enabled" : true
+        },
+        "data_tiers" : {
+          "available" : true,
+          "enabled" : true
+        },
+        "enterprise_search": {
+          "available": true,
+          "enabled": true
+        },
+        "universal_profiling": {
+          "available": true,
+          "enabled": true
+        },
+        "logsdb": {
+          "available": true,
+          "enabled": false
+        }
+    },
+    "tagline" : "You know, for X"
+  }

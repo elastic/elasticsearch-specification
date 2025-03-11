@@ -39,7 +39,7 @@ setup:	## Install dependencies for contrib target
 	@make clean-dep
 	@npm install --prefix compiler
 	@npm install --prefix typescript-generator
-	@npm install @stoplight/spectral-cli
+	@npm install @redocly/cli
 
 clean-dep:	## Clean npm dependencies
 	@rm -rf compiler/node_modules
@@ -57,8 +57,6 @@ filter-for-serverless: ## Generate the serverless version from the compiled sche
 dump-routes: ## Create a new schema with all generics expanded
 	@npm run dump-routes --prefix compiler
 
-contrib: | generate license-check spec-format-fix transform-to-openapi filter-for-serverless ## Pre contribution target
-
 overlay-docs: ## Apply overlays to OpenAPI documents
 	@npx bump overlay "output/openapi/elasticsearch-serverless-openapi.json" "docs/overlays/elasticsearch-serverless-openapi-overlays.yaml" > "output/openapi/elasticsearch-serverless-openapi.tmp1.json"
 	@npx bump overlay "output/openapi/elasticsearch-serverless-openapi.tmp1.json" "docs/overlays/elasticsearch-shared-overlays.yaml" > "output/openapi/elasticsearch-serverless-openapi.tmp2.json"
@@ -70,13 +68,15 @@ overlay-docs: ## Apply overlays to OpenAPI documents
 	rm output/openapi/elasticsearch-openapi.tmp*.json
 
 lint-docs: ## Lint the OpenAPI documents after overlays
-	@npx @stoplight/spectral-cli lint output/openapi/elasticsearch-*.examples.json --ruleset .spectral.yaml
+	@npx @redocly/cli lint "output/openapi/elasticsearch-*.json" --config "docs/linters/redocly.yaml" --format stylish --max-problems 500
 
-lint-docs-errs: ## Lint the OpenAPI documents after overlays and return only errors
-	@npx @stoplight/spectral-cli lint output/openapi/elasticsearch-*.examples.json --ruleset .spectral.yaml -D
+lint-docs-stateful: ## Lint only the elasticsearch-openapi.examples.json file
+	@npx @redocly/cli lint "output/openapi/elasticsearch-openapi.examples.json" --config "docs/linters/redocly.yaml" --format stylish --max-problems 500
 
 lint-docs-serverless: ## Lint only the serverless OpenAPI document after overlays
-	@npx @stoplight/spectral-cli lint output/openapi/elasticsearch-serverless-openapi.examples.json --ruleset .spectral.yaml
+	@npx @redocly/cli lint "output/openapi/elasticsearch-serverless-openapi.examples.json" --config "docs/linters/redocly.yaml" --format stylish --max-problems 500
+
+contrib: | generate license-check spec-format-fix transform-to-openapi filter-for-serverless lint-docs ## Pre contribution target
 
 help:  ## Display help
 	@awk 'BEGIN {FS = ":.*##"; printf "Usage:\n  make \033[36m<target>\033[0m\n"} /^[a-zA-Z_-]+:.*?##/ { printf "  \033[36m%-15s\033[0m %s\n", $$1, $$2 } /^##@/ { printf "\n\033[1m%s\033[0m\n", substr($$0, 5) } ' $(MAKEFILE_LIST)

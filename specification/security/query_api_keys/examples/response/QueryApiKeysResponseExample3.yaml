@@ -1,0 +1,65 @@
+summary: Query all API keys
+description: >
+  A successful response from `GET /_security/_query/api_key`.
+  It includes the role descriptors that are assigned to each API key when it was created or last updated.
+  Note that an API key's effective permissions are an intersection of its assigned privileges and the point-in-time snapshot of the owner user's permissions.
+  An empty role descriptors object means the API key inherits the owner user's permissions.
+# type: response
+# response_code:
+value: |-
+  {
+    "total": 3,
+    "count": 3,
+    "api_keys": [ 
+      {
+        "id": "nkvrGXsB8w290t56q3Rg",
+        "name": "my-api-key-1",
+        "creation": 1628227480421,
+        "expiration": 1629091480421,
+        "invalidated": false,
+        "username": "elastic",
+        "realm": "reserved",
+        "realm_type": "reserved",
+        "metadata": {
+          "letter": "a"
+        },
+        "role_descriptors": { 
+          "role-a": {
+            "cluster": [
+              "monitor"
+            ],
+            "indices": [
+              {
+                "names": [
+                  "index-a"
+                ],
+                "privileges": [
+                  "read"
+                ],
+                "allow_restricted_indices": false
+              }
+            ],
+            "applications": [ ],
+            "run_as": [ ],
+            "metadata": { },
+            "transient_metadata": {
+              "enabled": true
+            }
+          }
+        }
+      },
+      {
+        "id": "oEvrGXsB8w290t5683TI",
+        "name": "my-api-key-2",
+        "creation": 1628227498953,
+        "expiration": 1628313898953,
+        "invalidated": false,
+        "username": "elastic",
+        "realm": "reserved",
+        "metadata": {
+          "letter": "b"
+        },
+        "role_descriptors": { } 
+      }
+    ]
+  }

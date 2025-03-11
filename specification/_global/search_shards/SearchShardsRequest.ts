@@ -19,21 +19,38 @@
 
 import { RequestBase } from '@_types/Base'
 import { ExpandWildcards, Indices, Routing } from '@_types/common'
+import { Duration } from '@_types/Time'
 
 /**
  * Get the search shards.
  *
  * Get the indices and shards that a search request would be run against.
  * This information can be useful for working out issues or planning optimizations with routing and shard preferences.
- * When filtered aliases are used, the filter is returned as part of the indices section.
+ * When filtered aliases are used, the filter is returned as part of the `indices` section.
+ *
+ * If the Elasticsearch security features are enabled, you must have the `view_index_metadata` or `manage` index privilege for the target data stream, index, or alias.
  * @rest_spec_name search_shards
  * @availability stack stability=stable
+ * @index_privileges view_index_metadata
  * @doc_tag search
+ * @doc_id search-shards
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_search_shards'
+      methods: ['GET', 'POST']
+    },
+    {
+      path: '/{index}/_search_shards'
+      methods: ['GET', 'POST']
+    }
+  ]
   path_parts: {
     /**
-     * Returns the indices and shards that a search request would be executed against.
+     * A comma-separated list of data streams, indices, and aliases to search.
+     * It supports wildcards (`*`).
+     * To search all data streams and indices, omit this parameter or use `*` or `_all`.
      */
     index?: Indices
   }
@@ -64,12 +81,19 @@ export interface Request extends RequestBase {
      */
     local?: boolean
     /**
-     * Specifies the node or shard the operation should be performed on.
-     * Random by default.
+     * The period to wait for a connection to the master node.
+     * If the master node is not available before the timeout expires, the request fails and returns an error.
+     * IT can also be set to `-1` to indicate that the request should never timeout.
+     * @server_default 30s
+     */
+    master_timeout?: Duration
+    /**
+     * The node or shard the operation should be performed on.
+     * It is random by default.
      */
     preference?: string
     /**
-     * Custom value used to route operations to a specific shard.
+     * A custom value used to route operations to a specific shard.
      */
     routing?: Routing
   }

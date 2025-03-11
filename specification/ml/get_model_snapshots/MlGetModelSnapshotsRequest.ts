@@ -30,8 +30,19 @@ import { DateTime } from '@_types/Time'
  * @availability serverless stability=stable visibility=private
  * @cluster_privileges monitor_ml
  * @doc_tag ml anomaly
+ * @doc_id ml-get-snapshot
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_ml/anomaly_detectors/{job_id}/model_snapshots/{snapshot_id}'
+      methods: ['GET', 'POST']
+    },
+    {
+      path: '/_ml/anomaly_detectors/{job_id}/model_snapshots'
+      methods: ['GET', 'POST']
+    }
+  ]
   path_parts: {
     /**
      * Identifier for the anomaly detection job.

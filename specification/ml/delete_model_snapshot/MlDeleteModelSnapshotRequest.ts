@@ -22,6 +22,7 @@ import { Id } from '@_types/common'
 
 /**
  * Delete a model snapshot.
+ *
  * You cannot delete the active model snapshot. To delete that snapshot, first
  * revert to a different one. To identify the active model snapshot, refer to
  * the `model_snapshot_id` in the results from the get jobs API.
@@ -30,8 +31,15 @@ import { Id } from '@_types/common'
  * @availability serverless stability=stable visibility=private
  * @cluster_privileges manage_ml
  * @doc_tag ml anomaly
+ * @doc_id ml-delete-snapshot
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_ml/anomaly_detectors/{job_id}/model_snapshots/{snapshot_id}'
+      methods: ['DELETE']
+    }
+  ]
   path_parts: {
     /**
      * Identifier for the anomaly detection job.

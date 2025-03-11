@@ -26,15 +26,27 @@ import { Username } from '@_types/common'
  * Get information about users in the native realm and built-in users.
  * @rest_spec_name security.get_user
  * @availability stack stability=stable
+ * @cluster_privileges read_security
+ * @doc_id security-api-get-user
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_security/user/{username}'
+      methods: ['GET']
+    },
+    {
+      path: '/_security/user'
+      methods: ['GET']
+    }
+  ]
   path_parts: {
     /** An identifier for the user. You can specify multiple usernames as a comma-separated list. If you omit this parameter, the API retrieves information about all users. */
     username?: Username | Username[]
   }
   query_parameters: {
     /**
-     * If true will return the User Profile ID for a user, if any.
+     * Determines whether to retrieve the user profile UID, if it exists, for the users.
      * @server_default false
      * @availability stack since=8.5.0
      * @availability serverless

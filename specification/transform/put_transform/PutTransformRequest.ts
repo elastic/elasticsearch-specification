@@ -59,8 +59,15 @@ import { Duration } from '@_types/Time'
  * @availability serverless stability=stable visibility=public
  * @cluster_privileges manage_transform
  * @index_privileges create_index, read, index, view_index_metadata
+ * @doc_id put-transform
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_transform/{transform_id}'
+      methods: ['PUT']
+    }
+  ]
   path_parts: {
     /** Identifier for the transform. This identifier can contain lowercase alphanumeric characters (a-z and 0-9),
      * hyphens, and underscores. It has a 64 character limit and must start and end with alphanumeric characters.

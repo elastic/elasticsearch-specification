@@ -29,8 +29,19 @@ import { integer } from '@_types/Numeric'
  * @availability serverless stability=stable visibility=public
  * @cluster_privileges manage_ml
  * @doc_tag ml anomaly
+ * @doc_id ml-get-filter
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_ml/filters'
+      methods: ['GET']
+    },
+    {
+      path: '/_ml/filters/{filter_id}'
+      methods: ['GET']
+    }
+  ]
   path_parts: {
     /**
      * A string that uniquely identifies a filter.

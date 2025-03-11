@@ -19,6 +19,7 @@
 
 import { RequestBase } from '@_types/Base'
 import { ExpandWildcards, Indices, Names } from '@_types/common'
+import { Duration } from '@_types/Time'
 
 /**
  * Get aliases.
@@ -26,8 +27,28 @@ import { ExpandWildcards, Indices, Names } from '@_types/common'
  * @rest_spec_name indices.get_alias
  * @availability stack stability=stable
  * @availability serverless stability=stable visibility=public
+ * @doc_id indices-get-alias
+ * @index_privileges view_index_metadata
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_alias'
+      methods: ['GET']
+    },
+    {
+      path: '/_alias/{name}'
+      methods: ['GET']
+    },
+    {
+      path: '/{index}/_alias/{name}'
+      methods: ['GET']
+    },
+    {
+      path: '/{index}/_alias'
+      methods: ['GET']
+    }
+  ]
   path_parts: {
     /**
      * Comma-separated list of aliases to retrieve.
@@ -62,5 +83,11 @@ export interface Request extends RequestBase {
      * @server_default false
      */
     ignore_unavailable?: boolean
+    /**
+     * Period to wait for a connection to the master node.
+     * If no response is received before the timeout expires, the request fails and returns an error.
+     * @server_default 30s
+     */
+    master_timeout?: Duration
   }
 }

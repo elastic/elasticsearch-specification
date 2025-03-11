@@ -11,6 +11,8 @@ serde_json = { workspace = true }
 once_cell = { workspace = true }
 anyhow = { workspace = true }
 indexmap = { workspace = true, features = ["serde"] }
+itertools = { workspace = true }
+
 
 arcstr = { workspace = true, features = ["serde", "substr"] }
 clap = { workspace = true, features = ["derive"] }

@@ -18,11 +18,15 @@
  */
 
 import { CatRequestBase } from '@cat/_types/CatBase'
-import { Bytes, NodeIds } from '@_types/common'
+import { Bytes, Names, NodeIds } from '@_types/common'
+import { Duration } from '@_types/Time'
 
 /**
- * Provides a snapshot of the number of shards allocated to each data node and their disk space.
- * IMPORTANT: cat APIs are only intended for human consumption using the command line or Kibana console. They are not intended for use by applications.
+ * Get shard allocation information.
+ *
+ * Get a snapshot of the number of shards allocated to each data node and their disk space.
+ *
+ * IMPORTANT: CAT APIs are only intended for human consumption using the command line or Kibana console. They are not intended for use by applications.
  * @rest_spec_name cat.allocation
  * @availability stack stability=stable
  * @availability serverless stability=stable visibility=private
@@ -30,13 +34,33 @@ import { Bytes, NodeIds } from '@_types/common'
  * @cluster_privileges monitor
  */
 export interface Request extends CatRequestBase {
+  urls: [
+    {
+      path: '/_cat/allocation'
+      methods: ['GET']
+    },
+    {
+      path: '/_cat/allocation/{node_id}'
+      methods: ['GET']
+    }
+  ]
   path_parts: {
-    /** Comma-separated list of node identifiers or names used to limit the returned information. */
+    /** A comma-separated list of node identifiers or names used to limit the returned information. */
     node_id?: NodeIds
   }
   query_parameters: {
     /** The unit used to display byte values. */
     bytes?: Bytes
+    /**
+     * List of columns to appear in the response. Supports simple wildcards.
+     */
+    h?: Names
+    /**
+     * List of columns that determine how the table should be sorted.
+     * Sorting defaults to ascending and can be changed by setting `:asc`
+     * or `:desc` as a suffix to the column name.
+     */
+    s?: Names
     /**
      * If `true`, the request computes the list of selected nodes from the
      * local cluster state. If `false` the list of selected nodes are computed
@@ -45,5 +69,10 @@ export interface Request extends CatRequestBase {
      * @server_default false
      */
     local?: boolean
+    /**
+     * Period to wait for a connection to the master node.
+     * @server_default 30s
+     */
+    master_timeout?: Duration
   }
 }

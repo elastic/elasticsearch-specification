@@ -28,8 +28,16 @@ import { Duration } from '@_types/Time'
  * @availability stack since=7.9.0 stability=stable
  * @availability serverless stability=stable visibility=public
  * @index_privileges delete_index
+ * @doc_tag data stream
+ * @doc_id data-stream-delete
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_data_stream/{name}'
+      methods: ['DELETE']
+    }
+  ]
   path_parts: {
     /**
      * Comma-separated list of data streams to delete. Wildcard (`*`) expressions are supported.

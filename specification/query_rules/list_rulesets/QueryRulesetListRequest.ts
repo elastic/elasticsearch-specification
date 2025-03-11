@@ -20,19 +20,29 @@ import { RequestBase } from '@_types/Base'
 import { integer } from '@_types/Numeric'
 
 /**
- * Returns summarized information about existing query rulesets.
+ * Get all query rulesets.
+ * Get summarized information about the query rulesets.
  * @rest_spec_name query_rules.list_rulesets
  * @availability stack since=8.10.0 stability=stable
  * @availability serverless stability=stable visibility=public
+ * @cluster_privileges manage_search_query_rules
+ * @doc_id query-ruleset-list
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_query_rules'
+      methods: ['GET']
+    }
+  ]
   query_parameters: {
     /**
-     * Starting offset (default: 0)
+     * The offset from the first result to fetch.
+     * @server_default 0
      */
     from?: integer
     /**
-     * specifies a max number of results to get
+     * The maximum number of results to retrieve.
      */
     size?: integer
   }

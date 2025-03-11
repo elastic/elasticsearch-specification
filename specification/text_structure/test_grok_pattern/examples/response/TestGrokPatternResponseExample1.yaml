@@ -1,0 +1,11 @@
+# summary:
+description: A successful response from `GET _text_structure/test_grok_pattern`.
+# type: response
+# response_code: ''
+value:
+  "{\n  \"matches\": [\n    {\n      \"matched\": true,\n      \"fields\": {\n\
+  \        \"first_name\": [\n          {\n            \"match\": \"John\",\n    \
+  \        \"offset\": 6,\n            \"length\": 4\n          }\n        ],\n  \
+  \      \"last_name\": [\n          {\n            \"match\": \"Doe\",\n        \
+  \    \"offset\": 11,\n            \"length\": 3\n          }\n        ]\n      }\n\
+  \    },\n    {\n      \"matched\": false\n    }\n  ]\n}"

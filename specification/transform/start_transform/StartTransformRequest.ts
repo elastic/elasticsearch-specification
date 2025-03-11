@@ -23,7 +23,6 @@ import { Duration } from '@_types/Time'
 
 /**
  * Start a transform.
- * Starts a transform.
  *
  * When you start a transform, it creates the destination index if it does not already exist. The `number_of_shards` is
  * set to `1` and the `auto_expand_replicas` is set to `0-1`. If it is a pivot transform, it deduces the mapping
@@ -44,8 +43,15 @@ import { Duration } from '@_types/Time'
  * @availability serverless stability=stable visibility=public
  * @cluster_privileges manage_transform
  * @index_privileges read, view_index_metadata
+ * @doc_id start-transform
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_transform/{transform_id}/_start'
+      methods: ['POST']
+    }
+  ]
   path_parts: {
     /**
      * Identifier for the transform.

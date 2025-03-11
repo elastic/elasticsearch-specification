@@ -18,10 +18,13 @@
  */
 
 import { CatRequestBase } from '@cat/_types/CatBase'
-import { Bytes, Fields } from '@_types/common'
+import { Bytes, Fields, Names } from '@_types/common'
 
 /**
- * Returns the amount of heap memory currently used by the field data cache on every data node in the cluster.
+ * Get field data cache information.
+ *
+ * Get the amount of heap memory currently used by the field data cache on every data node in the cluster.
+ *
  * IMPORTANT: cat APIs are only intended for human consumption using the command line or Kibana console.
  * They are not intended for use by applications. For application consumption, use the nodes stats API.
  * @rest_spec_name cat.fielddata
@@ -31,6 +34,16 @@ import { Bytes, Fields } from '@_types/common'
  * @cluster_privileges monitor
  */
 export interface Request extends CatRequestBase {
+  urls: [
+    {
+      path: '/_cat/fielddata'
+      methods: ['GET']
+    },
+    {
+      path: '/_cat/fielddata/{fields}'
+      methods: ['GET']
+    }
+  ]
   path_parts: {
     /**
      * Comma-separated list of fields used to limit returned information.
@@ -43,5 +56,15 @@ export interface Request extends CatRequestBase {
     bytes?: Bytes
     /** Comma-separated list of fields used to limit returned information. */
     fields?: Fields
+    /**
+     * List of columns to appear in the response. Supports simple wildcards.
+     */
+    h?: Names
+    /**
+     * List of columns that determine how the table should be sorted.
+     * Sorting defaults to ascending and can be changed by setting `:asc`
+     * or `:desc` as a suffix to the column name.
+     */
+    s?: Names
   }
 }

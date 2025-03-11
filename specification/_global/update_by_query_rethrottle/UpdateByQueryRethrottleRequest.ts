@@ -30,8 +30,15 @@ import { float } from '@_types/Numeric'
  * @availability stack since=6.5.0 stability=stable
  * @availability serverless stability=stable visibility=private
  * @doc_tag document
+ * @doc_id docs-update-by-query-rethrottle
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_update_by_query/{task_id}/_rethrottle'
+      methods: ['POST']
+    }
+  ]
   path_parts: {
     /**
      * The ID for the task.
@@ -41,6 +48,7 @@ export interface Request extends RequestBase {
   query_parameters: {
     /**
      * The throttle for this request in sub-requests per second.
+     * To turn off throttling, set it to `-1`.
      * @server_default -1
      */
     requests_per_second?: float

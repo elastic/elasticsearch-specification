@@ -30,8 +30,15 @@ import { Duration } from '@_types/Time'
  * @availability stack since=8.3.0 stability=stable
  * @availability serverless stability=stable visibility=public
  * @doc_tag ml trained model
+ * @doc_id infer-trained-model
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_ml/trained_models/{model_id}/_infer'
+      methods: ['POST']
+    }
+  ]
   path_parts: {
     /**
      * The unique identifier of the trained model.

@@ -22,12 +22,23 @@ import { IndexName } from '@_types/common'
 import { Duration } from '@_types/Time'
 
 /**
- * Retrieves information about the index’s current lifecycle state, such as the currently executing phase, action, and step. Shows when the index entered each one, the definition of the running phase, and information about any failures.
+ * Explain the lifecycle state.
+ * Get the current lifecycle status for one or more indices.
+ * For data streams, the API retrieves the current lifecycle status for the stream's backing indices.
+ *
+ * The response indicates when the index entered each lifecycle state, provides the definition of the running phase, and information about any failures.
  * @rest_spec_name ilm.explain_lifecycle
  * @availability stack since=6.6.0 stability=stable
  * @index_privileges view_index_metadata,manage_ilm
+ * @doc_id ilm-explain-lifecycle
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/{index}/_ilm/explain'
+      methods: ['GET']
+    }
+  ]
   path_parts: {
     /**
      * Comma-separated list of data streams, indices, and aliases to target. Supports wildcards (`*`).
@@ -49,10 +60,5 @@ export interface Request extends RequestBase {
      * @server_default 30s
      */
     master_timeout?: Duration
-    /**
-     * Period to wait for a response. If no response is received before the timeout expires, the request fails and returns an error.
-     * @server_default 30s
-     */
-    timeout?: Duration
   }
 }

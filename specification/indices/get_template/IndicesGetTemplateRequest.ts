@@ -23,11 +23,26 @@ import { Duration } from '@_types/Time'
 
 /**
  * Get index templates.
- * Retrieves information about one or more index templates.
+ * Get information about one or more index templates.
+ *
+ * IMPORTANT: This documentation is about legacy index templates, which are deprecated and will be replaced by the composable templates introduced in Elasticsearch 7.8.
  * @rest_spec_name indices.get_template
  * @availability stack stability=stable
+ * @doc_id indices-get-template-v1
+ * @ext_doc_id index-templates
+ * @cluster_privileges manage_index_templates
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_template'
+      methods: ['GET']
+    },
+    {
+      path: '/_template/{name}'
+      methods: ['GET']
+    }
+  ]
   path_parts: {
     /**
      * Comma-separated list of index template names used to limit the request.

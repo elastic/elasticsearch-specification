@@ -23,15 +23,22 @@ import { Duration } from '@_types/Time'
 
 /**
  * Create a data stream.
- * Creates a data stream.
+ *
  * You must have a matching index template with data stream enabled.
  * @rest_spec_name indices.create_data_stream
  * @availability stack since=7.9.0 stability=stable
  * @availability serverless stability=stable visibility=public
  * @index_privileges create_index
  * @doc_tag data stream
+ * @doc_id indices-create-data-stream
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_data_stream/{name}'
+      methods: ['PUT']
+    }
+  ]
   path_parts: {
     /**
      * Name of the data stream, which must meet the following criteria:

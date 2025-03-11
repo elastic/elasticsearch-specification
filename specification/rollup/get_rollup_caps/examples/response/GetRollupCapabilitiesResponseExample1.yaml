@@ -1,0 +1,21 @@
+# summary:
+description: >
+  A successful response from `GET _rollup/data/sensor-*` for a rollup job that targets the index pattern `sensor-*`.
+  The response contains the rollup job ID, the index that holds the rolled data, and the index pattern that the job was targeting.
+  It also shows a list of fields that contain data eligible for rollup searches.
+  For example, you can use a `min`, `max`, or `sum` aggregation on the `temperature` field, but only a `date_histogram` on `timestamp`.
+# type: response
+# response_code: ''
+value:
+  "{\n  \"sensor-*\" : {\n    \"rollup_jobs\" : [\n      {\n        \"job_id\"\
+  \ : \"sensor\",\n        \"rollup_index\" : \"sensor_rollup\",\n        \"index_pattern\"\
+  \ : \"sensor-*\",\n        \"fields\" : {\n          \"node\" : [\n            {\n\
+  \              \"agg\" : \"terms\"\n            }\n          ],\n          \"temperature\"\
+  \ : [\n            {\n              \"agg\" : \"min\"\n            },\n        \
+  \    {\n              \"agg\" : \"max\"\n            },\n            {\n       \
+  \       \"agg\" : \"sum\"\n            }\n          ],\n          \"timestamp\"\
+  \ : [\n            {\n              \"agg\" : \"date_histogram\",\n            \
+  \  \"time_zone\" : \"UTC\",\n              \"fixed_interval\" : \"1h\",\n      \
+  \        \"delay\": \"7d\"\n            }\n          ],\n          \"voltage\" :\
+  \ [\n            {\n              \"agg\" : \"avg\"\n            }\n          ]\n\
+  \        }\n      }\n    ]\n  }\n}"

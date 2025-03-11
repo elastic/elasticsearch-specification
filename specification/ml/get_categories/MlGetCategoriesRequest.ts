@@ -29,8 +29,19 @@ import { integer } from '@_types/Numeric'
  * @availability serverless stability=stable visibility=private
  * @cluster_privileges monitor_ml
  * @doc_tag ml anomaly
+ * @doc_id ml-get-category
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_ml/anomaly_detectors/{job_id}/results/categories/{category_id}'
+      methods: ['GET', 'POST']
+    },
+    {
+      path: '/_ml/anomaly_detectors/{job_id}/results/categories'
+      methods: ['GET', 'POST']
+    }
+  ]
   path_parts: {
     /**
      * Identifier for the anomaly detection job.

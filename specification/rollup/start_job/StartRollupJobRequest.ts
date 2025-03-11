@@ -21,11 +21,22 @@ import { RequestBase } from '@_types/Base'
 import { Id } from '@_types/common'
 
 /**
- * Starts an existing, stopped rollup job.
+ * Start rollup jobs.
+ * If you try to start a job that does not exist, an exception occurs.
+ * If you try to start a job that is already started, nothing happens.
  * @rest_spec_name rollup.start_job
  * @availability stack since=6.3.0 stability=experimental
+ * @cluster_privileges manage_rollup
+ * @deprecated 8.11.0
+ * @doc_id rollup-start-job
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_rollup/job/{id}/_start'
+      methods: ['POST']
+    }
+  ]
   path_parts: {
     /**
      * Identifier for the rollup job.

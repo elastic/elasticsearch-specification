@@ -35,9 +35,17 @@ import { DateTime } from '@_types/Time'
  * @availability stack since=5.4.0 stability=stable
  * @availability serverless stability=stable visibility=public
  * @cluster_privileges manage_ml
+ * @deprecated 9.1.0 Forcing any buffered data to be processed is deprecated, in a future major version a datafeed will be required.
  * @doc_tag ml anomaly
+ * @doc_id ml-flush-job
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_ml/anomaly_detectors/{job_id}/_flush'
+      methods: ['POST']
+    }
+  ]
   path_parts: {
     /**
      * Identifier for the anomaly detection job.

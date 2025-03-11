@@ -29,8 +29,19 @@ import { integer } from '@_types/Numeric'
  * @availability serverless stability=stable visibility=public
  * @cluster_privileges monitor_ml
  * @doc_tag ml trained model
+ * @doc_id get-trained-models
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_ml/trained_models/{model_id}'
+      methods: ['GET']
+    },
+    {
+      path: '/_ml/trained_models'
+      methods: ['GET']
+    }
+  ]
   path_parts: {
     /**
      * The unique identifier of the trained model or a model alias.
@@ -77,6 +88,7 @@ export interface Request extends RequestBase {
      * body.
      */
     include?: Include
+
     /**
      * Specifies the maximum number of models to obtain.
      * @server_default 100

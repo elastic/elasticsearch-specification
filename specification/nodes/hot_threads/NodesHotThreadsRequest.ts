@@ -23,8 +23,9 @@ import { long } from '@_types/Numeric'
 import { Duration } from '@_types/Time'
 
 /**
- * This API yields a breakdown of the hot threads on each selected node in the cluster.
- * The output is plain text with a breakdown of each node’s top hot threads.
+ * Get the hot threads for nodes.
+ * Get a breakdown of the hot threads on each selected node in the cluster.
+ * The output is plain text with a breakdown of the top hot threads for each node.
  * @rest_spec_name nodes.hot_threads
  * @availability stack stability=stable
  * @availability serverless stability=stable visibility=private
@@ -33,6 +34,16 @@ import { Duration } from '@_types/Time'
  * @doc_tag cluster
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_nodes/hot_threads'
+      methods: ['GET']
+    },
+    {
+      path: '/_nodes/{node_id}/hot_threads'
+      methods: ['GET']
+    }
+  ]
   path_parts: {
     /**
      * List of node IDs or names used to limit returned information.
@@ -56,13 +67,6 @@ export interface Request extends RequestBase {
      * @server_default 10
      */
     snapshots?: long
-    /**
-     * Period to wait for a connection to the master node. If no response
-     * is received before the timeout expires, the request fails and
-     * returns an error.
-     * @server_default 30s
-     */
-    master_timeout?: Duration
     /**
      * Specifies the number of hot threads to provide information for.
      * @server_default 3

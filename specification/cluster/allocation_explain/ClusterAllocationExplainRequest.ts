@@ -20,14 +20,27 @@
 import { RequestBase } from '@_types/Base'
 import { IndexName } from '@_types/common'
 import { integer } from '@_types/Numeric'
+import { Duration } from '@_types/Time'
 
 /**
+ * Explain the shard allocations.
+ * Get explanations for shard allocations in the cluster.
+ * For unassigned shards, it provides an explanation for why the shard is unassigned.
+ * For assigned shards, it provides an explanation for why the shard is remaining on its current node and has not moved or rebalanced to another node.
+ * This API can be very useful when attempting to diagnose why a shard is unassigned or why a shard continues to remain on its current node when you might expect otherwise.
  * @rest_spec_name cluster.allocation_explain
  * @availability stack since=5.0.0 stability=stable
  * @availability serverless stability=stable visibility=private
  * @doc_id cluster-allocation-explain
+ * @doc_tag cluster
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_cluster/allocation/explain'
+      methods: ['GET', 'POST']
+    }
+  ]
   query_parameters: {
     /**
      * If true, returns information about disk usage and shard sizes.
@@ -39,6 +52,11 @@ export interface Request extends RequestBase {
      * @server_default false
      */
     include_yes_decisions?: boolean
+    /**
+     * Period to wait for a connection to the master node.
+     * @server_default 30s
+     */
+    master_timeout?: Duration
   }
   body: {
     /**

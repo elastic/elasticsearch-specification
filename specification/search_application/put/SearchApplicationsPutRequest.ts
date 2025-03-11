@@ -25,8 +25,17 @@ import { SearchApplicationParameters } from '../_types/SearchApplicationParamete
  * @rest_spec_name search_application.put
  * @availability stack since=8.8.0 stability=beta
  * @availability serverless stability=beta visibility=public
+ * @cluster_privileges manage_search_application
+ * @index_privileges manage
+ * @doc_id search-application-put
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_application/search_application/{name}'
+      methods: ['PUT']
+    }
+  ]
   path_parts: {
     /**
      * The name of the search application to be created or updated.

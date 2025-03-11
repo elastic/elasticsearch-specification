@@ -21,13 +21,22 @@ import { RequestBase } from '@_types/Base'
 import { ExpandWildcards, Names } from '@_types/common'
 
 /**
- * Resolves the specified name(s) and/or index patterns for indices, aliases, and data streams.
+ * Resolve indices.
+ * Resolve the names and/or index patterns for indices, aliases, and data streams.
  * Multiple patterns and remote clusters are supported.
  * @rest_spec_name indices.resolve_index
  * @availability stack since=7.9.0 stability=stable
  * @availability serverless stability=stable visibility=public
+ * @doc_id indices-resolve-index-api
+ * @index_privileges view_index_metadata
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_resolve/index/{name}'
+      methods: ['GET']
+    }
+  ]
   path_parts: {
     /**
      * Comma-separated name(s) or index pattern(s) of the indices, aliases, and data streams to resolve.

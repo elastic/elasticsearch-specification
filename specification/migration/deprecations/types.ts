@@ -17,6 +17,9 @@
  * under the License.
  */
 
+import { Dictionary } from '@spec_utils/Dictionary'
+import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
+
 export enum DeprecationLevel {
   none,
   info,
@@ -27,9 +30,18 @@ export enum DeprecationLevel {
 }
 
 export class Deprecation {
-  details: string
+  /**
+   * Optional details about the deprecation warning.
+   */
+  details?: string
   /** The level property describes the significance of the issue. */
   level: DeprecationLevel
+  /** Descriptive information about the deprecation warning. */
   message: string
+  /**
+   * A link to the breaking change documentation, where you can find more information about this change.
+   */
   url: string
+  resolve_during_rolling_upgrade: boolean
+  _meta?: Dictionary<string, UserDefinedValue>
 }

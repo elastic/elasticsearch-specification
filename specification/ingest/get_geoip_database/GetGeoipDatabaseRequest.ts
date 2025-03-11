@@ -19,28 +19,33 @@
 
 import { RequestBase } from '@_types/Base'
 import { Ids } from '@_types/common'
-import { Duration } from '@_types/Time'
 
 /**
- * Returns information about one or more geoip database configurations.
+ * Get GeoIP database configurations.
+ *
+ * Get information about one or more IP geolocation database configurations.
  * @rest_spec_name ingest.get_geoip_database
  * @availability stack since=8.15.0 stability=stable
  * @availability serverless visibility=private
+ * @doc_id geoip-get-database
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_ingest/geoip/database'
+      methods: ['GET']
+    },
+    {
+      path: '/_ingest/geoip/database/{id}'
+      methods: ['GET']
+    }
+  ]
   path_parts: {
     /**
-     * Comma-separated list of database configuration IDs to retrieve.
+     * A comma-separated list of database configuration IDs to retrieve.
      * Wildcard (`*`) expressions are supported.
      * To get all database configurations, omit this parameter or use `*`.
      */
     id?: Ids
-  }
-  query_parameters: {
-    /**
-     * Period to wait for a connection to the master node.
-     * If no response is received before the timeout expires, the request fails and returns an error.
-     * @server_default 30s */
-    master_timeout?: Duration
   }
 }

@@ -28,8 +28,19 @@ import { Operator } from '@_types/query_dsl/Operator'
  * @rest_spec_name indices.validate_query
  * @availability stack since=1.3.0 stability=stable
  * @availability serverless stability=stable visibility=public
+ * @doc_id search-validate
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_validate/query'
+      methods: ['GET', 'POST']
+    },
+    {
+      path: '/{index}/_validate/query'
+      methods: ['GET', 'POST']
+    }
+  ]
   path_parts: {
     /**
      * Comma-separated list of data streams, indices, and aliases to search.

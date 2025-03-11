@@ -22,12 +22,23 @@ import { Name } from '@_types/common'
 import { Duration } from '@_types/Time'
 
 /**
- * Retrieves a lifecycle policy.
+ * Get lifecycle policies.
  * @rest_spec_name ilm.get_lifecycle
  * @availability stack since=6.6.0 stability=stable
  * @cluster_privileges manage_ilm, read_ilm
+ * @doc_id ilm-get-lifecycle
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_ilm/policy/{policy}'
+      methods: ['GET']
+    },
+    {
+      path: '/_ilm/policy'
+      methods: ['GET']
+    }
+  ]
   path_parts: {
     /**
      * Identifier for the policy.

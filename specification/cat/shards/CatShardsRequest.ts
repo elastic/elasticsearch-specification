@@ -18,10 +18,13 @@
  */
 
 import { CatRequestBase } from '@cat/_types/CatBase'
-import { Bytes, Indices } from '@_types/common'
+import { Bytes, Indices, Names } from '@_types/common'
+import { Duration, TimeUnit } from '@_types/Time'
 
 /**
- * Returns information about the shards in a cluster.
+ * Get shard information.
+ *
+ * Get information about the shards in a cluster.
  * For data streams, the API returns information about the backing indices.
  * IMPORTANT: cat APIs are only intended for human consumption using the command line or Kibana console. They are not intended for use by applications.
  * @rest_spec_name cat.shards
@@ -32,6 +35,16 @@ import { Bytes, Indices } from '@_types/common'
  * @index_privileges monitor
  */
 export interface Request extends CatRequestBase {
+  urls: [
+    {
+      path: '/_cat/shards'
+      methods: ['GET']
+    },
+    {
+      path: '/_cat/shards/{index}'
+      methods: ['GET']
+    }
+  ]
   path_parts: {
     /**
      * A comma-separated list of data streams, indices, and aliases used to limit the request.
@@ -45,5 +58,24 @@ export interface Request extends CatRequestBase {
      * The unit used to display byte values.
      */
     bytes?: Bytes
+    /**
+     * List of columns to appear in the response. Supports simple wildcards.
+     */
+    h?: Names
+    /**
+     * List of columns that determine how the table should be sorted.
+     * Sorting defaults to ascending and can be changed by setting `:asc`
+     * or `:desc` as a suffix to the column name.
+     */
+    s?: Names
+    /**
+     * Period to wait for a connection to the master node.
+     * @server_default 30s
+     */
+    master_timeout?: Duration
+    /**
+     * Unit used to display time values.
+     */
+    time?: TimeUnit
   }
 }

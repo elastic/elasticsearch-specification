@@ -1,0 +1,10 @@
+# summary:
+description: A successful response from `PUT /follower_index/_ccr/follow?wait_for_active_shards=1`.
+# type: 'response',
+# response_code: 200,
+value: |-
+  {
+    "follow_index_created" : true,
+    "follow_index_shards_acked" : true,
+    "index_following_started" : true
+  }

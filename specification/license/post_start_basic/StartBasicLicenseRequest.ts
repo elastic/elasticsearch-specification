@@ -18,15 +18,42 @@
  */
 
 import { RequestBase } from '@_types/Base'
+import { Duration } from '@_types/Time'
 
 /**
- * The start basic API enables you to initiate an indefinite basic license, which gives access to all the basic features. If the basic license does not support all of the features that are available with your current license, however, you are notified in the response. You must then re-submit the API request with the acknowledge parameter set to true.
- * To check the status of your basic license, use the following API: [Get basic status](https://www.elastic.co/guide/en/elasticsearch/reference/current/get-basic-status.html).
+ * Start a basic license.
+ *
+ * Start an indefinite basic license, which gives access to all the basic features.
+ *
+ * NOTE: In order to start a basic license, you must not currently have a basic license.
+ *
+ * If the basic license does not support all of the features that are available with your current license, however, you are notified in the response.
+ * You must then re-submit the API request with the `acknowledge` parameter set to `true`.
+ *
+ * To check the status of your basic license, use the get basic license API.
  * @rest_spec_name license.post_start_basic
  * @availability stack since=6.3.0 stability=stable
+ * @cluster_privileges manage
+ * @doc_id start-basic
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_license/start_basic'
+      methods: ['POST']
+    }
+  ]
   query_parameters: {
     acknowledge?: boolean
+    /**
+     * Period to wait for a connection to the master node.
+     * @server_default 30s
+     */
+    master_timeout?: Duration
+    /**
+     * Period to wait for a response. If no response is received before the timeout expires, the request fails and returns an error.
+     * @server_default 30s
+     */
+    timeout?: Duration
   }
 }

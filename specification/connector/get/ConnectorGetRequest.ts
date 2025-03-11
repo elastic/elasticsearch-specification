@@ -29,10 +29,23 @@ import { Id } from '@_types/common'
  * @doc_id connector-get
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_connector/{connector_id}'
+      methods: ['GET']
+    }
+  ]
   path_parts: {
     /**
      * The unique identifier of the connector
      */
     connector_id: Id
+  }
+  query_parameters: {
+    /**
+     * A flag to indicate if the desired connector should be fetched, even if it was soft-deleted.
+     * @server_default false
+     */
+    include_deleted?: boolean
   }
 }

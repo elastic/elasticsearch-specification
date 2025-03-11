@@ -1,0 +1,6 @@
+# summary:
+description: A successful response from `POST _ml/anomaly_detectors/_estimate_model_memory`.
+# type: response
+# response_code: 200
+value:
+  model_memory_estimate: 21mb

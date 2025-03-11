@@ -18,9 +18,36 @@
  */
 
 import { RequestBase } from '@_types/Base'
+import { Duration } from '@_types/Time'
 
 /**
+ * Get the features.
+ * Get a list of features that can be included in snapshots using the `feature_states` field when creating a snapshot.
+ * You can use this API to determine which feature states to include when taking a snapshot.
+ * By default, all feature states are included in a snapshot if that snapshot includes the global state, or none if it does not.
+ *
+ * A feature state includes one or more system indices necessary for a given feature to function.
+ * In order to ensure data integrity, all system indices that comprise a feature state are snapshotted and restored together.
+ *
+ * The features listed by this API are a combination of built-in features and features defined by plugins.
+ * In order for a feature state to be listed in this API and recognized as a valid feature state by the create snapshot API, the plugin that defines that feature must be installed on the master node.
  * @rest_spec_name features.get_features
  * @availability stack since=7.12.0 stability=stable
+ * @doc_id get-features-api
+ * @ext_doc_id snapshot-create
  */
-export interface Request extends RequestBase {}
+export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_features'
+      methods: ['GET']
+    }
+  ]
+  query_parameters: {
+    /**
+     * Period to wait for a connection to the master node.
+     * @server_default 30s
+     */
+    master_timeout?: Duration
+  }
+}

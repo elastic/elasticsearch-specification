@@ -27,6 +27,14 @@ import { RequestBase } from '@_types/Base'
  * @availability stack since=7.3.0 stability=stable
  * @availability serverless stability=stable visibility=public
  * @cluster_privileges manage_security
+ * @doc_id security-api-get-builtin-privileges
  * @ext_doc_id security-privileges
  */
-export interface Request extends RequestBase {}
+export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_security/privilege/_builtin'
+      methods: ['GET']
+    }
+  ]
+}

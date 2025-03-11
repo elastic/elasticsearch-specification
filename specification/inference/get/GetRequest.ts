@@ -26,8 +26,23 @@ import { Id } from '@_types/common'
  * @rest_spec_name inference.get
  * @availability stack since=8.11.0 stability=stable visibility=public
  * @availability serverless stability=stable visibility=public
+ * @doc_id inference-api-get
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_inference'
+      methods: ['GET']
+    },
+    {
+      path: '/_inference/{inference_id}'
+      methods: ['GET']
+    },
+    {
+      path: '/_inference/{task_type}/{inference_id}'
+      methods: ['GET']
+    }
+  ]
   path_parts: {
     /**
      * The task type

@@ -20,7 +20,17 @@
 import { RequestBase } from '@_types/Base'
 
 /**
+ * Get the trial status.
  * @rest_spec_name license.get_trial_status
  * @availability stack since=6.1.0 stability=stable
+ * @cluster_privileges monitor
+ * @doc_id get-trial-status
  */
-export interface Request extends RequestBase {}
+export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_license/trial_status'
+      methods: ['GET']
+    }
+  ]
+}

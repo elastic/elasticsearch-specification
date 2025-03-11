@@ -22,6 +22,7 @@ import { Id } from '@_types/common'
 
 /**
  * Clear trained model deployment cache.
+ *
  * Cache will be cleared on all nodes where the trained model is assigned.
  * A trained model deployment may have an inference cache enabled.
  * As requests are handled by each allocated node, their responses may be cached on that individual node.
@@ -30,9 +31,16 @@ import { Id } from '@_types/common'
  * @availability stack since=8.5.0 stability=stable
  * @availability serverless stability=stable visibility=private
  * @cluster_privileges manage_ml
+ * @doc_id clear-trained-model
  * @doc_tag ml trained model
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_ml/trained_models/{model_id}/deployment/cache/_clear'
+      methods: ['POST']
+    }
+  ]
   path_parts: {
     /**
      * The unique identifier of the trained model.

@@ -24,13 +24,28 @@ import { ExpandWildcards, Fields, Indices } from '@_types/common'
  * Get mapping definitions.
  * Retrieves mapping definitions for one or more fields.
  * For data streams, the API retrieves field mappings for the stream’s backing indices.
+ *
+ * This API is useful if you don't need a complete mapping or if an index mapping contains a large number of fields.
  * @rest_spec_name indices.get_field_mapping
  * @availability stack stability=stable
+ * @index_privileges view_index_metadata
+ * @doc_id indices-get-field-mapping
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_mapping/field/{fields}'
+      methods: ['GET']
+    },
+    {
+      path: '/{index}/_mapping/field/{fields}'
+      methods: ['GET']
+    }
+  ]
   path_parts: {
     /**
      * Comma-separated list or wildcard expression of fields used to limit returned information.
+     * Supports wildcards (`*`).
      */
     fields: Fields
     /**
@@ -65,10 +80,5 @@ export interface Request extends RequestBase {
      * @server_default false
      */
     include_defaults?: boolean
-    /**
-     * If `true`, the request retrieves information from the local node only.
-     * @server_default false
-     */
-    local?: boolean
   }
 }

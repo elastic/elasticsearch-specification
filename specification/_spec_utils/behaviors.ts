@@ -16,15 +16,6 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-/*
- * This file hosts `behaviors`. We use this interfaces that are marked with a `@behavior` JS Doc annotation
- * to signal complicated mappings to the compiler -> canonical json -> client generators.
- *
- * These are problem sets that need a custom client solution.
- */
-
-import { Names } from '@_types/common'
-import { Duration } from '@_types/Time'
 
 /**
  * In some places in the specification an object consists of the union of a set of known properties
@@ -96,26 +87,11 @@ export interface CommonCatQueryParameters {
    */
   format?: string
   /**
-   * List of columns to appear in the response. Supports simple wildcards.
-   */
-  h?: Names
-  /**
    * When set to `true` will output available columns. This option
    * can't be combined with any other query string option.
    * @server_default false
    */
   help?: boolean
-  /**
-   * Period to wait for a connection to the master node.
-   * @server_default 30s
-   */
-  master_timeout?: Duration
-  /**
-   * List of columns that determine how the table should be sorted.
-   * Sorting defaults to ascending and can be changed by setting `:asc`
-   * or `:desc` as a suffix to the column name.
-   */
-  s?: Names
   /**
    * When set to `true` will enable verbose output.
    * @server_default false

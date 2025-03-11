@@ -21,10 +21,22 @@ import { RequestBase } from '@_types/Base'
 import { IndexName } from '@_types/common'
 
 /**
+ * Retry a policy.
+ * Retry running the lifecycle policy for an index that is in the ERROR step.
+ * The API sets the policy back to the step where the error occurred and runs the step.
+ * Use the explain lifecycle state API to determine whether an index is in the ERROR step.
  * @rest_spec_name ilm.retry
  * @availability stack since=6.6.0 stability=stable
+ * @index_privileges manage_ilm
+ * @doc_id ilm-retry-policy
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/{index}/_ilm/retry'
+      methods: ['POST']
+    }
+  ]
   path_parts: {
     index: IndexName
   }

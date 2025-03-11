@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { Dictionary } from '@spec_utils/Dictionary'
+import { Dictionary, SingleKeyDictionary } from '@spec_utils/Dictionary'
 import { RequestBase } from '@_types/Base'
 import {
   ExpandWildcards,
@@ -40,14 +40,48 @@ import { Duration } from '@_types/Time'
 
 /**
  * Update field mappings.
- * Adds new fields to an existing data stream or index.
- * You can also use this API to change the search settings of existing fields.
+ * Add new fields to an existing data stream or index.
+ * You can also use this API to change the search settings of existing fields and add new properties to existing object fields.
  * For data streams, these changes are applied to all backing indices by default.
+ *
+ * **Add multi-fields to an existing field**
+ *
+ * Multi-fields let you index the same field in different ways.
+ * You can use this API to update the fields mapping parameter and enable multi-fields for an existing field.
+ * WARNING: If an index (or data stream) contains documents when you add a multi-field, those documents will not have values for the new multi-field.
+ * You can populate the new multi-field with the update by query API.
+ *
+ * **Change supported mapping parameters for an existing field**
+ *
+ * The documentation for each mapping parameter indicates whether you can update it for an existing field using this API.
+ * For example, you can use the update mapping API to update the `ignore_above` parameter.
+ *
+ * **Change the mapping of an existing field**
+ *
+ * Except for supported mapping parameters, you can't change the mapping or field type of an existing field.
+ * Changing an existing field could invalidate data that's already indexed.
+ *
+ * If you need to change the mapping of a field in a data stream's backing indices, refer to documentation about modifying data streams.
+ * If you need to change the mapping of a field in other indices, create a new index with the correct mapping and reindex your data into that index.
+ *
+ * **Rename a field**
+ *
+ * Renaming a field would invalidate data already indexed under the old field name.
+ * Instead, add an alias field to create an alternate field name.
  * @rest_spec_name indices.put_mapping
  * @availability stack stability=stable
  * @availability serverless stability=stable visibility=public
+ * @doc_id indices-put-mapping
+ * @ext_doc_id mapping-params
+ * @index_privileges manage
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/{index}/_mapping'
+      methods: ['PUT', 'POST']
+    }
+  ]
   path_parts: {
     index: Indices
   }
@@ -107,9 +141,7 @@ export interface Request extends RequestBase {
     /**
      * Specify dynamic templates for the mapping.
      */
-    dynamic_templates?:
-      | Dictionary<string, DynamicTemplate>
-      | Dictionary<string, DynamicTemplate>[]
+    dynamic_templates?: SingleKeyDictionary<string, DynamicTemplate>[]
     /**
      * Control whether field names are enabled for the index.
      */

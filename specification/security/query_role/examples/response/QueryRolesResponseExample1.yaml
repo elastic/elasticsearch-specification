@@ -1,0 +1,85 @@
+summary: Query roles by name
+description: >
+  A successful response from `POST /_security/_query/role`.
+  It returns a JSON structure that contains the information retrieved for one or more roles.
+# type: response
+# response_code:
+value: |-
+  {
+      "total": 2,
+      "count": 2,
+      "roles": [ 
+          {
+            "name" : "my_admin_role",
+            "cluster" : [
+              "all"
+            ],
+            "indices" : [
+              {
+                "names" : [
+                  "index1",
+                  "index2"
+                ],
+                "privileges" : [
+                  "all"
+                ],
+                "field_security" : {
+                  "grant" : [
+                    "title",
+                    "body"
+                  ]
+                },
+                "allow_restricted_indices" : false
+              }
+            ],
+            "applications" : [ ],
+            "run_as" : [
+              "other_user"
+            ],
+            "metadata" : {
+              "version" : 1
+            },
+            "transient_metadata" : {
+              "enabled" : true
+            },
+            "description" : "Grants full access to all management features within the cluster.",
+            "_sort" : [
+              "my_admin_role"
+            ]
+          },
+          {
+            "name" : "my_user_role",
+            "cluster" : [ ],
+            "indices" : [
+              {
+                "names" : [
+                  "index1",
+                  "index2"
+                ],
+                "privileges" : [
+                  "all"
+                ],
+                "field_security" : {
+                  "grant" : [
+                    "title",
+                    "body"
+                  ]
+                },
+                "allow_restricted_indices" : false
+              }
+            ],
+            "applications" : [ ],
+            "run_as" : [ ],
+            "metadata" : {
+              "version" : 1
+            },
+            "transient_metadata" : {
+              "enabled" : true
+            },
+            "description" : "Grants user access to some indicies.",
+            "_sort" : [
+              "my_user_role"
+            ]
+          }
+      ]
+  }

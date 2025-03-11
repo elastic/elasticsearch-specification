@@ -32,8 +32,19 @@ import { Ids } from '@_types/common'
  * @availability serverless stability=stable visibility=public
  * @cluster_privileges monitor_ml
  * @doc_tag ml anomaly
+ * @doc_id ml-get-datafeed
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_ml/datafeeds/{datafeed_id}'
+      methods: ['GET']
+    },
+    {
+      path: '/_ml/datafeeds'
+      methods: ['GET']
+    }
+  ]
   path_parts: {
     /**
      * Identifier for the datafeed. It can be a datafeed identifier or a

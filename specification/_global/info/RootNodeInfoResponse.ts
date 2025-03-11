@@ -22,10 +22,19 @@ import { Name, Uuid } from '@_types/common'
 
 export class Response {
   body: {
+    /**
+     * The responding cluster's name.
+     */
     cluster_name: Name
     cluster_uuid: Uuid
+    /**
+     * The responding node's name.
+     */
     name: Name
     tagline: string
+    /**
+     * The running version of Elasticsearch.
+     */
     version: ElasticsearchVersionInfo
   }
 }

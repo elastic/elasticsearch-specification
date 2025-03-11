@@ -20,12 +20,21 @@ import { RequestBase } from '@_types/Base'
 import { integer } from '@_types/Numeric'
 
 /**
- * Returns the existing search applications.
+ * Get search applications.
+ * Get information about search applications.
  * @rest_spec_name search_application.list
  * @availability stack since=8.8.0 stability=beta
  * @availability serverless stability=beta visibility=public
+ * @cluster_privileges manage_search_application
+ * @doc_id list-analytics-collection
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_application/search_application'
+      methods: ['GET']
+    }
+  ]
   query_parameters: {
     /**
      * Query in the Lucene query string syntax.

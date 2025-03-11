@@ -17,6 +17,7 @@
  * under the License.
  */
 
+import { AdaptiveAllocationsSettings } from '@ml/_types/TrainedModel'
 import { RequestBase } from '@_types/Base'
 import { Id } from '@_types/common'
 import { integer } from '@_types/Numeric'
@@ -28,8 +29,15 @@ import { integer } from '@_types/Numeric'
  * @availability serverless stability=beta visibility=public
  * @cluster_privileges manage_ml
  * @doc_tag ml trained model
+ * @doc_id update-trained-model-deployment
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_ml/trained_models/{model_id}/deployment/_update'
+      methods: ['POST']
+    }
+  ]
   path_parts: {
     /**
      * The unique identifier of the trained model. Currently, only PyTorch models are supported.
@@ -56,8 +64,15 @@ export interface Request extends RequestBase {
      * Increasing this value generally increases the throughput.
      * If this setting is greater than the number of hardware threads
      * it will automatically be changed to a value less than the number of hardware threads.
+     * If adaptive_allocations is enabled, do not set this value, because it’s automatically set.
      * @server_default 1
      */
     number_of_allocations?: integer
+    /**
+     * Adaptive allocations configuration. When enabled, the number of allocations
+     * is set based on the current load.
+     * If adaptive_allocations is enabled, do not set the number of allocations manually.
+     */
+    adaptive_allocations?: AdaptiveAllocationsSettings
   }
 }

@@ -22,6 +22,7 @@ import { AdditionalProperties } from '@spec_utils/behaviors'
 import { Dictionary } from '@spec_utils/Dictionary'
 import { Stringified } from '@spec_utils/Stringified'
 import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
+import { WithNullValue } from '@spec_utils/utils'
 import { Analyzer } from '@_types/analysis/analyzers'
 import { CharFilter } from '@_types/analysis/char_filters'
 import { Normalizer } from '@_types/analysis/normalizers'
@@ -79,9 +80,15 @@ export class IndexSettings
   routing_path?: string | string[]
   soft_deletes?: SoftDeletes
   sort?: IndexSegmentSort
-  /** @server_default 1 */
+  /**
+   * @server_default 1
+   * @availability stack
+   * */
   number_of_shards?: integer | string // TODO: should be only int
-  /** @server_default 0 */
+  /**
+   * @server_default 0
+   * @availability stack
+   * */
   number_of_replicas?: integer | string // TODO: should be only int
   number_of_routing_shards?: integer
   /** @server_default false */
@@ -95,7 +102,7 @@ export class IndexSettings
   /** @server_default false */
   hidden?: boolean | string // TODO should be bool only
   /** @server_default false */
-  auto_expand_replicas?: string
+  auto_expand_replicas?: WithNullValue<string>
   merge?: Merge
   search?: SettingsSearch
   /** @server_default 1s */
@@ -170,6 +177,7 @@ export class IndexSettings
 
 /**
  * @variants internal tag='type'
+ * @non_exhaustive
  */
 export type SettingsSimilarity =
   | SettingsSimilarityBm25
@@ -306,6 +314,12 @@ export class IndexSettingsLifecycle {
    * @server_default
    */
   rollover_alias?: string
+  /**
+   * Preference for the system that manages a data stream backing index (preferring ILM when both ILM and DLM are
+   * applicable for an index).
+   * @server_default true
+   */
+  prefer_ilm?: boolean | string
 }
 
 export class IndexSettingsLifecycleStep {
@@ -420,7 +434,8 @@ export class MappingLimitSettings {
   nested_objects?: MappingLimitSettingsNestedObjects
   field_name_length?: MappingLimitSettingsFieldNameLength
   dimension_fields?: MappingLimitSettingsDimensionFields
-  ignore_malformed?: boolean
+  source?: MappingLimitSettingsSourceFields
+  ignore_malformed?: boolean | string
 }
 
 export class MappingLimitSettingsTotalFields {
@@ -430,7 +445,7 @@ export class MappingLimitSettingsTotalFields {
    * degradations and memory issues, especially in clusters with a high load or few resources.
    * @server_default 1000
    */
-  limit?: long
+  limit?: long | string
   /**
    * This setting determines what happens when a dynamically mapped field would exceed the total fields limit. When set
    * to false (the default), the index request of the document that tries to add a dynamic field to the mapping will fail
@@ -439,7 +454,7 @@ export class MappingLimitSettingsTotalFields {
    * The fields that were not added to the mapping will be added to the _ignored field.
    * @server_default false
    */
-  ignore_dynamic_beyond_limit?: boolean
+  ignore_dynamic_beyond_limit?: boolean | string
 }
 
 export class MappingLimitSettingsDepth {
@@ -485,6 +500,16 @@ export class MappingLimitSettingsDimensionFields {
    * Elastic will work to fix any issues, but features in technical preview are not subject to the support SLA of official GA features.
    */
   limit?: long
+}
+
+export class MappingLimitSettingsSourceFields {
+  mode: SourceMode
+}
+
+export enum SourceMode {
+  disabled,
+  stored,
+  synthetic
 }
 
 export class SlowlogSettings {

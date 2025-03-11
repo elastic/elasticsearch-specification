@@ -23,13 +23,21 @@ import { Duration } from '@_types/Time'
 
 /**
  * Get data stream lifecycles.
- * Retrieves the data stream lifecycle configuration of one or more data streams.
+ *
+ * Get the data stream lifecycle configuration of one or more data streams.
  * @rest_spec_name indices.get_data_lifecycle
  * @availability stack since=8.11.0 stability=stable
  * @availability serverless stability=stable visibility=public
  * @doc_tag data stream
+ * @doc_id data-stream-get-lifecycle
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_data_stream/{name}/_lifecycle'
+      methods: ['GET']
+    }
+  ]
   path_parts: {
     /**
      * Comma-separated list of data streams to limit the request.

@@ -30,6 +30,12 @@ import { Id, Ids } from '@_types/common'
  * @doc_tag ml anomaly
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_ml/calendars/{calendar_id}/jobs/{job_id}'
+      methods: ['DELETE']
+    }
+  ]
   path_parts: {
     /**
      * A string that uniquely identifies a calendar.

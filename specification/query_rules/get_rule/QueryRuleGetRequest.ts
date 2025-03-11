@@ -20,12 +20,22 @@ import { RequestBase } from '@_types/Base'
 import { Id } from '@_types/common'
 
 /**
- * Returns the details about a query rule within a query ruleset
+ * Get a query rule.
+ * Get details about a query rule within a query ruleset.
  * @rest_spec_name query_rules.get_rule
  * @availability stack since=8.15.0 stability=stable
  * @availability serverless stability=stable visibility=public
+ * @cluster_privileges manage_search_query_rules
+ * @doc_id query-rule-get
+ * @ext_doc_id query-rule
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_query_rules/{ruleset_id}/_rule/{rule_id}'
+      methods: ['GET']
+    }
+  ]
   path_parts: {
     /**
      * The unique identifier of the query ruleset containing the rule to retrieve

@@ -1,0 +1,49 @@
+summary: Get a key by ID
+description: A successful response from `GET /_security/api_key?id=VuaCfGcBCdbkQm-e5aOx&with_limited_by=true`.
+# type: response
+# response_code:
+value: |-
+  {
+    "api_keys": [ 
+      {
+        "id": "VuaCfGcBCdbkQm-e5aOx", 
+        "name": "my-api-key", 
+        "creation": 1548550550158, 
+        "expiration": 1548551550158, 
+        "invalidated": false, 
+        "username": "myuser", 
+        "realm": "native1", 
+        "realm_type": "native",
+        "metadata": { 
+          "application": "myapp"
+        },
+        "role_descriptors": { }, 
+        "limited_by": [  
+          {
+            "role-power-user": {
+              "cluster": [
+                "monitor"
+              ],
+              "indices": [
+                {
+                  "names": [
+                    "*"
+                  ],
+                  "privileges": [
+                    "read"
+                  ],
+                  "allow_restricted_indices": false
+                }
+              ],
+              "applications": [ ],
+              "run_as": [ ],
+              "metadata": { },
+              "transient_metadata": {
+                "enabled": true
+              }
+            }
+          }
+        ]
+      }
+    ]
+  }

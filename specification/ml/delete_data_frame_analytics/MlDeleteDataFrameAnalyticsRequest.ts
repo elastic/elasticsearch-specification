@@ -31,6 +31,12 @@ import { Duration } from '@_types/Time'
  * @doc_tag ml data frame
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_ml/data_frame/analytics/{id}'
+      methods: ['DELETE']
+    }
+  ]
   path_parts: {
     /**
      * Identifier for the data frame analytics job.

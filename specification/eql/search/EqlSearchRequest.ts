@@ -26,11 +26,22 @@ import { Duration } from '@_types/Time'
 import { ResultPosition } from './types'
 
 /**
+ * Get EQL search results.
+ * Returns search results for an Event Query Language (EQL) query.
+ * EQL assumes each document in a data stream or index corresponds to an event.
  * @rest_spec_name eql.search
  * @availability stack since=7.9.0 stability=stable
  * @availability serverless stability=stable visibility=public
+ * @doc_id eql-search-api
+ * @ext_doc_id eql
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/{index}/_eql/search'
+      methods: ['GET', 'POST']
+    }
+  ]
   path_parts: {
     index: Indices
   }
@@ -39,6 +50,17 @@ export interface Request extends RequestBase {
      * @server_default true
      */
     allow_no_indices?: boolean
+    /**
+     * If true, returns partial results if there are shard failures. If false, returns an error with no partial results.
+     * @server_default true
+     */
+    allow_partial_search_results?: boolean
+    /**
+     * If true, sequence queries will return partial results in case of shard failures. If false, they will return no results at all.
+     * This flag has effect only if allow_partial_search_results is true.
+     * @server_default false
+     */
+    allow_partial_sequence_results?: boolean
     /**
      * @server_default open
      */
@@ -96,6 +118,20 @@ export interface Request extends RequestBase {
     keep_alive?: Duration
     keep_on_completion?: boolean
     wait_for_completion_timeout?: Duration
+    /**
+     * Allow query execution also in case of shard failures.
+     * If true, the query will keep running and will return results based on the available shards.
+     * For sequences, the behavior can be further refined using allow_partial_sequence_results
+     * @server_default true
+     */
+    allow_partial_search_results?: boolean
+    /**
+     * This flag applies only to sequences and has effect only if allow_partial_search_results=true.
+     * If true, the sequence query will return results based on the available shards, ignoring the others.
+     * If false, the sequence query will return successfully, but will always have empty results.
+     * @server_default false
+     */
+    allow_partial_sequence_results?: boolean
     /**
      * For basic queries, the maximum number of matching events to return. Defaults to 10
      * @doc_id eql-basic-syntax

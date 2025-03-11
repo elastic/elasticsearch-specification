@@ -34,8 +34,15 @@ import { Id } from '@_types/common'
  * @availability serverless stability=stable visibility=private
  * @cluster_privileges manage_ml
  * @doc_tag ml anomaly
+ * @doc_id ml-revert-snapshot
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_ml/anomaly_detectors/{job_id}/model_snapshots/{snapshot_id}/_revert'
+      methods: ['POST']
+    }
+  ]
   path_parts: {
     /**
      *  Identifier for the anomaly detection job.

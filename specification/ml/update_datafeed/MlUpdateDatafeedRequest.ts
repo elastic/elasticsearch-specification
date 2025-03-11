@@ -39,8 +39,15 @@ import { Duration } from '@_types/Time'
  * @availability serverless stability=stable visibility=public
  * @cluster_privileges manage_ml
  * @doc_tag ml anomaly
+ * @doc_id ml-update-datafeed
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_ml/datafeeds/{datafeed_id}/_update'
+      methods: ['POST']
+    }
+  ]
   path_parts: {
     /**
      * A numerical character string that uniquely identifies the datafeed.

@@ -216,7 +216,7 @@ export enum RemoteClusterPrivilege {
 export class IndicesPrivileges {
   /**
    * The document fields that the owners of the role have read access to.
-   * @doc_id field-and-document-access-control
+   * @ext_doc_id field-and-document-access-control
    */
   field_security?: FieldSecurity
   // We're using IndexName | IndexName[] instead of Indices in this file on purpose:
@@ -252,7 +252,7 @@ export class RemoteIndicesPrivileges {
   clusters: Names
   /**
    * The document fields that the owners of the role have read access to.
-   * @doc_id field-and-document-access-control
+   * @ext_doc_id field-and-document-access-control
    */
   field_security?: FieldSecurity
   /**
@@ -292,7 +292,7 @@ export class RemoteClusterPrivileges {
 export class UserIndicesPrivileges {
   /**
    * The document fields that the owners of the role have read access to.
-   * @doc_id field-and-document-access-control
+   * @ext_doc_id field-and-document-access-control
    */
   field_security?: FieldSecurity[]
   /**
@@ -311,6 +311,31 @@ export class UserIndicesPrivileges {
    * Set to `true` if using wildcard or regular expressions for patterns that cover restricted indices. Implicitly, restricted indices have limited privileges that can cause pattern tests to fail. If restricted indices are explicitly included in the `names` list, Elasticsearch checks privileges against these indices regardless of the value set for `allow_restricted_indices`.
    */
   allow_restricted_indices: boolean
+}
+
+export class RemoteUserIndicesPrivileges {
+  /**
+   * The document fields that the owners of the role have read access to.
+   * @ext_doc_id field-and-document-access-control
+   */
+  field_security?: FieldSecurity[]
+  /**
+   * A list of indices (or index name patterns) to which the permissions in this entry apply.
+   */
+  names: IndexName | IndexName[]
+  /**
+   * The index level privileges that owners of the role have on the specified indices.
+   */
+  privileges: IndexPrivilege[]
+  /**
+   * Search queries that define the documents the user has access to. A document within the specified indices must match these queries for it to be accessible by the owners of the role.
+   */
+  query?: IndicesPrivilegesQuery[]
+  /**
+   * Set to `true` if using wildcard or regular expressions for patterns that cover restricted indices. Implicitly, restricted indices have limited privileges that can cause pattern tests to fail. If restricted indices are explicitly included in the `names` list, Elasticsearch checks privileges against these indices regardless of the value set for `allow_restricted_indices`.
+   */
+  allow_restricted_indices: boolean
+  clusters: string[]
 }
 
 /**
@@ -429,7 +454,7 @@ export class ReplicationAccess {
 export class SearchAccess {
   /**
    * The document fields that the owners of the role have read access to.
-   * @doc_id field-and-document-access-control
+   * @ext_doc_id field-and-document-access-control
    */
   field_security?: FieldSecurity
   /**

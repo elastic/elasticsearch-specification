@@ -45,8 +45,19 @@ import { RequestItem } from './types'
  * @availability serverless stability=stable visibility=public
  * @index_privileges read
  * @doc_tag search
+ * @doc_id search-multi-search
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_msearch'
+      methods: ['GET', 'POST']
+    },
+    {
+      path: '/{index}/_msearch'
+      methods: ['GET', 'POST']
+    }
+  ]
   path_parts: {
     /**
      * Comma-separated list of data streams, indices, and index aliases to search.

@@ -19,14 +19,40 @@
 
 import { RequestBase } from '@_types/Base'
 import { Name } from '@_types/common'
+import { Duration } from '@_types/Time'
 
 /**
+ * Delete a policy.
+ * Delete a snapshot lifecycle policy definition.
+ * This operation prevents any future snapshots from being taken but does not cancel in-progress snapshots or remove previously-taken snapshots.
  * @rest_spec_name slm.delete_lifecycle
  * @availability stack since=7.4.0 stability=stable
  * @availability serverless stability=stable visibility=private
+ * @cluster_privileges manage_slm
+ * @doc_id slm-api-delete-policy
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_slm/policy/{policy_id}'
+      methods: ['DELETE']
+    }
+  ]
   path_parts: {
     policy_id: Name
+  }
+  query_parameters: {
+    /**
+     * The period to wait for a connection to the master node.
+     * If no response is received before the timeout expires, the request fails and returns an error.
+     * @server_default 30s
+     */
+    master_timeout?: Duration
+    /**
+     * The period to wait for a response.
+     * If no response is received before the timeout expires, the request fails and returns an error.
+     * @server_default 30s
+     */
+    timeout?: Duration
   }
 }

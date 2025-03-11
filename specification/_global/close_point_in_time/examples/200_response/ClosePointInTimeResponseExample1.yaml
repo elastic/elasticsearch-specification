@@ -1,0 +1,9 @@
+# summary:
+description: A successful response from `DELETE /_pit`.
+# type: response
+# response_code: 200
+value: |-
+  {
+    "succeeded": true, 
+    "num_freed": 3     
+  }

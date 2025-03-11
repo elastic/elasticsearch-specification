@@ -39,9 +39,16 @@ import { Metadata, Name, Refresh } from '@_types/common'
  * @availability stack stability=stable
  * @availability serverless stability=stable visibility=public
  * @cluster_privileges manage_security
+ * @doc_id security-api-put-role
  * @ext_doc_id defining-roles
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_security/role/{name}'
+      methods: ['PUT', 'POST']
+    }
+  ]
   path_parts: {
     /**
      * The name of the role that is being created or updated. On Elasticsearch Serverless, the role name must begin with a letter or digit and can only contain letters, digits and the characters '_', '-', and '.'. Each role must have a unique name, as this will serve as the identifier for that role.
@@ -71,6 +78,9 @@ export interface Request extends RequestBase {
     indices?: IndicesPrivileges[]
     /**
      * A list of remote indices permissions entries.
+     *
+     * NOTE: Remote indices are effective for remote clusters configured with the API key based model.
+     * They have no effect for remote clusters configured with the certificate based model.
      * @availability stack since=8.14.0
      *
      */
@@ -86,7 +96,7 @@ export interface Request extends RequestBase {
     metadata?: Metadata
     /**
      * A list of users that the owners of this role can impersonate. *Note*: in Serverless, the run-as feature is disabled. For API compatibility, you can still specify an empty `run_as` field, but a non-empty list will be rejected.
-     * @doc_id run-as-privilege
+     * @ext_doc_id run-as-privilege
      */
     run_as?: string[]
     /**
