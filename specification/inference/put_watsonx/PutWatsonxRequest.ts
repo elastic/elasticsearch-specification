@@ -24,7 +24,7 @@ import { Id } from '@_types/common'
 /**
  * Create a Watsonx inference endpoint.
  *
- * Creates an inference endpoint to perform an inference task with the `watsonxai` service.
+ * Create an inference endpoint to perform an inference task with the `watsonxai` service.
  * You need an IBM Cloud Databases for Elasticsearch deployment to use the `watsonxai` inference service.
  * You can provision one through the IBM catalog, the Cloud Databases CLI plug-in, the Cloud Databases API, or Terraform.
  *
