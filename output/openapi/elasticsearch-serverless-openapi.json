@@ -19149,12 +19149,12 @@
                 }
               },
               "examples": {
-                "RequestExample1": {
+                "UpdateApiKeyRequestExample1": {
                   "summary": "Update role and metadata",
                   "description": "Run `PUT /_security/api_key/VuaCfGcBCdbkQm-e5aOx` to assign new role descriptors and metadata to an API key.\n",
                   "value": "{\n  \"role_descriptors\": {\n    \"role-a\": {\n      \"indices\": [\n        {\n          \"names\": [\"*\"],\n          \"privileges\": [\"write\"]\n        }\n      ]\n    }\n  },\n  \"metadata\": {\n    \"environment\": {\n      \"level\": 2,\n      \"trusted\": true,\n      \"tags\": [\"production\"]\n    }\n  }\n}"
                 },
-                "RequestExample2": {
+                "UpdateApiKeyRequestExample2": {
                   "summary": "Remove permissions",
                   "description": "Run `PUT /_security/api_key/VuaCfGcBCdbkQm-e5aOx` to remove the API key's previously assigned permissions. It will inherit the owner user's full permissions.\n",
                   "value": "{\n  \"role_descriptors\": {}\n}"
@@ -19181,7 +19181,7 @@
                   ]
                 },
                 "examples": {
-                  "ResponseExample1": {
+                  "UpdateApiKeyResponseExample1": {
                     "summary": "Update role and metadata",
                     "description": "A successful response from `PUT /_security/api_key/VuaCfGcBCdbkQm-e5aOx`. The API key's effective permissions after the update will be the intersection of the supplied role descriptors and the owner user's permissions.\n",
                     "value": "{\n  \"updated\": true\n}"
