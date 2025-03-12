@@ -1,0 +1,35 @@
+{
+  "inference.post_eis": {
+    "documentation": {
+      "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/inference-apis.html",
+      "description": "Perform an inference task via the Elastic Inference Service (EIS)"
+    },
+    "stability": "stable",
+    "visibility": "public",
+    "headers": {
+      "accept": ["application/json"],
+      "content_type": ["application/json"]
+    },
+    "url": {
+      "paths": [
+        {
+          "path": "/_inference/{task_type}/{eis_inference_id}",
+          "methods": ["POST"],
+          "parts": {
+            "task_type": {
+              "type": "string",
+              "description": "The task type"
+            },
+            "eis_inference_id": {
+              "type": "string",
+              "description": "The inference ID"
+            }
+          }
+        }
+      ]
+    },
+    "body": {
+      "description": "The inference tasks settings to perform"
+    }
+  }
+}
