@@ -618,6 +618,15 @@ actions:
             indicesLegacyPutTemplateRequestExample1:
               $ref: "../../specification/indices/put_template/examples/request/indicesPutTemplateRequestExample1.yaml"
 ## Examples for inference
+  - target: "$.paths['/_inference/chat_completion/{inference_id}/_stream']['post']"
+    description: "Add example for inference stream request"
+    update:
+      requestBody:
+        content:
+          application/json:
+            examples:
+              streamInferenceRequestExample1:
+                $ref: "../../specification/inference/stream_completion/examples/request/StreamInferenceRequestExample1.yaml"
 ## Examples for ingest
   - target: "$.components['requestBodies']['simulate.ingest']"
     description: "Add example for simulate ingest request"
