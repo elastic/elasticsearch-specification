@@ -12,7 +12,6 @@
     "removeComments": true,
     "noLib": false,
     "preserveConstEnums": true,
-    "suppressImplicitAnyIndexErrors": true,
     "noEmit": true,
     "typeRoots": ["./**/*.ts"],
     "baseUrl": "./",
