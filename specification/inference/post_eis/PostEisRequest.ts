@@ -21,7 +21,7 @@ import type { Request as RequestChatCompletion } from '../chat_completion_unifie
 import { Id } from '@_types/common'
 
 
-export type OmittedChatCompletionRequest = Omit<RequestChatCompletion, 'urls' | 'path_parts'>;
+export type OmittedChatCompletion = Omit<RequestChatCompletion, 'urls' | 'path_parts'>;
 
 /**
  * Performs an inference task through the Elastic Inference Service (EIS).
@@ -33,7 +33,7 @@ export type OmittedChatCompletionRequest = Omit<RequestChatCompletion, 'urls' | 
  * @cluster_privileges manage_inference
  * @doc_id inference-api-post-eis
  */
-export interface Request extends OmittedChatCompletionRequest {
+export interface Request extends OmittedChatCompletion {
   urls: [
     {
       path: '/_inference/{task_type}/{eis_inference_id}/_stream'
