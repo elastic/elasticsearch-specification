@@ -62,28 +62,27 @@ export class InferenceEndpointInfo extends InferenceEndpoint {
  */
 export class InferenceChunkingSettings extends InferenceEndpoint {
   /**
-   * Specifies the maximum size of a chunk in words
-   * This value cannot be higher than `300` or lower than `20` (for `sentence` strategy) or `10` (for `word` strategy)
+   * The maximum size of a chunk in words.
+   * This value cannot be higher than `300` or lower than `20` (for `sentence` strategy) or `10` (for `word` strategy).
    * @server_default 250
    */
   max_chunk_size?: integer
   /**
-   * Specifies the number of overlapping words for chunks
-   * Only for `word` chunking strategy
-   * This value cannot be higher than the half of `max_chunk_size`
+   * The number of overlapping words for chunks.
+   * It is applicable only to a `word` chunking strategy.
+   * This value cannot be higher than half the `max_chunk_size` value.
    * @server_default 100
    */
   overlap?: integer
   /**
-   * Specifies the number of overlapping sentences for chunks
-   * Only for `sentence` chunking strategy
-   * It can be either `1` or `0`
+   * The number of overlapping sentences for chunks.
+   * It is applicable only for a `sentence` chunking strategy.
+   * It can be either `1` or `0`.
    * @server_default 1
    */
   sentence_overlap?: integer
   /**
-   * Specifies the chunking strategy
-   * It could be either `sentence` or `word`
+   * The chunking strategy: `sentence` or `word`.
    * @server_default sentence
    */
   strategy?: string
