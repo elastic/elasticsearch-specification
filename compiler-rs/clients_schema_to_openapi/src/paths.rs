@@ -20,12 +20,15 @@ use std::fmt::Write;
 
 use anyhow::{anyhow, bail};
 use clients_schema::Property;
+use indexmap::IndexMap;
 use indexmap::indexmap;
 use icu_segmenter::SentenceSegmenter;
 use openapiv3::{
     MediaType, Parameter, ParameterData, ParameterSchemaOrContent, PathItem, PathStyle, Paths, QueryStyle, ReferenceOr,
-    RequestBody, Response, Responses, StatusCode,
+    RequestBody, Response, Responses, StatusCode, Example
 };
+use clients_schema::SchemaExample;
+use serde_json::json;
 
 use crate::components::TypesAndComponents;
 
@@ -116,14 +119,41 @@ pub fn add_endpoint(
 
     //---- Prepare request body
 
+    // This function converts the IndexMap<String, SchemaExample> examples of
+    // schema.json to IndexMap<String, ReferenceOr<Example>> which is the format
+    // that OpenAPI expects.
+    fn get_openapi_examples(schema_examples: IndexMap<String, SchemaExample>) -> IndexMap<String, ReferenceOr<Example>> {
+        let mut openapi_examples = indexmap! {};
+        for (name, schema_example) in schema_examples {
+            let openapi_example = Example {
+                value: Some(json!(schema_example.value)),
+                description: schema_example.description.clone(),
+                summary: schema_example.summary.clone(),
+                external_value: None,
+                extensions: Default::default(),
+            };
+            openapi_examples.insert(name.clone(), ReferenceOr::Item(openapi_example));    
+        }
+        return openapi_examples;
+    }
+
+
+    let mut request_examples: IndexMap<String, ReferenceOr<Example>> = indexmap! {};
+    // If this endpoint request has examples in schema.json, convert them to the 
+    // OpenAPI format and add them to the endpoint request in the OpenAPI document.
+    if request.examples.is_some() {
+        request_examples = get_openapi_examples(request.examples.as_ref().unwrap().clone());
+    }
+
     let request_body = tac.convert_request(request)?.map(|schema| {
         let media = MediaType {
             schema: Some(schema),
             example: None,
-            examples: Default::default(),
+            examples: request_examples,
             encoding: Default::default(),
             extensions: Default::default(),
         };
+
 
         let body = RequestBody {
             description: None,
@@ -142,9 +172,16 @@ pub fn add_endpoint(
 
     //---- Prepare request responses
 
+
     // FIXME: buggy for responses with no body
     // TODO: handle binary responses
     let response_def = tac.model.get_response(endpoint.response.as_ref().unwrap())?;
+    let mut response_examples: IndexMap<String, ReferenceOr<Example>> = indexmap! {};
+    // If this endpoint response has examples in schema.json, convert them to the 
+    // OpenAPI format and add them to the endpoint response in the OpenAPI document.
+    if response_def.examples.is_some() {
+        response_examples = get_openapi_examples(response_def.examples.as_ref().unwrap().clone());
+    }
     let response = Response {
         description: "".to_string(),
         headers: Default::default(),
@@ -152,7 +189,7 @@ pub fn add_endpoint(
             "application/json".to_string() => MediaType {
                 schema: tac.convert_response(response_def)?,
                 example: None,
-                examples: Default::default(),
+                examples: response_examples,
                 encoding: Default::default(),
                 extensions: Default::default(),
             }
