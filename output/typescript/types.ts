@@ -13237,6 +13237,35 @@ export interface InferenceGetResponse {
   endpoints: InferenceInferenceEndpointInfo[]
 }
 
+export interface InferencePostEisContentObject {
+  text: string
+  type: string
+}
+
+export type InferencePostEisEisTaskType = 'chat_completion'
+
+export interface InferencePostEisMessage {
+  content?: InferencePostEisMessageContent
+  role: string
+}
+
+export type InferencePostEisMessageContent = string | InferencePostEisContentObject[]
+
+export interface InferencePostEisRequest extends RequestBase {
+  task_type: InferencePostEisEisTaskType
+  eis_inference_id: Id
+  body?: {
+    messages: InferencePostEisMessage[]
+    model?: string
+    max_completion_tokens?: long
+    stop?: string[]
+    temperature?: float
+    top_p?: float
+  }
+}
+
+export type InferencePostEisResponse = StreamResult
+
 export interface InferencePutRequest extends RequestBase {
   task_type?: InferenceTaskType
   inference_id: Id
