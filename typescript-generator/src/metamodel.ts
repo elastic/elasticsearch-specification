@@ -267,9 +267,13 @@ export class Interface extends BaseType {
  * With the exception of using String as the 'value' type
  */
 export class Example {
+  /** Short description. */
   summary?: string
+  /** Long description. */
   description?: string
+  /** Embedded literal example. Mutually exclusive with `external_value` */
   value?: string
+  /** A URI that points to the literal example */
   external_value?: string
 }
 
