@@ -18,7 +18,7 @@
  */
 import { RequestBase } from '@_types/Base'
 import { Id } from '@_types/common'
-import { FilteringRulesValidation } from 'connector/_types/Connector'
+import { FilteringRulesValidation } from '@connector/_types/Connector'
 
 /**
  * Update the connector draft filtering validation.

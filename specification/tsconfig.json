@@ -25,6 +25,7 @@
       "@cat/*": ["cat/*"],
       "@ccr/*": ["ccr/*"],
       "@cluster/*": ["cluster/*"],
+      "@connector/*": ["connector/*"],
       "@dangling_indices/*": ["dangling_indices/*"],
       "@enrich/*": ["enrich/*"],
       "@eql/*": ["eql/*"],
