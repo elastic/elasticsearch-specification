@@ -4,8 +4,6 @@ description: Run `POST /_inference/chat_completion/<model_id>/_stream` to perfor
 # type: "request"
 value: |-
   {
-      "model_id": ".rainbow-sprinkles-elastic",
-      "task": "chat_completion",
       "parameters":
       "messages": [
           {
