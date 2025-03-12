@@ -13216,6 +13216,36 @@ export interface InferencePutRequest extends RequestBase {
 
 export type InferencePutResponse = InferenceInferenceEndpointInfo
 
+export interface InferencePutOpenaiOpenAIServiceSettings {
+  api_key: string
+  dimensions?: integer
+  model_id: string
+  organization_id?: string
+  rate_limit?: InferenceRateLimitSetting
+  url?: string
+}
+
+export interface InferencePutOpenaiOpenAITaskSettings {
+  user?: string
+}
+
+export type InferencePutOpenaiOpenAITaskType = 'chat_completion' | 'completion' | 'text_embedding'
+
+export interface InferencePutOpenaiRequest extends RequestBase {
+  task_type: InferencePutOpenaiOpenAITaskType
+  openai_inference_id: Id
+  body?: {
+    chunking_settings?: InferenceInferenceChunkingSettings
+    service: InferencePutOpenaiServiceType
+    service_settings: InferencePutOpenaiOpenAIServiceSettings
+    task_settings?: InferencePutOpenaiOpenAITaskSettings
+  }
+}
+
+export type InferencePutOpenaiResponse = InferenceInferenceEndpointInfo
+
+export type InferencePutOpenaiServiceType = 'openai'
+
 export interface InferencePutWatsonxRequest extends RequestBase {
   task_type: InferencePutWatsonxWatsonxTaskType
   watsonx_inference_id: Id
