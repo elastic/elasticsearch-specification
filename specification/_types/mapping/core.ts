@@ -206,7 +206,19 @@ export class SparseVectorProperty extends PropertyBase {
 export class SemanticTextProperty {
   type: 'semantic_text'
   meta?: Dictionary<string, string>
-  inference_id: Id
+  /**
+   * Inference endpoint that will be used to generate embeddings for the field.
+   * This parameter cannot be updated. Use the Create inference API to create the endpoint.
+   * If `search_inference_id` is specified, the inference endpoint will only be used at index time.
+   * @server_default .elser-2-elasticsearch
+   */
+  inference_id?: Id
+  /**
+   * Inference endpoint that will be used to generate embeddings at query time.
+   * You can update this parameter by using the Update mapping API. Use the Create inference API to create the endpoint.
+   * If not specified, the inference endpoint defined by inference_id will be used at both index and query time.
+   */
+  search_inference_id?: Id
 }
 
 export class SearchAsYouTypeProperty extends CorePropertyBase {
