@@ -9159,13 +9159,87 @@
         "x-state": "Added in 8.11.0"
       }
     },
+    "/_inference/{task_type}/{openai_inference_id}": {
+      "put": {
+        "tags": [
+          "inference"
+        ],
+        "summary": "Create an OpenAI inference endpoint",
+        "description": "Create an inference endpoint to perform an inference task with the `openai` service.\n\nWhen you create an inference endpoint, the associated machine learning model is automatically deployed if it is not already running.\nAfter creating the endpoint, wait for the model deployment to complete before using it.\nTo verify the deployment status, use the get trained model statistics API.\nLook for `\"state\": \"fully_allocated\"` in the response and ensure that the `\"allocation_count\"` matches the `\"target_allocation_count\"`.\nAvoid creating multiple endpoints for the same model unless required, as each endpoint consumes significant resources.",
+        "operationId": "inference-put-openai",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "task_type",
+            "description": "The type of the inference task that the model will perform.\nNOTE: The `chat_completion` task type only supports streaming and only through the _stream API.",
+            "required": true,
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/inference.put_openai:OpenAITaskType"
+            },
+            "style": "simple"
+          },
+          {
+            "in": "path",
+            "name": "openai_inference_id",
+            "description": "The unique identifier of the inference endpoint.",
+            "required": true,
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/_types:Id"
+            },
+            "style": "simple"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "chunking_settings": {
+                    "$ref": "#/components/schemas/inference._types:InferenceChunkingSettings"
+                  },
+                  "service": {
+                    "$ref": "#/components/schemas/inference.put_openai:ServiceType"
+                  },
+                  "service_settings": {
+                    "$ref": "#/components/schemas/inference.put_openai:OpenAIServiceSettings"
+                  },
+                  "task_settings": {
+                    "$ref": "#/components/schemas/inference.put_openai:OpenAITaskSettings"
+                  }
+                },
+                "required": [
+                  "service",
+                  "service_settings"
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/inference._types:InferenceEndpointInfo"
+                }
+              }
+            }
+          }
+        },
+        "x-state": "Added in 8.12.0"
+      }
+    },
     "/_inference/{task_type}/{watsonx_inference_id}": {
       "put": {
         "tags": [
           "inference"
         ],
         "summary": "Create a Watsonx inference endpoint",
-        "description": "Creates an inference endpoint to perform an inference task with the `watsonxai` service.\nYou need an IBM Cloud Databases for Elasticsearch deployment to use the `watsonxai` inference service.\nYou can provision one through the IBM catalog, the Cloud Databases CLI plug-in, the Cloud Databases API, or Terraform.\n\nWhen you create an inference endpoint, the associated machine learning model is automatically deployed if it is not already running.\nAfter creating the endpoint, wait for the model deployment to complete before using it.\nTo verify the deployment status, use the get trained model statistics API.\nLook for `\"state\": \"fully_allocated\"` in the response and ensure that the `\"allocation_count\"` matches the `\"target_allocation_count\"`.\nAvoid creating multiple endpoints for the same model unless required, as each endpoint consumes significant resources.",
+        "description": "Create an inference endpoint to perform an inference task with the `watsonxai` service.\nYou need an IBM Cloud Databases for Elasticsearch deployment to use the `watsonxai` inference service.\nYou can provision one through the IBM catalog, the Cloud Databases CLI plug-in, the Cloud Databases API, or Terraform.\n\nWhen you create an inference endpoint, the associated machine learning model is automatically deployed if it is not already running.\nAfter creating the endpoint, wait for the model deployment to complete before using it.\nTo verify the deployment status, use the get trained model statistics API.\nLook for `\"state\": \"fully_allocated\"` in the response and ensure that the `\"allocation_count\"` matches the `\"target_allocation_count\"`.\nAvoid creating multiple endpoints for the same model unless required, as each endpoint consumes significant resources.",
         "operationId": "inference-put-watsonx",
         "parameters": [
           {
@@ -47004,19 +47078,19 @@
             "type": "object",
             "properties": {
               "max_chunk_size": {
-                "description": "Specifies the maximum size of a chunk in words\nThis value cannot be higher than `300` or lower than `20` (for `sentence` strategy) or `10` (for `word` strategy)",
+                "description": "The maximum size of a chunk in words.\nThis value cannot be higher than `300` or lower than `20` (for `sentence` strategy) or `10` (for `word` strategy).",
                 "type": "number"
               },
               "overlap": {
-                "description": "Specifies the number of overlapping words for chunks\nOnly for `word` chunking strategy\nThis value cannot be higher than the half of `max_chunk_size`",
+                "description": "The number of overlapping words for chunks.\nIt is applicable only to a `word` chunking strategy.\nThis value cannot be higher than half the `max_chunk_size` value.",
                 "type": "number"
               },
               "sentence_overlap": {
-                "description": "Specifies the number of overlapping sentences for chunks\nOnly for `sentence` chunking strategy\nIt can be either `1` or `0`",
+                "description": "The number of overlapping sentences for chunks.\nIt is applicable only for a `sentence` chunking strategy.\nIt can be either `1` or `0`.",
                 "type": "number"
               },
               "strategy": {
-                "description": "Specifies the chunking strategy\nIt could be either `sentence` or `word`",
+                "description": "The chunking strategy: `sentence` or `word`.",
                 "type": "string"
               }
             }
@@ -47025,6 +47099,76 @@
       },
       "inference._types:ServiceSettings": {
         "type": "object"
+      },
+      "inference.put_openai:OpenAITaskType": {
+        "type": "string",
+        "enum": [
+          "chat_completion",
+          "completion",
+          "text_embedding"
+        ]
+      },
+      "inference.put_openai:ServiceType": {
+        "type": "string",
+        "enum": [
+          "openai"
+        ]
+      },
+      "inference.put_openai:OpenAIServiceSettings": {
+        "type": "object",
+        "properties": {
+          "api_key": {
+            "externalDocs": {
+              "url": "https://platform.openai.com/api-keys"
+            },
+            "description": "A valid API key of your OpenAI account.\nYou can find your OpenAI API keys in your OpenAI account under the API keys section.\n\nIMPORTANT: You need to provide the API key only once, during the inference model creation.\nThe get inference endpoint API does not retrieve your API key.\nAfter creating the inference model, you cannot change the associated API key.\nIf you want to use a different API key, delete the inference model and recreate it with the same name and the updated API key.",
+            "type": "string"
+          },
+          "dimensions": {
+            "description": "The number of dimensions the resulting output embeddings should have.\nIt is supported only in `text-embedding-3` and later models.\nIf it is not set, the OpenAI defined default for the model is used.",
+            "type": "number"
+          },
+          "model_id": {
+            "externalDocs": {
+              "url": "https://platform.openai.com/docs/guides/embeddings/what-are-embeddings"
+            },
+            "description": "The name of the model to use for the inference task.\nRefer to the OpenAI documentation for the list of available text embedding models.",
+            "type": "string"
+          },
+          "organization_id": {
+            "description": "The unique identifier for your organization.\nYou can find the Organization ID in your OpenAI account under *Settings > Organizations*.",
+            "type": "string"
+          },
+          "rate_limit": {
+            "$ref": "#/components/schemas/inference._types:RateLimitSetting"
+          },
+          "url": {
+            "description": "The URL endpoint to use for the requests.\nIt can be changed for testing purposes.",
+            "type": "string"
+          }
+        },
+        "required": [
+          "api_key",
+          "model_id"
+        ]
+      },
+      "inference._types:RateLimitSetting": {
+        "type": "object",
+        "properties": {
+          "requests_per_minute": {
+            "description": "The number of requests allowed per minute.",
+            "type": "number"
+          }
+        }
+      },
+      "inference.put_openai:OpenAITaskSettings": {
+        "type": "object",
+        "properties": {
+          "user": {
+            "description": "For a `completion` or `text_embedding` task, specify the user issuing the request.\nThis informaiton can be used for abuse detection.",
+            "type": "string"
+          }
+        }
       },
       "inference.put_watsonx:WatsonxTaskType": {
         "type": "string",
@@ -47081,15 +47225,6 @@
           "project_id",
           "url"
         ]
-      },
-      "inference._types:RateLimitSetting": {
-        "type": "object",
-        "properties": {
-          "requests_per_minute": {
-            "description": "The number of requests allowed per minute.",
-            "type": "number"
-          }
-        }
       },
       "inference._types:RerankedInferenceResult": {
         "type": "object",
