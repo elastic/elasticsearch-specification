@@ -482,6 +482,23 @@ impl TypeDefinition {
     }
 }
 
+/// The Example type is used for both requests and responses.
+///
+/// This type definition is taken from the OpenAPI spec
+///     https://spec.openapis.org/oas/v3.1.0#example-object
+/// with the exception of using String as the 'value' type.
+///
+/// The OpenAPI v3 spec also defines the 'Example' type, so
+/// to distinguish them, this type is called SchemaExample.
+
+#[derive(Debug, Clone, Serialize, Deserialize)]
+pub struct SchemaExample {
+    pub summary: Option<String>,
+    pub description: Option<String>,
+    pub value: Option<String>,
+    pub external_value: Option<String>,
+}
+
 /// Common attributes for all type definitions
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(rename_all = "camelCase")]
@@ -675,6 +692,8 @@ pub struct Request {
 
     #[serde(default, skip_serializing_if = "Vec::is_empty")]
     pub attached_behaviors: Vec<String>,
+
+    pub examples: Option<IndexMap<String, SchemaExample>>
 }
 
 impl WithBaseType for Request {
@@ -703,6 +722,8 @@ pub struct Response {
 
     #[serde(default, skip_serializing_if = "Vec::is_empty")]
     pub exceptions: Vec<ResponseException>,
+
+    pub examples: Option<IndexMap<String, SchemaExample>>
 }
 
 impl WithBaseType for Response {

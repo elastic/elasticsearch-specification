@@ -261,6 +261,23 @@ export class Interface extends BaseType {
 }
 
 /**
+ * The Example type is used for both requests and responses
+ * This type definition is taken from the OpenAPI spec
+ *     https://spec.openapis.org/oas/v3.1.0#example-object
+ * With the exception of using String as the 'value' type
+ */
+export class Example {
+  /** Short description. */
+  summary?: string
+  /** Long description. */
+  description?: string
+  /** Embedded literal example. Mutually exclusive with `external_value` */
+  value?: string
+  /** A URI that points to the literal example */
+  external_value?: string
+}
+
+/**
  * A request type
  */
 export class Request extends BaseType {
@@ -288,6 +305,7 @@ export class Request extends BaseType {
   body: Body
   behaviors?: Behavior[]
   attachedBehaviors?: string[]
+  examples?: Record<string, Example>
 }
 
 /**
@@ -300,6 +318,7 @@ export class Response extends BaseType {
   behaviors?: Behavior[]
   attachedBehaviors?: string[]
   exceptions?: ResponseException[]
+  examples?: Record<string, Example>
 }
 
 export class ResponseException {
