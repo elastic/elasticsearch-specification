@@ -42753,11 +42753,13 @@
           },
           "inference_id": {
             "$ref": "#/components/schemas/_types:Id"
+          },
+          "search_inference_id": {
+            "$ref": "#/components/schemas/_types:Id"
           }
         },
         "required": [
-          "type",
-          "inference_id"
+          "type"
         ]
       },
       "_types.mapping:SparseVectorProperty": {
