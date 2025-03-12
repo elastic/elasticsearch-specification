@@ -318,10 +318,12 @@ inference-api-delete,https://www.elastic.co/guide/en/elasticsearch/reference/{br
 inference-api-get,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/get-inference-api.html
 inference-api-post,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/post-inference-api.html
 inference-api-put,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/put-inference-api.html
+inference-api-put-openai,https://www.elastic.co/guide/en/elasticsearch/reference/current/infer-service-openai.html
 inference-api-put-watsonx,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/infer-service-watsonx-ai.html
 inference-api-stream,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/stream-inference-api.html
 inference-api-update,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/update-inference-api.html
 inference-api-chat-completion,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/chat-completion-inference-api.html
+inference-chunking,https://www.elastic.co/guide/en/elasticsearch/reference/current/inference-apis.html#infer-chunking-config
 inference-processor,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/inference-processor.html
 info-api,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/info-api.html
 ingest,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/ingest.html
@@ -436,6 +438,8 @@ node-roles,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/modu
 nodes-api-shutdown-delete,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/delete-shutdown.html
 nodes-api-shutdown-status,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/get-shutdown.html
 nodes-api-shutdown,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/put-shutdown.html
+openai-api-keys,https://platform.openai.com/api-keys
+openai-models,https://platform.openai.com/docs/guides/embeddings/what-are-embeddings
 optimistic-concurrency,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/optimistic-concurrency-control.html
 paginate-search-results,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/paginate-search-results.html
 painless-contexts,https://www.elastic.co/guide/en/elasticsearch/painless/{branch}/painless-contexts.html
