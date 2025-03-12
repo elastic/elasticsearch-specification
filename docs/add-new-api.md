@@ -169,7 +169,7 @@ class Response {
 
 ### Add endpoint request and response examples
 
-Add an `examples` folder and `request` and `xxx_response` subfolders (where `xxx` is the relevant response code).
+Add an `examples` folder and `request` and `xxx_response` subfolders (where `xxx` is the relevant response code). The file names within these folders should be unique (for example,`DownsampleRequestExample1.yaml` not `RequestExample1.yaml`).
 
 These examples are for use in the API documentation and must adhere to the [OpenAPI 3.0 Example object specification](https://spec.openapis.org/oas/v3.0.3#example-object). They must have a `value` field that contains the request or response body.
 If there are multiple examples for the endpoint, they must each have a brief `summary` field, which is used as the label for the example. You can also optionaly provide an explanation in a `description` field.
