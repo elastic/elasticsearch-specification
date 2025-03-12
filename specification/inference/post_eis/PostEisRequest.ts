@@ -17,9 +17,11 @@
  * under the License.
  */
 
-import { RequestBase } from '@_types/Base'
+import type { Request as RequestChatCompletion } from '../chat_completion_unified/UnifiedRequest'
 import { Id } from '@_types/common'
-import { float, long } from '@_types/Numeric'
+
+
+export type OmittedChatCompletionRequest = Omit<RequestChatCompletion, 'urls' | 'path_parts'>;
 
 /**
  * Performs an inference task through the Elastic Inference Service (EIS).
@@ -31,10 +33,10 @@ import { float, long } from '@_types/Numeric'
  * @cluster_privileges manage_inference
  * @doc_id inference-api-post-eis
  */
-export interface Request extends RequestBase {
+export interface Request extends OmittedChatCompletionRequest {
   urls: [
     {
-      path: '/_inference/{task_type}/{eis_inference_id}'
+      path: '/_inference/{task_type}/{eis_inference_id}/_stream'
       methods: ['POST']
     }
   ]
@@ -48,67 +50,9 @@ export interface Request extends RequestBase {
      */
     eis_inference_id: Id
   }
-  body: {
-    /**
-     * A list of objects representing the conversation.
-     */
-    messages: Array<Message>
-    /**
-     * The ID of the model to use.
-     */
-    model?: string
-    /**
-     * The upper bound limit for the number of tokens that can be generated for a completion request.
-     */
-    max_completion_tokens?: long
-    /**
-     * A sequence of strings to control when the model should stop generating additional tokens.
-     */
-    stop?: Array<string>
-    /**
-     * The sampling temperature to use.
-     */
-    temperature?: float
-    /**
-     * Nucleus sampling, an alternative to sampling with temperature.
-     */
-    top_p?: float
-  }
 }
 
 export enum EisTaskType {
   chat_completion
 }
 
-/**
- * @codegen_names string, object
- */
-export type MessageContent = string | Array<ContentObject>
-
-/**
- * An object style representation of a single portion of a conversation.
- */
-export interface ContentObject {
-  /**
-   * The text content.
-   */
-  text: string
-  /**
-   * The type of content.
-   */
-  type: string
-}
-
-/**
- * An object representing part of the conversation.
- */
-export interface Message {
-  /**
-   * The content of the message.
-   */
-  content?: MessageContent
-  /**
-   * The role of the message author.
-   */
-  role: string
-}
