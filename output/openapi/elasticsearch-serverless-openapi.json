@@ -9511,6 +9511,18 @@
                   "service",
                   "service_settings"
                 ]
+              },
+              "examples": {
+                "PutOpenAiRequestExample1": {
+                  "summary": "A text embedding task",
+                  "description": "Run `PUT _inference/text_embedding/openai-embeddings` to create an inference endpoint that performs a `text_embedding` task. The embeddings created by requests to this endpoint will have 128 dimensions.",
+                  "value": "{\n    \"service\": \"openai\",\n    \"service_settings\": {\n        \"api_key\": \"OpenAI-API-Key\",\n        \"model_id\": \"text-embedding-3-small\",\n        \"dimensions\": 128\n    }\n}"
+                },
+                "PutOpenAiRequestExample2": {
+                  "summary": "A completion task",
+                  "description": "Run `PUT _inference/completion/openai-completion` to create an inference endpoint to perform a completion task type.",
+                  "value": "{\n    \"service\": \"openai\",\n    \"service_settings\": {\n        \"api_key\": \"OpenAI-API-Key\",\n        \"model_id\": \"gpt-3.5-turbo\"\n    }\n}"
+                }
               }
             }
           }
