@@ -159,9 +159,14 @@ export interface CountResponse {
 export interface CreateRequest<TDocument = unknown> extends RequestBase {
   id: Id
   index: IndexName
+  if_primary_term?: long
+  if_seq_no?: SequenceNumber
   include_source_on_error?: boolean
+  op_type?: OpType
   pipeline?: string
   refresh?: Refresh
+  require_alias?: boolean
+  require_data_stream?: boolean
   routing?: Routing
   timeout?: Duration
   version?: VersionNumber
