@@ -24,14 +24,14 @@ import { Id } from '@_types/common'
 export type OmittedChatCompletion = Omit<RequestChatCompletion, 'urls' | 'path_parts'>;
 
 /**
- * Performs an inference task through the Elastic Inference Service (EIS).
+ * Perform a chat completion task through the Elastic Inference Service (EIS).
  *
- * Perform an inference task with the `elastic` service.
- * @rest_spec_name inference.post_eis
+ * Perform a chat completion inference task with the `elastic` service.
+ * @rest_spec_name inference.post.eis_chat_completion
  * @availability stack since=9.0.0 stability=stable visibility=public
  * @availability serverless stability=stable visibility=public
  * @cluster_privileges manage_inference
- * @doc_id inference-api-post-eis
+ * @doc_id inference-api-post-eis-chat-completion
  */
 export interface Request extends OmittedChatCompletion {
   urls: [
