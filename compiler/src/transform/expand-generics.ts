@@ -359,7 +359,8 @@ export function expandGenerics (inputModel: Model, config?: ExpansionConfig): Mo
           kind: 'dictionary_of',
           key: expandValueOf(value.key, mappings),
           value: expandValueOf(value.value, mappings),
-          singleKey: value.singleKey
+          singleKey: value.singleKey,
+          ordered: value.ordered
         }
 
       case 'instance_of': {
