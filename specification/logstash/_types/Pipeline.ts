@@ -47,11 +47,7 @@ export class PipelineSettings {
   /**
    * The total capacity of the queue (`queue.type: persisted`) in number of bytes.
    */
-  'queue.max_bytes.number': integer
-  /**
-   * The total capacity of the queue (`queue.type: persisted`) in terms of units of bytes.
-   */
-  'queue.max_bytes.units': string
+  'queue.max_bytes': string
   /**
    * The maximum number of written events before forcing a checkpoint when persistent queues are enabled (`queue.type: persisted`).
    */
