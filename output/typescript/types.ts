@@ -16819,12 +16819,10 @@ export interface NodesNodeBufferPool {
   used_in_bytes?: long
 }
 
-export interface NodesNodeReloadError {
+export interface NodesNodeReloadResult {
   name: Name
   reload_exception?: ErrorCause
 }
-
-export type NodesNodeReloadResult = NodesStats | NodesNodeReloadError
 
 export interface NodesNodesResponseBase {
   _nodes?: NodeStatistics
