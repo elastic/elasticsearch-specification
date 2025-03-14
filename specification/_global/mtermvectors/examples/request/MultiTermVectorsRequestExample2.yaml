@@ -7,10 +7,8 @@ description: >
 value: |-
   {
     "ids": [ "1", "2" ],
-    "parameters": {
-      "fields": [
-        "message"
-      ],
-      "term_statistics": true
-    }
+    "fields": [
+      "message"
+    ],
+    "term_statistics": true
   }
