@@ -20,5 +20,9 @@
 import { AcknowledgedResponseBase } from '@_types/Base'
 
 export class Response {
-  body: AcknowledgedResponseBase
+  body: IndicesAliasesResponseBody
+}
+
+export class IndicesAliasesResponseBody extends AcknowledgedResponseBase {
+  errors?: boolean
 }
