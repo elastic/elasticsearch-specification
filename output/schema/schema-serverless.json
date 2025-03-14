@@ -30222,7 +30222,7 @@
             "aliases": [
               "indexes"
             ],
-            "description": "An array of index names. Wildcards are supported. If any of the indices are in remote clusters, the machine\nlearning nodes must have the `remote_cluster_client` role.",
+            "description": "An array of index names. Wildcards are supported. If any of the indices are in remote clusters, the master\nnodes and the machine learning nodes must have the `remote_cluster_client` role.",
             "name": "indices",
             "required": false,
             "type": {
