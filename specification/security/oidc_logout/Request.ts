@@ -43,7 +43,7 @@ export interface Request extends RequestBase {
     /**
      * The access token to be invalidated.
      */
-    access_token: string
+    token: string
     /**
      * The refresh token to be invalidated.
      */
