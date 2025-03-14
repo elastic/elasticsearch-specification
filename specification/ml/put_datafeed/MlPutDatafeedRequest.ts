@@ -117,8 +117,8 @@ export interface Request extends RequestBase {
      */
     frequency?: Duration
     /**
-     * An array of index names. Wildcards are supported. If any of the indices are in remote clusters, the machine
-     * learning nodes must have the `remote_cluster_client` role.
+     * An array of index names. Wildcards are supported. If any of the indices are in remote clusters, the master
+     * nodes and the machine learning nodes must have the `remote_cluster_client` role.
      * @aliases indexes
      * */
     indices?: Indices
