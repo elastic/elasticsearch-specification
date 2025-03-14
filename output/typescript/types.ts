@@ -11163,6 +11163,7 @@ export interface IndicesDataStream {
   system?: boolean
   template: Name
   timestamp_field: IndicesDataStreamTimestampField
+  index_mode?: IndicesIndexMode
 }
 
 export interface IndicesDataStreamIndex {
@@ -11171,6 +11172,7 @@ export interface IndicesDataStreamIndex {
   ilm_policy?: Name
   managed_by?: IndicesManagedBy
   prefer_ilm?: boolean
+  index_mode?: IndicesIndexMode
 }
 
 export interface IndicesDataStreamLifecycle {
@@ -11231,6 +11233,8 @@ export interface IndicesFielddataFrequencyFilter {
 }
 
 export type IndicesIndexCheckOnStartup = boolean | 'true' | 'false' | 'checksum'
+
+export type IndicesIndexMode = 'standard' | 'time_series' | 'logsdb' | 'lookup'
 
 export interface IndicesIndexRouting {
   allocation?: IndicesIndexRoutingAllocation

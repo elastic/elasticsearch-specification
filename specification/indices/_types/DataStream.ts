@@ -36,6 +36,14 @@ enum ManagedBy {
   unmanaged = 'Unmanaged'
 }
 
+// Available index modes (for the `index.mode` setting) See the `IndexMode` class in Elasticsearch for the options.
+export enum IndexMode {
+  standard,
+  time_series,
+  logsdb,
+  lookup
+}
+
 export class FailureStore {
   enabled: boolean
   indices: DataStreamIndex[]
@@ -124,6 +132,10 @@ export class DataStream {
    * Information about the `@timestamp` field in the data stream.
    */
   timestamp_field: DataStreamTimestampField
+  /**
+   * The index mode for the data stream that will be used for newly created backing indices.
+   */
+  index_mode?: IndexMode
 }
 
 export class DataStreamTimestampField {
@@ -154,6 +166,10 @@ export class DataStreamIndex {
    * Indicates if ILM should take precedence over DSL in case both are configured to manage this index.
    */
   prefer_ilm?: boolean
+  /**
+   * The index mode of this backing index of the data stream.
+   */
+  index_mode?: IndexMode
 }
 
 export class DataStreamVisibility {

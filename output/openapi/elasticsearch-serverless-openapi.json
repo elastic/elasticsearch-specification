@@ -47196,6 +47196,9 @@
           },
           "timestamp_field": {
             "$ref": "#/components/schemas/indices._types:DataStreamTimestampField"
+          },
+          "index_mode": {
+            "$ref": "#/components/schemas/indices._types:IndexMode"
           }
         },
         "required": [
@@ -47251,6 +47254,9 @@
           "prefer_ilm": {
             "description": "Indicates if ILM should take precedence over DSL in case both are configured to manage this index.",
             "type": "boolean"
+          },
+          "index_mode": {
+            "$ref": "#/components/schemas/indices._types:IndexMode"
           }
         },
         "required": [
@@ -47264,6 +47270,15 @@
           "Index Lifecycle Management",
           "Data stream lifecycle",
           "Unmanaged"
+        ]
+      },
+      "indices._types:IndexMode": {
+        "type": "string",
+        "enum": [
+          "standard",
+          "time_series",
+          "logsdb",
+          "lookup"
         ]
       },
       "indices._types:DataStreamTimestampField": {
