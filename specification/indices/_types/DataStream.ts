@@ -38,10 +38,10 @@ enum ManagedBy {
 
 // Available index modes (for the `index.mode` setting) See the `IndexMode` class in Elasticsearch for the options.
 export enum IndexMode {
-    standard,
-    time_series,
-    logsdb,
-    lookup
+  standard,
+  time_series,
+  logsdb,
+  lookup
 }
 
 export class FailureStore {
