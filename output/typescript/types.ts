@@ -2032,6 +2032,15 @@ export interface TermvectorsRequest<TDocument = unknown> extends RequestBase {
     doc?: TDocument
     filter?: TermvectorsFilter
     per_field_analyzer?: Record<Field, string>
+    fields?: Fields
+    field_statistics?: boolean
+    offsets?: boolean
+    payloads?: boolean
+    positions?: boolean
+    term_statistics?: boolean
+    routing?: Routing
+    version?: VersionNumber
+    version_type?: VersionType
   }
 }
 
@@ -10607,6 +10616,7 @@ export interface EsqlAsyncQueryRequest extends RequestBase {
     query: string
     tables?: Record<string, Record<string, EsqlTableValuesContainer>>
     include_ccs_metadata?: boolean
+    wait_for_completion_timeout?: Duration
   }
 }
 
@@ -19227,7 +19237,7 @@ export interface SecurityOidcAuthenticateResponse {
 
 export interface SecurityOidcLogoutRequest extends RequestBase {
   body?: {
-    access_token: string
+    token: string
     refresh_token?: string
   }
 }
