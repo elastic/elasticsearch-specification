@@ -82818,12 +82818,40 @@
         ]
       },
       "nodes._types:NodeReloadResult": {
-        "oneOf": [
+        "type": "object",
+        "properties": {
+          "name": {
+            "$ref": "#/components/schemas/_types:Name"
+          },
+          "reload_exception": {
+            "$ref": "#/components/schemas/_types:ErrorCause"
+          }
+        },
+        "required": [
+          "name"
+        ]
+      },
+      "nodes.stats:ResponseBase": {
+        "allOf": [
           {
-            "$ref": "#/components/schemas/nodes._types:Stats"
+            "$ref": "#/components/schemas/nodes._types:NodesResponseBase"
           },
           {
-            "$ref": "#/components/schemas/nodes._types:NodeReloadError"
+            "type": "object",
+            "properties": {
+              "cluster_name": {
+                "$ref": "#/components/schemas/_types:Name"
+              },
+              "nodes": {
+                "type": "object",
+                "additionalProperties": {
+                  "$ref": "#/components/schemas/nodes._types:Stats"
+                }
+              }
+            },
+            "required": [
+              "nodes"
+            ]
           }
         ]
       },
@@ -83881,44 +83909,6 @@
             "type": "number"
           }
         }
-      },
-      "nodes._types:NodeReloadError": {
-        "type": "object",
-        "properties": {
-          "name": {
-            "$ref": "#/components/schemas/_types:Name"
-          },
-          "reload_exception": {
-            "$ref": "#/components/schemas/_types:ErrorCause"
-          }
-        },
-        "required": [
-          "name"
-        ]
-      },
-      "nodes.stats:ResponseBase": {
-        "allOf": [
-          {
-            "$ref": "#/components/schemas/nodes._types:NodesResponseBase"
-          },
-          {
-            "type": "object",
-            "properties": {
-              "cluster_name": {
-                "$ref": "#/components/schemas/_types:Name"
-              },
-              "nodes": {
-                "type": "object",
-                "additionalProperties": {
-                  "$ref": "#/components/schemas/nodes._types:Stats"
-                }
-              }
-            },
-            "required": [
-              "nodes"
-            ]
-          }
-        ]
       },
       "nodes.usage:ResponseBase": {
         "allOf": [

@@ -17,14 +17,10 @@
  * under the License.
  */
 
-import { Stats } from '@nodes/_types/Stats'
 import { Name } from '@_types/common'
 import { ErrorCause } from '@_types/Errors'
 
-export class NodeReloadError {
+export class NodeReloadResult {
   name: Name
   reload_exception?: ErrorCause
 }
-
-/** @codegen_names stats, error */
-export type NodeReloadResult = Stats | NodeReloadError
