@@ -383,7 +383,18 @@ function compileClassOrInterfaceDeclaration (declaration: ClassDeclaration | Int
             if (property.valueOf.kind === 'instance_of' && property.valueOf.type.name === 'Void') {
               type.body = { kind: 'no_body' }
             } else {
-              type.body = { kind: 'value', value: property.valueOf }
+              const tags = parseJsDocTags((member as PropertySignature).getJsDocs())
+              // TODO: Enable this after adding the missing codegen names.
+              // assert(
+              //     member as Node,
+              //     tags.codegen_name != null,
+              //     'You should configure a body @codegen_name'
+              // )
+              type.body = {
+                kind: 'value',
+                value: property.valueOf,
+                codegenName: tags.codegen_name
+              }
             }
           } else {
             type.body = { kind: 'properties', properties: property.properties }
