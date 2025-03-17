@@ -13226,6 +13226,26 @@ export interface InferencePutRequest extends RequestBase {
 
 export type InferencePutResponse = InferenceInferenceEndpointInfo
 
+export interface InferencePutEisEisServiceSettings {
+  model_id: string
+  rate_limit?: InferenceRateLimitSetting
+}
+
+export type InferencePutEisEisTaskType = 'chat_completion'
+
+export interface InferencePutEisRequest extends RequestBase {
+  task_type: InferencePutEisEisTaskType
+  eis_inference_id: Id
+  body?: {
+    service: InferencePutEisServiceType
+    service_settings: InferencePutEisEisServiceSettings
+  }
+}
+
+export type InferencePutEisResponse = InferenceInferenceEndpointInfo
+
+export type InferencePutEisServiceType = 'elastic'
+
 export interface InferencePutOpenaiOpenAIServiceSettings {
   api_key: string
   dimensions?: integer
