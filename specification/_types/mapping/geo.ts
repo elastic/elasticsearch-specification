@@ -48,6 +48,7 @@ export class GeoShapeProperty extends DocValuesPropertyBase {
   coerce?: boolean
   ignore_malformed?: boolean
   ignore_z_value?: boolean
+  index?: boolean
   orientation?: GeoOrientation
   strategy?: GeoStrategy
   type: 'geo_shape'
