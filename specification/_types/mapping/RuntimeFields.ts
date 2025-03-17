@@ -65,6 +65,7 @@ export enum RuntimeFieldType {
   date,
   double,
   geo_point,
+  geo_shape,
   ip,
   keyword,
   long,
