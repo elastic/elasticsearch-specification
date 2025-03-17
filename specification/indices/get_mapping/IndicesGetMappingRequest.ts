@@ -71,6 +71,7 @@ export interface Request extends RequestBase {
     ignore_unavailable?: boolean
     /**
      * If `true`, the request retrieves information from the local node only.
+     * @deprecated 7.8.0 This parameter is a no-op and field mappings are always retrieved locally.
      * @server_default false
      */
     local?: boolean
