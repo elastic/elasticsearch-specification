@@ -31,7 +31,7 @@ export class Response {
     cluster: string[]
     /**
      * @availability stack since=8.15.0
-    */
+     */
     remote_cluster?: RemoteClusterPrivileges[]
     global: GlobalPrivilege[]
     indices: UserIndicesPrivileges[]
