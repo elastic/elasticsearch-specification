@@ -9883,6 +9883,92 @@
         "x-state": "Added in 8.12.0"
       }
     },
+    "/_inference/{task_type}/{voyageai_inference_id}": {
+      "put": {
+        "tags": [
+          "inference"
+        ],
+        "summary": "Create a VoyageAI inference endpoint",
+        "description": "Create an inference endpoint to perform an inference task with the `voyageai` service.\n\nAvoid creating multiple endpoints for the same model unless required, as each endpoint consumes significant resources.",
+        "operationId": "inference-put-voyageai",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "task_type",
+            "description": "The type of the inference task that the model will perform.",
+            "required": true,
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/inference.put_voyageai:VoyageAITaskType"
+            },
+            "style": "simple"
+          },
+          {
+            "in": "path",
+            "name": "voyageai_inference_id",
+            "description": "The unique identifier of the inference endpoint.",
+            "required": true,
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/_types:Id"
+            },
+            "style": "simple"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "chunking_settings": {
+                    "$ref": "#/components/schemas/inference._types:InferenceChunkingSettings"
+                  },
+                  "service": {
+                    "$ref": "#/components/schemas/inference.put_voyageai:ServiceType"
+                  },
+                  "service_settings": {
+                    "$ref": "#/components/schemas/inference.put_voyageai:VoyageAIServiceSettings"
+                  },
+                  "task_settings": {
+                    "$ref": "#/components/schemas/inference.put_voyageai:VoyageAITaskSettings"
+                  }
+                },
+                "required": [
+                  "service",
+                  "service_settings"
+                ]
+              },
+              "examples": {
+                "PutVoyageAIRequestExample1": {
+                  "summary": "A text embedding task",
+                  "description": "Run `PUT _inference/text_embedding/voyageai-embeddings` to create an inference endpoint that performs a `text_embedding` task. The embeddings created by requests to this endpoint will have 512 dimensions.",
+                  "value": "{\n    \"service\": \"voyageai\",\n    \"service_settings\": {\n        \"model_id\": \"voyage-3-large\",\n        \"dimensions\": 512\n    }\n}"
+                },
+                "PutVoyageAIRequestExample2": {
+                  "summary": "A rerank task",
+                  "description": "Run `PUT _inference/rerank/voyageai-rerank` to create an inference endpoint that performs a `rerank` task.",
+                  "value": "{\n    \"service\": \"voyageai\",\n    \"service_settings\": {\n        \"model_id\": \"rerank-2\"\n    }\n}"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/inference._types:InferenceEndpointInfo"
+                }
+              }
+            }
+          }
+        },
+        "x-state": "Added in 8.12.0"
+      }
+    },
     "/_inference/{task_type}/{watsonx_inference_id}": {
       "put": {
         "tags": [
@@ -48367,6 +48453,72 @@
           "user": {
             "description": "For a `completion` or `text_embedding` task, specify the user issuing the request.\nThis informaiton can be used for abuse detection.",
             "type": "string"
+          }
+        }
+      },
+      "inference.put_voyageai:VoyageAITaskType": {
+        "type": "string",
+        "enum": [
+          "text_embedding",
+          "rerank"
+        ]
+      },
+      "inference.put_voyageai:ServiceType": {
+        "type": "string",
+        "enum": [
+          "voyageai"
+        ]
+      },
+      "inference.put_voyageai:VoyageAIServiceSettings": {
+        "type": "object",
+        "properties": {
+          "dimensions": {
+            "externalDocs": {
+              "url": "https://docs.voyageai.com/docs/embeddings"
+            },
+            "description": "The number of dimensions for resulting output embeddings.\nThis setting maps to `output_dimension` in the VoyageAI documentation.\nOnly for the `text_embedding` task type.",
+            "type": "number"
+          },
+          "model_id": {
+            "externalDocs": {
+              "url": "https://docs.voyageai.com/docs/reranker"
+            },
+            "description": "The name of the model to use for the inference task.\nRefer to the VoyageAI documentation for the list of available text embedding and rerank models.",
+            "type": "string"
+          },
+          "rate_limit": {
+            "$ref": "#/components/schemas/inference._types:RateLimitSetting"
+          },
+          "embedding_type": {
+            "externalDocs": {
+              "url": "https://docs.voyageai.com/docs/embeddings"
+            },
+            "description": "The data type for the embeddings to be returned.\nThis setting maps to `output_dtype` in the VoyageAI documentation.\nPermitted values: float, int8, bit.\n`int8` is a synonym of `byte` in the VoyageAI documentation.\n`bit` is a synonym of `binary` in the VoyageAI documentation.\nOnly for the `text_embedding` task type.",
+            "type": "number"
+          }
+        },
+        "required": [
+          "model_id"
+        ]
+      },
+      "inference.put_voyageai:VoyageAITaskSettings": {
+        "type": "object",
+        "properties": {
+          "input_type": {
+            "description": "Type of the input text.\nPermitted values: `ingest` (maps to `document` in the VoyageAI documentation), `search` (maps to `query` in the VoyageAI documentation).\nOnly for the `text_embedding` task type.",
+            "type": "string"
+          },
+          "return_documents": {
+            "description": "Whether to return the source documents in the response.\nOnly for the `rerank` task type.",
+            "type": "boolean"
+          },
+          "top_k": {
+            "description": "The number of most relevant documents to return.\nIf not specified, the reranking results of all documents will be returned.\nOnly for the `rerank` task type.",
+            "type": "number"
+          },
+          "truncation": {
+            "description": "Whether to truncate the input texts to fit within the context length.",
+            "type": "boolean"
           }
         }
       },
