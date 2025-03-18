@@ -6,6 +6,6 @@ value: |-
   {
       "service": "elastic",
       "service_settings": {
-          "model_id": ".rainbow-sprinkles"
+          "model_id": "rainbow-sprinkles"
       }
   }
