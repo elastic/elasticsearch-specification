@@ -126,5 +126,13 @@ export interface Request extends RequestBase {
      * @server_default false
      */
     include_ccs_metadata?: boolean
+    /**
+     * The period to wait for the request to finish.
+     * By default, the request waits for 1 second for the query results.
+     * If the query completes during this period, results are returned
+     * Otherwise, a query ID is returned that can later be used to retrieve the results.
+     * @server_default 1s
+     */
+    wait_for_completion_timeout?: Duration
   }
 }
