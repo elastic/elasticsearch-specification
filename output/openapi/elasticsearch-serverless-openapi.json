@@ -67479,6 +67479,38 @@
                   "additionalProperties": {
                     "type": "string"
                   }
+                },
+                "fields": {
+                  "$ref": "#/components/schemas/_types:Fields"
+                },
+                "field_statistics": {
+                  "description": "If `true`, the response includes:\n\n* The document count (how many documents contain this field).\n* The sum of document frequencies (the sum of document frequencies for all terms in this field).\n* The sum of total term frequencies (the sum of total term frequencies of each term in this field).",
+                  "type": "boolean"
+                },
+                "offsets": {
+                  "description": "If `true`, the response includes term offsets.",
+                  "type": "boolean"
+                },
+                "payloads": {
+                  "description": "If `true`, the response includes term payloads.",
+                  "type": "boolean"
+                },
+                "positions": {
+                  "description": "If `true`, the response includes term positions.",
+                  "type": "boolean"
+                },
+                "term_statistics": {
+                  "description": "If `true`, the response includes:\n\n* The total term frequency (how often a term occurs in all documents).\n* The document frequency (the number of documents containing the current term).\n\nBy default these values are not returned since term statistics can have a serious performance impact.",
+                  "type": "boolean"
+                },
+                "routing": {
+                  "$ref": "#/components/schemas/_types:Routing"
+                },
+                "version": {
+                  "$ref": "#/components/schemas/_types:VersionNumber"
+                },
+                "version_type": {
+                  "$ref": "#/components/schemas/_types:VersionType"
                 }
               }
             },
