@@ -80,4 +80,3 @@ export class EisServiceSettings {
    */
   rate_limit?: RateLimitSetting
 }
-
