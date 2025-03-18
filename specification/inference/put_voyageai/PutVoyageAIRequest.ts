@@ -32,7 +32,7 @@ import { float, integer } from '@_types/Numeric'
 
    * Avoid creating multiple endpoints for the same model unless required, as each endpoint consumes significant resources.
    * @rest_spec_name inference.put_voyageai
-   * @availability stack since=8.12.0 stability=stable visibility=public
+   * @availability stack since=8.19.0 stability=stable visibility=public
    * @availability serverless stability=stable visibility=public
    * @cluster_privileges manage_inference
    * @doc_id inference-api-put-voyageai
