@@ -13288,6 +13288,37 @@ export type InferencePutOpenaiResponse = InferenceInferenceEndpointInfo
 
 export type InferencePutOpenaiServiceType = 'openai'
 
+export interface InferencePutVoyageaiRequest extends RequestBase {
+  task_type: InferencePutVoyageaiVoyageAITaskType
+  voyageai_inference_id: Id
+  body?: {
+    chunking_settings?: InferenceInferenceChunkingSettings
+    service: InferencePutVoyageaiServiceType
+    service_settings: InferencePutVoyageaiVoyageAIServiceSettings
+    task_settings?: InferencePutVoyageaiVoyageAITaskSettings
+  }
+}
+
+export type InferencePutVoyageaiResponse = InferenceInferenceEndpointInfo
+
+export type InferencePutVoyageaiServiceType = 'voyageai'
+
+export interface InferencePutVoyageaiVoyageAIServiceSettings {
+  dimensions?: integer
+  model_id: string
+  rate_limit?: InferenceRateLimitSetting
+  embedding_type?: float
+}
+
+export interface InferencePutVoyageaiVoyageAITaskSettings {
+  input_type?: string
+  return_documents?: boolean
+  top_k?: integer
+  truncation?: boolean
+}
+
+export type InferencePutVoyageaiVoyageAITaskType = 'text_embedding' | 'rerank'
+
 export interface InferencePutWatsonxRequest extends RequestBase {
   task_type: InferencePutWatsonxWatsonxTaskType
   watsonx_inference_id: Id

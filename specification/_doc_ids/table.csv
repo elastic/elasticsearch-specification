@@ -320,6 +320,7 @@ inference-api-post,https://www.elastic.co/guide/en/elasticsearch/reference/{bran
 inference-api-put,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/put-inference-api.html
 inference-api-put-eis,https://www.elastic.co/guide/en/elasticsearch/reference/current/infer-service-elastic.html
 inference-api-put-openai,https://www.elastic.co/guide/en/elasticsearch/reference/current/infer-service-openai.html
+inference-api-put-voyageai,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/infer-service-voyageai.html
 inference-api-put-watsonx,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/infer-service-watsonx-ai.html
 inference-api-stream,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/stream-inference-api.html
 inference-api-update,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/update-inference-api.html
@@ -820,6 +821,7 @@ terminate-processor,https://www.elastic.co/guide/en/elasticsearch/reference/{bra
 test-grok-pattern,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/test-grok-pattern.html
 time-value,https://github.com/elastic/elasticsearch/blob/{branch}/libs/core/src/main/java/org/elasticsearch/core/TimeValue.java
 time-zone-id,https://docs.oracle.com/javase/8/docs/api/java/time/ZoneId.html
+<<<<<<< HEAD
 trim-processor,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/trim-processor.html
 unfreeze-index-api,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/unfreeze-index-api.html
 update-dfanalytics,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/update-dfanalytics.html
@@ -849,6 +851,38 @@ watcher-api-start,https://www.elastic.co/guide/en/elasticsearch/reference/{branc
 watcher-api-stats,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/watcher-api-stats.html
 watcher-api-stop,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/watcher-api-stop.html
 watcher-api-update-settings,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/watcher-api-update-settings.html
+=======
+trim-processor,https://www.elastic.co/guide/en/elasticsearch/reference/current/trim-processor.html
+update-dfanalytics,https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ml-update-data-frame-analytics
+update-desired-nodes,https://www.elastic.co/docs/api/doc/elasticsearch/group/endpoint-cluster
+update-license,https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-license-post
+update-trained-model-deployment,https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ml-update-trained-model-deployment
+update-transform,https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-transform-update-transform
+upgrade-transforms,https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-transform-upgrade-transforms
+uppercase-processor,https://www.elastic.co/guide/en/elasticsearch/reference/current/uppercase-processor.html
+urldecode-processor,https://www.elastic.co/guide/en/elasticsearch/reference/current/urldecode-processor.html
+usage-api,https://www.elastic.co/docs/api/doc/elasticsearch/group/endpoint-xpack
+user-agent-processor,https://www.elastic.co/guide/en/elasticsearch/reference/current/user-agent-processor.html
+user-profile,https://www.elastic.co/guide/en/elasticsearch/reference/current/user-profile.html
+verify-repository,https://www.elastic.co/guide/en/elasticsearch/reference/current/snapshots-register-repository.html#snapshots-repository-verification
+voting-config-exclusions,https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cluster-post-voting-config-exclusions
+voyageai-embeddings,https://docs.voyageai.com/docs/embeddings
+voyageai-rerank,https://docs.voyageai.com/docs/reranker
+watcher-works,https://www.elastic.co/guide/en/elasticsearch/reference/current/how-watcher-works.html
+watcher-api-ack-watch,https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-watcher-ack-watch
+watcher-api-activate-watch,https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-watcher-activate-watch
+watcher-api-deactivate-watch,https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-watcher-deactivate-watch
+watcher-api-delete-watch,https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-watcher-delete-watch
+watcher-api-execute-watch,https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-watcher-execute-watch
+watcher-api-get-settings,https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-watcher-get-settings
+watcher-api-get-watch,https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-watcher-get-watch
+watcher-api-put-watch,https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-watcher-put-watch
+watcher-api-query-watches,https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-watcher-query-watches
+watcher-api-start,https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-watcher-start
+watcher-api-stats,https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-watcher-stats
+watcher-api-stop,https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-watcher-stop
+watcher-api-update-settings,https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-watcher-update-settings
+>>>>>>> dbe2d1fea (Adds VoyageAI PUT inference details (#4009))
 watsonx-api-keys,https://cloud.ibm.com/iam/apikeys
 watsonx-api-models,https://www.ibm.com/products/watsonx-ai/foundation-models
 watsonx-api-version,https://cloud.ibm.com/apidocs/watsonx-ai#active-version-dates
