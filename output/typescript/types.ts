@@ -10591,6 +10591,7 @@ export type EsqlTableValuesLongDouble = double | double[]
 export type EsqlTableValuesLongValue = long | long[]
 
 export interface EsqlAsyncQueryRequest extends RequestBase {
+  allow_partial_results?: boolean
   delimiter?: string
   drop_null_columns?: boolean
   format?: EsqlEsqlFormat
@@ -10637,6 +10638,7 @@ export interface EsqlQueryRequest extends RequestBase {
   format?: EsqlEsqlFormat
   delimiter?: string
   drop_null_columns?: boolean
+  allow_partial_results?: boolean
   body?: {
     columnar?: boolean
     filter?: QueryDslQueryContainer

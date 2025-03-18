@@ -39,6 +39,11 @@ import { Duration } from '@_types/Time'
 export interface Request extends RequestBase {
   query_parameters: {
     /**
+     * If `true`, partial results will be returned if there are shard failures, but the query can continue to execute on other clusters and shards.
+     * @server_default false
+     */
+    allow_partial_results?: boolean
+    /**
      * The character to use between values within a CSV row.
      * It is valid only for the CSV format.
      */
