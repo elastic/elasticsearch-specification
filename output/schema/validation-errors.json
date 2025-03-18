@@ -70,7 +70,14 @@
       "request": [
         "Request: query parameter 'keep_alive' does not exist in the json spec",
         "Request: query parameter 'keep_on_completion' does not exist in the json spec",
-        "Request: query parameter 'wait_for_completion_timeout' does not exist in the json spec"
+        "Request: query parameter 'wait_for_completion_timeout' does not exist in the json spec",
+        "Request: missing json spec query parameter 'allow_partial_results'"
+      ],
+      "response": []
+    },
+    "esql.query": {
+      "request": [
+        "Request: missing json spec query parameter 'allow_partial_results'"
       ],
       "response": []
     },
