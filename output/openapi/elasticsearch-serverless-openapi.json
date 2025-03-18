@@ -12797,7 +12797,7 @@
                 "MlEvaluateDataFrameRequestExample4": {
                   "summary": "Regression example 1",
                   "description": "Run `POST _ml/data_frame/_evaluate` to evaluate the testing error of a regression job for an annotated index. The term query in the body limits evaluation to be performed on the test split only. The `actual_field` contains the ground truth for house prices. The `predicted_field` contains the house price calculated by the regression analysis.\n",
-                  "value": "{\n  \"index\": \"house_price_predictions\",\n  \"query\": {\n    \"bool\": {\n      \"filter\": [\n        {\n          \"term\": {\n            \"ml.is_training\": false\n          }\n        }\n      ]\n    },\n    \"evaluation\": {\n      \"regression\": {\n        \"actual_field\": \"price\",\n        \"predicted_field\": \"ml.price_prediction\",\n        \"metrics\": {\n          \"r_squared\": {},\n          \"mse\": {},\n          \"msle\": {\n            \"offset\": 10\n          },\n          \"huber\": {\n            \"delta\": 1.5\n          }\n        }\n      }\n    }\n  }\n}"
+                  "value": "{\n  \"index\": \"house_price_predictions\",\n  \"query\": {\n    \"bool\": {\n      \"filter\": [\n        {\n          \"term\": {\n            \"ml.is_training\": false\n          }\n        }\n      ]\n    }\n  },\n  \"evaluation\": {\n    \"regression\": {\n      \"actual_field\": \"price\",\n      \"predicted_field\": \"ml.price_prediction\",\n      \"metrics\": {\n        \"r_squared\": {},\n        \"mse\": {},\n        \"msle\": {\n          \"offset\": 10\n        },\n        \"huber\": {\n          \"delta\": 1.5\n        }\n      }\n    }\n  }\n}"
                 },
                 "MlEvaluateDataFrameRequestExample5": {
                   "summary": "Regression example 2",
@@ -66572,7 +66572,7 @@
               "MultiTermVectorsRequestExample2": {
                 "summary": "Simplified syntax",
                 "description": "Run `POST /my-index-000001/_mtermvectors`. If all requested documents are in same index and the parameters are the same, you can use a simplified syntax.\n",
-                "value": "{\n  \"ids\": [ \"1\", \"2\" ],\n  \"parameters\": {\n    \"fields\": [\n      \"message\"\n    ],\n    \"term_statistics\": true\n  }\n}"
+                "value": "{\n  \"ids\": [ \"1\", \"2\" ],\n  \"fields\": [\n    \"message\"\n  ],\n  \"term_statistics\": true\n}"
               },
               "MultiTermVectorsRequestExample3": {
                 "summary": "Artificial documents",
