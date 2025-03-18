@@ -318,6 +318,7 @@ inference-api-delete,https://www.elastic.co/guide/en/elasticsearch/reference/{br
 inference-api-get,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/get-inference-api.html
 inference-api-post,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/post-inference-api.html
 inference-api-put,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/put-inference-api.html
+inference-api-put-eis,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/infer-service-elastic.html
 inference-api-put-openai,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/infer-service-openai.html
 inference-api-put-watsonx,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/infer-service-watsonx-ai.html
 inference-api-stream,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/stream-inference-api.html
