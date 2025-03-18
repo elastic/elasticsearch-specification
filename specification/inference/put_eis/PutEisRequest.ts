@@ -81,10 +81,3 @@ export class EisServiceSettings {
   rate_limit?: RateLimitSetting
 }
 
-export class OpenAITaskSettings {
-  /**
-   * For a `completion` or `text_embedding` task, specify the user issuing the request.
-   * This informaiton can be used for abuse detection.
-   */
-  user?: string
-}
