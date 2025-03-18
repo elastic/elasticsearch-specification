@@ -6444,6 +6444,11 @@
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/analysis.html"
         },
         "operationId": "indices-analyze",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/indices.analyze#index_"
+          }
+        ],
         "requestBody": {
           "$ref": "#/components/requestBodies/indices.analyze"
         },
@@ -6463,6 +6468,11 @@
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/analysis.html"
         },
         "operationId": "indices-analyze-1",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/indices.analyze#index_"
+          }
+        ],
         "requestBody": {
           "$ref": "#/components/requestBodies/indices.analyze"
         },
@@ -6487,6 +6497,9 @@
         "parameters": [
           {
             "$ref": "#/components/parameters/indices.analyze#index"
+          },
+          {
+            "$ref": "#/components/parameters/indices.analyze#index_"
           }
         ],
         "requestBody": {
@@ -6511,6 +6524,9 @@
         "parameters": [
           {
             "$ref": "#/components/parameters/indices.analyze#index"
+          },
+          {
+            "$ref": "#/components/parameters/indices.analyze#index_"
           }
         ],
         "requestBody": {
@@ -7487,6 +7503,26 @@
           },
           {
             "in": "query",
+            "name": "local",
+            "description": "If true, the request retrieves information from the local node only. Defaults to false, which means information is retrieved from the master node.",
+            "deprecated": false,
+            "schema": {
+              "type": "boolean"
+            },
+            "style": "form"
+          },
+          {
+            "in": "query",
+            "name": "flat_settings",
+            "description": "If true, returns settings in flat format.",
+            "deprecated": false,
+            "schema": {
+              "type": "boolean"
+            },
+            "style": "form"
+          },
+          {
+            "in": "query",
             "name": "master_timeout",
             "description": "Period to wait for a connection to the master node. If no response is received before the timeout expires, the request fails and returns an error.",
             "deprecated": false,
@@ -8171,6 +8207,9 @@
             "$ref": "#/components/parameters/indices.put_settings#preserve_existing"
           },
           {
+            "$ref": "#/components/parameters/indices.put_settings#reopen"
+          },
+          {
             "$ref": "#/components/parameters/indices.put_settings#timeout"
           }
         ],
@@ -8255,6 +8294,9 @@
           },
           {
             "$ref": "#/components/parameters/indices.put_settings#preserve_existing"
+          },
+          {
+            "$ref": "#/components/parameters/indices.put_settings#reopen"
           },
           {
             "$ref": "#/components/parameters/indices.put_settings#timeout"
@@ -8682,6 +8724,9 @@
           },
           {
             "$ref": "#/components/parameters/indices.rollover#wait_for_active_shards"
+          },
+          {
+            "$ref": "#/components/parameters/indices.rollover#lazy"
           }
         ],
         "requestBody": {
@@ -8721,6 +8766,9 @@
           },
           {
             "$ref": "#/components/parameters/indices.rollover#wait_for_active_shards"
+          },
+          {
+            "$ref": "#/components/parameters/indices.rollover#lazy"
           }
         ],
         "requestBody": {
@@ -8753,6 +8801,26 @@
               "$ref": "#/components/schemas/_types:Name"
             },
             "style": "simple"
+          },
+          {
+            "in": "query",
+            "name": "create",
+            "description": "Whether the index template we optionally defined in the body should only be dry-run added if new or can also replace an existing one",
+            "deprecated": false,
+            "schema": {
+              "type": "boolean"
+            },
+            "style": "form"
+          },
+          {
+            "in": "query",
+            "name": "cause",
+            "description": "User defined reason for dry-run creating the new template for simulation purposes",
+            "deprecated": false,
+            "schema": {
+              "type": "string"
+            },
+            "style": "form"
           },
           {
             "in": "query",
@@ -8823,6 +8891,9 @@
             "$ref": "#/components/parameters/indices.simulate_template#create"
           },
           {
+            "$ref": "#/components/parameters/indices.simulate_template#cause"
+          },
+          {
             "$ref": "#/components/parameters/indices.simulate_template#master_timeout"
           },
           {
@@ -8853,6 +8924,9 @@
           },
           {
             "$ref": "#/components/parameters/indices.simulate_template#create"
+          },
+          {
+            "$ref": "#/components/parameters/indices.simulate_template#cause"
           },
           {
             "$ref": "#/components/parameters/indices.simulate_template#master_timeout"
@@ -62108,6 +62182,16 @@
         },
         "style": "simple"
       },
+      "indices.analyze#index_": {
+        "in": "query",
+        "name": "index",
+        "description": "Index used to derive the analyzer.\nIf specified, the `analyzer` or field parameter overrides this value.\nIf no index is specified or the index does not have a default analyzer, the analyze API uses the standard analyzer.",
+        "deprecated": false,
+        "schema": {
+          "$ref": "#/components/schemas/_types:IndexName"
+        },
+        "style": "form"
+      },
       "indices.delete_alias#index": {
         "in": "path",
         "name": "index",
@@ -62754,6 +62838,16 @@
         },
         "style": "form"
       },
+      "indices.put_settings#reopen": {
+        "in": "query",
+        "name": "reopen",
+        "description": "Whether to close and reopen the index to apply non-dynamic settings.\nIf set to `true` the indices to which the settings are being applied\nwill be closed temporarily and then reopened in order to apply the changes.",
+        "deprecated": false,
+        "schema": {
+          "type": "boolean"
+        },
+        "style": "form"
+      },
       "indices.put_settings#timeout": {
         "in": "query",
         "name": "timeout",
@@ -62867,6 +62961,16 @@
         },
         "style": "form"
       },
+      "indices.rollover#lazy": {
+        "in": "query",
+        "name": "lazy",
+        "description": "If set to true, the rollover action will only mark a data stream to signal that it needs to be rolled over at the next write.\nOnly allowed on data streams.",
+        "deprecated": false,
+        "schema": {
+          "type": "boolean"
+        },
+        "style": "form"
+      },
       "indices.simulate_template#name": {
         "in": "path",
         "name": "name",
@@ -62885,6 +62989,16 @@
         "deprecated": false,
         "schema": {
           "type": "boolean"
+        },
+        "style": "form"
+      },
+      "indices.simulate_template#cause": {
+        "in": "query",
+        "name": "cause",
+        "description": "User defined reason for dry-run creating the new template for simulation purposes",
+        "deprecated": false,
+        "schema": {
+          "type": "string"
         },
         "style": "form"
       },
