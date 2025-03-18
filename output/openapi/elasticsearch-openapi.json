@@ -52291,6 +52291,7 @@
           "date",
           "double",
           "geo_point",
+          "geo_shape",
           "ip",
           "keyword",
           "long",
@@ -64041,6 +64042,9 @@
                 "type": "boolean"
               },
               "ignore_z_value": {
+                "type": "boolean"
+              },
+              "index": {
                 "type": "boolean"
               },
               "orientation": {
