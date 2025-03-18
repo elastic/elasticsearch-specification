@@ -9733,7 +9733,7 @@
             }
           }
         },
-        "x-state": "Added in 8.12.0"
+        "x-state": "Added in 8.19.0"
       }
     },
     "/_inference/{task_type}/{watsonx_inference_id}": {
