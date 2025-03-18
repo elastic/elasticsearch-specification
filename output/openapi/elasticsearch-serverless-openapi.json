@@ -5514,6 +5514,16 @@
               "type": "boolean"
             },
             "style": "form"
+          },
+          {
+            "in": "query",
+            "name": "allow_partial_results",
+            "description": "If `true`, partial results will be returned if there are shard failures, but the query can continue to execute on other clusters and shards.",
+            "deprecated": false,
+            "schema": {
+              "type": "boolean"
+            },
+            "style": "form"
           }
         ],
         "requestBody": {

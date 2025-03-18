@@ -55,6 +55,11 @@ export interface Request extends RequestBase {
      * @server_default false
      */
     drop_null_columns?: boolean
+    /**
+     * If `true`, partial results will be returned if there are shard failures, but the query can continue to execute on other clusters and shards.
+     * @server_default false
+     */
+    allow_partial_results?: boolean
   }
   /**
    * Use the `query` element to start a query. Use `time_zone` to specify an execution time zone and `columnar` to format the answer.
