@@ -11937,6 +11937,8 @@ export type IndicesExistsAliasResponse = boolean
 
 export interface IndicesExistsIndexTemplateRequest extends RequestBase {
   name: Name
+  local?: boolean
+  flat_settings?: boolean
   master_timeout?: Duration
 }
 
@@ -12006,7 +12008,6 @@ export interface IndicesFieldUsageStatsRequest extends RequestBase {
   expand_wildcards?: ExpandWildcards
   ignore_unavailable?: boolean
   fields?: Fields
-  wait_for_active_shards?: WaitForActiveShards
 }
 
 export type IndicesFieldUsageStatsResponse = IndicesFieldUsageStatsFieldsUsageBody
@@ -12388,6 +12389,7 @@ export interface IndicesPutSettingsRequest extends RequestBase {
   ignore_unavailable?: boolean
   master_timeout?: Duration
   preserve_existing?: boolean
+  reopen?: boolean
   timeout?: Duration
   body?: IndicesIndexSettings
 }
@@ -12544,6 +12546,7 @@ export interface IndicesReloadSearchAnalyzersRequest extends RequestBase {
   allow_no_indices?: boolean
   expand_wildcards?: ExpandWildcards
   ignore_unavailable?: boolean
+  resource?: string
 }
 
 export type IndicesReloadSearchAnalyzersResponse = IndicesReloadSearchAnalyzersReloadResult
@@ -12605,6 +12608,7 @@ export interface IndicesRolloverRequest extends RequestBase {
   master_timeout?: Duration
   timeout?: Duration
   wait_for_active_shards?: WaitForActiveShards
+  lazy?: boolean
   body?: {
     aliases?: Record<IndexName, IndicesAlias>
     conditions?: IndicesRolloverRolloverConditions
@@ -12749,6 +12753,8 @@ export interface IndicesShrinkResponse {
 
 export interface IndicesSimulateIndexTemplateRequest extends RequestBase {
   name: Name
+  create?: boolean
+  cause?: string
   master_timeout?: Duration
   include_defaults?: boolean
 }
@@ -12766,6 +12772,7 @@ export interface IndicesSimulateTemplateOverlapping {
 export interface IndicesSimulateTemplateRequest extends RequestBase {
   name?: Name
   create?: boolean
+  cause?: string
   master_timeout?: Duration
   include_defaults?: boolean
   body?: {
