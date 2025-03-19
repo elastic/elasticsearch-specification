@@ -303,65 +303,9 @@
       ],
       "response": []
     },
-    "indices.analyze": {
-      "request": [
-        "Request: missing json spec query parameter 'index'"
-      ],
-      "response": []
-    },
-    "indices.clear_cache": {
-      "request": [
-        "Request: missing json spec query parameter 'index'"
-      ],
-      "response": []
-    },
-    "indices.exists_index_template": {
-      "request": [
-        "Request: missing json spec query parameter 'flat_settings'",
-        "Request: missing json spec query parameter 'local'"
-      ],
-      "response": []
-    },
-    "indices.field_usage_stats": {
-      "request": [
-        "Request: query parameter 'wait_for_active_shards' does not exist in the json spec"
-      ],
-      "response": []
-    },
-    "indices.put_settings": {
-      "request": [
-        "Request: missing json spec query parameter 'reopen'"
-      ],
-      "response": []
-    },
     "indices.put_template": {
       "request": [
         "Request: query parameter 'cause' does not exist in the json spec"
-      ],
-      "response": []
-    },
-    "indices.reload_search_analyzers": {
-      "request": [
-        "Request: missing json spec query parameter 'resource'"
-      ],
-      "response": []
-    },
-    "indices.rollover": {
-      "request": [
-        "Request: missing json spec query parameter 'lazy'"
-      ],
-      "response": []
-    },
-    "indices.simulate_index_template": {
-      "request": [
-        "Request: missing json spec query parameter 'create'",
-        "Request: missing json spec query parameter 'cause'"
-      ],
-      "response": []
-    },
-    "indices.simulate_template": {
-      "request": [
-        "Request: missing json spec query parameter 'cause'"
       ],
       "response": []
     },
