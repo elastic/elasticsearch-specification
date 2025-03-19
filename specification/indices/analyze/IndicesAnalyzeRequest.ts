@@ -59,6 +59,15 @@ export interface Request extends RequestBase {
      */
     index?: IndexName
   }
+  query_parameters: {
+    /**
+     * Index used to derive the analyzer.
+     * If specified, the `analyzer` or field parameter overrides this value.
+     * If no index is specified or the index does not have a default analyzer, the analyze API uses the standard analyzer.
+     * @doc_id analysis-standard-analyzer
+     */
+    index?: IndexName
+  }
   body: {
     /**
      * The name of the analyzer that should be applied to the provided `text`.

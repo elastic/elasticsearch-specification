@@ -55,6 +55,12 @@ export interface Request extends RequestBase {
   }
   query_parameters: {
     /**
+     * Comma-separated list of data streams, indices, and aliases used to limit the request.
+     * Supports wildcards (`*`).
+     * To target all data streams and indices, omit this parameter or use `*` or `_all`.
+     */
+    index?: Indices
+    /**
      * If `false`, the request returns an error if any wildcard expression, index alias, or `_all` value targets only missing or closed indices.
      * This behavior applies even if the request targets other open indices.
      * @server_default true
