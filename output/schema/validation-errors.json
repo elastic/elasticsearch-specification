@@ -303,9 +303,9 @@
       ],
       "response": []
     },
-    "indices.put_template": {
+    "inference.put_mistral": {
       "request": [
-        "Request: query parameter 'cause' does not exist in the json spec"
+        "Missing request & response"
       ],
       "response": []
     },
