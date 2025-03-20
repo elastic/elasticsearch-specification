@@ -17,7 +17,10 @@
  * under the License.
  */
 
-import { InferenceChunkingSettings, RateLimitSetting } from '@inference/_types/Services'
+import {
+  InferenceChunkingSettings,
+  RateLimitSetting
+} from '@inference/_types/Services'
 import { RequestBase } from '@_types/Base'
 import { Id } from '@_types/common'
 
