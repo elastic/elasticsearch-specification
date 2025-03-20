@@ -13252,6 +13252,36 @@ export interface InferencePutRequest extends RequestBase {
 
 export type InferencePutResponse = InferenceInferenceEndpointInfo
 
+export interface InferencePutAlibabacloudAlibabaCloudServiceSettings {
+  api_key: string
+  host: string
+  rate_limit?: InferenceRateLimitSetting
+  service_id: string
+  workspace: string
+}
+
+export interface InferencePutAlibabacloudAlibabaCloudTaskSettings {
+  input_type?: string
+  return_token?: boolean
+}
+
+export type InferencePutAlibabacloudAlibabaCloudTaskType = 'completion' | 'rerank' | 'space_embedding' | 'text_embedding'
+
+export interface InferencePutAlibabacloudRequest extends RequestBase {
+  task_type: InferencePutAlibabacloudAlibabaCloudTaskType
+  alibabacloud_inference_id: Id
+  body?: {
+    chunking_settings?: InferenceInferenceChunkingSettings
+    service: InferencePutAlibabacloudServiceType
+    service_settings: InferencePutAlibabacloudAlibabaCloudServiceSettings
+    task_settings?: InferencePutAlibabacloudAlibabaCloudTaskSettings
+  }
+}
+
+export type InferencePutAlibabacloudResponse = InferenceInferenceEndpointInfo
+
+export type InferencePutAlibabacloudServiceType = 'alibabacloud-ai-search'
+
 export interface InferencePutAmazonbedrockAmazonBedrockServiceSettings {
   access_key: string
   model: string

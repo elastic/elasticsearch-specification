@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { InferenceChunkingSettings } from '@inference/_types/Services'
+import { InferenceChunkingSettings, RateLimitSetting } from '@inference/_types/Services'
 import { RequestBase } from '@_types/Base'
 import { Id } from '@_types/common'
 
@@ -31,7 +31,7 @@ import { Id } from '@_types/common'
  * To verify the deployment status, use the get trained model statistics API.
  * Look for `"state": "fully_allocated"` in the response and ensure that the `"allocation_count"` matches the `"target_allocation_count"`.
  * Avoid creating multiple endpoints for the same model unless required, as each endpoint consumes significant resources.
- * @rest_spec_name inference.put_openai
+ * @rest_spec_name inference.put_alibabacloud
  * @availability stack since=8.16.0 stability=stable visibility=public
  * @availability serverless stability=stable visibility=public
  * @cluster_privileges manage_inference
@@ -88,9 +88,64 @@ export enum ServiceType {
 }
 
 export class AlibabaCloudServiceSettings {
-  /** TBD */
+  /**
+   * A valid API key for the AlibabaCloud AI Search API.
+   */
+  api_key: string
+  /**
+   * The name of the host address used for the inference task.
+   * You can find the host address in the API keys section of the documentation.
+   * @ext_doc_id alibabacloud-api-keys
+   */
+  host: string
+  /**
+   * This setting helps to minimize the number of rate limit errors returned from AlibabaCloud AI Search.
+   * By default, the `alibabacloud-ai-search` service sets the number of requests allowed per minute to `1000`.
+   */
+  rate_limit?: RateLimitSetting
+  /**
+   * The name of the model service to use for the inference task.
+   * The following service IDs are available for the `completion` task:
+   *
+   * * `ops-qwen-turbo`
+   * * `qwen-turbo`
+   * * `qwen-plus`
+   * * `qwen-max ÷ qwen-max-longcontext`
+   *
+   * The following service ID is available for the `rerank` task:
+   *
+   * * `ops-bge-reranker-larger`
+   *
+   * The following service ID is available for the `sparse_embedding` task:
+   *
+   * * `ops-text-sparse-embedding-001`
+   *
+   * The following service IDs are available for the `text_embedding` task:
+   *
+   * `ops-text-embedding-001`
+   * `ops-text-embedding-zh-001`
+   * `ops-text-embedding-en-001`
+   * `ops-text-embedding-002`
+   */
+  service_id: string
+  /**
+   * The name of the workspace used for the inference task.
+   */
+  workspace: string
 }
 
 export class AlibabaCloudTaskSettings {
-  /** TBD */
+  /**
+   * For a `sparse_embedding` or `text_embedding` task, specify the type of input passed to the model.
+   * Valid values are:
+   *
+   * * `ingest` for storing document embeddings in a vector database.
+   * * `search` for storing embeddings of search queries run against a vector database to find relevant documents.
+   */
+  input_type?: string
+  /**
+   * For a `sparse_embedding` task, it affects whether the token name will be returned in the response.
+   * It defaults to `false`, which means only the token ID will be returned in the response.
+   */
+  return_token?: boolean
 }
