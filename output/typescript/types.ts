@@ -13252,6 +13252,39 @@ export interface InferencePutRequest extends RequestBase {
 
 export type InferencePutResponse = InferenceInferenceEndpointInfo
 
+export interface InferencePutAmazonbedrockAmazonBedrockServiceSettings {
+  access_key: string
+  model: string
+  provider?: string
+  region: string
+  rate_limit?: InferenceRateLimitSetting
+  secret_key: string
+}
+
+export interface InferencePutAmazonbedrockAmazonBedrockTaskSettings {
+  max_new_tokens?: integer
+  temperature?: float
+  top_k?: float
+  top_p?: float
+}
+
+export type InferencePutAmazonbedrockAmazonBedrockTaskType = 'completion' | 'text_embedding'
+
+export interface InferencePutAmazonbedrockRequest extends RequestBase {
+  task_type: InferencePutAmazonbedrockAmazonBedrockTaskType
+  amazonbedrock_inference_id: Id
+  body?: {
+    chunking_settings?: InferenceInferenceChunkingSettings
+    service: InferencePutAmazonbedrockServiceType
+    service_settings: InferencePutAmazonbedrockAmazonBedrockServiceSettings
+    task_settings?: InferencePutAmazonbedrockAmazonBedrockTaskSettings
+  }
+}
+
+export type InferencePutAmazonbedrockResponse = InferenceInferenceEndpointInfo
+
+export type InferencePutAmazonbedrockServiceType = 'amazonbedrock'
+
 export interface InferencePutAnthropicAnthropicServiceSettings {
   api_key: string
   model_id: string

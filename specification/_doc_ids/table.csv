@@ -3,6 +3,8 @@ add-nodes,https://www.elastic.co/guide/en/elasticsearch/reference/current/add-el
 alias-update,https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-put-alias
 aliases-update,https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-update-aliases
 analysis-analyzers,https://www.elastic.co/guide/en/elasticsearch/reference/current/analysis-analyzers.html
+amazonbedrock-models,https://docs.aws.amazon.com/bedrock/latest/userguide/models-supported.html
+amazonbedrock-secret-keys,https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_access-keys.html
 analysis-charfilters,https://www.elastic.co/guide/en/elasticsearch/reference/current/analysis-charfilters.html
 analysis-normalizers,https://www.elastic.co/guide/en/elasticsearch/reference/current/analysis-normalizers.html
 analysis-standard-analyzer,https://www.elastic.co/guide/en/elasticsearch/reference/current/analysis-standard-analyzer.html
@@ -328,6 +330,7 @@ inference-api-get,https://www.elastic.co/docs/api/doc/elasticsearch/operation/op
 inference-api-post,https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-inference-inference
 inference-api-post-eis-chat-completion,https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-inference-post-eis-chat-completion
 inference-api-put,https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-inference-put
+inference-api-amazonbedrock,https://www.elastic.co/guide/en/elasticsearch/reference/current/infer-service-amazon-bedrock.html
 inference-api-put-cohere,https://www.elastic.co/guide/en/elasticsearch/reference/branch/infer-service-cohere.html
 inference-api-put-eis,https://www.elastic.co/guide/en/elasticsearch/reference/current/infer-service-eis.html
 inference-api-put-elasticsearch,https://www.elastic.co/guide/en/elasticsearch/reference/current/infer-service-elasticsearch.html
