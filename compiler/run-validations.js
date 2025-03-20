@@ -31,7 +31,9 @@ try {
   closest = fl.closest
   minimist = require('minimist')
 } catch (err) {
-  console.log('It looks like you didn\'t install the project dependencies, please run \'make setup\'')
+  console.log(
+    "It looks like you didn't install the project dependencies, please run 'make setup'"
+  )
   process.exit(1)
 }
 
@@ -60,7 +62,8 @@ const apis = require('../output/schema/schema.json')
 async function run () {
   const options = minimist(process.argv.slice(2), {
     string: ['api', 'type', 'branch'],
-    boolean: ['cache']
+    boolean: ['cache'],
+    default: { cache: true }
   })
 
   spinner.text = 'Checking requirements'
@@ -93,7 +96,7 @@ async function run () {
 
   const isFlightRecorderCloned = await $`[[ -d ${path.join(__dirname, '..', '..', 'clients-flight-recorder')} ]]`.exitCode === 0
   if (!isFlightRecorderCloned) {
-    spinner.text = 'It looks like you didn\'t cloned the flight recorder, doing that for you'
+    spinner.text = 'It looks like you didn\'t clone the flight recorder, doing that for you'
     await $`git clone https://github.com/elastic/clients-flight-recorder.git ${path.join(__dirname, '..', '..', 'clients-flight-recorder')}`
   } else if (isStale) {
     spinner.text = 'Pulling the latest flight recorder changes'
@@ -105,7 +108,7 @@ async function run () {
   const isCompilerInstalled = await $`[[ -d ${path.join(compilerPath, 'node_modules')} ]]`.exitCode === 0
   const isTsGeneratorInstalled = await $`[[ -d ${path.join(tsGeneratorPath, 'node_modules')} ]]`.exitCode === 0
   if (noCache || !isCompilerInstalled || !isTsGeneratorInstalled) {
-    spinner.text = 'It looks like you didn\'t installed the project dependencies, doing that for you'
+    spinner.text = 'It looks like you didn't install the project dependencies, doing that for you'
     await $`npm install --prefix ${compilerPath}`
     await $`npm install --prefix ${tsGeneratorPath}`
   }
