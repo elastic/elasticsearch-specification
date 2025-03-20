@@ -60241,6 +60241,7 @@
       "indices.put_template#cause": {
         "in": "query",
         "name": "cause",
+        "description": "User defined reason for creating/updating the index template",
         "deprecated": false,
         "schema": {
           "type": "string"
