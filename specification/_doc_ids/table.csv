@@ -11,6 +11,8 @@ analysis-tokenizers,https://www.elastic.co/guide/en/elasticsearch/reference/curr
 analysis,https://www.elastic.co/guide/en/elasticsearch/reference/current/analysis.html
 analyze-repository,https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-snapshot-repository-analyze
 analyzer-anatomy,https://www.elastic.co/guide/en/elasticsearch/reference/current/analyzer-anatomy.html
+anthropic-messages,https://docs.anthropic.com/en/api/messages
+anthropic-models,https://docs.anthropic.com/en/docs/about-claude/models/all-models#model-names
 api-date-math-index-names,https://www.elastic.co/guide/en/elasticsearch/reference/current/api-conventions.html#api-date-math-index-names
 api-root,https://www.elastic.co/docs/api/doc/elasticsearch/group/endpoint-info
 append-processor,https://www.elastic.co/guide/en/elasticsearch/reference/current/append-processor.html
@@ -320,6 +322,7 @@ indices-templates,https://www.elastic.co/guide/en/elasticsearch/reference/curren
 indices-update-settings,https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-put-settings
 infer-trained-model,https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ml-infer-trained-model
 infer-trained-model-deployment,https://www.elastic.co/guide/en/elasticsearch/reference/current/infer-trained-model-deployment.html
+inference-api-anthropic,https://www.elastic.co/guide/en/elasticsearch/reference/current/infer-service-anthropic.html
 inference-api-delete,https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-inference-delete
 inference-api-get,https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-inference-get
 inference-api-post,https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-inference-inference
