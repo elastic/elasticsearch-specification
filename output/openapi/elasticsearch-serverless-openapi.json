@@ -9652,6 +9652,96 @@
         "x-state": "Added in 8.12.0"
       }
     },
+    "/_inference/{task_type}/{elser_inference_id}": {
+      "put": {
+        "tags": [
+          "inference"
+        ],
+        "summary": "Create an ELSER inference endpoint",
+        "description": "Create an inference endpoint to perform an inference task with the `elser` service.\nYou can also deploy ELSER by using the Elasticsearch inference integration.\n\n> info\n> Your Elasticsearch deployment contains a preconfigured ELSER inference endpoint, you only need to create the enpoint using the API if you want to customize the settings.\n\nThe API request will automatically download and deploy the ELSER model if it isn't already downloaded.\n\n> info\n> You might see a 502 bad gateway error in the response when using the Kibana Console. This error usually just reflects a timeout, while the model downloads in the background. You can check the download progress in the Machine Learning UI. If using the Python client, you can set the timeout parameter to a higher value.\n\nAfter creating the endpoint, wait for the model deployment to complete before using it.\nTo verify the deployment status, use the get trained model statistics API.\nLook for `\"state\": \"fully_allocated\"` in the response and ensure that the `\"allocation_count\"` matches the `\"target_allocation_count\"`.\nAvoid creating multiple endpoints for the same model unless required, as each endpoint consumes significant resources.",
+        "operationId": "inference-put-elser",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "task_type",
+            "description": "The type of the inference task that the model will perform.",
+            "required": true,
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/inference.put_elser:ElserTaskType"
+            },
+            "style": "simple"
+          },
+          {
+            "in": "path",
+            "name": "elser_inference_id",
+            "description": "The unique identifier of the inference endpoint.",
+            "required": true,
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/_types:Id"
+            },
+            "style": "simple"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "chunking_settings": {
+                    "$ref": "#/components/schemas/inference._types:InferenceChunkingSettings"
+                  },
+                  "service": {
+                    "$ref": "#/components/schemas/inference.put_elser:ServiceType"
+                  },
+                  "service_settings": {
+                    "$ref": "#/components/schemas/inference.put_elser:ElserServiceSettings"
+                  }
+                },
+                "required": [
+                  "service",
+                  "service_settings"
+                ]
+              },
+              "examples": {
+                "PutElserRequestExample1": {
+                  "summary": "A sparse embedding task",
+                  "description": "Run `PUT _inference/sparse_embedding/my-elser-model` to create an inference endpoint that performs a `sparse_embedding` task. The request will automatically download the ELSER model if it isn't already downloaded and then deploy the model.",
+                  "value": "{\n    \"service\": \"elser\",\n    \"service_settings\": {\n        \"num_allocations\": 1,\n        \"num_threads\": 1\n    }\n}"
+                },
+                "PutElserRequestExample2": {
+                  "summary": "Adaptive allocations",
+                  "description": "Run `PUT _inference/sparse_embedding/my-elser-model` to create an inference endpoint that performs a `sparse_embedding` task with adaptive allocations. When adaptive allocations are enabled, the number of allocations of the model is set automatically based on the current load.",
+                  "value": "{\n    \"service\": \"elser\",\n    \"service_settings\": {\n        \"adaptive_allocations\": {\n            \"enabled\": true,\n            \"min_number_of_allocations\": 3,\n            \"max_number_of_allocations\": 10\n        },\n        \"num_threads\": 1\n    }\n}"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/inference._types:InferenceEndpointInfo"
+                },
+                "examples": {
+                  "PutElserResponseExample1": {
+                    "description": "A successful response when creating an ELSER inference endpoint.",
+                    "value": "{\n  \"inference_id\": \"my-elser-model\",\n  \"task_type\": \"sparse_embedding\",\n  \"service\": \"elser\",\n  \"service_settings\": {\n    \"num_allocations\": 1,\n    \"num_threads\": 1\n  },\n  \"task_settings\": {}\n}"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "deprecated": true,
+        "x-state": "Added in 8.11.0"
+      }
+    },
     "/_inference/{task_type}/{googleaistudio_inference_id}": {
       "put": {
         "tags": [
@@ -48554,6 +48644,55 @@
         "properties": {
           "requests_per_minute": {
             "description": "The number of requests allowed per minute.",
+            "type": "number"
+          }
+        }
+      },
+      "inference.put_elser:ElserTaskType": {
+        "type": "string",
+        "enum": [
+          "sparse_embedding"
+        ]
+      },
+      "inference.put_elser:ServiceType": {
+        "type": "string",
+        "enum": [
+          "elser"
+        ]
+      },
+      "inference.put_elser:ElserServiceSettings": {
+        "type": "object",
+        "properties": {
+          "adaptive_allocations": {
+            "$ref": "#/components/schemas/inference.put_elser:AdaptiveAllocations"
+          },
+          "num_allocations": {
+            "description": "The total number of allocations this model is assigned across machine learning nodes.\nIncreasing this value generally increases the throughput.\nIf adaptive allocations is enabled, do not set this value because it's automatically set.",
+            "type": "number"
+          },
+          "num_threads": {
+            "description": "The number of threads used by each model allocation during inference.\nIncreasing this value generally increases the speed per inference request.\nThe inference process is a compute-bound process; `threads_per_allocations` must not exceed the number of available allocated processors per node.\nThe value must be a power of 2.\nThe maximum value is 32.\n\n> info\n> If you want to optimize your ELSER endpoint for ingest, set the number of threads to 1. If you want to optimize your ELSER endpoint for search, set the number of threads to greater than 1.",
+            "type": "number"
+          }
+        },
+        "required": [
+          "num_allocations",
+          "num_threads"
+        ]
+      },
+      "inference.put_elser:AdaptiveAllocations": {
+        "type": "object",
+        "properties": {
+          "enabled": {
+            "description": "Turn on `adaptive_allocations`.",
+            "type": "boolean"
+          },
+          "max_number_of_allocations": {
+            "description": "The maximum number of allocations to scale to.\nIf set, it must be greater than or equal to `min_number_of_allocations`.",
+            "type": "number"
+          },
+          "min_number_of_allocations": {
+            "description": "The minimum number of allocations to scale to.\nIf set, it must be greater than or equal to 0.\nIf not defined, the deployment scales to 0.",
             "type": "number"
           }
         }

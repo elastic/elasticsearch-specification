@@ -323,6 +323,7 @@ inference-api-post,https://www.elastic.co/docs/api/doc/elasticsearch/operation/o
 inference-api-post-eis-chat-completion,https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-inference-post-eis-chat-completion
 inference-api-put,https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-inference-put
 inference-api-put-eis,https://www.elastic.co/guide/en/elasticsearch/reference/current/infer-service-eis.html
+inference-api-put-elser,https://www.elastic.co/guide/en/elasticsearch/reference/current/infer-service-elser.html
 inference-api-put-huggingface,https://www.elastic.co/guide/en/elasticsearch/reference/current/infer-service-hugging-face.html
 inference-api-put-jinaai,https://www.elastic.co/guide/en/elasticsearch/reference/current/infer-service-jinaai.html
 inference-api-put-googlevertexai,https://www.elastic.co/guide/en/elasticsearch/reference/current/infer-service-google-vertex-ai.html
