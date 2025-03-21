@@ -43,6 +43,16 @@ export interface Request extends RequestBase {
   }
   query_parameters: {
     /**
+     * If true, the request retrieves information from the local node only. Defaults to false, which means information is retrieved from the master node.
+     * @server_default false
+     */
+    local?: boolean
+    /**
+     * If true, returns settings in flat format.
+     * @server_default false
+     */
+    flat_settings?: boolean
+    /**
      * Period to wait for a connection to the master node. If no response is received before the timeout expires, the request fails and returns an error.
      * @server_default 30s
      */

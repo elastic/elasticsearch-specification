@@ -106,6 +106,13 @@ export interface Request extends RequestBase {
      */
     preserve_existing?: boolean
     /**
+     * Whether to close and reopen the index to apply non-dynamic settings.
+     * If set to `true` the indices to which the settings are being applied
+     * will be closed temporarily and then reopened in order to apply the changes.
+     * @server_default false
+     */
+    reopen?: boolean
+    /**
      *  Period to wait for a response. If no response is received before the
      *  timeout expires, the request fails and returns an error.
      * @server_default 30s
