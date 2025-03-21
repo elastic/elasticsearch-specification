@@ -26,9 +26,9 @@ import { Id } from '@_types/common'
 import { float, integer } from '@_types/Numeric'
 
 /**
- * Create an OpenAI inference endpoint.
+ * Create an Azure AI studio inference endpoint.
  *
- * Creates an inference endpoint to perform an inference task with the `azureaistudio` service.
+ * Create an inference endpoint to perform an inference task with the `azureaistudio` service.
  *
  * When you create an inference endpoint, the associated machine learning model is automatically deployed if it is not already running.
  * After creating the endpoint, wait for the model deployment to complete before using it.
@@ -158,7 +158,7 @@ export class AzureAiStudioTaskSettings {
   top_p?: float
   /**
    * For a `text_embedding` task, specify the user issuing the request.
-   * This informaiton can be used for abuse detection.
+   * This information can be used for abuse detection.
    */
   user?: string
 }
