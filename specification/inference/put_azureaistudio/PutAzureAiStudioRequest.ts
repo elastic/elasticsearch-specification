@@ -27,7 +27,7 @@ import { float, integer } from '@_types/Numeric'
 
 /**
  * Create an OpenAI inference endpoint.
- * 
+ *
  * Creates an inference endpoint to perform an inference task with the `azureaistudio` service.
  *
  * When you create an inference endpoint, the associated machine learning model is automatically deployed if it is not already running.

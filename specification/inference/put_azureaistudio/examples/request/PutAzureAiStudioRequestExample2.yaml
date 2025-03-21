@@ -3,12 +3,12 @@ description: Run `PUT _inference/completion/azure_ai_studio_completion` to creat
 # method_request: "PUT _inference/completion/azure_ai_studio_completion"
 # type: "request"
 value: |-
-    {
-        "service": "azureaistudio",
-        "service_settings": {
-            "api_key": "Azure-AI-Studio-API-key",
-            "target": "Target-URI",
-            "provider": "databricks",
-            "endpoint_type": "realtime"
-        }
-    }
+  {
+      "service": "azureaistudio",
+      "service_settings": {
+          "api_key": "Azure-AI-Studio-API-key",
+          "target": "Target-URI",
+          "provider": "databricks",
+          "endpoint_type": "realtime"
+      }
+  }
