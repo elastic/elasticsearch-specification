@@ -1,0 +1,22 @@
+# summary:
+description: >
+  A successful response from `PUT _inference/sparse_embedding/use_existing_deployment`. It contains the model ID and the threads and allocations settings from the model deployment.
+# type: "response"
+# response_code:
+value: |-
+  {
+    "inference_id": "use_existing_deployment",
+    "task_type": "sparse_embedding",
+    "service": "elasticsearch",
+    "service_settings": {
+      "num_allocations": 2,
+      "num_threads": 1,
+      "model_id": ".elser_model_2",
+      "deployment_id": ".elser_model_2"
+    },
+    "chunking_settings": {
+      "strategy": "sentence",
+      "max_chunk_size": 250,
+      "sentence_overlap": 1
+    }
+  }
