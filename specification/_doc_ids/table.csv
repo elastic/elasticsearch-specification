@@ -94,6 +94,8 @@ cluster-state,https://www.elastic.co/docs/api/doc/elasticsearch/operation/operat
 cluster-stats,https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cluster-stats
 cluster-update-settings,https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cluster-put-settings
 cluster,https://www.elastic.co/docs/api/doc/elasticsearch/group/endpoint-cluster
+cohere-api-keys,https://dashboard.cohere.com/api-keys
+cohere-models,https://docs.cohere.com/docs/models#command
 common-options,https://www.elastic.co/guide/en/elasticsearch/reference/current/common-options.html
 community-id-processor,https://www.elastic.co/guide/en/elasticsearch/reference/current/community-id-processor.html
 connector-sync-job-cancel,https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-connector-sync-job-cancel
@@ -322,6 +324,7 @@ inference-api-get,https://www.elastic.co/docs/api/doc/elasticsearch/operation/op
 inference-api-post,https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-inference-inference
 inference-api-post-eis-chat-completion,https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-inference-post-eis-chat-completion
 inference-api-put,https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-inference-put
+inference-api-put-cohere,https://www.elastic.co/guide/en/elasticsearch/reference/branch/infer-service-cohere.html
 inference-api-put-eis,https://www.elastic.co/guide/en/elasticsearch/reference/current/infer-service-eis.html
 inference-api-put-elser,https://www.elastic.co/guide/en/elasticsearch/reference/current/infer-service-elser.html
 inference-api-put-huggingface,https://www.elastic.co/guide/en/elasticsearch/reference/current/infer-service-hugging-face.html
