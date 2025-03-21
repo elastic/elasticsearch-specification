@@ -9738,6 +9738,118 @@
         "x-state": "Added in 8.12.0"
       }
     },
+    "/_inference/{task_type}/{elasticsearch_inference_id}": {
+      "put": {
+        "tags": [
+          "inference"
+        ],
+        "summary": "Create an OpenAI inference endpoint",
+        "description": "Create an inference endpoint to perform an inference task with the `elasticsearch` service.\n\n> info\n> Your Elasticsearch deployment contains preconfigured ELSER and E5 inference endpoints, you only need to create the enpoints using the API if you want to customize the settings.\n\nIf you use the ELSER or the E5 model through the `elasticsearch` service, the API request will automatically download and deploy the model if it isn't downloaded yet.\n\n> info\n> You might see a 502 bad gateway error in the response when using the Kibana Console. This error usually just reflects a timeout, while the model downloads in the background. You can check the download progress in the Machine Learning UI. If using the Python client, you can set the timeout parameter to a higher value.\n\nAfter creating the endpoint, wait for the model deployment to complete before using it.\nTo verify the deployment status, use the get trained model statistics API.\nLook for `\"state\": \"fully_allocated\"` in the response and ensure that the `\"allocation_count\"` matches the `\"target_allocation_count\"`.\nAvoid creating multiple endpoints for the same model unless required, as each endpoint consumes significant resources.",
+        "operationId": "inference-put-elasticsearch",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "task_type",
+            "description": "The type of the inference task that the model will perform.",
+            "required": true,
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/inference.put_elasticsearch:ElasticsearchTaskType"
+            },
+            "style": "simple"
+          },
+          {
+            "in": "path",
+            "name": "elasticsearch_inference_id",
+            "description": "The unique identifier of the inference endpoint.\nThe must not match the `model_id`.",
+            "required": true,
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/_types:Id"
+            },
+            "style": "simple"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "chunking_settings": {
+                    "$ref": "#/components/schemas/inference._types:InferenceChunkingSettings"
+                  },
+                  "service": {
+                    "$ref": "#/components/schemas/inference.put_elasticsearch:ServiceType"
+                  },
+                  "service_settings": {
+                    "$ref": "#/components/schemas/inference.put_elasticsearch:ElasticsearchServiceSettings"
+                  },
+                  "task_settings": {
+                    "$ref": "#/components/schemas/inference.put_elasticsearch:ElasticsearchTaskSettings"
+                  }
+                },
+                "required": [
+                  "service",
+                  "service_settings"
+                ]
+              },
+              "examples": {
+                "PutElasticsearchRequestExample1": {
+                  "summary": "ELSER sparse embedding task",
+                  "description": "Run `PUT _inference/sparse_embedding/my-elser-model` to create an inference endpoint that performs a `sparse_embedding` task. The `model_id` must be the ID of one of the built-in ELSER models. The API will automatically download the ELSER model if it isn't already downloaded and then deploy the model.",
+                  "value": "{\n    \"service\": \"elasticsearch\",\n    \"service_settings\": {\n        \"adaptive_allocations\": { \n        \"enabled\": true,\n        \"min_number_of_allocations\": 1,\n        \"max_number_of_allocations\": 4\n        },\n        \"num_threads\": 1,\n        \"model_id\": \".elser_model_2\" \n    }\n}"
+                },
+                "PutElasticsearchRequestExample2": {
+                  "summary": "Elastic rerank task",
+                  "description": "Run `PUT _inference/rerank/my-elastic-rerank` to create an inference endpoint that performs a rerank task using the built-in Elastic Rerank cross-encoder model.  The `model_id` must be `.rerank-v1`, which is the ID of the built-in Elastic Rerank model. The API will automatically download the Elastic Rerank model if it isn't already downloaded and then deploy the model. Once deployed, the model can be used for semantic re-ranking with a `text_similarity_reranker` retriever.",
+                  "value": "{\n    \"service\": \"elasticsearch\",\n    \"service_settings\": {\n        \"model_id\": \".rerank-v1\", \n        \"num_threads\": 1,\n        \"adaptive_allocations\": { \n        \"enabled\": true,\n        \"min_number_of_allocations\": 1,\n        \"max_number_of_allocations\": 4\n        }\n    }\n}"
+                },
+                "PutElasticsearchRequestExample3": {
+                  "summary": "E5 text embedding task",
+                  "description": "Run `PUT _inference/text_embedding/my-e5-model` to create an inference endpoint that performs a `text_embedding` task. The `model_id` must be the ID of one of the built-in E5 models. The API will automatically download the E5 model if it isn't already downloaded and then deploy the model.",
+                  "value": "{\n    \"service\": \"elasticsearch\",\n    \"service_settings\": {\n        \"num_allocations\": 1,\n        \"num_threads\": 1,\n        \"model_id\": \".multilingual-e5-small\" \n    }\n}"
+                },
+                "PutElasticsearchRequestExample4": {
+                  "summary": "Eland text embedding task",
+                  "description": "Run `PUT _inference/text_embedding/my-msmarco-minilm-model` to create an inference endpoint that performs a `text_embedding` task with a model that was uploaded by Eland.",
+                  "value": "{\n    \"service\": \"elasticsearch\",\n    \"service_settings\": {\n        \"num_allocations\": 1,\n        \"num_threads\": 1,\n        \"model_id\": \"msmarco-MiniLM-L12-cos-v5\" \n    }\n}"
+                },
+                "PutElasticsearchRequestExample5": {
+                  "summary": "Adaptive allocation",
+                  "description": "Run `PUT _inference/text_embedding/my-e5-model` to create an inference endpoint that performs a `text_embedding` task and to configure adaptive allocations. The API request will automatically download the E5 model if it isn't already downloaded and then deploy the model.",
+                  "value": "{\n    \"service\": \"elasticsearch\",\n    \"service_settings\": {\n        \"adaptive_allocations\": {\n        \"enabled\": true,\n        \"min_number_of_allocations\": 3,\n        \"max_number_of_allocations\": 10\n        },\n        \"num_threads\": 1,\n        \"model_id\": \".multilingual-e5-small\"\n    }\n}"
+                },
+                "PutElasticsearchRequestExample6": {
+                  "summary": "Existing model deployment",
+                  "description": "Run `PUT _inference/sparse_embedding/use_existing_deployment` to use an already existing model deployment when creating an inference endpoint.",
+                  "value": "{\n    \"service\": \"elasticsearch\",\n    \"service_settings\": {\n        \"deployment_id\": \".elser_model_2\"\n    }\n}"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/inference._types:InferenceEndpointInfo"
+                },
+                "examples": {
+                  "PutElasticsearchResponseExample1": {
+                    "description": "A successful response from `PUT _inference/sparse_embedding/use_existing_deployment`. It contains the model ID and the threads and allocations settings from the model deployment.\n",
+                    "value": "{\n  \"inference_id\": \"use_existing_deployment\",\n  \"task_type\": \"sparse_embedding\",\n  \"service\": \"elasticsearch\",\n  \"service_settings\": {\n    \"num_allocations\": 2,\n    \"num_threads\": 1,\n    \"model_id\": \".elser_model_2\",\n    \"deployment_id\": \".elser_model_2\"\n  },\n  \"chunking_settings\": {\n    \"strategy\": \"sentence\",\n    \"max_chunk_size\": 250,\n    \"sentence_overlap\": 1\n  }\n}"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "x-state": "Added in 8.13.0"
+      }
+    },
     "/_inference/{task_type}/{elser_inference_id}": {
       "put": {
         "tags": [
@@ -48827,6 +48939,77 @@
         "required": [
           "model_id"
         ]
+      },
+      "inference.put_elasticsearch:ElasticsearchTaskType": {
+        "type": "string",
+        "enum": [
+          "rerank",
+          "sparse_embedding",
+          "text_embedding"
+        ]
+      },
+      "inference.put_elasticsearch:ServiceType": {
+        "type": "string",
+        "enum": [
+          "elasticsearch"
+        ]
+      },
+      "inference.put_elasticsearch:ElasticsearchServiceSettings": {
+        "type": "object",
+        "properties": {
+          "adaptive_allocations": {
+            "$ref": "#/components/schemas/inference.put_elasticsearch:AdaptiveAllocations"
+          },
+          "deployment_id": {
+            "description": "The deployment identifier for a trained model deployment.\nWhen `deployment_id` is used the `model_id` is optional.",
+            "type": "string"
+          },
+          "model_id": {
+            "externalDocs": {
+              "url": "https://www.elastic.co/guide/en/machine-learning/current/ml-nlp-import-model.html#ml-nlp-import-script"
+            },
+            "description": "The name of the model to use for the inference task.\nIt can be the ID of a built-in model (for example, `.multilingual-e5-small` for E5) or a text embedding model that was uploaded by using the Eland client.",
+            "type": "string"
+          },
+          "num_allocations": {
+            "description": "The total number of allocations that are assigned to the model across machine learning nodes.\nIncreasing this value generally increases the throughput.\nIf adaptive allocations are enabled, do not set this value because it's automatically set.",
+            "type": "number"
+          },
+          "num_threads": {
+            "description": "The number of threads used by each model allocation during inference.\nThis setting generally increases the speed per inference request.\nThe inference process is a compute-bound process; `threads_per_allocations` must not exceed the number of available allocated processors per node.\nThe value must be a power of 2.\nThe maximum value is 32.",
+            "type": "number"
+          }
+        },
+        "required": [
+          "model_id",
+          "num_threads"
+        ]
+      },
+      "inference.put_elasticsearch:AdaptiveAllocations": {
+        "type": "object",
+        "properties": {
+          "enabled": {
+            "description": "Turn on `adaptive_allocations`.",
+            "type": "boolean"
+          },
+          "max_number_of_allocations": {
+            "description": "The maximum number of allocations to scale to.\nIf set, it must be greater than or equal to `min_number_of_allocations`.",
+            "type": "number"
+          },
+          "min_number_of_allocations": {
+            "description": "The minimum number of allocations to scale to.\nIf set, it must be greater than or equal to 0.\nIf not defined, the deployment scales to 0.",
+            "type": "number"
+          }
+        }
+      },
+      "inference.put_elasticsearch:ElasticsearchTaskSettings": {
+        "type": "object",
+        "properties": {
+          "return_documents": {
+            "description": "For a `rerank` task, return the document instead of only the index.",
+            "type": "boolean"
+          }
+        }
       },
       "inference.put_elser:ElserTaskType": {
         "type": "string",
