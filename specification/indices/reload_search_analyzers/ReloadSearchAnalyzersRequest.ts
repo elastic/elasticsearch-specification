@@ -55,5 +55,9 @@ export interface Request extends RequestBase {
     allow_no_indices?: boolean
     expand_wildcards?: ExpandWildcards
     ignore_unavailable?: boolean
+    /**
+     * Changed resource to reload analyzers from if applicable
+     */
+    resource?: string
   }
 }
