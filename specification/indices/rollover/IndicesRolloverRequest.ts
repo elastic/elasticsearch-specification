@@ -118,6 +118,12 @@ export interface Request extends RequestBase {
      * @server_default 1
      */
     wait_for_active_shards?: WaitForActiveShards
+    /**
+     * If set to true, the rollover action will only mark a data stream to signal that it needs to be rolled over at the next write.
+     * Only allowed on data streams.
+     * @server_default false
+     */
+    lazy?: boolean
   }
   body: {
     /**
