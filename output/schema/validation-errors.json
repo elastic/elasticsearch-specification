@@ -104,6 +104,78 @@
       ],
       "response": []
     },
+    "inference.put_alibabacloud": {
+      "request": [
+        "Missing request & response"
+      ],
+      "response": []
+    },
+    "inference.put_amazonbedrock": {
+      "request": [
+        "Missing request & response"
+      ],
+      "response": []
+    },
+    "inference.put_anthropic": {
+      "request": [
+        "Missing request & response"
+      ],
+      "response": []
+    },
+    "inference.put_azureaistudio": {
+      "request": [
+        "Missing request & response"
+      ],
+      "response": []
+    },
+    "inference.put_azureopenai": {
+      "request": [
+        "Missing request & response"
+      ],
+      "response": []
+    },
+    "inference.put_cohere": {
+      "request": [
+        "Missing request & response"
+      ],
+      "response": []
+    },
+    "inference.put_elasticsearch": {
+      "request": [
+        "Missing request & response"
+      ],
+      "response": []
+    },
+    "inference.put_elser": {
+      "request": [
+        "Missing request & response"
+      ],
+      "response": []
+    },
+    "inference.put_googleaistudio": {
+      "request": [
+        "Missing request & response"
+      ],
+      "response": []
+    },
+    "inference.put_googlevertexai": {
+      "request": [
+        "Missing request & response"
+      ],
+      "response": []
+    },
+    "inference.put_hugging_face": {
+      "request": [
+        "Missing request & response"
+      ],
+      "response": []
+    },
+    "inference.put_jinaai": {
+      "request": [
+        "Missing request & response"
+      ],
+      "response": []
+    },
     "inference.put_mistral": {
       "request": [
         "Missing request & response"
