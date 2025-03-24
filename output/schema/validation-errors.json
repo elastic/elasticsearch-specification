@@ -56,12 +56,6 @@
       ],
       "response": []
     },
-    "inference.post_eis_chat_completion": {
-      "request": [
-        "Request: url path '/_inference/{task_type}/{eis_inference_id}/_stream' not found in the json spec"
-      ],
-      "response": []
-    },
     "ingest.get_ip_location_database": {
       "request": [
         "Request: query parameter 'master_timeout' does not exist in the json spec"

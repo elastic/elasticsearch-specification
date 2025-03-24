@@ -9525,7 +9525,7 @@
         "x-state": "Added in 8.11.0"
       }
     },
-    "/_inference/{task_type}/{eis_inference_id}/_stream": {
+    "/_inference/chat_completion/{eis_inference_id}/_stream": {
       "post": {
         "tags": [
           "inference"
@@ -9534,17 +9534,6 @@
         "description": "Perform a chat completion inference task with the `elastic` service.",
         "operationId": "inference-post-eis-chat-completion",
         "parameters": [
-          {
-            "in": "path",
-            "name": "task_type",
-            "description": "The type of the inference task that the model will perform.",
-            "required": true,
-            "deprecated": false,
-            "schema": {
-              "$ref": "#/components/schemas/inference.post_eis_chat_completion:EisTaskType"
-            },
-            "style": "simple"
-          },
           {
             "in": "path",
             "name": "eis_inference_id",
@@ -48148,12 +48137,6 @@
       },
       "inference._types:ServiceSettings": {
         "type": "object"
-      },
-      "inference.post_eis_chat_completion:EisTaskType": {
-        "type": "string",
-        "enum": [
-          "chat_completion"
-        ]
       },
       "inference.put_eis:EisTaskType": {
         "type": "string",

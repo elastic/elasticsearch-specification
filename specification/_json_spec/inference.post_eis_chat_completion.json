@@ -16,10 +16,6 @@
           "path": "/_inference/chat_completion/{eis_inference_id}/_stream",
           "methods": ["POST"],
           "parts": {
-            "task_type": {
-              "type": "string",
-              "description": "The task type"
-            },
             "eis_inference_id": {
               "type": "string",
               "description": "The inference ID"

@@ -13238,10 +13238,7 @@ export interface InferenceGetResponse {
   endpoints: InferenceInferenceEndpointInfo[]
 }
 
-export type InferencePostEisChatCompletionEisTaskType = 'chat_completion'
-
 export interface InferencePostEisChatCompletionRequest extends InferenceRequestChatCompletionBase {
-  task_type: InferencePostEisChatCompletionEisTaskType
   eis_inference_id: Id
 }
 
