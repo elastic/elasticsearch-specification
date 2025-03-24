@@ -189,7 +189,7 @@ export class TrainedModelDeploymentNodesStats {
   /** The number of inference requests that were not processed because the queue was full. */
   rejection_execution_count?: integer
   /** The current routing state and reason for the current routing state for this allocation. */
-  routing_state: TrainedModelAssignmentRoutingTable
+  routing_state: TrainedModelAssignmentRoutingStateAndReason
   /** The epoch timestamp when the allocation started. */
   start_time?: EpochTime<UnitMillis>
   /** The number of threads used by each allocation during inference. */
@@ -425,6 +425,18 @@ export enum RoutingState {
    * The trained model is being deallocated from this node.
    */
   stopping
+}
+
+export class TrainedModelAssignmentRoutingStateAndReason {
+  /**
+   * The reason for the current state. It is usually populated only when the
+   * `routing_state` is `failed`.
+   */
+  reason?: string
+  /**
+   * The current routing state.
+   */
+  routing_state: RoutingState
 }
 
 export class TrainedModelAssignmentRoutingTable {

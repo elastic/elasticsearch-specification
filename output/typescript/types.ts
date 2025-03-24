@@ -15388,6 +15388,11 @@ export interface MlTrainedModelAssignment {
   task_parameters: MlTrainedModelAssignmentTaskParameters
 }
 
+export interface MlTrainedModelAssignmentRoutingStateAndReason {
+  reason?: string
+  routing_state: MlRoutingState
+}
+
 export interface MlTrainedModelAssignmentRoutingTable {
   reason?: string
   routing_state: MlRoutingState
@@ -15462,7 +15467,7 @@ export interface MlTrainedModelDeploymentNodesStats {
   number_of_pending_requests?: integer
   peak_throughput_per_minute: long
   rejection_execution_count?: integer
-  routing_state: MlTrainedModelAssignmentRoutingTable
+  routing_state: MlTrainedModelAssignmentRoutingStateAndReason
   start_time?: EpochTime<UnitMillis>
   threads_per_allocation?: integer
   throughput_last_minute: integer
