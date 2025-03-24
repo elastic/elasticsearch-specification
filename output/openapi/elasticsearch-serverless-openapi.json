@@ -9573,6 +9573,13 @@
                 "required": [
                   "input"
                 ]
+              },
+              "examples": {
+                "CompletionRequestExample1": {
+                  "summary": "Completion task",
+                  "description": "Run `POST _inference/completion/openai_chat_completions` to perform a completion on the example question.",
+                  "value": "{\n  \"input\": \"What is Elastic?\"\n}"
+                }
               }
             }
           }
@@ -9584,6 +9591,13 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/inference._types:CompletionInferenceResult"
+                },
+                "examples": {
+                  "CompletionResponseExample1": {
+                    "summary": "Completion task",
+                    "description": "A successful response from `POST _inference/completion/openai_chat_completions`.\n",
+                    "value": "{\n  \"completion\": [\n    {\n      \"result\": \"Elastic is a company that provides a range of software solutions for search, logging, security, and analytics. Their flagship product is Elasticsearch, an open-source, distributed search engine that allows users to search, analyze, and visualize large volumes of data in real-time. Elastic also offers products such as Kibana, a data visualization tool, and Logstash, a log management and pipeline tool, as well as various other tools and solutions for data analysis and management.\"\n    }\n  ]\n}"
+                  }
                 }
               }
             }
@@ -10169,6 +10183,13 @@
                   "query",
                   "input"
                 ]
+              },
+              "examples": {
+                "RerankRequestExample1": {
+                  "summary": "Rerank task",
+                  "description": "Run `POST _inference/rerank/cohere_rerank` to perform reranking on the example input.",
+                  "value": "{\n  \"input\": [\"luke\", \"like\", \"leia\", \"chewy\",\"r2d2\", \"star\", \"wars\"],\n  \"query\": \"star wars main character\"\n}"
+                }
               }
             }
           }
@@ -10180,6 +10201,13 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/inference._types:RerankedInferenceResult"
+                },
+                "examples": {
+                  "RerankResponseExample1": {
+                    "summary": "Rerank task",
+                    "description": "A successful response from `POST _inference/rerank/cohere_rerank`.\n",
+                    "value": "{\n  \"rerank\": [\n    {\n      \"index\": \"2\",\n      \"relevance_score\": \"0.011597361\",\n      \"text\": \"leia\"\n    },\n    {\n      \"index\": \"0\",\n      \"relevance_score\": \"0.006338922\",\n      \"text\": \"luke\"\n    },\n    {\n      \"index\": \"5\",\n      \"relevance_score\": \"0.0016166499\",\n      \"text\": \"star\"\n    },\n    {\n      \"index\": \"4\",\n      \"relevance_score\": \"0.0011695103\",\n      \"text\": \"r2d2\"\n    },\n    {\n      \"index\": \"1\",\n      \"relevance_score\": \"5.614787E-4\",\n      \"text\": \"like\"\n    },\n    {\n      \"index\": \"6\",\n      \"relevance_score\": \"3.7850367E-4\",\n      \"text\": \"wars\"\n    },\n    {\n      \"index\": \"3\",\n      \"relevance_score\": \"1.2508839E-5\",\n      \"text\": \"chewy\"\n    }\n  ]\n}"
+                  }
                 }
               }
             }
@@ -10245,6 +10273,13 @@
                 "required": [
                   "input"
                 ]
+              },
+              "examples": {
+                "SparseEmbeddingRequestExample1": {
+                  "summary": "Sparse embedding task",
+                  "description": "Run `POST _inference/sparse_embedding/my-elser-model` to perform sparse embedding on the example sentence.",
+                  "value": "{\n  \"input\": \"The sky above the port was the color of television tuned to a dead channel.\"\n}"
+                }
               }
             }
           }
@@ -10256,6 +10291,13 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/inference._types:SparseEmbeddingInferenceResult"
+                },
+                "examples": {
+                  "SparseEmbeddingResponseExample1": {
+                    "summary": "Sparse embedding task",
+                    "description": "An abbreviated response from `POST _inference/sparse_embedding/my-elser-model`.\n",
+                    "value": "{\n  \"sparse_embedding\": [\n    {\n      \"port\": 2.1259406,\n      \"sky\": 1.7073475,\n      \"color\": 1.6922266,\n      \"dead\": 1.6247464,\n      \"television\": 1.3525393,\n      \"above\": 1.2425821,\n      \"tuned\": 1.1440028,\n      \"colors\": 1.1218185,\n      \"tv\": 1.0111054,\n      \"ports\": 1.0067928,\n      \"poem\": 1.0042328,\n      \"channel\": 0.99471164,\n      \"tune\": 0.96235967,\n      \"scene\": 0.9020516\n    }\n  ]\n}"
+                  }
                 }
               }
             }
@@ -10321,6 +10363,13 @@
                 "required": [
                   "input"
                 ]
+              },
+              "examples": {
+                "TextEmbeddingRequestExample1": {
+                  "summary": "Text embedding task",
+                  "description": "Run `POST _inference/text_embedding/my-cohere-endpoint` to perform text embedding on the example sentence using the Cohere integration,",
+                  "value": "{\n  \"input\": \"The sky above the port was the color of television tuned to a dead channel.\",\n  \"task_settings\": {\n    \"input_type\": \"ingest\"\n  }\n}"
+                }
               }
             }
           }
@@ -10332,6 +10381,13 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/inference._types:TextEmbeddingInferenceResult"
+                },
+                "examples": {
+                  "TextEmbeddingResponseExample1": {
+                    "summary": "Text embedding task",
+                    "description": "An abbreviated response from `POST _inference/text_embedding/my-cohere-endpoint`.\n",
+                    "value": "{\n  \"text_embedding\": [\n    {\n      \"embedding\": [\n        {\n          0.018569946,\n          -0.036895752,\n          0.01486969,\n          -0.0045204163,\n          -0.04385376,\n          0.0075950623,\n          0.04260254,\n          -0.004005432,\n          0.007865906,\n          0.030792236,\n          -0.050476074,\n          0.011795044,\n          -0.011642456,\n          -0.010070801\n        }\n      ]\n    }\n  ]\n}"
+                  }
                 }
               }
             }
