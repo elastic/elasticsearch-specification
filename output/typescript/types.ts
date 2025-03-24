@@ -13109,6 +13109,17 @@ export interface InferenceRateLimitSetting {
   requests_per_minute?: integer
 }
 
+export interface InferenceRequestChatCompletionBase extends RequestBase {
+  messages: InferenceChatCompletionUnifiedMessage[]
+  model?: string
+  max_completion_tokens?: long
+  stop?: string[]
+  temperature?: float
+  tool_choice?: InferenceChatCompletionUnifiedCompletionToolType
+  tools?: InferenceChatCompletionUnifiedCompletionTool[]
+  top_p?: float
+}
+
 export interface InferenceRerankedInferenceResult {
   rerank: InferenceRankedDocument[]
 }
@@ -13180,19 +13191,9 @@ export interface InferenceChatCompletionUnifiedMessage {
 
 export type InferenceChatCompletionUnifiedMessageContent = string | InferenceChatCompletionUnifiedContentObject[]
 
-export interface InferenceChatCompletionUnifiedRequest extends RequestBase {
+export interface InferenceChatCompletionUnifiedRequest extends InferenceRequestChatCompletionBase {
   inference_id: Id
   timeout?: Duration
-  body?: {
-    messages: InferenceChatCompletionUnifiedMessage[]
-    model?: string
-    max_completion_tokens?: long
-    stop?: string[]
-    temperature?: float
-    tool_choice?: InferenceChatCompletionUnifiedCompletionToolType
-    tools?: InferenceChatCompletionUnifiedCompletionTool[]
-    top_p?: float
-  }
 }
 
 export type InferenceChatCompletionUnifiedResponse = StreamResult
@@ -13236,6 +13237,12 @@ export interface InferenceGetRequest extends RequestBase {
 export interface InferenceGetResponse {
   endpoints: InferenceInferenceEndpointInfo[]
 }
+
+export interface InferencePostEisChatCompletionRequest extends InferenceRequestChatCompletionBase {
+  eis_inference_id: Id
+}
+
+export type InferencePostEisChatCompletionResponse = StreamResult
 
 export interface InferencePutRequest extends RequestBase {
   task_type?: InferenceTaskType
