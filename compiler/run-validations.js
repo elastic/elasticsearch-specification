@@ -108,7 +108,7 @@ async function run () {
   const isCompilerInstalled = await $`[[ -d ${path.join(compilerPath, 'node_modules')} ]]`.exitCode === 0
   const isTsGeneratorInstalled = await $`[[ -d ${path.join(tsGeneratorPath, 'node_modules')} ]]`.exitCode === 0
   if (noCache || !isCompilerInstalled || !isTsGeneratorInstalled) {
-    spinner.text = 'It looks like you didn't install the project dependencies, doing that for you'
+    spinner.text = "It looks like you didn't install the project dependencies, doing that for you"
     await $`npm install --prefix ${compilerPath}`
     await $`npm install --prefix ${tsGeneratorPath}`
   }
