@@ -20964,6 +20964,14 @@ export interface TransformGetTransformStatsResponse {
   transforms: TransformGetTransformStatsTransformStats[]
 }
 
+export interface TransformGetTransformStatsTransformHealthIssue {
+  type: string
+  issue: string
+  details?: string
+  count: integer
+  first_occurrence?: EpochTime<UnitMillis>
+}
+
 export interface TransformGetTransformStatsTransformIndexerStats {
   delete_time_in_ms?: EpochTime<UnitMillis>
   documents_indexed: long
@@ -21004,6 +21012,7 @@ export interface TransformGetTransformStatsTransformStats {
 
 export interface TransformGetTransformStatsTransformStatsHealth {
   status: HealthStatus
+  issues?: TransformGetTransformStatsTransformHealthIssue[]
 }
 
 export interface TransformPreviewTransformRequest extends RequestBase {
