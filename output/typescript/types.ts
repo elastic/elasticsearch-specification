@@ -13099,6 +13099,19 @@ export interface InferenceInferenceEndpointInfo extends InferenceInferenceEndpoi
   task_type: InferenceTaskType
 }
 
+export interface InferenceOpenAIServiceSettings {
+  api_key: string
+  dimensions?: integer
+  model_id: string
+  organization_id?: string
+  rate_limit?: InferenceRateLimitSetting
+  url?: string
+}
+
+export interface InferenceOpenAITaskSettings {
+  user?: string
+}
+
 export interface InferenceRankedDocument {
   index: integer
   relevance_score: float
@@ -13265,19 +13278,6 @@ export type InferencePutEisResponse = InferenceInferenceEndpointInfo
 
 export type InferencePutEisServiceType = 'elastic'
 
-export interface InferencePutOpenaiOpenAIServiceSettings {
-  api_key: string
-  dimensions?: integer
-  model_id: string
-  organization_id?: string
-  rate_limit?: InferenceRateLimitSetting
-  url?: string
-}
-
-export interface InferencePutOpenaiOpenAITaskSettings {
-  user?: string
-}
-
 export type InferencePutOpenaiOpenAITaskType = 'chat_completion' | 'completion' | 'text_embedding'
 
 export interface InferencePutOpenaiRequest extends RequestBase {
@@ -13286,8 +13286,8 @@ export interface InferencePutOpenaiRequest extends RequestBase {
   body?: {
     chunking_settings?: InferenceInferenceChunkingSettings
     service: InferencePutOpenaiServiceType
-    service_settings: InferencePutOpenaiOpenAIServiceSettings
-    task_settings?: InferencePutOpenaiOpenAITaskSettings
+    service_settings: InferenceOpenAIServiceSettings
+    task_settings?: InferenceOpenAITaskSettings
   }
 }
 

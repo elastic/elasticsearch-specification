@@ -9683,10 +9683,10 @@
                     "$ref": "#/components/schemas/inference.put_openai:ServiceType"
                   },
                   "service_settings": {
-                    "$ref": "#/components/schemas/inference.put_openai:OpenAIServiceSettings"
+                    "$ref": "#/components/schemas/inference._types:OpenAIServiceSettings"
                   },
                   "task_settings": {
-                    "$ref": "#/components/schemas/inference.put_openai:OpenAITaskSettings"
+                    "$ref": "#/components/schemas/inference._types:OpenAITaskSettings"
                   }
                 },
                 "required": [
@@ -48358,7 +48358,7 @@
           "openai"
         ]
       },
-      "inference.put_openai:OpenAIServiceSettings": {
+      "inference._types:OpenAIServiceSettings": {
         "type": "object",
         "properties": {
           "api_key": {
@@ -48396,7 +48396,7 @@
           "model_id"
         ]
       },
-      "inference.put_openai:OpenAITaskSettings": {
+      "inference._types:OpenAITaskSettings": {
         "type": "object",
         "properties": {
           "user": {
