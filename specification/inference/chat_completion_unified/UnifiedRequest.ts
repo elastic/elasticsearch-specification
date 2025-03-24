@@ -17,10 +17,9 @@
  * under the License.
  */
 
+import { RequestChatCompletionBase } from '@inference/_types/CommonTypes'
 import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
-import { RequestBase } from '@_types/Base'
 import { Id } from '@_types/common'
-import { float, long } from '@_types/Numeric'
 import { Duration } from '@_types/Time'
 
 /**
@@ -30,7 +29,7 @@ import { Duration } from '@_types/Time'
  * @availability serverless stability=stable visibility=public
  * @doc_id inference-api-chat-completion
  */
-export interface Request extends RequestBase {
+export interface Request extends RequestChatCompletionBase {
   urls: [
     {
       path: '/_inference/chat_completion/{inference_id}/_stream'
@@ -49,40 +48,6 @@ export interface Request extends RequestBase {
      * @server_default 30s
      */
     timeout?: Duration
-  }
-  body: {
-    /**
-     * A list of objects representing the conversation.
-     */
-    messages: Array<Message>
-    /**
-     * The ID of the model to use.
-     */
-    model?: string
-    /**
-     * The upper bound limit for the number of tokens that can be generated for a completion request.
-     */
-    max_completion_tokens?: long
-    /**
-     * A sequence of strings to control when the model should stop generating additional tokens.
-     */
-    stop?: Array<string>
-    /**
-     * The sampling temperature to use.
-     */
-    temperature?: float
-    /**
-     * Controls which tool is called by the model.
-     */
-    tool_choice?: CompletionToolType
-    /**
-     * A list of tools that the model can call.
-     */
-    tools?: Array<CompletionTool>
-    /**
-     * Nucleus sampling, an alternative to sampling with temperature.
-     */
-    top_p?: float
   }
 }
 
