@@ -17,42 +17,30 @@
  * under the License.
  */
 
-import type { Request as RequestChatCompletion } from '../chat_completion_unified/UnifiedRequest'
+import { RequestChatCompletionBase } from '@inference/_types/CommonTypes'
 import { Id } from '@_types/common'
-
-
-export type OmittedChatCompletion = Omit<RequestChatCompletion, 'urls' | 'path_parts'>;
 
 /**
  * Perform a chat completion task through the Elastic Inference Service (EIS).
  *
  * Perform a chat completion inference task with the `elastic` service.
- * @rest_spec_name inference.post.eis_chat_completion
+ * @rest_spec_name inference.post_eis_chat_completion
  * @availability stack since=9.0.0 stability=stable visibility=public
  * @availability serverless stability=stable visibility=public
  * @cluster_privileges manage_inference
  * @doc_id inference-api-post-eis-chat-completion
  */
-export interface Request extends OmittedChatCompletion {
+export interface Request extends RequestChatCompletionBase {
   urls: [
     {
-      path: '/_inference/{task_type}/{eis_inference_id}/_stream'
+      path: '/_inference/chat_completion/{eis_inference_id}/_stream'
       methods: ['POST']
     }
   ]
   path_parts: {
-    /**
-     * The type of the inference task that the model will perform.
-     */
-    task_type: EisTaskType
     /**
      * The unique identifier of the inference endpoint.
      */
     eis_inference_id: Id
   }
 }
-
-export enum EisTaskType {
-  chat_completion
-}
-
