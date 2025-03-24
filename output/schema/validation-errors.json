@@ -13,12 +13,6 @@
       ],
       "response": []
     },
-    "capabilities": {
-      "request": [
-        "Missing request & response"
-      ],
-      "response": []
-    },
     "cat.aliases": {
       "request": [
         "Request: query parameter 'master_timeout' does not exist in the json spec",
@@ -182,30 +176,6 @@
       ],
       "response": []
     },
-    "connector.secret_delete": {
-      "request": [
-        "Missing request & response"
-      ],
-      "response": []
-    },
-    "connector.secret_get": {
-      "request": [
-        "Missing request & response"
-      ],
-      "response": []
-    },
-    "connector.secret_post": {
-      "request": [
-        "Missing request & response"
-      ],
-      "response": []
-    },
-    "connector.secret_put": {
-      "request": [
-        "Missing request & response"
-      ],
-      "response": []
-    },
     "create": {
       "request": [
         "Request: query parameter 'if_primary_term' does not exist in the json spec",
@@ -229,24 +199,6 @@
         "Request: query parameter 'keep_alive' does not exist in the json spec",
         "Request: query parameter 'keep_on_completion' does not exist in the json spec",
         "Request: query parameter 'wait_for_completion_timeout' does not exist in the json spec"
-      ],
-      "response": []
-    },
-    "fleet.delete_secret": {
-      "request": [
-        "Missing request & response"
-      ],
-      "response": []
-    },
-    "fleet.get_secret": {
-      "request": [
-        "Missing request & response"
-      ],
-      "response": []
-    },
-    "fleet.post_secret": {
-      "request": [
-        "Missing request & response"
       ],
       "response": []
     },
@@ -300,12 +252,6 @@
     "index": {
       "request": [
         "Request: missing json spec query parameter 'require_data_stream'"
-      ],
-      "response": []
-    },
-    "inference.put_mistral": {
-      "request": [
-        "Missing request & response"
       ],
       "response": []
     },
@@ -416,12 +362,6 @@
     "snapshot.repository_analyze": {
       "request": [
         "Request: query parameter 'register_operation_count' does not exist in the json spec"
-      ],
-      "response": []
-    },
-    "transform.get_node_stats": {
-      "request": [
-        "Missing request & response"
       ],
       "response": []
     },
