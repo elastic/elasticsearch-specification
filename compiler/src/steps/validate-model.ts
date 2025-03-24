@@ -215,14 +215,7 @@ export default async function validateModel (apiModel: model.Model, restSpec: Ma
       return
     }
 
-    if (endpoint.request == null) {
-      if (endpoint.response == null) {
-        modelError('Missing request & response')
-        return
-      } else {
-        modelError('Missing request')
-      }
-    } else {
+    if (endpoint.request !== null) {
       const reqType = getTypeDef(endpoint.request)
 
       if (reqType == null) {
@@ -266,9 +259,7 @@ export default async function validateModel (apiModel: model.Model, restSpec: Ma
 
     setRootContext(endpoint.name, 'response')
 
-    if (endpoint.response == null) {
-      modelError('Missing response')
-    } else {
+    if (endpoint.response !== null) {
       const respType = getTypeDef(endpoint.response)
 
       if (respType == null) {

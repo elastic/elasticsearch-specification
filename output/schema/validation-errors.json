@@ -6,12 +6,6 @@
       ],
       "response": []
     },
-    "capabilities": {
-      "request": [
-        "Missing request & response"
-      ],
-      "response": []
-    },
     "cluster.get_component_template": {
       "request": [
         "Request: query parameter 'flat_settings' does not exist in the json spec"
@@ -21,30 +15,6 @@
     "cluster.put_component_template": {
       "request": [
         "Request: missing json spec query parameter 'timeout'"
-      ],
-      "response": []
-    },
-    "connector.secret_delete": {
-      "request": [
-        "Missing request & response"
-      ],
-      "response": []
-    },
-    "connector.secret_get": {
-      "request": [
-        "Missing request & response"
-      ],
-      "response": []
-    },
-    "connector.secret_post": {
-      "request": [
-        "Missing request & response"
-      ],
-      "response": []
-    },
-    "connector.secret_put": {
-      "request": [
-        "Missing request & response"
       ],
       "response": []
     },
@@ -71,24 +41,6 @@
         "Request: query parameter 'keep_alive' does not exist in the json spec",
         "Request: query parameter 'keep_on_completion' does not exist in the json spec",
         "Request: query parameter 'wait_for_completion_timeout' does not exist in the json spec"
-      ],
-      "response": []
-    },
-    "fleet.delete_secret": {
-      "request": [
-        "Missing request & response"
-      ],
-      "response": []
-    },
-    "fleet.get_secret": {
-      "request": [
-        "Missing request & response"
-      ],
-      "response": []
-    },
-    "fleet.post_secret": {
-      "request": [
-        "Missing request & response"
       ],
       "response": []
     },
@@ -189,12 +141,6 @@
     "snapshot.repository_analyze": {
       "request": [
         "Request: query parameter 'register_operation_count' does not exist in the json spec"
-      ],
-      "response": []
-    },
-    "transform.get_node_stats": {
-      "request": [
-        "Missing request & response"
       ],
       "response": []
     },
