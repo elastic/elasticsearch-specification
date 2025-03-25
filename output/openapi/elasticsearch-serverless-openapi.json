@@ -10069,6 +10069,92 @@
         "x-state": "Added in 8.16.0"
       }
     },
+    "/_inference/{task_type}/{azureaistudio_inference_id}": {
+      "put": {
+        "tags": [
+          "inference"
+        ],
+        "summary": "Create an Azure AI studio inference endpoint",
+        "description": "Create an inference endpoint to perform an inference task with the `azureaistudio` service.\n\nWhen you create an inference endpoint, the associated machine learning model is automatically deployed if it is not already running.\nAfter creating the endpoint, wait for the model deployment to complete before using it.\nTo verify the deployment status, use the get trained model statistics API.\nLook for `\"state\": \"fully_allocated\"` in the response and ensure that the `\"allocation_count\"` matches the `\"target_allocation_count\"`.\nAvoid creating multiple endpoints for the same model unless required, as each endpoint consumes significant resources.",
+        "operationId": "inference-put-azureaistudio",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "task_type",
+            "description": "The type of the inference task that the model will perform.",
+            "required": true,
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/inference.put_azureaistudio:AzureAiStudioTaskType"
+            },
+            "style": "simple"
+          },
+          {
+            "in": "path",
+            "name": "azureaistudio_inference_id",
+            "description": "The unique identifier of the inference endpoint.",
+            "required": true,
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/_types:Id"
+            },
+            "style": "simple"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "chunking_settings": {
+                    "$ref": "#/components/schemas/inference._types:InferenceChunkingSettings"
+                  },
+                  "service": {
+                    "$ref": "#/components/schemas/inference.put_azureaistudio:ServiceType"
+                  },
+                  "service_settings": {
+                    "$ref": "#/components/schemas/inference.put_azureaistudio:AzureAiStudioServiceSettings"
+                  },
+                  "task_settings": {
+                    "$ref": "#/components/schemas/inference.put_azureaistudio:AzureAiStudioTaskSettings"
+                  }
+                },
+                "required": [
+                  "service",
+                  "service_settings"
+                ]
+              },
+              "examples": {
+                "PutAzureAiStudioRequestExample1": {
+                  "summary": "A text embedding task",
+                  "description": "Run `PUT _inference/text_embedding/azure_ai_studio_embeddings` to create an inference endpoint that performs a text_embedding task. Note that you do not specify a model here, as it is defined already in the Azure AI Studio deployment.",
+                  "value": "{\n    \"service\": \"azureaistudio\",\n    \"service_settings\": {\n        \"api_key\": \"Azure-AI-Studio-API-key\",\n        \"target\": \"Target-Uri\",\n        \"provider\": \"openai\",\n        \"endpoint_type\": \"token\"\n    }\n}"
+                },
+                "PutAzureAiStudioRequestExample2": {
+                  "summary": "A completion task",
+                  "description": "Run `PUT _inference/completion/azure_ai_studio_completion` to create an inference endpoint that performs a completion task.",
+                  "value": "{\n    \"service\": \"azureaistudio\",\n    \"service_settings\": {\n        \"api_key\": \"Azure-AI-Studio-API-key\",\n        \"target\": \"Target-URI\",\n        \"provider\": \"databricks\",\n        \"endpoint_type\": \"realtime\"\n    }\n}"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/inference._types:InferenceEndpointInfo"
+                }
+              }
+            }
+          }
+        },
+        "x-state": "Added in 8.14.0"
+      }
+    },
     "/_inference/{task_type}/{azureopenai_inference_id}": {
       "put": {
         "tags": [
@@ -49555,6 +49641,80 @@
         "required": [
           "max_tokens"
         ]
+      },
+      "inference.put_azureaistudio:AzureAiStudioTaskType": {
+        "type": "string",
+        "enum": [
+          "completion",
+          "text_embedding"
+        ]
+      },
+      "inference.put_azureaistudio:ServiceType": {
+        "type": "string",
+        "enum": [
+          "azureaistudio"
+        ]
+      },
+      "inference.put_azureaistudio:AzureAiStudioServiceSettings": {
+        "type": "object",
+        "properties": {
+          "api_key": {
+            "externalDocs": {
+              "url": "https://ai.azure.com/"
+            },
+            "description": "A valid API key of your Azure AI Studio model deployment.\nThis key can be found on the overview page for your deployment in the management section of your Azure AI Studio account.\n\nIMPORTANT: You need to provide the API key only once, during the inference model creation.\nThe get inference endpoint API does not retrieve your API key.\nAfter creating the inference model, you cannot change the associated API key.\nIf you want to use a different API key, delete the inference model and recreate it with the same name and the updated API key.",
+            "type": "string"
+          },
+          "endpoint_type": {
+            "externalDocs": {
+              "url": "https://learn.microsoft.com/en-us/azure/ai-foundry/concepts/deployments-overview#billing-for-deploying-and-inferencing-llms-in-azure-ai-studio"
+            },
+            "description": "The type of endpoint that is available for deployment through Azure AI Studio: `token` or `realtime`.\nThe `token` endpoint type is for \"pay as you go\" endpoints that are billed per token.\nThe `realtime` endpoint type is for \"real-time\" endpoints that are billed per hour of usage.",
+            "type": "string"
+          },
+          "target": {
+            "description": "The target URL of your Azure AI Studio model deployment.\nThis can be found on the overview page for your deployment in the management section of your Azure AI Studio account.",
+            "type": "string"
+          },
+          "provider": {
+            "description": "The model provider for your deployment.\nNote that some providers may support only certain task types.\nSupported providers include:\n\n* `cohere` - available for `text_embedding` and `completion` task types\n* `databricks` - available for `completion` task type only\n* `meta` - available for `completion` task type only\n* `microsoft_phi` - available for `completion` task type only\n* `mistral` - available for `completion` task type only\n* `openai` - available for `text_embedding` and `completion` task types",
+            "type": "string"
+          },
+          "rate_limit": {
+            "$ref": "#/components/schemas/inference._types:RateLimitSetting"
+          }
+        },
+        "required": [
+          "api_key",
+          "endpoint_type",
+          "target",
+          "provider"
+        ]
+      },
+      "inference.put_azureaistudio:AzureAiStudioTaskSettings": {
+        "type": "object",
+        "properties": {
+          "do_sample": {
+            "description": "For a `completion` task, instruct the inference process to perform sampling.\nIt has no effect unless `temperature` or `top_p` is specified.",
+            "type": "number"
+          },
+          "max_new_tokens": {
+            "description": "For a `completion` task, provide a hint for the maximum number of output tokens to be generated.",
+            "type": "number"
+          },
+          "temperature": {
+            "description": "For a `completion` task, control the apparent creativity of generated completions with a sampling temperature.\nIt must be a number in the range of 0.0 to 2.0.\nIt should not be used if `top_p` is specified.",
+            "type": "number"
+          },
+          "top_p": {
+            "description": "For a `completion` task, make the model consider the results of the tokens with nucleus sampling probability.\nIt is an alternative value to `temperature` and must be a number in the range of 0.0 to 2.0.\nIt should not be used if `temperature` is specified.",
+            "type": "number"
+          },
+          "user": {
+            "description": "For a `text_embedding` task, specify the user issuing the request.\nThis information can be used for abuse detection.",
+            "type": "string"
+          }
+        }
       },
       "inference.put_azureopenai:AzureOpenAITaskType": {
         "type": "string",
