@@ -42,7 +42,7 @@ import { float, integer } from '@_types/Numeric'
  * @availability stack since=8.12.0 stability=stable visibility=public
  * @availability serverless stability=stable visibility=public
  * @cluster_privileges manage_inference
- * @doc_id inference-api-amazonbedrock
+ * @doc_id inference-api-put-amazonbedrock
  */
 export interface Request extends RequestBase {
   urls: [
