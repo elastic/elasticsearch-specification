@@ -30,6 +30,10 @@ autoscaling-put-autoscaling-policy,https://www.elastic.co/docs/api/doc/elasticse
 avoid-index-pattern-collisions,https://www.elastic.co/guide/en/elasticsearch/reference/current/index-templates.html#avoid-index-pattern-collisions
 azureaistudio-api-keys,https://ai.azure.com/
 azureaistudio-endpoint-types,https://learn.microsoft.com/en-us/azure/ai-foundry/concepts/deployments-overview#billing-for-deploying-and-inferencing-llms-in-azure-ai-studio
+azureopenai,https://oai.azure.com/
+azureopenai-auth,https://learn.microsoft.com/en-us/azure/ai-services/openai/reference#authentication
+azureopenai-portal,https://portal.azure.com/#view/HubsExtension/BrowseAll
+azureopenai-quota-limits,https://learn.microsoft.com/en-us/azure/ai-services/openai/quotas-limits
 behavioral-analytics-collection-event,https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-search-application-post-behavioral-analytics-event
 behavioral-analytics-event-reference,https://www.elastic.co/guide/en/elasticsearch/reference/current/behavioral-analytics-event-reference.html
 byte-units,https://www.elastic.co/guide/en/elasticsearch/reference/current/api-conventions.html#byte-units
@@ -336,6 +340,7 @@ inference-api-put,https://www.elastic.co/docs/api/doc/elasticsearch/operation/op
 inference-api-put-alibabacloud,https://www.elastic.co/guide/en/elasticsearch/reference/current/infer-service-alibabacloud-ai-search.html
 inference-api-amazonbedrock,https://www.elastic.co/guide/en/elasticsearch/reference/current/infer-service-amazon-bedrock.html
 inference-api-put-azureaistudio,https://www.elastic.co/guide/en/elasticsearch/reference/current/infer-service-azure-ai-studio.html
+inference-api-put-azureopenai,https://www.elastic.co/guide/en/elasticsearch/reference/current/infer-service-azure-openai.html
 inference-api-put-cohere,https://www.elastic.co/guide/en/elasticsearch/reference/current/infer-service-cohere.html
 inference-api-put-eis,https://www.elastic.co/guide/en/elasticsearch/reference/current/infer-service-eis.html
 inference-api-put-elasticsearch,https://www.elastic.co/guide/en/elasticsearch/reference/current/infer-service-elasticsearch.html
