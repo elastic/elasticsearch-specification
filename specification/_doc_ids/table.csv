@@ -99,6 +99,8 @@ cluster-state,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/c
 cluster-stats,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/cluster-stats.html
 cluster-update-settings,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/cluster-update-settings.html
 cluster,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/cluster.html
+cohere-api-keys,https://dashboard.cohere.com/api-keys
+cohere-models,https://docs.cohere.com/docs/models#command
 common-options,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/common-options.html
 community-id-processor,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/community-id-processor.html
 connector-sync-job-cancel,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/cancel-connector-sync-job-api.html
@@ -330,6 +332,7 @@ inference-api-post-eis-chat-completion,https://www.elastic.co/guide/en/elasticse
 inference-api-put,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/put-inference-api.html
 inference-api-put-alibabacloud,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/infer-service-alibabacloud-ai-search.html
 inference-api-put-azureopenai,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/infer-service-azure-openai.html
+inference-api-put-cohere,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/infer-service-cohere.html
 inference-api-put-eis,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/infer-service-elastic.html
 inference-api-put-googleaistudio,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/infer-service-google-ai-studio.html
 inference-api-put-googlevertexai,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/infer-service-google-vertex-ai.html
