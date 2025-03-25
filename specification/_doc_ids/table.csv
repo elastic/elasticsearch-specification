@@ -2,6 +2,7 @@ apis,https://www.elastic.co/docs/api/doc/elasticsearch/v8
 add-nodes,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/add-elasticsearch-nodes.html
 alias-update,https://www.elastic.co/docs/api/doc/elasticsearch/v8/operation/operation-indices-put-alias
 aliases-update,https://www.elastic.co/docs/api/doc/elasticsearch/v8/operation/operation-indices-update-aliases
+alibabacloud-api-keys,https://opensearch.console.aliyun.com/cn-shanghai/rag/api-key
 analysis-analyzers,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/analysis-analyzers.html
 analysis-charfilters,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/analysis-charfilters.html
 analysis-normalizers,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/analysis-normalizers.html
@@ -320,6 +321,7 @@ inference-api-get,https://www.elastic.co/guide/en/elasticsearch/reference/{branc
 inference-api-post,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/post-inference-api.html
 inference-api-post-eis-chat-completion,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/post-inference-api.html
 inference-api-put,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/put-inference-api.html
+inference-api-put-alibabacloud,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/infer-service-alibabacloud-ai-search.html
 inference-api-put-eis,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/infer-service-elastic.html
 inference-api-put-huggingface,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/infer-service-hugging-face.html
 inference-api-put-jinaai,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/infer-service-jinaai.html
