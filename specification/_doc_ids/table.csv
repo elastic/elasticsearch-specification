@@ -3,6 +3,8 @@ add-nodes,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/add-e
 alias-update,https://www.elastic.co/docs/api/doc/elasticsearch/v8/operation/operation-indices-put-alias
 aliases-update,https://www.elastic.co/docs/api/doc/elasticsearch/v8/operation/operation-indices-update-aliases
 alibabacloud-api-keys,https://opensearch.console.aliyun.com/cn-shanghai/rag/api-key
+amazonbedrock-models,https://docs.aws.amazon.com/bedrock/latest/userguide/models-supported.html
+amazonbedrock-secret-keys,https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_access-keys.html
 analysis-analyzers,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/analysis-analyzers.html
 analysis-charfilters,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/analysis-charfilters.html
 analysis-normalizers,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/analysis-normalizers.html
@@ -329,6 +331,7 @@ indices-update-settings,https://www.elastic.co/guide/en/elasticsearch/reference/
 infer-trained-model,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/infer-trained-model.html
 infer-trained-model-deployment,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/infer-trained-model-deployment.html
 inference-api-anthropic,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/infer-service-anthropic.html
+inference-api-amazonbedrock,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/infer-service-amazon-bedrock.html
 inference-api-delete,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/delete-inference-api.html
 inference-api-get,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/get-inference-api.html
 inference-api-post,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/post-inference-api.html
