@@ -13333,6 +13333,29 @@ export type InferencePutJinaaiSimilarityType = 'cosine' | 'dot_product' | 'l2_no
 
 export type InferencePutJinaaiTextEmbeddingTask = 'classification' | 'clustering' | 'ingest' | 'search'
 
+export interface InferencePutMistralMistralServiceSettings {
+  api_key: string
+  max_input_tokens?: integer
+  model: string
+  rate_limit?: InferenceRateLimitSetting
+}
+
+export type InferencePutMistralMistralTaskType = 'text_embedding'
+
+export interface InferencePutMistralRequest extends RequestBase {
+  task_type: InferencePutMistralMistralTaskType
+  mistral_inference_id: Id
+  body?: {
+    chunking_settings?: InferenceInferenceChunkingSettings
+    service: InferencePutMistralServiceType
+    service_settings: InferencePutMistralMistralServiceSettings
+  }
+}
+
+export type InferencePutMistralResponse = InferenceInferenceEndpointInfo
+
+export type InferencePutMistralServiceType = 'mistral'
+
 export interface InferencePutOpenaiOpenAIServiceSettings {
   api_key: string
   dimensions?: integer
