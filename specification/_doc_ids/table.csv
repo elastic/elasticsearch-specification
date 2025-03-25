@@ -350,6 +350,7 @@ inference-api-put-huggingface,https://www.elastic.co/guide/en/elasticsearch/refe
 inference-api-put-jinaai,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/infer-service-jinaai.html
 inference-api-put-googlevertexai,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/infer-service-google-vertex-ai.html
 inference-api-put-googleaistudio,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/infer-service-google-ai-studio.html
+inference-api-put-mistral,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/infer-service-mistral.html
 inference-api-put-openai,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/infer-service-openai.html
 inference-api-put-voyageai,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/infer-service-voyageai.html
 inference-api-put-watsonx,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/infer-service-watsonx-ai.html
@@ -401,6 +402,8 @@ migrate,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/migrate
 migrate-index-allocation-filters,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/migrate-index-allocation-filters.html
 migration-api-deprecation,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/migration-api-deprecation.html
 migration-api-feature-upgrade,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/feature-migration-api.html
+mistral-api-keys,https://console.mistral.ai/api-keys/
+mistral-api-models,https://docs.mistral.ai/getting-started/models/
 ml-apis,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/ml-apis.html
 ml-classification,https://www.elastic.co/guide/en/machine-learning/{branch}/ml-dfa-classification.html
 ml-close-job,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/ml-close-job.html
