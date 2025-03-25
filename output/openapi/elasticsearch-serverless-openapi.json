@@ -9903,6 +9903,86 @@
         "x-state": "Added in 8.16.0"
       }
     },
+    "/_inference/{task_type}/{anthropic_inference_id}": {
+      "put": {
+        "tags": [
+          "inference"
+        ],
+        "summary": "Create an Anthropic inference endpoint",
+        "description": "Create an inference endpoint to perform an inference task with the `anthropic` service.\n\nWhen you create an inference endpoint, the associated machine learning model is automatically deployed if it is not already running.\nAfter creating the endpoint, wait for the model deployment to complete before using it.\nTo verify the deployment status, use the get trained model statistics API.\nLook for `\"state\": \"fully_allocated\"` in the response and ensure that the `\"allocation_count\"` matches the `\"target_allocation_count\"`.\nAvoid creating multiple endpoints for the same model unless required, as each endpoint consumes significant resources.",
+        "operationId": "inference-put-anthropic",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "task_type",
+            "description": "The task type.\nThe only valid task type for the model to perform is `completion`.",
+            "required": true,
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/inference.put_anthropic:AnthropicTaskType"
+            },
+            "style": "simple"
+          },
+          {
+            "in": "path",
+            "name": "anthropic_inference_id",
+            "description": "The unique identifier of the inference endpoint.",
+            "required": true,
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/_types:Id"
+            },
+            "style": "simple"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "chunking_settings": {
+                    "$ref": "#/components/schemas/inference._types:InferenceChunkingSettings"
+                  },
+                  "service": {
+                    "$ref": "#/components/schemas/inference.put_anthropic:ServiceType"
+                  },
+                  "service_settings": {
+                    "$ref": "#/components/schemas/inference.put_anthropic:AnthropicServiceSettings"
+                  },
+                  "task_settings": {
+                    "$ref": "#/components/schemas/inference.put_anthropic:AnthropicTaskSettings"
+                  }
+                },
+                "required": [
+                  "service",
+                  "service_settings"
+                ]
+              },
+              "examples": {
+                "PutAnthropicRequestExample1": {
+                  "description": "Run `PUT _inference/completion/anthropic_completion` to create an inference endpoint that performs a completion task.",
+                  "value": "{\n    \"service\": \"anthropic\",\n    \"service_settings\": {\n        \"api_key\": \"Anthropic-Api-Key\",\n        \"model_id\": \"Model-ID\"\n    },\n    \"task_settings\": {\n        \"max_tokens\": 1024\n    }\n}"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/inference._types:InferenceEndpointInfo"
+                }
+              }
+            }
+          }
+        },
+        "x-state": "Added in 8.16.0"
+      }
+    },
     "/_inference/{task_type}/{azureopenai_inference_id}": {
       "put": {
         "tags": [
@@ -10973,7 +11053,7 @@
                 ]
               },
               "examples": {
-                "InferenceRequestExample1": {
+                "PutWatsonxRequestExample1": {
                   "description": "Run `PUT _inference/text_embedding/watsonx-embeddings` to create an Watonsx inference endpoint that performs a text embedding task.",
                   "value": "{\n  \"service\": \"watsonxai\",\n  \"service_settings\": {\n      \"api_key\": \"Watsonx-API-Key\", \n      \"url\": \"Wastonx-URL\", \n      \"model_id\": \"ibm/slate-30m-english-rtrvr\",\n      \"project_id\": \"IBM-Cloud-ID\", \n      \"api_version\": \"2024-03-14\"\n  }\n}"
                 }
@@ -49253,6 +49333,65 @@
             "type": "boolean"
           }
         }
+      },
+      "inference.put_anthropic:AnthropicTaskType": {
+        "type": "string",
+        "enum": [
+          "completion"
+        ]
+      },
+      "inference.put_anthropic:ServiceType": {
+        "type": "string",
+        "enum": [
+          "anthropic"
+        ]
+      },
+      "inference.put_anthropic:AnthropicServiceSettings": {
+        "type": "object",
+        "properties": {
+          "api_key": {
+            "description": "A valid API key for the Anthropic API.",
+            "type": "string"
+          },
+          "model_id": {
+            "description": "The name of the model to use for the inference task.\nRefer to the Anthropic documentation for the list of supported models.",
+            "type": "string"
+          },
+          "rate_limit": {
+            "$ref": "#/components/schemas/inference._types:RateLimitSetting"
+          }
+        },
+        "required": [
+          "api_key",
+          "model_id"
+        ]
+      },
+      "inference.put_anthropic:AnthropicTaskSettings": {
+        "type": "object",
+        "properties": {
+          "max_tokens": {
+            "description": "For a `completion` task, it is the maximum number of tokens to generate before stopping.",
+            "type": "number"
+          },
+          "temperature": {
+            "externalDocs": {
+              "url": "https://docs.anthropic.com/en/api/messages"
+            },
+            "description": "For a `completion` task, it is the amount of randomness injected into the response.\nFor more details about the supported range, refer to Anthropic documentation.",
+            "type": "number"
+          },
+          "top_k": {
+            "description": "For a `completion` task, it specifies to only sample from the top K options for each subsequent token.\nIt is recommended for advanced use cases only.\nYou usually only need to use `temperature`.",
+            "type": "number"
+          },
+          "top_p": {
+            "description": "For a `completion` task, it specifies to use Anthropic's nucleus sampling.\nIn nucleus sampling, Anthropic computes the cumulative distribution over all the options for each subsequent token in decreasing probability order and cuts it off once it reaches the specified probability.\nYou should either alter `temperature` or `top_p`, but not both.\nIt is recommended for advanced use cases only.\nYou usually only need to use `temperature`.",
+            "type": "number"
+          }
+        },
+        "required": [
+          "max_tokens"
+        ]
       },
       "inference.put_azureopenai:AzureOpenAITaskType": {
         "type": "string",
