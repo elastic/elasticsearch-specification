@@ -333,6 +333,7 @@ inference-api-put-azureopenai,https://www.elastic.co/guide/en/elasticsearch/refe
 inference-api-put-eis,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/infer-service-elastic.html
 inference-api-put-googleaistudio,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/infer-service-google-ai-studio.html
 inference-api-put-googlevertexai,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/infer-service-google-vertex-ai.html
+inference-api-put-elser,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/infer-service-elser.html
 inference-api-put-huggingface,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/infer-service-hugging-face.html
 inference-api-put-jinaai,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/infer-service-jinaai.html
 inference-api-put-mistral,https://www.elastic.co/guide/en/elasticsearch/reference/{brnach}/infer-service-mistral.html
@@ -342,7 +343,7 @@ inference-api-put-watsonx,https://www.elastic.co/guide/en/elasticsearch/referenc
 inference-api-stream,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/stream-inference-api.html
 inference-api-chat-completion,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/chat-completion-inference-api.html
 inference-api-update,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/update-inference-api.html
-inference-chunking,https://www.elastic.co/guide/en/elasticsearch/reference/current/inference-apis.html#infer-chunking-config
+inference-chunking,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/inference-apis.html#infer-chunking-config
 inference-processor,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/inference-processor.html
 info-api,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/info-api.html
 ingest,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/ingest.html
@@ -352,7 +353,7 @@ inner-hits,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/inne
 ip-location-delete-database,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/delete-ip-location-database-api.html
 jinaAi-embeddings,https://jina.ai/embeddings/
 jinaAi-rate-limit,https://jina.ai/contact-sales/#rate-limit
-join-processor,https://www.elastic.co/guide/en/elasticsearch/reference/current/join-processor.html
+join-processor,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/join-processor.html
 ip-location-get-database,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/get-ip-location-database-api.html
 ip-location-put-database,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/put-ip-location-database-api.html
 join-processor,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/join-processor.html
