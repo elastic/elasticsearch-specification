@@ -23,7 +23,7 @@ import { Id } from '@_types/common'
 import { integer } from '@_types/Numeric'
 
 /**
- * Create an OpenAI inference endpoint.
+ * Create an Elasticsearch inference endpoint.
  *
  * Create an inference endpoint to perform an inference task with the `elasticsearch` service.
  *
