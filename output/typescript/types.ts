@@ -13310,6 +13310,36 @@ export type InferencePutAmazonbedrockResponse = InferenceInferenceEndpointInfo
 
 export type InferencePutAmazonbedrockServiceType = 'amazonbedrock'
 
+export interface InferencePutAnthropicAnthropicServiceSettings {
+  api_key: string
+  model_id: string
+  rate_limit?: InferenceRateLimitSetting
+}
+
+export interface InferencePutAnthropicAnthropicTaskSettings {
+  max_tokens: integer
+  temperature?: float
+  top_k?: integer
+  top_p?: float
+}
+
+export type InferencePutAnthropicAnthropicTaskType = 'completion'
+
+export interface InferencePutAnthropicRequest extends RequestBase {
+  task_type: InferencePutAnthropicAnthropicTaskType
+  anthropic_inference_id: Id
+  body?: {
+    chunking_settings?: InferenceInferenceChunkingSettings
+    service: InferencePutAnthropicServiceType
+    service_settings: InferencePutAnthropicAnthropicServiceSettings
+    task_settings?: InferencePutAnthropicAnthropicTaskSettings
+  }
+}
+
+export type InferencePutAnthropicResponse = InferenceInferenceEndpointInfo
+
+export type InferencePutAnthropicServiceType = 'anthropic'
+
 export interface InferencePutAzureaistudioAzureAiStudioServiceSettings {
   api_key: string
   endpoint_type: string
