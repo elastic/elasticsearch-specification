@@ -13478,6 +13478,34 @@ export type InferencePutElasticsearchResponse = InferenceInferenceEndpointInfo
 
 export type InferencePutElasticsearchServiceType = 'elasticsearch'
 
+export interface InferencePutElserAdaptiveAllocations {
+  enabled?: boolean
+  max_number_of_allocations?: integer
+  min_number_of_allocations?: integer
+}
+
+export interface InferencePutElserElserServiceSettings {
+  adaptive_allocations?: InferencePutElserAdaptiveAllocations
+  num_allocations: integer
+  num_threads: integer
+}
+
+export type InferencePutElserElserTaskType = 'sparse_embedding'
+
+export interface InferencePutElserRequest extends RequestBase {
+  task_type: InferencePutElserElserTaskType
+  elser_inference_id: Id
+  body?: {
+    chunking_settings?: InferenceInferenceChunkingSettings
+    service: InferencePutElserServiceType
+    service_settings: InferencePutElserElserServiceSettings
+  }
+}
+
+export type InferencePutElserResponse = InferenceInferenceEndpointInfo
+
+export type InferencePutElserServiceType = 'elser'
+
 export interface InferencePutHuggingFaceHuggingFaceServiceSettings {
   api_key: string
   rate_limit?: InferenceRateLimitSetting
