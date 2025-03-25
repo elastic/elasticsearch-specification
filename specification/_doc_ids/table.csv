@@ -244,6 +244,7 @@ grok,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/grok.html
 grok-processor,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/grok-processor.html
 gsub-processor,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/gsub-processor.html
 health-api,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/health-api.html
+huggingface-tokens,https://huggingface.co/settings/tokens
 ilm-delete-lifecycle,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/ilm-delete-lifecycle.html
 ilm-explain-lifecycle,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/ilm-explain-lifecycle.html
 ilm-get-lifecycle,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/ilm-get-lifecycle.html
@@ -320,6 +321,7 @@ inference-api-post,https://www.elastic.co/guide/en/elasticsearch/reference/{bran
 inference-api-post-eis-chat-completion,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/post-inference-api.html
 inference-api-put,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/put-inference-api.html
 inference-api-put-eis,https://www.elastic.co/guide/en/elasticsearch/reference/current/infer-service-elastic.html
+inference-api-put-huggingface,https://www.elastic.co/guide/en/elasticsearch/reference/current/infer-service-hugging-face.html
 inference-api-put-openai,https://www.elastic.co/guide/en/elasticsearch/reference/current/infer-service-openai.html
 inference-api-put-voyageai,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/infer-service-voyageai.html
 inference-api-put-watsonx,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/infer-service-watsonx-ai.html
