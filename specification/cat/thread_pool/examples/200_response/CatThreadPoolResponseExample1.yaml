@@ -1,11 +1,44 @@
 summary: Default columns
 description: >
-  A successful response from `GET /_cat/thread_pool`.
+  A successful response from `GET /_cat/thread_pool?format=json`.
 # type: response
 # response_code: 200
 value: |-
-  node-0 analyze             0 0 0
-  node-0 fetch_shard_started 0 0 0
-  node-0 fetch_shard_store   0 0 0
-  node-0 flush               0 0 0
-  node-0 write               0 0 0
+  [
+    {
+      "node_name": "node-0",
+      "name": "analyze",
+      "active": "0",
+      "queue": "0",
+      "rejected": "0"
+    },
+    {
+      "node_name": "node-0",
+      "name": "fetch_shard_started",
+      "active": "0",
+      "queue": "0",
+      "rejected": "0"
+    },
+    {
+      "node_name": "node-0",
+      "name": "fetch_shard_store",
+      "active": "0",
+      "queue": "0",
+      "rejected": "0"
+    },
+    {
+      "node_name": "node-0",
+      "name": "flush",
+      "active": "0",
+      "queue": "0",
+      "rejected": "0"
+    },
+    {
+      "node_name": "node-0",
+      "name": "write",
+      "active": "0",
+      "queue": "0",
+      "rejected": "0"
+    }
+  ]
+  
