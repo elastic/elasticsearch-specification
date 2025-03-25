@@ -13403,6 +13403,41 @@ export type InferencePutAzureopenaiResponse = InferenceInferenceEndpointInfo
 
 export type InferencePutAzureopenaiServiceType = 'azureopenai'
 
+export interface InferencePutElasticsearchAdaptiveAllocations {
+  enabled?: boolean
+  max_number_of_allocations?: integer
+  min_number_of_allocations?: integer
+}
+
+export interface InferencePutElasticsearchElasticsearchServiceSettings {
+  adaptive_allocations?: InferencePutElasticsearchAdaptiveAllocations
+  deployment_id?: string
+  model_id: string
+  num_allocations?: integer
+  num_threads: integer
+}
+
+export interface InferencePutElasticsearchElasticsearchTaskSettings {
+  return_documents?: boolean
+}
+
+export type InferencePutElasticsearchElasticsearchTaskType = 'rerank' | 'sparse_embedding' | 'text_embedding'
+
+export interface InferencePutElasticsearchRequest extends RequestBase {
+  task_type: InferencePutElasticsearchElasticsearchTaskType
+  elasticsearch_inference_id: Id
+  body?: {
+    chunking_settings?: InferenceInferenceChunkingSettings
+    service: InferencePutElasticsearchServiceType
+    service_settings: InferencePutElasticsearchElasticsearchServiceSettings
+    task_settings?: InferencePutElasticsearchElasticsearchTaskSettings
+  }
+}
+
+export type InferencePutElasticsearchResponse = InferenceInferenceEndpointInfo
+
+export type InferencePutElasticsearchServiceType = 'elasticsearch'
+
 export interface InferencePutHuggingFaceHuggingFaceServiceSettings {
   api_key: string
   rate_limit?: InferenceRateLimitSetting
