@@ -13252,6 +13252,46 @@ export interface InferencePutRequest extends RequestBase {
 
 export type InferencePutResponse = InferenceInferenceEndpointInfo
 
+export interface InferencePutCohereCohereServiceSettings {
+  api_key: string
+  embedding_type?: InferencePutCohereEmbeddingType
+  model_id?: string
+  rate_limit?: InferenceRateLimitSetting
+  similarity?: InferencePutCohereSimilarityType
+}
+
+export interface InferencePutCohereCohereTaskSettings {
+  input_type?: InferencePutCohereInputType
+  return_documents?: boolean
+  top_n?: integer
+  truncate?: InferencePutCohereTruncateType
+}
+
+export type InferencePutCohereCohereTaskType = 'completion' | 'rerank' | 'text_embedding'
+
+export type InferencePutCohereEmbeddingType = 'byte' | 'float' | 'int8'
+
+export type InferencePutCohereInputType = 'classification' | 'clustering' | 'ingest' | 'search'
+
+export interface InferencePutCohereRequest extends RequestBase {
+  task_type: InferencePutCohereCohereTaskType
+  cohere_inference_id: Id
+  body?: {
+    chunking_settings?: InferenceInferenceChunkingSettings
+    service: InferencePutCohereServiceType
+    service_settings: InferencePutCohereCohereServiceSettings
+    task_settings?: InferencePutCohereCohereTaskSettings
+  }
+}
+
+export type InferencePutCohereResponse = InferenceInferenceEndpointInfo
+
+export type InferencePutCohereServiceType = 'cohere'
+
+export type InferencePutCohereSimilarityType = 'cosine' | 'dot_product' | 'l2_norm'
+
+export type InferencePutCohereTruncateType = 'END' | 'NONE' | 'START'
+
 export interface InferencePutEisEisServiceSettings {
   model_id: string
   rate_limit?: InferenceRateLimitSetting
