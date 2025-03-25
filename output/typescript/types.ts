@@ -13277,6 +13277,36 @@ export type InferencePutAlibabacloudResponse = InferenceInferenceEndpointInfo
 
 export type InferencePutAlibabacloudServiceType = 'alibabacloud-ai-search'
 
+export interface InferencePutAzureopenaiAzureOpenAIServiceSettings {
+  api_key?: string
+  api_version: string
+  deployment_id: string
+  entra_id?: string
+  rate_limit?: InferenceRateLimitSetting
+  resource_name: string
+}
+
+export interface InferencePutAzureopenaiAzureOpenAITaskSettings {
+  user?: string
+}
+
+export type InferencePutAzureopenaiAzureOpenAITaskType = 'completion' | 'text_embedding'
+
+export interface InferencePutAzureopenaiRequest extends RequestBase {
+  task_type: InferencePutAzureopenaiAzureOpenAITaskType
+  azureopenai_inference_id: Id
+  body?: {
+    chunking_settings?: InferenceInferenceChunkingSettings
+    service: InferencePutAzureopenaiServiceType
+    service_settings: InferencePutAzureopenaiAzureOpenAIServiceSettings
+    task_settings?: InferencePutAzureopenaiAzureOpenAITaskSettings
+  }
+}
+
+export type InferencePutAzureopenaiResponse = InferenceInferenceEndpointInfo
+
+export type InferencePutAzureopenaiServiceType = 'azureopenai'
+
 export interface InferencePutHuggingFaceHuggingFaceServiceSettings {
   api_key: string
   rate_limit?: InferenceRateLimitSetting
