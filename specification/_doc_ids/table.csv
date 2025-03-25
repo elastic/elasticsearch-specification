@@ -188,6 +188,7 @@ document-input-parameters,https://www.elastic.co/guide/en/elasticsearch/referenc
 docvalue-fields,https://www.elastic.co/guide/en/elasticsearch/reference/current/search-fields.html#docvalue-fields
 dot-expand-processor,https://www.elastic.co/guide/en/elasticsearch/reference/current/dot-expand-processor.html
 drop-processor,https://www.elastic.co/guide/en/elasticsearch/reference/current/drop-processor.html
+eland-import,https://www.elastic.co/guide/en/machine-learning/current/ml-nlp-import-model.html#ml-nlp-import-script
 enrich-processor,https://www.elastic.co/guide/en/elasticsearch/reference/current/enrich-processor.html
 enrich-stats-api,https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-enrich-stats
 eql-async-search-api,https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-eql-get
@@ -337,6 +338,8 @@ inference-api-put-azureaistudio,https://www.elastic.co/guide/en/elasticsearch/re
 inference-api-put-azureopenai,https://www.elastic.co/guide/en/elasticsearch/reference/current/infer-service-azure-openai.html
 inference-api-put-cohere,https://www.elastic.co/guide/en/elasticsearch/reference/current/infer-service-cohere.html
 inference-api-put-eis,https://www.elastic.co/guide/en/elasticsearch/reference/current/infer-service-eis.html
+inference-api-put-elasticsearch,https://www.elastic.co/guide/en/elasticsearch/reference/current/infer-service-elasticsearch.html
+inference-api-put-elser,https://www.elastic.co/guide/en/elasticsearch/reference/current/infer-service-elser.html
 inference-api-put-huggingface,https://www.elastic.co/guide/en/elasticsearch/reference/current/infer-service-hugging-face.html
 inference-api-put-googlevertexai,https://www.elastic.co/guide/en/elasticsearch/reference/current/infer-service-google-vertex-ai.html
 inference-api-put-googleaistudio,https://www.elastic.co/guide/en/elasticsearch/reference/current/infer-service-google-ai-studio.html
