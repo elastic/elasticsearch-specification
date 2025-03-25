@@ -13080,7 +13080,7 @@ export type InferenceDenseByteVector = byte[]
 
 export type InferenceDenseVector = float[]
 
-export interface InferenceInferenceChunkingSettings extends InferenceInferenceEndpoint {
+export interface InferenceInferenceChunkingSettings {
   max_chunk_size?: integer
   overlap?: integer
   sentence_overlap?: integer
@@ -15005,6 +15005,8 @@ export interface MlExponentialAverageCalculationContext {
   previous_exponential_average_ms?: DurationValue<UnitFloatMillis>
 }
 
+export type MlFeatureExtractor = MlQueryFeatureExtractor
+
 export interface MlFillMaskInferenceOptions {
   mask_token?: string
   num_top_classes?: integer
@@ -15070,6 +15072,7 @@ export interface MlInferenceConfigCreateContainer {
   text_classification?: MlTextClassificationInferenceOptions
   zero_shot_classification?: MlZeroShotClassificationInferenceOptions
   fill_mask?: MlFillMaskInferenceOptions
+  learning_to_rank?: MlLearningToRankConfig
   ner?: MlNerInferenceOptions
   pass_through?: MlPassThroughInferenceOptions
   text_embedding?: MlTextEmbeddingInferenceOptions
@@ -15216,6 +15219,12 @@ export interface MlJobTimingStats {
   minimum_bucket_processing_time_ms?: DurationValue<UnitFloatMillis>
 }
 
+export interface MlLearningToRankConfig {
+  default_params?: Record<string, any>
+  feature_extractors?: Record<string, MlFeatureExtractor>[]
+  num_top_feature_importance_values: integer
+}
+
 export type MlMemoryStatus = 'ok' | 'soft_limit' | 'hard_limit'
 
 export interface MlModelPackageConfig {
@@ -15358,6 +15367,12 @@ export interface MlPerPartitionCategorization {
 
 export type MlPredictedValue = ScalarValue | ScalarValue[]
 
+export interface MlQueryFeatureExtractor {
+  default_score?: float
+  feature_name: string
+  query: QueryDslQueryContainer
+}
+
 export interface MlQuestionAnsweringInferenceOptions {
   num_top_classes?: integer
   tokenization?: MlTokenizationConfigContainer
@@ -15402,6 +15417,7 @@ export interface MlTextClassificationInferenceOptions {
   tokenization?: MlTokenizationConfigContainer
   results_field?: string
   classification_labels?: string[]
+  vocabulary?: MlVocabulary
 }
 
 export interface MlTextClassificationInferenceUpdateOptions {
@@ -15444,6 +15460,7 @@ export interface MlTokenizationConfigContainer {
   bert_ja?: MlNlpBertTokenizationConfig
   mpnet?: MlNlpBertTokenizationConfig
   roberta?: MlNlpRobertaTokenizationConfig
+  xlm_roberta?: MlXlmRobertaTokenizationConfig
 }
 
 export type MlTokenizationTruncate = 'first' | 'second' | 'none'
@@ -15521,6 +15538,7 @@ export interface MlTrainedModelConfig {
   model_size_bytes?: ByteSize
   model_package?: MlModelPackageConfig
   location?: MlTrainedModelLocation
+  platform_architecture?: string
   prefix_strings?: MlTrainedModelPrefixStrings
 }
 
@@ -15654,6 +15672,9 @@ export interface MlValidationLoss {
 
 export interface MlVocabulary {
   index: IndexName
+}
+
+export interface MlXlmRobertaTokenizationConfig extends MlCommonTokenizationConfig {
 }
 
 export interface MlZeroShotClassificationInferenceOptions {

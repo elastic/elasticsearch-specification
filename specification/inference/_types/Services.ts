@@ -60,7 +60,7 @@ export class InferenceEndpointInfo extends InferenceEndpoint {
 /**
  * Chunking configuration object
  */
-export class InferenceChunkingSettings extends InferenceEndpoint {
+export class InferenceChunkingSettings {
   /**
    * The maximum size of a chunk in words.
    * This value cannot be higher than `300` or lower than `20` (for `sentence` strategy) or `10` (for `word` strategy).
