@@ -4,6 +4,8 @@ alias-update,https://www.elastic.co/docs/api/doc/elasticsearch/operation/operati
 aliases-update,https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-update-aliases
 alibabacloud-api-keys,https://opensearch.console.aliyun.com/cn-shanghai/rag/api-key
 analysis-analyzers,https://www.elastic.co/guide/en/elasticsearch/reference/current/analysis-analyzers.html
+amazonbedrock-models,https://docs.aws.amazon.com/bedrock/latest/userguide/models-supported.html
+amazonbedrock-secret-keys,https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_access-keys.html
 analysis-charfilters,https://www.elastic.co/guide/en/elasticsearch/reference/current/analysis-charfilters.html
 analysis-normalizers,https://www.elastic.co/guide/en/elasticsearch/reference/current/analysis-normalizers.html
 analysis-standard-analyzer,https://www.elastic.co/guide/en/elasticsearch/reference/current/analysis-standard-analyzer.html
@@ -328,11 +330,9 @@ inference-api-post,https://www.elastic.co/docs/api/doc/elasticsearch/operation/o
 inference-api-post-eis-chat-completion,https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-inference-post-eis-chat-completion
 inference-api-put,https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-inference-put
 inference-api-put-alibabacloud,https://www.elastic.co/guide/en/elasticsearch/reference/current/infer-service-alibabacloud-ai-search.html
-inference-api-amazonbedrock,https://www.elastic.co/guide/en/elasticsearch/reference/current/infer-service-amazon-bedrock.html
 inference-api-put-azureaistudio,https://www.elastic.co/guide/en/elasticsearch/reference/current/infer-service-azure-ai-studio.html
 inference-api-put-azureopenai,https://www.elastic.co/guide/en/elasticsearch/reference/current/infer-service-azure-openai.html
 inference-api-put-cohere,https://www.elastic.co/guide/en/elasticsearch/reference/current/infer-service-cohere.html
-inference-api-put-cohere,https://www.elastic.co/guide/en/elasticsearch/reference/branch/infer-service-cohere.html
 inference-api-put-eis,https://www.elastic.co/guide/en/elasticsearch/reference/current/infer-service-eis.html
 inference-api-put-huggingface,https://www.elastic.co/guide/en/elasticsearch/reference/current/infer-service-hugging-face.html
 inference-api-put-googlevertexai,https://www.elastic.co/guide/en/elasticsearch/reference/current/infer-service-google-vertex-ai.html
