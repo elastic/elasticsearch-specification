@@ -59931,8 +59931,8 @@
             },
             "examples": {
               "CatAliasesResponseExample1": {
-                "description": "A successful response from `GET _cat/aliases?v=true`. This response shows that `alias2` has configured a filter and `alias3` and `alias4` have routing configurations.\n",
-                "value": "alias  index filter routing.index routing.search is_write_index\nalias1 test1 -      -            -              -\nalias2 test1 *      -            -              -\nalias3 test1 -      1            1              -\nalias4 test1 -      2            1,2            -"
+                "description": "A successful response from `GET _cat/aliases?format=json&v=true`. This response shows that `alias2` has configured a filter and `alias3` and `alias4` have routing configurations.\n",
+                "value": "[\n  {\n    \"alias\": \"alias1\",\n    \"index\": \"test1\",\n    \"filter\": \"-\",\n    \"routing.index\": \"-\",\n    \"routing.search\": \"-\",\n    \"is_write_index\": \"true\"\n  },\n  {\n    \"alias\": \"alias1\",\n    \"index\": \"test1\",\n    \"filter\": \"*\",\n    \"routing.index\": \"-\",\n    \"routing.search\": \"-\",\n    \"is_write_index\": \"true\"\n  },\n  {\n    \"alias\": \"alias3\",\n    \"index\": \"test1\",\n    \"filter\": \"-\",\n    \"routing.index\": \"1\",\n    \"routing.search\": \"1\",\n    \"is_write_index\": \"true\"\n  },\n  {\n    \"alias\": \"alias4\",\n    \"index\": \"test1\",\n    \"filter\": \"-\",\n    \"routing.index\": \"2\",\n    \"routing.search\": \"1,2\",\n    \"is_write_index\": \"true\"\n  }\n]"
               }
             }
           }
@@ -59950,8 +59950,8 @@
             },
             "examples": {
               "CatComponentTemplatesResponseExample1": {
-                "description": "A successful response from `GET _cat/aliases?v=true`. This response shows that `alias2` has configured a filter and `alias3` and `alias4` have routing configurations.\n",
-                "value": "alias  index filter routing.index routing.search is_write_index\nalias1 test1 -      -            -              -\nalias2 test1 *      -            -              -\nalias3 test1 -      1            1              -\nalias4 test1 -      2            1,2            -"
+                "description": "A successful response from `GET _cat/component_templates/my-template-*?v=true&s=name&format=json`.\n",
+                "value": "[\n  {\n    \"name\": \"my-template-1\",\n    \"version\": \"null\",\n    \"alias_count\": \"0\",\n    \"mapping_count\": \"0\",\n    \"settings_count\": \"1\",\n    \"metadata_count\": \"0\",\n    \"included_in\": \"[my-index-template]\"\n  },\n    {\n    \"name\": \"my-template-2\",\n    \"version\": null,\n    \"alias_count\": \"0\",\n    \"mapping_count\": \"3\",\n    \"settings_count\": \"0\",\n    \"metadata_count\": \"0\",\n    \"included_in\": \"[my-index-template]\"\n  }\n]"
               }
             }
           }
@@ -59970,13 +59970,13 @@
             "examples": {
               "CatCountResponseExample1": {
                 "summary": "Single data stream or index count",
-                "description": "A successful response from `GET /_cat/count/my-index-000001?v=true`. It retrieves the document count for the `my-index-000001` data stream or index.\n",
-                "value": "epoch      timestamp count\n1475868259 15:24:20  120"
+                "description": "A successful response from `GET /_cat/count/my-index-000001?v=true&format=json`. It retrieves the document count for the `my-index-000001` data stream or index.\n",
+                "value": "[\n  {\n    \"epoch\": \"1475868259\",\n    \"timestamp\": \"15:24:20\",\n    \"count\": \"120\"\n  }\n]"
               },
               "CatCountResponseExample2": {
                 "summary": "All data streams and indices count",
-                "description": "A successful response from `GET /_cat/count?v=true`. It retrieves the document count for all data streams and indices in the cluster.\n",
-                "value": "epoch      timestamp count\n1475868259 15:24:20  121"
+                "description": "A successful response from `GET /_cat/count?v=true&format=json`. It retrieves the document count for all data streams and indices in the cluster.\n",
+                "value": "[\n  {\n    \"epoch\": \"1475868259\",\n    \"timestamp\": \"15:24:20\",\n    \"count\": \"121\"\n  }\n]"
               }
             }
           }
@@ -59994,8 +59994,8 @@
             },
             "examples": {
               "CatIndicesResponseExample1": {
-                "description": "A successful response from `GET /_cat/indices/my-index-*?v=true&s=index`.\n",
-                "value": "health status index            uuid                   pri rep docs.count docs.deleted store.size pri.store.size dataset.size\nyellow open   my-index-000001  u8FNjxh8Rfy_awN11oDKYQ   1   1       1200            0     88.1kb         88.1kb       88.1kb\ngreen  open   my-index-000002  nYFWZEO7TUiOjLQXBaYJpA   1   0          0            0       260b           260b         260b"
+                "description": "A successful response from `GET /_cat/indices/my-index-*?v=true&s=index&format=json`.\n",
+                "value": "[\n  {\n    \"health\": \"yellow\",\n    \"status\": \"open\",\n    \"index\": \"my-index-000001\",\n    \"uuid\": \"u8FNjxh8Rfy_awN11oDKYQ\",\n    \"pri\": \"1\",\n    \"rep\": \"1\",\n    \"docs.count\": \"1200\",\n    \"docs.deleted\": \"0\",\n    \"store.size\": \"88.1kb\",\n    \"pri.store.size\": \"88.1kb\",\n    \"dataset.size\": \"88.1kb\"\n  },\n  {\n    \"health\": \"green\",\n    \"status\": \"open\",\n    \"index\": \"my-index-000002\",\n    \"uuid\": \"nYFWZEO7TUiOjLQXBaYJpA \",\n    \"pri\": \"1\",\n    \"rep\": \"0\",\n    \"docs.count\": \"0\",\n    \"docs.deleted\": \"0\",\n    \"store.size\": \"260b\",\n    \"pri.store.size\": \"260b\",\n    \"dataset.size\": \"260b\"\n  }\n]"
               }
             }
           }
@@ -60013,8 +60013,8 @@
             },
             "examples": {
               "CatDataframeanalyticsResponseExample1": {
-                "description": "A successful response from `GET _cat/ml/data_frame/analytics?v=true`.",
-                "value": "id               create_time              type             state\nclassifier_job_1 2020-02-12T11:49:09.594Z classification stopped\nclassifier_job_2 2020-02-12T11:49:14.479Z classification stopped\nclassifier_job_3 2020-02-12T11:49:16.928Z classification stopped\nclassifier_job_4 2020-02-12T11:49:19.127Z classification stopped\nclassifier_job_5 2020-02-12T11:49:21.349Z classification stopped"
+                "description": "A successful response from `GET _cat/ml/data_frame/analytics?v=true&format=json`.",
+                "value": "[\n  {\n    \"id\": \"classifier_job_1\",\n    \"type\": \"classification\",\n    \"create_time\": \"2020-02-12T11:49:09.594Z\",\n    \"state\": \"stopped\"\n  },\n    {\n    \"id\": \"classifier_job_2\",\n    \"type\": \"classification\",\n    \"create_time\": \"2020-02-12T11:49:14.479Z\",\n    \"state\": \"stopped\"\n  },\n  {\n    \"id\": \"classifier_job_3\",\n    \"type\": \"classification\",\n    \"create_time\": \"2020-02-12T11:49:16.928Z\",\n    \"state\": \"stopped\"\n  },\n  {\n    \"id\": \"classifier_job_4\",\n    \"type\": \"classification\",\n    \"create_time\": \"2020-02-12T11:49:19.127Z\",\n    \"state\": \"stopped\"\n  },\n  {\n    \"id\": \"classifier_job_5\",\n    \"type\": \"classification\",\n    \"create_time\": \"2020-02-12T11:49:21.349Z\",\n    \"state\": \"stopped\"\n  }\n]"
               }
             }
           }
@@ -60032,8 +60032,8 @@
             },
             "examples": {
               "CatDatafeedsResponseExample1": {
-                "description": "A successful response from `GET _cat/ml/datafeeds?v=true`.",
-                "value": "id                              state buckets.count search.count\ndatafeed-high_sum_total_sales stopped 743          7\ndatafeed-low_request_rate     stopped 1457         3\ndatafeed-response_code_rates  stopped 1460         18\ndatafeed-url_scanning         stopped 1460         18"
+                "description": "A successful response from `GET _cat/ml/datafeeds?v=true&format=json`.",
+                "value": "[\n  {\n    \"id\": \"datafeed-high_sum_total_sales\",\n    \"state\": \"stopped\",\n    \"buckets.count\": \"743\",\n    \"search.count\": \"7\"\n  },\n  {\n    \"id\": \"datafeed-low_request_rate\",\n    \"state\": \"stopped\",\n    \"buckets.count\": \"1457\",\n    \"search.count\": \"3\"\n  },\n  {\n    \"id\": \"datafeed-response_code_rates\",\n    \"state\": \"stopped\",\n    \"buckets.count\": \"1460\",\n    \"search.count\": \"18\"\n  },\n  {\n    \"id\": \"datafeed-url_scanning\",\n    \"state\": \"stopped\",\n    \"buckets.count\": \"1460\",\n    \"search.count\": \"18\"\n  }\n]"
               }
             }
           }
@@ -60051,8 +60051,8 @@
             },
             "examples": {
               "CatJobsResponseExample1": {
-                "description": "A succesful response from `GET _cat/component_templates/my-template-*?v=true&s=name`.",
-                "value": "name          version alias_count mapping_count settings_count metadata_count included_in\nmy-template-1         0           0             1              0              [my-index-template]\nmy-template-2         0           3             0              0              [my-index-template]"
+                "description": "A successful response from `GET _cat/ml/anomaly_detectors?h=id,s,dpr,mb&v=true&format=json`.",
+                "value": "[\n  {\n    \"id\": \"high_sum_total_sales\",\n    \"s\": \"closed\",\n    \"dpr\": \"14022\",\n    \"mb\": \"1.5mb\"\n  },\n  {\n    \"id\": \"low_request_rate\",\n    \"s\": \"closed\",\n    \"dpr\": \"1216\",\n    \"mb\": \"40.5kb\"\n  },\n  {\n    \"id\": \"response_code_rates\",\n    \"s\": \"closed\",\n    \"dpr\": \"28146\",\n    \"mb\": \"132.7kb\"\n  },\n  {\n    \"id\": \"url_scanning\",\n    \"s\": \"closed\",\n    \"dpr\": \"28146\",\n    \"mb\": \"501.6kb\"\n  }\n]"
               }
             }
           }
@@ -60070,8 +60070,8 @@
             },
             "examples": {
               "CatTrainedModelsResponseExample1": {
-                "description": "A successful response from `GET _cat/ml/trained_models?h=c,o,l,ct,v&v=true`.",
-                "value": "id                           created_by operations license  create_time              version\nddddd-1580216177138              _xpack 196        PLATINUM 2020-01-28T12:56:17.138Z 8.0.0\nflight-regress-1580215685537     _xpack 102        PLATINUM 2020-01-28T12:48:05.537Z 8.0.0\nlang_ident_model_1               _xpack 39629      BASIC    2019-12-05T12:28:34.594Z 7.6.0"
+                "description": "A successful response from `GET _cat/ml/trained_models?v=true&format=json`.",
+                "value": "[\n  {\n    \"id\": \"ddddd-1580216177138\",\n    \"heap_size\": \"0b\",\n    \"operations\": \"196\",\n    \"create_time\": \"2025-03-25T00:01:38.662Z\",\n    \"type\": \"pytorch\",\n    \"ingest.pipelines\": \"0\",\n    \"data_frame.id\": \"__none__\"\n  },\n  {\n    \"id\": \"lang_ident_model_1\",\n    \"heap_size\": \"1mb\",\n    \"operations\": \"39629\",\n    \"create_time\": \"2019-12-05T12:28:34.594Z\",\n    \"type\": \"lang_ident\",\n    \"ingest.pipelines\": \"0\",\n    \"data_frame.id\": \"__none__\"\n  }\n]"
               }
             }
           }
