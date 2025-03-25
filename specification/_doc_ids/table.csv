@@ -27,6 +27,8 @@ autoscaling-get-autoscaling-capacity,https://www.elastic.co/guide/en/elasticsear
 autoscaling-get-autoscaling-policy,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/autoscaling-get-autoscaling-policy.html
 autoscaling-put-autoscaling-policy,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/autoscaling-put-autoscaling-policy.html
 avoid-index-pattern-collisions,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/index-templates.html#avoid-index-pattern-collisions
+azureaistudio-api-keys,https://ai.azure.com/
+azureaistudio-endpoint-types,https://learn.microsoft.com/en-us/azure/ai-foundry/concepts/deployments-overview#billing-for-deploying-and-inferencing-llms-in-azure-ai-studio
 behavioral-analytics-collection-event,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/post-analytics-collection-event.html
 behavioral-analytics-event-reference,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/behavioral-analytics-event-reference.html
 byte-units,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/api-conventions.html#byte-units
@@ -332,6 +334,7 @@ inference-api-get,https://www.elastic.co/guide/en/elasticsearch/reference/{branc
 inference-api-post,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/post-inference-api.html
 inference-api-post-eis-chat-completion,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/post-inference-api.html
 inference-api-put,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/put-inference-api.html
+inference-api-put-azureaistudio,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/infer-service-azure-ai-studio.html
 inference-api-put-cohere,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/infer-service-cohere.html
 inference-api-put-elasticsearch,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/infer-service-elasticsearch.html
 inference-api-put-eis,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/infer-service-elastic.html
