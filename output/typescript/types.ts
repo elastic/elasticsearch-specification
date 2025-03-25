@@ -13272,6 +13272,36 @@ export type InferencePutEisResponse = InferenceInferenceEndpointInfo
 
 export type InferencePutEisServiceType = 'elastic'
 
+export interface InferencePutGooglevertexaiGoogleVertexAIServiceSettings {
+  location: string
+  model_id: string
+  project_id: string
+  rate_limit?: InferenceRateLimitSetting
+  service_account_json: string
+}
+
+export interface InferencePutGooglevertexaiGoogleVertexAITaskSettings {
+  auto_truncate?: boolean
+  top_n?: integer
+}
+
+export type InferencePutGooglevertexaiGoogleVertexAITaskType = 'rerank' | 'text_embedding'
+
+export interface InferencePutGooglevertexaiRequest extends RequestBase {
+  task_type: InferencePutGooglevertexaiGoogleVertexAITaskType
+  googlevertexai_inference_id: Id
+  body?: {
+    chunking_settings?: InferenceInferenceChunkingSettings
+    service: InferencePutGooglevertexaiServiceType
+    service_settings: InferencePutGooglevertexaiGoogleVertexAIServiceSettings
+    task_settings?: InferencePutGooglevertexaiGoogleVertexAITaskSettings
+  }
+}
+
+export type InferencePutGooglevertexaiResponse = InferenceInferenceEndpointInfo
+
+export type InferencePutGooglevertexaiServiceType = 'googlevertexai'
+
 export interface InferencePutHuggingFaceHuggingFaceServiceSettings {
   api_key: string
   rate_limit?: InferenceRateLimitSetting
