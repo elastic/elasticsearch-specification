@@ -13342,6 +13342,39 @@ export type InferencePutAnthropicResponse = InferenceInferenceEndpointInfo
 
 export type InferencePutAnthropicServiceType = 'anthropic'
 
+export interface InferencePutAzureaistudioAzureAiStudioServiceSettings {
+  api_key: string
+  endpoint_type: string
+  target: string
+  provider: string
+  rate_limit?: InferenceRateLimitSetting
+}
+
+export interface InferencePutAzureaistudioAzureAiStudioTaskSettings {
+  do_sample?: float
+  max_new_tokens?: integer
+  temperature?: float
+  top_p?: float
+  user?: string
+}
+
+export type InferencePutAzureaistudioAzureAiStudioTaskType = 'completion' | 'text_embedding'
+
+export interface InferencePutAzureaistudioRequest extends RequestBase {
+  task_type: InferencePutAzureaistudioAzureAiStudioTaskType
+  azureaistudio_inference_id: Id
+  body?: {
+    chunking_settings?: InferenceInferenceChunkingSettings
+    service: InferencePutAzureaistudioServiceType
+    service_settings: InferencePutAzureaistudioAzureAiStudioServiceSettings
+    task_settings?: InferencePutAzureaistudioAzureAiStudioTaskSettings
+  }
+}
+
+export type InferencePutAzureaistudioResponse = InferenceInferenceEndpointInfo
+
+export type InferencePutAzureaistudioServiceType = 'azureaistudio'
+
 export interface InferencePutAzureopenaiAzureOpenAIServiceSettings {
   api_key?: string
   api_version: string
