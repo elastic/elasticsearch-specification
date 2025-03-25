@@ -332,6 +332,7 @@ inference-api-amazonbedrock,https://www.elastic.co/guide/en/elasticsearch/refere
 inference-api-put-azureaistudio,https://www.elastic.co/guide/en/elasticsearch/reference/current/infer-service-azure-ai-studio.html
 inference-api-put-azureopenai,https://www.elastic.co/guide/en/elasticsearch/reference/current/infer-service-azure-openai.html
 inference-api-put-cohere,https://www.elastic.co/guide/en/elasticsearch/reference/current/infer-service-cohere.html
+inference-api-put-cohere,https://www.elastic.co/guide/en/elasticsearch/reference/branch/infer-service-cohere.html
 inference-api-put-eis,https://www.elastic.co/guide/en/elasticsearch/reference/current/infer-service-eis.html
 inference-api-put-huggingface,https://www.elastic.co/guide/en/elasticsearch/reference/current/infer-service-hugging-face.html
 inference-api-put-googlevertexai,https://www.elastic.co/guide/en/elasticsearch/reference/current/infer-service-google-vertex-ai.html
