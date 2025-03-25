@@ -13269,6 +13269,40 @@ export type InferencePutHuggingFaceResponse = InferenceInferenceEndpointInfo
 
 export type InferencePutHuggingFaceServiceType = 'hugging_face'
 
+export interface InferencePutJinaaiJinaAIServiceSettings {
+  api_key: string
+  model_id?: string
+  rate_limit?: InferenceRateLimitSetting
+  similarity?: InferencePutJinaaiSimilarityType
+}
+
+export interface InferencePutJinaaiJinaAITaskSettings {
+  return_documents?: boolean
+  task?: InferencePutJinaaiTextEmbeddingTask
+  top_n?: integer
+}
+
+export type InferencePutJinaaiJinaAITaskType = 'rerank' | 'text_embedding'
+
+export interface InferencePutJinaaiRequest extends RequestBase {
+  task_type: InferencePutJinaaiJinaAITaskType
+  jinaai_inference_id: Id
+  body?: {
+    chunking_settings?: InferenceInferenceChunkingSettings
+    service: InferencePutJinaaiServiceType
+    service_settings: InferencePutJinaaiJinaAIServiceSettings
+    task_settings?: InferencePutJinaaiJinaAITaskSettings
+  }
+}
+
+export type InferencePutJinaaiResponse = InferenceInferenceEndpointInfo
+
+export type InferencePutJinaaiServiceType = 'jinaai'
+
+export type InferencePutJinaaiSimilarityType = 'cosine' | 'dot_product' | 'l2_norm'
+
+export type InferencePutJinaaiTextEmbeddingTask = 'classification' | 'clustering' | 'ingest' | 'search'
+
 export interface InferencePutOpenaiOpenAIServiceSettings {
   api_key: string
   dimensions?: integer

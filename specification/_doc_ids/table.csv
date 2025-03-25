@@ -321,6 +321,7 @@ inference-api-post-eis-chat-completion,https://www.elastic.co/docs/api/doc/elast
 inference-api-put,https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-inference-put
 inference-api-put-eis,https://www.elastic.co/guide/en/elasticsearch/reference/current/infer-service-eis.html
 inference-api-put-huggingface,https://www.elastic.co/guide/en/elasticsearch/reference/current/infer-service-hugging-face.html
+inference-api-put-jinaai,https://www.elastic.co/guide/en/elasticsearch/reference/current/infer-service-jinaai.html
 inference-api-put-openai,https://www.elastic.co/guide/en/elasticsearch/reference/current/infer-service-openai.html
 inference-api-put-watsonx,https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-inference-put-watsonx
 inference-api-stream,https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-inference-stream-inference
@@ -336,6 +337,8 @@ inner-hits,https://www.elastic.co/guide/en/elasticsearch/reference/current/inner
 ip-location-delete-database,https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ingest-delete-ip-location-database
 ip-location-get-database,https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ingest-get-ip-location-database
 ip-location-put-database,https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ingest-put-ip-location-database
+jinaAi-embeddings,https://jina.ai/embeddings/
+jinaAi-rate-limit,https://jina.ai/contact-sales/#rate-limit
 join-processor,https://www.elastic.co/guide/en/elasticsearch/reference/current/join-processor.html
 json-processor,https://www.elastic.co/guide/en/elasticsearch/reference/current/json-processor.html
 k-precision,https://www.elastic.co/guide/en/elasticsearch/reference/current/search-rank-eval.html#k-precision
