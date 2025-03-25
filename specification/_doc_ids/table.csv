@@ -180,6 +180,7 @@ document-input-parameters,https://www.elastic.co/guide/en/elasticsearch/referenc
 docvalue-fields,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/search-fields.html#docvalue-fields
 dot-expand-processor,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/dot-expand-processor.html
 drop-processor,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/drop-processor.html
+eland-import,https://www.elastic.co/guide/en/machine-learning/current/ml-nlp-import-model.html#ml-nlp-import-script
 enrich-processor,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/enrich-processor.html
 enrich-stats-api,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/enrich-stats-api.html
 eql-async-search-api,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/get-async-eql-search-api.html
@@ -324,8 +325,9 @@ inference-api-delete,https://www.elastic.co/guide/en/elasticsearch/reference/{br
 inference-api-get,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/get-inference-api.html
 inference-api-post,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/post-inference-api.html
 inference-api-post-eis-chat-completion,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/post-inference-api.html
-inference-api-put-cohere,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/infer-service-cohere.html
 inference-api-put,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/put-inference-api.html
+inference-api-put-cohere,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/infer-service-cohere.html
+inference-api-put-elasticsearch,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/infer-service-elasticsearch.html
 inference-api-put-eis,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/infer-service-elastic.html
 inference-api-put-elser,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/infer-service-elser.html
 inference-api-put-huggingface,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/infer-service-hugging-face.html
