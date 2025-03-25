@@ -1,0 +1,15 @@
+# summary:
+description: A successful response when creating an ELSER inference endpoint.
+# type: response
+# response_code:
+value: |-
+  {
+    "inference_id": "my-elser-model",
+    "task_type": "sparse_embedding",
+    "service": "elser",
+    "service_settings": {
+      "num_allocations": 1,
+      "num_threads": 1
+    },
+    "task_settings": {}
+  }
