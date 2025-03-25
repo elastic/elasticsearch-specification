@@ -39,7 +39,7 @@ import { float, integer } from '@_types/Numeric'
  * @availability stack since=8.16.0 stability=stable visibility=public
  * @availability serverless stability=stable visibility=public
  * @cluster_privileges manage_inference
- * @doc_id inference-api-anthropic
+ * @doc_id inference-api-put-anthropic
  */
 export interface Request extends RequestBase {
   urls: [
