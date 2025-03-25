@@ -238,6 +238,8 @@ get-trained-models,https://www.elastic.co/guide/en/elasticsearch/reference/{bran
 get-transform-stats,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/get-transform-stats.html
 get-transform,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/get-transform.html
 get-trial-status,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/get-trial-status.html
+googlevertexai-locations,https://cloud.google.com/vertex-ai/generative-ai/docs/learn/locations
+googlevertexai-models,https://cloud.google.com/vertex-ai/generative-ai/docs/model-reference/text-embeddings-api
 graph,https://www.elastic.co/guide/en/kibana/{branch}/xpack-graph.html
 graph-explore-api,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/graph-explore-api.html
 grok,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/grok.html
@@ -323,6 +325,7 @@ inference-api-put,https://www.elastic.co/guide/en/elasticsearch/reference/{branc
 inference-api-put-eis,https://www.elastic.co/guide/en/elasticsearch/reference/current/infer-service-elastic.html
 inference-api-put-huggingface,https://www.elastic.co/guide/en/elasticsearch/reference/current/infer-service-hugging-face.html
 inference-api-put-jinaai,https://www.elastic.co/guide/en/elasticsearch/reference/current/infer-service-jinaai.html
+inference-api-put-googlevertexai,https://www.elastic.co/guide/en/elasticsearch/reference/current/infer-service-google-vertex-ai.html
 inference-api-put-openai,https://www.elastic.co/guide/en/elasticsearch/reference/current/infer-service-openai.html
 inference-api-put-voyageai,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/infer-service-voyageai.html
 inference-api-put-watsonx,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/infer-service-watsonx-ai.html
