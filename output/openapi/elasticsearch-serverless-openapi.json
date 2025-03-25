@@ -9903,6 +9903,92 @@
         "x-state": "Added in 8.16.0"
       }
     },
+    "/_inference/{task_type}/{amazonbedrock_inference_id}": {
+      "put": {
+        "tags": [
+          "inference"
+        ],
+        "summary": "Create an Amazon Bedrock inference endpoint",
+        "description": "Creates an inference endpoint to perform an inference task with the `amazonbedrock` service.\n\n>info\n> You need to provide the access and secret keys only once, during the inference model creation. The get inference API does not retrieve your access or secret keys. After creating the inference model, you cannot change the associated key pairs. If you want to use a different access and secret key pair, delete the inference model and recreate it with the same name and the updated keys.\n\nWhen you create an inference endpoint, the associated machine learning model is automatically deployed if it is not already running.\nAfter creating the endpoint, wait for the model deployment to complete before using it.\nTo verify the deployment status, use the get trained model statistics API.\nLook for `\"state\": \"fully_allocated\"` in the response and ensure that the `\"allocation_count\"` matches the `\"target_allocation_count\"`.\nAvoid creating multiple endpoints for the same model unless required, as each endpoint consumes significant resources.",
+        "operationId": "inference-put-amazonbedrock",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "task_type",
+            "description": "The type of the inference task that the model will perform.",
+            "required": true,
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/inference.put_amazonbedrock:AmazonBedrockTaskType"
+            },
+            "style": "simple"
+          },
+          {
+            "in": "path",
+            "name": "amazonbedrock_inference_id",
+            "description": "The unique identifier of the inference endpoint.",
+            "required": true,
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/_types:Id"
+            },
+            "style": "simple"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "chunking_settings": {
+                    "$ref": "#/components/schemas/inference._types:InferenceChunkingSettings"
+                  },
+                  "service": {
+                    "$ref": "#/components/schemas/inference.put_amazonbedrock:ServiceType"
+                  },
+                  "service_settings": {
+                    "$ref": "#/components/schemas/inference.put_amazonbedrock:AmazonBedrockServiceSettings"
+                  },
+                  "task_settings": {
+                    "$ref": "#/components/schemas/inference.put_amazonbedrock:AmazonBedrockTaskSettings"
+                  }
+                },
+                "required": [
+                  "service",
+                  "service_settings"
+                ]
+              },
+              "examples": {
+                "PutAmazonBedrockRequestExample1": {
+                  "summary": "A text embedding task",
+                  "description": "Run `PUT _inference/text_embedding/amazon_bedrock_embeddings` to create an inference endpoint that performs a text embedding task.",
+                  "value": "{\n    \"service\": \"amazonbedrock\",\n    \"service_settings\": {\n        \"access_key\": \"AWS-access-key\",\n        \"secret_key\": \"AWS-secret-key\",\n        \"region\": \"us-east-1\",\n        \"provider\": \"amazontitan\",\n        \"model\": \"amazon.titan-embed-text-v2:0\"\n    }\n}"
+                },
+                "PutAmazonBedrockRequestExample2": {
+                  "summary": "A completion task",
+                  "description": "Run `PUT _inference/completion/openai-completion` to create an inference endpoint to perform a completion task type.",
+                  "value": "{\n    \"service\": \"openai\",\n    \"service_settings\": {\n        \"api_key\": \"OpenAI-API-Key\",\n        \"model_id\": \"gpt-3.5-turbo\"\n    }\n}"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/inference._types:InferenceEndpointInfo"
+                }
+              }
+            }
+          }
+        },
+        "x-state": "Added in 8.12.0"
+      }
+    },
     "/_inference/{task_type}/{anthropic_inference_id}": {
       "put": {
         "tags": [
@@ -10894,8 +10980,8 @@
                 },
                 "PutOpenAiRequestExample2": {
                   "summary": "A completion task",
-                  "description": "Run `PUT _inference/completion/openai-completion` to create an inference endpoint to perform a completion task type.",
-                  "value": "{\n    \"service\": \"openai\",\n    \"service_settings\": {\n        \"api_key\": \"OpenAI-API-Key\",\n        \"model_id\": \"gpt-3.5-turbo\"\n    }\n}"
+                  "description": "Run `PUT _inference/completion/amazon_bedrock_completion` to create an inference endpoint to perform a completion task.",
+                  "value": "{\n    \"service\": \"amazonbedrock\",\n    \"service_settings\": {\n        \"access_key\": \"AWS-access-key\",\n        \"secret_key\": \"AWS-secret-key\",\n        \"region\": \"us-east-1\",\n        \"provider\": \"amazontitan\",\n        \"model\": \"amazon.titan-text-premier-v1:0\"\n    }\n}"
                 }
               }
             }
@@ -49331,6 +49417,83 @@
           "return_token": {
             "description": "For a `sparse_embedding` task, it affects whether the token name will be returned in the response.\nIt defaults to `false`, which means only the token ID will be returned in the response.",
             "type": "boolean"
+          }
+        }
+      },
+      "inference.put_amazonbedrock:AmazonBedrockTaskType": {
+        "type": "string",
+        "enum": [
+          "completion",
+          "text_embedding"
+        ]
+      },
+      "inference.put_amazonbedrock:ServiceType": {
+        "type": "string",
+        "enum": [
+          "amazonbedrock"
+        ]
+      },
+      "inference.put_amazonbedrock:AmazonBedrockServiceSettings": {
+        "type": "object",
+        "properties": {
+          "access_key": {
+            "description": "A valid AWS access key that has permissions to use Amazon Bedrock and access to models for inference requests.",
+            "type": "string"
+          },
+          "model": {
+            "externalDocs": {
+              "url": "https://docs.aws.amazon.com/bedrock/latest/userguide/models-supported.html"
+            },
+            "description": "The base model ID or an ARN to a custom model based on a foundational model.\nThe base model IDs can be found in the Amazon Bedrock documentation.\nNote that the model ID must be available for the provider chosen and your IAM user must have access to the model.",
+            "type": "string"
+          },
+          "provider": {
+            "description": "The model provider for your deployment.\nNote that some providers may support only certain task types.\nSupported providers include:\n\n* `amazontitan` - available for `text_embedding` and `completion` task types\n* `anthropic` - available for `completion` task type only\n* `ai21labs` - available for `completion` task type only\n* `cohere` - available for `text_embedding` and `completion` task types\n* `meta` - available for `completion` task type only\n* `mistral` - available for `completion` task type only",
+            "type": "string"
+          },
+          "region": {
+            "externalDocs": {
+              "url": "https://docs.aws.amazon.com/bedrock/latest/userguide/models-supported.html"
+            },
+            "description": "The region that your model or ARN is deployed in.\nThe list of available regions per model can be found in the Amazon Bedrock documentation.",
+            "type": "string"
+          },
+          "rate_limit": {
+            "$ref": "#/components/schemas/inference._types:RateLimitSetting"
+          },
+          "secret_key": {
+            "externalDocs": {
+              "url": "https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_access-keys.html"
+            },
+            "description": "A valid AWS secret key that is paired with the `access_key`.\nFor informationg about creating and managing access and secret keys, refer to the AWS documentation.",
+            "type": "string"
+          }
+        },
+        "required": [
+          "access_key",
+          "model",
+          "region",
+          "secret_key"
+        ]
+      },
+      "inference.put_amazonbedrock:AmazonBedrockTaskSettings": {
+        "type": "object",
+        "properties": {
+          "max_new_tokens": {
+            "description": "For a `completion` task, it sets the maximum number for the output tokens to be generated.",
+            "type": "number"
+          },
+          "temperature": {
+            "description": "For a `completion` task, it is a number between 0.0 and 1.0 that controls the apparent creativity of the results.\nAt temperature 0.0 the model is most deterministic, at temperature 1.0 most random.\nIt should not be used if `top_p` or `top_k` is specified.",
+            "type": "number"
+          },
+          "top_k": {
+            "description": "For a `completion` task, it limits samples to the top-K most likely words, balancing coherence and variability.\nIt is only available for anthropic, cohere, and mistral providers.\nIt is an alternative to `temperature`; it should not be used if `temperature` is specified.",
+            "type": "number"
+          },
+          "top_p": {
+            "description": "For a `completion` task, it is a number in the range of 0.0 to 1.0, to eliminate low-probability tokens.\nTop-p uses nucleus sampling to select top tokens whose sum of likelihoods does not exceed a certain value, ensuring both variety and coherence.\nIt is an alternative to `temperature`; it should not be used if `temperature` is specified.",
+            "type": "number"
           }
         }
       },
