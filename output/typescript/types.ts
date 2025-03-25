@@ -13247,6 +13247,28 @@ export interface InferencePutRequest extends RequestBase {
 
 export type InferencePutResponse = InferenceInferenceEndpointInfo
 
+export interface InferencePutHuggingFaceHuggingFaceServiceSettings {
+  api_key: string
+  rate_limit?: InferenceRateLimitSetting
+  url: string
+}
+
+export type InferencePutHuggingFaceHuggingFaceTaskType = 'text_embedding'
+
+export interface InferencePutHuggingFaceRequest extends RequestBase {
+  task_type: InferencePutHuggingFaceHuggingFaceTaskType
+  huggingface_inference_id: Id
+  body?: {
+    chunking_settings?: InferenceInferenceChunkingSettings
+    service: InferencePutHuggingFaceServiceType
+    service_settings: InferencePutHuggingFaceHuggingFaceServiceSettings
+  }
+}
+
+export type InferencePutHuggingFaceResponse = InferenceInferenceEndpointInfo
+
+export type InferencePutHuggingFaceServiceType = 'hugging_face'
+
 export interface InferencePutOpenaiOpenAIServiceSettings {
   api_key: string
   dimensions?: integer
