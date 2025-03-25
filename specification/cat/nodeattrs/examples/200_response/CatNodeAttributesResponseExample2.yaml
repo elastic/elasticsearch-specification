@@ -5,5 +5,11 @@ description: >
 # type: response
 # response_code: 200
 value: |-
-  name    pid   attr     value
-  node-0 19566 testattr test
+  [
+    {
+      "name": "node-0",
+      "pid": "19566",
+      "attr": "testattr",
+      "value": "test"
+    }
+  ]
