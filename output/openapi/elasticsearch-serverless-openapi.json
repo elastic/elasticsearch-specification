@@ -9652,6 +9652,84 @@
         "x-state": "Added in 8.12.0"
       }
     },
+    "/_inference/{task_type}/{huggingface_inference_id}": {
+      "put": {
+        "tags": [
+          "inference"
+        ],
+        "summary": "Create a Hugging Face inference endpoint",
+        "description": "Create an inference endpoint to perform an inference task with the `hugging_face` service.\n\nYou must first create an inference endpoint on the Hugging Face endpoint page to get an endpoint URL.\nSelect the model you want to use on the new endpoint creation page (for example `intfloat/e5-small-v2`), then select the sentence embeddings task under the advanced configuration section.\nCreate the endpoint and copy the URL after the endpoint initialization has been finished.\n\nThe following models are recommended for the Hugging Face service:\n\n* `all-MiniLM-L6-v2`\n* `all-MiniLM-L12-v2`\n* `all-mpnet-base-v2`\n* `e5-base-v2`\n* `e5-small-v2`\n* `multilingual-e5-base`\n* `multilingual-e5-small`\n\nWhen you create an inference endpoint, the associated machine learning model is automatically deployed if it is not already running.\nAfter creating the endpoint, wait for the model deployment to complete before using it.\nTo verify the deployment status, use the get trained model statistics API.\nLook for `\"state\": \"fully_allocated\"` in the response and ensure that the `\"allocation_count\"` matches the `\"target_allocation_count\"`.\nAvoid creating multiple endpoints for the same model unless required, as each endpoint consumes significant resources.",
+        "operationId": "inference-put-hugging-face",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "task_type",
+            "description": "The type of the inference task that the model will perform.",
+            "required": true,
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/inference.put_hugging_face:HuggingFaceTaskType"
+            },
+            "style": "simple"
+          },
+          {
+            "in": "path",
+            "name": "huggingface_inference_id",
+            "description": "The unique identifier of the inference endpoint.",
+            "required": true,
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/_types:Id"
+            },
+            "style": "simple"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "chunking_settings": {
+                    "$ref": "#/components/schemas/inference._types:InferenceChunkingSettings"
+                  },
+                  "service": {
+                    "$ref": "#/components/schemas/inference.put_hugging_face:ServiceType"
+                  },
+                  "service_settings": {
+                    "$ref": "#/components/schemas/inference.put_hugging_face:HuggingFaceServiceSettings"
+                  }
+                },
+                "required": [
+                  "service",
+                  "service_settings"
+                ]
+              },
+              "examples": {
+                "PutHuggingFaceRequestExample1": {
+                  "summary": "A text embedding task",
+                  "description": "Run `PUT _inference/text_embedding/hugging-face-embeddings` to create an inference endpoint that performs a `text_embedding` task type.",
+                  "value": "{\n    \"service\": \"hugging_face\",\n    \"service_settings\": {\n        \"api_key\": \"hugging-face-access-token\", \n        \"url\": \"url-endpoint\" \n    }\n}"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/inference._types:InferenceEndpointInfo"
+                }
+              }
+            }
+          }
+        },
+        "x-state": "Added in 8.12.0"
+      }
+    },
     "/_inference/{task_type}/{openai_inference_id}": {
       "put": {
         "tags": [
@@ -48229,6 +48307,41 @@
             "type": "number"
           }
         }
+      },
+      "inference.put_hugging_face:HuggingFaceTaskType": {
+        "type": "string",
+        "enum": [
+          "text_embedding"
+        ]
+      },
+      "inference.put_hugging_face:ServiceType": {
+        "type": "string",
+        "enum": [
+          "hugging_face"
+        ]
+      },
+      "inference.put_hugging_face:HuggingFaceServiceSettings": {
+        "type": "object",
+        "properties": {
+          "api_key": {
+            "externalDocs": {
+              "url": "https://huggingface.co/settings/tokens"
+            },
+            "description": "A valid access token for your HuggingFace account.\nYou can create or find your access tokens on the HuggingFace settings page.\n\nIMPORTANT: You need to provide the API key only once, during the inference model creation.\nThe get inference endpoint API does not retrieve your API key.\nAfter creating the inference model, you cannot change the associated API key.\nIf you want to use a different API key, delete the inference model and recreate it with the same name and the updated API key.",
+            "type": "string"
+          },
+          "rate_limit": {
+            "$ref": "#/components/schemas/inference._types:RateLimitSetting"
+          },
+          "url": {
+            "description": "The URL endpoint to use for the requests.",
+            "type": "string"
+          }
+        },
+        "required": [
+          "api_key",
+          "url"
+        ]
       },
       "inference.put_openai:OpenAITaskType": {
         "type": "string",
