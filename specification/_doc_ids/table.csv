@@ -251,7 +251,12 @@ get-trained-models,https://www.elastic.co/docs/api/doc/elasticsearch/operation/o
 get-transform-stats,https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-transform-get-transform-stats
 get-transform,https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-transform-get-transform
 get-trial-status,https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-license-get-trial-status
+<<<<<<< HEAD
 googleaistudio-models,https://ai.google.dev/gemini-api/docs/models
+=======
+googlevertexai-locations,https://cloud.google.com/vertex-ai/generative-ai/docs/learn/locations
+googlevertexai-models,https://cloud.google.com/vertex-ai/generative-ai/docs/model-reference/text-embeddings-api
+>>>>>>> fefad6ff9 (Add Google Vertex AI inference details (#4028))
 graph,https://www.elastic.co/guide/en/kibana/current/xpack-graph.html
 graph-explore-api,https://www.elastic.co/docs/api/doc/elasticsearch/group/endpoint-graph
 grok,https://www.elastic.co/guide/en/elasticsearch/reference/current/grok.html
