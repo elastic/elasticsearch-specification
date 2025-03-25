@@ -332,14 +332,14 @@ indices-templates,https://www.elastic.co/guide/en/elasticsearch/reference/{branc
 indices-update-settings,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/indices-update-settings.html
 infer-trained-model,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/infer-trained-model.html
 infer-trained-model-deployment,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/infer-trained-model-deployment.html
-inference-api-amazonbedrock,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/infer-service-amazon-bedrock.html
-inference-api-anthropic,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/infer-service-anthropic.html
 inference-api-delete,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/delete-inference-api.html
 inference-api-get,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/get-inference-api.html
 inference-api-post,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/post-inference-api.html
 inference-api-post-eis-chat-completion,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/post-inference-api.html
 inference-api-put,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/put-inference-api.html
 inference-api-put-alibabacloud,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/infer-service-alibabacloud-ai-search.html
+inference-api-put-amazonbedrock,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/infer-service-amazon-bedrock.html
+inference-api-put-anthropic,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/infer-service-anthropic.html
 inference-api-put-azureopenai,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/infer-service-azure-openai.html
 inference-api-put-azureaistudio,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/infer-service-azure-ai-studio.html
 inference-api-put-cohere,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/infer-service-cohere.html
