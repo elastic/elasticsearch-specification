@@ -13329,6 +13329,28 @@ export type InferencePutEisResponse = InferenceInferenceEndpointInfo
 
 export type InferencePutEisServiceType = 'elastic'
 
+export interface InferencePutGoogleaistudioGoogleAiStudioServiceSettings {
+  api_key: string
+  model_id: string
+  rate_limit?: InferenceRateLimitSetting
+}
+
+export type InferencePutGoogleaistudioGoogleAiStudioTaskType = 'completion' | 'text_embedding'
+
+export interface InferencePutGoogleaistudioRequest extends RequestBase {
+  task_type: InferencePutGoogleaistudioGoogleAiStudioTaskType
+  googleaistudio_inference_id: Id
+  body?: {
+    chunking_settings?: InferenceInferenceChunkingSettings
+    service: InferencePutGoogleaistudioServiceType
+    service_settings: InferencePutGoogleaistudioGoogleAiStudioServiceSettings
+  }
+}
+
+export type InferencePutGoogleaistudioResponse = InferenceInferenceEndpointInfo
+
+export type InferencePutGoogleaistudioServiceType = 'googleaistudio'
+
 export interface InferencePutGooglevertexaiGoogleVertexAIServiceSettings {
   location: string
   model_id: string
