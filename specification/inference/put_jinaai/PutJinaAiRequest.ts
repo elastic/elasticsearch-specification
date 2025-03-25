@@ -68,7 +68,7 @@ export interface Request extends RequestBase {
      */
     chunking_settings?: InferenceChunkingSettings
     /**
-     * The type of service supported for the specified task type. In this case, `openai`.
+     * The type of service supported for the specified task type. In this case, `jinaai`.
      */
     service: ServiceType
     /**
