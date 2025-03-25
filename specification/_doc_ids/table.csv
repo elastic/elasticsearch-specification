@@ -24,6 +24,10 @@ autoscaling-get-autoscaling-capacity,https://www.elastic.co/guide/en/elasticsear
 autoscaling-get-autoscaling-policy,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/autoscaling-get-autoscaling-policy.html
 autoscaling-put-autoscaling-policy,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/autoscaling-put-autoscaling-policy.html
 avoid-index-pattern-collisions,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/index-templates.html#avoid-index-pattern-collisions
+azureopenai,https://oai.azure.com/
+azureopenai-auth,https://learn.microsoft.com/en-us/azure/ai-services/openai/reference#authentication
+azureopenai-portal,https://portal.azure.com/#view/HubsExtension/BrowseAll
+azureopenai-quota-limits,https://learn.microsoft.com/en-us/azure/ai-services/openai/quotas-limits
 behavioral-analytics-collection-event,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/post-analytics-collection-event.html
 behavioral-analytics-event-reference,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/behavioral-analytics-event-reference.html
 byte-units,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/api-conventions.html#byte-units
@@ -322,6 +326,7 @@ inference-api-post,https://www.elastic.co/guide/en/elasticsearch/reference/{bran
 inference-api-post-eis-chat-completion,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/post-inference-api.html
 inference-api-put,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/put-inference-api.html
 inference-api-put-alibabacloud,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/infer-service-alibabacloud-ai-search.html
+inference-api-put-azureopenai,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/infer-service-azure-openai.html
 inference-api-put-eis,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/infer-service-elastic.html
 inference-api-put-huggingface,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/infer-service-hugging-face.html
 inference-api-put-jinaai,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/infer-service-jinaai.html
