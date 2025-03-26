@@ -56082,12 +56082,12 @@
           "peak_throughput_per_minute": {
             "type": "number"
           },
-          "rejection_execution_count": {
+          "rejected_execution_count": {
             "description": "The number of inference requests that were not processed because the queue was full.",
             "type": "number"
           },
           "routing_state": {
-            "$ref": "#/components/schemas/ml._types:TrainedModelAssignmentRoutingTable"
+            "$ref": "#/components/schemas/ml._types:TrainedModelAssignmentRoutingStateAndReason"
           },
           "start_time": {
             "$ref": "#/components/schemas/_types:EpochTimeUnitMillis"
@@ -56110,7 +56110,7 @@
           "throughput_last_minute"
         ]
       },
-      "ml._types:TrainedModelAssignmentRoutingTable": {
+      "ml._types:TrainedModelAssignmentRoutingStateAndReason": {
         "type": "object",
         "properties": {
           "reason": {
@@ -56119,20 +56119,10 @@
           },
           "routing_state": {
             "$ref": "#/components/schemas/ml._types:RoutingState"
-          },
-          "current_allocations": {
-            "description": "Current number of allocations.",
-            "type": "number"
-          },
-          "target_allocations": {
-            "description": "Target number of allocations.",
-            "type": "number"
           }
         },
         "required": [
-          "routing_state",
-          "current_allocations",
-          "target_allocations"
+          "routing_state"
         ]
       },
       "ml._types:RoutingState": {
@@ -57125,6 +57115,31 @@
           "routing_table",
           "start_time",
           "task_parameters"
+        ]
+      },
+      "ml._types:TrainedModelAssignmentRoutingTable": {
+        "type": "object",
+        "properties": {
+          "reason": {
+            "description": "The reason for the current state. It is usually populated only when the\n`routing_state` is `failed`.",
+            "type": "string"
+          },
+          "routing_state": {
+            "$ref": "#/components/schemas/ml._types:RoutingState"
+          },
+          "current_allocations": {
+            "description": "Current number of allocations.",
+            "type": "number"
+          },
+          "target_allocations": {
+            "description": "Target number of allocations.",
+            "type": "number"
+          }
+        },
+        "required": [
+          "routing_state",
+          "current_allocations",
+          "target_allocations"
         ]
       },
       "ml._types:TrainedModelAssignmentTaskParameters": {
