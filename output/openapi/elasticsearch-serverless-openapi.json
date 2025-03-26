@@ -4448,7 +4448,7 @@
           {
             "in": "query",
             "name": "from",
-            "description": "Starting offset (default: 0)",
+            "description": "Skips the specified number of documents.",
             "deprecated": false,
             "schema": {
               "type": "number"
@@ -23022,7 +23022,7 @@
           {
             "in": "query",
             "name": "from",
-            "description": "Starting offset (default: 0)",
+            "description": "Skips the specified number of documents.",
             "deprecated": false,
             "schema": {
               "type": "number"
