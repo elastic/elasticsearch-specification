@@ -223,6 +223,7 @@ export class TrainedModelConfig {
   model_size_bytes?: ByteSize
   model_package?: ModelPackageConfig
   location?: TrainedModelLocation
+  platform_architecture?: string
   prefix_strings?: TrainedModelPrefixStrings
 }
 
