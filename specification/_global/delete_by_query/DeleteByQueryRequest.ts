@@ -178,6 +178,10 @@ export interface Request extends RequestBase {
      * @server_default open
      */
     expand_wildcards?: ExpandWildcards
+    /**
+     * Skips the specified number of documents.
+     * @server_default 0
+     */
     from?: long
     /**
      * If `false`, the request returns an error if it targets a missing or closed index.
