@@ -59,6 +59,7 @@ export class TransformHealthIssue {
   count: integer
   /** The timestamp this issue occurred for for the first time */
   first_occurrence?: EpochTime<UnitMillis>
+  first_occurence_string?: DateTime
 }
 
 export class TransformProgress {
@@ -100,9 +101,10 @@ export class CheckpointStats {
 
 export class Checkpointing {
   changes_last_detected_at?: long
-  changes_last_detected_at_date_time?: DateTime
+  changes_last_detected_at_string?: DateTime
   last: CheckpointStats
   next?: CheckpointStats
   operations_behind?: long
   last_search_time?: long
+  last_search_time_string?: DateTime
 }
