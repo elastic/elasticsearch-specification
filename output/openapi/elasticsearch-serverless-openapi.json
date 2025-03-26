@@ -59480,6 +59480,9 @@
           "create_time": {
             "$ref": "#/components/schemas/_types:EpochTimeUnitMillis"
           },
+          "create_time_string": {
+            "$ref": "#/components/schemas/_types:DateTime"
+          },
           "description": {
             "description": "Free text description of the transform.",
             "type": "string"
@@ -59730,7 +59733,7 @@
           "changes_last_detected_at": {
             "type": "number"
           },
-          "changes_last_detected_at_date_time": {
+          "changes_last_detected_at_string": {
             "$ref": "#/components/schemas/_types:DateTime"
           },
           "last": {
@@ -59744,6 +59747,9 @@
           },
           "last_search_time": {
             "type": "number"
+          },
+          "last_search_time_string": {
+            "$ref": "#/components/schemas/_types:DateTime"
           }
         },
         "required": [
@@ -59805,10 +59811,49 @@
         "properties": {
           "status": {
             "$ref": "#/components/schemas/_types:HealthStatus"
+          },
+          "issues": {
+            "description": "If a non-healthy status is returned, contains a list of issues of the transform.",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/transform.get_transform_stats:TransformHealthIssue"
+            }
           }
         },
         "required": [
           "status"
+        ]
+      },
+      "transform.get_transform_stats:TransformHealthIssue": {
+        "type": "object",
+        "properties": {
+          "type": {
+            "description": "The type of the issue",
+            "type": "string"
+          },
+          "issue": {
+            "description": "A description of the issue",
+            "type": "string"
+          },
+          "details": {
+            "description": "Details about the issue",
+            "type": "string"
+          },
+          "count": {
+            "description": "Number of times this issue has occurred since it started",
+            "type": "number"
+          },
+          "first_occurrence": {
+            "$ref": "#/components/schemas/_types:EpochTimeUnitMillis"
+          },
+          "first_occurence_string": {
+            "$ref": "#/components/schemas/_types:DateTime"
+          }
+        },
+        "required": [
+          "type",
+          "issue",
+          "count"
         ]
       },
       "transform.get_transform_stats:TransformIndexerStats": {

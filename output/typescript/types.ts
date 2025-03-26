@@ -21281,6 +21281,7 @@ export interface TransformGetTransformResponse {
 export interface TransformGetTransformTransformSummary {
   authorization?: MlTransformAuthorization
   create_time?: EpochTime<UnitMillis>
+  create_time_string?: DateTime
   description?: string
   dest: ReindexDestination
   frequency?: Duration
@@ -21306,11 +21307,12 @@ export interface TransformGetTransformStatsCheckpointStats {
 
 export interface TransformGetTransformStatsCheckpointing {
   changes_last_detected_at?: long
-  changes_last_detected_at_date_time?: DateTime
+  changes_last_detected_at_string?: DateTime
   last: TransformGetTransformStatsCheckpointStats
   next?: TransformGetTransformStatsCheckpointStats
   operations_behind?: long
   last_search_time?: long
+  last_search_time_string?: DateTime
 }
 
 export interface TransformGetTransformStatsRequest extends RequestBase {
@@ -21324,6 +21326,15 @@ export interface TransformGetTransformStatsRequest extends RequestBase {
 export interface TransformGetTransformStatsResponse {
   count: long
   transforms: TransformGetTransformStatsTransformStats[]
+}
+
+export interface TransformGetTransformStatsTransformHealthIssue {
+  type: string
+  issue: string
+  details?: string
+  count: integer
+  first_occurrence?: EpochTime<UnitMillis>
+  first_occurence_string?: DateTime
 }
 
 export interface TransformGetTransformStatsTransformIndexerStats {
@@ -21366,6 +21377,7 @@ export interface TransformGetTransformStatsTransformStats {
 
 export interface TransformGetTransformStatsTransformStatsHealth {
   status: HealthStatus
+  issues?: TransformGetTransformStatsTransformHealthIssue[]
 }
 
 export interface TransformPreviewTransformRequest extends RequestBase {
