@@ -9584,6 +9584,526 @@
         "x-state": "Added in 9.0.0"
       }
     },
+    "/_inference/{task_type}/{alibabacloud_inference_id}": {
+      "put": {
+        "tags": [
+          "inference"
+        ],
+        "summary": "Create an AlibabaCloud AI Search inference endpoint",
+        "description": "Create an inference endpoint to perform an inference task with the `alibabacloud-ai-search` service.\n\nWhen you create an inference endpoint, the associated machine learning model is automatically deployed if it is not already running.\nAfter creating the endpoint, wait for the model deployment to complete before using it.\nTo verify the deployment status, use the get trained model statistics API.\nLook for `\"state\": \"fully_allocated\"` in the response and ensure that the `\"allocation_count\"` matches the `\"target_allocation_count\"`.\nAvoid creating multiple endpoints for the same model unless required, as each endpoint consumes significant resources.",
+        "operationId": "inference-put-alibabacloud",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "task_type",
+            "description": "The type of the inference task that the model will perform.",
+            "required": true,
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/inference.put_alibabacloud:AlibabaCloudTaskType"
+            },
+            "style": "simple"
+          },
+          {
+            "in": "path",
+            "name": "alibabacloud_inference_id",
+            "description": "The unique identifier of the inference endpoint.",
+            "required": true,
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/_types:Id"
+            },
+            "style": "simple"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "chunking_settings": {
+                    "$ref": "#/components/schemas/inference._types:InferenceChunkingSettings"
+                  },
+                  "service": {
+                    "$ref": "#/components/schemas/inference.put_alibabacloud:ServiceType"
+                  },
+                  "service_settings": {
+                    "$ref": "#/components/schemas/inference.put_alibabacloud:AlibabaCloudServiceSettings"
+                  },
+                  "task_settings": {
+                    "$ref": "#/components/schemas/inference.put_alibabacloud:AlibabaCloudTaskSettings"
+                  }
+                },
+                "required": [
+                  "service",
+                  "service_settings"
+                ]
+              },
+              "examples": {
+                "PutAlibabaCloudRequestExample1": {
+                  "summary": "A completion task",
+                  "description": "Run `PUT _inference/completion/alibabacloud_ai_search_completion` to create an inference endpoint that performs a completion task.",
+                  "value": "{\n    \"service\": \"alibabacloud-ai-search\",\n    \"service_settings\": {\n        \"host\" : \"default-j01.platform-cn-shanghai.opensearch.aliyuncs.com\",\n        \"api_key\": \"AlibabaCloud-API-Key\",\n        \"service_id\": \"ops-qwen-turbo\",\n        \"workspace\" : \"default\"\n    }\n}"
+                },
+                "PutAlibabaCloudRequestExample2": {
+                  "summary": "A rerank task",
+                  "description": "Run `PUT _inference/rerank/alibabacloud_ai_search_rerank` to create an inference endpoint that performs a rerank task.",
+                  "value": "{\n    \"service\": \"alibabacloud-ai-search\",\n    \"service_settings\": {\n        \"api_key\": \"AlibabaCloud-API-Key\",\n        \"service_id\": \"ops-bge-reranker-larger\",\n        \"host\": \"default-j01.platform-cn-shanghai.opensearch.aliyuncs.com\",\n        \"workspace\": \"default\"\n    }\n}"
+                },
+                "PutAlibabaCloudRequestExample3": {
+                  "summary": "A sparse embedding task",
+                  "description": "Run `PUT _inference/sparse_embedding/alibabacloud_ai_search_sparse` to create an inference endpoint that performs perform a sparse embedding task.",
+                  "value": "{\n    \"service\": \"alibabacloud-ai-search\",\n    \"service_settings\": {\n        \"api_key\": \"AlibabaCloud-API-Key\",\n        \"service_id\": \"ops-text-sparse-embedding-001\",\n        \"host\": \"default-j01.platform-cn-shanghai.opensearch.aliyuncs.com\",\n        \"workspace\": \"default\"\n    }\n}"
+                },
+                "PutAlibabaCloudRequestExample4": {
+                  "summary": "A text embedding task",
+                  "description": "Run `PUT _inference/text_embedding/alibabacloud_ai_search_embeddings` to create an inference endpoint that performs a text embedding task.",
+                  "value": "{\n    \"service\": \"alibabacloud-ai-search\",\n    \"service_settings\": {\n        \"api_key\": \"AlibabaCloud-API-Key\",\n        \"service_id\": \"ops-text-embedding-001\",\n        \"host\": \"default-j01.platform-cn-shanghai.opensearch.aliyuncs.com\",\n        \"workspace\": \"default\"\n    }\n}"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/inference._types:InferenceEndpointInfo"
+                }
+              }
+            }
+          }
+        },
+        "x-state": "Added in 8.16.0"
+      }
+    },
+    "/_inference/{task_type}/{amazonbedrock_inference_id}": {
+      "put": {
+        "tags": [
+          "inference"
+        ],
+        "summary": "Create an Amazon Bedrock inference endpoint",
+        "description": "Creates an inference endpoint to perform an inference task with the `amazonbedrock` service.\n\n>info\n> You need to provide the access and secret keys only once, during the inference model creation. The get inference API does not retrieve your access or secret keys. After creating the inference model, you cannot change the associated key pairs. If you want to use a different access and secret key pair, delete the inference model and recreate it with the same name and the updated keys.\n\nWhen you create an inference endpoint, the associated machine learning model is automatically deployed if it is not already running.\nAfter creating the endpoint, wait for the model deployment to complete before using it.\nTo verify the deployment status, use the get trained model statistics API.\nLook for `\"state\": \"fully_allocated\"` in the response and ensure that the `\"allocation_count\"` matches the `\"target_allocation_count\"`.\nAvoid creating multiple endpoints for the same model unless required, as each endpoint consumes significant resources.",
+        "operationId": "inference-put-amazonbedrock",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "task_type",
+            "description": "The type of the inference task that the model will perform.",
+            "required": true,
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/inference.put_amazonbedrock:AmazonBedrockTaskType"
+            },
+            "style": "simple"
+          },
+          {
+            "in": "path",
+            "name": "amazonbedrock_inference_id",
+            "description": "The unique identifier of the inference endpoint.",
+            "required": true,
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/_types:Id"
+            },
+            "style": "simple"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "chunking_settings": {
+                    "$ref": "#/components/schemas/inference._types:InferenceChunkingSettings"
+                  },
+                  "service": {
+                    "$ref": "#/components/schemas/inference.put_amazonbedrock:ServiceType"
+                  },
+                  "service_settings": {
+                    "$ref": "#/components/schemas/inference.put_amazonbedrock:AmazonBedrockServiceSettings"
+                  },
+                  "task_settings": {
+                    "$ref": "#/components/schemas/inference.put_amazonbedrock:AmazonBedrockTaskSettings"
+                  }
+                },
+                "required": [
+                  "service",
+                  "service_settings"
+                ]
+              },
+              "examples": {
+                "PutAmazonBedrockRequestExample1": {
+                  "summary": "A text embedding task",
+                  "description": "Run `PUT _inference/text_embedding/amazon_bedrock_embeddings` to create an inference endpoint that performs a text embedding task.",
+                  "value": "{\n    \"service\": \"amazonbedrock\",\n    \"service_settings\": {\n        \"access_key\": \"AWS-access-key\",\n        \"secret_key\": \"AWS-secret-key\",\n        \"region\": \"us-east-1\",\n        \"provider\": \"amazontitan\",\n        \"model\": \"amazon.titan-embed-text-v2:0\"\n    }\n}"
+                },
+                "PutAmazonBedrockRequestExample2": {
+                  "summary": "A completion task",
+                  "description": "Run `PUT _inference/completion/openai-completion` to create an inference endpoint to perform a completion task type.",
+                  "value": "{\n    \"service\": \"openai\",\n    \"service_settings\": {\n        \"api_key\": \"OpenAI-API-Key\",\n        \"model_id\": \"gpt-3.5-turbo\"\n    }\n}"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/inference._types:InferenceEndpointInfo"
+                }
+              }
+            }
+          }
+        },
+        "x-state": "Added in 8.12.0"
+      }
+    },
+    "/_inference/{task_type}/{anthropic_inference_id}": {
+      "put": {
+        "tags": [
+          "inference"
+        ],
+        "summary": "Create an Anthropic inference endpoint",
+        "description": "Create an inference endpoint to perform an inference task with the `anthropic` service.\n\nWhen you create an inference endpoint, the associated machine learning model is automatically deployed if it is not already running.\nAfter creating the endpoint, wait for the model deployment to complete before using it.\nTo verify the deployment status, use the get trained model statistics API.\nLook for `\"state\": \"fully_allocated\"` in the response and ensure that the `\"allocation_count\"` matches the `\"target_allocation_count\"`.\nAvoid creating multiple endpoints for the same model unless required, as each endpoint consumes significant resources.",
+        "operationId": "inference-put-anthropic",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "task_type",
+            "description": "The task type.\nThe only valid task type for the model to perform is `completion`.",
+            "required": true,
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/inference.put_anthropic:AnthropicTaskType"
+            },
+            "style": "simple"
+          },
+          {
+            "in": "path",
+            "name": "anthropic_inference_id",
+            "description": "The unique identifier of the inference endpoint.",
+            "required": true,
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/_types:Id"
+            },
+            "style": "simple"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "chunking_settings": {
+                    "$ref": "#/components/schemas/inference._types:InferenceChunkingSettings"
+                  },
+                  "service": {
+                    "$ref": "#/components/schemas/inference.put_anthropic:ServiceType"
+                  },
+                  "service_settings": {
+                    "$ref": "#/components/schemas/inference.put_anthropic:AnthropicServiceSettings"
+                  },
+                  "task_settings": {
+                    "$ref": "#/components/schemas/inference.put_anthropic:AnthropicTaskSettings"
+                  }
+                },
+                "required": [
+                  "service",
+                  "service_settings"
+                ]
+              },
+              "examples": {
+                "PutAnthropicRequestExample1": {
+                  "description": "Run `PUT _inference/completion/anthropic_completion` to create an inference endpoint that performs a completion task.",
+                  "value": "{\n    \"service\": \"anthropic\",\n    \"service_settings\": {\n        \"api_key\": \"Anthropic-Api-Key\",\n        \"model_id\": \"Model-ID\"\n    },\n    \"task_settings\": {\n        \"max_tokens\": 1024\n    }\n}"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/inference._types:InferenceEndpointInfo"
+                }
+              }
+            }
+          }
+        },
+        "x-state": "Added in 8.16.0"
+      }
+    },
+    "/_inference/{task_type}/{azureaistudio_inference_id}": {
+      "put": {
+        "tags": [
+          "inference"
+        ],
+        "summary": "Create an Azure AI studio inference endpoint",
+        "description": "Create an inference endpoint to perform an inference task with the `azureaistudio` service.\n\nWhen you create an inference endpoint, the associated machine learning model is automatically deployed if it is not already running.\nAfter creating the endpoint, wait for the model deployment to complete before using it.\nTo verify the deployment status, use the get trained model statistics API.\nLook for `\"state\": \"fully_allocated\"` in the response and ensure that the `\"allocation_count\"` matches the `\"target_allocation_count\"`.\nAvoid creating multiple endpoints for the same model unless required, as each endpoint consumes significant resources.",
+        "operationId": "inference-put-azureaistudio",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "task_type",
+            "description": "The type of the inference task that the model will perform.",
+            "required": true,
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/inference.put_azureaistudio:AzureAiStudioTaskType"
+            },
+            "style": "simple"
+          },
+          {
+            "in": "path",
+            "name": "azureaistudio_inference_id",
+            "description": "The unique identifier of the inference endpoint.",
+            "required": true,
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/_types:Id"
+            },
+            "style": "simple"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "chunking_settings": {
+                    "$ref": "#/components/schemas/inference._types:InferenceChunkingSettings"
+                  },
+                  "service": {
+                    "$ref": "#/components/schemas/inference.put_azureaistudio:ServiceType"
+                  },
+                  "service_settings": {
+                    "$ref": "#/components/schemas/inference.put_azureaistudio:AzureAiStudioServiceSettings"
+                  },
+                  "task_settings": {
+                    "$ref": "#/components/schemas/inference.put_azureaistudio:AzureAiStudioTaskSettings"
+                  }
+                },
+                "required": [
+                  "service",
+                  "service_settings"
+                ]
+              },
+              "examples": {
+                "PutAzureAiStudioRequestExample1": {
+                  "summary": "A text embedding task",
+                  "description": "Run `PUT _inference/text_embedding/azure_ai_studio_embeddings` to create an inference endpoint that performs a text_embedding task. Note that you do not specify a model here, as it is defined already in the Azure AI Studio deployment.",
+                  "value": "{\n    \"service\": \"azureaistudio\",\n    \"service_settings\": {\n        \"api_key\": \"Azure-AI-Studio-API-key\",\n        \"target\": \"Target-Uri\",\n        \"provider\": \"openai\",\n        \"endpoint_type\": \"token\"\n    }\n}"
+                },
+                "PutAzureAiStudioRequestExample2": {
+                  "summary": "A completion task",
+                  "description": "Run `PUT _inference/completion/azure_ai_studio_completion` to create an inference endpoint that performs a completion task.",
+                  "value": "{\n    \"service\": \"azureaistudio\",\n    \"service_settings\": {\n        \"api_key\": \"Azure-AI-Studio-API-key\",\n        \"target\": \"Target-URI\",\n        \"provider\": \"databricks\",\n        \"endpoint_type\": \"realtime\"\n    }\n}"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/inference._types:InferenceEndpointInfo"
+                }
+              }
+            }
+          }
+        },
+        "x-state": "Added in 8.14.0"
+      }
+    },
+    "/_inference/{task_type}/{azureopenai_inference_id}": {
+      "put": {
+        "tags": [
+          "inference"
+        ],
+        "summary": "Create an Azure OpenAI inference endpoint",
+        "description": "Create an inference endpoint to perform an inference task with the `azureopenai` service.\n\nThe list of chat completion models that you can choose from in your Azure OpenAI deployment include:\n\n* [GPT-4 and GPT-4 Turbo models](https://learn.microsoft.com/en-us/azure/ai-services/openai/concepts/models?tabs=global-standard%2Cstandard-chat-completions#gpt-4-and-gpt-4-turbo-models)\n* [GPT-3.5](https://learn.microsoft.com/en-us/azure/ai-services/openai/concepts/models?tabs=global-standard%2Cstandard-chat-completions#gpt-35)\n\nThe list of embeddings models that you can choose from in your deployment can be found in the [Azure models documentation](https://learn.microsoft.com/en-us/azure/ai-services/openai/concepts/models?tabs=global-standard%2Cstandard-chat-completions#embeddings).\n\nWhen you create an inference endpoint, the associated machine learning model is automatically deployed if it is not already running.\nAfter creating the endpoint, wait for the model deployment to complete before using it.\nTo verify the deployment status, use the get trained model statistics API.\nLook for `\"state\": \"fully_allocated\"` in the response and ensure that the `\"allocation_count\"` matches the `\"target_allocation_count\"`.\nAvoid creating multiple endpoints for the same model unless required, as each endpoint consumes significant resources.",
+        "operationId": "inference-put-azureopenai",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "task_type",
+            "description": "The type of the inference task that the model will perform.\nNOTE: The `chat_completion` task type only supports streaming and only through the _stream API.",
+            "required": true,
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/inference.put_azureopenai:AzureOpenAITaskType"
+            },
+            "style": "simple"
+          },
+          {
+            "in": "path",
+            "name": "azureopenai_inference_id",
+            "description": "The unique identifier of the inference endpoint.",
+            "required": true,
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/_types:Id"
+            },
+            "style": "simple"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "chunking_settings": {
+                    "$ref": "#/components/schemas/inference._types:InferenceChunkingSettings"
+                  },
+                  "service": {
+                    "$ref": "#/components/schemas/inference.put_azureopenai:ServiceType"
+                  },
+                  "service_settings": {
+                    "$ref": "#/components/schemas/inference.put_azureopenai:AzureOpenAIServiceSettings"
+                  },
+                  "task_settings": {
+                    "$ref": "#/components/schemas/inference.put_azureopenai:AzureOpenAITaskSettings"
+                  }
+                },
+                "required": [
+                  "service",
+                  "service_settings"
+                ]
+              },
+              "examples": {
+                "PutAzureOpenAiRequestExample1": {
+                  "summary": "A text embedding task",
+                  "description": "Run `PUT _inference/text_embedding/azure_openai_embeddings` to create an inference endpoint that performs a `text_embedding` task. You do not specify a model, as it is defined already in the Azure OpenAI deployment.",
+                  "value": "{\n    \"service\": \"azureopenai\",\n    \"service_settings\": {\n        \"api_key\": \"Api-Key\",\n        \"resource_name\": \"Resource-name\",\n        \"deployment_id\": \"Deployment-id\",\n        \"api_version\": \"2024-02-01\"\n    }\n}"
+                },
+                "PutAzureOpenAiRequestExample2": {
+                  "summary": "A completion task",
+                  "description": "Run `PUT _inference/completion/azure_openai_completion` to create an inference endpoint that performs a `completion` task.",
+                  "value": "{\n    \"service\": \"azureopenai\",\n    \"service_settings\": {\n        \"api_key\": \"Api-Key\",\n        \"resource_name\": \"Resource-name\",\n        \"deployment_id\": \"Deployment-id\",\n        \"api_version\": \"2024-02-01\"\n    }\n}"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/inference._types:InferenceEndpointInfo"
+                }
+              }
+            }
+          }
+        },
+        "x-state": "Added in 8.14.0"
+      }
+    },
+    "/_inference/{task_type}/{cohere_inference_id}": {
+      "put": {
+        "tags": [
+          "inference"
+        ],
+        "summary": "Create a Cohere inference endpoint",
+        "description": "Create an inference endpoint to perform an inference task with the `cohere` service.\n\nWhen you create an inference endpoint, the associated machine learning model is automatically deployed if it is not already running.\nAfter creating the endpoint, wait for the model deployment to complete before using it.\nTo verify the deployment status, use the get trained model statistics API.\nLook for `\"state\": \"fully_allocated\"` in the response and ensure that the `\"allocation_count\"` matches the `\"target_allocation_count\"`.\nAvoid creating multiple endpoints for the same model unless required, as each endpoint consumes significant resources.",
+        "operationId": "inference-put-cohere",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "task_type",
+            "description": "The type of the inference task that the model will perform.",
+            "required": true,
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/inference.put_cohere:CohereTaskType"
+            },
+            "style": "simple"
+          },
+          {
+            "in": "path",
+            "name": "cohere_inference_id",
+            "description": "The unique identifier of the inference endpoint.",
+            "required": true,
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/_types:Id"
+            },
+            "style": "simple"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "chunking_settings": {
+                    "$ref": "#/components/schemas/inference._types:InferenceChunkingSettings"
+                  },
+                  "service": {
+                    "$ref": "#/components/schemas/inference.put_cohere:ServiceType"
+                  },
+                  "service_settings": {
+                    "$ref": "#/components/schemas/inference.put_cohere:CohereServiceSettings"
+                  },
+                  "task_settings": {
+                    "$ref": "#/components/schemas/inference.put_cohere:CohereTaskSettings"
+                  }
+                },
+                "required": [
+                  "service",
+                  "service_settings"
+                ]
+              },
+              "examples": {
+                "PutCohereRequestExample1": {
+                  "summary": "A text embedding task",
+                  "description": "Run `PUT _inference/text_embedding/cohere-embeddings` to create an inference endpoint that performs a text embedding task.",
+                  "value": "{\n    \"service\": \"cohere\",\n    \"service_settings\": {\n        \"api_key\": \"Cohere-Api-key\",\n        \"model_id\": \"embed-english-light-v3.0\",\n        \"embedding_type\": \"byte\"\n    }\n}"
+                },
+                "PutCohereRequestExample2": {
+                  "summary": "A rerank task",
+                  "description": "Run `PUT _inference/rerank/cohere-rerank` to create an inference endpoint that performs a rerank task.",
+                  "value": "{\n    \"service\": \"cohere\",\n    \"service_settings\": {\n        \"api_key\": \"Cohere-API-key\",\n        \"model_id\": \"rerank-english-v3.0\"\n    },\n    \"task_settings\": {\n        \"top_n\": 10,\n        \"return_documents\": true\n    }\n}"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/inference._types:InferenceEndpointInfo"
+                }
+              }
+            }
+          }
+        },
+        "x-state": "Added in 8.13.0"
+      }
+    },
     "/_inference/{task_type}/{eis_inference_id}": {
       "put": {
         "tags": [
@@ -9650,6 +10170,286 @@
           }
         },
         "x-state": "Added in 8.12.0"
+      }
+    },
+    "/_inference/{task_type}/{elasticsearch_inference_id}": {
+      "put": {
+        "tags": [
+          "inference"
+        ],
+        "summary": "Create an Elasticsearch inference endpoint",
+        "description": "Create an inference endpoint to perform an inference task with the `elasticsearch` service.\n\n> info\n> Your Elasticsearch deployment contains preconfigured ELSER and E5 inference endpoints, you only need to create the enpoints using the API if you want to customize the settings.\n\nIf you use the ELSER or the E5 model through the `elasticsearch` service, the API request will automatically download and deploy the model if it isn't downloaded yet.\n\n> info\n> You might see a 502 bad gateway error in the response when using the Kibana Console. This error usually just reflects a timeout, while the model downloads in the background. You can check the download progress in the Machine Learning UI. If using the Python client, you can set the timeout parameter to a higher value.\n\nAfter creating the endpoint, wait for the model deployment to complete before using it.\nTo verify the deployment status, use the get trained model statistics API.\nLook for `\"state\": \"fully_allocated\"` in the response and ensure that the `\"allocation_count\"` matches the `\"target_allocation_count\"`.\nAvoid creating multiple endpoints for the same model unless required, as each endpoint consumes significant resources.",
+        "operationId": "inference-put-elasticsearch",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "task_type",
+            "description": "The type of the inference task that the model will perform.",
+            "required": true,
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/inference.put_elasticsearch:ElasticsearchTaskType"
+            },
+            "style": "simple"
+          },
+          {
+            "in": "path",
+            "name": "elasticsearch_inference_id",
+            "description": "The unique identifier of the inference endpoint.\nThe must not match the `model_id`.",
+            "required": true,
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/_types:Id"
+            },
+            "style": "simple"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "chunking_settings": {
+                    "$ref": "#/components/schemas/inference._types:InferenceChunkingSettings"
+                  },
+                  "service": {
+                    "$ref": "#/components/schemas/inference.put_elasticsearch:ServiceType"
+                  },
+                  "service_settings": {
+                    "$ref": "#/components/schemas/inference.put_elasticsearch:ElasticsearchServiceSettings"
+                  },
+                  "task_settings": {
+                    "$ref": "#/components/schemas/inference.put_elasticsearch:ElasticsearchTaskSettings"
+                  }
+                },
+                "required": [
+                  "service",
+                  "service_settings"
+                ]
+              },
+              "examples": {
+                "PutElasticsearchRequestExample1": {
+                  "summary": "ELSER sparse embedding task",
+                  "description": "Run `PUT _inference/sparse_embedding/my-elser-model` to create an inference endpoint that performs a `sparse_embedding` task. The `model_id` must be the ID of one of the built-in ELSER models. The API will automatically download the ELSER model if it isn't already downloaded and then deploy the model.",
+                  "value": "{\n    \"service\": \"elasticsearch\",\n    \"service_settings\": {\n        \"adaptive_allocations\": { \n        \"enabled\": true,\n        \"min_number_of_allocations\": 1,\n        \"max_number_of_allocations\": 4\n        },\n        \"num_threads\": 1,\n        \"model_id\": \".elser_model_2\" \n    }\n}"
+                },
+                "PutElasticsearchRequestExample2": {
+                  "summary": "Elastic rerank task",
+                  "description": "Run `PUT _inference/rerank/my-elastic-rerank` to create an inference endpoint that performs a rerank task using the built-in Elastic Rerank cross-encoder model.  The `model_id` must be `.rerank-v1`, which is the ID of the built-in Elastic Rerank model. The API will automatically download the Elastic Rerank model if it isn't already downloaded and then deploy the model. Once deployed, the model can be used for semantic re-ranking with a `text_similarity_reranker` retriever.",
+                  "value": "{\n    \"service\": \"elasticsearch\",\n    \"service_settings\": {\n        \"model_id\": \".rerank-v1\", \n        \"num_threads\": 1,\n        \"adaptive_allocations\": { \n        \"enabled\": true,\n        \"min_number_of_allocations\": 1,\n        \"max_number_of_allocations\": 4\n        }\n    }\n}"
+                },
+                "PutElasticsearchRequestExample3": {
+                  "summary": "E5 text embedding task",
+                  "description": "Run `PUT _inference/text_embedding/my-e5-model` to create an inference endpoint that performs a `text_embedding` task. The `model_id` must be the ID of one of the built-in E5 models. The API will automatically download the E5 model if it isn't already downloaded and then deploy the model.",
+                  "value": "{\n    \"service\": \"elasticsearch\",\n    \"service_settings\": {\n        \"num_allocations\": 1,\n        \"num_threads\": 1,\n        \"model_id\": \".multilingual-e5-small\" \n    }\n}"
+                },
+                "PutElasticsearchRequestExample4": {
+                  "summary": "Eland text embedding task",
+                  "description": "Run `PUT _inference/text_embedding/my-msmarco-minilm-model` to create an inference endpoint that performs a `text_embedding` task with a model that was uploaded by Eland.",
+                  "value": "{\n    \"service\": \"elasticsearch\",\n    \"service_settings\": {\n        \"num_allocations\": 1,\n        \"num_threads\": 1,\n        \"model_id\": \"msmarco-MiniLM-L12-cos-v5\" \n    }\n}"
+                },
+                "PutElasticsearchRequestExample5": {
+                  "summary": "Adaptive allocation",
+                  "description": "Run `PUT _inference/text_embedding/my-e5-model` to create an inference endpoint that performs a `text_embedding` task and to configure adaptive allocations. The API request will automatically download the E5 model if it isn't already downloaded and then deploy the model.",
+                  "value": "{\n    \"service\": \"elasticsearch\",\n    \"service_settings\": {\n        \"adaptive_allocations\": {\n        \"enabled\": true,\n        \"min_number_of_allocations\": 3,\n        \"max_number_of_allocations\": 10\n        },\n        \"num_threads\": 1,\n        \"model_id\": \".multilingual-e5-small\"\n    }\n}"
+                },
+                "PutElasticsearchRequestExample6": {
+                  "summary": "Existing model deployment",
+                  "description": "Run `PUT _inference/sparse_embedding/use_existing_deployment` to use an already existing model deployment when creating an inference endpoint.",
+                  "value": "{\n    \"service\": \"elasticsearch\",\n    \"service_settings\": {\n        \"deployment_id\": \".elser_model_2\"\n    }\n}"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/inference._types:InferenceEndpointInfo"
+                },
+                "examples": {
+                  "PutElasticsearchResponseExample1": {
+                    "description": "A successful response from `PUT _inference/sparse_embedding/use_existing_deployment`. It contains the model ID and the threads and allocations settings from the model deployment.\n",
+                    "value": "{\n  \"inference_id\": \"use_existing_deployment\",\n  \"task_type\": \"sparse_embedding\",\n  \"service\": \"elasticsearch\",\n  \"service_settings\": {\n    \"num_allocations\": 2,\n    \"num_threads\": 1,\n    \"model_id\": \".elser_model_2\",\n    \"deployment_id\": \".elser_model_2\"\n  },\n  \"chunking_settings\": {\n    \"strategy\": \"sentence\",\n    \"max_chunk_size\": 250,\n    \"sentence_overlap\": 1\n  }\n}"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "x-state": "Added in 8.13.0"
+      }
+    },
+    "/_inference/{task_type}/{elser_inference_id}": {
+      "put": {
+        "tags": [
+          "inference"
+        ],
+        "summary": "Create an ELSER inference endpoint",
+        "description": "Create an inference endpoint to perform an inference task with the `elser` service.\nYou can also deploy ELSER by using the Elasticsearch inference integration.\n\n> info\n> Your Elasticsearch deployment contains a preconfigured ELSER inference endpoint, you only need to create the enpoint using the API if you want to customize the settings.\n\nThe API request will automatically download and deploy the ELSER model if it isn't already downloaded.\n\n> info\n> You might see a 502 bad gateway error in the response when using the Kibana Console. This error usually just reflects a timeout, while the model downloads in the background. You can check the download progress in the Machine Learning UI. If using the Python client, you can set the timeout parameter to a higher value.\n\nAfter creating the endpoint, wait for the model deployment to complete before using it.\nTo verify the deployment status, use the get trained model statistics API.\nLook for `\"state\": \"fully_allocated\"` in the response and ensure that the `\"allocation_count\"` matches the `\"target_allocation_count\"`.\nAvoid creating multiple endpoints for the same model unless required, as each endpoint consumes significant resources.",
+        "operationId": "inference-put-elser",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "task_type",
+            "description": "The type of the inference task that the model will perform.",
+            "required": true,
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/inference.put_elser:ElserTaskType"
+            },
+            "style": "simple"
+          },
+          {
+            "in": "path",
+            "name": "elser_inference_id",
+            "description": "The unique identifier of the inference endpoint.",
+            "required": true,
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/_types:Id"
+            },
+            "style": "simple"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "chunking_settings": {
+                    "$ref": "#/components/schemas/inference._types:InferenceChunkingSettings"
+                  },
+                  "service": {
+                    "$ref": "#/components/schemas/inference.put_elser:ServiceType"
+                  },
+                  "service_settings": {
+                    "$ref": "#/components/schemas/inference.put_elser:ElserServiceSettings"
+                  }
+                },
+                "required": [
+                  "service",
+                  "service_settings"
+                ]
+              },
+              "examples": {
+                "PutElserRequestExample1": {
+                  "summary": "A sparse embedding task",
+                  "description": "Run `PUT _inference/sparse_embedding/my-elser-model` to create an inference endpoint that performs a `sparse_embedding` task. The request will automatically download the ELSER model if it isn't already downloaded and then deploy the model.",
+                  "value": "{\n    \"service\": \"elser\",\n    \"service_settings\": {\n        \"num_allocations\": 1,\n        \"num_threads\": 1\n    }\n}"
+                },
+                "PutElserRequestExample2": {
+                  "summary": "Adaptive allocations",
+                  "description": "Run `PUT _inference/sparse_embedding/my-elser-model` to create an inference endpoint that performs a `sparse_embedding` task with adaptive allocations. When adaptive allocations are enabled, the number of allocations of the model is set automatically based on the current load.",
+                  "value": "{\n    \"service\": \"elser\",\n    \"service_settings\": {\n        \"adaptive_allocations\": {\n            \"enabled\": true,\n            \"min_number_of_allocations\": 3,\n            \"max_number_of_allocations\": 10\n        },\n        \"num_threads\": 1\n    }\n}"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/inference._types:InferenceEndpointInfo"
+                },
+                "examples": {
+                  "PutElserResponseExample1": {
+                    "description": "A successful response when creating an ELSER inference endpoint.",
+                    "value": "{\n  \"inference_id\": \"my-elser-model\",\n  \"task_type\": \"sparse_embedding\",\n  \"service\": \"elser\",\n  \"service_settings\": {\n    \"num_allocations\": 1,\n    \"num_threads\": 1\n  },\n  \"task_settings\": {}\n}"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "deprecated": true,
+        "x-state": "Added in 8.11.0"
+      }
+    },
+    "/_inference/{task_type}/{googleaistudio_inference_id}": {
+      "put": {
+        "tags": [
+          "inference"
+        ],
+        "summary": "Create an Google AI Studio inference endpoint",
+        "description": "Create an inference endpoint to perform an inference task with the `googleaistudio` service.\n\nWhen you create an inference endpoint, the associated machine learning model is automatically deployed if it is not already running.\nAfter creating the endpoint, wait for the model deployment to complete before using it.\nTo verify the deployment status, use the get trained model statistics API.\nLook for `\"state\": \"fully_allocated\"` in the response and ensure that the `\"allocation_count\"` matches the `\"target_allocation_count\"`.\nAvoid creating multiple endpoints for the same model unless required, as each endpoint consumes significant resources.",
+        "operationId": "inference-put-googleaistudio",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "task_type",
+            "description": "The type of the inference task that the model will perform.",
+            "required": true,
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/inference.put_googleaistudio:GoogleAiStudioTaskType"
+            },
+            "style": "simple"
+          },
+          {
+            "in": "path",
+            "name": "googleaistudio_inference_id",
+            "description": "The unique identifier of the inference endpoint.",
+            "required": true,
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/_types:Id"
+            },
+            "style": "simple"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "chunking_settings": {
+                    "$ref": "#/components/schemas/inference._types:InferenceChunkingSettings"
+                  },
+                  "service": {
+                    "$ref": "#/components/schemas/inference.put_googleaistudio:ServiceType"
+                  },
+                  "service_settings": {
+                    "$ref": "#/components/schemas/inference.put_googleaistudio:GoogleAiStudioServiceSettings"
+                  }
+                },
+                "required": [
+                  "service",
+                  "service_settings"
+                ]
+              },
+              "examples": {
+                "PutGoogleAiStudioRequestExample1": {
+                  "summary": "A completion task",
+                  "description": "Run `PUT _inference/completion/google_ai_studio_completion` to create an inference endpoint to perform a `completion` task type.",
+                  "value": "{\n    \"service\": \"googleaistudio\",\n    \"service_settings\": {\n        \"api_key\": \"api-key\",\n        \"model_id\": \"model-id\"\n    }\n}"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/inference._types:InferenceEndpointInfo"
+                }
+              }
+            }
+          }
+        },
+        "x-state": "Added in 8.15.0"
       }
     },
     "/_inference/{task_type}/{googlevertexai_inference_id}": {
@@ -9902,6 +10702,83 @@
         "x-state": "Added in 8.18.0"
       }
     },
+    "/_inference/{task_type}/{mistral_inference_id}": {
+      "put": {
+        "tags": [
+          "inference"
+        ],
+        "summary": "Create a Mistral inference endpoint",
+        "description": "Creates an inference endpoint to perform an inference task with the `mistral` service.\n\nWhen you create an inference endpoint, the associated machine learning model is automatically deployed if it is not already running.\nAfter creating the endpoint, wait for the model deployment to complete before using it.\nTo verify the deployment status, use the get trained model statistics API.\nLook for `\"state\": \"fully_allocated\"` in the response and ensure that the `\"allocation_count\"` matches the `\"target_allocation_count\"`.\nAvoid creating multiple endpoints for the same model unless required, as each endpoint consumes significant resources.",
+        "operationId": "inference-put-mistral",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "task_type",
+            "description": "The task type.\nThe only valid task type for the model to perform is `text_embedding`.",
+            "required": true,
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/inference.put_mistral:MistralTaskType"
+            },
+            "style": "simple"
+          },
+          {
+            "in": "path",
+            "name": "mistral_inference_id",
+            "description": "The unique identifier of the inference endpoint.",
+            "required": true,
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/_types:Id"
+            },
+            "style": "simple"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "chunking_settings": {
+                    "$ref": "#/components/schemas/inference._types:InferenceChunkingSettings"
+                  },
+                  "service": {
+                    "$ref": "#/components/schemas/inference.put_mistral:ServiceType"
+                  },
+                  "service_settings": {
+                    "$ref": "#/components/schemas/inference.put_mistral:MistralServiceSettings"
+                  }
+                },
+                "required": [
+                  "service",
+                  "service_settings"
+                ]
+              },
+              "examples": {
+                "PutMistralRequestExample1": {
+                  "description": "Run `PUT _inference/text_embedding/mistral-embeddings-test` to create a Mistral inference endpoint that performs a text embedding task.",
+                  "value": "{\n  \"service\": \"mistral\",\n  \"service_settings\": {\n    \"api_key\": \"Mistral-API-Key\",\n    \"model\": \"mistral-embed\" \n  }\n}"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/inference._types:InferenceEndpointInfo"
+                }
+              }
+            }
+          }
+        },
+        "x-state": "Added in 8.15.0"
+      }
+    },
     "/_inference/{task_type}/{openai_inference_id}": {
       "put": {
         "tags": [
@@ -9966,8 +10843,8 @@
                 },
                 "PutOpenAiRequestExample2": {
                   "summary": "A completion task",
-                  "description": "Run `PUT _inference/completion/openai-completion` to create an inference endpoint to perform a completion task type.",
-                  "value": "{\n    \"service\": \"openai\",\n    \"service_settings\": {\n        \"api_key\": \"OpenAI-API-Key\",\n        \"model_id\": \"gpt-3.5-turbo\"\n    }\n}"
+                  "description": "Run `PUT _inference/completion/amazon_bedrock_completion` to create an inference endpoint to perform a completion task.",
+                  "value": "{\n    \"service\": \"amazonbedrock\",\n    \"service_settings\": {\n        \"access_key\": \"AWS-access-key\",\n        \"secret_key\": \"AWS-secret-key\",\n        \"region\": \"us-east-1\",\n        \"provider\": \"amazontitan\",\n        \"model\": \"amazon.titan-text-premier-v1:0\"\n    }\n}"
                 }
               }
             }
@@ -10125,7 +11002,7 @@
                 ]
               },
               "examples": {
-                "InferenceRequestExample1": {
+                "PutWatsonxRequestExample1": {
                   "description": "Run `PUT _inference/text_embedding/watsonx-embeddings` to create an Watonsx inference endpoint that performs a text embedding task.",
                   "value": "{\n  \"service\": \"watsonxai\",\n  \"service_settings\": {\n      \"api_key\": \"Watsonx-API-Key\", \n      \"url\": \"Wastonx-URL\", \n      \"model_id\": \"ibm/slate-30m-english-rtrvr\",\n      \"project_id\": \"IBM-Cloud-ID\", \n      \"api_version\": \"2024-03-14\"\n  }\n}"
                 }
@@ -48437,6 +49314,447 @@
       "inference._types:ServiceSettings": {
         "type": "object"
       },
+      "inference.put_alibabacloud:AlibabaCloudTaskType": {
+        "type": "string",
+        "enum": [
+          "completion",
+          "rerank",
+          "space_embedding",
+          "text_embedding"
+        ]
+      },
+      "inference.put_alibabacloud:ServiceType": {
+        "type": "string",
+        "enum": [
+          "alibabacloud-ai-search"
+        ]
+      },
+      "inference.put_alibabacloud:AlibabaCloudServiceSettings": {
+        "type": "object",
+        "properties": {
+          "api_key": {
+            "description": "A valid API key for the AlibabaCloud AI Search API.",
+            "type": "string"
+          },
+          "host": {
+            "externalDocs": {
+              "url": "https://opensearch.console.aliyun.com/cn-shanghai/rag/api-key"
+            },
+            "description": "The name of the host address used for the inference task.\nYou can find the host address in the API keys section of the documentation.",
+            "type": "string"
+          },
+          "rate_limit": {
+            "$ref": "#/components/schemas/inference._types:RateLimitSetting"
+          },
+          "service_id": {
+            "description": "The name of the model service to use for the inference task.\nThe following service IDs are available for the `completion` task:\n\n* `ops-qwen-turbo`\n* `qwen-turbo`\n* `qwen-plus`\n* `qwen-max ÷ qwen-max-longcontext`\n\nThe following service ID is available for the `rerank` task:\n\n* `ops-bge-reranker-larger`\n\nThe following service ID is available for the `sparse_embedding` task:\n\n* `ops-text-sparse-embedding-001`\n\nThe following service IDs are available for the `text_embedding` task:\n\n`ops-text-embedding-001`\n`ops-text-embedding-zh-001`\n`ops-text-embedding-en-001`\n`ops-text-embedding-002`",
+            "type": "string"
+          },
+          "workspace": {
+            "description": "The name of the workspace used for the inference task.",
+            "type": "string"
+          }
+        },
+        "required": [
+          "api_key",
+          "host",
+          "service_id",
+          "workspace"
+        ]
+      },
+      "inference._types:RateLimitSetting": {
+        "type": "object",
+        "properties": {
+          "requests_per_minute": {
+            "description": "The number of requests allowed per minute.",
+            "type": "number"
+          }
+        }
+      },
+      "inference.put_alibabacloud:AlibabaCloudTaskSettings": {
+        "type": "object",
+        "properties": {
+          "input_type": {
+            "description": "For a `sparse_embedding` or `text_embedding` task, specify the type of input passed to the model.\nValid values are:\n\n* `ingest` for storing document embeddings in a vector database.\n* `search` for storing embeddings of search queries run against a vector database to find relevant documents.",
+            "type": "string"
+          },
+          "return_token": {
+            "description": "For a `sparse_embedding` task, it affects whether the token name will be returned in the response.\nIt defaults to `false`, which means only the token ID will be returned in the response.",
+            "type": "boolean"
+          }
+        }
+      },
+      "inference.put_amazonbedrock:AmazonBedrockTaskType": {
+        "type": "string",
+        "enum": [
+          "completion",
+          "text_embedding"
+        ]
+      },
+      "inference.put_amazonbedrock:ServiceType": {
+        "type": "string",
+        "enum": [
+          "amazonbedrock"
+        ]
+      },
+      "inference.put_amazonbedrock:AmazonBedrockServiceSettings": {
+        "type": "object",
+        "properties": {
+          "access_key": {
+            "description": "A valid AWS access key that has permissions to use Amazon Bedrock and access to models for inference requests.",
+            "type": "string"
+          },
+          "model": {
+            "externalDocs": {
+              "url": "https://docs.aws.amazon.com/bedrock/latest/userguide/models-supported.html"
+            },
+            "description": "The base model ID or an ARN to a custom model based on a foundational model.\nThe base model IDs can be found in the Amazon Bedrock documentation.\nNote that the model ID must be available for the provider chosen and your IAM user must have access to the model.",
+            "type": "string"
+          },
+          "provider": {
+            "description": "The model provider for your deployment.\nNote that some providers may support only certain task types.\nSupported providers include:\n\n* `amazontitan` - available for `text_embedding` and `completion` task types\n* `anthropic` - available for `completion` task type only\n* `ai21labs` - available for `completion` task type only\n* `cohere` - available for `text_embedding` and `completion` task types\n* `meta` - available for `completion` task type only\n* `mistral` - available for `completion` task type only",
+            "type": "string"
+          },
+          "region": {
+            "externalDocs": {
+              "url": "https://docs.aws.amazon.com/bedrock/latest/userguide/models-supported.html"
+            },
+            "description": "The region that your model or ARN is deployed in.\nThe list of available regions per model can be found in the Amazon Bedrock documentation.",
+            "type": "string"
+          },
+          "rate_limit": {
+            "$ref": "#/components/schemas/inference._types:RateLimitSetting"
+          },
+          "secret_key": {
+            "externalDocs": {
+              "url": "https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_access-keys.html"
+            },
+            "description": "A valid AWS secret key that is paired with the `access_key`.\nFor informationg about creating and managing access and secret keys, refer to the AWS documentation.",
+            "type": "string"
+          }
+        },
+        "required": [
+          "access_key",
+          "model",
+          "region",
+          "secret_key"
+        ]
+      },
+      "inference.put_amazonbedrock:AmazonBedrockTaskSettings": {
+        "type": "object",
+        "properties": {
+          "max_new_tokens": {
+            "description": "For a `completion` task, it sets the maximum number for the output tokens to be generated.",
+            "type": "number"
+          },
+          "temperature": {
+            "description": "For a `completion` task, it is a number between 0.0 and 1.0 that controls the apparent creativity of the results.\nAt temperature 0.0 the model is most deterministic, at temperature 1.0 most random.\nIt should not be used if `top_p` or `top_k` is specified.",
+            "type": "number"
+          },
+          "top_k": {
+            "description": "For a `completion` task, it limits samples to the top-K most likely words, balancing coherence and variability.\nIt is only available for anthropic, cohere, and mistral providers.\nIt is an alternative to `temperature`; it should not be used if `temperature` is specified.",
+            "type": "number"
+          },
+          "top_p": {
+            "description": "For a `completion` task, it is a number in the range of 0.0 to 1.0, to eliminate low-probability tokens.\nTop-p uses nucleus sampling to select top tokens whose sum of likelihoods does not exceed a certain value, ensuring both variety and coherence.\nIt is an alternative to `temperature`; it should not be used if `temperature` is specified.",
+            "type": "number"
+          }
+        }
+      },
+      "inference.put_anthropic:AnthropicTaskType": {
+        "type": "string",
+        "enum": [
+          "completion"
+        ]
+      },
+      "inference.put_anthropic:ServiceType": {
+        "type": "string",
+        "enum": [
+          "anthropic"
+        ]
+      },
+      "inference.put_anthropic:AnthropicServiceSettings": {
+        "type": "object",
+        "properties": {
+          "api_key": {
+            "description": "A valid API key for the Anthropic API.",
+            "type": "string"
+          },
+          "model_id": {
+            "description": "The name of the model to use for the inference task.\nRefer to the Anthropic documentation for the list of supported models.",
+            "type": "string"
+          },
+          "rate_limit": {
+            "$ref": "#/components/schemas/inference._types:RateLimitSetting"
+          }
+        },
+        "required": [
+          "api_key",
+          "model_id"
+        ]
+      },
+      "inference.put_anthropic:AnthropicTaskSettings": {
+        "type": "object",
+        "properties": {
+          "max_tokens": {
+            "description": "For a `completion` task, it is the maximum number of tokens to generate before stopping.",
+            "type": "number"
+          },
+          "temperature": {
+            "externalDocs": {
+              "url": "https://docs.anthropic.com/en/api/messages"
+            },
+            "description": "For a `completion` task, it is the amount of randomness injected into the response.\nFor more details about the supported range, refer to Anthropic documentation.",
+            "type": "number"
+          },
+          "top_k": {
+            "description": "For a `completion` task, it specifies to only sample from the top K options for each subsequent token.\nIt is recommended for advanced use cases only.\nYou usually only need to use `temperature`.",
+            "type": "number"
+          },
+          "top_p": {
+            "description": "For a `completion` task, it specifies to use Anthropic's nucleus sampling.\nIn nucleus sampling, Anthropic computes the cumulative distribution over all the options for each subsequent token in decreasing probability order and cuts it off once it reaches the specified probability.\nYou should either alter `temperature` or `top_p`, but not both.\nIt is recommended for advanced use cases only.\nYou usually only need to use `temperature`.",
+            "type": "number"
+          }
+        },
+        "required": [
+          "max_tokens"
+        ]
+      },
+      "inference.put_azureaistudio:AzureAiStudioTaskType": {
+        "type": "string",
+        "enum": [
+          "completion",
+          "text_embedding"
+        ]
+      },
+      "inference.put_azureaistudio:ServiceType": {
+        "type": "string",
+        "enum": [
+          "azureaistudio"
+        ]
+      },
+      "inference.put_azureaistudio:AzureAiStudioServiceSettings": {
+        "type": "object",
+        "properties": {
+          "api_key": {
+            "externalDocs": {
+              "url": "https://ai.azure.com/"
+            },
+            "description": "A valid API key of your Azure AI Studio model deployment.\nThis key can be found on the overview page for your deployment in the management section of your Azure AI Studio account.\n\nIMPORTANT: You need to provide the API key only once, during the inference model creation.\nThe get inference endpoint API does not retrieve your API key.\nAfter creating the inference model, you cannot change the associated API key.\nIf you want to use a different API key, delete the inference model and recreate it with the same name and the updated API key.",
+            "type": "string"
+          },
+          "endpoint_type": {
+            "externalDocs": {
+              "url": "https://learn.microsoft.com/en-us/azure/ai-foundry/concepts/deployments-overview#billing-for-deploying-and-inferencing-llms-in-azure-ai-studio"
+            },
+            "description": "The type of endpoint that is available for deployment through Azure AI Studio: `token` or `realtime`.\nThe `token` endpoint type is for \"pay as you go\" endpoints that are billed per token.\nThe `realtime` endpoint type is for \"real-time\" endpoints that are billed per hour of usage.",
+            "type": "string"
+          },
+          "target": {
+            "description": "The target URL of your Azure AI Studio model deployment.\nThis can be found on the overview page for your deployment in the management section of your Azure AI Studio account.",
+            "type": "string"
+          },
+          "provider": {
+            "description": "The model provider for your deployment.\nNote that some providers may support only certain task types.\nSupported providers include:\n\n* `cohere` - available for `text_embedding` and `completion` task types\n* `databricks` - available for `completion` task type only\n* `meta` - available for `completion` task type only\n* `microsoft_phi` - available for `completion` task type only\n* `mistral` - available for `completion` task type only\n* `openai` - available for `text_embedding` and `completion` task types",
+            "type": "string"
+          },
+          "rate_limit": {
+            "$ref": "#/components/schemas/inference._types:RateLimitSetting"
+          }
+        },
+        "required": [
+          "api_key",
+          "endpoint_type",
+          "target",
+          "provider"
+        ]
+      },
+      "inference.put_azureaistudio:AzureAiStudioTaskSettings": {
+        "type": "object",
+        "properties": {
+          "do_sample": {
+            "description": "For a `completion` task, instruct the inference process to perform sampling.\nIt has no effect unless `temperature` or `top_p` is specified.",
+            "type": "number"
+          },
+          "max_new_tokens": {
+            "description": "For a `completion` task, provide a hint for the maximum number of output tokens to be generated.",
+            "type": "number"
+          },
+          "temperature": {
+            "description": "For a `completion` task, control the apparent creativity of generated completions with a sampling temperature.\nIt must be a number in the range of 0.0 to 2.0.\nIt should not be used if `top_p` is specified.",
+            "type": "number"
+          },
+          "top_p": {
+            "description": "For a `completion` task, make the model consider the results of the tokens with nucleus sampling probability.\nIt is an alternative value to `temperature` and must be a number in the range of 0.0 to 2.0.\nIt should not be used if `temperature` is specified.",
+            "type": "number"
+          },
+          "user": {
+            "description": "For a `text_embedding` task, specify the user issuing the request.\nThis information can be used for abuse detection.",
+            "type": "string"
+          }
+        }
+      },
+      "inference.put_azureopenai:AzureOpenAITaskType": {
+        "type": "string",
+        "enum": [
+          "completion",
+          "text_embedding"
+        ]
+      },
+      "inference.put_azureopenai:ServiceType": {
+        "type": "string",
+        "enum": [
+          "azureopenai"
+        ]
+      },
+      "inference.put_azureopenai:AzureOpenAIServiceSettings": {
+        "type": "object",
+        "properties": {
+          "api_key": {
+            "externalDocs": {
+              "url": "https://learn.microsoft.com/en-us/azure/ai-services/openai/reference#authentication"
+            },
+            "description": "A valid API key for your Azure OpenAI account.\nYou must specify either `api_key` or `entra_id`.\nIf you do not provide either or you provide both, you will receive an error when you try to create your model.\n\nIMPORTANT: You need to provide the API key only once, during the inference model creation.\nThe get inference endpoint API does not retrieve your API key.\nAfter creating the inference model, you cannot change the associated API key.\nIf you want to use a different API key, delete the inference model and recreate it with the same name and the updated API key.",
+            "type": "string"
+          },
+          "api_version": {
+            "description": "The Azure API version ID to use.\nIt is recommended to use the latest supported non-preview version.",
+            "type": "string"
+          },
+          "deployment_id": {
+            "externalDocs": {
+              "url": "https://oai.azure.com/"
+            },
+            "description": "The deployment name of your deployed models.\nYour Azure OpenAI deployments can be found though the Azure OpenAI Studio portal that is linked to your subscription.",
+            "type": "string"
+          },
+          "entra_id": {
+            "externalDocs": {
+              "url": "https://learn.microsoft.com/en-us/azure/ai-services/openai/reference#authentication"
+            },
+            "description": "A valid Microsoft Entra token.\nYou must specify either `api_key` or `entra_id`.\nIf you do not provide either or you provide both, you will receive an error when you try to create your model.",
+            "type": "string"
+          },
+          "rate_limit": {
+            "$ref": "#/components/schemas/inference._types:RateLimitSetting"
+          },
+          "resource_name": {
+            "externalDocs": {
+              "url": "https://portal.azure.com/#view/HubsExtension/BrowseAll"
+            },
+            "description": "The name of your Azure OpenAI resource.\nYou can find this from the list of resources in the Azure Portal for your subscription.",
+            "type": "string"
+          }
+        },
+        "required": [
+          "api_version",
+          "deployment_id",
+          "resource_name"
+        ]
+      },
+      "inference.put_azureopenai:AzureOpenAITaskSettings": {
+        "type": "object",
+        "properties": {
+          "user": {
+            "description": "For a `completion` or `text_embedding` task, specify the user issuing the request.\nThis information can be used for abuse detection.",
+            "type": "string"
+          }
+        }
+      },
+      "inference.put_cohere:CohereTaskType": {
+        "type": "string",
+        "enum": [
+          "completion",
+          "rerank",
+          "text_embedding"
+        ]
+      },
+      "inference.put_cohere:ServiceType": {
+        "type": "string",
+        "enum": [
+          "cohere"
+        ]
+      },
+      "inference.put_cohere:CohereServiceSettings": {
+        "type": "object",
+        "properties": {
+          "api_key": {
+            "externalDocs": {
+              "url": "https://dashboard.cohere.com/api-keys"
+            },
+            "description": "A valid API key for your Cohere account.\nYou can find or create your Cohere API keys on the Cohere API key settings page.\n\nIMPORTANT: You need to provide the API key only once, during the inference model creation.\nThe get inference endpoint API does not retrieve your API key.\nAfter creating the inference model, you cannot change the associated API key.\nIf you want to use a different API key, delete the inference model and recreate it with the same name and the updated API key.",
+            "type": "string"
+          },
+          "embedding_type": {
+            "$ref": "#/components/schemas/inference.put_cohere:EmbeddingType"
+          },
+          "model_id": {
+            "description": "For a `completion`, `rerank`, or `text_embedding` task, the name of the model to use for the inference task.\n\n* For the available `completion` models, refer to the [Cohere command docs](https://docs.cohere.com/docs/models#command).\n* For the available `rerank` models, refer to the [Cohere rerank docs](https://docs.cohere.com/reference/rerank-1).\n* For the available `text_embedding` models, refer to [Cohere embed docs](https://docs.cohere.com/reference/embed).\n\nThe default value for a text embedding task is `embed-english-v2.0`.",
+            "type": "string"
+          },
+          "rate_limit": {
+            "$ref": "#/components/schemas/inference._types:RateLimitSetting"
+          },
+          "similarity": {
+            "$ref": "#/components/schemas/inference.put_cohere:SimilarityType"
+          }
+        },
+        "required": [
+          "api_key"
+        ]
+      },
+      "inference.put_cohere:EmbeddingType": {
+        "type": "string",
+        "enum": [
+          "byte",
+          "float",
+          "int8"
+        ]
+      },
+      "inference.put_cohere:SimilarityType": {
+        "type": "string",
+        "enum": [
+          "cosine",
+          "dot_product",
+          "l2_norm"
+        ]
+      },
+      "inference.put_cohere:CohereTaskSettings": {
+        "type": "object",
+        "properties": {
+          "input_type": {
+            "$ref": "#/components/schemas/inference.put_cohere:InputType"
+          },
+          "return_documents": {
+            "description": "For a `rerank` task, return doc text within the results.",
+            "type": "boolean"
+          },
+          "top_n": {
+            "description": "For a `rerank` task, the number of most relevant documents to return.\nIt defaults to the number of the documents.\nIf this inference endpoint is used in a `text_similarity_reranker` retriever query and `top_n` is set, it must be greater than or equal to `rank_window_size` in the query.",
+            "type": "number"
+          },
+          "truncate": {
+            "$ref": "#/components/schemas/inference.put_cohere:TruncateType"
+          }
+        }
+      },
+      "inference.put_cohere:InputType": {
+        "type": "string",
+        "enum": [
+          "classification",
+          "clustering",
+          "ingest",
+          "search"
+        ]
+      },
+      "inference.put_cohere:TruncateType": {
+        "type": "string",
+        "enum": [
+          "END",
+          "NONE",
+          "START"
+        ]
+      },
       "inference.put_eis:EisTaskType": {
         "type": "string",
         "enum": [
@@ -48464,14 +49782,161 @@
           "model_id"
         ]
       },
-      "inference._types:RateLimitSetting": {
+      "inference.put_elasticsearch:ElasticsearchTaskType": {
+        "type": "string",
+        "enum": [
+          "rerank",
+          "sparse_embedding",
+          "text_embedding"
+        ]
+      },
+      "inference.put_elasticsearch:ServiceType": {
+        "type": "string",
+        "enum": [
+          "elasticsearch"
+        ]
+      },
+      "inference.put_elasticsearch:ElasticsearchServiceSettings": {
         "type": "object",
         "properties": {
-          "requests_per_minute": {
-            "description": "The number of requests allowed per minute.",
+          "adaptive_allocations": {
+            "$ref": "#/components/schemas/inference.put_elasticsearch:AdaptiveAllocations"
+          },
+          "deployment_id": {
+            "description": "The deployment identifier for a trained model deployment.\nWhen `deployment_id` is used the `model_id` is optional.",
+            "type": "string"
+          },
+          "model_id": {
+            "externalDocs": {
+              "url": "https://www.elastic.co/guide/en/machine-learning/current/ml-nlp-import-model.html#ml-nlp-import-script"
+            },
+            "description": "The name of the model to use for the inference task.\nIt can be the ID of a built-in model (for example, `.multilingual-e5-small` for E5) or a text embedding model that was uploaded by using the Eland client.",
+            "type": "string"
+          },
+          "num_allocations": {
+            "description": "The total number of allocations that are assigned to the model across machine learning nodes.\nIncreasing this value generally increases the throughput.\nIf adaptive allocations are enabled, do not set this value because it's automatically set.",
+            "type": "number"
+          },
+          "num_threads": {
+            "description": "The number of threads used by each model allocation during inference.\nThis setting generally increases the speed per inference request.\nThe inference process is a compute-bound process; `threads_per_allocations` must not exceed the number of available allocated processors per node.\nThe value must be a power of 2.\nThe maximum value is 32.",
+            "type": "number"
+          }
+        },
+        "required": [
+          "model_id",
+          "num_threads"
+        ]
+      },
+      "inference.put_elasticsearch:AdaptiveAllocations": {
+        "type": "object",
+        "properties": {
+          "enabled": {
+            "description": "Turn on `adaptive_allocations`.",
+            "type": "boolean"
+          },
+          "max_number_of_allocations": {
+            "description": "The maximum number of allocations to scale to.\nIf set, it must be greater than or equal to `min_number_of_allocations`.",
+            "type": "number"
+          },
+          "min_number_of_allocations": {
+            "description": "The minimum number of allocations to scale to.\nIf set, it must be greater than or equal to 0.\nIf not defined, the deployment scales to 0.",
             "type": "number"
           }
         }
+      },
+      "inference.put_elasticsearch:ElasticsearchTaskSettings": {
+        "type": "object",
+        "properties": {
+          "return_documents": {
+            "description": "For a `rerank` task, return the document instead of only the index.",
+            "type": "boolean"
+          }
+        }
+      },
+      "inference.put_elser:ElserTaskType": {
+        "type": "string",
+        "enum": [
+          "sparse_embedding"
+        ]
+      },
+      "inference.put_elser:ServiceType": {
+        "type": "string",
+        "enum": [
+          "elser"
+        ]
+      },
+      "inference.put_elser:ElserServiceSettings": {
+        "type": "object",
+        "properties": {
+          "adaptive_allocations": {
+            "$ref": "#/components/schemas/inference.put_elser:AdaptiveAllocations"
+          },
+          "num_allocations": {
+            "description": "The total number of allocations this model is assigned across machine learning nodes.\nIncreasing this value generally increases the throughput.\nIf adaptive allocations is enabled, do not set this value because it's automatically set.",
+            "type": "number"
+          },
+          "num_threads": {
+            "description": "The number of threads used by each model allocation during inference.\nIncreasing this value generally increases the speed per inference request.\nThe inference process is a compute-bound process; `threads_per_allocations` must not exceed the number of available allocated processors per node.\nThe value must be a power of 2.\nThe maximum value is 32.\n\n> info\n> If you want to optimize your ELSER endpoint for ingest, set the number of threads to 1. If you want to optimize your ELSER endpoint for search, set the number of threads to greater than 1.",
+            "type": "number"
+          }
+        },
+        "required": [
+          "num_allocations",
+          "num_threads"
+        ]
+      },
+      "inference.put_elser:AdaptiveAllocations": {
+        "type": "object",
+        "properties": {
+          "enabled": {
+            "description": "Turn on `adaptive_allocations`.",
+            "type": "boolean"
+          },
+          "max_number_of_allocations": {
+            "description": "The maximum number of allocations to scale to.\nIf set, it must be greater than or equal to `min_number_of_allocations`.",
+            "type": "number"
+          },
+          "min_number_of_allocations": {
+            "description": "The minimum number of allocations to scale to.\nIf set, it must be greater than or equal to 0.\nIf not defined, the deployment scales to 0.",
+            "type": "number"
+          }
+        }
+      },
+      "inference.put_googleaistudio:GoogleAiStudioTaskType": {
+        "type": "string",
+        "enum": [
+          "completion",
+          "text_embedding"
+        ]
+      },
+      "inference.put_googleaistudio:ServiceType": {
+        "type": "string",
+        "enum": [
+          "googleaistudio"
+        ]
+      },
+      "inference.put_googleaistudio:GoogleAiStudioServiceSettings": {
+        "type": "object",
+        "properties": {
+          "api_key": {
+            "description": "A valid API key of your Google Gemini account.",
+            "type": "string"
+          },
+          "model_id": {
+            "externalDocs": {
+              "url": "https://ai.google.dev/gemini-api/docs/models"
+            },
+            "description": "The name of the model to use for the inference task.\nRefer to the Google documentation for the list of supported models.",
+            "type": "string"
+          },
+          "rate_limit": {
+            "$ref": "#/components/schemas/inference._types:RateLimitSetting"
+          }
+        },
+        "required": [
+          "api_key",
+          "model_id"
+        ]
       },
       "inference.put_googlevertexai:GoogleVertexAITaskType": {
         "type": "string",
@@ -48641,6 +50106,48 @@
           "search"
         ]
       },
+      "inference.put_mistral:MistralTaskType": {
+        "type": "string",
+        "enum": [
+          "text_embedding"
+        ]
+      },
+      "inference.put_mistral:ServiceType": {
+        "type": "string",
+        "enum": [
+          "mistral"
+        ]
+      },
+      "inference.put_mistral:MistralServiceSettings": {
+        "type": "object",
+        "properties": {
+          "api_key": {
+            "externalDocs": {
+              "url": "https://console.mistral.ai/api-keys/"
+            },
+            "description": "A valid API key of your Mistral account.\nYou can find your Mistral API keys or you can create a new one on the API Keys page.\n\nIMPORTANT: You need to provide the API key only once, during the inference model creation.\nThe get inference endpoint API does not retrieve your API key.\nAfter creating the inference model, you cannot change the associated API key.\nIf you want to use a different API key, delete the inference model and recreate it with the same name and the updated API key.",
+            "type": "string"
+          },
+          "max_input_tokens": {
+            "description": "The maximum number of tokens per input before chunking occurs.",
+            "type": "number"
+          },
+          "model": {
+            "externalDocs": {
+              "url": "https://docs.mistral.ai/getting-started/models/"
+            },
+            "description": "The name of the model to use for the inference task.\nRefer to the Mistral models documentation for the list of available text embedding models.",
+            "type": "string"
+          },
+          "rate_limit": {
+            "$ref": "#/components/schemas/inference._types:RateLimitSetting"
+          }
+        },
+        "required": [
+          "api_key",
+          "model"
+        ]
+      },
       "inference.put_openai:OpenAITaskType": {
         "type": "string",
         "enum": [
@@ -48697,7 +50204,7 @@
         "type": "object",
         "properties": {
           "user": {
-            "description": "For a `completion` or `text_embedding` task, specify the user issuing the request.\nThis informaiton can be used for abuse detection.",
+            "description": "For a `completion` or `text_embedding` task, specify the user issuing the request.\nThis information can be used for abuse detection.",
             "type": "string"
           }
         }
@@ -58763,8 +60270,8 @@
             },
             "examples": {
               "CatAliasesResponseExample1": {
-                "description": "A successful response from `GET _cat/aliases?v=true`. This response shows that `alias2` has configured a filter and `alias3` and `alias4` have routing configurations.\n",
-                "value": "alias  index filter routing.index routing.search is_write_index\nalias1 test1 -      -            -              -\nalias2 test1 *      -            -              -\nalias3 test1 -      1            1              -\nalias4 test1 -      2            1,2            -"
+                "description": "A successful response from `GET _cat/aliases?format=json&v=true`. This response shows that `alias2` has configured a filter and `alias3` and `alias4` have routing configurations.\n",
+                "value": "[\n  {\n    \"alias\": \"alias1\",\n    \"index\": \"test1\",\n    \"filter\": \"-\",\n    \"routing.index\": \"-\",\n    \"routing.search\": \"-\",\n    \"is_write_index\": \"true\"\n  },\n  {\n    \"alias\": \"alias1\",\n    \"index\": \"test1\",\n    \"filter\": \"*\",\n    \"routing.index\": \"-\",\n    \"routing.search\": \"-\",\n    \"is_write_index\": \"true\"\n  },\n  {\n    \"alias\": \"alias3\",\n    \"index\": \"test1\",\n    \"filter\": \"-\",\n    \"routing.index\": \"1\",\n    \"routing.search\": \"1\",\n    \"is_write_index\": \"true\"\n  },\n  {\n    \"alias\": \"alias4\",\n    \"index\": \"test1\",\n    \"filter\": \"-\",\n    \"routing.index\": \"2\",\n    \"routing.search\": \"1,2\",\n    \"is_write_index\": \"true\"\n  }\n]"
               }
             }
           }
@@ -58782,8 +60289,8 @@
             },
             "examples": {
               "CatComponentTemplatesResponseExample1": {
-                "description": "A successful response from `GET _cat/aliases?v=true`. This response shows that `alias2` has configured a filter and `alias3` and `alias4` have routing configurations.\n",
-                "value": "alias  index filter routing.index routing.search is_write_index\nalias1 test1 -      -            -              -\nalias2 test1 *      -            -              -\nalias3 test1 -      1            1              -\nalias4 test1 -      2            1,2            -"
+                "description": "A successful response from `GET _cat/component_templates/my-template-*?v=true&s=name&format=json`.\n",
+                "value": "[\n  {\n    \"name\": \"my-template-1\",\n    \"version\": \"null\",\n    \"alias_count\": \"0\",\n    \"mapping_count\": \"0\",\n    \"settings_count\": \"1\",\n    \"metadata_count\": \"0\",\n    \"included_in\": \"[my-index-template]\"\n  },\n    {\n    \"name\": \"my-template-2\",\n    \"version\": null,\n    \"alias_count\": \"0\",\n    \"mapping_count\": \"3\",\n    \"settings_count\": \"0\",\n    \"metadata_count\": \"0\",\n    \"included_in\": \"[my-index-template]\"\n  }\n]"
               }
             }
           }
@@ -58802,13 +60309,13 @@
             "examples": {
               "CatCountResponseExample1": {
                 "summary": "Single data stream or index count",
-                "description": "A successful response from `GET /_cat/count/my-index-000001?v=true`. It retrieves the document count for the `my-index-000001` data stream or index.\n",
-                "value": "epoch      timestamp count\n1475868259 15:24:20  120"
+                "description": "A successful response from `GET /_cat/count/my-index-000001?v=true&format=json`. It retrieves the document count for the `my-index-000001` data stream or index.\n",
+                "value": "[\n  {\n    \"epoch\": \"1475868259\",\n    \"timestamp\": \"15:24:20\",\n    \"count\": \"120\"\n  }\n]"
               },
               "CatCountResponseExample2": {
                 "summary": "All data streams and indices count",
-                "description": "A successful response from `GET /_cat/count?v=true`. It retrieves the document count for all data streams and indices in the cluster.\n",
-                "value": "epoch      timestamp count\n1475868259 15:24:20  121"
+                "description": "A successful response from `GET /_cat/count?v=true&format=json`. It retrieves the document count for all data streams and indices in the cluster.\n",
+                "value": "[\n  {\n    \"epoch\": \"1475868259\",\n    \"timestamp\": \"15:24:20\",\n    \"count\": \"121\"\n  }\n]"
               }
             }
           }
@@ -58826,8 +60333,8 @@
             },
             "examples": {
               "CatIndicesResponseExample1": {
-                "description": "A successful response from `GET /_cat/indices/my-index-*?v=true&s=index`.\n",
-                "value": "health status index            uuid                   pri rep docs.count docs.deleted store.size pri.store.size dataset.size\nyellow open   my-index-000001  u8FNjxh8Rfy_awN11oDKYQ   1   1       1200            0     88.1kb         88.1kb       88.1kb\ngreen  open   my-index-000002  nYFWZEO7TUiOjLQXBaYJpA   1   0          0            0       260b           260b         260b"
+                "description": "A successful response from `GET /_cat/indices/my-index-*?v=true&s=index&format=json`.\n",
+                "value": "[\n  {\n    \"health\": \"yellow\",\n    \"status\": \"open\",\n    \"index\": \"my-index-000001\",\n    \"uuid\": \"u8FNjxh8Rfy_awN11oDKYQ\",\n    \"pri\": \"1\",\n    \"rep\": \"1\",\n    \"docs.count\": \"1200\",\n    \"docs.deleted\": \"0\",\n    \"store.size\": \"88.1kb\",\n    \"pri.store.size\": \"88.1kb\",\n    \"dataset.size\": \"88.1kb\"\n  },\n  {\n    \"health\": \"green\",\n    \"status\": \"open\",\n    \"index\": \"my-index-000002\",\n    \"uuid\": \"nYFWZEO7TUiOjLQXBaYJpA \",\n    \"pri\": \"1\",\n    \"rep\": \"0\",\n    \"docs.count\": \"0\",\n    \"docs.deleted\": \"0\",\n    \"store.size\": \"260b\",\n    \"pri.store.size\": \"260b\",\n    \"dataset.size\": \"260b\"\n  }\n]"
               }
             }
           }
@@ -58845,8 +60352,8 @@
             },
             "examples": {
               "CatDataframeanalyticsResponseExample1": {
-                "description": "A successful response from `GET _cat/ml/data_frame/analytics?v=true`.",
-                "value": "id               create_time              type             state\nclassifier_job_1 2020-02-12T11:49:09.594Z classification stopped\nclassifier_job_2 2020-02-12T11:49:14.479Z classification stopped\nclassifier_job_3 2020-02-12T11:49:16.928Z classification stopped\nclassifier_job_4 2020-02-12T11:49:19.127Z classification stopped\nclassifier_job_5 2020-02-12T11:49:21.349Z classification stopped"
+                "description": "A successful response from `GET _cat/ml/data_frame/analytics?v=true&format=json`.",
+                "value": "[\n  {\n    \"id\": \"classifier_job_1\",\n    \"type\": \"classification\",\n    \"create_time\": \"2020-02-12T11:49:09.594Z\",\n    \"state\": \"stopped\"\n  },\n    {\n    \"id\": \"classifier_job_2\",\n    \"type\": \"classification\",\n    \"create_time\": \"2020-02-12T11:49:14.479Z\",\n    \"state\": \"stopped\"\n  },\n  {\n    \"id\": \"classifier_job_3\",\n    \"type\": \"classification\",\n    \"create_time\": \"2020-02-12T11:49:16.928Z\",\n    \"state\": \"stopped\"\n  },\n  {\n    \"id\": \"classifier_job_4\",\n    \"type\": \"classification\",\n    \"create_time\": \"2020-02-12T11:49:19.127Z\",\n    \"state\": \"stopped\"\n  },\n  {\n    \"id\": \"classifier_job_5\",\n    \"type\": \"classification\",\n    \"create_time\": \"2020-02-12T11:49:21.349Z\",\n    \"state\": \"stopped\"\n  }\n]"
               }
             }
           }
@@ -58864,8 +60371,8 @@
             },
             "examples": {
               "CatDatafeedsResponseExample1": {
-                "description": "A successful response from `GET _cat/ml/datafeeds?v=true`.",
-                "value": "id                              state buckets.count search.count\ndatafeed-high_sum_total_sales stopped 743          7\ndatafeed-low_request_rate     stopped 1457         3\ndatafeed-response_code_rates  stopped 1460         18\ndatafeed-url_scanning         stopped 1460         18"
+                "description": "A successful response from `GET _cat/ml/datafeeds?v=true&format=json`.",
+                "value": "[\n  {\n    \"id\": \"datafeed-high_sum_total_sales\",\n    \"state\": \"stopped\",\n    \"buckets.count\": \"743\",\n    \"search.count\": \"7\"\n  },\n  {\n    \"id\": \"datafeed-low_request_rate\",\n    \"state\": \"stopped\",\n    \"buckets.count\": \"1457\",\n    \"search.count\": \"3\"\n  },\n  {\n    \"id\": \"datafeed-response_code_rates\",\n    \"state\": \"stopped\",\n    \"buckets.count\": \"1460\",\n    \"search.count\": \"18\"\n  },\n  {\n    \"id\": \"datafeed-url_scanning\",\n    \"state\": \"stopped\",\n    \"buckets.count\": \"1460\",\n    \"search.count\": \"18\"\n  }\n]"
               }
             }
           }
@@ -58883,8 +60390,8 @@
             },
             "examples": {
               "CatJobsResponseExample1": {
-                "description": "A succesful response from `GET _cat/component_templates/my-template-*?v=true&s=name`.",
-                "value": "name          version alias_count mapping_count settings_count metadata_count included_in\nmy-template-1         0           0             1              0              [my-index-template]\nmy-template-2         0           3             0              0              [my-index-template]"
+                "description": "A successful response from `GET _cat/ml/anomaly_detectors?h=id,s,dpr,mb&v=true&format=json`.",
+                "value": "[\n  {\n    \"id\": \"high_sum_total_sales\",\n    \"s\": \"closed\",\n    \"dpr\": \"14022\",\n    \"mb\": \"1.5mb\"\n  },\n  {\n    \"id\": \"low_request_rate\",\n    \"s\": \"closed\",\n    \"dpr\": \"1216\",\n    \"mb\": \"40.5kb\"\n  },\n  {\n    \"id\": \"response_code_rates\",\n    \"s\": \"closed\",\n    \"dpr\": \"28146\",\n    \"mb\": \"132.7kb\"\n  },\n  {\n    \"id\": \"url_scanning\",\n    \"s\": \"closed\",\n    \"dpr\": \"28146\",\n    \"mb\": \"501.6kb\"\n  }\n]"
               }
             }
           }
@@ -58902,8 +60409,8 @@
             },
             "examples": {
               "CatTrainedModelsResponseExample1": {
-                "description": "A successful response from `GET _cat/ml/trained_models?h=c,o,l,ct,v&v=true`.",
-                "value": "id                           created_by operations license  create_time              version\nddddd-1580216177138              _xpack 196        PLATINUM 2020-01-28T12:56:17.138Z 8.0.0\nflight-regress-1580215685537     _xpack 102        PLATINUM 2020-01-28T12:48:05.537Z 8.0.0\nlang_ident_model_1               _xpack 39629      BASIC    2019-12-05T12:28:34.594Z 7.6.0"
+                "description": "A successful response from `GET _cat/ml/trained_models?v=true&format=json`.",
+                "value": "[\n  {\n    \"id\": \"ddddd-1580216177138\",\n    \"heap_size\": \"0b\",\n    \"operations\": \"196\",\n    \"create_time\": \"2025-03-25T00:01:38.662Z\",\n    \"type\": \"pytorch\",\n    \"ingest.pipelines\": \"0\",\n    \"data_frame.id\": \"__none__\"\n  },\n  {\n    \"id\": \"lang_ident_model_1\",\n    \"heap_size\": \"1mb\",\n    \"operations\": \"39629\",\n    \"create_time\": \"2019-12-05T12:28:34.594Z\",\n    \"type\": \"lang_ident\",\n    \"ingest.pipelines\": \"0\",\n    \"data_frame.id\": \"__none__\"\n  }\n]"
               }
             }
           }

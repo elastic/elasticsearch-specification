@@ -13252,6 +13252,202 @@ export interface InferencePutRequest extends RequestBase {
 
 export type InferencePutResponse = InferenceInferenceEndpointInfo
 
+export interface InferencePutAlibabacloudAlibabaCloudServiceSettings {
+  api_key: string
+  host: string
+  rate_limit?: InferenceRateLimitSetting
+  service_id: string
+  workspace: string
+}
+
+export interface InferencePutAlibabacloudAlibabaCloudTaskSettings {
+  input_type?: string
+  return_token?: boolean
+}
+
+export type InferencePutAlibabacloudAlibabaCloudTaskType = 'completion' | 'rerank' | 'space_embedding' | 'text_embedding'
+
+export interface InferencePutAlibabacloudRequest extends RequestBase {
+  task_type: InferencePutAlibabacloudAlibabaCloudTaskType
+  alibabacloud_inference_id: Id
+  body?: {
+    chunking_settings?: InferenceInferenceChunkingSettings
+    service: InferencePutAlibabacloudServiceType
+    service_settings: InferencePutAlibabacloudAlibabaCloudServiceSettings
+    task_settings?: InferencePutAlibabacloudAlibabaCloudTaskSettings
+  }
+}
+
+export type InferencePutAlibabacloudResponse = InferenceInferenceEndpointInfo
+
+export type InferencePutAlibabacloudServiceType = 'alibabacloud-ai-search'
+
+export interface InferencePutAmazonbedrockAmazonBedrockServiceSettings {
+  access_key: string
+  model: string
+  provider?: string
+  region: string
+  rate_limit?: InferenceRateLimitSetting
+  secret_key: string
+}
+
+export interface InferencePutAmazonbedrockAmazonBedrockTaskSettings {
+  max_new_tokens?: integer
+  temperature?: float
+  top_k?: float
+  top_p?: float
+}
+
+export type InferencePutAmazonbedrockAmazonBedrockTaskType = 'completion' | 'text_embedding'
+
+export interface InferencePutAmazonbedrockRequest extends RequestBase {
+  task_type: InferencePutAmazonbedrockAmazonBedrockTaskType
+  amazonbedrock_inference_id: Id
+  body?: {
+    chunking_settings?: InferenceInferenceChunkingSettings
+    service: InferencePutAmazonbedrockServiceType
+    service_settings: InferencePutAmazonbedrockAmazonBedrockServiceSettings
+    task_settings?: InferencePutAmazonbedrockAmazonBedrockTaskSettings
+  }
+}
+
+export type InferencePutAmazonbedrockResponse = InferenceInferenceEndpointInfo
+
+export type InferencePutAmazonbedrockServiceType = 'amazonbedrock'
+
+export interface InferencePutAnthropicAnthropicServiceSettings {
+  api_key: string
+  model_id: string
+  rate_limit?: InferenceRateLimitSetting
+}
+
+export interface InferencePutAnthropicAnthropicTaskSettings {
+  max_tokens: integer
+  temperature?: float
+  top_k?: integer
+  top_p?: float
+}
+
+export type InferencePutAnthropicAnthropicTaskType = 'completion'
+
+export interface InferencePutAnthropicRequest extends RequestBase {
+  task_type: InferencePutAnthropicAnthropicTaskType
+  anthropic_inference_id: Id
+  body?: {
+    chunking_settings?: InferenceInferenceChunkingSettings
+    service: InferencePutAnthropicServiceType
+    service_settings: InferencePutAnthropicAnthropicServiceSettings
+    task_settings?: InferencePutAnthropicAnthropicTaskSettings
+  }
+}
+
+export type InferencePutAnthropicResponse = InferenceInferenceEndpointInfo
+
+export type InferencePutAnthropicServiceType = 'anthropic'
+
+export interface InferencePutAzureaistudioAzureAiStudioServiceSettings {
+  api_key: string
+  endpoint_type: string
+  target: string
+  provider: string
+  rate_limit?: InferenceRateLimitSetting
+}
+
+export interface InferencePutAzureaistudioAzureAiStudioTaskSettings {
+  do_sample?: float
+  max_new_tokens?: integer
+  temperature?: float
+  top_p?: float
+  user?: string
+}
+
+export type InferencePutAzureaistudioAzureAiStudioTaskType = 'completion' | 'text_embedding'
+
+export interface InferencePutAzureaistudioRequest extends RequestBase {
+  task_type: InferencePutAzureaistudioAzureAiStudioTaskType
+  azureaistudio_inference_id: Id
+  body?: {
+    chunking_settings?: InferenceInferenceChunkingSettings
+    service: InferencePutAzureaistudioServiceType
+    service_settings: InferencePutAzureaistudioAzureAiStudioServiceSettings
+    task_settings?: InferencePutAzureaistudioAzureAiStudioTaskSettings
+  }
+}
+
+export type InferencePutAzureaistudioResponse = InferenceInferenceEndpointInfo
+
+export type InferencePutAzureaistudioServiceType = 'azureaistudio'
+
+export interface InferencePutAzureopenaiAzureOpenAIServiceSettings {
+  api_key?: string
+  api_version: string
+  deployment_id: string
+  entra_id?: string
+  rate_limit?: InferenceRateLimitSetting
+  resource_name: string
+}
+
+export interface InferencePutAzureopenaiAzureOpenAITaskSettings {
+  user?: string
+}
+
+export type InferencePutAzureopenaiAzureOpenAITaskType = 'completion' | 'text_embedding'
+
+export interface InferencePutAzureopenaiRequest extends RequestBase {
+  task_type: InferencePutAzureopenaiAzureOpenAITaskType
+  azureopenai_inference_id: Id
+  body?: {
+    chunking_settings?: InferenceInferenceChunkingSettings
+    service: InferencePutAzureopenaiServiceType
+    service_settings: InferencePutAzureopenaiAzureOpenAIServiceSettings
+    task_settings?: InferencePutAzureopenaiAzureOpenAITaskSettings
+  }
+}
+
+export type InferencePutAzureopenaiResponse = InferenceInferenceEndpointInfo
+
+export type InferencePutAzureopenaiServiceType = 'azureopenai'
+
+export interface InferencePutCohereCohereServiceSettings {
+  api_key: string
+  embedding_type?: InferencePutCohereEmbeddingType
+  model_id?: string
+  rate_limit?: InferenceRateLimitSetting
+  similarity?: InferencePutCohereSimilarityType
+}
+
+export interface InferencePutCohereCohereTaskSettings {
+  input_type?: InferencePutCohereInputType
+  return_documents?: boolean
+  top_n?: integer
+  truncate?: InferencePutCohereTruncateType
+}
+
+export type InferencePutCohereCohereTaskType = 'completion' | 'rerank' | 'text_embedding'
+
+export type InferencePutCohereEmbeddingType = 'byte' | 'float' | 'int8'
+
+export type InferencePutCohereInputType = 'classification' | 'clustering' | 'ingest' | 'search'
+
+export interface InferencePutCohereRequest extends RequestBase {
+  task_type: InferencePutCohereCohereTaskType
+  cohere_inference_id: Id
+  body?: {
+    chunking_settings?: InferenceInferenceChunkingSettings
+    service: InferencePutCohereServiceType
+    service_settings: InferencePutCohereCohereServiceSettings
+    task_settings?: InferencePutCohereCohereTaskSettings
+  }
+}
+
+export type InferencePutCohereResponse = InferenceInferenceEndpointInfo
+
+export type InferencePutCohereServiceType = 'cohere'
+
+export type InferencePutCohereSimilarityType = 'cosine' | 'dot_product' | 'l2_norm'
+
+export type InferencePutCohereTruncateType = 'END' | 'NONE' | 'START'
+
 export interface InferencePutEisEisServiceSettings {
   model_id: string
   rate_limit?: InferenceRateLimitSetting
@@ -13271,6 +13467,91 @@ export interface InferencePutEisRequest extends RequestBase {
 export type InferencePutEisResponse = InferenceInferenceEndpointInfo
 
 export type InferencePutEisServiceType = 'elastic'
+
+export interface InferencePutElasticsearchAdaptiveAllocations {
+  enabled?: boolean
+  max_number_of_allocations?: integer
+  min_number_of_allocations?: integer
+}
+
+export interface InferencePutElasticsearchElasticsearchServiceSettings {
+  adaptive_allocations?: InferencePutElasticsearchAdaptiveAllocations
+  deployment_id?: string
+  model_id: string
+  num_allocations?: integer
+  num_threads: integer
+}
+
+export interface InferencePutElasticsearchElasticsearchTaskSettings {
+  return_documents?: boolean
+}
+
+export type InferencePutElasticsearchElasticsearchTaskType = 'rerank' | 'sparse_embedding' | 'text_embedding'
+
+export interface InferencePutElasticsearchRequest extends RequestBase {
+  task_type: InferencePutElasticsearchElasticsearchTaskType
+  elasticsearch_inference_id: Id
+  body?: {
+    chunking_settings?: InferenceInferenceChunkingSettings
+    service: InferencePutElasticsearchServiceType
+    service_settings: InferencePutElasticsearchElasticsearchServiceSettings
+    task_settings?: InferencePutElasticsearchElasticsearchTaskSettings
+  }
+}
+
+export type InferencePutElasticsearchResponse = InferenceInferenceEndpointInfo
+
+export type InferencePutElasticsearchServiceType = 'elasticsearch'
+
+export interface InferencePutElserAdaptiveAllocations {
+  enabled?: boolean
+  max_number_of_allocations?: integer
+  min_number_of_allocations?: integer
+}
+
+export interface InferencePutElserElserServiceSettings {
+  adaptive_allocations?: InferencePutElserAdaptiveAllocations
+  num_allocations: integer
+  num_threads: integer
+}
+
+export type InferencePutElserElserTaskType = 'sparse_embedding'
+
+export interface InferencePutElserRequest extends RequestBase {
+  task_type: InferencePutElserElserTaskType
+  elser_inference_id: Id
+  body?: {
+    chunking_settings?: InferenceInferenceChunkingSettings
+    service: InferencePutElserServiceType
+    service_settings: InferencePutElserElserServiceSettings
+  }
+}
+
+export type InferencePutElserResponse = InferenceInferenceEndpointInfo
+
+export type InferencePutElserServiceType = 'elser'
+
+export interface InferencePutGoogleaistudioGoogleAiStudioServiceSettings {
+  api_key: string
+  model_id: string
+  rate_limit?: InferenceRateLimitSetting
+}
+
+export type InferencePutGoogleaistudioGoogleAiStudioTaskType = 'completion' | 'text_embedding'
+
+export interface InferencePutGoogleaistudioRequest extends RequestBase {
+  task_type: InferencePutGoogleaistudioGoogleAiStudioTaskType
+  googleaistudio_inference_id: Id
+  body?: {
+    chunking_settings?: InferenceInferenceChunkingSettings
+    service: InferencePutGoogleaistudioServiceType
+    service_settings: InferencePutGoogleaistudioGoogleAiStudioServiceSettings
+  }
+}
+
+export type InferencePutGoogleaistudioResponse = InferenceInferenceEndpointInfo
+
+export type InferencePutGoogleaistudioServiceType = 'googleaistudio'
 
 export interface InferencePutGooglevertexaiGoogleVertexAIServiceSettings {
   location: string
@@ -13357,6 +13638,29 @@ export type InferencePutJinaaiServiceType = 'jinaai'
 export type InferencePutJinaaiSimilarityType = 'cosine' | 'dot_product' | 'l2_norm'
 
 export type InferencePutJinaaiTextEmbeddingTask = 'classification' | 'clustering' | 'ingest' | 'search'
+
+export interface InferencePutMistralMistralServiceSettings {
+  api_key: string
+  max_input_tokens?: integer
+  model: string
+  rate_limit?: InferenceRateLimitSetting
+}
+
+export type InferencePutMistralMistralTaskType = 'text_embedding'
+
+export interface InferencePutMistralRequest extends RequestBase {
+  task_type: InferencePutMistralMistralTaskType
+  mistral_inference_id: Id
+  body?: {
+    chunking_settings?: InferenceInferenceChunkingSettings
+    service: InferencePutMistralServiceType
+    service_settings: InferencePutMistralMistralServiceSettings
+  }
+}
+
+export type InferencePutMistralResponse = InferenceInferenceEndpointInfo
+
+export type InferencePutMistralServiceType = 'mistral'
 
 export interface InferencePutOpenaiOpenAIServiceSettings {
   api_key: string
