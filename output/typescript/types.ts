@@ -15881,7 +15881,7 @@ export interface MlTrainedModelDeploymentNodesStats {
   number_of_allocations?: integer
   number_of_pending_requests?: integer
   peak_throughput_per_minute: long
-  rejection_execution_count?: integer
+  rejected_execution_count?: integer
   routing_state: MlTrainedModelAssignmentRoutingStateAndReason
   start_time?: EpochTime<UnitMillis>
   threads_per_allocation?: integer

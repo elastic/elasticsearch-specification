@@ -187,7 +187,7 @@ export class TrainedModelDeploymentNodesStats {
 
   peak_throughput_per_minute: long
   /** The number of inference requests that were not processed because the queue was full. */
-  rejection_execution_count?: integer
+  rejected_execution_count?: integer
   /** The current routing state and reason for the current routing state for this allocation. */
   routing_state: TrainedModelAssignmentRoutingStateAndReason
   /** The epoch timestamp when the allocation started. */

@@ -55988,7 +55988,7 @@
           "peak_throughput_per_minute": {
             "type": "number"
           },
-          "rejection_execution_count": {
+          "rejected_execution_count": {
             "description": "The number of inference requests that were not processed because the queue was full.",
             "type": "number"
           },
