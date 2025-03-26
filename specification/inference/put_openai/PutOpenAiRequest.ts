@@ -28,7 +28,7 @@ import { integer } from '@_types/Numeric'
 /**
  * Create an OpenAI inference endpoint.
  *
- * Create an inference endpoint to perform an inference task with the `openai` service.
+ * Create an inference endpoint to perform an inference task with the `openai` service or `openai` compatible APIs.
  *
  * When you create an inference endpoint, the associated machine learning model is automatically deployed if it is not already running.
  * After creating the endpoint, wait for the model deployment to complete before using it.
@@ -138,7 +138,7 @@ export class OpenAIServiceSettings {
 export class OpenAITaskSettings {
   /**
    * For a `completion` or `text_embedding` task, specify the user issuing the request.
-   * This informaiton can be used for abuse detection.
+   * This information can be used for abuse detection.
    */
   user?: string
 }
