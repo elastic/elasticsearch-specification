@@ -19,7 +19,7 @@
 
 import { HealthStatus, Id } from '@_types/common'
 import { NodeAttributes } from '@_types/Node'
-import { double, long } from '@_types/Numeric'
+import { double, integer, long } from '@_types/Numeric'
 import {
   DateTime,
   DurationValue,
@@ -42,7 +42,24 @@ export class TransformStats {
 }
 
 export class TransformStatsHealth {
+  /* Health status of this transform. */
   status: HealthStatus
+  /** If a non-healthy status is returned, contains a list of issues of the transform. */
+  issues?: TransformHealthIssue[]
+}
+
+export class TransformHealthIssue {
+  /** The type of the issue */
+  type: string
+  /** A description of the issue */
+  issue: string
+  /** Details about the issue */
+  details?: string
+  /** Number of times this issue has occurred since it started */
+  count: integer
+  /** The timestamp this issue occurred for for the first time */
+  first_occurrence?: EpochTime<UnitMillis>
+  first_occurence_string?: DateTime
 }
 
 export class TransformProgress {
@@ -84,9 +101,10 @@ export class CheckpointStats {
 
 export class Checkpointing {
   changes_last_detected_at?: long
-  changes_last_detected_at_date_time?: DateTime
+  changes_last_detected_at_string?: DateTime
   last: CheckpointStats
   next?: CheckpointStats
   operations_behind?: long
   last_search_time?: long
+  last_search_time_string?: DateTime
 }
