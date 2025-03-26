@@ -49406,32 +49406,25 @@
         ]
       },
       "inference._types:InferenceChunkingSettings": {
-        "allOf": [
-          {
-            "$ref": "#/components/schemas/inference._types:InferenceEndpoint"
+        "type": "object",
+        "properties": {
+          "max_chunk_size": {
+            "description": "The maximum size of a chunk in words.\nThis value cannot be higher than `300` or lower than `20` (for `sentence` strategy) or `10` (for `word` strategy).",
+            "type": "number"
           },
-          {
-            "type": "object",
-            "properties": {
-              "max_chunk_size": {
-                "description": "The maximum size of a chunk in words.\nThis value cannot be higher than `300` or lower than `20` (for `sentence` strategy) or `10` (for `word` strategy).",
-                "type": "number"
-              },
-              "overlap": {
-                "description": "The number of overlapping words for chunks.\nIt is applicable only to a `word` chunking strategy.\nThis value cannot be higher than half the `max_chunk_size` value.",
-                "type": "number"
-              },
-              "sentence_overlap": {
-                "description": "The number of overlapping sentences for chunks.\nIt is applicable only for a `sentence` chunking strategy.\nIt can be either `1` or `0`.",
-                "type": "number"
-              },
-              "strategy": {
-                "description": "The chunking strategy: `sentence` or `word`.",
-                "type": "string"
-              }
-            }
+          "overlap": {
+            "description": "The number of overlapping words for chunks.\nIt is applicable only to a `word` chunking strategy.\nThis value cannot be higher than half the `max_chunk_size` value.",
+            "type": "number"
+          },
+          "sentence_overlap": {
+            "description": "The number of overlapping sentences for chunks.\nIt is applicable only for a `sentence` chunking strategy.\nIt can be either `1` or `0`.",
+            "type": "number"
+          },
+          "strategy": {
+            "description": "The chunking strategy: `sentence` or `word`.",
+            "type": "string"
           }
-        ]
+        }
       },
       "inference._types:ServiceSettings": {
         "type": "object"
@@ -55252,6 +55245,9 @@
           "location": {
             "$ref": "#/components/schemas/ml._types:TrainedModelLocation"
           },
+          "platform_architecture": {
+            "type": "string"
+          },
           "prefix_strings": {
             "$ref": "#/components/schemas/ml._types:TrainedModelPrefixStrings"
           }
@@ -55288,6 +55284,9 @@
           },
           "fill_mask": {
             "$ref": "#/components/schemas/ml._types:FillMaskInferenceOptions"
+          },
+          "learning_to_rank": {
+            "$ref": "#/components/schemas/ml._types:LearningToRankConfig"
           },
           "ner": {
             "$ref": "#/components/schemas/ml._types:NerInferenceOptions"
@@ -55328,6 +55327,9 @@
             "items": {
               "type": "string"
             }
+          },
+          "vocabulary": {
+            "$ref": "#/components/schemas/ml._types:Vocabulary"
           }
         }
       },
@@ -55346,6 +55348,9 @@
           },
           "roberta": {
             "$ref": "#/components/schemas/ml._types:NlpRobertaTokenizationConfig"
+          },
+          "xlm_roberta": {
+            "$ref": "#/components/schemas/ml._types:XlmRobertaTokenizationConfig"
           }
         },
         "minProperties": 1,
@@ -55407,6 +55412,27 @@
               }
             }
           }
+        ]
+      },
+      "ml._types:XlmRobertaTokenizationConfig": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/ml._types:CommonTokenizationConfig"
+          },
+          {
+            "type": "object"
+          }
+        ]
+      },
+      "ml._types:Vocabulary": {
+        "type": "object",
+        "properties": {
+          "index": {
+            "$ref": "#/components/schemas/_types:IndexName"
+          }
+        },
+        "required": [
+          "index"
         ]
       },
       "ml._types:ZeroShotClassificationInferenceOptions": {
@@ -55472,15 +55498,55 @@
           "vocabulary"
         ]
       },
-      "ml._types:Vocabulary": {
+      "ml._types:LearningToRankConfig": {
         "type": "object",
         "properties": {
-          "index": {
-            "$ref": "#/components/schemas/_types:IndexName"
+          "default_params": {
+            "type": "object",
+            "additionalProperties": {
+              "type": "object"
+            }
+          },
+          "feature_extractors": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "additionalProperties": {
+                "$ref": "#/components/schemas/ml._types:FeatureExtractor"
+              }
+            }
+          },
+          "num_top_feature_importance_values": {
+            "type": "number"
           }
         },
         "required": [
-          "index"
+          "num_top_feature_importance_values"
+        ]
+      },
+      "ml._types:FeatureExtractor": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/ml._types:QueryFeatureExtractor"
+          }
+        ]
+      },
+      "ml._types:QueryFeatureExtractor": {
+        "type": "object",
+        "properties": {
+          "default_score": {
+            "type": "number"
+          },
+          "feature_name": {
+            "type": "string"
+          },
+          "query": {
+            "$ref": "#/components/schemas/_types.query_dsl:QueryContainer"
+          }
+        },
+        "required": [
+          "feature_name",
+          "query"
         ]
       },
       "ml._types:NerInferenceOptions": {
