@@ -21,6 +21,11 @@ echo "--- Clone Kibana"
 git clone -v --reference /usr/local/git-references/git-github-com-elastic-kibana-git -- git@github.com:elastic/kibana.git
 pushd kibana
 
+echo "--- Checkout upgrade PR"
+git fetch origin pull/213375/head:es-9.0.0-alpha.4
+git checkout es-9.0.0-alpha.4
+
+
 echo "--- Install Node.js and Yarn"
 curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.1/install.sh | bash
 set +e # https://github.com/nvm-sh/nvm/issues/3117
