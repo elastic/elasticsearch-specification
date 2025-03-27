@@ -23,7 +23,7 @@ import { RequestBase } from '@_types/Base'
 import { Id } from '@_types/common'
 import { float, integer, long } from '@_types/Numeric'
 
-export class RequestChatCompletionBase extends RequestBase {
+export class RequestChatCompletion extends RequestBase {
   /**
    * A list of objects representing the conversation.
    */
