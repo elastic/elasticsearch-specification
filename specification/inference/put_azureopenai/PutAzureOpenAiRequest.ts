@@ -18,9 +18,12 @@
  */
 
 import {
-  InferenceChunkingSettings,
-  RateLimitSetting
-} from '@inference/_types/Services'
+  AzureOpenAIServiceSettings,
+  AzureOpenAIServiceType,
+  AzureOpenAITaskSettings,
+  AzureOpenAITaskType
+} from '@inference/_types/CommonTypes'
+import { InferenceChunkingSettings } from '@inference/_types/Services'
 import { RequestBase } from '@_types/Base'
 import { Id } from '@_types/common'
 
@@ -74,7 +77,7 @@ export interface Request extends RequestBase {
     /**
      * The type of service supported for the specified task type. In this case, `azureopenai`.
      */
-    service: ServiceType
+    service: AzureOpenAIServiceType
     /**
      * Settings used to install the inference model. These settings are specific to the `azureopenai` service.
      */
@@ -85,68 +88,4 @@ export interface Request extends RequestBase {
      */
     task_settings?: AzureOpenAITaskSettings
   }
-}
-
-export enum AzureOpenAITaskType {
-  completion,
-  text_embedding
-}
-
-export enum ServiceType {
-  azureopenai
-}
-
-export class AzureOpenAIServiceSettings {
-  /**
-   * A valid API key for your Azure OpenAI account.
-   * You must specify either `api_key` or `entra_id`.
-   * If you do not provide either or you provide both, you will receive an error when you try to create your model.
-   *
-   * IMPORTANT: You need to provide the API key only once, during the inference model creation.
-   * The get inference endpoint API does not retrieve your API key.
-   * After creating the inference model, you cannot change the associated API key.
-   * If you want to use a different API key, delete the inference model and recreate it with the same name and the updated API key.
-   * @ext_doc_id azureopenai-auth
-   */
-  api_key?: string
-  /**
-   * The Azure API version ID to use.
-   * It is recommended to use the latest supported non-preview version.
-   */
-  api_version: string
-  /**
-   * The deployment name of your deployed models.
-   * Your Azure OpenAI deployments can be found though the Azure OpenAI Studio portal that is linked to your subscription.
-   * @ext_doc_id azureopenai
-   */
-  deployment_id: string
-  /**
-   * A valid Microsoft Entra token.
-   * You must specify either `api_key` or `entra_id`.
-   * If you do not provide either or you provide both, you will receive an error when you try to create your model.
-   * @ext_doc_id azureopenai-auth
-   */
-  entra_id?: string
-  /**
-   * This setting helps to minimize the number of rate limit errors returned from Azure.
-   * The `azureopenai` service sets a default number of requests allowed per minute depending on the task type.
-   * For `text_embedding`, it is set to `1440`.
-   * For `completion`, it is set to `120`.
-   * @ext_doc_id azureopenai-quota-limits
-   */
-  rate_limit?: RateLimitSetting
-  /**
-   * The name of your Azure OpenAI resource.
-   * You can find this from the list of resources in the Azure Portal for your subscription.
-   * @ext_doc_id azureopenai-portal
-   */
-  resource_name: string
-}
-
-export class AzureOpenAITaskSettings {
-  /**
-   * For a `completion` or `text_embedding` task, specify the user issuing the request.
-   * This information can be used for abuse detection.
-   */
-  user?: string
 }

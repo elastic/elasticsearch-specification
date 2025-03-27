@@ -18,9 +18,11 @@
  */
 
 import {
-  InferenceChunkingSettings,
-  RateLimitSetting
-} from '@inference/_types/Services'
+  HuggingFaceServiceSettings,
+  HuggingFaceServiceType,
+  HuggingFaceTaskType
+} from '@inference/_types/CommonTypes'
+import { InferenceChunkingSettings } from '@inference/_types/Services'
 import { RequestBase } from '@_types/Base'
 import { Id } from '@_types/common'
 
@@ -80,41 +82,10 @@ export interface Request extends RequestBase {
     /**
      * The type of service supported for the specified task type. In this case, `hugging_face`.
      */
-    service: ServiceType
+    service: HuggingFaceServiceType
     /**
      * Settings used to install the inference model. These settings are specific to the `hugging_face` service.
      */
     service_settings: HuggingFaceServiceSettings
   }
-}
-
-export enum HuggingFaceTaskType {
-  text_embedding
-}
-
-export enum ServiceType {
-  hugging_face
-}
-
-export class HuggingFaceServiceSettings {
-  /**
-   * A valid access token for your HuggingFace account.
-   * You can create or find your access tokens on the HuggingFace settings page.
-   *
-   * IMPORTANT: You need to provide the API key only once, during the inference model creation.
-   * The get inference endpoint API does not retrieve your API key.
-   * After creating the inference model, you cannot change the associated API key.
-   * If you want to use a different API key, delete the inference model and recreate it with the same name and the updated API key.
-   * @ext_doc_id huggingface-tokens
-   */
-  api_key: string
-  /**
-   * This setting helps to minimize the number of rate limit errors returned from Hugging Face.
-   * By default, the `hugging_face` service sets the number of requests allowed per minute to 3000.
-   */
-  rate_limit?: RateLimitSetting
-  /**
-   * The URL endpoint to use for the requests.
-   */
-  url: string
 }

@@ -13078,12 +13078,158 @@ export interface InferenceAdaptiveAllocations {
   min_number_of_allocations?: integer
 }
 
+export interface InferenceAlibabaCloudServiceSettings {
+  api_key: string
+  host: string
+  rate_limit?: InferenceRateLimitSetting
+  service_id: string
+  workspace: string
+}
+
+export type InferenceAlibabaCloudServiceType = 'alibabacloud-ai-search'
+
+export interface InferenceAlibabaCloudTaskSettings {
+  input_type?: string
+  return_token?: boolean
+}
+
+export type InferenceAlibabaCloudTaskType = 'completion' | 'rerank' | 'space_embedding' | 'text_embedding'
+
+export interface InferenceAmazonBedrockServiceSettings {
+  access_key: string
+  model: string
+  provider?: string
+  region: string
+  rate_limit?: InferenceRateLimitSetting
+  secret_key: string
+}
+
+export type InferenceAmazonBedrockServiceType = 'amazonbedrock'
+
+export interface InferenceAmazonBedrockTaskSettings {
+  max_new_tokens?: integer
+  temperature?: float
+  top_k?: float
+  top_p?: float
+}
+
+export type InferenceAmazonBedrockTaskType = 'completion' | 'text_embedding'
+
+export interface InferenceAnthropicServiceSettings {
+  api_key: string
+  model_id: string
+  rate_limit?: InferenceRateLimitSetting
+}
+
+export type InferenceAnthropicServiceType = 'anthropic'
+
+export interface InferenceAnthropicTaskSettings {
+  max_tokens: integer
+  temperature?: float
+  top_k?: integer
+  top_p?: float
+}
+
+export type InferenceAnthropicTaskType = 'completion'
+
+export interface InferenceAzureAiStudioServiceSettings {
+  api_key: string
+  endpoint_type: string
+  target: string
+  provider: string
+  rate_limit?: InferenceRateLimitSetting
+}
+
+export type InferenceAzureAiStudioServiceType = 'azureaistudio'
+
+export interface InferenceAzureAiStudioTaskSettings {
+  do_sample?: float
+  max_new_tokens?: integer
+  temperature?: float
+  top_p?: float
+  user?: string
+}
+
+export type InferenceAzureAiStudioTaskType = 'completion' | 'text_embedding'
+
+export interface InferenceAzureOpenAIServiceSettings {
+  api_key?: string
+  api_version: string
+  deployment_id: string
+  entra_id?: string
+  rate_limit?: InferenceRateLimitSetting
+  resource_name: string
+}
+
+export type InferenceAzureOpenAIServiceType = 'azureopenai'
+
+export interface InferenceAzureOpenAITaskSettings {
+  user?: string
+}
+
+export type InferenceAzureOpenAITaskType = 'completion' | 'text_embedding'
+
+export type InferenceCohereEmbeddingType = 'byte' | 'float' | 'int8'
+
+export type InferenceCohereInputType = 'classification' | 'clustering' | 'ingest' | 'search'
+
+export interface InferenceCohereServiceSettings {
+  api_key: string
+  embedding_type?: InferenceCohereEmbeddingType
+  model_id?: string
+  rate_limit?: InferenceRateLimitSetting
+  similarity?: InferenceCohereSimilarityType
+}
+
+export type InferenceCohereServiceType = 'cohere'
+
+export type InferenceCohereSimilarityType = 'cosine' | 'dot_product' | 'l2_norm'
+
+export interface InferenceCohereTaskSettings {
+  input_type?: InferenceCohereInputType
+  return_documents?: boolean
+  top_n?: integer
+  truncate?: InferenceCohereTruncateType
+}
+
+export type InferenceCohereTaskType = 'completion' | 'rerank' | 'text_embedding'
+
+export type InferenceCohereTruncateType = 'END' | 'NONE' | 'START'
+
 export interface InferenceCompletionInferenceResult {
   completion: InferenceCompletionResult[]
 }
 
 export interface InferenceCompletionResult {
   result: string
+}
+
+export interface InferenceCompletionTool {
+  type: string
+  function: InferenceCompletionToolFunction
+}
+
+export interface InferenceCompletionToolChoice {
+  type: string
+  function: InferenceCompletionToolChoiceFunction
+}
+
+export interface InferenceCompletionToolChoiceFunction {
+  name: string
+}
+
+export interface InferenceCompletionToolFunction {
+  description?: string
+  name: string
+  parameters?: any
+  strict?: boolean
+}
+
+export type InferenceCompletionToolType = string | InferenceCompletionToolChoice
+
+export interface InferenceContentObject {
+  text: string
+  type: string
 }
 
 export interface InferenceDeleteInferenceEndpointResult extends AcknowledgedResponseBase {
@@ -13093,6 +13239,78 @@ export interface InferenceDeleteInferenceEndpointResult extends AcknowledgedResp
 export type InferenceDenseByteVector = byte[]
 
 export type InferenceDenseVector = float[]
+
+export interface InferenceEisServiceSettings {
+  model_id: string
+  rate_limit?: InferenceRateLimitSetting
+}
+
+export type InferenceEisServiceType = 'elastic'
+
+export type InferenceEisTaskType = 'chat_completion'
+
+export interface InferenceElasticsearchServiceSettings {
+  adaptive_allocations?: InferenceAdaptiveAllocations
+  deployment_id?: string
+  model_id: string
+  num_allocations?: integer
+  num_threads: integer
+}
+
+export type InferenceElasticsearchServiceType = 'elasticsearch'
+
+export interface InferenceElasticsearchTaskSettings {
+  return_documents?: boolean
+}
+
+export type InferenceElasticsearchTaskType = 'rerank' | 'sparse_embedding' | 'text_embedding'
+
+export interface InferenceElserServiceSettings {
+  adaptive_allocations?: InferenceAdaptiveAllocations
+  num_allocations: integer
+  num_threads: integer
+}
+
+export type InferenceElserServiceType = 'elser'
+
+export type InferenceElserTaskType = 'sparse_embedding'
+
+export type InferenceGoogleAiServiceType = 'googleaistudio'
+
+export interface InferenceGoogleAiStudioServiceSettings {
+  api_key: string
+  model_id: string
+  rate_limit?: InferenceRateLimitSetting
+}
+
+export type InferenceGoogleAiStudioTaskType = 'completion' | 'text_embedding'
+
+export interface InferenceGoogleVertexAIServiceSettings {
+  location: string
+  model_id: string
+  project_id: string
+  rate_limit?: InferenceRateLimitSetting
+  service_account_json: string
+}
+
+export type InferenceGoogleVertexAIServiceType = 'googlevertexai'
+
+export interface InferenceGoogleVertexAITaskSettings {
+  auto_truncate?: boolean
+  top_n?: integer
+}
+
+export type InferenceGoogleVertexAITaskType = 'rerank' | 'text_embedding'
+
+export interface InferenceHuggingFaceServiceSettings {
+  api_key: string
+  rate_limit?: InferenceRateLimitSetting
+  url: string
+}
+
+export type InferenceHuggingFaceServiceType = 'hugging_face'
+
+export type InferenceHuggingFaceTaskType = 'text_embedding'
 
 export interface InferenceInferenceChunkingSettings {
   max_chunk_size?: integer
@@ -13113,6 +13331,64 @@ export interface InferenceInferenceEndpointInfo extends InferenceInferenceEndpoi
   task_type: InferenceTaskType
 }
 
+export interface InferenceJinaAIServiceSettings {
+  api_key: string
+  model_id?: string
+  rate_limit?: InferenceRateLimitSetting
+  similarity?: InferenceJinaAISimilarityType
+}
+
+export type InferenceJinaAIServiceType = 'jinaai'
+
+export type InferenceJinaAISimilarityType = 'cosine' | 'dot_product' | 'l2_norm'
+
+export interface InferenceJinaAITaskSettings {
+  return_documents?: boolean
+  task?: InferenceJinaAITextEmbeddingTask
+  top_n?: integer
+}
+
+export type InferenceJinaAITaskType = 'rerank' | 'text_embedding'
+
+export type InferenceJinaAITextEmbeddingTask = 'classification' | 'clustering' | 'ingest' | 'search'
+
+export interface InferenceMessage {
+  content?: InferenceMessageContent
+  role: string
+  tool_call_id?: Id
+  tool_calls?: InferenceToolCall[]
+}
+
+export type InferenceMessageContent = string | InferenceContentObject[]
+
+export interface InferenceMistralServiceSettings {
+  api_key: string
+  max_input_tokens?: integer
+  model: string
+  rate_limit?: InferenceRateLimitSetting
+}
+
+export type InferenceMistralServiceType = 'mistral'
+
+export type InferenceMistralTaskType = 'text_embedding'
+
+export interface InferenceOpenAIServiceSettings {
+  api_key: string
+  dimensions?: integer
+  model_id: string
+  organization_id?: string
+  rate_limit?: InferenceRateLimitSetting
+  url?: string
+}
+
+export type InferenceOpenAIServiceType = 'openai'
+
+export interface InferenceOpenAITaskSettings {
+  user?: string
+}
+
+export type InferenceOpenAITaskType = 'chat_completion' | 'completion' | 'text_embedding'
+
 export interface InferenceRankedDocument {
   index: integer
   relevance_score: float
@@ -13124,13 +13400,13 @@ export interface InferenceRateLimitSetting {
 }
 
 export interface InferenceRequestChatCompletionBase extends RequestBase {
-  messages: InferenceChatCompletionUnifiedMessage[]
+  messages: InferenceMessage[]
   model?: string
   max_completion_tokens?: long
   stop?: string[]
   temperature?: float
-  tool_choice?: InferenceChatCompletionUnifiedCompletionToolType
-  tools?: InferenceChatCompletionUnifiedCompletionTool[]
+  tool_choice?: InferenceCompletionToolType
+  tools?: InferenceCompletionTool[]
   top_p?: float
 }
 
@@ -13168,60 +13444,55 @@ export interface InferenceTextEmbeddingResult {
   embedding: InferenceDenseVector
 }
 
-export interface InferenceChatCompletionUnifiedCompletionTool {
-  type: string
-  function: InferenceChatCompletionUnifiedCompletionToolFunction
-}
-
-export interface InferenceChatCompletionUnifiedCompletionToolChoice {
-  type: string
-  function: InferenceChatCompletionUnifiedCompletionToolChoiceFunction
-}
-
-export interface InferenceChatCompletionUnifiedCompletionToolChoiceFunction {
-  name: string
-}
-
-export interface InferenceChatCompletionUnifiedCompletionToolFunction {
-  description?: string
-  name: string
-  parameters?: any
-  strict?: boolean
-}
-
-export type InferenceChatCompletionUnifiedCompletionToolType = string | InferenceChatCompletionUnifiedCompletionToolChoice
-
-export interface InferenceChatCompletionUnifiedContentObject {
-  text: string
-  type: string
-}
-
-export interface InferenceChatCompletionUnifiedMessage {
-  content?: InferenceChatCompletionUnifiedMessageContent
-  role: string
-  tool_call_id?: Id
-  tool_calls?: InferenceChatCompletionUnifiedToolCall[]
-}
-
-export type InferenceChatCompletionUnifiedMessageContent = string | InferenceChatCompletionUnifiedContentObject[]
-
-export interface InferenceChatCompletionUnifiedRequest extends InferenceRequestChatCompletionBase {
-  inference_id: Id
-  timeout?: Duration
-}
-
-export type InferenceChatCompletionUnifiedResponse = StreamResult
-
-export interface InferenceChatCompletionUnifiedToolCall {
+export interface InferenceToolCall {
   id: Id
-  function: InferenceChatCompletionUnifiedToolCallFunction
+  function: InferenceToolCallFunction
   type: string
 }
 
-export interface InferenceChatCompletionUnifiedToolCallFunction {
+export interface InferenceToolCallFunction {
   arguments: string
   name: string
 }
+
+export interface InferenceVoyageAIServiceSettings {
+  dimensions?: integer
+  model_id: string
+  rate_limit?: InferenceRateLimitSetting
+  embedding_type?: float
+}
+
+export type InferenceVoyageAIServiceType = 'voyageai'
+
+export interface InferenceVoyageAITaskSettings {
+  input_type?: string
+  return_documents?: boolean
+  top_k?: integer
+  truncation?: boolean
+}
+
+export type InferenceVoyageAITaskType = 'text_embedding' | 'rerank'
+
+export interface InferenceWatsonxServiceSettings {
+  api_key: string
+  api_version: string
+  model_id: string
+  project_id: string
+  rate_limit?: InferenceRateLimitSetting
+  url: string
+}
+
+export type InferenceWatsonxServiceType = 'watsonxai'
+
+export type InferenceWatsonxTaskType = 'text_embedding'
+
+export interface InferenceChatCompletionUnifiedRequest extends RequestBase {
+  inference_id: Id
+  timeout?: Duration
+  body?: InferenceRequestChatCompletionBase
+}
+
+export type InferenceChatCompletionUnifiedResponse = StreamResult
 
 export interface InferenceCompletionRequest extends RequestBase {
   inference_id: Id
@@ -13252,8 +13523,9 @@ export interface InferenceGetResponse {
   endpoints: InferenceInferenceEndpointInfo[]
 }
 
-export interface InferencePostEisChatCompletionRequest extends InferenceRequestChatCompletionBase {
+export interface InferencePostEisChatCompletionRequest extends RequestBase {
   eis_inference_id: Id
+  body?: InferenceRequestChatCompletionBase
 }
 
 export type InferencePostEisChatCompletionResponse = StreamResult
@@ -13266,6 +13538,7 @@ export interface InferencePutRequest extends RequestBase {
 
 export type InferencePutResponse = InferenceInferenceEndpointInfo
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 export interface InferencePutAlibabacloudAlibabaCloudServiceSettings {
   api_key: string
@@ -13282,52 +13555,35 @@ export interface InferencePutAlibabacloudAlibabaCloudTaskSettings {
 
 export type InferencePutAlibabacloudAlibabaCloudTaskType = 'completion' | 'rerank' | 'space_embedding' | 'text_embedding'
 
+=======
+>>>>>>> f0b3dcad4 (inference refactor (#4153))
 export interface InferencePutAlibabacloudRequest extends RequestBase {
-  task_type: InferencePutAlibabacloudAlibabaCloudTaskType
+  task_type: InferenceAlibabaCloudTaskType
   alibabacloud_inference_id: Id
   body?: {
     chunking_settings?: InferenceInferenceChunkingSettings
-    service: InferencePutAlibabacloudServiceType
-    service_settings: InferencePutAlibabacloudAlibabaCloudServiceSettings
-    task_settings?: InferencePutAlibabacloudAlibabaCloudTaskSettings
+    service: InferenceAlibabaCloudServiceType
+    service_settings: InferenceAlibabaCloudServiceSettings
+    task_settings?: InferenceAlibabaCloudTaskSettings
   }
 }
 
 export type InferencePutAlibabacloudResponse = InferenceInferenceEndpointInfo
 
-export type InferencePutAlibabacloudServiceType = 'alibabacloud-ai-search'
-
-export interface InferencePutAmazonbedrockAmazonBedrockServiceSettings {
-  access_key: string
-  model: string
-  provider?: string
-  region: string
-  rate_limit?: InferenceRateLimitSetting
-  secret_key: string
-}
-
-export interface InferencePutAmazonbedrockAmazonBedrockTaskSettings {
-  max_new_tokens?: integer
-  temperature?: float
-  top_k?: float
-  top_p?: float
-}
-
-export type InferencePutAmazonbedrockAmazonBedrockTaskType = 'completion' | 'text_embedding'
-
 export interface InferencePutAmazonbedrockRequest extends RequestBase {
-  task_type: InferencePutAmazonbedrockAmazonBedrockTaskType
+  task_type: InferenceAmazonBedrockTaskType
   amazonbedrock_inference_id: Id
   body?: {
     chunking_settings?: InferenceInferenceChunkingSettings
-    service: InferencePutAmazonbedrockServiceType
-    service_settings: InferencePutAmazonbedrockAmazonBedrockServiceSettings
-    task_settings?: InferencePutAmazonbedrockAmazonBedrockTaskSettings
+    service: InferenceAmazonBedrockServiceType
+    service_settings: InferenceAmazonBedrockServiceSettings
+    task_settings?: InferenceAmazonBedrockTaskSettings
   }
 }
 
 export type InferencePutAmazonbedrockResponse = InferenceInferenceEndpointInfo
 
+<<<<<<< HEAD
 export type InferencePutAmazonbedrockServiceType = 'amazonbedrock'
 
 export interface InferencePutAnthropicAnthropicServiceSettings {
@@ -13349,118 +13605,61 @@ export interface InferencePutAnthropicAnthropicTaskSettings {
 
 export type InferencePutAnthropicAnthropicTaskType = 'completion'
 
+=======
+>>>>>>> f0b3dcad4 (inference refactor (#4153))
 export interface InferencePutAnthropicRequest extends RequestBase {
-  task_type: InferencePutAnthropicAnthropicTaskType
+  task_type: InferenceAnthropicTaskType
   anthropic_inference_id: Id
   body?: {
     chunking_settings?: InferenceInferenceChunkingSettings
-    service: InferencePutAnthropicServiceType
-    service_settings: InferencePutAnthropicAnthropicServiceSettings
-    task_settings?: InferencePutAnthropicAnthropicTaskSettings
+    service: InferenceAnthropicServiceType
+    service_settings: InferenceAnthropicServiceSettings
+    task_settings?: InferenceAnthropicTaskSettings
   }
 }
 
 export type InferencePutAnthropicResponse = InferenceInferenceEndpointInfo
 
-export type InferencePutAnthropicServiceType = 'anthropic'
-
-export interface InferencePutAzureaistudioAzureAiStudioServiceSettings {
-  api_key: string
-  endpoint_type: string
-  target: string
-  provider: string
-  rate_limit?: InferenceRateLimitSetting
-}
-
-export interface InferencePutAzureaistudioAzureAiStudioTaskSettings {
-  do_sample?: float
-  max_new_tokens?: integer
-  temperature?: float
-  top_p?: float
-  user?: string
-}
-
-export type InferencePutAzureaistudioAzureAiStudioTaskType = 'completion' | 'text_embedding'
-
 export interface InferencePutAzureaistudioRequest extends RequestBase {
-  task_type: InferencePutAzureaistudioAzureAiStudioTaskType
+  task_type: InferenceAzureAiStudioTaskType
   azureaistudio_inference_id: Id
   body?: {
     chunking_settings?: InferenceInferenceChunkingSettings
-    service: InferencePutAzureaistudioServiceType
-    service_settings: InferencePutAzureaistudioAzureAiStudioServiceSettings
-    task_settings?: InferencePutAzureaistudioAzureAiStudioTaskSettings
+    service: InferenceAzureAiStudioServiceType
+    service_settings: InferenceAzureAiStudioServiceSettings
+    task_settings?: InferenceAzureAiStudioTaskSettings
   }
 }
 
 export type InferencePutAzureaistudioResponse = InferenceInferenceEndpointInfo
 
-export type InferencePutAzureaistudioServiceType = 'azureaistudio'
-
-export interface InferencePutAzureopenaiAzureOpenAIServiceSettings {
-  api_key?: string
-  api_version: string
-  deployment_id: string
-  entra_id?: string
-  rate_limit?: InferenceRateLimitSetting
-  resource_name: string
-}
-
-export interface InferencePutAzureopenaiAzureOpenAITaskSettings {
-  user?: string
-}
-
-export type InferencePutAzureopenaiAzureOpenAITaskType = 'completion' | 'text_embedding'
-
 export interface InferencePutAzureopenaiRequest extends RequestBase {
-  task_type: InferencePutAzureopenaiAzureOpenAITaskType
+  task_type: InferenceAzureOpenAITaskType
   azureopenai_inference_id: Id
   body?: {
     chunking_settings?: InferenceInferenceChunkingSettings
-    service: InferencePutAzureopenaiServiceType
-    service_settings: InferencePutAzureopenaiAzureOpenAIServiceSettings
-    task_settings?: InferencePutAzureopenaiAzureOpenAITaskSettings
+    service: InferenceAzureOpenAIServiceType
+    service_settings: InferenceAzureOpenAIServiceSettings
+    task_settings?: InferenceAzureOpenAITaskSettings
   }
 }
 
 export type InferencePutAzureopenaiResponse = InferenceInferenceEndpointInfo
 
-export type InferencePutAzureopenaiServiceType = 'azureopenai'
-
-export interface InferencePutCohereCohereServiceSettings {
-  api_key: string
-  embedding_type?: InferencePutCohereEmbeddingType
-  model_id?: string
-  rate_limit?: InferenceRateLimitSetting
-  similarity?: InferencePutCohereSimilarityType
-}
-
-export interface InferencePutCohereCohereTaskSettings {
-  input_type?: InferencePutCohereInputType
-  return_documents?: boolean
-  top_n?: integer
-  truncate?: InferencePutCohereTruncateType
-}
-
-export type InferencePutCohereCohereTaskType = 'completion' | 'rerank' | 'text_embedding'
-
-export type InferencePutCohereEmbeddingType = 'byte' | 'float' | 'int8'
-
-export type InferencePutCohereInputType = 'classification' | 'clustering' | 'ingest' | 'search'
-
 export interface InferencePutCohereRequest extends RequestBase {
-  task_type: InferencePutCohereCohereTaskType
+  task_type: InferenceCohereTaskType
   cohere_inference_id: Id
   body?: {
     chunking_settings?: InferenceInferenceChunkingSettings
-    service: InferencePutCohereServiceType
-    service_settings: InferencePutCohereCohereServiceSettings
-    task_settings?: InferencePutCohereCohereTaskSettings
+    service: InferenceCohereServiceType
+    service_settings: InferenceCohereServiceSettings
+    task_settings?: InferenceCohereTaskSettings
   }
 }
 
 export type InferencePutCohereResponse = InferenceInferenceEndpointInfo
 
+<<<<<<< HEAD
 export type InferencePutCohereServiceType = 'cohere'
 
 export type InferencePutCohereSimilarityType = 'cosine' | 'dot_product' | 'l2_norm'
@@ -13480,173 +13679,107 @@ export interface InferencePutElasticsearchElasticsearchTaskSettings {
 }
 
 export type InferencePutElasticsearchElasticsearchTaskType = 'rerank' | 'sparse_embedding' | 'text_embedding'
+=======
+export interface InferencePutEisRequest extends RequestBase {
+  task_type: InferenceEisTaskType
+  eis_inference_id: Id
+  body?: {
+    service: InferenceEisServiceType
+    service_settings: InferenceEisServiceSettings
+  }
+}
+
+export type InferencePutEisResponse = InferenceInferenceEndpointInfo
+>>>>>>> f0b3dcad4 (inference refactor (#4153))
 
 export interface InferencePutElasticsearchRequest extends RequestBase {
-  task_type: InferencePutElasticsearchElasticsearchTaskType
+  task_type: InferenceElasticsearchTaskType
   elasticsearch_inference_id: Id
   body?: {
     chunking_settings?: InferenceInferenceChunkingSettings
-    service: InferencePutElasticsearchServiceType
-    service_settings: InferencePutElasticsearchElasticsearchServiceSettings
-    task_settings?: InferencePutElasticsearchElasticsearchTaskSettings
+    service: InferenceElasticsearchServiceType
+    service_settings: InferenceElasticsearchServiceSettings
+    task_settings?: InferenceElasticsearchTaskSettings
   }
 }
 
 export type InferencePutElasticsearchResponse = InferenceInferenceEndpointInfo
 
-export type InferencePutElasticsearchServiceType = 'elasticsearch'
-
-export interface InferencePutElserElserServiceSettings {
-  adaptive_allocations?: InferenceAdaptiveAllocations
-  num_allocations: integer
-  num_threads: integer
-}
-
-export type InferencePutElserElserTaskType = 'sparse_embedding'
-
 export interface InferencePutElserRequest extends RequestBase {
-  task_type: InferencePutElserElserTaskType
+  task_type: InferenceElserTaskType
   elser_inference_id: Id
   body?: {
     chunking_settings?: InferenceInferenceChunkingSettings
-    service: InferencePutElserServiceType
-    service_settings: InferencePutElserElserServiceSettings
+    service: InferenceElserServiceType
+    service_settings: InferenceElserServiceSettings
   }
 }
 
 export type InferencePutElserResponse = InferenceInferenceEndpointInfo
 
-export type InferencePutElserServiceType = 'elser'
-
-export interface InferencePutGoogleaistudioGoogleAiStudioServiceSettings {
-  api_key: string
-  model_id: string
-  rate_limit?: InferenceRateLimitSetting
-}
-
-export type InferencePutGoogleaistudioGoogleAiStudioTaskType = 'completion' | 'text_embedding'
-
 export interface InferencePutGoogleaistudioRequest extends RequestBase {
-  task_type: InferencePutGoogleaistudioGoogleAiStudioTaskType
+  task_type: InferenceGoogleAiStudioTaskType
   googleaistudio_inference_id: Id
   body?: {
     chunking_settings?: InferenceInferenceChunkingSettings
-    service: InferencePutGoogleaistudioServiceType
-    service_settings: InferencePutGoogleaistudioGoogleAiStudioServiceSettings
+    service: InferenceGoogleAiServiceType
+    service_settings: InferenceGoogleAiStudioServiceSettings
   }
 }
 
 export type InferencePutGoogleaistudioResponse = InferenceInferenceEndpointInfo
 
-export type InferencePutGoogleaistudioServiceType = 'googleaistudio'
-
-export interface InferencePutGooglevertexaiGoogleVertexAIServiceSettings {
-  location: string
-  model_id: string
-  project_id: string
-  rate_limit?: InferenceRateLimitSetting
-  service_account_json: string
-}
-
-export interface InferencePutGooglevertexaiGoogleVertexAITaskSettings {
-  auto_truncate?: boolean
-  top_n?: integer
-}
-
-export type InferencePutGooglevertexaiGoogleVertexAITaskType = 'rerank' | 'text_embedding'
-
 export interface InferencePutGooglevertexaiRequest extends RequestBase {
-  task_type: InferencePutGooglevertexaiGoogleVertexAITaskType
+  task_type: InferenceGoogleVertexAITaskType
   googlevertexai_inference_id: Id
   body?: {
     chunking_settings?: InferenceInferenceChunkingSettings
-    service: InferencePutGooglevertexaiServiceType
-    service_settings: InferencePutGooglevertexaiGoogleVertexAIServiceSettings
-    task_settings?: InferencePutGooglevertexaiGoogleVertexAITaskSettings
+    service: InferenceGoogleVertexAIServiceType
+    service_settings: InferenceGoogleVertexAIServiceSettings
+    task_settings?: InferenceGoogleVertexAITaskSettings
   }
 }
 
 export type InferencePutGooglevertexaiResponse = InferenceInferenceEndpointInfo
 
-export type InferencePutGooglevertexaiServiceType = 'googlevertexai'
-
-export interface InferencePutHuggingFaceHuggingFaceServiceSettings {
-  api_key: string
-  rate_limit?: InferenceRateLimitSetting
-  url: string
-}
-
-export type InferencePutHuggingFaceHuggingFaceTaskType = 'text_embedding'
-
 export interface InferencePutHuggingFaceRequest extends RequestBase {
-  task_type: InferencePutHuggingFaceHuggingFaceTaskType
+  task_type: InferenceHuggingFaceTaskType
   huggingface_inference_id: Id
   body?: {
     chunking_settings?: InferenceInferenceChunkingSettings
-    service: InferencePutHuggingFaceServiceType
-    service_settings: InferencePutHuggingFaceHuggingFaceServiceSettings
+    service: InferenceHuggingFaceServiceType
+    service_settings: InferenceHuggingFaceServiceSettings
   }
 }
 
 export type InferencePutHuggingFaceResponse = InferenceInferenceEndpointInfo
 
-export type InferencePutHuggingFaceServiceType = 'hugging_face'
-
-export interface InferencePutJinaaiJinaAIServiceSettings {
-  api_key: string
-  model_id?: string
-  rate_limit?: InferenceRateLimitSetting
-  similarity?: InferencePutJinaaiSimilarityType
-}
-
-export interface InferencePutJinaaiJinaAITaskSettings {
-  return_documents?: boolean
-  task?: InferencePutJinaaiTextEmbeddingTask
-  top_n?: integer
-}
-
-export type InferencePutJinaaiJinaAITaskType = 'rerank' | 'text_embedding'
-
 export interface InferencePutJinaaiRequest extends RequestBase {
-  task_type: InferencePutJinaaiJinaAITaskType
+  task_type: InferenceJinaAITaskType
   jinaai_inference_id: Id
   body?: {
     chunking_settings?: InferenceInferenceChunkingSettings
-    service: InferencePutJinaaiServiceType
-    service_settings: InferencePutJinaaiJinaAIServiceSettings
-    task_settings?: InferencePutJinaaiJinaAITaskSettings
+    service: InferenceJinaAIServiceType
+    service_settings: InferenceJinaAIServiceSettings
+    task_settings?: InferenceJinaAITaskSettings
   }
 }
 
 export type InferencePutJinaaiResponse = InferenceInferenceEndpointInfo
 
-export type InferencePutJinaaiServiceType = 'jinaai'
-
-export type InferencePutJinaaiSimilarityType = 'cosine' | 'dot_product' | 'l2_norm'
-
-export type InferencePutJinaaiTextEmbeddingTask = 'classification' | 'clustering' | 'ingest' | 'search'
-
-export interface InferencePutMistralMistralServiceSettings {
-  api_key: string
-  max_input_tokens?: integer
-  model: string
-  rate_limit?: InferenceRateLimitSetting
-}
-
-export type InferencePutMistralMistralTaskType = 'text_embedding'
-
 export interface InferencePutMistralRequest extends RequestBase {
-  task_type: InferencePutMistralMistralTaskType
+  task_type: InferenceMistralTaskType
   mistral_inference_id: Id
   body?: {
     chunking_settings?: InferenceInferenceChunkingSettings
-    service: InferencePutMistralServiceType
-    service_settings: InferencePutMistralMistralServiceSettings
+    service: InferenceMistralServiceType
+    service_settings: InferenceMistralServiceSettings
   }
 }
 
 export type InferencePutMistralResponse = InferenceInferenceEndpointInfo
 
+<<<<<<< HEAD
 export type InferencePutMistralServiceType = 'mistral'
 =======
 export type InferencePutEisEisTaskType = 'chat_completion'
@@ -13680,75 +13813,44 @@ export interface InferencePutOpenaiOpenAITaskSettings {
 
 export type InferencePutOpenaiOpenAITaskType = 'chat_completion' | 'completion' | 'text_embedding'
 
+=======
+>>>>>>> f0b3dcad4 (inference refactor (#4153))
 export interface InferencePutOpenaiRequest extends RequestBase {
-  task_type: InferencePutOpenaiOpenAITaskType
+  task_type: InferenceOpenAITaskType
   openai_inference_id: Id
   body?: {
     chunking_settings?: InferenceInferenceChunkingSettings
-    service: InferencePutOpenaiServiceType
-    service_settings: InferencePutOpenaiOpenAIServiceSettings
-    task_settings?: InferencePutOpenaiOpenAITaskSettings
+    service: InferenceOpenAIServiceType
+    service_settings: InferenceOpenAIServiceSettings
+    task_settings?: InferenceOpenAITaskSettings
   }
 }
 
 export type InferencePutOpenaiResponse = InferenceInferenceEndpointInfo
 
-export type InferencePutOpenaiServiceType = 'openai'
-
 export interface InferencePutVoyageaiRequest extends RequestBase {
-  task_type: InferencePutVoyageaiVoyageAITaskType
+  task_type: InferenceVoyageAITaskType
   voyageai_inference_id: Id
   body?: {
     chunking_settings?: InferenceInferenceChunkingSettings
-    service: InferencePutVoyageaiServiceType
-    service_settings: InferencePutVoyageaiVoyageAIServiceSettings
-    task_settings?: InferencePutVoyageaiVoyageAITaskSettings
+    service: InferenceVoyageAIServiceType
+    service_settings: InferenceVoyageAIServiceSettings
+    task_settings?: InferenceVoyageAITaskSettings
   }
 }
 
 export type InferencePutVoyageaiResponse = InferenceInferenceEndpointInfo
 
-export type InferencePutVoyageaiServiceType = 'voyageai'
-
-export interface InferencePutVoyageaiVoyageAIServiceSettings {
-  dimensions?: integer
-  model_id: string
-  rate_limit?: InferenceRateLimitSetting
-  embedding_type?: float
-}
-
-export interface InferencePutVoyageaiVoyageAITaskSettings {
-  input_type?: string
-  return_documents?: boolean
-  top_k?: integer
-  truncation?: boolean
-}
-
-export type InferencePutVoyageaiVoyageAITaskType = 'text_embedding' | 'rerank'
-
 export interface InferencePutWatsonxRequest extends RequestBase {
-  task_type: InferencePutWatsonxWatsonxTaskType
+  task_type: InferenceWatsonxTaskType
   watsonx_inference_id: Id
   body?: {
-    service: InferencePutWatsonxServiceType
-    service_settings: InferencePutWatsonxWatsonxServiceSettings
+    service: InferenceWatsonxServiceType
+    service_settings: InferenceWatsonxServiceSettings
   }
 }
 
 export type InferencePutWatsonxResponse = InferenceInferenceEndpointInfo
-
-export type InferencePutWatsonxServiceType = 'watsonxai'
-
-export interface InferencePutWatsonxWatsonxServiceSettings {
-  api_key: string
-  api_version: string
-  model_id: string
-  project_id: string
-  rate_limit?: InferenceRateLimitSetting
-  url: string
-}
-
-export type InferencePutWatsonxWatsonxTaskType = 'text_embedding'
 
 export interface InferenceRerankRequest extends RequestBase {
   inference_id: Id

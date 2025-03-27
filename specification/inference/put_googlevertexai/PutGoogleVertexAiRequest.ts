@@ -18,12 +18,14 @@
  */
 
 import {
-  InferenceChunkingSettings,
-  RateLimitSetting
-} from '@inference/_types/Services'
+  GoogleVertexAIServiceSettings,
+  GoogleVertexAIServiceType,
+  GoogleVertexAITaskSettings,
+  GoogleVertexAITaskType
+} from '@inference/_types/CommonTypes'
+import { InferenceChunkingSettings } from '@inference/_types/Services'
 import { RequestBase } from '@_types/Base'
 import { Id } from '@_types/common'
-import { integer } from '@_types/Numeric'
 
 /**
  * Create a Google Vertex AI inference endpoint.
@@ -67,7 +69,7 @@ export interface Request extends RequestBase {
     /**
      * The type of service supported for the specified task type. In this case, `googlevertexai`.
      */
-    service: ServiceType
+    service: GoogleVertexAIServiceType
     /**
      * Settings used to install the inference model. These settings are specific to the `googlevertexai` service.
      */
@@ -78,52 +80,4 @@ export interface Request extends RequestBase {
      */
     task_settings?: GoogleVertexAITaskSettings
   }
-}
-
-export enum GoogleVertexAITaskType {
-  rerank,
-  text_embedding
-}
-
-export enum ServiceType {
-  googlevertexai
-}
-
-export class GoogleVertexAIServiceSettings {
-  /**
-   * The name of the location to use for the inference task.
-   * Refer to the Google documentation for the list of supported locations.
-   * @ext_doc_id googlevertexai-locations
-   */
-  location: string
-  /**
-   * The name of the model to use for the inference task.
-   * Refer to the Google documentation for the list of supported models.
-   * @ext_doc_id googlevertexai-models
-   */
-  model_id: string
-  /**
-   * The name of the project to use for the inference task.
-   */
-  project_id: string
-  /**
-   * This setting helps to minimize the number of rate limit errors returned from Google Vertex AI.
-   * By default, the `googlevertexai` service sets the number of requests allowed per minute to 30.000.
-   */
-  rate_limit?: RateLimitSetting
-  /**
-   * A valid service account in JSON format for the Google Vertex AI API.
-   */
-  service_account_json: string
-}
-
-export class GoogleVertexAITaskSettings {
-  /**
-   * For a `text_embedding` task, truncate inputs longer than the maximum token length automatically.
-   */
-  auto_truncate?: boolean
-  /**
-   * For a `rerank` task, the number of the top N documents that should be returned.
-   */
-  top_n?: integer
 }

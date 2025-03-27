@@ -18,12 +18,14 @@
  */
 
 import {
-  InferenceChunkingSettings,
-  RateLimitSetting
-} from '@inference/_types/Services'
+  VoyageAIServiceSettings,
+  VoyageAIServiceType,
+  VoyageAITaskSettings,
+  VoyageAITaskType
+} from '@inference/_types/CommonTypes'
+import { InferenceChunkingSettings } from '@inference/_types/Services'
 import { RequestBase } from '@_types/Base'
 import { Id } from '@_types/common'
-import { float, integer } from '@_types/Numeric'
 
 /**
    * Create a VoyageAI inference endpoint.
@@ -63,7 +65,7 @@ export interface Request extends RequestBase {
     /**
      * The type of service supported for the specified task type. In this case, `voyageai`.
      */
-    service: ServiceType
+    service: VoyageAIServiceType
     /**
      * Settings used to install the inference model. These settings are specific to the `voyageai` service.
      */
@@ -74,72 +76,4 @@ export interface Request extends RequestBase {
      */
     task_settings?: VoyageAITaskSettings
   }
-}
-
-export enum VoyageAITaskType {
-  text_embedding,
-  rerank
-}
-
-export enum ServiceType {
-  voyageai
-}
-
-export class VoyageAIServiceSettings {
-  /**
-   * The number of dimensions for resulting output embeddings.
-   * This setting maps to `output_dimension` in the VoyageAI documentation.
-   * Only for the `text_embedding` task type.
-   * @ext_doc_id voyageai-embeddings
-   */
-  dimensions?: integer
-  /**
-   * The name of the model to use for the inference task.
-   * Refer to the VoyageAI documentation for the list of available text embedding and rerank models.
-   * @ext_doc_id voyageai-embeddings
-   * @ext_doc_id voyageai-rerank
-   */
-  model_id: string
-  /**
-   * This setting helps to minimize the number of rate limit errors returned from VoyageAI.
-   * The `voyageai` service sets a default number of requests allowed per minute depending on the task type.
-   * For both `text_embedding` and `rerank`, it is set to `2000`.
-   */
-  rate_limit?: RateLimitSetting
-  /**
-   * The data type for the embeddings to be returned.
-   * This setting maps to `output_dtype` in the VoyageAI documentation.
-   * Permitted values: float, int8, bit.
-   * `int8` is a synonym of `byte` in the VoyageAI documentation.
-   * `bit` is a synonym of `binary` in the VoyageAI documentation.
-   * Only for the `text_embedding` task type.
-   * @ext_doc_id voyageai-embeddings
-   */
-  embedding_type?: float
-}
-
-export class VoyageAITaskSettings {
-  /**
-   * Type of the input text.
-   * Permitted values: `ingest` (maps to `document` in the VoyageAI documentation), `search` (maps to `query` in the VoyageAI documentation).
-   * Only for the `text_embedding` task type.
-   */
-  input_type?: string
-  /**
-   * Whether to return the source documents in the response.
-   * Only for the `rerank` task type.
-   * @server_default false
-   */
-  return_documents?: boolean
-  /**
-   * The number of most relevant documents to return.
-   * If not specified, the reranking results of all documents will be returned.
-   * Only for the `rerank` task type.
-   */
-  top_k?: integer
-  /**
-   * Whether to truncate the input texts to fit within the context length.
-   * @server_default true
-   */
-  truncation?: boolean
 }
