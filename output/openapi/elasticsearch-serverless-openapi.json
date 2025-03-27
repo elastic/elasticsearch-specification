@@ -49915,7 +49915,7 @@
         "type": "object",
         "properties": {
           "adaptive_allocations": {
-            "$ref": "#/components/schemas/inference.put_elasticsearch:AdaptiveAllocations"
+            "$ref": "#/components/schemas/inference._types:AdaptiveAllocations"
           },
           "deployment_id": {
             "description": "The deployment identifier for a trained model deployment.\nWhen `deployment_id` is used the `model_id` is optional.",
@@ -49942,7 +49942,7 @@
           "num_threads"
         ]
       },
-      "inference.put_elasticsearch:AdaptiveAllocations": {
+      "inference._types:AdaptiveAllocations": {
         "type": "object",
         "properties": {
           "enabled": {
@@ -49984,7 +49984,7 @@
         "type": "object",
         "properties": {
           "adaptive_allocations": {
-            "$ref": "#/components/schemas/inference.put_elser:AdaptiveAllocations"
+            "$ref": "#/components/schemas/inference._types:AdaptiveAllocations"
           },
           "num_allocations": {
             "description": "The total number of allocations this model is assigned across machine learning nodes.\nIncreasing this value generally increases the throughput.\nIf adaptive allocations is enabled, do not set this value because it's automatically set.",
@@ -49999,23 +49999,6 @@
           "num_allocations",
           "num_threads"
         ]
-      },
-      "inference.put_elser:AdaptiveAllocations": {
-        "type": "object",
-        "properties": {
-          "enabled": {
-            "description": "Turn on `adaptive_allocations`.",
-            "type": "boolean"
-          },
-          "max_number_of_allocations": {
-            "description": "The maximum number of allocations to scale to.\nIf set, it must be greater than or equal to `min_number_of_allocations`.",
-            "type": "number"
-          },
-          "min_number_of_allocations": {
-            "description": "The minimum number of allocations to scale to.\nIf set, it must be greater than or equal to 0.\nIf not defined, the deployment scales to 0.",
-            "type": "number"
-          }
-        }
       },
       "inference.put_googleaistudio:GoogleAiStudioTaskType": {
         "type": "string",
