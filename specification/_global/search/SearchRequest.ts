@@ -18,7 +18,7 @@
  */
 
 import { TrackHits } from '@global/search/_types/hits'
-import { Dictionary } from '@spec_utils/Dictionary'
+import { Dictionary, SingleKeyDictionary } from '@spec_utils/Dictionary'
 import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 import { AggregationContainer } from '@_types/aggregations/AggregationContainer'
 import { RequestBase } from '@_types/Base'
@@ -433,7 +433,7 @@ export interface Request extends RequestBase {
      * A boost value between `0` and `1.0` decreases the score.
      * @ext_doc_id relevance-scores
      */
-    indices_boost?: Array<Dictionary<IndexName, double>>
+    indices_boost?: Array<SingleKeyDictionary<IndexName, double>>
     /**
      * An array of wildcard (`*`) field patterns.
      * The request returns doc values for field names matching these patterns in the `hits.fields` property of the response.

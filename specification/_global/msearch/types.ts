@@ -25,7 +25,7 @@ import { PointInTimeReference } from '@global/search/_types/PointInTimeReference
 import { Rescore } from '@global/search/_types/rescoring'
 import { SourceConfig } from '@global/search/_types/SourceFilter'
 import { Suggester } from '@global/search/_types/suggester'
-import { Dictionary } from '@spec_utils/Dictionary'
+import { Dictionary, SingleKeyDictionary } from '@spec_utils/Dictionary'
 import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 import { AggregationContainer } from '@_types/aggregations/AggregationContainer'
 import { ErrorResponseBase } from '@_types/Base'
@@ -116,7 +116,7 @@ export class MultisearchBody {
   /**
    * Boosts the _score of documents from specified indices.
    */
-  indices_boost?: Array<Dictionary<IndexName, double>>
+  indices_boost?: Array<SingleKeyDictionary<IndexName, double>>
   /**
    * Minimum _score for matching documents. Documents with a lower _score are
    * not included in the search results.
