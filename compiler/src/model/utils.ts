@@ -281,7 +281,8 @@ export function modelType (node: Node): model.ValueOf {
             kind: 'dictionary_of',
             key,
             value,
-            singleKey: false
+            singleKey: false,
+            ordered: false
           }
           return type
         }
@@ -294,7 +295,21 @@ export function modelType (node: Node): model.ValueOf {
             kind: 'dictionary_of',
             key,
             value,
-            singleKey: true
+            singleKey: true,
+            ordered: false
+          }
+          return type
+        }
+
+        case 'OrderedDictionary': {
+          assert(node, node.getTypeArguments().length === 2, 'A OrderedDictionary must have two arguments')
+          const [key, value] = node.getTypeArguments().map(node => modelType(node))
+          const type: model.DictionaryOf = {
+            kind: 'dictionary_of',
+            key,
+            value,
+            singleKey: false,
+            ordered: true
           }
           return type
         }
@@ -500,7 +515,7 @@ export function modelEnumDeclaration (declaration: EnumDeclaration): model.Enum 
   }
 
   if (typeof tags.es_quirk === 'string') {
-    type.esQuirk = tags.es_quirk
+    type.esQuirk = tags.es_quirk.replace(/\r/g, '')
   }
 
   return type
@@ -892,7 +907,7 @@ function hoistPropertyAnnotations (property: model.Property, jsDocs: JSDoc[]): v
       assert(jsDocs, value === 'container_property', `Unknown 'variant' value '${value}' on property ${property.name}`)
       property.containerProperty = true
     } else if (tag === 'es_quirk') {
-      property.esQuirk = value
+      property.esQuirk = value.replace(/\r/g, '')
     } else {
       assert(jsDocs, false, `Unhandled tag: '${tag}' with value: '${value}' on property ${property.name}`)
     }
