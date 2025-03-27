@@ -766,41 +766,6 @@ export interface MsearchMultiSearchResult<TDocument = unknown> {
   responses: MsearchResponseItem<TDocument>[]
 }
 
-export interface MsearchMultisearchBody {
-  aggregations?: Record<string, AggregationsAggregationContainer>
-  aggs?: Record<string, AggregationsAggregationContainer>
-  collapse?: SearchFieldCollapse
-  query?: QueryDslQueryContainer
-  explain?: boolean
-  ext?: Record<string, any>
-  stored_fields?: Fields
-  docvalue_fields?: (QueryDslFieldAndFormat | Field)[]
-  knn?: KnnSearch | KnnSearch[]
-  from?: integer
-  highlight?: SearchHighlight
-  indices_boost?: Partial<Record<IndexName, double>>[]
-  min_score?: double
-  post_filter?: QueryDslQueryContainer
-  profile?: boolean
-  rescore?: SearchRescore | SearchRescore[]
-  script_fields?: Record<string, ScriptField>
-  search_after?: SortResults
-  size?: integer
-  sort?: Sort
-  _source?: SearchSourceConfig
-  fields?: (QueryDslFieldAndFormat | Field)[]
-  terminate_after?: long
-  stats?: string[]
-  timeout?: string
-  track_scores?: boolean
-  track_total_hits?: SearchTrackHits
-  version?: boolean
-  runtime_mappings?: MappingRuntimeFields
-  seq_no_primary_term?: boolean
-  pit?: SearchPointInTimeReference
-  suggest?: SearchSuggester
-}
-
 export interface MsearchMultisearchHeader {
   allow_no_indices?: boolean
   expand_wildcards?: ExpandWildcards
@@ -833,7 +798,7 @@ export interface MsearchRequest extends RequestBase {
   body?: MsearchRequestItem[]
 }
 
-export type MsearchRequestItem = MsearchMultisearchHeader | MsearchMultisearchBody
+export type MsearchRequestItem = MsearchMultisearchHeader | SearchSearchRequestBody
 
 export type MsearchResponse<TDocument = unknown> = MsearchMultiSearchResult<TDocument>
 
@@ -1760,6 +1725,44 @@ export interface SearchSearchProfile {
   collector: SearchCollector[]
   query: SearchQueryProfile[]
   rewrite_time: long
+}
+
+export interface SearchSearchRequestBody {
+  aggregations?: Record<string, AggregationsAggregationContainer>
+  aggs?: Record<string, AggregationsAggregationContainer>
+  collapse?: SearchFieldCollapse
+  explain?: boolean
+  ext?: Record<string, any>
+  from?: integer
+  highlight?: SearchHighlight
+  track_total_hits?: SearchTrackHits
+  indices_boost?: Partial<Record<IndexName, double>>[]
+  docvalue_fields?: (QueryDslFieldAndFormat | Field)[]
+  knn?: KnnSearch | KnnSearch[]
+  rank?: RankContainer
+  min_score?: double
+  post_filter?: QueryDslQueryContainer
+  profile?: boolean
+  query?: QueryDslQueryContainer
+  rescore?: SearchRescore | SearchRescore[]
+  retriever?: RetrieverContainer
+  script_fields?: Record<string, ScriptField>
+  search_after?: SortResults
+  size?: integer
+  slice?: SlicedScroll
+  sort?: Sort
+  _source?: SearchSourceConfig
+  fields?: (QueryDslFieldAndFormat | Field)[]
+  suggest?: SearchSuggester
+  terminate_after?: long
+  timeout?: string
+  track_scores?: boolean
+  version?: boolean
+  seq_no_primary_term?: boolean
+  stored_fields?: Fields
+  pit?: SearchPointInTimeReference
+  runtime_mappings?: MappingRuntimeFields
+  stats?: string[]
 }
 
 export interface SearchShardProfile {
@@ -2796,6 +2799,8 @@ export interface ScriptSort {
 
 export type ScriptSortType = 'string' | 'number' | 'version'
 
+export type ScriptSource = string | SearchSearchRequestBody
+
 export interface ScriptTransform {
   lang?: string
   params?: Record<string, any>
@@ -2935,7 +2940,7 @@ export interface StoreStats {
 export interface StoredScript {
   lang: ScriptLanguage
   options?: Record<string, string>
-  source: string
+  source: ScriptSource
 }
 
 export type StreamResult = ArrayBuffer

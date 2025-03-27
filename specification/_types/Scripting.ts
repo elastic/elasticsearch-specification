@@ -17,6 +17,7 @@
  * under the License.
  */
 
+import { SearchRequestBody } from '@global/search/_types/SearchRequestBody'
 import { Dictionary } from '@spec_utils/Dictionary'
 import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 import { Id } from './common'
@@ -44,6 +45,9 @@ export enum ScriptLanguage {
   java
 }
 
+/** @codegen_names script_string, script_template */
+export type ScriptSource = string | SearchRequestBody
+
 export class StoredScript {
   /**
    * The language the script is written in.
@@ -55,21 +59,7 @@ export class StoredScript {
    * The script source.
    * For search templates, an object containing the search template.
    */
-  source: string
-}
-
-export class ScriptBase {
-  /**
-   * Specifies any named parameters that are passed into the script as variables.
-   * Use parameters instead of hard-coded values to decrease compile time.
-   */
-  params?: Dictionary<string, UserDefinedValue>
-  /**
-   * Specifies the language the script is written in.
-   * @server_default painless
-   */
-  lang?: ScriptLanguage
-  options?: Dictionary<string, string>
+  source: ScriptSource
 }
 
 /**

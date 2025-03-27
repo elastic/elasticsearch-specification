@@ -44,6 +44,12 @@
       ],
       "response": []
     },
+    "fleet.msearch": {
+      "request": [
+        "interface definition _types:RankContainer - Property rrf is a single-variant and must be required"
+      ],
+      "response": []
+    },
     "get_source": {
       "request": [
         "Request: query parameter 'stored_fields' does not exist in the json spec"
@@ -84,12 +90,6 @@
       "request": [
         "Request: query parameter 'require_alias' does not exist in the json spec",
         "Request: missing json spec query parameter 'max_docs'"
-      ],
-      "response": []
-    },
-    "search": {
-      "request": [
-        "interface definition _types:RankContainer - Property rrf is a single-variant and must be required"
       ],
       "response": []
     },
