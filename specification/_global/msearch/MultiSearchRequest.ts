@@ -19,7 +19,7 @@
 
 import { RequestBase } from '@_types/Base'
 import { ExpandWildcards, Indices, Routing, SearchType } from '@_types/common'
-import { long } from '@_types/Numeric'
+import { integer, long } from '@_types/Numeric'
 import { RequestItem } from './types'
 
 /**
@@ -101,13 +101,14 @@ export interface Request extends RequestBase {
     include_named_queries_score?: boolean
     /**
      * Maximum number of concurrent searches the multi search API can execute.
+     * Defaults to `max(1, (# of data nodes * min(search thread pool size, 10)))`.
      */
-    max_concurrent_searches?: long
+    max_concurrent_searches?: integer
     /**
      * Maximum number of concurrent shard requests that each sub-search request executes per node.
      * @server_default 5
      */
-    max_concurrent_shard_requests?: long
+    max_concurrent_shard_requests?: integer
     /**
      * Defines a threshold that enforces a pre-filter roundtrip to prefilter search shards based on query rewriting if the number of shards the search request expands to exceeds the threshold. This filter roundtrip can limit the number of shards significantly if for instance a shard can not match any documents based on its rewrite method i.e., if date filters are mandatory to match but the shard bounds and the query are disjoint.
      */
