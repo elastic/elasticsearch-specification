@@ -295,7 +295,7 @@ export class DateRangeAggregation extends BucketAggregationBase {
   /**
    * Array of date ranges.
    */
-  ranges?: DateRangeExpression[]
+  ranges?: DateAggregationRange[]
   /**
    * Time zone used to convert dates from another time zone to UTC.
    */
@@ -306,33 +306,6 @@ export class DateRangeAggregation extends BucketAggregationBase {
   keyed?: boolean
 }
 
-/**
- * A date range limit, represented either as a DateMath expression or a number expressed
- * according to the target field's precision.
- *
- * @codegen_names expr, value
- */
-// ES: DateRangeAggregationBuilder.innerBuild()
-export type FieldDateMath = DateMath | double
-
-export class DateRangeExpression {
-  /**
-   * Start of the range (inclusive).
-   */
-  from?: FieldDateMath
-  /**
-   * Custom key to return the range with.
-   */
-  key?: string
-  /**
-   * End of the range (exclusive).
-   */
-  to?: FieldDateMath
-}
-
-/**
- * @ext_doc_id search-aggregations-bucket-diversified-sampler-aggregation
- */
 export class DiversifiedSamplerAggregation extends BucketAggregationBase {
   /**
    * The type of value used for de-duplication.
@@ -688,11 +661,21 @@ export class RangeAggregation extends BucketAggregationBase {
   format?: string
 }
 
-export class AggregationRange {
+/**
+ * @codegen_names untyped, date, number, term
+ * @variants untagged untyped=_types.aggregations.UntypedAggregationRange
+ */
+export type AggregationRange =
+  | UntypedAggregationRange
+  | DateAggregationRange
+  | NumberAggregationRange
+  | TermAggregationRange
+
+export class AggregationRangeBase<T> {
   /**
    * Start of the range (inclusive).
    */
-  from?: double | null
+  from?: T
   /**
    * Custom key to return the range with.
    */
@@ -700,12 +683,26 @@ export class AggregationRange {
   /**
    * End of the range (exclusive).
    */
-  to?: double | null
+  to?: T
 }
 
+export class NumberAggregationRange extends AggregationRangeBase<double> {}
+
+export class TermAggregationRange extends AggregationRangeBase<string> {}
+
+export class UntypedAggregationRange extends AggregationRangeBase<UserDefinedValue> {}
+
+export class DateAggregationRange extends AggregationRangeBase<FieldDateMath> {}
+
 /**
- * @ext_doc_id search-aggregations-bucket-rare-terms-aggregation
+ * A date range limit, represented either as a DateMath expression or a number expressed
+ * according to the target field's precision.
+ *
+ * @codegen_names expr, value
  */
+// ES: DateRangeAggregationBuilder.innerBuild()
+export type FieldDateMath = DateMath | double
+
 export class RareTermsAggregation extends BucketAggregationBase {
   /**
    * Terms that should be excluded from the aggregation.
