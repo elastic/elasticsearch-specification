@@ -9273,10 +9273,11 @@
           "content": {
             "application/json": {
               "schema": {
-                "type": "object"
+                "$ref": "#/components/schemas/inference._types:RequestChatCompletionBase"
               }
             }
-          }
+          },
+          "required": true
         },
         "responses": {
           "200": {
@@ -9564,10 +9565,11 @@
           "content": {
             "application/json": {
               "schema": {
-                "type": "object"
+                "$ref": "#/components/schemas/inference._types:RequestChatCompletionBase"
               }
             }
-          }
+          },
+          "required": true
         },
         "responses": {
           "200": {
@@ -9600,7 +9602,7 @@
             "required": true,
             "deprecated": false,
             "schema": {
-              "$ref": "#/components/schemas/inference.put_alibabacloud:AlibabaCloudTaskType"
+              "$ref": "#/components/schemas/inference._types:AlibabaCloudTaskType"
             },
             "style": "simple"
           },
@@ -9626,13 +9628,13 @@
                     "$ref": "#/components/schemas/inference._types:InferenceChunkingSettings"
                   },
                   "service": {
-                    "$ref": "#/components/schemas/inference.put_alibabacloud:ServiceType"
+                    "$ref": "#/components/schemas/inference._types:AlibabaCloudServiceType"
                   },
                   "service_settings": {
-                    "$ref": "#/components/schemas/inference.put_alibabacloud:AlibabaCloudServiceSettings"
+                    "$ref": "#/components/schemas/inference._types:AlibabaCloudServiceSettings"
                   },
                   "task_settings": {
-                    "$ref": "#/components/schemas/inference.put_alibabacloud:AlibabaCloudTaskSettings"
+                    "$ref": "#/components/schemas/inference._types:AlibabaCloudTaskSettings"
                   }
                 },
                 "required": [
@@ -9696,7 +9698,7 @@
             "required": true,
             "deprecated": false,
             "schema": {
-              "$ref": "#/components/schemas/inference.put_amazonbedrock:AmazonBedrockTaskType"
+              "$ref": "#/components/schemas/inference._types:AmazonBedrockTaskType"
             },
             "style": "simple"
           },
@@ -9722,13 +9724,13 @@
                     "$ref": "#/components/schemas/inference._types:InferenceChunkingSettings"
                   },
                   "service": {
-                    "$ref": "#/components/schemas/inference.put_amazonbedrock:ServiceType"
+                    "$ref": "#/components/schemas/inference._types:AmazonBedrockServiceType"
                   },
                   "service_settings": {
-                    "$ref": "#/components/schemas/inference.put_amazonbedrock:AmazonBedrockServiceSettings"
+                    "$ref": "#/components/schemas/inference._types:AmazonBedrockServiceSettings"
                   },
                   "task_settings": {
-                    "$ref": "#/components/schemas/inference.put_amazonbedrock:AmazonBedrockTaskSettings"
+                    "$ref": "#/components/schemas/inference._types:AmazonBedrockTaskSettings"
                   }
                 },
                 "required": [
@@ -9782,7 +9784,7 @@
             "required": true,
             "deprecated": false,
             "schema": {
-              "$ref": "#/components/schemas/inference.put_anthropic:AnthropicTaskType"
+              "$ref": "#/components/schemas/inference._types:AnthropicTaskType"
             },
             "style": "simple"
           },
@@ -9808,13 +9810,13 @@
                     "$ref": "#/components/schemas/inference._types:InferenceChunkingSettings"
                   },
                   "service": {
-                    "$ref": "#/components/schemas/inference.put_anthropic:ServiceType"
+                    "$ref": "#/components/schemas/inference._types:AnthropicServiceType"
                   },
                   "service_settings": {
-                    "$ref": "#/components/schemas/inference.put_anthropic:AnthropicServiceSettings"
+                    "$ref": "#/components/schemas/inference._types:AnthropicServiceSettings"
                   },
                   "task_settings": {
-                    "$ref": "#/components/schemas/inference.put_anthropic:AnthropicTaskSettings"
+                    "$ref": "#/components/schemas/inference._types:AnthropicTaskSettings"
                   }
                 },
                 "required": [
@@ -9862,7 +9864,7 @@
             "required": true,
             "deprecated": false,
             "schema": {
-              "$ref": "#/components/schemas/inference.put_azureaistudio:AzureAiStudioTaskType"
+              "$ref": "#/components/schemas/inference._types:AzureAiStudioTaskType"
             },
             "style": "simple"
           },
@@ -9888,13 +9890,13 @@
                     "$ref": "#/components/schemas/inference._types:InferenceChunkingSettings"
                   },
                   "service": {
-                    "$ref": "#/components/schemas/inference.put_azureaistudio:ServiceType"
+                    "$ref": "#/components/schemas/inference._types:AzureAiStudioServiceType"
                   },
                   "service_settings": {
-                    "$ref": "#/components/schemas/inference.put_azureaistudio:AzureAiStudioServiceSettings"
+                    "$ref": "#/components/schemas/inference._types:AzureAiStudioServiceSettings"
                   },
                   "task_settings": {
-                    "$ref": "#/components/schemas/inference.put_azureaistudio:AzureAiStudioTaskSettings"
+                    "$ref": "#/components/schemas/inference._types:AzureAiStudioTaskSettings"
                   }
                 },
                 "required": [
@@ -9948,7 +9950,7 @@
             "required": true,
             "deprecated": false,
             "schema": {
-              "$ref": "#/components/schemas/inference.put_azureopenai:AzureOpenAITaskType"
+              "$ref": "#/components/schemas/inference._types:AzureOpenAITaskType"
             },
             "style": "simple"
           },
@@ -9974,13 +9976,13 @@
                     "$ref": "#/components/schemas/inference._types:InferenceChunkingSettings"
                   },
                   "service": {
-                    "$ref": "#/components/schemas/inference.put_azureopenai:ServiceType"
+                    "$ref": "#/components/schemas/inference._types:AzureOpenAIServiceType"
                   },
                   "service_settings": {
-                    "$ref": "#/components/schemas/inference.put_azureopenai:AzureOpenAIServiceSettings"
+                    "$ref": "#/components/schemas/inference._types:AzureOpenAIServiceSettings"
                   },
                   "task_settings": {
-                    "$ref": "#/components/schemas/inference.put_azureopenai:AzureOpenAITaskSettings"
+                    "$ref": "#/components/schemas/inference._types:AzureOpenAITaskSettings"
                   }
                 },
                 "required": [
@@ -10034,7 +10036,7 @@
             "required": true,
             "deprecated": false,
             "schema": {
-              "$ref": "#/components/schemas/inference.put_cohere:CohereTaskType"
+              "$ref": "#/components/schemas/inference._types:CohereTaskType"
             },
             "style": "simple"
           },
@@ -10060,13 +10062,13 @@
                     "$ref": "#/components/schemas/inference._types:InferenceChunkingSettings"
                   },
                   "service": {
-                    "$ref": "#/components/schemas/inference.put_cohere:ServiceType"
+                    "$ref": "#/components/schemas/inference._types:CohereServiceType"
                   },
                   "service_settings": {
-                    "$ref": "#/components/schemas/inference.put_cohere:CohereServiceSettings"
+                    "$ref": "#/components/schemas/inference._types:CohereServiceSettings"
                   },
                   "task_settings": {
-                    "$ref": "#/components/schemas/inference.put_cohere:CohereTaskSettings"
+                    "$ref": "#/components/schemas/inference._types:CohereTaskSettings"
                   }
                 },
                 "required": [
@@ -10120,7 +10122,7 @@
             "required": true,
             "deprecated": false,
             "schema": {
-              "$ref": "#/components/schemas/inference.put_eis:EisTaskType"
+              "$ref": "#/components/schemas/inference._types:EisTaskType"
             },
             "style": "simple"
           },
@@ -10143,10 +10145,10 @@
                 "type": "object",
                 "properties": {
                   "service": {
-                    "$ref": "#/components/schemas/inference.put_eis:ServiceType"
+                    "$ref": "#/components/schemas/inference._types:EisServiceType"
                   },
                   "service_settings": {
-                    "$ref": "#/components/schemas/inference.put_eis:EisServiceSettings"
+                    "$ref": "#/components/schemas/inference._types:EisServiceSettings"
                   }
                 },
                 "required": [
@@ -10188,7 +10190,7 @@
             "required": true,
             "deprecated": false,
             "schema": {
-              "$ref": "#/components/schemas/inference.put_elasticsearch:ElasticsearchTaskType"
+              "$ref": "#/components/schemas/inference._types:ElasticsearchTaskType"
             },
             "style": "simple"
           },
@@ -10214,13 +10216,13 @@
                     "$ref": "#/components/schemas/inference._types:InferenceChunkingSettings"
                   },
                   "service": {
-                    "$ref": "#/components/schemas/inference.put_elasticsearch:ServiceType"
+                    "$ref": "#/components/schemas/inference._types:ElasticsearchServiceType"
                   },
                   "service_settings": {
-                    "$ref": "#/components/schemas/inference.put_elasticsearch:ElasticsearchServiceSettings"
+                    "$ref": "#/components/schemas/inference._types:ElasticsearchServiceSettings"
                   },
                   "task_settings": {
-                    "$ref": "#/components/schemas/inference.put_elasticsearch:ElasticsearchTaskSettings"
+                    "$ref": "#/components/schemas/inference._types:ElasticsearchTaskSettings"
                   }
                 },
                 "required": [
@@ -10300,7 +10302,7 @@
             "required": true,
             "deprecated": false,
             "schema": {
-              "$ref": "#/components/schemas/inference.put_elser:ElserTaskType"
+              "$ref": "#/components/schemas/inference._types:ElserTaskType"
             },
             "style": "simple"
           },
@@ -10326,10 +10328,10 @@
                     "$ref": "#/components/schemas/inference._types:InferenceChunkingSettings"
                   },
                   "service": {
-                    "$ref": "#/components/schemas/inference.put_elser:ServiceType"
+                    "$ref": "#/components/schemas/inference._types:ElserServiceType"
                   },
                   "service_settings": {
-                    "$ref": "#/components/schemas/inference.put_elser:ElserServiceSettings"
+                    "$ref": "#/components/schemas/inference._types:ElserServiceSettings"
                   }
                 },
                 "required": [
@@ -10390,7 +10392,7 @@
             "required": true,
             "deprecated": false,
             "schema": {
-              "$ref": "#/components/schemas/inference.put_googleaistudio:GoogleAiStudioTaskType"
+              "$ref": "#/components/schemas/inference._types:GoogleAiStudioTaskType"
             },
             "style": "simple"
           },
@@ -10416,10 +10418,10 @@
                     "$ref": "#/components/schemas/inference._types:InferenceChunkingSettings"
                   },
                   "service": {
-                    "$ref": "#/components/schemas/inference.put_googleaistudio:ServiceType"
+                    "$ref": "#/components/schemas/inference._types:GoogleAiServiceType"
                   },
                   "service_settings": {
-                    "$ref": "#/components/schemas/inference.put_googleaistudio:GoogleAiStudioServiceSettings"
+                    "$ref": "#/components/schemas/inference._types:GoogleAiStudioServiceSettings"
                   }
                 },
                 "required": [
@@ -10468,7 +10470,7 @@
             "required": true,
             "deprecated": false,
             "schema": {
-              "$ref": "#/components/schemas/inference.put_googlevertexai:GoogleVertexAITaskType"
+              "$ref": "#/components/schemas/inference._types:GoogleVertexAITaskType"
             },
             "style": "simple"
           },
@@ -10494,13 +10496,13 @@
                     "$ref": "#/components/schemas/inference._types:InferenceChunkingSettings"
                   },
                   "service": {
-                    "$ref": "#/components/schemas/inference.put_googlevertexai:ServiceType"
+                    "$ref": "#/components/schemas/inference._types:GoogleVertexAIServiceType"
                   },
                   "service_settings": {
-                    "$ref": "#/components/schemas/inference.put_googlevertexai:GoogleVertexAIServiceSettings"
+                    "$ref": "#/components/schemas/inference._types:GoogleVertexAIServiceSettings"
                   },
                   "task_settings": {
-                    "$ref": "#/components/schemas/inference.put_googlevertexai:GoogleVertexAITaskSettings"
+                    "$ref": "#/components/schemas/inference._types:GoogleVertexAITaskSettings"
                   }
                 },
                 "required": [
@@ -10554,7 +10556,7 @@
             "required": true,
             "deprecated": false,
             "schema": {
-              "$ref": "#/components/schemas/inference.put_hugging_face:HuggingFaceTaskType"
+              "$ref": "#/components/schemas/inference._types:HuggingFaceTaskType"
             },
             "style": "simple"
           },
@@ -10580,10 +10582,10 @@
                     "$ref": "#/components/schemas/inference._types:InferenceChunkingSettings"
                   },
                   "service": {
-                    "$ref": "#/components/schemas/inference.put_hugging_face:ServiceType"
+                    "$ref": "#/components/schemas/inference._types:HuggingFaceServiceType"
                   },
                   "service_settings": {
-                    "$ref": "#/components/schemas/inference.put_hugging_face:HuggingFaceServiceSettings"
+                    "$ref": "#/components/schemas/inference._types:HuggingFaceServiceSettings"
                   }
                 },
                 "required": [
@@ -10632,7 +10634,7 @@
             "required": true,
             "deprecated": false,
             "schema": {
-              "$ref": "#/components/schemas/inference.put_jinaai:JinaAITaskType"
+              "$ref": "#/components/schemas/inference._types:JinaAITaskType"
             },
             "style": "simple"
           },
@@ -10658,13 +10660,13 @@
                     "$ref": "#/components/schemas/inference._types:InferenceChunkingSettings"
                   },
                   "service": {
-                    "$ref": "#/components/schemas/inference.put_jinaai:ServiceType"
+                    "$ref": "#/components/schemas/inference._types:JinaAIServiceType"
                   },
                   "service_settings": {
-                    "$ref": "#/components/schemas/inference.put_jinaai:JinaAIServiceSettings"
+                    "$ref": "#/components/schemas/inference._types:JinaAIServiceSettings"
                   },
                   "task_settings": {
-                    "$ref": "#/components/schemas/inference.put_jinaai:JinaAITaskSettings"
+                    "$ref": "#/components/schemas/inference._types:JinaAITaskSettings"
                   }
                 },
                 "required": [
@@ -10718,7 +10720,7 @@
             "required": true,
             "deprecated": false,
             "schema": {
-              "$ref": "#/components/schemas/inference.put_mistral:MistralTaskType"
+              "$ref": "#/components/schemas/inference._types:MistralTaskType"
             },
             "style": "simple"
           },
@@ -10744,10 +10746,10 @@
                     "$ref": "#/components/schemas/inference._types:InferenceChunkingSettings"
                   },
                   "service": {
-                    "$ref": "#/components/schemas/inference.put_mistral:ServiceType"
+                    "$ref": "#/components/schemas/inference._types:MistralServiceType"
                   },
                   "service_settings": {
-                    "$ref": "#/components/schemas/inference.put_mistral:MistralServiceSettings"
+                    "$ref": "#/components/schemas/inference._types:MistralServiceSettings"
                   }
                 },
                 "required": [
@@ -10795,7 +10797,7 @@
             "required": true,
             "deprecated": false,
             "schema": {
-              "$ref": "#/components/schemas/inference.put_openai:OpenAITaskType"
+              "$ref": "#/components/schemas/inference._types:OpenAITaskType"
             },
             "style": "simple"
           },
@@ -10821,13 +10823,13 @@
                     "$ref": "#/components/schemas/inference._types:InferenceChunkingSettings"
                   },
                   "service": {
-                    "$ref": "#/components/schemas/inference.put_openai:ServiceType"
+                    "$ref": "#/components/schemas/inference._types:OpenAIServiceType"
                   },
                   "service_settings": {
-                    "$ref": "#/components/schemas/inference.put_openai:OpenAIServiceSettings"
+                    "$ref": "#/components/schemas/inference._types:OpenAIServiceSettings"
                   },
                   "task_settings": {
-                    "$ref": "#/components/schemas/inference.put_openai:OpenAITaskSettings"
+                    "$ref": "#/components/schemas/inference._types:OpenAITaskSettings"
                   }
                 },
                 "required": [
@@ -10881,7 +10883,7 @@
             "required": true,
             "deprecated": false,
             "schema": {
-              "$ref": "#/components/schemas/inference.put_voyageai:VoyageAITaskType"
+              "$ref": "#/components/schemas/inference._types:VoyageAITaskType"
             },
             "style": "simple"
           },
@@ -10907,13 +10909,13 @@
                     "$ref": "#/components/schemas/inference._types:InferenceChunkingSettings"
                   },
                   "service": {
-                    "$ref": "#/components/schemas/inference.put_voyageai:ServiceType"
+                    "$ref": "#/components/schemas/inference._types:VoyageAIServiceType"
                   },
                   "service_settings": {
-                    "$ref": "#/components/schemas/inference.put_voyageai:VoyageAIServiceSettings"
+                    "$ref": "#/components/schemas/inference._types:VoyageAIServiceSettings"
                   },
                   "task_settings": {
-                    "$ref": "#/components/schemas/inference.put_voyageai:VoyageAITaskSettings"
+                    "$ref": "#/components/schemas/inference._types:VoyageAITaskSettings"
                   }
                 },
                 "required": [
@@ -10967,7 +10969,7 @@
             "required": true,
             "deprecated": false,
             "schema": {
-              "$ref": "#/components/schemas/inference.put_watsonx:WatsonxTaskType"
+              "$ref": "#/components/schemas/inference._types:WatsonxTaskType"
             },
             "style": "simple"
           },
@@ -10990,10 +10992,10 @@
                 "type": "object",
                 "properties": {
                   "service": {
-                    "$ref": "#/components/schemas/inference.put_watsonx:ServiceType"
+                    "$ref": "#/components/schemas/inference._types:WatsonxServiceType"
                   },
                   "service_settings": {
-                    "$ref": "#/components/schemas/inference.put_watsonx:WatsonxServiceSettings"
+                    "$ref": "#/components/schemas/inference._types:WatsonxServiceSettings"
                   }
                 },
                 "required": [
@@ -49183,6 +49185,234 @@
           "valid"
         ]
       },
+      "inference._types:RequestChatCompletionBase": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/_types:RequestBase"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "messages": {
+                "description": "A list of objects representing the conversation.",
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/inference._types:Message"
+                }
+              },
+              "model": {
+                "description": "The ID of the model to use.",
+                "type": "string"
+              },
+              "max_completion_tokens": {
+                "description": "The upper bound limit for the number of tokens that can be generated for a completion request.",
+                "type": "number"
+              },
+              "stop": {
+                "description": "A sequence of strings to control when the model should stop generating additional tokens.",
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "temperature": {
+                "description": "The sampling temperature to use.",
+                "type": "number"
+              },
+              "tool_choice": {
+                "$ref": "#/components/schemas/inference._types:CompletionToolType"
+              },
+              "tools": {
+                "description": "A list of tools that the model can call.",
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/inference._types:CompletionTool"
+                }
+              },
+              "top_p": {
+                "description": "Nucleus sampling, an alternative to sampling with temperature.",
+                "type": "number"
+              }
+            },
+            "required": [
+              "messages"
+            ]
+          }
+        ]
+      },
+      "inference._types:Message": {
+        "type": "object",
+        "properties": {
+          "content": {
+            "$ref": "#/components/schemas/inference._types:MessageContent"
+          },
+          "role": {
+            "description": "The role of the message author.",
+            "type": "string"
+          },
+          "tool_call_id": {
+            "$ref": "#/components/schemas/_types:Id"
+          },
+          "tool_calls": {
+            "description": "The tool calls generated by the model.",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/inference._types:ToolCall"
+            }
+          }
+        },
+        "required": [
+          "role"
+        ]
+      },
+      "inference._types:MessageContent": {
+        "oneOf": [
+          {
+            "type": "string"
+          },
+          {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/inference._types:ContentObject"
+            }
+          }
+        ]
+      },
+      "inference._types:ContentObject": {
+        "type": "object",
+        "properties": {
+          "text": {
+            "description": "The text content.",
+            "type": "string"
+          },
+          "type": {
+            "description": "The type of content.",
+            "type": "string"
+          }
+        },
+        "required": [
+          "text",
+          "type"
+        ]
+      },
+      "inference._types:ToolCall": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "$ref": "#/components/schemas/_types:Id"
+          },
+          "function": {
+            "$ref": "#/components/schemas/inference._types:ToolCallFunction"
+          },
+          "type": {
+            "description": "The type of the tool call.",
+            "type": "string"
+          }
+        },
+        "required": [
+          "id",
+          "function",
+          "type"
+        ]
+      },
+      "inference._types:ToolCallFunction": {
+        "type": "object",
+        "properties": {
+          "arguments": {
+            "description": "The arguments to call the function with in JSON format.",
+            "type": "string"
+          },
+          "name": {
+            "description": "The name of the function to call.",
+            "type": "string"
+          }
+        },
+        "required": [
+          "arguments",
+          "name"
+        ]
+      },
+      "inference._types:CompletionToolType": {
+        "oneOf": [
+          {
+            "type": "string"
+          },
+          {
+            "$ref": "#/components/schemas/inference._types:CompletionToolChoice"
+          }
+        ]
+      },
+      "inference._types:CompletionToolChoice": {
+        "type": "object",
+        "properties": {
+          "type": {
+            "description": "The type of the tool.",
+            "type": "string"
+          },
+          "function": {
+            "$ref": "#/components/schemas/inference._types:CompletionToolChoiceFunction"
+          }
+        },
+        "required": [
+          "type",
+          "function"
+        ]
+      },
+      "inference._types:CompletionToolChoiceFunction": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "description": "The name of the function to call.",
+            "type": "string"
+          }
+        },
+        "required": [
+          "name"
+        ]
+      },
+      "inference._types:CompletionTool": {
+        "type": "object",
+        "properties": {
+          "type": {
+            "description": "The type of tool.",
+            "type": "string"
+          },
+          "function": {
+            "$ref": "#/components/schemas/inference._types:CompletionToolFunction"
+          }
+        },
+        "required": [
+          "type",
+          "function"
+        ]
+      },
+      "inference._types:CompletionToolFunction": {
+        "type": "object",
+        "properties": {
+          "description": {
+            "description": "A description of what the function does.\nThis is used by the model to choose when and how to call the function.",
+            "type": "string"
+          },
+          "name": {
+            "description": "The name of the function.",
+            "type": "string"
+          },
+          "parameters": {
+            "description": "The parameters the functional accepts. This should be formatted as a JSON object.",
+            "type": "object"
+          },
+          "strict": {
+            "description": "Whether to enable schema adherence when generating the function call.",
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "name"
+        ]
+      },
+      "_types:RequestBase": {
+        "type": "object"
+      },
       "_types:StreamResult": {
         "type": "object"
       },
@@ -49314,7 +49544,7 @@
       "inference._types:ServiceSettings": {
         "type": "object"
       },
-      "inference.put_alibabacloud:AlibabaCloudTaskType": {
+      "inference._types:AlibabaCloudTaskType": {
         "type": "string",
         "enum": [
           "completion",
@@ -49323,13 +49553,13 @@
           "text_embedding"
         ]
       },
-      "inference.put_alibabacloud:ServiceType": {
+      "inference._types:AlibabaCloudServiceType": {
         "type": "string",
         "enum": [
           "alibabacloud-ai-search"
         ]
       },
-      "inference.put_alibabacloud:AlibabaCloudServiceSettings": {
+      "inference._types:AlibabaCloudServiceSettings": {
         "type": "object",
         "properties": {
           "api_key": {
@@ -49371,7 +49601,7 @@
           }
         }
       },
-      "inference.put_alibabacloud:AlibabaCloudTaskSettings": {
+      "inference._types:AlibabaCloudTaskSettings": {
         "type": "object",
         "properties": {
           "input_type": {
@@ -49384,20 +49614,20 @@
           }
         }
       },
-      "inference.put_amazonbedrock:AmazonBedrockTaskType": {
+      "inference._types:AmazonBedrockTaskType": {
         "type": "string",
         "enum": [
           "completion",
           "text_embedding"
         ]
       },
-      "inference.put_amazonbedrock:ServiceType": {
+      "inference._types:AmazonBedrockServiceType": {
         "type": "string",
         "enum": [
           "amazonbedrock"
         ]
       },
-      "inference.put_amazonbedrock:AmazonBedrockServiceSettings": {
+      "inference._types:AmazonBedrockServiceSettings": {
         "type": "object",
         "properties": {
           "access_key": {
@@ -49440,7 +49670,7 @@
           "secret_key"
         ]
       },
-      "inference.put_amazonbedrock:AmazonBedrockTaskSettings": {
+      "inference._types:AmazonBedrockTaskSettings": {
         "type": "object",
         "properties": {
           "max_new_tokens": {
@@ -49461,19 +49691,19 @@
           }
         }
       },
-      "inference.put_anthropic:AnthropicTaskType": {
+      "inference._types:AnthropicTaskType": {
         "type": "string",
         "enum": [
           "completion"
         ]
       },
-      "inference.put_anthropic:ServiceType": {
+      "inference._types:AnthropicServiceType": {
         "type": "string",
         "enum": [
           "anthropic"
         ]
       },
-      "inference.put_anthropic:AnthropicServiceSettings": {
+      "inference._types:AnthropicServiceSettings": {
         "type": "object",
         "properties": {
           "api_key": {
@@ -49493,7 +49723,7 @@
           "model_id"
         ]
       },
-      "inference.put_anthropic:AnthropicTaskSettings": {
+      "inference._types:AnthropicTaskSettings": {
         "type": "object",
         "properties": {
           "max_tokens": {
@@ -49520,20 +49750,20 @@
           "max_tokens"
         ]
       },
-      "inference.put_azureaistudio:AzureAiStudioTaskType": {
+      "inference._types:AzureAiStudioTaskType": {
         "type": "string",
         "enum": [
           "completion",
           "text_embedding"
         ]
       },
-      "inference.put_azureaistudio:ServiceType": {
+      "inference._types:AzureAiStudioServiceType": {
         "type": "string",
         "enum": [
           "azureaistudio"
         ]
       },
-      "inference.put_azureaistudio:AzureAiStudioServiceSettings": {
+      "inference._types:AzureAiStudioServiceSettings": {
         "type": "object",
         "properties": {
           "api_key": {
@@ -49569,7 +49799,7 @@
           "provider"
         ]
       },
-      "inference.put_azureaistudio:AzureAiStudioTaskSettings": {
+      "inference._types:AzureAiStudioTaskSettings": {
         "type": "object",
         "properties": {
           "do_sample": {
@@ -49594,20 +49824,20 @@
           }
         }
       },
-      "inference.put_azureopenai:AzureOpenAITaskType": {
+      "inference._types:AzureOpenAITaskType": {
         "type": "string",
         "enum": [
           "completion",
           "text_embedding"
         ]
       },
-      "inference.put_azureopenai:ServiceType": {
+      "inference._types:AzureOpenAIServiceType": {
         "type": "string",
         "enum": [
           "azureopenai"
         ]
       },
-      "inference.put_azureopenai:AzureOpenAIServiceSettings": {
+      "inference._types:AzureOpenAIServiceSettings": {
         "type": "object",
         "properties": {
           "api_key": {
@@ -49652,7 +49882,7 @@
           "resource_name"
         ]
       },
-      "inference.put_azureopenai:AzureOpenAITaskSettings": {
+      "inference._types:AzureOpenAITaskSettings": {
         "type": "object",
         "properties": {
           "user": {
@@ -49661,7 +49891,7 @@
           }
         }
       },
-      "inference.put_cohere:CohereTaskType": {
+      "inference._types:CohereTaskType": {
         "type": "string",
         "enum": [
           "completion",
@@ -49669,13 +49899,13 @@
           "text_embedding"
         ]
       },
-      "inference.put_cohere:ServiceType": {
+      "inference._types:CohereServiceType": {
         "type": "string",
         "enum": [
           "cohere"
         ]
       },
-      "inference.put_cohere:CohereServiceSettings": {
+      "inference._types:CohereServiceSettings": {
         "type": "object",
         "properties": {
           "api_key": {
@@ -49686,7 +49916,7 @@
             "type": "string"
           },
           "embedding_type": {
-            "$ref": "#/components/schemas/inference.put_cohere:EmbeddingType"
+            "$ref": "#/components/schemas/inference._types:CohereEmbeddingType"
           },
           "model_id": {
             "description": "For a `completion`, `rerank`, or `text_embedding` task, the name of the model to use for the inference task.\n\n* For the available `completion` models, refer to the [Cohere command docs](https://docs.cohere.com/docs/models#command).\n* For the available `rerank` models, refer to the [Cohere rerank docs](https://docs.cohere.com/reference/rerank-1).\n* For the available `text_embedding` models, refer to [Cohere embed docs](https://docs.cohere.com/reference/embed).\n\nThe default value for a text embedding task is `embed-english-v2.0`.",
@@ -49696,14 +49926,14 @@
             "$ref": "#/components/schemas/inference._types:RateLimitSetting"
           },
           "similarity": {
-            "$ref": "#/components/schemas/inference.put_cohere:SimilarityType"
+            "$ref": "#/components/schemas/inference._types:CohereSimilarityType"
           }
         },
         "required": [
           "api_key"
         ]
       },
-      "inference.put_cohere:EmbeddingType": {
+      "inference._types:CohereEmbeddingType": {
         "type": "string",
         "enum": [
           "byte",
@@ -49711,7 +49941,7 @@
           "int8"
         ]
       },
-      "inference.put_cohere:SimilarityType": {
+      "inference._types:CohereSimilarityType": {
         "type": "string",
         "enum": [
           "cosine",
@@ -49719,11 +49949,11 @@
           "l2_norm"
         ]
       },
-      "inference.put_cohere:CohereTaskSettings": {
+      "inference._types:CohereTaskSettings": {
         "type": "object",
         "properties": {
           "input_type": {
-            "$ref": "#/components/schemas/inference.put_cohere:InputType"
+            "$ref": "#/components/schemas/inference._types:CohereInputType"
           },
           "return_documents": {
             "description": "For a `rerank` task, return doc text within the results.",
@@ -49734,11 +49964,11 @@
             "type": "number"
           },
           "truncate": {
-            "$ref": "#/components/schemas/inference.put_cohere:TruncateType"
+            "$ref": "#/components/schemas/inference._types:CohereTruncateType"
           }
         }
       },
-      "inference.put_cohere:InputType": {
+      "inference._types:CohereInputType": {
         "type": "string",
         "enum": [
           "classification",
@@ -49747,7 +49977,7 @@
           "search"
         ]
       },
-      "inference.put_cohere:TruncateType": {
+      "inference._types:CohereTruncateType": {
         "type": "string",
         "enum": [
           "END",
@@ -49755,19 +49985,19 @@
           "START"
         ]
       },
-      "inference.put_eis:EisTaskType": {
+      "inference._types:EisTaskType": {
         "type": "string",
         "enum": [
           "chat_completion"
         ]
       },
-      "inference.put_eis:ServiceType": {
+      "inference._types:EisServiceType": {
         "type": "string",
         "enum": [
           "elastic"
         ]
       },
-      "inference.put_eis:EisServiceSettings": {
+      "inference._types:EisServiceSettings": {
         "type": "object",
         "properties": {
           "model_id": {
@@ -49782,7 +50012,7 @@
           "model_id"
         ]
       },
-      "inference.put_elasticsearch:ElasticsearchTaskType": {
+      "inference._types:ElasticsearchTaskType": {
         "type": "string",
         "enum": [
           "rerank",
@@ -49790,13 +50020,13 @@
           "text_embedding"
         ]
       },
-      "inference.put_elasticsearch:ServiceType": {
+      "inference._types:ElasticsearchServiceType": {
         "type": "string",
         "enum": [
           "elasticsearch"
         ]
       },
-      "inference.put_elasticsearch:ElasticsearchServiceSettings": {
+      "inference._types:ElasticsearchServiceSettings": {
         "type": "object",
         "properties": {
           "adaptive_allocations": {
@@ -49844,7 +50074,7 @@
           }
         }
       },
-      "inference.put_elasticsearch:ElasticsearchTaskSettings": {
+      "inference._types:ElasticsearchTaskSettings": {
         "type": "object",
         "properties": {
           "return_documents": {
@@ -49853,19 +50083,19 @@
           }
         }
       },
-      "inference.put_elser:ElserTaskType": {
+      "inference._types:ElserTaskType": {
         "type": "string",
         "enum": [
           "sparse_embedding"
         ]
       },
-      "inference.put_elser:ServiceType": {
+      "inference._types:ElserServiceType": {
         "type": "string",
         "enum": [
           "elser"
         ]
       },
-      "inference.put_elser:ElserServiceSettings": {
+      "inference._types:ElserServiceSettings": {
         "type": "object",
         "properties": {
           "adaptive_allocations": {
@@ -49885,20 +50115,20 @@
           "num_threads"
         ]
       },
-      "inference.put_googleaistudio:GoogleAiStudioTaskType": {
+      "inference._types:GoogleAiStudioTaskType": {
         "type": "string",
         "enum": [
           "completion",
           "text_embedding"
         ]
       },
-      "inference.put_googleaistudio:ServiceType": {
+      "inference._types:GoogleAiServiceType": {
         "type": "string",
         "enum": [
           "googleaistudio"
         ]
       },
-      "inference.put_googleaistudio:GoogleAiStudioServiceSettings": {
+      "inference._types:GoogleAiStudioServiceSettings": {
         "type": "object",
         "properties": {
           "api_key": {
@@ -49921,20 +50151,20 @@
           "model_id"
         ]
       },
-      "inference.put_googlevertexai:GoogleVertexAITaskType": {
+      "inference._types:GoogleVertexAITaskType": {
         "type": "string",
         "enum": [
           "rerank",
           "text_embedding"
         ]
       },
-      "inference.put_googlevertexai:ServiceType": {
+      "inference._types:GoogleVertexAIServiceType": {
         "type": "string",
         "enum": [
           "googlevertexai"
         ]
       },
-      "inference.put_googlevertexai:GoogleVertexAIServiceSettings": {
+      "inference._types:GoogleVertexAIServiceSettings": {
         "type": "object",
         "properties": {
           "location": {
@@ -49970,7 +50200,7 @@
           "service_account_json"
         ]
       },
-      "inference.put_googlevertexai:GoogleVertexAITaskSettings": {
+      "inference._types:GoogleVertexAITaskSettings": {
         "type": "object",
         "properties": {
           "auto_truncate": {
@@ -49983,19 +50213,19 @@
           }
         }
       },
-      "inference.put_hugging_face:HuggingFaceTaskType": {
+      "inference._types:HuggingFaceTaskType": {
         "type": "string",
         "enum": [
           "text_embedding"
         ]
       },
-      "inference.put_hugging_face:ServiceType": {
+      "inference._types:HuggingFaceServiceType": {
         "type": "string",
         "enum": [
           "hugging_face"
         ]
       },
-      "inference.put_hugging_face:HuggingFaceServiceSettings": {
+      "inference._types:HuggingFaceServiceSettings": {
         "type": "object",
         "properties": {
           "api_key": {
@@ -50018,20 +50248,20 @@
           "url"
         ]
       },
-      "inference.put_jinaai:JinaAITaskType": {
+      "inference._types:JinaAITaskType": {
         "type": "string",
         "enum": [
           "rerank",
           "text_embedding"
         ]
       },
-      "inference.put_jinaai:ServiceType": {
+      "inference._types:JinaAIServiceType": {
         "type": "string",
         "enum": [
           "jinaai"
         ]
       },
-      "inference.put_jinaai:JinaAIServiceSettings": {
+      "inference._types:JinaAIServiceSettings": {
         "type": "object",
         "properties": {
           "api_key": {
@@ -50049,14 +50279,14 @@
             "$ref": "#/components/schemas/inference._types:RateLimitSetting"
           },
           "similarity": {
-            "$ref": "#/components/schemas/inference.put_jinaai:SimilarityType"
+            "$ref": "#/components/schemas/inference._types:JinaAISimilarityType"
           }
         },
         "required": [
           "api_key"
         ]
       },
-      "inference.put_jinaai:SimilarityType": {
+      "inference._types:JinaAISimilarityType": {
         "type": "string",
         "enum": [
           "cosine",
@@ -50064,7 +50294,7 @@
           "l2_norm"
         ]
       },
-      "inference.put_jinaai:JinaAITaskSettings": {
+      "inference._types:JinaAITaskSettings": {
         "type": "object",
         "properties": {
           "return_documents": {
@@ -50072,7 +50302,7 @@
             "type": "boolean"
           },
           "task": {
-            "$ref": "#/components/schemas/inference.put_jinaai:TextEmbeddingTask"
+            "$ref": "#/components/schemas/inference._types:JinaAITextEmbeddingTask"
           },
           "top_n": {
             "description": "For a `rerank` task, the number of most relevant documents to return.\nIt defaults to the number of the documents.\nIf this inference endpoint is used in a `text_similarity_reranker` retriever query and `top_n` is set, it must be greater than or equal to `rank_window_size` in the query.",
@@ -50080,7 +50310,7 @@
           }
         }
       },
-      "inference.put_jinaai:TextEmbeddingTask": {
+      "inference._types:JinaAITextEmbeddingTask": {
         "type": "string",
         "enum": [
           "classification",
@@ -50089,19 +50319,19 @@
           "search"
         ]
       },
-      "inference.put_mistral:MistralTaskType": {
+      "inference._types:MistralTaskType": {
         "type": "string",
         "enum": [
           "text_embedding"
         ]
       },
-      "inference.put_mistral:ServiceType": {
+      "inference._types:MistralServiceType": {
         "type": "string",
         "enum": [
           "mistral"
         ]
       },
-      "inference.put_mistral:MistralServiceSettings": {
+      "inference._types:MistralServiceSettings": {
         "type": "object",
         "properties": {
           "api_key": {
@@ -50131,7 +50361,7 @@
           "model"
         ]
       },
-      "inference.put_openai:OpenAITaskType": {
+      "inference._types:OpenAITaskType": {
         "type": "string",
         "enum": [
           "chat_completion",
@@ -50139,13 +50369,13 @@
           "text_embedding"
         ]
       },
-      "inference.put_openai:ServiceType": {
+      "inference._types:OpenAIServiceType": {
         "type": "string",
         "enum": [
           "openai"
         ]
       },
-      "inference.put_openai:OpenAIServiceSettings": {
+      "inference._types:OpenAIServiceSettings": {
         "type": "object",
         "properties": {
           "api_key": {
@@ -50183,7 +50413,7 @@
           "model_id"
         ]
       },
-      "inference.put_openai:OpenAITaskSettings": {
+      "inference._types:OpenAITaskSettings": {
         "type": "object",
         "properties": {
           "user": {
@@ -50192,20 +50422,20 @@
           }
         }
       },
-      "inference.put_voyageai:VoyageAITaskType": {
+      "inference._types:VoyageAITaskType": {
         "type": "string",
         "enum": [
           "text_embedding",
           "rerank"
         ]
       },
-      "inference.put_voyageai:ServiceType": {
+      "inference._types:VoyageAIServiceType": {
         "type": "string",
         "enum": [
           "voyageai"
         ]
       },
-      "inference.put_voyageai:VoyageAIServiceSettings": {
+      "inference._types:VoyageAIServiceSettings": {
         "type": "object",
         "properties": {
           "dimensions": {
@@ -50237,7 +50467,7 @@
           "model_id"
         ]
       },
-      "inference.put_voyageai:VoyageAITaskSettings": {
+      "inference._types:VoyageAITaskSettings": {
         "type": "object",
         "properties": {
           "input_type": {
@@ -50258,19 +50488,19 @@
           }
         }
       },
-      "inference.put_watsonx:WatsonxTaskType": {
+      "inference._types:WatsonxTaskType": {
         "type": "string",
         "enum": [
           "text_embedding"
         ]
       },
-      "inference.put_watsonx:ServiceType": {
+      "inference._types:WatsonxServiceType": {
         "type": "string",
         "enum": [
           "watsonxai"
         ]
       },
-      "inference.put_watsonx:WatsonxServiceSettings": {
+      "inference._types:WatsonxServiceSettings": {
         "type": "object",
         "properties": {
           "api_key": {

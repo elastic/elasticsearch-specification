@@ -17,7 +17,11 @@
  * under the License.
  */
 
-import { RateLimitSetting } from '@inference/_types/Services'
+import {
+  EisServiceSettings,
+  EisServiceType,
+  EisTaskType
+} from '@inference/_types/CommonTypes'
 import { RequestBase } from '@_types/Base'
 import { Id } from '@_types/common'
 
@@ -53,30 +57,10 @@ export interface Request extends RequestBase {
     /**
      * The type of service supported for the specified task type. In this case, `elastic`.
      */
-    service: ServiceType
+    service: EisServiceType
     /**
      * Settings used to install the inference model. These settings are specific to the `elastic` service.
      */
     service_settings: EisServiceSettings
   }
-}
-
-export enum EisTaskType {
-  chat_completion
-}
-
-export enum ServiceType {
-  elastic
-}
-
-export class EisServiceSettings {
-  /**
-   * The name of the model to use for the inference task.
-   */
-  model_id: string
-  /**
-   * This setting helps to minimize the number of rate limit errors returned.
-   * By default, the `elastic` service sets the number of requests allowed per minute to `240` in case of `chat_completion`.
-   */
-  rate_limit?: RateLimitSetting
 }
