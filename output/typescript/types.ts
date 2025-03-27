@@ -768,7 +768,7 @@ export interface MsearchMultisearchBody {
   knn?: KnnSearch | KnnSearch[]
   from?: integer
   highlight?: SearchHighlight
-  indices_boost?: Record<IndexName, double>[]
+  indices_boost?: Partial<Record<IndexName, double>>[]
   min_score?: double
   post_filter?: QueryDslQueryContainer
   profile?: boolean
@@ -1240,7 +1240,7 @@ export interface SearchRequest extends RequestBase {
     from?: integer
     highlight?: SearchHighlight
     track_total_hits?: SearchTrackHits
-    indices_boost?: Record<IndexName, double>[]
+    indices_boost?: Partial<Record<IndexName, double>>[]
     docvalue_fields?: (QueryDslFieldAndFormat | Field)[]
     knn?: KnnSearch | KnnSearch[]
     rank?: RankContainer
@@ -6858,7 +6858,7 @@ export interface AsyncSearchSubmitRequest extends RequestBase {
     from?: integer
     highlight?: SearchHighlight
     track_total_hits?: SearchTrackHits
-    indices_boost?: Record<IndexName, double>[]
+    indices_boost?: Partial<Record<IndexName, double>>[]
     docvalue_fields?: (QueryDslFieldAndFormat | Field)[]
     knn?: KnnSearch | KnnSearch[]
     min_score?: double
@@ -10761,7 +10761,7 @@ export interface FleetSearchRequest extends RequestBase {
     from?: integer
     highlight?: SearchHighlight
     track_total_hits?: SearchTrackHits
-    indices_boost?: Record<IndexName, double>[]
+    indices_boost?: Partial<Record<IndexName, double>>[]
     docvalue_fields?: (QueryDslFieldAndFormat | Field)[]
     min_score?: double
     post_filter?: QueryDslQueryContainer
