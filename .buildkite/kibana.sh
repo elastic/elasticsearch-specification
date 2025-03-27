@@ -24,6 +24,8 @@ pushd kibana
 echo "--- Checkout upgrade PR"
 git fetch origin pull/213375/head:es-9.0.0-alpha.4
 git checkout es-9.0.0-alpha.4
+git config --global user.email "clients-team@elastic.co"
+git config --global user.name "Clients CI"
 git am ../elasticsearch-specification/.buildkite/0001-Fix-require_alias-use.patch
 
 echo "--- Install Node.js and Yarn"
