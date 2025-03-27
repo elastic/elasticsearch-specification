@@ -17,6 +17,7 @@
  * under the License.
  */
 
+import { AdaptiveAllocations } from '@inference/_types/CommonTypes'
 import { InferenceChunkingSettings } from '@inference/_types/Services'
 import { RequestBase } from '@_types/Base'
 import { Id } from '@_types/common'
@@ -87,25 +88,6 @@ export enum ElserTaskType {
 
 export enum ServiceType {
   elser
-}
-
-export class AdaptiveAllocations {
-  /**
-   * Turn on `adaptive_allocations`.
-   * @server_default false
-   */
-  enabled?: boolean
-  /**
-   * The maximum number of allocations to scale to.
-   * If set, it must be greater than or equal to `min_number_of_allocations`.
-   */
-  max_number_of_allocations?: integer
-  /**
-   * The minimum number of allocations to scale to.
-   * If set, it must be greater than or equal to 0.
-   * If not defined, the deployment scales to 0.
-   */
-  min_number_of_allocations?: integer
 }
 
 export class ElserServiceSettings {
