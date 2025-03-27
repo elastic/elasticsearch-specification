@@ -21,6 +21,7 @@ import { Dictionary } from '@spec_utils/Dictionary'
 import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 import { RequestBase } from '@_types/Base'
 import { Id } from '@_types/common'
+import { ScriptSource } from '@_types/Scripting'
 
 /**
  * Render a search template.
@@ -71,6 +72,6 @@ export interface Request extends RequestBase {
      * These parameters also support Mustache variables.
      * If no `id` or `<templated-id>` is specified, this parameter is required.
      */
-    source?: string
+    source?: ScriptSource
   }
 }

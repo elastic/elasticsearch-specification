@@ -17,7 +17,12 @@
  * under the License.
  */
 
+import { FieldCollapse } from '@global/search/_types/FieldCollapse'
+import { Highlight } from '@global/search/_types/highlighting'
 import { TrackHits } from '@global/search/_types/hits'
+import { PointInTimeReference } from '@global/search/_types/PointInTimeReference'
+import { Rescore } from '@global/search/_types/rescoring'
+import { Suggester } from '@global/search/_types/suggester'
 import { Dictionary, SingleKeyDictionary } from '@spec_utils/Dictionary'
 import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 import { AggregationContainer } from '@_types/aggregations/AggregationContainer'
@@ -43,12 +48,7 @@ import { ScriptField } from '@_types/Scripting'
 import { SlicedScroll } from '@_types/SlicedScroll'
 import { Sort, SortResults } from '@_types/sort'
 import { Duration } from '@_types/Time'
-import { FieldCollapse } from './_types/FieldCollapse'
-import { Highlight } from './_types/highlighting'
-import { PointInTimeReference } from './_types/PointInTimeReference'
-import { Rescore } from './_types/rescoring'
 import { SourceConfig, SourceConfigParam } from './_types/SourceFilter'
-import { Suggester } from './_types/suggester'
 
 /**
  * Run a search.
@@ -383,7 +383,7 @@ export interface Request extends RequestBase {
      */
     force_synthetic_source?: boolean
   }
-  // We should keep this in sync with the multi search request body.
+  // Keep this in sync with global/search/_types/SearchRequestBody.ts
   body: {
     /**
      * Defines the aggregations that are run as part of the search request.

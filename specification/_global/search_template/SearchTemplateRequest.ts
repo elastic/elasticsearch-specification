@@ -27,6 +27,7 @@ import {
   Routing,
   SearchType
 } from '@_types/common'
+import { ScriptSource } from '@_types/Scripting'
 import { Duration } from '@_types/Time'
 
 /**
@@ -148,6 +149,6 @@ export interface Request extends RequestBase {
      * request body. It also supports Mustache variables. If no `id` is specified, this
      * parameter is required.
      */
-    source?: string
+    source?: ScriptSource
   }
 }
