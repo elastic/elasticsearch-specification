@@ -13064,6 +13064,12 @@ export interface IndicesValidateQueryResponse {
   error?: string
 }
 
+export interface InferenceAdaptiveAllocations {
+  enabled?: boolean
+  max_number_of_allocations?: integer
+  min_number_of_allocations?: integer
+}
+
 export interface InferenceCompletionInferenceResult {
   completion: InferenceCompletionResult[]
 }
@@ -13468,14 +13474,8 @@ export type InferencePutEisResponse = InferenceInferenceEndpointInfo
 
 export type InferencePutEisServiceType = 'elastic'
 
-export interface InferencePutElasticsearchAdaptiveAllocations {
-  enabled?: boolean
-  max_number_of_allocations?: integer
-  min_number_of_allocations?: integer
-}
-
 export interface InferencePutElasticsearchElasticsearchServiceSettings {
-  adaptive_allocations?: InferencePutElasticsearchAdaptiveAllocations
+  adaptive_allocations?: InferenceAdaptiveAllocations
   deployment_id?: string
   model_id: string
   num_allocations?: integer
@@ -13503,14 +13503,8 @@ export type InferencePutElasticsearchResponse = InferenceInferenceEndpointInfo
 
 export type InferencePutElasticsearchServiceType = 'elasticsearch'
 
-export interface InferencePutElserAdaptiveAllocations {
-  enabled?: boolean
-  max_number_of_allocations?: integer
-  min_number_of_allocations?: integer
-}
-
 export interface InferencePutElserElserServiceSettings {
-  adaptive_allocations?: InferencePutElserAdaptiveAllocations
+  adaptive_allocations?: InferenceAdaptiveAllocations
   num_allocations: integer
   num_threads: integer
 }
