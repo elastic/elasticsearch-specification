@@ -3174,31 +3174,12 @@ export interface AggregationsAggregationContainer {
   variable_width_histogram?: AggregationsVariableWidthHistogramAggregation
 }
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-export interface AggregationsAggregationRange {
-  from?: double | null
-  key?: string
-  to?: double | null
-=======
-export type AggregationsAggregationRange = AggregationsUntypedAggregationRange | AggregationsNumberAggregationRange | AggregationsStringAggregationRange
-=======
 export type AggregationsAggregationRange = AggregationsUntypedAggregationRange | AggregationsDateAggregationRange | AggregationsNumberAggregationRange | AggregationsTermAggregationRange
->>>>>>> 07886ab3f (same as range query)
-=======
-export type AggregationsAggregationRange = AggregationsUntypedAggregationRange | AggregationsDateAggregationRange | AggregationsNumberAggregationRange
->>>>>>> 1f832eff5 (removed term range aggregation)
-=======
-export type AggregationsAggregationRange = AggregationsUntypedAggregationRange | AggregationsDateAggregationRange | AggregationsNumberAggregationRange | AggregationsTermAggregationRange
->>>>>>> 985e70b37 (Revert "removed term range aggregation")
 
 export interface AggregationsAggregationRangeBase<T = unknown> {
   from?: T
   key?: string
   to?: T
->>>>>>> 9fd43f8ed (making range aggregation untagged union)
 }
 
 export interface AggregationsArrayPercentilesItem {
