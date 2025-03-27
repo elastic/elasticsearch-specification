@@ -19,11 +19,10 @@
 
 import { RateLimitSetting } from '@inference/_types/Services'
 import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
-import { RequestBase } from '@_types/Base'
 import { Id } from '@_types/common'
 import { float, integer, long } from '@_types/Numeric'
 
-export class RequestChatCompletion extends RequestBase {
+export class RequestChatCompletion {
   /**
    * A list of objects representing the conversation.
    */
