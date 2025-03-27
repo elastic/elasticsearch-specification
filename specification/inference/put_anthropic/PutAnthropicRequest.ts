@@ -18,12 +18,14 @@
  */
 
 import {
-  InferenceChunkingSettings,
-  RateLimitSetting
-} from '@inference/_types/Services'
+  AnthropicServiceSettings,
+  AnthropicServiceType,
+  AnthropicTaskSettings,
+  AnthropicTaskType
+} from '@inference/_types/CommonTypes'
+import { InferenceChunkingSettings } from '@inference/_types/Services'
 import { RequestBase } from '@_types/Base'
 import { Id } from '@_types/common'
-import { float, integer } from '@_types/Numeric'
 
 /**
  * Create an Anthropic inference endpoint.
@@ -68,7 +70,7 @@ export interface Request extends RequestBase {
     /**
      * The type of service supported for the specified task type. In this case, `anthropic`.
      */
-    service: ServiceType
+    service: AnthropicServiceType
     /**
      * Settings used to install the inference model. These settings are specific to the `watsonxai` service.
      */
@@ -79,57 +81,4 @@ export interface Request extends RequestBase {
      */
     task_settings?: AnthropicTaskSettings
   }
-}
-
-export enum AnthropicTaskType {
-  completion
-}
-
-export enum ServiceType {
-  anthropic
-}
-
-export class AnthropicServiceSettings {
-  /**
-   * A valid API key for the Anthropic API.
-   */
-  api_key: string
-  /**
-   * The name of the model to use for the inference task.
-   * Refer to the Anthropic documentation for the list of supported models.
-   * @ext_doc_id anothropic-models
-   */
-  model_id: string
-  /**
-   * This setting helps to minimize the number of rate limit errors returned from Anthropic.
-   * By default, the `anthropic` service sets the number of requests allowed per minute to 50.
-   */
-  rate_limit?: RateLimitSetting
-}
-
-export class AnthropicTaskSettings {
-  /**
-   * For a `completion` task, it is the maximum number of tokens to generate before stopping.
-   */
-  max_tokens: integer
-  /**
-   * For a `completion` task, it is the amount of randomness injected into the response.
-   * For more details about the supported range, refer to Anthropic documentation.
-   * @ext_doc_id anthropic-messages
-   */
-  temperature?: float
-  /**
-   * For a `completion` task, it specifies to only sample from the top K options for each subsequent token.
-   * It is recommended for advanced use cases only.
-   * You usually only need to use `temperature`.
-   */
-  top_k?: integer
-  /**
-   * For a `completion` task, it specifies to use Anthropic's nucleus sampling.
-   * In nucleus sampling, Anthropic computes the cumulative distribution over all the options for each subsequent token in decreasing probability order and cuts it off once it reaches the specified probability.
-   * You should either alter `temperature` or `top_p`, but not both.
-   * It is recommended for advanced use cases only.
-   * You usually only need to use `temperature`.
-   */
-  top_p?: float
 }

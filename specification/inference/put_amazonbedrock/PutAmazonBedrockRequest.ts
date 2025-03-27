@@ -18,12 +18,14 @@
  */
 
 import {
-  InferenceChunkingSettings,
-  RateLimitSetting
-} from '@inference/_types/Services'
+  AmazonBedrockServiceSettings,
+  AmazonBedrockServiceType,
+  AmazonBedrockTaskSettings,
+  AmazonBedrockTaskType
+} from '@inference/_types/CommonTypes'
+import { InferenceChunkingSettings } from '@inference/_types/Services'
 import { RequestBase } from '@_types/Base'
 import { Id } from '@_types/common'
-import { float, integer } from '@_types/Numeric'
 
 /**
  * Create an Amazon Bedrock inference endpoint.
@@ -70,7 +72,7 @@ export interface Request extends RequestBase {
     /**
      * The type of service supported for the specified task type. In this case, `amazonbedrock`.
      */
-    service: ServiceType
+    service: AmazonBedrockServiceType
     /**
      * Settings used to install the inference model. These settings are specific to the `amazonbedrock` service.
      */
@@ -81,83 +83,4 @@ export interface Request extends RequestBase {
      */
     task_settings?: AmazonBedrockTaskSettings
   }
-}
-
-export enum AmazonBedrockTaskType {
-  completion,
-  text_embedding
-}
-
-export enum ServiceType {
-  amazonbedrock
-}
-
-export class AmazonBedrockServiceSettings {
-  /**
-   * A valid AWS access key that has permissions to use Amazon Bedrock and access to models for inference requests.
-   */
-  access_key: string
-  /**
-   * The base model ID or an ARN to a custom model based on a foundational model.
-   * The base model IDs can be found in the Amazon Bedrock documentation.
-   * Note that the model ID must be available for the provider chosen and your IAM user must have access to the model.
-   * @ext_doc_id amazonbedrock-models
-   */
-  model: string
-  /**
-   * The model provider for your deployment.
-   * Note that some providers may support only certain task types.
-   * Supported providers include:
-   *
-   * * `amazontitan` - available for `text_embedding` and `completion` task types
-   * * `anthropic` - available for `completion` task type only
-   * * `ai21labs` - available for `completion` task type only
-   * * `cohere` - available for `text_embedding` and `completion` task types
-   * * `meta` - available for `completion` task type only
-   * * `mistral` - available for `completion` task type only
-   */
-  provider?: string
-  /**
-   * The region that your model or ARN is deployed in.
-   * The list of available regions per model can be found in the Amazon Bedrock documentation.
-   * @ext_doc_id amazonbedrock-models
-   */
-  region: string
-  /**
-   * This setting helps to minimize the number of rate limit errors returned from Watsonx.
-   * By default, the `watsonxai` service sets the number of requests allowed per minute to 120.
-   */
-  rate_limit?: RateLimitSetting
-  /**
-   * A valid AWS secret key that is paired with the `access_key`.
-   * For informationg about creating and managing access and secret keys, refer to the AWS documentation.
-   * @ext_doc_id amazonbedrock-secret-keys
-   */
-  secret_key: string
-}
-
-export class AmazonBedrockTaskSettings {
-  /**
-   * For a `completion` task, it sets the maximum number for the output tokens to be generated.
-   * @server_default 64
-   */
-  max_new_tokens?: integer
-  /**
-   * For a `completion` task, it is a number between 0.0 and 1.0 that controls the apparent creativity of the results.
-   * At temperature 0.0 the model is most deterministic, at temperature 1.0 most random.
-   * It should not be used if `top_p` or `top_k` is specified.
-   */
-  temperature?: float
-  /**
-   * For a `completion` task, it limits samples to the top-K most likely words, balancing coherence and variability.
-   * It is only available for anthropic, cohere, and mistral providers.
-   * It is an alternative to `temperature`; it should not be used if `temperature` is specified.
-   */
-  top_k?: float
-  /**
-   * For a `completion` task, it is a number in the range of 0.0 to 1.0, to eliminate low-probability tokens.
-   * Top-p uses nucleus sampling to select top tokens whose sum of likelihoods does not exceed a certain value, ensuring both variety and coherence.
-   * It is an alternative to `temperature`; it should not be used if `temperature` is specified.
-   */
-  top_p?: float
 }
