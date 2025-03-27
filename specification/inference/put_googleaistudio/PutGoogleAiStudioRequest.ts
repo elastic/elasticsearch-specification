@@ -18,9 +18,11 @@
  */
 
 import {
-  InferenceChunkingSettings,
-  RateLimitSetting
-} from '@inference/_types/Services'
+  GoogleAiServiceType,
+  GoogleAiStudioServiceSettings,
+  GoogleAiStudioTaskType
+} from '@inference/_types/CommonTypes'
+import { InferenceChunkingSettings } from '@inference/_types/Services'
 import { RequestBase } from '@_types/Base'
 import { Id } from '@_types/common'
 
@@ -66,37 +68,10 @@ export interface Request extends RequestBase {
     /**
      * The type of service supported for the specified task type. In this case, `googleaistudio`.
      */
-    service: ServiceType
+    service: GoogleAiServiceType
     /**
      * Settings used to install the inference model. These settings are specific to the `googleaistudio` service.
      */
     service_settings: GoogleAiStudioServiceSettings
   }
-}
-
-export enum GoogleAiStudioTaskType {
-  completion,
-  text_embedding
-}
-
-export enum ServiceType {
-  googleaistudio
-}
-
-export class GoogleAiStudioServiceSettings {
-  /**
-   * A valid API key of your Google Gemini account.
-   */
-  api_key: string
-  /**
-   * The name of the model to use for the inference task.
-   * Refer to the Google documentation for the list of supported models.
-   * @ext_doc_id googleaistudio-models
-   */
-  model_id: string
-  /**
-   * This setting helps to minimize the number of rate limit errors returned from Google AI Studio.
-   * By default, the `googleaistudio` service sets the number of requests allowed per minute to 360.
-   */
-  rate_limit?: RateLimitSetting
 }
