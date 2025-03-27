@@ -9273,7 +9273,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/inference._types:RequestChatCompletionBase"
+                "$ref": "#/components/schemas/inference._types:RequestChatCompletion"
               }
             }
           },
@@ -9565,7 +9565,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/inference._types:RequestChatCompletionBase"
+                "$ref": "#/components/schemas/inference._types:RequestChatCompletion"
               }
             }
           },
@@ -49662,59 +49662,52 @@
           "valid"
         ]
       },
-      "inference._types:RequestChatCompletionBase": {
-        "allOf": [
-          {
-            "$ref": "#/components/schemas/_types:RequestBase"
+      "inference._types:RequestChatCompletion": {
+        "type": "object",
+        "properties": {
+          "messages": {
+            "description": "A list of objects representing the conversation.",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/inference._types:Message"
+            }
           },
-          {
-            "type": "object",
-            "properties": {
-              "messages": {
-                "description": "A list of objects representing the conversation.",
-                "type": "array",
-                "items": {
-                  "$ref": "#/components/schemas/inference._types:Message"
-                }
-              },
-              "model": {
-                "description": "The ID of the model to use.",
-                "type": "string"
-              },
-              "max_completion_tokens": {
-                "description": "The upper bound limit for the number of tokens that can be generated for a completion request.",
-                "type": "number"
-              },
-              "stop": {
-                "description": "A sequence of strings to control when the model should stop generating additional tokens.",
-                "type": "array",
-                "items": {
-                  "type": "string"
-                }
-              },
-              "temperature": {
-                "description": "The sampling temperature to use.",
-                "type": "number"
-              },
-              "tool_choice": {
-                "$ref": "#/components/schemas/inference._types:CompletionToolType"
-              },
-              "tools": {
-                "description": "A list of tools that the model can call.",
-                "type": "array",
-                "items": {
-                  "$ref": "#/components/schemas/inference._types:CompletionTool"
-                }
-              },
-              "top_p": {
-                "description": "Nucleus sampling, an alternative to sampling with temperature.",
-                "type": "number"
-              }
-            },
-            "required": [
-              "messages"
-            ]
+          "model": {
+            "description": "The ID of the model to use.",
+            "type": "string"
+          },
+          "max_completion_tokens": {
+            "description": "The upper bound limit for the number of tokens that can be generated for a completion request.",
+            "type": "number"
+          },
+          "stop": {
+            "description": "A sequence of strings to control when the model should stop generating additional tokens.",
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "temperature": {
+            "description": "The sampling temperature to use.",
+            "type": "number"
+          },
+          "tool_choice": {
+            "$ref": "#/components/schemas/inference._types:CompletionToolType"
+          },
+          "tools": {
+            "description": "A list of tools that the model can call.",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/inference._types:CompletionTool"
+            }
+          },
+          "top_p": {
+            "description": "Nucleus sampling, an alternative to sampling with temperature.",
+            "type": "number"
           }
+        },
+        "required": [
+          "messages"
         ]
       },
       "inference._types:Message": {
@@ -49886,9 +49879,6 @@
         "required": [
           "name"
         ]
-      },
-      "_types:RequestBase": {
-        "type": "object"
       },
       "_types:StreamResult": {
         "type": "object"

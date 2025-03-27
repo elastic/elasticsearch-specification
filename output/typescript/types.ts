@@ -13404,7 +13404,7 @@ export interface InferenceRateLimitSetting {
   requests_per_minute?: integer
 }
 
-export interface InferenceRequestChatCompletionBase extends RequestBase {
+export interface InferenceRequestChatCompletion {
   messages: InferenceMessage[]
   model?: string
   max_completion_tokens?: long
@@ -13494,7 +13494,7 @@ export type InferenceWatsonxTaskType = 'text_embedding'
 export interface InferenceChatCompletionUnifiedRequest extends RequestBase {
   inference_id: Id
   timeout?: Duration
-  body?: InferenceRequestChatCompletionBase
+  body?: InferenceRequestChatCompletion
 }
 
 export type InferenceChatCompletionUnifiedResponse = StreamResult
@@ -13530,7 +13530,7 @@ export interface InferenceGetResponse {
 
 export interface InferencePostEisChatCompletionRequest extends RequestBase {
   eis_inference_id: Id
-  body?: InferenceRequestChatCompletionBase
+  body?: InferenceRequestChatCompletion
 }
 
 export type InferencePostEisChatCompletionResponse = StreamResult
