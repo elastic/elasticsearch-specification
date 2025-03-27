@@ -1,0 +1,41 @@
+From 49a64bb26aec9972f6cf2b55f5392de5b33be820 Mon Sep 17 00:00:00 2001
+From: Quentin Pradet <quentin.pradet@elastic.co>
+Date: Thu, 27 Mar 2025 11:32:30 +0400
+Subject: [PATCH] Fix require_alias use
+
+---
+ .../saved-objects/api-server-internal/src/lib/apis/create.ts    | 2 +-
+ .../saved-objects/api-server-internal/src/lib/apis/update.ts    | 2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/src/core/packages/saved-objects/api-server-internal/src/lib/apis/create.ts b/src/core/packages/saved-objects/api-server-internal/src/lib/apis/create.ts
+index c357bf63d02..6d95d8daa12 100644
+--- a/src/core/packages/saved-objects/api-server-internal/src/lib/apis/create.ts
++++ b/src/core/packages/saved-objects/api-server-internal/src/lib/apis/create.ts
+@@ -158,8 +158,8 @@ export const performCreate = async <T>(
+     index: commonHelper.getIndexForType(type),
+     refresh,
+     document: raw._source,
++    require_alias: true,
+     ...(overwrite && version ? decodeRequestVersion(version) : {}),
+-    querystring: { require_alias: true },
+   };
+ 
+   const { body, statusCode, headers } =
+diff --git a/src/core/packages/saved-objects/api-server-internal/src/lib/apis/update.ts b/src/core/packages/saved-objects/api-server-internal/src/lib/apis/update.ts
+index f8ffbd4bca1..4a57d150b01 100644
+--- a/src/core/packages/saved-objects/api-server-internal/src/lib/apis/update.ts
++++ b/src/core/packages/saved-objects/api-server-internal/src/lib/apis/update.ts
+@@ -193,8 +193,8 @@ export const executeUpdate = async <T>(
+       index: commonHelper.getIndexForType(type),
+       refresh,
+       document: rawUpsert._source,
++      require_alias: true,
+       ...(version ? decodeRequestVersion(version) : {}),
+-      querystring: { require_alias: true },
+     };
+ 
+     const {
+-- 
+2.39.5 (Apple Git-154)
+

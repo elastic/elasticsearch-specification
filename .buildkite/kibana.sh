@@ -24,7 +24,7 @@ pushd kibana
 echo "--- Checkout upgrade PR"
 git fetch origin pull/213375/head:es-9.0.0-alpha.4
 git checkout es-9.0.0-alpha.4
-
+git am ../elasticsearch-specification/.buildkite/0001-Fix-require_alias-use.patch
 
 echo "--- Install Node.js and Yarn"
 curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.1/install.sh | bash
