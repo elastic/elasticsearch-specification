@@ -13538,25 +13538,6 @@ export interface InferencePutRequest extends RequestBase {
 
 export type InferencePutResponse = InferenceInferenceEndpointInfo
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-export interface InferencePutAlibabacloudAlibabaCloudServiceSettings {
-  api_key: string
-  host: string
-  rate_limit?: InferenceRateLimitSetting
-  service_id: string
-  workspace: string
-}
-
-export interface InferencePutAlibabacloudAlibabaCloudTaskSettings {
-  input_type?: string
-  return_token?: boolean
-}
-
-export type InferencePutAlibabacloudAlibabaCloudTaskType = 'completion' | 'rerank' | 'space_embedding' | 'text_embedding'
-
-=======
->>>>>>> f0b3dcad4 (inference refactor (#4153))
 export interface InferencePutAlibabacloudRequest extends RequestBase {
   task_type: InferenceAlibabaCloudTaskType
   alibabacloud_inference_id: Id
@@ -13583,30 +13564,6 @@ export interface InferencePutAmazonbedrockRequest extends RequestBase {
 
 export type InferencePutAmazonbedrockResponse = InferenceInferenceEndpointInfo
 
-<<<<<<< HEAD
-export type InferencePutAmazonbedrockServiceType = 'amazonbedrock'
-
-export interface InferencePutAnthropicAnthropicServiceSettings {
-  api_key: string
-=======
-export interface InferencePutEisEisServiceSettings {
->>>>>>> 27c7424aa (Adds PUT EIS inference details (#3987))
-  model_id: string
-  rate_limit?: InferenceRateLimitSetting
-}
-
-<<<<<<< HEAD
-export interface InferencePutAnthropicAnthropicTaskSettings {
-  max_tokens: integer
-  temperature?: float
-  top_k?: integer
-  top_p?: float
-}
-
-export type InferencePutAnthropicAnthropicTaskType = 'completion'
-
-=======
->>>>>>> f0b3dcad4 (inference refactor (#4153))
 export interface InferencePutAnthropicRequest extends RequestBase {
   task_type: InferenceAnthropicTaskType
   anthropic_inference_id: Id
@@ -13659,27 +13616,6 @@ export interface InferencePutCohereRequest extends RequestBase {
 
 export type InferencePutCohereResponse = InferenceInferenceEndpointInfo
 
-<<<<<<< HEAD
-export type InferencePutCohereServiceType = 'cohere'
-
-export type InferencePutCohereSimilarityType = 'cosine' | 'dot_product' | 'l2_norm'
-
-export type InferencePutCohereTruncateType = 'END' | 'NONE' | 'START'
-
-export interface InferencePutElasticsearchElasticsearchServiceSettings {
-  adaptive_allocations?: InferenceAdaptiveAllocations
-  deployment_id?: string
-  model_id: string
-  num_allocations?: integer
-  num_threads: integer
-}
-
-export interface InferencePutElasticsearchElasticsearchTaskSettings {
-  return_documents?: boolean
-}
-
-export type InferencePutElasticsearchElasticsearchTaskType = 'rerank' | 'sparse_embedding' | 'text_embedding'
-=======
 export interface InferencePutEisRequest extends RequestBase {
   task_type: InferenceEisTaskType
   eis_inference_id: Id
@@ -13690,7 +13626,6 @@ export interface InferencePutEisRequest extends RequestBase {
 }
 
 export type InferencePutEisResponse = InferenceInferenceEndpointInfo
->>>>>>> f0b3dcad4 (inference refactor (#4153))
 
 export interface InferencePutElasticsearchRequest extends RequestBase {
   task_type: InferenceElasticsearchTaskType
@@ -13779,42 +13714,6 @@ export interface InferencePutMistralRequest extends RequestBase {
 
 export type InferencePutMistralResponse = InferenceInferenceEndpointInfo
 
-<<<<<<< HEAD
-export type InferencePutMistralServiceType = 'mistral'
-=======
-export type InferencePutEisEisTaskType = 'chat_completion'
-
-export interface InferencePutEisRequest extends RequestBase {
-  task_type: InferencePutEisEisTaskType
-  eis_inference_id: Id
-  body?: {
-    service: InferencePutEisServiceType
-    service_settings: InferencePutEisEisServiceSettings
-  }
-}
-
-export type InferencePutEisResponse = InferenceInferenceEndpointInfo
-
-export type InferencePutEisServiceType = 'elastic'
->>>>>>> 27c7424aa (Adds PUT EIS inference details (#3987))
-
-export interface InferencePutOpenaiOpenAIServiceSettings {
-  api_key: string
-  dimensions?: integer
-  model_id: string
-  organization_id?: string
-  rate_limit?: InferenceRateLimitSetting
-  url?: string
-}
-
-export interface InferencePutOpenaiOpenAITaskSettings {
-  user?: string
-}
-
-export type InferencePutOpenaiOpenAITaskType = 'chat_completion' | 'completion' | 'text_embedding'
-
-=======
->>>>>>> f0b3dcad4 (inference refactor (#4153))
 export interface InferencePutOpenaiRequest extends RequestBase {
   task_type: InferenceOpenAITaskType
   openai_inference_id: Id
