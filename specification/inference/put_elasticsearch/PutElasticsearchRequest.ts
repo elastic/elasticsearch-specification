@@ -17,11 +17,15 @@
  * under the License.
  */
 
-import { AdaptiveAllocations } from '@inference/_types/CommonTypes'
+import {
+  ElasticsearchServiceSettings,
+  ElasticsearchServiceType,
+  ElasticsearchTaskSettings,
+  ElasticsearchTaskType
+} from '@inference/_types/CommonTypes'
 import { InferenceChunkingSettings } from '@inference/_types/Services'
 import { RequestBase } from '@_types/Base'
 import { Id } from '@_types/common'
-import { integer } from '@_types/Numeric'
 
 /**
  * Create an Elasticsearch inference endpoint.
@@ -73,7 +77,7 @@ export interface Request extends RequestBase {
     /**
      * The type of service supported for the specified task type. In this case, `elasticsearch`.
      */
-    service: ServiceType
+    service: ElasticsearchServiceType
     /**
      * Settings used to install the inference model. These settings are specific to the `elasticsearch` service.
      */
@@ -84,58 +88,4 @@ export interface Request extends RequestBase {
      */
     task_settings?: ElasticsearchTaskSettings
   }
-}
-
-export enum ElasticsearchTaskType {
-  rerank,
-  sparse_embedding,
-  text_embedding
-}
-
-export enum ServiceType {
-  elasticsearch
-}
-
-export class ElasticsearchServiceSettings {
-  /**
-   * Adaptive allocations configuration details.
-   * If `enabled` is true, the number of allocations of the model is set based on the current load the process gets.
-   * When the load is high, a new model allocation is automatically created, respecting the value of `max_number_of_allocations` if it's set.
-   * When the load is low, a model allocation is automatically removed, respecting the value of `min_number_of_allocations` if it's set.
-   * If `enabled` is true, do not set the number of allocations manually.
-   */
-  adaptive_allocations?: AdaptiveAllocations
-  /**
-   * The deployment identifier for a trained model deployment.
-   * When `deployment_id` is used the `model_id` is optional.
-   */
-  deployment_id?: string
-  /**
-   * The name of the model to use for the inference task.
-   * It can be the ID of a built-in model (for example, `.multilingual-e5-small` for E5) or a text embedding model that was uploaded by using the Eland client.
-   * @ext_doc_id eland-import
-   */
-  model_id: string
-  /**
-   * The total number of allocations that are assigned to the model across machine learning nodes.
-   * Increasing this value generally increases the throughput.
-   * If adaptive allocations are enabled, do not set this value because it's automatically set.
-   */
-  num_allocations?: integer
-  /**
-   * The number of threads used by each model allocation during inference.
-   * This setting generally increases the speed per inference request.
-   * The inference process is a compute-bound process; `threads_per_allocations` must not exceed the number of available allocated processors per node.
-   * The value must be a power of 2.
-   * The maximum value is 32.
-   */
-  num_threads: integer
-}
-
-export class ElasticsearchTaskSettings {
-  /**
-   * For a `rerank` task, return the document instead of only the index.
-   * @server_default true
-   */
-  return_documents?: boolean
 }

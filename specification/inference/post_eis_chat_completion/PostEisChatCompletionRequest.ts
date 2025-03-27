@@ -18,8 +18,8 @@
  */
 
 import { RequestChatCompletionBase } from '@inference/_types/CommonTypes'
+import { RequestBase } from '@_types/Base'
 import { Id } from '@_types/common'
-
 /**
  * Perform a chat completion task through the Elastic Inference Service (EIS).
  *
@@ -30,7 +30,7 @@ import { Id } from '@_types/common'
  * @cluster_privileges manage_inference
  * @doc_id inference-api-post-eis-chat-completion
  */
-export interface Request extends RequestChatCompletionBase {
+export interface Request extends RequestBase {
   urls: [
     {
       path: '/_inference/chat_completion/{eis_inference_id}/_stream'
@@ -43,4 +43,6 @@ export interface Request extends RequestChatCompletionBase {
      */
     eis_inference_id: Id
   }
+  /** @codegen_name chat_completion_request */
+  body: RequestChatCompletionBase
 }
