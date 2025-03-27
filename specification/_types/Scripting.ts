@@ -51,7 +51,7 @@ export type ScriptSource = string | SearchRequestBody
 export class StoredScript {
   /**
    * The language the script is written in.
-   * For serach templates, use `mustache`.
+   * For search templates, use `mustache`.
    */
   lang: ScriptLanguage
   options?: Dictionary<string, string>
@@ -69,7 +69,7 @@ export class Script {
   /**
    * The script source.
    */
-  source?: string
+  source?: ScriptSource
   /**
    * The `id` for a stored script.
    */

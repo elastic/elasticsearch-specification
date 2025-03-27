@@ -2,7 +2,8 @@
   "endpointErrors": {
     "async_search.submit": {
       "request": [
-        "interface definition _types:QueryVectorBuilder - Property text_embedding is a single-variant and must be required"
+        "interface definition _types:QueryVectorBuilder - Property text_embedding is a single-variant and must be required",
+        "interface definition _types:RankContainer - Property rrf is a single-variant and must be required"
       ],
       "response": []
     },
@@ -41,12 +42,6 @@
         "Request: query parameter 'keep_alive' does not exist in the json spec",
         "Request: query parameter 'keep_on_completion' does not exist in the json spec",
         "Request: query parameter 'wait_for_completion_timeout' does not exist in the json spec"
-      ],
-      "response": []
-    },
-    "fleet.msearch": {
-      "request": [
-        "interface definition _types:RankContainer - Property rrf is a single-variant and must be required"
       ],
       "response": []
     },
