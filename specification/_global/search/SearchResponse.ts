@@ -32,6 +32,7 @@ import { Suggest } from './_types/suggester'
 // - fleet.search
 // - scroll
 export class Response<TDocument> {
+  /** @codegen_name result */
   body: ResponseBody<TDocument>
 }
 

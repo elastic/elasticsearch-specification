@@ -28,5 +28,6 @@ export class ResponseBase extends NodesResponseBase {
 }
 
 export class Response {
+  /** @codegen_name usages */
   body: ResponseBase
 }

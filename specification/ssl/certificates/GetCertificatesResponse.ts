@@ -20,5 +20,6 @@
 import { CertificateInformation } from './types'
 
 export class Response {
+  /** @codegen_name certificates */
   body: Array<CertificateInformation>
 }

@@ -26,6 +26,7 @@ import { ShardStatistics } from '@_types/Stats'
 import { EpochTime, UnitMillis } from '@_types/Time'
 
 export class Response {
+  /** @codegen_name stats */
   body: FieldsUsageBody
 }
 

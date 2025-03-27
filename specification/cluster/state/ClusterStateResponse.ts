@@ -24,6 +24,8 @@ export class Response {
    * There aren't any guarantees on the output/structure of the raw cluster state.
    * Here you will find the internal representation of the cluster, which can
    * differ from the external representation.
+   *
+   * @codegen_name state
    */
   body: UserDefinedValue
 }

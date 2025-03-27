@@ -51,5 +51,6 @@ export class StatsResponseBase extends NodesResponseBase {
 }
 
 export class Response {
+  /** @codegen_name stats */
   body: StatsResponseBase
 }

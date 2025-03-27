@@ -34,5 +34,6 @@ export class ResponseBase extends NodesResponseBase {
 }
 
 export class Response {
+  /** @codegen_name metering_infos */
   body: ResponseBase
 }
