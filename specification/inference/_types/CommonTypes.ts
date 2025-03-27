@@ -23,7 +23,7 @@ import {
   Message
 } from '@inference/chat_completion_unified/UnifiedRequest'
 import { RequestBase } from '@_types/Base'
-import { float, long } from '@_types/Numeric'
+import { float, integer, long } from '@_types/Numeric'
 
 export interface RequestChatCompletionBase extends RequestBase {
   /**
@@ -58,4 +58,23 @@ export interface RequestChatCompletionBase extends RequestBase {
    * Nucleus sampling, an alternative to sampling with temperature.
    */
   top_p?: float
+}
+
+export class AdaptiveAllocations {
+  /**
+   * Turn on `adaptive_allocations`.
+   * @server_default false
+   */
+  enabled?: boolean
+  /**
+   * The maximum number of allocations to scale to.
+   * If set, it must be greater than or equal to `min_number_of_allocations`.
+   */
+  max_number_of_allocations?: integer
+  /**
+   * The minimum number of allocations to scale to.
+   * If set, it must be greater than or equal to 0.
+   * If not defined, the deployment scales to 0.
+   */
+  min_number_of_allocations?: integer
 }
