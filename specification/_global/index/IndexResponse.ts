@@ -20,5 +20,6 @@
 import { WriteResponseBase } from '@_types/Base'
 
 export class Response {
+  /** @codegen_name response */
   body: WriteResponseBase
 }

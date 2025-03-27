@@ -21,6 +21,7 @@ import { GetResult } from '@global/get/types'
 import { ErrorResponseBase } from '@_types/Base'
 
 export class Response<TDocument> {
+  /** @codegen_name result */
   body: GetResult<TDocument>
   exceptions: [
     {

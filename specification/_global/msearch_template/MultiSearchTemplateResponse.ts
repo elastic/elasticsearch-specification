@@ -26,6 +26,8 @@ export class Response<TDocument> {
    *
    * The body contains results for each search, returned in the order submitted.
    * Each object uses the same properties as the search API's response.
+   *
+   * @codegen_name result
    */
   body: MultiSearchResult<TDocument>
 }

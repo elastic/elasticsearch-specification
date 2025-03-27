@@ -37,5 +37,6 @@ export class StatusResponseBase extends AsyncSearchResponseBase {
   completion_status?: integer
 }
 export class Response {
+  /** @codegen_name status */
   body: StatusResponseBase
 }
