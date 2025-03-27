@@ -884,6 +884,8 @@ user-agent-processor,https://www.elastic.co/guide/en/elasticsearch/reference/cur
 user-profile,https://www.elastic.co/guide/en/elasticsearch/reference/current/user-profile.html
 verify-repository,https://www.elastic.co/guide/en/elasticsearch/reference/current/snapshots-register-repository.html#snapshots-repository-verification
 voting-config-exclusions,https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cluster-post-voting-config-exclusions
+voyageai-embeddings,https://docs.voyageai.com/docs/embeddings
+voyageai-rerank,https://docs.voyageai.com/docs/reranker
 watcher-works,https://www.elastic.co/guide/en/elasticsearch/reference/current/how-watcher-works.html
 watcher-api-ack-watch,https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-watcher-ack-watch
 watcher-api-activate-watch,https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-watcher-activate-watch
