@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { RequestChatCompletionBase } from '@inference/_types/CommonTypes'
+import { RequestChatCompletion } from '@inference/_types/CommonTypes'
 import { RequestBase } from '@_types/Base'
 import { Id } from '@_types/common'
 import { Duration } from '@_types/Time'
@@ -49,5 +49,5 @@ export interface Request extends RequestBase {
     timeout?: Duration
   }
   /** @codegen_name chat_completion_request */
-  body: RequestChatCompletionBase
+  body: RequestChatCompletion
 }
