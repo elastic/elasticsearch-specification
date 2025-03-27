@@ -13255,6 +13255,7 @@ export interface InferencePutRequest extends RequestBase {
 
 export type InferencePutResponse = InferenceInferenceEndpointInfo
 
+<<<<<<< HEAD
 export interface InferencePutAlibabacloudAlibabaCloudServiceSettings {
   api_key: string
   host: string
@@ -13320,10 +13321,14 @@ export type InferencePutAmazonbedrockServiceType = 'amazonbedrock'
 
 export interface InferencePutAnthropicAnthropicServiceSettings {
   api_key: string
+=======
+export interface InferencePutEisEisServiceSettings {
+>>>>>>> 27c7424aa (Adds PUT EIS inference details (#3987))
   model_id: string
   rate_limit?: InferenceRateLimitSetting
 }
 
+<<<<<<< HEAD
 export interface InferencePutAnthropicAnthropicTaskSettings {
   max_tokens: integer
   temperature?: float
@@ -13652,6 +13657,22 @@ export interface InferencePutMistralRequest extends RequestBase {
 export type InferencePutMistralResponse = InferenceInferenceEndpointInfo
 
 export type InferencePutMistralServiceType = 'mistral'
+=======
+export type InferencePutEisEisTaskType = 'chat_completion'
+
+export interface InferencePutEisRequest extends RequestBase {
+  task_type: InferencePutEisEisTaskType
+  eis_inference_id: Id
+  body?: {
+    service: InferencePutEisServiceType
+    service_settings: InferencePutEisEisServiceSettings
+  }
+}
+
+export type InferencePutEisResponse = InferenceInferenceEndpointInfo
+
+export type InferencePutEisServiceType = 'elastic'
+>>>>>>> 27c7424aa (Adds PUT EIS inference details (#3987))
 
 export interface InferencePutOpenaiOpenAIServiceSettings {
   api_key: string
