@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { RequestChatCompletionBase } from '@inference/_types/CommonTypes'
+import { RequestChatCompletion } from '@inference/_types/CommonTypes'
 import { RequestBase } from '@_types/Base'
 import { Id } from '@_types/common'
 /**
@@ -44,5 +44,5 @@ export interface Request extends RequestBase {
     eis_inference_id: Id
   }
   /** @codegen_name chat_completion_request */
-  body: RequestChatCompletionBase
+  body: RequestChatCompletion
 }
