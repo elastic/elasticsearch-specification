@@ -2,7 +2,8 @@
   "endpointErrors": {
     "async_search.submit": {
       "request": [
-        "interface definition _types:QueryVectorBuilder - Property text_embedding is a single-variant and must be required"
+        "interface definition _types:QueryVectorBuilder - Property text_embedding is a single-variant and must be required",
+        "interface definition _types:RankContainer - Property rrf is a single-variant and must be required"
       ],
       "response": []
     },
@@ -84,12 +85,6 @@
       "request": [
         "Request: query parameter 'require_alias' does not exist in the json spec",
         "Request: missing json spec query parameter 'max_docs'"
-      ],
-      "response": []
-    },
-    "search": {
-      "request": [
-        "interface definition _types:RankContainer - Property rrf is a single-variant and must be required"
       ],
       "response": []
     },

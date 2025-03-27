@@ -22,7 +22,7 @@ import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 import { Field, Fields, GrokPattern, Id, Name } from '@_types/common'
 import { GeoShapeRelation } from '@_types/Geo'
 import { double, integer, long } from '@_types/Numeric'
-import { Script } from '@_types/Scripting'
+import { Script, ScriptLanguage, ScriptSource } from '@_types/Scripting'
 import { SortOrder } from '@_types/sort'
 
 /**
@@ -1412,7 +1412,7 @@ export class ScriptProcessor extends ProcessorBase {
    * Script language.
    * @server_default painless
    */
-  lang?: string
+  lang?: ScriptLanguage
   /**
    * Object containing parameters for the script.
    */
@@ -1421,7 +1421,7 @@ export class ScriptProcessor extends ProcessorBase {
    * Inline script.
    * If no `id` is specified, this parameter is required.
    */
-  source?: string
+  source?: ScriptSource
 }
 
 export class SetProcessor extends ProcessorBase {
