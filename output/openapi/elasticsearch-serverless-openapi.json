@@ -57230,7 +57230,9 @@
               "type": "object",
               "additionalProperties": {
                 "type": "number"
-              }
+              },
+              "minProperties": 1,
+              "maxProperties": 1
             }
           },
           "min_score": {
@@ -67689,7 +67691,9 @@
                     "type": "object",
                     "additionalProperties": {
                       "type": "number"
-                    }
+                    },
+                    "minProperties": 1,
+                    "maxProperties": 1
                   }
                 },
                 "docvalue_fields": {
@@ -69040,7 +69044,9 @@
                     "type": "object",
                     "additionalProperties": {
                       "type": "number"
-                    }
+                    },
+                    "minProperties": 1,
+                    "maxProperties": 1
                   }
                 },
                 "docvalue_fields": {
