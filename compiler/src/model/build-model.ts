@@ -384,12 +384,11 @@ function compileClassOrInterfaceDeclaration (declaration: ClassDeclaration | Int
               type.body = { kind: 'no_body' }
             } else {
               const tags = parseJsDocTags((member as PropertySignature).getJsDocs())
-              // TODO: Enable this after adding the missing codegen names.
-              // assert(
-              //     member as Node,
-              //     tags.codegen_name != null,
-              //     'You should configure a body @codegen_name'
-              // )
+              assert(
+                member as Node,
+                tags.codegen_name != null,
+                'You should configure a body @codegen_name'
+              )
               type.body = {
                 kind: 'value',
                 value: property.valueOf,

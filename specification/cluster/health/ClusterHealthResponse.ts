@@ -27,6 +27,7 @@ import { IndexHealthStats } from './types'
  * @doc_id cluster-health
  */
 export class Response {
+  /** @codegen_name result */
   body: HealthResponseBody
   exceptions: [
     {

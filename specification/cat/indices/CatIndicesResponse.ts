@@ -20,5 +20,6 @@
 import { IndicesRecord } from './types'
 
 export class Response {
+  /** @codegen_name indices */
   body: Array<IndicesRecord>
 }

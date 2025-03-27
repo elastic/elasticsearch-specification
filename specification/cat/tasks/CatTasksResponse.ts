@@ -20,5 +20,6 @@
 import { TasksRecord } from './types'
 
 export class Response {
+  /** @codegen_name tasks */
   body: Array<TasksRecord>
 }
