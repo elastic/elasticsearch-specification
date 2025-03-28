@@ -86586,7 +86586,7 @@
         "name": "IndexOptions",
         "namespace": "_types.mapping"
       },
-      "specLocation": "_types/mapping/core.ts#L258-L263"
+      "specLocation": "_types/mapping/core.ts#L267-L272"
     },
     {
       "kind": "enum",
@@ -86618,7 +86618,7 @@
         "name": "OnScriptError",
         "namespace": "_types.mapping"
       },
-      "specLocation": "_types/mapping/core.ts#L137-L140"
+      "specLocation": "_types/mapping/core.ts#L146-L149"
     },
     {
       "kind": "type_alias",
@@ -87230,6 +87230,59 @@
           }
         },
         {
+          "name": "ignore_malformed",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "_builtins"
+            }
+          }
+        },
+        {
+          "name": "script",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Script",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "on_script_error",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "OnScriptError",
+              "namespace": "_types.mapping"
+            }
+          }
+        },
+        {
+          "availability": {
+            "serverless": {
+              "stability": "experimental"
+            },
+            "stack": {
+              "stability": "experimental"
+            }
+          },
+          "description": "For internal use by Elastic only. Marks the field as a time series dimension. Defaults to false.",
+          "name": "time_series_dimension",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "_builtins"
+            }
+          }
+        },
+        {
           "name": "type",
           "required": true,
           "type": {
@@ -87238,7 +87291,7 @@
           }
         }
       ],
-      "specLocation": "_types/mapping/core.ts#L58-L64"
+      "specLocation": "_types/mapping/core.ts#L58-L73"
     },
     {
       "kind": "interface",
@@ -87553,7 +87606,7 @@
           }
         }
       ],
-      "specLocation": "_types/mapping/core.ts#L302-L333"
+      "specLocation": "_types/mapping/core.ts#L311-L342"
     },
     {
       "kind": "enum",
@@ -87610,7 +87663,7 @@
           }
         }
       ],
-      "specLocation": "_types/mapping/core.ts#L265-L268"
+      "specLocation": "_types/mapping/core.ts#L274-L277"
     },
     {
       "kind": "enum",
@@ -87713,7 +87766,7 @@
           }
         }
       ],
-      "specLocation": "_types/mapping/core.ts#L88-L92"
+      "specLocation": "_types/mapping/core.ts#L97-L101"
     },
     {
       "inherits": {
@@ -87890,7 +87943,7 @@
           }
         }
       ],
-      "specLocation": "_types/mapping/core.ts#L94-L113"
+      "specLocation": "_types/mapping/core.ts#L103-L122"
     },
     {
       "description": "A variant of text that trades scoring and efficiency of positional queries for space efficiency. This field\neffectively stores data the same way as a text field that only indexes documents (index_options: docs) and\ndisables norms (norms: false). Term queries perform as fast if not faster as on text fields, however queries\nthat need positions such as the match_phrase query perform slower as they need to look at the _source document\nto verify whether a phrase matches. All queries return constant scores that are equal to 1.0.",
@@ -87971,7 +88024,7 @@
           }
         }
       ],
-      "specLocation": "_types/mapping/core.ts#L231-L256"
+      "specLocation": "_types/mapping/core.ts#L240-L265"
     },
     {
       "inherits": {
@@ -87995,7 +88048,7 @@
           }
         }
       ],
-      "specLocation": "_types/mapping/core.ts#L188-L190"
+      "specLocation": "_types/mapping/core.ts#L197-L199"
     },
     {
       "inherits": {
@@ -88030,7 +88083,7 @@
           }
         }
       ],
-      "specLocation": "_types/mapping/core.ts#L192-L195"
+      "specLocation": "_types/mapping/core.ts#L201-L204"
     },
     {
       "inherits": {
@@ -88065,7 +88118,7 @@
           }
         }
       ],
-      "specLocation": "_types/mapping/core.ts#L197-L200"
+      "specLocation": "_types/mapping/core.ts#L206-L209"
     },
     {
       "inherits": {
@@ -88200,7 +88253,7 @@
           }
         }
       ],
-      "specLocation": "_types/mapping/core.ts#L212-L223"
+      "specLocation": "_types/mapping/core.ts#L221-L232"
     },
     {
       "inherits": {
@@ -88413,7 +88466,7 @@
           }
         }
       ],
-      "specLocation": "_types/mapping/core.ts#L270-L287"
+      "specLocation": "_types/mapping/core.ts#L279-L296"
     },
     {
       "kind": "interface",
@@ -88480,7 +88533,7 @@
           }
         }
       ],
-      "specLocation": "_types/mapping/core.ts#L289-L291"
+      "specLocation": "_types/mapping/core.ts#L298-L300"
     },
     {
       "inherits": {
@@ -88521,7 +88574,7 @@
           }
         }
       ],
-      "specLocation": "_types/mapping/core.ts#L293-L300"
+      "specLocation": "_types/mapping/core.ts#L302-L309"
     },
     {
       "inherits": {
@@ -88611,7 +88664,7 @@
           }
         }
       ],
-      "specLocation": "_types/mapping/core.ts#L78-L86"
+      "specLocation": "_types/mapping/core.ts#L87-L95"
     },
     {
       "inherits": {
@@ -88723,7 +88776,7 @@
           }
         }
       ],
-      "specLocation": "_types/mapping/core.ts#L66-L76"
+      "specLocation": "_types/mapping/core.ts#L75-L85"
     },
     {
       "inherits": {
@@ -89193,7 +89246,7 @@
           }
         }
       ],
-      "specLocation": "_types/mapping/core.ts#L206-L210"
+      "specLocation": "_types/mapping/core.ts#L215-L219"
     },
     {
       "inherits": {
@@ -89217,7 +89270,7 @@
           }
         }
       ],
-      "specLocation": "_types/mapping/core.ts#L202-L204"
+      "specLocation": "_types/mapping/core.ts#L211-L213"
     },
     {
       "inherits": {
@@ -90025,7 +90078,7 @@
           }
         }
       ],
-      "specLocation": "_types/mapping/core.ts#L172-L175"
+      "specLocation": "_types/mapping/core.ts#L181-L184"
     },
     {
       "inherits": {
@@ -90148,7 +90201,7 @@
           }
         }
       ],
-      "specLocation": "_types/mapping/core.ts#L115-L135"
+      "specLocation": "_types/mapping/core.ts#L124-L144"
     },
     {
       "inherits": {
@@ -90183,7 +90236,7 @@
           }
         }
       ],
-      "specLocation": "_types/mapping/core.ts#L152-L155"
+      "specLocation": "_types/mapping/core.ts#L161-L164"
     },
     {
       "inherits": {
@@ -90218,7 +90271,7 @@
           }
         }
       ],
-      "specLocation": "_types/mapping/core.ts#L142-L145"
+      "specLocation": "_types/mapping/core.ts#L151-L154"
     },
     {
       "inherits": {
@@ -90253,7 +90306,7 @@
           }
         }
       ],
-      "specLocation": "_types/mapping/core.ts#L147-L150"
+      "specLocation": "_types/mapping/core.ts#L156-L159"
     },
     {
       "inherits": {
@@ -90288,7 +90341,7 @@
           }
         }
       ],
-      "specLocation": "_types/mapping/core.ts#L157-L160"
+      "specLocation": "_types/mapping/core.ts#L166-L169"
     },
     {
       "inherits": {
@@ -90323,7 +90376,7 @@
           }
         }
       ],
-      "specLocation": "_types/mapping/core.ts#L162-L165"
+      "specLocation": "_types/mapping/core.ts#L171-L174"
     },
     {
       "inherits": {
@@ -90369,7 +90422,7 @@
           }
         }
       ],
-      "specLocation": "_types/mapping/core.ts#L182-L186"
+      "specLocation": "_types/mapping/core.ts#L191-L195"
     },
     {
       "inherits": {
@@ -90404,7 +90457,7 @@
           }
         }
       ],
-      "specLocation": "_types/mapping/core.ts#L167-L170"
+      "specLocation": "_types/mapping/core.ts#L176-L179"
     },
     {
       "inherits": {
@@ -90439,7 +90492,7 @@
           }
         }
       ],
-      "specLocation": "_types/mapping/core.ts#L177-L180"
+      "specLocation": "_types/mapping/core.ts#L186-L189"
     },
     {
       "inherits": {
