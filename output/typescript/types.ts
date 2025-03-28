@@ -788,8 +788,8 @@ export interface MsearchRequest extends RequestBase {
   ignore_throttled?: boolean
   ignore_unavailable?: boolean
   include_named_queries_score?: boolean
-  max_concurrent_searches?: long
-  max_concurrent_shard_requests?: long
+  max_concurrent_searches?: integer
+  max_concurrent_shard_requests?: integer
   pre_filter_shard_size?: long
   rest_total_hits_as_int?: boolean
   routing?: Routing
@@ -1177,7 +1177,7 @@ export interface SearchRequest extends RequestBase {
   ignore_unavailable?: boolean
   include_named_queries_score?: boolean
   lenient?: boolean
-  max_concurrent_shard_requests?: long
+  max_concurrent_shard_requests?: integer
   preference?: string
   pre_filter_shard_size?: long
   request_cache?: boolean
@@ -6851,7 +6851,7 @@ export interface AsyncSearchSubmitRequest extends RequestBase {
   ignore_throttled?: boolean
   ignore_unavailable?: boolean
   lenient?: boolean
-  max_concurrent_shard_requests?: long
+  max_concurrent_shard_requests?: integer
   preference?: string
   request_cache?: boolean
   routing?: Routing
@@ -10725,8 +10725,8 @@ export interface FleetMsearchRequest extends RequestBase {
   expand_wildcards?: ExpandWildcards
   ignore_throttled?: boolean
   ignore_unavailable?: boolean
-  max_concurrent_searches?: long
-  max_concurrent_shard_requests?: long
+  max_concurrent_searches?: integer
+  max_concurrent_shard_requests?: integer
   pre_filter_shard_size?: long
   search_type?: SearchType
   rest_total_hits_as_int?: boolean
@@ -10755,7 +10755,7 @@ export interface FleetSearchRequest extends RequestBase {
   ignore_throttled?: boolean
   ignore_unavailable?: boolean
   lenient?: boolean
-  max_concurrent_shard_requests?: long
+  max_concurrent_shard_requests?: integer
   preference?: string
   pre_filter_shard_size?: long
   request_cache?: boolean
