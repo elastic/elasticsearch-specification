@@ -10198,10 +10198,11 @@ export interface EnrichDeletePolicyRequest extends RequestBase {
 
 export type EnrichDeletePolicyResponse = AcknowledgedResponseBase
 
-export type EnrichExecutePolicyEnrichPolicyPhase = 'SCHEDULED' | 'RUNNING' | 'COMPLETE' | 'FAILED'
+export type EnrichExecutePolicyEnrichPolicyPhase = 'SCHEDULED' | 'RUNNING' | 'COMPLETE' | 'FAILED' | 'CANCELLED'
 
 export interface EnrichExecutePolicyExecuteEnrichPolicyStatus {
   phase: EnrichExecutePolicyEnrichPolicyPhase
+  step?: string
 }
 
 export interface EnrichExecutePolicyRequest extends RequestBase {
@@ -10211,7 +10212,7 @@ export interface EnrichExecutePolicyRequest extends RequestBase {
 
 export interface EnrichExecutePolicyResponse {
   status?: EnrichExecutePolicyExecuteEnrichPolicyStatus
-  task_id?: TaskId
+  task?: TaskId
 }
 
 export interface EnrichGetPolicyRequest extends RequestBase {

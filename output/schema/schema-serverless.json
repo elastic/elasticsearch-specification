@@ -16789,7 +16789,7 @@
             }
           },
           {
-            "name": "task_id",
+            "name": "task",
             "required": false,
             "type": {
               "kind": "instance_of",
@@ -93378,13 +93378,16 @@
         },
         {
           "name": "FAILED"
+        },
+        {
+          "name": "CANCELLED"
         }
       ],
       "name": {
         "name": "EnrichPolicyPhase",
         "namespace": "enrich.execute_policy"
       },
-      "specLocation": "enrich/execute_policy/types.ts#L24-L29"
+      "specLocation": "enrich/execute_policy/types.ts#L25-L31"
     },
     {
       "kind": "enum",
@@ -117508,9 +117511,20 @@
               "namespace": "enrich.execute_policy"
             }
           }
+        },
+        {
+          "name": "step",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "_builtins"
+            }
+          }
         }
       ],
-      "specLocation": "enrich/execute_policy/types.ts#L20-L22"
+      "specLocation": "enrich/execute_policy/types.ts#L20-L23"
     },
     {
       "kind": "interface",
