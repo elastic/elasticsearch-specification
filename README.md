@@ -67,6 +67,10 @@ $ make overlay-docs
 # The generated output can be found in ./output/openapi/
 ```
 
+## Contributing
+
+See [CONTRIBUTING.md](./CONTRIBUTING.md)
+
 ## Make Targets
 
 ```
