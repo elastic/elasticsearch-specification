@@ -60,6 +60,15 @@ export class BooleanProperty extends DocValuesPropertyBase {
   fielddata?: NumericFielddata
   index?: boolean
   null_value?: boolean
+  ignore_malformed?: boolean
+  script?: Script
+  on_script_error?: OnScriptError
+  /**
+   * For internal use by Elastic only. Marks the field as a time series dimension. Defaults to false.
+   * @availability stack stability=experimental
+   * @availability serverless stability=experimental
+   */
+  time_series_dimension?: boolean
   type: 'boolean'
 }
 
