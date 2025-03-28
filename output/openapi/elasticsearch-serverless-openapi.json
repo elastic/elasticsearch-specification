@@ -44158,6 +44158,20 @@
               "null_value": {
                 "type": "boolean"
               },
+              "ignore_malformed": {
+                "type": "boolean"
+              },
+              "script": {
+                "$ref": "#/components/schemas/_types:Script"
+              },
+              "on_script_error": {
+                "$ref": "#/components/schemas/_types.mapping:OnScriptError"
+              },
+              "time_series_dimension": {
+                "description": "For internal use by Elastic only. Marks the field as a time series dimension. Defaults to false.",
+                "x-state": "Technical preview",
+                "type": "boolean"
+              },
               "type": {
                 "type": "string",
                 "enum": [
@@ -44187,6 +44201,13 @@
         "enum": [
           "array",
           "disabled"
+        ]
+      },
+      "_types.mapping:OnScriptError": {
+        "type": "string",
+        "enum": [
+          "fail",
+          "continue"
         ]
       },
       "_types.mapping:DynamicProperty": {
@@ -44282,13 +44303,6 @@
               "type"
             ]
           }
-        ]
-      },
-      "_types.mapping:OnScriptError": {
-        "type": "string",
-        "enum": [
-          "fail",
-          "continue"
         ]
       },
       "_types.mapping:TimeSeriesMetricType": {
