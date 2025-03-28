@@ -88,7 +88,7 @@ export interface Request extends RequestBase {
     ignore_throttled?: boolean
     ignore_unavailable?: boolean
     lenient?: boolean
-    max_concurrent_shard_requests?: long
+    max_concurrent_shard_requests?: integer
     preference?: string
     pre_filter_shard_size?: long
     request_cache?: boolean

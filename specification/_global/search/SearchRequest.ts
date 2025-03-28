@@ -195,7 +195,7 @@ export interface Request extends RequestBase {
      * This value should be used to limit the impact of the search on the cluster in order to limit the number of concurrent shard requests.
      * @server_default 5
      */
-    max_concurrent_shard_requests?: long
+    max_concurrent_shard_requests?: integer
     /**
      * The nodes and shards used for the search.
      * By default, Elasticsearch selects from eligible nodes and shards using adaptive replica selection, accounting for allocation awareness.
