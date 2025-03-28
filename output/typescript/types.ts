@@ -5386,6 +5386,10 @@ export interface MappingBooleanProperty extends MappingDocValuesPropertyBase {
   fielddata?: IndicesNumericFielddata
   index?: boolean
   null_value?: boolean
+  ignore_malformed?: boolean
+  script?: Script | string
+  on_script_error?: MappingOnScriptError
+  time_series_dimension?: boolean
   type: 'boolean'
 }
 
