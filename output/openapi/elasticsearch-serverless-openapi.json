@@ -17264,6 +17264,16 @@
               "type": "boolean"
             },
             "style": "form"
+          },
+          {
+            "in": "query",
+            "name": "max_concurrent_shard_requests",
+            "description": "Maximum number of concurrent shard requests that each sub-search request executes per node.",
+            "deprecated": false,
+            "schema": {
+              "type": "number"
+            },
+            "style": "form"
           }
         ],
         "requestBody": {
