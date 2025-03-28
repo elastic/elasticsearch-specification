@@ -10406,10 +10406,11 @@ export interface EnrichDeletePolicyRequest extends RequestBase {
 
 export type EnrichDeletePolicyResponse = AcknowledgedResponseBase
 
-export type EnrichExecutePolicyEnrichPolicyPhase = 'SCHEDULED' | 'RUNNING' | 'COMPLETE' | 'FAILED'
+export type EnrichExecutePolicyEnrichPolicyPhase = 'SCHEDULED' | 'RUNNING' | 'COMPLETE' | 'FAILED' | 'CANCELLED'
 
 export interface EnrichExecutePolicyExecuteEnrichPolicyStatus {
   phase: EnrichExecutePolicyEnrichPolicyPhase
+  step?: string
 }
 
 export interface EnrichExecutePolicyRequest extends RequestBase {
@@ -10420,7 +10421,7 @@ export interface EnrichExecutePolicyRequest extends RequestBase {
 
 export interface EnrichExecutePolicyResponse {
   status?: EnrichExecutePolicyExecuteEnrichPolicyStatus
-  task_id?: TaskId
+  task?: TaskId
 }
 
 export interface EnrichGetPolicyRequest extends RequestBase {
@@ -13391,7 +13392,7 @@ export interface InferenceRateLimitSetting {
   requests_per_minute?: integer
 }
 
-export interface InferenceRequestChatCompletionBase extends RequestBase {
+export interface InferenceRequestChatCompletion {
   messages: InferenceMessage[]
   model?: string
   max_completion_tokens?: long
@@ -13481,7 +13482,7 @@ export type InferenceWatsonxTaskType = 'text_embedding'
 export interface InferenceChatCompletionUnifiedRequest extends RequestBase {
   inference_id: Id
   timeout?: Duration
-  body?: InferenceRequestChatCompletionBase
+  body?: InferenceRequestChatCompletion
 }
 
 export type InferenceChatCompletionUnifiedResponse = StreamResult
@@ -13517,7 +13518,7 @@ export interface InferenceGetResponse {
 
 export interface InferencePostEisChatCompletionRequest extends RequestBase {
   eis_inference_id: Id
-  body?: InferenceRequestChatCompletionBase
+  body?: InferenceRequestChatCompletion
 }
 
 export type InferencePostEisChatCompletionResponse = StreamResult
