@@ -66475,7 +66475,7 @@
       "msearch#max_concurrent_searches": {
         "in": "query",
         "name": "max_concurrent_searches",
-        "description": "Maximum number of concurrent searches the multi search API can execute.",
+        "description": "Maximum number of concurrent searches the multi search API can execute.\nDefaults to `max(1, (# of data nodes * min(search thread pool size, 10)))`.",
         "deprecated": false,
         "schema": {
           "type": "number"
