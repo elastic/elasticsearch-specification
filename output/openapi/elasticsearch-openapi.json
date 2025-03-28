@@ -8115,7 +8115,7 @@
                     "status": {
                       "$ref": "#/components/schemas/enrich.execute_policy:ExecuteEnrichPolicyStatus"
                     },
-                    "task_id": {
+                    "task": {
                       "$ref": "#/components/schemas/_types:TaskId"
                     }
                   }
@@ -68376,6 +68376,9 @@
         "properties": {
           "phase": {
             "$ref": "#/components/schemas/enrich.execute_policy:EnrichPolicyPhase"
+          },
+          "step": {
+            "type": "string"
           }
         },
         "required": [
@@ -68388,7 +68391,8 @@
           "SCHEDULED",
           "RUNNING",
           "COMPLETE",
-          "FAILED"
+          "FAILED",
+          "CANCELLED"
         ]
       },
       "enrich._types:Summary": {
