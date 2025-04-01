@@ -144,14 +144,14 @@ export class DenseVectorIndexOptions {
   /**
    * The number of candidates to track while assembling the list of nearest neighbors for each new node.
    *
-   * Only applicable to `hnsw`, `int8_hnsw`, and `int4_hnsw` index types.
+   * Only applicable to `hnsw`, `int8_hnsw`, `bbq_hnsw`, and `int4_hnsw` index types.
    * @server_default 100
    */
   ef_construction?: integer
   /**
    * The number of neighbors each node will be connected to in the HNSW graph.
    *
-   * Only applicable to `hnsw`, `int8_hnsw`, and `int4_hnsw` index types.
+   * Only applicable to `hnsw`, `int8_hnsw`, `bbq_hnsw`, and `int4_hnsw` index types.
    * @server_default 16
    */
   m?: integer
