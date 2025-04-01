@@ -45477,6 +45477,8 @@
       "_types.mapping:DenseVectorIndexOptionsType": {
         "type": "string",
         "enum": [
+          "bbq_flat",
+          "bbq_hnsw",
           "flat",
           "hnsw",
           "int4_flat",
