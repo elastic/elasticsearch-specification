@@ -159,6 +159,10 @@ export class DenseVectorIndexOptions {
    * The type of kNN algorithm to use.
    */
   type: DenseVectorIndexOptionsType
+  /**
+   * The rescore vector options. This is only applicable to `bbq_hnsw`, `int4_hnsw`, `int8_hnsw`, `bbq_flat`, `int4_flat`, and `int8_flat` index types.
+   */
+  rescore_vector?: DenseVectorIndexOptionsRescoreVector
 }
 
 export enum DenseVectorIndexOptionsType {
@@ -194,4 +198,14 @@ export enum DenseVectorIndexOptionsType {
    * This can reduce the memory footprint by 4x at the cost of some accuracy.
    */
   int8_hnsw
+}
+
+export class DenseVectorIndexOptionsRescoreVector {
+  /**
+   * The oversampling factor to use when searching for the nearest neighbor. This is only applicable to the quantized formats: `bbq_*`, `int4_*`, and `int8_*`.
+   * When provided, `oversample * k` vectors will be gathered and then their scores will be re-computed with the original vectors.
+   *
+   * valid values are between `1.0` and `10.0` (inclusive), or `0` exactly to disable oversampling.
+   */
+  oversample: float
 }
