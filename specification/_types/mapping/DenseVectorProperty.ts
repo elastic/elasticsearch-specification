@@ -163,6 +163,18 @@ export class DenseVectorIndexOptions {
 
 export enum DenseVectorIndexOptionsType {
   /**
+   * This utilizes a brute-force search algorithm in addition to automatically quantizing to binary vectors.
+   * Only supports `element_type` of `float`.
+   */
+  bbq_flat,
+  /**
+   * This utilizes the HNSW algorithm in addition to automatic binary quantization for scalable approximate kNN
+   * search with `element_type` of `float`.
+   *
+   * This can reduce the memory footprint by nearly 32x at the cost of some accuracy.
+   */
+  bbq_hnsw,
+  /**
    * This utilizes a brute-force search algorithm for exact kNN search. This supports all `element_type` values.
    */
   flat,
