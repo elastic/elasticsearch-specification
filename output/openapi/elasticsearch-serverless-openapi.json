@@ -45459,11 +45459,11 @@
             "type": "number"
           },
           "ef_construction": {
-            "description": "The number of candidates to track while assembling the list of nearest neighbors for each new node.\n\nOnly applicable to `hnsw`, `int8_hnsw`, and `int4_hnsw` index types.",
+            "description": "The number of candidates to track while assembling the list of nearest neighbors for each new node.\n\nOnly applicable to `hnsw`, `int8_hnsw`, `bbq_hnsw`, and `int4_hnsw` index types.",
             "type": "number"
           },
           "m": {
-            "description": "The number of neighbors each node will be connected to in the HNSW graph.\n\nOnly applicable to `hnsw`, `int8_hnsw`, and `int4_hnsw` index types.",
+            "description": "The number of neighbors each node will be connected to in the HNSW graph.\n\nOnly applicable to `hnsw`, `int8_hnsw`, `bbq_hnsw`, and `int4_hnsw` index types.",
             "type": "number"
           },
           "type": {
@@ -45480,6 +45480,8 @@
       "_types.mapping:DenseVectorIndexOptionsType": {
         "type": "string",
         "enum": [
+          "bbq_flat",
+          "bbq_hnsw",
           "flat",
           "hnsw",
           "int4_flat",
