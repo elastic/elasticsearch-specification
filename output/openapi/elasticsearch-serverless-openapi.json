@@ -5592,7 +5592,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/_types:EsqlResult"
+                  "$ref": "#/components/schemas/esql._types:EsqlResult"
                 }
               }
             }
@@ -48439,8 +48439,297 @@
           }
         ]
       },
-      "_types:EsqlResult": {
-        "type": "object"
+      "esql._types:EsqlResult": {
+        "type": "object",
+        "properties": {
+          "took": {
+            "$ref": "#/components/schemas/_types:DurationValueUnitMillis"
+          },
+          "is_partial": {
+            "type": "boolean"
+          },
+          "all_columns": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/esql._types:ColumnInfo"
+            }
+          },
+          "columns": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/esql._types:ColumnInfo"
+            }
+          },
+          "values": {
+            "type": "array",
+            "items": {
+              "type": "array",
+              "items": {
+                "$ref": "#/components/schemas/_types:FieldValue"
+              }
+            }
+          },
+          "_clusters": {
+            "$ref": "#/components/schemas/esql._types:ClusterInfo"
+          },
+          "profile": {
+            "$ref": "#/components/schemas/esql._types:EsqlProfile"
+          }
+        },
+        "required": [
+          "columns",
+          "values"
+        ]
+      },
+      "esql._types:ColumnInfo": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "type": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "name",
+          "type"
+        ]
+      },
+      "esql._types:ClusterInfo": {
+        "type": "object",
+        "properties": {
+          "total": {
+            "type": "number"
+          },
+          "successful": {
+            "type": "number"
+          },
+          "running": {
+            "type": "number"
+          },
+          "skipped": {
+            "type": "number"
+          },
+          "partial": {
+            "type": "number"
+          },
+          "failed": {
+            "type": "number"
+          },
+          "details": {
+            "type": "object",
+            "additionalProperties": {
+              "$ref": "#/components/schemas/esql._types:EsqlClusterDetails"
+            }
+          }
+        },
+        "required": [
+          "total",
+          "successful",
+          "running",
+          "skipped",
+          "partial",
+          "failed",
+          "details"
+        ]
+      },
+      "esql._types:EsqlClusterDetails": {
+        "type": "object",
+        "properties": {
+          "status": {
+            "$ref": "#/components/schemas/esql._types:EsqlClusterStatus"
+          },
+          "indices": {
+            "type": "string"
+          },
+          "took": {
+            "$ref": "#/components/schemas/_types:DurationValueUnitMillis"
+          },
+          "_shards": {
+            "$ref": "#/components/schemas/esql._types:EsqlShardInfo"
+          }
+        },
+        "required": [
+          "status",
+          "indices"
+        ]
+      },
+      "esql._types:EsqlClusterStatus": {
+        "type": "string",
+        "enum": [
+          "running",
+          "successful",
+          "partial",
+          "skipped",
+          "failed"
+        ]
+      },
+      "esql._types:EsqlShardInfo": {
+        "type": "object",
+        "properties": {
+          "total": {
+            "type": "number"
+          },
+          "successful": {
+            "type": "number"
+          },
+          "skipped": {
+            "type": "number"
+          },
+          "failed": {
+            "type": "number"
+          },
+          "failures": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/esql._types:EsqlShardFailure"
+            }
+          }
+        },
+        "required": [
+          "total"
+        ]
+      },
+      "esql._types:EsqlShardFailure": {
+        "type": "object",
+        "properties": {
+          "shard": {
+            "$ref": "#/components/schemas/_types:Id"
+          },
+          "index": {
+            "$ref": "#/components/schemas/_types:IndexName"
+          },
+          "node": {
+            "$ref": "#/components/schemas/_types:NodeId"
+          },
+          "reason": {
+            "$ref": "#/components/schemas/_types:ErrorCause"
+          }
+        },
+        "required": [
+          "shard",
+          "index",
+          "reason"
+        ]
+      },
+      "esql._types:EsqlProfile": {
+        "type": "object",
+        "properties": {
+          "drivers": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/esql._types:EsqlDriverProfile"
+            }
+          }
+        },
+        "required": [
+          "drivers"
+        ]
+      },
+      "esql._types:EsqlDriverProfile": {
+        "type": "object",
+        "properties": {
+          "description": {
+            "type": "string"
+          },
+          "cluster_name": {
+            "type": "string"
+          },
+          "node_name": {
+            "type": "string"
+          },
+          "start_millis": {
+            "$ref": "#/components/schemas/_types:DurationValueUnitMillis"
+          },
+          "stop_millis": {
+            "$ref": "#/components/schemas/_types:DurationValueUnitMillis"
+          },
+          "took_nanos": {
+            "$ref": "#/components/schemas/_types:DurationValueUnitNanos"
+          },
+          "cpu_nanos": {
+            "$ref": "#/components/schemas/_types:DurationValueUnitNanos"
+          },
+          "iterations": {
+            "type": "number"
+          },
+          "operators": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/esql._types:EsqlOperatorStatus"
+            }
+          },
+          "sleeps": {
+            "$ref": "#/components/schemas/esql._types:EsqlDriverSleeps"
+          }
+        },
+        "required": [
+          "start_millis",
+          "stop_millis",
+          "took_nanos",
+          "cpu_nanos",
+          "iterations",
+          "operators",
+          "sleeps"
+        ]
+      },
+      "esql._types:EsqlOperatorStatus": {
+        "type": "object",
+        "properties": {
+          "operator": {
+            "type": "string"
+          },
+          "status": {
+            "type": "object"
+          }
+        },
+        "required": [
+          "operator"
+        ]
+      },
+      "esql._types:EsqlDriverSleeps": {
+        "type": "object",
+        "properties": {
+          "counts": {
+            "type": "object",
+            "additionalProperties": {
+              "type": "number"
+            }
+          },
+          "first": {
+            "$ref": "#/components/schemas/esql._types:EsqlDriverSleep"
+          },
+          "last": {
+            "$ref": "#/components/schemas/esql._types:EsqlDriverSleep"
+          }
+        },
+        "required": [
+          "counts",
+          "first",
+          "last"
+        ]
+      },
+      "esql._types:EsqlDriverSleep": {
+        "type": "object",
+        "properties": {
+          "reason": {
+            "type": "string"
+          },
+          "thread_name": {
+            "type": "string"
+          },
+          "sleep_millis": {
+            "$ref": "#/components/schemas/_types:DurationValueUnitMillis"
+          },
+          "wake_millis": {
+            "$ref": "#/components/schemas/_types:DurationValueUnitMillis"
+          }
+        },
+        "required": [
+          "reason",
+          "sleep_millis"
+        ]
       },
       "_types:InlineGet": {
         "type": "object",

@@ -1,0 +1,120 @@
+/*
+ * Licensed to Elasticsearch B.V. under one or more contributor
+ * license agreements. See the NOTICE file distributed with
+ * this work for additional information regarding copyright
+ * ownership. Elasticsearch B.V. licenses this file to you under
+ * the Apache License, Version 2.0 (the "License"); you may
+ * not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *    http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing,
+ * software distributed under the License is distributed on an
+ * "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+ * KIND, either express or implied.  See the License for the
+ * specific language governing permissions and limitations
+ * under the License.
+ */
+
+import { Dictionary } from '@spec_utils/Dictionary'
+import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
+import { FieldValue, Id, IndexName, NodeId } from '@_types/common'
+import { ErrorCause } from '@_types/Errors'
+import { integer, long } from '@_types/Numeric'
+import { DurationValue, UnitMillis, UnitNanos } from '@_types/Time'
+
+export class EsqlResult {
+  took?: DurationValue<UnitMillis>
+  is_partial?: boolean
+  all_columns?: ColumnInfo[]
+  columns: ColumnInfo[]
+  values: Array<Array<FieldValue>>
+  _clusters?: ClusterInfo
+  profile?: EsqlProfile
+}
+
+export class AsyncEsqlResult extends EsqlResult {
+  id?: string
+  is_running: boolean
+}
+
+export class ColumnInfo {
+  name: string
+  type: string
+}
+
+export class ClusterInfo {
+  total: integer
+  successful: integer
+  running: integer
+  skipped: integer
+  partial: integer
+  failed: integer
+  details: Dictionary<string, EsqlClusterDetails>
+}
+
+export class EsqlClusterDetails {
+  status: EsqlClusterStatus
+  indices: string
+  took?: DurationValue<UnitMillis>
+  _shards?: EsqlShardInfo
+}
+
+export enum EsqlClusterStatus {
+  running,
+  successful,
+  partial,
+  skipped,
+  failed
+}
+
+export class EsqlShardInfo {
+  total: integer
+  successful?: integer
+  skipped?: integer
+  failed?: integer
+  failures?: EsqlShardFailure[]
+}
+
+export class EsqlShardFailure {
+  shard: Id
+  index: IndexName
+  node?: NodeId
+  reason: ErrorCause
+}
+
+export class EsqlProfile {
+  drivers: EsqlDriverProfile[]
+}
+
+export class EsqlDriverProfile {
+  description?: string
+  cluster_name?: string
+  node_name?: string
+  start_millis: DurationValue<UnitMillis>
+  stop_millis: DurationValue<UnitMillis>
+  took_nanos: DurationValue<UnitNanos>
+  cpu_nanos: DurationValue<UnitNanos>
+  iterations: integer
+  operators: EsqlOperatorStatus[]
+  sleeps: EsqlDriverSleeps
+}
+
+export class EsqlOperatorStatus {
+  operator: string
+  status?: UserDefinedValue // 14 impls at the time of writing. We cannot capture this moving target in the API spec.
+}
+
+export class EsqlDriverSleeps {
+  counts: Dictionary<string, long>
+  first: EsqlDriverSleep
+  last: EsqlDriverSleep
+}
+
+export class EsqlDriverSleep {
+  reason: string
+  thread_name?: string
+  sleep_millis: DurationValue<UnitMillis>
+  wake_millis?: DurationValue<UnitMillis>
+}
