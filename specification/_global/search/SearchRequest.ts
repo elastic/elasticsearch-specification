@@ -448,7 +448,7 @@ export interface Request extends RequestBase {
     rank?: RankContainer
     /**
      * The minimum `_score` for matching documents.
-     * Documents with a lower `_score` are not included in the search results.
+     * Documents with a lower `_score` are not included in search results and results collected by aggregations.
      */
     min_score?: double
     /**
