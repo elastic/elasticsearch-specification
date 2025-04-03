@@ -159,6 +159,8 @@ export class IndexingStats {
   index_failed: long
   types?: Dictionary<string, IndexingStats>
   write_load?: double
+  recent_write_load?: double
+  peak_write_load?: double
 }
 
 export class MergesStats {

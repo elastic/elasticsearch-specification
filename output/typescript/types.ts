@@ -2491,6 +2491,8 @@ export interface IndexingStats {
   index_failed: long
   types?: Record<string, IndexingStats>
   write_load?: double
+  recent_write_load?: double
+  peak_write_load?: double
 }
 
 export type Indices = IndexName | IndexName[]
