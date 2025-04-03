@@ -5493,6 +5493,11 @@ export interface MappingDenseVectorIndexOptions {
   ef_construction?: integer
   m?: integer
   type: MappingDenseVectorIndexOptionsType
+  rescore_vector?: MappingDenseVectorIndexOptionsRescoreVector
+}
+
+export interface MappingDenseVectorIndexOptionsRescoreVector {
+  oversample: float
 }
 
 export type MappingDenseVectorIndexOptionsType = 'bbq_flat' | 'bbq_hnsw' | 'flat' | 'hnsw' | 'int4_flat' | 'int4_hnsw' | 'int8_flat' | 'int8_hnsw'

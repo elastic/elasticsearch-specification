@@ -45468,6 +45468,9 @@
           },
           "type": {
             "$ref": "#/components/schemas/_types.mapping:DenseVectorIndexOptionsType"
+          },
+          "rescore_vector": {
+            "$ref": "#/components/schemas/_types.mapping:DenseVectorIndexOptionsRescoreVector"
           }
         },
         "required": [
@@ -45485,6 +45488,18 @@
           "int4_hnsw",
           "int8_flat",
           "int8_hnsw"
+        ]
+      },
+      "_types.mapping:DenseVectorIndexOptionsRescoreVector": {
+        "type": "object",
+        "properties": {
+          "oversample": {
+            "description": "The oversampling factor to use when searching for the nearest neighbor. This is only applicable to the quantized formats: `bbq_*`, `int4_*`, and `int8_*`.\nWhen provided, `oversample * k` vectors will be gathered and then their scores will be re-computed with the original vectors.\n\nvalid values are between `1.0` and `10.0` (inclusive), or `0` exactly to disable oversampling.",
+            "type": "number"
+          }
+        },
+        "required": [
+          "oversample"
         ]
       },
       "_types.mapping:DenseVectorSimilarity": {
