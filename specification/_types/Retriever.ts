@@ -74,9 +74,9 @@ export class KnnRetriever extends RetrieverBase {
   num_candidates: integer
   /** The minimum similarity required for a document to be considered a match.  */
   similarity?: float
-  /** Apply oversampling and rescoring to quantized vectors *
-   * @availability stack since=8.18.0 stability=experimental
-   * @availability serverless stability=experimental
+  /** Apply oversampling and rescoring to quantized vectors
+   * @availability stack since=8.18.0
+   * @availability serverless
    */
   rescore_vector?: RescoreVector
 }
