@@ -118,8 +118,8 @@ export class MultisearchBody {
    */
   indices_boost?: Array<SingleKeyDictionary<IndexName, double>>
   /**
-   * Minimum _score for matching documents. Documents with a lower _score are
-   * not included in the search results.
+   * The minimum `_score` for matching documents.
+   * Documents with a lower `_score` are not included in search results and results collected by aggregations.
    */
   min_score?: double
   post_filter?: QueryContainer
