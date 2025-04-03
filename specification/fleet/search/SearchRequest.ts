@@ -175,7 +175,7 @@ export interface Request extends RequestBase {
     docvalue_fields?: FieldAndFormat[]
     /**
      * Minimum _score for matching documents. Documents with a lower _score are
-     * not included in the search results.
+     * not included in search results and results collected by aggregations.
      */
     min_score?: double
     post_filter?: QueryContainer

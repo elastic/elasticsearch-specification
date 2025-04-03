@@ -30003,7 +30003,7 @@
             ]
           },
           "min_score": {
-            "description": "The minimum `_score` for matching documents.\nDocuments with a lower `_score` are not included in the search results.",
+            "description": "The minimum `_score` for matching documents.\nDocuments with a lower `_score` are not included in search results or results collected by aggregations.",
             "type": "number"
           },
           "post_filter": {
@@ -68039,7 +68039,7 @@
                   ]
                 },
                 "min_score": {
-                  "description": "Minimum _score for matching documents. Documents with a lower _score are\nnot included in the search results.",
+                  "description": "Minimum _score for matching documents. Documents with a lower _score are\nnot included in search results and results collected by aggregations.",
                   "type": "number"
                 },
                 "post_filter": {
@@ -69397,7 +69397,7 @@
                   ]
                 },
                 "min_score": {
-                  "description": "The minimum `_score` for matching documents.\nDocuments with a lower `_score` are not included in the search results.",
+                  "description": "The minimum `_score` for matching documents.\nDocuments with a lower `_score` are not included in search results and results collected by aggregations.",
                   "type": "number"
                 },
                 "post_filter": {
