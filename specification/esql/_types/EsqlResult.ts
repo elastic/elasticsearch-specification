@@ -17,6 +17,7 @@
  * under the License.
  */
 
+import { AdditionalProperties } from '@spec_utils/behaviors'
 import { Dictionary } from '@spec_utils/Dictionary'
 import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 import { FieldValue, Id, IndexName, NodeId } from '@_types/common'
@@ -30,7 +31,14 @@ export class EsqlResult {
   all_columns?: ColumnInfo[]
   columns: ColumnInfo[]
   values: Array<Array<FieldValue>>
+  /**
+   * Cross-cluster search information. Present if `include_ccs_metadata` was `true` in the request
+   * and a cross-cluster search was performed.
+   */
   _clusters?: ClusterInfo
+  /**
+   * Profiling information. Present if `profile` was `true` in the request.
+   */
   profile?: EsqlProfile
 }
 
@@ -103,13 +111,18 @@ export class EsqlDriverProfile {
 
 export class EsqlOperatorStatus {
   operator: string
-  status?: UserDefinedValue // 14 impls at the time of writing. We cannot capture this moving target in the API spec.
+  // 14 impls at the time of writing, no discriminant (`operator` contains type and data,
+  // e.g. `LuceneSourceOperator[maxPageSize = 512, remainingDocs = 993]`)
+  status?: UserDefinedValue
 }
 
-export class EsqlDriverSleeps {
+/**
+ * @behavior_meta AdditionalProperties fieldname=details description="Detailed information on sleeps"
+ */
+export class EsqlDriverSleeps
+  implements AdditionalProperties<string, Array<EsqlDriverSleeps>>
+{
   counts: Dictionary<string, long>
-  first: EsqlDriverSleep
-  last: EsqlDriverSleep
 }
 
 export class EsqlDriverSleep {

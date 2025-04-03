@@ -10641,18 +10641,11 @@ export interface EsqlEsqlDriverProfile {
   sleeps: EsqlEsqlDriverSleeps
 }
 
-export interface EsqlEsqlDriverSleep {
-  reason: string
-  thread_name?: string
-  sleep_millis: DurationValue<UnitMillis>
-  wake_millis?: DurationValue<UnitMillis>
-}
-
-export interface EsqlEsqlDriverSleeps {
+export interface EsqlEsqlDriverSleepsKeys {
   counts: Record<string, long>
-  first: EsqlEsqlDriverSleep
-  last: EsqlEsqlDriverSleep
 }
+export type EsqlEsqlDriverSleeps = EsqlEsqlDriverSleepsKeys
+  & { [property: string]: EsqlEsqlDriverSleeps[] | Record<string, long> }
 
 export type EsqlEsqlFormat = 'csv' | 'json' | 'tsv' | 'txt' | 'yaml' | 'cbor' | 'smile' | 'arrow'
 

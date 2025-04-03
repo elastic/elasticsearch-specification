@@ -48696,39 +48696,10 @@
             "additionalProperties": {
               "type": "number"
             }
-          },
-          "first": {
-            "$ref": "#/components/schemas/esql._types:EsqlDriverSleep"
-          },
-          "last": {
-            "$ref": "#/components/schemas/esql._types:EsqlDriverSleep"
           }
         },
         "required": [
-          "counts",
-          "first",
-          "last"
-        ]
-      },
-      "esql._types:EsqlDriverSleep": {
-        "type": "object",
-        "properties": {
-          "reason": {
-            "type": "string"
-          },
-          "thread_name": {
-            "type": "string"
-          },
-          "sleep_millis": {
-            "$ref": "#/components/schemas/_types:DurationValueUnitMillis"
-          },
-          "wake_millis": {
-            "$ref": "#/components/schemas/_types:DurationValueUnitMillis"
-          }
-        },
-        "required": [
-          "reason",
-          "sleep_millis"
+          "counts"
         ]
       },
       "_types:InlineGet": {
