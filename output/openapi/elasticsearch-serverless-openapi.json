@@ -48473,7 +48473,8 @@
             "$ref": "#/components/schemas/esql._types:ClusterInfo"
           },
           "profile": {
-            "$ref": "#/components/schemas/esql._types:EsqlProfile"
+            "description": "Profiling information. Present if `profile` was `true` in the request.\nThe contents of this field are currently unstable.",
+            "type": "object"
           }
         },
         "required": [
@@ -48611,95 +48612,6 @@
           "shard",
           "index",
           "reason"
-        ]
-      },
-      "esql._types:EsqlProfile": {
-        "type": "object",
-        "properties": {
-          "drivers": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/esql._types:EsqlDriverProfile"
-            }
-          }
-        },
-        "required": [
-          "drivers"
-        ]
-      },
-      "esql._types:EsqlDriverProfile": {
-        "type": "object",
-        "properties": {
-          "description": {
-            "type": "string"
-          },
-          "cluster_name": {
-            "type": "string"
-          },
-          "node_name": {
-            "type": "string"
-          },
-          "start_millis": {
-            "$ref": "#/components/schemas/_types:DurationValueUnitMillis"
-          },
-          "stop_millis": {
-            "$ref": "#/components/schemas/_types:DurationValueUnitMillis"
-          },
-          "took_nanos": {
-            "$ref": "#/components/schemas/_types:DurationValueUnitNanos"
-          },
-          "cpu_nanos": {
-            "$ref": "#/components/schemas/_types:DurationValueUnitNanos"
-          },
-          "iterations": {
-            "type": "number"
-          },
-          "operators": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/esql._types:EsqlOperatorStatus"
-            }
-          },
-          "sleeps": {
-            "$ref": "#/components/schemas/esql._types:EsqlDriverSleeps"
-          }
-        },
-        "required": [
-          "start_millis",
-          "stop_millis",
-          "took_nanos",
-          "cpu_nanos",
-          "iterations",
-          "operators",
-          "sleeps"
-        ]
-      },
-      "esql._types:EsqlOperatorStatus": {
-        "type": "object",
-        "properties": {
-          "operator": {
-            "type": "string"
-          },
-          "status": {
-            "type": "object"
-          }
-        },
-        "required": [
-          "operator"
-        ]
-      },
-      "esql._types:EsqlDriverSleeps": {
-        "type": "object",
-        "properties": {
-          "counts": {
-            "type": "object",
-            "additionalProperties": {
-              "type": "number"
-            }
-          }
-        },
-        "required": [
-          "counts"
         ]
       },
       "_types:InlineGet": {

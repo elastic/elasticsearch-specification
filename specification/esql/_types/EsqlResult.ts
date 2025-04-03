@@ -17,13 +17,12 @@
  * under the License.
  */
 
-import { AdditionalProperties } from '@spec_utils/behaviors'
 import { Dictionary } from '@spec_utils/Dictionary'
 import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 import { FieldValue, Id, IndexName, NodeId } from '@_types/common'
 import { ErrorCause } from '@_types/Errors'
-import { integer, long } from '@_types/Numeric'
-import { DurationValue, UnitMillis, UnitNanos } from '@_types/Time'
+import { integer } from '@_types/Numeric'
+import { DurationValue, UnitMillis } from '@_types/Time'
 
 export class EsqlResult {
   took?: DurationValue<UnitMillis>
@@ -38,8 +37,9 @@ export class EsqlResult {
   _clusters?: ClusterInfo
   /**
    * Profiling information. Present if `profile` was `true` in the request.
+   * The contents of this field are currently unstable.
    */
-  profile?: EsqlProfile
+  profile?: UserDefinedValue
 }
 
 export class AsyncEsqlResult extends EsqlResult {
@@ -90,44 +90,4 @@ export class EsqlShardFailure {
   index: IndexName
   node?: NodeId
   reason: ErrorCause
-}
-
-export class EsqlProfile {
-  drivers: EsqlDriverProfile[]
-}
-
-export class EsqlDriverProfile {
-  description?: string
-  cluster_name?: string
-  node_name?: string
-  start_millis: DurationValue<UnitMillis>
-  stop_millis: DurationValue<UnitMillis>
-  took_nanos: DurationValue<UnitNanos>
-  cpu_nanos: DurationValue<UnitNanos>
-  iterations: integer
-  operators: EsqlOperatorStatus[]
-  sleeps: EsqlDriverSleeps
-}
-
-export class EsqlOperatorStatus {
-  operator: string
-  // 14 impls at the time of writing, no discriminant (`operator` contains type and data,
-  // e.g. `LuceneSourceOperator[maxPageSize = 512, remainingDocs = 993]`)
-  status?: UserDefinedValue
-}
-
-/**
- * @behavior_meta AdditionalProperties fieldname=details description="Detailed information on sleeps"
- */
-export class EsqlDriverSleeps
-  implements AdditionalProperties<string, Array<EsqlDriverSleeps>>
-{
-  counts: Dictionary<string, long>
-}
-
-export class EsqlDriverSleep {
-  reason: string
-  thread_name?: string
-  sleep_millis: DurationValue<UnitMillis>
-  wake_millis?: DurationValue<UnitMillis>
 }

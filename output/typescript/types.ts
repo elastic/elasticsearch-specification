@@ -10628,35 +10628,7 @@ export interface EsqlEsqlClusterDetails {
 
 export type EsqlEsqlClusterStatus = 'running' | 'successful' | 'partial' | 'skipped' | 'failed'
 
-export interface EsqlEsqlDriverProfile {
-  description?: string
-  cluster_name?: string
-  node_name?: string
-  start_millis: DurationValue<UnitMillis>
-  stop_millis: DurationValue<UnitMillis>
-  took_nanos: DurationValue<UnitNanos>
-  cpu_nanos: DurationValue<UnitNanos>
-  iterations: integer
-  operators: EsqlEsqlOperatorStatus[]
-  sleeps: EsqlEsqlDriverSleeps
-}
-
-export interface EsqlEsqlDriverSleepsKeys {
-  counts: Record<string, long>
-}
-export type EsqlEsqlDriverSleeps = EsqlEsqlDriverSleepsKeys
-  & { [property: string]: EsqlEsqlDriverSleeps[] | Record<string, long> }
-
 export type EsqlEsqlFormat = 'csv' | 'json' | 'tsv' | 'txt' | 'yaml' | 'cbor' | 'smile' | 'arrow'
-
-export interface EsqlEsqlOperatorStatus {
-  operator: string
-  status?: any
-}
-
-export interface EsqlEsqlProfile {
-  drivers: EsqlEsqlDriverProfile[]
-}
 
 export interface EsqlEsqlResult {
   took?: DurationValue<UnitMillis>
@@ -10665,7 +10637,7 @@ export interface EsqlEsqlResult {
   columns: EsqlColumnInfo[]
   values: FieldValue[][]
   _clusters?: EsqlClusterInfo
-  profile?: EsqlEsqlProfile
+  profile?: any
 }
 
 export interface EsqlEsqlShardFailure {
