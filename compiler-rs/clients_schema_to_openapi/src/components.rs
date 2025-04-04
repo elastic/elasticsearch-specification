@@ -20,6 +20,10 @@ use openapiv3::{Components, Parameter, ReferenceOr, RequestBody, Response, Schem
 
 use crate::utils::SchemaName;
 
+// Separator used to combine parts of a component path.
+// See https://github.com/elastic/elasticsearch-specification/issues/4183
+pub const SEPARATOR: char = ':';
+
 pub struct TypesAndComponents<'a> {
     pub model: &'a clients_schema::IndexedModel,
     pub components: &'a mut Components,
@@ -43,14 +47,14 @@ impl<'a> TypesAndComponents<'a> {
         let suffix = if duplicate { "_" } else { "" };
         let result = ReferenceOr::Reference {
             reference: format!(
-                "#/components/parameters/{}#{}{}",
+                "#/components/parameters/{}{SEPARATOR}{}{}",
                 endpoint,
                 &param.parameter_data_ref().name,
                 suffix
             ),
         };
         self.components.parameters.insert(
-            format!("{}#{}{}", endpoint, &param.parameter_data_ref().name, suffix),
+            format!("{}{SEPARATOR}{}{}", endpoint, &param.parameter_data_ref().name, suffix),
             ReferenceOr::Item(param),
         );
         result
@@ -59,9 +63,9 @@ impl<'a> TypesAndComponents<'a> {
     pub fn add_response(&mut self, endpoint: &str, status: StatusCode, response: Response) -> ReferenceOr<Response> {
         self.components
             .responses
-            .insert(format!("{}#{}", endpoint, status), ReferenceOr::Item(response));
+            .insert(format!("{}{SEPARATOR}{}", endpoint, status), ReferenceOr::Item(response));
         ReferenceOr::Reference {
-            reference: format!("#/components/responses/{}#{}", endpoint, status),
+            reference: format!("#/components/responses/{}{SEPARATOR}{}", endpoint, status),
         }
     }
 
