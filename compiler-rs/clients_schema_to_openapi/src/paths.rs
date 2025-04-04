@@ -132,14 +132,14 @@ pub fn add_endpoint(
                 external_value: None,
                 extensions: Default::default(),
             };
-            openapi_examples.insert(name.clone(), ReferenceOr::Item(openapi_example));    
+            openapi_examples.insert(name.clone(), ReferenceOr::Item(openapi_example));
         }
         return openapi_examples;
     }
 
 
     let mut request_examples: IndexMap<String, ReferenceOr<Example>> = indexmap! {};
-    // If this endpoint request has examples in schema.json, convert them to the 
+    // If this endpoint request has examples in schema.json, convert them to the
     // OpenAPI format and add them to the endpoint request in the OpenAPI document.
     if request.examples.is_some() {
         request_examples = get_openapi_examples(request.examples.as_ref().unwrap().clone());
@@ -177,7 +177,7 @@ pub fn add_endpoint(
     // TODO: handle binary responses
     let response_def = tac.model.get_response(endpoint.response.as_ref().unwrap())?;
     let mut response_examples: IndexMap<String, ReferenceOr<Example>> = indexmap! {};
-    // If this endpoint response has examples in schema.json, convert them to the 
+    // If this endpoint response has examples in schema.json, convert them to the
     // OpenAPI format and add them to the endpoint response in the OpenAPI document.
     if response_def.examples.is_some() {
         response_examples = get_openapi_examples(response_def.examples.as_ref().unwrap().clone());
