@@ -149,10 +149,67 @@ module.exports.convert_schema_to_openapi = function(json, flavor) {
     }
 };
 
+function handleError(f, args) {
+    try {
+        return f.apply(this, args);
+    } catch (e) {
+        wasm.__wbindgen_exn_store(addHeapObject(e));
+    }
+}
+
 module.exports.__wbindgen_string_new = function(arg0, arg1) {
     const ret = getStringFromWasm0(arg0, arg1);
     return addHeapObject(ret);
 };
+
+module.exports.__wbg_log_c9486ca5d8e2cbe8 = function(arg0, arg1) {
+    let deferred0_0;
+    let deferred0_1;
+    try {
+        deferred0_0 = arg0;
+        deferred0_1 = arg1;
+        console.log(getStringFromWasm0(arg0, arg1));
+    } finally {
+        wasm.__wbindgen_free(deferred0_0, deferred0_1, 1);
+    }
+};
+
+module.exports.__wbg_log_aba5996d9bde071f = function(arg0, arg1, arg2, arg3, arg4, arg5, arg6, arg7) {
+    let deferred0_0;
+    let deferred0_1;
+    try {
+        deferred0_0 = arg0;
+        deferred0_1 = arg1;
+        console.log(getStringFromWasm0(arg0, arg1), getStringFromWasm0(arg2, arg3), getStringFromWasm0(arg4, arg5), getStringFromWasm0(arg6, arg7));
+    } finally {
+        wasm.__wbindgen_free(deferred0_0, deferred0_1, 1);
+    }
+};
+
+module.exports.__wbg_mark_40e050a77cc39fea = function(arg0, arg1) {
+    performance.mark(getStringFromWasm0(arg0, arg1));
+};
+
+module.exports.__wbindgen_object_drop_ref = function(arg0) {
+    takeObject(arg0);
+};
+
+module.exports.__wbg_measure_aa7a73f17813f708 = function() { return handleError(function (arg0, arg1, arg2, arg3) {
+    let deferred0_0;
+    let deferred0_1;
+    let deferred1_0;
+    let deferred1_1;
+    try {
+        deferred0_0 = arg0;
+        deferred0_1 = arg1;
+        deferred1_0 = arg2;
+        deferred1_1 = arg3;
+        performance.measure(getStringFromWasm0(arg0, arg1), getStringFromWasm0(arg2, arg3));
+    } finally {
+        wasm.__wbindgen_free(deferred0_0, deferred0_1, 1);
+        wasm.__wbindgen_free(deferred1_0, deferred1_1, 1);
+    }
+}, arguments) };
 
 module.exports.__wbg_new_abda76e883ba8a5f = function() {
     const ret = new Error();
@@ -177,10 +234,6 @@ module.exports.__wbg_error_f851667af71bcfc6 = function(arg0, arg1) {
     } finally {
         wasm.__wbindgen_free(deferred0_0, deferred0_1, 1);
     }
-};
-
-module.exports.__wbindgen_object_drop_ref = function(arg0) {
-    takeObject(arg0);
 };
 
 const path = require('path').join(__dirname, 'compiler_wasm_lib_bg.wasm');
