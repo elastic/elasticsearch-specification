@@ -39,12 +39,12 @@ pub fn add_endpoint(
     out: &mut Paths,
 ) -> anyhow::Result<()> {
     if endpoint.request.is_none() {
-        tracing::warn!("Endpoint {} is missing a request -- ignored", &endpoint.name);
+        // tracing::warn!("Endpoint {} is missing a request -- ignored", &endpoint.name);
         return Ok(());
     }
 
     if endpoint.response.is_none() {
-        tracing::warn!("Endpoint {} is missing a response -- ignored", &endpoint.name);
+        // tracing::warn!("Endpoint {} is missing a response -- ignored", &endpoint.name);
         return Ok(());
     }
 
@@ -126,14 +126,22 @@ pub fn add_endpoint(
         for (name, schema_example) in schema_examples {
             let example = match &schema_example.value {
                 None => None,
-                Some(text) => {
-                    match serde_json::from_str::<serde_json::Value>(&text) {
-                        Ok(json) => Some(json),
-                        // Cannot parse json: assume it's text (e.g. cat requests)
-                        // FIXME: should be validated by looking at the media-type
-                        Err(_) => Some(serde_json::Value::String(text.clone()))
-                    }
-                }
+                // Examples should be objects - https://spec.openapis.org/oas/v3.1.1.html#example-object
+                // Disabled for now, as some examples use multi-line json as in the Kibana console.
+                Some(text) => Some(serde_json::Value::String(text.clone())),
+                // Some(text) => {
+                //     match serde_json::from_str::<serde_json::Value>(&text) {
+                //         Ok(json) => {
+                //             Some(json)
+                //         }
+                //         // Cannot parse json: assume it's text (e.g. cat requests)
+                //         // but should be validated by looking at the media-type
+                //         Err(err) => {
+                //             tracing::warn!("Cannot parse example: {}\n{}", err, text);
+                //             Some(serde_json::Value::String(text.clone()))
+                //         }
+                //     }
+                // }
             };
 
             let openapi_example = Example {
