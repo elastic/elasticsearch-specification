@@ -9330,7 +9330,7 @@ export interface ClusterHealthRequest extends RequestBase {
   timeout?: Duration
   wait_for_active_shards?: WaitForActiveShards
   wait_for_events?: WaitForEvents
-  wait_for_nodes?: string | integer
+  wait_for_nodes?: ClusterHealthWaitForNodes
   wait_for_no_initializing_shards?: boolean
   wait_for_no_relocating_shards?: boolean
   wait_for_status?: HealthStatus
@@ -9347,6 +9347,8 @@ export interface ClusterHealthShardHealthStats {
   unassigned_shards: integer
   unassigned_primary_shards: integer
 }
+
+export type ClusterHealthWaitForNodes = string | integer
 
 export interface ClusterInfoRequest extends RequestBase {
   target: ClusterInfoTargets
