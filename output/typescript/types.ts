@@ -9290,7 +9290,8 @@ export interface ClusterGetSettingsResponse {
 export interface ClusterHealthHealthResponseBody {
   active_primary_shards: integer
   active_shards: integer
-  active_shards_percent_as_number: Percentage
+  active_shards_percent?: string
+  active_shards_percent_as_number: double
   cluster_name: Name
   delayed_unassigned_shards: integer
   indices?: Record<IndexName, ClusterHealthIndexHealthStats>
@@ -9330,7 +9331,7 @@ export interface ClusterHealthRequest extends RequestBase {
   timeout?: Duration
   wait_for_active_shards?: WaitForActiveShards
   wait_for_events?: WaitForEvents
-  wait_for_nodes?: string | integer
+  wait_for_nodes?: ClusterHealthWaitForNodes
   wait_for_no_initializing_shards?: boolean
   wait_for_no_relocating_shards?: boolean
   wait_for_status?: HealthStatus
@@ -9347,6 +9348,8 @@ export interface ClusterHealthShardHealthStats {
   unassigned_shards: integer
   unassigned_primary_shards: integer
 }
+
+export type ClusterHealthWaitForNodes = string | integer
 
 export interface ClusterInfoRequest extends RequestBase {
   target: ClusterInfoTargets
@@ -13238,15 +13241,6 @@ export type InferenceDenseByteVector = byte[]
 
 export type InferenceDenseVector = float[]
 
-export interface InferenceEisServiceSettings {
-  model_id: string
-  rate_limit?: InferenceRateLimitSetting
-}
-
-export type InferenceEisServiceType = 'elastic'
-
-export type InferenceEisTaskType = 'chat_completion'
-
 export interface InferenceElasticsearchServiceSettings {
   adaptive_allocations?: InferenceAdaptiveAllocations
   deployment_id?: string
@@ -13521,13 +13515,6 @@ export interface InferenceGetResponse {
   endpoints: InferenceInferenceEndpointInfo[]
 }
 
-export interface InferencePostEisChatCompletionRequest extends RequestBase {
-  eis_inference_id: Id
-  body?: InferenceRequestChatCompletion
-}
-
-export type InferencePostEisChatCompletionResponse = StreamResult
-
 export interface InferencePutRequest extends RequestBase {
   task_type?: InferenceTaskType
   inference_id: Id
@@ -13613,17 +13600,6 @@ export interface InferencePutCohereRequest extends RequestBase {
 }
 
 export type InferencePutCohereResponse = InferenceInferenceEndpointInfo
-
-export interface InferencePutEisRequest extends RequestBase {
-  task_type: InferenceEisTaskType
-  eis_inference_id: Id
-  body?: {
-    service: InferenceEisServiceType
-    service_settings: InferenceEisServiceSettings
-  }
-}
-
-export type InferencePutEisResponse = InferenceInferenceEndpointInfo
 
 export interface InferencePutElasticsearchRequest extends RequestBase {
   task_type: InferenceElasticsearchTaskType
@@ -14034,12 +14010,19 @@ export interface IngestInferenceProcessor extends IngestProcessorBase {
   target_field?: Field
   field_map?: Record<Field, any>
   inference_config?: IngestInferenceConfig
+  input_output?: IngestInputConfig[]
+  ignore_missing?: boolean
 }
 
 export interface IngestIngest {
   _redact?: IngestRedact
   timestamp: DateTime
   pipeline?: Name
+}
+
+export interface IngestInputConfig {
+  input_field: string
+  output_field: string
 }
 
 export interface IngestIpLocationProcessor extends IngestProcessorBase {
