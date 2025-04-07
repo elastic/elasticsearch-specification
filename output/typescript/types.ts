@@ -13246,15 +13246,6 @@ export type InferenceDenseByteVector = byte[]
 
 export type InferenceDenseVector = float[]
 
-export interface InferenceEisServiceSettings {
-  model_id: string
-  rate_limit?: InferenceRateLimitSetting
-}
-
-export type InferenceEisServiceType = 'elastic'
-
-export type InferenceEisTaskType = 'chat_completion'
-
 export interface InferenceElasticsearchServiceSettings {
   adaptive_allocations?: InferenceAdaptiveAllocations
   deployment_id?: string
@@ -13529,13 +13520,6 @@ export interface InferenceGetResponse {
   endpoints: InferenceInferenceEndpointInfo[]
 }
 
-export interface InferencePostEisChatCompletionRequest extends RequestBase {
-  eis_inference_id: Id
-  body?: InferenceRequestChatCompletion
-}
-
-export type InferencePostEisChatCompletionResponse = StreamResult
-
 export interface InferencePutRequest extends RequestBase {
   task_type?: InferenceTaskType
   inference_id: Id
@@ -13621,17 +13605,6 @@ export interface InferencePutCohereRequest extends RequestBase {
 }
 
 export type InferencePutCohereResponse = InferenceInferenceEndpointInfo
-
-export interface InferencePutEisRequest extends RequestBase {
-  task_type: InferenceEisTaskType
-  eis_inference_id: Id
-  body?: {
-    service: InferenceEisServiceType
-    service_settings: InferenceEisServiceSettings
-  }
-}
-
-export type InferencePutEisResponse = InferenceInferenceEndpointInfo
 
 export interface InferencePutElasticsearchRequest extends RequestBase {
   task_type: InferenceElasticsearchTaskType
