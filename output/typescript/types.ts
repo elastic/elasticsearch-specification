@@ -14010,7 +14010,7 @@ export interface IngestInferenceProcessor extends IngestProcessorBase {
   target_field?: Field
   field_map?: Record<Field, any>
   inference_config?: IngestInferenceConfig
-  input_output?: IngestInputConfig[]
+  input_output?: IngestInputConfig | IngestInputConfig[]
   ignore_missing?: boolean
 }
 
