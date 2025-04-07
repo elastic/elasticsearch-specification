@@ -9312,7 +9312,8 @@ export interface ClusterGetSettingsResponse {
 export interface ClusterHealthHealthResponseBody {
   active_primary_shards: integer
   active_shards: integer
-  active_shards_percent_as_number: Percentage
+  active_shards_percent?: string
+  active_shards_percent_as_number: double
   cluster_name: Name
   delayed_unassigned_shards: integer
   indices?: Record<IndexName, ClusterHealthIndexHealthStats>
@@ -9352,7 +9353,7 @@ export interface ClusterHealthRequest extends RequestBase {
   timeout?: Duration
   wait_for_active_shards?: WaitForActiveShards
   wait_for_events?: WaitForEvents
-  wait_for_nodes?: string | integer
+  wait_for_nodes?: ClusterHealthWaitForNodes
   wait_for_no_initializing_shards?: boolean
   wait_for_no_relocating_shards?: boolean
   wait_for_status?: HealthStatus
@@ -9369,6 +9370,8 @@ export interface ClusterHealthShardHealthStats {
   unassigned_shards: integer
   unassigned_primary_shards: integer
 }
+
+export type ClusterHealthWaitForNodes = string | integer
 
 export interface ClusterInfoRequest extends RequestBase {
   target: ClusterInfoTargets
@@ -14015,7 +14018,7 @@ export interface IngestInferenceProcessor extends IngestProcessorBase {
   target_field?: Field
   field_map?: Record<Field, any>
   inference_config?: IngestInferenceConfig
-  input_output?: IngestInputConfig[]
+  input_output?: IngestInputConfig | IngestInputConfig[]
   ignore_missing?: boolean
 }
 
