@@ -43,3 +43,5 @@ export class ShardHealthStats {
   unassigned_shards: integer
   unassigned_primary_shards: integer
 }
+
+export type WaitForNodes = string | integer
