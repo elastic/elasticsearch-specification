@@ -1048,7 +1048,7 @@ export class InferenceProcessor extends ProcessorBase {
    * Input fields for inference and output (destination) fields for the inference results.
    * This option is incompatible with the target_field and field_map options.
    */
-  input_output?: InputConfig[]
+  input_output?: InputConfig | InputConfig[]
 
   /**
    * If true and any of the input fields defined in input_ouput are missing
