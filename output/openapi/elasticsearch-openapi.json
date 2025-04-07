@@ -74586,6 +74586,17 @@
               },
               "inference_config": {
                 "$ref": "#/components/schemas/ingest._types:InferenceConfig"
+              },
+              "input_output": {
+                "description": "Input fields for inference and output (destination) fields for the inference results.\nThis option is incompatible with the target_field and field_map options.",
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/ingest._types:InputConfig"
+                }
+              },
+              "ignore_missing": {
+                "description": "If true and any of the input fields defined in input_ouput are missing\nthen those missing fields are quietly ignored, otherwise a missing field causes a failure.\nOnly applies when using input_output configurations to explicitly list the input fields.",
+                "type": "boolean"
               }
             },
             "required": [
@@ -74641,6 +74652,21 @@
             "type": "string"
           }
         }
+      },
+      "ingest._types:InputConfig": {
+        "type": "object",
+        "properties": {
+          "input_field": {
+            "type": "string"
+          },
+          "output_field": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "input_field",
+          "output_field"
+        ]
       },
       "ingest._types:JoinProcessor": {
         "allOf": [
