@@ -9319,7 +9319,8 @@ export interface ClusterGetSettingsResponse {
 export interface ClusterHealthHealthResponseBody {
   active_primary_shards: integer
   active_shards: integer
-  active_shards_percent_as_number: Percentage
+  active_shards_percent?: string
+  active_shards_percent_as_number: double
   cluster_name: Name
   delayed_unassigned_shards: integer
   indices?: Record<IndexName, ClusterHealthIndexHealthStats>
