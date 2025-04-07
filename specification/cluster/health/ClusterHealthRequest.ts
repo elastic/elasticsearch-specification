@@ -26,8 +26,8 @@ import {
   WaitForActiveShards,
   WaitForEvents
 } from '@_types/common'
-import { integer } from '@_types/Numeric'
 import { Duration } from '@_types/Time'
+import { WaitForNodes } from './types'
 
 /**
  * Get the cluster health status.
@@ -98,7 +98,7 @@ export interface Request extends RequestBase {
     /**
      * The request waits until the specified number N of nodes is available. It also accepts >=N, <=N, >N and <N. Alternatively, it is possible to use ge(N), le(N), gt(N) and lt(N) notation.
      */
-    wait_for_nodes?: string | integer
+    wait_for_nodes?: WaitForNodes
     /**
      * A boolean value which controls whether to wait (until the timeout provided) for the cluster to have no shard initializations. Defaults to false, which means it will not wait for initializing shards.
      * @server_default false
