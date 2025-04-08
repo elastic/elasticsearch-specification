@@ -20543,7 +20543,6 @@ export interface SnapshotCloneRequest extends RequestBase {
   snapshot: Name
   target_snapshot: Name
   master_timeout?: Duration
-  timeout?: Duration
   body?: {
     indices: string
   }
