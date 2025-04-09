@@ -11,7 +11,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@stoplight/spectral-cli": "^6.10.1",
+    "@stoplight/spectral-cli": "^6.14.3",
     "json-diff": "^1.0.6"
   }
 }
