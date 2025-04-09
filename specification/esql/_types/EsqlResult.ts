@@ -27,14 +27,14 @@ import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 export class EsqlResult {
   took?: DurationValue<UnitMillis>
   is_partial?: boolean
-  all_columns?: ColumnInfo[]
-  columns: ColumnInfo[]
+  all_columns?: EsqlColumnInfo[]
+  columns: EsqlColumnInfo[]
   values: Array<Array<FieldValue>>
   /**
    * Cross-cluster search information. Present if `include_ccs_metadata` was `true` in the request
    * and a cross-cluster search was performed.
    */
-  _clusters?: ClusterInfo
+  _clusters?: EsqlClusterInfo
   /**
    * Profiling information. Present if `profile` was `true` in the request.
    * The contents of this field are currently unstable.
@@ -47,12 +47,12 @@ export class AsyncEsqlResult extends EsqlResult {
   is_running: boolean
 }
 
-export class ColumnInfo {
+export class EsqlColumnInfo {
   name: string
   type: string
 }
 
-export class ClusterInfo {
+export class EsqlClusterInfo {
   total: integer
   successful: integer
   running: integer
