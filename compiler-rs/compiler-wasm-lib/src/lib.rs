@@ -22,7 +22,7 @@ use clients_schema::transform::ExpandConfig;
 
 #[wasm_bindgen]
 pub fn convert_schema_to_openapi(json: &str, flavor: &str) -> Result<String, String> {
-    set_panic_hook();
+    setup_hooks();
     convert0(json, flavor).map_err(|err| err.to_string())
 }
 
@@ -50,7 +50,7 @@ fn convert0(json: &str, flavor: &str) -> anyhow::Result<String> {
     Ok(result)
 }
 
-pub fn set_panic_hook() {
+pub fn setup_hooks() {
     // When the `console_error_panic_hook` feature is enabled, we can call the
     // `set_panic_hook` function at least once during initialization, and then
     // we will get better error messages if our code ever panics.
@@ -59,4 +59,10 @@ pub fn set_panic_hook() {
     // https://github.com/rustwasm/console_error_panic_hook#readme
     #[cfg(feature = "console_error_panic_hook")]
     console_error_panic_hook::set_once();
+
+    use std::sync::Once;
+    static SET_TRACING: Once = Once::new();
+    SET_TRACING.call_once(|| {
+        tracing_wasm::set_as_global_default();
+    });
 }
