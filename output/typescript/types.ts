@@ -3180,12 +3180,10 @@ export interface AggregationsAggregationContainer {
   variable_width_histogram?: AggregationsVariableWidthHistogramAggregation
 }
 
-export type AggregationsAggregationRange = AggregationsUntypedAggregationRange | AggregationsDateAggregationRange | AggregationsNumberAggregationRange | AggregationsTermAggregationRange
-
-export interface AggregationsAggregationRangeBase<T = unknown> {
-  from?: T
+export interface AggregationsAggregationRange {
+  from?: double | null
   key?: string
-  to?: T
+  to?: double | null
 }
 
 export interface AggregationsArrayPercentilesItem {
@@ -3408,9 +3406,6 @@ export interface AggregationsCustomCategorizeTextAnalyzer {
   filter?: string[]
 }
 
-export interface AggregationsDateAggregationRange extends AggregationsAggregationRangeBase<AggregationsFieldDateMath> {
-}
-
 export interface AggregationsDateHistogramAggregate extends AggregationsMultiBucketAggregateBase<AggregationsDateHistogramBucket> {
 }
 
@@ -3446,9 +3441,15 @@ export interface AggregationsDateRangeAggregation extends AggregationsBucketAggr
   field?: Field
   format?: string
   missing?: AggregationsMissing
-  ranges?: AggregationsDateAggregationRange[]
+  ranges?: AggregationsDateRangeExpression[]
   time_zone?: TimeZone
   keyed?: boolean
+}
+
+export interface AggregationsDateRangeExpression {
+  from?: AggregationsFieldDateMath
+  key?: string
+  to?: AggregationsFieldDateMath
 }
 
 export interface AggregationsDerivativeAggregate extends AggregationsSingleMetricAggregateBase {
@@ -4002,9 +4003,6 @@ export interface AggregationsNormalizeAggregation extends AggregationsPipelineAg
 
 export type AggregationsNormalizeMethod = 'rescale_0_1' | 'rescale_0_100' | 'percent_of_sum' | 'mean' | 'z-score' | 'softmax'
 
-export interface AggregationsNumberAggregationRange extends AggregationsAggregationRangeBase<double> {
-}
-
 export interface AggregationsParentAggregateKeys extends AggregationsSingleBucketAggregateBase {
 }
 export type AggregationsParentAggregate = AggregationsParentAggregateKeys
@@ -4329,9 +4327,6 @@ export interface AggregationsTTestAggregation {
 
 export type AggregationsTTestType = 'paired' | 'homoscedastic' | 'heteroscedastic'
 
-export interface AggregationsTermAggregationRange extends AggregationsAggregationRangeBase<string> {
-}
-
 export interface AggregationsTermsAggregateBase<TBucket = unknown> extends AggregationsMultiBucketAggregateBase<TBucket> {
   doc_count_error_upper_bound?: long
   sum_other_doc_count?: long
@@ -4445,9 +4440,6 @@ export interface AggregationsUnmappedSignificantTermsAggregate extends Aggregati
 }
 
 export interface AggregationsUnmappedTermsAggregate extends AggregationsTermsAggregateBase<SpecUtilsVoid> {
-}
-
-export interface AggregationsUntypedAggregationRange extends AggregationsAggregationRangeBase<any> {
 }
 
 export interface AggregationsValueCountAggregate extends AggregationsSingleMetricAggregateBase {

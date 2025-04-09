@@ -34401,7 +34401,7 @@
                 "description": "Array of date ranges.",
                 "type": "array",
                 "items": {
-                  "$ref": "#/components/schemas/_types.aggregations:DateAggregationRange"
+                  "$ref": "#/components/schemas/_types.aggregations:DateRangeExpression"
                 }
               },
               "time_zone": {
@@ -34415,17 +34415,7 @@
           }
         ]
       },
-      "_types.aggregations:DateAggregationRange": {
-        "allOf": [
-          {
-            "$ref": "#/components/schemas/_types.aggregations:AggregationRangeBaseFieldDateMath"
-          },
-          {
-            "type": "object"
-          }
-        ]
-      },
-      "_types.aggregations:AggregationRangeBaseFieldDateMath": {
+      "_types.aggregations:DateRangeExpression": {
         "type": "object",
         "properties": {
           "from": {
@@ -34722,37 +34712,19 @@
         ]
       },
       "_types.aggregations:AggregationRange": {
-        "oneOf": [
-          {
-            "$ref": "#/components/schemas/_types.aggregations:UntypedAggregationRange"
-          },
-          {
-            "$ref": "#/components/schemas/_types.aggregations:DateAggregationRange"
-          },
-          {
-            "$ref": "#/components/schemas/_types.aggregations:NumberAggregationRange"
-          },
-          {
-            "$ref": "#/components/schemas/_types.aggregations:TermAggregationRange"
-          }
-        ]
-      },
-      "_types.aggregations:UntypedAggregationRange": {
-        "allOf": [
-          {
-            "$ref": "#/components/schemas/_types.aggregations:AggregationRangeBase"
-          },
-          {
-            "type": "object"
-          }
-        ]
-      },
-      "_types.aggregations:AggregationRangeBase": {
         "type": "object",
         "properties": {
           "from": {
             "description": "Start of the range (inclusive).",
-            "type": "object"
+            "oneOf": [
+              {
+                "type": "number"
+              },
+              {
+                "nullable": true,
+                "type": "string"
+              }
+            ]
           },
           "key": {
             "description": "Custom key to return the range with.",
@@ -34760,61 +34732,15 @@
           },
           "to": {
             "description": "End of the range (exclusive).",
-            "type": "object"
-          }
-        }
-      },
-      "_types.aggregations:NumberAggregationRange": {
-        "allOf": [
-          {
-            "$ref": "#/components/schemas/_types.aggregations:AggregationRangeBasedouble"
-          },
-          {
-            "type": "object"
-          }
-        ]
-      },
-      "_types.aggregations:AggregationRangeBasedouble": {
-        "type": "object",
-        "properties": {
-          "from": {
-            "description": "Start of the range (inclusive).",
-            "type": "number"
-          },
-          "key": {
-            "description": "Custom key to return the range with.",
-            "type": "string"
-          },
-          "to": {
-            "description": "End of the range (exclusive).",
-            "type": "number"
-          }
-        }
-      },
-      "_types.aggregations:TermAggregationRange": {
-        "allOf": [
-          {
-            "$ref": "#/components/schemas/_types.aggregations:AggregationRangeBasestring"
-          },
-          {
-            "type": "object"
-          }
-        ]
-      },
-      "_types.aggregations:AggregationRangeBasestring": {
-        "type": "object",
-        "properties": {
-          "from": {
-            "description": "Start of the range (inclusive).",
-            "type": "string"
-          },
-          "key": {
-            "description": "Custom key to return the range with.",
-            "type": "string"
-          },
-          "to": {
-            "description": "End of the range (exclusive).",
-            "type": "string"
+            "oneOf": [
+              {
+                "type": "number"
+              },
+              {
+                "nullable": true,
+                "type": "string"
+              }
+            ]
           }
         }
       },
