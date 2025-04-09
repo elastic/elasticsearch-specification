@@ -130,9 +130,9 @@ export interface Request extends RequestBase {
      */
     wait_for_checkpoints?: Checkpoint[]
     /**
-     * If true, returns partial results if there are shard request timeouts or [shard failures](https://www.elastic.co/guide/en/elasticsearch/reference/current/docs-replication.html#shard-failures). If false, returns
-     * an error with no partial results. Defaults to the configured cluster setting `search.default_allow_partial_results`
-     * which is true by default.
+     * If true, returns partial results if there are shard request timeouts or shard failures.
+     * If false, returns an error with no partial results.
+     * Defaults to the configured cluster setting `search.default_allow_partial_results`, which is true by default.
      */
     allow_partial_search_results?: boolean
   }
