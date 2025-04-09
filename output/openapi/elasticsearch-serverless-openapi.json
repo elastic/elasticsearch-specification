@@ -1358,7 +1358,7 @@
         "summary": "Run a scrolling search",
         "description": "IMPORTANT: The scroll API is no longer recommend for deep pagination. If you need to preserve the index state while paging through more than 10,000 hits, use the `search_after` parameter with a point in time (PIT).\n\nThe scroll API gets large sets of results from a single scrolling search request.\nTo get the necessary scroll ID, submit a search API request that includes an argument for the `scroll` query parameter.\nThe `scroll` parameter indicates how long Elasticsearch should retain the search context for the request.\nThe search response returns a scroll ID in the `_scroll_id` response body parameter.\nYou can then use the scroll ID with the scroll API to retrieve the next batch of results for the request.\nIf the Elasticsearch security features are enabled, the access to the results of a specific scroll ID is restricted to the user or API key that submitted the search.\n\nYou can also use the scroll API to specify a new scroll parameter that extends or shortens the retention period for the search context.\n\nIMPORTANT: Results from a scrolling search reflect the state of the index at the time of the initial search request. Subsequent indexing or document changes only affect later search and scroll requests.",
         "externalDocs": {
-          "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/paginate-search-results.html#scroll-search-results"
+          "url": "https://www.elastic.co/docs/reference/elasticsearch/rest-apis/paginate-search-results#scroll-search-results"
         },
         "operationId": "scroll",
         "parameters": [
@@ -1388,7 +1388,7 @@
         "summary": "Run a scrolling search",
         "description": "IMPORTANT: The scroll API is no longer recommend for deep pagination. If you need to preserve the index state while paging through more than 10,000 hits, use the `search_after` parameter with a point in time (PIT).\n\nThe scroll API gets large sets of results from a single scrolling search request.\nTo get the necessary scroll ID, submit a search API request that includes an argument for the `scroll` query parameter.\nThe `scroll` parameter indicates how long Elasticsearch should retain the search context for the request.\nThe search response returns a scroll ID in the `_scroll_id` response body parameter.\nYou can then use the scroll ID with the scroll API to retrieve the next batch of results for the request.\nIf the Elasticsearch security features are enabled, the access to the results of a specific scroll ID is restricted to the user or API key that submitted the search.\n\nYou can also use the scroll API to specify a new scroll parameter that extends or shortens the retention period for the search context.\n\nIMPORTANT: Results from a scrolling search reflect the state of the index at the time of the initial search request. Subsequent indexing or document changes only affect later search and scroll requests.",
         "externalDocs": {
-          "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/paginate-search-results.html#scroll-search-results"
+          "url": "https://www.elastic.co/docs/reference/elasticsearch/rest-apis/paginate-search-results#scroll-search-results"
         },
         "operationId": "scroll-1",
         "parameters": [
@@ -1418,7 +1418,7 @@
         "summary": "Clear a scrolling search",
         "description": "Clear the search context and results for a scrolling search.",
         "externalDocs": {
-          "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/paginate-search-results.html#scroll-search-results"
+          "url": "https://www.elastic.co/docs/reference/elasticsearch/rest-apis/paginate-search-results#scroll-search-results"
         },
         "operationId": "clear-scroll",
         "requestBody": {
@@ -1439,7 +1439,7 @@
         "summary": "Run a scrolling search",
         "description": "IMPORTANT: The scroll API is no longer recommend for deep pagination. If you need to preserve the index state while paging through more than 10,000 hits, use the `search_after` parameter with a point in time (PIT).\n\nThe scroll API gets large sets of results from a single scrolling search request.\nTo get the necessary scroll ID, submit a search API request that includes an argument for the `scroll` query parameter.\nThe `scroll` parameter indicates how long Elasticsearch should retain the search context for the request.\nThe search response returns a scroll ID in the `_scroll_id` response body parameter.\nYou can then use the scroll ID with the scroll API to retrieve the next batch of results for the request.\nIf the Elasticsearch security features are enabled, the access to the results of a specific scroll ID is restricted to the user or API key that submitted the search.\n\nYou can also use the scroll API to specify a new scroll parameter that extends or shortens the retention period for the search context.\n\nIMPORTANT: Results from a scrolling search reflect the state of the index at the time of the initial search request. Subsequent indexing or document changes only affect later search and scroll requests.",
         "externalDocs": {
-          "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/paginate-search-results.html#scroll-search-results"
+          "url": "https://www.elastic.co/docs/reference/elasticsearch/rest-apis/paginate-search-results#scroll-search-results"
         },
         "operationId": "scroll-2",
         "parameters": [
@@ -1472,7 +1472,7 @@
         "summary": "Run a scrolling search",
         "description": "IMPORTANT: The scroll API is no longer recommend for deep pagination. If you need to preserve the index state while paging through more than 10,000 hits, use the `search_after` parameter with a point in time (PIT).\n\nThe scroll API gets large sets of results from a single scrolling search request.\nTo get the necessary scroll ID, submit a search API request that includes an argument for the `scroll` query parameter.\nThe `scroll` parameter indicates how long Elasticsearch should retain the search context for the request.\nThe search response returns a scroll ID in the `_scroll_id` response body parameter.\nYou can then use the scroll ID with the scroll API to retrieve the next batch of results for the request.\nIf the Elasticsearch security features are enabled, the access to the results of a specific scroll ID is restricted to the user or API key that submitted the search.\n\nYou can also use the scroll API to specify a new scroll parameter that extends or shortens the retention period for the search context.\n\nIMPORTANT: Results from a scrolling search reflect the state of the index at the time of the initial search request. Subsequent indexing or document changes only affect later search and scroll requests.",
         "externalDocs": {
-          "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/paginate-search-results.html#scroll-search-results"
+          "url": "https://www.elastic.co/docs/reference/elasticsearch/rest-apis/paginate-search-results#scroll-search-results"
         },
         "operationId": "scroll-3",
         "parameters": [
@@ -1505,7 +1505,7 @@
         "summary": "Clear a scrolling search",
         "description": "Clear the search context and results for a scrolling search.",
         "externalDocs": {
-          "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/paginate-search-results.html#scroll-search-results"
+          "url": "https://www.elastic.co/docs/reference/elasticsearch/rest-apis/paginate-search-results#scroll-search-results"
         },
         "operationId": "clear-scroll-1",
         "parameters": [
@@ -3686,7 +3686,7 @@
         "summary": "Create a new document in the index",
         "description": "You can index a new JSON document with the `/<target>/_doc/` or `/<target>/_create/<_id>` APIs\nUsing `_create` guarantees that the document is indexed only if it does not already exist.\nIt returns a 409 response when a document with a same ID already exists in the index.\nTo update an existing document, you must use the `/<target>/_doc/` API.\n\nIf the Elasticsearch security features are enabled, you must have the following index privileges for the target data stream, index, or index alias:\n\n* To add a document using the `PUT /<target>/_create/<_id>` or `POST /<target>/_create/<_id>` request formats, you must have the `create_doc`, `create`, `index`, or `write` index privilege.\n* To automatically create a data stream or index with this API request, you must have the `auto_configure`, `create_index`, or `manage` index privilege.\n\nAutomatic data stream creation requires a matching index template with data stream enabled.\n\n**Automatically create data streams and indices**\n\nIf the request's target doesn't exist and matches an index template with a `data_stream` definition, the index operation automatically creates the data stream.\n\nIf the target doesn't exist and doesn't match a data stream template, the operation automatically creates the index and applies any matching index templates.\n\nNOTE: Elasticsearch includes several built-in index templates. To avoid naming collisions with these templates, refer to index pattern documentation.\n\nIf no mapping exists, the index operation creates a dynamic mapping.\nBy default, new fields and objects are automatically added to the mapping if needed.\n\nAutomatic index creation is controlled by the `action.auto_create_index` setting.\nIf it is `true`, any index can be created automatically.\nYou can modify this setting to explicitly allow or block automatic creation of indices that match specified patterns or set it to `false` to turn off automatic index creation entirely.\nSpecify a comma-separated list of patterns you want to allow or prefix each pattern with `+` or `-` to indicate whether it should be allowed or blocked.\nWhen a list is specified, the default behaviour is to disallow.\n\nNOTE: The `action.auto_create_index` setting affects the automatic creation of indices only.\nIt does not affect the creation of data streams.\n\n**Routing**\n\nBy default, shard placement — or routing — is controlled by using a hash of the document's ID value.\nFor more explicit control, the value fed into the hash function used by the router can be directly specified on a per-operation basis using the `routing` parameter.\n\nWhen setting up explicit mapping, you can also use the `_routing` field to direct the index operation to extract the routing value from the document itself.\nThis does come at the (very minimal) cost of an additional document parsing pass.\nIf the `_routing` mapping is defined and set to be required, the index operation will fail if no routing value is provided or extracted.\n\nNOTE: Data streams do not support custom routing unless they were created with the `allow_custom_routing` setting enabled in the template.\n\n**Distributed**\n\nThe index operation is directed to the primary shard based on its route and performed on the actual node containing this shard.\nAfter the primary shard completes the operation, if needed, the update is distributed to applicable replicas.\n\n**Active shards**\n\nTo improve the resiliency of writes to the system, indexing operations can be configured to wait for a certain number of active shard copies before proceeding with the operation.\nIf the requisite number of active shard copies are not available, then the write operation must wait and retry, until either the requisite shard copies have started or a timeout occurs.\nBy default, write operations only wait for the primary shards to be active before proceeding (that is to say `wait_for_active_shards` is `1`).\nThis default can be overridden in the index settings dynamically by setting `index.write.wait_for_active_shards`.\nTo alter this behavior per operation, use the `wait_for_active_shards request` parameter.\n\nValid values are all or any positive integer up to the total number of configured copies per shard in the index (which is `number_of_replicas`+1).\nSpecifying a negative value or a number greater than the number of shard copies will throw an error.\n\nFor example, suppose you have a cluster of three nodes, A, B, and C and you create an index index with the number of replicas set to 3 (resulting in 4 shard copies, one more copy than there are nodes).\nIf you attempt an indexing operation, by default the operation will only ensure the primary copy of each shard is available before proceeding.\nThis means that even if B and C went down and A hosted the primary shard copies, the indexing operation would still proceed with only one copy of the data.\nIf `wait_for_active_shards` is set on the request to `3` (and all three nodes are up), the indexing operation will require 3 active shard copies before proceeding.\nThis requirement should be met because there are 3 active nodes in the cluster, each one holding a copy of the shard.\nHowever, if you set `wait_for_active_shards` to `all` (or to `4`, which is the same in this situation), the indexing operation will not proceed as you do not have all 4 copies of each shard active in the index.\nThe operation will timeout unless a new node is brought up in the cluster to host the fourth copy of the shard.\n\nIt is important to note that this setting greatly reduces the chances of the write operation not writing to the requisite number of shard copies, but it does not completely eliminate the possibility, because this check occurs before the write operation starts.\nAfter the write operation is underway, it is still possible for replication to fail on any number of shard copies but still succeed on the primary.\nThe `_shards` section of the API response reveals the number of shard copies on which replication succeeded and failed.",
         "externalDocs": {
-          "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/data-streams.html"
+          "url": "https://www.elastic.co/docs/manage-data/data-store/data-streams"
         },
         "operationId": "create",
         "parameters": [
@@ -3753,7 +3753,7 @@
         "summary": "Create a new document in the index",
         "description": "You can index a new JSON document with the `/<target>/_doc/` or `/<target>/_create/<_id>` APIs\nUsing `_create` guarantees that the document is indexed only if it does not already exist.\nIt returns a 409 response when a document with a same ID already exists in the index.\nTo update an existing document, you must use the `/<target>/_doc/` API.\n\nIf the Elasticsearch security features are enabled, you must have the following index privileges for the target data stream, index, or index alias:\n\n* To add a document using the `PUT /<target>/_create/<_id>` or `POST /<target>/_create/<_id>` request formats, you must have the `create_doc`, `create`, `index`, or `write` index privilege.\n* To automatically create a data stream or index with this API request, you must have the `auto_configure`, `create_index`, or `manage` index privilege.\n\nAutomatic data stream creation requires a matching index template with data stream enabled.\n\n**Automatically create data streams and indices**\n\nIf the request's target doesn't exist and matches an index template with a `data_stream` definition, the index operation automatically creates the data stream.\n\nIf the target doesn't exist and doesn't match a data stream template, the operation automatically creates the index and applies any matching index templates.\n\nNOTE: Elasticsearch includes several built-in index templates. To avoid naming collisions with these templates, refer to index pattern documentation.\n\nIf no mapping exists, the index operation creates a dynamic mapping.\nBy default, new fields and objects are automatically added to the mapping if needed.\n\nAutomatic index creation is controlled by the `action.auto_create_index` setting.\nIf it is `true`, any index can be created automatically.\nYou can modify this setting to explicitly allow or block automatic creation of indices that match specified patterns or set it to `false` to turn off automatic index creation entirely.\nSpecify a comma-separated list of patterns you want to allow or prefix each pattern with `+` or `-` to indicate whether it should be allowed or blocked.\nWhen a list is specified, the default behaviour is to disallow.\n\nNOTE: The `action.auto_create_index` setting affects the automatic creation of indices only.\nIt does not affect the creation of data streams.\n\n**Routing**\n\nBy default, shard placement — or routing — is controlled by using a hash of the document's ID value.\nFor more explicit control, the value fed into the hash function used by the router can be directly specified on a per-operation basis using the `routing` parameter.\n\nWhen setting up explicit mapping, you can also use the `_routing` field to direct the index operation to extract the routing value from the document itself.\nThis does come at the (very minimal) cost of an additional document parsing pass.\nIf the `_routing` mapping is defined and set to be required, the index operation will fail if no routing value is provided or extracted.\n\nNOTE: Data streams do not support custom routing unless they were created with the `allow_custom_routing` setting enabled in the template.\n\n**Distributed**\n\nThe index operation is directed to the primary shard based on its route and performed on the actual node containing this shard.\nAfter the primary shard completes the operation, if needed, the update is distributed to applicable replicas.\n\n**Active shards**\n\nTo improve the resiliency of writes to the system, indexing operations can be configured to wait for a certain number of active shard copies before proceeding with the operation.\nIf the requisite number of active shard copies are not available, then the write operation must wait and retry, until either the requisite shard copies have started or a timeout occurs.\nBy default, write operations only wait for the primary shards to be active before proceeding (that is to say `wait_for_active_shards` is `1`).\nThis default can be overridden in the index settings dynamically by setting `index.write.wait_for_active_shards`.\nTo alter this behavior per operation, use the `wait_for_active_shards request` parameter.\n\nValid values are all or any positive integer up to the total number of configured copies per shard in the index (which is `number_of_replicas`+1).\nSpecifying a negative value or a number greater than the number of shard copies will throw an error.\n\nFor example, suppose you have a cluster of three nodes, A, B, and C and you create an index index with the number of replicas set to 3 (resulting in 4 shard copies, one more copy than there are nodes).\nIf you attempt an indexing operation, by default the operation will only ensure the primary copy of each shard is available before proceeding.\nThis means that even if B and C went down and A hosted the primary shard copies, the indexing operation would still proceed with only one copy of the data.\nIf `wait_for_active_shards` is set on the request to `3` (and all three nodes are up), the indexing operation will require 3 active shard copies before proceeding.\nThis requirement should be met because there are 3 active nodes in the cluster, each one holding a copy of the shard.\nHowever, if you set `wait_for_active_shards` to `all` (or to `4`, which is the same in this situation), the indexing operation will not proceed as you do not have all 4 copies of each shard active in the index.\nThe operation will timeout unless a new node is brought up in the cluster to host the fourth copy of the shard.\n\nIt is important to note that this setting greatly reduces the chances of the write operation not writing to the requisite number of shard copies, but it does not completely eliminate the possibility, because this check occurs before the write operation starts.\nAfter the write operation is underway, it is still possible for replication to fail on any number of shard copies but still succeed on the primary.\nThe `_shards` section of the API response reveals the number of shard copies on which replication succeeded and failed.",
         "externalDocs": {
-          "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/data-streams.html"
+          "url": "https://www.elastic.co/docs/manage-data/data-store/data-streams"
         },
         "operationId": "create-1",
         "parameters": [
@@ -3983,7 +3983,7 @@
         "summary": "Create or update a document in an index",
         "description": "Add a JSON document to the specified data stream or index and make it searchable.\nIf the target is an index and the document already exists, the request updates the document and increments its version.\n\nNOTE: You cannot use this API to send update requests for existing documents in a data stream.\n\nIf the Elasticsearch security features are enabled, you must have the following index privileges for the target data stream, index, or index alias:\n\n* To add or overwrite a document using the `PUT /<target>/_doc/<_id>` request format, you must have the `create`, `index`, or `write` index privilege.\n* To add a document using the `POST /<target>/_doc/` request format, you must have the `create_doc`, `create`, `index`, or `write` index privilege.\n* To automatically create a data stream or index with this API request, you must have the `auto_configure`, `create_index`, or `manage` index privilege.\n\nAutomatic data stream creation requires a matching index template with data stream enabled.\n\nNOTE: Replica shards might not all be started when an indexing operation returns successfully.\nBy default, only the primary is required. Set `wait_for_active_shards` to change this default behavior.\n\n**Automatically create data streams and indices**\n\nIf the request's target doesn't exist and matches an index template with a `data_stream` definition, the index operation automatically creates the data stream.\n\nIf the target doesn't exist and doesn't match a data stream template, the operation automatically creates the index and applies any matching index templates.\n\nNOTE: Elasticsearch includes several built-in index templates. To avoid naming collisions with these templates, refer to index pattern documentation.\n\nIf no mapping exists, the index operation creates a dynamic mapping.\nBy default, new fields and objects are automatically added to the mapping if needed.\n\nAutomatic index creation is controlled by the `action.auto_create_index` setting.\nIf it is `true`, any index can be created automatically.\nYou can modify this setting to explicitly allow or block automatic creation of indices that match specified patterns or set it to `false` to turn off automatic index creation entirely.\nSpecify a comma-separated list of patterns you want to allow or prefix each pattern with `+` or `-` to indicate whether it should be allowed or blocked.\nWhen a list is specified, the default behaviour is to disallow.\n\nNOTE: The `action.auto_create_index` setting affects the automatic creation of indices only.\nIt does not affect the creation of data streams.\n\n**Optimistic concurrency control**\n\nIndex operations can be made conditional and only be performed if the last modification to the document was assigned the sequence number and primary term specified by the `if_seq_no` and `if_primary_term` parameters.\nIf a mismatch is detected, the operation will result in a `VersionConflictException` and a status code of `409`.\n\n**Routing**\n\nBy default, shard placement — or routing — is controlled by using a hash of the document's ID value.\nFor more explicit control, the value fed into the hash function used by the router can be directly specified on a per-operation basis using the `routing` parameter.\n\nWhen setting up explicit mapping, you can also use the `_routing` field to direct the index operation to extract the routing value from the document itself.\nThis does come at the (very minimal) cost of an additional document parsing pass.\nIf the `_routing` mapping is defined and set to be required, the index operation will fail if no routing value is provided or extracted.\n\nNOTE: Data streams do not support custom routing unless they were created with the `allow_custom_routing` setting enabled in the template.\n\n**Distributed**\n\nThe index operation is directed to the primary shard based on its route and performed on the actual node containing this shard.\nAfter the primary shard completes the operation, if needed, the update is distributed to applicable replicas.\n\n**Active shards**\n\nTo improve the resiliency of writes to the system, indexing operations can be configured to wait for a certain number of active shard copies before proceeding with the operation.\nIf the requisite number of active shard copies are not available, then the write operation must wait and retry, until either the requisite shard copies have started or a timeout occurs.\nBy default, write operations only wait for the primary shards to be active before proceeding (that is to say `wait_for_active_shards` is `1`).\nThis default can be overridden in the index settings dynamically by setting `index.write.wait_for_active_shards`.\nTo alter this behavior per operation, use the `wait_for_active_shards request` parameter.\n\nValid values are all or any positive integer up to the total number of configured copies per shard in the index (which is `number_of_replicas`+1).\nSpecifying a negative value or a number greater than the number of shard copies will throw an error.\n\nFor example, suppose you have a cluster of three nodes, A, B, and C and you create an index index with the number of replicas set to 3 (resulting in 4 shard copies, one more copy than there are nodes).\nIf you attempt an indexing operation, by default the operation will only ensure the primary copy of each shard is available before proceeding.\nThis means that even if B and C went down and A hosted the primary shard copies, the indexing operation would still proceed with only one copy of the data.\nIf `wait_for_active_shards` is set on the request to `3` (and all three nodes are up), the indexing operation will require 3 active shard copies before proceeding.\nThis requirement should be met because there are 3 active nodes in the cluster, each one holding a copy of the shard.\nHowever, if you set `wait_for_active_shards` to `all` (or to `4`, which is the same in this situation), the indexing operation will not proceed as you do not have all 4 copies of each shard active in the index.\nThe operation will timeout unless a new node is brought up in the cluster to host the fourth copy of the shard.\n\nIt is important to note that this setting greatly reduces the chances of the write operation not writing to the requisite number of shard copies, but it does not completely eliminate the possibility, because this check occurs before the write operation starts.\nAfter the write operation is underway, it is still possible for replication to fail on any number of shard copies but still succeed on the primary.\nThe `_shards` section of the API response reveals the number of shard copies on which replication succeeded and failed.\n\n**No operation (noop) updates**\n\nWhen updating a document by using this API, a new version of the document is always created even if the document hasn't changed.\nIf this isn't acceptable use the `_update` API with `detect_noop` set to `true`.\nThe `detect_noop` option isn't available on this API because it doesn’t fetch the old source and isn't able to compare it against the new source.\n\nThere isn't a definitive rule for when noop updates aren't acceptable.\nIt's a combination of lots of factors like how frequently your data source sends updates that are actually noops and how many queries per second Elasticsearch runs on the shard receiving the updates.\n\n**Versioning**\n\nEach indexed document is given a version number.\nBy default, internal versioning is used that starts at 1 and increments with each update, deletes included.\nOptionally, the version number can be set to an external value (for example, if maintained in a database).\nTo enable this functionality, `version_type` should be set to `external`.\nThe value provided must be a numeric, long value greater than or equal to 0, and less than around `9.2e+18`.\n\nNOTE: Versioning is completely real time, and is not affected by the near real time aspects of search operations.\nIf no version is provided, the operation runs without any version checks.\n\nWhen using the external version type, the system checks to see if the version number passed to the index request is greater than the version of the currently stored document.\nIf true, the document will be indexed and the new version number used.\nIf the value provided is less than or equal to the stored document's version number, a version conflict will occur and the index operation will fail. For example:\n\n```\nPUT my-index-000001/_doc/1?version=2&version_type=external\n{\n  \"user\": {\n    \"id\": \"elkbee\"\n  }\n}\n\nIn this example, the operation will succeed since the supplied version of 2 is higher than the current document version of 1.\nIf the document was already updated and its version was set to 2 or higher, the indexing command will fail and result in a conflict (409 HTTP status code).\n\nA nice side effect is that there is no need to maintain strict ordering of async indexing operations run as a result of changes to a source database, as long as version numbers from the source database are used.\nEven the simple case of updating the Elasticsearch index using data from a database is simplified if external versioning is used, as only the latest version will be used if the index operations arrive out of order.",
         "externalDocs": {
-          "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/data-streams.html"
+          "url": "https://www.elastic.co/docs/manage-data/data-store/data-streams"
         },
         "operationId": "index",
         "parameters": [
@@ -4046,7 +4046,7 @@
         "summary": "Create or update a document in an index",
         "description": "Add a JSON document to the specified data stream or index and make it searchable.\nIf the target is an index and the document already exists, the request updates the document and increments its version.\n\nNOTE: You cannot use this API to send update requests for existing documents in a data stream.\n\nIf the Elasticsearch security features are enabled, you must have the following index privileges for the target data stream, index, or index alias:\n\n* To add or overwrite a document using the `PUT /<target>/_doc/<_id>` request format, you must have the `create`, `index`, or `write` index privilege.\n* To add a document using the `POST /<target>/_doc/` request format, you must have the `create_doc`, `create`, `index`, or `write` index privilege.\n* To automatically create a data stream or index with this API request, you must have the `auto_configure`, `create_index`, or `manage` index privilege.\n\nAutomatic data stream creation requires a matching index template with data stream enabled.\n\nNOTE: Replica shards might not all be started when an indexing operation returns successfully.\nBy default, only the primary is required. Set `wait_for_active_shards` to change this default behavior.\n\n**Automatically create data streams and indices**\n\nIf the request's target doesn't exist and matches an index template with a `data_stream` definition, the index operation automatically creates the data stream.\n\nIf the target doesn't exist and doesn't match a data stream template, the operation automatically creates the index and applies any matching index templates.\n\nNOTE: Elasticsearch includes several built-in index templates. To avoid naming collisions with these templates, refer to index pattern documentation.\n\nIf no mapping exists, the index operation creates a dynamic mapping.\nBy default, new fields and objects are automatically added to the mapping if needed.\n\nAutomatic index creation is controlled by the `action.auto_create_index` setting.\nIf it is `true`, any index can be created automatically.\nYou can modify this setting to explicitly allow or block automatic creation of indices that match specified patterns or set it to `false` to turn off automatic index creation entirely.\nSpecify a comma-separated list of patterns you want to allow or prefix each pattern with `+` or `-` to indicate whether it should be allowed or blocked.\nWhen a list is specified, the default behaviour is to disallow.\n\nNOTE: The `action.auto_create_index` setting affects the automatic creation of indices only.\nIt does not affect the creation of data streams.\n\n**Optimistic concurrency control**\n\nIndex operations can be made conditional and only be performed if the last modification to the document was assigned the sequence number and primary term specified by the `if_seq_no` and `if_primary_term` parameters.\nIf a mismatch is detected, the operation will result in a `VersionConflictException` and a status code of `409`.\n\n**Routing**\n\nBy default, shard placement — or routing — is controlled by using a hash of the document's ID value.\nFor more explicit control, the value fed into the hash function used by the router can be directly specified on a per-operation basis using the `routing` parameter.\n\nWhen setting up explicit mapping, you can also use the `_routing` field to direct the index operation to extract the routing value from the document itself.\nThis does come at the (very minimal) cost of an additional document parsing pass.\nIf the `_routing` mapping is defined and set to be required, the index operation will fail if no routing value is provided or extracted.\n\nNOTE: Data streams do not support custom routing unless they were created with the `allow_custom_routing` setting enabled in the template.\n\n**Distributed**\n\nThe index operation is directed to the primary shard based on its route and performed on the actual node containing this shard.\nAfter the primary shard completes the operation, if needed, the update is distributed to applicable replicas.\n\n**Active shards**\n\nTo improve the resiliency of writes to the system, indexing operations can be configured to wait for a certain number of active shard copies before proceeding with the operation.\nIf the requisite number of active shard copies are not available, then the write operation must wait and retry, until either the requisite shard copies have started or a timeout occurs.\nBy default, write operations only wait for the primary shards to be active before proceeding (that is to say `wait_for_active_shards` is `1`).\nThis default can be overridden in the index settings dynamically by setting `index.write.wait_for_active_shards`.\nTo alter this behavior per operation, use the `wait_for_active_shards request` parameter.\n\nValid values are all or any positive integer up to the total number of configured copies per shard in the index (which is `number_of_replicas`+1).\nSpecifying a negative value or a number greater than the number of shard copies will throw an error.\n\nFor example, suppose you have a cluster of three nodes, A, B, and C and you create an index index with the number of replicas set to 3 (resulting in 4 shard copies, one more copy than there are nodes).\nIf you attempt an indexing operation, by default the operation will only ensure the primary copy of each shard is available before proceeding.\nThis means that even if B and C went down and A hosted the primary shard copies, the indexing operation would still proceed with only one copy of the data.\nIf `wait_for_active_shards` is set on the request to `3` (and all three nodes are up), the indexing operation will require 3 active shard copies before proceeding.\nThis requirement should be met because there are 3 active nodes in the cluster, each one holding a copy of the shard.\nHowever, if you set `wait_for_active_shards` to `all` (or to `4`, which is the same in this situation), the indexing operation will not proceed as you do not have all 4 copies of each shard active in the index.\nThe operation will timeout unless a new node is brought up in the cluster to host the fourth copy of the shard.\n\nIt is important to note that this setting greatly reduces the chances of the write operation not writing to the requisite number of shard copies, but it does not completely eliminate the possibility, because this check occurs before the write operation starts.\nAfter the write operation is underway, it is still possible for replication to fail on any number of shard copies but still succeed on the primary.\nThe `_shards` section of the API response reveals the number of shard copies on which replication succeeded and failed.\n\n**No operation (noop) updates**\n\nWhen updating a document by using this API, a new version of the document is always created even if the document hasn't changed.\nIf this isn't acceptable use the `_update` API with `detect_noop` set to `true`.\nThe `detect_noop` option isn't available on this API because it doesn’t fetch the old source and isn't able to compare it against the new source.\n\nThere isn't a definitive rule for when noop updates aren't acceptable.\nIt's a combination of lots of factors like how frequently your data source sends updates that are actually noops and how many queries per second Elasticsearch runs on the shard receiving the updates.\n\n**Versioning**\n\nEach indexed document is given a version number.\nBy default, internal versioning is used that starts at 1 and increments with each update, deletes included.\nOptionally, the version number can be set to an external value (for example, if maintained in a database).\nTo enable this functionality, `version_type` should be set to `external`.\nThe value provided must be a numeric, long value greater than or equal to 0, and less than around `9.2e+18`.\n\nNOTE: Versioning is completely real time, and is not affected by the near real time aspects of search operations.\nIf no version is provided, the operation runs without any version checks.\n\nWhen using the external version type, the system checks to see if the version number passed to the index request is greater than the version of the currently stored document.\nIf true, the document will be indexed and the new version number used.\nIf the value provided is less than or equal to the stored document's version number, a version conflict will occur and the index operation will fail. For example:\n\n```\nPUT my-index-000001/_doc/1?version=2&version_type=external\n{\n  \"user\": {\n    \"id\": \"elkbee\"\n  }\n}\n\nIn this example, the operation will succeed since the supplied version of 2 is higher than the current document version of 1.\nIf the document was already updated and its version was set to 2 or higher, the indexing command will fail and result in a conflict (409 HTTP status code).\n\nA nice side effect is that there is no need to maintain strict ordering of async indexing operations run as a result of changes to a source database, as long as version numbers from the source database are used.\nEven the simple case of updating the Elasticsearch index using data from a database is simplified if external versioning is used, as only the latest version will be used if the index operations arrive out of order.",
         "externalDocs": {
-          "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/data-streams.html"
+          "url": "https://www.elastic.co/docs/manage-data/data-store/data-streams"
         },
         "operationId": "index-1",
         "parameters": [
@@ -4882,7 +4882,7 @@
         "summary": "Create or update a script or search template",
         "description": "Creates or updates a stored script or search template.",
         "externalDocs": {
-          "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/search-template.html"
+          "url": "https://www.elastic.co/docs/solutions/search/search-templates"
         },
         "operationId": "put-script",
         "parameters": [
@@ -4915,7 +4915,7 @@
         "summary": "Create or update a script or search template",
         "description": "Creates or updates a stored script or search template.",
         "externalDocs": {
-          "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/search-template.html"
+          "url": "https://www.elastic.co/docs/solutions/search/search-templates"
         },
         "operationId": "put-script-1",
         "parameters": [
@@ -5381,7 +5381,7 @@
         "summary": "Get EQL search results",
         "description": "Returns search results for an Event Query Language (EQL) query.\nEQL assumes each document in a data stream or index corresponds to an event.",
         "externalDocs": {
-          "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/eql.html"
+          "url": "https://www.elastic.co/docs/explore-analyze/query-filter/languages/eql"
         },
         "operationId": "eql-search",
         "parameters": [
@@ -5430,7 +5430,7 @@
         "summary": "Get EQL search results",
         "description": "Returns search results for an Event Query Language (EQL) query.\nEQL assumes each document in a data stream or index corresponds to an event.",
         "externalDocs": {
-          "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/eql.html"
+          "url": "https://www.elastic.co/docs/explore-analyze/query-filter/languages/eql"
         },
         "operationId": "eql-search-1",
         "parameters": [
@@ -5481,7 +5481,7 @@
         "summary": "Run an ES|QL query",
         "description": "Get search results for an ES|QL (Elasticsearch query language) query.",
         "externalDocs": {
-          "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/esql.html"
+          "url": "https://www.elastic.co/docs/explore-analyze/query-filter/languages/esql"
         },
         "operationId": "esql-query",
         "parameters": [
@@ -5608,7 +5608,7 @@
         "summary": "Get a document's source",
         "description": "Get the source of a document.\nFor example:\n\n```\nGET my-index-000001/_source/1\n```\n\nYou can use the source filtering parameters to control which parts of the `_source` are returned:\n\n```\nGET my-index-000001/_source/1/?_source_includes=*.id&_source_excludes=entities\n```",
         "externalDocs": {
-          "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/mapping-source-field.html"
+          "url": "https://www.elastic.co/docs/reference/elasticsearch/mapping-reference/mapping-source-field"
         },
         "operationId": "get-source",
         "parameters": [
@@ -5755,7 +5755,7 @@
         "summary": "Check for a document source",
         "description": "Check whether a document source exists in an index.\nFor example:\n\n```\nHEAD my-index-000001/_source/1\n```\n\nA document's source is not available if it is disabled in the mapping.",
         "externalDocs": {
-          "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/mapping-source-field.html"
+          "url": "https://www.elastic.co/docs/reference/elasticsearch/mapping-reference/mapping-source-field"
         },
         "operationId": "exists-source",
         "parameters": [
@@ -6195,7 +6195,7 @@
         "summary": "Explore graph analytics",
         "description": "Extract and summarize information about the documents and terms in an Elasticsearch data stream or index.\nThe easiest way to understand the behavior of this API is to use the Graph UI to explore connections.\nAn initial request to the `_explore` API contains a seed query that identifies the documents of interest and specifies the fields that define the vertices and connections you want to include in the graph.\nSubsequent requests enable you to spider out from one more vertices of interest.\nYou can exclude vertices that have already been returned.",
         "externalDocs": {
-          "url": "https://www.elastic.co/guide/en/kibana/current/xpack-graph.html"
+          "url": "https://www.elastic.co/docs/explore-analyze/visualize/graph"
         },
         "operationId": "graph-explore",
         "parameters": [
@@ -6225,7 +6225,7 @@
         "summary": "Explore graph analytics",
         "description": "Extract and summarize information about the documents and terms in an Elasticsearch data stream or index.\nThe easiest way to understand the behavior of this API is to use the Graph UI to explore connections.\nAn initial request to the `_explore` API contains a seed query that identifies the documents of interest and specifies the fields that define the vertices and connections you want to include in the graph.\nSubsequent requests enable you to spider out from one more vertices of interest.\nYou can exclude vertices that have already been returned.",
         "externalDocs": {
-          "url": "https://www.elastic.co/guide/en/kibana/current/xpack-graph.html"
+          "url": "https://www.elastic.co/docs/explore-analyze/visualize/graph"
         },
         "operationId": "graph-explore-1",
         "parameters": [
@@ -6257,7 +6257,7 @@
         "summary": "Create or update a document in an index",
         "description": "Add a JSON document to the specified data stream or index and make it searchable.\nIf the target is an index and the document already exists, the request updates the document and increments its version.\n\nNOTE: You cannot use this API to send update requests for existing documents in a data stream.\n\nIf the Elasticsearch security features are enabled, you must have the following index privileges for the target data stream, index, or index alias:\n\n* To add or overwrite a document using the `PUT /<target>/_doc/<_id>` request format, you must have the `create`, `index`, or `write` index privilege.\n* To add a document using the `POST /<target>/_doc/` request format, you must have the `create_doc`, `create`, `index`, or `write` index privilege.\n* To automatically create a data stream or index with this API request, you must have the `auto_configure`, `create_index`, or `manage` index privilege.\n\nAutomatic data stream creation requires a matching index template with data stream enabled.\n\nNOTE: Replica shards might not all be started when an indexing operation returns successfully.\nBy default, only the primary is required. Set `wait_for_active_shards` to change this default behavior.\n\n**Automatically create data streams and indices**\n\nIf the request's target doesn't exist and matches an index template with a `data_stream` definition, the index operation automatically creates the data stream.\n\nIf the target doesn't exist and doesn't match a data stream template, the operation automatically creates the index and applies any matching index templates.\n\nNOTE: Elasticsearch includes several built-in index templates. To avoid naming collisions with these templates, refer to index pattern documentation.\n\nIf no mapping exists, the index operation creates a dynamic mapping.\nBy default, new fields and objects are automatically added to the mapping if needed.\n\nAutomatic index creation is controlled by the `action.auto_create_index` setting.\nIf it is `true`, any index can be created automatically.\nYou can modify this setting to explicitly allow or block automatic creation of indices that match specified patterns or set it to `false` to turn off automatic index creation entirely.\nSpecify a comma-separated list of patterns you want to allow or prefix each pattern with `+` or `-` to indicate whether it should be allowed or blocked.\nWhen a list is specified, the default behaviour is to disallow.\n\nNOTE: The `action.auto_create_index` setting affects the automatic creation of indices only.\nIt does not affect the creation of data streams.\n\n**Optimistic concurrency control**\n\nIndex operations can be made conditional and only be performed if the last modification to the document was assigned the sequence number and primary term specified by the `if_seq_no` and `if_primary_term` parameters.\nIf a mismatch is detected, the operation will result in a `VersionConflictException` and a status code of `409`.\n\n**Routing**\n\nBy default, shard placement — or routing — is controlled by using a hash of the document's ID value.\nFor more explicit control, the value fed into the hash function used by the router can be directly specified on a per-operation basis using the `routing` parameter.\n\nWhen setting up explicit mapping, you can also use the `_routing` field to direct the index operation to extract the routing value from the document itself.\nThis does come at the (very minimal) cost of an additional document parsing pass.\nIf the `_routing` mapping is defined and set to be required, the index operation will fail if no routing value is provided or extracted.\n\nNOTE: Data streams do not support custom routing unless they were created with the `allow_custom_routing` setting enabled in the template.\n\n**Distributed**\n\nThe index operation is directed to the primary shard based on its route and performed on the actual node containing this shard.\nAfter the primary shard completes the operation, if needed, the update is distributed to applicable replicas.\n\n**Active shards**\n\nTo improve the resiliency of writes to the system, indexing operations can be configured to wait for a certain number of active shard copies before proceeding with the operation.\nIf the requisite number of active shard copies are not available, then the write operation must wait and retry, until either the requisite shard copies have started or a timeout occurs.\nBy default, write operations only wait for the primary shards to be active before proceeding (that is to say `wait_for_active_shards` is `1`).\nThis default can be overridden in the index settings dynamically by setting `index.write.wait_for_active_shards`.\nTo alter this behavior per operation, use the `wait_for_active_shards request` parameter.\n\nValid values are all or any positive integer up to the total number of configured copies per shard in the index (which is `number_of_replicas`+1).\nSpecifying a negative value or a number greater than the number of shard copies will throw an error.\n\nFor example, suppose you have a cluster of three nodes, A, B, and C and you create an index index with the number of replicas set to 3 (resulting in 4 shard copies, one more copy than there are nodes).\nIf you attempt an indexing operation, by default the operation will only ensure the primary copy of each shard is available before proceeding.\nThis means that even if B and C went down and A hosted the primary shard copies, the indexing operation would still proceed with only one copy of the data.\nIf `wait_for_active_shards` is set on the request to `3` (and all three nodes are up), the indexing operation will require 3 active shard copies before proceeding.\nThis requirement should be met because there are 3 active nodes in the cluster, each one holding a copy of the shard.\nHowever, if you set `wait_for_active_shards` to `all` (or to `4`, which is the same in this situation), the indexing operation will not proceed as you do not have all 4 copies of each shard active in the index.\nThe operation will timeout unless a new node is brought up in the cluster to host the fourth copy of the shard.\n\nIt is important to note that this setting greatly reduces the chances of the write operation not writing to the requisite number of shard copies, but it does not completely eliminate the possibility, because this check occurs before the write operation starts.\nAfter the write operation is underway, it is still possible for replication to fail on any number of shard copies but still succeed on the primary.\nThe `_shards` section of the API response reveals the number of shard copies on which replication succeeded and failed.\n\n**No operation (noop) updates**\n\nWhen updating a document by using this API, a new version of the document is always created even if the document hasn't changed.\nIf this isn't acceptable use the `_update` API with `detect_noop` set to `true`.\nThe `detect_noop` option isn't available on this API because it doesn’t fetch the old source and isn't able to compare it against the new source.\n\nThere isn't a definitive rule for when noop updates aren't acceptable.\nIt's a combination of lots of factors like how frequently your data source sends updates that are actually noops and how many queries per second Elasticsearch runs on the shard receiving the updates.\n\n**Versioning**\n\nEach indexed document is given a version number.\nBy default, internal versioning is used that starts at 1 and increments with each update, deletes included.\nOptionally, the version number can be set to an external value (for example, if maintained in a database).\nTo enable this functionality, `version_type` should be set to `external`.\nThe value provided must be a numeric, long value greater than or equal to 0, and less than around `9.2e+18`.\n\nNOTE: Versioning is completely real time, and is not affected by the near real time aspects of search operations.\nIf no version is provided, the operation runs without any version checks.\n\nWhen using the external version type, the system checks to see if the version number passed to the index request is greater than the version of the currently stored document.\nIf true, the document will be indexed and the new version number used.\nIf the value provided is less than or equal to the stored document's version number, a version conflict will occur and the index operation will fail. For example:\n\n```\nPUT my-index-000001/_doc/1?version=2&version_type=external\n{\n  \"user\": {\n    \"id\": \"elkbee\"\n  }\n}\n\nIn this example, the operation will succeed since the supplied version of 2 is higher than the current document version of 1.\nIf the document was already updated and its version was set to 2 or higher, the indexing command will fail and result in a conflict (409 HTTP status code).\n\nA nice side effect is that there is no need to maintain strict ordering of async indexing operations run as a result of changes to a source database, as long as version numbers from the source database are used.\nEven the simple case of updating the Elasticsearch index using data from a database is simplified if external versioning is used, as only the latest version will be used if the index operations arrive out of order.",
         "externalDocs": {
-          "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/data-streams.html"
+          "url": "https://www.elastic.co/docs/manage-data/data-store/data-streams"
         },
         "operationId": "index-2",
         "parameters": [
@@ -6441,7 +6441,7 @@
         "summary": "Get tokens from text analysis",
         "description": "The analyze API performs analysis on a text string and returns the resulting tokens.\n\nGenerating excessive amount of tokens may cause a node to run out of memory.\nThe `index.analyze.max_token_count` setting enables you to limit the number of tokens that can be produced.\nIf more than this limit of tokens gets generated, an error occurs.\nThe `_analyze` endpoint without a specified index will always use `10000` as its limit.",
         "externalDocs": {
-          "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/analysis.html"
+          "url": "https://www.elastic.co/docs/manage-data/data-store/text-analysis"
         },
         "operationId": "indices-analyze",
         "parameters": [
@@ -6465,7 +6465,7 @@
         "summary": "Get tokens from text analysis",
         "description": "The analyze API performs analysis on a text string and returns the resulting tokens.\n\nGenerating excessive amount of tokens may cause a node to run out of memory.\nThe `index.analyze.max_token_count` setting enables you to limit the number of tokens that can be produced.\nIf more than this limit of tokens gets generated, an error occurs.\nThe `_analyze` endpoint without a specified index will always use `10000` as its limit.",
         "externalDocs": {
-          "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/analysis.html"
+          "url": "https://www.elastic.co/docs/manage-data/data-store/text-analysis"
         },
         "operationId": "indices-analyze-1",
         "parameters": [
@@ -6491,7 +6491,7 @@
         "summary": "Get tokens from text analysis",
         "description": "The analyze API performs analysis on a text string and returns the resulting tokens.\n\nGenerating excessive amount of tokens may cause a node to run out of memory.\nThe `index.analyze.max_token_count` setting enables you to limit the number of tokens that can be produced.\nIf more than this limit of tokens gets generated, an error occurs.\nThe `_analyze` endpoint without a specified index will always use `10000` as its limit.",
         "externalDocs": {
-          "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/analysis.html"
+          "url": "https://www.elastic.co/docs/manage-data/data-store/text-analysis"
         },
         "operationId": "indices-analyze-2",
         "parameters": [
@@ -6518,7 +6518,7 @@
         "summary": "Get tokens from text analysis",
         "description": "The analyze API performs analysis on a text string and returns the resulting tokens.\n\nGenerating excessive amount of tokens may cause a node to run out of memory.\nThe `index.analyze.max_token_count` setting enables you to limit the number of tokens that can be produced.\nIf more than this limit of tokens gets generated, an error occurs.\nThe `_analyze` endpoint without a specified index will always use `10000` as its limit.",
         "externalDocs": {
-          "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/analysis.html"
+          "url": "https://www.elastic.co/docs/manage-data/data-store/text-analysis"
         },
         "operationId": "indices-analyze-3",
         "parameters": [
@@ -8062,7 +8062,7 @@
         "summary": "Update field mappings",
         "description": "Add new fields to an existing data stream or index.\nYou can also use this API to change the search settings of existing fields and add new properties to existing object fields.\nFor data streams, these changes are applied to all backing indices by default.\n\n**Add multi-fields to an existing field**\n\nMulti-fields let you index the same field in different ways.\nYou can use this API to update the fields mapping parameter and enable multi-fields for an existing field.\nWARNING: If an index (or data stream) contains documents when you add a multi-field, those documents will not have values for the new multi-field.\nYou can populate the new multi-field with the update by query API.\n\n**Change supported mapping parameters for an existing field**\n\nThe documentation for each mapping parameter indicates whether you can update it for an existing field using this API.\nFor example, you can use the update mapping API to update the `ignore_above` parameter.\n\n**Change the mapping of an existing field**\n\nExcept for supported mapping parameters, you can't change the mapping or field type of an existing field.\nChanging an existing field could invalidate data that's already indexed.\n\nIf you need to change the mapping of a field in a data stream's backing indices, refer to documentation about modifying data streams.\nIf you need to change the mapping of a field in other indices, create a new index with the correct mapping and reindex your data into that index.\n\n**Rename a field**\n\nRenaming a field would invalidate data already indexed under the old field name.\nInstead, add an alias field to create an alternate field name.",
         "externalDocs": {
-          "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/mapping-params.html"
+          "url": "https://www.elastic.co/docs/reference/elasticsearch/mapping-reference/mapping-parameters"
         },
         "operationId": "indices-put-mapping",
         "parameters": [
@@ -8104,7 +8104,7 @@
         "summary": "Update field mappings",
         "description": "Add new fields to an existing data stream or index.\nYou can also use this API to change the search settings of existing fields and add new properties to existing object fields.\nFor data streams, these changes are applied to all backing indices by default.\n\n**Add multi-fields to an existing field**\n\nMulti-fields let you index the same field in different ways.\nYou can use this API to update the fields mapping parameter and enable multi-fields for an existing field.\nWARNING: If an index (or data stream) contains documents when you add a multi-field, those documents will not have values for the new multi-field.\nYou can populate the new multi-field with the update by query API.\n\n**Change supported mapping parameters for an existing field**\n\nThe documentation for each mapping parameter indicates whether you can update it for an existing field using this API.\nFor example, you can use the update mapping API to update the `ignore_above` parameter.\n\n**Change the mapping of an existing field**\n\nExcept for supported mapping parameters, you can't change the mapping or field type of an existing field.\nChanging an existing field could invalidate data that's already indexed.\n\nIf you need to change the mapping of a field in a data stream's backing indices, refer to documentation about modifying data streams.\nIf you need to change the mapping of a field in other indices, create a new index with the correct mapping and reindex your data into that index.\n\n**Rename a field**\n\nRenaming a field would invalidate data already indexed under the old field name.\nInstead, add an alias field to create an alternate field name.",
         "externalDocs": {
-          "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/mapping-params.html"
+          "url": "https://www.elastic.co/docs/reference/elasticsearch/mapping-reference/mapping-parameters"
         },
         "operationId": "indices-put-mapping-1",
         "parameters": [
@@ -8184,7 +8184,7 @@
         "summary": "Update index settings",
         "description": "Changes dynamic index settings in real time.\nFor data streams, index setting changes are applied to all backing indices by default.\n\nTo revert a setting to the default value, use a null value.\nThe list of per-index settings that can be updated dynamically on live indices can be found in index module documentation.\nTo preserve existing settings from being updated, set the `preserve_existing` parameter to `true`.\n\nNOTE: You can only define new analyzers on closed indices.\nTo add an analyzer, you must close the index, define the analyzer, and reopen the index.\nYou cannot close the write index of a data stream.\nTo update the analyzer for a data stream's write index and future backing indices, update the analyzer in the index template used by the stream.\nThen roll over the data stream to apply the new analyzer to the stream's write index and future backing indices.\nThis affects searches and any new data added to the stream after the rollover.\nHowever, it does not affect the data stream's backing indices or their existing data.\nTo change the analyzer for existing backing indices, you must create a new data stream and reindex your data into it.",
         "externalDocs": {
-          "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/index-modules.html"
+          "url": "https://www.elastic.co/docs/reference/elasticsearch/index-settings/index-modules"
         },
         "operationId": "indices-put-settings",
         "parameters": [
@@ -8270,7 +8270,7 @@
         "summary": "Update index settings",
         "description": "Changes dynamic index settings in real time.\nFor data streams, index setting changes are applied to all backing indices by default.\n\nTo revert a setting to the default value, use a null value.\nThe list of per-index settings that can be updated dynamically on live indices can be found in index module documentation.\nTo preserve existing settings from being updated, set the `preserve_existing` parameter to `true`.\n\nNOTE: You can only define new analyzers on closed indices.\nTo add an analyzer, you must close the index, define the analyzer, and reopen the index.\nYou cannot close the write index of a data stream.\nTo update the analyzer for a data stream's write index and future backing indices, update the analyzer in the index template used by the stream.\nThen roll over the data stream to apply the new analyzer to the stream's write index and future backing indices.\nThis affects searches and any new data added to the stream after the rollover.\nHowever, it does not affect the data stream's backing indices or their existing data.\nTo change the analyzer for existing backing indices, you must create a new data stream and reindex your data into it.",
         "externalDocs": {
-          "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/index-modules.html"
+          "url": "https://www.elastic.co/docs/reference/elasticsearch/index-settings/index-modules"
         },
         "operationId": "indices-put-settings-1",
         "parameters": [
@@ -11264,7 +11264,7 @@
         "summary": "Get pipelines",
         "description": "Get information about one or more ingest pipelines.\nThis API returns a local reference of the pipeline.",
         "externalDocs": {
-          "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/ingest.html"
+          "url": "https://www.elastic.co/docs/manage-data/ingest/transform-enrich/ingest-pipelines"
         },
         "operationId": "ingest-get-pipeline-1",
         "parameters": [
@@ -11292,7 +11292,7 @@
         "summary": "Create or update a pipeline",
         "description": "Changes made using this API take effect immediately.",
         "externalDocs": {
-          "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/ingest.html"
+          "url": "https://www.elastic.co/docs/manage-data/ingest/transform-enrich/ingest-pipelines"
         },
         "operationId": "ingest-put-pipeline",
         "parameters": [
@@ -11410,7 +11410,7 @@
         "summary": "Delete pipelines",
         "description": "Delete one or more ingest pipelines.",
         "externalDocs": {
-          "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/ingest.html"
+          "url": "https://www.elastic.co/docs/manage-data/ingest/transform-enrich/ingest-pipelines"
         },
         "operationId": "ingest-delete-pipeline",
         "parameters": [
@@ -11469,7 +11469,7 @@
         "summary": "Get pipelines",
         "description": "Get information about one or more ingest pipelines.\nThis API returns a local reference of the pipeline.",
         "externalDocs": {
-          "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/ingest.html"
+          "url": "https://www.elastic.co/docs/manage-data/ingest/transform-enrich/ingest-pipelines"
         },
         "operationId": "ingest-get-pipeline",
         "parameters": [
@@ -11496,7 +11496,7 @@
         "summary": "Run a grok processor",
         "description": "Extract structured fields out of a single text field within a document.\nYou must choose which field to extract matched fields from, as well as the grok pattern you expect will match.\nA grok pattern is like a regular expression that supports aliased expressions that can be reused.",
         "externalDocs": {
-          "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/grok-processor.html"
+          "url": "https://www.elastic.co/docs/reference/enrich-processor/grok-processor"
         },
         "operationId": "ingest-processor-grok",
         "responses": {
@@ -11689,7 +11689,7 @@
         "summary": "Get Logstash pipelines",
         "description": "Get pipelines that are used for Logstash Central Management.",
         "externalDocs": {
-          "url": "https://www.elastic.co/guide/en/logstash/current/logstash-centralized-pipeline-management.html"
+          "url": "https://www.elastic.co/docs/reference/logstash/logstash-centralized-pipeline-management"
         },
         "operationId": "logstash-get-pipeline-1",
         "parameters": [
@@ -11711,7 +11711,7 @@
         "summary": "Create or update a Logstash pipeline",
         "description": "Create a pipeline that is used for Logstash Central Management.\nIf the specified pipeline exists, it is replaced.",
         "externalDocs": {
-          "url": "https://www.elastic.co/guide/en/logstash/current/logstash-centralized-pipeline-management.html"
+          "url": "https://www.elastic.co/docs/reference/logstash/logstash-centralized-pipeline-management"
         },
         "operationId": "logstash-put-pipeline",
         "parameters": [
@@ -11761,7 +11761,7 @@
         "summary": "Delete a Logstash pipeline",
         "description": "Delete a pipeline that is used for Logstash Central Management.\nIf the request succeeds, you receive an empty response with an appropriate status code.",
         "externalDocs": {
-          "url": "https://www.elastic.co/guide/en/logstash/current/logstash-centralized-pipeline-management.html"
+          "url": "https://www.elastic.co/docs/reference/logstash/logstash-centralized-pipeline-management"
         },
         "operationId": "logstash-delete-pipeline",
         "parameters": [
@@ -11796,7 +11796,7 @@
         "summary": "Get Logstash pipelines",
         "description": "Get pipelines that are used for Logstash Central Management.",
         "externalDocs": {
-          "url": "https://www.elastic.co/guide/en/logstash/current/logstash-centralized-pipeline-management.html"
+          "url": "https://www.elastic.co/docs/reference/logstash/logstash-centralized-pipeline-management"
         },
         "operationId": "logstash-get-pipeline",
         "responses": {
@@ -16705,7 +16705,7 @@
         "summary": "Run multiple templated searches",
         "description": "Run multiple templated searches with a single request.\nIf you are providing a text file or text input to `curl`, use the `--data-binary` flag instead of `-d` to preserve newlines.\nFor example:\n\n```\n$ cat requests\n{ \"index\": \"my-index\" }\n{ \"id\": \"my-search-template\", \"params\": { \"query_string\": \"hello world\", \"from\": 0, \"size\": 10 }}\n{ \"index\": \"my-other-index\" }\n{ \"id\": \"my-other-search-template\", \"params\": { \"query_type\": \"match_all\" }}\n\n$ curl -H \"Content-Type: application/x-ndjson\" -XGET localhost:9200/_msearch/template --data-binary \"@requests\"; echo\n```",
         "externalDocs": {
-          "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/search-template.html"
+          "url": "https://www.elastic.co/docs/solutions/search/search-templates"
         },
         "operationId": "msearch-template",
         "parameters": [
@@ -16742,7 +16742,7 @@
         "summary": "Run multiple templated searches",
         "description": "Run multiple templated searches with a single request.\nIf you are providing a text file or text input to `curl`, use the `--data-binary` flag instead of `-d` to preserve newlines.\nFor example:\n\n```\n$ cat requests\n{ \"index\": \"my-index\" }\n{ \"id\": \"my-search-template\", \"params\": { \"query_string\": \"hello world\", \"from\": 0, \"size\": 10 }}\n{ \"index\": \"my-other-index\" }\n{ \"id\": \"my-other-search-template\", \"params\": { \"query_type\": \"match_all\" }}\n\n$ curl -H \"Content-Type: application/x-ndjson\" -XGET localhost:9200/_msearch/template --data-binary \"@requests\"; echo\n```",
         "externalDocs": {
-          "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/search-template.html"
+          "url": "https://www.elastic.co/docs/solutions/search/search-templates"
         },
         "operationId": "msearch-template-1",
         "parameters": [
@@ -16781,7 +16781,7 @@
         "summary": "Run multiple templated searches",
         "description": "Run multiple templated searches with a single request.\nIf you are providing a text file or text input to `curl`, use the `--data-binary` flag instead of `-d` to preserve newlines.\nFor example:\n\n```\n$ cat requests\n{ \"index\": \"my-index\" }\n{ \"id\": \"my-search-template\", \"params\": { \"query_string\": \"hello world\", \"from\": 0, \"size\": 10 }}\n{ \"index\": \"my-other-index\" }\n{ \"id\": \"my-other-search-template\", \"params\": { \"query_type\": \"match_all\" }}\n\n$ curl -H \"Content-Type: application/x-ndjson\" -XGET localhost:9200/_msearch/template --data-binary \"@requests\"; echo\n```",
         "externalDocs": {
-          "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/search-template.html"
+          "url": "https://www.elastic.co/docs/solutions/search/search-templates"
         },
         "operationId": "msearch-template-2",
         "parameters": [
@@ -16821,7 +16821,7 @@
         "summary": "Run multiple templated searches",
         "description": "Run multiple templated searches with a single request.\nIf you are providing a text file or text input to `curl`, use the `--data-binary` flag instead of `-d` to preserve newlines.\nFor example:\n\n```\n$ cat requests\n{ \"index\": \"my-index\" }\n{ \"id\": \"my-search-template\", \"params\": { \"query_string\": \"hello world\", \"from\": 0, \"size\": 10 }}\n{ \"index\": \"my-other-index\" }\n{ \"id\": \"my-other-search-template\", \"params\": { \"query_type\": \"match_all\" }}\n\n$ curl -H \"Content-Type: application/x-ndjson\" -XGET localhost:9200/_msearch/template --data-binary \"@requests\"; echo\n```",
         "externalDocs": {
-          "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/search-template.html"
+          "url": "https://www.elastic.co/docs/solutions/search/search-templates"
         },
         "operationId": "msearch-template-3",
         "parameters": [
@@ -17228,7 +17228,7 @@
         "summary": "Create or update a script or search template",
         "description": "Creates or updates a stored script or search template.",
         "externalDocs": {
-          "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/search-template.html"
+          "url": "https://www.elastic.co/docs/solutions/search/search-templates"
         },
         "operationId": "put-script-2",
         "parameters": [
@@ -17264,7 +17264,7 @@
         "summary": "Create or update a script or search template",
         "description": "Creates or updates a stored script or search template.",
         "externalDocs": {
-          "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/search-template.html"
+          "url": "https://www.elastic.co/docs/solutions/search/search-templates"
         },
         "operationId": "put-script-3",
         "parameters": [
@@ -17302,7 +17302,7 @@
         "summary": "Get a query rule",
         "description": "Get details about a query rule within a query ruleset.",
         "externalDocs": {
-          "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/search-using-query-rules.html"
+          "url": "https://www.elastic.co/docs/reference/elasticsearch/rest-apis/searching-with-query-rules"
         },
         "operationId": "query-rules-get-rule",
         "parameters": [
@@ -17542,7 +17542,7 @@
         "summary": "Create or update a query ruleset",
         "description": "There is a limit of 100 rules per ruleset.\nThis limit can be increased by using the `xpack.applications.rules.max_rules_per_ruleset` cluster setting.\n\nIMPORTANT: Due to limitations within pinned queries, you can only select documents using `ids` or `docs`, but cannot use both in single rule.\nIt is advised to use one or the other in query rulesets, to avoid errors.\nAdditionally, pinned queries have a maximum limit of 100 pinned hits.\nIf multiple matching rules pin more than 100 documents, only the first 100 documents are pinned in the order they are specified in the ruleset.",
         "externalDocs": {
-          "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/search-using-query-rules.html"
+          "url": "https://www.elastic.co/docs/reference/elasticsearch/rest-apis/searching-with-query-rules"
         },
         "operationId": "query-rules-put-ruleset",
         "parameters": [
@@ -18326,7 +18326,7 @@
         "summary": "Run a search",
         "description": "Get search hits that match the query defined in the request.\nYou can provide search queries using the `q` query string parameter or the request body.\nIf both are specified, only the query parameter is used.\n\nIf the Elasticsearch security features are enabled, you must have the read index privilege for the target data stream, index, or alias. For cross-cluster search, refer to the documentation about configuring CCS privileges.\nTo search a point in time (PIT) for an alias, you must have the `read` index privilege for the alias's data streams or indices.\n\n**Search slicing**\n\nWhen paging through a large number of documents, it can be helpful to split the search into multiple slices to consume them independently with the `slice` and `pit` properties.\nBy default the splitting is done first on the shards, then locally on each shard.\nThe local splitting partitions the shard into contiguous ranges based on Lucene document IDs.\n\nFor instance if the number of shards is equal to 2 and you request 4 slices, the slices 0 and 2 are assigned to the first shard and the slices 1 and 3 are assigned to the second shard.\n\nIMPORTANT: The same point-in-time ID should be used for all slices.\nIf different PIT IDs are used, slices can overlap and miss documents.\nThis situation can occur because the splitting criterion is based on Lucene document IDs, which are not stable across changes to the index.",
         "externalDocs": {
-          "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/remote-clusters-cert.html#remote-clusters-privileges-ccs"
+          "url": "https://www.elastic.co/docs/deploy-manage/remote-clusters/remote-clusters-cert#remote-clusters-privileges-ccs"
         },
         "operationId": "search",
         "parameters": [
@@ -18476,7 +18476,7 @@
         "summary": "Run a search",
         "description": "Get search hits that match the query defined in the request.\nYou can provide search queries using the `q` query string parameter or the request body.\nIf both are specified, only the query parameter is used.\n\nIf the Elasticsearch security features are enabled, you must have the read index privilege for the target data stream, index, or alias. For cross-cluster search, refer to the documentation about configuring CCS privileges.\nTo search a point in time (PIT) for an alias, you must have the `read` index privilege for the alias's data streams or indices.\n\n**Search slicing**\n\nWhen paging through a large number of documents, it can be helpful to split the search into multiple slices to consume them independently with the `slice` and `pit` properties.\nBy default the splitting is done first on the shards, then locally on each shard.\nThe local splitting partitions the shard into contiguous ranges based on Lucene document IDs.\n\nFor instance if the number of shards is equal to 2 and you request 4 slices, the slices 0 and 2 are assigned to the first shard and the slices 1 and 3 are assigned to the second shard.\n\nIMPORTANT: The same point-in-time ID should be used for all slices.\nIf different PIT IDs are used, slices can overlap and miss documents.\nThis situation can occur because the splitting criterion is based on Lucene document IDs, which are not stable across changes to the index.",
         "externalDocs": {
-          "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/remote-clusters-cert.html#remote-clusters-privileges-ccs"
+          "url": "https://www.elastic.co/docs/deploy-manage/remote-clusters/remote-clusters-cert#remote-clusters-privileges-ccs"
         },
         "operationId": "search-1",
         "parameters": [
@@ -18628,7 +18628,7 @@
         "summary": "Run a search",
         "description": "Get search hits that match the query defined in the request.\nYou can provide search queries using the `q` query string parameter or the request body.\nIf both are specified, only the query parameter is used.\n\nIf the Elasticsearch security features are enabled, you must have the read index privilege for the target data stream, index, or alias. For cross-cluster search, refer to the documentation about configuring CCS privileges.\nTo search a point in time (PIT) for an alias, you must have the `read` index privilege for the alias's data streams or indices.\n\n**Search slicing**\n\nWhen paging through a large number of documents, it can be helpful to split the search into multiple slices to consume them independently with the `slice` and `pit` properties.\nBy default the splitting is done first on the shards, then locally on each shard.\nThe local splitting partitions the shard into contiguous ranges based on Lucene document IDs.\n\nFor instance if the number of shards is equal to 2 and you request 4 slices, the slices 0 and 2 are assigned to the first shard and the slices 1 and 3 are assigned to the second shard.\n\nIMPORTANT: The same point-in-time ID should be used for all slices.\nIf different PIT IDs are used, slices can overlap and miss documents.\nThis situation can occur because the splitting criterion is based on Lucene document IDs, which are not stable across changes to the index.",
         "externalDocs": {
-          "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/remote-clusters-cert.html#remote-clusters-privileges-ccs"
+          "url": "https://www.elastic.co/docs/deploy-manage/remote-clusters/remote-clusters-cert#remote-clusters-privileges-ccs"
         },
         "operationId": "search-2",
         "parameters": [
@@ -18781,7 +18781,7 @@
         "summary": "Run a search",
         "description": "Get search hits that match the query defined in the request.\nYou can provide search queries using the `q` query string parameter or the request body.\nIf both are specified, only the query parameter is used.\n\nIf the Elasticsearch security features are enabled, you must have the read index privilege for the target data stream, index, or alias. For cross-cluster search, refer to the documentation about configuring CCS privileges.\nTo search a point in time (PIT) for an alias, you must have the `read` index privilege for the alias's data streams or indices.\n\n**Search slicing**\n\nWhen paging through a large number of documents, it can be helpful to split the search into multiple slices to consume them independently with the `slice` and `pit` properties.\nBy default the splitting is done first on the shards, then locally on each shard.\nThe local splitting partitions the shard into contiguous ranges based on Lucene document IDs.\n\nFor instance if the number of shards is equal to 2 and you request 4 slices, the slices 0 and 2 are assigned to the first shard and the slices 1 and 3 are assigned to the second shard.\n\nIMPORTANT: The same point-in-time ID should be used for all slices.\nIf different PIT IDs are used, slices can overlap and miss documents.\nThis situation can occur because the splitting criterion is based on Lucene document IDs, which are not stable across changes to the index.",
         "externalDocs": {
-          "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/remote-clusters-cert.html#remote-clusters-privileges-ccs"
+          "url": "https://www.elastic.co/docs/deploy-manage/remote-clusters/remote-clusters-cert#remote-clusters-privileges-ccs"
         },
         "operationId": "search-3",
         "parameters": [
@@ -19429,7 +19429,7 @@
         ],
         "summary": "Run a search with a search template",
         "externalDocs": {
-          "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/search-template.html"
+          "url": "https://www.elastic.co/docs/solutions/search/search-templates"
         },
         "operationId": "search-template",
         "parameters": [
@@ -19489,7 +19489,7 @@
         ],
         "summary": "Run a search with a search template",
         "externalDocs": {
-          "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/search-template.html"
+          "url": "https://www.elastic.co/docs/solutions/search/search-templates"
         },
         "operationId": "search-template-1",
         "parameters": [
@@ -19551,7 +19551,7 @@
         ],
         "summary": "Run a search with a search template",
         "externalDocs": {
-          "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/search-template.html"
+          "url": "https://www.elastic.co/docs/solutions/search/search-templates"
         },
         "operationId": "search-template-2",
         "parameters": [
@@ -19614,7 +19614,7 @@
         ],
         "summary": "Run a search with a search template",
         "externalDocs": {
-          "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/search-template.html"
+          "url": "https://www.elastic.co/docs/solutions/search/search-templates"
         },
         "operationId": "search-template-3",
         "parameters": [
@@ -19898,7 +19898,7 @@
         "summary": "Create an API key",
         "description": "Create an API key for access without requiring basic authentication.\n\nIMPORTANT: If the credential that is used to authenticate this request is an API key, the derived API key cannot have any privileges.\nIf you specify privileges, the API returns an error.\n\nA successful request returns a JSON structure that contains the API key, its unique id, and its name.\nIf applicable, it also returns expiration information for the API key in milliseconds.\n\nNOTE: By default, API keys never expire. You can specify expiration information when you create the API keys.\n\nThe API keys are created by the Elasticsearch API key service, which is automatically enabled.\nTo configure or turn off the API key service, refer to API key service setting documentation.",
         "externalDocs": {
-          "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/security-settings.html#api-key-service-settings"
+          "url": "https://www.elastic.co/docs/reference/elasticsearch/configuration-reference/security-settings#api-key-service-settings"
         },
         "operationId": "security-create-api-key",
         "parameters": [
@@ -19923,7 +19923,7 @@
         "summary": "Create an API key",
         "description": "Create an API key for access without requiring basic authentication.\n\nIMPORTANT: If the credential that is used to authenticate this request is an API key, the derived API key cannot have any privileges.\nIf you specify privileges, the API returns an error.\n\nA successful request returns a JSON structure that contains the API key, its unique id, and its name.\nIf applicable, it also returns expiration information for the API key in milliseconds.\n\nNOTE: By default, API keys never expire. You can specify expiration information when you create the API keys.\n\nThe API keys are created by the Elasticsearch API key service, which is automatically enabled.\nTo configure or turn off the API key service, refer to API key service setting documentation.",
         "externalDocs": {
-          "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/security-settings.html#api-key-service-settings"
+          "url": "https://www.elastic.co/docs/reference/elasticsearch/configuration-reference/security-settings#api-key-service-settings"
         },
         "operationId": "security-create-api-key-1",
         "parameters": [
@@ -20095,7 +20095,7 @@
         "summary": "Create or update roles",
         "description": "The role management APIs are generally the preferred way to manage roles in the native realm, rather than using file-based role management.\nThe create or update roles API cannot update roles that are defined in roles files.\nFile-based role management is not available in Elastic Serverless.",
         "externalDocs": {
-          "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/defining-roles.html"
+          "url": "https://www.elastic.co/docs/deploy-manage/users-roles/cluster-or-deployment-auth/defining-roles"
         },
         "operationId": "security-put-role",
         "parameters": [
@@ -20122,7 +20122,7 @@
         "summary": "Create or update roles",
         "description": "The role management APIs are generally the preferred way to manage roles in the native realm, rather than using file-based role management.\nThe create or update roles API cannot update roles that are defined in roles files.\nFile-based role management is not available in Elastic Serverless.",
         "externalDocs": {
-          "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/defining-roles.html"
+          "url": "https://www.elastic.co/docs/deploy-manage/users-roles/cluster-or-deployment-auth/defining-roles"
         },
         "operationId": "security-put-role-1",
         "parameters": [
@@ -20209,7 +20209,7 @@
         "summary": "Get builtin privileges",
         "description": "Get the list of cluster privileges and index privileges that are available in this version of Elasticsearch.",
         "externalDocs": {
-          "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/security-privileges.html"
+          "url": "https://www.elastic.co/docs/reference/elasticsearch/security-privileges"
         },
         "operationId": "security-get-builtin-privileges",
         "responses": {
@@ -20276,7 +20276,7 @@
         "summary": "Check user privileges",
         "description": "Determine whether the specified user has a specified list of privileges.\nAll users can use this API, but only to determine their own privileges.\nTo check the privileges of other users, you must use the run as feature.",
         "externalDocs": {
-          "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/security-privileges.html"
+          "url": "https://www.elastic.co/docs/reference/elasticsearch/security-privileges"
         },
         "operationId": "security-has-privileges",
         "requestBody": {
@@ -20296,7 +20296,7 @@
         "summary": "Check user privileges",
         "description": "Determine whether the specified user has a specified list of privileges.\nAll users can use this API, but only to determine their own privileges.\nTo check the privileges of other users, you must use the run as feature.",
         "externalDocs": {
-          "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/security-privileges.html"
+          "url": "https://www.elastic.co/docs/reference/elasticsearch/security-privileges"
         },
         "operationId": "security-has-privileges-1",
         "requestBody": {
@@ -20318,7 +20318,7 @@
         "summary": "Check user privileges",
         "description": "Determine whether the specified user has a specified list of privileges.\nAll users can use this API, but only to determine their own privileges.\nTo check the privileges of other users, you must use the run as feature.",
         "externalDocs": {
-          "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/security-privileges.html"
+          "url": "https://www.elastic.co/docs/reference/elasticsearch/security-privileges"
         },
         "operationId": "security-has-privileges-2",
         "parameters": [
@@ -20343,7 +20343,7 @@
         "summary": "Check user privileges",
         "description": "Determine whether the specified user has a specified list of privileges.\nAll users can use this API, but only to determine their own privileges.\nTo check the privileges of other users, you must use the run as feature.",
         "externalDocs": {
-          "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/security-privileges.html"
+          "url": "https://www.elastic.co/docs/reference/elasticsearch/security-privileges"
         },
         "operationId": "security-has-privileges-3",
         "parameters": [
@@ -23436,7 +23436,7 @@
       },
       "_types.aggregations.Aggregate": {
         "externalDocs": {
-          "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/search-aggregations.html"
+          "url": "https://www.elastic.co/docs/explore-analyze/query-filter/aggregations"
         },
         "oneOf": [
           {
@@ -28793,7 +28793,7 @@
       },
       "_types.query_dsl.QueryContainer": {
         "externalDocs": {
-          "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl.html"
+          "url": "https://www.elastic.co/docs/explore-analyze/query-filter/languages/querydsl"
         },
         "description": "An Elasticsearch Query DSL (Domain Specific Language) object that defines a query.",
         "type": "object",
@@ -28833,7 +28833,7 @@
           },
           "fuzzy": {
             "externalDocs": {
-              "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-fuzzy-query.html"
+              "url": "https://www.elastic.co/docs/reference/query-languages/query-dsl/query-dsl-fuzzy-query"
             },
             "description": "Returns documents that contain terms similar to the search term, as measured by a Levenshtein edit distance.",
             "type": "object",
@@ -28875,7 +28875,7 @@
           },
           "intervals": {
             "externalDocs": {
-              "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-intervals-query.html"
+              "url": "https://www.elastic.co/docs/reference/query-languages/query-dsl/query-dsl-intervals-query"
             },
             "description": "Returns documents based on the order and proximity of matching terms.",
             "type": "object",
@@ -28890,7 +28890,7 @@
           },
           "match": {
             "externalDocs": {
-              "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-match-query.html"
+              "url": "https://www.elastic.co/docs/reference/query-languages/query-dsl/query-dsl-match-query"
             },
             "description": "Returns documents that match a provided text, number, date or boolean value.\nThe provided text is analyzed before matching.",
             "type": "object",
@@ -28905,7 +28905,7 @@
           },
           "match_bool_prefix": {
             "externalDocs": {
-              "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-match-bool-prefix-query.html"
+              "url": "https://www.elastic.co/docs/reference/query-languages/query-dsl/query-dsl-match-bool-prefix-query"
             },
             "description": "Analyzes its input and constructs a `bool` query from the terms.\nEach term except the last is used in a `term` query.\nThe last term is used in a prefix query.",
             "type": "object",
@@ -28920,7 +28920,7 @@
           },
           "match_phrase": {
             "externalDocs": {
-              "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-match-query-phrase.html"
+              "url": "https://www.elastic.co/docs/reference/query-languages/query-dsl/query-dsl-match-query-phrase"
             },
             "description": "Analyzes the text and creates a phrase query out of the analyzed text.",
             "type": "object",
@@ -28932,7 +28932,7 @@
           },
           "match_phrase_prefix": {
             "externalDocs": {
-              "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-match-query-phrase-prefix.html"
+              "url": "https://www.elastic.co/docs/reference/query-languages/query-dsl/query-dsl-match-query-phrase-prefix"
             },
             "description": "Returns documents that contain the words of a provided text, in the same order as provided.\nThe last term of the provided text is treated as a prefix, matching any words that begin with that term.",
             "type": "object",
@@ -28962,7 +28962,7 @@
           },
           "prefix": {
             "externalDocs": {
-              "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-prefix-query.html"
+              "url": "https://www.elastic.co/docs/reference/query-languages/query-dsl/query-dsl-prefix-query"
             },
             "description": "Returns documents that contain a specific prefix in a provided field.",
             "type": "object",
@@ -28977,7 +28977,7 @@
           },
           "range": {
             "externalDocs": {
-              "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-range-query.html"
+              "url": "https://www.elastic.co/docs/reference/query-languages/query-dsl/query-dsl-range-query"
             },
             "description": "Returns documents that contain terms within a provided range.",
             "type": "object",
@@ -28992,7 +28992,7 @@
           },
           "regexp": {
             "externalDocs": {
-              "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-regexp-query.html"
+              "url": "https://www.elastic.co/docs/reference/query-languages/query-dsl/query-dsl-regexp-query"
             },
             "description": "Returns documents that contain terms matching a regular expression.",
             "type": "object",
@@ -29043,7 +29043,7 @@
           },
           "span_term": {
             "externalDocs": {
-              "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-span-term-query.html"
+              "url": "https://www.elastic.co/docs/reference/query-languages/query-dsl/query-dsl-span-term-query"
             },
             "description": "Matches spans containing a term.",
             "type": "object",
@@ -29061,7 +29061,7 @@
           },
           "term": {
             "externalDocs": {
-              "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-term-query.html"
+              "url": "https://www.elastic.co/docs/reference/query-languages/query-dsl/query-dsl-term-query"
             },
             "description": "Returns documents that contain an exact term in a provided field.\nTo return a document, the query term must exactly match the queried field's value, including whitespace and capitalization.",
             "type": "object",
@@ -29076,7 +29076,7 @@
           },
           "terms_set": {
             "externalDocs": {
-              "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-terms-set-query.html"
+              "url": "https://www.elastic.co/docs/reference/query-languages/query-dsl/query-dsl-terms-set-query"
             },
             "description": "Returns documents that contain a minimum number of exact terms in a provided field.\nTo return a document, a required number of terms must exactly match the field values, including whitespace and capitalization.",
             "type": "object",
@@ -29089,7 +29089,7 @@
           "text_expansion": {
             "deprecated": true,
             "externalDocs": {
-              "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-text-expansion-query.html"
+              "url": "https://www.elastic.co/docs/reference/query-languages/query-dsl/query-dsl-text-expansion-query"
             },
             "description": "Uses a natural language processing model to convert the query text into a list of token-weight pairs which are then used in a query against a sparse vector or rank features field.",
             "type": "object",
@@ -29102,7 +29102,7 @@
           "weighted_tokens": {
             "deprecated": true,
             "externalDocs": {
-              "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-weighted-tokens-query.html"
+              "url": "https://www.elastic.co/docs/reference/query-languages/query-dsl/query-dsl-weighted-tokens-query"
             },
             "description": "Supports returning text_expansion query results by sending in precomputed tokens with the query.",
             "type": "object",
@@ -29114,7 +29114,7 @@
           },
           "wildcard": {
             "externalDocs": {
-              "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-wildcard-query.html"
+              "url": "https://www.elastic.co/docs/reference/query-languages/query-dsl/query-dsl-wildcard-query"
             },
             "description": "Returns documents that contain terms matching a wildcard pattern.",
             "type": "object",
@@ -29388,7 +29388,7 @@
       },
       "_types.query_dsl.DistanceFeatureQuery": {
         "externalDocs": {
-          "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-distance-feature-query.html"
+          "url": "https://www.elastic.co/docs/reference/query-languages/query-dsl/query-dsl-distance-feature-query"
         },
         "oneOf": [
           {
@@ -29859,7 +29859,7 @@
           },
           "indices_boost": {
             "externalDocs": {
-              "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/query-filter-context.html#relevance-scores"
+              "url": "https://www.elastic.co/docs/explore-analyze/query-filter/languages/querydsl#relevance-scores"
             },
             "description": "Boost the `_score` of documents from specified indices.\nThe boost value is the factor by which scores are multiplied.\nA boost value greater than `1.0` increases the score.\nA boost value between `0` and `1.0` decreases the score.",
             "type": "array",
@@ -29874,7 +29874,7 @@
           },
           "docvalue_fields": {
             "externalDocs": {
-              "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/search-fields.html#docvalue-fields"
+              "url": "https://www.elastic.co/docs/reference/elasticsearch/rest-apis/retrieve-selected-fields#docvalue-fields"
             },
             "description": "An array of wildcard (`*`) field patterns.\nThe request returns doc values for field names matching these patterns in the `hits.fields` property of the response.",
             "type": "array",
@@ -29884,7 +29884,7 @@
           },
           "knn": {
             "externalDocs": {
-              "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/knn-search.html#approximate-knn"
+              "url": "https://www.elastic.co/docs/solutions/search/vector/knn#approximate-knn"
             },
             "description": "The approximate kNN search to run.",
             "oneOf": [
@@ -29981,7 +29981,7 @@
           },
           "seq_no_primary_term": {
             "externalDocs": {
-              "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/optimistic-concurrency-control.html"
+              "url": "https://www.elastic.co/docs/reference/elasticsearch/rest-apis/optimistic-concurrency-control"
             },
             "description": "If `true`, the request returns sequence number and primary term of the last modification of each hit.",
             "type": "boolean"
@@ -31340,7 +31340,7 @@
           },
           {
             "externalDocs": {
-              "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-intervals-query.html"
+              "url": "https://www.elastic.co/docs/reference/query-languages/query-dsl/query-dsl-intervals-query"
             },
             "type": "object",
             "properties": {
@@ -31842,7 +31842,7 @@
             "properties": {
               "analyzer": {
                 "externalDocs": {
-                  "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/analysis.html"
+                  "url": "https://www.elastic.co/docs/manage-data/data-store/text-analysis"
                 },
                 "description": "The analyzer that is used to analyze the free form text.\nDefaults to the analyzer associated with the first field in fields.",
                 "type": "string"
@@ -32208,7 +32208,7 @@
           },
           {
             "externalDocs": {
-              "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-pinned-query.html"
+              "url": "https://www.elastic.co/docs/reference/query-languages/query-dsl/query-dsl-pinned-query"
             },
             "allOf": [
               {
@@ -32401,7 +32401,7 @@
       },
       "_types.query_dsl.RangeQuery": {
         "externalDocs": {
-          "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-range-query.html"
+          "url": "https://www.elastic.co/docs/reference/query-languages/query-dsl/query-dsl-range-query"
         },
         "oneOf": [
           {
@@ -33324,7 +33324,7 @@
           },
           {
             "externalDocs": {
-              "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-sparse-vector-query.html"
+              "url": "https://www.elastic.co/docs/reference/query-languages/query-dsl/query-dsl-sparse-vector-query"
             },
             "allOf": [
               {
@@ -40852,7 +40852,7 @@
       },
       "_types.analysis.CharFilter": {
         "externalDocs": {
-          "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/analysis-charfilters.html"
+          "url": "https://www.elastic.co/docs/reference/text-analysis/character-filter-reference"
         },
         "oneOf": [
           {
@@ -41039,7 +41039,7 @@
       },
       "_types.analysis.TokenFilter": {
         "externalDocs": {
-          "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/analysis-tokenfilters.html"
+          "url": "https://www.elastic.co/docs/reference/text-analysis/token-filter-reference"
         },
         "oneOf": [
           {
@@ -42898,7 +42898,7 @@
       },
       "_types.analysis.Tokenizer": {
         "externalDocs": {
-          "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/analysis-tokenizers.html"
+          "url": "https://www.elastic.co/docs/reference/text-analysis/tokenizer-reference"
         },
         "oneOf": [
           {
@@ -50507,7 +50507,7 @@
           },
           "model_id": {
             "externalDocs": {
-              "url": "https://www.elastic.co/guide/en/machine-learning/current/ml-nlp-import-model.html#ml-nlp-import-script"
+              "url": "https://www.elastic.co/docs/explore-analyze/machine-learning/nlp/ml-nlp-import-model#ml-nlp-import-script"
             },
             "description": "The name of the model to use for the inference task.\nIt can be the ID of a built-in model (for example, `.multilingual-e5-small` for E5) or a text embedding model that was uploaded by using the Eland client.",
             "type": "string"
@@ -53281,7 +53281,7 @@
           },
           "pipeline": {
             "externalDocs": {
-              "url": "https://www.elastic.co/guide/en/logstash/current/configuration-file-structure.html"
+              "url": "https://www.elastic.co/docs/reference/logstash/configuration-file-structure"
             },
             "description": "The configuration for the pipeline.",
             "type": "string"
@@ -59017,7 +59017,7 @@
           },
           "run_as": {
             "externalDocs": {
-              "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/run-as-privilege.html"
+              "url": "https://www.elastic.co/docs/deploy-manage/users-roles/cluster-or-deployment-auth/submitting-requests-on-behalf-of-other-users"
             },
             "description": "A list of users that the API keys can impersonate.\nNOTE: In Elastic Cloud Serverless, the run-as feature is disabled.\nFor API compatibility, you can still specify an empty `run_as` field, but a non-empty list will be rejected.",
             "type": "array",
@@ -69387,7 +69387,7 @@
                 },
                 "indices_boost": {
                   "externalDocs": {
-                    "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/query-filter-context.html#relevance-scores"
+                    "url": "https://www.elastic.co/docs/explore-analyze/query-filter/languages/querydsl#relevance-scores"
                   },
                   "description": "Boost the `_score` of documents from specified indices.\nThe boost value is the factor by which scores are multiplied.\nA boost value greater than `1.0` increases the score.\nA boost value between `0` and `1.0` decreases the score.",
                   "type": "array",
@@ -69402,7 +69402,7 @@
                 },
                 "docvalue_fields": {
                   "externalDocs": {
-                    "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/search-fields.html#docvalue-fields"
+                    "url": "https://www.elastic.co/docs/reference/elasticsearch/rest-apis/retrieve-selected-fields#docvalue-fields"
                   },
                   "description": "An array of wildcard (`*`) field patterns.\nThe request returns doc values for field names matching these patterns in the `hits.fields` property of the response.",
                   "type": "array",
@@ -69412,7 +69412,7 @@
                 },
                 "knn": {
                   "externalDocs": {
-                    "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/knn-search.html#approximate-knn"
+                    "url": "https://www.elastic.co/docs/solutions/search/vector/knn#approximate-knn"
                   },
                   "description": "The approximate kNN search to run.",
                   "oneOf": [
@@ -69509,7 +69509,7 @@
                 },
                 "seq_no_primary_term": {
                   "externalDocs": {
-                    "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/optimistic-concurrency-control.html"
+                    "url": "https://www.elastic.co/docs/reference/elasticsearch/rest-apis/optimistic-concurrency-control"
                   },
                   "description": "If `true`, the request returns sequence number and primary term of the last modification of each hit.",
                   "type": "boolean"
@@ -69790,7 +69790,7 @@
                 },
                 "run_as": {
                   "externalDocs": {
-                    "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/run-as-privilege.html"
+                    "url": "https://www.elastic.co/docs/deploy-manage/users-roles/cluster-or-deployment-auth/submitting-requests-on-behalf-of-other-users"
                   },
                   "description": "A list of users that the owners of this role can impersonate. *Note*: in Serverless, the run-as feature is disabled. For API compatibility, you can still specify an empty `run_as` field, but a non-empty list will be rejected.",
                   "type": "array",
@@ -69940,7 +69940,7 @@
                 },
                 "columnar": {
                   "externalDocs": {
-                    "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/sql-rest-columnar.html"
+                    "url": "https://www.elastic.co/docs/explore-analyze/query-filter/languages/sql-rest-columnar"
                   },
                   "description": "If `true`, the results are in a columnar fashion: one row represents all the values of a certain column from the current page of results.\nThe API supports this parameter only for CBOR, JSON, SMILE, and YAML responses.",
                   "type": "boolean"
@@ -69983,7 +69983,7 @@
                 },
                 "query": {
                   "externalDocs": {
-                    "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/sql-spec.html"
+                    "url": "https://www.elastic.co/docs/reference/query-languages/sql/sql-spec"
                   },
                   "description": "The SQL query to run.",
                   "type": "string"
