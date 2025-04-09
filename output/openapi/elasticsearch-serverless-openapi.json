@@ -5582,7 +5582,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/_types:EsqlResult"
+                  "$ref": "#/components/schemas/esql._types:EsqlResult"
                 }
               }
             }
@@ -48316,8 +48316,180 @@
           }
         ]
       },
-      "_types:EsqlResult": {
-        "type": "object"
+      "esql._types:EsqlResult": {
+        "type": "object",
+        "properties": {
+          "took": {
+            "$ref": "#/components/schemas/_types:DurationValueUnitMillis"
+          },
+          "is_partial": {
+            "type": "boolean"
+          },
+          "all_columns": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/esql._types:ColumnInfo"
+            }
+          },
+          "columns": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/esql._types:ColumnInfo"
+            }
+          },
+          "values": {
+            "type": "array",
+            "items": {
+              "type": "array",
+              "items": {
+                "$ref": "#/components/schemas/_types:FieldValue"
+              }
+            }
+          },
+          "_clusters": {
+            "$ref": "#/components/schemas/esql._types:ClusterInfo"
+          },
+          "profile": {
+            "description": "Profiling information. Present if `profile` was `true` in the request.\nThe contents of this field are currently unstable.",
+            "type": "object"
+          }
+        },
+        "required": [
+          "columns",
+          "values"
+        ]
+      },
+      "esql._types:ColumnInfo": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "type": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "name",
+          "type"
+        ]
+      },
+      "esql._types:ClusterInfo": {
+        "type": "object",
+        "properties": {
+          "total": {
+            "type": "number"
+          },
+          "successful": {
+            "type": "number"
+          },
+          "running": {
+            "type": "number"
+          },
+          "skipped": {
+            "type": "number"
+          },
+          "partial": {
+            "type": "number"
+          },
+          "failed": {
+            "type": "number"
+          },
+          "details": {
+            "type": "object",
+            "additionalProperties": {
+              "$ref": "#/components/schemas/esql._types:EsqlClusterDetails"
+            }
+          }
+        },
+        "required": [
+          "total",
+          "successful",
+          "running",
+          "skipped",
+          "partial",
+          "failed",
+          "details"
+        ]
+      },
+      "esql._types:EsqlClusterDetails": {
+        "type": "object",
+        "properties": {
+          "status": {
+            "$ref": "#/components/schemas/esql._types:EsqlClusterStatus"
+          },
+          "indices": {
+            "type": "string"
+          },
+          "took": {
+            "$ref": "#/components/schemas/_types:DurationValueUnitMillis"
+          },
+          "_shards": {
+            "$ref": "#/components/schemas/esql._types:EsqlShardInfo"
+          }
+        },
+        "required": [
+          "status",
+          "indices"
+        ]
+      },
+      "esql._types:EsqlClusterStatus": {
+        "type": "string",
+        "enum": [
+          "running",
+          "successful",
+          "partial",
+          "skipped",
+          "failed"
+        ]
+      },
+      "esql._types:EsqlShardInfo": {
+        "type": "object",
+        "properties": {
+          "total": {
+            "type": "number"
+          },
+          "successful": {
+            "type": "number"
+          },
+          "skipped": {
+            "type": "number"
+          },
+          "failed": {
+            "type": "number"
+          },
+          "failures": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/esql._types:EsqlShardFailure"
+            }
+          }
+        },
+        "required": [
+          "total"
+        ]
+      },
+      "esql._types:EsqlShardFailure": {
+        "type": "object",
+        "properties": {
+          "shard": {
+            "$ref": "#/components/schemas/_types:Id"
+          },
+          "index": {
+            "$ref": "#/components/schemas/_types:IndexName"
+          },
+          "node": {
+            "$ref": "#/components/schemas/_types:NodeId"
+          },
+          "reason": {
+            "$ref": "#/components/schemas/_types:ErrorCause"
+          }
+        },
+        "required": [
+          "shard",
+          "index",
+          "reason"
+        ]
       },
       "_types:InlineGet": {
         "type": "object",
