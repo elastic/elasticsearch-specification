@@ -21,8 +21,12 @@ use openapiv3::{Components, Parameter, ReferenceOr, RequestBody, Response, Schem
 use crate::utils::SchemaName;
 
 // Separator used to combine parts of a component path.
-// See https://github.com/elastic/elasticsearch-specification/issues/4183
-pub const SEPARATOR: char = ':';
+// OpenAPI says `$ref` must comply with RFC 3968 (escaping reserved chars),
+// but also restricts the keys in `components` to match `^[a-zA-Z0-9\.\-_]+$`.
+//
+// See https://spec.openapis.org/oas/v3.1.1.html#reference-object
+// and https://spec.openapis.org/oas/v3.1.1.html#fixed-fields-5
+pub const SEPARATOR: char = '-';
 
 pub struct TypesAndComponents<'a> {
     pub model: &'a clients_schema::IndexedModel,
