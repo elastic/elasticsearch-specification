@@ -20,17 +20,16 @@
 import { NodeId, TaskId } from '@_types/common'
 import { long } from '@_types/Numeric'
 
+export class Body {
+  id: long
+  node: NodeId
+  start_time_millis: long
+  running_time_nanos: long
+  query: string
+}
+
 export class Response {
   body: {
-    queries: Record<
-      TaskId,
-      {
-        id: long
-        node: NodeId
-        start_time_millis: long
-        running_time_nanos: long
-        query: string
-      }
-    >
+    queries: Record<TaskId, Body>
   }
 }
