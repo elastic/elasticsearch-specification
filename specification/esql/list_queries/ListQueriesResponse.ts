@@ -22,12 +22,15 @@ import { long } from '@_types/Numeric'
 
 export class Response {
   body: {
-    queries: Record<TaskId, {
-      id: long
-      node: NodeId
-      start_time_millis: long
-      running_time_nanos: long
-      query: string
-    }>
+    queries: Record<
+      TaskId,
+      {
+        id: long
+        node: NodeId
+        start_time_millis: long
+        running_time_nanos: long
+        query: string
+      }
+    >
   }
 }
