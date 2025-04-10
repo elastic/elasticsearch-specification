@@ -25,16 +25,16 @@ import { Id } from '@_types/common'
  * Returns an object extended information about a running ES|QL query.
  *
  * @rest_spec_name esql.get_query
- * @index_previleges monitor_esql
+ * @cluster_privileges monitor_esql
  */
 export interface Request extends RequestBase {
   urls: [
     {
-      path: '/_query/queries/{query_task_id}'
+      path: '/_query/queries/{id}'
       methods: ['GET']
     }
   ]
   path_parts: {
-    query_task_id: Id
+    id: Id
   }
 }

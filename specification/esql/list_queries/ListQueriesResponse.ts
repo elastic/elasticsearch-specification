@@ -17,6 +17,7 @@
  * under the License.
  */
 
+import { Dictionary } from '@spec_utils/Dictionary'
 import { NodeId, TaskId } from '@_types/common'
 import { long } from '@_types/Numeric'
 
@@ -30,6 +31,6 @@ export class Body {
 
 export class Response {
   body: {
-    queries: Record<TaskId, Body>
+    queries: Dictionary<TaskId, Body>
   }
 }

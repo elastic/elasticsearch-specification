@@ -24,7 +24,7 @@ import { RequestBase } from '@_types/Base'
  * Returns an object containing IDs and other information about the running ES|QL queries.
 
  * @rest_spec_name esql.list_queries
- * @index_previleges monitor_esql
+ * @cluster_privileges monitor_esql
  */
 export interface Request extends RequestBase {
   urls: [
