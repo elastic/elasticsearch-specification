@@ -1158,8 +1158,9 @@ export class CategorizeTextAggregation extends Aggregation {
   categorization_filters?: string[]
   /**
    * The categorization analyzer specifies how the text is analyzed and tokenized before being categorized.
-   * The syntax is very similar to that used to define the analyzer in the [Analyze endpoint](https://www.elastic.co/guide/en/elasticsearch/reference/8.0/indices-analyze.html). This property
-   * cannot be used at the same time as categorization_filters.
+   * The syntax is very similar to that used to define the analyzer in the analyze API. This property
+   * cannot be used at the same time as `categorization_filters`.
+   * @ext_doc_id indices-analyze
    */
   categorization_analyzer?: CategorizeTextAnalyzer
   /**
