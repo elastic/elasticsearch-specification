@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { NodeId, TaskId } from '@_types/common'
+import { NodeId } from '@_types/common'
 import { long } from '@_types/Numeric'
 
 export class Response {
