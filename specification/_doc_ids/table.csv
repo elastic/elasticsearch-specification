@@ -710,7 +710,6 @@ search-knn,https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation
 search-multi-search,https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-msearch
 search-multi-search-template,https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-msearch-template
 search-rank-eval,https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-rank-eval
-search-request-body,https://www.elastic.co/guide/en/elasticsearch/reference/8.18/search-request-body.html
 search-search,https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-search
 search-shards,https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-search-shards
 search-template,https://www.elastic.co/docs/solutions/search/search-templates
