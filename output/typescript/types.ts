@@ -5414,6 +5414,15 @@ export interface MappingByteNumberProperty extends MappingNumberPropertyBase {
   null_value?: byte
 }
 
+export interface MappingChunkingSettings {
+  type: MappingChunkingStrategy
+  max_chunk_size: integer
+  overlap?: integer
+  sentence_overlap?: 0 | 1
+}
+
+export type MappingChunkingStrategy = 'word' | 'sentence'
+
 export interface MappingCompletionProperty extends MappingDocValuesPropertyBase {
   analyzer?: string
   contexts?: MappingSuggestContext[]
@@ -5843,6 +5852,7 @@ export interface MappingSemanticTextProperty {
   meta?: Record<string, string>
   inference_id?: Id
   search_inference_id?: Id
+  chunking_settings?: MappingChunkingSettings
 }
 
 export interface MappingShapeProperty extends MappingDocValuesPropertyBase {
