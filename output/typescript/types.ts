@@ -10693,7 +10693,7 @@ export interface EsqlAsyncQueryRequest extends RequestBase {
   }
 }
 
-export type EsqlAsyncQueryResponse = EsqlEsqlResult
+export type EsqlAsyncQueryResponse = EsqlAsyncEsqlResult
 
 export interface EsqlAsyncQueryDeleteRequest extends RequestBase {
   id: Id
