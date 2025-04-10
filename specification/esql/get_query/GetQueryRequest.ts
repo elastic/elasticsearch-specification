@@ -27,7 +27,7 @@ import { Id } from '@_types/common'
  * @rest_spec_name esql.get_query
  * @index_previleges monitor_esql
  */
-export interface GetQueryRequest extends RequestBase {
+export interface Request extends RequestBase {
   urls: [
     {
       path: '/_query/queries/{query_task_id}'

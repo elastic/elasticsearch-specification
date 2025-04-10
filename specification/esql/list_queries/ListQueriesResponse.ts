@@ -17,20 +17,17 @@
  * under the License.
  */
 
-import { RequestBase } from '@_types/Base'
+import { NodeId, TaskId } from '@_types/common'
+import { long } from '@_types/Numeric'
 
-/**
- * Get running ES|QL queries information.
- * Returns an object containing IDs and other information about the running ES|QL queries.
-
- * @rest_spec_name esql.list_queries
- * @index_previleges monitor_esql
- */
-export interface ListQueryRequest extends RequestBase {
-  urls: [
-    {
-      path: '/_query/queries'
-      methods: ['GET']
-    }
-  ]
+export class Response {
+  body: {
+    queries: Record<TaskId, {
+      id: long
+      node: NodeId
+      start_time_millis: long
+      running_time_nanos: long
+      query: string
+    }>
+  }
 }
