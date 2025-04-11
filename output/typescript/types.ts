@@ -5415,13 +5415,11 @@ export interface MappingByteNumberProperty extends MappingNumberPropertyBase {
 }
 
 export interface MappingChunkingSettings {
-  type: MappingChunkingStrategy
+  strategy: string
   max_chunk_size: integer
   overlap?: integer
-  sentence_overlap?: 0 | 1
+  sentence_overlap?: integer
 }
-
-export type MappingChunkingStrategy = 'word' | 'sentence'
 
 export interface MappingCompletionProperty extends MappingDocValuesPropertyBase {
   analyzer?: string
@@ -22857,13 +22855,13 @@ export interface SpecUtilsCommonQueryParameters {
   pretty?: boolean
 }
 
+export interface SpecUtilsOverloadOf<TDefinition = unknown> {
+  [key: string]: never
+}
+
 export interface SpecUtilsCommonCatQueryParameters {
   format?: string
   help?: boolean
   v?: boolean
-}
-
-export interface SpecUtilsOverloadOf<TDefinition = unknown> {
-  [key: string]: never
 }
 
