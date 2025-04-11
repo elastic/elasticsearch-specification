@@ -36,7 +36,7 @@ actions:
               -H "Authorization: ApiKey ${API_KEY}"
             ```
             
-            To get API keys for the Elasticsearch endpoint (${ES_URL}) for a project, refer to [Connect to your Elasticsearch Serverless endpoint](https://www.elastic.co/guide/en/serverless/current/elasticsearch-connecting-to-es-serverless-endpoint.html).
+            For more information about where to find API keys for the Elasticsearch endpoint (${ES_URL}) for a project, go to [Get started with Elasticsearch Serverless](https://www.elastic.co/docs/solutions/search/serverless-elasticsearch-get-started).
           in: header
           name: Authorization
           type: apiKey
