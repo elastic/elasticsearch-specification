@@ -38,10 +38,10 @@ import {
 } from '@_types/Numeric'
 import { Script } from '@_types/Scripting'
 import { DateTime } from '@_types/Time'
+import { ChunkingSettings } from './ChunkingSettings'
 import { Property, PropertyBase } from './Property'
 import { TermVectorOption } from './TermVectorOption'
 import { TimeSeriesMetricType } from './TimeSeriesMetricType'
-import { ChunkingSettings } from './ChunkingSettings'
 
 export class CorePropertyBase extends PropertyBase {
   copy_to?: Fields
@@ -235,9 +235,9 @@ export class SemanticTextProperty {
   search_inference_id?: Id
 
   /**
-   * Settings for chunking text into smaller passages. If specified, these will override the 
+   * Settings for chunking text into smaller passages. If specified, these will override the
    * chunking settings sent in the inference endpoint associated with inference_id. If chunking settings are updated,
-   * they will not be applied to existing documents until they are reindexed. 
+   * they will not be applied to existing documents until they are reindexed.
    */
   chunking_settings?: ChunkingSettings
 }
