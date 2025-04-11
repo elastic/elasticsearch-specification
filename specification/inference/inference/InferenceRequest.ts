@@ -30,6 +30,8 @@ import { Duration } from '@_types/Time'
  * It returns a response with the results of the tasks.
  * The inference endpoint you use can perform one specific task that has been defined when the endpoint was created with the create inference API.
  *
+ * For details about using this API with a service, such as Amazon Bedrock, Anthropic, or HuggingFace, refer to the service-specific documentation.
+ *
  * > info
  * > The inference APIs enable you to use certain services, such as built-in machine learning models (ELSER, E5), models uploaded through Eland, Cohere, OpenAI, Azure, Google AI Studio, Google Vertex AI, Anthropic, Watsonx.ai, or Hugging Face. For built-in models and models uploaded through Eland, the inference APIs offer an alternative way to use and manage trained models. However, if you do not plan to use the inference APIs to use these models or if you want to use non-NLP models, use the machine learning trained model APIs.
  * @rest_spec_name inference.inference
