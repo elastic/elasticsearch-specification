@@ -45532,10 +45532,57 @@
           },
           "search_inference_id": {
             "$ref": "#/components/schemas/_types.Id"
+          },
+          "chunking_settings": {
+            "$ref": "#/components/schemas/_types.mapping.ChunkingSettings"
           }
         },
         "required": [
           "type"
+        ]
+      },
+      "_types.mapping.ChunkingSettings": {
+        "type": "object",
+        "properties": {
+          "type": {
+            "$ref": "#/components/schemas/_types.mapping.ChunkingStrategy"
+          },
+          "max_chunk_size": {
+            "description": "The maximum number of words in a chunk.",
+            "type": "number"
+          },
+          "overlap": {
+            "description": "The number of overlapping words allowed in chunks. This cannot be \ndefined as more than half of the max_chunk_size. Required for `word`\ntype chunking settings.",
+            "type": "number"
+          },
+          "sentence_overlap": {
+            "description": "The number of overlapping sentences allowed in chunks. Required for `sentence` type chunking settings.",
+            "oneOf": [
+              {
+                "type": "string",
+                "enum": [
+                  "0"
+                ]
+              },
+              {
+                "type": "string",
+                "enum": [
+                  "1"
+                ]
+              }
+            ]
+          }
+        },
+        "required": [
+          "type",
+          "max_chunk_size"
+        ]
+      },
+      "_types.mapping.ChunkingStrategy": {
+        "type": "string",
+        "enum": [
+          "word",
+          "sentence"
         ]
       },
       "_types.mapping.SparseVectorProperty": {
