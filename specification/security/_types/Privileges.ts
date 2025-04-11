@@ -83,6 +83,7 @@ export enum ClusterPrivilege {
    */
   manage_data_stream_global_retention,
   manage_enrich,
+  manage_esql,
   /**
    * @availability stack
    */
@@ -141,6 +142,7 @@ export enum ClusterPrivilege {
    */
   monitor_data_stream_global_retention,
   monitor_enrich,
+  monitor_esql,
   monitor_inference,
   monitor_ml,
   /**
