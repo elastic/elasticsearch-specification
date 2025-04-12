@@ -2348,8 +2348,6 @@ export interface ErrorResponseBase {
   status: integer
 }
 
-export type EsqlResult = ArrayBuffer
-
 export type ExpandWildcard = 'all' | 'open' | 'closed' | 'hidden' | 'none'
 
 export type ExpandWildcards = ExpandWildcard | ExpandWildcard[]
@@ -3182,12 +3180,10 @@ export interface AggregationsAggregationContainer {
   variable_width_histogram?: AggregationsVariableWidthHistogramAggregation
 }
 
-export type AggregationsAggregationRange = AggregationsUntypedAggregationRange | AggregationsDateAggregationRange | AggregationsNumberAggregationRange | AggregationsTermAggregationRange
-
-export interface AggregationsAggregationRangeBase<T = unknown> {
-  from?: T
+export interface AggregationsAggregationRange {
+  from?: double | null
   key?: string
-  to?: T
+  to?: double | null
 }
 
 export interface AggregationsArrayPercentilesItem {
@@ -3410,9 +3406,6 @@ export interface AggregationsCustomCategorizeTextAnalyzer {
   filter?: string[]
 }
 
-export interface AggregationsDateAggregationRange extends AggregationsAggregationRangeBase<AggregationsFieldDateMath> {
-}
-
 export interface AggregationsDateHistogramAggregate extends AggregationsMultiBucketAggregateBase<AggregationsDateHistogramBucket> {
 }
 
@@ -3448,9 +3441,15 @@ export interface AggregationsDateRangeAggregation extends AggregationsBucketAggr
   field?: Field
   format?: string
   missing?: AggregationsMissing
-  ranges?: AggregationsDateAggregationRange[]
+  ranges?: AggregationsDateRangeExpression[]
   time_zone?: TimeZone
   keyed?: boolean
+}
+
+export interface AggregationsDateRangeExpression {
+  from?: AggregationsFieldDateMath
+  key?: string
+  to?: AggregationsFieldDateMath
 }
 
 export interface AggregationsDerivativeAggregate extends AggregationsSingleMetricAggregateBase {
@@ -4004,9 +4003,6 @@ export interface AggregationsNormalizeAggregation extends AggregationsPipelineAg
 
 export type AggregationsNormalizeMethod = 'rescale_0_1' | 'rescale_0_100' | 'percent_of_sum' | 'mean' | 'z-score' | 'softmax'
 
-export interface AggregationsNumberAggregationRange extends AggregationsAggregationRangeBase<double> {
-}
-
 export interface AggregationsParentAggregateKeys extends AggregationsSingleBucketAggregateBase {
 }
 export type AggregationsParentAggregate = AggregationsParentAggregateKeys
@@ -4331,9 +4327,6 @@ export interface AggregationsTTestAggregation {
 
 export type AggregationsTTestType = 'paired' | 'homoscedastic' | 'heteroscedastic'
 
-export interface AggregationsTermAggregationRange extends AggregationsAggregationRangeBase<string> {
-}
-
 export interface AggregationsTermsAggregateBase<TBucket = unknown> extends AggregationsMultiBucketAggregateBase<TBucket> {
   doc_count_error_upper_bound?: long
   sum_other_doc_count?: long
@@ -4447,9 +4440,6 @@ export interface AggregationsUnmappedSignificantTermsAggregate extends Aggregati
 }
 
 export interface AggregationsUnmappedTermsAggregate extends AggregationsTermsAggregateBase<SpecUtilsVoid> {
-}
-
-export interface AggregationsUntypedAggregationRange extends AggregationsAggregationRangeBase<any> {
 }
 
 export interface AggregationsValueCountAggregate extends AggregationsSingleMetricAggregateBase {
@@ -9319,7 +9309,8 @@ export interface ClusterGetSettingsResponse {
 export interface ClusterHealthHealthResponseBody {
   active_primary_shards: integer
   active_shards: integer
-  active_shards_percent_as_number: Percentage
+  active_shards_percent?: string
+  active_shards_percent_as_number: double
   cluster_name: Name
   delayed_unassigned_shards: integer
   indices?: Record<IndexName, ClusterHealthIndexHealthStats>
@@ -9359,7 +9350,7 @@ export interface ClusterHealthRequest extends RequestBase {
   timeout?: Duration
   wait_for_active_shards?: WaitForActiveShards
   wait_for_events?: WaitForEvents
-  wait_for_nodes?: string | integer
+  wait_for_nodes?: ClusterHealthWaitForNodes
   wait_for_no_initializing_shards?: boolean
   wait_for_no_relocating_shards?: boolean
   wait_for_status?: HealthStatus
@@ -9376,6 +9367,8 @@ export interface ClusterHealthShardHealthStats {
   unassigned_shards: integer
   unassigned_primary_shards: integer
 }
+
+export type ClusterHealthWaitForNodes = string | integer
 
 export interface ClusterInfoRequest extends RequestBase {
   target: ClusterInfoTargets
@@ -10608,7 +10601,61 @@ export type EqlSearchResponse<TEvent = unknown> = EqlEqlSearchResponseBase<TEven
 
 export type EqlSearchResultPosition = 'tail' | 'head'
 
+export interface EsqlAsyncEsqlResult extends EsqlEsqlResult {
+  id?: string
+  is_running: boolean
+}
+
+export interface EsqlEsqlClusterDetails {
+  status: EsqlEsqlClusterStatus
+  indices: string
+  took?: DurationValue<UnitMillis>
+  _shards?: EsqlEsqlShardInfo
+}
+
+export interface EsqlEsqlClusterInfo {
+  total: integer
+  successful: integer
+  running: integer
+  skipped: integer
+  partial: integer
+  failed: integer
+  details: Record<string, EsqlEsqlClusterDetails>
+}
+
+export type EsqlEsqlClusterStatus = 'running' | 'successful' | 'partial' | 'skipped' | 'failed'
+
+export interface EsqlEsqlColumnInfo {
+  name: string
+  type: string
+}
+
 export type EsqlEsqlFormat = 'csv' | 'json' | 'tsv' | 'txt' | 'yaml' | 'cbor' | 'smile' | 'arrow'
+
+export interface EsqlEsqlResult {
+  took?: DurationValue<UnitMillis>
+  is_partial?: boolean
+  all_columns?: EsqlEsqlColumnInfo[]
+  columns: EsqlEsqlColumnInfo[]
+  values: FieldValue[][]
+  _clusters?: EsqlEsqlClusterInfo
+  profile?: any
+}
+
+export interface EsqlEsqlShardFailure {
+  shard: Id
+  index: IndexName
+  node?: NodeId
+  reason: ErrorCause
+}
+
+export interface EsqlEsqlShardInfo {
+  total: integer
+  successful?: integer
+  skipped?: integer
+  failed?: integer
+  failures?: EsqlEsqlShardFailure[]
+}
 
 export interface EsqlTableValuesContainer {
   integer?: EsqlTableValuesIntegerValue[]
@@ -10646,7 +10693,7 @@ export interface EsqlAsyncQueryRequest extends RequestBase {
   }
 }
 
-export type EsqlAsyncQueryResponse = EsqlResult
+export type EsqlAsyncQueryResponse = EsqlAsyncEsqlResult
 
 export interface EsqlAsyncQueryDeleteRequest extends RequestBase {
   id: Id
@@ -10661,14 +10708,14 @@ export interface EsqlAsyncQueryGetRequest extends RequestBase {
   wait_for_completion_timeout?: Duration
 }
 
-export type EsqlAsyncQueryGetResponse = EsqlResult
+export type EsqlAsyncQueryGetResponse = EsqlAsyncEsqlResult
 
 export interface EsqlAsyncQueryStopRequest extends RequestBase {
   id: Id
   drop_null_columns?: boolean
 }
 
-export type EsqlAsyncQueryStopResponse = EsqlResult
+export type EsqlAsyncQueryStopResponse = EsqlEsqlResult
 
 export interface EsqlQueryRequest extends RequestBase {
   format?: EsqlEsqlFormat
@@ -10687,7 +10734,7 @@ export interface EsqlQueryRequest extends RequestBase {
   }
 }
 
-export type EsqlQueryResponse = EsqlResult
+export type EsqlQueryResponse = EsqlEsqlResult
 
 export interface FeaturesFeature {
   name: string
@@ -13258,15 +13305,6 @@ export type InferenceDenseByteVector = byte[]
 
 export type InferenceDenseVector = float[]
 
-export interface InferenceEisServiceSettings {
-  model_id: string
-  rate_limit?: InferenceRateLimitSetting
-}
-
-export type InferenceEisServiceType = 'elastic'
-
-export type InferenceEisTaskType = 'chat_completion'
-
 export interface InferenceElasticsearchServiceSettings {
   adaptive_allocations?: InferenceAdaptiveAllocations
   deployment_id?: string
@@ -13347,6 +13385,15 @@ export interface InferenceInferenceEndpoint {
 export interface InferenceInferenceEndpointInfo extends InferenceInferenceEndpoint {
   inference_id: string
   task_type: InferenceTaskType
+}
+
+export interface InferenceInferenceResult {
+  text_embedding_bytes?: InferenceTextEmbeddingByteResult[]
+  text_embedding_bits?: InferenceTextEmbeddingByteResult[]
+  text_embedding?: InferenceTextEmbeddingResult[]
+  sparse_embedding?: InferenceSparseEmbeddingResult[]
+  completion?: InferenceCompletionResult[]
+  rerank?: InferenceRankedDocument[]
 }
 
 export interface InferenceJinaAIServiceSettings {
@@ -13541,12 +13588,18 @@ export interface InferenceGetResponse {
   endpoints: InferenceInferenceEndpointInfo[]
 }
 
-export interface InferencePostEisChatCompletionRequest extends RequestBase {
-  eis_inference_id: Id
-  body?: InferenceRequestChatCompletion
+export interface InferenceInferenceRequest extends RequestBase {
+  task_type?: InferenceTaskType
+  inference_id: Id
+  timeout?: Duration
+  body?: {
+    query?: string
+    input: string | string[]
+    task_settings?: InferenceTaskSettings
+  }
 }
 
-export type InferencePostEisChatCompletionResponse = StreamResult
+export type InferenceInferenceResponse = InferenceInferenceResult
 
 export interface InferencePutRequest extends RequestBase {
   task_type?: InferenceTaskType
@@ -13633,17 +13686,6 @@ export interface InferencePutCohereRequest extends RequestBase {
 }
 
 export type InferencePutCohereResponse = InferenceInferenceEndpointInfo
-
-export interface InferencePutEisRequest extends RequestBase {
-  task_type: InferenceEisTaskType
-  eis_inference_id: Id
-  body?: {
-    service: InferenceEisServiceType
-    service_settings: InferenceEisServiceSettings
-  }
-}
-
-export type InferencePutEisResponse = InferenceInferenceEndpointInfo
 
 export interface InferencePutElasticsearchRequest extends RequestBase {
   task_type: InferenceElasticsearchTaskType
@@ -14054,12 +14096,19 @@ export interface IngestInferenceProcessor extends IngestProcessorBase {
   target_field?: Field
   field_map?: Record<Field, any>
   inference_config?: IngestInferenceConfig
+  input_output?: IngestInputConfig | IngestInputConfig[]
+  ignore_missing?: boolean
 }
 
 export interface IngestIngest {
   _redact?: IngestRedact
   timestamp: DateTime
   pipeline?: Name
+}
+
+export interface IngestInputConfig {
+  input_field: string
+  output_field: string
 }
 
 export interface IngestIpLocationProcessor extends IngestProcessorBase {
@@ -20571,7 +20620,6 @@ export interface SnapshotCloneRequest extends RequestBase {
   snapshot: Name
   target_snapshot: Name
   master_timeout?: Duration
-  timeout?: Duration
   body?: {
     indices: string
   }

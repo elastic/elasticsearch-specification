@@ -19,6 +19,7 @@ serde_json = { workspace = true }
 anyhow = { workspace = true }
 
 console_error_panic_hook = { workspace = true, optional = true }
+tracing-wasm = "0.2.1"
 
 [dev-dependencies]
 wasm-bindgen-test = { workspace = true }
