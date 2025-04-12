@@ -14603,8 +14603,7 @@ export interface LogstashPipelineSettings {
   'pipeline.batch.size': integer
   'pipeline.batch.delay': integer
   'queue.type': string
-  'queue.max_bytes.number': integer
-  'queue.max_bytes.units': string
+  'queue.max_bytes': string
   'queue.checkpoint.writes': integer
 }
 
