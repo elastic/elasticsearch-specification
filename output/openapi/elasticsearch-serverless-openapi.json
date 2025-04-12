@@ -53396,12 +53396,8 @@
             "description": "The internal queuing model to use for event buffering.",
             "type": "string"
           },
-          "queue.max_bytes.number": {
+          "queue.max_bytes": {
             "description": "The total capacity of the queue (`queue.type: persisted`) in number of bytes.",
-            "type": "number"
-          },
-          "queue.max_bytes.units": {
-            "description": "The total capacity of the queue (`queue.type: persisted`) in terms of units of bytes.",
             "type": "string"
           },
           "queue.checkpoint.writes": {
@@ -53414,8 +53410,7 @@
           "pipeline.batch.size",
           "pipeline.batch.delay",
           "queue.type",
-          "queue.max_bytes.number",
-          "queue.max_bytes.units",
+          "queue.max_bytes",
           "queue.checkpoint.writes"
         ]
       },
