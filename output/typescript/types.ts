@@ -689,35 +689,6 @@ export interface InfoResponse {
   version: ElasticsearchVersionInfo
 }
 
-export interface KnnSearchRequest extends RequestBase {
-  index: Indices
-  routing?: Routing
-  body?: {
-    _source?: SearchSourceConfig
-    docvalue_fields?: (QueryDslFieldAndFormat | Field)[]
-    stored_fields?: Fields
-    fields?: Fields
-    filter?: QueryDslQueryContainer | QueryDslQueryContainer[]
-    knn: KnnSearchQuery
-  }
-}
-
-export interface KnnSearchResponse<TDocument = unknown> {
-  took: long
-  timed_out: boolean
-  _shards: ShardStatistics
-  hits: SearchHitsMetadata<TDocument>
-  fields?: Record<string, any>
-  max_score?: double
-}
-
-export interface KnnSearchQuery {
-  field: Field
-  query_vector: QueryVector
-  k: integer
-  num_candidates: integer
-}
-
 export interface MgetMultiGetError {
   error: ErrorCause
   _id: Id
