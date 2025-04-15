@@ -24,7 +24,7 @@ import { RequestBase } from '@_types/Base'
  * Returns an object containing IDs and other information about the running ES|QL queries.
 
  * @rest_spec_name esql.list_queries
- * @index_previleges monitor_esql
+ * @cluster_privileges monitor_esql
  * @availability stack since=9.1.0 stability=experiemental visibility=public
  * @availability serverless stability=experimental visibility=public
  */
