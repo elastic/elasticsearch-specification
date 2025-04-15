@@ -25,7 +25,7 @@ import { RequestBase } from '@_types/Base'
 
  * @rest_spec_name esql.list_queries
  * @cluster_privileges monitor_esql
- * @availability stack since=9.1.0 stability=experiemental visibility=public
+ * @availability stack since=9.1.0 stability=experimental visibility=public
  * @availability serverless stability=experimental visibility=public
  */
 export interface Request extends RequestBase {
