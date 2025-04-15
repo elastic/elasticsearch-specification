@@ -689,35 +689,6 @@ export interface InfoResponse {
   version: ElasticsearchVersionInfo
 }
 
-export interface KnnSearchRequest extends RequestBase {
-  index: Indices
-  routing?: Routing
-  body?: {
-    _source?: SearchSourceConfig
-    docvalue_fields?: (QueryDslFieldAndFormat | Field)[]
-    stored_fields?: Fields
-    fields?: Fields
-    filter?: QueryDslQueryContainer | QueryDslQueryContainer[]
-    knn: KnnSearchQuery
-  }
-}
-
-export interface KnnSearchResponse<TDocument = unknown> {
-  took: long
-  timed_out: boolean
-  _shards: ShardStatistics
-  hits: SearchHitsMetadata<TDocument>
-  fields?: Record<string, any>
-  max_score?: double
-}
-
-export interface KnnSearchQuery {
-  field: Field
-  query_vector: QueryVector
-  k: integer
-  num_candidates: integer
-}
-
 export interface MgetMultiGetError {
   error: ErrorCause
   _id: Id
@@ -5414,6 +5385,13 @@ export interface MappingByteNumberProperty extends MappingNumberPropertyBase {
   null_value?: byte
 }
 
+export interface MappingChunkingSettings {
+  strategy: string
+  max_chunk_size: integer
+  overlap?: integer
+  sentence_overlap?: integer
+}
+
 export interface MappingCompletionProperty extends MappingDocValuesPropertyBase {
   analyzer?: string
   contexts?: MappingSuggestContext[]
@@ -5843,6 +5821,7 @@ export interface MappingSemanticTextProperty {
   meta?: Record<string, string>
   inference_id?: Id
   search_inference_id?: Id
+  chunking_settings?: MappingChunkingSettings
 }
 
 export interface MappingShapeProperty extends MappingDocValuesPropertyBase {
@@ -13387,6 +13366,15 @@ export interface InferenceInferenceEndpointInfo extends InferenceInferenceEndpoi
   task_type: InferenceTaskType
 }
 
+export interface InferenceInferenceResult {
+  text_embedding_bytes?: InferenceTextEmbeddingByteResult[]
+  text_embedding_bits?: InferenceTextEmbeddingByteResult[]
+  text_embedding?: InferenceTextEmbeddingResult[]
+  sparse_embedding?: InferenceSparseEmbeddingResult[]
+  completion?: InferenceCompletionResult[]
+  rerank?: InferenceRankedDocument[]
+}
+
 export interface InferenceJinaAIServiceSettings {
   api_key: string
   model_id?: string
@@ -13578,6 +13566,19 @@ export interface InferenceGetRequest extends RequestBase {
 export interface InferenceGetResponse {
   endpoints: InferenceInferenceEndpointInfo[]
 }
+
+export interface InferenceInferenceRequest extends RequestBase {
+  task_type?: InferenceTaskType
+  inference_id: Id
+  timeout?: Duration
+  body?: {
+    query?: string
+    input: string | string[]
+    task_settings?: InferenceTaskSettings
+  }
+}
+
+export type InferenceInferenceResponse = InferenceInferenceResult
 
 export interface InferencePutRequest extends RequestBase {
   task_type?: InferenceTaskType
@@ -14645,8 +14646,7 @@ export interface LogstashPipelineSettings {
   'pipeline.batch.size': integer
   'pipeline.batch.delay': integer
   'queue.type': string
-  'queue.max_bytes.number': integer
-  'queue.max_bytes.units': string
+  'queue.max_bytes': string
   'queue.checkpoint.writes': integer
 }
 
@@ -22847,13 +22847,13 @@ export interface SpecUtilsCommonQueryParameters {
   pretty?: boolean
 }
 
+export interface SpecUtilsOverloadOf<TDefinition = unknown> {
+  [key: string]: never
+}
+
 export interface SpecUtilsCommonCatQueryParameters {
   format?: string
   help?: boolean
   v?: boolean
-}
-
-export interface SpecUtilsOverloadOf<TDefinition = unknown> {
-  [key: string]: never
 }
 
