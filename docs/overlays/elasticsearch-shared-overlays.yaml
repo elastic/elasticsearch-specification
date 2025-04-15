@@ -1066,11 +1066,11 @@ actions:
       x-model: true
       externalDocs:
         url: https://www.elastic.co/docs/reference/elasticsearch/rest-apis/collapse-search-results
-  # - target: "$.components['schemas']['_global.msearch.MultisearchBody'].properties"
-  #   description: Add x-model
-  #   update:
-  #     aggregations:
-  #       x-model: true
+  - target: "$.components['schemas']['_global.search._types.SearchRequestBody'].properties"
+    description: Add x-model
+    update:
+      aggregations:
+        x-model: true
 # Examples
 ## xCodeSamples
   - target: "$.paths['/{index}/_doc/{id}']['head']"
