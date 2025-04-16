@@ -1060,6 +1060,17 @@ actions:
         externalDocs:
           url: https://www.elastic.co/docs/explore-analyze/query-filter/languages/querydsl
           description: Query DSL
+  - target: "$.components['schemas']['_global.search._types.FieldCollapse']"
+    description: Add x-model and externalDocs
+    update:
+      x-model: true
+      externalDocs:
+        url: https://www.elastic.co/docs/reference/elasticsearch/rest-apis/collapse-search-results
+  # - target: "$.components['schemas']['_global.msearch.MultisearchBody'].properties"
+  #   description: Add x-model
+  #   update:
+  #     aggregations:
+  #       x-model: true
   - target: "$.components['schemas']['_types.ScriptSource'].oneOf"
     description: Remove oneOf temporarily from ScriptSource
     remove: true
@@ -1069,7 +1080,6 @@ actions:
       oneOf:
         - type: string
         - type: object
-# Examples
 # Examples
 ## xCodeSamples
   - target: "$.paths['/{index}/_doc/{id}']['head']"
