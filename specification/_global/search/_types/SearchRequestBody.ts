@@ -68,6 +68,7 @@ export class SearchRequestBody {
   from?: integer
   /**
    * Specifies the highlighter to use for retrieving highlighted snippets from one or more fields in your search results.
+   * @ext_doc_id search-highlight
    */
   highlight?: Highlight
   /**
@@ -134,6 +135,7 @@ export class SearchRequestBody {
    * A retriever replaces other elements of the search API that also return top documents such as `query` and `knn`.
    * @availability stack since=8.14.0 stability=stable
    * @availability serverless stability=stable
+   * @ext_doc_id search-retrievers
    */
   retriever?: RetrieverContainer
   /**
