@@ -226,6 +226,10 @@ actions:
             url: https://www.elastic.co/docs/explore-analyze/alerts-cases/watcher
             description: Learn more about Watcher.
 # Add x-model and/or abbreviate schemas that should point to other references
+  - target: "$.components['schemas']['_types.query_dsl.QueryContainer']"
+    description: Add x-model for the QueryContainer object
+    update:
+      x-model: true
   - target: "$.components['schemas']['_types.analysis.CharFilter'].oneOf"
     description: Remove existing oneOf definition for CharFilter
     remove: true
@@ -1056,50 +1060,55 @@ actions:
         externalDocs:
           url: https://www.elastic.co/docs/explore-analyze/query-filter/languages/querydsl
           description: Query DSL
-  - target: "$.components['schemas']['_global.search._types.SearchRequestBody'].properties"
-    description: Add x-model to SearchRequestBody aggregations property
+  - target: "$.components['schemas']['_types.ScriptSource'].oneOf"
+    description: Remove oneOf temporarily from ScriptSource
+    remove: true
+  - target: "$.components['schemas']['_types.ScriptSource']"
+    description: Re-add simplified oneOf temporarily in ScriptSource
     update:
-      aggregations:
-        x-model: true
-  - target: "$.components['schemas']['_global.search._types.SearchRequestBody'].properties.aggregations.additionalProperties"
-    description: Remove additionalProperties from SearchRequestBody aggregations
-    remove: true
-  - target: "$.components['schemas']['_types.query_dsl.QueryContainer']"
-    description: Add x-model for the QueryContainer object
-    update:
-      x-model: true
-  - target: "$.components['schemas']['_types.query_dsl.QueryContainer'].properties"
-    description: Remove the QueryContainer properties
-    remove: true
-  - target: "$.components['schemas']['_global.search._types.FieldCollapse']"
-    description: Add x-model and externalDocs to FieldCollapse
-    update:
-      x-model: true
-      externalDocs:
-        url: https://www.elastic.co/docs/reference/elasticsearch/rest-apis/collapse-search-results
-  - target: "$.components['schemas']['_global.search._types.FieldCollapse'].properties"
-    description: Remove properties from FieldCollapse
-    remove: true
-  - target: "$.components['schemas']['_global.search._types.FieldCollapse'].required"
-    description: Remove required from FieldCollapse
-    remove: true
-  - target: "$.components['schemas']['_global.search._types.Highlight']"
-    description: Add x-model, description, and externalDocs to Highlight
-    update:
-      x-model: true
-      description: The highlighter to use for retrieving highlighted snippets from one or more fields in your search results.
-      externalDocs:
-        url: https://www.elastic.co/docs/reference/elasticsearch/rest-apis/highlighting
-  - target: "$.components['schemas']['_global.search._types.Highlight'].allOf"
-    description: Remove allOf from Highlight
-    remove: true
-  - target: "$.components['schemas']['_global.search._types.SearchRequestBody'].properties.knn"
-    description: Add x-model to SearchRequestBody knn
-    update:
-      x-model: true
-  - target: "$.components['schemas']['_global.search._types.SearchRequestBody'].properties.knn.oneOf"
-    description: Remove oneOf from knn
-    remove: true
+      oneOf:
+        - type: string
+        - type: object
+  # - target: "$.components['schemas']['_global.search._types.SearchRequestBody'].properties"
+  #   description: Add x-model to SearchRequestBody aggregations property
+  #   update:
+  #     aggregations:
+  #       x-model: true
+  # - target: "$.components['schemas']['_global.search._types.SearchRequestBody'].properties.aggregations.additionalProperties"
+  #   description: Remove additionalProperties from SearchRequestBody aggregations
+  #   remove: true
+  # - target: "$.components['schemas']['_types.query_dsl.QueryContainer'].properties"
+  #   description: Remove the QueryContainer properties
+  #   remove: true
+  # - target: "$.components['schemas']['_global.search._types.FieldCollapse']"
+  #   description: Add x-model and externalDocs to FieldCollapse
+  #   update:
+  #     x-model: true
+  #     externalDocs:
+  #       url: https://www.elastic.co/docs/reference/elasticsearch/rest-apis/collapse-search-results
+  # - target: "$.components['schemas']['_global.search._types.FieldCollapse'].properties"
+  #   description: Remove properties from FieldCollapse
+  #   remove: true
+  # - target: "$.components['schemas']['_global.search._types.FieldCollapse'].required"
+  #   description: Remove required from FieldCollapse
+  #   remove: true
+  # - target: "$.components['schemas']['_global.search._types.Highlight']"
+  #   description: Add x-model, description, and externalDocs to Highlight
+  #   update:
+  #     x-model: true
+  #     description: The highlighter to use for retrieving highlighted snippets from one or more fields in your search results.
+  #     externalDocs:
+  #       url: https://www.elastic.co/docs/reference/elasticsearch/rest-apis/highlighting
+  # - target: "$.components['schemas']['_global.search._types.Highlight'].allOf"
+  #   description: Remove allOf from Highlight
+  #   remove: true
+  # - target: "$.components['schemas']['_global.search._types.SearchRequestBody'].properties.knn"
+  #   description: Add x-model to SearchRequestBody knn
+  #   update:
+  #     x-model: true
+  # - target: "$.components['schemas']['_global.search._types.SearchRequestBody'].properties.knn.oneOf"
+  #   description: Remove oneOf from knn
+  #   remove: true
 # Examples
 # Examples
 ## xCodeSamples
