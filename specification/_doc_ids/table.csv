@@ -706,9 +706,11 @@ search-application-get,https://www.elastic.co/docs/api/doc/elasticsearch/operati
 search-application-put,https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-search-application-put
 search-application-search,https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-search-application-search
 search-render-query,https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-search-application-render-query
+search-retrievers,https://www.elastic.co/docs/reference/elasticsearch/rest-apis/retrievers
 search-count,https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-count
 search-explain,https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-explain
 search-field-caps,https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-field-caps
+search-highlight,https://www.elastic.co/docs/reference/elasticsearch/rest-apis/highlighting
 search-knn,https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-knn-search
 search-multi-search,https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-msearch
 search-multi-search-template,https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-msearch-template
