@@ -5473,6 +5473,111 @@
         "x-state": "Added in 7.9.0"
       }
     },
+    "/_query/queries/{id}": {
+      "get": {
+        "tags": [
+          "esql"
+        ],
+        "summary": "Get a specific running ES|QL query information",
+        "description": "Returns an object extended information about a running ES|QL query.",
+        "operationId": "esql-get-query",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "description": "The query ID",
+            "required": true,
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/_types.Id"
+            },
+            "style": "simple"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "number"
+                    },
+                    "node": {
+                      "$ref": "#/components/schemas/_types.NodeId"
+                    },
+                    "start_time_millis": {
+                      "type": "number"
+                    },
+                    "running_time_nanos": {
+                      "type": "number"
+                    },
+                    "query": {
+                      "type": "string"
+                    },
+                    "coordinating_node": {
+                      "$ref": "#/components/schemas/_types.NodeId"
+                    },
+                    "data_nodes": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/_types.NodeId"
+                      }
+                    }
+                  },
+                  "required": [
+                    "id",
+                    "node",
+                    "start_time_millis",
+                    "running_time_nanos",
+                    "query",
+                    "coordinating_node",
+                    "data_nodes"
+                  ]
+                }
+              }
+            }
+          }
+        },
+        "x-state": "Technical preview"
+      }
+    },
+    "/_query/queries": {
+      "get": {
+        "tags": [
+          "esql"
+        ],
+        "summary": "Get running ES|QL queries information",
+        "description": "Returns an object containing IDs and other information about the running ES|QL queries.",
+        "operationId": "esql-list-queries",
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "queries": {
+                      "type": "object",
+                      "additionalProperties": {
+                        "$ref": "#/components/schemas/esql.list_queries.Body"
+                      }
+                    }
+                  },
+                  "required": [
+                    "queries"
+                  ]
+                }
+              }
+            }
+          }
+        },
+        "x-state": "Technical preview"
+      }
+    },
     "/_query": {
       "post": {
         "tags": [
@@ -48253,6 +48358,33 @@
           "head"
         ]
       },
+      "esql.list_queries.Body": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "number"
+          },
+          "node": {
+            "$ref": "#/components/schemas/_types.NodeId"
+          },
+          "start_time_millis": {
+            "type": "number"
+          },
+          "running_time_nanos": {
+            "type": "number"
+          },
+          "query": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "id",
+          "node",
+          "start_time_millis",
+          "running_time_nanos",
+          "query"
+        ]
+      },
       "esql._types.EsqlFormat": {
         "type": "string",
         "enum": [
@@ -59171,6 +59303,7 @@
               "manage_api_key",
               "manage_behavioral_analytics",
               "manage_enrich",
+              "manage_esql",
               "manage_index_templates",
               "manage_inference",
               "manage_ingest_pipelines",
@@ -59185,6 +59318,7 @@
               "manage_transform",
               "monitor",
               "monitor_enrich",
+              "monitor_esql",
               "monitor_inference",
               "monitor_ml",
               "monitor_transform",
