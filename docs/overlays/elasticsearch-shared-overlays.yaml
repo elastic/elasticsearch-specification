@@ -1074,7 +1074,7 @@ actions:
     description: Add x-model for the QueryContainer object
     update:
       x-model: true
-  - target: "$.components['schemas']['_types.query_dsl.QueryContainer.properties']"
+  - target: "$.components['schemas']['_types.query_dsl.QueryContainer'].properties"
     description: Remove the QueryContainer properties
     remove: true
 # Examples
