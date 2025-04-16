@@ -42,7 +42,9 @@ import { Sort, SortResults } from '@_types/sort'
 export class SearchRequestBody {
   /**
    * Defines the aggregations that are run as part of the search request.
-   * @aliases aggs */ // ES uses "aggregations" in serialization
+   * @aliases aggs
+   * @ext_doc_id search-aggregations
+   */ // ES uses "aggregations" in serialization
   aggregations?: Dictionary<string, AggregationContainer>
   /**
    * Collapses search results the values of the specified field.
