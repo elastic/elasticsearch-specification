@@ -41,12 +41,20 @@ export class TokenFilterBase {
 }
 
 export class CompoundWordTokenFilterBase extends TokenFilterBase {
-  hyphenation_patterns_path?: string
+  /** Maximum subword character length. Longer subword tokens are excluded from the output. Defaults to `15`. */
   max_subword_size?: integer
+  /** Minimum subword character length. Shorter subword tokens are excluded from the output. Defaults to `2`. */
   min_subword_size?: integer
+  /** Minimum word character length. Shorter word tokens are excluded from the output. Defaults to `5`. */
   min_word_size?: integer
+  /** If `true`, only include the longest matching subword. Defaults to `false`. */
   only_longest_match?: boolean
+  /** A list of subwords to look for in the token stream. If found, the subword is included in the token output.
+    * Either this parameter or `word_list_path` must be specified.*/
   word_list?: string[]
+  /** Path to a file that contains a list of subwords to find in the token stream. If found, the subword is included in the token output.
+    * This path must be absolute or relative to the config location, and the file must be UTF-8 encoded. Each token in the file must be separated by a line break.
+    * Either this parameter or `word_list` must be specified. */
   word_list_path?: string
 }
 
@@ -56,6 +64,13 @@ export class DictionaryDecompounderTokenFilter extends CompoundWordTokenFilterBa
 
 export class HyphenationDecompounderTokenFilter extends CompoundWordTokenFilterBase {
   type: 'hyphenation_decompounder'
+  /** Path to an Apache FOP (Formatting Objects Processor) XML hyphenation pattern file.
+    * This path must be absolute or relative to the `config` location. Only FOP v1.2 compatible files are supported. */
+  hyphenation_patterns_path: string
+  /** If `true`, do not match sub tokens in tokens that are in the word list. Defaults to `false`. */
+  no_sub_matches?: boolean
+  /** If `true`, do not allow overlapping tokens. Defaults to `false`. */
+  no_overlapping_matches?: boolean
 }
 
 export enum DelimitedPayloadEncoding {
@@ -66,7 +81,9 @@ export enum DelimitedPayloadEncoding {
 
 export class DelimitedPayloadTokenFilter extends TokenFilterBase {
   type: 'delimited_payload'
+  /** Character used to separate tokens from payloads. Defaults to `|`. */
   delimiter?: string
+  /** Data type for the stored payload. */
   encoding?: DelimitedPayloadEncoding
 }
 
@@ -77,27 +94,42 @@ export enum EdgeNGramSide {
 
 export class EdgeNGramTokenFilter extends TokenFilterBase {
   type: 'edge_ngram'
+  /** Maximum character length of a gram. For custom token filters, defaults to `2`. For the built-in edge_ngram filter, defaults to `1`. */
   max_gram?: integer
+  /** Minimum character length of a gram. Defaults to `1`. */
   min_gram?: integer
+  /** Indicates whether to truncate tokens from the `front` or `back`. Defaults to `front`. */
   side?: EdgeNGramSide
+  /** Emits original token when set to `true`. Defaults to `false`. */
   preserve_original?: Stringified<boolean>
 }
 
 export class ShingleTokenFilter extends TokenFilterBase {
   type: 'shingle'
+  /** String used in shingles as a replacement for empty positions that do not contain a token. This filler token is only used in shingles, not original unigrams. Defaults to an underscore (`_`). */
   filler_token?: string
-  max_shingle_size?: integer | string // TODO: should be only int
-  min_shingle_size?: integer | string // TODO: should be only int
+  /** Maximum number of tokens to concatenate when creating shingles. Defaults to `2`. */
+  max_shingle_size?: Stringified<integer>
+  /** Minimum number of tokens to concatenate when creating shingles. Defaults to `2`. */
+  min_shingle_size?: Stringified<integer>
+  /** If `true`, the output includes the original input tokens. If `false`, the output only includes shingles; the original input tokens are removed. Defaults to `true`. */
   output_unigrams?: boolean
+  /** If `true`, the output includes the original input tokens only if no shingles are produced; if shingles are produced, the output only includes shingles. Defaults to `false`. */
   output_unigrams_if_no_shingles?: boolean
+  /** Separator used to concatenate adjacent tokens to form a shingle. Defaults to a space (`" "`). */
   token_separator?: string
 }
 
 export class StopTokenFilter extends TokenFilterBase {
   type: 'stop'
+  /** If `true`, stop word matching is case insensitive. For example, if `true`, a stop word of the matches and removes `The`, `THE`, or `the`. Defaults to `false`. */
   ignore_case?: boolean
+  /** If `true`, the last token of a stream is removed if it’s a stop word. Defaults to `true`. */
   remove_trailing?: boolean
+  /** Language value, such as `_arabic_` or `_thai_`. Defaults to `_english_`. */
   stopwords?: StopWords
+  /** Path to a file that contains a list of stop words to remove.
+    * This path must be absolute or relative to the `config` location, and the file must be UTF-8 encoded. Each stop word in the file must be separated by a line break. */
   stopwords_path?: string
 }
 
@@ -106,64 +138,74 @@ export enum SynonymFormat {
   wordnet
 }
 
-export class SynonymGraphTokenFilter extends TokenFilterBase {
+export class SynonymTokenFilterBase extends TokenFilterBase {
+  /** Expands definitions for equivalent synonym rules. Defaults to `true`. */
+  expand?: boolean
+  /** Sets the synonym rules format. */
+  format?: SynonymFormat
+  /** If `true` ignores errors while parsing the synonym rules. It is important to note that only those synonym rules which cannot get parsed are ignored. Defaults to the value of the `updateable` setting. */
+  lenient?: boolean
+  /** Used to define inline synonyms. */
+  synonyms?: string[]
+  /** Used to provide a synonym file. This path must be absolute or relative to the `config` location. */
+  synonyms_path?: string
+  /** Provide a synonym set created via Synonyms Management APIs. */
+  synonyms_set?: string
+  /** Controls the tokenizers that will be used to tokenize the synonym, this parameter is for backwards compatibility for indices that created before 6.0.
+   * @deprecated 6.0.0 */
+  tokenizer?: string
+  /** If `true` allows reloading search analyzers to pick up changes to synonym files. Only to be used for search analyzers. Defaults to `false`. */
+  updateable?: boolean
+}
+
+export class SynonymGraphTokenFilter extends SynonymTokenFilterBase {
   type: 'synonym_graph'
-  expand?: boolean
-  format?: SynonymFormat
-  lenient?: boolean
-  synonyms?: string[]
-  synonyms_path?: string
-  synonyms_set?: string
-  tokenizer?: string
-  updateable?: boolean
 }
 
-export class SynonymTokenFilter extends TokenFilterBase {
+export class SynonymTokenFilter extends SynonymTokenFilterBase {
   type: 'synonym'
-  expand?: boolean
-  format?: SynonymFormat
-  lenient?: boolean
-  synonyms?: string[]
-  synonyms_path?: string
-  synonyms_set?: string
-  tokenizer?: string
-  updateable?: boolean
 }
 
-export class WordDelimiterTokenFilter extends TokenFilterBase {
+export class WordDelimiterTokenFilterBase extends TokenFilterBase {
+  /** If `true`, the filter produces catenated tokens for chains of alphanumeric characters separated by non-alphabetic delimiters. Defaults to `false`. */
+  catenate_all?: boolean
+  /** If `true`, the filter produces catenated tokens for chains of numeric characters separated by non-alphabetic delimiters. Defaults to `false`. */
+  catenate_numbers?: boolean
+  /** If `true`, the filter produces catenated tokens for chains of alphabetical characters separated by non-alphabetic delimiters. Defaults to `false`. */
+  catenate_words?: boolean
+  /** If `true`, the filter includes tokens consisting of only numeric characters in the output. If `false`, the filter excludes these tokens from the output. Defaults to `true`. */
+  generate_number_parts?: boolean
+  /** If `true`, the filter includes tokens consisting of only alphabetical characters in the output. If `false`, the filter excludes these tokens from the output. Defaults to `true`. */
+  generate_word_parts?: boolean
+  /** If `true`, the filter includes the original version of any split tokens in the output. This original version includes non-alphanumeric delimiters. Defaults to `false`. */
+  preserve_original?: Stringified<boolean>
+  /** Array of tokens the filter won’t split. */
+  protected_words?: string[]
+  /** Path to a file that contains a list of tokens the filter won’t split.
+    * This path must be absolute or relative to the `config` location, and the file must be UTF-8 encoded. Each token in the file must be separated by a line break. */
+  protected_words_path?: string
+  /** If `true`, the filter splits tokens at letter case transitions. For example: camelCase -> [ camel, Case ]. Defaults to `true`. */
+  split_on_case_change?: boolean
+  /** If `true`, the filter splits tokens at letter-number transitions. For example: j2se -> [ j, 2, se ]. Defaults to `true`. */
+  split_on_numerics?: boolean
+  /** If `true`, the filter removes the English possessive (`'s`) from the end of each token. For example: O'Neil's -> [ O, Neil ]. Defaults to `true`. */
+  stem_english_possessive?: boolean
+  /** Array of custom type mappings for characters. This allows you to map non-alphanumeric characters as numeric or alphanumeric to avoid splitting on those characters. */
+  type_table?: string[]
+  /** Path to a file that contains custom type mappings for characters. This allows you to map non-alphanumeric characters as numeric or alphanumeric to avoid splitting on those characters. */
+  type_table_path?: string
+}
+
+export class WordDelimiterTokenFilter extends WordDelimiterTokenFilterBase {
   type: 'word_delimiter'
-  catenate_all?: boolean
-  catenate_numbers?: boolean
-  catenate_words?: boolean
-  generate_number_parts?: boolean
-  generate_word_parts?: boolean
-  preserve_original?: Stringified<boolean>
-  protected_words?: string[]
-  protected_words_path?: string
-  split_on_case_change?: boolean
-  split_on_numerics?: boolean
-  stem_english_possessive?: boolean
-  type_table?: string[]
-  type_table_path?: string
 }
 
-export class WordDelimiterGraphTokenFilter extends TokenFilterBase {
+export class WordDelimiterGraphTokenFilter extends WordDelimiterTokenFilterBase {
   type: 'word_delimiter_graph'
+  /** If `true`, the filter adjusts the offsets of split or catenated tokens to better reflect their actual position in the token stream. Defaults to `true`. */
   adjust_offsets?: boolean
-  catenate_all?: boolean
-  catenate_numbers?: boolean
-  catenate_words?: boolean
-  generate_number_parts?: boolean
-  generate_word_parts?: boolean
+  /** If `true`, the filter skips tokens with a keyword attribute of true. Defaults to `false`. */
   ignore_keywords?: boolean
-  preserve_original?: Stringified<boolean>
-  protected_words?: string[]
-  protected_words_path?: string
-  split_on_case_change?: boolean
-  split_on_numerics?: boolean
-  stem_english_possessive?: boolean
-  type_table?: string[]
-  type_table_path?: string
 }
 
 export class AsciiFoldingTokenFilter extends TokenFilterBase {
