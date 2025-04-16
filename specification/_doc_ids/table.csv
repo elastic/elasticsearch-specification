@@ -709,10 +709,12 @@ search-render-query,https://www.elastic.co/docs/api/doc/elasticsearch/v9/operati
 search-count,https://www.elastic.co/docs/api/doc/elasticsearch/v9/operation/operation-count
 search-explain,https://www.elastic.co/docs/api/doc/elasticsearch/v9/operation/operation-explain
 search-field-caps,https://www.elastic.co/docs/api/doc/elasticsearch/v9/operation/operation-field-caps
+search-highlight,https://www.elastic.co/docs/reference/elasticsearch/rest-apis/highlighting
 search-knn,https://www.elastic.co/docs/api/doc/elasticsearch/v9/operation/operation-knn-search
 search-multi-search,https://www.elastic.co/docs/api/doc/elasticsearch/v9/operation/operation-msearch
 search-multi-search-template,https://www.elastic.co/docs/api/doc/elasticsearch/v9/operation/operation-msearch-template
 search-rank-eval,https://www.elastic.co/docs/api/doc/elasticsearch/v9/operation/operation-rank-eval
+search-retrievers,https://www.elastic.co/docs/reference/elasticsearch/rest-apis/retrievers
 search-search,https://www.elastic.co/docs/api/doc/elasticsearch/v9/operation/operation-search
 search-shards,https://www.elastic.co/docs/api/doc/elasticsearch/v9/operation/operation-search-shards
 search-template,https://www.elastic.co/docs/solutions/search/search-templates
