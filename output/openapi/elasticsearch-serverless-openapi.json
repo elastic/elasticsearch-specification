@@ -29869,6 +29869,9 @@
         "type": "object",
         "properties": {
           "aggregations": {
+            "externalDocs": {
+              "url": "https://www.elastic.co/docs/explore-analyze/query-filter/aggregations"
+            },
             "description": "Defines the aggregations that are run as part of the search request.",
             "type": "object",
             "additionalProperties": {
@@ -69483,6 +69486,9 @@
               "type": "object",
               "properties": {
                 "aggregations": {
+                  "externalDocs": {
+                    "url": "https://www.elastic.co/docs/explore-analyze/query-filter/aggregations"
+                  },
                   "description": "Defines the aggregations that are run as part of the search request.",
                   "type": "object",
                   "additionalProperties": {

@@ -387,7 +387,9 @@ export interface Request extends RequestBase {
   body: {
     /**
      * Defines the aggregations that are run as part of the search request.
-     * @aliases aggs */ // ES uses "aggregations" in serialization
+     * @aliases aggs
+     * @ext_doc_id search-aggregations
+     */ // ES uses "aggregations" in serialization
     aggregations?: Dictionary<string, AggregationContainer>
     /**
      * Collapses search results the values of the specified field.
@@ -411,6 +413,7 @@ export interface Request extends RequestBase {
     from?: integer
     /**
      * Specifies the highlighter to use for retrieving highlighted snippets from one or more fields in your search results.
+     * @ext_doc_id search-highlight
      */
     highlight?: Highlight
     /**
@@ -477,6 +480,7 @@ export interface Request extends RequestBase {
      * A retriever replaces other elements of the search API that also return top documents such as `query` and `knn`.
      * @availability stack since=8.14.0 stability=stable
      * @availability serverless stability=stable
+     * @ext_doc_id search-retrievers
      */
     retriever?: RetrieverContainer
     /**

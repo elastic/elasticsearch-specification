@@ -1071,6 +1071,15 @@ actions:
   #   update:
   #     aggregations:
   #       x-model: true
+  - target: "$.components['schemas']['_types.ScriptSource'].oneOf"
+    description: Remove oneOf temporarily from ScriptSource
+    remove: true
+  - target: "$.components['schemas']['_types.ScriptSource']"
+    description: Re-add simplified oneOf temporarily in ScriptSource
+    update:
+      oneOf:
+        - type: string
+        - type: object
 # Examples
 ## xCodeSamples
   - target: "$.paths['/{index}/_doc/{id}']['head']"
