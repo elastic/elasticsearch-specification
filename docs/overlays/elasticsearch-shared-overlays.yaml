@@ -226,10 +226,6 @@ actions:
             url: https://www.elastic.co/docs/explore-analyze/alerts-cases/watcher
             description: Learn more about Watcher.
 # Add x-model and/or abbreviate schemas that should point to other references
-  - target: "$.components['schemas']['_types.query_dsl.QueryContainer']"
-    description: Add x-model for the QueryContainer object
-    update:
-      x-model: true
   - target: "$.components['schemas']['_types.analysis.CharFilter'].oneOf"
     description: Remove existing oneOf definition for CharFilter
     remove: true
@@ -1073,6 +1069,13 @@ actions:
         x-model: true
   - target: "$.components['schemas']['_global.search._types.SearchRequestBody'].properties.aggregations.additionalProperties"
     description: Remove additionalProperties from SearchRequestBody aggregations
+    remove: true
+  - target: "$.components['schemas']['_types.query_dsl.QueryContainer']"
+    description: Add x-model for the QueryContainer object
+    update:
+      x-model: true
+  - target: "$.components['schemas']['_types.query_dsl.QueryContainer.properties']"
+    description: Remove the QueryContainer properties
     remove: true
 # Examples
 ## xCodeSamples
