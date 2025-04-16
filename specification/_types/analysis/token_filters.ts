@@ -342,6 +342,94 @@ export class UppercaseTokenFilter extends TokenFilterBase {
   type: 'uppercase'
 }
 
+export class ApostropheTokenFilter extends TokenFilterBase {
+  type: 'apostrophe'
+}
+
+export class ArabicNormalizationTokenFilter extends TokenFilterBase {
+  type: 'arabic_normalization'
+}
+
+export enum CjkBigramIgnoredScript {
+  han,
+  hangul,
+  hiragana,
+  katakana
+}
+
+export class CjkBigramTokenFilter extends TokenFilterBase {
+  type: 'cjk_bigram'
+  /** Array of character scripts for which to disable bigrams. */
+  ignored_scripts?: CjkBigramIgnoredScript[]
+  /** If `true`, emit tokens in both bigram and unigram form. If `false`, a CJK character is output in unigram form when it has no adjacent characters. Defaults to `false`. */
+  output_unigrams?: boolean
+}
+
+export class CjkWidthTokenFilter extends TokenFilterBase {
+  type: 'cjk_width'
+}
+
+export class ClassicTokenFilter extends TokenFilterBase {
+  type: 'classic'
+}
+
+export class DecimalDigitTokenFilter extends TokenFilterBase {
+  type: 'decimal_digit'
+}
+
+export class FlattenGraphTokenFilter extends TokenFilterBase {
+  type: 'flatten_graph'
+}
+
+export class GermanNormalizationTokenFilter extends TokenFilterBase {
+  type: 'german_normalization'
+}
+
+export class HindiNormalizationTokenFilter extends TokenFilterBase {
+  type: 'hindi_normalization'
+}
+
+export class IndicNormalizationTokenFilter extends TokenFilterBase {
+  type: 'indic_normalization'
+}
+
+export class KeywordRepeatTokenFilter extends TokenFilterBase {
+  type: 'keyword_repeat'
+}
+
+export class MinHashTokenFilter extends TokenFilterBase {
+  type: 'min_hash'
+  /** Number of buckets to which hashes are assigned. Defaults to `512`. */
+  bucket_count?: integer
+  /** Number of ways to hash each token in the stream. Defaults to `1`. */
+  hash_count?: integer
+  /** Number of hashes to keep from each bucket. Defaults to `1`.
+    * Hashes are retained by ascending size, starting with the bucket’s smallest hash first. */
+  hash_set_size?: integer
+  /** If `true`, the filter fills empty buckets with the value of the first non-empty bucket to its circular right if the `hash_set_size` is `1`. If the `bucket_count` argument is greater than 1, this parameter defaults to `true`. Otherwise, this parameter defaults to `false`. */
+  with_rotation?: boolean
+}
+
+export class PersianNormalizationTokenFilter extends TokenFilterBase {
+  type: 'persian_normalization'
+}
+
+export class ScandinavianFoldingTokenFilter extends TokenFilterBase {
+  type: 'scandinavian_folding'
+}
+
+export class ScandinavianNormalizationTokenFilter extends TokenFilterBase {
+  type: 'scandinavian_normalization'
+}
+
+export class SerbianNormalizationTokenFilter extends TokenFilterBase {
+  type: 'serbian_normalization'
+}
+
+export class SoraniNormalizationTokenFilter extends TokenFilterBase {
+  type: 'sorani_normalization'
+}
+
 /**
  * @codegen_names name, definition
  * @ext_doc_id analysis-tokenfilters
@@ -354,34 +442,50 @@ export type TokenFilter = string | TokenFilterDefinition
  * @non_exhaustive
  */
 export type TokenFilterDefinition =
+  | ApostropheTokenFilter
+  | ArabicNormalizationTokenFilter
   | AsciiFoldingTokenFilter
+  | CjkBigramTokenFilter
+  | CjkWidthTokenFilter
+  | ClassicTokenFilter
   | CommonGramsTokenFilter
   | ConditionTokenFilter
+  | DecimalDigitTokenFilter
   | DelimitedPayloadTokenFilter
-  //DictionaryDecompounderTokenFilter |
   | EdgeNGramTokenFilter
   | ElisionTokenFilter
   | FingerprintTokenFilter
+  | FlattenGraphTokenFilter
+  | GermanNormalizationTokenFilter
+  | HindiNormalizationTokenFilter
   | HunspellTokenFilter
   | HyphenationDecompounderTokenFilter
+  | IndicNormalizationTokenFilter
   | KeepTypesTokenFilter
   | KeepWordsTokenFilter
   | KeywordMarkerTokenFilter
+  | KeywordRepeatTokenFilter
   | KStemTokenFilter
   | LengthTokenFilter
   | LimitTokenCountTokenFilter
   | LowercaseTokenFilter
+  | MinHashTokenFilter
   | MultiplexerTokenFilter
   | NGramTokenFilter
   | NoriPartOfSpeechTokenFilter
   | PatternCaptureTokenFilter
   | PatternReplaceTokenFilter
+  | PersianNormalizationTokenFilter
   | PorterStemTokenFilter
   | PredicateTokenFilter
   | RemoveDuplicatesTokenFilter
   | ReverseTokenFilter
+  | ScandinavianFoldingTokenFilter
+  | ScandinavianNormalizationTokenFilter
+  | SerbianNormalizationTokenFilter
   | ShingleTokenFilter
   | SnowballTokenFilter
+  | SoraniNormalizationTokenFilter
   | StemmerOverrideTokenFilter
   | StemmerTokenFilter
   | StopTokenFilter
