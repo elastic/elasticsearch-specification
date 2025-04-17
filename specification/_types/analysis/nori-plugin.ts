@@ -39,4 +39,3 @@ export class NoriPartOfSpeechTokenFilter extends TokenFilterBase {
   /** An array of part-of-speech tags that should be removed. */
   stoptags?: string[]
 }
-
