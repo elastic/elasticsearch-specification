@@ -45099,45 +45099,26 @@
       "_types.mapping.ChunkingSettings": {
         "type": "object",
         "properties": {
-          "type": {
-            "$ref": "#/components/schemas/_types.mapping.ChunkingStrategy"
+          "strategy": {
+            "description": "The chunking strategy: `sentence` or `word`.",
+            "type": "string"
           },
           "max_chunk_size": {
-            "description": "The maximum number of words in a chunk.",
+            "description": "The maximum size of a chunk in words.\nThis value cannot be higher than `300` or lower than `20` (for `sentence` strategy) or `10` (for `word` strategy).",
             "type": "number"
           },
           "overlap": {
-            "description": "The number of overlapping words allowed in chunks. This cannot be \ndefined as more than half of the max_chunk_size. Required for `word`\ntype chunking settings.",
+            "description": "The number of overlapping words for chunks.\nIt is applicable only to a `word` chunking strategy.\nThis value cannot be higher than half the `max_chunk_size` value.",
             "type": "number"
           },
           "sentence_overlap": {
-            "description": "The number of overlapping sentences allowed in chunks. Required for `sentence` type chunking settings.",
-            "oneOf": [
-              {
-                "type": "string",
-                "enum": [
-                  "0"
-                ]
-              },
-              {
-                "type": "string",
-                "enum": [
-                  "1"
-                ]
-              }
-            ]
+            "description": "The number of overlapping sentences for chunks.\nIt is applicable only for a `sentence` chunking strategy.\nIt can be either `1` or `0`.",
+            "type": "number"
           }
         },
         "required": [
-          "type",
+          "strategy",
           "max_chunk_size"
-        ]
-      },
-      "_types.mapping.ChunkingStrategy": {
-        "type": "string",
-        "enum": [
-          "word",
-          "sentence"
         ]
       },
       "_types.mapping.SparseVectorProperty": {
