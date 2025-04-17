@@ -45,7 +45,7 @@ export class Redact {
 export class SimulateDocumentResult {
   doc?: DocumentSimulation
   error?: ErrorCause
-  processor_results?: PipelineSimulation[]
+  processor_results?: PipelineProcessorResult[]
 }
 
 export enum PipelineSimulationStatusOptions {
@@ -56,7 +56,7 @@ export enum PipelineSimulationStatusOptions {
   dropped
 }
 
-export class PipelineSimulation {
+export class PipelineProcessorResult {
   doc?: DocumentSimulation
   tag?: string
   processor_type?: string
