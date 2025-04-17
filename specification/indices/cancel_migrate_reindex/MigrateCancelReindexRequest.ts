@@ -27,7 +27,7 @@ import { Indices } from '@_types/common'
  * @rest_spec_name indices.cancel_migrate_reindex
  * @availability stack since=8.18.0 stability=experimental
  * @availability serverless stability=experimental visibility=private
- * @doc_id migrate
+ * @doc_id migration-api-cancel
  * @doc_tag migration
  */
 export interface Request extends RequestBase {

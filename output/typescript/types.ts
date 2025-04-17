@@ -689,35 +689,6 @@ export interface InfoResponse {
   version: ElasticsearchVersionInfo
 }
 
-export interface KnnSearchRequest extends RequestBase {
-  index: Indices
-  routing?: Routing
-  body?: {
-    _source?: SearchSourceConfig
-    docvalue_fields?: (QueryDslFieldAndFormat | Field)[]
-    stored_fields?: Fields
-    fields?: Fields
-    filter?: QueryDslQueryContainer | QueryDslQueryContainer[]
-    knn: KnnSearchQuery
-  }
-}
-
-export interface KnnSearchResponse<TDocument = unknown> {
-  took: long
-  timed_out: boolean
-  _shards: ShardStatistics
-  hits: SearchHitsMetadata<TDocument>
-  fields?: Record<string, any>
-  max_score?: double
-}
-
-export interface KnnSearchQuery {
-  field: Field
-  query_vector: QueryVector
-  k: integer
-  num_candidates: integer
-}
-
 export interface MgetMultiGetError {
   error: ErrorCause
   _id: Id
@@ -2348,8 +2319,6 @@ export interface ErrorResponseBase {
   status: integer
 }
 
-export type EsqlResult = ArrayBuffer
-
 export type ExpandWildcard = 'all' | 'open' | 'closed' | 'hidden' | 'none'
 
 export type ExpandWildcards = ExpandWildcard | ExpandWildcard[]
@@ -3182,12 +3151,10 @@ export interface AggregationsAggregationContainer {
   variable_width_histogram?: AggregationsVariableWidthHistogramAggregation
 }
 
-export type AggregationsAggregationRange = AggregationsUntypedAggregationRange | AggregationsDateAggregationRange | AggregationsNumberAggregationRange | AggregationsTermAggregationRange
-
-export interface AggregationsAggregationRangeBase<T = unknown> {
-  from?: T
+export interface AggregationsAggregationRange {
+  from?: double | null
   key?: string
-  to?: T
+  to?: double | null
 }
 
 export interface AggregationsArrayPercentilesItem {
@@ -3410,9 +3377,6 @@ export interface AggregationsCustomCategorizeTextAnalyzer {
   filter?: string[]
 }
 
-export interface AggregationsDateAggregationRange extends AggregationsAggregationRangeBase<AggregationsFieldDateMath> {
-}
-
 export interface AggregationsDateHistogramAggregate extends AggregationsMultiBucketAggregateBase<AggregationsDateHistogramBucket> {
 }
 
@@ -3448,9 +3412,15 @@ export interface AggregationsDateRangeAggregation extends AggregationsBucketAggr
   field?: Field
   format?: string
   missing?: AggregationsMissing
-  ranges?: AggregationsDateAggregationRange[]
+  ranges?: AggregationsDateRangeExpression[]
   time_zone?: TimeZone
   keyed?: boolean
+}
+
+export interface AggregationsDateRangeExpression {
+  from?: AggregationsFieldDateMath
+  key?: string
+  to?: AggregationsFieldDateMath
 }
 
 export interface AggregationsDerivativeAggregate extends AggregationsSingleMetricAggregateBase {
@@ -4004,9 +3974,6 @@ export interface AggregationsNormalizeAggregation extends AggregationsPipelineAg
 
 export type AggregationsNormalizeMethod = 'rescale_0_1' | 'rescale_0_100' | 'percent_of_sum' | 'mean' | 'z-score' | 'softmax'
 
-export interface AggregationsNumberAggregationRange extends AggregationsAggregationRangeBase<double> {
-}
-
 export interface AggregationsParentAggregateKeys extends AggregationsSingleBucketAggregateBase {
 }
 export type AggregationsParentAggregate = AggregationsParentAggregateKeys
@@ -4331,9 +4298,6 @@ export interface AggregationsTTestAggregation {
 
 export type AggregationsTTestType = 'paired' | 'homoscedastic' | 'heteroscedastic'
 
-export interface AggregationsTermAggregationRange extends AggregationsAggregationRangeBase<string> {
-}
-
 export interface AggregationsTermsAggregateBase<TBucket = unknown> extends AggregationsMultiBucketAggregateBase<TBucket> {
   doc_count_error_upper_bound?: long
   sum_other_doc_count?: long
@@ -4447,9 +4411,6 @@ export interface AggregationsUnmappedSignificantTermsAggregate extends Aggregati
 }
 
 export interface AggregationsUnmappedTermsAggregate extends AggregationsTermsAggregateBase<SpecUtilsVoid> {
-}
-
-export interface AggregationsUntypedAggregationRange extends AggregationsAggregationRangeBase<any> {
 }
 
 export interface AggregationsValueCountAggregate extends AggregationsSingleMetricAggregateBase {
@@ -5424,6 +5385,13 @@ export interface MappingByteNumberProperty extends MappingNumberPropertyBase {
   null_value?: byte
 }
 
+export interface MappingChunkingSettings {
+  strategy: string
+  max_chunk_size: integer
+  overlap?: integer
+  sentence_overlap?: integer
+}
+
 export interface MappingCompletionProperty extends MappingDocValuesPropertyBase {
   analyzer?: string
   contexts?: MappingSuggestContext[]
@@ -5853,6 +5821,7 @@ export interface MappingSemanticTextProperty {
   meta?: Record<string, string>
   inference_id?: Id
   search_inference_id?: Id
+  chunking_settings?: MappingChunkingSettings
 }
 
 export interface MappingShapeProperty extends MappingDocValuesPropertyBase {
@@ -10611,7 +10580,61 @@ export type EqlSearchResponse<TEvent = unknown> = EqlEqlSearchResponseBase<TEven
 
 export type EqlSearchResultPosition = 'tail' | 'head'
 
+export interface EsqlAsyncEsqlResult extends EsqlEsqlResult {
+  id?: string
+  is_running: boolean
+}
+
+export interface EsqlEsqlClusterDetails {
+  status: EsqlEsqlClusterStatus
+  indices: string
+  took?: DurationValue<UnitMillis>
+  _shards?: EsqlEsqlShardInfo
+}
+
+export interface EsqlEsqlClusterInfo {
+  total: integer
+  successful: integer
+  running: integer
+  skipped: integer
+  partial: integer
+  failed: integer
+  details: Record<string, EsqlEsqlClusterDetails>
+}
+
+export type EsqlEsqlClusterStatus = 'running' | 'successful' | 'partial' | 'skipped' | 'failed'
+
+export interface EsqlEsqlColumnInfo {
+  name: string
+  type: string
+}
+
 export type EsqlEsqlFormat = 'csv' | 'json' | 'tsv' | 'txt' | 'yaml' | 'cbor' | 'smile' | 'arrow'
+
+export interface EsqlEsqlResult {
+  took?: DurationValue<UnitMillis>
+  is_partial?: boolean
+  all_columns?: EsqlEsqlColumnInfo[]
+  columns: EsqlEsqlColumnInfo[]
+  values: FieldValue[][]
+  _clusters?: EsqlEsqlClusterInfo
+  profile?: any
+}
+
+export interface EsqlEsqlShardFailure {
+  shard: Id
+  index: IndexName
+  node?: NodeId
+  reason: ErrorCause
+}
+
+export interface EsqlEsqlShardInfo {
+  total: integer
+  successful?: integer
+  skipped?: integer
+  failed?: integer
+  failures?: EsqlEsqlShardFailure[]
+}
 
 export interface EsqlTableValuesContainer {
   integer?: EsqlTableValuesIntegerValue[]
@@ -10649,7 +10672,7 @@ export interface EsqlAsyncQueryRequest extends RequestBase {
   }
 }
 
-export type EsqlAsyncQueryResponse = EsqlResult
+export type EsqlAsyncQueryResponse = EsqlAsyncEsqlResult
 
 export interface EsqlAsyncQueryDeleteRequest extends RequestBase {
   id: Id
@@ -10664,14 +10687,43 @@ export interface EsqlAsyncQueryGetRequest extends RequestBase {
   wait_for_completion_timeout?: Duration
 }
 
-export type EsqlAsyncQueryGetResponse = EsqlResult
+export type EsqlAsyncQueryGetResponse = EsqlAsyncEsqlResult
 
 export interface EsqlAsyncQueryStopRequest extends RequestBase {
   id: Id
   drop_null_columns?: boolean
 }
 
-export type EsqlAsyncQueryStopResponse = EsqlResult
+export type EsqlAsyncQueryStopResponse = EsqlEsqlResult
+
+export interface EsqlGetQueryRequest extends RequestBase {
+  id: Id
+}
+
+export interface EsqlGetQueryResponse {
+  id: long
+  node: NodeId
+  start_time_millis: long
+  running_time_nanos: long
+  query: string
+  coordinating_node: NodeId
+  data_nodes: NodeId[]
+}
+
+export interface EsqlListQueriesBody {
+  id: long
+  node: NodeId
+  start_time_millis: long
+  running_time_nanos: long
+  query: string
+}
+
+export interface EsqlListQueriesRequest extends RequestBase {
+}
+
+export interface EsqlListQueriesResponse {
+  queries: Record<TaskId, EsqlListQueriesBody>
+}
 
 export interface EsqlQueryRequest extends RequestBase {
   format?: EsqlEsqlFormat
@@ -10690,7 +10742,7 @@ export interface EsqlQueryRequest extends RequestBase {
   }
 }
 
-export type EsqlQueryResponse = EsqlResult
+export type EsqlQueryResponse = EsqlEsqlResult
 
 export interface FeaturesFeature {
   name: string
@@ -13343,6 +13395,15 @@ export interface InferenceInferenceEndpointInfo extends InferenceInferenceEndpoi
   task_type: InferenceTaskType
 }
 
+export interface InferenceInferenceResult {
+  text_embedding_bytes?: InferenceTextEmbeddingByteResult[]
+  text_embedding_bits?: InferenceTextEmbeddingByteResult[]
+  text_embedding?: InferenceTextEmbeddingResult[]
+  sparse_embedding?: InferenceSparseEmbeddingResult[]
+  completion?: InferenceCompletionResult[]
+  rerank?: InferenceRankedDocument[]
+}
+
 export interface InferenceJinaAIServiceSettings {
   api_key: string
   model_id?: string
@@ -13534,6 +13595,19 @@ export interface InferenceGetRequest extends RequestBase {
 export interface InferenceGetResponse {
   endpoints: InferenceInferenceEndpointInfo[]
 }
+
+export interface InferenceInferenceRequest extends RequestBase {
+  task_type?: InferenceTaskType
+  inference_id: Id
+  timeout?: Duration
+  body?: {
+    query?: string
+    input: string | string[]
+    task_settings?: InferenceTaskSettings
+  }
+}
+
+export type InferenceInferenceResponse = InferenceInferenceResult
 
 export interface InferencePutRequest extends RequestBase {
   task_type?: InferenceTaskType
@@ -14601,8 +14675,7 @@ export interface LogstashPipelineSettings {
   'pipeline.batch.size': integer
   'pipeline.batch.delay': integer
   'queue.type': string
-  'queue.max_bytes.number': integer
-  'queue.max_bytes.units': string
+  'queue.max_bytes': string
   'queue.checkpoint.writes': integer
 }
 
@@ -18855,7 +18928,7 @@ export interface SecurityClusterNode {
   name: Name
 }
 
-export type SecurityClusterPrivilege = 'all' | 'cancel_task' | 'create_snapshot' | 'cross_cluster_replication' | 'cross_cluster_search' | 'delegate_pki' | 'grant_api_key' | 'manage' | 'manage_api_key' | 'manage_autoscaling' | 'manage_behavioral_analytics' | 'manage_ccr' | 'manage_data_frame_transforms' | 'manage_data_stream_global_retention' | 'manage_enrich' | 'manage_ilm' | 'manage_index_templates' | 'manage_inference' | 'manage_ingest_pipelines' | 'manage_logstash_pipelines' | 'manage_ml' | 'manage_oidc' | 'manage_own_api_key' | 'manage_pipeline' | 'manage_rollup' | 'manage_saml' | 'manage_search_application' | 'manage_search_query_rules' | 'manage_search_synonyms' | 'manage_security' | 'manage_service_account' | 'manage_slm' | 'manage_token' | 'manage_transform' | 'manage_user_profile' | 'manage_watcher' | 'monitor' | 'monitor_data_frame_transforms' | 'monitor_data_stream_global_retention' | 'monitor_enrich' | 'monitor_inference' | 'monitor_ml' | 'monitor_rollup' | 'monitor_snapshot' | 'monitor_stats' | 'monitor_text_structure' | 'monitor_transform' | 'monitor_watcher' | 'none' | 'post_behavioral_analytics_event' | 'read_ccr' | 'read_fleet_secrets' | 'read_ilm' | 'read_pipeline' | 'read_security' | 'read_slm' | 'transport_client' | 'write_connector_secrets' | 'write_fleet_secrets'| string
+export type SecurityClusterPrivilege = 'all' | 'cancel_task' | 'create_snapshot' | 'cross_cluster_replication' | 'cross_cluster_search' | 'delegate_pki' | 'grant_api_key' | 'manage' | 'manage_api_key' | 'manage_autoscaling' | 'manage_behavioral_analytics' | 'manage_ccr' | 'manage_data_frame_transforms' | 'manage_data_stream_global_retention' | 'manage_enrich' | 'manage_esql' | 'manage_ilm' | 'manage_index_templates' | 'manage_inference' | 'manage_ingest_pipelines' | 'manage_logstash_pipelines' | 'manage_ml' | 'manage_oidc' | 'manage_own_api_key' | 'manage_pipeline' | 'manage_rollup' | 'manage_saml' | 'manage_search_application' | 'manage_search_query_rules' | 'manage_search_synonyms' | 'manage_security' | 'manage_service_account' | 'manage_slm' | 'manage_token' | 'manage_transform' | 'manage_user_profile' | 'manage_watcher' | 'monitor' | 'monitor_data_frame_transforms' | 'monitor_data_stream_global_retention' | 'monitor_enrich' | 'monitor_esql' | 'monitor_inference' | 'monitor_ml' | 'monitor_rollup' | 'monitor_snapshot' | 'monitor_stats' | 'monitor_text_structure' | 'monitor_transform' | 'monitor_watcher' | 'none' | 'post_behavioral_analytics_event' | 'read_ccr' | 'read_fleet_secrets' | 'read_ilm' | 'read_pipeline' | 'read_security' | 'read_slm' | 'transport_client' | 'write_connector_secrets' | 'write_fleet_secrets'| string
 
 export interface SecurityCreatedStatus {
   created: boolean
@@ -22803,13 +22876,13 @@ export interface SpecUtilsCommonQueryParameters {
   pretty?: boolean
 }
 
+export interface SpecUtilsOverloadOf<TDefinition = unknown> {
+  [key: string]: never
+}
+
 export interface SpecUtilsCommonCatQueryParameters {
   format?: string
   help?: boolean
   v?: boolean
-}
-
-export interface SpecUtilsOverloadOf<TDefinition = unknown> {
-  [key: string]: never
 }
 
