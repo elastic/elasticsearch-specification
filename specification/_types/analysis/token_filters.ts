@@ -30,8 +30,10 @@ import {
 import {
   KuromojiPartOfSpeechTokenFilter,
   KuromojiReadingFormTokenFilter,
-  KuromojiStemmerTokenFilter
+  KuromojiStemmerTokenFilter,
+  JaStopTokenFilter
 } from './kuromoji-plugin'
+import { NoriPartOfSpeechTokenFilter } from './nori-plugin'
 import { SnowballLanguage } from './languages'
 import { PhoneticTokenFilter } from './phonetic-plugin'
 import { StopWords } from './StopWords'
@@ -210,47 +212,71 @@ export class WordDelimiterGraphTokenFilter extends WordDelimiterTokenFilterBase 
 
 export class AsciiFoldingTokenFilter extends TokenFilterBase {
   type: 'asciifolding'
+  /** If `true`, emit both original tokens and folded tokens. Defaults to `false`. */
   preserve_original?: Stringified<boolean>
 }
 
 export class CommonGramsTokenFilter extends TokenFilterBase {
   type: 'common_grams'
+  /** A list of tokens. The filter generates bigrams for these tokens.
+    * Either this or the `common_words_path` parameter is required. */
   common_words?: string[]
+  /** Path to a file containing a list of tokens. The filter generates bigrams for these tokens.
+    * This path must be absolute or relative to the `config` location. The file must be UTF-8 encoded. Each token in the file must be separated by a line break.
+    * Either this or the `common_words` parameter is required. */
   common_words_path?: string
+  /** If `true`, matches for common words matching are case-insensitive. Defaults to `false`. */
   ignore_case?: boolean
+  /** If `true`, the filter excludes the following tokens from the output:
+    * - Unigrams for common words
+    * - Unigrams for terms followed by common words
+    * Defaults to `false`. We recommend enabling this parameter for search analyzers. */
   query_mode?: boolean
 }
 
 export class ConditionTokenFilter extends TokenFilterBase {
   type: 'condition'
+  /** Array of token filters. If a token matches the predicate script in the `script` parameter, these filters are applied to the token in the order provided. */
   filter: string[]
+  /** Predicate script used to apply token filters. If a token matches this script, the filters in the `filter` parameter are applied to the token. */
   script: Script
 }
 
 export class ElisionTokenFilter extends TokenFilterBase {
   type: 'elision'
+  /** List of elisions to remove.
+    * To be removed, the elision must be at the beginning of a token and be immediately followed by an apostrophe. Both the elision and apostrophe are removed.
+    * For custom `elision` filters, either this parameter or `articles_path` must be specified. */
   articles?: string[]
+  /** Path to a file that contains a list of elisions to remove.
+    * This path must be absolute or relative to the `config` location, and the file must be UTF-8 encoded. Each elision in the file must be separated by a line break.
+    * To be removed, the elision must be at the beginning of a token and be immediately followed by an apostrophe. Both the elision and apostrophe are removed.
+    * For custom `elision` filters, either this parameter or `articles` must be specified. */
   articles_path?: string
+  /** If `true`, elision matching is case insensitive. If `false`, elision matching is case sensitive. Defaults to `false`. */
   articles_case?: Stringified<boolean>
 }
 
 export class FingerprintTokenFilter extends TokenFilterBase {
   type: 'fingerprint'
+  /** Maximum character length, including whitespace, of the output token. Defaults to `255`. Concatenated tokens longer than this will result in no token output. */
   max_output_size?: integer
+  /** Character to use to concatenate the token stream input. Defaults to a space. */
   separator?: string
 }
 
 export class HunspellTokenFilter extends TokenFilterBase {
   type: 'hunspell'
+  /** If `true`, duplicate tokens are removed from the filter’s output. Defaults to `true`. */
   dedup?: boolean
+  /** One or more `.dic` files (e.g, `en_US.dic`, my_custom.dic) to use for the Hunspell dictionary.
+    * By default, the `hunspell` filter uses all `.dic` files in the `<$ES_PATH_CONF>/hunspell/<locale>` directory specified using the `lang`, `language`, or `locale` parameter. */
   dictionary?: string
+  /** Locale directory used to specify the `.aff` and `.dic` files for a Hunspell dictionary.
+    * @aliases lang, language */
   locale: string
+  /** If `true`, only the longest stemmed version of each token is included in the output. If `false`, all stemmed versions of the token are included. Defaults to `false`. */
   longest_only?: boolean
-}
-
-export class JaStopTokenFilter extends TokenFilterBase {
-  type: 'ja_stop'
-  stopwords?: StopWords
 }
 
 export enum KeepTypesMode {
@@ -260,22 +286,38 @@ export enum KeepTypesMode {
 
 export class KeepTypesTokenFilter extends TokenFilterBase {
   type: 'keep_types'
+  /** Indicates whether to keep or remove the specified token types. */
   mode?: KeepTypesMode
-  types?: string[]
+  /** List of token types to keep or remove. */
+  types: string[]
 }
 
 export class KeepWordsTokenFilter extends TokenFilterBase {
   type: 'keep'
+  /** List of words to keep. Only tokens that match words in this list are included in the output.
+    * Either this parameter or `keep_words_path` must be specified. */
   keep_words?: string[]
+  /** If `true`, lowercase all keep words. Defaults to `false`. */
   keep_words_case?: boolean
+  /** Path to a file that contains a list of words to keep. Only tokens that match words in this list are included in the output.
+    * This path must be absolute or relative to the `config` location, and the file must be UTF-8 encoded. Each word in the file must be separated by a line break.
+    * Either this parameter or `keep_words` must be specified. */
   keep_words_path?: string
 }
 
 export class KeywordMarkerTokenFilter extends TokenFilterBase {
   type: 'keyword_marker'
+  /** If `true`, matching for the `keywords` and `keywords_path` parameters ignores letter case. Defaults to `false`. */
   ignore_case?: boolean
+  /** Array of keywords. Tokens that match these keywords are not stemmed.
+    * This parameter, `keywords_path`, or `keywords_pattern` must be specified. You cannot specify this parameter and `keywords_pattern`. */
   keywords?: string | string[]
+  /** Path to a file that contains a list of keywords. Tokens that match these keywords are not stemmed.
+    * This path must be absolute or relative to the `config` location, and the file must be UTF-8 encoded. Each word in the file must be separated by a line break.
+    * This parameter, `keywords`, or `keywords_pattern` must be specified. You cannot specify this parameter and `keywords_pattern`. */
   keywords_path?: string
+  /** Java regular expression used to match tokens. Tokens that match this expression are marked as keywords and not stemmed.
+    * This parameter, `keywords`, or `keywords_path` must be specified. You cannot specify this parameter and `keywords` or `keywords_pattern`. */
   keywords_pattern?: string
 }
 
@@ -285,50 +327,65 @@ export class KStemTokenFilter extends TokenFilterBase {
 
 export class LengthTokenFilter extends TokenFilterBase {
   type: 'length'
+  /** Maximum character length of a token. Longer tokens are excluded from the output. Defaults to `Integer.MAX_VALUE`, which is `2^31-1` or `2147483647`. */
   max?: integer
+  /** Minimum character length of a token. Shorter tokens are excluded from the output. Defaults to `0`. */
   min?: integer
 }
 
 export class LimitTokenCountTokenFilter extends TokenFilterBase {
   type: 'limit'
+  /** If `true`, the limit filter exhausts the token stream, even if the `max_token_count` has already been reached. Defaults to `false`. */
   consume_all_tokens?: boolean
+  /** Maximum number of tokens to keep. Once this limit is reached, any remaining tokens are excluded from the output. Defaults to `1`. */
   max_token_count?: Stringified<integer>
+}
+
+export enum LowercaseTokenFilterLanguages {
+  greek,
+  irish,
+  turkish
 }
 
 export class LowercaseTokenFilter extends TokenFilterBase {
   type: 'lowercase'
-  language?: string
+  /** Language-specific lowercase token filter to use. */
+  language?: LowercaseTokenFilterLanguages
 }
 
 export class MultiplexerTokenFilter extends TokenFilterBase {
   type: 'multiplexer'
+  /** A list of token filters to apply to incoming tokens. */
   filters: string[]
+  /** If `true` (the default) then emit the original token in addition to the filtered tokens. */
   preserve_original?: Stringified<boolean>
 }
 
 export class NGramTokenFilter extends TokenFilterBase {
   type: 'ngram'
+  /** Maximum length of characters in a gram. Defaults to `2`. */
   max_gram?: integer
+  /** Minimum length of characters in a gram. Defaults to `1`. */
   min_gram?: integer
+  /** Emits original token when set to `true`. Defaults to `false`. */
   preserve_original?: Stringified<boolean>
-}
-
-export class NoriPartOfSpeechTokenFilter extends TokenFilterBase {
-  type: 'nori_part_of_speech'
-  stoptags?: string[]
 }
 
 export class PatternCaptureTokenFilter extends TokenFilterBase {
   type: 'pattern_capture'
+  /** A list of regular expressions to match. */
   patterns: string[]
+  /** If set to `true` (the default) it will emit the original token. */
   preserve_original?: Stringified<boolean>
 }
 
 export class PatternReplaceTokenFilter extends TokenFilterBase {
   type: 'pattern_replace'
+  /** If `true`, all substrings matching the pattern parameter’s regular expression are replaced. If `false`, the filter replaces only the first matching substring in each token. Defaults to `true`. */
   all?: boolean
-  flags?: string
+  /** Regular expression, written in Java’s regular expression syntax. The filter replaces token substrings matching this pattern with the substring in the `replacement` parameter. */
   pattern: string
+  /** Replacement substring. Defaults to an empty substring (`""`). */
   replacement?: string
 }
 
@@ -338,6 +395,7 @@ export class PorterStemTokenFilter extends TokenFilterBase {
 
 export class PredicateTokenFilter extends TokenFilterBase {
   type: 'predicate_token_filter'
+  /** Script containing a condition used to filter incoming tokens. Only tokens that match this script are included in the output. */
   script: Script
 }
 
@@ -351,12 +409,15 @@ export class ReverseTokenFilter extends TokenFilterBase {
 
 export class SnowballTokenFilter extends TokenFilterBase {
   type: 'snowball'
+  /** Controls the language used by the stemmer. */
   language?: SnowballLanguage
 }
 
 export class StemmerOverrideTokenFilter extends TokenFilterBase {
   type: 'stemmer_override'
+  /** A list of mapping rules to use. */
   rules?: string[]
+  /** A path (either relative to `config` location, or absolute) to a list of mappings. */
   rules_path?: string
 }
 
@@ -372,11 +433,13 @@ export class TrimTokenFilter extends TokenFilterBase {
 
 export class TruncateTokenFilter extends TokenFilterBase {
   type: 'truncate'
+  /** Character limit for each token. Tokens exceeding this limit are truncated. Defaults to `10`. */
   length?: integer
 }
 
 export class UniqueTokenFilter extends TokenFilterBase {
   type: 'unique'
+  /** If `true`, only remove duplicate tokens in the same position. Defaults to `false`. */
   only_on_same_position?: boolean
 }
 
@@ -539,6 +602,7 @@ export type TokenFilterDefinition =
   | UppercaseTokenFilter
   | WordDelimiterGraphTokenFilter
   | WordDelimiterTokenFilter
+  | JaStopTokenFilter
   | KuromojiStemmerTokenFilter
   | KuromojiReadingFormTokenFilter
   | KuromojiPartOfSpeechTokenFilter
