@@ -21149,16 +21149,6 @@
               "$ref": "#/components/schemas/_types.Id"
             },
             "style": "simple"
-          },
-          {
-            "in": "query",
-            "name": "refresh",
-            "description": "If `true`, the request will refresh the analyzers with the new synonyms set and wait for the new synonyms to be available before returning.\nIf `false`, analyzers will not be reloaded with the new synonym set",
-            "deprecated": false,
-            "schema": {
-              "type": "boolean"
-            },
-            "style": "form"
           }
         ],
         "requestBody": {
@@ -21331,16 +21321,6 @@
               "$ref": "#/components/schemas/_types.Id"
             },
             "style": "simple"
-          },
-          {
-            "in": "query",
-            "name": "refresh",
-            "description": "If `true`, the request will refresh the analyzers with the new synonym rule and wait for the new synonyms to be available before returning.\nIf `false`, analyzers will not be reloaded with the new synonym rule",
-            "deprecated": false,
-            "schema": {
-              "type": "boolean"
-            },
-            "style": "form"
           }
         ],
         "requestBody": {
@@ -21417,16 +21397,6 @@
               "$ref": "#/components/schemas/_types.Id"
             },
             "style": "simple"
-          },
-          {
-            "in": "query",
-            "name": "refresh",
-            "description": "If `true`, the request will refresh the analyzers with the deleted synonym rule and wait for the new synonyms to be available before returning.\nIf `false`, analyzers will not be reloaded with the deleted synonym rule",
-            "deprecated": false,
-            "schema": {
-              "type": "boolean"
-            },
-            "style": "form"
           }
         ],
         "responses": {

@@ -50,6 +50,7 @@ export interface Request extends RequestBase {
      * If `true`, the request will refresh the analyzers with the deleted synonym rule and wait for the new synonyms to be available before returning.
      * If `false`, analyzers will not be reloaded with the deleted synonym rule
      * @server_default true
+     * @availability stack since=9.1.0
      */
     refresh?: boolean
   }
