@@ -57,4 +57,12 @@ export interface Request extends RequestBase {
      */
     synonyms: SynonymString
   }
+  query_parameters: {
+    /**
+     * If `true`, the request will refresh the analyzers with the new synonym rule and wait for the new synonyms to be available before returning.
+     * If `false`, analyzers will not be reloaded with the new synonym rule
+     * @server_default true
+     */
+    refresh?: boolean
+  }
 }
