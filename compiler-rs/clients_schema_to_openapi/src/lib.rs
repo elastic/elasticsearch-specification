@@ -20,57 +20,45 @@ mod paths;
 mod schemas;
 mod utils;
 
-use std::collections::HashSet;
-use std::io::{BufWriter, Write};
-use std::path::Path;
 use indexmap::IndexMap;
 
-use clients_schema::{Availabilities, Endpoint, IndexedModel, Stability};
+use clients_schema::{Availabilities, Flavor, IndexedModel, Stability, Visibility};
 use openapiv3::{Components, OpenAPI};
-use tracing::warn;
-
+use clients_schema::transform::ExpandConfig;
 use crate::components::TypesAndComponents;
 
-pub fn convert_schema_file(
-    path: impl AsRef<Path>,
-    filter: Option<fn(&Option<Availabilities>) -> bool>,
-    endpoint_filter: fn(e: &Endpoint) -> bool,
-    out: impl Write,
-) -> anyhow::Result<()> {
-    // Parsing from a string is faster than using a buffered reader when there is a need for look-ahead
-    // See https://github.com/serde-rs/json/issues/160
-    let json = &std::fs::read_to_string(path)?;
-    let json_deser = &mut serde_json::Deserializer::from_str(json);
+/// Convert an API model into an OpenAPI v3 schema, optionally filtered for a given flavor
+pub fn convert_schema(mut schema: IndexedModel, flavor: Option<Flavor>) -> anyhow::Result<OpenAPI> {
+    // Expand generics
+    schema = clients_schema::transform::expand_generics(schema, ExpandConfig::default())?;
 
-    let mut unused = HashSet::new();
-    let mut model: IndexedModel = serde_ignored::deserialize(json_deser, |path| {
-        if let serde_ignored::Path::Map { parent: _, key } = path {
-            unused.insert(key);
-        }
-    })?;
-    if !unused.is_empty() {
-        let msg = unused.into_iter().collect::<Vec<_>>().join(", ");
-        warn!("Unknown fields found in schema.json: {}", msg);
-    }
+    // Filter flavor
+    let filter: Option<fn(&Option<Availabilities>) -> bool> = match flavor {
+        None => None,
+        Some(Flavor::Stack) => Some(|a| {
+            // Generate only public items for Stack
+            Flavor::Stack.visibility(a) == Some(Visibility::Public)
+        }),
+        Some(Flavor::Serverless) => Some(|a| {
+            // Generate only public items for Serverless
+            Flavor::Serverless.visibility(a) == Some(Visibility::Public)
+        }),
+    };
 
     if let Some(filter) = filter {
-        model = clients_schema::transform::filter_availability(model, filter)?;
+        schema = clients_schema::transform::filter_availability(schema, filter)?;
     }
 
-    model.endpoints.retain(endpoint_filter);
-
-    let openapi = convert_schema(&model)?;
-    serde_json::to_writer_pretty(BufWriter::new(out), &openapi)?;
-    Ok(())
+    convert_expanded_schema(&schema)
 }
 
-/// Convert an API model into an OpenAPI v3 schema. The input model must have all generics expanded, converstion
+/// Convert an API model into an OpenAPI v3 schema. The input model must have all generics expanded, conversion
 /// will fail otherwise.
 ///
-/// Note: there are ways to represent [generics in JSON Schema], but its unlikely that tooling will understood it.
+/// Note: there are ways to represent [generics in JSON Schema], but its unlikely that tooling will understand it.
 ///
 /// [generics in JSON Schema]: https://json-schema.org/blog/posts/dynamicref-and-generics
-pub fn convert_schema(model: &IndexedModel) -> anyhow::Result<OpenAPI> {
+pub fn convert_expanded_schema(model: &IndexedModel) -> anyhow::Result<OpenAPI> {
     let mut openapi = OpenAPI {
         openapi: "3.0.3".into(),
         info: info(model),

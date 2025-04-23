@@ -19,7 +19,7 @@ use std::path::{Path, PathBuf};
 use anyhow::bail;
 
 use clap::{Parser, ValueEnum};
-use clients_schema::{Availabilities, Visibility};
+use clients_schema::Flavor;
 use tracing::Level;
 use tracing_subscriber::fmt::format::FmtSpan;
 use tracing_subscriber::FmtSubscriber;
@@ -72,33 +72,18 @@ impl Cli {
             std::fs::read_to_string(self.schema)?
         };
 
-        let mut model: clients_schema::IndexedModel = match serde_json::from_str(&json) {
+        let model: clients_schema::IndexedModel = match serde_json::from_str(&json) {
             Ok(indexed_model) => indexed_model,
             Err(e) => bail!("cannot parse schema json: {}", e)
         };
 
-        if let Some(flavor) = self.flavor {
-            if flavor != SchemaFlavor::All {
-                let filter: fn(&Option<Availabilities>) -> bool = match flavor {
-                    SchemaFlavor::All => |_| true,
-                    SchemaFlavor::Stack => |a| {
-                        // Generate public and private items for Stack
-                        clients_schema::Flavor::Stack.available(a)
-                    },
-                    SchemaFlavor::Serverless => |a| {
-                        // Generate only public items for Serverless
-                        clients_schema::Flavor::Serverless.visibility(a) == Some(Visibility::Public)
-                    },
-                };
+        let flavor = match self.flavor {
+            Some(SchemaFlavor::All) | None => None,
+            Some(SchemaFlavor::Stack) => Some(Flavor::Stack),
+            Some(SchemaFlavor::Serverless) => Some(Flavor::Serverless),
+        };
 
-                use clients_schema::transform::*;
-
-                model = expand_generics(model, ExpandConfig::default())?;
-                model = filter_availability(model, filter)?;
-            }
-        }
-
-        let openapi = clients_schema_to_openapi::convert_schema(&model)?;
+        let openapi = clients_schema_to_openapi::convert_schema(model, flavor)?;
 
         let output: Box<dyn std::io::Write> = {
             if let Some(output) = self.output {
