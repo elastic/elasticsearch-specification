@@ -1,6 +1,12 @@
 {
   "dependencies": {
+<<<<<<< HEAD
     "@redocly/cli": "^1.34.2",
     "@stoplight/spectral-cli": "^6.14.2"
+=======
+    "@redocly/cli": "^1.34.1",
+    "@stoplight/spectral-cli": "^6.14.2",
+    "npm": "^11.3.0"
+>>>>>>> 42e9256a5 ([DOCS] Renames ML get usage info APIs back to get stats. (#4299))
   }
 }
