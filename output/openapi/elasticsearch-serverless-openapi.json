@@ -14580,7 +14580,7 @@
         "tags": [
           "ml data frame"
         ],
-        "summary": "Get data frame analytics jobs usage info",
+        "summary": "Get data frame analytics job stats",
         "operationId": "ml-get-data-frame-analytics-stats",
         "parameters": [
           {
@@ -14609,7 +14609,7 @@
         "tags": [
           "ml data frame"
         ],
-        "summary": "Get data frame analytics jobs usage info",
+        "summary": "Get data frame analytics job stats",
         "operationId": "ml-get-data-frame-analytics-stats-1",
         "parameters": [
           {
@@ -14641,7 +14641,7 @@
         "tags": [
           "ml anomaly"
         ],
-        "summary": "Get datafeeds usage info",
+        "summary": "Get datafeed stats",
         "description": "You can get statistics for multiple datafeeds in a single API request by\nusing a comma-separated list of datafeeds or a wildcard expression. You can\nget statistics for all datafeeds by using `_all`, by specifying `*` as the\n`<feed_id>`, or by omitting the `<feed_id>`. If the datafeed is stopped, the\nonly information you receive is the `datafeed_id` and the `state`.\nThis API returns a maximum of 10,000 datafeeds.",
         "operationId": "ml-get-datafeed-stats",
         "parameters": [
@@ -14665,7 +14665,7 @@
         "tags": [
           "ml anomaly"
         ],
-        "summary": "Get datafeeds usage info",
+        "summary": "Get datafeed stats",
         "description": "You can get statistics for multiple datafeeds in a single API request by\nusing a comma-separated list of datafeeds or a wildcard expression. You can\nget statistics for all datafeeds by using `_all`, by specifying `*` as the\n`<feed_id>`, or by omitting the `<feed_id>`. If the datafeed is stopped, the\nonly information you receive is the `datafeed_id` and the `state`.\nThis API returns a maximum of 10,000 datafeeds.",
         "operationId": "ml-get-datafeed-stats-1",
         "parameters": [
@@ -14734,7 +14734,7 @@
         "tags": [
           "ml anomaly"
         ],
-        "summary": "Get anomaly detection jobs usage info",
+        "summary": "Get anomaly detection job stats",
         "operationId": "ml-get-job-stats",
         "parameters": [
           {
@@ -14754,7 +14754,7 @@
         "tags": [
           "ml anomaly"
         ],
-        "summary": "Get anomaly detection jobs usage info",
+        "summary": "Get anomaly detection job stats",
         "operationId": "ml-get-job-stats-1",
         "parameters": [
           {
