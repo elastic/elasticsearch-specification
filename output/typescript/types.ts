@@ -21033,7 +21033,7 @@ export type SynonymsSynonymString = string
 
 export interface SynonymsSynonymsUpdateResult {
   result: Result
-  reload_analyzers_details: IndicesReloadSearchAnalyzersReloadResult
+  reload_analyzers_details?: IndicesReloadSearchAnalyzersReloadResult
 }
 
 export interface SynonymsDeleteSynonymRequest extends RequestBase {
@@ -21093,7 +21093,7 @@ export interface SynonymsPutSynonymRequest extends RequestBase {
 
 export interface SynonymsPutSynonymResponse {
   result: Result
-  reload_analyzers_details: IndicesReloadSearchAnalyzersReloadResult
+  reload_analyzers_details?: IndicesReloadSearchAnalyzersReloadResult
 }
 
 export interface SynonymsPutSynonymRuleRequest extends RequestBase {
