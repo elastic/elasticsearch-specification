@@ -9536,6 +9536,39 @@ export interface ClusterStateRequest extends RequestBase {
 
 export type ClusterStateResponse = any
 
+export interface ClusterStatsCCSStats {
+  clusters?: Record<string, ClusterStatsRemoteClusterInfo>
+  _search: ClusterStatsCCSUsageStats
+  _esql: ClusterStatsCCSUsageStats
+}
+
+export interface ClusterStatsCCSUsageClusterStats {
+  total: integer
+  skipped: integer
+  took: ClusterStatsCCSUsageTimeValue
+}
+
+export interface ClusterStatsCCSUsageStats {
+  total: integer
+  success: integer
+  skipped: integer
+  took: ClusterStatsCCSUsageTimeValue
+  took_mrt_true?: ClusterStatsCCSUsageTimeValue
+  took_mrt_false?: ClusterStatsCCSUsageTimeValue
+  remotes_per_search_max: integer
+  remotes_per_search_avg: double
+  failure_reasons: Record<string, integer>
+  features: Record<string, integer>
+  clients: Record<string, integer>
+  clusters: Record<string, ClusterStatsCCSUsageClusterStats>
+}
+
+export interface ClusterStatsCCSUsageTimeValue {
+  max: DurationValue<UnitMillis>
+  avg: DurationValue<UnitMillis>
+  p90: DurationValue<UnitMillis>
+}
+
 export interface ClusterStatsCharFilterTypes {
   analyzer_types: ClusterStatsFieldTypes[]
   built_in_analyzers: ClusterStatsFieldTypes[]
@@ -9759,6 +9792,24 @@ export interface ClusterStatsOperatingSystemMemoryInfo {
   used_percent: integer
 }
 
+export interface ClusterStatsRemoteClusterInfo {
+  cluster_uuid: string
+  mode: string
+  skip_unavailable: boolean
+  transport_compress: string
+  status: HealthStatus
+  version: VersionString[]
+  nodes_count: integer
+  shards_count: integer
+  indices_count: integer
+  indices_total_size_in_bytes: long
+  indices_total_size?: string
+  max_heap_in_bytes: long
+  max_heap?: string
+  mem_total_in_bytes: long
+  mem_total?: string
+}
+
 export interface ClusterStatsRequest extends RequestBase {
   node_id?: NodeIds
   include_remotes?: boolean
@@ -9791,6 +9842,7 @@ export interface ClusterStatsStatsResponseBase extends NodesNodesResponseBase {
   nodes: ClusterStatsClusterNodes
   status: HealthStatus
   timestamp: long
+  ccs: ClusterStatsCCSStats
 }
 
 export interface ConnectorConnector {
