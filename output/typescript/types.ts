@@ -21033,7 +21033,7 @@ export type SynonymsSynonymString = string
 
 export interface SynonymsSynonymsUpdateResult {
   result: Result
-  reload_analyzers_details: IndicesReloadSearchAnalyzersReloadResult
+  reload_analyzers_details?: IndicesReloadSearchAnalyzersReloadResult
 }
 
 export interface SynonymsDeleteSynonymRequest extends RequestBase {
@@ -21045,6 +21045,7 @@ export type SynonymsDeleteSynonymResponse = AcknowledgedResponseBase
 export interface SynonymsDeleteSynonymRuleRequest extends RequestBase {
   set_id: Id
   rule_id: Id
+  refresh?: boolean
 }
 
 export type SynonymsDeleteSynonymRuleResponse = SynonymsSynonymsUpdateResult
@@ -21084,6 +21085,7 @@ export interface SynonymsGetSynonymsSetsSynonymsSetItem {
 
 export interface SynonymsPutSynonymRequest extends RequestBase {
   id: Id
+  refresh?: boolean
   body?: {
     synonyms_set: SynonymsSynonymRule | SynonymsSynonymRule[]
   }
@@ -21091,12 +21093,13 @@ export interface SynonymsPutSynonymRequest extends RequestBase {
 
 export interface SynonymsPutSynonymResponse {
   result: Result
-  reload_analyzers_details: IndicesReloadSearchAnalyzersReloadResult
+  reload_analyzers_details?: IndicesReloadSearchAnalyzersReloadResult
 }
 
 export interface SynonymsPutSynonymRuleRequest extends RequestBase {
   set_id: Id
   rule_id: Id
+  refresh?: boolean
   body?: {
     synonyms: SynonymsSynonymString
   }

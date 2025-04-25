@@ -21196,8 +21196,7 @@
                     }
                   },
                   "required": [
-                    "result",
-                    "reload_analyzers_details"
+                    "result"
                   ]
                 }
               }
@@ -60199,8 +60198,7 @@
           }
         },
         "required": [
-          "result",
-          "reload_analyzers_details"
+          "result"
         ]
       },
       "indices.reload_search_analyzers.ReloadResult": {
