@@ -602,7 +602,7 @@ export class CCSStats {
   /**
    * Information about ES|QL cross-cluster query usage.
    */
-  _esql: CCSUsageStats
+  _esql?: CCSUsageStats
 }
 
 export class RemoteClusterInfo {

@@ -9539,7 +9539,7 @@ export type ClusterStateResponse = any
 export interface ClusterStatsCCSStats {
   clusters?: Record<string, ClusterStatsRemoteClusterInfo>
   _search: ClusterStatsCCSUsageStats
-  _esql: ClusterStatsCCSUsageStats
+  _esql?: ClusterStatsCCSUsageStats
 }
 
 export interface ClusterStatsCCSUsageClusterStats {
