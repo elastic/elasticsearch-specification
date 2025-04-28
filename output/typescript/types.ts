@@ -1571,7 +1571,7 @@ export interface SearchInnerHits {
   ignore_unmapped?: boolean
   script_fields?: Record<Field, ScriptField>
   seq_no_primary_term?: boolean
-  fields?: Fields
+  fields?: Field[]
   sort?: Sort
   _source?: SearchSourceConfig
   stored_fields?: Fields
