@@ -23,7 +23,7 @@ import { IcuAnalyzer } from './icu-plugin'
 import { KuromojiAnalyzer } from './kuromoji-plugin'
 import { SnowballLanguage } from './languages'
 import { NoriDecompoundMode } from './nori-plugin'
-import { StopWords } from './StopWords'
+import { StopWords, StopWordLanguage } from './StopWords'
 
 export class CustomAnalyzer {
   type: 'custom'
@@ -56,7 +56,7 @@ export class FingerprintAnalyzer {
    *
    * @server_default _none_
    */
-  stopwords?: StopWords
+  stopwords?: StopWordLanguage | string[]
   /**
    * The path to a file containing stop words.
    */
@@ -357,7 +357,7 @@ export class PatternAnalyzer {
    *
    * @server_default _none_
    */
-  stopwords?: StopWords
+  stopwords?: StopWordLanguage | string[]
   /**
    * The path to a file containing stop words.
    */
@@ -394,7 +394,7 @@ export class StandardAnalyzer {
    *
    * @server_default _none_
    */
-  stopwords?: StopWords
+  stopwords?: StopWordLanguage | string[]
   /**
    * The path to a file containing stop words.
    */
@@ -411,7 +411,7 @@ export class StopAnalyzer {
    *
    * @server_default _none_
    */
-  stopwords?: StopWords
+  stopwords?: StopWordLanguage | string[]
   /**
    * The path to a file containing stop words.
    */

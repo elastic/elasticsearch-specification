@@ -17,7 +17,7 @@
  * under the License.
  */
 
-export enum StopWord {
+export enum StopWordLanguage {
   _arabic_,
   _armenian_,
   _basque_,
@@ -53,7 +53,8 @@ export enum StopWord {
   _spanish_,
   _swedish_,
   _thai_,
-  _turkish_
+  _turkish_,
+  _none_
 }
 
 /**
@@ -62,4 +63,4 @@ export enum StopWord {
  * Also accepts an array of stop words.
  * @class_serializer: StopWordsFormatter
  */
-export type StopWords = StopWord | StopWord[]
+export type StopWords = string | string[]
