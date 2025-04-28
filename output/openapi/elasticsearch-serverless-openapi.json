@@ -53320,7 +53320,7 @@
           "processor_results": {
             "type": "array",
             "items": {
-              "$ref": "#/components/schemas/ingest._types.PipelineSimulation"
+              "$ref": "#/components/schemas/ingest._types.PipelineProcessorResult"
             }
           }
         }
@@ -53402,7 +53402,7 @@
           }
         ]
       },
-      "ingest._types.PipelineSimulation": {
+      "ingest._types.PipelineProcessorResult": {
         "type": "object",
         "properties": {
           "doc": {
@@ -53415,7 +53415,7 @@
             "type": "string"
           },
           "status": {
-            "$ref": "#/components/schemas/watcher._types.ActionStatusOptions"
+            "$ref": "#/components/schemas/ingest._types.PipelineSimulationStatusOptions"
           },
           "description": {
             "type": "string"
@@ -53428,13 +53428,14 @@
           }
         }
       },
-      "watcher._types.ActionStatusOptions": {
+      "ingest._types.PipelineSimulationStatusOptions": {
         "type": "string",
         "enum": [
           "success",
-          "failure",
-          "simulated",
-          "throttled"
+          "error",
+          "error_ignored",
+          "skipped",
+          "dropped"
         ]
       },
       "license.get.LicenseInformation": {
