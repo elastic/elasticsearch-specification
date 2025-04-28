@@ -585,8 +585,11 @@ fn lift_enum_descriptions(prop: &Property, model: &clients_schema::IndexedModel)
     // Do we have at least one enum member description?
     if enum_def.members.iter().any(|m| m.description.is_some()) {
         // Some descriptions: output a list with descriptions
+
+        // Close description paragraph and add an empty line to start a new paragraph
         writeln!(result)?;
         writeln!(result)?;
+
         writeln!(result, "Values are:")?;
         for member in &enum_def.members {
             write!(result, "  - ")?;
@@ -605,6 +608,7 @@ fn lift_enum_descriptions(prop: &Property, model: &clients_schema::IndexedModel)
             return Ok(None);
         }
 
+        // Close description paragraph and add an empty line to start a new paragraph
         writeln!(result)?;
         writeln!(result)?;
 
