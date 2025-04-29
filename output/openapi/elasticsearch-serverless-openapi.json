@@ -30150,7 +30150,10 @@
             "type": "boolean"
           },
           "fields": {
-            "$ref": "#/components/schemas/_types.Fields"
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/_types.Field"
+            }
           },
           "sort": {
             "$ref": "#/components/schemas/_types.Sort"

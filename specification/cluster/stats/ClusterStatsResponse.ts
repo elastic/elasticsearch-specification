@@ -20,7 +20,7 @@
 import { NodesResponseBase } from '@nodes/_types/NodesResponseBase'
 import { HealthStatus, Name, Uuid } from '@_types/common'
 import { long } from '@_types/Numeric'
-import { ClusterIndices, ClusterNodes } from './types'
+import { CCSStats, ClusterIndices, ClusterNodes } from './types'
 
 export class StatsResponseBase extends NodesResponseBase {
   /**
@@ -48,6 +48,10 @@ export class StatsResponseBase extends NodesResponseBase {
    * Unix timestamp, in milliseconds, for the last time the cluster statistics were refreshed.
    */
   timestamp: long
+  /**
+   * Cross-cluster stats
+   */
+  ccs: CCSStats
 }
 
 export class Response {
