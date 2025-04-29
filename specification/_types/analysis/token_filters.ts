@@ -36,7 +36,7 @@ import {
 import { SnowballLanguage } from './languages'
 import { NoriPartOfSpeechTokenFilter } from './nori-plugin'
 import { PhoneticTokenFilter } from './phonetic-plugin'
-import { StopWordLanguage } from './StopWords'
+import { StopWords } from './StopWords'
 
 export class TokenFilterBase {
   version?: VersionString
@@ -129,7 +129,7 @@ export class StopTokenFilter extends TokenFilterBase {
   /** If `true`, the last token of a stream is removed if it’s a stop word. Defaults to `true`. */
   remove_trailing?: boolean
   /** Language value, such as `_arabic_` or `_thai_`. Defaults to `_english_`. */
-  stopwords?: StopWordLanguage | string[]
+  stopwords?: StopWords
   /** Path to a file that contains a list of stop words to remove.
    * This path must be absolute or relative to the `config` location, and the file must be UTF-8 encoded. Each stop word in the file must be separated by a line break. */
   stopwords_path?: string
