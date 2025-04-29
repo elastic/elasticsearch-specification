@@ -70,7 +70,7 @@ export interface Request extends RequestBase {
      * * Cannot start with `-`, `_`, or `+`
      * * Cannot be `.` or `..`
      * * Cannot be longer than 255 bytes (note thtat it is bytes, so multi-byte characters will reach the limit faster)
-     * * Names starting with `.` are deprecated, except for hidden indices and internal indices managed by plugins 
+     * * Names starting with `.` are deprecated, except for hidden indices and internal indices managed by plugins
      */
     index: IndexName
   }
