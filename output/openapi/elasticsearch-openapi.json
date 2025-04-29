@@ -70177,8 +70177,7 @@
         },
         "required": [
           "index",
-          "managed",
-          "phase"
+          "managed"
         ]
       },
       "ilm.explain_lifecycle:LifecycleExplainPhaseExecution": {
