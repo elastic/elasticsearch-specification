@@ -5623,7 +5623,7 @@
           {
             "in": "query",
             "name": "allow_partial_results",
-            "description": "If `true`, partial results will be returned if there are shard failures, but the query can continue to execute on other clusters and shards.",
+            "description": "If `true`, partial results will be returned if there are shard failures, but the query can continue to execute on other clusters and shards.\nIf `false`, the query will fail if there are any failures.\n\nTo override the default behavior, you can set the `esql.query.allow_partial_results` cluster setting to `false`.",
             "deprecated": false,
             "schema": {
               "type": "boolean"
