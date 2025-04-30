@@ -590,7 +590,7 @@ fn lift_enum_descriptions(prop: &Property, model: &clients_schema::IndexedModel)
         writeln!(result)?;
         writeln!(result)?;
 
-        writeln!(result, "Values are:")?;
+        writeln!(result, "Supported values include:")?;
         for member in &enum_def.members {
             write!(result, "  - ")?;
             value_and_aliases(&mut result, member)?;
