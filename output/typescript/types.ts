@@ -1571,7 +1571,7 @@ export interface SearchInnerHits {
   ignore_unmapped?: boolean
   script_fields?: Record<Field, ScriptField>
   seq_no_primary_term?: boolean
-  fields?: Fields
+  fields?: Field[]
   sort?: Sort
   _source?: SearchSourceConfig
   stored_fields?: Fields
@@ -9546,6 +9546,39 @@ export interface ClusterStateRequest extends RequestBase {
 
 export type ClusterStateResponse = any
 
+export interface ClusterStatsCCSStats {
+  clusters?: Record<string, ClusterStatsRemoteClusterInfo>
+  _search: ClusterStatsCCSUsageStats
+  _esql?: ClusterStatsCCSUsageStats
+}
+
+export interface ClusterStatsCCSUsageClusterStats {
+  total: integer
+  skipped: integer
+  took: ClusterStatsCCSUsageTimeValue
+}
+
+export interface ClusterStatsCCSUsageStats {
+  total: integer
+  success: integer
+  skipped: integer
+  took: ClusterStatsCCSUsageTimeValue
+  took_mrt_true?: ClusterStatsCCSUsageTimeValue
+  took_mrt_false?: ClusterStatsCCSUsageTimeValue
+  remotes_per_search_max: integer
+  remotes_per_search_avg: double
+  failure_reasons: Record<string, integer>
+  features: Record<string, integer>
+  clients: Record<string, integer>
+  clusters: Record<string, ClusterStatsCCSUsageClusterStats>
+}
+
+export interface ClusterStatsCCSUsageTimeValue {
+  max: DurationValue<UnitMillis>
+  avg: DurationValue<UnitMillis>
+  p90: DurationValue<UnitMillis>
+}
+
 export interface ClusterStatsCharFilterTypes {
   analyzer_types: ClusterStatsFieldTypes[]
   built_in_analyzers: ClusterStatsFieldTypes[]
@@ -9769,6 +9802,24 @@ export interface ClusterStatsOperatingSystemMemoryInfo {
   used_percent: integer
 }
 
+export interface ClusterStatsRemoteClusterInfo {
+  cluster_uuid: string
+  mode: string
+  skip_unavailable: boolean
+  transport_compress: string
+  status: HealthStatus
+  version: VersionString[]
+  nodes_count: integer
+  shards_count: integer
+  indices_count: integer
+  indices_total_size_in_bytes: long
+  indices_total_size?: string
+  max_heap_in_bytes: long
+  max_heap?: string
+  mem_total_in_bytes: long
+  mem_total?: string
+}
+
 export interface ClusterStatsRequest extends RequestBase {
   node_id?: NodeIds
   include_remotes?: boolean
@@ -9801,6 +9852,7 @@ export interface ClusterStatsStatsResponseBase extends NodesNodesResponseBase {
   nodes: ClusterStatsClusterNodes
   status: HealthStatus
   timestamp: long
+  ccs: ClusterStatsCCSStats
 }
 
 export interface ConnectorConnector {
@@ -11006,7 +11058,7 @@ export interface IlmExplainLifecycleLifecycleExplainManaged {
   lifecycle_date?: DateTime
   lifecycle_date_millis?: EpochTime<UnitMillis>
   managed: true
-  phase: Name
+  phase?: Name
   phase_time?: DateTime
   phase_time_millis?: EpochTime<UnitMillis>
   policy?: Name
@@ -14142,15 +14194,17 @@ export interface IngestPipelineProcessor extends IngestProcessorBase {
   ignore_missing_pipeline?: boolean
 }
 
-export interface IngestPipelineSimulation {
+export interface IngestPipelineProcessorResult {
   doc?: IngestDocumentSimulation
   tag?: string
   processor_type?: string
-  status?: WatcherActionStatusOptions
+  status?: IngestPipelineSimulationStatusOptions
   description?: string
   ignored_error?: ErrorCause
   error?: ErrorCause
 }
+
+export type IngestPipelineSimulationStatusOptions = 'success' | 'error' | 'error_ignored' | 'skipped' | 'dropped'
 
 export interface IngestProcessorBase {
   description?: string
@@ -14273,7 +14327,7 @@ export type IngestShapeType = 'geo_shape' | 'shape'
 export interface IngestSimulateDocumentResult {
   doc?: IngestDocumentSimulation
   error?: ErrorCause
-  processor_results?: IngestPipelineSimulation[]
+  processor_results?: IngestPipelineProcessorResult[]
 }
 
 export interface IngestSortProcessor extends IngestProcessorBase {
