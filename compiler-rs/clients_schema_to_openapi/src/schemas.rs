@@ -612,7 +612,7 @@ fn lift_enum_descriptions(prop: &Property, model: &clients_schema::IndexedModel)
         writeln!(result)?;
         writeln!(result)?;
 
-        write!(result, "Values are ")?;
+        write!(result, "Supported values include: ")?;
         for (idx, member) in enum_def.members.iter().enumerate() {
             if idx > 0 {
                 write!(result, ", ")?;
