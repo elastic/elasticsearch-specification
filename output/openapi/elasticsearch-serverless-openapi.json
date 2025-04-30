@@ -6657,7 +6657,7 @@
           {
             "in": "path",
             "name": "index",
-            "description": "Name of the index you wish to create.",
+            "description": "Name of the index you wish to create.\nIndex names must meet the following criteria:\n\n* Lowercase only\n* Cannot include `\\`, `/`, `*`, `?`, `\"`, `<`, `>`, `|`, ` ` (space character), `,`, or `#`\n* Indices prior to 7.0 could contain a colon (`:`), but that has been deprecated and will not be supported in later versions\n* Cannot start with `-`, `_`, or `+`\n* Cannot be `.` or `..`\n* Cannot be longer than 255 bytes (note thtat it is bytes, so multi-byte characters will reach the limit faster)\n* Names starting with `.` are deprecated, except for hidden indices and internal indices managed by plugins",
             "required": true,
             "deprecated": false,
             "schema": {
