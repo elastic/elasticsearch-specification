@@ -1516,7 +1516,7 @@ export interface SearchInnerHits {
   ignore_unmapped?: boolean
   script_fields?: Record<Field, ScriptField>
   seq_no_primary_term?: boolean
-  fields?: Fields
+  fields?: Field[]
   sort?: Sort
   _source?: SearchSourceConfig
   stored_fields?: Fields
@@ -11088,7 +11088,7 @@ export interface IlmExplainLifecycleLifecycleExplainManaged {
   lifecycle_date?: DateTime
   lifecycle_date_millis?: EpochTime<UnitMillis>
   managed: true
-  phase: Name
+  phase?: Name
   phase_time?: DateTime
   phase_time_millis?: EpochTime<UnitMillis>
   policy?: Name
@@ -14209,15 +14209,17 @@ export interface IngestPipelineProcessor extends IngestProcessorBase {
   ignore_missing_pipeline?: boolean
 }
 
-export interface IngestPipelineSimulation {
+export interface IngestPipelineProcessorResult {
   doc?: IngestDocumentSimulation
   tag?: string
   processor_type?: string
-  status?: WatcherActionStatusOptions
+  status?: IngestPipelineSimulationStatusOptions
   description?: string
   ignored_error?: ErrorCause
   error?: ErrorCause
 }
+
+export type IngestPipelineSimulationStatusOptions = 'success' | 'error' | 'error_ignored' | 'skipped' | 'dropped'
 
 export interface IngestProcessorBase {
   description?: string
@@ -14340,7 +14342,7 @@ export type IngestShapeType = 'geo_shape' | 'shape'
 export interface IngestSimulateDocumentResult {
   doc?: IngestDocumentSimulation
   error?: ErrorCause
-  processor_results?: IngestPipelineSimulation[]
+  processor_results?: IngestPipelineProcessorResult[]
 }
 
 export interface IngestSortProcessor extends IngestProcessorBase {
