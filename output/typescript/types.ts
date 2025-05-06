@@ -4459,11 +4459,19 @@ export interface AggregationsWeightedAvgAggregate extends AggregationsSingleMetr
 
 export type AnalysisAnalyzer = AnalysisCustomAnalyzer | AnalysisFingerprintAnalyzer | AnalysisKeywordAnalyzer | AnalysisNoriAnalyzer | AnalysisPatternAnalyzer | AnalysisSimpleAnalyzer | AnalysisStandardAnalyzer | AnalysisStopAnalyzer | AnalysisWhitespaceAnalyzer | AnalysisIcuAnalyzer | AnalysisKuromojiAnalyzer | AnalysisSnowballAnalyzer | AnalysisArabicAnalyzer | AnalysisArmenianAnalyzer | AnalysisBasqueAnalyzer | AnalysisBengaliAnalyzer | AnalysisBrazilianAnalyzer | AnalysisBulgarianAnalyzer | AnalysisCatalanAnalyzer | AnalysisChineseAnalyzer | AnalysisCjkAnalyzer | AnalysisCzechAnalyzer | AnalysisDanishAnalyzer | AnalysisDutchAnalyzer | AnalysisEnglishAnalyzer | AnalysisEstonianAnalyzer | AnalysisFinnishAnalyzer | AnalysisFrenchAnalyzer | AnalysisGalicianAnalyzer | AnalysisGermanAnalyzer | AnalysisGreekAnalyzer | AnalysisHindiAnalyzer | AnalysisHungarianAnalyzer | AnalysisIndonesianAnalyzer | AnalysisIrishAnalyzer | AnalysisItalianAnalyzer | AnalysisLatvianAnalyzer | AnalysisLithuanianAnalyzer | AnalysisNorwegianAnalyzer | AnalysisPersianAnalyzer | AnalysisPortugueseAnalyzer | AnalysisRomanianAnalyzer | AnalysisRussianAnalyzer | AnalysisSerbianAnalyzer | AnalysisSoraniAnalyzer | AnalysisSpanishAnalyzer | AnalysisSwedishAnalyzer | AnalysisTurkishAnalyzer | AnalysisThaiAnalyzer
 
+export interface AnalysisApostropheTokenFilter extends AnalysisTokenFilterBase {
+  type: 'apostrophe'
+}
+
 export interface AnalysisArabicAnalyzer {
   type: 'arabic'
   stopwords?: AnalysisStopWords
   stopwords_path?: string
   stem_exclusion?: string[]
+}
+
+export interface AnalysisArabicNormalizationTokenFilter extends AnalysisTokenFilterBase {
+  type: 'arabic_normalization'
 }
 
 export interface AnalysisArmenianAnalyzer {
@@ -4538,6 +4546,22 @@ export interface AnalysisCjkAnalyzer {
   stopwords_path?: string
 }
 
+export type AnalysisCjkBigramIgnoredScript = 'han' | 'hangul' | 'hiragana' | 'katakana'
+
+export interface AnalysisCjkBigramTokenFilter extends AnalysisTokenFilterBase {
+  type: 'cjk_bigram'
+  ignored_scripts?: AnalysisCjkBigramIgnoredScript[]
+  output_unigrams?: boolean
+}
+
+export interface AnalysisCjkWidthTokenFilter extends AnalysisTokenFilterBase {
+  type: 'cjk_width'
+}
+
+export interface AnalysisClassicTokenFilter extends AnalysisTokenFilterBase {
+  type: 'classic'
+}
+
 export interface AnalysisClassicTokenizer extends AnalysisTokenizerBase {
   type: 'classic'
   max_token_length?: integer
@@ -4552,7 +4576,6 @@ export interface AnalysisCommonGramsTokenFilter extends AnalysisTokenFilterBase 
 }
 
 export interface AnalysisCompoundWordTokenFilterBase extends AnalysisTokenFilterBase {
-  hyphenation_patterns_path?: string
   max_subword_size?: integer
   min_subword_size?: integer
   min_word_size?: integer
@@ -4593,6 +4616,10 @@ export interface AnalysisDanishAnalyzer {
   type: 'danish'
   stopwords?: AnalysisStopWords
   stopwords_path?: string
+}
+
+export interface AnalysisDecimalDigitTokenFilter extends AnalysisTokenFilterBase {
+  type: 'decimal_digit'
 }
 
 export type AnalysisDelimitedPayloadEncoding = 'int' | 'float' | 'identity'
@@ -4674,6 +4701,10 @@ export interface AnalysisFinnishAnalyzer {
   stem_exclusion?: string[]
 }
 
+export interface AnalysisFlattenGraphTokenFilter extends AnalysisTokenFilterBase {
+  type: 'flatten_graph'
+}
+
 export interface AnalysisFrenchAnalyzer {
   type: 'french'
   stopwords?: AnalysisStopWords
@@ -4695,6 +4726,10 @@ export interface AnalysisGermanAnalyzer {
   stem_exclusion?: string[]
 }
 
+export interface AnalysisGermanNormalizationTokenFilter extends AnalysisTokenFilterBase {
+  type: 'german_normalization'
+}
+
 export interface AnalysisGreekAnalyzer {
   type: 'greek'
   stopwords?: AnalysisStopWords
@@ -4706,6 +4741,10 @@ export interface AnalysisHindiAnalyzer {
   stopwords?: AnalysisStopWords
   stopwords_path?: string
   stem_exclusion?: string[]
+}
+
+export interface AnalysisHindiNormalizationTokenFilter extends AnalysisTokenFilterBase {
+  type: 'hindi_normalization'
 }
 
 export interface AnalysisHtmlStripCharFilter extends AnalysisCharFilterBase {
@@ -4725,11 +4764,16 @@ export interface AnalysisHunspellTokenFilter extends AnalysisTokenFilterBase {
   dedup?: boolean
   dictionary?: string
   locale: string
+  lang: string
+  language: string
   longest_only?: boolean
 }
 
 export interface AnalysisHyphenationDecompounderTokenFilter extends AnalysisCompoundWordTokenFilterBase {
   type: 'hyphenation_decompounder'
+  hyphenation_patterns_path: string
+  no_sub_matches?: boolean
+  no_overlapping_matches?: boolean
 }
 
 export interface AnalysisIcuAnalyzer {
@@ -4795,6 +4839,10 @@ export interface AnalysisIcuTransformTokenFilter extends AnalysisTokenFilterBase
   id: string
 }
 
+export interface AnalysisIndicNormalizationTokenFilter extends AnalysisTokenFilterBase {
+  type: 'indic_normalization'
+}
+
 export interface AnalysisIndonesianAnalyzer {
   type: 'indonesian'
   stopwords?: AnalysisStopWords
@@ -4816,6 +4864,11 @@ export interface AnalysisItalianAnalyzer {
   stem_exclusion?: string[]
 }
 
+export interface AnalysisJaStopTokenFilter extends AnalysisTokenFilterBase {
+  type: 'ja_stop'
+  stopwords?: AnalysisStopWords
+}
+
 export interface AnalysisKStemTokenFilter extends AnalysisTokenFilterBase {
   type: 'kstem'
 }
@@ -4825,7 +4878,7 @@ export type AnalysisKeepTypesMode = 'include' | 'exclude'
 export interface AnalysisKeepTypesTokenFilter extends AnalysisTokenFilterBase {
   type: 'keep_types'
   mode?: AnalysisKeepTypesMode
-  types?: string[]
+  types: string[]
 }
 
 export interface AnalysisKeepWordsTokenFilter extends AnalysisTokenFilterBase {
@@ -4846,6 +4899,10 @@ export interface AnalysisKeywordMarkerTokenFilter extends AnalysisTokenFilterBas
   keywords?: string | string[]
   keywords_path?: string
   keywords_pattern?: string
+}
+
+export interface AnalysisKeywordRepeatTokenFilter extends AnalysisTokenFilterBase {
+  type: 'keyword_repeat'
 }
 
 export interface AnalysisKeywordTokenizer extends AnalysisTokenizerBase {
@@ -4929,8 +4986,10 @@ export interface AnalysisLowercaseNormalizer {
 
 export interface AnalysisLowercaseTokenFilter extends AnalysisTokenFilterBase {
   type: 'lowercase'
-  language?: string
+  language?: AnalysisLowercaseTokenFilterLanguages
 }
+
+export type AnalysisLowercaseTokenFilterLanguages = 'greek' | 'irish' | 'turkish'
 
 export interface AnalysisLowercaseTokenizer extends AnalysisTokenizerBase {
   type: 'lowercase'
@@ -4940,6 +4999,14 @@ export interface AnalysisMappingCharFilter extends AnalysisCharFilterBase {
   type: 'mapping'
   mappings?: string[]
   mappings_path?: string
+}
+
+export interface AnalysisMinHashTokenFilter extends AnalysisTokenFilterBase {
+  type: 'min_hash'
+  bucket_count?: integer
+  hash_count?: integer
+  hash_set_size?: integer
+  with_rotation?: boolean
 }
 
 export interface AnalysisMultiplexerTokenFilter extends AnalysisTokenFilterBase {
@@ -5030,7 +5097,6 @@ export interface AnalysisPatternReplaceCharFilter extends AnalysisCharFilterBase
 export interface AnalysisPatternReplaceTokenFilter extends AnalysisTokenFilterBase {
   type: 'pattern_replace'
   all?: boolean
-  flags?: string
   pattern: string
   replacement?: string
 }
@@ -5046,6 +5112,10 @@ export interface AnalysisPersianAnalyzer {
   type: 'persian'
   stopwords?: AnalysisStopWords
   stopwords_path?: string
+}
+
+export interface AnalysisPersianNormalizationTokenFilter extends AnalysisTokenFilterBase {
+  type: 'persian_normalization'
 }
 
 export type AnalysisPhoneticEncoder = 'metaphone' | 'double_metaphone' | 'soundex' | 'refined_soundex' | 'caverphone1' | 'caverphone2' | 'cologne' | 'nysiis' | 'koelnerphonetik' | 'haasephonetik' | 'beider_morse' | 'daitch_mokotoff'
@@ -5104,6 +5174,14 @@ export interface AnalysisRussianAnalyzer {
   stem_exclusion?: string[]
 }
 
+export interface AnalysisScandinavianFoldingTokenFilter extends AnalysisTokenFilterBase {
+  type: 'scandinavian_folding'
+}
+
+export interface AnalysisScandinavianNormalizationTokenFilter extends AnalysisTokenFilterBase {
+  type: 'scandinavian_normalization'
+}
+
 export interface AnalysisSerbianAnalyzer {
   type: 'serbian'
   stopwords?: AnalysisStopWords
@@ -5111,11 +5189,15 @@ export interface AnalysisSerbianAnalyzer {
   stem_exclusion?: string[]
 }
 
+export interface AnalysisSerbianNormalizationTokenFilter extends AnalysisTokenFilterBase {
+  type: 'serbian_normalization'
+}
+
 export interface AnalysisShingleTokenFilter extends AnalysisTokenFilterBase {
   type: 'shingle'
   filler_token?: string
-  max_shingle_size?: integer | string
-  min_shingle_size?: integer | string
+  max_shingle_size?: SpecUtilsStringified<integer>
+  min_shingle_size?: SpecUtilsStringified<integer>
   output_unigrams?: boolean
   output_unigrams_if_no_shingles?: boolean
   token_separator?: string
@@ -5143,7 +5225,7 @@ export interface AnalysisSnowballAnalyzer {
   stopwords?: AnalysisStopWords
 }
 
-export type AnalysisSnowballLanguage = 'Armenian' | 'Basque' | 'Catalan' | 'Danish' | 'Dutch' | 'English' | 'Finnish' | 'French' | 'German' | 'German2' | 'Hungarian' | 'Italian' | 'Kp' | 'Lovins' | 'Norwegian' | 'Porter' | 'Portuguese' | 'Romanian' | 'Russian' | 'Spanish' | 'Swedish' | 'Turkish'
+export type AnalysisSnowballLanguage = 'Arabic' | 'Armenian' | 'Basque' | 'Catalan' | 'Danish' | 'Dutch' | 'English' | 'Estonian' | 'Finnish' | 'French' | 'German' | 'German2' | 'Hungarian' | 'Italian' | 'Irish' | 'Kp' | 'Lithuanian' | 'Lovins' | 'Norwegian' | 'Porter' | 'Portuguese' | 'Romanian' | 'Russian' | 'Serbian' | 'Spanish' | 'Swedish' | 'Turkish'
 
 export interface AnalysisSnowballTokenFilter extends AnalysisTokenFilterBase {
   type: 'snowball'
@@ -5155,6 +5237,10 @@ export interface AnalysisSoraniAnalyzer {
   stopwords?: AnalysisStopWords
   stopwords_path?: string
   stem_exclusion?: string[]
+}
+
+export interface AnalysisSoraniNormalizationTokenFilter extends AnalysisTokenFilterBase {
+  type: 'sorani_normalization'
 }
 
 export interface AnalysisSpanishAnalyzer {
@@ -5203,7 +5289,9 @@ export interface AnalysisStopTokenFilter extends AnalysisTokenFilterBase {
   stopwords_path?: string
 }
 
-export type AnalysisStopWords = string | string[]
+export type AnalysisStopWordLanguage = '_arabic_' | '_armenian_' | '_basque_' | '_bengali_' | '_brazilian_' | '_bulgarian_' | '_catalan_' | '_cjk_' | '_czech_' | '_danish_' | '_dutch_' | '_english_' | '_estonian_' | '_finnish_' | '_french_' | '_galician_' | '_german_' | '_greek_' | '_hindi_' | '_hungarian_' | '_indonesian_' | '_irish_' | '_italian_' | '_latvian_' | '_lithuanian_' | '_norwegian_' | '_persian_' | '_portuguese_' | '_romanian_' | '_russian_' | '_serbian_' | '_sorani_' | '_spanish_' | '_swedish_' | '_thai_' | '_turkish_' | '_none_'
+
+export type AnalysisStopWords = AnalysisStopWordLanguage | string[]
 
 export interface AnalysisSwedishAnalyzer {
   type: 'swedish'
@@ -5214,20 +5302,15 @@ export interface AnalysisSwedishAnalyzer {
 
 export type AnalysisSynonymFormat = 'solr' | 'wordnet'
 
-export interface AnalysisSynonymGraphTokenFilter extends AnalysisTokenFilterBase {
+export interface AnalysisSynonymGraphTokenFilter extends AnalysisSynonymTokenFilterBase {
   type: 'synonym_graph'
-  expand?: boolean
-  format?: AnalysisSynonymFormat
-  lenient?: boolean
-  synonyms?: string[]
-  synonyms_path?: string
-  synonyms_set?: string
-  tokenizer?: string
-  updateable?: boolean
 }
 
-export interface AnalysisSynonymTokenFilter extends AnalysisTokenFilterBase {
+export interface AnalysisSynonymTokenFilter extends AnalysisSynonymTokenFilterBase {
   type: 'synonym'
+}
+
+export interface AnalysisSynonymTokenFilterBase extends AnalysisTokenFilterBase {
   expand?: boolean
   format?: AnalysisSynonymFormat
   lenient?: boolean
@@ -5256,7 +5339,7 @@ export interface AnalysisTokenFilterBase {
   version?: VersionString
 }
 
-export type AnalysisTokenFilterDefinition = AnalysisAsciiFoldingTokenFilter | AnalysisCommonGramsTokenFilter | AnalysisConditionTokenFilter | AnalysisDelimitedPayloadTokenFilter | AnalysisEdgeNGramTokenFilter | AnalysisElisionTokenFilter | AnalysisFingerprintTokenFilter | AnalysisHunspellTokenFilter | AnalysisHyphenationDecompounderTokenFilter | AnalysisKeepTypesTokenFilter | AnalysisKeepWordsTokenFilter | AnalysisKeywordMarkerTokenFilter | AnalysisKStemTokenFilter | AnalysisLengthTokenFilter | AnalysisLimitTokenCountTokenFilter | AnalysisLowercaseTokenFilter | AnalysisMultiplexerTokenFilter | AnalysisNGramTokenFilter | AnalysisNoriPartOfSpeechTokenFilter | AnalysisPatternCaptureTokenFilter | AnalysisPatternReplaceTokenFilter | AnalysisPorterStemTokenFilter | AnalysisPredicateTokenFilter | AnalysisRemoveDuplicatesTokenFilter | AnalysisReverseTokenFilter | AnalysisShingleTokenFilter | AnalysisSnowballTokenFilter | AnalysisStemmerOverrideTokenFilter | AnalysisStemmerTokenFilter | AnalysisStopTokenFilter | AnalysisSynonymGraphTokenFilter | AnalysisSynonymTokenFilter | AnalysisTrimTokenFilter | AnalysisTruncateTokenFilter | AnalysisUniqueTokenFilter | AnalysisUppercaseTokenFilter | AnalysisWordDelimiterGraphTokenFilter | AnalysisWordDelimiterTokenFilter | AnalysisKuromojiStemmerTokenFilter | AnalysisKuromojiReadingFormTokenFilter | AnalysisKuromojiPartOfSpeechTokenFilter | AnalysisIcuCollationTokenFilter | AnalysisIcuFoldingTokenFilter | AnalysisIcuNormalizationTokenFilter | AnalysisIcuTransformTokenFilter | AnalysisPhoneticTokenFilter | AnalysisDictionaryDecompounderTokenFilter
+export type AnalysisTokenFilterDefinition = AnalysisApostropheTokenFilter | AnalysisArabicNormalizationTokenFilter | AnalysisAsciiFoldingTokenFilter | AnalysisCjkBigramTokenFilter | AnalysisCjkWidthTokenFilter | AnalysisClassicTokenFilter | AnalysisCommonGramsTokenFilter | AnalysisConditionTokenFilter | AnalysisDecimalDigitTokenFilter | AnalysisDelimitedPayloadTokenFilter | AnalysisEdgeNGramTokenFilter | AnalysisElisionTokenFilter | AnalysisFingerprintTokenFilter | AnalysisFlattenGraphTokenFilter | AnalysisGermanNormalizationTokenFilter | AnalysisHindiNormalizationTokenFilter | AnalysisHunspellTokenFilter | AnalysisHyphenationDecompounderTokenFilter | AnalysisIndicNormalizationTokenFilter | AnalysisKeepTypesTokenFilter | AnalysisKeepWordsTokenFilter | AnalysisKeywordMarkerTokenFilter | AnalysisKeywordRepeatTokenFilter | AnalysisKStemTokenFilter | AnalysisLengthTokenFilter | AnalysisLimitTokenCountTokenFilter | AnalysisLowercaseTokenFilter | AnalysisMinHashTokenFilter | AnalysisMultiplexerTokenFilter | AnalysisNGramTokenFilter | AnalysisNoriPartOfSpeechTokenFilter | AnalysisPatternCaptureTokenFilter | AnalysisPatternReplaceTokenFilter | AnalysisPersianNormalizationTokenFilter | AnalysisPorterStemTokenFilter | AnalysisPredicateTokenFilter | AnalysisRemoveDuplicatesTokenFilter | AnalysisReverseTokenFilter | AnalysisScandinavianFoldingTokenFilter | AnalysisScandinavianNormalizationTokenFilter | AnalysisSerbianNormalizationTokenFilter | AnalysisShingleTokenFilter | AnalysisSnowballTokenFilter | AnalysisSoraniNormalizationTokenFilter | AnalysisStemmerOverrideTokenFilter | AnalysisStemmerTokenFilter | AnalysisStopTokenFilter | AnalysisSynonymGraphTokenFilter | AnalysisSynonymTokenFilter | AnalysisTrimTokenFilter | AnalysisTruncateTokenFilter | AnalysisUniqueTokenFilter | AnalysisUppercaseTokenFilter | AnalysisWordDelimiterGraphTokenFilter | AnalysisWordDelimiterTokenFilter | AnalysisJaStopTokenFilter | AnalysisKuromojiStemmerTokenFilter | AnalysisKuromojiReadingFormTokenFilter | AnalysisKuromojiPartOfSpeechTokenFilter | AnalysisIcuCollationTokenFilter | AnalysisIcuFoldingTokenFilter | AnalysisIcuNormalizationTokenFilter | AnalysisIcuTransformTokenFilter | AnalysisPhoneticTokenFilter | AnalysisDictionaryDecompounderTokenFilter
 
 export type AnalysisTokenizer = string | AnalysisTokenizerDefinition
 
@@ -5306,27 +5389,17 @@ export interface AnalysisWhitespaceTokenizer extends AnalysisTokenizerBase {
   max_token_length?: integer
 }
 
-export interface AnalysisWordDelimiterGraphTokenFilter extends AnalysisTokenFilterBase {
+export interface AnalysisWordDelimiterGraphTokenFilter extends AnalysisWordDelimiterTokenFilterBase {
   type: 'word_delimiter_graph'
   adjust_offsets?: boolean
-  catenate_all?: boolean
-  catenate_numbers?: boolean
-  catenate_words?: boolean
-  generate_number_parts?: boolean
-  generate_word_parts?: boolean
   ignore_keywords?: boolean
-  preserve_original?: SpecUtilsStringified<boolean>
-  protected_words?: string[]
-  protected_words_path?: string
-  split_on_case_change?: boolean
-  split_on_numerics?: boolean
-  stem_english_possessive?: boolean
-  type_table?: string[]
-  type_table_path?: string
 }
 
-export interface AnalysisWordDelimiterTokenFilter extends AnalysisTokenFilterBase {
+export interface AnalysisWordDelimiterTokenFilter extends AnalysisWordDelimiterTokenFilterBase {
   type: 'word_delimiter'
+}
+
+export interface AnalysisWordDelimiterTokenFilterBase extends AnalysisTokenFilterBase {
   catenate_all?: boolean
   catenate_numbers?: boolean
   catenate_words?: boolean

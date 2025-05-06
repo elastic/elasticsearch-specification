@@ -27,13 +27,27 @@ use openapiv3::{Components, OpenAPI};
 use clients_schema::transform::ExpandConfig;
 use crate::components::TypesAndComponents;
 
+pub struct Configuration {
+    pub flavor: Option<Flavor>,
+    pub lift_enum_descriptions: bool,
+}
+
+impl Default for Configuration {
+    fn default() -> Self {
+        Self {
+            flavor: None,
+            lift_enum_descriptions: true,
+        }
+    }
+}
+
 /// Convert an API model into an OpenAPI v3 schema, optionally filtered for a given flavor
-pub fn convert_schema(mut schema: IndexedModel, flavor: Option<Flavor>) -> anyhow::Result<OpenAPI> {
+pub fn convert_schema(mut schema: IndexedModel, config: Configuration) -> anyhow::Result<OpenAPI> {
     // Expand generics
     schema = clients_schema::transform::expand_generics(schema, ExpandConfig::default())?;
 
     // Filter flavor
-    let filter: Option<fn(&Option<Availabilities>) -> bool> = match flavor {
+    let filter: Option<fn(&Option<Availabilities>) -> bool> = match config.flavor {
         None => None,
         Some(Flavor::Stack) => Some(|a| {
             // Generate only public items for Stack
@@ -49,7 +63,7 @@ pub fn convert_schema(mut schema: IndexedModel, flavor: Option<Flavor>) -> anyho
         schema = clients_schema::transform::filter_availability(schema, filter)?;
     }
 
-    convert_expanded_schema(&schema)
+    convert_expanded_schema(&schema, &config)
 }
 
 /// Convert an API model into an OpenAPI v3 schema. The input model must have all generics expanded, conversion
@@ -58,7 +72,7 @@ pub fn convert_schema(mut schema: IndexedModel, flavor: Option<Flavor>) -> anyho
 /// Note: there are ways to represent [generics in JSON Schema], but its unlikely that tooling will understand it.
 ///
 /// [generics in JSON Schema]: https://json-schema.org/blog/posts/dynamicref-and-generics
-pub fn convert_expanded_schema(model: &IndexedModel) -> anyhow::Result<OpenAPI> {
+pub fn convert_expanded_schema(model: &IndexedModel, config: &Configuration) -> anyhow::Result<OpenAPI> {
     let mut openapi = OpenAPI {
         openapi: "3.0.3".into(),
         info: info(model),
@@ -87,7 +101,7 @@ pub fn convert_expanded_schema(model: &IndexedModel) -> anyhow::Result<OpenAPI> 
         extensions: Default::default(),
     };
 
-    let mut tac = TypesAndComponents::new(model, openapi.components.as_mut().unwrap());
+    let mut tac = TypesAndComponents::new(config, model, openapi.components.as_mut().unwrap());
 
     // Endpoints
     for endpoint in &model.endpoints {
