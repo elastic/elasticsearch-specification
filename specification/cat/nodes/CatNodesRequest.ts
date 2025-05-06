@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { CatRequestBase } from '@cat/_types/CatBase'
+import { CatRequestBase, CatNodeColumns } from '@cat/_types/CatBase'
 import { Bytes, Names } from '@_types/common'
 import { Duration, TimeUnit } from '@_types/Time'
 
@@ -55,22 +55,24 @@ export interface Request extends CatRequestBase {
      */
     include_unloaded_segments?: boolean
     /**
-     * List of columns to appear in the response. Supports simple wildcards.
+     * A comma-separated list of columns names to display.
+     * It supports simple wildcards.
+     * @server_default ip,hp,rp,r,m,n,cpu,l
      */
-    h?: Names
+    h?: CatNodeColumns
     /**
-     * List of columns that determine how the table should be sorted.
+     * A comma-separated list of column names or aliases that determines the sort order.
      * Sorting defaults to ascending and can be changed by setting `:asc`
      * or `:desc` as a suffix to the column name.
      */
     s?: Names
     /**
-     * Period to wait for a connection to the master node.
+     * The period to wait for a connection to the master node.
      * @server_default 30s
      */
     master_timeout?: Duration
     /**
-     * Unit used to display time values.
+     * The unit used to display time values.
      */
     time?: TimeUnit
   }
