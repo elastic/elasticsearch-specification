@@ -37,19 +37,15 @@ function addHeapObject(obj) {
     return idx;
 }
 
+function handleError(f, args) {
+    try {
+        return f.apply(this, args);
+    } catch (e) {
+        wasm.__wbindgen_exn_store(addHeapObject(e));
+    }
+}
+
 function getObject(idx) { return heap[idx]; }
-
-function dropObject(idx) {
-    if (idx < 132) return;
-    heap[idx] = heap_next;
-    heap_next = idx;
-}
-
-function takeObject(idx) {
-    const ret = getObject(idx);
-    dropObject(idx);
-    return ret;
-}
 
 let WASM_VECTOR_LEN = 0;
 
@@ -115,11 +111,23 @@ function getDataViewMemory0() {
     }
     return cachedDataViewMemory0;
 }
+
+function dropObject(idx) {
+    if (idx < 132) return;
+    heap[idx] = heap_next;
+    heap_next = idx;
+}
+
+function takeObject(idx) {
+    const ret = getObject(idx);
+    dropObject(idx);
+    return ret;
+}
 /**
-* @param {string} json
-* @param {string} flavor
-* @returns {string}
-*/
+ * @param {string} json
+ * @param {string} flavor
+ * @returns {string}
+ */
 module.exports.convert_schema_to_openapi = function(json, flavor) {
     let deferred4_0;
     let deferred4_1;
@@ -149,32 +157,19 @@ module.exports.convert_schema_to_openapi = function(json, flavor) {
     }
 };
 
-function handleError(f, args) {
-    try {
-        return f.apply(this, args);
-    } catch (e) {
-        wasm.__wbindgen_exn_store(addHeapObject(e));
-    }
-}
-
-module.exports.__wbindgen_string_new = function(arg0, arg1) {
-    const ret = getStringFromWasm0(arg0, arg1);
-    return addHeapObject(ret);
-};
-
-module.exports.__wbg_log_c9486ca5d8e2cbe8 = function(arg0, arg1) {
+module.exports.__wbg_error_7534b8e9a36f1ab4 = function(arg0, arg1) {
     let deferred0_0;
     let deferred0_1;
     try {
         deferred0_0 = arg0;
         deferred0_1 = arg1;
-        console.log(getStringFromWasm0(arg0, arg1));
+        console.error(getStringFromWasm0(arg0, arg1));
     } finally {
         wasm.__wbindgen_free(deferred0_0, deferred0_1, 1);
     }
 };
 
-module.exports.__wbg_log_aba5996d9bde071f = function(arg0, arg1, arg2, arg3, arg4, arg5, arg6, arg7) {
+module.exports.__wbg_log_0cc1b7768397bcfe = function(arg0, arg1, arg2, arg3, arg4, arg5, arg6, arg7) {
     let deferred0_0;
     let deferred0_1;
     try {
@@ -186,15 +181,23 @@ module.exports.__wbg_log_aba5996d9bde071f = function(arg0, arg1, arg2, arg3, arg
     }
 };
 
-module.exports.__wbg_mark_40e050a77cc39fea = function(arg0, arg1) {
+module.exports.__wbg_log_cb9e190acc5753fb = function(arg0, arg1) {
+    let deferred0_0;
+    let deferred0_1;
+    try {
+        deferred0_0 = arg0;
+        deferred0_1 = arg1;
+        console.log(getStringFromWasm0(arg0, arg1));
+    } finally {
+        wasm.__wbindgen_free(deferred0_0, deferred0_1, 1);
+    }
+};
+
+module.exports.__wbg_mark_7438147ce31e9d4b = function(arg0, arg1) {
     performance.mark(getStringFromWasm0(arg0, arg1));
 };
 
-module.exports.__wbindgen_object_drop_ref = function(arg0) {
-    takeObject(arg0);
-};
-
-module.exports.__wbg_measure_aa7a73f17813f708 = function() { return handleError(function (arg0, arg1, arg2, arg3) {
+module.exports.__wbg_measure_fb7825c11612c823 = function() { return handleError(function (arg0, arg1, arg2, arg3) {
     let deferred0_0;
     let deferred0_1;
     let deferred1_0;
@@ -211,12 +214,12 @@ module.exports.__wbg_measure_aa7a73f17813f708 = function() { return handleError(
     }
 }, arguments) };
 
-module.exports.__wbg_new_abda76e883ba8a5f = function() {
+module.exports.__wbg_new_8a6f238a6ece86ea = function() {
     const ret = new Error();
     return addHeapObject(ret);
 };
 
-module.exports.__wbg_stack_658279fe44541cf6 = function(arg0, arg1) {
+module.exports.__wbg_stack_0ed75d68575b0f3c = function(arg0, arg1) {
     const ret = getObject(arg1).stack;
     const ptr1 = passStringToWasm0(ret, wasm.__wbindgen_malloc, wasm.__wbindgen_realloc);
     const len1 = WASM_VECTOR_LEN;
@@ -224,16 +227,13 @@ module.exports.__wbg_stack_658279fe44541cf6 = function(arg0, arg1) {
     getDataViewMemory0().setInt32(arg0 + 4 * 0, ptr1, true);
 };
 
-module.exports.__wbg_error_f851667af71bcfc6 = function(arg0, arg1) {
-    let deferred0_0;
-    let deferred0_1;
-    try {
-        deferred0_0 = arg0;
-        deferred0_1 = arg1;
-        console.error(getStringFromWasm0(arg0, arg1));
-    } finally {
-        wasm.__wbindgen_free(deferred0_0, deferred0_1, 1);
-    }
+module.exports.__wbindgen_object_drop_ref = function(arg0) {
+    takeObject(arg0);
+};
+
+module.exports.__wbindgen_string_new = function(arg0, arg1) {
+    const ret = getStringFromWasm0(arg0, arg1);
+    return addHeapObject(ret);
 };
 
 const path = require('path').join(__dirname, 'compiler_wasm_lib_bg.wasm');
