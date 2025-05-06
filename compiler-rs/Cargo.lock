@@ -239,6 +239,7 @@ dependencies = [
  "clients_schema_to_openapi",
  "console_error_panic_hook",
  "serde_json",
+ "tracing",
  "tracing-wasm",
  "wasm-bindgen",
  "wasm-bindgen-test",
