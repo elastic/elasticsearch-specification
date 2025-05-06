@@ -576,12 +576,12 @@ export enum CatNodeColumn {
    * The available disk space. For example: `198.4gb`.
    * @aliases d, disk, diskAvail
    */
-  'disk.avail', 
+  'disk.avail',
   /**
    * The total disk space. For example: `458.3gb`.
    * @aliases dt, diskTotal
    */
-  'disk.total', 
+  'disk.total',
   /**
    * The used disk space. For example: `259.8gb`.
    * @aliases du, diskUsed
@@ -621,7 +621,7 @@ export enum CatNodeColumn {
    * The number of flushes.
    * @aliases ft, flushTotal
    */
-  'flush.total', 
+  'flush.total',
   /**
    * The amount of time spent in flush.
    * @aliases ftt, flushTotalTime
@@ -734,14 +734,14 @@ export enum CatNodeColumn {
    */
   ip,
   /**
-    * The Java version. For example: `1.8.0`.
-    * @aliases j
-    */
+   * The Java version. For example: `1.8.0`.
+   * @aliases j
+   */
   jdk,
   /**
-    * The most recent load average. For example: `0.22`.
-    * @aliases l
-    */
+   * The most recent load average. For example: `0.22`.
+   * @aliases l
+   */
   'load_1m',
   /**
    * The load average for the last five minutes. For example: `0.78`.
@@ -749,25 +749,25 @@ export enum CatNodeColumn {
    */
   'load_5m',
   /**
-    * The load average for the last fifteen minutes. For example: `1.24`.
-    * @aliases l
-    */
+   * The load average for the last fifteen minutes. For example: `1.24`.
+   * @aliases l
+   */
   'load_15m',
   /**
    * The number of mappings, including runtime and object fields.
    * @aliases mtc, mappingsTotalCount
    */
-  'mappings.total_count', 
+  'mappings.total_count',
   /**
    * The estimated heap overhead, in bytes, of mappings on this node, which allows for 1KiB of heap for every mapped field.
    * @aliases mteo, mappingsTotalEstimatedOverheadInBytes
    */
   'mappings.total_estimated_overhead_in_bytes',
   /**
-    * Indicates whether the node is the elected master node.
-    * Returned values include `*` (elected master) and `-` (not elected master).
-    * @aliases m
-    */
+   * Indicates whether the node is the elected master node.
+   * Returned values include `*` (elected master) and `-` (not elected master).
+   * @aliases m
+   */
   master,
   /**
    * The number of current merge operations.
@@ -777,9 +777,9 @@ export enum CatNodeColumn {
   /**
    * The number of current merging documents.
    * @aliases mcd, mergesCurrentDocs
-   */   
-   'merges.current_docs',
-  /** 
+   */
+  'merges.current_docs',
+  /**
    * The size of current merges. For example: `0b`.
    * @aliases mcs, mergesCurrentSize
    */
@@ -787,44 +787,44 @@ export enum CatNodeColumn {
   /**
    * The number of completed merge operations.
    * @aliases mt, mergesTotal
-   */ 
+   */
   'merges.total',
   /**
-    * The number of merged documents.
-    * @aliases  mtd, mergesTotalDocs
-    */
+   * The number of merged documents.
+   * @aliases  mtd, mergesTotalDocs
+   */
   'merges.total_docs',
   /**
-    * The total size of merges. For example: `0b`.
-    * @aliases mts, mergesTotalSize
-    */
+   * The total size of merges. For example: `0b`.
+   * @aliases mts, mergesTotalSize
+   */
   'merges.total_size',
   /**
-    * The time spent merging documents. For example: `0s`.
-    * @aliases mtt, mergesTotalTime
-    */
+   * The time spent merging documents. For example: `0s`.
+   * @aliases mtt, mergesTotalTime
+   */
   'merges.total_time',
   /**
-    * The node name.
-    * @aliases n
-    */
+   * The node name.
+   * @aliases n
+   */
   name,
   /**
-    * The roles of the node.
-    * Returned values include `c` (cold node), `d` (data node), `f` (frozen node), `h` (hot node), `i` (ingest node), `l` (machine learning node), `m` (master-eligible node), `r` (remote cluster client node), `s` (content node), `t` (transform node), `v` (voting-only node), `w` (warm node), and `-` (coordinating node only).
-    * For example, `dim` indicates a master-eligible data and ingest node.
-    * @aliases r, role, nodeRole
-    */
+   * The roles of the node.
+   * Returned values include `c` (cold node), `d` (data node), `f` (frozen node), `h` (hot node), `i` (ingest node), `l` (machine learning node), `m` (master-eligible node), `r` (remote cluster client node), `s` (content node), `t` (transform node), `v` (voting-only node), `w` (warm node), and `-` (coordinating node only).
+   * For example, `dim` indicates a master-eligible data and ingest node.
+   * @aliases r, role, nodeRole
+   */
   'node.role',
   /**
-    * The process identifier.
-    * @aliases p
-    */
+   * The process identifier.
+   * @aliases p
+   */
   pid,
   /**
-    * The bound transport port number.
-    * @aliases po
-    */
+   * The bound transport port number.
+   * @aliases po
+   */
   port,
   /**
    * The used query cache memory. For example: `0b`.
@@ -847,20 +847,20 @@ export enum CatNodeColumn {
    */
   'query_cache.miss_count',
   /**
-    * The used total memory. For example: `513.4mb`.
-    * @aliases rc, ramCurrent
-    */
+   * The used total memory. For example: `513.4mb`.
+   * @aliases rc, ramCurrent
+   */
   'ram.current',
   /**
    * The total memory. For example: `2.9gb`.
    * @aliases rm, ramMax
    */
   'ram.max',
-   /**
-    * The used percentage of the total operating system memory.
-    * This reflects all processes running on the operating system instead of only Elasticsearch and is not guaranteed to correlate to its performance.
-    * @aliases rp, ramPercent
-    */
+  /**
+   * The used percentage of the total operating system memory.
+   * This reflects all processes running on the operating system instead of only Elasticsearch and is not guaranteed to correlate to its performance.
+   * @aliases rp, ramPercent
+   */
   'ram.percent',
   /**
    * The number of refresh operations.
@@ -868,12 +868,12 @@ export enum CatNodeColumn {
    */
   'refresh.total',
   /**
-    * The time spent in refresh operations. For example: `91ms`.
-    * @aliases rti, refreshTime
-    */
+   * The time spent in refresh operations. For example: `91ms`.
+   * @aliases rti, refreshTime
+   */
   'refresh.time',
-  /** 
-   * The used request cache memory. For example: `0b`. 
+  /**
+   * The used request cache memory. For example: `0b`.
    * @aliases rcm, requestCacheMemory
    */
   'request_cache.memory_size',
@@ -882,15 +882,15 @@ export enum CatNodeColumn {
    * @aliases rce, requestCacheEvictions
    */
   'request_cache.evictions',
-  /** 
+  /**
    * The request cache hit count.
    * @aliases rchc, requestCacheHitCount
-   */   
+   */
   'request_cache.hit_count',
   /**
    * The request cache miss count.
    * @aliases rcmc, requestCacheMissCount
-   */   
+   */
   'request_cache.miss_count',
   /**
    * The number of total script compilations.
@@ -898,80 +898,80 @@ export enum CatNodeColumn {
    */
   'script.compilations',
   /**
-    * The number of total compiled scripts evicted from cache. 
-    * @aliases scrce, scriptCacheEvictions
-    */
+   * The number of total compiled scripts evicted from cache.
+   * @aliases scrce, scriptCacheEvictions
+   */
   'script.cache_evictions',
   /**
-    * The number of current fetch phase operations.
-    * @aliases sfc, searchFetchCurrent
-    */
+   * The number of current fetch phase operations.
+   * @aliases sfc, searchFetchCurrent
+   */
   'search.fetch_current',
   /**
-    * The time spent in fetch phase. For example: `37ms`.
-    * @aliases sfti, searchFetchTime
-    */
+   * The time spent in fetch phase. For example: `37ms`.
+   * @aliases sfti, searchFetchTime
+   */
   'search.fetch_time',
   /**
-    * The number of fetch operations.
-    * @aliases sfto, searchFetchTotal
-    */
+   * The number of fetch operations.
+   * @aliases sfto, searchFetchTotal
+   */
   'search.fetch_total',
   /**
-    * The number of open search contexts.
-    * @aliases so, searchOpenContexts
-    */
+   * The number of open search contexts.
+   * @aliases so, searchOpenContexts
+   */
   'search.open_contexts',
   /**
-    * The number of current query phase operations.
-    * @aliases sqc, searchQueryCurrent
-    */
+   * The number of current query phase operations.
+   * @aliases sqc, searchQueryCurrent
+   */
   'search.query_current',
   /**
-    * The time spent in query phase. For example: `43ms`.
-    * @aliases sqti, searchQueryTime
-    */
+   * The time spent in query phase. For example: `43ms`.
+   * @aliases sqti, searchQueryTime
+   */
   'search.query_time',
   /**
-    * The number of query operations.
-    * @aliases  sqto, searchQueryTotal
-    */
+   * The number of query operations.
+   * @aliases  sqto, searchQueryTotal
+   */
   'search.query_total',
   /**
-    * The number of open scroll contexts.
-    * @aliases scc, searchScrollCurrent
-    */
+   * The number of open scroll contexts.
+   * @aliases scc, searchScrollCurrent
+   */
   'search.scroll_current',
   /**
-    * The amount of time scroll contexts were held open. For example: `2m`.
-    * @aliases scti, searchScrollTime
-    */
+   * The amount of time scroll contexts were held open. For example: `2m`.
+   * @aliases scti, searchScrollTime
+   */
   'search.scroll_time',
   /**
-    * The number of completed scroll contexts.
-    * @aliases scto, searchScrollTotal
-    */
+   * The number of completed scroll contexts.
+   * @aliases scto, searchScrollTotal
+   */
   'search.scroll_total',
   /**
-    * The number of segments.
-    * @aliases sc, segmentsCount
-    */
+   * The number of segments.
+   * @aliases sc, segmentsCount
+   */
   'segments.count',
-  /** 
+  /**
    * The memory used by fixed bit sets for nested object field types and type filters for types referred in join fields.
    * For example: `1.0kb`.
    * @aliases sfbm, fixedBitsetMemory
    */
   'segments.fixed_bitset_memory',
   /**
-    * The memory used by the index writer. For example: `18mb`.
-    * @aliases siwm, segmentsIndexWriterMemory
-    */
+   * The memory used by the index writer. For example: `18mb`.
+   * @aliases siwm, segmentsIndexWriterMemory
+   */
   'segments.index_writer_memory',
   /**
-    * The memory used by segments. For example: `1.4kb`.
-    * @aliases sm, segmentsMemory
-    */
+   * The memory used by segments. For example: `1.4kb`.
+   * @aliases sm, segmentsMemory
+   */
   'segments.memory',
   /**
    * The memory used by the version map. For example: `1.0kb`.
@@ -979,35 +979,35 @@ export enum CatNodeColumn {
    */
   'segments.version_map_memory',
   /**
-  * The number of shards assigned.
-  * @aliases sstc, shards, shardStatsTotalCount
-  */ 
+   * The number of shards assigned.
+   * @aliases sstc, shards, shardStatsTotalCount
+   */
   'shard_stats.total_count',
   /**
-    * The number of current suggest operations.
-    * @aliases  suc, suggestCurrent
-    */
+   * The number of current suggest operations.
+   * @aliases  suc, suggestCurrent
+   */
   'suggest.current',
   /**
-    * The time spent in suggest operations.
-    * @aliases suti, suggestTime
-    */
+   * The time spent in suggest operations.
+   * @aliases suti, suggestTime
+   */
   'suggest.time',
   /**
-    * The number of suggest operations.
-    * @aliases suto, suggestTotal
-    */
+   * The number of suggest operations.
+   * @aliases suto, suggestTotal
+   */
   'suggest.total',
   /**
-    * The amount of node uptime. For example: `17.3m`.
-    * @aliases u
-    */
+   * The amount of node uptime. For example: `17.3m`.
+   * @aliases u
+   */
   uptime,
   /**
    * The Elasticsearch version. For example: `9.0.0`.
    * @aliases v
    */
-  version,
+  version
 }
 
 export type CatDfaColumns = CatDfaColumn | CatDfaColumn[]
