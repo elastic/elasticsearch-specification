@@ -25,6 +25,8 @@ import { float, integer, long } from '@_types/Numeric'
 export class RequestChatCompletion {
   /**
    * A list of objects representing the conversation.
+   * Requests should generally only add new messages from the user (role `user`).
+   * The other message roles (`assistant`, `system`, or `tool`) should generally only be copied from the response to a previous completion request, such that the messages array is built up throughout a conversation.
    */
   messages: Array<Message>
   /**
