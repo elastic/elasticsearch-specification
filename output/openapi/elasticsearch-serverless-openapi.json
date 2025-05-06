@@ -9477,7 +9477,8 @@
         "tags": [
           "inference"
         ],
-        "summary": "Perform chat completion inference",
+        "summary": "Perform chat completion inference\n",
+        "description": "The chat completion inference API enables real-time responses for chat completion tasks by delivering answers incrementally, reducing response times during computation. \nIt only works with the `chat_completion` task type for `openai` and `elastic` inference services.\n\nIMPORTANT: The inference APIs enable you to use certain services, such as built-in machine learning models (ELSER, E5), models uploaded through Eland, Cohere, OpenAI, Azure, Google AI Studio, Google Vertex AI, Anthropic, Watsonx.ai, or Hugging Face.\nFor built-in models and models uploaded through Eland, the inference APIs offer an alternative way to use and manage trained models. However, if you do not plan to use the inference APIs to use these models or if you want to use non-NLP models, use the machine learning trained model APIs.\n\nNOTE: The `chat_completion` task type is only available within the _stream API and only supports streaming.\nThe Chat completion inference API and the Stream inference API differ in their response structure and capabilities.\nThe Chat completion inference API provides more comprehensive customization options through more fields and function calling support.\nIf you use the `openai` service or the `elastic` service, use the Chat completion inference API.",
         "operationId": "inference-chat-completion-unified",
         "parameters": [
           {
@@ -9507,6 +9508,23 @@
             "application/json": {
               "schema": {
                 "$ref": "#/components/schemas/inference._types.RequestChatCompletion"
+              },
+              "examples": {
+                "PostChatCompletionRequestExample1": {
+                  "summary": "A chat completion task",
+                  "description": "Run `POST _inference/chat_completion/openai-completion/_stream` to perform a chat completion on the example question with streaming.",
+                  "value": "{\n  \"model\": \"gpt-4o\",\n  \"messages\": [\n      {\n          \"role\": \"user\",\n          \"content\": \"What is Elastic?\"\n      }\n  ]\n}"
+                },
+                "PostChatCompletionRequestExample2": {
+                  "summary": "A chat completion task with tool_calls",
+                  "description": "Run `POST POST _inference/chat_completion/openai-completion/_stream` to perform a chat completion using an Assistant message with `tool_calls`.",
+                  "value": "{\n  \"messages\": [\n      {\n          \"role\": \"assistant\",\n          \"content\": \"Let's find out what the weather is\",\n          \"tool_calls\": [ \n              {\n                  \"id\": \"call_KcAjWtAww20AihPHphUh46Gd\",\n                  \"type\": \"function\",\n                  \"function\": {\n                      \"name\": \"get_current_weather\",\n                      \"arguments\": \"{\\\"location\\\":\\\"Boston, MA\\\"}\"\n                  }\n              }\n          ]\n      },\n      { \n          \"role\": \"tool\",\n          \"content\": \"The weather is cold\",\n          \"tool_call_id\": \"call_KcAjWtAww20AihPHphUh46Gd\"\n      }\n  ]\n}"
+                },
+                "PostChatCompletionRequestExample3": {
+                  "summary": "A chat completion task with tools and tool_calls",
+                  "description": "Run `POST POST _inference/chat_completion/openai-completion/_stream` to perform a chat completion  using a User message with `tools` and `tool_choice`.",
+                  "value": "{\n  \"messages\": [\n      {\n          \"role\": \"user\",\n          \"content\": [\n              {\n                  \"type\": \"text\",\n                  \"text\": \"What's the price of a scarf?\"\n              }\n          ]\n      }\n  ],\n  \"tools\": [\n      {\n          \"type\": \"function\",\n          \"function\": {\n              \"name\": \"get_current_price\",\n              \"description\": \"Get the current price of a item\",\n              \"parameters\": {\n                  \"type\": \"object\",\n                  \"properties\": {\n                      \"item\": {\n                          \"id\": \"123\"\n                      }\n                  }\n              }\n          }\n      }\n  ],\n  \"tool_choice\": {\n      \"type\": \"function\",\n      \"function\": {\n          \"name\": \"get_current_price\"\n      }\n  }\n}"
+                }
               }
             }
           },
@@ -9519,6 +9537,12 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/_types.StreamResult"
+                },
+                "examples": {
+                  "PostChatCompletionResponseExample1": {
+                    "description": "A successful response when performing a chat completion task using a User message with `tools` and `tool_choice`.",
+                    "value": "event: message\ndata: {\"chat_completion\":{\"id\":\"chatcmpl-Ae0TWsy2VPnSfBbv5UztnSdYUMFP3\",\"choices\":[{\"delta\":{\"content\":\"\",\"role\":\"assistant\"},\"index\":0}],\"model\":\"gpt-4o-2024-08-06\",\"object\":\"chat.completion.chunk\"}}\n\nevent: message\ndata: {\"chat_completion\":{\"id\":\"chatcmpl-Ae0TWsy2VPnSfBbv5UztnSdYUMFP3\",\"choices\":[{\"delta\":{\"content\":Elastic\"},\"index\":0}],\"model\":\"gpt-4o-2024-08-06\",\"object\":\"chat.completion.chunk\"}}\n\nevent: message\ndata: {\"chat_completion\":{\"id\":\"chatcmpl-Ae0TWsy2VPnSfBbv5UztnSdYUMFP3\",\"choices\":[{\"delta\":{\"content\":\" is\"},\"index\":0}],\"model\":\"gpt-4o-2024-08-06\",\"object\":\"chat.completion.chunk\"}}\n\n(...)\n\nevent: message\ndata: {\"chat_completion\":{\"id\":\"chatcmpl-Ae0TWsy2VPnSfBbv5UztnSdYUMFP3\",\"choices\":[],\"model\":\"gpt-4o-2024-08-06\",\"object\":\"chat.completion.chunk\",\"usage\":{\"completion_tokens\":28,\"prompt_tokens\":16,\"total_tokens\":44}}} \n\nevent: message\ndata: [DONE]"
+                  }
                 }
               }
             }
@@ -49860,7 +49884,7 @@
         "type": "object",
         "properties": {
           "messages": {
-            "description": "A list of objects representing the conversation.",
+            "description": "A list of objects representing the conversation.\nRequests should generally only add new messages from the user (role `user`).\nThe other message roles (`assistant`, `system`, or `tool`) should generally only be copied from the response to a previous completion request, such that the messages array is built up throughout a conversation.",
             "type": "array",
             "items": {
               "$ref": "#/components/schemas/inference._types.Message"
