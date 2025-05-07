@@ -40690,6 +40690,9 @@
               },
               "name": {
                 "$ref": "#/components/schemas/_types.analysis.IcuNormalizationType"
+              },
+              "unicode_set_filter": {
+                "type": "string"
               }
             },
             "required": [
