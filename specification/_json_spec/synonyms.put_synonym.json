@@ -24,6 +24,12 @@
         }
       ]
     },
+    "params": {
+      "refresh": {
+        "type": "boolean",
+        "description": "Refresh search analyzers to update synonyms"
+      }
+    },
     "body": {
       "description": "Synonyms set rules",
       "required": true
