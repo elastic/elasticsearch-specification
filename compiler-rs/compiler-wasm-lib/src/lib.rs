@@ -16,9 +16,9 @@
 // under the License.
 
 use anyhow::bail;
-use clients_schema::{Availabilities, Visibility};
+use clients_schema::{Flavor, IndexedModel};
 use wasm_bindgen::prelude::*;
-use clients_schema::transform::ExpandConfig;
+use clients_schema_to_openapi::Configuration;
 
 #[wasm_bindgen]
 pub fn convert_schema_to_openapi(json: &str, flavor: &str) -> Result<String, String> {
@@ -27,25 +27,19 @@ pub fn convert_schema_to_openapi(json: &str, flavor: &str) -> Result<String, Str
 }
 
 fn convert0(json: &str, flavor: &str) -> anyhow::Result<String> {
-    let filter: Option<fn(&Option<Availabilities>) -> bool> = match flavor {
+    let flavor = match flavor {
         "all" => None,
-        "stack" => Some(|a| {
-            // Generate public and private items for Stack
-            clients_schema::Flavor::Stack.available(a)
-        }),
-        "serverless" => Some(|a| {
-            // Generate only public items for Serverless
-            clients_schema::Flavor::Serverless.visibility(a) == Some(Visibility::Public)
-        }),
+        "stack" => Some(Flavor::Stack),
+        "serverless" => Some(Flavor::Serverless),
         _ => bail!("Unknown flavor {}", flavor),
     };
 
-    let mut schema = clients_schema::IndexedModel::from_reader(json.as_bytes())?;
-    schema = clients_schema::transform::expand_generics(schema, ExpandConfig::default())?;
-    if let Some(filter) = filter {
-        schema = clients_schema::transform::filter_availability(schema, filter)?;
-    }
-    let openapi = clients_schema_to_openapi::convert_schema(&schema)?;
+    let config = Configuration {
+        flavor,
+        ..Default::default()
+    };
+    let schema = IndexedModel::from_reader(json.as_bytes())?;
+    let openapi = clients_schema_to_openapi::convert_schema(schema, config)?;
     let result = serde_json::to_string_pretty(&openapi)?;
     Ok(result)
 }

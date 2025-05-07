@@ -34,12 +34,6 @@ import { Id } from '@_types/common'
  *
  * To review the available `rerank` models, refer to <https://jina.ai/reranker>.
  * To review the available `text_embedding` models, refer to the <https://jina.ai/embeddings/>.
- *
- * When you create an inference endpoint, the associated machine learning model is automatically deployed if it is not already running.
- * After creating the endpoint, wait for the model deployment to complete before using it.
- * To verify the deployment status, use the get trained model statistics API.
- * Look for `"state": "fully_allocated"` in the response and ensure that the `"allocation_count"` matches the `"target_allocation_count"`.
- * Avoid creating multiple endpoints for the same model unless required, as each endpoint consumes significant resources.
  * @rest_spec_name inference.put_jinaai
  * @availability stack since=8.18.0 stability=stable visibility=public
  * @availability serverless stability=stable visibility=public

@@ -19,6 +19,7 @@
 
 import { integer } from '@_types/Numeric'
 import { CharFilterBase } from './char_filters'
+import { StopWords } from './StopWords'
 import { TokenizerBase } from './tokenizers'
 import { TokenFilterBase } from './token_filters'
 
@@ -26,6 +27,11 @@ export class KuromojiAnalyzer {
   type: 'kuromoji'
   mode: KuromojiTokenizationMode
   user_dictionary?: string
+}
+
+export class JaStopTokenFilter extends TokenFilterBase {
+  type: 'ja_stop'
+  stopwords?: StopWords
 }
 
 export class KuromojiIterationMarkCharFilter extends CharFilterBase {

@@ -27,8 +27,8 @@ export class SynonymsUpdateResult {
   result: Result
 
   /**
-   * Updating synonyms in a synonym set reloads the associated analyzers.
+   * Updating synonyms in a synonym set can reload the associated analyzers in case refresh is set to true.
    * This information is the analyzers reloading result.
    */
-  reload_analyzers_details: ReloadResult
+  reload_analyzers_details?: ReloadResult
 }

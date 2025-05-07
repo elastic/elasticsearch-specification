@@ -205,8 +205,8 @@ export interface Request extends RequestBase {
      * * `_local` to, if possible, run the search on shards on the local node, or if not, select shards using the default method.
      * * `_only_nodes:<node-id>,<node-id>` to run the search on only the specified nodes IDs. If suitable shards exist on more than one selected node, use shards on those nodes using the default method. If none of the specified nodes are available, select shards from any available node using the default method.
      * * `_prefer_nodes:<node-id>,<node-id>` to if possible, run the search on the specified nodes IDs. If not, select shards using the default method.
-     * `_shards:<shard>,<shard>` to run the search only on the specified shards. You can combine this value with other `preference` values. However, the `_shards` value must come first. For example: `_shards:2,3|_local`.
-     * `<custom-string>` (any string that does not start with `_`) to route searches with the same `<custom-string>` to the same shards in the same order.
+     * * `_shards:<shard>,<shard>` to run the search only on the specified shards. You can combine this value with other `preference` values. However, the `_shards` value must come first. For example: `_shards:2,3|_local`.
+     * * `<custom-string>` (any string that does not start with `_`) to route searches with the same `<custom-string>` to the same shards in the same order.
      */
     preference?: string
     /**
@@ -387,7 +387,9 @@ export interface Request extends RequestBase {
   body: {
     /**
      * Defines the aggregations that are run as part of the search request.
-     * @aliases aggs */ // ES uses "aggregations" in serialization
+     * @aliases aggs
+     * @ext_doc_id search-aggregations
+     */ // ES uses "aggregations" in serialization
     aggregations?: Dictionary<string, AggregationContainer>
     /**
      * Collapses search results the values of the specified field.
@@ -411,6 +413,7 @@ export interface Request extends RequestBase {
     from?: integer
     /**
      * Specifies the highlighter to use for retrieving highlighted snippets from one or more fields in your search results.
+     * @ext_doc_id search-highlight
      */
     highlight?: Highlight
     /**
@@ -477,6 +480,7 @@ export interface Request extends RequestBase {
      * A retriever replaces other elements of the search API that also return top documents such as `query` and `knn`.
      * @availability stack since=8.14.0 stability=stable
      * @availability serverless stability=stable
+     * @ext_doc_id search-retrievers
      */
     retriever?: RetrieverContainer
     /**
