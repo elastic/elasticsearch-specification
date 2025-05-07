@@ -9655,7 +9655,7 @@
           "inference"
         ],
         "summary": "Create an inference endpoint",
-        "description": "When you create an inference endpoint, the associated machine learning model is automatically deployed if it is not already running.\nAfter creating the endpoint, wait for the model deployment to complete before using it.\nTo verify the deployment status, use the get trained model statistics API.\nLook for `\"state\": \"fully_allocated\"` in the response and ensure that the `\"allocation_count\"` matches the `\"target_allocation_count\"`.\nAvoid creating multiple endpoints for the same model unless required, as each endpoint consumes significant resources.\n\nIMPORTANT: The inference APIs enable you to use certain services, such as built-in machine learning models (ELSER, E5), models uploaded through Eland, Cohere, OpenAI, Mistral, Azure OpenAI, Google AI Studio, Google Vertex AI, Anthropic, Watsonx.ai, or Hugging Face.\nFor built-in models and models uploaded through Eland, the inference APIs offer an alternative way to use and manage trained models.\nHowever, if you do not plan to use the inference APIs to use these models or if you want to use non-NLP models, use the machine learning trained model APIs.",
+        "description": "IMPORTANT: The inference APIs enable you to use certain services, such as built-in machine learning models (ELSER, E5), models uploaded through Eland, Cohere, OpenAI, Mistral, Azure OpenAI, Google AI Studio, Google Vertex AI, Anthropic, Watsonx.ai, or Hugging Face.\nFor built-in models and models uploaded through Eland, the inference APIs offer an alternative way to use and manage trained models.\nHowever, if you do not plan to use the inference APIs to use these models or if you want to use non-NLP models, use the machine learning trained model APIs.",
         "operationId": "inference-put",
         "parameters": [
           {
@@ -9749,7 +9749,7 @@
           "inference"
         ],
         "summary": "Create an inference endpoint",
-        "description": "When you create an inference endpoint, the associated machine learning model is automatically deployed if it is not already running.\nAfter creating the endpoint, wait for the model deployment to complete before using it.\nTo verify the deployment status, use the get trained model statistics API.\nLook for `\"state\": \"fully_allocated\"` in the response and ensure that the `\"allocation_count\"` matches the `\"target_allocation_count\"`.\nAvoid creating multiple endpoints for the same model unless required, as each endpoint consumes significant resources.\n\nIMPORTANT: The inference APIs enable you to use certain services, such as built-in machine learning models (ELSER, E5), models uploaded through Eland, Cohere, OpenAI, Mistral, Azure OpenAI, Google AI Studio, Google Vertex AI, Anthropic, Watsonx.ai, or Hugging Face.\nFor built-in models and models uploaded through Eland, the inference APIs offer an alternative way to use and manage trained models.\nHowever, if you do not plan to use the inference APIs to use these models or if you want to use non-NLP models, use the machine learning trained model APIs.",
+        "description": "IMPORTANT: The inference APIs enable you to use certain services, such as built-in machine learning models (ELSER, E5), models uploaded through Eland, Cohere, OpenAI, Mistral, Azure OpenAI, Google AI Studio, Google Vertex AI, Anthropic, Watsonx.ai, or Hugging Face.\nFor built-in models and models uploaded through Eland, the inference APIs offer an alternative way to use and manage trained models.\nHowever, if you do not plan to use the inference APIs to use these models or if you want to use non-NLP models, use the machine learning trained model APIs.",
         "operationId": "inference-put-1",
         "parameters": [
           {
@@ -9846,7 +9846,7 @@
           "inference"
         ],
         "summary": "Create an AlibabaCloud AI Search inference endpoint",
-        "description": "Create an inference endpoint to perform an inference task with the `alibabacloud-ai-search` service.\n\nWhen you create an inference endpoint, the associated machine learning model is automatically deployed if it is not already running.\nAfter creating the endpoint, wait for the model deployment to complete before using it.\nTo verify the deployment status, use the get trained model statistics API.\nLook for `\"state\": \"fully_allocated\"` in the response and ensure that the `\"allocation_count\"` matches the `\"target_allocation_count\"`.\nAvoid creating multiple endpoints for the same model unless required, as each endpoint consumes significant resources.",
+        "description": "Create an inference endpoint to perform an inference task with the `alibabacloud-ai-search` service.",
         "operationId": "inference-put-alibabacloud",
         "parameters": [
           {
@@ -9942,7 +9942,7 @@
           "inference"
         ],
         "summary": "Create an Amazon Bedrock inference endpoint",
-        "description": "Creates an inference endpoint to perform an inference task with the `amazonbedrock` service.\n\n>info\n> You need to provide the access and secret keys only once, during the inference model creation. The get inference API does not retrieve your access or secret keys. After creating the inference model, you cannot change the associated key pairs. If you want to use a different access and secret key pair, delete the inference model and recreate it with the same name and the updated keys.\n\nWhen you create an inference endpoint, the associated machine learning model is automatically deployed if it is not already running.\nAfter creating the endpoint, wait for the model deployment to complete before using it.\nTo verify the deployment status, use the get trained model statistics API.\nLook for `\"state\": \"fully_allocated\"` in the response and ensure that the `\"allocation_count\"` matches the `\"target_allocation_count\"`.\nAvoid creating multiple endpoints for the same model unless required, as each endpoint consumes significant resources.",
+        "description": "Creates an inference endpoint to perform an inference task with the `amazonbedrock` service.\n\n>info\n> You need to provide the access and secret keys only once, during the inference model creation. The get inference API does not retrieve your access or secret keys. After creating the inference model, you cannot change the associated key pairs. If you want to use a different access and secret key pair, delete the inference model and recreate it with the same name and the updated keys.",
         "operationId": "inference-put-amazonbedrock",
         "parameters": [
           {
@@ -10028,7 +10028,7 @@
           "inference"
         ],
         "summary": "Create an Anthropic inference endpoint",
-        "description": "Create an inference endpoint to perform an inference task with the `anthropic` service.\n\nWhen you create an inference endpoint, the associated machine learning model is automatically deployed if it is not already running.\nAfter creating the endpoint, wait for the model deployment to complete before using it.\nTo verify the deployment status, use the get trained model statistics API.\nLook for `\"state\": \"fully_allocated\"` in the response and ensure that the `\"allocation_count\"` matches the `\"target_allocation_count\"`.\nAvoid creating multiple endpoints for the same model unless required, as each endpoint consumes significant resources.",
+        "description": "Create an inference endpoint to perform an inference task with the `anthropic` service.",
         "operationId": "inference-put-anthropic",
         "parameters": [
           {
@@ -10108,7 +10108,7 @@
           "inference"
         ],
         "summary": "Create an Azure AI studio inference endpoint",
-        "description": "Create an inference endpoint to perform an inference task with the `azureaistudio` service.\n\nWhen you create an inference endpoint, the associated machine learning model is automatically deployed if it is not already running.\nAfter creating the endpoint, wait for the model deployment to complete before using it.\nTo verify the deployment status, use the get trained model statistics API.\nLook for `\"state\": \"fully_allocated\"` in the response and ensure that the `\"allocation_count\"` matches the `\"target_allocation_count\"`.\nAvoid creating multiple endpoints for the same model unless required, as each endpoint consumes significant resources.",
+        "description": "Create an inference endpoint to perform an inference task with the `azureaistudio` service.",
         "operationId": "inference-put-azureaistudio",
         "parameters": [
           {
@@ -10194,7 +10194,7 @@
           "inference"
         ],
         "summary": "Create an Azure OpenAI inference endpoint",
-        "description": "Create an inference endpoint to perform an inference task with the `azureopenai` service.\n\nThe list of chat completion models that you can choose from in your Azure OpenAI deployment include:\n\n* [GPT-4 and GPT-4 Turbo models](https://learn.microsoft.com/en-us/azure/ai-services/openai/concepts/models?tabs=global-standard%2Cstandard-chat-completions#gpt-4-and-gpt-4-turbo-models)\n* [GPT-3.5](https://learn.microsoft.com/en-us/azure/ai-services/openai/concepts/models?tabs=global-standard%2Cstandard-chat-completions#gpt-35)\n\nThe list of embeddings models that you can choose from in your deployment can be found in the [Azure models documentation](https://learn.microsoft.com/en-us/azure/ai-services/openai/concepts/models?tabs=global-standard%2Cstandard-chat-completions#embeddings).\n\nWhen you create an inference endpoint, the associated machine learning model is automatically deployed if it is not already running.\nAfter creating the endpoint, wait for the model deployment to complete before using it.\nTo verify the deployment status, use the get trained model statistics API.\nLook for `\"state\": \"fully_allocated\"` in the response and ensure that the `\"allocation_count\"` matches the `\"target_allocation_count\"`.\nAvoid creating multiple endpoints for the same model unless required, as each endpoint consumes significant resources.",
+        "description": "Create an inference endpoint to perform an inference task with the `azureopenai` service.\n\nThe list of chat completion models that you can choose from in your Azure OpenAI deployment include:\n\n* [GPT-4 and GPT-4 Turbo models](https://learn.microsoft.com/en-us/azure/ai-services/openai/concepts/models?tabs=global-standard%2Cstandard-chat-completions#gpt-4-and-gpt-4-turbo-models)\n* [GPT-3.5](https://learn.microsoft.com/en-us/azure/ai-services/openai/concepts/models?tabs=global-standard%2Cstandard-chat-completions#gpt-35)\n\nThe list of embeddings models that you can choose from in your deployment can be found in the [Azure models documentation](https://learn.microsoft.com/en-us/azure/ai-services/openai/concepts/models?tabs=global-standard%2Cstandard-chat-completions#embeddings).",
         "operationId": "inference-put-azureopenai",
         "parameters": [
           {
@@ -10280,7 +10280,7 @@
           "inference"
         ],
         "summary": "Create a Cohere inference endpoint",
-        "description": "Create an inference endpoint to perform an inference task with the `cohere` service.\n\nWhen you create an inference endpoint, the associated machine learning model is automatically deployed if it is not already running.\nAfter creating the endpoint, wait for the model deployment to complete before using it.\nTo verify the deployment status, use the get trained model statistics API.\nLook for `\"state\": \"fully_allocated\"` in the response and ensure that the `\"allocation_count\"` matches the `\"target_allocation_count\"`.\nAvoid creating multiple endpoints for the same model unless required, as each endpoint consumes significant resources.",
+        "description": "Create an inference endpoint to perform an inference task with the `cohere` service.",
         "operationId": "inference-put-cohere",
         "parameters": [
           {
@@ -10568,7 +10568,7 @@
           "inference"
         ],
         "summary": "Create an Google AI Studio inference endpoint",
-        "description": "Create an inference endpoint to perform an inference task with the `googleaistudio` service.\n\nWhen you create an inference endpoint, the associated machine learning model is automatically deployed if it is not already running.\nAfter creating the endpoint, wait for the model deployment to complete before using it.\nTo verify the deployment status, use the get trained model statistics API.\nLook for `\"state\": \"fully_allocated\"` in the response and ensure that the `\"allocation_count\"` matches the `\"target_allocation_count\"`.\nAvoid creating multiple endpoints for the same model unless required, as each endpoint consumes significant resources.",
+        "description": "Create an inference endpoint to perform an inference task with the `googleaistudio` service.",
         "operationId": "inference-put-googleaistudio",
         "parameters": [
           {
@@ -10646,7 +10646,7 @@
           "inference"
         ],
         "summary": "Create a Google Vertex AI inference endpoint",
-        "description": "Create an inference endpoint to perform an inference task with the `googlevertexai` service.\n\nWhen you create an inference endpoint, the associated machine learning model is automatically deployed if it is not already running.\nAfter creating the endpoint, wait for the model deployment to complete before using it.\nTo verify the deployment status, use the get trained model statistics API.\nLook for `\"state\": \"fully_allocated\"` in the response and ensure that the `\"allocation_count\"` matches the `\"target_allocation_count\"`.\nAvoid creating multiple endpoints for the same model unless required, as each endpoint consumes significant resources.",
+        "description": "Create an inference endpoint to perform an inference task with the `googlevertexai` service.",
         "operationId": "inference-put-googlevertexai",
         "parameters": [
           {
@@ -10732,7 +10732,7 @@
           "inference"
         ],
         "summary": "Create a Hugging Face inference endpoint",
-        "description": "Create an inference endpoint to perform an inference task with the `hugging_face` service.\n\nYou must first create an inference endpoint on the Hugging Face endpoint page to get an endpoint URL.\nSelect the model you want to use on the new endpoint creation page (for example `intfloat/e5-small-v2`), then select the sentence embeddings task under the advanced configuration section.\nCreate the endpoint and copy the URL after the endpoint initialization has been finished.\n\nThe following models are recommended for the Hugging Face service:\n\n* `all-MiniLM-L6-v2`\n* `all-MiniLM-L12-v2`\n* `all-mpnet-base-v2`\n* `e5-base-v2`\n* `e5-small-v2`\n* `multilingual-e5-base`\n* `multilingual-e5-small`\n\nWhen you create an inference endpoint, the associated machine learning model is automatically deployed if it is not already running.\nAfter creating the endpoint, wait for the model deployment to complete before using it.\nTo verify the deployment status, use the get trained model statistics API.\nLook for `\"state\": \"fully_allocated\"` in the response and ensure that the `\"allocation_count\"` matches the `\"target_allocation_count\"`.\nAvoid creating multiple endpoints for the same model unless required, as each endpoint consumes significant resources.",
+        "description": "Create an inference endpoint to perform an inference task with the `hugging_face` service.\n\nYou must first create an inference endpoint on the Hugging Face endpoint page to get an endpoint URL.\nSelect the model you want to use on the new endpoint creation page (for example `intfloat/e5-small-v2`), then select the sentence embeddings task under the advanced configuration section.\nCreate the endpoint and copy the URL after the endpoint initialization has been finished.\n\nThe following models are recommended for the Hugging Face service:\n\n* `all-MiniLM-L6-v2`\n* `all-MiniLM-L12-v2`\n* `all-mpnet-base-v2`\n* `e5-base-v2`\n* `e5-small-v2`\n* `multilingual-e5-base`\n* `multilingual-e5-small`",
         "operationId": "inference-put-hugging-face",
         "parameters": [
           {
@@ -10810,7 +10810,7 @@
           "inference"
         ],
         "summary": "Create an JinaAI inference endpoint",
-        "description": "Create an inference endpoint to perform an inference task with the `jinaai` service.\n\nTo review the available `rerank` models, refer to <https://jina.ai/reranker>.\nTo review the available `text_embedding` models, refer to the <https://jina.ai/embeddings/>.\n\nWhen you create an inference endpoint, the associated machine learning model is automatically deployed if it is not already running.\nAfter creating the endpoint, wait for the model deployment to complete before using it.\nTo verify the deployment status, use the get trained model statistics API.\nLook for `\"state\": \"fully_allocated\"` in the response and ensure that the `\"allocation_count\"` matches the `\"target_allocation_count\"`.\nAvoid creating multiple endpoints for the same model unless required, as each endpoint consumes significant resources.",
+        "description": "Create an inference endpoint to perform an inference task with the `jinaai` service.\n\nTo review the available `rerank` models, refer to <https://jina.ai/reranker>.\nTo review the available `text_embedding` models, refer to the <https://jina.ai/embeddings/>.",
         "operationId": "inference-put-jinaai",
         "parameters": [
           {
@@ -10896,7 +10896,7 @@
           "inference"
         ],
         "summary": "Create a Mistral inference endpoint",
-        "description": "Creates an inference endpoint to perform an inference task with the `mistral` service.\n\nWhen you create an inference endpoint, the associated machine learning model is automatically deployed if it is not already running.\nAfter creating the endpoint, wait for the model deployment to complete before using it.\nTo verify the deployment status, use the get trained model statistics API.\nLook for `\"state\": \"fully_allocated\"` in the response and ensure that the `\"allocation_count\"` matches the `\"target_allocation_count\"`.\nAvoid creating multiple endpoints for the same model unless required, as each endpoint consumes significant resources.",
+        "description": "Creates an inference endpoint to perform an inference task with the `mistral` service.",
         "operationId": "inference-put-mistral",
         "parameters": [
           {
@@ -10973,7 +10973,7 @@
           "inference"
         ],
         "summary": "Create an OpenAI inference endpoint",
-        "description": "Create an inference endpoint to perform an inference task with the `openai` service or `openai` compatible APIs.\n\nWhen you create an inference endpoint, the associated machine learning model is automatically deployed if it is not already running.\nAfter creating the endpoint, wait for the model deployment to complete before using it.\nTo verify the deployment status, use the get trained model statistics API.\nLook for `\"state\": \"fully_allocated\"` in the response and ensure that the `\"allocation_count\"` matches the `\"target_allocation_count\"`.\nAvoid creating multiple endpoints for the same model unless required, as each endpoint consumes significant resources.",
+        "description": "Create an inference endpoint to perform an inference task with the `openai` service or `openai` compatible APIs.",
         "operationId": "inference-put-openai",
         "parameters": [
           {
@@ -11145,7 +11145,7 @@
           "inference"
         ],
         "summary": "Create a Watsonx inference endpoint",
-        "description": "Create an inference endpoint to perform an inference task with the `watsonxai` service.\nYou need an IBM Cloud Databases for Elasticsearch deployment to use the `watsonxai` inference service.\nYou can provision one through the IBM catalog, the Cloud Databases CLI plug-in, the Cloud Databases API, or Terraform.\n\nWhen you create an inference endpoint, the associated machine learning model is automatically deployed if it is not already running.\nAfter creating the endpoint, wait for the model deployment to complete before using it.\nTo verify the deployment status, use the get trained model statistics API.\nLook for `\"state\": \"fully_allocated\"` in the response and ensure that the `\"allocation_count\"` matches the `\"target_allocation_count\"`.\nAvoid creating multiple endpoints for the same model unless required, as each endpoint consumes significant resources.",
+        "description": "Create an inference endpoint to perform an inference task with the `watsonxai` service.\nYou need an IBM Cloud Databases for Elasticsearch deployment to use the `watsonxai` inference service.\nYou can provision one through the IBM catalog, the Cloud Databases CLI plug-in, the Cloud Databases API, or Terraform.",
         "operationId": "inference-put-watsonx",
         "parameters": [
           {
