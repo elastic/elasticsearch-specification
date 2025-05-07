@@ -17,7 +17,7 @@
 
 use clients_schema::TypeName;
 use openapiv3::{Components, Parameter, ReferenceOr, RequestBody, Response, Schema, StatusCode};
-
+use crate::Configuration;
 use crate::utils::SchemaName;
 
 // Separator used to combine parts of a component path.
@@ -29,13 +29,14 @@ use crate::utils::SchemaName;
 pub const SEPARATOR: char = '-';
 
 pub struct TypesAndComponents<'a> {
+    pub config: &'a Configuration,
     pub model: &'a clients_schema::IndexedModel,
     pub components: &'a mut Components,
 }
 
 impl<'a> TypesAndComponents<'a> {
-    pub fn new(model: &'a clients_schema::IndexedModel, components: &'a mut Components) -> TypesAndComponents<'a> {
-        TypesAndComponents { model, components }
+    pub fn new(config: &'a Configuration, model: &'a clients_schema::IndexedModel, components: &'a mut Components) -> TypesAndComponents<'a> {
+        TypesAndComponents { config, model, components }
     }
 
     pub fn add_request_body(&mut self, endpoint: &str, body: RequestBody) -> ReferenceOr<RequestBody> {

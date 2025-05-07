@@ -18,6 +18,7 @@
 use anyhow::bail;
 use clients_schema::{Flavor, IndexedModel};
 use wasm_bindgen::prelude::*;
+use clients_schema_to_openapi::Configuration;
 
 #[wasm_bindgen]
 pub fn convert_schema_to_openapi(json: &str, flavor: &str) -> Result<String, String> {
@@ -33,8 +34,12 @@ fn convert0(json: &str, flavor: &str) -> anyhow::Result<String> {
         _ => bail!("Unknown flavor {}", flavor),
     };
 
+    let config = Configuration {
+        flavor,
+        ..Default::default()
+    };
     let schema = IndexedModel::from_reader(json.as_bytes())?;
-    let openapi = clients_schema_to_openapi::convert_schema(schema, flavor)?;
+    let openapi = clients_schema_to_openapi::convert_schema(schema, config)?;
     let result = serde_json::to_string_pretty(&openapi)?;
     Ok(result)
 }
