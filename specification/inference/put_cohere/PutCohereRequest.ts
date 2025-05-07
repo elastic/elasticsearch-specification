@@ -31,12 +31,6 @@ import { Id } from '@_types/common'
  * Create a Cohere inference endpoint.
  *
  * Create an inference endpoint to perform an inference task with the `cohere` service.
- *
- * When you create an inference endpoint, the associated machine learning model is automatically deployed if it is not already running.
- * After creating the endpoint, wait for the model deployment to complete before using it.
- * To verify the deployment status, use the get trained model statistics API.
- * Look for `"state": "fully_allocated"` in the response and ensure that the `"allocation_count"` matches the `"target_allocation_count"`.
- * Avoid creating multiple endpoints for the same model unless required, as each endpoint consumes significant resources.
  * @rest_spec_name inference.put_cohere
  * @availability stack since=8.13.0 stability=stable visibility=public
  * @availability serverless stability=stable visibility=public
