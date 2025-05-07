@@ -14887,7 +14887,8 @@ export interface MigrationPostFeatureUpgradeRequest extends RequestBase {
 
 export interface MigrationPostFeatureUpgradeResponse {
   accepted: boolean
-  features: MigrationPostFeatureUpgradeMigrationFeature[]
+  features?: MigrationPostFeatureUpgradeMigrationFeature[]
+  reason?: string
 }
 
 export interface MlAdaptiveAllocationsSettings {
