@@ -41,6 +41,7 @@ export class IcuNormalizationCharFilter extends CharFilterBase {
   type: 'icu_normalizer'
   mode?: IcuNormalizationMode
   name?: IcuNormalizationType
+  unicode_set_filter?: string
 }
 
 export class IcuFoldingTokenFilter extends TokenFilterBase {
