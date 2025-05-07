@@ -23,6 +23,7 @@ use clients_schema::Flavor;
 use tracing::Level;
 use tracing_subscriber::fmt::format::FmtSpan;
 use tracing_subscriber::FmtSubscriber;
+use clients_schema_to_openapi::Configuration;
 
 fn main() -> anyhow::Result<()> {
     let cli = Cli::parse();
@@ -83,7 +84,12 @@ impl Cli {
             Some(SchemaFlavor::Serverless) => Some(Flavor::Serverless),
         };
 
-        let openapi = clients_schema_to_openapi::convert_schema(model, flavor)?;
+        let config = Configuration {
+            flavor,
+            ..Default::default()
+        };
+
+        let openapi = clients_schema_to_openapi::convert_schema(model, config)?;
 
         let output: Box<dyn std::io::Write> = {
             if let Some(output) = self.output {

@@ -62,7 +62,7 @@ pub fn add_endpoint(
     fn parameter_data(prop: &Property, in_path: bool, tac: &mut TypesAndComponents) -> anyhow::Result<ParameterData> {
         Ok(ParameterData {
             name: prop.name.clone(),
-            description: prop.description.clone(),
+            description: tac.property_description(prop)?,
             required: in_path || prop.required, // Path parameters are always required
             deprecated: Some(prop.deprecation.is_some()),
             format: ParameterSchemaOrContent::Schema(tac.convert_value_of(&prop.typ)?),
