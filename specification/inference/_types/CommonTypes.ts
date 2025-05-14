@@ -882,16 +882,27 @@ export class HuggingFaceServiceSettings {
   api_key: string
   /**
    * This setting helps to minimize the number of rate limit errors returned from Hugging Face.
-   * By default, the `hugging_face` service sets the number of requests allowed per minute to 3000.
+   * By default, the `hugging_face` service sets the number of requests allowed per minute to 3000 for all supported tasks.
+   * Hugging Face does not publish a universal rate limit — actual limits may vary.
+   * It is recommended to adjust this value based on the capacity and limits of your specific deployment environment.
    */
   rate_limit?: RateLimitSetting
   /**
    * The URL endpoint to use for the requests.
+   * For `completion` and `chat_completion` tasks, endpoint must be compatible with the OpenAI API format and include `v1/chat/completions`.
    */
   url: string
+  /**
+   * The name of the HuggingFace model to use for the inference task.
+   * For `completion` and `chat_completion` tasks, this field is optional but may be required for certain models — particularly when using serverless inference endpoints.
+   * For the `text_embedding` task, this field is not required and will be ignored if provided.
+   */
+  model_id?: string
 }
 
 export enum HuggingFaceTaskType {
+  chat_completion,
+  completion,
   text_embedding
 }
 
