@@ -325,7 +325,13 @@
             "$ref": "#/components/responses/async_search.submit-200"
           }
         },
-        "x-state": "Added in 7.7.0"
+        "x-state": "Added in 7.7.0",
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "POST /sales*/_async_search?size=0\n{\n  \"sort\": [\n    { \"date\": { \"order\": \"asc\" } }\n  ],\n  \"aggs\": {\n    \"sale_date\": {\n      \"date_histogram\": {\n        \"field\": \"date\",\n        \"calendar_interval\": \"1d\"\n      }\n    }\n  }\n}"
+          }
+        ]
       }
     },
     "/{index}/_async_search": {
@@ -478,7 +484,13 @@
             "$ref": "#/components/responses/async_search.submit-200"
           }
         },
-        "x-state": "Added in 7.7.0"
+        "x-state": "Added in 7.7.0",
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "POST /sales*/_async_search?size=0\n{\n  \"sort\": [\n    { \"date\": { \"order\": \"asc\" } }\n  ],\n  \"aggs\": {\n    \"sale_date\": {\n      \"date_histogram\": {\n        \"field\": \"date\",\n        \"calendar_interval\": \"1d\"\n      }\n    }\n  }\n}"
+          }
+        ]
       }
     },
     "/_bulk": {
@@ -534,7 +546,13 @@
           "200": {
             "$ref": "#/components/responses/bulk-200"
           }
-        }
+        },
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "POST _bulk\n{ \"index\" : { \"_index\" : \"test\", \"_id\" : \"1\" } }\n{ \"field1\" : \"value1\" }\n{ \"delete\" : { \"_index\" : \"test\", \"_id\" : \"2\" } }\n{ \"create\" : { \"_index\" : \"test\", \"_id\" : \"3\" } }\n{ \"field1\" : \"value3\" }\n{ \"update\" : {\"_id\" : \"1\", \"_index\" : \"test\"} }\n{ \"doc\" : {\"field2\" : \"value2\"} }"
+          }
+        ]
       },
       "post": {
         "tags": [
@@ -588,7 +606,13 @@
           "200": {
             "$ref": "#/components/responses/bulk-200"
           }
-        }
+        },
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "POST _bulk\n{ \"index\" : { \"_index\" : \"test\", \"_id\" : \"1\" } }\n{ \"field1\" : \"value1\" }\n{ \"delete\" : { \"_index\" : \"test\", \"_id\" : \"2\" } }\n{ \"create\" : { \"_index\" : \"test\", \"_id\" : \"3\" } }\n{ \"field1\" : \"value3\" }\n{ \"update\" : {\"_id\" : \"1\", \"_index\" : \"test\"} }\n{ \"doc\" : {\"field2\" : \"value2\"} }"
+          }
+        ]
       }
     },
     "/{index}/_bulk": {
@@ -647,7 +671,13 @@
           "200": {
             "$ref": "#/components/responses/bulk-200"
           }
-        }
+        },
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "POST _bulk\n{ \"index\" : { \"_index\" : \"test\", \"_id\" : \"1\" } }\n{ \"field1\" : \"value1\" }\n{ \"delete\" : { \"_index\" : \"test\", \"_id\" : \"2\" } }\n{ \"create\" : { \"_index\" : \"test\", \"_id\" : \"3\" } }\n{ \"field1\" : \"value3\" }\n{ \"update\" : {\"_id\" : \"1\", \"_index\" : \"test\"} }\n{ \"doc\" : {\"field2\" : \"value2\"} }"
+          }
+        ]
       },
       "post": {
         "tags": [
@@ -704,7 +734,13 @@
           "200": {
             "$ref": "#/components/responses/bulk-200"
           }
-        }
+        },
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "POST _bulk\n{ \"index\" : { \"_index\" : \"test\", \"_id\" : \"1\" } }\n{ \"field1\" : \"value1\" }\n{ \"delete\" : { \"_index\" : \"test\", \"_id\" : \"2\" } }\n{ \"create\" : { \"_index\" : \"test\", \"_id\" : \"3\" } }\n{ \"field1\" : \"value3\" }\n{ \"update\" : {\"_id\" : \"1\", \"_index\" : \"test\"} }\n{ \"doc\" : {\"field2\" : \"value2\"} }"
+          }
+        ]
       }
     },
     "/_cat/aliases": {
@@ -1379,7 +1415,13 @@
           "200": {
             "$ref": "#/components/responses/scroll-200"
           }
-        }
+        },
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "GET /_search/scroll\n{\n  \"scroll_id\" : \"DXF1ZXJ5QW5kRmV0Y2gBAAAAAAAAAD4WYm9laVYtZndUQlNsdDcwakFMNjU1QQ==\"\n}"
+          }
+        ]
       },
       "post": {
         "tags": [
@@ -1409,7 +1451,13 @@
           "200": {
             "$ref": "#/components/responses/scroll-200"
           }
-        }
+        },
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "GET /_search/scroll\n{\n  \"scroll_id\" : \"DXF1ZXJ5QW5kRmV0Y2gBAAAAAAAAAD4WYm9laVYtZndUQlNsdDcwakFMNjU1QQ==\"\n}"
+          }
+        ]
       },
       "delete": {
         "tags": [
@@ -1428,7 +1476,13 @@
           "200": {
             "$ref": "#/components/responses/clear_scroll-200"
           }
-        }
+        },
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "DELETE /_search/scroll\n{\n  \"scroll_id\": \"DXF1ZXJ5QW5kRmV0Y2gBAAAAAAAAAD4WYm9laVYtZndUQlNsdDcwakFMNjU1QQ==\"\n}"
+          }
+        ]
       }
     },
     "/_search/scroll/{scroll_id}": {
@@ -1463,7 +1517,13 @@
           "200": {
             "$ref": "#/components/responses/scroll-200"
           }
-        }
+        },
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "GET /_search/scroll\n{\n  \"scroll_id\" : \"DXF1ZXJ5QW5kRmV0Y2gBAAAAAAAAAD4WYm9laVYtZndUQlNsdDcwakFMNjU1QQ==\"\n}"
+          }
+        ]
       },
       "post": {
         "tags": [
@@ -1496,7 +1556,13 @@
           "200": {
             "$ref": "#/components/responses/scroll-200"
           }
-        }
+        },
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "GET /_search/scroll\n{\n  \"scroll_id\" : \"DXF1ZXJ5QW5kRmV0Y2gBAAAAAAAAAD4WYm9laVYtZndUQlNsdDcwakFMNjU1QQ==\"\n}"
+          }
+        ]
       },
       "delete": {
         "tags": [
@@ -1520,7 +1586,13 @@
           "200": {
             "$ref": "#/components/responses/clear_scroll-200"
           }
-        }
+        },
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "DELETE /_search/scroll\n{\n  \"scroll_id\": \"DXF1ZXJ5QW5kRmV0Y2gBAAAAAAAAAD4WYm9laVYtZndUQlNsdDcwakFMNjU1QQ==\"\n}"
+          }
+        ]
       }
     },
     "/_pit": {
@@ -1586,7 +1658,13 @@
             }
           }
         },
-        "x-state": "Added in 7.10.0"
+        "x-state": "Added in 7.10.0",
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "DELETE /_pit\n{\n  \"id\": \"46ToAwMDaWR5BXV1aWQyKwZub2RlXzMAAAAAAAAAACoBYwADaWR4BXV1aWQxAgZub2RlXzEAAAAAAAAAAAEBYQADaWR5BXV1aWQyKgZub2RlXzIAAAAAAAAAAAwBYgACBXV1aWQyAAAFdXVpZDEAAQltYXRjaF9hbGw_gAAAAA==\"\n}"
+          }
+        ]
       }
     },
     "/_component_template/{name}": {
@@ -3487,7 +3565,13 @@
           "200": {
             "$ref": "#/components/responses/count-200"
           }
-        }
+        },
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "GET /my-index-000001/_count?q=user:kimchy\n{\n  \"query\" : {\n    \"term\" : { \"user.id\" : \"kimchy\" }\n  }\n}"
+          }
+        ]
       },
       "post": {
         "tags": [
@@ -3547,7 +3631,13 @@
           "200": {
             "$ref": "#/components/responses/count-200"
           }
-        }
+        },
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "GET /my-index-000001/_count?q=user:kimchy\n{\n  \"query\" : {\n    \"term\" : { \"user.id\" : \"kimchy\" }\n  }\n}"
+          }
+        ]
       }
     },
     "/{index}/_count": {
@@ -3612,7 +3702,13 @@
           "200": {
             "$ref": "#/components/responses/count-200"
           }
-        }
+        },
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "GET /my-index-000001/_count?q=user:kimchy\n{\n  \"query\" : {\n    \"term\" : { \"user.id\" : \"kimchy\" }\n  }\n}"
+          }
+        ]
       },
       "post": {
         "tags": [
@@ -3675,7 +3771,13 @@
           "200": {
             "$ref": "#/components/responses/count-200"
           }
-        }
+        },
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "GET /my-index-000001/_count?q=user:kimchy\n{\n  \"query\" : {\n    \"term\" : { \"user.id\" : \"kimchy\" }\n  }\n}"
+          }
+        ]
       }
     },
     "/{index}/_create/{id}": {
@@ -3744,7 +3846,13 @@
             "$ref": "#/components/responses/create-200"
           }
         },
-        "x-state": "Added in 5.0.0"
+        "x-state": "Added in 5.0.0",
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "PUT my-index-000001/_create/1\n{\n  \"@timestamp\": \"2099-11-15T13:12:00\",\n  \"message\": \"GET /search HTTP/1.1 200 1070000\",\n  \"user\": {\n    \"id\": \"kimchy\"\n  }\n}"
+          }
+        ]
       },
       "post": {
         "tags": [
@@ -3811,7 +3919,13 @@
             "$ref": "#/components/responses/create-200"
           }
         },
-        "x-state": "Added in 5.0.0"
+        "x-state": "Added in 5.0.0",
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "PUT my-index-000001/_create/1\n{\n  \"@timestamp\": \"2099-11-15T13:12:00\",\n  \"message\": \"GET /search HTTP/1.1 200 1070000\",\n  \"user\": {\n    \"id\": \"kimchy\"\n  }\n}"
+          }
+        ]
       }
     },
     "/{index}/_doc/{id}": {
@@ -4037,7 +4151,13 @@
           "200": {
             "$ref": "#/components/responses/index-200"
           }
-        }
+        },
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "POST my-index-000001/_doc/\n{\n  \"@timestamp\": \"2099-11-15T13:12:00\",\n  \"message\": \"GET /search HTTP/1.1 200 1070000\",\n  \"user\": {\n    \"id\": \"kimchy\"\n  }\n}"
+          }
+        ]
       },
       "post": {
         "tags": [
@@ -4100,7 +4220,13 @@
           "200": {
             "$ref": "#/components/responses/index-200"
           }
-        }
+        },
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "POST my-index-000001/_doc/\n{\n  \"@timestamp\": \"2099-11-15T13:12:00\",\n  \"message\": \"GET /search HTTP/1.1 200 1070000\",\n  \"user\": {\n    \"id\": \"kimchy\"\n  }\n}"
+          }
+        ]
       },
       "delete": {
         "tags": [
@@ -4813,7 +4939,13 @@
             }
           }
         },
-        "x-state": "Added in 5.0.0"
+        "x-state": "Added in 5.0.0",
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "POST /my-index-000001,my-index-000002/_delete_by_query\n{\n  \"query\": {\n    \"match_all\": {}\n  }\n}"
+          }
+        ]
       }
     },
     "/_scripts/{id}": {
@@ -4906,7 +5038,13 @@
           "200": {
             "$ref": "#/components/responses/put_script-200"
           }
-        }
+        },
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "PUT _scripts/my-search-template\n{\n  \"script\": {\n    \"lang\": \"mustache\",\n    \"source\": {\n      \"query\": {\n        \"match\": {\n          \"message\": \"{{query_string}}\"\n        }\n      },\n      \"from\": \"{{from}}\",\n      \"size\": \"{{size}}\"\n    }\n  }\n}"
+          }
+        ]
       },
       "post": {
         "tags": [
@@ -4939,7 +5077,13 @@
           "200": {
             "$ref": "#/components/responses/put_script-200"
           }
-        }
+        },
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "PUT _scripts/my-search-template\n{\n  \"script\": {\n    \"lang\": \"mustache\",\n    \"source\": {\n      \"query\": {\n        \"match\": {\n          \"message\": \"{{query_string}}\"\n        }\n      },\n      \"from\": \"{{from}}\",\n      \"size\": \"{{size}}\"\n    }\n  }\n}"
+          }
+        ]
       },
       "delete": {
         "tags": [
@@ -5421,7 +5565,13 @@
             "$ref": "#/components/responses/eql.search-200"
           }
         },
-        "x-state": "Added in 7.9.0"
+        "x-state": "Added in 7.9.0",
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "GET /my-data-stream/_eql/search\n{\n  \"query\": \"\"\"\n    process where (process.name == \"cmd.exe\" and process.pid != 2013)\n  \"\"\"\n}"
+          }
+        ]
       },
       "post": {
         "tags": [
@@ -5470,7 +5620,13 @@
             "$ref": "#/components/responses/eql.search-200"
           }
         },
-        "x-state": "Added in 7.9.0"
+        "x-state": "Added in 7.9.0",
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "GET /my-data-stream/_eql/search\n{\n  \"query\": \"\"\"\n    process where (process.name == \"cmd.exe\" and process.pid != 2013)\n  \"\"\"\n}"
+          }
+        ]
       }
     },
     "/_query/queries/{id}": {
@@ -5702,7 +5858,13 @@
               }
             }
           }
-        }
+        },
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "POST /_query\n{\n  \"query\": \"\"\"\n    FROM library,remote-*:library\n    | EVAL year = DATE_TRUNC(1 YEARS, release_date)\n    | STATS MAX(page_count) BY year\n    | SORT year\n    | LIMIT 5\n  \"\"\",\n  \"include_ccs_metadata\": true\n}"
+          }
+        ]
       }
     },
     "/{index}/_source/{id}": {
@@ -6047,7 +6209,13 @@
           "200": {
             "$ref": "#/components/responses/explain-200"
           }
-        }
+        },
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "GET /my-index-000001/_explain/0\n{\n  \"query\" : {\n    \"match\" : { \"message\" : \"elasticsearch\" }\n  }\n}"
+          }
+        ]
       },
       "post": {
         "tags": [
@@ -6107,7 +6275,13 @@
           "200": {
             "$ref": "#/components/responses/explain-200"
           }
-        }
+        },
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "GET /my-index-000001/_explain/0\n{\n  \"query\" : {\n    \"match\" : { \"message\" : \"elasticsearch\" }\n  }\n}"
+          }
+        ]
       }
     },
     "/_field_caps": {
@@ -6152,7 +6326,13 @@
             "$ref": "#/components/responses/field_caps-200"
           }
         },
-        "x-state": "Added in 5.4.0"
+        "x-state": "Added in 5.4.0",
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "POST my-index-*/_field_caps?fields=rating\n{\n  \"index_filter\": {\n    \"range\": {\n      \"@timestamp\": {\n        \"gte\": \"2018\"\n      }\n    }\n  }\n}"
+          }
+        ]
       },
       "post": {
         "tags": [
@@ -6195,7 +6375,13 @@
             "$ref": "#/components/responses/field_caps-200"
           }
         },
-        "x-state": "Added in 5.4.0"
+        "x-state": "Added in 5.4.0",
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "POST my-index-*/_field_caps?fields=rating\n{\n  \"index_filter\": {\n    \"range\": {\n      \"@timestamp\": {\n        \"gte\": \"2018\"\n      }\n    }\n  }\n}"
+          }
+        ]
       }
     },
     "/{index}/_field_caps": {
@@ -6243,7 +6429,13 @@
             "$ref": "#/components/responses/field_caps-200"
           }
         },
-        "x-state": "Added in 5.4.0"
+        "x-state": "Added in 5.4.0",
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "POST my-index-*/_field_caps?fields=rating\n{\n  \"index_filter\": {\n    \"range\": {\n      \"@timestamp\": {\n        \"gte\": \"2018\"\n      }\n    }\n  }\n}"
+          }
+        ]
       },
       "post": {
         "tags": [
@@ -6289,7 +6481,13 @@
             "$ref": "#/components/responses/field_caps-200"
           }
         },
-        "x-state": "Added in 5.4.0"
+        "x-state": "Added in 5.4.0",
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "POST my-index-*/_field_caps?fields=rating\n{\n  \"index_filter\": {\n    \"range\": {\n      \"@timestamp\": {\n        \"gte\": \"2018\"\n      }\n    }\n  }\n}"
+          }
+        ]
       }
     },
     "/{index}/_graph/explore": {
@@ -6321,7 +6519,13 @@
           "200": {
             "$ref": "#/components/responses/graph.explore-200"
           }
-        }
+        },
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "POST clicklogs/_graph/explore\n{\n  \"query\": {\n    \"match\": {\n      \"query.raw\": \"midi\"\n    }\n  },\n  \"vertices\": [\n    {\n      \"field\": \"product\"\n    }\n  ],\n  \"connections\": {\n    \"vertices\": [\n      {\n        \"field\": \"query.raw\"\n      }\n    ]\n  }\n}"
+          }
+        ]
       },
       "post": {
         "tags": [
@@ -6351,7 +6555,13 @@
           "200": {
             "$ref": "#/components/responses/graph.explore-200"
           }
-        }
+        },
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "POST clicklogs/_graph/explore\n{\n  \"query\": {\n    \"match\": {\n      \"query.raw\": \"midi\"\n    }\n  },\n  \"vertices\": [\n    {\n      \"field\": \"product\"\n    }\n  ],\n  \"connections\": {\n    \"vertices\": [\n      {\n        \"field\": \"query.raw\"\n      }\n    ]\n  }\n}"
+          }
+        ]
       }
     },
     "/{index}/_doc": {
@@ -6413,7 +6623,13 @@
           "200": {
             "$ref": "#/components/responses/index-200"
           }
-        }
+        },
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "POST my-index-000001/_doc/\n{\n  \"@timestamp\": \"2099-11-15T13:12:00\",\n  \"message\": \"GET /search HTTP/1.1 200 1070000\",\n  \"user\": {\n    \"id\": \"kimchy\"\n  }\n}"
+          }
+        ]
       }
     },
     "/{index}/_block/{block}": {
@@ -8200,7 +8416,13 @@
           "200": {
             "$ref": "#/components/responses/indices.put_mapping-200"
           }
-        }
+        },
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "PUT /my-index-000001,my-index-000002/_mapping\n{\n  \"properties\": {\n    \"user\": {\n      \"properties\": {\n        \"name\": {\n          \"type\": \"keyword\"\n        }\n      }\n    }\n  }\n}"
+          }
+        ]
       },
       "post": {
         "tags": [
@@ -8242,7 +8464,13 @@
           "200": {
             "$ref": "#/components/responses/indices.put_mapping-200"
           }
-        }
+        },
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "PUT /my-index-000001,my-index-000002/_mapping\n{\n  \"properties\": {\n    \"user\": {\n      \"properties\": {\n        \"name\": {\n          \"type\": \"keyword\"\n        }\n      }\n    }\n  }\n}"
+          }
+        ]
       }
     },
     "/_settings": {
@@ -9420,7 +9648,13 @@
             }
           }
         },
-        "x-state": "Added in 8.18.0"
+        "x-state": "Added in 8.18.0",
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "POST _inference/chat_completion/openai-completion/_stream\n{\n  \"model\": \"gpt-4o\",\n  \"messages\": [\n      {\n          \"role\": \"user\",\n          \"content\": \"What is Elastic?\"\n      }\n  ]\n}"
+          }
+        ]
       }
     },
     "/_inference/completion/{inference_id}": {
@@ -9510,7 +9744,13 @@
             }
           }
         },
-        "x-state": "Added in 8.11.0"
+        "x-state": "Added in 8.11.0",
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "POST _inference/completion/openai_chat_completions\n{\n  \"input\": \"What is Elastic?\"\n}"
+          }
+        ]
       }
     },
     "/_inference/{inference_id}": {
@@ -9815,7 +10055,13 @@
             }
           }
         },
-        "x-state": "Added in 8.16.0"
+        "x-state": "Added in 8.16.0",
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "PUT _inference/completion/alibabacloud_ai_search_completion\n{\n    \"service\": \"alibabacloud-ai-search\",\n    \"service_settings\": {\n        \"host\" : \"default-j01.platform-cn-shanghai.opensearch.aliyuncs.com\",\n        \"api_key\": \"AlibabaCloud-API-Key\",\n        \"service_id\": \"ops-qwen-turbo\",\n        \"workspace\" : \"default\"\n    }\n}"
+          }
+        ]
       }
     },
     "/_inference/{task_type}/{amazonbedrock_inference_id}": {
@@ -9901,7 +10147,13 @@
             }
           }
         },
-        "x-state": "Added in 8.12.0"
+        "x-state": "Added in 8.12.0",
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "PUT _inference/text_embedding/amazon_bedrock_embeddings\n{\n    \"service\": \"amazonbedrock\",\n    \"service_settings\": {\n        \"access_key\": \"AWS-access-key\",\n        \"secret_key\": \"AWS-secret-key\",\n        \"region\": \"us-east-1\",\n        \"provider\": \"amazontitan\",\n        \"model\": \"amazon.titan-embed-text-v2:0\"\n    }\n}"
+          }
+        ]
       }
     },
     "/_inference/{task_type}/{anthropic_inference_id}": {
@@ -9981,7 +10233,13 @@
             }
           }
         },
-        "x-state": "Added in 8.16.0"
+        "x-state": "Added in 8.16.0",
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "PUT _inference/completion/anthropic_completion\n{\n    \"service\": \"anthropic\",\n    \"service_settings\": {\n        \"api_key\": \"Anthropic-Api-Key\",\n        \"model_id\": \"Model-ID\"\n    },\n    \"task_settings\": {\n        \"max_tokens\": 1024\n    }\n}"
+          }
+        ]
       }
     },
     "/_inference/{task_type}/{azureaistudio_inference_id}": {
@@ -10067,7 +10325,13 @@
             }
           }
         },
-        "x-state": "Added in 8.14.0"
+        "x-state": "Added in 8.14.0",
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "PUT _inference/text_embedding/azure_ai_studio_embeddings\n{\n    \"service\": \"azureaistudio\",\n    \"service_settings\": {\n        \"api_key\": \"Azure-AI-Studio-API-key\",\n        \"target\": \"Target-Uri\",\n        \"provider\": \"openai\",\n        \"endpoint_type\": \"token\"\n    }\n}"
+          }
+        ]
       }
     },
     "/_inference/{task_type}/{azureopenai_inference_id}": {
@@ -10153,7 +10417,13 @@
             }
           }
         },
-        "x-state": "Added in 8.14.0"
+        "x-state": "Added in 8.14.0",
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "PUT _inference/text_embedding/azure_openai_embeddings\n{\n    \"service\": \"azureopenai\",\n    \"service_settings\": {\n        \"api_key\": \"Api-Key\",\n        \"resource_name\": \"Resource-name\",\n        \"deployment_id\": \"Deployment-id\",\n        \"api_version\": \"2024-02-01\"\n    }\n}"
+          }
+        ]
       }
     },
     "/_inference/{task_type}/{cohere_inference_id}": {
@@ -10239,7 +10509,13 @@
             }
           }
         },
-        "x-state": "Added in 8.13.0"
+        "x-state": "Added in 8.13.0",
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "PUT _inference/text_embedding/cohere-embeddings\n{\n    \"service\": \"cohere\",\n    \"service_settings\": {\n        \"api_key\": \"Cohere-Api-key\",\n        \"model_id\": \"embed-english-light-v3.0\",\n        \"embedding_type\": \"byte\"\n    }\n}"
+          }
+        ]
       }
     },
     "/_inference/{task_type}/{elasticsearch_inference_id}": {
@@ -10351,7 +10627,13 @@
             }
           }
         },
-        "x-state": "Added in 8.13.0"
+        "x-state": "Added in 8.13.0",
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "PUT _inference/sparse_embedding/my-elser-model\n{\n    \"service\": \"elasticsearch\",\n    \"service_settings\": {\n        \"adaptive_allocations\": { \n        \"enabled\": true,\n        \"min_number_of_allocations\": 1,\n        \"max_number_of_allocations\": 4\n        },\n        \"num_threads\": 1,\n        \"model_id\": \".elser_model_2\" \n    }\n}"
+          }
+        ]
       }
     },
     "/_inference/{task_type}/{elser_inference_id}": {
@@ -10441,7 +10723,13 @@
           }
         },
         "deprecated": true,
-        "x-state": "Added in 8.11.0"
+        "x-state": "Added in 8.11.0",
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "PUT _inference/sparse_embedding/my-elser-model\n{\n    \"service\": \"elser\",\n    \"service_settings\": {\n        \"num_allocations\": 1,\n        \"num_threads\": 1\n    }\n}"
+          }
+        ]
       }
     },
     "/_inference/{task_type}/{googleaistudio_inference_id}": {
@@ -10519,7 +10807,13 @@
             }
           }
         },
-        "x-state": "Added in 8.15.0"
+        "x-state": "Added in 8.15.0",
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "PUT _inference/completion/google_ai_studio_completion\n{\n    \"service\": \"googleaistudio\",\n    \"service_settings\": {\n        \"api_key\": \"api-key\",\n        \"model_id\": \"model-id\"\n    }\n}"
+          }
+        ]
       }
     },
     "/_inference/{task_type}/{googlevertexai_inference_id}": {
@@ -10605,7 +10899,13 @@
             }
           }
         },
-        "x-state": "Added in 8.15.0"
+        "x-state": "Added in 8.15.0",
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "PUT _inference/text_embedding/google_vertex_ai_embeddings\n{\n    \"service\": \"googlevertexai\",\n    \"service_settings\": {\n        \"service_account_json\": \"service-account-json\",\n        \"model_id\": \"model-id\",\n        \"location\": \"location\",\n        \"project_id\": \"project-id\"\n    }\n}"
+          }
+        ]
       }
     },
     "/_inference/{task_type}/{huggingface_inference_id}": {
@@ -10683,7 +10983,13 @@
             }
           }
         },
-        "x-state": "Added in 8.12.0"
+        "x-state": "Added in 8.12.0",
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "PUT _inference/text_embedding/hugging-face-embeddings\n{\n    \"service\": \"hugging_face\",\n    \"service_settings\": {\n        \"api_key\": \"hugging-face-access-token\", \n        \"url\": \"url-endpoint\" \n    }\n}"
+          }
+        ]
       }
     },
     "/_inference/{task_type}/{jinaai_inference_id}": {
@@ -10769,7 +11075,13 @@
             }
           }
         },
-        "x-state": "Added in 8.18.0"
+        "x-state": "Added in 8.18.0",
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "PUT _inference/text_embedding/jinaai-embeddings\n{\n    \"service\": \"jinaai\",\n    \"service_settings\": {\n        \"model_id\": \"jina-embeddings-v3\",\n        \"api_key\": \"JinaAi-Api-key\"\n    }\n}"
+          }
+        ]
       }
     },
     "/_inference/{task_type}/{mistral_inference_id}": {
@@ -10846,7 +11158,13 @@
             }
           }
         },
-        "x-state": "Added in 8.15.0"
+        "x-state": "Added in 8.15.0",
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "PUT _inference/text_embedding/mistral-embeddings-test\n{\n  \"service\": \"mistral\",\n  \"service_settings\": {\n    \"api_key\": \"Mistral-API-Key\",\n    \"model\": \"mistral-embed\" \n  }\n}"
+          }
+        ]
       }
     },
     "/_inference/{task_type}/{openai_inference_id}": {
@@ -10932,7 +11250,13 @@
             }
           }
         },
-        "x-state": "Added in 8.12.0"
+        "x-state": "Added in 8.12.0",
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "PUT _inference/text_embedding/openai-embeddings\n{\n    \"service\": \"openai\",\n    \"service_settings\": {\n        \"api_key\": \"OpenAI-API-Key\",\n        \"model_id\": \"text-embedding-3-small\",\n        \"dimensions\": 128\n    }\n}"
+          }
+        ]
       }
     },
     "/_inference/{task_type}/{voyageai_inference_id}": {
@@ -11018,7 +11342,13 @@
             }
           }
         },
-        "x-state": "Added in 8.19.0"
+        "x-state": "Added in 8.19.0",
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "PUT _inference/text_embedding/voyageai-embeddings\n{\n    \"service\": \"voyageai\",\n    \"service_settings\": {\n        \"model_id\": \"voyage-3-large\",\n        \"dimensions\": 512\n    }\n}"
+          }
+        ]
       }
     },
     "/_inference/{task_type}/{watsonx_inference_id}": {
@@ -11092,7 +11422,13 @@
             }
           }
         },
-        "x-state": "Added in 8.16.0"
+        "x-state": "Added in 8.16.0",
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "PUT _inference/text_embedding/watsonx-embeddings\n{\n  \"service\": \"watsonxai\",\n  \"service_settings\": {\n      \"api_key\": \"Watsonx-API-Key\", \n      \"url\": \"Wastonx-URL\", \n      \"model_id\": \"ibm/slate-30m-english-rtrvr\",\n      \"project_id\": \"IBM-Cloud-ID\", \n      \"api_version\": \"2024-03-14\"\n  }\n}"
+          }
+        ]
       }
     },
     "/_inference/rerank/{inference_id}": {
@@ -11187,7 +11523,13 @@
             }
           }
         },
-        "x-state": "Added in 8.11.0"
+        "x-state": "Added in 8.11.0",
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "POST _inference/rerank/cohere_rerank\n{\n  \"input\": [\"luke\", \"like\", \"leia\", \"chewy\",\"r2d2\", \"star\", \"wars\"],\n  \"query\": \"star wars main character\"\n}"
+          }
+        ]
       }
     },
     "/_inference/sparse_embedding/{inference_id}": {
@@ -11277,7 +11619,13 @@
             }
           }
         },
-        "x-state": "Added in 8.11.0"
+        "x-state": "Added in 8.11.0",
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "POST _inference/sparse_embedding/my-elser-model\n{\n  \"input\": \"The sky above the port was the color of television tuned to a dead channel.\"\n}"
+          }
+        ]
       }
     },
     "/_inference/text_embedding/{inference_id}": {
@@ -11367,7 +11715,13 @@
             }
           }
         },
-        "x-state": "Added in 8.11.0"
+        "x-state": "Added in 8.11.0",
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "POST _inference/text_embedding/my-cohere-endpoint\n{\n  \"input\": \"The sky above the port was the color of television tuned to a dead channel.\",\n  \"task_settings\": {\n    \"input_type\": \"ingest\"\n  }\n}"
+          }
+        ]
       }
     },
     "/": {
@@ -11934,7 +12288,13 @@
             }
           }
         },
-        "x-state": "Added in 7.12.0"
+        "x-state": "Added in 7.12.0",
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "PUT _logstash/pipeline/my_pipeline\n{\n  \"description\": \"Sample pipeline for illustration purposes\",\n  \"last_modified\": \"2021-01-02T02:50:51.250Z\",\n  \"pipeline_metadata\": {\n    \"type\": \"logstash_pipeline\",\n    \"version\": 1\n  },\n  \"username\": \"elastic\",\n  \"pipeline\": \"input {}\\\\n filter { grok {} }\\\\n output {}\",\n  \"pipeline_settings\": {\n    \"pipeline.workers\": 1,\n    \"pipeline.batch.size\": 125,\n    \"pipeline.batch.delay\": 50,\n    \"queue.type\": \"memory\",\n    \"queue.max_bytes\": \"1gb\",\n    \"queue.checkpoint.writes\": 1024\n  }\n}"
+          }
+        ]
       },
       "delete": {
         "tags": [
@@ -12031,7 +12391,13 @@
             "$ref": "#/components/responses/mget-200"
           }
         },
-        "x-state": "Added in 1.3.0"
+        "x-state": "Added in 1.3.0",
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "GET /my-index-000001/_mget\n{\n  \"docs\": [\n    {\n      \"_id\": \"1\"\n    },\n    {\n      \"_id\": \"2\"\n    }\n  ]\n}"
+          }
+        ]
       },
       "post": {
         "tags": [
@@ -12074,7 +12440,13 @@
             "$ref": "#/components/responses/mget-200"
           }
         },
-        "x-state": "Added in 1.3.0"
+        "x-state": "Added in 1.3.0",
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "GET /my-index-000001/_mget\n{\n  \"docs\": [\n    {\n      \"_id\": \"1\"\n    },\n    {\n      \"_id\": \"2\"\n    }\n  ]\n}"
+          }
+        ]
       }
     },
     "/{index}/_mget": {
@@ -12122,7 +12494,13 @@
             "$ref": "#/components/responses/mget-200"
           }
         },
-        "x-state": "Added in 1.3.0"
+        "x-state": "Added in 1.3.0",
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "GET /my-index-000001/_mget\n{\n  \"docs\": [\n    {\n      \"_id\": \"1\"\n    },\n    {\n      \"_id\": \"2\"\n    }\n  ]\n}"
+          }
+        ]
       },
       "post": {
         "tags": [
@@ -12168,7 +12546,13 @@
             "$ref": "#/components/responses/mget-200"
           }
         },
-        "x-state": "Added in 1.3.0"
+        "x-state": "Added in 1.3.0",
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "GET /my-index-000001/_mget\n{\n  \"docs\": [\n    {\n      \"_id\": \"1\"\n    },\n    {\n      \"_id\": \"2\"\n    }\n  ]\n}"
+          }
+        ]
       }
     },
     "/_ml/anomaly_detectors/{job_id}/_close": {
@@ -14001,7 +14385,13 @@
             }
           }
         },
-        "x-state": "Added in 7.7.0"
+        "x-state": "Added in 7.7.0",
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "POST _ml/anomaly_detectors/_estimate_model_memory\n{\n  \"analysis_config\": {\n    \"bucket_span\": \"5m\",\n    \"detectors\": [\n      {\n        \"function\": \"sum\",\n        \"field_name\": \"bytes\",\n        \"by_field_name\": \"status\",\n        \"partition_field_name\": \"app\"\n      }\n    ],\n    \"influencers\": [\n      \"source_ip\",\n      \"dest_ip\"\n    ]\n  },\n  \"overall_cardinality\": {\n    \"status\": 10,\n    \"app\": 50\n  },\n  \"max_bucket_cardinality\": {\n    \"source_ip\": 300,\n    \"dest_ip\": 30\n  }\n}"
+          }
+        ]
       }
     },
     "/_ml/data_frame/_evaluate": {
@@ -14104,7 +14494,13 @@
             }
           }
         },
-        "x-state": "Added in 7.3.0"
+        "x-state": "Added in 7.3.0",
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "POST _ml/data_frame/_evaluate\n{\n  \"index\": \"animal_classification\",\n  \"evaluation\": {\n    \"classification\": {\n      \"actual_field\": \"animal_class\",\n      \"predicted_field\": \"ml.animal_class_prediction\",\n      \"metrics\": {\n        \"multiclass_confusion_matrix\": {}\n      }\n    }\n  }\n}"
+          }
+        ]
       }
     },
     "/_ml/anomaly_detectors/{job_id}/_flush": {
@@ -16915,7 +17311,13 @@
             "$ref": "#/components/responses/msearch_template-200"
           }
         },
-        "x-state": "Added in 5.0.0"
+        "x-state": "Added in 5.0.0",
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "GET my-index/_msearch/template\n{ }\n{ \"id\": \"my-search-template\", \"params\": { \"query_string\": \"hello world\", \"from\": 0, \"size\": 10 }}\n{ }\n{ \"id\": \"my-other-search-template\", \"params\": { \"query_type\": \"match_all\" }}"
+          }
+        ]
       },
       "post": {
         "tags": [
@@ -16952,7 +17354,13 @@
             "$ref": "#/components/responses/msearch_template-200"
           }
         },
-        "x-state": "Added in 5.0.0"
+        "x-state": "Added in 5.0.0",
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "GET my-index/_msearch/template\n{ }\n{ \"id\": \"my-search-template\", \"params\": { \"query_string\": \"hello world\", \"from\": 0, \"size\": 10 }}\n{ }\n{ \"id\": \"my-other-search-template\", \"params\": { \"query_type\": \"match_all\" }}"
+          }
+        ]
       }
     },
     "/{index}/_msearch/template": {
@@ -16994,7 +17402,13 @@
             "$ref": "#/components/responses/msearch_template-200"
           }
         },
-        "x-state": "Added in 5.0.0"
+        "x-state": "Added in 5.0.0",
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "GET my-index/_msearch/template\n{ }\n{ \"id\": \"my-search-template\", \"params\": { \"query_string\": \"hello world\", \"from\": 0, \"size\": 10 }}\n{ }\n{ \"id\": \"my-other-search-template\", \"params\": { \"query_type\": \"match_all\" }}"
+          }
+        ]
       },
       "post": {
         "tags": [
@@ -17034,7 +17448,13 @@
             "$ref": "#/components/responses/msearch_template-200"
           }
         },
-        "x-state": "Added in 5.0.0"
+        "x-state": "Added in 5.0.0",
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "GET my-index/_msearch/template\n{ }\n{ \"id\": \"my-search-template\", \"params\": { \"query_string\": \"hello world\", \"from\": 0, \"size\": 10 }}\n{ }\n{ \"id\": \"my-other-search-template\", \"params\": { \"query_type\": \"match_all\" }}"
+          }
+        ]
       }
     },
     "/_mtermvectors": {
@@ -17090,7 +17510,13 @@
           "200": {
             "$ref": "#/components/responses/mtermvectors-200"
           }
-        }
+        },
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "POST /my-index-000001/_mtermvectors\n{\n  \"docs\": [\n      {\n        \"_id\": \"2\",\n        \"fields\": [\n            \"message\"\n        ],\n        \"term_statistics\": true\n      },\n      {\n        \"_id\": \"1\"\n      }\n  ]\n}"
+          }
+        ]
       },
       "post": {
         "tags": [
@@ -17144,7 +17570,13 @@
           "200": {
             "$ref": "#/components/responses/mtermvectors-200"
           }
-        }
+        },
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "POST /my-index-000001/_mtermvectors\n{\n  \"docs\": [\n      {\n        \"_id\": \"2\",\n        \"fields\": [\n            \"message\"\n        ],\n        \"term_statistics\": true\n      },\n      {\n        \"_id\": \"1\"\n      }\n  ]\n}"
+          }
+        ]
       }
     },
     "/{index}/_mtermvectors": {
@@ -17203,7 +17635,13 @@
           "200": {
             "$ref": "#/components/responses/mtermvectors-200"
           }
-        }
+        },
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "POST /my-index-000001/_mtermvectors\n{\n  \"docs\": [\n      {\n        \"_id\": \"2\",\n        \"fields\": [\n            \"message\"\n        ],\n        \"term_statistics\": true\n      },\n      {\n        \"_id\": \"1\"\n      }\n  ]\n}"
+          }
+        ]
       },
       "post": {
         "tags": [
@@ -17260,7 +17698,13 @@
           "200": {
             "$ref": "#/components/responses/mtermvectors-200"
           }
-        }
+        },
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "POST /my-index-000001/_mtermvectors\n{\n  \"docs\": [\n      {\n        \"_id\": \"2\",\n        \"fields\": [\n            \"message\"\n        ],\n        \"term_statistics\": true\n      },\n      {\n        \"_id\": \"1\"\n      }\n  ]\n}"
+          }
+        ]
       }
     },
     "/{index}/_pit": {
@@ -17437,7 +17881,13 @@
           "200": {
             "$ref": "#/components/responses/put_script-200"
           }
-        }
+        },
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "PUT _scripts/my-search-template\n{\n  \"script\": {\n    \"lang\": \"mustache\",\n    \"source\": {\n      \"query\": {\n        \"match\": {\n          \"message\": \"{{query_string}}\"\n        }\n      },\n      \"from\": \"{{from}}\",\n      \"size\": \"{{size}}\"\n    }\n  }\n}"
+          }
+        ]
       },
       "post": {
         "tags": [
@@ -17473,7 +17923,13 @@
           "200": {
             "$ref": "#/components/responses/put_script-200"
           }
-        }
+        },
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "PUT _scripts/my-search-template\n{\n  \"script\": {\n    \"lang\": \"mustache\",\n    \"source\": {\n      \"query\": {\n        \"match\": {\n          \"message\": \"{{query_string}}\"\n        }\n      },\n      \"from\": \"{{from}}\",\n      \"size\": \"{{size}}\"\n    }\n  }\n}"
+          }
+        ]
       }
     },
     "/_query_rules/{ruleset_id}/_rule/{rule_id}": {
@@ -17628,7 +18084,13 @@
             }
           }
         },
-        "x-state": "Added in 8.15.0"
+        "x-state": "Added in 8.15.0",
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "POST _query_rules/my-ruleset/_test\n{\n  \"match_criteria\": {\n    \"query_string\": \"puggles\"\n  }\n}"
+          }
+        ]
       },
       "delete": {
         "tags": [
@@ -17794,7 +18256,13 @@
             }
           }
         },
-        "x-state": "Added in 8.10.0"
+        "x-state": "Added in 8.10.0",
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "PUT _query_rules/my-ruleset\n{\n    \"rules\": [\n        {\n            \"rule_id\": \"my-rule1\",\n            \"type\": \"pinned\",\n            \"criteria\": [\n                {\n                    \"type\": \"contains\",\n                    \"metadata\": \"user_query\",\n                    \"values\": [ \"pugs\", \"puggles\" ]\n                },\n                {\n                    \"type\": \"exact\",\n                    \"metadata\": \"user_country\",\n                    \"values\": [ \"us\" ]\n                }\n            ],\n            \"actions\": {\n                \"ids\": [\n                    \"id1\",\n                    \"id2\"\n                ]\n            }\n        },\n        {\n            \"rule_id\": \"my-rule2\",\n            \"type\": \"pinned\",\n            \"criteria\": [\n                {\n                    \"type\": \"fuzzy\",\n                    \"metadata\": \"user_query\",\n                    \"values\": [ \"rescue dogs\" ]\n                }\n            ],\n            \"actions\": {\n                \"docs\": [\n                    {\n                        \"_index\": \"index1\",\n                        \"_id\": \"id3\"\n                    },\n                    {\n                        \"_index\": \"index2\",\n                        \"_id\": \"id4\"\n                    }\n                ]\n            }\n        }\n    ]\n}"
+          }
+        ]
       },
       "delete": {
         "tags": [
@@ -17979,7 +18447,13 @@
             }
           }
         },
-        "x-state": "Added in 8.10.0"
+        "x-state": "Added in 8.10.0",
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "PUT _query_rules/my-ruleset\n{\n    \"rules\": [\n        {\n            \"rule_id\": \"my-rule1\",\n            \"type\": \"pinned\",\n            \"criteria\": [\n                {\n                    \"type\": \"contains\",\n                    \"metadata\": \"user_query\",\n                    \"values\": [ \"pugs\", \"puggles\" ]\n                },\n                {\n                    \"type\": \"exact\",\n                    \"metadata\": \"user_country\",\n                    \"values\": [ \"us\" ]\n                }\n            ],\n            \"actions\": {\n                \"ids\": [\n                    \"id1\",\n                    \"id2\"\n                ]\n            }\n        },\n        {\n            \"rule_id\": \"my-rule2\",\n            \"type\": \"pinned\",\n            \"criteria\": [\n                {\n                    \"type\": \"fuzzy\",\n                    \"metadata\": \"user_query\",\n                    \"values\": [ \"rescue dogs\" ]\n                }\n            ],\n            \"actions\": {\n                \"docs\": [\n                    {\n                        \"_index\": \"index1\",\n                        \"_id\": \"id3\"\n                    },\n                    {\n                        \"_index\": \"index2\",\n                        \"_id\": \"id4\"\n                    }\n                ]\n            }\n        }\n    ]\n}"
+          }
+        ]
       }
     },
     "/_rank_eval": {
@@ -18383,7 +18857,13 @@
             }
           }
         },
-        "x-state": "Added in 2.3.0"
+        "x-state": "Added in 2.3.0",
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "POST _reindex\n{\n  \"source\": {\n    \"index\": [\"my-index-000001\", \"my-index-000002\"]\n  },\n  \"dest\": {\n    \"index\": \"my-new-index-000002\"\n  }\n}"
+          }
+        ]
       }
     },
     "/_render/template": {
@@ -18401,7 +18881,13 @@
           "200": {
             "$ref": "#/components/responses/render_search_template-200"
           }
-        }
+        },
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "POST _render/template\n{\n  \"id\": \"my-search-template\",\n  \"params\": {\n    \"query_string\": \"hello world\",\n    \"from\": 20,\n    \"size\": 10\n  }\n}"
+          }
+        ]
       },
       "post": {
         "tags": [
@@ -18417,7 +18903,13 @@
           "200": {
             "$ref": "#/components/responses/render_search_template-200"
           }
-        }
+        },
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "POST _render/template\n{\n  \"id\": \"my-search-template\",\n  \"params\": {\n    \"query_string\": \"hello world\",\n    \"from\": 20,\n    \"size\": 10\n  }\n}"
+          }
+        ]
       }
     },
     "/_render/template/{id}": {
@@ -18440,7 +18932,13 @@
           "200": {
             "$ref": "#/components/responses/render_search_template-200"
           }
-        }
+        },
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "POST _render/template\n{\n  \"id\": \"my-search-template\",\n  \"params\": {\n    \"query_string\": \"hello world\",\n    \"from\": 20,\n    \"size\": 10\n  }\n}"
+          }
+        ]
       },
       "post": {
         "tags": [
@@ -18461,7 +18959,13 @@
           "200": {
             "$ref": "#/components/responses/render_search_template-200"
           }
-        }
+        },
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "POST _render/template\n{\n  \"id\": \"my-search-template\",\n  \"params\": {\n    \"query_string\": \"hello world\",\n    \"from\": 20,\n    \"size\": 10\n  }\n}"
+          }
+        ]
       }
     },
     "/_scripts/painless/_execute": {
@@ -18480,7 +18984,13 @@
             "$ref": "#/components/responses/scripts_painless_execute-200"
           }
         },
-        "x-state": "Technical preview"
+        "x-state": "Technical preview",
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "POST /_scripts/painless/_execute\n{\n  \"script\": {\n    \"source\": \"params.count / params.total\",\n    \"params\": {\n      \"count\": 100.0,\n      \"total\": 1000.0\n    }\n  }\n}"
+          }
+        ]
       },
       "post": {
         "tags": [
@@ -18497,7 +19007,13 @@
             "$ref": "#/components/responses/scripts_painless_execute-200"
           }
         },
-        "x-state": "Technical preview"
+        "x-state": "Technical preview",
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "POST /_scripts/painless/_execute\n{\n  \"script\": {\n    \"source\": \"params.count / params.total\",\n    \"params\": {\n      \"count\": 100.0,\n      \"total\": 1000.0\n    }\n  }\n}"
+          }
+        ]
       }
     },
     "/_search": {
@@ -18649,7 +19165,13 @@
           "200": {
             "$ref": "#/components/responses/search-200"
           }
-        }
+        },
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "GET /my-index-000001/_search?from=40&size=20\n{\n  \"query\": {\n    \"term\": {\n      \"user.id\": \"kimchy\"\n    }\n  }\n}"
+          }
+        ]
       },
       "post": {
         "tags": [
@@ -18799,7 +19321,13 @@
           "200": {
             "$ref": "#/components/responses/search-200"
           }
-        }
+        },
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "GET /my-index-000001/_search?from=40&size=20\n{\n  \"query\": {\n    \"term\": {\n      \"user.id\": \"kimchy\"\n    }\n  }\n}"
+          }
+        ]
       }
     },
     "/{index}/_search": {
@@ -18954,7 +19482,13 @@
           "200": {
             "$ref": "#/components/responses/search-200"
           }
-        }
+        },
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "GET /my-index-000001/_search?from=40&size=20\n{\n  \"query\": {\n    \"term\": {\n      \"user.id\": \"kimchy\"\n    }\n  }\n}"
+          }
+        ]
       },
       "post": {
         "tags": [
@@ -19107,7 +19641,13 @@
           "200": {
             "$ref": "#/components/responses/search-200"
           }
-        }
+        },
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "GET /my-index-000001/_search?from=40&size=20\n{\n  \"query\": {\n    \"term\": {\n      \"user.id\": \"kimchy\"\n    }\n  }\n}"
+          }
+        ]
       }
     },
     "/_application/search_application/{name}": {
@@ -19215,7 +19755,13 @@
             }
           }
         },
-        "x-beta": true
+        "x-beta": true,
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "PUT _application/search_application/my-app\n{\n  \"indices\": [ \"index1\", \"index2\" ],\n  \"template\": {\n    \"script\": {\n      \"source\": {\n        \"query\": {\n          \"query_string\": {\n            \"query\": \"{{query_string}}\",\n            \"default_field\": \"{{default_field}}\"\n          }\n        }\n      },\n      \"params\": {\n        \"query_string\": \"*\",\n        \"default_field\": \"*\"\n      }\n    },\n    \"dictionary\": {\n      \"properties\": {\n        \"query_string\": {\n          \"type\": \"string\"\n        },\n        \"default_field\": {\n          \"type\": \"string\",\n          \"enum\": [\n            \"title\",\n            \"description\"\n          ]\n        },\n        \"additionalProperties\": false\n      },\n      \"required\": [\n        \"query_string\"\n      ]\n    }\n  }\n}"
+          }
+        ]
       },
       "delete": {
         "tags": [
@@ -19458,7 +20004,13 @@
             "$ref": "#/components/responses/search_application.search-200"
           }
         },
-        "x-beta": true
+        "x-beta": true,
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "POST _application/search_application/my-app/_search\n{\n  \"params\": {\n    \"query_string\": \"my first query\",\n    \"text_fields\": [\n      {\"name\": \"title\", \"boost\": 5},\n      {\"name\": \"description\", \"boost\": 1}\n    ]\n  }\n}"
+          }
+        ]
       },
       "post": {
         "tags": [
@@ -19483,7 +20035,13 @@
             "$ref": "#/components/responses/search_application.search-200"
           }
         },
-        "x-beta": true
+        "x-beta": true,
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "POST _application/search_application/my-app/_search\n{\n  \"params\": {\n    \"query_string\": \"my first query\",\n    \"text_fields\": [\n      {\"name\": \"title\", \"boost\": 5},\n      {\"name\": \"description\", \"boost\": 1}\n    ]\n  }\n}"
+          }
+        ]
       }
     },
     "/{index}/_mvt/{field}/{zoom}/{x}/{y}": {
@@ -19543,7 +20101,13 @@
             "$ref": "#/components/responses/search_mvt-200"
           }
         },
-        "x-state": "Added in 7.15.0"
+        "x-state": "Added in 7.15.0",
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "GET museums/_mvt/location/13/4207/2692\n{\n  \"grid_agg\": \"geotile\",\n  \"grid_precision\": 2,\n  \"fields\": [\n    \"name\",\n    \"price\"\n  ],\n  \"query\": {\n    \"term\": {\n      \"included\": true\n    }\n  },\n  \"aggs\": {\n    \"min_price\": {\n      \"min\": {\n        \"field\": \"price\"\n      }\n    },\n    \"max_price\": {\n      \"max\": {\n        \"field\": \"price\"\n      }\n    },\n    \"avg_price\": {\n      \"avg\": {\n        \"field\": \"price\"\n      }\n    }\n  }\n}"
+          }
+        ]
       },
       "post": {
         "tags": [
@@ -19601,7 +20165,13 @@
             "$ref": "#/components/responses/search_mvt-200"
           }
         },
-        "x-state": "Added in 7.15.0"
+        "x-state": "Added in 7.15.0",
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "GET museums/_mvt/location/13/4207/2692\n{\n  \"grid_agg\": \"geotile\",\n  \"grid_precision\": 2,\n  \"fields\": [\n    \"name\",\n    \"price\"\n  ],\n  \"query\": {\n    \"term\": {\n      \"included\": true\n    }\n  },\n  \"aggs\": {\n    \"min_price\": {\n      \"min\": {\n        \"field\": \"price\"\n      }\n    },\n    \"max_price\": {\n      \"max\": {\n        \"field\": \"price\"\n      }\n    },\n    \"avg_price\": {\n      \"avg\": {\n        \"field\": \"price\"\n      }\n    }\n  }\n}"
+          }
+        ]
       }
     },
     "/_search/template": {
@@ -19663,7 +20233,13 @@
             "$ref": "#/components/responses/search_template-200"
           }
         },
-        "x-state": "Added in 2.0.0"
+        "x-state": "Added in 2.0.0",
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "GET my-index/_search/template\n{\n  \"id\": \"my-search-template\",\n  \"params\": {\n    \"query_string\": \"hello world\",\n    \"from\": 0,\n    \"size\": 10\n  }\n}"
+          }
+        ]
       },
       "post": {
         "tags": [
@@ -19723,7 +20299,13 @@
             "$ref": "#/components/responses/search_template-200"
           }
         },
-        "x-state": "Added in 2.0.0"
+        "x-state": "Added in 2.0.0",
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "GET my-index/_search/template\n{\n  \"id\": \"my-search-template\",\n  \"params\": {\n    \"query_string\": \"hello world\",\n    \"from\": 0,\n    \"size\": 10\n  }\n}"
+          }
+        ]
       }
     },
     "/{index}/_search/template": {
@@ -19788,7 +20370,13 @@
             "$ref": "#/components/responses/search_template-200"
           }
         },
-        "x-state": "Added in 2.0.0"
+        "x-state": "Added in 2.0.0",
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "GET my-index/_search/template\n{\n  \"id\": \"my-search-template\",\n  \"params\": {\n    \"query_string\": \"hello world\",\n    \"from\": 0,\n    \"size\": 10\n  }\n}"
+          }
+        ]
       },
       "post": {
         "tags": [
@@ -19851,7 +20439,13 @@
             "$ref": "#/components/responses/search_template-200"
           }
         },
-        "x-state": "Added in 2.0.0"
+        "x-state": "Added in 2.0.0",
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "GET my-index/_search/template\n{\n  \"id\": \"my-search-template\",\n  \"params\": {\n    \"query_string\": \"hello world\",\n    \"from\": 0,\n    \"size\": 10\n  }\n}"
+          }
+        ]
       }
     },
     "/_security/_authenticate": {
@@ -20096,7 +20690,13 @@
             "$ref": "#/components/responses/security.create_api_key-200"
           }
         },
-        "x-state": "Added in 6.7.0"
+        "x-state": "Added in 6.7.0",
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "POST /_security/api_key\n{\n  \"name\": \"my-api-key\",\n  \"expiration\": \"1d\",   \n  \"role_descriptors\": { \n    \"role-a\": {\n      \"cluster\": [\"all\"],\n      \"indices\": [\n        {\n          \"names\": [\"index-a*\"],\n          \"privileges\": [\"read\"]\n        }\n      ]\n    },\n    \"role-b\": {\n      \"cluster\": [\"all\"],\n      \"indices\": [\n        {\n          \"names\": [\"index-b*\"],\n          \"privileges\": [\"all\"]\n        }\n      ]\n    }\n  },\n  \"metadata\": {\n    \"application\": \"my-application\",\n    \"environment\": {\n      \"level\": 1,\n      \"trusted\": true,\n      \"tags\": [\"dev\", \"staging\"]\n    }\n  }\n}"
+          }
+        ]
       },
       "post": {
         "tags": [
@@ -20121,7 +20721,13 @@
             "$ref": "#/components/responses/security.create_api_key-200"
           }
         },
-        "x-state": "Added in 6.7.0"
+        "x-state": "Added in 6.7.0",
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "POST /_security/api_key\n{\n  \"name\": \"my-api-key\",\n  \"expiration\": \"1d\",   \n  \"role_descriptors\": { \n    \"role-a\": {\n      \"cluster\": [\"all\"],\n      \"indices\": [\n        {\n          \"names\": [\"index-a*\"],\n          \"privileges\": [\"read\"]\n        }\n      ]\n    },\n    \"role-b\": {\n      \"cluster\": [\"all\"],\n      \"indices\": [\n        {\n          \"names\": [\"index-b*\"],\n          \"privileges\": [\"all\"]\n        }\n      ]\n    }\n  },\n  \"metadata\": {\n    \"application\": \"my-application\",\n    \"environment\": {\n      \"level\": 1,\n      \"trusted\": true,\n      \"tags\": [\"dev\", \"staging\"]\n    }\n  }\n}"
+          }
+        ]
       },
       "delete": {
         "tags": [
@@ -20248,7 +20854,13 @@
             }
           }
         },
-        "x-state": "Added in 6.7.0"
+        "x-state": "Added in 6.7.0",
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "DELETE /_security/api_key\n{\n  \"ids\" : [ \"VuaCfGcBCdbkQm-e5aOx\" ]\n}"
+          }
+        ]
       }
     },
     "/_security/role/{name}": {
@@ -20295,7 +20907,13 @@
           "200": {
             "$ref": "#/components/responses/security.put_role-200"
           }
-        }
+        },
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "POST /_security/role/my_admin_role\n{\n  \"description\": \"Grants full access to all management features within the cluster.\",\n  \"cluster\": [\"all\"],\n  \"indices\": [\n    {\n      \"names\": [ \"index1\", \"index2\" ],\n      \"privileges\": [\"all\"],\n      \"field_security\" : { // optional\n        \"grant\" : [ \"title\", \"body\" ]\n      },\n      \"query\": \"{\\\"match\\\": {\\\"title\\\": \\\"foo\\\"}}\" // optional\n    }\n  ],\n  \"applications\": [\n    {\n      \"application\": \"myapp\",\n      \"privileges\": [ \"admin\", \"read\" ],\n      \"resources\": [ \"*\" ]\n    }\n  ],\n  \"run_as\": [ \"other_user\" ], // optional\n  \"metadata\" : { // optional\n    \"version\" : 1\n  }\n}"
+          }
+        ]
       },
       "post": {
         "tags": [
@@ -20322,7 +20940,13 @@
           "200": {
             "$ref": "#/components/responses/security.put_role-200"
           }
-        }
+        },
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "POST /_security/role/my_admin_role\n{\n  \"description\": \"Grants full access to all management features within the cluster.\",\n  \"cluster\": [\"all\"],\n  \"indices\": [\n    {\n      \"names\": [ \"index1\", \"index2\" ],\n      \"privileges\": [\"all\"],\n      \"field_security\" : { // optional\n        \"grant\" : [ \"title\", \"body\" ]\n      },\n      \"query\": \"{\\\"match\\\": {\\\"title\\\": \\\"foo\\\"}}\" // optional\n    }\n  ],\n  \"applications\": [\n    {\n      \"application\": \"myapp\",\n      \"privileges\": [ \"admin\", \"read\" ],\n      \"resources\": [ \"*\" ]\n    }\n  ],\n  \"run_as\": [ \"other_user\" ], // optional\n  \"metadata\" : { // optional\n    \"version\" : 1\n  }\n}"
+          }
+        ]
       },
       "delete": {
         "tags": [
@@ -20469,7 +21093,13 @@
             "$ref": "#/components/responses/security.has_privileges-200"
           }
         },
-        "x-state": "Added in 6.4.0"
+        "x-state": "Added in 6.4.0",
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "GET /_security/user/_has_privileges\n{\n  \"cluster\": [ \"monitor\", \"manage\" ],\n  \"index\" : [\n    {\n      \"names\": [ \"suppliers\", \"products\" ],\n      \"privileges\": [ \"read\" ]\n    },\n    {\n      \"names\": [ \"inventory\" ],\n      \"privileges\" : [ \"read\", \"write\" ]\n    }\n  ],\n  \"application\": [\n    {\n      \"application\": \"inventory_manager\",\n      \"privileges\" : [ \"read\", \"data:write/inventory\" ],\n      \"resources\" : [ \"product/1852563\" ]\n    }\n  ]\n}"
+          }
+        ]
       },
       "post": {
         "tags": [
@@ -20489,7 +21119,13 @@
             "$ref": "#/components/responses/security.has_privileges-200"
           }
         },
-        "x-state": "Added in 6.4.0"
+        "x-state": "Added in 6.4.0",
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "GET /_security/user/_has_privileges\n{\n  \"cluster\": [ \"monitor\", \"manage\" ],\n  \"index\" : [\n    {\n      \"names\": [ \"suppliers\", \"products\" ],\n      \"privileges\": [ \"read\" ]\n    },\n    {\n      \"names\": [ \"inventory\" ],\n      \"privileges\" : [ \"read\", \"write\" ]\n    }\n  ],\n  \"application\": [\n    {\n      \"application\": \"inventory_manager\",\n      \"privileges\" : [ \"read\", \"data:write/inventory\" ],\n      \"resources\" : [ \"product/1852563\" ]\n    }\n  ]\n}"
+          }
+        ]
       }
     },
     "/_security/user/{user}/_has_privileges": {
@@ -20516,7 +21152,13 @@
             "$ref": "#/components/responses/security.has_privileges-200"
           }
         },
-        "x-state": "Added in 6.4.0"
+        "x-state": "Added in 6.4.0",
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "GET /_security/user/_has_privileges\n{\n  \"cluster\": [ \"monitor\", \"manage\" ],\n  \"index\" : [\n    {\n      \"names\": [ \"suppliers\", \"products\" ],\n      \"privileges\": [ \"read\" ]\n    },\n    {\n      \"names\": [ \"inventory\" ],\n      \"privileges\" : [ \"read\", \"write\" ]\n    }\n  ],\n  \"application\": [\n    {\n      \"application\": \"inventory_manager\",\n      \"privileges\" : [ \"read\", \"data:write/inventory\" ],\n      \"resources\" : [ \"product/1852563\" ]\n    }\n  ]\n}"
+          }
+        ]
       },
       "post": {
         "tags": [
@@ -20541,7 +21183,13 @@
             "$ref": "#/components/responses/security.has_privileges-200"
           }
         },
-        "x-state": "Added in 6.4.0"
+        "x-state": "Added in 6.4.0",
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "GET /_security/user/_has_privileges\n{\n  \"cluster\": [ \"monitor\", \"manage\" ],\n  \"index\" : [\n    {\n      \"names\": [ \"suppliers\", \"products\" ],\n      \"privileges\": [ \"read\" ]\n    },\n    {\n      \"names\": [ \"inventory\" ],\n      \"privileges\" : [ \"read\", \"write\" ]\n    }\n  ],\n  \"application\": [\n    {\n      \"application\": \"inventory_manager\",\n      \"privileges\" : [ \"read\", \"data:write/inventory\" ],\n      \"resources\" : [ \"product/1852563\" ]\n    }\n  ]\n}"
+          }
+        ]
       }
     },
     "/_security/_query/api_key": {
@@ -20571,7 +21219,13 @@
             "$ref": "#/components/responses/security.query_api_keys-200"
           }
         },
-        "x-state": "Added in 7.15.0"
+        "x-state": "Added in 7.15.0",
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "GET /_security/_query/api_key?with_limited_by=true\n{\n  \"query\": {\n    \"ids\": {\n      \"values\": [\n        \"VuaCfGcBCdbkQm-e5aOx\"\n      ]\n    }\n  }\n}"
+          }
+        ]
       },
       "post": {
         "tags": [
@@ -20599,7 +21253,13 @@
             "$ref": "#/components/responses/security.query_api_keys-200"
           }
         },
-        "x-state": "Added in 7.15.0"
+        "x-state": "Added in 7.15.0",
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "GET /_security/_query/api_key?with_limited_by=true\n{\n  \"query\": {\n    \"ids\": {\n      \"values\": [\n        \"VuaCfGcBCdbkQm-e5aOx\"\n      ]\n    }\n  }\n}"
+          }
+        ]
       }
     },
     "/_security/_query/role": {
@@ -20618,7 +21278,13 @@
             "$ref": "#/components/responses/security.query_role-200"
           }
         },
-        "x-state": "Added in 8.15.0"
+        "x-state": "Added in 8.15.0",
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "POST /_security/_query/role\n{\n    \"sort\": [\"name\"]\n}"
+          }
+        ]
       },
       "post": {
         "tags": [
@@ -20635,7 +21301,13 @@
             "$ref": "#/components/responses/security.query_role-200"
           }
         },
-        "x-state": "Added in 8.15.0"
+        "x-state": "Added in 8.15.0",
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "POST /_security/_query/role\n{\n    \"sort\": [\"name\"]\n}"
+          }
+        ]
       }
     },
     "/_security/api_key/{id}": {
@@ -20723,7 +21395,13 @@
             }
           }
         },
-        "x-state": "Added in 8.4.0"
+        "x-state": "Added in 8.4.0",
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "PUT /_security/api_key/VuaCfGcBCdbkQm-e5aOx\n{\n  \"role_descriptors\": {\n    \"role-a\": {\n      \"indices\": [\n        {\n          \"names\": [\"*\"],\n          \"privileges\": [\"write\"]\n        }\n      ]\n    }\n  },\n  \"metadata\": {\n    \"environment\": {\n      \"level\": 2,\n      \"trusted\": true,\n      \"tags\": [\"production\"]\n    }\n  }\n}"
+          }
+        ]
       }
     },
     "/_sql/close": {
@@ -20778,7 +21456,13 @@
             }
           }
         },
-        "x-state": "Added in 6.3.0"
+        "x-state": "Added in 6.3.0",
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "POST _sql/close\n{\n  \"cursor\": \"sDXF1ZXJ5QW5kRmV0Y2gBAAAAAAAAAAEWYUpOYklQMHhRUEtld3RsNnFtYU1hQQ==:BAFmBGRhdGUBZgVsaWtlcwFzB21lc3NhZ2UBZgR1c2Vy9f///w8=\"\n}"
+          }
+        ]
       }
     },
     "/_sql/async/delete/{id}": {
@@ -21017,7 +21701,13 @@
             "$ref": "#/components/responses/sql.query-200"
           }
         },
-        "x-state": "Added in 6.3.0"
+        "x-state": "Added in 6.3.0",
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "POST _sql?format=txt\n{\n  \"query\": \"SELECT * FROM library ORDER BY page_count DESC LIMIT 5\"\n}"
+          }
+        ]
       },
       "post": {
         "tags": [
@@ -21039,7 +21729,13 @@
             "$ref": "#/components/responses/sql.query-200"
           }
         },
-        "x-state": "Added in 6.3.0"
+        "x-state": "Added in 6.3.0",
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "POST _sql?format=txt\n{\n  \"query\": \"SELECT * FROM library ORDER BY page_count DESC LIMIT 5\"\n}"
+          }
+        ]
       }
     },
     "/_sql/translate": {
@@ -21619,7 +22315,13 @@
             "$ref": "#/components/responses/terms_enum-200"
           }
         },
-        "x-state": "Added in 7.14.0"
+        "x-state": "Added in 7.14.0",
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "POST stackoverflow/_terms_enum\n{\n    \"field\" : \"tags\",\n    \"string\" : \"kiba\"\n}"
+          }
+        ]
       },
       "post": {
         "tags": [
@@ -21641,7 +22343,13 @@
             "$ref": "#/components/responses/terms_enum-200"
           }
         },
-        "x-state": "Added in 7.14.0"
+        "x-state": "Added in 7.14.0",
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "POST stackoverflow/_terms_enum\n{\n    \"field\" : \"tags\",\n    \"string\" : \"kiba\"\n}"
+          }
+        ]
       }
     },
     "/{index}/_termvectors/{id}": {
@@ -21700,7 +22408,13 @@
           "200": {
             "$ref": "#/components/responses/termvectors-200"
           }
-        }
+        },
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "GET /my-index-000001/_termvectors/1\n{\n  \"fields\" : [\"text\"],\n  \"offsets\" : true,\n  \"payloads\" : true,\n  \"positions\" : true,\n  \"term_statistics\" : true,\n  \"field_statistics\" : true\n}"
+          }
+        ]
       },
       "post": {
         "tags": [
@@ -21757,7 +22471,13 @@
           "200": {
             "$ref": "#/components/responses/termvectors-200"
           }
-        }
+        },
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "GET /my-index-000001/_termvectors/1\n{\n  \"fields\" : [\"text\"],\n  \"offsets\" : true,\n  \"payloads\" : true,\n  \"positions\" : true,\n  \"term_statistics\" : true,\n  \"field_statistics\" : true\n}"
+          }
+        ]
       }
     },
     "/{index}/_termvectors": {
@@ -21813,7 +22533,13 @@
           "200": {
             "$ref": "#/components/responses/termvectors-200"
           }
-        }
+        },
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "GET /my-index-000001/_termvectors/1\n{\n  \"fields\" : [\"text\"],\n  \"offsets\" : true,\n  \"payloads\" : true,\n  \"positions\" : true,\n  \"term_statistics\" : true,\n  \"field_statistics\" : true\n}"
+          }
+        ]
       },
       "post": {
         "tags": [
@@ -21867,7 +22593,13 @@
           "200": {
             "$ref": "#/components/responses/termvectors-200"
           }
-        }
+        },
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "GET /my-index-000001/_termvectors/1\n{\n  \"fields\" : [\"text\"],\n  \"offsets\" : true,\n  \"payloads\" : true,\n  \"positions\" : true,\n  \"term_statistics\" : true,\n  \"field_statistics\" : true\n}"
+          }
+        ]
       }
     },
     "/_transform/{transform_id}": {
@@ -22019,7 +22751,13 @@
             }
           }
         },
-        "x-state": "Added in 7.2.0"
+        "x-state": "Added in 7.2.0",
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "PUT _transform/ecommerce_transform1\n{\n  \"source\": {\n    \"index\": \"kibana_sample_data_ecommerce\",\n    \"query\": {\n      \"term\": {\n        \"geoip.continent_name\": {\n          \"value\": \"Asia\"\n        }\n      }\n    }\n  },\n  \"pivot\": {\n    \"group_by\": {\n      \"customer_id\": {\n        \"terms\": {\n          \"field\": \"customer_id\",\n          \"missing_bucket\": true\n        }\n      }\n    },\n    \"aggregations\": {\n      \"max_price\": {\n        \"max\": {\n          \"field\": \"taxful_total_price\"\n        }\n      }\n    }\n  },\n  \"description\": \"Maximum priced ecommerce data by customer_id in Asia\",\n  \"dest\": {\n    \"index\": \"kibana_sample_data_ecommerce_transform1\",\n    \"pipeline\": \"add_timestamp_pipeline\"\n  },\n  \"frequency\": \"5m\",\n  \"sync\": {\n    \"time\": {\n      \"field\": \"order_date\",\n      \"delay\": \"60s\"\n    }\n  },\n  \"retention_policy\": {\n    \"time\": {\n      \"field\": \"order_date\",\n      \"max_age\": \"30d\"\n    }\n  }\n}"
+          }
+        ]
       },
       "delete": {
         "tags": [
@@ -22242,7 +22980,13 @@
             "$ref": "#/components/responses/transform.preview_transform-200"
           }
         },
-        "x-state": "Added in 7.2.0"
+        "x-state": "Added in 7.2.0",
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "POST _transform/_preview\n{\n  \"source\": {\n    \"index\": \"kibana_sample_data_ecommerce\"\n  },\n  \"pivot\": {\n    \"group_by\": {\n      \"customer_id\": {\n        \"terms\": {\n          \"field\": \"customer_id\",\n          \"missing_bucket\": true\n        }\n      }\n    },\n    \"aggregations\": {\n      \"max_price\": {\n        \"max\": {\n          \"field\": \"taxful_total_price\"\n        }\n      }\n    }\n  }\n}"
+          }
+        ]
       },
       "post": {
         "tags": [
@@ -22267,7 +23011,13 @@
             "$ref": "#/components/responses/transform.preview_transform-200"
           }
         },
-        "x-state": "Added in 7.2.0"
+        "x-state": "Added in 7.2.0",
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "POST _transform/_preview\n{\n  \"source\": {\n    \"index\": \"kibana_sample_data_ecommerce\"\n  },\n  \"pivot\": {\n    \"group_by\": {\n      \"customer_id\": {\n        \"terms\": {\n          \"field\": \"customer_id\",\n          \"missing_bucket\": true\n        }\n      }\n    },\n    \"aggregations\": {\n      \"max_price\": {\n        \"max\": {\n          \"field\": \"taxful_total_price\"\n        }\n      }\n    }\n  }\n}"
+          }
+        ]
       }
     },
     "/_transform/_preview": {
@@ -22291,7 +23041,13 @@
             "$ref": "#/components/responses/transform.preview_transform-200"
           }
         },
-        "x-state": "Added in 7.2.0"
+        "x-state": "Added in 7.2.0",
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "POST _transform/_preview\n{\n  \"source\": {\n    \"index\": \"kibana_sample_data_ecommerce\"\n  },\n  \"pivot\": {\n    \"group_by\": {\n      \"customer_id\": {\n        \"terms\": {\n          \"field\": \"customer_id\",\n          \"missing_bucket\": true\n        }\n      }\n    },\n    \"aggregations\": {\n      \"max_price\": {\n        \"max\": {\n          \"field\": \"taxful_total_price\"\n        }\n      }\n    }\n  }\n}"
+          }
+        ]
       },
       "post": {
         "tags": [
@@ -22313,7 +23069,13 @@
             "$ref": "#/components/responses/transform.preview_transform-200"
           }
         },
-        "x-state": "Added in 7.2.0"
+        "x-state": "Added in 7.2.0",
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "POST _transform/_preview\n{\n  \"source\": {\n    \"index\": \"kibana_sample_data_ecommerce\"\n  },\n  \"pivot\": {\n    \"group_by\": {\n      \"customer_id\": {\n        \"terms\": {\n          \"field\": \"customer_id\",\n          \"missing_bucket\": true\n        }\n      }\n    },\n    \"aggregations\": {\n      \"max_price\": {\n        \"max\": {\n          \"field\": \"taxful_total_price\"\n        }\n      }\n    }\n  }\n}"
+          }
+        ]
       }
     },
     "/_transform/{transform_id}/_reset": {
@@ -22748,7 +23510,13 @@
             }
           }
         },
-        "x-state": "Added in 7.2.0"
+        "x-state": "Added in 7.2.0",
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "POST _transform/simple-kibana-ecomm-pivot/_update\n{\n  \"source\": {\n    \"index\": \"kibana_sample_data_ecommerce\",\n    \"query\": {\n      \"term\": {\n        \"geoip.continent_name\": {\n          \"value\": \"Asia\"\n        }\n      }\n    }\n  },\n  \"pivot\": {\n    \"group_by\": {\n      \"customer_id\": {\n        \"terms\": {\n          \"field\": \"customer_id\",\n          \"missing_bucket\": true\n        }\n      }\n    },\n    \"aggregations\": {\n      \"max_price\": {\n        \"max\": {\n          \"field\": \"taxful_total_price\"\n        }\n      }\n    }\n  },\n  \"description\": \"Maximum priced ecommerce data by customer_id in Asia\",\n  \"dest\": {\n    \"index\": \"kibana_sample_data_ecommerce_transform1\",\n    \"pipeline\": \"add_timestamp_pipeline\"\n  },\n  \"frequency\": \"5m\",\n  \"sync\": {\n    \"time\": {\n      \"field\": \"order_date\",\n      \"delay\": \"60s\"\n    }\n  },\n  \"retention_policy\": {\n    \"time\": {\n      \"field\": \"order_date\",\n      \"max_age\": \"30d\"\n    }\n  }\n}"
+          }
+        ]
       }
     },
     "/{index}/_update/{id}": {
@@ -23026,7 +23794,13 @@
               }
             }
           }
-        }
+        },
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "POST test/_update/1\n{\n  \"script\" : {\n    \"source\": \"ctx._source.counter += params.count\",\n    \"lang\": \"painless\",\n    \"params\" : {\n      \"count\" : 4\n    }\n  }\n}"
+          }
+        ]
       }
     },
     "/{index}/_update_by_query": {
@@ -23489,7 +24263,13 @@
             }
           }
         },
-        "x-state": "Added in 2.4.0"
+        "x-state": "Added in 2.4.0",
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "POST my-index-000001/_update_by_query?conflicts=proceed\n{\n  \"query\": { \n    \"term\": {\n      \"user.id\": \"kimchy\"\n    }\n  }\n}"
+          }
+        ]
       }
     }
   },

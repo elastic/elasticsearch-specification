@@ -168,7 +168,7 @@ pub fn add_endpoint(
         let media = MediaType {
             schema: Some(schema),
             example: None,
-            examples: request_examples,
+            examples: request_examples.clone(),
             encoding: Default::default(),
             extensions: Default::default(),
         };
@@ -198,7 +198,7 @@ pub fn add_endpoint(
     // If this endpoint response has examples in schema.json, convert them to the
     // OpenAPI format and add them to the endpoint response in the OpenAPI document.
     let response_examples = if let Some(examples) = &response_def.examples {
-         get_openapi_examples(examples)
+        get_openapi_examples(examples)
     } else {
         IndexMap::new()
     };
@@ -251,6 +251,43 @@ pub fn add_endpoint(
 
         let sum_desc = split_summary_desc(&endpoint.description);
 
+        // add the x-state extension for availability
+        let mut extensions = crate::availability_as_extensions(&endpoint.availability);
+
+        // add the x-codeSamples extension
+        if !request_examples.is_empty() {
+            let mut code_samples = vec![];
+            if let Some((_, first_example)) = request_examples.clone().first() {
+                if let Some(example) = first_example.as_item() {
+                    if let Some(description) = example.description.clone() {
+                        let mut request: Option<String> = Option::None;
+                        for r in description.split('`') {
+                            if r.starts_with("GET ")
+                                || r.starts_with("POST ")
+                                || r.starts_with("PUT ")
+                                || r.starts_with("DELETE ")
+                                || r.starts_with("HEAD ")
+                            {
+                                request = Some(String::from(r));
+                                break;
+                            }
+                        }
+                        if let Some(first_line) = request {
+                            if let Some(code) = example.value.clone() {
+                                code_samples.push(serde_json::json!({
+                                    "lang": "Console",
+                                    "source": first_line + "\n" + code.as_str().unwrap_or(""),
+                                }));
+                            }
+                        }
+                    }
+                }
+            }
+            if code_samples.len() > 0 {
+                extensions.insert("x-codeSamples".to_string(), serde_json::json!(code_samples));
+            }
+        }
+
         // Create the operation, it will be repeated if we have several methods
         let operation = openapiv3::Operation {
             tags: if let Some(doc_tag) = &endpoint.doc_tag {
@@ -274,7 +311,7 @@ pub fn add_endpoint(
             deprecated: endpoint.deprecation.is_some(),
             security: None,
             servers: vec![],
-            extensions: crate::availability_as_extensions(&endpoint.availability),
+            extensions,
         };
 
 
