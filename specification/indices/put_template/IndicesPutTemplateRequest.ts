@@ -27,7 +27,7 @@ import { integer } from '@_types/Numeric'
 import { Duration } from '@_types/Time'
 
 /**
- * Create or update an index template.
+ * Create or update a legacy index template.
  * Index templates define settings, mappings, and aliases that can be applied automatically to new indices.
  * Elasticsearch applies templates to new indices based on an index pattern that matches the index name.
  *
