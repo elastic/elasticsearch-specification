@@ -557,6 +557,7 @@ export enum CatDfaColumn {
   version
 }
 
+/** @non_exhaustive */
 export enum CatNodeColumn {
   /**
    * The Elasticsearch build hash. For example: `5c03844`.
