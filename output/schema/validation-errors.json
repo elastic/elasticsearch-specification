@@ -393,5 +393,7 @@
       "response": []
     }
   },
-  "generalErrors": []
+  "generalErrors": [
+    "Query is present in multiple namespaces: _global.knn_search._types and xpack.usage"
+  ]
 }
