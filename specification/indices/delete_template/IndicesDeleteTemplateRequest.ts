@@ -28,6 +28,7 @@ import { Duration } from '@_types/Time'
  * @availability stack stability=stable
  * @cluster_privileges manage_index_templates
  * @doc_id indices-delete-template-v1
+ * @deprecated 7.8.0
  */
 export interface Request extends RequestBase {
   urls: [

@@ -53,6 +53,7 @@ import { Duration } from '@_types/Time'
  * @cluster_privileges manage_index_templates, manage
  * @doc_id index-templates-v1
  * @ext_doc_id index-templates
+ * @deprecated 7.8.0
  */
 export interface Request extends RequestBase {
   urls: [
