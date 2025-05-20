@@ -84,9 +84,6 @@ export class HttpInputRequestDefinition {
   scheme?: ConnectionScheme
   url?: string
 }
-
-export class Input {}
-
 /**
  * @variants container
  */
