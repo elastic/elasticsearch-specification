@@ -10763,7 +10763,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/inference._types.InferenceEndpointInfo"
+                  "$ref": "#/components/schemas/inference._types.InferenceEndpointInfoJinaAi"
                 }
               }
             }
@@ -51697,6 +51697,36 @@
           "clustering",
           "ingest",
           "search"
+        ]
+      },
+      "inference._types.InferenceEndpointInfoJinaAi": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/inference._types.InferenceEndpoint"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "inference_id": {
+                "description": "The inference Id",
+                "type": "string"
+              },
+              "task_type": {
+                "$ref": "#/components/schemas/inference._types.TaskTypeJinaAi"
+              }
+            },
+            "required": [
+              "inference_id",
+              "task_type"
+            ]
+          }
+        ]
+      },
+      "inference._types.TaskTypeJinaAi": {
+        "type": "string",
+        "enum": [
+          "text_embedding",
+          "rerank"
         ]
       },
       "inference._types.MistralTaskType": {
