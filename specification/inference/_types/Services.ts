@@ -19,8 +19,7 @@
 
 import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 import { integer } from '@_types/Numeric'
-import { TaskType } from '../_types/TaskType'
-import { TaskTypeJinaAi } from '../_types/TaskType'
+import { TaskType, TaskTypeJinaAi } from '../_types/TaskType'
 
 /**
  * Configuration options when storing the inference endpoint
