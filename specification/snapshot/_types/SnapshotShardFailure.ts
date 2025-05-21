@@ -18,12 +18,13 @@
  */
 
 import { Id, IndexName } from '@_types/common'
+import { integer } from '@_types/Numeric'
 
 export class SnapshotShardFailure {
   index: IndexName
   node_id?: Id
   reason: string
-  shard_id: Id
+  shard_id: integer
   index_uuid: Id
   status: string
 }
