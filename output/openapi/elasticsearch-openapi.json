@@ -88386,7 +88386,7 @@
             "type": "string"
           },
           "shard_id": {
-            "$ref": "#/components/schemas/_types:Id"
+            "type": "number"
           },
           "index_uuid": {
             "$ref": "#/components/schemas/_types:Id"
