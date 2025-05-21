@@ -8652,7 +8652,7 @@
         "tags": [
           "indices"
         ],
-        "summary": "Create or update an index template",
+        "summary": "Create or update a legacy index template",
         "description": "Index templates define settings, mappings, and aliases that can be applied automatically to new indices.\nElasticsearch applies templates to new indices based on an index pattern that matches the index name.\n\nIMPORTANT: This documentation is about legacy index templates, which are deprecated and will be replaced by the composable templates introduced in Elasticsearch 7.8.\n\nComposable templates always take precedence over legacy templates.\nIf no composable template matches a new index, matching legacy templates are applied according to their order.\n\nIndex templates are only applied during index creation.\nChanges to index templates do not affect existing indices.\nSettings and mappings specified in create index API requests override any settings or mappings specified in an index template.\n\nYou can use C-style `/* *\\/` block comments in index templates.\nYou can include comments anywhere in the request body, except before the opening curly bracket.\n\n**Indices matching multiple templates**\n\nMultiple index templates can potentially match an index, in this case, both the settings and mappings are merged into the final configuration of the index.\nThe order of the merging can be controlled using the order parameter, with lower order being applied first, and higher orders overriding them.\nNOTE: Multiple matching templates with the same order value will result in a non-deterministic merging order.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/index-templates.html"
@@ -8682,13 +8682,14 @@
           "200": {
             "$ref": "#/components/responses/indices.put_template-200"
           }
-        }
+        },
+        "deprecated": true
       },
       "post": {
         "tags": [
           "indices"
         ],
-        "summary": "Create or update an index template",
+        "summary": "Create or update a legacy index template",
         "description": "Index templates define settings, mappings, and aliases that can be applied automatically to new indices.\nElasticsearch applies templates to new indices based on an index pattern that matches the index name.\n\nIMPORTANT: This documentation is about legacy index templates, which are deprecated and will be replaced by the composable templates introduced in Elasticsearch 7.8.\n\nComposable templates always take precedence over legacy templates.\nIf no composable template matches a new index, matching legacy templates are applied according to their order.\n\nIndex templates are only applied during index creation.\nChanges to index templates do not affect existing indices.\nSettings and mappings specified in create index API requests override any settings or mappings specified in an index template.\n\nYou can use C-style `/* *\\/` block comments in index templates.\nYou can include comments anywhere in the request body, except before the opening curly bracket.\n\n**Indices matching multiple templates**\n\nMultiple index templates can potentially match an index, in this case, both the settings and mappings are merged into the final configuration of the index.\nThe order of the merging can be controlled using the order parameter, with lower order being applied first, and higher orders overriding them.\nNOTE: Multiple matching templates with the same order value will result in a non-deterministic merging order.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/index-templates.html"
@@ -8718,7 +8719,8 @@
           "200": {
             "$ref": "#/components/responses/indices.put_template-200"
           }
-        }
+        },
+        "deprecated": true
       }
     },
     "/_refresh": {
