@@ -49,7 +49,7 @@ import { Id } from '@_types/common'
  * The selected model must support the `sentence-ranking` task and expose OpenAI API.
  * HuggingFace supports only dedicated (not serverless) endpoints for `Rerank` so far.
  * After the endpoint is initialized, copy the full endpoint URL for use.
- * Must include task_settings.
+
  * Tested models for `rerank` task:
  *
  * * `bge-reranker-base`
