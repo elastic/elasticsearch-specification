@@ -148,7 +148,7 @@ export class ShardProfile {
   index: IndexName
   node_id: NodeId
   searches: SearchProfile[]
-  shard_id: long
+  shard_id: integer
 }
 
 export class DfsProfile {
