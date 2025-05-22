@@ -2,7 +2,8 @@
   "name": "eslint-plugin-es-spec",
   "version": "0.1.0",
   "description": "Elasticsearch specification validation",
-  "main": "eslint-plugin-es-spec.mjs",
+  "main": "eslint-plugin-es-spec.js",
+  "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
