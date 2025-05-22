@@ -5,7 +5,7 @@
   "main": "eslint-plugin-es-spec.js",
   "type": "module",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "node --import ./test/_setup.js --test"
   },
   "peerDependencies": {
     "eslint": ">=9.0.0"
@@ -15,5 +15,8 @@
   "dependencies": {
     "@typescript-eslint/utils": "^8.32.1",
     "typescript": "^5.8.3"
+  },
+  "devDependencies": {
+    "@typescript-eslint/rule-tester": "^8.32.1"
   }
 }

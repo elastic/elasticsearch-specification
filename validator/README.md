@@ -25,7 +25,7 @@ If all is well, the output will be minimal, and the process will exit cleanly.
 
 ESLint also maintains [integrations](https://eslint.org/docs/latest/use/integrations#editors) for most common code editors to provide instant inline feedback as you modify files.
 
-## Writing new linter rules
+## Writing custom rules
 
 Each rule should be written in a separate JavaScript file (e.g. `single-key-dictionary-key-is-string.js`) following the format of a custom rule [as defined by the typescript-eslint docs](https://typescript-eslint.io/developers/custom-rules).
 Within a rule's `create` function, return an object whose keys are the names of [AST node types](https://typescript-eslint.io/packages/typescript-estree/ast-spec) and whose values are functions that validate that node type.
@@ -34,6 +34,13 @@ To report a problem in a validation function, it should call `context.report()` 
 To get a familiar the different node types possible within a TypeScript AST, paste some code into [an AST viewer](https://ts-ast-viewer.com/) and explore the resulting visual tree.
 
 To add your rule to the spec validator ESLint plugin, import it into [the plugin file](./eslint-plugin-es-spec.js) and add it to the `rules` object with an appropriate key.
+
+### Unit testing rules
+
+Add a file `<your rule name>.test.js` to the `test/` directory, and construct your test using the [typescript-eslint `RuleTester`](https://typescript-eslint.io/packages/rule-tester/) format.
+
+To run the entire test suite, run `npm test`.
+To run just one test file, run `npm test -- test/your-file.js`
 
 ### ESM format
 
