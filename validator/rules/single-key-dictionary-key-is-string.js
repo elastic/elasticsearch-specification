@@ -35,8 +35,7 @@ export default createRule({
   },
   meta: {
     docs: {
-      description:
-        'SingleKeyDictionary keys must be strings',
+      description: 'SingleKeyDictionary keys must be strings',
     },
     messages: {
       stringKey: "SingleKeyDictionary's key must be a string"
