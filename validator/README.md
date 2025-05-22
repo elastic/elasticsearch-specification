@@ -28,12 +28,13 @@ ESLint also maintains [integrations](https://eslint.org/docs/latest/use/integrat
 ## Writing custom rules
 
 Each rule should be written in a separate JavaScript file (e.g. `single-key-dictionary-key-is-string.js`) following the format of a custom rule [as defined by the typescript-eslint docs](https://typescript-eslint.io/developers/custom-rules).
-Within a rule's `create` function, return an object whose keys are the names of [AST node types](https://typescript-eslint.io/packages/typescript-estree/ast-spec) and whose values are functions that validate that node type.
+Within a rule's `create` function, return an object whose keys are the names of [AST node types](https://typescript-eslint.io/packages/typescript-estree/ast-spec), or an [esquery string](https://github.com/estools/esquery), and whose values are functions that validate that node type.
 To report a problem in a validation function, it should call `context.report()` with the appropriate arguments.
 
 To get a familiar the different node types possible within a TypeScript AST, paste some code into [an AST viewer](https://ts-ast-viewer.com/) and explore the resulting visual tree.
 
 To add your rule to the spec validator ESLint plugin, import it into [the plugin file](./eslint-plugin-es-spec.js) and add it to the `rules` object with an appropriate key.
+To enable your rule so that it runs against the spec, add it to [the spec's ESLint config](../specification/eslint.config.js).
 
 ### Unit testing rules
 
