@@ -892,6 +892,7 @@ export class HuggingFaceServiceSettings {
 }
 
 export enum HuggingFaceTaskType {
+  rerank,
   text_embedding
 }
 
