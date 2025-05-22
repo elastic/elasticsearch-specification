@@ -10,6 +10,7 @@ value: |-
           "url": "url-endpoint" 
       },
       "task_settings": {
-          "return_text": true
+          "return_documents": true,
+          "top_n": 3
       }
   }
