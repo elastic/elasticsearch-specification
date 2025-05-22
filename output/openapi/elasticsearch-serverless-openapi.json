@@ -10614,7 +10614,7 @@
           "inference"
         ],
         "summary": "Create a Hugging Face inference endpoint",
-        "description": "Create an inference endpoint to perform an inference task with the `hugging_face` service.\n\nYou must first create an inference endpoint on the Hugging Face endpoint page to get an endpoint URL.\nSelect the model you want to use on the new endpoint creation page (for example `intfloat/e5-small-v2`), then select the sentence embeddings task under the advanced configuration section.\nCreate the endpoint and copy the URL after the endpoint initialization has been finished.\n\nThe following models are recommended for the Hugging Face service:\n\n* `all-MiniLM-L6-v2`\n* `all-MiniLM-L12-v2`\n* `all-mpnet-base-v2`\n* `e5-base-v2`\n* `e5-small-v2`\n* `multilingual-e5-base`\n* `multilingual-e5-small`",
+        "description": "Create an inference endpoint to perform an inference task with the `hugging_face` service.\n\nYou must first create an inference endpoint on the Hugging Face endpoint page to get an endpoint URL.\nSelect the model you want to use on the new endpoint creation page (for example `intfloat/e5-small-v2`), then select the sentence embeddings task under the advanced configuration section.\nCreate the endpoint and copy the URL after the endpoint initialization has been finished.\n\nThe following models are recommended for the Hugging Face service:\n\n* `all-MiniLM-L6-v2`\n* `all-MiniLM-L12-v2`\n* `all-mpnet-base-v2`\n* `e5-base-v2`\n* `e5-small-v2`\n* `multilingual-e5-base`\n* `multilingual-e5-small`\n\nFor Elastic's `rerank` task:\nThe selected model must support the `sentence-ranking` task and expose OpenAI API.\nHuggingFace supports only dedicated (not serverless) endpoints for `Rerank` so far.\nAfter the endpoint is initialized, copy the full endpoint URL for use.\nTested models for `rerank` task:\n\n* `bge-reranker-base`\n* `jina-reranker-v1-turbo-en-GGUF`",
         "operationId": "inference-put-hugging-face",
         "parameters": [
           {
@@ -10666,6 +10666,11 @@
                   "summary": "A text embedding task",
                   "description": "Run `PUT _inference/text_embedding/hugging-face-embeddings` to create an inference endpoint that performs a `text_embedding` task type.",
                   "value": "{\n    \"service\": \"hugging_face\",\n    \"service_settings\": {\n        \"api_key\": \"hugging-face-access-token\", \n        \"url\": \"url-endpoint\" \n    }\n}"
+                },
+                "PutHuggingFaceRequestExample2": {
+                  "summary": "A rerank task",
+                  "description": "Run `PUT _inference/rerank/hugging-face-rerank` to create an inference endpoint that performs a `rerank` task type.",
+                  "value": "{\n    \"service\": \"hugging_face\",\n    \"service_settings\": {\n        \"api_key\": \"hugging-face-access-token\", \n        \"url\": \"url-endpoint\" \n    },\n    \"task_settings\": {\n        \"return_documents\": true,\n        \"top_n\": 3\n    }\n}"
                 }
               }
             }
@@ -11163,6 +11168,16 @@
                   "summary": "Rerank task",
                   "description": "Run `POST _inference/rerank/cohere_rerank` to perform reranking on the example input.",
                   "value": "{\n  \"input\": [\"luke\", \"like\", \"leia\", \"chewy\",\"r2d2\", \"star\", \"wars\"],\n  \"query\": \"star wars main character\"\n}"
+                },
+                "RerankRequestExample2": {
+                  "summary": "Rerank task",
+                  "description": "Run `POST _inference/rerank/bge-reranker-base-mkn` to perform reranking on the example input via Hugging Face",
+                  "value": "{\n  \"input\": [\"luke\", \"like\", \"leia\", \"chewy\",\"r2d2\", \"star\", \"wars\"],\n  \"query\": \"star wars main character\",\n  \"return_documents\": false,\n  \"top_n\": 2\n}"
+                },
+                "RerankRequestExample3": {
+                  "summary": "Rerank task",
+                  "description": "Run `POST _inference/rerank/bge-reranker-base-mkn` to perform reranking on the example input via Hugging Face",
+                  "value": "{\n  \"input\": [\"luke\", \"like\", \"leia\", \"chewy\",\"r2d2\", \"star\", \"wars\"],\n  \"query\": \"star wars main character\",\n  \"return_documents\": true,\n  \"top_n\": 3\n}"
                 }
               }
             }
@@ -11181,6 +11196,16 @@
                     "summary": "Rerank task",
                     "description": "A successful response from `POST _inference/rerank/cohere_rerank`.\n",
                     "value": "{\n  \"rerank\": [\n    {\n      \"index\": \"2\",\n      \"relevance_score\": \"0.011597361\",\n      \"text\": \"leia\"\n    },\n    {\n      \"index\": \"0\",\n      \"relevance_score\": \"0.006338922\",\n      \"text\": \"luke\"\n    },\n    {\n      \"index\": \"5\",\n      \"relevance_score\": \"0.0016166499\",\n      \"text\": \"star\"\n    },\n    {\n      \"index\": \"4\",\n      \"relevance_score\": \"0.0011695103\",\n      \"text\": \"r2d2\"\n    },\n    {\n      \"index\": \"1\",\n      \"relevance_score\": \"5.614787E-4\",\n      \"text\": \"like\"\n    },\n    {\n      \"index\": \"6\",\n      \"relevance_score\": \"3.7850367E-4\",\n      \"text\": \"wars\"\n    },\n    {\n      \"index\": \"3\",\n      \"relevance_score\": \"1.2508839E-5\",\n      \"text\": \"chewy\"\n    }\n  ]\n}"
+                  },
+                  "RerankResponseExample2": {
+                    "summary": "Rerank task",
+                    "description": "A successful response from `POST _inference/rerank/bge-reranker-base-mkn`.\n",
+                    "value": "{\n  \"rerank\": [\n    {\n      \"index\": 6,\n      \"relevance_score\": 0.50955844\n    },\n    {\n      \"index\": 5,\n      \"relevance_score\": 0.084341794\n    }\n  ]\n}"
+                  },
+                  "RerankResponseExample3": {
+                    "summary": "Rerank task",
+                    "description": "A successful response from `POST _inference/rerank/bge-reranker-base-mkn`.\n",
+                    "value": "{\n  \"rerank\": [\n    {\n      \"index\": 6,\n      \"relevance_score\": 0.50955844,\n      \"text\": \"wars\"\n    },\n    {\n      \"index\": 5,\n      \"relevance_score\": 0.084341794,\n      \"text\": \"star\"\n    },\n    {\n      \"index\": 3,\n      \"relevance_score\": 0.004520818,\n      \"text\": \"chewy\"\n    }\n  ]\n}"
                   }
                 }
               }
@@ -51500,6 +51525,7 @@
       "inference._types.HuggingFaceTaskType": {
         "type": "string",
         "enum": [
+          "rerank",
           "text_embedding"
         ]
       },

@@ -13502,7 +13502,7 @@ export interface InferenceHuggingFaceServiceSettings {
 
 export type InferenceHuggingFaceServiceType = 'hugging_face'
 
-export type InferenceHuggingFaceTaskType = 'text_embedding'
+export type InferenceHuggingFaceTaskType = 'rerank' | 'text_embedding'
 
 export interface InferenceInferenceChunkingSettings {
   max_chunk_size?: integer
