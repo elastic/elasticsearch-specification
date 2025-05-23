@@ -40,6 +40,7 @@ setup:	## Install dependencies for contrib target
 	@make clean-dep
 	@npm install --prefix compiler
 	@npm install --prefix typescript-generator
+	@npm install --prefix validator
 	@npm install --prefix specification
 	@npm install @redocly/cli
 
