@@ -1,7 +1,7 @@
 # Specification structure
 
 The [`/specification`](../specification) folders follows a set of rules to
-keep the defintion easy to access and contribute, while maintaing
+keep the definition easy to access and contribute, while maintaining
 the generated schema consistent and useful for language generators.
 
 ## Rules
@@ -29,7 +29,7 @@ end with `Request` or `Response`.
 
 ### Request and Response definitions
 
-Request and Reponse definitions should be placed by structly following
+Request and Response definitions should be placed by strictly following
 the rest-api-spec structure.
 For example, the request and response definition for `indices.put_mapping`
 should go in [`/specification/indices/put_mapping`](../specification/indices/put_mapping).
