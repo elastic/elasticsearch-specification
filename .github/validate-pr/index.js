@@ -91,10 +91,10 @@ async function run() {
     if (file.startsWith('specification/_doc_ids')) continue
     if (file.startsWith('specification/_json_spec')) continue
     if (file.startsWith('specification/node_modules')) continue
-    if (file === 'specification/tsconfig.json') continue
-    if (file === 'specification/eslint.config.js') continue
-    if (file === 'specification/package.json') continue
-    if (file === 'specification/package-lock.json') continue
+    if (file.endsWith('tsconfig.json')) continue
+    if (file.endsWith('eslint.config.js')) continue
+    if (file.endsWith('package.json')) continue
+    if (file.endsWith('package-lock.json')) continue
     if (getApi(file).endsWith('_types')) {
       const apis = specification.endpoints
         .filter(endpoint => endpoint.name.split('.').filter(s => !privateNames.includes(s))[0] === getApi(file).split('.')[0])
@@ -161,6 +161,8 @@ function buildTableLine (api, report) {
 }
 
 function generateStatus (report) {
+  if (report.diagnostics == null) return 'n/a'
+
   if (!report.diagnostics.hasRequestType || !report.diagnostics.hasResponseType) {
     return ':orange_circle:'
   }
