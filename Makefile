@@ -2,6 +2,7 @@ SHELL := /bin/bash
 
 validate: ## Validate a given endpoint request or response
 	@node compiler/run-validations.js --api $(api) --type $(type) --branch $(branch)
+	@npm run lint --prefix specification
 
 validate-no-cache: ## Validate a given endpoint request or response without local cache
 	@node compiler/run-validations.js --api $(api) --type $(type) --branch $(branch) --no-cache
@@ -39,6 +40,8 @@ setup:	## Install dependencies for contrib target
 	@make clean-dep
 	@npm install --prefix compiler
 	@npm install --prefix typescript-generator
+	@npm install --prefix validator
+	@npm install --prefix specification
 	@npm install @redocly/cli
 
 clean-dep:	## Clean npm dependencies
