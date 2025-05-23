@@ -16,22 +16,22 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-import parser from "@typescript-eslint/parser";
-import validator from "eslint-plugin-es-spec";
-import { defineConfig } from "eslint/config";
+import parser from '@typescript-eslint/parser'
+import validator from 'eslint-plugin-es-spec'
+import { defineConfig } from 'eslint/config'
 
 export default defineConfig({
-  files: ["**/*.ts"],
+  files: ['**/*.ts'],
   languageOptions: {
     parser,
     parserOptions: {
       projectService: true,
-      tsconfigRootDir: import.meta.dirname,
-    },
+      tsconfigRootDir: import.meta.dirname
+    }
   },
-  plugins: { "es-spec-validator": validator },
+  plugins: { 'es-spec-validator': validator },
   rules: {
-    "es-spec-validator/single-key-dictionary-key-is-string": "error",
-    "es-spec-validator/invalid-node-types": "warn",
-  },
-});
+    'es-spec-validator/single-key-dictionary-key-is-string': 'error',
+    'es-spec-validator/invalid-node-types': 'warn'
+  }
+})
