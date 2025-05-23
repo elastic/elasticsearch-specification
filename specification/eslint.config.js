@@ -13,6 +13,7 @@ export default defineConfig({
   },
   plugins: { 'es-spec-validator': validator },
   rules: {
-    'es-spec-validator/single-key-dictionary-key-is-string': 'error'
+    'es-spec-validator/single-key-dictionary-key-is-string': 'error',
+    'es-spec-validator/invalid-node-types': 'warn',
   }
 })

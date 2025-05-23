@@ -7,7 +7,8 @@ It is configured [in the specification directory](../specification/eslint.config
 
 | Name | Description |
 | - | - |
-| `single-key-dictionary-key-is-string` | `SingleKeyDictionary` keys must be strings |
+| `single-key-dictionary-key-is-string` | `SingleKeyDictionary` keys must be strings. |
+| `invalid-node-types` | The spec uses a subset of TypeScript, so some types, clauses and expressions are not allowed. |
 
 ## Usage
 
