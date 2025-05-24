@@ -6557,8 +6557,6 @@ export interface QueryDslRangeQueryBase<T = unknown> extends QueryDslQueryBase {
   gte?: T
   lt?: T
   lte?: T
-  from?: T | null
-  to?: T | null
 }
 
 export type QueryDslRangeRelation = 'within' | 'contains' | 'intersects'

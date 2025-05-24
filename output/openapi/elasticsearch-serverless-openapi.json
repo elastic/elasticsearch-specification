@@ -32579,30 +32579,6 @@
               "lte": {
                 "description": "Less than or equal to.",
                 "type": "object"
-              },
-              "from": {
-                "deprecated": true,
-                "oneOf": [
-                  {
-                    "type": "object"
-                  },
-                  {
-                    "nullable": true,
-                    "type": "string"
-                  }
-                ]
-              },
-              "to": {
-                "deprecated": true,
-                "oneOf": [
-                  {
-                    "type": "object"
-                  },
-                  {
-                    "nullable": true,
-                    "type": "string"
-                  }
-                ]
               }
             }
           }
@@ -32656,30 +32632,6 @@
               },
               "lte": {
                 "$ref": "#/components/schemas/_types.DateMath"
-              },
-              "from": {
-                "deprecated": true,
-                "oneOf": [
-                  {
-                    "$ref": "#/components/schemas/_types.DateMath"
-                  },
-                  {
-                    "nullable": true,
-                    "type": "string"
-                  }
-                ]
-              },
-              "to": {
-                "deprecated": true,
-                "oneOf": [
-                  {
-                    "$ref": "#/components/schemas/_types.DateMath"
-                  },
-                  {
-                    "nullable": true,
-                    "type": "string"
-                  }
-                ]
               }
             }
           }
@@ -32721,30 +32673,6 @@
               "lte": {
                 "description": "Less than or equal to.",
                 "type": "number"
-              },
-              "from": {
-                "deprecated": true,
-                "oneOf": [
-                  {
-                    "type": "number"
-                  },
-                  {
-                    "nullable": true,
-                    "type": "string"
-                  }
-                ]
-              },
-              "to": {
-                "deprecated": true,
-                "oneOf": [
-                  {
-                    "type": "number"
-                  },
-                  {
-                    "nullable": true,
-                    "type": "string"
-                  }
-                ]
               }
             }
           }
@@ -32786,30 +32714,6 @@
               "lte": {
                 "description": "Less than or equal to.",
                 "type": "string"
-              },
-              "from": {
-                "deprecated": true,
-                "oneOf": [
-                  {
-                    "type": "string"
-                  },
-                  {
-                    "nullable": true,
-                    "type": "string"
-                  }
-                ]
-              },
-              "to": {
-                "deprecated": true,
-                "oneOf": [
-                  {
-                    "type": "string"
-                  },
-                  {
-                    "nullable": true,
-                    "type": "string"
-                  }
-                ]
               }
             }
           }
