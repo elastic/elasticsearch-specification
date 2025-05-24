@@ -46,7 +46,8 @@ import { Duration } from '@_types/Time'
  * Snapshotting to unsuitable storage may sometimes appear to work correctly most of the time despite repository analysis failures.
  * However your snapshot data is at risk if you store it in a snapshot repository that does not reliably pass repository analysis.
  * You can demonstrate that the analysis failure is due to an incompatible storage implementation by verifying that Elasticsearch does not detect the same problem when analysing the reference implementation of the storage protocol you are using.
- * For instance, if you are using storage that the supplier claims to offer an API that is compatible with AWS S3, demonstrate that the storage API is not truly S3-compatible by verifying that repositories in AWS S3 do not fail repository analysis.
+ * For instance, if you are using storage that offers an API which the supplier claims to be compatible with AWS S3, verify that repositories in AWS S3 do not fail repository analysis.
+ * This allows you to demonstrate to your storage supplier that a repository analysis failure must only be caused by an incompatibility with AWS S3 and cannot be attributed to a problem in Elasticsearch.
  * Please do not report Elasticsearch issues involving third-party storage systems unless you can demonstrate that the same issue exists when analysing a repository that uses the reference implementation of the same storage protocol.
  * You will need to work with the supplier of your storage system to address the incompatibilities that Elasticsearch detects.
  *
