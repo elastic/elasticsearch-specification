@@ -10763,7 +10763,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/inference._types.InferenceEndpointInfo"
+                  "$ref": "#/components/schemas/inference._types.InferenceEndpointInfoJinaAi"
                 }
               }
             }
@@ -32694,30 +32694,6 @@
               "lte": {
                 "description": "Less than or equal to.",
                 "type": "object"
-              },
-              "from": {
-                "deprecated": true,
-                "oneOf": [
-                  {
-                    "type": "object"
-                  },
-                  {
-                    "nullable": true,
-                    "type": "string"
-                  }
-                ]
-              },
-              "to": {
-                "deprecated": true,
-                "oneOf": [
-                  {
-                    "type": "object"
-                  },
-                  {
-                    "nullable": true,
-                    "type": "string"
-                  }
-                ]
               }
             }
           }
@@ -32771,30 +32747,6 @@
               },
               "lte": {
                 "$ref": "#/components/schemas/_types.DateMath"
-              },
-              "from": {
-                "deprecated": true,
-                "oneOf": [
-                  {
-                    "$ref": "#/components/schemas/_types.DateMath"
-                  },
-                  {
-                    "nullable": true,
-                    "type": "string"
-                  }
-                ]
-              },
-              "to": {
-                "deprecated": true,
-                "oneOf": [
-                  {
-                    "$ref": "#/components/schemas/_types.DateMath"
-                  },
-                  {
-                    "nullable": true,
-                    "type": "string"
-                  }
-                ]
               }
             }
           }
@@ -32836,30 +32788,6 @@
               "lte": {
                 "description": "Less than or equal to.",
                 "type": "number"
-              },
-              "from": {
-                "deprecated": true,
-                "oneOf": [
-                  {
-                    "type": "number"
-                  },
-                  {
-                    "nullable": true,
-                    "type": "string"
-                  }
-                ]
-              },
-              "to": {
-                "deprecated": true,
-                "oneOf": [
-                  {
-                    "type": "number"
-                  },
-                  {
-                    "nullable": true,
-                    "type": "string"
-                  }
-                ]
               }
             }
           }
@@ -32901,30 +32829,6 @@
               "lte": {
                 "description": "Less than or equal to.",
                 "type": "string"
-              },
-              "from": {
-                "deprecated": true,
-                "oneOf": [
-                  {
-                    "type": "string"
-                  },
-                  {
-                    "nullable": true,
-                    "type": "string"
-                  }
-                ]
-              },
-              "to": {
-                "deprecated": true,
-                "oneOf": [
-                  {
-                    "type": "string"
-                  },
-                  {
-                    "nullable": true,
-                    "type": "string"
-                  }
-                ]
               }
             }
           }
@@ -51703,6 +51607,36 @@
           "clustering",
           "ingest",
           "search"
+        ]
+      },
+      "inference._types.InferenceEndpointInfoJinaAi": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/inference._types.InferenceEndpoint"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "inference_id": {
+                "description": "The inference Id",
+                "type": "string"
+              },
+              "task_type": {
+                "$ref": "#/components/schemas/inference._types.TaskTypeJinaAi"
+              }
+            },
+            "required": [
+              "inference_id",
+              "task_type"
+            ]
+          }
+        ]
+      },
+      "inference._types.TaskTypeJinaAi": {
+        "type": "string",
+        "enum": [
+          "text_embedding",
+          "rerank"
         ]
       },
       "inference._types.MistralTaskType": {
