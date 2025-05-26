@@ -7921,7 +7921,7 @@
                 },
                 "examples": {
                   "IndicesGetDataLifecycleResponseExample1": {
-                    "description": "A successful response from `GET _lifecycle/stats?human&pretty`.",
+                    "description": "A successful response from `GET /_data_stream/{name}/_lifecycle?human&pretty`.",
                     "value": "{\n  \"data_streams\": [\n    {\n      \"name\": \"my-data-stream-1\",\n      \"lifecycle\": {\n        \"enabled\": true,\n        \"data_retention\": \"7d\"\n      }\n    },\n    {\n      \"name\": \"my-data-stream-2\",\n      \"lifecycle\": {\n        \"enabled\": true,\n        \"data_retention\": \"7d\"\n      }\n    }\n  ]\n}"
                   }
                 }
@@ -8062,6 +8062,151 @@
           }
         },
         "x-state": "Added in 7.9.0"
+      }
+    },
+    "/_data_stream/{name}/_options": {
+      "get": {
+        "tags": [
+          "data stream"
+        ],
+        "summary": "Get data stream options",
+        "description": "Get the data stream options configuration of one or more data streams.",
+        "operationId": "indices-get-data-stream-options",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "name",
+            "description": "Comma-separated list of data streams to limit the request.\nSupports wildcards (`*`).\nTo target all data streams, omit this parameter or use `*` or `_all`.",
+            "required": true,
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/_types.DataStreamNames"
+            },
+            "style": "simple"
+          },
+          {
+            "in": "query",
+            "name": "expand_wildcards",
+            "description": "Type of data stream that wildcard patterns can match.\nSupports comma-separated values, such as `open,hidden`.\nValid values are: `all`, `open`, `closed`, `hidden`, `none`.\n\nSupported values include:\n  - `all`: Match any data stream or index, including hidden ones.\n  - `open`: Match open, non-hidden indices. Also matches any non-hidden data stream.\n  - `closed`: Match closed, non-hidden indices. Also matches any non-hidden data stream. Data streams cannot be closed.\n  - `hidden`: Match hidden data streams and hidden indices. Must be combined with `open`, `closed`, or `both`.\n  - `none`: Wildcard expressions are not accepted.\n\n",
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/_types.ExpandWildcards"
+            },
+            "style": "form"
+          },
+          {
+            "in": "query",
+            "name": "master_timeout",
+            "description": "Period to wait for a connection to the master node. If no response is received before the timeout expires, the request fails and returns an error.",
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/_types.Duration"
+            },
+            "style": "form"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data_streams": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/indices.get_data_stream_options.DataStreamWithOptions"
+                      }
+                    }
+                  },
+                  "required": [
+                    "data_streams"
+                  ]
+                }
+              }
+            }
+          }
+        },
+        "x-state": "Added in 8.19.0"
+      },
+      "put": {
+        "tags": [
+          "data stream"
+        ],
+        "summary": "Update data stream options",
+        "description": "Update the data stream options of the specified data streams.",
+        "operationId": "indices-put-data-stream-options",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "name",
+            "description": "Comma-separated list of data streams used to limit the request.\nSupports wildcards (`*`).\nTo target all data streams use `*` or `_all`.",
+            "required": true,
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/_types.DataStreamNames"
+            },
+            "style": "simple"
+          },
+          {
+            "in": "query",
+            "name": "expand_wildcards",
+            "description": "Type of data stream that wildcard patterns can match.\nSupports comma-separated values, such as `open,hidden`.\nValid values are: `all`, `hidden`, `open`, `closed`, `none`.\n\nSupported values include:\n  - `all`: Match any data stream or index, including hidden ones.\n  - `open`: Match open, non-hidden indices. Also matches any non-hidden data stream.\n  - `closed`: Match closed, non-hidden indices. Also matches any non-hidden data stream. Data streams cannot be closed.\n  - `hidden`: Match hidden data streams and hidden indices. Must be combined with `open`, `closed`, or `both`.\n  - `none`: Wildcard expressions are not accepted.\n\n",
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/_types.ExpandWildcards"
+            },
+            "style": "form"
+          },
+          {
+            "in": "query",
+            "name": "master_timeout",
+            "description": "Period to wait for a connection to the master node. If no response is\nreceived before the timeout expires, the request fails and returns an\nerror.",
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/_types.Duration"
+            },
+            "style": "form"
+          },
+          {
+            "in": "query",
+            "name": "timeout",
+            "description": "Period to wait for a response.\nIf no response is received before the timeout expires, the request fails and returns an error.",
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/_types.Duration"
+            },
+            "style": "form"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "failure_store": {
+                    "$ref": "#/components/schemas/indices._types.DataStreamFailureStore"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/_types.AcknowledgedResponseBase"
+                }
+              }
+            }
+          }
+        },
+        "x-state": "Added in 8.19.0"
       }
     },
     "/_index_template": {
@@ -38828,6 +38973,9 @@
           },
           "lifecycle": {
             "$ref": "#/components/schemas/indices._types.DataStreamLifecycleWithRollover"
+          },
+          "data_stream_options": {
+            "$ref": "#/components/schemas/indices._types.DataStreamOptions"
           }
         }
       },
@@ -47326,6 +47474,38 @@
           "fixed_interval"
         ]
       },
+      "indices._types.DataStreamOptions": {
+        "type": "object",
+        "properties": {
+          "failure_store": {
+            "$ref": "#/components/schemas/indices._types.DataStreamFailureStore"
+          }
+        }
+      },
+      "indices._types.DataStreamFailureStore": {
+        "type": "object",
+        "properties": {
+          "enabled": {
+            "description": "If defined, it turns the failure store on/off (`true`/`false`) for this data stream. A data stream failure store\nthat's disabled (enabled: `false`) will redirect no new failed indices to the failure store; however, it will\nnot remove any existing data from the failure store.",
+            "type": "boolean"
+          },
+          "lifecycle": {
+            "$ref": "#/components/schemas/indices._types.FailureStoreLifecycle"
+          }
+        }
+      },
+      "indices._types.FailureStoreLifecycle": {
+        "type": "object",
+        "properties": {
+          "data_retention": {
+            "$ref": "#/components/schemas/_types.Duration"
+          },
+          "enabled": {
+            "description": "If defined, it turns data stream lifecycle on/off (`true`/`false`) for this data stream. A data stream lifecycle\nthat's disabled (enabled: `false`) will have no effect on the data stream.",
+            "type": "boolean"
+          }
+        }
+      },
       "_types.ClusterInfoTargets": {
         "oneOf": [
           {
@@ -49924,6 +50104,20 @@
           "name"
         ]
       },
+      "indices.get_data_stream_options.DataStreamWithOptions": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "$ref": "#/components/schemas/_types.DataStreamName"
+          },
+          "options": {
+            "$ref": "#/components/schemas/indices._types.DataStreamOptions"
+          }
+        },
+        "required": [
+          "name"
+        ]
+      },
       "indices.get_index_template.IndexTemplateItem": {
         "type": "object",
         "properties": {
@@ -50002,6 +50196,9 @@
           },
           "lifecycle": {
             "$ref": "#/components/schemas/indices._types.DataStreamLifecycleWithRollover"
+          },
+          "data_stream_options": {
+            "$ref": "#/components/schemas/indices._types.DataStreamOptions"
           }
         }
       },

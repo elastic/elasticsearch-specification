@@ -9189,6 +9189,7 @@ export interface ClusterComponentTemplateSummary {
   mappings?: MappingTypeMapping
   aliases?: Record<string, IndicesAliasDefinition>
   lifecycle?: IndicesDataStreamLifecycleWithRollover
+  data_stream_options?: IndicesDataStreamOptions
 }
 
 export interface ClusterAllocationExplainAllocationDecision {
@@ -11388,6 +11389,11 @@ export interface IndicesDataStream {
   index_mode?: IndicesIndexMode
 }
 
+export interface IndicesDataStreamFailureStore {
+  enabled?: boolean
+  lifecycle?: IndicesFailureStoreLifecycle
+}
+
 export interface IndicesDataStreamIndex {
   index_name: IndexName
   index_uuid: Uuid
@@ -11424,6 +11430,10 @@ export interface IndicesDataStreamLifecycleWithRollover extends IndicesDataStrea
   rollover?: IndicesDataStreamLifecycleRolloverConditions
 }
 
+export interface IndicesDataStreamOptions {
+  failure_store?: IndicesDataStreamFailureStore
+}
+
 export interface IndicesDataStreamTimestampField {
   name: Field
 }
@@ -11446,6 +11456,11 @@ export interface IndicesFailureStore {
   enabled: boolean
   indices: IndicesDataStreamIndex[]
   rollover_on_write: boolean
+}
+
+export interface IndicesFailureStoreLifecycle {
+  data_retention?: Duration
+  enabled?: boolean
 }
 
 export interface IndicesFielddataFrequencyFilter {
@@ -11626,6 +11641,7 @@ export interface IndicesIndexTemplateSummary {
   mappings?: MappingTypeMapping
   settings?: IndicesIndexSettings
   lifecycle?: IndicesDataStreamLifecycleWithRollover
+  data_stream_options?: IndicesDataStreamOptions
 }
 
 export interface IndicesIndexVersioning {
@@ -12361,6 +12377,21 @@ export interface IndicesGetDataStreamResponse {
   data_streams: IndicesDataStream[]
 }
 
+export interface IndicesGetDataStreamOptionsDataStreamWithOptions {
+  name: DataStreamName
+  options?: IndicesDataStreamOptions
+}
+
+export interface IndicesGetDataStreamOptionsRequest extends RequestBase {
+  name: DataStreamNames
+  expand_wildcards?: ExpandWildcards
+  master_timeout?: Duration
+}
+
+export interface IndicesGetDataStreamOptionsResponse {
+  data_streams: IndicesGetDataStreamOptionsDataStreamWithOptions[]
+}
+
 export interface IndicesGetFieldMappingRequest extends RequestBase {
   fields: Fields
   index?: Indices
@@ -12554,6 +12585,18 @@ export interface IndicesPutDataLifecycleRequest extends RequestBase {
 }
 
 export type IndicesPutDataLifecycleResponse = AcknowledgedResponseBase
+
+export interface IndicesPutDataStreamOptionsRequest extends RequestBase {
+  name: DataStreamNames
+  expand_wildcards?: ExpandWildcards
+  master_timeout?: Duration
+  timeout?: Duration
+  body?: {
+    failure_store?: IndicesDataStreamFailureStore
+  }
+}
+
+export type IndicesPutDataStreamOptionsResponse = AcknowledgedResponseBase
 
 export interface IndicesPutIndexTemplateIndexTemplateMapping {
   aliases?: Record<IndexName, IndicesAlias>
