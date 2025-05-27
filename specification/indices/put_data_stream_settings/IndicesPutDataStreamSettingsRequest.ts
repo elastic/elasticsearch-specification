@@ -17,10 +17,10 @@
  * under the License.
  */
 
-import { IndexSettings } from "@indices/_types/IndexSettings";
-import { RequestBase } from "@_types/Base";
-import { ExpandWildcards, Indices } from "@_types/common";
-import { Duration } from "@_types/Time";
+import { IndexSettings } from '@indices/_types/IndexSettings'
+import { RequestBase } from '@_types/Base'
+import { Indices } from '@_types/common'
+import { Duration } from '@_types/Time'
 
 /**
  * Update data stream settings.
@@ -37,16 +37,16 @@ import { Duration } from "@_types/Time";
 export interface Request extends RequestBase {
   urls: [
     {
-      path: "/_data_stream/{name}/_settings";
-      methods: ["PUT"];
-    },
-  ];
+      path: '/_data_stream/{name}/_settings'
+      methods: ['PUT']
+    }
+  ]
   path_parts: {
     /**
      * Comma-separated list of data streams or data stream patterns
      */
-    name: Indices;
-  };
+    name: Indices
+  }
   query_parameters: {
     /**
      * If `true`, the request does not actually change the settings on any data streams or indices. Instead, it
@@ -54,22 +54,22 @@ export interface Request extends RequestBase {
      * actually been applied.
      * @server_default false
      */
-    dry_run?: boolean;
+    dry_run?: boolean
     /**
      * Period to wait for a connection to the master node. If no response is
      * received before the timeout expires, the request fails and returns an
      * error.
      * @server_default 30s
      */
-    master_timeout?: Duration;
+    master_timeout?: Duration
     /**
      *  Period to wait for a response. If no response is received before the
      *  timeout expires, the request fails and returns an error.
      * @server_default 30s
      */
-    timeout?: Duration;
-  };
+    timeout?: Duration
+  }
   /** Settings to be applied to the data stream.
    * @codegen_name settings */
-  body: IndexSettings;
+  body: IndexSettings
 }

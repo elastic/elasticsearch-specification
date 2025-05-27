@@ -17,40 +17,40 @@
  * under the License.
  */
 
-import { IndexName } from "@_types/common";
-import { IndexSettings } from "@indices/_types/IndexSettings";
+import { IndexSettings } from '@indices/_types/IndexSettings'
+import { IndexName } from '@_types/common'
 
 export class Response {
   /** @codegen_name data_stream_settings_results */
   body: {
-    data_streams: Array<DataStreamSettings>;
-  };
+    data_streams: Array<DataStreamSettings>
+  }
 }
 
 export class DataStreamSettings {
-  name: IndexName;
+  name: IndexName
   /**
    * True if the settings were successfully applied to the data stream (or would have been, if running in dry_run
    * mode). False if an error occurred.
    */
-  applied_to_data_stream: boolean;
+  applied_to_data_stream: boolean
   /**
    * A message explaining why the settings could not be applied to the data stream.
    */
-  error?: string;
+  error?: string
   /**
    * The settings that are specfic to this data stream that will override any settings from the matching index template.
    */
-  settings: IndexSettings;
+  settings: IndexSettings
   /**
    * The settings that are effective on this data stream, taking into account the settings from the matching index
    * template and the settings specfic to this data stream.
    */
-  effective_settings: IndexSettings;
+  effective_settings: IndexSettings
   /**
    * Information about whether and where each setting was applied.
    */
-  index_settings_results: IndexSettingResults;
+  index_settings_results: IndexSettingResults
 }
 
 export class IndexSettingResults {
@@ -58,19 +58,19 @@ export class IndexSettingResults {
    * The list of settings that were applied to the data stream but not to backing indices. These will be applied to
    * the write index the next time the data stream is rolled over.
    */
-  applied_to_data_stream_only: Array<string>;
+  applied_to_data_stream_only: Array<string>
   /**
    * The list of settings that were applied to the data stream and to all of its backing indices. These settings will
    * also be applied to the write index the next time the data stream is rolled over.
    */
-  applied_to_data_stream_and_backing_indices: Array<string>;
-  errors?: Array<DataStreamSettingsError>;
+  applied_to_data_stream_and_backing_indices: Array<string>
+  errors?: Array<DataStreamSettingsError>
 }
 
 export class DataStreamSettingsError {
-  index: IndexName;
+  index: IndexName
   /**
    * A message explaining why the settings could not be applied to specific indices.
    */
-  error: string;
+  error: string
 }
