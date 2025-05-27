@@ -37,6 +37,23 @@ export class DataStreamFailureStore {
 }
 
 /**
+ * Template equivalent of DataStreamFailureStore that allows nullable values.
+ */
+export class DataStreamFailureStoreTemplate {
+  /**
+   * If defined, it turns the failure store on/off (`true`/`false`) for this data stream. A data stream failure store
+   * that's disabled (enabled: `false`) will redirect no new failed indices to the failure store; however, it will
+   * not remove any existing data from the failure store.
+   * @server_default true
+   */
+  enabled?: boolean | null
+  /**
+   * If defined, it specifies the lifecycle configuration for the failure store of this data stream.
+   */
+  lifecycle?: FailureStoreLifecycleTemplate | null
+}
+
+/**
  * The failure store lifecycle configures the data stream lifecycle configuration for failure indices.
  */
 export class FailureStoreLifecycle {
@@ -46,6 +63,24 @@ export class FailureStoreLifecycle {
    * When empty, every document in this data stream will be stored indefinitely.
    */
   data_retention?: Duration
+  /**
+   * If defined, it turns data stream lifecycle on/off (`true`/`false`) for this data stream. A data stream lifecycle
+   * that's disabled (enabled: `false`) will have no effect on the data stream.
+   * @server_default true
+   */
+  enabled?: boolean
+}
+
+/**
+ * Template equivalent of FailureStoreLifecycle that allows nullable values.
+ */
+export class FailureStoreLifecycleTemplate {
+  /**
+   * If defined, every document added to this data stream will be stored at least for this time frame.
+   * Any time after this duration the document could be deleted.
+   * When empty, every document in this data stream will be stored indefinitely.
+   */
+  data_retention?: Duration | null
   /**
    * If defined, it turns data stream lifecycle on/off (`true`/`false`) for this data stream. A data stream lifecycle
    * that's disabled (enabled: `false`) will have no effect on the data stream.

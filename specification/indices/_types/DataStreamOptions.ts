@@ -17,7 +17,10 @@
  * under the License.
  */
 
-import { DataStreamFailureStore } from '@indices/_types/DataStreamFailureStore'
+import {
+  DataStreamFailureStore,
+  DataStreamFailureStoreTemplate
+} from '@indices/_types/DataStreamFailureStore'
 
 /**
  * Data stream options contain the configuration of data stream level features for a given data stream, for example,
@@ -28,4 +31,11 @@ export class DataStreamOptions {
    * If defined, it specifies configuration for the failure store of this data stream.
    */
   failure_store?: DataStreamFailureStore
+}
+
+/**
+ * Data stream options template contains the same information as DataStreamOptions but allows them to be set explicitly to null.
+ */
+export class DataStreamOptionsTemplate {
+  failure_store?: DataStreamFailureStoreTemplate | null
 }

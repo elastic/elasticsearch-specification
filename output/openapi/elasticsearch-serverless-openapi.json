@@ -38975,7 +38975,16 @@
             "$ref": "#/components/schemas/indices._types.DataStreamLifecycleWithRollover"
           },
           "data_stream_options": {
-            "$ref": "#/components/schemas/indices._types.DataStreamOptions"
+            "x-state": "Added in 8.19.0",
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/indices._types.DataStreamOptionsTemplate"
+              },
+              {
+                "nullable": true,
+                "type": "string"
+              }
+            ]
           }
         }
       },
@@ -47474,31 +47483,65 @@
           "fixed_interval"
         ]
       },
-      "indices._types.DataStreamOptions": {
+      "indices._types.DataStreamOptionsTemplate": {
         "type": "object",
         "properties": {
           "failure_store": {
-            "$ref": "#/components/schemas/indices._types.DataStreamFailureStore"
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/indices._types.DataStreamFailureStoreTemplate"
+              },
+              {
+                "nullable": true,
+                "type": "string"
+              }
+            ]
           }
         }
       },
-      "indices._types.DataStreamFailureStore": {
+      "indices._types.DataStreamFailureStoreTemplate": {
         "type": "object",
         "properties": {
           "enabled": {
             "description": "If defined, it turns the failure store on/off (`true`/`false`) for this data stream. A data stream failure store\nthat's disabled (enabled: `false`) will redirect no new failed indices to the failure store; however, it will\nnot remove any existing data from the failure store.",
-            "type": "boolean"
+            "oneOf": [
+              {
+                "type": "boolean"
+              },
+              {
+                "nullable": true,
+                "type": "string"
+              }
+            ]
           },
           "lifecycle": {
-            "$ref": "#/components/schemas/indices._types.FailureStoreLifecycle"
+            "description": "If defined, it specifies the lifecycle configuration for the failure store of this data stream.",
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/indices._types.FailureStoreLifecycleTemplate"
+              },
+              {
+                "nullable": true,
+                "type": "string"
+              }
+            ]
           }
         }
       },
-      "indices._types.FailureStoreLifecycle": {
+      "indices._types.FailureStoreLifecycleTemplate": {
         "type": "object",
         "properties": {
           "data_retention": {
-            "$ref": "#/components/schemas/_types.Duration"
+            "description": "If defined, every document added to this data stream will be stored at least for this time frame.\nAny time after this duration the document could be deleted.\nWhen empty, every document in this data stream will be stored indefinitely.",
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/_types.Duration"
+              },
+              {
+                "nullable": true,
+                "type": "string"
+              }
+            ]
           },
           "enabled": {
             "description": "If defined, it turns data stream lifecycle on/off (`true`/`false`) for this data stream. A data stream lifecycle\nthat's disabled (enabled: `false`) will have no effect on the data stream.",
@@ -50118,6 +50161,38 @@
           "name"
         ]
       },
+      "indices._types.DataStreamOptions": {
+        "type": "object",
+        "properties": {
+          "failure_store": {
+            "$ref": "#/components/schemas/indices._types.DataStreamFailureStore"
+          }
+        }
+      },
+      "indices._types.DataStreamFailureStore": {
+        "type": "object",
+        "properties": {
+          "enabled": {
+            "description": "If defined, it turns the failure store on/off (`true`/`false`) for this data stream. A data stream failure store\nthat's disabled (enabled: `false`) will redirect no new failed indices to the failure store; however, it will\nnot remove any existing data from the failure store.",
+            "type": "boolean"
+          },
+          "lifecycle": {
+            "$ref": "#/components/schemas/indices._types.FailureStoreLifecycle"
+          }
+        }
+      },
+      "indices._types.FailureStoreLifecycle": {
+        "type": "object",
+        "properties": {
+          "data_retention": {
+            "$ref": "#/components/schemas/_types.Duration"
+          },
+          "enabled": {
+            "description": "If defined, it turns data stream lifecycle on/off (`true`/`false`) for this data stream. A data stream lifecycle\nthat's disabled (enabled: `false`) will have no effect on the data stream.",
+            "type": "boolean"
+          }
+        }
+      },
       "indices.get_index_template.IndexTemplateItem": {
         "type": "object",
         "properties": {
@@ -50198,7 +50273,16 @@
             "$ref": "#/components/schemas/indices._types.DataStreamLifecycleWithRollover"
           },
           "data_stream_options": {
-            "$ref": "#/components/schemas/indices._types.DataStreamOptions"
+            "x-state": "Added in 8.19.0",
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/indices._types.DataStreamOptionsTemplate"
+              },
+              {
+                "nullable": true,
+                "type": "string"
+              }
+            ]
           }
         }
       },

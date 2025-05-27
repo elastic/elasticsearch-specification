@@ -18,7 +18,7 @@
  */
 
 import { DataStreamLifecycleWithRollover } from '@indices/_types/DataStreamLifecycle'
-import { DataStreamOptions } from '@indices/_types/DataStreamOptions'
+import { DataStreamOptionsTemplate } from '@indices/_types/DataStreamOptions'
 import { Dictionary } from '@spec_utils/Dictionary'
 import { IndexName, Metadata, Name, Names, VersionNumber } from '@_types/common'
 import { TypeMapping } from '@_types/mapping/TypeMapping'
@@ -120,5 +120,5 @@ export class IndexTemplateSummary {
    * @availability stack since=8.19.0 stability=stable
    * @availability serverless stability=stable
    */
-  data_stream_options?: DataStreamOptions
+  data_stream_options?: DataStreamOptionsTemplate | null
 }

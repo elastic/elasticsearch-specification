@@ -9189,7 +9189,7 @@ export interface ClusterComponentTemplateSummary {
   mappings?: MappingTypeMapping
   aliases?: Record<string, IndicesAliasDefinition>
   lifecycle?: IndicesDataStreamLifecycleWithRollover
-  data_stream_options?: IndicesDataStreamOptions
+  data_stream_options?: IndicesDataStreamOptionsTemplate | null
 }
 
 export interface ClusterAllocationExplainAllocationDecision {
@@ -11394,6 +11394,11 @@ export interface IndicesDataStreamFailureStore {
   lifecycle?: IndicesFailureStoreLifecycle
 }
 
+export interface IndicesDataStreamFailureStoreTemplate {
+  enabled?: boolean | null
+  lifecycle?: IndicesFailureStoreLifecycleTemplate | null
+}
+
 export interface IndicesDataStreamIndex {
   index_name: IndexName
   index_uuid: Uuid
@@ -11434,6 +11439,10 @@ export interface IndicesDataStreamOptions {
   failure_store?: IndicesDataStreamFailureStore
 }
 
+export interface IndicesDataStreamOptionsTemplate {
+  failure_store?: IndicesDataStreamFailureStoreTemplate | null
+}
+
 export interface IndicesDataStreamTimestampField {
   name: Field
 }
@@ -11460,6 +11469,11 @@ export interface IndicesFailureStore {
 
 export interface IndicesFailureStoreLifecycle {
   data_retention?: Duration
+  enabled?: boolean
+}
+
+export interface IndicesFailureStoreLifecycleTemplate {
+  data_retention?: Duration | null
   enabled?: boolean
 }
 
@@ -11641,7 +11655,7 @@ export interface IndicesIndexTemplateSummary {
   mappings?: MappingTypeMapping
   settings?: IndicesIndexSettings
   lifecycle?: IndicesDataStreamLifecycleWithRollover
-  data_stream_options?: IndicesDataStreamOptions
+  data_stream_options?: IndicesDataStreamOptionsTemplate | null
 }
 
 export interface IndicesIndexVersioning {
