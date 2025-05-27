@@ -12121,6 +12121,15 @@ export interface IndicesDeleteDataStreamRequest extends RequestBase {
 
 export type IndicesDeleteDataStreamResponse = AcknowledgedResponseBase
 
+export interface IndicesDeleteDataStreamOptionsRequest extends RequestBase {
+  name: DataStreamNames
+  expand_wildcards?: ExpandWildcards
+  master_timeout?: Duration
+  timeout?: Duration
+}
+
+export type IndicesDeleteDataStreamOptionsResponse = AcknowledgedResponseBase
+
 export interface IndicesDeleteIndexTemplateRequest extends RequestBase {
   name: Names
   master_timeout?: Duration
