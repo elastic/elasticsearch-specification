@@ -27,6 +27,7 @@ import {
   Name,
   Uuid
 } from '@_types/common'
+import { IndexSettings } from '@indices/_types/IndexSettings'
 import { integer } from '@_types/Numeric'
 
 enum ManagedBy {
@@ -112,6 +113,11 @@ export class DataStream {
    * If `true`, the next write to this data stream will trigger a rollover first and the document will be indexed in the new backing index. If the rollover fails the indexing request will fail too.
    */
   rollover_on_write: boolean
+  /**
+   * The settings specific to this data stream that will take precedence over the settings in the matching index
+   * template.
+   */
+  settings: IndexSettings
   /**
    * Health status of the data stream.
    * This health status is based on the state of the primary and replica shards of the stream’s backing indices.
