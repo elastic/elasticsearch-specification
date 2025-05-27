@@ -627,6 +627,8 @@ export enum CohereServiceType {
 }
 
 export enum CohereEmbeddingType {
+  binary,
+  bit,
   byte,
   float,
   int8
