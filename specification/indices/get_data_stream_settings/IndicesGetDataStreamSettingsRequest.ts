@@ -17,9 +17,9 @@
  * under the License.
  */
 
-import { RequestBase } from '@_types/Base'
-import { ExpandWildcards, Indices, Names } from '@_types/common'
-import { Duration } from '@_types/Time'
+import { RequestBase } from "@_types/Base";
+import { ExpandWildcards, Indices, Names } from "@_types/common";
+import { Duration } from "@_types/Time";
 
 /**
  * Get data stream settings.
@@ -33,16 +33,16 @@ import { Duration } from '@_types/Time'
 export interface Request extends RequestBase {
   urls: [
     {
-      path: '/_data_stream/{name}/_settings'
-      methods: ['GET']
-    }
-  ]
+      path: "/_data_stream/{name}/_settings";
+      methods: ["GET"];
+    },
+  ];
   path_parts: {
     /**
      * Comma-separated list of data streams or data stream patterns. Supports wildcards (`*`).
      */
-    name: Indices
-  }
+    name: Indices;
+  };
   query_parameters: {
     /**
      * Period to wait for a connection to the master node. If no response is
@@ -50,6 +50,6 @@ export interface Request extends RequestBase {
      * error.
      * @server_default 30s
      */
-    master_timeout?: Duration
-  }
+    master_timeout?: Duration;
+  };
 }

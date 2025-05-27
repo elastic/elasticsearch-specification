@@ -17,17 +17,17 @@
  * under the License.
  */
 
-import { IndexName } from '@_types/common'
-import { IndexSettings } from '@indices/_types/IndexSettings'
+import { IndexName } from "@_types/common";
+import { IndexSettings } from "@indices/_types/IndexSettings";
 
 export class Response {
   /** @codegen_name data_stream_settings */
   body: {
-      data_streams: Array<DataStreamSettings>
-  }
+    data_streams: Array<DataStreamSettings>;
+  };
 }
 
 export class DataStreamSettings {
-  name: string
-  settings: IndexSettings
+  name: string;
+  settings: IndexSettings;
 }

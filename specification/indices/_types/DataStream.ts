@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { DataStreamLifecycleWithRollover } from '@indices/_types/DataStreamLifecycle'
+import { DataStreamLifecycleWithRollover } from "@indices/_types/DataStreamLifecycle";
 import {
   DataStreamName,
   Field,
@@ -25,16 +25,16 @@ import {
   IndexName,
   Metadata,
   Name,
-  Uuid
-} from '@_types/common'
-import { IndexSettings } from '@indices/_types/IndexSettings'
-import { integer } from '@_types/Numeric'
+  Uuid,
+} from "@_types/common";
+import { IndexSettings } from "@indices/_types/IndexSettings";
+import { integer } from "@_types/Numeric";
 
 enum ManagedBy {
-  ilm = 'Index Lifecycle Management',
+  ilm = "Index Lifecycle Management",
   // This should have been written with capital letters, it's a known typo and should not be corrected.
-  datastream = 'Data stream lifecycle',
-  unmanaged = 'Unmanaged'
+  datastream = "Data stream lifecycle",
+  unmanaged = "Unmanaged",
 }
 
 // Available index modes (for the `index.mode` setting) See the `IndexMode` class in Elasticsearch for the options.
@@ -42,13 +42,13 @@ export enum IndexMode {
   standard,
   time_series,
   logsdb,
-  lookup
+  lookup,
 }
 
 export class FailureStore {
-  enabled: boolean
-  indices: DataStreamIndex[]
-  rollover_on_write: boolean
+  enabled: boolean;
+  indices: DataStreamIndex[];
+  rollover_on_write: boolean;
 }
 
 export class DataStream {
@@ -57,128 +57,128 @@ export class DataStream {
    * If empty, the response omits this property.
    * @doc_id mapping-meta-field
    */
-  _meta?: Metadata
+  _meta?: Metadata;
   /**
    *  If `true`, the data stream allows custom routing on write request.
    */
-  allow_custom_routing?: boolean
+  allow_custom_routing?: boolean;
   /**
    * Information about failure store backing indices
    *
    */
-  failure_store?: FailureStore
+  failure_store?: FailureStore;
   /**
    * Current generation for the data stream. This number acts as a cumulative count of the stream’s rollovers, starting at 1.
    */
-  generation: integer
+  generation: integer;
   /**
    *  If `true`, the data stream is hidden.
    */
-  hidden: boolean
+  hidden: boolean;
   /**
    * Name of the current ILM lifecycle policy in the stream’s matching index template.
    * This lifecycle policy is set in the `index.lifecycle.name` setting.
    * If the template does not include a lifecycle policy, this property is not included in the response.
    * NOTE: A data stream’s backing indices may be assigned different lifecycle policies. To retrieve the lifecycle policy for individual backing indices, use the get index settings API.
    */
-  ilm_policy?: Name
+  ilm_policy?: Name;
   /**
    * Name of the lifecycle system that'll manage the next generation of the data stream.
    */
-  next_generation_managed_by: ManagedBy
+  next_generation_managed_by: ManagedBy;
   /**
    * Indicates if ILM should take precedence over DSL in case both are configured to managed this data stream.
    */
-  prefer_ilm: boolean
+  prefer_ilm: boolean;
   /**
    * Array of objects containing information about the data stream’s backing indices.
    * The last item in this array contains information about the stream’s current write index.
    */
-  indices: DataStreamIndex[]
+  indices: DataStreamIndex[];
   /**
    * Contains the configuration for the data stream lifecycle of this data stream.
    * @availability stack since=8.11.0 stability=stable
    * @availability serverless stability=stable
    */
-  lifecycle?: DataStreamLifecycleWithRollover
+  lifecycle?: DataStreamLifecycleWithRollover;
   /**
    * Name of the data stream.
    */
-  name: DataStreamName
+  name: DataStreamName;
   /**
    *  If `true`, the data stream is created and managed by cross-cluster replication and the local cluster can not write into this data stream or change its mappings.
    */
-  replicated?: boolean
+  replicated?: boolean;
   /**
    * If `true`, the next write to this data stream will trigger a rollover first and the document will be indexed in the new backing index. If the rollover fails the indexing request will fail too.
    */
-  rollover_on_write: boolean
+  rollover_on_write: boolean;
   /**
    * The settings specific to this data stream that will take precedence over the settings in the matching index
    * template.
    */
-  settings: IndexSettings
+  settings: IndexSettings;
   /**
    * Health status of the data stream.
    * This health status is based on the state of the primary and replica shards of the stream’s backing indices.
    */
-  status: HealthStatus
+  status: HealthStatus;
   /**
    * If `true`, the data stream is created and managed by an Elastic stack component and cannot be modified through normal user interaction.
    * @availability stack since=7.10.0
    * @availability serverless
    */
-  system?: boolean
+  system?: boolean;
   /**
    * Name of the index template used to create the data stream’s backing indices.
    * The template’s index pattern must match the name of this data stream.
    */
-  template: Name
+  template: Name;
   /**
    * Information about the `@timestamp` field in the data stream.
    */
-  timestamp_field: DataStreamTimestampField
+  timestamp_field: DataStreamTimestampField;
   /**
    * The index mode for the data stream that will be used for newly created backing indices.
    */
-  index_mode?: IndexMode
+  index_mode?: IndexMode;
 }
 
 export class DataStreamTimestampField {
   /**
    * Name of the timestamp field for the data stream, which must be `@timestamp`. The `@timestamp` field must be included in every document indexed to the data stream.
    */
-  name: Field
+  name: Field;
 }
 
 export class DataStreamIndex {
   /**
    * Name of the backing index.
    */
-  index_name: IndexName
+  index_name: IndexName;
   /**
    * Universally unique identifier (UUID) for the index.
    */
-  index_uuid: Uuid
+  index_uuid: Uuid;
   /**
    * Name of the current ILM lifecycle policy configured for this backing index.
    */
-  ilm_policy?: Name
+  ilm_policy?: Name;
   /**
    * Name of the lifecycle system that's currently managing this backing index.
    */
-  managed_by?: ManagedBy
+  managed_by?: ManagedBy;
   /**
    * Indicates if ILM should take precedence over DSL in case both are configured to manage this index.
    */
-  prefer_ilm?: boolean
+  prefer_ilm?: boolean;
   /**
    * The index mode of this backing index of the data stream.
    */
-  index_mode?: IndexMode
+  index_mode?: IndexMode;
 }
 
 export class DataStreamVisibility {
-  hidden?: boolean
-  allow_custom_routing?: boolean
+  hidden?: boolean;
+  allow_custom_routing?: boolean;
 }
