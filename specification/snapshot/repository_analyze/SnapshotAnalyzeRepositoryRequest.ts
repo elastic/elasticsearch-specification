@@ -43,7 +43,7 @@ import { Duration } from '@_types/Time'
  * This usually means you are using a third-party storage system with an incorrect or incompatible implementation of the API it claims to support.
  * If so, this storage system is not suitable for use as a snapshot repository.
  * Repository analysis triggers conditions that occur only rarely when taking snapshots in a production system.
- * Snapshotting to unsuitable storage may sometimes appear to work correctly most of the time despite repository analysis failures.
+ * Snapshotting to unsuitable storage may appear to work correctly most of the time despite repository analysis failures.
  * However your snapshot data is at risk if you store it in a snapshot repository that does not reliably pass repository analysis.
  * You can demonstrate that the analysis failure is due to an incompatible storage implementation by verifying that Elasticsearch does not detect the same problem when analysing the reference implementation of the storage protocol you are using.
  * For instance, if you are using storage that offers an API which the supplier claims to be compatible with AWS S3, verify that repositories in AWS S3 do not fail repository analysis.
