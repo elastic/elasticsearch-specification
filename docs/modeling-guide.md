@@ -671,6 +671,9 @@ class Request {
 }
 ```
 
+You can see the existing tag values in [elasticsearch-shared-overlays.yaml](https://github.com/elastic/elasticsearch-specification/blob/main/docs/overlays/elasticsearch-shared-overlays.yaml).
+If you add a new tag value in your specification, you must also add it to this file.
+
 NOTE: In the OpenAPI specification, operations can have multiple tags. However, we currently support only a single tag.
 
 
