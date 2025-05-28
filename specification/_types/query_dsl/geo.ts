@@ -97,7 +97,7 @@ export class GeoDistanceQuery
 
 /** @variants container */
 export class GeoGridQuery extends QueryBase {
-  geogrid?: GeoTile
+  geotile?: GeoTile
   geohash?: GeoHash
   geohex?: GeoHexCell
 }
