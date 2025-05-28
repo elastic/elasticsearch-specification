@@ -23,12 +23,14 @@ import { Duration } from '@_types/Time'
 
 /**
  * Get data stream settings.
+ *
  * Get setting information for one or more data streams.
  * @rest_spec_name indices.get_data_stream_settings
  * @availability stack stability=stable visibility=feature_flag feature_flag=logs_stream
  * @availability serverless stability=stable visibility=feature_flag feature_flag=logs_stream
  * @index_privileges view_index_metadata
  * @doc_id indices-get-data-stream-settings
+ * @doc_tag data stream
  */
 export interface Request extends RequestBase {
   urls: [
@@ -39,13 +41,13 @@ export interface Request extends RequestBase {
   ]
   path_parts: {
     /**
-     * Comma-separated list of data streams or data stream patterns. Supports wildcards (`*`).
+     * A comma-separated list of data streams or data stream patterns. Supports wildcards (`*`).
      */
     name: Indices
   }
   query_parameters: {
     /**
-     * Period to wait for a connection to the master node. If no response is
+     * The period to wait for a connection to the master node. If no response is
      * received before the timeout expires, the request fails and returns an
      * error.
      * @server_default 30s

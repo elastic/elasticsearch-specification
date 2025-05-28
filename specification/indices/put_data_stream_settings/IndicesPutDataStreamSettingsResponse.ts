@@ -28,10 +28,11 @@ export class Response {
 }
 
 export class DataStreamSettings {
+  /** The data stream name. */
   name: IndexName
   /**
-   * True if the settings were successfully applied to the data stream (or would have been, if running in dry_run
-   * mode). False if an error occurred.
+   * If the settings were successfully applied to the data stream (or would have been, if running in `dry_run`
+   * mode), it is `true`. If an error occurred, it is `false`.
    */
   applied_to_data_stream: boolean
   /**

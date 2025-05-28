@@ -27,6 +27,7 @@ export class Response {
 }
 
 export class DataStreamSettings {
+  /** The name of the data stream. */
   name: string
   settings: IndexSettings
 }

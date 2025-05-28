@@ -24,15 +24,17 @@ import { Duration } from '@_types/Time'
 
 /**
  * Update data stream settings.
+ * 
  * This API can be used to override settings on specific data streams. These overrides will take precedence over what
- * is specified in the template that the data stream matches. To prevent users from getting into an invalid state,
- * only certain settings are allowed. If the can reasonably be applied to all backing indices, it is applied to all
- * backing indices. Otherwise, it will be applied only whenever the data stream is next rolled over.
+ * is specified in the template that the data stream matches. To prevent your data stream from getting into an invalid state,
+ * only certain settings are allowed. If possible, the setting change is applied to all
+ * backing indices. Otherwise, it will be applied when the data stream is next rolled over.
  * @rest_spec_name indices.put_data_stream_settings
  * @availability stack stability=stable visibility=feature_flag feature_flag=logs_stream
  * @availability serverless stability=stable visibility=feature_flag feature_flag=logs_stream
  * @index_privileges manage
  * @doc_id indices-put-data-stream-settings
+ * @doc_tag data stream
  */
 export interface Request extends RequestBase {
   urls: [
@@ -43,7 +45,7 @@ export interface Request extends RequestBase {
   ]
   path_parts: {
     /**
-     * Comma-separated list of data streams or data stream patterns
+     * A comma-separated list of data streams or data stream patterns.
      */
     name: Indices
   }
@@ -56,14 +58,14 @@ export interface Request extends RequestBase {
      */
     dry_run?: boolean
     /**
-     * Period to wait for a connection to the master node. If no response is
+     * The period to wait for a connection to the master node. If no response is
      * received before the timeout expires, the request fails and returns an
      * error.
      * @server_default 30s
      */
     master_timeout?: Duration
     /**
-     *  Period to wait for a response. If no response is received before the
+     *  The period to wait for a response. If no response is received before the
      *  timeout expires, the request fails and returns an error.
      * @server_default 30s
      */
