@@ -270,10 +270,10 @@ pub fn add_endpoint(
                 let path = &url.path;
                 write!(
                     description,
-                    r#"<div><operation-summary>
+                    r#"<div>
                       <span class="operation-verb {lower_method}">{method}</span>
                       <span class="operation-path">{path}</span>
-                    </operation-summary></div>
+                      </div>
                     "#
                 )?;
             }
