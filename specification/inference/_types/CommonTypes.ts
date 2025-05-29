@@ -585,6 +585,8 @@ export class CohereServiceSettings {
   api_key: string
   /**
    * For a `text_embedding` task, the types of embeddings you want to get back.
+   * Use `binary` for binary embeddings, which are encoded as bytes with signed int8 precision.
+   * Use `bit` for binary embeddings, which are encoded as bytes with signed int8 precision (this is a synonym of `binary`).
    * Use `byte` for signed int8 embeddings (this is a synonym of `int8`).
    * Use `float` for the default float embeddings.
    * Use `int8` for signed int8 embeddings.
@@ -625,6 +627,8 @@ export enum CohereServiceType {
 }
 
 export enum CohereEmbeddingType {
+  binary,
+  bit,
   byte,
   float,
   int8
