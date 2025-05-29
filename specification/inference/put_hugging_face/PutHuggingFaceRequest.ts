@@ -44,6 +44,16 @@ import { Id } from '@_types/common'
  * * `e5-small-v2`
  * * `multilingual-e5-base`
  * * `multilingual-e5-small`
+ *
+ * For Elastic's `rerank` task:
+ * The selected model must support the `sentence-ranking` task and expose OpenAI API.
+ * HuggingFace supports only dedicated (not serverless) endpoints for `Rerank` so far.
+ * After the endpoint is initialized, copy the full endpoint URL for use.
+ * Tested models for `rerank` task:
+ *
+ * * `bge-reranker-base`
+ * * `jina-reranker-v1-turbo-en-GGUF`
+ *
  * @rest_spec_name inference.put_hugging_face
  * @availability stack since=8.12.0 stability=stable visibility=public
  * @availability serverless stability=stable visibility=public
