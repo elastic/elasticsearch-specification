@@ -30,8 +30,8 @@ import { Duration } from '@_types/Time'
  * only certain settings are allowed. If possible, the setting change is applied to all
  * backing indices. Otherwise, it will be applied when the data stream is next rolled over.
  * @rest_spec_name indices.put_data_stream_settings
- * @availability stack stability=stable visibility=feature_flag feature_flag=logs_stream
- * @availability serverless stability=stable visibility=feature_flag feature_flag=logs_stream
+ * @availability stack stability=stable visibility=public
+ * @availability serverless stability=stable visibility=public
  * @index_privileges manage
  * @doc_id indices-put-data-stream-settings
  * @doc_tag data stream

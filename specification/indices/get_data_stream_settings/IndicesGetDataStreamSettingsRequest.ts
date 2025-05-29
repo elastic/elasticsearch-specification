@@ -26,8 +26,8 @@ import { Duration } from '@_types/Time'
  *
  * Get setting information for one or more data streams.
  * @rest_spec_name indices.get_data_stream_settings
- * @availability stack stability=stable visibility=feature_flag feature_flag=logs_stream
- * @availability serverless stability=stable visibility=feature_flag feature_flag=logs_stream
+ * @availability stack stability=stable visibility=public
+ * @availability serverless stability=stable visibility=public
  * @index_privileges view_index_metadata
  * @doc_id indices-get-data-stream-settings
  * @doc_tag data stream
