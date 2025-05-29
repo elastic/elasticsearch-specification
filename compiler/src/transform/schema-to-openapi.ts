@@ -20,10 +20,10 @@
 import { convert_schema_to_openapi } from 'compiler-wasm-lib'
 
 // Remove the 2 first args ("ts-node", "schema-to-openapi.ts")
-const realArgs = process.argv.slice(2);
+const realArgs = process.argv.slice(2)
 
 try {
-  convert_schema_to_openapi(realArgs, "..");
+  convert_schema_to_openapi(realArgs, '..')
 } catch (e) {
   console.log(e)
 }
