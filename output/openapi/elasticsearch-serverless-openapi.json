@@ -49816,6 +49816,9 @@
             "description": "If `true`, the next write to this data stream will trigger a rollover first and the document will be indexed in the new backing index. If the rollover fails the indexing request will fail too.",
             "type": "boolean"
           },
+          "settings": {
+            "$ref": "#/components/schemas/indices._types.IndexSettings"
+          },
           "status": {
             "$ref": "#/components/schemas/_types.HealthStatus"
           },
@@ -49841,6 +49844,7 @@
           "indices",
           "name",
           "rollover_on_write",
+          "settings",
           "status",
           "template",
           "timestamp_field"
