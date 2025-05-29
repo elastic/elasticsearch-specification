@@ -29,7 +29,15 @@ use crate::components::TypesAndComponents;
 
 pub struct Configuration {
     pub flavor: Option<Flavor>,
+
+    /// If a property value is an enumeration, the description of possible values will be copied in the
+    /// property's description (also works for arrays of enums).
     pub lift_enum_descriptions: bool,
+
+    /// Will output endpoints having multiple paths into a single operation. The operation's path will
+    /// be the longest one (with values for all optional parameters), and the other paths will be added
+    /// at the beginning of the operation's description.
+    pub merge_multipath_endpoints: bool,
 }
 
 impl Default for Configuration {
@@ -37,6 +45,7 @@ impl Default for Configuration {
         Self {
             flavor: None,
             lift_enum_descriptions: true,
+            merge_multipath_endpoints: true,
         }
     }
 }
