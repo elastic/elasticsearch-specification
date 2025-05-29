@@ -29,5 +29,11 @@ export class Response {
 export class DataStreamSettings {
   /** The name of the data stream. */
   name: string
+  /** The settings specific to this data stream */
   settings: IndexSettings
+  /**
+   * The settings specific to this data stream merged with the settings from its template. These `effective_settings`
+   * are the settings that will be used when a new index is created for this data stream.
+   */
+  effective_settings: IndexSettings
 }

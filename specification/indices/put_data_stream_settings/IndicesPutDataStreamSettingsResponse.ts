@@ -45,7 +45,7 @@ export class DataStreamSettings {
   settings: IndexSettings
   /**
    * The settings that are effective on this data stream, taking into account the settings from the matching index
-   * template and the settings specfic to this data stream.
+   * template and the settings specific to this data stream.
    */
   effective_settings: IndexSettings
   /**
