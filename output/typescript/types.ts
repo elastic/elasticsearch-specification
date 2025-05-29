@@ -12365,6 +12365,7 @@ export interface IndicesGetDataStreamResponse {
 export interface IndicesGetDataStreamSettingsDataStreamSettings {
   name: string
   settings: IndicesIndexSettings
+  effective_settings: IndicesIndexSettings
 }
 
 export interface IndicesGetDataStreamSettingsRequest extends RequestBase {
