@@ -51528,6 +51528,8 @@
       "inference._types.CohereEmbeddingType": {
         "type": "string",
         "enum": [
+          "binary",
+          "bit",
           "byte",
           "float",
           "int8"
