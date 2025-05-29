@@ -12571,15 +12571,6 @@ export interface IndicesPutDataLifecycleRequest extends RequestBase {
 
 export type IndicesPutDataLifecycleResponse = AcknowledgedResponseBase
 
-export interface IndicesPutDataStreamSettingsDataStreamSettings {
-  name: IndexName
-  applied_to_data_stream: boolean
-  error?: string
-  settings: IndicesIndexSettings
-  effective_settings: IndicesIndexSettings
-  index_settings_results: IndicesPutDataStreamSettingsIndexSettingResults
-}
-
 export interface IndicesPutDataStreamSettingsDataStreamSettingsError {
   index: IndexName
   error: string
@@ -12600,7 +12591,16 @@ export interface IndicesPutDataStreamSettingsRequest extends RequestBase {
 }
 
 export interface IndicesPutDataStreamSettingsResponse {
-  data_streams: IndicesPutDataStreamSettingsDataStreamSettings[]
+  data_streams: IndicesPutDataStreamSettingsUpdatedDataStreamSettings[]
+}
+
+export interface IndicesPutDataStreamSettingsUpdatedDataStreamSettings {
+  name: IndexName
+  applied_to_data_stream: boolean
+  error?: string
+  settings: IndicesIndexSettings
+  effective_settings: IndicesIndexSettings
+  index_settings_results: IndicesPutDataStreamSettingsIndexSettingResults
 }
 
 export interface IndicesPutIndexTemplateIndexTemplateMapping {

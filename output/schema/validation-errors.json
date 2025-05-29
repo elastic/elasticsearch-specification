@@ -155,7 +155,5 @@
       "response": []
     }
   },
-  "generalErrors": [
-    "DataStreamSettings is present in multiple namespaces: indices.get_data_stream_settings and indices.put_data_stream_settings"
-  ]
+  "generalErrors": []
 }

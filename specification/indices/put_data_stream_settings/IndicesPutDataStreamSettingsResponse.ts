@@ -23,11 +23,11 @@ import { IndexName } from '@_types/common'
 export class Response {
   /** @codegen_name data_stream_settings_results */
   body: {
-    data_streams: Array<DataStreamSettings>
+    data_streams: Array<UpdatedDataStreamSettings>
   }
 }
 
-export class DataStreamSettings {
+export class UpdatedDataStreamSettings {
   /** The data stream name. */
   name: IndexName
   /**
