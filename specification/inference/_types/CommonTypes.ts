@@ -893,7 +893,7 @@ export class HuggingFaceServiceSettings {
   rate_limit?: RateLimitSetting
   /**
    * The URL endpoint to use for the requests.
-   * For `completion` and `chat_completion` tasks, endpoint must be compatible with the OpenAI API format and include `v1/chat/completions`.
+   * For `completion` and `chat_completion` tasks, the deployed model must be compatible with the Hugging Face Chat Completion interface (https://huggingface.co/docs/inference-providers/en/tasks/chat-completion#conversational-large-language-models-llms). OpenAI mode must be enabled, and the endpoint URL must include `v1/chat/completions`.
    */
   url: string
   /**
