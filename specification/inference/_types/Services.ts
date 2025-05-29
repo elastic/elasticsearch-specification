@@ -21,8 +21,8 @@ import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 import { integer } from '@_types/Numeric'
 import {
   TaskType,
-  TaskTypeJinaAi,
-  TaskTypeAlibabaCloudAI
+  TaskTypeAlibabaCloudAI,
+  TaskTypeJinaAi
 } from '../_types/TaskType'
 
 /**
