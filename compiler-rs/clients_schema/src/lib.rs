@@ -15,6 +15,7 @@
 // specific language governing permissions and limitations
 // under the License.
 
+use std::fmt;
 use std::fmt::{Debug, Display, Formatter};
 
 use anyhow::anyhow;
@@ -253,6 +254,15 @@ pub struct Deprecation {
 pub enum Flavor {
     Stack,
     Serverless,
+}
+
+impl Display for Flavor {
+    fn fmt(&self, f: &mut Formatter) -> fmt::Result {
+        match self {
+            Flavor::Stack => write!(f, "stack"),
+            Flavor::Serverless => write!(f, "serverless"),
+        }
+    }
 }
 
 /// The availability of an item in a API flavor
