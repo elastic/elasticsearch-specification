@@ -400,6 +400,7 @@ export class ShapeFieldQuery {
  */
 export class RuleQuery extends QueryBase {
   organic: QueryContainer
-  ruleset_ids: Id[]
+  ruleset_ids?: Id | Id[]
+  ruleset_id?: string
   match_criteria: UserDefinedValue
 }

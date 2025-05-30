@@ -18,6 +18,7 @@
  */
 
 import { FieldCollapse } from '@global/search/_types/FieldCollapse'
+import { Rescore } from '@global/search/_types/rescoring'
 import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 import { QueryVector, QueryVectorBuilder, RescoreVector } from '@_types/Knn'
 import { float, integer } from '@_types/Numeric'
@@ -39,6 +40,8 @@ export class RetrieverContainer {
   text_similarity_reranker?: TextSimilarityReranker
   /** A retriever that replaces the functionality of a rule query. */
   rule?: RuleRetriever
+  /** A retriever that re-scores only the results produced by its child retriever. */
+  rescorer?: RescorerRetriever
 }
 
 export class RetrieverBase {
@@ -46,6 +49,12 @@ export class RetrieverBase {
   filter?: QueryContainer | QueryContainer[]
   /** Minimum _score for matching documents. Documents with a lower _score are not included in the top documents. */
   min_score?: float
+}
+
+export class RescorerRetriever extends RetrieverBase {
+  /** Inner retriever. */
+  retriever: RetrieverContainer
+  rescore: Rescore | Rescore[]
 }
 
 export class StandardRetriever extends RetrieverBase {
@@ -105,7 +114,7 @@ export class TextSimilarityReranker extends RetrieverBase {
 
 export class RuleRetriever extends RetrieverBase {
   /** The ruleset IDs containing the rules this retriever is evaluating against. */
-  ruleset_ids: Id[]
+  ruleset_ids: Id | Id[]
   /** The match criteria that will determine if a rule in the provided rulesets should be applied. */
   match_criteria: UserDefinedValue
   /** The retriever whose results rules should be applied to. */
