@@ -9694,7 +9694,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/inference._types.InferenceEndpointInfo"
+                  "$ref": "#/components/schemas/inference._types.InferenceEndpointInfoAlibabaCloudAI"
                 }
               }
             }
@@ -50724,6 +50724,38 @@
             "type": "boolean"
           }
         }
+      },
+      "inference._types.InferenceEndpointInfoAlibabaCloudAI": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/inference._types.InferenceEndpoint"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "inference_id": {
+                "description": "The inference Id",
+                "type": "string"
+              },
+              "task_type": {
+                "$ref": "#/components/schemas/inference._types.TaskTypeAlibabaCloudAI"
+              }
+            },
+            "required": [
+              "inference_id",
+              "task_type"
+            ]
+          }
+        ]
+      },
+      "inference._types.TaskTypeAlibabaCloudAI": {
+        "type": "string",
+        "enum": [
+          "text_embedding",
+          "rerank",
+          "completion",
+          "sparse_embedding"
+        ]
       },
       "inference._types.AmazonBedrockTaskType": {
         "type": "string",
