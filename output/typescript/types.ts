@@ -13451,6 +13451,11 @@ export interface InferenceInferenceEndpointInfo extends InferenceInferenceEndpoi
   task_type: InferenceTaskType
 }
 
+export interface InferenceInferenceEndpointInfoAlibabaCloudAI extends InferenceInferenceEndpoint {
+  inference_id: string
+  task_type: InferenceTaskTypeAlibabaCloudAI
+}
+
 export interface InferenceInferenceEndpointInfoJinaAi extends InferenceInferenceEndpoint {
   inference_id: string
   task_type: InferenceTaskTypeJinaAi
@@ -13563,6 +13568,8 @@ export type InferenceSparseVector = Record<string, float>
 export type InferenceTaskSettings = any
 
 export type InferenceTaskType = 'sparse_embedding' | 'text_embedding' | 'rerank' | 'completion' | 'chat_completion'
+
+export type InferenceTaskTypeAlibabaCloudAI = 'text_embedding' | 'rerank' | 'completion' | 'sparse_embedding'
 
 export type InferenceTaskTypeJinaAi = 'text_embedding' | 'rerank'
 
@@ -13690,7 +13697,7 @@ export interface InferencePutAlibabacloudRequest extends RequestBase {
   }
 }
 
-export type InferencePutAlibabacloudResponse = InferenceInferenceEndpointInfo
+export type InferencePutAlibabacloudResponse = InferenceInferenceEndpointInfoAlibabaCloudAI
 
 export interface InferencePutAmazonbedrockRequest extends RequestBase {
   task_type: InferenceAmazonBedrockTaskType
