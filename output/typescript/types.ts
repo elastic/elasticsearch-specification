@@ -13308,7 +13308,7 @@ export interface InferenceAzureOpenAITaskSettings {
 
 export type InferenceAzureOpenAITaskType = 'completion' | 'text_embedding'
 
-export type InferenceCohereEmbeddingType = 'byte' | 'float' | 'int8'
+export type InferenceCohereEmbeddingType = 'binary' | 'bit' | 'byte' | 'float' | 'int8'
 
 export type InferenceCohereInputType = 'classification' | 'clustering' | 'ingest' | 'search'
 
