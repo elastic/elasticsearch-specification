@@ -15,11 +15,12 @@
 // specific language governing permissions and limitations
 // under the License.
 
+use std::string::String;
 use std::collections::HashMap;
 use std::fmt::Write;
 
 use anyhow::{anyhow, bail};
-use clients_schema::Property;
+use clients_schema::{Availability, Property};
 use indexmap::IndexMap;
 use indexmap::indexmap;
 use icu_segmenter::SentenceSegmenter;
@@ -27,9 +28,11 @@ use openapiv3::{
     MediaType, Parameter, ParameterData, ParameterSchemaOrContent, PathItem, PathStyle, Paths, QueryStyle, ReferenceOr,
     RequestBody, Response, Responses, StatusCode, Example
 };
+use serde_json::{Map, Value};
+use serde_json::Value::{Object, String as JsonString};
+use clients_schema::Flavor::Stack;
 use clients_schema::SchemaExample;
-
-use crate::components::TypesAndComponents;
+use crate::components::{TypesAndComponents};
 
 /// Add an endpoint to the OpenAPI schema. This will result in the addition of a number of elements to the
 /// openapi schema's `paths` and `components` sections.
@@ -60,6 +63,16 @@ pub fn add_endpoint(
     let request = tac.model.get_request(endpoint.request.as_ref().unwrap())?;
 
     fn parameter_data(prop: &Property, in_path: bool, tac: &mut TypesAndComponents) -> anyhow::Result<ParameterData> {
+        let mut extensions: IndexMap<String,Value> = Default::default();
+        if let Some(temp_avail) = prop.availability.clone() {
+            let avail = temp_avail.get(&tac.config.flavor.clone().unwrap_or(Stack));
+            if avail.is_some() {
+                if let Some(since) = &avail.unwrap().since {
+                    let stable_since = "Added in ".to_string() + since;
+                    extensions.insert("x-state".to_string(),JsonString(stable_since));
+                }
+            }
+        }
         Ok(ParameterData {
             name: prop.name.clone(),
             description: tac.property_description(prop)?,
@@ -69,7 +82,7 @@ pub fn add_endpoint(
             example: None,
             examples: Default::default(),
             explode: None, // Defaults to simple, i.e. comma-separated values for arrays
-            extensions: Default::default(),
+            extensions
         })
     }
 
