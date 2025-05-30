@@ -152,6 +152,16 @@ mod tests {
     }
 
     #[test]
+    fn test_stack() -> anyhow::Result<()> {
+        Cli {
+            schema: "../../output/schema/schema.json".into(),
+            flavor: None,
+            output: Some("../../output/openapi/elasticsearch-openapi.json".into()),
+        }
+            .run()
+    }
+
+    #[test]
     fn test_serverless() -> anyhow::Result<()> {
         Cli {
             schema: "../../output/schema/schema-no-generics.json".into(),
