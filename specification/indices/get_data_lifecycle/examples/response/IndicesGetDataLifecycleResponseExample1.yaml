@@ -1,5 +1,5 @@
 # summary:
-description: A successful response from `GET _lifecycle/stats?human&pretty`.
+description: A successful response from `GET /_data_stream/{name}/_lifecycle?human&pretty`.
 # type: response
 # response_code: 200
 value:
