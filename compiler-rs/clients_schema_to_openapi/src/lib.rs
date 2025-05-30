@@ -23,7 +23,7 @@ pub mod cli;
 
 use indexmap::IndexMap;
 
-use clients_schema::{Availabilities, Flavor, IndexedModel, Stability, Visibility};
+use clients_schema::{Availabilities, Flavor, IndexedModel, Privileges, Stability, Visibility};
 use openapiv3::{Components, OpenAPI};
 use clients_schema::transform::ExpandConfig;
 use crate::components::TypesAndComponents;
@@ -149,7 +149,7 @@ fn info(model: &IndexedModel) -> openapiv3::Info {
     }
 }
 
-pub fn availability_as_extensions(availabilities: &Option<Availabilities>) -> IndexMap<String, serde_json::Value> {
+pub fn extensions(availabilities: &Option<Availabilities>, privileges: &Option<Privileges>) -> IndexMap<String, serde_json::Value> {
     let mut result = IndexMap::new();
 
     if let Some(avails) = availabilities {
@@ -171,6 +171,15 @@ pub fn availability_as_extensions(availabilities: &Option<Availabilities>) -> In
                     }
                 }
             }
+        }
+    }
+
+    if let Some(privs) = privileges {
+        if privs.index.len()>0 {
+            result.insert("index-privileges".to_string(),serde_json::Value::String(privs.index.join(",")));
+        }
+        if privs.cluster.len()>0 {
+            result.insert("cluster-privileges".to_string(),serde_json::Value::String(privs.cluster.join(",")));
         }
     }
 
