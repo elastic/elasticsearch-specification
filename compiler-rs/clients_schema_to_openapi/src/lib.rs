@@ -19,6 +19,7 @@ mod components;
 mod paths;
 mod schemas;
 mod utils;
+pub mod cli;
 
 use indexmap::IndexMap;
 
@@ -29,16 +30,8 @@ use crate::components::TypesAndComponents;
 
 pub struct Configuration {
     pub flavor: Option<Flavor>,
+    pub namespaces: Option<Vec<String>>,
     pub lift_enum_descriptions: bool,
-}
-
-impl Default for Configuration {
-    fn default() -> Self {
-        Self {
-            flavor: None,
-            lift_enum_descriptions: true,
-        }
-    }
 }
 
 /// Convert an API model into an OpenAPI v3 schema, optionally filtered for a given flavor
@@ -105,6 +98,11 @@ pub fn convert_expanded_schema(model: &IndexedModel, config: &Configuration) -> 
 
     // Endpoints
     for endpoint in &model.endpoints {
+        if let Some(namespaces) = &config.namespaces {
+            if !namespaces.contains(&endpoint.name) {
+                continue;
+            }
+        }
         paths::add_endpoint(endpoint, &mut tac, &mut openapi.paths)?;
     }
 

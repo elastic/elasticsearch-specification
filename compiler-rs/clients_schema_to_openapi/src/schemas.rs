@@ -481,7 +481,7 @@ impl<'a> TypesAndComponents<'a> {
 
     pub fn property_description(&self, prop: &Property) -> anyhow::Result<Option<String>> {
         if self.config.lift_enum_descriptions {
-            Ok(lift_enum_descriptions(prop, &self.model)?.or_else(|| prop.description.clone()))
+            Ok(lift_enum_descriptions(prop, self.model)?.or_else(|| prop.description.clone()))
         } else {
             Ok(prop.description.clone())
         }

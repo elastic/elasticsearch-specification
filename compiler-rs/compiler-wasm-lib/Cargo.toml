@@ -18,6 +18,7 @@ clients_schema_to_openapi = {path="../clients_schema_to_openapi"}
 serde_json = { workspace = true }
 anyhow = { workspace = true }
 tracing = "0.1"
+argh = { workspace = true }
 
 console_error_panic_hook = { workspace = true, optional = true }
 tracing-wasm = "0.2.1"
