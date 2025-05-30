@@ -51473,7 +51473,9 @@
         "type": "string",
         "enum": [
           "rerank",
-          "text_embedding"
+          "text_embedding",
+          "completion",
+          "chat_completion"
         ]
       },
       "inference._types.GoogleVertexAIServiceType": {
