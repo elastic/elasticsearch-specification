@@ -1,0 +1,13 @@
+{
+  "name": "specification",
+  "version": "0.1.0",
+  "type": "module",
+  "scripts": {
+    "lint": "eslint"
+  },
+  "dependencies": {
+    "@typescript-eslint/parser": "^8.32.1",
+    "eslint": "^9.26.0",
+    "eslint-plugin-es-spec": "file:../validator"
+  }
+}
