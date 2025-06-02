@@ -49,10 +49,11 @@ transform-expand-generics: ## Create a new schema with all generics expanded
 	@npm run transform-expand-generics --prefix compiler
 
 transform-to-openapi: ## Generate the OpenAPI definition from the compiled schema
-	@npm run transform-to-openapi --prefix compiler
+	@npm run transform-to-openapi -- --schema output/schema/schema.json --flavor stack --output output/openapi/elasticsearch-openapi.json
+	@npm run transform-to-openapi -- --schema output/schema/schema.json --flavor serverless --output output/openapi/elasticsearch-serverless-openapi.json
 
 filter-for-serverless: ## Generate the serverless version from the compiled schema
-	@npm run --prefix compiler filter-by-availability -- --serverless --visibility=public --input ../output/schema/schema.json --output ../output/schema/schema-serverless.json
+	@npm run --prefix compiler filter-by-availability -- --serverless --visibility=public --input ../output/schema/schema.json --output ../output/output/openapi/elasticsearch-serverless-openapi.json
 
 dump-routes: ## Create a new schema with all generics expanded
 	@npm run dump-routes --prefix compiler
