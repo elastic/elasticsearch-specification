@@ -1066,6 +1066,16 @@ actions:
       x-model: true
       externalDocs:
         url: https://www.elastic.co/docs/reference/elasticsearch/rest-apis/collapse-search-results
+  - target: "$.components['schemas']['indices._types.IndexSettings']"
+    description: Add x-model and externalDocs for IndexSettings component
+    update:
+      x-model: true
+      externalDocs:
+        description: Index settings
+        url: https://www.elastic.co/docs/reference/elasticsearch/index-settings/
+  - target: "$.components['schemas']['indices._types.IndexSettings'].properties"
+    description: Remove properties IndexSettings object
+    remove: true
   # - target: "$.components['schemas']['_global.msearch.MultisearchBody'].properties"
   #   description: Add x-model
   #   update:
