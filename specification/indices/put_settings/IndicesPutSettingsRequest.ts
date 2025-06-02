@@ -30,9 +30,9 @@ import { Duration } from '@_types/Time'
  * To revert a setting to the default value, use a null value.
  * The list of per-index settings that can be updated dynamically on live indices can be found in index settings documentation.
  * To preserve existing settings from being updated, set the `preserve_existing` parameter to `true`.
- * 
+ *
  *  There are multiple valid ways to represent index settings in the request body. You can specify only the setting, for example:
- * 
+ *
  * ```
  * {
  *   "number_of_replicas": 1
@@ -43,7 +43,7 @@ import { Duration } from '@_types/Time'
  * ```
  * {
  *   "index": {
- *     "number_of_replicas": 1 
+ *     "number_of_replicas": 1
  *   }
  * }
  * ```
