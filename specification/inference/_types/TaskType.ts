@@ -32,3 +32,10 @@ export enum TaskTypeJinaAi {
   text_embedding,
   rerank
 }
+
+export enum TaskTypeAlibabaCloudAI {
+  text_embedding,
+  rerank,
+  completion,
+  sparse_embedding
+}
