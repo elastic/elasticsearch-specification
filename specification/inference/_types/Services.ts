@@ -19,7 +19,11 @@
 
 import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 import { integer } from '@_types/Numeric'
-import { TaskType, TaskTypeJinaAi } from '../_types/TaskType'
+import {
+  TaskType,
+  TaskTypeAlibabaCloudAI,
+  TaskTypeJinaAi
+} from '../_types/TaskType'
 
 /**
  * Configuration options when storing the inference endpoint
@@ -66,6 +70,17 @@ export class InferenceEndpointInfoJinaAi extends InferenceEndpoint {
    * The task type
    */
   task_type: TaskTypeJinaAi
+}
+
+export class InferenceEndpointInfoAlibabaCloudAI extends InferenceEndpoint {
+  /**
+   * The inference Id
+   */
+  inference_id: string
+  /**
+   * The task type
+   */
+  task_type: TaskTypeAlibabaCloudAI
 }
 
 /**
