@@ -69,7 +69,7 @@ export class RetentionLease {
 
 /**
  * @doc_id index-modules-settings
- *
+ * @ext_doc_id index-settings
  * @behavior_meta AdditionalProperties fieldname=other_settings description="Additional settings not covered in this type."
  */
 export class IndexSettings
