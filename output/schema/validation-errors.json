@@ -57,12 +57,6 @@
       ],
       "response": []
     },
-    "indices.get_data_stream_options": {
-      "request": [
-        "Request: missing json spec query parameter 'include_defaults'"
-      ],
-      "response": []
-    },
     "ingest.get_ip_location_database": {
       "request": [
         "Request: query parameter 'master_timeout' does not exist in the json spec"
