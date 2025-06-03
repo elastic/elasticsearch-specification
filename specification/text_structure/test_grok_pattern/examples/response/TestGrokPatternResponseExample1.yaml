@@ -1,4 +1,5 @@
 # summary:
+method_request: GET _text_structure/test_grok_pattern
 description: A successful response from `GET _text_structure/test_grok_pattern`.
 # type: response
 # response_code: ''

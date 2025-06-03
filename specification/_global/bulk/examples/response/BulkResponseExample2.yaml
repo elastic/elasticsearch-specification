@@ -1,4 +1,5 @@
 summary: Failed actions
+method_request: POST /_bulk
 description: >
   If you run `POST /_bulk` with operations that update non-existent documents, the operations cannot complete successfully.
   The API returns a response with an `errors` property value `true`.

@@ -1,4 +1,5 @@
 # summary:
+method_request: DELETE /_security/user/jacknich
 description: >
   A successful response from `DELETE /_security/user/jacknich`.
 # type: response

@@ -1,5 +1,5 @@
 # summary: ""
-method_request: "PUT /_ccr/auto_follow/my_auto_follow_pattern"
+method_request: 'PUT /_ccr/auto_follow/my_auto_follow_pattern'
 description: >
   Run `PUT /_ccr/auto_follow/my_auto_follow_pattern` to creates an auto-follow pattern.
 # type: "request"

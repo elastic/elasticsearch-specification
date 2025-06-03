@@ -1,4 +1,5 @@
 # summary:
+method_request: POST /_security/service/elastic/fleet-server/credential/token/token1
 description: >
   A successful response from `POST /_security/service/elastic/fleet-server/credential/token/token1`.
   The response includes the service account token, its name, and its secret value as a bearer token.

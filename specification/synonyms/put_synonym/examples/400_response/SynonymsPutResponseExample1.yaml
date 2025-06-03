@@ -1,4 +1,5 @@
 # summary:
+method_request: PUT _synonyms/my-synonyms-set
 description: >
   An abbreviated response from `PUT _synonyms/my-synonyms-set`.
   If any of the synonym rules included is not valid, the API returns an error.

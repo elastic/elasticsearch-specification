@@ -1,4 +1,5 @@
 # summary:
+method_request: POST /_migration/system_features
 description: >
   When you run `POST /_migration/system_features` to start the migration process, the response lists the features that will be migrated.
 # type: response
