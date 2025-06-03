@@ -899,7 +899,7 @@ export class HuggingFaceServiceSettings {
   /**
    * The name of the HuggingFace model to use for the inference task.
    * For `completion` and `chat_completion` tasks, this field is optional but may be required for certain models — particularly when using serverless inference endpoints.
-   * For the `text_embedding` task, this field is not required and will be ignored if provided.
+   * For the `text_embedding` task, this field should not be included or the request will result fail.
    */
   model_id?: string
 }

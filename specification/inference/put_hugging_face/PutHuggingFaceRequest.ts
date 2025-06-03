@@ -29,7 +29,7 @@ import { Id } from '@_types/common'
 /**
  * Create a Hugging Face inference endpoint.
  *
- * Creates an inference endpoint to perform an inference task with the `hugging_face` service.
+ * Create an inference endpoint to perform an inference task with the `hugging_face` service.
  * Supported tasks include: `text_embedding`, `completion`, and `chat_completion`.
  *
  * To configure the endpoint, first visit the Hugging Face Inference Endpoints page and create a new endpoint.
