@@ -1,5 +1,5 @@
 summary: Generate term vectors on the fly
-# method_request: GET /my-index-000001/_termvectors/1
+method_request: GET /my-index-000001/_termvectors/1
 description: >
   Run `GET /my-index-000001/_termvectors/1`.
   Term vectors which are not explicitly stored in the index are automatically computed on the fly.

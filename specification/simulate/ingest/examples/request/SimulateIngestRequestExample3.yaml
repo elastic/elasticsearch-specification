@@ -1,5 +1,5 @@
 summary: Component template substitutions
-# method_request: POST /_ingest/_simulate
+method_request: POST /_ingest/_simulate
 description: >
   In this example, imagine that the index `my-index` has a strict mapping with only the `foo` keyword field defined.
   Say that field mapping came from a component template named `my-mappings-template`. You want to test adding a new field, `bar`.

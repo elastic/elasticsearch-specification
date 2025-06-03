@@ -1,5 +1,5 @@
 summary: Add fields with a script
-# method_request: POST test/_update/1
+method_request: POST test/_update/1
 description: >
   Run `POST test/_update/1` to use a script to add a field `new_field` to the document.
 # type: request
