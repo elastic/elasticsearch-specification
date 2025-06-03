@@ -271,6 +271,8 @@ export class Example {
   summary?: string
   /** Long description. */
   description?: string
+  /** request method and URL */
+  method_request?: string
   /** Embedded literal example. Mutually exclusive with `external_value` */
   value?: string
   /** A URI that points to the literal example */

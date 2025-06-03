@@ -494,6 +494,7 @@ impl TypeDefinition {
 #[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct SchemaExample {
     pub summary: Option<String>,
+    pub method_request: Option<String>,
     pub description: Option<String>,
     pub value: Option<String>,
     pub external_value: Option<String>,
