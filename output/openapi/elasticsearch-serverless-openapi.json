@@ -79,6 +79,7 @@
           }
         },
 <<<<<<< HEAD
+<<<<<<< HEAD
         "x-state": "Added in 7.7.0",
         "x-codeSamples": [
           {
@@ -89,6 +90,9 @@
 =======
         "x-state": "Generally available; Added in 7.7.0"
 >>>>>>> d9ed256a7 (openapi: adding more info in x-state)
+=======
+        "x-state": "Generally available"
+>>>>>>> 0c626376e (getting flavor from config to fix serverless output)
       },
       "delete": {
         "tags": [
@@ -122,7 +126,7 @@
             }
           }
         },
-        "x-state": "Generally available; Added in 7.7.0"
+        "x-state": "Generally available"
       }
     },
     "/_async_search/status/{id}": {
@@ -186,6 +190,7 @@
           }
         },
 <<<<<<< HEAD
+<<<<<<< HEAD
         "x-state": "Added in 7.11.0",
         "x-codeSamples": [
           {
@@ -196,6 +201,9 @@
 =======
         "x-state": "Generally available; Added in 7.11.0"
 >>>>>>> d9ed256a7 (openapi: adding more info in x-state)
+=======
+        "x-state": "Generally available"
+>>>>>>> 0c626376e (getting flavor from config to fix serverless output)
       }
     },
     "/_async_search": {
@@ -346,6 +354,7 @@
           }
         },
 <<<<<<< HEAD
+<<<<<<< HEAD
         "x-state": "Added in 7.7.0",
         "x-codeSamples": [
           {
@@ -356,6 +365,9 @@
 =======
         "x-state": "Generally available; Added in 7.7.0"
 >>>>>>> d9ed256a7 (openapi: adding more info in x-state)
+=======
+        "x-state": "Generally available"
+>>>>>>> 0c626376e (getting flavor from config to fix serverless output)
       }
     },
     "/{index}/_async_search": {
@@ -509,6 +521,7 @@
           }
         },
 <<<<<<< HEAD
+<<<<<<< HEAD
         "x-state": "Added in 7.7.0",
         "x-codeSamples": [
           {
@@ -519,6 +532,9 @@
 =======
         "x-state": "Generally available; Added in 7.7.0"
 >>>>>>> d9ed256a7 (openapi: adding more info in x-state)
+=======
+        "x-state": "Generally available"
+>>>>>>> 0c626376e (getting flavor from config to fix serverless output)
       }
     },
     "/_bulk": {
@@ -896,6 +912,7 @@
           }
         },
 <<<<<<< HEAD
+<<<<<<< HEAD
         "x-state": "Added in 5.1.0",
         "x-codeSamples": [
           {
@@ -906,6 +923,9 @@
 =======
         "x-state": "Generally available; Added in 5.1.0"
 >>>>>>> d9ed256a7 (openapi: adding more info in x-state)
+=======
+        "x-state": "Generally available"
+>>>>>>> 0c626376e (getting flavor from config to fix serverless output)
       }
     },
     "/_cat/component_templates/{name}": {
@@ -939,6 +959,7 @@
           }
         },
 <<<<<<< HEAD
+<<<<<<< HEAD
         "x-state": "Added in 5.1.0",
         "x-codeSamples": [
           {
@@ -949,6 +970,9 @@
 =======
         "x-state": "Generally available; Added in 5.1.0"
 >>>>>>> d9ed256a7 (openapi: adding more info in x-state)
+=======
+        "x-state": "Generally available"
+>>>>>>> 0c626376e (getting flavor from config to fix serverless output)
       }
     },
     "/_cat/count": {
@@ -1185,6 +1209,7 @@
           }
         },
 <<<<<<< HEAD
+<<<<<<< HEAD
         "x-state": "Added in 7.7.0",
         "x-codeSamples": [
           {
@@ -1195,6 +1220,9 @@
 =======
         "x-state": "Generally available; Added in 7.7.0"
 >>>>>>> d9ed256a7 (openapi: adding more info in x-state)
+=======
+        "x-state": "Generally available"
+>>>>>>> 0c626376e (getting flavor from config to fix serverless output)
       }
     },
     "/_cat/ml/data_frame/analytics/{id}": {
@@ -1231,6 +1259,7 @@
           }
         },
 <<<<<<< HEAD
+<<<<<<< HEAD
         "x-state": "Added in 7.7.0",
         "x-codeSamples": [
           {
@@ -1241,6 +1270,9 @@
 =======
         "x-state": "Generally available; Added in 7.7.0"
 >>>>>>> d9ed256a7 (openapi: adding more info in x-state)
+=======
+        "x-state": "Generally available"
+>>>>>>> 0c626376e (getting flavor from config to fix serverless output)
       }
     },
     "/_cat/ml/datafeeds": {
@@ -1271,6 +1303,7 @@
           }
         },
 <<<<<<< HEAD
+<<<<<<< HEAD
         "x-state": "Added in 7.7.0",
         "x-codeSamples": [
           {
@@ -1281,6 +1314,9 @@
 =======
         "x-state": "Generally available; Added in 7.7.0"
 >>>>>>> d9ed256a7 (openapi: adding more info in x-state)
+=======
+        "x-state": "Generally available"
+>>>>>>> 0c626376e (getting flavor from config to fix serverless output)
       }
     },
     "/_cat/ml/datafeeds/{datafeed_id}": {
@@ -1314,6 +1350,7 @@
           }
         },
 <<<<<<< HEAD
+<<<<<<< HEAD
         "x-state": "Added in 7.7.0",
         "x-codeSamples": [
           {
@@ -1324,6 +1361,9 @@
 =======
         "x-state": "Generally available; Added in 7.7.0"
 >>>>>>> d9ed256a7 (openapi: adding more info in x-state)
+=======
+        "x-state": "Generally available"
+>>>>>>> 0c626376e (getting flavor from config to fix serverless output)
       }
     },
     "/_cat/ml/anomaly_detectors": {
@@ -1357,6 +1397,7 @@
           }
         },
 <<<<<<< HEAD
+<<<<<<< HEAD
         "x-state": "Added in 7.7.0",
         "x-codeSamples": [
           {
@@ -1367,6 +1408,9 @@
 =======
         "x-state": "Generally available; Added in 7.7.0"
 >>>>>>> d9ed256a7 (openapi: adding more info in x-state)
+=======
+        "x-state": "Generally available"
+>>>>>>> 0c626376e (getting flavor from config to fix serverless output)
       }
     },
     "/_cat/ml/anomaly_detectors/{job_id}": {
@@ -1403,6 +1447,7 @@
           }
         },
 <<<<<<< HEAD
+<<<<<<< HEAD
         "x-state": "Added in 7.7.0",
         "x-codeSamples": [
           {
@@ -1413,6 +1458,9 @@
 =======
         "x-state": "Generally available; Added in 7.7.0"
 >>>>>>> d9ed256a7 (openapi: adding more info in x-state)
+=======
+        "x-state": "Generally available"
+>>>>>>> 0c626376e (getting flavor from config to fix serverless output)
       }
     },
     "/_cat/ml/trained_models": {
@@ -1452,6 +1500,7 @@
           }
         },
 <<<<<<< HEAD
+<<<<<<< HEAD
         "x-state": "Added in 7.7.0",
         "x-codeSamples": [
           {
@@ -1462,6 +1511,9 @@
 =======
         "x-state": "Generally available; Added in 7.7.0"
 >>>>>>> d9ed256a7 (openapi: adding more info in x-state)
+=======
+        "x-state": "Generally available"
+>>>>>>> 0c626376e (getting flavor from config to fix serverless output)
       }
     },
     "/_cat/ml/trained_models/{model_id}": {
@@ -1504,6 +1556,7 @@
           }
         },
 <<<<<<< HEAD
+<<<<<<< HEAD
         "x-state": "Added in 7.7.0",
         "x-codeSamples": [
           {
@@ -1514,6 +1567,9 @@
 =======
         "x-state": "Generally available; Added in 7.7.0"
 >>>>>>> d9ed256a7 (openapi: adding more info in x-state)
+=======
+        "x-state": "Generally available"
+>>>>>>> 0c626376e (getting flavor from config to fix serverless output)
       }
     },
     "/_cat/transforms": {
@@ -1550,6 +1606,7 @@
           }
         },
 <<<<<<< HEAD
+<<<<<<< HEAD
         "x-state": "Added in 7.7.0",
         "x-codeSamples": [
           {
@@ -1560,6 +1617,9 @@
 =======
         "x-state": "Generally available; Added in 7.7.0"
 >>>>>>> d9ed256a7 (openapi: adding more info in x-state)
+=======
+        "x-state": "Generally available"
+>>>>>>> 0c626376e (getting flavor from config to fix serverless output)
       }
     },
     "/_cat/transforms/{transform_id}": {
@@ -1599,6 +1659,7 @@
           }
         },
 <<<<<<< HEAD
+<<<<<<< HEAD
         "x-state": "Added in 7.7.0",
         "x-codeSamples": [
           {
@@ -1609,6 +1670,9 @@
 =======
         "x-state": "Generally available; Added in 7.7.0"
 >>>>>>> d9ed256a7 (openapi: adding more info in x-state)
+=======
+        "x-state": "Generally available"
+>>>>>>> 0c626376e (getting flavor from config to fix serverless output)
       }
     },
     "/_search/scroll": {
@@ -1908,6 +1972,7 @@
           }
         },
 <<<<<<< HEAD
+<<<<<<< HEAD
         "x-state": "Added in 7.10.0",
         "x-codeSamples": [
           {
@@ -1918,6 +1983,9 @@
 =======
         "x-state": "Generally available; Added in 7.10.0"
 >>>>>>> d9ed256a7 (openapi: adding more info in x-state)
+=======
+        "x-state": "Generally available"
+>>>>>>> 0c626376e (getting flavor from config to fix serverless output)
       }
     },
     "/_component_template/{name}": {
@@ -1950,7 +2018,7 @@
             "$ref": "#/components/responses/cluster.get_component_template-200"
           }
         },
-        "x-state": "Generally available; Added in 7.8.0"
+        "x-state": "Generally available"
       },
       "put": {
         "tags": [
@@ -1979,6 +2047,7 @@
           }
         },
 <<<<<<< HEAD
+<<<<<<< HEAD
         "x-state": "Added in 7.8.0",
         "x-codeSamples": [
           {
@@ -1989,6 +2058,9 @@
 =======
         "x-state": "Generally available; Added in 7.8.0"
 >>>>>>> d9ed256a7 (openapi: adding more info in x-state)
+=======
+        "x-state": "Generally available"
+>>>>>>> 0c626376e (getting flavor from config to fix serverless output)
       },
       "post": {
         "tags": [
@@ -2017,6 +2089,7 @@
           }
         },
 <<<<<<< HEAD
+<<<<<<< HEAD
         "x-state": "Added in 7.8.0",
         "x-codeSamples": [
           {
@@ -2027,6 +2100,9 @@
 =======
         "x-state": "Generally available; Added in 7.8.0"
 >>>>>>> d9ed256a7 (openapi: adding more info in x-state)
+=======
+        "x-state": "Generally available"
+>>>>>>> 0c626376e (getting flavor from config to fix serverless output)
       },
       "delete": {
         "tags": [
@@ -2080,7 +2156,7 @@
             }
           }
         },
-        "x-state": "Generally available; Added in 7.8.0"
+        "x-state": "Generally available"
       },
       "head": {
         "tags": [
@@ -2130,7 +2206,7 @@
             }
           }
         },
-        "x-state": "Generally available; Added in 7.8.0"
+        "x-state": "Generally available"
       }
     },
     "/_component_template": {
@@ -2160,7 +2236,7 @@
             "$ref": "#/components/responses/cluster.get_component_template-200"
           }
         },
-        "x-state": "Generally available; Added in 7.8.0"
+        "x-state": "Generally available"
       }
     },
     "/_info/{target}": {
@@ -2219,7 +2295,7 @@
             }
           }
         },
-        "x-state": "Generally available; Added in 8.9.0"
+        "x-state": "Generally available"
       }
     },
     "/_connector/{connector_id}/_check_in": {
@@ -2268,7 +2344,7 @@
             }
           }
         },
-        "x-state": "Technical preview; Added in 8.12.0"
+        "x-state": "Technical preview"
       }
     },
     "/_connector/{connector_id}": {
@@ -2314,7 +2390,7 @@
             }
           }
         },
-        "x-state": "Beta; Added in 8.12.0"
+        "x-state": "Beta"
       },
       "put": {
         "tags": [
@@ -2336,6 +2412,7 @@
           }
         },
 <<<<<<< HEAD
+<<<<<<< HEAD
         "x-beta": true,
         "x-codeSamples": [
           {
@@ -2346,6 +2423,9 @@
 =======
         "x-state": "Beta; Added in 8.12.0"
 >>>>>>> d9ed256a7 (openapi: adding more info in x-state)
+=======
+        "x-state": "Beta"
+>>>>>>> 0c626376e (getting flavor from config to fix serverless output)
       },
       "delete": {
         "tags": [
@@ -2404,7 +2484,7 @@
             }
           }
         },
-        "x-state": "Beta; Added in 8.12.0"
+        "x-state": "Beta"
       }
     },
     "/_connector": {
@@ -2514,7 +2594,7 @@
             }
           }
         },
-        "x-state": "Beta; Added in 8.12.0"
+        "x-state": "Beta"
       },
       "put": {
         "tags": [
@@ -2531,6 +2611,7 @@
           }
         },
 <<<<<<< HEAD
+<<<<<<< HEAD
         "x-beta": true,
         "x-codeSamples": [
           {
@@ -2541,6 +2622,9 @@
 =======
         "x-state": "Beta; Added in 8.12.0"
 >>>>>>> d9ed256a7 (openapi: adding more info in x-state)
+=======
+        "x-state": "Beta"
+>>>>>>> 0c626376e (getting flavor from config to fix serverless output)
       },
       "post": {
         "tags": [
@@ -2602,7 +2686,7 @@
             }
           }
         },
-        "x-state": "Beta; Added in 8.12.0"
+        "x-state": "Beta"
       }
     },
     "/_connector/_sync_job/{connector_sync_job_id}/_cancel": {
@@ -2646,7 +2730,7 @@
             }
           }
         },
-        "x-state": "Beta; Added in 8.12.0"
+        "x-state": "Beta"
       }
     },
     "/_connector/_sync_job/{connector_sync_job_id}": {
@@ -2681,7 +2765,7 @@
             }
           }
         },
-        "x-state": "Beta; Added in 8.12.0"
+        "x-state": "Beta"
       },
       "delete": {
         "tags": [
@@ -2720,7 +2804,7 @@
             }
           }
         },
-        "x-state": "Beta; Added in 8.12.0"
+        "x-state": "Beta"
       }
     },
     "/_connector/_sync_job": {
@@ -2820,7 +2904,7 @@
             }
           }
         },
-        "x-state": "Beta; Added in 8.12.0"
+        "x-state": "Beta"
       },
       "post": {
         "tags": [
@@ -2879,6 +2963,7 @@
           }
         },
 <<<<<<< HEAD
+<<<<<<< HEAD
         "x-beta": true,
         "x-codeSamples": [
           {
@@ -2889,6 +2974,9 @@
 =======
         "x-state": "Beta; Added in 8.12.0"
 >>>>>>> d9ed256a7 (openapi: adding more info in x-state)
+=======
+        "x-state": "Beta"
+>>>>>>> 0c626376e (getting flavor from config to fix serverless output)
       }
     },
     "/_connector/{connector_id}/_filtering/_activate": {
@@ -2932,7 +3020,7 @@
             }
           }
         },
-        "x-state": "Technical preview; Added in 8.12.0"
+        "x-state": "Technical preview"
       }
     },
     "/_connector/{connector_id}/_api_key_id": {
@@ -3005,6 +3093,7 @@
           }
         },
 <<<<<<< HEAD
+<<<<<<< HEAD
         "x-beta": true,
         "x-codeSamples": [
           {
@@ -3015,6 +3104,9 @@
 =======
         "x-state": "Beta; Added in 8.12.0"
 >>>>>>> d9ed256a7 (openapi: adding more info in x-state)
+=======
+        "x-state": "Beta"
+>>>>>>> 0c626376e (getting flavor from config to fix serverless output)
       }
     },
     "/_connector/{connector_id}/_configuration": {
@@ -3093,6 +3185,7 @@
           }
         },
 <<<<<<< HEAD
+<<<<<<< HEAD
         "x-beta": true,
         "x-codeSamples": [
           {
@@ -3103,6 +3196,9 @@
 =======
         "x-state": "Beta; Added in 8.12.0"
 >>>>>>> d9ed256a7 (openapi: adding more info in x-state)
+=======
+        "x-state": "Beta"
+>>>>>>> 0c626376e (getting flavor from config to fix serverless output)
       }
     },
     "/_connector/{connector_id}/_error": {
@@ -3182,6 +3278,7 @@
           }
         },
 <<<<<<< HEAD
+<<<<<<< HEAD
         "x-state": "Technical preview",
         "x-codeSamples": [
           {
@@ -3192,6 +3289,9 @@
 =======
         "x-state": "Technical preview; Added in 8.12.0"
 >>>>>>> d9ed256a7 (openapi: adding more info in x-state)
+=======
+        "x-state": "Technical preview"
+>>>>>>> 0c626376e (getting flavor from config to fix serverless output)
       }
     },
     "/_connector/{connector_id}/_filtering": {
@@ -3276,6 +3376,7 @@
           }
         },
 <<<<<<< HEAD
+<<<<<<< HEAD
         "x-beta": true,
         "x-codeSamples": [
           {
@@ -3286,6 +3387,9 @@
 =======
         "x-state": "Beta; Added in 8.12.0"
 >>>>>>> d9ed256a7 (openapi: adding more info in x-state)
+=======
+        "x-state": "Beta"
+>>>>>>> 0c626376e (getting flavor from config to fix serverless output)
       }
     },
     "/_connector/{connector_id}/_filtering/_validation": {
@@ -3347,7 +3451,7 @@
             }
           }
         },
-        "x-state": "Technical preview; Added in 8.12.0"
+        "x-state": "Technical preview"
       }
     },
     "/_connector/{connector_id}/_index_name": {
@@ -3427,6 +3531,7 @@
           }
         },
 <<<<<<< HEAD
+<<<<<<< HEAD
         "x-beta": true,
         "x-codeSamples": [
           {
@@ -3437,6 +3542,9 @@
 =======
         "x-state": "Beta; Added in 8.12.0"
 >>>>>>> d9ed256a7 (openapi: adding more info in x-state)
+=======
+        "x-state": "Beta"
+>>>>>>> 0c626376e (getting flavor from config to fix serverless output)
       }
     },
     "/_connector/{connector_id}/_name": {
@@ -3508,6 +3616,7 @@
           }
         },
 <<<<<<< HEAD
+<<<<<<< HEAD
         "x-beta": true,
         "x-codeSamples": [
           {
@@ -3518,6 +3627,9 @@
 =======
         "x-state": "Beta; Added in 8.12.0"
 >>>>>>> d9ed256a7 (openapi: adding more info in x-state)
+=======
+        "x-state": "Beta"
+>>>>>>> 0c626376e (getting flavor from config to fix serverless output)
       }
     },
     "/_connector/{connector_id}/_native": {
@@ -3578,7 +3690,7 @@
             }
           }
         },
-        "x-state": "Beta; Added in 8.12.0"
+        "x-state": "Beta"
       }
     },
     "/_connector/{connector_id}/_pipeline": {
@@ -3651,6 +3763,7 @@
           }
         },
 <<<<<<< HEAD
+<<<<<<< HEAD
         "x-beta": true,
         "x-codeSamples": [
           {
@@ -3661,6 +3774,9 @@
 =======
         "x-state": "Beta; Added in 8.12.0"
 >>>>>>> d9ed256a7 (openapi: adding more info in x-state)
+=======
+        "x-state": "Beta"
+>>>>>>> 0c626376e (getting flavor from config to fix serverless output)
       }
     },
     "/_connector/{connector_id}/_scheduling": {
@@ -3735,6 +3851,7 @@
           }
         },
 <<<<<<< HEAD
+<<<<<<< HEAD
         "x-beta": true,
         "x-codeSamples": [
           {
@@ -3745,6 +3862,9 @@
 =======
         "x-state": "Beta; Added in 8.12.0"
 >>>>>>> d9ed256a7 (openapi: adding more info in x-state)
+=======
+        "x-state": "Beta"
+>>>>>>> 0c626376e (getting flavor from config to fix serverless output)
       }
     },
     "/_connector/{connector_id}/_service_type": {
@@ -3816,6 +3936,7 @@
           }
         },
 <<<<<<< HEAD
+<<<<<<< HEAD
         "x-beta": true,
         "x-codeSamples": [
           {
@@ -3826,6 +3947,9 @@
 =======
         "x-state": "Beta; Added in 8.12.0"
 >>>>>>> d9ed256a7 (openapi: adding more info in x-state)
+=======
+        "x-state": "Beta"
+>>>>>>> 0c626376e (getting flavor from config to fix serverless output)
       }
     },
     "/_connector/{connector_id}/_status": {
@@ -3897,6 +4021,7 @@
           }
         },
 <<<<<<< HEAD
+<<<<<<< HEAD
         "x-state": "Technical preview",
         "x-codeSamples": [
           {
@@ -3907,6 +4032,9 @@
 =======
         "x-state": "Technical preview; Added in 8.12.0"
 >>>>>>> d9ed256a7 (openapi: adding more info in x-state)
+=======
+        "x-state": "Technical preview"
+>>>>>>> 0c626376e (getting flavor from config to fix serverless output)
       }
     },
     "/_count": {
@@ -4266,6 +4394,7 @@
           }
         },
 <<<<<<< HEAD
+<<<<<<< HEAD
         "x-state": "Added in 5.0.0",
         "x-codeSamples": [
           {
@@ -4276,6 +4405,9 @@
 =======
         "x-state": "Generally available; Added in 5.0.0"
 >>>>>>> d9ed256a7 (openapi: adding more info in x-state)
+=======
+        "x-state": "Generally available"
+>>>>>>> 0c626376e (getting flavor from config to fix serverless output)
       },
       "post": {
         "tags": [
@@ -4343,6 +4475,7 @@
           }
         },
 <<<<<<< HEAD
+<<<<<<< HEAD
         "x-state": "Added in 5.0.0",
         "x-codeSamples": [
           {
@@ -4353,6 +4486,9 @@
 =======
         "x-state": "Generally available; Added in 5.0.0"
 >>>>>>> d9ed256a7 (openapi: adding more info in x-state)
+=======
+        "x-state": "Generally available"
+>>>>>>> 0c626376e (getting flavor from config to fix serverless output)
       }
     },
     "/{index}/_doc/{id}": {
@@ -5396,6 +5532,7 @@
           }
         },
 <<<<<<< HEAD
+<<<<<<< HEAD
         "x-state": "Added in 5.0.0",
         "x-codeSamples": [
           {
@@ -5406,6 +5543,9 @@
 =======
         "x-state": "Generally available; Added in 5.0.0"
 >>>>>>> d9ed256a7 (openapi: adding more info in x-state)
+=======
+        "x-state": "Generally available"
+>>>>>>> 0c626376e (getting flavor from config to fix serverless output)
       }
     },
     "/_scripts/{id}": {
@@ -5630,7 +5770,7 @@
             "$ref": "#/components/responses/enrich.get_policy-200"
           }
         },
-        "x-state": "Generally available; Added in 7.5.0"
+        "x-state": "Generally available"
       },
       "put": {
         "tags": [
@@ -5695,7 +5835,7 @@
             }
           }
         },
-        "x-state": "Generally available; Added in 7.5.0"
+        "x-state": "Generally available"
       },
       "delete": {
         "tags": [
@@ -5739,7 +5879,7 @@
             }
           }
         },
-        "x-state": "Generally available; Added in 7.5.0"
+        "x-state": "Generally available"
       }
     },
     "/_enrich/policy/{name}/_execute": {
@@ -5803,7 +5943,7 @@
             }
           }
         },
-        "x-state": "Generally available; Added in 7.5.0"
+        "x-state": "Generally available"
       }
     },
     "/_enrich/policy": {
@@ -5824,7 +5964,7 @@
             "$ref": "#/components/responses/enrich.get_policy-200"
           }
         },
-        "x-state": "Generally available; Added in 7.5.0"
+        "x-state": "Generally available"
       }
     },
     "/_eql/search/{id}": {
@@ -5880,7 +6020,7 @@
             }
           }
         },
-        "x-state": "Generally available; Added in 7.9.0"
+        "x-state": "Generally available"
       },
       "delete": {
         "tags": [
@@ -5914,7 +6054,7 @@
             }
           }
         },
-        "x-state": "Generally available; Added in 7.9.0"
+        "x-state": "Generally available"
       }
     },
     "/_eql/search/status/{id}": {
@@ -5984,7 +6124,7 @@
             }
           }
         },
-        "x-state": "Generally available; Added in 7.9.0"
+        "x-state": "Generally available"
       }
     },
     "/{index}/_eql/search": {
@@ -6036,6 +6176,7 @@
           }
         },
 <<<<<<< HEAD
+<<<<<<< HEAD
         "x-state": "Added in 7.9.0",
         "x-codeSamples": [
           {
@@ -6046,6 +6187,9 @@
 =======
         "x-state": "Generally available; Added in 7.9.0"
 >>>>>>> d9ed256a7 (openapi: adding more info in x-state)
+=======
+        "x-state": "Generally available"
+>>>>>>> 0c626376e (getting flavor from config to fix serverless output)
       },
       "post": {
         "tags": [
@@ -6095,6 +6239,7 @@
           }
         },
 <<<<<<< HEAD
+<<<<<<< HEAD
         "x-state": "Added in 7.9.0",
         "x-codeSamples": [
           {
@@ -6105,6 +6250,9 @@
 =======
         "x-state": "Generally available; Added in 7.9.0"
 >>>>>>> d9ed256a7 (openapi: adding more info in x-state)
+=======
+        "x-state": "Generally available"
+>>>>>>> 0c626376e (getting flavor from config to fix serverless output)
       }
     },
     "/_query/queries/{id}": {
@@ -6175,7 +6323,7 @@
             }
           }
         },
-        "x-state": "Technical preview; Added in 9.1.0"
+        "x-state": "Technical preview"
       }
     },
     "/_query/queries": {
@@ -6209,7 +6357,7 @@
             }
           }
         },
-        "x-state": "Technical preview; Added in 9.1.0"
+        "x-state": "Technical preview"
       }
     },
     "/_query": {
@@ -6626,7 +6774,7 @@
             }
           }
         },
-        "x-state": "Generally available; Added in 5.4.0"
+        "x-state": "Generally available"
       }
     },
     "/{index}/_explain/{id}": {
@@ -6814,6 +6962,7 @@
           }
         },
 <<<<<<< HEAD
+<<<<<<< HEAD
         "x-state": "Added in 5.4.0",
         "x-codeSamples": [
           {
@@ -6824,6 +6973,9 @@
 =======
         "x-state": "Generally available; Added in 5.4.0"
 >>>>>>> d9ed256a7 (openapi: adding more info in x-state)
+=======
+        "x-state": "Generally available"
+>>>>>>> 0c626376e (getting flavor from config to fix serverless output)
       },
       "post": {
         "tags": [
@@ -6867,6 +7019,7 @@
           }
         },
 <<<<<<< HEAD
+<<<<<<< HEAD
         "x-state": "Added in 5.4.0",
         "x-codeSamples": [
           {
@@ -6877,6 +7030,9 @@
 =======
         "x-state": "Generally available; Added in 5.4.0"
 >>>>>>> d9ed256a7 (openapi: adding more info in x-state)
+=======
+        "x-state": "Generally available"
+>>>>>>> 0c626376e (getting flavor from config to fix serverless output)
       }
     },
     "/{index}/_field_caps": {
@@ -6925,6 +7081,7 @@
           }
         },
 <<<<<<< HEAD
+<<<<<<< HEAD
         "x-state": "Added in 5.4.0",
         "x-codeSamples": [
           {
@@ -6935,6 +7092,9 @@
 =======
         "x-state": "Generally available; Added in 5.4.0"
 >>>>>>> d9ed256a7 (openapi: adding more info in x-state)
+=======
+        "x-state": "Generally available"
+>>>>>>> 0c626376e (getting flavor from config to fix serverless output)
       },
       "post": {
         "tags": [
@@ -6981,6 +7141,7 @@
           }
         },
 <<<<<<< HEAD
+<<<<<<< HEAD
         "x-state": "Added in 5.4.0",
         "x-codeSamples": [
           {
@@ -6991,6 +7152,9 @@
 =======
         "x-state": "Generally available; Added in 5.4.0"
 >>>>>>> d9ed256a7 (openapi: adding more info in x-state)
+=======
+        "x-state": "Generally available"
+>>>>>>> 0c626376e (getting flavor from config to fix serverless output)
       }
     },
     "/{index}/_graph/explore": {
@@ -7267,6 +7431,7 @@
           }
         },
 <<<<<<< HEAD
+<<<<<<< HEAD
         "x-state": "Added in 7.9.0",
         "x-codeSamples": [
           {
@@ -7277,6 +7442,9 @@
 =======
         "x-state": "Generally available; Added in 7.9.0"
 >>>>>>> d9ed256a7 (openapi: adding more info in x-state)
+=======
+        "x-state": "Generally available"
+>>>>>>> 0c626376e (getting flavor from config to fix serverless output)
       }
     },
     "/_analyze": {
@@ -7878,7 +8046,7 @@
             "$ref": "#/components/responses/indices.get_data_stream-200"
           }
         },
-        "x-state": "Generally available; Added in 7.9.0"
+        "x-state": "Generally available"
       },
       "put": {
         "tags": [
@@ -7932,7 +8100,7 @@
             }
           }
         },
-        "x-state": "Generally available; Added in 7.9.0"
+        "x-state": "Generally available"
       },
       "delete": {
         "tags": [
@@ -7986,7 +8154,7 @@
             }
           }
         },
-        "x-state": "Generally available; Added in 7.9.0"
+        "x-state": "Generally available"
       }
     },
     "/{index}/_alias/{name}": {
@@ -8307,7 +8475,7 @@
             "$ref": "#/components/responses/indices.get_index_template-200"
           }
         },
-        "x-state": "Generally available; Added in 7.9.0"
+        "x-state": "Generally available"
       },
       "put": {
         "tags": [
@@ -8339,6 +8507,7 @@
           }
         },
 <<<<<<< HEAD
+<<<<<<< HEAD
         "x-state": "Added in 7.9.0",
         "x-codeSamples": [
           {
@@ -8349,6 +8518,9 @@
 =======
         "x-state": "Generally available; Added in 7.9.0"
 >>>>>>> d9ed256a7 (openapi: adding more info in x-state)
+=======
+        "x-state": "Generally available"
+>>>>>>> 0c626376e (getting flavor from config to fix serverless output)
       },
       "post": {
         "tags": [
@@ -8380,6 +8552,7 @@
           }
         },
 <<<<<<< HEAD
+<<<<<<< HEAD
         "x-state": "Added in 7.9.0",
         "x-codeSamples": [
           {
@@ -8390,6 +8563,9 @@
 =======
         "x-state": "Generally available; Added in 7.9.0"
 >>>>>>> d9ed256a7 (openapi: adding more info in x-state)
+=======
+        "x-state": "Generally available"
+>>>>>>> 0c626376e (getting flavor from config to fix serverless output)
       },
       "delete": {
         "tags": [
@@ -8443,7 +8619,7 @@
             }
           }
         },
-        "x-state": "Generally available; Added in 7.8.0"
+        "x-state": "Generally available"
       },
       "head": {
         "tags": [
@@ -8647,6 +8823,7 @@
           }
         },
 <<<<<<< HEAD
+<<<<<<< HEAD
         "x-state": "Added in 8.11.0",
         "x-codeSamples": [
           {
@@ -8657,6 +8834,9 @@
 =======
         "x-state": "Generally available; Added in 8.11.0"
 >>>>>>> d9ed256a7 (openapi: adding more info in x-state)
+=======
+        "x-state": "Generally available"
+>>>>>>> 0c626376e (getting flavor from config to fix serverless output)
       }
     },
     "/_alias": {
@@ -8803,6 +8983,7 @@
           }
         },
 <<<<<<< HEAD
+<<<<<<< HEAD
         "x-state": "Added in 8.11.0",
         "x-codeSamples": [
           {
@@ -8813,6 +8994,9 @@
 =======
         "x-state": "Generally available; Added in 8.11.0"
 >>>>>>> d9ed256a7 (openapi: adding more info in x-state)
+=======
+        "x-state": "Generally available"
+>>>>>>> 0c626376e (getting flavor from config to fix serverless output)
       },
       "put": {
         "tags": [
@@ -8915,6 +9099,7 @@
           }
         },
 <<<<<<< HEAD
+<<<<<<< HEAD
         "x-state": "Added in 8.11.0",
         "x-codeSamples": [
           {
@@ -8925,6 +9110,9 @@
 =======
         "x-state": "Generally available; Added in 8.11.0"
 >>>>>>> d9ed256a7 (openapi: adding more info in x-state)
+=======
+        "x-state": "Generally available"
+>>>>>>> 0c626376e (getting flavor from config to fix serverless output)
       }
     },
     "/_data_stream": {
@@ -8954,7 +9142,7 @@
             "$ref": "#/components/responses/indices.get_data_stream-200"
           }
         },
-        "x-state": "Generally available; Added in 7.9.0"
+        "x-state": "Generally available"
       }
     },
     "/_data_stream/{name}/_options": {
@@ -9129,7 +9317,7 @@
             "$ref": "#/components/responses/indices.get_index_template-200"
           }
         },
-        "x-state": "Generally available; Added in 7.9.0"
+        "x-state": "Generally available"
       }
     },
     "/_mapping": {
@@ -9639,7 +9827,7 @@
             }
           }
         },
-        "x-state": "Generally available; Added in 7.9.0"
+        "x-state": "Generally available"
       }
     },
     "/_data_stream/_modify": {
@@ -9684,7 +9872,7 @@
             }
           }
         },
-        "x-state": "Generally available; Added in 7.16.0"
+        "x-state": "Generally available"
       }
     },
     "/_refresh": {
@@ -9892,6 +10080,7 @@
           }
         },
 <<<<<<< HEAD
+<<<<<<< HEAD
         "x-state": "Added in 7.9.0",
         "x-codeSamples": [
           {
@@ -9902,6 +10091,9 @@
 =======
         "x-state": "Generally available; Added in 7.9.0"
 >>>>>>> d9ed256a7 (openapi: adding more info in x-state)
+=======
+        "x-state": "Generally available"
+>>>>>>> 0c626376e (getting flavor from config to fix serverless output)
       }
     },
     "/{alias}/_rollover": {
@@ -9941,6 +10133,7 @@
           }
         },
 <<<<<<< HEAD
+<<<<<<< HEAD
         "x-state": "Added in 5.0.0",
         "x-codeSamples": [
           {
@@ -9951,6 +10144,9 @@
 =======
         "x-state": "Generally available; Added in 5.0.0"
 >>>>>>> d9ed256a7 (openapi: adding more info in x-state)
+=======
+        "x-state": "Generally available"
+>>>>>>> 0c626376e (getting flavor from config to fix serverless output)
       }
     },
     "/{alias}/_rollover/{new_index}": {
@@ -9993,6 +10189,7 @@
           }
         },
 <<<<<<< HEAD
+<<<<<<< HEAD
         "x-state": "Added in 5.0.0",
         "x-codeSamples": [
           {
@@ -10003,6 +10200,9 @@
 =======
         "x-state": "Generally available; Added in 5.0.0"
 >>>>>>> d9ed256a7 (openapi: adding more info in x-state)
+=======
+        "x-state": "Generally available"
+>>>>>>> 0c626376e (getting flavor from config to fix serverless output)
       }
     },
     "/_index_template/_simulate_index/{name}": {
@@ -10099,6 +10299,7 @@
           }
         },
 <<<<<<< HEAD
+<<<<<<< HEAD
         "x-state": "Added in 7.9.0",
         "x-codeSamples": [
           {
@@ -10109,6 +10310,9 @@
 =======
         "x-state": "Generally available; Added in 7.9.0"
 >>>>>>> d9ed256a7 (openapi: adding more info in x-state)
+=======
+        "x-state": "Generally available"
+>>>>>>> 0c626376e (getting flavor from config to fix serverless output)
       }
     },
     "/_index_template/_simulate": {
@@ -10259,7 +10463,7 @@
             }
           }
         },
-        "x-state": "Generally available; Added in 1.3.0"
+        "x-state": "Generally available"
       }
     },
     "/_validate/query": {
@@ -10316,7 +10520,7 @@
             "$ref": "#/components/responses/indices.validate_query-200"
           }
         },
-        "x-state": "Generally available; Added in 1.3.0"
+        "x-state": "Generally available"
       },
       "post": {
         "tags": [
@@ -10371,7 +10575,7 @@
             "$ref": "#/components/responses/indices.validate_query-200"
           }
         },
-        "x-state": "Generally available; Added in 1.3.0"
+        "x-state": "Generally available"
       }
     },
     "/{index}/_validate/query": {
@@ -10431,7 +10635,7 @@
             "$ref": "#/components/responses/indices.validate_query-200"
           }
         },
-        "x-state": "Generally available; Added in 1.3.0"
+        "x-state": "Generally available"
       },
       "post": {
         "tags": [
@@ -10489,7 +10693,7 @@
             "$ref": "#/components/responses/indices.validate_query-200"
           }
         },
-        "x-state": "Generally available; Added in 1.3.0"
+        "x-state": "Generally available"
       }
     },
     "/_inference/chat_completion/{inference_id}/_stream": {
@@ -10569,6 +10773,7 @@
           }
         },
 <<<<<<< HEAD
+<<<<<<< HEAD
         "x-state": "Added in 8.18.0",
         "x-codeSamples": [
           {
@@ -10579,6 +10784,9 @@
 =======
         "x-state": "Generally available; Added in 8.18.0"
 >>>>>>> d9ed256a7 (openapi: adding more info in x-state)
+=======
+        "x-state": "Generally available"
+>>>>>>> 0c626376e (getting flavor from config to fix serverless output)
       }
     },
     "/_inference/completion/{inference_id}": {
@@ -10669,6 +10877,7 @@
           }
         },
 <<<<<<< HEAD
+<<<<<<< HEAD
         "x-state": "Added in 8.11.0",
         "x-codeSamples": [
           {
@@ -10679,6 +10888,9 @@
 =======
         "x-state": "Generally available; Added in 8.11.0"
 >>>>>>> d9ed256a7 (openapi: adding more info in x-state)
+=======
+        "x-state": "Generally available"
+>>>>>>> 0c626376e (getting flavor from config to fix serverless output)
       }
     },
     "/_inference/{inference_id}": {
@@ -10698,7 +10910,7 @@
             "$ref": "#/components/responses/inference.get-200"
           }
         },
-        "x-state": "Generally available; Added in 8.11.0"
+        "x-state": "Generally available"
       },
       "put": {
         "tags": [
@@ -10720,7 +10932,7 @@
             "$ref": "#/components/responses/inference.put-200"
           }
         },
-        "x-state": "Generally available; Added in 8.11.0"
+        "x-state": "Generally available"
       },
       "post": {
         "tags": [
@@ -10745,7 +10957,7 @@
             "$ref": "#/components/responses/inference.inference-200"
           }
         },
-        "x-state": "Generally available; Added in 8.11.0"
+        "x-state": "Generally available"
       },
       "delete": {
         "tags": [
@@ -10769,7 +10981,7 @@
             "$ref": "#/components/responses/inference.delete-200"
           }
         },
-        "x-state": "Generally available; Added in 8.11.0"
+        "x-state": "Generally available"
       }
     },
     "/_inference/{task_type}/{inference_id}": {
@@ -10792,7 +11004,7 @@
             "$ref": "#/components/responses/inference.get-200"
           }
         },
-        "x-state": "Generally available; Added in 8.11.0"
+        "x-state": "Generally available"
       },
       "put": {
         "tags": [
@@ -10817,7 +11029,7 @@
             "$ref": "#/components/responses/inference.put-200"
           }
         },
-        "x-state": "Generally available; Added in 8.11.0"
+        "x-state": "Generally available"
       },
       "post": {
         "tags": [
@@ -10845,7 +11057,7 @@
             "$ref": "#/components/responses/inference.inference-200"
           }
         },
-        "x-state": "Generally available; Added in 8.11.0"
+        "x-state": "Generally available"
       },
       "delete": {
         "tags": [
@@ -10872,7 +11084,7 @@
             "$ref": "#/components/responses/inference.delete-200"
           }
         },
-        "x-state": "Generally available; Added in 8.11.0"
+        "x-state": "Generally available"
       }
     },
     "/_inference": {
@@ -10887,7 +11099,7 @@
             "$ref": "#/components/responses/inference.get-200"
           }
         },
-        "x-state": "Generally available; Added in 8.11.0"
+        "x-state": "Generally available"
       }
     },
     "/_inference/{task_type}/{alibabacloud_inference_id}": {
@@ -10984,6 +11196,7 @@
           }
         },
 <<<<<<< HEAD
+<<<<<<< HEAD
         "x-state": "Added in 8.16.0",
         "x-codeSamples": [
           {
@@ -10994,6 +11207,9 @@
 =======
         "x-state": "Generally available; Added in 8.16.0"
 >>>>>>> d9ed256a7 (openapi: adding more info in x-state)
+=======
+        "x-state": "Generally available"
+>>>>>>> 0c626376e (getting flavor from config to fix serverless output)
       }
     },
     "/_inference/{task_type}/{amazonbedrock_inference_id}": {
@@ -11080,6 +11296,7 @@
           }
         },
 <<<<<<< HEAD
+<<<<<<< HEAD
         "x-state": "Added in 8.12.0",
         "x-codeSamples": [
           {
@@ -11090,6 +11307,9 @@
 =======
         "x-state": "Generally available; Added in 8.12.0"
 >>>>>>> d9ed256a7 (openapi: adding more info in x-state)
+=======
+        "x-state": "Generally available"
+>>>>>>> 0c626376e (getting flavor from config to fix serverless output)
       }
     },
     "/_inference/{task_type}/{anthropic_inference_id}": {
@@ -11170,6 +11390,7 @@
           }
         },
 <<<<<<< HEAD
+<<<<<<< HEAD
         "x-state": "Added in 8.16.0",
         "x-codeSamples": [
           {
@@ -11180,6 +11401,9 @@
 =======
         "x-state": "Generally available; Added in 8.16.0"
 >>>>>>> d9ed256a7 (openapi: adding more info in x-state)
+=======
+        "x-state": "Generally available"
+>>>>>>> 0c626376e (getting flavor from config to fix serverless output)
       }
     },
     "/_inference/{task_type}/{azureaistudio_inference_id}": {
@@ -11266,6 +11490,7 @@
           }
         },
 <<<<<<< HEAD
+<<<<<<< HEAD
         "x-state": "Added in 8.14.0",
         "x-codeSamples": [
           {
@@ -11276,6 +11501,9 @@
 =======
         "x-state": "Generally available; Added in 8.14.0"
 >>>>>>> d9ed256a7 (openapi: adding more info in x-state)
+=======
+        "x-state": "Generally available"
+>>>>>>> 0c626376e (getting flavor from config to fix serverless output)
       }
     },
     "/_inference/{task_type}/{azureopenai_inference_id}": {
@@ -11362,6 +11590,7 @@
           }
         },
 <<<<<<< HEAD
+<<<<<<< HEAD
         "x-state": "Added in 8.14.0",
         "x-codeSamples": [
           {
@@ -11372,6 +11601,9 @@
 =======
         "x-state": "Generally available; Added in 8.14.0"
 >>>>>>> d9ed256a7 (openapi: adding more info in x-state)
+=======
+        "x-state": "Generally available"
+>>>>>>> 0c626376e (getting flavor from config to fix serverless output)
       }
     },
     "/_inference/{task_type}/{cohere_inference_id}": {
@@ -11458,6 +11690,7 @@
           }
         },
 <<<<<<< HEAD
+<<<<<<< HEAD
         "x-state": "Added in 8.13.0",
         "x-codeSamples": [
           {
@@ -11468,6 +11701,9 @@
 =======
         "x-state": "Generally available; Added in 8.13.0"
 >>>>>>> d9ed256a7 (openapi: adding more info in x-state)
+=======
+        "x-state": "Generally available"
+>>>>>>> 0c626376e (getting flavor from config to fix serverless output)
       }
     },
     "/_inference/{task_type}/{elasticsearch_inference_id}": {
@@ -11580,6 +11816,7 @@
           }
         },
 <<<<<<< HEAD
+<<<<<<< HEAD
         "x-state": "Added in 8.13.0",
         "x-codeSamples": [
           {
@@ -11590,6 +11827,9 @@
 =======
         "x-state": "Generally available; Added in 8.13.0"
 >>>>>>> d9ed256a7 (openapi: adding more info in x-state)
+=======
+        "x-state": "Generally available"
+>>>>>>> 0c626376e (getting flavor from config to fix serverless output)
       }
     },
     "/_inference/{task_type}/{elser_inference_id}": {
@@ -11680,6 +11920,7 @@
         },
         "deprecated": true,
 <<<<<<< HEAD
+<<<<<<< HEAD
         "x-state": "Added in 8.11.0",
         "x-codeSamples": [
           {
@@ -11690,6 +11931,9 @@
 =======
         "x-state": "Generally available; Added in 8.11.0"
 >>>>>>> d9ed256a7 (openapi: adding more info in x-state)
+=======
+        "x-state": "Generally available"
+>>>>>>> 0c626376e (getting flavor from config to fix serverless output)
       }
     },
     "/_inference/{task_type}/{googleaistudio_inference_id}": {
@@ -11768,6 +12012,7 @@
           }
         },
 <<<<<<< HEAD
+<<<<<<< HEAD
         "x-state": "Added in 8.15.0",
         "x-codeSamples": [
           {
@@ -11778,6 +12023,9 @@
 =======
         "x-state": "Generally available; Added in 8.15.0"
 >>>>>>> d9ed256a7 (openapi: adding more info in x-state)
+=======
+        "x-state": "Generally available"
+>>>>>>> 0c626376e (getting flavor from config to fix serverless output)
       }
     },
     "/_inference/{task_type}/{googlevertexai_inference_id}": {
@@ -11864,6 +12112,7 @@
           }
         },
 <<<<<<< HEAD
+<<<<<<< HEAD
         "x-state": "Added in 8.15.0",
         "x-codeSamples": [
           {
@@ -11874,6 +12123,9 @@
 =======
         "x-state": "Generally available; Added in 8.15.0"
 >>>>>>> d9ed256a7 (openapi: adding more info in x-state)
+=======
+        "x-state": "Generally available"
+>>>>>>> 0c626376e (getting flavor from config to fix serverless output)
       }
     },
     "/_inference/{task_type}/{huggingface_inference_id}": {
@@ -11952,6 +12204,7 @@
           }
         },
 <<<<<<< HEAD
+<<<<<<< HEAD
         "x-state": "Added in 8.12.0",
         "x-codeSamples": [
           {
@@ -11962,6 +12215,9 @@
 =======
         "x-state": "Generally available; Added in 8.12.0"
 >>>>>>> d9ed256a7 (openapi: adding more info in x-state)
+=======
+        "x-state": "Generally available"
+>>>>>>> 0c626376e (getting flavor from config to fix serverless output)
       }
     },
     "/_inference/{task_type}/{jinaai_inference_id}": {
@@ -12048,6 +12304,7 @@
           }
         },
 <<<<<<< HEAD
+<<<<<<< HEAD
         "x-state": "Added in 8.18.0",
         "x-codeSamples": [
           {
@@ -12058,6 +12315,9 @@
 =======
         "x-state": "Generally available; Added in 8.18.0"
 >>>>>>> d9ed256a7 (openapi: adding more info in x-state)
+=======
+        "x-state": "Generally available"
+>>>>>>> 0c626376e (getting flavor from config to fix serverless output)
       }
     },
     "/_inference/{task_type}/{mistral_inference_id}": {
@@ -12135,6 +12395,7 @@
           }
         },
 <<<<<<< HEAD
+<<<<<<< HEAD
         "x-state": "Added in 8.15.0",
         "x-codeSamples": [
           {
@@ -12145,6 +12406,9 @@
 =======
         "x-state": "Generally available; Added in 8.15.0"
 >>>>>>> d9ed256a7 (openapi: adding more info in x-state)
+=======
+        "x-state": "Generally available"
+>>>>>>> 0c626376e (getting flavor from config to fix serverless output)
       }
     },
     "/_inference/{task_type}/{openai_inference_id}": {
@@ -12231,6 +12495,7 @@
           }
         },
 <<<<<<< HEAD
+<<<<<<< HEAD
         "x-state": "Added in 8.12.0",
         "x-codeSamples": [
           {
@@ -12241,6 +12506,9 @@
 =======
         "x-state": "Generally available; Added in 8.12.0"
 >>>>>>> d9ed256a7 (openapi: adding more info in x-state)
+=======
+        "x-state": "Generally available"
+>>>>>>> 0c626376e (getting flavor from config to fix serverless output)
       }
     },
     "/_inference/{task_type}/{voyageai_inference_id}": {
@@ -12327,6 +12595,7 @@
           }
         },
 <<<<<<< HEAD
+<<<<<<< HEAD
         "x-state": "Added in 8.19.0",
         "x-codeSamples": [
           {
@@ -12337,6 +12606,9 @@
 =======
         "x-state": "Generally available; Added in 8.19.0"
 >>>>>>> d9ed256a7 (openapi: adding more info in x-state)
+=======
+        "x-state": "Generally available"
+>>>>>>> 0c626376e (getting flavor from config to fix serverless output)
       }
     },
     "/_inference/{task_type}/{watsonx_inference_id}": {
@@ -12411,6 +12683,7 @@
           }
         },
 <<<<<<< HEAD
+<<<<<<< HEAD
         "x-state": "Added in 8.16.0",
         "x-codeSamples": [
           {
@@ -12421,6 +12694,9 @@
 =======
         "x-state": "Generally available; Added in 8.16.0"
 >>>>>>> d9ed256a7 (openapi: adding more info in x-state)
+=======
+        "x-state": "Generally available"
+>>>>>>> 0c626376e (getting flavor from config to fix serverless output)
       }
     },
     "/_inference/rerank/{inference_id}": {
@@ -12516,6 +12792,7 @@
           }
         },
 <<<<<<< HEAD
+<<<<<<< HEAD
         "x-state": "Added in 8.11.0",
         "x-codeSamples": [
           {
@@ -12526,6 +12803,9 @@
 =======
         "x-state": "Generally available; Added in 8.11.0"
 >>>>>>> d9ed256a7 (openapi: adding more info in x-state)
+=======
+        "x-state": "Generally available"
+>>>>>>> 0c626376e (getting flavor from config to fix serverless output)
       }
     },
     "/_inference/sparse_embedding/{inference_id}": {
@@ -12616,6 +12896,7 @@
           }
         },
 <<<<<<< HEAD
+<<<<<<< HEAD
         "x-state": "Added in 8.11.0",
         "x-codeSamples": [
           {
@@ -12626,6 +12907,9 @@
 =======
         "x-state": "Generally available; Added in 8.11.0"
 >>>>>>> d9ed256a7 (openapi: adding more info in x-state)
+=======
+        "x-state": "Generally available"
+>>>>>>> 0c626376e (getting flavor from config to fix serverless output)
       }
     },
     "/_inference/text_embedding/{inference_id}": {
@@ -12716,6 +13000,7 @@
           }
         },
 <<<<<<< HEAD
+<<<<<<< HEAD
         "x-state": "Added in 8.11.0",
         "x-codeSamples": [
           {
@@ -12726,6 +13011,9 @@
 =======
         "x-state": "Generally available; Added in 8.11.0"
 >>>>>>> d9ed256a7 (openapi: adding more info in x-state)
+=======
+        "x-state": "Generally available"
+>>>>>>> 0c626376e (getting flavor from config to fix serverless output)
       }
     },
     "/": {
@@ -12834,7 +13122,7 @@
             "$ref": "#/components/responses/ingest.get_pipeline-200"
           }
         },
-        "x-state": "Generally available; Added in 5.0.0"
+        "x-state": "Generally available"
       },
       "put": {
         "tags": [
@@ -12953,6 +13241,7 @@
           }
         },
 <<<<<<< HEAD
+<<<<<<< HEAD
         "x-state": "Added in 5.0.0",
         "x-codeSamples": [
           {
@@ -12963,6 +13252,9 @@
 =======
         "x-state": "Generally available; Added in 5.0.0"
 >>>>>>> d9ed256a7 (openapi: adding more info in x-state)
+=======
+        "x-state": "Generally available"
+>>>>>>> 0c626376e (getting flavor from config to fix serverless output)
       },
       "delete": {
         "tags": [
@@ -13019,7 +13311,7 @@
             }
           }
         },
-        "x-state": "Generally available; Added in 5.0.0"
+        "x-state": "Generally available"
       }
     },
     "/_ingest/pipeline": {
@@ -13046,7 +13338,7 @@
             "$ref": "#/components/responses/ingest.get_pipeline-200"
           }
         },
-        "x-state": "Generally available; Added in 5.0.0"
+        "x-state": "Generally available"
       }
     },
     "/_ingest/processor/grok": {
@@ -13083,7 +13375,7 @@
             }
           }
         },
-        "x-state": "Generally available; Added in 6.1.0"
+        "x-state": "Generally available"
       }
     },
     "/_ingest/pipeline/_simulate": {
@@ -13108,6 +13400,7 @@
           }
         },
 <<<<<<< HEAD
+<<<<<<< HEAD
         "x-state": "Added in 5.0.0",
         "x-codeSamples": [
           {
@@ -13118,6 +13411,9 @@
 =======
         "x-state": "Generally available; Added in 5.0.0"
 >>>>>>> d9ed256a7 (openapi: adding more info in x-state)
+=======
+        "x-state": "Generally available"
+>>>>>>> 0c626376e (getting flavor from config to fix serverless output)
       },
       "post": {
         "tags": [
@@ -13140,6 +13436,7 @@
           }
         },
 <<<<<<< HEAD
+<<<<<<< HEAD
         "x-state": "Added in 5.0.0",
         "x-codeSamples": [
           {
@@ -13150,6 +13447,9 @@
 =======
         "x-state": "Generally available; Added in 5.0.0"
 >>>>>>> d9ed256a7 (openapi: adding more info in x-state)
+=======
+        "x-state": "Generally available"
+>>>>>>> 0c626376e (getting flavor from config to fix serverless output)
       }
     },
     "/_ingest/pipeline/{id}/_simulate": {
@@ -13177,6 +13477,7 @@
           }
         },
 <<<<<<< HEAD
+<<<<<<< HEAD
         "x-state": "Added in 5.0.0",
         "x-codeSamples": [
           {
@@ -13187,6 +13488,9 @@
 =======
         "x-state": "Generally available; Added in 5.0.0"
 >>>>>>> d9ed256a7 (openapi: adding more info in x-state)
+=======
+        "x-state": "Generally available"
+>>>>>>> 0c626376e (getting flavor from config to fix serverless output)
       },
       "post": {
         "tags": [
@@ -13212,6 +13516,7 @@
           }
         },
 <<<<<<< HEAD
+<<<<<<< HEAD
         "x-state": "Added in 5.0.0",
         "x-codeSamples": [
           {
@@ -13222,6 +13527,9 @@
 =======
         "x-state": "Generally available; Added in 5.0.0"
 >>>>>>> d9ed256a7 (openapi: adding more info in x-state)
+=======
+        "x-state": "Generally available"
+>>>>>>> 0c626376e (getting flavor from config to fix serverless output)
       }
     },
     "/_license": {
@@ -13314,6 +13622,7 @@
           }
         },
 <<<<<<< HEAD
+<<<<<<< HEAD
         "x-state": "Added in 7.12.0",
         "x-codeSamples": [
           {
@@ -13324,6 +13633,9 @@
 =======
         "x-state": "Generally available; Added in 7.12.0"
 >>>>>>> d9ed256a7 (openapi: adding more info in x-state)
+=======
+        "x-state": "Generally available"
+>>>>>>> 0c626376e (getting flavor from config to fix serverless output)
       },
       "put": {
         "tags": [
@@ -13374,6 +13686,7 @@
           }
         },
 <<<<<<< HEAD
+<<<<<<< HEAD
         "x-state": "Added in 7.12.0",
         "x-codeSamples": [
           {
@@ -13384,6 +13697,9 @@
 =======
         "x-state": "Generally available; Added in 7.12.0"
 >>>>>>> d9ed256a7 (openapi: adding more info in x-state)
+=======
+        "x-state": "Generally available"
+>>>>>>> 0c626376e (getting flavor from config to fix serverless output)
       },
       "delete": {
         "tags": [
@@ -13416,7 +13732,7 @@
             }
           }
         },
-        "x-state": "Generally available; Added in 7.12.0"
+        "x-state": "Generally available"
       }
     },
     "/_logstash/pipeline": {
@@ -13436,6 +13752,7 @@
           }
         },
 <<<<<<< HEAD
+<<<<<<< HEAD
         "x-state": "Added in 7.12.0",
         "x-codeSamples": [
           {
@@ -13446,6 +13763,9 @@
 =======
         "x-state": "Generally available; Added in 7.12.0"
 >>>>>>> d9ed256a7 (openapi: adding more info in x-state)
+=======
+        "x-state": "Generally available"
+>>>>>>> 0c626376e (getting flavor from config to fix serverless output)
       }
     },
     "/_mget": {
@@ -13491,6 +13811,7 @@
           }
         },
 <<<<<<< HEAD
+<<<<<<< HEAD
         "x-state": "Added in 1.3.0",
         "x-codeSamples": [
           {
@@ -13501,6 +13822,9 @@
 =======
         "x-state": "Generally available; Added in 1.3.0"
 >>>>>>> d9ed256a7 (openapi: adding more info in x-state)
+=======
+        "x-state": "Generally available"
+>>>>>>> 0c626376e (getting flavor from config to fix serverless output)
       },
       "post": {
         "tags": [
@@ -13544,6 +13868,7 @@
           }
         },
 <<<<<<< HEAD
+<<<<<<< HEAD
         "x-state": "Added in 1.3.0",
         "x-codeSamples": [
           {
@@ -13554,6 +13879,9 @@
 =======
         "x-state": "Generally available; Added in 1.3.0"
 >>>>>>> d9ed256a7 (openapi: adding more info in x-state)
+=======
+        "x-state": "Generally available"
+>>>>>>> 0c626376e (getting flavor from config to fix serverless output)
       }
     },
     "/{index}/_mget": {
@@ -13602,6 +13930,7 @@
           }
         },
 <<<<<<< HEAD
+<<<<<<< HEAD
         "x-state": "Added in 1.3.0",
         "x-codeSamples": [
           {
@@ -13612,6 +13941,9 @@
 =======
         "x-state": "Generally available; Added in 1.3.0"
 >>>>>>> d9ed256a7 (openapi: adding more info in x-state)
+=======
+        "x-state": "Generally available"
+>>>>>>> 0c626376e (getting flavor from config to fix serverless output)
       },
       "post": {
         "tags": [
@@ -13658,6 +13990,7 @@
           }
         },
 <<<<<<< HEAD
+<<<<<<< HEAD
         "x-state": "Added in 1.3.0",
         "x-codeSamples": [
           {
@@ -13668,6 +14001,9 @@
 =======
         "x-state": "Generally available; Added in 1.3.0"
 >>>>>>> d9ed256a7 (openapi: adding more info in x-state)
+=======
+        "x-state": "Generally available"
+>>>>>>> 0c626376e (getting flavor from config to fix serverless output)
       }
     },
     "/_ml/anomaly_detectors/{job_id}/_close": {
@@ -13769,7 +14105,7 @@
             }
           }
         },
-        "x-state": "Generally available; Added in 5.4.0"
+        "x-state": "Generally available"
       }
     },
     "/_ml/calendars/{calendar_id}": {
@@ -13798,7 +14134,7 @@
             "$ref": "#/components/responses/ml.get_calendars-200"
           }
         },
-        "x-state": "Generally available; Added in 6.2.0"
+        "x-state": "Generally available"
       },
       "put": {
         "tags": [
@@ -13869,7 +14205,7 @@
             }
           }
         },
-        "x-state": "Generally available; Added in 6.2.0"
+        "x-state": "Generally available"
       },
       "post": {
         "tags": [
@@ -13896,7 +14232,7 @@
             "$ref": "#/components/responses/ml.get_calendars-200"
           }
         },
-        "x-state": "Generally available; Added in 6.2.0"
+        "x-state": "Generally available"
       },
       "delete": {
         "tags": [
@@ -13936,7 +14272,7 @@
             }
           }
         },
-        "x-state": "Generally available; Added in 6.2.0"
+        "x-state": "Generally available"
       }
     },
     "/_ml/calendars/{calendar_id}/events/{event_id}": {
@@ -13988,7 +14324,7 @@
             }
           }
         },
-        "x-state": "Generally available; Added in 6.2.0"
+        "x-state": "Generally available"
       }
     },
     "/_ml/calendars/{calendar_id}/jobs/{job_id}": {
@@ -14050,7 +14386,7 @@
             }
           }
         },
-        "x-state": "Generally available; Added in 6.2.0"
+        "x-state": "Generally available"
       },
       "delete": {
         "tags": [
@@ -14116,7 +14452,7 @@
             }
           }
         },
-        "x-state": "Generally available; Added in 6.2.0"
+        "x-state": "Generally available"
       }
     },
     "/_ml/data_frame/analytics/{id}": {
@@ -14149,7 +14485,7 @@
             "$ref": "#/components/responses/ml.get_data_frame_analytics-200"
           }
         },
-        "x-state": "Generally available; Added in 7.3.0"
+        "x-state": "Generally available"
       },
       "put": {
         "tags": [
@@ -14289,7 +14625,7 @@
             }
           }
         },
-        "x-state": "Generally available; Added in 7.3.0"
+        "x-state": "Generally available"
       },
       "delete": {
         "tags": [
@@ -14348,7 +14684,7 @@
             }
           }
         },
-        "x-state": "Generally available; Added in 7.3.0"
+        "x-state": "Generally available"
       }
     },
     "/_ml/datafeeds/{datafeed_id}": {
@@ -14375,7 +14711,7 @@
             "$ref": "#/components/responses/ml.get_datafeeds-200"
           }
         },
-        "x-state": "Generally available; Added in 5.5.0"
+        "x-state": "Generally available"
       },
       "put": {
         "tags": [
@@ -14578,7 +14914,7 @@
             }
           }
         },
-        "x-state": "Generally available; Added in 5.4.0"
+        "x-state": "Generally available"
       },
       "delete": {
         "tags": [
@@ -14627,7 +14963,7 @@
             }
           }
         },
-        "x-state": "Generally available; Added in 5.4.0"
+        "x-state": "Generally available"
       }
     },
     "/_ml/filters/{filter_id}": {
@@ -14654,7 +14990,7 @@
             "$ref": "#/components/responses/ml.get_filters-200"
           }
         },
-        "x-state": "Generally available; Added in 5.5.0"
+        "x-state": "Generally available"
       },
       "put": {
         "tags": [
@@ -14730,7 +15066,7 @@
             }
           }
         },
-        "x-state": "Generally available; Added in 5.4.0"
+        "x-state": "Generally available"
       },
       "delete": {
         "tags": [
@@ -14770,7 +15106,7 @@
             }
           }
         },
-        "x-state": "Generally available; Added in 5.4.0"
+        "x-state": "Generally available"
       }
     },
     "/_ml/anomaly_detectors/{job_id}": {
@@ -14797,7 +15133,7 @@
             "$ref": "#/components/responses/ml.get_jobs-200"
           }
         },
-        "x-state": "Generally available; Added in 5.5.0"
+        "x-state": "Generally available"
       },
       "put": {
         "tags": [
@@ -15035,7 +15371,7 @@
             }
           }
         },
-        "x-state": "Generally available; Added in 5.4.0"
+        "x-state": "Generally available"
       },
       "delete": {
         "tags": [
@@ -15111,7 +15447,7 @@
             }
           }
         },
-        "x-state": "Generally available; Added in 5.4.0"
+        "x-state": "Generally available"
       }
     },
     "/_ml/trained_models/{model_id}": {
@@ -15152,7 +15488,7 @@
             "$ref": "#/components/responses/ml.get_trained_models-200"
           }
         },
-        "x-state": "Generally available; Added in 7.10.0"
+        "x-state": "Generally available"
       },
       "put": {
         "tags": [
@@ -15260,7 +15596,7 @@
             }
           }
         },
-        "x-state": "Generally available; Added in 7.10.0"
+        "x-state": "Generally available"
       },
       "delete": {
         "tags": [
@@ -15320,7 +15656,7 @@
             }
           }
         },
-        "x-state": "Generally available; Added in 7.10.0"
+        "x-state": "Generally available"
       }
     },
     "/_ml/trained_models/{model_id}/model_aliases/{model_alias}": {
@@ -15377,7 +15713,7 @@
             }
           }
         },
-        "x-state": "Generally available; Added in 7.13.0"
+        "x-state": "Generally available"
       },
       "delete": {
         "tags": [
@@ -15428,7 +15764,7 @@
             }
           }
         },
-        "x-state": "Generally available; Added in 7.13.0"
+        "x-state": "Generally available"
       }
     },
     "/_ml/anomaly_detectors/_estimate_model_memory": {
@@ -15501,6 +15837,7 @@
           }
         },
 <<<<<<< HEAD
+<<<<<<< HEAD
         "x-state": "Added in 7.7.0",
         "x-codeSamples": [
           {
@@ -15511,6 +15848,9 @@
 =======
         "x-state": "Generally available; Added in 7.7.0"
 >>>>>>> d9ed256a7 (openapi: adding more info in x-state)
+=======
+        "x-state": "Generally available"
+>>>>>>> 0c626376e (getting flavor from config to fix serverless output)
       }
     },
     "/_ml/data_frame/_evaluate": {
@@ -15614,6 +15954,7 @@
           }
         },
 <<<<<<< HEAD
+<<<<<<< HEAD
         "x-state": "Added in 7.3.0",
         "x-codeSamples": [
           {
@@ -15624,6 +15965,9 @@
 =======
         "x-state": "Generally available; Added in 7.3.0"
 >>>>>>> d9ed256a7 (openapi: adding more info in x-state)
+=======
+        "x-state": "Generally available"
+>>>>>>> 0c626376e (getting flavor from config to fix serverless output)
       }
     },
     "/_ml/anomaly_detectors/{job_id}/_flush": {
@@ -15749,7 +16093,7 @@
           }
         },
         "deprecated": true,
-        "x-state": "Generally available; Added in 5.4.0"
+        "x-state": "Generally available"
       }
     },
     "/_ml/calendars/{calendar_id}/events": {
@@ -15849,7 +16193,7 @@
             }
           }
         },
-        "x-state": "Generally available; Added in 6.2.0"
+        "x-state": "Generally available"
       },
       "post": {
         "tags": [
@@ -15915,7 +16259,7 @@
             }
           }
         },
-        "x-state": "Generally available; Added in 6.2.0"
+        "x-state": "Generally available"
       }
     },
     "/_ml/calendars": {
@@ -15941,7 +16285,7 @@
             "$ref": "#/components/responses/ml.get_calendars-200"
           }
         },
-        "x-state": "Generally available; Added in 6.2.0"
+        "x-state": "Generally available"
       },
       "post": {
         "tags": [
@@ -15965,7 +16309,7 @@
             "$ref": "#/components/responses/ml.get_calendars-200"
           }
         },
-        "x-state": "Generally available; Added in 6.2.0"
+        "x-state": "Generally available"
       }
     },
     "/_ml/data_frame/analytics": {
@@ -15995,7 +16339,7 @@
             "$ref": "#/components/responses/ml.get_data_frame_analytics-200"
           }
         },
-        "x-state": "Generally available; Added in 7.3.0"
+        "x-state": "Generally available"
       }
     },
     "/_ml/data_frame/analytics/_stats": {
@@ -16024,7 +16368,7 @@
             "$ref": "#/components/responses/ml.get_data_frame_analytics_stats-200"
           }
         },
-        "x-state": "Generally available; Added in 7.3.0"
+        "x-state": "Generally available"
       }
     },
     "/_ml/data_frame/analytics/{id}/_stats": {
@@ -16056,7 +16400,7 @@
             "$ref": "#/components/responses/ml.get_data_frame_analytics_stats-200"
           }
         },
-        "x-state": "Generally available; Added in 7.3.0"
+        "x-state": "Generally available"
       }
     },
     "/_ml/datafeeds/{datafeed_id}/_stats": {
@@ -16080,7 +16424,7 @@
             "$ref": "#/components/responses/ml.get_datafeed_stats-200"
           }
         },
-        "x-state": "Generally available; Added in 5.5.0"
+        "x-state": "Generally available"
       }
     },
     "/_ml/datafeeds/_stats": {
@@ -16101,7 +16445,7 @@
             "$ref": "#/components/responses/ml.get_datafeed_stats-200"
           }
         },
-        "x-state": "Generally available; Added in 5.5.0"
+        "x-state": "Generally available"
       }
     },
     "/_ml/datafeeds": {
@@ -16125,7 +16469,7 @@
             "$ref": "#/components/responses/ml.get_datafeeds-200"
           }
         },
-        "x-state": "Generally available; Added in 5.5.0"
+        "x-state": "Generally available"
       }
     },
     "/_ml/filters": {
@@ -16149,7 +16493,7 @@
             "$ref": "#/components/responses/ml.get_filters-200"
           }
         },
-        "x-state": "Generally available; Added in 5.5.0"
+        "x-state": "Generally available"
       }
     },
     "/_ml/anomaly_detectors/_stats": {
@@ -16169,7 +16513,7 @@
             "$ref": "#/components/responses/ml.get_job_stats-200"
           }
         },
-        "x-state": "Generally available; Added in 5.5.0"
+        "x-state": "Generally available"
       }
     },
     "/_ml/anomaly_detectors/{job_id}/_stats": {
@@ -16192,7 +16536,7 @@
             "$ref": "#/components/responses/ml.get_job_stats-200"
           }
         },
-        "x-state": "Generally available; Added in 5.5.0"
+        "x-state": "Generally available"
       }
     },
     "/_ml/anomaly_detectors": {
@@ -16216,7 +16560,7 @@
             "$ref": "#/components/responses/ml.get_jobs-200"
           }
         },
-        "x-state": "Generally available; Added in 5.5.0"
+        "x-state": "Generally available"
       }
     },
     "/_ml/anomaly_detectors/{job_id}/results/overall_buckets": {
@@ -16261,7 +16605,7 @@
             "$ref": "#/components/responses/ml.get_overall_buckets-200"
           }
         },
-        "x-state": "Generally available; Added in 6.1.0"
+        "x-state": "Generally available"
       },
       "post": {
         "tags": [
@@ -16304,7 +16648,7 @@
             "$ref": "#/components/responses/ml.get_overall_buckets-200"
           }
         },
-        "x-state": "Generally available; Added in 6.1.0"
+        "x-state": "Generally available"
       }
     },
     "/_ml/trained_models": {
@@ -16342,7 +16686,7 @@
             "$ref": "#/components/responses/ml.get_trained_models-200"
           }
         },
-        "x-state": "Generally available; Added in 7.10.0"
+        "x-state": "Generally available"
       }
     },
     "/_ml/trained_models/{model_id}/_stats": {
@@ -16372,7 +16716,7 @@
             "$ref": "#/components/responses/ml.get_trained_models_stats-200"
           }
         },
-        "x-state": "Generally available; Added in 7.10.0"
+        "x-state": "Generally available"
       }
     },
     "/_ml/trained_models/_stats": {
@@ -16399,7 +16743,7 @@
             "$ref": "#/components/responses/ml.get_trained_models_stats-200"
           }
         },
-        "x-state": "Generally available; Added in 7.10.0"
+        "x-state": "Generally available"
       }
     },
     "/_ml/trained_models/{model_id}/_infer": {
@@ -16483,7 +16827,7 @@
             }
           }
         },
-        "x-state": "Generally available; Added in 8.3.0"
+        "x-state": "Generally available"
       }
     },
     "/_ml/anomaly_detectors/{job_id}/_open": {
@@ -16567,7 +16911,7 @@
             }
           }
         },
-        "x-state": "Generally available; Added in 5.4.0"
+        "x-state": "Generally available"
       }
     },
     "/_ml/data_frame/analytics/_preview": {
@@ -16586,7 +16930,7 @@
             "$ref": "#/components/responses/ml.preview_data_frame_analytics-200"
           }
         },
-        "x-state": "Generally available; Added in 7.13.0"
+        "x-state": "Generally available"
       },
       "post": {
         "tags": [
@@ -16603,7 +16947,7 @@
             "$ref": "#/components/responses/ml.preview_data_frame_analytics-200"
           }
         },
-        "x-state": "Generally available; Added in 7.13.0"
+        "x-state": "Generally available"
       }
     },
     "/_ml/data_frame/analytics/{id}/_preview": {
@@ -16627,7 +16971,7 @@
             "$ref": "#/components/responses/ml.preview_data_frame_analytics-200"
           }
         },
-        "x-state": "Generally available; Added in 7.13.0"
+        "x-state": "Generally available"
       },
       "post": {
         "tags": [
@@ -16649,7 +16993,7 @@
             "$ref": "#/components/responses/ml.preview_data_frame_analytics-200"
           }
         },
-        "x-state": "Generally available; Added in 7.13.0"
+        "x-state": "Generally available"
       }
     },
     "/_ml/datafeeds/{datafeed_id}/_preview": {
@@ -16679,7 +17023,7 @@
             "$ref": "#/components/responses/ml.preview_datafeed-200"
           }
         },
-        "x-state": "Generally available; Added in 5.4.0"
+        "x-state": "Generally available"
       },
       "post": {
         "tags": [
@@ -16707,7 +17051,7 @@
             "$ref": "#/components/responses/ml.preview_datafeed-200"
           }
         },
-        "x-state": "Generally available; Added in 5.4.0"
+        "x-state": "Generally available"
       }
     },
     "/_ml/datafeeds/_preview": {
@@ -16734,7 +17078,7 @@
             "$ref": "#/components/responses/ml.preview_datafeed-200"
           }
         },
-        "x-state": "Generally available; Added in 5.4.0"
+        "x-state": "Generally available"
       },
       "post": {
         "tags": [
@@ -16759,7 +17103,7 @@
             "$ref": "#/components/responses/ml.preview_datafeed-200"
           }
         },
-        "x-state": "Generally available; Added in 5.4.0"
+        "x-state": "Generally available"
       }
     },
     "/_ml/trained_models/{model_id}/definition/{part}": {
@@ -16834,7 +17178,7 @@
             }
           }
         },
-        "x-state": "Generally available; Added in 8.0.0"
+        "x-state": "Generally available"
       }
     },
     "/_ml/trained_models/{model_id}/vocabulary": {
@@ -16906,7 +17250,7 @@
             }
           }
         },
-        "x-state": "Generally available; Added in 8.0.0"
+        "x-state": "Generally available"
       }
     },
     "/_ml/anomaly_detectors/{job_id}/_reset": {
@@ -16962,7 +17306,7 @@
             }
           }
         },
-        "x-state": "Generally available; Added in 7.14.0"
+        "x-state": "Generally available"
       }
     },
     "/_ml/data_frame/analytics/{id}/_start": {
@@ -17020,7 +17364,7 @@
             }
           }
         },
-        "x-state": "Generally available; Added in 7.3.0"
+        "x-state": "Generally available"
       }
     },
     "/_ml/datafeeds/{datafeed_id}/_start": {
@@ -17119,7 +17463,7 @@
             }
           }
         },
-        "x-state": "Generally available; Added in 5.5.0"
+        "x-state": "Generally available"
       }
     },
     "/_ml/trained_models/{model_id}/deployment/_start": {
@@ -17247,7 +17591,7 @@
             }
           }
         },
-        "x-state": "Generally available; Added in 8.0.0"
+        "x-state": "Generally available"
       }
     },
     "/_ml/data_frame/analytics/{id}/_stop": {
@@ -17321,7 +17665,7 @@
             }
           }
         },
-        "x-state": "Generally available; Added in 7.3.0"
+        "x-state": "Generally available"
       }
     },
     "/_ml/datafeeds/{datafeed_id}/_stop": {
@@ -17417,7 +17761,7 @@
             }
           }
         },
-        "x-state": "Generally available; Added in 5.4.0"
+        "x-state": "Generally available"
       }
     },
     "/_ml/trained_models/{model_id}/deployment/_stop": {
@@ -17480,7 +17824,7 @@
             }
           }
         },
-        "x-state": "Generally available; Added in 8.0.0"
+        "x-state": "Generally available"
       }
     },
     "/_ml/data_frame/analytics/{id}/_update": {
@@ -17592,7 +17936,7 @@
             }
           }
         },
-        "x-state": "Generally available; Added in 7.3.0"
+        "x-state": "Generally available"
       }
     },
     "/_ml/datafeeds/{datafeed_id}/_update": {
@@ -17798,7 +18142,7 @@
             }
           }
         },
-        "x-state": "Generally available; Added in 6.4.0"
+        "x-state": "Generally available"
       }
     },
     "/_ml/filters/{filter_id}/_update": {
@@ -17883,7 +18227,7 @@
             }
           }
         },
-        "x-state": "Generally available; Added in 6.4.0"
+        "x-state": "Generally available"
       }
     },
     "/_ml/anomaly_detectors/{job_id}/_update": {
@@ -18081,7 +18425,7 @@
             }
           }
         },
-        "x-state": "Generally available; Added in 5.5.0"
+        "x-state": "Generally available"
       }
     },
     "/_ml/trained_models/{model_id}/deployment/_update": {
@@ -18152,7 +18496,7 @@
             }
           }
         },
-        "x-state": "Generally available; Added in 8.6.0"
+        "x-state": "Beta"
       }
     },
     "/_msearch": {
@@ -18212,7 +18556,7 @@
             "$ref": "#/components/responses/msearch-200"
           }
         },
-        "x-state": "Generally available; Added in 1.3.0"
+        "x-state": "Generally available"
       },
       "post": {
         "tags": [
@@ -18270,7 +18614,7 @@
             "$ref": "#/components/responses/msearch-200"
           }
         },
-        "x-state": "Generally available; Added in 1.3.0"
+        "x-state": "Generally available"
       }
     },
     "/{index}/_msearch": {
@@ -18333,7 +18677,7 @@
             "$ref": "#/components/responses/msearch-200"
           }
         },
-        "x-state": "Generally available; Added in 1.3.0"
+        "x-state": "Generally available"
       },
       "post": {
         "tags": [
@@ -18394,7 +18738,7 @@
             "$ref": "#/components/responses/msearch-200"
           }
         },
-        "x-state": "Generally available; Added in 1.3.0"
+        "x-state": "Generally available"
       }
     },
     "/_msearch/template": {
@@ -18434,6 +18778,7 @@
           }
         },
 <<<<<<< HEAD
+<<<<<<< HEAD
         "x-state": "Added in 5.0.0",
         "x-codeSamples": [
           {
@@ -18444,6 +18789,9 @@
 =======
         "x-state": "Generally available; Added in 5.0.0"
 >>>>>>> d9ed256a7 (openapi: adding more info in x-state)
+=======
+        "x-state": "Generally available"
+>>>>>>> 0c626376e (getting flavor from config to fix serverless output)
       },
       "post": {
         "tags": [
@@ -18481,6 +18829,7 @@
           }
         },
 <<<<<<< HEAD
+<<<<<<< HEAD
         "x-state": "Added in 5.0.0",
         "x-codeSamples": [
           {
@@ -18491,6 +18840,9 @@
 =======
         "x-state": "Generally available; Added in 5.0.0"
 >>>>>>> d9ed256a7 (openapi: adding more info in x-state)
+=======
+        "x-state": "Generally available"
+>>>>>>> 0c626376e (getting flavor from config to fix serverless output)
       }
     },
     "/{index}/_msearch/template": {
@@ -18533,6 +18885,7 @@
           }
         },
 <<<<<<< HEAD
+<<<<<<< HEAD
         "x-state": "Added in 5.0.0",
         "x-codeSamples": [
           {
@@ -18543,6 +18896,9 @@
 =======
         "x-state": "Generally available; Added in 5.0.0"
 >>>>>>> d9ed256a7 (openapi: adding more info in x-state)
+=======
+        "x-state": "Generally available"
+>>>>>>> 0c626376e (getting flavor from config to fix serverless output)
       },
       "post": {
         "tags": [
@@ -18583,6 +18939,7 @@
           }
         },
 <<<<<<< HEAD
+<<<<<<< HEAD
         "x-state": "Added in 5.0.0",
         "x-codeSamples": [
           {
@@ -18593,6 +18950,9 @@
 =======
         "x-state": "Generally available; Added in 5.0.0"
 >>>>>>> d9ed256a7 (openapi: adding more info in x-state)
+=======
+        "x-state": "Generally available"
+>>>>>>> 0c626376e (getting flavor from config to fix serverless output)
       }
     },
     "/_mtermvectors": {
@@ -18998,6 +19358,7 @@
           }
         },
 <<<<<<< HEAD
+<<<<<<< HEAD
         "x-state": "Added in 7.10.0",
         "x-codeSamples": [
           {
@@ -19008,6 +19369,9 @@
 =======
         "x-state": "Generally available; Added in 7.10.0"
 >>>>>>> d9ed256a7 (openapi: adding more info in x-state)
+=======
+        "x-state": "Generally available"
+>>>>>>> 0c626376e (getting flavor from config to fix serverless output)
       }
     },
     "/_scripts/{id}/{context}": {
@@ -19158,6 +19522,7 @@
           }
         },
 <<<<<<< HEAD
+<<<<<<< HEAD
         "x-state": "Added in 8.15.0",
         "x-codeSamples": [
           {
@@ -19168,6 +19533,9 @@
 =======
         "x-state": "Generally available; Added in 8.15.0"
 >>>>>>> d9ed256a7 (openapi: adding more info in x-state)
+=======
+        "x-state": "Generally available"
+>>>>>>> 0c626376e (getting flavor from config to fix serverless output)
       },
       "put": {
         "tags": [
@@ -19267,6 +19635,7 @@
           }
         },
 <<<<<<< HEAD
+<<<<<<< HEAD
         "x-state": "Added in 8.15.0",
         "x-codeSamples": [
           {
@@ -19277,6 +19646,9 @@
 =======
         "x-state": "Generally available; Added in 8.15.0"
 >>>>>>> d9ed256a7 (openapi: adding more info in x-state)
+=======
+        "x-state": "Generally available"
+>>>>>>> 0c626376e (getting flavor from config to fix serverless output)
       },
       "delete": {
         "tags": [
@@ -19321,7 +19693,7 @@
             }
           }
         },
-        "x-state": "Generally available; Added in 8.15.0"
+        "x-state": "Generally available"
       }
     },
     "/_query_rules/{ruleset_id}": {
@@ -19364,6 +19736,7 @@
           }
         },
 <<<<<<< HEAD
+<<<<<<< HEAD
         "x-state": "Added in 8.10.0",
         "x-codeSamples": [
           {
@@ -19374,6 +19747,9 @@
 =======
         "x-state": "Generally available; Added in 8.10.0"
 >>>>>>> d9ed256a7 (openapi: adding more info in x-state)
+=======
+        "x-state": "Generally available"
+>>>>>>> 0c626376e (getting flavor from config to fix serverless output)
       },
       "put": {
         "tags": [
@@ -19453,6 +19829,7 @@
           }
         },
 <<<<<<< HEAD
+<<<<<<< HEAD
         "x-state": "Added in 8.10.0",
         "x-codeSamples": [
           {
@@ -19463,6 +19840,9 @@
 =======
         "x-state": "Generally available; Added in 8.10.0"
 >>>>>>> d9ed256a7 (openapi: adding more info in x-state)
+=======
+        "x-state": "Generally available"
+>>>>>>> 0c626376e (getting flavor from config to fix serverless output)
       },
       "delete": {
         "tags": [
@@ -19496,7 +19876,7 @@
             }
           }
         },
-        "x-state": "Generally available; Added in 8.10.0"
+        "x-state": "Generally available"
       }
     },
     "/_query_rules": {
@@ -19563,6 +19943,7 @@
           }
         },
 <<<<<<< HEAD
+<<<<<<< HEAD
         "x-state": "Added in 8.10.0",
         "x-codeSamples": [
           {
@@ -19573,6 +19954,9 @@
 =======
         "x-state": "Generally available; Added in 8.10.0"
 >>>>>>> d9ed256a7 (openapi: adding more info in x-state)
+=======
+        "x-state": "Generally available"
+>>>>>>> 0c626376e (getting flavor from config to fix serverless output)
       }
     },
     "/_query_rules/{ruleset_id}/_test": {
@@ -19658,6 +20042,7 @@
           }
         },
 <<<<<<< HEAD
+<<<<<<< HEAD
         "x-state": "Added in 8.10.0",
         "x-codeSamples": [
           {
@@ -19668,6 +20053,9 @@
 =======
         "x-state": "Generally available; Added in 8.10.0"
 >>>>>>> d9ed256a7 (openapi: adding more info in x-state)
+=======
+        "x-state": "Generally available"
+>>>>>>> 0c626376e (getting flavor from config to fix serverless output)
       }
     },
     "/_rank_eval": {
@@ -19700,7 +20088,7 @@
             "$ref": "#/components/responses/rank_eval-200"
           }
         },
-        "x-state": "Generally available; Added in 6.2.0"
+        "x-state": "Generally available"
       },
       "post": {
         "tags": [
@@ -19731,7 +20119,7 @@
             "$ref": "#/components/responses/rank_eval-200"
           }
         },
-        "x-state": "Generally available; Added in 6.2.0"
+        "x-state": "Generally available"
       }
     },
     "/{index}/_rank_eval": {
@@ -19767,7 +20155,7 @@
             "$ref": "#/components/responses/rank_eval-200"
           }
         },
-        "x-state": "Generally available; Added in 6.2.0"
+        "x-state": "Generally available"
       },
       "post": {
         "tags": [
@@ -19801,7 +20189,7 @@
             "$ref": "#/components/responses/rank_eval-200"
           }
         },
-        "x-state": "Generally available; Added in 6.2.0"
+        "x-state": "Generally available"
       }
     },
     "/_reindex": {
@@ -20072,6 +20460,7 @@
           }
         },
 <<<<<<< HEAD
+<<<<<<< HEAD
         "x-state": "Added in 2.3.0",
         "x-codeSamples": [
           {
@@ -20082,6 +20471,9 @@
 =======
         "x-state": "Generally available; Added in 2.3.0"
 >>>>>>> d9ed256a7 (openapi: adding more info in x-state)
+=======
+        "x-state": "Generally available"
+>>>>>>> 0c626376e (getting flavor from config to fix serverless output)
       }
     },
     "/_render/template": {
@@ -20219,6 +20611,7 @@
           }
         },
 <<<<<<< HEAD
+<<<<<<< HEAD
         "x-state": "Technical preview",
         "x-codeSamples": [
           {
@@ -20229,6 +20622,9 @@
 =======
         "x-state": "Technical preview; Added in 6.3.0"
 >>>>>>> d9ed256a7 (openapi: adding more info in x-state)
+=======
+        "x-state": "Technical preview"
+>>>>>>> 0c626376e (getting flavor from config to fix serverless output)
       },
       "post": {
         "tags": [
@@ -20246,6 +20642,7 @@
           }
         },
 <<<<<<< HEAD
+<<<<<<< HEAD
         "x-state": "Technical preview",
         "x-codeSamples": [
           {
@@ -20256,6 +20653,9 @@
 =======
         "x-state": "Technical preview; Added in 6.3.0"
 >>>>>>> d9ed256a7 (openapi: adding more info in x-state)
+=======
+        "x-state": "Technical preview"
+>>>>>>> 0c626376e (getting flavor from config to fix serverless output)
       }
     },
     "/_search": {
@@ -20947,6 +21347,7 @@
           }
         },
 <<<<<<< HEAD
+<<<<<<< HEAD
         "x-beta": true,
         "x-codeSamples": [
           {
@@ -20957,6 +21358,9 @@
 =======
         "x-state": "Beta; Added in 8.8.0"
 >>>>>>> d9ed256a7 (openapi: adding more info in x-state)
+=======
+        "x-state": "Beta"
+>>>>>>> 0c626376e (getting flavor from config to fix serverless output)
       },
       "put": {
         "tags": [
@@ -21024,6 +21428,7 @@
           }
         },
 <<<<<<< HEAD
+<<<<<<< HEAD
         "x-beta": true,
         "x-codeSamples": [
           {
@@ -21034,6 +21439,9 @@
 =======
         "x-state": "Beta; Added in 8.8.0"
 >>>>>>> d9ed256a7 (openapi: adding more info in x-state)
+=======
+        "x-state": "Beta"
+>>>>>>> 0c626376e (getting flavor from config to fix serverless output)
       },
       "delete": {
         "tags": [
@@ -21067,7 +21475,7 @@
             }
           }
         },
-        "x-state": "Beta; Added in 8.8.0"
+        "x-state": "Beta"
       }
     },
     "/_application/analytics/{name}": {
@@ -21089,6 +21497,7 @@
         },
         "deprecated": true,
 <<<<<<< HEAD
+<<<<<<< HEAD
         "x-state": "Technical preview",
         "x-codeSamples": [
           {
@@ -21099,6 +21508,9 @@
 =======
         "x-state": "Technical preview; Added in 8.8.0"
 >>>>>>> d9ed256a7 (openapi: adding more info in x-state)
+=======
+        "x-state": "Technical preview"
+>>>>>>> 0c626376e (getting flavor from config to fix serverless output)
       },
       "put": {
         "tags": [
@@ -21132,7 +21544,7 @@
           }
         },
         "deprecated": true,
-        "x-state": "Technical preview; Added in 8.8.0"
+        "x-state": "Technical preview"
       },
       "delete": {
         "tags": [
@@ -21167,7 +21579,7 @@
           }
         },
         "deprecated": true,
-        "x-state": "Technical preview; Added in 8.8.0"
+        "x-state": "Technical preview"
       }
     },
     "/_application/analytics": {
@@ -21184,6 +21596,7 @@
         },
         "deprecated": true,
 <<<<<<< HEAD
+<<<<<<< HEAD
         "x-state": "Technical preview",
         "x-codeSamples": [
           {
@@ -21194,6 +21607,9 @@
 =======
         "x-state": "Technical preview; Added in 8.8.0"
 >>>>>>> d9ed256a7 (openapi: adding more info in x-state)
+=======
+        "x-state": "Technical preview"
+>>>>>>> 0c626376e (getting flavor from config to fix serverless output)
       }
     },
     "/_application/search_application": {
@@ -21270,6 +21686,7 @@
           }
         },
 <<<<<<< HEAD
+<<<<<<< HEAD
         "x-beta": true,
         "x-codeSamples": [
           {
@@ -21280,6 +21697,9 @@
 =======
         "x-state": "Beta; Added in 8.8.0"
 >>>>>>> d9ed256a7 (openapi: adding more info in x-state)
+=======
+        "x-state": "Beta"
+>>>>>>> 0c626376e (getting flavor from config to fix serverless output)
       }
     },
     "/_application/search_application/{name}/_search": {
@@ -21307,6 +21727,7 @@
           }
         },
 <<<<<<< HEAD
+<<<<<<< HEAD
         "x-beta": true,
         "x-codeSamples": [
           {
@@ -21317,6 +21738,9 @@
 =======
         "x-state": "Beta; Added in 8.8.0"
 >>>>>>> d9ed256a7 (openapi: adding more info in x-state)
+=======
+        "x-state": "Beta"
+>>>>>>> 0c626376e (getting flavor from config to fix serverless output)
       },
       "post": {
         "tags": [
@@ -21342,6 +21766,7 @@
           }
         },
 <<<<<<< HEAD
+<<<<<<< HEAD
         "x-beta": true,
         "x-codeSamples": [
           {
@@ -21352,6 +21777,9 @@
 =======
         "x-state": "Beta; Added in 8.8.0"
 >>>>>>> d9ed256a7 (openapi: adding more info in x-state)
+=======
+        "x-state": "Beta"
+>>>>>>> 0c626376e (getting flavor from config to fix serverless output)
       }
     },
     "/{index}/_mvt/{field}/{zoom}/{x}/{y}": {
@@ -21412,6 +21840,7 @@
           }
         },
 <<<<<<< HEAD
+<<<<<<< HEAD
         "x-state": "Added in 7.15.0",
         "x-codeSamples": [
           {
@@ -21422,6 +21851,9 @@
 =======
         "x-state": "Generally available; Added in 7.15.0"
 >>>>>>> d9ed256a7 (openapi: adding more info in x-state)
+=======
+        "x-state": "Generally available"
+>>>>>>> 0c626376e (getting flavor from config to fix serverless output)
       },
       "post": {
         "tags": [
@@ -21480,6 +21912,7 @@
           }
         },
 <<<<<<< HEAD
+<<<<<<< HEAD
         "x-state": "Added in 7.15.0",
         "x-codeSamples": [
           {
@@ -21490,6 +21923,9 @@
 =======
         "x-state": "Generally available; Added in 7.15.0"
 >>>>>>> d9ed256a7 (openapi: adding more info in x-state)
+=======
+        "x-state": "Generally available"
+>>>>>>> 0c626376e (getting flavor from config to fix serverless output)
       }
     },
     "/_search/template": {
@@ -21552,6 +21988,7 @@
           }
         },
 <<<<<<< HEAD
+<<<<<<< HEAD
         "x-state": "Added in 2.0.0",
         "x-codeSamples": [
           {
@@ -21562,6 +21999,9 @@
 =======
         "x-state": "Generally available; Added in 2.0.0"
 >>>>>>> d9ed256a7 (openapi: adding more info in x-state)
+=======
+        "x-state": "Generally available"
+>>>>>>> 0c626376e (getting flavor from config to fix serverless output)
       },
       "post": {
         "tags": [
@@ -21622,6 +22062,7 @@
           }
         },
 <<<<<<< HEAD
+<<<<<<< HEAD
         "x-state": "Added in 2.0.0",
         "x-codeSamples": [
           {
@@ -21632,6 +22073,9 @@
 =======
         "x-state": "Generally available; Added in 2.0.0"
 >>>>>>> d9ed256a7 (openapi: adding more info in x-state)
+=======
+        "x-state": "Generally available"
+>>>>>>> 0c626376e (getting flavor from config to fix serverless output)
       }
     },
     "/{index}/_search/template": {
@@ -21697,6 +22141,7 @@
           }
         },
 <<<<<<< HEAD
+<<<<<<< HEAD
         "x-state": "Added in 2.0.0",
         "x-codeSamples": [
           {
@@ -21707,6 +22152,9 @@
 =======
         "x-state": "Generally available; Added in 2.0.0"
 >>>>>>> d9ed256a7 (openapi: adding more info in x-state)
+=======
+        "x-state": "Generally available"
+>>>>>>> 0c626376e (getting flavor from config to fix serverless output)
       },
       "post": {
         "tags": [
@@ -21770,6 +22218,7 @@
           }
         },
 <<<<<<< HEAD
+<<<<<<< HEAD
         "x-state": "Added in 2.0.0",
         "x-codeSamples": [
           {
@@ -21780,6 +22229,9 @@
 =======
         "x-state": "Generally available; Added in 2.0.0"
 >>>>>>> d9ed256a7 (openapi: adding more info in x-state)
+=======
+        "x-state": "Generally available"
+>>>>>>> 0c626376e (getting flavor from config to fix serverless output)
       }
     },
     "/_security/_authenticate": {
@@ -21872,6 +22324,7 @@
           }
         },
 <<<<<<< HEAD
+<<<<<<< HEAD
         "x-state": "Added in 5.5.0",
         "x-codeSamples": [
           {
@@ -21882,6 +22335,9 @@
 =======
         "x-state": "Generally available; Added in 5.5.0"
 >>>>>>> d9ed256a7 (openapi: adding more info in x-state)
+=======
+        "x-state": "Generally available"
+>>>>>>> 0c626376e (getting flavor from config to fix serverless output)
       }
     },
     "/_security/api_key": {
@@ -22010,6 +22466,7 @@
           }
         },
 <<<<<<< HEAD
+<<<<<<< HEAD
         "x-state": "Added in 6.7.0",
         "x-codeSamples": [
           {
@@ -22020,6 +22477,9 @@
 =======
         "x-state": "Generally available; Added in 6.7.0"
 >>>>>>> d9ed256a7 (openapi: adding more info in x-state)
+=======
+        "x-state": "Generally available"
+>>>>>>> 0c626376e (getting flavor from config to fix serverless output)
       },
       "put": {
         "tags": [
@@ -22045,6 +22505,7 @@
           }
         },
 <<<<<<< HEAD
+<<<<<<< HEAD
         "x-state": "Added in 6.7.0",
         "x-codeSamples": [
           {
@@ -22055,6 +22516,9 @@
 =======
         "x-state": "Generally available; Added in 6.7.0"
 >>>>>>> d9ed256a7 (openapi: adding more info in x-state)
+=======
+        "x-state": "Generally available"
+>>>>>>> 0c626376e (getting flavor from config to fix serverless output)
       },
       "post": {
         "tags": [
@@ -22080,6 +22544,7 @@
           }
         },
 <<<<<<< HEAD
+<<<<<<< HEAD
         "x-state": "Added in 6.7.0",
         "x-codeSamples": [
           {
@@ -22090,6 +22555,9 @@
 =======
         "x-state": "Generally available; Added in 6.7.0"
 >>>>>>> d9ed256a7 (openapi: adding more info in x-state)
+=======
+        "x-state": "Generally available"
+>>>>>>> 0c626376e (getting flavor from config to fix serverless output)
       },
       "delete": {
         "tags": [
@@ -22217,6 +22685,7 @@
           }
         },
 <<<<<<< HEAD
+<<<<<<< HEAD
         "x-state": "Added in 6.7.0",
         "x-codeSamples": [
           {
@@ -22227,6 +22696,9 @@
 =======
         "x-state": "Generally available; Added in 6.7.0"
 >>>>>>> d9ed256a7 (openapi: adding more info in x-state)
+=======
+        "x-state": "Generally available"
+>>>>>>> 0c626376e (getting flavor from config to fix serverless output)
       }
     },
     "/_security/role/{name}": {
@@ -22451,6 +22923,7 @@
           }
         },
 <<<<<<< HEAD
+<<<<<<< HEAD
         "x-state": "Added in 7.3.0",
         "x-codeSamples": [
           {
@@ -22461,6 +22934,9 @@
 =======
         "x-state": "Generally available; Added in 7.3.0"
 >>>>>>> d9ed256a7 (openapi: adding more info in x-state)
+=======
+        "x-state": "Generally available"
+>>>>>>> 0c626376e (getting flavor from config to fix serverless output)
       }
     },
     "/_security/role": {
@@ -22508,6 +22984,7 @@
           }
         },
 <<<<<<< HEAD
+<<<<<<< HEAD
         "x-state": "Added in 6.4.0",
         "x-codeSamples": [
           {
@@ -22518,6 +22995,9 @@
 =======
         "x-state": "Generally available; Added in 6.4.0"
 >>>>>>> d9ed256a7 (openapi: adding more info in x-state)
+=======
+        "x-state": "Generally available"
+>>>>>>> 0c626376e (getting flavor from config to fix serverless output)
       },
       "post": {
         "tags": [
@@ -22538,6 +23018,7 @@
           }
         },
 <<<<<<< HEAD
+<<<<<<< HEAD
         "x-state": "Added in 6.4.0",
         "x-codeSamples": [
           {
@@ -22548,6 +23029,9 @@
 =======
         "x-state": "Generally available; Added in 6.4.0"
 >>>>>>> d9ed256a7 (openapi: adding more info in x-state)
+=======
+        "x-state": "Generally available"
+>>>>>>> 0c626376e (getting flavor from config to fix serverless output)
       }
     },
     "/_security/user/{user}/_has_privileges": {
@@ -22575,6 +23059,7 @@
           }
         },
 <<<<<<< HEAD
+<<<<<<< HEAD
         "x-state": "Added in 6.4.0",
         "x-codeSamples": [
           {
@@ -22585,6 +23070,9 @@
 =======
         "x-state": "Generally available; Added in 6.4.0"
 >>>>>>> d9ed256a7 (openapi: adding more info in x-state)
+=======
+        "x-state": "Generally available"
+>>>>>>> 0c626376e (getting flavor from config to fix serverless output)
       },
       "post": {
         "tags": [
@@ -22610,6 +23098,7 @@
           }
         },
 <<<<<<< HEAD
+<<<<<<< HEAD
         "x-state": "Added in 6.4.0",
         "x-codeSamples": [
           {
@@ -22620,6 +23109,9 @@
 =======
         "x-state": "Generally available; Added in 6.4.0"
 >>>>>>> d9ed256a7 (openapi: adding more info in x-state)
+=======
+        "x-state": "Generally available"
+>>>>>>> 0c626376e (getting flavor from config to fix serverless output)
       }
     },
     "/_security/_query/api_key": {
@@ -22650,6 +23142,7 @@
           }
         },
 <<<<<<< HEAD
+<<<<<<< HEAD
         "x-state": "Added in 7.15.0",
         "x-codeSamples": [
           {
@@ -22660,6 +23153,9 @@
 =======
         "x-state": "Generally available; Added in 7.15.0"
 >>>>>>> d9ed256a7 (openapi: adding more info in x-state)
+=======
+        "x-state": "Generally available"
+>>>>>>> 0c626376e (getting flavor from config to fix serverless output)
       },
       "post": {
         "tags": [
@@ -22688,6 +23184,7 @@
           }
         },
 <<<<<<< HEAD
+<<<<<<< HEAD
         "x-state": "Added in 7.15.0",
         "x-codeSamples": [
           {
@@ -22698,6 +23195,9 @@
 =======
         "x-state": "Generally available; Added in 7.15.0"
 >>>>>>> d9ed256a7 (openapi: adding more info in x-state)
+=======
+        "x-state": "Generally available"
+>>>>>>> 0c626376e (getting flavor from config to fix serverless output)
       }
     },
     "/_security/_query/role": {
@@ -22717,6 +23217,7 @@
           }
         },
 <<<<<<< HEAD
+<<<<<<< HEAD
         "x-state": "Added in 8.15.0",
         "x-codeSamples": [
           {
@@ -22727,6 +23228,9 @@
 =======
         "x-state": "Generally available; Added in 8.15.0"
 >>>>>>> d9ed256a7 (openapi: adding more info in x-state)
+=======
+        "x-state": "Generally available"
+>>>>>>> 0c626376e (getting flavor from config to fix serverless output)
       },
       "post": {
         "tags": [
@@ -22744,6 +23248,7 @@
           }
         },
 <<<<<<< HEAD
+<<<<<<< HEAD
         "x-state": "Added in 8.15.0",
         "x-codeSamples": [
           {
@@ -22754,6 +23259,9 @@
 =======
         "x-state": "Generally available; Added in 8.15.0"
 >>>>>>> d9ed256a7 (openapi: adding more info in x-state)
+=======
+        "x-state": "Generally available"
+>>>>>>> 0c626376e (getting flavor from config to fix serverless output)
       }
     },
     "/_security/api_key/{id}": {
@@ -22842,6 +23350,7 @@
           }
         },
 <<<<<<< HEAD
+<<<<<<< HEAD
         "x-state": "Added in 8.4.0",
         "x-codeSamples": [
           {
@@ -22852,6 +23361,9 @@
 =======
         "x-state": "Generally available; Added in 8.4.0"
 >>>>>>> d9ed256a7 (openapi: adding more info in x-state)
+=======
+        "x-state": "Generally available"
+>>>>>>> 0c626376e (getting flavor from config to fix serverless output)
       }
     },
     "/_sql/close": {
@@ -22907,6 +23419,7 @@
           }
         },
 <<<<<<< HEAD
+<<<<<<< HEAD
         "x-state": "Added in 6.3.0",
         "x-codeSamples": [
           {
@@ -22917,6 +23430,9 @@
 =======
         "x-state": "Generally available; Added in 6.3.0"
 >>>>>>> d9ed256a7 (openapi: adding more info in x-state)
+=======
+        "x-state": "Generally available"
+>>>>>>> 0c626376e (getting flavor from config to fix serverless output)
       }
     },
     "/_sql/async/delete/{id}": {
@@ -22952,7 +23468,7 @@
             }
           }
         },
-        "x-state": "Generally available; Added in 7.15.0"
+        "x-state": "Generally available"
       }
     },
     "/_sql/async/{id}": {
@@ -23065,7 +23581,7 @@
             }
           }
         },
-        "x-state": "Generally available; Added in 7.15.0"
+        "x-state": "Generally available"
       }
     },
     "/_sql/async/status/{id}": {
@@ -23131,7 +23647,7 @@
             }
           }
         },
-        "x-state": "Generally available; Added in 7.15.0"
+        "x-state": "Generally available"
       }
     },
     "/_sql": {
@@ -23156,6 +23672,7 @@
           }
         },
 <<<<<<< HEAD
+<<<<<<< HEAD
         "x-state": "Added in 6.3.0",
         "x-codeSamples": [
           {
@@ -23166,6 +23683,9 @@
 =======
         "x-state": "Generally available; Added in 6.3.0"
 >>>>>>> d9ed256a7 (openapi: adding more info in x-state)
+=======
+        "x-state": "Generally available"
+>>>>>>> 0c626376e (getting flavor from config to fix serverless output)
       },
       "post": {
         "tags": [
@@ -23188,6 +23708,7 @@
           }
         },
 <<<<<<< HEAD
+<<<<<<< HEAD
         "x-state": "Added in 6.3.0",
         "x-codeSamples": [
           {
@@ -23198,6 +23719,9 @@
 =======
         "x-state": "Generally available; Added in 6.3.0"
 >>>>>>> d9ed256a7 (openapi: adding more info in x-state)
+=======
+        "x-state": "Generally available"
+>>>>>>> 0c626376e (getting flavor from config to fix serverless output)
       }
     },
     "/_sql/translate": {
@@ -23217,6 +23741,7 @@
           }
         },
 <<<<<<< HEAD
+<<<<<<< HEAD
         "x-state": "Added in 6.3.0",
         "x-codeSamples": [
           {
@@ -23227,6 +23752,9 @@
 =======
         "x-state": "Generally available; Added in 6.3.0"
 >>>>>>> d9ed256a7 (openapi: adding more info in x-state)
+=======
+        "x-state": "Generally available"
+>>>>>>> 0c626376e (getting flavor from config to fix serverless output)
       },
       "post": {
         "tags": [
@@ -23244,6 +23772,7 @@
           }
         },
 <<<<<<< HEAD
+<<<<<<< HEAD
         "x-state": "Added in 6.3.0",
         "x-codeSamples": [
           {
@@ -23254,6 +23783,9 @@
 =======
         "x-state": "Generally available; Added in 6.3.0"
 >>>>>>> d9ed256a7 (openapi: adding more info in x-state)
+=======
+        "x-state": "Generally available"
+>>>>>>> 0c626376e (getting flavor from config to fix serverless output)
       }
     },
     "/_synonyms/{id}": {
@@ -23332,6 +23864,7 @@
           }
         },
 <<<<<<< HEAD
+<<<<<<< HEAD
         "x-state": "Added in 8.10.0",
         "x-codeSamples": [
           {
@@ -23342,6 +23875,9 @@
 =======
         "x-state": "Generally available; Added in 8.10.0"
 >>>>>>> d9ed256a7 (openapi: adding more info in x-state)
+=======
+        "x-state": "Generally available"
+>>>>>>> 0c626376e (getting flavor from config to fix serverless output)
       },
       "put": {
         "tags": [
@@ -23415,7 +23951,7 @@
             }
           }
         },
-        "x-state": "Generally available; Added in 8.10.0"
+        "x-state": "Generally available"
       },
       "delete": {
         "tags": [
@@ -23449,7 +23985,7 @@
             }
           }
         },
-        "x-state": "Generally available; Added in 8.10.0"
+        "x-state": "Generally available"
       }
     },
     "/_synonyms/{set_id}/{rule_id}": {
@@ -23503,6 +24039,7 @@
           }
         },
 <<<<<<< HEAD
+<<<<<<< HEAD
         "x-state": "Added in 8.10.0",
         "x-codeSamples": [
           {
@@ -23513,6 +24050,9 @@
 =======
         "x-state": "Generally available; Added in 8.10.0"
 >>>>>>> d9ed256a7 (openapi: adding more info in x-state)
+=======
+        "x-state": "Generally available"
+>>>>>>> 0c626376e (getting flavor from config to fix serverless output)
       },
       "put": {
         "tags": [
@@ -23589,6 +24129,7 @@
           }
         },
 <<<<<<< HEAD
+<<<<<<< HEAD
         "x-state": "Added in 8.10.0",
         "x-codeSamples": [
           {
@@ -23599,6 +24140,9 @@
 =======
         "x-state": "Generally available; Added in 8.10.0"
 >>>>>>> d9ed256a7 (openapi: adding more info in x-state)
+=======
+        "x-state": "Generally available"
+>>>>>>> 0c626376e (getting flavor from config to fix serverless output)
       },
       "delete": {
         "tags": [
@@ -23650,6 +24194,7 @@
           }
         },
 <<<<<<< HEAD
+<<<<<<< HEAD
         "x-state": "Added in 8.10.0",
         "x-codeSamples": [
           {
@@ -23660,6 +24205,9 @@
 =======
         "x-state": "Generally available; Added in 8.10.0"
 >>>>>>> d9ed256a7 (openapi: adding more info in x-state)
+=======
+        "x-state": "Generally available"
+>>>>>>> 0c626376e (getting flavor from config to fix serverless output)
       }
     },
     "/_synonyms": {
@@ -23728,6 +24276,7 @@
           }
         },
 <<<<<<< HEAD
+<<<<<<< HEAD
         "x-state": "Added in 8.10.0",
         "x-codeSamples": [
           {
@@ -23738,6 +24287,9 @@
 =======
         "x-state": "Generally available; Added in 8.10.0"
 >>>>>>> d9ed256a7 (openapi: adding more info in x-state)
+=======
+        "x-state": "Generally available"
+>>>>>>> 0c626376e (getting flavor from config to fix serverless output)
       }
     },
     "/_tasks/{task_id}": {
@@ -23824,6 +24376,7 @@
           }
         },
 <<<<<<< HEAD
+<<<<<<< HEAD
         "x-state": "Technical preview",
         "x-codeSamples": [
           {
@@ -23834,6 +24387,9 @@
 =======
         "x-state": "Technical preview; Added in 5.0.0"
 >>>>>>> d9ed256a7 (openapi: adding more info in x-state)
+=======
+        "x-state": "Technical preview"
+>>>>>>> 0c626376e (getting flavor from config to fix serverless output)
       }
     },
     "/{index}/_terms_enum": {
@@ -23858,6 +24414,7 @@
           }
         },
 <<<<<<< HEAD
+<<<<<<< HEAD
         "x-state": "Added in 7.14.0",
         "x-codeSamples": [
           {
@@ -23868,6 +24425,9 @@
 =======
         "x-state": "Generally available; Added in 7.14.0"
 >>>>>>> d9ed256a7 (openapi: adding more info in x-state)
+=======
+        "x-state": "Generally available"
+>>>>>>> 0c626376e (getting flavor from config to fix serverless output)
       },
       "post": {
         "tags": [
@@ -23890,6 +24450,7 @@
           }
         },
 <<<<<<< HEAD
+<<<<<<< HEAD
         "x-state": "Added in 7.14.0",
         "x-codeSamples": [
           {
@@ -23900,6 +24461,9 @@
 =======
         "x-state": "Generally available; Added in 7.14.0"
 >>>>>>> d9ed256a7 (openapi: adding more info in x-state)
+=======
+        "x-state": "Generally available"
+>>>>>>> 0c626376e (getting flavor from config to fix serverless output)
       }
     },
     "/{index}/_termvectors/{id}": {
@@ -24198,7 +24762,7 @@
             "$ref": "#/components/responses/transform.get_transform-200"
           }
         },
-        "x-state": "Generally available; Added in 7.5.0"
+        "x-state": "Generally available"
       },
       "put": {
         "tags": [
@@ -24318,6 +24882,7 @@
           }
         },
 <<<<<<< HEAD
+<<<<<<< HEAD
         "x-state": "Added in 7.2.0",
         "x-codeSamples": [
           {
@@ -24328,6 +24893,9 @@
 =======
         "x-state": "Generally available; Added in 7.2.0"
 >>>>>>> d9ed256a7 (openapi: adding more info in x-state)
+=======
+        "x-state": "Generally available"
+>>>>>>> 0c626376e (getting flavor from config to fix serverless output)
       },
       "delete": {
         "tags": [
@@ -24396,7 +24964,7 @@
             }
           }
         },
-        "x-state": "Generally available; Added in 7.5.0"
+        "x-state": "Generally available"
       }
     },
     "/_transform": {
@@ -24426,7 +24994,7 @@
             "$ref": "#/components/responses/transform.get_transform-200"
           }
         },
-        "x-state": "Generally available; Added in 7.5.0"
+        "x-state": "Generally available"
       }
     },
     "/_transform/{transform_id}/_stats": {
@@ -24523,7 +25091,7 @@
             }
           }
         },
-        "x-state": "Generally available; Added in 7.5.0"
+        "x-state": "Generally available"
       }
     },
     "/_transform/{transform_id}/_preview": {
@@ -24551,6 +25119,7 @@
           }
         },
 <<<<<<< HEAD
+<<<<<<< HEAD
         "x-state": "Added in 7.2.0",
         "x-codeSamples": [
           {
@@ -24561,6 +25130,9 @@
 =======
         "x-state": "Generally available; Added in 7.2.0"
 >>>>>>> d9ed256a7 (openapi: adding more info in x-state)
+=======
+        "x-state": "Generally available"
+>>>>>>> 0c626376e (getting flavor from config to fix serverless output)
       },
       "post": {
         "tags": [
@@ -24586,6 +25158,7 @@
           }
         },
 <<<<<<< HEAD
+<<<<<<< HEAD
         "x-state": "Added in 7.2.0",
         "x-codeSamples": [
           {
@@ -24596,6 +25169,9 @@
 =======
         "x-state": "Generally available; Added in 7.2.0"
 >>>>>>> d9ed256a7 (openapi: adding more info in x-state)
+=======
+        "x-state": "Generally available"
+>>>>>>> 0c626376e (getting flavor from config to fix serverless output)
       }
     },
     "/_transform/_preview": {
@@ -24620,6 +25196,7 @@
           }
         },
 <<<<<<< HEAD
+<<<<<<< HEAD
         "x-state": "Added in 7.2.0",
         "x-codeSamples": [
           {
@@ -24630,6 +25207,9 @@
 =======
         "x-state": "Generally available; Added in 7.2.0"
 >>>>>>> d9ed256a7 (openapi: adding more info in x-state)
+=======
+        "x-state": "Generally available"
+>>>>>>> 0c626376e (getting flavor from config to fix serverless output)
       },
       "post": {
         "tags": [
@@ -24652,6 +25232,7 @@
           }
         },
 <<<<<<< HEAD
+<<<<<<< HEAD
         "x-state": "Added in 7.2.0",
         "x-codeSamples": [
           {
@@ -24662,6 +25243,9 @@
 =======
         "x-state": "Generally available; Added in 7.2.0"
 >>>>>>> d9ed256a7 (openapi: adding more info in x-state)
+=======
+        "x-state": "Generally available"
+>>>>>>> 0c626376e (getting flavor from config to fix serverless output)
       }
     },
     "/_transform/{transform_id}/_reset": {
@@ -24723,7 +25307,7 @@
             }
           }
         },
-        "x-state": "Generally available; Added in 8.1.0"
+        "x-state": "Generally available"
       }
     },
     "/_transform/{transform_id}/_schedule_now": {
@@ -24775,7 +25359,7 @@
             }
           }
         },
-        "x-state": "Generally available; Added in 8.7.0"
+        "x-state": "Generally available"
       }
     },
     "/_transform/{transform_id}/_start": {
@@ -24837,7 +25421,7 @@
             }
           }
         },
-        "x-state": "Generally available; Added in 7.5.0"
+        "x-state": "Generally available"
       }
     },
     "/_transform/{transform_id}/_stop": {
@@ -24929,7 +25513,7 @@
             }
           }
         },
-        "x-state": "Generally available; Added in 7.5.0"
+        "x-state": "Generally available"
       }
     },
     "/_transform/{transform_id}/_update": {
@@ -25097,6 +25681,7 @@
           }
         },
 <<<<<<< HEAD
+<<<<<<< HEAD
         "x-state": "Added in 7.2.0",
         "x-codeSamples": [
           {
@@ -25107,6 +25692,9 @@
 =======
         "x-state": "Generally available; Added in 7.2.0"
 >>>>>>> d9ed256a7 (openapi: adding more info in x-state)
+=======
+        "x-state": "Generally available"
+>>>>>>> 0c626376e (getting flavor from config to fix serverless output)
       }
     },
     "/{index}/_update/{id}": {
@@ -25858,6 +26446,7 @@
           }
         },
 <<<<<<< HEAD
+<<<<<<< HEAD
         "x-state": "Added in 2.4.0",
         "x-codeSamples": [
           {
@@ -25868,6 +26457,9 @@
 =======
         "x-state": "Generally available; Added in 2.4.0"
 >>>>>>> d9ed256a7 (openapi: adding more info in x-state)
+=======
+        "x-state": "Generally available"
+>>>>>>> 0c626376e (getting flavor from config to fix serverless output)
       }
     }
   },
@@ -36095,7 +36687,7 @@
                   },
                   "prune": {
                     "description": "Whether to perform pruning, omitting the non-significant tokens from the query to improve query performance.\nIf prune is true but the pruning_config is not specified, pruning will occur but default values will be used.\nDefault: false",
-                    "x-state": "Technical preview; Added in 8.15.0",
+                    "x-state": "Technical preview",
                     "type": "boolean"
                   },
                   "pruning_config": {
@@ -39780,7 +40372,7 @@
           },
           "dataset.size": {
             "description": "total size of dataset (including the cache for partially mounted indices)",
-            "x-state": "Generally available; Added in 8.11.0",
+            "x-state": "Generally available",
             "oneOf": [
               {
                 "type": "string"
@@ -50169,12 +50761,10 @@
           },
           "ingested_as_first_pipeline_in_bytes": {
             "description": "Total number of bytes of all documents ingested by the pipeline.\nThis field is only present on pipelines which are the first to process a document.\nThus, it is not present on pipelines which only serve as a final pipeline after a default pipeline, a pipeline run after a reroute processor, or pipelines in pipeline processors.",
-            "x-state": "Generally available; Added in 8.15.0",
             "type": "number"
           },
           "produced_as_first_pipeline_in_bytes": {
             "description": "Total number of bytes of all documents produced by the pipeline.\nThis field is only present on pipelines which are the first to process a document.\nThus, it is not present on pipelines which only serve as a final pipeline after a default pipeline, a pipeline run after a reroute processor, or pipelines in pipeline processors.\nIn situations where there are subsequent pipelines, the value represents the size of the document after all pipelines have run.",
-            "x-state": "Generally available; Added in 8.15.0",
             "type": "number"
           }
         },
@@ -51909,7 +52499,7 @@
           },
           "time_series_dimension": {
             "description": "Whether this field is used as a time series dimension.",
-            "x-state": "Technical preview; Added in 8.0.0",
+            "x-state": "Technical preview",
             "type": "boolean"
           },
           "time_series_metric": {
@@ -51917,7 +52507,7 @@
           },
           "non_dimension_indices": {
             "description": "If this list is present in response then some indices have the\nfield marked as a dimension and other indices, the ones in this list, do not.",
-            "x-state": "Technical preview; Added in 8.0.0",
+            "x-state": "Technical preview",
             "type": "array",
             "items": {
               "$ref": "#/components/schemas/_types.IndexName"
@@ -51925,7 +52515,7 @@
           },
           "metric_conflicts_indices": {
             "description": "The list of indices where this field is present if these indices\ndon’t have the same `time_series_metric` value for this field.",
-            "x-state": "Technical preview; Added in 8.0.0",
+            "x-state": "Technical preview",
             "type": "array",
             "items": {
               "$ref": "#/components/schemas/_types.IndexName"
@@ -57002,7 +57592,6 @@
               },
               "extract_device_type": {
                 "description": "Extracts device type from the user agent string on a best-effort basis.",
-                "x-state": "Beta; Added in 8.9.0",
                 "type": "boolean"
               }
             },

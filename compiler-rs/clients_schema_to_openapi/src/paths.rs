@@ -19,7 +19,7 @@ use std::collections::HashMap;
 use std::fmt::Write;
 
 use anyhow::{anyhow, bail};
-use clients_schema::Property;
+use clients_schema::{Flavor, Property};
 use indexmap::IndexMap;
 use indexmap::indexmap;
 use icu_segmenter::SentenceSegmenter;
@@ -37,6 +37,7 @@ pub fn add_endpoint(
     endpoint: &clients_schema::Endpoint,
     tac: &mut TypesAndComponents,
     out: &mut Paths,
+    flavor: &Option<Flavor>
 ) -> anyhow::Result<()> {
     if endpoint.request.is_none() {
         // tracing::warn!("Endpoint {} is missing a request -- ignored", &endpoint.name);
@@ -310,7 +311,7 @@ pub fn add_endpoint(
             deprecated: endpoint.deprecation.is_some(),
             security: None,
             servers: vec![],
-            extensions,
+            extensions: crate::availability_as_extensions(&endpoint.availability, flavor),
         };
 
 
