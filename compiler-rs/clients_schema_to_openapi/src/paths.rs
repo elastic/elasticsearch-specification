@@ -19,7 +19,7 @@ use std::collections::HashMap;
 use std::fmt::Write;
 
 use anyhow::{anyhow, bail};
-use clients_schema::{Property};
+use clients_schema::{Privileges, Property};
 use indexmap::IndexMap;
 use indexmap::indexmap;
 use icu_segmenter::SentenceSegmenter;
@@ -253,6 +253,13 @@ pub fn add_endpoint(
         parameters.append(&mut query_params.clone());
 
         let sum_desc = split_summary_desc(&endpoint.description);
+        
+        let privilege_desc = add_privileges(&endpoint.privileges);
+        
+        let full_desc = match (sum_desc.description, privilege_desc) {
+            (Some(a), Some(b)) => Some(a+ &b),
+            (opt_a, opt_b) => opt_a.or(opt_b)
+        };
 
         // add the x-state extension for availability
         let mut extensions = crate::availability_as_extensions(&endpoint.availability, &tac.config.flavor);
@@ -300,7 +307,7 @@ pub fn add_endpoint(
                 vec![namespace.to_string()]
             },
             summary: sum_desc.summary,
-            description: sum_desc.description,
+            description: full_desc,
             external_docs: tac.convert_external_docs(endpoint),
             // external_docs: None, // Need values that differ from client purposes
             operation_id: None, // set in clone_operation below with operation_counter
@@ -315,7 +322,7 @@ pub fn add_endpoint(
             deprecated: endpoint.deprecation.is_some(),
             security: None,
             servers: vec![],
-            extensions
+            extensions: crate::extensions(&endpoint.availability),
         };
 
 
@@ -442,6 +449,20 @@ fn split_summary_desc(desc: &str) -> SplitDesc{
         summary:  Some(String::from(first_line.trim().strip_suffix('.').unwrap_or(first_line))),
         description: if !rest.is_empty() {Some(String::from(rest.trim()))} else {None}
     }
+}
+
+fn add_privileges(privileges: &Option<Privileges>) -> Option<String>{
+    if let Some(privs) = privileges {
+        let mut result = "Required privileges:".to_string();
+        if privs.index.len()>0 {
+            result = result + " index-privileges: " + &privs.index.join(",");
+        }
+        if privs.cluster.len()>0 {
+            result = result + " cluster-privileges: " + &privs.cluster.join(",");
+        }
+        return Some(result)
+    }
+    None
 }
 
 #[derive(PartialEq,Debug)]
