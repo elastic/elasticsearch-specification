@@ -6485,12 +6485,16 @@
             }
           }
         },
+<<<<<<< HEAD
         "x-codeSamples": [
           {
             "lang": "Console",
             "source": "POST /_query\n{\n  \"query\": \"\"\"\n    FROM library,remote-*:library\n    | EVAL year = DATE_TRUNC(1 YEARS, release_date)\n    | STATS MAX(page_count) BY year\n    | SORT year\n    | LIMIT 5\n  \"\"\",\n  \"include_ccs_metadata\": true\n}"
           }
         ]
+=======
+        "x-state": "Generally available"
+>>>>>>> 09daf2fbd (x-state in fields)
       }
     },
     "/{index}/_source/{id}": {
@@ -17217,6 +17221,7 @@
                   },
                   "merges": {
                     "description": "The optional model merges if required by the tokenizer.",
+                    "x-state": "Generally available",
                     "type": "array",
                     "items": {
                       "type": "string"
@@ -17224,6 +17229,7 @@
                   },
                   "scores": {
                     "description": "The optional vocabulary value scores if required by the tokenizer.",
+                    "x-state": "Generally available",
                     "type": "array",
                     "items": {
                       "type": "number"
@@ -32251,6 +32257,7 @@
               "url": "https://www.elastic.co/docs/reference/query-languages/query-dsl/query-dsl-text-expansion-query"
             },
             "description": "Uses a natural language processing model to convert the query text into a list of token-weight pairs which are then used in a query against a sparse vector or rank features field.",
+            "x-state": "Generally available",
             "type": "object",
             "additionalProperties": {
               "$ref": "#/components/schemas/_types.query_dsl.TextExpansionQuery"
@@ -32264,6 +32271,7 @@
               "url": "https://www.elastic.co/docs/reference/query-languages/query-dsl/query-dsl-weighted-tokens-query"
             },
             "description": "Supports returning text_expansion query results by sending in precomputed tokens with the query.",
+            "x-state": "Generally available",
             "type": "object",
             "additionalProperties": {
               "$ref": "#/components/schemas/_types.query_dsl.WeightedTokensQuery"
@@ -33049,6 +33057,7 @@
               "url": "https://www.elastic.co/docs/solutions/search/vector/knn#approximate-knn"
             },
             "description": "The approximate kNN search to run.",
+            "x-state": "Generally available",
             "oneOf": [
               {
                 "$ref": "#/components/schemas/_types.KnnSearch"
@@ -35713,6 +35722,7 @@
               },
               "case_insensitive": {
                 "description": "Allows ASCII case insensitive matching of the value with the indexed field values when set to `true`.\nDefault is `false` which means the case sensitivity of matching depends on the underlying field’s mapping.",
+                "x-state": "Generally available",
                 "type": "boolean"
               }
             },
@@ -36152,6 +36162,7 @@
             "properties": {
               "case_insensitive": {
                 "description": "Allows case insensitive matching of the regular expression value with the indexed field values when set to `true`.\nWhen `false`, case sensitivity of matching depends on the underlying field’s mapping.",
+                "x-state": "Generally available",
                 "type": "boolean"
               },
               "flags": {
@@ -36749,6 +36760,7 @@
               },
               "case_insensitive": {
                 "description": "Allows ASCII case insensitive matching of the value with the indexed field values when set to `true`.\nWhen `false`, the case sensitivity of matching depends on the underlying field’s mapping.",
+                "x-state": "Generally available",
                 "type": "boolean"
               }
             },
@@ -36866,6 +36878,7 @@
             "properties": {
               "case_insensitive": {
                 "description": "Allows case insensitive matching of the pattern with the indexed field values when set to true. Default is false which means the case sensitivity of matching depends on the underlying field’s mapping.",
+                "x-state": "Generally available",
                 "type": "boolean"
               },
               "rewrite": {
@@ -41722,6 +41735,7 @@
             "type": "string"
           },
           "type": {
+            "x-state": "Generally available",
             "type": "string"
           }
         }
@@ -48953,6 +48967,7 @@
                 ]
               },
               "null_value": {
+                "x-state": "Generally available",
                 "type": "string"
               }
             },
@@ -50448,6 +50463,7 @@
           },
           "is_hidden": {
             "description": "If `true`, the alias is hidden.\nAll indices for the alias must have the same `is_hidden` value.",
+            "x-state": "Generally available",
             "type": "boolean"
           }
         }
@@ -50761,10 +50777,12 @@
           },
           "ingested_as_first_pipeline_in_bytes": {
             "description": "Total number of bytes of all documents ingested by the pipeline.\nThis field is only present on pipelines which are the first to process a document.\nThus, it is not present on pipelines which only serve as a final pipeline after a default pipeline, a pipeline run after a reroute processor, or pipelines in pipeline processors.",
+            "x-state": "Generally available",
             "type": "number"
           },
           "produced_as_first_pipeline_in_bytes": {
             "description": "Total number of bytes of all documents produced by the pipeline.\nThis field is only present on pipelines which are the first to process a document.\nThus, it is not present on pipelines which only serve as a final pipeline after a default pipeline, a pipeline run after a reroute processor, or pipelines in pipeline processors.\nIn situations where there are subsequent pipelines, the value represents the size of the document after all pipelines have run.",
+            "x-state": "Generally available",
             "type": "number"
           }
         },
@@ -53117,6 +53135,7 @@
           },
           "system": {
             "description": "If `true`, the data stream is created and managed by an Elastic stack component and cannot be modified through normal user interaction.",
+            "x-state": "Generally available",
             "type": "boolean"
           },
           "template": {
@@ -53315,6 +53334,7 @@
           },
           "deprecated": {
             "description": "Marks this index template as deprecated.\nWhen creating or updating a non-deprecated index template that uses deprecated components,\nElasticsearch will emit a deprecation warning.",
+            "x-state": "Generally available",
             "type": "boolean"
           },
           "ignore_missing_component_templates": {
@@ -57165,6 +57185,7 @@
               },
               "trace_redact": {
                 "description": "If `true` then ingest metadata `_ingest._redact._is_redacted` is set to `true` if the document has been redacted",
+                "x-state": "Generally available",
                 "type": "boolean"
               }
             },
@@ -57592,6 +57613,7 @@
               },
               "extract_device_type": {
                 "description": "Extracts device type from the user agent string on a best-effort basis.",
+                "x-state": "Generally available",
                 "type": "boolean"
               }
             },
@@ -60282,6 +60304,7 @@
         "properties": {
           "annotations_enabled": {
             "description": "If true, enables calculation and storage of the model change annotations for each entity that is being analyzed.",
+            "x-state": "Generally available",
             "type": "boolean"
           },
           "enabled": {
@@ -63557,6 +63580,7 @@
             "$ref": "#/components/schemas/_types.Name"
           },
           "type": {
+            "x-state": "Generally available",
             "type": "string"
           }
         },
@@ -63881,6 +63905,7 @@
           },
           "realm_type": {
             "description": "Realm type of the principal for which this API key was created",
+            "x-state": "Generally available",
             "type": "string"
           },
           "metadata": {
@@ -63895,6 +63920,7 @@
           },
           "limited_by": {
             "description": "The owner user’s permissions associated with the API key.\nIt is a point-in-time snapshot captured at creation and subsequent updates.\nAn API key’s effective permissions are an intersection of its assigned privileges and the owner user’s permissions.",
+            "x-state": "Generally available",
             "type": "array",
             "items": {
               "type": "object",
@@ -63908,6 +63934,7 @@
           },
           "profile_uid": {
             "description": "The profile uid for the API key owner principal, if requested and if it exists",
+            "x-state": "Generally available",
             "type": "string"
           },
           "_sort": {
@@ -64051,6 +64078,7 @@
             }
           },
           "global": {
+            "x-state": "Generally available",
             "type": "object",
             "additionalProperties": {
               "type": "object",
@@ -64855,6 +64883,7 @@
           },
           "unattended": {
             "description": "If `true`, the transform runs in unattended mode. In unattended mode, the transform retries indefinitely in case\nof an error which means the transform never fails. Setting the number of retries other than infinite fails in\nvalidation.",
+            "x-state": "Generally available",
             "type": "boolean"
           }
         }
@@ -66765,6 +66794,7 @@
                 },
                 "encoded": {
                   "description": "API key credentials which is the base64-encoding of\nthe UTF-8 representation of `id` and `api_key` joined\nby a colon (`:`).",
+                  "x-state": "Generally available",
                   "type": "string"
                 }
               },
@@ -72677,6 +72707,7 @@
                 },
                 "knn": {
                   "description": "Defines the approximate kNN search to run.",
+                  "x-state": "Generally available",
                   "oneOf": [
                     {
                       "$ref": "#/components/schemas/_types.KnnSearch"
@@ -74073,6 +74104,7 @@
                     "url": "https://www.elastic.co/docs/solutions/search/vector/knn#approximate-knn"
                   },
                   "description": "The approximate kNN search to run.",
+                  "x-state": "Generally available",
                   "oneOf": [
                     {
                       "$ref": "#/components/schemas/_types.KnnSearch"

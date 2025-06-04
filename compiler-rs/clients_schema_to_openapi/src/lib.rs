@@ -23,8 +23,9 @@ pub mod cli;
 
 use indexmap::IndexMap;
 
-use clients_schema::{Availabilities, Flavor, IndexedModel, Stability, Visibility};
+use clients_schema::{Availabilities, Availability, Flavor, IndexedModel, Stability, Visibility};
 use openapiv3::{Components, OpenAPI};
+use serde_json::Value;
 use clients_schema::transform::ExpandConfig;
 use crate::components::TypesAndComponents;
 
@@ -151,31 +152,35 @@ fn info(model: &IndexedModel) -> openapiv3::Info {
 
 pub fn availability_as_extensions(availabilities: &Option<Availabilities>, flavor: &Option<Flavor>) -> IndexMap<String, serde_json::Value> {
     let mut result = IndexMap::new();
+    convert_availabilities(availabilities, flavor, &mut result);
+    result
+}
+
+pub fn convert_availabilities(availabilities: &Option<Availabilities>, flavor: &Option<Flavor>, result: &mut IndexMap<String, Value>) {
     if let Some(avails) = availabilities {
-        if let Some(flavor) = flavor {
-            if let Some(availability) = avails.get(flavor) {
-                if let Some(stability) = &availability.stability {
-                    let mut since_str = "".to_string();
-                    if let Some(since) = &availability.since {
-                        since_str = "; Added in ".to_string() + since;
+        if let Some(flav) = flavor {
+            if let Some(availability) = avails.get(flav) {
+                let Availability {since,stability,..} = &availability;
+                let stab = stability.clone().unwrap_or(Stability::Stable);
+                let mut since_str = "".to_string();
+                if let Some(since) = since {
+                    since_str = "; Added in ".to_string() + since;
+                }
+                match stab {
+                    Stability::Beta => {
+                        let beta_since = "Beta".to_string() + &since_str;
+                        result.insert("x-state".to_string(), Value::String(beta_since));
                     }
-                    match stability {
-                        Stability::Beta => {
-                            let beta_since = "Beta".to_string() + &since_str;
-                            result.insert("x-state".to_string(), serde_json::Value::String(beta_since));
-                        }
-                        Stability::Experimental => {
-                            let exp_since = "Technical preview".to_string() + &since_str;
-                            result.insert("x-state".to_string(), serde_json::Value::String(exp_since));
-                        }
-                        Stability::Stable => {
-                            let stable_since = "Generally available".to_string() + &since_str;
-                            result.insert("x-state".to_string(), serde_json::Value::String(stable_since));
-                        }
+                    Stability::Experimental => {
+                        let exp_since = "Technical preview".to_string() + &since_str;
+                        result.insert("x-state".to_string(), Value::String(exp_since));
+                    }
+                    Stability::Stable => {
+                        let stable_since = "Generally available".to_string() + &since_str;
+                        result.insert("x-state".to_string(), Value::String(stable_since));
                     }
                 }
             }
         }
     }
-    result
 }
