@@ -895,7 +895,9 @@ export class HuggingFaceServiceSettings {
   rate_limit?: RateLimitSetting
   /**
    * The URL endpoint to use for the requests.
-   * For `completion` and `chat_completion` tasks, the deployed model must be compatible with the Hugging Face Chat Completion interface (https://huggingface.co/docs/inference-providers/en/tasks/chat-completion#conversational-large-language-models-llms). OpenAI mode must be enabled, and the endpoint URL must include `v1/chat/completions`.
+   * For `completion` and `chat_completion` tasks, the deployed model must be compatible with the Hugging Face Chat Completion interface (see the linked external documentation for details). The endpoint URL for the request must include `/v1/chat/completions`.
+   * If the model supports the OpenAI Chat Completion schema, a toggle should appear in the interface. Enabling this toggle doesn't change any model behavior, it reveals the full endpoint URL needed (which should include `/v1/chat/completions`) when configuring the inference endpoint in Elasticsearch. If the model doesn't support this schema, the toggle may not be shown.
+   * @ext_doc_id huggingface-chat-completion-interface
    */
   url: string
   /**
