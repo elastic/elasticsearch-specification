@@ -1082,3 +1082,7 @@ actions:
         - $ref: "../../specification/_global/exists/examples/xCodeSamples/DocumentExistsJavaScriptExample1.yaml"
         - $ref: "../../specification/_global/exists/examples/xCodeSamples/DocumentExistsPythonExample1.yaml"
         - $ref: "../../specification/_global/exists/examples/xCodeSamples/DocumentExistsRubyExample1.yaml"
+# Remove long lists of enum values
+  - target: "$.components['schemas']['cat._types.CatAnomalyDetectorColumn'].enum"
+    description: Remove enum array
+    remove: true
