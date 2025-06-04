@@ -177,14 +177,14 @@ export type MessageContent = string | Array<ContentObject>
 export interface Message {
   /**
    * The content of the message.
-   * 
+   *
    * String example:
    * ```
    * {
    *    "content": "Some string"
    * }
    * ```
-   * 
+   *
    * Object example:
    * ```
    * {
