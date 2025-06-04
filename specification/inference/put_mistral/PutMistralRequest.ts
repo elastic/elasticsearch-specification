@@ -29,7 +29,7 @@ import { Id } from '@_types/common'
 /**
  * Create a Mistral inference endpoint.
  *
- * Creates an inference endpoint to perform an inference task with the `mistral` service.
+ * Create an inference endpoint to perform an inference task with the `mistral` service.
  * @rest_spec_name inference.put_mistral
  * @availability stack since=8.15.0 stability=stable visibility=public
  * @availability serverless stability=stable visibility=public
