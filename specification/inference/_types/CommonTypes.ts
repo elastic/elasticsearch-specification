@@ -865,7 +865,9 @@ export class GoogleVertexAITaskSettings {
 
 export enum GoogleVertexAITaskType {
   rerank,
-  text_embedding
+  text_embedding,
+  completion,
+  chat_completion
 }
 
 export enum GoogleVertexAIServiceType {
