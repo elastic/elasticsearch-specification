@@ -13430,7 +13430,7 @@ export interface InferenceGoogleVertexAITaskSettings {
   top_n?: integer
 }
 
-export type InferenceGoogleVertexAITaskType = 'rerank' | 'text_embedding'
+export type InferenceGoogleVertexAITaskType = 'rerank' | 'text_embedding' | 'completion' | 'chat_completion'
 
 export interface InferenceHuggingFaceServiceSettings {
   api_key: string
