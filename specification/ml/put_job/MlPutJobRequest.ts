@@ -17,15 +17,15 @@
  * under the License.
  */
 
+import { RequestBase } from '@_types/Base'
+import { ExpandWildcards, Id, IndexName } from '@_types/common'
+import { long } from '@_types/Numeric'
+import { Duration } from '@_types/Time'
 import { AnalysisConfig, AnalysisLimits } from '@ml/_types/Analysis'
 import { DatafeedConfig } from '@ml/_types/Datafeed'
 import { DataDescription } from '@ml/_types/Job'
 import { ModelPlotConfig } from '@ml/_types/ModelPlot'
 import { CustomSettings } from '@ml/_types/Settings'
-import { RequestBase } from '@_types/Base'
-import { ExpandWildcards, Id, IndexName } from '@_types/common'
-import { long } from '@_types/Numeric'
-import { Duration } from '@_types/Time'
 
 /**
  * Create an anomaly detection job.

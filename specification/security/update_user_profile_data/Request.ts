@@ -17,12 +17,12 @@
  * under the License.
  */
 
-import { UserProfileId } from '@security/_types/UserProfile'
-import { Dictionary } from '@spec_utils/Dictionary'
-import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 import { RequestBase } from '@_types/Base'
 import { Refresh, SequenceNumber } from '@_types/common'
 import { long } from '@_types/Numeric'
+import { UserProfileId } from '@security/_types/UserProfile'
+import { Dictionary } from '@spec_utils/Dictionary'
+import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 
 /**
  * Update user profile data.

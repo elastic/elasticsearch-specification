@@ -17,7 +17,6 @@
  * under the License.
  */
 
-import { Dictionary } from '@spec_utils/Dictionary'
 import { ByteSize, HealthStatus, Name, VersionString } from '@_types/common'
 import { double, integer, long } from '@_types/Numeric'
 import {
@@ -30,6 +29,7 @@ import {
   StoreStats
 } from '@_types/Stats'
 import { Duration, DurationValue, UnitMillis } from '@_types/Time'
+import { Dictionary } from '@spec_utils/Dictionary'
 
 export class ClusterFileSystem {
   /**

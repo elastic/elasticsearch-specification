@@ -17,12 +17,12 @@
  * under the License.
  */
 
-import { Dictionary } from '@spec_utils/Dictionary'
-import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 import { FieldValue, Id, IndexName, NodeId } from '@_types/common'
 import { ErrorCause } from '@_types/Errors'
 import { integer } from '@_types/Numeric'
 import { DurationValue, UnitMillis } from '@_types/Time'
+import { Dictionary } from '@spec_utils/Dictionary'
+import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 
 export class EsqlResult {
   took?: DurationValue<UnitMillis>

@@ -17,16 +17,16 @@
  * under the License.
  */
 
-import { Dictionary } from '@spec_utils/Dictionary'
-import { Action } from '@watcher/_types/Action'
-import { ConditionContainer } from '@watcher/_types/Conditions'
-import { InputContainer } from '@watcher/_types/Input'
-import { TriggerContainer } from '@watcher/_types/Trigger'
 import { RequestBase } from '@_types/Base'
 import { Id, Metadata, SequenceNumber, VersionNumber } from '@_types/common'
 import { long } from '@_types/Numeric'
 import { Duration, DurationValue, UnitMillis } from '@_types/Time'
 import { TransformContainer } from '@_types/Transform'
+import { Dictionary } from '@spec_utils/Dictionary'
+import { Action } from '@watcher/_types/Action'
+import { ConditionContainer } from '@watcher/_types/Conditions'
+import { InputContainer } from '@watcher/_types/Input'
+import { TriggerContainer } from '@watcher/_types/Trigger'
 
 /**
  * Create or update a watch.

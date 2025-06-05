@@ -17,10 +17,10 @@
  * under the License.
  */
 
+import { ScriptSource } from '@_types/Scripting'
 import { Dictionary } from '@spec_utils/Dictionary'
 import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 import { SearchInputRequestDefinition } from '@watcher/_types/Input'
-import { ScriptSource } from '@_types/Scripting'
 import { Duration } from './Time'
 
 export class Transform {}
