@@ -17,9 +17,9 @@
  * under the License.
  */
 
-import { Vertex } from '@graph/_types/Vertex'
 import { ShardFailure } from '@_types/Errors'
 import { long } from '@_types/Numeric'
+import { Vertex } from '@graph/_types/Vertex'
 import { Connection } from '../_types/Connection'
 
 export class Response {

@@ -17,9 +17,9 @@
  * under the License.
  */
 
-import { OperationContainer, UpdateAction } from '@global/bulk/types'
 import { RequestBase } from '@_types/Base'
 import { Duration } from '@_types/Time'
+import { OperationContainer, UpdateAction } from '@global/bulk/types'
 
 /**
  * Send monitoring data.

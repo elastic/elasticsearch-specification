@@ -17,11 +17,11 @@
  * under the License.
  */
 
+import { ErrorCause } from '@_types/Errors'
+import { long } from '@_types/Numeric'
 import { ClusterPrivilege } from '@security/_types/Privileges'
 import { UserProfileId } from '@security/_types/UserProfile'
 import { Dictionary } from '@spec_utils/Dictionary'
-import { ErrorCause } from '@_types/Errors'
-import { long } from '@_types/Numeric'
 import {
   ApplicationPrivilegesCheck,
   IndexPrivilegesCheck
