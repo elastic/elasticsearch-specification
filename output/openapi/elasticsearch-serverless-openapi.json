@@ -9495,7 +9495,7 @@
           "inference"
         ],
         "summary": "Perform chat completion inference\n",
-        "description": "The chat completion inference API enables real-time responses for chat completion tasks by delivering answers incrementally, reducing response times during computation. \nIt only works with the `chat_completion` task type for `openai`, `elastic` and `googlevertexai` inference services.\n\nIMPORTANT: The inference APIs enable you to use certain services, such as built-in machine learning models (ELSER, E5), models uploaded through Eland, Cohere, OpenAI, Azure, Google AI Studio, Google Vertex AI, Anthropic, Watsonx.ai, or Hugging Face.\nFor built-in models and models uploaded through Eland, the inference APIs offer an alternative way to use and manage trained models. However, if you do not plan to use the inference APIs to use these models or if you want to use non-NLP models, use the machine learning trained model APIs.\n\nNOTE: The `chat_completion` task type is only available within the _stream API and only supports streaming.\nThe Chat completion inference API and the Stream inference API differ in their response structure and capabilities.\nThe Chat completion inference API provides more comprehensive customization options through more fields and function calling support.\nIf you use the `openai`, `hugging_face` or the `elastic` service, use the Chat completion inference API.",
+        "description": "The chat completion inference API enables real-time responses for chat completion tasks by delivering answers incrementally, reducing response times during computation.\nIt only works with the `chat_completion` task type for `openai` and `elastic` inference services.\n\nNOTE: The `chat_completion` task type is only available within the _stream API and only supports streaming.\nThe Chat completion inference API and the Stream inference API differ in their response structure and capabilities.\nThe Chat completion inference API provides more comprehensive customization options through more fields and function calling support.\nIf you use the `openai` service or the `elastic` service, use the Chat completion inference API.",
         "operationId": "inference-chat-completion-unified",
         "parameters": [
           {
@@ -9534,12 +9534,12 @@
                 },
                 "PostChatCompletionRequestExample2": {
                   "summary": "A chat completion task with tool_calls",
-                  "description": "Run `POST _inference/chat_completion/openai-completion/_stream` to perform a chat completion using an Assistant message with `tool_calls`.",
+                  "description": "Run `POST POST _inference/chat_completion/openai-completion/_stream` to perform a chat completion using an Assistant message with `tool_calls`.",
                   "value": "{\n  \"messages\": [\n      {\n          \"role\": \"assistant\",\n          \"content\": \"Let's find out what the weather is\",\n          \"tool_calls\": [ \n              {\n                  \"id\": \"call_KcAjWtAww20AihPHphUh46Gd\",\n                  \"type\": \"function\",\n                  \"function\": {\n                      \"name\": \"get_current_weather\",\n                      \"arguments\": \"{\\\"location\\\":\\\"Boston, MA\\\"}\"\n                  }\n              }\n          ]\n      },\n      { \n          \"role\": \"tool\",\n          \"content\": \"The weather is cold\",\n          \"tool_call_id\": \"call_KcAjWtAww20AihPHphUh46Gd\"\n      }\n  ]\n}"
                 },
                 "PostChatCompletionRequestExample3": {
                   "summary": "A chat completion task with tools and tool_calls",
-                  "description": "Run `POST _inference/chat_completion/openai-completion/_stream` to perform a chat completion using a User message with `tools` and `tool_choice`.",
+                  "description": "Run `POST POST _inference/chat_completion/openai-completion/_stream` to perform a chat completion  using a User message with `tools` and `tool_choice`.",
                   "value": "{\n  \"messages\": [\n      {\n          \"role\": \"user\",\n          \"content\": [\n              {\n                  \"type\": \"text\",\n                  \"text\": \"What's the price of a scarf?\"\n              }\n          ]\n      }\n  ],\n  \"tools\": [\n      {\n          \"type\": \"function\",\n          \"function\": {\n              \"name\": \"get_current_price\",\n              \"description\": \"Get the current price of a item\",\n              \"parameters\": {\n                  \"type\": \"object\",\n                  \"properties\": {\n                      \"item\": {\n                          \"id\": \"123\"\n                      }\n                  }\n              }\n          }\n      }\n  ],\n  \"tool_choice\": {\n      \"type\": \"function\",\n      \"function\": {\n          \"name\": \"get_current_price\"\n      }\n  }\n}"
                 }
               }
@@ -10040,7 +10040,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/inference._types.InferenceEndpointInfo"
+                  "$ref": "#/components/schemas/inference._types.InferenceEndpointInfoAmazonBedrock"
                 }
               }
             }
@@ -10120,7 +10120,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/inference._types.InferenceEndpointInfo"
+                  "$ref": "#/components/schemas/inference._types.InferenceEndpointInfoAnthropic"
                 }
               }
             }
@@ -10206,7 +10206,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/inference._types.InferenceEndpointInfo"
+                  "$ref": "#/components/schemas/inference._types.InferenceEndpointInfoAzureAIStudio"
                 }
               }
             }
@@ -10292,7 +10292,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/inference._types.InferenceEndpointInfo"
+                  "$ref": "#/components/schemas/inference._types.InferenceEndpointInfoAzureOpenAI"
                 }
               }
             }
@@ -10378,7 +10378,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/inference._types.InferenceEndpointInfo"
+                  "$ref": "#/components/schemas/inference._types.InferenceEndpointInfoCohere"
                 }
               }
             }
@@ -10484,7 +10484,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/inference._types.InferenceEndpointInfo"
+                  "$ref": "#/components/schemas/inference._types.InferenceEndpointInfoElasticsearch"
                 },
                 "examples": {
                   "PutElasticsearchResponseExample1": {
@@ -10573,7 +10573,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/inference._types.InferenceEndpointInfo"
+                  "$ref": "#/components/schemas/inference._types.InferenceEndpointInfoELSER"
                 },
                 "examples": {
                   "PutElserResponseExample1": {
@@ -10658,7 +10658,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/inference._types.InferenceEndpointInfo"
+                  "$ref": "#/components/schemas/inference._types.InferenceEndpointInfoGoogleAIStudio"
                 }
               }
             }
@@ -10744,7 +10744,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/inference._types.InferenceEndpointInfo"
+                  "$ref": "#/components/schemas/inference._types.InferenceEndpointInfoGoogleVertexAI"
                 }
               }
             }
@@ -10759,7 +10759,7 @@
           "inference"
         ],
         "summary": "Create a Hugging Face inference endpoint",
-        "description": "Create an inference endpoint to perform an inference task with the `hugging_face` service.\nSupported tasks include: `text_embedding`, `completion`, and `chat_completion`.\n\nTo configure the endpoint, first visit the Hugging Face Inference Endpoints page and create a new endpoint.\nSelect a model that supports the task you intend to use.\n\nFor Elastic's `text_embedding` task:\nThe selected model must support the `Sentence Embeddings` task. On the new endpoint creation page, select the `Sentence Embeddings` task under the `Advanced Configuration` section.\nAfter the endpoint has initialized, copy the generated endpoint URL.\nRecommended models for `text_embedding` task:\n\n* `all-MiniLM-L6-v2`\n* `all-MiniLM-L12-v2`\n* `all-mpnet-base-v2`\n* `e5-base-v2`\n* `e5-small-v2`\n* `multilingual-e5-base`\n* `multilingual-e5-small`\n\nFor Elastic's `chat_completion` and `completion` tasks:\nThe selected model must support the `Text Generation` task and expose OpenAI API. HuggingFace supports both serverless and dedicated endpoints for `Text Generation`. When creating dedicated endpoint select the `Text Generation` task.\nAfter the endpoint is initialized (for dedicated) or ready (for serverless), ensure it supports the OpenAI API and includes `/v1/chat/completions` part in URL. Then, copy the full endpoint URL for use.\nRecommended models for `chat_completion` and `completion` tasks:\n\n* `Mistral-7B-Instruct-v0.2`\n* `QwQ-32B`\n* `Phi-3-mini-128k-instruct`",
+        "description": "Create an inference endpoint to perform an inference task with the `hugging_face` service.\n\nYou must first create an inference endpoint on the Hugging Face endpoint page to get an endpoint URL.\nSelect the model you want to use on the new endpoint creation page (for example `intfloat/e5-small-v2`), then select the sentence embeddings task under the advanced configuration section.\nCreate the endpoint and copy the URL after the endpoint initialization has been finished.\n\nThe following models are recommended for the Hugging Face service:\n\n* `all-MiniLM-L6-v2`\n* `all-MiniLM-L12-v2`\n* `all-mpnet-base-v2`\n* `e5-base-v2`\n* `e5-small-v2`\n* `multilingual-e5-base`\n* `multilingual-e5-small`",
         "operationId": "inference-put-hugging-face",
         "parameters": [
           {
@@ -10822,7 +10822,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/inference._types.InferenceEndpointInfo"
+                  "$ref": "#/components/schemas/inference._types.InferenceEndpointInfoHuggingFace"
                 }
               }
             }
@@ -10985,7 +10985,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/inference._types.InferenceEndpointInfo"
+                  "$ref": "#/components/schemas/inference._types.InferenceEndpointInfoMistral"
                 }
               }
             }
@@ -11071,7 +11071,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/inference._types.InferenceEndpointInfo"
+                  "$ref": "#/components/schemas/inference._types.InferenceEndpointInfoOpenAI"
                 }
               }
             }
@@ -11157,7 +11157,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/inference._types.InferenceEndpointInfo"
+                  "$ref": "#/components/schemas/inference._types.InferenceEndpointInfoVoyageAI"
                 }
               }
             }
@@ -11231,7 +11231,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/inference._types.InferenceEndpointInfo"
+                  "$ref": "#/components/schemas/inference._types.InferenceEndpointInfoWatsonx"
                 }
               }
             }
@@ -51315,6 +51315,36 @@
           }
         }
       },
+      "inference._types.InferenceEndpointInfoAmazonBedrock": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/inference._types.InferenceEndpoint"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "inference_id": {
+                "description": "The inference Id",
+                "type": "string"
+              },
+              "task_type": {
+                "$ref": "#/components/schemas/inference._types.TaskTypeAmazonBedrock"
+              }
+            },
+            "required": [
+              "inference_id",
+              "task_type"
+            ]
+          }
+        ]
+      },
+      "inference._types.TaskTypeAmazonBedrock": {
+        "type": "string",
+        "enum": [
+          "text_embedding",
+          "completion"
+        ]
+      },
       "inference._types.AnthropicTaskType": {
         "type": "string",
         "enum": [
@@ -51372,6 +51402,35 @@
         },
         "required": [
           "max_tokens"
+        ]
+      },
+      "inference._types.InferenceEndpointInfoAnthropic": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/inference._types.InferenceEndpoint"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "inference_id": {
+                "description": "The inference Id",
+                "type": "string"
+              },
+              "task_type": {
+                "$ref": "#/components/schemas/inference._types.TaskTypeAnthropic"
+              }
+            },
+            "required": [
+              "inference_id",
+              "task_type"
+            ]
+          }
+        ]
+      },
+      "inference._types.TaskTypeAnthropic": {
+        "type": "string",
+        "enum": [
+          "completion"
         ]
       },
       "inference._types.AzureAiStudioTaskType": {
@@ -51448,6 +51507,36 @@
           }
         }
       },
+      "inference._types.InferenceEndpointInfoAzureAIStudio": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/inference._types.InferenceEndpoint"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "inference_id": {
+                "description": "The inference Id",
+                "type": "string"
+              },
+              "task_type": {
+                "$ref": "#/components/schemas/inference._types.TaskTypeAzureAIStudio"
+              }
+            },
+            "required": [
+              "inference_id",
+              "task_type"
+            ]
+          }
+        ]
+      },
+      "inference._types.TaskTypeAzureAIStudio": {
+        "type": "string",
+        "enum": [
+          "text_embedding",
+          "completion"
+        ]
+      },
       "inference._types.AzureOpenAITaskType": {
         "type": "string",
         "enum": [
@@ -51514,6 +51603,36 @@
             "type": "string"
           }
         }
+      },
+      "inference._types.InferenceEndpointInfoAzureOpenAI": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/inference._types.InferenceEndpoint"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "inference_id": {
+                "description": "The inference Id",
+                "type": "string"
+              },
+              "task_type": {
+                "$ref": "#/components/schemas/inference._types.TaskTypeAzureOpenAI"
+              }
+            },
+            "required": [
+              "inference_id",
+              "task_type"
+            ]
+          }
+        ]
+      },
+      "inference._types.TaskTypeAzureOpenAI": {
+        "type": "string",
+        "enum": [
+          "text_embedding",
+          "completion"
+        ]
       },
       "inference._types.CohereTaskType": {
         "type": "string",
@@ -51611,6 +51730,37 @@
           "START"
         ]
       },
+      "inference._types.InferenceEndpointInfoCohere": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/inference._types.InferenceEndpoint"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "inference_id": {
+                "description": "The inference Id",
+                "type": "string"
+              },
+              "task_type": {
+                "$ref": "#/components/schemas/inference._types.TaskTypeCohere"
+              }
+            },
+            "required": [
+              "inference_id",
+              "task_type"
+            ]
+          }
+        ]
+      },
+      "inference._types.TaskTypeCohere": {
+        "type": "string",
+        "enum": [
+          "text_embedding",
+          "rerank",
+          "completion"
+        ]
+      },
       "inference._types.ElasticsearchTaskType": {
         "type": "string",
         "enum": [
@@ -51682,6 +51832,37 @@
           }
         }
       },
+      "inference._types.InferenceEndpointInfoElasticsearch": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/inference._types.InferenceEndpoint"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "inference_id": {
+                "description": "The inference Id",
+                "type": "string"
+              },
+              "task_type": {
+                "$ref": "#/components/schemas/inference._types.TaskTypeElasticsearch"
+              }
+            },
+            "required": [
+              "inference_id",
+              "task_type"
+            ]
+          }
+        ]
+      },
+      "inference._types.TaskTypeElasticsearch": {
+        "type": "string",
+        "enum": [
+          "sparse_embedding",
+          "text_embedding",
+          "rerank"
+        ]
+      },
       "inference._types.ElserTaskType": {
         "type": "string",
         "enum": [
@@ -51712,6 +51893,35 @@
         "required": [
           "num_allocations",
           "num_threads"
+        ]
+      },
+      "inference._types.InferenceEndpointInfoELSER": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/inference._types.InferenceEndpoint"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "inference_id": {
+                "description": "The inference Id",
+                "type": "string"
+              },
+              "task_type": {
+                "$ref": "#/components/schemas/inference._types.TaskTypeELSER"
+              }
+            },
+            "required": [
+              "inference_id",
+              "task_type"
+            ]
+          }
+        ]
+      },
+      "inference._types.TaskTypeELSER": {
+        "type": "string",
+        "enum": [
+          "sparse_embedding"
         ]
       },
       "inference._types.GoogleAiStudioTaskType": {
@@ -51748,6 +51958,36 @@
         "required": [
           "api_key",
           "model_id"
+        ]
+      },
+      "inference._types.InferenceEndpointInfoGoogleAIStudio": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/inference._types.InferenceEndpoint"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "inference_id": {
+                "description": "The inference Id",
+                "type": "string"
+              },
+              "task_type": {
+                "$ref": "#/components/schemas/inference._types.TaskTypeGoogleAIStudio"
+              }
+            },
+            "required": [
+              "inference_id",
+              "task_type"
+            ]
+          }
+        ]
+      },
+      "inference._types.TaskTypeGoogleAIStudio": {
+        "type": "string",
+        "enum": [
+          "text_embedding",
+          "completion"
         ]
       },
       "inference._types.GoogleVertexAITaskType": {
@@ -51814,11 +52054,39 @@
           }
         }
       },
+      "inference._types.InferenceEndpointInfoGoogleVertexAI": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/inference._types.InferenceEndpoint"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "inference_id": {
+                "description": "The inference Id",
+                "type": "string"
+              },
+              "task_type": {
+                "$ref": "#/components/schemas/inference._types.TaskTypeGoogleVertexAI"
+              }
+            },
+            "required": [
+              "inference_id",
+              "task_type"
+            ]
+          }
+        ]
+      },
+      "inference._types.TaskTypeGoogleVertexAI": {
+        "type": "string",
+        "enum": [
+          "text_embedding",
+          "rerank"
+        ]
+      },
       "inference._types.HuggingFaceTaskType": {
         "type": "string",
         "enum": [
-          "chat_completion",
-          "completion",
           "text_embedding"
         ]
       },
@@ -51842,20 +52110,42 @@
             "$ref": "#/components/schemas/inference._types.RateLimitSetting"
           },
           "url": {
-            "externalDocs": {
-              "url": "https://huggingface.co/docs/inference-providers/en/tasks/chat-completion#conversational-large-language-models-llms"
-            },
-            "description": "The URL endpoint to use for the requests.\nFor `completion` and `chat_completion` tasks, the deployed model must be compatible with the Hugging Face Chat Completion interface (see the linked external documentation for details). The endpoint URL for the request must include `/v1/chat/completions`.\nIf the model supports the OpenAI Chat Completion schema, a toggle should appear in the interface. Enabling this toggle doesn't change any model behavior, it reveals the full endpoint URL needed (which should include `/v1/chat/completions`) when configuring the inference endpoint in Elasticsearch. If the model doesn't support this schema, the toggle may not be shown.",
-            "type": "string"
-          },
-          "model_id": {
-            "description": "The name of the HuggingFace model to use for the inference task.\nFor `completion` and `chat_completion` tasks, this field is optional but may be required for certain models — particularly when using serverless inference endpoints.\nFor the `text_embedding` task, this field should not be included or the request will result fail.",
+            "description": "The URL endpoint to use for the requests.",
             "type": "string"
           }
         },
         "required": [
           "api_key",
           "url"
+        ]
+      },
+      "inference._types.InferenceEndpointInfoHuggingFace": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/inference._types.InferenceEndpoint"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "inference_id": {
+                "description": "The inference Id",
+                "type": "string"
+              },
+              "task_type": {
+                "$ref": "#/components/schemas/inference._types.TaskTypeHuggingFace"
+              }
+            },
+            "required": [
+              "inference_id",
+              "task_type"
+            ]
+          }
+        ]
+      },
+      "inference._types.TaskTypeHuggingFace": {
+        "type": "string",
+        "enum": [
+          "text_embedding"
         ]
       },
       "inference._types.JinaAITaskType": {
@@ -52001,6 +52291,35 @@
           "model"
         ]
       },
+      "inference._types.InferenceEndpointInfoMistral": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/inference._types.InferenceEndpoint"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "inference_id": {
+                "description": "The inference Id",
+                "type": "string"
+              },
+              "task_type": {
+                "$ref": "#/components/schemas/inference._types.TaskTypeMistral"
+              }
+            },
+            "required": [
+              "inference_id",
+              "task_type"
+            ]
+          }
+        ]
+      },
+      "inference._types.TaskTypeMistral": {
+        "type": "string",
+        "enum": [
+          "text_embedding"
+        ]
+      },
       "inference._types.OpenAITaskType": {
         "type": "string",
         "enum": [
@@ -52061,6 +52380,37 @@
             "type": "string"
           }
         }
+      },
+      "inference._types.InferenceEndpointInfoOpenAI": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/inference._types.InferenceEndpoint"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "inference_id": {
+                "description": "The inference Id",
+                "type": "string"
+              },
+              "task_type": {
+                "$ref": "#/components/schemas/inference._types.TaskTypeOpenAI"
+              }
+            },
+            "required": [
+              "inference_id",
+              "task_type"
+            ]
+          }
+        ]
+      },
+      "inference._types.TaskTypeOpenAI": {
+        "type": "string",
+        "enum": [
+          "text_embedding",
+          "chat_completion",
+          "completion"
+        ]
       },
       "inference._types.VoyageAITaskType": {
         "type": "string",
@@ -52128,6 +52478,36 @@
           }
         }
       },
+      "inference._types.InferenceEndpointInfoVoyageAI": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/inference._types.InferenceEndpoint"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "inference_id": {
+                "description": "The inference Id",
+                "type": "string"
+              },
+              "task_type": {
+                "$ref": "#/components/schemas/inference._types.TaskTypeVoyageAI"
+              }
+            },
+            "required": [
+              "inference_id",
+              "task_type"
+            ]
+          }
+        ]
+      },
+      "inference._types.TaskTypeVoyageAI": {
+        "type": "string",
+        "enum": [
+          "text_embedding",
+          "rerank"
+        ]
+      },
       "inference._types.WatsonxTaskType": {
         "type": "string",
         "enum": [
@@ -52182,6 +52562,35 @@
           "model_id",
           "project_id",
           "url"
+        ]
+      },
+      "inference._types.InferenceEndpointInfoWatsonx": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/inference._types.InferenceEndpoint"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "inference_id": {
+                "description": "The inference Id",
+                "type": "string"
+              },
+              "task_type": {
+                "$ref": "#/components/schemas/inference._types.TaskTypeWatsonx"
+              }
+            },
+            "required": [
+              "inference_id",
+              "task_type"
+            ]
+          }
+        ]
+      },
+      "inference._types.TaskTypeWatsonx": {
+        "type": "string",
+        "enum": [
+          "text_embedding"
         ]
       },
       "inference._types.RerankedInferenceResult": {
