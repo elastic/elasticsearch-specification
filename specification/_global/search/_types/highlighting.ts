@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { Dictionary, SingleKeyDictionary } from '@spec_utils/Dictionary'
+import { Dictionary } from '@spec_utils/Dictionary'
 import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 import { Field, Fields } from '@_types/common'
 import { integer } from '@_types/Numeric'
@@ -151,9 +151,7 @@ export class HighlightBase {
 
 export class Highlight extends HighlightBase {
   encoder?: HighlighterEncoder
-  fields:
-    | SingleKeyDictionary<Field, HighlightField>
-    | SingleKeyDictionary<Field, HighlightField>[]
+  fields: Dictionary<Field, HighlightField>
 }
 
 export enum HighlighterEncoder {
