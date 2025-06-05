@@ -17,10 +17,10 @@
  * under the License.
  */
 
-import { Dictionary, SingleKeyDictionary } from '@spec_utils/Dictionary'
 import { Id, Name, VersionString } from '@_types/common'
 import { TransportAddress } from '@_types/Networking'
 import { integer } from '@_types/Numeric'
+import { Dictionary, SingleKeyDictionary } from '@spec_utils/Dictionary'
 
 export type DiscoveryNode = SingleKeyDictionary<Id, DiscoveryNodeContent>
 

@@ -17,11 +17,11 @@
  * under the License.
  */
 
-import { ResponseBody as SearchResponse } from '@global/search/SearchResponse'
-import { SearchRequestBody } from '@global/search/_types/SearchRequestBody'
 import { ErrorResponseBase } from '@_types/Base'
 import { ExpandWildcards, Indices, Routing, SearchType } from '@_types/common'
 import { integer, long } from '@_types/Numeric'
+import { SearchRequestBody } from '@global/search/_types/SearchRequestBody'
+import { ResponseBody as SearchResponse } from '@global/search/SearchResponse'
 
 /**
  * @codegen_names header, body

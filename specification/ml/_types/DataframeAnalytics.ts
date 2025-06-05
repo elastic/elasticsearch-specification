@@ -17,9 +17,6 @@
  * under the License.
  */
 
-import { DataframeAnalyticsAuthorization } from '@ml/_types/Authorization'
-import { Dictionary } from '@spec_utils/Dictionary'
-import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 import {
   Field,
   Id,
@@ -34,6 +31,9 @@ import { NodeAttributes } from '@_types/Node'
 import { double, integer, long, Percentage } from '@_types/Numeric'
 import { QueryContainer } from '@_types/query_dsl/abstractions'
 import { DurationValue, EpochTime, UnitMillis } from '@_types/Time'
+import { DataframeAnalyticsAuthorization } from '@ml/_types/Authorization'
+import { Dictionary } from '@spec_utils/Dictionary'
+import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 import { DataframeState } from './Dataframe'
 
 export class DataframeAnalyticsSource {
