@@ -17,6 +17,9 @@
  * under the License.
  */
 
+import { RequestBase } from '@_types/Base'
+import { Id, Metadata } from '@_types/common'
+import { Duration } from '@_types/Time'
 import {
   Destination,
   Latest,
@@ -26,9 +29,6 @@ import {
   Source,
   SyncContainer
 } from '@transform/_types/Transform'
-import { RequestBase } from '@_types/Base'
-import { Id, Metadata } from '@_types/common'
-import { Duration } from '@_types/Time'
 
 /**
  * Create a transform.

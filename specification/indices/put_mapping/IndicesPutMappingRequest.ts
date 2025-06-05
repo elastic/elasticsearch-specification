@@ -17,7 +17,6 @@
  * under the License.
  */
 
-import { Dictionary, SingleKeyDictionary } from '@spec_utils/Dictionary'
 import { RequestBase } from '@_types/Base'
 import {
   ExpandWildcards,
@@ -37,6 +36,7 @@ import {
 import { Property } from '@_types/mapping/Property'
 import { RuntimeFields } from '@_types/mapping/RuntimeFields'
 import { Duration } from '@_types/Time'
+import { Dictionary, SingleKeyDictionary } from '@spec_utils/Dictionary'
 
 /**
  * Update field mappings.

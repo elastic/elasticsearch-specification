@@ -17,9 +17,9 @@
  * under the License.
  */
 
+import { integer } from '@_types/Numeric'
 import { InferenceChunkingSettings } from '@inference/_types/Services'
 import { OverloadOf } from '@spec_utils/behaviors'
-import { integer } from '@_types/Numeric'
 
 export class ChunkingSettings implements OverloadOf<InferenceChunkingSettings> {
   strategy: string

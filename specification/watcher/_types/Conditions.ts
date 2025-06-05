@@ -17,11 +17,11 @@
  * under the License.
  */
 
+import { FieldValue } from '@_types/common'
+import { ScriptLanguage, ScriptSource } from '@_types/Scripting'
 import { AdditionalProperty } from '@spec_utils/behaviors'
 import { Dictionary, SingleKeyDictionary } from '@spec_utils/Dictionary'
 import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
-import { FieldValue } from '@_types/common'
-import { ScriptLanguage, ScriptSource } from '@_types/Scripting'
 
 export class AlwaysCondition {}
 

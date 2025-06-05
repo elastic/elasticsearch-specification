@@ -17,8 +17,8 @@
  * under the License.
  */
 
-import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 import { integer } from '@_types/Numeric'
+import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 import {
   TaskType,
   TaskTypeAlibabaCloudAI,
