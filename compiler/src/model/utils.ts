@@ -481,7 +481,7 @@ export function modelEnumDeclaration (declaration: EnumDeclaration): model.Enum 
         // names that contains `.` or `-` will be wrapped inside single quotes
         const name = m.getName().replace(/'/g, '')
         const member: model.EnumMember = {
-          name: name
+          name
         }
         const value = m.getValue()
         if (value != null && (typeof value === 'string')) {
@@ -1097,14 +1097,14 @@ export function parseVariantsTag (jsDoc: JSDoc[]): model.Variants | undefined {
   if (type === 'external') {
     return {
       kind: 'external_tag',
-      nonExhaustive: nonExhaustive
+      nonExhaustive
     }
   }
 
   if (type === 'container') {
     return {
       kind: 'container',
-      nonExhaustive: nonExhaustive
+      nonExhaustive
     }
   }
 
@@ -1113,7 +1113,7 @@ export function parseVariantsTag (jsDoc: JSDoc[]): model.Variants | undefined {
     assert(jsDoc, typeof pairs.tag === 'string', 'Internal variant requires a tag definition')
     return {
       kind: 'internal_tag',
-      nonExhaustive: nonExhaustive,
+      nonExhaustive,
       tag: pairs.tag,
       defaultTag: pairs.default
     }
@@ -1125,7 +1125,7 @@ export function parseVariantsTag (jsDoc: JSDoc[]): model.Variants | undefined {
     const fqn = pairs.untyped.split('.')
     return {
       kind: 'untagged',
-      nonExhaustive: nonExhaustive,
+      nonExhaustive,
       untypedVariant: {
         namespace: fqn.slice(0, fqn.length - 1).join('.'),
         name: fqn[fqn.length - 1]
