@@ -17,8 +17,8 @@
  * under the License.
  */
 
+import { SingleKeyDictionary } from '@spec_utils/Dictionary'
 import { float } from '@_types/Numeric'
-import { Dictionary } from '@spec_utils/Dictionary'
 import { QueryBase } from './abstractions'
 import { TokenPruningConfig } from './TokenPruningConfig'
 
@@ -26,8 +26,8 @@ import { TokenPruningConfig } from './TokenPruningConfig'
  * @ext_doc_id query-dsl-weighted-tokens-query
  */
 export class WeightedTokensQuery extends QueryBase {
-  /** The tokens representing this query */
-  tokens: Dictionary<string, float>
-  /** Token pruning configurations */
-  pruning_config?: TokenPruningConfig
+    /** The tokens representing this query */
+    tokens: SingleKeyDictionary<string, float>[]
+    /** Token pruning configurations */
+    pruning_config?: TokenPruningConfig
 }
