@@ -16,12 +16,12 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-import { FieldCollapse } from '@global/search/_types/FieldCollapse'
-import { Rescore } from '@global/search/_types/rescoring'
-import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 import { QueryVector, QueryVectorBuilder, RescoreVector } from '@_types/Knn'
 import { float, integer } from '@_types/Numeric'
 import { Sort, SortResults } from '@_types/sort'
+import { FieldCollapse } from '@global/search/_types/FieldCollapse'
+import { Rescore } from '@global/search/_types/rescoring'
+import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 import { Id } from './common'
 import { QueryContainer } from './query_dsl/abstractions'
 
