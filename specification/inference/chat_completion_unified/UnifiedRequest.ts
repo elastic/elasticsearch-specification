@@ -23,10 +23,10 @@ import { Id } from '@_types/common'
 import { Duration } from '@_types/Time'
 /**
  * Perform chat completion inference
- * 
- * The chat completion inference API enables real-time responses for chat completion tasks by delivering answers incrementally, reducing response times during computation. 
+ *
+ * The chat completion inference API enables real-time responses for chat completion tasks by delivering answers incrementally, reducing response times during computation.
  * It only works with the `chat_completion` task type for `openai`, `elastic` and `googlevertexai` inference services.
- * 
+ *
  * NOTE: The `chat_completion` task type is only available within the _stream API and only supports streaming.
  * The Chat completion inference API and the Stream inference API differ in their response structure and capabilities.
  * The Chat completion inference API provides more comprehensive customization options through more fields and function calling support.
