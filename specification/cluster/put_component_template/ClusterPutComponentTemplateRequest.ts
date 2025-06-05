@@ -17,10 +17,10 @@
  * under the License.
  */
 
-import { IndexState } from '@indices/_types/IndexState'
 import { RequestBase } from '@_types/Base'
 import { Metadata, Name, VersionNumber } from '@_types/common'
 import { Duration } from '@_types/Time'
+import { IndexState } from '@indices/_types/IndexState'
 
 /**
  * Create or update a component template.

@@ -17,12 +17,12 @@
  * under the License.
  */
 
-import { IndexTemplateMapping } from '@indices/put_index_template/IndicesPutIndexTemplateRequest'
-import { DataStreamVisibility } from '@indices/_types/DataStream'
 import { RequestBase } from '@_types/Base'
 import { Indices, Metadata, Name, VersionNumber } from '@_types/common'
 import { long } from '@_types/Numeric'
 import { Duration } from '@_types/Time'
+import { DataStreamVisibility } from '@indices/_types/DataStream'
+import { IndexTemplateMapping } from '@indices/put_index_template/IndicesPutIndexTemplateRequest'
 
 /**
  * Simulate an index template.
