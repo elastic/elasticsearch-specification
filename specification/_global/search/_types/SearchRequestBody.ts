@@ -17,15 +17,6 @@
  * under the License.
  */
 
-import { FieldCollapse } from '@global/search/_types/FieldCollapse'
-import { Highlight } from '@global/search/_types/highlighting'
-import { TrackHits } from '@global/search/_types/hits'
-import { PointInTimeReference } from '@global/search/_types/PointInTimeReference'
-import { Rescore } from '@global/search/_types/rescoring'
-import { SourceConfig } from '@global/search/_types/SourceFilter'
-import { Suggester } from '@global/search/_types/suggester'
-import { Dictionary, SingleKeyDictionary } from '@spec_utils/Dictionary'
-import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 import { AggregationContainer } from '@_types/aggregations/AggregationContainer'
 import { Fields, IndexName } from '@_types/common'
 import { KnnSearch } from '@_types/Knn'
@@ -37,6 +28,15 @@ import { RetrieverContainer } from '@_types/Retriever'
 import { ScriptField } from '@_types/Scripting'
 import { SlicedScroll } from '@_types/SlicedScroll'
 import { Sort, SortResults } from '@_types/sort'
+import { FieldCollapse } from '@global/search/_types/FieldCollapse'
+import { Highlight } from '@global/search/_types/highlighting'
+import { TrackHits } from '@global/search/_types/hits'
+import { PointInTimeReference } from '@global/search/_types/PointInTimeReference'
+import { Rescore } from '@global/search/_types/rescoring'
+import { SourceConfig } from '@global/search/_types/SourceFilter'
+import { Suggester } from '@global/search/_types/suggester'
+import { Dictionary, SingleKeyDictionary } from '@spec_utils/Dictionary'
+import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 
 // Keep this in sync with the body of /_global/search/SearchRequest.ts
 export class SearchRequestBody {

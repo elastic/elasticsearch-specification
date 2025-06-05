@@ -17,7 +17,6 @@
  * under the License.
  */
 
-import { AdditionalProperty } from '@spec_utils/behaviors'
 import { Field } from '@_types/common'
 import {
   Distance,
@@ -30,6 +29,7 @@ import {
   GeoShapeRelation,
   GeoTile
 } from '@_types/Geo'
+import { AdditionalProperty } from '@spec_utils/behaviors'
 import { FieldLookup, QueryBase } from './abstractions'
 
 /**

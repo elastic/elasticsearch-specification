@@ -915,10 +915,6 @@ actions:
     description: Add x-model
     update:
       x-model: true
-  - target: "$.components['schemas']['_types.aggregations.RandomSamplerAggregation']"
-    description: Add x-model
-    update:
-      x-model: true
   - target: "$.components['schemas']['_types.aggregations.RareTermsAggregation']"
     description: Add x-model
     update:
@@ -1066,6 +1062,16 @@ actions:
       x-model: true
       externalDocs:
         url: https://www.elastic.co/docs/reference/elasticsearch/rest-apis/collapse-search-results
+  - target: "$.components['schemas']['indices._types.IndexSettings']"
+    description: Add x-model and externalDocs for IndexSettings component
+    update:
+      x-model: true
+      externalDocs:
+        description: Index settings
+        url: https://www.elastic.co/docs/reference/elasticsearch/index-settings/
+  - target: "$.components['schemas']['indices._types.IndexSettings'].properties"
+    description: Remove properties IndexSettings object
+    remove: true
   # - target: "$.components['schemas']['_global.msearch.MultisearchBody'].properties"
   #   description: Add x-model
   #   update:
@@ -1082,3 +1088,7 @@ actions:
         - $ref: "../../specification/_global/exists/examples/xCodeSamples/DocumentExistsJavaScriptExample1.yaml"
         - $ref: "../../specification/_global/exists/examples/xCodeSamples/DocumentExistsPythonExample1.yaml"
         - $ref: "../../specification/_global/exists/examples/xCodeSamples/DocumentExistsRubyExample1.yaml"
+# Remove long lists of enum values
+  - target: "$.components['schemas']['cat._types.CatAnomalyDetectorColumn'].enum"
+    description: Remove enum array
+    remove: true

@@ -7921,7 +7921,7 @@
                 },
                 "examples": {
                   "IndicesGetDataLifecycleResponseExample1": {
-                    "description": "A successful response from `GET _lifecycle/stats?human&pretty`.",
+                    "description": "A successful response from `GET /_data_stream/{name}/_lifecycle?human&pretty`.",
                     "value": "{\n  \"data_streams\": [\n    {\n      \"name\": \"my-data-stream-1\",\n      \"lifecycle\": {\n        \"enabled\": true,\n        \"data_retention\": \"7d\"\n      }\n    },\n    {\n      \"name\": \"my-data-stream-2\",\n      \"lifecycle\": {\n        \"enabled\": true,\n        \"data_retention\": \"7d\"\n      }\n    }\n  ]\n}"
                   }
                 }
@@ -8062,6 +8062,151 @@
           }
         },
         "x-state": "Added in 7.9.0"
+      }
+    },
+    "/_data_stream/{name}/_options": {
+      "get": {
+        "tags": [
+          "data stream"
+        ],
+        "summary": "Get data stream options",
+        "description": "Get the data stream options configuration of one or more data streams.",
+        "operationId": "indices-get-data-stream-options",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "name",
+            "description": "Comma-separated list of data streams to limit the request.\nSupports wildcards (`*`).\nTo target all data streams, omit this parameter or use `*` or `_all`.",
+            "required": true,
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/_types.DataStreamNames"
+            },
+            "style": "simple"
+          },
+          {
+            "in": "query",
+            "name": "expand_wildcards",
+            "description": "Type of data stream that wildcard patterns can match.\nSupports comma-separated values, such as `open,hidden`.\nValid values are: `all`, `open`, `closed`, `hidden`, `none`.\n\nSupported values include:\n  - `all`: Match any data stream or index, including hidden ones.\n  - `open`: Match open, non-hidden indices. Also matches any non-hidden data stream.\n  - `closed`: Match closed, non-hidden indices. Also matches any non-hidden data stream. Data streams cannot be closed.\n  - `hidden`: Match hidden data streams and hidden indices. Must be combined with `open`, `closed`, or `both`.\n  - `none`: Wildcard expressions are not accepted.\n\n",
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/_types.ExpandWildcards"
+            },
+            "style": "form"
+          },
+          {
+            "in": "query",
+            "name": "master_timeout",
+            "description": "Period to wait for a connection to the master node. If no response is received before the timeout expires, the request fails and returns an error.",
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/_types.Duration"
+            },
+            "style": "form"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data_streams": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/indices.get_data_stream_options.DataStreamWithOptions"
+                      }
+                    }
+                  },
+                  "required": [
+                    "data_streams"
+                  ]
+                }
+              }
+            }
+          }
+        },
+        "x-state": "Added in 8.19.0"
+      },
+      "put": {
+        "tags": [
+          "data stream"
+        ],
+        "summary": "Update data stream options",
+        "description": "Update the data stream options of the specified data streams.",
+        "operationId": "indices-put-data-stream-options",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "name",
+            "description": "Comma-separated list of data streams used to limit the request.\nSupports wildcards (`*`).\nTo target all data streams use `*` or `_all`.",
+            "required": true,
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/_types.DataStreamNames"
+            },
+            "style": "simple"
+          },
+          {
+            "in": "query",
+            "name": "expand_wildcards",
+            "description": "Type of data stream that wildcard patterns can match.\nSupports comma-separated values, such as `open,hidden`.\nValid values are: `all`, `hidden`, `open`, `closed`, `none`.\n\nSupported values include:\n  - `all`: Match any data stream or index, including hidden ones.\n  - `open`: Match open, non-hidden indices. Also matches any non-hidden data stream.\n  - `closed`: Match closed, non-hidden indices. Also matches any non-hidden data stream. Data streams cannot be closed.\n  - `hidden`: Match hidden data streams and hidden indices. Must be combined with `open`, `closed`, or `both`.\n  - `none`: Wildcard expressions are not accepted.\n\n",
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/_types.ExpandWildcards"
+            },
+            "style": "form"
+          },
+          {
+            "in": "query",
+            "name": "master_timeout",
+            "description": "Period to wait for a connection to the master node. If no response is\nreceived before the timeout expires, the request fails and returns an\nerror.",
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/_types.Duration"
+            },
+            "style": "form"
+          },
+          {
+            "in": "query",
+            "name": "timeout",
+            "description": "Period to wait for a response.\nIf no response is received before the timeout expires, the request fails and returns an error.",
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/_types.Duration"
+            },
+            "style": "form"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "failure_store": {
+                    "$ref": "#/components/schemas/indices._types.DataStreamFailureStore"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/_types.AcknowledgedResponseBase"
+                }
+              }
+            }
+          }
+        },
+        "x-state": "Added in 8.19.0"
       }
     },
     "/_index_template": {
@@ -8287,9 +8432,9 @@
           "indices"
         ],
         "summary": "Update index settings",
-        "description": "Changes dynamic index settings in real time.\nFor data streams, index setting changes are applied to all backing indices by default.\n\nTo revert a setting to the default value, use a null value.\nThe list of per-index settings that can be updated dynamically on live indices can be found in index module documentation.\nTo preserve existing settings from being updated, set the `preserve_existing` parameter to `true`.\n\nNOTE: You can only define new analyzers on closed indices.\nTo add an analyzer, you must close the index, define the analyzer, and reopen the index.\nYou cannot close the write index of a data stream.\nTo update the analyzer for a data stream's write index and future backing indices, update the analyzer in the index template used by the stream.\nThen roll over the data stream to apply the new analyzer to the stream's write index and future backing indices.\nThis affects searches and any new data added to the stream after the rollover.\nHowever, it does not affect the data stream's backing indices or their existing data.\nTo change the analyzer for existing backing indices, you must create a new data stream and reindex your data into it.",
+        "description": "Changes dynamic index settings in real time.\nFor data streams, index setting changes are applied to all backing indices by default.\n\nTo revert a setting to the default value, use a null value.\nThe list of per-index settings that can be updated dynamically on live indices can be found in index settings documentation.\nTo preserve existing settings from being updated, set the `preserve_existing` parameter to `true`.\n\n There are multiple valid ways to represent index settings in the request body. You can specify only the setting, for example:\n\n```\n{\n  \"number_of_replicas\": 1\n}\n```\n\nOr you can use an `index` setting object:\n```\n{\n  \"index\": {\n    \"number_of_replicas\": 1\n  }\n}\n```\n\nOr you can use dot annotation:\n```\n{\n  \"index.number_of_replicas\": 1\n}\n```\n\nOr you can embed any of the aforementioned options in a `settings` object. For example:\n\n```\n{\n  \"settings\": {\n    \"index\": {\n      \"number_of_replicas\": 1\n    }\n  }\n}\n```\n\nNOTE: You can only define new analyzers on closed indices.\nTo add an analyzer, you must close the index, define the analyzer, and reopen the index.\nYou cannot close the write index of a data stream.\nTo update the analyzer for a data stream's write index and future backing indices, update the analyzer in the index template used by the stream.\nThen roll over the data stream to apply the new analyzer to the stream's write index and future backing indices.\nThis affects searches and any new data added to the stream after the rollover.\nHowever, it does not affect the data stream's backing indices or their existing data.\nTo change the analyzer for existing backing indices, you must create a new data stream and reindex your data into it.",
         "externalDocs": {
-          "url": "https://www.elastic.co/docs/reference/elasticsearch/index-settings/index-modules"
+          "url": "https://www.elastic.co/docs/reference/elasticsearch/index-settings/"
         },
         "operationId": "indices-put-settings",
         "parameters": [
@@ -8373,9 +8518,9 @@
           "indices"
         ],
         "summary": "Update index settings",
-        "description": "Changes dynamic index settings in real time.\nFor data streams, index setting changes are applied to all backing indices by default.\n\nTo revert a setting to the default value, use a null value.\nThe list of per-index settings that can be updated dynamically on live indices can be found in index module documentation.\nTo preserve existing settings from being updated, set the `preserve_existing` parameter to `true`.\n\nNOTE: You can only define new analyzers on closed indices.\nTo add an analyzer, you must close the index, define the analyzer, and reopen the index.\nYou cannot close the write index of a data stream.\nTo update the analyzer for a data stream's write index and future backing indices, update the analyzer in the index template used by the stream.\nThen roll over the data stream to apply the new analyzer to the stream's write index and future backing indices.\nThis affects searches and any new data added to the stream after the rollover.\nHowever, it does not affect the data stream's backing indices or their existing data.\nTo change the analyzer for existing backing indices, you must create a new data stream and reindex your data into it.",
+        "description": "Changes dynamic index settings in real time.\nFor data streams, index setting changes are applied to all backing indices by default.\n\nTo revert a setting to the default value, use a null value.\nThe list of per-index settings that can be updated dynamically on live indices can be found in index settings documentation.\nTo preserve existing settings from being updated, set the `preserve_existing` parameter to `true`.\n\n There are multiple valid ways to represent index settings in the request body. You can specify only the setting, for example:\n\n```\n{\n  \"number_of_replicas\": 1\n}\n```\n\nOr you can use an `index` setting object:\n```\n{\n  \"index\": {\n    \"number_of_replicas\": 1\n  }\n}\n```\n\nOr you can use dot annotation:\n```\n{\n  \"index.number_of_replicas\": 1\n}\n```\n\nOr you can embed any of the aforementioned options in a `settings` object. For example:\n\n```\n{\n  \"settings\": {\n    \"index\": {\n      \"number_of_replicas\": 1\n    }\n  }\n}\n```\n\nNOTE: You can only define new analyzers on closed indices.\nTo add an analyzer, you must close the index, define the analyzer, and reopen the index.\nYou cannot close the write index of a data stream.\nTo update the analyzer for a data stream's write index and future backing indices, update the analyzer in the index template used by the stream.\nThen roll over the data stream to apply the new analyzer to the stream's write index and future backing indices.\nThis affects searches and any new data added to the stream after the rollover.\nHowever, it does not affect the data stream's backing indices or their existing data.\nTo change the analyzer for existing backing indices, you must create a new data stream and reindex your data into it.",
         "externalDocs": {
-          "url": "https://www.elastic.co/docs/reference/elasticsearch/index-settings/index-modules"
+          "url": "https://www.elastic.co/docs/reference/elasticsearch/index-settings/"
         },
         "operationId": "indices-put-settings-1",
         "parameters": [
@@ -9350,7 +9495,7 @@
           "inference"
         ],
         "summary": "Perform chat completion inference\n",
-        "description": "The chat completion inference API enables real-time responses for chat completion tasks by delivering answers incrementally, reducing response times during computation. \nIt only works with the `chat_completion` task type for `openai` and `elastic` inference services.\n\nIMPORTANT: The inference APIs enable you to use certain services, such as built-in machine learning models (ELSER, E5), models uploaded through Eland, Cohere, OpenAI, Azure, Google AI Studio, Google Vertex AI, Anthropic, Watsonx.ai, or Hugging Face.\nFor built-in models and models uploaded through Eland, the inference APIs offer an alternative way to use and manage trained models. However, if you do not plan to use the inference APIs to use these models or if you want to use non-NLP models, use the machine learning trained model APIs.\n\nNOTE: The `chat_completion` task type is only available within the _stream API and only supports streaming.\nThe Chat completion inference API and the Stream inference API differ in their response structure and capabilities.\nThe Chat completion inference API provides more comprehensive customization options through more fields and function calling support.\nIf you use the `openai` service or the `elastic` service, use the Chat completion inference API.",
+        "description": "The chat completion inference API enables real-time responses for chat completion tasks by delivering answers incrementally, reducing response times during computation.\nIt only works with the `chat_completion` task type for `openai` and `elastic` inference services.\n\nNOTE: The `chat_completion` task type is only available within the _stream API and only supports streaming.\nThe Chat completion inference API and the Stream inference API differ in their response structure and capabilities.\nThe Chat completion inference API provides more comprehensive customization options through more fields and function calling support.\nIf you use the `openai` service or the `elastic` service, use the Chat completion inference API.",
         "operationId": "inference-chat-completion-unified",
         "parameters": [
           {
@@ -9809,7 +9954,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/inference._types.InferenceEndpointInfo"
+                  "$ref": "#/components/schemas/inference._types.InferenceEndpointInfoAlibabaCloudAI"
                 }
               }
             }
@@ -9895,7 +10040,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/inference._types.InferenceEndpointInfo"
+                  "$ref": "#/components/schemas/inference._types.InferenceEndpointInfoAmazonBedrock"
                 }
               }
             }
@@ -9975,7 +10120,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/inference._types.InferenceEndpointInfo"
+                  "$ref": "#/components/schemas/inference._types.InferenceEndpointInfoAnthropic"
                 }
               }
             }
@@ -10061,7 +10206,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/inference._types.InferenceEndpointInfo"
+                  "$ref": "#/components/schemas/inference._types.InferenceEndpointInfoAzureAIStudio"
                 }
               }
             }
@@ -10147,7 +10292,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/inference._types.InferenceEndpointInfo"
+                  "$ref": "#/components/schemas/inference._types.InferenceEndpointInfoAzureOpenAI"
                 }
               }
             }
@@ -10233,7 +10378,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/inference._types.InferenceEndpointInfo"
+                  "$ref": "#/components/schemas/inference._types.InferenceEndpointInfoCohere"
                 }
               }
             }
@@ -10339,7 +10484,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/inference._types.InferenceEndpointInfo"
+                  "$ref": "#/components/schemas/inference._types.InferenceEndpointInfoElasticsearch"
                 },
                 "examples": {
                   "PutElasticsearchResponseExample1": {
@@ -10428,7 +10573,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/inference._types.InferenceEndpointInfo"
+                  "$ref": "#/components/schemas/inference._types.InferenceEndpointInfoELSER"
                 },
                 "examples": {
                   "PutElserResponseExample1": {
@@ -10513,7 +10658,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/inference._types.InferenceEndpointInfo"
+                  "$ref": "#/components/schemas/inference._types.InferenceEndpointInfoGoogleAIStudio"
                 }
               }
             }
@@ -10599,7 +10744,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/inference._types.InferenceEndpointInfo"
+                  "$ref": "#/components/schemas/inference._types.InferenceEndpointInfoGoogleVertexAI"
                 }
               }
             }
@@ -10677,7 +10822,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/inference._types.InferenceEndpointInfo"
+                  "$ref": "#/components/schemas/inference._types.InferenceEndpointInfoHuggingFace"
                 }
               }
             }
@@ -10840,7 +10985,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/inference._types.InferenceEndpointInfo"
+                  "$ref": "#/components/schemas/inference._types.InferenceEndpointInfoMistral"
                 }
               }
             }
@@ -10926,7 +11071,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/inference._types.InferenceEndpointInfo"
+                  "$ref": "#/components/schemas/inference._types.InferenceEndpointInfoOpenAI"
                 }
               }
             }
@@ -11012,7 +11157,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/inference._types.InferenceEndpointInfo"
+                  "$ref": "#/components/schemas/inference._types.InferenceEndpointInfoVoyageAI"
                 }
               }
             }
@@ -11086,7 +11231,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/inference._types.InferenceEndpointInfo"
+                  "$ref": "#/components/schemas/inference._types.InferenceEndpointInfoWatsonx"
                 }
               }
             }
@@ -38828,6 +38973,18 @@
           },
           "lifecycle": {
             "$ref": "#/components/schemas/indices._types.DataStreamLifecycleWithRollover"
+          },
+          "data_stream_options": {
+            "x-state": "Added in 8.19.0",
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/indices._types.DataStreamOptionsTemplate"
+              },
+              {
+                "nullable": true,
+                "type": "string"
+              }
+            ]
           }
         }
       },
@@ -47326,6 +47483,72 @@
           "fixed_interval"
         ]
       },
+      "indices._types.DataStreamOptionsTemplate": {
+        "type": "object",
+        "properties": {
+          "failure_store": {
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/indices._types.DataStreamFailureStoreTemplate"
+              },
+              {
+                "nullable": true,
+                "type": "string"
+              }
+            ]
+          }
+        }
+      },
+      "indices._types.DataStreamFailureStoreTemplate": {
+        "type": "object",
+        "properties": {
+          "enabled": {
+            "description": "If defined, it turns the failure store on/off (`true`/`false`) for this data stream. A data stream failure store\nthat's disabled (enabled: `false`) will redirect no new failed indices to the failure store; however, it will\nnot remove any existing data from the failure store.",
+            "oneOf": [
+              {
+                "type": "boolean"
+              },
+              {
+                "nullable": true,
+                "type": "string"
+              }
+            ]
+          },
+          "lifecycle": {
+            "description": "If defined, it specifies the lifecycle configuration for the failure store of this data stream.",
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/indices._types.FailureStoreLifecycleTemplate"
+              },
+              {
+                "nullable": true,
+                "type": "string"
+              }
+            ]
+          }
+        }
+      },
+      "indices._types.FailureStoreLifecycleTemplate": {
+        "type": "object",
+        "properties": {
+          "data_retention": {
+            "description": "If defined, every document added to this data stream will be stored at least for this time frame.\nAny time after this duration the document could be deleted.\nWhen empty, every document in this data stream will be stored indefinitely.",
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/_types.Duration"
+              },
+              {
+                "nullable": true,
+                "type": "string"
+              }
+            ]
+          },
+          "enabled": {
+            "description": "If defined, it turns data stream lifecycle on/off (`true`/`false`) for this data stream. A data stream lifecycle\nthat's disabled (enabled: `false`) will have no effect on the data stream.",
+            "type": "boolean"
+          }
+        }
+      },
       "_types.ClusterInfoTargets": {
         "oneOf": [
           {
@@ -49924,6 +50147,52 @@
           "name"
         ]
       },
+      "indices.get_data_stream_options.DataStreamWithOptions": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "$ref": "#/components/schemas/_types.DataStreamName"
+          },
+          "options": {
+            "$ref": "#/components/schemas/indices._types.DataStreamOptions"
+          }
+        },
+        "required": [
+          "name"
+        ]
+      },
+      "indices._types.DataStreamOptions": {
+        "type": "object",
+        "properties": {
+          "failure_store": {
+            "$ref": "#/components/schemas/indices._types.DataStreamFailureStore"
+          }
+        }
+      },
+      "indices._types.DataStreamFailureStore": {
+        "type": "object",
+        "properties": {
+          "enabled": {
+            "description": "If defined, it turns the failure store on/off (`true`/`false`) for this data stream. A data stream failure store\nthat's disabled (enabled: `false`) will redirect no new failed indices to the failure store; however, it will\nnot remove any existing data from the failure store.",
+            "type": "boolean"
+          },
+          "lifecycle": {
+            "$ref": "#/components/schemas/indices._types.FailureStoreLifecycle"
+          }
+        }
+      },
+      "indices._types.FailureStoreLifecycle": {
+        "type": "object",
+        "properties": {
+          "data_retention": {
+            "$ref": "#/components/schemas/_types.Duration"
+          },
+          "enabled": {
+            "description": "If defined, it turns data stream lifecycle on/off (`true`/`false`) for this data stream. A data stream lifecycle\nthat's disabled (enabled: `false`) will have no effect on the data stream.",
+            "type": "boolean"
+          }
+        }
+      },
       "indices.get_index_template.IndexTemplateItem": {
         "type": "object",
         "properties": {
@@ -50002,6 +50271,18 @@
           },
           "lifecycle": {
             "$ref": "#/components/schemas/indices._types.DataStreamLifecycleWithRollover"
+          },
+          "data_stream_options": {
+            "x-state": "Added in 8.19.0",
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/indices._types.DataStreamOptionsTemplate"
+              },
+              {
+                "nullable": true,
+                "type": "string"
+              }
+            ]
           }
         }
       },
@@ -50925,6 +51206,38 @@
           }
         }
       },
+      "inference._types.InferenceEndpointInfoAlibabaCloudAI": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/inference._types.InferenceEndpoint"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "inference_id": {
+                "description": "The inference Id",
+                "type": "string"
+              },
+              "task_type": {
+                "$ref": "#/components/schemas/inference._types.TaskTypeAlibabaCloudAI"
+              }
+            },
+            "required": [
+              "inference_id",
+              "task_type"
+            ]
+          }
+        ]
+      },
+      "inference._types.TaskTypeAlibabaCloudAI": {
+        "type": "string",
+        "enum": [
+          "text_embedding",
+          "rerank",
+          "completion",
+          "sparse_embedding"
+        ]
+      },
       "inference._types.AmazonBedrockTaskType": {
         "type": "string",
         "enum": [
@@ -51002,6 +51315,36 @@
           }
         }
       },
+      "inference._types.InferenceEndpointInfoAmazonBedrock": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/inference._types.InferenceEndpoint"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "inference_id": {
+                "description": "The inference Id",
+                "type": "string"
+              },
+              "task_type": {
+                "$ref": "#/components/schemas/inference._types.TaskTypeAmazonBedrock"
+              }
+            },
+            "required": [
+              "inference_id",
+              "task_type"
+            ]
+          }
+        ]
+      },
+      "inference._types.TaskTypeAmazonBedrock": {
+        "type": "string",
+        "enum": [
+          "text_embedding",
+          "completion"
+        ]
+      },
       "inference._types.AnthropicTaskType": {
         "type": "string",
         "enum": [
@@ -51059,6 +51402,35 @@
         },
         "required": [
           "max_tokens"
+        ]
+      },
+      "inference._types.InferenceEndpointInfoAnthropic": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/inference._types.InferenceEndpoint"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "inference_id": {
+                "description": "The inference Id",
+                "type": "string"
+              },
+              "task_type": {
+                "$ref": "#/components/schemas/inference._types.TaskTypeAnthropic"
+              }
+            },
+            "required": [
+              "inference_id",
+              "task_type"
+            ]
+          }
+        ]
+      },
+      "inference._types.TaskTypeAnthropic": {
+        "type": "string",
+        "enum": [
+          "completion"
         ]
       },
       "inference._types.AzureAiStudioTaskType": {
@@ -51135,6 +51507,36 @@
           }
         }
       },
+      "inference._types.InferenceEndpointInfoAzureAIStudio": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/inference._types.InferenceEndpoint"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "inference_id": {
+                "description": "The inference Id",
+                "type": "string"
+              },
+              "task_type": {
+                "$ref": "#/components/schemas/inference._types.TaskTypeAzureAIStudio"
+              }
+            },
+            "required": [
+              "inference_id",
+              "task_type"
+            ]
+          }
+        ]
+      },
+      "inference._types.TaskTypeAzureAIStudio": {
+        "type": "string",
+        "enum": [
+          "text_embedding",
+          "completion"
+        ]
+      },
       "inference._types.AzureOpenAITaskType": {
         "type": "string",
         "enum": [
@@ -51201,6 +51603,36 @@
             "type": "string"
           }
         }
+      },
+      "inference._types.InferenceEndpointInfoAzureOpenAI": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/inference._types.InferenceEndpoint"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "inference_id": {
+                "description": "The inference Id",
+                "type": "string"
+              },
+              "task_type": {
+                "$ref": "#/components/schemas/inference._types.TaskTypeAzureOpenAI"
+              }
+            },
+            "required": [
+              "inference_id",
+              "task_type"
+            ]
+          }
+        ]
+      },
+      "inference._types.TaskTypeAzureOpenAI": {
+        "type": "string",
+        "enum": [
+          "text_embedding",
+          "completion"
+        ]
       },
       "inference._types.CohereTaskType": {
         "type": "string",
@@ -51298,6 +51730,37 @@
           "START"
         ]
       },
+      "inference._types.InferenceEndpointInfoCohere": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/inference._types.InferenceEndpoint"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "inference_id": {
+                "description": "The inference Id",
+                "type": "string"
+              },
+              "task_type": {
+                "$ref": "#/components/schemas/inference._types.TaskTypeCohere"
+              }
+            },
+            "required": [
+              "inference_id",
+              "task_type"
+            ]
+          }
+        ]
+      },
+      "inference._types.TaskTypeCohere": {
+        "type": "string",
+        "enum": [
+          "text_embedding",
+          "rerank",
+          "completion"
+        ]
+      },
       "inference._types.ElasticsearchTaskType": {
         "type": "string",
         "enum": [
@@ -51369,6 +51832,37 @@
           }
         }
       },
+      "inference._types.InferenceEndpointInfoElasticsearch": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/inference._types.InferenceEndpoint"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "inference_id": {
+                "description": "The inference Id",
+                "type": "string"
+              },
+              "task_type": {
+                "$ref": "#/components/schemas/inference._types.TaskTypeElasticsearch"
+              }
+            },
+            "required": [
+              "inference_id",
+              "task_type"
+            ]
+          }
+        ]
+      },
+      "inference._types.TaskTypeElasticsearch": {
+        "type": "string",
+        "enum": [
+          "sparse_embedding",
+          "text_embedding",
+          "rerank"
+        ]
+      },
       "inference._types.ElserTaskType": {
         "type": "string",
         "enum": [
@@ -51399,6 +51893,35 @@
         "required": [
           "num_allocations",
           "num_threads"
+        ]
+      },
+      "inference._types.InferenceEndpointInfoELSER": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/inference._types.InferenceEndpoint"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "inference_id": {
+                "description": "The inference Id",
+                "type": "string"
+              },
+              "task_type": {
+                "$ref": "#/components/schemas/inference._types.TaskTypeELSER"
+              }
+            },
+            "required": [
+              "inference_id",
+              "task_type"
+            ]
+          }
+        ]
+      },
+      "inference._types.TaskTypeELSER": {
+        "type": "string",
+        "enum": [
+          "sparse_embedding"
         ]
       },
       "inference._types.GoogleAiStudioTaskType": {
@@ -51437,11 +51960,43 @@
           "model_id"
         ]
       },
+      "inference._types.InferenceEndpointInfoGoogleAIStudio": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/inference._types.InferenceEndpoint"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "inference_id": {
+                "description": "The inference Id",
+                "type": "string"
+              },
+              "task_type": {
+                "$ref": "#/components/schemas/inference._types.TaskTypeGoogleAIStudio"
+              }
+            },
+            "required": [
+              "inference_id",
+              "task_type"
+            ]
+          }
+        ]
+      },
+      "inference._types.TaskTypeGoogleAIStudio": {
+        "type": "string",
+        "enum": [
+          "text_embedding",
+          "completion"
+        ]
+      },
       "inference._types.GoogleVertexAITaskType": {
         "type": "string",
         "enum": [
           "rerank",
-          "text_embedding"
+          "text_embedding",
+          "completion",
+          "chat_completion"
         ]
       },
       "inference._types.GoogleVertexAIServiceType": {
@@ -51499,6 +52054,36 @@
           }
         }
       },
+      "inference._types.InferenceEndpointInfoGoogleVertexAI": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/inference._types.InferenceEndpoint"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "inference_id": {
+                "description": "The inference Id",
+                "type": "string"
+              },
+              "task_type": {
+                "$ref": "#/components/schemas/inference._types.TaskTypeGoogleVertexAI"
+              }
+            },
+            "required": [
+              "inference_id",
+              "task_type"
+            ]
+          }
+        ]
+      },
+      "inference._types.TaskTypeGoogleVertexAI": {
+        "type": "string",
+        "enum": [
+          "text_embedding",
+          "rerank"
+        ]
+      },
       "inference._types.HuggingFaceTaskType": {
         "type": "string",
         "enum": [
@@ -51532,6 +52117,35 @@
         "required": [
           "api_key",
           "url"
+        ]
+      },
+      "inference._types.InferenceEndpointInfoHuggingFace": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/inference._types.InferenceEndpoint"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "inference_id": {
+                "description": "The inference Id",
+                "type": "string"
+              },
+              "task_type": {
+                "$ref": "#/components/schemas/inference._types.TaskTypeHuggingFace"
+              }
+            },
+            "required": [
+              "inference_id",
+              "task_type"
+            ]
+          }
+        ]
+      },
+      "inference._types.TaskTypeHuggingFace": {
+        "type": "string",
+        "enum": [
+          "text_embedding"
         ]
       },
       "inference._types.JinaAITaskType": {
@@ -51677,6 +52291,35 @@
           "model"
         ]
       },
+      "inference._types.InferenceEndpointInfoMistral": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/inference._types.InferenceEndpoint"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "inference_id": {
+                "description": "The inference Id",
+                "type": "string"
+              },
+              "task_type": {
+                "$ref": "#/components/schemas/inference._types.TaskTypeMistral"
+              }
+            },
+            "required": [
+              "inference_id",
+              "task_type"
+            ]
+          }
+        ]
+      },
+      "inference._types.TaskTypeMistral": {
+        "type": "string",
+        "enum": [
+          "text_embedding"
+        ]
+      },
       "inference._types.OpenAITaskType": {
         "type": "string",
         "enum": [
@@ -51737,6 +52380,37 @@
             "type": "string"
           }
         }
+      },
+      "inference._types.InferenceEndpointInfoOpenAI": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/inference._types.InferenceEndpoint"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "inference_id": {
+                "description": "The inference Id",
+                "type": "string"
+              },
+              "task_type": {
+                "$ref": "#/components/schemas/inference._types.TaskTypeOpenAI"
+              }
+            },
+            "required": [
+              "inference_id",
+              "task_type"
+            ]
+          }
+        ]
+      },
+      "inference._types.TaskTypeOpenAI": {
+        "type": "string",
+        "enum": [
+          "text_embedding",
+          "chat_completion",
+          "completion"
+        ]
       },
       "inference._types.VoyageAITaskType": {
         "type": "string",
@@ -51804,6 +52478,36 @@
           }
         }
       },
+      "inference._types.InferenceEndpointInfoVoyageAI": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/inference._types.InferenceEndpoint"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "inference_id": {
+                "description": "The inference Id",
+                "type": "string"
+              },
+              "task_type": {
+                "$ref": "#/components/schemas/inference._types.TaskTypeVoyageAI"
+              }
+            },
+            "required": [
+              "inference_id",
+              "task_type"
+            ]
+          }
+        ]
+      },
+      "inference._types.TaskTypeVoyageAI": {
+        "type": "string",
+        "enum": [
+          "text_embedding",
+          "rerank"
+        ]
+      },
       "inference._types.WatsonxTaskType": {
         "type": "string",
         "enum": [
@@ -51858,6 +52562,35 @@
           "model_id",
           "project_id",
           "url"
+        ]
+      },
+      "inference._types.InferenceEndpointInfoWatsonx": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/inference._types.InferenceEndpoint"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "inference_id": {
+                "description": "The inference Id",
+                "type": "string"
+              },
+              "task_type": {
+                "$ref": "#/components/schemas/inference._types.TaskTypeWatsonx"
+              }
+            },
+            "required": [
+              "inference_id",
+              "task_type"
+            ]
+          }
+        ]
+      },
+      "inference._types.TaskTypeWatsonx": {
+        "type": "string",
+        "enum": [
+          "text_embedding"
         ]
       },
       "inference._types.RerankedInferenceResult": {
