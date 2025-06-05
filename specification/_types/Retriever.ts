@@ -42,6 +42,13 @@ export class RetrieverContainer {
   rule?: RuleRetriever
   /** A retriever that re-scores only the results produced by its child retriever. */
   rescorer?: RescorerRetriever
+  /** A retriever that supports the combination of different retrievers through a weighted linear combination. */
+  linear?: LinearRetriever
+  /**
+   * A pinned retriever applies pinned documents to the underlying retriever.
+   * This retriever will rewrite to a PinnedQueryBuilder.
+   */
+  pinned?: PinnedRetriever
 }
 
 export class RetrieverBase {
@@ -49,12 +56,44 @@ export class RetrieverBase {
   filter?: QueryContainer | QueryContainer[]
   /** Minimum _score for matching documents. Documents with a lower _score are not included in the top documents. */
   min_score?: float
+  /** Retriever name. */
+  _name?: string
 }
 
 export class RescorerRetriever extends RetrieverBase {
   /** Inner retriever. */
   retriever: RetrieverContainer
   rescore: Rescore | Rescore[]
+}
+
+export class LinearRetriever extends RetrieverBase {
+  /** Inner retrievers. */
+  retrievers?: InnerRetriever[]
+  rank_window_size: integer
+}
+
+export class PinnedRetriever extends RetrieverBase {
+  /** Inner retriever. */
+  retriever: RetrieverContainer
+  ids?: string[]
+  docs?: SpecifiedDocument[]
+  rank_window_size: integer
+}
+
+export class InnerRetriever {
+  retriever: RetrieverContainer
+  weight: float
+  normalizer: ScoreNormalizer
+}
+
+export enum ScoreNormalizer {
+  none,
+  minmax
+}
+
+export class SpecifiedDocument {
+  index?: string
+  id: string
 }
 
 export class StandardRetriever extends RetrieverBase {
