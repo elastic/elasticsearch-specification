@@ -585,7 +585,7 @@ function setDeprecated (type: model.BaseType | model.Property | model.EnumMember
 export function parseDeprecation (tags: Record<string, string>, jsDocs: JSDoc[]): model.Deprecation | undefined {
   if (tags.deprecated !== undefined) {
     const [version, ...description] = tags.deprecated.split(' ')
-    assert(jsDocs, semver.valid(version), 'Invalid semver value')
+    assert(jsDocs, semver.valid(version) !== null, 'Invalid semver value')
     delete tags.deprecated
     return { version, description: description.join(' ') }
   } else {
@@ -1194,7 +1194,7 @@ export function parseAvailabilityTags (node: Node | Node[], values: string[]): m
       assert(node, parsedKeyValues.stability !== undefined, `stability is not valid: ${stability}`)
     }
     if (since !== undefined) {
-      assert(node, semver.valid(since), `'since' is not valid semver: ${since}`)
+      assert(node, semver.valid(since) !== null, `'since' is not valid semver: ${since}`)
     }
     if (featureFlag !== undefined) {
       assert(node, visibility === 'feature_flag', '\'visibility\' must be \'feature_flag\' if a feature flag is defined')

@@ -17,8 +17,6 @@
  * under the License.
  */
 
-import { Dictionary } from '@spec_utils/Dictionary'
-import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 import { NodeId, TaskId } from '@_types/common'
 import { long } from '@_types/Numeric'
 import {
@@ -28,6 +26,8 @@ import {
   UnitMillis,
   UnitNanos
 } from '@_types/Time'
+import { Dictionary } from '@spec_utils/Dictionary'
+import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 
 export class TaskInfo {
   action: string

@@ -17,9 +17,9 @@
  * under the License.
  */
 
-import { OverloadOf } from '@spec_utils/behaviors'
 import { Field } from '@_types/common'
 import { integer } from '@_types/Numeric'
+import { OverloadOf } from '@spec_utils/behaviors'
 import { DetectionRule } from './Rule'
 
 export class Detector {
