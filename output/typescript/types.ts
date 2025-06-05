@@ -13798,7 +13798,7 @@ export type InferenceTaskTypeGoogleAIStudio = 'text_embedding' | 'completion'
 
 export type InferenceTaskTypeGoogleVertexAI = 'text_embedding' | 'rerank'
 
-export type InferenceTaskTypeHuggingFace = 'text_embedding'
+export type InferenceTaskTypeHuggingFace = 'text_embedding' | 'chat_completion' | 'completion'
 
 export type InferenceTaskTypeJinaAi = 'text_embedding' | 'rerank'
 
