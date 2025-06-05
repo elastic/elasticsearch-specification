@@ -1079,5 +1079,20 @@ actions:
   #       x-model: true
 # Remove long lists of enum values
   - target: "$.components['schemas']['cat._types.CatAnomalyDetectorColumn'].enum"
-    description: Remove enum array
+    description: Remove enum array from cat detectors
+    remove: true
+  - target: "$.components['schemas']['cat._types.CatNodeColumn'].enum"
+    description: Remove enum array from cat nodes
+    remove: true
+  - target: "$.components['schemas']['cat._types.CatDfaColumn'].enum"
+    description: Remove enum array from cat data frame analytics
+    remove: true
+  - target: "$.components['schemas']['cat._types.CatDatafeedColumn'].enum"
+    description: Remove enum array from cat datafeeds
+    remove: true
+  - target: "$.components['schemas']['cat._types.CatTrainedModelsColumn'].enum"
+    description: Remove enum array from cat trained models
+    remove: true
+  - target: "$.components['schemas']['cat._types.CatTransformColumn'].enum"
+    description: Remove enum array from cat transforms
     remove: true
