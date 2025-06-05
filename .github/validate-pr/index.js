@@ -26,7 +26,7 @@ import assert from 'assert'
 import * as core from '@actions/core'
 import { copyFile } from 'fs/promises'
 import * as github from '@actions/github'
-import specification from '../../output/schema/schema.json' assert { type: 'json' }
+import specification from '../../output/schema/schema.json' with { type: 'json' }
 import { run as getReport } from '../../../clients-flight-recorder/scripts/types-validator/index.js'
 import {
   getNamespace,

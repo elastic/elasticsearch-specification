@@ -17,9 +17,9 @@
  * under the License.
  */
 
-import { SingleKeyDictionary } from '@spec_utils/Dictionary'
 import { Field, Fields, Indices, Name } from '@_types/common'
 import { QueryContainer } from '@_types/query_dsl/abstractions'
+import { SingleKeyDictionary } from '@spec_utils/Dictionary'
 
 export class Summary {
   config: SingleKeyDictionary<PolicyType, Policy>

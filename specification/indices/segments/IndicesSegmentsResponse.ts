@@ -17,8 +17,8 @@
  * under the License.
  */
 
-import { Dictionary } from '@spec_utils/Dictionary'
 import { ShardStatistics } from '@_types/Stats'
+import { Dictionary } from '@spec_utils/Dictionary'
 import { IndexSegment } from './types'
 
 export class Response {

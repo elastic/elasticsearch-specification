@@ -17,7 +17,6 @@
  * under the License.
  */
 
-import { CronExpression } from '@watcher/_types/Schedule'
 import {
   Id,
   Indices,
@@ -34,6 +33,7 @@ import {
   EpochTime,
   UnitMillis
 } from '@_types/Time'
+import { CronExpression } from '@watcher/_types/Schedule'
 
 export class SnapshotLifecycle {
   in_progress?: InProgress

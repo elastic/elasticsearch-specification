@@ -17,10 +17,10 @@
  * under the License.
  */
 
-import { RequestChatCompletion } from '@inference/_types/CommonTypes'
 import { RequestBase } from '@_types/Base'
 import { Id } from '@_types/common'
 import { Duration } from '@_types/Time'
+import { RequestChatCompletion } from '@inference/_types/CommonTypes'
 /**
  * Perform chat completion inference
  * 

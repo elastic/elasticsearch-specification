@@ -17,12 +17,12 @@
  * under the License.
  */
 
-import { EsqlFormat } from '@esql/_types/QueryParameters'
-import { TableValuesContainer } from '@esql/_types/TableValuesContainer'
-import { Dictionary } from '@spec_utils/Dictionary'
 import { RequestBase } from '@_types/Base'
 import { FieldValue } from '@_types/common'
 import { QueryContainer } from '@_types/query_dsl/abstractions'
+import { EsqlFormat } from '@esql/_types/QueryParameters'
+import { TableValuesContainer } from '@esql/_types/TableValuesContainer'
+import { Dictionary } from '@spec_utils/Dictionary'
 
 /**
  * Run an ES|QL query.

@@ -17,8 +17,8 @@
  * under the License.
  */
 
-import { CatRequestBase } from '@cat/_types/CatBase'
 import { Indices, Names } from '@_types/common'
+import { CatRequestBase } from '@cat/_types/CatBase'
 
 /**
  * Get a document count.

@@ -17,8 +17,8 @@
  * under the License.
  */
 
-import { Influencer } from '@ml/_types/Influencer'
 import { long } from '@_types/Numeric'
+import { Influencer } from '@ml/_types/Influencer'
 
 export class Response {
   body: {
