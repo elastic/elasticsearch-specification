@@ -17,9 +17,9 @@
  * under the License.
  */
 
-import { Dictionary } from '@spec_utils/Dictionary'
 import { integer, long } from '@_types/Numeric'
 import { Duration } from '@_types/Time'
+import { Dictionary } from '@spec_utils/Dictionary'
 
 export class Response {
   /** @codegen_name infos */

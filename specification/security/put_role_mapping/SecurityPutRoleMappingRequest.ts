@@ -17,10 +17,10 @@
  * under the License.
  */
 
-import { RoleMappingRule } from '@security/_types/RoleMappingRule'
-import { RoleTemplate } from '@security/_types/RoleTemplate'
 import { RequestBase } from '@_types/Base'
 import { Metadata, Name, Refresh } from '@_types/common'
+import { RoleMappingRule } from '@security/_types/RoleMappingRule'
+import { RoleTemplate } from '@security/_types/RoleTemplate'
 
 /**
  * Create or update role mappings.

@@ -17,11 +17,11 @@
  * under the License.
  */
 
-import { VertexDefinition } from '@graph/_types/Vertex'
 import { RequestBase } from '@_types/Base'
 import { Indices, Routing } from '@_types/common'
 import { QueryContainer } from '@_types/query_dsl/abstractions'
 import { Duration } from '@_types/Time'
+import { VertexDefinition } from '@graph/_types/Vertex'
 import { ExploreControls } from '../_types/ExploreControls'
 import { Hop } from '../_types/Hop'
 

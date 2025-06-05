@@ -17,9 +17,9 @@
  * under the License.
  */
 
-import { Dictionary } from '@spec_utils/Dictionary'
 import { ElasticsearchVersionMinInfo } from '@_types/Base'
 import { ClusterAlias } from '@_types/common'
+import { Dictionary } from '@spec_utils/Dictionary'
 
 export class Response {
   /** @codegen_name infos */

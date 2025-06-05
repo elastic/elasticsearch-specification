@@ -17,9 +17,9 @@
  * under the License.
  */
 
-import { Dictionary } from '@spec_utils/Dictionary'
 import { NodeId, TaskId } from '@_types/common'
 import { long } from '@_types/Numeric'
+import { Dictionary } from '@spec_utils/Dictionary'
 
 export class Body {
   id: long

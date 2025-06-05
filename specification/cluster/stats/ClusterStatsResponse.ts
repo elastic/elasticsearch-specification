@@ -17,9 +17,9 @@
  * under the License.
  */
 
-import { NodesResponseBase } from '@nodes/_types/NodesResponseBase'
 import { HealthStatus, Name, Uuid } from '@_types/common'
 import { long } from '@_types/Numeric'
+import { NodesResponseBase } from '@nodes/_types/NodesResponseBase'
 import { CCSStats, ClusterIndices, ClusterNodes } from './types'
 
 export class StatsResponseBase extends NodesResponseBase {

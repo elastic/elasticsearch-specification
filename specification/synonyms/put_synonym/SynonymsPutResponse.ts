@@ -17,8 +17,8 @@
  * under the License.
  */
 
-import { ReloadResult } from '@indices/reload_search_analyzers/types'
 import { Result } from '@_types/Result'
+import { ReloadResult } from '@indices/reload_search_analyzers/types'
 
 export class Response {
   body: {

@@ -17,8 +17,8 @@
  * under the License.
  */
 
-import { Dictionary } from '@spec_utils/Dictionary'
 import { IndexName, Username } from '@_types/common'
+import { Dictionary } from '@spec_utils/Dictionary'
 import { ApplicationsPrivileges, Privileges } from './types'
 
 export class Response {

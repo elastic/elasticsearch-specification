@@ -17,12 +17,12 @@
  * under the License.
  */
 
-import { JobStatistics } from '@ml/_types/Job'
-import { Statistics } from '@slm/_types/SnapshotLifecycle'
-import { Dictionary } from '@spec_utils/Dictionary'
 import { ByteSize, Field, Name } from '@_types/common'
 import { double, integer, long, uint, ulong } from '@_types/Numeric'
 import { Duration, DurationValue, UnitMillis } from '@_types/Time'
+import { JobStatistics } from '@ml/_types/Job'
+import { Statistics } from '@slm/_types/SnapshotLifecycle'
+import { Dictionary } from '@spec_utils/Dictionary'
 
 export class Base {
   available: boolean

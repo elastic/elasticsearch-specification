@@ -17,10 +17,10 @@
  * under the License.
  */
 
-import { TaskInfo } from '@tasks/_types/TaskInfo'
 import { Id, Name } from '@_types/common'
 import { integer, long } from '@_types/Numeric'
 import { DurationValue, UnitMillis } from '@_types/Time'
+import { TaskInfo } from '@tasks/_types/TaskInfo'
 
 export class ExecutingPolicy {
   name: Name

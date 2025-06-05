@@ -17,11 +17,11 @@
  * under the License.
  */
 
+import { Id } from '@_types/common'
+import { ScriptSource } from '@_types/Scripting'
 import { MultisearchHeader } from '@global/msearch/types'
 import { Dictionary } from '@spec_utils/Dictionary'
 import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
-import { Id } from '@_types/common'
-import { ScriptSource } from '@_types/Scripting'
 
 /** @codegen_names header, body */
 export type RequestItem = MultisearchHeader | TemplateConfig

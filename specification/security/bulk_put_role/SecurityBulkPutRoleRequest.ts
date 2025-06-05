@@ -17,10 +17,10 @@
  * under the License.
  */
 
-import { RoleDescriptor } from '@security/_types/RoleDescriptor'
-import { Dictionary } from '@spec_utils/Dictionary'
 import { RequestBase } from '@_types/Base'
 import { Refresh } from '@_types/common'
+import { RoleDescriptor } from '@security/_types/RoleDescriptor'
+import { Dictionary } from '@spec_utils/Dictionary'
 
 /**
  * Bulk create or update roles.

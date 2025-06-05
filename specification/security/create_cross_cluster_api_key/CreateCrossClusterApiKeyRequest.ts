@@ -17,10 +17,10 @@
  * under the License.
  */
 
-import { Access } from '@security/_types/Access'
 import { RequestBase } from '@_types/Base'
 import { Metadata, Name } from '@_types/common'
 import { Duration } from '@_types/Time'
+import { Access } from '@security/_types/Access'
 
 /**
  * Create a cross-cluster API key.

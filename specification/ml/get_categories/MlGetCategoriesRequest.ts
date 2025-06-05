@@ -17,10 +17,10 @@
  * under the License.
  */
 
-import { Page } from '@ml/_types/Page'
 import { RequestBase } from '@_types/Base'
 import { CategoryId, Id } from '@_types/common'
 import { integer } from '@_types/Numeric'
+import { Page } from '@ml/_types/Page'
 
 /**
  * Get anomaly detection job results for categories.

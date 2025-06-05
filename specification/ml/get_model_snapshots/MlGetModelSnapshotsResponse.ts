@@ -17,8 +17,8 @@
  * under the License.
  */
 
-import { ModelSnapshot } from '@ml/_types/Model'
 import { long } from '@_types/Numeric'
+import { ModelSnapshot } from '@ml/_types/Model'
 
 export class Response {
   body: {

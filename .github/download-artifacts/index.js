@@ -17,23 +17,23 @@
  * under the License.
  */
 
-'use strict'
-
-const core = require('@actions/core')
-const { join } = require('path')
-const minimist = require('minimist')
-const stream = require('stream')
-const { promisify } = require('util')
-const { createWriteStream, promises } = require('fs')
-const rimraf = require('rimraf')
-const fetch = require('node-fetch')
-const crossZip = require('cross-zip')
+import core from '@actions/core'
+import { join, dirname } from 'path'
+import { fileURLToPath } from 'url'
+import minimist from 'minimist'
+import stream from 'stream'
+import { promisify } from 'util'
+import { createWriteStream, promises } from 'fs'
+import { rimraf } from 'rimraf'
+import fetch from 'node-fetch'
+import crossZip from 'cross-zip'
 
 const { mkdir, rename, readdir, unlink } = promises
 const pipeline = promisify(stream.pipeline)
 const unzip = promisify(crossZip.unzip)
-const rm = promisify(rimraf)
 
+const __filename = fileURLToPath(import.meta.url)
+const __dirname = dirname(__filename)
 const esFolder = join(__dirname, '..', '..', 'artifacts')
 const zipFolder = join(esFolder, 'artifacts.zip')
 const downloadedSpec = join(esFolder, 'rest-api-spec', 'api')
@@ -57,8 +57,8 @@ async function downloadArtifacts (opts) {
   core.info(`Resolved artifact URL for ${resolved.commit_url}`)
 
   core.info('Cleanup')
-  await rm(esFolder)
-  await rm(specFolder)
+  await rimraf(esFolder)
+  await rimraf(specFolder)
   await mkdir(esFolder, { recursive: true })
   await mkdir(specFolder, { recursive: true })
 
@@ -74,7 +74,7 @@ async function downloadArtifacts (opts) {
   await unzip(zipFolder, esFolder)
 
   core.info('Cleanup')
-  await rm(zipFolder)
+  await rimraf(zipFolder)
 
   core.info('Moving files')
   const files = await readdir(downloadedSpec)

@@ -17,10 +17,10 @@
  * under the License.
  */
 
+import { Field, Id, IndexName } from '@_types/common'
 import { TotalHits } from '@global/search/_types/hits'
 import { Dictionary } from '@spec_utils/Dictionary'
 import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
-import { Field, Id, IndexName } from '@_types/common'
 
 export class EqlHits<TEvent> {
   /**

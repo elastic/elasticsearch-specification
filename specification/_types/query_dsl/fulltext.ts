@@ -17,7 +17,6 @@
  * under the License.
  */
 
-import { PipeSeparatedFlags } from '@spec_utils/PipeSeparatedFlags'
 import {
   Field,
   Fields,
@@ -28,6 +27,7 @@ import {
 import { double, float, integer } from '@_types/Numeric'
 import { Script } from '@_types/Scripting'
 import { TimeZone } from '@_types/Time'
+import { PipeSeparatedFlags } from '@spec_utils/PipeSeparatedFlags'
 import { QueryBase } from './abstractions'
 import { Operator } from './Operator'
 

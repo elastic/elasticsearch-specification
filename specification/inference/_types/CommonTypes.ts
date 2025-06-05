@@ -17,10 +17,10 @@
  * under the License.
  */
 
-import { RateLimitSetting } from '@inference/_types/Services'
-import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 import { Id } from '@_types/common'
 import { float, integer, long } from '@_types/Numeric'
+import { RateLimitSetting } from '@inference/_types/Services'
+import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 
 export class RequestChatCompletion {
   /**

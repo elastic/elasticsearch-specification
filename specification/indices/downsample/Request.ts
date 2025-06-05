@@ -17,9 +17,9 @@
  * under the License.
  */
 
-import { DownsampleConfig } from '@indices/_types/Downsample'
 import { RequestBase } from '@_types/Base'
 import { IndexName } from '@_types/common'
+import { DownsampleConfig } from '@indices/_types/Downsample'
 
 /**
  * Downsample an index.

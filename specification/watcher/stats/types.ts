@@ -17,10 +17,10 @@
  * under the License.
  */
 
-import { ExecutionPhase, ExecutionThreadPool } from '@watcher/_types/Execution'
 import { Id } from '@_types/common'
 import { long } from '@_types/Numeric'
 import { DateTime } from '@_types/Time'
+import { ExecutionPhase, ExecutionThreadPool } from '@watcher/_types/Execution'
 
 // Identical to DatafeedState, but kept separate as they're different enums in ES
 export enum WatcherState {

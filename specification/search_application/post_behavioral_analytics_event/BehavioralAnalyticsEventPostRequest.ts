@@ -16,9 +16,9 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 import { RequestBase } from '@_types/Base'
 import { Name } from '@_types/common'
+import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 import { EventType } from '../_types/AnalyticsEvent'
 
 /**

@@ -17,10 +17,10 @@
  * under the License.
  */
 
-import { DataframeEvaluationContainer } from '@ml/_types/DataframeEvaluation'
 import { RequestBase } from '@_types/Base'
 import { IndexName } from '@_types/common'
 import { QueryContainer } from '@_types/query_dsl/abstractions'
+import { DataframeEvaluationContainer } from '@ml/_types/DataframeEvaluation'
 
 /**
  * Evaluate data frame analytics.

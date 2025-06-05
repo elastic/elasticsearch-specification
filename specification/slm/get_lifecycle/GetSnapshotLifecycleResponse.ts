@@ -17,9 +17,9 @@
  * under the License.
  */
 
+import { Id } from '@_types/common'
 import { SnapshotLifecycle } from '@slm/_types/SnapshotLifecycle'
 import { Dictionary } from '@spec_utils/Dictionary'
-import { Id } from '@_types/common'
 
 export class Response {
   /** @codegen_name lifecycles */

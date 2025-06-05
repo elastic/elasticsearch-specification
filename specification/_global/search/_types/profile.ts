@@ -17,11 +17,11 @@
  * under the License.
  */
 
-import { Dictionary } from '@spec_utils/Dictionary'
-import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 import { IndexName, NodeId } from '@_types/common'
 import { integer, long } from '@_types/Numeric'
 import { Duration, DurationValue, UnitNanos } from '@_types/Time'
+import { Dictionary } from '@spec_utils/Dictionary'
+import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 
 export class AggregationBreakdown {
   build_aggregation: long

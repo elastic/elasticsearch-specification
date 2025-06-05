@@ -17,9 +17,9 @@
  * under the License.
  */
 
-import { ClusterPrivilege } from '@security/_types/Privileges'
 import { RequestBase } from '@_types/Base'
 import { Name } from '@_types/common'
+import { ClusterPrivilege } from '@security/_types/Privileges'
 import { ApplicationPrivilegesCheck, IndexPrivilegesCheck } from './types'
 
 /**

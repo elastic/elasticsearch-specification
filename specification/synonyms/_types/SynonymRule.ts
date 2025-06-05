@@ -17,8 +17,8 @@
  * under the License.
  */
 
-import { OverloadOf } from '@spec_utils/behaviors'
 import { Id } from '@_types/common'
+import { OverloadOf } from '@spec_utils/behaviors'
 
 export type SynonymString = string
 

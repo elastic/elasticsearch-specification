@@ -17,8 +17,8 @@
  * under the License.
  */
 
-import { TrainedModelStats } from '@ml/_types/TrainedModel'
 import { integer } from '@_types/Numeric'
+import { TrainedModelStats } from '@ml/_types/TrainedModel'
 
 /**
  * 404 (Missing resources) If allow_no_match is false, this code indicates that there are no resources that match the request or only partial matches for the request.

@@ -17,8 +17,6 @@
  * under the License.
  */
 
-import { BaseNode } from '@spec_utils/BaseNode'
-import { Dictionary } from '@spec_utils/Dictionary'
 import { HttpHeaders, Name, TaskId } from '@_types/common'
 import { float, long } from '@_types/Numeric'
 import { Retries } from '@_types/Retries'
@@ -29,6 +27,8 @@ import {
   UnitMillis,
   UnitNanos
 } from '@_types/Time'
+import { BaseNode } from '@spec_utils/BaseNode'
+import { Dictionary } from '@spec_utils/Dictionary'
 
 export class ReindexNode extends BaseNode {
   tasks: Dictionary<TaskId, ReindexTask>

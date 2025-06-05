@@ -17,10 +17,10 @@
  * under the License.
  */
 
-import { CatRequestBase, CatTransformColumns } from '@cat/_types/CatBase'
 import { Id } from '@_types/common'
 import { integer } from '@_types/Numeric'
 import { TimeUnit } from '@_types/Time'
+import { CatRequestBase, CatTransformColumns } from '@cat/_types/CatBase'
 
 /**
  * Get transform information.

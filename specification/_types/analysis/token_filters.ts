@@ -17,10 +17,10 @@
  * under the License.
  */
 
-import { Stringified } from '@spec_utils/Stringified'
 import { VersionString } from '@_types/common'
 import { integer } from '@_types/Numeric'
 import { Script } from '@_types/Scripting'
+import { Stringified } from '@spec_utils/Stringified'
 import {
   IcuCollationTokenFilter,
   IcuFoldingTokenFilter,

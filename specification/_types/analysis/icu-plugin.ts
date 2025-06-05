@@ -18,8 +18,8 @@
  */
 
 import { CharFilterBase } from './char_filters'
-import { TokenizerBase } from './tokenizers'
 import { TokenFilterBase } from './token_filters'
+import { TokenizerBase } from './tokenizers'
 
 export class IcuTransformTokenFilter extends TokenFilterBase {
   type: 'icu_transform'

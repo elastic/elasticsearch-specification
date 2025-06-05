@@ -17,11 +17,11 @@
  * under the License.
  */
 
+import { ErrorResponseBase } from '@_types/Base'
+import { IndexName } from '@_types/common'
 import { AliasDefinition } from '@indices/_types/AliasDefinition'
 import { AdditionalProperties } from '@spec_utils/behaviors'
 import { Dictionary } from '@spec_utils/Dictionary'
-import { ErrorResponseBase } from '@_types/Base'
-import { IndexName } from '@_types/common'
 
 export class Response {
   /** @codegen_name aliases */

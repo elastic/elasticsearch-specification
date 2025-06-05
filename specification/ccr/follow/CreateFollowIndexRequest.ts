@@ -17,11 +17,11 @@
  * under the License.
  */
 
-import { IndexSettings } from '@indices/_types/IndexSettings'
 import { RequestBase } from '@_types/Base'
 import { ByteSize, IndexName, WaitForActiveShards } from '@_types/common'
 import { integer, long } from '@_types/Numeric'
 import { Duration } from '@_types/Time'
+import { IndexSettings } from '@indices/_types/IndexSettings'
 
 /**
  * Create a follower.

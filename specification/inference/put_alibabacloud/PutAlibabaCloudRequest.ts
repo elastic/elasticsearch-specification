@@ -17,6 +17,8 @@
  * under the License.
  */
 
+import { RequestBase } from '@_types/Base'
+import { Id } from '@_types/common'
 import {
   AlibabaCloudServiceSettings,
   AlibabaCloudServiceType,
@@ -24,8 +26,6 @@ import {
   AlibabaCloudTaskType
 } from '@inference/_types/CommonTypes'
 import { InferenceChunkingSettings } from '@inference/_types/Services'
-import { RequestBase } from '@_types/Base'
-import { Id } from '@_types/common'
 
 /**
  * Create an AlibabaCloud AI Search inference endpoint.

@@ -17,9 +17,9 @@
  * under the License.
  */
 
-import { Policy } from '@ilm/_types/Policy'
 import { VersionNumber } from '@_types/common'
 import { DateTime } from '@_types/Time'
+import { Policy } from '@ilm/_types/Policy'
 
 export class Lifecycle {
   modified_date: DateTime

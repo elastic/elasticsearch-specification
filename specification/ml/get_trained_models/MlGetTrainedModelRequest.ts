@@ -17,10 +17,10 @@
  * under the License.
  */
 
-import { Include } from '@ml/_types/Include'
 import { RequestBase } from '@_types/Base'
 import { Ids } from '@_types/common'
 import { integer } from '@_types/Numeric'
+import { Include } from '@ml/_types/Include'
 
 /**
  * Get trained model configuration info.

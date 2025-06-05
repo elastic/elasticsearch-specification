@@ -17,10 +17,10 @@
  * under the License.
  */
 
-import { Repository } from '@snapshot/_types/SnapshotRepository'
 import { RequestBase } from '@_types/Base'
 import { Name } from '@_types/common'
 import { Duration } from '@_types/Time'
+import { Repository } from '@snapshot/_types/SnapshotRepository'
 
 /**
  * Create or update a snapshot repository.

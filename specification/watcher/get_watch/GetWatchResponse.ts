@@ -17,9 +17,9 @@
  * under the License.
  */
 
-import { Watch, WatchStatus } from '@watcher/_types/Watch'
 import { Id, SequenceNumber, VersionNumber } from '@_types/common'
 import { integer } from '@_types/Numeric'
+import { Watch, WatchStatus } from '@watcher/_types/Watch'
 
 export class Response {
   body: {

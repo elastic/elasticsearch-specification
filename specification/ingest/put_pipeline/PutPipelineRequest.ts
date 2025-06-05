@@ -17,10 +17,10 @@
  * under the License.
  */
 
-import { ProcessorContainer } from '@ingest/_types/Processors'
 import { RequestBase } from '@_types/Base'
 import { Id, Metadata, VersionNumber } from '@_types/common'
 import { Duration } from '@_types/Time'
+import { ProcessorContainer } from '@ingest/_types/Processors'
 
 /**
  * Create or update a pipeline.

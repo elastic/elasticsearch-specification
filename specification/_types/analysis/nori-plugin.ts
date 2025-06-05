@@ -17,8 +17,8 @@
  * under the License.
  */
 
-import { TokenizerBase } from './tokenizers'
 import { TokenFilterBase } from './token_filters'
+import { TokenizerBase } from './tokenizers'
 
 export enum NoriDecompoundMode {
   discard,

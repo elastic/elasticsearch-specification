@@ -17,13 +17,13 @@
  * under the License.
  */
 
+import { Id, IndexName } from '@_types/common'
+import { long } from '@_types/Numeric'
+import { Duration, DurationValue, UnitMillis } from '@_types/Time'
 import { Groupings } from '@rollup/_types/Groupings'
 import { FieldMetric } from '@rollup/_types/Metric'
 import { Dictionary } from '@spec_utils/Dictionary'
 import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
-import { Id, IndexName } from '@_types/common'
-import { long } from '@_types/Numeric'
-import { Duration, DurationValue, UnitMillis } from '@_types/Time'
 
 export class RollupJob {
   /**

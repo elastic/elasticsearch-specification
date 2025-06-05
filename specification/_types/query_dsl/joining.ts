@@ -17,9 +17,9 @@
  * under the License.
  */
 
-import { InnerHits } from '@global/search/_types/hits'
 import { Field, Id, RelationName } from '@_types/common'
 import { integer } from '@_types/Numeric'
+import { InnerHits } from '@global/search/_types/hits'
 import { QueryBase, QueryContainer } from './abstractions'
 
 /**

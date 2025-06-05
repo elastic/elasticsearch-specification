@@ -17,9 +17,9 @@
  * under the License.
  */
 
-import { CategorizationAnalyzer } from '@ml/_types/Analysis'
 import { ByteSize, VersionString } from '@_types/common'
 import { integer } from '@_types/Numeric'
+import { CategorizationAnalyzer } from '@ml/_types/Analysis'
 
 export class Defaults {
   anomaly_detectors: AnomalyDetectors

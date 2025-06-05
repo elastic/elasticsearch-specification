@@ -17,12 +17,12 @@
  * under the License.
  */
 
-import { AnalysisConfig, AnalysisLimits } from '@ml/_types/Analysis'
-import { DataDescription } from '@ml/_types/Job'
-import { ModelPlotConfig } from '@ml/_types/ModelPlot'
 import { RequestBase } from '@_types/Base'
 import { Id, IndexName } from '@_types/common'
 import { long } from '@_types/Numeric'
+import { AnalysisConfig, AnalysisLimits } from '@ml/_types/Analysis'
+import { DataDescription } from '@ml/_types/Job'
+import { ModelPlotConfig } from '@ml/_types/ModelPlot'
 
 /**
  * Validate an anomaly detection job.

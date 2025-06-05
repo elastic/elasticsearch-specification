@@ -17,7 +17,6 @@
  * under the License.
  */
 
-import { SourceConfigParam } from '@global/search/_types/SourceFilter'
 import { RequestBase } from '@_types/Base'
 import {
   Fields,
@@ -27,6 +26,7 @@ import {
   WaitForActiveShards
 } from '@_types/common'
 import { Duration } from '@_types/Time'
+import { SourceConfigParam } from '@global/search/_types/SourceFilter'
 import { OperationContainer, UpdateAction } from './types'
 
 /**

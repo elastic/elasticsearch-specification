@@ -17,8 +17,8 @@
  * under the License.
  */
 
-import { DataStreamOptions } from '@indices/_types/DataStreamOptions'
 import { DataStreamName } from '@_types/common'
+import { DataStreamOptions } from '@indices/_types/DataStreamOptions'
 
 export class Response {
   body: { data_streams: DataStreamWithOptions[] }

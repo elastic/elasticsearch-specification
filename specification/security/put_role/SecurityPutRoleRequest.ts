@@ -17,6 +17,8 @@
  * under the License.
  */
 
+import { RequestBase } from '@_types/Base'
+import { Metadata, Name, Refresh } from '@_types/common'
 import {
   ApplicationPrivileges,
   ClusterPrivilege,
@@ -26,8 +28,6 @@ import {
 } from '@security/_types/Privileges'
 import { Dictionary } from '@spec_utils/Dictionary'
 import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
-import { RequestBase } from '@_types/Base'
-import { Metadata, Name, Refresh } from '@_types/common'
 
 /**
  * Create or update roles.

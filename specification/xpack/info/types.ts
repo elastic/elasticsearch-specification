@@ -17,9 +17,9 @@
  * under the License.
  */
 
-import { LicenseStatus, LicenseType } from '@license/_types/License'
 import { VersionString } from '@_types/common'
 import { DateTime, EpochTime, UnitMillis } from '@_types/Time'
+import { LicenseStatus, LicenseType } from '@license/_types/License'
 
 export class BuildInformation {
   date: DateTime

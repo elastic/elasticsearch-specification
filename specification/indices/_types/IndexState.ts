@@ -17,10 +17,10 @@
  * under the License.
  */
 
-import { DataStreamLifecycle } from '@indices/_types/DataStreamLifecycle'
-import { Dictionary } from '@spec_utils/Dictionary'
 import { DataStreamName, IndexName } from '@_types/common'
 import { TypeMapping } from '@_types/mapping/TypeMapping'
+import { DataStreamLifecycle } from '@indices/_types/DataStreamLifecycle'
+import { Dictionary } from '@spec_utils/Dictionary'
 import { Alias } from './Alias'
 import { IndexSettings } from './IndexSettings'
 

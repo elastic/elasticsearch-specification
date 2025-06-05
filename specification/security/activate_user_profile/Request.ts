@@ -17,8 +17,8 @@
  * under the License.
  */
 
-import { GrantType } from '@security/_types/GrantType'
 import { RequestBase } from '@_types/Base'
+import { GrantType } from '@security/_types/GrantType'
 
 /**
  * Activate a user profile.

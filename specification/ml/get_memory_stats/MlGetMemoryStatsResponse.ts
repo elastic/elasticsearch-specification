@@ -17,9 +17,9 @@
  * under the License.
  */
 
-import { Dictionary } from '@spec_utils/Dictionary'
 import { Id, Name } from '@_types/common'
 import { NodeStatistics } from '@_types/Node'
+import { Dictionary } from '@spec_utils/Dictionary'
 import { Memory } from './types'
 
 export class Response {

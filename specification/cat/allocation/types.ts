@@ -17,10 +17,10 @@
  * under the License.
  */
 
-import { Stringified } from '@spec_utils/Stringified'
 import { ByteSize } from '@_types/common'
 import { Host, Ip } from '@_types/Networking'
 import { double, Percentage } from '@_types/Numeric'
+import { Stringified } from '@spec_utils/Stringified'
 
 export class AllocationRecord {
   /**

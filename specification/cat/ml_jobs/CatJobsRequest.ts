@@ -17,9 +17,9 @@
  * under the License.
  */
 
-import { CatAnonalyDetectorColumns, CatRequestBase } from '@cat/_types/CatBase'
 import { Bytes, Id } from '@_types/common'
 import { TimeUnit } from '@_types/Time'
+import { CatAnonalyDetectorColumns, CatRequestBase } from '@cat/_types/CatBase'
 
 /**
  * Get anomaly detection jobs.

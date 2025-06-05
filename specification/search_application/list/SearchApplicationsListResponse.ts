@@ -17,8 +17,8 @@
  * under the License.
  */
 
-import { SearchApplication } from '@search_application/_types/SearchApplication'
 import { long } from '@_types/Numeric'
+import { SearchApplication } from '@search_application/_types/SearchApplication'
 
 export class Response {
   body: {

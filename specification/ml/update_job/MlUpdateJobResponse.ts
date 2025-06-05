@@ -17,14 +17,14 @@
  * under the License.
  */
 
+import { Id, IndexName, VersionString } from '@_types/common'
+import { long } from '@_types/Numeric'
+import { Duration, EpochTime, UnitMillis } from '@_types/Time'
 import { AnalysisConfigRead, AnalysisLimits } from '@ml/_types/Analysis'
 import { Datafeed } from '@ml/_types/Datafeed'
 import { DataDescription } from '@ml/_types/Job'
 import { ModelPlotConfig } from '@ml/_types/ModelPlot'
 import { Dictionary } from '@spec_utils/Dictionary'
-import { Id, IndexName, VersionString } from '@_types/common'
-import { long } from '@_types/Numeric'
-import { Duration, EpochTime, UnitMillis } from '@_types/Time'
 
 export class Response {
   body: {

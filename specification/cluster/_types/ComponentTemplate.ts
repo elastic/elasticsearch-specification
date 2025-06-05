@@ -17,13 +17,13 @@
  * under the License.
  */
 
+import { IndexName, Metadata, Name, VersionNumber } from '@_types/common'
+import { TypeMapping } from '@_types/mapping/TypeMapping'
 import { AliasDefinition } from '@indices/_types/AliasDefinition'
 import { DataStreamLifecycleWithRollover } from '@indices/_types/DataStreamLifecycle'
 import { DataStreamOptionsTemplate } from '@indices/_types/DataStreamOptions'
 import { IndexSettings } from '@indices/_types/IndexSettings'
 import { Dictionary } from '@spec_utils/Dictionary'
-import { IndexName, Metadata, Name, VersionNumber } from '@_types/common'
-import { TypeMapping } from '@_types/mapping/TypeMapping'
 
 export class ComponentTemplate {
   name: Name

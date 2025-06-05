@@ -17,7 +17,6 @@
  * under the License.
  */
 
-import { Dictionary } from '@spec_utils/Dictionary'
 import {
   Id,
   IndexName,
@@ -30,6 +29,7 @@ import { TransportAddress } from '@_types/Networking'
 import { NodeRoles, NodeShard } from '@_types/Node'
 import { integer } from '@_types/Numeric'
 import { QueryContainer } from '@_types/query_dsl/abstractions'
+import { Dictionary } from '@spec_utils/Dictionary'
 
 export class Response {
   body: {

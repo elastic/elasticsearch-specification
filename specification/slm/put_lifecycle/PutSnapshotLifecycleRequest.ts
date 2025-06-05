@@ -17,11 +17,11 @@
  * under the License.
  */
 
-import { Configuration, Retention } from '@slm/_types/SnapshotLifecycle'
-import { CronExpression } from '@watcher/_types/Schedule'
 import { RequestBase } from '@_types/Base'
 import { Name } from '@_types/common'
 import { Duration } from '@_types/Time'
+import { Configuration, Retention } from '@slm/_types/SnapshotLifecycle'
+import { CronExpression } from '@watcher/_types/Schedule'
 
 /**
  * Create or update a policy.

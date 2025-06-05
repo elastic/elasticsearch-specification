@@ -17,9 +17,9 @@
  * under the License.
  */
 
-import { Dictionary } from '@spec_utils/Dictionary'
 import { IndexName } from '@_types/common'
 import { ShardFailure } from '@_types/Errors'
+import { Dictionary } from '@spec_utils/Dictionary'
 
 export class Response {
   body: {

@@ -17,10 +17,10 @@
  * under the License.
  */
 
-import { Dictionary } from '@spec_utils/Dictionary'
 import { Id, Metadata, Name, Username } from '@_types/common'
 import { SortResults } from '@_types/sort'
 import { EpochTime, UnitMillis } from '@_types/Time'
+import { Dictionary } from '@spec_utils/Dictionary'
 import { Access } from './Access'
 import { RoleDescriptor } from './RoleDescriptor'
 

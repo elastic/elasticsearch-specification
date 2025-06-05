@@ -17,10 +17,10 @@
  * under the License.
  */
 
-import { SnapshotInfo } from '@snapshot/_types/SnapshotInfo'
 import { Name } from '@_types/common'
 import { ErrorCause } from '@_types/Errors'
 import { integer } from '@_types/Numeric'
+import { SnapshotInfo } from '@snapshot/_types/SnapshotInfo'
 
 export class Response {
   body: {
