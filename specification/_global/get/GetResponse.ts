@@ -17,8 +17,8 @@
  * under the License.
  */
 
-import { GetResult } from '@global/get/types'
 import { ErrorResponseBase } from '@_types/Base'
+import { GetResult } from '@global/get/types'
 
 export class Response<TDocument> {
   body: GetResult<TDocument>

@@ -17,12 +17,12 @@
  * under the License.
  */
 
-import { SnapshotSort } from '@snapshot/_types/SnapshotInfo'
 import { RequestBase } from '@_types/Base'
 import { Name, Names } from '@_types/common'
 import { integer } from '@_types/Numeric'
 import { SortOrder } from '@_types/sort'
 import { Duration } from '@_types/Time'
+import { SnapshotSort } from '@snapshot/_types/SnapshotInfo'
 
 /**
  * Get snapshot information.

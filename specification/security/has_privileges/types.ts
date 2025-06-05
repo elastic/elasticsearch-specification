@@ -17,9 +17,9 @@
  * under the License.
  */
 
+import { Indices, Name } from '@_types/common'
 import { IndexPrivilege } from '@security/_types/Privileges'
 import { Dictionary } from '@spec_utils/Dictionary'
-import { Indices, Name } from '@_types/common'
 
 export class ApplicationPrivilegesCheck {
   /** The name of the application. */
