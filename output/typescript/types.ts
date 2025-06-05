@@ -13717,7 +13717,7 @@ export interface InferenceMistralServiceSettings {
 
 export type InferenceMistralServiceType = 'mistral'
 
-export type InferenceMistralTaskType = 'text_embedding'
+export type InferenceMistralTaskType = 'text_embedding' | 'completion' | 'chat_completion'
 
 export interface InferenceOpenAIServiceSettings {
   api_key: string
@@ -13801,7 +13801,7 @@ export type InferenceTaskTypeHuggingFace = 'text_embedding'
 
 export type InferenceTaskTypeJinaAi = 'text_embedding' | 'rerank'
 
-export type InferenceTaskTypeMistral = 'text_embedding'
+export type InferenceTaskTypeMistral = 'text_embedding' | 'chat_completion' | 'completion'
 
 export type InferenceTaskTypeOpenAI = 'text_embedding' | 'chat_completion' | 'completion'
 
