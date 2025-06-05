@@ -16,9 +16,9 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-import { FilteringRulesValidation } from '@connector/_types/Connector'
 import { RequestBase } from '@_types/Base'
 import { Id } from '@_types/common'
+import { FilteringRulesValidation } from '@connector/_types/Connector'
 
 /**
  * Update the connector draft filtering validation.

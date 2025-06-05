@@ -17,13 +17,13 @@
  * under the License.
  */
 
-import { ShardRouting } from '@indices/stats/types'
-import { AdditionalProperties } from '@spec_utils/behaviors'
-import { Dictionary } from '@spec_utils/Dictionary'
 import { Field, IndexName } from '@_types/common'
 import { uint } from '@_types/Numeric'
 import { ShardStatistics } from '@_types/Stats'
 import { EpochTime, UnitMillis } from '@_types/Time'
+import { ShardRouting } from '@indices/stats/types'
+import { AdditionalProperties } from '@spec_utils/behaviors'
+import { Dictionary } from '@spec_utils/Dictionary'
 
 export class Response {
   body: FieldsUsageBody

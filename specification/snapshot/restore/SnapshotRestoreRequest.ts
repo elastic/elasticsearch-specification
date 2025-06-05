@@ -17,10 +17,10 @@
  * under the License.
  */
 
-import { IndexSettings } from '@indices/_types/IndexSettings'
 import { RequestBase } from '@_types/Base'
 import { Indices, Name } from '@_types/common'
 import { Duration } from '@_types/Time'
+import { IndexSettings } from '@indices/_types/IndexSettings'
 
 /**
  * Restore a snapshot.
