@@ -260,6 +260,7 @@ grok,https://www.elastic.co/docs/explore-analyze/scripting/grok
 grok-processor,https://www.elastic.co/docs/reference/enrich-processor/grok-processor
 gsub-processor,https://www.elastic.co/docs/reference/enrich-processor/gsub-processor
 health-api,https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-health-report
+huggingface-chat-completion-interface,https://huggingface.co/docs/inference-providers/en/tasks/chat-completion#conversational-large-language-models-llms
 huggingface-tokens,https://huggingface.co/settings/tokens
 ilm-delete-lifecycle,https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ilm-delete-lifecycle
 ilm-explain-lifecycle,https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ilm-explain-lifecycle

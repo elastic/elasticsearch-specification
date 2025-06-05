@@ -86,7 +86,9 @@ export enum TaskTypeGoogleVertexAI {
 }
 
 export enum TaskTypeHuggingFace {
-  text_embedding
+  text_embedding,
+  chat_completion,
+  completion
 }
 
 export enum TaskTypeMistral {
