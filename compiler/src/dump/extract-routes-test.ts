@@ -23,10 +23,10 @@ import { insert, Node } from './extract-routes'
 test('insertions', t => {
   class Args {
     name: string
-    routes: Array<{name: string, path: string}>
+    routes: Array<{ name: string, path: string }>
     expect: Node
 
-    constructor (name: string, routes: Array<{name: string, path: string}>, expect: Node) {
+    constructor (name: string, routes: Array<{ name: string, path: string }>, expect: Node) {
       this.name = name
       this.routes = routes
       this.expect = expect

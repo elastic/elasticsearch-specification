@@ -481,7 +481,7 @@ export function modelEnumDeclaration (declaration: EnumDeclaration): model.Enum 
         // names that contains `.` or `-` will be wrapped inside single quotes
         const name = m.getName().replace(/'/g, '')
         const member: model.EnumMember = {
-          name: name
+          name
         }
         const value = m.getValue()
         if (value != null && (typeof value === 'string')) {
@@ -585,7 +585,7 @@ function setDeprecated (type: model.BaseType | model.Property | model.EnumMember
 export function parseDeprecation (tags: Record<string, string>, jsDocs: JSDoc[]): model.Deprecation | undefined {
   if (tags.deprecated !== undefined) {
     const [version, ...description] = tags.deprecated.split(' ')
-    assert(jsDocs, semver.valid(version), 'Invalid semver value')
+    assert(jsDocs, semver.valid(version) !== null, 'Invalid semver value')
     delete tags.deprecated
     return { version, description: description.join(' ') }
   } else {
@@ -1097,14 +1097,14 @@ export function parseVariantsTag (jsDoc: JSDoc[]): model.Variants | undefined {
   if (type === 'external') {
     return {
       kind: 'external_tag',
-      nonExhaustive: nonExhaustive
+      nonExhaustive
     }
   }
 
   if (type === 'container') {
     return {
       kind: 'container',
-      nonExhaustive: nonExhaustive
+      nonExhaustive
     }
   }
 
@@ -1113,7 +1113,7 @@ export function parseVariantsTag (jsDoc: JSDoc[]): model.Variants | undefined {
     assert(jsDoc, typeof pairs.tag === 'string', 'Internal variant requires a tag definition')
     return {
       kind: 'internal_tag',
-      nonExhaustive: nonExhaustive,
+      nonExhaustive,
       tag: pairs.tag,
       defaultTag: pairs.default
     }
@@ -1125,7 +1125,7 @@ export function parseVariantsTag (jsDoc: JSDoc[]): model.Variants | undefined {
     const fqn = pairs.untyped.split('.')
     return {
       kind: 'untagged',
-      nonExhaustive: nonExhaustive,
+      nonExhaustive,
       untypedVariant: {
         namespace: fqn.slice(0, fqn.length - 1).join('.'),
         name: fqn[fqn.length - 1]
@@ -1194,7 +1194,7 @@ export function parseAvailabilityTags (node: Node | Node[], values: string[]): m
       assert(node, parsedKeyValues.stability !== undefined, `stability is not valid: ${stability}`)
     }
     if (since !== undefined) {
-      assert(node, semver.valid(since), `'since' is not valid semver: ${since}`)
+      assert(node, semver.valid(since) !== null, `'since' is not valid semver: ${since}`)
     }
     if (featureFlag !== undefined) {
       assert(node, visibility === 'feature_flag', '\'visibility\' must be \'feature_flag\' if a feature flag is defined')

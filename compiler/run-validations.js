@@ -17,7 +17,7 @@
  * under the License.
  */
 
-/* global $ argv, path, cd, nothrow */
+/* global $ path, cd, nothrow */
 
 'use strict'
 
@@ -92,7 +92,6 @@ async function run () {
     spinner.fail('You must specify the branch, for example: \'make validate api=index type=request branch=main\'')
     process.exit(1)
   }
-
 
   const isFlightRecorderCloned = await $`[[ -d ${path.join(__dirname, '..', '..', 'clients-flight-recorder')} ]]`.exitCode === 0
   if (!isFlightRecorderCloned) {

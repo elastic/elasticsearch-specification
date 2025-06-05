@@ -17,8 +17,8 @@
  * under the License.
  */
 
-import { CatRequestBase } from '@cat/_types/CatBase'
 import { Bytes, Fields, Names } from '@_types/common'
+import { CatRequestBase } from '@cat/_types/CatBase'
 
 /**
  * Get field data cache information.

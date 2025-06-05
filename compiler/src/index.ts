@@ -39,7 +39,7 @@ if (nodejsMajor !== nvmMajor) {
   process.exit(1)
 }
 
-let specsFolder: string|undefined = argv.spec
+let specsFolder: string | undefined = argv.spec
 if (specsFolder !== '' && specsFolder !== undefined) {
   // We were given a specification, let's make sure it's a directory.
   specsFolder = resolve(specsFolder)
@@ -58,7 +58,7 @@ if (specsFolder !== '' && specsFolder !== undefined) {
 }
 
 // It's okay if the output folder doesn't exist initially.
-const outputFolder: string|undefined = argv.output
+const outputFolder: string | undefined = argv.output
 if (outputFolder === '' || outputFolder === undefined) {
   console.error('--output must be specified')
   process.exit(1)

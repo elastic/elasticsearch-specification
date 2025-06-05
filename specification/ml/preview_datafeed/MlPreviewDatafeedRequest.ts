@@ -17,11 +17,11 @@
  * under the License.
  */
 
-import { DatafeedConfig } from '@ml/_types/Datafeed'
-import { JobConfig } from '@ml/_types/Job'
 import { RequestBase } from '@_types/Base'
 import { Id } from '@_types/common'
 import { DateTime } from '@_types/Time'
+import { DatafeedConfig } from '@ml/_types/Datafeed'
+import { JobConfig } from '@ml/_types/Job'
 
 /**
  * Preview a datafeed.

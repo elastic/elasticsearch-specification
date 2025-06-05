@@ -73,7 +73,7 @@ export default async function validateModel (apiModel: model.Model, restSpec: Ma
 
   // Current endpoint context. Start with an undefined one for common type definitions
   let currentEndpoint: string | undefined
-  let currentPart: 'request'|'response' = 'request'
+  let currentPart: 'request' | 'response' = 'request'
 
   function setRootContext (endpoint: string, what: 'request' | 'response'): void {
     currentEndpoint = endpoint
@@ -155,7 +155,7 @@ export default async function validateModel (apiModel: model.Model, restSpec: Ma
   ]) {
     const typeName = {
       namespace: '_builtins',
-      name: name
+      name
     }
     typeDefByName.set(fqn(typeName), {
       kind: 'interface',
