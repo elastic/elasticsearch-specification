@@ -17,8 +17,8 @@
  * under the License.
  */
 
-import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 import { Name } from '@_types/common'
+import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 
 export class Column {
   name: Name
