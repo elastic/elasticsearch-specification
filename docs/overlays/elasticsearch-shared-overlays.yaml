@@ -1081,9 +1081,6 @@ actions:
   - target: "$.components['schemas']['cat._types.CatAnomalyDetectorColumn'].enum"
     description: Remove enum array from cat detectors
     remove: true
-  - target: "$.components['schemas']['cat._types.CatNodeColumn'].enum"
-    description: Remove enum array from cat nodes
-    remove: true
   - target: "$.components['schemas']['cat._types.CatDfaColumn'].enum"
     description: Remove enum array from cat data frame analytics
     remove: true
