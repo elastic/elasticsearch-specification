@@ -2786,7 +2786,7 @@ export interface RuleRetriever extends RetrieverBase {
 
 export type ScalarValue = long | double | string | boolean | null
 
-export type ScoreNormalizer = 'none' | 'minmax'
+export type ScoreNormalizer = 'none' | 'minmax' | 'l2_norm'
 
 export interface ScoreSort {
   order?: SortOrder

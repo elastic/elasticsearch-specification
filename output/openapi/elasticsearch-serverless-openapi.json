@@ -59681,7 +59681,8 @@
         "type": "string",
         "enum": [
           "none",
-          "minmax"
+          "minmax",
+          "l2_norm"
         ]
       },
       "_types.PinnedRetriever": {
